@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO & Meta Tags -->
+    <title>{{NOME}} - {{TITULO}}</title>
+    <meta name="description" content="{{DESCRICAO}}">
+    <link rel="canonical" href="https://mauricioissei.com.br" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mauricioissei.com.br">
+    <meta property="og:title" content="{{NOME}} - {{TITULO}}">
+    <meta property="og:description" content="{{DESCRICAO}}">
+    <meta property="og:image" content="">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mauricioissei.com.br">
+    <meta property="twitter:title" content="{{NOME}} - {{TITULO}}">
+    <meta property="twitter:description" content="{{DESCRICAO}}">
+    <meta property="twitter:image" content="">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KQ9R3GV3');</script>
+    <!-- End Google Tag Manager -->
+     <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GEKLHZYVYX');
+    </script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
+
+    <!-- Tailwind Play CDN -->
+    <link href="./output.css" rel="stylesheet">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- SEO & Meta Tags -->
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Fundo escuro */
+            color: #c9d1d9; /* Texto cinza claro */
+            scroll-behavior: smooth;
+        }
+        /* Scrollbar customizada para um visual elegante */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+
+        /* Animação de fundo da seção Hero */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(0.8); opacity: 0.1; }
+        }
+
+        /* Títulos de seção com um brilho sutil */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #007bff, #8a2be2); /* Gradiente de azul para roxo */
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+
+        /* Efeito de hover no card do projeto */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2), 0 5px 10px rgba(138, 43, 226, 0.1);
+        }
+
+        /* Efeito do ponto na linha do tempo */
+        .timeline-dot {
+            position: relative;
+            width: 16px;
+            height: 16px;
+            background-color: #007bff;
+            border-radius: 50%;
+            border: 2px solid #8a2be2;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px #007bff, 0 0 25px #8a2be2;
+        }
+        
+        /* Estilização específica do Modal */
+        .modal {
+            display: none; /* Oculto por padrão */
+            position: fixed; /* Fica no lugar */
+            z-index: 1000; /* Fica no topo */
+            left: 0;
+            top: 0;
+            width: 100%; /* Largura total */
+            height: 100%; /* Altura total */
+            overflow: auto; /* Habilita scroll se necessário */
+            background-color: rgba(0,0,0,0.8); /* Preto com opacidade */
+            backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+            -webkit-backdrop-filter: blur(5px); /* Suporte para Safari */
+            padding: 20px;
+        }
+        .modal-content {
+            background-color: #161b22;
+            margin: 5% auto; /* 5% do topo e centralizado */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3), 0 4px 8px rgba(138, 43, 226, 0.2);
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            animation: fadeIn 0.3s ease-out;
+            max-height: 90vh; /* Limita a altura para habilitar scroll dentro do modal */
+            overflow-y: auto; /* Habilita scroll para o conteúdo do modal */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .close-button {
+            color: #c9d1d9;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #007bff;
+        }
+
+        /* Estilos dos botões */
+        .btn-primary {
+            background: linear-gradient(90deg, #007bff, #8a2be2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5), 0 3px 8px rgba(138, 43, 226, 0.3);
+        }
+        .btn-secondary {
+            background-color: #21262d;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Animações ao rolar */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Maurício Yokoyama Issei</a>
+            <div class="hidden md:flex space-x-4 text-sm">
+                <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Sobre Mim</a>
+                <a href="#skills" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Habilidades</a>
+                <a href="#experience" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Experiência</a>
+                <a href="#projects" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Projetos</a>
+                <a href="#education" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Formação</a>
+                <a href="#courses" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Cursos</a>
+                <a href="#recommendations" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Recomendações</a>
+                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Contato</a>
+            </div>
+            <!-- Botão do Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Abrir menu principal</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 py-2">
+            <a href="#about" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Sobre Mim</a>
+            <a href="#skills" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Habilidades</a>
+            <a href="#experience" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Experiência</a>
+            <a href="#projects" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Projetos</a>
+            <a href="#education" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Formação</a>
+            <a href="#courses" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Cursos</a>
+            <a href="#recommendations" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Recomendações</a>
+            <a href="#contact" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Contato</a>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Seção Hero -->
+        <section id="hero" class="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white overflow-hidden p-6">
+            <div class="hero-background"></div>
+            <div id="hero-content" class="text-center z-10 max-w-4xl mx-auto">
+                <!-- Conteúdo do Hero será carregado aqui -->
+            </div>
+        </section>
+
+        <!-- Seção Sobre Mim -->
+        <section id="about" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="about-title">
+            <div class="container mx-auto max-w-6xl">
+                <h2 id="about-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Sobre Mim</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                    <div class="md:w-1/3 mb-8 md:mb-0 flex-shrink-0">
+                        <img src="./foto1.png"
+                             alt="Maurício Yokoyama Issei"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/21262d/c9d1d9?text=Mauricio+Yokoyama+Issei';"
+                             alt="Maurício Yokoyama Issei" 
+                             class="rounded-full shadow-lg border-4 border-blue-500 w-64 h-64 mx-auto object-cover"
+                             loading="lazy">
+                    </div>
+                    <div id="about-content" class="md:w-2/3 text-lg text-gray-300 leading-relaxed">
+                        <!-- Conteúdo Sobre Mim será carregado aqui -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Habilidades -->
+        <section id="skills" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="skills-title">
+            <div class="container mx-auto max-w-7xl">
+                <h2 id="skills-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Habilidades & Competências</h2>
+                <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Habilidades serão carregadas dinamicamente aqui -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Experiência -->
+        <section id="experience" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="experience-title">
+            <div class="container mx-auto max-w-5xl">
+                <h2 id="experience-title" class="text-4xl font-bold text-white mb-16 text-center section-title">Experiência Profissional</h2>
+                <div id="experience-container" class="relative border-l-2 border-gray-700 ml-4 md:ml-0">
+                    <!-- Experiência será carregada dinamicamente aqui -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos -->
+        <section id="projects" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="projects-title">
+            <div class="container mx-auto max-w-7xl">
+                <h2 id="projects-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Projetos em Destaque</h2>
+                <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Projetos serão carregados dinamicamente aqui -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal de Detalhes do Projeto -->
+        <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-project-name">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()" role="button" tabindex="0" aria-label="Fechar detalhe do projeto">&times;</span>
+                <h3 id="modal-project-name" class="text-3xl font-bold text-white mb-4" tabindex="-1"></h3>
+                <p id="modal-project-period" class="text-md text-gray-400 mb-2"></p>
+                <p id="modal-project-company" class="text-md text-gray-400 mb-6"></p>
+                
+                <div id="modal-project-star-details">
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Situação:</h4>
+                    <p id="modal-project-situacao" class="text-gray-300 mb-4 bg-gray-800 p-3 rounded"></p>
+                    
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Tarefas:</h4>
+                    <ul id="modal-project-tarefas" class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
+                    
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Ações:</h4>
+                    <ul id="modal-project-acoes" class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
+                    
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Resultados:</h4>
+                    <ul id="modal-project-resultados" class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
+                </div>
+
+                <h4 class="text-xl font-semibold text-blue-400 mb-2 mt-4" id="modal-project-tech-title" style="display:none;">Tecnologias:</h4>
+                <div id="modal-project-technologies" class="flex flex-wrap gap-2"></div>
+            </div>
+        </div>
+
+        <!-- Seção de Formação e Certificações -->
+        <section id="education" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="education-title">
+            <div class="container mx-auto max-w-6xl">
+                <h2 id="education-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Formação & Certificações</h2>
+                
+                <div class="mb-16">
+                    <h3 class="text-3xl font-semibold text-blue-400 mb-8 text-center">Formação Acadêmica</h3>
+                    <div id="education-container" class="space-y-8">
+                        <!-- Formação será carregada dinamicamente aqui -->
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-3xl font-semibold text-blue-400 mb-8 text-center">Certificações</h3>
+                    <div id="certifications-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <!-- Certificações serão carregadas dinamicamente aqui -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Cursos -->
+        <section id="courses" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="courses-title">
+            <div class="container mx-auto max-w-7xl">
+                <h2 id="courses-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Cursos e Capacitações (Alura)</h2>
+                <a href="https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Certificado Geral <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                <div id="courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cursos serão carregados dinamicamente aqui -->
+                </div>
+               
+            </div>
+        </section>
+
+        <!-- Seção de Recomendações -->
+        <section id="recommendations" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="recommendations-title">
+            <div class="container mx-auto max-w-6xl">
+                <h2 id="recommendations-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Recomendações</h2>
+                <div id="recommendations-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Recomendações serão carregadas dinamicamente aqui -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato -->
+        <section id="contact" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="contact-title-main">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 id="contact-title-main" class="text-4xl font-bold text-white mb-12 section-title">Entre em Contato</h2>
+                <div id="contact-container">
+                    <!-- Conteúdo de Contato será carregado aqui -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 py-8 text-center text-sm">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="current-year"></span> Maurício Issei. Todos os direitos reservados.</p>
+            <p class="mt-2">Desenvolvido com <i class="fa-solid fa-heart text-red-500"></i> e tecnologia.</p>
+        </div>
+    </footer>
+
+    <script>
+        // URL do cv.json (injetada pelo script de build)
+        const CV_JSON_URL = '{{CV_JSON_URL}}';
+        
+        // Carrega profileData de cv.json (GitHub ou local)
+        let profileData;
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log(`🔄 Carregando dados de: ${CV_JSON_URL}`);
+            
+            fetch(CV_JSON_URL)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    profileData = data;
+                    console.log('✅ Dados carregados com sucesso!');
+                    // Renderiza todas as seções somente após o JSON ser carregado
+                    renderHero();
+                    renderAbout();
+                    renderSkills();
+                    renderExperience();
+                    renderProjects();
+                    renderEducation();
+                    renderCertifications();
+                    renderCourses();
+                    renderRecommendations();
+                    renderContact();
+                    updateFooterYear();
+
+                    // Toggle do menu mobile
+                    const mobileMenuButton = document.getElementById('mobile-menu-button');
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenuButton.addEventListener('click', () => {
+                        const isExpanded = mobileMenu.classList.toggle('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                    });
+                    // Fecha o menu mobile quando um link é clicado
+                    mobileMenu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        });
+                    });
+
+                    // Animações ao rolar
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                            }
+                        });
+                    }, {
+                        threshold: 0.1
+                    });
+
+                    document.querySelectorAll('.animate-on-scroll').forEach(section => {
+                        observer.observe(section);
+                    });
+                })
+                .catch(error => {
+                    console.error('❌ Erro ao carregar dados:', error);
+                    // Tenta fallback para cv.json local se a URL do GitHub falhar
+                    if (CV_JSON_URL !== './cv.json') {
+                        console.log('🔄 Tentando fallback para cv.json local...');
+                        fetch('./cv.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                profileData = data;
+                                console.log('✅ Dados locais carregados com sucesso!');
+                                // Renderiza tudo novamente
+                                renderHero();
+                                renderAbout();
+                                renderSkills();
+                                renderExperience();
+                                renderProjects();
+                                renderEducation();
+                                renderCertifications();
+                                renderCourses();
+                                renderRecommendations();
+                                renderContact();
+                                updateFooterYear();
+                            })
+                            .catch(fallbackError => {
+                                console.error('❌ Erro ao carregar dados locais:', fallbackError);
+                                alert('Erro ao carregar dados do currículo. Por favor, recarregue a página.');
+                            });
+                    } else {
+                        alert('Erro ao carregar dados do currículo. Por favor, recarregue a página.');
+                    }
+                });
+        });
+
+        function renderHero() {
+            const container = document.getElementById('hero-content');
+            container.innerHTML = `
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+                    ${profileData.Nome}
+                </h1>
+                <p class="text-2xl md:text-4xl font-light mb-8 text-blue-300">
+                    ${profileData.Titulo}
+                </p>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                    ${profileData.ResumoHero}
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#projects" class="btn-primary inline-block">Ver Projetos</a>
+                    <a href="${profileData.Contato.LinkedIn}" target="_blank" class="btn-secondary inline-block">Conectar no LinkedIn</a>
+                </div>
+            `;
+        }
+        
+        function renderAbout() {
+            const container = document.getElementById('about-content');
+            container.innerHTML = profileData.Resumo.map(p => `<p class="mb-4">${p}</p>`).join('');
+        }
+
+        function renderSkills() {
+            const container = document.getElementById('skills-container');
+            container.innerHTML = ''; // Limpa o container
+            for (const category in profileData.Habilidades) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700';
+                categoryDiv.innerHTML = `
+                    <h3 class="text-xl font-semibold text-blue-300 mb-4">${category.replace(/_/g, ' ')}</h3>
+                    <div class="flex flex-wrap gap-2">
+                        ${profileData.Habilidades[category].map(skill => `
+                            <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full hover:bg-blue-600 hover:text-white transition-colors duration-200 cursor-default">
+                                ${skill}
+                            </span>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(categoryDiv);
+            }
+        }
+
+        function renderExperience() {
+            const container = document.getElementById('experience-container');
+            container.innerHTML = ''; // Limpa o container
+            profileData.Experiencia.forEach(exp => {
+                const expDiv = document.createElement('div');
+                expDiv.className = 'relative mb-10 pl-12 md:pl-16 timeline-item';
+                expDiv.innerHTML = `
+                    <div class="timeline-dot absolute left-[-8px] top-1 transform -translate-x-1/2"></div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 hover:border-blue-500 transition-colors duration-300">
+                        <h3 class="text-2xl font-bold text-white">${exp.Cargo}</h3>
+                        <p class="text-lg font-semibold text-blue-400 mb-1">${exp.Empresa}</p>
+                        <p class="text-gray-400 text-sm mb-3">${exp.Periodo} &bull; ${exp.Local}</p>
+                        <p class="text-gray-300 mb-4">${exp.Descricao}</p>
+                        
+                        ${exp.Resultados && exp.Resultados.length > 0 ? `
+                            <h4 class="text-md font-semibold text-gray-200 mt-4 mb-2">Principais Resultados:</h4>
+                            <ul class="list-disc list-inside text-gray-400 text-sm pl-4 space-y-1">
+                                ${exp.Resultados.map(res => `<li>${res}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+
+                        ${exp.Principais_Projetos && exp.Principais_Projetos.length > 0 ? `
+                            <h4 class="text-md font-semibold text-gray-200 mt-4 mb-2">Principais Projetos:</h4>
+                            <ul class="list-disc list-inside text-gray-400 text-sm pl-4 space-y-1">
+                                ${exp.Principais_Projetos.map(proj => `<li>${proj}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                        
+                        ${exp.Competencias && exp.Competencias.length > 0 ? `
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                ${exp.Competencias.map(comp => `
+                                    <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-1 rounded-full border border-blue-700">
+                                        ${comp}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                container.appendChild(expDiv);
+            });
+        }
+
+        function renderProjects() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = ''; // Limpa o container
+            profileData.Projetos.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card bg-gray-700 p-6 rounded-lg shadow-md flex flex-col justify-between h-full';
+                projectCard.innerHTML = `
+                    <div>
+                        <h3 class="text-xl font-semibold text-white mb-2">${project.Nome}</h3>
+                        <p class="text-blue-300 text-sm mb-2">${project.Empresa} (${project.Periodo})</p>
+                        <p class="text-gray-300 text-sm mb-4">${(project.Situacao || 'Clique para ver detalhes.').substring(0, 120)}...</p>
+                    </div>
+                    <button onclick="openModal(this, ${index})" class="btn-secondary mt-4 self-start">Saiba Mais</button>
+                `;
+                container.appendChild(projectCard);
+            });
+        }
+
+        function renderEducation() {
+            const container = document.getElementById('education-container');
+            container.innerHTML = ''; // Limpa o container
+            profileData.Formacao_Academica.forEach(edu => {
+                const eduDiv = document.createElement('div');
+                eduDiv.className = 'bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700';
+                eduDiv.innerHTML = `
+                    <h4 class="text-xl font-semibold text-white">${edu.Curso}</h4>
+                    <p class="text-blue-300 text-md mb-2">${edu.Instituicao}</p>
+                    <p class="text-gray-400 text-sm">${edu.Periodo || edu.Ano}</p>
+                    ${edu.Diploma_Digital_Codigo ? `<p class="text-gray-500 text-xs mt-2">Código do Diploma: <span class="font-mono">${edu.Diploma_Digital_Codigo}</span></p>` : ''}
+                    ${edu.Verificacao ? `<a href="${edu.Verificacao}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Assinatura <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>` : ''}
+                `;
+                container.appendChild(eduDiv);
+            });
+        }
+
+        function renderCertifications() {
+            const container = document.getElementById('certifications-container');
+            container.innerHTML = ''; // Limpa o container
+            profileData.Certificados.forEach(cert => {
+                const certDiv = document.createElement('div');
+                certDiv.className = 'bg-gray-700 p-4 rounded-lg shadow-md flex flex-col justify-between h-full';
+                certDiv.innerHTML = `
+                    <div>
+                        <h4 class="text-md font-semibold text-white">${cert.Nome}</h4>
+                        <p class="text-blue-300 text-sm">${cert.Instituicao}</p>
+                        <p class="text-gray-400 text-xs mb-2">Emitido em: ${cert.Data_Emissao || cert.Ano || cert.Periodo}</p>
+                    </div>
+                    ${cert.Verificacao ? `<a href="${cert.Verificacao}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Credencial <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>` : ''}
+                `;
+                container.appendChild(certDiv);
+            });
+        }
+        
+        function renderCourses() {
+            const container = document.getElementById('courses-container');
+            container.innerHTML = ''; // Limpa o container
+            for (const category in profileData.Cursos_Alura) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700';
+                categoryDiv.innerHTML = `
+                    <h3 class="text-xl font-semibold text-blue-300 mb-4">${category.replace(/_/g, ' ')}</h3>
+                    <ul class="space-y-2">
+                        ${profileData.Cursos_Alura[category].map(course => `
+                            <li class="text-gray-300 text-sm flex items-start">
+                                <i class="fa-solid fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                <span>${course}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+                container.appendChild(categoryDiv);
+            }
+        }
+
+
+        function renderRecommendations() {
+            const container = document.getElementById('recommendations-container');
+            container.innerHTML = ''; // Limpa o container
+            profileData.Recomendacoes_Recebidas.forEach(rec => {
+                const recDiv = document.createElement('div');
+                recDiv.className = 'bg-gray-700 p-6 rounded-lg shadow-md';
+                recDiv.innerHTML = `
+                    <p class="text-gray-300 italic mb-4">"${rec.Recomendacao}"</p>
+                    <p class="text-white font-semibold">${rec.Autor}</p>
+                    <p class="text-blue-300 text-sm">${rec.Cargo}</p>
+                    <p class="text-gray-400 text-xs mt-1">${rec.Data_Trabalho}</p>
+                `;
+                container.appendChild(recDiv);
+            });
+        }
+
+        function renderContact() {
+            const container = document.getElementById('contact-container');
+            container.innerHTML = `
+                <p class="text-lg text-gray-300 mb-8">Estou sempre aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato!</p>
+                <div class="flex flex-col items-center space-y-6">
+                    <a href="mailto:${profileData.Contato.Email}" class="btn-primary inline-flex items-center space-x-3 text-lg">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>${profileData.Contato.Email}</span>
+                    </a>
+                    <a href="${profileData.Contato.LinkedIn}" target="_blank" class="btn-secondary inline-flex items-center space-x-3 text-lg">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>LinkedIn/${profileData.Contato.LinkedInUser}</span>
+                    </a>
+                    <a href="${profileData.Contato.youtube}" target="_blank" class="btn-secondary inline-flex items-center space-x-3 text-lg">
+                        <i class="fa-brands fa-youtube"></i>
+                        <span>Youtube/@MauricioIssei</span>
+                    </a>
+                </div>
+            `;
+        }
+
+        function updateFooterYear() {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        }
+
+        // Funções do Modal
+        const projectModal = document.getElementById('project-modal');
+        let lastFocusedElement;
+        
+        function openModal(triggerElement, index) {
+            lastFocusedElement = triggerElement; // Salva o botão que abriu o modal
+
+            const project = profileData.Projetos[index];
+            const modalTitle = document.getElementById('modal-project-name');
+            modalTitle.textContent = project.Nome;
+            document.getElementById('modal-project-period').textContent = project.Periodo;
+            document.getElementById('modal-project-company').textContent = project.Empresa;
+            
+            const starDetails = document.getElementById('modal-project-star-details');
+            if (project.Situacao && project.Situacao !== "N/A") {
+                starDetails.style.display = 'block';
+                document.getElementById('modal-project-situacao').innerHTML = project.Situacao;
+                
+                const tarefasUl = document.getElementById('modal-project-tarefas');
+                tarefasUl.innerHTML = '';
+                if(Array.isArray(project.Tarefas)) project.Tarefas.forEach(task => tarefasUl.innerHTML += `<li>${task}</li>`);
+                
+                const acoesUl = document.getElementById('modal-project-acoes');
+                acoesUl.innerHTML = '';
+                if(Array.isArray(project.Acoes)) project.Acoes.forEach(action => acoesUl.innerHTML += `<li>${action}</li>`);
+
+                const resultadosUl = document.getElementById('modal-project-resultados');
+                resultadosUl.innerHTML = '';
+                if(Array.isArray(project.Resultados)) project.Resultados.forEach(result => resultadosUl.innerHTML += `<li>${result}</li>`);
+
+            } else {
+                starDetails.style.display = 'none';
+            }
+
+            const techTitle = document.getElementById('modal-project-tech-title');
+            const techContainer = document.getElementById('modal-project-technologies');
+
+            if (project.Tecnologias && project.Tecnologias.length > 0) {
+                techTitle.style.display = 'block';
+                techContainer.innerHTML = project.Tecnologias.map(tech => `
+                    <span class="bg-gray-600 text-gray-200 text-sm px-3 py-1 rounded-full">
+                        ${tech}
+                    </span>
+                `).join('');
+            } else {
+                techTitle.style.display = 'none';
+                techContainer.innerHTML = '';
+            }
+
+            projectModal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Impede o scroll do body
+            modalTitle.focus(); // Foco no título do modal
+        }
+
+        function closeModal() {
+            projectModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaura o scroll do body
+            if (lastFocusedElement) {
+                lastFocusedElement.focus(); // Retorna o foco para o botão
+            }
+        }
+
+        // Fecha o modal ao clicar fora dele
+        window.onclick = function(event) {
+            if (event.target == projectModal) {
+                closeModal();
+            }
+        }
+        // Fecha o modal com a tecla 'Escape'
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+
+    </script>
+</body>
+</html>

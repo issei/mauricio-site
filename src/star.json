@@ -1,0 +1,393 @@
+{
+  "2018": [
+    {
+      "titulo": "Transição do Time de Sustentação",
+      "situacao": "- Projetos do Cockpit e do Força Campo, recentemente implantados em produção, sem um processo de sustentação e de mudanças bem definidos, com um alto volume de erros e reclamações.",
+      "tarefas": [
+        "Analisar e direcionar erros, falhas e funcionalidades incompletas",
+        "Alinhar processos de versionamento, mudança e de implantações",
+        "Implementar monitorações",
+        "Tratar incidentes"
+      ],
+      "acoes": [
+        "Alinhado e criado um fluxo de chamados de sustentação para os executivos comerciais e para os técnicos e gestores de Logística",
+        "Alinhado com a área de mudanças e de segurança da informação a responsabilidade do time de sustentação ser responsável por validar e executar as implantações dos times na Salesforce de forma centralizada",
+        "Alinhado com os times melhores práticas para versionamento e utilizações de Sandboxes de desenvolvimento",
+        "Especificado e priorizado junto com fábrica de desenvolvimento Salesforce as correções de causa raiz para os problemas produtivos",
+        "Alinhado com time de CMR monitorações e alarmes"
+      ],
+      "resultados": [
+        "Redução e estabilidade do ambiente Salesforce, tanto para o Força de Vendas como para o Força de Campo",
+        "Ampliação do número de executivos e técnicos utilizando as ferramentas",
+        "Maior foco e número de entregas de projetos pelos times de projetos"
+      ]
+    }
+  ],
+  "2019": [
+    {
+      "titulo": "Sustentação AFVC",
+      "sub_projetos": [
+        {
+          "titulo": "Força Campo",
+          "situacao": [
+            "Continuidade do trabalho de sustentação com aumento do time de sustentação precisando de capacitação e organização para atender um volume grande de chamados e problemas com alta criticidade recorrentes em Logística",
+            "Exemplos de problemas comuns:",
+            "- Falhas na criação de OS",
+            "- Falhas na roteirização das OSs",
+            "- Falhas no app Força Campo para atuação do Técnico"
+          ],
+          "tarefas": [
+            "Discovery das funcionalidades do Força Campo",
+            "Treinamento de time para atendimento da Sustentação",
+            "Priorização de backlog de correções de causa raiz",
+            "Desenvolvimento de correções de causa raiz"
+          ],
+          "acoes": [
+            "Participação em refinamentos com os times de projetos, opinando sobre melhores práticas e qualidade do desenvolvimento",
+            "Validação de toda nova entrega, compartilhando conhecimento com time de sustentação do que estava sendo evoluído",
+            "Especificando e validando desenvolvimento de Fábrica de Software nas tratativas de causa raiz"
+          ],
+          "resultados": [
+            "Redução de problemas críticos de impacto à operação Logística",
+            "Menor tempo de atendimento dos incidentes",
+            "Melhor gestão dos incidentes e problemas",
+            "Time de projetos com mais entregas e com maior qualidade"
+          ]
+        },
+        {
+          "titulo": "Força Vendas",
+          "situacao": [
+            "Continuidade do trabalho de sustentação com divisão do time de sustentação para focar nos processos do Comercial, que estava em expansão e com alto volume de chamados e problemas",
+            "Exemplo de problemas comuns:",
+            "- Falhas na sincronização de dados no App Offline do Cockpit (versão Android)",
+            "- Abends recorrentes de malha batch da sigla TV2",
+            "- Alto volume de erros em funcionalidades do Cockpit"
+          ],
+          "tarefas": [
+            "Discovery das funcionalidades do Cockpit",
+            "Treinamento de time para atendimento da Sustentação",
+            "Priorização de backlog de correções de causa raiz",
+            "Desenvolvimento de correções de causa raiz"
+          ],
+          "acoes": [
+            "Participação de refinamentos com time de projetos, opinando sobre melhores práticas e qualidade do desenvolvimento",
+            "Validação de toda nova entrega, compartilhando conhecimento com time de sustentação do que estava sendo evoluído",
+            "Especificando e validando desenvolvimento de Fábrica de Software nas tratativas de causa raiz"
+          ],
+          "resultados": [
+            "Redução de problemas críticos de impacto à operação comercial",
+            "Menor tempo de atendimento dos incidentes",
+            "Melhor gestão dos incidentes e problemas",
+            "Time de projetos com mais entregas e com maior qualidade"
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Sustentação Credenciamento Rede (Força Vendas + WF1)",
+      "situacao": "- Priorização e metas corporativas para o Comercial realizar mais Credenciamentos, onde foi desenvolvido na própria Salesforce (fora do app Android) o credenciamento Cockpit que nascia com mais integrações online com o WF1 e GE. Já com o time de sustentação apartado do time de Logística",
+      "tarefas": [
+        "Mapeamento das integrações e arquitetura do Credenciamento Cockpit",
+        "Acompanhamento dos refinamentos do novo Credenciamento",
+        "Atendimento dos incidentes"
+      ],
+      "acoes": [
+        "Validação de toda nova entrega de mudanças em produção",
+        "Execução dos Runbooks de implantação em produção e acompanhamento das validações",
+        "Direcionamento para o time de projetos de melhorias e tratativas de causa raiz de incidentes"
+      ],
+      "resultados": [
+        "Rapidez em atendimento de incidentes",
+        "Redução de problemas críticos para operação comercial",
+        "Maior número de entregas com qualidade do time de projetos"
+      ]
+    }
+  ],
+  "2020": [
+    {
+      "titulo": "Revisão orçamentária e CINVEST do novo contrato Salesforce até 2025",
+      "situacao": "- Com o vencimento do primeiro contrato da Salesforce e significativa expansão de usuários das ferramentas, time não conhecia como era precificado os tipos de licenças e não tinha uma base histórica das aquisições avulsas que já haviam sido feitas e precisava fechar um orçamento bem conservador para o próximo ano (2019–2020)",
+      "tarefa": [
+        "Reuniões com a Salesforce para detalhar cada tipo de licença",
+        "Revisão de todas as funcionalidades e necessidades previstas para correlacionar com as licenças corretas",
+        "Alinhar com cada área quantidade de usuários e expectativas de expansões de time",
+        "Definir uma gestão de limites de licenças entre as áreas"
+      ],
+      "acoes": [
+        "Planilhado todos os custos no menor nível de detalhe da Salesforce do que já estava em produção e do que era estimado para o próximo ano",
+        "Elaborado apresentação e defesa para CINVEST",
+        "Detalhado para cada time como era composto o orçamento da área"
+      ],
+      "resultados": [
+        "Economia de mais de 3MM na negociação do contrato final, com alocação de licenças não utilizadas em outros tipos de licenças que atendiam as expansões dos times de Logística, Comercial e da Central de Atendimento",
+        "Novo contrato negociado em parceria com CoE Salesforce do Itaú e time de compras, possibilitando uma negociação de maior magnitude e beneficiando tanto a Rede quanto o Itaú no contrato firmado até 2025",
+        "Clareza das áreas sobre o custo de cada tipo de licença"
+      ]
+    },
+    {
+      "titulo": "Revisão orçamentária de fornecedores (MGI Tech & Maplink)",
+      "situacao": "- Falta de clareza e conhecimento sobre a precificação do que já estava em uso na produção e das estimativas de expansão das áreas para elaboração de orçamento da área de TI",
+      "tarefa": [
+        "Alinhamento com cada fornecedor para esclarecer a precificação de cada funcionalidade e recurso contratado",
+        "Alinhamento com as áreas de Logística e Comercial sobre recursos subutilizados e planejamento de expansão e melhorias/trocas",
+        "Elaboração das novas condições e necessidades para novo contrato com cada fornecedor"
+      ],
+      "acoes": [
+        "Planilhado e construído apresentação e defesa para CINVEST sobre os custos e utilização dos fornecedores",
+        "Cancelado a contratação de aluguel de tablets para os comerciais, passando a utilizarem equipamento adquirido e gerenciado pela própria área de mobilidade do Banco",
+        "Revisto e atualizado a versão de celulares alugados para os técnicos de Logística",
+        "Separado o contrato de equipamento e recursos dos fornecedores, do contrato de prestação de serviços, suporte e gestão. Tendo cláusulas de multas específicas para cada um"
+      ],
+      "resultados": [
+        "Economia de aproximadamente 500k nos contratos renegociados com os fornecedores, otimizando melhor os recursos utilizados e estimados",
+        "Melhor gestão orçamentária dos fornecedores feita pela gerência da sustentação AFVC"
+      ]
+    },
+    {
+      "titulo": "Sustentação Core Rede (GE1, WF1, WM1, etc.)",
+      "situacao": "- Com sustentação do Força de Vendas muito mais tranquila, foi unificado a sustentação com os sistemas Core Rede do WF1, GE1, etc., com a necessidade e metas para redução do número de chamados, abends, tempo do atendimento de incidentes e direcionamento de correções de causa raiz para os times de projetos",
+      "tarefa": [
+        "Análise de chamados críticos com necessidade de soluções paliativas rápidas",
+        "Especificação de melhorias de causa raiz",
+        "Desenvolvimento de melhorias e correções",
+        "Validação e acompanhamento de implantações de projetos",
+        "Acompanhamento de refinamentos de projetos com viés de sustentação, priorizando com os times requisitos não funcionais de monitoração, segurança e qualidade"
+      ],
+      "acoes": [
+        "Atendimento aos chamados de variados problemas (Cadastrais, Credenciamento, Domicílio Bancário, Habilitação de produtos, Projetos estruturantes, etc.)",
+        "Melhorias em logs",
+        "Incluído integrações para captura de logs no Splunk",
+        "Treinamento do time de sustentação com conhecimento sobre a Salesforce"
+      ],
+      "resultados": [
+        "Atingimento de metas de redução de incidentes e de tempo de atendimento dos chamados",
+        "Redução de abends da malha batch",
+        "Time de sustentação com capacitação também em Salesforce"
+      ]
+    }
+  ],
+  "2021": [
+    {
+      "titulo": "Discovery para mudança de IPs do Sybase ASE Corp, na reestruturação de escopo PCI",
+      "situacao": "- Para segregar as redes PCI da Não PCI, foi aberto um projeto para avaliar a alteração do IP do servidor do Sybase ASE Corporativo (siglas GE1, WF1, WM1, etc.) sendo necessário mapear e estimar todas aplicações e serviços que precisariam ser ajustados",
+      "tarefa": [
+        "Encontrar, mapear e estimar esforço para manutenção de cada aplicação ou serviço"
+      ],
+      "acoes": [
+        "Busca de fontes versionados",
+        "Análise das configurações de cada aplicação/serviço",
+        "Levantamento de como testar cada aplicação e serviço",
+        "Aplicar e testar em homologação a alteração"
+      ],
+      "resultados": [
+        "Projeto foi despriorizado após inicial estimativa de alto impacto em um volume muito grande de aplicações e serviços ainda em levantamento",
+        "Foi apresentado pelo time de infraestrutura outra solução que não seria necessário alterar o IP atual",
+        "Mapeamento e entendimento do time de sustentação sobre muitas aplicações legadas"
+      ]
+    },
+    {
+      "titulo": "Onboarding do novo modelo de Comunidade Integrada e do Build&Run",
+      "situacao": "- Integração dos times de projetos com os times de sustentação, sendo necessário incluir na rotina do time de projetos processos de atendimento de chamados, plantão, monitoração e governança do ambiente produtivo",
+      "tarefa": [
+        "Documentar backlog de sustentação",
+        "Capacitar time de projetos no atendimento de incidentes"
+      ],
+      "acoes": [
+        "Realização de acompanhamento em duplas com dev e sustentação nos atendimentos dos incidentes e no plantão",
+        "Passagem de conhecimento sobre problemas produtivos recorrentes"
+      ],
+      "resultados": [
+        "Times com rotinas de entregas e de sustentação em revezamento de 'rebatedor' e plantonista"
+      ]
+    }
+  ],
+  "2022": [
+    {
+      "titulo": "Abertura de Conta Corrente PJ pelo Cockpit Rede",
+      "situacao": "- Projeto com viés de experimentação do modelo comercial da Rede para dar autonomia ao Executivo para iniciar a abertura de Conta Corrente Itaú PJ no próprio Cockpit Rede",
+      "tarefa": [
+        "Participação de refinamentos técnicos",
+        "Desenvolvimento de telas e integrações",
+        "Acompanhamento de implantações e de validações",
+        "Revisão e refatoração de integrações",
+        "Discovery para evolução do MVP",
+        "Atendimento de incidentes"
+      ],
+      "acoes": [
+        "No acompanhamento do piloto foi identificado melhorias pontuais no MVP para ampliar o número de executivos que experimentavam a solução",
+        "Melhorado logs e monitorações das integrações para rápida identificação de problemas ou divergências"
+      ],
+      "resultados": [
+        "Solução estável e proporcionou escalar para a maioria dos executivos utilizarem",
+        "Com ajustes do modelo de atendimento foi encurtado o processo, não sendo necessário atuação do gerente do banco, dando mais autonomia para o executivo"
+      ]
+    },
+    {
+      "titulo": "Projetos de evolução do Credenciamento no Plano Padrão",
+      "situacao": [
+        "O credenciamento no plano padrão era tratado em um fluxo diferente de telas com informações, integrações e preenchimento específicos. As principais necessidades da área comercial foram abertas em 3 grandes épicos:",
+        "- Envio de mais de uma máquina no Credenciamento Plano Padrão",
+        "- Envio de mais de uma tecnologia no Credenciamento Plano Padrão",
+        "- Validação de elegibilidade de contratação de Flex no Credenciamento Plano Padrão"
+      ],
+      "tarefa": [
+        "Implementar no fluxo do plano padrão o preenchimento da quantidade de máquinas por tipo de tecnologia",
+        "Implementar a mesma consulta de elegibilidade da contratação de Flex do Ipricing",
+        "Homologar todas as integrações até a geração das Ordens de Serviço e do PV"
+      ],
+      "acoes": [
+        "Refinado as necessidades e elaborado uma estratégia de entregas curtas de simples implementação e em paralelo o discovery da total absorção do fluxo do plano padrão, dentro do processo de negociação do Ipricing 2.0",
+        "Foi entregue inicialmente a possibilidade apenas de informar mais de uma máquina para uma única tecnologia",
+        "Foi entregue na sequência a jornada unificada do Ipricing 2.0 considerando como as opções de oferta padrão, com ou sem Flex dependendo da elegibilidade e também com a possibilidade de escolher mais de um tipo de tecnologia e também informar mais de uma máquina por tecnologia na proposta"
+      ],
+      "resultados": [
+        "Otimização da operação logística, conseguindo realizar em D0 em boa parte dos atendimentos a entrega completa da proposta realizada pelo comercial",
+        "Otimização do operacional do Executivo que não necessita abrir novas solicitações de máquina após a proposta",
+        "Executivo informa corretamente ao cliente em tempo de contratação se possui a antecipação em D2",
+        "Agilidade na entrega das demandas, sendo os 3 grandes épicos resolvidos em duas entregas estratégicas",
+        "Padronização da jornada de negociação sem mais a necessidade de duas squads para cuidar do Credenciamento Cockpit"
+      ]
+    },
+    {
+      "titulo": "Credenciamento Pessoa Física",
+      "situacao": [
+        "Os executivos comerciais apenas tinham a opção de credenciamento de Pessoa Física com plano padrão através do envio por e-mail do formulário PCAE para a central de atendimento que enviava a proposta.",
+        "Somente após a efetivação do PV e atualização dos dados na Salesforce (D+2) o executivo poderia renegociar as taxas para o cliente PF no Ipricing 2.0"
+      ],
+      "tarefa": [
+        "Desenvolvimento de um novo fluxo para o PF",
+        "Homologação das integrações",
+        "Implantação com estratégia de expansão de usuários em ondas, com acompanhamento e validação de cada nova proposta"
+      ],
+      "acoes": [
+        "Buscado desenvolver um fluxo de telas componentizado com funcionalidades 'funcionais' na Salesforce (low-code) e com micro componentes de telas mais especializados",
+        "Atendimento em paralelo de outro épico envolvido para simplificação e redução de dados cadastrais da proposta de credenciamento"
+      ],
+      "resultados": [
+        "Entregue jornada no Cockpit integrada com a negociação do Ipricing, com todas funcionalidades já evoluídas do PJ como a solicitações de mais de uma máquina e mais de uma tecnologia, elegibilidade de Flex, ofertas e negociação de preço"
+      ]
+    },
+    {
+      "titulo": "Validação do Domicílio Bancário no canal",
+      "situacao": "- Necessidade de validar em tempo de preenchimento de proposta se os dados de domicílio bancário do Itaú, são válidos com uma conta apta para receber pagamentos",
+      "tarefa": [
+        "Desenhar arquitetura de integração",
+        "Refinar com UX como tratar as validações",
+        "Homologação integrada com squad do GE"
+      ],
+      "acoes": [
+        "Foi implementado na camada da AWS a integração entre o TV2 e o GE1, sendo apenas o TV2 responsável pela integração com a Salesforce que dispara a consulta"
+      ],
+      "resultados": [
+        "Projeto implantado em fases, com público de piloto controlado, com validação e acompanhamento gradual de cada fase, sendo feita expansão total após bastante validações com os executivos e de implementações de melhorias",
+        "Validação com regra de negócio dinâmica sendo o GE1 responsável por determinar se é um retorno de impedimento ou que aceita o domicílio com as mensagens de orientação",
+        "Pequena redução nos casos de suspensão bancária de clientes Itaú. Descoberto que a situação que torna a conta apta para recebimento não se resume em um status"
+      ]
+    },
+    {
+      "titulo": "Envio da Formalização do Credenciamento Pelo WhatsApp",
+      "situacao": "- O envio do link para o cliente realizar a formalização da proposta de credenciamento PJ é somente realizado por e-mail",
+      "tarefa": [
+        "Arquitetura de integração entre TV2, QI1 e EP8 do Itaú via ambiente interno",
+        "Autenticação do serviço do Itaú via STS",
+        "Liberação de rotas, regras de segurança e cadastros de aplicações no Itaú",
+        "Condicionar a funcionalidade para público controlado de piloto",
+        "Projeto correlacionado a evoluções da formalização que tem como objetivo dar mais clareza ao cliente do que está sendo contratado"
+      ],
+      "acoes": [
+        "Desenhado e alinhado uma arquitetura de integração interna entre AWS Rede e Gateway interno banco",
+        "Realizado os cadastros de aplicações de consumo no STS e do Gateway do banco",
+        "Por falta de time técnico e de priorização pela squad da sigla QI1, foi realizado todo desenvolvimento da parte da sigla de forma de 'innersource'",
+        "Integração desenvolvida com configurações parametrizadas para possibilitar o reuso por outros canais"
+      ],
+      "resultados": [
+        "Piloto em produção funcionou bem, mas foi pivotado devido à correlação deste projeto com as melhorias da formalização que não foram bem aceitas pelos executivos e com falta de processos automatizados que dependia de uma atuação operacional do time de TI para efetivar propostas que não tinham interação do cliente e também sobre formalização de propostas de agrupamento que não era coerente enviar valores e condições que não seriam as efetivadas para o cliente após os processos do agrupamento e equiparação de taxas"
+      ]
+    }
+  ],
+  "2023": [
+    {
+      "titulo": "Atualização do status do Credenciamento em Callback do WF",
+      "situacao": [
+        "Após o envio das propostas pelo executivo, o executivo precisava ficar consultando o status para saber se a proposta estava efetivada ou teve algum problema. Para os casos que tiveram algum problema não havia detalhes que orientassem o executivo sobre o que fazer, sendo necessário a abertura de incidente pelo executivo para análise e orientação ou tratativa da proposta",
+        "Alto volume de incidentes e problemas de propostas paradas, pendentes de processamento (status C)"
+      ],
+      "tarefa": [
+        "Implementar serviço que recebe o retorno do status da proposta, que é enviado pelo WF após o processamento",
+        "Mapeamento dos principais motivos de propostas que ficavam paradas por erros ou falhas",
+        "Refinamento de soluções de causa raiz para os problemas identificados"
+      ],
+      "acoes": [
+        "Implementado serviço de callback do WF para o TV2",
+        "Abertas histórias e priorizadas correções de causa raiz dos problemas das propostas"
+      ],
+      "resultados": [
+        "Rapidez no retorno da informação da situação da proposta para os executivos",
+        "Priorização de correções de causa raiz de validações e problemas que deixavam a proposta pendente"
+      ]
+    }
+  ],
+  "2024": [
+    {
+      "titulo": "Projeto de Agrupamento Comercial",
+      "situacao": [
+        "Automações legadas tinham um processo com SLA de até 10 dias para efetivar a taxa do contrato para o cliente",
+        "Processo com falhas e com muitas dependências manuais",
+        "Sem validação do arranjo dos participantes do grupo"
+      ],
+      "tarefa": [
+        "Discovery e desenho de solução técnica para viabilizar a modernização",
+        "Desenvolvimento de aplicação de validação de arranjo de participantes"
+      ],
+      "acoes": [
+        "Implementado e refinado solução para implementação do novo agrupamento Comercial junto ao time"
+      ],
+      "resultados": [
+        "Modernização do processo com validação e efetivação em tempo de proposta"
+      ]
+    },
+    {
+      "titulo": "Projeto de Entrega na Hora da Máquina pelo Executivo",
+      "situacao": "- Apenas era entregue a máquina após processo de abertura de Ordem de Serviço que era atendido apenas por técnicos",
+      "tarefa": [
+        "Viabilizar solução para validação do modelo de atendimento comercial onde era utilizada uma nova tecnologia de auto inicialização da máquina no ato da proposta"
+      ],
+      "acoes": [
+        "Implementado no primeiro semestre de 2024 um MVP para validação do modelo",
+        "Implementado no segundo semestre arquitetura definitiva para escolha do tipo de tecnologia e quantidade que pode ser entregue na hora pelo comercial"
+      ],
+      "resultados": [
+        "Velocidade e metas de ativação no ato do Credenciamento"
+      ]
+    },
+    {
+      "titulo": "Implementação do Likert nas Jornadas",
+      "situacao": "- Sem dados de avaliação das jornadas comerciais",
+      "tarefa": [
+        "Viabilizar a captura das informações de satisfação da jornada de forma controlada e reutilizável pelas outras jornadas"
+      ],
+      "acoes": [
+        "Desenhado solução técnica para padronizar a captura e validação de elegibilidade para captura da pesquisa",
+        "Elaborado POC no Quicksight de relatório de acompanhamento analítico"
+      ],
+      "resultados": [
+        "Visibilidade e criação de OKR de satisfação das jornadas"
+      ]
+    }
+  ],
+  "2025": [
+    {
+      "titulo": "Pipe Automática Comercial",
+      "situacao": "- Lista de atuação do executivo não tinha uma priorização inteligente para otimizar o tempo de planejamento do dia e da meta a ser atendida pelo executivo",
+      "tarefa": [
+        "Discovery e implementação de solução de viabilidade rápida para atender as dores e avaliar o modelo e metodologia do planejamento"
+      ],
+      "acoes": [
+        "Desenhado solução de contorno para processar a inteligência de priorização na própria Salesforce com processos batchs agendados"
+      ],
+      "resultados": [
+        "Aumento de mais de 15% no atingimento das metas e agilidade nos agendamentos e atendimentos aos clientes"
+      ]
+    }
+  ]
+}

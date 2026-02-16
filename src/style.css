@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+  
+  --color-brand-bg: #f5f2eb;
+  --color-brand-gold: #C5A059;
+  --color-brand-black: #1f1f1f;
+  
+  /* Adicionando extensões úteis com base no Style Guide */
+  --spacing-section: 100px;
+  --max-width-container: 900px;
+}
+
+:root {
+    /* Paleta "Silêncio e Elegância" - Fonte da Verdade */
+    --bg-color: #f5f2eb;
+    --text-primary: #1f1f1f;
+    --text-secondary: #555555;
+    --accent-color: #1C1C1C;
+    --border-color: #E5E5E5;
+    --gold-subtle: #C5A059;
+}
+
+/* Reset Minimalista e Estilos Recorrentes */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-inter);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-playfair);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+}
+
+section {
+    padding: var(--spacing-section) 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}

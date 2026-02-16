@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Maurício Issei</title>
+    <link href="./input.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .glass-panel {
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #30363d;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-gray-900 to-black">
+
+    <div class="glass-panel p-8 rounded-xl w-full max-w-md animate-fade-in">
+        <div class="text-center mb-8">
+            <div
+                class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/30">
+                <i class="fa-solid fa-user-shield text-2xl text-white"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-white">Acesso Administrativo</h1>
+            <p class="text-gray-400 text-sm mt-2">Gerencie seu CV dinâmico via GitHub</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="githubToken" class="block text-sm font-medium text-gray-300 mb-2">
+                    GitHub Personal Access Token
+                    <span class="text-xs text-gray-500 ml-1">(Escopo: repo)</span>
+                </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-brands fa-github text-gray-500"></i>
+                    </div>
+                    <input type="password" id="githubToken" required
+                        class="block w-full pl-10 pr-3 py-2.5 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        placeholder="ghp_...">
+                </div>
+            </div>
+
+            <div>
+                <label for="repoOwner" class="block text-sm font-medium text-gray-300 mb-2">Usuário GitHub</label>
+                <input type="text" id="repoOwner" required
+                    class="block w-full px-3 py-2.5 border border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    placeholder="ex: mauricioissei">
+            </div>
+
+            <div>
+                <label for="repoName" class="block text-sm font-medium text-gray-300 mb-2">Repositório</label>
+                <input type="text" id="repoName" required
+                    class="block w-full px-3 py-2.5 border border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    placeholder="ex: site-mauricio">
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input id="remember-me" type="checkbox"
+                        class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-700 rounded bg-gray-800">
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-400">
+                        Lembrar credenciais
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn"
+                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all transform hover:scale-[1.02]">
+                <span id="btnText">Entrar</span>
+                <i id="btnIcon" class="fa-solid fa-arrow-right ml-2 mt-0.5"></i>
+                <i id="btnSpinner" class="fa-solid fa-circle-notch fa-spin hidden"></i>
+            </button>
+        </form>
+
+        <div id="errorMessage"
+            class="mt-4 p-3 bg-red-900/50 border border-red-700 rounded-lg text-red-200 text-sm hidden flex items-center">
+            <i class="fa-solid fa-circle-exclamation mr-2"></i>
+            <span id="errorText"></span>
+        </div>
+    </div>
+
+    <script type="module">
+        import { GitHubService } from './js/github-service.js';
+        // Tenta importar config se existir (opcional)
+        let config = {};
+        try {
+            const module = await import('./config.js');
+            config = module.GITHUB_CONFIG || {};
+        } catch (e) {
+            console.log('Config não encontrada ou erro ao carregar');
+        }
+
+        const githubService = new GitHubService();
+        const loginForm = document.getElementById('loginForm');
+        const tokenInput = document.getElementById('githubToken');
+        const ownerInput = document.getElementById('repoOwner');
+        const repoInput = document.getElementById('repoName');
+        const rememberCheck = document.getElementById('remember-me');
+        const errorMessage = document.getElementById('errorMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const btnSpinner = document.getElementById('btnSpinner');
+
+        // Preencher campos se houver config ou localStorage
+        const savedAuth = JSON.parse(localStorage.getItem('admin_auth') || '{}');
+
+        if (savedAuth.token) {
+            tokenInput.value = savedAuth.token;
+            ownerInput.value = savedAuth.owner;
+            repoInput.value = savedAuth.repo;
+            rememberCheck.checked = true;
+        } else if (config.token) {
+            // Preenche com dados do config.js se disponível (fallback)
+            tokenInput.value = config.token;
+            ownerInput.value = config.username;
+            repoInput.value = config.repository;
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            setLoading(true);
+            hideError();
+
+            const token = tokenInput.value.trim();
+            const owner = ownerInput.value.trim();
+            const repo = repoInput.value.trim();
+
+            try {
+                // Validar token
+                const user = await githubService.validateToken(token);
+
+                // Salvar na sessão (obrigatório para funcionamento)
+                sessionStorage.setItem('github_token', token);
+                sessionStorage.setItem('repo_owner', owner);
+                sessionStorage.setItem('repo_name', repo);
+                sessionStorage.setItem('user_avatar', user.avatar_url);
+                sessionStorage.setItem('user_login', user.login);
+
+                // Salvar no localStorage se solicitado (opcional)
+                if (rememberCheck.checked) {
+                    localStorage.setItem('admin_auth', JSON.stringify({ token, owner, repo }));
+                } else {
+                    localStorage.removeItem('admin_auth');
+                }
+
+                // Redirecionar
+                window.location.href = 'admin-editor.html';
+
+            } catch (error) {
+                showError(error.message || 'Falha na autenticação. Verifique seu token.');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(isLoading) {
+            submitBtn.disabled = isLoading;
+            if (isLoading) {
+                btnText.textContent = 'Verificando...';
+                btnIcon.classList.add('hidden');
+                btnSpinner.classList.remove('hidden');
+                submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            } else {
+                btnText.textContent = 'Entrar';
+                btnIcon.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        }
+
+        function showError(msg) {
+            errorMessage.classList.remove('hidden');
+            document.getElementById('errorText').textContent = msg;
+        }
+
+        function hideError() {
+            errorMessage.classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>

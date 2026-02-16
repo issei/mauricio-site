@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico GitHub - Localizar cv.json</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            background: #0d1117;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 8px 12px;
+            border-radius: 4px;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        button {
+            background: #238636;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px 5px 5px 0;
+        }
+
+        button:hover {
+            background: #2ea043;
+        }
+
+        button:disabled {
+            background: #30363d;
+            cursor: not-allowed;
+        }
+
+        .error {
+            color: #f85149;
+        }
+
+        .success {
+            color: #3fb950;
+        }
+
+        .warning {
+            color: #d29922;
+        }
+
+        pre {
+            background: #0d1117;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            max-height: 400px;
+        }
+
+        .path-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: #0d1117;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #30363d;
+        }
+
+        .path-item:hover {
+            border-color: #58a6ff;
+        }
+
+        .path-item.found {
+            border-color: #3fb950;
+            background: rgba(63, 185, 80, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔍 Diagnóstico GitHub - Localizar cv.json</h1>
+
+    <div class="section">
+        <h2>1. Configuração</h2>
+        <label>GitHub Token:</label>
+        <input type="password" id="token" placeholder="ghp_...">
+
+        <label>Usuário GitHub:</label>
+        <input type="text" id="owner" value="issei">
+
+        <label>Nome do Repositório:</label>
+        <input type="text" id="repo" value="curriculo">
+
+        <button onclick="startDiagnostic()">🔍 Iniciar Diagnóstico</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script type="module">
+        window.diagnosticResults = {
+            token: null,
+            owner: null,
+            repo: null,
+            branches: [],
+            foundPaths: []
+        };
+
+        window.startDiagnostic = async function () {
+            const token = document.getElementById('token').value;
+            const owner = document.getElementById('owner').value;
+            const repo = document.getElementById('repo').value;
+            const results = document.getElementById('results');
+
+            if (!token || !owner || !repo) {
+                results.innerHTML = '<div class="section"><p class="error">❌ Preencha todos os campos</p></div>';
+                return;
+            }
+
+            window.diagnosticResults.token = token;
+            window.diagnosticResults.owner = owner;
+            window.diagnosticResults.repo = repo;
+
+            results.innerHTML = '<div class="section"><p>⏳ Executando diagnóstico...</p></div>';
+
+            try {
+                // Passo 1: Verificar acesso ao repositório
+                await checkRepoAccess(token, owner, repo, results);
+
+                // Passo 2: Listar branches
+                await listBranches(token, owner, repo, results);
+
+                // Passo 3: Procurar cv.json em diferentes locais
+                await searchForCvJson(token, owner, repo, results);
+
+            } catch (error) {
+                results.innerHTML += `<div class="section"><p class="error">❌ Erro: ${error.message}</p></div>`;
+            }
+        };
+
+        async function checkRepoAccess(token, owner, repo, resultsDiv) {
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = '<h2>2. Verificando Acesso ao Repositório</h2><p>⏳ Verificando...</p>';
+            resultsDiv.appendChild(section);
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Repositório não encontrado ou sem acesso (${response.status})`);
+                }
+
+                const data = await response.json();
+                section.innerHTML = `
+                    <h2>2. ✅ Repositório Encontrado</h2>
+                    <p><strong>Nome:</strong> ${data.full_name}</p>
+                    <p><strong>Branch Padrão:</strong> ${data.default_branch}</p>
+                    <p><strong>Privado:</strong> ${data.private ? 'Sim' : 'Não'}</p>
+                    <p><strong>URL:</strong> <a href="${data.html_url}" target="_blank" style="color: #58a6ff;">${data.html_url}</a></p>
+                `;
+
+                window.diagnosticResults.defaultBranch = data.default_branch;
+            } catch (error) {
+                section.innerHTML = `<h2>2. ❌ Erro ao Acessar Repositório</h2><p class="error">${error.message}</p>`;
+                throw error;
+            }
+        }
+
+        async function listBranches(token, owner, repo, resultsDiv) {
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = '<h2>3. Listando Branches</h2><p>⏳ Buscando...</p>';
+            resultsDiv.appendChild(section);
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/branches`, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Erro ao listar branches');
+                }
+
+                const branches = await response.json();
+                window.diagnosticResults.branches = branches.map(b => b.name);
+
+                section.innerHTML = `
+                    <h2>3. ✅ Branches Encontradas</h2>
+                    <p>Total: ${branches.length}</p>
+                    <ul>
+                        ${branches.map(b => `<li>${b.name}</li>`).join('')}
+                    </ul>
+                `;
+            } catch (error) {
+                section.innerHTML = `<h2>3. ⚠️ Aviso</h2><p class="warning">${error.message}</p>`;
+            }
+        }
+
+        async function searchForCvJson(token, owner, repo, resultsDiv) {
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = '<h2>4. Procurando cv.json</h2><p>⏳ Buscando em diferentes locais...</p>';
+            resultsDiv.appendChild(section);
+
+            const possiblePaths = [
+                'cv.json',
+                'src/cv.json',
+                'public/cv.json',
+                'data/cv.json',
+                'assets/cv.json',
+                'Curriculo.json',
+                'src/Curriculo.json'
+            ];
+
+            const branches = window.diagnosticResults.branches.length > 0
+                ? window.diagnosticResults.branches
+                : [window.diagnosticResults.defaultBranch || 'main', 'master'];
+
+            let foundFiles = [];
+
+            for (const branch of branches) {
+                for (const path of possiblePaths) {
+                    try {
+                        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`, {
+                            headers: {
+                                'Authorization': `token ${token}`,
+                                'Accept': 'application/vnd.github.v3+json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            foundFiles.push({
+                                path: path,
+                                branch: branch,
+                                size: data.size,
+                                sha: data.sha,
+                                download_url: data.download_url
+                            });
+                        }
+                    } catch (error) {
+                        // Ignora erros 404
+                    }
+                }
+            }
+
+            if (foundFiles.length > 0) {
+                section.innerHTML = `
+                    <h2>4. ✅ Arquivos JSON Encontrados!</h2>
+                    <p class="success">Encontrados ${foundFiles.length} arquivo(s):</p>
+                    ${foundFiles.map(file => `
+                        <div class="path-item found">
+                            <strong>📄 ${file.path}</strong><br>
+                            <small>Branch: ${file.branch} | Tamanho: ${(file.size / 1024).toFixed(2)} KB</small><br>
+                            <button onclick="testFile('${file.path}', '${file.branch}')">Testar Este Arquivo</button>
+                            <button onclick="copyConfig('${file.path}', '${file.branch}')">Copiar Configuração</button>
+                        </div>
+                    `).join('')}
+                `;
+                window.diagnosticResults.foundPaths = foundFiles;
+            } else {
+                section.innerHTML = `
+                    <h2>4. ❌ Nenhum Arquivo Encontrado</h2>
+                    <p class="error">Não foi possível encontrar cv.json nos seguintes locais:</p>
+                    <ul>${possiblePaths.map(p => `<li>${p}</li>`).join('')}</ul>
+                    <p class="warning">Sugestões:</p>
+                    <ul>
+                        <li>Verifique se o arquivo existe no repositório</li>
+                        <li>Confirme o nome exato do arquivo (case-sensitive)</li>
+                        <li>Use o botão abaixo para listar todos os arquivos</li>
+                    </ul>
+                    <button onclick="listAllFiles()">📂 Listar Todos os Arquivos do Repositório</button>
+                `;
+            }
+        }
+
+        window.testFile = async function (path, branch) {
+            const { token, owner, repo } = window.diagnosticResults;
+            const resultsDiv = document.getElementById('results');
+
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = `<h2>5. Testando ${path}</h2><p>⏳ Carregando...</p>`;
+            resultsDiv.appendChild(section);
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                const data = await response.json();
+                const content = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+
+                section.innerHTML = `
+                    <h2>5. ✅ Arquivo Carregado com Sucesso!</h2>
+                    <p class="success">Path: <code>${path}</code></p>
+                    <p class="success">Branch: <code>${branch}</code></p>
+                    <p>Nome: ${content.Nome || 'N/A'}</p>
+                    <p>Título: ${content.Titulo || 'N/A'}</p>
+                    <details>
+                        <summary>Ver JSON (primeiros 2000 caracteres)</summary>
+                        <pre>${JSON.stringify(content, null, 2).substring(0, 2000)}...</pre>
+                    </details>
+                `;
+            } catch (error) {
+                section.innerHTML = `<h2>5. ❌ Erro ao Testar</h2><p class="error">${error.message}</p>`;
+            }
+        };
+
+        window.copyConfig = function (path, branch) {
+            const { owner, repo } = window.diagnosticResults;
+            const config = `
+// Atualize o arquivo admin-ui.js com estas configurações:
+const REPO_CONFIG = {
+    owner: '${owner}',
+    repo: '${repo}',
+    branch: '${branch}',
+    filePath: '${path}'
+};
+            `.trim();
+
+            navigator.clipboard.writeText(config).then(() => {
+                alert('✅ Configuração copiada! Cole no admin-ui.js');
+            });
+        };
+
+        window.listAllFiles = async function () {
+            const { token, owner, repo, defaultBranch } = window.diagnosticResults;
+            const branch = defaultBranch || 'main';
+            const resultsDiv = document.getElementById('results');
+
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = `<h2>📂 Listando Arquivos da Raiz</h2><p>⏳ Carregando...</p>`;
+            resultsDiv.appendChild(section);
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                const files = await response.json();
+
+                section.innerHTML = `
+                    <h2>📂 Arquivos e Pastas na Raiz (${branch})</h2>
+                    <ul>
+                        ${files.map(f => `
+                            <li>
+                                ${f.type === 'dir' ? '📁' : '📄'} ${f.name}
+                                ${f.type === 'dir' ? `<button onclick="listDirectory('${f.path}', '${branch}')">Abrir</button>` : ''}
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            } catch (error) {
+                section.innerHTML = `<h2>❌ Erro</h2><p class="error">${error.message}</p>`;
+            }
+        };
+
+        window.listDirectory = async function (path, branch) {
+            const { token, owner, repo } = window.diagnosticResults;
+            const resultsDiv = document.getElementById('results');
+
+            const section = document.createElement('div');
+            section.className = 'section';
+            section.innerHTML = `<h2>📂 ${path}</h2><p>⏳ Carregando...</p>`;
+            resultsDiv.appendChild(section);
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`, {
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                const files = await response.json();
+
+                section.innerHTML = `
+                    <h2>📂 ${path}</h2>
+                    <ul>
+                        ${files.map(f => `
+                            <li>
+                                ${f.type === 'dir' ? '📁' : '📄'} ${f.name}
+                                ${f.name.endsWith('.json') ? `<button onclick="testFile('${f.path}', '${branch}')">Testar</button>` : ''}
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            } catch (error) {
+                section.innerHTML = `<h2>❌ Erro</h2><p class="error">${error.message}</p>`;
+            }
+        };
+    </script>
+</body>
+
+</html>
