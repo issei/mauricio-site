@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VSL - Tech Video</title>
-    <link href="./output.css" rel="stylesheet">
+    <link href="./input.css" rel="stylesheet">
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet">
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KQ9R3GV3');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
     <!-- End Google Tag Manager -->
-     <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-GEKLHZYVYX');
+        gtag('config', 'G-GEKLHZYVYX');
     </script>
 </head>
+
 <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
     <div class="container mx-auto p-4 max-w-4xl">
         <h1 class="text-3xl font-bold text-center mb-8">A Tecnologia do Futuro</h1>
@@ -37,7 +42,9 @@
             </video>
         </div>
         <div class="text-center mt-8">
-            <a href="#" id="cta-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-transform transform hover:scale-105" style="display: none;">
+            <a href="#" id="cta-button"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-transform transform hover:scale-105"
+                style="display: none;">
                 Quero Saber Mais!
             </a>
         </div>
@@ -66,12 +73,12 @@
 
         // Prevenir que o usuário avance ou retroceda o vídeo
         var lastTime = 0;
-        player.on('timeupdate', function(){
-            if(!player.seeking()){
+        player.on('timeupdate', function () {
+            if (!player.seeking()) {
                 lastTime = player.currentTime();
             }
         });
-        player.on('seeking', function(){
+        player.on('seeking', function () {
             var delta = player.currentTime() - lastTime;
             if (Math.abs(delta) > 0.01) {
                 console.log("Busca não permitida.");
@@ -79,7 +86,7 @@
             }
         });
 
-        player.on('play', function() {
+        player.on('play', function () {
             if (!played) {
                 console.log('Evento: video_play');
                 gtag('event', 'video_play', { 'video_title': 'VSL Principal' });
@@ -87,12 +94,12 @@
             }
         });
 
-        player.on('ended', function() {
+        player.on('ended', function () {
             console.log('Evento: video_ended');
             gtag('event', 'video_ended', { 'video_title': 'VSL Principal' });
         });
 
-        player.on('timeupdate', function() {
+        player.on('timeupdate', function () {
             var currentTime = player.currentTime();
             var duration = player.duration();
             var percent = (currentTime / duration) * 100;
@@ -115,7 +122,7 @@
                 gtag('event', 'video_progress', { 'video_title': 'VSL Principal', 'video_percent': 75 });
                 tracked75 = true;
             }
-            
+
             if (percent > 60) {
                 if (ctaButton.style.display === 'none') {
                     console.log('Ação: Mostrando botão CTA em 60%');
@@ -125,4 +132,5 @@
         });
     </script>
 </body>
+
 </html>

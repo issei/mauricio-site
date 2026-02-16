@@ -20,6 +20,7 @@ export default defineConfig({
   build: {
     outDir: '../dist',
     emptyOutDir: true,
+    target: 'esnext',
     rollupOptions: {
       input: htmlInput,
     },
