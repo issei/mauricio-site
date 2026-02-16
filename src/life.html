@@ -1,0 +1,2845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>A Jornada de Mauricio Issei | Narrativa Interativa em Pixel Art</title>
+    
+    <meta name="title" content="A Jornada de Mauricio Issei | Narrativa Interativa em Pixel Art">
+    <meta name="description" content="Explore a trajetória de vida e carreira de Mauricio Issei através de uma experiência interativa em Pixel Art. Uma viagem visual de 1982 aos dias de hoje: tecnologia, família e evolução.">
+    <meta name="keywords" content="Mauricio Issei, Portfólio Interativo, Pixel Art, Desenvolvedor Web, Storytelling, Javascript, Walking Simulator, Currículo Visual">
+    <meta name="author" content="Mauricio Issei">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mauricio.issei.com.br/life.html">
+    <meta property="og:title" content="Minha Jornada - A História de Mauricio Issei">
+    <meta property="og:description" content="Descubra minha história de uma forma diferente. Uma narrativa interativa em Pixel Art contando sobre carreira, vida e família. Clique para jogar.">
+    <meta property="og:image" content="https://mauricio.issei.com.br/fotos/og-share.jpg"> 
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mauricio.issei.com.br/life.html">
+    <meta property="twitter:title" content="A Jornada de Mauricio Issei | Narrativa Pixel Art">
+    <meta property="twitter:description" content="Uma experiência interativa contando minha história de vida e carreira através de Pixel Art e código.">
+    <meta property="twitter:image" content="https://mauricio.issei.com.br/fotos/og-share.jpg">
+
+    <meta name="theme-color" content="#1a1c2c">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-navbutton-color" content="#1a1c2c">
+
+    <link rel="canonical" href="https://mauricio.issei.com.br/life.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <link href="./output.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #1a1c2c;
+            --ui-bg: #2b2b45;
+            --text-color: #f4f4f4;
+            --accent: #ffcd75;
+            --font-pixel: 'VT323', monospace;
+        }
+
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+            font-family: var(--font-pixel);
+            color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        /* When running on touch devices allow vertical scrolling so mobile users can scroll through frames */
+        body.is-touch {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            /* fallback */
+            height: 100dvh;
+            /* dynamic viewport height for mobile browsers */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0d0e15;
+        }
+
+        canvas {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: crisp-edges;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background:
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 10;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            animation: scanline-drift 8s linear infinite;
+        }
+
+        /* Touch / accessibility improvements */
+        .d-pad-btn {
+            min-width: 44px;
+            min-height: 44px;
+            padding: 8px 10px;
+            font-size: 20px;
+        }
+
+        #narrative-text {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .memory-image-content {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            max-height: 45vh;
+            margin: 8px auto;
+        }
+
+        /* Convert hover reveals into tap-to-toggle on touch devices */
+        .hover-reveal {
+            display: none;
+        }
+
+        .hoverable:hover .hover-reveal {
+            display: block;
+        }
+
+        .is-touch .hover-reveal {
+            display: none;
+        }
+
+        .hoverable.revealed .hover-reveal {
+            display: block;
+        }
+
+        /* Small audio button in HUD */
+        #btn-audio {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 6px 8px;
+            border-radius: 6px;
+        }
+
+        @keyframes scanline-drift {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(2px);
+            }
+        }
+
+        .ui-layer {
+            position: absolute;
+            z-index: 20;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .dialogue-box {
+            background: rgba(26, 28, 44, 0.95);
+            border: 2px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 4px;
+            max-width: 800px;
+            width: 90%;
+            margin: 8px auto 20px auto;
+            pointer-events: auto;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .dialogue-box.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .story-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid #5d6fa2;
+            image-rendering: pixelated;
+            flex-shrink: 0;
+            background: #000;
+            transition: opacity 0.3s ease;
+        }
+
+        .story-image.loading {
+            opacity: 0.3;
+        }
+
+        .touch-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 30;
+            display: none;
+            gap: 10px;
+            pointer-events: auto;
+        }
+
+        .d-pad-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            touch-action: manipulation;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .d-pad-btn::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            bottom: -20px;
+            left: -20px;
+            right: -20px;
+            background: transparent;
+            z-index: -1;
+        }
+
+        .d-pad-btn:active {
+            background: var(--accent);
+            color: black;
+            transform: scale(0.95);
+        }
+
+        .fade-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 50;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .touch-controls {
+                display: flex;
+                left: 20px;
+                right: auto;
+                bottom: 20px;
+            }
+
+            .dialogue-box {
+                /* Mantendo as configs anteriores, mas garantindo posição */
+                background: rgba(26, 28, 44, 0.95);
+                border-top: 2px solid var(--accent);
+                padding: 1rem;
+                width: 100%;
+                max-width: 100%;
+                /* Ocupa largura total agora */
+                margin: 0;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-radius: 0;
+                /* Reto em baixo */
+                text-align: center;
+                pointer-events: none;
+                /* Remova a transição de hide se quiser que seja instantâneo, ou mantenha */
+            }
+
+            .story-image {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .dialogue-box {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .ui-layer {
+                padding: 10px;
+            }
+        }
+
+        /* Ajuste para telas pequenas */
+        @media (max-height: 500px) {
+            .memory-frame-container {
+                display: none !important;
+            }
+
+            .text-3xl {
+                font-size: 1.2rem;
+            }
+
+            /* Diminui título */
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Container da Imagem (inline ao canvas) */
+        .stage {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stage-inner {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            backdrop-filter: blur(2px);
+        }
+
+        .memory-frame-container {
+            display: none !important;
+            /* removido bloco inválido de .memory-frame-container */
+        }
+
+        /* Tail for speech-bubble effect (outer border) */
+        .memory-frame-container::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -22px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 12px solid #5d6fa2;
+            /* border color */
+            pointer-events: none;
+        }
+
+        /* Inner tail to match background (creates border effect) */
+        .memory-frame-container::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -18px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid rgba(0, 0, 0, 0.9);
+            /* inner fill */
+            pointer-events: none;
+        }
+
+        .title-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .title-container h1,
+        .title-container span {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Story section centered under the canvas */
+        .story-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .story-section .dialogue-box {
+            max-width: 920px;
+            width: 90%;
+        }
+
+        /* Responsive refinements re-added */
+        @media (max-width: 1024px) {
+            .memory-frame-container {
+                right: 18px;
+                bottom: 18px;
+                width: min(50vw, 420px);
+            }
+
+            canvas {
+                width: min(85vw, 800px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dialogue-box {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .dialogue-box .flex-1 {
+                text-align: center;
+            }
+
+            .story-image {
+                width: 80px;
+                height: 80px;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .d-pad-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+
+            .touch-controls {
+                left: 12px;
+                bottom: 12px;
+            }
+
+            .hud-panel {
+                padding: 8px;
+            }
+
+            .memory-label {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            canvas {
+                width: 100vw;
+                height: auto;
+                box-shadow: none;
+                max-height: 45vh;
+                /* keep canvas visible without eating entire screen */
+            }
+
+            /* Mobile: place memory frame inline below canvas, full-width friendly */
+            .memory-frame-container {
+                position: static;
+                margin: 10px auto 0;
+                left: auto;
+                top: auto;
+                transform: none;
+                width: calc(94%);
+                aspect-ratio: auto;
+                height: auto;
+                padding: 8px;
+                box-shadow: none;
+                border-radius: 6px;
+                z-index: 5;
+            }
+
+            .memory-image-content {
+                width: 100%;
+                height: auto;
+                max-height: 100vh;
+                opacity: 1 !important;
+            }
+
+            .dialogue-box {
+                width: calc(100% - 24px);
+                margin: 8px auto;
+                padding: 12px;
+                border-radius: 6px;
+            }
+
+            .left-hud {
+                display: block;
+            }
+
+            .title-row {
+                align-items: center;
+                gap: 8px;
+            }
+
+            .hud-panel {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .ui-layer {
+                padding: 12px;
+            }
+
+            .touch-controls {
+                display: none;
+            }
+
+            #narrative-text {
+                font-size: 16px !important;
+            }
+
+            #game-container {
+                height: auto;
+                min-height: 100dvh;
+                padding-bottom: calc(env(safe-area-inset-bottom) + 12px);
+            }
+        }
+
+        .memory-label {
+            font-size: 12px;
+            color: #ffcd75;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .memory-image-content {
+            width: 100%;
+            height: 100%;
+            object-fit: content;
+            background-color: #000;
+            transition: opacity 0.1s linear;
+            opacity: 0;
+            /* Transição suave */
+        }
+
+        /* Progress bar abaixo da imagem (affordance de progresso) */
+        .progress-container {
+            width: 80%;
+            max-width: 480px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 12px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+        }
+
+        /* Fallback: helper to hide progress if needed */
+        .progress-container.hidden {
+            display: none !important;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffcd75 0%, #ffd700 60%, #ff8c00 100%);
+            transition: width 120ms linear, box-shadow 120ms linear;
+            box-shadow: 0 0 6px rgba(255, 205, 117, 0);
+        }
+
+        .progress-fill.pulse {
+            box-shadow: 0 0 10px rgba(255, 205, 117, 0.45);
+        }
+
+        .progress-label {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #ffefc2;
+            text-align: center;
+            text-shadow: 0 1px 0 #000;
+            letter-spacing: 1px;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .progress-container {
+                width: 92%;
+                height: 14px;
+            }
+
+            .progress-label {
+                font-size: 11px;
+            }
+        }
+
+        /* HUD Panel (centrado horizontalmente e posicionado abaixo de #story-section) */
+        .hud-panel {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: auto;
+            bottom: auto;
+            max-width: 920px;
+            width: calc(100% - 40px);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: center;
+            /* centraliza conteúdo horizontalmente */
+            align-items: center;
+            pointer-events: auto;
+            /* allow interaction with audio button and hints */
+            z-index: 25;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+            background: rgba(26, 28, 44, 0.55);
+            backdrop-filter: blur(4px);
+            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+        }
+
+        .left-hud {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Loading screen overlay */
+        .loading-screen {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 60;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.7));
+            color: var(--text-color);
+            pointer-events: auto;
+        }
+
+        .loading-content {
+            width: 80%;
+            max-width: 480px;
+            text-align: center;
+        }
+
+        .loading-text {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ffcd75 0%, #ffd700 60%, #ff8c00 100%);
+            transition: width 300ms linear;
+        }
+
+        /* Ajustes específicos para dispositivos móveis */
+        @media (max-width: 640px) {
+            .title-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .left-hud {
+                /* Oculta a parte esquerda da HUD em dispositivos móveis */
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main id="game-container" class="scanlines" role="main">
+        <div class="stage" id="stage">
+            <!-- Title moved inside stage so it sits directly above the canvas and is centered -->
+            <div class="title-container" aria-hidden="false">
+                <h1 id="phase-title" class="text-3xl text-yellow-400 mb-1">Carregando...</h1>
+                <span id="phase-period"
+                    class="text-sm opacity-80 uppercase tracking-widest border-b border-yellow-400/30 pb-1">...</span>
+            </div>
+            <div class="stage-inner">
+                <canvas id="gameCanvas" role="img"
+                    aria-label="Cenário interativo da jornada - parte visual da narrativa" tabindex="0"></canvas>
+
+                <section id="memory-frame" class="memory-frame-container" aria-labelledby="memory-label">
+                    <div id="memory-label" class="memory-label">RECUPERANDO MEMÓRIA...</div>
+                    <img id="memory-img" src="" alt="Imagem de memória" class="memory-image-content" loading="lazy"
+                        decoding="async">
+                    <div class="progress-container hidden" id="progress-container">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- story-section abaixo do canvas, centralizada -->
+            <section id="story-section" class="story-section" aria-labelledby="phase-title">
+                <div id="dialogue-box" class="dialogue-box">
+                    <div class="flex-1 text-left">
+                        <div id="narrative-text" class="text-2xl leading-relaxed text-gray-100" tabindex="0"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+        <!-- Splash / Loading Screen -->
+        <div id="loading-screen" class="loading-screen" role="status" aria-live="polite"
+            aria-label="Tela de carregamento">
+            <div class="loading-content">
+                <div class="loading-text">Carregando...</div>
+                <div class="loading-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div id="loading-progress" class="loading-progress"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-layer">
+            <header id="hud-panel" class="hud-panel" role="banner" aria-label="HUD do jogo">
+                <div id="hud-hint" class="hud-hint text-right text-sm opacity-70 hidden md:block">Use <kbd
+                        class="border border-white/20 px-2 py-1 rounded">←</kbd> <kbd
+                        class="border border-white/20 px-2 py-1 rounded">→</kbd></div>
+            </header>
+            <nav class="touch-controls" aria-label="Controles táteis" role="navigation">
+                <button class="d-pad-btn" id="btn-left" aria-label="Mover para esquerda" tabindex="0">←</button>
+                <button class="d-pad-btn" id="btn-right" aria-label="Mover para direita" tabindex="0">→</button>
+            </nav>
+            <div role="status" aria-live="assertive" id="a11y-announcer" class="sr-only"></div>
+        </div>
+
+        <div id="fadeOverlay" class="fade-overlay" aria-hidden="true" style="opacity:0;pointer-events:none"></div>
+    </main>
+
+    <script>
+        // ============================================================================
+        // CONFIGURAÇÃO DE CONTEÚDO (Único ponto de edição para não-técnicos)
+        // ============================================================================
+        const STORY_DATA = [
+            {
+                id: "birth",
+                order: 1,
+                period: "1982 - O Início",
+                title: "A Origem",
+                text: "[Fase 1/11] Minha história começa em 1982, o ponto de partida de toda minha jornada.",
+                image: {
+                    src: "fotos/1982.jpeg",
+                    alt: "Foto de Issei bebê em 1982"
+                },
+                theme: { sky: "#AEEEEE", ground: "#ADD8E6" } // Tons pastéis de bebê
+            },
+            {
+                id: "childhood",
+                order: 2,
+                period: "Anos 80 - A Infância",
+                title: "Hanna Barbera e Tokusatsus",
+                text: "[Fase 2/11] Cresci mergulhado na cultura pop dos anos 80, entre Hanna Barbera e muitos Tokusatsus.",
+                image: {
+                    src: "fotos/infancia.png",
+                    alt: "Criança nos anos 80 fã de Hanna Barbera e muitos Tokusatsus"
+                },
+                theme: { sky: "#FF69B4", ground: "#FFFF00" } // Cores vibrantes anos 80
+            },
+            {
+                id: "first_job",
+                order: 3,
+                period: "1998 - Primeiro Emprego",
+                title: "Auditor no Eldorado",
+                text: "[Fase 3/11] Aos 16 anos, cursei Processamento de Dados e tive minha primeira experiência profissional trabalhando como auditor no Shopping Eldorado.",
+                image: {
+                    src: "fotos/eldorado.jpg",
+                    alt: "Fachada ou interior do Shopping Eldorado no fim dos anos 90"
+                },
+                theme: { sky: "#708090", ground: "#D3D3D3" } // Tons urbanos/concreto
+            },
+            {
+                id: "callcenter",
+                order: 4,
+                period: "2000 a 2003 - Suporte",
+                title: "A Era da Conexão",
+                text: "[Fase 4/11] Trabalhei no suporte técnico de um provedor de internet, ajudando pessoas a se conectarem em um mundo novo. Onde aprendi a ouvir a dor de usuários e resolver problemas sob pressão. O início da minha jornada com tecnologia.",
+                image: {
+                    src: "fotos/callcenter.jpg",
+                    alt: "Ambiente de callcenter com computadores antigos"
+                },
+                theme: { sky: "#000080", ground: "#4682B4" } // Tons de azul corporativo/tech
+            },
+            {
+                id: "university",
+                order: 5,
+                period: "2001 a 2005 - Formação",
+                title: "Formado em Sistemas de Informação",
+                text: "[Fase 5/11] Após 5 anos de dedicação acadêmica, me formei como Bacharel em Sistemas de Informação no Mackenzie.",
+                image: {
+                    src: "fotos/formatura.jpg",
+                    alt: "Foto da formatura ou do campus do Mackenzie"
+                },
+                theme: { sky: "#CC0000", ground: "#FFFFFF" } // Cores do Mackenzie (Vermelho e Branco)
+            },
+            {
+                id: "dev_start",
+                order: 6,
+                period: "2003 - O Código",
+                title: "Carreira de Programador",
+                text: "[Fase 6/11] Onde a paixão virou profissão. Iniciei oficialmente minha carreira desenvolvendo software.",
+                image: {
+                    src: "fotos/programa.jpg",
+                    alt: "Tela de código ou setup de trabalho antigo"
+                },
+                theme: { sky: "#000000", ground: "#00FF00" } // Estilo Matrix/Terminal
+            },
+            {
+                id: "wedding",
+                order: 7,
+                period: "2011 - O Casamento",
+                title: "O Grande Dia",
+                text: "[Fase 7/11] Um novo capítulo de amor. Em 2009 conheci o amor de minha vida e 2011 oficializamos nossa união.",
+                image: {
+                    src: "fotos/casamento.jpg",
+                    alt: "Foto do casamento saindo de um baú"
+                },
+                theme: { sky: "#FFD700", ground: "#FFFACD" } // Dourado e creme (Casamento)
+            },
+            {
+                id: "daughter",
+                order: 8,
+                period: "2012 - Primogênita",
+                title: "Nasce minha Filha",
+                text: "[Fase 8/11] Em 2012 a vida ganhou novas cores e significados com a chegada da minha primeira filha.",
+                image: {
+                    src: "fotos/filha.jpeg",
+                    alt: "Foto da primeira filha bebê"
+                },
+                theme: { sky: "#FFB6C1", ground: "#FFC0CB" } // Rosa suave
+            },
+            {
+                id: "twins",
+                order: 9,
+                period: "2016 - Dose Dupla",
+                title: "Os gemeos",
+                text: "[Fase 9/11] A família cresceu exponencialmente com a alegria em dobro dos gêmeos.",
+                image: {
+                    src: "fotos/gemeos.jpeg",
+                    alt: "Foto dos gêmeos bebês"
+                },
+                theme: { sky: "#87CEEB", ground: "#4169E1" } // Azul vibrante
+            },
+            {
+                id: "changes",
+                order: 10,
+                period: "2017/2018 - Mudanças",
+                title: "Novo Visual, Nova Casa",
+                text: "[Fase 10/11] em 2017, fiquei careca, e decidi saí da vida de consultoria e em 2018 iniciei minha jornada na Rede, transformando saúde pessoal e carreira.",
+                image: {
+                    src: "fotos/careca.jpeg",
+                    alt: "Foto com visual careca com os filhos"
+                },
+                theme: { sky: "#FF8C00", ground: "#2F4F4F" } // Laranja (Rede) e cinza escuro
+            },
+            {
+                id: "current",
+                order: 11,
+                period: "Hoje - Legado",
+                title: "Família e Trabalho",
+                text: "[Fase 11/11] Sigo na Rede até hoje, focado em construir e aproveitar essa família linda que construí. A caminhada continua. Novas fases ainda serão vividas...",
+                image: {
+                    src: "fotos/familia.jpeg",
+                    alt: "Foto atual da família completa"
+                },
+                theme: { sky: "#E0FFFF", ground: "#32CD32" } // Cores de paz e natureza/família
+            }
+        ];
+
+        // ============================================================================
+        // PRELOADER: carrega imagens listadas em STORY_DATA e atualiza a splash
+        // ============================================================================
+        (function setupPreloader() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const loadingProgress = document.getElementById('loading-progress');
+            const loadingBar = document.querySelector('.loading-bar');
+            const a11yAnnouncer = document.getElementById('a11y-announcer');
+
+            function setProgress(percent) {
+                const pct = Math.round(percent);
+                if (loadingProgress) loadingProgress.style.width = pct + '%';
+                if (loadingBar) loadingBar.setAttribute('aria-valuenow', pct);
+            }
+
+            function hideLoadingScreen() {
+                if (!loadingScreen) return;
+                loadingScreen.setAttribute('aria-hidden', 'true');
+                loadingScreen.style.transition = 'opacity 360ms ease';
+                loadingScreen.style.opacity = '0';
+                if (a11yAnnouncer) a11yAnnouncer.textContent = 'Carregamento concluído.';
+                setTimeout(() => { loadingScreen.style.display = 'none'; }, 380);
+                // focaliza o canvas para permitir interação imediata
+                const canvas = document.getElementById('gameCanvas');
+                if (canvas) canvas.focus();
+            }
+
+            function preloadImages(items, onProgress, onComplete) {
+                // preload only the first two images to reduce initial payload; remaining images will be loaded lazily
+                const srcs = items.slice(0, 2).map(s => s.image && s.image.src).filter(Boolean);
+                if (srcs.length === 0) { onProgress(100); onComplete(); return; }
+
+                let loaded = 0;
+                const total = srcs.length;
+
+                srcs.forEach(src => {
+                    const img = new Image();
+                    img.onload = img.onerror = () => {
+                        loaded += 1;
+                        onProgress((loaded / total) * 100);
+                        if (loaded === total) onComplete();
+                    };
+                    // start load
+                    img.src = src;
+                });
+            }
+
+            // Inicia preloading e atualiza a UI
+            try {
+                preloadImages(STORY_DATA, setProgress, hideLoadingScreen);
+            } catch (e) {
+                // Em erro, garante que a splash suma e anuncia falha
+                if (a11yAnnouncer) a11yAnnouncer.textContent = 'Falha ao carregar recursos, iniciando.';
+                hideLoadingScreen();
+            }
+        })();
+
+        // small helper to lazily preload a single image (used when entering a phase)
+        function preloadImage(src) {
+            if (!src) return;
+            try {
+                const img = new Image();
+                img.onload = () => { /* cached */ };
+                img.onerror = () => { /* ignore */ };
+                img.src = src;
+            } catch (e) { /* ignore */ }
+        }
+
+        // ============================================================================
+        // CONSTANTES DE CONFIGURAÇÃO
+        // ============================================================================
+        const CONFIG = {
+            WORLD: {
+                WIDTH: 740,
+                HEIGHT: 380,
+                GROUND_Y: 248,
+                PIXEL_RATIO: window.devicePixelRatio || 1
+            },
+            PLAYER: {
+                MAX_SPEED: 1.5,
+                ACCELERATION: 0.1,
+                FRICTION: 0.85,
+                ANIM_FPS: 220,
+                BOB_INTENSITY: 2.8,
+                HAIR_INERTIA: 0.3
+            },
+            CAMERA: {
+                FOLLOW_RATIO: 1 / 3,
+                LERP_FACTOR: 0.1
+            },
+            ENV: {
+                WIND_SPEED: 2.5,
+                SKYLINE_LAYERS: [0.08, 0.15, 0.25],
+                CLOUD_LAYERS: 3,
+                CITY_WINDOW_CHANCE: 0.35
+            },
+            STORY: {
+                PHASE_LENGTH: 700,
+                GOAL_POSITION: 680,
+                FADE_DURATION: 500,
+                TRANSITION_DURATION: 1000
+            }
+        };
+
+        // ============================================================================
+        // UTILITÁRIOS
+        // ============================================================================
+        const Utils = {
+            adjustColor(color, amount) {
+                return '#' + color.replace(/^#/, '').replace(/../g, c =>
+                    ('0' + Math.min(255, Math.max(0, parseInt(c, 16) + amount)).toString(16)).substr(-2)
+                );
+            },
+
+            seededRandom(seed) {
+                const x = Math.sin(seed++) * 10000;
+                return x - Math.floor(x);
+            },
+
+            clamp(value, min, max) {
+                return Math.min(Math.max(value, min), max);
+            }
+        };
+
+        // ============================================================================
+        // SISTEMA DE TEMPO (GameTime)
+        // Centraliza elapsed/delta para animações e atualização
+        // ============================================================================
+        class GameTime {
+            constructor() {
+                this.elapsed = 0; // ms desde o início do jogo
+                this.delta = 16;   // ms entre frames
+                this._last = 0;
+            }
+
+            update(now) {
+                if (!this._last) this._last = now;
+                this.delta = Math.min(50, now - this._last);
+                this.elapsed += this.delta;
+                this._last = now;
+            }
+
+            // convenience
+            getElapsed() { return this.elapsed; }
+        }
+
+
+        // ============================================================================
+        // GERENCIADOR DE ENTRADA (eixo único)
+        // Normaliza teclado + touch para um eixo [-1..1]
+        // ============================================================================
+        class InputManager {
+            constructor() {
+                this.keys = { left: false, right: false };
+                this.setupKeyboard();
+                this.setupTouch();
+            }
+
+            setupKeyboard() {
+                const handleKey = (e, pressed) => {
+                    if (['ArrowRight', 'd', 'D'].includes(e.key)) { this.keys.right = pressed; e.preventDefault(); }
+                    if (['ArrowLeft', 'a', 'A'].includes(e.key)) { this.keys.left = pressed; e.preventDefault(); }
+                };
+                window.addEventListener('keydown', e => handleKey(e, true));
+                window.addEventListener('keyup', e => handleKey(e, false));
+            }
+
+            setupTouch() {
+                const createTouchHandler = (direction, pressed) => (e) => { e.preventDefault(); this.keys[direction] = pressed; };
+                const btnLeft = document.getElementById('btn-left');
+                const btnRight = document.getElementById('btn-right');
+                ['touchstart', 'mousedown'].forEach(ev => { btnLeft?.addEventListener(ev, createTouchHandler('left', true)); btnRight?.addEventListener(ev, createTouchHandler('right', true)); });
+                ['touchend', 'mouseup', 'touchcancel'].forEach(ev => { btnLeft?.addEventListener(ev, createTouchHandler('left', false)); btnRight?.addEventListener(ev, createTouchHandler('right', false)); });
+
+                // Canvas pointer/touch support: touch or click on left half -> move left, right half -> move right
+                const canvas = document.getElementById('gameCanvas');
+                if (canvas) {
+                    const setDirectionFromClientX = (clientX) => {
+                        const rect = canvas.getBoundingClientRect();
+                        const x = clientX - rect.left;
+                        if (x < rect.width / 2) {
+                            this.keys.left = true; this.keys.right = false;
+                        } else {
+                            this.keys.right = true; this.keys.left = false;
+                        }
+                    };
+
+                    const onPointerDown = (e) => {
+                        if (e.pointerType === 'mouse' && e.button !== 0) return; // only left click
+                        if (e.cancelable) e.preventDefault();
+                        setDirectionFromClientX(e.clientX);
+                        // capture pointer so we keep receiving move/up events
+                        try { canvas.setPointerCapture?.(e.pointerId); } catch (err) { }
+                    };
+
+                    const onPointerMove = (e) => {
+                        if (e.buttons === 0 && e.pointerType === 'mouse') return;
+                        setDirectionFromClientX(e.clientX);
+                    };
+
+                    const onPointerUp = (e) => {
+                        if (e.cancelable) e.preventDefault();
+                        this.keys.left = false; this.keys.right = false;
+                        try { canvas.releasePointerCapture?.(e.pointerId); } catch (err) { }
+                    };
+
+                    canvas.addEventListener('pointerdown', onPointerDown, { passive: false });
+                    canvas.addEventListener('pointermove', onPointerMove, { passive: false });
+                    ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => canvas.addEventListener(ev, onPointerUp, { passive: false }));
+                }
+            }
+
+            // retorna -1 (esquerda), 0 (parado), 1 (direita)
+            getAxisX() {
+                return (this.keys.right ? 1 : 0) - (this.keys.left ? 1 : 0);
+            }
+
+            isMoving() { return this.keys.left || this.keys.right; }
+        }
+
+        class ParticlePool {
+            constructor(size) {
+                this.pool = [];
+                this.size = size;
+
+                // Inicializa o pool com partículas inativas
+                for (let i = 0; i < size; i++) {
+                    this.pool.push({
+                        x: 0,
+                        y: 0,
+                        vx: 0,
+                        vy: 0,
+                        life: 0,
+                        color: '#FFFFFF',
+                        active: false
+                    });
+                }
+            }
+
+            // Obtém uma partícula inativa do pool
+            get() {
+                for (const particle of this.pool) {
+                    if (!particle.active) {
+                        particle.active = true;
+                        return particle;
+                    }
+                }
+                return null; // Nenhuma partícula disponível
+            }
+
+            // Libera uma partícula para reutilização
+            release(particle) {
+                particle.active = false;
+            }
+        }
+
+        class ParticleSystem {
+            constructor(poolSize = 100) {
+                this.particlePool = new ParticlePool(poolSize);
+            }
+
+            // Emite uma partícula reutilizando do pool
+            emit(x, y, color) {
+                const particle = this.particlePool.get();
+                if (particle) {
+                    particle.x = x;
+                    particle.y = y;
+                    particle.vx = (Math.random() - 0.5) * 2; // Velocidade aleatória
+                    particle.vy = (Math.random() - 0.5) * 2;
+                    particle.life = 1000; // Vida útil em ms
+                    particle.color = color;
+                }
+            }
+
+            update(delta) {
+                for (const particle of this.particlePool.pool) {
+                    if (particle.active) {
+                        particle.x += particle.vx * delta * 0.1;
+                        particle.y += particle.vy * delta * 0.1;
+                        particle.life -= delta;
+
+                        if (particle.life <= 0) {
+                            this.particlePool.release(particle);
+                        }
+                    }
+                }
+            }
+
+            draw(ctx) {
+                for (const particle of this.particlePool.pool) {
+                    if (particle.active) {
+                        ctx.fillStyle = particle.color;
+                        ctx.fillRect(Math.floor(particle.x), Math.floor(particle.y), 2, 2);
+                    }
+                }
+            }
+        }
+
+        // ============================================================================
+        // RENDERIZADOR
+        // ============================================================================
+        class Renderer {
+            // NOVO: Desenha a foto de memória integrada ao background
+            drawMemoryPhoto(image, loaded, progress, canvasWidth, groundY) {
+                if (!loaded || progress <= 0) return;
+
+                const ctx = this.ctx;
+                ctx.save();
+
+                // ═══════════════════════════════════════════════════════════
+                // 1. CÁLCULO DE DIMENSÕES (Expansão Total do Background)
+                // ═══════════════════════════════════════════════════════════
+
+                // Área útil do horizonte (do topo até o chão, deixando espaço para UI)
+                const horizonTop = 2; // margem superior (abaixo das nuvens)
+                const horizonBottom = groundY - 50; // margem inferior (acima do chão)
+                const availableHeight = horizonBottom - horizonTop;
+
+                // Calcular dimensões mantendo aspect ratio
+                const aspectRatio = image.height / image.width;
+
+                // ESTRATÉGIA: Preencher a LARGURA TOTAL e ajustar altura proporcionalmente
+                let targetWidth = canvasWidth * 0.95; // 95% da largura (margem mínima)
+                let targetHeight = targetWidth * aspectRatio;
+
+                // Se a altura calculada ultrapassar o espaço disponível, ajustar pela altura
+                if (targetHeight > availableHeight) {
+                    targetHeight = availableHeight;
+                    targetWidth = targetHeight / aspectRatio;
+                }
+
+                // ═══════════════════════════════════════════════════════════
+                // 2. POSICIONAMENTO CENTRALIZADO NO HORIZONTE
+                // ═══════════════════════════════════════════════════════════
+                const x = (canvasWidth - targetWidth) / 2;
+                const y = horizonTop + ((availableHeight - targetHeight) / 2); // Centraliza verticalmente
+
+                // ═══════════════════════════════════════════════════════════
+                // 3. EFEITOS PROGRESSIVOS OTIMIZADOS
+                // ═══════════════════════════════════════════════════════════
+                const easedProgress = this.easeInOutCubic(progress);
+
+                // A. OPACIDADE (0 → 1)
+                ctx.globalAlpha = easedProgress;
+
+                // B. BLUR REDUZIDO (Apenas quando necessário)
+                // Blur muito intenso destrói a resolução - usar apenas no início
+                const blurAmount = progress < 0.1
+                    ? (1 - (progress / 0.3)) * 8  // Blur máximo de 8px nos primeiros 30%
+                    : 0;                           // Sem blur após 30%
+
+                if (blurAmount > 0) {
+                    ctx.filter = `blur(${blurAmount}px)`;
+                }
+
+                // C. ESCALA SUTIL (Zoom in discreto)
+                const scale = 0.98 + (easedProgress * 0.02); // 98% → 100%
+                const scaledWidth = targetWidth * scale;
+                const scaledHeight = targetHeight * scale;
+                const scaledX = x - ((scaledWidth - targetWidth) / 2);
+                const scaledY = y - ((scaledHeight - targetHeight) / 2);
+
+                // ═══════════════════════════════════════════════════════════
+                // 4. VINHETA ATMOSFÉRICA (Integração com o Ambiente)
+                // ═══════════════════════════════════════════════════════════
+
+                // Gradiente de borda para "fundir" com o céu
+                const vignetteGradient = ctx.createRadialGradient(
+                    canvasWidth / 2, y + (scaledHeight / 2), // centro da imagem
+                    Math.min(scaledWidth, scaledHeight) * 0.3, // raio interno
+                    canvasWidth / 2, y + (scaledHeight / 2), // centro da imagem
+                    Math.min(scaledWidth, scaledHeight) * 0.7  // raio externo
+                );
+
+                vignetteGradient.addColorStop(0, 'rgba(0,0,0,0)');
+                vignetteGradient.addColorStop(0.7, 'rgba(0,0,0,0)');
+                vignetteGradient.addColorStop(1, 'rgba(0,0,0,0.15)'); // escurecimento nas bordas
+
+                // ═══════════════════════════════════════════════════════════
+                // 5. RENDERIZAÇÃO DA IMAGEM (Alta Qualidade)
+                // ═══════════════════════════════════════════════════════════
+
+                // IMPORTANTE: Desabilitar imageSmoothingEnabled temporariamente para evitar blur adicional
+                const originalSmoothing = ctx.imageSmoothingEnabled;
+
+                // Usar smoothing APENAS quando há blur ativo (baixa opacidade)
+                ctx.imageSmoothingEnabled = (blurAmount > 0);
+
+                // Desenha a imagem principal
+                ctx.drawImage(image, scaledX, scaledY, scaledWidth, scaledHeight);
+
+                // Aplica vinheta por cima
+                ctx.fillStyle = vignetteGradient;
+                ctx.fillRect(scaledX, scaledY, scaledWidth, scaledHeight);
+
+                // ═══════════════════════════════════════════════════════════
+                // 6. OVERLAY DE INTEGRAÇÃO (Mistura com Tema)
+                // ═══════════════════════════════════════════════════════════
+                if (this.currentTheme && this.currentTheme.sky && easedProgress < 0.8) {
+                    // Overlay sutil que diminui conforme a foto aparece
+                    ctx.globalCompositeOperation = 'overlay';
+                    ctx.globalAlpha = (1 - easedProgress) * 0.12; // máximo 12% no início
+                    ctx.fillStyle = this.currentTheme.sky;
+                    ctx.fillRect(scaledX, scaledY, scaledWidth, scaledHeight);
+                }
+
+                // ═══════════════════════════════════════════════════════════
+                // 7. LIMPEZA E RESTAURAÇÃO
+                // ═══════════════════════════════════════════════════════════
+                ctx.imageSmoothingEnabled = originalSmoothing;
+                ctx.restore();
+
+                // Garante reset completo (fallback de segurança)
+                ctx.globalAlpha = 1;
+                ctx.filter = 'none';
+                ctx.globalCompositeOperation = 'source-over';
+            }
+
+            // Easing para progressão suave
+            easeInOutCubic(t) {
+                return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            }
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d', {
+                    alpha: false,
+                    desynchronized: true // Otimiza a latência em navegadores modernos
+                });
+
+                // 1. SUPORTE A HIGH DPI (Retina/Displays 4K)
+                // Ajusta a resolução interna do canvas sem mudar o tamanho visual (CSS)
+                this.dpr = window.devicePixelRatio || 1;
+                this.rescale();
+
+                // 2. CONFIGURAÇÕES GLOBAIS DE RENDERIZAÇÃO
+                this.ctx.imageSmoothingEnabled = false; // Mantém o Pixel Art nítido
+                this.ctx.textBaseline = 'top';          // Alinhamento de texto padrão
+                this.ctx.font = '20px "VT323", monospace'; // Cache da fonte principal
+
+                // 3. CACHE DE RECURSOS (Pre-baked Assets)
+                // Em vez de criar gradientes no drawSky(), guardamos referências aqui
+                this.gradients = {};
+                this.cacheGradients();
+            }
+
+            // Método para ajustar a escala do canvas
+            rescale() {
+                const rect = this.canvas.getBoundingClientRect();
+                this.canvas.width = rect.width * this.dpr;
+                this.canvas.height = rect.height * this.dpr;
+                this.ctx.scale(this.dpr, this.dpr);
+            }
+
+            // Método para criar gradientes fixos uma única vez
+            cacheGradients() {
+                // Exemplo: Gradiente do Céu (precisa de cores base, aqui usamos placeholder)
+                // Nota: Como as cores mudam por fase, você pode atualizar este cache 
+                // apenas quando a fase mudar (loadPhase), e não a cada frame.
+            }
+
+            clear(color) {
+                // Nada muda aqui, mas o drawBackground vai cobrir tudo
+            }
+            // Background dividido em camadas para melhor legibilidade
+            drawBackground(theme, groundY, cameraX, phaseIndex, memoryImage, memoryImageLoaded, memoryProgress, canvasWidth) {
+                this.drawSky(theme);
+                // Foto de memória entre céu e nuvens/prédios/chão
+                this.drawMemoryPhoto(memoryImage, memoryImageLoaded, memoryProgress, canvasWidth, groundY);
+                this.drawClouds(theme, cameraX);
+                this.drawMountains(theme, groundY, cameraX, phaseIndex);
+                this.drawCities(theme, groundY, cameraX, phaseIndex);
+                this.drawGround(theme, groundY, cameraX, phaseIndex);
+            }
+
+            drawSky(theme) {
+                const ctx = this.ctx;
+                const canvasH = this.canvas.height;
+                const canvasW = this.canvas.width;
+
+                // 1. GRADIENTE ATMOSFÉRICO (Zenite ao Horizonte)
+                // Criamos um gradiente mais complexo para dar volume à atmosfera
+                const skyGrd = ctx.createLinearGradient(0, 0, 0, canvasH);
+
+                // Cor do topo (Zenite - mais escuro)
+                skyGrd.addColorStop(0, Utils.adjustColor(theme.sky, -20));
+                // Cor principal
+                skyGrd.addColorStop(0.3, theme.sky);
+                // Cor do horizonte (Glow - mais claro)
+                skyGrd.addColorStop(0.8, Utils.adjustColor(theme.sky, 15));
+                // Encontro com o chão
+                skyGrd.addColorStop(1, Utils.adjustColor(theme.sky, 5));
+
+                ctx.fillStyle = skyGrd;
+                ctx.fillRect(0, 0, canvasW, canvasH);
+
+                // 2. SISTEMA CELESTIAL (Estrelas para temas escuros)
+                // Detecta se a cor do céu é escura (Noite/Espaço) para ativar estrelas
+                if (this.isColorDark(theme.sky)) {
+                    this.drawStars(ctx, canvasW, canvasH);
+                }
+
+                // 3. EFEITO DE DITHERING (Textura Pixel Art)
+                // Adiciona uma camada de ruído sutil para evitar faixas de cor lisas
+                this.drawSkyTexture(ctx, canvasW, canvasH);
+
+                // 4. BRILHO SUPERIOR (Rim Light Atmosférico)
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+                ctx.fillRect(0, 0, canvasW, 2); // Linha bem fina no topo
+            }
+
+            // MÉTODO AUXILIAR: Desenha estrelas estáticas mas com brilho pulsante
+            drawStars(ctx, width, height) {
+                const starCount = 40;
+                const t = Date.now();
+
+                for (let i = 0; i < starCount; i++) {
+                    // Usamos o índice i como semente para posição fixa
+                    const x = (Math.sin(i * 123.456) * 0.5 + 0.5) * width;
+                    const y = (Math.cos(i * 456.789) * 0.5 + 0.5) * (height * 0.6); // Apenas no topo
+
+                    // Brilho pulsante (Twinkle) baseado no tempo
+                    const twinkle = Math.sin(t * 0.002 + i) * 0.5 + 0.5;
+                    const size = i % 3 === 0 ? 2 : 1; // Algumas estrelas são maiores (planetas)
+
+                    ctx.fillStyle = `rgba(255, 255, 255, ${twinkle * 0.8})`;
+                    ctx.fillRect(Math.floor(x), Math.floor(y), size, size);
+                }
+            }
+
+            // MÉTODO AUXILIAR: Adiciona textura de pontos para quebrar o gradiente liso
+            drawSkyTexture(ctx, width, height) {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+                for (let y = 0; y < height; y += 4) {
+                    for (let x = (y % 8); x < width; x += 8) {
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                }
+            }
+
+            // MÉTODO AUXILIAR: Verifica se a cor HEX é escura
+            isColorDark(hexcolor) {
+                const r = parseInt(hexcolor.slice(1, 3), 16);
+                const g = parseInt(hexcolor.slice(3, 5), 16);
+                const b = parseInt(hexcolor.slice(5, 7), 16);
+                const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+                return luminance < 0.5;
+            }
+
+            drawClouds(theme, cameraX) {
+                const ctx = this.ctx;
+                const canvasW = this.canvas.width;
+                const time = Date.now() * 0.001; // Para o movimento suave do vento
+
+                for (let layer = 0; layer < 3; layer++) {
+                    // Propriedades por camada
+                    const parallax = 0.04 + (layer * 0.05);
+                    const windSpeed = 2 + (layer * 3); // Nuvens da frente correm mais
+                    const cloudCount = 6 - layer;
+                    const spacing = 220;
+                    const totalW = cloudCount * spacing;
+
+                    for (let i = 0; i < cloudCount; i++) {
+                        const seed = i + (layer * 10);
+
+                        // 1. CÁLCULO DE POSIÇÃO COM WRAP (Infinito)
+                        // Combina movimento da câmera + vento constante
+                        let x = (i * spacing) - (cameraX * parallax) - (time * windSpeed);
+
+                        // Garante que a nuvem reapareça do outro lado sem "pular"
+                        x = x % totalW;
+                        if (x < -100) x += totalW;
+                        if (x > canvasW + 100) x -= totalW;
+
+                        // Oscilação vertical sutil
+                        const y = 12 + (layer * 18) + Math.sin(time * 0.5 + seed) * 4;
+
+                        // Transparência baseada na distância
+                        const alpha = 0.12 + (layer * 0.08);
+
+                        // 2. DESENHO DA NUVEM (Material System)
+                        this.drawSingleCloud(x, y, alpha, seed, layer);
+                    }
+                }
+            }
+
+            // Método auxiliar para construir a geometria da nuvem
+            drawSingleCloud(x, y, alpha, seed, layer) {
+                const ctx = this.ctx;
+
+                // Dimensões variadas baseadas na semente
+                const baseW = 40 + Math.abs(Math.sin(seed)) * 50;
+                const baseH = 8 + (layer * 2);
+
+                ctx.save();
+                ctx.globalAlpha = alpha;
+
+                // A. SOMBRA (Base da nuvem - mistura com o horizonte)
+                ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                ctx.fillRect(x, y + 4, baseW, baseH);
+
+                // B. CORPO (Camadas de "Puffs")
+                ctx.fillStyle = "#FFFFFF";
+
+                // Puff Central (Massa principal)
+                ctx.fillRect(x + 5, y, baseW - 10, baseH);
+
+                // Puff Superior (O domo da nuvem)
+                const topW = baseW * 0.6;
+                const topX = x + (baseW - topW) / 2 + Math.cos(seed) * 5;
+                ctx.fillRect(topX, y - 6, topW, 8);
+
+                // Puff Menor (Detalhe lateral)
+                if (Math.sin(seed * 2) > 0) {
+                    ctx.fillRect(x - 5, y + 2, 15, 6);
+                }
+
+                // C. HIGHLIGHT (Brilho no topo para volume)
+                ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+                ctx.fillRect(topX + 2, y - 6, topW - 4, 2);
+
+                ctx.restore();
+            }
+
+            drawCities(theme, groundY, cameraX, phaseIndex) {
+                const ctx = this.ctx;
+
+                // 1. CONFIGURAÇÃO DE CAMADAS (Alturas reduzidas para liberar o céu)
+                const layers = [
+                    {
+                        count: 12,
+                        parallax: 0.08, // Mais lento
+                        widthRange: [50, 80],
+                        heightBase: 15, // Prédios bem baixos ao fundo
+                        variance: 30,
+                        color: Utils.adjustColor(theme.sky, -12),
+                        windowChance: 0,
+                        spacing: 110
+                    },
+                    {
+                        count: 10,
+                        parallax: 0.15,
+                        widthRange: [40, 70],
+                        heightBase: 30,
+                        variance: 45,
+                        color: Utils.adjustColor(theme.sky, -25),
+                        windowChance: 0.15,
+                        spacing: 85
+                    },
+                    {
+                        count: 8,
+                        parallax: CONFIG.PARALLAX_FACTOR,
+                        widthBase: 45,
+                        heightBase: 50, // O prédio mais alto raramente passará de 110px
+                        variance: 60,
+                        color: Utils.adjustColor(theme.ground, -35),
+                        windowChance: 0.35,
+                        spacing: 130
+                    }
+                ];
+
+                layers.forEach((layer, layerIdx) => {
+                    // Aumentamos o range de i para garantir que a cidade cubra a tela ao andar
+                    for (let i = -2; i < layer.count + 5; i++) {
+                        const seed = i + (layerIdx * 50) + (phaseIndex * 100);
+
+                        // Loop infinito horizontal (Parallax Wrap)
+                        const totalWidth = layer.count * layer.spacing;
+                        let xOffset = (i * layer.spacing) - (cameraX * layer.parallax);
+                        xOffset = xOffset % totalWidth;
+                        if (xOffset < -layer.spacing) xOffset += totalWidth;
+
+                        // Altura e largura baseadas na semente fixa
+                        const h = layer.heightBase + Math.abs(Math.sin(seed)) * layer.variance;
+                        const w = layer.widthRange ?
+                            layer.widthRange[0] + Math.abs(Math.cos(seed)) * (layer.widthRange[1] - layer.widthRange[0]) :
+                            layer.widthBase;
+
+                        // --- DESENHO DO PRÉDIO ---
+                        ctx.fillStyle = layer.color;
+                        ctx.fillRect(Math.floor(xOffset), groundY - h, Math.floor(w), h);
+
+                        // Sombra lateral para volume
+                        ctx.fillStyle = Utils.adjustColor(layer.color, -10);
+                        ctx.fillRect(Math.floor(xOffset + (w * 0.6)), groundY - h, Math.floor(w * 0.4), h);
+
+                        // --- ANTENAS (Apenas em alguns prédios) ---
+                        if (Math.sin(seed * 3) > 0.7) {
+                            ctx.fillStyle = layer.color;
+                            ctx.fillRect(Math.floor(xOffset + w * 0.4), groundY - h - 15, 2, 15);
+                        }
+
+                        // --- JANELAS ---
+                        if (layer.windowChance > 0) {
+                            const winColor = layerIdx === 2 ? "#ffcd75" : "rgba(255,255,255,0.5)";
+                            const winRows = Math.floor(h / 14);
+                            const winCols = Math.floor(w / 12);
+
+                            for (let r = 1; r < winRows; r++) {
+                                for (let c = 1; c < winCols; c++) {
+                                    if (Math.sin(seed + r + c) > 1 - layer.windowChance) {
+                                        ctx.fillStyle = winColor;
+                                        ctx.fillRect(
+                                            Math.floor(xOffset + (c * 12)),
+                                            Math.floor(groundY - h + (r * 14)),
+                                            3, 4
+                                        );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // --- NEBLINA URBANA REDUZIDA ---
+                const smogGradient = ctx.createLinearGradient(0, groundY - 30, 0, groundY);
+                smogGradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+                smogGradient.addColorStop(1, theme.sky + "66");
+                ctx.fillStyle = smogGradient;
+                ctx.fillRect(0, groundY - 30, this.canvas.width, 30);
+            }
+
+            drawMountains(theme, groundY, cameraX, phaseIndex) {
+                const ctx = this.ctx;
+
+                // 1. CONFIGURAÇÃO DE SOMBREADORES (Perspectiva Atmosférica)
+                // As montanhas mais distantes tendem à cor do céu (haze)
+                const layers = [
+                    {
+                        count: 10,
+                        parallax: 0.1,
+                        heightBase: 40,
+                        variance: 30,
+                        color: Utils.adjustColor(theme.sky, -15),
+                        detail: Utils.adjustColor(theme.sky, -10),
+                        spacing: 120
+                    },
+                    {
+                        count: 8,
+                        parallax: 0.18,
+                        heightBase: 60,
+                        variance: 45,
+                        color: Utils.adjustColor(theme.sky, -35),
+                        detail: Utils.adjustColor(theme.sky, -25),
+                        spacing: 180
+                    },
+                    {
+                        count: 6,
+                        parallax: CONFIG.PARALLAX_FACTOR,
+                        heightBase: 80,
+                        variance: 60,
+                        color: Utils.adjustColor(theme.ground, -40),
+                        detail: Utils.adjustColor(theme.ground, -25),
+                        spacing: 250
+                    }
+                ];
+
+                layers.forEach((layer, layerIdx) => {
+                    for (let i = -1; i < layer.count + 1; i++) {
+                        // Semente determinística para manter o cenário fixo
+                        const seed = i + (layerIdx * 100) + (phaseIndex * 10);
+                        const xOffset = (i * layer.spacing) - (cameraX * layer.parallax);
+
+                        // Cálculo de altura orgânica
+                        const h = layer.heightBase + Math.abs(Math.sin(seed * 0.5)) * layer.variance;
+                        const w = layer.spacing * 1.5;
+
+                        // --- DESENHO DA SILHUETA DA MONTANHA ---
+                        ctx.beginPath();
+                        ctx.moveTo(xOffset, groundY);
+                        ctx.lineTo(xOffset + w / 2, groundY - h); // Pico
+                        ctx.lineTo(xOffset + w, groundY);
+                        ctx.closePath();
+
+                        // Preenchimento base
+                        ctx.fillStyle = layer.color;
+                        ctx.fill();
+
+                        // --- DETALHE: SOMBRA FACETADA (Lado oposto à luz) ---
+                        // Cria um efeito 3D dividindo a montanha ao meio
+                        ctx.beginPath();
+                        ctx.moveTo(xOffset + w / 2, groundY - h);
+                        ctx.lineTo(xOffset + w * 0.8, groundY);
+                        ctx.lineTo(xOffset + w / 2, groundY);
+                        ctx.closePath();
+                        ctx.fillStyle = Utils.adjustColor(layer.color, -10);
+                        ctx.fill();
+
+                        // --- DETALHE: PICOS DE NEVE / ROCHA EXPOSTA ---
+                        if (h > layer.heightBase + layer.variance * 0.6) {
+                            ctx.beginPath();
+                            ctx.moveTo(xOffset + w / 2, groundY - h);
+                            ctx.lineTo(xOffset + w / 2 + (w * 0.1), groundY - h + (h * 0.2));
+                            ctx.lineTo(xOffset + w / 2 - (w * 0.1), groundY - h + (h * 0.2));
+                            ctx.closePath();
+                            ctx.fillStyle = layerIdx === 0 ? "#FFFFFF" : layer.detail;
+                            ctx.fill();
+                        }
+                    }
+                });
+
+                // --- NÉVOA DE HORIZONTE (MIST) ---
+                // Suaviza a junção entre montanhas e o chão
+                const mistGradient = ctx.createLinearGradient(0, groundY - 40, 0, groundY);
+                mistGradient.addColorStop(0, "rgba(255, 255, 255, 0)");
+                mistGradient.addColorStop(1, theme.sky + "88"); // Alpha em HEX
+                ctx.fillStyle = mistGradient;
+                ctx.fillRect(0, groundY - 40, this.canvas.width, 40);
+            }
+
+            drawGround(theme, groundY, cameraX, phaseIndex) {
+                const ctx = this.ctx;
+                const canvasW = this.canvas.width;
+                const canvasH = this.canvas.height;
+
+                // 1. BASE COM GRADIENTE (Profundidade de Solo)
+                // Cria a ilusão de que o chão escurece conforme desce
+                const groundGrd = ctx.createLinearGradient(0, groundY, 0, canvasH);
+                groundGrd.addColorStop(0, theme.ground);
+                groundGrd.addColorStop(1, Utils.adjustColor(theme.ground, -30));
+
+                ctx.fillStyle = groundGrd;
+                ctx.fillRect(0, groundY, canvasW, canvasH - groundY);
+
+                // 2. BORDA ILUMINADA (Rim Light de Superfície)
+                // Uma linha fina no topo que reflete a luz do céu
+                ctx.fillStyle = Utils.adjustColor(theme.ground, 20);
+                ctx.fillRect(0, groundY, canvasW, 2);
+
+                // 3. DETALHES DE SUPERFÍCIE (Grama ou Textura Urbana)
+                const detailColor = Utils.adjustColor(theme.ground, 15);
+                const shadowColor = Utils.adjustColor(theme.ground, -15);
+
+                // Quantidade de detalhes visíveis na tela
+                const step = 16;
+                const startX = Math.floor(cameraX / step) * step;
+                const endX = startX + canvasW + step;
+
+                for (let x = startX; x < endX; x += step) {
+                    // Semente determinística baseada na posição X do mundo
+                    const seed = Math.sin(x + phaseIndex * 123.45) * 10000;
+                    const random = seed - Math.floor(seed);
+
+                    // Coordenada de tela ajustada pela câmera
+                    const screenX = x - cameraX;
+
+                    // A. CLUMPS DE GRAMA/DETALHE (Forma Orgânica)
+                    if (random > 0.4) {
+                        const h = 2 + Math.floor(random * 4);
+                        ctx.fillStyle = detailColor;
+
+                        // Desenha um pequeno tufo (3 pixels variados)
+                        ctx.fillRect(screenX, groundY - h, 2, h);
+                        ctx.fillRect(screenX + 3, groundY - (h - 1), 2, h - 1);
+
+                        // Sombra na base do tufo para "ancorar" no chão
+                        ctx.fillStyle = shadowColor;
+                        ctx.fillRect(screenX, groundY, 5, 1);
+                    }
+
+                    // B. TEXTURA DE SOLO (Speckles/Pedregulhos)
+                    if (random < 0.2) {
+                        const size = random > 0.1 ? 2 : 1;
+                        const yOff = Math.floor(random * 15); // Espalha detalhe pelo solo
+                        ctx.fillStyle = shadowColor;
+                        ctx.fillRect(screenX + 8, groundY + 5 + yOff, size, size);
+                    }
+                }
+
+                // 4. PERSPECTIVA DE MOVIMENTO (Elementos de Primeiro Plano)
+                // Pedras ou detalhes que passam mais rápido que o chão
+                this.drawGroundForeground(ctx, groundY, cameraX, phaseIndex, shadowColor);
+            }
+
+            // Método auxiliar para detalhes que dão sensação de velocidade
+            drawGroundForeground(ctx, groundY, cameraX, phaseIndex, color) {
+                const fgSpeed = 1.2; // Parallax ligeiramente mais rápido
+                const spacing = 150;
+
+                for (let i = 0; i < 10; i++) {
+                    const seed = i + phaseIndex * 50;
+                    const x = ((i * spacing) - (cameraX * fgSpeed)) % (this.canvas.width + spacing);
+                    const finalX = x < -50 ? x + this.canvas.width + spacing : x;
+
+                    const size = 2 + (Math.abs(Math.sin(seed)) * 4);
+                    ctx.fillStyle = color;
+                    ctx.fillRect(finalX, groundY + 10 + (seed % 10), size, 2);
+                }
+            }
+
+            // player recebe coordenadas de mundo; o contexto é transladado antes do desenho
+            drawPlayer(x, y, isMoving, isMovingLeft, gameTime) {
+                const ctx = this.ctx;
+                const t = gameTime.getElapsed();
+
+                // ==========================================
+                // 1. PALETA DE CORES (Material System)
+                // ==========================================
+                const PALETTE = {
+                    // Pele (3 tons para volume)
+                    skin: {
+                        base: "#ffcc99",
+                        shadow: "#e0a672",
+                        highlight: "#ffd9b3",
+                        blush: "#ffb6c1"
+                    },
+                    // Cabelo (3 tons + destaques)
+                    hair: {
+                        base: "#0f0f0f",
+                        shadow: "#050505",
+                        highlight: "#2a2a2a",
+                        rimLight: "#404040"
+                    },
+                    // Camiseta preta (4 tons)
+                    shirt: {
+                        base: "#1a1a1a",
+                        light: "#2d2d2d",
+                        dark: "#0f0f0f",
+                        deepShadow: "#050505",
+                        logo: "#00ffcc"
+                    },
+                    // Jeans (3 tons + desgaste)
+                    jeans: {
+                        base: "#2c4c6d",
+                        light: "#4a6a8d",
+                        dark: "#1a3a5a",
+                        worn: "#5a7a9d"
+                    },
+                    // Tênis
+                    shoes: {
+                        base: "#2d2d2d",
+                        highlight: "#4d4d4d",
+                        sole: "#1a1a1a",
+                        detail: "#ffffff"
+                    },
+                    // Óculos
+                    glasses: {
+                        frame: "#0a0a0a",
+                        frameInner: "#1a1a1a",
+                        lens: "rgba(80, 120, 180, 0.35)",
+                        reflect: "rgba(255, 255, 255, 0.7)",
+                        reflectSec: "rgba(180, 220, 255, 0.25)"
+                    },
+                    // Sistema de outlines
+                    outline: "#0a0a0a"
+                };
+
+                // ==========================================
+                // 2. FÍSICA DA ANIMAÇÃO (Logic Engine)
+                // ==========================================
+
+                // A. Ciclo de Caminhada (Walk Cycle)
+                const walkSpeed = 120; // ms por ciclo completo
+                const walkPhase = (t / walkSpeed) * Math.PI * 2;
+
+                // B. Bobbing Vertical (Impacto e Impulso)
+                // Corpo: |sin(x)| para simular contato com chão + impulso
+                const bodyBob = isMoving
+                    ? Math.abs(Math.sin(walkPhase)) * 2.8
+                    : Math.sin(t * 0.0025) * 0.4;
+
+                // Cabeça: Atraso de fase (-0.2 rad) = pescoço flexível
+                const headBob = isMoving
+                    ? Math.abs(Math.sin(walkPhase - 0.2)) * 2.5
+                    : Math.sin(t * 0.0025 - 0.1) * 0.35;
+
+                // C. Secondary Motion: Cabelo (Inércia e Atraso)
+                // Atraso horizontal e vertical
+                const hairLagVertical = isMoving
+                    ? Math.sin(walkPhase - 0.4) * 1.8
+                    : Math.sin(t * 0.003 + 0.5) * 0.6;
+                const hairLagHorizontal = isMoving
+                    ? Math.cos(walkPhase - 0.3) * 0.5
+                    : 0;
+
+                // D. Ciclo de Caminhada Cruzado (Braços vs Pernas)
+                // Pernas: Amplitude maior (peso)
+                const legSwing = isMoving ? Math.sin(walkPhase) * 5.5 : 0;
+                // Braços: Fase oposta (cos vs sin), amplitude menor
+                const armSwing = isMoving
+                    ? Math.cos(walkPhase) * 4.5
+                    : Math.sin(t * 0.002) * 0.8;
+
+                // ==========================================
+                // 3. POSICIONAMENTO PIXEL-PERFECT
+                // ==========================================
+                const dir = isMovingLeft ? -1 : 1;
+
+                // Âncora do Torso (Centro de Massa)
+                const torsoX = Math.floor(x);
+                const torsoY = Math.floor(y - bodyBob);
+
+                // Cabeça segue torso com próprio bob
+                const headY = Math.floor(torsoY - 13 - (headBob - bodyBob));
+
+                // Cabelo com lag completo
+                const hairY = Math.floor(headY + hairLagVertical * 0.3);
+                const hairX = Math.floor(torsoX + hairLagHorizontal);
+
+                ctx.save();
+
+                // ==========================================
+                // 4. RENDERIZAÇÃO POR CAMADAS (Z-Order)
+                // ==========================================
+
+                // ─────────────────────────────────────────
+                // CAMADA 1: SOMBRA (Projetada no Chão)
+                // ─────────────────────────────────────────
+                ctx.fillStyle = 'rgba(0,0,0,0.28)';
+                const shadowEllipse = isMoving ? 11 - (bodyBob * 0.4) : 10;
+                ctx.beginPath();
+                ctx.ellipse(torsoX + 8, y + 18, shadowEllipse, 3.5, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // ─────────────────────────────────────────
+                // CAMADA 2: MEMBROS TRASEIROS (Depth Shading)
+                // ─────────────────────────────────────────
+
+                // 2A. PERNA TRASEIRA
+                const legBackY = torsoY + 13 - legSwing;
+                const legBackX = dir === 1 ? torsoX + 2 : torsoX + 10;
+
+                // Outline
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(legBackX, legBackY - 1, 5, 10);
+
+                // Jeans (tom escuro para profundidade)
+                ctx.fillStyle = PALETTE.jeans.dark;
+                ctx.fillRect(legBackX + 1, legBackY, 3, 8);
+
+                // Costura (depth shading)
+                ctx.fillStyle = PALETTE.jeans.light;
+                ctx.fillRect(legBackX + 2, legBackY, 1, 8);
+
+                // Tênis traseiro
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(legBackX, legBackY + 8, 5, 3);
+                ctx.fillStyle = PALETTE.shoes.base;
+                ctx.fillRect(legBackX, legBackY + 8, 4, 2);
+                ctx.fillStyle = PALETTE.shoes.sole;
+                ctx.fillRect(legBackX, legBackY + 10, 5, 1);
+
+                // 2B. BRAÇO TRASEIRO
+                const armBackY = torsoY + 6 - armSwing;
+                const armBackX = dir === 1 ? torsoX + 2 : torsoX + 13;
+
+                // Outline
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(armBackX, armBackY - 1, 4, 9);
+
+                // Manga (tom escuro)
+                ctx.fillStyle = PALETTE.shirt.dark;
+                ctx.fillRect(armBackX, armBackY, 3, 4);
+                ctx.fillStyle = PALETTE.shirt.deepShadow;
+                ctx.fillRect(armBackX, armBackY, 1, 4);
+
+                // Antebraço (skin shadow)
+                ctx.fillStyle = PALETTE.skin.shadow;
+                ctx.fillRect(armBackX, armBackY + 4, 3, 3);
+
+                // Mão
+                ctx.fillStyle = PALETTE.skin.shadow;
+                ctx.fillRect(armBackX, armBackY + 7, 3, 1);
+
+                // ─────────────────────────────────────────
+                // CAMADA 3: TORSO (Âncora Central)
+                // ─────────────────────────────────────────
+
+                // Outline do corpo
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(torsoX + 2, torsoY + 1, 13, 12);
+
+                // Base da camiseta
+                ctx.fillStyle = PALETTE.shirt.base;
+                ctx.fillRect(torsoX + 3, torsoY + 2, 11, 10);
+
+                // Shading volumétrico (luz superior esquerda)
+                ctx.fillStyle = PALETTE.shirt.light;
+                ctx.fillRect(torsoX + 4, torsoY + 2, 3, 10); // Luz lateral
+                ctx.fillRect(torsoX + 4, torsoY + 2, 9, 3);  // Luz ombros
+
+                // Área de sombra (oclusão)
+                ctx.fillStyle = PALETTE.shirt.dark;
+                ctx.fillRect(torsoX + 11, torsoY + 3, 2, 8); // Lado direito
+                ctx.fillRect(torsoX + 4, torsoY + 9, 9, 2);  // Base
+
+                // Gola em V
+                ctx.fillStyle = PALETTE.shirt.deepShadow;
+                ctx.fillRect(torsoX + 7, torsoY + 2, 3, 2);
+                ctx.fillRect(torsoX + 6, torsoY + 3, 1, 1);
+                ctx.fillRect(torsoX + 10, torsoY + 3, 1, 1);
+
+                // Logo cyberpunk (detalhe focal)
+                ctx.fillStyle = PALETTE.shirt.logo;
+                ctx.fillRect(torsoX + 7, torsoY + 5, 3, 1);
+                ctx.fillRect(torsoX + 8, torsoY + 6, 1, 2);
+
+                // Costura central (anti-aliasing seletivo)
+                ctx.fillStyle = "rgba(255,255,255,0.05)";
+                ctx.fillRect(torsoX + 8, torsoY + 4, 1, 7);
+
+                // ─────────────────────────────────────────
+                // CAMADA 4: MEMBROS FRONTAIS (Base + Highlights)
+                // ─────────────────────────────────────────
+
+                // 4A. PERNA FRONTAL
+                const legFrontY = torsoY + 13 + legSwing;
+                const legFrontX = dir === 1 ? torsoX + 9 : torsoX + 3;
+
+                // Outline
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(legFrontX, legFrontY - 1, 5, 10);
+
+                // Jeans (tom base)
+                ctx.fillStyle = PALETTE.jeans.base;
+                ctx.fillRect(legFrontX, legFrontY, 4, 8);
+
+                // Costura frontal (highlight)
+                ctx.fillStyle = PALETTE.jeans.light;
+                ctx.fillRect(legFrontX + 1, legFrontY, 1, 8);
+
+                // Joelho desgastado
+                ctx.fillStyle = PALETTE.jeans.worn;
+                ctx.fillRect(legFrontX, legFrontY + 3, 3, 2);
+
+                // Barra
+                ctx.fillStyle = PALETTE.jeans.dark;
+                ctx.fillRect(legFrontX, legFrontY + 7, 4, 1);
+
+                // Tênis frontal (detalhado)
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(legFrontX - 1, legFrontY + 8, 6, 3);
+                ctx.fillStyle = PALETTE.shoes.base;
+                ctx.fillRect(legFrontX - 1, legFrontY + 8, 5, 2);
+                ctx.fillStyle = PALETTE.shoes.highlight;
+                ctx.fillRect(legFrontX - 1, legFrontY + 8, 4, 1);
+                ctx.fillStyle = PALETTE.shoes.detail;
+                ctx.fillRect(legFrontX - 1, legFrontY + 10, 5, 1);
+                // Detalhe lateral (rim light)
+                ctx.fillStyle = "rgba(255,255,255,0.3)";
+                ctx.fillRect(legFrontX, legFrontY + 9, 1, 1);
+
+                // 4B. BRAÇO FRONTAL
+                const armFrontY = torsoY + 6 + armSwing;
+                const armFrontX = dir === 1 ? torsoX + 14 : torsoX + 2;
+
+                // Outline
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(armFrontX, armFrontY - 1, 4, 9);
+
+                // Manga (highlight)
+                ctx.fillStyle = PALETTE.shirt.light;
+                ctx.fillRect(armFrontX, armFrontY, 3, 4);
+                ctx.fillStyle = PALETTE.shirt.base;
+                ctx.fillRect(armFrontX + 1, armFrontY + 1, 2, 3);
+
+                // Antebraço (skin base)
+                ctx.fillStyle = PALETTE.skin.base;
+                ctx.fillRect(armFrontX, armFrontY + 4, 3, 3);
+
+                // Sombra do antebraço
+                ctx.fillStyle = "rgba(224,166,114,0.4)";
+                ctx.fillRect(armFrontX, armFrontY + 6, 3, 1);
+
+                // Mão frontal
+                ctx.fillStyle = PALETTE.skin.shadow;
+                ctx.fillRect(armFrontX, armFrontY + 7, 3, 1);
+                ctx.fillStyle = PALETTE.skin.base;
+                ctx.fillRect(armFrontX, armFrontY + 7, 2, 1);
+
+                // ─────────────────────────────────────────
+                // CAMADA 5: CABEÇA (Alta Prioridade Visual)
+                // ─────────────────────────────────────────
+
+                // Outline da cabeça
+                ctx.fillStyle = PALETTE.outline;
+                ctx.fillRect(torsoX + 3, headY, 11, 13);
+
+                // Pescoço (conector flexível)
+                ctx.fillStyle = PALETTE.skin.shadow;
+                ctx.fillRect(torsoX + 6, torsoY - 1, 5, 3);
+                ctx.fillStyle = PALETTE.skin.base;
+                ctx.fillRect(torsoX + 7, torsoY - 1, 3, 2);
+
+                // Base do rosto
+                ctx.fillStyle = PALETTE.skin.base;
+                ctx.fillRect(torsoX + 4, headY + 1, 9, 11);
+
+                // Depth shading (lado oposto à luz)
+                ctx.fillStyle = "rgba(224,166,114,0.3)";
+                ctx.fillRect(torsoX + (dir === 1 ? 11 : 4), headY + 1, 2, 10);
+
+                // Blush bilateral (vida)
+                ctx.fillStyle = PALETTE.skin.blush;
+                ctx.fillRect(torsoX + 10, headY + 7, 2, 1);
+                ctx.fillRect(torsoX + 5, headY + 7, 2, 1);
+
+                // Orelhas
+                ctx.fillStyle = PALETTE.skin.shadow;
+                ctx.fillRect(torsoX + 3, headY + 5, 1, 3);
+                ctx.fillRect(torsoX + 13, headY + 5, 1, 3);
+
+                // ─────────────────────────────────────────
+                // ÓCULOS (Frame Fixo + Reflexo Dinâmico)
+                // ─────────────────────────────────────────
+
+                // Armação externa
+                ctx.fillStyle = PALETTE.glasses.frame;
+                ctx.fillRect(torsoX + 5, headY + 4, 3, 4);  // Lente esq
+                ctx.fillRect(torsoX + 9, headY + 4, 3, 4);  // Lente dir
+                ctx.fillRect(torsoX + 8, headY + 5, 1, 2);  // Ponte
+                ctx.fillRect(torsoX + 4, headY + 5, 1, 1);  // Haste esq
+                ctx.fillRect(torsoX + 12, headY + 5, 2, 1); // Haste dir
+
+                // Armação interna (profundidade)
+                ctx.fillStyle = PALETTE.glasses.frameInner;
+                ctx.fillRect(torsoX + 5, headY + 4, 3, 1);
+                ctx.fillRect(torsoX + 9, headY + 4, 3, 1);
+                ctx.fillRect(torsoX + 5, headY + 7, 3, 1);
+                ctx.fillRect(torsoX + 9, headY + 7, 3, 1);
+
+                // Lentes semi-transparentes
+                ctx.fillStyle = PALETTE.glasses.lens;
+                ctx.fillRect(torsoX + 6, headY + 5, 2, 2);
+                ctx.fillRect(torsoX + 10, headY + 5, 2, 2);
+
+                // Reflexo dinâmico (muda com tempo)
+                if (Math.floor(t / 400) % 2 === 0) {
+                    ctx.fillStyle = PALETTE.glasses.reflect;
+                    ctx.fillRect(torsoX + 6, headY + 5, 1, 1);
+                    ctx.fillRect(torsoX + 10, headY + 5, 1, 1);
+                }
+
+                // Reflexo secundário
+                ctx.fillStyle = PALETTE.glasses.reflectSec;
+                ctx.fillRect(torsoX + 7, headY + 6, 1, 1);
+                ctx.fillRect(torsoX + 11, headY + 6, 1, 1);
+
+                // ─────────────────────────────────────────
+                // OLHOS (Atrás dos Óculos)
+                // ─────────────────────────────────────────
+                ctx.fillStyle = "#3d2817";
+                const eyeX = torsoX + (dir === 1 ? 10 : 6);
+
+                // Piscar ocasional
+                if (Math.floor(t / 3500) % 25 === 0) {
+                    ctx.fillRect(eyeX, headY + 6, 2, 1);
+                } else {
+                    ctx.fillRect(eyeX, headY + 6, 1, 2);
+                    // Pupila
+                    ctx.fillStyle = "#000000";
+                    ctx.fillRect(eyeX, headY + 6, 1, 1);
+                }
+
+                // ─────────────────────────────────────────
+                // CABELO (Secondary Motion + Rim Light)
+                // ─────────────────────────────────────────
+
+                // Massa principal (shadow)
+                ctx.fillStyle = PALETTE.hair.shadow;
+                ctx.fillRect(hairX + 3, hairY, 11, 6);
+
+                // Base do cabelo
+                ctx.fillStyle = PALETTE.hair.base;
+                ctx.fillRect(hairX + 4, hairY + 1, 9, 4);
+                ctx.fillRect(hairX + 4, hairY - 2, 9, 3);
+
+                // Mechas frontais
+                ctx.fillRect(hairX + 3, hairY + 1, 2, 5);
+                ctx.fillRect(hairX + 11, hairY + 1, 3, 4);
+
+                // Spikes (topete)
+                ctx.fillRect(hairX + 5, hairY - 4, 2, 2);
+                ctx.fillRect(hairX + 9, hairY - 3, 2, 2);
+                ctx.fillRect(hairX + 7, hairY - 5, 2, 3);
+
+                // Highlights (rim light)
+                ctx.fillStyle = PALETTE.hair.highlight;
+                ctx.fillRect(hairX + 5, hairY - 3, 2, 1);
+                ctx.fillRect(hairX + 8, hairY - 2, 3, 1);
+                ctx.fillRect(hairX + 5, hairY, 2, 1);
+                ctx.fillRect(hairX + 9, hairY + 1, 3, 1);
+
+                // Rim light no topo (anti-aliasing seletivo)
+                ctx.fillStyle = PALETTE.hair.rimLight;
+                ctx.fillRect(hairX + 6, hairY - 4, 1, 1);
+                ctx.fillRect(hairX + 9, hairY - 3, 1, 1);
+
+                ctx.restore();
+            }
+
+            // ... Mantenha o drawProps igual
+            drawProps(props, groundY, theme) {
+                props.forEach(prop => {
+                    // Sombra simples da árvore
+                    this.ctx.fillStyle = "rgba(0,0,0,0.2)";
+                    this.ctx.fillRect(prop.x + 2, groundY, 10, 2);
+
+                    // Tronco
+                    this.ctx.fillStyle = "#5d4037";
+                    this.ctx.fillRect(prop.x, groundY - prop.height, 4, prop.height);
+
+                    // Copa
+                    this.ctx.fillStyle = Utils.adjustColor(theme.ground, 20);
+                    this.ctx.beginPath();
+                    this.ctx.arc(prop.x + 2, groundY - prop.height, 12, 0, Math.PI * 2);
+                    this.ctx.fill();
+                });
+            }
+
+            drawGoal(x, y, gameTime) {
+                const t = gameTime.getElapsed() / 500;
+                const bob = Math.sin(t) * 5; // Flutuar
+
+                const ctx = this.ctx;
+                ctx.save();
+
+                // Brilho externo (Pulsante)
+                const alpha = 0.5 + Math.sin(t * 2) * 0.2;
+                ctx.fillStyle = `rgba(255, 205, 117, ${alpha})`;
+                ctx.beginPath();
+                ctx.arc(x, y + bob - 20, 15, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Núcleo do Orbe (Losango girando)
+                ctx.translate(x, y + bob - 20);
+                ctx.rotate(t);
+                ctx.fillStyle = '#ffcd75'; // Cor de destaque (accent)
+                ctx.fillRect(-6, -6, 12, 12);
+
+                // Borda do núcleo
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(-6, -6, 12, 12);
+
+                ctx.restore();
+            }
+
+            drawLevelUpAnim(playerX, playerY, animTimer) {
+                // animTimer vai de 0 a 1 (durante a animação)
+                if (animTimer <= 0) return;
+
+                const ctx = this.ctx;
+                ctx.save();
+
+                // Configuração do texto
+                ctx.font = '24px "VT323"';
+                ctx.textAlign = 'center';
+
+                // O texto sobe suavemente
+                const floatY = playerY - 40 - (animTimer * 30);
+
+                // Sombra do texto
+                ctx.fillStyle = 'rgba(0,0,0,0.8)';
+                ctx.fillText("MEMÓRIA DESBLOQUEADA!", playerX, floatY + 2);
+
+                // Texto principal piscando levemente
+                const blink = Math.floor(Date.now() / 100) % 2 === 0 ? '#ffff00' : '#ffffff';
+                ctx.fillStyle = blink;
+                ctx.fillText("MEMÓRIA DESBLOQUEADA!", playerX, floatY);
+
+                ctx.restore();
+            }
+        }
+
+        // ============================================================================
+        // GERADOR DE PROPS (Árvores e objetos do ambiente)
+        // ============================================================================
+        class PropsGenerator {
+            static generate(phaseIndex, theme) {
+                const props = [];
+                const seed = phaseIndex * 1000;
+
+                for (let i = 0; i < CONFIG.PROP_COUNT; i++) {
+                    const x = (i * (10000 / CONFIG.PROP_COUNT)) + Utils.seededRandom(seed + i) * 50;
+                    const height = 30 + Utils.seededRandom(seed + i + 1) * 40;
+
+                    props.push({
+                        x: x,
+                        height: height,
+                        type: 'tree'
+                    });
+                }
+
+                return props;
+            }
+        }
+
+        // ============================================================================
+        // GERENCIADOR DE UI
+        // ============================================================================
+        class UIManager {
+            constructor() {
+                this.elements = {
+                    title: document.getElementById('phase-title'),
+                    period: document.getElementById('phase-period'),
+                    text: document.getElementById('narrative-text'),
+                    image: document.getElementById('memory-img'),
+                    dialogueBox: document.getElementById('dialogue-box'),
+                    announcer: document.getElementById('a11y-announcer'),
+                    fadeOverlay: document.getElementById('fadeOverlay'),
+                    progressFill: document.getElementById('progress-fill'),
+                    progressContainer: document.getElementById('progress-container')
+                };
+            }
+
+            updatePhaseInfo(data) {
+                this.elements.title.textContent = data.title;
+                this.elements.period.textContent = data.period;
+                this.elements.text.textContent = data.text;
+
+                // Imagem com loading
+                this.elements.image.classList.add('loading');
+                this.elements.image.src = data.image.src;
+                this.elements.image.alt = data.image.alt;
+                this.elements.image.onload = () => {
+                    this.elements.image.classList.remove('loading');
+                };
+
+                // Acessibilidade
+                this.elements.announcer.textContent =
+                    `Fase ${data.order}: ${data.title}. ${data.text}`;
+            }
+
+            showDialogue(show) {
+                if (show) {
+                    this.elements.dialogueBox.classList.remove('hidden');
+                } else {
+                    this.elements.dialogueBox.classList.add('hidden');
+                }
+            }
+
+            fadeOut(callback) {
+                this.elements.fadeOverlay.style.opacity = '1';
+                setTimeout(callback, CONFIG.TRANSITION_DURATION);
+            }
+
+            fadeIn() {
+                setTimeout(() => {
+                    this.elements.fadeOverlay.style.opacity = '0';
+                }, CONFIG.FADE_DURATION);
+            }
+
+            updateProgress(percentage) {
+                // Atualiza a largura da barra de progresso com base na porcentagem
+                this.elements.progressFill.style.width = `${percentage}%`;
+
+                // Mostra a barra de progresso apenas se a porcentagem for maior que 0
+                this.elements.progressContainer.style.display = percentage > 0 ? 'block' : 'none';
+            }
+        }
+
+        // ============================================================================
+        // ENGINE PRINCIPAL
+        // ============================================================================
+        class StoryEngine {
+            // Novos campos para memória
+            memoryImage = null;
+            memoryImageLoaded = false;
+            memoryProgress = 0;
+            memoryAnnounced = false;
+            constructor() {
+                this.canvas = document.getElementById('gameCanvas');
+                this.renderer = new Renderer(this.canvas);
+                this.input = new InputManager();
+                this.ui = new UIManager();
+
+                this.gameTime = new GameTime();
+                this.particles = new ParticleSystem();
+
+                // Estado
+                this.currentPhaseIndex = 0;
+                this.playerX = 50;
+                this.playerY = 0;
+                this.cameraX = 0;
+                this.isTransitioning = false;
+                this.dialogueActive = true;
+                this.isLevelingUp = false;
+                this.levelUpTimer = 0; // Contador de tempo da animação
+                this.props = [];
+
+                this.init();
+            }
+
+            init() {
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.loadPhase(0);
+                this.startGameLoop();
+                this.ui.fadeIn();
+                // Swipe handlers and touch-friendly adjustments
+                try { this.setupSwipeHandlers(); } catch (e) { /* ignore */ }
+                // detect touch devices and adapt UI
+                const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+                if (isTouch) {
+                    document.body.classList.add('is-touch');
+                    const hud = document.getElementById('hud-hint');
+                    if (hud) hud.textContent = 'Deslize para os lados';
+                    // convert .hoverable into tap-to-toggle
+                    document.querySelectorAll('.hoverable').forEach(el => {
+                        el.addEventListener('click', () => el.classList.toggle('revealed'));
+                    });
+                }
+                // audio button wiring
+                const audioBtn = document.getElementById('btn-audio');
+                if (audioBtn) {
+                    const setMutedUI = (muted) => { audioBtn.setAttribute('aria-pressed', muted ? 'true' : 'false'); audioBtn.textContent = muted ? '🔈' : '🔊'; };
+                    let muted = localStorage.getItem('mj-muted') === '1';
+                    setMutedUI(muted);
+                    audioBtn.addEventListener('click', () => {
+                        muted = !muted; localStorage.setItem('mj-muted', muted ? '1' : '0');
+                        setMutedUI(muted);
+                        document.querySelectorAll('audio').forEach(a => a.muted = muted);
+                    });
+                }
+                // Acessibilidade: elemento oculto para alt da memória
+                if (!document.getElementById('memory-alt')) {
+                    const altDiv = document.createElement('div');
+                    altDiv.id = 'memory-alt';
+                    altDiv.className = 'sr-only';
+                    altDiv.setAttribute('aria-live', 'polite');
+                    document.body.appendChild(altDiv);
+                }
+            }
+
+            resize() {
+                // 1. Calcula o maior fator de zoom inteiro possível para caber na tela
+                const scaleX = window.innerWidth / CONFIG.WORLD.WIDTH;
+                const scaleY = window.innerHeight / CONFIG.WORLD.HEIGHT;
+                // Math.max(1, ...) garante que nunca fique menor que o original
+                // Math.floor(...) garante pixels perfeitos (sem distorção de sub-pixel)
+                const scale = Math.max(1, Math.floor(Math.min(scaleX, scaleY)));
+
+                // 2. Define o tamanho interno (Resolução do jogo)
+                const dpr = window.devicePixelRatio || 1;
+                this.canvas.width = CONFIG.WORLD.WIDTH * dpr;
+                this.canvas.height = CONFIG.WORLD.HEIGHT * dpr;
+
+                // 3. Define o tamanho visual (CSS) multiplicado pelo Zoom
+                this.canvas.style.width = (CONFIG.WORLD.WIDTH * scale) + 'px';
+                this.canvas.style.height = (CONFIG.WORLD.HEIGHT * scale) + 'px';
+
+                // 4. Ajusta o contexto de desenho
+                this.renderer.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                this.renderer.ctx.imageSmoothingEnabled = false;
+
+                // 5. Recalcula posições baseadas na altura fixa do jogo
+                this.groundY = CONFIG.WORLD.GROUND_Y;
+                this.playerY = this.groundY - 16;
+            }
+
+            loadPhase(index) {
+                if (index >= STORY_DATA.length) {
+                    index = 0; // Loop
+                }
+
+                this.currentPhaseIndex = index;
+                const data = STORY_DATA[index];
+
+                this.ui.updatePhaseInfo(data);
+
+                // preload the next phase image lazily
+                const nextIndex = (index + 1) % STORY_DATA.length;
+                preloadImage(STORY_DATA[nextIndex] && STORY_DATA[nextIndex].image && STORY_DATA[nextIndex].image.src);
+
+                // ═══════════════════════════════════════════════════════════
+                // MODIFICADO: Posiciona o player baseado na direção
+                // ═══════════════════════════════════════════════════════════
+                // Se voltou, começa do lado direito; se avançou, do esquerdo
+                this.playerX = this._goingBackwards ? CONFIG.STORY.GOAL_POSITION - 20 : 20;
+
+                this.cameraX = 0;
+                this.props = PropsGenerator.generate(index, data.theme);
+                this.ui.showDialogue(true);
+                this.dialogueActive = true;
+
+                // Carrega a imagem de memória da fase
+                this.loadMemoryImage(data.image && data.image.src, data.image && data.image.alt);
+                this.memoryProgress = 0;
+                this.memoryAnnounced = false;
+            }
+
+            // Novo: Carregamento da imagem de memória
+            loadMemoryImage(src, alt) {
+                this.memoryImageLoaded = false;
+                this.memoryImage = new window.Image();
+                this.memoryImage.onload = () => {
+                    this.memoryImageLoaded = true;
+                    // Atualiza alt para acessibilidade
+                    const altDiv = document.getElementById('memory-alt');
+                    if (altDiv && alt) altDiv.textContent = alt;
+                };
+                this.memoryImage.onerror = () => {
+                    this.memoryImageLoaded = false;
+                };
+                this.memoryImage.src = src;
+            }
+
+            // read input
+            readInput() {
+                this.axisX = this.input.getAxisX();
+            }
+
+            // update player movement & particles
+            updatePlayer(delta) {
+                // Se estiver subindo de nível, o jogador não se move
+                if (this.isLevelingUp) return;
+
+                if (this.axisX !== 0) {
+                    this.playerX += Math.sign(this.axisX) * CONFIG.PLAYER.MAX_SPEED * (delta / 16);
+
+                    // Poeira ao andar
+                    if (Math.random() > 0.6) {
+                        const theme = STORY_DATA[this.currentPhaseIndex].theme;
+                        this.particles.emit(this.playerX + 5, this.playerY + 14, theme.ground);
+                    }
+                }
+            }
+
+            updateCamera(delta) {
+                const targetCamX = this.playerX - (CONFIG.WORLD.WIDTH * CONFIG.CAMERA.FOLLOW_RATIO);
+                this.cameraX += (Math.max(0, targetCamX) - this.cameraX) * CONFIG.CAMERA.LERP_FACTOR;
+            }
+
+            updateParticles(delta) { this.particles.update(delta); }
+
+            update() {
+                if (this.isTransitioning) return;
+
+                const dt = this.gameTime.delta;
+
+                // Se estiver na animação de Level Up
+                if (this.isLevelingUp) {
+                    this.levelUpTimer += dt;
+                    this.updateParticles(dt);
+
+                    // Se a animação acabou (ex: 2 segundos)
+                    if (this.levelUpTimer > 2000) {
+                        // ═══════════════════════════════════════════════════════════
+                        // MODIFICADO: Verifica se está voltando ou avançando
+                        // ═══════════════════════════════════════════════════════════
+                        if (this._goingBackwards) {
+                            this._goingBackwards = false;
+                            this.prevPhase();
+                        } else {
+                            this.nextPhase();
+                        }
+                    }
+                    return;
+                }
+
+                this.readInput();
+                this.updatePlayer(dt);
+                this.updateCamera(dt);
+                this.updateParticles(dt);
+
+                // Calcula progresso da memória
+                let progress = (this.playerX - 50) / (CONFIG.STORY.GOAL_POSITION - 50);
+                this.memoryProgress = Math.max(0, Math.min(1, progress));
+
+                // Acessibilidade: anuncia quando a memória está 50% visível
+                if (this.memoryProgress >= 0.5 && !this.memoryAnnounced) {
+                    const alt = STORY_DATA[this.currentPhaseIndex].image && STORY_DATA[this.currentPhaseIndex].image.alt;
+                    const altDiv = document.getElementById('memory-alt');
+                    if (altDiv && alt) altDiv.textContent = `Memória revelando: ${alt}`;
+                    this.memoryAnnounced = true;
+                }
+
+                // Ajusta contraste do dialogue-box conforme a foto aparece
+                if (this.ui && this.ui.elements && this.ui.elements.dialogueBox) {
+                    const dialogueBg = `rgba(26, 28, 44, ${0.95 - (this.memoryProgress * 0.2)})`;
+                    this.ui.elements.dialogueBox.style.background = dialogueBg;
+                }
+
+                // Atualiza a barra de progresso na UI
+                this.ui.updateProgress(this.memoryProgress * 100);
+
+                // ═══════════════════════════════════════════════════════════
+                // NOVO: CHECAGEM DE RETORNO (Voltar de Fase)
+                // ═══════════════════════════════════════════════════════════
+                // Se não estiver na primeira fase E voltar muito para a esquerda
+                if (this.currentPhaseIndex > 0 && this.playerX < 10) {
+                    this.triggerPreviousPhase();
+                }
+
+                // ═══════════════════════════════════════════════════════════
+                // CHECAGEM DE OBJETIVO (Avançar de Fase)
+                // ═══════════════════════════════════════════════════════════
+                if (Math.abs(this.playerX - CONFIG.STORY.GOAL_POSITION) < 20) {
+                    this.triggerLevelUp();
+                }
+            }
+
+            triggerLevelUp() {
+                this.isLevelingUp = true;
+                this.levelUpTimer = 0;
+
+                // Explosão de partículas
+                for (let i = 0; i < 30; i++) {
+                    this.particles.emit(this.playerX, this.playerY - 20, '#ffcd75');
+                    this.particles.emit(this.playerX, this.playerY - 20, '#ffffff');
+                }
+            }
+
+            // ═══════════════════════════════════════════════════════════
+            // NOVO MÉTODO: Trigger para Voltar de Fase
+            // ═══════════════════════════════════════════════════════════
+            triggerPreviousPhase() {
+                // Evita triggers múltiplos
+                if (this.isTransitioning || this.isLevelingUp) return;
+
+                this.isLevelingUp = true;
+                this.levelUpTimer = 0;
+
+                // Sobrescreve o nextPhase para chamar prevPhase
+                this._goingBackwards = true;
+            }
+
+            nextPhase() {
+                this.isTransitioning = true;
+                this.ui.fadeOut(() => {
+                    this.currentPhaseIndex++;
+                    if (this.currentPhaseIndex >= STORY_DATA.length) {
+                        this.currentPhaseIndex = 0;
+                    }
+
+                    this.loadPhase(this.currentPhaseIndex);
+
+                    // Reseta estados
+                    this.isLevelingUp = false;
+                    this.levelUpTimer = 0;
+
+                    this.ui.fadeIn();
+                    this.isTransitioning = false;
+                });
+            }
+
+            prevPhase() {
+                this.isTransitioning = true;
+                this.ui.fadeOut(() => {
+                    this.currentPhaseIndex--;
+                    if (this.currentPhaseIndex < 0) this.currentPhaseIndex = STORY_DATA.length - 1;
+                    this.loadPhase(this.currentPhaseIndex);
+                    this.isLevelingUp = false;
+                    this.levelUpTimer = 0;
+                    this.ui.fadeIn();
+                    this.isTransitioning = false;
+                });
+            }
+
+            setupSwipeHandlers() {
+                const stage = document.getElementById('stage') || document.getElementById('game-container');
+                if (!stage) return;
+                let startX = 0; let startY = 0; let startT = 0; let moved = false;
+                const threshold = 40; // px
+                stage.addEventListener('touchstart', (e) => {
+                    if (!e.touches || e.touches.length !== 1) return;
+                    const t = e.touches[0]; startX = t.clientX; startY = t.clientY; startT = Date.now(); moved = false;
+                }, { passive: true });
+
+                stage.addEventListener('touchmove', (e) => {
+                    moved = true;
+                }, { passive: true });
+
+                stage.addEventListener('touchend', (e) => {
+                    if (!moved) return;
+                    const t = e.changedTouches[0]; const dx = t.clientX - startX; const dy = t.clientY - startY; const dt = Date.now() - startT;
+                    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > threshold && dt < 800) {
+                        if (dx < 0) { this.nextPhase(); } else { this.prevPhase(); }
+                    }
+                });
+            }
+
+            draw() {
+                const theme = STORY_DATA[this.currentPhaseIndex].theme;
+                this.renderer.currentTheme = theme;
+                this.renderer.clear(theme.sky);
+
+                // Passa a foto de memória para o background, entre céu e nuvens/prédios/chão
+                this.renderer.drawBackground(
+                    theme,
+                    this.groundY,
+                    this.cameraX,
+                    this.currentPhaseIndex,
+                    this.memoryImage,
+                    this.memoryImageLoaded,
+                    this.memoryProgress,
+                    CONFIG.WORLD.WIDTH
+                );
+
+                this.renderer.ctx.save();
+                this.renderer.ctx.translate(-this.cameraX, 0);
+
+                // Desenha Props
+                this.renderer.drawProps(this.props, this.groundY, theme);
+
+                // DESENHA O OBJETIVO SE NÃO ESTIVER NIVELANDO (Ou mantém se preferir)
+                if (!this.isLevelingUp) {
+                    this.renderer.drawGoal(CONFIG.STORY.GOAL_POSITION, this.groundY, this.gameTime);
+                }
+
+                this.particles.draw(this.renderer.ctx);
+
+                // Player
+                this.renderer.drawPlayer(this.playerX, this.playerY, this.input.isMoving(), this.input.keys.left, this.gameTime);
+
+                // DESENHA ANIMAÇÃO DE LEVEL UP (Texto subindo)
+                if (this.isLevelingUp) {
+                    // Normaliza o timer para 0..1 apenas para o efeito visual de subida
+                    const progress = Math.min(1, this.levelUpTimer / 1000);
+                    this.renderer.drawLevelUpAnim(this.playerX, this.playerY, progress);
+                }
+
+                this.renderer.ctx.restore();
+            }
+
+            startGameLoop() {
+                const loop = (ts) => {
+                    this.gameTime.update(ts);
+                    this.update();
+                    this.draw();
+                    requestAnimationFrame(loop);
+                };
+                requestAnimationFrame(loop);
+            }
+        }
+
+        // ============================================================================
+        // INICIALIZAÇÃO
+        // ============================================================================
+        // Move `#memory-frame` under `#story-section` on small screens (mobile UX)
+        (function setupMemoryFrameMobileBehavior() {
+            let resizeTimer = null;
+            function adaptMemoryFrame() {
+                const frame = document.getElementById('memory-frame');
+                const story = document.getElementById('story-section');
+                const stageInner = document.querySelector('.stage-inner');
+                if (!frame || !story || !stageInner) return;
+
+                const mobile = window.matchMedia('(max-width:420px)').matches;
+                if (mobile) {
+                    // Move after story-section if not already
+                    if (story.parentNode && frame.parentNode !== story.parentNode) {
+                        story.parentNode.insertBefore(frame, story.nextSibling);
+                    } else if (story.nextSibling !== frame) {
+                        // ensure order
+                        story.parentNode.insertBefore(frame, story.nextSibling);
+                    }
+                } else {
+                    // move back inside stage-inner for larger screens
+                    if (stageInner && frame.parentNode !== stageInner) {
+                        stageInner.appendChild(frame);
+                    }
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(adaptMemoryFrame, 120);
+            });
+
+            // run once after DOM loaded (ensure elements exist)
+            document.addEventListener('DOMContentLoaded', adaptMemoryFrame);
+            // also run immediately in case script executed after DOM
+            setTimeout(adaptMemoryFrame, 50);
+        })();
+        window.addEventListener('load', () => {
+            new StoryEngine();
+        });
+    </script>
+
+    <script>
+        (function positionHudRelativeToStory() {
+            const gameContainer = document.getElementById('game-container');
+            const story = document.getElementById('story-section');
+            const hud = document.getElementById('hud-panel');
+            if (!gameContainer || !story || !hud) return;
+
+            function update() {
+                const storyRect = story.getBoundingClientRect();
+                const containerRect = gameContainer.getBoundingClientRect();
+                // top inside the ui-layer (which shares the same origin as game-container)
+                const top = Math.round(storyRect.bottom - containerRect.top + 12); // 12px gap
+                hud.style.top = top + 'px';
+                hud.style.left = '50%';
+                hud.style.transform = 'translateX(-50%)';
+                hud.style.bottom = 'auto';
+            }
+
+            window.addEventListener('load', update, { passive: true });
+            window.addEventListener('resize', update);
+            window.addEventListener('orientationchange', update);
+
+            // update when story-section size changes (eg. images, fonts)
+            try {
+                const ro = new ResizeObserver(update);
+                ro.observe(story);
+                ro.observe(gameContainer);
+            } catch (e) { /* ResizeObserver pode não existir em alguns browsers */ }
+
+            // small debounce initial call
+            setTimeout(update, 80);
+        })();
+    </script>
+</body>
+
+</html>

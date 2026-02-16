@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligência de Vendas em Tempo Real: Salesforce + AWS</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        salesforce: '#3b82f6',
+                        aws: '#f97316',
+                        success: '#34d399',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #f97316);
+        }
+
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+    <!-- 1. Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-slate-900 bg-grid-pattern opacity-20"></div>
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-salesforce/20 rounded-full blur-3xl filter mix-blend-screen animate-pulse-slow">
+        </div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-aws/20 rounded-full blur-3xl filter mix-blend-screen animate-pulse-slow"
+            style="animation-delay: 1.5s;"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div
+                class="inline-block px-4 py-1.5 mb-6 rounded-full glass border-salesforce/30 text-sm font-medium text-salesforce">
+                <i class="fa-brands fa-salesforce mr-2"></i> Salesforce + <i class="fa-brands fa-aws mx-2 text-aws"></i>
+                AWS
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                Revolucionando a <br>
+                <span class="gradient-text">Eficiência Comercial</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-8 leading-relaxed font-light">
+                "Deixe de ouvir sussurros em um show de rock. Transforme ruído de dados em rotas de vendas otimizadas
+                com Salesforce e AWS."
+            </p>
+            <!-- Audio Player -->
+            <div
+                class="mb-10 p-4 max-w-lg mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-xl flex items-center shadow-2xl">
+                <button id="playBtn"
+                    class="flex-shrink-0 w-12 h-12 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center transition-all shadow-lg group focus:outline-none">
+                    <i id="playIcon" class="fas fa-play text-white pl-1 group-hover:scale-110 transition-transform"></i>
+                </button>
+                <div class="ml-4 flex-grow text-left">
+                    <p class="text-sm font-bold text-slate-200">Ouça o Deep Dive da Arquitetura</p>
+                    <p class="text-xs text-slate-400">Podcast Técnico gerado por IA | Duração: 05:00</p>
+                    <div class="w-full bg-slate-700 h-1 mt-2 rounded-full overflow-hidden">
+                        <div id="progressBar" class="bg-blue-500 h-full w-0 transition-all duration-100"></div>
+                    </div>
+                </div>
+                <audio id="audioPlayer"
+                    src="https://mauricio.issei.com.br/Eventos_Salesforce_ML_feedback_em_tempo_real.m4a"
+                    preload="metadata"></audio>
+            </div>
+            <a href="#arquitetura"
+                class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gradient-to-r from-salesforce to-aws rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-salesforce hover:shadow-lg hover:shadow-salesforce/30">
+                Ver a Arquitetura
+                <i class="fa-solid fa-arrow-down ml-3 group-hover:translate-y-1 transition-transform"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 2. O Problema (A Metáfora do Ruído) -->
+    <section class="py-24 bg-slate-900 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">O Paradoxo dos Dados</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    O Salesforce gera eventos para tudo. Tratar uma simples correção de CEP com a mesma prioridade de um
+                    fechamento de contrato gera custos desnecessários e ineficiência operacional.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Esquerda: O Caos -->
+                <div class="glass p-8 rounded-2xl border-l-4 border-red-500/50 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-triangle-exclamation text-8xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-red-400 flex items-center">
+                        <i class="fa-solid fa-bolt mr-3"></i> O Caos (Ruído)
+                    </h3>
+                    <div class="flex flex-wrap gap-4 mb-6 opacity-60">
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs flex items-center"><i
+                                class="fa-solid fa-pen mr-2"></i> Typo Fix</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs flex items-center"><i
+                                class="fa-solid fa-rotate mr-2"></i> Log Update</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs flex items-center"><i
+                                class="fa-regular fa-snowflake mr-2"></i> Lead Frio</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs flex items-center"><i
+                                class="fa-solid fa-user-pen mr-2"></i> Edit Profile</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs flex items-center"><i
+                                class="fa-solid fa-clock mr-2"></i> Time Log</span>
+                    </div>
+                    <p class="text-slate-400 font-medium">Alto Custo Computacional & Latência</p>
+                </div>
+                <!-- Direita: A Solução -->
+                <div class="glass p-8 rounded-2xl border-l-4 border-success/50 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-bullseye text-8xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 text-success flex items-center">
+                        <i class="fa-solid fa-filter mr-3"></i> A Solução (Sinal)
+                    </h3>
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <span
+                            class="px-4 py-2 bg-success/20 text-success rounded-lg text-sm font-bold flex items-center shadow-lg shadow-success/10"><i
+                                class="fa-solid fa-file-contract mr-2"></i> Contrato Fechado</span>
+                        <span
+                            class="px-4 py-2 bg-success/20 text-success rounded-lg text-sm font-bold flex items-center shadow-lg shadow-success/10"><i
+                                class="fa-solid fa-trophy mr-2"></i> Meta Batida</span>
+                        <span
+                            class="px-4 py-2 bg-success/20 text-success rounded-lg text-sm font-bold flex items-center shadow-lg shadow-success/10"><i
+                                class="fa-solid fa-hand-holding-dollar mr-2"></i> Oportunidade > 500k</span>
+                    </div>
+                    <p class="text-slate-300 font-medium">Foco no Valor & Processamento Otimizado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. A Arquitetura (Fluxo Principal) -->
+    <section id="arquitetura" class="py-24 bg-slate-900/50 relative">
+        <div class="container mx-auto px-6">
+            <div class="mb-12 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Arquitetura de Solução</h2>
+                <p class="text-slate-400">Fluxo de dados Event-Driven do Salesforce ao Vendedor</p>
+            </div>
+
+            <!-- Architecture Image -->
+            <div class="flex justify-center mb-16">
+                <img src="arq-proposta.png" alt="Diagrama de Arquitetura da Solução"
+                    class="w-full max-w-5xl rounded-2xl shadow-2xl border border-slate-700 hover:scale-[1.01] transition-transform duration-300">
+            </div>
+
+            <!-- Info Cards -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="text-aws text-4xl mb-6"><i class="fa-solid fa-filter-circle-dollar"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Filtragem Inteligente</h3>
+                    <p class="text-sm text-slate-500 italic mb-4">"Não fervemos o oceano, apenas a água do chá."</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Utilizamos regras de padrão no <strong>EventBridge</strong> para descartar eventos irrelevantes
+                        antes mesmo de invocar funções Lambda, reduzindo custos drasticamente.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="text-purple-400 text-4xl mb-6"><i class="fa-solid fa-route"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Otimização Unificada</h3>
+                    <p class="text-sm text-slate-500 italic mb-4">"A Lógica do Entregador da Amazon."</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Não adianta o Lead ser quente se está a 2 horas de distância.
+                        <br><br>
+                        <code
+                            class="bg-slate-800 px-2 py-1 rounded text-xs">Score = (Potencial) / (Custo Deslocamento)</code>
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass p-8 rounded-2xl hover:bg-slate-800/50 transition-colors">
+                    <div class="text-success text-4xl mb-6"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Feedback Loop</h3>
+                    <p class="text-sm text-slate-500 italic mb-4">"O Vendedor treina a Máquina."</p>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Dados de recusa de rota (ex: "Trânsito ruim") são armazenados no <strong>S3</strong> e
+                        utilizados para retreinar os modelos de ML, criando um sistema que evolui.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Seção Inovação (LLMs) -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-slate-900 z-0"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="glass border border-yellow-500/30 p-10 rounded-3xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl -mr-16 -mt-16">
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-2/3">
+                        <div
+                            class="inline-flex items-center px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-bold mb-4 border border-yellow-500/20">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> NEXT LEVEL
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Além da Otimização: <span
+                                class="text-yellow-400">Aprendizado com LLMs</span></h2>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-6">
+                            Integração com <strong>Amazon Bedrock</strong> para interpretar linguagem natural. O sistema
+                            lê o feedback livre do vendedor:
+                        </p>
+                        <div
+                            class="bg-slate-900/50 p-4 rounded-lg border-l-4 border-yellow-500 italic text-slate-400 mb-6">
+                            "Não paro na Rua Augusta sexta-feira à tarde, é impossível estacionar."
+                        </div>
+                        <p class="text-slate-300">
+                            ...e cria automaticamente regras de bloqueio temporal para aquela região.
+                        </p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <i class="fa-solid fa-robot text-9xl text-yellow-500/20 animate-float"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Rodapé -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-500 text-sm mb-4">
+                Arquitetura de Solução Proposta - Baseada em Arquitetura de Eventos e Serverless.
+            </p>
+            <div class="flex justify-center space-x-6 text-slate-600">
+                <i class="fa-brands fa-aws text-2xl hover:text-aws transition-colors cursor-pointer"></i>
+                <i class="fa-brands fa-salesforce text-2xl hover:text-salesforce transition-colors cursor-pointer"></i>
+                <i class="fa-brands fa-github text-2xl hover:text-white transition-colors cursor-pointer"></i>
+            </div>
+            <p class="text-slate-700 text-xs mt-8">
+                &copy; 2024 Solução Enterprise. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Audio Player Logic
+        const audio = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        const progressBar = document.getElementById('progressBar');
+
+        if (playBtn && audio) {
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playIcon.classList.remove('fa-play', 'pl-1');
+                    playIcon.classList.add('fa-pause');
+                } else {
+                    audio.pause();
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play', 'pl-1');
+                }
+            });
+
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = `${progress}%`;
+                }
+            });
+
+            audio.addEventListener('ended', () => {
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play', 'pl-1');
+                progressBar.style.width = '0%';
+            });
+        }
+    </script>
+</body>
+
+</html>

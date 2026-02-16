@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSL - Tech Video</title>
+    <link href="./output.css" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KQ9R3GV3');</script>
+    <!-- End Google Tag Manager -->
+     <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GEKLHZYVYX');
+    </script>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="container mx-auto p-4 max-w-4xl">
+        <h1 class="text-3xl font-bold text-center mb-8">A Tecnologia do Futuro</h1>
+        <div class="rounded-lg overflow-hidden shadow-2xl">
+            <video id="meu-video-vsl" class="video-js vjs-default-skin vjs-16-9" preload="auto" autoplay muted>
+                <source src="/tech.mp4" type="video/mp4">
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                </p>
+            </video>
+        </div>
+        <div class="text-center mt-8">
+            <a href="#" id="cta-button" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-transform transform hover:scale-105" style="display: none;">
+                Quero Saber Mais!
+            </a>
+        </div>
+    </div>
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script>
+        // Desabilitar o menu de contexto (botão direito do mouse)
+        document.addEventListener('contextmenu', event => {
+            event.preventDefault();
+            console.log('Menu de contexto desabilitado.');
+        });
+
+        console.log('Inicializando player de vídeo...');
+        var player = videojs('meu-video-vsl', {
+            controls: false,
+            fluid: true
+        });
+        var ctaButton = document.getElementById('cta-button');
+        console.log('Player inicializado com controles desabilitados.');
+
+        var played = false;
+        var tracked25 = false;
+        var tracked50 = false;
+        var tracked75 = false;
+
+        // Prevenir que o usuário avance ou retroceda o vídeo
+        var lastTime = 0;
+        player.on('timeupdate', function(){
+            if(!player.seeking()){
+                lastTime = player.currentTime();
+            }
+        });
+        player.on('seeking', function(){
+            var delta = player.currentTime() - lastTime;
+            if (Math.abs(delta) > 0.01) {
+                console.log("Busca não permitida.");
+                player.currentTime(lastTime);
+            }
+        });
+
+        player.on('play', function() {
+            if (!played) {
+                console.log('Evento: video_play');
+                gtag('event', 'video_play', { 'video_title': 'VSL Principal' });
+                played = true;
+            }
+        });
+
+        player.on('ended', function() {
+            console.log('Evento: video_ended');
+            gtag('event', 'video_ended', { 'video_title': 'VSL Principal' });
+        });
+
+        player.on('timeupdate', function() {
+            var currentTime = player.currentTime();
+            var duration = player.duration();
+            var percent = (currentTime / duration) * 100;
+            console.log(`Time update: ${currentTime.toFixed(2)}s / ${duration.toFixed(2)}s (${percent.toFixed(2)}%)`);
+
+            if (percent >= 25 && !tracked25) {
+                console.log('Evento: video_progress 25%');
+                gtag('event', 'video_progress', { 'video_title': 'VSL Principal', 'video_percent': 25 });
+                tracked25 = true;
+            }
+
+            if (percent >= 50 && !tracked50) {
+                console.log('Evento: video_progress 50%');
+                gtag('event', 'video_progress', { 'video_title': 'VSL Principal', 'video_percent': 50 });
+                tracked50 = true;
+            }
+
+            if (percent >= 75 && !tracked75) {
+                console.log('Evento: video_progress 75%');
+                gtag('event', 'video_progress', { 'video_title': 'VSL Principal', 'video_percent': 75 });
+                tracked75 = true;
+            }
+            
+            if (percent > 60) {
+                if (ctaButton.style.display === 'none') {
+                    console.log('Ação: Mostrando botão CTA em 60%');
+                    ctaButton.style.display = 'inline-block';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

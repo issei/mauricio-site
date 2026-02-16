@@ -1,0 +1,18 @@
+# Regras para todos os robôs de busca (Google, Bing, etc.)
+User-agent: *
+Allow: /
+
+# Bloqueio de pastas de sistema ou temporárias (boas práticas)
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /logs/
+
+# Bloqueio de arquivos de fonte de design (opcional, para proteção de marca)
+Disallow: *.psd
+Disallow: *.ai
+
+# IMPORTANTE: Não bloqueie as páginas /privacidade e /termos.
+# O Google precisa acessá-las para ler a meta tag "noindex" que adicionamos no HTML.
+
+# Indicação do Mapa do Site (Essencial para indexação rápida)
+Sitemap: https://mauricio.issei.com.br/sitemap.xml

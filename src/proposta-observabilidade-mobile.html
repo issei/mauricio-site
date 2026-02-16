@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arquitetura de Observabilidade SRE para Mobilidade Corporativa com Datadog, Azure e Android Enterprise.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Observabilidade SRE para Mobilidade Corporativa">
+    <meta property="og:description" content="Correlação inteligente entre Dispositivo, Rede, Identidade e Aplicação com Azure, Datadog e Android Enterprise">
+    <meta property="og:image" content="https://mauricio.issei.com.br/og-image.jpg">
+    <meta property="og:type" content="website">
+    
+    <title>Observabilidade SRE para Mobilidade Corporativa</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        sre: '#22c55e',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .aspect-w-16 {
+            position: relative;
+            padding-bottom: 56.25%;
+        }
+        
+        .aspect-w-16 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 antialiased">
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold gradient-text">SRE Mobility</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#desafio" class="hover:text-primary transition-colors">Desafio</a>
+                    <a href="#solucao" class="hover:text-primary transition-colors">Solução</a>
+                    <a href="#arquitetura" class="hover:text-primary transition-colors">Arquitetura</a>
+                    <a href="#sre" class="hover:text-primary transition-colors">SRE</a>
+                    <a href="#automacao" class="hover:text-primary transition-colors">Automação</a>
+                    <a href="#finops" class="hover:text-primary transition-colors">FinOps</a>
+                    <a href="#download" class="hover:text-primary transition-colors">Download</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800/95 backdrop-blur-lg border-t border-slate-700">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#desafio" class="block hover:text-primary transition-colors">Desafio</a>
+                <a href="#solucao" class="block hover:text-primary transition-colors">Solução</a>
+                <a href="#arquitetura" class="block hover:text-primary transition-colors">Arquitetura</a>
+                <a href="#sre" class="block hover:text-primary transition-colors">SRE</a>
+                <a href="#automacao" class="block hover:text-primary transition-colors">Automação</a>
+                <a href="#finops" class="block hover:text-primary transition-colors">FinOps</a>
+                <a href="#download" class="block hover:text-primary transition-colors">Download</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="gradient-bg pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Arquitetura de <span class="gradient-text">Observabilidade SRE</span> para Mobilidade Corporativa
+                    </h1>
+                    <p class="text-xl text-slate-300 mb-8 font-light tracking-wide">
+                        Correlação inteligente entre Dispositivo, Rede, Identidade e Aplicação
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#video" class="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-blue-700 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                            </svg>
+                            Assistir Vídeo
+                        </a>
+                        <a href="#download" class="inline-flex items-center justify-center px-8 py-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl font-semibold transition-all">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Baixar PDF
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="bg-slate-800/50 backdrop-blur rounded-2xl p-8 border border-slate-700 shadow-2xl">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-sre rounded-full animate-pulse"></div>
+                                <span class="text-sm font-light">Azure Event Hub + Geo-DR</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-primary rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                <span class="text-sm font-light">Datadog SLO + Burn Rate</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-sre rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                                <span class="text-sm font-light">SCEP Identity Stitching</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-primary rounded-full animate-pulse" style="animation-delay: 0.6s"></div>
+                                <span class="text-sm font-light">State Tri-valorado (Healthy/Unknown/Down)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Desafio Section -->
+    <section id="desafio" class="py-20 px-4 bg-slate-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">O Desafio</h2>
+                <p class="text-xl text-slate-400 font-light">Problemas críticos no modelo atual</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Fragmentação de Dados</h3>
+                    <p class="text-sm text-slate-400 font-light">Sinais isolados em Intune, Entra ID, Cisco VPN e Salesforce sem correlação determinística</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Operação Reativa</h3>
+                    <p class="text-sm text-slate-400 font-light">Incidentes identificados apenas por tickets de usuários, aumentando impacto e tempo de resposta</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Alto MTTR</h3>
+                    <p class="text-sm text-slate-400 font-light">Diagnóstico lento por troca de contexto entre múltiplos consoles sem visão unificada</p>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Falta de Correlação</h3>
+                    <p class="text-sm text-slate-400 font-light">Impossibilidade de rastrear jornada Device → Network → Identity → Application</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Section -->
+    <section id="video" class="py-20 px-4 bg-slate-900">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Vídeo Resumo</h2>
+                <p class="text-xl text-slate-400 font-light">Entenda a solução em poucos minutos</p>
+            </div>
+            
+            <div class="aspect-w-16">
+                <iframe 
+                    src="https://www.youtube.com/embed/0xLFIeZovXs" 
+                    allowfullscreen
+                    class="rounded-xl shadow-2xl border border-slate-800">
+                </iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solução Section -->
+    <section id="solucao" class="py-20 px-4 bg-slate-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">A Solução</h2>
+                <p class="text-xl text-slate-400 font-light">Plataforma unificada de observabilidade com SRE</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Plataforma Unificada</h3>
+                            <p class="text-slate-400 font-light">Centralização de telemetria no Datadog com ingestão Azure-native (Event Hubs, Functions, Container Apps)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-sre/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Correlação SCEP Determinística</h3>
+                            <p class="text-slate-400 font-light">Identity Stitching via IntuneDeviceId no SAN do certificado, eliminando ambiguidade entre VPN e MDM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">SLOs e Error Budget</h3>
+                            <p class="text-slate-400 font-light">Governança SRE com SLIs orientados ao usuário, Burn Rate Alerts e automação baseada em impacto</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-sre/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-1">Privacy by Design</h3>
+                            <p class="text-slate-400 font-light">Proteção LGPD na entrada com Sensitive Data Scanner, hashing irreversível e RBAC granular</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-2xl">
+                    <svg viewBox="0 0 400 300" class="w-full" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Sources -->
+                        <g>
+                            <rect x="20" y="20" width="80" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                            <text x="60" y="45" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">Intune</text>
+                        </g>
+                        <g>
+                            <rect x="20" y="80" width="80" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                            <text x="60" y="105" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">Entra ID</text>
+                        </g>
+                        <g>
+                            <rect x="20" y="140" width="80" height="40" rx="4" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                            <text x="60" y="165" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">Cisco VPN</text>
+                        </g>
+                        
+                        <!-- Event Hub -->
+                        <g>
+                            <rect x="150" y="70" width="100" height="60" rx="4" fill="#2563eb" fill-opacity="0.2" stroke="#2563eb" stroke-width="2"/>
+                            <text x="200" y="95" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="600">Event Hub</text>
+                            <text x="200" y="110" text-anchor="middle" fill="#94a3b8" font-size="10">Geo-DR</text>
+                        </g>
+                        
+                        <!-- Datadog -->
+                        <g>
+                            <rect x="300" y="70" width="80" height="60" rx="4" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="2"/>
+                            <text x="340" y="95" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="600">Datadog</text>
+                            <text x="340" y="110" text-anchor="middle" fill="#94a3b8" font-size="10">SLO/SLI</text>
+                        </g>
+                        
+                        <!-- Arrows -->
+                        <path d="M 100 40 L 150 100" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 100 100 L 150 100" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 100 160 L 150 100" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 250 100 L 300 100" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Arrow marker -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#475569"/>
+                            </marker>
+                        </defs>
+                        
+                        <!-- Labels -->
+                        <text x="200" y="230" text-anchor="middle" fill="#64748b" font-size="11" font-weight="300">Correlação Multi-Camada</text>
+                        <text x="200" y="250" text-anchor="middle" fill="#64748b" font-size="11" font-weight="300">Device → Network → Identity → Application</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Arquitetura Section -->
+    <section id="arquitetura" class="py-20 px-4 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Arquitetura Técnica</h2>
+                <p class="text-xl text-slate-400 font-light">4 camadas de processamento inteligente</p>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Layer 1 -->
+                <div class="bg-slate-950 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-start space-x-6">
+                        <div class="text-6xl font-bold text-primary/20">1</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">Ingestão</h3>
+                            <p class="text-slate-400 mb-4 font-light">Captura resiliente de telemetria com replay e isolamento</p>
+                            <ul class="space-y-2 text-sm text-slate-300">
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Azure Event Hubs com Geo-Disaster Recovery</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Diagnostic Settings (Intune/Entra) com retenção para replay</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Azure Container Apps com auto-scaling KEDA (backlog-driven)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Layer 2 -->
+                <div class="bg-slate-950 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-start space-x-6">
+                        <div class="text-6xl font-bold text-primary/20">2</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">Enriquecimento</h3>
+                            <p class="text-slate-400 mb-4 font-light">Inventário e contexto de negócio com eficiência</p>
+                            <ul class="space-y-2 text-sm text-slate-300">
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Microsoft Graph Delta Queries (redução de 90%+ em overhead)</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Fallback automático para full sync em caso de expiração (410 Gone)</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Reference Tables (departamento, região, VIP status, cost center)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Layer 3 -->
+                <div class="bg-slate-950 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-start space-x-6">
+                        <div class="text-6xl font-bold text-primary/20">3</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">Correlação</h3>
+                            <p class="text-slate-400 mb-4 font-light">Identity Stitching determinístico sem ambiguidade</p>
+                            <ul class="space-y-2 text-sm text-slate-300">
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>IntuneDeviceId injetado no SAN do certificado SCEP (URI)</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Cisco ASA extrai GUID via Regex e mapeia para atributo de sessão</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Join_confidence (high/medium/low) para qualidade de diagnóstico</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Layer 4 -->
+                <div class="bg-slate-950 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-start space-x-6">
+                        <div class="text-6xl font-bold text-primary/20">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-3">Automação</h3>
+                            <p class="text-slate-400 mb-4 font-light">Remediação inteligente e integração ITSM</p>
+                            <ul class="space-y-2 text-sm text-slate-300">
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Logic Apps para auto-healing (sync remoto, notificação usuário)</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Criação/atualização de incidentes com evidências correlacionadas</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-sre" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Runbooks padronizados por cenário (dispositivo stale, VPN regional)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SRE Section -->
+    <section id="sre" class="py-20 px-4 bg-slate-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Modelo SRE</h2>
+                <p class="text-xl text-slate-400 font-light">SLIs, SLOs e Error Budget para governança de confiabilidade</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- SLI Card 1 -->
+                <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Fleet Compliance Health</h3>
+                        <span class="text-2xl font-bold text-sre">≥95%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-3 mb-4">
+                        <div class="bg-sre h-3 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <p class="text-sm text-slate-400 font-light">Dispositivos em conformidade vs. frota ativa (estado tri-valorado: Healthy/Unknown/Down)</p>
+                </div>
+                
+                <!-- SLI Card 2 -->
+                <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">VPN Availability</h3>
+                        <span class="text-2xl font-bold text-sre">≥99%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-3 mb-4">
+                        <div class="bg-sre h-3 rounded-full" style="width: 99%"></div>
+                    </div>
+                    <p class="text-sm text-slate-400 font-light">Taxa de sucesso de VPN com exclusões documentadas (wrong_password, expired_cert)</p>
+                </div>
+                
+                <!-- SLI Card 3 -->
+                <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Salesforce Access</h3>
+                        <span class="text-2xl font-bold text-sre">≥99.5%</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-3 mb-4">
+                        <div class="bg-sre h-3 rounded-full" style="width: 99.5%"></div>
+                    </div>
+                    <p class="text-sm text-slate-400 font-light">Sucesso de autenticação e uso da aplicação crítica de negócio</p>
+                </div>
+                
+                <!-- SLI Card 4 -->
+                <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">Pipeline Freshness</h3>
+                        <span class="text-2xl font-bold text-primary">P95 &lt;15min</span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-3 mb-4">
+                        <div class="bg-primary h-3 rounded-full" style="width: 92%"></div>
+                    </div>
+                    <p class="text-sm text-slate-400 font-light">Latência end-to-end de ingestão (fonte → Datadog) para garantir qualidade dos SLIs</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-primary/10 to-sre/10 rounded-2xl p-8 border border-primary/20">
+                <h3 class="text-2xl font-bold mb-4">Burn Rate Alerts</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-primary">Fast Burn</h4>
+                        <p class="text-sm text-slate-300 font-light">Consumo acelerado do Error Budget indica incidente severo em curso. Requer ação imediata e escalonamento.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 text-sre">Slow Burn</h4>
+                        <p class="text-sm text-slate-300 font-light">Degradação gradual detectada. Sinal de tendência negativa que permite ação preventiva antes do impacto crítico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Diferenciais Section -->
+    <section id="automacao" class="py-20 px-4 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Diferenciais Técnicos</h2>
+                <p class="text-xl text-slate-400 font-light">Capacidades únicas da solução</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 shadow-lg hover:border-primary/50 transition-all">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Identity Stitching SCEP</h3>
+                    <p class="text-sm text-slate-400 font-light">Correlação determinística via IntuneDeviceId no SAN do certificado, eliminando ambiguidade de IP/usuário</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 shadow-lg hover:border-sre/50 transition-all">
+                    <div class="w-12 h-12 bg-sre/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-sre" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Estado Tri-valorado</h3>
+                    <p class="text-sm text-slate-400 font-light">Healthy/Unknown/Down absorve incerteza do Doze Mode sem inflar falsos positivos</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 shadow-lg hover:border-primary/50 transition-all">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Privacy by Design</h3>
+                    <p class="text-sm text-slate-400 font-light">Sensitive Data Scanner com hashing/redaction na entrada, RBAC granular e auditoria LGPD</p>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 shadow-lg hover:border-sre/50 transition-all">
+                    <div class="w-12 h-12 bg-sre/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-sre" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Logs-to-Metrics</h3>
+                    <p class="text-sm text-slate-400 font-light">Agregação para SLIs/tendências com descarte do log bruto, reduzindo custo sem perder visibilidade</p>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 shadow-lg hover:border-primary/50 transition-all">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Flex Logs</h3>
+                    <p class="text-sm text-slate-400 font-light">Retenção econômica para logs de baixo acesso (investigação forense/auditoria)</p>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 shadow-lg hover:border-sre/50 transition-all">
+                    <div class="w-12 h-12 bg-sre/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-sre" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Managed Identity</h3>
+                    <p class="text-sm text-slate-400 font-light">Autenticação sem chaves estáticas (Key Vault, Event Hub, Graph API) com rotação automática</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FinOps Section -->
+    <section id="finops" class="py-20 px-4 bg-slate-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Governança FinOps</h2>
+                <p class="text-xl text-slate-400 font-light">Sustentabilidade operacional e otimização de custos</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center">
+                            <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Redução de Ingestão
+                        </h3>
+                        <p class="text-sm text-slate-400 font-light">Delta Queries (Graph API) reduzem overhead em 90%+ vs. full scans recorrentes</p>
+                    </div>
+                    
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center">
+                            <svg class="w-5 h-5 text-sre mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Hot vs Cold Logs
+                        </h3>
+                        <p class="text-sm text-slate-400 font-light">Indexação seletiva: críticos (investigação) indexados; volumétricos (sucessos) em Flex Logs</p>
+                    </div>
+                    
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+                        <h3 class="text-lg font-semibold mb-3 flex items-center">
+                            <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Guardrails de Cardinalidade
+                        </h3>
+                        <p class="text-sm text-slate-400 font-light">Políticas de tags, alarmes de volume e limits para prevenir explosão de cardinalidade</p>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-900 rounded-2xl p-8 border border-slate-800 shadow-2xl">
+                    <h3 class="text-xl font-semibold mb-6 text-center">Otimização de Custos</h3>
+                    <svg viewBox="0 0 300 200" class="w-full" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Before -->
+                        <g>
+                            <text x="75" y="30" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="600">Antes</text>
+                            <rect x="25" y="50" width="100" height="120" rx="4" fill="#ef4444" fill-opacity="0.3" stroke="#ef4444" stroke-width="2"/>
+                            <text x="75" y="115" text-anchor="middle" fill="#fca5a5" font-size="24" font-weight="700">100%</text>
+                            <text x="75" y="185" text-anchor="middle" fill="#94a3b8" font-size="11">Full Scans</text>
+                        </g>
+                        
+                        <!-- Arrow -->
+                        <g>
+                            <path d="M 135 110 L 165 110" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+                        </g>
+                        
+                        <!-- After -->
+                        <g>
+                            <text x="225" y="30" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="600">Depois</text>
+                            <rect x="175" y="50" width="100" height="15" rx="4" fill="#22c55e" fill-opacity="0.3" stroke="#22c55e" stroke-width="2"/>
+                            <text x="225" y="115" text-anchor="middle" fill="#4ade80" font-size="24" font-weight="700">~10%</text>
+                            <text x="225" y="185" text-anchor="middle" fill="#94a3b8" font-size="11">Delta Queries</text>
+                        </g>
+                        
+                        <defs>
+                            <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#475569"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Download Section -->
+    <section id="download" class="py-20 px-4 bg-gradient-to-br from-primary/10 to-sre/10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Documentação Completa</h2>
+            <p class="text-xl text-slate-300 mb-12 font-light">Acesse a apresentação executiva e a documentação técnica detalhada</p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Apresentação -->
+                <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-8 border border-slate-700 shadow-xl">
+                    <div class="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Apresentação Executiva</h3>
+                    <p class="text-sm text-slate-400 mb-6 font-light">Visão estratégica e valor de negócio</p>
+                    <a href="https://mauricio.issei.com.br/Confiabilidade_Móvel_Unificada.pdf" 
+                       target="_blank"
+                       class="inline-flex items-center justify-center w-full px-6 py-3 bg-primary hover:bg-blue-700 rounded-xl font-semibold transition-all">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Download PDF
+                    </a>
+                </div>
+                
+                <!-- Documentação -->
+                <div class="bg-slate-900/50 backdrop-blur rounded-2xl p-8 border border-slate-700 shadow-xl">
+                    <div class="w-16 h-16 bg-sre/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-sre" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Documentação Técnica</h3>
+                    <p class="text-sm text-slate-400 mb-6 font-light">Arquitetura, implementação e runbooks</p>
+                    <a href="https://mauricio.issei.com.br/mainV8.pdf" 
+                       target="_blank"
+                       class="inline-flex items-center justify-center w-full px-6 py-3 bg-sre hover:bg-green-600 rounded-xl font-semibold transition-all">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-sm text-slate-400 font-light">
+                <p>37 páginas de arquitetura técnica detalhada</p>
+                <p>Inclui código, diagramas e runbooks operacionais</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-3 gradient-text">SRE Mobility</h3>
+                    <p class="text-sm text-slate-400 font-light">Arquitetura de Observabilidade para Mobilidade Corporativa Android Enterprise</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-semibold mb-3 text-slate-300">Recursos</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="https://youtu.be/0xLFIeZovXs" target="_blank" class="hover:text-primary transition-colors">Vídeo Resumo</a></li>
+                        <li><a href="https://mauricio.issei.com.br/Confiabilidade_Móvel_Unificada.pdf" target="_blank" class="hover:text-primary transition-colors">Apresentação</a></li>
+                        <li><a href="https://mauricio.issei.com.br/mainV8.pdf" target="_blank" class="hover:text-primary transition-colors">Documentação</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-semibold mb-3 text-slate-300">Referências Técnicas</h4>
+                    <ul class="space-y-2 text-sm text-slate-400 font-light">
+                        <li>Site Reliability Engineering (Google)</li>
+                        <li>The DevOps Handbook</li>
+                        <li>Azure Well-Architected Framework</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+                <p>&copy; 2026 Arquitetura de Observabilidade SRE. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
