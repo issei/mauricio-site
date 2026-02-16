@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,48 +21,59 @@
     <meta property="twitter:description" content="{{DESCRICAO}}">
     <meta property="twitter:image" content="">
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KQ9R3GV3');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
     <!-- End Google Tag Manager -->
-     <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-GEKLHZYVYX');
+        gtag('config', 'G-GEKLHZYVYX');
     </script>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
 
     <!-- Tailwind Play CDN -->
-    <link href="./output.css" rel="stylesheet">
+    <link href="./input.css" rel="stylesheet">
     <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <!-- SEO & Meta Tags -->
-<style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- SEO & Meta Tags -->
+    <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Fundo escuro */
-            color: #c9d1d9; /* Texto cinza claro */
+            background-color: #0d1117;
+            /* Fundo escuro */
+            color: #c9d1d9;
+            /* Texto cinza claro */
             scroll-behavior: smooth;
         }
+
         /* Scrollbar customizada para um visual elegante */
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #161b22;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #4a5568;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #6b7280;
         }
@@ -77,6 +89,7 @@
             z-index: -1;
             opacity: 0.2;
         }
+
         .hero-background::before {
             content: '';
             position: absolute;
@@ -87,10 +100,22 @@
             background: radial-gradient(circle at 50% 50%, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
             animation: pulse 15s infinite alternate;
         }
+
         @keyframes pulse {
-            0% { transform: scale(0.8); opacity: 0.1; }
-            50% { transform: scale(1.2); opacity: 0.2; }
-            100% { transform: scale(0.8); opacity: 0.1; }
+            0% {
+                transform: scale(0.8);
+                opacity: 0.1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.1;
+            }
         }
 
         /* Títulos de seção com um brilho sutil */
@@ -99,6 +124,7 @@
             display: inline-block;
             padding-bottom: 8px;
         }
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -106,7 +132,8 @@
             bottom: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, #007bff, #8a2be2); /* Gradiente de azul para roxo */
+            background: linear-gradient(90deg, #007bff, #8a2be2);
+            /* Gradiente de azul para roxo */
             border-radius: 2px;
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
         }
@@ -115,6 +142,7 @@
         .project-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2), 0 5px 10px rgba(138, 43, 226, 0.1);
@@ -130,29 +158,41 @@
             border: 2px solid #8a2be2;
             transition: all 0.3s ease;
         }
+
         .timeline-item:hover .timeline-dot {
             transform: scale(1.2);
             box-shadow: 0 0 15px #007bff, 0 0 25px #8a2be2;
         }
-        
+
         /* Estilização específica do Modal */
         .modal {
-            display: none; /* Oculto por padrão */
-            position: fixed; /* Fica no lugar */
-            z-index: 1000; /* Fica no topo */
+            display: none;
+            /* Oculto por padrão */
+            position: fixed;
+            /* Fica no lugar */
+            z-index: 1000;
+            /* Fica no topo */
             left: 0;
             top: 0;
-            width: 100%; /* Largura total */
-            height: 100%; /* Altura total */
-            overflow: auto; /* Habilita scroll se necessário */
-            background-color: rgba(0,0,0,0.8); /* Preto com opacidade */
-            backdrop-filter: blur(5px); /* Efeito de vidro fosco */
-            -webkit-backdrop-filter: blur(5px); /* Suporte para Safari */
+            width: 100%;
+            /* Largura total */
+            height: 100%;
+            /* Altura total */
+            overflow: auto;
+            /* Habilita scroll se necessário */
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Preto com opacidade */
+            backdrop-filter: blur(5px);
+            /* Efeito de vidro fosco */
+            -webkit-backdrop-filter: blur(5px);
+            /* Suporte para Safari */
             padding: 20px;
         }
+
         .modal-content {
             background-color: #161b22;
-            margin: 5% auto; /* 5% do topo e centralizado */
+            margin: 5% auto;
+            /* 5% do topo e centralizado */
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3), 0 4px 8px rgba(138, 43, 226, 0.2);
@@ -160,13 +200,24 @@
             width: 90%;
             max-width: 900px;
             animation: fadeIn 0.3s ease-out;
-            max-height: 90vh; /* Limita a altura para habilitar scroll dentro do modal */
-            overflow-y: auto; /* Habilita scroll para o conteúdo do modal */
+            max-height: 90vh;
+            /* Limita a altura para habilitar scroll dentro do modal */
+            overflow-y: auto;
+            /* Habilita scroll para o conteúdo do modal */
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .close-button {
             color: #c9d1d9;
             position: absolute;
@@ -177,6 +228,7 @@
             cursor: pointer;
             transition: color 0.3s ease;
         }
+
         .close-button:hover,
         .close-button:focus {
             color: #007bff;
@@ -192,10 +244,12 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
         }
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5), 0 3px 8px rgba(138, 43, 226, 0.3);
         }
+
         .btn-secondary {
             background-color: #21262d;
             color: #007bff;
@@ -205,6 +259,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
+
         .btn-secondary:hover {
             background-color: #007bff;
             color: white;
@@ -217,36 +272,48 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+
         .animate-on-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
+
 <body class="antialiased">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg backdrop-blur-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Maurício Yokoyama Issei</a>
+            <a href="#hero"
+                class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Maurício
+                Yokoyama Issei</a>
             <div class="hidden md:flex space-x-4 text-sm">
                 <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Sobre Mim</a>
-                <a href="#skills" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Habilidades</a>
-                <a href="#experience" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Experiência</a>
-                <a href="#projects" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Projetos</a>
-                <a href="#education" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Formação</a>
+                <a href="#skills"
+                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Habilidades</a>
+                <a href="#experience"
+                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Experiência</a>
+                <a href="#projects"
+                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Projetos</a>
+                <a href="#education"
+                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Formação</a>
                 <a href="#courses" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Cursos</a>
-                <a href="#recommendations" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Recomendações</a>
+                <a href="#recommendations"
+                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Recomendações</a>
                 <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Contato</a>
             </div>
             <!-- Botão do Menu Mobile -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
                 <span class="sr-only">Abrir menu principal</span>
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
                 </svg>
             </button>
         </div>
@@ -265,7 +332,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <main class="pt-20">
         <!-- Seção Hero -->
-        <section id="hero" class="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white overflow-hidden p-6">
+        <section id="hero"
+            class="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white overflow-hidden p-6">
             <div class="hero-background"></div>
             <div id="hero-content" class="text-center z-10 max-w-4xl mx-auto">
                 <!-- Conteúdo do Hero será carregado aqui -->
@@ -275,15 +343,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Seção Sobre Mim -->
         <section id="about" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="about-title">
             <div class="container mx-auto max-w-6xl">
-                <h2 id="about-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Sobre Mim</h2>
+                <h2 id="about-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Sobre Mim
+                </h2>
                 <div class="flex flex-col md:flex-row items-center md:space-x-12">
                     <div class="md:w-1/3 mb-8 md:mb-0 flex-shrink-0">
-                        <img src="./foto1.png"
-                             alt="Maurício Yokoyama Issei"
-                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/21262d/c9d1d9?text=Mauricio+Yokoyama+Issei';"
-                             alt="Maurício Yokoyama Issei" 
-                             class="rounded-full shadow-lg border-4 border-blue-500 w-64 h-64 mx-auto object-cover"
-                             loading="lazy">
+                        <img src="./foto1.png" alt="Maurício Yokoyama Issei"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x400/21262d/c9d1d9?text=Mauricio+Yokoyama+Issei';"
+                            alt="Maurício Yokoyama Issei"
+                            class="rounded-full shadow-lg border-4 border-blue-500 w-64 h-64 mx-auto object-cover"
+                            loading="lazy">
                     </div>
                     <div id="about-content" class="md:w-2/3 text-lg text-gray-300 leading-relaxed">
                         <!-- Conteúdo Sobre Mim será carregado aqui -->
@@ -295,7 +363,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Seção de Habilidades -->
         <section id="skills" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="skills-title">
             <div class="container mx-auto max-w-7xl">
-                <h2 id="skills-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Habilidades & Competências</h2>
+                <h2 id="skills-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Habilidades
+                    & Competências</h2>
                 <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Habilidades serão carregadas dinamicamente aqui -->
                 </div>
@@ -303,9 +372,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
 
         <!-- Seção de Experiência -->
-        <section id="experience" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="experience-title">
+        <section id="experience" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll"
+            aria-labelledby="experience-title">
             <div class="container mx-auto max-w-5xl">
-                <h2 id="experience-title" class="text-4xl font-bold text-white mb-16 text-center section-title">Experiência Profissional</h2>
+                <h2 id="experience-title" class="text-4xl font-bold text-white mb-16 text-center section-title">
+                    Experiência Profissional</h2>
                 <div id="experience-container" class="relative border-l-2 border-gray-700 ml-4 md:ml-0">
                     <!-- Experiência será carregada dinamicamente aqui -->
                 </div>
@@ -313,9 +384,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
 
         <!-- Seção de Projetos -->
-        <section id="projects" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="projects-title">
+        <section id="projects" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll"
+            aria-labelledby="projects-title">
             <div class="container mx-auto max-w-7xl">
-                <h2 id="projects-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Projetos em Destaque</h2>
+                <h2 id="projects-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Projetos
+                    em Destaque</h2>
                 <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Projetos serão carregados dinamicamente aqui -->
                 </div>
@@ -325,35 +398,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Modal de Detalhes do Projeto -->
         <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-project-name">
             <div class="modal-content">
-                <span class="close-button" onclick="closeModal()" role="button" tabindex="0" aria-label="Fechar detalhe do projeto">&times;</span>
+                <span class="close-button" onclick="closeModal()" role="button" tabindex="0"
+                    aria-label="Fechar detalhe do projeto">&times;</span>
                 <h3 id="modal-project-name" class="text-3xl font-bold text-white mb-4" tabindex="-1"></h3>
                 <p id="modal-project-period" class="text-md text-gray-400 mb-2"></p>
                 <p id="modal-project-company" class="text-md text-gray-400 mb-6"></p>
-                
+
                 <div id="modal-project-star-details">
                     <h4 class="text-xl font-semibold text-blue-400 mb-2">Situação:</h4>
                     <p id="modal-project-situacao" class="text-gray-300 mb-4 bg-gray-800 p-3 rounded"></p>
-                    
+
                     <h4 class="text-xl font-semibold text-blue-400 mb-2">Tarefas:</h4>
-                    <ul id="modal-project-tarefas" class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
-                    
+                    <ul id="modal-project-tarefas"
+                        class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
+
                     <h4 class="text-xl font-semibold text-blue-400 mb-2">Ações:</h4>
-                    <ul id="modal-project-acoes" class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
-                    
+                    <ul id="modal-project-acoes"
+                        class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
+
                     <h4 class="text-xl font-semibold text-blue-400 mb-2">Resultados:</h4>
-                    <ul id="modal-project-resultados" class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
+                    <ul id="modal-project-resultados"
+                        class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
                 </div>
 
-                <h4 class="text-xl font-semibold text-blue-400 mb-2 mt-4" id="modal-project-tech-title" style="display:none;">Tecnologias:</h4>
+                <h4 class="text-xl font-semibold text-blue-400 mb-2 mt-4" id="modal-project-tech-title"
+                    style="display:none;">Tecnologias:</h4>
                 <div id="modal-project-technologies" class="flex flex-wrap gap-2"></div>
             </div>
         </div>
 
         <!-- Seção de Formação e Certificações -->
-        <section id="education" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="education-title">
+        <section id="education" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll"
+            aria-labelledby="education-title">
             <div class="container mx-auto max-w-6xl">
-                <h2 id="education-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Formação & Certificações</h2>
-                
+                <h2 id="education-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Formação
+                    & Certificações</h2>
+
                 <div class="mb-16">
                     <h3 class="text-3xl font-semibold text-blue-400 mb-8 text-center">Formação Acadêmica</h3>
                     <div id="education-container" class="space-y-8">
@@ -363,29 +443,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <div>
                     <h3 class="text-3xl font-semibold text-blue-400 mb-8 text-center">Certificações</h3>
-                    <div id="certifications-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div id="certifications-container"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         <!-- Certificações serão carregadas dinamicamente aqui -->
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Seção de Cursos -->
         <section id="courses" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="courses-title">
             <div class="container mx-auto max-w-7xl">
-                <h2 id="courses-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Cursos e Capacitações (Alura)</h2>
-                <a href="https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Certificado Geral <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                <h2 id="courses-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Cursos e
+                    Capacitações (Alura)</h2>
+                <a href="https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0"
+                    target="_blank" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Certificado Geral
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
                 <div id="courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Cursos serão carregados dinamicamente aqui -->
                 </div>
-               
+
             </div>
         </section>
 
         <!-- Seção de Recomendações -->
-        <section id="recommendations" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="recommendations-title">
+        <section id="recommendations" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll"
+            aria-labelledby="recommendations-title">
             <div class="container mx-auto max-w-6xl">
-                <h2 id="recommendations-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Recomendações</h2>
+                <h2 id="recommendations-title" class="text-4xl font-bold text-white mb-12 text-center section-title">
+                    Recomendações</h2>
                 <div id="recommendations-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Recomendações serão carregadas dinamicamente aqui -->
                 </div>
@@ -393,9 +479,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
 
         <!-- Seção de Contato -->
-        <section id="contact" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="contact-title-main">
+        <section id="contact" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll"
+            aria-labelledby="contact-title-main">
             <div class="container mx-auto max-w-4xl text-center">
-                <h2 id="contact-title-main" class="text-4xl font-bold text-white mb-12 section-title">Entre em Contato</h2>
+                <h2 id="contact-title-main" class="text-4xl font-bold text-white mb-12 section-title">Entre em Contato
+                </h2>
                 <div id="contact-container">
                     <!-- Conteúdo de Contato será carregado aqui -->
                 </div>
@@ -414,12 +502,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script>
         // URL do cv.json (injetada pelo script de build)
         const CV_JSON_URL = '{{CV_JSON_URL}}';
-        
+
         // Carrega profileData de cv.json (GitHub ou local)
         let profileData;
         document.addEventListener('DOMContentLoaded', () => {
             console.log(`🔄 Carregando dados de: ${CV_JSON_URL}`);
-            
+
             fetch(CV_JSON_URL)
                 .then(response => {
                     if (!response.ok) {
@@ -524,7 +612,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             `;
         }
-        
+
         function renderAbout() {
             const container = document.getElementById('about-content');
             container.innerHTML = profileData.Resumo.map(p => `<p class="mb-4">${p}</p>`).join('');
@@ -645,7 +733,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 container.appendChild(certDiv);
             });
         }
-        
+
         function renderCourses() {
             const container = document.getElementById('courses-container');
             container.innerHTML = ''; // Limpa o container
@@ -712,7 +800,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Funções do Modal
         const projectModal = document.getElementById('project-modal');
         let lastFocusedElement;
-        
+
         function openModal(triggerElement, index) {
             lastFocusedElement = triggerElement; // Salva o botão que abriu o modal
 
@@ -721,23 +809,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             modalTitle.textContent = project.Nome;
             document.getElementById('modal-project-period').textContent = project.Periodo;
             document.getElementById('modal-project-company').textContent = project.Empresa;
-            
+
             const starDetails = document.getElementById('modal-project-star-details');
             if (project.Situacao && project.Situacao !== "N/A") {
                 starDetails.style.display = 'block';
                 document.getElementById('modal-project-situacao').innerHTML = project.Situacao;
-                
+
                 const tarefasUl = document.getElementById('modal-project-tarefas');
                 tarefasUl.innerHTML = '';
-                if(Array.isArray(project.Tarefas)) project.Tarefas.forEach(task => tarefasUl.innerHTML += `<li>${task}</li>`);
-                
+                if (Array.isArray(project.Tarefas)) project.Tarefas.forEach(task => tarefasUl.innerHTML += `<li>${task}</li>`);
+
                 const acoesUl = document.getElementById('modal-project-acoes');
                 acoesUl.innerHTML = '';
-                if(Array.isArray(project.Acoes)) project.Acoes.forEach(action => acoesUl.innerHTML += `<li>${action}</li>`);
+                if (Array.isArray(project.Acoes)) project.Acoes.forEach(action => acoesUl.innerHTML += `<li>${action}</li>`);
 
                 const resultadosUl = document.getElementById('modal-project-resultados');
                 resultadosUl.innerHTML = '';
-                if(Array.isArray(project.Resultados)) project.Resultados.forEach(result => resultadosUl.innerHTML += `<li>${result}</li>`);
+                if (Array.isArray(project.Resultados)) project.Resultados.forEach(result => resultadosUl.innerHTML += `<li>${result}</li>`);
 
             } else {
                 starDetails.style.display = 'none';
@@ -772,13 +860,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         // Fecha o modal ao clicar fora dele
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (event.target == projectModal) {
                 closeModal();
             }
         }
         // Fecha o modal com a tecla 'Escape'
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === "Escape") {
                 closeModal();
             }
@@ -786,4 +874,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </script>
 </body>
+
 </html>

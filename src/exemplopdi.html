@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO & Meta Tags -->
     <title>PDI - Plano de Desenvolvimento de Habilidades | Maurício Y. Issei</title>
-    <meta name="description" content="Plano de Desenvolvimento de Habilidades de Maurício Issei, alinhado com o mapa mental estratégico para evolução de carreira, focado em Liderança, SRE, Comunicação e Visão de Produto.">
-    
+    <meta name="description"
+        content="Plano de Desenvolvimento de Habilidades de Maurício Issei, alinhado com o mapa mental estratégico para evolução de carreira, focado em Liderança, SRE, Comunicação e Visão de Produto.">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mauricio.issei.com.br">
     <meta property="og:title" content="PDI - Plano de Desenvolvimento de Habilidades | Maurício Y. Issei">
-    <meta property="og:description" content="Um plano de ação estratégico com objetivos SMART, cronograma e exemplos de resultados para impulsionar a carreira.">
+    <meta property="og:description"
+        content="Um plano de ação estratégico com objetivos SMART, cronograma e exemplos de resultados para impulsionar a carreira.">
     <meta property="og:image" content="">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://mauricio.issei.com.br">
     <meta property="twitter:title" content="PDI - Plano de Desenvolvimento de Habilidades | Maurício Y. Issei">
-    <meta property="twitter:description" content="Um plano de ação estratégico com objetivos SMART, cronograma e exemplos de resultados para impulsionar a carreira.">
+    <meta property="twitter:description"
+        content="Um plano de ação estratégico com objetivos SMART, cronograma e exemplos de resultados para impulsionar a carreira.">
     <meta property="twitter:image" content="">
 
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
 
     <!-- Tailwind Play CDN -->
-    <link href="./output.css" rel="stylesheet">
-    
+    <link href="./input.css" rel="stylesheet">
+
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         /* Estilos customizados para replicar e aprimorar a identidade visual */
         body {
@@ -44,11 +50,13 @@
             color: #c9d1d9;
             scroll-behavior: smooth;
         }
+
         .section-title {
             position: relative;
             display: inline-block;
             padding-bottom: 8px;
         }
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -60,6 +68,7 @@
             border-radius: 2px;
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
         }
+
         .timeline-dot {
             position: absolute;
             left: -33px;
@@ -71,24 +80,30 @@
             border: 2px solid #8a2be2;
             box-shadow: 0 0 8px rgba(0, 123, 255, 0.7);
         }
+
         .card-hover {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2), 0 5px 10px rgba(138, 43, 226, 0.1);
         }
+
         .competency-card {
             background-color: rgba(25, 42, 86, 0.3);
         }
+
         .smart-goal-card {
             background-color: #161b22;
             border: 1px solid #30363d;
             transition: all 0.3s ease;
         }
+
         .smart-goal-card:hover {
             border-color: #8a2be2;
         }
+
         .tag {
             display: inline-block;
             padding: 0.25rem 0.75rem;
@@ -100,15 +115,20 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- Cabeçalho e Navegação Fixa -->
     <header class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-700">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Maurício Y. Issei</a>
+            <a href="#"
+                class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Maurício Y.
+                Issei</a>
             <nav class="hidden md:flex items-center space-x-6 text-sm">
-                <a href="https://mauricio.issei.com.br/index.html" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors">Perfil</a>
-                <a href="https://mauricio.issei.com.br/mapmind.html" target="_blank" class="text-gray-300 hover:text-blue-400 transition-colors">Mapa Mental</a>
+                <a href="https://mauricio.issei.com.br/index.html" target="_blank"
+                    class="text-gray-300 hover:text-blue-400 transition-colors">Perfil</a>
+                <a href="https://mauricio.issei.com.br/mapmind.html" target="_blank"
+                    class="text-gray-300 hover:text-blue-400 transition-colors">Mapa Mental</a>
                 <a href="#competencies" class="text-gray-300 hover:text-blue-400 transition-colors">Competências</a>
                 <a href="#smart-goals" class="text-gray-300 hover:text-blue-400 transition-colors">Objetivos SMART</a>
                 <a href="#timeline" class="text-gray-300 hover:text-blue-400 transition-colors">Cronograma</a>
@@ -118,12 +138,14 @@
     </header>
 
     <main class="container mx-auto px-6 py-16">
-        
+
         <!-- Seção 1: Competências Chave -->
         <section id="competencies" class="mb-20 scroll-mt-24">
             <div class="text-center mb-12">
                 <h1 class="text-5xl font-extrabold text-white mb-4">Plano de Desenvolvimento de Habilidades</h1>
-                <p class="text-gray-400 max-w-3xl mx-auto mt-4">Uma visão estruturada que conecta minhas competências, histórico de entregas e objetivos de desenvolvimento para maximizar o impacto e acelerar o crescimento profissional.</p>
+                <p class="text-gray-400 max-w-3xl mx-auto mt-4">Uma visão estruturada que conecta minhas competências,
+                    histórico de entregas e objetivos de desenvolvimento para maximizar o impacto e acelerar o
+                    crescimento profissional.</p>
             </div>
             <div id="competencies-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Cards de Competências serão inseridos aqui pelo JavaScript -->
@@ -134,7 +156,8 @@
         <section id="smart-goals" class="mb-20 scroll-mt-24">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-white mb-4 section-title">Objetivos SMART & Plano de Ação</h2>
-                <p class="text-gray-400 max-w-3xl mx-auto mt-4">Metas claras e acionáveis, com um plano de execução 70-20-10 para garantir o desenvolvimento contínuo e a entrega de resultados estratégicos.</p>
+                <p class="text-gray-400 max-w-3xl mx-auto mt-4">Metas claras e acionáveis, com um plano de execução
+                    70-20-10 para garantir o desenvolvimento contínuo e a entrega de resultados estratégicos.</p>
             </div>
             <div id="smart-goals-container" class="space-y-12">
                 <!-- Objetivos SMART detalhados serão inseridos aqui pelo JavaScript -->
@@ -163,10 +186,10 @@
 
         <!-- Seção 5: Recursos e Apoio -->
         <section id="support" class="scroll-mt-24">
-             <div class="text-center mb-12">
+            <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-white mb-4 section-title">Recursos e Apoio Necessários</h2>
             </div>
-             <div class="overflow-x-auto bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700">
+            <div class="overflow-x-auto bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700">
                 <table class="w-full text-left text-sm">
                     <thead class="bg-gray-900">
                         <tr>
@@ -178,18 +201,27 @@
                     <tbody class="divide-y divide-gray-700">
                         <tr>
                             <td class="p-4 font-semibold text-blue-400">Tempo</td>
-                            <td class="p-4 text-gray-400">Alocação de ~2-4 horas semanais para mentoria, estudos e desenvolvimento das iniciativas do PDI.</td>
-                            <td class="p-4"><span class="bg-yellow-400/20 text-yellow-300 text-xs font-bold px-2 py-1 rounded-full">A alinhar</span></td>
+                            <td class="p-4 text-gray-400">Alocação de ~2-4 horas semanais para mentoria, estudos e
+                                desenvolvimento das iniciativas do PDI.</td>
+                            <td class="p-4"><span
+                                    class="bg-yellow-400/20 text-yellow-300 text-xs font-bold px-2 py-1 rounded-full">A
+                                    alinhar</span></td>
                         </tr>
                         <tr>
                             <td class="p-4 font-semibold text-blue-400">Verba</td>
-                            <td class="p-4 text-gray-400">Inscrição em workshops e cursos especializados (e.g., 'Site Reliability Practitioner', 'Comunicação Executiva').</td>
-                            <td class="p-4"><span class="bg-green-400/20 text-green-300 text-xs font-bold px-2 py-1 rounded-full">Aprovado</span></td>
+                            <td class="p-4 text-gray-400">Inscrição em workshops e cursos especializados (e.g., 'Site
+                                Reliability Practitioner', 'Comunicação Executiva').</td>
+                            <td class="p-4"><span
+                                    class="bg-green-400/20 text-green-300 text-xs font-bold px-2 py-1 rounded-full">Aprovado</span>
+                            </td>
                         </tr>
                         <tr>
                             <td class="p-4 font-semibold text-blue-400">Mentoria</td>
-                            <td class="p-4 text-gray-400">Sessões quinzenais de alinhamento com a gestão e mentores técnicos/de negócio para feedback e refinamento das estratégias.</td>
-                            <td class="p-4"><span class="bg-green-400/20 text-green-300 text-xs font-bold px-2 py-1 rounded-full">Aprovado</span></td>
+                            <td class="p-4 text-gray-400">Sessões quinzenais de alinhamento com a gestão e mentores
+                                técnicos/de negócio para feedback e refinamento das estratégias.</td>
+                            <td class="p-4"><span
+                                    class="bg-green-400/20 text-green-300 text-xs font-bold px-2 py-1 rounded-full">Aprovado</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -198,148 +230,149 @@
     </main>
 
     <footer class="text-center py-8 mt-12 border-t border-gray-800">
-        <p class="text-sm text-gray-500">&copy; <span id="current-year"></span> Maurício Y. Issei. Este é um documento vivo para alinhamento de carreira.</p>
+        <p class="text-sm text-gray-500">&copy; <span id="current-year"></span> Maurício Y. Issei. Este é um documento
+            vivo para alinhamento de carreira.</p>
     </footer>
 
     <!-- Carrega os dados e renderiza o conteúdo -->
     <script>
-    const pdiData = {
-    competencies: [
-        {
-            title: "Liderança",
-            icon: "users-gear",
-            color: "blue",
-            highlight: "Liderança Técnica de Squads Salesforce (Rede, 2018–presente).",
-            pdi: "Aprimorar a mentoria formal: Estruturar e acompanhar o PDI de 2 profissionais, com feedbacks quinzenais."
-        },
-        {
-            title: "Orientação para Resultados",
-            icon: "bullseye",
-            color: "amber",
-            highlight: "Economia de R$ 3 milhões na renegociação do contrato Salesforce (2020).",
-            pdi: "Propor e liderar uma iniciativa com meta de otimização de custos ou processos de pelo menos 10%."
-        },
-        {
-            title: "Solução de Problemas",
-            icon: "lightbulb",
-            color: "red",
-            highlight: "Desenho de solução de contorno inovadora para o Pipe Automática Comercial (2025).",
-            pdi: "Criar e manter um 'playbook' de soluções para problemas recorrentes, compartilhando-o com a comunidade."
-        },
-        {
-            title: "Arquitetura",
-            icon: "sitemap",
-            color: "purple",
-            highlight: "Desenho da arquitetura de integração para validação de Domicílio Bancário (2022).",
-            pdi: "Aumentar a influência participando dos comitês e apresentando uma proposta de arquitetura de referência."
-        },
-        {
-            title: "Comunicação e Influência",
-            icon: "bullhorn",
-            color: "red",
-            highlight: "Apresentação e defesa bem-sucedida do orçamento Salesforce para o CINVEST (2020).",
-            pdi: "Fortalecer a comunicação executiva e o 'thought leadership' com propostas estratégicas para a diretoria."
-        },
-        {
-            title: "Modelo de Trabalho Digital",
-            icon: "rocket",
-            color: "sky",
-            highlight: "Vasta formação em Gestão Ágil e de Produtos pela Alura.",
-            pdi: "Evoluir da execução técnica para a estratégia de produto, aplicando técnicas de Product Discovery."
-        },
-        {
-            title: "Confiabilidade (SRE)",
-            icon: "shield-halved",
-            color: "red",
-            highlight: "Implantou Splunk e melhorou a observabilidade dos sistemas Core Rede (2020).",
-            pdi: "Implementar práticas de SRE, definindo SLOs e Error Budgets para 2 serviços críticos."
-        }
-    ],
-    smartGoals: [
-        {
-            title: "Fortalecer a Comunicação Executiva e o 'Thought Leadership'",
-            icon: "bullhorn",
-            competency: "Comunicação e Influência",
-            timeline: "Até o final do Q3 de 2025",
-            specific: "Desenvolver e apresentar 2 propostas estratégicas (técnica/negócio) para a liderança sênior (nível diretoria).",
-            measurable: "Obter aprovação ou feedback positivo para implementação de pelo menos uma das propostas.",
-            achievable: "Baseado na experiência prévia com o CINVEST e no conhecimento profundo dos projetos.",
-            relevant: "Aumenta a visibilidade, influencia decisões estratégicas e estabelece-se como referência técnica na organização.",
-            actionPlan: {
-                practice: "Estruturar os casos de negócio, criar os materiais e ensaiar as apresentações.",
-                social: "Buscar mentoria com um gestor ou líder sênior para refinar a mensagem e o storytelling.",
-                formal: "Participar de um workshop de 'Comunicação Executiva e Storytelling para Líderes'."
-            }
-        },
-        {
-            title: "Evoluir da Execução Técnica para a Estratégia de Produto",
-            icon: "rocket",
-            competency: "Modelo de Trabalho Digital",
-            timeline: "Até o final de 2025",
-            specific: "Aplicar técnicas de Product Discovery para identificar e validar uma nova oportunidade de negócio ou uma melhoria significativa em uma jornada comercial.",
-            measurable: "Produzir um 'Product Brief' de uma página, contendo problema, hipótese e métricas de sucesso, e apresentá-lo à Product Manager para inclusão no backlog.",
-            achievable: "Utiliza a base de conhecimento existente em produto e a proximidade com a área de negócio.",
-            relevant: "Faz a transição de uma visão de 'como construir' para 'o que e por que construir', agregando mais valor estratégico.",
-            actionPlan: {
-                practice: "Entrevistar stakeholders, analisar dados de uso e desenhar um protótipo de baixa fidelidade da solução proposta.",
-                social: "Trabalhar em par com a PM da squad para refinar a hipótese e a proposta de valor.",
-                formal: "Concluir a formação 'Product Discovery' ou similar para estruturar o processo."
-            }
-        },
-        {
-            title: "Implementar Práticas de Confiabilidade (SRE)",
-            icon: "shield-halved",
-            competency: "Confiabilidade (SRE)",
-            timeline: "Até o final do Q1 de 2026",
-            specific: "Definir e implementar Service Level Objectives (SLOs) e Error Budgets para 2 serviços críticos da squad.",
-            measurable: "Reduzir o tempo de resolução de incidentes (MTTR) nesses serviços em 15% e apresentar o resultado em um dashboard de Confiabilidade.",
-            achievable: "Utiliza o conhecimento das certificações e a experiência prévia com observabilidade.",
-            relevant: "Aumenta a estabilidade do sistema, reduz o tempo gasto em suporte reativo e melhora a experiência do cliente.",
-            actionPlan: {
-                practice: "Liderar a implementação dos SLOs, configurar os alertas e construir os dashboards.",
-                social: "Realizar sessões de alinhamento com a equipe e com um SRE sênior de outra área para validar a abordagem.",
-                formal: "Realizar o workshop 'Site Reliability Practitioner' para aprofundar em Error Budgeting."
-            }
-        },
-    ],
-    starExamples: [
-        {
-            title: "Renegociação do contrato Salesforce (2020)",
-            competency: "Orientação para Resultados",
-            situacao: "Vencimento do contrato Salesforce com expansão de usuários, sem clareza sobre precificação e custos, necessitando de um orçamento conservador.",
-            resultado: "Economia de mais de R$3 milhões na negociação final e clareza total das áreas sobre os custos."
-        },
-        {
-            title: "Evolução do Credenciamento – Plano Padrão (2022)",
-            competency: "Orientação para Resultados",
-            situacao: "O fluxo de credenciamento padrão era limitado, não permitindo múltiplas máquinas ou tecnologias, gerando atrito operacional.",
-            resultado: "Otimização da operação logística com entregas em D0, redução do trabalho manual e padronização da jornada."
-        },
-        {
-            title: "Pipe Automática Comercial (2025)",
-            competency: "Solução de Problemas",
-            situacao: "A lista de atuação do executivo comercial não possuía uma priorização inteligente, impactando a eficiência e o atingimento de metas.",
-            resultado: "Aumento de mais de 15% no atingimento das metas e maior agilidade nos agendamentos."
-        },
-        {
-            title: "Implementação do Likert nas Jornadas (2024)",
-            competency: "Arquitetura",
-            situacao: "Falta de dados quantitativos sobre a satisfação dos usuários com as jornadas, dificultando a priorização de melhorias.",
-            resultado: "Criação de visibilidade sobre a satisfação e estabelecimento de um novo OKR focado na experiência do usuário."
-        },
-        {
-            title: "Onboarding do Modelo Build&Run (2021)",
-            competency: "Liderança",
-            situacao: "Migração para o modelo Build & Run, onde os times de projeto passariam a ser responsáveis também pela sustentação.",
-            resultado: "Times de desenvolvimento tornaram-se autônomos e a qualidade das entregas melhorou com a maior consciência do impacto em produção."
-        }
-    ]
-};
+        const pdiData = {
+            competencies: [
+                {
+                    title: "Liderança",
+                    icon: "users-gear",
+                    color: "blue",
+                    highlight: "Liderança Técnica de Squads Salesforce (Rede, 2018–presente).",
+                    pdi: "Aprimorar a mentoria formal: Estruturar e acompanhar o PDI de 2 profissionais, com feedbacks quinzenais."
+                },
+                {
+                    title: "Orientação para Resultados",
+                    icon: "bullseye",
+                    color: "amber",
+                    highlight: "Economia de R$ 3 milhões na renegociação do contrato Salesforce (2020).",
+                    pdi: "Propor e liderar uma iniciativa com meta de otimização de custos ou processos de pelo menos 10%."
+                },
+                {
+                    title: "Solução de Problemas",
+                    icon: "lightbulb",
+                    color: "red",
+                    highlight: "Desenho de solução de contorno inovadora para o Pipe Automática Comercial (2025).",
+                    pdi: "Criar e manter um 'playbook' de soluções para problemas recorrentes, compartilhando-o com a comunidade."
+                },
+                {
+                    title: "Arquitetura",
+                    icon: "sitemap",
+                    color: "purple",
+                    highlight: "Desenho da arquitetura de integração para validação de Domicílio Bancário (2022).",
+                    pdi: "Aumentar a influência participando dos comitês e apresentando uma proposta de arquitetura de referência."
+                },
+                {
+                    title: "Comunicação e Influência",
+                    icon: "bullhorn",
+                    color: "red",
+                    highlight: "Apresentação e defesa bem-sucedida do orçamento Salesforce para o CINVEST (2020).",
+                    pdi: "Fortalecer a comunicação executiva e o 'thought leadership' com propostas estratégicas para a diretoria."
+                },
+                {
+                    title: "Modelo de Trabalho Digital",
+                    icon: "rocket",
+                    color: "sky",
+                    highlight: "Vasta formação em Gestão Ágil e de Produtos pela Alura.",
+                    pdi: "Evoluir da execução técnica para a estratégia de produto, aplicando técnicas de Product Discovery."
+                },
+                {
+                    title: "Confiabilidade (SRE)",
+                    icon: "shield-halved",
+                    color: "red",
+                    highlight: "Implantou Splunk e melhorou a observabilidade dos sistemas Core Rede (2020).",
+                    pdi: "Implementar práticas de SRE, definindo SLOs e Error Budgets para 2 serviços críticos."
+                }
+            ],
+            smartGoals: [
+                {
+                    title: "Fortalecer a Comunicação Executiva e o 'Thought Leadership'",
+                    icon: "bullhorn",
+                    competency: "Comunicação e Influência",
+                    timeline: "Até o final do Q3 de 2025",
+                    specific: "Desenvolver e apresentar 2 propostas estratégicas (técnica/negócio) para a liderança sênior (nível diretoria).",
+                    measurable: "Obter aprovação ou feedback positivo para implementação de pelo menos uma das propostas.",
+                    achievable: "Baseado na experiência prévia com o CINVEST e no conhecimento profundo dos projetos.",
+                    relevant: "Aumenta a visibilidade, influencia decisões estratégicas e estabelece-se como referência técnica na organização.",
+                    actionPlan: {
+                        practice: "Estruturar os casos de negócio, criar os materiais e ensaiar as apresentações.",
+                        social: "Buscar mentoria com um gestor ou líder sênior para refinar a mensagem e o storytelling.",
+                        formal: "Participar de um workshop de 'Comunicação Executiva e Storytelling para Líderes'."
+                    }
+                },
+                {
+                    title: "Evoluir da Execução Técnica para a Estratégia de Produto",
+                    icon: "rocket",
+                    competency: "Modelo de Trabalho Digital",
+                    timeline: "Até o final de 2025",
+                    specific: "Aplicar técnicas de Product Discovery para identificar e validar uma nova oportunidade de negócio ou uma melhoria significativa em uma jornada comercial.",
+                    measurable: "Produzir um 'Product Brief' de uma página, contendo problema, hipótese e métricas de sucesso, e apresentá-lo à Product Manager para inclusão no backlog.",
+                    achievable: "Utiliza a base de conhecimento existente em produto e a proximidade com a área de negócio.",
+                    relevant: "Faz a transição de uma visão de 'como construir' para 'o que e por que construir', agregando mais valor estratégico.",
+                    actionPlan: {
+                        practice: "Entrevistar stakeholders, analisar dados de uso e desenhar um protótipo de baixa fidelidade da solução proposta.",
+                        social: "Trabalhar em par com a PM da squad para refinar a hipótese e a proposta de valor.",
+                        formal: "Concluir a formação 'Product Discovery' ou similar para estruturar o processo."
+                    }
+                },
+                {
+                    title: "Implementar Práticas de Confiabilidade (SRE)",
+                    icon: "shield-halved",
+                    competency: "Confiabilidade (SRE)",
+                    timeline: "Até o final do Q1 de 2026",
+                    specific: "Definir e implementar Service Level Objectives (SLOs) e Error Budgets para 2 serviços críticos da squad.",
+                    measurable: "Reduzir o tempo de resolução de incidentes (MTTR) nesses serviços em 15% e apresentar o resultado em um dashboard de Confiabilidade.",
+                    achievable: "Utiliza o conhecimento das certificações e a experiência prévia com observabilidade.",
+                    relevant: "Aumenta a estabilidade do sistema, reduz o tempo gasto em suporte reativo e melhora a experiência do cliente.",
+                    actionPlan: {
+                        practice: "Liderar a implementação dos SLOs, configurar os alertas e construir os dashboards.",
+                        social: "Realizar sessões de alinhamento com a equipe e com um SRE sênior de outra área para validar a abordagem.",
+                        formal: "Realizar o workshop 'Site Reliability Practitioner' para aprofundar em Error Budgeting."
+                    }
+                },
+            ],
+            starExamples: [
+                {
+                    title: "Renegociação do contrato Salesforce (2020)",
+                    competency: "Orientação para Resultados",
+                    situacao: "Vencimento do contrato Salesforce com expansão de usuários, sem clareza sobre precificação e custos, necessitando de um orçamento conservador.",
+                    resultado: "Economia de mais de R$3 milhões na negociação final e clareza total das áreas sobre os custos."
+                },
+                {
+                    title: "Evolução do Credenciamento – Plano Padrão (2022)",
+                    competency: "Orientação para Resultados",
+                    situacao: "O fluxo de credenciamento padrão era limitado, não permitindo múltiplas máquinas ou tecnologias, gerando atrito operacional.",
+                    resultado: "Otimização da operação logística com entregas em D0, redução do trabalho manual e padronização da jornada."
+                },
+                {
+                    title: "Pipe Automática Comercial (2025)",
+                    competency: "Solução de Problemas",
+                    situacao: "A lista de atuação do executivo comercial não possuía uma priorização inteligente, impactando a eficiência e o atingimento de metas.",
+                    resultado: "Aumento de mais de 15% no atingimento das metas e maior agilidade nos agendamentos."
+                },
+                {
+                    title: "Implementação do Likert nas Jornadas (2024)",
+                    competency: "Arquitetura",
+                    situacao: "Falta de dados quantitativos sobre a satisfação dos usuários com as jornadas, dificultando a priorização de melhorias.",
+                    resultado: "Criação de visibilidade sobre a satisfação e estabelecimento de um novo OKR focado na experiência do usuário."
+                },
+                {
+                    title: "Onboarding do Modelo Build&Run (2021)",
+                    competency: "Liderança",
+                    situacao: "Migração para o modelo Build & Run, onde os times de projeto passariam a ser responsáveis também pela sustentação.",
+                    resultado: "Times de desenvolvimento tornaram-se autônomos e a qualidade das entregas melhorou com a maior consciência do impacto em produção."
+                }
+            ]
+        };
 
-// --- RENDER FUNCTIONS ---
+        // --- RENDER FUNCTIONS ---
 
-function CompetencyCard({ title, icon, highlight, pdi }) {
-    return `
+        function CompetencyCard({ title, icon, highlight, pdi }) {
+            return `
         <div class="competency-card p-6 rounded-lg border border-gray-700 flex flex-col h-full card-hover">
             <div class="flex items-center mb-3">
                 <i class="fa-solid fa-${icon} w-6 h-6 mr-3 text-blue-400"></i>
@@ -357,10 +390,10 @@ function CompetencyCard({ title, icon, highlight, pdi }) {
             </div>
         </div>
     `;
-}
+        }
 
-function SmartGoalCard({ title, icon, competency, timeline, specific, measurable, achievable, relevant, actionPlan }) {
-    return `
+        function SmartGoalCard({ title, icon, competency, timeline, specific, measurable, achievable, relevant, actionPlan }) {
+            return `
         <div class="smart-goal-card p-8 rounded-lg card-hover">
             <!-- Header -->
             <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-6">
@@ -411,10 +444,10 @@ function SmartGoalCard({ title, icon, competency, timeline, specific, measurable
             </div>
         </div>
     `;
-}
+        }
 
-function TimelineItem({ date, title, description }) {
-    return `
+        function TimelineItem({ date, title, description }) {
+            return `
         <div class="relative">
             <div class="timeline-dot"></div>
             <h3 class="font-bold text-white text-lg">${date}</h3>
@@ -422,10 +455,10 @@ function TimelineItem({ date, title, description }) {
             <p class="text-sm text-gray-400 mt-1">${description}</p>
         </div>
     `;
-}
+        }
 
-function StarExample({ title, competency, situacao, resultado }) {
-    return `
+        function StarExample({ title, competency, situacao, resultado }) {
+            return `
         <article class="bg-gray-800 p-6 rounded-lg border border-gray-700 scroll-mt-24 card-hover">
             <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-bold text-white">${title}</h3>
@@ -443,50 +476,51 @@ function StarExample({ title, competency, situacao, resultado }) {
             </div>
         </article>
     `;
-}
+        }
 
 
-// --- INITIALIZATION ---
-document.addEventListener('DOMContentLoaded', () => {
-    const competenciesContainer = document.getElementById('competencies-container');
-    const smartGoalsContainer = document.getElementById('smart-goals-container');
-    const timelineContainer = document.querySelector('#timeline > div');
-    const starExamplesContainer = document.getElementById('star-examples-container');
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const competenciesContainer = document.getElementById('competencies-container');
+            const smartGoalsContainer = document.getElementById('smart-goals-container');
+            const timelineContainer = document.querySelector('#timeline > div');
+            const starExamplesContainer = document.getElementById('star-examples-container');
 
-    // Render Competencies
-    pdiData.competencies.forEach(comp => {
-        competenciesContainer.innerHTML += CompetencyCard(comp);
-    });
+            // Render Competencies
+            pdiData.competencies.forEach(comp => {
+                competenciesContainer.innerHTML += CompetencyCard(comp);
+            });
 
-    // Render SMART Goals
-    pdiData.smartGoals.forEach(goal => {
-        smartGoalsContainer.innerHTML += SmartGoalCard(goal);
-    });
+            // Render SMART Goals
+            pdiData.smartGoals.forEach(goal => {
+                smartGoalsContainer.innerHTML += SmartGoalCard(goal);
+            });
 
-    // Render Timeline
-    const timelineEvents = pdiData.smartGoals.map(goal => ({
-        date: goal.timeline,
-        title: goal.title,
-        description: goal.specific
-    }));
-    // Adicionando um item para a mentoria, que tem um prazo diferente
-    timelineEvents.push({
-        date: "Próximos 6 meses",
-        title: "Aprimorar a Mentoria Formal",
-        description: "Estruturar e acompanhar o PDI de 2 profissionais de menor senioridade, com feedbacks quinzenais."
-    });
-    timelineEvents.forEach(event => {
-        timelineContainer.innerHTML += TimelineItem(event);
-    });
-    
-    // Render STAR Examples
-    pdiData.starExamples.forEach(example => {
-        starExamplesContainer.innerHTML += StarExample(example);
-    });
-    
-    // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-});
-</script>
+            // Render Timeline
+            const timelineEvents = pdiData.smartGoals.map(goal => ({
+                date: goal.timeline,
+                title: goal.title,
+                description: goal.specific
+            }));
+            // Adicionando um item para a mentoria, que tem um prazo diferente
+            timelineEvents.push({
+                date: "Próximos 6 meses",
+                title: "Aprimorar a Mentoria Formal",
+                description: "Estruturar e acompanhar o PDI de 2 profissionais de menor senioridade, com feedbacks quinzenais."
+            });
+            timelineEvents.forEach(event => {
+                timelineContainer.innerHTML += TimelineItem(event);
+            });
+
+            // Render STAR Examples
+            pdiData.starExamples.forEach(example => {
+                starExamplesContainer.innerHTML += StarExample(example);
+            });
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
+
 </html>
