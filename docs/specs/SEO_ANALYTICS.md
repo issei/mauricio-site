@@ -10,7 +10,7 @@
 
 | Ferramenta | ID / Tipo | Método de Verificação |
 | --- | --- | --- |
-| **Google Analytics 4** | `G-xxxxxxxx` | Script `gtag.js` no `<head>` |
+| **Google Analytics 4** | `G-GEKLHZYVYX` | Script `gtag.js` no `<head>` |
 | **Google Search Console** | Domínio Raiz | Registro DNS TXT no Route 53 |
 | **Sitemap** | `/sitemap.xml` | Gerado via `vite-plugin-sitemap` |
 | **Robots.txt** | `/robots.txt` | Arquivo estático em `public/` |
@@ -26,12 +26,12 @@ Todas as páginas HTML em `src/` devem conter o fragmento do GA4 imediatamente a
 > **Nota para a IA:** Ao gerar novas páginas, não esqueça de replicar o script de rastreamento.
 
 ```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-xxxxxxxx"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-xxxxxxxx');
+  gtag('config', 'G-GEKLHZYVYX');
 </script>
 
 ```
