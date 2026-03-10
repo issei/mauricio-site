@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arquitetura Híbrida DevOps Salesforce | Flosum + GitHub + Devin AI</title>
+  <meta name="description" content="Transforme sua esteira de DevOps Salesforce combinando governança do Flosum, flexibilidade do GitHub e velocidade autônoma do Devin AI." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0a0f1e', 800: '#0d1634', 700: '#112050', 600: '#1a2d6b', 500: '#1e3a8a' },
+            neon: { 400: '#00f5a0', 500: '#00d48a', 600: '#00b374' },
+            orange: { 400: '#fb923c', 500: '#f97316', 600: '#ea6c0a' },
+            glass: { DEFAULT: 'rgba(255,255,255,0.05)' }
+          },
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease forwards',
+            'pulse-slow': 'pulse 3s ease-in-out infinite',
+            'flow': 'flow 2.5s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            fadeUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            flow: { '0%,100%': { transform: 'translateX(0)' }, '50%': { transform: 'translateX(6px)' } },
+            glow: { '0%': { textShadow: '0 0 10px #00f5a0' }, '100%': { textShadow: '0 0 25px #00f5a0, 0 0 50px #00d48a' } },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #00f5a0 0%, #1e3a8a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-orange { background: linear-gradient(135deg, #fb923c 0%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-bg { background: radial-gradient(ellipse at 20% 50%, rgba(30,58,138,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(0,245,160,0.1) 0%, transparent 50%), #0a0f1e; }
+    .card-glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); }
+    .card-glass:hover { background: rgba(255,255,255,0.07); border-color: rgba(0,245,160,0.3); }
+    .btn-primary { background: linear-gradient(135deg, #00f5a0, #00d48a); color: #0a0f1e; }
+    .btn-primary:hover { background: linear-gradient(135deg, #00d48a, #00b374); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,245,160,0.4); }
+    .btn-secondary { border: 2px solid rgba(0,245,160,0.5); color: #00f5a0; }
+    .btn-secondary:hover { background: rgba(0,245,160,0.1); transform: translateY(-2px); }
+    .step-connector { background: linear-gradient(90deg, #1e3a8a, #00f5a0); }
+    .stat-card { background: linear-gradient(135deg, rgba(30,58,138,0.3), rgba(0,245,160,0.05)); border: 1px solid rgba(0,245,160,0.15); }
+    .badge { background: rgba(0,245,160,0.1); border: 1px solid rgba(0,245,160,0.3); color: #00f5a0; }
+    .badge-orange { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3); color: #fb923c; }
+    .timeline-dot { background: linear-gradient(135deg, #00f5a0, #1e3a8a); }
+    .section-divider { background: linear-gradient(90deg, transparent, rgba(0,245,160,0.3), transparent); height: 1px; }
+    .animated { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .animated.visible { opacity: 1; transform: translateY(0); }
+    .animated-delay-1 { transition-delay: 0.1s; }
+    .animated-delay-2 { transition-delay: 0.2s; }
+    .animated-delay-3 { transition-delay: 0.3s; }
+    .grid-bg { background-image: linear-gradient(rgba(0,245,160,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,160,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .neon-border { box-shadow: 0 0 0 1px rgba(0,245,160,0.2), inset 0 0 30px rgba(0,245,160,0.02); }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #0a0f1e; } ::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-navy-900 text-white font-inter">
+
+  <!-- ══════════════════ NAVBAR ══════════════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-navy-900/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #00f5a0, #1e3a8a);">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <span class="font-bold text-white text-sm tracking-wide">DevOps<span class="gradient-text">Hybrid</span></span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
+        <a href="#desafio" class="hover:text-white transition-colors">O Desafio</a>
+        <a href="#solucao" class="hover:text-white transition-colors">A Solução</a>
+        <a href="#jornada" class="hover:text-white transition-colors">Como Funciona</a>
+        <a href="#ganhos" class="hover:text-white transition-colors">Ganhos</a>
+      </div>
+      <a href="#cta" class="hidden md:block btn-primary px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-300">Fale com um Especialista</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="hero-bg grid-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-6">
+          <span class="w-2 h-2 bg-neon-400 rounded-full animate-pulse-slow"></span>
+          Arquitetura Híbrida Enterprise · Salesforce DevOps
+        </div>
+        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-6">
+          A Evolução do Ecossistema Salesforce:
+          <span class="gradient-text"> Unindo Governança, Código e IA.</span>
+        </h1>
+        <p class="text-white/60 text-lg lg:text-xl leading-relaxed mb-10">
+          Transforme sua esteira de DevOps combinando a segurança e orquestração do <strong class="text-white">Flosum</strong>, a flexibilidade moderna do <strong class="text-white">GitHub</strong> e a velocidade de codificação autônoma do <strong class="text-neon-400">Devin AI</strong>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#cta" class="btn-primary px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 text-center inline-block">
+            🌉 Construir a Ponte
+          </a>
+          <a href="#solucao" class="btn-secondary px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 text-center inline-block">
+            Ver a Arquitetura →
+          </a>
+        </div>
+        <div class="mt-10 flex items-center gap-6 text-sm text-white/40">
+          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> SOX &amp; HIPAA Compliant</div>
+          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> Deployment IDs Rastreáveis</div>
+          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> DORA Metrics</div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-neon-400/10 to-navy-600/20 rounded-2xl blur-xl"></div>
+        <div class="relative rounded-2xl overflow-hidden neon-border">
+          <div class="bg-navy-800/60 p-1 rounded-2xl border border-white/10">
+            <div class="bg-navy-800 rounded-xl px-4 py-3 flex items-center gap-2 mb-1">
+              <div class="flex gap-1.5"><span class="w-3 h-3 rounded-full bg-red-500/70"></span><span class="w-3 h-3 rounded-full bg-yellow-500/70"></span><span class="w-3 h-3 rounded-full bg-green-500/70"></span></div>
+              <span class="text-white/30 text-xs mx-auto">DevOps Salesforce: Devin AI + Flosum + GitHub</span>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/IhUUpLGyIpA" title="DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ O DESAFIO ══════════════════ -->
+  <section id="desafio" class="py-24 bg-navy-800/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-divider mb-16"></div>
+      <div class="text-center mb-16 animated">
+        <div class="inline-flex items-center gap-2 badge-orange px-4 py-2 rounded-full text-xs font-semibold mb-5">
+          ⚠️ Por que mudar?
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-black mb-5">O Gargalo Operacional <span class="gradient-text-orange">do Crescimento</span></h2>
+        <p class="text-white/50 max-w-2xl mx-auto text-lg">Sua equipe é talentosa. O problema está na arquitetura que os prende.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-1">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: rgba(249,115,22,0.15);">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3 text-orange-400">Tempo Perdido em Tarefas Manuais</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Desenvolvedores seniores gastam horas resolvendo conflitos de arquivos XML gigantes — trabalho que não agrega valor estratégico ao negócio.</p>
+        </div>
+        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-2">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: rgba(249,115,22,0.15);">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3 text-orange-400">Flosum Isolado do Git Moderno</h3>
+          <p class="text-white/50 text-sm leading-relaxed">O Flosum é excelente para governança Salesforce, mas cria uma barreira entre o código e as ferramentas Git modernas, limitando a colaboração e automação.</p>
+        </div>
+        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-3">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: rgba(249,115,22,0.15);">
+            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3 text-orange-400">Devin AI "Cego" para o Ambiente</h3>
+          <p class="text-white/50 text-sm leading-relaxed">Sem acesso nativo ao formato Salesforce, o Devin AI não consegue operar autonomamente — a automação que poderia poupar 70% do esforço fica bloqueada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ A SOLUÇÃO ══════════════════ -->
+  <section id="solucao" class="py-24 bg-navy-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animated">
+        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
+          🌉 A Arquitetura Híbrida
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-black mb-5">O Melhor dos Dois Mundos: <span class="gradient-text">A Ponte Tecnológica</span></h2>
+        <p class="text-white/50 max-w-2xl mx-auto text-lg">Três componentes orquestrados em perfeita harmonia para eliminar os gargalos e escalar com IA.</p>
+      </div>
+
+      <!-- Architecture flow diagram -->
+      <div class="flex flex-col lg:flex-row items-stretch gap-0 mb-16">
+        <!-- GitHub Card -->
+        <div class="flex-1 card-glass rounded-2xl lg:rounded-r-none p-8 transition-all duration-300 border-t-2 border-t-blue-400 animated animated-delay-1">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/20">
+              <svg class="w-7 h-7 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 font-medium uppercase tracking-wider">01</p>
+              <p class="text-xs text-blue-400 font-semibold">GitHub</p>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">A Oficina de IA</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-6">O ambiente ágil e moderno onde o Devin AI vive, analisa o código e constrói soluções de forma autônoma 24/7. Pull Requests, branches e code review — tudo no ecossistema Git que sua equipe já conhece.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Pull Requests</span>
+            <span class="text-xs bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Code Review</span>
+            <span class="text-xs bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Actions CI/CD</span>
+          </div>
+        </div>
+
+        <!-- Arrow connector -->
+        <div class="hidden lg:flex items-center justify-center w-16 relative z-10">
+          <div class="flex flex-col items-center gap-1">
+            <div class="h-px w-16 step-connector"></div>
+            <svg class="w-5 h-5 text-neon-400 animate-flow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </div>
+        </div>
+
+        <!-- Translator Card -->
+        <div class="flex-1 card-glass rounded-2xl lg:rounded-none p-8 transition-all duration-300 border-t-2 border-t-neon-400 animated animated-delay-2">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-neon-400/10">
+              <svg class="w-7 h-7 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 font-medium uppercase tracking-wider">02</p>
+              <p class="text-xs text-neon-400 font-semibold">Flosum Cloud Agent</p>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">O Tradutor</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-6">Middleware em Node.js (AWS / Heroku) que converte o formato monolítico do Salesforce para a taxonomia granular SFDX. Autenticação segura via OAuth 2.0 e Tokens PAT garantem comunicação protegida entre os mundos.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">OAuth 2.0</span>
+            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">SFDX Converter</span>
+            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">Node.js</span>
+          </div>
+        </div>
+
+        <!-- Arrow connector -->
+        <div class="hidden lg:flex items-center justify-center w-16 relative z-10">
+          <div class="flex flex-col items-center gap-1">
+            <div class="h-px w-16 step-connector"></div>
+            <svg class="w-5 h-5 text-neon-400 animate-flow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </div>
+        </div>
+
+        <!-- Flosum Card -->
+        <div class="flex-1 card-glass rounded-2xl lg:rounded-l-none p-8 transition-all duration-300 border-t-2 border-t-purple-400 animated animated-delay-3">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-purple-500/20">
+              <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs text-white/40 font-medium uppercase tracking-wider">03</p>
+              <p class="text-xs text-purple-400 font-semibold">Flosum</p>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">A Torre de Controle</h3>
+          <p class="text-white/50 text-sm leading-relaxed mb-6">O sistema nervoso central que recebe o código aprovado e usa o Smart Merge para resolver conflitos XML semanticamente, garantindo deploys seguros e rastreáveis em produção.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs bg-purple-500/10 border border-purple-500/20 text-purple-300 px-3 py-1 rounded-full">Smart Merge</span>
+            <span class="text-xs bg-purple-500/10 border border-purple-500/20 text-purple-300 px-3 py-1 rounded-full">Deploy Orquestrado</span>
+            <span class="text-xs bg-purple-500/10 border border-purple-500/20 text-purple-300 px-3 py-1 rounded-full">Audit Trail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ JORNADA / TIMELINE ══════════════════ -->
+  <section id="jornada" class="py-24 bg-navy-800/20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-divider mb-16"></div>
+      <div class="text-center mb-16 animated">
+        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
+          🔄 Como Funciona na Prática
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-black mb-5">A Nova Jornada de <span class="gradient-text">Trabalho</span></h2>
+        <p class="text-white/50 max-w-2xl mx-auto text-lg">Do ticket à produção — com IA, automação e controle total. Quatro passos que transformam como sua equipe entrega.</p>
+      </div>
+
+      <!-- Desktop steps horizontal -->
+      <div class="hidden lg:block relative">
+        <!-- Connector line -->
+        <div class="absolute top-12 left-[12.5%] right-[12.5%] h-0.5 step-connector rounded-full"></div>
+        <div class="grid grid-cols-4 gap-6">
+          <!-- Step 1 -->
+          <div class="flex flex-col items-center text-center animated animated-delay-1">
+            <div class="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 relative z-10 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0,245,160,0.15), rgba(30,58,138,0.3));">
+              <div class="absolute -top-3 -right-3 w-7 h-7 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-xs">1</div>
+              <svg class="w-10 h-10 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            </div>
+            <h3 class="font-bold text-white mb-2">Delegação Inteligente</h3>
+            <p class="text-white/45 text-sm leading-relaxed">A demanda chega via Jira ou Slack. O PM ou Dev simplesmente marca o <span class="text-neon-400 font-mono">@Devin</span>.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="flex flex-col items-center text-center animated animated-delay-2">
+            <div class="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 relative z-10 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0,245,160,0.15), rgba(30,58,138,0.3));">
+              <div class="absolute -top-3 -right-3 w-7 h-7 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-xs">2</div>
+              <svg class="w-10 h-10 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <h3 class="font-bold text-white mb-2">Trabalho Autônomo</h3>
+            <p class="text-white/45 text-sm leading-relaxed">Devin clona o repo, cria Scratch Org, escreve código com 75%+ de cobertura de testes e abre o PR automaticamente.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="flex flex-col items-center text-center animated animated-delay-3">
+            <div class="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 relative z-10 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0,245,160,0.15), rgba(30,58,138,0.3));">
+              <div class="absolute -top-3 -right-3 w-7 h-7 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-xs">3</div>
+              <svg class="w-10 h-10 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="font-bold text-white mb-2">Revisão Humana de Elite</h3>
+            <p class="text-white/45 text-sm leading-relaxed">Engenheiros seniores atuam como arquitetos. Eles validam e aprovam — não escrevem mais código do zero.</p>
+          </div>
+          <!-- Step 4 -->
+          <div class="flex flex-col items-center text-center animated">
+            <div class="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 relative z-10 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0,245,160,0.15), rgba(30,58,138,0.3));">
+              <div class="absolute -top-3 -right-3 w-7 h-7 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-xs">4</div>
+              <svg class="w-10 h-10 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="font-bold text-white mb-2">Entrega Perfeita</h3>
+            <p class="text-white/45 text-sm leading-relaxed">Webhook acorda o Flosum. Smart Merge resolve conflitos. Deploy automático em QA → UAT → Produção.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile steps vertical -->
+      <div class="lg:hidden flex flex-col gap-8">
+        <div v-for="i in 4" class="flex gap-4 animated">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">1</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
+          </div>
+          <div class="pb-8">
+            <h3 class="font-bold text-white mb-2">Delegação Inteligente</h3>
+            <p class="text-white/45 text-sm">A demanda chega via Jira ou Slack. O PM ou Dev simplesmente marca o <span class="text-neon-400 font-mono">@Devin</span>.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 animated">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">2</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
+          </div>
+          <div class="pb-8">
+            <h3 class="font-bold text-white mb-2">Trabalho Autônomo</h3>
+            <p class="text-white/45 text-sm">Devin clona o repo, cria Scratch Org, escreve código com 75%+ de cobertura de testes unitários e abre o PR.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 animated">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">3</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
+          </div>
+          <div class="pb-8">
+            <h3 class="font-bold text-white mb-2">Revisão Humana de Elite</h3>
+            <p class="text-white/45 text-sm">Engenheiros seniores atuam como arquitetos, validam o PR e aprovam. Sem escrever código do zero.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 animated">
+          <div class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">4</div>
+          <div>
+            <h3 class="font-bold text-white mb-2">Entrega Perfeita</h3>
+            <p class="text-white/45 text-sm">Webhook acorda o Flosum. Smart Merge resolve conflitos. Deploy automático em QA → UAT → Produção.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ GANHOS DE NEGÓCIO ══════════════════ -->
+  <section id="ganhos" class="py-24 bg-navy-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 animated">
+        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
+          📈 Valor Real
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-black mb-5">Os Ganhos de <span class="gradient-text">Negócio</span></h2>
+        <p class="text-white/50 max-w-2xl mx-auto text-lg">Métricas reais, impacto real. Não é promessa de plataforma — é resultado mensurável.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-1">
+          <div class="text-5xl font-black text-neon-400 mb-2 animate-glow">10×</div>
+          <h3 class="font-bold text-white text-lg mb-3">Produtividade Exponencial</h3>
+          <p class="text-white/45 text-sm leading-relaxed">A IA absorve o volume de trabalho braçal. O time humano se concentra 100% em inovação arquitetural e decisões estratégicas.</p>
+        </div>
+        <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-2">
+          <div class="text-5xl font-black text-neon-400 mb-2 animate-glow">100%</div>
+          <h3 class="font-bold text-white text-lg mb-3">Segurança &amp; Maturidade DevOps</h3>
+          <p class="text-white/45 text-sm leading-relaxed">SOX e HIPAA Compliant. Cada linha de código em produção tem um Deployment ID rastreável no GitHub com audit trail completo.</p>
+        </div>
+        <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-3">
+          <div class="text-5xl font-black text-neon-400 mb-2 animate-glow">↓80%</div>
+          <h3 class="font-bold text-white text-lg mb-3">Métricas DORA Reais</h3>
+          <p class="text-white/45 text-sm leading-relaxed">Redução brutal de Lead Time e taxa de falhas. Deployment Frequency aumenta enquanto o MTTR cai para minutos.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-4 animated">
+        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
+          <span class="text-2xl">🏆</span>
+          <div><p class="font-semibold text-sm">Lead Time</p><p class="text-white/40 text-xs">De dias para horas</p></div>
+        </div>
+        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
+          <span class="text-2xl">🛡️</span>
+          <div><p class="font-semibold text-sm">Zero Deploys Manuais</p><p class="text-white/40 text-xs">Totalmente orquestrado</p></div>
+        </div>
+        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
+          <span class="text-2xl">🔍</span>
+          <div><p class="font-semibold text-sm">Rastreabilidade Total</p><p class="text-white/40 text-xs">Cada commit identificado</p></div>
+        </div>
+        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
+          <span class="text-2xl">⚡</span>
+          <div><p class="font-semibold text-sm">75% Test Coverage</p><p class="text-white/40 text-xs">Garantido pelo Devin AI</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ CASOS DE USO ══════════════════ -->
+  <section id="casos" class="py-24" style="background: linear-gradient(180deg, #0d1634 0%, #0a0f1e 100%);">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-divider mb-16"></div>
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="animated">
+          <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
+            🎯 Por Onde Começar?
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-black mb-5">Estratégia <span class="gradient-text">Wide &amp; Shallow</span></h2>
+          <p class="text-white/50 text-lg mb-8 leading-relaxed">
+            Tarefas <strong class="text-white">amplas e rasas</strong> são o ponto de entrada ideal. O Devin AI brilha em trabalho de alto volume com baixa complexidade cognitiva — o tipo de trabalho que drena seus melhores engenheiros.
+          </p>
+          <p class="text-white/40 text-sm leading-relaxed">
+            Comece com um projeto piloto delimitado. Meça o ROI. Escale com confiança. Essa é a abordagem que transforma ceticismo em advocacia interna.
+          </p>
+        </div>
+        <div class="grid gap-5 animated animated-delay-2">
+          <div class="card-glass rounded-2xl p-7 flex items-start gap-5 transition-all duration-300">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(0,245,160,0.2), rgba(0,245,160,0.05));">
+              <svg class="w-7 h-7 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <div class="badge inline-block px-3 py-1 rounded-full text-xs font-bold mb-2">Serviço #1</div>
+              <h3 class="font-bold text-white text-lg mb-2">Cobertura de Testes Unitários</h3>
+              <p class="text-white/40 text-sm leading-relaxed">Devin analisa toda a codebase, identifica gaps de cobertura e escreve testes Apex até atingir ou superar 75%. Volume alto, padrão repetível — perfeito para IA.</p>
+            </div>
+          </div>
+          <div class="card-glass rounded-2xl p-7 flex items-start gap-5 transition-all duration-300">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05));">
+              <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <div>
+              <div class="badge-orange inline-block px-3 py-1 rounded-full text-xs font-bold mb-2">Serviço #2</div>
+              <h3 class="font-bold text-white text-lg mb-2">Remoção de Dívida Técnica (SonarQube)</h3>
+              <p class="text-white/40 text-sm leading-relaxed">Integração com SonarQube para listar todos os code smells, bugs e violações. O Devin resolve sistematicamente, commit por commit, com total rastreabilidade.</p>
+            </div>
+          </div>
+          <div class="card-glass rounded-2xl p-7 flex items-start gap-5 transition-all duration-300">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.05));">
+              <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-2" style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); color: #a78bfa;">Serviço #3</div>
+              <h3 class="font-bold text-white text-lg mb-2">Modernização e Migração para LWC</h3>
+              <p class="text-white/40 text-sm leading-relaxed">Conversão sistemática de Aura Components para Lightning Web Components. Devin segue padrões definidos, cria testes e abre PRs para revisão humana.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ CTA FINAL ══════════════════ -->
+  <section id="cta" class="py-32" style="background: radial-gradient(ellipse at 50% 0%, rgba(0,245,160,0.12) 0%, rgba(30,58,138,0.15) 40%, #0a0f1e 70%);">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="animated">
+        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-8">
+          🚀 Comece a Transformação
+        </div>
+        <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black mb-6 leading-tight">
+          Sua esteira de DevOps está pronta para a
+          <span class="gradient-text">Era da Automação com IA?</span>
+        </h2>
+        <p class="text-white/50 text-xl mb-4 leading-relaxed max-w-2xl mx-auto">
+          Não é mais uma questão de <em>se</em> é possível, mas de <strong class="text-white">quando você vai começar</strong>.
+        </p>
+        <p class="text-white/35 text-base mb-12 max-w-xl mx-auto">
+          As barreiras de proteção já são definidas por código. A arquitetura está provada. O próximo passo é implementar na sua organização.
+        </p>
+
+        <!-- YouTube embed -->
+        <div class="max-w-2xl mx-auto mb-12 rounded-2xl overflow-hidden neon-border">
+          <div class="bg-navy-800/60 p-1 rounded-2xl border border-white/10">
+            <div class="bg-navy-800 rounded-t-xl px-4 py-2 flex items-center gap-2 mb-1">
+              <div class="flex gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span><span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span><span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span></div>
+              <span class="text-white/30 text-xs mx-auto">As barreiras definidas por código</span>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/IhUUpLGyIpA" title="As barreiras de proteção definidas por código" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="mailto:contato@exemplo.com?subject=Iniciar%20Transformação%20DevOps%20Salesforce" class="btn-primary px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 inline-block">
+            🚀 Iniciar Transformação
+          </a>
+          <a href="mailto:contato@exemplo.com?subject=Agendar%20Demo%20Arquitetura%20Híbrida" class="btn-secondary px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 inline-block">
+            📅 Agendar Demo
+          </a>
+        </div>
+
+        <div class="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-white/30">
+          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> Sem compromisso inicial</div>
+          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> Arquitetura customizada ao seu contexto</div>
+          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> ROI mensurável em 30 dias</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="border-t border-white/5 py-10 bg-navy-900">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #00f5a0, #1e3a8a);">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <span class="font-bold text-white text-sm">DevOps<span class="gradient-text">Hybrid</span></span>
+      </div>
+      <p class="text-white/25 text-xs text-center">Arquitetura Híbrida DevOps para Salesforce · Flosum + GitHub + Devin AI · Transformação com IA</p>
+      <div class="flex items-center gap-2 text-xs text-white/25">
+        <span class="w-1.5 h-1.5 bg-neon-400 rounded-full animate-pulse-slow"></span>
+        Arquitetura em Produção
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll animation observer -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animated').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
