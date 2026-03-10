@@ -258,6 +258,118 @@
     </div>
   </section>
 
+  <!-- ══════════════════ DEEP DIVE TÉCNICO ══════════════════ -->
+  <section id="deep-dive" class="py-24 bg-navy-800/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="section-divider mb-16"></div>
+      <div class="text-center mb-16 animated">
+        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
+          ⚙️ Under the Hood
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-black mb-5">Deep Dive Técnico: <span class="gradient-text">O Motor Node.js</span></h2>
+        <p class="text-white/50 max-w-2xl mx-auto text-lg">Construído para escalar na AWS, Heroku ou Azure. O Cloud Agent utiliza <span class="text-neon-400 font-semibold">Node.js 18+ (LTS)</span> para garantir alta disponibilidade e processamento assíncrono de arquivos XML massivos.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+        <!-- Left column: Architecture pillars -->
+        <div class="flex flex-col gap-6 animated animated-delay-1">
+          <!-- Item 1 -->
+          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(0,245,160,0.12);">
+              <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-1">Autenticação Server-to-Server:</p>
+              <p class="text-white/50 text-sm leading-relaxed">Utiliza fluxo OAuth 2.0 JWT Bearer Token com chaves RSA-4096 (<code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">jsonwebtoken</code> + <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">axios</code>) para conexão contínua sem intervenção humana.</p>
+            </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(0,245,160,0.12);">
+              <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-1">Conversor SFDX Nativo:</p>
+              <p class="text-white/50 text-sm leading-relaxed">Executa comandos do Salesforce CLI (<code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">sf project convert mdapi</code>) via processos Node para desembrulhar pacotes legados ZIP em pacotes modulares instantaneamente.</p>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(0,245,160,0.12);">
+              <svg class="w-6 h-6 text-neon-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-1">Integração GitHub via Octokit:</p>
+              <p class="text-white/50 text-sm leading-relaxed">Consome webhooks do Flosum via Express.js/Fastify e utiliza a SDK oficial do GitHub para injetar commits assinados na main branch.</p>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(0,245,160,0.12);">
+              <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-1">Segurança .env (Zero Trust):</p>
+              <p class="text-white/50 text-sm leading-relaxed">Nenhuma credencial é codificada. Tudo depende de injeção segura de <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SF_PRIVATE_KEY</code>, <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SF_CLIENT_ID</code> e <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">GH_PAT</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: Code window -->
+        <div class="animated animated-delay-2">
+          <div class="rounded-2xl overflow-hidden neon-border" style="background: #030712; border: 1px solid rgba(0,245,160,0.15);">
+            <!-- macOS window chrome -->
+            <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/5" style="background: #111827;">
+              <span class="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors cursor-pointer"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 transition-colors cursor-pointer"></span>
+              <span class="ml-4 text-xs text-white/30 font-mono">flosum-agent/src/sync.js</span>
+              <span class="ml-auto text-xs badge px-2 py-0.5 rounded">Node.js 18+</span>
+            </div>
+            <!-- Code content -->
+            <div class="p-6 overflow-x-auto">
+              <pre class="text-sm font-mono leading-relaxed" style="tab-size: 2;"><code><span style="color:#6b7280;">// flosum-agent/src/sync.js (Node.js 18+)</span>
+<span style="color:#c792ea;">import</span> <span style="color:#89ddff;">{ Octokit }</span> <span style="color:#c792ea;">from</span> <span style="color:#c3e88d;">'@octokit/rest'</span><span style="color:#89ddff;">;</span>
+<span style="color:#c792ea;">import</span> <span style="color:#89ddff;">{ executeSFDX }</span> <span style="color:#c792ea;">from</span> <span style="color:#c3e88d;">'./cli.js'</span><span style="color:#89ddff;">;</span>
+<span style="color:#c792ea;">import</span> <span style="color:#89ddff;">{ getSalesforceJWT }</span> <span style="color:#c792ea;">from</span> <span style="color:#c3e88d;">'./auth.js'</span><span style="color:#89ddff;">;</span>
+
+<span style="color:#82aaff;">app</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">post</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">'/webhook/flosum'</span><span style="color:#89ddff;">,</span> <span style="color:#c792ea;">async</span> <span style="color:#89ddff;">(</span><span style="color:#f07178;">req</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">res</span><span style="color:#89ddff;">)</span> <span style="color:#89ddff;">=></span> <span style="color:#89ddff;">{</span>
+  <span style="color:#c792ea;">const</span> <span style="color:#89ddff;">{</span> <span style="color:#f07178;">commitId</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">branchId</span> <span style="color:#89ddff;">}</span> <span style="color:#89ddff;">=</span> <span style="color:#f07178;">req</span><span style="color:#89ddff;">.</span><span style="color:#f07178;">body</span><span style="color:#89ddff;">;</span>
+
+  <span style="color:#6b7280;">// 1. Autenticação JWT Bearer (RSA-4096)</span>
+  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">sfToken</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">await</span> <span style="color:#82aaff;">getSalesforceJWT</span><span style="color:#89ddff;">(</span>
+    <span style="color:#f07178;">process</span><span style="color:#89ddff;">.</span><span style="color:#f07178;">env</span><span style="color:#89ddff;">.</span><span style="color:#00f5a0;">SF_PRIVATE_KEY</span>
+  <span style="color:#89ddff;">);</span>
+
+  <span style="color:#6b7280;">// 2. Download e Conversão MDAPI -> SFDX</span>
+  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">mdapiZip</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">await</span>
+    <span style="color:#82aaff;">fetchFlosumSnapshot</span><span style="color:#89ddff;">(</span><span style="color:#f07178;">sfToken</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">commitId</span><span style="color:#89ddff;">);</span>
+  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">sfdxFiles</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">await</span> <span style="color:#82aaff;">executeSFDX</span><span style="color:#89ddff;">(</span>
+    <span style="color:#c3e88d;">'sf project convert mdapi'</span>
+  <span style="color:#89ddff;">);</span>
+
+  <span style="color:#6b7280;">// 3. Push Autônomo para o GitHub</span>
+  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">octokit</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">new</span> <span style="color:#82aaff;">Octokit</span><span style="color:#89ddff;">({</span>
+    <span style="color:#f07178;">auth</span><span style="color:#89ddff;">:</span> <span style="color:#f07178;">process</span><span style="color:#89ddff;">.</span><span style="color:#f07178;">env</span><span style="color:#89ddff;">.</span><span style="color:#00f5a0;">GH_PAT</span>
+  <span style="color:#89ddff;">});</span>
+  <span style="color:#c792ea;">await</span> <span style="color:#82aaff;">pushToGitHub</span><span style="color:#89ddff;">(</span>
+    <span style="color:#f07178;">octokit</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">branchId</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">sfdxFiles</span>
+  <span style="color:#89ddff;">);</span>
+
+  <span style="color:#f07178;">res</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">status</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">200</span><span style="color:#89ddff;">).</span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">({</span>
+    <span style="color:#f07178;">status</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">'synced'</span><span style="color:#89ddff;">,</span>
+    <span style="color:#f07178;">runtime</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">'Node.js 18 LTS'</span>
+  <span style="color:#89ddff;">});</span>
+<span style="color:#89ddff;">});</span></code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════ JORNADA / TIMELINE ══════════════════ -->
   <section id="jornada" class="py-24 bg-navy-800/20">
     <div class="max-w-7xl mx-auto px-6">
