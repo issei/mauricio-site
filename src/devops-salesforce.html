@@ -239,7 +239,8 @@
           </a>
         </div>
         <div class="mt-10 flex items-center gap-6 text-sm text-white/40">
-          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> SOX &amp; HIPAA Compliant</div>
+          <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> Facilita Auditorias SOX &amp; HIPAA
+          </div>
           <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> Deployment IDs Rastreáveis</div>
           <div class="flex items-center gap-2"><span class="text-neon-400">✓</span> DORA Metrics</div>
         </div>
@@ -302,8 +303,9 @@
             </svg>
           </div>
           <h3 class="text-lg font-bold mb-3 text-orange-400">Flosum Isolado do Git Moderno</h3>
-          <p class="text-white/50 text-sm leading-relaxed">O Flosum é excelente para governança Salesforce, mas cria uma
-            barreira entre o código e as ferramentas Git modernas, limitando a colaboração e automação.</p>
+          <p class="text-white/50 text-sm leading-relaxed">A integração exige orquestração. O Flosum é excelente, mas
+            para conectá-lo nativamente ao Git e habilitar a IA, é necessário provisionar e manter o Flosum Cloud Agent
+            em infraestrutura própria.</p>
         </div>
         <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-3">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
@@ -488,7 +490,8 @@
                 RSA-4096 (<code
                   class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">jsonwebtoken</code> +
                 <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">axios</code>) para
-                conexão contínua sem intervenção humana.</p>
+                conexão contínua sem intervenção humana.
+              </p>
             </div>
           </div>
           <!-- Item 2 -->
@@ -532,12 +535,14 @@
               </svg>
             </div>
             <div>
-              <p class="font-bold text-white mb-1">Segurança .env (Zero Trust):</p>
-              <p class="text-white/50 text-sm leading-relaxed">Nenhuma credencial é codificada. Tudo depende de injeção
-                segura de <code
-                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SF_PRIVATE_KEY</code>,
-                <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SF_CLIENT_ID</code> e
-                <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">GH_PAT</code>.</p>
+              <p class="font-bold text-white mb-1">Gestão de Segredos Cloud Native:</p>
+              <p class="text-white/50 text-sm leading-relaxed">Credenciais como <code
+                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SALESFORCE_TOKEN</code>
+                e chaves RSA nunca ficam no disco. São injetadas dinamicamente via <code
+                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">AWS Secrets Manager</code>
+                ou <code
+                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">Kubernetes Secrets</code>.
+              </p>
             </div>
           </div>
         </div>
@@ -553,44 +558,36 @@
                 class="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer"></span>
               <span
                 class="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 transition-colors cursor-pointer"></span>
-              <span class="ml-4 text-xs text-white/30 font-mono">flosum-agent/src/sync.js</span>
-              <span class="ml-auto text-xs badge px-2 py-0.5 rounded">Node.js 18+</span>
+              <span class="ml-4 text-xs text-white/30 font-mono">k8s/flosum-agent-deployment.yaml</span>
+              <span class="ml-auto text-xs badge px-2 py-0.5 rounded">Kubernetes / Docker</span>
             </div>
             <!-- Code content -->
             <div class="p-6 overflow-x-auto">
-              <pre class="text-sm font-mono leading-relaxed" style="tab-size: 2;"><code><span style="color:#6b7280;">// flosum-agent/src/sync.js (Node.js 18+)</span>
-<span style="color:#c792ea;">import</span> <span style="color:#89ddff;">{ Octokit }</span> <span style="color:#c792ea;">from</span> <span style="color:#c3e88d;">'@octokit/rest'</span><span style="color:#89ddff;">;</span>
-<span style="color:#c792ea;">import</span> <span style="color:#89ddff;">{ executeSFDX }</span> <span style="color:#c792ea;">from</span> <span style="color:#c3e88d;">'./cli.js'</span><span style="color:#89ddff;">;</span>
-<span style="color:#c792ea;">import</span> <span style="color:#89ddff;">{ getSalesforceJWT }</span> <span style="color:#c792ea;">from</span> <span style="color:#c3e88d;">'./auth.js'</span><span style="color:#89ddff;">;</span>
-
-<span style="color:#82aaff;">app</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">post</span><span style="color:#89ddff;">(</span><span style="color:#c3e88d;">'/webhook/flosum'</span><span style="color:#89ddff;">,</span> <span style="color:#c792ea;">async</span> <span style="color:#89ddff;">(</span><span style="color:#f07178;">req</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">res</span><span style="color:#89ddff;">)</span> <span style="color:#89ddff;">=></span> <span style="color:#89ddff;">{</span>
-  <span style="color:#c792ea;">const</span> <span style="color:#89ddff;">{</span> <span style="color:#f07178;">commitId</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">branchId</span> <span style="color:#89ddff;">}</span> <span style="color:#89ddff;">=</span> <span style="color:#f07178;">req</span><span style="color:#89ddff;">.</span><span style="color:#f07178;">body</span><span style="color:#89ddff;">;</span>
-
-  <span style="color:#6b7280;">// 1. Autenticação JWT Bearer (RSA-4096)</span>
-  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">sfToken</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">await</span> <span style="color:#82aaff;">getSalesforceJWT</span><span style="color:#89ddff;">(</span>
-    <span style="color:#f07178;">process</span><span style="color:#89ddff;">.</span><span style="color:#f07178;">env</span><span style="color:#89ddff;">.</span><span style="color:#00f5a0;">SF_PRIVATE_KEY</span>
-  <span style="color:#89ddff;">);</span>
-
-  <span style="color:#6b7280;">// 2. Download e Conversão MDAPI -> SFDX</span>
-  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">mdapiZip</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">await</span>
-    <span style="color:#82aaff;">fetchFlosumSnapshot</span><span style="color:#89ddff;">(</span><span style="color:#f07178;">sfToken</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">commitId</span><span style="color:#89ddff;">);</span>
-  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">sfdxFiles</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">await</span> <span style="color:#82aaff;">executeSFDX</span><span style="color:#89ddff;">(</span>
-    <span style="color:#c3e88d;">'sf project convert mdapi'</span>
-  <span style="color:#89ddff;">);</span>
-
-  <span style="color:#6b7280;">// 3. Push Autônomo para o GitHub</span>
-  <span style="color:#c792ea;">const</span> <span style="color:#f07178;">octokit</span> <span style="color:#89ddff;">=</span> <span style="color:#c792ea;">new</span> <span style="color:#82aaff;">Octokit</span><span style="color:#89ddff;">({</span>
-    <span style="color:#f07178;">auth</span><span style="color:#89ddff;">:</span> <span style="color:#f07178;">process</span><span style="color:#89ddff;">.</span><span style="color:#f07178;">env</span><span style="color:#89ddff;">.</span><span style="color:#00f5a0;">GH_PAT</span>
-  <span style="color:#89ddff;">});</span>
-  <span style="color:#c792ea;">await</span> <span style="color:#82aaff;">pushToGitHub</span><span style="color:#89ddff;">(</span>
-    <span style="color:#f07178;">octokit</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">branchId</span><span style="color:#89ddff;">,</span> <span style="color:#f07178;">sfdxFiles</span>
-  <span style="color:#89ddff;">);</span>
-
-  <span style="color:#f07178;">res</span><span style="color:#89ddff;">.</span><span style="color:#82aaff;">status</span><span style="color:#89ddff;">(</span><span style="color:#f78c6c;">200</span><span style="color:#89ddff;">).</span><span style="color:#82aaff;">json</span><span style="color:#89ddff;">({</span>
-    <span style="color:#f07178;">status</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">'synced'</span><span style="color:#89ddff;">,</span>
-    <span style="color:#f07178;">runtime</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">'Node.js 18 LTS'</span>
-  <span style="color:#89ddff;">});</span>
-<span style="color:#89ddff;">});</span></code></pre>
+              <pre class="text-sm font-mono leading-relaxed"
+                style="tab-size: 2;"><code><span style="color:#6b7280;"># Deployment oficial do Flosum Agent no AWS EKS</span>
+<span style="color:#c792ea;">apiVersion</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">apps/v1</span>
+<span style="color:#c792ea;">kind</span><span style="color:#89ddff;">:</span> <span style="color:#82aaff;">Deployment</span>
+<span style="color:#c792ea;">metadata</span><span style="color:#89ddff;">:</span>
+  <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosum-agent</span>
+<span style="color:#c792ea;">spec</span><span style="color:#89ddff;">:</span>
+  <span style="color:#c792ea;">replicas</span><span style="color:#89ddff;">:</span> <span style="color:#f78c6c;">2</span>
+  <span style="color:#c792ea;">template</span><span style="color:#89ddff;">:</span>
+    <span style="color:#c792ea;">spec</span><span style="color:#89ddff;">:</span>
+      <span style="color:#c792ea;">containers</span><span style="color:#89ddff;">:</span>
+      <span style="color:#89ddff;">-</span> <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosum-node-agent</span>
+        <span style="color:#c792ea;">image</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosumhub/agent:latest</span>
+        <span style="color:#c792ea;">ports</span><span style="color:#89ddff;">:</span>
+        <span style="color:#89ddff;">-</span> <span style="color:#c792ea;">containerPort</span><span style="color:#89ddff;">:</span> <span style="color:#f78c6c;">3000</span>
+        <span style="color:#c792ea;">env</span><span style="color:#89ddff;">:</span>
+        <span style="color:#6b7280;"># Autenticação JWT via AWS Secrets Manager</span>
+        <span style="color:#89ddff;">-</span> <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#00f5a0;">SALESFORCE_TOKEN</span>
+          <span style="color:#c792ea;">valueFrom</span><span style="color:#89ddff;">:</span>
+            <span style="color:#c792ea;">secretKeyRef</span><span style="color:#89ddff;">:</span>
+              <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosum-secrets</span>
+              <span style="color:#c792ea;">key</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">sf-jwt-token</span>
+        <span style="color:#6b7280;"># Rotação de chaves e Least Privilege aplicados</span>
+        <span style="color:#c792ea;">securityContext</span><span style="color:#89ddff;">:</span>
+          <span style="color:#c792ea;">runAsNonRoot</span><span style="color:#89ddff;">:</span> <span style="color:#f78c6c;">true</span></code></pre>
             </div>
           </div>
         </div>
@@ -639,8 +636,8 @@
                   fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                 </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">Codificação autônoma <span
-                  class="text-neon-400 font-semibold">24/7</span></p>
+              <p class="text-white/70 text-sm leading-relaxed">Codificação de tarefas <span
+                  class="text-neon-400 font-semibold">bem delimitadas e repetitivas</span> 24/7</p>
             </li>
             <li class="flex items-start gap-3">
               <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
@@ -739,6 +736,16 @@
                 </svg></span>
               <p class="text-white/70 text-sm leading-relaxed">Aprovação final de deploy via <span
                   class="text-orange-400 font-semibold">Flosum</span></p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                style="background: rgba(249,115,22,0.15);"><svg aria-hidden="true" class="w-3 h-3 text-orange-400"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg></span>
+              <p class="text-white/70 text-sm leading-relaxed">Revisão qualitativa dos testes gerados <span
+                  class="text-orange-400 font-semibold">(garantir asserts de regras de negócio, não apenas cobertura de
+                  linhas)</span></p>
             </li>
           </ul>
         </div>
@@ -943,14 +950,14 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
         <h2 class="text-3xl lg:text-4xl font-black mb-5">A Nova Jornada de <span class="gradient-text">Trabalho</span>
         </h2>
         <p class="text-white/50 max-w-2xl mx-auto text-lg">Do ticket à produção — com IA, automação e controle total.
-          Quatro passos que transformam como sua equipe entrega.</p>
+          Cinco passos que transformam como sua equipe entrega, incluindo o fluxo reverso de sincronização.</p>
       </div>
 
       <!-- Desktop steps horizontal -->
       <div class="hidden lg:block relative">
         <!-- Connector line -->
-        <div class="absolute top-12 left-[12.5%] right-[12.5%] h-0.5 step-connector rounded-full"></div>
-        <div class="grid grid-cols-4 gap-6">
+        <div class="absolute top-12 left-[10%] right-[10%] h-0.5 step-connector rounded-full"></div>
+        <div class="grid grid-cols-5 gap-4">
           <!-- Step 1 -->
           <div class="flex flex-col items-center text-center animated animated-delay-1">
             <div
@@ -1018,9 +1025,28 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 class="font-bold text-white mb-2">Entrega Perfeita</h3>
-            <p class="text-white/45 text-sm leading-relaxed">Webhook acorda o Flosum. Smart Merge resolve conflitos.
-              Deploy automático em QA → UAT → Produção.</p>
+            <h3 class="font-bold text-white mb-2">Merge &amp; Aprovação</h3>
+            <p class="text-white/45 text-sm leading-relaxed">Engenheiro aprova o PR. O código é mergeado na branch
+              principal com registro de Deployment ID rastreável.</p>
+          </div>
+          <!-- Step 5 -->
+          <div class="flex flex-col items-center text-center animated animated-delay-3">
+            <div
+              class="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 relative z-10 border border-purple-400/30"
+              style="background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(30,58,138,0.3));">
+              <div
+                class="absolute -top-3 -right-3 w-7 h-7 rounded-full flex items-center justify-center text-white font-black text-xs"
+                style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">5</div>
+              <svg aria-hidden="true" class="w-10 h-10 text-purple-400" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-white mb-2">Deploy &amp; Sincronização Reversa</h3>
+            <p class="text-white/45 text-sm leading-relaxed">Após o merge, um webhook aciona o Flosum Git Sync. O código
+              retorna ao Salesforce, onde o <span class="text-purple-400 font-semibold">Smart Merge</span> resolve
+              conflitos XML complexos antes da promoção para QA/UAT.</p>
           </div>
         </div>
       </div>
@@ -1067,13 +1093,26 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
           </div>
         </div>
         <div class="flex gap-4 animated">
-          <div
-            class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">
-            4</div>
+          <div class="flex flex-col items-center">
+            <div
+              class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">
+              4</div>
+            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
+          </div>
+          <div class="pb-8">
+            <h3 class="font-bold text-white mb-2">Merge &amp; Aprovação</h3>
+            <p class="text-white/45 text-sm">Engenheiro aprova o PR. O código é mergeado na branch principal com
+              Deployment ID rastreável.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 animated">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm shrink-0"
+            style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">5</div>
           <div>
-            <h3 class="font-bold text-white mb-2">Entrega Perfeita</h3>
-            <p class="text-white/45 text-sm">Webhook acorda o Flosum. Smart Merge resolve conflitos. Deploy automático
-              em QA → UAT → Produção.</p>
+            <h3 class="font-bold text-white mb-2">Deploy &amp; Sincronização Reversa</h3>
+            <p class="text-white/45 text-sm">Após o merge, um webhook aciona o Flosum Git Sync. O código retorna ao
+              Salesforce, onde o <span class="text-purple-400 font-semibold">Smart Merge</span> resolve conflitos XML
+              antes da promoção para QA/UAT.</p>
           </div>
         </div>
       </div>
@@ -1094,22 +1133,24 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
 
       <div class="grid md:grid-cols-3 gap-8 mb-16">
         <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-1">
-          <div class="text-5xl font-black text-neon-400 mb-2 animate-glow">10×</div>
-          <h3 class="font-bold text-white text-lg mb-3">Produtividade Exponencial</h3>
-          <p class="text-white/45 text-sm leading-relaxed">A IA absorve o volume de trabalho braçal. O time humano se
-            concentra 100% em inovação arquitetural e decisões estratégicas.</p>
+          <div class="text-4xl font-black text-neon-400 mb-2 animate-glow leading-tight">Escalabilidade<br>Acelerada
+          </div>
+          <h3 class="font-bold text-white text-lg mb-3 mt-2">Paralelização com IA</h3>
+          <p class="text-white/45 text-sm leading-relaxed">A IA absorve o volume de trabalho braçal, liberando o time
+            humano para inovação arquitetural e decisões estratégicas. <span class="text-white/30">(Baseado na
+              paralelização de tarefas com IA)</span></p>
         </div>
         <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-2">
-          <div class="text-5xl font-black text-neon-400 mb-2 animate-glow">100%</div>
-          <h3 class="font-bold text-white text-lg mb-3">Segurança &amp; Maturidade DevOps</h3>
-          <p class="text-white/45 text-sm leading-relaxed">SOX e HIPAA Compliant. Cada linha de código em produção tem
-            um Deployment ID rastreável no GitHub com audit trail completo.</p>
+          <div class="text-4xl font-black text-neon-400 mb-2 animate-glow leading-tight">Auditoria<br>Completa</div>
+          <h3 class="font-bold text-white text-lg mb-3 mt-2">Trilha de Ponta a Ponta</h3>
+          <p class="text-white/45 text-sm leading-relaxed">Cada linha de código em produção tem um Deployment ID
+            rastreável no GitHub com audit trail completo — facilitando auditorias SOX e HIPAA.</p>
         </div>
         <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-3">
-          <div class="text-5xl font-black text-neon-400 mb-2 animate-glow">↓80%</div>
-          <h3 class="font-bold text-white text-lg mb-3">Métricas DORA Reais</h3>
-          <p class="text-white/45 text-sm leading-relaxed">Redução brutal de Lead Time e taxa de falhas. Deployment
-            Frequency aumenta enquanto o MTTR cai para minutos.</p>
+          <div class="text-4xl font-black text-neon-400 mb-2 animate-glow leading-tight">Otimização<br>DORA</div>
+          <h3 class="font-bold text-white text-lg mb-3 mt-2">Visibilidade Contínua</h3>
+          <p class="text-white/45 text-sm leading-relaxed">Visibilidade contínua de Lead Time e Deployment Frequency. A
+            arquitetura estrutura o pipeline para que as métricas DORA possam ser medidas e melhoradas.</p>
         </div>
       </div>
 
