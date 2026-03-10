@@ -238,6 +238,7 @@
         <a href="#solucao" class="hover:text-white transition-colors">A Solução</a>
         <a href="#jornada" class="hover:text-white transition-colors">Como Funciona</a>
         <a href="#ganhos" class="hover:text-white transition-colors">Ganhos</a>
+        <a href="#casos" class="hover:text-white transition-colors">Casos de Uso</a>
       </div>
       <a href="https://mauricio.issei.com.br/#contact"
         class="hidden md:block btn-primary px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-300">Entrar
@@ -360,10 +361,10 @@
             Flosum Isolado do Git Moderno
           </h3>
           <p class="text-white/50 text-sm leading-relaxed">
-            A integração exige orquestração. O Flosum é excelente, mas para
-            conectá-lo nativamente ao Git e habilitar a IA, é necessário
-            provisionar e manter o Flosum Cloud Agent em infraestrutura
-            própria.
+            A integração exige orquestração. O Flosum não se conecta nativamente
+            ao GitHub e ferramentas CI/CD modernas sem provisionamento e
+            manutenção do Flosum Cloud Agent em infraestrutura própria (especialmente para orgs no modelo MDAPI legado,
+            sem Source Tracking).
           </p>
         </div>
         <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-3">
@@ -380,8 +381,8 @@
           </h3>
           <p class="text-white/50 text-sm leading-relaxed">
             Sem acesso nativo ao formato Salesforce, o Devin AI não consegue
-            operar autonomamente — a automação que poderia poupar 70% do
-            esforço fica bloqueada.
+            operar autonomamente — a automação que poderia poupar grande parte do
+            esforço repetitivo fica bloqueada.
           </p>
         </div>
       </div>
@@ -444,9 +445,9 @@
         <div class="hidden lg:flex items-center justify-center w-16 relative z-10">
           <div class="flex flex-col items-center gap-1">
             <div class="h-px w-16 step-connector"></div>
-            <svg aria-hidden="true" class="w-5 h-5 text-neon-400 animate-flow" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <svg aria-hidden="true" class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
             </svg>
           </div>
         </div>
@@ -492,9 +493,9 @@
         <div class="hidden lg:flex items-center justify-center w-16 relative z-10">
           <div class="flex flex-col items-center gap-1">
             <div class="h-px w-16 step-connector"></div>
-            <svg aria-hidden="true" class="w-5 h-5 text-neon-400 animate-flow" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <svg aria-hidden="true" class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
             </svg>
           </div>
         </div>
@@ -619,8 +620,8 @@
               </p>
               <p class="text-white/50 text-sm leading-relaxed">
                 Consome webhooks do Flosum via Express.js/Fastify e utiliza a
-                SDK oficial do GitHub para injetar commits assinados na main
-                branch.
+                SDK oficial do GitHub para criar feature branches e injetar os metadados convertidos, permitindo que o
+                Devin abra Pull Requests para revisão antes do merge.
               </p>
             </div>
           </div>
@@ -1298,7 +1299,7 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
               Deploy &amp; Sincronização Reversa
             </h3>
             <p class="text-white/45 text-sm leading-relaxed">
-              Após o merge, um webhook aciona o Flosum Git Sync. O código
+              Após o merge, um webhook (nativo ou GitHub Actions) aciona o Flosum Git Sync. O código
               retorna ao Salesforce, onde o
               <span class="text-purple-400 font-semibold">Smart Merge</span>
               resolve conflitos XML complexos antes da promoção para QA/UAT.
@@ -1383,7 +1384,7 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
               Deploy &amp; Sincronização Reversa
             </h3>
             <p class="text-white/45 text-sm">
-              Após o merge, um webhook aciona o Flosum Git Sync. O código
+              Após o merge, um webhook (nativo ou GitHub Actions) aciona o Flosum Git Sync. O código
               retorna ao Salesforce, onde o
               <span class="text-purple-400 font-semibold">Smart Merge</span>
               resolve conflitos XML antes da promoção para QA/UAT.
@@ -1477,8 +1478,8 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
         <div class="card-glass rounded-xl p-5 flex items-center gap-3">
           <span class="text-2xl">⚡</span>
           <div>
-            <p class="font-semibold text-sm">75% Test Coverage</p>
-            <p class="text-white/40 text-xs">Garantido pelo Devin AI</p>
+            <p class="font-semibold text-sm">75%+ Test Coverage</p>
+            <p class="text-white/40 text-xs">Mínimo para deploy, estruturado pela IA</p>
           </div>
         </div>
       </div>
@@ -1627,7 +1628,7 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
         </p>
         <p class="text-white/35 text-base mb-12 max-w-xl mx-auto">
           As barreiras de proteção já são definidas por código. A arquitetura
-          está provada. O próximo passo é implementar na sua organização.
+          está estruturada e validada. O próximo passo é implementar na sua organização.
         </p>
 
         <div class="flex justify-center">
