@@ -652,6 +652,26 @@
               </p>
             </div>
           </div>
+          <!-- Item 5 -->
+          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+              style="background: rgba(59, 130, 246, 0.2)">
+              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-1">
+                Arquitetura de Agente Agnóstica (Node.js)
+              </p>
+              <p class="text-white/50 text-sm leading-relaxed">
+                O Flosum Agent é um middleware leve em Node.js projetado para contentores. Embora as bases da arquitetura e integração Git estejam documentadas para PaaS, nossa solução eleva este padrão para uma operação Serverless de alta disponibilidade.
+                <br>
+                <a href="https://success.flosum.com/s/article/Heroku-Flosum-Agent-Git-Integration" target="_blank" rel="noopener noreferrer" class="text-neon-400 hover:text-neon-500 text-sm font-semibold mt-3 inline-block transition-colors">📄 Ver Referência da Arquitetura →</a>
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- Right column: Code window -->
@@ -902,14 +922,13 @@
       <div class="section-divider mb-16"></div>
       <div class="text-center mb-16 animated">
         <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          ☁️ Infraestrutura Cloud Native
+          ☁️ 100% Serverless AWS
         </div>
         <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          Setup do Flosum Agent no <span class="gradient-text">AWS EKS</span>
+          Setup do Flosum Agent via <span class="gradient-text">AWS Fargate</span>
         </h2>
         <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Orquestração em Kubernetes para o middleware Node.js que conecta a
-          nuvem Salesforce ao seu GitHub Enterprise em alta disponibilidade.
+          Orquestração sem gestão de servidores. Implementação via Amazon ECS para o middleware Node.js, garantindo zero manutenção de SO e segurança nativa.
         </p>
       </div>
 
@@ -932,18 +951,14 @@
           </div>
           <div>
             <h3 class="font-bold text-white text-base mb-2">
-              Cluster EKS &amp; Deployments
+              Amazon ECS &amp; Fargate
             </h3>
             <p class="text-white/50 text-sm leading-relaxed">
-              Provisionar o Amazon EKS e implantar a imagem Docker do Flosum
-              Agent baseada em
-              <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">Node.js 18+</code>
-              via manifestos de Deployment/Pods.
+              Execução da imagem oficial (<code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">flosumhub/agent</code>) diretamente no AWS Fargate (2 vCPUs / 16GB RAM), eliminando instâncias EC2 e o overhead do EKS.
             </p>
           </div>
           <div class="mt-auto">
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">Amazon
-              EKS</span>
+            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">AWS Fargate</span>
           </div>
         </div>
 
@@ -965,17 +980,14 @@
           </div>
           <div>
             <h3 class="font-bold text-white text-base mb-2">
-              Ingress Controller &amp; SSL
+              Application Load Balancer &amp; ACM
             </h3>
             <p class="text-white/50 text-sm leading-relaxed">
-              Configurar o AWS ALB Ingress Controller ou Nginx integrado ao
-              <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">ACM</code>
-              para prover o endpoint HTTPS seguro exigido pelo Salesforce.
+              O AWS ALB atua como proxy reverso com terminação SSL via AWS Certificate Manager (ACM), atendendo à exigência de Root CA do Salesforce.
             </p>
           </div>
           <div class="mt-auto">
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">AWS
-              ACM</span>
+            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">ALB + ACM</span>
           </div>
         </div>
 
@@ -997,17 +1009,14 @@
           </div>
           <div>
             <h3 class="font-bold text-white text-base mb-2">
-              Kubernetes Secrets
+              Storage Serverless (EFS)
             </h3>
             <p class="text-white/50 text-sm leading-relaxed">
-              Armazenar e injetar variáveis sensíveis como
-              <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SALESFORCE_TOKEN</code>
-              e chaves RSA via K8s Secrets ou AWS Secrets Manager.
+              Mapeamento do diretório <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">/home/node/data</code> em volumes elásticos do Amazon EFS, garantindo a persistência de logs e processamento de snapshots.
             </p>
           </div>
           <div class="mt-auto">
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">K8s
-              Secrets</span>
+            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">Amazon EFS</span>
           </div>
         </div>
 
@@ -1029,23 +1038,19 @@
           </div>
           <div>
             <h3 class="font-bold text-white text-base mb-2">
-              Security Groups &amp; Whitelist
+              Segurança &amp; Secrets Manager
             </h3>
             <p class="text-white/50 text-sm leading-relaxed">
-              Configurar políticas de rede na VPC e Load Balancers para
-              restringir o tráfego de entrada estritamente aos IPs da
-              <span class="text-orange-400 font-semibold">Salesforce</span> e
-              Webhooks do
-              <span class="text-orange-400 font-semibold">GitHub</span>.
+              Injeção nativa do <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SALESFORCE_TOKEN</code> via AWS Secrets Manager e restrição de tráfego via Security Groups.
             </p>
           </div>
           <div class="mt-auto">
             <span
-              class="text-xs bg-orange-400/10 border border-orange-400/20 text-orange-400 px-3 py-1 rounded-full">VPC
-              Policy</span>
+              class="text-xs bg-orange-400/10 border border-orange-400/20 text-orange-400 px-3 py-1 rounded-full">Secrets Manager</span>
           </div>
         </div>
       </div>
+      <div class="text-center mt-12"><a href="https://success.flosum.com/s/article/Flosum-Agent-AWS-Setup" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-neon-400 text-sm transition-colors">Consulte o Guia Oficial de Setup AWS da Flosum ↗</a></div>
     </div>
   </section>
 
