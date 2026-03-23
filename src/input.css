@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  --color-navy-900: #0a0f1e;
+  --color-navy-800: #0d1634;
+  --color-navy-700: #112050;
+  --color-navy-500: #1e3a8a;
+  --color-neon-400: #00f5a0;
+  --color-neon-500: #00d48a;
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
