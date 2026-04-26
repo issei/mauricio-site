@@ -71,7 +71,7 @@ O pipeline é acionado a cada **push na branch main**.
 
 ## Intervenção Manual e Manutenção (CloudShell)
 
-Sempre que uma alteração na infraestrutura for necessária fora do fluxo automático do GitHub Actions (ou para ajustes finos iniciais):
+Sempre que uma alteração na infraestrutura for necessária fora do fluxo automático do GitHub Actions (ou para ajustes finos iniciais) que não seja para publicação de recurso estático e limpeza do cache do cloudfront (que o github actions já faz):
 
 1. **Scripts Prontos**: O Agent deve fornecer um script shell (`.sh`) completo.
 2. **Compatibilidade**: O script deve ser compatível com o **AWS CloudShell** (web terminal).
