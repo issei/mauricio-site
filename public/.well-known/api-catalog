@@ -1,42 +1,51 @@
 {
   "linkset": [
     {
-      "anchor": "https://mauricioissei.com.br/cv.json",
+      "anchor": "https://mauricio.issei.com.br/cv.json",
       "service-desc": [
         {
-          "href": "https://mauricioissei.com.br/openapi.json",
+          "href": "https://mauricio.issei.com.br/openapi.json",
           "type": "application/openapi+json;version=3.0"
         }
       ],
       "service-doc": [
         {
-          "href": "https://mauricioissei.com.br/cv-for-ai.md",
+          "href": "https://mauricio.issei.com.br/cv-for-ai.md",
           "type": "text/markdown"
         }
       ],
       "status": [
         {
-          "href": "https://mauricioissei.com.br/cv.json"
+          "href": "https://mauricio.issei.com.br/cv.json"
         }
       ]
     },
     {
-      "anchor": "https://mauricioissei.com.br/star.json",
+      "anchor": "https://mauricio.issei.com.br/star.json",
       "service-desc": [
         {
-          "href": "https://mauricioissei.com.br/openapi.json",
+          "href": "https://mauricio.issei.com.br/openapi.json",
           "type": "application/openapi+json;version=3.0"
         }
       ],
       "service-doc": [
         {
-          "href": "https://mauricioissei.com.br/career-highlights-star.md",
+          "href": "https://mauricio.issei.com.br/career-highlights-star.md",
           "type": "text/markdown"
         }
       ],
       "status": [
         {
-          "href": "https://mauricioissei.com.br/star.json"
+          "href": "https://mauricio.issei.com.br/star.json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://mauricio.issei.com.br",
+      "oauth-protected-resource": [
+        {
+          "href": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
+          "type": "application/json"
         }
       ]
     }

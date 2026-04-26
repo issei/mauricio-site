@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://mauricioissei.com.br"
+      "url": "https://mauricio.issei.com.br"
     }
   ],
   "paths": {
@@ -56,31 +56,76 @@
       "CVData": {
         "type": "object",
         "properties": {
-          "Nome": { "type": "string" },
-          "Titulo": { "type": "string" },
-          "ResumoHero": { "type": "string" },
-          "Habilidades": { "type": "object" },
-          "Experiencia": { "type": "array", "items": { "$ref": "#/components/schemas/ExperienceItem" } },
-          "Projetos": { "type": "array", "items": { "$ref": "#/components/schemas/ProjectItem" } }
+          "Nome": {
+            "type": "string"
+          },
+          "Titulo": {
+            "type": "string"
+          },
+          "ResumoHero": {
+            "type": "string"
+          },
+          "Habilidades": {
+            "type": "object"
+          },
+          "Experiencia": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExperienceItem"
+            }
+          },
+          "Projetos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProjectItem"
+            }
+          }
         }
       },
       "ExperienceItem": {
         "type": "object",
         "properties": {
-          "Cargo": { "type": "string" },
-          "Empresa": { "type": "string" },
-          "Periodo": { "type": "string" },
-          "Descricao": { "type": "string" }
+          "Cargo": {
+            "type": "string"
+          },
+          "Empresa": {
+            "type": "string"
+          },
+          "Periodo": {
+            "type": "string"
+          },
+          "Descricao": {
+            "type": "string"
+          }
         }
       },
       "ProjectItem": {
         "type": "object",
         "properties": {
-          "Nome": { "type": "string" },
-          "Situacao": { "type": "string" },
-          "Tarefas": { "type": "array", "items": { "type": "string" } },
-          "Acoes": { "type": "array", "items": { "type": "string" } },
-          "Resultados": { "type": "array", "items": { "type": "string" } }
+          "Nome": {
+            "type": "string"
+          },
+          "Situacao": {
+            "type": "string"
+          },
+          "Tarefas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Acoes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Resultados": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     }

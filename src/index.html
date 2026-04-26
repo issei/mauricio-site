@@ -27,7 +27,7 @@
     <title>Maurício Yokoyama Issei - Tech Lead | Especialista em Análise de Sistemas</title>
     <meta name="description"
         content="Mais de 20 anos de experiência em desenvolvimento de software e liderança técnica, com foco em soluções robustas e inovadoras em Salesforce, AWS e APIs.">
-    <link rel="canonical" href="https://mauricioissei.com.br" />
+    <link rel="canonical" href="https://mauricio.issei.com.br" />
     <!-- RFC 8288 Link Relations for Agent Discovery -->
     <!-- rel="describedby": machine-readable profile/documentation for AI agents and crawlers -->
     <link rel="describedby" href="/llms.txt" type="text/plain" title="LLM-optimized profile index" />
@@ -37,17 +37,18 @@
     <!-- rel="describedby": structured JSON data source -->
     <link rel="describedby" href="/cv.json" type="application/json" title="Structured CV data (JSON)" />
     <!-- rel="api-catalog": well-known agent resource catalog (RFC 8615 + RFC 8288) -->
-    <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" title="API Resource Catalog" />
+    <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json"
+        title="API Resource Catalog" />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mauricioissei.com.br">
+    <meta property="og:url" content="https://mauricio.issei.com.br">
     <meta property="og:title" content="Maurício Yokoyama Issei - Tech Lead | Especialista em Análise de Sistemas">
     <meta property="og:description"
         content="Mais de 20 anos de experiência em desenvolvimento de software e liderança técnica, com foco em soluções robustas e inovadoras em Salesforce, AWS e APIs.">
     <meta property="og:image" content="">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mauricioissei.com.br">
+    <meta property="twitter:url" content="https://mauricio.issei.com.br">
     <meta property="twitter:title" content="Maurício Yokoyama Issei - Tech Lead | Especialista em Análise de Sistemas">
     <meta property="twitter:description"
         content="Mais de 20 anos de experiência em desenvolvimento de software e liderança técnica, com foco em soluções robustas e inovadoras em Salesforce, AWS e APIs.">
@@ -544,11 +545,11 @@
                 navigator.modelContext.registerTool({
                     name: 'get_star_projects',
                     description: 'Retrieve project case studies formatted with Situation-Task-Action-Result methodology.',
-                    inputSchema: { 
-                        type: 'object', 
+                    inputSchema: {
+                        type: 'object',
                         properties: {
                             limit: { type: 'integer', description: 'Number of projects to return' }
-                        } 
+                        }
                     },
                     execute: async ({ limit }) => {
                         const response = await fetch('/star.json');
@@ -562,8 +563,6 @@
                 console.error('❌ Failed to register WebMCP tools:', err);
             }
         }
-    </script>
-
     </script>
 </body>
 

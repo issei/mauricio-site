@@ -11,59 +11,66 @@
   "resources": [
     {
       "title": "LLM-Optimized Profile Index",
-      "url": "https://mauricioissei.com.br/llms.txt",
+      "url": "https://mauricio.issei.com.br/llms.txt",
       "rel": "describedby",
       "mediaType": "text/plain",
       "description": "Entry point for AI agents following the llms.txt standard. Lists all machine-readable documents."
     },
     {
       "title": "Full LLM-Optimized Profile",
-      "url": "https://mauricioissei.com.br/llms-full.txt",
+      "url": "https://mauricio.issei.com.br/llms-full.txt",
       "rel": "describedby",
       "mediaType": "text/plain",
       "description": "Concatenated full profile optimized for large context LLMs."
     },
     {
       "title": "Structured CV for AI Agents",
-      "url": "https://mauricioissei.com.br/cv-for-ai.md",
+      "url": "https://mauricio.issei.com.br/cv-for-ai.md",
       "rel": "service-doc",
       "mediaType": "text/markdown",
       "description": "Complete curriculum vitae structured and optimized for AI agent consumption."
     },
     {
       "title": "Structured CV Data (JSON)",
-      "url": "https://mauricioissei.com.br/cv.json",
+      "url": "https://mauricio.issei.com.br/cv.json",
       "rel": "describedby",
       "mediaType": "application/json",
       "description": "Full CV in structured JSON format. Includes experience, projects (STAR), skills, education, certifications."
     },
     {
       "title": "Career Highlights — STAR Methodology",
-      "url": "https://mauricioissei.com.br/career-highlights-star.md",
+      "url": "https://mauricio.issei.com.br/career-highlights-star.md",
       "rel": "service-doc",
       "mediaType": "text/markdown",
       "description": "18 documented projects with Situation-Task-Action-Result methodology. Key achievements and problem-solving examples."
     },
     {
       "title": "STAR Projects Data (JSON)",
-      "url": "https://mauricioissei.com.br/star.json",
+      "url": "https://mauricio.issei.com.br/star.json",
       "rel": "describedby",
       "mediaType": "application/json",
       "description": "Structured JSON data for all STAR-formatted project case studies."
     },
     {
       "title": "MCP Server Card",
-      "url": "https://mauricioissei.com.br/.well-known/mcp/server-card.json",
+      "url": "https://mauricio.issei.com.br/.well-known/mcp/server-card.json",
       "rel": "service-desc",
       "mediaType": "application/json",
       "description": "Machine-readable card for Model Context Protocol (MCP) tool discovery."
     },
     {
       "title": "Agent Skills Discovery Index",
-      "url": "https://mauricioissei.com.br/.well-known/agent-skills/index.json",
+      "url": "https://mauricio.issei.com.br/.well-known/agent-skills/index.json",
       "rel": "service-desc",
       "mediaType": "application/json",
       "description": "Index of specialized skills and operational protocols for AI agents."
+    },
+    {
+      "title": "OAuth Protected Resource Metadata",
+      "url": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
+      "rel": "service-desc",
+      "mediaType": "application/json",
+      "description": "Metadata defining authentication requirements and authorization servers for site resources (RFC 9728)."
     }
   ],
   "capabilities": [
