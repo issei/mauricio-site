@@ -27,6 +27,9 @@ export default defineConfig({
   },
   plugins: [
     tailwindcss(),
-    sitemap({ hostname: 'https://mauricio.issei.com.br' })
+    sitemap({ 
+      hostname: 'https://mauricio.issei.com.br',
+      generateRobotsTxt: false
+    })
   ]
 })
