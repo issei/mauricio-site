@@ -1,0 +1,86 @@
+{
+  "serverInfo": {
+    "name": "mauricio-issei-portfolio",
+    "version": "1.0.0",
+    "description": "MCP server exposing structured professional data for Maurício Yokoyama Issei — Tech Lead & Staff Software Engineer with 20+ years of experience in Salesforce, AWS, APIs and SRE.",
+    "homepage": "https://mauricioissei.com.br",
+    "contact": {
+      "email": "mauricio@issei.com.br",
+      "linkedin": "https://www.linkedin.com/in/mauricioissei/"
+    }
+  },
+  "endpoint": "https://mauricioissei.com.br/mcp",
+  "transport": "streamable-http",
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "logging": false
+  },
+  "resources": [
+    {
+      "uri": "https://mauricioissei.com.br/cv.json",
+      "name": "Full CV (JSON)",
+      "description": "Complete structured curriculum vitae including experience, skills, projects, education and certifications.",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "https://mauricioissei.com.br/star.json",
+      "name": "STAR Projects (JSON)",
+      "description": "18 project case studies formatted with Situation-Task-Action-Result methodology.",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "https://mauricioissei.com.br/cv-for-ai.md",
+      "name": "CV for AI (Markdown)",
+      "description": "Complete curriculum vitae structured and optimized for AI agent consumption.",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "https://mauricioissei.com.br/llms.txt",
+      "name": "LLM Index",
+      "description": "Entry point for AI agents following the llms.txt standard.",
+      "mimeType": "text/plain"
+    }
+  ],
+  "tools": [
+    {
+      "name": "get_cv",
+      "description": "Retrieve the full structured CV data as JSON",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_projects",
+      "description": "Retrieve STAR-formatted project case studies",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "description": "Maximum number of projects to return",
+            "default": 10
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "get_skills",
+      "description": "Retrieve categorized technical skills and competencies",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Filter by skill category (e.g., 'Salesforce', 'AWS', 'APIs')"
+          }
+        },
+        "required": []
+      }
+    }
+  ]
+}
