@@ -50,6 +50,20 @@
       "rel": "describedby",
       "mediaType": "application/json",
       "description": "Structured JSON data for all STAR-formatted project case studies."
+    },
+    {
+      "title": "MCP Server Card",
+      "url": "https://mauricioissei.com.br/.well-known/mcp/server-card.json",
+      "rel": "service-desc",
+      "mediaType": "application/json",
+      "description": "Machine-readable card for Model Context Protocol (MCP) tool discovery."
+    },
+    {
+      "title": "Agent Skills Discovery Index",
+      "url": "https://mauricioissei.com.br/.well-known/agent-skills/index.json",
+      "rel": "service-desc",
+      "mediaType": "application/json",
+      "description": "Index of specialized skills and operational protocols for AI agents."
     }
   ],
   "capabilities": [

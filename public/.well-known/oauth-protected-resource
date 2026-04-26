@@ -1,0 +1,15 @@
+{
+  "resource": "https://mauricioissei.com.br",
+  "authorization_servers": [
+    "https://mauricioissei.com.br"
+  ],
+  "scopes_supported": [
+    "cv:read",
+    "projects:read",
+    "profile"
+  ],
+  "bearer_methods_supported": ["header", "query"],
+  "resource_documentation": "https://mauricioissei.com.br/cv-for-ai.md",
+  "resource_policy_uri": "https://mauricioissei.com.br/privacidade",
+  "jwks_uri": "https://mauricioissei.com.br/.well-known/jwks.json"
+}

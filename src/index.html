@@ -516,11 +516,52 @@
     <script type="module">
         import { initCVRenderer } from './js/cv-renderer.js';
 
-        // URL do cv.json (mantém compatibilidade com script de build se necessário, mas idealmente deve vir de config ou ser local)
+        // URL do cv.json
         const CV_JSON_URL = './cv.json';
 
         // Inicia a renderização
         initCVRenderer(CV_JSON_URL);
+
+        // --- WebMCP Implementation ---
+        // Expose site tools to AI agents via the browser
+        if (typeof navigator.modelContext !== 'undefined') {
+            const controller = new AbortController();
+            const signal = controller.signal;
+
+            try {
+                // Tool: Get Full CV
+                navigator.modelContext.registerTool({
+                    name: 'get_cv_data',
+                    description: 'Retrieve the full structured curriculum vitae of Maurício Issei in JSON format.',
+                    inputSchema: { type: 'object', properties: {} },
+                    execute: async () => {
+                        const response = await fetch('/cv.json');
+                        return await response.json();
+                    }
+                }, { signal });
+
+                // Tool: Get STAR Projects
+                navigator.modelContext.registerTool({
+                    name: 'get_star_projects',
+                    description: 'Retrieve project case studies formatted with Situation-Task-Action-Result methodology.',
+                    inputSchema: { 
+                        type: 'object', 
+                        properties: {
+                            limit: { type: 'integer', description: 'Number of projects to return' }
+                        } 
+                    },
+                    execute: async ({ limit }) => {
+                        const response = await fetch('/star.json');
+                        const data = await response.json();
+                        return limit ? data.slice(0, limit) : data;
+                    }
+                }, { signal });
+
+                console.log('✅ WebMCP tools registered successfully');
+            } catch (err) {
+                console.error('❌ Failed to register WebMCP tools:', err);
+            }
+        }
     </script>
 
     </script>
