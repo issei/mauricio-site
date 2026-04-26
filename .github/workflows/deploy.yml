@@ -1,0 +1,53 @@
+name: CI/CD - Deploy to AWS (OIDC)
+
+on:
+  push:
+    branches:
+      - main # O deploy só acontece quando você faz push ou merge na main
+
+# Permissões necessárias para que o GitHub consiga solicitar o token JWT da AWS
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    environment: production # Vincula este job ao ambiente de produção do GitHub
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+        # Como configuramos outDir: '../dist' no vite.config.js, 
+        # a pasta dist estará na raiz do repositório.
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3
+        # O sync garante que o S3 seja um espelho exato da pasta dist/
+        run: |
+          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET_NAME }} --delete
+
+      - name: Invalidate CloudFront Cache
+        # Limpa o cache para que as alterações reflitam imediatamente no domínio
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
