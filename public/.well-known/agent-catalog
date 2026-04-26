@@ -1,0 +1,65 @@
+{
+  "$schema": "https://isitagentready.com/schemas/agent-catalog/v1",
+  "name": "Maurício Yokoyama Issei — Agent Resource Catalog",
+  "description": "Machine-readable resources for AI agents to understand the professional profile, CV, and technical capabilities of Maurício Yokoyama Issei.",
+  "version": "1.0.0",
+  "published": "2026-04-26",
+  "contact": {
+    "email": "mauricio@issei.com.br",
+    "linkedin": "https://www.linkedin.com/in/mauricioissei/"
+  },
+  "resources": [
+    {
+      "title": "LLM-Optimized Profile Index",
+      "url": "https://mauricioissei.com.br/llms.txt",
+      "rel": "describedby",
+      "mediaType": "text/plain",
+      "description": "Entry point for AI agents following the llms.txt standard. Lists all machine-readable documents."
+    },
+    {
+      "title": "Full LLM-Optimized Profile",
+      "url": "https://mauricioissei.com.br/llms-full.txt",
+      "rel": "describedby",
+      "mediaType": "text/plain",
+      "description": "Concatenated full profile optimized for large context LLMs."
+    },
+    {
+      "title": "Structured CV for AI Agents",
+      "url": "https://mauricioissei.com.br/cv-for-ai.md",
+      "rel": "service-doc",
+      "mediaType": "text/markdown",
+      "description": "Complete curriculum vitae structured and optimized for AI agent consumption."
+    },
+    {
+      "title": "Structured CV Data (JSON)",
+      "url": "https://mauricioissei.com.br/cv.json",
+      "rel": "describedby",
+      "mediaType": "application/json",
+      "description": "Full CV in structured JSON format. Includes experience, projects (STAR), skills, education, certifications."
+    },
+    {
+      "title": "Career Highlights — STAR Methodology",
+      "url": "https://mauricioissei.com.br/career-highlights-star.md",
+      "rel": "service-doc",
+      "mediaType": "text/markdown",
+      "description": "18 documented projects with Situation-Task-Action-Result methodology. Key achievements and problem-solving examples."
+    },
+    {
+      "title": "STAR Projects Data (JSON)",
+      "url": "https://mauricioissei.com.br/star.json",
+      "rel": "describedby",
+      "mediaType": "application/json",
+      "description": "Structured JSON data for all STAR-formatted project case studies."
+    }
+  ],
+  "capabilities": [
+    "Salesforce Administration & Development",
+    "AWS Cloud Architecture (S3, EC2, Lambda, CloudFront)",
+    "APIs REST/SOAP & Integration Patterns",
+    "Site Reliability Engineering (SRE)",
+    "Observability (Datadog, Splunk)",
+    "AI Agentic Design Patterns",
+    "Data Science & Analytics",
+    "Tech Lead & Staff Software Engineer"
+  ]
+}
