@@ -45,6 +45,7 @@ jobs:
         run: |
           aws s3 sync dist/ s3://${{ secrets.S3_BUCKET_NAME }} --delete
 
+
       - name: Invalidate CloudFront Cache
         # Limpa o cache para que as alterações reflitam imediatamente no domínio
         run: |
