@@ -1,0 +1,88 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Maurício Yokoyama Issei — CV API",
+    "description": "Structured data representing the professional profile and experience of Maurício Yokoyama Issei.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://mauricioissei.com.br"
+    }
+  ],
+  "paths": {
+    "/cv.json": {
+      "get": {
+        "summary": "Retrieve the full CV data",
+        "description": "Returns a comprehensive JSON object containing hero info, skills, experience, projects, and certifications.",
+        "responses": {
+          "200": {
+            "description": "Successful response with CV data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CVData"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/star.json": {
+      "get": {
+        "summary": "Retrieve STAR-formatted projects",
+        "description": "Returns a list of project case studies structured with Situation, Task, Action, and Result methodology.",
+        "responses": {
+          "200": {
+            "description": "Successful response with STAR data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CVData": {
+        "type": "object",
+        "properties": {
+          "Nome": { "type": "string" },
+          "Titulo": { "type": "string" },
+          "ResumoHero": { "type": "string" },
+          "Habilidades": { "type": "object" },
+          "Experiencia": { "type": "array", "items": { "$ref": "#/components/schemas/ExperienceItem" } },
+          "Projetos": { "type": "array", "items": { "$ref": "#/components/schemas/ProjectItem" } }
+        }
+      },
+      "ExperienceItem": {
+        "type": "object",
+        "properties": {
+          "Cargo": { "type": "string" },
+          "Empresa": { "type": "string" },
+          "Periodo": { "type": "string" },
+          "Descricao": { "type": "string" }
+        }
+      },
+      "ProjectItem": {
+        "type": "object",
+        "properties": {
+          "Nome": { "type": "string" },
+          "Situacao": { "type": "string" },
+          "Tarefas": { "type": "array", "items": { "type": "string" } },
+          "Acoes": { "type": "array", "items": { "type": "string" } },
+          "Resultados": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
