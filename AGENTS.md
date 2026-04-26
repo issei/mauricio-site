@@ -51,6 +51,13 @@ When asked to create a new page:
 - **Content updates**: Modify `public/cv.json` (local fallback) and ensure the remote `issei/curriculo` repo is considered if requested.
 - **Logic updates**: Edit `src/js/cv-renderer.js` to handle new JSON fields.
 
+### 3. Infrastructure & AWS Modifications
+When proposing or implementing changes to AWS (S3, CloudFront, IAM, etc.):
+1.  **Specification**: Update the relevant file in `docs/specs/` (e.g., `ARCHITECTURE.md` or `CICD_OIDC.md`).
+2.  **Manual Scripting**: ALWAYS generate a standalone shell script (`.sh`) capable of being executed directly in **AWS CloudShell**.
+3.  **Content-Type Handling**: If modifying how files are served, ensure the script explicitly handles MIME types (e.g., `aws s3 cp ... --content-type "text/markdown"`).
+4.  **Verification**: Provide a clear check list for manual validation in the AWS Console.
+
 ---
 
 ## 🎨 Design System Guardrails

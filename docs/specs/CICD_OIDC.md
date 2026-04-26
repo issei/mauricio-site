@@ -68,3 +68,17 @@ O pipeline é acionado a cada **push na branch main**.
 
 ### Se o deploy falhar no build:
 *   Execute `npm run build` localmente para depurar erros de código ou dependência.
+
+## Intervenção Manual e Manutenção (CloudShell)
+
+Sempre que uma alteração na infraestrutura for necessária fora do fluxo automático do GitHub Actions (ou para ajustes finos iniciais):
+
+1. **Scripts Prontos**: O Agent deve fornecer um script shell (`.sh`) completo.
+2. **Compatibilidade**: O script deve ser compatível com o **AWS CloudShell** (web terminal).
+3. **Exemplo de Padrão (S3 Content-Type)**:
+   ```bash
+   aws s3 cp s3://BUCKET_NAME/ s3://BUCKET_NAME/ --exclude "*" --include "*.md" \
+     --no-guess-mime-type --content-type "text/markdown; charset=utf-8" \
+     --metadata-directive REPLACE --recursive
+   ```
+4. **CloudFront**: Comandos de invalidação devem acompanhar os scripts de atualização de arquivos.

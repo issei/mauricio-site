@@ -591,6 +591,13 @@ export default defineConfig({
    
 7. Invalidate CloudFront Cache
    └─ aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+
+### Protocolo de Manutenção Infra (AWS)
+
+Para qualquer alteração manual ou correção de emergência na infraestrutura:
+1. **Script de Terminal**: Todo Agent deve gerar um script shell (`.sh`) pronto para o **AWS CloudShell**.
+2. **Consistência**: O script manual deve refletir as mesmas operações realizadas no CI/CD.
+3. **MIME Types**: Operações de cópia para o S3 devem especificar explicitamente o `--content-type` quando não for padrão (ex: `.md`, `.txt`).
 ```
 
 ### Secrets Necessários
