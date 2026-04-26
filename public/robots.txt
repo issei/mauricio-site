@@ -1,8 +1,10 @@
 # Regras para todos os robôs de busca (Google, Bing, etc.)
 User-agent: *
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Bloqueio de pastas de sistema ou temporárias (boas práticas)
+
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /logs/
