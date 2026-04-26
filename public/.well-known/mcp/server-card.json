@@ -3,13 +3,13 @@
     "name": "mauricio-issei-portfolio",
     "version": "1.0.0",
     "description": "MCP server exposing structured professional data for Maurício Yokoyama Issei — Tech Lead & Staff Software Engineer with 20+ years of experience in Salesforce, AWS, APIs and SRE.",
-    "homepage": "https://mauricioissei.com.br",
+    "homepage": "https://mauricio.issei.com.br",
     "contact": {
       "email": "mauricio@issei.com.br",
       "linkedin": "https://www.linkedin.com/in/mauricioissei/"
     }
   },
-  "endpoint": "https://mauricioissei.com.br/mcp",
+  "endpoint": "https://mauricio.issei.com.br/mcp",
   "transport": "streamable-http",
   "capabilities": {
     "tools": true,
@@ -19,25 +19,25 @@
   },
   "resources": [
     {
-      "uri": "https://mauricioissei.com.br/cv.json",
+      "uri": "https://mauricio.issei.com.br/cv.json",
       "name": "Full CV (JSON)",
       "description": "Complete structured curriculum vitae including experience, skills, projects, education and certifications.",
       "mimeType": "application/json"
     },
     {
-      "uri": "https://mauricioissei.com.br/star.json",
+      "uri": "https://mauricio.issei.com.br/star.json",
       "name": "STAR Projects (JSON)",
       "description": "18 project case studies formatted with Situation-Task-Action-Result methodology.",
       "mimeType": "application/json"
     },
     {
-      "uri": "https://mauricioissei.com.br/cv-for-ai.md",
+      "uri": "https://mauricio.issei.com.br/cv-for-ai.md",
       "name": "CV for AI (Markdown)",
       "description": "Complete curriculum vitae structured and optimized for AI agent consumption.",
       "mimeType": "text/markdown"
     },
     {
-      "uri": "https://mauricioissei.com.br/llms.txt",
+      "uri": "https://mauricio.issei.com.br/llms.txt",
       "name": "LLM Index",
       "description": "Entry point for AI agents following the llms.txt standard.",
       "mimeType": "text/plain"

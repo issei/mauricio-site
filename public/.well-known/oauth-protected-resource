@@ -1,15 +1,16 @@
 {
-  "resource": "https://mauricioissei.com.br",
+  "resource": "https://mauricio.issei.com.br",
   "authorization_servers": [
-    "https://mauricioissei.com.br"
+    "https://mauricio.issei.com.br"
   ],
   "scopes_supported": [
     "cv:read",
     "projects:read",
     "profile"
   ],
-  "bearer_methods_supported": ["header", "query"],
-  "resource_documentation": "https://mauricioissei.com.br/cv-for-ai.md",
-  "resource_policy_uri": "https://mauricioissei.com.br/privacidade",
-  "jwks_uri": "https://mauricioissei.com.br/.well-known/jwks.json"
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://mauricio.issei.com.br/cv-for-ai.md",
+  "resource_policy_uri": "https://mauricio.issei.com.br/privacidade"
 }
