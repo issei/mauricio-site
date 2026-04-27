@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="dark scroll-smooth">
 
 <head>
   <!-- Google Tag Manager -->
@@ -22,2016 +22,1334 @@
     gtag('config', 'G-GEKLHZYVYX');
   </script>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Salesforce Agentic DevOps — Devin + SDD + Flosum</title>
-  <link rel="describedby" href="/salesforce-agentic-dev.md" type="text/plain" title="LLM-optimized profile index" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agentic DevOps for Salesforce — Portal de Treinamento</title>
   <meta name="description"
-    content="Guia operacional para times Salesforce: modelo federado, Spec Driven Development, Devin (Cognition) e pipeline com Flosum." />
+    content="Portal de apresentação e treinamento sobre Agentic DevOps no Salesforce: Modelo Federado, Spec-Driven Development, Devin (Cognition), Flosum CLI e Salesforce CLI." />
+  <link rel="service-doc" href="/salesforce-agentic-dev.md" type="text/markdown" title="Structured CV for AI agents" />
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mauricio.issei.com.br/salesforce-agentic-dev.html">
+  <meta property="og:title" content="Agentic DevOps for Salesforce — Portal de Treinamento">
+  <meta property="og:description"
+    content="Portal de apresentação e treinamento sobre Agentic DevOps no Salesforce: Modelo Federado, Spec-Driven Development, Devin (Cognition), Flosum CLI e Salesforce CLI.">
+  <meta property="og:image" content="">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mauricio.issei.com.br/salesforce-agentic-dev.html">
+  <meta property="twitter:title" content="Agentic DevOps for Salesforce — Portal de Treinamento">
+  <meta property="twitter:description"
+    content="Portal de apresentação e treinamento sobre Agentic DevOps no Salesforce: Modelo Federado, Spec-Driven Development, Devin (Cognition), Flosum CLI e Salesforce CLI.">
+  <meta property="twitter:image" content="">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    // Configuração do Tailwind: dark mode por classe, cores e fontes customizadas
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular']
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
           },
           colors: {
-            ink: {
-              950: '#06070A',
-              900: '#0B0D12',
-              800: '#11141B',
-              700: '#1A1E27',
-              600: '#262B36',
-              500: '#3A4150'
-            },
             brand: {
-              50: '#EEF2FF',
-              300: '#A5B4FC',
-              400: '#818CF8',
-              500: '#6366F1',
-              600: '#4F46E5',
-              700: '#4338CA'
+              50: '#eef4ff',
+              100: '#dbe7ff',
+              200: '#bcd0ff',
+              300: '#8eaeff',
+              400: '#5b82ff',
+              500: '#3a5cff',
+              600: '#2640f0',
+              700: '#1f31c8',
+              800: '#1d2da0',
+              900: '#1d2c80',
             },
-            accent: {
-              cyan: '#22D3EE',
-              green: '#34D399',
-              amber: '#FBBF24',
-              rose: '#FB7185',
-              violet: '#C084FC'
+            ink: {
+              900: '#070914',
+              800: '#0c1020',
+              700: '#11162a',
+              600: '#171d36',
+              500: '#1f2742',
             }
           },
           boxShadow: {
-            glow: '0 0 0 1px rgba(99,102,241,0.4), 0 10px 40px -10px rgba(99,102,241,0.45)'
+            glow: '0 0 60px -10px rgba(91, 130, 255, 0.45)',
           }
         }
       }
     }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
-    rel="stylesheet" />
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'dark',
-      themeVariables: {
-        background: '#0B0D12',
-        primaryColor: '#1A1E27',
-        primaryBorderColor: '#4F46E5',
-        primaryTextColor: '#E5E7EB',
-        lineColor: '#6366F1',
-        secondaryColor: '#11141B',
-        tertiaryColor: '#0B0D12',
-        fontFamily: 'Inter, ui-sans-serif'
-      },
-      flowchart: { curve: 'basis', htmlLabels: true },
-      sequence: { actorMargin: 60 }
-    });
-  </script>
+
+  <!-- Alpine.js para interatividade leve (checklist, menu mobile, toggle de tema) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Estilos customizados: gradientes, glassmorphism, code snippets -->
   <style>
-    html,
-    body {
-      background: #06070A;
-      color: #E5E7EB;
+    :root {
+      color-scheme: dark;
     }
 
-    body {
-      font-feature-settings: "ss01", "cv11";
+    /* Fundo gradiente "aurora" do hero e blocos de destaque */
+    .aurora {
+      background:
+        radial-gradient(60% 60% at 20% 10%, rgba(91, 130, 255, 0.25) 0%, rgba(91, 130, 255, 0) 60%),
+        radial-gradient(50% 50% at 80% 0%, rgba(168, 85, 247, 0.20) 0%, rgba(168, 85, 247, 0) 60%),
+        radial-gradient(60% 60% at 50% 100%, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0) 60%),
+        linear-gradient(180deg, #070914 0%, #0c1020 100%);
     }
 
-    /* Subtle grid background */
+    /* Glassmorphism para cards */
+    .glass {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .glass:hover {
+      border-color: rgba(91, 130, 255, 0.4);
+    }
+
+    /* Grid pattern sutil de fundo (como em docs Vercel/Linear) */
     .grid-bg {
       background-image:
-        radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px),
-        radial-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px);
-      background-size: 38px 38px, 38px 38px;
-      background-position: 0 0, 19px 19px;
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 80%);
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #A5B4FC 0%, #22D3EE 60%, #34D399 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .glass {
-      background: linear-gradient(180deg, rgba(26, 30, 39, 0.7), rgba(11, 13, 18, 0.7));
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .card-hover {
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-2px);
-      border-color: rgba(99, 102, 241, 0.45);
-      box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2), 0 20px 40px -20px rgba(99, 102, 241, 0.3);
-    }
-
-    pre code,
-    .code {
-      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    /* Code block estilizado (terminal-like) */
+    pre.code {
+      background: #060814;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
       font-size: 13px;
       line-height: 1.55;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+    pre.code .tk-key {
+      color: #93c5fd;
     }
 
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      display: inline-block;
+    pre.code .tk-str {
+      color: #86efac;
     }
 
-    .section-num {
-      font-family: 'JetBrains Mono', ui-monospace;
-      font-size: 12px;
-      color: #818CF8;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .anchor-offset {
-      scroll-margin-top: 88px;
-    }
-
-    /* Mermaid container */
-    .mermaid {
-      background: transparent;
-    }
-
-    .mermaid svg {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Token highlighting (lightweight) */
-    .tk-c {
-      color: #94A3B8;
+    pre.code .tk-com {
+      color: #64748b;
       font-style: italic;
     }
 
-    /* comment */
-    .tk-k {
-      color: #A5B4FC;
+    pre.code .tk-num {
+      color: #fcd34d;
     }
 
-    /* keyword */
-    .tk-s {
-      color: #34D399;
+    pre.code .tk-fn {
+      color: #f0abfc;
     }
 
-    /* string */
-    .tk-n {
-      color: #FBBF24;
+    /* Título de seção */
+    .section-eyebrow {
+      letter-spacing: .14em;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #8eaeff;
     }
 
-    /* number/literal */
-    .tk-t {
-      color: #22D3EE;
+    /* Animação de fade-in ao entrar na viewport */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s ease, transform .7s ease;
     }
 
-    /* type */
-    .tk-f {
-      color: #C084FC;
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* function */
-    .tk-p {
-      color: #FB7185;
+    /* Linha vertical da timeline */
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 19px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #3a5cff, #1f31c8 50%, transparent 100%);
     }
 
-    /* path/heading */
-    /* Sidebar nav active */
-    .nav-link {
-      color: #94A3B8;
+    /* Scroll suave */
+    html {
+      scroll-padding-top: 80px;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-      color: #E5E7EB;
-    }
-
-    /* Responsive table-of-contents */
-    details>summary {
-      list-style: none;
+    /* Pequeno polish para checkboxes do checklist */
+    input[type="checkbox"].chk {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 5px;
+      display: inline-grid;
+      place-content: center;
       cursor: pointer;
+      transition: all .15s ease;
+      background: rgba(255, 255, 255, 0.02);
     }
 
-    details>summary::-webkit-details-marker {
-      display: none;
+    input[type="checkbox"].chk:checked {
+      background: #3a5cff;
+      border-color: #3a5cff;
     }
 
-    /* Soft divider */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+    input[type="checkbox"].chk:checked::after {
+      content: "✓";
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
     }
   </style>
 </head>
 
-<body class="font-sans antialiased">
+<body class="bg-ink-900 text-slate-100 font-sans antialiased selection:bg-brand-500/40 selection:text-white">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-
-  <!-- ==================== TOP NAV ==================== -->
-  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink-950/80 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-      <a href="#hero" class="flex items-center gap-2.5">
+  <!-- =========================================================
+     NAV BAR — sticky, com âncoras suaves e menu mobile
+     ========================================================= -->
+  <header x-data="{ open: false, scrolled: false }"
+    x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 8)"
+    :class="scrolled ? 'border-white/10 bg-ink-900/80 backdrop-blur-md' : 'border-transparent'"
+    class="fixed top-0 inset-x-0 z-50 border-b transition-all">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
         <span
-          class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-accent-cyan shadow-glow">
-          <svg viewBox="0 0 24 24" class="h-4 w-4 text-ink-950" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M4 7l8-4 8 4-8 4-8-4zM4 12l8 4 8-4M4 17l8 4 8-4" />
+          class="relative inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-400 to-purple-500 shadow-glow">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 text-white" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h10M4 18h7" />
           </svg>
         </span>
-        <div class="leading-tight">
-          <div class="text-sm font-semibold tracking-tight">Agentic Salesforce DevOps</div>
-          <div class="text-[10px] uppercase tracking-widest text-white/50">Devin · SDD · Flosum</div>
-        </div>
+        <span class="font-semibold tracking-tight">Agentic DevOps <span class="text-slate-400">/
+            Salesforce</span></span>
       </a>
-      <nav class="hidden lg:flex items-center gap-6 text-sm">
-        <a class="nav-link" href="#problema">Problema</a>
-        <a class="nav-link" href="#modelo">Modelo</a>
-        <a class="nav-link" href="#sdd">SDD</a>
-        <a class="nav-link" href="#devin">Devin</a>
-        <a class="nav-link" href="#acus">ACUs</a>
-        <a class="nav-link" href="#fluxo">Fluxo</a>
-        <a class="nav-link" href="#governanca">Governança</a>
-        <a class="nav-link" href="#repositorio">Repo</a>
-        <a class="nav-link" href="#exemplo">Exemplo</a>
-        <a class="nav-link" href="#checklist">Checklist</a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300">
+        <a href="#problema-solucao" class="hover:text-white transition">Problema</a>
+        <a href="#arquitetura" class="hover:text-white transition">Arquitetura</a>
+        <a href="#sdd" class="hover:text-white transition">SDD</a>
+        <a href="#devin" class="hover:text-white transition">Devin</a>
+        <a href="#fluxo" class="hover:text-white transition">Fluxo</a>
+        <a href="#repo" class="hover:text-white transition">Repositório</a>
+        <a href="#governanca" class="hover:text-white transition">Governança</a>
+        <a href="#recursos"
+          class="inline-flex items-center gap-1.5 rounded-md bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 text-slate-100 transition">
+          Recursos
+          <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M7 5l5 5-5 5V5z" />
+          </svg>
+        </a>
       </nav>
-      <a href="#exemplo"
-        class="hidden md:inline-flex items-center gap-2 rounded-md border border-brand-500/40 bg-brand-500/10 px-3 py-1.5 text-sm text-brand-300 hover:bg-brand-500/20">
-        Ver exemplo end-to-end
-        <span aria-hidden>→</span>
-      </a>
+
+      <!-- Mobile toggle -->
+      <button @click="open = !open"
+        class="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 hover:bg-white/5">
+        <svg x-show="!open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg x-show="open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="open" x-transition class="lg:hidden border-t border-white/10 bg-ink-900/95">
+      <div class="px-5 py-4 flex flex-col gap-3 text-sm">
+        <a @click="open=false" href="#problema-solucao">Problema vs Solução</a>
+        <a @click="open=false" href="#arquitetura">Arquitetura Federada</a>
+        <a @click="open=false" href="#sdd">Spec-Driven Development</a>
+        <a @click="open=false" href="#devin">Orquestrando o Devin</a>
+        <a @click="open=false" href="#acu">Custos & ACUs</a>
+        <a @click="open=false" href="#fluxo">Fluxo de Trabalho</a>
+        <a @click="open=false" href="#repo">Estrutura do Repositório</a>
+        <a @click="open=false" href="#governanca">Governança & Checklist</a>
+        <a @click="open=false" href="#recursos">Recursos</a>
+      </div>
     </div>
   </header>
 
-  <main class="pt-20">
+  <main class="pt-16">
 
-    <!-- ============================================================ -->
-    <!-- 1. HERO                                                       -->
-    <!-- ============================================================ -->
-    <section id="hero" class="anchor-offset relative overflow-hidden">
-      <div class="absolute inset-0 grid-bg opacity-60"></div>
-      <div
-        class="absolute -top-32 left-1/2 h-[520px] w-[1100px] -translate-x-1/2 rounded-full bg-gradient-to-b from-brand-600/30 via-accent-cyan/10 to-transparent blur-3xl">
-      </div>
+    <!-- =========================================================
+     1. HERO
+     ========================================================= -->
+    <section id="hero" class="relative overflow-hidden aurora">
+      <div class="absolute inset-0 grid-bg pointer-events-none"></div>
 
-      <div class="relative mx-auto max-w-7xl px-6 pt-16 pb-24 lg:pt-24 lg:pb-32">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="pill bg-brand-500/15 text-brand-300 border border-brand-500/30">
-            <span class="dot bg-brand-400"></span> v1.0 · Modelo Federado
-          </span>
-          <span class="pill bg-white/5 text-white/70 border border-white/10">
-            Apex · LWC · Flow · Metadata API
-          </span>
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8 pt-24 pb-28 lg:pt-32 lg:pb-36">
+        <!-- Badge superior -->
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Salesforce DevOps · Modelo Federado · Devin + Flosum
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
-          Do desenvolvimento <span class="text-white/60">manual</span><br />
-          ao desenvolvimento <span class="gradient-text">agentic</span>.
+        <h1 class="mt-6 max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
+          Bem-vindo à Era do
+          <span
+            class="bg-gradient-to-r from-brand-300 via-purple-300 to-emerald-300 bg-clip-text text-transparent">Agentic
+            DevOps</span>
+          no Salesforce
         </h1>
 
-        <p class="mt-6 max-w-3xl text-lg text-white/70 leading-relaxed">
-          Um manual prático para times Salesforce trabalharem em <strong class="text-white">orgs compartilhadas</strong>
-          usando repositórios federados no GitHub, <strong class="text-white">Spec Driven Development</strong>,
-          o agente <strong class="text-white">Devin (Cognition)</strong> e o <strong class="text-white">Flosum</strong>
-          como único canal de promoção entre QA, PreProd e Produção.
+        <p class="mt-6 max-w-2xl text-lg text-slate-300">
+          Pare de digitar boilerplate. Comece a <strong class="text-white">orquestrar soluções de negócios</strong>.
+          Um portal prático para times Apex, LWC e Admins que querem dominar o desenvolvimento guiado por IA com
+          Spec-Driven Development, Devin (Cognition) e Flosum como Source of Truth.
         </p>
 
-        <!-- Key phrase -->
-        <div
-          class="mt-10 inline-flex items-center gap-3 rounded-2xl border border-brand-500/40 bg-gradient-to-r from-brand-500/10 to-accent-cyan/10 px-5 py-4 shadow-glow">
-          <svg class="h-5 w-5 text-accent-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13" />
-          </svg>
-          <p class="text-base sm:text-lg">
-            <span class="text-white/60">Frase-chave:</span>
-            <span class="font-semibold text-white">“O repositório é o cérebro do agente.”</span>
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+          <a href="#sdd"
+            class="group inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 px-5 py-3 text-sm font-semibold text-white shadow-glow transition">
+            Começar pelo SDD
+            <svg class="h-4 w-4 transition group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M7 5l5 5-5 5V5z" />
+            </svg>
+          </a>
+          <a href="#arquitetura"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 px-5 py-3 text-sm font-medium text-slate-100 transition">
+            Ver a Arquitetura Federada
+          </a>
+          <a href="https://github.com/issei/sf-repo" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 rounded-lg px-3 py-3 text-sm text-slate-300 hover:text-white">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.69-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56C20.21 21.39 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z" />
+            </svg>
+            github.com/issei/sf-repo
+          </a>
+        </div>
+
+        <!-- Stats / pilares -->
+        <dl
+          class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+          <div class="bg-ink-900/60 p-6">
+            <dt class="text-xs uppercase tracking-wider text-slate-400">Modelo</dt>
+            <dd class="mt-2 text-2xl font-bold text-white">Federado</dd>
+            <p class="mt-1 text-xs text-slate-400">Multi-times, multi-repos, sem monorepo</p>
+          </div>
+          <div class="bg-ink-900/60 p-6">
+            <dt class="text-xs uppercase tracking-wider text-slate-400">Method</dt>
+            <dd class="mt-2 text-2xl font-bold text-white">Spec-Driven</dd>
+            <p class="mt-1 text-xs text-slate-400">Templates estruturados orquestram a IA</p>
+          </div>
+          <div class="bg-ink-900/60 p-6">
+            <dt class="text-xs uppercase tracking-wider text-slate-400">Source of Truth</dt>
+            <dd class="mt-2 text-2xl font-bold text-white">Flosum CLI</dd>
+            <p class="mt-1 text-xs text-slate-400">Versionamento, merge e promoção</p>
+          </div>
+          <div class="bg-ink-900/60 p-6">
+            <dt class="text-xs uppercase tracking-wider text-slate-400">Auth</dt>
+            <dd class="mt-2 text-2xl font-bold text-white">sf · Web Login</dd>
+            <p class="mt-1 text-xs text-slate-400">Sem JWT, sem chaves locais</p>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     2. PROBLEMA VS SOLUÇÃO
+     ========================================================= -->
+    <section id="problema-solucao" class="relative py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">O contexto</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            Por que o modelo tradicional <span class="text-rose-300">quebra</span> em escala?
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Múltiplos times trabalhando nas mesmas orgs de QA, PreProd e Prod — em um único repositório — geram
+            conflitos
+            diários, deploys quebrados e <em>metadata trampling</em>. O Modelo Agentic Federado nasce para resolver isso
+            com isolamento, IA e governança.
           </p>
         </div>
 
-        <!-- Before / After comparison strip -->
-        <div class="mt-14 grid gap-4 lg:grid-cols-2">
-          <div class="glass card-hover rounded-2xl p-6 border-rose-500/20">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="pill bg-rose-500/10 text-accent-rose border border-rose-500/30">Antes</span>
-              <span class="text-xs text-white/40">Modelo manual</span>
+        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+          <!-- Tradicional -->
+          <article class="glass rounded-2xl p-7 transition hover:shadow-glow">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">Modelo Tradicional</h3>
+              <span
+                class="ml-auto text-[10px] uppercase tracking-wider rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5">Anti-pattern</span>
             </div>
-            <h3 class="text-lg font-semibold mb-3">Dependência humana, conflitos silenciosos</h3>
-            <ul class="space-y-2 text-sm text-white/70">
-              <li class="flex gap-2"><span class="text-accent-rose">✕</span> Devs duplicam metadata sem saber</li>
-              <li class="flex gap-2"><span class="text-accent-rose">✕</span> Deploys sobrescrevem componentes de outro
-                time</li>
-              <li class="flex gap-2"><span class="text-accent-rose">✕</span> Rastreabilidade dispersa em changesets</li>
-              <li class="flex gap-2"><span class="text-accent-rose">✕</span> Cada feature reabre debates de padrão</li>
-            </ul>
-          </div>
-          <div class="glass card-hover rounded-2xl p-6 border-brand-500/30">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="pill bg-brand-500/15 text-brand-300 border border-brand-500/30">Depois</span>
-              <span class="text-xs text-white/40">Modelo agentic + SDD</span>
-            </div>
-            <h3 class="text-lg font-semibold mb-3">Spec → Devin → PR → Flosum</h3>
-            <ul class="space-y-2 text-sm text-white/70">
-              <li class="flex gap-2"><span class="text-accent-green">✓</span> Spec versionada como contrato de mudança
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Monorepo
+                com todos os times pisando no mesmo metadata.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Conflitos
+                constantes em <code class="font-mono text-rose-200">Profiles</code>, <code
+                  class="font-mono text-rose-200">Layouts</code> e <code class="font-mono text-rose-200">Flows</code>.
               </li>
-              <li class="flex gap-2"><span class="text-accent-green">✓</span> Devin executa com playbook e
-                knowledge-base</li>
-              <li class="flex gap-2"><span class="text-accent-green">✓</span> Ownership de metadata explícito por
-                repositório</li>
-              <li class="flex gap-2"><span class="text-accent-green">✓</span> Promoção previsível via Flosum</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Stats -->
-        <div class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="glass rounded-xl p-5">
-            <div class="text-3xl font-bold gradient-text">~70%</div>
-            <div class="text-xs uppercase tracking-wider text-white/50 mt-1">Redução de retrabalho</div>
-          </div>
-          <div class="glass rounded-xl p-5">
-            <div class="text-3xl font-bold gradient-text">3×</div>
-            <div class="text-xs uppercase tracking-wider text-white/50 mt-1">Mais entregas previsíveis</div>
-          </div>
-          <div class="glass rounded-xl p-5">
-            <div class="text-3xl font-bold gradient-text">−40%</div>
-            <div class="text-xs uppercase tracking-wider text-white/50 mt-1">ACUs por feature</div>
-          </div>
-          <div class="glass rounded-xl p-5">
-            <div class="text-3xl font-bold gradient-text">100%</div>
-            <div class="text-xs uppercase tracking-wider text-white/50 mt-1">Rastreabilidade no PR</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 2. O PROBLEMA                                                 -->
-    <!-- ============================================================ -->
-    <section id="problema" class="anchor-offset relative border-t border-white/5">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-14">
-          <div class="section-num mb-3">02 — Realidade Atual</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">A dor que o modelo agentic resolve</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            Múltiplos times trabalham nas mesmas orgs Salesforce (QA, PreProd, Produção), cada um com seu repositório no
-            GitHub.
-            Sem disciplina, esse cenário federado vira uma guerra silenciosa de metadata. Esses são os sintomas:
-          </p>
-        </div>
-
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <article class="glass card-hover rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="grid h-9 w-9 place-items-center rounded-lg bg-rose-500/10 text-accent-rose">⚠</span>
-              <h3 class="font-semibold">Conflitos de metadata entre times</h3>
-            </div>
-            <p class="text-sm text-white/70">Dois times alteram o mesmo <span
-                class="code text-accent-cyan">Account.object-meta.xml</span> em sprints paralelas. O último deploy ganha
-              — e silenciosamente sobrescreve campos do outro time.</p>
-            <div class="mt-4 rounded-md bg-ink-900/80 p-3 text-xs text-white/60 border border-white/5">
-              <span class="text-accent-rose">team-billing</span> · adiciona <span
-                class="code">External_Tax_Id__c</span><br />
-              <span class="text-accent-cyan">team-crm</span> · adiciona <span class="code">Customer_Tier__c</span><br />
-              <span class="text-accent-amber">⚠ ambos editam Account em paralelo</span>
-            </div>
-          </article>
-
-          <article class="glass card-hover rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="grid h-9 w-9 place-items-center rounded-lg bg-amber-500/10 text-accent-amber">⛓</span>
-              <h3 class="font-semibold">Deploy quebra outro domínio</h3>
-            </div>
-            <p class="text-sm text-white/70">Uma trigger nova em <span class="code text-accent-cyan">Opportunity</span>
-              do time de Vendas faz a integração de Faturamento estourar em produção. Ninguém viu vir.</p>
-            <ul class="mt-3 text-xs text-white/60 space-y-1">
-              <li>· Sem ownership por objeto</li>
-              <li>· Sem teste de contrato cruzado</li>
-              <li>· Sem aviso entre repositórios</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Deploys
+                diretos via CLI nas orgs compartilhadas — risco de sobrescrita.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> "Source of
+                Truth" ambígua entre Git e a Org.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> IA sem
+                contexto = código genérico, retrabalho e custo alto.</li>
             </ul>
           </article>
 
-          <article class="glass card-hover rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="grid h-9 w-9 place-items-center rounded-lg bg-violet-500/10 text-accent-violet">⌕</span>
-              <h3 class="font-semibold">Falta de rastreabilidade</h3>
-            </div>
-            <p class="text-sm text-white/70">“Quem mudou esse Flow?” vira arqueologia: change set sem PR, PR sem
-              requisito, requisito sem dono. A auditoria sofre — a confiança também.</p>
-          </article>
-
-          <article class="glass card-hover rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="grid h-9 w-9 place-items-center rounded-lg bg-cyan-500/10 text-accent-cyan">⇄</span>
-              <h3 class="font-semibold">Dependência manual do Flosum</h3>
-            </div>
-            <p class="text-sm text-white/70">Promoções viram clique manual e tribal knowledge: “fala com o fulano que
-              ele aprova”. O Flosum é a ferramenta certa, mas o uso é improvisado.</p>
-          </article>
-
-          <article class="glass card-hover rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="grid h-9 w-9 place-items-center rounded-lg bg-rose-500/10 text-accent-rose">$</span>
-              <h3 class="font-semibold">Desperdício de ACUs e tempo</h3>
-            </div>
-            <p class="text-sm text-white/70">Sem spec, o Devin entra em loop: reescreve, retesta, refaz. Cada iteração
-              consome ACUs e devolve PRs com escopo errado.</p>
-          </article>
-
-          <article class="glass card-hover rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-500/10 text-accent-green">⊘</span>
-              <h3 class="font-semibold">Devin sem visão global</h3>
-            </div>
-            <p class="text-sm text-white/70">O agente opera por repositório. Ele não sabe que o time vizinho já criou
-              aquela classe utilitária. A federação exige <em>guardrails</em> explícitos.</p>
-          </article>
-        </div>
-
-        <!-- Callout -->
-        <aside class="mt-12 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 flex gap-4">
-          <span
-            class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-amber-500/15 text-accent-amber text-lg">!</span>
-          <div>
-            <div class="text-sm font-semibold text-accent-amber uppercase tracking-wider">Insight central</div>
-            <p class="mt-1 text-white/80 leading-relaxed">
-              O problema raiz não é “o Devin errou” — é <strong>contexto insuficiente</strong> e <strong>fronteiras
-                frouxas</strong>.
-              A solução não é mais código: é mais <strong>especificação</strong>, <strong>ownership</strong> e
-              <strong>governança automatizada</strong>.
-            </p>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 3. O NOVO MODELO                                              -->
-    <!-- ============================================================ -->
-    <section id="modelo"
-      class="anchor-offset relative border-t border-white/5 bg-gradient-to-b from-ink-950 to-ink-900">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-14">
-          <div class="section-num mb-3">03 — Arquitetura</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">O novo modelo: federado e agentic</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            Não há repositório central. Cada time é dono do seu domínio, do seu repositório e da sua rastreabilidade.
-            O Devin executa, o Flosum promove, o GitHub é a verdade. Salesforce é o ponto de integração.
-          </p>
-        </div>
-
-        <!-- Roles grid -->
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4 mb-12">
-          <div class="glass rounded-2xl p-6 border-brand-500/20">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-500/15 text-brand-300">
+          <!-- Federado -->
+          <article class="glass rounded-2xl p-7 transition hover:shadow-glow ring-1 ring-brand-500/20">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2l9 4-9 4-9-4 9-4zM3 11l9 4 9-4M3 16l9 4 9-4" />
+                  <path d="M20 6 9 17l-5-5" />
                 </svg>
               </span>
-              <h3 class="font-semibold">GitHub</h3>
+              <h3 class="text-xl font-semibold">Modelo Agentic Federado</h3>
+              <span
+                class="ml-auto text-[10px] uppercase tracking-wider rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-2 py-0.5">Recomendado</span>
             </div>
-            <div class="text-xs uppercase tracking-wider text-white/40 mb-2">Source of Truth</div>
-            <p class="text-sm text-white/70">Cada time mantém seu repositório com SDX/MDAPI, specs, playbooks e
-              knowledge-base. Branches protegidas, PRs obrigatórios.</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Cada
+                time em <strong class="text-white">seu próprio repo GitHub</strong> isolado.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                Ownership por domínio + validação automática de fronteiras.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Devin
+                valida e prepara — <strong class="text-white">Flosum promove</strong>.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Specs,
+                playbooks e skills dão contexto rico à IA.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Smart
+                Merge do Flosum resolve conflitos entre times.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     3. ARQUITETURA FEDERADA — pilares
+     ========================================================= -->
+    <section id="arquitetura" class="relative py-24 lg:py-32 border-t border-white/5">
+      <!-- gradiente sutil -->
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-brand-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">A arquitetura</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Quatro pilares, papéis bem definidos</h2>
+          <p class="mt-4 text-slate-300">
+            Em vez de um sistema monolítico, separamos responsabilidades. Cada peça faz uma coisa — e faz muito bem.
+          </p>
+        </div>
+
+        <!-- Diagrama em texto/cards -->
+        <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- GitHub -->
+          <div class="glass rounded-2xl p-6 transition hover:-translate-y-0.5">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 border border-white/10">
+                <svg class="h-5 w-5 text-slate-200" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.69-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56C20.21 21.39 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z" />
+                </svg>
+              </span>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Pilar 1</span>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold">GitHub</h3>
+            <p class="mt-1 text-sm text-slate-300">A camada de <strong class="text-white">intenção e
+                conhecimento</strong>.</p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400">
+              <li>· Specs e playbooks</li>
+              <li>· Skills e knowledge-base</li>
+              <li>· Pull Requests e revisão humana</li>
+              <li>· <em>Não</em> é a Source of Truth da Org</li>
+            </ul>
           </div>
 
-          <div class="glass rounded-2xl p-6 border-cyan-500/20">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-cyan-500/15 text-accent-cyan">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Flosum -->
+          <div class="glass rounded-2xl p-6 transition hover:-translate-y-0.5 ring-1 ring-brand-500/30">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/15 border border-brand-500/30">
+                <svg class="h-5 w-5 text-brand-300" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7" />
+                  <path d="M3 7l9-4 9 4" />
+                  <path d="M7 11h10M7 15h6" />
+                </svg>
+              </span>
+              <span class="text-[10px] uppercase tracking-wider text-brand-300">Pilar 2 · SoT</span>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold">Flosum</h3>
+            <p class="mt-1 text-sm text-slate-300">A <strong class="text-white">Source of Truth</strong> e o motor de
+              promoção.</p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400">
+              <li>· Versionamento real do estado da Org</li>
+              <li>· Smart Merge entre times</li>
+              <li>· Promoção QA → PreProd → Prod</li>
+              <li>· Único caminho de deploy oficial</li>
+            </ul>
+          </div>
+
+          <!-- Salesforce -->
+          <div class="glass rounded-2xl p-6 transition hover:-translate-y-0.5">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500/15 border border-sky-500/30">
+                <svg class="h-5 w-5 text-sky-300" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M3 12a9 9 0 0 1 9-9c4.5 0 8.2 3.3 8.9 7.6" />
+                  <path d="M21 12a9 9 0 0 1-9 9c-4.5 0-8.2-3.3-8.9-7.6" />
+                  <path d="M21 4v6h-6M3 20v-6h6" />
+                </svg>
+              </span>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Pilar 3</span>
+            </div>
+            <h3 class="mt-5 text-lg font-semibold">Salesforce</h3>
+            <p class="mt-1 text-sm text-slate-300">O <strong class="text-white">runtime</strong> e os ambientes.</p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400">
+              <li>· Sandbox para validação</li>
+              <li>· QA, PreProd e Prod compartilhadas</li>
+              <li>· <code class="font-mono text-sky-200">sf</code> via Web Login</li>
+              <li>· <em>Nunca</em> deploy direto via Devin</li>
+            </ul>
+          </div>
+
+          <!-- Devin -->
+          <div class="glass rounded-2xl p-6 transition hover:-translate-y-0.5">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/15 border border-purple-500/30">
+                <svg class="h-5 w-5 text-purple-300" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
                   <circle cx="12" cy="12" r="3" />
-                  <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+                  <path
+                    d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
                 </svg>
               </span>
-              <h3 class="font-semibold">Devin</h3>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Pilar 4</span>
             </div>
-            <div class="text-xs uppercase tracking-wider text-white/40 mb-2">Executor (Cognition)</div>
-            <p class="text-sm text-white/70">Lê a spec, segue o playbook, gera Apex/LWC, abre o PR. Web UI para tarefas
-              exploratórias, Devin CLI para tarefas repetíveis.</p>
-          </div>
-
-          <div class="glass rounded-2xl p-6 border-violet-500/20">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-violet-500/15 text-accent-violet">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 6h18M6 12h12M9 18h6" />
-                </svg>
-              </span>
-              <h3 class="font-semibold">Flosum</h3>
-            </div>
-            <div class="text-xs uppercase tracking-wider text-white/40 mb-2">Promotion Control</div>
-            <p class="text-sm text-white/70">Único canal oficial de promoção entre orgs. Branch → Flosum Branch →
-              Deployment Set → QA → PreProd → Prod.</p>
-          </div>
-
-          <div class="glass rounded-2xl p-6 border-emerald-500/20">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-emerald-500/15 text-accent-green">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" />
-                </svg>
-              </span>
-              <h3 class="font-semibold">Salesforce Orgs</h3>
-            </div>
-            <div class="text-xs uppercase tracking-wider text-white/40 mb-2">Integration Surface</div>
-            <p class="text-sm text-white/70">QA, PreProd, Prod compartilhadas pelos times. É o lugar onde os domínios se
-              encontram — e onde a governança paga seus juros.</p>
+            <h3 class="mt-5 text-lg font-semibold">Devin</h3>
+            <p class="mt-1 text-sm text-slate-300">O <strong class="text-white">executor/desenvolvedor</strong>
+              autônomo.</p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400">
+              <li>· Lê Specs e knowledge-base</li>
+              <li>· Codifica em <code class="font-mono">force-app/</code></li>
+              <li>· Valida via <code class="font-mono">--check-only</code></li>
+              <li>· Prepara o pacote para Flosum</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Mermaid diagram -->
-        <div class="rounded-2xl border border-white/10 bg-ink-900/60 p-6">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h3 class="font-semibold">Diagrama conceitual</h3>
-              <p class="text-xs text-white/50">Times federados → GitHub → Devin → PR → Flosum → Orgs</p>
+        <!-- Diagrama de fluxo de relacionamento -->
+        <div class="mt-12 glass rounded-2xl p-6 lg:p-8">
+          <p class="section-eyebrow">Relacionamento</p>
+          <h3 class="mt-2 text-xl font-semibold">Como os pilares se conectam</h3>
+          <div class="mt-8 grid lg:grid-cols-5 items-center gap-4 text-center text-sm">
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p class="font-semibold">Spec</p>
+              <p class="mt-1 text-xs text-slate-400">GitHub <code class="font-mono">specs/</code></p>
             </div>
-            <span class="pill bg-brand-500/10 text-brand-300 border border-brand-500/30">Mermaid</span>
+            <div class="text-slate-500 hidden lg:block">→</div>
+            <div class="rounded-xl border border-purple-500/30 bg-purple-500/10 p-4">
+              <p class="font-semibold text-purple-200">Devin</p>
+              <p class="mt-1 text-xs text-slate-400">codifica + valida</p>
+            </div>
+            <div class="text-slate-500 hidden lg:block">→</div>
+            <div class="rounded-xl border border-brand-500/30 bg-brand-500/10 p-4">
+              <p class="font-semibold text-brand-200">Flosum</p>
+              <p class="mt-1 text-xs text-slate-400">merge + promote</p>
+            </div>
           </div>
-          <div class="mermaid">
-            flowchart LR
-            subgraph TEAMS["Times federados"]
-            direction TB
-            TA["Time A · CRM"]
-            TB["Time B · Billing"]
-            TC["Time C · Service"]
-            end
-
-            subgraph GH["GitHub · Source of Truth"]
-            direction TB
-            RA["repo-crm<br />📘 specs · 📒 playbooks"]
-            RB["repo-billing<br />📘 specs · 📒 playbooks"]
-            RC["repo-service<br />📘 specs · 📒 playbooks"]
-            end
-
-            D["🤖 Devin<br />Web UI + CLI"]
-            PR["🔁 Pull Request<br />+ Validações CI"]
-            FL["🚦 Flosum<br />Promotion Control"]
-
-            subgraph ORGS["Orgs Salesforce"]
-            direction TB
-            QA["QA"]
-            PP["PreProd"]
-            PR2["Produção"]
-            end
-
-            TA --> RA
-            TB --> RB
-            TC --> RC
-            RA & RB & RC --> D
-            D --> PR
-            PR --> FL
-            FL --> QA --> PP --> PR2
-
-            classDef team fill:#1A1E27,stroke:#6366F1,color:#E5E7EB;
-            classDef repo fill:#11141B,stroke:#22D3EE,color:#E5E7EB;
-            classDef org fill:#11141B,stroke:#34D399,color:#E5E7EB;
-            class TA,TB,TC team;
-            class RA,RB,RC repo;
-            class QA,PP,PR2 org;
-          </div>
-        </div>
-
-        <!-- Principles -->
-        <div class="mt-10 grid gap-4 md:grid-cols-3">
-          <div class="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-1">Princípio 01</div>
-            <h4 class="font-semibold mb-2">Ownership explícito</h4>
-            <p class="text-sm text-white/70">Cada metadata tem um time dono declarado. Sem dono = sem deploy.</p>
-          </div>
-          <div class="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-1">Princípio 02</div>
-            <h4 class="font-semibold mb-2">Spec antes de código</h4>
-            <p class="text-sm text-white/70">Nada vai pro Devin sem spec aprovada. A spec é o contrato com o agente.</p>
-          </div>
-          <div class="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-1">Princípio 03</div>
-            <h4 class="font-semibold mb-2">Flosum único caminho</h4>
-            <p class="text-sm text-white/70">Não existe deploy direto via SFDX para QA+. Tudo passa por Flosum.</p>
+          <div class="mt-4 grid lg:grid-cols-5 items-center gap-4 text-center text-sm">
+            <div></div>
+            <div></div>
+            <div class="text-slate-500">↓</div>
+            <div></div>
+            <div class="rounded-xl border border-sky-500/30 bg-sky-500/10 p-4">
+              <p class="font-semibold text-sky-200">Salesforce</p>
+              <p class="mt-1 text-xs text-slate-400">QA → PreProd → Prod</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- 4. SPEC DRIVEN DEVELOPMENT (SDD)                              -->
-    <!-- ============================================================ -->
-    <section id="sdd" class="anchor-offset relative border-t border-white/5">
-      <div class="mx-auto max-w-7xl px-6 py-24">
+
+    <!-- =========================================================
+     4. SPEC-DRIVEN DEVELOPMENT
+     ========================================================= -->
+    <section id="sdd" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Método</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            Spec-Driven Development — o coração do método
+          </h2>
+          <p class="mt-4 text-slate-300">
+            O Devin não adivinha. Ele segue limites claros. A Spec é o contrato entre o time, o agente e o negócio —
+            e quanto melhor a Spec, menor o custo (ACUs) e maior a qualidade do output.
+          </p>
+        </div>
+
+        <div class="mt-12 grid lg:grid-cols-12 gap-8">
+          <!-- Estrutura da Spec -->
+          <div class="lg:col-span-5 space-y-3">
+            <h3 class="text-lg font-semibold">Anatomia de uma Spec</h3>
+            <p class="text-sm text-slate-400">As 6 seções que toda demanda deve ter:</p>
+
+            <ul class="mt-4 space-y-3 text-sm">
+              <li class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-semibold text-brand-300">01</span><strong>Contexto</strong></div>
+                <p class="mt-1 text-slate-400">Por que essa demanda existe? Qual o problema de negócio?</p>
+              </li>
+              <li class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-semibold text-brand-300">02</span><strong>Requisitos funcionais</strong></div>
+                <p class="mt-1 text-slate-400">Comportamento observável esperado, em linguagem de produto.</p>
+              </li>
+              <li class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-semibold text-brand-300">03</span><strong>Regras técnicas</strong></div>
+                <p class="mt-1 text-slate-400">Padrões, naming, convenções, integrações e limites técnicos.</p>
+              </li>
+              <li class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-semibold text-brand-300">04</span><strong>Limites (out-of-scope)</strong></div>
+                <p class="mt-1 text-slate-400">O que <em>não</em> deve ser tocado, alterado ou criado.</p>
+              </li>
+              <li class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-semibold text-brand-300">05</span><strong>Critérios de aceite</strong></div>
+                <p class="mt-1 text-slate-400">Testáveis, mensuráveis. "Done" significa o quê, exatamente?</p>
+              </li>
+              <li class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2"><span
+                    class="text-xs font-semibold text-brand-300">06</span><strong>Guardrails de segurança</strong></div>
+                <p class="mt-1 text-slate-400">Sem deploy direto, sem destructiveChanges, sem JWT, ownership respeitado.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Template + exemplo -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Template SDD (markdown)</h3>
+                <span
+                  class="text-[11px] uppercase tracking-wider rounded-full bg-white/5 border border-white/10 px-2 py-0.5 text-slate-300">specs/&lt;ticket&gt;.md</span>
+              </div>
+              <pre class="code mt-3 p-5"><span class="tk-com"># SPEC: [TICKET-123] Validação de desconto em pedidos B2B</span>
+
+<span class="tk-key">## 1. Contexto</span>
+Pedidos B2B com desconto acima de 30% precisam de aprovação automática
+do gerente regional. Hoje a regra é manual e gera atrasos.
+
+<span class="tk-key">## 2. Requisitos funcionais</span>
+- Disparar fluxo de aprovação ao salvar Order com Discount__c &gt; 30.
+- Notificar o Owner_Manager__c via email quando aprovação for solicitada.
+- Bloquear alterações em Status enquanto aprovação estiver pendente.
+
+<span class="tk-key">## 3. Regras técnicas</span>
+- Trigger: <span class="tk-fn">OrderTrigger</span> (já existe — apenas estender via handler).
+- Padrão: <span class="tk-str">"Trigger Handler Pattern"</span> conforme <span class="tk-fn">/playbooks/02_apex.md</span>.
+- Cobertura mínima de testes: <span class="tk-num">85%</span>.
+
+<span class="tk-key">## 4. Limites (out-of-scope)</span>
+- NÃO modificar Profiles, Permission Sets ou Layouts.
+- NÃO criar novos objetos — apenas Custom Field <span class="tk-fn">Discount__c</span>.
+- NÃO tocar em metadata fora de <span class="tk-fn">CommercePricing</span>.
+
+<span class="tk-key">## 5. Critérios de aceite</span>
+- [ ] Order com desconto &gt; 30% inicia approval automaticamente.
+- [ ] Email enviado em até 60s.
+- [ ] Testes Apex passando com ≥ 85% de cobertura.
+- [ ] <span class="tk-fn">check-metadata-ownership.py</span> aprovado.
+
+<span class="tk-key">## 6. Guardrails</span>
+- Auth: <span class="tk-str">sf org login web</span> apenas.
+- Deploy: <span class="tk-str">--check-only</span> em sandbox; promoção via Flosum.
+- Sem destructiveChanges. Sem JWT. Sem snapshot completo.
+</pre>
+            </div>
+
+            <!-- Como o Devin interpreta -->
+            <div class="glass rounded-2xl p-6">
+              <h4 class="text-sm font-semibold text-white">Como o Devin interpreta cada seção</h4>
+              <ul class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-300">
+                <li><span class="text-brand-300 font-semibold">Contexto →</span> calibra o tom e o escopo.</li>
+                <li><span class="text-brand-300 font-semibold">Requisitos →</span> gera tarefas (todo plan).</li>
+                <li><span class="text-brand-300 font-semibold">Regras técnicas →</span> escolhe padrões certos.</li>
+                <li><span class="text-brand-300 font-semibold">Limites →</span> evita arquivos fora do escopo.</li>
+                <li><span class="text-brand-300 font-semibold">Aceite →</span> vira checklist de validação.</li>
+                <li><span class="text-brand-300 font-semibold">Guardrails →</span> bloqueia ações destrutivas.</li>
+              </ul>
+            </div>
+
+            <!-- Callout -->
+            <div class="rounded-xl border border-amber-400/30 bg-amber-400/5 p-4 text-sm text-amber-100">
+              <strong class="text-amber-300">⚠ Anti-pattern:</strong>
+              "Crie uma LWC de pedidos." → vago, ambíguo, custo alto. Sempre escreva uma Spec.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     5. ORQUESTRANDO O DEVIN
+     ========================================================= -->
+    <section id="devin" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Orquestração</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            Orquestrando o Devin (Web e CLI)
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Você não está mais codificando. Está dando direção. O Devin é o engenheiro júnior brilhante que precisa de
+            um Tech Lead — e esse Tech Lead é você.
+          </p>
+        </div>
+
+        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+          <!-- Boas práticas -->
+          <article class="glass rounded-2xl p-7">
+            <div class="flex items-center gap-2">
+              <span
+                class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-300">
+                <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">Boas práticas</h3>
+            </div>
+            <ul class="mt-5 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Use
+                <strong class="text-white">playbooks</strong> e referencie-os no prompt.
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Aponte
+                para <strong class="text-white">skills reutilizáveis</strong> em <code
+                  class="font-mono text-emerald-200">.agents/skills</code>.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Itere
+                em <strong class="text-white">passos pequenos</strong>; valide antes de avançar.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Rode
+                <code class="font-mono text-emerald-200">--check-only</code> na sandbox antes do PR.
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0"></span> Use
+                <code class="font-mono text-emerald-200">Agents.md</code> e <strong
+                  class="text-white">Blueprints</strong> para fixar o ambiente.
+              </li>
+            </ul>
+          </article>
+
+          <!-- Anti-patterns -->
+          <article class="glass rounded-2xl p-7 ring-1 ring-rose-500/10">
+            <div class="flex items-center gap-2">
+              <span
+                class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300">
+                <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">Anti-patterns</h3>
+            </div>
+            <ul class="mt-5 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Prompts
+                vagos do tipo <em>"faça uma LWC de pedidos"</em>.</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Escopo
+                gigante numa única sessão (engole ACUs).</li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Pedir
+                <strong class="text-white">deploy direto em Prod</strong> ao Devin.
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Pedir
+                <code class="font-mono text-rose-200">destructiveChanges</code> sem aprovação.
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0"></span> Salvar
+                credenciais (JWT, refresh tokens) em qualquer arquivo.</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Exemplo de prompt eficaz -->
+        <div class="mt-10 grid lg:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-semibold">Prompt eficaz (Web/CLI)</h3>
+            <p class="text-sm text-slate-400 mt-1">Curto, direcionado, ancorado em arquivos do repo.</p>
+            <pre class="code mt-3 p-5"><span class="tk-com"># Bom: específico, com referências e limites</span>
+Leia <span class="tk-fn">specs/TICKET-123.md</span>.
+Aplique o playbook <span class="tk-fn">playbooks/02_apex.md</span>.
+Implemente apenas em <span class="tk-fn">force-app/main/default/classes/</span>.
+Valide com <span class="tk-fn">scripts/salesforce/validate-deploy.sh</span>.
+Pare se <span class="tk-fn">check-metadata-ownership.py</span> falhar.</pre>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">Prompt fraco</h3>
+            <p class="text-sm text-slate-400 mt-1">Custa ACU, gera retrabalho, desvia do escopo.</p>
+            <pre class="code mt-3 p-5"><span class="tk-com"># Ruim: ambíguo e sem fronteiras</span>
+Faça uma melhoria no fluxo de pedidos.
+Tenta deixar mais bonito também.
+Se precisar, mexe no Profile pra liberar.
+Faz deploy direto na QA pra ver se funciona.</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     6. ACU — OTIMIZAÇÃO DE CUSTOS
+     ========================================================= -->
+    <section id="acu" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
         <div class="grid lg:grid-cols-12 gap-10">
           <div class="lg:col-span-5">
-            <div class="section-num mb-3">04 — SDD</div>
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Spec Driven Development</h2>
-            <p class="mt-4 text-white/70 leading-relaxed">
-              SDD é a prática de descrever <strong>o que</strong> deve mudar, <strong>onde</strong> muda, <strong>por
-                que</strong> muda
-              e <strong>como verificar</strong> — antes de qualquer linha de código.
+            <p class="section-eyebrow">Eficiência</p>
+            <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Otimização de custos (ACUs)</h2>
+            <p class="mt-4 text-slate-300">
+              Cada ciclo do Devin consome ACUs (Agent Compute Units). Engenheiros experientes economizam dezenas
+              de ACUs apenas escrevendo Specs melhores e validando localmente antes de delegar.
             </p>
-            <p class="mt-3 text-white/70 leading-relaxed">
-              Para times humanos, SDD reduz retrabalho. Para agentes, SDD é existencial: sem spec, o Devin alucina
-              escopo,
-              edita arquivos errados, gera classes redundantes e queima ACUs.
-            </p>
-
-            <div class="mt-6 space-y-3">
-              <div class="flex gap-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-4">
-                <span class="text-accent-green mt-0.5">✓</span>
-                <div>
-                  <div class="font-semibold">A spec é o prompt definitivo</div>
-                  <p class="text-sm text-white/70">Estruturada, versionada, revisada. O Devin a referencia, não a
-                    interpreta.</p>
-                </div>
-              </div>
-              <div class="flex gap-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-4">
-                <span class="text-accent-green mt-0.5">✓</span>
-                <div>
-                  <div class="font-semibold">A spec é o critério de aceite</div>
-                  <p class="text-sm text-white/70">PR válido = todos os checks da spec atendidos. Nada mais, nada menos.
-                  </p>
-                </div>
-              </div>
-              <div class="flex gap-3 rounded-lg border border-emerald-500/20 bg-emerald-500/5 p-4">
-                <span class="text-accent-green mt-0.5">✓</span>
-                <div>
-                  <div class="font-semibold">A spec é o registro histórico</div>
-                  <p class="text-sm text-white/70">Daqui a um ano, é a spec que explica o porquê — não o git blame.</p>
-                </div>
-              </div>
+            <div class="mt-6 rounded-xl border border-emerald-400/30 bg-emerald-400/5 p-4 text-sm text-emerald-100">
+              <strong class="text-emerald-300">Regra de ouro:</strong>
+              tudo que o seu laptop pode validar (lint, sintaxe, ownership), valide antes de pedir ao Devin.
             </div>
           </div>
 
-          <div class="lg:col-span-7 space-y-6">
-            <!-- Comparison: codar direto vs spec antes -->
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="pill bg-rose-500/10 text-accent-rose border border-rose-500/30">❌ Codar direto</span>
-                </div>
-                <p class="text-sm text-white/75 mb-3">“Devin, cria uma trigger pra atualizar Account quando Opportunity
-                  fechar.”</p>
-                <ul class="text-xs text-white/60 space-y-1.5">
-                  <li>· Quais campos atualizar?</li>
-                  <li>· E se já existir trigger?</li>
-                  <li>· Bulk-safe? Qual handler pattern?</li>
-                  <li>· Como testar? Cobertura mínima?</li>
-                  <li>· Quem aprova? Qual repositório?</li>
-                </ul>
-                <p class="mt-3 text-xs text-accent-rose">→ Resultado: 4 iterações, 18 ACUs, PR errado.</p>
-              </div>
-              <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="pill bg-emerald-500/10 text-accent-green border border-emerald-500/30">✅ Spec
-                    antes</span>
-                </div>
-                <p class="text-sm text-white/75 mb-3">“Devin, implemente a spec <span
-                    class="code">SPEC-CRM-204.md</span> seguindo o playbook <span class="code">apex-trigger.md</span>.”
-                </p>
-                <ul class="text-xs text-white/60 space-y-1.5">
-                  <li>· Escopo, campos e regras claros</li>
-                  <li>· Handler pattern já decidido</li>
-                  <li>· Casos de teste explicitados</li>
-                  <li>· Critério de aceite definido</li>
-                  <li>· Owner de metadata identificado</li>
-                </ul>
-                <p class="mt-3 text-xs text-accent-green">→ Resultado: 1 iteração, 5 ACUs, PR pronto pra review.</p>
-              </div>
+          <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            <div class="glass rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wider text-slate-400">Dica #1</p>
+              <h4 class="mt-2 font-semibold">Evite loops de fix</h4>
+              <p class="mt-1 text-sm text-slate-300">Se o Devin tenta corrigir o mesmo erro 2x sem progresso, pare.
+                Refatore a Spec.</p>
             </div>
-
-            <!-- Spec example -->
-            <div class="rounded-2xl border border-white/10 bg-ink-900/70 overflow-hidden">
-              <div class="flex items-center justify-between border-b border-white/5 px-5 py-3">
-                <div class="flex items-center gap-2 text-xs">
-                  <span class="dot bg-accent-cyan"></span>
-                  <span class="code text-white/70">specs/SPEC-CRM-204-account-tier.md</span>
-                </div>
-                <span class="pill bg-white/5 text-white/60 border border-white/10">Entrada do Devin</span>
-              </div>
-              <pre class="px-5 py-4 overflow-x-auto text-[12.5px] leading-relaxed"><code><span class="tk-p"># SPEC-CRM-204 · Account Tier Recalculation</span>
-
-<span class="tk-k">## Contexto</span>
-Quando uma Opportunity fecha como <span class="tk-s">"Closed Won"</span>, o tier do
-Account deve ser recalculado com base na soma de <span class="tk-t">Amount</span>
-das oportunidades fechadas nos últimos 12 meses.
-
-<span class="tk-k">## Owner</span>
-- Repositório: <span class="tk-s">repo-crm</span>
-- Time: <span class="tk-s">crm-platform</span>
-- Metadata: <span class="tk-t">Account</span>, <span class="tk-t">Opportunity</span>, <span class="tk-t">AccountTierService.cls</span>
-
-<span class="tk-k">## Regras</span>
-- <span class="tk-n">Amount</span> &gt;= 1.000.000 → <span class="tk-s">"Platinum"</span>
-- <span class="tk-n">Amount</span> &gt;= 250.000  → <span class="tk-s">"Gold"</span>
-- <span class="tk-n">Amount</span> &gt;= 50.000   → <span class="tk-s">"Silver"</span>
-- demais                  → <span class="tk-s">"Standard"</span>
-
-<span class="tk-k">## Implementação</span>
-- Trigger handler: <span class="tk-f">OpportunityTriggerHandler.afterUpdate</span>
-- Service: <span class="tk-f">AccountTierService.recalculate(Set&lt;Id&gt; accountIds)</span>
-- Bulk-safe (até <span class="tk-n">10.000</span> Opportunities por transação)
-- Sem SOQL/DML em loop
-
-<span class="tk-k">## Testes</span>
-- <span class="tk-f">AccountTierServiceTest</span> · cobertura mínima <span class="tk-n">90%</span>
-- Cenários: bulk, sem oportunidades, oportunidade reaberta
-
-<span class="tk-k">## Critério de aceite</span>
-- [ ] PR aprovado por <span class="tk-s">@crm-leads</span>
-- [ ] Todos os testes passam em scratch org
-- [ ] Sem alterações em metadata fora de <span class="tk-t">Account</span>/<span class="tk-t">Opportunity</span>
-- [ ] CHANGELOG.md atualizado
-</code></pre>
+            <div class="glass rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wider text-slate-400">Dica #2</p>
+              <h4 class="mt-2 font-semibold">Sem <em>guesswork</em></h4>
+              <p class="mt-1 text-sm text-slate-300">Forneça nomes de campos, paths e exemplos. Adivinhação custa caro.
+              </p>
             </div>
-
-            <!-- Output / Generated by Devin -->
-            <div class="rounded-2xl border border-brand-500/30 bg-ink-900/70 overflow-hidden">
-              <div class="flex items-center justify-between border-b border-white/5 px-5 py-3">
-                <div class="flex items-center gap-2 text-xs">
-                  <span class="dot bg-brand-400"></span>
-                  <span class="code text-white/70">force-app/main/default/classes/AccountTierService.cls</span>
-                </div>
-                <span class="pill bg-brand-500/10 text-brand-300 border border-brand-500/30">Saída do Devin</span>
-              </div>
-              <pre class="px-5 py-4 overflow-x-auto text-[12.5px] leading-relaxed"><code><span class="tk-c">// Geração guiada por SPEC-CRM-204 · revisão @crm-leads</span>
-<span class="tk-k">public with sharing class</span> <span class="tk-t">AccountTierService</span> {
-
-    <span class="tk-k">public static void</span> <span class="tk-f">recalculate</span>(<span class="tk-t">Set</span>&lt;<span class="tk-t">Id</span>&gt; accountIds) {
-        <span class="tk-k">if</span> (accountIds == <span class="tk-k">null</span> || accountIds.isEmpty()) <span class="tk-k">return</span>;
-
-        <span class="tk-t">Map</span>&lt;<span class="tk-t">Id</span>, <span class="tk-t">Decimal</span>&gt; totals = <span class="tk-f">aggregateLast12Months</span>(accountIds);
-        <span class="tk-t">List</span>&lt;<span class="tk-t">Account</span>&gt; toUpdate = <span class="tk-k">new</span> <span class="tk-t">List</span>&lt;<span class="tk-t">Account</span>&gt;();
-
-        <span class="tk-k">for</span> (<span class="tk-t">Account</span> a : [<span class="tk-k">SELECT</span> Id, Tier__c <span class="tk-k">FROM</span> Account <span class="tk-k">WHERE</span> Id <span class="tk-k">IN</span> :accountIds]) {
-            <span class="tk-t">String</span> tier = <span class="tk-f">tierFor</span>(totals.get(a.Id));
-            <span class="tk-k">if</span> (a.Tier__c != tier) {
-                a.Tier__c = tier;
-                toUpdate.add(a);
-            }
-        }
-        <span class="tk-k">if</span> (!toUpdate.isEmpty()) <span class="tk-k">update</span> toUpdate;
-    }
-    <span class="tk-c">// ... aggregateLast12Months / tierFor</span>
-}
-</code></pre>
+            <div class="glass rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wider text-slate-400">Dica #3</p>
+              <h4 class="mt-2 font-semibold">Lint local primeiro</h4>
+              <p class="mt-1 text-sm text-slate-300">Rode <code class="font-mono">prettier</code>, <code
+                  class="font-mono">eslint</code> e os scripts de validação antes do agente.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wider text-slate-400">Dica #4</p>
+              <h4 class="mt-2 font-semibold">Sessões focadas</h4>
+              <p class="mt-1 text-sm text-slate-300">Uma Spec por sessão. Evite "while you're at it..." — vira escopo
+                infinito.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wider text-slate-400">Dica #5</p>
+              <h4 class="mt-2 font-semibold">Use Blueprints</h4>
+              <p class="mt-1 text-sm text-slate-300">Ambiente pré-configurado evita reinstalações a cada sessão.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+              <p class="text-xs uppercase tracking-wider text-slate-400">Dica #6</p>
+              <h4 class="mt-2 font-semibold">Knowledge-base rica</h4>
+              <p class="mt-1 text-sm text-slate-300">Inventário, ownership e pipeline documentados reduzem perguntas e
+                erros.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- 5. COMO TRABALHAR COM O DEVIN                                 -->
-    <!-- ============================================================ -->
-    <section id="devin" class="anchor-offset relative border-t border-white/5 bg-gradient-to-b from-ink-900 to-ink-950">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-12">
-          <div class="section-num mb-3">05 — Operação</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Como trabalhar com o Devin</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            O Devin não é um colega. É uma <strong>função pura</strong>: dado um repositório, uma spec e um playbook,
-            ele gera um PR. Tudo o que estiver fora desse trio vira ruído, retrabalho e ACU desperdiçado.
+
+    <!-- =========================================================
+     7. FLUXO DE TRABALHO — TIMELINE
+     ========================================================= -->
+    <section id="fluxo" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Pipeline ponta a ponta</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">O Fluxo de Trabalho</h2>
+          <p class="mt-4 text-slate-300">
+            Da Spec ao deploy em Produção, sem atalhos perigosos. Esta é a sequência canônica.
           </p>
         </div>
 
-        <!-- Web UI vs CLI -->
-        <div class="grid lg:grid-cols-2 gap-5 mb-14">
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-brand-500/15 text-brand-300">⌬</span>
-              <h3 class="font-semibold">Devin Web UI</h3>
-              <span class="ml-auto pill bg-white/5 text-white/60 border border-white/10">Exploratório</span>
-            </div>
-            <p class="text-sm text-white/70">Use para: <span class="text-white">descoberta de impacto</span>, refactors
-              guiados, sessões de pair com humano, tarefas com várias rodadas de feedback visual (LWC, debug
-              interativo).</p>
-            <ul class="mt-3 text-xs text-white/60 space-y-1.5">
-              <li>· Ideal quando o escopo ainda está sendo formado</li>
-              <li>· Permite ver o raciocínio do agente passo a passo</li>
-              <li>· Pode pausar e reorientar mid-task</li>
-            </ul>
-          </div>
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-cyan-500/15 text-accent-cyan">▸_</span>
-              <h3 class="font-semibold">Devin CLI</h3>
-              <span class="ml-auto pill bg-white/5 text-white/60 border border-white/10">Repetível</span>
-            </div>
-            <p class="text-sm text-white/70">Use para: <span class="text-white">tarefas com spec madura</span>, fan-out
-              de pequenas correções, scripts de manutenção, integração com pre-commit/CI.</p>
-            <pre class="mt-3 rounded-md bg-ink-900/80 p-3 text-[12px] border border-white/5"><code><span class="tk-c"># Disparo padrão a partir do branch local</span>
-<span class="tk-f">devin</span> task run \
-  --repo <span class="tk-s">crm-platform</span> \
-  --spec <span class="tk-s">specs/SPEC-CRM-204.md</span> \
-  --playbook <span class="tk-s">.devin/playbooks/apex-trigger.md</span> \
-  --branch <span class="tk-s">feature/CRM-204-account-tier</span></code></pre>
-          </div>
-        </div>
-
-        <!-- 5.1 Boas práticas -->
-        <div class="mb-12">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="pill bg-emerald-500/10 text-accent-green border border-emerald-500/30">5.1 · Boas
-              práticas</span>
-            <div class="h-px flex-1 bg-white/5"></div>
-          </div>
-
-          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">①</div>
-              <h4 class="font-semibold mb-1">Sempre comece pela spec</h4>
-              <p class="text-sm text-white/70">Sem spec aprovada, não dispare o agente. A spec é o pré-requisito, não
-                opcional.</p>
-            </div>
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">②</div>
-              <h4 class="font-semibold mb-1">Use playbooks</h4>
-              <p class="text-sm text-white/70">Padrões repetíveis em <span class="code">.devin/playbooks/</span> evitam
-                reinventar a roda a cada tarefa.</p>
-            </div>
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">③</div>
-              <h4 class="font-semibold mb-1">Mantenha contexto no repo</h4>
-              <p class="text-sm text-white/70">Knowledge-base, ADRs, CODEOWNERS — tudo que reduz perguntas do agente.
-              </p>
-            </div>
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">④</div>
-              <h4 class="font-semibold mb-1">Evite prompts vagos</h4>
-              <p class="text-sm text-white/70">“Melhora isso aqui” → ❌. Use a spec ou referencie um playbook concreto.
-              </p>
-            </div>
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">⑤</div>
-              <h4 class="font-semibold mb-1">Defina escopo de arquivos</h4>
-              <p class="text-sm text-white/70">Diga explicitamente o que pode tocar. Limite blast radius com <span
-                  class="code">--paths</span>.</p>
-            </div>
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">⑥</div>
-              <h4 class="font-semibold mb-1">Rodar validações localmente</h4>
-              <p class="text-sm text-white/70">Devin deve rodar <span class="code">sfdx force:source:deploy
-                  --check-only</span> antes do PR.</p>
-            </div>
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">⑦</div>
-              <h4 class="font-semibold mb-1">Itere por incremento</h4>
-              <p class="text-sm text-white/70">Tarefas pequenas e revisáveis. Um agente preso é mais caro que cinco
-                agentes felizes.</p>
-            </div>
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 card-hover">
-              <div class="text-2xl mb-2">⑧</div>
-              <h4 class="font-semibold mb-1">Humano aprova, agente executa</h4>
-              <p class="text-sm text-white/70">PR sempre passa por revisor humano. O Devin propõe, o time decide.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5.2 Anti-patterns -->
-        <div>
-          <div class="flex items-center gap-3 mb-6">
-            <span class="pill bg-rose-500/10 text-accent-rose border border-rose-500/30">5.2 · Anti-patterns</span>
-            <div class="h-px flex-1 bg-white/5"></div>
-          </div>
-
-          <div class="grid gap-4 lg:grid-cols-2">
-            <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
-              <div class="flex items-start gap-3">
-                <span class="text-accent-rose text-xl leading-none">✕</span>
-                <div>
-                  <h4 class="font-semibold mb-1">Pedir código direto sem contexto</h4>
-                  <p class="text-sm text-white/70 mb-3">Prompts como <em>“cria uma trigger no Account”</em> forçam o
-                    Devin a alucinar regras de negócio.</p>
-                  <div class="rounded-md bg-ink-900/80 p-3 text-xs border border-rose-500/20">
-                    <span class="text-accent-rose">prompt:</span> <span class="code">"Devin, otimiza o Apex de
-                      Account."</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
-              <div class="flex items-start gap-3">
-                <span class="text-accent-rose text-xl leading-none">✕</span>
-                <div>
-                  <h4 class="font-semibold mb-1">Não definir ownership</h4>
-                  <p class="text-sm text-white/70 mb-3">Sem <span class="code">CODEOWNERS</span> e sem matriz de
-                    metadata, o Devin pisa em outro time sem saber.</p>
-                  <div class="rounded-md bg-ink-900/80 p-3 text-xs border border-rose-500/20">
-                    <span class="text-accent-rose">risco:</span> alteração em <span
-                      class="code">Opportunity.object-meta.xml</span> sem aprovação do time-vendas.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
-              <div class="flex items-start gap-3">
-                <span class="text-accent-rose text-xl leading-none">✕</span>
-                <div>
-                  <h4 class="font-semibold mb-1">Ignorar validações de CI</h4>
-                  <p class="text-sm text-white/70 mb-3">Pular <span class="code">deploy --check-only</span>, lint e
-                    testes só empurra o erro pro Flosum.</p>
-                  <div class="rounded-md bg-ink-900/80 p-3 text-xs border border-rose-500/20">
-                    <span class="text-accent-rose">consequência:</span> deploy validado falha em PreProd → rollback
-                    manual → ACUs desperdiçados.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
-              <div class="flex items-start gap-3">
-                <span class="text-accent-rose text-xl leading-none">✕</span>
-                <div>
-                  <h4 class="font-semibold mb-1">Mudanças grandes demais</h4>
-                  <p class="text-sm text-white/70 mb-3">Spec gigante = sessão longa = mais alucinação. Quebre em 2-3
-                    specs revisáveis.</p>
-                  <div class="rounded-md bg-ink-900/80 p-3 text-xs border border-rose-500/20">
-                    <span class="text-accent-rose">regra:</span> PR alvo &lt; 600 linhas e 1 domínio. Acima disso,
-                    refaça a spec.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tip callout -->
-          <aside class="mt-8 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-6 flex gap-4">
+        <ol class="timeline mt-12 relative space-y-8">
+          <!-- Passo 1 -->
+          <li class="pl-14 relative">
             <span
-              class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-cyan-500/15 text-accent-cyan">💡</span>
-            <div>
-              <div class="text-sm font-semibold text-accent-cyan uppercase tracking-wider">Tip</div>
-              <p class="mt-1 text-white/80 leading-relaxed">
-                Trate cada sessão do Devin como uma <strong>função idempotente</strong>:
-                mesma spec + mesmo playbook + mesmo repo = mesmo PR.
-                Se isso não vale, o problema está no contexto — nunca no agente.
-              </p>
+              class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-white font-semibold shadow-glow">1</span>
+            <div class="glass rounded-xl p-5">
+              <h3 class="font-semibold">Criação da Spec</h3>
+              <p class="mt-1 text-sm text-slate-300">Time/Tech Lead descreve a demanda em <code
+                  class="font-mono">specs/&lt;ticket&gt;.md</code> seguindo o template SDD.</p>
             </div>
-          </aside>
-        </div>
-      </div>
-    </section>
+          </li>
 
-    <!-- ============================================================ -->
-    <!-- 6. OTIMIZAÇÃO DE ACUs                                         -->
-    <!-- ============================================================ -->
-    <section id="acus" class="anchor-offset relative border-t border-white/5">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-12">
-          <div class="section-num mb-3">06 — Custo</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Otimização de ACUs</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            Cada ACU é dinheiro real. ACUs altos quase nunca vêm da complexidade da feature — vêm da
-            <strong>fricção</strong>: o agente busca arquivos que já existiam, faz suposições erradas, refaz testes,
-            descobre regras pelo PR. Reduzir ACU = remover fricção.
-          </p>
-        </div>
+          <!-- Passo 2 -->
+          <li class="pl-14 relative">
+            <span
+              class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-white font-semibold">2</span>
+            <div class="glass rounded-xl p-5">
+              <h3 class="font-semibold">Setup de ambiente</h3>
+              <p class="mt-1 text-sm text-slate-300">Rode os scripts de bootstrap localmente.</p>
+              <pre class="code mt-3 p-4"><span class="tk-com"># Setup local + autenticação Web</span>
+bash scripts/environment/setup.sh
+bash scripts/environment/authenticate-orgs.sh
+sf org login web --alias qa</pre>
+            </div>
+          </li>
 
-        <!-- 5 Levers -->
-        <div class="grid gap-5 lg:grid-cols-5 mb-14">
-          <div class="glass rounded-2xl p-5 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Alavanca 01</div>
-            <h4 class="font-semibold mb-2">Evite loops</h4>
-            <p class="text-sm text-white/70">Cada retry sem novo input é ACU jogado fora. Pare, ajuste a spec,
-              redispare.</p>
-          </div>
-          <div class="glass rounded-2xl p-5 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Alavanca 02</div>
-            <h4 class="font-semibold mb-2">Contexto completo</h4>
-            <p class="text-sm text-white/70">Knowledge-base, exemplos, glossário e padrões cortam perguntas redundantes.
-            </p>
-          </div>
-          <div class="glass rounded-2xl p-5 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Alavanca 03</div>
-            <h4 class="font-semibold mb-2">Use playbooks</h4>
-            <p class="text-sm text-white/70">Tarefas conhecidas (trigger, LWC, validation rule) = playbook pronto = zero
-              exploração.</p>
-          </div>
-          <div class="glass rounded-2xl p-5 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Alavanca 04</div>
-            <h4 class="font-semibold mb-2">Divida tarefas</h4>
-            <p class="text-sm text-white/70">2 specs de 200 linhas custam menos que 1 spec de 600 linhas. E são
-              revisáveis.</p>
-          </div>
-          <div class="glass rounded-2xl p-5 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Alavanca 05</div>
-            <h4 class="font-semibold mb-2">Evite reprocessamento</h4>
-            <p class="text-sm text-white/70">Cache scripts <span class="code">scripts/setup.sh</span> rápidos. Não force
-              <span class="code">npm install</span> a cada run.
-            </p>
-          </div>
-        </div>
+          <!-- Passo 3 -->
+          <li class="pl-14 relative">
+            <span
+              class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-white font-semibold">3</span>
+            <div class="glass rounded-xl p-5">
+              <h3 class="font-semibold">Desenvolvimento via Devin</h3>
+              <p class="mt-1 text-sm text-slate-300">Local (Devin CLI) ou Web. O Devin lê a Spec, executa playbooks e
+                codifica em <code class="font-mono">force-app/</code>.</p>
+            </div>
+          </li>
 
-        <!-- Bad vs good prompt -->
-        <div class="grid gap-5 lg:grid-cols-2">
-          <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 overflow-hidden">
-            <div class="flex items-center justify-between border-b border-rose-500/20 px-5 py-3">
-              <div class="flex items-center gap-2">
-                <span class="pill bg-rose-500/15 text-accent-rose border border-rose-500/30">❌ Prompt ruim</span>
-                <span class="text-xs text-white/50">~22 ACUs</span>
+          <!-- Passo 4 -->
+          <li class="pl-14 relative">
+            <span
+              class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-500 text-white font-semibold">4</span>
+            <div class="glass rounded-xl p-5">
+              <h3 class="font-semibold">Validação & testes</h3>
+              <p class="mt-1 text-sm text-slate-300">Check-only na sandbox + validações de ownership e destructive
+                changes.</p>
+              <pre class="code mt-3 p-4">python scripts/validation/check-metadata-ownership.py
+python scripts/validation/check-destructive-changes.py
+sf project deploy start --check-only --target-org qa
+bash scripts/salesforce/run-tests.sh</pre>
+            </div>
+          </li>
+
+          <!-- Passo 5 -->
+          <li class="pl-14 relative">
+            <span
+              class="absolute left-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white font-semibold">5</span>
+            <div class="glass rounded-xl p-5 ring-1 ring-emerald-500/20">
+              <h3 class="font-semibold">Sincronização via Flosum CLI</h3>
+              <p class="mt-1 text-sm text-slate-300">Pacote <code class="font-mono">package-deploy.xml</code> entra no
+                Flosum, que cuida da promoção QA → PreProd → Prod.</p>
+              <pre class="code mt-3 p-4"><span class="tk-com"># Apenas após PR aprovado e merge na main</span>
+npx <span class="tk-fn">@flosum/cli</span> branch sync --branch &lt;feature-branch&gt;
+npx <span class="tk-fn">@flosum/cli</span> package deploy \
+  --manifest manifest/package-deploy.xml</pre>
+              <div class="mt-3 rounded-md border border-amber-400/30 bg-amber-400/5 px-3 py-2 text-xs text-amber-100">
+                ⚠ O Devin <strong>não</strong> executa esta etapa em ambientes compartilhados — Flosum é o deployer
+                oficial.
               </div>
-              <span class="text-xs text-accent-rose">3 retries · escopo errado</span>
             </div>
-            <pre class="px-5 py-4 text-[12.5px] leading-relaxed overflow-x-auto"><code><span class="tk-c">// Disparo no Devin Web UI</span>
-"Cria uma <span class="tk-t">trigger</span> que atualiza o tier do Account
-quando uma Opportunity fechar. Coloca também um teste."
-</code></pre>
-            <div class="border-t border-rose-500/20 px-5 py-3 text-xs text-white/60 space-y-1">
-              <div>· Sem campos definidos → Devin chuta</div>
-              <div>· Sem repo/owner → toca <span class="code">Opportunity</span> alheio</div>
-              <div>· Sem critério de teste → cobertura 70%, falha em CI</div>
-              <div>· Sem playbook → reinventa handler pattern</div>
-            </div>
-          </div>
-
-          <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 overflow-hidden">
-            <div class="flex items-center justify-between border-b border-emerald-500/20 px-5 py-3">
-              <div class="flex items-center gap-2">
-                <span class="pill bg-emerald-500/15 text-accent-green border border-emerald-500/30">✅ Prompt
-                  otimizado</span>
-                <span class="text-xs text-white/50">~6 ACUs</span>
-              </div>
-              <span class="text-xs text-accent-green">1 run · PR pronto</span>
-            </div>
-            <pre class="px-5 py-4 text-[12.5px] leading-relaxed overflow-x-auto"><code><span class="tk-c">// Disparo via Devin CLI</span>
-<span class="tk-f">devin</span> task run \
-  --repo <span class="tk-s">crm-platform</span> \
-  --spec <span class="tk-s">specs/SPEC-CRM-204-account-tier.md</span> \
-  --playbook <span class="tk-s">.devin/playbooks/apex-trigger.md</span> \
-  --paths <span class="tk-s">"force-app/.../classes/AccountTier*"</span> \
-  --validate <span class="tk-s">"sfdx force:source:deploy --check-only"</span> \
-  --branch <span class="tk-s">feature/CRM-204-account-tier</span>
-</code></pre>
-            <div class="border-t border-emerald-500/20 px-5 py-3 text-xs text-white/60 space-y-1">
-              <div>· Spec versionada → escopo travado</div>
-              <div>· Playbook → handler pattern decidido</div>
-              <div>· Paths → blast radius limitado</div>
-              <div>· Validate → check antes do PR</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACU budget callout -->
-        <aside class="mt-12 rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 grid gap-6 md:grid-cols-3">
-          <div class="md:col-span-1">
-            <div class="text-xs uppercase tracking-widest text-accent-amber mb-1">Heurística</div>
-            <h3 class="text-lg font-bold">Orçamento de ACU por tipo</h3>
-            <p class="text-sm text-white/70 mt-2">Use como guarda-chuva. Estourou? Pare e revise spec/playbook.</p>
-          </div>
-          <div class="md:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="rounded-lg bg-ink-900/60 border border-white/5 p-3 text-center">
-              <div class="text-2xl font-bold text-accent-cyan">3-5</div>
-              <div class="text-xs text-white/60 mt-1">Bug fix simples</div>
-            </div>
-            <div class="rounded-lg bg-ink-900/60 border border-white/5 p-3 text-center">
-              <div class="text-2xl font-bold text-accent-cyan">5-10</div>
-              <div class="text-xs text-white/60 mt-1">Trigger + service + teste</div>
-            </div>
-            <div class="rounded-lg bg-ink-900/60 border border-white/5 p-3 text-center">
-              <div class="text-2xl font-bold text-accent-cyan">10-20</div>
-              <div class="text-xs text-white/60 mt-1">LWC com integração</div>
-            </div>
-            <div class="rounded-lg bg-ink-900/60 border border-white/5 p-3 text-center">
-              <div class="text-2xl font-bold text-accent-cyan">20+</div>
-              <div class="text-xs text-white/60 mt-1">⚠ quebrar a spec</div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 7. FLUXO COMPLETO DE DESENVOLVIMENTO                          -->
-    <!-- ============================================================ -->
-    <section id="fluxo" class="anchor-offset relative border-t border-white/5 bg-gradient-to-b from-ink-950 to-ink-900">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-12">
-          <div class="section-num mb-3">07 — Workflow</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Fluxo completo de desenvolvimento</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            Da demanda de negócio até a produção, em seis estações. Cada uma com entrada, saída e gate explícito.
-          </p>
-        </div>
-
-        <!-- Steps strip -->
-        <ol class="grid gap-4 md:grid-cols-2 lg:grid-cols-6 mb-12">
-          <li class="rounded-2xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="flex items-center gap-2 mb-2">
-              <span
-                class="grid h-7 w-7 place-items-center rounded-full bg-brand-500/20 text-brand-300 text-xs font-bold">1</span>
-              <div class="text-xs uppercase tracking-widest text-white/50">Spec</div>
-            </div>
-            <h4 class="font-semibold mb-1">SDD</h4>
-            <p class="text-xs text-white/60">PO + Tech Lead escrevem <span class="code">SPEC-*.md</span> e abrem PR de
-              spec.</p>
-          </li>
-          <li class="rounded-2xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="flex items-center gap-2 mb-2">
-              <span
-                class="grid h-7 w-7 place-items-center rounded-full bg-cyan-500/20 text-accent-cyan text-xs font-bold">2</span>
-              <div class="text-xs uppercase tracking-widest text-white/50">Contexto</div>
-            </div>
-            <h4 class="font-semibold mb-1">Devin lê</h4>
-            <p class="text-xs text-white/60">Carrega spec + playbook + knowledge-base + CODEOWNERS.</p>
-          </li>
-          <li class="rounded-2xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="flex items-center gap-2 mb-2">
-              <span
-                class="grid h-7 w-7 place-items-center rounded-full bg-violet-500/20 text-accent-violet text-xs font-bold">3</span>
-              <div class="text-xs uppercase tracking-widest text-white/50">Geração</div>
-            </div>
-            <h4 class="font-semibold mb-1">Código</h4>
-            <p class="text-xs text-white/60">Apex/LWC/metadata gerados em branch isolada.</p>
-          </li>
-          <li class="rounded-2xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="flex items-center gap-2 mb-2">
-              <span
-                class="grid h-7 w-7 place-items-center rounded-full bg-amber-500/20 text-accent-amber text-xs font-bold">4</span>
-              <div class="text-xs uppercase tracking-widest text-white/50">Validação</div>
-            </div>
-            <h4 class="font-semibold mb-1">CI</h4>
-            <p class="text-xs text-white/60">Lint, testes, <span class="code">deploy --check-only</span>, owner-guard.
-            </p>
-          </li>
-          <li class="rounded-2xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="flex items-center gap-2 mb-2">
-              <span
-                class="grid h-7 w-7 place-items-center rounded-full bg-emerald-500/20 text-accent-green text-xs font-bold">5</span>
-              <div class="text-xs uppercase tracking-widest text-white/50">Review</div>
-            </div>
-            <h4 class="font-semibold mb-1">PR humano</h4>
-            <p class="text-xs text-white/60">CODEOWNERS aprovam. Spec é a checklist do reviewer.</p>
-          </li>
-          <li class="rounded-2xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="flex items-center gap-2 mb-2">
-              <span
-                class="grid h-7 w-7 place-items-center rounded-full bg-rose-500/20 text-accent-rose text-xs font-bold">6</span>
-              <div class="text-xs uppercase tracking-widest text-white/50">Deploy</div>
-            </div>
-            <h4 class="font-semibold mb-1">Flosum</h4>
-            <p class="text-xs text-white/60">Branch → Flosum → QA → PreProd → Prod com aprovações.</p>
           </li>
         </ol>
-
-        <!-- Mermaid sequence diagram -->
-        <div class="rounded-2xl border border-white/10 bg-ink-900/60 p-6 mb-8">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h3 class="font-semibold">Fluxo end-to-end (sequencial)</h3>
-              <p class="text-xs text-white/50">PO · Dev · Devin · GitHub CI · Reviewer · Flosum · Salesforce</p>
-            </div>
-            <span class="pill bg-brand-500/10 text-brand-300 border border-brand-500/30">Mermaid</span>
-          </div>
-          <div class="mermaid">
-            sequenceDiagram
-            autonumber
-            actor PO as PO/Tech Lead
-            actor Dev as Developer
-            participant DV as 🤖 Devin
-            participant GH as GitHub + CI
-            actor Rev as Reviewer (CODEOWNER)
-            participant FL as 🚦 Flosum
-            participant SF as Salesforce Orgs
-
-            PO->>GH: Cria SPEC-*.md (PR de spec)
-            Rev->>GH: Aprova a spec
-            Dev->>DV: devin task run --spec --playbook
-            DV->>GH: Lê spec + playbook + knowledge-base
-            DV->>GH: Gera código + testes em branch
-            DV->>GH: Roda deploy --check-only + tests
-            GH-->>DV: ✅ Validações OK
-            DV->>GH: Abre Pull Request
-            Rev->>GH: Review humano (spec é o checklist)
-            Rev->>GH: Merge na main
-            GH->>FL: Sync da branch
-            FL->>SF: Deploy QA
-            Rev->>FL: Aprovação manual
-            FL->>SF: Deploy PreProd
-            Rev->>FL: Aprovação CAB
-            FL->>SF: Deploy Produção
-          </div>
-        </div>
-
-        <!-- Gate cards -->
-        <div class="grid gap-4 md:grid-cols-3">
-          <div class="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
-            <div class="text-xs uppercase tracking-widest text-accent-green mb-1">Gate 01</div>
-            <h4 class="font-semibold mb-1">Spec aprovada</h4>
-            <p class="text-sm text-white/70">Sem PR de spec mergeado, o Devin não dispara.</p>
-          </div>
-          <div class="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
-            <div class="text-xs uppercase tracking-widest text-accent-amber mb-1">Gate 02</div>
-            <h4 class="font-semibold mb-1">CI verde</h4>
-            <p class="text-sm text-white/70">Sem todos os checks verdes, PR não vai a review humano.</p>
-          </div>
-          <div class="rounded-xl border border-rose-500/20 bg-rose-500/5 p-5">
-            <div class="text-xs uppercase tracking-widest text-accent-rose mb-1">Gate 03</div>
-            <h4 class="font-semibold mb-1">Flosum exclusivo</h4>
-            <p class="text-sm text-white/70">QA+ só recebe deploy via Flosum. Nenhum atalho.</p>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- 8. GOVERNANÇA E SEGURANÇA                                     -->
-    <!-- ============================================================ -->
-    <section id="governanca" class="anchor-offset relative border-t border-white/5">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="grid lg:grid-cols-12 gap-10">
-          <div class="lg:col-span-5">
-            <div class="section-num mb-3">08 — Trust</div>
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Governança e segurança</h2>
-            <p class="mt-4 text-white/70 leading-relaxed">
-              Em modelo federado, governança não é overhead — é o que <strong>permite a velocidade</strong>.
-              Sem ela, todo time acaba pisando no outro e ninguém acelera.
-            </p>
 
-            <aside class="mt-8 rounded-2xl border border-rose-500/30 bg-rose-500/5 p-6 flex gap-4">
-              <span
-                class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-rose-500/15 text-accent-rose">!</span>
-              <div>
-                <div class="text-sm font-semibold text-accent-rose uppercase tracking-wider">Warning</div>
-                <p class="mt-1 text-white/80 leading-relaxed">
-                  Devin <strong>não tem visão global</strong> entre repositórios. Toda fronteira de domínio
-                  precisa ser explicitada por <em>artefatos</em> (CODEOWNERS, ownership matrix, branch protection),
-                  não por cultura oral.
-                </p>
-              </div>
-            </aside>
-          </div>
-
-          <div class="lg:col-span-7 grid gap-4 md:grid-cols-2">
-            <div class="glass rounded-2xl p-5 card-hover">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-500/15 text-brand-300">⊙</span>
-                <h4 class="font-semibold">Metadata Ownership</h4>
-              </div>
-              <p class="text-sm text-white/70">Matriz versionada de quem é dono de cada objeto, layout, flow ou
-                permission set. Aplicada via <span class="code">CODEOWNERS</span> + <span
-                  class="code">ownership-matrix.yml</span>.</p>
-              <pre class="mt-3 rounded-md bg-ink-900/80 p-3 text-[12px] border border-white/5"><code><span class="tk-c"># ownership-matrix.yml</span>
-<span class="tk-k">objects</span>:
-  Account: <span class="tk-s">crm-platform</span>
-  Opportunity: <span class="tk-s">sales-cloud</span>
-  Invoice__c: <span class="tk-s">billing</span>
-<span class="tk-k">shared</span>:
-  Profile.Admin: <span class="tk-s">platform-core</span>
-</code></pre>
-            </div>
-
-            <div class="glass rounded-2xl p-5 card-hover">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="grid h-9 w-9 place-items-center rounded-lg bg-cyan-500/15 text-accent-cyan">◈</span>
-                <h4 class="font-semibold">Ambientes compartilhados</h4>
-              </div>
-              <p class="text-sm text-white/70">QA/PreProd/Prod são compartilhadas. Nunca rode <span class="code">sfdx
-                  force:source:deploy</span> manual contra QA+. Use scratch orgs ou sandboxes dedicadas para o agente.
-              </p>
-              <ul class="mt-3 text-xs text-white/60 space-y-1">
-                <li>· Devin escreve em scratch org pessoal</li>
-                <li>· QA+ recebe SOMENTE via Flosum</li>
-                <li>· Janelas de deploy negociadas no calendário</li>
-              </ul>
-            </div>
-
-            <div class="glass rounded-2xl p-5 card-hover">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="grid h-9 w-9 place-items-center rounded-lg bg-violet-500/15 text-accent-violet">⛔</span>
-                <h4 class="font-semibold">Restrições do Devin</h4>
-              </div>
-              <p class="text-sm text-white/70">Hard limits por configuração — não confiança no agente.</p>
-              <ul class="mt-3 text-xs text-white/60 space-y-1">
-                <li>· Sem acesso de escrita fora do repo</li>
-                <li>· Sem credenciais de QA+</li>
-                <li>· Sem permissão para fechar PR sozinho</li>
-                <li>· Sem alteração em <span class="code">main</span> direta</li>
-                <li>· Bloqueio de paths via <span class="code">.devin/restricted-paths</span></li>
-              </ul>
-            </div>
-
-            <div class="glass rounded-2xl p-5 card-hover">
-              <div class="flex items-center gap-3 mb-2">
-                <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-500/15 text-accent-green">✓</span>
-                <h4 class="font-semibold">Aprovação humana</h4>
-              </div>
-              <p class="text-sm text-white/70">Toda promoção entre ambientes exige humano apertando o botão. O Devin
-                propõe; o time aprova.</p>
-              <div class="mt-3 grid grid-cols-3 gap-2 text-[11px] text-center">
-                <div class="rounded bg-ink-900/80 border border-white/5 py-2">QA<br /><span class="text-accent-green">1
-                    reviewer</span></div>
-                <div class="rounded bg-ink-900/80 border border-white/5 py-2">PreProd<br /><span
-                    class="text-accent-amber">2 reviewers</span></div>
-                <div class="rounded bg-ink-900/80 border border-white/5 py-2">Prod<br /><span
-                    class="text-accent-rose">CAB</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Branch protection example -->
-        <div class="mt-12 rounded-2xl border border-white/10 bg-ink-900/60 overflow-hidden">
-          <div class="flex items-center justify-between border-b border-white/5 px-5 py-3">
-            <div class="flex items-center gap-2 text-xs">
-              <span class="dot bg-accent-cyan"></span>
-              <span class="code text-white/70">.github/branch-protection.yml</span>
-            </div>
-            <span class="pill bg-white/5 text-white/60 border border-white/10">Guardrails</span>
-          </div>
-          <pre class="px-5 py-4 overflow-x-auto text-[12.5px] leading-relaxed"><code><span class="tk-k">main</span>:
-  <span class="tk-k">required_status_checks</span>:
-    - <span class="tk-s">ci/lint</span>
-    - <span class="tk-s">ci/apex-tests</span>
-    - <span class="tk-s">ci/deploy-check</span>
-    - <span class="tk-s">ci/owner-guard</span>     <span class="tk-c"># bloqueia mudança fora do ownership</span>
-    - <span class="tk-s">ci/spec-link</span>       <span class="tk-c"># exige referência a SPEC-* no PR</span>
-  <span class="tk-k">required_reviewers</span>: <span class="tk-n">2</span>
-  <span class="tk-k">enforce_admins</span>: <span class="tk-n">true</span>
-  <span class="tk-k">restrict_pushes</span>: <span class="tk-n">true</span>
-  <span class="tk-k">allow_force_pushes</span>: <span class="tk-n">false</span>
-</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 9. ESTRUTURA DO REPOSITÓRIO                                   -->
-    <!-- ============================================================ -->
-    <section id="repositorio"
-      class="anchor-offset relative border-t border-white/5 bg-gradient-to-b from-ink-900 to-ink-950">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-12">
-          <div class="section-num mb-3">09 — Repo Layout</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Estrutura do repositório</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            Baseada em <span class="code text-accent-cyan">devin-repo-spec.md</span>, a árvore abaixo é o
-            <strong>cérebro</strong> que o Devin
-            consulta a cada execução. Cada pasta tem um motivo concreto.
+    <!-- =========================================================
+     8. ESTRUTURA DO REPOSITÓRIO + REFERÊNCIA
+     ========================================================= -->
+    <section id="repo" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Repositório</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Estrutura do Repositório (modelo de referência)
+          </h2>
+          <p class="mt-4 text-slate-300">
+            O repositório <a href="https://github.com/issei/sf-repo" class="text-brand-300 hover:underline"
+              target="_blank" rel="noopener">github.com/issei/sf-repo</a>
+            é o template oficial. Use-o como ponto de partida (fork ou clone) — assim os playbooks e skills essenciais
+            já vêm pré-configurados para orquestrar o Devin de imediato.
           </p>
         </div>
 
-        <div class="grid lg:grid-cols-12 gap-8">
-          <!-- Tree -->
-          <div class="lg:col-span-6">
-            <div class="rounded-2xl border border-white/10 bg-ink-900/70 overflow-hidden">
-              <div class="flex items-center justify-between border-b border-white/5 px-5 py-3">
-                <div class="flex items-center gap-2 text-xs">
-                  <span class="dot bg-brand-400"></span>
-                  <span class="code text-white/70">repo-crm/</span>
-                </div>
-                <span class="pill bg-white/5 text-white/60 border border-white/10">Tree</span>
-              </div>
-              <pre class="px-5 py-4 overflow-x-auto text-[12.5px] leading-relaxed"><code><span class="tk-p">repo-crm/</span>
-├── <span class="tk-t">README.md</span>                  <span class="tk-c"># Onboarding do time + links rápidos</span>
-├── <span class="tk-t">CODEOWNERS</span>                 <span class="tk-c"># Quem aprova o quê (regra dura)</span>
-├── <span class="tk-t">CHANGELOG.md</span>               <span class="tk-c"># Histórico legível por humano</span>
-│
-├── <span class="tk-p">.devin/</span>                    <span class="tk-c"># Tudo que o agente lê antes de agir</span>
-│   ├── <span class="tk-t">config.yml</span>              <span class="tk-c"># Restricted paths, validate cmds</span>
-│   ├── <span class="tk-p">playbooks/</span>              <span class="tk-c"># Receitas determinísticas</span>
-│   │   ├── apex-trigger.md
-│   │   ├── lwc-component.md
-│   │   ├── validation-rule.md
-│   │   └── refactor-service.md
-│   ├── <span class="tk-p">knowledge-base/</span>         <span class="tk-c"># Contexto de domínio</span>
-│   │   ├── domain-glossary.md
-│   │   ├── apex-conventions.md
-│   │   ├── adr/                  <span class="tk-c"># Architecture Decision Records</span>
-│   │   └── examples/             <span class="tk-c"># Snippets canônicos</span>
-│   └── <span class="tk-t">restricted-paths</span>        <span class="tk-c"># Hard limits ao Devin</span>
-│
-├── <span class="tk-p">specs/</span>                     <span class="tk-c"># Spec Driven Development</span>
-│   ├── <span class="tk-t">_TEMPLATE.md</span>
-│   └── SPEC-CRM-204-account-tier.md
-│
-├── <span class="tk-p">scripts/</span>                   <span class="tk-c"># Setup, validate, deploy-prep</span>
-│   ├── setup.sh
-│   ├── validate.sh
-│   └── flosum-handoff.sh
-│
-├── <span class="tk-p">force-app/</span>                 <span class="tk-c"># Salesforce DX source</span>
-│   └── main/default/
-│       ├── classes/
-│       ├── lwc/
-│       ├── objects/
-│       ├── triggers/
-│       └── flows/
-│
-├── <span class="tk-p">.github/</span>
-│   ├── workflows/                <span class="tk-c"># lint, tests, deploy-check, owner-guard</span>
-│   ├── pull_request_template.md  <span class="tk-c"># Exige link ao SPEC-*</span>
-│   └── branch-protection.yml
-│
-├── <span class="tk-t">ownership-matrix.yml</span>        <span class="tk-c"># Quem é dono de qual metadata</span>
-└── <span class="tk-t">sfdx-project.json</span>
-</code></pre>
-            </div>
+        <div class="mt-12 grid lg:grid-cols-2 gap-8 items-start">
+          <!-- File tree -->
+          <div>
+            <pre class="code p-6">
+<span class="tk-fn">sf-repo/</span>
+├── <span class="tk-key">CLAUDE.md</span>            <span class="tk-com"># Instruções base ao agente</span>
+├── <span class="tk-key">.agents/</span>
+│   └── <span class="tk-fn">skills/</span>          <span class="tk-com"># Componentes modulares reutilizáveis</span>
+├── <span class="tk-key">knowledge-base/</span>     <span class="tk-com"># A "memória" do Devin</span>
+│   ├── metadata-ownership.yaml
+│   ├── org-inventory.md
+│   └── flosum-pipeline-map.md
+├── <span class="tk-key">playbooks/</span>          <span class="tk-com"># SOPs determinísticos</span>
+│   ├── 01_setup.md
+│   ├── 02_apex.md
+│   └── 03_promotion.md
+├── <span class="tk-key">scripts/</span>            <span class="tk-com"># Ferramentas locais (bash/python)</span>
+│   ├── environment/
+│   ├── salesforce/
+│   ├── validation/
+│   └── reporting/
+├── <span class="tk-key">specs/</span>              <span class="tk-com"># Demandas de negócio (entrada principal)</span>
+│   └── TICKET-123.md
+├── <span class="tk-key">force-app/</span>          <span class="tk-com"># Código Salesforce</span>
+└── <span class="tk-key">manifest/</span>
+    └── package-deploy.xml
+</pre>
           </div>
 
-          <!-- Folder explanations -->
-          <div class="lg:col-span-6 space-y-4">
-            <div class="rounded-2xl border border-brand-500/20 bg-brand-500/5 p-5">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="code text-brand-300">.devin/playbooks/</span>
-                <span class="pill bg-brand-500/10 text-brand-300 border border-brand-500/30">crítico</span>
-              </div>
-              <p class="text-sm text-white/75">Receitas passo-a-passo para tarefas recorrentes. Cada playbook descreve
-                <strong>como</strong> implementar um padrão (handler de trigger, LWC com Apex controller, etc.) — o
-                Devin segue à risca, evitando criatividade desnecessária e ACUs altos.
-              </p>
-              <div class="mt-3 text-xs text-white/60">Trigger típico: <span class="code">--playbook
-                  .devin/playbooks/apex-trigger.md</span></div>
+          <!-- Como o Devin usa cada pasta -->
+          <div class="space-y-4">
+            <div class="glass rounded-xl p-5">
+              <div class="flex items-center gap-2"><code class="font-mono text-brand-300">/knowledge-base</code><span
+                  class="text-xs text-slate-400">contexto persistente</span></div>
+              <p class="mt-1 text-sm text-slate-300">Inventário de orgs, mapa do pipeline Flosum e ownership por
+                domínio. É a primeira coisa que o Devin lê.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+              <div class="flex items-center gap-2"><code class="font-mono text-brand-300">/playbooks</code><span
+                  class="text-xs text-slate-400">execução determinística</span></div>
+              <p class="mt-1 text-sm text-slate-300">Procedimentos passo a passo. Quando o agente referencia um
+                playbook, ele segue uma SOP testada.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+              <div class="flex items-center gap-2"><code class="font-mono text-brand-300">/specs</code><span
+                  class="text-xs text-slate-400">entrada principal</span></div>
+              <p class="mt-1 text-sm text-slate-300">Onde mora a demanda. A Spec é o input #1 do Devin para qualquer
+                sessão.</p>
+            </div>
+            <div class="glass rounded-xl p-5">
+              <div class="flex items-center gap-2"><code class="font-mono text-brand-300">/.agents/skills</code><span
+                  class="text-xs text-slate-400">reutilização</span></div>
+              <p class="mt-1 text-sm text-slate-300">Skills modulares que o agente combina para tarefas recorrentes (ex:
+                gerar testes Apex, validar pacote, gerar relatório).</p>
             </div>
 
-            <div class="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="code text-accent-cyan">.devin/knowledge-base/</span>
-                <span class="pill bg-cyan-500/10 text-accent-cyan border border-cyan-500/30">contexto</span>
-              </div>
-              <p class="text-sm text-white/75">O “mundo” do time: glossário, ADRs, convenções de Apex, exemplos de
-                chamadas a APIs externas. O Devin lê antes de codar — é o que evita ele inventar nomes, padrões ou
-                regras de negócio.</p>
-            </div>
-
-            <div class="rounded-2xl border border-violet-500/20 bg-violet-500/5 p-5">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="code text-accent-violet">scripts/</span>
-                <span class="pill bg-violet-500/10 text-accent-violet border border-violet-500/30">automação</span>
-              </div>
-              <p class="text-sm text-white/75">Comandos canônicos do repositório. Quando o Devin precisa <em>setup</em>,
-                <em>validate</em> ou preparar entrega ao Flosum, ele invoca esses scripts — sem improvisar comandos
-                shell.
-              </p>
-              <pre class="mt-3 rounded-md bg-ink-900/80 p-3 text-[12px] border border-white/5"><code><span class="tk-c"># scripts/validate.sh</span>
-sfdx force:source:deploy --check-only \
-  --sourcepath force-app \
-  --testlevel RunLocalTests \
-  --json
-</code></pre>
-            </div>
-
-            <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="code text-accent-green">specs/</span>
-                <span class="pill bg-emerald-500/10 text-accent-green border border-emerald-500/30">contrato</span>
-              </div>
-              <p class="text-sm text-white/75">Cada feature/refator vive como um <span class="code">SPEC-*.md</span>. É
-                o input principal do Devin e o checklist do reviewer humano. Specs são versionadas e revisadas como
-                código.</p>
-            </div>
-
-            <div class="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="code text-accent-amber">ownership-matrix.yml</span>
-                <span class="pill bg-amber-500/10 text-accent-amber border border-amber-500/30">guardrail</span>
-              </div>
-              <p class="text-sm text-white/75">A fonte de verdade sobre <strong>quem é dono de qual metadata</strong>.
-                Casado com o check <span class="code">ci/owner-guard</span>, impede que o Devin (ou qualquer humano)
-                edite metadata fora da fronteira do time.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Playbook template example -->
-        <div class="mt-12 rounded-2xl border border-white/10 bg-ink-900/60 overflow-hidden">
-          <div class="flex items-center justify-between border-b border-white/5 px-5 py-3">
-            <div class="flex items-center gap-2 text-xs">
-              <span class="dot bg-brand-400"></span>
-              <span class="code text-white/70">.devin/playbooks/apex-trigger.md</span>
-            </div>
-            <span class="pill bg-brand-500/10 text-brand-300 border border-brand-500/30">Playbook canônico</span>
-          </div>
-          <pre class="px-5 py-4 overflow-x-auto text-[12.5px] leading-relaxed"><code><span class="tk-p"># Playbook · Apex Trigger</span>
-
-<span class="tk-k">## Objetivo</span>
-Criar/alterar trigger Apex seguindo o padrão Trigger Handler com bulk-safety.
-
-<span class="tk-k">## Estrutura obrigatória</span>
-- <span class="tk-t">XxxTrigger.trigger</span>          → 1 linha por evento, delega ao handler
-- <span class="tk-t">XxxTriggerHandler.cls</span>       → orquestra contexto (before/after × insert/update/delete)
-- <span class="tk-t">XxxService.cls</span>              → regra de negócio (testável isoladamente)
-- <span class="tk-t">XxxTriggerHandlerTest.cls</span>   → cenários de bulk + edge cases
-
-<span class="tk-k">## Regras</span>
-- <span class="tk-n">1</span> trigger por SObject (consulte trigger existente antes)
-- Sem SOQL/DML em loop
-- Sem hardcode de Ids
-- <span class="tk-t">@TestVisible</span> apenas em métodos privados auxiliares
-
-<span class="tk-k">## Comandos do agente</span>
-1. Verifique se já existe trigger para o SObject
-2. Aplique o template em force-app/main/default/triggers
-3. Rode <span class="tk-s">scripts/validate.sh</span>
-4. Atualize <span class="tk-t">CHANGELOG.md</span>
-</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 10. EXEMPLO REAL (END-TO-END)                                 -->
-    <!-- ============================================================ -->
-    <section id="exemplo" class="anchor-offset relative border-t border-white/5">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-12">
-          <div class="section-num mb-3">10 — Walkthrough</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Exemplo end-to-end</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            Uma demanda real, do business à produção. Cada estação tem o artefato exato que o time produziu.
-          </p>
-        </div>
-
-        <!-- Story rail -->
-        <div class="space-y-6">
-
-          <!-- Step 1: Demanda -->
-          <article class="rounded-2xl border border-white/10 bg-ink-900/60 p-6">
-            <header class="flex items-center gap-3 mb-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-full bg-brand-500/15 text-brand-300 text-sm font-bold">1</span>
-              <div>
-                <div class="text-xs uppercase tracking-widest text-white/50">Demanda de negócio</div>
-                <h3 class="font-semibold">Account Tier por receita anual</h3>
-              </div>
-              <span class="ml-auto pill bg-white/5 text-white/60 border border-white/10">PO + Tech Lead</span>
-            </header>
-            <p class="text-sm text-white/75 leading-relaxed">
-              “Marketing precisa segmentar contas por <strong>tier</strong> (Platinum/Gold/Silver/Standard) com base em
-              receita
-              consolidada das oportunidades fechadas no último ano. Hoje é planilha manual. Queremos automático no
-              Salesforce e
-              atualizado em tempo real quando uma Opp fecha.”
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2 text-xs">
-              <span class="pill bg-white/5 text-white/70 border border-white/10">Repo: repo-crm</span>
-              <span class="pill bg-white/5 text-white/70 border border-white/10">Domínio: Account</span>
-              <span class="pill bg-white/5 text-white/70 border border-white/10">Trigger: Opportunity</span>
-            </div>
-          </article>
-
-          <!-- Step 2: Spec -->
-          <article class="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6">
-            <header class="flex items-center gap-3 mb-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-full bg-cyan-500/15 text-accent-cyan text-sm font-bold">2</span>
-              <div>
-                <div class="text-xs uppercase tracking-widest text-accent-cyan">Spec criada e aprovada</div>
-                <h3 class="font-semibold"><span class="code">specs/SPEC-CRM-204-account-tier.md</span></h3>
-              </div>
-              <span class="ml-auto pill bg-cyan-500/10 text-accent-cyan border border-cyan-500/30">PR de spec →
-                merge</span>
-            </header>
-            <p class="text-sm text-white/75">A spec descrita na seção 04 entra no repo, é revisada pelos CODEOWNERS de
-              <code class="code">Account</code>, e aprovada antes do Devin disparar.
-            </p>
-            <ul class="mt-3 grid gap-2 text-xs text-white/70 sm:grid-cols-2">
-              <li>✓ Owner declarado · <span class="code">crm-platform</span></li>
-              <li>✓ Metadata afetada listada</li>
-              <li>✓ Critério de aceite definido</li>
-              <li>✓ Cobertura mínima de teste estabelecida</li>
-            </ul>
-          </article>
-
-          <!-- Step 3: Devin run -->
-          <article class="rounded-2xl border border-violet-500/20 bg-violet-500/5 p-6">
-            <header class="flex items-center gap-3 mb-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-full bg-violet-500/15 text-accent-violet text-sm font-bold">3</span>
-              <div>
-                <div class="text-xs uppercase tracking-widest text-accent-violet">Execução do Devin</div>
-                <h3 class="font-semibold">Devin CLI dispara a tarefa</h3>
-              </div>
-              <span class="ml-auto pill bg-violet-500/10 text-accent-violet border border-violet-500/30">~6 ACUs</span>
-            </header>
-            <pre class="rounded-md bg-ink-900/80 p-4 text-[12.5px] border border-white/5 overflow-x-auto"><code><span class="tk-f">devin</span> task run \
-  --repo <span class="tk-s">crm-platform</span> \
-  --spec <span class="tk-s">specs/SPEC-CRM-204-account-tier.md</span> \
-  --playbook <span class="tk-s">.devin/playbooks/apex-trigger.md</span> \
-  --paths <span class="tk-s">"force-app/main/default/{classes,triggers}/AccountTier*"</span> \
-  --validate <span class="tk-s">"./scripts/validate.sh"</span> \
-  --branch <span class="tk-s">feature/CRM-204-account-tier</span> \
-  --link-spec <span class="tk-s">SPEC-CRM-204</span>
-</code></pre>
-            <ul class="mt-3 text-xs text-white/70 space-y-1">
-              <li>· Devin lê spec + playbook + knowledge-base/<span class="code">apex-conventions.md</span></li>
-              <li>· Gera <span class="code">AccountTierService.cls</span>, <span
-                  class="code">OpportunityTriggerHandler.cls</span> e testes</li>
-              <li>· Roda <span class="code">scripts/validate.sh</span> em scratch org</li>
-              <li>· Atualiza <span class="code">CHANGELOG.md</span></li>
-            </ul>
-          </article>
-
-          <!-- Step 4: PR -->
-          <article class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6">
-            <header class="flex items-center gap-3 mb-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-full bg-emerald-500/15 text-accent-green text-sm font-bold">4</span>
-              <div>
-                <div class="text-xs uppercase tracking-widest text-accent-green">Pull Request gerado</div>
-                <h3 class="font-semibold">PR #842 · feat(account): tier recalculation (CRM-204)</h3>
-              </div>
-              <span class="ml-auto pill bg-emerald-500/10 text-accent-green border border-emerald-500/30">CI
-                verde</span>
-            </header>
-            <div class="grid gap-4 md:grid-cols-2">
-              <div class="rounded-md bg-ink-900/80 p-4 border border-white/5 text-xs space-y-2">
-                <div class="flex justify-between"><span class="text-white/60">Files changed</span><span
-                    class="text-white">7</span></div>
-                <div class="flex justify-between"><span class="text-white/60">+ added</span><span
-                    class="text-accent-green">+312</span></div>
-                <div class="flex justify-between"><span class="text-white/60">− removed</span><span
-                    class="text-accent-rose">−8</span></div>
-                <div class="flex justify-between"><span class="text-white/60">Apex coverage</span><span
-                    class="text-white">94%</span></div>
-                <div class="flex justify-between"><span class="text-white/60">Reviewers (CODEOWNERS)</span><span
-                    class="text-white">@crm-leads</span></div>
-              </div>
-              <div class="rounded-md bg-ink-900/80 p-4 border border-white/5 text-xs space-y-1.5">
-                <div class="flex items-center gap-2"><span class="text-accent-green">✓</span> ci/lint</div>
-                <div class="flex items-center gap-2"><span class="text-accent-green">✓</span> ci/apex-tests · 94% cov
-                </div>
-                <div class="flex items-center gap-2"><span class="text-accent-green">✓</span> ci/deploy-check (scratch)
-                </div>
-                <div class="flex items-center gap-2"><span class="text-accent-green">✓</span> ci/owner-guard · paths in
-                  <span class="code">crm-platform</span>
-                </div>
-                <div class="flex items-center gap-2"><span class="text-accent-green">✓</span> ci/spec-link ·
-                  SPEC-CRM-204</div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Step 5: Review humano -->
-          <article class="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6">
-            <header class="flex items-center gap-3 mb-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-full bg-amber-500/15 text-accent-amber text-sm font-bold">5</span>
-              <div>
-                <div class="text-xs uppercase tracking-widest text-accent-amber">Review humano</div>
-                <h3 class="font-semibold">Spec é o checklist do reviewer</h3>
-              </div>
-              <span
-                class="ml-auto pill bg-amber-500/10 text-accent-amber border border-amber-500/30">Human-in-the-loop</span>
-            </header>
-            <p class="text-sm text-white/75">@crm-leads compara o PR com cada item do critério de aceite da spec. O
-              esforço de revisão cai porque o escopo já estava acordado.</p>
-            <ul class="mt-3 text-xs text-white/70 space-y-1">
-              <li>· [x] Sem alterações fora de Account/Opportunity</li>
-              <li>· [x] Bulk-safe verificado em teste</li>
-              <li>· [x] Cobertura ≥ 90% (94% efetivo)</li>
-              <li>· [x] CHANGELOG atualizado</li>
-            </ul>
-          </article>
-
-          <!-- Step 6: Flosum -->
-          <article class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-6">
-            <header class="flex items-center gap-3 mb-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-full bg-rose-500/15 text-accent-rose text-sm font-bold">6</span>
-              <div>
-                <div class="text-xs uppercase tracking-widest text-accent-rose">Promoção via Flosum</div>
-                <h3 class="font-semibold">QA → PreProd → Prod</h3>
-              </div>
-              <span class="ml-auto pill bg-rose-500/10 text-accent-rose border border-rose-500/30">Único caminho</span>
-            </header>
-            <ol class="text-sm text-white/75 space-y-2">
-              <li><span class="text-accent-rose font-bold">1.</span> Após merge, <span
-                  class="code">scripts/flosum-handoff.sh</span> sincroniza a branch com Flosum.</li>
-              <li><span class="text-accent-rose font-bold">2.</span> Deployment Set criado linkado ao SPEC-CRM-204 e ao
-                PR #842.</li>
-              <li><span class="text-accent-rose font-bold">3.</span> Deploy automático em <strong>QA</strong>; smoke
-                tests rodam.</li>
-              <li><span class="text-accent-rose font-bold">4.</span> Aprovação manual (1 reviewer) → Deploy em
-                <strong>PreProd</strong>.
-              </li>
-              <li><span class="text-accent-rose font-bold">5.</span> CAB aprova janela de produção → Deploy em
-                <strong>Produção</strong>.
-              </li>
-              <li><span class="text-accent-rose font-bold">6.</span> Tag de release no GitHub linkada ao Flosum
-                Deployment Id.</li>
-            </ol>
-          </article>
-        </div>
-
-        <!-- Outcomes -->
-        <div class="mt-12 grid gap-4 md:grid-cols-4">
-          <div class="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="text-3xl font-bold gradient-text">6</div>
-            <div class="text-xs uppercase tracking-widest text-white/50 mt-1">ACUs gastos</div>
-          </div>
-          <div class="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="text-3xl font-bold gradient-text">1</div>
-            <div class="text-xs uppercase tracking-widest text-white/50 mt-1">Iteração</div>
-          </div>
-          <div class="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="text-3xl font-bold gradient-text">94%</div>
-            <div class="text-xs uppercase tracking-widest text-white/50 mt-1">Apex coverage</div>
-          </div>
-          <div class="rounded-xl border border-white/10 bg-ink-800/40 p-5">
-            <div class="text-3xl font-bold gradient-text">0</div>
-            <div class="text-xs uppercase tracking-widest text-white/50 mt-1">Conflito de metadata</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- 11. CHECKLIST DO DESENVOLVEDOR                                -->
-    <!-- ============================================================ -->
-    <section id="checklist"
-      class="anchor-offset relative border-t border-white/5 bg-gradient-to-b from-ink-950 to-ink-900">
-      <div class="mx-auto max-w-7xl px-6 py-24">
-        <div class="max-w-3xl mb-12">
-          <div class="section-num mb-3">11 — Daily Driver</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Checklist do desenvolvedor</h2>
-          <p class="mt-4 text-white/70 leading-relaxed">
-            Quatro fases. Imprima, fixe na parede, cole no template de PR. Cumprir essa lista <strong>é</strong> o
-            trabalho.
-          </p>
-        </div>
-
-        <div class="grid gap-5 lg:grid-cols-2">
-          <!-- Antes de começar -->
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="flex items-center gap-3 mb-4">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-lg bg-brand-500/15 text-brand-300 text-sm font-bold">①</span>
-              <h3 class="font-semibold">Antes de começar</h3>
-              <span class="ml-auto pill bg-white/5 text-white/60 border border-white/10">Prep</span>
-            </div>
-            <ul class="space-y-2 text-sm text-white/80">
-              <li class="flex gap-3"><span class="text-accent-green mt-1">☐</span> Existe um <span
-                  class="code">SPEC-*.md</span> aprovado?</li>
-              <li class="flex gap-3"><span class="text-accent-green mt-1">☐</span> A metadata afetada está dentro do meu
-                time (ownership-matrix)?</li>
-              <li class="flex gap-3"><span class="text-accent-green mt-1">☐</span> Existe playbook para esse tipo de
-                tarefa?</li>
-              <li class="flex gap-3"><span class="text-accent-green mt-1">☐</span> A spec referencia knowledge-base
-                relevante?</li>
-              <li class="flex gap-3"><span class="text-accent-green mt-1">☐</span> Branch criada a partir de <span
-                  class="code">main</span> atualizada?</li>
-              <li class="flex gap-3"><span class="text-accent-green mt-1">☐</span> Scratch org / sandbox pessoal pronta?
-              </li>
-            </ul>
-          </div>
-
-          <!-- Durante desenvolvimento -->
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="flex items-center gap-3 mb-4">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-lg bg-cyan-500/15 text-accent-cyan text-sm font-bold">②</span>
-              <h3 class="font-semibold">Durante o desenvolvimento</h3>
-              <span class="ml-auto pill bg-white/5 text-white/60 border border-white/10">Build</span>
-            </div>
-            <ul class="space-y-2 text-sm text-white/80">
-              <li class="flex gap-3"><span class="text-accent-cyan mt-1">☐</span> Disparei o Devin com <span
-                  class="code">--spec</span> e <span class="code">--playbook</span>?</li>
-              <li class="flex gap-3"><span class="text-accent-cyan mt-1">☐</span> Limitei o blast radius com <span
-                  class="code">--paths</span>?</li>
-              <li class="flex gap-3"><span class="text-accent-cyan mt-1">☐</span> Cada loop de retry traz <strong>novo
-                  input</strong>?</li>
-              <li class="flex gap-3"><span class="text-accent-cyan mt-1">☐</span> ACUs estão dentro do orçamento
-                esperado?</li>
-              <li class="flex gap-3"><span class="text-accent-cyan mt-1">☐</span> O Devin atualizou o CHANGELOG e
-                adicionou testes?</li>
-              <li class="flex gap-3"><span class="text-accent-cyan mt-1">☐</span> Validações locais passaram (<span
-                  class="code">scripts/validate.sh</span>)?</li>
-            </ul>
-          </div>
-
-          <!-- Antes do PR -->
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="flex items-center gap-3 mb-4">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-lg bg-violet-500/15 text-accent-violet text-sm font-bold">③</span>
-              <h3 class="font-semibold">Antes de abrir o PR</h3>
-              <span class="ml-auto pill bg-white/5 text-white/60 border border-white/10">Review</span>
-            </div>
-            <ul class="space-y-2 text-sm text-white/80">
-              <li class="flex gap-3"><span class="text-accent-violet mt-1">☐</span> Título do PR referencia o <span
-                  class="code">SPEC-*</span>?</li>
-              <li class="flex gap-3"><span class="text-accent-violet mt-1">☐</span> Diff &lt; 600 linhas e foco em 1
-                domínio?</li>
-              <li class="flex gap-3"><span class="text-accent-violet mt-1">☐</span> Cobertura Apex ≥ 90% nos arquivos
-                novos?</li>
-              <li class="flex gap-3"><span class="text-accent-violet mt-1">☐</span> Sem alterações fora do meu
-                ownership?</li>
-              <li class="flex gap-3"><span class="text-accent-violet mt-1">☐</span> Critérios de aceite da spec
-                marcados?</li>
-              <li class="flex gap-3"><span class="text-accent-violet mt-1">☐</span> Todos os checks de CI verdes?</li>
-              <li class="flex gap-3"><span class="text-accent-violet mt-1">☐</span> CODEOWNERS notificados via assignee?
-              </li>
-            </ul>
-          </div>
-
-          <!-- Antes de produção -->
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="flex items-center gap-3 mb-4">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-lg bg-rose-500/15 text-accent-rose text-sm font-bold">④</span>
-              <h3 class="font-semibold">Antes da produção</h3>
-              <span class="ml-auto pill bg-white/5 text-white/60 border border-white/10">Deploy</span>
-            </div>
-            <ul class="space-y-2 text-sm text-white/80">
-              <li class="flex gap-3"><span class="text-accent-rose mt-1">☐</span> PR mergeado em <span
-                  class="code">main</span>?</li>
-              <li class="flex gap-3"><span class="text-accent-rose mt-1">☐</span> Sincronização com Flosum confirmada?
-              </li>
-              <li class="flex gap-3"><span class="text-accent-rose mt-1">☐</span> Smoke tests passaram em QA?</li>
-              <li class="flex gap-3"><span class="text-accent-rose mt-1">☐</span> Aprovação de PreProd registrada?</li>
-              <li class="flex gap-3"><span class="text-accent-rose mt-1">☐</span> CAB aprovou janela e plano de
-                rollback?</li>
-              <li class="flex gap-3"><span class="text-accent-rose mt-1">☐</span> Tag de release linkada ao Deployment
-                Id?</li>
-              <li class="flex gap-3"><span class="text-accent-rose mt-1">☐</span> Stakeholders notificados pós-deploy?
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Quick reference of Devin prompts -->
-        <div class="mt-12 rounded-2xl border border-white/10 bg-ink-900/60 p-6">
-          <h3 class="font-semibold mb-4">📌 Prompts canônicos para Devin</h3>
-          <div class="grid gap-3 md:grid-cols-3">
-            <div class="rounded-md bg-ink-900/80 p-4 border border-white/5">
-              <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Implementar spec</div>
-              <pre class="text-[12px] leading-relaxed"><code>"Implemente <span class="tk-s">SPEC-CRM-204.md</span>
-seguindo <span class="tk-s">.devin/playbooks/
-apex-trigger.md</span>. Não toque
-fora dos paths listados na spec."</code></pre>
-            </div>
-            <div class="rounded-md bg-ink-900/80 p-4 border border-white/5">
-              <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Refator guiado</div>
-              <pre class="text-[12px] leading-relaxed"><code>"Refatore <span class="tk-t">AccountService.cls</span>
-seguindo <span class="tk-s">.devin/playbooks/
-refactor-service.md</span>. Mantenha
-contratos públicos."</code></pre>
-            </div>
-            <div class="rounded-md bg-ink-900/80 p-4 border border-white/5">
-              <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Análise de impacto</div>
-              <pre class="text-[12px] leading-relaxed"><code>"Liste TODOS os arquivos afetados
-por <span class="tk-s">SPEC-CRM-204.md</span> usando
-<span class="tk-t">ownership-matrix.yml</span>. Aborte
-se algum estiver fora do repo."</code></pre>
+            <div class="rounded-xl border border-brand-500/30 bg-brand-500/5 p-5">
+              <h4 class="font-semibold text-brand-200">Adotando o template</h4>
+              <ol class="mt-2 list-decimal pl-5 text-sm text-slate-300 space-y-1">
+                <li>Faça <strong>fork</strong> de <code class="font-mono">issei/sf-repo</code> para o seu time.</li>
+                <li>Atualize <code class="font-mono">knowledge-base/metadata-ownership.yaml</code> com o domínio do
+                  time.</li>
+                <li>Configure orgs em <code class="font-mono">org-inventory.md</code> e o pipeline em <code
+                    class="font-mono">flosum-pipeline-map.md</code>.</li>
+                <li>Pronto: o Devin já entende o seu contexto desde a primeira sessão.</li>
+              </ol>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- 12. CONCLUSÃO                                                 -->
-    <!-- ============================================================ -->
-    <section id="conclusao" class="anchor-offset relative border-t border-white/5 overflow-hidden">
-      <div class="absolute inset-0 grid-bg opacity-50"></div>
+
+    <!-- =========================================================
+     9. GOVERNANÇA E CHECKLIST
+     ========================================================= -->
+    <section id="governanca" class="relative py-24 lg:py-32 border-t border-white/5">
       <div
-        class="absolute -bottom-40 left-1/2 h-[480px] w-[1100px] -translate-x-1/2 rounded-full bg-gradient-to-t from-brand-600/30 via-accent-cyan/10 to-transparent blur-3xl">
+        class="absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent to-transparent pointer-events-none">
       </div>
 
-      <div class="relative mx-auto max-w-7xl px-6 py-24 text-center">
-        <div class="section-num mb-3">12 — Conclusão</div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">
-          Desenvolvimento orientado a <span class="gradient-text">agentes</span>,<br />
-          governado por <span class="gradient-text">specs</span>.
-        </h2>
-        <p class="mt-6 mx-auto max-w-2xl text-lg text-white/75 leading-relaxed">
-          O Devin acelera. O SDD direciona. O Flosum protege. O GitHub registra.
-          Quando os quatro andam juntos, o time entrega mais com menos esforço — e dorme melhor.
-        </p>
-
-        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 text-left">
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Resultado 01</div>
-            <h3 class="font-semibold mb-2">Menos esforço manual</h3>
-            <p class="text-sm text-white/70">Boilerplate, testes e setup de PR são automáticos. O humano cuida do que
-              humano faz melhor: regra de negócio e julgamento.</p>
-          </div>
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Resultado 02</div>
-            <h3 class="font-semibold mb-2">Mais previsibilidade</h3>
-            <p class="text-sm text-white/70">Spec aprovada → entrega previsível. Mesmas entradas geram mesmas saídas.
-              Roadmap deixa de ser ficção.</p>
-          </div>
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Resultado 03</div>
-            <h3 class="font-semibold mb-2">Mais qualidade</h3>
-            <p class="text-sm text-white/70">Cobertura mínima como gate. Owner-guard como contrato. Flosum como
-              porteiro. Erro humano vira exceção, não regra.</p>
-          </div>
-          <div class="glass rounded-2xl p-6 card-hover">
-            <div class="text-xs uppercase tracking-widest text-brand-300 mb-2">Resultado 04</div>
-            <h3 class="font-semibold mb-2">Rastreabilidade total</h3>
-            <p class="text-sm text-white/70">Demanda → Spec → PR → Deployment → Tag. Toda mudança em produção tem
-              genealogia clara em segundos.</p>
-          </div>
-        </div>
-
-        <!-- Final callout -->
-        <div
-          class="mt-14 mx-auto max-w-3xl rounded-2xl border border-brand-500/40 bg-gradient-to-r from-brand-500/10 to-accent-cyan/10 p-8 shadow-glow">
-          <p class="text-lg sm:text-xl font-semibold text-white">
-            “O repositório é o cérebro do agente.<br />
-            <span class="gradient-text">O time é a consciência que o guia.</span>”
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Governança</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Ownership, fronteiras e checklist</h2>
+          <p class="mt-4 text-slate-300">
+            Em um modelo federado, ownership de metadata é sagrado. Violar uma fronteira = <em>metadata trampling</em> =
+            deploy quebrado para outro time.
           </p>
-          <p class="mt-3 text-sm text-white/60">— manifesto operacional</p>
         </div>
 
-        <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <a href="#hero"
-            class="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-4 py-2 text-sm hover:bg-white/10">
-            <span aria-hidden>↑</span> Voltar ao topo
+        <div class="mt-12 grid lg:grid-cols-12 gap-8">
+          <!-- Regras de ownership -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="glass rounded-xl p-6">
+              <h3 class="font-semibold">Quem pode alterar o quê</h3>
+              <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+                <div class="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <p class="font-semibold text-white">Custom Objects & Fields</p>
+                  <p class="text-slate-400 mt-1">Apenas o time owner do domínio (ex: <code
+                      class="font-mono">CommercePricing</code>).</p>
+                </div>
+                <div class="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <p class="font-semibold text-white">Apex Classes</p>
+                  <p class="text-slate-400 mt-1">Time owner; convenções de naming por namespace lógico.</p>
+                </div>
+                <div class="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <p class="font-semibold text-white">Flows</p>
+                  <p class="text-slate-400 mt-1">Apenas após validação de impacto cruzado entre times.</p>
+                </div>
+                <div class="rounded-lg border border-white/10 bg-white/5 p-4">
+                  <p class="font-semibold text-white">Profiles & Layouts</p>
+                  <p class="text-slate-400 mt-1">Componentes <strong>compartilhados</strong> — Smart Merge do Flosum
+                    obrigatório.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass rounded-xl p-6">
+              <h3 class="font-semibold">Estratégias de isolamento</h3>
+              <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                <li class="flex gap-2"><span class="text-brand-300">●</span> <strong class="text-white">Ownership por
+                    domínio</strong> declarado em <code class="font-mono">metadata-ownership.yaml</code>.</li>
+                <li class="flex gap-2"><span class="text-brand-300">●</span> <strong class="text-white">Naming
+                    conventions</strong> com prefixo do time/domínio (ex: <code
+                    class="font-mono">CP_OrderTrigger</code>).</li>
+                <li class="flex gap-2"><span class="text-brand-300">●</span> <strong class="text-white">Namespace
+                    lógico</strong> separando classes, objects, layouts e LWCs.</li>
+                <li class="flex gap-2"><span class="text-brand-300">●</span> <strong class="text-white">Validação
+                    automatizada</strong> via <code class="font-mono">check-metadata-ownership.py</code> antes do PR.
+                </li>
+              </ul>
+            </div>
+
+            <div class="rounded-xl border border-rose-400/30 bg-rose-400/5 p-5 text-sm text-rose-100">
+              <strong class="text-rose-300">Consequência da violação:</strong>
+              metadata trampling — outro time descobre, em um deploy futuro, que seus componentes foram sobrescritos.
+              Resultado: rollback emergencial, retrabalho e perda de confiança no pipeline.
+            </div>
+          </div>
+
+          <!-- Checklist interativo -->
+          <div class="lg:col-span-5">
+            <div class="glass rounded-2xl p-6 sticky top-24" x-data="{
+          items: [
+            { l: 'Antes do prompt', items: [
+              { t: 'Spec preenchida em specs/ seguindo o template SDD', done: false },
+              { t: 'Playbook relevante referenciado no prompt', done: false },
+              { t: 'metadata-ownership.yaml revisado para o domínio', done: false },
+              { t: 'Branch criado: devin/<ticket>-<slug>', done: false },
+            ]},
+            { l: 'Durante a execução', items: [
+              { t: 'sf org login web ativo (sem JWT)', done: false },
+              { t: 'Devin operando apenas em paths permitidos', done: false },
+              { t: 'check-metadata-ownership.py passando', done: false },
+              { t: 'sf project deploy start --check-only --target-org qa OK', done: false },
+              { t: 'Testes Apex ≥ 85% de cobertura', done: false },
+            ]},
+            { l: 'Promoção via Flosum', items: [
+              { t: 'PR aprovado por humano', done: false },
+              { t: 'Comentário de trigger conforme playbook 03', done: false },
+              { t: 'Sem destructiveChanges não autorizados', done: false },
+              { t: 'package-deploy.xml gerado e revisado', done: false },
+              { t: 'Smart Merge verificado em componentes compartilhados', done: false },
+            ]},
+          ]
+        }">
+              <div class="flex items-center justify-between">
+                <h3 class="font-semibold">Checklist do Desenvolvedor</h3>
+                <span class="text-xs text-slate-400">interativo</span>
+              </div>
+              <p class="text-sm text-slate-400 mt-1">Marque conforme avança — funciona como guia rápido.</p>
+
+              <template x-for="(group, gi) in items" :key="gi">
+                <div class="mt-5">
+                  <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold" x-text="group.l"></p>
+                  <ul class="mt-2 space-y-2">
+                    <template x-for="(it, ii) in group.items" :key="ii">
+                      <li>
+                        <label class="flex items-start gap-3 cursor-pointer group">
+                          <input type="checkbox" class="chk mt-0.5" x-model="it.done">
+                          <span class="text-sm text-slate-300 group-hover:text-white"
+                            :class="it.done && 'line-through text-slate-500'" x-text="it.t"></span>
+                        </label>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     10. CONCLUSÃO E RECURSOS
+     ========================================================= -->
+    <section id="recursos" class="relative py-24 lg:py-32 border-t border-white/5 aurora overflow-hidden">
+      <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">O futuro</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            De codificadores a <span
+              class="bg-gradient-to-r from-brand-300 to-purple-300 bg-clip-text text-transparent">Agentic Tech
+              Leads</span>
+          </h2>
+          <p class="mt-4 text-slate-300">
+            O futuro do Salesforce não é digitar XML mais rápido. É orquestrar Specs, Skills e agentes para entregar
+            valor de negócio com governança real. O ferramental está pronto. A próxima escolha é sua.
+          </p>
+        </div>
+
+        <h3 class="mt-12 text-lg font-semibold">Links oficiais</h3>
+        <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Devin CLI -->
+          <a href="https://cli.devin.ai/docs" target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+            <p class="text-xs uppercase tracking-wider text-purple-300">Devin</p>
+            <p class="mt-2 font-semibold">Devin CLI · Documentação</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">cli.devin.ai/docs</p>
           </a>
-          <a href="#exemplo"
-            class="inline-flex items-center gap-2 rounded-md border border-brand-500/40 bg-brand-500/10 px-4 py-2 text-sm text-brand-300 hover:bg-brand-500/20">
-            Revisar o exemplo end-to-end <span aria-hidden>→</span>
+          <a href="https://docs.devin.ai/onboard-devin/environment/blueprints" target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+            <p class="text-xs uppercase tracking-wider text-purple-300">Devin</p>
+            <p class="mt-2 font-semibold">Blueprints</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">docs.devin.ai/onboard-devin/environment/blueprints</p>
+          </a>
+          <a href="https://docs.devin.ai/onboard-devin/environment/blueprint-reference" target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+            <p class="text-xs uppercase tracking-wider text-purple-300">Devin</p>
+            <p class="mt-2 font-semibold">Blueprint Reference</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">docs.devin.ai/.../blueprint-reference</p>
+          </a>
+          <a href="https://docs.devin.ai/onboard-devin/agents-md" target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+            <p class="text-xs uppercase tracking-wider text-purple-300">Devin</p>
+            <p class="mt-2 font-semibold">Agents.md</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">docs.devin.ai/onboard-devin/agents-md</p>
+          </a>
+          <!-- Flosum -->
+          <a href="https://docs.flosum.com/devops/code/devops-cli/overview-of-flosum-cli-node.js-package"
+            target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+            <p class="text-xs uppercase tracking-wider text-brand-300">Flosum</p>
+            <p class="mt-2 font-semibold">Flosum CLI (Node.js)</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">docs.flosum.com/.../flosum-cli-node.js-package</p>
+          </a>
+          <!-- Salesforce -->
+          <a href="https://github.com/salesforcecli/cli" target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+            <p class="text-xs uppercase tracking-wider text-sky-300">Salesforce</p>
+            <p class="mt-2 font-semibold">Salesforce CLI (sf)</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">github.com/salesforcecli/cli</p>
+          </a>
+          <a href="https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm"
+            target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow sm:col-span-2 lg:col-span-2">
+            <p class="text-xs uppercase tracking-wider text-sky-300">Salesforce</p>
+            <p class="mt-2 font-semibold">Web Login (auth flow oficial)</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">developer.salesforce.com/.../sfdx_dev_auth_web_flow.htm</p>
+          </a>
+          <!-- Repo -->
+          <a href="https://github.com/issei/sf-repo" target="_blank" rel="noopener"
+            class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow ring-1 ring-brand-500/30">
+            <p class="text-xs uppercase tracking-wider text-brand-300">Template</p>
+            <p class="mt-2 font-semibold">issei/sf-repo (referência)</p>
+            <p class="mt-1 text-xs text-slate-400 break-all">github.com/issei/sf-repo</p>
           </a>
         </div>
       </div>
     </section>
+
+
+    <!-- =========================================================
+     11. AGRADECIMENTOS / FOOTER
+     ========================================================= -->
+    <footer class="relative border-t border-white/10 bg-ink-900">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+        <!-- Bloco de agradecimentos em destaque -->
+        <div
+          class="rounded-2xl border border-white/10 bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-transparent p-8 lg:p-10">
+          <p class="section-eyebrow">Agradecimentos</p>
+          <h3 class="mt-2 text-2xl lg:text-3xl font-bold tracking-tight">Esta arquitetura foi refinada coletivamente
+          </h3>
+          <p class="mt-4 text-slate-300 max-w-3xl">
+            Um agradecimento especial a <strong class="text-white">Jesse</strong> e <strong
+              class="text-white">Kylmer</strong> pelas
+            contribuições ativas nas experimentações e discussões que ajudaram a refinar e amadurecer os conceitos do
+            Modelo Agentic Federado, do Spec-Driven Development aplicado ao Salesforce e da integração entre Devin e
+            Flosum
+            como peças de um pipeline confiável.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span
+              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">
+              <span
+                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-500/30 text-brand-200 text-xs font-bold">J</span>
+              Jesse
+            </span>
+            <span
+              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">
+              <span
+                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-purple-500/30 text-purple-200 text-xs font-bold">K</span>
+              Kylmer
+            </span>
+          </div>
+        </div>
+
+        <!-- Linha final do rodapé -->
+        <div
+          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          <p>© <span id="year"></span> Agentic DevOps for Salesforce — portal de treinamento.</p>
+          <div class="flex items-center gap-4">
+            <a href="#hero" class="hover:text-slate-300">Voltar ao topo ↑</a>
+            <a href="https://github.com/issei/sf-repo" target="_blank" rel="noopener"
+              class="hover:text-slate-300">github.com/issei/sf-repo</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="border-t border-white/5 bg-ink-950">
-    <div class="mx-auto max-w-7xl px-6 py-10 grid gap-6 md:grid-cols-3 text-sm">
-      <div>
-        <div class="flex items-center gap-2.5 mb-2">
-          <span class="grid h-7 w-7 place-items-center rounded-md bg-gradient-to-br from-brand-500 to-accent-cyan">
-            <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 text-ink-950" fill="none" stroke="currentColor"
-              stroke-width="2.5">
-              <path d="M4 7l8-4 8 4-8 4-8-4zM4 12l8 4 8-4M4 17l8 4 8-4" />
-            </svg>
-          </span>
-          <strong class="tracking-tight">Agentic Salesforce DevOps</strong>
-        </div>
-        <p class="text-white/60">Manual operacional para times federados usando Devin (Cognition), SDD e Flosum.</p>
-      </div>
-      <div>
-        <div class="text-xs uppercase tracking-widest text-white/50 mb-2">Artefatos relacionados</div>
-        <ul class="space-y-1 text-white/70">
-          <li>· <span class="code">.devin/playbooks/</span></li>
-          <li>· <span class="code">specs/_TEMPLATE.md</span></li>
-          <li>· <span class="code">ownership-matrix.yml</span></li>
-          <li>· <span class="code">scripts/flosum-handoff.sh</span></li>
-        </ul>
-      </div>
-      <div>
-        <div class="text-xs uppercase tracking-widest text-white/50 mb-2">Lembrete</div>
-        <p class="text-white/70">Sem spec, o Devin não dispara. Sem CI verde, não há review. Sem Flosum, não há deploy.
-          <strong class="text-white">Sem disciplina, não há velocidade.</strong>
-        </p>
-      </div>
-    </div>
-    <div class="border-t border-white/5">
-      <div class="mx-auto max-w-7xl px-6 py-5 text-xs text-white/40 flex flex-col sm:flex-row gap-2 justify-between">
-        <div>v1.0 · interno · uso técnico</div>
-        <div>Inspirado em Stripe · Vercel · Linear</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Active nav highlight -->
+  <!-- =========================================================
+     SCRIPTS — interatividade leve
+     ========================================================= -->
   <script>
-    (function () {
-      const links = document.querySelectorAll('header nav a[href^="#"]');
-      const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-          }
-        });
-      }, { rootMargin: '-50% 0px -45% 0px', threshold: 0 });
-      sections.forEach(s => obs.observe(s));
-    })();
-  </script>
+    // Ano dinâmico no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Reveal on scroll: ativa fade-in nas seções ao entrarem na viewport
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.08 });
+    document.querySelectorAll('section, footer').forEach(el => {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  </script>
 </body>
 
 </html>
