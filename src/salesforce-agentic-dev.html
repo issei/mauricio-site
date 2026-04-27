@@ -21,29 +21,55 @@
 
     gtag('config', 'G-GEKLHZYVYX');
   </script>
-  <meta charset="UTF-8">
+
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agentic DevOps for Salesforce — Portal de Treinamento</title>
+
+  <!-- SEO & Meta Tags -->
+  <title>Agentic DevOps for Salesforce — Portal de Treinamento | Maurício Issei</title>
   <meta name="description"
-    content="Portal de apresentação e treinamento sobre Agentic DevOps no Salesforce: Modelo Federado, Spec-Driven Development, Devin (Cognition), Flosum CLI e Salesforce CLI." />
-  <link rel="service-doc" href="/salesforce-agentic-dev.md" type="text/markdown" title="Structured CV for AI agents" />
+    content="Guia definitivo, prático e ensinável sobre como desenvolver Salesforce com IA Agentic sem gerar débito técnico. Spec-Driven Development, Devin (Cognition), Flosum CLI, Modelo Federado e Salesforce CLI." />
+  <meta name="author" content="Maurício Yokoyama Issei" />
+  <meta name="keywords"
+    content="Agentic DevOps, Salesforce, Spec-Driven Development, SDD, Devin, Cognition, Flosum, Apex, LWC, IA, Modelo Federado, DevOps, Salesforce CLI" />
+  <link rel="canonical" href="https://mauricio.issei.com.br/agentic-devops-salesforce" />
+
+  <!-- RFC 8288 Link Relations for Agent Discovery -->
+  <!-- rel="service-doc": human+machine readable curriculum vitae structured for AI -->
+  <link rel="service-doc" href="https://mauricio.issei.com.br/cv-for-ai.md" type="text/markdown"
+    title="Structured CV for AI agents" />
+  <!-- rel="api-catalog": well-known agent resource catalog (RFC 8615 + RFC 8288) -->
+  <link rel="api-catalog" href="https://mauricio.issei.com.br/.well-known/api-catalog" type="application/linkset+json"
+    title="API Resource Catalog" />
+  <!-- rel="author": link to author profile -->
+  <link rel="author" href="https://mauricio.issei.com.br" title="Maurício Yokoyama Issei" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mauricio.issei.com.br/agentic-devops-salesforce" />
+  <meta property="og:title" content="Agentic DevOps for Salesforce — Portal de Treinamento" />
+  <meta property="og:description"
+    content="Guia definitivo, prático e ensinável sobre como desenvolver Salesforce com IA Agentic sem gerar débito técnico. SDD + Devin + Flosum em um framework testado em campo." />
+  <meta property="og:image" content="" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Agentic DevOps for Salesforce" />
+  <meta property="article:author" content="Maurício Yokoyama Issei" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://mauricio.issei.com.br/agentic-devops-salesforce" />
+  <meta property="twitter:title" content="Agentic DevOps for Salesforce — Portal de Treinamento" />
+  <meta property="twitter:description"
+    content="Guia definitivo, prático e ensinável sobre como desenvolver Salesforce com IA Agentic sem gerar débito técnico. SDD + Devin + Flosum em um framework testado em campo." />
+  <meta property="twitter:image" content="" />
+
+  <!-- Favicon (SVG inline, com iniciais "AD" para Agentic DevOps) -->
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%233a5cff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='42' font-weight='bold' fill='white'%3EAD%3C/text%3E%3C/svg%3E" />
+
   <!-- Google Fonts: Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mauricio.issei.com.br/salesforce-agentic-dev.html">
-  <meta property="og:title" content="Agentic DevOps for Salesforce — Portal de Treinamento">
-  <meta property="og:description"
-    content="Portal de apresentação e treinamento sobre Agentic DevOps no Salesforce: Modelo Federado, Spec-Driven Development, Devin (Cognition), Flosum CLI e Salesforce CLI.">
-  <meta property="og:image" content="">
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://mauricio.issei.com.br/salesforce-agentic-dev.html">
-  <meta property="twitter:title" content="Agentic DevOps for Salesforce — Portal de Treinamento">
-  <meta property="twitter:description"
-    content="Portal de apresentação e treinamento sobre Agentic DevOps no Salesforce: Modelo Federado, Spec-Driven Development, Devin (Cognition), Flosum CLI e Salesforce CLI.">
-  <meta property="twitter:image" content="">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
     rel="stylesheet" />
@@ -225,10 +251,12 @@
 </head>
 
 <body class="bg-ink-900 text-slate-100 font-sans antialiased selection:bg-brand-500/40 selection:text-white">
+
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
   <!-- =========================================================
      NAV BAR — sticky, com âncoras suaves e menu mobile
      ========================================================= -->
@@ -251,13 +279,17 @@
       </a>
 
       <!-- Desktop nav -->
-      <nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300">
+      <nav class="hidden lg:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#video" class="hover:text-white transition">Vídeo</a>
+        <a href="#audio" class="hover:text-white transition">Áudio</a>
         <a href="#problema-solucao" class="hover:text-white transition">Problema</a>
+        <a href="#agentic" class="hover:text-white transition">Agentic</a>
         <a href="#arquitetura" class="hover:text-white transition">Arquitetura</a>
         <a href="#sdd" class="hover:text-white transition">SDD</a>
+        <a href="#framework" class="hover:text-white transition">Framework</a>
+        <a href="#exemplo" class="hover:text-white transition">Exemplo</a>
         <a href="#devin" class="hover:text-white transition">Devin</a>
         <a href="#fluxo" class="hover:text-white transition">Fluxo</a>
-        <a href="#repo" class="hover:text-white transition">Repositório</a>
         <a href="#governanca" class="hover:text-white transition">Governança</a>
         <a href="#recursos"
           class="inline-flex items-center gap-1.5 rounded-md bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 text-slate-100 transition">
@@ -283,14 +315,20 @@
     <!-- Mobile menu -->
     <div x-show="open" x-transition class="lg:hidden border-t border-white/10 bg-ink-900/95">
       <div class="px-5 py-4 flex flex-col gap-3 text-sm">
+        <a @click="open=false" href="#video">Vídeo de introdução</a>
+        <a @click="open=false" href="#audio">Áudio · Debate (22 min)</a>
         <a @click="open=false" href="#problema-solucao">Problema vs Solução</a>
+        <a @click="open=false" href="#agentic">Agentic Development</a>
         <a @click="open=false" href="#arquitetura">Arquitetura Federada</a>
         <a @click="open=false" href="#sdd">Spec-Driven Development</a>
+        <a @click="open=false" href="#framework">Framework SDD + Agentic</a>
+        <a @click="open=false" href="#exemplo">Exemplo Prático</a>
         <a @click="open=false" href="#devin">Orquestrando o Devin</a>
         <a @click="open=false" href="#acu">Custos & ACUs</a>
         <a @click="open=false" href="#fluxo">Fluxo de Trabalho</a>
         <a @click="open=false" href="#repo">Estrutura do Repositório</a>
         <a @click="open=false" href="#governanca">Governança & Checklist</a>
+        <a @click="open=false" href="#autor">Autoria & Credibilidade</a>
         <a @click="open=false" href="#recursos">Recursos</a>
       </div>
     </div>
@@ -313,18 +351,37 @@
         </div>
 
         <h1 class="mt-6 max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
-          Bem-vindo à Era do
-          <span
-            class="bg-gradient-to-r from-brand-300 via-purple-300 to-emerald-300 bg-clip-text text-transparent">Agentic
-            DevOps</span>
-          no Salesforce
+          Como desenvolver Salesforce com
+          <span class="bg-gradient-to-r from-brand-300 via-purple-300 to-emerald-300 bg-clip-text text-transparent">IA
+            Agentic</span>
+          sem gerar débito técnico
         </h1>
 
         <p class="mt-6 max-w-2xl text-lg text-slate-300">
-          Pare de digitar boilerplate. Comece a <strong class="text-white">orquestrar soluções de negócios</strong>.
-          Um portal prático para times Apex, LWC e Admins que querem dominar o desenvolvimento guiado por IA com
-          Spec-Driven Development, Devin (Cognition) e Flosum como Source of Truth.
+          O guia definitivo, prático e ensinável para times Apex, LWC e Admins que querem
+          <strong class="text-white">parar de digitar boilerplate</strong> e começar a
+          <strong class="text-white">orquestrar soluções de negócio</strong> usando Spec-Driven Development,
+          Devin (Cognition) e Flosum como Source of Truth.
         </p>
+
+        <!-- Proposta de valor + problema resolvido -->
+        <div class="mt-8 max-w-3xl grid sm:grid-cols-3 gap-3">
+          <div class="rounded-xl border border-rose-400/20 bg-rose-400/5 p-4">
+            <p class="text-[11px] uppercase tracking-wider text-rose-300 font-semibold">O problema</p>
+            <p class="mt-1.5 text-sm text-slate-200">IA sem contexto gera código inconsistente, conflitos de metadata e
+              débito técnico que escala mais rápido que a feature.</p>
+          </div>
+          <div class="rounded-xl border border-amber-400/20 bg-amber-400/5 p-4">
+            <p class="text-[11px] uppercase tracking-wider text-amber-300 font-semibold">No Salesforce isso piora</p>
+            <p class="mt-1.5 text-sm text-slate-200">Orgs compartilhadas, regras implícitas, profiles conflitantes e
+              legado tornam cada deploy um campo minado.</p>
+          </div>
+          <div class="rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4">
+            <p class="text-[11px] uppercase tracking-wider text-emerald-300 font-semibold">A solução aqui</p>
+            <p class="mt-1.5 text-sm text-slate-200">Spec-Driven Development + agentes autônomos + Flosum como SoT, em
+              um framework ensinável passo a passo.</p>
+          </div>
+        </div>
 
         <div class="mt-10 flex flex-wrap items-center gap-3">
           <a href="#sdd"
@@ -377,6 +434,58 @@
 
 
     <!-- =========================================================
+     1.5 VÍDEO DE INTRODUÇÃO
+     ========================================================= -->
+    <section id="video" class="relative py-24 lg:py-28 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-brand-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Em 1 vídeo</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            Explicação resumida em vídeo
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Se você prefere começar pelo panorama visual antes de mergulhar nas seções, este vídeo cobre os
+            pontos centrais do framework — Agentic, SDD e o pipeline com Flosum — em formato direto.
+          </p>
+        </div>
+
+        <div class="mt-10 glass rounded-2xl p-3 sm:p-4 lg:p-5 max-w-5xl mx-auto">
+          <div class="relative w-full overflow-hidden rounded-xl bg-black" style="padding-top: 56.25%;">
+            <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/nGqrVOTiYbY"
+              title="Agentic DevOps for Salesforce — explicação resumida" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+
+          <div class="mt-4 flex flex-wrap items-center justify-between gap-3 px-2">
+            <div class="flex items-center gap-3 text-sm text-slate-300">
+              <span
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-300">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z" />
+                </svg>
+              </span>
+              <span><strong class="text-white">Vídeo no YouTube</strong> · resumo executivo</span>
+            </div>
+            <a href="https://youtu.be/nGqrVOTiYbY" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs text-slate-100 transition">
+              Abrir no YouTube
+              <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M11 3h6v6h-2V6.4l-7.3 7.3-1.4-1.4L13.6 5H11V3zM5 5h4v2H7v8h8v-2h2v4H5V5z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
      2. PROBLEMA VS SOLUÇÃO
      ========================================================= -->
     <section id="problema-solucao" class="relative py-24 lg:py-32">
@@ -384,9 +493,97 @@
         <div class="max-w-3xl">
           <p class="section-eyebrow">O contexto</p>
           <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
-            Por que o modelo tradicional <span class="text-rose-300">quebra</span> em escala?
+            Por que IA + Salesforce, do jeito tradicional, <span class="text-rose-300">quebra em escala</span>
           </h2>
           <p class="mt-4 text-slate-300">
+            Existem dois problemas se sobrepondo: o uso ingênuo de IA generativa no código <em>e</em> as armadilhas
+            intrínsecas do Salesforce (orgs compartilhadas, regras implícitas, integração com legado).
+            Quando esses dois mundos colidem sem método, o resultado é débito técnico exponencial.
+          </p>
+        </div>
+
+        <!-- 2 colunas: problemas IA + problemas Salesforce -->
+        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+          <article class="glass rounded-2xl p-7">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/15 text-purple-300 border border-purple-500/30">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M9 9h.01M15 9h.01M9 15c.7-.7 1.7-1.2 3-1.2s2.3.5 3 1.2" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">Problemas de IA no desenvolvimento</h3>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                <div><strong class="text-white">Código inconsistente</strong> — cada sessão produz um padrão diferente
+                  para o mesmo problema.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                <div><strong class="text-white">Falta de contexto</strong> — a IA não conhece convenções, naming,
+                  ownership ou o legado do time.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                <div><strong class="text-white">Hallucinations silenciosas</strong> — APIs e campos que <em>parecem</em>
+                  existir mas não existem na org.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                <div><strong class="text-white">Débito técnico acelerado</strong> — código aceito sem revisão crítica
+                  vira legado em semanas.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
+                <div><strong class="text-white">Custo descontrolado</strong> — prompts vagos consomem tokens/ACUs em
+                  loops de "tentativa e erro".</div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="glass rounded-2xl p-7">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500/15 text-sky-300 border border-sky-500/30">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12a9 9 0 0 1 18 0c0 5-4 9-9 9s-9-4-9-9z" />
+                  <path d="M3 12h18M12 3v18" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">Problemas específicos do Salesforce</h3>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                <div><strong class="text-white">Orgs complexas e compartilhadas</strong> — múltiplos times tocando
+                  QA/Prod ao mesmo tempo.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                <div><strong class="text-white">Regras implícitas</strong> — Profiles, Permission Sets, Validation Rules
+                  e Flows que ninguém documentou.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                <div><strong class="text-white">Integração com legado</strong> — Apex de 10 anos, triggers gigantes,
+                  dependências escondidas.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                <div><strong class="text-white">Metadata trampling</strong> — um time sobrescreve componentes de outro
+                  silenciosamente.</div>
+              </li>
+              <li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400 shrink-0"></span>
+                <div><strong class="text-white">Source of Truth ambígua</strong> — Git e Org divergem, e ninguém sabe
+                  qual é a verdade.</div>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Sub-eyebrow para o bloco original -->
+        <div class="mt-16 max-w-3xl">
+          <p class="section-eyebrow">A virada</p>
+          <h3 class="mt-2 text-2xl lg:text-3xl font-bold tracking-tight">
+            Tradicional vs <span
+              class="bg-gradient-to-r from-brand-300 to-emerald-300 bg-clip-text text-transparent">Federado
+              Agentic</span>
+          </h3>
+          <p class="mt-3 text-slate-300">
             Múltiplos times trabalhando nas mesmas orgs de QA, PreProd e Prod — em um único repositório — geram
             conflitos
             diários, deploys quebrados e <em>metadata trampling</em>. O Modelo Agentic Federado nasce para resolver isso
@@ -394,7 +591,7 @@
           </p>
         </div>
 
-        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+        <div class="mt-10 grid lg:grid-cols-2 gap-6">
           <!-- Tradicional -->
           <article class="glass rounded-2xl p-7 transition hover:shadow-glow">
             <div class="flex items-center gap-3">
@@ -451,6 +648,123 @@
                 Merge do Flosum resolve conflitos entre times.</li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     2.5 AGENTIC DEVELOPMENT — conceito
+     ========================================================= -->
+    <section id="agentic" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Conceito</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            O que é <span class="bg-gradient-to-r from-purple-300 to-brand-300 bg-clip-text text-transparent">Agentic
+              Development</span>
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Antes de falar em SDD, é preciso entender a mudança de paradigma. <strong class="text-white">IA como
+              ferramenta</strong>
+            é o copilot autocompletando linhas; <strong class="text-white">IA como agente</strong> é um colaborador
+            autônomo que
+            lê specs, executa tarefas, valida e itera dentro de fronteiras claras. Os dois mundos exigem técnicas
+            distintas.
+          </p>
+        </div>
+
+        <!-- Comparativo: IA ferramenta vs IA agente -->
+        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+          <article class="glass rounded-2xl p-7">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-slate-500/15 text-slate-300 border border-slate-500/30">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 2v6h6M9 13l2 2 4-4" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">IA como ferramenta</h3>
+              <span
+                class="ml-auto text-[10px] uppercase tracking-wider rounded-full bg-slate-500/15 text-slate-300 border border-slate-500/30 px-2 py-0.5">Copilot</span>
+            </div>
+            <p class="mt-4 text-sm text-slate-300">Você dirige cada linha. A IA preenche, sugere, completa. Foco em
+              <strong class="text-white">velocidade local</strong>.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="text-slate-400">·</span>Atua dentro do editor, em escopo curto.</li>
+              <li class="flex gap-2"><span class="text-slate-400">·</span>Não tem memória entre tarefas.</li>
+              <li class="flex gap-2"><span class="text-slate-400">·</span>O dev é responsável por contexto, validação e
+                arquitetura.</li>
+              <li class="flex gap-2"><span class="text-slate-400">·</span>Bom para: snippets, rename, refactor pontual.
+              </li>
+            </ul>
+          </article>
+
+          <article class="glass rounded-2xl p-7 ring-1 ring-purple-500/30">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/15 text-purple-200 border border-purple-500/30">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">IA como agente autônomo</h3>
+              <span
+                class="ml-auto text-[10px] uppercase tracking-wider rounded-full bg-purple-500/15 text-purple-200 border border-purple-500/30 px-2 py-0.5">Agentic</span>
+            </div>
+            <p class="mt-4 text-sm text-slate-300">Você dá direção, contexto e fronteiras. O agente <strong
+                class="text-white">planeja, executa, valida e itera</strong> sozinho.</p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="text-purple-300">●</span>Lê Specs, playbooks, knowledge-base.</li>
+              <li class="flex gap-2"><span class="text-purple-300">●</span>Cria branches, codifica, roda testes, abre
+                PRs.</li>
+              <li class="flex gap-2"><span class="text-purple-300">●</span>Mantém estado entre iterações da mesma
+                sessão.</li>
+              <li class="flex gap-2"><span class="text-purple-300">●</span>Bom para: features ponta a ponta dentro de
+                fronteiras claras.</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Como agentes atuam no ciclo -->
+        <div class="mt-10 glass rounded-2xl p-7">
+          <h3 class="text-lg font-semibold">Como o agente atua no ciclo de desenvolvimento</h3>
+          <p class="mt-2 text-sm text-slate-400 max-w-3xl">
+            Agentes não são "IA com mais tokens". São <strong class="text-white">loops de raciocínio</strong> com acesso
+            a ferramentas
+            (shell, FS, CLI, browser) operando dentro do que você explicitar como contexto e limites.
+          </p>
+          <div class="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xs uppercase tracking-wider text-purple-300 font-semibold">Plan</p>
+              <p class="mt-1 text-slate-300">Lê a Spec, decompõe em tarefas, define ordem de execução.</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xs uppercase tracking-wider text-purple-300 font-semibold">Act</p>
+              <p class="mt-1 text-slate-300">Executa: cria arquivos, roda CLI, modifica código, chama testes.</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xs uppercase tracking-wider text-purple-300 font-semibold">Observe</p>
+              <p class="mt-1 text-slate-300">Lê stdout, logs, falhas de validação e feedback do humano.</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xs uppercase tracking-wider text-purple-300 font-semibold">Reflect</p>
+              <p class="mt-1 text-slate-300">Avalia se cumpriu o critério de aceite e replaneja se necessário.</p>
+            </div>
+          </div>
+          <div class="mt-6 rounded-xl border border-brand-500/30 bg-brand-500/5 p-4 text-sm text-brand-100">
+            <strong class="text-brand-200">Insight central:</strong>
+            a qualidade do output do agente é função direta da qualidade do contexto. Sem contexto = adivinhação. Com
+            contexto rico (Spec + playbook + knowledge-base) = engenharia de verdade.
+          </div>
         </div>
       </div>
     </section>
@@ -578,30 +892,164 @@
         <div class="mt-12 glass rounded-2xl p-6 lg:p-8">
           <p class="section-eyebrow">Relacionamento</p>
           <h3 class="mt-2 text-xl font-semibold">Como os pilares se conectam</h3>
-          <div class="mt-8 grid lg:grid-cols-5 items-center gap-4 text-center text-sm">
-            <div class="rounded-xl border border-white/10 bg-white/5 p-4">
-              <p class="font-semibold">Spec</p>
-              <p class="mt-1 text-xs text-slate-400">GitHub <code class="font-mono">specs/</code></p>
-            </div>
-            <div class="text-slate-500 hidden lg:block">→</div>
-            <div class="rounded-xl border border-purple-500/30 bg-purple-500/10 p-4">
-              <p class="font-semibold text-purple-200">Devin</p>
-              <p class="mt-1 text-xs text-slate-400">codifica + valida</p>
-            </div>
-            <div class="text-slate-500 hidden lg:block">→</div>
-            <div class="rounded-xl border border-brand-500/30 bg-brand-500/10 p-4">
-              <p class="font-semibold text-brand-200">Flosum</p>
-              <p class="mt-1 text-xs text-slate-400">merge + promote</p>
-            </div>
+          <p class="mt-2 text-sm text-slate-400 max-w-3xl">
+            GitHub captura a <em>intenção</em>, Devin <em>executa</em>, Flosum <em>governa a promoção</em> e o
+            Salesforce
+            é o <em>runtime</em>. As setas mostram a direção real do fluxo — não o desejo, o que efetivamente acontece.
+          </p>
+
+          <div class="mt-8 overflow-x-auto">
+            <svg viewBox="0 0 900 380" role="img" aria-label="Diagrama de relacionamento dos quatro pilares"
+              class="w-full max-w-5xl mx-auto h-auto">
+              <defs>
+                <!-- Setas -->
+                <marker id="ar-slate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8" />
+                </marker>
+                <marker id="ar-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#a855f7" />
+                </marker>
+                <marker id="ar-brand" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#5b82ff" />
+                </marker>
+                <marker id="ar-sky" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#38bdf8" />
+                </marker>
+
+                <!-- Gradientes dos nós -->
+                <linearGradient id="pg-github" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.18)" />
+                  <stop offset="100%" stop-color="rgba(255,255,255,0.04)" />
+                </linearGradient>
+                <linearGradient id="pg-devin" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(168,85,247,0.30)" />
+                  <stop offset="100%" stop-color="rgba(168,85,247,0.08)" />
+                </linearGradient>
+                <linearGradient id="pg-flosum" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(91,130,255,0.30)" />
+                  <stop offset="100%" stop-color="rgba(91,130,255,0.08)" />
+                </linearGradient>
+                <linearGradient id="pg-sf" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(56,189,248,0.30)" />
+                  <stop offset="100%" stop-color="rgba(56,189,248,0.08)" />
+                </linearGradient>
+              </defs>
+
+              <!-- ===== Conexões ===== -->
+              <!-- GitHub → Devin (lê specs/playbooks) -->
+              <line x1="200" y1="115" x2="320" y2="115" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar-slate)" />
+              <text x="260" y="100" text-anchor="middle" fill="#cbd5e1" font-size="11"
+                font-family="Inter, sans-serif">lê Spec + playbooks</text>
+
+              <!-- Devin → GitHub (push branch + PR) -->
+              <path d="M 320 145 C 280 175 220 175 200 145" fill="none" stroke="#a855f7" stroke-width="2"
+                marker-end="url(#ar-purple)" />
+              <text x="260" y="190" text-anchor="middle" fill="#e9d5ff" font-size="11"
+                font-family="Inter, sans-serif">push branch + PR</text>
+
+              <!-- GitHub → Flosum (merge na main dispara webhook) -->
+              <path d="M 100 160 C 100 250 100 290 200 290" fill="none" stroke="#5b82ff" stroke-width="2"
+                marker-end="url(#ar-brand)" />
+              <text x="100" y="240" text-anchor="middle" fill="#bcd0ff" font-size="11" font-family="Inter, sans-serif">
+                <tspan x="100" dy="0">merge → main</tspan>
+                <tspan x="100" dy="14">(webhook)</tspan>
+              </text>
+
+              <!-- Devin → Salesforce (validate-only em sandbox) -->
+              <path d="M 470 145 C 530 200 600 240 700 280" fill="none" stroke="#a855f7" stroke-width="2"
+                stroke-dasharray="6 4" marker-end="url(#ar-purple)" />
+              <text x="600" y="220" text-anchor="middle" fill="#e9d5ff" font-size="11" font-family="Inter, sans-serif"
+                font-style="italic">--check-only sandbox</text>
+
+              <!-- Flosum → Salesforce (promove QA → PP → Prod) -->
+              <line x1="400" y1="320" x2="600" y2="320" stroke="#5b82ff" stroke-width="2" marker-end="url(#ar-brand)" />
+              <text x="500" y="340" text-anchor="middle" fill="#bcd0ff" font-size="11"
+                font-family="Inter, sans-serif">promove QA → PreProd → Prod</text>
+
+              <!-- ===== Nós ===== -->
+              <!-- GitHub -->
+              <g>
+                <rect x="40" y="80" width="160" height="80" rx="14" fill="url(#pg-github)"
+                  stroke="rgba(255,255,255,0.25)" stroke-width="1.5" />
+                <text x="120" y="105" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="700"
+                  letter-spacing="1.5" font-family="Inter, sans-serif">PILAR 1</text>
+                <text x="120" y="128" text-anchor="middle" fill="#fff" font-size="16" font-weight="700"
+                  font-family="Inter, sans-serif">GitHub</text>
+                <text x="120" y="148" text-anchor="middle" fill="#cbd5e1" font-size="11"
+                  font-family="Inter, sans-serif">intenção · specs · PRs</text>
+              </g>
+
+              <!-- Devin -->
+              <g>
+                <rect x="320" y="80" width="160" height="80" rx="14" fill="url(#pg-devin)"
+                  stroke="rgba(168,85,247,0.55)" stroke-width="1.5" />
+                <text x="400" y="105" text-anchor="middle" fill="#c4b5fd" font-size="10" font-weight="700"
+                  letter-spacing="1.5" font-family="Inter, sans-serif">PILAR 4</text>
+                <text x="400" y="128" text-anchor="middle" fill="#fff" font-size="16" font-weight="700"
+                  font-family="Inter, sans-serif">Devin</text>
+                <text x="400" y="148" text-anchor="middle" fill="#e9d5ff" font-size="11"
+                  font-family="Inter, sans-serif">executa · codifica · valida</text>
+              </g>
+
+              <!-- Flosum (Source of Truth — destacado) -->
+              <g>
+                <rect x="200" y="270" width="200" height="90" rx="14" fill="url(#pg-flosum)"
+                  stroke="rgba(91,130,255,0.7)" stroke-width="2" />
+                <text x="300" y="295" text-anchor="middle" fill="#bcd0ff" font-size="10" font-weight="700"
+                  letter-spacing="1.5" font-family="Inter, sans-serif">PILAR 2 · SOURCE OF TRUTH</text>
+                <text x="300" y="320" text-anchor="middle" fill="#fff" font-size="17" font-weight="800"
+                  font-family="Inter, sans-serif">Flosum</text>
+                <text x="300" y="342" text-anchor="middle" fill="#bcd0ff" font-size="11"
+                  font-family="Inter, sans-serif">smart merge · promoção</text>
+              </g>
+
+              <!-- Salesforce -->
+              <g>
+                <rect x="600" y="280" width="220" height="80" rx="14" fill="url(#pg-sf)" stroke="rgba(56,189,248,0.55)"
+                  stroke-width="1.5" />
+                <text x="710" y="305" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="700"
+                  letter-spacing="1.5" font-family="Inter, sans-serif">PILAR 3 · RUNTIME</text>
+                <text x="710" y="328" text-anchor="middle" fill="#fff" font-size="16" font-weight="700"
+                  font-family="Inter, sans-serif">Salesforce</text>
+                <text x="710" y="348" text-anchor="middle" fill="#bae6fd" font-size="11"
+                  font-family="Inter, sans-serif">QA · PreProd · Prod</text>
+              </g>
+
+              <!-- Cluster: "Camada Humana" agrupando GitHub+Devin -->
+              <rect x="20" y="50" width="480" height="160" rx="20" fill="none" stroke="rgba(255,255,255,0.08)"
+                stroke-width="1.2" stroke-dasharray="4 4" />
+              <text x="40" y="44" fill="#64748b" font-size="10" font-weight="700" letter-spacing="2"
+                font-family="Inter, sans-serif">CAMADA DE INTENÇÃO &amp; EXECUÇÃO</text>
+
+              <!-- Cluster: "Pipeline Governado" agrupando Flosum+Salesforce -->
+              <rect x="180" y="250" width="660" height="120" rx="20" fill="none" stroke="rgba(91,130,255,0.18)"
+                stroke-width="1.2" stroke-dasharray="4 4" />
+              <text x="200" y="244" fill="#5b82ff" font-size="10" font-weight="700" letter-spacing="2"
+                font-family="Inter, sans-serif">PIPELINE GOVERNADO (DEPLOY OFICIAL)</text>
+            </svg>
           </div>
-          <div class="mt-4 grid lg:grid-cols-5 items-center gap-4 text-center text-sm">
-            <div></div>
-            <div></div>
-            <div class="text-slate-500">↓</div>
-            <div></div>
-            <div class="rounded-xl border border-sky-500/30 bg-sky-500/10 p-4">
-              <p class="font-semibold text-sky-200">Salesforce</p>
-              <p class="mt-1 text-xs text-slate-400">QA → PreProd → Prod</p>
+
+          <!-- Legenda -->
+          <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div class="rounded-lg border border-white/10 bg-white/5 p-3">
+              <p class="font-semibold text-white">→ contínua</p>
+              <p class="text-slate-400 mt-0.5">caminho oficial e canônico</p>
+            </div>
+            <div class="rounded-lg border border-white/10 bg-white/5 p-3">
+              <p class="font-semibold text-white">--- tracejada</p>
+              <p class="text-slate-400 mt-0.5">validação local (não promove)</p>
+            </div>
+            <div class="rounded-lg border border-brand-500/30 bg-brand-500/5 p-3">
+              <p class="font-semibold text-brand-200">Flosum em destaque</p>
+              <p class="text-slate-400 mt-0.5">único deployer para ambientes compartilhados</p>
+            </div>
+            <div class="rounded-lg border border-white/10 bg-white/5 p-3">
+              <p class="font-semibold text-white">Clusters</p>
+              <p class="text-slate-400 mt-0.5">separam intenção/execução do pipeline governado</p>
             </div>
           </div>
         </div>
@@ -625,7 +1073,47 @@
           </p>
         </div>
 
-        <div class="mt-12 grid lg:grid-cols-12 gap-8">
+        <!-- Definição + papel da spec + benefícios -->
+        <div class="mt-10 grid lg:grid-cols-3 gap-5">
+          <div class="glass rounded-2xl p-6">
+            <p class="section-eyebrow">Definição</p>
+            <h3 class="mt-2 text-lg font-semibold">O que é SDD</h3>
+            <p class="mt-2 text-sm text-slate-300">
+              <strong class="text-white">Spec-Driven Development</strong> é uma prática em que toda implementação
+              é precedida por uma <em>specification</em> versionada — um documento estruturado que descreve
+              contexto, requisitos, regras técnicas, limites e critérios de aceite. A Spec antecede o código e
+              é o input principal do agente.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-6 ring-1 ring-brand-500/20">
+            <p class="section-eyebrow">Fonte de verdade</p>
+            <h3 class="mt-2 text-lg font-semibold">Papel da specification</h3>
+            <p class="mt-2 text-sm text-slate-300">
+              A Spec é a <strong class="text-white">fonte de verdade da intenção</strong>. Código pode mudar; a Spec
+              captura o porquê. Para o agente, ela é o briefing; para o time, é o contrato; para o futuro, é a
+              documentação que sobrevive ao refactor. Versionada em <code
+                class="font-mono text-brand-200">specs/</code>, junto ao código.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <p class="section-eyebrow">Benefícios</p>
+            <h3 class="mt-2 text-lg font-semibold">Por que usar SDD com agentes</h3>
+            <ul class="mt-2 space-y-1.5 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="text-emerald-300">●</span><strong
+                  class="text-white">Previsibilidade</strong> — escopo congelado antes do código.</li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span><strong
+                  class="text-white">Qualidade</strong> — critérios de aceite explícitos.</li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span><strong
+                  class="text-white">Alinhamento</strong> — humano e agente leem o mesmo contrato.</li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span><strong class="text-white">Custo
+                  menor</strong> — menos retrabalho e ACUs gastos.</li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span><strong
+                  class="text-white">Auditabilidade</strong> — quem decidiu o quê, quando, por quê.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-14 grid lg:grid-cols-12 gap-8">
           <!-- Estrutura da Spec -->
           <div class="lg:col-span-5 space-y-3">
             <h3 class="text-lg font-semibold">Anatomia de uma Spec</h3>
@@ -726,6 +1214,515 @@ do gerente regional. Hoje a regra é manual e gera atrasos.
               <strong class="text-amber-300">⚠ Anti-pattern:</strong>
               "Crie uma LWC de pedidos." → vago, ambíguo, custo alto. Sempre escreva uma Spec.
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     4.5 FRAMEWORK SDD + AGENTIC — passo a passo ensinável
+     ========================================================= -->
+    <section id="framework" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Framework</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            O Framework SDD + Agentic em <span
+              class="bg-gradient-to-r from-emerald-300 to-brand-300 bg-clip-text text-transparent">6 etapas</span>
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Um ciclo ensinável. Você pode aplicar amanhã, em qualquer feature Apex/LWC. Cada etapa tem
+            objetivo claro, ação concreta e resultado esperado — nada é opcional.
+          </p>
+        </div>
+
+        <!-- Grid de 6 etapas -->
+        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- Etapa 1 -->
+          <article class="glass rounded-2xl p-6 relative">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/15 text-brand-200 border border-brand-500/30 font-bold">1</span>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Etapa 01</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Definição de contexto</h3>
+            <p class="mt-1 text-sm text-slate-400">Antes da Spec, o contexto.</p>
+            <dl class="mt-4 space-y-2 text-sm">
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Objetivo</dt>
+                <dd class="text-slate-300">Garantir que o agente saiba <em>onde</em> está atuando.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</dt>
+                <dd class="text-slate-300">Atualizar <code class="font-mono text-brand-200">knowledge-base/</code>:
+                  ownership, org-inventory, pipeline-map.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Resultado</dt>
+                <dd class="text-slate-300">Agente consegue raciocinar sobre fronteiras e padrões do time.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Etapa 2 -->
+          <article class="glass rounded-2xl p-6 relative">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/15 text-brand-200 border border-brand-500/30 font-bold">2</span>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Etapa 02</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Criação da specification</h3>
+            <p class="mt-1 text-sm text-slate-400">O contrato vira artefato.</p>
+            <dl class="mt-4 space-y-2 text-sm">
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Objetivo</dt>
+                <dd class="text-slate-300">Capturar contexto, requisitos, regras, limites, aceite e guardrails.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</dt>
+                <dd class="text-slate-300">Escrever <code
+                    class="font-mono text-brand-200">specs/&lt;ticket&gt;.md</code> seguindo o template SDD.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Resultado</dt>
+                <dd class="text-slate-300">Documento versionado, revisável, ensinável e reusável.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Etapa 3 -->
+          <article class="glass rounded-2xl p-6 relative">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/15 text-purple-200 border border-purple-500/30 font-bold">3</span>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Etapa 03</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Interação com o agente (Devin)</h3>
+            <p class="mt-1 text-sm text-slate-400">Direção, não digitação.</p>
+            <dl class="mt-4 space-y-2 text-sm">
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Objetivo</dt>
+                <dd class="text-slate-300">Delegar a implementação amarrada à Spec e a um playbook.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</dt>
+                <dd class="text-slate-300">Prompt curto: "Leia <code class="font-mono">specs/X.md</code>, aplique <code
+                    class="font-mono">playbooks/02_apex.md</code>, atue só em <code
+                    class="font-mono">force-app/...</code>".</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Resultado</dt>
+                <dd class="text-slate-300">Branch <code class="font-mono">devin/&lt;ticket&gt;-&lt;slug&gt;</code> com
+                  código + testes.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Etapa 4 -->
+          <article class="glass rounded-2xl p-6 relative">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/15 text-amber-200 border border-amber-500/30 font-bold">4</span>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Etapa 04</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Validação</h3>
+            <p class="mt-1 text-sm text-slate-400">Confiança baseada em evidência.</p>
+            <dl class="mt-4 space-y-2 text-sm">
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Objetivo</dt>
+                <dd class="text-slate-300">Provar que a entrega cumpre os critérios de aceite e guardrails.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</dt>
+                <dd class="text-slate-300">Rodar <code class="font-mono">check-metadata-ownership.py</code>, <code
+                    class="font-mono">--check-only</code> em sandbox, testes Apex.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Resultado</dt>
+                <dd class="text-slate-300">Validações verdes ou falha clara para a próxima iteração.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Etapa 5 -->
+          <article class="glass rounded-2xl p-6 relative">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/15 text-amber-200 border border-amber-500/30 font-bold">5</span>
+              <span class="text-[10px] uppercase tracking-wider text-slate-400">Etapa 05</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Iteração</h3>
+            <p class="mt-1 text-sm text-slate-400">Spec evolui antes do código.</p>
+            <dl class="mt-4 space-y-2 text-sm">
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Objetivo</dt>
+                <dd class="text-slate-300">Quando algo falha, refinar a Spec antes de pedir mais código.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</dt>
+                <dd class="text-slate-300">Atualizar Spec → re-prompt curto → revalidar. Nunca itere "no escuro".</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Resultado</dt>
+                <dd class="text-slate-300">Convergência em poucas iterações, sem queima de ACUs.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <!-- Etapa 6 -->
+          <article class="glass rounded-2xl p-6 relative ring-1 ring-emerald-500/30">
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-200 border border-emerald-500/30 font-bold">6</span>
+              <span class="text-[10px] uppercase tracking-wider text-emerald-300">Etapa 06</span>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold">Deploy via Flosum</h3>
+            <p class="mt-1 text-sm text-slate-400">O agente nunca promove.</p>
+            <dl class="mt-4 space-y-2 text-sm">
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Objetivo</dt>
+                <dd class="text-slate-300">Promoção governada QA → PreProd → Prod.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</dt>
+                <dd class="text-slate-300">PR aprovado → merge na <code class="font-mono">main</code> → Flosum executa
+                  promoção via webhook.</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Resultado</dt>
+                <dd class="text-slate-300">Deploy auditável, com Smart Merge resolvendo overlaps entre times.</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+
+        <!-- Loop visual em SVG -->
+        <div class="mt-10 glass rounded-2xl p-6 lg:p-8">
+          <p class="section-eyebrow">O loop</p>
+          <h3 class="mt-2 text-lg font-semibold">Etapas 1→6 não são lineares: 4 e 5 formam um <span
+              class="text-amber-300">loop curto de validação</span></h3>
+          <p class="mt-2 text-sm text-slate-400 max-w-3xl">
+            O caminho linear é Contexto → Spec → Devin → Flosum. Mas Validação e Iteração formam um loop fechado:
+            toda falha alimenta refinamento da Spec antes de pedir mais código ao agente.
+          </p>
+
+          <div class="mt-8 overflow-x-auto">
+            <svg viewBox="0 0 900 360" role="img" aria-label="Diagrama do loop SDD + Agentic"
+              class="w-full max-w-5xl mx-auto h-auto">
+              <defs>
+                <!-- Setas -->
+                <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#5b82ff" />
+                </marker>
+                <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#f59e0b" />
+                </marker>
+                <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                  orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#34d399" />
+                </marker>
+                <!-- Gradientes dos nós -->
+                <linearGradient id="g-ctx" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(91,130,255,0.25)" />
+                  <stop offset="100%" stop-color="rgba(91,130,255,0.08)" />
+                </linearGradient>
+                <linearGradient id="g-spec" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(91,130,255,0.30)" />
+                  <stop offset="100%" stop-color="rgba(91,130,255,0.10)" />
+                </linearGradient>
+                <linearGradient id="g-devin" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(168,85,247,0.30)" />
+                  <stop offset="100%" stop-color="rgba(168,85,247,0.10)" />
+                </linearGradient>
+                <linearGradient id="g-validate" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(245,158,11,0.30)" />
+                  <stop offset="100%" stop-color="rgba(245,158,11,0.10)" />
+                </linearGradient>
+                <linearGradient id="g-iterate" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(245,158,11,0.30)" />
+                  <stop offset="100%" stop-color="rgba(245,158,11,0.10)" />
+                </linearGradient>
+                <linearGradient id="g-flosum" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(52,211,153,0.30)" />
+                  <stop offset="100%" stop-color="rgba(52,211,153,0.10)" />
+                </linearGradient>
+              </defs>
+
+              <!-- Linha de fluxo principal (topo) -->
+              <line x1="120" y1="100" x2="220" y2="100" stroke="#5b82ff" stroke-width="2"
+                marker-end="url(#arrow-blue)" />
+              <line x1="320" y1="100" x2="420" y2="100" stroke="#5b82ff" stroke-width="2"
+                marker-end="url(#arrow-blue)" />
+              <line x1="520" y1="100" x2="620" y2="100" stroke="#a855f7" stroke-width="2"
+                marker-end="url(#arrow-blue)" />
+              <line x1="720" y1="100" x2="780" y2="100" stroke="#f59e0b" stroke-width="2"
+                marker-end="url(#arrow-amber)" />
+
+              <!-- Loop entre Validar e Iterar (lateral direito) -->
+              <path d="M 830 140 Q 870 220 830 280" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4"
+                marker-end="url(#arrow-amber)" />
+              <path d="M 770 280 Q 730 220 770 140" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4"
+                marker-end="url(#arrow-amber)" />
+
+              <!-- Saída do loop para Flosum -->
+              <line x1="800" y1="320" x2="500" y2="320" stroke="#34d399" stroke-width="2"
+                marker-end="url(#arrow-emerald)" />
+              <line x1="450" y1="300" x2="450" y2="160" stroke="rgba(255,255,255,0.05)" stroke-width="1"
+                stroke-dasharray="2 4" />
+
+              <!-- Nó: Contexto -->
+              <g>
+                <rect x="20" y="70" width="100" height="60" rx="12" fill="url(#g-ctx)" stroke="rgba(91,130,255,0.5)"
+                  stroke-width="1.5" />
+                <text x="70" y="95" text-anchor="middle" fill="#bcd0ff" font-size="11" font-weight="700"
+                  font-family="Inter, sans-serif" letter-spacing="0.5">01</text>
+                <text x="70" y="115" text-anchor="middle" fill="#fff" font-size="13" font-weight="600"
+                  font-family="Inter, sans-serif">Contexto</text>
+              </g>
+
+              <!-- Nó: Spec -->
+              <g>
+                <rect x="220" y="70" width="100" height="60" rx="12" fill="url(#g-spec)" stroke="rgba(91,130,255,0.5)"
+                  stroke-width="1.5" />
+                <text x="270" y="95" text-anchor="middle" fill="#bcd0ff" font-size="11" font-weight="700"
+                  font-family="Inter, sans-serif" letter-spacing="0.5">02</text>
+                <text x="270" y="115" text-anchor="middle" fill="#fff" font-size="13" font-weight="600"
+                  font-family="Inter, sans-serif">Spec</text>
+              </g>
+
+              <!-- Nó: Devin -->
+              <g>
+                <rect x="420" y="70" width="100" height="60" rx="12" fill="url(#g-devin)" stroke="rgba(168,85,247,0.5)"
+                  stroke-width="1.5" />
+                <text x="470" y="95" text-anchor="middle" fill="#e9d5ff" font-size="11" font-weight="700"
+                  font-family="Inter, sans-serif" letter-spacing="0.5">03</text>
+                <text x="470" y="115" text-anchor="middle" fill="#fff" font-size="13" font-weight="600"
+                  font-family="Inter, sans-serif">Devin</text>
+              </g>
+
+              <!-- Nó: Validar (loop) -->
+              <g>
+                <rect x="620" y="70" width="100" height="60" rx="12" fill="url(#g-validate)"
+                  stroke="rgba(245,158,11,0.5)" stroke-width="1.5" />
+                <text x="670" y="95" text-anchor="middle" fill="#fde68a" font-size="11" font-weight="700"
+                  font-family="Inter, sans-serif" letter-spacing="0.5">04</text>
+                <text x="670" y="115" text-anchor="middle" fill="#fff" font-size="13" font-weight="600"
+                  font-family="Inter, sans-serif">Validar</text>
+              </g>
+
+              <!-- Nó: Iterar (loop) -->
+              <g>
+                <rect x="780" y="70" width="100" height="60" rx="12" fill="url(#g-iterate)"
+                  stroke="rgba(245,158,11,0.5)" stroke-width="1.5" />
+                <text x="830" y="95" text-anchor="middle" fill="#fde68a" font-size="11" font-weight="700"
+                  font-family="Inter, sans-serif" letter-spacing="0.5">05</text>
+                <text x="830" y="115" text-anchor="middle" fill="#fff" font-size="13" font-weight="600"
+                  font-family="Inter, sans-serif">Iterar</text>
+              </g>
+
+              <!-- Loop label -->
+              <text x="745" y="220" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600"
+                font-family="Inter, sans-serif" font-style="italic">loop curto</text>
+              <text x="745" y="234" text-anchor="middle" fill="#fde68a" font-size="10" font-family="Inter, sans-serif"
+                opacity="0.85">refina Spec</text>
+
+              <!-- Nó: Flosum / Prod -->
+              <g>
+                <rect x="380" y="290" width="160" height="60" rx="12" fill="url(#g-flosum)"
+                  stroke="rgba(52,211,153,0.6)" stroke-width="1.5" />
+                <text x="460" y="315" text-anchor="middle" fill="#a7f3d0" font-size="11" font-weight="700"
+                  font-family="Inter, sans-serif" letter-spacing="0.5">06</text>
+                <text x="460" y="335" text-anchor="middle" fill="#fff" font-size="13" font-weight="600"
+                  font-family="Inter, sans-serif">Flosum → Prod</text>
+              </g>
+
+              <!-- Label "saída do loop quando aceite OK" -->
+              <text x="650" y="312" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600"
+                font-family="Inter, sans-serif" font-style="italic">aceite ✓</text>
+            </svg>
+          </div>
+
+          <!-- Legenda -->
+          <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-400">
+            <span class="inline-flex items-center gap-2"><span class="inline-block h-2 w-6 rounded-sm"
+                style="background:linear-gradient(90deg,rgba(91,130,255,0.7),rgba(91,130,255,0.2))"></span>Linear
+              (preparação)</span>
+            <span class="inline-flex items-center gap-2"><span class="inline-block h-2 w-6 rounded-sm"
+                style="background:linear-gradient(90deg,rgba(168,85,247,0.7),rgba(168,85,247,0.2))"></span>Execução do
+              agente</span>
+            <span class="inline-flex items-center gap-2"><span class="inline-block h-2 w-6 rounded-sm"
+                style="background:linear-gradient(90deg,rgba(245,158,11,0.7),rgba(245,158,11,0.2))"></span>Loop de
+              validação/iteração</span>
+            <span class="inline-flex items-center gap-2"><span class="inline-block h-2 w-6 rounded-sm"
+                style="background:linear-gradient(90deg,rgba(52,211,153,0.7),rgba(52,211,153,0.2))"></span>Promoção
+              governada</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     4.7 EXEMPLO PRÁTICO — SEM SDD vs COM SDD
+     ========================================================= -->
+    <section id="exemplo" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Aplicação prática</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            Exemplo concreto: criação de uma feature Apex + LWC
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Cenário real. Mesmo agente. Mesma feature. Duas abordagens. Uma delas explode em débito técnico
+            em três sprints; a outra entrega previsível desde o primeiro dia.
+          </p>
+        </div>
+
+        <!-- Cenário -->
+        <div class="mt-10 glass rounded-2xl p-6">
+          <p class="section-eyebrow">Cenário</p>
+          <h3 class="mt-2 text-lg font-semibold">Aprovação automática de pedidos B2B com desconto &gt; 30%</h3>
+          <p class="mt-2 text-sm text-slate-300">
+            Pedidos B2B com desconto acima de 30% precisam disparar um fluxo de aprovação para o gerente regional.
+            Há uma LWC no detalhe da Order que precisa exibir o status em tempo real e bloquear edição enquanto
+            pendente.
+          </p>
+        </div>
+
+        <!-- Comparativo: SEM SDD x COM SDD -->
+        <div class="mt-8 grid lg:grid-cols-2 gap-6">
+
+          <!-- SEM SDD -->
+          <article class="glass rounded-2xl p-7 ring-1 ring-rose-500/10">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-rose-500/15 text-rose-300 border border-rose-500/30">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">Abordagem SEM SDD</h3>
+              <span
+                class="ml-auto text-[10px] uppercase tracking-wider rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/30 px-2 py-0.5">Anti-pattern</span>
+            </div>
+
+            <p class="mt-4 text-xs uppercase tracking-wider text-slate-400 font-semibold">Prompt típico</p>
+            <pre class="code mt-2 p-4"><span class="tk-com"># Prompt vago e ambíguo</span>
+"Faça uma aprovação automática quando o desconto
+do pedido for grande. Cria uma tela bonita pra mostrar
+o status, e arruma o que precisar pra funcionar."</pre>
+
+            <p class="mt-4 text-xs uppercase tracking-wider text-slate-400 font-semibold">O que acontece</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="text-rose-300">●</span>Agente cria um novo objeto <code
+                  class="font-mono">Approval__c</code> (já existia um padrão!).</li>
+              <li class="flex gap-2"><span class="text-rose-300">●</span>Mexe em Profile e Layout sem ownership — quebra
+                outro time.</li>
+              <li class="flex gap-2"><span class="text-rose-300">●</span>"Desconto grande" foi interpretado como &gt;
+                50%, não &gt; 30%.</li>
+              <li class="flex gap-2"><span class="text-rose-300">●</span>LWC criada com naming inconsistente, sem testes
+                Jest.</li>
+              <li class="flex gap-2"><span class="text-rose-300">●</span>Cobertura Apex em 62%, abaixo do mínimo (75%) →
+                deploy falha.</li>
+              <li class="flex gap-2"><span class="text-rose-300">●</span>3 ciclos de retrabalho, ~4× mais ACUs gastos.
+              </li>
+            </ul>
+
+            <div class="mt-5 rounded-lg border border-rose-400/30 bg-rose-400/5 p-3 text-xs text-rose-100">
+              <strong class="text-rose-300">Resultado:</strong> feature meio pronta, débito técnico criado, time lateral
+              irritado.
+            </div>
+          </article>
+
+          <!-- COM SDD -->
+          <article class="glass rounded-2xl p-7 ring-1 ring-emerald-500/30">
+            <div class="flex items-center gap-3">
+              <span
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-semibold">Abordagem COM SDD</h3>
+              <span
+                class="ml-auto text-[10px] uppercase tracking-wider rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-2 py-0.5">Recomendado</span>
+            </div>
+
+            <p class="mt-4 text-xs uppercase tracking-wider text-slate-400 font-semibold">Pseudo-Spec (specs/B2B-450.md)
+            </p>
+            <pre class="code mt-2 p-4"><span class="tk-com"># SPEC: [B2B-450] Aprovação automática &gt; 30% desconto</span>
+
+<span class="tk-key">## Contexto</span>
+Reduzir SLA de aprovação manual em pedidos B2B.
+
+<span class="tk-key">## Requisitos</span>
+- Disparar approval quando <span class="tk-fn">Order.Discount__c</span> &gt; <span class="tk-num">30</span>.
+- LWC <span class="tk-fn">orderApprovalStatus</span> no Order Page Layout.
+- Bloqueio de edição em Status enquanto pendente.
+
+<span class="tk-key">## Regras técnicas</span>
+- Estender <span class="tk-fn">OrderTrigger</span> via Handler Pattern.
+- Reutilizar objeto padrão <span class="tk-fn">ProcessInstance</span> (NÃO criar Approval__c).
+- Cobertura Apex ≥ <span class="tk-num">85</span>%; Jest ≥ <span class="tk-num">80</span>%.
+
+<span class="tk-key">## Limites</span>
+- NÃO modificar Profiles, Layouts ou outros domínios.
+- Apenas <span class="tk-fn">force-app/main/default/{classes,lwc,triggers}/</span>.
+
+<span class="tk-key">## Aceite</span>
+- [ ] Order com desc &gt; 30% inicia approval em &lt; 60s.
+- [ ] LWC mostra status em real-time (Platform Event).
+- [ ] <span class="tk-fn">check-metadata-ownership.py</span> verde.</pre>
+
+            <p class="mt-4 text-xs uppercase tracking-wider text-slate-400 font-semibold">Prompt para o Devin</p>
+            <pre class="code mt-2 p-4">Leia <span class="tk-fn">specs/B2B-450.md</span> e <span class="tk-fn">playbooks/02_apex.md</span>.
+Implemente apenas em <span class="tk-fn">force-app/main/default/</span>.
+Rode <span class="tk-fn">check-metadata-ownership.py</span> antes de finalizar.
+Pare se qualquer guardrail falhar.</pre>
+
+            <p class="mt-4 text-xs uppercase tracking-wider text-slate-400 font-semibold">Resultado esperado</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="text-emerald-300">●</span>Branch <code
+                  class="font-mono">devin/B2B-450-approval-auto</code> com código + testes.</li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span>Reuso de <code
+                  class="font-mono">ProcessInstance</code> — sem novo objeto.</li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span>Cobertura Apex 89%, Jest 82%.</li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span>Validações verdes; PR pronto em uma sessão.
+              </li>
+              <li class="flex gap-2"><span class="text-emerald-300">●</span>Flosum promove QA → PreProd → Prod sem
+                intervenção.</li>
+            </ul>
+
+            <div class="mt-5 rounded-lg border border-emerald-400/30 bg-emerald-400/5 p-3 text-xs text-emerald-100">
+              <strong class="text-emerald-300">Resultado:</strong> feature entregue, sem débito, com auditoria completa.
+            </div>
+          </article>
+        </div>
+
+        <!-- Lições -->
+        <div class="mt-10 grid sm:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+            <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Lição 1</p>
+            <p class="mt-1 text-sm text-slate-300">Toda ambiguidade do prompt vira retrabalho — paga-se em ACUs e em
+              deploy quebrado.</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+            <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Lição 2</p>
+            <p class="mt-1 text-sm text-slate-300">Spec curta &gt; prompt longo. 30 linhas de Spec valem mais que 300
+              linhas de prompt.</p>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+            <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Lição 3</p>
+            <p class="mt-1 text-sm text-slate-300">Limites explícitos protegem times vizinhos — ownership não é
+              burocracia, é segurança.</p>
           </div>
         </div>
       </div>
@@ -1200,6 +2197,89 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
 
 
     <!-- =========================================================
+     9.7 AUTORIDADE & CREDIBILIDADE
+     ========================================================= -->
+    <section id="autor" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Quem está por trás</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            Autoridade, contexto real e <span
+              class="bg-gradient-to-r from-brand-300 to-emerald-300 bg-clip-text text-transparent">aprendizados
+              práticos</span>
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Este framework não nasceu em slide. Foi destilado de experimentações reais com times Salesforce,
+            agentes autônomos e pipelines Flosum em produção. O que está aqui é o que funcionou — e o que custou caro
+            para descobrir.
+          </p>
+        </div>
+
+        <div class="mt-12 grid lg:grid-cols-2 gap-6">
+
+          <!-- Contexto real de uso -->
+          <article class="glass rounded-2xl p-6 lg:col-span-1">
+            <p class="text-xs uppercase tracking-wider text-purple-300 font-semibold">Contexto real</p>
+            <h3 class="mt-2 text-lg font-semibold">Onde este framework foi forjado</h3>
+            <ul class="mt-3 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="text-purple-300 mt-0.5">▸</span>
+                <div><strong class="text-white">Múltiplos times</strong> compartilhando QA, PreProd e Prod, cada um com
+                  seu domínio de metadata.</div>
+              </li>
+              <li class="flex gap-3"><span class="text-purple-300 mt-0.5">▸</span>
+                <div><strong class="text-white">Legado relevante</strong>: triggers e fluxos vivos há anos, com
+                  dependências escondidas.</div>
+              </li>
+              <li class="flex gap-3"><span class="text-purple-300 mt-0.5">▸</span>
+                <div><strong class="text-white">Devin em produção</strong>, lendo Specs reais, executando playbooks e
+                  abrindo PRs.</div>
+              </li>
+              <li class="flex gap-3"><span class="text-purple-300 mt-0.5">▸</span>
+                <div><strong class="text-white">Flosum como SoT</strong>, com Smart Merge resolvendo overlaps entre
+                  times.</div>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Aprendizados práticos -->
+          <article class="glass rounded-2xl p-6 lg:col-span-1 ring-1 ring-emerald-500/20">
+            <p class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Aprendizados</p>
+            <h3 class="mt-2 text-lg font-semibold">O que custou caro descobrir</h3>
+            <ul class="mt-3 space-y-3 text-sm text-slate-300">
+              <li class="flex gap-3"><span class="text-emerald-300 mt-0.5">✓</span>
+                <div>Toda Spec ambígua vira retrabalho — sempre. Não há prompt longo que compense Spec frouxa.</div>
+              </li>
+              <li class="flex gap-3"><span class="text-emerald-300 mt-0.5">✓</span>
+                <div>Ownership por domínio é a única defesa real contra <em>metadata trampling</em>.</div>
+              </li>
+              <li class="flex gap-3"><span class="text-emerald-300 mt-0.5">✓</span>
+                <div>Confiar cegamente no agente custa o dobro: em ACUs e em rollback.</div>
+              </li>
+              <li class="flex gap-3"><span class="text-emerald-300 mt-0.5">✓</span>
+                <div>Knowledge-base rica reduz o número médio de iterações de 5 para 1–2.</div>
+              </li>
+              <li class="flex gap-3"><span class="text-emerald-300 mt-0.5">✓</span>
+                <div>Quem promove é o Flosum. Sempre. Sem exceções.</div>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div
+          class="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-transparent p-6 lg:p-8">
+          <h3 class="text-lg font-semibold">Por que este conteúdo é diferente</h3>
+          <p class="mt-2 text-slate-300 max-w-3xl">
+            A maior parte dos conteúdos sobre IA + desenvolvimento foca em <em>prompts mágicos</em>. Este framework
+            foca em <strong class="text-white">engenharia</strong>: contratos, fronteiras, validação, governança.
+            É o que diferencia entrega previsível de "demo bonita que quebra na quinta-feira". Se você é Tech Lead,
+            Arquiteto ou Senior em Salesforce, o caminho é este — e ele já está testado em campo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
      10. CONCLUSÃO E RECURSOS
      ========================================================= -->
     <section id="recursos" class="relative py-24 lg:py-32 border-t border-white/5 aurora overflow-hidden">
@@ -1280,6 +2360,107 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
 
 
     <!-- =========================================================
+     10.5 ÁUDIO · DEBATE 22 MIN
+     ========================================================= -->
+    <section id="audio" class="relative py-24 lg:py-32 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-purple-900/15 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Aprofundamento em áudio</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            Debate: <span class="bg-gradient-to-r from-purple-300 to-brand-300 bg-clip-text text-transparent">a
+              transição para orquestrador de agentes IA</span>
+          </h2>
+          <p class="mt-4 text-slate-300">
+            Um debate de 22 minutos que reforça e aprofunda toda a ideia apresentada neste material —
+            a mudança de mentalidade de "quem digita código" para "quem orquestra agentes", aplicada ao
+            contexto Salesforce com SDD, Devin e Flosum.
+          </p>
+        </div>
+
+        <!-- Player card -->
+        <div class="mt-10 grid lg:grid-cols-12 gap-6 items-start">
+
+          <!-- Player principal -->
+          <div class="lg:col-span-8 glass rounded-2xl p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span
+                class="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/30 to-brand-500/30 border border-purple-500/40">
+                <svg class="h-7 w-7 text-purple-200" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                  <path d="M21 19a2 2 0 0 1-2 2h-1v-6h3v4zM3 19a2 2 0 0 0 2 2h1v-6H3v4z" />
+                </svg>
+              </span>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs uppercase tracking-wider text-purple-300 font-semibold">Episódio único · 22 min</p>
+                <h3 class="mt-1 text-lg font-semibold leading-snug">A transição para orquestrador de agentes IA</h3>
+                <p class="mt-1 text-sm text-slate-400">Reforço auditivo da tese central deste portal.</p>
+              </div>
+            </div>
+
+            <!-- Player nativo HTML5 -->
+            <audio controls preload="metadata" class="mt-6 w-full" style="filter: invert(0.92) hue-rotate(180deg);">
+              <source src="https://mauricio.issei.com.br/A_transição_para_orquestrador_de_agentes_IA.m4a"
+                type="audio/mp4">
+              Seu navegador não suporta o player de áudio HTML5.
+              <a href="https://mauricio.issei.com.br/A_transição_para_orquestrador_de_agentes_IA.m4a"
+                class="text-brand-300 underline">Baixar o arquivo</a>.
+            </audio>
+
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+              <a href="https://mauricio.issei.com.br/A_transição_para_orquestrador_de_agentes_IA.m4a" target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-1.5 rounded-md border border-white/15 bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs text-slate-100 transition">
+                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12l-4-4h2.5V3h3v5H14l-4 4zM4 14h12v2H4v-2z" />
+                </svg>
+                Baixar áudio (.m4a)
+              </a>
+              <a href="https://mauricio.issei.com.br/A_transição_para_orquestrador_de_agentes_IA.m4a" target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs text-slate-300 hover:text-white transition">
+                Abrir em nova aba
+                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M11 3h6v6h-2V6.4l-7.3 7.3-1.4-1.4L13.6 5H11V3zM5 5h4v2H7v8h8v-2h2v4H5V5z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Highlights / por que ouvir -->
+          <aside class="lg:col-span-4 space-y-4">
+            <div class="glass rounded-2xl p-6">
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Por que ouvir</p>
+              <h4 class="mt-2 font-semibold">3 razões para apertar play</h4>
+              <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                <li class="flex gap-2"><span class="text-purple-300 mt-0.5">▸</span>
+                  <div>Reforça a tese central deste portal em formato narrativo.</div>
+                </li>
+                <li class="flex gap-2"><span class="text-purple-300 mt-0.5">▸</span>
+                  <div>Discute a mudança de mentalidade de dev → orquestrador.</div>
+                </li>
+                <li class="flex gap-2"><span class="text-purple-300 mt-0.5">▸</span>
+                  <div>Conecta SDD, agentes e governança em uma visão única.</div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rounded-xl border border-purple-500/30 bg-purple-500/5 p-5 text-sm text-purple-100">
+              <strong class="text-purple-200">Dica:</strong>
+              ouça em <em>1.25×</em> enquanto revisa o checklist da seção de Governança. Funciona como
+              revisão ativa do framework.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
      11. AGRADECIMENTOS / FOOTER
      ========================================================= -->
     <footer class="relative border-t border-white/10 bg-ink-900">
@@ -1291,26 +2472,101 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
           <h3 class="mt-2 text-2xl lg:text-3xl font-bold tracking-tight">Esta arquitetura foi refinada coletivamente
           </h3>
           <p class="mt-4 text-slate-300 max-w-3xl">
-            Um agradecimento especial a <strong class="text-white">Jesse</strong> e <strong
-              class="text-white">Kylmer</strong> pelas
-            contribuições ativas nas experimentações e discussões que ajudaram a refinar e amadurecer os conceitos do
-            Modelo Agentic Federado, do Spec-Driven Development aplicado ao Salesforce e da integração entre Devin e
-            Flosum
-            como peças de um pipeline confiável.
+            Nada disto teria amadurecido em isolamento. O framework apresentado aqui é o resultado de mentorias,
+            experimentações em squads reais e descobertas compartilhadas com pessoas que toparam pensar este
+            problema junto.
           </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <span
-              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">
+
+          <!-- Categoria: Mentoria -->
+          <div class="mt-8">
+            <p class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Mentoria</p>
+            <p class="mt-2 text-sm text-slate-300 max-w-3xl">
+              Agradecimento especial a <strong class="text-white">Gabriela</strong> e <strong
+                class="text-white">Otavio</strong>,
+              pela mentoria contínua que deu direção estratégica e maturidade técnica a todo este trabalho — desde os
+              primeiros recortes do Modelo Federado até os critérios de governança aplicados ao pipeline.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-3">
               <span
-                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-500/30 text-brand-200 text-xs font-bold">J</span>
-              Jesse
-            </span>
-            <span
-              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm">
+                class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-sm">
+                <span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/30 text-emerald-200 text-xs font-bold">G</span>
+                Gabriela
+              </span>
               <span
-                class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-purple-500/30 text-purple-200 text-xs font-bold">K</span>
-              Kylmer
-            </span>
+                class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-sm">
+                <span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/30 text-emerald-200 text-xs font-bold">O</span>
+                Otavio
+              </span>
+            </div>
+          </div>
+
+          <!-- Categoria: Quem me apresentou ao Devin -->
+          <div class="mt-8">
+            <p class="text-xs uppercase tracking-wider text-amber-300 font-semibold">A faísca inicial</p>
+            <p class="mt-2 text-sm text-slate-300 max-w-3xl">
+              Um agradecimento especial ao <strong class="text-white">Phillip</strong>, o primeiro a me ensinar sobre o
+              Devin
+              e a abrir a porta para todo este universo de orquestração de agentes — sem essa primeira conversa,
+              provavelmente este portal não existiria.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-sm">
+                <span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/30 text-amber-200 text-xs font-bold">P</span>
+                Phillip
+              </span>
+            </div>
+          </div>
+
+          <!-- Categoria: Refinamento conceitual -->
+          <div class="mt-8">
+            <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Refinamento conceitual</p>
+            <p class="mt-2 text-sm text-slate-300 max-w-3xl">
+              Um agradecimento especial a <strong class="text-white">Jesse</strong> e <strong
+                class="text-white">Kylmer</strong> pelas
+              contribuições ativas nas experimentações e discussões que ajudaram a refinar e amadurecer os conceitos do
+              Modelo Agentic Federado, do Spec-Driven Development aplicado ao Salesforce e da integração entre Devin e
+              Flosum
+              como peças de um pipeline confiável.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-sm">
+                <span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-500/30 text-brand-200 text-xs font-bold">J</span>
+                Jesse
+              </span>
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 text-sm">
+                <span
+                  class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-purple-500/30 text-purple-200 text-xs font-bold">K</span>
+                Kylmer
+              </span>
+            </div>
+          </div>
+
+          <!-- Categoria: Squads -->
+          <div class="mt-8">
+            <p class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Apoio dos squads</p>
+            <p class="mt-2 text-sm text-slate-300 max-w-3xl">
+              Aos times com quem trabalho diariamente — pessoas que toparam testar processos novos, dar feedback
+              honesto sobre o que funcionava (e o que claramente não funcionava), abrir Specs reais e validar
+              os playbooks em produção. Vocês são parte do método tanto quanto qualquer linha deste documento.
+            </p>
+            <div
+              class="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-200">
+              <svg class="h-4 w-4 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              Squads parceiros
+            </div>
           </div>
         </div>
 
