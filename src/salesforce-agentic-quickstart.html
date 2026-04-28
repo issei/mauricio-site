@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="pt-BR" class="dark scroll-smooth">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-GEKLHZYVYX');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO & Meta Tags -->
+  <title>Quick Start — Salesforce + Devin + Flosum | Maurício Issei</title>
+  <meta name="description"
+    content="Do zero ao primeiro deploy governado em menos de 60 minutos. Repositório configurado, Spec escrita e Devin executando no seu contexto Salesforce." />
+  <meta name="author" content="Maurício Yokoyama Issei" />
+  <meta name="keywords"
+    content="Quick Start, Salesforce, Devin, Cognition, Flosum, Spec-Driven Development, SDD, Agentic DevOps, Salesforce CLI, Sandbox, Setup, Onboarding" />
+  <link rel="canonical" href="https://mauricio.issei.com.br/salesforce-agentic-quickstart.html" />
+
+  <!-- RFC 8288 Link Relations for Agent Discovery -->
+  <link rel="service-doc" href="https://mauricio.issei.com.br/cv-for-ai.md" type="text/markdown"
+    title="Structured CV for AI agents" />
+  <link rel="api-catalog" href="https://mauricio.issei.com.br/.well-known/api-catalog" type="application/linkset+json"
+    title="API Resource Catalog" />
+  <link rel="author" href="https://mauricio.issei.com.br" title="Maurício Yokoyama Issei" />
+  <link rel="related" href="salesforce-agentic-dev.html" title="Guia completo — Agentic DevOps for Salesforce" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://mauricio.issei.com.br/salesforce-agentic-quickstart.html" />
+  <meta property="og:title" content="Quick Start — Salesforce + Devin + Flosum" />
+  <meta property="og:description"
+    content="Do zero ao primeiro deploy governado em menos de 60 minutos. Repositório configurado, Spec escrita e Devin executando no seu contexto Salesforce." />
+  <meta property="og:image" content="" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Agentic DevOps for Salesforce" />
+  <meta property="article:author" content="Maurício Yokoyama Issei" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://mauricio.issei.com.br/salesforce-agentic-quickstart.html" />
+  <meta property="twitter:title" content="Quick Start — Salesforce + Devin + Flosum" />
+  <meta property="twitter:description"
+    content="Do zero ao primeiro deploy governado em menos de 60 minutos. Repositório configurado, Spec escrita e Devin executando no seu contexto Salesforce." />
+  <meta property="twitter:image" content="" />
+
+  <!-- Favicon (SVG inline, com iniciais "AD" para Agentic DevOps) -->
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%233a5cff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='42' font-weight='bold' fill='white'%3EAD%3C/text%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configuração do Tailwind: idêntica ao site principal
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef4ff',
+              100: '#dbe7ff',
+              200: '#bcd0ff',
+              300: '#8eaeff',
+              400: '#5b82ff',
+              500: '#3a5cff',
+              600: '#2640f0',
+              700: '#1f31c8',
+              800: '#1d2da0',
+              900: '#1d2c80',
+            },
+            ink: {
+              900: '#070914',
+              800: '#0c1020',
+              700: '#11162a',
+              600: '#171d36',
+              500: '#1f2742',
+            }
+          },
+          boxShadow: {
+            glow: '0 0 60px -10px rgba(91, 130, 255, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Estilos customizados (idênticos ao site principal) -->
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    .aurora {
+      background:
+        radial-gradient(60% 60% at 20% 10%, rgba(91, 130, 255, 0.25) 0%, rgba(91, 130, 255, 0) 60%),
+        radial-gradient(50% 50% at 80% 0%, rgba(168, 85, 247, 0.20) 0%, rgba(168, 85, 247, 0) 60%),
+        radial-gradient(60% 60% at 50% 100%, rgba(34, 197, 94, 0.12) 0%, rgba(34, 197, 94, 0) 60%),
+        linear-gradient(180deg, #070914 0%, #0c1020 100%);
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .glass:hover {
+      border-color: rgba(91, 130, 255, 0.4);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 80%);
+    }
+
+    pre.code {
+      background: #060814;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    pre.code .tk-key { color: #93c5fd; }
+    pre.code .tk-str { color: #86efac; }
+    pre.code .tk-com { color: #64748b; font-style: italic; }
+    pre.code .tk-num { color: #fcd34d; }
+    pre.code .tk-fn  { color: #f0abfc; }
+
+    .section-eyebrow {
+      letter-spacing: .14em;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #8eaeff;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html {
+      scroll-padding-top: 80px;
+    }
+
+    /* Checkboxes estilizados (idênticos ao site principal) */
+    input[type="checkbox"].chk {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 5px;
+      display: inline-grid;
+      place-content: center;
+      cursor: pointer;
+      transition: all .15s ease;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    input[type="checkbox"].chk:checked {
+      background: #3a5cff;
+      border-color: #3a5cff;
+    }
+
+    input[type="checkbox"].chk:checked::after {
+      content: "✓";
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Botão de step do progress (clicável) */
+    .step-dot {
+      transition: all .2s ease;
+    }
+    .step-dot.active {
+      background: #3a5cff;
+      border-color: #3a5cff;
+      color: white;
+      box-shadow: 0 0 0 4px rgba(58, 92, 255, 0.18);
+    }
+
+    /* Progress bar fill */
+    .progress-fill {
+      transition: width .5s ease;
+      background: linear-gradient(90deg, #3a5cff, #a855f7 80%);
+    }
+
+    /* Tabs do Passo 2 */
+    .tab-btn {
+      transition: all .15s ease;
+    }
+    .tab-btn.active {
+      background: rgba(58, 92, 255, 0.15);
+      border-color: rgba(58, 92, 255, 0.5);
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body class="bg-ink-900 text-slate-100 font-sans antialiased selection:bg-brand-500/40 selection:text-white">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- =========================================================
+     NAV BAR
+     ========================================================= -->
+  <header x-data="{ open: false, scrolled: false }"
+    x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 8)"
+    :class="scrolled ? 'border-white/10 bg-ink-900/80 backdrop-blur-md' : 'border-transparent'"
+    class="fixed top-0 inset-x-0 z-50 border-b transition-all">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <span
+          class="relative inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-400 to-purple-500 shadow-glow">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 text-white" fill="none" stroke="currentColor" stroke-width="2.4"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h10M4 18h7" />
+          </svg>
+        </span>
+        <span class="font-semibold tracking-tight">Quick Start <span class="text-slate-400">/ Salesforce</span></span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-5 text-sm text-slate-300">
+        <a href="#prereqs" class="hover:text-white transition">Pré-requisitos</a>
+        <a href="#passo-1" class="hover:text-white transition">1. Template</a>
+        <a href="#passo-2" class="hover:text-white transition">2. Contexto</a>
+        <a href="#passo-3" class="hover:text-white transition">3. Orgs</a>
+        <a href="#passo-4" class="hover:text-white transition">4. Devin</a>
+        <a href="#passo-5" class="hover:text-white transition">5. Spec</a>
+        <a href="#passo-6" class="hover:text-white transition">6. Execute</a>
+        <a href="#passo-7" class="hover:text-white transition">7. Entregue</a>
+        <a href="#proximo" class="hover:text-white transition">Próximo</a>
+        <a href="salesforce-agentic-dev.html"
+          class="inline-flex items-center gap-1.5 rounded-md bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 text-slate-100 transition">
+          ← Voltar ao guia completo
+        </a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button @click="open = !open"
+        class="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 hover:bg-white/5">
+        <svg x-show="!open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg x-show="open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="open" x-transition class="lg:hidden border-t border-white/10 bg-ink-900/95">
+      <div class="px-5 py-4 flex flex-col gap-3 text-sm">
+        <a @click="open=false" href="#prereqs">Pré-requisitos</a>
+        <a @click="open=false" href="#passo-1">Passo 1 — Template</a>
+        <a @click="open=false" href="#passo-2">Passo 2 — Contexto</a>
+        <a @click="open=false" href="#passo-3">Passo 3 — Orgs</a>
+        <a @click="open=false" href="#passo-4">Passo 4 — Devin</a>
+        <a @click="open=false" href="#passo-5">Passo 5 — Spec</a>
+        <a @click="open=false" href="#passo-6">Passo 6 — Execute</a>
+        <a @click="open=false" href="#passo-7">Passo 7 — Entregue</a>
+        <a @click="open=false" href="#proximo">O que fazer agora</a>
+        <a @click="open=false" href="salesforce-agentic-dev.html"
+          class="mt-2 inline-flex items-center gap-2 text-brand-300">← Voltar ao guia completo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-16">
+
+    <!-- =========================================================
+       HERO
+       ========================================================= -->
+    <section id="hero" class="relative overflow-hidden aurora">
+      <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
+        <!-- Badge superior -->
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          Quick Start · 7 passos · ~60 min
+        </div>
+
+        <h1 class="mt-6 max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
+          Do zero ao
+          <span class="bg-gradient-to-r from-brand-300 via-purple-300 to-emerald-300 bg-clip-text text-transparent">repositório
+            configurado</span>
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-lg text-slate-300">
+          Um guia <strong class="text-white">imperativo e sequencial</strong> — diz exatamente o que fazer, nessa ordem,
+          sem desvios. Ao final, seu repositório estará clonado, configurado e com o Devin tendo executado uma Spec
+          real.
+        </p>
+
+        <!-- Callout de escopo -->
+        <div class="mt-8 max-w-3xl rounded-xl border border-amber-400/30 bg-amber-400/5 p-5 text-sm text-amber-100">
+          <p class="text-[11px] uppercase tracking-wider text-amber-300 font-semibold">Escopo deste guia</p>
+          <p class="mt-2 text-slate-200">
+            Este guia assume que você tem acesso ao <strong class="text-white">Devin (Cognition)</strong>, ao
+            <strong class="text-white">Flosum</strong> instalado na sua org e permissão para criar sandboxes.
+            Se ainda não tem, complete os pré-requisitos abaixo antes de começar.
+          </p>
+        </div>
+
+        <!-- Progress bar interativa -->
+        <div class="mt-12 max-w-4xl"
+          x-data="{
+            steps: [
+              { label: 'Pré-req',  href: '#prereqs', done: false },
+              { label: 'Template', href: '#passo-1', done: false },
+              { label: 'Contexto', href: '#passo-2', done: false },
+              { label: 'Orgs',     href: '#passo-3', done: false },
+              { label: 'Devin',    href: '#passo-4', done: false },
+              { label: 'Spec',     href: '#passo-5', done: false },
+              { label: 'Entregue', href: '#passo-7', done: false },
+            ],
+            get completed() { return this.steps.filter(s => s.done).length; },
+            get pct() { return (this.completed / this.steps.length) * 100; },
+            toggle(i) { this.steps[i].done = !this.steps[i].done; }
+          }">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Seu progresso</p>
+            <p class="text-xs text-slate-400">
+              <span class="text-white font-semibold" x-text="completed"></span> de
+              <span x-text="steps.length"></span> concluídos
+            </p>
+          </div>
+
+          <!-- Barra visual -->
+          <div class="h-2 w-full rounded-full bg-white/5 overflow-hidden border border-white/10">
+            <div class="h-full progress-fill rounded-full" :style="`width: ${pct}%`"></div>
+          </div>
+
+          <!-- Steps clicáveis -->
+          <div class="mt-4 grid grid-cols-7 gap-2">
+            <template x-for="(step, i) in steps" :key="i">
+              <div class="flex flex-col items-center gap-2">
+                <button
+                  type="button"
+                  @click="toggle(i)"
+                  :class="step.done ? 'step-dot active' : 'step-dot border-white/20 bg-white/5 text-slate-400'"
+                  class="step-dot inline-flex h-9 w-9 items-center justify-center rounded-full border text-xs font-semibold">
+                  <span x-show="!step.done" x-text="i + 1"></span>
+                  <svg x-show="step.done" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <a :href="step.href"
+                   class="text-[10px] sm:text-xs text-center text-slate-400 hover:text-white transition leading-tight"
+                   x-text="step.label"></a>
+              </div>
+            </template>
+          </div>
+
+          <p class="mt-3 text-xs text-slate-500">Clique em cada passo para marcá-lo conforme avança no guia.</p>
+        </div>
+
+        <!-- Orientação por perfil -->
+        <div class="mt-12 grid sm:grid-cols-3 gap-4 max-w-4xl">
+          <article class="glass rounded-xl p-5">
+            <div class="flex items-center gap-2">
+              <span
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-200">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 8v4l3 2" />
+                </svg>
+              </span>
+              <p class="text-xs uppercase tracking-wider text-purple-300 font-semibold">Nunca usei Devin</p>
+            </div>
+            <p class="mt-3 text-sm text-slate-300">Complete todos os passos em ordem. <strong class="text-white">Não
+                pule o Passo 4.</strong></p>
+          </article>
+
+          <article class="glass rounded-xl p-5">
+            <div class="flex items-center gap-2">
+              <span
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-200">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Já conheço Devin</p>
+            </div>
+            <p class="mt-3 text-sm text-slate-300">Você pode pular direto para o <strong class="text-white">Passo
+                5</strong> após o Passo 2.</p>
+          </article>
+
+          <article class="glass rounded-xl p-5">
+            <div class="flex items-center gap-2">
+              <span
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-200">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                </svg>
+              </span>
+              <p class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Tech Lead</p>
+            </div>
+            <p class="mt-3 text-sm text-slate-300">No Passo 2, declare um domínio por time. No Passo 4, crie um
+              <strong class="text-white">Blueprint compartilhado</strong> com o squad.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       SEÇÃO 0 — PRÉ-REQUISITOS
+       ========================================================= -->
+    <section id="prereqs" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-amber-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Antes de começar</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Pré-requisitos</h2>
+          <p class="mt-4 text-slate-300">
+            Marque cada item antes de avançar. Pular um pré-requisito aqui vai travar você no meio do guia.
+          </p>
+        </div>
+
+        <div class="mt-10 max-w-3xl"
+          x-data="{
+            items: [
+              { t: 'Conta Devin ativa (devin.ai) com acesso ao Devin CLI ou Web', done: false },
+              { t: 'Flosum instalado na org Salesforce (QA e Prod configurados)', done: false },
+              { t: 'GitHub: permissão para criar repositórios na organização', done: false },
+              { t: 'Salesforce CLI (sf) instalado localmente — sf --version para verificar', done: false },
+              { t: 'Python 3.9+ instalado — python --version para verificar', done: false },
+              { t: 'Acesso a pelo menos uma Sandbox individual (não compartilhada)', done: false },
+              { t: 'Node.js 18+ instalado — node --version para verificar', done: false },
+            ],
+            get completed() { return this.items.filter(i => i.done).length; },
+            get all() { return this.completed === this.items.length; }
+          }">
+          <div class="glass rounded-2xl p-6 lg:p-7">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold">Checklist de acesso e ferramentas</h3>
+              <span class="text-xs text-slate-400">
+                <span class="text-white font-semibold" x-text="completed"></span> de
+                <span x-text="items.length"></span> pré-requisitos confirmados
+              </span>
+            </div>
+
+            <ul class="mt-5 space-y-3">
+              <template x-for="(item, i) in items" :key="i">
+                <li>
+                  <label class="flex items-start gap-3 cursor-pointer group">
+                    <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                    <span class="text-sm text-slate-300 group-hover:text-white"
+                      :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                  </label>
+                </li>
+              </template>
+            </ul>
+          </div>
+
+          <div x-show="all" x-transition
+            class="mt-6 rounded-xl border border-emerald-400/40 bg-emerald-400/10 p-5 text-sm text-emerald-100">
+            <div class="flex items-start gap-3">
+              <span class="text-emerald-300 mt-0.5">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"
+                    clip-rule="evenodd" />
+                </svg>
+              </span>
+              <div>
+                <p class="font-semibold text-emerald-200">Tudo pronto.</p>
+                <p class="mt-1 text-emerald-100/90">Você confirmou os 7 pré-requisitos. Avance para o
+                  <a href="#passo-1" class="underline decoration-emerald-400/60 hover:decoration-emerald-300">Passo 1
+                    →</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       PASSO 1 — TEMPLATE
+       ========================================================= -->
+    <section id="passo-1" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Passo 1 · ~5 min</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Pegue o template</h2>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs text-brand-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            Objetivo: ter o repositório local com a estrutura pronta
+          </div>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7 space-y-6">
+            <!-- 1. Fork card -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">1. Faça o fork</p>
+              <a href="https://github.com/issei/sf-repo" target="_blank" rel="noopener"
+                class="mt-3 glass rounded-xl p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-glow ring-1 ring-brand-500/20">
+                <span
+                  class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-white/5 border border-white/10">
+                  <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.69-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56C20.21 21.39 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z" />
+                  </svg>
+                </span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-xs uppercase tracking-wider text-brand-300">Template oficial</p>
+                  <p class="mt-1 font-semibold text-white">github.com/issei/sf-repo</p>
+                  <p class="mt-1 text-xs text-slate-400">Clique em <strong class="text-slate-200">Fork</strong> no canto superior direito.</p>
+                </div>
+                <span
+                  class="inline-flex items-center gap-1.5 rounded-md bg-brand-500 group-hover:bg-brand-400 px-3 py-2 text-xs font-semibold text-white shadow-glow">
+                  Abrir no GitHub
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M11 3h6v6h-2V6.4l-7.3 7.3-1.4-1.4L13.6 5H11V3zM5 5h4v2H7v8h8v-2h2v4H5V5z" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+
+            <!-- 2. Clone -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">2. Clone o seu fork</p>
+              <pre class="code mt-3 p-4"><span class="tk-fn">git</span> clone https://github.com/&lt;seu-org&gt;/sf-repo.git
+<span class="tk-fn">cd</span> sf-repo</pre>
+            </div>
+
+            <!-- 3. Estrutura -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">3. Confira a estrutura</p>
+              <pre class="code mt-3 p-4">sf-repo/
+├── knowledge-base/   <span class="tk-com">← você vai editar isso no Passo 2</span>
+├── specs/            <span class="tk-com">← você vai criar aqui no Passo 5</span>
+├── playbooks/        <span class="tk-com">← não mexa ainda</span>
+└── scripts/          <span class="tk-com">← vai rodar no Passo 7</span></pre>
+            </div>
+
+            <!-- Callout amber -->
+            <div class="rounded-xl border border-amber-400/30 bg-amber-400/5 p-5 text-sm text-amber-100">
+              <strong class="text-amber-300">Atenção:</strong>
+              não renomeie pastas. O Devin referencia esses paths nos playbooks.
+            </div>
+          </div>
+
+          <!-- Checklist do passo -->
+          <aside class="lg:col-span-5"
+            x-data="{
+              items: [
+                { t: 'Fork feito no GitHub', done: false },
+                { t: 'Repositório clonado localmente', done: false },
+                { t: 'Estrutura de pastas conferida', done: false },
+              ],
+              get all() { return this.items.every(i => i.done); }
+            }">
+            <div class="glass rounded-2xl p-6 sticky top-24">
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Checklist do Passo 1</p>
+              <ul class="mt-4 space-y-3">
+                <template x-for="(item, i) in items" :key="i">
+                  <li>
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                      <span class="text-sm text-slate-300 group-hover:text-white"
+                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+              <div x-show="all" x-transition
+                class="mt-5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 p-3 text-xs text-emerald-100">
+                Passo 1 concluído. Avance para o
+                <a href="#passo-2" class="underline">Passo 2 →</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       PASSO 2 — CONTEXTO
+       ========================================================= -->
+    <section id="passo-2" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-brand-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Passo 2 · ~10 min</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Diga ao Devin onde ele está</h2>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs text-brand-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            Objetivo: preencher a knowledge-base com os dados reais da org e do time
+          </div>
+
+          <p class="mt-5 text-slate-300">
+            Esta é a etapa <strong class="text-white">mais importante</strong> e a <strong class="text-white">mais
+              ignorada</strong>. O Devin sem contexto é um dev sem onboarding — vai adivinhar convenções, pisar em
+            metadata de outros times e gerar retrabalho. Três arquivos, dez minutos, diferença enorme.
+          </p>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-8"
+            x-data="{ tab: '2a' }">
+            <!-- Tabs -->
+            <div class="flex flex-wrap gap-2">
+              <button type="button" @click="tab = '2a'"
+                :class="tab === '2a' && 'active'"
+                class="tab-btn rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold">
+                <span class="text-brand-300 mr-1.5">2a</span>metadata-ownership.yaml
+              </button>
+              <button type="button" @click="tab = '2b'"
+                :class="tab === '2b' && 'active'"
+                class="tab-btn rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold">
+                <span class="text-brand-300 mr-1.5">2b</span>org-inventory.md
+              </button>
+              <button type="button" @click="tab = '2c'"
+                :class="tab === '2c' && 'active'"
+                class="tab-btn rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold">
+                <span class="text-brand-300 mr-1.5">2c</span>flosum-pipeline-map.md
+              </button>
+            </div>
+
+            <!-- Tab 2a -->
+            <div x-show="tab === '2a'" x-transition class="mt-6 glass rounded-2xl p-6">
+              <p class="text-sm text-slate-300">
+                Abra <code class="font-mono text-brand-200">knowledge-base/metadata-ownership.yaml</code> e substitua
+                pelo seu contexto real:
+              </p>
+              <pre class="code mt-4 p-4"><span class="tk-key">domains:</span>
+  - <span class="tk-key">name:</span> <span class="tk-str">CommercePricing</span>          <span class="tk-com"># nome do seu domínio</span>
+    <span class="tk-key">team:</span> <span class="tk-str">pricing-squad</span>            <span class="tk-com"># nome do seu time</span>
+    <span class="tk-key">objects:</span> [<span class="tk-str">Order</span>, <span class="tk-str">Product2</span>]     <span class="tk-com"># objetos que seu time é dono</span>
+    <span class="tk-key">classes_prefix:</span> <span class="tk-str">CP_</span>            <span class="tk-com"># prefixo de naming das suas classes</span>
+  - <span class="tk-key">name:</span> <span class="tk-str">CustomerService</span>
+    <span class="tk-key">team:</span> <span class="tk-str">cs-squad</span>
+    <span class="tk-key">objects:</span> [<span class="tk-str">Case</span>, <span class="tk-str">Contact</span>]
+    <span class="tk-key">classes_prefix:</span> <span class="tk-str">CS_</span></pre>
+              <div class="mt-4 rounded-lg border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
+                <strong class="text-white">Time único?</strong> Declare um domínio só. O que importa é que exista e que
+                o prefixo seja real.
+              </div>
+            </div>
+
+            <!-- Tab 2b -->
+            <div x-show="tab === '2b'" x-transition class="mt-6 glass rounded-2xl p-6">
+              <p class="text-sm text-slate-300">
+                Abra <code class="font-mono text-brand-200">knowledge-base/org-inventory.md</code> e liste suas orgs
+                reais:
+              </p>
+              <pre class="code mt-4 p-4"><span class="tk-key">## Orgs disponíveis</span>
+| Alias       | Tipo     | Uso                         |
+|-------------|----------|-----------------------------|
+| dev-&lt;nome&gt;  | Sandbox  | Desenvolvimento individual  |
+| qa          | Sandbox  | Validação pré-merge         |
+| preprod     | Sandbox  | Homologação                 |
+| prod        | Produção | Deploy final via Flosum     |</pre>
+            </div>
+
+            <!-- Tab 2c -->
+            <div x-show="tab === '2c'" x-transition class="mt-6 glass rounded-2xl p-6">
+              <p class="text-sm text-slate-300">
+                Abra <code class="font-mono text-brand-200">knowledge-base/flosum-pipeline-map.md</code> e confirme o
+                pipeline:
+              </p>
+              <pre class="code mt-4 p-4"><span class="tk-key">## Pipeline de promoção</span>
+dev → qa → preprod → prod
+Responsável pelo deploy: <span class="tk-fn">Flosum</span> (nunca o Devin diretamente)</pre>
+            </div>
+          </div>
+
+          <!-- Checklist -->
+          <aside class="lg:col-span-4"
+            x-data="{
+              items: [
+                { t: 'Meus domínios estão declarados com prefixos de naming', done: false },
+                { t: 'Todos os aliases de org estão listados', done: false },
+                { t: 'O pipeline está mapeado', done: false },
+              ],
+              get all() { return this.items.every(i => i.done); }
+            }">
+            <div class="glass rounded-2xl p-6 sticky top-24">
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Checklist do Passo 2</p>
+              <ul class="mt-4 space-y-3">
+                <template x-for="(item, i) in items" :key="i">
+                  <li>
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                      <span class="text-sm text-slate-300 group-hover:text-white"
+                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+              <div x-show="all" x-transition
+                class="mt-5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 p-3 text-xs text-emerald-100">
+                Passo 2 concluído. Avance para o
+                <a href="#passo-3" class="underline">Passo 3 →</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       PASSO 3 — ORGS
+       ========================================================= -->
+    <section id="passo-3" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Passo 3 · ~5 min</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Conecte as orgs</h2>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs text-brand-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            Objetivo: autenticar as orgs individualmente com Web Login
+          </div>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Login web por alias</p>
+              <pre class="code mt-3 p-4"><span class="tk-com"># Execute para cada org que vai usar</span>
+<span class="tk-fn">sf</span> org login web --alias dev-&lt;seu-nome&gt;
+<span class="tk-fn">sf</span> org login web --alias qa
+<span class="tk-fn">sf</span> org login web --alias preprod</pre>
+            </div>
+
+            <!-- Justificativa Web Login -->
+            <div class="rounded-xl border border-sky-400/30 bg-sky-400/5 p-5 text-sm text-sky-100">
+              <p class="text-xs uppercase tracking-wider text-sky-300 font-semibold">Por que Web Login e não JWT</p>
+              <p class="mt-2 text-slate-200">
+                Em sandboxes Salesforce cada dev faz login individual. <strong class="text-white">JWT individual por
+                  dev é inviável</strong> operacionalmente, e centralizar em um usuário sistêmico de CI/CD eliminaria a
+                <strong class="text-white">rastreabilidade de alterações por autor</strong> — informação crítica para
+                auditoria e Smart Merge. O Web Login preserva identidade sem comprometer o pipeline.
+              </p>
+            </div>
+
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Verificação</p>
+              <pre class="code mt-3 p-4"><span class="tk-fn">sf</span> org list</pre>
+              <p class="mt-3 text-sm text-slate-300">Confirme que os aliases aparecem na lista antes de avançar.</p>
+            </div>
+          </div>
+
+          <aside class="lg:col-span-5"
+            x-data="{
+              items: [
+                { t: 'sf org login web executado para cada org', done: false },
+                { t: 'sf org list mostra os aliases configurados', done: false },
+              ],
+              get all() { return this.items.every(i => i.done); }
+            }">
+            <div class="glass rounded-2xl p-6 sticky top-24">
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Checklist do Passo 3</p>
+              <ul class="mt-4 space-y-3">
+                <template x-for="(item, i) in items" :key="i">
+                  <li>
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                      <span class="text-sm text-slate-300 group-hover:text-white"
+                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+              <div x-show="all" x-transition
+                class="mt-5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 p-3 text-xs text-emerald-100">
+                Passo 3 concluído. Avance para o
+                <a href="#passo-4" class="underline">Passo 4 →</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       PASSO 4 — DEVIN
+       ========================================================= -->
+    <section id="passo-4" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Passo 4 · ~10 min</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Prepare o Devin</h2>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs text-brand-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            Objetivo: criar o Blueprint e configurar o Agents.md para que o Devin entenda o ambiente desde a primeira sessão
+          </div>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-8 space-y-8">
+            <!-- 4a Blueprint -->
+            <div>
+              <div class="flex items-center gap-3">
+                <span
+                  class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-200 font-semibold">4a</span>
+                <h3 class="text-xl font-semibold">Blueprint</h3>
+              </div>
+              <p class="mt-3 text-sm text-slate-300">
+                No painel do Devin, crie um Blueprint apontando para a raiz do repositório clonado. Garanta que o
+                ambiente tenha:
+              </p>
+              <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+                <li class="rounded-lg border border-white/10 bg-white/5 p-3 flex items-center gap-2">
+                  <span class="text-purple-300">●</span> Python 3.9+
+                </li>
+                <li class="rounded-lg border border-white/10 bg-white/5 p-3 flex items-center gap-2">
+                  <span class="text-purple-300">●</span> Node.js 18+
+                </li>
+                <li class="rounded-lg border border-white/10 bg-white/5 p-3 flex items-center gap-2">
+                  <span class="text-purple-300">●</span> Salesforce CLI (<code class="font-mono">sf</code>)
+                </li>
+                <li class="rounded-lg border border-white/10 bg-white/5 p-3 flex items-center gap-2">
+                  <span class="text-purple-300">●</span> Acesso ao diretório raiz do <code class="font-mono">sf-repo</code>
+                </li>
+              </ul>
+
+              <a href="https://docs.devin.ai/onboard-devin/environment/blueprints" target="_blank" rel="noopener"
+                class="mt-5 glass rounded-xl p-4 flex items-center gap-3 transition hover:-translate-y-0.5 hover:shadow-glow">
+                <span
+                  class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-200">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <path d="M14 2v6h6" />
+                  </svg>
+                </span>
+                <div class="flex-1 min-w-0">
+                  <p class="text-xs uppercase tracking-wider text-purple-300">Documentação oficial</p>
+                  <p class="mt-0.5 font-semibold text-white">docs.devin.ai/onboard-devin/environment/blueprints</p>
+                </div>
+                <svg class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M11 3h6v6h-2V6.4l-7.3 7.3-1.4-1.4L13.6 5H11V3zM5 5h4v2H7v8h8v-2h2v4H5V5z" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- 4b Agents.md -->
+            <div>
+              <div class="flex items-center gap-3">
+                <span
+                  class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-200 font-semibold">4b</span>
+                <h3 class="text-xl font-semibold">Agents.md</h3>
+              </div>
+              <p class="mt-3 text-sm text-slate-300">
+                O arquivo já existe no template. <strong class="text-white">Edite apenas estas duas linhas:</strong>
+              </p>
+              <pre class="code mt-3 p-4"><span class="tk-key"># Contexto do agente</span>
+Repositório: <span class="tk-fn">sf-repo</span> — domínio: &lt;seu-domínio&gt;
+Org principal de validação: &lt;alias-da-sua-sandbox&gt;</pre>
+            </div>
+
+            <!-- Verificação -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Verificação — prompt de teste</p>
+              <pre class="code mt-3 p-4">Leia <span class="tk-fn">knowledge-base/org-inventory.md</span> e me diga
+quais orgs estão disponíveis.</pre>
+              <p class="mt-3 text-sm text-slate-300">
+                Se o Devin responder com as orgs que você cadastrou no Passo 2, o ambiente está configurado
+                corretamente.
+              </p>
+            </div>
+
+            <!-- Callout Tech Lead -->
+            <div class="rounded-xl border border-brand-500/30 bg-brand-500/5 p-5 text-sm text-brand-100">
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Tech Lead</p>
+              <p class="mt-2 text-slate-200">
+                Crie um Blueprint compartilhado e distribua o Agents.md já preenchido para o squad. Cada dev faz
+                <strong class="text-white">apenas o login web do Passo 3</strong> individualmente.
+              </p>
+            </div>
+          </div>
+
+          <aside class="lg:col-span-4"
+            x-data="{
+              items: [
+                { t: 'Blueprint criado no Devin com dependências corretas', done: false },
+                { t: 'Agents.md atualizado com domínio e org de validação', done: false },
+                { t: 'Verificação com prompt de teste confirmada', done: false },
+              ],
+              get all() { return this.items.every(i => i.done); }
+            }">
+            <div class="glass rounded-2xl p-6 sticky top-24">
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Checklist do Passo 4</p>
+              <ul class="mt-4 space-y-3">
+                <template x-for="(item, i) in items" :key="i">
+                  <li>
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                      <span class="text-sm text-slate-300 group-hover:text-white"
+                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+              <div x-show="all" x-transition
+                class="mt-5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 p-3 text-xs text-emerald-100">
+                Passo 4 concluído. Avance para o
+                <a href="#passo-5" class="underline">Passo 5 →</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       PASSO 5 — SPEC
+       ========================================================= -->
+    <section id="passo-5" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Passo 5 · ~10 min</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Escreva sua primeira Spec</h2>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs text-brand-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            Objetivo: criar uma Spec real de uma demanda do seu contexto
+          </div>
+
+          <p class="mt-5 text-slate-300">
+            Use uma demanda <strong class="text-white">real do seu backlog</strong> — não um exemplo inventado. A Spec
+            não precisa ser perfeita; precisa ser <strong class="text-white">honesta</strong> sobre o que você sabe
+            agora. O Devin vai travar onde a Spec for vaga, e isso é útil — é o sinal para refinar antes de pedir
+            código.
+          </p>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-8 space-y-6">
+            <!-- Template com botão Copiar -->
+            <div x-data="{ copied: false }">
+              <div class="flex items-center justify-between">
+                <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Template completo da Spec</p>
+                <button type="button"
+                  @click="navigator.clipboard.writeText(document.getElementById('spec-template').innerText); copied = true; setTimeout(() => copied = false, 2000)"
+                  class="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs text-slate-100 transition">
+                  <span x-show="!copied" class="inline-flex items-center gap-1.5">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="6" y="6" width="11" height="11" rx="2" />
+                      <path d="M4 14V4a2 2 0 0 1 2-2h10" />
+                    </svg>
+                    Copiar
+                  </span>
+                  <span x-show="copied" class="inline-flex items-center gap-1.5 text-emerald-300">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd"
+                        d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    Copiado
+                  </span>
+                </button>
+              </div>
+              <pre id="spec-template" class="code mt-3 p-5"><span class="tk-com"># SPEC: [&lt;TICKET&gt;] &lt;título da demanda&gt;</span>
+
+<span class="tk-key">## 1. Contexto</span>
+&lt;Por que essa demanda existe? Qual dor de negócio resolve?&gt;
+
+<span class="tk-key">## 2. Requisitos funcionais</span>
+- &lt;comportamento observável 1&gt;
+- &lt;comportamento observável 2&gt;
+
+<span class="tk-key">## 3. Regras técnicas</span>
+- Padrão: conforme <span class="tk-fn">/playbooks/02_apex.md</span>
+- Cobertura mínima: <span class="tk-num">85</span>%
+- Prefixo de naming: &lt;prefixo do seu domínio&gt;_
+
+<span class="tk-key">## 4. Limites (out-of-scope)</span>
+- NÃO modificar Profiles ou Permission Sets
+- NÃO tocar em metadata fora de &lt;seu-domínio&gt;
+
+<span class="tk-key">## 5. Critérios de aceite</span>
+- [ ] &lt;critério testável e mensurável 1&gt;
+- [ ] <span class="tk-fn">check-metadata-ownership.py</span> aprovado
+
+<span class="tk-key">## 6. Guardrails</span>
+- Auth: <span class="tk-fn">sf org login web</span> apenas
+- Deploy: <span class="tk-fn">--check-only</span> em sandbox; promoção via Flosum
+- Sem <span class="tk-fn">destructiveChanges</span>. Sem JWT.</pre>
+            </div>
+
+            <!-- Salvamento -->
+            <div class="rounded-xl border border-white/10 bg-white/5 p-5 text-sm text-slate-300">
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Salvamento</p>
+              <p class="mt-2">
+                Salve como <code class="font-mono text-brand-200">specs/&lt;TICKET&gt;.md</code> dentro do repositório.
+              </p>
+            </div>
+
+            <!-- Dica -->
+            <div class="rounded-xl border border-emerald-400/30 bg-emerald-400/5 p-5 text-sm text-emerald-100">
+              <p class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Dica</p>
+              <p class="mt-2 text-slate-200">
+                Se travar no Contexto, comece pelo Critério de aceite. A pergunta <em class="text-white">"como vou saber
+                  que está pronto?"</em> responde o porquê sozinho.
+              </p>
+            </div>
+
+            <!-- Link discreto -->
+            <p class="text-xs text-slate-400">
+              Quer entender por que a Spec tem 6 seções? →
+              <a href="salesforce-agentic-dev.html#sdd"
+                class="text-brand-300 hover:text-brand-200 underline decoration-brand-500/40">Anatomia da Spec no guia
+                completo</a>
+            </p>
+          </div>
+
+          <aside class="lg:col-span-4"
+            x-data="{
+              items: [
+                { t: 'Spec escrita com as 6 seções', done: false },
+                { t: 'Salva em specs/<TICKET>.md', done: false },
+                { t: 'Critérios de aceite são testáveis (não subjetivos)', done: false },
+              ],
+              get all() { return this.items.every(i => i.done); }
+            }">
+            <div class="glass rounded-2xl p-6 sticky top-24">
+              <p class="text-xs uppercase tracking-wider text-brand-300 font-semibold">Checklist do Passo 5</p>
+              <ul class="mt-4 space-y-3">
+                <template x-for="(item, i) in items" :key="i">
+                  <li>
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                      <span class="text-sm text-slate-300 group-hover:text-white"
+                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+              <div x-show="all" x-transition
+                class="mt-5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 p-3 text-xs text-emerald-100">
+                Passo 5 concluído. Avance para o
+                <a href="#passo-6" class="underline">Passo 6 →</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       PASSO 6 — EXECUTE
+       ========================================================= -->
+    <section id="passo-6" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Passo 6 · ~10 min</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Execute com o Devin</h2>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs text-brand-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            Objetivo: primeira execução real com a Spec criada no passo anterior
+          </div>
+        </div>
+
+        <div class="mt-10 space-y-8">
+          <!-- Prompt com Copiar -->
+          <div x-data="{ copied: false }" class="max-w-4xl">
+            <div class="flex items-center justify-between">
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Prompt exato a copiar</p>
+              <button type="button"
+                @click="navigator.clipboard.writeText(document.getElementById('devin-prompt').innerText); copied = true; setTimeout(() => copied = false, 2000)"
+                class="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 hover:bg-white/10 px-3 py-1.5 text-xs text-slate-100 transition">
+                <span x-show="!copied" class="inline-flex items-center gap-1.5">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="6" width="11" height="11" rx="2" />
+                    <path d="M4 14V4a2 2 0 0 1 2-2h10" />
+                  </svg>
+                  Copiar
+                </span>
+                <span x-show="copied" class="inline-flex items-center gap-1.5 text-emerald-300">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  Copiado
+                </span>
+              </button>
+            </div>
+            <pre id="devin-prompt" class="code mt-3 p-5">Leia <span class="tk-fn">specs/&lt;TICKET&gt;.md</span> e <span class="tk-fn">playbooks/02_apex.md</span>.
+Implemente apenas em <span class="tk-fn">force-app/main/default/</span>.
+Rode <span class="tk-fn">scripts/validation/check-metadata-ownership.py</span> antes de finalizar.
+Pare e me informe se qualquer guardrail falhar.</pre>
+          </div>
+
+          <!-- O que acompanhar -->
+          <div class="max-w-4xl"
+            x-data="{
+              items: [
+                { t: 'Devin leu a Spec antes de escrever código', done: false },
+                { t: 'Branch criada com nome devin/<ticket>-<slug>', done: false },
+                { t: 'check-metadata-ownership.py rodou sem erros', done: false },
+                { t: 'Cobertura de testes atinge o mínimo definido na Spec', done: false },
+              ]
+            }">
+            <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">O que acompanhar (não é checklist
+              de conclusão)</p>
+            <div class="mt-3 glass rounded-2xl p-6">
+              <ul class="space-y-3">
+                <template x-for="(item, i) in items" :key="i">
+                  <li>
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                      <span class="text-sm text-slate-300 group-hover:text-white"
+                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Fluxo de decisão: 3 cards -->
+          <div>
+            <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Se algo falhar — fluxo de decisão</p>
+            <div class="mt-3 grid md:grid-cols-3 gap-4">
+              <article class="glass rounded-2xl p-5 ring-1 ring-rose-500/20">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-rose-500/15 border border-rose-500/30 text-rose-200">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                    </svg>
+                  </span>
+                  <h3 class="font-semibold">Erro de ownership</h3>
+                </div>
+                <p class="mt-3 text-xs uppercase tracking-wider text-rose-300 font-semibold">Sintoma</p>
+                <p class="mt-1 text-sm text-slate-300"><code class="font-mono text-rose-200">check-metadata-ownership.py</code> falha</p>
+                <p class="mt-3 text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</p>
+                <p class="mt-1 text-sm text-slate-300">Revise <code class="font-mono">metadata-ownership.yaml</code>
+                  (Passo 2a) e re-execute.</p>
+              </article>
+
+              <article class="glass rounded-2xl p-5 ring-1 ring-amber-500/20">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-200">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 12h4l3-9 4 18 3-9h4" />
+                    </svg>
+                  </span>
+                  <h3 class="font-semibold">Erro de cobertura</h3>
+                </div>
+                <p class="mt-3 text-xs uppercase tracking-wider text-amber-300 font-semibold">Sintoma</p>
+                <p class="mt-1 text-sm text-slate-300">Testes abaixo do mínimo definido na Spec.</p>
+                <p class="mt-3 text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</p>
+                <p class="mt-1 text-sm text-slate-300">Refine a <strong class="text-white">Spec seção 3</strong> (Regras
+                  técnicas) — não peça mais código ainda.</p>
+              </article>
+
+              <article class="glass rounded-2xl p-5 ring-1 ring-purple-500/20">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-200">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 12a9 9 0 1 1-9-9" />
+                      <path d="M21 3v6h-6" />
+                    </svg>
+                  </span>
+                  <h3 class="font-semibold">Loop sem progresso</h3>
+                </div>
+                <p class="mt-3 text-xs uppercase tracking-wider text-purple-300 font-semibold">Sintoma</p>
+                <p class="mt-1 text-sm text-slate-300">Devin tenta corrigir o mesmo erro 2× ou mais.</p>
+                <p class="mt-3 text-xs uppercase tracking-wider text-emerald-300 font-semibold">Ação</p>
+                <p class="mt-1 text-sm text-slate-300"><strong class="text-white">Pare.</strong> Refine a Spec.
+                  Re-execute com o prompt do início deste passo.</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Callout amber -->
+          <div class="max-w-4xl rounded-xl border border-amber-400/30 bg-amber-400/5 p-5 text-sm text-amber-100">
+            <strong class="text-amber-300">Regra de ouro:</strong>
+            nunca itere "no escuro". Se algo falhar duas vezes seguidas, o problema está na
+            <strong class="text-white">Spec</strong> — não no Devin.
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       PASSO 7 — VALIDE E ENTREGUE
+       ========================================================= -->
+    <section id="passo-7" class="relative py-20 lg:py-24 border-t border-white/5">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent to-transparent pointer-events-none">
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Passo 7 · ~5 min</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">Valide e entregue ao Flosum</h2>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs text-brand-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            Objetivo: validar localmente e acionar o Flosum para promover
+          </div>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-7 space-y-6">
+            <!-- Bloco 1 -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Bloco 1 — Validação local</p>
+              <pre class="code mt-3 p-4"><span class="tk-fn">python</span> scripts/validation/check-metadata-ownership.py
+<span class="tk-fn">python</span> scripts/validation/check-destructive-changes.py
+<span class="tk-fn">sf</span> project deploy start --check-only --target-org qa
+<span class="tk-fn">bash</span> scripts/salesforce/run-tests.sh</pre>
+            </div>
+
+            <!-- Bloco 2 -->
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Bloco 2 — Promoção via Flosum
+                (após PR aprovado e merge na main)</p>
+              <pre class="code mt-3 p-4"><span class="tk-fn">npx</span> @flosum/cli branch sync --branch devin/&lt;ticket&gt;-&lt;slug&gt;
+<span class="tk-fn">npx</span> @flosum/cli package deploy \
+  --manifest manifest/package-deploy.xml</pre>
+            </div>
+
+            <!-- Callout rose -->
+            <div class="rounded-xl border border-rose-400/30 bg-rose-400/5 p-5 text-sm text-rose-100">
+              <p class="text-xs uppercase tracking-wider text-rose-300 font-semibold">Aviso crítico</p>
+              <p class="mt-2 text-slate-200">
+                <strong class="text-white">O Devin não executa esta etapa.</strong> Flosum é o único deployer oficial
+                para ambientes compartilhados. <strong class="text-white">Nunca peça ao Devin</strong> para rodar o
+                <code class="font-mono">flosum cli</code> em QA, PreProd ou Prod.
+              </p>
+            </div>
+          </div>
+
+          <aside class="lg:col-span-5"
+            x-data="{
+              items: [
+                { t: 'Todos os scripts de validação passaram sem erros', done: false },
+                { t: 'PR aberto e aprovado por pelo menos um humano', done: false },
+                { t: 'Merge feito na branch main', done: false },
+                { t: 'Flosum executou a promoção (confirme no painel do Flosum)', done: false },
+                { t: 'Deploy em QA confirmado', done: false },
+              ],
+              get all() { return this.items.every(i => i.done); }
+            }">
+            <div class="glass rounded-2xl p-6 sticky top-24 ring-1 ring-emerald-500/20">
+              <div class="flex items-center justify-between">
+                <p class="text-xs uppercase tracking-wider text-emerald-300 font-semibold">Checklist final de entrega</p>
+                <span class="text-xs text-slate-400" x-text="`${items.filter(i => i.done).length}/${items.length}`"></span>
+              </div>
+              <ul class="mt-4 space-y-3">
+                <template x-for="(item, i) in items" :key="i">
+                  <li>
+                    <label class="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" class="chk mt-0.5" x-model="item.done">
+                      <span class="text-sm text-slate-300 group-hover:text-white"
+                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                    </label>
+                  </li>
+                </template>
+              </ul>
+              <div x-show="all" x-transition
+                class="mt-5 rounded-lg border border-emerald-400/40 bg-emerald-400/10 p-4 text-sm text-emerald-100">
+                <strong class="text-emerald-200">Você terminou o Quick Start.</strong>
+                <p class="mt-1 text-xs text-emerald-100/90">Veja
+                  <a href="#proximo" class="underline">o que fazer agora →</a></p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       SEÇÃO FINAL — O QUE FAZER AGORA
+       ========================================================= -->
+    <section id="proximo" class="relative py-24 lg:py-28 border-t border-white/5 aurora overflow-hidden">
+      <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+
+      <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="section-eyebrow">Você terminou o Quick Start</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-bold tracking-tight">
+            <span class="bg-gradient-to-r from-brand-300 to-emerald-300 bg-clip-text text-transparent">O que fazer
+              agora</span>
+          </h2>
+        </div>
+
+        <!-- 3 cards por perfil -->
+        <div class="mt-10 grid md:grid-cols-3 gap-5">
+          <article class="glass rounded-2xl p-6">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-200">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </span>
+            <p class="mt-4 text-xs uppercase tracking-wider text-purple-300 font-semibold">Dev individual</p>
+            <p class="mt-2 text-sm text-slate-300">
+              Repita o ciclo <strong class="text-white">Spec → Devin → Flosum</strong> com sua próxima demanda real.
+              Cada iteração fica mais rápida.
+            </p>
+          </article>
+
+          <article class="glass rounded-2xl p-6">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-200">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+            <p class="mt-4 text-xs uppercase tracking-wider text-brand-300 font-semibold">Tech Lead</p>
+            <p class="mt-2 text-sm text-slate-300">
+              Faça fork do repositório <strong class="text-white">para cada time</strong>. Adapte o
+              <code class="font-mono">metadata-ownership.yaml</code> por domínio. Distribua o Blueprint configurado.
+            </p>
+          </article>
+
+          <article class="glass rounded-2xl p-6">
+            <span
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-200">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </span>
+            <p class="mt-4 text-xs uppercase tracking-wider text-emerald-300 font-semibold">Todos</p>
+            <p class="mt-2 text-sm text-slate-300">
+              Leia a seção de <strong class="text-white">Governança</strong> no guia completo para entender
+              <em>ownership em escala</em> com múltiplos times.
+            </p>
+          </article>
+        </div>
+
+        <!-- Links de aprofundamento -->
+        <div class="mt-12">
+          <h3 class="text-lg font-semibold">Links de aprofundamento</h3>
+          <p class="mt-1 text-sm text-slate-400">Volte ao guia completo para entender o porquê de cada peça.</p>
+          <div class="mt-5 grid md:grid-cols-3 gap-4">
+            <a href="salesforce-agentic-dev.html#sdd"
+              class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+              <p class="text-xs uppercase tracking-wider text-brand-300">Spec-Driven Development</p>
+              <p class="mt-2 font-semibold text-white">Quer entender por que a Spec tem 6 seções?</p>
+              <p class="mt-2 text-xs text-slate-400 inline-flex items-center gap-1">
+                Anatomia da Spec
+                <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M7 5l5 5-5 5V5z" />
+                </svg>
+              </p>
+            </a>
+            <a href="salesforce-agentic-dev.html#arquitetura"
+              class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+              <p class="text-xs uppercase tracking-wider text-purple-300">Arquitetura</p>
+              <p class="mt-2 font-semibold text-white">Quer entender o modelo multi-repo?</p>
+              <p class="mt-2 text-xs text-slate-400 inline-flex items-center gap-1">
+                Arquitetura Federada
+                <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M7 5l5 5-5 5V5z" />
+                </svg>
+              </p>
+            </a>
+            <a href="salesforce-agentic-dev.html#acu"
+              class="glass rounded-xl p-5 transition hover:-translate-y-0.5 hover:shadow-glow">
+              <p class="text-xs uppercase tracking-wider text-emerald-300">Custos</p>
+              <p class="mt-2 font-semibold text-white">Quer reduzir custo de ACUs?</p>
+              <p class="mt-2 text-xs text-slate-400 inline-flex items-center gap-1">
+                Otimização de custos
+                <svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M7 5l5 5-5 5V5z" />
+                </svg>
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+    <footer class="relative border-t border-white/10 bg-ink-900">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+        <div
+          class="rounded-2xl border border-white/10 bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-transparent p-7 lg:p-9">
+          <p class="section-eyebrow">Quick Start</p>
+          <h3 class="mt-2 text-2xl lg:text-3xl font-bold tracking-tight">Pronto para o próximo nível?</h3>
+          <p class="mt-3 text-slate-300 max-w-3xl">
+            Este guia te levou do zero ao primeiro deploy governado. O <strong class="text-white">guia completo</strong>
+            cobre o porquê de cada decisão, os trade-offs do modelo federado e como escalar para múltiplos times sem
+            metadata trampling.
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <a href="salesforce-agentic-dev.html"
+              class="group inline-flex items-center gap-2 rounded-lg bg-brand-500 hover:bg-brand-400 px-5 py-3 text-sm font-semibold text-white shadow-glow transition">
+              Ler o guia completo
+              <svg class="h-4 w-4 transition group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M7 5l5 5-5 5V5z" />
+              </svg>
+            </a>
+            <a href="https://github.com/issei/sf-repo" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 px-5 py-3 text-sm font-medium text-slate-100 transition">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.69-3.88-1.36-3.88-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17a10.93 10.93 0 0 1 5.74 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.36-5.25 5.65.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56C20.21 21.39 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z" />
+              </svg>
+              github.com/issei/sf-repo
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          <p>© <span id="year"></span> Agentic DevOps for Salesforce — Quick Start</p>
+          <div class="flex items-center gap-4">
+            <a href="#hero" class="hover:text-slate-300">Voltar ao topo ↑</a>
+            <a href="salesforce-agentic-dev.html" class="hover:text-slate-300">Voltar ao guia completo →</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- =========================================================
+       SCRIPTS — interatividade leve
+       ========================================================= -->
+  <script>
+    // Ano dinâmico no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll: ativa fade-in nas seções ao entrarem na viewport
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.08 });
+    document.querySelectorAll('section, footer').forEach(el => {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  </script>
+</body>
+
+</html>
