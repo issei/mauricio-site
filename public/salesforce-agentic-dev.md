@@ -690,6 +690,10 @@ Aos times com quem o autor trabalha diariamente — pessoas que toparam testar p
 
 ---
 
+> *Pronto para colocar em prática? O [Quick Start](salesforce-agentic-quickstart.html) leva você do zero ao repositório configurado em menos de 60 minutos.*
+
+---
+
 ## Metadados para agentes de IA
 
 ```yaml
