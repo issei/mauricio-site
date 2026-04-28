@@ -358,10 +358,15 @@
         </h1>
 
         <p class="mt-6 max-w-2xl text-lg text-slate-300">
-          O guia definitivo, prático e ensinável para times Apex, LWC e Admins que querem
+          Um guia prático e ensinável para times Apex, LWC e Admins que querem
           <strong class="text-white">parar de digitar boilerplate</strong> e começar a
           <strong class="text-white">orquestrar soluções de negócio</strong> usando Spec-Driven Development,
           Devin (Cognition) e Flosum como Source of Truth.
+        </p>
+        <p class="mt-4 max-w-2xl text-sm text-slate-400">
+          Este não é um novo método — é a aplicação disciplinada de boas práticas de engenharia
+          (contratos explícitos, fronteiras claras, governança de deploy) ao ecossistema
+          Salesforce com Devin e Flosum.
         </p>
 
         <!-- Proposta de valor + problema resolvido -->
@@ -586,8 +591,8 @@
           <p class="mt-3 text-slate-300">
             Múltiplos times trabalhando nas mesmas orgs de QA, PreProd e Prod — em um único repositório — geram
             conflitos
-            diários, deploys quebrados e <em>metadata trampling</em>. O Modelo Agentic Federado nasce para resolver isso
-            com isolamento, IA e governança.
+            diários, deploys quebrados e <em>metadata trampling</em>. O Modelo Agentic Federado é a abordagem
+            estruturada adotada para lidar com isso, combinando isolamento, IA e governança.
           </p>
         </div>
 
@@ -760,7 +765,13 @@
               <p class="mt-1 text-slate-300">Avalia se cumpriu o critério de aceite e replaneja se necessário.</p>
             </div>
           </div>
-          <div class="mt-6 rounded-xl border border-brand-500/30 bg-brand-500/5 p-4 text-sm text-brand-100">
+          <div class="mt-6 rounded-xl border border-purple-500/30 bg-purple-500/5 p-4 text-sm text-purple-100">
+            <strong class="text-purple-200">Origem do ciclo:</strong>
+            este loop é inspirado no padrão <strong class="text-white">ReAct</strong> (Reasoning + Acting),
+            introduzido por Yao et al. em 2022, que descreve como agentes de linguagem combinam raciocínio
+            e ação em iterações sucessivas. Aqui ele é adaptado ao contexto de desenvolvimento Salesforce com Devin.
+          </div>
+          <div class="mt-4 rounded-xl border border-brand-500/30 bg-brand-500/5 p-4 text-sm text-brand-100">
             <strong class="text-brand-200">Insight central:</strong>
             a qualidade do output do agente é função direta da qualidade do contexto. Sem contexto = adivinhação. Com
             contexto rico (Spec + playbook + knowledge-base) = engenharia de verdade.
@@ -1083,6 +1094,13 @@
               é precedida por uma <em>specification</em> versionada — um documento estruturado que descreve
               contexto, requisitos, regras técnicas, limites e critérios de aceite. A Spec antecede o código e
               é o input principal do agente.
+            </p>
+            <p class="mt-3 text-sm text-slate-300">
+              O Spec-Driven Development não é um conceito inventado aqui — ele se apoia em práticas
+              consolidadas como <strong class="text-white">Design by Contract</strong> (Bertrand Meyer),
+              <strong class="text-white">BDD/TDD</strong> com critérios de aceite explícitos e
+              <strong class="text-white">Architecture Decision Records</strong>. O que esta abordagem faz
+              é aplicar esses princípios ao contexto específico de agentes autônomos no Salesforce.
             </p>
           </div>
           <div class="glass rounded-2xl p-6 ring-1 ring-brand-500/20">
@@ -1615,6 +1633,11 @@ do gerente regional. Hoje a regra é manual e gera atrasos.
             </div>
 
             <p class="mt-4 text-xs uppercase tracking-wider text-slate-400 font-semibold">Prompt típico</p>
+            <p class="mt-2 text-xs text-slate-400 italic">
+              O prompt abaixo é intencionalmente exagerado para tornar o contraste didático —
+              mas variações menos óbvias do mesmo padrão (escopo vago, sem limites explícitos)
+              produzem os mesmos problemas em escala menor.
+            </p>
             <pre class="code mt-2 p-4"><span class="tk-com"># Prompt vago e ambíguo</span>
 "Faça uma aprovação automática quando o desconto
 do pedido for grande. Cria uma tela bonita pra mostrar
@@ -1806,6 +1829,16 @@ Pare se qualquer guardrail falhar.</pre>
                 credenciais (JWT, refresh tokens) em qualquer arquivo.</li>
             </ul>
           </article>
+        </div>
+
+        <!-- Por que Web Login (decisão técnica justificada) -->
+        <div class="mt-6 rounded-xl border border-sky-400/30 bg-sky-400/5 p-5 text-sm text-sky-100">
+          <strong class="text-sky-300">Por que Web Login (e não JWT):</strong>
+          a autenticação via <code class="font-mono text-sky-200">sf org login web</code> é adotada deliberadamente.
+          Em sandboxes Salesforce, cada dev faz login individual, e <strong class="text-white">JWT individual por
+            desenvolvedor é inviável operacionalmente</strong>. Centralizar em um usuário sistêmico de CI/CD eliminaria
+          a rastreabilidade de alterações por autor — informação crítica para auditoria e Smart Merge. O Web Login
+          preserva identidade sem comprometer o pipeline.
         </div>
 
         <!-- Exemplo de prompt eficaz -->
@@ -2267,12 +2300,12 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
 
         <div
           class="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-brand-500/10 via-purple-500/5 to-transparent p-6 lg:p-8">
-          <h3 class="text-lg font-semibold">Por que este conteúdo é diferente</h3>
+          <h3 class="text-lg font-semibold">Onde este conteúdo se posiciona</h3>
           <p class="mt-2 text-slate-300 max-w-3xl">
-            A maior parte dos conteúdos sobre IA + desenvolvimento foca em <em>prompts mágicos</em>. Este framework
+            A maior parte dos conteúdos sobre IA + desenvolvimento foca em <em>prompts mágicos</em>. Esta abordagem
             foca em <strong class="text-white">engenharia</strong>: contratos, fronteiras, validação, governança.
             É o que diferencia entrega previsível de "demo bonita que quebra na quinta-feira". Se você é Tech Lead,
-            Arquiteto ou Senior em Salesforce, o caminho é este — e ele já está testado em campo.
+            Arquiteto ou Senior em Salesforce, é um processo que funcionou nesse contexto — e está testado em campo.
           </p>
         </div>
       </div>
