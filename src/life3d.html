@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Vida em 3D | Mauricio Issei</title>
+
+    <meta name="description"
+        content="Explore a trajetória de vida de Mauricio Issei em uma experiência 3D imersiva. Uma jornada contemplativa de 1982 aos dias de hoje.">
+    <meta name="author" content="Mauricio Issei">
+    <meta property="og:title" content="Vida em 3D | Mauricio Issei">
+    <meta property="og:description"
+        content="Uma jornada contemplativa em 3D pela história de Mauricio Issei. Cada fase é um capítulo.">
+    <meta property="og:image" content="https://mauricio.issei.com.br/fotos/og-share.jpg">
+    <meta name="theme-color" content="#0d0e15">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #ffcd75;
+            --font-pixel: 'VT323', monospace;
+            --bg: #0d0e15;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: var(--bg);
+            color: #f4f4f4;
+            font-family: var(--font-pixel);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+        }
+
+        #canvas3d {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            inset: 0;
+        }
+
+        /* ── UI LAYER ── */
+        #ui {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* HUD top bar */
+        #hud {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
+        }
+
+        #phase-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        #phase-title-hud {
+            font-size: 1.7rem;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        #phase-period-hud {
+            font-size: 0.95rem;
+            opacity: 0.65;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #hint {
+            font-size: 0.9rem;
+            opacity: 0.45;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        /* Proximity hint (near monolith) */
+        #proximity-hint {
+            position: absolute;
+            bottom: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            white-space: nowrap;
+            text-shadow: 0 0 12px rgba(255, 205, 117, 0.9);
+            pointer-events: none;
+        }
+
+        /* Progress dots */
+        #progress-dots {
+            position: absolute;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: background 0.4s, transform 0.2s;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            transform: scale(1.25);
+        }
+
+        .dot.done {
+            background: rgba(255, 205, 117, 0.35);
+        }
+
+        /* Touch controls */
+        #touch-controls {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            pointer-events: auto;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            #touch-controls {
+                display: flex;
+            }
+
+            #hint {
+                display: none;
+            }
+        }
+
+        .ctrl-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .ctrl-btn {
+            width: 54px;
+            height: 54px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            touch-action: manipulation;
+            font-family: var(--font-pixel);
+            transition: background 0.15s;
+        }
+
+        .ctrl-btn:active {
+            background: rgba(255, 205, 117, 0.35);
+            border-color: var(--accent);
+        }
+
+        /* ── FADE OVERLAY ── */
+        #fade {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            opacity: 1;
+            pointer-events: none;
+            z-index: 40;
+            transition: opacity 0.8s ease;
+        }
+
+        /* ── INTRO SCREEN ── */
+        #intro {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(160deg, #0d0e15 0%, #1a1c2c 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            gap: 18px;
+            text-align: center;
+            padding: 24px;
+            transition: opacity 0.7s ease;
+        }
+
+        #intro h1 {
+            font-size: clamp(2.8rem, 9vw, 5.5rem);
+            color: var(--accent);
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(255, 205, 117, 0.4);
+        }
+
+        #intro .subtitle {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            opacity: 0.6;
+            max-width: 420px;
+            line-height: 1.4;
+        }
+
+        #intro .controls-hint {
+            font-size: 0.85rem;
+            opacity: 0.35;
+            margin-top: 4px;
+        }
+
+        .btn-pixel {
+            font-family: var(--font-pixel);
+            font-size: 1.25rem;
+            padding: 10px 28px;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-pixel:hover,
+        .btn-pixel:focus {
+            background: var(--accent);
+            color: #000;
+            outline: none;
+        }
+
+        /* ── REVELATION MODAL ── */
+        #modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 45;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: auto;
+        }
+
+        #modal.hidden {
+            display: none;
+        }
+
+        #modal-inner {
+            max-width: 720px;
+            width: 100%;
+            background: #1a1c2c;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            max-height: 92vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+
+        #modal-header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        #modal-title {
+            font-size: 2.2rem;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        #modal-period {
+            font-size: 0.95rem;
+            opacity: 0.55;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #modal-img {
+            width: 100%;
+            max-height: 52vh;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #000;
+        }
+
+        #modal-text {
+            font-size: 1.3rem;
+            line-height: 1.55;
+            color: #dde0ea;
+        }
+
+        #modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            align-items: center;
+        }
+
+        #modal-counter {
+            font-size: 0.9rem;
+            opacity: 0.35;
+        }
+
+        @media (max-width: 640px) {
+            #modal-inner {
+                padding: 16px;
+                gap: 14px;
+            }
+
+            #modal-title {
+                font-size: 1.7rem;
+            }
+
+            #modal-text {
+                font-size: 1.1rem;
+            }
+
+            #modal-img {
+                max-height: 38vh;
+            }
+        }
+
+        /* ── ENDING SCREEN ── */
+        #ending {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.96);
+            z-index: 55;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            text-align: center;
+            padding: 28px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        #ending h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--accent);
+            text-shadow: 0 0 24px rgba(255, 205, 117, 0.5);
+        }
+
+        #ending p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            opacity: 0.65;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* ── ACCESSIBILITY ── */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas3d" role="img" aria-label="Cenário 3D interativo da jornada de vida"></canvas>
+
+    <!-- UI Layer -->
+    <div id="ui">
+        <header id="hud" role="banner">
+            <div id="phase-info">
+                <span id="phase-title-hud">...</span>
+                <span id="phase-period-hud">...</span>
+            </div>
+            <div id="hint" aria-hidden="true">W A S D · setas</div>
+        </header>
+
+        <div id="proximity-hint" aria-live="polite">◆ MEMÓRIA À FRENTE ◆</div>
+
+        <nav id="progress-dots" aria-label="Progresso da jornada"></nav>
+
+        <nav id="touch-controls" aria-label="Controles táteis">
+            <div class="ctrl-row">
+                <button class="ctrl-btn" id="btn-fwd" aria-label="Avançar">↑</button>
+            </div>
+            <div class="ctrl-row">
+                <button class="ctrl-btn" id="btn-left" aria-label="Esquerda">←</button>
+                <button class="ctrl-btn" id="btn-back" aria-label="Recuar">↓</button>
+                <button class="ctrl-btn" id="btn-right" aria-label="Direita">→</button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Revelation Modal -->
+    <div id="modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div id="modal-inner">
+            <div id="modal-header">
+                <span id="modal-title"></span>
+                <span id="modal-period"></span>
+            </div>
+            <img id="modal-img" src="" alt="" loading="lazy" decoding="async">
+            <p id="modal-text"></p>
+            <div id="modal-footer">
+                <span id="modal-counter"></span>
+                <button class="btn-pixel" id="btn-continue">Continuar →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ending Screen -->
+    <div id="ending" role="region" aria-label="Fim da jornada">
+        <h2>Fim da Jornada</h2>
+        <p>Obrigado por percorrer minha história. A caminhada continua, e novas fases ainda serão vividas...</p>
+        <a href="life.html" class="btn-pixel">← Versão 2D</a>
+        <a href="index.html" class="btn-pixel" style="margin-top: 4px;">↩ Início</a>
+    </div>
+
+    <!-- Fade overlay -->
+    <div id="fade" aria-hidden="true"></div>
+
+    <!-- Intro Screen -->
+    <div id="intro" role="dialog" aria-modal="true" aria-label="Tela de entrada da experiência 3D">
+        <h1>Vida em 3D</h1>
+        <p class="subtitle">Uma jornada contemplativa pela história de Mauricio Issei — de 1982 aos dias de hoje.</p>
+        <button class="btn-pixel" id="btn-start">▶ Iniciar Jornada</button>
+        <p class="controls-hint">W A S D · Setas do teclado · Toque na tela</p>
+    </div>
+
+    <div role="status" aria-live="assertive" id="a11y-announcer" class="sr-only"></div>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.167.0/build/three.module.js"
+      }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // ================================================================
+        // STORY DATA — mesmo contrato de life.html
+        // ================================================================
+        const STORY_DATA = [
+            {
+                id: "birth", order: 1,
+                period: "1982 - O Início", title: "A Origem",
+                text: "[Fase 1/11] Minha história começa em 1982, o ponto de partida de toda minha jornada.",
+                image: { src: "fotos/1982.jpeg", alt: "Foto de Issei bebê em 1982" },
+                theme: { sky: "#AEEEEE", ground: "#ADD8E6" }
+            },
+            {
+                id: "childhood", order: 2,
+                period: "Anos 80 - A Infância", title: "Hanna Barbera e Tokusatsus",
+                text: "[Fase 2/11] Cresci mergulhado na cultura pop dos anos 80, entre Hanna Barbera e muitos Tokusatsus.",
+                image: { src: "fotos/infancia.png", alt: "Criança nos anos 80 fã de Hanna Barbera e muitos Tokusatsus" },
+                theme: { sky: "#FF69B4", ground: "#FFFF00" }
+            },
+            {
+                id: "first_job", order: 3,
+                period: "1998 - Primeiro Emprego", title: "Auditor no Eldorado",
+                text: "[Fase 3/11] Aos 16 anos, cursei Processamento de Dados e tive minha primeira experiência profissional trabalhando como auditor no Shopping Eldorado.",
+                image: { src: "fotos/eldorado.jpg", alt: "Fachada ou interior do Shopping Eldorado no fim dos anos 90" },
+                theme: { sky: "#708090", ground: "#D3D3D3" }
+            },
+            {
+                id: "callcenter", order: 4,
+                period: "2000 a 2003 - Suporte", title: "A Era da Conexão",
+                text: "[Fase 4/11] Trabalhei no suporte técnico de um provedor de internet, ajudando pessoas a se conectarem em um mundo novo. Onde aprendi a ouvir a dor de usuários e resolver problemas sob pressão. O início da minha jornada com tecnologia.",
+                image: { src: "fotos/callcenter.jpg", alt: "Ambiente de callcenter com computadores antigos" },
+                theme: { sky: "#000080", ground: "#4682B4" }
+            },
+            {
+                id: "university", order: 5,
+                period: "2001 a 2005 - Formação", title: "Formado em Sistemas de Informação",
+                text: "[Fase 5/11] Após 5 anos de dedicação acadêmica, me formei como Bacharel em Sistemas de Informação no Mackenzie.",
+                image: { src: "fotos/formatura.jpg", alt: "Foto da formatura ou do campus do Mackenzie" },
+                theme: { sky: "#CC0000", ground: "#FFFFFF" }
+            },
+            {
+                id: "dev_start", order: 6,
+                period: "2003 - O Código", title: "Carreira de Programador",
+                text: "[Fase 6/11] Onde a paixão virou profissão. Iniciei oficialmente minha carreira desenvolvendo software.",
+                image: { src: "fotos/programa.jpg", alt: "Tela de código ou setup de trabalho antigo" },
+                theme: { sky: "#000000", ground: "#00FF00" }
+            },
+            {
+                id: "wedding", order: 7,
+                period: "2011 - O Casamento", title: "O Grande Dia",
+                text: "[Fase 7/11] Um novo capítulo de amor. Em 2009 conheci o amor de minha vida e 2011 oficializamos nossa união.",
+                image: { src: "fotos/casamento.jpg", alt: "Foto do casamento saindo de um baú" },
+                theme: { sky: "#FFD700", ground: "#FFFACD" }
+            },
+            {
+                id: "daughter", order: 8,
+                period: "2012 - Primogênita", title: "Nasce minha Filha",
+                text: "[Fase 8/11] Em 2012 a vida ganhou novas cores e significados com a chegada da minha primeira filha.",
+                image: { src: "fotos/filha.jpeg", alt: "Foto da primeira filha bebê" },
+                theme: { sky: "#FFB6C1", ground: "#FFC0CB" }
+            },
+            {
+                id: "twins", order: 9,
+                period: "2016 - Dose Dupla", title: "Os Gêmeos",
+                text: "[Fase 9/11] A família cresceu exponencialmente com a alegria em dobro dos gêmeos.",
+                image: { src: "fotos/gemeos.jpeg", alt: "Foto dos gêmeos bebês" },
+                theme: { sky: "#87CEEB", ground: "#4169E1" }
+            },
+            {
+                id: "changes", order: 10,
+                period: "2017/2018 - Mudanças", title: "Novo Visual, Nova Casa",
+                text: "[Fase 10/11] Em 2017, fiquei careca, e decidi sair da vida de consultoria e em 2018 iniciei minha jornada na Rede, transformando saúde pessoal e carreira.",
+                image: { src: "fotos/careca.jpeg", alt: "Foto com visual careca com os filhos" },
+                theme: { sky: "#FF8C00", ground: "#2F4F4F" }
+            },
+            {
+                id: "current", order: 11,
+                period: "Hoje - Legado", title: "Família e Trabalho",
+                text: "[Fase 11/11] Sigo na Rede até hoje, focado em construir e aproveitar essa família linda que construí. A caminhada continua. Novas fases ainda serão vividas...",
+                image: { src: "fotos/familia.jpeg", alt: "Foto atual da família completa" },
+                theme: { sky: "#E0FFFF", ground: "#32CD32" }
+            }
+        ];
+
+        // ================================================================
+        // CONSTANTES
+        // ================================================================
+        const MONOLITH_Z   = -52;
+        const REVEAL_DIST  = 5;
+        const PATH_HW      = 3.8;  // half-width do corredor
+        const PLAYER_SPEED = 4.5;
+        const STRAFE_SPEED = 3.0;
+        const CAM_HEIGHT   = 4.2;
+        const CAM_DIST     = 9.0;
+        const CAM_LOOK_AHD = -3.0; // lookahead em Z
+        const CAM_LERP     = 9.0;
+
+        // ================================================================
+        // THREE.JS SETUP
+        // ================================================================
+        const canvas   = document.getElementById('canvas3d');
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'default' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+        const scene  = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.1, 250);
+
+        // ── Lighting (persistent, intensity updated per phase) ──
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const sunLight = new THREE.DirectionalLight(0xfff8e8, 1.4);
+        sunLight.position.set(15, 25, 10);
+        scene.add(sunLight);
+
+        const fillLight = new THREE.DirectionalLight(0x8ab4f8, 0.3);
+        fillLight.position.set(-10, 5, -5);
+        scene.add(fillLight);
+
+        // ── Fog (updated per phase) ──
+        scene.fog = new THREE.FogExp2(0x88aacc, 0.025);
+
+        // ── Persistent ground + path ──
+        const groundGeo = new THREE.PlaneGeometry(300, 300);
+        const groundMat = new THREE.MeshLambertMaterial({ color: 0x4a7a4a });
+        const ground    = new THREE.Mesh(groundGeo, groundMat);
+        ground.rotation.x = -Math.PI / 2;
+        scene.add(ground);
+
+        const pathGeo = new THREE.PlaneGeometry(PATH_HW * 2, 300);
+        const pathMat = new THREE.MeshLambertMaterial({ color: 0x5a8a5a });
+        const pathMesh = new THREE.Mesh(pathGeo, pathMat);
+        pathMesh.rotation.x = -Math.PI / 2;
+        pathMesh.position.y = 0.01;
+        scene.add(pathMesh);
+
+        // ── Utility: seeded pseudo-random ──
+        function seededRand(seed) {
+            const x = Math.sin(seed + 1) * 10000;
+            return x - Math.floor(x);
+        }
+
+        function hexToThree(hex) {
+            return new THREE.Color(parseInt(hex.replace('#', ''), 16));
+        }
+
+        // ================================================================
+        // PHASE ENVIRONMENT BUILDER
+        // ================================================================
+        let phaseObjects = [];   // meshes/lights added per phase
+        let monolithMesh = null; // reference for animation
+        let monolithLight = null;
+
+        function clearPhaseObjects() {
+            phaseObjects.forEach(o => {
+                scene.remove(o);
+                if (o.geometry) o.geometry.dispose();
+                if (o.material) o.material.dispose();
+            });
+            phaseObjects = [];
+            monolithMesh  = null;
+            monolithLight = null;
+        }
+
+        function buildPhase(phase) {
+            clearPhaseObjects();
+
+            const skyCol    = hexToThree(phase.theme.sky);
+            const groundCol = hexToThree(phase.theme.ground);
+
+            // Background + fog
+            scene.background = skyCol.clone();
+            scene.fog.color.copy(skyCol);
+
+            // Ground colors
+            groundMat.color.copy(groundCol);
+            pathMat.color.copy(groundCol.clone().multiplyScalar(1.18));
+
+            // Lighting tint
+            ambientLight.color.copy(skyCol.clone().lerp(new THREE.Color(0xffffff), 0.55));
+            sunLight.intensity = skyCol.r + skyCol.g + skyCol.b < 0.6 ? 0.9 : 1.4;
+
+            _buildSideObjects(phase, groundCol);
+            _buildMonolith(skyCol);
+            _buildGroundDetails(phase, groundCol);
+        }
+
+        function _buildSideObjects(phase, groundCol) {
+            const treeMat  = new THREE.MeshLambertMaterial({ color: groundCol.clone().multiplyScalar(0.6) });
+            const trunkMat = new THREE.MeshLambertMaterial({ color: 0x3a2510 });
+
+            const TREE_STEP = 9;
+            const Z_START   = 2;
+            const Z_END     = MONOLITH_Z - 3;
+
+            for (let z = Z_START; z > Z_END; z -= TREE_STEP) {
+                for (let side = -1; side <= 1; side += 2) {
+                    const seed  = Math.floor(z) * 7 + side * 100 + phase.order * 13;
+                    const r0    = seededRand(seed);
+                    const r1    = seededRand(seed + 1);
+                    const r2    = seededRand(seed + 2);
+
+                    // Skip some positions for variety
+                    if (r0 < 0.22) continue;
+
+                    const xOff    = side * (PATH_HW + 4 + r1 * 8);
+                    const trunkH  = 1.2 + r2 * 2.8;
+                    const foliageS = 1.3 + r0 * 2.4;
+
+                    const trunkGeo = new THREE.BoxGeometry(0.45, trunkH, 0.45);
+                    const trunk    = new THREE.Mesh(trunkGeo, trunkMat);
+                    trunk.position.set(xOff, trunkH / 2, z);
+                    scene.add(trunk);
+                    phaseObjects.push(trunk);
+
+                    const foliageGeo = new THREE.BoxGeometry(foliageS, foliageS * 1.25, foliageS);
+                    const foliage    = new THREE.Mesh(foliageGeo, treeMat);
+                    foliage.position.set(xOff + (r1 - 0.5) * 0.4, trunkH + foliageS * 0.55, z);
+                    scene.add(foliage);
+                    phaseObjects.push(foliage);
+                }
+            }
+        }
+
+        function _buildGroundDetails(phase, groundCol) {
+            // Rocks / path markers scattered on side ground
+            const rockMat = new THREE.MeshLambertMaterial({ color: groundCol.clone().multiplyScalar(0.5) });
+            for (let i = 0; i < 18; i++) {
+                const seed = i * 31 + phase.order * 97;
+                const rz   = seededRand(seed);
+                const rx   = seededRand(seed + 5);
+                const rs   = seededRand(seed + 9);
+                const side = i % 2 === 0 ? 1 : -1;
+                const z    = 2 - rz * Math.abs(MONOLITH_Z - 2);
+                const x    = side * (PATH_HW + 1.5 + rx * 10);
+                const s    = 0.2 + rs * 0.5;
+                const geo  = new THREE.BoxGeometry(s, s * 0.6, s);
+                const rock = new THREE.Mesh(geo, rockMat);
+                rock.position.set(x, s * 0.3, z);
+                rock.rotation.y = rs * Math.PI;
+                scene.add(rock);
+                phaseObjects.push(rock);
+            }
+        }
+
+        function _buildMonolith(skyCol) {
+            // Glowing pillar at end of path
+            const geo = new THREE.BoxGeometry(1.4, 7.5, 1.4);
+            const mat = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                emissive: new THREE.Color(0xffffff).lerp(skyCol, 0.15),
+                emissiveIntensity: 0.55,
+                metalness: 0.25,
+                roughness: 0.15
+            });
+            monolithMesh = new THREE.Mesh(geo, mat);
+            monolithMesh.position.set(0, 3.75, MONOLITH_Z);
+            scene.add(monolithMesh);
+            phaseObjects.push(monolithMesh);
+
+            // Glowing ring around base
+            const ringGeo = new THREE.TorusGeometry(2.2, 0.12, 8, 32);
+            const ringMat = new THREE.MeshStandardMaterial({
+                color: 0xffcd75,
+                emissive: 0xffcd75,
+                emissiveIntensity: 0.9,
+                metalness: 0.1,
+                roughness: 0.4
+            });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = -Math.PI / 2;
+            ring.position.set(0, 0.08, MONOLITH_Z);
+            scene.add(ring);
+            phaseObjects.push(ring);
+
+            // Point light for glow
+            monolithLight = new THREE.PointLight(0xfff4cc, 3, 18);
+            monolithLight.position.set(0, 5, MONOLITH_Z);
+            scene.add(monolithLight);
+            phaseObjects.push(monolithLight);
+        }
+
+        // ================================================================
+        // INPUT MANAGER
+        // ================================================================
+        const keys = { forward: false, back: false, left: false, right: false };
+
+        window.addEventListener('keydown', e => {
+            if (['ArrowUp',    'w', 'W'].includes(e.key)) { keys.forward = true; e.preventDefault(); }
+            if (['ArrowDown',  's', 'S'].includes(e.key)) { keys.back    = true; e.preventDefault(); }
+            if (['ArrowLeft',  'a', 'A'].includes(e.key)) { keys.left    = true; e.preventDefault(); }
+            if (['ArrowRight', 'd', 'D'].includes(e.key)) { keys.right   = true; e.preventDefault(); }
+        });
+
+        window.addEventListener('keyup', e => {
+            if (['ArrowUp',    'w', 'W'].includes(e.key)) keys.forward = false;
+            if (['ArrowDown',  's', 'S'].includes(e.key)) keys.back    = false;
+            if (['ArrowLeft',  'a', 'A'].includes(e.key)) keys.left    = false;
+            if (['ArrowRight', 'd', 'D'].includes(e.key)) keys.right   = false;
+        });
+
+        function bindTouchBtn(id, key) {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            const on  = e => { e.preventDefault(); keys[key] = true; };
+            const off = e => { e.preventDefault(); keys[key] = false; };
+            btn.addEventListener('touchstart',  on,  { passive: false });
+            btn.addEventListener('touchend',    off, { passive: false });
+            btn.addEventListener('touchcancel', off, { passive: false });
+            btn.addEventListener('mousedown', on);
+            btn.addEventListener('mouseup',   off);
+            btn.addEventListener('mouseleave',off);
+        }
+
+        bindTouchBtn('btn-fwd',   'forward');
+        bindTouchBtn('btn-back',  'back');
+        bindTouchBtn('btn-left',  'left');
+        bindTouchBtn('btn-right', 'right');
+
+        // Canvas tap: left-half = move forward, tap-right = nothing (simplicity)
+        // On mobile devices without d-pad shown, tapping the canvas moves forward
+        canvas.addEventListener('touchstart', e => {
+            if (e.touches.length === 1) {
+                // Touch on canvas (not on touch controls): move forward
+                keys.forward = true;
+            }
+        }, { passive: true });
+
+        canvas.addEventListener('touchend', () => {
+            keys.forward = false;
+        }, { passive: true });
+
+        // ================================================================
+        // GAME STATE
+        // ================================================================
+        let currentPhaseIndex = 0;
+        let gameActive        = false;
+        let revealTriggered   = false;
+
+        const playerPos        = new THREE.Vector3(0, 0.5, 2);
+        const camCurrentPos    = new THREE.Vector3(0, CAM_HEIGHT, 2 + CAM_DIST);
+        const camCurrentTarget = new THREE.Vector3(0, 1.5, -2);
+
+        // ================================================================
+        // MOVEMENT UPDATE
+        // ================================================================
+        function updateMovement(dt) {
+            if (!gameActive || revealTriggered) return;
+
+            if (keys.forward) playerPos.z -= PLAYER_SPEED * dt;
+            if (keys.back)    playerPos.z += PLAYER_SPEED * 0.55 * dt;
+            if (keys.left)    playerPos.x -= STRAFE_SPEED * dt;
+            if (keys.right)   playerPos.x += STRAFE_SPEED * dt;
+
+            // Clamp to corridor
+            playerPos.x = Math.max(-PATH_HW, Math.min(PATH_HW, playerPos.x));
+            playerPos.z = Math.max(MONOLITH_Z + 2, Math.min(2.5, playerPos.z));
+
+            // Revelation trigger
+            const dist = Math.abs(playerPos.z - MONOLITH_Z);
+            if (dist < REVEAL_DIST && !revealTriggered) {
+                triggerRevelation();
+            }
+
+            // Proximity hint opacity
+            const hint = document.getElementById('proximity-hint');
+            if (hint) {
+                const vis = dist < 20 ? Math.max(0, 1 - dist / 20) : 0;
+                hint.style.opacity = String(vis);
+            }
+        }
+
+        // ================================================================
+        // CAMERA UPDATE
+        // ================================================================
+        function updateCamera(dt) {
+            const tPos = new THREE.Vector3(
+                playerPos.x * 0.4,
+                playerPos.y + CAM_HEIGHT,
+                playerPos.z + CAM_DIST
+            );
+            const tLook = new THREE.Vector3(
+                playerPos.x * 0.25,
+                playerPos.y + 1.6,
+                playerPos.z + CAM_LOOK_AHD
+            );
+
+            camCurrentPos.lerp(tPos,  CAM_LERP * dt);
+            camCurrentTarget.lerp(tLook, CAM_LERP * dt);
+
+            camera.position.copy(camCurrentPos);
+            camera.lookAt(camCurrentTarget);
+        }
+
+        // ================================================================
+        // MONOLITH ANIMATION
+        // ================================================================
+        function animateMonolith(elapsed) {
+            if (!monolithMesh) return;
+            // Slow rotation
+            monolithMesh.rotation.y = elapsed * 0.0004;
+            // Pulse light
+            if (monolithLight) {
+                monolithLight.intensity = 2.5 + Math.sin(elapsed * 0.003) * 0.8;
+            }
+        }
+
+        // ================================================================
+        // REVELATION SYSTEM
+        // ================================================================
+        function triggerRevelation() {
+            revealTriggered = true;
+            gameActive      = false;
+
+            fadeOut(() => {
+                showModal(STORY_DATA[currentPhaseIndex]);
+            });
+        }
+
+        function showModal(phase) {
+            const modal   = document.getElementById('modal');
+            const img     = document.getElementById('modal-img');
+            const text    = document.getElementById('modal-text');
+            const title   = document.getElementById('modal-title');
+            const period  = document.getElementById('modal-period');
+            const counter = document.getElementById('modal-counter');
+
+            img.src    = phase.image.src;
+            img.alt    = phase.image.alt;
+            text.textContent   = phase.text;
+            title.textContent  = phase.title;
+            period.textContent = phase.period;
+            counter.textContent = `${phase.order} / ${STORY_DATA.length}`;
+
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => { modal.style.opacity = '1'; });
+
+            announce(`Memória desbloqueada: ${phase.title}`);
+        }
+
+        function continueToNext() {
+            const modal = document.getElementById('modal');
+            modal.style.opacity = '0';
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                currentPhaseIndex++;
+
+                if (currentPhaseIndex >= STORY_DATA.length) {
+                    showEnding();
+                    return;
+                }
+
+                buildPhase(STORY_DATA[currentPhaseIndex]);
+                updateHUD(STORY_DATA[currentPhaseIndex]);
+                updateDots();
+                resetPlayer();
+                fadeIn(() => {
+                    revealTriggered = false;
+                    gameActive      = true;
+                });
+            }, 500);
+        }
+
+        function showEnding() {
+            const ending = document.getElementById('ending');
+            ending.style.display = 'flex';
+            requestAnimationFrame(() => {
+                ending.style.opacity = '1';
+            });
+            fadeIn();
+            announce('Fim da jornada.');
+        }
+
+        function resetPlayer() {
+            playerPos.set(0, 0.5, 2);
+            camCurrentPos.set(0, CAM_HEIGHT, 2 + CAM_DIST);
+            camCurrentTarget.set(0, 1.5, -2);
+        }
+
+        // ================================================================
+        // FADE HELPERS
+        // ================================================================
+        function fadeOut(callback) {
+            const fade = document.getElementById('fade');
+            fade.style.transition    = 'opacity 0.75s ease';
+            fade.style.opacity       = '1';
+            fade.style.pointerEvents = 'all';
+            setTimeout(callback, 780);
+        }
+
+        function fadeIn(callback) {
+            const fade = document.getElementById('fade');
+            requestAnimationFrame(() => {
+                fade.style.transition    = 'opacity 0.75s ease';
+                fade.style.opacity       = '0';
+                fade.style.pointerEvents = 'none';
+                if (callback) setTimeout(callback, 780);
+            });
+        }
+
+        // ================================================================
+        // HUD + PROGRESS DOTS
+        // ================================================================
+        function updateHUD(phase) {
+            document.getElementById('phase-title-hud').textContent  = phase.title;
+            document.getElementById('phase-period-hud').textContent = phase.period;
+        }
+
+        function buildDots() {
+            const nav = document.getElementById('progress-dots');
+            nav.innerHTML = '';
+            STORY_DATA.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.setAttribute('aria-label', `Fase ${i + 1}`);
+                nav.appendChild(dot);
+            });
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((d, i) => {
+                d.classList.toggle('done',   i < currentPhaseIndex);
+                d.classList.toggle('active', i === currentPhaseIndex);
+            });
+        }
+
+        function announce(msg) {
+            const el = document.getElementById('a11y-announcer');
+            if (el) el.textContent = msg;
+        }
+
+        // ================================================================
+        // RENDER LOOP
+        // ================================================================
+        let lastTime = 0;
+        let elapsed  = 0;
+
+        function animate(now) {
+            requestAnimationFrame(animate);
+
+            const dt = Math.min((now - lastTime) / 1000, 0.05);
+            lastTime = now;
+            elapsed += dt * 1000;
+
+            if (gameActive) {
+                updateMovement(dt);
+                updateCamera(dt);
+            } else {
+                // Still update camera gently even when paused
+                updateCamera(dt * 0.25);
+            }
+
+            animateMonolith(elapsed);
+            renderer.render(scene, camera);
+        }
+
+        // ================================================================
+        // RESIZE
+        // ================================================================
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        function init() {
+            buildDots();
+            buildPhase(STORY_DATA[0]);
+            updateHUD(STORY_DATA[0]);
+            updateDots();
+            resetPlayer();
+
+            document.getElementById('btn-start').addEventListener('click', () => {
+                const intro = document.getElementById('intro');
+                intro.style.opacity = '0';
+                setTimeout(() => { intro.style.display = 'none'; }, 700);
+
+                gameActive = true;
+                revealTriggered = false;
+                fadeIn();
+                announce('Jornada iniciada. Use W A S D ou as setas para se mover.');
+            });
+
+            document.getElementById('btn-continue').addEventListener('click', continueToNext);
+
+            animate(0);
+        }
+
+        init();
+    </script>
+</body>
+</html>
