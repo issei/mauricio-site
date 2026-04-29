@@ -453,7 +453,7 @@
     <!-- Ending Screen -->
     <div id="ending" role="region" aria-label="Fim da jornada">
         <h2>Fim da Jornada</h2>
-        <p>Obrigado por percorrer minha história. A caminhada continua, e novas fases ainda serão vividas...</p>
+        <p>Essa jornada mostra uma forma de construir uma vida.<br>Fica a pergunta: <strong>Qual é o seu próximo nível?</strong></p>
         <a href="life.html" class="btn-pixel">← Versão 2D</a>
         <a href="index.html" class="btn-pixel" style="margin-top: 4px;">↩ Início</a>
     </div>
@@ -480,78 +480,89 @@
         const STORY_DATA = [
             {
                 id: "birth", order: 1,
+                arc: "infancia",
                 period: "1982 - O Início", title: "A Origem",
-                text: "[Fase 1/11] Minha história começa em 1982, o ponto de partida de toda minha jornada.",
+                text: "A jornada começa aqui. Olhando para trás, consigo ver como cada fase se encaixou — cada degrau necessário para o próximo. Tudo começa com um ponto de partida.",
                 image: { src: "fotos/1982.jpeg", alt: "Foto de Issei bebê em 1982" },
                 theme: { sky: "#AEEEEE", ground: "#ADD8E6" }
             },
             {
                 id: "childhood", order: 2,
+                arc: "infancia",
                 period: "Anos 80 - A Infância", title: "Hanna Barbera e Tokusatsus",
-                text: "[Fase 2/11] Cresci mergulhado na cultura pop dos anos 80, entre Hanna Barbera e muitos Tokusatsus.",
-                image: { src: "fotos/infancia.png", alt: "Criança nos anos 80 fã de Hanna Barbera e muitos Tokusatsus" },
+                text: "Tantos heróis japoneses na TV de tubo. Isso não era só entretenimento — era programação mental. Cada batalha ensinava que persistência vence. Foi aqui que o modelo foi instalado.",
+                image: { src: "fotos/infancia.png", alt: "Criança nos anos 80 fã de Hanna Barbera e Tokusatsus" },
                 theme: { sky: "#FF69B4", ground: "#FFFF00" }
             },
             {
                 id: "first_job", order: 3,
+                arc: "tecnologia",
                 period: "1998 - Primeiro Emprego", title: "Auditor no Eldorado",
-                text: "[Fase 3/11] Aos 16 anos, cursei Processamento de Dados e tive minha primeira experiência profissional trabalhando como auditor no Shopping Eldorado.",
-                image: { src: "fotos/eldorado.jpg", alt: "Fachada ou interior do Shopping Eldorado no fim dos anos 90" },
+                text: "Aos 16 anos, o mundo real entrou pela primeira vez. Cursei Processamento de Dados e fui auditor no Shopping Eldorado. A disciplina de trabalhar com processos começou aqui.",
+                image: { src: "fotos/eldorado.jpg", alt: "Fachada do Shopping Eldorado nos anos 90" },
                 theme: { sky: "#708090", ground: "#D3D3D3" }
             },
             {
                 id: "callcenter", order: 4,
+                arc: "tecnologia",
                 period: "2000 a 2003 - Suporte", title: "A Era da Conexão",
-                text: "[Fase 4/11] Trabalhei no suporte técnico de um provedor de internet, ajudando pessoas a se conectarem em um mundo novo. Onde aprendi a ouvir a dor de usuários e resolver problemas sob pressão. O início da minha jornada com tecnologia.",
+                text: "Suporte técnico num provedor de internet. Aprendi a ouvir a dor do outro e resolver sob pressão. Descobri que tecnologia é sobre pessoas, não sobre máquinas. A virada de chave.",
                 image: { src: "fotos/callcenter.jpg", alt: "Ambiente de callcenter com computadores antigos" },
                 theme: { sky: "#000080", ground: "#4682B4" }
             },
             {
                 id: "university", order: 5,
+                arc: "tecnologia",
                 period: "2001 a 2005 - Formação", title: "Formado em Sistemas de Informação",
-                text: "[Fase 5/11] Após 5 anos de dedicação acadêmica, me formei como Bacharel em Sistemas de Informação no Mackenzie.",
-                image: { src: "fotos/formatura.jpg", alt: "Foto da formatura ou do campus do Mackenzie" },
+                text: "Cinco anos no Mackenzie. A lição mais importante não estava nas aulas: crescer é um processo contínuo. O diploma não era o fim — era a prova de que eu sabia aprender. Sempre há um próximo nível.",
+                image: { src: "fotos/formatura.jpg", alt: "Foto da formatura no Mackenzie" },
                 theme: { sky: "#CC0000", ground: "#FFFFFF" }
             },
             {
                 id: "dev_start", order: 6,
+                arc: "tecnologia",
                 period: "2003 - O Código", title: "Carreira de Programador",
-                text: "[Fase 6/11] Onde a paixão virou profissão. Iniciei oficialmente minha carreira desenvolvendo software.",
-                image: { src: "fotos/programa.jpg", alt: "Tela de código ou setup de trabalho antigo" },
+                text: "A paixão virou profissão. A passividade de quem assistia heróis lutarem na TV de tubo virou a atividade de quem constrói o futuro linha por linha. O herói agora era eu, no teclado.",
+                image: { src: "fotos/programa.jpg", alt: "Tela de código e setup de trabalho" },
                 theme: { sky: "#000000", ground: "#00FF00" }
             },
             {
                 id: "wedding", order: 7,
+                arc: "familia",
                 period: "2011 - O Casamento", title: "O Grande Dia",
-                text: "[Fase 7/11] Um novo capítulo de amor. Em 2009 conheci o amor de minha vida e 2011 oficializamos nossa união.",
-                image: { src: "fotos/casamento.jpg", alt: "Foto do casamento saindo de um baú" },
+                text: "Ninguém constrói nada sozinho. Em 2009 conheci quem mudaria tudo. Em 2011, oficializamos. A vida deixou de ser sobre crescer individualmente e passou a ser sobre construir junto.",
+                image: { src: "fotos/casamento.jpg", alt: "Foto do casamento" },
                 theme: { sky: "#FFD700", ground: "#FFFACD" }
             },
             {
                 id: "daughter", order: 8,
+                arc: "familia",
                 period: "2012 - Primogênita", title: "Nasce minha Filha",
-                text: "[Fase 8/11] Em 2012 a vida ganhou novas cores e significados com a chegada da minha primeira filha.",
+                text: "Em 2012, a vida ganhou novas cores e significados. O foco mudou completamente: agora, crescer é uma responsabilidade. Cada decisão passou a ter um peso diferente. Ela me ensinou isso.",
                 image: { src: "fotos/filha.jpeg", alt: "Foto da primeira filha bebê" },
                 theme: { sky: "#FFB6C1", ground: "#FFC0CB" }
             },
             {
                 id: "twins", order: 9,
+                arc: "familia",
                 period: "2016 - Dose Dupla", title: "Os Gêmeos",
-                text: "[Fase 9/11] A família cresceu exponencialmente com a alegria em dobro dos gêmeos.",
+                text: "A alegria chegou em dobro. A família não cresceu linearmente — cresceu exponencialmente. E com ela, minha capacidade de dar, de estar presente, de ser o arquiteto de um lar.",
                 image: { src: "fotos/gemeos.jpeg", alt: "Foto dos gêmeos bebês" },
                 theme: { sky: "#87CEEB", ground: "#4169E1" }
             },
             {
                 id: "changes", order: 10,
+                arc: "maturidade",
                 period: "2017/2018 - Mudanças", title: "Novo Visual, Nova Casa",
-                text: "[Fase 10/11] Em 2017, fiquei careca, e decidi sair da vida de consultoria e em 2018 iniciei minha jornada na Rede, transformando saúde pessoal e carreira.",
+                text: "Em 2017, fiquei careca. Em 2018, saí da consultoria e entrei na Rede. Duas mudanças que pareciam perdas, mas eram escolhas. O arquiteto sabe quando demolir para construir melhor.",
                 image: { src: "fotos/careca.jpeg", alt: "Foto com visual careca com os filhos" },
                 theme: { sky: "#FF8C00", ground: "#2F4F4F" }
             },
             {
                 id: "current", order: 11,
+                arc: "maturidade",
                 period: "Hoje - Legado", title: "Família e Trabalho",
-                text: "[Fase 11/11] Sigo na Rede até hoje, focado em construir e aproveitar essa família linda que construí. A caminhada continua. Novas fases ainda serão vividas...",
+                text: "Na Rede, com minha família completa. A perspectiva se ampliou. O maior crescimento agora é invisível — é sobre arquitetar o todo e, no próximo nível, ajudar os outros a crescerem também.",
                 image: { src: "fotos/familia.jpeg", alt: "Foto atual da família completa" },
                 theme: { sky: "#E0FFFF", ground: "#32CD32" }
             }
@@ -580,6 +591,18 @@
             glassFrame: 0x0D0D0D,
             glassTint:  0x88AACC,
         };
+
+        // ── Arc palette constants ──
+        const ARC_INFANCIA_COLORS  = [0xFF4444, 0xFFAA00, 0x44BBFF, 0xAA44FF, 0x44FF88];
+        const ARC_TEC_BODY_COLOR    = 0x1C2530;
+        const ARC_TEC_WIRE_COLOR    = 0x00FF88;
+        const ARC_TEC_WIRE_EMISSIVE = 0x00FF88;
+        const ARC_FAM_COLORS = { pillar: 0xB5651D, cap: 0xD4A017 };
+        const ARC_MAT_COLORS = { pedestal: 0xD8D8D8, crystal: 0xEEF4FF, emissive: 0xAABBFF };
+
+        // Limites do corredor (Z=2 → Z=-55)
+        const Z_START_OBJ = 2;
+        const Z_END_OBJ   = -55;   // MONOLITH_Z - 3
 
         // ── Animation constants ──
         const WALK_SPEED     = 8.0;
@@ -704,51 +727,149 @@
             sunLight.intensity = skyCol.r + skyCol.g + skyCol.b < 0.6 ? 0.9 : 1.4;
 
             _buildSideObjects(phase, groundCol);
-            _buildMonolith(skyCol);
+            _buildMonolith(phase, skyCol);
             _buildGroundDetails(phase, groundCol);
         }
 
+        // ── Roteador de arcos ──
         function _buildSideObjects(phase, groundCol) {
-            const treeMat  = new THREE.MeshLambertMaterial({ color: groundCol.clone().multiplyScalar(0.6) });
-            const trunkMat = new THREE.MeshLambertMaterial({ color: 0x3a2510 });
+            switch (phase.arc) {
+                case 'infancia':   _buildArcInfancia(phase, groundCol);   break;
+                case 'tecnologia': _buildArcTecnologia(phase, groundCol); break;
+                case 'familia':    _buildArcFamilia(phase, groundCol);    break;
+                case 'maturidade': _buildArcMaturidade(phase, groundCol); break;
+                default:           _buildArcInfancia(phase, groundCol);   break;
+            }
+        }
 
-            const TREE_STEP = 9;
-            const Z_START   = 2;
-            const Z_END     = MONOLITH_Z - 3;
-
-            for (let z = Z_START; z > Z_END; z -= TREE_STEP) {
+        function _buildArcInfancia(phase, groundCol) {
+            const STEP   = 7;
+            const SPREAD = 14;
+            const geos = [
+                new THREE.ConeGeometry(0.8, 2.2, 4),
+                new THREE.SphereGeometry(1.1, 6, 5),
+                new THREE.CylinderGeometry(0.9, 1.1, 1.6, 6)
+            ];
+            for (let z = Z_START_OBJ; z > Z_END_OBJ; z -= STEP) {
                 for (let side = -1; side <= 1; side += 2) {
-                    const seed  = Math.floor(z) * 7 + side * 100 + phase.order * 13;
-                    const r0    = seededRand(seed);
-                    const r1    = seededRand(seed + 1);
-                    const r2    = seededRand(seed + 2);
+                    const seed = Math.floor(z) * 11 + side * 73 + phase.order * 17;
+                    const r0   = seededRand(seed);
+                    const r1   = seededRand(seed + 1);
+                    const r2   = seededRand(seed + 2);
+                    const r3   = seededRand(seed + 3);
+                    if (r0 < 0.20) continue;
+                    const typeIdx  = Math.floor(r1 * 3);
+                    const colorIdx = Math.floor(r2 * ARC_INFANCIA_COLORS.length);
+                    const scale    = 0.7 + r3 * 0.8;
+                    const mat  = new THREE.MeshStandardMaterial({ color: ARC_INFANCIA_COLORS[colorIdx], roughness: 0.92, metalness: 0.00 });
+                    const mesh = new THREE.Mesh(geos[typeIdx], mat);
+                    mesh.position.set(side * (PATH_HW + 3 + r1 * SPREAD), 0.05 + scale * 0.8, z + (r0 - 0.5) * 3);
+                    mesh.rotation.set((r1 - 0.5) * 0.4, r2 * Math.PI * 2, (r3 - 0.5) * 0.3);
+                    mesh.scale.setScalar(scale);
+                    mesh.castShadow = true; mesh.receiveShadow = true;
+                    scene.add(mesh); phaseObjects.push(mesh);
+                }
+            }
+        }
 
-                    // Skip some positions for variety
-                    if (r0 < 0.22) continue;
+        function _buildArcTecnologia(phase, groundCol) {
+            const STEP    = 8;
+            const baseGeo = new THREE.BoxGeometry(1.8, 0.3, 1.8);
+            const colGeo  = new THREE.CylinderGeometry(0.35, 0.42, 3.5, 6);
+            const ringGeo = new THREE.TorusGeometry(0.6, 0.06, 6, 12);
+            const wireGeo = new THREE.CylinderGeometry(0.38, 0.46, 3.5, 6);
+            const bodyMat = new THREE.MeshStandardMaterial({ color: ARC_TEC_BODY_COLOR, roughness: 0.75, metalness: 0.45 });
+            const wireMat = new THREE.MeshStandardMaterial({ color: ARC_TEC_WIRE_COLOR, emissive: new THREE.Color(ARC_TEC_WIRE_EMISSIVE), emissiveIntensity: 0.9, wireframe: true });
+            const ringMat = new THREE.MeshStandardMaterial({ color: ARC_TEC_WIRE_COLOR, emissive: new THREE.Color(ARC_TEC_WIRE_EMISSIVE), emissiveIntensity: 1.2, roughness: 0.2, metalness: 0.8 });
+            for (let z = Z_START_OBJ; z > Z_END_OBJ; z -= STEP) {
+                for (let side = -1; side <= 1; side += 2) {
+                    const seed = Math.floor(z) * 13 + side * 89 + phase.order * 23;
+                    const r0   = seededRand(seed);
+                    const r1   = seededRand(seed + 1);
+                    if (r0 < 0.18) continue;
+                    const xPos = side * (PATH_HW + 3 + r1 * 5);
+                    const base = new THREE.Mesh(baseGeo, bodyMat);
+                    base.position.set(xPos, 0.15, z);
+                    base.castShadow = true; base.receiveShadow = true;
+                    scene.add(base); phaseObjects.push(base);
+                    const col = new THREE.Mesh(colGeo, bodyMat);
+                    col.position.set(xPos, 2.05, z);
+                    col.castShadow = true; col.receiveShadow = true;
+                    scene.add(col); phaseObjects.push(col);
+                    const wire = new THREE.Mesh(wireGeo, wireMat);
+                    wire.position.copy(col.position);
+                    scene.add(wire); phaseObjects.push(wire);
+                    const ring = new THREE.Mesh(ringGeo, ringMat);
+                    ring.position.set(xPos, 3.95, z);
+                    ring.rotation.x = Math.PI / 2;
+                    scene.add(ring); phaseObjects.push(ring);
+                }
+            }
+        }
 
-                    const xOff    = side * (PATH_HW + 4 + r1 * 8);
-                    const trunkH  = 1.2 + r2 * 2.8;
-                    const foliageS = 1.3 + r0 * 2.4;
+        function _buildArcFamilia(phase, groundCol) {
+            const STEP      = 11;
+            const pillarGeo = new THREE.CylinderGeometry(0.22, 0.30, 4.5, 8);
+            const capGeo    = new THREE.ConeGeometry(0.55, 0.9, 8);
+            const pillarMat = new THREE.MeshStandardMaterial({ color: ARC_FAM_COLORS.pillar, roughness: 0.88, metalness: 0.05 });
+            const capMat    = new THREE.MeshStandardMaterial({ color: ARC_FAM_COLORS.cap,    roughness: 0.6,  metalness: 0.3  });
+            for (let z = Z_START_OBJ; z > Z_END_OBJ; z -= STEP) {
+                const seed = Math.floor(z) * 17 + phase.order * 31;
+                const r0   = seededRand(seed);
+                const r1   = seededRand(seed + 1);
+                if (r0 < 0.15) continue;
+                const xDist = PATH_HW + 10 + r1 * 8;
+                for (let side = -1; side <= 1; side += 2) {
+                    const xPos = side * xDist;
+                    const pillar = new THREE.Mesh(pillarGeo, pillarMat);
+                    pillar.position.set(xPos, 2.25, z);
+                    pillar.rotation.z = side * (-0.18);
+                    pillar.castShadow = true; pillar.receiveShadow = true;
+                    scene.add(pillar); phaseObjects.push(pillar);
+                    const cap = new THREE.Mesh(capGeo, capMat);
+                    cap.position.set(xPos + side * (-0.18 * 2.2), 4.95, z);
+                    cap.castShadow = true; cap.receiveShadow = true;
+                    scene.add(cap); phaseObjects.push(cap);
+                }
+            }
+        }
 
-                    const trunkGeo = new THREE.BoxGeometry(0.45, trunkH, 0.45);
-                    const trunk    = new THREE.Mesh(trunkGeo, trunkMat);
-                    trunk.position.set(xOff, trunkH / 2, z);
-                    scene.add(trunk);
-                    phaseObjects.push(trunk);
-
-                    const foliageGeo = new THREE.BoxGeometry(foliageS, foliageS * 1.25, foliageS);
-                    const foliage    = new THREE.Mesh(foliageGeo, treeMat);
-                    foliage.position.set(xOff + (r1 - 0.5) * 0.4, trunkH + foliageS * 0.55, z);
-                    scene.add(foliage);
-                    phaseObjects.push(foliage);
+        function _buildArcMaturidade(phase, groundCol) {
+            const STEP        = 9;
+            const pedestalGeo = new THREE.BoxGeometry(0.7, 0.5, 0.7);
+            const crystalGeo  = new THREE.OctahedronGeometry(0.7, 0);
+            const pedestalMat = new THREE.MeshStandardMaterial({ color: ARC_MAT_COLORS.pedestal, roughness: 0.4, metalness: 0.6 });
+            const crystalMat  = new THREE.MeshStandardMaterial({ color: ARC_MAT_COLORS.crystal, emissive: new THREE.Color(ARC_MAT_COLORS.emissive), emissiveIntensity: 0.25, roughness: 0.10, metalness: 0.85 });
+            for (let z = Z_START_OBJ; z > Z_END_OBJ; z -= STEP) {
+                for (let side = -1; side <= 1; side += 2) {
+                    const seed = Math.floor(z) * 19 + side * 61 + phase.order * 43;
+                    const r0   = seededRand(seed);
+                    const r1   = seededRand(seed + 1);
+                    if (r0 < 0.12) continue;
+                    const xPos = side * (PATH_HW + 5 + r1 * 6);
+                    const pedestal = new THREE.Mesh(pedestalGeo, pedestalMat);
+                    pedestal.position.set(xPos, 0.25, z);
+                    pedestal.castShadow = true; pedestal.receiveShadow = true;
+                    scene.add(pedestal); phaseObjects.push(pedestal);
+                    const crystal = new THREE.Mesh(crystalGeo, crystalMat);
+                    crystal.position.set(xPos, 1.45, z);
+                    crystal.rotation.y = (Math.floor(z) % 2 === 0 ? 0 : Math.PI / 4);
+                    crystal.castShadow = true; crystal.receiveShadow = true;
+                    scene.add(crystal); phaseObjects.push(crystal);
                 }
             }
         }
 
         function _buildGroundDetails(phase, groundCol) {
-            // Rocks / path markers scattered on side ground
-            const rockMat = new THREE.MeshLambertMaterial({ color: groundCol.clone().multiplyScalar(0.5) });
-            for (let i = 0; i < 18; i++) {
+            const configs = {
+                'infancia':   { count: 22, scale: [0.3, 0.7], color: null,     shape: 'sphere' },
+                'tecnologia': { count: 14, scale: [0.2, 0.4], color: 0x0A1520, shape: 'box'    },
+                'familia':    { count: 18, scale: [0.2, 0.6], color: null,     shape: 'box'    },
+                'maturidade': { count:  8, scale: [0.4, 0.8], color: 0xCCCCDD, shape: 'box'    },
+            };
+            const cfg     = configs[phase.arc] || configs['infancia'];
+            const baseMat = new THREE.MeshLambertMaterial({ color: cfg.color !== null ? cfg.color : groundCol.clone().multiplyScalar(0.5) });
+            for (let i = 0; i < cfg.count; i++) {
                 const seed = i * 31 + phase.order * 97;
                 const rz   = seededRand(seed);
                 const rx   = seededRand(seed + 5);
@@ -756,51 +877,48 @@
                 const side = i % 2 === 0 ? 1 : -1;
                 const z    = 2 - rz * Math.abs(MONOLITH_Z - 2);
                 const x    = side * (PATH_HW + 1.5 + rx * 10);
-                const s    = 0.2 + rs * 0.5;
-                const geo  = new THREE.BoxGeometry(s, s * 0.6, s);
-                const rock = new THREE.Mesh(geo, rockMat);
-                rock.position.set(x, s * 0.3, z);
-                rock.rotation.y = rs * Math.PI;
-                scene.add(rock);
-                phaseObjects.push(rock);
+                const s    = cfg.scale[0] + rs * (cfg.scale[1] - cfg.scale[0]);
+                const geo  = cfg.shape === 'sphere'
+                    ? new THREE.SphereGeometry(s * 0.5, 4, 3)
+                    : new THREE.BoxGeometry(s, s * 0.6, s);
+                const detail = new THREE.Mesh(geo, baseMat);
+                detail.position.set(x, s * 0.3, z);
+                detail.rotation.y = rs * Math.PI;
+                scene.add(detail); phaseObjects.push(detail);
             }
         }
 
-        function _buildMonolith(skyCol) {
-            // Glowing pillar at end of path
+        function _buildMonolith(phase, skyCol) {
+            const arcConfig = {
+                'infancia':   { emissive: 0xFF8C00, emissiveIntensity: 0.75, ringRadius: 2.0, ringColor: 0xFFAA33, lightColor: 0xFFCC88 },
+                'tecnologia': { emissive: 0x00FFAA, emissiveIntensity: 0.90, ringRadius: 2.2, ringColor: 0x00FF88, lightColor: 0x88FFCC },
+                'familia':    { emissive: 0xFF69B4, emissiveIntensity: 0.70, ringRadius: 2.8, ringColor: 0xFFD700, lightColor: 0xFFCCDD },
+                'maturidade': { emissive: 0xFFFFFF, emissiveIntensity: 1.10, ringRadius: 3.5, ringColor: 0xEEEEFF, lightColor: 0xEEEEFF },
+            };
+            const cfg = arcConfig[phase.arc] || arcConfig['infancia'];
             const geo = new THREE.BoxGeometry(1.4, 7.5, 1.4);
             const mat = new THREE.MeshStandardMaterial({
                 color: 0xffffff,
-                emissive: new THREE.Color(0xffffff).lerp(skyCol, 0.15),
-                emissiveIntensity: 0.55,
+                emissive: new THREE.Color(cfg.emissive),
+                emissiveIntensity: cfg.emissiveIntensity,
                 metalness: 0.25,
                 roughness: 0.15
             });
             monolithMesh = new THREE.Mesh(geo, mat);
             monolithMesh.position.set(0, 3.75, MONOLITH_Z);
-            scene.add(monolithMesh);
-            phaseObjects.push(monolithMesh);
-
-            // Glowing ring around base
-            const ringGeo = new THREE.TorusGeometry(2.2, 0.12, 8, 32);
+            scene.add(monolithMesh); phaseObjects.push(monolithMesh);
+            const ringGeo = new THREE.TorusGeometry(cfg.ringRadius, 0.12, 8, 32);
             const ringMat = new THREE.MeshStandardMaterial({
-                color: 0xffcd75,
-                emissive: 0xffcd75,
-                emissiveIntensity: 0.9,
-                metalness: 0.1,
-                roughness: 0.4
+                color: cfg.ringColor, emissive: new THREE.Color(cfg.ringColor),
+                emissiveIntensity: 0.9, metalness: 0.1, roughness: 0.4
             });
             const ring = new THREE.Mesh(ringGeo, ringMat);
             ring.rotation.x = -Math.PI / 2;
             ring.position.set(0, 0.08, MONOLITH_Z);
-            scene.add(ring);
-            phaseObjects.push(ring);
-
-            // Point light for glow
-            monolithLight = new THREE.PointLight(0xfff4cc, 3, 18);
+            scene.add(ring); phaseObjects.push(ring);
+            monolithLight = new THREE.PointLight(cfg.lightColor, 3, 18);
             monolithLight.position.set(0, 5, MONOLITH_Z);
-            scene.add(monolithLight);
-            phaseObjects.push(monolithLight);
+            scene.add(monolithLight); phaseObjects.push(monolithLight);
         }
 
         // ================================================================
