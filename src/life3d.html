@@ -565,10 +565,44 @@
         const PATH_HW      = 3.8;  // half-width do corredor
         const PLAYER_SPEED = 4.5;
         const STRAFE_SPEED = 3.0;
-        const CAM_HEIGHT   = 4.2;
-        const CAM_DIST     = 9.0;
-        const CAM_LOOK_AHD = -3.0; // lookahead em Z
+        const CAM_HEIGHT   = 12.0; // offset Y fixo (visão isométrica)
+        const CAM_DIST     = 12.0; // offset Z fixo
+        const CAM_SIDE     = 8.0;  // offset X fixo (diagonal Diablo-style)
         const CAM_LERP     = 9.0;
+
+        // ── Character colors (extraídos da sprite sheet pixel art) ──
+        const CHAR_COLORS = {
+            skin:       0xC8956C,
+            hair:       0x1A1A1A,
+            shirt:      0x1C1C1C,
+            jeans:      0x1F2D4A,
+            shoes:      0x111111,
+            glassFrame: 0x0D0D0D,
+            glassTint:  0x88AACC,
+        };
+
+        // ── Animation constants ──
+        const WALK_SPEED     = 8.0;
+        const WALK_AMPLITUDE = 0.45;
+        const BOB_AMPLITUDE  = 0.04;
+        const BREATHE_SCALE  = 0.012;
+        const BREATHE_SPEED  = 1.2;
+        const LERP_RETURN    = 8.0;
+
+        // ── Player character state ──
+        let playerGroup       = null;
+        let bodyGroup         = null;
+        let headGroup         = null;
+        let torsoGroup        = null;
+        let leftArm           = null;
+        let rightArm          = null;
+        let leftLeg           = null;
+        let rightLeg          = null;
+
+        let playerAngle       = 0;
+        let playerAngleTarget = 0;
+        let isMoving          = false;
+        let walkClock         = 0;
 
         // ================================================================
         // THREE.JS SETUP
@@ -578,6 +612,8 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
         const scene  = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.1, 250);
@@ -588,6 +624,14 @@
 
         const sunLight = new THREE.DirectionalLight(0xfff8e8, 1.4);
         sunLight.position.set(15, 25, 10);
+        sunLight.castShadow = true;
+        sunLight.shadow.mapSize.set(1024, 1024);
+        sunLight.shadow.camera.near   =   0.5;
+        sunLight.shadow.camera.far    = 120;
+        sunLight.shadow.camera.left   = -15;
+        sunLight.shadow.camera.right  =  15;
+        sunLight.shadow.camera.top    =  20;
+        sunLight.shadow.camera.bottom = -10;
         scene.add(sunLight);
 
         const fillLight = new THREE.DirectionalLight(0x8ab4f8, 0.3);
@@ -602,6 +646,7 @@
         const groundMat = new THREE.MeshLambertMaterial({ color: 0x4a7a4a });
         const ground    = new THREE.Mesh(groundGeo, groundMat);
         ground.rotation.x = -Math.PI / 2;
+        ground.receiveShadow = true;
         scene.add(ground);
 
         const pathGeo = new THREE.PlaneGeometry(PATH_HW * 2, 300);
@@ -609,6 +654,7 @@
         const pathMesh = new THREE.Mesh(pathGeo, pathMat);
         pathMesh.rotation.x = -Math.PI / 2;
         pathMesh.position.y = 0.01;
+        pathMesh.receiveShadow = true;
         scene.add(pathMesh);
 
         // ── Utility: seeded pseudo-random ──
@@ -758,6 +804,133 @@
         }
 
         // ================================================================
+        // PLAYER CHARACTER MODEL
+        // ================================================================
+        function createPlayerMesh() {
+            const matCfg   = { roughness: 0.85, metalness: 0.05 };
+            const skinMat  = new THREE.MeshStandardMaterial({ color: CHAR_COLORS.skin,       ...matCfg });
+            const hairMat  = new THREE.MeshStandardMaterial({ color: CHAR_COLORS.hair,       roughness: 0.95, metalness: 0.0 });
+            const shirtMat = new THREE.MeshStandardMaterial({ color: CHAR_COLORS.shirt,      ...matCfg });
+            const jeansMat = new THREE.MeshStandardMaterial({ color: CHAR_COLORS.jeans,      ...matCfg });
+            const shoesMat = new THREE.MeshStandardMaterial({ color: CHAR_COLORS.shoes,      roughness: 0.7,  metalness: 0.1 });
+            const glassMat = new THREE.MeshStandardMaterial({ color: CHAR_COLORS.glassFrame, roughness: 0.5,  metalness: 0.2 });
+            const lenseMat = new THREE.MeshStandardMaterial({ color: CHAR_COLORS.glassTint,  transparent: true, opacity: 0.45, roughness: 0.1, metalness: 0.1 });
+
+            function mk(geo, mat, parent) {
+                const m = new THREE.Mesh(geo, mat);
+                m.castShadow    = true;
+                m.receiveShadow = true;
+                parent.add(m);
+                return m;
+            }
+
+            // ── Root groups ──
+            const pg = new THREE.Group();
+            const bg = new THREE.Group();
+            bg.position.y = 0.44;   // eleva para que a base dos pés fique em y=0
+            pg.add(bg);
+
+            // ── Torso ──
+            const tg = new THREE.Group();
+            tg.position.set(0, 0.20, 0);
+            bg.add(tg);
+            mk(new THREE.BoxGeometry(0.34, 0.40, 0.22), shirtMat, tg);
+
+            // ── Head ──
+            const hg = new THREE.Group();
+            hg.position.set(0, 0.44, 0);
+            bg.add(hg);
+
+            // Face
+            mk(new THREE.BoxGeometry(0.38, 0.32, 0.28), skinMat, hg);
+
+            // Hair base
+            const hb = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.10, 0.28), hairMat);
+            hb.castShadow = true;
+            hb.position.set(0, 0.185, 0);
+            hg.add(hb);
+
+            // Spikes
+            const sp1 = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.20, 0.08), hairMat);
+            sp1.castShadow = true; sp1.position.set(0, 0.30, -0.03); sp1.rotation.z = 0.05;
+            hg.add(sp1);
+
+            const sp2 = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.15, 0.07), hairMat);
+            sp2.castShadow = true; sp2.position.set(-0.10, 0.27, -0.02); sp2.rotation.z = 0.18;
+            hg.add(sp2);
+
+            const sp3 = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.12, 0.06), hairMat);
+            sp3.castShadow = true; sp3.position.set(0.10, 0.25, -0.02); sp3.rotation.z = -0.12;
+            hg.add(sp3);
+
+            // Glasses frames
+            const lf = new THREE.Mesh(new THREE.BoxGeometry(0.155, 0.048, 0.04), glassMat);
+            lf.castShadow = true; lf.position.set(-0.085, 0.025, 0.135); hg.add(lf);
+            const rf = new THREE.Mesh(new THREE.BoxGeometry(0.155, 0.048, 0.04), glassMat);
+            rf.castShadow = true; rf.position.set( 0.085, 0.025, 0.135); hg.add(rf);
+            const br = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.022, 0.03), glassMat);
+            br.castShadow = true; br.position.set(0, 0.025, 0.135); hg.add(br);
+
+            // Lenses (translúcidas)
+            const ll = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.072, 0.02), lenseMat);
+            ll.position.set(-0.085, 0.022, 0.125); hg.add(ll);
+            const rl = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.072, 0.02), lenseMat);
+            rl.position.set( 0.085, 0.022, 0.125); hg.add(rl);
+
+            // ── Left arm (pivot no ombro) ──
+            const lag = new THREE.Group();
+            lag.position.set(-0.25, 0.38, 0);
+            bg.add(lag);
+            const laGeo = new THREE.BoxGeometry(0.12, 0.32, 0.12);
+            laGeo.translate(0, -0.16, 0);
+            mk(laGeo, shirtMat, lag);
+
+            // ── Right arm (pivot no ombro) ──
+            const rag = new THREE.Group();
+            rag.position.set(0.25, 0.38, 0);
+            bg.add(rag);
+            const raGeo = new THREE.BoxGeometry(0.12, 0.32, 0.12);
+            raGeo.translate(0, -0.16, 0);
+            mk(raGeo, shirtMat, rag);
+
+            // ── Left leg (pivot no quadril) ──
+            const llg = new THREE.Group();
+            llg.position.set(-0.10, 0.02, 0);
+            bg.add(llg);
+            const llGeo = new THREE.BoxGeometry(0.14, 0.38, 0.14);
+            llGeo.translate(0, -0.19, 0);
+            mk(llGeo, jeansMat, llg);
+            const lsh = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.08, 0.18), shoesMat);
+            lsh.castShadow = true; lsh.position.set(0, -0.42, 0.02); llg.add(lsh);
+
+            // ── Right leg (pivot no quadril) ──
+            const rlg = new THREE.Group();
+            rlg.position.set(0.10, 0.02, 0);
+            bg.add(rlg);
+            const rlGeo = new THREE.BoxGeometry(0.14, 0.38, 0.14);
+            rlGeo.translate(0, -0.19, 0);
+            mk(rlGeo, jeansMat, rlg);
+            const rsh = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.08, 0.18), shoesMat);
+            rsh.castShadow = true; rsh.position.set(0, -0.42, 0.02); rlg.add(rsh);
+
+            // Expõe referências para as variáveis de estado globais
+            bodyGroup  = bg;
+            headGroup  = hg;
+            torsoGroup = tg;
+            leftArm    = lag;
+            rightArm   = rag;
+            leftLeg    = llg;
+            rightLeg   = rlg;
+
+            return pg;
+        }
+
+        function createAndSpawnPlayer() {
+            playerGroup = createPlayerMesh();
+            scene.add(playerGroup);
+        }
+
+        // ================================================================
         // INPUT MANAGER
         // ================================================================
         const keys = { forward: false, back: false, left: false, right: false };
@@ -814,9 +987,9 @@
         let gameActive        = false;
         let revealTriggered   = false;
 
-        const playerPos        = new THREE.Vector3(0, 0.5, 2);
-        const camCurrentPos    = new THREE.Vector3(0, CAM_HEIGHT, 2 + CAM_DIST);
-        const camCurrentTarget = new THREE.Vector3(0, 1.5, -2);
+        const playerPos        = new THREE.Vector3(0, 0, 2);
+        const camCurrentPos    = new THREE.Vector3(CAM_SIDE, CAM_HEIGHT, 2 + CAM_DIST);
+        const camCurrentTarget = new THREE.Vector3(0, 0.85, 2);
 
         // ================================================================
         // MOVEMENT UPDATE
@@ -824,14 +997,41 @@
         function updateMovement(dt) {
             if (!gameActive || revealTriggered) return;
 
-            if (keys.forward) playerPos.z -= PLAYER_SPEED * dt;
-            if (keys.back)    playerPos.z += PLAYER_SPEED * 0.55 * dt;
-            if (keys.left)    playerPos.x -= STRAFE_SPEED * dt;
-            if (keys.right)   playerPos.x += STRAFE_SPEED * dt;
+            const movFwd   = keys.forward ? 1 : 0;
+            const movBack  = keys.back    ? 1 : 0;
+            const movLeft  = keys.left    ? 1 : 0;
+            const movRight = keys.right   ? 1 : 0;
 
-            // Clamp to corridor
+            const dz = (-movFwd + movBack * 0.55) * PLAYER_SPEED  * dt;
+            const dx = (-movLeft + movRight)       * STRAFE_SPEED * dt;
+
+            playerPos.z += dz;
+            playerPos.x += dx;
+
+            // Clamp ao corredor
             playerPos.x = Math.max(-PATH_HW, Math.min(PATH_HW, playerPos.x));
             playerPos.z = Math.max(MONOLITH_Z + 2, Math.min(2.5, playerPos.z));
+
+            // Flag de movimento
+            isMoving = (movFwd + movBack + movLeft + movRight) > 0;
+
+            // Ângulo-alvo baseado na direção de movimento
+            if (isMoving && (dx !== 0 || dz !== 0)) {
+                playerAngleTarget = Math.atan2(dx, -dz);
+                walkClock += dt;
+            }
+
+            // Interpolação angular pelo caminho mais curto
+            let delta = playerAngleTarget - playerAngle;
+            if (delta >  Math.PI) delta -= Math.PI * 2;
+            if (delta < -Math.PI) delta += Math.PI * 2;
+            playerAngle += delta * Math.min(1, 12 * dt);
+
+            // Sincroniza mesh com playerPos
+            if (playerGroup) {
+                playerGroup.position.copy(playerPos);
+                playerGroup.rotation.y = playerAngle;
+            }
 
             // Revelation trigger
             const dist = Math.abs(playerPos.z - MONOLITH_Z);
@@ -848,18 +1048,60 @@
         }
 
         // ================================================================
+        // PLAYER ANIMATION
+        // ================================================================
+        function animatePlayer(dt, elapsed) {
+            if (!playerGroup) return;
+
+            const t = elapsed / 1000;
+
+            if (isMoving) {
+                const s = Math.sin(walkClock * WALK_SPEED);
+                const c = Math.cos(walkClock * WALK_SPEED);
+
+                if (leftLeg)  leftLeg.rotation.x  =  s * WALK_AMPLITUDE;
+                if (rightLeg) rightLeg.rotation.x = -s * WALK_AMPLITUDE;
+                if (leftArm)  leftArm.rotation.x  = -s * WALK_AMPLITUDE * 0.7;
+                if (rightArm) rightArm.rotation.x =  s * WALK_AMPLITUDE * 0.7;
+                if (leftArm)  leftArm.rotation.z  =  0.08 + c * 0.05;
+                if (rightArm) rightArm.rotation.z = -0.08 - c * 0.05;
+
+                if (bodyGroup) bodyGroup.position.y = 0.44 + Math.abs(s) * BOB_AMPLITUDE;
+
+            } else {
+                const f = Math.min(1, LERP_RETURN * dt);
+
+                if (leftLeg)  leftLeg.rotation.x  = THREE.MathUtils.lerp(leftLeg.rotation.x,  0, f);
+                if (rightLeg) rightLeg.rotation.x = THREE.MathUtils.lerp(rightLeg.rotation.x, 0, f);
+                if (leftArm)  leftArm.rotation.x  = THREE.MathUtils.lerp(leftArm.rotation.x,  0, f);
+                if (rightArm) rightArm.rotation.x = THREE.MathUtils.lerp(rightArm.rotation.x, 0, f);
+                if (leftArm)  leftArm.rotation.z  = THREE.MathUtils.lerp(leftArm.rotation.z,   0.08, f);
+                if (rightArm) rightArm.rotation.z = THREE.MathUtils.lerp(rightArm.rotation.z, -0.08, f);
+                if (bodyGroup) bodyGroup.position.y = THREE.MathUtils.lerp(bodyGroup.position.y, 0.44, f);
+
+                if (torsoGroup) {
+                    torsoGroup.scale.y = 1 + Math.sin(t * BREATHE_SPEED * Math.PI * 2) * BREATHE_SCALE;
+                }
+                if (headGroup) {
+                    headGroup.rotation.y = Math.sin(t * 0.7) * 0.04;
+                }
+            }
+        }
+
+        // ================================================================
         // CAMERA UPDATE
         // ================================================================
         function updateCamera(dt) {
+            // Offset isométrico fixo — câmera nunca rotaciona (estilo Diablo 3)
             const tPos = new THREE.Vector3(
-                playerPos.x * 0.4,
+                playerPos.x + CAM_SIDE,
                 playerPos.y + CAM_HEIGHT,
                 playerPos.z + CAM_DIST
             );
             const tLook = new THREE.Vector3(
-                playerPos.x * 0.25,
-                playerPos.y + 1.6,
-                playerPos.z + CAM_LOOK_AHD
+                playerPos.x,
+                playerPos.y + 0.85,
+                playerPos.z
             );
 
             camCurrentPos.lerp(tPos,  CAM_LERP * dt);
@@ -950,9 +1192,16 @@
         }
 
         function resetPlayer() {
-            playerPos.set(0, 0.5, 2);
-            camCurrentPos.set(0, CAM_HEIGHT, 2 + CAM_DIST);
-            camCurrentTarget.set(0, 1.5, -2);
+            playerPos.set(0, 0, 2);
+            camCurrentPos.set(CAM_SIDE, CAM_HEIGHT, 2 + CAM_DIST);
+            camCurrentTarget.set(0, 0.85, 2);
+            playerAngle       = 0;
+            playerAngleTarget = 0;
+            walkClock         = 0;
+            if (playerGroup) {
+                playerGroup.position.copy(playerPos);
+                playerGroup.rotation.y = 0;
+            }
         }
 
         // ================================================================
@@ -1023,9 +1272,10 @@
 
             if (gameActive) {
                 updateMovement(dt);
+                animatePlayer(dt, elapsed);
                 updateCamera(dt);
             } else {
-                // Still update camera gently even when paused
+                animatePlayer(dt, elapsed);
                 updateCamera(dt * 0.25);
             }
 
@@ -1051,6 +1301,7 @@
             updateHUD(STORY_DATA[0]);
             updateDots();
             resetPlayer();
+            createAndSpawnPlayer();
 
             document.getElementById('btn-start').addEventListener('click', () => {
                 const intro = document.getElementById('intro');
