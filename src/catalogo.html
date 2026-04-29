@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GEKLHZYVYX');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO & Meta Tags -->
+    <title>Catálogo de Conteúdos | Maurício Yokoyama Issei</title>
+    <meta name="description"
+        content="Explore o catálogo completo de artigos, propostas técnicas, jornadas interativas e planos de desenvolvimento de Maurício Issei.">
+    <link rel="canonical" href="https://mauricio.issei.com.br/catalogo.html" />
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
+
+    <!-- Tailwind Play CDN -->
+    <link href="./input.css" rel="stylesheet">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            scroll-behavior: smooth;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #007bff, #8a2be2);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .card-glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .card-glass:hover {
+            border-color: rgba(0, 123, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #007bff 0%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .category-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+            border: 1px solid rgba(0, 123, 255, 0.2);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="./index.html" class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Maurício Yokoyama Issei</a>
+            <div class="hidden md:flex space-x-6 text-sm">
+                <a href="./index.html" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Início</a>
+                <a href="./index.html#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Sobre Mim</a>
+                <a href="./index.html#experience" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Experiência</a>
+                <a href="./catalogo.html" class="text-blue-400 font-semibold">Catálogo</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-16 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Hero / Intro -->
+            <div class="text-center mb-20">
+                <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight">Catálogo de <span class="gradient-text">Conteúdos</span></h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    Bem-vindo ao repositório central de informações. Aqui você encontrará uma curadoria organizada de artigos técnicos, estudos de caso, planos estratégicos e experiências interativas desenvolvidas para compartilhar conhecimento e visão sobre tecnologia e liderança.
+                </p>
+            </div>
+
+            <!-- Categorias -->
+            <div class="space-y-24">
+
+                <!-- Engenharia & Salesforce DevOps -->
+                <section id="devops">
+                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Engenharia & Salesforce DevOps</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./devops-salesforce.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Arquitetura Híbrida DevOps Salesforce</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Uma visão estratégica sobre como unir governança do Flosum, flexibilidade do GitHub e velocidade da IA Agentic no ecossistema Salesforce.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./salesforce-agentic-dev.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Agentic DevOps for Salesforce</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Guia prático sobre Spec-Driven Development e o uso de agentes autônomos para desenvolvimento eficiente e sem débito técnico.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./salesforce-agentic-quickstart.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Quick Start: Salesforce + Devin + Flosum</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Tutorial passo a passo para configurar seu ambiente de desenvolvimento agentic e realizar o primeiro deploy governado em tempo recorde.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Arquitetura & Observabilidade -->
+                <section id="arquitetura">
+                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Arquitetura & Observabilidade</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./proposta-observabilidade-mobile.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Observabilidade SRE para Mobilidade</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Arquitetura técnica detalhando a correlação inteligente entre dispositivos, rede e aplicações usando Datadog e Azure.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./proposta.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Inteligência de Vendas: Salesforce + AWS</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Proposta de solução para otimização de rotas comerciais e redução de ruído de dados através de integração avançada Event-Driven.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Gestão & Liderança -->
+                <section id="gestao">
+                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Gestão & Liderança</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./service-operations-2-0.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Service Operations 2.0</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Visão executiva sobre o Modelo Manchester de TI para resiliência sistêmica e proteção do faturamento comercial.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./sustentacao.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Do Caos à Resiliência: Sustentação</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Jornada de aprendizado sobre gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em crise.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./know.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Navegando na Complexidade</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Exploração sobre o Framework Cynefin e como liderar inovação e processos emergentes em ambientes complexos.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Desenvolvimento Profissional -->
+                <section id="carreira">
+                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Desenvolvimento Profissional (PDI)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./exemplopdi.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">PDI - Plano de Desenvolvimento</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Plano estratégico com objetivos SMART e cronograma focado em Liderança, SRE e visão de produto.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./mapmind.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Mapa Mental PDI</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Visualização interativa e estruturada das competências e caminhos de evolução profissional.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Jornada & Biografia -->
+                <section id="jornada">
+                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Jornada & Biografia</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./life.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Narrativa Pixel Art</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Experiência interativa contando a trajetória pessoal e profissional desde o início em 1982 até os dias de hoje.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Iniciar jornada →</span>
+                        </a>
+                        <a href="./life3d.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Vida em 3D</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Uma viagem contemplativa e imersiva em 3D pela história e memórias de Mauricio Issei.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Iniciar jornada →</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Institucional -->
+                <section id="institucional">
+                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Institucional</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./privacidade.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Política de Privacidade</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Diretrizes sobre governança de dados, privacidade e conformidade com a LGPD.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Ler política →</span>
+                        </a>
+                        <a href="./termos.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Termos de Uso</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Termos e condições gerais para utilização dos conteúdos e serviços disponibilizados neste site.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Ler termos →</span>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 py-12 text-center text-sm border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="current-year"></span> Maurício Issei. Todos os direitos reservados.</p>
+            <p class="mt-2">Arquitetura de Informação e Design para Performance.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
