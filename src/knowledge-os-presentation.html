@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GEKLHZYVYX');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===================== SEO & META TAGS ===================== -->
+    <title>Knowledge OS Enterprise — Arquitetura IA-First de Conhecimento Corporativo | Maurício Issei</title>
+    <meta name="description"
+        content="Especificação enterprise revisada de uma plataforma IA-First de conhecimento corporativo: Docusaurus + OpenKB + GraphRAG + Knowledge Graph + SDD + Agentes + Governança + Observabilidade Cognitiva. Inclui roadmap, KPIs, modelo federado e quality gates.">
+    <meta name="keywords"
+        content="Knowledge OS, Knowledge Graph, GraphRAG, Spec Driven Development, SDD, AI-First Architecture, Agentic Systems, Cognitive Observability, Enterprise Architecture, Semantic Retrieval, Knowledge Engineering, Docusaurus, OpenKB, Governance, Federated Knowledge, Ontology, Lineage">
+    <meta name="author" content="Maurício Yokoyama Issei">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#0d1117">
+    <link rel="canonical" href="https://mauricio.issei.com.br/knowledge-os-presentation.html" />
+
+    <!-- ===================== AI / AGENT DISCOVERY (RFC 8288) ===================== -->
+    <link rel="describedby" href="/llms.txt" type="text/plain" title="LLM-optimized profile index" />
+    <link rel="describedby" href="/llms-full.txt" type="text/plain" title="Full LLM-optimized profile" />
+    <link rel="service-doc" href="/cv-for-ai.md" type="text/markdown" title="Structured CV for AI agents" />
+    <link rel="describedby" href="/cv.json" type="application/json" title="Structured CV data (JSON)" />
+    <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json"
+        title="API Resource Catalog" />
+    <meta name="ai-content-declaration" content="human-authored, ai-assisted-review">
+    <meta name="ai-usage-policy" content="indexable; quotable-with-attribution; no-training-without-license">
+
+    <!-- ===================== OPEN GRAPH / TWITTER ===================== -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mauricio.issei.com.br/knowledge-os-presentation.html">
+    <meta property="og:title" content="Knowledge OS Enterprise — Arquitetura IA-First de Conhecimento Corporativo">
+    <meta property="og:description"
+        content="Revisão crítica enterprise da plataforma de Knowledge OS: governança federada, GraphRAG, SDD, observabilidade cognitiva e roadmap de adoção em fases.">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Maurício Yokoyama Issei">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mauricio.issei.com.br/knowledge-os-presentation.html">
+    <meta property="twitter:title" content="Knowledge OS Enterprise — Arquitetura IA-First">
+    <meta property="twitter:description"
+        content="Da documentação para uma plataforma cognitiva: GraphRAG, agentes, contratos semânticos e KPIs de retrieval.">
+    <meta name="twitter:creator" content="@mauricioissei">
+
+    <!-- ===================== JSON-LD STRUCTURED DATA ===================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TechArticle",
+          "@id": "https://mauricio.issei.com.br/knowledge-os-presentation.html#article",
+          "headline": "Knowledge OS Enterprise — Arquitetura IA-First de Conhecimento Corporativo",
+          "description": "Especificação enterprise revisada de uma plataforma IA-First de conhecimento corporativo, incluindo governança federada, GraphRAG, SDD, observabilidade cognitiva e roadmap de adoção.",
+          "author": {
+            "@type": "Person",
+            "name": "Maurício Yokoyama Issei",
+            "url": "https://mauricio.issei.com.br",
+            "jobTitle": "Tech Lead / Enterprise Architect",
+            "sameAs": [
+              "https://www.linkedin.com/in/mauricioissei/",
+              "https://github.com/issei"
+            ]
+          },
+          "datePublished": "2026-05-07",
+          "dateModified": "2026-05-07",
+          "inLanguage": "pt-BR",
+          "keywords": "Knowledge OS, GraphRAG, Knowledge Graph, SDD, AI-First, Agentic Systems, Cognitive Observability, Enterprise Architecture",
+          "about": [
+            {"@type": "Thing", "name": "Knowledge Graph"},
+            {"@type": "Thing", "name": "GraphRAG"},
+            {"@type": "Thing", "name": "Spec Driven Development"},
+            {"@type": "Thing", "name": "Agentic Systems"},
+            {"@type": "Thing", "name": "Enterprise Knowledge Governance"}
+          ],
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "C-Level, VP Engineering, Heads of Architecture, Knowledge Engineers, Platform Teams"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://mauricio.issei.com.br/"},
+            {"@type": "ListItem", "position": 2, "name": "Catálogo", "item": "https://mauricio.issei.com.br/catalogo.html"},
+            {"@type": "ListItem", "position": 3, "name": "Knowledge OS Enterprise"}
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EKO%3C/text%3E%3C/svg%3E">
+
+    <!-- Tailwind & Fonts -->
+    <link href="./input.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            scroll-behavior: smooth;
+            line-height: 1.7;
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0d1117; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #007bff, #8a2be2); border-radius: 4px; }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #58a6ff, #bc8cff, #ff7eb6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #007bff, #8a2be2);
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(0, 123, 255, 0.5), 0 0 24px rgba(138, 43, 226, 0.4);
+        }
+
+        .card {
+            background: rgba(22, 27, 34, 0.7);
+            border: 1px solid rgba(139, 148, 158, 0.15);
+            border-radius: 16px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .card:hover {
+            border-color: rgba(0, 123, 255, 0.45);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 123, 255, 0.12);
+        }
+
+        .card-critical {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.08), rgba(220, 38, 38, 0.04));
+            border-left: 3px solid #f43f5e;
+        }
+
+        .card-fix {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(16, 185, 129, 0.04));
+            border-left: 3px solid #22c55e;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .pill-blue { background: rgba(0, 123, 255, 0.15); color: #58a6ff; }
+        .pill-purple { background: rgba(138, 43, 226, 0.15); color: #bc8cff; }
+        .pill-green { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+        .pill-red { background: rgba(244, 63, 94, 0.15); color: #fb7185; }
+        .pill-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+        .code-block {
+            background: #0a0e14;
+            border: 1px solid #21262d;
+            border-radius: 10px;
+            padding: 1.25rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            color: #d2a8ff;
+            line-height: 1.6;
+        }
+
+        .code-block .keyword { color: #ff7b72; }
+        .code-block .string { color: #a5d6ff; }
+        .code-block .comment { color: #8b949e; font-style: italic; }
+        .code-block .function { color: #d2a8ff; }
+        .code-block .number { color: #79c0ff; }
+
+        .layer-bar {
+            position: relative;
+            background: linear-gradient(90deg, rgba(0, 123, 255, 0.1), rgba(138, 43, 226, 0.05));
+            border-left: 4px solid #007bff;
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .layer-bar:hover { transform: translateX(6px); border-left-color: #8a2be2; }
+
+        table.matrix {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        table.matrix th, table.matrix td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #21262d;
+            vertical-align: top;
+        }
+
+        table.matrix th {
+            background: rgba(0, 123, 255, 0.08);
+            color: #58a6ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+        }
+
+        table.matrix tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+        .kpi-card {
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(138, 43, 226, 0.05));
+            border: 1px solid rgba(0, 123, 255, 0.25);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #58a6ff, #bc8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .kpi-label {
+            font-size: 0.75rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0.5rem;
+        }
+
+        .roadmap-phase {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #21262d;
+        }
+
+        .roadmap-phase::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0d1117;
+            border: 3px solid #007bff;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
+        }
+
+        .roadmap-phase.phase-now::before { border-color: #22c55e; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2); }
+        .roadmap-phase.phase-next::before { border-color: #f59e0b; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2); }
+        .roadmap-phase.phase-later::before { border-color: #8a2be2; box-shadow: 0 0 0 4px rgba(138, 43, 226, 0.2); }
+
+        details.review-item {
+            background: rgba(22, 27, 34, 0.55);
+            border: 1px solid rgba(139, 148, 158, 0.18);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        details.review-item summary {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #f0f6fc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+
+        details.review-item summary::-webkit-details-marker { display: none; }
+
+        details.review-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #58a6ff;
+            transition: transform 0.2s ease;
+        }
+
+        details.review-item[open] summary::after { content: '−'; }
+
+        details.review-item .body {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid #21262d;
+            margin-top: 0.5rem;
+            padding-top: 1.25rem;
+        }
+
+        .arrow-flow {
+            display: inline-block;
+            margin: 0 0.5rem;
+            color: #8a2be2;
+            font-weight: 600;
+        }
+
+        .badge-version {
+            display: inline-block;
+            background: #21262d;
+            color: #8b949e;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        nav.top-nav {
+            backdrop-filter: blur(14px);
+            background: rgba(13, 17, 23, 0.85);
+            border-bottom: 1px solid rgba(139, 148, 158, 0.12);
+        }
+
+        .toc-link {
+            display: block;
+            padding: 0.4rem 0.75rem;
+            border-left: 2px solid transparent;
+            color: #8b949e;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .toc-link:hover { color: #58a6ff; border-left-color: #58a6ff; }
+        .toc-link.active { color: #58a6ff; border-left-color: #58a6ff; background: rgba(0, 123, 255, 0.05); }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="top-nav fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="./index.html" class="text-xl font-bold text-white flex items-center gap-2">
+                <span class="gradient-text">Knowledge OS</span>
+                <span class="badge-version">v2.0 — Enterprise Review</span>
+            </a>
+            <div class="hidden md:flex space-x-4 text-sm">
+                <a href="#executivo" class="text-gray-300 hover:text-blue-400">Executivo</a>
+                <a href="#diagnostico" class="text-gray-300 hover:text-blue-400">Diagnóstico</a>
+                <a href="#arquitetura" class="text-gray-300 hover:text-blue-400">Arquitetura</a>
+                <a href="#tipologia" class="text-gray-300 hover:text-blue-400">Tipologia</a>
+                <a href="#operacional" class="text-gray-300 hover:text-blue-400">Operação</a>
+                <a href="#governanca" class="text-gray-300 hover:text-blue-400">Governança</a>
+                <a href="#observabilidade" class="text-gray-300 hover:text-blue-400">KPIs</a>
+                <a href="#roadmap" class="text-gray-300 hover:text-blue-400">Roadmap</a>
+                <a href="./catalogo.html" class="text-blue-400">Catálogo</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24">
+
+        <!-- ===================== HERO ===================== -->
+        <header class="relative px-6 py-20 md:py-32 overflow-hidden">
+            <div class="absolute inset-0 -z-10 opacity-30"
+                style="background: radial-gradient(circle at 20% 20%, rgba(0,123,255,0.15), transparent 50%), radial-gradient(circle at 80% 60%, rgba(138,43,226,0.12), transparent 55%);">
+            </div>
+            <div class="container mx-auto max-w-5xl text-center">
+                <span class="pill pill-purple mb-6"><i class="fas fa-flask"></i> Revisão Crítica Enterprise</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight text-white">
+                    Da documentação estática para um <span class="gradient-text">Knowledge Operating System</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                    Especificação enterprise revisada para uma plataforma <strong>IA-first</strong> de conhecimento
+                    corporativo. Esta versão eleva a maturidade da proposta original em 10 dimensões — clareza
+                    executiva, operacionalização, governança, escalabilidade, arquitetura cognitiva, estratégia
+                    IA-first, engenharia de conhecimento, rastreabilidade, observabilidade e roadmap.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="pill pill-blue"><i class="fas fa-cube"></i> Docusaurus + OpenKB</span>
+                    <span class="pill pill-purple"><i class="fas fa-project-diagram"></i> GraphRAG + KG</span>
+                    <span class="pill pill-green"><i class="fas fa-file-contract"></i> SDD + Contratos</span>
+                    <span class="pill pill-amber"><i class="fas fa-robot"></i> Agentes + DSL</span>
+                    <span class="pill pill-red"><i class="fas fa-shield-alt"></i> Governança Federada</span>
+                </div>
+
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-5xl mx-auto">
+                    <div class="kpi-card"><div class="kpi-value">10</div><div class="kpi-label">Dimensões revisadas</div></div>
+                    <div class="kpi-card"><div class="kpi-value">7</div><div class="kpi-label">Camadas arquiteturais</div></div>
+                    <div class="kpi-card"><div class="kpi-value">6</div><div class="kpi-label">Tipos canônicos</div></div>
+                    <div class="kpi-card"><div class="kpi-value">18</div><div class="kpi-label">KPIs cognitivos</div></div>
+                    <div class="kpi-card"><div class="kpi-value">4</div><div class="kpi-label">Memórias separadas</div></div>
+                    <div class="kpi-card"><div class="kpi-value">4</div><div class="kpi-label">Fases de adoção</div></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===================== 1. EXECUTIVO ===================== -->
+        <section id="executivo" class="py-20 px-6 bg-gray-900/40">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-blue mb-3"><i class="fas fa-crown"></i> Camada Executiva</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Por que isso importa para o board</h2>
+                </div>
+
+                <p class="text-gray-400 text-lg max-w-3xl mx-auto mb-12 text-center">
+                    A especificação original estava densa em engenharia, mas <strong>silenciosa em business outcomes</strong>.
+                    Esta revisão traduz a arquitetura em três outcomes mensuráveis e três riscos evitados.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="card">
+                        <div class="text-3xl text-blue-400 mb-3"><i class="fas fa-bolt"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Time-to-Decision <span class="badge-version">−60%</span></h3>
+                        <p class="text-gray-400 text-sm">Do "quem sabe disso?" para "qual a evidência?". Decisões de arquitetura e produto deixam de depender de tribal knowledge.</p>
+                    </div>
+                    <div class="card">
+                        <div class="text-3xl text-purple-400 mb-3"><i class="fas fa-recycle"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Reuso Cognitivo <span class="badge-version">+3x</span></h3>
+                        <p class="text-gray-400 text-sm">Specs, decisões e padrões são consumidos por agentes — não morrem em PDFs. Cada novo projeto parte de um lastro semântico.</p>
+                    </div>
+                    <div class="card">
+                        <div class="text-3xl text-green-400 mb-3"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-2">Compliance by Design</h3>
+                        <p class="text-gray-400 text-sm">Lineage entre requisito → código → teste → deploy. Auditoria deixa de ser arqueologia.</p>
+                    </div>
+                </div>
+
+                <div class="card card-critical">
+                    <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-exclamation-triangle text-red-400"></i> Três riscos que esta arquitetura evita</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><strong class="text-red-300">Risco 1 — Knowledge Decay:</strong> documentação ficcional desalinhada do código produtivo, gerando decisões em cima de fatos obsoletos.</li>
+                        <li><strong class="text-red-300">Risco 2 — Hallucination at Scale:</strong> agentes IA respondendo sem grounding em fontes auditáveis, contaminando decisões de produto.</li>
+                        <li><strong class="text-red-300">Risco 3 — Shadow Knowledge:</strong> conhecimento crítico em DMs, decks e cabeças de seniors — não recuperável, não auditável, não escalável.</li>
+                    </ul>
+                </div>
+
+                <blockquote class="mt-10 text-center text-xl italic text-gray-300 max-w-3xl mx-auto border-l-0">
+                    "O ativo mais subutilizado da organização não é o dado bruto. É o <span class="gradient-text">julgamento contextual</span> que ninguém soube codificar."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- ===================== 2. DIAGNÓSTICO CRÍTICO ===================== -->
+        <section id="diagnostico" class="py-20 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-red mb-3"><i class="fas fa-search"></i> Diagnóstico</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">10 dimensões da revisão crítica</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Cada item lista o gap encontrado na proposta original e a contramedida concreta aplicada nesta versão.</p>
+                </div>
+
+                <div class="space-y-3">
+
+                    <details class="review-item" open>
+                        <summary><span><span class="pill pill-blue mr-2">01</span> Clareza Executiva</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Linguagem 100% técnica; ausência de outcomes financeiros e operacionais.</li>
+                                    <li>Sem narrativa de transformação — apenas catálogo de componentes.</li>
+                                    <li>Nenhum mapeamento entre arquitetura e KPIs de negócio.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Camada executiva no topo: 3 outcomes, 3 riscos, 1 quote.</li>
+                                    <li>Cada componente arquitetural justificado por <em>business capability</em>.</li>
+                                    <li>Roadmap com critérios de saída por fase em linguagem de board.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">02</span> Operacionalização</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Conceitual — "usaremos GraphRAG" sem fluxo de uso real.</li>
+                                    <li>Sem jornadas de engenheiro / PM / SRE / arquiteto.</li>
+                                    <li>Falta integração com ferramentas existentes (Jira, GitHub, IDE).</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Quatro <em>knowledge journeys</em> documentadas (ver §4).</li>
+                                    <li>Pontos de integração: PR check, IDE plugin, Slack agent, ChatOps.</li>
+                                    <li>Workflow operacional com handoffs explícitos entre humano/agente.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">03</span> Governança Enterprise</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>"Governança" mencionada sem ownership, stewardship ou approval flow.</li>
+                                    <li>Sem versionamento semântico de specs ou decisões.</li>
+                                    <li>Lifecycle do conhecimento implícito (criação, revisão, deprecação).</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Modelo RACI por <em>knowledge domain</em> (§5).</li>
+                                    <li>SemVer de specs + ADRs + ontologia; deprecação com janela e replacements.</li>
+                                    <li>Knowledge Council com cadência mensal e mandato definido.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">04</span> Escalabilidade Organizacional</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Modelo central — não escala para múltiplos times/BU.</li>
+                                    <li>Risco alto de duplicidade semântica entre domínios.</li>
+                                    <li>Sem política de contribuição nem federação.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Modelo federado: <em>core ontology</em> + <em>domain extensions</em>.</li>
+                                    <li>Padrão "Knowledge Mesh" inspirado em Data Mesh (domain ownership).</li>
+                                    <li>Contract testing semântico entre domínios para evitar drift.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">05</span> Arquitetura Cognitiva</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Memória monolítica — episódica e semântica misturadas.</li>
+                                    <li>Sem política de retrieval (recência × autoridade × proximidade).</li>
+                                    <li>Conflitos semânticos resolvidos implicitamente pelo LLM.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Separação de memórias: episódica · semântica · procedural · contextual.</li>
+                                    <li>Retrieval policy declarativa com <em>precedence rules</em> auditáveis.</li>
+                                    <li>Conflict resolver explícito + drift detector contextual.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">06</span> Estratégia IA-First</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Agentes mencionados sem feedback loop, sem self-healing.</li>
+                                    <li>Nenhum quality gate cognitivo entre retrieval e geração.</li>
+                                    <li>Sem score de confiança nem tracing contextual.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Loop cognitivo Sense → Retrieve → Reason → Validate → Act → Learn.</li>
+                                    <li>Quality gates: groundedness, faithfulness, answer-relevance, citation coverage.</li>
+                                    <li>Tracing semântico ponta-a-ponta (OpenTelemetry + LLM spans).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">07</span> Engenharia de Conhecimento</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Granularidade documental indefinida (capítulo? parágrafo? bloco?).</li>
+                                    <li>Metadata frágil; sem entidades canônicas.</li>
+                                    <li>Sem capability map nem domain catalog.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Atomic units: <em>Claim, Decision, Constraint, Pattern, Risk</em>.</li>
+                                    <li>Ontologia base + schemas semânticos versionados em JSON-LD.</li>
+                                    <li>Capability map ligando domínio → entidade → spec → agente.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">08</span> Rastreabilidade</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Lineage rasa: spec ↔ código sem dependências transitivas.</li>
+                                    <li>Sem impact graph para mudanças semânticas.</li>
+                                    <li>Validação não cobre cobertura de requisito.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Traceability matrix: <em>requisito → spec → ADR → código → teste → deploy → telemetria</em>.</li>
+                                    <li>Impact graph navegável; PR check bloqueia mudança que orfaniza requisito.</li>
+                                    <li>Coverage cognitivo: % de claims com evidência rastreável.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">09</span> Observabilidade Cognitiva</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Sem métricas de retrieval, qualidade semântica ou cobertura.</li>
+                                    <li>Sem SLA cognitivo (latência, freshness, groundedness).</li>
+                                    <li>Sem dashboard de health do conhecimento.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>18 KPIs cognitivos divididos em 4 camadas (§7).</li>
+                                    <li>SLOs por domínio: P95 retrieval &lt; 800ms; freshness &lt; 24h.</li>
+                                    <li>Dashboard "Knowledge Vital Signs" com alerting.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="review-item">
+                        <summary><span><span class="pill pill-blue mr-2">10</span> Roadmap & Adoção</span></summary>
+                        <div class="body grid md:grid-cols-2 gap-5">
+                            <div class="card card-critical">
+                                <h4 class="font-bold text-red-300 mb-2"><i class="fas fa-times-circle"></i> Gap original</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>Big bang implícito — adote tudo, espere milagre.</li>
+                                    <li>Sem quick wins, sem pilotos, sem critérios de saída.</li>
+                                    <li>Sem mapa de dependências entre componentes.</li>
+                                </ul>
+                            </div>
+                            <div class="card card-fix">
+                                <h4 class="font-bold text-green-300 mb-2"><i class="fas fa-check-circle"></i> Correção aplicada</h4>
+                                <ul class="text-sm text-gray-300 space-y-1.5">
+                                    <li>4 fases incrementais: Foundation → Pilot → Federate → Autonomous.</li>
+                                    <li>Quick wins de 30/60/90 dias com KPI mensurável por fase.</li>
+                                    <li>Critérios de promoção entre fases auditáveis (§8).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 2.5 COMPARATIVO EXECUTIVO ===================== -->
+        <section id="comparativo" class="py-20 px-6 bg-gray-900/40">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-purple mb-3"><i class="fas fa-not-equal"></i> Comparativo</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Documentação tradicional × Knowledge OS</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Visão de board: 9 dimensões em 30 segundos.</p>
+                </div>
+                <div class="card" style="padding: 0; overflow-x: auto;">
+                <table class="matrix">
+                    <thead>
+                        <tr>
+                            <th>Dimensão</th>
+                            <th><span class="pill pill-red">Modelo atual</span></th>
+                            <th><span class="pill pill-green">Knowledge OS</span></th>
+                            <th>Impacto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong class="text-white">Organização</strong></td><td>Por stack tecnológico — silos React/Node/DB.</td><td>Por bounded context (Orders, Payments, Identity).</td><td><span class="pill pill-blue">Coesão +80%</span></td></tr>
+                        <tr><td><strong class="text-white">Recuperação</strong></td><td>Navegação manual + busca lexical.</td><td>Hybrid retrieval: vector + BM25 + graph traversal.</td><td><span class="pill pill-blue">Precisão 3×</span></td></tr>
+                        <tr><td><strong class="text-white">Engenharia</strong></td><td>IA gera com contexto raso e ambíguo.</td><td>Agentes consomem contexto pré-computado e citável.</td><td><span class="pill pill-blue">Velocity 3–5×</span></td></tr>
+                        <tr><td><strong class="text-white">Governança</strong></td><td>Ownership implícito; decisões em cabeças.</td><td>ADRs versionados + RACI federado + audit trail.</td><td><span class="pill pill-blue">Compliance ↑</span></td></tr>
+                        <tr><td><strong class="text-white">Escalabilidade</strong></td><td>Onboarding lento; conhecimento tribal.</td><td>Knowledge mesh com domain ownership.</td><td><span class="pill pill-blue">Onboarding −70%</span></td></tr>
+                        <tr><td><strong class="text-white">Validação</strong></td><td>Testes como verificação posterior.</td><td>Testes como spec executável (contract/golden/property).</td><td><span class="pill pill-blue">Bugs −60%</span></td></tr>
+                        <tr><td><strong class="text-white">Rastreabilidade</strong></td><td>Zero — código não liga a requisito.</td><td>Policy → Contract → Spec → Test → Code → Deploy.</td><td><span class="pill pill-blue">Audit 100%</span></td></tr>
+                        <tr><td><strong class="text-white">Cognição IA</strong></td><td>Doc longa polui o context window.</td><td>Atomic units tipados; chunk-optimal.</td><td><span class="pill pill-blue">Hallucination &lt; 2%</span></td></tr>
+                        <tr><td><strong class="text-white">Decisão</strong></td><td>Reuniões para descobrir o que existe.</td><td>Pergunta → resposta citada em segundos.</td><td><span class="pill pill-blue">TTD −60%</span></td></tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 3. ARQUITETURA DE 7 CAMADAS ===================== -->
+        <section id="arquitetura" class="py-20 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-purple mb-3"><i class="fas fa-layer-group"></i> Arquitetura</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Sete camadas do Knowledge OS</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Cada camada tem responsabilidade única, contratos
+                        explícitos e SLA próprio. Substituível sem reescrever a stack.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="layer-bar">
+                        <div class="flex justify-between items-start gap-4 flex-wrap">
+                            <div>
+                                <span class="pill pill-blue mb-2"><span class="mono">L7</span> Experience</span>
+                                <h3 class="text-lg font-bold text-white mt-1">Interfaces de Consumo</h3>
+                                <p class="text-gray-400 text-sm mt-1">Docusaurus (humano) · Slack/Teams agent · IDE plugin · MCP servers · ChatOps · API pública.</p>
+                            </div>
+                            <span class="pill pill-purple"><i class="fas fa-user"></i> Humanos + Agentes</span>
+                        </div>
+                    </div>
+                    <div class="layer-bar">
+                        <div class="flex justify-between items-start gap-4 flex-wrap">
+                            <div>
+                                <span class="pill pill-blue mb-2"><span class="mono">L6</span> Orchestration</span>
+                                <h3 class="text-lg font-bold text-white mt-1">Agentes & Workflows Cognitivos</h3>
+                                <p class="text-gray-400 text-sm mt-1">Agent runtime (LangGraph/Mastra/CrewAI) · DSL declarativa para fluxos · políticas de tool-use · approval gates.</p>
+                            </div>
+                            <span class="pill pill-amber"><i class="fas fa-robot"></i> Loop cognitivo</span>
+                        </div>
+                    </div>
+                    <div class="layer-bar">
+                        <div class="flex justify-between items-start gap-4 flex-wrap">
+                            <div>
+                                <span class="pill pill-blue mb-2"><span class="mono">L5</span> Reasoning</span>
+                                <h3 class="text-lg font-bold text-white mt-1">Quality Gates Cognitivos</h3>
+                                <p class="text-gray-400 text-sm mt-1">Groundedness · faithfulness · answer-relevance · citation coverage · safety filters · PII redaction.</p>
+                            </div>
+                            <span class="pill pill-green"><i class="fas fa-shield-alt"></i> Validação</span>
+                        </div>
+                    </div>
+                    <div class="layer-bar">
+                        <div class="flex justify-between items-start gap-4 flex-wrap">
+                            <div>
+                                <span class="pill pill-blue mb-2"><span class="mono">L4</span> Retrieval</span>
+                                <h3 class="text-lg font-bold text-white mt-1">GraphRAG Híbrido</h3>
+                                <p class="text-gray-400 text-sm mt-1">Vector search (denso) · BM25 (esparso) · graph traversal · re-ranking · query routing · retrieval policy declarativa.</p>
+                            </div>
+                            <span class="pill pill-purple"><i class="fas fa-search"></i> Recall + Precision</span>
+                        </div>
+                    </div>
+                    <div class="layer-bar">
+                        <div class="flex justify-between items-start gap-4 flex-wrap">
+                            <div>
+                                <span class="pill pill-blue mb-2"><span class="mono">L3</span> Knowledge Model</span>
+                                <h3 class="text-lg font-bold text-white mt-1">Knowledge Graph + Ontologia</h3>
+                                <p class="text-gray-400 text-sm mt-1">Core ontology (JSON-LD/SHACL) · domain extensions · entidades canônicas · capability map · entity resolution.</p>
+                            </div>
+                            <span class="pill pill-blue"><i class="fas fa-project-diagram"></i> Semântica</span>
+                        </div>
+                    </div>
+                    <div class="layer-bar">
+                        <div class="flex justify-between items-start gap-4 flex-wrap">
+                            <div>
+                                <span class="pill pill-blue mb-2"><span class="mono">L2</span> Specification</span>
+                                <h3 class="text-lg font-bold text-white mt-1">SDD + Contratos Semânticos</h3>
+                                <p class="text-gray-400 text-sm mt-1">Specs versionadas · ADRs · OpenAPI · AsyncAPI · DSL de regras de negócio · contract tests entre domínios.</p>
+                            </div>
+                            <span class="pill pill-amber"><i class="fas fa-file-contract"></i> Source-of-truth</span>
+                        </div>
+                    </div>
+                    <div class="layer-bar">
+                        <div class="flex justify-between items-start gap-4 flex-wrap">
+                            <div>
+                                <span class="pill pill-blue mb-2"><span class="mono">L1</span> Substrate</span>
+                                <h3 class="text-lg font-bold text-white mt-1">Fontes & Ingestão</h3>
+                                <p class="text-gray-400 text-sm mt-1">OpenKB · GitHub · Confluence · Jira · ServiceNow · Salesforce · Datadog · CDC pipelines · CRDT para colaboração.</p>
+                            </div>
+                            <span class="pill pill-red"><i class="fas fa-database"></i> Truth ingestion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loop Cognitivo -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-white text-center mb-2">Loop Cognitivo Padrão</h3>
+                    <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">Toda interação atravessa este pipeline. Cada etapa é instrumentada e auditável.</p>
+                    <div class="flex flex-wrap justify-center items-center gap-2 text-sm">
+                        <span class="pill pill-blue">SENSE</span>
+                        <span class="arrow-flow">→</span>
+                        <span class="pill pill-purple">RETRIEVE</span>
+                        <span class="arrow-flow">→</span>
+                        <span class="pill pill-amber">REASON</span>
+                        <span class="arrow-flow">→</span>
+                        <span class="pill pill-green">VALIDATE</span>
+                        <span class="arrow-flow">→</span>
+                        <span class="pill pill-blue">ACT</span>
+                        <span class="arrow-flow">→</span>
+                        <span class="pill pill-red">LEARN</span>
+                    </div>
+                    <p class="text-center text-gray-500 text-xs mt-4 max-w-3xl mx-auto">
+                        <strong class="text-gray-400">Self-healing:</strong> falhas em VALIDATE re-acionam RETRIEVE com contexto expandido.
+                        <strong class="text-gray-400">Backpressure:</strong> baixa confiança em REASON aciona escalation para humano via approval gate.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 3.5 TIPOLOGIA + FRONTMATTER + TREE ===================== -->
+        <section id="tipologia" class="py-20 px-6 bg-gray-900/40">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-blue mb-3"><i class="fas fa-shapes"></i> Engenharia de Conhecimento</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Conhecimento tipado, granular e endereçável</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">
+                        Sem tipologia computável, agentes recebem ruído. Estes são os <strong>6 tipos canônicos</strong>
+                        + o frontmatter que torna cada artefato citável + o layout single-source-of-truth.
+                    </p>
+                </div>
+
+                <!-- 6 cards de tipologia -->
+                <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-cubes text-blue-400"></i> Os 6 tipos canônicos de unidade atômica</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
+                    <div class="card" style="border-left: 3px solid #58a6ff;">
+                        <span class="pill pill-blue mb-2 mono">FACTS</span>
+                        <h4 class="font-bold text-white mt-2 mb-1">Verdades do domínio</h4>
+                        <p class="text-xs text-gray-400 mb-3">Invariantes objetivos e estáveis. Não opinião.</p>
+                        <pre class="code-block" style="font-size: 0.7rem;"><span class="keyword">type</span>: fact
+<span class="keyword">id</span>: FACT-001
+<span class="comment"># "Pedido tem estado"</span></pre>
+                    </div>
+                    <div class="card" style="border-left: 3px solid #bc8cff;">
+                        <span class="pill pill-purple mb-2 mono">POLICIES</span>
+                        <h4 class="font-bold text-white mt-2 mb-1">Regras ativas</h4>
+                        <p class="text-xs text-gray-400 mb-3">Regra de negócio validável e executável.</p>
+                        <pre class="code-block" style="font-size: 0.7rem;"><span class="keyword">type</span>: policy
+<span class="keyword">id</span>: POL-042
+<span class="comment"># "Cancelar requer auth"</span></pre>
+                    </div>
+                    <div class="card" style="border-left: 3px solid #4ade80;">
+                        <span class="pill pill-green mb-2 mono">DECISIONS</span>
+                        <h4 class="font-bold text-white mt-2 mb-1">ADRs versionados</h4>
+                        <p class="text-xs text-gray-400 mb-3">Decisão arquitetural com contexto e consequências.</p>
+                        <pre class="code-block" style="font-size: 0.7rem;"><span class="keyword">type</span>: adr
+<span class="keyword">id</span>: ADR-019
+<span class="comment"># "Adotar CQRS em Orders"</span></pre>
+                    </div>
+                    <div class="card" style="border-left: 3px solid #fbbf24;">
+                        <span class="pill pill-amber mb-2 mono">CONTRACTS</span>
+                        <h4 class="font-bold text-white mt-2 mb-1">APIs e schemas</h4>
+                        <p class="text-xs text-gray-400 mb-3">Interface formal entre componentes/serviços.</p>
+                        <pre class="code-block" style="font-size: 0.7rem;"><span class="keyword">type</span>: contract
+<span class="keyword">id</span>: CNT-007
+<span class="comment"># "POST /orders spec"</span></pre>
+                    </div>
+                    <div class="card" style="border-left: 3px solid #fb7185;">
+                        <span class="pill pill-red mb-2 mono">CONSTRAINTS</span>
+                        <h4 class="font-bold text-white mt-2 mb-1">Restrições não-funcionais</h4>
+                        <p class="text-xs text-gray-400 mb-3">Performance, compliance, segurança — limites duros.</p>
+                        <pre class="code-block" style="font-size: 0.7rem;"><span class="keyword">type</span>: constraint
+<span class="keyword">id</span>: CON-003
+<span class="comment"># "p99 &lt; 200ms"</span></pre>
+                    </div>
+                    <div class="card" style="border-left: 3px solid #8b949e;">
+                        <span class="pill mb-2 mono" style="background: rgba(139,148,158,0.18); color: #c9d1d9;">PROCEDURES</span>
+                        <h4 class="font-bold text-white mt-2 mb-1">Runbooks executáveis</h4>
+                        <p class="text-xs text-gray-400 mb-3">Processo operacional passo-a-passo, auditável.</p>
+                        <pre class="code-block" style="font-size: 0.7rem;"><span class="keyword">type</span>: procedure
+<span class="keyword">id</span>: PRC-012
+<span class="comment"># "Deploy rollback"</span></pre>
+                    </div>
+                </div>
+
+                <!-- Frontmatter + Tree side-by-side -->
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-file-code text-blue-400"></i> Frontmatter semântico — exemplo completo</h3>
+                        <p class="text-gray-400 text-sm mb-3">Cada documento carrega metadata que o torna <strong>citável, rastreável e indexável</strong> por agentes. Sem frontmatter, não há semântica computável.</p>
+                        <pre class="code-block"><span class="comment">---</span>
+<span class="keyword">id</span>: <span class="string">FEAT-042</span>
+<span class="keyword">type</span>: feature-spec
+<span class="keyword">title</span>: <span class="string">"Checkout Express"</span>
+<span class="keyword">domain</span>: orders
+<span class="keyword">status</span>: approved
+<span class="keyword">version</span>: <span class="number">2.1.0</span>
+<span class="keyword">owner</span>: <span class="string">"@squad-checkout"</span>
+<span class="keyword">created</span>: <span class="string">2026-03-15</span>
+<span class="keyword">updated</span>: <span class="string">2026-04-20</span>
+
+<span class="keyword">depends_on</span>:
+  - FEAT-018   <span class="comment"># auth-flow</span>
+  - CNT-007    <span class="comment"># orders-api</span>
+
+<span class="keyword">implements</span>:
+  - POL-042    <span class="comment"># cancel-policy</span>
+  - ADR-019    <span class="comment"># cqrs-pattern</span>
+
+<span class="keyword">validated_by</span>:
+  - TEST-FEAT-042-001
+  - CONTRACT-FEAT-042
+
+<span class="keyword">tags</span>: [checkout, payments, critical-path]
+
+<span class="keyword">context_for_agents</span>:
+  - checkout-agent
+  - payments-agent
+
+<span class="keyword">retrieval_weight</span>: <span class="number">0.92</span>
+<span class="keyword">freshness_sla</span>: <span class="number">7</span>d
+<span class="comment">---</span></pre>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-folder-tree text-purple-400"></i> Estrutura de diretórios canônica</h3>
+                        <p class="text-gray-400 text-sm mb-3">Layout single-source-of-truth. Cada pasta tem <strong>dono, contrato e CI gate</strong> próprio. Índices semânticos gerados em build.</p>
+                        <pre class="code-block" style="font-size: 0.78rem; line-height: 1.7;"><span class="keyword">docs/</span>
+├── <span class="keyword">domains/</span>           <span class="comment"># Bounded Contexts DDD</span>
+│   ├── orders/
+│   │   ├── capabilities.md
+│   │   ├── ubiquitous-language.md
+│   │   └── specs/
+│   ├── payments/
+│   └── identity/
+│
+├── <span class="keyword">specs/</span>             <span class="comment"># Spec Driven Dev</span>
+│   ├── features/FEAT-001-checkout.md
+│   ├── apis/orders-api.openapi.yaml
+│   └── contracts/CNT-007.md
+│
+├── <span class="keyword">architecture/</span>      <span class="comment"># Decisões</span>
+│   ├── adr/ADR-019-cqrs.md
+│   ├── diagrams/
+│   └── capability-map.md
+│
+├── <span class="keyword">engineering/</span>       <span class="comment"># Padrões + DSL</span>
+│   ├── patterns/
+│   ├── dsl/
+│   └── runbooks/
+│
+├── <span class="keyword">validation/</span>        <span class="comment"># Testes como spec</span>
+│   ├── golden-tests/
+│   ├── contract-tests/
+│   └── property-tests/
+│
+├── <span class="keyword">ontology/</span>          <span class="comment"># Modelo formal</span>
+│   ├── domain-model.ttl
+│   └── relationships.yaml
+│
+├── <span class="keyword">glossary/</span>          <span class="comment"># Linguagem ubíqua</span>
+│   └── terms.yaml
+│
+├── <span class="keyword">agents/</span>            <span class="comment"># Context por agente</span>
+│   ├── orders-agent.ctx.yaml
+│   └── payments-agent.ctx.yaml
+│
+└── <span class="keyword">index/</span>             <span class="comment"># Gerado em CI</span>
+    ├── knowledge-graph.json
+    └── embeddings.index</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 4. JORNADAS OPERACIONAIS ===================== -->
+        <section id="operacional" class="py-20 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-green mb-3"><i class="fas fa-route"></i> Operacionalização</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Quatro jornadas reais de uso</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Sai do conceitual: estes são fluxos auditáveis com handoffs explícitos humano ↔ agente.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl text-blue-400"><i class="fas fa-code-branch"></i></span>
+                            <h3 class="text-xl font-bold text-white">Jornada 1 — Engineer escrevendo PR</h3>
+                        </div>
+                        <ol class="text-sm text-gray-300 space-y-2 list-decimal pl-5">
+                            <li>IDE plugin recupera specs e ADRs relacionados ao arquivo.</li>
+                            <li>Agente sugere padrões já estabelecidos para o domínio.</li>
+                            <li>PR check valida: cobertura de spec, drift de contrato, citação obrigatória.</li>
+                            <li>ADR auto-rascunhado quando decisão arquitetural é detectada.</li>
+                            <li>Merge gera evento → KG indexa nova evidência → métricas atualizadas.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl text-purple-400"><i class="fas fa-clipboard-list"></i></span>
+                            <h3 class="text-xl font-bold text-white">Jornada 2 — PM definindo feature</h3>
+                        </div>
+                        <ol class="text-sm text-gray-300 space-y-2 list-decimal pl-5">
+                            <li>Agente recupera capabilities relacionadas no capability map.</li>
+                            <li>Sugere ADRs e constraints históricos que limitam escopo.</li>
+                            <li>Gera spec-stub em DSL com requisitos verificáveis (Given/When/Then).</li>
+                            <li>Approval gate: arquiteto + tech lead validam impact graph.</li>
+                            <li>Spec versionada vira contrato consumido por agentes downstream.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl text-amber-400"><i class="fas fa-fire-alt"></i></span>
+                            <h3 class="text-xl font-bold text-white">Jornada 3 — SRE em incidente</h3>
+                        </div>
+                        <ol class="text-sm text-gray-300 space-y-2 list-decimal pl-5">
+                            <li>Sintoma na telemetria → query no KG retorna runbooks + ADRs do componente.</li>
+                            <li>Agente correlaciona com mudanças recentes (lineage reverso).</li>
+                            <li>Sugere mitigations já validadas; se nova, exige approval explícita.</li>
+                            <li>Postmortem auto-rascunhado com evidências ligadas (logs, traces, ADR).</li>
+                            <li>Lessons learned viram <em>Pattern</em> ou <em>Risk</em> no KG.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-2xl text-green-400"><i class="fas fa-search-dollar"></i></span>
+                            <h3 class="text-xl font-bold text-white">Jornada 4 — Auditor / Compliance</h3>
+                        </div>
+                        <ol class="text-sm text-gray-300 space-y-2 list-decimal pl-5">
+                            <li>Pergunta: "evidência de que controle X está implementado em Y".</li>
+                            <li>Lineage navega: requisito regulatório → spec → ADR → código → teste → deploy.</li>
+                            <li>Cada nó com timestamp, autor, aprovação e versão.</li>
+                            <li>Resposta sempre citada; sem citação, sem afirmação.</li>
+                            <li>Export auditável (PDF + JSON-LD assinado).</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Cadeia de Rastreabilidade Visual -->
+                <div class="mt-16">
+                    <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-link text-blue-400"></i> Cadeia de rastreabilidade ponta-a-ponta</h3>
+                    <p class="text-gray-400 text-sm mb-6">Cada artefato da cadeia carrega ID estável, versão, autor, timestamp e citação para a fonte de cima. Auditoria deixa de ser arqueologia.</p>
+
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <div class="card" style="background: rgba(0,123,255,0.08); border-left: 3px solid #58a6ff;">
+                                <div class="flex items-center gap-3">
+                                    <span class="pill pill-blue mono">POLICY</span>
+                                    <div>
+                                        <div class="text-white font-semibold text-sm">POL-042</div>
+                                        <div class="text-xs text-gray-400">"Cancelamento requer autorização"</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center text-purple-400 text-xs mono">implements ↓</div>
+                            <div class="card" style="background: rgba(138,43,226,0.08); border-left: 3px solid #bc8cff;">
+                                <div class="flex items-center gap-3">
+                                    <span class="pill pill-purple mono">CONTRACT</span>
+                                    <div>
+                                        <div class="text-white font-semibold text-sm">CNT-007</div>
+                                        <div class="text-xs text-gray-400">POST /orders/:id/cancel — OpenAPI v3</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center text-purple-400 text-xs mono">validated_by ↓</div>
+                            <div class="card" style="background: rgba(34,197,94,0.08); border-left: 3px solid #4ade80;">
+                                <div class="flex items-center gap-3">
+                                    <span class="pill pill-green mono">TEST</span>
+                                    <div>
+                                        <div class="text-white font-semibold text-sm">TEST-CNT-007-auth</div>
+                                        <div class="text-xs text-gray-400">contract-cancel-auth.spec.ts</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center text-purple-400 text-xs mono">generates ↓</div>
+                            <div class="card" style="background: rgba(245,158,11,0.08); border-left: 3px solid #fbbf24;">
+                                <div class="flex items-center gap-3">
+                                    <span class="pill pill-amber mono">CODE</span>
+                                    <div>
+                                        <div class="text-white font-semibold text-sm">OrdersService.cancel()</div>
+                                        <div class="text-xs text-gray-400">Gerado via SDD pipeline · sha 8f2c3a1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center text-purple-400 text-xs mono">traced_to ↓</div>
+                            <div class="card" style="background: rgba(244,63,94,0.08); border-left: 3px solid #fb7185;">
+                                <div class="flex items-center gap-3">
+                                    <span class="pill pill-red mono">DEPLOY</span>
+                                    <div>
+                                        <div class="text-white font-semibold text-sm">v2.4.1 · prod-us-east</div>
+                                        <div class="text-xs text-gray-400">2026-04-20 14:32 UTC · approved by @arch-council</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <h4 class="text-sm uppercase tracking-wide text-gray-400 mb-2">Capacidades que o grafo habilita</h4>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-search text-blue-400"></i> Impact Analysis</h5>
+                                <p class="text-xs text-gray-400">"Dado ADR-019, quais specs/contratos/testes serão afetados?" — resposta automática via traversal.</p>
+                            </div>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-bolt text-purple-400"></i> Conflict Detection</h5>
+                                <p class="text-xs text-gray-400">Políticas contraditórias detectadas por análise de arestas conflitantes no grafo.</p>
+                            </div>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-project-diagram text-green-400"></i> GraphRAG Retrieval</h5>
+                                <p class="text-xs text-gray-400">Agente navega o grafo para recuperar contexto estruturado, não chunks isolados por similaridade.</p>
+                            </div>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-shield-alt text-amber-400"></i> Auditabilidade Completa</h5>
+                                <p class="text-xs text-gray-400">Qualquer linha de código rastreável até a política de negócio que a originou.</p>
+                            </div>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-user-graduate text-red-400"></i> Onboarding Contextual</h5>
+                                <p class="text-xs text-gray-400">"O que preciso saber para trabalhar em Orders?" — resposta estruturada automática.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 Tipos de Teste -->
+                <div class="mt-16">
+                    <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-vial text-green-400"></i> Testes como conhecimento executável</h3>
+                    <p class="text-gray-400 text-sm mb-6">Um teste que falha é uma <strong>spec violada</strong>, rastreável até a política que a originou. Três modalidades complementares.</p>
+
+                    <div class="grid md:grid-cols-3 gap-5">
+                        <div class="card" style="border-left: 3px solid #58a6ff;">
+                            <span class="pill pill-blue mb-2 mono">CONTRACT</span>
+                            <h4 class="font-bold text-white mt-2 mb-2">Contract Tests</h4>
+                            <p class="text-xs text-gray-400 mb-3">Verificam que a implementação honra o contrato formal. Executados a cada PR; bloqueiam merge em violação.</p>
+                            <pre class="code-block" style="font-size: 0.7rem;"><span class="comment">// refs: CNT-007, POL-042</span>
+<span class="function">describe</span>(<span class="string">'POST /orders/cancel'</span>, () =&gt; {
+  <span class="function">it</span>(<span class="string">'requires auth (POL-042)'</span>, ...);
+  <span class="function">it</span>(<span class="string">'returns 403 for anon'</span>, ...);
+});</pre>
+                        </div>
+                        <div class="card" style="border-left: 3px solid #4ade80;">
+                            <span class="pill pill-green mb-2 mono">GOLDEN</span>
+                            <h4 class="font-bold text-white mt-2 mb-2">Golden Tests</h4>
+                            <p class="text-xs text-gray-400 mb-3">Snapshots de comportamento aprovados pela equipe. Detectam regressões semânticas, não apenas sintáticas.</p>
+                            <pre class="code-block" style="font-size: 0.7rem;"><span class="comment">// golden: FEAT-042-checkout</span>
+<span class="function">expect</span>(result).<span class="function">toMatchGolden</span>(
+  <span class="string">'checkout-express-v2.1'</span>
+);</pre>
+                        </div>
+                        <div class="card" style="border-left: 3px solid #bc8cff;">
+                            <span class="pill pill-purple mb-2 mono">PROPERTY</span>
+                            <h4 class="font-bold text-white mt-2 mb-2">Property-Based</h4>
+                            <p class="text-xs text-gray-400 mb-3">Casos gerados aleatoriamente a partir de constraints formais. Garante invariantes em casos extremos.</p>
+                            <pre class="code-block" style="font-size: 0.7rem;"><span class="comment">// constraint: CON-003</span>
+<span class="function">property</span>(<span class="string">'p99 &lt; 200ms'</span>, () =&gt; {
+  <span class="function">fc</span>.assert(latency &lt; <span class="number">200</span>);
+});</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Context File expandido -->
+                <div class="mt-16">
+                    <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-robot text-purple-400"></i> Agent context file — pré-computado, versionado, governado</h3>
+                    <p class="text-gray-400 text-sm mb-4">Cada agente especializado por bounded context recebe contexto pré-computado em build-time. Context window limpo, custo previsível, geração determinística.</p>
+
+                    <div class="grid lg:grid-cols-3 gap-5">
+                        <div class="lg:col-span-2">
+                            <pre class="code-block"><span class="comment"># agents/orders-agent.ctx.yaml — v3.2.0</span>
+<span class="keyword">agent</span>: orders-specialist
+<span class="keyword">version</span>: <span class="number">3.2.0</span>
+<span class="keyword">domain</span>: orders
+<span class="keyword">owner</span>: <span class="string">"@platform-cognition"</span>
+
+<span class="keyword">context_sources</span>:
+  <span class="keyword">facts</span>:
+    - domains/orders/capabilities.md
+    - glossary/orders-terms.yaml
+  <span class="keyword">policies</span>:
+    - POL-042   <span class="comment"># cancel-auth</span>
+    - POL-055   <span class="comment"># refund-window</span>
+    - POL-071   <span class="comment"># fraud-detection</span>
+  <span class="keyword">contracts</span>:
+    - CNT-007   <span class="comment"># orders-api</span>
+    - CNT-012   <span class="comment"># payments-api</span>
+  <span class="keyword">decisions</span>:
+    - ADR-019   <span class="comment"># cqrs pattern</span>
+    - ADR-031   <span class="comment"># event-sourcing</span>
+  <span class="keyword">constraints</span>:
+    - CON-003   <span class="comment"># latency p99</span>
+    - CON-008   <span class="comment"># data-residency</span>
+  <span class="keyword">patterns</span>:
+    - engineering/patterns/saga.md
+    - engineering/patterns/outbox.md
+
+<span class="keyword">memory</span>:
+  <span class="keyword">episodic</span>: pr-context
+  <span class="keyword">semantic</span>: kg.orders.v3
+  <span class="keyword">procedural</span>: dsl.orders
+  <span class="keyword">retention</span>: <span class="number">90</span>d
+
+<span class="keyword">retrieval</span>:
+  <span class="keyword">strategy</span>: hybrid
+  <span class="keyword">graph_depth</span>: <span class="number">2</span>
+  <span class="keyword">semantic_threshold</span>: <span class="number">0.82</span>
+  <span class="keyword">max_tokens</span>: <span class="number">8192</span>
+  <span class="keyword">precedence</span>: [authority, recency, proximity]
+  <span class="keyword">min_groundedness</span>: <span class="number">0.85</span>
+
+<span class="keyword">capabilities</span>:
+  - spec-generation
+  - code-review
+  - contract-validation
+  - impact-analysis
+
+<span class="keyword">quality_gates</span>:
+  - groundedness
+  - faithfulness
+  - citation_coverage
+  - safety
+
+<span class="keyword">on_failure</span>: escalate_to_human
+
+<span class="keyword">observability</span>:
+  <span class="keyword">trace</span>: otel
+  <span class="keyword">metrics</span>: [latency_p95, groundedness_score, escalation_rate, cost_usd]</pre>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="text-sm uppercase tracking-wide text-gray-400 mb-1">Por que agentes especializados?</h4>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-bullseye text-blue-400"></i> Foco de domínio</h5>
+                                <p class="text-xs text-gray-400">Agente de Orders não carrega Billing — context window limpo, menor custo, maior precisão.</p>
+                            </div>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-clock text-purple-400"></i> Pré-computação</h5>
+                                <p class="text-xs text-gray-400">Retrieval em build-time. Resposta mais rápida e determinística.</p>
+                            </div>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-shield-alt text-green-400"></i> Governança como API</h5>
+                                <p class="text-xs text-gray-400">Cada agente tem ownership, versão SemVer e audit trail próprios.</p>
+                            </div>
+                            <div class="card">
+                                <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-code-branch text-amber-400"></i> Evolução independente</h5>
+                                <p class="text-xs text-gray-400">Contexto evolui com o domínio — sem acoplamento entre agentes.</p>
+                            </div>
+                            <div class="mt-2">
+                                <h5 class="text-xs uppercase tracking-wide text-gray-400 mb-2">Catálogo de agentes</h5>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="pill pill-blue mono">orders-agent</span>
+                                    <span class="pill pill-purple mono">payments-agent</span>
+                                    <span class="pill pill-green mono">identity-agent</span>
+                                    <span class="pill pill-amber mono">catalog-agent</span>
+                                    <span class="pill pill-red mono">logistics-agent</span>
+                                    <span class="pill pill-blue mono">analytics-agent</span>
+                                    <span class="pill pill-purple mono">arch-review-agent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 5. GOVERNANÇA FEDERADA ===================== -->
+        <section id="governanca" class="py-20 px-6 bg-gray-900/40">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-amber mb-3"><i class="fas fa-balance-scale"></i> Governança</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Modelo federado de governança</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Inspirado em Data Mesh: <strong>core central + domain ownership</strong> — sem cair no extremo do data lake monolítico nem no caos do bottom-up puro.</p>
+                </div>
+
+                <table class="matrix">
+                    <thead>
+                        <tr>
+                            <th>Papel</th>
+                            <th>Escopo</th>
+                            <th>Responsabilidade</th>
+                            <th>Cadência</th>
+                            <th>SLA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong class="text-white">Knowledge Council</strong></td>
+                            <td>Org-wide</td>
+                            <td>Aprovação de mudanças na core ontology, política de retrieval, padrões de DSL.</td>
+                            <td>Mensal + ad hoc</td>
+                            <td>Decisão em ≤ 10 dias úteis</td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">Domain Owner</strong></td>
+                            <td>Knowledge Domain</td>
+                            <td>Curadoria de specs, ADRs, ontology do domínio. Quality gates internos.</td>
+                            <td>Semanal</td>
+                            <td>Freshness &lt; 72h</td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">Knowledge Steward</strong></td>
+                            <td>Sub-domínio / time</td>
+                            <td>Triage de contribuições, deprecação, revisão de evidências.</td>
+                            <td>Diária (assíncrona)</td>
+                            <td>Triage &lt; 24h</td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">Platform Team</strong></td>
+                            <td>L1–L5 (substrate → reasoning)</td>
+                            <td>Operação da plataforma, observabilidade, SLOs cognitivos.</td>
+                            <td>Contínua</td>
+                            <td>P95 retrieval &lt; 800ms</td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">Contributor</strong></td>
+                            <td>Qualquer</td>
+                            <td>PR de spec, ADR, evidência. Sob template + lint semântico.</td>
+                            <td>Just-in-time</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td><strong class="text-white">Auditor</strong></td>
+                            <td>Read-only cross-domain</td>
+                            <td>Verificação de lineage, evidência, conformidade regulatória.</td>
+                            <td>Trimestral</td>
+                            <td>Export &lt; 1h</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="grid md:grid-cols-2 gap-6 mt-10">
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-code-branch text-blue-400"></i> Lifecycle do conhecimento</h3>
+                        <div class="flex flex-wrap items-center gap-2 text-sm mb-3">
+                            <span class="pill pill-blue">DRAFT</span><span class="arrow-flow">→</span>
+                            <span class="pill pill-amber">REVIEW</span><span class="arrow-flow">→</span>
+                            <span class="pill pill-green">APPROVED</span><span class="arrow-flow">→</span>
+                            <span class="pill pill-purple">PUBLISHED</span><span class="arrow-flow">→</span>
+                            <span class="pill pill-red">DEPRECATED</span>
+                        </div>
+                        <ul class="text-sm text-gray-400 space-y-1.5">
+                            <li>• SemVer obrigatório (<span class="mono">MAJOR.MINOR.PATCH</span>).</li>
+                            <li>• Deprecação com janela mínima de 90 dias e <em>replacement pointer</em>.</li>
+                            <li>• Specs retiradas continuam navegáveis (immutable archive).</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-link text-purple-400"></i> Política de federação</h3>
+                        <ul class="text-sm text-gray-400 space-y-1.5">
+                            <li>• <strong class="text-gray-200">Core ontology</strong> compartilhada — mudanças exigem Knowledge Council.</li>
+                            <li>• <strong class="text-gray-200">Domain extensions</strong> — autônomas, sob curadoria do Domain Owner.</li>
+                            <li>• <strong class="text-gray-200">Contract testing semântico</strong> entre domínios em CI.</li>
+                            <li>• <strong class="text-gray-200">Aliases controlados</strong> evitam duplicidade (ex: "client" ≠ "customer" ≠ "account").</li>
+                            <li>• <strong class="text-gray-200">Federated query</strong> com <em>policy enforcement</em> por domínio.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 6. ARQUITETURA COGNITIVA ===================== -->
+        <section id="cognitiva" class="py-20 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-purple mb-3"><i class="fas fa-brain"></i> Cognição</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Quatro memórias, não uma</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">A proposta original tratava memória como bucket único. Aqui separamos por <strong>função cognitiva</strong>, com políticas de retenção e retrieval distintas.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="card">
+                        <span class="pill pill-blue mb-3"><i class="fas fa-clock"></i> Episódica</span>
+                        <h3 class="font-bold text-white mb-2">O que aconteceu</h3>
+                        <p class="text-xs text-gray-400">Conversas, runs de agente, decisões pontuais. <br><strong>TTL:</strong> 30–180 dias. <br><strong>Uso:</strong> contexto curto, debugging.</p>
+                    </div>
+                    <div class="card">
+                        <span class="pill pill-purple mb-3"><i class="fas fa-book"></i> Semântica</span>
+                        <h3 class="font-bold text-white mb-2">O que é verdade</h3>
+                        <p class="text-xs text-gray-400">Entidades canônicas, ontologia, fatos versionados. <br><strong>TTL:</strong> permanente (versionado). <br><strong>Uso:</strong> grounding, retrieval principal.</p>
+                    </div>
+                    <div class="card">
+                        <span class="pill pill-amber mb-3"><i class="fas fa-cogs"></i> Procedural</span>
+                        <h3 class="font-bold text-white mb-2">Como fazer</h3>
+                        <p class="text-xs text-gray-400">Workflows, runbooks, DSLs de agente, padrões. <br><strong>TTL:</strong> por SemVer. <br><strong>Uso:</strong> execução de tarefas.</p>
+                    </div>
+                    <div class="card">
+                        <span class="pill pill-green mb-3"><i class="fas fa-map-marker-alt"></i> Contextual</span>
+                        <h3 class="font-bold text-white mb-2">Onde estamos</h3>
+                        <p class="text-xs text-gray-400">Tenant, usuário, projeto, ambiente, permissões. <br><strong>TTL:</strong> sessão. <br><strong>Uso:</strong> escopo + autorização.</p>
+                    </div>
+                </div>
+
+                <!-- Retrieval Policy -->
+                <div class="mt-12 grid md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-filter text-blue-400"></i> Retrieval policy declarativa</h3>
+                        <p class="text-gray-400 text-sm mb-3">Sem heurísticas escondidas no código. Toda decisão de "o que recuperar" é declarativa, versionada e auditável.</p>
+                        <pre class="code-block"><span class="keyword">precedence</span>:
+  - <span class="string">authority</span>      <span class="comment"># ADR aprovado &gt; spec draft</span>
+  - <span class="string">recency</span>        <span class="comment"># menor decay rate por domínio</span>
+  - <span class="string">proximity</span>      <span class="comment"># entidade no contexto atual</span>
+  - <span class="string">citation_count</span> <span class="comment"># quantas vezes referenciado</span>
+
+<span class="keyword">conflict_resolution</span>:
+  <span class="keyword">strategy</span>: explicit
+  <span class="keyword">on_conflict</span>: surface_both_with_provenance
+  <span class="keyword">never</span>: silent_majority_wins</pre>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-shield-virus text-red-400"></i> Drift detector contextual</h3>
+                        <p class="text-gray-400 text-sm mb-3">Detecta quando o contexto recuperado começa a divergir do estado real do sistema. Previne respostas baseadas em memória obsoleta.</p>
+                        <ul class="text-sm text-gray-300 space-y-1.5">
+                            <li>• <strong>Schema drift:</strong> mudança em entidades canônicas dispara re-index.</li>
+                            <li>• <strong>Authority drift:</strong> ADR superseded → invalidação de respostas em cache.</li>
+                            <li>• <strong>Behavioral drift:</strong> queda de groundedness em runs sucessivas.</li>
+                            <li>• <strong>Time drift:</strong> claims com freshness expirada são marcadas como "stale evidence".</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 7. OBSERVABILIDADE COGNITIVA ===================== -->
+        <section id="observabilidade" class="py-20 px-6 bg-gray-900/40">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-green mb-3"><i class="fas fa-chart-line"></i> Observabilidade</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">18 KPIs cognitivos em 4 camadas</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">SLOs por domínio. Dashboard "Knowledge Vital Signs" plugado em alerting padrão (Datadog / Grafana).</p>
+                </div>
+
+                <table class="matrix">
+                    <thead>
+                        <tr>
+                            <th>Camada</th>
+                            <th>KPI</th>
+                            <th>Definição</th>
+                            <th>SLO sugerido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td rowspan="4" class="align-top"><span class="pill pill-blue">Substrate</span></td>
+                            <td>Knowledge Coverage</td><td>% de capabilities com pelo menos 1 spec aprovada.</td><td>&gt; 90%</td></tr>
+                        <tr><td>Source Freshness</td><td>Idade média da última atualização de fontes ingeridas.</td><td>&lt; 24h</td></tr>
+                        <tr><td>Orphan Rate</td><td>% de specs sem requisito ou ADR vinculado.</td><td>&lt; 5%</td></tr>
+                        <tr><td>Ingestion Lag</td><td>Latência entre evento e disponibilidade no KG.</td><td>P95 &lt; 5min</td></tr>
+
+                        <tr><td rowspan="5" class="align-top"><span class="pill pill-purple">Retrieval</span></td>
+                            <td>Recall@k</td><td>% de docs relevantes nos top-k recuperados.</td><td>&gt; 0.85</td></tr>
+                        <tr><td>Precision@k</td><td>% dos top-k que são realmente relevantes.</td><td>&gt; 0.75</td></tr>
+                        <tr><td>MRR</td><td>Mean Reciprocal Rank — onde está o primeiro relevante.</td><td>&gt; 0.7</td></tr>
+                        <tr><td>Retrieval Latency P95</td><td>Tempo de resposta da camada de retrieval.</td><td>&lt; 800ms</td></tr>
+                        <tr><td>Citation Reachability</td><td>% de citações que apontam para fonte viva.</td><td>&gt; 99%</td></tr>
+
+                        <tr><td rowspan="5" class="align-top"><span class="pill pill-amber">Reasoning</span></td>
+                            <td>Groundedness</td><td>% da resposta suportada por evidência citada.</td><td>&gt; 0.9</td></tr>
+                        <tr><td>Faithfulness</td><td>Resposta não introduz fatos fora do contexto recuperado.</td><td>&gt; 0.95</td></tr>
+                        <tr><td>Answer Relevance</td><td>Resposta endereça a pergunta feita.</td><td>&gt; 0.85</td></tr>
+                        <tr><td>Hallucination Rate</td><td>% de respostas com claim sem suporte.</td><td>&lt; 2%</td></tr>
+                        <tr><td>Escalation Rate</td><td>% de queries que requerem intervenção humana.</td><td>10–25% (saudável)</td></tr>
+
+                        <tr><td rowspan="4" class="align-top"><span class="pill pill-green">Outcome</span></td>
+                            <td>Time-to-Decision</td><td>Tempo médio de pergunta a decisão acionável.</td><td>−60% vs baseline</td></tr>
+                        <tr><td>Reuse Index</td><td>Quantas vezes uma spec é citada por outra.</td><td>&gt; 3x trimestre</td></tr>
+                        <tr><td>Lineage Depth</td><td>Profundidade média do grafo requisito → telemetria.</td><td>&gt; 5 níveis</td></tr>
+                        <tr><td>Audit Time</td><td>Tempo para gerar evidência de compliance.</td><td>&lt; 1h</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="mt-10 card">
+                    <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-stethoscope text-green-400"></i> Tracing semântico ponta-a-ponta</h3>
+                    <p class="text-gray-400 text-sm mb-3">OpenTelemetry instrumentando agentes, retrieval e LLMs. Cada span carrega:</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm text-gray-300">
+                        <ul class="space-y-1">
+                            <li><span class="mono text-blue-300">trace.id</span> — ponta-a-ponta da query</li>
+                            <li><span class="mono text-blue-300">retrieval.policy</span> — versão da política aplicada</li>
+                            <li><span class="mono text-blue-300">grounding.score</span> — confidence do reasoning</li>
+                            <li><span class="mono text-blue-300">citations[]</span> — IDs e versões das fontes</li>
+                        </ul>
+                        <ul class="space-y-1">
+                            <li><span class="mono text-purple-300">model.id</span> + <span class="mono text-purple-300">prompt.hash</span></li>
+                            <li><span class="mono text-purple-300">cost.tokens</span> + <span class="mono text-purple-300">cost.usd</span></li>
+                            <li><span class="mono text-purple-300">decision.gate</span> — quais quality gates passaram</li>
+                            <li><span class="mono text-purple-300">human.in.loop</span> — escalation se aplicável</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 8. ROADMAP ===================== -->
+        <section id="roadmap" class="py-20 px-6">
+            <div class="container mx-auto max-w-5xl">
+                <div class="text-center mb-14">
+                    <span class="pill pill-amber mb-3"><i class="fas fa-route"></i> Roadmap</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white section-title">Adoção em 4 fases incrementais</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Cada fase tem critérios objetivos de saída. Sem milestone sem evidência mensurável.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="roadmap-phase phase-now">
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <h3 class="text-2xl font-bold text-white">Fase 1 — Foundation</h3>
+                            <span class="pill pill-green">0–90 dias</span>
+                            <span class="pill pill-blue">Quick wins</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-3">Estabelecer substrate, ontologia base e primeiros agentes read-only.</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-blue-300 mb-1">Entregas</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>• Docusaurus + OpenKB integrados</li>
+                                    <li>• Core ontology v1 (10–15 entidades canônicas)</li>
+                                    <li>• Ingestão de specs e ADRs existentes</li>
+                                    <li>• GraphRAG read-only para 1 domínio piloto</li>
+                                    <li>• 5 KPIs cognitivos baseline</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-green-300 mb-1">Critérios de saída</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>✓ Knowledge Coverage &gt; 60% no domínio piloto</li>
+                                    <li>✓ Recall@10 &gt; 0.75 em benchmark interno</li>
+                                    <li>✓ Knowledge Council operando</li>
+                                    <li>✓ NPS interno &gt; 40 entre engenheiros</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-phase phase-next">
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <h3 class="text-2xl font-bold text-white">Fase 2 — Pilot Cognitive</h3>
+                            <span class="pill pill-amber">3–6 meses</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-3">Loop cognitivo completo, quality gates e primeiras ações automatizadas com human-in-the-loop.</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-amber-300 mb-1">Entregas</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>• Agentes com loop SENSE→...→LEARN completo</li>
+                                    <li>• Quality gates (groundedness, faithfulness)</li>
+                                    <li>• PR check com bloqueio de drift de contrato</li>
+                                    <li>• Tracing OTel completo</li>
+                                    <li>• Dashboard "Knowledge Vital Signs"</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-green-300 mb-1">Critérios de saída</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>✓ Groundedness &gt; 0.85 em produção</li>
+                                    <li>✓ Hallucination rate &lt; 5%</li>
+                                    <li>✓ Time-to-Decision −30% vs baseline</li>
+                                    <li>✓ Pelo menos 1 incidente resolvido com lineage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-phase phase-later">
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <h3 class="text-2xl font-bold text-white">Fase 3 — Federate</h3>
+                            <span class="pill pill-purple">6–12 meses</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-3">Knowledge Mesh: domain extensions, contract testing semântico, escalonamento para 3+ domínios.</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-purple-300 mb-1">Entregas</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>• Federated query com policy enforcement</li>
+                                    <li>• Contract tests entre domínios em CI</li>
+                                    <li>• Domain Owners + Stewards estabelecidos</li>
+                                    <li>• Self-service de onboarding de domínio</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-green-300 mb-1">Critérios de saída</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>✓ 3+ domínios em produção sem coordenação central</li>
+                                    <li>✓ Reuse Index &gt; 3x</li>
+                                    <li>✓ Audit Time &lt; 4h</li>
+                                    <li>✓ Drift entre domínios &lt; 1% por trimestre</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-phase phase-later">
+                        <div class="flex items-center gap-3 mb-2 flex-wrap">
+                            <h3 class="text-2xl font-bold text-white">Fase 4 — Autonomous</h3>
+                            <span class="pill pill-red">12–24 meses</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-3">Agentes com authority delegada (write actions), self-healing, learning loops fechados.</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-sm font-bold text-red-300 mb-1">Entregas</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>• Write agents (PR autoral, ADR auto-publicada)</li>
+                                    <li>• Self-healing em retrieval e reasoning</li>
+                                    <li>• Closed-loop learning com feedback do usuário</li>
+                                    <li>• Marketplace interno de agentes/skills</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-green-300 mb-1">Critérios de saída</h4>
+                                <ul class="text-xs text-gray-400 space-y-1">
+                                    <li>✓ Time-to-Decision −60% vs baseline</li>
+                                    <li>✓ &gt; 30% de PRs com contribuição cognitiva</li>
+                                    <li>✓ Auditoria regulatória passada com lineage</li>
+                                    <li>✓ Conhecimento operando como produto</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Riscos & Anti-padrões -->
+                <div class="mt-16 grid md:grid-cols-2 gap-6">
+                    <div class="card card-critical">
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-exclamation-triangle text-red-400"></i> Anti-padrões a evitar</h3>
+                        <ul class="text-sm text-gray-300 space-y-2">
+                            <li><strong class="text-red-300">Big bang ontológico</strong> — desenhar a ontologia perfeita antes de qualquer entrega.</li>
+                            <li><strong class="text-red-300">Agente sem human-in-the-loop</strong> em fase 1–2.</li>
+                            <li><strong class="text-red-300">RAG sem citação obrigatória</strong> — vira gerador de plausibilidade.</li>
+                            <li><strong class="text-red-300">"Vamos depois adicionar governança"</strong> — débito ontológico é exponencial.</li>
+                            <li><strong class="text-red-300">Centralização tardia</strong> — quando 5 domínios já divergiram, a fusão custa caro.</li>
+                        </ul>
+                    </div>
+                    <div class="card card-fix">
+                        <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-check-circle text-green-400"></i> Princípios não-negociáveis</h3>
+                        <ul class="text-sm text-gray-300 space-y-2">
+                            <li><strong class="text-green-300">No claim without citation.</strong></li>
+                            <li><strong class="text-green-300">Specs are versioned, deprecation is explicit.</strong></li>
+                            <li><strong class="text-green-300">Every agent action is traceable end-to-end.</strong></li>
+                            <li><strong class="text-green-300">Quality gates fail closed, not open.</strong></li>
+                            <li><strong class="text-green-300">Domain owns its semantics, platform owns its substrate.</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== 9. SÍNTESE FINAL ===================== -->
+        <section id="sintese" class="py-20 px-6 bg-gray-900/40">
+            <div class="container mx-auto max-w-4xl text-center">
+                <span class="pill pill-purple mb-4"><i class="fas fa-flag-checkered"></i> Síntese</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">O que muda quando o conhecimento é um <span class="gradient-text">sistema operativo</span></h2>
+                <p class="text-gray-400 text-lg mb-10">
+                    A versão original era uma stack. Esta versão é uma <strong>plataforma</strong>: tem usuários,
+                    SLOs, contratos, governança e roadmap auditável. Mais importante — ela trata o conhecimento
+                    como <strong>produto interno</strong>, não como subproduto da entrega.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-4 text-left mb-10">
+                    <div class="card">
+                        <h3 class="font-bold text-white mb-2"><i class="fas fa-arrow-right text-blue-400"></i> Da documentação</h3>
+                        <p class="text-sm text-gray-400">para <strong>specs versionadas, citáveis, executáveis</strong>.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="font-bold text-white mb-2"><i class="fas fa-arrow-right text-purple-400"></i> Do search</h3>
+                        <p class="text-sm text-gray-400">para <strong>retrieval governado, com policy declarativa e lineage</strong>.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="font-bold text-white mb-2"><i class="fas fa-arrow-right text-green-400"></i> Do chatbot</h3>
+                        <p class="text-sm text-gray-400">para <strong>agentes com loop cognitivo, quality gates e tracing</strong>.</p>
+                    </div>
+                </div>
+
+                <blockquote class="text-2xl md:text-3xl italic gradient-text font-semibold mt-12">
+                    "Conhecimento que não é executável vira folclore. Folclore que governa decisões é dívida estratégica."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- ===================== CTA ===================== -->
+        <section class="py-16 px-6">
+            <div class="container mx-auto max-w-3xl text-center">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Próximo passo</h3>
+                <p class="text-gray-400 mb-8">
+                    Esta especificação está pronta para um <strong>workshop de 90 minutos</strong> com arquitetura,
+                    plataforma e domínio piloto. Saída: backlog priorizado para a Fase 1 — Foundation.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <a href="mailto:mauricio@issei.com.br?subject=Knowledge%20OS%20—%20Workshop"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white"
+                        style="background: linear-gradient(90deg, #007bff, #8a2be2);">
+                        <i class="fas fa-calendar-alt"></i> Agendar workshop
+                    </a>
+                    <a href="./catalogo.html"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-blue-400 border border-blue-500/40 hover:bg-blue-500/10">
+                        <i class="fas fa-folder-open"></i> Ver catálogo completo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-black/40 border-t border-gray-800 py-12 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white font-bold mb-3">Knowledge OS Enterprise</h3>
+                    <p class="text-gray-500 text-sm">Especificação revisada em 7 de maio de 2026 — versão 2.0. Material aberto a iteração e crítica.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-3">Referências conceituais</h3>
+                    <ul class="text-gray-500 text-sm space-y-1">
+                        <li>• Edwards et al., <em>GraphRAG</em> (Microsoft Research, 2024)</li>
+                        <li>• Zaharia et al., <em>Compound AI Systems</em> (BAIR, 2024)</li>
+                        <li>• Dehghani, <em>Data Mesh</em> (O'Reilly)</li>
+                        <li>• Nygard, <em>Documenting Architecture Decisions</em></li>
+                        <li>• OpenTelemetry GenAI Semantic Conventions</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-3">Autor</h3>
+                    <p class="text-gray-500 text-sm">Maurício Yokoyama Issei — Tech Lead / Enterprise Architect.</p>
+                    <div class="flex gap-3 mt-3 text-gray-400">
+                        <a href="https://www.linkedin.com/in/mauricioissei/" class="hover:text-blue-400" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://github.com/issei" class="hover:text-blue-400" aria-label="GitHub"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="mailto:mauricio@issei.com.br" class="hover:text-blue-400" aria-label="Email"><i class="fas fa-envelope fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 text-center">
+                <p class="text-gray-600 text-xs">&copy; 2026 Maurício Yokoyama Issei · Knowledge OS Enterprise v2.0 · <a href="./privacidade.html" class="hover:text-blue-400">Privacidade</a> · <a href="./termos.html" class="hover:text-blue-400">Termos</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
