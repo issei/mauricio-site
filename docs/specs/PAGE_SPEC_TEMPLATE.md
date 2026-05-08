@@ -6,8 +6,8 @@ Para solicitar a criação de uma nova página, preencha este template e salve c
 
 ## 1. Informações Básicas
 *   **Nome do Arquivo**: `exemplo.html` (deve ser em minúsculo, sem espaços)
-*   **URL Final**: `boutiqueempresarial.com.br/exemplo`
-*   **Título da Página (SEO)**: `Título Impactante | Boutique Empresarial`
+*   **URL Final**: `mauricio.issei.com.br/exemplo`
+*   **Título da Página (SEO)**: `Título Impactante | Maurício Yokoyama Issei`
 *   **Descrição (Meta Description)**: `Resumo curto e persuasivo do conteúdo da página para aparecer no Google (max 160 caracteres).`
 
 ## 2. Estrutura e Layout

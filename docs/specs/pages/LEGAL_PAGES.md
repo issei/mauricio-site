@@ -1,16 +1,16 @@
 # SDD — Páginas Legais: Política de Privacidade & Termos de Uso
 
-**Status:** Draft v1.0
+**Status:** Draft v1.1
 **Autor:** Engenharia (especificação)
 **Data:** 2026-05-08
-**Escopo:** `src/privacidade.html`, `src/termos.html` e componente `cookie-consent` (novo)
-**Substitui:** versões atuais (Boutique Empresarial, fevereiro/2026)
+**Escopo:** `src/privacidade.html`, `src/termos.html`, `src/cookies.html` e componente `cookie-consent`
+**Substitui:** versões anteriores genéricas de fevereiro/2026
 
 ---
 
 ## 0. TL;DR
 
-Reescrever **`privacidade.html`** e **`termos.html`** para refletir a realidade jurídica atual (LGPD + Marco Civil + ANPD 2024/2025 + GDPR + CCPA/CPRA + EU AI Act + DSA + ePrivacy/cookies), corrigir o **conflito de marca** (páginas hoje atribuídas a "Boutique Empresarial" em domínio `mauricio.issei.com.br`), alinhar ao **design Dark Tech** do portfólio e introduzir um **banner de consentimento de cookies com Google Consent Mode v2**, hoje inexistente — o que é o principal gap de compliance do site.
+Reescrever **`privacidade.html`** e **`termos.html`** para refletir a realidade jurídica atual (LGPD + Marco Civil + ANPD 2024/2025 + GDPR + CCPA/CPRA + EU AI Act + DSA + ePrivacy/cookies), consolidar **controlador único** (Maurício Yokoyama Issei), alinhar ao **design Dark Tech** do portfólio e introduzir um **banner de consentimento de cookies com Google Consent Mode v2**, hoje inexistente — o que é o principal gap de compliance do site.
 
 ---
 
@@ -20,25 +20,18 @@ Reescrever **`privacidade.html`** e **`termos.html`** para refletir a realidade 
 
 | Item | Situação | Risco |
 |---|---|---|
-| `privacidade.html` (existente) | Marca "Boutique Empresarial", DPO `talita@boutiqueempresarial.com.br`, canonical para `boutiqueempresarial.com.br`, mas linkada em [knowledge-os-presentation.html:2257](../../src/knowledge-os-presentation.html:2257) com © Maurício Yokoyama Issei | Inconsistência de controlador → titular não sabe quem é o controlador (violação do art. 9º, II, LGPD) |
-| `termos.html` (existente) | Idem acima; cláusulas genéricas, sem menção a IA generativa/treinamento, sem DSA, sem retenção, sem base legal explícita | Termos não suprem dever de informação atualizado |
+| `privacidade.html` (anterior) | Conteúdo genérico, sem identificação clara do controlador, canonical inconsistente com domínio | Inconsistência de controlador → titular não sabe quem é o controlador (violação do art. 9º, II, LGPD) |
+| `termos.html` (anterior) | Cláusulas genéricas, sem menção a IA generativa/treinamento, sem DSA, sem retenção, sem base legal explícita | Termos não suprem dever de informação atualizado |
 | Banner de cookies | **Inexistente** | GTM/GA4 disparam **antes** de qualquer consentimento → violação ANPD Guia de Cookies (out/2023, revisão 2024) e GDPR/ePrivacy |
-| Tracking | GTM `GTM-KQ9R3GV3` + GA4 `G-GEKLHZYVYX` (e `G-8HNXV7KTY9` em páginas Boutique) sem Consent Mode | Mensuração ilícita; risco de sanção da ANPD |
-| Estilo | Páginas legais em tema claro (creme/dourado), portfólio em **Dark Tech** ([STYLE_GUIDE.md](../STYLE_GUIDE.md)) | Quebra de identidade visual, perda de confiança |
+| Tracking | GTM `GTM-KQ9R3GV3` + GA4 `G-GEKLHZYVYX` sem Consent Mode | Mensuração ilícita; risco de sanção da ANPD |
+| Estilo | Páginas legais em tema claro, portfólio em **Dark Tech** ([STYLE_GUIDE.md](../STYLE_GUIDE.md)) | Quebra de identidade visual, perda de confiança |
 | Transferência internacional | AWS S3 + CloudFront (regiões internacionais), GA4 (EUA) | Falta cláusula de transferência internacional (art. 33 LGPD; ANPD Resolução CD/ANPD 19/2024) |
 
-### 1.2. Dois cenários de marca — DECISÃO PENDENTE
+### 1.2. Identificação do controlador
 
-O domínio hospeda conteúdo de **dois operadores distintos**:
+O site `mauricio.issei.com.br` tem **controlador único**: **Maurício Yokoyama Issei**, responsável pelas operações de tratamento de dados pessoais decorrentes do portfólio profissional, conteúdos técnicos, propostas de consultoria, formulários de contato e ferramentas interativas (Knowledge OS, diagnósticos).
 
-- **Maurício Yokoyama Issei** (portfólio profissional, propostas técnicas, Knowledge OS, CV)
-- **Boutique Empresarial / Talita** (consultoria, formulários de aplicação, WhatsApp Business, Meta Ads)
-
-**Opção A — Páginas únicas com co-controladores declarados:** uma única `privacidade.html` e `termos.html` que declaram explicitamente os dois controladores e a finalidade de cada operação. Recomendado se ambas operações compartilham infraestrutura (mesmo S3, mesmo GTM).
-
-**Opção B — Páginas separadas por marca:** `privacidade.html` (Maurício) + `boutique/privacidade.html` (Talita) com canonical próprio. Recomendado se são entidades jurídicas distintas com CNPJs diferentes.
-
-> ⚠️ **Bloqueador:** esta SDD assume **Opção A** como default. Se a decisão for B, replicar a estrutura para o subpath da Boutique.
+Canal único de contato e Encarregado (DPO): `mauricio@issei.com.br`.
 
 ---
 
@@ -86,7 +79,7 @@ A redação deve atender simultaneamente:
 
 ```
 src/
-├── privacidade.html             ← reescrita (Opção A: co-controladores)
+├── privacidade.html             ← reescrita (controlador único: Maurício Issei)
 ├── termos.html                  ← reescrita
 ├── cookies.html                 ← NOVO: detalhamento técnico de cookies
 ├── js/
@@ -107,7 +100,7 @@ public/
 ### 3.3. Indexação
 
 - Manter `<meta name="robots" content="noindex, follow">` — evita SEO concorrer com home, mas permite que crawlers leiam e citem.
-- **Remover** `canonical` para `boutiqueempresarial.com.br`. Trocar para `https://mauricio.issei.com.br/privacidade.html`.
+- `canonical` consistente com o domínio: `https://mauricio.issei.com.br/privacidade.html`.
 
 ---
 
@@ -117,7 +110,7 @@ public/
 
 | Campo | Valor |
 |---|---|
-| `<title>` | `Política de Privacidade | Maurício Issei & Boutique Empresarial` |
+| `<title>` | `Política de Privacidade | Maurício Yokoyama Issei` |
 | `<meta name="description">` | `Como tratamos seus dados pessoais conforme a LGPD, GDPR e demais legislações vigentes. Versão 2.0 — maio/2026.` |
 | `<link rel="canonical">` | `https://mauricio.issei.com.br/privacidade.html` |
 | `robots` | `noindex, follow` |
@@ -132,11 +125,11 @@ public/
 - Tabela de 4 colunas: **O que coletamos** | **Por quê** | **Com quem compartilhamos** | **Por quanto tempo**
 - **Rationale:** ANPD recomenda "camadas" de informação — resumo + política completa (Guia de Boas Práticas, 2024). Reduz fricção de leitura.
 
-#### Seção 1 — Identificação dos Controladores
+#### Seção 1 — Identificação do Controlador
 
 - Nome civil de Maurício Yokoyama Issei + CPF mascarado (ex: `***.456.789-**`) ou CNPJ se MEI
-- Nome empresarial Boutique Empresarial + CNPJ + endereço
-- Definir se são **co-controladores** (art. 5º, IX, LGPD) ou **controladores independentes**
+- Endereço completo com CEP
+- E-mail de contato: `mauricio@issei.com.br`
 - **Fundamento:** Art. 9º, II, LGPD (identificação do controlador)
 
 #### Seção 2 — Definições
@@ -240,9 +233,9 @@ Resumo + link para `cookies.html` (página dedicada).
 #### Seção 13 — Encarregado (DPO) e Canais
 
 - Nome ou função do DPO
-- E-mail dedicado: `dpo@mauricio.issei.com.br` (ou `dpo@boutiqueempresarial.com.br` se Opção B)
+- E-mail único: `mauricio@issei.com.br`
 - Endereço postal
-- Tempo de resposta SLA
+- Tempo de resposta SLA: até 15 dias úteis
 - **Fundamento:** Art. 41 LGPD.
 
 #### Seção 14 — Reclamações à ANPD
@@ -268,7 +261,7 @@ Resumo + link para `cookies.html` (página dedicada).
 
 | Campo | Valor |
 |---|---|
-| `<title>` | `Termos de Uso | Maurício Issei & Boutique Empresarial` |
+| `<title>` | `Termos de Uso | Maurício Yokoyama Issei` |
 | `<meta name="description">` | `Regras de uso do site, propriedade intelectual, limitação de responsabilidade e foro.` |
 | `<link rel="canonical">` | `https://mauricio.issei.com.br/termos.html` |
 | `robots` | `noindex, follow` |
@@ -303,7 +296,7 @@ Resumo + link para `cookies.html` (página dedicada).
 - Conteúdo (textos, vídeos, código, marca, slides, presentações) protegido por **Lei 9.610/98** (Direitos Autorais) e **Lei 9.279/96** (Propriedade Industrial).
 - Código aberto (se houver no GitHub) sob a licença declarada.
 - CV (`cv.json`) — uso permitido para fins de avaliação profissional; vedada redistribuição comercial.
-- **DMCA / notice & takedown:** canal `dmca@...` para reclamações de direitos autorais (necessário se há audiência EUA).
+- **DMCA / notice & takedown:** canal único `mauricio@issei.com.br` (assunto: `DMCA / Direitos Autorais`).
 
 #### 7. Conteúdo Gerado pelo Usuário (UGC)
 
@@ -510,19 +503,18 @@ Detalhamento técnico — listagem nominal:
 
 | # | Task | Owner sugerido | Dependência |
 |---|---|---|---|
-| T1 | Decidir Opção A (co-controladores) vs Opção B (páginas separadas) | Maurício + Talita | — |
-| T2 | Coletar dados jurídicos: CNPJ(s), endereço(s), DPO, e-mails dedicados | Maurício/Talita | T1 |
-| T3 | Auditar cookies reais (DevTools + GTM Preview) e popular `cookies.html` | Eng | T1 |
-| T4 | Implementar `cookie-consent.js` com Consent Mode v2 | Eng | T3 |
-| T5 | Atualizar GTM: gate de consentimento nas tags | Eng | T4 |
-| T6 | Reescrever `privacidade.html` (16 seções, tema Dark) | Eng + revisão jurídica | T1, T2 |
-| T7 | Reescrever `termos.html` (19 seções) | Eng + revisão jurídica | T1, T2 |
-| T8 | Criar `cookies.html` (página de detalhamento) | Eng | T3, T6 |
-| T9 | Atualizar todos os footers (procurar por `privacidade.html`, `termos.html`, copyright) | Eng | T6, T7 |
-| T10 | Adicionar links no menu/footer da `index.html` | Eng | T6, T7 |
-| T11 | Testes Playwright: banner aparece, opt-in/out funciona, GA não dispara antes de consent | QA | T4, T5 |
-| T12 | Revisão final por advogado especializado em proteção de dados | Maurício/Talita | T6, T7 |
-| T13 | Deploy + verificação de Consent Mode no Google Tag Assistant | Eng | T11, T12 |
+| T1 | Coletar dados jurídicos: CPF/CNPJ, endereço completo com CEP | Maurício | — |
+| T2 | Auditar cookies reais (DevTools + GTM Preview) e popular `cookies.html` | Eng | — |
+| T3 | Implementar `cookie-consent.js` com Consent Mode v2 | Eng | T2 |
+| T4 | Atualizar GTM: gate de consentimento nas tags | Eng | T3 |
+| T5 | Reescrever `privacidade.html` (16 seções, tema Dark) | Eng + revisão jurídica | T1 |
+| T6 | Reescrever `termos.html` (19 seções) | Eng + revisão jurídica | T1 |
+| T7 | Criar `cookies.html` (página de detalhamento) | Eng | T2, T5 |
+| T8 | Atualizar todos os footers (procurar por `privacidade.html`, `termos.html`, copyright) | Eng | T5, T6 |
+| T9 | Adicionar links no menu/footer da `index.html` | Eng | T5, T6 |
+| T10 | Testes Playwright: banner aparece, opt-in/out funciona, GA não dispara antes de consent | QA | T3, T4 |
+| T11 | Revisão final por advogado especializado em proteção de dados | Maurício | T5, T6 |
+| T12 | Deploy + verificação de Consent Mode no Google Tag Assistant | Eng | T10, T11 |
 
 ### 9.2. Critérios de Aceite
 
@@ -546,7 +538,7 @@ Detalhamento técnico — listagem nominal:
 |---|---|---|---|
 | Texto muito jurídico afasta usuário | Média | Médio | Resumo executivo + linguagem em camadas |
 | Banner derruba métricas de GA | Alta | Médio | Esperado e legítimo; comunicar stakeholder; usar **Consent Mode modeling** que recupera 60-70% via modelagem |
-| Opção A invalidada juridicamente (controlador único exigido) | Baixa | Alto | T12 (revisão por advogado) antes de publicar |
+| Identificação do controlador insuficiente | Baixa | Alto | T11 (revisão por advogado) antes de publicar |
 | Mudanças de plataforma (Meta, Google) tornam texto obsoleto | Alta (recorrente) | Baixo | Versionamento + revisão semestral programada |
 
 ### 9.4. Manutenção contínua
@@ -602,3 +594,4 @@ Não publicada; mantida em `docs/internal/ropa.md` (criar). Exigido pelo art. 37
 | Versão | Data | Autor | Mudança |
 |---|---|---|---|
 | 1.0 | 2026-05-08 | Engenharia | Draft inicial |
+| 1.1 | 2026-05-08 | Engenharia | Consolidação de controlador único (Maurício Issei). Remoção de referências a marcas terceiras. Centralização do canal de contato em `mauricio@issei.com.br`. |
