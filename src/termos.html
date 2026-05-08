@@ -1,213 +1,452 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HNXV7KTY9"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-8HNXV7KTY9');
-</script>
+<html lang="pt-BR">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="BoutiqueEmp" />
-<link rel="manifest" href="/site.webmanifest" />
-<title>Termos de Uso | Boutique Empresarial</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://boutiqueempresarial.com.br/termos.html">
+    <title>Termos de Uso | Maurício Issei & Boutique Empresarial</title>
+    <meta name="description"
+        content="Regras de uso do site, propriedade intelectual, comunicações, IA, limitação de responsabilidade e foro. Versão 2.0 — maio/2026.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://mauricio.issei.com.br/termos.html">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="/style.css">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-2: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-purple: #8a2be2;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+        a:hover { color: #79b8ff; }
 
-<style>
-    :root {
-        --bg-color: #f5f2eb;
-        --text-primary: #1C1C1C;
-        --text-secondary: #555555;
-        --border-color: #E5E5E5;
-        --gold-subtle: #C5A059;
-    }
+        .legal-header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(13,17,23,0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+        .legal-header-inner {
+            max-width: 1100px; margin: 0 auto;
+            padding: 14px 24px; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .logo { font-weight: 800; color:#fff; text-decoration: none; font-size: 1rem; letter-spacing: -0.01em; }
+        .logo span.dot {
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .back-link { color: var(--muted); font-size: .9rem; text-decoration: none; }
+        .back-link:hover { color: var(--accent); }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+        .layout {
+            max-width: 1100px; margin: 0 auto;
+            padding: 48px 24px 80px;
+            display: grid; grid-template-columns: 1fr; gap: 32px;
+        }
+        @media (min-width: 1024px) {
+            .layout { grid-template-columns: 240px 1fr; }
+            .toc { position: sticky; top: 80px; align-self: start; }
+        }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-primary);
-        line-height: 1.8;
-        font-weight: 300;
-    }
+        .toc {
+            background: var(--bg-2); border: 1px solid var(--border);
+            border-radius: 8px; padding: 16px; font-size: .85rem;
+        }
+        .toc-title {
+            font-weight: 700; color:#fff; margin-bottom: 10px;
+            font-size: .8rem; text-transform: uppercase; letter-spacing: .05em;
+        }
+        .toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+        .toc li { counter-increment: toc; margin: 6px 0; }
+        .toc li::before { content: counter(toc) '. '; color: var(--muted); }
+        .toc a { color: var(--text); text-decoration: none; }
+        .toc a:hover { color: var(--accent); }
 
-    h1,
-    h2,
-    h3 {
-        font-family: 'Playfair Display', serif;
-        color: var(--text-primary);
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-    }
+        main { min-width: 0; }
+        h1 { font-size: 2.25rem; font-weight: 800; color:#fff; margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.2; }
+        .version-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--bg-2); border: 1px solid var(--border);
+            border-radius: 999px; padding: 4px 12px;
+            font-size: .8rem; color: var(--muted); margin-bottom: 24px;
+        }
+        .version-chip strong { color: var(--accent); font-weight: 600; }
 
-    h1 {
-        font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+        h2 {
+            font-size: 1.4rem; font-weight: 700; color:#fff;
+            margin: 48px 0 16px; padding-bottom: 8px; position: relative;
+            scroll-margin-top: 80px;
+        }
+        h2::after {
+            content:''; position: absolute; left: 0; bottom: 0;
+            width: 56px; height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(88,166,255,0.4);
+        }
+        h3 { font-size: 1.05rem; color:#fff; margin: 24px 0 8px; font-weight: 600; }
 
-    h2 {
-        font-size: 1.5rem;
-        border-bottom: 1px solid var(--gold-subtle);
-        padding-bottom: 10px;
-        display: inline-block;
-    }
+        p, li { font-size: 1rem; color: var(--text); margin: 0 0 12px; }
+        ul, ol { padding-left: 24px; margin: 0 0 16px; }
+        li { margin-bottom: 6px; }
+        strong { color: #fff; font-weight: 600; }
+        code {
+            background: var(--bg-2); padding: 2px 6px; border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace; font-size: .85em; color: var(--accent);
+        }
 
-    p,
-    li {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-        text-align: justify;
-    }
+        .summary-card {
+            background: linear-gradient(135deg, rgba(88,166,255,0.08), rgba(138,43,226,0.06));
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 24px; margin: 24px 0 40px;
+        }
+        .summary-card h2 { margin-top: 0; font-size: 1.1rem; }
+        .summary-card h2::after { display: none; }
 
-    ul {
-        list-style: none;
-        padding-left: 20px;
-    }
+        .callout {
+            background: var(--bg-2);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px; padding: 16px 20px; margin: 20px 0;
+        }
+        .callout.warning { border-left-color: #f59e0b; }
+        .callout.success { border-left-color: #10b981; }
+        .callout strong { display: block; margin-bottom: 4px; }
 
-    ul li::before {
-        content: "•";
-        color: var(--gold-subtle);
-        font-weight: bold;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1em;
-    }
+        footer.legal-footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px; text-align: center;
+            color: var(--muted); font-size: .85rem;
+        }
+        footer.legal-footer a { color: var(--muted); margin: 0 8px; }
+        footer.legal-footer a:hover { color: var(--accent); }
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 60px 24px;
-        background: #fff;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-
-    /* Header Simplificado para Páginas Internas */
-    header {
-        text-align: center;
-        padding-bottom: 40px;
-        border-bottom: 1px solid var(--border-color);
-        margin-bottom: 40px;
-    }
-
-    .logo {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--text-primary);
-    }
-
-    footer {
-        text-align: center;
-        margin-top: 60px;
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-    }
-
-    a {
-        color: var(--text-primary);
-        text-decoration: underline;
-    }
-</style>
+        .skip-link { position: absolute; left: -9999px; top: 8px; background: var(--accent); color:#fff; padding: 8px 12px; border-radius: 6px; }
+        .skip-link:focus { left: 8px; z-index: 100; }
+    </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
 
-    <div class="container">
-        <header>
-            <a href="/" class="logo">Boutique Empresarial<span style="color:var(--gold-subtle)">.</span></a>
-        </header>
+    <header class="legal-header">
+        <div class="legal-header-inner">
+            <a href="/" class="logo">Maurício Issei<span class="dot">.</span></a>
+            <a href="/" class="back-link">← Voltar para o site</a>
+        </div>
+    </header>
 
-        <main>
+    <div class="layout">
+        <aside class="toc" aria-label="Índice">
+            <div class="toc-title">Índice</div>
+            <ol>
+                <li><a href="#sec-aceite">Aceite e capacidade</a></li>
+                <li><a href="#sec-provedor">Identificação do provedor</a></li>
+                <li><a href="#sec-objeto">Objeto e serviços</a></li>
+                <li><a href="#sec-conta">Cadastro e conta</a></li>
+                <li><a href="#sec-conduta">Conduta do usuário</a></li>
+                <li><a href="#sec-pi">Propriedade intelectual</a></li>
+                <li><a href="#sec-ugc">Conteúdo gerado pelo usuário</a></li>
+                <li><a href="#sec-comunicacao">Comunicação e WhatsApp</a></li>
+                <li><a href="#sec-ia">Conteúdo gerado por IA</a></li>
+                <li><a href="#sec-pagamentos">Pagamentos e reembolso</a></li>
+                <li><a href="#sec-resp">Limitação de responsabilidade</a></li>
+                <li><a href="#sec-indenizacao">Indenização</a></li>
+                <li><a href="#sec-links">Links de terceiros</a></li>
+                <li><a href="#sec-mudancas">Modificações</a></li>
+                <li><a href="#sec-suspensao">Suspensão</a></li>
+                <li><a href="#sec-privacidade">Privacidade</a></li>
+                <li><a href="#sec-disputas">Disputas e foro</a></li>
+                <li><a href="#sec-gerais">Cláusulas gerais</a></li>
+                <li><a href="#sec-contato">Contato</a></li>
+            </ol>
+        </aside>
+
+        <main id="main-content">
             <h1>Termos de Uso</h1>
+            <span class="version-chip">
+                <i class="fa-solid fa-file-contract"></i>
+                <strong>v2.0</strong> · atualizada em 08 de maio de 2026
+            </span>
 
-            <p><strong>Última atualização:</strong> Fevereiro de 2026</p>
-            <p>Ao acessar e utilizar o site e os serviços da <strong>Boutique Empresarial</strong>, você concorda com os
-                seguintes Termos de Uso. Caso não concorde com qualquer parte destes termos, recomendamos que não
-                utilize nossos serviços.</p>
-
-            <h2>1. Serviços Oferecidos</h2>
-            <p>A Boutique Empresarial oferece serviços de consultoria estratégica, gestão financeira e estruturação de
-                negócios. As informações contidas neste site têm caráter informativo e não constituem aconselhamento
-                legal ou financeiro vinculativo sem a devida contratação formal de nossos serviços.</p>
-
-            <h2>2. Uso do Site e Propriedade Intelectual</h2>
-            <p>Todo o conteúdo deste site, incluindo textos, logotipos, imagens e design, é de propriedade exclusiva da
-                Boutique Empresarial ou de seus licenciadores e está protegido pelas leis de direitos autorais e
-                propriedade intelectual do Brasil.</p>
-            <p>É proibida a reprodução, distribuição ou modificação de qualquer conteúdo sem nossa autorização prévia
-                por escrito.</p>
-
-            <h2>3. Comunicação via WhatsApp e E-mail</h2>
-            <p>Ao preencher nossos formulários de contato ou aplicação, você concorda em receber comunicações da
-                Boutique Empresarial via e-mail ou WhatsApp para fins relacionados à sua solicitação e eventuais
-                atualizações sobre nossos serviços.</p>
-            <p>Utilizamos a API oficial do WhatsApp Business para garantir a segurança e conformidade das comunicações.
-                Você pode optar por não receber mais mensagens a qualquer momento, seguindo as instruções de
-                descadastramento enviadas ou entrando em contato conosco.</p>
-
-            <h2>4. Limitação de Responsabilidade</h2>
-            <p>A Boutique Empresarial envida seus melhores esforços para garantir a precisão das informações no site,
-                mas não se responsabiliza por eventuais erros, omissões ou desatualizações. O uso das informações
-                contidas neste site é de sua inteira responsabilidade.</p>
-            <p>Em nenhuma circunstância a Boutique Empresarial será responsável por danos diretos, indiretos,
-                incidentais ou consequenciais resultantes do uso ou da impossibilidade de uso deste site.</p>
-
-            <h2>5. Links para Terceiros</h2>
-            <p>Este site pode conter links para sites de terceiros (como plataformas de pagamento ou redes sociais). A
-                Boutique Empresarial não controla e não é responsável pelo conteúdo ou práticas de privacidade desses
-                sites.</p>
-
-            <h2>6. Alterações nos Termos</h2>
-            <p>Reservamo-nos o direito de alterar estes Termos de Uso a qualquer momento. As alterações entrarão em
-                vigor imediatamente após a publicação no site. Recomendamos que você revise esta página periodicamente.
+            <p>Bem-vindo(a). Estes Termos de Uso ("Termos") regulam o acesso e o uso do site
+                <strong>mauricio.issei.com.br</strong> e dos serviços oferecidos por <strong>Maurício Yokoyama
+                    Issei</strong> e pela <strong>Boutique Empresarial</strong> ("nós"). Ao navegar ou interagir com o
+                site, você ("usuário") concorda com estes Termos. Se discordar, por favor, não utilize o site.
             </p>
 
-            <h2>7. Foro e Legislação Aplicável</h2>
-            <p>Estes Termos de Uso são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da
-                Comarca de São Paulo, Estado de São Paulo, para dirimir quaisquer controvérsias decorrentes destes
-                termos, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+            <section class="summary-card">
+                <h2>Resumo em 30 segundos</h2>
+                <ul>
+                    <li>O site é informativo: portfólio profissional, propostas de consultoria e conteúdo educacional.
+                    </li>
+                    <li>Você não pode copiar, reproduzir ou redistribuir nosso conteúdo sem autorização escrita.</li>
+                    <li>Comunicações por WhatsApp e e-mail dependem do seu opt-in e podem ser canceladas a qualquer
+                        momento.</li>
+                    <li>Conteúdos gerados por IA são identificados; decisões com efeito sobre você passam por revisão
+                        humana.</li>
+                    <li>Foro: São Paulo/SP, ressalvado o direito do consumidor de escolher o foro de seu domicílio.
+                    </li>
+                </ul>
+            </section>
 
-            <h2>8. Contato</h2>
-            <p>Se você tiver dúvidas sobre estes Termos de Uso, entre em contato conosco:</p>
-            <p style="margin-top: 1rem;">
-                <strong>E-mail:</strong> talita@boutiqueempresarial.com.br<br>
-                <strong>Endereço:</strong> Rua do Estilo Barroco, 329 - São Paulo, SP
+            <!-- 1 -->
+            <h2 id="sec-aceite">1. Aceite e capacidade</h2>
+            <p>O uso do site implica aceite tácito destes Termos. Para preencher formulários, contratar serviços ou
+                manter qualquer relação que envolva tratamento de dados pessoais ou contraprestação financeira, você
+                declara ter <strong>capacidade civil plena (≥18 anos)</strong> ou estar devidamente representado por
+                quem a tenha.</p>
+
+            <!-- 2 -->
+            <h2 id="sec-provedor">2. Identificação do provedor</h2>
+            <h3>Maurício Yokoyama Issei</h3>
+            <ul>
+                <li>CPF/CNPJ: [PLACEHOLDER]</li>
+                <li>Endereço: [PLACEHOLDER]</li>
+                <li>E-mail: <a href="mailto:contato@issei.com.br">contato@issei.com.br</a></li>
+            </ul>
+            <h3>Boutique Empresarial</h3>
+            <ul>
+                <li>CNPJ: [PLACEHOLDER]</li>
+                <li>Endereço: Rua do Estilo Barroco, 329 — São Paulo, SP</li>
+                <li>E-mail: <a href="mailto:talita@boutiqueempresarial.com.br">talita@boutiqueempresarial.com.br</a>
+                </li>
+            </ul>
+
+            <!-- 3 -->
+            <h2 id="sec-objeto">3. Objeto e serviços</h2>
+            <p>O site oferece:</p>
+            <ul>
+                <li>Portfólio profissional, currículo dinâmico e propostas técnicas;</li>
+                <li>Conteúdo educacional (artigos, vídeos, apresentações);</li>
+                <li>Formulários de contato e aplicação para serviços de consultoria;</li>
+                <li>Ferramentas interativas (ex.: <em>Knowledge OS</em>, diagnósticos), inclusive com componentes
+                    baseados em IA generativa.</li>
+            </ul>
+            <div class="callout warning">
+                <strong>O que o site não é</strong>
+                Aconselhamento jurídico, contábil, tributário ou financeiro vinculativo. As informações têm caráter
+                informativo e não substituem consultoria contratual formal. Não há vínculo empregatício pelo simples uso
+                do site.
+            </div>
+
+            <!-- 4 -->
+            <h2 id="sec-conta">4. Cadastro e conta</h2>
+            <p>Algumas áreas (ex.: painel administrativo) exigem credenciais. Você é responsável por:</p>
+            <ul>
+                <li>Manter a confidencialidade de senha e tokens;</li>
+                <li>Não compartilhar acesso com terceiros;</li>
+                <li>Comunicar-nos imediatamente em caso de suspeita de uso indevido;</li>
+                <li>Fornecer informações verdadeiras e atualizadas.</li>
+            </ul>
+            <p>Reservamo-nos o direito de revogar acesso por motivo justificado.</p>
+
+            <!-- 5 -->
+            <h2 id="sec-conduta">5. Conduta do usuário</h2>
+            <p>É vedado, exemplificativamente:</p>
+            <ul>
+                <li><em>Scraping</em> ou raspagem em massa, automação que sobrecarregue a infraestrutura;</li>
+                <li>Engenharia reversa, descompilação ou tentativa de explorar vulnerabilidades;</li>
+                <li>Publicar, transmitir ou solicitar conteúdo ilícito, ofensivo, discriminatório ou que viole direitos
+                    de terceiros;</li>
+                <li>Uso não autorizado de marcas, nomes empresariais ou identidade visual;</li>
+                <li>Falsidade ideológica, personificação de terceiros, fornecimento de dados falsos.</li>
+            </ul>
+            <p>Estas vedações observam o Marco Civil da Internet (Lei 12.965/2014, arts. 7º e 8º) e podem caracterizar
+                ilícito penal, sem prejuízo de responsabilização civil.</p>
+
+            <!-- 6 -->
+            <h2 id="sec-pi">6. Propriedade intelectual</h2>
+            <p>Todo o conteúdo deste site — textos, imagens, vídeos, áudios, código, logotipos, marcas, identidade
+                visual, slides, apresentações, design e arquitetura — é protegido pela <strong>Lei 9.610/1998</strong>
+                (Direitos Autorais) e pela <strong>Lei 9.279/1996</strong> (Propriedade Industrial), sendo titularidade
+                exclusiva dos provedores ou de seus licenciadores.</p>
+            <p>É <strong>vedada</strong> a reprodução, distribuição, modificação, comunicação pública ou exploração
+                comercial sem autorização prévia e expressa, por escrito.</p>
+            <h3>Currículo público (cv.json)</h3>
+            <p>O arquivo <code>cv.json</code>, hospedado publicamente no GitHub, pode ser consumido por agentes
+                automatizados (ATS, IAs de busca) <strong>exclusivamente</strong> para fins de avaliação profissional.
+                Vedada redistribuição comercial ou uso para treinamento de modelos sem consentimento explícito.</p>
+            <h3>Notice & takedown (DMCA)</h3>
+            <p>Se você é titular de direito autoral e entende que algum conteúdo aqui hospedado infringe seus direitos,
+                envie-nos uma notificação detalhada para <a href="mailto:dmca@issei.com.br">dmca@issei.com.br</a>
+                contendo: (i) identificação da obra, (ii) prova da titularidade, (iii) localização do conteúdo
+                infrator, (iv) declaração de boa-fé e responsabilidade pelas informações prestadas.</p>
+
+            <!-- 7 -->
+            <h2 id="sec-ugc">7. Conteúdo gerado pelo usuário (UGC)</h2>
+            <p>Atualmente, o site <strong>não disponibiliza áreas públicas de comentário ou upload</strong>. Caso isso
+                mude, ao publicar conteúdo, você:</p>
+            <ul>
+                <li>Garante ser titular ou ter autorização para o material;</li>
+                <li>Concede licença não-exclusiva, mundial e gratuita para hospedagem, exibição e divulgação no escopo
+                    do site;</li>
+                <li>Aceita as regras de moderação, observado o <strong>Digital Services Act (UE 2022/2065)</strong> para
+                    usuários da União Europeia.</li>
+            </ul>
+
+            <!-- 8 -->
+            <h2 id="sec-comunicacao">8. Comunicação eletrônica e WhatsApp</h2>
+            <p>Ao preencher formulários, você concorda em receber comunicações por <strong>e-mail</strong> ou
+                <strong>WhatsApp</strong> relacionadas à sua solicitação e a atualizações de nossos serviços, conforme
+                escolhido.
+            </p>
+            <ul>
+                <li>Utilizamos a <strong>API Oficial do WhatsApp Business</strong>, em conformidade com os termos da
+                    Meta;</li>
+                <li>Frequência típica: comunicações pontuais relacionadas à sua jornada;</li>
+                <li><strong>Opt-out:</strong> envie <code>SAIR</code> em qualquer mensagem ou clique no link de
+                    descadastramento em e-mails.</li>
+            </ul>
+
+            <!-- 9 -->
+            <h2 id="sec-ia">9. Conteúdo gerado por inteligência artificial</h2>
+            <p>Algumas funcionalidades empregam Modelos de Linguagem (LLMs) — por exemplo, demonstrações em
+                <em>Knowledge OS</em>. Em conformidade com o <strong>EU AI Act (Regulamento UE 2024/1689)</strong>:
+            </p>
+            <ul>
+                <li>Conteúdo gerado por IA é <strong>rotulado</strong> de forma identificável;</li>
+                <li>IA pode produzir respostas <strong>imprecisas ou desatualizadas</strong> — sempre valide antes de
+                    tomar decisões relevantes;</li>
+                <li>Decisões com efeito sobre você (ex.: aprovação de aplicação) <strong>não</strong> são tomadas
+                    exclusivamente por IA — passam por revisão humana (LGPD, art. 20);</li>
+                <li>Você pode requerer revisão humana entrando em contato com o DPO indicado na Política de Privacidade.
+                </li>
+            </ul>
+
+            <!-- 10 -->
+            <h2 id="sec-pagamentos">10. Pagamentos e reembolso</h2>
+            <p>O site <strong>não processa pagamentos</strong>. Eventuais contratações ocorrem por instrumento próprio
+                (proposta comercial, contrato de prestação de serviços), que detalhará valores, prazos e condições.</p>
+            <p>Para contratações a distância, é assegurado o <strong>direito de arrependimento de 7 (sete) dias</strong>
+                (CDC, art. 49), contados da assinatura do contrato ou do recebimento do serviço, o que for posterior.
             </p>
 
+            <!-- 11 -->
+            <h2 id="sec-resp">11. Limitação de responsabilidade</h2>
+            <p>Envidamos melhores esforços para manter o site disponível, atualizado e correto, mas <strong>não
+                    garantimos</strong> ininterruptibilidade, ausência de erros ou compatibilidade absoluta com todo
+                ambiente.</p>
+            <p>Na máxima extensão permitida pela legislação aplicável, não respondemos por:</p>
+            <ul>
+                <li>Indisponibilidade temporária por motivo de força maior, manutenção ou falha de provedores externos
+                    (AWS, GitHub, Meta, Google);</li>
+                <li>Danos indiretos, lucros cessantes ou perda de oportunidade decorrentes do uso ou da impossibilidade
+                    de uso do site;</li>
+                <li>Conteúdo ou serviços de terceiros acessados via links externos.</li>
+            </ul>
+            <p>Esta limitação <strong>não afasta</strong> responsabilidades irrenunciáveis, especialmente as decorrentes
+                do <strong>Código de Defesa do Consumidor</strong>, quando aplicável.</p>
+
+            <!-- 12 -->
+            <h2 id="sec-indenizacao">12. Indenização</h2>
+            <p>O usuário compromete-se a indenizar e isentar os provedores de quaisquer perdas, custos ou danos
+                (incluindo honorários advocatícios) decorrentes de uso ilícito do site, violação destes Termos ou
+                infração a direitos de terceiros.</p>
+
+            <!-- 13 -->
+            <h2 id="sec-links">13. Links e serviços de terceiros</h2>
+            <p>O site contém links para serviços externos (LinkedIn, YouTube, GitHub, Google Calendar, WhatsApp etc.).
+                Não controlamos nem somos responsáveis por seu conteúdo, disponibilidade ou políticas. Recomendamos a
+                leitura dos termos e políticas próprios de cada serviço.</p>
+
+            <!-- 14 -->
+            <h2 id="sec-mudancas">14. Modificações dos Termos</h2>
+            <p>Podemos atualizar estes Termos a qualquer tempo. Mudanças <strong>materiais</strong> serão sinalizadas
+                no topo da página por pelo menos 30 dias. O uso continuado após a vigência da nova versão implica
+                aceite. Manteremos histórico de versões:</p>
+            <ul>
+                <li><strong>v2.0 (08/05/2026):</strong> reescrita completa, inclusão de seções IA, DSA, DMCA, opt-out
+                    WhatsApp, foro do consumidor, identificação dual de provedores.</li>
+                <li><strong>v1.0 (fev/2026):</strong> versão inicial.</li>
+            </ul>
+
+            <!-- 15 -->
+            <h2 id="sec-suspensao">15. Suspensão e encerramento</h2>
+            <p>Podemos suspender, restringir ou encerrar o acesso de qualquer usuário em violação destes Termos, da
+                legislação aplicável ou de boas práticas, sem prejuízo das medidas judiciais cabíveis.</p>
+
+            <!-- 16 -->
+            <h2 id="sec-privacidade">16. Privacidade</h2>
+            <p>O tratamento de dados pessoais é regido pela nossa <a href="/privacidade.html">Política de
+                    Privacidade</a>, parte integrante destes Termos. Para detalhamento técnico de cookies, consulte <a
+                    href="/cookies.html">/cookies.html</a>.</p>
+
+            <!-- 17 -->
+            <h2 id="sec-disputas">17. Disputas, lei aplicável e foro</h2>
+            <h3>Tentativa amigável</h3>
+            <p>Antes de qualquer medida judicial, comprometemo-nos a buscar solução amigável. Envie-nos a controvérsia
+                por e-mail ao DPO ou aos contatos da seção 19. Responderemos em até 15 dias úteis.</p>
+            <h3>Mediação (opcional)</h3>
+            <p>As partes podem submeter, de comum acordo, eventual conflito a câmara de mediação privada.</p>
+            <h3>Lei aplicável</h3>
+            <p>Estes Termos regem-se pelas leis da República Federativa do Brasil.</p>
+            <h3>Foro</h3>
+            <p>Fica eleito o foro da Comarca de <strong>São Paulo, SP</strong>, com renúncia expressa a qualquer outro.
+                <strong>Exceção:</strong> em relações de consumo, o consumidor poderá optar pelo foro de seu domicílio
+                (CDC, art. 101, I).
+            </p>
+
+            <!-- 18 -->
+            <h2 id="sec-gerais">18. Cláusulas gerais</h2>
+            <ul>
+                <li><strong>Independência das cláusulas:</strong> a invalidade de qualquer cláusula não afeta as
+                    demais.</li>
+                <li><strong>Tolerância não-renúncia:</strong> a não-exigência imediata de qualquer obrigação não importa
+                    em renúncia.</li>
+                <li><strong>Integralidade:</strong> estes Termos, somados à Política de Privacidade e a eventuais
+                    contratos específicos, representam o acordo integral entre as partes sobre o objeto.</li>
+                <li><strong>Cessão:</strong> não é permitida a cessão de direitos pelo usuário sem nossa anuência
+                    prévia.</li>
+            </ul>
+
+            <!-- 19 -->
+            <h2 id="sec-contato">19. Contato</h2>
+            <p>Dúvidas sobre estes Termos:</p>
+            <ul>
+                <li><strong>E-mail:</strong> <a href="mailto:contato@issei.com.br">contato@issei.com.br</a></li>
+                <li><strong>DPO:</strong> <a href="mailto:dpo@issei.com.br">dpo@issei.com.br</a></li>
+                <li><strong>Endereço:</strong> Rua do Estilo Barroco, 329 — São Paulo, SP</li>
+            </ul>
         </main>
-
-        <footer>
-            <p>&copy; 2026 Boutique Empresarial. Todos os direitos reservados.</p>
-            <p><a href="/">Voltar para a Home</a></p>
-        </footer>
     </div>
 
+    <footer class="legal-footer">
+        <p>&copy; 2026 Maurício Yokoyama Issei & Boutique Empresarial.</p>
+        <p>
+            <a href="/privacidade.html">Privacidade</a> ·
+            <a href="/termos.html">Termos</a> ·
+            <a href="/cookies.html">Cookies</a> ·
+            <a href="/">Voltar para a home</a>
+        </p>
+    </footer>
+
+    <script type="module" src="./js/cookie-consent.js"></script>
 </body>
 
 </html>
