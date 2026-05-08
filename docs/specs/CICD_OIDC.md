@@ -40,7 +40,7 @@ As seguintes secrets devem estar configuradas no GitHub (Settings > Secrets and 
 | :--- | :--- | :--- |
 | `AWS_ROLE_ARN` | ARN da Role IAM criada na AWS para confiar neste repo. | `arn:aws:iam::123456789012:role/GitHubDeployRole` |
 | `AWS_REGION` | Região AWS onde o S3/CloudFront estão. | `us-east-1` |
-| `S3_BUCKET_NAME` | Nome do bucket S3 de origem. | `boutiqueempresarial-site-origin` |
+| `S3_BUCKET_NAME` | Nome do bucket S3 de origem. | `mauricio-issei-site-origin` |
 | `CLOUDFRONT_DISTRIBUTION_ID` | ID da distribuição CloudFront. | `E1A2B3C4D5E6F` |
 
 ## Pipeline de Deploy (`deploy.yml`)

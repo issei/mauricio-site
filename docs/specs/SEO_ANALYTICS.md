@@ -40,7 +40,7 @@ Todas as páginas HTML em `src/` devem conter o fragmento do GA4 imediatamente a
 
 Cada página deve seguir este padrão mínimo para garantir o "rankeamento" e a "vibe" profissional:
 
-1. **Título:** Máximo 60 caracteres. Prefixo do serviço + `| Boutique Empresarial`.
+1. **Título:** Máximo 60 caracteres. Prefixo do serviço + `| Maurício Yokoyama Issei`.
 2. **Meta Description:** Máximo 160 caracteres. Deve ser persuasiva e incluir a palavra-chave da página.
 3. **Canonical Tag:** `<link rel="canonical" href="https://mauricio.issei.com.br/caminho-da-pagina" />`.
 
@@ -52,7 +52,7 @@ Para garantir que o link do site apareça com imagem e título corretos no Linke
 
 * **og:type:** `website`
 * **og:image:** `/og-image.jpg` (Imagem de 1200x630px localizada em `public/`)
-* **og:site_name:** `Boutique Empresarial`
+* **og:site_name:** `Maurício Yokoyama Issei`
 * **og:url:** `<meta property="og:url" content="https://mauricio.issei.com.br/NOME_DA_PAGINA" />`
 
 ---
