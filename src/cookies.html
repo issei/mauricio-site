@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <title>Política de Cookies | Maurício Issei & Boutique Empresarial</title>
+    <meta name="description"
+        content="Listagem técnica nominal dos cookies utilizados, suas finalidades, duração e como gerenciar. Conforme Guia ANPD/2024.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://mauricio.issei.com.br/cookies.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-2: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-purple: #8a2be2;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.7; font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+        a:hover { color: #79b8ff; }
+
+        .legal-header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(13,17,23,0.85); backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+        .legal-header-inner {
+            max-width: 1100px; margin: 0 auto;
+            padding: 14px 24px; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .logo { font-weight: 800; color:#fff; text-decoration: none; font-size: 1rem; letter-spacing: -0.01em; }
+        .logo span.dot {
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .back-link { color: var(--muted); font-size: .9rem; text-decoration: none; }
+        .back-link:hover { color: var(--accent); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+        h1 { font-size: 2.25rem; font-weight: 800; color:#fff; margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.2; }
+        .version-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--bg-2); border: 1px solid var(--border);
+            border-radius: 999px; padding: 4px 12px;
+            font-size: .8rem; color: var(--muted); margin-bottom: 24px;
+        }
+        .version-chip strong { color: var(--accent); font-weight: 600; }
+
+        h2 {
+            font-size: 1.4rem; font-weight: 700; color:#fff;
+            margin: 40px 0 16px; padding-bottom: 8px; position: relative;
+        }
+        h2::after {
+            content:''; position: absolute; left: 0; bottom: 0;
+            width: 56px; height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(88,166,255,0.4);
+        }
+        h3 { font-size: 1.05rem; color:#fff; margin: 24px 0 8px; font-weight: 600; }
+
+        p, li { font-size: 1rem; color: var(--text); margin: 0 0 12px; }
+        ul, ol { padding-left: 24px; margin: 0 0 16px; }
+        li { margin-bottom: 6px; }
+        strong { color: #fff; font-weight: 600; }
+        code {
+            background: var(--bg-2); padding: 2px 6px; border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace; font-size: .85em; color: var(--accent);
+        }
+
+        .table-wrap { overflow-x: auto; margin: 12px 0 20px; }
+        table {
+            width: 100%; border-collapse: collapse;
+            background: var(--bg-2); border: 1px solid var(--border);
+            border-radius: 8px; overflow: hidden; font-size: .88rem;
+        }
+        th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+        th { background: rgba(88,166,255,0.06); color:#fff; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
+        tr:last-child td { border-bottom: none; }
+
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: .75rem; font-weight: 600;
+        }
+        .badge-necessary { background: rgba(16,185,129,0.15); color: #34d399; }
+        .badge-analytics { background: rgba(88,166,255,0.15); color: #79b8ff; }
+        .badge-marketing { background: rgba(245,158,11,0.15); color: #fbbf24; }
+        .badge-personalization { background: rgba(138,43,226,0.18); color: #c084fc; }
+
+        .callout {
+            background: var(--bg-2); border-left: 3px solid var(--accent);
+            border-radius: 4px; padding: 16px 20px; margin: 20px 0;
+        }
+        .callout strong { display: block; margin-bottom: 4px; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            color:#fff; padding: 10px 18px; border-radius: 6px;
+            text-decoration: none; font-weight: 600; font-size: .9rem;
+            border: none; cursor: pointer; font-family: inherit;
+            transition: transform .15s, box-shadow .15s;
+        }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(88,166,255,0.4); color:#fff; }
+
+        footer.legal-footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px; text-align: center;
+            color: var(--muted); font-size: .85rem;
+        }
+        footer.legal-footer a { color: var(--muted); margin: 0 8px; }
+        footer.legal-footer a:hover { color: var(--accent); }
+
+        .skip-link { position: absolute; left: -9999px; top: 8px; background: var(--accent); color:#fff; padding: 8px 12px; border-radius: 6px; }
+        .skip-link:focus { left: 8px; z-index: 100; }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+    <header class="legal-header">
+        <div class="legal-header-inner">
+            <a href="/" class="logo">Maurício Issei<span class="dot">.</span></a>
+            <a href="/" class="back-link">← Voltar para o site</a>
+        </div>
+    </header>
+
+    <main id="main-content" class="container">
+        <h1>Política de Cookies</h1>
+        <span class="version-chip">
+            <i class="fa-solid fa-cookie-bite"></i>
+            <strong>v2.0</strong> · atualizada em 08 de maio de 2026
+        </span>
+
+        <p>Esta página detalha, de forma técnica e nominal, todos os cookies e tecnologias similares utilizados em
+            nossos domínios, em conformidade com o <strong>Guia Orientativo sobre Cookies da ANPD</strong> (out/2023,
+            revisão 2024), o <strong>GDPR</strong> e a <strong>Diretiva ePrivacy</strong>. Para o panorama geral, veja a
+            <a href="/privacidade.html">Política de Privacidade</a>.</p>
+
+        <h2>O que são cookies?</h2>
+        <p>Cookies são pequenos arquivos de texto que sites armazenam no seu navegador para lembrar informações entre
+            visitas — preferências, sessões, métricas. Tecnologias similares incluem <em>local storage</em>,
+            <em>session storage</em>, <em>web beacons</em> e <em>fingerprinting</em>. Para fins desta política, todas
+            são tratadas igualmente.
+        </p>
+
+        <h2>Categorias que utilizamos</h2>
+        <ul>
+            <li><span class="badge badge-necessary">Necessários</span> &nbsp; Essenciais à navegação, autenticação e
+                segurança. <strong>Sempre ativos.</strong></li>
+            <li><span class="badge badge-analytics">Análise</span> &nbsp; Métricas agregadas (tráfego, páginas mais
+                visitadas, tempo). Opt-in.</li>
+            <li><span class="badge badge-marketing">Marketing</span> &nbsp; Mensuração de campanhas e remarketing.
+                Opt-in.</li>
+            <li><span class="badge badge-personalization">Personalização</span> &nbsp; Lembrança de preferências de
+                interface. Opt-in.</li>
+        </ul>
+
+        <h2>Listagem nominal de cookies</h2>
+        <p>Esta lista é atualizada após cada mudança em ferramentas de terceiros. Caso identifique inconsistência,
+            informe ao DPO.</p>
+
+        <h3>Estritamente necessários</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Domínio</th>
+                        <th>Tipo</th>
+                        <th>Duração</th>
+                        <th>Finalidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>consent_v</code></td>
+                        <td>(localStorage primeiro)</td>
+                        <td>localStorage</td>
+                        <td>Persistente</td>
+                        <td>Armazena suas preferências de consentimento de cookies</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Análise (Google Analytics 4)</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Domínio</th>
+                        <th>Tipo</th>
+                        <th>Duração</th>
+                        <th>Finalidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>_ga</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>2 anos</td>
+                        <td>Identificador único de visitante (GA4)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_ga_GEKLHZYVYX</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>2 anos</td>
+                        <td>Estado da sessão GA4 (propriedade específica)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_gid</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>24 horas</td>
+                        <td>Diferenciar usuários no dia</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Marketing (Meta / Google Ads)</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Domínio</th>
+                        <th>Tipo</th>
+                        <th>Duração</th>
+                        <th>Finalidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>_fbp</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>90 dias</td>
+                        <td>Identificador do navegador (Meta Pixel) para mensuração e remarketing</td>
+                    </tr>
+                    <tr>
+                        <td><code>fr</code></td>
+                        <td>.facebook.com</td>
+                        <td>Cookie de terceiro</td>
+                        <td>90 dias</td>
+                        <td>Direcionamento de anúncios da Meta</td>
+                    </tr>
+                    <tr>
+                        <td><code>_gcl_au</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>90 dias</td>
+                        <td>Atribuição de conversão Google Ads</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="callout">
+            <strong>Auditoria pendente</strong>
+            Esta lista representa o conjunto típico esperado dado o tracking declarado (GTM <code>GTM-KQ9R3GV3</code> +
+            GA4 <code>G-GEKLHZYVYX</code>). Antes de publicar, recomenda-se varredura via DevTools (Application →
+            Storage → Cookies) e Tag Assistant para fechar a lista exata e adicionar/remover entradas conforme o real.
+        </div>
+
+        <h2>Como gerenciar suas preferências</h2>
+        <ul>
+            <li>Use o <strong>banner de consentimento</strong> que aparece na primeira visita.</li>
+            <li>A qualquer momento, clique no <strong>ícone 🍪</strong> no canto inferior esquerdo para reabrir as
+                preferências.</li>
+            <li>Configure no seu <strong>navegador</strong> bloqueio total de cookies de terceiros — informações em
+                <a href="https://www.aboutcookies.org" rel="noopener">aboutcookies.org</a>.
+            </li>
+            <li>Se seu navegador envia o sinal <strong>Global Privacy Control (GPC)</strong>, respeitamos
+                automaticamente como opt-out de marketing/análise.</li>
+        </ul>
+
+        <p style="margin-top:24px;">
+            <button type="button" class="btn-primary" onclick="if(window.cookieConsent) window.cookieConsent.open();">
+                <i class="fa-solid fa-sliders"></i> Abrir preferências de cookies
+            </button>
+        </p>
+
+        <h2>Bloqueio na origem (Consent Mode v2)</h2>
+        <p>Implementamos o <strong>Google Consent Mode v2</strong> conforme exigência de março/2024. Antes de qualquer
+            decisão sua, todas as categorias não-essenciais ficam em <code>denied</code>. Tags de análise e marketing só
+            disparam após consentimento explícito ou só enviam <em>pings</em> sem cookies (modo de modelagem).</p>
+
+        <h2>Cookies de terceiros e jurisdições</h2>
+        <p>Operadores como Google e Meta podem definir cookies adicionais ao acessar conteúdos integrados (vídeos do
+            YouTube, mapas, embeds). Esses provedores são responsáveis por seus próprios cookies — consulte:</p>
+        <ul>
+            <li>Google: <a href="https://policies.google.com/technologies/cookies" rel="noopener">policies.google.com/technologies/cookies</a></li>
+            <li>Meta: <a href="https://www.facebook.com/policies/cookies/" rel="noopener">facebook.com/policies/cookies</a></li>
+            <li>YouTube: <a href="https://policies.google.com/privacy?hl=pt-BR" rel="noopener">policies.google.com/privacy</a></li>
+        </ul>
+
+        <h2>Mudanças nesta política</h2>
+        <p>Revisamos a listagem semestralmente ou sempre que houver mudança em terceiros. Mudanças materiais reabrem o
+            banner de consentimento.</p>
+    </main>
+
+    <footer class="legal-footer">
+        <p>&copy; 2026 Maurício Yokoyama Issei & Boutique Empresarial.</p>
+        <p>
+            <a href="/privacidade.html">Privacidade</a> ·
+            <a href="/termos.html">Termos</a> ·
+            <a href="/cookies.html">Cookies</a> ·
+            <a href="/">Voltar para a home</a>
+        </p>
+    </footer>
+
+    <script type="module" src="./js/cookie-consent.js"></script>
+</body>
+
+</html>

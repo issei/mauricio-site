@@ -1,238 +1,707 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8HNXV7KTY9"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-8HNXV7KTY9');
-</script>
+<html lang="pt-BR">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="BoutiqueEmp" />
-<link rel="manifest" href="/site.webmanifest" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-<title>Política de Privacidade | Boutique Empresarial</title>
+    <title>Política de Privacidade | Maurício Issei & Boutique Empresarial</title>
+    <meta name="description"
+        content="Como tratamos seus dados pessoais conforme a LGPD, GDPR e demais legislações vigentes. Versão 2.0 — maio/2026.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://mauricio.issei.com.br/privacidade.html">
 
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://boutiqueempresarial.com.br/privacidade.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap"
-    rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-2: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-purple: #8a2be2;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+        a:hover { color: #79b8ff; }
 
-<link rel="stylesheet" href="/style.css">
+        /* Header */
+        .legal-header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(13,17,23,0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+        .legal-header-inner {
+            max-width: 1100px; margin: 0 auto;
+            padding: 14px 24px; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .logo {
+            font-weight: 800; color:#fff; text-decoration: none;
+            font-size: 1rem; letter-spacing: -0.01em;
+        }
+        .logo span.dot {
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .back-link { color: var(--muted); font-size: .9rem; text-decoration: none; }
+        .back-link:hover { color: var(--accent); }
 
-<style>
-    :root {
-        --bg-color: #f5f2eb;
-        --text-primary: #1C1C1C;
-        --text-secondary: #555555;
-        --border-color: #E5E5E5;
-        --gold-subtle: #C5A059;
-    }
+        /* Layout */
+        .layout {
+            max-width: 1100px; margin: 0 auto;
+            padding: 48px 24px 80px;
+            display: grid; grid-template-columns: 1fr; gap: 32px;
+        }
+        @media (min-width: 1024px) {
+            .layout { grid-template-columns: 240px 1fr; }
+            .toc { position: sticky; top: 80px; align-self: start; }
+        }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+        /* TOC */
+        .toc {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: .85rem;
+        }
+        .toc-title {
+            font-weight: 700; color:#fff; margin-bottom: 10px;
+            font-size: .8rem; text-transform: uppercase; letter-spacing: .05em;
+        }
+        .toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+        .toc li { counter-increment: toc; margin: 6px 0; }
+        .toc li::before { content: counter(toc) '. '; color: var(--muted); }
+        .toc a { color: var(--text); text-decoration: none; }
+        .toc a:hover { color: var(--accent); }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-primary);
-        line-height: 1.8;
-        font-weight: 300;
-    }
+        /* Content */
+        main { min-width: 0; }
+        h1 {
+            font-size: 2.25rem; font-weight: 800; color:#fff;
+            margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.2;
+        }
+        .version-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--bg-2); border: 1px solid var(--border);
+            border-radius: 999px; padding: 4px 12px;
+            font-size: .8rem; color: var(--muted); margin-bottom: 24px;
+        }
+        .version-chip strong { color: var(--accent); font-weight: 600; }
 
-    h1,
-    h2,
-    h3 {
-        font-family: 'Playfair Display', serif;
-        color: var(--text-primary);
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-    }
+        h2 {
+            font-size: 1.4rem; font-weight: 700; color:#fff;
+            margin: 48px 0 16px; padding-bottom: 8px; position: relative;
+            scroll-margin-top: 80px;
+        }
+        h2::after {
+            content:''; position: absolute; left: 0; bottom: 0;
+            width: 56px; height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(88,166,255,0.4);
+        }
+        h3 { font-size: 1.05rem; color:#fff; margin: 24px 0 8px; font-weight: 600; }
 
-    h1 {
-        font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+        p, li { font-size: 1rem; color: var(--text); margin: 0 0 12px; }
+        ul, ol { padding-left: 24px; margin: 0 0 16px; }
+        li { margin-bottom: 6px; }
+        strong { color: #fff; font-weight: 600; }
 
-    h2 {
-        font-size: 1.5rem;
-        border-bottom: 1px solid var(--gold-subtle);
-        padding-bottom: 10px;
-        display: inline-block;
-    }
+        /* Resumo executivo */
+        .summary-card {
+            background: linear-gradient(135deg, rgba(88,166,255,0.08), rgba(138,43,226,0.06));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0 40px;
+        }
+        .summary-card h2 { margin-top: 0; font-size: 1.1rem; }
+        .summary-card h2::after { display: none; }
 
-    p,
-    li {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-        text-align: justify;
-    }
+        /* Tables */
+        .table-wrap { overflow-x: auto; margin: 12px 0 20px; }
+        table {
+            width: 100%; border-collapse: collapse;
+            background: var(--bg-2); border: 1px solid var(--border);
+            border-radius: 8px; overflow: hidden;
+            font-size: .9rem;
+        }
+        th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+        th { background: rgba(88,166,255,0.06); color:#fff; font-weight: 600; font-size: .85rem; }
+        tr:last-child td { border-bottom: none; }
 
-    ul {
-        list-style: none;
-        padding-left: 20px;
-    }
+        /* Callouts */
+        .callout {
+            background: var(--bg-2);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            padding: 16px 20px; margin: 20px 0;
+        }
+        .callout.warning { border-left-color: #f59e0b; }
+        .callout.success { border-left-color: #10b981; }
+        .callout strong { display: block; margin-bottom: 4px; }
 
-    ul li::before {
-        content: "•";
-        color: var(--gold-subtle);
-        font-weight: bold;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1em;
-    }
+        .rights-cta {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+            box-shadow: 0 0 20px rgba(88,166,255,0.08);
+        }
+        .rights-cta-text { flex: 1 1 280px; }
+        .rights-cta strong { color:#fff; display:block; margin-bottom:4px; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            color:#fff; padding: 10px 18px; border-radius: 6px;
+            text-decoration: none; font-weight: 600; font-size: .9rem;
+            transition: transform .15s, box-shadow .15s;
+        }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(88,166,255,0.4); color:#fff; }
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 60px 24px;
-        background: #fff;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
+        ul.rights-list { list-style: none; padding-left: 0; }
+        ul.rights-list li { padding-left: 24px; position: relative; }
+        ul.rights-list li::before {
+            content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold;
+        }
 
-    /* Header Simplificado para Páginas Internas */
-    header {
-        text-align: center;
-        padding-bottom: 40px;
-        border-bottom: 1px solid var(--border-color);
-        margin-bottom: 40px;
-    }
+        /* Footer */
+        footer.legal-footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 24px;
+            text-align: center;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+        footer.legal-footer a { color: var(--muted); margin: 0 8px; }
+        footer.legal-footer a:hover { color: var(--accent); }
 
-    .logo {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--text-primary);
-    }
-
-    .meta-compliance {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-left: 3px solid #1877F2;
-        margin: 30px 0;
-    }
-
-    .meta-compliance h3 {
-        margin-top: 0;
-        font-size: 1.1rem;
-        color: #1877F2;
-    }
-
-    footer {
-        text-align: center;
-        margin-top: 60px;
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-    }
-
-    a {
-        color: var(--text-primary);
-        text-decoration: underline;
-    }
-</style>
+        /* Skip link */
+        .skip-link {
+            position: absolute; left: -9999px; top: 8px;
+            background: var(--accent); color:#fff; padding: 8px 12px; border-radius: 6px;
+        }
+        .skip-link:focus { left: 8px; z-index: 100; }
+    </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
 
-    <div class="container">
-        <header>
-            <a href="/" class="logo">Boutique Empresarial<span style="color:var(--gold-subtle)">.</span></a>
-        </header>
+    <header class="legal-header">
+        <div class="legal-header-inner">
+            <a href="/" class="logo">Maurício Issei<span class="dot">.</span></a>
+            <a href="/" class="back-link">← Voltar para o site</a>
+        </div>
+    </header>
 
-        <main>
-            <h1>Política de Privacidade e Governança de Dados</h1>
+    <div class="layout">
+        <aside class="toc" aria-label="Índice">
+            <div class="toc-title">Índice</div>
+            <ol>
+                <li><a href="#sec-resumo">Resumo executivo</a></li>
+                <li><a href="#sec-controladores">Controladores</a></li>
+                <li><a href="#sec-definicoes">Definições</a></li>
+                <li><a href="#sec-dados">Dados coletados</a></li>
+                <li><a href="#sec-bases">Bases legais</a></li>
+                <li><a href="#sec-terceiros">Compartilhamento</a></li>
+                <li><a href="#sec-internacional">Transferência internacional</a></li>
+                <li><a href="#sec-retencao">Retenção</a></li>
+                <li><a href="#sec-direitos">Seus direitos</a></li>
+                <li><a href="#sec-cookies">Cookies</a></li>
+                <li><a href="#sec-ia">IA e decisões automatizadas</a></li>
+                <li><a href="#sec-seguranca">Segurança</a></li>
+                <li><a href="#sec-criancas">Crianças e adolescentes</a></li>
+                <li><a href="#sec-dpo">DPO e canais</a></li>
+                <li><a href="#sec-anpd">Reclamações à ANPD</a></li>
+                <li><a href="#sec-alteracoes">Alterações e foro</a></li>
+            </ol>
+        </aside>
 
-            <p><strong>Última atualização:</strong> Fevereiro de 2026</p>
-            <p>A Boutique Empresarial ("nós") está comprometida com a proteção dos seus dados e com a transparência
-                sobre como as informações são coletadas, utilizadas e compartilhadas, em conformidade com a Lei Geral de
-                Proteção de Dados (LGPD) e as diretrizes globais de plataformas parceiras.</p>
+        <main id="main-content">
+            <h1>Política de Privacidade</h1>
+            <span class="version-chip">
+                <i class="fa-solid fa-shield-halved"></i>
+                <strong>v2.0</strong> · atualizada em 08 de maio de 2026
+            </span>
 
-            <h2>1. Coleta de Informações</h2>
-            <p>Coletamos informações estritamente necessárias para a avaliação do perfil empresarial e prestação de
-                nossos serviços de arquitetura de negócios:</p>
+            <p>Esta política descreve como coletamos, usamos, armazenamos, compartilhamos e protegemos seus dados
+                pessoais em conformidade com a <strong>Lei Geral de Proteção de Dados — LGPD (Lei 13.709/2018)</strong>,
+                o <strong>Marco Civil da Internet (Lei 12.965/2014)</strong>, o <strong>Regulamento Geral de Proteção de
+                    Dados europeu (GDPR — UE 2016/679)</strong>, a <strong>CCPA/CPRA da Califórnia</strong>, o
+                <strong>EU AI Act (UE 2024/1689)</strong> e as demais normas aplicáveis.
+            </p>
+
+            <!-- 1. Resumo executivo -->
+            <section id="sec-resumo" class="summary-card">
+                <h2>1. Resumo executivo (Privacy at a glance)</h2>
+                <p>Em uma frase: <strong>coletamos só o necessário, não vendemos seus dados, e você pode revisar,
+                        corrigir ou apagar o que tiver sobre você a qualquer momento.</strong></p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>O que coletamos</th>
+                                <th>Por quê</th>
+                                <th>Com quem compartilhamos</th>
+                                <th>Por quanto tempo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nome, e-mail, telefone</td>
+                                <td>Atender sua solicitação</td>
+                                <td>Não compartilhamos</td>
+                                <td>24 meses ou até revogação</td>
+                            </tr>
+                            <tr>
+                                <td>Empresa, faturamento, desafios</td>
+                                <td>Avaliar perfil de aplicação</td>
+                                <td>Apenas equipe interna</td>
+                                <td>Duração do processo + 12 meses</td>
+                            </tr>
+                            <tr>
+                                <td>IP, navegador, páginas vistas</td>
+                                <td>Estatísticas e segurança</td>
+                                <td>Google (GA4), AWS</td>
+                                <td>Até 14 meses (analytics) / 6 meses (logs)</td>
+                            </tr>
+                            <tr>
+                                <td>Cookies de marketing (opcional)</td>
+                                <td>Remarketing (com consentimento)</td>
+                                <td>Meta, Google Ads</td>
+                                <td>Até 90 dias</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 2. Controladores -->
+            <h2 id="sec-controladores">2. Identificação dos controladores</h2>
+            <p>Esta política é mantida em conjunto pelos seguintes <strong>co-controladores</strong> de dados (LGPD,
+                art. 5º, IX), que respondem solidariamente pelas operações descritas:</p>
+
+            <h3>Maurício Yokoyama Issei</h3>
             <ul>
-                <li><strong>Dados Fornecidos Diretamente:</strong> Nome, e-mail, telefone (WhatsApp), faturamento
-                    aproximado e desafios operacionais, fornecidos através de nossos formulários de aplicação.</li>
-                <li><strong>Dados de Navegação:</strong> Endereço IP, tipo de navegador, tempo de permanência e páginas
-                    visitadas, coletados automaticamente via cookies e pixels.</li>
+                <li><strong>Atuação:</strong> portfólio profissional, conteúdos técnicos, propostas de consultoria</li>
+                <li><strong>CPF/CNPJ:</strong> [PLACEHOLDER — informar CPF mascarado ou CNPJ se MEI]</li>
+                <li><strong>Endereço:</strong> [PLACEHOLDER — endereço completo]</li>
+                <li><strong>E-mail:</strong> <a href="mailto:contato@issei.com.br">contato@issei.com.br</a></li>
             </ul>
 
-            <h2>2. Uso das Informações e Meta Platforms</h2>
-            <p>Utilizamos seus dados para processar sua aplicação à Boutique e para comunicação corporativa. Além disso,
-                utilizamos tecnologias da <strong>Meta Platforms, Inc. (Facebook e Instagram)</strong> para mensuração
-                de anúncios e análise de tráfego.</p>
+            <h3>Boutique Empresarial</h3>
+            <ul>
+                <li><strong>Atuação:</strong> consultoria estratégica, formulários de aplicação, comunicação corporativa
+                </li>
+                <li><strong>CNPJ:</strong> [PLACEHOLDER — CNPJ]</li>
+                <li><strong>Endereço:</strong> Rua do Estilo Barroco, 329 — São Paulo, SP</li>
+                <li><strong>E-mail:</strong> <a
+                        href="mailto:talita@boutiqueempresarial.com.br">talita@boutiqueempresarial.com.br</a></li>
+            </ul>
 
-            <div class="meta-compliance">
-                <h3>Conformidade com Meta Ads & Pixel</h3>
-                <p>Em conformidade com os Termos de Ferramentas de Negócios da Meta, informamos que terceiros, incluindo
-                    a Meta, podem usar cookies, web beacons e outras tecnologias de armazenamento para coletar ou
-                    receber informações do nosso site e usar essas informações para fornecer serviços de medição e
-                    direcionar anúncios.</p>
-                <p>Você pode optar por não permitir a coleta e uso de informações para direcionamento de anúncios
-                    acessando as configurações de privacidade do seu dispositivo ou perfil social.</p>
+            <p>Cada controlador é responsável pelas operações de tratamento associadas à sua atividade. O canal único do
+                Encarregado/DPO está descrito na <a href="#sec-dpo">seção 14</a>.</p>
+
+            <!-- 3. Definições -->
+            <h2 id="sec-definicoes">3. Definições</h2>
+            <ul>
+                <li><strong>Dado pessoal:</strong> qualquer informação relacionada a pessoa natural identificada ou
+                    identificável (LGPD, art. 5º, I).</li>
+                <li><strong>Dado sensível:</strong> dado pessoal sobre origem racial, convicção religiosa, opinião
+                    política, saúde, vida sexual, dado genético ou biométrico (LGPD, art. 5º, II). Não tratamos dados
+                    sensíveis neste site.</li>
+                <li><strong>Titular:</strong> a pessoa natural a quem se referem os dados pessoais.</li>
+                <li><strong>Tratamento:</strong> qualquer operação realizada com dados pessoais (coleta, uso, acesso,
+                    armazenamento, eliminação etc.).</li>
+                <li><strong>Controlador:</strong> a quem competem as decisões sobre o tratamento.</li>
+                <li><strong>Operador:</strong> quem trata dados em nome do controlador (ex.: AWS, Google).</li>
+                <li><strong>Anonimização:</strong> processo que torna o dado não associável a indivíduo determinado.
+                </li>
+                <li><strong>Encarregado (DPO):</strong> pessoa indicada para atuar como canal entre titulares,
+                    controladores e a ANPD.</li>
+            </ul>
+
+            <!-- 4. Dados coletados -->
+            <h2 id="sec-dados">4. Dados que coletamos</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Exemplos</th>
+                            <th>Origem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cadastrais</td>
+                            <td>Nome, e-mail, telefone, empresa, cargo</td>
+                            <td>Formulários preenchidos por você</td>
+                        </tr>
+                        <tr>
+                            <td>Profissionais</td>
+                            <td>Faturamento aproximado, desafios operacionais, segmento</td>
+                            <td>Formulários de aplicação</td>
+                        </tr>
+                        <tr>
+                            <td>Comportamentais</td>
+                            <td>Endereço IP, user-agent, páginas visitadas, tempo de permanência, cliques</td>
+                            <td>Cookies, pixels e logs do servidor</td>
+                        </tr>
+                        <tr>
+                            <td>Comunicação</td>
+                            <td>Mensagens enviadas via WhatsApp ou e-mail</td>
+                            <td>Canal de contato escolhido por você</td>
+                        </tr>
+                        <tr>
+                            <td>Inferidos</td>
+                            <td>Segmento provável, lead score, interesses</td>
+                            <td>Processamento próprio + plataformas de terceiros</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout success">
+                <strong>O que NÃO coletamos:</strong>
+                CPF, RG, dados bancários, dados de pagamento, biometria, dados de saúde, opinião política ou qualquer
+                outro dado sensível. O site não possui checkout próprio.
             </div>
 
-            <h2>3. Armazenamento e Segurança</h2>
-            <p>Seus dados são armazenados em servidores seguros com criptografia SSL. Adotamos medidas técnicas e
-                administrativas para proteger suas informações contra acessos não autorizados e situações acidentais ou
-                ilícitas.</p>
-
-            <h2>4. Instruções de Exclusão de Dados (Data Deletion)</h2>
-            <p>De acordo com os requisitos de plataforma do Facebook/Meta, se você utilizou sua conta do Facebook para
-                interagir com nossos aplicativos ou anúncios, você tem o direito de solicitar a exclusão desses dados.
+            <!-- 5. Bases legais -->
+            <h2 id="sec-bases">5. Bases legais por finalidade</h2>
+            <p>Cada operação de tratamento se apoia em uma base legal específica (LGPD, art. 7º e 11; GDPR, art. 6º):
             </p>
-            <p>Para solicitar a exclusão automatizada ou manual dos seus dados:</p>
-            <ol style="padding-left: 20px; color: var(--text-secondary);">
-                <li>Acesse o menu "Configurações e Privacidade" no seu Facebook/Instagram.</li>
-                <li>Clique em "Configurações" > "Aplicativos e Sites".</li>
-                <li>Selecione "Boutique Empresarial" e clique em "Remover".</li>
-                <li>Alternativamente, envie um e-mail direto para nosso Encarregado de Dados (DPO) abaixo solicitando a
-                    exclusão total.</li>
-            </ol>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Finalidade</th>
+                            <th>Base LGPD</th>
+                            <th>Base GDPR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resposta a contato e propostas</td>
+                            <td>Procedimentos preliminares ao contrato (art. 7º, V)</td>
+                            <td>Pre-contractual (art. 6º, b)</td>
+                        </tr>
+                        <tr>
+                            <td>Marketing direto e remarketing</td>
+                            <td>Consentimento (art. 7º, I)</td>
+                            <td>Consent (art. 6º, a)</td>
+                        </tr>
+                        <tr>
+                            <td>Análise de tráfego agregada</td>
+                            <td>Legítimo interesse (art. 7º, IX) com opt-out</td>
+                            <td>Legitimate interest (art. 6º, f)</td>
+                        </tr>
+                        <tr>
+                            <td>Cumprimento de obrigação fiscal</td>
+                            <td>Obrigação legal (art. 7º, II)</td>
+                            <td>Legal obligation (art. 6º, c)</td>
+                        </tr>
+                        <tr>
+                            <td>Logs de acesso (segurança)</td>
+                            <td>Cumprimento de obrigação legal (Marco Civil, art. 15)</td>
+                            <td>Legal obligation (art. 6º, c)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h2>5. Seus Direitos (LGPD)</h2>
-            <p>Como titular dos dados, você tem direito a:</p>
+            <!-- 6. Compartilhamento -->
+            <h2 id="sec-terceiros">6. Compartilhamento com terceiros</h2>
+            <p>Não vendemos dados pessoais. Compartilhamos apenas com <strong>operadores</strong> contratualmente
+                vinculados, exclusivamente nas finalidades descritas:</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operador</th>
+                            <th>Finalidade</th>
+                            <th>País</th>
+                            <th>Política</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Amazon Web Services (AWS)</td>
+                            <td>Hospedagem (S3) e CDN (CloudFront)</td>
+                            <td>EUA / global</td>
+                            <td><a href="https://aws.amazon.com/privacy/" rel="noopener">aws.amazon.com/privacy</a></td>
+                        </tr>
+                        <tr>
+                            <td>Google LLC</td>
+                            <td>Analytics 4, Tag Manager, Ads (com consentimento)</td>
+                            <td>EUA</td>
+                            <td><a href="https://policies.google.com/privacy" rel="noopener">policies.google.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Meta Platforms, Inc.</td>
+                            <td>Pixel, Conversions API, mensageria (com consentimento)</td>
+                            <td>EUA / Irlanda</td>
+                            <td><a href="https://www.facebook.com/privacy/policy/" rel="noopener">facebook.com/privacy</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GitHub Inc. (Microsoft)</td>
+                            <td>Hospedagem do <code>cv.json</code> público</td>
+                            <td>EUA</td>
+                            <td><a href="https://docs.github.com/en/site-policy/privacy-policies"
+                                    rel="noopener">docs.github.com/site-policy</a></td>
+                        </tr>
+                        <tr>
+                            <td>WhatsApp Business (Meta)</td>
+                            <td>Comunicação por WhatsApp (com opt-in)</td>
+                            <td>EUA / Irlanda</td>
+                            <td><a href="https://www.whatsapp.com/legal/privacy-policy"
+                                    rel="noopener">whatsapp.com/legal</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Eventualmente, também podemos compartilhar dados com autoridades públicas mediante ordem judicial,
+                requisição administrativa amparada em lei ou para defesa de direitos em processos.</p>
+
+            <!-- 7. Transferência internacional -->
+            <h2 id="sec-internacional">7. Transferência internacional de dados</h2>
+            <p>Nossos operadores principais (AWS, Google, Meta, GitHub) processam dados em servidores localizados nos
+                <strong>Estados Unidos</strong> e em outros países. As transferências ocorrem com base nas garantias
+                previstas no <strong>art. 33 da LGPD</strong> e na <strong>Resolução CD/ANPD 19/2024</strong>:
+            </p>
             <ul>
-                <li>Confirmar a existência de tratamento de dados.</li>
-                <li>Acessar seus dados.</li>
-                <li>Corrigir dados incompletos ou desatualizados.</li>
-                <li>Solicitar a eliminação dos dados pessoais tratados com o seu consentimento.</li>
+                <li><strong>Cláusulas-padrão contratuais (SCCs)</strong> firmadas com cada operador.</li>
+                <li><strong>EU-U.S. Data Privacy Framework</strong> para operadores certificados.</li>
+                <li><strong>Garantias contratuais específicas</strong> equivalentes ao nível de proteção da LGPD.</li>
             </ul>
 
-            <h2>6. Contato do Encarregado (DPO)</h2>
-            <p>Para exercer seus direitos ou tirar dúvidas sobre esta política, entre em contato com nosso Encarregado
-                de Proteção de Dados:</p>
-            <p style="margin-top: 1rem;">
-                <strong>E-mail:</strong> talita@boutiqueempresarial.com.br<br>
-                <strong>Endereço:</strong> Rua do Estilo Barroco, 329 - São Paulo, SP
+            <!-- 8. Retenção -->
+            <h2 id="sec-retencao">8. Por quanto tempo guardamos seus dados</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Prazo</th>
+                            <th>Justificativa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Logs de acesso (IP + timestamp)</td>
+                            <td>6 meses</td>
+                            <td>Marco Civil da Internet, art. 15</td>
+                        </tr>
+                        <tr>
+                            <td>Cadastrais (lead não convertido)</td>
+                            <td>24 meses ou até revogação</td>
+                            <td>Legítimo interesse comercial</td>
+                        </tr>
+                        <tr>
+                            <td>Cadastrais (cliente ativo)</td>
+                            <td>Duração do contrato + 5 anos</td>
+                            <td>Prescrição CDC e obrigações fiscais</td>
+                        </tr>
+                        <tr>
+                            <td>Cookies analíticos (GA4)</td>
+                            <td>Até 14 meses</td>
+                            <td>Configuração padrão do Google Analytics 4</td>
+                        </tr>
+                        <tr>
+                            <td>Backups criptografados</td>
+                            <td>Até 90 dias após exclusão</td>
+                            <td>Recuperação de desastre</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Após o término do prazo, os dados são <strong>anonimizados ou eliminados</strong>, salvo em hipóteses
+                legais que autorizem a guarda (art. 16 da LGPD).</p>
+
+            <!-- 9. Direitos do titular -->
+            <h2 id="sec-direitos">9. Seus direitos como titular</h2>
+            <p>Você tem direito a (LGPD art. 18; GDPR art. 15-22):</p>
+            <ul class="rights-list">
+                <li><strong>Confirmação</strong> da existência de tratamento</li>
+                <li><strong>Acesso</strong> aos seus dados</li>
+                <li><strong>Correção</strong> de dados incompletos, inexatos ou desatualizados</li>
+                <li><strong>Anonimização, bloqueio ou eliminação</strong> de dados desnecessários ou tratados em
+                    desconformidade</li>
+                <li><strong>Portabilidade</strong> a outro fornecedor</li>
+                <li><strong>Eliminação</strong> dos dados tratados com seu consentimento</li>
+                <li><strong>Informação</strong> sobre com quem compartilhamos seus dados</li>
+                <li><strong>Informação</strong> sobre a possibilidade de não consentir e suas consequências</li>
+                <li><strong>Revogação</strong> do consentimento</li>
+                <li><strong>Oposição</strong> a tratamento baseado em legítimo interesse</li>
+                <li><strong>Revisão humana</strong> de decisões automatizadas que afetem seus interesses</li>
+            </ul>
+            <p>Atendemos solicitações em até <strong>15 dias</strong> (LGPD) ou <strong>30 dias</strong> (GDPR), gratuitamente.</p>
+
+            <div class="rights-cta">
+                <div class="rights-cta-text">
+                    <strong>Exercer um direito</strong>
+                    Envie um e-mail descrevendo o pedido. Modelo pré-pronto disponível no link.
+                </div>
+                <a class="btn-primary"
+                    href="mailto:dpo@issei.com.br?subject=%5BLGPD%5D%20Solicita%C3%A7%C3%A3o%20de%20titular&body=Eu%2C%20%5Bnome%5D%2C%20titular%20dos%20dados%2C%20solicito%20o%20exerc%C3%ADcio%20do%20direito%20previsto%20no%20art.%2018%20da%20LGPD%2C%20referente%20a%20%5Bdescrever%5D.%0A%0ADocumento%20de%20identifica%C3%A7%C3%A3o%20anexo%3A%20%5Bsim%2Fn%C3%A3o%5D%0ACanal%20preferido%20para%20resposta%3A%20%5Be-mail%2Fpostal%5D">
+                    <i class="fa-solid fa-envelope"></i> Solicitar agora
+                </a>
+            </div>
+
+            <h3>Para residentes na Califórnia (CCPA/CPRA)</h3>
+            <p>Você tem o direito adicional de saber quais categorias de dados pessoais foram coletadas, vendidas ou
+                compartilhadas, e o direito de optar pela <strong>não venda ou compartilhamento</strong> de dados
+                pessoais. Embora <strong>não vendamos</strong> seus dados, respeitamos automaticamente o sinal
+                <em>Global Privacy Control (GPC)</em> e oferecemos opt-out completo via banner de cookies.
             </p>
 
-        </main>
+            <!-- 10. Cookies -->
+            <h2 id="sec-cookies">10. Cookies e tecnologias similares</h2>
+            <p>Utilizamos cookies em <strong>quatro categorias</strong>:</p>
+            <ul>
+                <li><strong>Estritamente necessários:</strong> essenciais à navegação e à segurança. Sempre ativos.</li>
+                <li><strong>Análise:</strong> métricas agregadas via Google Analytics 4. Opt-in.</li>
+                <li><strong>Marketing:</strong> remarketing via Meta Pixel e Google Ads. Opt-in.</li>
+                <li><strong>Personalização:</strong> lembrança de preferências. Opt-in.</li>
+            </ul>
+            <p>O banner de consentimento aparece na sua primeira visita, conforme o <strong>Guia de Cookies da
+                    ANPD</strong>. Você pode revisar suas escolhas a qualquer momento clicando no ícone 🍪 no canto
+                inferior da tela. A lista nominal completa está em <a href="/cookies.html">/cookies.html</a>.</p>
+            <div class="callout">
+                <strong>Importante</strong>
+                Não usamos <em>cookie wall</em> (não bloqueamos o conteúdo de quem recusa cookies não-essenciais), em
+                conformidade com o entendimento da ANPD e do EDPB.
+            </div>
 
-        <footer>
-            <p>&copy; 2026 Boutique Empresarial. Todos os direitos reservados.</p>
-            <p><a href="/">Voltar para a Home</a></p>
-        </footer>
+            <!-- 11. IA e decisões automatizadas -->
+            <h2 id="sec-ia">11. Inteligência artificial e decisões automatizadas</h2>
+            <p>Algumas demonstrações públicas (ex.: <em>Knowledge OS</em>) podem incluir interfaces conversacionais
+                baseadas em modelos de linguagem (LLMs). Em conformidade com o <strong>EU AI Act (Regulamento UE
+                    2024/1689)</strong> e o posicionamento da ANPD sobre IA generativa:</p>
+            <ul>
+                <li>Conteúdo gerado por IA é <strong>identificado como tal</strong> ao usuário.</li>
+                <li><strong>Não treinamos</strong> modelos de IA com seus dados pessoais sem consentimento explícito e
+                    específico.</li>
+                <li>Decisões com efeitos relevantes (ex.: aprovação de um lead) <strong>passam por revisão humana</strong>
+                    antes de qualquer comunicação ao titular (LGPD, art. 20).</li>
+                <li>Você pode solicitar revisão humana de qualquer decisão automatizada via DPO.</li>
+            </ul>
+
+            <!-- 12. Segurança -->
+            <h2 id="sec-seguranca">12. Segurança da informação</h2>
+            <p>Adotamos medidas técnicas e administrativas proporcionais ao risco (LGPD art. 46-49; Decreto 8.771/2016):
+            </p>
+            <h3>Medidas técnicas</h3>
+            <ul>
+                <li>Conexão criptografada com <strong>TLS 1.3</strong></li>
+                <li>Criptografia <strong>at-rest</strong> em buckets de armazenamento</li>
+                <li>Princípio do <strong>menor privilégio</strong> (IAM, MFA)</li>
+                <li>Autenticação federada (<strong>OIDC</strong>) para CI/CD — sem credenciais hardcoded</li>
+                <li>Headers de segurança (HSTS, CSP, X-Frame-Options)</li>
+            </ul>
+            <h3>Medidas organizacionais</h3>
+            <ul>
+                <li>Política interna de proteção de dados</li>
+                <li>NDA com prestadores</li>
+                <li>Treinamento e revisão periódica</li>
+            </ul>
+            <h3>Em caso de incidente</h3>
+            <p>Conforme a <strong>Resolução CD/ANPD 15/2024</strong>, comunicaremos a ANPD e os titulares afetados em
+                prazo razoável, contendo: descrição do incidente, dados envolvidos, medidas adotadas e contatos para
+                informações adicionais.</p>
+
+            <!-- 13. Crianças -->
+            <h2 id="sec-criancas">13. Crianças e adolescentes</h2>
+            <p>O site <strong>não é direcionado a menores de 18 anos</strong>. Não coletamos intencionalmente dados
+                pessoais de crianças ou adolescentes. Caso identifiquemos tal coleta, os dados serão eliminados.
+                Tratamentos eventuais respeitarão o <strong>melhor interesse</strong> e exigirão consentimento
+                específico de pelo menos um dos pais ou responsável legal (LGPD art. 14; Lei 14.708/2023).</p>
+
+            <!-- 14. DPO -->
+            <h2 id="sec-dpo">14. Encarregado (DPO) e canais de contato</h2>
+            <p>Para exercer seus direitos, esclarecer dúvidas ou reportar incidentes, fale com nosso Encarregado de
+                Proteção de Dados:</p>
+            <ul>
+                <li><strong>E-mail:</strong> <a href="mailto:dpo@issei.com.br">dpo@issei.com.br</a> [PLACEHOLDER —
+                    confirmar caixa dedicada]</li>
+                <li><strong>Endereço postal:</strong> Rua do Estilo Barroco, 329 — São Paulo, SP — CEP [PLACEHOLDER]
+                </li>
+                <li><strong>SLA de resposta:</strong> até 15 dias úteis</li>
+            </ul>
+
+            <!-- 15. ANPD -->
+            <h2 id="sec-anpd">15. Reclamações à autoridade competente</h2>
+            <p>Se entender que houve violação de seus direitos, você pode reclamar à <strong>Autoridade Nacional de
+                    Proteção de Dados (ANPD)</strong>: <a href="https://www.gov.br/anpd"
+                    rel="noopener">www.gov.br/anpd</a>.</p>
+            <p>Para residentes da União Europeia, à autoridade de proteção de dados do seu país (lista no <a
+                    href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en" rel="noopener">EDPB</a>). Para
+                residentes do Reino Unido, ao <a href="https://ico.org.uk" rel="noopener">ICO</a>. Para residentes da
+                Califórnia, ao <a href="https://oag.ca.gov/privacy" rel="noopener">California Attorney General</a>.</p>
+
+            <!-- 16. Alterações e foro -->
+            <h2 id="sec-alteracoes">16. Alterações e foro</h2>
+            <h3>Mudanças nesta política</h3>
+            <p>Esta política é versionada. Mudanças <strong>materiais</strong> (que ampliem coleta, finalidade ou
+                compartilhamento) acionam novamente o banner de consentimento e são notificadas no topo da página por
+                pelo menos 30 dias.</p>
+            <h3>Histórico de revisões</h3>
+            <ul>
+                <li><strong>v2.0 (08/05/2026):</strong> reescrita completa com tema Dark Tech, inclusão de seções IA
+                    Act, CCPA/GPC, transferência internacional ANPD 19/2024, Consent Mode v2 e DPO unificado.</li>
+                <li><strong>v1.0 (fev/2026):</strong> versão inicial focada em compliance Meta/LGPD básica.</li>
+            </ul>
+            <h3>Lei aplicável e foro</h3>
+            <p>Esta política rege-se pela legislação brasileira. Fica eleito o foro da <strong>Comarca de São Paulo,
+                    SP</strong> para dirimir controvérsias, ressalvado o direito do consumidor de optar pelo foro de seu
+                domicílio (CDC, art. 101, I).</p>
+
+            <p style="margin-top:48px; color: var(--muted); font-size: .85rem;">
+                <em>Esta política foi escrita em linguagem clara e objetiva. Em caso de dúvida sobre qualquer termo,
+                    consulte a <a href="#sec-definicoes">seção 3</a> ou fale com o <a href="#sec-dpo">DPO</a>.</em>
+            </p>
+        </main>
     </div>
 
+    <footer class="legal-footer">
+        <p>&copy; 2026 Maurício Yokoyama Issei & Boutique Empresarial.</p>
+        <p>
+            <a href="/privacidade.html">Privacidade</a> ·
+            <a href="/termos.html">Termos</a> ·
+            <a href="/cookies.html">Cookies</a> ·
+            <a href="/">Voltar para a home</a>
+        </p>
+    </footer>
+
+    <script type="module" src="./js/cookie-consent.js"></script>
 </body>
 
 </html>
