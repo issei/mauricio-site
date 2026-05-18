@@ -1,0 +1,869 @@
+/* =====================================================
+   DEVIN PAGE — Base Styles
+   ===================================================== */
+
+/* Reset & base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: auto; /* Lenis cuida do scroll suave */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.devin-body {
+  background-color: #002D62;
+  color: #F5F7FA;
+  overflow-x: hidden;
+}
+
+/* Lenis html class */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* === Nav === */
+.devin-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(to bottom, rgba(0, 45, 98, 0.95), transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.devin-nav__back {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94A3B8;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.3s ease;
+}
+
+.devin-nav__back:hover {
+  color: #F5F7FA;
+}
+
+.devin-nav__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FF6200;
+  opacity: 0.8;
+}
+
+/* === Page wrapper === */
+.devin-page {
+  position: relative;
+  width: 100%;
+}
+
+/* === Section base === */
+.devin-section {
+  position: relative;
+  width: 100%;
+  padding: 8rem 2rem;
+  overflow: hidden;
+}
+
+.devin-section--dark {
+  background-color: #0B1F33;
+}
+
+.devin-section--surface {
+  background-color: #1A1D21;
+}
+
+.devin-section--navy {
+  background-color: #002D62;
+}
+
+.devin-section--light {
+  background-color: #F4F6F9;
+  color: #25282A;
+}
+
+/* Container */
+.devin-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.devin-container--narrow {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* === Typography === */
+.devin-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FF6200;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.devin-title-xl {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #F5F7FA;
+}
+
+.devin-title-xl em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.devin-title-lg {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #F5F7FA;
+}
+
+.devin-title-md {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #F5F7FA;
+}
+
+.devin-body-text {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: #94A3B8;
+  max-width: 65ch;
+}
+
+.devin-body-text--light {
+  color: #F5F7FA;
+}
+
+/* === Accent / Highlight === */
+.devin-accent {
+  color: #FF6200;
+}
+
+/* === Scroll indicator === */
+.devin-scroll-cta {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FF6200;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.devin-scroll-cta__icon {
+  width: 20px;
+  height: 20px;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+/* === Cards === */
+.devin-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.devin-card:hover {
+  border-color: rgba(255, 98, 0, 0.3);
+  background: rgba(255, 98, 0, 0.04);
+}
+
+.devin-card__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FF6200;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* === Divider === */
+.devin-divider {
+  width: 48px;
+  height: 2px;
+  background: #FF6200;
+  margin: 2rem 0;
+  opacity: 0.6;
+}
+
+/* === Tabs (épico 06) === */
+.devin-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2.5rem;
+}
+
+.devin-tab {
+  padding: 0.875rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #64748B;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.devin-tab:hover {
+  color: #94A3B8;
+}
+
+.devin-tab[aria-selected="true"] {
+  color: #FF6200;
+  border-bottom-color: #FF6200;
+}
+
+.devin-tab-panel {
+  display: none;
+}
+
+.devin-tab-panel[data-active="true"] {
+  display: block;
+}
+
+/* =====================================================
+   ÉPICO 01 — Hero & Contexto Inicial (Seções 1-4)
+   ===================================================== */
+
+/* --- Seção 1: Hero --- */
+.ep01-hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #002D62 0%, #0B1F33 100%);
+  padding-top: 6rem; /* compensa nav fixa */
+}
+
+.ep01-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #002D62 0%, #0B1F33 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ep01-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.ep01-hero__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ep01-hero__supertitle {
+  /* inherits .devin-eyebrow */
+  margin-bottom: 0;
+}
+
+.ep01-hero__subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #94A3B8;
+  max-width: 56ch;
+}
+
+.ep01-hero__subtitle em {
+  color: #F5F7FA;
+  font-style: italic;
+}
+
+.ep01-hero__footer {
+  margin-top: 1rem;
+}
+
+.ep01-hero__credit {
+  font-size: 0.8125rem;
+  color: #64748B;
+  letter-spacing: 0.04em;
+}
+
+.ep01-hero__cta-text {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* --- Seção 2: Pergunta-Gatilho --- */
+.ep01-pergunta {
+  background: linear-gradient(180deg, #0B1F33 0%, #0d2035 100%);
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.ep01-pergunta__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.ep01-pergunta__main {
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  border: none;
+  margin: 0;
+  padding: 0;
+  quotes: none;
+}
+
+.ep01-pergunta__follow {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.65;
+  color: #94A3B8;
+}
+
+/* --- Seção 3: Apresentação --- */
+.ep01-apresentacao {
+  background-color: #0B1F33;
+}
+
+.ep01-apresentacao__header {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ep01-apresentacao__name {
+  color: #F5F7FA;
+}
+
+.ep01-apresentacao__posicao {
+  font-size: 0.9375rem;
+  color: #64748B;
+  letter-spacing: 0.02em;
+}
+
+.ep01-apresentacao__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ep01-card {
+  /* Extends .devin-card */
+}
+
+.ep01-card__label {
+  /* Extends .devin-card__label */
+}
+
+.ep01-card__body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #F5F7FA;
+}
+
+/* --- Seção 4: Propósito --- */
+.ep01-proposito {
+  background-color: #0d2035;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.ep01-proposito__statement {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.ep01-proposito__line {
+  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #F5F7FA;
+}
+
+.ep01-proposito__line--2 {
+  color: #94A3B8;
+  font-size: clamp(1.25rem, 2.8vw, 2.25rem);
+}
+
+.ep01-proposito__line--3 {
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  font-weight: 700;
+  color: #FF6200; /* reforçado via JS também */
+}
+
+
+/* =====================================================
+   ÉPICO 02 — Os Três Fundamentos & Calculadora (Seções 5-6)
+   ===================================================== */
+
+/* --- Seção 5: Fundamentos --- */
+.ep02-fundamentos {
+  background-color: #0B1F33;
+}
+
+.ep02-fundamentos__intro {
+  margin-bottom: 3.5rem;
+}
+
+.ep02-fundamentos__chapeu {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #94A3B8;
+  font-style: italic;
+}
+
+.ep02-fundamentos__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ep02-card {
+  background: #1A1D21;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.ep02-card__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.ep02-card__subtitle {
+  font-size: 0.875rem;
+  color: #FF6200;
+  font-style: italic;
+}
+
+.ep02-card__body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #F5F7FA;
+}
+
+.ep02-card__example {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #94A3B8;
+  border-left: 2px solid rgba(255, 98, 0, 0.3);
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* --- Seção 6: Calculadora --- */
+.ep02-calculadora {
+  background-color: #0d2035;
+}
+
+.ep02-calculadora__rotulo {
+  margin-bottom: 2.5rem;
+}
+
+.ep02-calculadora__header {
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ep02-calculadora__title {
+  color: #FFFFFF;
+}
+
+.ep02-calculadora__subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-style: italic;
+  color: #FF8A3D;
+  line-height: 1.5;
+}
+
+.ep02-calculadora__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+}
+
+.ep02-calculadora__body p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #F5F7FA;
+}
+
+.ep02-calculadora__body strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Diagrama */
+.ep02-diagrama {
+  margin: 0;
+}
+
+.ep02-diagrama__track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.ep02-diagrama__box {
+  background: #0B1F33;
+  border: 2px solid #FF6200;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 160px;
+}
+
+.ep02-diagrama__label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.ep02-diagrama__desc {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.ep02-diagrama__arrow {
+  flex: 1 1 auto;
+  height: 24px;
+  min-width: 40px;
+}
+
+.ep02-diagrama__caption {
+  font-size: 0.75rem;
+  color: #64748B;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-style: italic;
+}
+
+
+/* =====================================================
+   ÉPICO 03 — Vibe Coding & Cozinheiro (Seções 7-8)
+   ===================================================== */
+
+/* --- Seção 7: Pausa Vibe Coding --- */
+.ep03-pausa {
+  background: linear-gradient(160deg, #002D62 0%, #0B1F33 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70svh;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.ep03-pausa__inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ep03-pausa__content {
+  text-align: center;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ep03-pausa__line {
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.ep03-pausa__line--1 {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  color: #F5F7FA;
+  font-weight: 400;
+}
+
+.ep03-pausa__line--2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #FF6200;
+  font-weight: 700;
+}
+
+/* --- Seção 8: Cozinheiro --- */
+.ep03-cozinheiro {
+  background-color: #0B1F33;
+}
+
+.ep03-cozinheiro__rotulo {
+  margin-bottom: 3rem;
+}
+
+.ep03-cozinheiro__intro {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ep03-cozinheiro__setup {
+  font-size: 0.9375rem;
+  color: #94A3B8;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.ep03-cozinheiro__narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.ep03-cozinheiro__narrative p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #F5F7FA;
+}
+
+.ep03-cozinheiro__climax {
+  color: #FF6200 !important;
+}
+
+.ep03-cozinheiro__climax strong {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: inherit;
+}
+
+.ep03-cozinheiro__roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.ep03-role-card {
+  background: #1A1D21;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.3s ease;
+}
+
+.ep03-role-card:hover {
+  border-color: rgba(255, 98, 0, 0.35);
+}
+
+.ep03-role-card__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.ep03-role-card__subtitle {
+  font-size: 0.875rem;
+  color: #FF6200;
+  font-style: italic;
+}
+
+.ep03-role-card__body {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #F5F7FA;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE — Épicos 01, 02, 03
+   ===================================================== */
+
+@media (max-width: 1023px) {
+  /* Tablet */
+  .ep01-apresentacao__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ep02-fundamentos__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ep03-cozinheiro__roles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Diagrama calculadora — empilha em vertical no tablet */
+  .ep02-diagrama__track {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .ep02-diagrama__arrow {
+    transform: rotate(90deg);
+    height: 48px;
+    width: 24px;
+    flex: 0 0 auto;
+    align-self: center;
+  }
+
+  .ep02-diagrama__box {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile */
+  .ep01-apresentacao__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ep01-hero {
+    padding-top: 5rem;
+  }
+
+  .ep01-proposito__line {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+
+  .ep01-proposito__line--3 {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .ep02-fundamentos__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ep02-card {
+    padding: 1.5rem;
+  }
+
+  .ep02-calculadora__title {
+    font-size: 1.75rem;
+  }
+
+  .ep03-pausa__content {
+    max-width: 95%;
+  }
+
+  .ep03-cozinheiro__roles {
+    grid-template-columns: 1fr;
+  }
+
+  .ep03-role-card {
+    padding: 1.5rem;
+  }
+}
+
+
+/* === Reduced motion fallbacks === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .devin-scroll-cta__icon {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .devin-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .devin-nav {
+    padding: 1rem 1.25rem;
+  }
+
+  .devin-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
