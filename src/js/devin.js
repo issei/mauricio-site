@@ -1,4 +1,5 @@
 import { initScroll } from './devin/scroll.js';
+import { initComponents } from './devin/components.js';
 
 // Ato I
 import { initEpico01 } from './devin/epico-01.js';
@@ -18,6 +19,7 @@ import { initEpico09 } from './devin/epico-09.js';
 async function main() {
   // 1. Scroll engine (Lenis + GSAP ScrollTrigger)
   initScroll();
+  initComponents();
 
   // 2. Ato I — Seções 1-8
   initEpico01();
