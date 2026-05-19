@@ -2877,3 +2877,233 @@ html.lenis, html.lenis body {
   border-color: var(--color-human-border);
   color: var(--color-human);
 }
+
+/* =====================================================
+   ATMOSPHERIC SYSTEM — 08_spec_background.md
+   Iluminação volumétrica simulada em CSS/JS
+   ===================================================== */
+
+:root {
+  /* Tokens imutáveis — não alterar sem revisão de design */
+  --atm-base-color:  #080c18;
+  --atm-l1-hue:      215;
+  --atm-l2-hue:      230;
+  --atm-l3-hue:      28;
+
+  /* Tokens operacionais — modificados por JS via estado semântico */
+  --atm-l1-opacity:         0.85;
+  --atm-l2-opacity:         0.70;
+  --atm-l3-opacity:         0.50;
+  --atm-vignette-strength:  0.70;
+  --atm-overlay-strength:   0.08;
+
+  /* Tokens de performance — modificados por capability detection */
+  --atm-blur-scale:  1;
+  --atm-anim-scale:  1;
+  --atm-transition:  1200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- Estrutura base --- */
+.atm-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -10;
+}
+
+.atm-layer {
+  position: absolute;
+  inset: 0;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* --- Wrappers de estado (opacity transicionada pelo JS via classe em <html>) --- */
+/* Separa a transição de estado das keyframes de respiração no filho */
+.atm-l1-state,
+.atm-l2-state,
+.atm-l3-state {
+  position: absolute;
+  inset: 0;
+  transition: opacity var(--atm-transition);
+}
+.atm-l1-state { opacity: 0.85; z-index: 2; }
+.atm-l2-state { opacity: 0.70; z-index: 3; }
+.atm-l3-state { opacity: 0.50; z-index: 4; }
+
+/* --- Camadas individuais (z-index referência: spec §5.1) --- */
+
+/* CAMADA BASE (z-index: 0) — fundação cromática absoluta */
+.atm-base {
+  background-color: var(--atm-base-color, #080c18);
+  z-index: 0;
+}
+
+/* CAMADA AMBIENT (z-index: 1) — atmosfera base estática */
+.atm-ambient {
+  background: linear-gradient(
+    160deg,
+    hsl(222, 30%, 10%) 0%,
+    hsl(225, 25%, 6%) 100%
+  );
+  z-index: 1;
+}
+
+/* CAMADA L1 (z-index: 2) — âncora primária, quadrante superior esquerdo */
+.atm-l1 {
+  background: radial-gradient(
+    ellipse 80% 60% at -15% -10%,
+    hsl(215, 40%, 18%) 0%,
+    transparent 70%
+  );
+  animation: atm-breathe-l1 20s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+/* CAMADA L2 (z-index: 3) — difusão diagonal inferior direito */
+.atm-l2 {
+  background: radial-gradient(
+    ellipse 70% 50% at 110% 110%,
+    hsl(230, 35%, 14%) 0%,
+    transparent 65%
+  );
+  animation: atm-breathe-l2 31s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+/* CAMADA L3 (z-index: 4) — acento âmbar, identidade cromática, lateral direito */
+.atm-l3 {
+  background: radial-gradient(
+    ellipse 50% 80% at 108% 38%,
+    hsl(28, 45%, 12%) 0%,
+    transparent 60%
+  );
+  animation: atm-breathe-l3 47s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}
+
+/* CAMADA DIFFUSE (z-index: 5) — suavização entre fontes de luz */
+.atm-diffuse {
+  background: conic-gradient(
+    from 200deg at 30% 70%,
+    hsl(215, 20%, 8%) 0deg,
+    hsl(225, 15%, 6%) 120deg,
+    hsl(215, 20%, 8%) 360deg
+  );
+  mix-blend-mode: screen;
+  opacity: 0.05;
+  z-index: 5;
+}
+
+/* CAMADA NOISE (z-index: 6) — textura granular anti-banding */
+.atm-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  opacity: 0.03;
+  z-index: 6;
+}
+
+/* CAMADA VIGNETTE (z-index: 7) — concentração de atenção central */
+.atm-vignette {
+  background: radial-gradient(
+    ellipse 70% 85% at 50% 50%,
+    transparent 40%,
+    rgba(4, 6, 14, 0.70) 100%
+  );
+  z-index: 7;
+}
+
+/* CAMADA MASK (z-index: 8) — atenuação final de luminância */
+.atm-mask {
+  background: rgba(8, 12, 24, 0.15);
+  z-index: 8;
+}
+
+/* CAMADA OVERLAY (z-index: 9) — proteção de leitura WCAG */
+.atm-overlay {
+  background: rgba(6, 10, 20, 0.08);
+  z-index: 9;
+}
+
+/* --- @keyframes de respiração (valores relativos ao wrapper de estado) --- */
+/* Números primos como período garantem que os ciclos nunca se alinhem */
+@keyframes atm-breathe-l1 {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.92; }
+}
+@keyframes atm-breathe-l2 {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.88; }
+}
+@keyframes atm-breathe-l3 {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.85; }
+}
+
+/* --- Estados semânticos (JS adiciona/remove classe em <html>) --- */
+/* hero = default — sem classe, usa valores acima */
+
+html.atm-state--tension  .atm-l1-state { opacity: 0.75; }
+html.atm-state--tension  .atm-l2-state { opacity: 0.62; }
+html.atm-state--tension  .atm-l3-state { opacity: 0.08; }
+
+html.atm-state--authority .atm-l1-state { opacity: 0.72; }
+html.atm-state--authority .atm-l2-state { opacity: 0.52; }
+html.atm-state--authority .atm-l3-state { opacity: 0.35; }
+
+html.atm-state--proof    .atm-l1-state { opacity: 0.70; }
+html.atm-state--proof    .atm-l2-state { opacity: 0.65; }
+html.atm-state--proof    .atm-l3-state { opacity: 0.40; }
+
+html.atm-state--vision   .atm-l1-state { opacity: 0.80; }
+html.atm-state--vision   .atm-l2-state { opacity: 0.65; }
+html.atm-state--vision   .atm-l3-state { opacity: 0.50; }
+
+html.atm-state--content  .atm-l1-state { opacity: 0.50; }
+html.atm-state--content  .atm-l2-state { opacity: 0.45; }
+html.atm-state--content  .atm-l3-state { opacity: 0.15; }
+
+html.atm-state--conversion .atm-l1-state { opacity: 0.70; }
+html.atm-state--conversion .atm-l2-state { opacity: 0.60; }
+html.atm-state--conversion .atm-l3-state { opacity: 0.60; }
+
+html.atm-state--close    .atm-l1-state { opacity: 0.60; }
+html.atm-state--close    .atm-l2-state { opacity: 0.50; }
+html.atm-state--close    .atm-l3-state { opacity: 0.10; }
+
+/* --- Modificadores de nível de enhancement --- */
+
+/* REDUCED — tablet ou hardware médio: sem blend, animações mais lentas */
+html.atm--reduced .atm-diffuse { display: none; }
+html.atm--reduced .atm-l1 { animation-duration: 40s; }
+html.atm--reduced .atm-l2 { animation-duration: 62s; }
+html.atm--reduced .atm-l3 { animation-duration: 94s; }
+
+/* MINIMAL — mobile com pouca memória: apenas L1 estático + vinheta */
+html.atm--minimal .atm-l2-state,
+html.atm--minimal .atm-l3-state,
+html.atm--minimal .atm-ambient,
+html.atm--minimal .atm-diffuse,
+html.atm--minimal .atm-noise { display: none; }
+html.atm--minimal .atm-l1 { animation: none; }
+
+/* STATIC — prefers-reduced-motion ou bateria crítica: apenas base + vinheta */
+html.atm--static .atm-l1,
+html.atm--static .atm-l2-state,
+html.atm--static .atm-l3-state,
+html.atm--static .atm-ambient,
+html.atm--static .atm-diffuse,
+html.atm--static .atm-noise,
+html.atm--static .atm-mask { display: none; }
+
+/* NO-BLEND — Safari iOS: desabilitar mix-blend-mode */
+html.atm--no-blend .atm-diffuse { display: none; }
+
+/* Acessibilidade: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .atm-l1,
+  .atm-l2,
+  .atm-l3 { animation: none !important; }
+  .atm-l1-state,
+  .atm-l2-state,
+  .atm-l3-state { transition: none !important; }
+}
