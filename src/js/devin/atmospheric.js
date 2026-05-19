@@ -56,6 +56,14 @@ const applyDrift = () => {
   if (l1) l1.style.animationDelay = `-${Math.random() * 20000}ms`;
   if (l2) l2.style.animationDelay = `-${Math.random() * 31000}ms`;
   if (l3) l3.style.animationDelay = `-${Math.random() * 47000}ms`;
+
+  // Drift das camadas aurora (períodos primos distintos dos ciclos base)
+  const aa = document.getElementById('atm-aurora-a');
+  const ab = document.getElementById('atm-aurora-b');
+  const ac = document.getElementById('atm-aurora-c');
+  if (aa) aa.style.animationDelay = `-${Math.random() * 29000}ms`;
+  if (ab) ab.style.animationDelay = `-${Math.random() * 41000}ms`;
+  if (ac) ac.style.animationDelay = `-${Math.random() * 53000}ms`;
 };
 
 // Motor de transição de estado semântico

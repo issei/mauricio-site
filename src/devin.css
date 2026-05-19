@@ -3602,7 +3602,50 @@ html.lenis, html.lenis body {
   animation: atm-breathe-l3 47s cubic-bezier(0.37, 0, 0.63, 1) infinite;
 }
 
-/* CAMADA DIFFUSE (z-index: 5) — suavização entre fontes de luz */
+/* CAMADAS AURORA (z-index: 5–7) — luzes desfocadas no topo, estilo Gemini    */
+/* Cores corporativas: azul cobalto, cobre (#FF6200), teal IA (#00C2A8)       */
+/* filter: blur() é ESTÁTICO — apenas opacity anima (spec §6.4)               */
+
+.atm-aurora-a {
+  background: radial-gradient(
+    ellipse 70% 40% at 18% 0%,
+    hsl(215, 55%, 24%) 0%,
+    transparent 70%
+  );
+  filter: blur(90px);
+  opacity: 0.65;
+  z-index: 5;
+  animation: atm-aurora-a 29s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  transition: opacity var(--atm-transition);
+}
+
+.atm-aurora-b {
+  background: radial-gradient(
+    ellipse 60% 35% at 68% -5%,
+    hsl(22, 60%, 20%) 0%,
+    transparent 70%
+  );
+  filter: blur(110px);
+  opacity: 0.55;
+  z-index: 6;
+  animation: atm-aurora-b 41s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  transition: opacity var(--atm-transition);
+}
+
+.atm-aurora-c {
+  background: radial-gradient(
+    ellipse 55% 30% at 44% -8%,
+    hsl(174, 45%, 17%) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  opacity: 0.50;
+  z-index: 7;
+  animation: atm-aurora-c 53s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  transition: opacity var(--atm-transition);
+}
+
+/* CAMADA DIFFUSE (z-index: 8) — suavização entre fontes de luz */
 .atm-diffuse {
   background: conic-gradient(
     from 200deg at 30% 70%,
@@ -3612,42 +3655,42 @@ html.lenis, html.lenis body {
   );
   mix-blend-mode: screen;
   opacity: 0.05;
-  z-index: 5;
+  z-index: 8;
 }
 
-/* CAMADA NOISE (z-index: 6) — textura granular anti-banding */
+/* CAMADA NOISE (z-index: 9) — textura granular anti-banding */
 .atm-noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   background-repeat: repeat;
   opacity: 0.03;
-  z-index: 6;
+  z-index: 9;
 }
 
-/* CAMADA VIGNETTE (z-index: 7) — concentração de atenção central */
+/* CAMADA VIGNETTE (z-index: 10) — concentração de atenção central */
 .atm-vignette {
   background: radial-gradient(
     ellipse 70% 85% at 50% 50%,
     transparent 40%,
     rgba(4, 6, 14, 0.70) 100%
   );
-  z-index: 7;
+  z-index: 10;
 }
 
-/* CAMADA MASK (z-index: 8) — atenuação final de luminância */
+/* CAMADA MASK (z-index: 11) — atenuação final de luminância */
 .atm-mask {
   background: rgba(8, 12, 24, 0.15);
-  z-index: 8;
+  z-index: 11;
 }
 
-/* CAMADA OVERLAY (z-index: 9) — proteção de leitura WCAG */
+/* CAMADA OVERLAY (z-index: 12) — proteção de leitura WCAG */
 .atm-overlay {
   background: rgba(6, 10, 20, 0.08);
-  z-index: 9;
+  z-index: 12;
 }
 
 /* --- @keyframes de respiração (valores relativos ao wrapper de estado) --- */
-/* Números primos como período garantem que os ciclos nunca se alinhem */
+/* Números primos como período garantem que os ciclos nunca se alinhem       */
 @keyframes atm-breathe-l1 {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.92; }
@@ -3661,8 +3704,22 @@ html.lenis, html.lenis body {
   50%       { opacity: 0.85; }
 }
 
+/* --- @keyframes aurora (períodos primos distintos dos ciclos base) --- */
+@keyframes atm-aurora-a {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 0.42; }
+}
+@keyframes atm-aurora-b {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 0.32; }
+}
+@keyframes atm-aurora-c {
+  0%, 100% { opacity: 0.50; }
+  50%       { opacity: 0.28; }
+}
+
 /* --- Estados semânticos (JS adiciona/remove classe em <html>) --- */
-/* hero = default — sem classe, usa valores acima */
+/* hero = default — sem classe, usa valores acima                    */
 
 html.atm-state--tension  .atm-l1-state { opacity: 0.75; }
 html.atm-state--tension  .atm-l2-state { opacity: 0.62; }
@@ -3692,6 +3749,15 @@ html.atm-state--close    .atm-l1-state { opacity: 0.60; }
 html.atm-state--close    .atm-l2-state { opacity: 0.50; }
 html.atm-state--close    .atm-l3-state { opacity: 0.10; }
 
+/* Aurora dimma em seções de leitura densa e encerramento */
+html.atm-state--content .atm-aurora-a,
+html.atm-state--content .atm-aurora-b,
+html.atm-state--content .atm-aurora-c { opacity: 0.20; }
+
+html.atm-state--close .atm-aurora-a,
+html.atm-state--close .atm-aurora-b,
+html.atm-state--close .atm-aurora-c { opacity: 0.15; }
+
 /* --- Modificadores de nível de enhancement --- */
 
 /* REDUCED — tablet ou hardware médio: sem blend, animações mais lentas */
@@ -3699,13 +3765,19 @@ html.atm--reduced .atm-diffuse { display: none; }
 html.atm--reduced .atm-l1 { animation-duration: 40s; }
 html.atm--reduced .atm-l2 { animation-duration: 62s; }
 html.atm--reduced .atm-l3 { animation-duration: 94s; }
+html.atm--reduced .atm-aurora-a { animation-duration: 58s; }
+html.atm--reduced .atm-aurora-b { animation-duration: 82s; }
+html.atm--reduced .atm-aurora-c { animation-duration: 106s; }
 
 /* MINIMAL — mobile com pouca memória: apenas L1 estático + vinheta */
 html.atm--minimal .atm-l2-state,
 html.atm--minimal .atm-l3-state,
 html.atm--minimal .atm-ambient,
 html.atm--minimal .atm-diffuse,
-html.atm--minimal .atm-noise { display: none; }
+html.atm--minimal .atm-noise,
+html.atm--minimal .atm-aurora-a,
+html.atm--minimal .atm-aurora-b,
+html.atm--minimal .atm-aurora-c { display: none; }
 html.atm--minimal .atm-l1 { animation: none; }
 
 /* STATIC — prefers-reduced-motion ou bateria crítica: apenas base + vinheta */
@@ -3715,7 +3787,10 @@ html.atm--static .atm-l3-state,
 html.atm--static .atm-ambient,
 html.atm--static .atm-diffuse,
 html.atm--static .atm-noise,
-html.atm--static .atm-mask { display: none; }
+html.atm--static .atm-mask,
+html.atm--static .atm-aurora-a,
+html.atm--static .atm-aurora-b,
+html.atm--static .atm-aurora-c { display: none; }
 
 /* NO-BLEND — Safari iOS: desabilitar mix-blend-mode */
 html.atm--no-blend .atm-diffuse { display: none; }
@@ -3724,7 +3799,10 @@ html.atm--no-blend .atm-diffuse { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .atm-l1,
   .atm-l2,
-  .atm-l3 { animation: none !important; }
+  .atm-l3,
+  .atm-aurora-a,
+  .atm-aurora-b,
+  .atm-aurora-c { animation: none !important; }
   .atm-l1-state,
   .atm-l2-state,
   .atm-l3-state { transition: none !important; }
