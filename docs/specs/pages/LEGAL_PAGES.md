@@ -99,7 +99,7 @@ public/
 
 ### 3.3. Indexação
 
-- Manter `<meta name="robots" content="noindex, follow">` — evita SEO concorrer com home, mas permite que crawlers leiam e citem.
+- Manter `<meta name="robots" content="follow">` — evita SEO concorrer com home, mas permite que crawlers leiam e citem.
 - `canonical` consistente com o domínio: `https://mauricio.issei.com.br/privacidade.html`.
 
 ---
@@ -113,7 +113,7 @@ public/
 | `<title>` | `Política de Privacidade | Maurício Yokoyama Issei` |
 | `<meta name="description">` | `Como tratamos seus dados pessoais conforme a LGPD, GDPR e demais legislações vigentes. Versão 2.0 — maio/2026.` |
 | `<link rel="canonical">` | `https://mauricio.issei.com.br/privacidade.html` |
-| `robots` | `noindex, follow` |
+| `robots` | `follow` |
 | `lang` | `pt-BR` |
 
 ### 4.2. Estrutura de Seções (obrigatórias)
@@ -264,7 +264,7 @@ Resumo + link para `cookies.html` (página dedicada).
 | `<title>` | `Termos de Uso | Maurício Yokoyama Issei` |
 | `<meta name="description">` | `Regras de uso do site, propriedade intelectual, limitação de responsabilidade e foro.` |
 | `<link rel="canonical">` | `https://mauricio.issei.com.br/termos.html` |
-| `robots` | `noindex, follow` |
+| `robots` | `follow` |
 
 ### 5.2. Estrutura de Seções
 
@@ -474,7 +474,7 @@ Detalhamento técnico — listagem nominal:
 
 ### 8.1. SEO
 
-- `noindex, follow` (mantém)
+- `follow` (mantém)
 - Schema.org `WebPage` + `breadcrumb`
 - `lang="pt-BR"`
 - Meta description focada em conformidade
