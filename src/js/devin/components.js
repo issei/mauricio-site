@@ -116,9 +116,22 @@ export function initRespiros() {
   });
 }
 
+// ── Progressive Disclosure toggles ────────────────────────────────────────────
+export function initDisclosure() {
+  document.querySelectorAll('.devin-disclosure__toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const disclosure = btn.previousElementSibling;
+      const open = disclosure.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Ver menos' : 'Ver mais';
+    });
+  });
+}
+
 export function initComponents() {
   initToC();
   initFileExplorer();
   initReactCycle();
   initRespiros();
+  initDisclosure();
 }
