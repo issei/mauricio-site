@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -28,6 +28,31 @@
     </a>
     <span class="devin-nav__label">ITAÚ BUPJ · HANDS-ON</span>
   </nav>
+
+  <!-- Sticky Table of Contents -->
+  <aside class="devin-toc" aria-label="Navegação por seções" role="navigation">
+    <a class="devin-toc__item" href="#hero" data-section="hero">
+      <span class="devin-toc__dot"></span><span class="devin-toc__label">Capa</span>
+    </a>
+    <a class="devin-toc__item" href="#fundamentos" data-section="fundamentos">
+      <span class="devin-toc__dot"></span><span class="devin-toc__label">Fundamentos</span>
+    </a>
+    <a class="devin-toc__item" href="#comunicacao-ia" data-section="comunicacao-ia">
+      <span class="devin-toc__dot"></span><span class="devin-toc__label">Comunicação IA</span>
+    </a>
+    <a class="devin-toc__item" href="#anatomia-devin" data-section="anatomia-devin">
+      <span class="devin-toc__dot"></span><span class="devin-toc__label">Anatomia Devin</span>
+    </a>
+    <a class="devin-toc__item" href="#skills-playbooks" data-section="skills-playbooks">
+      <span class="devin-toc__dot"></span><span class="devin-toc__label">Skills</span>
+    </a>
+    <a class="devin-toc__item" href="#lideranca" data-section="lideranca">
+      <span class="devin-toc__dot"></span><span class="devin-toc__label">Liderança</span>
+    </a>
+    <a class="devin-toc__item" href="#encerramento" data-section="encerramento">
+      <span class="devin-toc__dot"></span><span class="devin-toc__label">Encerramento</span>
+    </a>
+  </aside>
 
   <main class="devin-page" id="devin-main">
 
@@ -212,7 +237,7 @@
           <p>O cérebro humano usa o pensamento analítico para processar cálculos matemáticos de forma sequencial e lógica. Mas esse processamento gasta tempo e energia metabólica.</p>
           <p>A calculadora <strong>terceiriza</strong> esse esforço mecânico — ela processa informação matemática de forma instantânea e devolve sua mente para tarefas de maior nível cognitivo.</p>
           <p>A IA generativa é a evolução máxima dessa calculadora. Não apenas matemática — <strong>cognitiva</strong>. Ela assume o <strong>trabalho braçal</strong> do pensamento repetitivo para que você possa focar no <strong>trabalho estratégico</strong> do <strong>pensamento criativo</strong>.</p>
-          <p style="margin-top: 1.5rem; padding: 1.25rem; background: rgba(255,98,0,0.07); border-left: 3px solid #FF6200; border-radius: 4px;">
+          <p class="callout-aside">
             <strong>O paradoxo que ninguém conta:</strong> a IA não torna o dia mais leve automaticamente. Ela elimina a fricção das tarefas simples e torna o dia <em>muito mais denso</em>. O gargalo deixou de ser a produção mecânica — e passou a ser a orquestração e a auditoria. Quem não evolui a forma de pensar, só sente o peso extra.
           </p>
         </article>
@@ -303,6 +328,45 @@
             <strong>Isso é com você.</strong>
           </p>
         </article>
+        <!-- Chef Diagram SVG — tripartite flow -->
+        <figure class="ep03-chef-diagram" aria-hidden="true">
+          <svg viewBox="0 0 600 180" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="chef-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="rgba(255,98,0,0.4)"/>
+              </marker>
+            </defs>
+            <g class="ep03-chef-node" data-role="cliente">
+              <rect x="20" y="60" width="140" height="60" rx="8"
+                    stroke="rgba(255,98,0,0.4)" stroke-width="1.5" fill="rgba(255,98,0,0.07)"/>
+              <text x="90" y="85" text-anchor="middle" fill="#94A3B8"
+                    font-size="9" font-family="Inter" font-weight="600" letter-spacing="0.08em">O CLIENTE</text>
+              <text x="90" y="102" text-anchor="middle" fill="#64748B"
+                    font-size="8" font-family="Inter">Traz o desejo abstrato</text>
+            </g>
+            <line x1="160" y1="90" x2="210" y2="90" stroke="rgba(255,98,0,0.3)"
+                  stroke-width="1.5" marker-end="url(#chef-arrow)"/>
+            <g class="ep03-chef-node" data-role="ia">
+              <rect x="210" y="55" width="180" height="70" rx="8"
+                    stroke="rgba(0,194,168,0.4)" stroke-width="1.5" fill="rgba(0,194,168,0.07)"/>
+              <text x="300" y="83" text-anchor="middle" fill="#00C2A8"
+                    font-size="9" font-family="Inter" font-weight="600" letter-spacing="0.08em">A IA (FERRAMENTA)</text>
+              <text x="300" y="100" text-anchor="middle" fill="#64748B"
+                    font-size="8" font-family="Inter">Pica, calibra, executa</text>
+            </g>
+            <line x1="390" y1="90" x2="440" y2="90" stroke="rgba(255,98,0,0.3)"
+                  stroke-width="1.5" marker-end="url(#chef-arrow)"/>
+            <g class="ep03-chef-node" data-role="chef">
+              <rect x="440" y="60" width="140" height="60" rx="8"
+                    stroke="rgba(255,98,0,0.7)" stroke-width="2" fill="rgba(255,98,0,0.12)"/>
+              <text x="510" y="85" text-anchor="middle" fill="#FF6200"
+                    font-size="9" font-family="Inter" font-weight="700" letter-spacing="0.08em">VOCÊ (CHEF)</text>
+              <text x="510" y="102" text-anchor="middle" fill="#94A3B8"
+                    font-size="8" font-family="Inter">Garante que tenha alma</text>
+            </g>
+          </svg>
+        </figure>
+
         <div class="ep03-cozinheiro__roles" role="list">
           <article class="ep03-role-card ep03-role-card--cliente js-ep03-role-card" role="listitem">
             <h3 class="ep03-role-card__title">O CLIENTE</h3>
@@ -324,6 +388,16 @@
     </section>
 
 
+
+    <!-- RESPIRO 1 — Transição ATO I → ATO II -->
+    <section class="devin-respiro" aria-hidden="true">
+      <div class="devin-respiro__inner">
+        <p class="devin-respiro__frase js-respiro-text">
+          Vibe Coding não é digitar menos.<br><em>É pensar melhor.</em>
+        </p>
+        <span class="devin-respiro__marker">ATO II →</span>
+      </div>
+    </section>
 
     <!-- ═══════════════════ ATO II — Épicos 04-06 ════════════════════ -->
 <!-- ============================================================
@@ -370,7 +444,7 @@
       </p>
     </header>
 
-    <div class="ep04-pilares" role="list">
+    <div class="ep04-pilares ep04-pilares--bento" role="list">
 
       <!-- Pilar 01 — Clareza -->
       <article class="ep04-pilar js-pillar-card" role="listitem" aria-label="Pilar 1: Clareza">
@@ -529,18 +603,44 @@
         </div>
         <div class="ep05-funcao__content">
           <h3 class="ep05-funcao__subtitulo">COMO DEVIN PROCESSA</h3>
-          <p class="ep05-funcao__label">Cognição: Ciclo ReAct — Observar, Raciocinar, Agir, Verificar</p>
+          <p class="ep05-funcao__label">Cognição: <span class="devin-term" data-tooltip="Ciclo cognitivo: Observar → Raciocinar → Agir → Verificar em loop contínuo">Ciclo ReAct</span> — Observar, Raciocinar, Agir, Verificar</p>
           <p class="ep05-funcao__body">
             Devin não "acha a resposta" em um banco de memória gigante. Ele opera em ciclos: <strong>Observa</strong> o contexto e o estado atual do sistema; <strong>Raciocina</strong> sobre a melhor sequência de ações; <strong>Age</strong> — escreve código, executa comandos, modifica arquivos; e <strong>Verifica</strong> o resultado antes de avançar. Esse loop tight de feedback permite corrigir erros no caminho, não depois. É pensamento sequencial com validação contínua — o oposto de um oráculo que gera resposta sem verificação.
           </p>
-          <div class="ep05-fluxo" aria-label="Fluxo de processamento ReAct">
-            <span class="ep05-fluxo__etapa">Observa</span>
-            <span class="ep05-fluxo__seta" aria-hidden="true">→</span>
-            <span class="ep05-fluxo__etapa">Raciocina</span>
-            <span class="ep05-fluxo__seta" aria-hidden="true">→</span>
-            <span class="ep05-fluxo__etapa">Age</span>
-            <span class="ep05-fluxo__seta" aria-hidden="true">→</span>
-            <span class="ep05-fluxo__etapa">Verifica</span>
+          <div class="ep05-react-loop" id="react-loop-diagram" aria-label="Ciclo ReAct circular">
+            <svg class="ep05-react-loop__svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="react-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L6,3 z" fill="rgba(0,194,168,0.5)"/>
+                </marker>
+              </defs>
+              <circle cx="190" cy="190" r="130" stroke="rgba(0,194,168,0.08)"
+                      stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+              <g class="ep05-react-node" data-node="observa">
+                <circle class="ep05-react-node__circle" cx="190" cy="60" r="40"/>
+                <text class="ep05-react-node__label" x="190" y="60">OBSERVA</text>
+              </g>
+              <g class="ep05-react-node" data-node="raciocina">
+                <circle class="ep05-react-node__circle" cx="320" cy="190" r="40"/>
+                <text class="ep05-react-node__label" x="320" y="190">RACIOCINA</text>
+              </g>
+              <g class="ep05-react-node" data-node="age">
+                <circle class="ep05-react-node__circle" cx="190" cy="320" r="40"/>
+                <text class="ep05-react-node__label" x="190" y="320">AGE</text>
+              </g>
+              <g class="ep05-react-node" data-node="verifica">
+                <circle class="ep05-react-node__circle" cx="60" cy="190" r="40"/>
+                <text class="ep05-react-node__label" x="60" y="190">VERIFICA</text>
+              </g>
+              <path d="M 220,80 A 130,130 0 0,1 300,160" stroke="rgba(0,194,168,0.25)"
+                    stroke-width="1.5" fill="none" marker-end="url(#react-arrow)"/>
+              <path d="M 305,220 A 130,130 0 0,1 215,300" stroke="rgba(0,194,168,0.25)"
+                    stroke-width="1.5" fill="none" marker-end="url(#react-arrow)"/>
+              <path d="M 160,305 A 130,130 0 0,1 75,220" stroke="rgba(0,194,168,0.25)"
+                    stroke-width="1.5" fill="none" marker-end="url(#react-arrow)"/>
+              <path d="M 75,160 A 130,130 0 0,1 160,75" stroke="rgba(0,194,168,0.25)"
+                    stroke-width="1.5" fill="none" marker-end="url(#react-arrow)"/>
+            </svg>
           </div>
           <p class="ep05-funcao__body" style="margin-top: 1rem; color: #64748B; font-size: 0.9rem;">
             É por isso que o Devin cria um PR com testes passando — não uma resposta com código que "parece certo". Cada ação tem consequência verificável no mundo real.
@@ -1206,6 +1306,16 @@
 </section>
 
 
+    <!-- RESPIRO 2 — Transição ATO II → ATO III -->
+    <section class="devin-respiro" aria-hidden="true">
+      <div class="devin-respiro__inner">
+        <p class="devin-respiro__frase js-respiro-text">
+          A IA processa.<br><em>Você pensa.</em>
+        </p>
+        <span class="devin-respiro__marker">ATO III →</span>
+      </div>
+    </section>
+
     <!-- ═══════════════════ ÉPICOS 07-09 ════════════════════════════ -->
 <!-- =====================================================
      ÉPICO 07 — HANDS-ON & MENTORIA (Seções 16-18)
@@ -1508,7 +1618,7 @@
           revelam falhas na spec — não no agente.
         </p>
         <p class="ep07-card__insight" style="margin-top: 0.75rem; border-top: 1px solid #334155; padding-top: 0.75rem;">
-          <strong>EFEITO — Antídoto ao Deskilling:</strong> A spec força você a articular o raciocínio antes de executar. Você não perde a compreensão — você a documenta. É o que separa quem usa IA como muleta de quem usa como alavanca.
+          <strong>EFEITO — Antídoto ao <span class="devin-term" data-tooltip="Atrofia gradual de habilidades causada pela dependência excessiva de automação">Deskilling</span>:</strong> A spec força você a articular o raciocínio antes de executar. Você não perde a compreensão — você a documenta. É o que separa quem usa IA como muleta de quem usa como alavanca.
         </p>
       </article>
     </div>
@@ -1530,25 +1640,41 @@
     </header>
 
     <!-- Estrutura de pastas -->
-    <div class="ep07-estrutura">
-      <h3 class="ep07-estrutura__title">Estrutura de projeto Salesforce com Devin</h3>
-      <pre class="ep07-code-block" aria-label="Estrutura de pastas do projeto">salesforce-bupj-project/
+    <!-- File Explorer IDE mockado -->
+    <div class="ep07-ide" id="file-explorer" role="region" aria-label="Estrutura do projeto Salesforce com Devin">
+      <div class="ep07-ide__titlebar" aria-hidden="true">
+        <span class="ep07-ide__dot ep07-ide__dot--red"></span>
+        <span class="ep07-ide__dot ep07-ide__dot--amber"></span>
+        <span class="ep07-ide__dot ep07-ide__dot--green"></span>
+      </div>
+      <div class="ep07-ide__tabs" role="tablist">
+        <button class="ep07-ide__tab" role="tab" aria-selected="true"
+                data-panel="estrutura" aria-controls="ide-panel-estrutura">Estrutura</button>
+        <button class="ep07-ide__tab" role="tab" aria-selected="false"
+                data-panel="terminal" aria-controls="ide-panel-terminal">Terminal</button>
+      </div>
+      <div class="ep07-ide__panel" data-active="true" id="ide-panel-estrutura" role="tabpanel">
+        <pre aria-label="Estrutura de pastas do projeto">salesforce-bupj-project/
 │
-├── force-app/
-│   └── main/default/classes/
-│       ├── OrderService.cls
-│       └── OrderServiceTest.cls
+├── force-app/main/default/classes/
+│   ├── OrderService.cls
+│   └── OrderServiceTest.cls
 │
 ├── sfdx-project.json
 │
-├── .agents/
-│   └── skills/
-│       └── run-tests.md
+├── .agents/skills/
+│   └── run-tests.md
 │
 └── specs/
-    ├── _template.spec.md         ← Template base para novas specs
-    ├── 001-filtro-data.spec.md   ← Spec em execução
+    ├── _template.spec.md         ← Template base
+    ├── 001-filtro-data.spec.md   ← Em execução
     └── 002-refactor-pagamento.spec.md</pre>
+      </div>
+      <div class="ep07-ide__panel" data-active="false" id="ide-panel-terminal" role="tabpanel">
+        <pre><span style="color:#27C93F">devin@sandbox:~$</span> sf apex test run --code-coverage --result-format human
+
+<span style="color:#27C93F">✓ 12 testes passando · cobertura: 92%</span></pre>
+      </div>
     </div>
 
     <!-- Aplicações práticas -->
@@ -1713,6 +1839,15 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
   </div>
 </section>
 
+<!-- RESPIRO 3 — Pausa antes da reflexão de identidade -->
+<section class="devin-respiro" aria-hidden="true">
+  <div class="devin-respiro__inner">
+    <p class="devin-respiro__frase js-respiro-text">
+      A ferramenta não te diminuiu.<br><em>Te liberou.</em>
+    </p>
+  </div>
+</section>
+
 <!-- SEÇÃO 20 — PAUSA REFLEXIVA + MUDANÇA DE IDENTIDADE -->
 <!-- State: contemplative — motion reduzido, espaço negativo dominante -->
 <section class="devin-section devin-section--navy ep08-section ep08-section--contemplativa" id="reflexao" data-section="reflexao">
@@ -1842,34 +1977,34 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
       o que você treinou até virar instinto, e como você usa a IA a seu favor.
     </p>
 
-    <div style="background: rgba(255,98,0,0.06); border: 1px solid rgba(255,98,0,0.2); border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 3rem;">
-      <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: #FF6200; text-transform: uppercase; margin-bottom: 1rem;">FRAMEWORK EPOCH · MIT SLOAN</p>
-      <p style="color: #94A3B8; font-size: 0.9375rem; line-height: 1.7; margin-bottom: 1rem;">As cinco dimensões humanas que nenhuma máquina consegue replicar:</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
-        <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
-          <p style="color: #FF6200; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">E</p>
-          <p style="color: #F5F7FA; font-size: 0.8125rem; font-weight: 600;">Empatia</p>
-          <p style="color: #64748B; font-size: 0.75rem;">Entender o não-dito</p>
+    <div class="callout-box">
+      <span class="callout-box__label"><span class="devin-term" data-tooltip="Framework MIT Sloan: Empatia, Presença, Opinião, Criatividade, Esperança — as 5 dimensões humanas insubstituíveis">EPOCH</span> · FRAMEWORK MIT SLOAN</span>
+      <p class="callout-box__body">As cinco dimensões humanas que nenhuma máquina consegue replicar:</p>
+      <div class="epoch-grid">
+        <div class="epoch-grid__cell">
+          <span class="epoch-grid__letter">E</span>
+          <span class="epoch-grid__name">Empatia</span>
+          <span class="epoch-grid__desc">Entender o não-dito</span>
         </div>
-        <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
-          <p style="color: #FF6200; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">P</p>
-          <p style="color: #F5F7FA; font-size: 0.8125rem; font-weight: 600;">Presença</p>
-          <p style="color: #64748B; font-size: 0.75rem;">Estar no momento certo</p>
+        <div class="epoch-grid__cell">
+          <span class="epoch-grid__letter">P</span>
+          <span class="epoch-grid__name">Presença</span>
+          <span class="epoch-grid__desc">Estar no momento certo</span>
         </div>
-        <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
-          <p style="color: #FF6200; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">O</p>
-          <p style="color: #F5F7FA; font-size: 0.8125rem; font-weight: 600;">Opinião</p>
-          <p style="color: #64748B; font-size: 0.75rem;">Ter posição e defendê-la</p>
+        <div class="epoch-grid__cell">
+          <span class="epoch-grid__letter">O</span>
+          <span class="epoch-grid__name">Opinião</span>
+          <span class="epoch-grid__desc">Ter posição e defendê-la</span>
         </div>
-        <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
-          <p style="color: #FF6200; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">C</p>
-          <p style="color: #F5F7FA; font-size: 0.8125rem; font-weight: 600;">Criatividade</p>
-          <p style="color: #64748B; font-size: 0.75rem;">Inventar o que não existe</p>
+        <div class="epoch-grid__cell">
+          <span class="epoch-grid__letter">C</span>
+          <span class="epoch-grid__name">Criatividade</span>
+          <span class="epoch-grid__desc">Inventar o que não existe</span>
         </div>
-        <div style="text-align: center; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 6px;">
-          <p style="color: #FF6200; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem;">H</p>
-          <p style="color: #F5F7FA; font-size: 0.8125rem; font-weight: 600;">Esperança</p>
-          <p style="color: #64748B; font-size: 0.75rem;">Inspirar quando o caminho é incerto</p>
+        <div class="epoch-grid__cell">
+          <span class="epoch-grid__letter">H</span>
+          <span class="epoch-grid__name">Esperança</span>
+          <span class="epoch-grid__desc">Inspirar quando o caminho é incerto</span>
         </div>
       </div>
     </div>
@@ -2171,7 +2306,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
 
     <!-- Métricas -->
     <div class="ep09-metricas">
-      <span class="devin-eyebrow" style="margin-top: 5rem; display: block;">MÉTRICAS E METAS</span>
+      <span class="devin-eyebrow devin-eyebrow--spaced">MÉTRICAS E METAS</span>
       <h3 class="devin-title-md ep09-metricas__titulo">Lei de Goodhart: o paradoxo das métricas.</h3>
       <p class="devin-body-text ep09-metricas__subtitulo">
         Quando uma métrica se torna meta, ela deixa de ser uma boa métrica.
@@ -2210,24 +2345,24 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
         <strong>Comece a medir o para quê.</strong>
       </p>
 
-      <div style="background: rgba(255,98,0,0.05); border: 1px solid rgba(255,98,0,0.15); border-radius: 8px; padding: 1.5rem 2rem; margin-top: 2.5rem;">
-        <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: #FF6200; text-transform: uppercase; margin-bottom: 1rem;">FLOW METRICS — O QUE MEDIR NA ERA DA IA</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-          <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem;">Velocidade de Fluxo</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Quantas entregas de valor por unidade de tempo?</p>
+      <div class="callout-box" style="margin-top: 2.5rem;">
+        <p class="callout-box__label">FLOW METRICS — O QUE MEDIR NA ERA DA IA</p>
+        <div class="epoch-grid">
+          <div class="epoch-grid__cell">
+            <span class="epoch-grid__name">Velocidade de Fluxo</span>
+            <span class="epoch-grid__desc">Quantas entregas de valor por unidade de tempo?</span>
           </div>
-          <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem;">Tempo de Fluxo</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Da ideia ao usuário — quanto tempo real passa?</p>
+          <div class="epoch-grid__cell">
+            <span class="epoch-grid__name">Tempo de Fluxo</span>
+            <span class="epoch-grid__desc">Da ideia ao usuário — quanto tempo real passa?</span>
           </div>
-          <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem;">Eficiência de Fluxo</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Qual % do tempo é trabalho ativo vs espera?</p>
+          <div class="epoch-grid__cell">
+            <span class="epoch-grid__name">Eficiência de Fluxo</span>
+            <span class="epoch-grid__desc">Qual % do tempo é trabalho ativo vs espera?</span>
           </div>
-          <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem;">Carga de Fluxo</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Quantas entregas em paralelo? WIP sob controle?</p>
+          <div class="epoch-grid__cell">
+            <span class="epoch-grid__name">Carga de Fluxo</span>
+            <span class="epoch-grid__desc">Quantas entregas em paralelo? WIP sob controle?</span>
           </div>
         </div>
       </div>
@@ -2235,8 +2370,8 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
 
     <!-- ACUs e Custo -->
     <div class="ep09-acus">
-      <span class="devin-eyebrow" style="margin-top: 5rem; display: block;">CUSTO · ACUs</span>
-      <h3 class="devin-title-md ep09-acus__titulo">ACU: a unidade de medida do trabalho do Devin.</h3>
+      <span class="devin-eyebrow devin-eyebrow--spaced">CUSTO · ACUs</span>
+      <h3 class="devin-title-md ep09-acus__titulo"><span class="devin-term" data-tooltip="Agentic Compute Unit — unidade de custo de uma sessão Devin. 1 ACU ≈ US$ 0.026">ACU</span>: a unidade de medida do trabalho do Devin.</h3>
       <p class="devin-body-text ep09-acus__subtitulo">
         Não é tempo cronológico. É complexidade × número de ações que o agente executa.
         O Devin cobra por trabalho realizado — quanto mais complexa a tarefa, mais ACUs consome.
@@ -2308,20 +2443,20 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
         </p>
       </div>
 
-      <div style="background: rgba(255,98,0,0.05); border: 1px solid rgba(255,98,0,0.15); border-radius: 8px; padding: 1.5rem 2rem; margin-top: 3rem;">
-        <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: #FF6200; text-transform: uppercase; margin-bottom: 1.25rem;">TRÊS MODOS DE COLABORAÇÃO HUMANO-IA</p>
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-          <div style="display: flex; gap: 1rem; align-items: flex-start;">
-            <span style="color: #FF6200; font-weight: 700; font-size: 0.8125rem; min-width: 170px; padding-top: 0.1rem; flex-shrink: 0;">HUMAN IN THE LOOP</span>
-            <p style="color: #94A3B8; font-size: 0.875rem; line-height: 1.6; margin: 0;">Você revisa cada ação da IA antes que ela aconteça. Máxima segurança, menor velocidade. Use em tarefas de alto risco ou em domínios desconhecidos.</p>
+      <div class="callout-box" style="margin-top: 3rem;">
+        <span class="callout-box__label">TRÊS MODOS DE COLABORAÇÃO HUMANO-IA</span>
+        <div class="collab-modes">
+          <div class="collab-modes__row">
+            <span class="collab-modes__label">HUMAN IN THE LOOP</span>
+            <p class="collab-modes__desc">Você revisa cada ação da IA antes que ela aconteça. Máxima segurança, menor velocidade. Use em tarefas de alto risco ou em domínios desconhecidos.</p>
           </div>
-          <div style="display: flex; gap: 1rem; align-items: flex-start;">
-            <span style="color: #FF6200; font-weight: 700; font-size: 0.8125rem; min-width: 170px; padding-top: 0.1rem; flex-shrink: 0;">HUMAN ON THE LOOP</span>
-            <p style="color: #94A3B8; font-size: 0.875rem; line-height: 1.6; margin: 0;">A IA executa autonomamente; você monitora e pode intervir. Equilíbrio entre velocidade e controle. O fluxo padrão de uma sessão Devin.</p>
+          <div class="collab-modes__row">
+            <span class="collab-modes__label">HUMAN ON THE LOOP</span>
+            <p class="collab-modes__desc">A IA executa autonomamente; você monitora e pode intervir. Equilíbrio entre velocidade e controle. O fluxo padrão de uma sessão Devin.</p>
           </div>
-          <div style="display: flex; gap: 1rem; align-items: flex-start;">
-            <span style="color: #FF6200; font-weight: 700; font-size: 0.8125rem; min-width: 170px; padding-top: 0.1rem; flex-shrink: 0;">HUMAN OVER THE LOOP</span>
-            <p style="color: #94A3B8; font-size: 0.875rem; line-height: 1.6; margin: 0;">Você define intenções; a IA orquestra múltiplos agentes. Máxima escala. Requer Context Lakes, Playbooks e governança consolidada.</p>
+          <div class="collab-modes__row">
+            <span class="collab-modes__label"><span class="devin-term" data-tooltip="Modo onde você define intenções e a IA orquestra múltiplos agentes autonomamente">HUMAN OVER THE LOOP</span></span>
+            <p class="collab-modes__desc">Você define intenções; a IA orquestra múltiplos agentes. Máxima escala. Requer <span class="devin-term" data-tooltip="Repositórios estruturados de conhecimento corporativo consumíveis por agentes de IA">Context Lakes</span>, Playbooks e governança consolidada.</p>
           </div>
         </div>
         <p style="color: #64748B; font-size: 0.8125rem; margin-top: 1.25rem; border-top: 1px solid #1E293B; padding-top: 1rem;">
@@ -2398,70 +2533,79 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
   </div>
 </section>
 
+<!-- RESPIRO 4 — Antes do encerramento -->
+<section class="devin-respiro" aria-hidden="true">
+  <div class="devin-respiro__inner">
+    <p class="devin-respiro__frase js-respiro-text">
+      Agora que vimos o instrumento —<br><em>como tocamos juntos?</em>
+    </p>
+  </div>
+</section>
+
 <!-- SEÇÃO 33 — ENCERRAMENTO FINAL -->
 <section class="devin-section devin-section--dark ep09-section ep09-section--encerramento" id="encerramento" data-section="encerramento">
   <div class="devin-container devin-container--narrow">
 
     <!-- Vídeos de aprofundamento -->
-    <div style="margin-bottom: 4rem; text-align: left;">
-      <span class="devin-eyebrow" style="display: block; margin-bottom: 1.5rem;">APROFUNDAMENTO · SÉRIE COMPLETA</span>
-      <h3 style="color: #F5F7FA; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">Continue a jornada além desta sessão.</h3>
-      <p style="color: #64748B; font-size: 0.9375rem; line-height: 1.7; margin-bottom: 2rem;">Os oito episódios que fundamentam o raciocínio desta apresentação — para quem quer ir além do hands-on e entender o sistema completo.</p>
-      <div style="display: flex; flex-direction: column; gap: 0.875rem;">
-        <a href="https://youtu.be/8nMyU-C5Dxc" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">01</span>
+    <div class="ep09-video-header">
+      <span class="devin-eyebrow ep09-video-header__eyebrow">APROFUNDAMENTO · SÉRIE COMPLETA</span>
+      <h3 class="ep09-video-header__title">Continue a jornada além desta sessão.</h3>
+      <p class="ep09-video-header__subtitle">Os oito episódios que fundamentam o raciocínio desta apresentação — para quem quer ir além do hands-on e entender o sistema completo.</p>
+      <div class="video-series">
+        <a href="https://youtu.be/8nMyU-C5Dxc" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">01</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">A Crise Cognitiva</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">AI Brain Fry, densidade cognitiva e o framework EPOCH do MIT Sloan</p>
+            <span class="video-card__title">A Crise Cognitiva</span>
+            <span class="video-card__desc">AI Brain Fry, densidade cognitiva e o framework EPOCH do MIT Sloan</span>
           </div>
         </a>
-        <a href="https://youtu.be/m69fzdS-EG0" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">02</span>
+        <a href="https://youtu.be/m69fzdS-EG0" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">02</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">O Novo Paradigma da IA</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">De chatbots passivos para agentes operacionais. Tool Calling e ciclo ReAct</p>
+            <span class="video-card__title">O Novo Paradigma da IA</span>
+            <span class="video-card__desc">De chatbots passivos para agentes operacionais. Tool Calling e ciclo ReAct</span>
           </div>
         </a>
-        <a href="https://youtu.be/HlgRNYHvOtg" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">03</span>
+        <a href="https://youtu.be/HlgRNYHvOtg" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">03</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">A Evolução da Programação e o Vibe Coding</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Deskilling, entropia estrutural e Engenharia de Intenção como evolução</p>
+            <span class="video-card__title">A Evolução da Programação e o Vibe Coding</span>
+            <span class="video-card__desc">Deskilling, entropia estrutural e Engenharia de Intenção como evolução</span>
           </div>
         </a>
-        <a href="https://youtu.be/luoGsY5PrLo" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">04</span>
+        <a href="https://youtu.be/luoGsY5PrLo" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">04</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">Pensamento vs. Processamento</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Neurociência, ancoragem de símbolos, Frame Problem e metacognição</p>
+            <span class="video-card__title">Pensamento vs. Processamento</span>
+            <span class="video-card__desc">Neurociência, ancoragem de símbolos, Frame Problem e metacognição</span>
           </div>
         </a>
-        <a href="https://youtu.be/rYSyiQznInI" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">05</span>
+        <a href="https://youtu.be/rYSyiQznInI" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">05</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">Liderança e Sincronismo Organizacional</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Lei de Conway Reversa, Team Topologies e o Arquiteto de Contexto</p>
+            <span class="video-card__title">Liderança e Sincronismo Organizacional</span>
+            <span class="video-card__desc">Lei de Conway Reversa, Team Topologies e o Arquiteto de Contexto</span>
           </div>
         </a>
-        <a href="https://youtu.be/ubBJRgWuAMU" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">06</span>
+        <a href="https://youtu.be/ubBJRgWuAMU" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">06</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">O Paradoxo das Métricas</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Lei de Goodhart, Flow Metrics, SPACE e EEBO — medir impacto, não output</p>
+            <span class="video-card__title">O Paradoxo das Métricas</span>
+            <span class="video-card__desc">Lei de Goodhart, Flow Metrics, SPACE e EEBO — medir impacto, não output</span>
           </div>
         </a>
-        <a href="https://youtu.be/LbzxZDRUk8Y" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">07</span>
+        <a href="https://youtu.be/LbzxZDRUk8Y" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">07</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">Sistemas de Conhecimento e Playbooks</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Context Lakes, industrialização cognitiva e escala do aprendizado organizacional</p>
+            <span class="video-card__title">Sistemas de Conhecimento e Playbooks</span>
+            <span class="video-card__desc">Context Lakes, industrialização cognitiva e escala do aprendizado organizacional</span>
           </div>
         </a>
-        <a href="https://youtu.be/zQ453MWvBck" target="_blank" rel="noopener" style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid #1E293B; border-radius: 6px; text-decoration: none; transition: border-color 0.2s;">
-          <span style="color: #FF6200; font-weight: 700; font-size: 0.75rem; min-width: 2rem; padding-top: 0.15rem;">08</span>
+        <a href="https://youtu.be/zQ453MWvBck" target="_blank" rel="noopener" class="video-card js-video-card">
+          <span class="video-card__number">08</span>
           <div>
-            <p style="color: #F5F7FA; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem;">O Futuro do Trabalho e a Economia Cognitiva</p>
-            <p style="color: #64748B; font-size: 0.8125rem;">Agency Gap, Inteligência Centauro e o estrategista soberano da era AI-native</p>
+            <span class="video-card__title">O Futuro do Trabalho e a Economia Cognitiva</span>
+            <span class="video-card__desc">Agency Gap, Inteligência Centauro e o estrategista soberano da era AI-native</span>
           </div>
         </a>
       </div>
@@ -2490,1549 +2634,6 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
 </footer>
 
 
-<!-- =====================================================
-     STYLES — Épicos 07, 08, 09
-     ===================================================== -->
-<style>
-/* -------------------------------------------------------
-   ÉPICO 07 — Hands-On & Mentoria
-   ------------------------------------------------------- */
-
-.ep07-intro {
-  margin-bottom: 4rem;
-}
-
-.ep07-intro__title {
-  margin-bottom: 1rem;
-}
-
-.ep07-intro__chapeu {
-  font-size: 1.0625rem;
-  color: #94A3B8;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
-.ep07-intro__desc {
-  margin-bottom: 0;
-}
-
-.ep07-exercicios {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* Exercise cards */
-.ep07-exercise-card {
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-.ep07-exercise-card__badge {
-  display: inline-block;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #FF6200;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-
-.ep07-exercise-card__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-}
-
-.ep07-exercise-card__body {
-  display: grid;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.ep07-section-label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #FF6200;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
-.ep07-section-body {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-}
-
-.ep07-section-body--accent {
-  color: #FF6200;
-  font-weight: 600;
-}
-
-/* Timeline steps */
-.ep07-exercise-card__timeline {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  border-top: 1px solid #334155;
-  padding-top: 1.5rem;
-}
-
-.ep07-step {
-  flex: 1;
-  min-width: 80px;
-  text-align: center;
-}
-
-.ep07-step__visual {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  padding: 0.75rem;
-  margin-bottom: 0.5rem;
-  min-height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ep07-step__visual--result {
-  border-color: rgba(255, 98, 0, 0.4);
-}
-
-.ep07-step__code {
-  font-family: 'Courier New', 'Courier', monospace;
-  font-size: 0.625rem;
-  color: #94A3B8;
-  line-height: 1.5;
-  white-space: pre;
-  text-align: left;
-}
-
-.ep07-step__code--result {
-  color: #FF6200;
-}
-
-.ep07-step__devin-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ep07-step__label {
-  font-size: 0.6875rem;
-  color: #64748B;
-  font-weight: 500;
-}
-
-.ep07-step__connector {
-  flex: 0 0 48px;
-}
-
-.ep07-step__arrow {
-  width: 100%;
-  height: 18px;
-  display: block;
-}
-
-/* Matrix (Exercício 02) */
-.ep07-exercise-card__matrix {
-  border-top: 1px solid #334155;
-  padding-top: 1.5rem;
-}
-
-.ep07-matrix-row {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.ep07-matrix-cell {
-  flex: 1;
-  min-width: 110px;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-}
-
-.ep07-matrix-cell--label {
-  background: #0B1F33;
-  color: #94A3B8;
-}
-
-.ep07-matrix-cell--pass {
-  background: rgba(34, 197, 94, 0.1);
-  color: #4ade80;
-  font-weight: 600;
-  text-align: center;
-}
-
-.ep07-matrix-summary {
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  color: #FF6200;
-  font-weight: 600;
-  text-align: right;
-}
-
-/* Services grid (Exercício 03) */
-.ep07-services-grid {
-  border-top: 1px solid #334155;
-  padding-top: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.ep07-service-node {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  padding: 0.75rem;
-  text-align: center;
-}
-
-.ep07-service-node__icon {
-  display: block;
-  font-size: 1.25rem;
-  margin-bottom: 0.25rem;
-}
-
-.ep07-service-node__label {
-  font-size: 0.6875rem;
-  color: #94A3B8;
-  font-weight: 500;
-}
-
-.ep07-service-orchestrator {
-  grid-column: 1 / -1;
-  background: rgba(255, 98, 0, 0.1);
-  border: 1px solid rgba(255, 98, 0, 0.4);
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
-  text-align: center;
-}
-
-.ep07-service-orchestrator__label {
-  font-size: 0.75rem;
-  color: #FF6200;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-
-/* Mentoria */
-.ep07-section--mentoria {
-  background: #0B1F33;
-}
-
-.ep07-mentoria__header {
-  margin-bottom: 3rem;
-}
-
-.ep07-mentoria__subtitulo {
-  max-width: 60ch;
-}
-
-.ep07-mentoria__momento {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.ep07-mentoria__momento--ajuste {
-  margin-top: 2rem;
-}
-
-.ep07-mentoria__momento--sintese {
-  margin-top: 2rem;
-}
-
-.ep07-mentoria__card {
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 1.75rem;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.ep07-mentoria__card--erro {
-  border-left: 3px solid rgba(239, 68, 68, 0.5);
-}
-
-.ep07-mentoria__card--resultado {
-  border-left: 3px solid rgba(34, 197, 94, 0.5);
-}
-
-.ep07-mentoria__card--wide {
-  grid-column: 1 / -1;
-}
-
-.ep07-card__label {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 1rem;
-}
-
-.ep07-card__prompt {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 4px;
-  padding: 0.875rem 1rem;
-  margin-bottom: 1rem;
-}
-
-.ep07-card__prompt code {
-  font-family: 'Courier New', monospace;
-  font-size: 0.875rem;
-  color: #94A3B8;
-  line-height: 1.6;
-}
-
-.ep07-card__body {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
-.ep07-card__result {
-  font-size: 0.875rem;
-  color: #94A3B8;
-  margin-bottom: 0.75rem;
-}
-
-.ep07-card__result--problema {
-  color: #FF6200;
-  font-weight: 600;
-}
-
-.ep07-card__insight {
-  font-size: 0.875rem;
-  color: #F5F7FA;
-  border-top: 1px solid #334155;
-  padding-top: 0.875rem;
-  line-height: 1.6;
-}
-
-.ep07-card__licao {
-  font-size: 0.875rem;
-  color: #F5F7FA;
-  line-height: 1.6;
-}
-
-.ep07-card__diff-note {
-  font-size: 0.8125rem;
-  color: #94A3B8;
-  font-style: italic;
-  margin-top: 0.5rem;
-}
-
-/* Integração */
-.ep07-integracao__header {
-  margin-bottom: 3rem;
-}
-
-.ep07-estrutura {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 1.75rem;
-  margin-bottom: 3rem;
-}
-
-.ep07-estrutura__title {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #FF6200;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-}
-
-.ep07-code-block {
-  font-family: 'Courier New', monospace;
-  font-size: 0.875rem;
-  color: #94A3B8;
-  line-height: 1.7;
-  white-space: pre;
-  overflow-x: auto;
-}
-
-.ep07-aplicacoes__title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.01em;
-}
-
-.ep07-aplicacoes__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.ep07-aplicacao-card {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 1.5rem;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.ep07-aplicacao-card__titulo {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #FF6200;
-  margin-bottom: 0.75rem;
-}
-
-.ep07-aplicacao-card__contexto {
-  font-size: 0.875rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
-.ep07-aplicacao-card__ganho {
-  font-size: 0.8125rem;
-  color: #94A3B8;
-  line-height: 1.6;
-  border-top: 1px solid #334155;
-  padding-top: 0.875rem;
-}
-
-
-/* -------------------------------------------------------
-   ÉPICO 08 — Reflexão Vibe Coding
-   State: contemplative
-   ------------------------------------------------------- */
-
-/* Fluxo (seção pré-reflexão) */
-.ep08-section--fluxo {
-  background: #0B1F33;
-}
-
-.ep08-fluxo__header {
-  margin-bottom: 3rem;
-}
-
-.ep08-passos {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-
-.ep08-passo {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.ep08-passo__numero {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #FF6200;
-  opacity: 0.25;
-  line-height: 1;
-  flex-shrink: 0;
-  min-width: 3rem;
-}
-
-.ep08-passo__content {
-  flex: 1;
-}
-
-.ep08-passo__titulo {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FF6200;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.ep08-passo__desc {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-  margin-bottom: 0.875rem;
-}
-
-.ep08-code-inline {
-  font-family: 'Courier New', monospace;
-  font-size: 0.8125rem;
-  color: #94A3B8;
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-left: 3px solid #FF6200;
-  border-radius: 4px;
-  padding: 0.75rem 1rem;
-  display: block;
-  overflow-x: auto;
-  white-space: pre;
-}
-
-.ep08-code-output {
-  color: rgba(34, 197, 94, 0.85);
-}
-
-/* Demo terminal */
-.ep08-demo {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.ep08-demo__label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: #FF6200;
-  text-transform: uppercase;
-  padding: 1.5rem 1.5rem 0;
-}
-
-.ep08-demo__titulo {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  padding: 0.5rem 1.5rem 1rem;
-}
-
-.ep08-terminal {
-  border-top: 1px solid #334155;
-}
-
-.ep08-terminal__header {
-  background: #1A1D21;
-  padding: 0.625rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.ep08-terminal__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.ep08-terminal__dot--red { background: #ef4444; }
-.ep08-terminal__dot--yellow { background: #f59e0b; }
-.ep08-terminal__dot--green { background: #22c55e; }
-
-.ep08-terminal__title {
-  font-size: 0.75rem;
-  color: #64748B;
-  margin-left: 0.5rem;
-}
-
-.ep08-terminal__body {
-  padding: 1.25rem 1.5rem;
-  font-family: 'Courier New', monospace;
-  font-size: 0.8125rem;
-  line-height: 1.8;
-  color: #94A3B8;
-  overflow-x: auto;
-  white-space: pre;
-}
-
-.ep08-terminal__muted { color: #64748B; }
-.ep08-terminal__success { color: #4ade80; }
-.ep08-terminal__accent { color: #FF6200; font-weight: 600; }
-
-.ep08-demo__legenda {
-  font-size: 0.875rem;
-  color: #94A3B8;
-  line-height: 1.7;
-  padding: 1.25rem 1.5rem 1.5rem;
-  border-top: 1px solid #334155;
-}
-
-/* SEÇÃO CONTEMPLATIVA — Pausa Reflexiva */
-.ep08-section--contemplativa {
-  padding: 12rem 2rem;
-  text-align: center;
-}
-
-.ep08-reflexao__content {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.ep08-reflexao__label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: #FF6200;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 4rem;
-  opacity: 0;
-}
-
-.ep08-reflexao__perguntas {
-  margin-bottom: 4rem;
-}
-
-.ep08-reflexao__pergunta {
-  line-height: 1.2;
-  margin-bottom: 2rem;
-}
-
-.ep08-reflexao__pergunta--1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: #FFFFFF;
-  font-weight: 400;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.ep08-reflexao__pergunta--2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: #F5F7FA;
-  font-style: italic;
-  font-weight: 300;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.ep08-reflexao__rodape {
-  font-size: 0.8125rem;
-  color: #64748B;
-  font-style: italic;
-  opacity: 0;
-}
-
-/* Identidade */
-.ep08-section--identidade {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-.ep08-mudanca__header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.ep08-mudanca__titulo-afirmacao {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.1;
-  margin-bottom: 1rem;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.ep08-mudanca__subtitulo {
-  font-size: clamp(1.25rem, 2.5vw, 2rem);
-  color: #FF6200;
-  font-style: italic;
-  margin-bottom: 0;
-  opacity: 0;
-}
-
-.ep08-mudanca__transformacao {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  align-items: stretch;
-  margin-bottom: 4rem;
-}
-
-.ep08-transformacao-card {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-.ep08-transformacao-card--depois {
-  background: #1A1D21;
-}
-
-.ep08-transformacao-card--ponte {
-  background: transparent;
-  border: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 160px;
-  opacity: 0;
-}
-
-.ep08-card__label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.02em;
-}
-
-.ep08-card__label--acento {
-  color: #FF6200;
-}
-
-.ep08-card__lista {
-  list-style: none;
-  padding: 0;
-}
-
-.ep08-card__lista li {
-  font-size: 0.875rem;
-  color: #F5F7FA;
-  line-height: 1.8;
-  margin-bottom: 0.5rem;
-  padding-left: 1.25rem;
-  position: relative;
-}
-
-.ep08-card__lista li::before {
-  content: "—";
-  position: absolute;
-  left: 0;
-  color: #FF6200;
-}
-
-.ep08-ponte__label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #FF6200;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.ep08-ponte__visual {
-  width: 180px;
-  height: 90px;
-}
-
-.ep08-mudanca__sintese {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
-  color: #FF6200;
-  text-align: center;
-  line-height: 1.2;
-  margin-bottom: 6rem;
-  opacity: 0;
-  transform: scale(0.97);
-}
-
-/* Ato III Transição */
-.ep08-ato-tres-transicao {
-  text-align: center;
-  padding-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.ep08-ato-tres__label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  color: #FF6200;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 2rem;
-  opacity: 0;
-}
-
-.ep08-ato-tres__pergunta-final {
-  margin-bottom: 2rem;
-  font-style: normal;
-}
-
-.ep08-pergunta__linha-1 {
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
-  font-weight: 400;
-  color: #FFFFFF;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.ep08-pergunta__linha-2 {
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
-  font-weight: 700;
-  color: #FF6200;
-  line-height: 1.2;
-  opacity: 0;
-  transform: scale(0.97);
-}
-
-.ep08-ato-tres__contexto {
-  font-size: 0.9375rem;
-  color: #94A3B8;
-  line-height: 1.8;
-  max-width: 60ch;
-  margin: 0 auto;
-  opacity: 0;
-}
-
-
-/* -------------------------------------------------------
-   ÉPICO 09 — Liderança & Cultura
-   State: silent — quase estático, motion mínimo
-   ------------------------------------------------------- */
-
-/* Liderança / Maestria Pessoal */
-.ep09-lideranca__header {
-  margin-bottom: 3rem;
-}
-
-.ep09-lideranca__frase-abertura {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-style: italic;
-  font-weight: 400;
-  color: #FFFFFF;
-  line-height: 1.3;
-  margin-bottom: 1.5rem;
-  border-left: 3px solid #FF6200;
-  padding-left: 1.5rem;
-}
-
-.ep09-lideranca__intro {
-  margin-bottom: 3rem;
-}
-
-.ep09-lideranca__atitudes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.ep09-atitude-card {
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 1.75rem;
-  opacity: 0;
-}
-
-.ep09-atitude__label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FF6200;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-}
-
-.ep09-atitude__sublabel {
-  font-size: 0.875rem;
-  color: #64748B;
-  margin-bottom: 1.25rem;
-}
-
-.ep09-atitude__body {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.75;
-  margin-bottom: 1.25rem;
-}
-
-.ep09-atitude__enfase {
-  font-size: 0.875rem;
-  color: #FF6200;
-  font-weight: 600;
-  line-height: 1.6;
-  border-top: 1px solid #334155;
-  padding-top: 0.875rem;
-}
-
-.ep09-lideranca__frase-fechamento {
-  font-size: 1.125rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-  text-align: center;
-  padding: 2.5rem;
-  background: rgba(255, 98, 0, 0.06);
-  border: 1px solid rgba(255, 98, 0, 0.2);
-  border-radius: 8px;
-  opacity: 0;
-}
-
-/* Estagiário Brilhante */
-.ep09-section--estagiario {
-  background: #0B1F33;
-}
-
-.ep09-estagiario {
-  text-align: center;
-  padding: 4rem 0 5rem;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.ep09-estagiario__linha1 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 400;
-  color: #F5F7FA;
-  line-height: 1.3;
-  margin-bottom: 0.5rem;
-  opacity: 0;
-}
-
-.ep09-estagiario__linha2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  font-weight: 700;
-  color: #FF6200;
-  line-height: 1.2;
-  opacity: 0;
-}
-
-.ep09-maestria-coletiva {
-  margin-bottom: 3rem;
-}
-
-.ep09-maestria__titulo {
-  margin-bottom: 1rem;
-}
-
-.ep09-maestria__subtitulo {
-  margin-bottom: 0;
-}
-
-/* Amplificação / Contextos */
-.ep09-amplificacao__contextos {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.ep09-contexto-card {
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 1.75rem;
-  opacity: 0;
-}
-
-.ep09-contexto-card--maestro {
-  grid-column: 1 / -1;
-  max-width: 700px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.ep09-contexto__titulo {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FF6200;
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
-}
-
-.ep09-contexto__subtitulo {
-  font-size: 0.875rem;
-  color: #64748B;
-  margin-bottom: 1rem;
-}
-
-.ep09-contexto__cenario {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-}
-
-.ep09-contexto__fluxo {
-  background: #0B1F33;
-  border-left: 3px solid #FF6200;
-  border-radius: 4px;
-  padding: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-.ep09-fluxo__item {
-  font-size: 0.8125rem;
-  color: #F5F7FA;
-  line-height: 1.6;
-  margin-bottom: 0.375rem;
-}
-
-.ep09-fluxo__item:last-child {
-  margin-bottom: 0;
-}
-
-.ep09-contexto__resultado {
-  font-size: 0.875rem;
-  color: #94A3B8;
-  line-height: 1.6;
-  font-style: italic;
-}
-
-/* Cultura Vibe Coding */
-.ep09-cultura__header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.ep09-cultura__definicao {
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.15;
-  text-align: center;
-  margin-bottom: 0;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.ep09-cultura__pilares {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.ep09-pilar-cultura {
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-left: 4px solid #FF6200;
-  border-radius: 8px;
-  padding: 1.75rem;
-  opacity: 0;
-}
-
-.ep09-pilar-cultura--05 {
-  grid-column: 1 / -1;
-  max-width: 50%;
-  margin: 0 auto;
-}
-
-.ep09-pilar__label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FF6200;
-  text-transform: uppercase;
-  margin-bottom: 0.875rem;
-}
-
-.ep09-pilar__body {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-}
-
-.ep09-cultura__sintese {
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 700;
-  color: #FF6200;
-  text-align: center;
-  line-height: 1.3;
-  opacity: 0;
-  transform: scale(0.97);
-}
-
-/* Gestão / Ágil */
-.ep09-gestao__header {
-  margin-bottom: 3rem;
-}
-
-.ep09-gestao__subtitulo {
-  margin-bottom: 0;
-}
-
-.ep09-agil__elementos {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 5rem;
-}
-
-.ep09-agil-card {
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 1.75rem;
-  opacity: 0;
-}
-
-.ep09-agil-card__numero {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #FF6200;
-  opacity: 0.2;
-  line-height: 1;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-
-.ep09-agil-card__titulo {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FF6200;
-  text-transform: uppercase;
-  margin-bottom: 0.875rem;
-}
-
-.ep09-agil-card__corpo {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.75;
-}
-
-/* Métricas */
-.ep09-metricas {
-  margin-bottom: 5rem;
-}
-
-.ep09-metricas__titulo {
-  margin-bottom: 0.75rem;
-}
-
-.ep09-metricas__subtitulo {
-  margin-bottom: 2rem;
-}
-
-.ep09-metricas__tabela {
-  border: 1px solid #334155;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.ep09-metricas__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid #334155;
-}
-
-.ep09-metricas__row:last-child {
-  border-bottom: none;
-}
-
-.ep09-metricas__row--header {
-  background: #0B1F33;
-}
-
-.ep09-metricas__row div {
-  padding: 0.875rem 1.25rem;
-  font-size: 0.875rem;
-  color: #F5F7FA;
-}
-
-.ep09-metricas__row--header div {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #FF6200;
-}
-
-.ep09-metricas__row:not(.ep09-metricas__row--header) div:first-child {
-  color: #94A3B8;
-  border-right: 1px solid #334155;
-}
-
-.ep09-metricas__frase-impacto {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  color: #FFFFFF;
-  line-height: 1.3;
-  text-align: center;
-  padding: 2rem;
-}
-
-/* ACUs */
-.ep09-acus {
-  margin-bottom: 2rem;
-}
-
-.ep09-acus__titulo {
-  margin-bottom: 0.75rem;
-}
-
-.ep09-acus__subtitulo {
-  margin-bottom: 2rem;
-}
-
-.ep09-acus__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.ep09-acu-item {
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  padding: 1.25rem;
-}
-
-.ep09-acu-item__nome {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-bottom: 0.375rem;
-}
-
-.ep09-acu-item__desc {
-  font-size: 0.8125rem;
-  color: #94A3B8;
-  line-height: 1.6;
-}
-
-.ep09-sleep-mode {
-  background: #0B1F33;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 1.75rem;
-}
-
-.ep09-sleep-mode__titulo {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-bottom: 0.75rem;
-}
-
-.ep09-sleep-mode__desc {
-  font-size: 0.9375rem;
-  color: #F5F7FA;
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-}
-
-.ep09-sleep-mode__exemplos {
-  font-family: 'Courier New', monospace;
-  font-size: 0.8125rem;
-  color: #94A3B8;
-  background: #1A1D21;
-  border: 1px solid #334155;
-  border-radius: 4px;
-  padding: 1rem 1.25rem;
-  white-space: pre;
-  overflow-x: auto;
-  line-height: 1.8;
-}
-
-/* Fechamento */
-.ep09-section--fechamento {
-  padding-top: 10rem;
-  padding-bottom: 8rem;
-}
-
-.ep09-fechamento__narrativa {
-  margin-bottom: 5rem;
-  text-align: center;
-}
-
-.ep09-fechamento__frase-principal {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.2;
-  margin: 2rem 0 3rem;
-  opacity: 0;
-}
-
-.ep09-fechamento__frase-principal p {
-  margin-bottom: 0.25rem;
-}
-
-.ep09-fechamento__corpo {
-  max-width: 60ch;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.ep09-fechamento__corpo p {
-  font-size: 1.0625rem;
-  color: #94A3B8;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  opacity: 0;
-}
-
-/* Próximos passos */
-.ep09-proximos-passos {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 4rem;
-}
-
-.ep09-proximos__titulo {
-  margin-bottom: 0.5rem;
-}
-
-.ep09-proximos__subtitulo {
-  margin-bottom: 2rem;
-}
-
-.ep09-proximos__cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
-
-.ep09-passo-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 8px;
-  padding: 1.5rem;
-  opacity: 0;
-}
-
-.ep09-passo-card__numero {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #FF6200;
-  opacity: 0.3;
-  display: block;
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-.ep09-passo-card__titulo {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-bottom: 0.75rem;
-}
-
-.ep09-passo-card__desc {
-  font-size: 0.875rem;
-  color: #94A3B8;
-  line-height: 1.7;
-}
-
-.ep09-passo-card__desc code {
-  font-family: 'Courier New', monospace;
-  font-size: 0.8125rem;
-  color: #FF6200;
-  background: rgba(255, 98, 0, 0.1);
-  padding: 0.1em 0.3em;
-  border-radius: 3px;
-}
-
-/* Encerramento */
-.ep09-section--encerramento {
-  text-align: center;
-}
-
-.ep09-encerramento__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.ep09-encerramento__obrigado {
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 700;
-  color: #FFFFFF;
-  opacity: 0;
-}
-
-.ep09-encerramento__convite {
-  font-size: 1.25rem;
-  color: #94A3B8;
-  opacity: 0;
-}
-
-.ep09-encerramento__identidade {
-  margin-top: 1rem;
-}
-
-.ep09-encerramento__nome {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: #F5F7FA;
-  margin-bottom: 0.25rem;
-}
-
-.ep09-encerramento__cargo {
-  font-size: 0.875rem;
-  color: #64748B;
-}
-
-.ep09-encerramento__cta {
-  margin-top: 0.5rem;
-  display: inline-block;
-  color: #FF6200;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.ep09-encerramento__cta:hover {
-  opacity: 1 !important;
-  text-decoration: underline;
-}
-
-/* Footer */
-.devin-footer {
-  background: #002D62;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.devin-footer__text {
-  font-size: 0.8125rem;
-  color: #64748B;
-}
-
-.devin-footer__link {
-  font-size: 0.8125rem;
-  color: #64748B;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.devin-footer__link:hover {
-  color: #FF6200;
-}
-
-
-/* -------------------------------------------------------
-   RESPONSIVIDADE
-   ------------------------------------------------------- */
-
-@media (max-width: 1024px) {
-  .ep07-aplicacoes__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-lideranca__atitudes {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .ep09-lideranca__atitudes .ep09-atitude-card:last-child {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Épico 07 */
-  .ep07-mentoria__momento {
-    grid-template-columns: 1fr;
-  }
-
-  .ep07-exercise-card__timeline {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 0.5rem;
-  }
-
-  .ep07-step {
-    min-width: 120px;
-  }
-
-  .ep07-services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Épico 08 */
-  .ep08-section--contemplativa {
-    padding: 8rem 1.25rem;
-  }
-
-  .ep08-mudanca__transformacao {
-    grid-template-columns: 1fr;
-  }
-
-  .ep08-transformacao-card--ponte {
-    order: -1;
-    min-width: auto;
-    padding: 1rem 0;
-  }
-
-  /* Épico 09 */
-  .ep09-lideranca__atitudes {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-amplificacao__contextos {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-contexto-card--maestro {
-    grid-column: 1;
-    max-width: 100%;
-  }
-
-  .ep09-cultura__pilares {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-pilar-cultura--05 {
-    grid-column: 1;
-    max-width: 100%;
-  }
-
-  .ep09-agil__elementos {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-acus__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-proximos__cards {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-metricas__row {
-    grid-template-columns: 1fr;
-  }
-
-  .ep09-metricas__row div:first-child {
-    border-right: none !important;
-    border-bottom: 1px solid #334155;
-  }
-
-  .ep09-metricas__row--header {
-    display: none;
-  }
-
-  .devin-footer {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-</style>
 
 
 

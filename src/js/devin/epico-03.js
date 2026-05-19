@@ -185,10 +185,37 @@ function cozinheiroTimeline() {
   });
 }
 
+// ─── Chef Diagram — entrada sequencial dos 3 nós ────────────────────────────
+function buildChefDiagramTimeline() {
+  const diagram = document.querySelector('.ep03-chef-diagram');
+  if (!diagram) return;
+
+  const reduced = prefersReducedMotion();
+  const nodes = diagram.querySelectorAll('.ep03-chef-node');
+
+  gsap.set(nodes, { opacity: 0, y: reduced ? 0 : 15 });
+
+  ScrollTrigger.create({
+    trigger: diagram,
+    start: 'top 75%',
+    once: true,
+    onEnter() {
+      gsap.to(nodes, {
+        opacity: 1,
+        y: 0,
+        duration: reduced ? 0.3 : 0.7,
+        stagger: reduced ? 0 : 0.18,
+        ease: 'power2.out',
+      });
+    },
+  });
+}
+
 // ─── Exportação principal ────────────────────────────────────────────────────
 export function initEpico03() {
   if (typeof window === 'undefined') return;
 
   pausaVibeCodingTimeline();
   cozinheiroTimeline();
+  buildChefDiagramTimeline();
 }
