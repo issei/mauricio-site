@@ -13,7 +13,7 @@
     <title>Política de Cookies | Maurício Yokoyama Issei</title>
     <meta name="description"
         content="Listagem técnica nominal dos cookies utilizados, suas finalidades, duração e como gerenciar. Conforme Guia ANPD/2024.">
-    <meta name="robots" content="noindex, follow">
+    <meta name="robots" content="follow">
     <link rel="canonical" href="https://mauricio.issei.com.br/cookies.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,113 +32,302 @@
             --accent: #58a6ff;
             --accent-purple: #8a2be2;
         }
-        * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg); color: var(--text);
-            line-height: 1.7; font-weight: 400;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
             -webkit-font-smoothing: antialiased;
         }
-        a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-        a:hover { color: #79b8ff; }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: #79b8ff;
+        }
 
         .legal-header {
-            position: sticky; top: 0; z-index: 50;
-            background: rgba(13,17,23,0.85); backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
         }
+
         .legal-header-inner {
-            max-width: 1100px; margin: 0 auto;
-            padding: 14px 24px; display: flex;
-            justify-content: space-between; align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .logo { font-weight: 800; color:#fff; text-decoration: none; font-size: 1rem; letter-spacing: -0.01em; }
+
+        .logo {
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: -0.01em;
+        }
+
         .logo span.dot {
             background: linear-gradient(90deg, var(--accent), var(--accent-purple));
-            -webkit-background-clip: text; background-clip: text; color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .back-link { color: var(--muted); font-size: .9rem; text-decoration: none; }
-        .back-link:hover { color: var(--accent); }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+        .back-link {
+            color: var(--muted);
+            font-size: .9rem;
+            text-decoration: none;
+        }
 
-        h1 { font-size: 2.25rem; font-weight: 800; color:#fff; margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.2; }
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 8px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
         .version-chip {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: var(--bg-2); border: 1px solid var(--border);
-            border-radius: 999px; padding: 4px 12px;
-            font-size: .8rem; color: var(--muted); margin-bottom: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px 12px;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 24px;
         }
-        .version-chip strong { color: var(--accent); font-weight: 600; }
+
+        .version-chip strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
 
         h2 {
-            font-size: 1.4rem; font-weight: 700; color:#fff;
-            margin: 40px 0 16px; padding-bottom: 8px; position: relative;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 40px 0 16px;
+            padding-bottom: 8px;
+            position: relative;
         }
+
         h2::after {
-            content:''; position: absolute; left: 0; bottom: 0;
-            width: 56px; height: 3px;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 56px;
+            height: 3px;
             background: linear-gradient(90deg, var(--accent), var(--accent-purple));
             border-radius: 2px;
-            box-shadow: 0 0 10px rgba(88,166,255,0.4);
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
         }
-        h3 { font-size: 1.05rem; color:#fff; margin: 24px 0 8px; font-weight: 600; }
 
-        p, li { font-size: 1rem; color: var(--text); margin: 0 0 12px; }
-        ul, ol { padding-left: 24px; margin: 0 0 16px; }
-        li { margin-bottom: 6px; }
-        strong { color: #fff; font-weight: 600; }
+        h3 {
+            font-size: 1.05rem;
+            color: #fff;
+            margin: 24px 0 8px;
+            font-weight: 600;
+        }
+
+        p,
+        li {
+            font-size: 1rem;
+            color: var(--text);
+            margin: 0 0 12px;
+        }
+
+        ul,
+        ol {
+            padding-left: 24px;
+            margin: 0 0 16px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
         code {
-            background: var(--bg-2); padding: 2px 6px; border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace; font-size: .85em; color: var(--accent);
+            background: var(--bg-2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .85em;
+            color: var(--accent);
         }
 
-        .table-wrap { overflow-x: auto; margin: 12px 0 20px; }
-        table {
-            width: 100%; border-collapse: collapse;
-            background: var(--bg-2); border: 1px solid var(--border);
-            border-radius: 8px; overflow: hidden; font-size: .88rem;
+        .table-wrap {
+            overflow-x: auto;
+            margin: 12px 0 20px;
         }
-        th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
-        th { background: rgba(88,166,255,0.06); color:#fff; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; }
-        tr:last-child td { border-bottom: none; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: .88rem;
+        }
+
+        th,
+        td {
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: rgba(88, 166, 255, 0.06);
+            color: #fff;
+            font-weight: 600;
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
 
         .badge {
-            display: inline-block; padding: 2px 8px; border-radius: 4px;
-            font-size: .75rem; font-weight: 600;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: .75rem;
+            font-weight: 600;
         }
-        .badge-necessary { background: rgba(16,185,129,0.15); color: #34d399; }
-        .badge-analytics { background: rgba(88,166,255,0.15); color: #79b8ff; }
-        .badge-marketing { background: rgba(245,158,11,0.15); color: #fbbf24; }
-        .badge-personalization { background: rgba(138,43,226,0.18); color: #c084fc; }
+
+        .badge-necessary {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        .badge-analytics {
+            background: rgba(88, 166, 255, 0.15);
+            color: #79b8ff;
+        }
+
+        .badge-marketing {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+        }
+
+        .badge-personalization {
+            background: rgba(138, 43, 226, 0.18);
+            color: #c084fc;
+        }
 
         .callout {
-            background: var(--bg-2); border-left: 3px solid var(--accent);
-            border-radius: 4px; padding: 16px 20px; margin: 20px 0;
+            background: var(--bg-2);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            padding: 16px 20px;
+            margin: 20px 0;
         }
-        .callout strong { display: block; margin-bottom: 4px; }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 4px;
+        }
 
         .btn-primary {
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: linear-gradient(90deg, var(--accent), var(--accent-purple));
-            color:#fff; padding: 10px 18px; border-radius: 6px;
-            text-decoration: none; font-weight: 600; font-size: .9rem;
-            border: none; cursor: pointer; font-family: inherit;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .9rem;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
             transition: transform .15s, box-shadow .15s;
         }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(88,166,255,0.4); color:#fff; }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(88, 166, 255, 0.4);
+            color: #fff;
+        }
 
         footer.legal-footer {
             border-top: 1px solid var(--border);
-            padding: 32px 24px; text-align: center;
-            color: var(--muted); font-size: .85rem;
+            padding: 32px 24px;
+            text-align: center;
+            color: var(--muted);
+            font-size: .85rem;
         }
-        footer.legal-footer a { color: var(--muted); margin: 0 8px; }
-        footer.legal-footer a:hover { color: var(--accent); }
 
-        .skip-link { position: absolute; left: -9999px; top: 8px; background: var(--accent); color:#fff; padding: 8px 12px; border-radius: 6px; }
-        .skip-link:focus { left: 8px; z-index: 100; }
+        footer.legal-footer a {
+            color: var(--muted);
+            margin: 0 8px;
+        }
+
+        footer.legal-footer a:hover {
+            color: var(--accent);
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 8px;
+            background: var(--accent);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .skip-link:focus {
+            left: 8px;
+            z-index: 100;
+        }
     </style>
 </head>
 
@@ -162,7 +351,8 @@
         <p>Esta página detalha, de forma técnica e nominal, todos os cookies e tecnologias similares utilizados em
             nossos domínios, em conformidade com o <strong>Guia Orientativo sobre Cookies da ANPD</strong> (out/2023,
             revisão 2024), o <strong>GDPR</strong> e a <strong>Diretiva ePrivacy</strong>. Para o panorama geral, veja a
-            <a href="/privacidade.html">Política de Privacidade</a>.</p>
+            <a href="/privacidade.html">Política de Privacidade</a>.
+        </p>
 
         <h2>O que são cookies?</h2>
         <p>Cookies são pequenos arquivos de texto que sites armazenam no seu navegador para lembrar informações entre
@@ -321,9 +511,12 @@
         <p>Operadores como Google e Meta podem definir cookies adicionais ao acessar conteúdos integrados (vídeos do
             YouTube, mapas, embeds). Esses provedores são responsáveis por seus próprios cookies — consulte:</p>
         <ul>
-            <li>Google: <a href="https://policies.google.com/technologies/cookies" rel="noopener">policies.google.com/technologies/cookies</a></li>
-            <li>Meta: <a href="https://www.facebook.com/policies/cookies/" rel="noopener">facebook.com/policies/cookies</a></li>
-            <li>YouTube: <a href="https://policies.google.com/privacy?hl=pt-BR" rel="noopener">policies.google.com/privacy</a></li>
+            <li>Google: <a href="https://policies.google.com/technologies/cookies"
+                    rel="noopener">policies.google.com/technologies/cookies</a></li>
+            <li>Meta: <a href="https://www.facebook.com/policies/cookies/"
+                    rel="noopener">facebook.com/policies/cookies</a></li>
+            <li>YouTube: <a href="https://policies.google.com/privacy?hl=pt-BR"
+                    rel="noopener">policies.google.com/privacy</a></li>
         </ul>
 
         <h2>Mudanças nesta política</h2>

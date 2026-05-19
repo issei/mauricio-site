@@ -13,7 +13,7 @@
     <title>Política de Privacidade | Maurício Yokoyama Issei</title>
     <meta name="description"
         content="Como tratamos seus dados pessoais conforme a LGPD, GDPR e demais legislações vigentes. Versão 2.0 — maio/2026.">
-    <meta name="robots" content="noindex, follow">
+    <meta name="robots" content="follow">
     <link rel="canonical" href="https://mauricio.issei.com.br/privacidade.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,8 +32,17 @@
             --accent: #58a6ff;
             --accent-purple: #8a2be2;
         }
-        * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
@@ -42,41 +51,81 @@
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
         }
-        a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-        a:hover { color: #79b8ff; }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: #79b8ff;
+        }
 
         /* Header */
         .legal-header {
-            position: sticky; top: 0; z-index: 50;
-            background: rgba(13,17,23,0.85);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(13, 17, 23, 0.85);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
         }
+
         .legal-header-inner {
-            max-width: 1100px; margin: 0 auto;
-            padding: 14px 24px; display: flex;
-            justify-content: space-between; align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
         .logo {
-            font-weight: 800; color:#fff; text-decoration: none;
-            font-size: 1rem; letter-spacing: -0.01em;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: -0.01em;
         }
+
         .logo span.dot {
             background: linear-gradient(90deg, var(--accent), var(--accent-purple));
-            -webkit-background-clip: text; background-clip: text; color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .back-link { color: var(--muted); font-size: .9rem; text-decoration: none; }
-        .back-link:hover { color: var(--accent); }
+
+        .back-link {
+            color: var(--muted);
+            font-size: .9rem;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
 
         /* Layout */
         .layout {
-            max-width: 1100px; margin: 0 auto;
+            max-width: 1100px;
+            margin: 0 auto;
             padding: 48px 24px 80px;
-            display: grid; grid-template-columns: 1fr; gap: 32px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
         }
+
         @media (min-width: 1024px) {
-            .layout { grid-template-columns: 240px 1fr; }
-            .toc { position: sticky; top: 80px; align-self: start; }
+            .layout {
+                grid-template-columns: 240px 1fr;
+            }
+
+            .toc {
+                position: sticky;
+                top: 80px;
+                align-self: start;
+            }
         }
 
         /* TOC */
@@ -87,82 +136,199 @@
             padding: 16px;
             font-size: .85rem;
         }
+
         .toc-title {
-            font-weight: 700; color:#fff; margin-bottom: 10px;
-            font-size: .8rem; text-transform: uppercase; letter-spacing: .05em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .05em;
         }
-        .toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
-        .toc li { counter-increment: toc; margin: 6px 0; }
-        .toc li::before { content: counter(toc) '. '; color: var(--muted); }
-        .toc a { color: var(--text); text-decoration: none; }
-        .toc a:hover { color: var(--accent); }
+
+        .toc ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: toc;
+        }
+
+        .toc li {
+            counter-increment: toc;
+            margin: 6px 0;
+        }
+
+        .toc li::before {
+            content: counter(toc) '. ';
+            color: var(--muted);
+        }
+
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+        }
 
         /* Content */
-        main { min-width: 0; }
+        main {
+            min-width: 0;
+        }
+
         h1 {
-            font-size: 2.25rem; font-weight: 800; color:#fff;
-            margin: 0 0 8px; letter-spacing: -0.02em; line-height: 1.2;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 8px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
+
         .version-chip {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: var(--bg-2); border: 1px solid var(--border);
-            border-radius: 999px; padding: 4px 12px;
-            font-size: .8rem; color: var(--muted); margin-bottom: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 4px 12px;
+            font-size: .8rem;
+            color: var(--muted);
+            margin-bottom: 24px;
         }
-        .version-chip strong { color: var(--accent); font-weight: 600; }
+
+        .version-chip strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
 
         h2 {
-            font-size: 1.4rem; font-weight: 700; color:#fff;
-            margin: 48px 0 16px; padding-bottom: 8px; position: relative;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 48px 0 16px;
+            padding-bottom: 8px;
+            position: relative;
             scroll-margin-top: 80px;
         }
+
         h2::after {
-            content:''; position: absolute; left: 0; bottom: 0;
-            width: 56px; height: 3px;
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 56px;
+            height: 3px;
             background: linear-gradient(90deg, var(--accent), var(--accent-purple));
             border-radius: 2px;
-            box-shadow: 0 0 10px rgba(88,166,255,0.4);
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
         }
-        h3 { font-size: 1.05rem; color:#fff; margin: 24px 0 8px; font-weight: 600; }
 
-        p, li { font-size: 1rem; color: var(--text); margin: 0 0 12px; }
-        ul, ol { padding-left: 24px; margin: 0 0 16px; }
-        li { margin-bottom: 6px; }
-        strong { color: #fff; font-weight: 600; }
+        h3 {
+            font-size: 1.05rem;
+            color: #fff;
+            margin: 24px 0 8px;
+            font-weight: 600;
+        }
+
+        p,
+        li {
+            font-size: 1rem;
+            color: var(--text);
+            margin: 0 0 12px;
+        }
+
+        ul,
+        ol {
+            padding-left: 24px;
+            margin: 0 0 16px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        strong {
+            color: #fff;
+            font-weight: 600;
+        }
 
         /* Resumo executivo */
         .summary-card {
-            background: linear-gradient(135deg, rgba(88,166,255,0.08), rgba(138,43,226,0.06));
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(138, 43, 226, 0.06));
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
             margin: 24px 0 40px;
         }
-        .summary-card h2 { margin-top: 0; font-size: 1.1rem; }
-        .summary-card h2::after { display: none; }
+
+        .summary-card h2 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .summary-card h2::after {
+            display: none;
+        }
 
         /* Tables */
-        .table-wrap { overflow-x: auto; margin: 12px 0 20px; }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 12px 0 20px;
+        }
+
         table {
-            width: 100%; border-collapse: collapse;
-            background: var(--bg-2); border: 1px solid var(--border);
-            border-radius: 8px; overflow: hidden;
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
             font-size: .9rem;
         }
-        th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
-        th { background: rgba(88,166,255,0.06); color:#fff; font-weight: 600; font-size: .85rem; }
-        tr:last-child td { border-bottom: none; }
+
+        th,
+        td {
+            padding: 10px 14px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: rgba(88, 166, 255, 0.06);
+            color: #fff;
+            font-weight: 600;
+            font-size: .85rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
 
         /* Callouts */
         .callout {
             background: var(--bg-2);
             border-left: 3px solid var(--accent);
             border-radius: 4px;
-            padding: 16px 20px; margin: 20px 0;
+            padding: 16px 20px;
+            margin: 20px 0;
         }
-        .callout.warning { border-left-color: #f59e0b; }
-        .callout.success { border-left-color: #10b981; }
-        .callout strong { display: block; margin-bottom: 4px; }
+
+        .callout.warning {
+            border-left-color: #f59e0b;
+        }
+
+        .callout.success {
+            border-left-color: #10b981;
+        }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 4px;
+        }
 
         .rights-cta {
             background: var(--bg-2);
@@ -170,24 +336,59 @@
             border-radius: 12px;
             padding: 20px 24px;
             margin: 24px 0;
-            display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-            box-shadow: 0 0 20px rgba(88,166,255,0.08);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.08);
         }
-        .rights-cta-text { flex: 1 1 280px; }
-        .rights-cta strong { color:#fff; display:block; margin-bottom:4px; }
+
+        .rights-cta-text {
+            flex: 1 1 280px;
+        }
+
+        .rights-cta strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 4px;
+        }
+
         .btn-primary {
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: linear-gradient(90deg, var(--accent), var(--accent-purple));
-            color:#fff; padding: 10px 18px; border-radius: 6px;
-            text-decoration: none; font-weight: 600; font-size: .9rem;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .9rem;
             transition: transform .15s, box-shadow .15s;
         }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(88,166,255,0.4); color:#fff; }
 
-        ul.rights-list { list-style: none; padding-left: 0; }
-        ul.rights-list li { padding-left: 24px; position: relative; }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(88, 166, 255, 0.4);
+            color: #fff;
+        }
+
+        ul.rights-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.rights-list li {
+            padding-left: 24px;
+            position: relative;
+        }
+
         ul.rights-list li::before {
-            content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold;
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
         }
 
         /* Footer */
@@ -198,15 +399,31 @@
             color: var(--muted);
             font-size: .85rem;
         }
-        footer.legal-footer a { color: var(--muted); margin: 0 8px; }
-        footer.legal-footer a:hover { color: var(--accent); }
+
+        footer.legal-footer a {
+            color: var(--muted);
+            margin: 0 8px;
+        }
+
+        footer.legal-footer a:hover {
+            color: var(--accent);
+        }
 
         /* Skip link */
         .skip-link {
-            position: absolute; left: -9999px; top: 8px;
-            background: var(--accent); color:#fff; padding: 8px 12px; border-radius: 6px;
+            position: absolute;
+            left: -9999px;
+            top: 8px;
+            background: var(--accent);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
         }
-        .skip-link:focus { left: 8px; z-index: 100; }
+
+        .skip-link:focus {
+            left: 8px;
+            z-index: 100;
+        }
     </style>
 </head>
 
@@ -458,7 +675,8 @@
                             <td>Meta Platforms, Inc.</td>
                             <td>Pixel, Conversions API, mensageria (com consentimento)</td>
                             <td>EUA / Irlanda</td>
-                            <td><a href="https://www.facebook.com/privacy/policy/" rel="noopener">facebook.com/privacy</a>
+                            <td><a href="https://www.facebook.com/privacy/policy/"
+                                    rel="noopener">facebook.com/privacy</a>
                             </td>
                         </tr>
                         <tr>
@@ -553,7 +771,8 @@
                 <li><strong>Oposição</strong> a tratamento baseado em legítimo interesse</li>
                 <li><strong>Revisão humana</strong> de decisões automatizadas que afetem seus interesses</li>
             </ul>
-            <p>Atendemos solicitações em até <strong>15 dias</strong> (LGPD) ou <strong>30 dias</strong> (GDPR), gratuitamente.</p>
+            <p>Atendemos solicitações em até <strong>15 dias</strong> (LGPD) ou <strong>30 dias</strong> (GDPR),
+                gratuitamente.</p>
 
             <div class="rights-cta">
                 <div class="rights-cta-text">
@@ -600,7 +819,8 @@
                 <li>Conteúdo gerado por IA é <strong>identificado como tal</strong> ao usuário.</li>
                 <li><strong>Não treinamos</strong> modelos de IA com seus dados pessoais sem consentimento explícito e
                     específico.</li>
-                <li>Decisões com efeitos relevantes (ex.: aprovação de um lead) <strong>passam por revisão humana</strong>
+                <li>Decisões com efeitos relevantes (ex.: aprovação de um lead) <strong>passam por revisão
+                        humana</strong>
                     antes de qualquer comunicação ao titular (LGPD, art. 20).</li>
                 <li>Você pode solicitar revisão humana de qualquer decisão automatizada via DPO.</li>
             </ul>
