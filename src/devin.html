@@ -67,6 +67,7 @@
       id="hero"
       data-section="hero"
       aria-label="Capa da apresentação"
+      data-density="low"
     >
       <div class="ep01-hero__bg" aria-hidden="true"></div>
       <div class="ep01-hero__inner devin-container">
@@ -101,6 +102,7 @@
       id="abertura"
       data-section="pergunta"
       aria-label="Pergunta de abertura"
+      data-density="low"
     >
       <div class="devin-container--narrow">
         <article class="ep01-pergunta__content">
@@ -127,6 +129,7 @@
       id="sobre"
       data-section="apresentacao"
       aria-label="Apresentação do autor"
+      data-density="medium"
     >
       <div class="devin-container">
         <header class="ep01-apresentacao__header">
@@ -137,15 +140,15 @@
           </p>
         </header>
         <div class="ep01-apresentacao__cards" role="list">
-          <article class="devin-card ep01-card ep01-card--pessoal js-card" role="listitem">
+          <article class="devin-card devin-card--insight ep01-card ep01-card--pessoal js-card" role="listitem">
             <span class="devin-card__label ep01-card__label">Pessoal</span>
             <p class="ep01-card__body">44 anos. Casado com a Talita. Pai da Yumi (14), Lucas e Matheus (9).</p>
           </article>
-          <article class="devin-card ep01-card ep01-card--formacao js-card" role="listitem">
+          <article class="devin-card devin-card--framework ep01-card ep01-card--formacao js-card" role="listitem">
             <span class="devin-card__label ep01-card__label">Formação</span>
             <p class="ep01-card__body">Sistemas de Informação · Operações Logísticas · Estatística Aplicada · Ciência de Dados.</p>
           </article>
-          <article class="devin-card ep01-card ep01-card--atuacao js-card" role="listitem">
+          <article class="devin-card devin-card--framework ep01-card ep01-card--atuacao js-card" role="listitem">
             <span class="devin-card__label ep01-card__label">Atuação</span>
             <p class="ep01-card__body">Mais de 22 anos desenvolvendo sistemas. Desde 2018 no time da Rede / Itaú BUPJ, atuando no apoio à conquista de novos clientes.</p>
           </article>
@@ -159,6 +162,7 @@
       id="proposito"
       data-section="proposito"
       aria-label="Propósito desta apresentação"
+      data-density="low"
     >
       <div class="devin-container--narrow">
         <p class="devin-eyebrow ep01-proposito__label" aria-hidden="true">02 · PROPÓSITO</p>
@@ -185,6 +189,7 @@
       id="fundamentos"
       data-section="fundamentos"
       aria-label="Os três fundamentos conceituais"
+      data-density="high"
     >
       <div class="devin-container">
         <article class="ep02-fundamentos__intro">
@@ -222,6 +227,7 @@
       id="calculadora"
       data-section="calculadora"
       aria-label="A lição da calculadora"
+      data-density="high"
     >
       <div class="devin-container--narrow">
         <p class="devin-eyebrow ep02-calculadora__rotulo" aria-hidden="true">FUNDAMENTOS · FERRAMENTA</p>
@@ -285,6 +291,7 @@
       id="vibe-coding-def"
       data-section="pausa"
       aria-label="Definição de Vibe Coding"
+      data-density="low"
     >
       <div class="ep03-pausa__inner">
         <article class="ep03-pausa__content" aria-label="O que é Vibe Coding">
@@ -307,11 +314,12 @@
       id="cozinheiro"
       data-section="cozinheiro"
       aria-label="A analogia do cozinheiro"
+      data-density="medium"
     >
       <div class="devin-container--narrow">
         <p class="devin-eyebrow ep03-cozinheiro__rotulo" aria-hidden="true">STORYTELLING · O COZINHEIRO</p>
         <header class="ep03-cozinheiro__intro js-ep03-intro">
-          <p class="ep03-cozinheiro__setup ep03-cozinheiro__setup--1">
+          <p class="ep03-cozinheiro__setup ep03-cozinheiro__setup--1 prose-lead">
             O cliente pede um risoto que remeta a uma noite de outono.
           </p>
           <p class="ep03-cozinheiro__setup ep03-cozinheiro__setup--2">
@@ -409,7 +417,7 @@
      SEÇÃO 9 — TRANSIÇÃO: ATO II (Épico 04)
      ============================================================ -->
 <section class="devin-section ep04-transicao" id="ato-2" data-section="transicao"
-         aria-label="Transição — Ato II">
+         aria-label="Transição — Ato II" data-density="low">
   <div class="devin-container ep04-transicao__inner">
     <article class="ep04-transicao__content">
       <p class="ep04-transicao__label" aria-label="Ato dois">ATO II</p>
@@ -429,14 +437,14 @@
      SEÇÃO 10 — COMUNICAÇÃO COM IA: QUATRO PILARES (Épico 04)
      ============================================================ -->
 <section class="devin-section devin-section--dark ep04-comunicacao" id="comunicacao-ia"
-         data-section="comunicacao" aria-label="Comunicação com IA — Quatro Pilares">
+         data-section="comunicacao" aria-label="Comunicação com IA — Quatro Pilares" data-density="medium">
   <div class="devin-container">
 
     <header class="ep04-comunicacao__header">
       <h2 class="ep04-comunicacao__title">
         Quatro pilares para falar com qualquer agente de IA.
       </h2>
-      <p class="ep04-comunicacao__subtitle">
+      <p class="ep04-comunicacao__subtitle prose-lead">
         Engenharia de prompt não é uma habilidade técnica de nicho — é a nova forma de liderança técnica.
         Dominar esses quatro princípios muda a qualidade do que você obtém de qualquer agente —
         Devin, Copilot, Stackspot ou qualquer outro. Pense nisso como a nova fluência profissional:
@@ -557,7 +565,7 @@
      ============================================================ -->
 <section class="devin-section ep05-anatomia" id="anatomia-devin"
          data-section="anatomia" data-state="technical"
-         aria-label="Anatomia do Devin — Leitura cognitiva">
+         aria-label="Anatomia do Devin — Leitura cognitiva" data-density="high">
   <div class="devin-container">
 
     <header class="ep05-anatomia__header">
@@ -738,7 +746,7 @@
      SEÇÃO 12 — CONTEXTO PERSISTENTE (Épico 05)
      ============================================================ -->
 <section class="devin-section devin-section--dark ep05-contexto" id="contexto-persistente"
-         data-section="contexto" aria-label="Contexto Persistente — Governança de Memória">
+         data-section="contexto" aria-label="Contexto Persistente — Governança de Memória" data-density="high">
   <div class="devin-container">
 
     <header class="ep05-contexto__header">
@@ -765,6 +773,7 @@
       </p>
     </article>
 
+    <div class="devin-disclosure">
     <div class="ep05-estrategias" role="list">
 
       <!-- Estratégia 1: Imersiva -->
@@ -825,6 +834,9 @@
       </article>
 
     </div><!-- /.ep05-estrategias -->
+      <div class="devin-disclosure__mask"></div>
+    </div><!-- /.devin-disclosure -->
+    <button class="devin-disclosure__toggle" type="button" aria-expanded="false">Ver mais</button>
 
     <figure class="ep05-diagrama" aria-label="Diagrama do ciclo de contexto">
       <div class="ep05-diagrama__ciclo" role="img"
@@ -862,7 +874,7 @@
      SEÇÕES 13-15 — SKILLS / PLAYBOOKS / KNOWLEDGE (Épico 06)
      ============================================================ -->
 <section class="devin-section ep06-arsenais" id="skills-playbooks"
-         data-section="arsenais" aria-label="Os três arsenais: Skills, Playbooks, Knowledge">
+         data-section="arsenais" aria-label="Os três arsenais: Skills, Playbooks, Knowledge" data-density="high">
   <div class="devin-container">
 
     <header class="ep06-arsenais__header">
@@ -1323,7 +1335,7 @@
      ===================================================== -->
 
 <!-- SEÇÃO 16 — TRANSIÇÃO: HANDS-ON (Exercícios Práticos) -->
-<section class="devin-section devin-section--dark ep07-section" id="hands-on" data-section="hands-on">
+<section class="devin-section devin-section--dark ep07-section" id="hands-on" data-section="hands-on" data-density="high">
   <div class="devin-container">
 
     <header class="ep07-intro">
@@ -1532,7 +1544,7 @@
 </section>
 
 <!-- SEÇÃO 17 — MENTORIA ESTRUTURADA: APRENDA COM ERRO -->
-<section class="devin-section ep07-section ep07-section--mentoria" id="mentoria" data-section="mentoria">
+<section class="devin-section ep07-section ep07-section--mentoria" id="mentoria" data-section="mentoria" data-density="high">
   <div class="devin-container">
 
     <header class="ep07-mentoria__header">
@@ -1627,7 +1639,7 @@
 </section>
 
 <!-- SEÇÃO 18 — ESTRUTURA DO PROJETO + INTEGRAÇÃO DIA A DIA -->
-<section class="devin-section devin-section--surface ep07-section" id="integracao" data-section="integracao">
+<section class="devin-section devin-section--surface ep07-section" id="integracao" data-section="integracao" data-density="high">
   <div class="devin-container">
 
     <header class="ep07-integracao__header">
@@ -1733,7 +1745,7 @@
      ===================================================== -->
 
 <!-- SEÇÃO 19 — HANDS-ON: FLUXO DA SPEC AO PR + DEMO AO VIVO -->
-<section class="devin-section ep08-section ep08-section--fluxo" id="fluxo" data-section="fluxo">
+<section class="devin-section ep08-section ep08-section--fluxo" id="fluxo" data-section="fluxo" data-density="medium">
   <div class="devin-container">
 
     <header class="ep08-fluxo__header">
@@ -1850,7 +1862,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
 
 <!-- SEÇÃO 20 — PAUSA REFLEXIVA + MUDANÇA DE IDENTIDADE -->
 <!-- State: contemplative — motion reduzido, espaço negativo dominante -->
-<section class="devin-section devin-section--navy ep08-section ep08-section--contemplativa" id="reflexao" data-section="reflexao">
+<section class="devin-section devin-section--navy ep08-section ep08-section--contemplativa" id="reflexao" data-section="reflexao" data-density="low">
   <div class="devin-container--narrow">
 
     <article class="ep08-reflexao__content">
@@ -1875,7 +1887,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
 </section>
 
 <!-- SEÇÃO 21 — MUDANÇA DE IDENTIDADE + TRANSIÇÃO ATO III -->
-<section class="devin-section devin-section--dark ep08-section ep08-section--identidade" id="identidade" data-section="identidade">
+<section class="devin-section devin-section--dark ep08-section ep08-section--identidade" id="identidade" data-section="identidade" data-density="medium">
   <div class="devin-container">
 
     <header class="ep08-mudanca__header">
@@ -1961,7 +1973,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
      ===================================================== -->
 
 <!-- SEÇÃO 22 — MAESTRIA PESSOAL -->
-<section class="devin-section devin-section--dark ep09-section" id="lideranca" data-section="lideranca">
+<section class="devin-section devin-section--dark ep09-section" id="lideranca" data-section="lideranca" data-density="high">
   <div class="devin-container">
 
     <header class="ep09-lideranca__header">
@@ -2009,6 +2021,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
       </div>
     </div>
 
+    <div class="devin-disclosure">
     <div class="ep09-lideranca__atitudes">
 
       <article class="ep09-atitude-card" aria-label="Pilar: Conhecimento">
@@ -2053,7 +2066,10 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
         </p>
       </article>
 
-    </div>
+    </div><!-- /.ep09-lideranca__atitudes -->
+      <div class="devin-disclosure__mask"></div>
+    </div><!-- /.devin-disclosure -->
+    <button class="devin-disclosure__toggle" type="button" aria-expanded="false">Ver mais</button>
 
     <p class="ep09-lideranca__frase-fechamento">
       Estudar, treinar, se aperfeiçoar — não é para você trabalhar mais.<br>
@@ -2064,7 +2080,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
 </section>
 
 <!-- SEÇÃO 23 — ESTAGIÁRIO BRILHANTE + MAESTRIA COLETIVA -->
-<section class="devin-section ep09-section ep09-section--estagiario" id="amplificacao" data-section="amplificacao">
+<section class="devin-section ep09-section ep09-section--estagiario" id="amplificacao" data-section="amplificacao" data-density="high">
   <div class="devin-container">
 
     <!-- Frase de impacto -->
@@ -2084,6 +2100,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
       </p>
     </div>
 
+    <div class="devin-disclosure">
     <div class="ep09-amplificacao__contextos">
 
       <article class="ep09-contexto-card" aria-label="A Partitura">
@@ -2171,12 +2188,15 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
         </p>
       </article>
 
-    </div>
+    </div><!-- /.ep09-amplificacao__contextos -->
+      <div class="devin-disclosure__mask"></div>
+    </div><!-- /.devin-disclosure -->
+    <button class="devin-disclosure__toggle" type="button" aria-expanded="false">Ver mais</button>
   </div>
 </section>
 
 <!-- SEÇÃO 24 — CULTURA VIBE CODING (5 Pilares) -->
-<section class="devin-section devin-section--surface ep09-section" id="cultura" data-section="cultura">
+<section class="devin-section devin-section--surface ep09-section" id="cultura" data-section="cultura" data-density="medium">
   <div class="devin-container">
 
     <header class="ep09-cultura__header">
@@ -2246,7 +2266,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
 </section>
 
 <!-- SEÇÕES 25-30 — ATO III: GESTÃO, MÉTRICAS, CUSTOS -->
-<section class="devin-section devin-section--dark ep09-section" id="gestao" data-section="gestao">
+<section class="devin-section devin-section--dark ep09-section" id="gestao" data-section="gestao" data-density="high">
   <div class="devin-container">
 
     <header class="ep09-gestao__header">
@@ -2259,6 +2279,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
       </p>
     </header>
 
+    <div class="devin-disclosure">
     <div class="ep09-agil__elementos">
 
       <article class="ep09-agil-card">
@@ -2302,7 +2323,10 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
         </p>
       </article>
 
-    </div>
+    </div><!-- /.ep09-agil__elementos -->
+      <div class="devin-disclosure__mask"></div>
+    </div><!-- /.devin-disclosure -->
+    <button class="devin-disclosure__toggle" type="button" aria-expanded="false">Ver mais</button>
 
     <!-- Métricas -->
     <div class="ep09-metricas">
@@ -2414,7 +2438,7 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
 </section>
 
 <!-- SEÇÃO 31-32 — FECHAMENTO NARRATIVO + PRÓXIMOS PASSOS -->
-<section class="devin-section devin-section--navy ep09-section ep09-section--fechamento" id="fechamento" data-section="fechamento">
+<section class="devin-section devin-section--navy ep09-section ep09-section--fechamento" id="fechamento" data-section="fechamento" data-density="medium">
   <div class="devin-container devin-container--narrow">
 
     <!-- Fechamento emocional -->
@@ -2426,7 +2450,7 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
       </blockquote>
 
       <div class="ep09-fechamento__corpo">
-        <p>
+        <p class="prose-lead">
           A IA é a ferramenta mais poderosa que a nossa profissão já viu.
           Ela vai picar a cebola, calibrar o forno, escrever a primeira versão de qualquer coisa.
           Ela não se cansa, não reclama, não pede aumento.
@@ -2543,7 +2567,7 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
 </section>
 
 <!-- SEÇÃO 33 — ENCERRAMENTO FINAL -->
-<section class="devin-section devin-section--dark ep09-section ep09-section--encerramento" id="encerramento" data-section="encerramento">
+<section class="devin-section devin-section--dark ep09-section ep09-section--encerramento" id="encerramento" data-section="encerramento" data-density="low">
   <div class="devin-container devin-container--narrow">
 
     <!-- Vídeos de aprofundamento -->
