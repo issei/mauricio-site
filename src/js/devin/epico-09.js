@@ -145,10 +145,36 @@ function buildFechamentoTimeline() {
   });
 }
 
+// ─── Video Cards — fade-in em stagger ao entrar na viewport ─────────────────
+function buildVideoCardsTimeline() {
+  const cards = document.querySelectorAll('.js-video-card');
+  if (!cards.length) return;
+
+  const reduced = prefersReducedMotion();
+  const container = cards[0].closest('.video-series') || cards[0];
+
+  gsap.set(cards, { opacity: 0 });
+
+  ScrollTrigger.create({
+    trigger: container,
+    start: 'top 75%',
+    once: true,
+    onEnter() {
+      gsap.to(cards, {
+        opacity: 1,
+        duration: reduced ? 0.3 : 0.9,
+        stagger: reduced ? 0 : 0.08,
+        ease: 'power2.out',
+      });
+    },
+  });
+}
+
 // ─── Export público ───────────────────────────────────────────────────────────
 export function initEpico09() {
   buildLiderancaSilenciosaTimeline();
   buildAmplificacaoTimeline();
   buildCulturaTimeline();
   buildFechamentoTimeline();
+  buildVideoCardsTimeline();
 }
