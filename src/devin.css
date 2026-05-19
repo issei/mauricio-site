@@ -16,6 +16,18 @@
   --border-medium: #1E293B;
   --border-strong: #334155;
   --text-dim: #334155;
+
+  /* Escala de espaçamento fluido (spec §6.1) */
+  --space-1: clamp(0.5rem, 0.4rem + 0.2vw, 0.75rem);
+  --space-2: clamp(1rem, 0.8rem + 0.3vw, 1.25rem);
+  --space-3: clamp(1.5rem, 1.2rem + 0.5vw, 2rem);
+  --space-4: clamp(2rem, 1.8rem + 0.8vw, 3rem);
+  --space-5: clamp(3rem, 2.5rem + 1vw, 5rem);
+  --space-6: clamp(5rem, 4rem + 2vw, 8rem);
+
+  /* Larguras de leitura (spec §7.2) */
+  --reading-width: 65ch;
+  --manifesto-width: 45ch;
 }
 
 /* =====================================================
@@ -2779,3 +2791,89 @@ html.lenis, html.lenis body {
   margin-bottom: 2rem;
 }
 @media (max-width: 767px) { .video-series { grid-template-columns: 1fr; } }
+
+/* =====================================================
+   COGNITIVE EDITORIAL SYSTEM — spec 07
+   ===================================================== */
+
+/* Densidade de seção — padding baseado na escala fluida (spec §5) */
+[data-density="low"]    { padding-block: var(--space-6); }
+[data-density="medium"] { padding-block: var(--space-5); }
+[data-density="high"]   { padding-block: var(--space-4); }
+
+/* Largura de leitura — prose containers (spec §7.2) */
+.devin-prose         { max-width: var(--reading-width); margin-inline: auto; }
+.devin-prose--narrow { max-width: var(--manifesto-width); margin-inline: auto; }
+
+/* Lead paragraph — abertura editorial (spec §7.4) */
+.prose-lead {
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.75;
+  margin-bottom: var(--space-4);
+}
+
+/* Separador de cadência (spec §6.3) */
+.devin-breath { height: var(--space-5); }
+
+/* Card semântico — arquétipos (spec §11) */
+.devin-card--insight {
+  background: transparent;
+  border-color: var(--border-subtle);
+  font-style: italic;
+}
+.devin-card--framework {
+  border-color: var(--border-medium);
+}
+.devin-card--constraint {
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--color-human);
+}
+.devin-card--execution {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.875rem;
+  background: #0D1117;
+  border-color: var(--border-medium);
+}
+
+/* Progressive Disclosure (spec §9.1 e §9.2) */
+.devin-disclosure {
+  position: relative;
+  max-height: 320px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.devin-disclosure.is-open {
+  max-height: none;
+}
+.devin-disclosure__mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 55%, var(--section-bg, #002D62) 100%);
+  transition: opacity 0.3s ease;
+}
+.devin-disclosure.is-open .devin-disclosure__mask {
+  opacity: 0;
+  pointer-events: none;
+}
+.devin-disclosure__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--space-3);
+  background: none;
+  border: 1px solid var(--border-medium);
+  color: #94A3B8;
+  font-size: 0.8125rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.devin-disclosure__toggle:hover {
+  border-color: var(--color-human-border);
+  color: var(--color-human);
+}
