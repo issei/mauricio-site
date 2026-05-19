@@ -180,9 +180,44 @@ function wireScrollTriggers(anatomia, contexto) {
   }
 }
 
+// ─── ReAct Loop SVG — draw dos arcos via strokeDashoffset ───────────────────
+function buildReactLoopDrawTimeline() {
+  const svg = document.querySelector('.ep05-react-loop__svg');
+  if (!svg) return;
+
+  const reduced = prefersReducedMotion();
+  const paths = [...svg.querySelectorAll('path')].filter(p => p.hasAttribute('stroke'));
+
+  paths.forEach(p => {
+    try {
+      const len = p.getTotalLength();
+      gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
+    } catch (_) {}
+  });
+
+  ScrollTrigger.create({
+    trigger: svg.closest('.ep05-react-loop'),
+    start: 'top 70%',
+    once: true,
+    onEnter() {
+      if (reduced) {
+        gsap.set(paths, { strokeDashoffset: 0 });
+        return;
+      }
+      gsap.to(paths, {
+        strokeDashoffset: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: 'power2.inOut',
+      });
+    },
+  });
+}
+
 // ─── Export principal ─────────────────────────────────────────────────────────
 export function initEpico05() {
   const anatomia = buildAnatomiaDevinTimeline();
   const contexto = buildContextoPersistenteTimeline();
   wireScrollTriggers(anatomia, contexto);
+  buildReactLoopDrawTimeline();
 }
