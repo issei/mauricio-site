@@ -458,39 +458,144 @@
      ============================================================ -->
 <section class="devin-section devin-section--dark ep04-comunicacao" id="comunicacao-ia"
          data-section="comunicacao" aria-label="Comunicação com IA — Quatro Pilares" data-density="medium">
-  <div class="devin-container">
+  <div class="devin-container--editorial">
 
-    <header class="ep04-comunicacao__header">
-      <h2 class="ep04-comunicacao__title">
-        Quatro pilares para falar com qualquer agente de IA.
-      </h2>
-      <p class="ep04-comunicacao__subtitle prose-lead">
-        Engenharia de prompt não é uma habilidade técnica de nicho — é a nova forma de liderança técnica.
-        Dominar esses quatro princípios muda a qualidade do que você obtém de qualquer agente —
-        Devin, Copilot, Stackspot ou qualquer outro. Pense nisso como a nova fluência profissional:
-        quem articula melhor a intenção, obtém resultados melhores. Não é magia: é engenharia aplicada.
-      </p>
-    </header>
+    <!-- HERO 2 colunas: copy + SVG orbital -->
+    <div class="ep04-hero">
+      <div class="ep04-hero__copy">
+        <p class="devin-eyebrow ep04-comunicacao__eyebrow">COMUNICAÇÃO COM IA · ÉPICO 04</p>
+        <h2 class="ep04-comunicacao__title ep-section-title">
+          Quatro pilares para falar com qualquer agente de IA.
+        </h2>
+        <p class="ep04-comunicacao__subtitle">
+          Engenharia de prompt não é uma habilidade técnica de nicho — é a nova forma de liderança técnica.
+          Dominar esses quatro princípios muda a qualidade do que você obtém de qualquer agente —
+          Devin, Copilot, Stackspot ou qualquer outro. Pense nisso como a nova fluência profissional:
+          quem articula melhor a intenção, obtém resultados melhores. Não é magia: é engenharia aplicada.
+        </p>
+      </div>
 
-    <div class="ep04-pilares ep04-pilares--bento" role="list">
+      <!-- SVG — Quatro nós orbitando núcleo central -->
+      <div class="ep04-hero__visual" aria-hidden="true">
+        <svg class="ep04-orbital-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="ep04-glow-blue">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="ep04-glow-orange">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <radialGradient id="ep04-core-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00C2A8" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#00C2A8" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Órbita tracejada -->
+          <circle cx="130" cy="130" r="88" fill="none" stroke="rgba(0,194,168,0.12)" stroke-width="1" stroke-dasharray="4 6"/>
+
+          <!-- Linhas conectoras animadas -->
+          <line x1="130" y1="42" x2="130" y2="130" stroke="rgba(0,194,168,0.15)" stroke-width="1">
+            <animate attributeName="stroke-opacity" values="0.08;0.22;0.08" dur="3.1s" repeatCount="indefinite"/>
+          </line>
+          <line x1="218" y1="130" x2="130" y2="130" stroke="rgba(0,194,168,0.15)" stroke-width="1">
+            <animate attributeName="stroke-opacity" values="0.08;0.22;0.08" dur="4.7s" repeatCount="indefinite"/>
+          </line>
+          <line x1="130" y1="218" x2="130" y2="130" stroke="rgba(0,194,168,0.15)" stroke-width="1">
+            <animate attributeName="stroke-opacity" values="0.08;0.22;0.08" dur="3.7s" repeatCount="indefinite"/>
+          </line>
+          <line x1="42" y1="130" x2="130" y2="130" stroke="rgba(0,194,168,0.15)" stroke-width="1">
+            <animate attributeName="stroke-opacity" values="0.08;0.22;0.08" dur="5.3s" repeatCount="indefinite"/>
+          </line>
+
+          <!-- Núcleo central -->
+          <circle cx="130" cy="130" r="28" fill="url(#ep04-core-grad)"/>
+          <circle cx="130" cy="130" r="18" fill="rgba(0,194,168,0.08)" stroke="rgba(0,194,168,0.35)" stroke-width="1.5" filter="url(#ep04-glow-blue)">
+            <animate attributeName="r" values="18;20;18" dur="4s" repeatCount="indefinite"/>
+          </circle>
+          <text x="130" y="134" text-anchor="middle" fill="rgba(0,194,168,0.7)" font-size="7.5" font-family="Inter" font-weight="700" letter-spacing="0.06em">CORE</text>
+
+          <!-- Nó 01 — Topo (Clareza) -->
+          <g filter="url(#ep04-glow-orange)">
+            <circle cx="130" cy="42" r="22" fill="rgba(255,98,0,0.1)" stroke="rgba(255,98,0,0.5)" stroke-width="1.5">
+              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <text x="130" y="38" text-anchor="middle" fill="#FF6200" font-size="7" font-family="Inter" font-weight="700" letter-spacing="0.08em">01</text>
+            <text x="130" y="48" text-anchor="middle" fill="rgba(255,98,0,0.75)" font-size="6.5" font-family="Inter">CLAREZA</text>
+          </g>
+
+          <!-- Nó 02 — Direita (Contexto) -->
+          <g filter="url(#ep04-glow-orange)">
+            <circle cx="218" cy="130" r="22" fill="rgba(255,98,0,0.1)" stroke="rgba(255,98,0,0.5)" stroke-width="1.5">
+              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="4.1s" repeatCount="indefinite"/>
+            </circle>
+            <text x="218" y="126" text-anchor="middle" fill="#FF6200" font-size="7" font-family="Inter" font-weight="700" letter-spacing="0.08em">02</text>
+            <text x="218" y="136" text-anchor="middle" fill="rgba(255,98,0,0.75)" font-size="6.5" font-family="Inter">CONTEXTO</text>
+          </g>
+
+          <!-- Nó 03 — Baixo (Exemplos) -->
+          <g filter="url(#ep04-glow-orange)">
+            <circle cx="130" cy="218" r="22" fill="rgba(255,98,0,0.1)" stroke="rgba(255,98,0,0.5)" stroke-width="1.5">
+              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="3.7s" repeatCount="indefinite"/>
+            </circle>
+            <text x="130" y="214" text-anchor="middle" fill="#FF6200" font-size="7" font-family="Inter" font-weight="700" letter-spacing="0.08em">03</text>
+            <text x="130" y="224" text-anchor="middle" fill="rgba(255,98,0,0.75)" font-size="6.5" font-family="Inter">EXEMPLOS</text>
+          </g>
+
+          <!-- Nó 04 — Esquerda (Iteração) -->
+          <g filter="url(#ep04-glow-orange)">
+            <circle cx="42" cy="130" r="22" fill="rgba(255,98,0,0.1)" stroke="rgba(255,98,0,0.5)" stroke-width="1.5">
+              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="5s" repeatCount="indefinite"/>
+            </circle>
+            <text x="42" y="126" text-anchor="middle" fill="#FF6200" font-size="7" font-family="Inter" font-weight="700" letter-spacing="0.08em">04</text>
+            <text x="42" y="136" text-anchor="middle" fill="rgba(255,98,0,0.75)" font-size="6.5" font-family="Inter">ITERAÇÃO</text>
+          </g>
+
+          <!-- Partículas orbitais -->
+          <circle r="2.5" fill="rgba(0,194,168,0.5)">
+            <animateMotion dur="8s" repeatCount="indefinite">
+              <mpath href="#ep04-orbit-path"/>
+            </animateMotion>
+          </circle>
+          <circle r="1.8" fill="rgba(255,98,0,0.4)">
+            <animateMotion dur="12s" repeatCount="indefinite" begin="4s">
+              <mpath href="#ep04-orbit-path"/>
+            </animateMotion>
+          </circle>
+
+          <path id="ep04-orbit-path" d="M 218,130 A 88,88 0 1,1 217.9,130" fill="none"/>
+        </svg>
+      </div>
+    </div><!-- /.ep04-hero -->
+
+    <!-- GRID 2×2 dos Pilares -->
+    <div class="ep04-pilares-grid" role="list">
 
       <!-- Pilar 01 — Clareza -->
-      <article class="ep04-pilar js-pillar-card" role="listitem" aria-label="Pilar 1: Clareza">
-        <header class="ep04-pilar__header">
-          <span class="ep04-pilar__number" aria-hidden="true">01</span>
-          <h3 class="ep04-pilar__name">CLAREZA</h3>
-        </header>
-        <p class="ep04-pilar__body">
+      <article class="ep04-pilar-card js-pillar-card" role="listitem" aria-label="Pilar 1: Clareza" data-number="01">
+        <div class="ep04-pilar-card__header">
+          <div class="ep04-pilar-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 3L19 19H3L11 3Z" stroke="#FF6200" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+              <path d="M11 9v4M11 15v1" stroke="#FF6200" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="ep04-pilar-card__number" aria-hidden="true">01</span>
+          <h3 class="ep04-pilar-card__name">CLAREZA</h3>
+        </div>
+        <p class="ep04-pilar-card__body">
           Comunique como um profissional sênior orientando um iniciante altamente capaz.
           Sem ambiguidade, sem subentendidos. A IA vai interpretar exatamente o que você
           escreveu — não o que você quis dizer. Se a instrução for vaga, o resultado será vago.
         </p>
-        <p class="ep04-pilar__explanation">
+        <p class="ep04-pilar-card__explanation">
           Clareza não é verbosidade — é precisão. Cada palavra na instrução deve carregar
           intenção. Remova tudo que for ambíguo; adicione tudo que for necessário para
           eliminar interpretações incorretas.
         </p>
-        <div class="ep04-pilar__example" aria-label="Exemplo de instrução com e sem clareza">
+        <div class="ep04-pilar-card__example" aria-label="Exemplo de instrução com e sem clareza">
           <p class="ep04-example__label">❌ Pouco claro</p>
           <p class="ep04-example__text"><em>"Melhore esse código."</em></p>
           <p class="ep04-example__label ep04-example__label--after">✅ Claro</p>
@@ -502,22 +607,30 @@
       </article>
 
       <!-- Pilar 02 — Contexto -->
-      <article class="ep04-pilar js-pillar-card" role="listitem" aria-label="Pilar 2: Contexto">
-        <header class="ep04-pilar__header">
-          <span class="ep04-pilar__number" aria-hidden="true">02</span>
-          <h3 class="ep04-pilar__name">CONTEXTO</h3>
-        </header>
-        <p class="ep04-pilar__body">
+      <article class="ep04-pilar-card js-pillar-card" role="listitem" aria-label="Pilar 2: Contexto" data-number="02">
+        <div class="ep04-pilar-card__header">
+          <div class="ep04-pilar-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="6" width="18" height="13" rx="2" stroke="#FF6200" stroke-width="1.5" fill="none"/>
+              <path d="M7 6V4a2 2 0 014 0v2" stroke="#FF6200" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M11 12v3" stroke="#FF6200" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="11" cy="11" r="1.5" fill="#FF6200"/>
+            </svg>
+          </div>
+          <span class="ep04-pilar-card__number" aria-hidden="true">02</span>
+          <h3 class="ep04-pilar-card__name">CONTEXTO</h3>
+        </div>
+        <p class="ep04-pilar-card__body">
           Forneça o cenário, o histórico e as restrições. A IA executa um erro com a mesma
           velocidade que executa um acerto — a diferença está no contexto que você oferece.
         </p>
-        <p class="ep04-pilar__explanation">
+        <p class="ep04-pilar-card__explanation">
           Contexto inclui: qual sistema está sendo modificado, quais são as regras de negócio
           relevantes, quais decisões já foram tomadas e por quê, e quais são os limites que
           não podem ser ultrapassados. Quanto mais você tratar a IA como um colaborador que
           acabou de entrar no projeto, mais assertivo será o resultado.
         </p>
-        <div class="ep04-pilar__example" aria-label="Dica sobre contexto">
+        <div class="ep04-pilar-card__example" aria-label="Dica sobre contexto">
           <p class="ep04-example__dica">
             <strong>Dica prática:</strong> Antes de cada tarefa significativa, passe ao Devin:
             (1) o que o sistema faz, (2) o que você está tentando mudar, (3) o que não pode quebrar.
@@ -527,21 +640,29 @@
       </article>
 
       <!-- Pilar 03 — Exemplos -->
-      <article class="ep04-pilar js-pillar-card" role="listitem" aria-label="Pilar 3: Exemplos">
-        <header class="ep04-pilar__header">
-          <span class="ep04-pilar__number" aria-hidden="true">03</span>
-          <h3 class="ep04-pilar__name">EXEMPLOS</h3>
-        </header>
-        <p class="ep04-pilar__body">
+      <article class="ep04-pilar-card js-pillar-card" role="listitem" aria-label="Pilar 3: Exemplos" data-number="03">
+        <div class="ep04-pilar-card__header">
+          <div class="ep04-pilar-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#FF6200" stroke-width="1.5" fill="none"/>
+              <rect x="12" y="3" width="7" height="7" rx="1.5" stroke="#FF6200" stroke-width="1.5" fill="none"/>
+              <rect x="3" y="12" width="7" height="7" rx="1.5" stroke="#FF6200" stroke-width="1.5" fill="none"/>
+              <path d="M14.5 14.5l4 4M14.5 18.5l4-4" stroke="#FF6200" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="ep04-pilar-card__number" aria-hidden="true">03</span>
+          <h3 class="ep04-pilar-card__name">EXEMPLOS</h3>
+        </div>
+        <p class="ep04-pilar-card__body">
           Mostrar é mais eficiente do que explicar. Sempre que possível, inclua um exemplo
           do resultado esperado — a IA aprende por padrão.
         </p>
-        <p class="ep04-pilar__explanation">
+        <p class="ep04-pilar-card__explanation">
           Em vez de descrever o formato da saída, mostre um caso concreto. Dar um exemplo
           é o atalho mais eficiente para alinhar expectativas. A IA vai deduzir o padrão
           e replicar — economizando iterações de ajuste.
         </p>
-        <div class="ep04-pilar__example" aria-label="Como usar exemplos">
+        <div class="ep04-pilar-card__example" aria-label="Como usar exemplos">
           <p class="ep04-example__dica">
             <strong>Como aplicar:</strong> Ao pedir um relatório, cole um exemplo de
             relatório bem-feito. Ao pedir refatoração, mostre um trecho já refatorado como
@@ -551,22 +672,28 @@
       </article>
 
       <!-- Pilar 04 — Iteração -->
-      <article class="ep04-pilar js-pillar-card" role="listitem" aria-label="Pilar 4: Iteração">
-        <header class="ep04-pilar__header">
-          <span class="ep04-pilar__number" aria-hidden="true">04</span>
-          <h3 class="ep04-pilar__name">ITERAÇÃO</h3>
-        </header>
-        <p class="ep04-pilar__body">
+      <article class="ep04-pilar-card js-pillar-card" role="listitem" aria-label="Pilar 4: Iteração" data-number="04">
+        <div class="ep04-pilar-card__header">
+          <div class="ep04-pilar-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M19 11A8 8 0 113 11" stroke="#FF6200" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M19 7v4h-4" stroke="#FF6200" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="ep04-pilar-card__number" aria-hidden="true">04</span>
+          <h3 class="ep04-pilar-card__name">ITERAÇÃO</h3>
+        </div>
+        <p class="ep04-pilar-card__body">
           Encare a comunicação com a IA como um ciclo, não como um disparo único.
           Refine, ajuste, recalibre. Nenhum prompt perfeito sai de primeira.
         </p>
-        <p class="ep04-pilar__explanation">
+        <p class="ep04-pilar-card__explanation">
           Assim como nenhuma conversa importante acontece em uma única fala, instrução e
           resposta de IA são um diálogo. Se o resultado não for o ideal, analise onde a
           instrução falhou — e tente novamente com mais precisão. O problema raramente
           é a ferramenta; quase sempre é o contexto ou a clareza.
         </p>
-        <div class="ep04-pilar__example" aria-label="Postura correta de iteração">
+        <div class="ep04-pilar-card__example" aria-label="Postura correta de iteração">
           <p class="ep04-example__label">✅ Postura correta</p>
           <p class="ep04-example__text">
             <em>"O resultado não foi o esperado. O que no meu prompt causou isso?"</em>
@@ -576,8 +703,8 @@
         </div>
       </article>
 
-    </div><!-- /.ep04-pilares -->
-  </div><!-- /.devin-container -->
+    </div><!-- /.ep04-pilares-grid -->
+  </div><!-- /.devin-container--editorial -->
 </section>
 
 <!-- ============================================================
@@ -586,31 +713,107 @@
 <section class="devin-section ep05-anatomia" id="anatomia-devin"
          data-section="anatomia" data-state="technical"
          aria-label="Anatomia do Devin — Leitura cognitiva" data-density="high">
-  <div class="devin-container">
+  <div class="devin-container--editorial">
 
-    <header class="ep05-anatomia__header">
-      <p class="ep05-anatomia__chapeu">Quem é o Devin? Uma leitura de sua cognição.</p>
-      <h2 class="ep05-anatomia__title">Um Engenheiro de Software Autônomo</h2>
+    <!-- INTRO HERO -->
+    <div class="ep05-intro-hero">
+      <p class="devin-eyebrow ep05-anatomia__chapeu">ANATOMIA DO DEVIN · ÉPICO 05</p>
+      <h2 class="ep05-anatomia__title ep-section-title">Um Engenheiro de Software Autônomo</h2>
       <p class="ep05-anatomia__subtitle">
         Entender seus limites e pontos fortes é essencial para colaboração eficaz.
       </p>
-    </header>
+    </div>
 
-    <div class="ep05-funcoes" role="list">
+    <!-- SVG — MAPA COGNITIVO (Blueprint-style) -->
+    <figure class="ep05-cognitive-map" aria-label="Arquitetura cognitiva do Devin">
+      <svg class="ep05-cognitive-map__svg" viewBox="0 0 720 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="cog-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(0,194,168,0.6)"/>
+          </marker>
+          <marker id="cog-arrow-fb" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,98,0,0.5)"/>
+          </marker>
+          <linearGradient id="cog-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00C2A8" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#FF6200" stop-opacity="0.4"/>
+          </linearGradient>
+        </defs>
 
-      <!-- A: O que Devin vê -->
-      <article class="ep05-funcao js-anatomy-item" role="listitem"
-               aria-label="O que Devin vê">
-        <div class="ep05-funcao__indicator" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <circle cx="10" cy="10" r="3" fill="#FF6200"/>
-            <circle cx="10" cy="10" r="7" stroke="#FF6200" stroke-width="1.5" fill="none" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="ep05-funcao__content">
-          <h3 class="ep05-funcao__subtitulo">O QUE DEVIN VÊ</h3>
-          <p class="ep05-funcao__label">Entrada: Contexto visual e textual</p>
-          <p class="ep05-funcao__body">
+        <!-- Linha base -->
+        <line x1="60" y1="80" x2="660" y2="80" stroke="url(#cog-line-grad)" stroke-width="1"/>
+
+        <!-- Nó: CONTEXTO -->
+        <g>
+          <rect x="10" y="55" width="96" height="50" rx="10" fill="rgba(0,194,168,0.06)" stroke="rgba(0,194,168,0.35)" stroke-width="1.5"/>
+          <text x="58" y="77" text-anchor="middle" fill="#00C2A8" font-size="8.5" font-family="Inter" font-weight="700" letter-spacing="0.08em">CONTEXTO</text>
+          <text x="58" y="93" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Entrada</text>
+          <animate attributeName="opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- Seta 1 -->
+        <line x1="106" y1="80" x2="158" y2="80" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" marker-end="url(#cog-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- Nó: RACIOCÍNIO -->
+        <g>
+          <rect x="160" y="55" width="100" height="50" rx="10" fill="rgba(0,194,168,0.06)" stroke="rgba(0,194,168,0.3)" stroke-width="1.5"/>
+          <text x="210" y="77" text-anchor="middle" fill="#00C2A8" font-size="8.5" font-family="Inter" font-weight="700" letter-spacing="0.08em">RACIOCÍNIO</text>
+          <text x="210" y="93" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">ReAct Loop</text>
+        </g>
+
+        <!-- Seta 2 -->
+        <line x1="260" y1="80" x2="312" y2="80" stroke="rgba(0,194,168,0.4)" stroke-width="1.5" marker-end="url(#cog-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="2.3s" repeatCount="indefinite" begin="0.5s"/>
+        </line>
+
+        <!-- Nó: PLANEJAMENTO -->
+        <g>
+          <rect x="314" y="55" width="104" height="50" rx="10" fill="rgba(0,194,168,0.06)" stroke="rgba(0,194,168,0.3)" stroke-width="1.5"/>
+          <text x="366" y="77" text-anchor="middle" fill="#00C2A8" font-size="8.5" font-family="Inter" font-weight="700" letter-spacing="0.08em">PLANEJAMENTO</text>
+          <text x="366" y="93" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Sequência</text>
+        </g>
+
+        <!-- Seta 3 -->
+        <line x1="418" y1="80" x2="468" y2="80" stroke="rgba(255,98,0,0.35)" stroke-width="1.5" marker-end="url(#cog-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="2.7s" repeatCount="indefinite" begin="1s"/>
+        </line>
+
+        <!-- Nó: EXECUÇÃO -->
+        <g>
+          <rect x="470" y="55" width="96" height="50" rx="10" fill="rgba(255,98,0,0.06)" stroke="rgba(255,98,0,0.4)" stroke-width="1.5"/>
+          <text x="518" y="77" text-anchor="middle" fill="#FF6200" font-size="8.5" font-family="Inter" font-weight="700" letter-spacing="0.08em">EXECUÇÃO</text>
+          <text x="518" y="93" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Código + Testes</text>
+        </g>
+
+        <!-- Seta 4 -->
+        <line x1="566" y1="80" x2="616" y2="80" stroke="rgba(255,98,0,0.35)" stroke-width="1.5" marker-end="url(#cog-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="3.1s" repeatCount="indefinite" begin="1.5s"/>
+        </line>
+
+        <!-- Nó: FEEDBACK -->
+        <g>
+          <rect x="618" y="55" width="92" height="50" rx="10" fill="rgba(255,98,0,0.08)" stroke="rgba(255,98,0,0.45)" stroke-width="1.5"/>
+          <text x="664" y="77" text-anchor="middle" fill="#FF6200" font-size="8.5" font-family="Inter" font-weight="700" letter-spacing="0.08em">FEEDBACK</text>
+          <text x="664" y="93" text-anchor="middle" fill="#64748B" font-size="7" font-family="Inter">Verificação</text>
+        </g>
+
+        <!-- Arco de retorno (Feedback → Contexto) -->
+        <path d="M 664,105 Q 664,148 58,148 Q 10,148 10,105" fill="none" stroke="rgba(255,98,0,0.2)" stroke-width="1" stroke-dasharray="4 5" marker-end="url(#cog-arrow-fb)"/>
+      </svg>
+      <figcaption class="ep05-cognitive-map__caption">Ciclo cognitivo contínuo — cada execução retroalimenta o contexto do próximo ciclo.</figcaption>
+    </figure>
+
+    <!-- BLOCOS ZIG-ZAG -->
+    <div class="ep05-blocks">
+
+      <!-- Bloco A — O que Devin Vê (left) -->
+      <article class="ep05-block ep05-block--left js-anatomy-item" aria-label="O que Devin vê">
+        <div class="ep05-block__content">
+          <p class="ep05-block__label">Entrada · Contexto visual e textual</p>
+          <h3 class="ep05-block__title">O QUE DEVIN VÊ</h3>
+          <p class="ep05-block__body">
             Devin lê arquivos, histórico de commits, output de terminal, conversas anteriores.
             Ele trabalha com o que você forneceu — sem acessar bases externas ou fazer chamadas
             de API para "buscar conhecimento". Tudo que ele sabe vem do que está no contexto
@@ -618,23 +821,25 @@
             importante que você controla.
           </p>
         </div>
-      </article>
-
-      <!-- B: Como Devin processa -->
-      <article class="ep05-funcao js-anatomy-item" role="listitem"
-               aria-label="Como Devin processa">
-        <div class="ep05-funcao__indicator" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M4 10h12M10 4l6 6-6 6" stroke="#FF6200" stroke-width="1.5"
-                  stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="ep05-block__visual" aria-hidden="true">
+          <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="140" height="120" rx="12" stroke="rgba(0,194,168,0.15)" stroke-width="1" fill="rgba(0,194,168,0.03)"/>
+            <rect x="36" y="38" width="108" height="8" rx="4" fill="rgba(0,194,168,0.12)"/>
+            <rect x="36" y="54" width="80" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="36" y="68" width="96" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="36" y="82" width="60" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <rect x="36" y="100" width="108" height="8" rx="4" fill="rgba(0,194,168,0.08)"/>
+            <rect x="36" y="116" width="72" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <circle cx="152" cy="32" r="6" fill="rgba(0,194,168,0.2)" stroke="rgba(0,194,168,0.5)" stroke-width="1">
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
           </svg>
         </div>
-        <div class="ep05-funcao__content">
-          <h3 class="ep05-funcao__subtitulo">COMO DEVIN PROCESSA</h3>
-          <p class="ep05-funcao__label">Cognição: <span class="devin-term" data-tooltip="Ciclo cognitivo: Observar → Raciocinar → Agir → Verificar em loop contínuo">Ciclo ReAct</span> — Observar, Raciocinar, Agir, Verificar</p>
-          <p class="ep05-funcao__body">
-            Devin não "acha a resposta" em um banco de memória gigante. Ele opera em ciclos: <strong>Observa</strong> o contexto e o estado atual do sistema; <strong>Raciocina</strong> sobre a melhor sequência de ações; <strong>Age</strong> — escreve código, executa comandos, modifica arquivos; e <strong>Verifica</strong> o resultado antes de avançar. Esse loop tight de feedback permite corrigir erros no caminho, não depois. É pensamento sequencial com validação contínua — o oposto de um oráculo que gera resposta sem verificação.
-          </p>
+      </article>
+
+      <!-- Bloco B — Como Devin Processa (right — ReAct) -->
+      <article class="ep05-block ep05-block--right js-anatomy-item" aria-label="Como Devin processa">
+        <div class="ep05-block__visual" aria-hidden="true">
           <div class="ep05-react-loop" id="react-loop-diagram" aria-label="Ciclo ReAct circular">
             <svg class="ep05-react-loop__svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -670,59 +875,67 @@
                     stroke-width="1.5" fill="none" marker-end="url(#react-arrow)"/>
             </svg>
           </div>
-          <p class="ep05-funcao__body" style="margin-top: 1rem; color: #64748B; font-size: 0.9rem;">
+        </div>
+        <div class="ep05-block__content">
+          <p class="ep05-block__label">Cognição · <span class="devin-term" data-tooltip="Ciclo cognitivo: Observar → Raciocinar → Agir → Verificar em loop contínuo">Ciclo ReAct</span> — Observar, Raciocinar, Agir, Verificar</p>
+          <h3 class="ep05-block__title">COMO DEVIN PROCESSA</h3>
+          <p class="ep05-block__body">
+            Devin não "acha a resposta" em um banco de memória gigante. Ele opera em ciclos: <strong>Observa</strong> o contexto e o estado atual do sistema; <strong>Raciocina</strong> sobre a melhor sequência de ações; <strong>Age</strong> — escreve código, executa comandos, modifica arquivos; e <strong>Verifica</strong> o resultado antes de avançar. Esse loop tight de feedback permite corrigir erros no caminho, não depois. É pensamento sequencial com validação contínua — o oposto de um oráculo que gera resposta sem verificação.
+          </p>
+          <p class="ep05-block__note">
             É por isso que o Devin cria um PR com testes passando — não uma resposta com código que "parece certo". Cada ação tem consequência verificável no mundo real.
           </p>
         </div>
       </article>
 
-      <!-- C: O que Devin devolve -->
-      <article class="ep05-funcao js-anatomy-item" role="listitem"
-               aria-label="O que Devin devolve">
-        <div class="ep05-funcao__indicator" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <rect x="3" y="3" width="14" height="14" rx="2" stroke="#FF6200"
-                  stroke-width="1.5" fill="none"/>
-            <path d="M7 10h6M10 7v6" stroke="#FF6200" stroke-width="1.5"
-                  stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="ep05-funcao__content">
-          <h3 class="ep05-funcao__subtitulo">O QUE DEVIN DEVOLVE</h3>
-          <p class="ep05-funcao__label">Saída: Código, testes, documentação, reflexão</p>
-          <p class="ep05-funcao__body">
+      <!-- Bloco C — O que Devin Devolve (left) -->
+      <article class="ep05-block ep05-block--left js-anatomy-item" aria-label="O que Devin devolve">
+        <div class="ep05-block__content">
+          <p class="ep05-block__label">Saída · Código, testes, documentação, reflexão</p>
+          <h3 class="ep05-block__title">O QUE DEVIN DEVOLVE</h3>
+          <p class="ep05-block__body">
             Devin não apenas escreve código — também fornece testes que validam comportamento,
             documentação que explica decisões, e reflexão sobre onde teve incerteza. Você recebe
             não apenas a solução, mas evidência de que funcionou. Essa transparência é estrutural:
             você pode auditar o raciocínio, não apenas aceitar o resultado.
           </p>
         </div>
-      </article>
-
-      <!-- D: Limites reais -->
-      <article class="ep05-funcao ep05-funcao--limites js-anatomy-item" role="listitem"
-               aria-label="Limites reais do Devin">
-        <div class="ep05-funcao__indicator ep05-funcao__indicator--warning" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 3L17 16H3L10 3Z" stroke="#FF8A3D" stroke-width="1.5"
-                  stroke-linejoin="round" fill="none"/>
-            <path d="M10 8v4M10 13.5v.5" stroke="#FF8A3D" stroke-width="1.5"
-                  stroke-linecap="round"/>
+        <div class="ep05-block__visual" aria-hidden="true">
+          <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="140" height="120" rx="12" stroke="rgba(255,98,0,0.15)" stroke-width="1" fill="rgba(255,98,0,0.03)"/>
+            <path d="M50 60l12 12 28-28" stroke="#FF6200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+            <rect x="90" y="52" width="56" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+            <rect x="90" y="66" width="40" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+            <path d="M50 100l12 12 28-28" stroke="rgba(0,194,168,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="90" y="92" width="56" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+            <rect x="90" y="106" width="40" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
           </svg>
         </div>
-        <div class="ep05-funcao__content">
-          <h3 class="ep05-funcao__subtitulo ep05-funcao__subtitulo--warning">LIMITES REAIS</h3>
-          <p class="ep05-funcao__label ep05-funcao__label--warning">O que Devin não consegue — e por que isso importa</p>
-          <p class="ep05-funcao__body">
+      </article>
+
+      <!-- Bloco D — Limites Reais (right, warning) -->
+      <article class="ep05-block ep05-block--right ep05-block--warning js-anatomy-item" aria-label="Limites reais do Devin">
+        <div class="ep05-block__visual" aria-hidden="true">
+          <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M90 24L164 140H16L90 24Z" stroke="rgba(255,138,61,0.35)" stroke-width="1.5" stroke-linejoin="round" fill="rgba(255,138,61,0.05)"/>
+            <path d="M90 72v32M90 112v8" stroke="#FF8A3D" stroke-width="2.5" stroke-linecap="round" opacity="0.7">
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </div>
+        <div class="ep05-block__content">
+          <p class="ep05-block__label ep05-block__label--warning">O que Devin não consegue — e por que isso importa</p>
+          <h3 class="ep05-block__title ep05-block__title--warning">LIMITES REAIS</h3>
+          <p class="ep05-block__body">
             Devin não é seu gerente de projeto. Não entende prioridades de negócio profundas.
             Não é seu arquiteto — decisões sobre trade-offs arquiteturais continuam sendo suas.
             Não é seu juiz — não pode dizer "em sua empresa, a forma correta é X". Tudo isso
             requer contexto humano que vai além de código.
           </p>
-          <p class="ep05-funcao__body" style="margin-top: 0.75rem; color: #FF8A3D; font-size: 0.9rem;">
+          <p class="ep05-block__warning-note">
             ⚠ Autonomia sem governança é o risco real. Um agente sem limites claros age — e as consequências são reais. Definir onde o Devin age e onde você decide é parte do trabalho do orquestrador soberano.
           </p>
-          <ul class="ep05-funcao__lista" aria-label="O que Devin não faz">
+          <ul class="ep05-block__list" aria-label="O que Devin não faz">
             <li>Não governa arquitetura <span class="ep05-responsavel">(você governa)</span></li>
             <li>Não decide sobre release <span class="ep05-responsavel">(você decide)</span></li>
             <li>Não entende política organizacional <span class="ep05-responsavel">(você navega)</span></li>
@@ -731,24 +944,17 @@
         </div>
       </article>
 
-      <!-- E: Pontos fortes -->
-      <article class="ep05-funcao ep05-funcao--forcas js-anatomy-item" role="listitem"
-               aria-label="Pontos fortes do Devin">
-        <div class="ep05-funcao__indicator" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M4 10l4 4 8-8" stroke="#FF6200" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="ep05-funcao__content">
-          <h3 class="ep05-funcao__subtitulo">PONTOS FORTES</h3>
-          <p class="ep05-funcao__label">Onde Devin excele</p>
-          <p class="ep05-funcao__body">
+      <!-- Bloco E — Pontos Fortes (left) -->
+      <article class="ep05-block ep05-block--left ep05-block--strength js-anatomy-item" aria-label="Pontos fortes do Devin">
+        <div class="ep05-block__content">
+          <p class="ep05-block__label">Onde Devin excele</p>
+          <h3 class="ep05-block__title ep05-block__title--strength">PONTOS FORTES</h3>
+          <p class="ep05-block__body">
             Refatoração sem receio de quebra — ele testa tudo. Documentação de código exaustiva.
             Iteração rápida sem ego ("fiz assim, mas posso fazer diferente se preferir").
             Integração com ferramentas de build e test. Análise de erros precisa e sistemática.
           </p>
-          <ul class="ep05-funcao__lista ep05-funcao__lista--checks" aria-label="Especialidades do Devin">
+          <ul class="ep05-block__list ep05-block__list--checks" aria-label="Especialidades do Devin">
             <li>Refatoração de alto risco</li>
             <li>Testes exaustivos com edge cases</li>
             <li>Documentação de código e decisões</li>
@@ -756,10 +962,17 @@
             <li>Execução confiável e verificável</li>
           </ul>
         </div>
+        <div class="ep05-block__visual" aria-hidden="true">
+          <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="90" cy="80" r="54" stroke="rgba(255,98,0,0.12)" stroke-width="1" fill="none" stroke-dasharray="3 5"/>
+            <circle cx="90" cy="80" r="38" stroke="rgba(255,98,0,0.2)" stroke-width="1" fill="rgba(255,98,0,0.04)"/>
+            <path d="M68 80l14 14 30-30" stroke="#FF6200" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+          </svg>
+        </div>
       </article>
 
-    </div><!-- /.ep05-funcoes -->
-  </div><!-- /.devin-container -->
+    </div><!-- /.ep05-blocks -->
+  </div><!-- /.devin-container--editorial -->
 </section>
 
 <!-- ============================================================
@@ -767,127 +980,171 @@
      ============================================================ -->
 <section class="devin-section devin-section--dark ep05-contexto" id="contexto-persistente"
          data-section="contexto" aria-label="Contexto Persistente — Governança de Memória" data-density="high">
-  <div class="devin-container">
+  <div class="devin-container--editorial">
 
-    <header class="ep05-contexto__header">
-      <p class="ep05-contexto__label">GOVERNANÇA DE MEMÓRIA</p>
-      <h2 class="ep05-contexto__title">Como estruturar contexto para máxima eficiência.</h2>
+    <!-- INTRODUÇÃO -->
+    <header class="ep05-mem-intro">
+      <p class="devin-eyebrow ep05-contexto__label">GOVERNANÇA DE MEMÓRIA · ÉPICO 05</p>
+      <h2 class="ep05-contexto__title ep-section-title">Como estruturar contexto para máxima eficiência.</h2>
     </header>
 
-    <article class="ep05-contexto__narrativa">
-      <p>
-        Contexto em uma conversa com a IA é como memória viva — persiste enquanto a janela
-        de conversa está aberta. Quanto maior a janela de contexto (tokens disponíveis), mais
-        história o Devin pode carregar e usar para decisões mais precisas.
-      </p>
-      <p>
-        Mas contexto bagunçado causa alucinação — o modelo tenta fazer conexões em informação
-        fragmentada e incompatível. Contexto governado causa precisão — o modelo entende a
-        estrutura da informação e a usa corretamente para gerar soluções alinhadas.
-      </p>
-      <p>
-        Pense no contexto como o <em>briefing que você dá a um desenvolvedor sênior no primeiro dia</em>. Se for vago, ele vai improvisar. Se for preciso — arquitetura, regras de negócio, restrições, exemplos — ele vai entregar alinhado desde o primeiro PR.
-      </p>
-      <p>
-        Em escala de time, isso evolui para o que chamamos de <strong>Context Lakes</strong>: repositórios estruturados de conhecimento corporativo que qualquer agente pode consumir — padrões de código, decisões arquiteturais, políticas de segurança, particularidades do negócio. O conhecimento para de morar na cabeça do desenvolvedor sênior e começa a escalar para o time inteiro.
-      </p>
-    </article>
+    <!-- SVG PIPELINE PRINCIPAL -->
+    <figure class="ep05-mem-pipeline" aria-label="Pipeline de memória: do contexto à recuperação">
+      <svg class="ep05-mem-pipeline__svg" viewBox="0 0 700 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="pipe-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="rgba(255,98,0,0.55)"/>
+          </marker>
+          <linearGradient id="pipe-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#002D62" stop-opacity="0"/>
+            <stop offset="20%" stop-color="#1E3A5F" stop-opacity="0.8"/>
+            <stop offset="80%" stop-color="#FF6200" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#FF6200" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
 
-    <div class="devin-disclosure">
-    <div class="ep05-estrategias" role="list">
+        <!-- Linha de progresso base -->
+        <rect x="0" y="42" width="700" height="2" fill="url(#pipe-grad)" rx="1"/>
+
+        <!-- Nó 1: CONTEXTO -->
+        <rect x="10" y="20" width="140" height="48" rx="10" fill="rgba(0,45,98,0.6)" stroke="rgba(0,194,168,0.4)" stroke-width="1.5"/>
+        <text x="80" y="41" text-anchor="middle" fill="#00C2A8" font-size="9" font-family="Inter" font-weight="700" letter-spacing="0.1em">CONTEXTO</text>
+        <text x="80" y="56" text-anchor="middle" fill="#64748B" font-size="7.5" font-family="Inter">Entrada estruturada</text>
+
+        <!-- Seta 1 -->
+        <line x1="150" y1="44" x2="185" y2="44" stroke="rgba(255,98,0,0.4)" stroke-width="1.5" marker-end="url(#pipe-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.7;0.2" dur="1.8s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- Nó 2: INTERPRETAÇÃO -->
+        <rect x="187" y="20" width="150" height="48" rx="10" fill="rgba(0,45,98,0.6)" stroke="rgba(0,194,168,0.3)" stroke-width="1.5"/>
+        <text x="262" y="41" text-anchor="middle" fill="#00C2A8" font-size="9" font-family="Inter" font-weight="700" letter-spacing="0.1em">INTERPRETAÇÃO</text>
+        <text x="262" y="56" text-anchor="middle" fill="#64748B" font-size="7.5" font-family="Inter">Raciocínio ReAct</text>
+
+        <!-- Seta 2 -->
+        <line x1="337" y1="44" x2="372" y2="44" stroke="rgba(255,98,0,0.4)" stroke-width="1.5" marker-end="url(#pipe-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.7;0.2" dur="1.8s" repeatCount="indefinite" begin="0.6s"/>
+        </line>
+
+        <!-- Nó 3: PERSISTÊNCIA -->
+        <rect x="374" y="20" width="148" height="48" rx="10" fill="rgba(0,45,98,0.6)" stroke="rgba(255,98,0,0.35)" stroke-width="1.5"/>
+        <text x="448" y="41" text-anchor="middle" fill="#FF6200" font-size="9" font-family="Inter" font-weight="700" letter-spacing="0.1em">PERSISTÊNCIA</text>
+        <text x="448" y="56" text-anchor="middle" fill="#64748B" font-size="7.5" font-family="Inter">Context Lake</text>
+
+        <!-- Seta 3 -->
+        <line x1="522" y1="44" x2="557" y2="44" stroke="rgba(255,98,0,0.4)" stroke-width="1.5" marker-end="url(#pipe-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.7;0.2" dur="1.8s" repeatCount="indefinite" begin="1.2s"/>
+        </line>
+
+        <!-- Nó 4: RECUPERAÇÃO -->
+        <rect x="559" y="20" width="136" height="48" rx="10" fill="rgba(0,45,98,0.6)" stroke="rgba(255,98,0,0.5)" stroke-width="1.5"/>
+        <text x="627" y="41" text-anchor="middle" fill="#FF6200" font-size="9" font-family="Inter" font-weight="700" letter-spacing="0.1em">RECUPERAÇÃO</text>
+        <text x="627" y="56" text-anchor="middle" fill="#64748B" font-size="7.5" font-family="Inter">Output preciso</text>
+      </svg>
+      <figcaption class="ep05-mem-pipeline__caption">Pipeline de memória governada — da entrada estruturada ao output preciso.</figcaption>
+    </figure>
+
+    <!-- CAMADAS DE CONTEXTO — 3 Memory Layer Cards -->
+    <div class="ep05-mem-layers" role="list">
 
       <!-- Estratégia 1: Imersiva -->
-      <article class="ep05-estrategia js-anatomy-item" role="listitem"
-               aria-label="Estratégia de contexto imersivo">
-        <div class="ep05-estrategia__tag">IMERSIVA</div>
-        <h3 class="ep05-estrategia__nome">Mergulho profundo em projeto novo</h3>
-        <p class="ep05-estrategia__corpo">
+      <article class="ep05-mem-card js-anatomy-item" role="listitem" aria-label="Estratégia de contexto imersivo">
+        <div class="ep05-mem-card__tag">IMERSIVA</div>
+        <h3 class="ep05-mem-card__nome">Mergulho profundo em projeto novo</h3>
+        <p class="ep05-mem-card__campo">
           <strong>Cenário:</strong> Projeto novo, Devin não conhece a base de código.
         </p>
-        <p class="ep05-estrategia__estrutura">
+        <p class="ep05-mem-card__campo">
           <strong>Estrutura:</strong> Código walkthrough → explicação de arquitetura →
           constraints → exemplos reais de padrão.
         </p>
-        <p class="ep05-estrategia__resultado">
+        <p class="ep05-mem-card__campo">
           <strong>Resultado:</strong> Devin entende nuances, evita erros de contexto,
           propõe soluções alinhadas com padrões existentes.
         </p>
-        <p class="ep05-estrategia__meta">~2–3 mil tokens · Contexto amplo</p>
+        <p class="ep05-mem-card__meta">~2–3 mil tokens · Contexto amplo</p>
       </article>
 
       <!-- Estratégia 2: Técnica -->
-      <article class="ep05-estrategia js-anatomy-item" role="listitem"
-               aria-label="Estratégia de contexto técnico">
-        <div class="ep05-estrategia__tag">TÉCNICA</div>
-        <h3 class="ep05-estrategia__nome">Task específica, contexto minimal</h3>
-        <p class="ep05-estrategia__corpo">
+      <article class="ep05-mem-card js-anatomy-item" role="listitem" aria-label="Estratégia de contexto técnico">
+        <div class="ep05-mem-card__tag ep05-mem-card__tag--tecnica">TÉCNICA</div>
+        <h3 class="ep05-mem-card__nome">Task específica, contexto minimal</h3>
+        <p class="ep05-mem-card__campo">
           <strong>Cenário:</strong> Devin já conhece o projeto; você tem uma task bem definida.
         </p>
-        <p class="ep05-estrategia__estrutura">
+        <p class="ep05-mem-card__campo">
           <strong>Estrutura:</strong> Apenas arquivo relevante → erro específico →
           critério de sucesso.
         </p>
-        <p class="ep05-estrategia__resultado">
+        <p class="ep05-mem-card__campo">
           <strong>Resultado:</strong> Velocidade máxima, execução precisa em escopo claro,
           economia de tokens.
         </p>
-        <p class="ep05-estrategia__meta">~500–800 tokens · Foco cirúrgico</p>
+        <p class="ep05-mem-card__meta">~500–800 tokens · Foco cirúrgico</p>
       </article>
 
       <!-- Estratégia 3: Iterativa -->
-      <article class="ep05-estrategia js-anatomy-item" role="listitem"
-               aria-label="Estratégia de contexto iterativo">
-        <div class="ep05-estrategia__tag">ITERATIVA</div>
-        <h3 class="ep05-estrategia__nome">Refinamento progressivo via feedback</h3>
-        <p class="ep05-estrategia__corpo">
+      <article class="ep05-mem-card js-anatomy-item" role="listitem" aria-label="Estratégia de contexto iterativo">
+        <div class="ep05-mem-card__tag ep05-mem-card__tag--iterativa">ITERATIVA</div>
+        <h3 class="ep05-mem-card__nome">Refinamento progressivo via feedback</h3>
+        <p class="ep05-mem-card__campo">
           <strong>Cenário:</strong> Conversa longa onde feedback refina progressivamente o resultado.
         </p>
-        <p class="ep05-estrategia__estrutura">
+        <p class="ep05-mem-card__campo">
           <strong>Estrutura:</strong> Incremento mínimo de contexto por turno →
           feedback do resultado anterior → refinamento.
         </p>
-        <p class="ep05-estrategia__resultado">
+        <p class="ep05-mem-card__campo">
           <strong>Resultado:</strong> Aprendizado compartilhado, economia de tokens,
           qualidade progressivamente melhor.
         </p>
-        <p class="ep05-estrategia__meta">Múltiplas trocas curtas · Ciclo contínuo</p>
+        <p class="ep05-mem-card__meta">Múltiplas trocas curtas · Ciclo contínuo</p>
       </article>
 
-    </div><!-- /.ep05-estrategias -->
-      <div class="devin-disclosure__mask"></div>
-    </div><!-- /.devin-disclosure -->
-    <button class="devin-disclosure__toggle" type="button" aria-expanded="false">Ver mais</button>
+    </div><!-- /.ep05-mem-layers -->
 
-    <figure class="ep05-diagrama" aria-label="Diagrama do ciclo de contexto">
-      <div class="ep05-diagrama__ciclo" role="img"
-           aria-label="Ciclo: Contexto Inicial → Devin Processa → Output → Feedback → Próximo Ciclo">
-        <div class="ep05-diagrama__etapa">
-          <span class="ep05-diagrama__etapa-label">Contexto Inicial</span>
-        </div>
-        <div class="ep05-diagrama__seta" aria-hidden="true">→</div>
-        <div class="ep05-diagrama__etapa">
-          <span class="ep05-diagrama__etapa-label">Devin Processa</span>
-        </div>
-        <div class="ep05-diagrama__seta" aria-hidden="true">→</div>
-        <div class="ep05-diagrama__etapa">
-          <span class="ep05-diagrama__etapa-label">Output</span>
-        </div>
-        <div class="ep05-diagrama__seta" aria-hidden="true">→</div>
-        <div class="ep05-diagrama__etapa ep05-diagrama__etapa--accent">
-          <span class="ep05-diagrama__etapa-label">Feedback</span>
-        </div>
-        <div class="ep05-diagrama__seta" aria-hidden="true">↺</div>
-        <div class="ep05-diagrama__etapa ep05-diagrama__etapa--loop">
-          <span class="ep05-diagrama__etapa-label">Próximo Ciclo</span>
-        </div>
+    <!-- FLUXO OPERACIONAL -->
+    <div class="ep05-mem-flow" role="img" aria-label="Ciclo: Contexto Inicial → Devin Processa → Output → Feedback → Próximo Ciclo">
+      <div class="ep05-mem-flow__etapa">Contexto Inicial</div>
+      <div class="ep05-mem-flow__seta" aria-hidden="true">→</div>
+      <div class="ep05-mem-flow__etapa">Devin Processa</div>
+      <div class="ep05-mem-flow__seta" aria-hidden="true">→</div>
+      <div class="ep05-mem-flow__etapa">Output</div>
+      <div class="ep05-mem-flow__seta" aria-hidden="true">→</div>
+      <div class="ep05-mem-flow__etapa ep05-mem-flow__etapa--accent">Feedback</div>
+      <div class="ep05-mem-flow__seta" aria-hidden="true">↺</div>
+      <div class="ep05-mem-flow__etapa ep05-mem-flow__etapa--loop">Próximo Ciclo</div>
+    </div>
+    <p class="ep05-mem-flow__legenda">
+      Contexto governado permite ciclos rápidos e precisos.
+      Feedback refina contexto para o próximo ciclo — qualidade cresce a cada iteração.
+    </p>
+
+    <!-- ATTENTION BLOCKS — narrativa editorial -->
+    <div class="ep05-mem-attention">
+      <div class="ep05-mem-attention-card">
+        <p class="ep05-mem-attention-card__body">
+          Contexto em uma conversa com a IA é como memória viva — persiste enquanto a janela
+          de conversa está aberta. Quanto maior a janela de contexto (tokens disponíveis), mais
+          história o Devin pode carregar e usar para decisões mais precisas.
+        </p>
+        <p class="ep05-mem-attention-card__body" style="margin-top:1rem;">
+          Mas contexto bagunçado causa alucinação — o modelo tenta fazer conexões em informação
+          fragmentada e incompatível. Contexto governado causa precisão — o modelo entende a
+          estrutura da informação e a usa corretamente para gerar soluções alinhadas.
+        </p>
       </div>
-      <figcaption class="ep05-diagrama__legenda">
-        Contexto governado permite ciclos rápidos e precisos.
-        Feedback refina contexto para o próximo ciclo — qualidade cresce a cada iteração.
-      </figcaption>
-    </figure>
+      <div class="ep05-mem-attention-card">
+        <p class="ep05-mem-attention-card__body">
+          Pense no contexto como o <em>briefing que você dá a um desenvolvedor sênior no primeiro dia</em>. Se for vago, ele vai improvisar. Se for preciso — arquitetura, regras de negócio, restrições, exemplos — ele vai entregar alinhado desde o primeiro PR.
+        </p>
+        <p class="ep05-mem-attention-card__body" style="margin-top:1rem;">
+          Em escala de time, isso evolui para o que chamamos de <strong>Context Lakes</strong>: repositórios estruturados de conhecimento corporativo que qualquer agente pode consumir — padrões de código, decisões arquiteturais, políticas de segurança, particularidades do negócio. O conhecimento para de morar na cabeça do desenvolvedor sênior e começa a escalar para o time inteiro.
+        </p>
+      </div>
+    </div><!-- /.ep05-mem-attention -->
 
-  </div><!-- /.devin-container -->
+  </div><!-- /.devin-container--editorial -->
 </section>
 
 <!-- ============================================================
@@ -895,11 +1152,12 @@
      ============================================================ -->
 <section class="devin-section ep06-arsenais" id="skills-playbooks"
          data-section="arsenais" aria-label="Os três arsenais: Skills, Playbooks, Knowledge" data-density="high">
-  <div class="devin-container">
+  <div class="devin-container--editorial">
 
-    <header class="ep06-arsenais__header">
-      <p class="ep06-arsenais__eyebrow">OS TRÊS ARSENAIS</p>
-      <h2 class="ep06-arsenais__title">Do tático ao estratégico.</h2>
+    <!-- HEADLINE -->
+    <header class="ep06-headline">
+      <p class="devin-eyebrow ep06-arsenais__eyebrow">OS TRÊS ARSENAIS · ÉPICO 06</p>
+      <h2 class="ep06-arsenais__title ep-section-title">Do tático ao estratégico.</h2>
       <p class="ep06-arsenais__subtitle">
         Skills (o que você sabe fazer), Playbooks (como você faz) e Knowledge (o que você
         referencia) — os três eixos que governam toda colaboração eficaz com agentes de IA.
@@ -908,7 +1166,166 @@
       </p>
     </header>
 
-    <!-- TABS -->
+    <!-- 3 ARSENAIS — Resumo Visual em Colunas -->
+    <div class="ep06-arsenal-columns">
+
+      <div class="ep06-arsenal ep06-arsenal--skills" data-number="01">
+        <div class="ep06-arsenal__header">
+          <span class="ep06-arsenal__number">01</span>
+          <div class="ep06-arsenal__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 3v4M11 15v4M3 11h4m8 0h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="ep06-arsenal__title">Skills</h3>
+        </div>
+        <p class="ep06-arsenal__definition">O que você sabe fazer — especialidades onde Devin executa com excelência, sem supervisão linha por linha.</p>
+        <ul class="ep06-arsenal__list" aria-label="Skills disponíveis">
+          <li>Refatoração sem risco</li>
+          <li>Testes exaustivos</li>
+          <li>Documentação de código</li>
+          <li>Análise e debugging</li>
+          <li>Integração e orquestração</li>
+        </ul>
+      </div>
+
+      <div class="ep06-arsenal ep06-arsenal--playbooks" data-number="02">
+        <div class="ep06-arsenal__header">
+          <span class="ep06-arsenal__number">02</span>
+          <div class="ep06-arsenal__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="3" y="4" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M7 8h8M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="ep06-arsenal__title">Playbooks</h3>
+        </div>
+        <p class="ep06-arsenal__definition">Como você faz — padrões de colaboração reutilizáveis. Scripts conversacionais para trabalho recorrente.</p>
+        <ul class="ep06-arsenal__list" aria-label="Playbooks disponíveis">
+          <li>Code review iterativo</li>
+          <li>Onboarding de novo engenheiro</li>
+          <li>Migração de framework</li>
+        </ul>
+      </div>
+
+      <div class="ep06-arsenal ep06-arsenal--knowledge" data-number="03">
+        <div class="ep06-arsenal__header">
+          <span class="ep06-arsenal__number">03</span>
+          <div class="ep06-arsenal__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="9" y="2" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <rect x="2" y="14" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <rect x="15" y="14" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M11 6v5M11 11h-5.5v3M11 11h5.5v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="ep06-arsenal__title">Knowledge</h3>
+        </div>
+        <p class="ep06-arsenal__definition">O que você referencia — memória corporativa estruturada. Documentação viva que cresce com o projeto.</p>
+        <ul class="ep06-arsenal__list" aria-label="Tipos de knowledge">
+          <li>Arquitetura e padrões</li>
+          <li>Guias e convenções</li>
+          <li>Lições aprendidas e gotchas</li>
+        </ul>
+      </div>
+
+    </div><!-- /.ep06-arsenal-columns -->
+
+    <!-- MATRIX COMPARATIVA ESTRATÉGICA -->
+    <div class="ep06-matrix-wrap">
+      <table class="ep06-matrix" aria-label="Comparativo estratégico dos três arsenais">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Skills</th>
+            <th scope="col">Playbooks</th>
+            <th scope="col">Knowledge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Velocidade de execução</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+            <td class="ep06-matrix__cell--mid">Média</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+          </tr>
+          <tr>
+            <td>Profundidade de resultado</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+            <td class="ep06-matrix__cell--mid">Média</td>
+          </tr>
+          <tr>
+            <td>Autonomia do agente</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+            <td class="ep06-matrix__cell--mid">Média</td>
+            <td class="ep06-matrix__cell--low">Baixa</td>
+          </tr>
+          <tr>
+            <td>Escalabilidade para times</td>
+            <td class="ep06-matrix__cell--mid">Média</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+          </tr>
+          <tr>
+            <td>Complexidade de setup</td>
+            <td class="ep06-matrix__cell--low">Baixa</td>
+            <td class="ep06-matrix__cell--mid">Média</td>
+            <td class="ep06-matrix__cell--high">Alta</td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- /.ep06-matrix-wrap -->
+
+    <!-- SVG FLUXO EVOLUTIVO: TÁTICO → OPERACIONAL → ESTRATÉGICO -->
+    <figure class="ep06-evolution" aria-label="Fluxo evolutivo: do tático ao estratégico">
+      <svg class="ep06-evolution__svg" viewBox="0 0 700 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="evo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#002D62" stop-opacity="0.8"/>
+            <stop offset="50%" stop-color="#0066CC" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#FF6200" stop-opacity="0.9"/>
+          </linearGradient>
+          <marker id="evo-arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="rgba(255,98,0,0.7)"/>
+          </marker>
+        </defs>
+
+        <!-- Barra de progresso base -->
+        <rect x="0" y="62" width="700" height="3" fill="url(#evo-grad)" rx="1.5">
+          <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4s" repeatCount="indefinite"/>
+        </rect>
+
+        <!-- Nó 1: TÁTICO (Skills) -->
+        <rect x="20" y="14" width="160" height="44" rx="10" fill="rgba(0,45,98,0.7)" stroke="rgba(0,194,168,0.4)" stroke-width="1.5"/>
+        <text x="100" y="34" text-anchor="middle" fill="#00C2A8" font-size="9.5" font-family="Inter" font-weight="700" letter-spacing="0.1em">TÁTICO</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Skills · Execução imediata</text>
+
+        <!-- Seta 1 -->
+        <line x1="180" y1="36" x2="248" y2="36" stroke="rgba(255,98,0,0.4)" stroke-width="1.5" marker-end="url(#evo-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite"/>
+        </line>
+
+        <!-- Nó 2: OPERACIONAL (Playbooks) -->
+        <rect x="250" y="14" width="200" height="44" rx="10" fill="rgba(0,45,98,0.7)" stroke="rgba(100,100,200,0.4)" stroke-width="1.5"/>
+        <text x="350" y="34" text-anchor="middle" fill="#94A3FF" font-size="9.5" font-family="Inter" font-weight="700" letter-spacing="0.1em">OPERACIONAL</text>
+        <text x="350" y="50" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Playbooks · Padrões repetíveis</text>
+
+        <!-- Seta 2 -->
+        <line x1="450" y1="36" x2="518" y2="36" stroke="rgba(255,98,0,0.5)" stroke-width="1.5" marker-end="url(#evo-arrow)">
+          <animate attributeName="stroke-opacity" values="0.2;0.8;0.2" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+        </line>
+
+        <!-- Nó 3: ESTRATÉGICO (Knowledge) -->
+        <rect x="520" y="14" width="164" height="44" rx="10" fill="rgba(0,45,98,0.7)" stroke="rgba(255,98,0,0.55)" stroke-width="2"/>
+        <text x="602" y="34" text-anchor="middle" fill="#FF6200" font-size="9.5" font-family="Inter" font-weight="700" letter-spacing="0.1em">ESTRATÉGICO</text>
+        <text x="602" y="50" text-anchor="middle" fill="#64748B" font-size="8" font-family="Inter">Knowledge · Inteligência org.</text>
+      </svg>
+      <figcaption class="ep06-evolution__caption">Cada arsenal eleva o nível de maturidade cognitiva da colaboração com IA.</figcaption>
+    </figure>
+
+    <!-- TABS — Mantidas para detalhe do conteúdo (JS hook preservado) -->
     <div class="devin-tabs ep06-tabs" role="tablist" aria-label="Navegação entre arsenais">
       <button
         class="devin-tab ep06-tab"
@@ -1334,7 +1751,7 @@
 
     </div><!-- /#panel-knowledge -->
 
-  </div><!-- /.devin-container -->
+  </div><!-- /.devin-container--editorial -->
 </section>
 
 
