@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Trabalho 2 – Impactos Ambientais da Revolução Industrial</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  body{
+    width:210mm;min-height:297mm;
+    margin:0 auto;
+    background:#f0f7ff;
+    font-family:'Nunito',sans-serif;
+    color:#1a2a3a;
+  }
+
+  /* ── TOPO ── */
+  .top-band{
+    background:linear-gradient(135deg,#1565c0,#0d47a1);
+    padding:6mm 12mm 5mm;
+    position:relative;overflow:hidden;
+  }
+  .top-band::after{
+    content:'';position:absolute;right:-8mm;top:-8mm;
+    width:44mm;height:44mm;border-radius:50%;
+    background:rgba(255,255,255,0.07);
+  }
+  .top-eyebrow{
+    font-size:7.5pt;font-weight:800;letter-spacing:3px;
+    text-transform:uppercase;color:#90caf9;margin-bottom:2mm;
+  }
+  .top-title{
+    font-family:'Fredoka One',cursive;
+    font-size:24pt;line-height:1.1;color:#fff;
+  }
+  .top-title span{color:#ffcc02;}
+  .top-sub{
+    font-size:9pt;color:#90caf9;margin-top:2mm;
+    font-weight:700;max-width:140mm;line-height:1.5;
+  }
+
+  /* ── INTRO ── */
+  .intro{
+    background:#fff;
+    border-bottom:3px solid #1565c0;
+    padding:4mm 12mm;
+    display:flex;gap:4mm;align-items:flex-start;
+  }
+  .intro-icon{font-size:22pt;line-height:1;flex-shrink:0;margin-top:0.5mm;}
+  .intro-text{font-size:9.5pt;line-height:1.6;color:#1a2a3a;font-weight:600;}
+
+  /* ── HERO PHOTO ── */
+  .hero{
+    margin:5mm 12mm 0;
+    display:grid;grid-template-columns:1.5fr 1fr;
+    gap:4mm;
+  }
+  .hero-img-wrap{
+    position:relative;border-radius:3mm;overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,0.15);
+    height:44mm;
+  }
+  .hero-img-wrap img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center top;
+    display:block;
+    background:#b0c4d8;
+  }
+  .hero-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(to top,rgba(13,71,161,0.88),transparent);
+    padding:2mm 3.5mm;
+    font-size:7pt;color:#e3f2fd;font-weight:700;line-height:1.3;
+  }
+  .hero-right{
+    display:flex;flex-direction:column;gap:3mm;
+  }
+  .fact-chip{
+    flex:1;border-radius:3mm;padding:3mm 4mm;
+    display:flex;align-items:center;gap:3mm;
+  }
+  .chip-blue{background:#e3f2fd;border-left:4px solid #1565c0;}
+  .chip-green{background:#e8f5e9;border-left:4px solid #2e7d32;}
+  .chip-orange{background:#fff3e0;border-left:4px solid #e65100;}
+  .chip-icon{font-size:16pt;flex-shrink:0;line-height:1;}
+  .chip-content{}
+  .chip-label{font-size:7.5pt;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:1mm;}
+  .chip-blue .chip-label{color:#0d47a1;}
+  .chip-green .chip-label{color:#1b5e20;}
+  .chip-orange .chip-label{color:#bf360c;}
+  .chip-text{font-size:8pt;line-height:1.45;font-weight:600;color:#1a2a3a;}
+
+  /* ── SECTION HEADING ── */
+  .sec-head{
+    display:flex;align-items:center;gap:3mm;
+    padding:4mm 12mm 2mm;
+  }
+  .sec-pill{
+    background:#1565c0;color:#fff;
+    font-size:7.5pt;font-weight:800;letter-spacing:2px;
+    text-transform:uppercase;padding:1.5mm 4mm;border-radius:50px;
+    flex-shrink:0;
+  }
+  .sec-line{flex:1;height:2px;background:linear-gradient(to right,#1565c0,transparent);opacity:0.3;}
+
+  /* ── PROBLEMS GRID ── */
+  .problems{
+    padding:0 12mm 4mm;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:3mm;
+  }
+  .prob{
+    border-radius:3mm;overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    background:#fff;
+    display:flex;flex-direction:column;
+  }
+  .prob-img{
+    width:100%;height:22mm;
+    object-fit:cover;
+    display:block;
+    background:#b0c4d8;
+    filter:saturate(0.85)contrast(1.05);
+  }
+  .prob-body{padding:3mm;flex:1;}
+  .prob-title{
+    font-family:'Fredoka One',cursive;
+    font-size:9pt;margin-bottom:1.5mm;line-height:1.1;
+  }
+  .prob-text{font-size:7.5pt;line-height:1.5;color:#2a3a4a;font-weight:600;}
+  .prob-tag{
+    padding:1.5mm 3mm;
+    font-size:6.5pt;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;
+    border-top:1px solid rgba(0,0,0,0.07);
+    margin-top:auto;
+  }
+
+  .prob-1 .prob-title{color:#c62828;}
+  .prob-1 .prob-tag{background:#ffebee;color:#c62828;}
+  .prob-2 .prob-title{color:#1565c0;}
+  .prob-2 .prob-tag{background:#e3f2fd;color:#1565c0;}
+  .prob-3 .prob-title{color:#2e7d32;}
+  .prob-3 .prob-tag{background:#e8f5e9;color:#2e7d32;}
+  .prob-4 .prob-title{color:#6a1b9a;}
+  .prob-4 .prob-tag{background:#f3e5f5;color:#6a1b9a;}
+
+  /* ── CONSEQUENCE SECTION ── */
+  .consequence{
+    margin:0 12mm 4mm;
+    background:#fff;border-radius:3mm;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    display:grid;grid-template-columns:1fr 1.6fr;
+  }
+  .cons-photo{
+    position:relative;overflow:hidden;
+  }
+  .cons-photo img{
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+    background:#b0c4d8;
+    filter:sepia(20%)contrast(1.05);
+  }
+  .cons-photo-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:rgba(13,71,161,0.8);
+    padding:2mm 3mm;font-size:6.5pt;color:#e3f2fd;font-weight:700;line-height:1.3;
+  }
+  .cons-text{padding:5mm;}
+  .cons-title{
+    font-family:'Fredoka One',cursive;
+    font-size:13pt;color:#1565c0;margin-bottom:2mm;line-height:1.2;
+  }
+  .cons-body{font-size:9pt;line-height:1.6;color:#1a2a3a;font-weight:600;}
+  .cons-highlight{
+    margin-top:3mm;background:#e3f2fd;
+    border-left:4px solid #1565c0;
+    padding:2.5mm 4mm;border-radius:0 2mm 2mm 0;
+    font-size:8.5pt;color:#0d47a1;font-weight:700;line-height:1.45;
+  }
+
+  /* ── FOOTER ── */
+  .footer{
+    background:#1565c0;
+    padding:3mm 12mm;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .foot-left{font-size:7.5pt;color:#90caf9;font-weight:700;}
+  .foot-badge{
+    background:#ffcc02;color:#0d47a1;
+    font-size:7pt;font-weight:900;padding:1.5mm 4mm;
+    border-radius:50px;letter-spacing:1px;text-transform:uppercase;
+  }
+  .foot-right{font-size:7.5pt;color:#90caf9;font-weight:700;text-align:right;}
+</style>
+</head>
+<body>
+
+<!-- TOPO -->
+<div class="top-band">
+  <div class="top-eyebrow">📘 4.º Ano · História · Meio Ambiente</div>
+  <div class="top-title">Planeta em Perigo:<br>os <span>Impactos Ambientais</span><br>da Revolução Industrial</div>
+  <div class="top-sub">Como o surgimento das fábricas mudou — e prejudicou — o meio ambiente para sempre.</div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="intro-icon">⚙️</div>
+  <div class="intro-text">
+    A Revolução Industrial começou na Inglaterra por volta de <strong>1760</strong>. Máquinas a vapor substituíram o trabalho feito à mão e o carvão virou a principal fonte de energia. As cidades cresceram muito rápido. Porém, tudo isso teve um custo altíssimo para a natureza — e ainda sentimos as consequências hoje.
+  </div>
+</div>
+
+<!-- HERO PHOTO + FICHAS -->
+<div class="hero">
+  <div class="hero-img-wrap">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Philipp_Jakob_Loutherbourg_d._J._002.jpg/640px-Philipp_Jakob_Loutherbourg_d._J._002.jpg"
+      alt="Coalbrookdale à noite – Philip James de Loutherbourg, 1801"
+      onerror="this.style.background='#1a2a3a'">
+    <div class="hero-caption">
+      🎨 "Coalbrookdale à Noite" – Philip James de Loutherbourg, 1801<br>
+      Um dos primeiros registros pictóricos da poluição industrial. · Wikimedia Commons (domínio público)
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="fact-chip chip-blue">
+      <div class="chip-icon">🗓️</div>
+      <div class="chip-content">
+        <div class="chip-label">Quando começou?</div>
+        <div class="chip-text">Por volta de 1760, na Inglaterra. Em 100 anos, se espalhou pela Europa e América.</div>
+      </div>
+    </div>
+    <div class="fact-chip chip-green">
+      <div class="chip-icon">⛏️</div>
+      <div class="chip-content">
+        <div class="chip-label">Principal combustível</div>
+        <div class="chip-text">O carvão mineral: barato, abundante e muito poluente. Queimava dia e noite nas fábricas.</div>
+      </div>
+    </div>
+    <div class="fact-chip chip-orange">
+      <div class="chip-icon">⚠️</div>
+      <div class="chip-content">
+        <div class="chip-label">Consequência</div>
+        <div class="chip-text">Início do aquecimento global, extinção de espécies e doenças respiratórias em massa.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OS 4 PROBLEMAS -->
+<div class="sec-head">
+  <div class="sec-pill">Os 4 grandes problemas ambientais</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="problems">
+
+  <!-- Poluição do Ar -->
+  <div class="prob prob-1">
+    <img class="prob-img"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Industrialisation%3B_19th_c._town_in_Lancashire_Wellcome_M0003212.jpg/320px-Industrialisation%3B_19th_c._town_in_Lancashire_Wellcome_M0003212.jpg"
+      alt="Cidade industrial no Lancashire"
+      onerror="this.style.background='#c62828';this.style.height='22mm'">
+    <div class="prob-body">
+      <div class="prob-title">🔥 Poluição do Ar</div>
+      <div class="prob-text">Chaminés soltavam fumaça tóxica. O céu escurecia. Bronquite e asma se tornaram doenças comuns. Londres era chamada de "a Fumaça".</div>
+    </div>
+    <div class="prob-tag">⚡ O ar venenoso</div>
+  </div>
+
+  <!-- Poluição das Águas -->
+  <div class="prob prob-2">
+    <img class="prob-img"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/A_court_for_King_Cholera.jpg/320px-A_court_for_King_Cholera.jpg"
+      alt="Uma Corte para o Rei Cólera, Punch 1852"
+      onerror="this.style.background='#1565c0';this.style.height='22mm'">
+    <div class="prob-body">
+      <div class="prob-title">🌊 Rios Envenenados</div>
+      <div class="prob-text">Lixo químico era despejado nos rios. O Tâmisa ficou tão sujo que causou cólera. Em 1858, o "Grande Fedor" fechou o Parlamento inglês.</div>
+    </div>
+    <div class="prob-tag">💧 Água contaminada</div>
+  </div>
+
+  <!-- Desmatamento -->
+  <div class="prob prob-3">
+    <img class="prob-img"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Deforestation_in_San_Juan_County%2C_Colorado_due_to_mining.jpg/320px-Deforestation_in_San_Juan_County%2C_Colorado_due_to_mining.jpg"
+      alt="Desmatamento por mineração, Colorado"
+      onerror="this.style.background='#2e7d32';this.style.height='22mm'">
+    <div class="prob-body">
+      <div class="prob-title">🌲 Florestas Derrubadas</div>
+      <div class="prob-text">Árvores foram cortadas para construir fábricas, cidades e trilhos de trem. Animais perderam seus lares e espécies foram extintas.</div>
+    </div>
+    <div class="prob-tag">🌍 Habitats destruídos</div>
+  </div>
+
+  <!-- Solo -->
+  <div class="prob prob-4">
+    <img class="prob-img"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Industrial-pollution.JPG/320px-Industrial-pollution.JPG"
+      alt="Poluição industrial no solo"
+      onerror="this.style.background='#6a1b9a';this.style.height='22mm'">
+    <div class="prob-body">
+      <div class="prob-title">⛰️ Solo Destruído</div>
+      <div class="prob-text">Mineração a céu aberto criou enormes crateras. Metais pesados contaminaram a terra. Regiões inteiras ficaram estéreis por décadas.</div>
+    </div>
+    <div class="prob-tag">🏚️ Terra inutilizada</div>
+  </div>
+
+</div>
+
+<!-- CONSEQUÊNCIA GRANDE -->
+<div class="sec-head">
+  <div class="sec-pill">A consequência que sentimos até hoje</div>
+  <div class="sec-line"></div>
+</div>
+
+<div class="consequence">
+  <div class="cons-photo">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Nelson%27s_Column_during_the_Great_Smog_of_1952.jpg/320px-Nelson%27s_Column_during_the_Great_Smog_of_1952.jpg"
+      alt="Coluna de Nelson durante o Grande Smog de Londres, 1952"
+      onerror="this.style.background='#263238'">
+    <div class="cons-photo-caption">
+      📷 A Coluna de Nelson desaparecendo no smog<br>
+      Londres, dezembro de 1952 · Wikimedia Commons (domínio público)
+    </div>
+  </div>
+  <div class="cons-text">
+    <div class="cons-title">🌡️ O Aquecimento Global começa aqui</div>
+    <div class="cons-body">
+      A queima intensa de carvão desde a Revolução Industrial lançou enormes quantidades de dióxido de carbono (CO₂) na atmosfera. Esse gás age como uma "cobertura" que retém o calor do Sol — o chamado <strong>efeito estufa</strong>.
+      <br><br>
+      O resultado? As temperaturas do planeta sobem gradualmente. Hoje vemos geleiras derretendo, mares subindo e eventos climáticos extremos acontecendo com mais frequência. Tudo começou com aquelas fábricas fumegantes do século XIX.
+    </div>
+    <div class="cons-highlight">
+      ⚡ Em dezembro de 1952, o Grande Smog de Londres matou cerca de 12.000 pessoas em 5 dias. O desastre obrigou governos do mundo todo a criar leis para controlar a poluição industrial.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="foot-left">Imagens: Wikimedia Commons · domínio público</div>
+  <div class="foot-badge">🌱 4.º Ano · Proteja o Planeta</div>
+  <div class="foot-right">Fontes: trendclima.com.br<br>123ecos.com.br</div>
+</div>
+
+</body>
+</html>
