@@ -30,6 +30,7 @@ const SECTION_STATE_MAP = {
   'gestao':       'content',
   'fechamento':   'conversion',
   'encerramento': 'close',
+  'sintese':      'close',
 };
 
 // Detecta nível de enhancement baseado em device e preferências
