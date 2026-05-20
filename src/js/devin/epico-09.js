@@ -170,6 +170,37 @@ function buildVideoCardsTimeline() {
   });
 }
 
+// ─── Síntese Consolidada (Seção 34) ──────────────────────────────────────────
+function buildSinteseTimeline() {
+  const section = document.getElementById('sintese') || document.querySelector('[data-section="sintese"]');
+  if (!section) return null;
+
+  const reduced = prefersReducedMotion();
+  const headerElements = section.querySelectorAll('.ep09-sintese__eyebrow, .ep09-sintese__title, .ep09-sintese__desc');
+  const videoWrapper = section.querySelector('.ep09-sintese__video-wrapper');
+
+  gsap.set(headerElements, { opacity: 0 });
+  gsap.set(videoWrapper, { opacity: 0 });
+
+  return ScrollTrigger.create({
+    trigger: section,
+    start: 'top 70%',
+    onEnter() {
+      const tl = gsap.timeline({ ease: 'power2.out' });
+      tl.to(headerElements, {
+        opacity: 1,
+        duration: reduced ? 0.3 : 1.0,
+        stagger: reduced ? 0 : 0.2,
+      });
+      tl.to(videoWrapper, {
+        opacity: 1,
+        duration: reduced ? 0.3 : 1.2,
+      }, '-=0.4');
+    },
+    once: true,
+  });
+}
+
 // ─── Export público ───────────────────────────────────────────────────────────
 export function initEpico09() {
   buildLiderancaSilenciosaTimeline();
@@ -177,4 +208,5 @@ export function initEpico09() {
   buildCulturaTimeline();
   buildFechamentoTimeline();
   buildVideoCardsTimeline();
+  buildSinteseTimeline();
 }
