@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <!-- Google Consent Mode v2 — default DENIED (LGPD/ANPD/GDPR) -->
+    <!-- Spec: docs/specs/pages/LEGAL_PAGES.md §6.2 — deve carregar ANTES de GTM/GA4 -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+            functionality_storage: 'granted',
+            security_storage: 'granted',
+            wait_for_update: 500
+        });
+        gtag('js', new Date());
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+    <script>
+        gtag('config', 'G-GEKLHZYVYX');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocialSelling — Overview do Projeto &amp; Modelo de Boas Práticas</title>
+    <meta name="description"
+        content="Overview do projeto SocialSelling: arquitetura, especificações (ADRs/SDDs), boas práticas de desenvolvimento (SDD-to-Code Loop, gates, determinismo, Open-World), aprendizado por feedback e processo de auto-aprendizagem." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81' },
+                        ink: { 900: '#0b1020', 800: '#11162a', 700: '#1b2238', 600: '#2a3350' },
+                    },
+                    fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'], mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'] },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif
+        }
+
+        .nav-link.active {
+            color: #c7d2fe;
+            border-color: #6366f1
+        }
+
+        .card-grad {
+            background: radial-gradient(1200px 400px at 0% 0%, rgba(99, 102, 241, .10), transparent 60%)
+        }
+
+        ::selection {
+            background: #4338ca;
+            color: #fff
+        }
+
+        .tag {
+            font-variant-numeric: tabular-nums
+        }
+    </style>
+</head>
+
+<body class="bg-ink-900 text-slate-300 antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- ░░ TOP BAR ░░ -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-ink-900/80 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <a href="#topo" class="flex items-center gap-2 font-semibold text-white">
+                <span
+                    class="inline-grid place-items-center w-7 h-7 rounded-lg bg-brand-600 text-white text-sm font-bold">S</span>
+                SocialSelling <span class="hidden sm:inline text-slate-500 font-normal">· Overview</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-5 text-sm">
+                <a href="#arquitetura" class="hover:text-white transition">Arquitetura</a>
+                <a href="#decisoes" class="hover:text-white transition">Decisões</a>
+                <a href="#praticas" class="hover:text-white transition">Práticas</a>
+                <a href="#volume" class="hover:text-white transition">Volume</a>
+                <a href="#aprendizagem" class="hover:text-white transition">Auto-aprendizagem</a>
+                <a href="#operacao" class="hover:text-white transition">Operação</a>
+                <a href="https://github.com/issei/SocialSelling"
+                    class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition">GitHub ↗</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="topo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:flex lg:gap-10">
+
+        <!-- ░░ SIDEBAR ░░ -->
+        <aside class="hidden lg:block w-56 shrink-0 py-10">
+            <div class="sticky top-20 space-y-1 text-sm">
+                <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Conteúdo</p>
+                <a href="#visao" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">1 · Visão &amp;
+                    escopo</a>
+                <a href="#arquitetura" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">2 ·
+                    Arquitetura</a>
+                <a href="#camadas" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">3 · Camadas
+                    &amp; regras</a>
+                <a href="#decisoes" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">4 · Decisões
+                    (ADRs)</a>
+                <a href="#specs" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">5 ·
+                    Especificações (SDDs)</a>
+                <a href="#praticas" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">6 · Boas
+                    práticas</a>
+                <a href="#volume" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">7 · Estratégia
+                    de volume</a>
+                <a href="#aprendizagem" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">8 ·
+                    Auto-aprendizagem</a>
+                <a href="#versoes" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">9 · Mapa de
+                    versões</a>
+                <a href="#operacao" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">10 ·
+                    Planejamento &amp; operação</a>
+                <p class="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">Referência
+                    técnica</p>
+                <a href="#contratos" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">11 ·
+                    Contratos &amp; modelo de dados</a>
+                <a href="#codigo" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">12 · Estrutura
+                    do código</a>
+                <a href="#testes" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">13 · Testes,
+                    BDD &amp; observabilidade</a>
+                <a href="#configuracao" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">14 ·
+                    Configuração (runtime.toml)</a>
+            </div>
+        </aside>
+
+        <!-- ░░ MAIN ░░ -->
+        <main class="min-w-0 flex-1 py-10 lg:py-14">
+
+            <!-- HERO -->
+            <section class="card-grad rounded-3xl border border-white/10 p-8 sm:p-12">
+                <div class="flex flex-wrap items-center gap-2 mb-5 text-xs">
+                    <span
+                        class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/20">main
+                        verde · 150+ testes</span>
+                    <span
+                        class="px-2.5 py-1 rounded-full bg-brand-500/15 text-brand-200 border border-brand-500/20">v0.17.x</span>
+                    <span class="px-2.5 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10">PoC local ·
+                        database-less</span>
+                    <span
+                        class="px-2.5 py-1 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/20">feedback
+                        learning · ADR-007</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
+                    Busca de clientes mais eficiente<br class="hidden sm:block"> e automática com IA.
+                </h1>
+                <p class="mt-5 text-lg text-slate-400 max-w-2xl">
+                    O SocialSelling responde a uma única pergunta — <strong class="text-slate-200">"Quem devo abordar
+                        primeiro?"</strong> —
+                    produzindo um <strong class="text-slate-200">ranking explicável</strong> de prospects que <strong
+                        class="text-brand-200">aprende com o feedback</strong> da operadora.
+                    Este documento é o overview do projeto e, ao mesmo tempo, um <strong class="text-brand-200">modelo
+                        das boas práticas</strong> de desenvolvimento
+                    e implementação adotadas até aqui.
+                </p>
+                <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                        <div class="text-2xl font-bold text-white tag">8</div>
+                        <div class="text-xs text-slate-400 mt-1">ADRs (decisões)</div>
+                    </div>
+                    <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                        <div class="text-2xl font-bold text-white tag">150+</div>
+                        <div class="text-xs text-slate-400 mt-1">testes determinísticos</div>
+                    </div>
+                    <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                        <div class="text-2xl font-bold text-white tag">57</div>
+                        <div class="text-xs text-slate-400 mt-1">lições registradas</div>
+                    </div>
+                    <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                        <div class="text-2xl font-bold text-white tag">0</div>
+                        <div class="text-xs text-slate-400 mt-1">custo de infra (só tokens)</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1 · VISÃO -->
+            <section id="visao" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">1</span>
+                    Visão &amp; escopo</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    O produto torna a prospecção <em>eficiente e automática</em>: dado um <span
+                        class="text-slate-200 font-medium">ICP</span>
+                    (Ideal Customer Profile), o sistema descobre candidatos, infere dados estruturados, pontua o
+                    fit/intent/confiança,
+                    entrega <span class="text-slate-200 font-medium">Lead Cards</span> ranqueados com justificativa
+                    (XAI) e
+                    <span class="text-violet-300 font-medium">aprende com os votos 👍/👎 da operadora</span>.
+                </p>
+                <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+                        <h3 class="font-semibold text-emerald-300">No escopo</h3>
+                        <ul class="mt-3 space-y-1.5 text-sm text-slate-300 list-disc list-inside">
+                            <li>Ranking explicável de prospects (fit · intent · confiança)</li>
+                            <li>Descoberta + enriquecimento incremental de leads</li>
+                            <li>Justificativa estruturada (drivers +/− e sinais ausentes)</li>
+                            <li>Aprendizado por feedback like/dislike (ADR-007)</li>
+                            <li>Cockpit web local (visualização, edição de pesos, votos)</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
+                        <h3 class="font-semibold text-rose-300">Fora do escopo (guardrails)</h3>
+                        <ul class="mt-3 space-y-1.5 text-sm text-slate-300 list-disc list-inside">
+                            <li>CRM, automação de outreach/mensageria, cadências</li>
+                            <li>Banco de dados, Redis, Celery, Docker, AWS/Terraform</li>
+                            <li>Scraping de Instagram/LinkedIn</li>
+                            <li>Geração automática de mensagens de outreach</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2 · ARQUITETURA -->
+            <section id="arquitetura" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">2</span>
+                    Arquitetura do PoC</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    <strong class="text-slate-200">Um único processo Python 3.11+</strong>, sem servidor obrigatório,
+                    sem banco, sem fila.
+                    Persistência em <strong class="text-slate-200">JSON atômico</strong> (write-temp + <code
+                        class="text-brand-200">os.replace</code>).
+                    O único custo variável são os tokens de duas APIs de cognição/busca.
+                </p>
+
+                <!-- Pipeline -->
+                <div class="mt-7 rounded-2xl border border-white/10 bg-ink-800 p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Pipeline
+                        determinístico (módulos, não agentes de runtime)</p>
+                    <div class="flex flex-col sm:flex-row items-stretch gap-2 text-center">
+                        <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
+                            <div class="text-white font-semibold text-sm">M1 · Busca</div>
+                            <div class="text-xs text-slate-400 mt-1">Tavily + Apollo</div>
+                        </div>
+                        <div class="self-center text-slate-600">→</div>
+                        <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
+                            <div class="text-white font-semibold text-sm">M2 · Extração</div>
+                            <div class="text-xs text-slate-400 mt-1">Gemini (lotes)</div>
+                        </div>
+                        <div class="self-center text-slate-600">→</div>
+                        <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
+                            <div class="text-white font-semibold text-sm">M3 · Score</div>
+                            <div class="text-xs text-slate-400 mt-1">linear · puro</div>
+                        </div>
+                        <div class="self-center text-slate-600">→</div>
+                        <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
+                            <div class="text-white font-semibold text-sm">M4 · Ranking</div>
+                            <div class="text-xs text-slate-400 mt-1">tie-break estável</div>
+                        </div>
+                        <div class="self-center text-slate-600">→</div>
+                        <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
+                            <div class="text-white font-semibold text-sm">M5 · XAI</div>
+                            <div class="text-xs text-slate-400 mt-1">explicação</div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-xs text-slate-500">M3 e M4 são <strong class="text-slate-300">funções
+                            puras</strong>: mesma entrada → saída byte-idêntica. O orquestrador injeta clientes, cache,
+                        relógio e config.</p>
+                </div>
+
+                <!-- Módulos de suporte -->
+                <div class="mt-5 grid sm:grid-cols-2 gap-3">
+                    <div class="rounded-2xl border border-violet-500/20 bg-violet-500/5 p-4">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Módulos de suporte
+                        </p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start gap-2">
+                                <span class="font-mono text-violet-300 shrink-0">learning/</span>
+                                <span class="text-slate-400">Regressão logística (Python puro) que reajusta <code
+                                        class="text-brand-200">w_fit</code>/<code class="text-brand-200">w_intent</code>
+                                    a partir de votos 👍/👎 (ADR-007).</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="font-mono text-brand-300 shrink-0">corpus/</span>
+                                <span class="text-slate-400">Persistência acumulativa de leads entre runs (upsert
+                                    idempotente por <code class="text-brand-200">entity_id</code>) (ADR-006).</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="font-mono text-brand-300 shrink-0">apollo/</span>
+                                <span class="text-slate-400">Escada de enriquecimento incremental B2B: descoberta →
+                                    firmografia → reveal de contato (ADR-004).</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="font-mono text-brand-300 shrink-0">web/</span>
+                                <span class="text-slate-400">Cockpit FastAPI local com tabela de leads, drawer de
+                                    detalhes e botões de feedback.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Sensores externos
+                        </p>
+                        <div class="space-y-3">
+                            <div>
+                                <h3 class="font-semibold text-white text-sm">Tavily</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Busca aberta (M1). Snippets sociais e sinais de
+                                    intenção.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white text-sm">Gemini <span
+                                        class="text-xs text-slate-500 font-normal">(gemini-2.5-flash /
+                                        flash-lite)</span></h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Cognição (M2). Extrai entidades estruturadas +
+                                    persona/intenção em lotes.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white text-sm">Apollo.io <span
+                                        class="text-xs text-emerald-300 align-middle">ADR-004</span></h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Firmografia B2B. Escada incremental; API master
+                                    exige plano pago (Free bloqueia p/ entitlement).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3 · CAMADAS & REGRAS -->
+            <section id="camadas" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">3</span>
+                    Camadas semânticas &amp; regras invioláveis</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">A correção do sistema repousa sobre quatro invariantes. Elas
+                    valem para <em>todo</em> código novo — inclusive os sensores, a camada de volume e o módulo de
+                    aprendizado.</p>
+
+                <div class="mt-6 flex flex-col sm:flex-row gap-2 items-stretch text-center text-sm">
+                    <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-4">
+                        <div class="text-white font-semibold">Observed Evidence</div>
+                        <div class="text-xs text-slate-500 mt-1">camada 1 · o que foi visto</div>
+                    </div>
+                    <div class="self-center text-slate-600">≠</div>
+                    <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-4">
+                        <div class="text-white font-semibold">Inferences</div>
+                        <div class="text-xs text-slate-500 mt-1">camada 2 · o que foi deduzido</div>
+                    </div>
+                    <div class="self-center text-slate-600">≠</div>
+                    <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-4">
+                        <div class="text-white font-semibold">Evaluated Hypotheses</div>
+                        <div class="text-xs text-slate-500 mt-1">camada 3 · score &amp; XAI</div>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white">① Isolamento de camadas</h3>
+                        <p class="text-sm text-slate-400 mt-1">Uma inferência jamais é tratada como evidência. Sem
+                            referências mutáveis compartilhadas. Apollo vira <code
+                                class="text-brand-200">ObservedEvidence</code>, nunca inferência. O feedback (ADR-007)
+                            opera apenas na camada de apresentação — nunca toca Evidence ou Inferences.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white">② Determinismo byte-idêntico</h3>
+                        <p class="text-sm text-slate-400 mt-1">Mesma memória → mesma saída. Relógio e RNG <strong
+                                class="text-slate-300">injetados</strong>; IDs por hash estável; tie-break estável. O
+                            modelo de feedback usa gradiente full-batch sem aleatoriedade — mesmo log ⇒ mesmos pesos,
+                            bit a bit.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white">③ Open-World</h3>
+                        <p class="text-sm text-slate-400 mt-1">Ausência de sinal = <strong
+                                class="text-slate-300">incerteza</strong> (↑u), nunca falso. <code
+                                class="text-brand-200">Missing Evidence</code> é explícito; falhas degradam, não
+                            quebram. Dislike é sinal de treino — o lead permanece visível, com selo.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white">④ Persistência atômica</h3>
+                        <p class="text-sm text-slate-400 mt-1">Toda escrita é write-temp + <code
+                                class="text-brand-200">os.replace</code>. Nunca um arquivo meio-escrito — vale para
+                            cache, corpus, ledgers e o store de feedback.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4 · DECISÕES (ADRs) -->
+            <section id="decisoes" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">4</span>
+                    Decisões arquiteturais (ADRs)</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">Cada decisão consciente vira um ADR versionado e referenciável.
+                    A fonte da verdade é o <strong class="text-slate-200">ADR-000</strong>; os demais são emendas
+                    explícitas.</p>
+
+                <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <!-- ADR cards -->
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-000-escopo-canonico.md"
+                        class="group rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-brand-600/5 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-brand-300">ADR-000</span><span
+                                class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">canônico</span>
+                        </div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-brand-200">Escopo canônico do PoC
+                            local</h3>
+                        <p class="text-sm text-slate-400 mt-1">Fixa SDD v1.0 como espinha; database-less; Tavily+Gemini;
+                            M1–M5 como pipeline.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-001-camada-intencao-hipoteses.md"
+                        class="group rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-brand-600/5 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-brand-300">ADR-001</span></div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-brand-200">Camada de intenção:
+                            hipóteses</h3>
+                        <p class="text-sm text-slate-400 mt-1">Intent = Σ priors das hipóteses ativadas;
+                            desqualificadores zeram o lead (hard filter).</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-002-ui-operador-local.md"
+                        class="group rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-brand-600/5 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-brand-300">ADR-002</span><span
+                                class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">implementado</span>
+                        </div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-brand-200">UI de operador local
+                            (FastAPI)</h3>
+                        <p class="text-sm text-slate-400 mt-1">Cockpit web: tabela densa de leads, drawer de detalhes,
+                            aba de pesos, botões 👍/👎 de feedback.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-003-orquestracao-langgraph.md"
+                        class="group rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-brand-600/5 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-brand-300">ADR-003</span><span
+                                class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300">diferido</span>
+                        </div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-brand-200">Orquestração paralela
+                            (LangGraph) + FinOps</h3>
+                        <p class="text-sm text-slate-400 mt-1">Motor async opcional para colheita multi-provedor e poda
+                            precoce. Diferido por design.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-004-sensor-apollo.md"
+                        class="group rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-brand-600/5 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-brand-300">ADR-004</span><span
+                                class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">implementado</span>
+                        </div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-brand-200">Apollo.io como 2º sensor
+                            firmográfico</h3>
+                        <p class="text-sm text-slate-400 mt-1">Escada de enriquecimento incremental: descoberta →
+                            org-enrich → reveal por crédito. API master exige plano pago.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-005-reforma-cognitiva-batch.md"
+                        class="group rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-brand-600/5 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-brand-300">ADR-005</span><span
+                                class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">core</span>
+                        </div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-brand-200">Reforma cognitiva: lotes +
+                            orçamento RPD</h3>
+                        <p class="text-sm text-slate-400 mt-1">Extração em lotes eleva o teto Gemini; orçamento de
+                            requisições/dia + ondas resumíveis.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-006-corpus-acumulativo.md"
+                        class="group rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 hover:bg-brand-600/5 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-brand-300">ADR-006</span><span
+                                class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300">core</span>
+                        </div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-brand-200">Corpus de leads acumulativo
+                        </h3>
+                        <p class="text-sm text-slate-400 mt-1">Runs acumulam (upsert idempotente por entity_id). A onda
+                            só avança quando o ciclo produz leads — evita queimar cache sem resultado.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-007-aprendizado-feedback.md"
+                        class="group rounded-2xl border border-violet-500/30 bg-violet-500/5 hover:border-violet-500/50 hover:bg-violet-600/10 p-5 transition">
+                        <div class="flex items-center justify-between"><span
+                                class="text-xs font-mono text-violet-300">ADR-007</span><span
+                                class="text-[10px] px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300">novo ·
+                                opt-in</span></div>
+                        <h3 class="mt-2 font-semibold text-white group-hover:text-violet-200">Aprendizado por feedback
+                            like/dislike</h3>
+                        <p class="text-sm text-slate-400 mt-1">Regressão logística (Python puro, sem dependências)
+                            reajusta <code class="text-brand-200">w_fit</code>/<code
+                                class="text-brand-200">w_intent</code> a partir dos votos. Auto-apply com 4 travas: gate
+                            de amostra, L2, shrinkage e clamp. Opt-in via <code
+                                class="text-brand-200">[learning].enabled</code>.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 5 · SPECS -->
+            <section id="specs" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">5</span>
+                    Especificações de desenvolvimento (SDDs)</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">Cada ADR não-trivial vem acompanhado de uma SDD (Spec-Driven
+                    Development): contratos, cenários, plano de testes e WUs. <strong
+                        class="text-slate-200">Spec-first</strong> — o documento precede o código.</p>
+                <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/specs/apollo-busca-enriquecimento-incremental-sdd.md"
+                        class="rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 p-5 transition">
+                        <h3 class="font-semibold text-white">SDD · Apollo (busca + enriquecimento incremental)</h3>
+                        <p class="text-sm text-slate-400 mt-1">Escada de crédito, ledger mensal, cache por volatilidade,
+                            degradação Open-World.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/specs/orquestracao-paralela-finops-langgraph-sdd.md"
+                        class="rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 p-5 transition">
+                        <h3 class="font-semibold text-white">SDD · Orquestração paralela + FinOps (LangGraph)</h3>
+                        <p class="text-sm text-slate-400 mt-1">Colheita concorrente, poda precoce, modos degradados.
+                            Motor opcional.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/specs/operator-cockpit-ui-sdd.md"
+                        class="rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 p-5 transition">
+                        <h3 class="font-semibold text-white">SDD · Operator Cockpit (UI)</h3>
+                        <p class="text-sm text-slate-400 mt-1">Data grid de alta densidade, drawer de lead, aba de pesos
+                            e botões de feedback 👍/👎.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/specs/lead-results-table-ux-sdd.md"
+                        class="rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 p-5 transition">
+                        <h3 class="font-semibold text-white">SDD · Lead Results Table UX</h3>
+                        <p class="text-sm text-slate-400 mt-1">Padrão "scan-then-focus": tabela densa + drawer
+                            slide-over. Refinamento visual do cockpit v2.</p>
+                    </a>
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/planning/escala-volume-leads.md"
+                        class="rounded-2xl border border-white/10 bg-white/5 hover:border-brand-500/40 p-5 transition sm:col-span-2">
+                        <h3 class="font-semibold text-white">Roadmap · Escala de volume de leads</h3>
+                        <p class="text-sm text-slate-400 mt-1">Teoria das restrições, os 4 pilares e o status de
+                            implementação.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 6 · BOAS PRÁTICAS -->
+            <section id="praticas" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">6</span>
+                    Boas práticas de desenvolvimento</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">É aqui que o projeto pretende ser <strong
+                        class="text-brand-200">modelo</strong>: a complexidade vive no <em>processo de construção</em>,
+                    não no sistema. O PoC permanece enxuto; a disciplina é total.</p>
+
+                <!-- SDD-to-Code Loop -->
+                <div class="mt-7 rounded-2xl border border-white/10 bg-ink-800 p-6">
+                    <h3 class="font-semibold text-white">SDD-to-Code Loop (obrigatório por módulo)</h3>
+                    <ol class="mt-4 grid sm:grid-cols-5 gap-2 text-center text-sm">
+                        <li class="rounded-xl bg-white/5 border border-white/10 p-3"><span
+                                class="block text-brand-300 font-bold">1</span>Contrato Pydantic</li>
+                        <li class="rounded-xl bg-white/5 border border-white/10 p-3"><span
+                                class="block text-brand-300 font-bold">2</span>BDD + fixtures</li>
+                        <li class="rounded-xl bg-white/5 border border-white/10 p-3"><span
+                                class="block text-brand-300 font-bold">3</span>Implementação mínima</li>
+                        <li class="rounded-xl bg-white/5 border border-white/10 p-3"><span
+                                class="block text-brand-300 font-bold">4</span>Gate verde</li>
+                        <li class="rounded-xl bg-white/5 border border-white/10 p-3"><span
+                                class="block text-brand-300 font-bold">5</span>PR + auto-merge</li>
+                    </ol>
+                </div>
+
+                <!-- Modo operacional dia/noite -->
+                <div class="mt-5 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
+                    <h3 class="font-semibold text-amber-300">Modo operacional: Dia vs. Noite (L-057)</h3>
+                    <div class="mt-3 grid sm:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p class="text-slate-200 font-medium">☀️ Sessão de dia (interativa)</p>
+                            <p class="text-slate-400 mt-1">Especifica e gera cards — <strong class="text-slate-300">não
+                                    desenvolve o produto</strong>. Autoria de ADRs, SDDs, docs, tooling e curadoria do
+                                board. Card só vai para <em>Todo</em> com DoR 100% (Gherkin, fixtures, sem ambiguidade).
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-slate-200 font-medium">🌙 Run noturno (autônomo)</p>
+                            <p class="text-slate-400 mt-1">Consome a coluna <em>Todo</em> via skill <code
+                                    class="text-brand-200">github-sdd-sync</code>. Revalida DoR, implementa, exige DoD
+                                (gate verde, PR CI-verde, PROGRESS e lições atualizados).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h3 class="font-semibold text-white">Quality Gate inegociável</h3>
+                        <p class="text-sm text-slate-400 mt-1"><code class="text-brand-200">ruff</code> + <code
+                                class="text-brand-200">mypy --strict</code> + <code class="text-brand-200">pytest</code>
+                            100% verde e determinístico. Flakiness = falha.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h3 class="font-semibold text-white">Git: branch → PR → auto-merge</h3>
+                        <p class="text-sm text-slate-400 mt-1"><strong class="text-slate-300">Nunca</strong> commit
+                            direto na main. CI obrigatório; merge só com gate verde. Squash + delete-branch.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h3 class="font-semibold text-white">Tags = pontos de restauração</h3>
+                        <p class="text-sm text-slate-400 mt-1">Cada WU verde recebe uma tag anotada. Rollback público
+                            via <code class="text-brand-200">git revert</code>, nunca reset/force.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h3 class="font-semibold text-white">APIs sempre mockadas</h3>
+                        <p class="text-sm text-slate-400 mt-1">Testes nunca tocam rede: fixtures gravadas + fakes.
+                            Tolerância numérica <code class="text-brand-200">1e-9</code>. Erros de API surfaciados ao
+                            usuário (nunca silenciosos — L-057).</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h3 class="font-semibold text-white">Opt-in = paridade</h3>
+                        <p class="text-sm text-slate-400 mt-1">Toda feature nova entra desligada por padrão → o baseline
+                            permanece byte-idêntico (smoke E2E). <code class="text-brand-200">[learning].enabled</code>,
+                            <code class="text-brand-200">[apollo].enabled</code>, <code
+                                class="text-brand-200">[corpus].enabled</code>.
+                        </p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h3 class="font-semibold text-white">FinOps por ledger atômico</h3>
+                        <p class="text-sm text-slate-400 mt-1">Orçamentos de crédito (mensal) e de requisições (diário)
+                            persistidos; <code class="text-brand-200">try_spend</code>/<code
+                                class="text-brand-200">refund</code>/reconciliação. Erros de billing (429) propagam a
+                            mensagem crua até o frontend.</p>
+                    </div>
+                </div>
+
+                <div class="mt-5 rounded-2xl border border-white/10 bg-ink-800 p-5">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Comando de gate
+                        (Windows)</p>
+                    <pre class="text-sm text-slate-300 overflow-x-auto"><code>.venv\Scripts\python.exe -m ruff check .   # lint
+.venv\Scripts\python.exe -m mypy           # tipos (strict)
+.venv\Scripts\python.exe -m pytest -q       # 150+ testes determinísticos
+# Ou: .\scripts\gate.ps1  (roda os três em sequência)</code></pre>
+                </div>
+            </section>
+
+            <!-- 7 · VOLUME -->
+            <section id="volume" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">7</span>
+                    Estratégia de volume (rodando local)</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    Objetivo: buscar <strong class="text-slate-200">muito mais leads</strong> sem sair do
+                    local/database-less. Aplicou-se
+                    <strong class="text-slate-200">Teoria das Restrições</strong> ao funil — ampliar descoberta sem
+                    elevar o teto cognitivo só
+                    faz bater no muro mais rápido. Daí os quatro pilares.
+                </p>
+                <div class="mt-6 overflow-x-auto rounded-2xl border border-white/10">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-white/5 text-slate-300">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold">Pilar</th>
+                                <th class="px-4 py-3 font-semibold">O que faz</th>
+                                <th class="px-4 py-3 font-semibold">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr>
+                                <td class="px-4 py-3 text-white font-medium">A · Teto cognitivo</td>
+                                <td class="px-4 py-3 text-slate-400">Extração em lotes + orçamento RPD + ondas
+                                    resumíveis (ADR-005)</td>
+                                <td class="px-4 py-3"><span class="text-emerald-300">✅ core</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-white font-medium">B · Corpus acumulativo</td>
+                                <td class="px-4 py-3 text-slate-400">Runs acumulam; upsert idempotente; onda avança só
+                                    com resultado (ADR-006)</td>
+                                <td class="px-4 py-3"><span class="text-emerald-300">✅ core</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-white font-medium">Apollo · Descoberta</td>
+                                <td class="px-4 py-3 text-slate-400">People Search + org-enrich + reveal (ADR-004) — API
+                                    master exige plano pago</td>
+                                <td class="px-4 py-3"><span class="text-emerald-300">✅ implementado</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-white font-medium">C · Estado escalável</td>
+                                <td class="px-4 py-3 text-slate-400">JSON monolítico → NDJSON/shards (sem banco)</td>
+                                <td class="px-4 py-3"><span class="text-amber-300">⏸ diferido</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-white font-medium">D · Entity resolution</td>
+                                <td class="px-4 py-3 text-slate-400">Domínio canônico + exclusão de vendors + dedup
+                                    cross-provider</td>
+                                <td class="px-4 py-3"><span class="text-amber-300">⏸ diferido</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-sm text-slate-500">Tudo opt-in (<code class="text-brand-200">[apollo].enabled</code>
+                    · <code class="text-brand-200">[corpus].enabled</code> · <code
+                        class="text-brand-200">[gemini].rpd_enabled</code>). Diferidos com razão documentada — não há
+                    refino arriscado por completude.</p>
+            </section>
+
+            <!-- 8 · AUTO-APRENDIZAGEM -->
+            <section id="aprendizagem" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">8</span>
+                    Processo de auto-aprendizagem</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    Ao final de cada tarefa, os aprendizados são destilados em <a
+                        href="https://github.com/issei/SocialSelling/tree/main/docs/licoes-aprendidas.md"
+                        class="text-brand-300 hover:underline">docs/licoes-aprendidas.md</a>
+                    (formato <code class="text-brand-200">L-NNN | Categoria | Lição | Como aplicar</code>) e em memória
+                    persistente. Hoje são
+                    <strong class="text-slate-200">57 lições</strong> que retroalimentam decisões futuras — o projeto
+                    fica mais inteligente a cada ciclo.
+                </p>
+                <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <span class="text-xs font-mono text-brand-300">L-012 · Determinismo</span>
+                        <p class="text-sm text-slate-300 mt-1.5">Injetar relógio e derivar IDs por hash estável — nunca
+                            UUID aleatório nem <code class="text-brand-200">datetime.now()</code> interno. Garante
+                            reexecução byte-idêntica. Também vale para o modelo de feedback (full-batch sem random).</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <span class="text-xs font-mono text-brand-300">L-026 · Async resiliente</span>
+                        <p class="text-sm text-slate-300 mt-1.5">Fan-out com <code
+                                class="text-brand-200">asyncio.gather(return_exceptions=True)</code> + tratar exceção
+                            crua: um provedor não derruba o lote.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <span class="text-xs font-mono text-brand-300">L-051 · CSS pointer-events</span>
+                        <p class="text-sm text-slate-300 mt-1.5">Container <code
+                                class="text-brand-200">fixed inset-0 z-50</code> fechado precisa de <code
+                                class="text-brand-200">pointer-events:none</code>; sem isso uma camada invisível engole
+                            todos os cliques sem erro visível.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <span class="text-xs font-mono text-brand-300">L-052 · ML determinístico</span>
+                        <p class="text-sm text-slate-300 mt-1.5">Regressão logística com gradiente full-batch, init em
+                            zeros, amostras ordenadas por <code class="text-brand-200">company_id</code> e sem <code
+                                class="text-brand-200">random</code> → mesmo feedback.json ⇒ mesmos pesos, bit a bit.
+                        </p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <span class="text-xs font-mono text-brand-300">L-056 · Onda + resiliência</span>
+                        <p class="text-sm text-slate-300 mt-1.5">Avançar a onda só quando o ciclo produz leads. Avançar
+                            à toa "queima" queries cacheadas e escondia que a causa-raiz era billing do Gemini
+                            (corrigido na L-057).</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <span class="text-xs font-mono text-brand-300">L-057 · Billing vs. cota</span>
+                        <p class="text-sm text-slate-300 mt-1.5">429 do Gemini era <em>prepayment credits depleted</em>,
+                            não cota free-tier. <code class="text-brand-200">GeminiClient</code> agora surfacia o <code
+                                class="text-brand-200">error.message</code> cru; o endpoint retorna 502 com mensagem
+                            acionável (link de billing).</p>
+                    </div>
+                </div>
+                <a href="https://github.com/issei/SocialSelling/tree/main/docs/licoes-aprendidas.md"
+                    class="inline-flex items-center gap-1.5 mt-5 text-sm text-brand-300 hover:underline">Ver as 57
+                    lições completas →</a>
+            </section>
+
+            <!-- 9 · VERSÕES -->
+            <section id="versoes" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">9</span>
+                    Mapa de versões (pontos de restauração)</h2>
+                <div class="mt-6 space-y-3">
+                    <div class="flex gap-4 items-start"><span
+                            class="font-mono text-xs text-brand-300 w-20 shrink-0 pt-0.5">v0.1.1</span>
+                        <p class="text-sm text-slate-400">Fundação CI-verde: toolchain, contratos, planejamento.</p>
+                    </div>
+                    <div class="flex gap-4 items-start"><span
+                            class="font-mono text-xs text-brand-300 w-20 shrink-0 pt-0.5">v0.7.0</span>
+                        <p class="text-sm text-slate-400">PoC funcional: pipeline M1→M5 + smoke E2E byte-idêntico.</p>
+                    </div>
+                    <div class="flex gap-4 items-start"><span
+                            class="font-mono text-xs text-brand-300 w-20 shrink-0 pt-0.5">v0.8–0.12</span>
+                        <p class="text-sm text-slate-400">Motor de intenção (hipóteses), Lead Card acionável, UI de
+                            operador, precisão de persona.</p>
+                    </div>
+                    <div class="flex gap-4 items-start"><span
+                            class="font-mono text-xs text-brand-300 w-20 shrink-0 pt-0.5">v0.13–0.14</span>
+                        <p class="text-sm text-slate-400">Fundação de volume: schemas Apollo, ledgers de crédito/RPD,
+                            corpus; descoberta Apollo fim-a-fim.</p>
+                    </div>
+                    <div class="flex gap-4 items-start"><span
+                            class="font-mono text-xs text-brand-300 w-20 shrink-0 pt-0.5">v0.15.4</span>
+                        <p class="text-sm text-slate-400">Specs de volume completas: escada Apollo (1/2/3), batch+RPD,
+                            corpus acumulativo. 120 testes verdes.</p>
+                    </div>
+                    <div class="flex gap-4 items-start"><span
+                            class="font-mono text-xs text-brand-300 w-20 shrink-0 pt-0.5">v0.16.x</span>
+                        <p class="text-sm text-slate-400">Cockpit v2 (tabela densa + drawer), degradação de billing com
+                            mensagem acionável (L-057), busca incremental por ondas.</p>
+                    </div>
+                    <div class="flex gap-4 items-start"><span
+                            class="font-mono text-xs text-emerald-300 w-20 shrink-0 pt-0.5">v0.17.x</span>
+                        <p class="text-sm text-slate-300"><strong>Aprendizado por feedback (ADR-007):</strong> regressão
+                            logística determinística, store de votos atômico, auto-apply de pesos com 4 travas. 150+
+                            testes verdes. Módulos: <code class="text-brand-200">learning/</code> (model, tuner,
+                            feedback_store, schemas).</p>
+                    </div>
+                </div>
+                <div class="mt-6 rounded-2xl border border-white/10 bg-ink-800 p-5">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Como ligar o volume +
+                        aprendizado (run real)</p>
+                    <pre class="text-sm text-slate-300 overflow-x-auto"><code># 1) runtime.toml
+[apollo].enabled = true   [corpus].enabled = true
+[gemini].rpd_enabled = true   [learning].enabled = true
+# 2) gravar fixtures (supervisionado — Apollo master exige plano pago)
+.venv\Scripts\python.exe scripts\record_apollo_fixtures.py
+# 3) rodar o pipeline
+.venv\Scripts\python.exe -m socialselling.orchestrator --icp config\icp_criteria.talita.json
+# 4) cockpit web (marcar likes/dislikes → reajusta pesos automaticamente)
+.venv\Scripts\python.exe -m socialselling.web  # → http://127.0.0.1:8000</code></pre>
+                </div>
+            </section>
+
+            <!-- 10 · PLANEJAMENTO & OPERAÇÃO -->
+            <section id="operacao" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">10</span>
+                    Planejamento &amp; operação do desenvolvimento</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    O projeto adota um modelo de governança que separa <strong class="text-slate-200">autoria de
+                        especificação</strong>
+                    (interativa, feita de dia) de <strong class="text-slate-200">execução de implementação</strong>
+                    (autônoma, feita à noite).
+                    Isso otimiza a cota do Claude Code Pro e mantém a integridade do repositório — o dono usa o dia
+                    para pensar e evoluir o sistema; o desenvolvimento roda no run agendado.
+                </p>
+
+                <!-- Fluxo geral do board -->
+                <div class="mt-7 rounded-2xl border border-white/10 bg-ink-800 p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Fluxo do board (GitHub
+                        Project #1)</p>
+                    <div class="flex flex-col sm:flex-row items-stretch gap-2 text-center text-sm">
+                        <div class="flex-1 rounded-xl bg-white/5 border border-white/10 p-3">
+                            <div class="text-white font-semibold">Backlog</div>
+                            <div class="text-xs text-slate-500 mt-1">rascunho da card</div>
+                        </div>
+                        <div class="self-center text-slate-600 flex flex-col items-center gap-0.5">
+                            <span class="text-[10px] text-emerald-400 font-semibold">DoR 100%</span>
+                            <span>→</span>
+                            <span class="text-[10px] text-slate-500">só humano move</span>
+                        </div>
+                        <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
+                            <div class="text-white font-semibold">Todo</div>
+                            <div class="text-xs text-slate-400 mt-1">aprovado p/ noite</div>
+                        </div>
+                        <div class="self-center text-slate-600 flex flex-col items-center gap-0.5">
+                            <span class="text-[10px] text-amber-400 font-semibold">run noturno</span>
+                            <span>→</span>
+                        </div>
+                        <div class="flex-1 rounded-xl bg-white/5 border border-white/10 p-3">
+                            <div class="text-white font-semibold">In Progress</div>
+                            <div class="text-xs text-slate-500 mt-1">skill executa</div>
+                        </div>
+                        <div class="self-center text-slate-600 flex flex-col items-center gap-0.5">
+                            <span class="text-[10px] text-emerald-400 font-semibold">DoD 100%</span>
+                            <span>→</span>
+                        </div>
+                        <div class="flex-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-3">
+                            <div class="text-emerald-300 font-semibold">Done</div>
+                            <div class="text-xs text-slate-400 mt-1">PR mergeado</div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-xs text-slate-500">Card bloqueada (DoR incompleto ou gate vermelho após 2
+                        tentativas) → <code class="text-brand-200">BLOCKED:</code> no <code
+                            class="text-brand-200">PROGRESS.md</code> e devolve ao Backlog. Nunca adivinha — para e
+                        reporta.</p>
+                </div>
+
+                <!-- Dia vs Noite -->
+                <div class="mt-5 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xl">☀️</span>
+                            <h3 class="font-semibold text-amber-300">Sessão de dia — autoria</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li class="flex gap-2"><span class="text-amber-400 shrink-0">1.</span>Entender o que o dono
+                                quer evoluir (e o porquê).</li>
+                            <li class="flex gap-2"><span class="text-amber-400 shrink-0">2.</span>Rascunhar cards usando
+                                o <strong class="text-slate-300">template de DoR/DoD</strong>.</li>
+                            <li class="flex gap-2"><span class="text-amber-400 shrink-0">3.</span>Cobrar o DoR —
+                                perguntar ao dono por cada item faltante (Gherkin, fixtures, contrato, escopo). Nunca
+                                empurrar card incompleta.</li>
+                            <li class="flex gap-2"><span class="text-amber-400 shrink-0">4.</span>Card com DoR 100% →
+                                mover para <strong class="text-slate-300">Todo</strong> (só humano faz isso).</li>
+                            <li class="flex gap-2"><span class="text-amber-400 shrink-0">5.</span>Evoluções grandes →
+                                quebrar em várias cards pequenas (1 WU cada).</li>
+                        </ul>
+                        <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-500">
+                            <strong class="text-slate-400">Faço no dia:</strong> specs, ADRs, contratos, docs, tooling
+                            (scripts/CI/skills), governança e curadoria do board.
+                        </div>
+                    </div>
+                    <div class="rounded-2xl border border-brand-500/20 bg-brand-500/5 p-5">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xl">🌙</span>
+                            <h3 class="font-semibold text-brand-300">Run noturno — execução autônoma</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-400">
+                            <li class="flex gap-2"><span class="text-brand-400 shrink-0">S1.</span>Ler <code
+                                    class="text-brand-200">.ai/state/PROGRESS.md</code> + card em Todo de maior
+                                prioridade.</li>
+                            <li class="flex gap-2"><span class="text-brand-400 shrink-0">S2.</span>Se bloqueio ≠ NENHUM
+                                → parar e reportar (não adivinha).</li>
+                            <li class="flex gap-2"><span class="text-brand-400 shrink-0">S3.</span>Revalidar o DoR — se
+                                algum item estiver aberto, marca <code class="text-brand-200">BLOCKED:</code> e devolve
+                                ao Backlog.</li>
+                            <li class="flex gap-2"><span class="text-brand-400 shrink-0">S4.</span>Executar 1–2 passos
+                                da WU (pacing). Rodar <code class="text-brand-200">./scripts/gate.ps1</code>.</li>
+                            <li class="flex gap-2"><span class="text-brand-400 shrink-0">S5.</span>Gate verde → commit
+                                na feature branch; se WU fechou: PR auto-merge + tag.</li>
+                            <li class="flex gap-2"><span class="text-brand-400 shrink-0">S6.</span>Atualizar <code
+                                    class="text-brand-200">PROGRESS.md</code> + lições. Parar num checkpoint seguro.
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-500">
+                            <strong class="text-slate-400">Vira card:</strong> implementação em <code
+                                class="text-brand-200">src/socialselling/</code>, <code
+                                class="text-brand-200">tests/</code>, fixtures — tudo que muda o comportamento do
+                            produto.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DoR & DoD destilado -->
+                <div class="mt-5 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-emerald-300 flex items-center gap-2">✅ Definition of Ready (DoR)
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-3">Card pode ir de Backlog → Todo?</p>
+                        <ul class="space-y-1.5 text-sm text-slate-400">
+                            <li>① Objetivo observável em 1 frase (porquê + resultado verificável)</li>
+                            <li>② Fatiada em 1 WU — cabe numa janela de execução</li>
+                            <li>③ Contrato Pydantic definido; ADR vinculada se cruza módulo</li>
+                            <li>④ Gherkin: caminho feliz + modo degradado + Open-World</li>
+                            <li>⑤ Fixtures identificadas; sem bloqueio de rede paga/entitlement</li>
+                            <li>⑥ Sem decisão de fronteira em aberto</li>
+                            <li>⑦ Dentro do escopo canônico (§3/§5/ADR-000)</li>
+                            <li>⑧ Determinismo viável (APIs mockadas, tolerância 1e-9)</li>
+                            <li>⑨ DoD específico declarado no corpo da card</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-brand-300 flex items-center gap-2">🏁 Definition of Done (DoD)
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-3">Card pode ir de In Progress → Done?</p>
+                        <ul class="space-y-1.5 text-sm text-slate-400">
+                            <li>① Cenários BDD verdes e byte-idênticos (zero flakiness)</li>
+                            <li>② Fixtures commitadas; testes não tocam rede</li>
+                            <li>③ Gate completo: <code class="text-brand-200">ruff</code> + <code
+                                    class="text-brand-200">mypy --strict</code> + <code
+                                    class="text-brand-200">pytest</code> ✅</li>
+                            <li>④ Invariantes semânticas respeitadas; persistência atômica</li>
+                            <li>⑤ Escopo preservado — implementado o mínimo da fatia</li>
+                            <li>⑥ PR com CI verde (<code class="text-brand-200">gh pr merge --squash --auto</code>)</li>
+                            <li>⑦ <code class="text-brand-200">PROGRESS.md</code> + lições atualizados no mesmo PR</li>
+                            <li>⑧ Card em Done + tag <code class="text-brand-200">vX.Y.Z</code> se fechou um marco</li>
+                            <li>⑨ Fail-closed: gate vermelho após 2 tentativas → <code
+                                    class="text-brand-200">BLOCKED:</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Guardrails & Exceções -->
+                <div class="mt-5 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
+                        <h3 class="font-semibold text-rose-300">⛔ Guardrails de autonomia (inegociáveis)</h3>
+                        <ul class="mt-3 space-y-1.5 text-sm text-slate-400">
+                            <li>Nunca commit/push direto na <code class="text-brand-200">main</code> — só via PR com CI
+                                verde</li>
+                            <li>Nunca <code class="text-brand-200">--force</code>; rollback só via <code
+                                    class="text-brand-200">git revert</code> em PR</li>
+                            <li>Nunca inventar especificação — ambiguidade → <code
+                                    class="text-brand-200">BLOCKED:</code> e para</li>
+                            <li>Sem fixtures gravadas → não implementa módulos que tocam rede (M1/M2)</li>
+                            <li>Parar sempre num checkpoint seguro; nunca terminar no meio de passo destrutivo</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                        <h3 class="font-semibold text-white">🔓 Exceções ao modo noturno</h3>
+                        <ul class="mt-3 space-y-1.5 text-sm text-slate-400">
+                            <li><strong class="text-slate-200">Pedido explícito</strong> do dono: "faça agora",
+                                "implemente isto" — o override sempre vence.</li>
+                            <li><strong class="text-slate-200">Hotfix crítico:</strong> <code
+                                    class="text-brand-200">main</code> quebrada ou bug crítico — corrigir na hora via PR
+                                + gate verde, registrar depois.</li>
+                        </ul>
+                        <p class="mt-3 text-xs text-slate-500">Fora desses dois casos, implementação de produto =
+                            card/noite.</p>
+                    </div>
+                </div>
+
+                <!-- Âncora de estado & Cadência -->
+                <div class="mt-5 rounded-2xl border border-white/10 bg-ink-800 p-6">
+                    <h3 class="font-semibold text-white mb-4">Âncora de estado &amp; cadência</h3>
+                    <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <p class="text-slate-300 font-medium mb-2">📌 <code
+                                    class="text-brand-200">.ai/state/PROGRESS.md</code></p>
+                            <p class="text-slate-400">Fonte da verdade do "onde paramos". O run <strong>lê no
+                                    início</strong> e <strong>atualiza no fim</strong>. Contém: marco atual, tag verde,
+                                WU em andamento, passo (S1–S6), branch, próxima ação, bloqueios e histórico de runs.</p>
+                            <p class="text-slate-500 text-xs mt-2">Estado nunca vive na sessão — vive no git +
+                                PROGRESS.md. Qualquer run novo reconstrói o contexto lendo esses dois.</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-300 font-medium mb-2">📅 Cadência recomendada</p>
+                            <div class="overflow-x-auto">
+                                <table class="text-xs text-slate-400 w-full">
+                                    <tr class="border-b border-white/10">
+                                        <td class="py-1.5 pr-3 text-slate-300">Janela</td>
+                                        <td>Madrugada BRT (~02:00) — sem contenção com uso interativo</td>
+                                    </tr>
+                                    <tr class="border-b border-white/10">
+                                        <td class="py-1.5 pr-3 text-slate-300">Frequência</td>
+                                        <td>1 run/noite no início; ajustar pelo consumo semanal</td>
+                                    </tr>
+                                    <tr class="border-b border-white/10">
+                                        <td class="py-1.5 pr-3 text-slate-300">Escopo/run</td>
+                                        <td>1–2 passos de uma WU (cabe na janela; termina em checkpoint)</td>
+                                    </tr>
+                                    <tr class="border-b border-white/10">
+                                        <td class="py-1.5 pr-3 text-slate-300">Supervisão</td>
+                                        <td>WUs com rede (M1/M2): gravar fixtures com o dono presente; WUs puras: mais
+                                            seguras p/ rodar sós</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-1.5 pr-3 text-slate-300">Revisão</td>
+                                        <td>Dono revisa merges/tags da noite pela manhã; CI é a rede de segurança</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentos de referência -->
+                <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <h3 class="font-semibold text-white mb-3">Documentos de referência desta camada</h3>
+                    <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                        <a href="https://github.com/issei/SocialSelling/tree/main/docs/governance/modo-operacional.md"
+                            class="flex items-start gap-3 rounded-xl bg-ink-800 hover:bg-ink-700 p-3 transition">
+                            <span class="text-brand-400 shrink-0 mt-0.5">📋</span>
+                            <div>
+                                <p class="text-white font-medium">modo-operacional.md</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Regra padrão dia/noite, fronteira card, fluxo
+                                    de autoria, auto-learning evolutivo.</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/issei/SocialSelling/tree/main/docs/governance/dor-dod.md"
+                            class="flex items-start gap-3 rounded-xl bg-ink-800 hover:bg-ink-700 p-3 transition">
+                            <span class="text-brand-400 shrink-0 mt-0.5">📋</span>
+                            <div>
+                                <p class="text-white font-medium">dor-dod.md</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Portões de qualidade por coluna do board +
+                                    template completo de card (DoR checklist).</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/issei/SocialSelling/tree/main/docs/planning/autonomous-ops.md"
+                            class="flex items-start gap-3 rounded-xl bg-ink-800 hover:bg-ink-700 p-3 transition">
+                            <span class="text-brand-400 shrink-0 mt-0.5">⚙️</span>
+                            <div>
+                                <p class="text-white font-medium">autonomous-ops.md</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Protocolo S1–S6 do run autônomo, guardrails,
+                                    cadência, prompt do agente agendado e recuperação de falha.</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/issei/SocialSelling/tree/main/docs/planning/execution-plan.md"
+                            class="flex items-start gap-3 rounded-xl bg-ink-800 hover:bg-ink-700 p-3 transition">
+                            <span class="text-brand-400 shrink-0 mt-0.5">🗺️</span>
+                            <div>
+                                <p class="text-white font-medium">execution-plan.md</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Plano-mestre de WUs: validação, versão e
+                                    rollback por passo.</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/issei/SocialSelling/tree/main/docs/governance/devops-sre-iac.md"
+                            class="flex items-start gap-3 rounded-xl bg-ink-800 hover:bg-ink-700 p-3 transition">
+                            <span class="text-brand-400 shrink-0 mt-0.5">🔧</span>
+                            <div>
+                                <p class="text-white font-medium">devops-sre-iac.md</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Práticas DevOps/SRE: CI, gate, versionamento e
+                                    IaC do PoC.</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/issei/SocialSelling/tree/main/docs/planning/versioning-strategy.md"
+                            class="flex items-start gap-3 rounded-xl bg-ink-800 hover:bg-ink-700 p-3 transition">
+                            <span class="text-brand-400 shrink-0 mt-0.5">🏷️</span>
+                            <div>
+                                <p class="text-white font-medium">versioning-strategy.md</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Tags = pontos de restauração. Rollback público
+                                    via revert, nunca reset/force.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ░░ REFERÊNCIA TÉCNICA ░░ -->
+            <div class="mt-20 pt-8 border-t border-white/10">
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Referência técnica</p>
+            </div>
+
+            <!-- 11 · CONTRATOS & MODELO DE DADOS -->
+            <section id="contratos" class="mt-8 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">11</span>
+                    Contratos &amp; modelo de dados</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    Todo o pipeline opera sobre contratos <strong class="text-slate-200">Pydantic v2</strong> declarados
+                    em <code class="text-brand-200">src/socialselling/contracts.py</code> — único ponto de verdade dos
+                    modelos de dados. Cada módulo M1–M5 produz e consome tipos bem definidos; jamais compartilham
+                    referências mutáveis entre camadas.
+                </p>
+
+                <!-- Fluxo de tipos pelo pipeline -->
+                <div class="mt-6 rounded-2xl border border-white/10 bg-ink-800 p-6">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-5">Fluxo de contratos
+                        pelo pipeline</p>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start gap-3">
+                            <span class="font-mono text-xs text-slate-500 w-8 shrink-0 pt-0.5">IN</span>
+                            <div class="flex-1 rounded-xl bg-white/5 border border-white/10 p-3">
+                                <span class="font-semibold text-white">ICPCriteria</span>
+                                <span class="ml-2 text-slate-500 text-xs">— entrada universal do pipeline</span>
+                                <p class="text-slate-400 mt-1 text-xs">Firmographics (indústrias, faixa de funcionários,
+                                    geografias, modelos de negócio) · Technographics (tech
+                                    mandatória/preferida/excluída) · PersonaMatrix (roles-alvo, senioridade mínima) ·
+                                    intent_triggers (sinais de hipótese)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M1</span>
+                            <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
+                                <span class="font-semibold text-white">ObservedEvidence</span>
+                                <span class="ml-2 text-xs text-slate-500">— camada 1 · o que foi visto</span>
+                                <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">evidence_id</code>
+                                    (hash SHA-256 estável) · <code class="text-brand-200">query</code>, <code
+                                        class="text-brand-200">source_url</code>, <code
+                                        class="text-brand-200">snippet</code>, <code
+                                        class="text-brand-200">source_trust</code> · <code
+                                        class="text-brand-200">missing_evidence: bool</code> (Open-World explícito)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M2</span>
+                            <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
+                                <span class="font-semibold text-white">Inference</span>
+                                <span class="ml-2 text-xs text-slate-500">— camada 2 · o que foi deduzido</span>
+                                <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">CompanyEntity</code>
+                                    (nome, domínio, indústria, tecnologias, contatos, redes sociais) · <code
+                                        class="text-brand-200">PersonEntity</code> (nome, cargo, senioridade) · <code
+                                        class="text-brand-200">derived_from: list[evidence_id]</code> (rastreabilidade
+                                    obrigatória) · <code class="text-brand-200">intent_signals</code>, <code
+                                        class="text-brand-200">disqualifiers</code>, <code
+                                        class="text-brand-200">persona</code> · <code
+                                        class="text-brand-200">confidence</code></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M3</span>
+                            <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
+                                <span class="font-semibold text-white">ProspectScore</span>
+                                <span class="ml-2 text-xs text-slate-500">— camada 3 · avaliação</span>
+                                <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">fit</code>, <code
+                                        class="text-brand-200">intent</code>, <code
+                                        class="text-brand-200">confidence</code>, <code
+                                        class="text-brand-200">persona_fit</code>, <code
+                                        class="text-brand-200">p_score</code>, <code
+                                        class="text-brand-200">hard_filter_passed</code></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M5</span>
+                            <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
+                                <span class="font-semibold text-white">XAIPayload</span>
+                                <span class="ml-2 text-xs text-slate-500">— justificativa estruturada</span>
+                                <p class="text-slate-400 mt-1 text-xs"><code
+                                        class="text-brand-200">positive_signals</code>, <code
+                                        class="text-brand-200">negative_signals</code> (lista de <code
+                                        class="text-brand-200">Driver</code> com impact e texto) · <code
+                                        class="text-brand-200">missing_signals</code> (Missing Evidence explícito) ·
+                                    <code class="text-brand-200">degraded_mode</code>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="font-mono text-xs text-emerald-400 w-8 shrink-0 pt-0.5">OUT</span>
+                            <div class="flex-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-3">
+                                <span class="font-semibold text-emerald-300">LeadCard</span>
+                                <span class="ml-2 text-xs text-slate-500">— saída acionável do pipeline</span>
+                                <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">display_name</code>,
+                                    <code class="text-brand-200">company</code>, <code
+                                        class="text-brand-200">role</code>, <code class="text-brand-200">sector</code>,
+                                    <code class="text-brand-200">location</code> · <code
+                                        class="text-brand-200">links</code> (Instagram first, LinkedIn, website) · <code
+                                        class="text-brand-200">contact</code> (email, phone) · <code
+                                        class="text-brand-200">score</code> (ProspectScore completo) · <code
+                                        class="text-brand-200">why_now[]</code> (razões imediatas) · <code
+                                        class="text-brand-200">gaps[]</code> (sinais ausentes) · <code
+                                        class="text-brand-200">sources[]</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fórmula de Score + ICP + Hipóteses -->
+                <div class="mt-5 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white mb-3">Fórmula de score (M3)</h3>
+                        <div class="rounded-xl bg-white/5 border border-white/10 p-4 text-center">
+                            <p class="font-mono text-slate-200 text-sm">P = (w_fit · Fit + w_intent · Intent)</p>
+                            <p class="font-mono text-slate-200 text-sm mt-1">&nbsp;&nbsp;&nbsp;&nbsp;× Confiança<sup
+                                    class="text-brand-300">exp</sup> × persona_fit</p>
+                        </div>
+                        <div class="mt-3 space-y-1.5 text-xs text-slate-400">
+                            <div class="flex justify-between"><span><code class="text-brand-200">w_fit</code> = peso do
+                                    fit estrutural</span><span class="text-slate-300">0.60</span></div>
+                            <div class="flex justify-between"><span><code class="text-brand-200">w_intent</code> = peso
+                                    de intenção</span><span class="text-slate-300">0.40</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">confidence_exponent</code></span><span
+                                    class="text-slate-300">0.5</span></div>
+                            <div class="flex justify-between"><span><code class="text-brand-200">persona_fit</code>
+                                    (fundadora)</span><span class="text-slate-300">1.0</span></div>
+                            <div class="flex justify-between"><span><code class="text-brand-200">persona_fit</code>
+                                    (fundador)</span><span class="text-slate-300">0.0</span></div>
+                        </div>
+                        <p class="mt-3 text-xs text-slate-500">M3 e M4 são funções puras: mesma entrada → saída
+                            byte-idêntica (1e-9). Hard filter (disqualifier detectado) zera o lead. Pesos configuráveis
+                            em <code class="text-brand-200">runtime.toml</code> e reajustáveis pelo feedback 👍/👎.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white mb-3">Catálogo de hipóteses (Intent)</h3>
+                        <p class="text-xs text-slate-500 mb-3">Intent = Σ prior das hipóteses ativadas pelos <code
+                                class="text-brand-200">intent_signals</code> detectados pelo M2. Config em <code
+                                class="text-brand-200">config/hypotheses_catalog.json</code>.</p>
+                        <div class="space-y-2 text-xs">
+                            <div class="rounded-lg bg-white/5 border border-white/10 p-2.5">
+                                <div class="flex justify-between items-center"><span
+                                        class="font-mono text-brand-300">H_01</span><span class="text-slate-400">prior
+                                        0.30</span></div>
+                                <p class="text-slate-300 mt-0.5">Fundadora presa na operação — crescimento travado</p>
+                            </div>
+                            <div class="rounded-lg bg-white/5 border border-white/10 p-2.5">
+                                <div class="flex justify-between items-center"><span
+                                        class="font-mono text-brand-300">H_02</span><span class="text-slate-400">prior
+                                        0.20</span></div>
+                                <p class="text-slate-300 mt-0.5">Contratação sênior recente / formação de time</p>
+                            </div>
+                            <div class="rounded-lg bg-white/5 border border-white/10 p-2.5">
+                                <div class="flex justify-between items-center"><span
+                                        class="font-mono text-brand-300">H_03</span><span class="text-slate-400">prior
+                                        0.18</span></div>
+                                <p class="text-slate-300 mt-0.5">Expansão anunciada — nova unidade ou serviço</p>
+                            </div>
+                            <div class="rounded-lg bg-white/5 border border-white/10 p-2.5">
+                                <div class="flex justify-between items-center"><span
+                                        class="font-mono text-brand-300">H_04</span><span class="text-slate-400">prior
+                                        0.17</span></div>
+                                <p class="text-slate-300 mt-0.5">Intenção de adotar IA sem processo organizado</p>
+                            </div>
+                            <div class="rounded-lg bg-white/5 border border-white/10 p-2.5">
+                                <div class="flex justify-between items-center"><span
+                                        class="font-mono text-brand-300">H_05</span><span class="text-slate-400">prior
+                                        0.10</span></div>
+                                <p class="text-slate-300 mt-0.5">Conclusão recente de curso / mentoria de gestão</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 12 · ESTRUTURA DO CÓDIGO -->
+            <section id="codigo" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">12</span>
+                    Estrutura do código-fonte</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">Cada subdiretório de <code
+                        class="text-brand-200">src/socialselling/</code> tem uma responsabilidade estritamente
+                    delimitada. Nenhum módulo importa de um módulo de nível acima no pipeline.</p>
+
+                <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
+                    <!-- contracts.py -->
+                    <div class="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 sm:col-span-2">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="font-mono text-amber-300 text-xs">contracts.py</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300">ponto
+                                único de contratos</span>
+                        </div>
+                        <p class="text-slate-400 text-xs">Todos os modelos Pydantic do pipeline (4 camadas): <code
+                                class="text-brand-200">ICPCriteria</code> → <code
+                                class="text-brand-200">ObservedEvidence</code> → <code
+                                class="text-brand-200">Inference</code> (+ <code
+                                class="text-brand-200">CompanyEntity</code>, <code
+                                class="text-brand-200">PersonEntity</code>) → <code
+                                class="text-brand-200">ProspectScore</code> / <code
+                                class="text-brand-200">XAIPayload</code> / <code
+                                class="text-brand-200">RankedProspect</code> → <code
+                                class="text-brand-200">LeadCard</code>. Regra: nenhuma lógica de negócio aqui.</p>
+                    </div>
+
+                    <!-- modules/ -->
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-4">
+                        <p class="font-mono text-brand-300 text-xs mb-2">modules/</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div><code class="text-slate-300">m1_busca.py</code> — queries Tavily/Apollo, cache atômico
+                                24h, <code class="text-brand-200">ObservedEvidence[]</code></div>
+                            <div><code class="text-slate-300">m2_extracao.py</code> — lotes Gemini, parsing Pydantic,
+                                <code class="text-brand-200">Inference[]</code>
+                            </div>
+                            <div><code class="text-slate-300">m3_score.py</code> — fórmula linear pura, hard filter,
+                                <code class="text-brand-200">ProspectScore[]</code>
+                            </div>
+                            <div><code class="text-slate-300">m4_ranking.py</code> — sort estável por p_score, tie-break
+                                por company_id</div>
+                            <div><code class="text-slate-300">m5_xai.py</code> — gera <code
+                                    class="text-brand-200">XAIPayload</code> por regras, sem IA</div>
+                        </div>
+                    </div>
+
+                    <!-- skills/ -->
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-4">
+                        <p class="font-mono text-brand-300 text-xs mb-2">skills/ — clientes externos</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div><code class="text-slate-300">tavily_client.py</code> — HTTP + cache + degradação
+                                (429/timeout)</div>
+                            <div><code class="text-slate-300">gemini_client.py</code> — geração JSON, backoff
+                                exponencial, surfacia <code class="text-brand-200">error.message</code> cru</div>
+                            <div><code class="text-slate-300">apollo_client.py</code> — REST Apollo, 3 endpoints, ledger
+                                integrado</div>
+                        </div>
+                    </div>
+
+                    <!-- core/ -->
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-4">
+                        <p class="font-mono text-brand-300 text-xs mb-2">core/ — infraestrutura interna</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div><code class="text-slate-300">atomic.py</code> — write-temp + <code
+                                    class="text-brand-200">os.replace</code> (primitiva de escrita atômica)</div>
+                            <div><code class="text-slate-300">cache.py</code> — cache frio em JSON, chave = hash SHA-256
+                                do conteúdo</div>
+                            <div><code class="text-slate-300">credit_ledger.py</code> — orçamento mensal Apollo (<code
+                                    class="text-brand-200">try_spend</code>/<code class="text-brand-200">refund</code>)
+                            </div>
+                            <div><code class="text-slate-300">request_ledger.py</code> — orçamento diário RPD Gemini
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- apollo/ corpus/ learning/ -->
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-4">
+                        <p class="font-mono text-brand-300 text-xs mb-2">apollo/ · corpus/ · learning/</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div><code class="text-slate-300">apollo/schemas.py</code> — contratos REST Apollo; <code
+                                    class="text-slate-300">normalize.py</code> → <code
+                                    class="text-brand-200">ObservedEvidence</code></div>
+                            <div><code class="text-slate-300">corpus/store.py</code> — upsert idempotente por <code
+                                    class="text-brand-200">entity_id</code>; <code
+                                    class="text-slate-300">waves.py</code> — geração de queries por onda</div>
+                            <div><code class="text-slate-300">learning/model.py</code> — regressão logística pura; <code
+                                    class="text-slate-300">tuner.py</code> — shrinkage + clamp; <code
+                                    class="text-slate-300">feedback_store.py</code> — votos atômicos</div>
+                        </div>
+                    </div>
+
+                    <!-- web/ + orchestrator.py -->
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-4 sm:col-span-2">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-mono text-brand-300 text-xs mb-2">orchestrator.py</p>
+                                <p class="text-xs text-slate-400">Pipeline unificado síncrono M1→M5. Injeta clientes,
+                                    cache e relógio; retorna <code class="text-brand-200">list[LeadCard]</code>. Exporta
+                                    <code class="text-brand-200">run_pipeline()</code> (CLI e web) e <code
+                                        class="text-brand-200">accumulate_and_rank()</code> (corpus+ondas).
+                                </p>
+                            </div>
+                            <div>
+                                <p class="font-mono text-brand-300 text-xs mb-2">web/</p>
+                                <p class="text-xs text-slate-400"><code class="text-slate-300">app.py</code> — rotas
+                                    FastAPI (run, feedback, pesos, status) · <code
+                                        class="text-slate-300">services.py</code> — lógica de negócio da UI · <code
+                                        class="text-slate-300">static/</code> — cockpit HTML + JS · <code
+                                        class="text-slate-300">schemas.py</code> — contratos da API web</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- config/ + scripts/ -->
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <p class="font-mono text-brand-300 text-xs mb-2">config/</p>
+                        <div class="space-y-1 text-xs text-slate-400">
+                            <div><code class="text-slate-300">runtime.toml</code> — todos os parâmetros ajustáveis
+                                (pesos, TTLs, limites, opt-ins)</div>
+                            <div><code class="text-slate-300">hypotheses_catalog.json</code> — hipóteses de intent com
+                                priors e surface_signals</div>
+                            <div><code class="text-slate-300">icp_criteria.*.json</code> — ICPs concretos (talita,
+                                example)</div>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                        <p class="font-mono text-brand-300 text-xs mb-2">scripts/</p>
+                        <div class="space-y-1 text-xs text-slate-400">
+                            <div><code class="text-slate-300">gate.ps1</code> / <code
+                                    class="text-slate-300">gate.sh</code> — ruff + mypy + pytest em sequência</div>
+                            <div><code class="text-slate-300">bootstrap.ps1</code> / <code
+                                    class="text-slate-300">bootstrap.sh</code> — setup do zero (venv + deps + .env)
+                            </div>
+                            <div><code class="text-slate-300">record_*_fixtures.py</code> — gravam respostas reais de
+                                Tavily/Gemini/Apollo</div>
+                            <div><code class="text-slate-300">new_card.ps1</code> — cria card no GitHub Project com
+                                template DoR</div>
+                            <div><code class="text-slate-300">setup_github_project.ps1</code> — sincroniza PROGRESS.md →
+                                board</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 13 · TESTES, BDD & OBSERVABILIDADE -->
+            <section id="testes" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">13</span>
+                    Testes, BDD &amp; observabilidade</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    A suíte de testes é a garantia de que o sistema é <strong
+                        class="text-slate-200">determinístico</strong>, <strong
+                        class="text-slate-200">byte-idêntico</strong> e <strong class="text-slate-200">jamais toca
+                        rede</strong>. Toda chamada externa é mockada com fixtures gravadas supervisionadas.
+                </p>
+
+                <!-- Anatomia dos testes -->
+                <div class="mt-6 grid sm:grid-cols-3 gap-4">
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white text-sm">📄 Features Gherkin</h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-3"><code class="text-brand-200">tests/features/</code>
+                        </p>
+                        <div class="space-y-1 text-xs text-slate-400">
+                            <div><code class="text-slate-300">m1_busca.feature</code> · M2 · M3 · M4 · M5</div>
+                            <div><code class="text-slate-300">pipeline_smoke.feature</code> — E2E byte-idêntico</div>
+                            <div><code class="text-slate-300">objetivo_ranking.feature</code> — objetivo de negócio
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3">Cada módulo exige 3 cenários: <strong
+                                class="text-slate-400">feliz</strong> (caminho normal) + <strong
+                                class="text-slate-400">degradado</strong> (429/timeout → degrada, não quebra) + <strong
+                                class="text-slate-400">Open-World</strong> (sinal ausente → incerteza ↑, nunca falso).
+                        </p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white text-sm">🗂️ Fixtures gravadas</h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-3"><code class="text-brand-200">tests/fixtures/</code>
+                        </p>
+                        <p class="text-xs text-slate-400">Respostas reais de API capturadas uma vez, com supervisão, via
+                            scripts dedicados:</p>
+                        <div class="mt-2 space-y-1 text-xs text-slate-400">
+                            <div><code class="text-brand-200">record_tavily_fixtures.py</code></div>
+                            <div><code class="text-brand-200">record_gemini_fixtures.py</code></div>
+                            <div><code class="text-brand-200">record_apollo_fixtures.py</code> <span
+                                    class="text-amber-400">(requer plano pago)</span></div>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3">Depois de gravadas, os testes as usam via <code
+                                class="text-brand-200">FakeTavilyClient</code> / <code
+                                class="text-brand-200">FakeGeminiClient</code> — rede nunca é tocada em CI.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <h3 class="font-semibold text-white text-sm">🔬 Garantias dos testes</h3>
+                        <ul class="mt-3 space-y-1.5 text-xs text-slate-400">
+                            <li>Reexecução byte-idêntica (smoke executa 2×)</li>
+                            <li>Tolerância numérica <code class="text-brand-200">abs(a-b) ≤ 1e-9</code></li>
+                            <li>IDs por hash SHA-256 estável (nunca UUID aleatório)</li>
+                            <li>Relógio injetado como parâmetro (<code class="text-brand-200">now: datetime</code>)</li>
+                            <li>Flakiness = falha (zero tolerância)</li>
+                            <li><code class="text-brand-200">mypy --strict</code> sem erros</li>
+                            <li><code class="text-brand-200">StrEnum</code> (não <code
+                                    class="text-brand-200">str, Enum</code>) para Python 3.11+</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Observabilidade -->
+                <div class="mt-5 rounded-2xl border border-white/10 bg-ink-800 p-6">
+                    <h3 class="font-semibold text-white mb-4">Observabilidade &amp; SLOs do PoC</h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-300 text-sm font-medium mb-2">📊 <code
+                                    class="text-brand-200">logs/cognitive_trace.jsonl</code></p>
+                            <p class="text-sm text-slate-400">Log append-only com um evento por decisão relevante do
+                                pipeline. Cada linha: <code
+                                    class="text-brand-200">{ts, module, action, lead_id, inputs_hash, outputs_hash, tokens, degraded}</code>.
+                                Permite auditar custo, reproduzir decisões e, no futuro, medir latência sem
+                                instrumentação extra. Rastreabilidade: <code
+                                    class="text-brand-200">Evidence → Inference → Score → Decision</code> garantida via
+                                <code class="text-brand-200">derived_from</code>.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-slate-300 text-sm font-medium mb-2">🎯 SLOs do PoC</p>
+                            <div class="overflow-x-auto">
+                                <table class="text-xs text-slate-400 w-full">
+                                    <thead>
+                                        <tr class="border-b border-white/10 text-slate-300">
+                                            <th class="text-left pb-1.5 pr-3">SLI</th>
+                                            <th class="text-left pb-1.5">Alvo (SLO)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-white/10">
+                                            <td class="py-1.5 pr-3">Testes verdes na main</td>
+                                            <td class="text-emerald-300">100% (bloqueante)</td>
+                                        </tr>
+                                        <tr class="border-b border-white/10">
+                                            <td class="py-1.5 pr-3">Determinismo pipeline</td>
+                                            <td class="text-emerald-300">100% byte-idêntico (bloqueante)</td>
+                                        </tr>
+                                        <tr class="border-b border-white/10">
+                                            <td class="py-1.5 pr-3">Cobertura de tipos</td>
+                                            <td class="text-emerald-300">mypy --strict sem erros</td>
+                                        </tr>
+                                        <tr class="border-b border-white/10">
+                                            <td class="py-1.5 pr-3">Custo por execução</td>
+                                            <td class="text-slate-300">≤ orçamento runtime.toml</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1.5 pr-3">Latência (N≤50 leads)</td>
+                                            <td class="text-slate-500">p95 a calibrar via trace</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="mt-2 text-xs text-slate-500">Error budget zero para determinismo e testes.
+                                Latência/custo: alvo a calibrar — não bloqueia merge no PoC.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 14 · CONFIGURAÇÃO (runtime.toml) -->
+            <section id="configuracao" class="mt-16 scroll-mt-20">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">14</span>
+                    Configuração central (<code class="text-brand-200 text-xl">runtime.toml</code>)</h2>
+                <p class="mt-4 text-slate-400 max-w-3xl">
+                    <code class="text-brand-200">config/runtime.toml</code> é o painel de controle do PoC. Nenhum
+                    segredo aqui (chaves de API ficam no <code class="text-brand-200">.env</code>). Todas as features
+                    opt-in são desligadas por padrão para preservar a paridade do smoke E2E.
+                </p>
+
+                <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <p class="text-xs font-mono text-brand-300 mb-3">[scoring] — fórmula do score</p>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">w_fit</code> = peso fit estrutural</span><span
+                                    class="text-slate-200">0.60</span></div>
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">w_intent</code> = peso de intenção</span><span
+                                    class="text-slate-200">0.40</span></div>
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">confidence_exponent</code></span><span
+                                    class="text-slate-200">0.5</span></div>
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">w_fit_tech</code> / <code
+                                        class="text-brand-200">w_fit_industry</code></span><span
+                                    class="text-slate-200">0.60 / 0.40</span></div>
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">intent_evidence_norm</code></span><span
+                                    class="text-slate-200">5</span></div>
+                        </div>
+                        <p class="text-xs font-mono text-brand-300 mt-4 mb-3">[persona] — multiplicadores por tipo</p>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">fundadora</code></span><span class="text-emerald-300">1.0
+                                    ← alvo</span></div>
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">indefinido</code></span><span
+                                    class="text-slate-200">0.5</span></div>
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">empresa</code></span><span
+                                    class="text-slate-200">0.35</span></div>
+                            <div class="flex justify-between text-slate-400"><span><code
+                                        class="text-brand-200">fundador</code></span><span class="text-rose-300">0.0 ←
+                                    hard filter</span></div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <p class="text-xs font-mono text-brand-300 mb-3">[finops] — controle de custo</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div class="flex justify-between"><span><code class="text-brand-200">tau_finops</code> —
+                                    limiar de poda</span><span class="text-slate-200">0.60</span></div>
+                            <div class="flex justify-between"><span><code class="text-brand-200">kappa_degraded</code> —
+                                    penalidade em modo degradado</span><span class="text-slate-200">0.80</span></div>
+                        </div>
+                        <p class="text-xs font-mono text-brand-300 mt-4 mb-3">[gemini] — cognição</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">model</code></span><span
+                                    class="text-slate-200">gemini-2.5-flash-lite</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">batch_size</code></span><span
+                                    class="text-slate-200">50</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">timeout_seconds</code></span><span
+                                    class="text-slate-200">120</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">rpd_enabled</code></span><span
+                                    class="text-amber-300">false ← opt-in</span></div>
+                            <div class="flex justify-between"><span><code class="text-brand-200">rpd_cap</code>
+                                    req/dia</span><span class="text-slate-200">1000</span></div>
+                        </div>
+                        <p class="text-xs font-mono text-brand-300 mt-4 mb-3">[cache] · [tavily] · [runtime]</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">cache.ttl_hours</code></span><span
+                                    class="text-slate-200">24h</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">tavily.max_queries</code></span><span
+                                    class="text-slate-200">3</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">tavily.persona_term</code></span><span
+                                    class="text-slate-200">"fundadora"</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">runtime.max_leads_per_cycle</code></span><span
+                                    class="text-slate-200">50</span></div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <p class="text-xs font-mono text-brand-300 mb-3">[apollo] — sensor firmográfico (opt-in)</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">enabled</code></span><span class="text-amber-300">false ←
+                                    opt-in</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">reveal_top_n</code></span><span
+                                    class="text-slate-200">20</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">org_enrich_ttl_hours</code></span><span
+                                    class="text-slate-200">720h (30d)</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">reveal_ttl_hours</code></span><span
+                                    class="text-slate-200">2160h (90d)</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">caps.data_credits_cap</code></span><span
+                                    class="text-slate-200">100/mês</span></div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
+                        <p class="text-xs font-mono text-brand-300 mb-3">[corpus] &amp; [learning] — opt-ins ativos</p>
+                        <div class="space-y-1.5 text-xs text-slate-400">
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">corpus.enabled</code></span><span
+                                    class="text-emerald-300">true ← ligado</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">corpus.path</code></span><span
+                                    class="text-slate-200">data/corpus/leads_corpus.json</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">corpus.waves_path</code></span><span
+                                    class="text-slate-200">data/corpus/waves.json</span></div>
+                            <div class="flex justify-between mt-2"><span><code
+                                        class="text-brand-200">learning.enabled</code></span><span
+                                    class="text-emerald-300">true ← ligado</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">learning.min_likes</code> / <code
+                                        class="text-brand-200">min_dislikes</code></span><span class="text-slate-200">3
+                                    / 3</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">learning.l2</code></span><span
+                                    class="text-slate-200">0.1</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">learning.epochs</code></span><span
+                                    class="text-slate-200">500</span></div>
+                            <div class="flex justify-between"><span><code
+                                        class="text-brand-200">learning.shrinkage_max</code></span><span
+                                    class="text-slate-200">0.5</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-400">
+                    <strong class="text-slate-200">Regra de paridade:</strong> qualquer feature com <code
+                        class="text-brand-200">enabled = false</code> deixa o pipeline byte-idêntico ao baseline. Ligar
+                    uma feature = alterar o caminho quente; desligar = zero impacto. O smoke E2E valida isso a cada PR.
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-500">
+                <p>SocialSelling · overview gerado a partir das especificações vivas do repositório. Fonte da verdade:
+                    <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-000-escopo-canonico.md"
+                        class="text-brand-400 hover:underline">ADR-000</a> ·
+                    memória operacional: <a href="https://github.com/issei/SocialSelling/tree/main/CLAUDE.md"
+                        class="text-brand-400 hover:underline">CLAUDE.md</a>.
+                </p>
+                <p class="mt-2">Documento explicativo e modelo de boas práticas — atualize-o quando uma decisão ou
+                    prática mudar.</p>
+                <p class="mt-2 text-xs">Última revisão: Junho 2026 · Seções 11–14 adicionadas (contratos, código,
+                    testes/observabilidade, configuração).</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- scrollspy + active nav -->
+    <script>
+        const links = [...document.querySelectorAll('aside a[href^="#"]')];
+        const map = links.map(a => ({ a, sec: document.querySelector(a.getAttribute('href')) })).filter(x => x.sec);
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const id = '#' + e.target.id;
+                    links.forEach(a => a.classList.toggle('bg-white/5', a.getAttribute('href') === id));
+                    links.forEach(a => a.classList.toggle('text-white', a.getAttribute('href') === id));
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        map.forEach(({ sec }) => obs.observe(sec));
+    </script>
+</body>
+
+</html>
