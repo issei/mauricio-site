@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GEKLHZYVYX');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenharia Reversa Assistida por IA | Transformação Salesforce</title>
+    <meta name="description"
+        content="Proposta executiva de Engenharia Reversa Assistida por IA para Transformação Arquitetural Salesforce. Baseline As-Is baseada em evidências com governança Fail-Closed.">
+    <link rel="canonical" href="https://mauricio.issei.com.br/proposta-engenharia-reversa.html" />
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mauricio.issei.com.br/proposta-engenharia-reversa.html">
+    <meta property="og:title" content="Engenharia Reversa Assistida por IA | Transformação Salesforce">
+    <meta property="og:description"
+        content="Proposta executiva de Engenharia Reversa Assistida por IA para Transformação Arquitetural Salesforce. Baseline As-Is baseada em evidências com governança Fail-Closed.">
+    <meta property="og:image" content="https://mauricio.issei.com.br/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Engenharia Reversa Assistida por IA | Transformação Salesforce">
+    <meta name="twitter:description" content="Proposta executiva de Engenharia Reversa Assistida por IA para Transformação Arquitetural Salesforce. Baseline As-Is baseada em evidências com governança Fail-Closed.">
+    <meta name="twitter:image" content="https://mauricio.issei.com.br/assets/og-image.jpg">
+
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonte Inter e FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind CSS Vite Build (v4) -->
+    <link href="./input.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+
+        /* ─── Gradient Text ─── */
+        .text-gradient-cyber {
+            background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-accent {
+            background: linear-gradient(90deg, #22d3ee, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ─── WebGL Canvas ─── */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* ─── Glass Panel ─── */
+        .glass-card {
+            background: rgba(22, 27, 34, 0.7);
+            border: 1px solid rgba(34, 211, 238, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+            background: rgba(22, 27, 34, 0.9);
+            box-shadow: 0 8px 40px rgba(34, 211, 238, 0.08), 0 0 0 1px rgba(34, 211, 238, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* ─── Bento Card Variants ─── */
+        .bento-structural {
+            border-color: rgba(34, 211, 238, 0.2);
+        }
+
+        .bento-structural:hover {
+            border-color: rgba(34, 211, 238, 0.6);
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.12);
+        }
+
+        .bento-config {
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .bento-config:hover {
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.12);
+        }
+
+        .bento-operational {
+            border-color: rgba(251, 146, 60, 0.2);
+        }
+
+        .bento-operational:hover {
+            border-color: rgba(251, 146, 60, 0.6);
+            box-shadow: 0 0 30px rgba(251, 146, 60, 0.12);
+        }
+
+        .bento-human {
+            border-color: rgba(52, 211, 153, 0.2);
+        }
+
+        .bento-human:hover {
+            border-color: rgba(52, 211, 153, 0.6);
+            box-shadow: 0 0 30px rgba(52, 211, 153, 0.12);
+        }
+
+        /* ─── BPMN Process Flow ─── */
+        .bpmn-node {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .bpmn-node:hover {
+            transform: translateY(-3px);
+        }
+
+        .bpmn-arrow {
+            color: rgba(34, 211, 238, 0.4);
+        }
+
+        /* ─── Scroll Reveal ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* ─── Scrollbar ─── */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22d3ee;
+        }
+
+        /* ─── Neon Glow Keyframes ─── */
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+            }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        /* ─── Section Divider ─── */
+        .section-divider {
+            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.25), transparent);
+            height: 1px;
+        }
+
+        /* ─── Checklist ─── */
+        .check-item {
+            transition: all 0.3s ease;
+        }
+
+        .check-item:hover {
+            background: rgba(34, 211, 238, 0.05);
+            padding-left: 1.5rem;
+        }
+
+        /* ─── Analysis Cards ─── */
+        .analysis-solid {
+            border-left: 3px solid #34d399;
+        }
+
+        .analysis-hypothesis {
+            border-left: 3px solid #fbbf24;
+        }
+
+        .analysis-open {
+            border-left: 3px solid #f87171;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- ══════════ NAVBAR ══════════ -->
+    <nav class="fixed w-full z-50 border-b border-white/5 transition-all duration-300" id="navbar"
+        style="background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center"
+                    style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3);">
+                    <!-- AI Brain SVG -->
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a6 6 0 0 1 6 6c0 3-2 5-3 6l-1 1v3h-4v-3l-1-1c-1-1-3-3-3-6a6 6 0 0 1 6-6z" />
+                        <line x1="10" y1="22" x2="14" y2="22" />
+                        <line x1="9" y1="18" x2="15" y2="18" />
+                        <circle cx="9" cy="9" r="1" fill="#22d3ee" />
+                        <circle cx="15" cy="9" r="1" fill="#22d3ee" />
+                    </svg>
+                </div>
+                <a href="#" class="font-black text-lg tracking-tight text-white">Reverse<span
+                        class="text-gradient-accent">Eng</span></a>
+            </div>
+
+            <!-- Nav Links -->
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+                <a href="#proposito"
+                    class="text-gray-300 relative hover:text-cyan-400 transition-colors duration-200 group">
+                    Propósito
+                    <span
+                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#evidencias"
+                    class="text-gray-300 relative hover:text-cyan-400 transition-colors duration-200 group">
+                    Evidências
+                    <span
+                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#inventario"
+                    class="text-gray-300 relative hover:text-cyan-400 transition-colors duration-200 group">
+                    Inventário
+                    <span
+                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#ponte-tobe"
+                    class="text-gray-300 relative hover:text-cyan-400 transition-colors duration-200 group">
+                    Ponte To-Be
+                    <span
+                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#processo"
+                    class="text-gray-300 relative hover:text-cyan-400 transition-colors duration-200 group">
+                    Processo
+                    <span
+                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#analise"
+                    class="text-gray-300 relative hover:text-cyan-400 transition-colors duration-200 group">
+                    Análise
+                    <span
+                        class="absolute -bottom-0.5 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-300 hover:text-cyan-400 transition-colors" aria-label="Abrir menu de navegação" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-white/5 px-6 py-4 space-y-3"
+            style="background: rgba(13, 17, 23, 0.95);">
+            <a href="#proposito" class="block text-sm text-gray-300 hover:text-cyan-400 transition-colors">Propósito</a>
+            <a href="#evidencias" class="block text-sm text-gray-300 hover:text-cyan-400 transition-colors">Evidências</a>
+            <a href="#inventario" class="block text-sm text-gray-300 hover:text-cyan-400 transition-colors">Inventário</a>
+            <a href="#ponte-tobe" class="block text-sm text-gray-300 hover:text-cyan-400 transition-colors">Ponte To-Be</a>
+            <a href="#processo" class="block text-sm text-gray-300 hover:text-cyan-400 transition-colors">Processo</a>
+            <a href="#analise" class="block text-sm text-gray-300 hover:text-cyan-400 transition-colors">Análise</a>
+        </div>
+    </nav>
+
+    <main role="main">
+        <!-- ══════════ SEÇÃO 1: HERO (WebGL Background) ══════════ -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Three.js Canvas -->
+        <canvas id="hero-canvas"></canvas>
+
+        <!-- Radial glow overlay -->
+        <div class="absolute inset-0 z-[1]"
+            style="background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(34, 211, 238, 0.08) 0%, transparent 70%);">
+        </div>
+
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 z-[1]"
+            style="background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 4rem 4rem; mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%);">
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <div class="reveal">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8"
+                    style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25);">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">Proposta Executiva &
+                        Técnica</span>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-black leading-tight mb-6 tracking-tight text-white">
+                    Engenharia Reversa<br>
+                    <span class="text-gradient-cyber">Assistida por IA</span><br>
+                    <span class="text-3xl md:text-4xl lg:text-5xl block mt-2 text-gray-300 font-bold">Transformação
+                        Salesforce</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+                    Afastando a ilusão da documentação viva contínua para construir uma
+                    <strong class="text-white">fundação As-Is baseada em evidências</strong> —
+                    determinística, rastreável e validada por humanos.
+                </p>
+
+                <!-- Scroll Indicator -->
+                <div class="flex flex-col items-center gap-2 mt-8 animate-bounce">
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">Explorar</span>
+                    <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SEÇÃO 2: PROPÓSITO E ESTRATÉGIA ══════════ -->
+    <section id="proposito" class="py-24 relative" style="background-color: #0d1117;">
+        <div class="section-divider absolute top-0 left-0 w-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Cabeçalho -->
+            <div class="max-w-3xl mb-16 reveal">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+                    style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25); color: #22d3ee;">
+                    Propósito Central
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 text-white">
+                    Descoberta e <span class="text-gradient-cyber">Preservação</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Em ecossistemas Salesforce com anos de evolução orgânica, regras vitais habitam exclusivamente em
+                    milhares de linhas de Apex, Flows fragmentados e na mente de poucos especialistas. O propósito
+                    <strong class="text-white">não é</strong> implementar documentação automatizada ad aeternum.
+                </p>
+            </div>
+
+            <!-- Grid de Cards do Propósito -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+                <!-- Card 1: Congelar Fotografia -->
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-1">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                        style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.2);">
+                        <!-- Camera/Snapshot SVG -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                            <circle cx="12" cy="13" r="4" />
+                        </svg>
+                    </div>
+                    <div class="text-xs font-black uppercase tracking-widest mb-2" style="color: #22d3ee;">Fotografia
+                        de Alta Fidelidade</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Congelar o As-Is</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Executar uma fase intensiva de descoberta para mapear e compreender de forma exata o
+                        comportamento do sistema no seu estado atual.
+                    </p>
+                </div>
+
+                <!-- Card 2: Tornar Explícito -->
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-2">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                        style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2);">
+                        <!-- Eye/Reveal SVG -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </div>
+                    <div class="text-xs font-black uppercase tracking-widest mb-2" style="color: #3b82f6;">Implícito →
+                        Explícito</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Revelar o Oculto</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Extrair regras embutidas no código, evitando a perda de conhecimento crítico de negócio durante
+                        o descomissionamento ou refatoração.
+                    </p>
+                </div>
+
+                <!-- Card 3: Embasar Decisões -->
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-3">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                        style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2);">
+                        <!-- Shield/Decision SVG -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <polyline points="9 12 11 14 15 10" />
+                        </svg>
+                    </div>
+                    <div class="text-xs font-black uppercase tracking-widest mb-2" style="color: #8b5cf6;">Decisões
+                        Auditáveis</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Embasar a Engenharia</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Fornecer insumos confiáveis para que arquitetos e product owners decidam de maneira consciente o
+                        que deve ser preservado, redesenhado ou descontinuado.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Estratégia Recomendada -->
+            <div class="reveal"
+                style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.06) 0%, rgba(59, 130, 246, 0.06) 100%); border: 1px solid rgba(34, 211, 238, 0.15); border-radius: 1rem; padding: 2rem 2.5rem;">
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-5">
+                    <div class="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
+                        style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3);">
+                        <!-- Compass/Strategy SVG -->
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="rgba(34,211,238,0.2)" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs font-black uppercase tracking-widest"
+                                style="color: #22d3ee;">Estratégia Recomendada</span>
+                            <span class="w-1.5 h-1.5 rounded-full" style="background: #22d3ee;"></span>
+                            <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Top-Down com Deep
+                                Dive</span>
+                        </div>
+                        <p class="text-white font-semibold text-lg leading-snug">
+                            Descoberta guiada por <span class="text-gradient-accent">Jornadas Críticas e Risco</span>
+                            (ex: Lead-to-Cash).
+                            Agentes de IA seguem a trilha de execução (<em>call stack</em>), mapeando todos os
+                            componentes — isolando rapidamente código morto das áreas de alto impacto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SEÇÃO 3: MATRIZ DE EVIDÊNCIAS (Bento Box) ══════════ -->
+    <section id="evidencias" class="py-24 relative overflow-hidden" style="background-color: #0d1117;">
+        <div class="section-divider absolute top-0 left-0 w-full"></div>
+
+        <!-- Background pattern -->
+        <div class="absolute inset-0 pointer-events-none"
+            style="background-image: linear-gradient(rgba(34,211,238,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.02) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+            <!-- Cabeçalho -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+                    style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25); color: #22d3ee;">
+                    Além do Flosum · Pool Multifacetado
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-5 text-white">
+                    Matriz de <span class="text-gradient-cyber">Evidências</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    O comportamento dinâmico de um sistema Salesforce vai muito além do código-fonte. Para evitar
+                    falsos-positivos, a IA analisa um pool multifacetado de insumos.
+                </p>
+            </div>
+
+            <!-- Bento Box Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Card 1: Estruturais -->
+                <div class="glass-card bento-structural rounded-2xl p-8 reveal reveal-delay-1">
+                    <div class="flex items-start gap-5">
+                        <div class="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
+                            style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25);">
+                            <!-- Code/Structure SVG -->
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                                <line x1="14" y1="4" x2="10" y2="20" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-black uppercase tracking-widest mb-1" style="color: #22d3ee;">
+                                Insumos Estruturais</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Metadados, Apex & Flows</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Verdade estrutural e versionada extraída do Flosum: código-fonte real em produção,
+                                Validation Rules, metadados de objetos e campos, classes Apex compiladas e Flows
+                                declarativos.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(34,211,238,0.1); color: #22d3ee;">Apex Classes</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(34,211,238,0.1); color: #22d3ee;">Flows</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(34,211,238,0.1); color: #22d3ee;">Validation Rules</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(34,211,238,0.1); color: #22d3ee;">Flosum</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Estado/Configuração -->
+                <div class="glass-card bento-config rounded-2xl p-8 reveal reveal-delay-2">
+                    <div class="flex items-start gap-5">
+                        <div class="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
+                            style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25);">
+                            <!-- Settings/Config SVG -->
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="3" width="7" height="7" rx="1" />
+                                <rect x="3" y="14" width="7" height="7" rx="1" />
+                                <rect x="14" y="14" width="7" height="7" rx="1" />
+                                <circle cx="6.5" cy="6.5" r="1.5" fill="#8b5cf6" />
+                                <circle cx="17.5" cy="17.5" r="1.5" fill="#8b5cf6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-black uppercase tracking-widest mb-1" style="color: #8b5cf6;">
+                                Estado & Configuração</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Custom Metadata & Settings</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Custom Metadata Types, Custom Settings e dados parametrizadores em objetos
+                                administrativos — que alteram a lógica do código em tempo de execução <strong
+                                    class="text-white">sem deploy</strong>.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(139,92,246,0.1); color: #8b5cf6;">Custom Metadata</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(139,92,246,0.1); color: #8b5cf6;">Custom Settings</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(139,92,246,0.1); color: #8b5cf6;">Admin Objects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Operacionais -->
+                <div class="glass-card bento-operational rounded-2xl p-8 reveal reveal-delay-3">
+                    <div class="flex items-start gap-5">
+                        <div class="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
+                            style="background: rgba(251, 146, 60, 0.08); border: 1px solid rgba(251, 146, 60, 0.25);">
+                            <!-- Activity/Monitor SVG -->
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-black uppercase tracking-widest mb-1" style="color: #fb923c;">
+                                Insumos Operacionais</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Event Monitoring & Debug Logs</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Logs de execução produtivos e APM traces permitem que a IA identifique ramificações de
+                                código que <strong class="text-white">nunca são executadas</strong> — revelando o
+                                <em>código zumbi</em> oculto no sistema.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(251,146,60,0.1); color: #fb923c;">Event Monitoring</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(251,146,60,0.1); color: #fb923c;">Debug Logs</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(251,146,60,0.1); color: #fb923c;">APM Traces</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Humanos/Históricos -->
+                <div class="glass-card bento-human rounded-2xl p-8 reveal reveal-delay-4">
+                    <div class="flex items-start gap-5">
+                        <div class="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
+                            style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.25);">
+                            <!-- Users/History SVG -->
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xs font-black uppercase tracking-widest mb-1" style="color: #34d399;">
+                                Humanos & Históricos</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Git, Jira & Conhecimento Tácito</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                O conhecimento tácito fornece o <strong class="text-white">"Por quê"</strong> da regra
+                                existir, complementando o <em>"Como"</em> descoberto pela máquina. Inclui histórico de
+                                commits, tickets Jira e entrevistas com especialistas.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-4">
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(52,211,153,0.1); color: #34d399;">Git History</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(52,211,153,0.1); color: #34d399;">Jira Tickets</span>
+                                <span class="text-xs px-2 py-1 rounded"
+                                    style="background: rgba(52,211,153,0.1); color: #34d399;">Entrevistas SME</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SEÇÃO 4: INVENTÁRIO DE COMPORTAMENTOS & DEFINITION OF DONE ══════════ -->
+    <section id="inventario" class="py-24 relative" style="background-color: #0d1117;">
+        <div class="section-divider absolute top-0 left-0 w-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Cabeçalho -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+                    style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25); color: #22d3ee;">
+                    Ativo Final · Visão Holística
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-5 text-white">
+                    Inventário de <span class="text-gradient-cyber">Comportamentos</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Abandonamos a visão redutora de um "catálogo de IFs/ELSEs". O ativo final é um inventário holístico
+                    que mapeia <strong class="text-white">todo o espectro de comportamentos sistêmicos</strong>.
+                </p>
+            </div>
+
+            <!-- Grid de 4 Tipos de Comportamento -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+
+                <!-- Regras Core -->
+                <div class="glass-card rounded-2xl p-7 reveal reveal-delay-1 text-center">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+                        style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.2);">
+                        <!-- Scale/Rules SVG -->
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3v18" />
+                            <path d="M5 6l7-3 7 3" />
+                            <path d="M5 6v4c0 2 2 4 3 4" />
+                            <path d="M19 6v4c0 2-2 4-3 4" />
+                            <circle cx="5" cy="10" r="2" />
+                            <circle cx="19" cy="10" r="2" />
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-bold text-base mb-2">Regras de Negócio Core</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Lógica que traduz a operação comercial.
+                        <em class="block mt-1 text-cyan-400/70">"Contratos acima de R$ 100k exigem alçada de
+                            diretoria"</em>
+                    </p>
+                </div>
+
+                <!-- Efeitos Colaterais -->
+                <div class="glass-card rounded-2xl p-7 reveal reveal-delay-2 text-center">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+                        style="background: rgba(251, 146, 60, 0.08); border: 1px solid rgba(251, 146, 60, 0.2);">
+                        <!-- Zap/SideEffect SVG -->
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-bold text-base mb-2">Efeitos Colaterais</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Comportamentos adjacentes (side effects).
+                        <em class="block mt-1 text-orange-400/70">"Atualizar Fase engatilha 3 processos assíncronos e
+                            1 chamada ao ERP"</em>
+                    </p>
+                </div>
+
+                <!-- Workarounds -->
+                <div class="glass-card rounded-2xl p-7 reveal reveal-delay-3 text-center">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+                        style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.2);">
+                        <!-- Tool/Wrench SVG -->
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-bold text-base mb-2">Workarounds & Exceções</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Débitos técnicos parametrizados.
+                        <em class="block mt-1 text-yellow-400/70">"Validação ignorada caso Profile seja SystemAdmin ou
+                            ID = X"</em>
+                    </p>
+                </div>
+
+                <!-- Integrações -->
+                <div class="glass-card rounded-2xl p-7 reveal reveal-delay-4 text-center">
+                    <div class="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5"
+                        style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.2);">
+                        <!-- Globe/Integration SVG -->
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-white font-bold text-base mb-2">Matriz de Integrações</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Endpoints consumidos e APIs expostas.
+                        <em class="block mt-1 text-purple-400/70">Mapeamento Inbound/Outbound por fluxo com
+                            dependências externas</em>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Definition of Done -->
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                        <span class="text-white font-bold text-lg">Definition of Done</span>
+                    </div>
+                    <div class="flex-1 h-px"
+                        style="background: linear-gradient(90deg, rgba(34,211,238,0.3), transparent);"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Check 1 -->
+                    <div class="check-item flex items-start gap-4 p-4 rounded-xl transition-all duration-300"
+                        style="background: rgba(34, 211, 238, 0.03); border: 1px solid rgba(34, 211, 238, 0.08);">
+                        <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                            style="background: rgba(34, 211, 238, 0.1);">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-semibold text-sm mb-1">100% Cobertura Tier 1</h5>
+                            <p class="text-gray-500 text-xs leading-relaxed">Todos os processos "Críticos Nível 1" com
+                                Inventário rastreado até a linha de código.</p>
+                        </div>
+                    </div>
+
+                    <!-- Check 2 -->
+                    <div class="check-item flex items-start gap-4 p-4 rounded-xl transition-all duration-300"
+                        style="background: rgba(59, 130, 246, 0.03); border: 1px solid rgba(59, 130, 246, 0.08);">
+                        <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                            style="background: rgba(59, 130, 246, 0.1);">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-semibold text-sm mb-1">Rastreabilidade Bidirecional</h5>
+                            <p class="text-gray-500 text-xs leading-relaxed">Cada comportamento vinculado a uma fonte
+                                de evidência inquestionável. Zero regras deduzidas sem lastro.</p>
+                        </div>
+                    </div>
+
+                    <!-- Check 3 -->
+                    <div class="check-item flex items-start gap-4 p-4 rounded-xl transition-all duration-300"
+                        style="background: rgba(139, 92, 246, 0.03); border: 1px solid rgba(139, 92, 246, 0.08);">
+                        <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                            style="background: rgba(139, 92, 246, 0.1);">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-semibold text-sm mb-1">Validação Humana (PR Review)</h5>
+                            <p class="text-gray-500 text-xs leading-relaxed">Todo artefato revisado e aprovado via Pull
+                                Request por um Especialista Funcional (SME) e um Tech Lead.</p>
+                        </div>
+                    </div>
+
+                    <!-- Check 4 -->
+                    <div class="check-item flex items-start gap-4 p-4 rounded-xl transition-all duration-300"
+                        style="background: rgba(52, 211, 153, 0.03); border: 1px solid rgba(52, 211, 153, 0.08);">
+                        <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                            style="background: rgba(52, 211, 153, 0.1);">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-semibold text-sm mb-1">Isolamento de Opacidade</h5>
+                            <p class="text-gray-500 text-xs leading-relaxed">Pacotes gerenciados e integrações opacas
+                                tagueadas como "Caixa Preta" com I/O documentado via logs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SEÇÃO 5: PONTE TO-BE E DELIBERAÇÃO (6 Rs) ══════════ -->
+    <section id="ponte-tobe" class="py-24 relative overflow-hidden" style="background-color: #0d1117;">
+        <div class="section-divider absolute top-0 left-0 w-full"></div>
+
+        <!-- Radial glow -->
+        <div class="absolute inset-0 pointer-events-none"
+            style="background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+            <!-- Cabeçalho -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+                    style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); color: #3b82f6;">
+                    As-Is → To-Be · Ponte de Transformação
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-5 text-white">
+                    Como o As-Is <span class="text-gradient-cyber">Molda o To-Be</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    A Baseline de Descoberta alimenta cada decisão de migração com respostas exatas: o que preservar,
+                    redesenhar ou descontinuar.
+                </p>
+            </div>
+
+            <!-- 3 Cards dos 6 Rs -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+                <!-- Retido -->
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-1">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                        style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.2);">
+                        <!-- Lock/Retain SVG -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                    </div>
+                    <div class="text-xs font-black uppercase tracking-widest mb-2" style="color: #34d399;">Retido
+                        (Migrado As-Is)</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Preservação Intacta</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Componentes que funcionam corretamente e possuem baixo risco. Migrados sem alteração lógica para
+                        a nova arquitetura.
+                    </p>
+                </div>
+
+                <!-- Refatorado -->
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-2">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                        style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2);">
+                        <!-- RefreshCw/Refactor SVG -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10" />
+                            <polyline points="1 20 1 14 7 14" />
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                        </svg>
+                    </div>
+                    <div class="text-xs font-black uppercase tracking-widest mb-2" style="color: #3b82f6;">Refatorado
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Lógica Mantida, Tech Trocada</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Regra de negócio preservada, mas implementação modernizada. Ex: Workflow Rule legado →
+                        Flow/Apex moderno com cenários BDD de paridade.
+                    </p>
+                </div>
+
+                <!-- Descontinuado -->
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-3">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                        style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2);">
+                        <!-- Trash/Decommission SVG -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6" />
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            <line x1="10" y1="11" x2="10" y2="17" />
+                            <line x1="14" y1="11" x2="14" y2="17" />
+                        </svg>
+                    </div>
+                    <div class="text-xs font-black uppercase tracking-widest mb-2" style="color: #ef4444;">
+                        Descontinuado</div>
+                    <h3 class="text-lg font-bold text-white mb-3">Código Obsoleto Eliminado</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Código zumbi, workarounds históricos e funcionalidades sem valor. Removidos com segurança graças
+                        à rastreabilidade completa do inventário.
+                    </p>
+                </div>
+            </div>
+
+            <!-- BDD + Strangler Fig Banner -->
+            <div class="grid md:grid-cols-2 gap-6 reveal">
+                <!-- BDD -->
+                <div class="p-6 rounded-xl"
+                    style="background: rgba(34, 211, 238, 0.04); border: 1px solid rgba(34, 211, 238, 0.12);">
+                    <div class="flex items-center gap-3 mb-3">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                        </svg>
+                        <span class="text-white font-bold text-sm">Testes BDD de Paridade</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Cenários <strong class="text-cyan-400">Given-When-Then</strong> extraídos tornam-se o conjunto
+                        oficial de regressão. Se a nova arquitetura passa em todos os testes BDD do ambiente anterior, a
+                        <em>paridade de negócio está garantida</em>.
+                    </p>
+                </div>
+
+                <!-- Strangler Fig -->
+                <div class="p-6 rounded-xl"
+                    style="background: rgba(139, 92, 246, 0.04); border: 1px solid rgba(139, 92, 246, 0.12);">
+                    <div class="flex items-center gap-3 mb-3">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 12h8" />
+                            <path d="M12 8v8" />
+                        </svg>
+                        <span class="text-white font-bold text-sm">Strangler Fig Pattern</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        O Mapa de Dependências aponta as <strong class="text-purple-400">fronteiras sistêmicas
+                            ideais</strong> para desligamento incremental do monólito — sem quebrar referências externas
+                        nem interromper operações.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SEÇÃO 6: MODELAGEM DO PROCESSO (BPMN Diagram) ══════════ -->
+    <section id="processo" class="py-24 relative" style="background-color: #0d1117;">
+        <div class="section-divider absolute top-0 left-0 w-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Cabeçalho -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+                    style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25); color: #22d3ee;">
+                    BPMN 2.0 · Fluxo Operacional
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-5 text-white">
+                    Modelagem do <span class="text-gradient-cyber">Processo</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Da seleção da jornada crítica à deliberação final — cada etapa com governança e rastreabilidade.
+                </p>
+            </div>
+
+            <!-- BPMN Flow Diagram -->
+            <div class="reveal overflow-x-auto pb-4">
+                <div class="flex items-center justify-start lg:justify-center gap-3 md:gap-4 min-w-[900px] px-4">
+
+                    <!-- Node 1: Gatilho -->
+                    <div class="bpmn-node flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full flex items-center justify-center mb-3 pulse-glow"
+                            style="background: rgba(34, 211, 238, 0.1); border: 2px solid rgba(34, 211, 238, 0.4);">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8">
+                                <polygon points="5 3 19 12 5 21 5 3" fill="rgba(34,211,238,0.2)" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-cyan-400 text-center">Gatilho<br>Jornada Crítica</span>
+                    </div>
+
+                    <!-- Arrow -->
+                    <svg class="shrink-0 bpmn-arrow" width="40" height="24" viewBox="0 0 40 24">
+                        <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="2" />
+                        <polygon points="32,6 40,12 32,18" fill="currentColor" />
+                    </svg>
+
+                    <!-- Node 2: Agregar Evidências -->
+                    <div class="bpmn-node flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-3"
+                            style="background: rgba(59, 130, 246, 0.08); border: 2px solid rgba(59, 130, 246, 0.3);">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-blue-400 text-center">Agregar<br>Evidências</span>
+                    </div>
+
+                    <!-- Arrow -->
+                    <svg class="shrink-0 bpmn-arrow" width="40" height="24" viewBox="0 0 40 24">
+                        <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="2" />
+                        <polygon points="32,6 40,12 32,18" fill="currentColor" />
+                    </svg>
+
+                    <!-- Node 3: Análise Agêntica MCP -->
+                    <div class="bpmn-node flex flex-col items-center" id="bpmn-mcp">
+                        <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-3"
+                            style="background: rgba(139, 92, 246, 0.08); border: 2px solid rgba(139, 92, 246, 0.3);">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8">
+                                <circle cx="12" cy="12" r="3" />
+                                <circle cx="5" cy="6" r="2" />
+                                <circle cx="19" cy="6" r="2" />
+                                <circle cx="5" cy="18" r="2" />
+                                <circle cx="19" cy="18" r="2" />
+                                <line x1="7" y1="6" x2="10" y2="10" />
+                                <line x1="17" y1="6" x2="14" y2="10" />
+                                <line x1="7" y1="18" x2="10" y2="14" />
+                                <line x1="17" y1="18" x2="14" y2="14" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-purple-400 text-center">Análise Agêntica<br>(MCP)</span>
+                    </div>
+
+                    <!-- Arrow -->
+                    <svg class="shrink-0 bpmn-arrow" width="40" height="24" viewBox="0 0 40 24">
+                        <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="2" />
+                        <polygon points="32,6 40,12 32,18" fill="currentColor" />
+                    </svg>
+
+                    <!-- Node 4: Inventário Markdown -->
+                    <div class="bpmn-node flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-3"
+                            style="background: rgba(34, 211, 238, 0.08); border: 2px solid rgba(34, 211, 238, 0.3);">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-cyan-400 text-center">Inventário<br>Markdown</span>
+                    </div>
+
+                    <!-- Arrow -->
+                    <svg class="shrink-0 bpmn-arrow" width="40" height="24" viewBox="0 0 40 24">
+                        <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="2" />
+                        <polygon points="32,6 40,12 32,18" fill="currentColor" />
+                    </svg>
+
+                    <!-- Node 5: Revisão Humana (HIGHLIGHTED) -->
+                    <div class="bpmn-node flex flex-col items-center" id="bpmn-human-review">
+                        <div class="w-24 h-20 rounded-2xl flex items-center justify-center mb-3 pulse-glow"
+                            style="background: rgba(52, 211, 153, 0.12); border: 2px solid rgba(52, 211, 153, 0.6); box-shadow: 0 0 20px rgba(52, 211, 153, 0.2);">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <polyline points="9 12 11 14 15 10" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-black text-emerald-400 text-center">Revisão Humana<br><span
+                                class="text-[10px] font-normal text-emerald-400/70">(Fail-Closed)</span></span>
+                    </div>
+
+                    <!-- Arrow -->
+                    <svg class="shrink-0 bpmn-arrow" width="40" height="24" viewBox="0 0 40 24">
+                        <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="2" />
+                        <polygon points="32,6 40,12 32,18" fill="currentColor" />
+                    </svg>
+
+                    <!-- Node 6: Comitê To-Be -->
+                    <div class="bpmn-node flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full flex items-center justify-center mb-3"
+                            style="background: rgba(59, 130, 246, 0.1); border: 3px double rgba(59, 130, 246, 0.5);">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M8 12l3 3 5-6" />
+                            </svg>
+                        </div>
+                        <span class="text-xs font-bold text-blue-400 text-center">Comitê<br>To-Be (ADR)</span>
+                    </div>
+                </div>
+
+                <!-- Rejection feedback loop arrow (positioned below) -->
+                <div class="flex justify-center mt-6 min-w-[900px] px-4">
+                    <div class="relative w-full max-w-2xl mx-auto" style="margin-left: 28%;">
+                        <svg width="100%" height="50" viewBox="0 0 500 50" preserveAspectRatio="none">
+                            <path d="M 400 0 L 400 35 L 100 35 L 100 0" fill="none" stroke="rgba(239,68,68,0.4)"
+                                stroke-width="2" stroke-dasharray="6,4" />
+                            <polygon points="96,8 100,0 104,8" fill="rgba(239,68,68,0.4)" />
+                        </svg>
+                        <div class="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                            <span class="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded"
+                                style="background: rgba(239,68,68,0.1); color: #f87171;">
+                                ↩ Refinar Contexto/Fontes (Se Inconsistente)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Callout: Governança Humana -->
+            <div class="max-w-3xl mx-auto mt-12 reveal"
+                style="border-left: 3px solid rgba(52, 211, 153, 0.5); padding-left: 1.5rem;">
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    <span class="font-semibold text-emerald-400">Governança Fail-Closed:</span>
+                    O modelo exige que um líder técnico valide o inventário via Pull Request. Nenhum artefato gerado
+                    pela IA prossegue sem aprovação humana explícita — mitigando 99% do risco de alucinações vazarem
+                    para os requisitos To-Be.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SEÇÃO 7: ANÁLISE CRÍTICA & RECOMENDAÇÕES (Footer/CTA) ══════════ -->
+    <section id="analise" class="py-24 relative" style="background-color: #0d1117;">
+        <div class="section-divider absolute top-0 left-0 w-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Cabeçalho -->
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+                    style="background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.25); color: #22d3ee;">
+                    Análise Crítica · Transparência Total
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-5 text-white">
+                    Avaliação de <span class="text-gradient-cyber">Riscos e Certezas</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Questionando pressupostos e antecipando atritos para desenhar uma implementação resiliente.
+                </p>
+            </div>
+
+            <!-- 3 Colunas de Análise -->
+            <div class="grid md:grid-cols-3 gap-6 mb-20">
+
+                <!-- Sólido -->
+                <div class="analysis-solid rounded-2xl p-8 reveal reveal-delay-1"
+                    style="background: rgba(52, 211, 153, 0.04);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center"
+                            style="background: rgba(52, 211, 153, 0.1);">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-lg">Sólido & Comprovado</h3>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-400 leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2"></span>
+                            <span><strong class="text-white">Separação Descoberta vs. Doc Viva:</strong> "As-Is"
+                                congelado como projeto com início, meio e fim funciona brilhantemente em refatorações.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2"></span>
+                            <span><strong class="text-white">Governança Fail-Closed:</strong> Revisão via PR mitiga 99%
+                                do risco de alucinações nos requisitos To-Be.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2"></span>
+                            <span><strong class="text-white">Model Context Protocol (MCP):</strong> Navegação local
+                                reduz custos drasticamente vs. copiar repositório inteiro para o contexto LLM.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hipótese -->
+                <div class="analysis-hypothesis rounded-2xl p-8 reveal reveal-delay-2"
+                    style="background: rgba(251, 191, 36, 0.04);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center"
+                            style="background: rgba(251, 191, 36, 0.1);">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                                <line x1="12" y1="9" x2="12" y2="13" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-lg">Ainda é Hipótese</h3>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-400 leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-yellow-400 mt-2"></span>
+                            <span><strong class="text-white">Proficiência em Apex complexo:</strong> LLMs são
+                                espetaculares com Python/JS, mas Governor Limits, SOQL em Loops e padrões legados de
+                                Trigger podem causar erros de interpretação inicial.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-yellow-400 mt-2"></span>
+                            <span>A descoberta causal pode confundir impacto local com global em Trigger Handlers
+                                complexas de 20.000+ linhas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Decisões em Aberto -->
+                <div class="analysis-open rounded-2xl p-8 reveal reveal-delay-3"
+                    style="background: rgba(239, 68, 68, 0.04);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center"
+                            style="background: rgba(239, 68, 68, 0.1);">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-bold text-lg">Decisões em Aberto</h3>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-400 leading-relaxed">
+                        <li class="flex items-start gap-2">
+                            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-red-400 mt-2"></span>
+                            <span><strong class="text-white">Tratamento de Dados & IP:</strong> Metadados com PII
+                                hardcoded e regras comerciais sensíveis requerem camada Enterprise/Zero-Retention API
+                                junto à Anthropic/OpenAI.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="shrink-0 w-1.5 h-1.5 rounded-full bg-red-400 mt-2"></span>
+                            <span><strong class="text-white">Custo de Processamento:</strong> Hard caps por pipeline de
+                                análise precisam ser definidos antes da execução em escala.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA Final -->
+            <div class="reveal max-w-4xl mx-auto text-center">
+                <div class="rounded-2xl p-10 md:p-14 relative overflow-hidden"
+                    style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.08) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(139, 92, 246, 0.08) 100%); border: 1px solid rgba(34, 211, 238, 0.2);">
+
+                    <!-- Glow -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 rounded-full blur-3xl -z-0"
+                        style="background: rgba(34, 211, 238, 0.1);"></div>
+
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6"
+                            style="background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3);">
+                            <span class="relative flex h-2 w-2">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                            </span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Recomendação
+                                Final</span>
+                        </div>
+
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-4">
+                            Prova de Conceito:<br>
+                            <span class="text-gradient-cyber">Cancelamento no Service Cloud</span>
+                        </h3>
+
+                        <p class="text-gray-400 text-base leading-relaxed max-w-2xl mx-auto mb-8">
+                            Uma única jornada vertical completa — da seleção à aprovação do inventário. Quando a TI e o
+                            Negócio virem as regras implícitas e dependências mapeadas <strong
+                                class="text-white">em dias, não semanas</strong>, o projeto atestará
+                            inequivocamente seu valor para a modernização final.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="mailto:mauricio@issei.com.br" rel="noopener noreferrer"
+                                class="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-sm transition-all duration-300"
+                                style="background: linear-gradient(135deg, #22d3ee, #3b82f6); box-shadow: 0 4px 20px rgba(34, 211, 238, 0.3);"
+                                onmouseover="this.style.boxShadow='0 8px 40px rgba(34, 211, 238, 0.5)'; this.style.transform='translateY(-2px)';"
+                                onmouseout="this.style.boxShadow='0 4px 20px rgba(34, 211, 238, 0.3)'; this.style.transform='translateY(0)';">
+                                Iniciar Conversa
+                                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </a>
+                            <a href="/"
+                                class="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-semibold text-gray-300 text-sm hover:text-white transition-all duration-300"
+                                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                                ← Voltar ao Portfólio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer class="py-12 border-t border-white/5" style="background-color: #0d1117;">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+                        style="background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.2);">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2">
+                            <path d="M12 2a6 6 0 0 1 6 6c0 3-2 5-3 6l-1 1v3h-4v-3l-1-1c-1-1-3-3-3-6a6 6 0 0 1 6-6z" />
+                            <line x1="10" y1="22" x2="14" y2="22" />
+                        </svg>
+                    </div>
+                    <span class="text-sm text-gray-500">Maurício Yokoyama Issei · Enterprise Architecture</span>
+                </div>
+                <div class="flex items-center gap-6 text-sm text-gray-500">
+                    <a href="/" class="hover:text-cyan-400 transition-colors">Portfólio</a>
+                    <span>•</span>
+                    <span>Proposta Técnica v2.0</span>
+                    <span>•</span>
+                    <span>2025</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════ THREE.JS (WebGL) ══════════ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+
+    <script>
+        // ─── Three.js Particle Network ───
+        (function () {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0x000000, 0);
+
+            // Create particle system
+            const particleCount = 200;
+            const positions = new Float32Array(particleCount * 3);
+            const velocities = [];
+            const spread = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                positions[i * 3] = (Math.random() - 0.5) * spread;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * spread;
+                positions[i * 3 + 2] = (Math.random() - 0.5) * spread;
+                velocities.push({
+                    x: (Math.random() - 0.5) * 0.01,
+                    y: (Math.random() - 0.5) * 0.01,
+                    z: (Math.random() - 0.5) * 0.01
+                });
+            }
+
+            // Particles
+            const particleGeometry = new THREE.BufferGeometry();
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x22d3ee,
+                size: 0.08,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending,
+                sizeAttenuation: true
+            });
+
+            const particles = new THREE.Points(particleGeometry, particleMaterial);
+            scene.add(particles);
+
+            // Connection lines
+            const lineGroup = new THREE.Group();
+            scene.add(lineGroup);
+            const maxConnectionDistance = 5;
+
+            function updateConnections() {
+                // Remove old lines
+                while (lineGroup.children.length > 0) {
+                    const child = lineGroup.children[0];
+                    child.geometry.dispose();
+                    child.material.dispose();
+                    lineGroup.remove(child);
+                }
+
+                const pos = particleGeometry.attributes.position.array;
+
+                for (let i = 0; i < particleCount; i++) {
+                    for (let j = i + 1; j < particleCount; j++) {
+                        const dx = pos[i * 3] - pos[j * 3];
+                        const dy = pos[i * 3 + 1] - pos[j * 3 + 1];
+                        const dz = pos[i * 3 + 2] - pos[j * 3 + 2];
+                        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                        if (dist < maxConnectionDistance) {
+                            const lineGeometry = new THREE.BufferGeometry();
+                            const linePositions = new Float32Array([
+                                pos[i * 3], pos[i * 3 + 1], pos[i * 3 + 2],
+                                pos[j * 3], pos[j * 3 + 1], pos[j * 3 + 2]
+                            ]);
+                            lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+
+                            const opacity = 1 - (dist / maxConnectionDistance);
+                            const lineMaterial = new THREE.LineBasicMaterial({
+                                color: 0x3b82f6,
+                                transparent: true,
+                                opacity: opacity * 0.15,
+                                blending: THREE.AdditiveBlending
+                            });
+
+                            const line = new THREE.Line(lineGeometry, lineMaterial);
+                            lineGroup.add(line);
+                        }
+                    }
+                }
+            }
+
+            camera.position.z = 15;
+
+            // Mouse interaction
+            let mouseX = 0, mouseY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+            });
+
+            // Animation loop
+            let frameCount = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                frameCount++;
+
+                // Update particle positions
+                const pos = particleGeometry.attributes.position.array;
+                for (let i = 0; i < particleCount; i++) {
+                    pos[i * 3] += velocities[i].x;
+                    pos[i * 3 + 1] += velocities[i].y;
+                    pos[i * 3 + 2] += velocities[i].z;
+
+                    // Boundary check - wrap around
+                    const halfSpread = spread / 2;
+                    if (Math.abs(pos[i * 3]) > halfSpread) velocities[i].x *= -1;
+                    if (Math.abs(pos[i * 3 + 1]) > halfSpread) velocities[i].y *= -1;
+                    if (Math.abs(pos[i * 3 + 2]) > halfSpread) velocities[i].z *= -1;
+                }
+                particleGeometry.attributes.position.needsUpdate = true;
+
+                // Update connections every 3 frames for performance
+                if (frameCount % 3 === 0) {
+                    updateConnections();
+                }
+
+                // Slow rotation + mouse influence
+                particles.rotation.y += 0.001;
+                particles.rotation.x += 0.0005;
+                lineGroup.rotation.y = particles.rotation.y;
+                lineGroup.rotation.x = particles.rotation.x;
+
+                camera.position.x += (mouseX * 2 - camera.position.x) * 0.02;
+                camera.position.y += (mouseY * 1.5 - camera.position.y) * 0.02;
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Responsive resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            });
+        })();
+
+        // ─── Scroll Reveal (IntersectionObserver) ───
+        (function () {
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        })();
+
+        // ─── Mobile Menu Toggle ───
+        (function () {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (!btn || !menu) return;
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const isExpanded = btn.getAttribute('aria-expanded') === 'true' || false;
+                btn.setAttribute('aria-expanded', !isExpanded);
+            });
+
+            // Close on link click
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    btn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        })();
+
+        // ─── Navbar Scroll Effect ───
+        (function () {
+            const navbar = document.getElementById('navbar');
+            if (!navbar) return;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.style.background = 'rgba(13, 17, 23, 0.95)';
+                    navbar.style.borderBottomColor = 'rgba(34, 211, 238, 0.1)';
+                } else {
+                    navbar.style.background = 'rgba(13, 17, 23, 0.85)';
+                    navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.05)';
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
