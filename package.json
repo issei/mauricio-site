@@ -7,9 +7,12 @@
     "dev": "vite --port 5173 --strictPort",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "test": "playwright test",
+    "gate": "node scripts/quality-gate.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.58.2",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^25.2.3",
