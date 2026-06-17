@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/*
+ * Engenharia de Agentes de IA — tokens visuais (TEMA: somente Dark)
+ * Fonte da verdade: docs/specs/pages/engenharia-agentes-ia/07_direcao_de_arte_e_animacoes.md
+ * Base: STYLE_GUIDE.md ("Dark Tech & Developer Centric"). Modo claro DIFERIDO (ver BUILD_PLAN §1).
+ */
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+
+  /* Superfícies (GitHub Dark) */
+  --color-eai-bg: #0d1117;
+  --color-eai-surface: #161b22;
+  --color-eai-border: #30363d;
+
+  /* Texto */
+  --color-eai-text: #c9d1d9;
+  --color-eai-heading: #ffffff;
+  --color-eai-muted: #8b949e;
+
+  /* Accents + semânticos (mapa de cor do doc 07 / doc 10) */
+  --color-eai-accent: #3b82f6;   /* azul */
+  --color-eai-accent-2: #8a2be2; /* roxo */
+  --color-eai-ok: #2ea043;       /* tests/ */
+  --color-eai-warn: #d29922;     /* scripts/.github + I/O */
+  --color-eai-danger: #f85149;   /* estado cognitivo / alerta */
+  --color-eai-human: #a371f7;    /* revisão humana */
+}
+
+:root {
+  --eai-bg: var(--color-eai-bg);
+  --eai-surface: var(--color-eai-surface);
+  --eai-border: var(--color-eai-border);
+  --eai-text: var(--color-eai-text);
+  --eai-heading: var(--color-eai-heading);
+  --eai-muted: var(--color-eai-muted);
+  --eai-accent: var(--color-eai-accent);
+  --eai-accent-2: var(--color-eai-accent-2);
+  --eai-gradient: linear-gradient(90deg, var(--color-eai-accent), var(--color-eai-accent-2));
+}
+
+* { box-sizing: border-box; }
+
+body.eai-body {
+  margin: 0;
+  font-family: var(--font-inter);
+  background-color: var(--eai-bg);
+  color: var(--eai-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.eai-body h1,
+.eai-body h2,
+.eai-body h3 { color: var(--eai-heading); }
+
+/* Link de pular para o conteúdo (acessibilidade — doc 08) */
+.eai-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--eai-surface);
+  color: var(--eai-heading);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--eai-accent);
+  border-radius: 0 0 8px 0;
+  z-index: 100;
+}
+.eai-skip-link:focus { left: 0; }
+
+/* Respeitar preferência de movimento reduzido (doc 07/08) */
+@media (prefers-reduced-motion: reduce) {
+  .eai-body *,
+  .eai-body *::before,
+  .eai-body *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

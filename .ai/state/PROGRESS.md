@@ -1,0 +1,48 @@
+# PROGRESS — Construção autônoma `engenharia-agentes-ia`
+
+> Âncora de estado (doc 10 / BUILD_PLAN §6). Lido no início e atualizado no fim de cada iteração.
+> **Regra de Ouro:** este arquivo é versionado no Git junto com o código — rollback recupera código
+> **e** estado cognitivo.
+
+## Onda atual
+**MVP** — perfil de orçamento: **Moderado** (fecha algumas WUs e para para revisão humana).
+
+## Política operacional
+- Push **direto na `main`** a cada WU verde (= deploy em produção). Gate local verde antes de todo push.
+- WU incompleta fica atrás de `noindex`/seção `hidden`/fora do menu (feature flag).
+- Tema **somente dark**. Fail-closed: faltou algo → `BLOCKED:`, parada limpa.
+- Limite de tentativas ao gate por WU: **3**. Estourou → BLOCKED.
+
+## Ledger de tokens (onda MVP)
+| Onda | Alvo | Gasto acum. | Restante |
+| :-- | :-- | :-- | :-- |
+| MVP | (moderado) | — | — |
+
+## Fila de Work Units (canônica)
+| WU | Estado | Escopo | SDD-fonte | Modelo |
+| :-- | :-- | :-- | :-- | :-- |
+| WU-0 | ✅ done | Fundação (state, gate, CI de teste, ADR, DoR/DoD, suíte, stub dark) | doc 10, BUILD_PLAN | Opus |
+| WU-1 | ⬜ next | Shell: head/SEO, tokens, nav de trilha, footer, Lenis | 07, 03, 01 | Opus |
+| WU-2 | ⬜ | Hero "pouca IA no caminho crítico" (caótico × disciplinado) | 03, 04 V10 | Opus |
+| WU-3 | ⬜ | Área Princípios (10 cards) + âncoras | 01, 02, 03 | Sonnet |
+| WU-4 | ⬜ | Jornada (estrutura dos 10 capítulos) | 02 | Sonnet |
+| WU-5 | ⬜ | Governança Agent-Driven (masonry) | 10, 03 | Sonnet |
+| WU-6 | ⬜ | Referência + Casos Reais estático | 01, 09 | Haiku/Sonnet |
+| WU-7 | ⬜ | Visualizações SVG/CSS animadas (GSAP) | 04, 07 | Opus |
+
+(V1: WU-8…11 · V2: WU-12…14 — detalhar ao entrar na janela.)
+
+## Próxima ação
+Iniciar **WU-1** (shell da página): revalidar DoR, escrever cenários, implementar nav/tokens/footer,
+rodar gate, push.
+
+## Histórico
+- **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
+  (`build-eai-section`, `run-quality-gate`), `docs/governance/dor-dod-eai.md`,
+  `docs/decisions/ADR-eai-001-build-autonomo-e-finops.md`, `scripts/quality-gate.mjs`,
+  `.github/workflows/test.yml`, `tests/_helpers/axe.js`, `tests/engenharia-agentes-ia.spec.js`,
+  `src/engenharia-agentes-ia.{html,css}` (stub dark, `noindex`). Gate verde. `@axe-core/playwright`
+  adicionado.
+
+## BLOCKED
+(nenhum)
