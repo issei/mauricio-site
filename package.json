@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "start": "npm run dev",
     "test": "playwright test",
+    "test:unit": "node --test tests/eai.test.js",
     "gate": "node scripts/quality-gate.mjs"
   },
   "devDependencies": {

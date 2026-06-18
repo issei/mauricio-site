@@ -1,0 +1,71 @@
+{
+  "_note": "Espelho documental de src/js/eai-quiz-data.js (QUIZ). Fonte da verdade: o módulo JS.",
+  "questions": [
+    {
+      "id": "q1",
+      "principle": "P1 · P2 — O LLM é um componente, não o piloto",
+      "context": "Você está construindo um sistema de análise de contratos. A cada documento recebido, o sistema precisa: extrair cláusulas, classificar o risco, formatar o relatório e enviar por e-mail.",
+      "prompt": "Qual é a abordagem correta?",
+      "options": {
+        "a": "Um agente recebe o contrato e decide sozinho quais ferramentas usar em qual ordem",
+        "b": "Um pipeline fixo chama o LLM apenas na etapa de classificação de risco; as demais são código determinístico",
+        "c": "O LLM controla o fluxo e delega sub-tarefas para outros modelos"
+      },
+      "correct": "b",
+      "feedback": {
+        "correct": "Exato. Isso é o princípio do LLM como componente (P1/P2): o fluxo é um pipeline determinístico e o modelo entra só na etapa de classificação.",
+        "wrong_a": "Deixar o agente decidir sozinho a ordem das ferramentas é dar a ele o controle de fluxo — a receita de loops, custo imprevisível e irreprodutibilidade.",
+        "wrong_c": "Um LLM orquestrando outros modelos multiplica a superfície de erro: a alucinação de um vira entrada do outro e se confirma."
+      }
+    },
+    {
+      "id": "q2",
+      "principle": "P7 — Abrace o Mundo Aberto",
+      "context": "Seu sistema avalia o perfil de um cliente B2B. Para este cliente específico, não há registro de faturamento nos últimos 12 meses — o dado simplesmente não existe no banco.",
+      "prompt": "O que um sistema bem projetado deve fazer?",
+      "options": {
+        "a": "Assumir que o cliente não tem potencial (tratar ausência como 'falso')",
+        "b": "Registrar explicitamente que este sinal está ausente e comunicar a incerteza ao usuário",
+        "c": "Gerar um valor médio baseado em outros clientes para preencher o campo"
+      },
+      "correct": "b",
+      "feedback": {
+        "correct": "Exato. Isso é o princípio Open-World (P7): ausência de evidência é incerteza explícita, nunca negação automática.",
+        "wrong_a": "Tratar ausência de dado como 'falso' é o erro clássico do Mundo Fechado.",
+        "wrong_c": "Gerar um valor médio sem evidência é uma forma de alucinação estruturada: o dado parece real mas foi fabricado."
+      }
+    },
+    {
+      "id": "q3",
+      "principle": "P10 — Explique, não exponha o número",
+      "context": "O sistema de recomendação retornou score 0.847 para um lead. O gestor comercial pergunta: 'por que esse lead foi priorizado?'",
+      "prompt": "Qual resposta gera mais confiança e adoção?",
+      "options": {
+        "a": "'O algoritmo atribuiu score 0.847, acima do threshold de 0.7'",
+        "b": "'Priorizado porque a empresa sinalizou expansão recente e tem histórico de compra no setor. Não foi possível confirmar o orçamento disponível.'"
+      },
+      "correct": "b",
+      "feedback": {
+        "correct": "Exato. Isso é XAI (P10): drivers em linguagem natural + a lacuna honesta constroem a confiança que gera adoção.",
+        "wrong_a": "Repetir o score e o threshold não explica nada ao gestor — é a caixa-preta que trava a adoção."
+      }
+    },
+    {
+      "id": "q4",
+      "principle": "P8 · P9 — Ledgers e governança fail-closed",
+      "context": "Um agente autônomo está processando 50.000 leads. Às 14h, ele atinge o limite diário de tokens definido no ledger. Ainda faltam 18.000 leads.",
+      "prompt": "O que o sistema deve fazer?",
+      "options": {
+        "a": "Continuar processando os leads restantes, já que o trabalho está quase concluído",
+        "b": "Parar imediatamente sem registrar o estado, para evitar processamento inconsistente",
+        "c": "Parar num ponto seguro, salvar o progresso e retomar na próxima execução a partir de onde parou"
+      },
+      "correct": "c",
+      "feedback": {
+        "correct": "Exato. Isso une FinOps (P8) e fail-closed (P9): atingiu o teto → para num ponto seguro, salva o progresso e retoma na próxima onda.",
+        "wrong_a": "Continuar além do teto é ignorar o ledger — exatamente a fatura-surpresa que o FinOps de IA existe para evitar.",
+        "wrong_b": "Parar sem salvar o estado desperdiça todo o progresso e força recomeçar do zero."
+      }
+    }
+  ]
+}

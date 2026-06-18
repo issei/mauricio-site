@@ -359,8 +359,11 @@ for lead in fila:
               <span class="eai-chap__t">Da magia à engenharia</span>
               <span class="eai-chap__meta">Iniciante · 6 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> entender por que agentes autônomos irrestritos falham em produção (loops, custo, alucinação, irreprodutibilidade) e o que significa tratar o LLM como engenharia.</p>
-              <p>Você sai sabendo enquadrar IA como um componente contido dentro de uma arquitetura previsível.</p>
+              <p>Ninguém constrói um sistema bancário deixando o banco de dados "decidir livremente" o que fazer com cada transação. O banco é poderoso, mas opera <em>dentro</em> de transações, constraints e contratos rígidos — é poderoso <strong>porque</strong> é contido. Um LLM merece o mesmo respeito arquitetural.</p>
+              <p><strong>O problema:</strong> a forma mais sedutora de construir com IA é encadear prompts e dar autonomia total ao modelo. Funciona numa demo; em produção, gera defeitos que o software clássico raramente enfrenta — loops infinitos (um agente devolve a tarefa ao outro e cada volta custa dinheiro), custo imprevisível, alucinações que se propagam quando a saída inventada de um vira entrada do outro, e irreprodutibilidade (a mesma entrada produz saídas diferentes, impossível de depurar).</p>
+              <p><strong>A solução</strong> é cultural antes de técnica: parar de tratar o modelo como mágica e tratá-lo como engenharia. Aplica-se ao componente probabilístico tudo o que já sabemos sobre software confiável — contratos de interface, testes determinísticos, controle de orçamento, isolamento de responsabilidades.</p>
+              <p><strong>Na prática, isso significa que</strong> a capacidade vem do modelo, mas a confiança vem da engenharia ao redor dele.</p>
+              <p><a class="eai-chap__link" href="#principio-1">Princípio 1 →</a></p>
             </div>
           </details></li>
 
@@ -369,8 +372,11 @@ for lead in fila:
               <span class="eai-chap__t">Orquestração determinística</span>
               <span class="eai-chap__meta">Iniciante · 8 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> separar a camada de orquestração/I-O da camada de decisão pura; o LLM responde dentro de etapas, nunca escolhe a próxima.</p>
-              <p><a class="eai-chap__link" href="#principio-1">Princípio 1 e 2 →</a></p>
+              <p>Pense num fluxograma fixo de uma fábrica: cada estação faz uma coisa específica e passa o resultado adiante. Compare com uma sala onde várias pessoas conversam tentando decidir o que fazer a seguir. O primeiro é um DAG — um grafo de etapas fixas; o segundo é uma conversa aberta entre modelos.</p>
+              <p><strong>O problema:</strong> dar ao LLM autoridade sobre o fluxo de controle ("agentes decidem tudo de ponta a ponta") é flexível e impressionante — e impossível de garantir. Não dá para prometer prazo, estimar custo ou passar por auditoria.</p>
+              <p><strong>A solução</strong> é separar duas camadas que costumam ser confundidas. A <strong>camada de orquestração/I-O</strong> pode ser assíncrona e tolerante a falhas — é a borda do sistema. A <strong>camada de decisão/cálculo</strong> deve ser pura e determinística — é onde o resultado é computado, sem aleatoriedade. O modelo é chamado <em>dentro</em> de uma etapa para fazer uma coisa; ele nunca decide qual será a próxima.</p>
+              <p><strong>Na prática, isso significa que</strong> o LLM responde perguntas — ele não decide quais perguntas fazer a seguir.</p>
+              <p><a class="eai-chap__link" href="#principio-1">Princípios 1 e 2 →</a></p>
             </div>
           </details></li>
 
@@ -379,7 +385,10 @@ for lead in fila:
               <span class="eai-chap__t">Cérebro × Vitrine</span>
               <span class="eai-chap__meta">Intermediário · 7 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> desacoplar o motor cognitivo (sensível, caro) da interface exposta, ligados por um contrato estreito — nunca por banco compartilhado.</p>
+              <p>É a diferença entre a <strong>cozinha</strong> de um restaurante e o <strong>salão</strong>. A cozinha é quente, perigosa e não muda toda semana — é onde o trabalho pesado acontece. O salão é a parte que o cliente vê e que você redecora com frequência. Você não coloca o fogão no meio das mesas, e não dá ao cliente a chave do estoque.</p>
+              <p><strong>O problema:</strong> sistemas cognitivos têm dois perfis de carga opostos. O "Cérebro" (motor cognitivo) é pesado, assíncrono, sensível (chaves, dados, lógica proprietária) e muda raramente. A "Vitrine" (interface) é leve, síncrona, exposta à internet pública e muda o tempo todo. Atendê-los na mesma aplicação é uma armadilha clássica: uma falha na vitrine exposta compromete o motor, e cada mudança de interface arrisca a lógica.</p>
+              <p><strong>A solução</strong> é separá-los <em>fisicamente</em> e conectá-los por um contrato estreito — tipicamente uma API com pouquíssimos endpoints —, nunca por um banco de dados compartilhado. O cérebro processa em segundo plano e <strong>publica</strong> um snapshot pronto; a vitrine apenas <strong>lê</strong> o resultado e coleta feedback, devolvido de forma controlada.</p>
+              <p><strong>Na prática, isso significa que</strong> a equipe itera na interface todos os dias sem nunca arriscar o motor sensível.</p>
               <p><a class="eai-chap__link" href="#principio-3">Princípio 3 →</a></p>
             </div>
           </details></li>
@@ -389,7 +398,10 @@ for lead in fila:
               <span class="eai-chap__t">Determinístico-primeiro</span>
               <span class="eai-chap__meta">Intermediário · 7 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> resolver com dados e regras tudo que for possível e gastar IA só no resíduo interpretativo — que encolhe a cada versão.</p>
+              <p>Antes de ligar o motor caro, resolva o máximo com o que já está estruturado — como um bom cozinheiro que prepara tudo que dá para preparar antes de acender o fogão. A regra de ouro da confiabilidade é contraintuitiva: <strong>use a IA o mínimo possível</strong>.</p>
+              <p><strong>O problema:</strong> cada responsabilidade entregue ao LLM é uma fonte de alucinação e um custo. Mandar o modelo "descobrir" algo que uma consulta a banco, uma regra de negócio ou uma busca exata já responde é desperdiçar dinheiro e introduzir risco onde não precisava existir.</p>
+              <p><strong>A solução:</strong> mapeie cada campo da tarefa e pergunte — "isso pode vir de uma fonte estruturada, de uma regra ou de uma busca exata?" Se sim, não é trabalho de IA. O que sobra — desambiguar texto livre, inferir intenção, classificar tom — é o <strong>resíduo interpretativo</strong>. Só ele justifica o custo e o risco de uma chamada de modelo. E esse resíduo encolhe a cada versão, conforme você descobre o que mais pode ser determinístico.</p>
+              <p><strong>Na prática, isso significa que</strong> menos IA no caminho é, ao mesmo tempo, menos custo e mais confiança.</p>
               <p><a class="eai-chap__link" href="#principio-4">Princípio 4 →</a></p>
             </div>
           </details></li>
@@ -399,7 +411,10 @@ for lead in fila:
               <span class="eai-chap__t">Contratos rígidos</span>
               <span class="eai-chap__meta">Intermediário · 8 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> blindar toda fronteira com schemas estritos; a saída do modelo é input não confiável até ser validada (inclui sanitização adversarial).</p>
+              <p>Você nunca confiou cegamente no que o navegador envia para o backend — sempre validou no servidor. Um schema estrito é o mesmo validador de formulário, agora aplicado à saída do LLM: ela é <strong>input não confiável por definição</strong>, até passar pelo porteiro.</p>
+              <p><strong>O problema:</strong> se o modelo inventa um atributo, alucina um formato ou devolve <code>score = 1.7</code> onde o intervalo é 0–1, e isso entra no sistema sem validação, o erro se propaga silenciosamente — e só aparece três etapas depois, irreconhecível.</p>
+              <p><strong>A solução</strong> é blindar toda fronteira com contratos estritos. Boas práticas concretas: <strong>proíba o desconhecido</strong> (rejeite qualquer campo fora do esquema em vez de ignorá-lo); <strong>coloque os limites no schema, não num <code>if</code> perdido</strong> (é o esquema que recusa o 1,7); valide tipos estaticamente quando a linguagem permitir; e <strong>degrade item a item</strong> — num lote, um item malformado é marcado como incerto, não derruba o lote inteiro. Inclui também sanitizar input adversarial antes do Cérebro.</p>
+              <p><strong>Na prática, isso significa que</strong> a validação falha imediatamente e de forma barata, em vez de propagar o erro.</p>
               <p><a class="eai-chap__link" href="#principio-5">Princípio 5 →</a></p>
             </div>
           </details></li>
@@ -409,7 +424,10 @@ for lead in fila:
               <span class="eai-chap__t">Open-World</span>
               <span class="eai-chap__meta">Intermediário · 7 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> isolar camadas epistêmicas (evidência ≠ inferência ≠ julgamento) e tratar ausência de sinal como incerteza explícita, nunca "falso".</p>
+              <p>Imagine cadastrar um cliente totalmente novo, sem nenhum histórico no banco. O software clássico opera sob "mundo fechado": o que não está no banco é falso. Sistemas de inteligência precisam do oposto — o <strong>Mundo Aberto</strong>: a ausência de evidência é <em>incerteza</em>, não negação.</p>
+              <p><strong>O problema:</strong> "não encontramos sinal de que o cliente está insatisfeito" <strong>não</strong> é o mesmo que "o cliente está satisfeito" — é "desconhecido". Tratar a lacuna como um "falso" inventa uma conclusão onde não há evidência: a pior categoria de falha, uma decisão de negócio errada tomada com falsa confiança.</p>
+              <p><strong>A solução</strong> tem duas faces. Primeiro, isole as <strong>camadas epistêmicas</strong>: evidência observada ≠ inferência gerada ≠ julgamento final, mantendo a rastreabilidade até a fonte — uma inferência tratada como fato vira "evidência" de si mesma e o sistema passa a acreditar nas próprias invenções. Segundo, faça da incerteza um estado de primeira classe: o que não foi observado é informação valiosa ("não foi possível confirmar X"), e falhas de sensor degradam para incerteza, nunca para um valor inventado.</p>
+              <p><strong>Na prática, isso significa que</strong> ensinar o sistema a dizer "não sei" o torna mais confiável e mais seguro.</p>
               <p><a class="eai-chap__link" href="#principio-6">Princípios 6 e 7 →</a></p>
             </div>
           </details></li>
@@ -419,7 +437,10 @@ for lead in fila:
               <span class="eai-chap__t">FinOps de IA</span>
               <span class="eai-chap__meta">Avançado · 8 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> governar quota e custo como estado de domínio (ledgers), podar cedo, processar em ondas e nunca pagar duas vezes pelo mesmo trabalho.</p>
+              <p>Você já domina <strong>pagination</strong> e <strong>job queues</strong> para processar grandes volumes sem derrubar o banco, e <strong>cache</strong> para não repetir trabalho caro. FinOps de IA é aplicar esses mesmos padrões a um recurso cujo "miss" custa uma chamada de modelo, não um <code>SELECT</code>.</p>
+              <p><strong>O problema:</strong> tratar limites de token e crédito com <code>try/except</code> em cima do erro de rate limit é frágil e amador. Um fluxo livre transforma o orçamento em variável aleatória — o mesmo pedido pode custar centavos ou dezenas de reais.</p>
+              <p><strong>A solução:</strong> modele o orçamento como <strong>estado de domínio persistente</strong> — um <em>ledger</em> que sobrevive entre execuções, sabe quanto já gastou, reseta no período e <strong>recusa o gasto</strong> ao se aproximar do teto, antes de o provedor recusar por você. Combine com três hábitos: <strong>poda precoce</strong> (o filtro mais barato primeiro — lixo nunca chega ao LLM); <strong>processamento em ondas resumíveis</strong> (cada onda salva o progresso e para limpo; a próxima retoma de onde parou); e um <strong>corpus acumulativo</strong> com chave idempotente — se já foi processado, não processe de novo.</p>
+              <p><strong>Na prática, isso significa que</strong> o sistema fica mais barato por item conforme cresce.</p>
               <p><a class="eai-chap__link" href="#principio-8">Princípio 8 →</a></p>
             </div>
           </details></li>
@@ -429,7 +450,10 @@ for lead in fila:
               <span class="eai-chap__t">BDD para IA</span>
               <span class="eai-chap__meta">Avançado · 8 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> testar o estocástico com cenários fixos (feliz, degradado, open-world) e governança fail-closed (DoR/DoD), com fixtures e zero rede.</p>
+              <p>Como testar um sistema cujo componente central é estocástico — que pode responder diferente a cada execução? A resposta é <strong>isolar a estocasticidade nos testes</strong>: você não testa se o modelo é "inteligente"; testa se o <em>sistema ao redor dele</em> permanece correto quando o modelo, a rede ou os dados falham.</p>
+              <p><strong>O problema:</strong> sem critério objetivo de "pronto", "funcionou" é uma percepção, não uma verificação — e alucinações elegantes passam despercebidas. Pior ainda ao delegar a agentes de código autônomos, que não têm bom senso para preencher lacunas: ambiguidade entregue a um agente vira alucinação de escopo.</p>
+              <p><strong>A solução:</strong> escreva cenários em Gherkin (Dado/Quando/Então) <strong>antes</strong> do código, com chamadas externas substituídas por <em>fixtures</em> gravadas — teste determinístico e de custo zero de API. Todo cenário cobre três eixos: <strong>caminho feliz</strong>, <strong>modo degradado</strong> (uma API cai, estoura limite ou dá timeout — o sistema degrada graciosamente) e <strong>open-world</strong> (um sinal esperado está ausente). Reforce com portões: a <strong>DoR</strong> impede uma tarefa de entrar com decisões em aberto; a <strong>DoD</strong> é <em>fail-closed</em> — se não foi possível concluir, registra-se o bloqueio e para-se num ponto seguro.</p>
+              <p><strong>Na prática, isso significa que</strong> um "BLOQUEADO" honesto é sucesso do processo; um "concluído" falso é dívida que vence com juros.</p>
               <p><a class="eai-chap__link" href="#principio-9">Princípio 9 →</a></p>
             </div>
           </details></li>
@@ -439,7 +463,10 @@ for lead in fila:
               <span class="eai-chap__t">XAI</span>
               <span class="eai-chap__meta">Intermediário · 6 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> trocar o número opaco por drivers em linguagem natural, lacunas (open-world) e proveniência — gerados por regras, fiéis ao cálculo.</p>
+              <p>Ninguém toma uma decisão importante porque "o algoritmo deu <code>0,674</code>". Compare com: <em>"priorizado porque sinalizou expansão recente e tem histórico de compra no setor; não foi possível confirmar o orçamento"</em>. O número é inútil e não inspira confiança; a justificativa, sim.</p>
+              <p><strong>O problema:</strong> a "caixa preta" é o maior bloqueador de adoção corporativa de IA. Um score opaco gera resistência do usuário, enxurrada de "por que o sistema sugeriu isso?" no suporte e reprovação em auditorias de explicabilidade.</p>
+              <p><strong>A solução</strong> é trocar o número por uma explicação acionável com três elementos: <strong>drivers</strong> em linguagem natural (o que pesou a favor e contra), <strong>sinais ausentes</strong> (a honestidade do Open-World — mostrar a lacuna aumenta a confiança mais do que escondê-la) e <strong>proveniência</strong> (de qual fonte veio cada sinal, para o usuário verificar). Dois cuidados tornam a XAI confiável: gere a explicação por <strong>regras determinísticas sobre o mesmo objeto que gerou a pontuação</strong> — nunca com uma segunda chamada de LLM, que racionalizaria; e considere esconder o número e mostrar só o "por que agora" e "o que falta saber".</p>
+              <p><strong>Na prática, isso significa que</strong> uma resposta explicável e modesta vence uma resposta exata e opaca em adoção.</p>
               <p><a class="eai-chap__link" href="#principio-10">Princípio 10 →</a></p>
             </div>
           </details></li>
@@ -449,47 +476,57 @@ for lead in fila:
               <span class="eai-chap__t">Projeto completo</span>
               <span class="eai-chap__meta">Síntese · 10 min</span></summary>
             <div class="eai-chap__body">
-              <p><strong>Objetivo:</strong> juntar os dez princípios num sistema real e enxergar a governança agent-driven que sustenta a autonomia segura.</p>
+              <p>Tudo se junta num caso real: o <strong>SocialSelling</strong>, um sistema de priorização de leads B2B onde os dez princípios viraram produto. O pipeline é determinístico em cinco módulos — <strong>M1</strong> Busca, <strong>M2</strong> Extração, <strong>M3</strong> Score, <strong>M4</strong> Ranking, <strong>M5</strong> XAI —, e o LLM atua só em M2 e M5; M3 e M4 são Python puro.</p>
+              <p><strong>Como os princípios aparecem:</strong> o LLM é componente contido (P1/P2) num fluxo determinístico (P4); o Cérebro local publica snapshots e o portal nunca toca o banco do motor (P3); schemas estritos blindam toda fronteira (P5) e ledgers governam requisições e créditos (P8); a operadora vê "por que agora" e "o que falta", nunca o score (P10). A ausência de dado vira incerteza explícita (P6/P7), e cenários BDD degradados sustentam a governança fail-closed (P9).</p>
+              <p><strong>A virada final:</strong> quando a IA passa de copilot a desenvolvedora autônoma, a responsabilidade migra para a máquina — e isso exige estrutura. O contexto sai da cabeça e entra no repositório (ADRs, SDDs, DoR/DoD versionados), porque <em>contexto não documentado é contexto que não existe</em>.</p>
+              <p><strong>Na prática, isso significa que</strong> a disciplina central é distinguir o implementado do especificado — saber quando <em>não</em> construir.</p>
               <p><a class="eai-chap__link" href="#governanca">Governança Agent-Driven →</a></p>
             </div>
           </details></li>
         </ol>
 
         <h3 class="eai-sub">Verifique seu entendimento</h3>
+        <p class="eai-section__lede">Quatro cenários reais. Não decore a regra — escolha o que faria em produção. Cada resposta explica o porquê.</p>
         <div class="eai-quiz" data-eai-quiz>
           <p class="eai-quiz__score">Acertos: <span data-quiz-score>0</span>/<span data-quiz-total>4</span></p>
+          <p class="eai-quiz__summary" data-quiz-summary aria-live="polite"></p>
           <ol class="eai-quiz__list" role="list">
-            <li class="eai-quiz__q" data-quiz-q>
-              <p class="eai-quiz__prompt">1. Num sistema agêntico, o que o LLM deve controlar?</p>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q1">
+              <p class="eai-quiz__ctx">Você está construindo um sistema de análise de contratos. A cada documento recebido, o sistema precisa: extrair cláusulas, classificar o risco, formatar o relatório e enviar por e-mail. Você tem duas opções de arquitetura.</p>
+              <p class="eai-quiz__prompt">1. Qual é a abordagem correta?</p>
               <div class="eai-quiz__opts">
-                <button type="button" data-correct="false">O fluxo de controle de ponta a ponta</button>
-                <button type="button" data-correct="true">Apenas as respostas dentro de etapas fixas</button>
-                <button type="button" data-correct="false">Qual etapa vem a seguir</button>
+                <button type="button">Um agente recebe o contrato e decide sozinho quais ferramentas usar em qual ordem</button>
+                <button type="button">Um pipeline fixo chama o LLM apenas na etapa de classificação de risco; as demais são código determinístico</button>
+                <button type="button">O LLM controla o fluxo e delega sub-tarefas para outros modelos</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
-            <li class="eai-quiz__q" data-quiz-q>
-              <p class="eai-quiz__prompt">2. No Open-World, ausência de sinal significa…</p>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q2">
+              <p class="eai-quiz__ctx">Seu sistema avalia o perfil de um cliente B2B. Para este cliente específico, não há registro de faturamento nos últimos 12 meses — o dado simplesmente não existe no banco.</p>
+              <p class="eai-quiz__prompt">2. O que um sistema bem projetado deve fazer?</p>
               <div class="eai-quiz__opts">
-                <button type="button" data-correct="false">Falso</button>
-                <button type="button" data-correct="true">Incerteza explícita</button>
-                <button type="button" data-correct="false">Erro do sistema</button>
+                <button type="button">Assumir que o cliente não tem potencial (tratar ausência como "falso")</button>
+                <button type="button">Registrar explicitamente que este sinal está ausente e comunicar a incerteza ao usuário</button>
+                <button type="button">Gerar um valor médio baseado em outros clientes para preencher o campo</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
-            <li class="eai-quiz__q" data-quiz-q>
-              <p class="eai-quiz__prompt">3. Para o usuário final, a XAI deve mostrar…</p>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q3">
+              <p class="eai-quiz__ctx">O sistema de recomendação retornou score <code>0.847</code> para um lead. O gestor comercial pergunta: "por que esse lead foi priorizado?" Você tem duas formas de responder.</p>
+              <p class="eai-quiz__prompt">3. Qual resposta gera mais confiança e adoção?</p>
               <div class="eai-quiz__opts">
-                <button type="button" data-correct="false">O score numérico (ex.: 0,674)</button>
-                <button type="button" data-correct="true">Drivers, lacunas e proveniência</button>
+                <button type="button">"O algoritmo atribuiu score 0.847, acima do threshold de 0.7"</button>
+                <button type="button">"Priorizado porque a empresa sinalizou expansão recente e tem histórico de compra no setor. Não foi possível confirmar o orçamento disponível."</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
-            <li class="eai-quiz__q" data-quiz-q>
-              <p class="eai-quiz__prompt">4. Um agente autônomo sem teto de custo de tokens…</p>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q4">
+              <p class="eai-quiz__ctx">Um agente autônomo está processando 50.000 leads. Às 14h, ele atinge o limite diário de tokens definido no ledger. Ainda faltam 18.000 leads.</p>
+              <p class="eai-quiz__prompt">4. O que o sistema deve fazer?</p>
               <div class="eai-quiz__opts">
-                <button type="button" data-correct="false">É sempre mais produtivo</button>
-                <button type="button" data-correct="true">Pode entrar em loop e gerar fatura inesperada</button>
+                <button type="button">Continuar processando os leads restantes, já que o trabalho está quase concluído</button>
+                <button type="button">Parar imediatamente sem registrar o estado, para evitar processamento inconsistente</button>
+                <button type="button">Parar num ponto seguro, salvar o progresso e retomar na próxima execução a partir de onde parou</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
@@ -558,6 +595,11 @@ for lead in fila:
               <span class="eai-meter__val" data-sim-val>0</span>
             </div>
           </div>
+
+          <div class="eai-sim__explain" data-sim-explain aria-live="polite">
+            <p class="eai-sim__explain-title">O que está acontecendo</p>
+            <div class="eai-sim__explain-body" data-sim-explain-body><!-- preenchido por JS (XAI) --></div>
+          </div>
         </div>
         <p class="eai-sim__hint">Dica: alta autonomia sem schemas/BDD dispara risco e custo; ledger + cache derrubam o custo; evals e observabilidade elevam a auditabilidade.</p>
 
@@ -584,6 +626,16 @@ for lead in fila:
         <h3 class="eai-sub">Pipeline &amp; resiliência</h3>
         <p class="eai-section__lede">O mesmo pipeline determinístico, sob diferentes condições. Escolha um cenário.</p>
         <div class="eai-flow" data-eai-flow data-scenario="feliz">
+          <div class="eai-flow__intro">
+            <p>Em produção, as coisas falham. Veja como o mesmo pipeline determinístico se comporta em
+              três condições diferentes — e por que o <em>design</em> importa mais do que a ausência de erros.</p>
+            <dl class="eai-flow__gloss">
+              <div><dt>Feliz</dt><dd>Caminho sem falhas: todos os módulos M1→M5 executam na sequência esperada.</dd></div>
+              <div><dt>Saga</dt><dd>Uma etapa falha e o sistema <strong>compensa</strong>: desfaz operações anteriores de forma controlada antes de reportar o erro. É o padrão de resiliência para sistemas distribuídos.</dd></div>
+              <div><dt>DLQ</dt><dd><strong>Dead-Letter Queue</strong>: quando uma etapa falha repetidamente, a mensagem vai para uma fila especial de "mensagens mortas" — aguardando revisão humana ou reprocessamento, sem bloquear o pipeline.</dd></div>
+              <div><dt>Confiança</dt><dd>O sistema avalia a qualidade da própria saída. Acima do threshold, aprova sozinho; abaixo, aciona revisão humana.</dd></div>
+            </dl>
+          </div>
           <div class="eai-flow__tabs" role="tablist" aria-label="Cenários do pipeline">
             <button type="button" role="tab" data-scenario="feliz" aria-selected="true">Feliz</button>
             <button type="button" role="tab" data-scenario="saga" aria-selected="false">Saga</button>
@@ -599,11 +651,11 @@ for lead in fila:
               <line x1="370" y1="50" x2="400" y2="50"/><line x1="500" y1="50" x2="530" y2="50"/>
             </g>
             <g class="eai-flow__nodes">
-              <g><rect x="10" y="30" width="100" height="40" rx="7"/><text x="60" y="55">M1 · Busca</text></g>
-              <g><rect x="140" y="30" width="100" height="40" rx="7"/><text x="190" y="55">M2 · Extr.</text></g>
-              <g><rect x="270" y="30" width="100" height="40" rx="7"/><text x="320" y="55">M3 · Score</text></g>
-              <g><rect x="400" y="30" width="100" height="40" rx="7"/><text x="450" y="55">M4 · Rank</text></g>
-              <g><rect x="530" y="30" width="100" height="40" rx="7"/><text x="580" y="55">M5 · XAI</text></g>
+              <g data-node="m1"><rect x="10" y="30" width="100" height="40" rx="7"/><text x="60" y="55">M1 · Busca</text></g>
+              <g data-node="m2"><rect x="140" y="30" width="100" height="40" rx="7"/><text x="190" y="55">M2 · Extr.</text></g>
+              <g data-node="m3"><rect x="270" y="30" width="100" height="40" rx="7"/><text x="320" y="55">M3 · Score</text></g>
+              <g data-node="m4"><rect x="400" y="30" width="100" height="40" rx="7"/><text x="450" y="55">M4 · Rank</text></g>
+              <g data-node="m5"><rect x="530" y="30" width="100" height="40" rx="7"/><text x="580" y="55">M5 · XAI</text></g>
             </g>
 
             <!-- Saga -->
@@ -659,8 +711,9 @@ for lead in fila:
           </div>
 
           <div class="eai-pg__feedback">
+            <div class="eai-pg__last-action" data-pg-last-action aria-live="polite"></div>
+            <ul class="eai-pg__warnings" data-pg-warnings role="list"></ul>
             <p class="eai-pg__verdict" data-pg-verdict role="status"></p>
-            <ul class="eai-pg__list" data-pg-list role="list"></ul>
           </div>
         </div>
       </div>
@@ -723,14 +776,16 @@ for lead in fila:
 
         <!-- Anatomia do repositório -->
         <h3 class="eai-sub">A anatomia do repositório</h3>
+        <p class="eai-section__lede">Estrutura de pastas é um conceito espacial — explore-a como tal. Clique numa pasta para expandir; clique em qualquer item para ver sua função.</p>
         <div class="eai-anatomy">
-          <ul class="eai-tree" role="list" aria-label="Estrutura de pastas do repositório To-Be">
-            <li class="eai-tree__root">projeto-to-be/</li>
-            <li class="eai-tree__dir" data-folder="ai"><code>.ai/ .claude/</code><span>estado cognitivo (PROGRESS.md, skills, permissões)</span></li>
-            <li class="eai-tree__dir" data-folder="docs"><code>docs/</code><span>biblioteca de contexto — ADRs, SDDs, governança</span></li>
-            <li class="eai-tree__dir" data-folder="tests"><code>tests/</code><span>validação contínua — defesa nº 1 contra alucinações</span></li>
-            <li class="eai-tree__dir" data-folder="scripts"><code>scripts/ .github/</code><span>gates de automação (quality gate + CI)</span></li>
-          </ul>
+          <div class="eai-repo" data-eai-repo aria-label="Árvore de repositório interativa">
+            <div class="eai-repo__tree" role="tree" aria-label="Estrutura de pastas do projeto">
+              <!-- renderizado por eai-anatomy.js -->
+            </div>
+            <div class="eai-repo__panel" data-repo-panel aria-live="polite">
+              <p class="eai-repo__panel-hint">Clique em um arquivo ou pasta para ver sua função.</p>
+            </div>
+          </div>
 
           <div class="eai-anatomy__notes">
             <div class="eai-callout eai-callout--danger" role="note">
@@ -840,6 +895,7 @@ for lead in fila:
   <script type="module" src="./js/eai-flow.js"></script>
   <script type="module" src="./js/eai-quiz.js"></script>
   <script type="module" src="./js/eai-playground.js"></script>
+  <script type="module" src="./js/eai-anatomy.js"></script>
   <script type="module" src="./js/eai-progress.js"></script>
   <script type="module" src="./js/eai-code.js"></script>
 </body>
