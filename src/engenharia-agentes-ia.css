@@ -234,6 +234,70 @@ body.eai-body {
 }
 .eai-hero__cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
+/* ====================== Jornada / accordion (WU-4) ====================== */
+.eai-journey {
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  counter-reset: chap;
+}
+.eai-chap {
+  border: 1px solid var(--eai-border);
+  border-radius: 12px;
+  background: var(--eai-bg);
+  overflow: hidden;
+}
+.eai-chap[open] { border-color: color-mix(in srgb, var(--eai-accent) 45%, var(--eai-border)); }
+.eai-chap__sum {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.15rem;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  color: var(--eai-heading);
+}
+.eai-chap__sum::-webkit-details-marker { display: none; }
+.eai-chap__sum:focus-visible { outline: 2px solid var(--eai-accent); outline-offset: -2px; }
+.eai-chap__n {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--eai-accent);
+  min-width: 1.5rem;
+}
+.eai-chap__t { flex: 1; }
+.eai-chap__meta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--eai-muted);
+  white-space: nowrap;
+}
+.eai-chap__sum::after {
+  content: "+";
+  font-size: 1.2rem;
+  color: var(--eai-muted);
+  transition: transform 0.2s ease;
+}
+.eai-chap[open] .eai-chap__sum::after { content: "−"; }
+.eai-chap__body {
+  padding: 0 1.15rem 1.15rem calc(1.15rem + 1.5rem + 0.9rem);
+  color: var(--eai-text);
+  font-size: 0.95rem;
+}
+.eai-chap__body p { margin: 0 0 0.6rem; }
+.eai-chap__link { color: var(--eai-accent); text-decoration: none; font-weight: 600; }
+.eai-chap__link:hover { text-decoration: underline; }
+@media (max-width: 560px) {
+  .eai-chap__meta { display: none; }
+  .eai-chap__body { padding-left: 1.15rem; }
+}
+
 /* ====================== Grade de princípios (WU-3) ====================== */
 .eai-pgrid {
   list-style: none;

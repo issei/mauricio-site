@@ -52,6 +52,25 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
+  test('WU-4: dez capítulos da jornada que abrem e expõem o objetivo', async ({ page }) => {
+    await page.goto(PATH);
+    const chaps = page.locator('.eai-journey .eai-chap');
+    await expect(chaps).toHaveCount(10);
+
+    // capítulo fechado por padrão; abrir o primeiro revela o corpo
+    const first = page.locator('#cap-1');
+    await expect(first).not.toHaveAttribute('open', /.*/);
+    await first.locator('summary').click();
+    await expect(first.locator('.eai-chap__body')).toBeVisible();
+    await expect(first.locator('.eai-chap__body')).toContainText('Objetivo');
+
+    // links internos da jornada apontam para princípios/governança existentes
+    await first.locator('summary').click(); // fecha
+    await page.locator('#cap-10 summary').click();
+    const gov = page.locator('#cap-10 .eai-chap__link');
+    await expect(gov).toHaveAttribute('href', '#governanca');
+  });
+
   test('WU-3: dez cards de princípio com títulos e âncoras', async ({ page }) => {
     await page.goto(PATH);
     const cards = page.locator('.eai-pgrid .eai-pcard');
