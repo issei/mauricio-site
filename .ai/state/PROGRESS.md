@@ -22,8 +22,8 @@
 | WU | Estado | Escopo | SDD-fonte | Modelo |
 | :-- | :-- | :-- | :-- | :-- |
 | WU-0 | ✅ done | Fundação (state, gate, CI de teste, ADR, DoR/DoD, suíte, stub dark) | doc 10, BUILD_PLAN | Opus |
-| WU-1 | ⬜ next | Shell: head/SEO, tokens, nav de trilha, footer, Lenis | 07, 03, 01 | Opus |
-| WU-2 | ⬜ | Hero "pouca IA no caminho crítico" (caótico × disciplinado) | 03, 04 V10 | Opus |
+| WU-1 | ✅ done | Shell: head/SEO, tokens, nav de trilha, footer, Lenis, progress, reveal | 07, 03, 01 | Opus |
+| WU-2 | ⬜ next | Hero "pouca IA no caminho crítico" (caótico × disciplinado) | 03, 04 V10 | Opus |
 | WU-3 | ⬜ | Área Princípios (10 cards) + âncoras | 01, 02, 03 | Sonnet |
 | WU-4 | ⬜ | Jornada (estrutura dos 10 capítulos) | 02 | Sonnet |
 | WU-5 | ⬜ | Governança Agent-Driven (masonry) | 10, 03 | Sonnet |
@@ -33,8 +33,8 @@
 (V1: WU-8…11 · V2: WU-12…14 — detalhar ao entrar na janela.)
 
 ## Próxima ação
-Iniciar **WU-1** (shell da página): revalidar DoR, escrever cenários, implementar nav/tokens/footer,
-rodar gate, push.
+Iniciar **WU-2** (Hero "pouca IA no caminho crítico"): visualização SVG/CSS animada do sistema
+caótico × disciplinado (doc 04 V10), substituindo o hero placeholder.
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
