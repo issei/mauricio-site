@@ -52,6 +52,19 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
+  test('WU-3: dez cards de princípio com títulos e âncoras', async ({ page }) => {
+    await page.goto(PATH);
+    const cards = page.locator('.eai-pgrid .eai-pcard');
+    await expect(cards).toHaveCount(10);
+    // âncoras estáveis principio-1..principio-10
+    for (let n = 1; n <= 10; n++) {
+      await expect(page.locator(`#principio-${n}`)).toHaveCount(1);
+    }
+    // títulos-chave presentes
+    await expect(page.locator('#principio-1 .eai-pcard__title')).toContainText('componente');
+    await expect(page.locator('#principio-10 .eai-pcard__title')).toContainText('Explique');
+  });
+
   test('WU-2: visualização caótico × disciplinado com SVGs rotulados e equivalente textual', async ({ page }) => {
     await page.goto(PATH);
     const duo = page.locator('[data-eai-duo]');

@@ -126,12 +126,87 @@
       </div>
     </section>
 
-    <!-- PRINCÍPIOS (WU-3) -->
+    <!-- PRINCÍPIOS -->
     <section id="principios" class="eai-section" aria-labelledby="principios-titulo" data-eai-reveal>
       <div class="eai-container">
         <p class="eai-eyebrow">Os 10 princípios</p>
         <h2 id="principios-titulo" class="eai-section__title">O que torna a IA confiável</h2>
-        <p class="eai-section__lede">Em breve: os dez princípios da engenharia agêntica, cada um com sua visualização.</p>
+        <p class="eai-section__lede">
+          A tese em dez regras. Sistemas de IA confiáveis nascem de arquitetura disciplinada — não de
+          prompts mais inteligentes.
+        </p>
+
+        <ul class="eai-pgrid" role="list">
+          <li><article class="eai-pcard" id="principio-1">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P1</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M11 7h4v6"/></svg></div>
+            <h3 class="eai-pcard__title">O LLM é um componente, não o piloto</h3>
+            <p class="eai-pcard__text">Ele responde dentro de etapas; nunca controla o fluxo de controle.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-2">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P2</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/><path d="M8 4 6 20M18 4l-2 16"/></svg></div>
+            <h3 class="eai-pcard__title">Determinismo é invariante testável</h3>
+            <p class="eai-pcard__text">Mesma entrada, mesma saída — sempre. Não-determinismo é defeito.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-3">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P3</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="8" height="14" rx="1.5"/><rect x="13" y="5" width="8" height="14" rx="1.5"/></svg></div>
+            <h3 class="eai-pcard__title">Separe o Cérebro da Vitrine</h3>
+            <p class="eai-pcard__text">Motor sensível e interface exposta, ligados por um contrato estreito.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-4">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P4</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></div>
+            <h3 class="eai-pcard__title">Determinístico-primeiro</h3>
+            <p class="eai-pcard__text">Resolva com regras e dados; gaste IA só no resíduo interpretativo.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-5">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P5</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/></svg></div>
+            <h3 class="eai-pcard__title">Contratos rígidos em toda fronteira</h3>
+            <p class="eai-pcard__text">A saída do modelo é input não confiável até ser validada.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-6">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P6</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+            <h3 class="eai-pcard__title">Isole as camadas epistêmicas</h3>
+            <p class="eai-pcard__text">Evidência ≠ inferência ≠ julgamento; mantenha a rastreabilidade.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-7">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P7</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
+            <h3 class="eai-pcard__title">Abrace o Mundo Aberto</h3>
+            <p class="eai-pcard__text">Ausência de dado é incerteza explícita, nunca "falso".</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-8">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P8</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V5M19 19V9M12 19V12"/><path d="M3 20h18"/></svg></div>
+            <h3 class="eai-pcard__title">Governe o orçamento com ledgers</h3>
+            <p class="eai-pcard__text">Quota e custo são estado de domínio; processe em ondas, nunca pague duas vezes.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-9">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P9</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+            <h3 class="eai-pcard__title">Governança fail-closed</h3>
+            <p class="eai-pcard__text">BDD com cenários degradados, DoR/DoD rígidos, bloqueio honesto.</p>
+          </article></li>
+
+          <li><article class="eai-pcard" id="principio-10">
+            <div class="eai-pcard__head"><span class="eai-pcard__num">P10</span>
+              <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/></svg></div>
+            <h3 class="eai-pcard__title">Explique, não exponha o número</h3>
+            <p class="eai-pcard__text">Drivers, lacunas e proveniência constroem a confiança que gera adoção.</p>
+          </article></li>
+        </ul>
       </div>
     </section>
 

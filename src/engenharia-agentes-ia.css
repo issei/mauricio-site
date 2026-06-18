@@ -234,6 +234,59 @@ body.eai-body {
 }
 .eai-hero__cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
+/* ====================== Grade de princípios (WU-3) ====================== */
+.eai-pgrid {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.eai-pcard {
+  height: 100%;
+  background: var(--eai-surface);
+  border: 1px solid var(--eai-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.eai-pcard:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--eai-accent) 45%, var(--eai-border));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+.eai-pcard__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+.eai-pcard__num {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--eai-heading);
+  background: var(--eai-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.eai-pcard__icon {
+  width: 26px; height: 26px;
+  fill: none;
+  stroke: var(--eai-accent);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.eai-pcard__title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
+}
+.eai-pcard__text { font-size: 0.9rem; color: var(--eai-muted); margin: 0; }
+
 /* ====================== Duo: caótico × disciplinado (V10) ====================== */
 .eai-duo {
   display: grid;
