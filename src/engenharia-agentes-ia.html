@@ -45,6 +45,7 @@
         <a href="#principios" data-eai-navlink>Princípios</a>
         <a href="#jornada" data-eai-navlink>Jornada</a>
         <a href="#simulador" data-eai-navlink>Simulador</a>
+        <a href="#playground" data-eai-navlink>Playground</a>
         <a href="#governanca" data-eai-navlink>Governança</a>
         <a href="#referencia" data-eai-navlink>Referência</a>
       </nav>
@@ -497,6 +498,42 @@
       </div>
     </section>
 
+    <!-- PLAYGROUND -->
+    <section id="playground" class="eai-section eai-section--alt" aria-labelledby="playground-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Laboratório</p>
+        <h2 id="playground-titulo" class="eai-section__title">Playground: monte sua arquitetura</h2>
+        <p class="eai-section__lede">
+          Adicione componentes e veja o sistema avaliar a arquitetura por regras determinísticas —
+          apontando riscos e boas práticas.
+        </p>
+
+        <div class="eai-pg" data-eai-pg>
+          <div class="eai-pg__palette" aria-label="Componentes disponíveis">
+            <button type="button" data-comp="LLM">LLM</button>
+            <button type="button" data-comp="Schema">Schema</button>
+            <button type="button" data-comp="API">API</button>
+            <button type="button" data-comp="BDD">BDD</button>
+            <button type="button" data-comp="Ledger">Ledger</button>
+            <button type="button" data-comp="Cache">Cache</button>
+            <button type="button" data-comp="Human Review">Human Review</button>
+            <button type="button" data-comp="RAG">RAG</button>
+            <button type="button" data-comp="Observabilidade">Observabilidade</button>
+            <button type="button" data-comp="Guardrails">Guardrails</button>
+          </div>
+
+          <div class="eai-pg__canvas" data-pg-canvas aria-live="polite" aria-label="Sua arquitetura">
+            <p class="eai-pg__empty" data-pg-empty>Clique nos componentes acima para montar sua arquitetura.</p>
+          </div>
+
+          <div class="eai-pg__feedback">
+            <p class="eai-pg__verdict" data-pg-verdict role="status"></p>
+            <ul class="eai-pg__list" data-pg-list role="list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- GOVERNANÇA -->
     <section id="governanca" class="eai-section" aria-labelledby="governanca-titulo" data-eai-reveal>
       <div class="eai-container">
@@ -661,6 +698,7 @@
   <script type="module" src="./js/eai-sim.js"></script>
   <script type="module" src="./js/eai-flow.js"></script>
   <script type="module" src="./js/eai-quiz.js"></script>
+  <script type="module" src="./js/eai-playground.js"></script>
 </body>
 
 </html>
