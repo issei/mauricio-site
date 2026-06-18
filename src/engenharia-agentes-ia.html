@@ -324,12 +324,104 @@
       </div>
     </section>
 
-    <!-- GOVERNANÇA (WU-5) -->
+    <!-- GOVERNANÇA -->
     <section id="governanca" class="eai-section" aria-labelledby="governanca-titulo" data-eai-reveal>
       <div class="eai-container">
         <p class="eai-eyebrow">Repositório To-Be</p>
-        <h2 id="governanca-titulo" class="eai-section__title">Governança Agent-Driven</h2>
-        <p class="eai-section__lede">Em breve: o dicionário da arquitetura, a anatomia do repositório e os guardrails.</p>
+        <h2 id="governanca-titulo" class="eai-section__title">Governança Agent-Driven &amp; Vibe Coding</h2>
+        <p class="eai-section__lede">
+          Quando a IA passa de copilot a desenvolvedora autônoma, a responsabilidade migra para a
+          máquina — e responsabilidade exige estrutura.
+        </p>
+
+        <!-- Viradas -->
+        <div class="eai-turns">
+          <div class="eai-turn">
+            <h3>O contexto sai da cabeça e entra no repositório</h3>
+            <p>Um agente não tem intuição sobre decisões passadas. <strong>Contexto não documentado é
+              contexto que não existe</strong> — a documentação vira infraestrutura de primeira classe.</p>
+          </div>
+          <div class="eai-turn eai-turn--warn">
+            <h3>⚠ O risco da alucinação sintática</h3>
+            <p>Código esteticamente perfeito, porém logicamente errado. A confiança que o código
+              bonito inspira é o que o torna traiçoeiro. <strong>Vibe Coding sem testes fortes não é
+              ágil — é imprudente.</strong></p>
+          </div>
+        </div>
+
+        <!-- Dicionário (5 cards) -->
+        <h3 class="eai-sub">O dicionário da arquitetura</h3>
+        <ul class="eai-dict" role="list">
+          <li class="eai-dcard" data-pillar="sdd">
+            <span class="eai-dcard__sigla">SDD</span>
+            <p class="eai-dcard__name">Software Design Document</p>
+            <p class="eai-dcard__text">A fonte da verdade sobre <em>o que</em> o sistema é e seus limites.</p>
+          </li>
+          <li class="eai-dcard" data-pillar="adr">
+            <span class="eai-dcard__sigla">ADR</span>
+            <p class="eai-dcard__name">Architecture Decision Records</p>
+            <p class="eai-dcard__text">A memória imutável que explica o <em>porquê</em> das decisões passadas.</p>
+          </li>
+          <li class="eai-dcard" data-pillar="bdd">
+            <span class="eai-dcard__sigla">BDD</span>
+            <p class="eai-dcard__name">Behavior-Driven Development</p>
+            <p class="eai-dcard__text">O contrato de testes em Gherkin — o alvo executável do agente.</p>
+          </li>
+          <li class="eai-dcard" data-pillar="dor">
+            <span class="eai-dcard__sigla">DoR · DoD</span>
+            <p class="eai-dcard__name">Definition of Ready / Done</p>
+            <p class="eai-dcard__text">As barreiras da tarefa: protegem o agente de suposições e validam o resultado.</p>
+          </li>
+          <li class="eai-dcard" data-pillar="mcp">
+            <span class="eai-dcard__sigla">MCP</span>
+            <p class="eai-dcard__name">Model Context Protocol</p>
+            <p class="eai-dcard__text">As mãos e os olhos controlados do agente para acessar ferramentas.</p>
+          </li>
+        </ul>
+
+        <!-- Anatomia do repositório -->
+        <h3 class="eai-sub">A anatomia do repositório</h3>
+        <div class="eai-anatomy">
+          <ul class="eai-tree" role="list" aria-label="Estrutura de pastas do repositório To-Be">
+            <li class="eai-tree__root">projeto-to-be/</li>
+            <li class="eai-tree__dir" data-folder="ai"><code>.ai/ .claude/</code><span>estado cognitivo (PROGRESS.md, skills, permissões)</span></li>
+            <li class="eai-tree__dir" data-folder="docs"><code>docs/</code><span>biblioteca de contexto — ADRs, SDDs, governança</span></li>
+            <li class="eai-tree__dir" data-folder="tests"><code>tests/</code><span>validação contínua — defesa nº 1 contra alucinações</span></li>
+            <li class="eai-tree__dir" data-folder="scripts"><code>scripts/ .github/</code><span>gates de automação (quality gate + CI)</span></li>
+          </ul>
+
+          <div class="eai-anatomy__notes">
+            <div class="eai-callout eai-callout--danger" role="note">
+              <p class="eai-callout__title">🔴 Regra de Ouro — versione o estado cognitivo</p>
+              <p>O <code>PROGRESS.md</code>, as skills e as configs do agente entram no Git junto com o
+                código. Assim o rollback recupera <strong>código e o raciocínio da IA</strong> ao mesmo
+                tempo. Código e cognição evoluem — e são restauráveis — juntos.</p>
+            </div>
+            <div class="eai-callout eai-callout--warn" role="note">
+              <p class="eai-callout__title">🟠 Gates também são financeiros</p>
+              <p>Um agente sem teto de custo pode entrar em loop e virar uma fatura inesperada. Os gates
+                precisam de <strong>limite de iterações, orçamento e "falhar e parar"</strong> quando o
+                teto é atingido — parar num ponto seguro, como diante de um teste vermelho.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guia de construção -->
+        <h3 class="eai-sub">Como construir: meta-prompt × manual</h3>
+        <div class="eai-compare">
+          <div class="eai-compare__col">
+            <h4>Bootstrapping via Meta-Prompt</h4>
+            <p>Um <em>Master Context</em> longo descreve visão, escopo e guardrails; o LLM gera a árvore
+              e os arquivos base. Rápido — mas a fundação gerada vira a verdade do agente, então
+              <strong>erros aqui se propagam</strong>. Invista mais tempo no meta-prompt que no código.</p>
+          </div>
+          <div class="eai-compare__col">
+            <h4>Do It Yourself (manual)</h4>
+            <p>Na ordem: pastas de contexto → SDD base → 1º ADR → regras de validação → 1º BDD →
+              DoR/DoD. Só então o código. Mais lento, controle total.</p>
+          </div>
+          <p class="eai-compare__conv">As duas convergem para a mesma lógica: <strong>contexto e gates primeiro, código depois.</strong></p>
+        </div>
       </div>
     </section>
 
