@@ -47,12 +47,14 @@
 | :-- | :-- | :-- | :-- | :-- |
 | WU-12 | ✅ done | Playground: montar arquitetura (clique) + avaliação por regras determinísticas | 06 §2 | Opus |
 | WU-13 | ⏸ diferido | BPMN editável (bpmn-js) — diferido por ADR-eai-002; pipeline-switcher já cobre o ensino | 05 | — |
-| WU-14 | ⬜ next | Painel de progresso/aprendizado client-side (localStorage) | 08 | Sonnet |
+| WU-14 | ✅ done | Painel de progresso client-side (capítulos, score, componentes; localStorage) | 08 | Sonnet |
+
+**🎉 Onda V2 COMPLETA** (WU-12, WU-14). WU-13 (bpmn-js editável) **diferido** por ADR-eai-002.
 
 ## Próxima ação
-Iniciar **WU-14** (Painel de progresso): observabilidade da experiência client-side — capítulos
-abertos, melhor score do quiz e nº de componentes no playground, persistido em localStorage (doc 08).
-Depois, fechar a onda V2 (WU-13 fica diferido por ADR-eai-002).
+**Build concluído** (MVP + V1 + V2). Página viva, indexável e testada (build + 102 testes verdes em
+chromium/firefox/webkit). Único item em aberto, conscientemente diferido: **WU-13** (BPMN editável),
+a reativar só se a edição real de diagramas justificar o peso do bpmn-js (novo ADR).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills

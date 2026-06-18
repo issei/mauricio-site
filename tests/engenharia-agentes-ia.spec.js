@@ -158,6 +158,26 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-evals__note')).toContainText('offline');
   });
 
+  test('WU-14: painel de progresso reflete capítulo aberto e score do quiz', async ({ page }) => {
+    await page.goto(PATH);
+    const prog = page.locator('[data-eai-prog]');
+    await expect(prog).toBeVisible();
+
+    // abrir um capítulo incrementa "capítulos abertos"
+    await page.locator('#cap-1 summary').click();
+    await expect(prog.locator('[data-prog-chapters]')).toHaveText('1');
+
+    // acertar uma pergunta do quiz reflete no melhor score
+    const q1 = page.locator('[data-eai-quiz] [data-quiz-q]').first();
+    await q1.locator('button[data-correct="true"]').click();
+    await expect(prog.locator('[data-prog-quiz]')).toHaveText('1');
+
+    // limpar progresso zera
+    await prog.locator('[data-prog-reset]').click();
+    await expect(prog.locator('[data-prog-chapters]')).toHaveText('0');
+    await expect(prog.locator('[data-prog-quiz]')).toHaveText('0');
+  });
+
   test('WU-6: referência — glossário e caso SocialSelling (pipeline M1–M5)', async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator('.eai-gloss > div').first()).toBeVisible();
