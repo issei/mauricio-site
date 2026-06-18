@@ -37,13 +37,13 @@
 | WU | Estado | Escopo | SDD | Modelo |
 | :-- | :-- | :-- | :-- | :-- |
 | WU-8 | ✅ done | Simulador de arquitetura (8 controles → 6 medidores determinísticos) | 06 §1 | Sonnet+Opus |
-| WU-9 | ⬜ next | Evals: Erro de Sistema × Erro de Modelo | 06 §1.7 | Sonnet |
-| WU-10 | ⬜ | BPMN read-only com overlays (ADR de lib antes) | 05 | Opus |
-| WU-11 | ⬜ | Quizzes/gates de progressão da Jornada | 02 | Sonnet |
+| WU-9 | ✅ done | Evals: Erro de Sistema × Erro de Modelo + nota LLM-as-a-judge | 06 §1.7 | Sonnet |
+| WU-10 | ✅ done | Pipeline interativo SVG (feliz/Saga/DLQ/confiança) — ADR-eai-002 | 05 | Opus |
+| WU-11 | ⬜ next | Quiz de verificação (1 pergunta por princípio, feedback) | 02 | Sonnet |
 
 ## Próxima ação
-Iniciar **WU-9** (Evals): distinção visual Erro de Sistema (schema, barrado por contrato) × Erro de
-Modelo (drift semântico) no contexto do simulador, com nota sobre LLM-as-a-judge offline (doc 06 §1.7).
+Iniciar **WU-11** (Quiz): pequena verificação de aprendizado (perguntas de múltipla escolha sobre os
+princípios) com feedback imediato, determinístico e acessível. Fecha a onda V1.
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
