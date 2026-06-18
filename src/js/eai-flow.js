@@ -1,17 +1,25 @@
 /*
- * Pipeline & resiliência (WU-10) — doc 05 (Saga/DLQ/roteamento por confiança).
- * Troca de cenário num diagrama SVG próprio (sem bpmn-js — ADR-eai-002).
+ * Pipeline & resiliência (WU-10 + T4) — troca de cenário num diagrama SVG próprio.
  * Determinístico e acessível: o parágrafo aria-live é o equivalente textual.
+ * T4: descrições por cenário + realce visual da etapa que falha em cada caso.
  */
-const DESCRIPTIONS = {
-  feliz:
-    'Fluxo determinístico M1→M5: busca, extração, score, ranking e explicação. Mesma entrada, mesma saída — reproduzível e auditável.',
-  saga:
-    'Falha parcial após um efeito colateral dispara a compensação (Saga): a ação é desfeita em ordem reversa, sem rollback global. Cada nó é idempotente.',
-  dlq:
-    'Item que viola o contrato N vezes ou estoura o orçamento é desviado para a Dead-Letter Queue — registrado, nunca descartado em silêncio; reprocessável na próxima onda.',
-  confianca:
-    'A revisão humana só é acionada se a confiança da XAI for menor que 98%. Em 98% ou mais, o sistema executa de forma autônoma e gera apenas um registro de auditoria.',
+const SCENARIOS = {
+  feliz: {
+    fail: null,
+    desc: 'Caminho ideal (fluxo determinístico M1→M5): dados chegam completos, cada módulo executa sem erro e a saída passa na validação. Mesma entrada, mesma saída — este é o baseline reproduzível e auditável que o design deve garantir.',
+  },
+  saga: {
+    fail: 'm4',
+    desc: 'M4 (Ranking) falhou após um efeito colateral. O sistema aciona a compensação (Saga): desfaz em ordem reversa o que M3 calculou, registra o motivo e retorna ao estado anterior de forma limpa. Nenhum dado corrompido, sem rollback global — cada nó é idempotente.',
+  },
+  dlq: {
+    fail: 'm3',
+    desc: 'M3 (Score) violou o contrato repetidas vezes. Em vez de bloquear o pipeline ou silenciar o erro, a mensagem vai para a DLQ (Dead-Letter Queue) — registrada, nunca descartada em silêncio, onde pode ser inspecionada, corrigida e reprocessada na próxima onda.',
+  },
+  confianca: {
+    fail: 'm5',
+    desc: 'M5 (XAI) calculou confiança de 94% — abaixo do threshold de 98%. Em vez de aprovar automaticamente, aciona revisão humana. O sistema sabe quando não sabe: em 98% ou mais executa autônomo e gera registro de auditoria; abaixo, escala para um humano.',
+  },
 };
 
 function initFlow() {
@@ -21,12 +29,14 @@ function initFlow() {
   const desc = root.querySelector('[data-flow-desc]');
 
   const setScenario = (name) => {
-    if (!DESCRIPTIONS[name]) return;
+    const sc = SCENARIOS[name];
+    if (!sc) return;
     root.setAttribute('data-scenario', name);
+    root.setAttribute('data-fail', sc.fail || '');
     tabs.forEach((t) =>
       t.setAttribute('aria-selected', t.getAttribute('data-scenario') === name ? 'true' : 'false')
     );
-    if (desc) desc.textContent = DESCRIPTIONS[name];
+    if (desc) desc.textContent = sc.desc;
   };
 
   tabs.forEach((t) => {

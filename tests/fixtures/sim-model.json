@@ -1,0 +1,24 @@
+{
+  "_note": "Espelho documental de src/js/eai-sim-model.js (SIM_MODEL). Fonte da verdade: o módulo JS. Mantido em sincronia para teste e leitura.",
+  "baselines": {
+    "custo": { "min": 30, "razao": "Custo base de qualquer sistema: infraestrutura, latência de rede, overhead operacional. Zero nunca é possível em produção." },
+    "risco": { "min": 40, "razao": "Risco base: todo sistema tem falha de rede, erro de runtime e comportamento inesperado. Zero risco não existe." },
+    "velocidade": { "base": 50 },
+    "confianca": { "base": 20 },
+    "auditabilidade": { "base": 10 },
+    "previsibilidade": { "base": 30 }
+  },
+  "autonomia": {
+    "efeito": "Cada 10% de autonomia adicional: +5 custo, +8 risco, +3 velocidade, -4 confiança, -3.2 previsibilidade",
+    "razao": "Mais autonomia = mais chamadas de modelo não supervisionadas = mais custo e mais superfície para erros se propagarem."
+  },
+  "guardrails": {
+    "schemas": { "custo": -5, "risco": -15, "confianca": 20, "previsibilidade": 14, "razao": "Contratos rígidos barram saídas inválidas antes de propagarem. Reduz retrabalho (custo) e elimina uma classe inteira de erros (risco)." },
+    "cache": { "custo": -20, "velocidade": 15, "razao": "Nunca pague duas vezes pelo mesmo processamento. Cache semântico é a maior alavanca de redução de custo." },
+    "ledger": { "custo": -10, "risco": -5, "previsibilidade": 16, "razao": "Teto de gasto como estado de domínio. Elimina fatura-surpresa e força o sistema a parar num ponto seguro." },
+    "human": { "confianca": 15, "risco": -10, "velocidade": -10, "razao": "Supervisão humana aumenta confiança mas reduz throughput. Trade-off explícito." },
+    "bdd": { "confianca": 10, "auditabilidade": 20, "risco": -10, "previsibilidade": 18, "razao": "Cenários de teste fixos tornam o comportamento verificável e auditável. A defesa número 1 contra alucinações." },
+    "evals": { "auditabilidade": 15, "confianca": 5, "razao": "Evals semânticos detectam drift e alucinações bem formatadas que os contratos não veem." },
+    "observability": { "auditabilidade": 20, "previsibilidade": 10, "razao": "Sem observabilidade, o sistema é uma caixa-preta. Com ela, cada decisão é rastreável." }
+  }
+}

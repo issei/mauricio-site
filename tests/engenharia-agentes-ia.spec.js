@@ -62,23 +62,27 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
-  test('WU-11: quiz dá feedback e conta acertos únicos', async ({ page }) => {
+  test('WU-11/T2: quiz dá feedback que ensina e conta acertos únicos', async ({ page }) => {
     await page.goto(PATH);
     const quiz = page.locator('[data-eai-quiz]');
     await expect(quiz.locator('[data-quiz-q]')).toHaveCount(4);
     await expect(quiz.locator('[data-quiz-score]')).toHaveText('0');
 
     const q1 = quiz.locator('[data-quiz-q]').first();
-    // resposta errada: feedback, score continua 0
-    await q1.locator('button[data-correct="false"]').first().click();
-    await expect(q1.locator('[data-quiz-fb]')).toContainText('Quase');
+    const opts1 = q1.locator('.eai-quiz__opts button');
+    // resposta errada (opção A): feedback específico que explica o erro, score continua 0
+    await opts1.nth(0).click();
+    await expect(q1.locator('[data-quiz-fb]')).toHaveAttribute('data-state', 'wrong');
+    await expect(q1.locator('[data-quiz-fb]')).toContainText('controle de fluxo');
     await expect(quiz.locator('[data-quiz-score]')).toHaveText('0');
 
-    // resposta certa: score 1, não conta duas vezes
-    await q1.locator('button[data-correct="true"]').click();
-    await expect(q1.locator('[data-quiz-fb]')).toContainText('Correto');
+    // resposta certa (opção B): score 1, nomeia o princípio, não conta duas vezes
+    await opts1.nth(1).click();
+    await expect(q1.locator('[data-quiz-fb]')).toHaveAttribute('data-state', 'correct');
+    await expect(q1.locator('[data-quiz-fb]')).toContainText('Exato');
+    await expect(q1.locator('.eai-quiz__fb-link')).toContainText('P1');
     await expect(quiz.locator('[data-quiz-score]')).toHaveText('1');
-    await q1.locator('button[data-correct="true"]').click();
+    await opts1.nth(1).click();
     await expect(quiz.locator('[data-quiz-score]')).toHaveText('1');
   });
 
@@ -167,9 +171,9 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await page.locator('#cap-1 summary').click();
     await expect(prog.locator('[data-prog-chapters]')).toHaveText('1');
 
-    // acertar uma pergunta do quiz reflete no melhor score
+    // acertar uma pergunta do quiz reflete no melhor score (Q1: opção B é a correta)
     const q1 = page.locator('[data-eai-quiz] [data-quiz-q]').first();
-    await q1.locator('button[data-correct="true"]').click();
+    await q1.locator('.eai-quiz__opts button').nth(1).click();
     await expect(prog.locator('[data-prog-quiz]')).toHaveText('1');
 
     // limpar progresso zera
@@ -193,9 +197,11 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     // 5 cards do dicionário
     await expect(page.locator('.eai-dict .eai-dcard')).toHaveCount(5);
     await expect(page.locator('.eai-dcard[data-pillar="mcp"]')).toContainText('Model Context Protocol');
-    // árvore com as 4 pastas-chave
-    for (const f of ['ai', 'docs', 'tests', 'scripts']) {
-      await expect(page.locator(`.eai-tree__dir[data-folder="${f}"]`)).toBeVisible();
+    // árvore interativa (T6) renderizada por JS com as pastas-chave no 1º nível
+    const repo = page.locator('[data-eai-repo]');
+    await expect(repo).toBeVisible();
+    for (const f of ['.ai/', 'docs/', 'tests/', 'scripts/', '.github/']) {
+      await expect(repo.locator('.eai-repo__name', { hasText: f }).first()).toBeVisible();
     }
     // Regra de Ouro (danger) e alerta financeiro (warn)
     await expect(page.locator('.eai-callout--danger')).toContainText('versione o estado cognitivo');
@@ -215,7 +221,8 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(first).not.toHaveAttribute('open', /.*/);
     await first.locator('summary').click();
     await expect(first.locator('.eai-chap__body')).toBeVisible();
-    await expect(first.locator('.eai-chap__body')).toContainText('Objetivo');
+    // conteúdo real expandido (T1): analogia do banco de dados em transações
+    await expect(first.locator('.eai-chap__body')).toContainText('banco');
 
     // links internos da jornada apontam para princípios/governança existentes
     await first.locator('summary').click(); // fecha
@@ -282,6 +289,88 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     // listas explicativas presentes em ambos os lados
     await expect(duo.locator('.eai-duo__panel--chaos .eai-duo__list li')).toHaveCount(3);
     await expect(duo.locator('.eai-duo__panel--order .eai-duo__list li')).toHaveCount(3);
+  });
+
+  test('T3: simulador explica os valores mínimos e o impacto de cada controle', async ({ page }) => {
+    await page.goto(PATH);
+    const sim = page.locator('[data-eai-sim]');
+    const explain = sim.locator('[data-sim-explain-body]');
+
+    // autonomia 0 + custo/risco redutores desmarcados → painel exibe a razão dos pisos
+    await sim.locator('[data-sim="autonomy"]').fill('0');
+    await sim.locator('[data-sim="autonomy"]').dispatchEvent('input');
+    await sim.locator('[data-sim="schemas"]').uncheck();
+    await sim.locator('[data-sim="bdd"]').uncheck();
+    await expect(explain).toContainText('Custo ≥ 30');
+    await expect(explain).toContainText('Risco ≥ 40');
+
+    // marcar Cache → painel mostra o impacto (XAI) antes de o usuário ler as barras
+    await sim.locator('[data-sim="cache"]').check();
+    await expect(explain).toContainText('Cache');
+    await expect(explain).toContainText('custo −20');
+
+    // tooltip ⓘ abre a definição da métrica
+    await sim.locator('[data-metric="risco"] .eai-meter__info').click();
+    await expect(sim.locator('[data-metric="risco"] .eai-meter__tip')).toBeVisible();
+  });
+
+  test('T2: quiz Q2 (Open-World) dá feedback específico para A, B e C', async ({ page }) => {
+    await page.goto(PATH);
+    const q2 = page.locator('[data-eai-quiz] [data-quiz-q][data-qid="q2"]');
+    const opts = q2.locator('.eai-quiz__opts button');
+    const fb = q2.locator('[data-quiz-fb]');
+
+    await opts.nth(0).click(); // A
+    await expect(fb).toContainText('Mundo Fechado');
+    await opts.nth(2).click(); // C
+    await expect(fb).toContainText(/m[ée]dio|fabricad/i);
+    await opts.nth(1).click(); // B (correta)
+    await expect(fb).toHaveAttribute('data-state', 'correct');
+    await expect(fb).toContainText('Open-World');
+  });
+
+  test('T5: playground mostra a última ação e avisos por componente', async ({ page }) => {
+    await page.goto(PATH);
+    const pg = page.locator('[data-eai-pg]');
+    // RAG sem Schema → última ação + aviso específico de risco
+    await pg.locator('.eai-pg__palette button[data-comp="RAG"]').click();
+    await expect(pg.locator('[data-pg-last-action]')).toContainText('RAG');
+    await expect(pg.locator('[data-pg-warnings]')).toContainText('RAG sem Schema');
+    // remover BDD mostra o impacto no critério de "pronto"
+    await pg.locator('.eai-pg__palette button[data-comp="BDD"]').click();
+    await pg.locator('[data-chip="BDD"]').click();
+    await expect(pg.locator('[data-pg-last-action]')).toContainText('percepção');
+  });
+
+  test('T4: pipeline tem glossário inline de Saga, DLQ e Confiança + realce da falha', async ({ page }) => {
+    await page.goto(PATH);
+    const gloss = page.locator('.eai-flow__gloss');
+    await expect(gloss).toContainText('Saga');
+    await expect(gloss).toContainText('Dead-Letter Queue');
+    await expect(gloss).toContainText('Confiança');
+    const flow = page.locator('[data-eai-flow]');
+    await flow.locator('[role="tab"][data-scenario="saga"]').click();
+    await expect(flow).toHaveAttribute('data-fail', 'm4');
+  });
+
+  test('T6: anatomia — árvore interativa expande e atualiza o painel ao clicar', async ({ page }) => {
+    await page.goto(PATH);
+    const repo = page.locator('[data-eai-repo]');
+    await expect(repo).toBeVisible();
+    // .ai/ começa recolhida; clicar expande e revela PROGRESS.md
+    await repo.locator('.eai-repo__row', { hasText: '.ai/' }).click();
+    const progress = repo.locator('.eai-repo__row', { hasText: 'PROGRESS.md' });
+    await expect(progress).toBeVisible();
+    await progress.click();
+    await expect(repo.locator('[data-repo-panel]')).toContainText('recomeça do zero');
+  });
+
+  test('T6: em viewport mobile o painel aparece abaixo da árvore (não sobreposto)', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto(PATH);
+    const tb = await page.locator('.eai-repo__tree').boundingBox();
+    const pb = await page.locator('[data-repo-panel]').boundingBox();
+    expect(pb.y).toBeGreaterThanOrEqual(tb.y + tb.height - 2);
   });
 
   test('open-world / a11y: skip link, h1 único e axe sem violações serious/critical', async ({ page }) => {
