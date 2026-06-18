@@ -224,6 +224,20 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(gov).toHaveAttribute('href', '#governanca');
   });
 
+  test('WU-15: janelas de código reais com realce de sintaxe aplicado', async ({ page }) => {
+    await page.goto(PATH);
+    const wins = page.locator('.eai-cw');
+    await expect(wins).toHaveCount(3);
+    // nomes de arquivo presentes
+    await expect(page.locator('.eai-cw__file', { hasText: 'pipeline.py' })).toBeVisible();
+    await expect(page.locator('.eai-cw__file', { hasText: 'finops.py' })).toBeVisible();
+    // o realce de sintaxe (eai-code.js) injeta tokens
+    await expect(page.locator('.eai-cw code .tok-k').first()).toBeVisible();
+    await expect(page.locator('.eai-cw code .tok-c').first()).toBeVisible();
+    // conteúdo técnico real (FinOps)
+    await expect(page.locator('#codigo')).toContainText('daily_cap');
+  });
+
   test('WU-3: dez cards de princípio com títulos e âncoras', async ({ page }) => {
     await page.goto(PATH);
     const cards = page.locator('.eai-pgrid .eai-pcard');

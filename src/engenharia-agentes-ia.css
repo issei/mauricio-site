@@ -671,6 +671,58 @@ body.eai-body {
   .eai-chap__body { padding-left: 1.15rem; }
 }
 
+/* ====================== Janelas de código (WU-15) ====================== */
+.eai-cw-grid {
+  margin-top: 2.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1.1rem;
+  align-items: start;
+}
+.eai-cw {
+  margin: 0;
+  border: 1px solid var(--eai-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0a0d12;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.eai-cw__bar {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--eai-surface);
+  border-bottom: 1px solid var(--eai-border);
+  font-size: 0.78rem;
+}
+.eai-cw__dots { display: inline-flex; gap: 0.35rem; }
+.eai-cw__dots i { width: 11px; height: 11px; border-radius: 50%; background: #3a4048; }
+.eai-cw__dots i:nth-child(1) { background: #ff5f56; }
+.eai-cw__dots i:nth-child(2) { background: #ffbd2e; }
+.eai-cw__dots i:nth-child(3) { background: #27c93f; }
+.eai-cw__file { color: var(--eai-text); font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.eai-cw__tag { margin-left: auto; color: var(--eai-muted); font-size: 0.72rem; text-align: right; }
+.eai-cw__pre {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.eai-cw__pre:focus-visible { outline: 2px solid var(--eai-accent); outline-offset: -2px; }
+.eai-cw__pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  color: #c9d1d9;
+  white-space: pre;
+}
+/* tokens (contraste AA sobre #0a0d12) */
+.tok-c { color: #7d8590; font-style: italic; }
+.tok-s { color: #7ee787; }
+.tok-n { color: #79c0ff; }
+.tok-k { color: #ff7b72; }
+.tok-b { color: #d2a8ff; }
+
+@media (max-width: 560px) { .eai-cw__tag { display: none; } }
+
 /* ====================== Quiz (WU-11) ====================== */
 .eai-quiz { margin-top: 0.5rem; }
 .eai-quiz__score {

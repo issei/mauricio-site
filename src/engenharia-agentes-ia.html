@@ -43,6 +43,7 @@
       </a>
       <nav class="eai-nav__trail" aria-label="Trilha de aprendizado">
         <a href="#principios" data-eai-navlink>Princípios</a>
+        <a href="#codigo" data-eai-navlink>Código</a>
         <a href="#jornada" data-eai-navlink>Jornada</a>
         <a href="#simulador" data-eai-navlink>Simulador</a>
         <a href="#playground" data-eai-navlink>Playground</a>
@@ -208,6 +209,83 @@
             <p class="eai-pcard__text">Drivers, lacunas e proveniência constroem a confiança que gera adoção.</p>
           </article></li>
         </ul>
+      </div>
+    </section>
+
+    <!-- CÓDIGO -->
+    <section id="codigo" class="eai-section eai-section--alt" aria-labelledby="codigo-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Da abstração ao código</p>
+        <h2 id="codigo-titulo" class="eai-section__title">Os princípios, em código real</h2>
+        <p class="eai-section__lede">
+          Não é teoria: cada princípio vira poucas linhas de engenharia disciplinada. Python puro,
+          contratos estritos e o LLM contido a um único passo.
+        </p>
+
+        <div class="eai-cw-grid">
+          <figure class="eai-cw">
+            <figcaption class="eai-cw__bar">
+              <span class="eai-cw__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="eai-cw__file">pipeline.py</span>
+              <span class="eai-cw__tag">Determinístico-primeiro · Contratos</span>
+            </figcaption>
+            <pre class="eai-cw__pre" tabindex="0"><code data-lang="python">from pydantic import BaseModel, Field
+
+class Inference(BaseModel):
+    model_config = {"extra": "forbid"}         # rejeita campo inesperado do LLM
+    intent: str
+    confidence: float = Field(ge=0.0, le=1.0)  # limite no schema, nao no if
+
+def run_pipeline(lead, llm, now):
+    ev = collect_evidence(lead)                # M1: deterministico (API, sem IA)
+    if ev.missing:                             # Open-World: ausencia = incerteza
+        return Inference(intent="desconhecido", confidence=0.0)
+    raw = llm.extract(ev.snippet)              # M2: LLM so no residuo interpretativo
+    return Inference.model_validate(raw)       # valida a saida (input nao confiavel)
+</code></pre>
+          </figure>
+
+          <figure class="eai-cw">
+            <figcaption class="eai-cw__bar">
+              <span class="eai-cw__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="eai-cw__file">finops.py</span>
+              <span class="eai-cw__tag">FinOps · falhar e parar</span>
+            </figcaption>
+            <pre class="eai-cw__pre" tabindex="0"><code data-lang="python">class TokenLedger:
+    def __init__(self, daily_cap: int):
+        self.cap = daily_cap
+        self.spent = 0
+
+    def try_spend(self, n: int) -> bool:
+        if self.spent + n > self.cap:          # teto do dia atingido
+            return False                       # falhar e parar: sem fatura surpresa
+        self.spent += n
+        return True
+
+ledger = TokenLedger(daily_cap=1000)
+for lead in fila:
+    if not ledger.try_spend(cost(lead)):
+        mark_pending(lead)                     # retoma na proxima onda
+        break                                  # para limpo, em ponto seguro
+</code></pre>
+          </figure>
+
+          <figure class="eai-cw">
+            <figcaption class="eai-cw__bar">
+              <span class="eai-cw__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="eai-cw__file">xai.py</span>
+              <span class="eai-cw__tag">XAI · drivers, não o número</span>
+            </figcaption>
+            <pre class="eai-cw__pre" tabindex="0"><code data-lang="python">def explain(score):
+    # nunca exponha o numero: traduza em "por que agora" + "o que falta"
+    return {
+        "why_now": [d.text for d in score.positive_signals],
+        "gaps": score.missing_signals,         # honestidade Open-World
+        "sources": [d.url for d in score.references],
+    }
+</code></pre>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -709,6 +787,7 @@
   <script type="module" src="./js/eai-quiz.js"></script>
   <script type="module" src="./js/eai-playground.js"></script>
   <script type="module" src="./js/eai-progress.js"></script>
+  <script type="module" src="./js/eai-code.js"></script>
 </body>
 
 </html>

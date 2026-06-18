@@ -51,10 +51,17 @@
 
 **🎉 Onda V2 COMPLETA** (WU-12, WU-14). WU-13 (bpmn-js editável) **diferido** por ADR-eai-002.
 
+**Onda Polimento (autoridade) — em andamento:**
+
+| WU | Estado | Escopo | SDD | Modelo |
+| :-- | :-- | :-- | :-- | :-- |
+| WU-15 | ✅ done | Janelas de código real (3 window-code + realce próprio) — seção #codigo | 03, 04 | Opus |
+| WU-16 | ⬜ next | Diagrama dinâmico de fluxo de dados (usuário→determinístico→LLM→XAI→resposta) | 04 | Opus |
+
 ## Próxima ação
-**Build concluído** (MVP + V1 + V2). Página viva, indexável e testada (build + 102 testes verdes em
-chromium/firefox/webkit). Único item em aberto, conscientemente diferido: **WU-13** (BPMN editável),
-a reativar só se a edição real de diagramas justificar o peso do bpmn-js (novo ADR).
+Iniciar **WU-16** (fluxo de dados): banda animada (SVG) logo após o hero mostrando o caminho
+usuário → sanitização/contratos → LLM (resíduo) → validação/XAI → resposta validada, com pulso
+fluindo e equivalente textual (lista ordenada). Tangibiliza a "engenharia agêntica".
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
