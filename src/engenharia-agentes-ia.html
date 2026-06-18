@@ -425,12 +425,46 @@
       </div>
     </section>
 
-    <!-- REFERÊNCIA (WU-6) -->
+    <!-- REFERÊNCIA -->
     <section id="referencia" class="eai-section eai-section--alt" aria-labelledby="referencia-titulo" data-eai-reveal>
       <div class="eai-container">
         <p class="eai-eyebrow">Consulta rápida</p>
         <h2 id="referencia-titulo" class="eai-section__title">Referência e caso real</h2>
-        <p class="eai-section__lede">Em breve: glossário, síntese dos princípios e o estudo de caso SocialSelling.</p>
+        <p class="eai-section__lede">
+          Os dez princípios em uma frase, um glossário dos termos-chave e o estudo de caso que originou
+          este conteúdo.
+        </p>
+
+        <h3 class="eai-sub">Glossário</h3>
+        <dl class="eai-gloss">
+          <div><dt>Alucinação sintática</dt><dd>Código esteticamente perfeito, porém logicamente errado — aparência de correção sem substância.</dd></div>
+          <div><dt>Resíduo interpretativo</dt><dd>A fração da tarefa que exige linguagem/inferência e que nenhuma fonte estruturada cobre. Só ele justifica gastar IA.</dd></div>
+          <div><dt>Open-World</dt><dd>Ausência de evidência é incerteza, não negação. O sistema aprende a dizer "não sei".</dd></div>
+          <div><dt>Ledger de quota</dt><dd>Orçamento como estado de domínio persistente: sabe quanto gastou, reseta no período e recusa o gasto ao bater o teto.</dd></div>
+          <div><dt>XAI</dt><dd>Explicação por drivers em linguagem natural + lacunas + proveniência, no lugar do número opaco.</dd></div>
+          <div><dt>DoR / DoD</dt><dd>Portões de qualidade que fecham a ambiguidade antes (Ready) e validam o resultado depois (Done), com bloqueio honesto.</dd></div>
+        </dl>
+
+        <h3 class="eai-sub">Estudo de caso: SocialSelling</h3>
+        <article class="eai-case">
+          <p class="eai-case__lede">
+            Este conteúdo foi extraído de um sistema real de priorização de leads B2B — onde os dez
+            princípios viraram produto.
+          </p>
+          <ul class="eai-case__pipe" aria-label="Pipeline determinístico de cinco estágios">
+            <li>M1 · Busca</li><li>M2 · Extração</li><li>M3 · Score</li><li>M4 · Ranking</li><li>M5 · XAI</li>
+          </ul>
+          <ul class="eai-case__points" role="list">
+            <li><strong>Pipeline determinístico</strong> (M1→M5): o LLM atua só em M2/M5; M3/M4 são Python puro.</li>
+            <li><strong>Cérebro × Vitrine:</strong> motor local publica snapshots; o portal nunca toca o banco do motor.</li>
+            <li><strong>Contratos + FinOps:</strong> schemas estritos em toda fronteira; ledgers governam requisições e créditos.</li>
+            <li><strong>XAI sem número:</strong> a operadora vê "por que agora" e "o que falta", nunca o score.</li>
+          </ul>
+          <p class="eai-case__note">
+            Disciplina central do projeto: distinguir o <strong>implementado</strong> (PoC) do
+            <strong>especificado</strong> (V1+) — saber quando <em>não</em> construir o aparato completo.
+          </p>
+        </article>
       </div>
     </section>
 
