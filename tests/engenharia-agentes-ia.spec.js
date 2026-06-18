@@ -92,6 +92,29 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     expect(Number(await riscoNow())).toBe(riscoBase);
   });
 
+  test('WU-10: pipeline troca de cenário (feliz/saga/dlq/confiança) e atualiza descrição', async ({ page }) => {
+    await page.goto(PATH);
+    const flow = page.locator('[data-eai-flow]');
+    await expect(flow).toHaveAttribute('data-scenario', 'feliz');
+    await expect(flow.locator('[role="tab"]')).toHaveCount(4);
+    await expect(page.locator('[data-flow-desc]')).toContainText('determinístico');
+
+    await flow.locator('[role="tab"][data-scenario="dlq"]').click();
+    await expect(flow).toHaveAttribute('data-scenario', 'dlq');
+    await expect(flow.locator('[role="tab"][data-scenario="dlq"]')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('[data-flow-desc]')).toContainText('Dead-Letter');
+
+    await flow.locator('[role="tab"][data-scenario="confianca"]').click();
+    await expect(page.locator('[data-flow-desc]')).toContainText('98%');
+  });
+
+  test('WU-9: evals distingue Erro de Sistema × Erro de Modelo + nota LLM-as-a-judge', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('.eai-evals__card--sys')).toContainText('Erro de Sistema');
+    await expect(page.locator('.eai-evals__card--mdl')).toContainText('Erro de Modelo');
+    await expect(page.locator('.eai-evals__note')).toContainText('offline');
+  });
+
   test('WU-6: referência — glossário e caso SocialSelling (pipeline M1–M5)', async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator('.eai-gloss > div').first()).toBeVisible();

@@ -386,6 +386,73 @@
           </div>
         </div>
         <p class="eai-sim__hint">Dica: alta autonomia sem schemas/BDD dispara risco e custo; ledger + cache derrubam o custo; evals e observabilidade elevam a auditabilidade.</p>
+
+        <h3 class="eai-sub">Evals: dois tipos de erro que o "Evals" cobre</h3>
+        <p class="eai-section__lede">Uma saída pode estar perfeitamente válida e ainda assim errada. Contrato e avaliação atacam falhas diferentes.</p>
+        <div class="eai-evals">
+          <div class="eai-evals__card eai-evals__card--sys">
+            <span class="eai-evals__tag">Erro de Sistema</span>
+            <p class="eai-evals__what">Falha <strong>estrutural</strong>: tipo errado, campo extra, <code>score = 1.7</code>, JSON malformado.</p>
+            <p class="eai-evals__who">Barrado <strong>deterministicamente pelos contratos</strong> (P5), em runtime. Binário e barato.</p>
+          </div>
+          <div class="eai-evals__card eai-evals__card--mdl">
+            <span class="eai-evals__tag">Erro de Modelo</span>
+            <p class="eai-evals__what">Saída <strong>válida</strong> mas semanticamente errada: <em>drift</em>, alucinação lógica bem formatada.</p>
+            <p class="eai-evals__who">O contrato <strong>não vê</strong>. Detectado por <strong>evals semânticos</strong> / LLM-as-a-judge.</p>
+          </div>
+        </div>
+        <p class="eai-evals__note">
+          O <strong>LLM-as-a-judge roda offline</strong>, fora do caminho crítico — pontua amostras
+          contra uma rubrica fixa e vira métrica agregada (taxa de <em>drift</em>), nunca decisão em
+          runtime. Mantém o "zero IA no caminho crítico". A lição: <strong>"passou no contrato" ≠ "está correto".</strong>
+        </p>
+
+        <h3 class="eai-sub">Pipeline &amp; resiliência</h3>
+        <p class="eai-section__lede">O mesmo pipeline determinístico, sob diferentes condições. Escolha um cenário.</p>
+        <div class="eai-flow" data-eai-flow data-scenario="feliz">
+          <div class="eai-flow__tabs" role="tablist" aria-label="Cenários do pipeline">
+            <button type="button" role="tab" data-scenario="feliz" aria-selected="true">Feliz</button>
+            <button type="button" role="tab" data-scenario="saga" aria-selected="false">Saga</button>
+            <button type="button" role="tab" data-scenario="dlq" aria-selected="false">DLQ</button>
+            <button type="button" role="tab" data-scenario="confianca" aria-selected="false">Confiança</button>
+          </div>
+
+          <svg class="eai-flow__svg" viewBox="0 0 680 230" role="img"
+            aria-label="Diagrama de pipeline determinístico de cinco etapas (M1 a M5) com elementos de resiliência conforme o cenário."
+            aria-describedby="flow-desc">
+            <g class="eai-flow__pipe" fill="none" stroke="var(--color-eai-border)" stroke-width="2">
+              <line x1="110" y1="50" x2="140" y2="50"/><line x1="240" y1="50" x2="270" y2="50"/>
+              <line x1="370" y1="50" x2="400" y2="50"/><line x1="500" y1="50" x2="530" y2="50"/>
+            </g>
+            <g class="eai-flow__nodes">
+              <g><rect x="10" y="30" width="100" height="40" rx="7"/><text x="60" y="55">M1 · Busca</text></g>
+              <g><rect x="140" y="30" width="100" height="40" rx="7"/><text x="190" y="55">M2 · Extr.</text></g>
+              <g><rect x="270" y="30" width="100" height="40" rx="7"/><text x="320" y="55">M3 · Score</text></g>
+              <g><rect x="400" y="30" width="100" height="40" rx="7"/><text x="450" y="55">M4 · Rank</text></g>
+              <g><rect x="530" y="30" width="100" height="40" rx="7"/><text x="580" y="55">M5 · XAI</text></g>
+            </g>
+
+            <!-- Saga -->
+            <g class="eai-flow__layer" data-for="saga">
+              <path d="M450 28 C420 -2 350 -2 320 28" fill="none" stroke="var(--color-eai-danger)" stroke-width="2" stroke-dasharray="5 4"/>
+              <text x="385" y="8" class="eai-flow__note eai-flow__note--bad">↩ compensa</text>
+            </g>
+            <!-- DLQ -->
+            <g class="eai-flow__layer" data-for="dlq">
+              <line x1="320" y1="70" x2="320" y2="150" stroke="var(--color-eai-danger)" stroke-width="2" stroke-dasharray="5 4"/>
+              <rect x="270" y="150" width="100" height="34" rx="7" class="eai-flow__dlqbox"/>
+              <text x="320" y="171" class="eai-flow__dlqtext">DLQ</text>
+            </g>
+            <!-- Confiança -->
+            <g class="eai-flow__layer" data-for="confianca">
+              <line x1="580" y1="70" x2="580" y2="120" stroke="var(--color-eai-human)" stroke-width="2"/>
+              <text x="580" y="140" class="eai-flow__note">≥ 98% ? sim → auto+audit</text>
+              <text x="580" y="162" class="eai-flow__note eai-flow__note--human">&lt; 98% → revisão humana</text>
+            </g>
+          </svg>
+
+          <p id="flow-desc" class="eai-flow__desc" aria-live="polite" data-flow-desc></p>
+        </div>
       </div>
     </section>
 
@@ -551,6 +618,7 @@
 
   <script type="module" src="./js/eai.js"></script>
   <script type="module" src="./js/eai-sim.js"></script>
+  <script type="module" src="./js/eai-flow.js"></script>
 </body>
 
 </html>
