@@ -628,7 +628,9 @@ body.eai-body {
 .eai-footer__inner { display: flex; flex-direction: column; gap: 0.4rem; }
 .eai-footer__brand { font-weight: 700; color: var(--eai-heading); margin: 0; }
 .eai-footer__meta { color: var(--eai-muted); font-size: 0.9rem; margin: 0; }
-.eai-footer__flag { color: var(--eai-muted); font-size: 0.85rem; margin: 0.5rem 0 0; }
+.eai-footer__nav { margin: 0.6rem 0 0; font-size: 0.85rem; }
+.eai-footer__nav a { color: var(--eai-accent); text-decoration: none; }
+.eai-footer__nav a:hover { text-decoration: underline; }
 
 /* ====================== Reveal on scroll ====================== */
 [data-eai-reveal] {

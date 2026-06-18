@@ -25,11 +25,21 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(hero).toBeVisible();
     await expect(page.locator('#hero-titulo')).toContainText('pouca IA');
 
-    // Flag de construção presente — será removida ao "abrir as cortinas"
-    await expect(page.locator('[data-eai-status="construindo"]')).toBeVisible();
-
     // Sem erros de console na carga (JS do shell deve bootar limpo)
     expect(consoleErrors, consoleErrors.join('\n')).toHaveLength(0);
+  });
+
+  test('WU-7: página indexável (cortinas abertas) e com navegação no footer', async ({ page }) => {
+    await page.goto(PATH);
+    const robots = await page.locator('meta[name="robots"]').getAttribute('content');
+    expect(robots).not.toMatch(/noindex/);
+    await expect(page.locator('.eai-footer__nav a[href="./catalogo.html"]')).toBeVisible();
+  });
+
+  test('WU-7: a página está listada no catálogo do site', async ({ page }) => {
+    const res = await page.goto('/catalogo.html');
+    expect(res?.status()).toBe(200);
+    await expect(page.locator('a[href="./engenharia-agentes-ia.html"]')).toBeVisible();
   });
 
   test('shell: nav da trilha aponta para as seções e footer presente', async ({ page }) => {
