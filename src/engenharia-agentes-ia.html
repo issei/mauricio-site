@@ -210,12 +210,117 @@
       </div>
     </section>
 
-    <!-- JORNADA (WU-4) -->
+    <!-- JORNADA -->
     <section id="jornada" class="eai-section eai-section--alt" aria-labelledby="jornada-titulo" data-eai-reveal>
       <div class="eai-container">
         <p class="eai-eyebrow">Trilha guiada</p>
         <h2 id="jornada-titulo" class="eai-section__title">Aprenda por descoberta</h2>
-        <p class="eai-section__lede">Em breve: dez capítulos interativos, do caos dos prompts ao projeto completo.</p>
+        <p class="eai-section__lede">
+          Dez capítulos, do caos dos prompts ao projeto completo. Abra cada um para ver o objetivo e
+          o que você sai sabendo.
+        </p>
+
+        <ol class="eai-journey" role="list">
+          <li><details class="eai-chap" id="cap-1">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">01</span>
+              <span class="eai-chap__t">Da magia à engenharia</span>
+              <span class="eai-chap__meta">Iniciante · 6 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> entender por que agentes autônomos irrestritos falham em produção (loops, custo, alucinação, irreprodutibilidade) e o que significa tratar o LLM como engenharia.</p>
+              <p>Você sai sabendo enquadrar IA como um componente contido dentro de uma arquitetura previsível.</p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-2">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">02</span>
+              <span class="eai-chap__t">Orquestração determinística</span>
+              <span class="eai-chap__meta">Iniciante · 8 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> separar a camada de orquestração/I-O da camada de decisão pura; o LLM responde dentro de etapas, nunca escolhe a próxima.</p>
+              <p><a class="eai-chap__link" href="#principio-1">Princípio 1 e 2 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-3">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">03</span>
+              <span class="eai-chap__t">Cérebro × Vitrine</span>
+              <span class="eai-chap__meta">Intermediário · 7 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> desacoplar o motor cognitivo (sensível, caro) da interface exposta, ligados por um contrato estreito — nunca por banco compartilhado.</p>
+              <p><a class="eai-chap__link" href="#principio-3">Princípio 3 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-4">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">04</span>
+              <span class="eai-chap__t">Determinístico-primeiro</span>
+              <span class="eai-chap__meta">Intermediário · 7 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> resolver com dados e regras tudo que for possível e gastar IA só no resíduo interpretativo — que encolhe a cada versão.</p>
+              <p><a class="eai-chap__link" href="#principio-4">Princípio 4 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-5">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">05</span>
+              <span class="eai-chap__t">Contratos rígidos</span>
+              <span class="eai-chap__meta">Intermediário · 8 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> blindar toda fronteira com schemas estritos; a saída do modelo é input não confiável até ser validada (inclui sanitização adversarial).</p>
+              <p><a class="eai-chap__link" href="#principio-5">Princípio 5 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-6">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">06</span>
+              <span class="eai-chap__t">Open-World</span>
+              <span class="eai-chap__meta">Intermediário · 7 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> isolar camadas epistêmicas (evidência ≠ inferência ≠ julgamento) e tratar ausência de sinal como incerteza explícita, nunca "falso".</p>
+              <p><a class="eai-chap__link" href="#principio-6">Princípios 6 e 7 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-7">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">07</span>
+              <span class="eai-chap__t">FinOps de IA</span>
+              <span class="eai-chap__meta">Avançado · 8 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> governar quota e custo como estado de domínio (ledgers), podar cedo, processar em ondas e nunca pagar duas vezes pelo mesmo trabalho.</p>
+              <p><a class="eai-chap__link" href="#principio-8">Princípio 8 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-8">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">08</span>
+              <span class="eai-chap__t">BDD para IA</span>
+              <span class="eai-chap__meta">Avançado · 8 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> testar o estocástico com cenários fixos (feliz, degradado, open-world) e governança fail-closed (DoR/DoD), com fixtures e zero rede.</p>
+              <p><a class="eai-chap__link" href="#principio-9">Princípio 9 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-9">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">09</span>
+              <span class="eai-chap__t">XAI</span>
+              <span class="eai-chap__meta">Intermediário · 6 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> trocar o número opaco por drivers em linguagem natural, lacunas (open-world) e proveniência — gerados por regras, fiéis ao cálculo.</p>
+              <p><a class="eai-chap__link" href="#principio-10">Princípio 10 →</a></p>
+            </div>
+          </details></li>
+
+          <li><details class="eai-chap" id="cap-10">
+            <summary class="eai-chap__sum"><span class="eai-chap__n">10</span>
+              <span class="eai-chap__t">Projeto completo</span>
+              <span class="eai-chap__meta">Síntese · 10 min</span></summary>
+            <div class="eai-chap__body">
+              <p><strong>Objetivo:</strong> juntar os dez princípios num sistema real e enxergar a governança agent-driven que sustenta a autonomia segura.</p>
+              <p><a class="eai-chap__link" href="#governanca">Governança Agent-Driven →</a></p>
+            </div>
+          </details></li>
+        </ol>
       </div>
     </section>
 

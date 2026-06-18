@@ -25,16 +25,16 @@
 | WU-1 | ✅ done | Shell: head/SEO, tokens, nav de trilha, footer, Lenis, progress, reveal | 07, 03, 01 | Opus |
 | WU-2 | ✅ done | Hero "pouca IA no caminho crítico" (caótico × disciplinado, SVG animado) | 03, 04 V10 | Opus |
 | WU-3 | ✅ done | Área Princípios (10 cards) + âncoras principio-1..10 | 01, 02, 03 | Sonnet |
-| WU-4 | ⬜ next | Jornada (estrutura dos 10 capítulos) | 02 | Sonnet |
-| WU-5 | ⬜ | Governança Agent-Driven (masonry) | 10, 03 | Sonnet |
+| WU-4 | ✅ done | Jornada (accordion de 10 capítulos, cap-1..10) | 02 | Sonnet |
+| WU-5 | ⬜ next | Governança Agent-Driven (masonry) | 10, 03 | Sonnet |
 | WU-6 | ⬜ | Referência + Casos Reais estático | 01, 09 | Haiku/Sonnet |
 | WU-7 | ⬜ | Visualizações SVG/CSS animadas (GSAP) | 04, 07 | Opus |
 
 (V1: WU-8…11 · V2: WU-12…14 — detalhar ao entrar na janela.)
 
 ## Próxima ação
-Iniciar **WU-4** (Jornada): estrutura dos 10 capítulos (accordion/stepper) com objetivo+resumo por
-capítulo, a partir do doc 02.
+Iniciar **WU-5** (Governança Agent-Driven): masonry com dicionário (5 cards SDD/ADR/BDD/DoR-DoD/MCP),
+árvore de diretórios, Regra de Ouro, alerta financeiro e comparativo meta-prompt × manual (doc 10).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
