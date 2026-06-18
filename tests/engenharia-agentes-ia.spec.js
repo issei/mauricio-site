@@ -128,6 +128,29 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('[data-flow-desc]')).toContainText('98%');
   });
 
+  test('WU-12: playground monta arquitetura e avalia por regras', async ({ page }) => {
+    await page.goto(PATH);
+    const pg = page.locator('[data-eai-pg]');
+    await expect(pg).toBeVisible();
+    await expect(pg.locator('.eai-pg__palette button')).toHaveCount(10);
+
+    // só LLM → veredito de risco crítico (sem schema/ledger)
+    await pg.locator('.eai-pg__palette button[data-comp="LLM"]').click();
+    await expect(pg.locator('[data-chip="LLM"]')).toBeVisible();
+    await expect(pg.locator('[data-pg-verdict]')).toHaveAttribute('data-sev', 'bad');
+
+    // adicionar guardrails de governança melhora o veredito
+    for (const c of ['Schema', 'Ledger', 'BDD', 'Observabilidade']) {
+      await pg.locator(`.eai-pg__palette button[data-comp="${c}"]`).click();
+    }
+    await expect(pg.locator('[data-pg-verdict]')).toContainText('Excelente governança');
+
+    // remover via chip volta a degradar (remove Ledger)
+    await pg.locator('[data-chip="Ledger"]').click();
+    await expect(pg.locator('[data-chip="Ledger"]')).toHaveCount(0);
+    await expect(pg.locator('[data-pg-verdict]')).toHaveAttribute('data-sev', 'bad');
+  });
+
   test('WU-9: evals distingue Erro de Sistema × Erro de Modelo + nota LLM-as-a-judge', async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator('.eai-evals__card--sys')).toContainText('Erro de Sistema');

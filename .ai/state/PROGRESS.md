@@ -45,14 +45,14 @@
 
 | WU | Estado | Escopo | SDD | Modelo |
 | :-- | :-- | :-- | :-- | :-- |
-| WU-12 | ⬜ next | Playground: montar arquitetura (drag-drop) + avaliação por regras | 06 §2 | Opus |
+| WU-12 | ✅ done | Playground: montar arquitetura (clique) + avaliação por regras determinísticas | 06 §2 | Opus |
 | WU-13 | ⏸ diferido | BPMN editável (bpmn-js) — diferido por ADR-eai-002; pipeline-switcher já cobre o ensino | 05 | — |
-| WU-14 | ⬜ | Painel de progresso/aprendizado client-side | 08 | Sonnet |
+| WU-14 | ⬜ next | Painel de progresso/aprendizado client-side (localStorage) | 08 | Sonnet |
 
 ## Próxima ação
-Iniciar **WU-12** (Playground): paleta de componentes arrastáveis (LLM, Schema, API, BDD, Ledger,
-Cache, Human Review, RAG, Observabilidade, Guardrails) → avaliação automática da arquitetura por
-regras determinísticas + feedback visual (doc 06 §2).
+Iniciar **WU-14** (Painel de progresso): observabilidade da experiência client-side — capítulos
+abertos, melhor score do quiz e nº de componentes no playground, persistido em localStorage (doc 08).
+Depois, fechar a onda V2 (WU-13 fica diferido por ADR-eai-002).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
