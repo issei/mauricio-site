@@ -7,12 +7,18 @@
 
   <title>Engenharia de Agentes de IA — Maurício Yokoyama Issei</title>
   <meta name="description"
-    content="Aprenda, na prática e de forma interativa, a engenharia que torna sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança agent-driven." />
+    content="Aprenda, de forma interativa, a engenharia que torna sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança agent-driven." />
 
-  <!-- FLAG DE CONSTRUÇÃO (WU-0): página oculta dos buscadores até a onda MVP fechar.
-       Remover este noindex na WU que "abre as cortinas" (ver BUILD_PLAN §8). -->
+  <!-- FLAG DE CONSTRUÇÃO: oculta dos buscadores até a onda MVP fechar (BUILD_PLAN §8). -->
   <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://mauricio.issei.com.br/engenharia-agentes-ia" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Engenharia de Agentes de IA" />
+  <meta property="og:description"
+    content="A capacidade vem do modelo; a confiança vem da engenharia. Uma jornada interativa pelos princípios de sistemas de IA confiáveis." />
+  <meta property="og:url" content="https://mauricio.issei.com.br/engenharia-agentes-ia" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,37 +26,102 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
-  <!-- Styles -->
   <link rel="stylesheet" href="./engenharia-agentes-ia.css" />
 </head>
 
 <body class="eai-body">
   <a href="#conteudo" class="eai-skip-link">Pular para o conteúdo</a>
 
-  <main id="conteudo">
-    <!-- HERO (placeholder do WU-0 — substituído pelo Hero real no WU-2, ver doc 03/04 V10) -->
-    <section id="hero" aria-labelledby="hero-titulo"
-      style="min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; gap: 1.25rem;">
-      <p style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.8rem; color: var(--eai-muted); margin: 0;">
+  <!-- Barra de progresso de leitura -->
+  <div class="eai-progress" aria-hidden="true"><span data-eai-progress></span></div>
+
+  <!-- Navegação da trilha -->
+  <header class="eai-nav" aria-label="Navegação principal">
+    <div class="eai-nav__inner">
+      <a href="#hero" class="eai-nav__brand">
+        <span class="eai-nav__dot" aria-hidden="true"></span>
         Engenharia Agêntica
-      </p>
-      <h1 id="hero-titulo"
-        style="font-size: clamp(2rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; max-width: 18ch; margin: 0;">
-        Um sistema de IA bem-sucedido tem
-        <span style="background: var(--eai-gradient); -webkit-background-clip: text; background-clip: text; color: transparent;">
-          muito pouca IA</span>
-        no caminho crítico.
-      </h1>
-      <p style="max-width: 52ch; color: var(--eai-text); margin: 0;">
-        A capacidade vem do modelo; a confiança vem da engenharia. Em breve: uma jornada interativa
-        pelos princípios que separam um protótipo encantador de um produto que aguenta produção.
-      </p>
-      <p data-eai-status="construindo"
-        style="font-size: 0.85rem; color: var(--eai-muted); border: 1px solid var(--eai-border); border-radius: 999px; padding: 0.4rem 0.9rem; margin: 0;">
-        🛠️ Página em construção (WU-0 · fundação)
-      </p>
+      </a>
+      <nav class="eai-nav__trail" aria-label="Trilha de aprendizado">
+        <a href="#principios" data-eai-navlink>Princípios</a>
+        <a href="#jornada" data-eai-navlink>Jornada</a>
+        <a href="#governanca" data-eai-navlink>Governança</a>
+        <a href="#referencia" data-eai-navlink>Referência</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- HERO (placeholder — Hero real no WU-2) -->
+    <section id="hero" class="eai-section eai-hero" aria-labelledby="hero-titulo">
+      <div class="eai-container eai-hero__content">
+        <p class="eai-eyebrow">Engenharia Agêntica</p>
+        <h1 id="hero-titulo" class="eai-hero__title">
+          Um sistema de IA bem-sucedido tem
+          <span class="eai-grad">muito pouca IA</span>
+          no caminho crítico.
+        </h1>
+        <p class="eai-hero__lede">
+          A capacidade vem do modelo; a confiança vem da engenharia. Uma jornada interativa pelos
+          princípios que separam um protótipo encantador de um produto que aguenta produção.
+        </p>
+        <div class="eai-hero__cta">
+          <a href="#principios" class="eai-btn eai-btn--primary">Começar pelos princípios</a>
+          <a href="#jornada" class="eai-btn eai-btn--ghost">Ver a jornada</a>
+        </div>
+      </div>
     </section>
+
+    <!-- PRINCÍPIOS (WU-3) -->
+    <section id="principios" class="eai-section" aria-labelledby="principios-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Os 10 princípios</p>
+        <h2 id="principios-titulo" class="eai-section__title">O que torna a IA confiável</h2>
+        <p class="eai-section__lede">Em breve: os dez princípios da engenharia agêntica, cada um com sua visualização.</p>
+      </div>
+    </section>
+
+    <!-- JORNADA (WU-4) -->
+    <section id="jornada" class="eai-section eai-section--alt" aria-labelledby="jornada-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Trilha guiada</p>
+        <h2 id="jornada-titulo" class="eai-section__title">Aprenda por descoberta</h2>
+        <p class="eai-section__lede">Em breve: dez capítulos interativos, do caos dos prompts ao projeto completo.</p>
+      </div>
+    </section>
+
+    <!-- GOVERNANÇA (WU-5) -->
+    <section id="governanca" class="eai-section" aria-labelledby="governanca-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Repositório To-Be</p>
+        <h2 id="governanca-titulo" class="eai-section__title">Governança Agent-Driven</h2>
+        <p class="eai-section__lede">Em breve: o dicionário da arquitetura, a anatomia do repositório e os guardrails.</p>
+      </div>
+    </section>
+
+    <!-- REFERÊNCIA (WU-6) -->
+    <section id="referencia" class="eai-section eai-section--alt" aria-labelledby="referencia-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Consulta rápida</p>
+        <h2 id="referencia-titulo" class="eai-section__title">Referência e caso real</h2>
+        <p class="eai-section__lede">Em breve: glossário, síntese dos princípios e o estudo de caso SocialSelling.</p>
+      </div>
+    </section>
+
   </main>
+
+  <footer class="eai-footer">
+    <div class="eai-container eai-footer__inner">
+      <p class="eai-footer__brand">Engenharia de Agentes de IA</p>
+      <p class="eai-footer__meta">
+        Conteúdo derivado do projeto SocialSelling · Maurício Yokoyama Issei
+      </p>
+      <p data-eai-status="construindo" class="eai-footer__flag">🛠️ Em construção (onda MVP)</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/eai.js"></script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@ import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 
 const PATH = '/engenharia-agentes-ia.html';
 
-test.describe('EAI — WU-0 fundação (shell + hero placeholder)', () => {
+test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
   test('caminho feliz: carrega, título/SEO e hero visíveis', async ({ page }) => {
     const consoleErrors = [];
     page.on('console', (msg) => {
@@ -25,14 +25,37 @@ test.describe('EAI — WU-0 fundação (shell + hero placeholder)', () => {
     await expect(hero).toBeVisible();
     await expect(page.locator('#hero-titulo')).toContainText('pouca IA');
 
-    // Flag de construção presente (WU-0) — será removida ao "abrir as cortinas"
+    // Flag de construção presente — será removida ao "abrir as cortinas"
     await expect(page.locator('[data-eai-status="construindo"]')).toBeVisible();
 
-    // Sem erros de console na carga
+    // Sem erros de console na carga (JS do shell deve bootar limpo)
     expect(consoleErrors, consoleErrors.join('\n')).toHaveLength(0);
   });
 
+  test('shell: nav da trilha aponta para as seções e footer presente', async ({ page }) => {
+    await page.goto(PATH);
+
+    const targets = ['#principios', '#jornada', '#governanca', '#referencia'];
+    for (const href of targets) {
+      await expect(page.locator(`.eai-nav__trail a[href="${href}"]`)).toBeVisible();
+      // a seção alvo existe
+      await expect(page.locator(href)).toHaveCount(1);
+    }
+    await expect(page.locator('footer.eai-footer')).toBeVisible();
+  });
+
+  test('shell: clicar na trilha navega até a seção e marca aria-current', async ({ page }) => {
+    await page.goto(PATH);
+    await page.locator('.eai-nav__trail a[href="#governanca"]').click();
+    await expect(page.locator('#governanca')).toBeInViewport({ ratio: 0.2 });
+    // o IntersectionObserver deve marcar algum link como atual
+    await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
+  });
+
   test('open-world / a11y: skip link, h1 único e axe sem violações serious/critical', async ({ page }) => {
+    // Auditamos sob reduced-motion: o conteúdo fica no estado final (visível),
+    // sem o fade-in transitório que confunde o cálculo de contraste do axe.
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(PATH);
 
     // Exatamente um H1
