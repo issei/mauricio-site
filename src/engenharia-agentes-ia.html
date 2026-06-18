@@ -128,6 +128,60 @@
       </div>
     </section>
 
+    <!-- FLUXO DE DADOS -->
+    <section id="fluxo" class="eai-section" aria-labelledby="fluxo-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Como funciona</p>
+        <h2 id="fluxo-titulo" class="eai-section__title">O caminho de uma resposta confiável</h2>
+        <p class="eai-section__lede">
+          A informação flui por etapas determinísticas; o LLM entra só onde é insubstituível, e a
+          saída volta validada e explicada.
+        </p>
+
+        <figure class="eai-df">
+          <svg class="eai-df__svg" viewBox="0 0 720 180" aria-hidden="true">
+            <defs>
+              <marker id="eai-arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0 0 L6 3 L0 6 z" fill="var(--eai-muted)"/>
+              </marker>
+              <marker id="eai-arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0 0 L6 3 L0 6 z" fill="var(--color-eai-accent-2)"/>
+              </marker>
+            </defs>
+
+            <g class="eai-df__edges" stroke="var(--eai-muted)" stroke-width="2" marker-end="url(#eai-arr)">
+              <line x1="132" y1="61" x2="166" y2="61"/>
+              <line x1="332" y1="61" x2="366" y2="61"/>
+              <line x1="492" y1="61" x2="526" y2="61"/>
+            </g>
+
+            <g class="eai-df__nodes">
+              <g><rect x="12" y="38" width="120" height="46" rx="9"/><text x="72" y="66">Usuário</text></g>
+              <g><rect x="168" y="38" width="164" height="46" rx="9"/><text x="250" y="61">Sanitização</text><text x="250" y="76" class="eai-df__sub">+ contratos</text></g>
+              <g class="eai-df__ai"><rect x="368" y="38" width="124" height="46" rx="9"/><text x="430" y="61">LLM</text><text x="430" y="76" class="eai-df__sub">resíduo</text></g>
+              <g><rect x="528" y="38" width="180" height="46" rx="9"/><text x="618" y="61">Validação</text><text x="618" y="76" class="eai-df__sub">+ XAI</text></g>
+            </g>
+
+            <circle class="eai-df__pulse" cx="72" cy="61" r="5" fill="var(--color-eai-ok)"/>
+
+            <path class="eai-df__return" d="M610 90 C610 150 120 150 72 92" fill="none"
+              stroke="var(--color-eai-accent-2)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#eai-arr2)"/>
+            <text x="360" y="148" class="eai-df__rlabel">resposta validada · auditável</text>
+          </svg>
+
+          <figcaption class="eai-df__cap">Fluxo de dados da engenharia agêntica (descrição abaixo).</figcaption>
+        </figure>
+
+        <ol class="eai-df__steps" role="list">
+          <li><strong>Usuário</strong> envia o pedido ou dado de mundo aberto.</li>
+          <li><strong>Sanitização + contratos</strong> (determinístico): valida o input e neutraliza injeção <em>antes</em> do Cérebro.</li>
+          <li><strong>LLM</strong> resolve apenas o resíduo interpretativo — a única etapa de IA no caminho.</li>
+          <li><strong>Validação + XAI</strong>: schema estrito barra a saída inválida; a explicação vira drivers, lacunas e proveniência.</li>
+          <li><strong>Resposta validada</strong> volta ao usuário — reproduzível e auditável.</li>
+        </ol>
+      </div>
+    </section>
+
     <!-- PRINCÍPIOS -->
     <section id="principios" class="eai-section" aria-labelledby="principios-titulo" data-eai-reveal>
       <div class="eai-container">
