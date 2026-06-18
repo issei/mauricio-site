@@ -44,6 +44,7 @@
       <nav class="eai-nav__trail" aria-label="Trilha de aprendizado">
         <a href="#principios" data-eai-navlink>Princípios</a>
         <a href="#jornada" data-eai-navlink>Jornada</a>
+        <a href="#simulador" data-eai-navlink>Simulador</a>
         <a href="#governanca" data-eai-navlink>Governança</a>
         <a href="#referencia" data-eai-navlink>Referência</a>
       </nav>
@@ -323,6 +324,71 @@
       </div>
     </section>
 
+    <!-- SIMULADOR -->
+    <section id="simulador" class="eai-section" aria-labelledby="simulador-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Laboratório</p>
+        <h2 id="simulador-titulo" class="eai-section__title">Simulador de arquitetura</h2>
+        <p class="eai-section__lede">
+          Ajuste as decisões de engenharia e veja o impacto — em tempo real e por um modelo
+          determinístico (sem IA): mesmos controles, mesmos resultados.
+        </p>
+
+        <div class="eai-sim" data-eai-sim>
+          <form class="eai-sim__controls" aria-label="Controles da arquitetura">
+            <div class="eai-ctl eai-ctl--range">
+              <label for="sim-autonomy">Autonomia do agente <output data-sim-out="autonomy">50</output>%</label>
+              <input type="range" id="sim-autonomy" data-sim="autonomy" min="0" max="100" value="50" />
+            </div>
+            <fieldset class="eai-ctl eai-ctl--toggles">
+              <legend>Guardrails</legend>
+              <label><input type="checkbox" data-sim="schemas" checked /> Contratos / Schemas</label>
+              <label><input type="checkbox" data-sim="cache" /> Cache / Corpus</label>
+              <label><input type="checkbox" data-sim="ledger" /> Ledger (FinOps)</label>
+              <label><input type="checkbox" data-sim="human" /> Revisão humana</label>
+              <label><input type="checkbox" data-sim="bdd" checked /> BDD</label>
+              <label><input type="checkbox" data-sim="evals" /> Evals</label>
+              <label><input type="checkbox" data-sim="observability" /> Observabilidade</label>
+            </fieldset>
+          </form>
+
+          <div class="eai-sim__meters" aria-live="polite">
+            <div class="eai-meter" data-metric="custo" data-dir="bad">
+              <span class="eai-meter__label" id="m-custo">Custo</span>
+              <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-custo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
+              <span class="eai-meter__val" data-sim-val>0</span>
+            </div>
+            <div class="eai-meter" data-metric="confianca" data-dir="good">
+              <span class="eai-meter__label" id="m-confianca">Confiança</span>
+              <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-confianca" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
+              <span class="eai-meter__val" data-sim-val>0</span>
+            </div>
+            <div class="eai-meter" data-metric="velocidade" data-dir="good">
+              <span class="eai-meter__label" id="m-velocidade">Velocidade</span>
+              <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-velocidade" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
+              <span class="eai-meter__val" data-sim-val>0</span>
+            </div>
+            <div class="eai-meter" data-metric="risco" data-dir="bad">
+              <span class="eai-meter__label" id="m-risco">Risco</span>
+              <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-risco" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
+              <span class="eai-meter__val" data-sim-val>0</span>
+            </div>
+            <div class="eai-meter" data-metric="auditabilidade" data-dir="good">
+              <span class="eai-meter__label" id="m-auditabilidade">Auditabilidade</span>
+              <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-auditabilidade" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
+              <span class="eai-meter__val" data-sim-val>0</span>
+            </div>
+            <div class="eai-meter" data-metric="previsibilidade" data-dir="good">
+              <span class="eai-meter__label" id="m-previsibilidade">Previsibilidade</span>
+              <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-previsibilidade" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
+              <span class="eai-meter__val" data-sim-val>0</span>
+            </div>
+          </div>
+        </div>
+        <p class="eai-sim__hint">Dica: alta autonomia sem schemas/BDD dispara risco e custo; ledger + cache derrubam o custo; evals e observabilidade elevam a auditabilidade.</p>
+      </div>
+    </section>
+
     <!-- GOVERNANÇA -->
     <section id="governanca" class="eai-section" aria-labelledby="governanca-titulo" data-eai-reveal>
       <div class="eai-container">
@@ -484,6 +550,7 @@
   </footer>
 
   <script type="module" src="./js/eai.js"></script>
+  <script type="module" src="./js/eai-sim.js"></script>
 </body>
 
 </html>

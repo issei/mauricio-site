@@ -36,15 +36,14 @@
 
 | WU | Estado | Escopo | SDD | Modelo |
 | :-- | :-- | :-- | :-- | :-- |
-| WU-8 | ⬜ next | Simulador de arquitetura (sliders → medidores determinísticos) | 06 §1 | Sonnet+Opus |
-| WU-9 | ⬜ | Evals: Erro de Sistema × Erro de Modelo | 06 §1.7 | Sonnet |
+| WU-8 | ✅ done | Simulador de arquitetura (8 controles → 6 medidores determinísticos) | 06 §1 | Sonnet+Opus |
+| WU-9 | ⬜ next | Evals: Erro de Sistema × Erro de Modelo | 06 §1.7 | Sonnet |
 | WU-10 | ⬜ | BPMN read-only com overlays (ADR de lib antes) | 05 | Opus |
 | WU-11 | ⬜ | Quizzes/gates de progressão da Jornada | 02 | Sonnet |
 
 ## Próxima ação
-Abrir a **onda V1**: iniciar **WU-8** (Simulador de arquitetura) — controles (autonomia, schemas,
-cache, ledger, revisão humana, BDD, evals, observabilidade) → medidores em tempo real (custo,
-confiança, velocidade, risco, auditabilidade, previsibilidade) com modelo determinístico (doc 06 §1).
+Iniciar **WU-9** (Evals): distinção visual Erro de Sistema (schema, barrado por contrato) × Erro de
+Modelo (drift semântico) no contexto do simulador, com nota sobre LLM-as-a-judge offline (doc 06 §1.7).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
