@@ -62,6 +62,36 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
+  test('WU-8: simulador reage aos controles de forma determinística', async ({ page }) => {
+    await page.goto(PATH);
+    const sim = page.locator('[data-eai-sim]');
+    await expect(sim).toBeVisible();
+    await expect(sim.locator('.eai-meter')).toHaveCount(6);
+
+    const riscoNow = () =>
+      sim.locator('[data-metric="risco"] [role="progressbar"]').getAttribute('aria-valuenow');
+
+    // estado base
+    const riscoBase = Number(await riscoNow());
+
+    // ligar BDD+schemas (já marcados) e desmarcar reduz/aumenta risco — testa desmarcar schemas
+    await sim.locator('[data-sim="schemas"]').uncheck();
+    const riscoSemSchemas = Number(await riscoNow());
+    expect(riscoSemSchemas).toBeGreaterThan(riscoBase);
+
+    // aumentar autonomia ao máximo eleva o risco ainda mais
+    await sim.locator('[data-sim="autonomy"]').fill('100');
+    await sim.locator('[data-sim="autonomy"]').dispatchEvent('input');
+    const riscoMax = Number(await riscoNow());
+    expect(riscoMax).toBeGreaterThanOrEqual(riscoSemSchemas);
+
+    // determinismo: voltar ao estado base reproduz o valor base
+    await sim.locator('[data-sim="autonomy"]').fill('50');
+    await sim.locator('[data-sim="autonomy"]').dispatchEvent('input');
+    await sim.locator('[data-sim="schemas"]').check();
+    expect(Number(await riscoNow())).toBe(riscoBase);
+  });
+
   test('WU-6: referência — glossário e caso SocialSelling (pipeline M1–M5)', async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator('.eai-gloss > div').first()).toBeVisible();
