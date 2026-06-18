@@ -425,6 +425,28 @@ body.eai-body {
   .eai-meter__bar > span { transition: none; }
 }
 
+/* ====================== Painel de progresso (WU-14) ====================== */
+.eai-prog {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: stretch;
+}
+.eai-prog__stat {
+  flex: 1 1 160px;
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--eai-border);
+  border-radius: 12px;
+  background: var(--eai-bg);
+}
+.eai-prog__stat span {
+  font-size: 1.9rem; font-weight: 800; line-height: 1;
+  background: var(--eai-gradient);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+.eai-prog__stat small { color: var(--eai-muted); font-size: 0.82rem; }
+.eai-prog__reset { align-self: center; }
+.eai-prog__note { margin: 0.85rem 0 0; font-size: 0.8rem; color: var(--eai-muted); }
+
 /* ====================== Referência + caso (WU-6) ====================== */
 .eai-gloss {
   display: grid;
