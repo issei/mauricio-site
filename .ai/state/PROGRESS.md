@@ -28,13 +28,23 @@
 | WU-4 | ✅ done | Jornada (accordion de 10 capítulos, cap-1..10) | 02 | Sonnet |
 | WU-5 | ✅ done | Governança Agent-Driven (viradas, dicionário, árvore, callouts, comparativo) | 10, 03 | Sonnet |
 | WU-6 | ✅ done | Referência (glossário) + Caso Real SocialSelling (pipeline M1–M5) | 01, 09 | Haiku/Sonnet |
-| WU-7 | ⬜ next | Visualizações SVG/CSS + abrir cortinas (remover noindex) | 04, 07 | Opus |
+| WU-7 | ✅ done | Cortinas abertas (index,follow), footer-nav, card no catálogo | 04, 07 | Opus |
+
+**🎉 Onda MVP COMPLETA** (WU-0…WU-7). Página viva, indexável e listada em `catalogo.html`.
 
 (V1: WU-8…11 · V2: WU-12…14 — detalhar ao entrar na janela.)
 
+| WU | Estado | Escopo | SDD | Modelo |
+| :-- | :-- | :-- | :-- | :-- |
+| WU-8 | ⬜ next | Simulador de arquitetura (sliders → medidores determinísticos) | 06 §1 | Sonnet+Opus |
+| WU-9 | ⬜ | Evals: Erro de Sistema × Erro de Modelo | 06 §1.7 | Sonnet |
+| WU-10 | ⬜ | BPMN read-only com overlays (ADR de lib antes) | 05 | Opus |
+| WU-11 | ⬜ | Quizzes/gates de progressão da Jornada | 02 | Sonnet |
+
 ## Próxima ação
-Iniciar **WU-7** (fecho da onda MVP): polimento de visualizações SVG/CSS e **abrir as cortinas** —
-remover o noindex e ligar a página ao restante do site (menu/sitemap).
+Abrir a **onda V1**: iniciar **WU-8** (Simulador de arquitetura) — controles (autonomia, schemas,
+cache, ledger, revisão humana, BDD, evals, observabilidade) → medidores em tempo real (custo,
+confiança, velocidade, risco, auditabilidade, previsibilidade) com modelo determinístico (doc 06 §1).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills
