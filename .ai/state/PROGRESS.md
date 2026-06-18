@@ -56,12 +56,13 @@
 | WU | Estado | Escopo | SDD | Modelo |
 | :-- | :-- | :-- | :-- | :-- |
 | WU-15 | ✅ done | Janelas de código real (3 window-code + realce próprio) — seção #codigo | 03, 04 | Opus |
-| WU-16 | ⬜ next | Diagrama dinâmico de fluxo de dados (usuário→determinístico→LLM→XAI→resposta) | 04 | Opus |
+| WU-16 | ✅ done | Diagrama dinâmico de fluxo (#fluxo): SVG animado + 5 etapas textuais | 04 | Opus |
+
+**🎉 Onda Polimento COMPLETA** (WU-15 código real + WU-16 fluxo de dados).
 
 ## Próxima ação
-Iniciar **WU-16** (fluxo de dados): banda animada (SVG) logo após o hero mostrando o caminho
-usuário → sanitização/contratos → LLM (resíduo) → validação/XAI → resposta validada, com pulso
-fluindo e equivalente textual (lista ordenada). Tangibiliza a "engenharia agêntica".
+**Build concluído** (MVP + V1 + V2 + Polimento). Build + 108 testes verdes (chromium/firefox/webkit).
+Único item diferido: WU-13 (bpmn-js editável, ADR-eai-002).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills

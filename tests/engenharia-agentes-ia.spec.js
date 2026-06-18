@@ -224,6 +224,18 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(gov).toHaveAttribute('href', '#governanca');
   });
 
+  test('WU-16: diagrama de fluxo com equivalente textual de 5 etapas', async ({ page }) => {
+    await page.goto(PATH);
+    const df = page.locator('#fluxo .eai-df');
+    await expect(df.locator('svg.eai-df__svg')).toHaveCount(1);
+    // SVG decorativo (aria-hidden); o conteúdo acessível é a lista ordenada
+    await expect(df.locator('svg')).toHaveAttribute('aria-hidden', 'true');
+    const steps = page.locator('#fluxo .eai-df__steps li');
+    await expect(steps).toHaveCount(5);
+    await expect(steps.nth(2)).toContainText('resíduo');
+    await expect(steps.nth(4)).toContainText('auditável');
+  });
+
   test('WU-15: janelas de código reais com realce de sintaxe aplicado', async ({ page }) => {
     await page.goto(PATH);
     const wins = page.locator('.eai-cw');
