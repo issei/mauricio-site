@@ -14,6 +14,13 @@
 - [x] T6 — Anatomia do repositório: árvore visual interativa
 - [x] T1 — Trilha: conteúdo dos capítulos expandido
 
+## Edição cirúrgica v2 (SPEC_melhoriasv2.md) — concluída
+- [x] **Tarefa A** — árvore do repositório começa totalmente expandida (clique recolhe/expande).
+- [x] **Tarefa B1** — unidade "pts" em cada métrica + tooltip ⓘ com definição e escala + nota de base fixa (Custo≥30, Risco≥40).
+- [x] **Tarefa B2** — painel de explicação substituído por **log cumulativo**: linha de autonomia (por faixa) sempre no topo + uma linha por guardrail ativo; some ao desmarcar.
+- [x] **Tarefa C** — desenviesamento do SocialSelling: `pipeline.py` genérico (`run_pipeline(item, llm)` / `collect_signals`), contexto multi-domínio no pipeline, nota de domínio no estudo de caso, rodapé "ilustrados", e quiz reescrito (Q1 contratos jurídicos, Q2 triagem clínica, Q3/Q4 moderação de conteúdo). SocialSelling preservado como caso na Referência.
+- Notas v2: o log é reconstruído a partir do estado a cada evento (idempotente, evita o bug input+change); o tooltip mantém o símbolo `aria-hidden`; texto das linhas do log derivado do `SIM_MODEL` (fonte única). Gate v2 verde: 132 testes em Chrome/Firefox/WebKit.
+
 ## Decisões de arquitetura (não pedidas explicitamente, mas necessárias)
 
 ### D1 — Framework de teste: `node:test` (built-in), não Vitest

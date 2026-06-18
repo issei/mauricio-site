@@ -1,7 +1,7 @@
 /*
- * Simulador de arquitetura (WU-8 + T3) — bootstrap de DOM.
+ * Simulador de arquitetura (WU-8 + T3 + v2) — bootstrap de DOM.
  * Lógica pura e modelo em eai-sim-model.js. Aqui: ler controles, pintar barras,
- * e o PAINEL DE EXPLICAÇÃO (XAI) — o simulador passa a seguir o próprio P10.
+ * tooltips por métrica (definição + escala) e o LOG CUMULATIVO de decisões.
  */
 import { score, SIM_MODEL, explainGuardrail, formatImpact } from './eai-sim-model.js';
 
@@ -30,63 +30,30 @@ function renderMeters(root, out) {
   });
 }
 
-function renderExplain(body, { inputs, out, change }) {
-  if (!body) return;
-  const parts = [];
-
-  if (change && change.type === 'guardrail') {
-    const e = explainGuardrail(change.key, change.on);
-    const impacts = e.impacts.map(formatImpact).join(' · ');
-    parts.push(`<p class="eai-sim__explain-change"><strong>${e.title}</strong> Impacto: ${impacts || 'sem efeito direto'}.</p>`);
-    parts.push(`<p class="eai-sim__explain-why">${e.razao}</p>`);
-  } else if (change && change.type === 'autonomy') {
-    const a = SIM_MODEL.autonomy.perFull;
-    const dir = change.up ? 'aumentou' : 'reduziu';
-    parts.push(`<p class="eai-sim__explain-change"><strong>Você ${dir} a autonomia para ${Math.round(inputs.autonomy * 100)}%.</strong> A cada 10%: ${formatImpact({ metric: 'custo', delta: a.custo / 10 })}, ${formatImpact({ metric: 'risco', delta: a.risco / 10 })}, ${formatImpact({ metric: 'confianca', delta: a.confianca / 10 })}.</p>`);
-    parts.push(`<p class="eai-sim__explain-why">${SIM_MODEL.autonomy.razao}</p>`);
-  } else {
-    parts.push('<p class="eai-sim__explain-change">Ajuste a autonomia ou marque um guardrail — cada mudança é explicada aqui antes de você ler as barras.</p>');
-  }
-
-  // Pisos: explica os mínimos quando uma métrica os atinge.
-  const floored = [];
-  if (out.custo === SIM_MODEL.floors.custo) floored.push(`<li><strong>Custo ≥ 30:</strong> ${SIM_MODEL.floorReasons.custo}</li>`);
-  if (out.risco === SIM_MODEL.floors.risco) floored.push(`<li><strong>Risco ≥ 40:</strong> ${SIM_MODEL.floorReasons.risco}</li>`);
-  if (floored.length) {
-    parts.push(`<ul class="eai-sim__explain-floors">${floored.join('')}</ul>`);
-  }
-
-  body.innerHTML = parts.join('');
-}
-
-function diffInputs(prev, next) {
-  if (!prev) return null;
-  for (const k of GUARDRAIL_KEYS) {
-    if (prev[k] !== next[k]) return { type: 'guardrail', key: k, on: next[k] };
-  }
-  if (prev.autonomy !== next.autonomy) return { type: 'autonomy', up: next.autonomy > prev.autonomy };
-  return null;
-}
-
+// ---- Tooltips por métrica: definição + escala (B1) ----
 function initTooltips(root) {
-  // ⓘ clicável em cada label de métrica → alterna a explicação do que a métrica é.
   root.querySelectorAll('.eai-meter').forEach((m) => {
     const key = m.getAttribute('data-metric');
     const info = SIM_MODEL.metricInfo[key];
     const label = m.querySelector('.eai-meter__label');
     if (!info || !label || label.querySelector('.eai-meter__info')) return;
+    const name = (SIM_MODEL.metricLabels[key] || label.textContent.trim());
+
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'eai-meter__info';
+    btn.setAttribute('data-metric-info', key);
     btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', `O que é ${label.textContent.trim()}?`);
-    // símbolo aria-hidden: não polui o nome acessível do progressbar (aria-labelledby do label)
+    btn.setAttribute('aria-label', `O que é ${name}?`);
     btn.innerHTML = '<span aria-hidden="true">ⓘ</span>';
-    const tip = document.createElement('span');
+
+    const tip = document.createElement('div');
     tip.className = 'eai-meter__tip';
+    tip.setAttribute('data-metric-tooltip', key);
     tip.setAttribute('role', 'note');
     tip.hidden = true;
-    tip.textContent = info;
+    tip.innerHTML = `<strong>${name} — escala 0 a 100 pts</strong><p>${info}</p>`;
+
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const open = btn.getAttribute('aria-expanded') === 'true';
@@ -94,25 +61,61 @@ function initTooltips(root) {
       tip.hidden = open;
     });
     label.appendChild(btn);
-    m.appendChild(tip); // tip fora do label (não entra no nome acessível do progressbar)
+    m.appendChild(tip); // fora do label: não polui o nome acessível do progressbar
   });
+}
+
+// ---- Log cumulativo de decisões (B2) ----
+// Texto de cada guardrail derivado do modelo (fonte única): rótulo + razão + impactos.
+function guardrailLogText(key) {
+  const g = SIM_MODEL.guardrails[key];
+  const e = explainGuardrail(key, true);
+  const impacts = e.impacts.map(formatImpact).join(', ');
+  return `✓ ${g.label} ativo: ${g.razao} (${impacts}).`;
+}
+
+function autonomyLogText(pct) {
+  if (pct === 0) return '→ Autonomia 0%: agente totalmente supervisionado. Nenhuma decisão sem validação humana.';
+  if (pct <= 30) return `→ Autonomia ${pct}%: baixa — agente executa tarefas estruturadas, humano valida exceções.`;
+  if (pct <= 60) return `→ Autonomia ${pct}%: média — agente toma decisões rotineiras; casos-limite escalam. Risco cresce.`;
+  if (pct <= 80) return `→ Autonomia ${pct}%: alta — agente aprova a maioria dos casos sozinho. Custo e risco sobem significativamente.`;
+  return `→ Autonomia ${pct}%: máxima — sem supervisão. Eficiente, mas qualquer erro se propaga sem freio.`;
+}
+
+function renderLog(root, inputs) {
+  const list = root.querySelector('[data-sim-log-list]');
+  const empty = root.querySelector('[data-sim-log-empty]');
+  if (!list) return;
+  list.innerHTML = '';
+
+  // linha de autonomia sempre no topo
+  const autoLi = document.createElement('li');
+  autoLi.id = 'log-autonomia';
+  autoLi.setAttribute('data-log', 'autonomia');
+  autoLi.textContent = autonomyLogText(Math.round(inputs.autonomy * 100));
+  list.appendChild(autoLi);
+
+  // uma linha por guardrail ativo (concatenadas, na ordem do modelo)
+  for (const key of GUARDRAIL_KEYS) {
+    if (!inputs[key]) continue;
+    const li = document.createElement('li');
+    li.id = `log-${key}`;
+    li.setAttribute('data-log', key);
+    li.textContent = guardrailLogText(key);
+    list.appendChild(li);
+  }
+
+  if (empty) empty.hidden = list.children.length > 0;
 }
 
 function initSim() {
   const root = document.querySelector('[data-eai-sim]');
   if (!root) return;
-  const explainBody = root.querySelector('[data-sim-explain-body]');
-  let prev = null;
 
   const update = () => {
     const inputs = readInputs(root);
-    const out = score(inputs);
-    renderMeters(root, out);
-    // checkbox dispara 'input' E 'change' (par): só re-explica numa mudança real,
-    // senão o 2º evento (diff nulo) sobrescreveria a explicação com a mensagem inicial.
-    const change = diffInputs(prev, inputs);
-    if (prev === null || change) renderExplain(explainBody, { inputs, out, change });
-    prev = inputs;
+    renderMeters(root, score(inputs));
+    renderLog(root, inputs);
   };
 
   initTooltips(root);
