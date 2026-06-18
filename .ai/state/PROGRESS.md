@@ -39,11 +39,20 @@
 | WU-8 | ✅ done | Simulador de arquitetura (8 controles → 6 medidores determinísticos) | 06 §1 | Sonnet+Opus |
 | WU-9 | ✅ done | Evals: Erro de Sistema × Erro de Modelo + nota LLM-as-a-judge | 06 §1.7 | Sonnet |
 | WU-10 | ✅ done | Pipeline interativo SVG (feliz/Saga/DLQ/confiança) — ADR-eai-002 | 05 | Opus |
-| WU-11 | ⬜ next | Quiz de verificação (1 pergunta por princípio, feedback) | 02 | Sonnet |
+| WU-11 | ✅ done | Quiz de verificação (4 perguntas, feedback, score) | 02 | Sonnet |
+
+**🎉 Onda V1 COMPLETA** (WU-8…WU-11): simulador, evals, pipeline interativo, quiz.
+
+| WU | Estado | Escopo | SDD | Modelo |
+| :-- | :-- | :-- | :-- | :-- |
+| WU-12 | ⬜ next | Playground: montar arquitetura (drag-drop) + avaliação por regras | 06 §2 | Opus |
+| WU-13 | ⏸ diferido | BPMN editável (bpmn-js) — diferido por ADR-eai-002; pipeline-switcher já cobre o ensino | 05 | — |
+| WU-14 | ⬜ | Painel de progresso/aprendizado client-side | 08 | Sonnet |
 
 ## Próxima ação
-Iniciar **WU-11** (Quiz): pequena verificação de aprendizado (perguntas de múltipla escolha sobre os
-princípios) com feedback imediato, determinístico e acessível. Fecha a onda V1.
+Iniciar **WU-12** (Playground): paleta de componentes arrastáveis (LLM, Schema, API, BDD, Ledger,
+Cache, Human Review, RAG, Observabilidade, Guardrails) → avaliação automática da arquitetura por
+regras determinísticas + feedback visual (doc 06 §2).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills

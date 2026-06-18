@@ -62,6 +62,26 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
+  test('WU-11: quiz dá feedback e conta acertos únicos', async ({ page }) => {
+    await page.goto(PATH);
+    const quiz = page.locator('[data-eai-quiz]');
+    await expect(quiz.locator('[data-quiz-q]')).toHaveCount(4);
+    await expect(quiz.locator('[data-quiz-score]')).toHaveText('0');
+
+    const q1 = quiz.locator('[data-quiz-q]').first();
+    // resposta errada: feedback, score continua 0
+    await q1.locator('button[data-correct="false"]').first().click();
+    await expect(q1.locator('[data-quiz-fb]')).toContainText('Quase');
+    await expect(quiz.locator('[data-quiz-score]')).toHaveText('0');
+
+    // resposta certa: score 1, não conta duas vezes
+    await q1.locator('button[data-correct="true"]').click();
+    await expect(q1.locator('[data-quiz-fb]')).toContainText('Correto');
+    await expect(quiz.locator('[data-quiz-score]')).toHaveText('1');
+    await q1.locator('button[data-correct="true"]').click();
+    await expect(quiz.locator('[data-quiz-score]')).toHaveText('1');
+  });
+
   test('WU-8: simulador reage aos controles de forma determinística', async ({ page }) => {
     await page.goto(PATH);
     const sim = page.locator('[data-eai-sim]');

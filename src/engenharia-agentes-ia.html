@@ -321,6 +321,47 @@
             </div>
           </details></li>
         </ol>
+
+        <h3 class="eai-sub">Verifique seu entendimento</h3>
+        <div class="eai-quiz" data-eai-quiz>
+          <p class="eai-quiz__score">Acertos: <span data-quiz-score>0</span>/<span data-quiz-total>4</span></p>
+          <ol class="eai-quiz__list" role="list">
+            <li class="eai-quiz__q" data-quiz-q>
+              <p class="eai-quiz__prompt">1. Num sistema agêntico, o que o LLM deve controlar?</p>
+              <div class="eai-quiz__opts">
+                <button type="button" data-correct="false">O fluxo de controle de ponta a ponta</button>
+                <button type="button" data-correct="true">Apenas as respostas dentro de etapas fixas</button>
+                <button type="button" data-correct="false">Qual etapa vem a seguir</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+            <li class="eai-quiz__q" data-quiz-q>
+              <p class="eai-quiz__prompt">2. No Open-World, ausência de sinal significa…</p>
+              <div class="eai-quiz__opts">
+                <button type="button" data-correct="false">Falso</button>
+                <button type="button" data-correct="true">Incerteza explícita</button>
+                <button type="button" data-correct="false">Erro do sistema</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+            <li class="eai-quiz__q" data-quiz-q>
+              <p class="eai-quiz__prompt">3. Para o usuário final, a XAI deve mostrar…</p>
+              <div class="eai-quiz__opts">
+                <button type="button" data-correct="false">O score numérico (ex.: 0,674)</button>
+                <button type="button" data-correct="true">Drivers, lacunas e proveniência</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+            <li class="eai-quiz__q" data-quiz-q>
+              <p class="eai-quiz__prompt">4. Um agente autônomo sem teto de custo de tokens…</p>
+              <div class="eai-quiz__opts">
+                <button type="button" data-correct="false">É sempre mais produtivo</button>
+                <button type="button" data-correct="true">Pode entrar em loop e gerar fatura inesperada</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -619,6 +660,7 @@
   <script type="module" src="./js/eai.js"></script>
   <script type="module" src="./js/eai-sim.js"></script>
   <script type="module" src="./js/eai-flow.js"></script>
+  <script type="module" src="./js/eai-quiz.js"></script>
 </body>
 
 </html>
