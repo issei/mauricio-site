@@ -53,22 +53,75 @@
 
   <main id="conteudo">
 
-    <!-- HERO (placeholder — Hero real no WU-2) -->
+    <!-- HERO -->
     <section id="hero" class="eai-section eai-hero" aria-labelledby="hero-titulo">
-      <div class="eai-container eai-hero__content">
-        <p class="eai-eyebrow">Engenharia Agêntica</p>
-        <h1 id="hero-titulo" class="eai-hero__title">
-          Um sistema de IA bem-sucedido tem
-          <span class="eai-grad">muito pouca IA</span>
-          no caminho crítico.
-        </h1>
-        <p class="eai-hero__lede">
-          A capacidade vem do modelo; a confiança vem da engenharia. Uma jornada interativa pelos
-          princípios que separam um protótipo encantador de um produto que aguenta produção.
-        </p>
-        <div class="eai-hero__cta">
-          <a href="#principios" class="eai-btn eai-btn--primary">Começar pelos princípios</a>
-          <a href="#jornada" class="eai-btn eai-btn--ghost">Ver a jornada</a>
+      <div class="eai-container eai-hero__grid">
+        <div class="eai-hero__content">
+          <p class="eai-eyebrow">Engenharia Agêntica</p>
+          <h1 id="hero-titulo" class="eai-hero__title">
+            Um sistema de IA bem-sucedido tem
+            <span class="eai-grad">muito pouca IA</span>
+            no caminho crítico.
+          </h1>
+          <p class="eai-hero__lede">
+            A capacidade vem do modelo; a confiança vem da engenharia. Uma jornada interativa pelos
+            princípios que separam um protótipo encantador de um produto que aguenta produção.
+          </p>
+          <div class="eai-hero__cta">
+            <a href="#principios" class="eai-btn eai-btn--primary">Começar pelos princípios</a>
+            <a href="#jornada" class="eai-btn eai-btn--ghost">Ver a jornada</a>
+          </div>
+        </div>
+
+        <!-- Visualização: sistema caótico × disciplinado (doc 04 V10) -->
+        <div class="eai-duo" data-eai-duo>
+          <figure class="eai-duo__panel eai-duo__panel--chaos">
+            <figcaption class="eai-duo__cap">
+              <span class="eai-duo__tag eai-duo__tag--bad">Agentes livres</span>
+              Caótico
+            </figcaption>
+            <svg class="eai-duo__svg" viewBox="0 0 220 130" role="img"
+              aria-label="Quatro agentes ligados por setas que formam laços, com fluxo errático entre eles.">
+              <g class="eai-chaos__edges" fill="none" stroke="var(--color-eai-danger)" stroke-width="1.5">
+                <path d="M40 35 C90 10 130 60 175 30" stroke-dasharray="4 4" />
+                <path d="M175 35 C150 70 90 60 50 95" stroke-dasharray="4 4" />
+                <path d="M55 95 C100 110 140 95 170 95" stroke-dasharray="4 4" />
+                <path d="M165 90 C150 55 70 45 45 40" stroke-dasharray="4 4" />
+              </g>
+              <g class="eai-chaos__nodes">
+                <circle cx="40" cy="35" r="11" /><circle cx="178" cy="32" r="11" />
+                <circle cx="48" cy="96" r="11" /><circle cx="170" cy="94" r="11" />
+              </g>
+            </svg>
+            <ul class="eai-duo__list">
+              <li>Loops imprevisíveis</li>
+              <li>Custo explode <span class="eai-spark eai-spark--bad" aria-hidden="true"></span></li>
+              <li>Alucinações se propagam</li>
+            </ul>
+          </figure>
+
+          <figure class="eai-duo__panel eai-duo__panel--order">
+            <figcaption class="eai-duo__cap">
+              <span class="eai-duo__tag eai-duo__tag--good">Pipeline determinístico</span>
+              Disciplinado
+            </figcaption>
+            <svg class="eai-duo__svg" viewBox="0 0 220 130" role="img"
+              aria-label="Cinco etapas em sequência ligadas por setas retas, com um pulso fluindo do início ao fim.">
+              <line class="eai-flow__rail" x1="22" y1="65" x2="198" y2="65"
+                stroke="var(--color-eai-border)" stroke-width="2" />
+              <g class="eai-flow__steps">
+                <rect x="16" y="54" width="24" height="22" rx="5" /><rect x="56" y="54" width="24" height="22" rx="5" />
+                <rect x="98" y="54" width="24" height="22" rx="5" /><rect x="140" y="54" width="24" height="22" rx="5" />
+                <rect x="182" y="54" width="24" height="22" rx="5" />
+              </g>
+              <circle class="eai-flow__pulse" cx="22" cy="65" r="4" fill="var(--color-eai-ok)" />
+            </svg>
+            <ul class="eai-duo__list">
+              <li>Fluxo reproduzível</li>
+              <li>Custo linear <span class="eai-spark eai-spark--good" aria-hidden="true"></span></li>
+              <li>Contratos barram o erro</li>
+            </ul>
+          </figure>
         </div>
       </div>
     </section>

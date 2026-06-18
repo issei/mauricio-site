@@ -52,6 +52,27 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
+  test('WU-2: visualização caótico × disciplinado com SVGs rotulados e equivalente textual', async ({ page }) => {
+    await page.goto(PATH);
+    const duo = page.locator('[data-eai-duo]');
+    await expect(duo).toBeVisible();
+
+    // dois painéis: caos e ordem
+    await expect(duo.locator('.eai-duo__panel--chaos')).toBeVisible();
+    await expect(duo.locator('.eai-duo__panel--order')).toBeVisible();
+
+    // SVGs com rótulo acessível (equivalente textual da visualização)
+    const svgs = duo.locator('svg[role="img"]');
+    await expect(svgs).toHaveCount(2);
+    for (let i = 0; i < 2; i++) {
+      await expect(svgs.nth(i)).toHaveAttribute('aria-label', /.+/);
+    }
+
+    // listas explicativas presentes em ambos os lados
+    await expect(duo.locator('.eai-duo__panel--chaos .eai-duo__list li')).toHaveCount(3);
+    await expect(duo.locator('.eai-duo__panel--order .eai-duo__list li')).toHaveCount(3);
+  });
+
   test('open-world / a11y: skip link, h1 único e axe sem violações serious/critical', async ({ page }) => {
     // Auditamos sob reduced-motion: o conteúdo fica no estado final (visível),
     // sem o fade-in transitório que confunde o cálculo de contraste do axe.

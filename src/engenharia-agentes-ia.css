@@ -207,7 +207,17 @@ body.eai-body {
   background: radial-gradient(closest-side, rgba(59, 130, 246, 0.14), transparent 70%);
   pointer-events: none;
 }
-.eai-hero__content { position: relative; max-width: 56rem; }
+.eai-hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .eai-hero__grid { grid-template-columns: 1fr; }
+}
+.eai-hero__content { position: relative; max-width: 38rem; }
 .eai-hero__title {
   font-size: clamp(2.2rem, 6vw, 4.25rem);
   font-weight: 800;
@@ -223,6 +233,87 @@ body.eai-body {
   margin: 0 0 2rem;
 }
 .eai-hero__cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+/* ====================== Duo: caótico × disciplinado (V10) ====================== */
+.eai-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+@media (max-width: 480px) {
+  .eai-duo { grid-template-columns: 1fr; }
+}
+.eai-duo__panel {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--eai-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--eai-surface) 70%, var(--eai-bg));
+}
+.eai-duo__panel--chaos { border-color: color-mix(in srgb, var(--color-eai-danger) 35%, var(--eai-border)); }
+.eai-duo__panel--order { border-color: color-mix(in srgb, var(--color-eai-ok) 35%, var(--eai-border)); }
+.eai-duo__cap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 700;
+  color: var(--eai-heading);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.eai-duo__tag {
+  align-self: flex-start;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+.eai-duo__tag--bad { color: var(--color-eai-danger); background: color-mix(in srgb, var(--color-eai-danger) 16%, transparent); }
+.eai-duo__tag--good { color: var(--color-eai-ok); background: color-mix(in srgb, var(--color-eai-ok) 16%, transparent); }
+.eai-duo__svg { width: 100%; height: auto; display: block; }
+.eai-duo__list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--eai-muted);
+}
+.eai-duo__list li { display: flex; align-items: center; gap: 0.4rem; }
+
+/* nós/arestas */
+.eai-chaos__nodes circle { fill: color-mix(in srgb, var(--color-eai-danger) 80%, #000); }
+.eai-chaos__edges path { animation: eai-dash 1.1s linear infinite; }
+@keyframes eai-dash { to { stroke-dashoffset: -16; } }
+
+.eai-flow__steps rect { fill: color-mix(in srgb, var(--color-eai-accent) 70%, #000); }
+.eai-flow__pulse { animation: eai-flow 2.6s ease-in-out infinite; }
+@keyframes eai-flow {
+  0% { transform: translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(176px); opacity: 0; }
+}
+
+/* faíscas de custo */
+.eai-spark { width: 26px; height: 10px; border-radius: 2px; display: inline-block; }
+.eai-spark--bad {
+  background: var(--color-eai-danger);
+  animation: eai-spike 0.9s steps(4) infinite;
+  transform-origin: left center;
+}
+.eai-spark--good { background: var(--color-eai-ok); opacity: 0.8; }
+@keyframes eai-spike { 0% { transform: scaleX(0.3); } 50% { transform: scaleX(1); } 100% { transform: scaleX(0.5); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .eai-chaos__edges path,
+  .eai-flow__pulse,
+  .eai-spark--bad { animation: none !important; }
+}
 
 /* ====================== Botões ====================== */
 .eai-btn {
