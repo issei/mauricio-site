@@ -52,6 +52,23 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
+  test('WU-5: governança — dicionário (5), árvore, regra de ouro e banner financeiro', async ({ page }) => {
+    await page.goto(PATH);
+    // 5 cards do dicionário
+    await expect(page.locator('.eai-dict .eai-dcard')).toHaveCount(5);
+    await expect(page.locator('.eai-dcard[data-pillar="mcp"]')).toContainText('Model Context Protocol');
+    // árvore com as 4 pastas-chave
+    for (const f of ['ai', 'docs', 'tests', 'scripts']) {
+      await expect(page.locator(`.eai-tree__dir[data-folder="${f}"]`)).toBeVisible();
+    }
+    // Regra de Ouro (danger) e alerta financeiro (warn)
+    await expect(page.locator('.eai-callout--danger')).toContainText('versione o estado cognitivo');
+    await expect(page.locator('.eai-callout--warn')).toContainText('financeiros');
+    // comparativo meta-prompt × manual com faixa de convergência
+    await expect(page.locator('.eai-compare__col')).toHaveCount(2);
+    await expect(page.locator('.eai-compare__conv')).toContainText('contexto e gates primeiro');
+  });
+
   test('WU-4: dez capítulos da jornada que abrem e expõem o objetivo', async ({ page }) => {
     await page.goto(PATH);
     const chaps = page.locator('.eai-journey .eai-chap');

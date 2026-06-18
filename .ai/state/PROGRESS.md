@@ -26,15 +26,15 @@
 | WU-2 | ✅ done | Hero "pouca IA no caminho crítico" (caótico × disciplinado, SVG animado) | 03, 04 V10 | Opus |
 | WU-3 | ✅ done | Área Princípios (10 cards) + âncoras principio-1..10 | 01, 02, 03 | Sonnet |
 | WU-4 | ✅ done | Jornada (accordion de 10 capítulos, cap-1..10) | 02 | Sonnet |
-| WU-5 | ⬜ next | Governança Agent-Driven (masonry) | 10, 03 | Sonnet |
-| WU-6 | ⬜ | Referência + Casos Reais estático | 01, 09 | Haiku/Sonnet |
+| WU-5 | ✅ done | Governança Agent-Driven (viradas, dicionário, árvore, callouts, comparativo) | 10, 03 | Sonnet |
+| WU-6 | ⬜ next | Referência + Casos Reais estático | 01, 09 | Haiku/Sonnet |
 | WU-7 | ⬜ | Visualizações SVG/CSS animadas (GSAP) | 04, 07 | Opus |
 
 (V1: WU-8…11 · V2: WU-12…14 — detalhar ao entrar na janela.)
 
 ## Próxima ação
-Iniciar **WU-5** (Governança Agent-Driven): masonry com dicionário (5 cards SDD/ADR/BDD/DoR-DoD/MCP),
-árvore de diretórios, Regra de Ouro, alerta financeiro e comparativo meta-prompt × manual (doc 10).
+Iniciar **WU-6** (Referência + Casos Reais): glossário/síntese dos 10 princípios + cartão do estudo
+de caso SocialSelling (doc 01/09).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills

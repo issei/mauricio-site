@@ -234,6 +234,120 @@ body.eai-body {
 }
 .eai-hero__cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
+/* ====================== Governança Agent-Driven (WU-5) ====================== */
+.eai-sub {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 2.75rem 0 1.1rem;
+  color: var(--eai-heading);
+}
+.eai-turns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+@media (max-width: 760px) { .eai-turns { grid-template-columns: 1fr; } }
+.eai-turn {
+  padding: 1.25rem;
+  border: 1px solid var(--eai-border);
+  border-radius: 12px;
+  background: var(--eai-surface);
+}
+.eai-turn h3 { font-size: 1.05rem; margin: 0 0 0.5rem; }
+.eai-turn p { margin: 0; color: var(--eai-muted); font-size: 0.95rem; }
+.eai-turn--warn { border-color: color-mix(in srgb, var(--color-eai-warn) 40%, var(--eai-border)); }
+
+/* dicionário */
+.eai-dict {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.9rem;
+}
+.eai-dcard {
+  padding: 1.1rem;
+  border: 1px solid var(--eai-border);
+  border-left: 3px solid var(--pillar, var(--eai-accent));
+  border-radius: 12px;
+  background: var(--eai-surface);
+}
+.eai-dcard[data-pillar="sdd"] { --pillar: var(--color-eai-accent); }
+.eai-dcard[data-pillar="adr"] { --pillar: #b794f6; } /* roxo claro p/ contraste AA em texto */
+.eai-dcard[data-pillar="bdd"] { --pillar: var(--color-eai-ok); }
+.eai-dcard[data-pillar="dor"] { --pillar: var(--color-eai-human); }
+.eai-dcard[data-pillar="mcp"] { --pillar: var(--color-eai-warn); }
+.eai-dcard__sigla { font-weight: 800; font-size: 0.95rem; color: var(--pillar); }
+.eai-dcard__name { font-weight: 600; color: var(--eai-heading); margin: 0.35rem 0 0.4rem; font-size: 0.92rem; }
+.eai-dcard__text { margin: 0; color: var(--eai-muted); font-size: 0.88rem; }
+
+/* anatomia: árvore + notas */
+.eai-anatomy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+@media (max-width: 860px) { .eai-anatomy { grid-template-columns: 1fr; } }
+.eai-tree {
+  list-style: none; margin: 0; padding: 1.1rem 1.25rem;
+  background: var(--eai-surface);
+  border: 1px solid var(--eai-border);
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+.eai-tree__root { font-weight: 700; color: var(--eai-heading); margin-bottom: 0.5rem; }
+.eai-tree__dir {
+  display: flex; flex-direction: column; gap: 0.1rem;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-left: 2px solid var(--folder-c, var(--eai-border));
+  margin-left: 0.4rem;
+}
+.eai-tree__dir code { color: var(--folder-c, var(--eai-text)); font-weight: 600; }
+.eai-tree__dir span { color: var(--eai-muted); font-size: 0.82rem; }
+.eai-tree__dir[data-folder="ai"] { --folder-c: var(--color-eai-danger); }
+.eai-tree__dir[data-folder="docs"] { --folder-c: var(--color-eai-accent); }
+.eai-tree__dir[data-folder="tests"] { --folder-c: var(--color-eai-ok); }
+.eai-tree__dir[data-folder="scripts"] { --folder-c: var(--color-eai-warn); }
+.eai-anatomy__notes { display: flex; flex-direction: column; gap: 1rem; }
+.eai-callout { padding: 1.1rem; border-radius: 12px; border: 1px solid var(--eai-border); }
+.eai-callout__title { font-weight: 700; margin: 0 0 0.4rem; color: var(--eai-heading); }
+.eai-callout p { margin: 0; font-size: 0.9rem; color: var(--eai-text); }
+.eai-callout--danger {
+  border-color: color-mix(in srgb, var(--color-eai-danger) 50%, var(--eai-border));
+  background: color-mix(in srgb, var(--color-eai-danger) 10%, var(--eai-surface));
+}
+.eai-callout--warn {
+  border-color: color-mix(in srgb, var(--color-eai-warn) 50%, var(--eai-border));
+  background: color-mix(in srgb, var(--color-eai-warn) 10%, var(--eai-surface));
+}
+
+/* comparativo */
+.eai-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 700px) { .eai-compare { grid-template-columns: 1fr; } }
+.eai-compare__col {
+  padding: 1.25rem;
+  border: 1px solid var(--eai-border);
+  border-radius: 12px;
+  background: var(--eai-surface);
+}
+.eai-compare__col h4 { margin: 0 0 0.5rem; color: var(--eai-heading); font-size: 1rem; }
+.eai-compare__col p { margin: 0; color: var(--eai-muted); font-size: 0.9rem; }
+.eai-compare__conv {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin: 0.4rem 0 0;
+  padding: 0.9rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--eai-accent) 12%, transparent);
+  color: var(--eai-text);
+  font-size: 0.95rem;
+}
+
 /* ====================== Jornada / accordion (WU-4) ====================== */
 .eai-journey {
   list-style: none;
