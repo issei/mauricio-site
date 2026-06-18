@@ -52,6 +52,16 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
+  test('WU-6: referência — glossário e caso SocialSelling (pipeline M1–M5)', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('.eai-gloss > div').first()).toBeVisible();
+    await expect(page.locator('.eai-gloss dt')).toHaveCount(6);
+    // caso real com pipeline de 5 estágios
+    await expect(page.locator('.eai-case')).toBeVisible();
+    await expect(page.locator('.eai-case__pipe li')).toHaveCount(5);
+    await expect(page.locator('.eai-case')).toContainText('XAI sem número');
+  });
+
   test('WU-5: governança — dicionário (5), árvore, regra de ouro e banner financeiro', async ({ page }) => {
     await page.goto(PATH);
     // 5 cards do dicionário

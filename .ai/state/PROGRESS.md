@@ -27,14 +27,14 @@
 | WU-3 | ✅ done | Área Princípios (10 cards) + âncoras principio-1..10 | 01, 02, 03 | Sonnet |
 | WU-4 | ✅ done | Jornada (accordion de 10 capítulos, cap-1..10) | 02 | Sonnet |
 | WU-5 | ✅ done | Governança Agent-Driven (viradas, dicionário, árvore, callouts, comparativo) | 10, 03 | Sonnet |
-| WU-6 | ⬜ next | Referência + Casos Reais estático | 01, 09 | Haiku/Sonnet |
-| WU-7 | ⬜ | Visualizações SVG/CSS animadas (GSAP) | 04, 07 | Opus |
+| WU-6 | ✅ done | Referência (glossário) + Caso Real SocialSelling (pipeline M1–M5) | 01, 09 | Haiku/Sonnet |
+| WU-7 | ⬜ next | Visualizações SVG/CSS + abrir cortinas (remover noindex) | 04, 07 | Opus |
 
 (V1: WU-8…11 · V2: WU-12…14 — detalhar ao entrar na janela.)
 
 ## Próxima ação
-Iniciar **WU-6** (Referência + Casos Reais): glossário/síntese dos 10 princípios + cartão do estudo
-de caso SocialSelling (doc 01/09).
+Iniciar **WU-7** (fecho da onda MVP): polimento de visualizações SVG/CSS e **abrir as cortinas** —
+remover o noindex e ligar a página ao restante do site (menu/sitemap).
 
 ## Histórico
 - **WU-0 (fundação):** criados `.ai/state/PROGRESS.md`, `.ai/learnings.md`, skills

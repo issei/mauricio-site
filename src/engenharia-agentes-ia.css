@@ -234,6 +234,52 @@ body.eai-body {
 }
 .eai-hero__cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
+/* ====================== Referência + caso (WU-6) ====================== */
+.eai-gloss {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+  margin: 0;
+}
+.eai-gloss > div {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--eai-border);
+  border-radius: 10px;
+  background: var(--eai-bg);
+}
+.eai-gloss dt { font-weight: 700; color: var(--eai-heading); margin-bottom: 0.25rem; }
+.eai-gloss dd { margin: 0; color: var(--eai-muted); font-size: 0.9rem; }
+
+.eai-case {
+  margin-top: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--eai-border);
+  border-radius: 14px;
+  background: var(--eai-bg);
+}
+.eai-case__lede { margin: 0 0 1rem; color: var(--eai-text); }
+.eai-case__pipe {
+  list-style: none; margin: 0 0 1.1rem; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+}
+.eai-case__pipe li {
+  font-size: 0.82rem; font-weight: 600;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--eai-accent) 14%, transparent);
+  color: var(--eai-text);
+  border: 1px solid color-mix(in srgb, var(--eai-accent) 30%, var(--eai-border));
+}
+.eai-case__points { margin: 0 0 1rem; padding-left: 1.2rem; color: var(--eai-text); font-size: 0.92rem; }
+.eai-case__points li { margin-bottom: 0.4rem; }
+.eai-case__note {
+  margin: 0; padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--eai-accent);
+  background: var(--eai-surface);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem; color: var(--eai-muted);
+}
+
 /* ====================== Governança Agent-Driven (WU-5) ====================== */
 .eai-sub {
   font-size: 1.25rem;
