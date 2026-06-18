@@ -73,7 +73,7 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     // resposta errada (opção A): feedback específico que explica o erro, score continua 0
     await opts1.nth(0).click();
     await expect(q1.locator('[data-quiz-fb]')).toHaveAttribute('data-state', 'wrong');
-    await expect(q1.locator('[data-quiz-fb]')).toContainText('controle de fluxo');
+    await expect(q1.locator('[data-quiz-fb]')).toContainText('fluxo');
     await expect(quiz.locator('[data-quiz-score]')).toHaveText('0');
 
     // resposta certa (opção B): score 1, nomeia o princípio, não conta duas vezes
@@ -291,27 +291,70 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(duo.locator('.eai-duo__panel--order .eai-duo__list li')).toHaveCount(3);
   });
 
-  test('T3: simulador explica os valores mínimos e o impacto de cada controle', async ({ page }) => {
+  test('T3/v2: simulador tem unidades, tooltips com escala, nota de base e log cumulativo', async ({ page }) => {
     await page.goto(PATH);
     const sim = page.locator('[data-eai-sim]');
-    const explain = sim.locator('[data-sim-explain-body]');
 
-    // autonomia 0 + custo/risco redutores desmarcados → painel exibe a razão dos pisos
+    // unidade "pts" visível em cada métrica
+    await expect(sim.locator('[data-metric="custo"] .eai-meter__unit')).toHaveText('pts');
+    await expect(sim.locator('.eai-meter__unit')).toHaveCount(6);
+
+    // nota de base sempre visível
+    await expect(sim.locator('.eai-sim__baseline-note')).toContainText('Custo parte de 30');
+
+    // tooltip ⓘ revela definição + escala
+    await sim.locator('[data-metric-info="risco"]').click();
+    const tip = sim.locator('[data-metric-tooltip="risco"]');
+    await expect(tip).toBeVisible();
+    await expect(tip).toContainText('escala 0 a 100 pts');
+
+    // log cumulativo: autonomia 0 + tudo desmarcado → linha de autonomia presente
     await sim.locator('[data-sim="autonomy"]').fill('0');
     await sim.locator('[data-sim="autonomy"]').dispatchEvent('input');
     await sim.locator('[data-sim="schemas"]').uncheck();
     await sim.locator('[data-sim="bdd"]').uncheck();
-    await expect(explain).toContainText('Custo ≥ 30');
-    await expect(explain).toContainText('Risco ≥ 40');
+    const log = sim.locator('[data-sim-log-list]');
+    await expect(log.locator('#log-autonomia')).toContainText('Autonomia 0%');
 
-    // marcar Cache → painel mostra o impacto (XAI) antes de o usuário ler as barras
+    // marcar Cache adiciona a linha; marcar BDD mantém as duas (cumulativo)
     await sim.locator('[data-sim="cache"]').check();
-    await expect(explain).toContainText('Cache');
-    await expect(explain).toContainText('custo −20');
+    await expect(log.locator('#log-cache')).toContainText('Cache');
+    await sim.locator('[data-sim="bdd"]').check();
+    await expect(log.locator('#log-cache')).toBeVisible();
+    await expect(log.locator('#log-bdd')).toBeVisible();
 
-    // tooltip ⓘ abre a definição da métrica
-    await sim.locator('[data-metric="risco"] .eai-meter__info').click();
-    await expect(sim.locator('[data-metric="risco"] .eai-meter__tip')).toBeVisible();
+    // desmarcar Cache remove apenas a linha dele
+    await sim.locator('[data-sim="cache"]').uncheck();
+    await expect(log.locator('#log-cache')).toHaveCount(0);
+    await expect(log.locator('#log-bdd')).toBeVisible();
+  });
+
+  test('T-A/v2: árvore do repositório começa totalmente expandida', async ({ page }) => {
+    await page.goto(PATH);
+    const repo = page.locator('[data-eai-repo]');
+    // sem clicar, um arquivo de nível profundo já está visível
+    await expect(repo.locator('.eai-repo__row', { hasText: 'PROGRESS.md' })).toBeVisible();
+    await expect(repo.locator('.eai-repo__row', { hasText: 'quality-gate.sh' })).toBeVisible();
+    // clicar numa pasta recolhe os filhos
+    await repo.locator('.eai-repo__row', { hasText: '.ai/' }).click();
+    await expect(repo.locator('.eai-repo__row', { hasText: 'PROGRESS.md' })).toBeHidden();
+  });
+
+  test('C/v2: exemplos multi-domínio (contratos, saúde, moderação) e rodapé "ilustrados"', async ({ page }) => {
+    await page.goto(PATH);
+    // código genérico (sem variável "lead" como principal)
+    await expect(page.locator('#codigo')).toContainText('run_pipeline(item, llm)');
+    // quiz multi-domínio
+    await expect(page.locator('[data-qid="q1"]')).toContainText('contratos jurídicos');
+    await expect(page.locator('[data-qid="q2"]')).toContainText('triagem clínica');
+    await expect(page.locator('[data-qid="q3"]')).toContainText('moderação de conteúdo');
+    await expect(page.locator('[data-qid="q4"]')).toContainText('posts');
+    // contexto do pipeline e nota de domínio no caso
+    await expect(page.locator('.eai-flow__context')).toContainText('domínios diferentes');
+    await expect(page.locator('.eai-case__domain-note')).toContainText('a arquitetura permanece');
+    // caso ainda menciona SocialSelling; rodapé "ilustrados"
+    await expect(page.locator('.eai-case')).toContainText('SocialSelling');
+    await expect(page.locator('.eai-footer__meta')).toContainText('ilustrados');
   });
 
   test('T2: quiz Q2 (Open-World) dá feedback específico para A, B e C', async ({ page }) => {
@@ -353,12 +396,11 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(flow).toHaveAttribute('data-fail', 'm4');
   });
 
-  test('T6: anatomia — árvore interativa expande e atualiza o painel ao clicar', async ({ page }) => {
+  test('T6: anatomia — clicar num item atualiza o painel lateral', async ({ page }) => {
     await page.goto(PATH);
     const repo = page.locator('[data-eai-repo]');
     await expect(repo).toBeVisible();
-    // .ai/ começa recolhida; clicar expande e revela PROGRESS.md
-    await repo.locator('.eai-repo__row', { hasText: '.ai/' }).click();
+    // árvore já expandida (v2): PROGRESS.md visível sem clicar; clicar atualiza o painel
     const progress = repo.locator('.eai-repo__row', { hasText: 'PROGRESS.md' });
     await expect(progress).toBeVisible();
     await progress.click();

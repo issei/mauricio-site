@@ -12,8 +12,8 @@ export const QUIZ = [
     principleAnchor: '#principio-1',
     correct: 'b',
     feedback: {
-      correct: 'Exato. Isso é o princípio do LLM como componente (P1/P2): o fluxo é um pipeline determinístico e o modelo entra só na etapa de classificação. Cada etapa que sai do LLM é uma fonte de alucinação a menos.',
-      wrong_a: 'Deixar o agente decidir sozinho a ordem das ferramentas é dar a ele o controle de fluxo — a receita de loops, custo imprevisível e irreprodutibilidade. O LLM responde dentro de etapas; ele não escolhe a próxima.',
+      correct: 'Exato — P1 e P2. O LLM é um componente dentro de etapas fixas, nunca o orquestrador. A ordem das etapas é código, não decisão do modelo. Isso garante reprodutibilidade e torna cada etapa testável isoladamente.',
+      wrong_a: 'Com o agente controlando o fluxo, qualquer variação no modelo gera uma sequência diferente de etapas — o sistema se torna irreprodutível e impossível de testar. O fluxo de controle deve ser determinístico.',
       wrong_c: 'Um LLM orquestrando outros modelos multiplica a superfície de erro: a alucinação de um vira entrada do outro e se "confirma". O fluxo de controle deve ser código determinístico, não um modelo.',
     },
   },
@@ -24,9 +24,9 @@ export const QUIZ = [
     principleAnchor: '#principio-7',
     correct: 'b',
     feedback: {
-      correct: 'Exato. Isso é o princípio Open-World (P7): ausência de evidência é incerteza explícita, nunca negação automática. Um sistema honesto sabe dizer "não sei" — e isso é mais valioso do que uma resposta inventada.',
-      wrong_a: "Tratar ausência de dado como 'falso' é o erro clássico do Mundo Fechado. O sistema inventou uma conclusão onde não há evidência — exatamente o que a engenharia agêntica previne.",
-      wrong_c: 'Gerar um valor médio sem evidência é uma forma de alucinação estruturada: o dado parece real mas foi fabricado. O correto é tornar a ausência visível, não escondê-la.',
+      correct: 'Isso é P7 — Open-World. Ausência de evidência é incerteza explícita, nunca negação. Em saúde (e em qualquer domínio crítico), um sistema que inventa dados onde não há evidência é mais perigoso do que um que diz "não sei".',
+      wrong_a: "Tratar ausência como 'sem risco' é o erro do Mundo Fechado: o sistema assumiu uma conclusão onde não há evidência. Em domínios críticos como saúde, este erro pode ter consequências graves.",
+      wrong_c: 'Gerar um valor médio sem evidência é alucinação estruturada: o dado parece real mas foi fabricado. O correto é tornar a ausência visível — não escondê-la com um número inventado.',
     },
   },
   {
@@ -36,8 +36,8 @@ export const QUIZ = [
     principleAnchor: '#principio-10',
     correct: 'b',
     feedback: {
-      correct: 'Exato. Isso é XAI (P10): drivers em linguagem natural + a lacuna honesta ("não foi possível confirmar o orçamento") constroem a confiança que gera adoção. O número opaco não convence ninguém a agir.',
-      wrong_a: 'Repetir o score e o threshold não explica nada ao gestor — é a "caixa-preta" que trava a adoção. A confiança vem da clareza da justificativa, não da precisão do número.',
+      correct: 'P10 — XAI. O número 0.847 não ajuda o revisor a decidir. A explicação em linguagem natural — com os drivers positivos, as lacunas e a proveniência — é o que constrói confiança e permite revisão informada.',
+      wrong_a: 'O número sozinho não informa nada acionável. O revisor ainda precisa decidir o que fazer — e agora sem entender o porquê. Isso é o que P10 chama de "expor o número" em vez de "explicar".',
     },
   },
   {
@@ -47,9 +47,9 @@ export const QUIZ = [
     principleAnchor: '#principio-8',
     correct: 'c',
     feedback: {
-      correct: 'Exato. Isso une FinOps (P8) e fail-closed (P9): atingiu o teto do ledger → para num ponto seguro, salva o progresso e retoma na próxima onda. O volume vira função do tempo, sem fatura-surpresa e sem trabalho perdido.',
-      wrong_a: 'Continuar além do teto é ignorar o ledger — exatamente a fatura-surpresa que o FinOps de IA existe para evitar. O orçamento é estado de domínio, não uma sugestão.',
-      wrong_b: 'Parar sem salvar o estado desperdiça todo o progresso e força recomeçar do zero. Fail-closed não é "abortar e perder" — é parar num ponto seguro e retomável.',
+      correct: 'P8 + P9 — FinOps e fail-closed. O ledger sabe exatamente onde parou. Retomar do ponto correto é o que diferencia um sistema que falha graciosamente de um que entra em loop gerando fatura inesperada. "Falhar e parar" é uma feature, não uma limitação.',
+      wrong_a: 'Continuar além do teto é exatamente o comportamento que o ledger previne. Um agente sem limite de custo é um risco financeiro — a fatura pode crescer indefinidamente em caso de loop.',
+      wrong_b: 'Parar sem salvar estado significa perder todo o progresso — e reprocessar do início amanhã paga duas vezes pelo mesmo trabalho. O ledger existe justamente para garantir que o ponto de parada seja recuperável.',
     },
   },
 ];

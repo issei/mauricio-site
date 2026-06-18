@@ -39,8 +39,8 @@ function buildNode(node, depth, ctx, expanded) {
     group.className = 'eai-repo__group';
     group.setAttribute('role', 'group');
     node.children.forEach((child) => {
-      // raiz expande o 1º nível; subpastas começam recolhidas
-      group.appendChild(buildNode(child, depth + 1, ctx, false));
+      // árvore começa totalmente expandida; o clique recolhe/expande cada pasta (T-A v2)
+      group.appendChild(buildNode(child, depth + 1, ctx, true));
     });
     li.appendChild(group);
   }

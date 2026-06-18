@@ -69,14 +69,19 @@ export const SIM_MODEL = {
       razao: 'Sem observabilidade, o sistema é uma caixa-preta. Com ela, cada decisão é rastreável.',
     },
   },
-  // O que cada métrica significa (tooltip ⓘ).
+  // O que cada métrica significa (tooltip ⓘ). Escala 0–100 pts em todas.
   metricInfo: {
-    custo: 'Custo: gasto relativo por execução — chamadas de modelo, infraestrutura e retrabalho.',
-    confianca: 'Confiança: o quanto se pode confiar que a saída está correta e dentro do contrato.',
-    velocidade: 'Velocidade: throughput do pipeline — quão rápido cada item é processado de ponta a ponta.',
-    risco: 'Risco: probabilidade de o sistema produzir uma saída inválida ou propagar um erro silencioso.',
-    auditabilidade: 'Auditabilidade: o quanto cada decisão é rastreável e explicável depois do fato.',
-    previsibilidade: 'Previsibilidade: o quanto a mesma entrada produz a mesma saída — determinismo observável.',
+    custo: 'Custo relativo de operação: tokens consumidos, reprocessamentos e chamadas desnecessárias ao modelo. Mínimo 30 — todo sistema tem overhead de infraestrutura.',
+    confianca: 'Probabilidade estimada de a saída estar correta e validada. Cresce com contratos, testes e revisão humana.',
+    velocidade: 'Throughput relativo do sistema. Cache e menor supervisão aumentam; revisão humana e evals reduzem.',
+    risco: 'Superfície de falha: chance de erro silencioso, alucinação propagada ou comportamento inesperado. Mínimo 40 — risco zero não existe em produção.',
+    auditabilidade: 'Capacidade de rastrear por que o sistema tomou cada decisão. Depende de observabilidade, evals e logs.',
+    previsibilidade: 'Estabilidade do comportamento ao longo do tempo. Alta autonomia sem contratos reduz previsibilidade.',
+  },
+  // Rótulo legível por métrica (para títulos de tooltip).
+  metricLabels: {
+    custo: 'Custo', confianca: 'Confiança', velocidade: 'Velocidade',
+    risco: 'Risco', auditabilidade: 'Auditabilidade', previsibilidade: 'Previsibilidade',
   },
 };
 

@@ -290,11 +290,13 @@ class Inference(BaseModel):
     intent: str
     confidence: float = Field(ge=0.0, le=1.0)  # limite no schema, nao no if
 
-def run_pipeline(lead, llm, now):
-    ev = collect_evidence(lead)                # M1: deterministico (API, sem IA)
-    if ev.missing:                             # Open-World: ausencia = incerteza
+def run_pipeline(item, llm):
+    # Serve a qualquer dominio: leads B2B, tickets de suporte,
+    # pedidos de e-commerce, laudos medicos -- a estrutura e a mesma.
+    signals = collect_signals(item)            # M1: deterministico (APIs, banco, sem IA)
+    if signals.missing:                        # Open-World: ausencia = incerteza
         return Inference(intent="desconhecido", confidence=0.0)
-    raw = llm.extract(ev.snippet)              # M2: LLM so no residuo interpretativo
+    raw = llm.extract(signals.snippet)         # M2: LLM so no residuo interpretativo
     return Inference.model_validate(raw)       # valida a saida (input nao confiavel)
 </code></pre>
           </figure>
@@ -492,41 +494,41 @@ for lead in fila:
           <p class="eai-quiz__summary" data-quiz-summary aria-live="polite"></p>
           <ol class="eai-quiz__list" role="list">
             <li class="eai-quiz__q" data-quiz-q data-qid="q1">
-              <p class="eai-quiz__ctx">Você está construindo um sistema de análise de contratos. A cada documento recebido, o sistema precisa: extrair cláusulas, classificar o risco, formatar o relatório e enviar por e-mail. Você tem duas opções de arquitetura.</p>
-              <p class="eai-quiz__prompt">1. Qual é a abordagem correta?</p>
+              <p class="eai-quiz__ctx">Você está construindo um sistema de análise de contratos jurídicos. O sistema precisa: receber o PDF, extrair cláusulas, classificar o risco e gerar um relatório.</p>
+              <p class="eai-quiz__prompt">1. Qual arquitetura é correta?</p>
               <div class="eai-quiz__opts">
-                <button type="button">Um agente recebe o contrato e decide sozinho quais ferramentas usar em qual ordem</button>
-                <button type="button">Um pipeline fixo chama o LLM apenas na etapa de classificação de risco; as demais são código determinístico</button>
-                <button type="button">O LLM controla o fluxo e delega sub-tarefas para outros modelos</button>
+                <button type="button">Um agente recebe o PDF e decide sozinho quais etapas executar e em qual ordem</button>
+                <button type="button">Um pipeline fixo chama o LLM apenas na etapa de classificação de risco; extração e formatação são código determinístico</button>
+                <button type="button">O LLM controla o fluxo inteiro e delega sub-tarefas para outros modelos especializados</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
             <li class="eai-quiz__q" data-quiz-q data-qid="q2">
-              <p class="eai-quiz__ctx">Seu sistema avalia o perfil de um cliente B2B. Para este cliente específico, não há registro de faturamento nos últimos 12 meses — o dado simplesmente não existe no banco.</p>
-              <p class="eai-quiz__prompt">2. O que um sistema bem projetado deve fazer?</p>
+              <p class="eai-quiz__ctx">Um sistema de triagem clínica avalia pacientes. Para um paciente recém-cadastrado, não há exames dos últimos 12 meses no sistema — o dado simplesmente não existe.</p>
+              <p class="eai-quiz__prompt">2. O que o sistema bem projetado faz?</p>
               <div class="eai-quiz__opts">
-                <button type="button">Assumir que o cliente não tem potencial (tratar ausência como "falso")</button>
-                <button type="button">Registrar explicitamente que este sinal está ausente e comunicar a incerteza ao usuário</button>
-                <button type="button">Gerar um valor médio baseado em outros clientes para preencher o campo</button>
+                <button type="button">Assume que o paciente não tem risco (ausência de dados = sem risco)</button>
+                <button type="button">Registra explicitamente que este sinal está ausente e sinaliza a incerteza ao médico</button>
+                <button type="button">Calcula um valor médio baseado em outros pacientes para preencher o campo</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
             <li class="eai-quiz__q" data-quiz-q data-qid="q3">
-              <p class="eai-quiz__ctx">O sistema de recomendação retornou score <code>0.847</code> para um lead. O gestor comercial pergunta: "por que esse lead foi priorizado?" Você tem duas formas de responder.</p>
-              <p class="eai-quiz__prompt">3. Qual resposta gera mais confiança e adoção?</p>
+              <p class="eai-quiz__ctx">Um sistema de moderação de conteúdo atribuiu score <code>0.847</code> a uma postagem. O revisor humano pergunta: "por que este post foi sinalizado?"</p>
+              <p class="eai-quiz__prompt">3. Qual resposta gera mais confiança?</p>
               <div class="eai-quiz__opts">
                 <button type="button">"O algoritmo atribuiu score 0.847, acima do threshold de 0.7"</button>
-                <button type="button">"Priorizado porque a empresa sinalizou expansão recente e tem histórico de compra no setor. Não foi possível confirmar o orçamento disponível."</button>
+                <button type="button">"Sinalizado porque contém linguagem associada a desinformação sobre saúde e o perfil do autor tem histórico de posts removidos. Não foi possível confirmar a intenção — pode ser ironia."</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
             <li class="eai-quiz__q" data-quiz-q data-qid="q4">
-              <p class="eai-quiz__ctx">Um agente autônomo está processando 50.000 leads. Às 14h, ele atinge o limite diário de tokens definido no ledger. Ainda faltam 18.000 leads.</p>
+              <p class="eai-quiz__ctx">Um agente de moderação está processando 200.000 posts. Às 15h, ele atinge o limite diário de tokens definido no ledger. Ainda faltam 60.000 posts.</p>
               <p class="eai-quiz__prompt">4. O que o sistema deve fazer?</p>
               <div class="eai-quiz__opts">
-                <button type="button">Continuar processando os leads restantes, já que o trabalho está quase concluído</button>
-                <button type="button">Parar imediatamente sem registrar o estado, para evitar processamento inconsistente</button>
-                <button type="button">Parar num ponto seguro, salvar o progresso e retomar na próxima execução a partir de onde parou</button>
+                <button type="button">Continuar processando — o trabalho está quase concluído e parar no meio é pior</button>
+                <button type="button">Parar imediatamente sem registrar estado, para evitar inconsistência</button>
+                <button type="button">Parar num ponto seguro, salvar o progresso e retomar amanhã a partir do post 140.001</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
@@ -564,41 +566,55 @@ for lead in fila:
           </form>
 
           <div class="eai-sim__meters" aria-live="polite">
+            <p class="eai-sim__baseline-note">
+              <strong>Valores de base:</strong> Custo parte de 30 e Risco parte de 40 — refletem o overhead
+              mínimo de qualquer sistema em produção (infraestrutura, latência, falhas de rede). Zero nunca
+              é possível no mundo real.
+            </p>
             <div class="eai-meter" data-metric="custo" data-dir="bad">
               <span class="eai-meter__label" id="m-custo">Custo</span>
               <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-custo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
               <span class="eai-meter__val" data-sim-val>0</span>
+              <span class="eai-meter__unit" aria-hidden="true">pts</span>
             </div>
             <div class="eai-meter" data-metric="confianca" data-dir="good">
               <span class="eai-meter__label" id="m-confianca">Confiança</span>
               <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-confianca" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
               <span class="eai-meter__val" data-sim-val>0</span>
+              <span class="eai-meter__unit" aria-hidden="true">pts</span>
             </div>
             <div class="eai-meter" data-metric="velocidade" data-dir="good">
               <span class="eai-meter__label" id="m-velocidade">Velocidade</span>
               <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-velocidade" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
               <span class="eai-meter__val" data-sim-val>0</span>
+              <span class="eai-meter__unit" aria-hidden="true">pts</span>
             </div>
             <div class="eai-meter" data-metric="risco" data-dir="bad">
               <span class="eai-meter__label" id="m-risco">Risco</span>
               <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-risco" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
               <span class="eai-meter__val" data-sim-val>0</span>
+              <span class="eai-meter__unit" aria-hidden="true">pts</span>
             </div>
             <div class="eai-meter" data-metric="auditabilidade" data-dir="good">
               <span class="eai-meter__label" id="m-auditabilidade">Auditabilidade</span>
               <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-auditabilidade" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
               <span class="eai-meter__val" data-sim-val>0</span>
+              <span class="eai-meter__unit" aria-hidden="true">pts</span>
             </div>
             <div class="eai-meter" data-metric="previsibilidade" data-dir="good">
               <span class="eai-meter__label" id="m-previsibilidade">Previsibilidade</span>
               <span class="eai-meter__bar" role="progressbar" aria-labelledby="m-previsibilidade" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-sim-fill></span></span>
               <span class="eai-meter__val" data-sim-val>0</span>
+              <span class="eai-meter__unit" aria-hidden="true">pts</span>
             </div>
           </div>
 
-          <div class="eai-sim__explain" data-sim-explain aria-live="polite">
-            <p class="eai-sim__explain-title">O que está acontecendo</p>
-            <div class="eai-sim__explain-body" data-sim-explain-body><!-- preenchido por JS (XAI) --></div>
+          <div class="eai-sim__log" data-sim-log aria-live="polite" aria-label="Log de decisões arquiteturais">
+            <p class="eai-sim__log-title">O que está acontecendo nesta arquitetura</p>
+            <ul class="eai-sim__log-list" data-sim-log-list><!-- itens adicionados/removidos por JS --></ul>
+            <p class="eai-sim__log-empty" data-sim-log-empty hidden>
+              Ajuste a autonomia ou marque guardrails para ver o impacto de cada decisão.
+            </p>
           </div>
         </div>
         <p class="eai-sim__hint">Dica: alta autonomia sem schemas/BDD dispara risco e custo; ledger + cache derrubam o custo; evals e observabilidade elevam a auditabilidade.</p>
@@ -635,6 +651,10 @@ for lead in fila:
               <div><dt>DLQ</dt><dd><strong>Dead-Letter Queue</strong>: quando uma etapa falha repetidamente, a mensagem vai para uma fila especial de "mensagens mortas" — aguardando revisão humana ou reprocessamento, sem bloquear o pipeline.</dd></div>
               <div><dt>Confiança</dt><dd>O sistema avalia a qualidade da própria saída. Acima do threshold, aprova sozinho; abaixo, aciona revisão humana.</dd></div>
             </dl>
+            <p class="eai-flow__context">
+              Este padrão de 5 etapas se repete em domínios diferentes: priorização de leads B2B, triagem
+              de tickets de suporte, moderação de conteúdo, análise de contratos. A estrutura é a mesma; o domínio muda.
+            </p>
           </div>
           <div class="eai-flow__tabs" role="tablist" aria-label="Cenários do pipeline">
             <button type="button" role="tab" data-scenario="feliz" aria-selected="true">Feliz</button>
@@ -861,6 +881,12 @@ for lead in fila:
             Disciplina central do projeto: distinguir o <strong>implementado</strong> (PoC) do
             <strong>especificado</strong> (V1+) — saber quando <em>não</em> construir o aparato completo.
           </p>
+          <p class="eai-case__domain-note">
+            O SocialSelling é o caso que originou este conteúdo, mas os mesmos princípios se aplicam a
+            qualquer sistema que usa LLMs: um agente de suporte técnico, um moderador de conteúdo, um
+            analisador de contratos jurídicos ou um sistema de triagem clínica. O que muda é o domínio —
+            a arquitetura permanece.
+          </p>
         </article>
 
         <h3 class="eai-sub">Seu progresso nesta sessão</h3>
@@ -880,7 +906,7 @@ for lead in fila:
     <div class="eai-container eai-footer__inner">
       <p class="eai-footer__brand">Engenharia de Agentes de IA</p>
       <p class="eai-footer__meta">
-        Conteúdo derivado do projeto SocialSelling · Maurício Yokoyama Issei
+        Princípios ilustrados pelo projeto SocialSelling · Maurício Yokoyama Issei
       </p>
       <p class="eai-footer__nav">
         <a href="./catalogo.html">Catálogo</a> ·
