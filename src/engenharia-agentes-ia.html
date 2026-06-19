@@ -65,6 +65,55 @@
             <span class="eai-grad">muito pouca IA</span>
             no caminho crítico.
           </h1>
+
+          <!-- Vídeo-âncora: o storyboard "Caos ↔ Disciplina" em formato audiovisual.
+               Facade click-to-play (lazy) → não carrega o iframe no load (protege o LCP)
+               e nunca dá autoplay sozinho. P10/XAI: equivalente textual em prosa + 100% teclado. -->
+          <figure class="eai-viz-panel eai-video" data-eai-video data-eai-video-id="UxaaQN-csvA">
+            <div class="eai-video__frame" data-eai-video-frame>
+              <button type="button" class="eai-video__play" data-eai-video-trigger
+                aria-label="Reproduzir o vídeo “Do encanto à engenharia” (cerca de 4 minutos)">
+                <img class="eai-video__poster" alt="" width="480" height="270"
+                  loading="lazy" decoding="async"
+                  src="https://i.ytimg.com/vi/UxaaQN-csvA/hqdefault.jpg" />
+                <span class="eai-video__btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="28" height="28" focusable="false">
+                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="eai-video__label">Do encanto à engenharia · ~4 min</span>
+              </button>
+            </div>
+            <figcaption class="eai-video__cap">
+              <details class="eai-video__equiv">
+                <summary class="eai-video__summary">
+                  Equivalente textual — descrição do vídeo
+                </summary>
+                <div class="eai-video__prose">
+                  <p>
+                    O vídeo abre na <strong>“magia”</strong>: um agente de IA livre resolve
+                    uma tarefa em segundos e encanta a plateia. Em seguida, a mesma demo é
+                    levada à produção e <strong>se desfaz</strong> — loops imprevisíveis,
+                    custo que explode e alucinações que se propagam, exatamente o lado
+                    <em>Caótico</em> do storyboard ao lado.
+                  </p>
+                  <p>
+                    A narrativa então vira a chave para a <strong>engenharia</strong>: o mesmo
+                    problema, agora resolvido por um <em>pipeline determinístico</em> em que o
+                    LLM entra só no caminho onde é insubstituível. Etapas em sequência, contratos
+                    que barram o erro, custo linear e saídas validadas e explicáveis — o lado
+                    <em>Disciplinado</em>.
+                  </p>
+                  <p>
+                    Mensagem de fechamento para PMs e executivos: <strong>a capacidade vem do
+                    modelo; a confiança vem da engenharia</strong>. Não é preciso menos ambição,
+                    e sim menos IA no caminho crítico.
+                  </p>
+                </div>
+              </details>
+            </figcaption>
+          </figure>
+
           <p class="eai-hero__lede">
             A capacidade vem do modelo; a confiança vem da engenharia. Uma jornada interativa pelos
             princípios que separam um protótipo encantador de um produto que aguenta produção.
@@ -924,6 +973,7 @@ for lead in fila:
   <script type="module" src="./js/eai-anatomy.js"></script>
   <script type="module" src="./js/eai-progress.js"></script>
   <script type="module" src="./js/eai-code.js"></script>
+  <script type="module" src="./js/eai-video.js"></script>
 </body>
 
 </html>
