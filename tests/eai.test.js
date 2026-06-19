@@ -10,6 +10,7 @@ import { score, SIM_MODEL, explainGuardrail, formatImpact } from '../src/js/eai-
 import { evaluate, insightFor, COMPONENT_INSIGHTS } from '../src/js/eai-playground-rules.js';
 import { feedbackFor, scoreMessage, QUIZ } from '../src/js/eai-quiz-data.js';
 import { REPO_TREE, flatten } from '../src/js/eai-anatomy-data.js';
+import { classifyAutonomy, maturityStage, MATURITY, QUADRANTS } from '../src/js/eai-pilares-model.js';
 
 // ---------- T7.1 — Modelo do simulador ----------
 const ALL_ON = { schemas: true, cache: true, ledger: true, human: true, bdd: true, evals: true, observability: true };
@@ -154,12 +155,14 @@ test('Quiz: Q2 (Open-World) tem feedback para as opções A, B e C', () => {
   assert.ok(feedbackFor('q2', 2).text.length > 10);
 });
 
-test('Quiz: score 4/4 difere de 0/4', () => {
-  assert.notEqual(scoreMessage(4), scoreMessage(0));
-  assert.match(scoreMessage(4), /Excelente/);
+test('Quiz: gabarito difere de zero e há quatro faixas distintas', () => {
+  const T = QUIZ.length;
+  assert.notEqual(scoreMessage(T), scoreMessage(0));
+  assert.match(scoreMessage(T), /Excelente/);
   assert.match(scoreMessage(0), /Sem acertos/);
-  // quatro faixas distintas
-  const msgs = new Set([scoreMessage(0), scoreMessage(2), scoreMessage(3), scoreMessage(4)]);
+  assert.match(scoreMessage(T - 1), /Quase/);
+  // quatro faixas distintas: zero, parcial, quase, gabarito
+  const msgs = new Set([scoreMessage(0), scoreMessage(1), scoreMessage(T - 1), scoreMessage(T)]);
   assert.equal(msgs.size, 4);
 });
 
@@ -196,4 +199,53 @@ test('RepoTree: tipos válidos (root/dir/file)', () => {
   for (const node of flatten()) {
     assert.ok(['root', 'dir', 'file'].includes(node.type), `tipo inválido: ${node.type}`);
   }
+});
+
+// ---------- Pilares — Calibrador de Autonomia (Pilar 1) ----------
+test('Calibrador: os quatro quadrantes da matriz custo × reversibilidade', () => {
+  assert.equal(classifyAutonomy({ cost: 10, reversibility: 10 }).quadrant, 'exploracao');
+  assert.equal(classifyAutonomy({ cost: 90, reversibility: 10 }).quadrant, 'reversivel-caro');
+  assert.equal(classifyAutonomy({ cost: 10, reversibility: 90 }).quadrant, 'irreversivel-barato');
+  assert.equal(classifyAutonomy({ cost: 90, reversibility: 90 }).quadrant, 'missao-critica');
+});
+
+test('Calibrador: todo quadrante tem label, cerimônia e recomendação', () => {
+  for (const q of Object.values(QUADRANTS)) {
+    assert.ok(q.label && q.ceremony && q.recommendation && q.recommendation.length > 20);
+  }
+});
+
+test('Calibrador: vazamento de modo só dispara em exploração + dependência de produção', () => {
+  // exploração leve, mas já dependida como produção → vazamento
+  assert.equal(classifyAutonomy({ cost: 10, reversibility: 10, dependedInProd: true }).modeLeak, true);
+  // exploração sem dependência → sem vazamento
+  assert.equal(classifyAutonomy({ cost: 10, reversibility: 10, dependedInProd: false }).modeLeak, false);
+  // missão crítica já assume rigor → não é vazamento de modo, mesmo com dependência
+  assert.equal(classifyAutonomy({ cost: 90, reversibility: 90, dependedInProd: true }).modeLeak, false);
+});
+
+test('Calibrador: determinismo e clamp dos eixos (0–100)', () => {
+  const a = classifyAutonomy({ cost: 200, reversibility: -5 });
+  assert.equal(a.cost, 100);
+  assert.equal(a.reversibility, 0);
+  assert.deepEqual(
+    classifyAutonomy({ cost: 60, reversibility: 60, dependedInProd: true }),
+    classifyAutonomy({ cost: 60, reversibility: 60, dependedInProd: true })
+  );
+});
+
+// ---------- Pilares — Maturidade (Pilar 4) ----------
+test('Maturidade: quatro estágios 0–3, cada um com has/missing/next', () => {
+  assert.equal(MATURITY.length, 4);
+  MATURITY.forEach((s, i) => {
+    assert.equal(s.id, i);
+    assert.ok(s.name && s.tagline);
+    assert.ok(s.has && s.missing && s.next);
+  });
+});
+
+test('Maturidade: maturityStage retorna o estágio por id e null fora do intervalo', () => {
+  assert.equal(maturityStage(0).name, 'Mágica de Prompt');
+  assert.equal(maturityStage(3).name, 'Governado');
+  assert.equal(maturityStage(9), null);
 });

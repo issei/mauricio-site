@@ -43,6 +43,7 @@
       </a>
       <nav class="eai-nav__trail" aria-label="Trilha de aprendizado">
         <a href="#principios" data-eai-navlink>Princípios</a>
+        <a href="#pilares" data-eai-navlink>Pilares</a>
         <a href="#codigo" data-eai-navlink>Código</a>
         <a href="#jornada" data-eai-navlink>Jornada</a>
         <a href="#simulador" data-eai-navlink>Simulador</a>
@@ -315,6 +316,180 @@
       </div>
     </section>
 
+    <!-- PILARES -->
+    <section id="pilares" class="eai-section" aria-labelledby="pilares-titulo" data-eai-reveal>
+      <div class="eai-container">
+        <p class="eai-eyebrow">Cinco pilares</p>
+        <h2 id="pilares-titulo" class="eai-section__title">Confiança em escala, em cinco decisões</h2>
+        <p class="eai-section__lede">
+          Os dez princípios respondem <em>como</em> construir. Os cinco pilares respondem <em>quanto</em>
+          rigor aplicar e <em>quando</em>. A premissa não muda: o LLM é um componente, nunca o piloto —
+          a disciplina é o que torna a autonomia confiável.
+        </p>
+
+        <ul class="eai-pilars" role="list">
+          <!-- Pilar 1 -->
+          <li><details class="eai-pilar" id="pilar-1">
+            <summary class="eai-pilar__head">
+              <span class="eai-pilar__num">01</span>
+              <svg class="eai-pilar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+              <span class="eai-pilar__title">Espectro de Autonomia</span>
+              <span class="eai-pilar__sub">Quanta liberdade dar?</span>
+            </summary>
+            <div class="eai-pilar__body">
+              <p class="eai-pilar__def">Autonomia não é interruptor (confio / não confio) — é um <strong>contínuo</strong>. A posição correta de uma tarefa nesse contínuo é função de duas variáveis: o <strong>custo do erro</strong> (de cosmético a catastrófico) e a <strong>reversibilidade</strong> (de instantânea a irreversível).</p>
+              <ul class="eai-pilar__just">
+                <li><strong>Sobre-engenharia do trivial</strong> mata o time-to-market sem reduzir risco nenhum.</li>
+                <li><strong>Sub-engenharia do crítico</strong> deixa pagamentos e migrações na mão de um agente em "modo improviso".</li>
+                <li>O risco mais insidioso é o <strong>vazamento de modo</strong>: o protótipo que "deu certo na demo" e vira produção sem atravessar a fronteira de rigor.</li>
+              </ul>
+              <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogia</span> O laboratório de P&amp;D e a linha de produção certificada. O erro não é ter os dois modos — é <em>mover um artefato entre zonas sem reprocessá-lo sob as regras da zona de destino</em>.</p>
+              <p class="eai-pilar__links">Conecta com
+                <a href="#principio-1">P1 · componente</a>,
+                <a href="#principio-4">P4 · determinístico-primeiro</a>.
+                Use o <a href="#simulador">Calibrador de Autonomia</a> para posicionar uma tarefa na matriz.</p>
+            </div>
+          </details></li>
+
+          <!-- Pilar 2 -->
+          <li><details class="eai-pilar" id="pilar-2">
+            <summary class="eai-pilar__head">
+              <span class="eai-pilar__num">02</span>
+              <svg class="eai-pilar__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span class="eai-pilar__title">Freios para Correr Mais Rápido</span>
+              <span class="eai-pilar__sub">Como ir rápido com segurança?</span>
+            </summary>
+            <div class="eai-pilar__body">
+              <p class="eai-pilar__def">Restrições bem colocadas não desaceleram o sistema — elas <strong>aumentam a velocidade segura máxima</strong>, porque reduzem o espaço de estados que o agente precisa raciocinar. Três instrumentos formam o <strong>sandbox</strong>:</p>
+              <ul class="eai-pilar__just">
+                <li><strong>DoR</strong> — contrato de <em>entrada</em>: o que precisa ser verdade antes de começar.</li>
+                <li><strong>DoD</strong> — contrato de <em>saída</em>: torna "pronto" um predicado verificável por máquina (o oráculo que permite delegar).</li>
+                <li><strong>ADR</strong> — memória de decisão imutável: evita reabrir o que já foi fechado; vira contexto injetável para o agente.</li>
+              </ul>
+              <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogia</span> Um F1 não é rápido <em>apesar</em> dos freios de carbono — é rápido <strong>por causa deles</strong>: a confiança na frenagem é o que autoriza atacar a curva mais tarde. Remover os freios não acelera o carro; impede-o de completar uma volta.</p>
+              <p class="eai-pilar__links">Conecta com
+                <a href="#principio-5">P5 · contratos</a>,
+                <a href="#principio-9">P9 · governança fail-closed</a>.</p>
+            </div>
+          </details></li>
+
+          <!-- Pilar 3 -->
+          <li><details class="eai-pilar" id="pilar-3">
+            <summary class="eai-pilar__head">
+              <span class="eai-pilar__num">03</span>
+              <svg class="eai-pilar__icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M10 12h4"/></svg>
+              <span class="eai-pilar__title">Padrões de Interoperabilidade</span>
+              <span class="eai-pilar__sub">Como conter o que o agente toca?</span>
+            </summary>
+            <div class="eai-pilar__body">
+              <p class="eai-pilar__def">Componentes de raciocínio, ferramentas e interface se comunicam por <strong>contratos explícitos e versionáveis</strong>, nunca por acoplamento direto. Duas fronteiras importam:</p>
+              <ul class="eai-pilar__just">
+                <li><strong>MCP (Model Context Protocol)</strong> — a fronteira agente↔ferramentas/dados. O conjunto de ações do agente é exatamente o que um servidor MCP <em>expõe</em>: é o ponto natural de autorização, escopo de permissão, rate limiting e auditoria. O agente não tem acesso ambiente — tem acesso <em>enumerado</em>. É por isso que MCP é uma <strong>fronteira de segurança</strong> (menor privilégio).</li>
+                <li><strong>Camada A2UI</strong> — a fronteira agente↔apresentação. O Cérebro emite intenção e dados estruturados (<em>o quê</em>); a Vitrine determinística decide a renderização (<em>como</em>). O modelo nunca produz HTML ou pixels diretamente.</li>
+              </ul>
+
+              <figure class="eai-bound" aria-labelledby="bound-cap">
+                <div class="eai-bound__row" role="list" aria-hidden="true">
+                  <span class="eai-bound__node" role="listitem">Usuário</span>
+                  <span class="eai-bound__gate" role="listitem">A2UI</span>
+                  <span class="eai-bound__node" role="listitem">Vitrine</span>
+                  <span class="eai-bound__gate" role="listitem">A2UI</span>
+                  <span class="eai-bound__node eai-bound__node--brain" role="listitem">Cérebro</span>
+                  <span class="eai-bound__gate eai-bound__gate--mcp" role="listitem">MCP</span>
+                  <span class="eai-bound__node" role="listitem">Ferramentas / Dados</span>
+                </div>
+                <figcaption id="bound-cap" class="eai-bound__cap">
+                  Fluxo: <strong>Usuário → Vitrine →[A2UI]→ Cérebro →[MCP]→ Ferramentas → … →[A2UI]→ Vitrine → Usuário</strong>.
+                  Cada <em>[contrato]</em> é um ponto de validação, segurança e teste — a superfície do possível passa a coincidir com a superfície do intencional.
+                </figcaption>
+              </figure>
+
+              <div class="eai-callout eai-callout--warn" role="note">
+                <p class="eai-callout__title">⚠ Limitação declarada — "A2UI"</p>
+                <p>"A2UI" é tratado aqui como <strong>padrão arquitetural</strong> (a fronteira agente↔interface), não como especificação canônica da indústria. Protocolos reais adjacentes incluem <strong>AG-UI</strong> (Agent-User Interaction) e <strong>A2A</strong> (Agent-to-Agent, do Google). Já o <strong>MCP</strong> é protocolo aberto com especificação pública. Valide a nomenclatura antes de publicá-la como termo técnico estabelecido.</p>
+              </div>
+
+              <p class="eai-pilar__links">Conecta com
+                <a href="#principio-3">P3 · Cérebro × Vitrine</a>,
+                <a href="#principio-5">P5 · contratos</a>.</p>
+            </div>
+          </details></li>
+
+          <!-- Pilar 4 -->
+          <li><details class="eai-pilar" id="pilar-4">
+            <summary class="eai-pilar__head">
+              <span class="eai-pilar__num">04</span>
+              <svg class="eai-pilar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20V10M11 20V6M16 20V13M21 20V4"/></svg>
+              <span class="eai-pilar__title">Jornada para Sistemas Intencionais</span>
+              <span class="eai-pilar__sub">Onde mora a garantia?</span>
+            </summary>
+            <div class="eai-pilar__body">
+              <p class="eai-pilar__def">Um <strong>Sistema Intencional</strong> tem o comportamento governado por uma intenção arquitetural explícita — não pela saída estatisticamente mais provável. A jornada move a <strong>fonte da garantia</strong> de um lugar que não se controla (a distribuição interna do modelo) para um que se controla (a arquitetura ao redor dele).</p>
+              <ul class="eai-pilar__just">
+                <li>O sistema <strong>não elimina a probabilidade — ele a encapsula</strong>: o DAG fixa <em>quando</em> o modelo é chamado, os contratos validam <em>o que</em> ele pode emitir, os Ledgers registram <em>o que ele fez</em>, as fronteiras controlam <em>o que ele pode tocar</em>.</li>
+                <li>A maturidade mede quanto do comportamento é explicado pela intenção arquitetural <em>versus</em> quanto é sorte na amostragem do modelo.</li>
+              </ul>
+              <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogia</span> O componente analógico ruidoso dentro de um circuito digital. Ninguém "conserta" o ruído do sensor — encapsula-se o sensor numa arquitetura que extrai o sinal e descarta o resto.</p>
+              <p class="eai-pilar__links">Conecta com
+                <a href="#principio-2">P2 · determinismo</a>,
+                <a href="#principio-6">P6 · camadas epistêmicas</a>,
+                <a href="#principio-8">P8 · ledgers</a>.
+                Diagnostique seu estágio no <a href="#maturidade">modelo de maturidade</a> abaixo.</p>
+            </div>
+          </details></li>
+
+          <!-- Pilar 5 -->
+          <li><details class="eai-pilar" id="pilar-5">
+            <summary class="eai-pilar__head">
+              <span class="eai-pilar__num">05</span>
+              <svg class="eai-pilar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7l-2 4h4z"/><path d="M19 7l-2 4h4z"/><path d="M5 11c0 1.7 1.3 3 3 3M19 11c0 1.7-1.3 3-3 3"/><path d="M8 21h8"/></svg>
+              <span class="eai-pilar__title">Trade-offs: quando NÃO usar rigor pesado</span>
+              <span class="eai-pilar__sub">Quando parar?</span>
+            </summary>
+            <div class="eai-pilar__body">
+              <p class="eai-pilar__def">A disciplina pesada — DAGs, contratos rígidos, Ledgers, ADRs — tem custo de <strong>setup</strong> e custo de <strong>rigidez</strong>. Esses custos só se pagam quando amortizados por <strong>longevidade, escala ou criticidade</strong>. Onde não há o que amortizar, o rigor é negativo, não neutro. Dois contextos pedem leveza deliberada:</p>
+              <ul class="eai-pilar__just">
+                <li><strong>PoCs e protótipos</strong> com time-to-market dominante e horizonte de descarte: cada hora em contratos é subtraída da única métrica que importa — descobrir, rápido, se a ideia tem valor.</li>
+                <li><strong>Pesquisa aberta multi-passos</strong>: o caminho da solução é desconhecido a priori. Fixar um DAG cedo demais congela uma hipótese sobre o fluxo e destrói a capacidade de replanejar que torna o agente útil ali.</li>
+              </ul>
+              <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogia</span> O andaime versus a estrutura permanente. O erro não é usar andaime — é <em>deixar o andaime virar a estrutura</em>.</p>
+              <div class="eai-callout eai-callout--danger" role="note">
+                <p class="eai-callout__title">🔴 Regra de transição</p>
+                <p>A leveza é legítima <strong>enquanto o artefato permanecer no seu polo de origem</strong>. No instante em que ele é promovido — passa a ser dependido por usuários, dinheiro ou dados — a promoção <strong>obriga</strong> o upgrade de garantias. A pergunta de governança não é "isto é exploração ou produção?", mas <em>"alguém já depende disto como se fosse produção?"</em>. Se sim, a estrutura permanente não é opcional.</p>
+              </div>
+              <p class="eai-pilar__links">Conecta com
+                <a href="#principio-4">P4 · determinístico-primeiro</a>,
+                <a href="#cap-10">Jornada · saber quando não construir</a>.</p>
+            </div>
+          </details></li>
+        </ul>
+
+        <!-- Modelo de maturidade (Pilar 4) — diagnóstico interativo -->
+        <h3 class="eai-sub" id="maturidade">Onde meu sistema está? Modelo de maturidade</h3>
+        <p class="eai-section__lede">
+          A garantia migra do modelo para a arquitetura em quatro estágios. Selecione um estágio para
+          ver o que já existe, o que falta e o próximo passo — um diagnóstico de "onde estou agora".
+        </p>
+        <div class="eai-mat" data-eai-maturity>
+          <div class="eai-mat__steps" role="tablist" aria-label="Estágios de maturidade">
+            <button type="button" role="tab" data-maturity-stage="0" aria-selected="true">
+              <span class="eai-mat__step-n">0</span><span class="eai-mat__step-name">Mágica de Prompt</span>
+            </button>
+            <button type="button" role="tab" data-maturity-stage="1" aria-selected="false">
+              <span class="eai-mat__step-n">1</span><span class="eai-mat__step-name">Restringido</span>
+            </button>
+            <button type="button" role="tab" data-maturity-stage="2" aria-selected="false">
+              <span class="eai-mat__step-n">2</span><span class="eai-mat__step-name">Orquestrado</span>
+            </button>
+            <button type="button" role="tab" data-maturity-stage="3" aria-selected="false">
+              <span class="eai-mat__step-n">3</span><span class="eai-mat__step-name">Governado</span>
+            </button>
+          </div>
+          <div class="eai-mat__panel" data-maturity-panel role="region" aria-live="polite" aria-label="Detalhe do estágio selecionado"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- CÓDIGO -->
     <section id="codigo" class="eai-section eai-section--alt" aria-labelledby="codigo-titulo" data-eai-reveal>
       <div class="eai-container">
@@ -537,9 +712,9 @@ for lead in fila:
         </ol>
 
         <h3 class="eai-sub">Verifique seu entendimento</h3>
-        <p class="eai-section__lede">Quatro cenários reais. Não decore a regra — escolha o que faria em produção. Cada resposta explica o porquê.</p>
+        <p class="eai-section__lede">Oito cenários reais — quatro sobre os dez princípios, quatro sobre os cinco pilares. Não decore a regra; escolha o que faria em produção. Cada resposta explica o porquê.</p>
         <div class="eai-quiz" data-eai-quiz>
-          <p class="eai-quiz__score">Acertos: <span data-quiz-score>0</span>/<span data-quiz-total>4</span></p>
+          <p class="eai-quiz__score">Acertos: <span data-quiz-score>0</span>/<span data-quiz-total>8</span></p>
           <p class="eai-quiz__summary" data-quiz-summary aria-live="polite"></p>
           <ol class="eai-quiz__list" role="list">
             <li class="eai-quiz__q" data-quiz-q data-qid="q1">
@@ -578,6 +753,46 @@ for lead in fila:
                 <button type="button">Continuar processando — o trabalho está quase concluído e parar no meio é pior</button>
                 <button type="button">Parar imediatamente sem registrar estado, para evitar inconsistência</button>
                 <button type="button">Parar num ponto seguro, salvar o progresso e retomar amanhã a partir do post 140.001</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q5">
+              <p class="eai-quiz__ctx">Um agente de suporte precisa consultar pedidos e emitir reembolsos limitados. Você vai conectá-lo ao sistema de pagamentos.</p>
+              <p class="eai-quiz__prompt">5. Qual desenho respeita o menor privilégio?</p>
+              <div class="eai-quiz__opts">
+                <button type="button">Dar ao agente credenciais de leitura e escrita no banco de produção — ele decide o que consultar e alterar</button>
+                <button type="button">Expor só as ações necessárias atrás de um servidor MCP (consultar_pedido, emitir_reembolso até um teto), com autorização e auditoria na fronteira</button>
+                <button type="button">Deixar o agente gerar SQL livremente e validar o resultado depois da execução</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q6">
+              <p class="eai-quiz__ctx">Seu sistema valida toda saída do LLM contra um schema estrito, mas o próprio LLM ainda decide a ordem das etapas e quais ferramentas chamar.</p>
+              <p class="eai-quiz__prompt">6. Em que estágio de maturidade ele está?</p>
+              <div class="eai-quiz__opts">
+                <button type="button">Estágio 0 — Mágica de Prompt: a garantia mora só no prompt</button>
+                <button type="button">Estágio 1 — Restringido: há validação de saída, mas o fluxo ainda não é um DAG fixo e auditável</button>
+                <button type="button">Estágio 3 — Governado: já tem ledgers, fronteiras e reversão fim a fim</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q7">
+              <p class="eai-quiz__ctx">Num hackathon de fim de semana você quer validar se uma ideia de produto faz sentido. O protótipo será descartado na segunda-feira.</p>
+              <p class="eai-quiz__prompt">7. Qual é a engenharia correta aqui?</p>
+              <div class="eai-quiz__opts">
+                <button type="button">Montar DAG, contratos rígidos e ADRs desde o início, para já nascer pronto para produção</button>
+                <button type="button">Usar agentes livres / vibe coding para maximizar a velocidade de descoberta — o rigor pesado aqui só atrasa o aprendizado e nada será amortizado</button>
+                <button type="button">Não escrever código: produzir apenas a especificação completa e os testes antes de tudo</button>
+              </div>
+              <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
+            </li>
+            <li class="eai-quiz__q" data-quiz-q data-qid="q8">
+              <p class="eai-quiz__ctx">As consultas que um agente livre descobriu durante uma exploração viraram um relatório que o time de vendas passou a consumir toda segunda-feira.</p>
+              <p class="eai-quiz__prompt">8. O que a regra de transição exige agora?</p>
+              <div class="eai-quiz__opts">
+                <button type="button">Nada — já que funcionou na exploração, pode seguir exatamente como está</button>
+                <button type="button">Promover o artefato à estrutura permanente: consultas versionadas, contrato de schema e teste de regressão, porque alguém já depende disto como produção</button>
+                <button type="button">Reescrever do zero dando mais autonomia ao agente, para ele manter o relatório sozinho</button>
               </div>
               <p class="eai-quiz__fb" data-quiz-fb aria-live="polite"></p>
             </li>
@@ -667,6 +882,35 @@ for lead in fila:
           </div>
         </div>
         <p class="eai-sim__hint">Dica: alta autonomia sem schemas/BDD dispara risco e custo; ledger + cache derrubam o custo; evals e observabilidade elevam a auditabilidade.</p>
+
+        <h3 class="eai-sub">Calibrador de Autonomia <span class="eai-sub__tag">Pilar 1</span></h3>
+        <p class="eai-section__lede">
+          Quanto rigor uma tarefa merece? Posicione-a pelos dois eixos do <a href="#pilar-1">Espectro de
+          Autonomia</a> — custo do erro e reversibilidade — e veja o quadrante e a cerimônia recomendada.
+          O cálculo é determinístico (sem IA).
+        </p>
+        <div class="eai-cal" data-eai-calibrador data-quadrant="exploracao">
+          <form class="eai-cal__controls" aria-label="Eixos do espectro de autonomia">
+            <div class="eai-ctl eai-ctl--range">
+              <label for="cal-cost">Custo do erro <output data-cal-out="cost">25</output>/100</label>
+              <input type="range" id="cal-cost" data-cal="cost" min="0" max="100" value="25" />
+              <span class="eai-cal__scale" aria-hidden="true"><span>Cosmético</span><span>Catastrófico</span></span>
+            </div>
+            <div class="eai-ctl eai-ctl--range">
+              <label for="cal-rev">Reversibilidade do erro <output data-cal-out="reversibility">25</output>/100</label>
+              <input type="range" id="cal-rev" data-cal="reversibility" min="0" max="100" value="25" />
+              <span class="eai-cal__scale" aria-hidden="true"><span>Instantânea</span><span>Irreversível</span></span>
+            </div>
+            <label class="eai-cal__check">
+              <input type="checkbox" data-cal="depended" />
+              Alguém já depende disto como se fosse produção?
+            </label>
+          </form>
+          <div class="eai-cal__output" aria-live="polite">
+            <div class="eai-cal__verdict" data-cal-result></div>
+            <p class="eai-cal__leak" data-cal-leak role="alert" hidden></p>
+          </div>
+        </div>
 
         <h3 class="eai-sub">Evals: dois tipos de erro que o "Evals" cobre</h3>
         <p class="eai-section__lede">Uma saída pode estar perfeitamente válida e ainda assim errada. Contrato e avaliação atacam falhas diferentes.</p>
@@ -909,6 +1153,14 @@ for lead in fila:
           <div><dt>Ledger de quota</dt><dd>Orçamento como estado de domínio persistente: sabe quanto gastou, reseta no período e recusa o gasto ao bater o teto.</dd></div>
           <div><dt>XAI</dt><dd>Explicação por drivers em linguagem natural + lacunas + proveniência, no lugar do número opaco.</dd></div>
           <div><dt>DoR / DoD</dt><dd>Portões de qualidade que fecham a ambiguidade antes (Ready) e validam o resultado depois (Done), com bloqueio honesto.</dd></div>
+          <div><dt>Espectro de Autonomia</dt><dd>O contínuo entre exploração e missão crítica. A posição correta é função do <strong>custo do erro</strong> × <strong>reversibilidade</strong> — uma decisão de design, não um acidente. <a href="#pilar-1">Pilar 1 →</a></dd></div>
+          <div><dt>Vazamento de modo</dt><dd>Código nascido em exploração (descartável) que migra para produção sem nunca atravessar a fronteira de rigor correspondente. O risco operacional mais insidioso.</dd></div>
+          <div><dt>Regra de transição</dt><dd>A leveza é legítima enquanto o artefato permanece no polo de origem. Quando alguém passa a depender dele como produção, a promoção obriga o upgrade de garantias. <a href="#pilar-5">Pilar 5 →</a></dd></div>
+          <div><dt>ADR</dt><dd>Architecture Decision Record: registro versionado e imutável de uma decisão arquitetural, seu contexto e consequências. Memória que impede reabrir o que já foi fechado — e vira contexto injetável para o agente.</dd></div>
+          <div><dt>MCP</dt><dd>Model Context Protocol: protocolo aberto cliente-servidor que padroniza a conexão do agente a ferramentas e dados. A fronteira onde se aplica autorização, escopo de permissão e auditoria — acesso <em>enumerado</em>, não ambiente. <a href="#pilar-3">Pilar 3 →</a></dd></div>
+          <div><dt>A2UI (camada)</dt><dd>A fronteira contratual agente↔interface: o Cérebro emite intenção e dados estruturados; a Vitrine decide a renderização. Padrão arquitetural (não especificação canônica) — ver AG-UI e A2A como protocolos reais adjacentes.</dd></div>
+          <div><dt>Sistema Intencional</dt><dd>Sistema cujo comportamento é governado por intenção arquitetural explícita, não pela saída mais provável do modelo. A garantia mora na arquitetura, que <em>encapsula</em> a probabilidade. <a href="#maturidade">Maturidade →</a></dd></div>
+          <div><dt>Sandbox (freios)</dt><dd>O espaço delimitado por DoR/DoD/ADR dentro do qual o agente opera em capacidade máxima — porque as bordas são conhecidas. A restrição aumenta a velocidade segura. <a href="#pilar-2">Pilar 2 →</a></dd></div>
         </dl>
 
         <h3 class="eai-sub">Estudo de caso: SocialSelling</h3>
@@ -941,7 +1193,7 @@ for lead in fila:
         <h3 class="eai-sub">Seu progresso nesta sessão</h3>
         <div class="eai-prog" data-eai-prog>
           <div class="eai-prog__stat"><span data-prog-chapters>0</span><small>capítulos abertos / 10</small></div>
-          <div class="eai-prog__stat"><span data-prog-quiz>0</span><small>melhor score do quiz / 4</small></div>
+          <div class="eai-prog__stat"><span data-prog-quiz>0</span><small>melhor score do quiz / 8</small></div>
           <div class="eai-prog__stat"><span data-prog-comps>0</span><small>componentes no playground</small></div>
           <button type="button" class="eai-btn eai-btn--ghost eai-prog__reset" data-prog-reset>Limpar progresso</button>
         </div>
@@ -972,6 +1224,7 @@ for lead in fila:
   <script type="module" src="./js/eai-playground.js"></script>
   <script type="module" src="./js/eai-anatomy.js"></script>
   <script type="module" src="./js/eai-progress.js"></script>
+  <script type="module" src="./js/eai-pilares.js"></script>
   <script type="module" src="./js/eai-code.js"></script>
   <script type="module" src="./js/eai-video.js"></script>
 </body>
