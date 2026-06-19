@@ -163,10 +163,49 @@ test.describe('Engenharia da Confiança — jornada', () => {
     await expect(page.locator('a[href="./engenharia-confianca.html"]')).toBeVisible();
   });
 
+  test('wayfinding: índice lateral sticky com 6 itens e scrollspy', async ({ page }) => {
+    await page.goto(PATH);
+    const toc = page.locator('.ec-toc');
+    await expect(toc).toBeVisible();
+    await expect(toc.locator('.ec-toc__list li')).toHaveCount(6);
+    // ao saltar para M3, o item correspondente do índice marca aria-current
+    await page.locator('.ec-toc a[href="#modulo-3"]').click();
+    await expect(page.locator('#modulo-3')).toBeInViewport({ ratio: 0.1 });
+    await expect(page.locator('.ec-toc a[href="#modulo-3"]')).toHaveAttribute('aria-current', 'true');
+  });
+
+  test('callouts de conceito isolam Limiar de 98% (M2) e A2UI (M3)', async ({ page }) => {
+    await page.goto(PATH);
+    const c98 = page.locator('#modulo-2 .ec-callout--concept');
+    await expect(c98).toBeVisible();
+    await expect(c98).toContainText('Limiar de 98% de Certeza');
+    const a2ui = page.locator('#modulo-3 .ec-callout--concept');
+    await expect(a2ui).toContainText('Agent-to-User Interface');
+  });
+
+  test('container de diagrama (M2→M3) com fluxo Inventário → Schemas → MCP', async ({ page }) => {
+    await page.goto(PATH);
+    const dc = page.locator('.diagram-container');
+    await expect(dc).toBeVisible();
+    await expect(dc.locator('.diagram-container__node')).toHaveCount(3);
+    await expect(dc).toContainText('Inventário de Comportamentos');
+    await expect(dc).toContainText('Tools via MCP');
+  });
+
+  test('mobile: índice colapsável aparece e fica fechado por padrão', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto(PATH);
+    const tocM = page.locator('.ec-toc-m');
+    await expect(tocM).toBeVisible();
+    await expect(tocM).not.toHaveAttribute('open', /.*/);
+    await tocM.locator('summary').click();
+    await expect(tocM.locator('.ec-toc-m__list a[href="#modulo-1"]')).toBeVisible();
+  });
+
   test('mobile: glossário vira botão flutuante e abre drawer', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto(PATH);
-    const fab = page.locator('[data-ec-gloss-open]');
+    const fab = page.locator('.ec-gloss-fab');
     await expect(fab).toBeVisible();
     await fab.click();
     await expect(page.locator('[data-ec-drawer]')).toHaveClass(/is-open/);

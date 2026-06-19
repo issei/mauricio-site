@@ -109,13 +109,17 @@ function initGlossary() {
   const aside = document.querySelector('[data-ec-gloss]');
   const drawer = document.querySelector('[data-ec-drawer]');
   const drawerPanel = document.querySelector('[data-ec-drawer-panel]');
-  const fab = document.querySelector('[data-ec-gloss-open]');
+  // Vários gatilhos podem abrir o glossário: o FAB e o item "Glossário" do índice mobile.
+  const openers = Array.from(document.querySelectorAll('[data-ec-gloss-open]'));
+  // A rail (TOC + glossário) é o lar do glossário no desktop; devolvemos o nó a ela.
+  const rail = document.querySelector('.ec-rail');
   const desktopMq = window.matchMedia('(min-width: 1100px)');
   if (!aside) return;
 
   let lastFocus = null;
 
   const isDesktop = () => desktopMq.matches;
+  const setExpanded = (v) => openers.forEach((o) => o.setAttribute('aria-expanded', String(v)));
 
   const openDrawer = () => {
     if (!drawer || !drawerPanel) return;
@@ -124,7 +128,7 @@ function initGlossary() {
     drawerPanel.appendChild(aside);
     drawer.classList.add('is-open');
     drawer.setAttribute('aria-hidden', 'false');
-    if (fab) fab.setAttribute('aria-expanded', 'true');
+    setExpanded(true);
     const closeBtn = drawer.querySelector('[data-ec-gloss-close]');
     if (closeBtn && closeBtn.focus) closeBtn.focus();
   };
@@ -133,15 +137,13 @@ function initGlossary() {
     if (!drawer) return;
     drawer.classList.remove('is-open');
     drawer.setAttribute('aria-hidden', 'true');
-    if (fab) fab.setAttribute('aria-expanded', 'false');
-    // devolve o glossário para a sidebar (layout)
-    const layout = document.querySelector('.ec-layout');
-    const content = document.querySelector('.ec-content');
-    if (layout && content) layout.insertBefore(aside, content);
+    setExpanded(false);
+    // devolve o glossário para o trilho lateral (sua casa no desktop)
+    if (rail) rail.appendChild(aside);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   };
 
-  if (fab) fab.addEventListener('click', openDrawer);
+  openers.forEach((o) => o.addEventListener('click', openDrawer));
   document.querySelectorAll('[data-ec-gloss-close]').forEach((el) => {
     el.addEventListener('click', closeDrawer);
   });

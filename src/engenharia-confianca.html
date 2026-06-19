@@ -150,6 +150,26 @@
     <!-- ============================ LAYOUT: sidebar + módulos ============================ -->
     <div class="ec-layout">
 
+      <!-- UX: a coluna lateral agrupa o índice (wayfinding) + o glossário num único
+           container sticky (.ec-rail). Mantém ambos sempre à mão sem somar uma 3ª coluna
+           que sobrecarregaria a grade. No mobile a rail é ocultada e cada peça reaparece
+           na forma certa: o índice como menu colapsável e o glossário no drawer. -->
+      <div class="ec-rail">
+
+        <!-- Índice lateral fixo (Sticky ToC) — navegação rápida entre as etapas da jornada.
+             Reaproveita o scrollspy existente (data-ec-navlink → aria-current). -->
+        <nav class="ec-toc" aria-label="Índice da jornada">
+          <p class="ec-toc__title">Nesta jornada</p>
+          <ol class="ec-toc__list">
+            <li><a href="#modulo-0" data-ec-navlink><span class="ec-toc__n">M0</span> O Despertar</a></li>
+            <li><a href="#modulo-1" data-ec-navlink><span class="ec-toc__n">M1</span> Mapear a Verdade</a></li>
+            <li><a href="#modulo-2" data-ec-navlink><span class="ec-toc__n">M2</span> Arquitetar a Confiança</a></li>
+            <li><a href="#modulo-3" data-ec-navlink><span class="ec-toc__n">M3</span> A Nova Maestria</a></li>
+            <li><a href="#maturidade" data-ec-navlink><span class="ec-toc__n">★</span> Maturidade</a></li>
+            <li><a href="#glossario" class="ec-toc__gloss"><span class="ec-toc__n">📖</span> Glossário</a></li>
+          </ol>
+        </nav>
+
       <!-- Glossário (sidebar desktop / movido ao drawer no mobile) -->
       <aside id="glossario" class="ec-gloss" data-ec-gloss aria-label="Glossário unificado">
         <p class="ec-gloss__title">Glossário unificado</p>
@@ -255,8 +275,28 @@
         </p>
       </aside>
 
+      </div><!-- /.ec-rail -->
+
       <!-- ============================ CONTEÚDO ============================ -->
       <div class="ec-content">
+
+        <!-- UX (mobile): em telas estreitas a rail some; o índice volta como um menu
+             colapsável elegante (<details>), fechado por padrão para não roubar a primeira
+             dobra. O item "Glossário" reusa o gatilho do drawer (data-ec-gloss-open). -->
+        <details class="ec-toc-m">
+          <summary class="ec-toc-m__summary">
+            <span>Índice da jornada</span>
+            <span class="ec-toc-m__chev" aria-hidden="true">▾</span>
+          </summary>
+          <ol class="ec-toc-m__list">
+            <li><a href="#modulo-0"><span class="ec-toc__n">M0</span> O Despertar</a></li>
+            <li><a href="#modulo-1"><span class="ec-toc__n">M1</span> Mapear a Verdade</a></li>
+            <li><a href="#modulo-2"><span class="ec-toc__n">M2</span> Arquitetar a Confiança</a></li>
+            <li><a href="#modulo-3"><span class="ec-toc__n">M3</span> A Nova Maestria</a></li>
+            <li><a href="#maturidade"><span class="ec-toc__n">★</span> Maturidade</a></li>
+            <li><button type="button" class="ec-toc-m__gloss" data-ec-gloss-open aria-haspopup="dialog"><span class="ec-toc__n">📖</span> Glossário</button></li>
+          </ol>
+        </details>
 
         <!-- ===================== MÓDULO 0 ===================== -->
         <article id="modulo-0" class="ec-module ec-reveal" aria-labelledby="m0-titulo">
@@ -652,19 +692,25 @@ flowchart TD
               usar — uma fronteira de segurança que, no Módulo 3, deixa de ser só consulta de dados e passa
               a governar até a renderização da interface (<button class="ec-term" data-term="a2ui" type="button">A2UI</button>).
             </p>
-            <p>
-              <strong>O Limiar de 98% de Certeza.</strong> Contrato rígido, Mundo Aberto e fail-closed não
-              são três regras soltas — convergem num único critério operacional. Toda inferência do LLM
-              carrega um grau de confiança, e a arquitetura define um piso explícito: o
-              <button class="ec-term" data-term="limiar-98" type="button">Limiar de 98% de Certeza</button>.
-              Qualquer saída cuja confiança fique <strong>abaixo desse limite é interceptada pela
-              arquitetura antes de virar fato</strong>: o schema a rejeita (contrato rígido), o sistema a
-              trata como ausência de evidência e não como verdade (Mundo Aberto) e para num ponto seguro,
-              registrando o bloqueio (fail-closed). O que se devolve nunca é um palpite silencioso, e sim um
-              <strong>fallback estruturado</strong> — pedir revisão humana, responder "incerto" de forma
-              explícita ou acionar a rota determinística alternativa. É assim que se torna o Crash
-              Silencioso impossível por construção.
-            </p>
+            <!-- UX: conceito de alta densidade isolado num Callout para quebrar a parede de
+                 texto e dar âncora visual ao critério mais citado do ISM. Conteúdo 100% preservado. -->
+            <aside class="ec-callout ec-callout--concept" aria-label="Conceito-chave: Limiar de 98% de Certeza">
+              <span class="ec-callout__icon" aria-hidden="true">🎯</span>
+              <div class="ec-callout__body">
+                <span class="ec-callout__label">Conceito-chave · Critério de certeza</span>
+                <strong>O Limiar de 98% de Certeza.</strong> Contrato rígido, Mundo Aberto e fail-closed não
+                são três regras soltas — convergem num único critério operacional. Toda inferência do LLM
+                carrega um grau de confiança, e a arquitetura define um piso explícito: o
+                <button class="ec-term" data-term="limiar-98" type="button">Limiar de 98% de Certeza</button>.
+                Qualquer saída cuja confiança fique <strong>abaixo desse limite é interceptada pela
+                arquitetura antes de virar fato</strong>: o schema a rejeita (contrato rígido), o sistema a
+                trata como ausência de evidência e não como verdade (Mundo Aberto) e para num ponto seguro,
+                registrando o bloqueio (fail-closed). O que se devolve nunca é um palpite silencioso, e sim um
+                <strong>fallback estruturado</strong> — pedir revisão humana, responder "incerto" de forma
+                explícita ou acionar a rota determinística alternativa. É assim que se torna o Crash
+                Silencioso impossível por construção.
+              </div>
+            </aside>
             <p>
               <strong>Encadeamento de artefatos (M1 → M2 → M3).</strong> Note de onde vêm esses schemas:
               eles não são inventados no vácuo — derivam diretamente do
@@ -837,6 +883,25 @@ flowchart LR
           </div>
         </article>
 
+        <!-- UX: ponte visual M2 → M3. Placeholder responsivo reservando o espaço do futuro
+             diagrama de fluxo de dados (Inventário → Schemas → MCP), tornando o encadeamento
+             de artefatos tangível antes mesmo da arte final. Acessível como figura rotulada. -->
+        <figure class="diagram-container" role="group" aria-label="Espaço reservado para o diagrama de fluxo de dados">
+          <span class="diagram-container__badge">Diagrama · em breve</span>
+          <div class="diagram-container__flow" aria-hidden="true">
+            <span class="diagram-container__node">Inventário de Comportamentos<small>M1</small></span>
+            <span class="diagram-container__arrow">→</span>
+            <span class="diagram-container__node">Schemas de Validação<small>M2</small></span>
+            <span class="diagram-container__arrow">→</span>
+            <span class="diagram-container__node">Tools via MCP / A2UI<small>M3</small></span>
+          </div>
+          <figcaption class="diagram-container__cap">
+            Aqui entrará o <strong>diagrama de fluxo de dados</strong> que visualiza o encadeamento de
+            artefatos do ISM v1.0: como o Inventário de Comportamentos (M1) gera os schemas de validação
+            (M2) que compõem as ferramentas consumidas pelo Orquestrador Cognitivo (M3).
+          </figcaption>
+        </figure>
+
         <!-- ===================== MÓDULO 3 ===================== -->
         <article id="modulo-3" class="ec-module ec-reveal" aria-labelledby="m3-titulo">
           <div class="ec-module__recap">
@@ -885,17 +950,23 @@ flowchart LR
               Versionar esse estado cognitivo no Git é o que permite reverter não só o código, mas o
               raciocínio que o produziu.
             </p>
-            <p>
-              <strong>Da consulta à renderização — A2UI.</strong> O MCP que vimos no Módulo 2 como
-              fronteira de ferramentas evolui aqui para algo mais ambicioso. Numa arquitetura
-              <button class="ec-term" data-term="a2ui" type="button">A2UI (Agent-to-User Interface)</button>,
-              o Orquestrador Cognitivo não usa o MCP apenas para <em>consultar</em> APIs e trazer dados de
-              volta — ele o usa para <strong>emitir intenção de interface</strong>. O Cérebro decide
-              <em>o quê</em> apresentar e devolve dados estruturados sob contrato; a Vitrine, determinística,
-              decide <em>como</em> renderizar. A interface deixa de ser texto livre imprevisível e passa a
-              ser um output governado pelos mesmos schemas — testável, auditável e reproduzível. É a
-              separação Cérebro × Vitrine estendida à camada de apresentação.
-            </p>
+            <!-- UX: evolução arquitetural (A2UI) destacada em Callout para sinalizar que é um
+                 salto conceitual, não mais um parágrafo de prosa. Conteúdo 100% preservado. -->
+            <aside class="ec-callout ec-callout--concept" aria-label="Conceito-chave: A2UI">
+              <span class="ec-callout__icon" aria-hidden="true">🖥️</span>
+              <div class="ec-callout__body">
+                <span class="ec-callout__label">Conceito-chave · Evolução da interface</span>
+                <strong>Da consulta à renderização — A2UI.</strong> O MCP que vimos no Módulo 2 como
+                fronteira de ferramentas evolui aqui para algo mais ambicioso. Numa arquitetura
+                <button class="ec-term" data-term="a2ui" type="button">A2UI (Agent-to-User Interface)</button>,
+                o Orquestrador Cognitivo não usa o MCP apenas para <em>consultar</em> APIs e trazer dados de
+                volta — ele o usa para <strong>emitir intenção de interface</strong>. O Cérebro decide
+                <em>o quê</em> apresentar e devolve dados estruturados sob contrato; a Vitrine, determinística,
+                decide <em>como</em> renderizar. A interface deixa de ser texto livre imprevisível e passa a
+                ser um output governado pelos mesmos schemas — testável, auditável e reproduzível. É a
+                separação Cérebro × Vitrine estendida à camada de apresentação.
+              </div>
+            </aside>
             <p>
               <strong>O fio que costura a jornada (M1 → M2 → M3).</strong> Repare no encadeamento dos
               artefatos: o
