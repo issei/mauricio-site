@@ -65,7 +65,7 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
   test('WU-11/T2: quiz dá feedback que ensina e conta acertos únicos', async ({ page }) => {
     await page.goto(PATH);
     const quiz = page.locator('[data-eai-quiz]');
-    await expect(quiz.locator('[data-quiz-q]')).toHaveCount(4);
+    await expect(quiz.locator('[data-quiz-q]')).toHaveCount(8);
     await expect(quiz.locator('[data-quiz-score]')).toHaveText('0');
 
     const q1 = quiz.locator('[data-quiz-q]').first();
@@ -185,7 +185,7 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
   test('WU-6: referência — glossário e caso SocialSelling (pipeline M1–M5)', async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator('.eai-gloss > div').first()).toBeVisible();
-    await expect(page.locator('.eai-gloss dt')).toHaveCount(6);
+    await expect(page.locator('.eai-gloss dt')).toHaveCount(14);
     // caso real com pipeline de 5 estágios
     await expect(page.locator('.eai-case')).toBeVisible();
     await expect(page.locator('.eai-case__pipe li')).toHaveCount(5);
@@ -203,9 +203,9 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     for (const f of ['.ai/', 'docs/', 'tests/', 'scripts/', '.github/']) {
       await expect(repo.locator('.eai-repo__name', { hasText: f }).first()).toBeVisible();
     }
-    // Regra de Ouro (danger) e alerta financeiro (warn)
-    await expect(page.locator('.eai-callout--danger')).toContainText('versione o estado cognitivo');
-    await expect(page.locator('.eai-callout--warn')).toContainText('financeiros');
+    // Regra de Ouro (danger) e alerta financeiro (warn) — escopados à seção (há callouts iguais nos Pilares)
+    await expect(page.locator('#governanca .eai-callout--danger')).toContainText('versione o estado cognitivo');
+    await expect(page.locator('#governanca .eai-callout--warn')).toContainText('financeiros');
     // comparativo meta-prompt × manual com faixa de convergência
     await expect(page.locator('.eai-compare__col')).toHaveCount(2);
     await expect(page.locator('.eai-compare__conv')).toContainText('contexto e gates primeiro');
@@ -255,6 +255,65 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(page.locator('.eai-cw code .tok-c').first()).toBeVisible();
     // conteúdo técnico real (FinOps)
     await expect(page.locator('#codigo')).toContainText('daily_cap');
+  });
+
+  test('Pilares: cinco accordions, nav, MCP/A2UI e regra de transição', async ({ page }) => {
+    await page.goto(PATH);
+    // nav aponta para a nova seção
+    await expect(page.locator('.eai-nav__trail a[href="#pilares"]')).toBeVisible();
+    // cinco pilares com âncoras estáveis
+    const pilars = page.locator('#pilares .eai-pilar');
+    await expect(pilars).toHaveCount(5);
+    for (let n = 1; n <= 5; n++) {
+      await expect(page.locator(`#pilar-${n}`)).toHaveCount(1);
+    }
+    // accordion abre e revela conteúdo
+    const p3 = page.locator('#pilar-3');
+    await expect(p3).not.toHaveAttribute('open', /.*/);
+    await p3.locator('summary').click();
+    await expect(p3.locator('.eai-pilar__body')).toBeVisible();
+    await expect(p3).toContainText('Model Context Protocol');
+    await expect(p3).toContainText('menor privilégio');
+    // nota de limitação do A2UI presente
+    await expect(p3.locator('.eai-callout--warn')).toContainText('A2UI');
+    // regra de transição no Pilar 5
+    await page.locator('#pilar-5 summary').click();
+    await expect(page.locator('#pilar-5 .eai-callout--danger')).toContainText('regra de transição', { ignoreCase: true });
+  });
+
+  test('Pilares: stepper de maturidade troca de estágio e atualiza o painel', async ({ page }) => {
+    await page.goto(PATH);
+    const mat = page.locator('[data-eai-maturity]');
+    await expect(mat.locator('[role="tab"]')).toHaveCount(4);
+    // estágio 0 selecionado por padrão
+    await expect(mat.locator('[data-maturity-stage="0"]')).toHaveAttribute('aria-selected', 'true');
+    await expect(mat.locator('[data-maturity-panel]')).toContainText('Mágica de Prompt');
+    // selecionar estágio 3 atualiza o painel
+    await mat.locator('[data-maturity-stage="3"]').click();
+    await expect(mat.locator('[data-maturity-stage="3"]')).toHaveAttribute('aria-selected', 'true');
+    await expect(mat.locator('[data-maturity-panel]')).toContainText('Governado');
+    await expect(mat.locator('[data-maturity-panel]')).toContainText('Próximo passo');
+  });
+
+  test('Calibrador: quadrante reage aos eixos e alerta de vazamento de modo', async ({ page }) => {
+    await page.goto(PATH);
+    const cal = page.locator('[data-eai-calibrador]');
+    await expect(cal).toBeVisible();
+    // estado inicial (custo/rev baixos) → exploração
+    await expect(cal).toHaveAttribute('data-quadrant', 'exploracao');
+    await expect(cal.locator('[data-cal-result]')).toContainText('Exploração');
+    // alerta de vazamento escondido até marcar dependência de produção
+    await expect(cal.locator('[data-cal-leak]')).toBeHidden();
+    await cal.locator('[data-cal="depended"]').check();
+    await expect(cal.locator('[data-cal-leak]')).toBeVisible();
+    await expect(cal.locator('[data-cal-leak]')).toContainText('Vazamento de modo');
+    // subir os dois eixos → missão crítica, e o alerta some (rigor já assumido)
+    await cal.locator('[data-cal="cost"]').fill('90');
+    await cal.locator('[data-cal="cost"]').dispatchEvent('input');
+    await cal.locator('[data-cal="reversibility"]').fill('90');
+    await cal.locator('[data-cal="reversibility"]').dispatchEvent('input');
+    await expect(cal).toHaveAttribute('data-quadrant', 'missao-critica');
+    await expect(cal.locator('[data-cal-leak]')).toBeHidden();
   });
 
   test('WU-3: dez cards de princípio com títulos e âncoras', async ({ page }) => {

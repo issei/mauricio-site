@@ -52,6 +52,54 @@ export const QUIZ = [
       wrong_b: 'Parar sem salvar estado significa perder todo o progresso — e reprocessar do início amanhã paga duas vezes pelo mesmo trabalho. O ledger existe justamente para garantir que o ponto de parada seja recuperável.',
     },
   },
+  {
+    id: 'q5',
+    principle: 'Pilar 3 — MCP como fronteira de menor privilégio',
+    chapter: '#pilar-3',
+    principleAnchor: '#pilar-3',
+    correct: 'b',
+    feedback: {
+      correct: 'Exato — Pilar 3. Com o MCP, o conjunto de ações do agente é exatamente o que o servidor expõe: acesso enumerado, não ambiente. A fronteira é o ponto natural de autorização, escopo de permissão e auditoria — por isso o MCP é uma fronteira de segurança.',
+      wrong_a: 'Credenciais amplas no banco de produção dão ao agente acesso ambiente — qualquer alucinação vira ação irreversível. O menor privilégio exige expor só o necessário atrás de uma fronteira contratual.',
+      wrong_c: 'Validar SQL livre depois da execução é tarde demais: o efeito colateral já aconteceu. A fronteira (MCP) precisa enumerar as ações permitidas antes, não auditar estragos depois.',
+    },
+  },
+  {
+    id: 'q6',
+    principle: 'Pilar 4 — Maturidade: Sistemas Intencionais',
+    chapter: '#maturidade',
+    principleAnchor: '#maturidade',
+    correct: 'b',
+    feedback: {
+      correct: 'Isso é o Estágio 1 — Restringido. Há validação de saída e contratos de schema (saídas inválidas são rejeitadas), mas o modelo ainda decide o fluxo. Só vira Orquestrado (Estágio 2) quando a topologia é um DAG fixo e auditável.',
+      wrong_a: 'No Estágio 0 não há nenhuma validação de saída — a garantia mora só no prompt. Aqui já existe schema estrito barrando saídas inválidas, então o sistema avançou.',
+      wrong_c: 'Governado (Estágio 3) exige DAG fixo, ledgers, autorização nas fronteiras e reversão fim a fim. Como o LLM ainda decide a ordem das etapas, o fluxo nem é determinístico ainda.',
+    },
+  },
+  {
+    id: 'q7',
+    principle: 'Pilar 5 — Quando NÃO usar engenharia pesada',
+    chapter: '#pilar-5',
+    principleAnchor: '#pilar-5',
+    correct: 'b',
+    feedback: {
+      correct: 'Pilar 5 — trade-offs. Num protótipo descartável não há longevidade, escala ou criticidade para amortizar o custo do rigor. Cada hora em contratos é subtraída da única métrica que importa: descobrir rápido se a ideia tem valor. A leveza aqui é uma escolha intencional.',
+      wrong_a: 'Montar DAG, contratos e ADRs num protótipo de fim de semana é sobre-engenharia: o custo de setup nunca se amortiza num artefato que será descartado. O rigor aqui não reduz risco — só atrasa o aprendizado.',
+      wrong_c: 'Escrever toda a especificação antes também é cerimônia pesada demais para uma hipótese que pode ser descartada na segunda-feira. O objetivo é velocidade de descoberta, não completude.',
+    },
+  },
+  {
+    id: 'q8',
+    principle: 'Pilar 5 — Regra de transição',
+    chapter: '#pilar-5',
+    principleAnchor: '#pilar-5',
+    correct: 'b',
+    feedback: {
+      correct: 'Exato — a regra de transição. O artefato atravessou a fronteira: alguém já depende dele como produção. A promoção obriga o upgrade de garantias — consultas versionadas, contrato de schema e teste de regressão. A leveza só era legítima enquanto o artefato permanecia no polo de exploração.',
+      wrong_a: '"Funcionou na exploração" é exatamente o vazamento de modo: o artefato virou dependência de produção sem nunca atravessar a fronteira de rigor. A pergunta certa não é "é exploração ou produção?", mas "alguém já depende disto como produção?".',
+      wrong_c: 'Dar mais autonomia ao agente aumenta o risco justo quando o relatório virou crítico. A promoção pede mais garantias determinísticas (contratos, testes), não mais liberdade do modelo.',
+    },
+  },
 ];
 
 const LETTERS = ['a', 'b', 'c', 'd'];
@@ -74,10 +122,10 @@ export function feedbackFor(id, optionIndex) {
   return { correct, text, principle: q.principle, chapter: q.chapter, principleAnchor: q.principleAnchor };
 }
 
-/** Mensagem do score final, diferente por faixa (0, 1-2, 3, 4 de 4). */
+/** Mensagem do score final, em quatro faixas relativas ao total (gabarito, quase, parcial, zero). */
 export function scoreMessage(score, total = QUIZ.length) {
-  if (score >= total) return 'Excelente — os quatro princípios ficaram claros. Você sabe enquadrar IA como engenharia, não como mágica.';
-  if (score === 3) return 'Quase lá: três de quatro. Reveja o capítulo do que escapou — o detalhe que falta é o que separa protótipo de produção.';
-  if (score >= 1) return 'Bom começo. Volte aos capítulos correspondentes às questões erradas — cada feedback aponta o princípio exato.';
-  return 'Sem acertos ainda. Não tem problema: leia o feedback de cada opção, ele explica o raciocínio correto. A trilha guiada cobre tudo isso.';
+  if (score >= total) return 'Excelente — princípios e pilares ficaram claros. Você sabe enquadrar IA como engenharia, não como mágica.';
+  if (score >= total - 1) return `Quase lá: ${score} de ${total}. Reveja o que escapou — o detalhe que falta é o que separa protótipo de produção.`;
+  if (score >= 1) return 'Bom começo. Volte às seções correspondentes às questões erradas — cada feedback aponta o princípio ou pilar exato.';
+  return 'Sem acertos ainda. Não tem problema: leia o feedback de cada opção, ele explica o raciocínio correto. A trilha guiada e os pilares cobrem tudo isso.';
 }

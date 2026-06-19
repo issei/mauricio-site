@@ -1,5 +1,5 @@
 {
-  "_note": "Espelho documental de src/js/eai-quiz-data.js (QUIZ). Fonte da verdade: o módulo JS. Cenários multi-domínio (v2): contratos, saúde, moderação.",
+  "_note": "Espelho documental de src/js/eai-quiz-data.js (QUIZ). Fonte da verdade: o módulo JS. Cenários multi-domínio (v2): contratos, saúde, moderação. q5–q8 cobrem os cinco pilares (MCP, maturidade, trade-offs, regra de transição).",
   "questions": [
     {
       "id": "q1",
@@ -65,6 +65,74 @@
         "correct": "P8 + P9 — FinOps e fail-closed. O ledger sabe exatamente onde parou. 'Falhar e parar' é uma feature, não uma limitação.",
         "wrong_a": "Continuar além do teto é exatamente o comportamento que o ledger previne — risco financeiro de fatura indefinida.",
         "wrong_b": "Parar sem salvar estado perde todo o progresso e paga duas vezes pelo mesmo trabalho amanhã."
+      }
+    },
+    {
+      "id": "q5",
+      "principle": "Pilar 3 — MCP como fronteira de menor privilégio",
+      "context": "Um agente de suporte precisa consultar pedidos e emitir reembolsos limitados. Você vai conectá-lo ao sistema de pagamentos.",
+      "prompt": "Qual desenho respeita o menor privilégio?",
+      "options": {
+        "a": "Dar ao agente credenciais de leitura e escrita no banco de produção — ele decide o que consultar e alterar",
+        "b": "Expor só as ações necessárias atrás de um servidor MCP (consultar_pedido, emitir_reembolso até um teto), com autorização e auditoria na fronteira",
+        "c": "Deixar o agente gerar SQL livremente e validar o resultado depois da execução"
+      },
+      "correct": "b",
+      "feedback": {
+        "correct": "Pilar 3. Com o MCP, o conjunto de ações do agente é exatamente o que o servidor expõe: acesso enumerado, não ambiente. A fronteira é o ponto natural de autorização, escopo e auditoria.",
+        "wrong_a": "Credenciais amplas no banco dão acesso ambiente — qualquer alucinação vira ação irreversível. Menor privilégio exige expor só o necessário atrás de uma fronteira contratual.",
+        "wrong_c": "Validar SQL livre depois da execução é tarde demais: o efeito já aconteceu. A fronteira (MCP) precisa enumerar as ações permitidas antes."
+      }
+    },
+    {
+      "id": "q6",
+      "principle": "Pilar 4 — Maturidade: Sistemas Intencionais",
+      "context": "Seu sistema valida toda saída do LLM contra um schema estrito, mas o próprio LLM ainda decide a ordem das etapas e quais ferramentas chamar.",
+      "prompt": "Em que estágio de maturidade ele está?",
+      "options": {
+        "a": "Estágio 0 — Mágica de Prompt: a garantia mora só no prompt",
+        "b": "Estágio 1 — Restringido: há validação de saída, mas o fluxo ainda não é um DAG fixo e auditável",
+        "c": "Estágio 3 — Governado: já tem ledgers, fronteiras e reversão fim a fim"
+      },
+      "correct": "b",
+      "feedback": {
+        "correct": "Estágio 1 — Restringido. Há validação de saída e contratos de schema, mas o modelo ainda decide o fluxo. Só vira Orquestrado quando a topologia é um DAG fixo e auditável.",
+        "wrong_a": "No Estágio 0 não há validação de saída — a garantia mora só no prompt. Aqui já existe schema estrito barrando saídas inválidas.",
+        "wrong_c": "Governado exige DAG fixo, ledgers, fronteiras e reversão. Como o LLM ainda decide a ordem das etapas, o fluxo nem é determinístico ainda."
+      }
+    },
+    {
+      "id": "q7",
+      "principle": "Pilar 5 — Quando NÃO usar engenharia pesada",
+      "context": "Num hackathon de fim de semana você quer validar se uma ideia de produto faz sentido. O protótipo será descartado na segunda-feira.",
+      "prompt": "Qual é a engenharia correta aqui?",
+      "options": {
+        "a": "Montar DAG, contratos rígidos e ADRs desde o início, para já nascer pronto para produção",
+        "b": "Usar agentes livres / vibe coding para maximizar a velocidade de descoberta — o rigor pesado aqui só atrasa o aprendizado e nada será amortizado",
+        "c": "Não escrever código: produzir apenas a especificação completa e os testes antes de tudo"
+      },
+      "correct": "b",
+      "feedback": {
+        "correct": "Pilar 5. Num protótipo descartável não há longevidade, escala ou criticidade para amortizar o custo do rigor. A leveza aqui é uma escolha intencional.",
+        "wrong_a": "Montar DAG e contratos num protótipo de fim de semana é sobre-engenharia: o custo de setup nunca se amortiza num artefato descartável.",
+        "wrong_c": "Escrever toda a especificação antes também é cerimônia pesada demais para uma hipótese que pode ser descartada. O objetivo é velocidade de descoberta."
+      }
+    },
+    {
+      "id": "q8",
+      "principle": "Pilar 5 — Regra de transição",
+      "context": "As consultas que um agente livre descobriu durante uma exploração viraram um relatório que o time de vendas passou a consumir toda segunda-feira.",
+      "prompt": "O que a regra de transição exige agora?",
+      "options": {
+        "a": "Nada — já que funcionou na exploração, pode seguir exatamente como está",
+        "b": "Promover o artefato à estrutura permanente: consultas versionadas, contrato de schema e teste de regressão, porque alguém já depende disto como produção",
+        "c": "Reescrever do zero dando mais autonomia ao agente, para ele manter o relatório sozinho"
+      },
+      "correct": "b",
+      "feedback": {
+        "correct": "A regra de transição. O artefato atravessou a fronteira: alguém já depende dele como produção. A promoção obriga o upgrade de garantias.",
+        "wrong_a": "'Funcionou na exploração' é exatamente o vazamento de modo: virou dependência de produção sem atravessar a fronteira de rigor.",
+        "wrong_c": "Dar mais autonomia ao agente aumenta o risco justo quando o relatório virou crítico. A promoção pede mais garantias determinísticas, não mais liberdade."
       }
     }
   ]
