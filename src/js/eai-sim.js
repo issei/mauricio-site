@@ -31,6 +31,12 @@ function renderMeters(root, out) {
 }
 
 // ---- Tooltips por métrica: definição + escala (B1) ----
+// Fecha todos os tooltips abertos (usado ao abrir outro ou ao clicar fora).
+function closeAllTips(root) {
+  root.querySelectorAll('.eai-meter__tip').forEach((t) => { t.hidden = true; });
+  root.querySelectorAll('.eai-meter__info').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+}
+
 function initTooltips(root) {
   root.querySelectorAll('.eai-meter').forEach((m) => {
     const key = m.getAttribute('data-metric');
@@ -56,12 +62,22 @@ function initTooltips(root) {
 
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation(); // não dispara o "fechar ao clicar fora"
       const open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-      tip.hidden = open;
+      closeAllTips(root); // só um tooltip aberto por vez
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        tip.hidden = false;
+      }
     });
     label.appendChild(btn);
     m.appendChild(tip); // fora do label: não polui o nome acessível do progressbar
+  });
+
+  // Fechar ao clicar fora (mas não ao clicar no próprio tooltip).
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.eai-meter__tip') || e.target.closest('.eai-meter__info')) return;
+    closeAllTips(root);
   });
 }
 

@@ -367,6 +367,14 @@ test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
     await expect(tip).toBeVisible();
     await expect(tip).toContainText('escala 0 a 100 pts');
 
+    // abrir o ⓘ de outra métrica fecha o anterior (só um tooltip por vez)
+    await sim.locator('[data-metric-info="custo"]').click();
+    await expect(sim.locator('[data-metric-tooltip="custo"]')).toBeVisible();
+    await expect(tip).toBeHidden();
+    // clicar fora fecha o tooltip aberto
+    await page.locator('h2#simulador-titulo').click();
+    await expect(sim.locator('[data-metric-tooltip="custo"]')).toBeHidden();
+
     // log cumulativo: autonomia 0 + tudo desmarcado → linha de autonomia presente
     await sim.locator('[data-sim="autonomy"]').fill('0');
     await sim.locator('[data-sim="autonomy"]').dispatchEvent('input');
