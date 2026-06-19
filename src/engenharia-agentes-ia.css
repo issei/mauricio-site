@@ -981,6 +981,120 @@ body.eai-body {
   .eai-spark--bad { animation: none !important; }
 }
 
+/* ====================== Vídeo-âncora (moldura eai-viz-panel) ====================== */
+/* Mapeamento p/ o design system: --bg-elev → --eai-surface (#161b22),
+   --border → --eai-border, --accent → --eai-accent (#3b82f6). */
+.eai-viz-panel {
+  margin: 1.25rem 0 1.75rem;
+  border: 1px solid var(--eai-border);
+  border-radius: 16px;
+  background: var(--eai-surface);
+  overflow: hidden;
+  /* brilho neon sutil condizente com o sistema (azul → roxo) */
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--eai-accent) 18%, transparent),
+    0 0 28px -6px color-mix(in srgb, var(--eai-accent) 45%, transparent),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Trilho 16:9 — aspect-ratio reserva o espaço e evita CLS (ajuda o LCP). */
+.eai-video__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+.eai-video__iframe,
+.eai-video__play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Facade (botão de play) — elemento nativo: Enter/Espaço e foco funcionam de fábrica. */
+.eai-video__play {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  cursor: pointer;
+  background: #000;
+  color: #fff;
+}
+.eai-video__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.78;
+  transition: opacity 0.25s ease, transform 0.4s ease;
+}
+.eai-video__play:hover .eai-video__poster,
+.eai-video__play:focus-visible .eai-video__poster { opacity: 0.92; transform: scale(1.02); }
+
+.eai-video__btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--eai-gradient);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.eai-video__btn svg { margin-left: 3px; } /* centro óptico do triângulo */
+.eai-video__play:hover .eai-video__btn,
+.eai-video__play:focus-visible .eai-video__btn {
+  transform: scale(1.08);
+  box-shadow: 0 12px 38px rgba(59, 130, 246, 0.65);
+}
+
+.eai-video__label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.85rem 1rem 0.7rem;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent);
+}
+
+/* Foco visível bem contrastado (WCAG 2.1 AA). */
+.eai-video__play:focus-visible { outline: 3px solid var(--eai-accent); outline-offset: -3px; }
+
+/* Equivalente textual (XAI / P10) — <details> nativo, operável por teclado. */
+.eai-video__cap { padding: 0.9rem 1rem; }
+.eai-video__summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--eai-accent);
+  list-style: none;
+}
+.eai-video__summary::-webkit-details-marker { display: none; }
+.eai-video__summary::before { content: "＋ "; font-weight: 700; }
+.eai-video__equiv[open] .eai-video__summary::before { content: "－ "; }
+.eai-video__summary:focus-visible { outline: 2px solid var(--eai-accent); outline-offset: 2px; border-radius: 4px; }
+.eai-video__prose { margin-top: 0.75rem; }
+.eai-video__prose p {
+  margin: 0 0 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--eai-muted);
+}
+.eai-video__prose p:last-child { margin-bottom: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .eai-video__poster,
+  .eai-video__btn { transition: none; }
+}
+
 /* ====================== Botões ====================== */
 .eai-btn {
   display: inline-flex;
