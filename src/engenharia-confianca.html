@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>A Engenharia da Confiança — Da Intenção à Execução Agêntica</title>
+  <meta name="description"
+    content="Uma jornada em quatro módulos que conecta Engenharia Reversa, Engenharia de Agentes e Vibe Coding: do Caos da IA-como-mágica à Governança da IA-como-engenharia." />
+
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mauricio.issei.com.br/engenharia-confianca" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="A Engenharia da Confiança: Da Intenção à Execução Agêntica" />
+  <meta property="og:description"
+    content="A capacidade vem do modelo; a confiança vem da engenharia. Quatro módulos do Crash Silencioso ao Orquestrador Cognitivo." />
+  <meta property="og:url" content="https://mauricio.issei.com.br/engenharia-confianca" />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="./engenharia-confianca.css" />
+</head>
+
+<body class="ec-body">
+  <a href="#conteudo" class="ec-skip">Pular para o conteúdo</a>
+
+  <!-- Progresso de leitura -->
+  <div class="ec-readbar" aria-hidden="true"><span data-ec-readbar></span></div>
+
+  <!-- Navegação + mini-jornada -->
+  <header class="ec-nav" aria-label="Navegação principal">
+    <div class="ec-nav__inner">
+      <a href="#hero" class="ec-nav__brand">
+        <span class="ec-nav__dot" aria-hidden="true"></span>
+        A Engenharia da Confiança
+      </a>
+      <nav class="ec-nav__trail" aria-label="Trilha da jornada">
+        <a href="#modulo-0" data-ec-navlink>M0 · Despertar</a>
+        <a href="#modulo-1" data-ec-navlink>M1 · Mapear</a>
+        <a href="#modulo-2" data-ec-navlink>M2 · Arquitetar</a>
+        <a href="#modulo-3" data-ec-navlink>M3 · Orquestrar</a>
+        <a href="#maturidade" data-ec-navlink>Maturidade</a>
+      </nav>
+
+      <div class="ec-journey" aria-hidden="true">
+        <div class="ec-journey__steps" data-ec-journey>
+          <span class="ec-journey__step" data-step="0"><span class="ec-journey__bullet"></span>M0</span>
+          <span class="ec-journey__sep">—</span>
+          <span class="ec-journey__step" data-step="1"><span class="ec-journey__bullet"></span>M1</span>
+          <span class="ec-journey__sep">—</span>
+          <span class="ec-journey__step" data-step="2"><span class="ec-journey__bullet"></span>M2</span>
+          <span class="ec-journey__sep">—</span>
+          <span class="ec-journey__step" data-step="3"><span class="ec-journey__bullet"></span>M3</span>
+        </div>
+        <span class="ec-matbadge" data-ec-matbadge>
+          Maturidade <span class="ec-matbadge__lvl" data-mat-lvl>1</span>
+          <span data-mat-name>Mágica</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Glossário: botão flutuante (mobile/tablet) + drawer -->
+  <button type="button" class="ec-gloss-fab" data-ec-gloss-open aria-haspopup="dialog" aria-expanded="false">
+    📖 Glossário
+  </button>
+  <div class="ec-drawer" data-ec-drawer role="dialog" aria-modal="true" aria-label="Glossário unificado" aria-hidden="true">
+    <div class="ec-drawer__backdrop" data-ec-gloss-close></div>
+    <div class="ec-drawer__panel" data-ec-drawer-panel>
+      <div class="ec-drawer__head">
+        <strong>Glossário</strong>
+        <button type="button" class="ec-drawer__close" data-ec-gloss-close aria-label="Fechar glossário">×</button>
+      </div>
+      <!-- O conteúdo do glossário (aside#glossario) é movido para cá pelo JS no mobile. -->
+    </div>
+  </div>
+
+  <main id="conteudo">
+
+    <!-- ============================ HERO ============================ -->
+    <section id="hero" class="ec-section ec-hero" aria-labelledby="hero-titulo">
+      <div class="ec-container">
+        <p class="ec-eyebrow">Da Intenção à Execução Agêntica</p>
+        <h1 id="hero-titulo" class="ec-hero__title">A Engenharia da <span class="ec-grad">Confiança</span></h1>
+        <p class="ec-hero__sub">Do Caos da IA-como-mágica à Disciplina da IA-como-engenharia.</p>
+
+        <p class="ec-hero__thesis">A capacidade vem do modelo; a confiança vem da engenharia.</p>
+
+        <!-- Arco animado Caos → Governança -->
+        <figure class="ec-arc" aria-labelledby="arc-cap">
+          <div class="ec-arc__labels">
+            <span class="ec-arc__chaos">CAOS · IA como Mágica</span>
+            <span class="ec-arc__gov">GOVERNANÇA · IA como Engenharia</span>
+          </div>
+          <div class="ec-arc__track" aria-hidden="true"></div>
+          <div class="ec-arc__steps">
+            <span><strong>M0 · Despertar</strong>reconhecer o problema</span>
+            <span><strong>M1 · Mapear</strong>revelar a verdade</span>
+            <span><strong>M2 · Arquitetar</strong>governar o comportamento</span>
+            <span><strong>M3 · Orquestrar</strong>escalar a intenção</span>
+          </div>
+          <figcaption id="arc-cap" class="ec-vh">
+            O arco da jornada vai do Caos (IA como mágica) à Governança (IA como engenharia), passando
+            por quatro módulos: Despertar, Mapear, Arquitetar e Orquestrar.
+          </figcaption>
+        </figure>
+
+        <!-- Entrada por dor -->
+        <p class="ec-pain__title">Por onde você entra?</p>
+        <div class="ec-pain">
+          <a href="#modulo-0" class="ec-paincard">
+            <span class="ec-paincard__q">"Minha IA falha sem avisar."</span>
+            <span>O Crash Silencioso e a falha de intenção.</span>
+            <span class="ec-paincard__go">Ir ao Módulo 0 →</span>
+          </a>
+          <a href="#modulo-1" class="ec-paincard">
+            <span class="ec-paincard__q">"Tenho um legado que ninguém entende."</span>
+            <span>Tornar o implícito explícito (As-Is → To-Be).</span>
+            <span class="ec-paincard__go">Ir ao Módulo 1 →</span>
+          </a>
+          <a href="#modulo-2" class="ec-paincard">
+            <span class="ec-paincard__q">"Não confio na saída do modelo."</span>
+            <span>Determinismo, contratos e MCP como fronteira.</span>
+            <span class="ec-paincard__go">Ir ao Módulo 2 →</span>
+          </a>
+          <a href="#modulo-3" class="ec-paincard">
+            <span class="ec-paincard__q">"Quero escalar com método."</span>
+            <span>De Executor a Orquestrador Cognitivo (SDD).</span>
+            <span class="ec-paincard__go">Ir ao Módulo 3 →</span>
+          </a>
+        </div>
+
+        <div class="ec-hero__cta" style="margin-top:2rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
+          <a href="#modulo-0" class="ec-btn ec-btn--primary">Iniciar a jornada do início ▾</a>
+          <a href="#maturidade" class="ec-btn ec-btn--ghost">Ver o Modelo de Maturidade</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ LAYOUT: sidebar + módulos ============================ -->
+    <div class="ec-layout">
+
+      <!-- Glossário (sidebar desktop / movido ao drawer no mobile) -->
+      <aside id="glossario" class="ec-gloss" data-ec-gloss aria-label="Glossário unificado">
+        <p class="ec-gloss__title">Glossário unificado</p>
+
+        <div class="ec-gloss__group">
+          <h4>Termos-âncora</h4>
+          <dl>
+            <div class="ec-gloss__entry" id="g-crash-silencioso">
+              <dt>Crash Silencioso</dt>
+              <dd>Falha sem erro de código, mas com perda de valor. <a href="#modulo-0">M0 →</a></dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-residuo-interpretativo">
+              <dt>Resíduo Interpretativo</dt>
+              <dd>A única parte da tarefa onde a IA é realmente necessária — depois que os dados estruturados resolveram todo o resto. <a href="#modulo-2">M2 →</a></dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-vazamento-de-modo">
+              <dt>Vazamento de Modo</dt>
+              <dd>Quando um protótipo descartável vira produção sem o devido upgrade de rigor.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-sistema-intencional">
+              <dt>Sistema Intencional</dt>
+              <dd>Onde o comportamento é governado pela arquitetura, não pela probabilidade. <a href="#modulo-3">M3 →</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="ec-gloss__group">
+          <h4>Termos de engenharia</h4>
+          <dl>
+            <div class="ec-gloss__entry" id="g-alucinacao-sintatica">
+              <dt>Alucinação sintática</dt>
+              <dd>Código que <em>parece</em> perfeito (sintaxe, nomes, estrutura) mas está logicamente errado.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-matriz-de-evidencias">
+              <dt>Matriz de Evidências</dt>
+              <dd>Pool multifacetado (estrutural, estado, operacional, humano) que evita falsos-positivos na descoberta.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-inventario-de-comportamentos">
+              <dt>Inventário de Comportamentos</dt>
+              <dd>Ativo holístico do As-Is: regras core, efeitos colaterais e workarounds, classificados por confiança.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-determinismo-primeiro">
+              <dt>Determinístico-primeiro</dt>
+              <dd>Resolver com regras e dados; gastar IA apenas no resíduo interpretativo.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-cerebro-vitrine">
+              <dt>Cérebro × Vitrine</dt>
+              <dd>Separação física entre motor cognitivo (sensível) e interface (exposta), ligados por contrato estreito.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-contrato-rigido">
+              <dt>Contrato rígido (schema)</dt>
+              <dd>Esquema estrito que rejeita campos inesperados na saída do LLM; a saída é input não confiável até validar.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-open-world">
+              <dt>Open-World / Mundo Aberto</dt>
+              <dd>Ausência de dado é incerteza explícita, nunca "falso"; ensinar o sistema a dizer "não sei".</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-ledger-de-quota">
+              <dt>Ledger de quota</dt>
+              <dd>Estado de domínio persistente que governa gasto/créditos e recusa a despesa antes do provedor.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-poda-precoce">
+              <dt>Poda precoce</dt>
+              <dd>Colocar o filtro mais barato e discriminante o mais cedo possível no pipeline.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-bdd">
+              <dt>BDD</dt>
+              <dd>Cenários Dado/Quando/Então com fixtures gravadas; testa o sistema ao redor do modelo, não a "inteligência" do modelo.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-fail-closed">
+              <dt>Fail-closed</dt>
+              <dd>Se não foi possível concluir, não se marca como concluído; registra-se o bloqueio e para-se num ponto seguro.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-mcp">
+              <dt>MCP (Model Context Protocol)</dt>
+              <dd>Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança).</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-sdd">
+              <dt>SDD (Spec-Driven Development)</dt>
+              <dd>A especificação como fonte da verdade; a IA implementa contra a spec, com testes como alvo.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-orquestrador-cognitivo">
+              <dt>Orquestrador Cognitivo</dt>
+              <dd>Quem dirige a inteligência da máquina com intenção (o "chef executivo"), em vez de executar cada linha.</dd>
+            </div>
+          </dl>
+        </div>
+        <p style="font-size:0.76rem;color:var(--ec-muted);">
+          Glossário consolidado em
+          <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">docs/specs/pages/engenharia-confianca</a>.
+        </p>
+      </aside>
+
+      <!-- ============================ CONTEÚDO ============================ -->
+      <div class="ec-content">
+
+        <!-- ===================== MÓDULO 0 ===================== -->
+        <article id="modulo-0" class="ec-module ec-reveal" aria-labelledby="m0-titulo">
+          <div class="ec-module__recap">
+            <span>Você chega aqui perguntando: "por que minha IA falha?"</span>
+            <span class="ec-module__tag">Módulo 0 · O Despertar da Liderança</span>
+          </div>
+
+          <p class="ec-eyebrow">Conceito central</p>
+          <h2 id="m0-titulo" class="ec-title ec-title--underline">O Crash Silencioso</h2>
+          <p class="ec-concept">
+            A falha que não acende nenhuma luz vermelha. A IA não falha como o software clássico: não há
+            <em>stack trace</em>, não há exceção — há uma regra de negócio perdida, um número inventado
+            com confiança, uma decisão errada tomada como se fosse certa. A falha é de
+            <strong>intenção</strong>, não de código.
+          </p>
+
+          <div class="ec-prose">
+            <p>
+              A IA é um amplificador. Entregue a ela uma organização com clareza e ela escala a clareza;
+              entregue uma organização com confusão e ela escala a confusão — só que mais rápido e com
+              aparência de competência. É por isso que a mesma ferramenta produz milagre numa equipe e
+              desastre em outra.
+            </p>
+            <p>
+              O perigo não é o erro barulhento; é o
+              <button class="ec-term" data-term="crash-silencioso" type="button">Crash Silencioso</button>.
+              O código compila, a demo encanta, o resultado parece impecável — e mesmo assim está
+              logicamente errado ou fere uma regra que ninguém documentou. LLMs são extraordinários em
+              produzir o que <em>parece</em> perfeito: sintaxe limpa, nomes bem escolhidos, estrutura
+              convincente. Essa é exatamente a armadilha — a aparência de correção sem a substância.
+              Chamamos isso de
+              <button class="ec-term" data-term="alucinacao-sintatica" type="button">alucinação sintática</button>,
+              e a confiança que o código bonito inspira é o que o torna traiçoeiro.
+            </p>
+            <p>
+              Construir IA sobre uma organização que não sabe o que sabe é construir sobre solo movediço.
+              Antes de acelerar, é preciso uma
+              <button class="ec-term" data-term="matriz-de-evidencias" type="button">Matriz de Evidências</button>:
+              saber o que é fato observado, o que é inferência e o que é só suposição. Sem isso, a
+              velocidade da IA só nos leva ao precipício mais depressa.
+            </p>
+            <p>
+              Este é o despertar da liderança: parar de perguntar "a IA funciona?" e começar a perguntar
+              "a IA está fazendo a coisa certa, pela razão certa, de forma que eu consiga auditar?". A
+              jornada que se segue — mapear a verdade, arquitetar a confiança, orquestrar a intenção — é a
+              resposta de engenharia a essa pergunta de liderança.
+            </p>
+          </div>
+
+          <!-- Elemento visual: Mermaid + analogia -->
+          <div class="ec-visual ec-visual--split">
+            <figure class="ec-mermaid" data-ec-mermaid>
+              <figcaption class="ec-mermaid__cap">Falha clássica × Crash Silencioso</figcaption>
+              <div class="ec-mermaid__graph" data-ec-mermaid-graph></div>
+              <script type="text/plain" data-ec-mermaid-src>
+flowchart LR
+    A[Tarefa entregue à IA] --> B{O código quebra?}
+    B -- Sim --> C[🔴 Erro visível<br/>stack trace, alerta]
+    C --> C1[Você conserta. Barulhento, mas seguro.]
+    B -- Não --> D[✅ Demo encanta<br/>resultado parece perfeito]
+    D --> E{A intenção foi cumprida?}
+    E -- Não, mas ninguém percebe --> F[☠️ CRASH SILENCIOSO<br/>valor perdido sem alerta]
+    E -- Sim --> G[Sucesso real]
+    style F fill:#3a0d0d,stroke:#ff5555,color:#ffd5d5
+    style C fill:#1a2733,stroke:#007bff,color:#cfe8ff
+              </script>
+              <details class="ec-mermaid__alt">
+                <summary>Equivalente textual</summary>
+                <p>
+                  Uma tarefa entregue à IA segue dois caminhos. Se o código quebra, há erro visível —
+                  barulhento, mas seguro de corrigir. Se não quebra, a demo encanta; aí a pergunta
+                  decisiva é se a intenção foi cumprida. Quando não foi e ninguém percebe, ocorre o Crash
+                  Silencioso: perda de valor sem nenhum alerta.
+                </p>
+              </details>
+            </figure>
+
+            <aside class="ec-analogy">
+              <div class="ec-analogy__icon" aria-hidden="true">🔊</div>
+              <h3 class="ec-analogy__title">A analogia do amplificador</h3>
+              <p>
+                A IA é um amplificador: mesmo sinal, ganho alto. Clareza organizacional sai amplificada;
+                confusão também — só que mais rápido e com cara de competência.
+              </p>
+            </aside>
+          </div>
+
+          <!-- Prática educativa -->
+          <div class="ec-practice" data-ec-classify>
+            <h3 class="ec-practice__head">Prática · Falha visível ou Crash Silencioso?</h3>
+            <p class="ec-practice__intro">
+              Classifique cada cenário. A ausência de erro não é ausência de falha.
+            </p>
+            <div class="ec-classify">
+              <div class="ec-scenario" data-answer="silencioso">
+                <p class="ec-scenario__text">
+                  Um relatório gerado por IA soma corretamente, formata lindamente — mas usa a tabela de
+                  preços do ano passado. Ninguém percebe por semanas.
+                </p>
+                <div class="ec-scenario__btns">
+                  <button type="button" data-pick="visivel">Falha visível</button>
+                  <button type="button" data-pick="silencioso">Crash Silencioso</button>
+                </div>
+                <p class="ec-scenario__fb"></p>
+              </div>
+              <div class="ec-scenario" data-answer="visivel">
+                <p class="ec-scenario__text">
+                  Um agente chama uma API que não existe mais; a aplicação lança uma exceção e o deploy
+                  falha no pipeline de CI.
+                </p>
+                <div class="ec-scenario__btns">
+                  <button type="button" data-pick="visivel">Falha visível</button>
+                  <button type="button" data-pick="silencioso">Crash Silencioso</button>
+                </div>
+                <p class="ec-scenario__fb"></p>
+              </div>
+              <div class="ec-scenario" data-answer="silencioso">
+                <p class="ec-scenario__text">
+                  Um assistente jurídico resume um contrato e omite, sem avisar, a cláusula de rescisão —
+                  porque ela estava num anexo que ele não leu.
+                </p>
+                <div class="ec-scenario__btns">
+                  <button type="button" data-pick="visivel">Falha visível</button>
+                  <button type="button" data-pick="silencioso">Crash Silencioso</button>
+                </div>
+                <p class="ec-scenario__fb"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Benefício para o negócio -->
+          <div class="ec-callout ec-callout--biz">
+            <span class="ec-callout__icon" aria-hidden="true">💡</span>
+            <div class="ec-callout__body">
+              <span class="ec-callout__label">Benefício para o Negócio</span>
+              A pior categoria de falha de IA não é a que derruba o sistema — é a decisão de negócio
+              errada tomada com falsa confiança. Reconhecer o Crash Silencioso é o primeiro passo para
+              torná-lo impossível por <strong>arquitetura</strong>, não por sorte.
+            </div>
+          </div>
+
+          <!-- Referências cruzadas -->
+          <div class="ec-xref">
+            <p class="ec-xref__title">📄 Referências cruzadas (conceito → fonte)</p>
+            <ul class="ec-xref__list">
+              <li><span class="ec-xref__concept">Alucinação sintática</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-agent-driven-development.md §1</a></li>
+              <li><span class="ec-xref__concept">Matriz de Evidências</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">propostav2.md §3</a></li>
+              <li><span class="ec-xref__concept">Decisão com falsa confiança</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-engenharia-agentes-ia.md §3</a></li>
+            </ul>
+          </div>
+
+          <!-- CTA de reflexão -->
+          <div class="ec-reflect" data-ec-reflect data-from="1" data-to="2">
+            <p class="ec-reflect__q">
+              "Aponte um Crash Silencioso que você já viveu: que valor se perdeu sem que nenhum alerta
+              vermelho aparecesse?"
+            </p>
+            <p class="ec-reflect__meta">
+              Se você reconhece um, saiu da Mágica e entrou na Consciência.
+              <a href="#maturidade" class="ec-reflect__jump">Maturidade 1 → 2</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- ===================== MÓDULO 1 ===================== -->
+        <article id="modulo-1" class="ec-module ec-reveal" aria-labelledby="m1-titulo">
+          <div class="ec-module__recap">
+            <span>Você já reconhece o Crash Silencioso. Agora precisa revelar a verdade do que existe.</span>
+            <span class="ec-module__tag">Módulo 1 · Mapeando a Verdade</span>
+          </div>
+
+          <p class="ec-eyebrow">Conceito central</p>
+          <h2 id="m1-titulo" class="ec-title ec-title--underline">Revelar o Implícito para torná-lo Explícito</h2>
+          <p class="ec-concept">
+            Antes de modernizar (To-Be), é preciso congelar uma fotografia de alta fidelidade do que o
+            sistema <em>realmente</em> faz hoje (As-Is). O conhecimento crítico de negócio costuma viver
+            escondido — em milhares de linhas de Apex, em Flows fragmentados e na cabeça de poucos
+            especialistas. Modernizar sem mapear é apagar regras vitais sem saber.
+          </p>
+
+          <div class="ec-prose">
+            <p>
+              Todo sistema legado sofre do "conhecimento tribal": regras que sustentam o negócio mas que
+              ninguém escreveu. O objetivo da Engenharia Reversa Assistida por IA <strong>não</strong> é
+              gerar documentação viva eterna — é <strong>congelar o As-Is</strong> com fidelidade
+              suficiente para que arquitetos decidam, de forma auditável, o que preservar, redesenhar ou
+              descontinuar.
+            </p>
+            <p>
+              A estratégia que define sucesso ou fracasso é a de descoberta. Ler tudo por tipo de artefato
+              gera dicionários isolados sem contexto; mapear por domínio gera sobreposição. A abordagem
+              recomendada é <strong>guiada por jornadas críticas e risco</strong> (top-down com deep
+              dive): parte-se de uma jornada de negócio (ex.: <em>Lead-to-Cash</em>), segue-se a trilha de
+              execução (<em>call stack</em>) e mapeia-se todo componente que ela toca — isolando
+              rapidamente o código morto, que não pertence a jornada nenhuma.
+            </p>
+            <p>
+              Para não cair em falsos-positivos, a IA cruza uma
+              <button class="ec-term" data-term="matriz-de-evidencias" type="button">Matriz de Evidências</button>
+              multifacetada: insumos estruturais (metadados, Apex, Flows), de estado (Custom Metadata,
+              Custom Settings), operacionais (Event Monitoring, Debug Logs — que revelam o "código zumbi"
+              nunca executado) e humanos (commits, tickets, entrevistas — que dão o <em>porquê</em> da
+              regra existir). O ativo final não é um catálogo de IFs/ELSEs, mas um
+              <button class="ec-term" data-term="inventario-de-comportamentos" type="button">Inventário de Comportamentos</button>:
+              regras core, efeitos colaterais e workarounds históricos, cada um classificado pela
+              confiança da evidência.
+            </p>
+          </div>
+
+          <!-- Visual -->
+          <div class="ec-visual ec-visual--split">
+            <figure class="ec-mermaid" data-ec-mermaid>
+              <figcaption class="ec-mermaid__cap">Descoberta guiada por jornadas críticas (As-Is)</figcaption>
+              <div class="ec-mermaid__graph" data-ec-mermaid-graph></div>
+              <script type="text/plain" data-ec-mermaid-src>
+flowchart TD
+    J[Jornada crítica de negócio<br/>ex.: Lead-to-Cash] --> T[Gatilho inicial]
+    T --> S[Seguir a trilha de execução / call stack]
+    S --> C1[Apex Classes]
+    S --> C2[Flows]
+    S --> C3[Integrações / ERP]
+    C1 & C2 & C3 --> INV[Inventário de Comportamentos]
+    INV --> R1[Regras de Negócio Core]
+    INV --> R2[Efeitos Colaterais]
+    INV --> R3[Workarounds & Exceções]
+    Z[Código morto / zumbi<br/>fora de toda jornada] -. isolado e descartado .-> X((✂))
+    style Z fill:#2a2a2a,stroke:#888,color:#bbb
+    style INV fill:#1a2733,stroke:#8a2be2,color:#e6d5ff
+              </script>
+              <details class="ec-mermaid__alt">
+                <summary>Equivalente textual</summary>
+                <p>
+                  A descoberta parte de uma jornada crítica de negócio, segue o gatilho pelo call stack e
+                  mapeia todos os componentes que ela toca (classes, flows, integrações), produzindo o
+                  Inventário de Comportamentos (regras core, efeitos colaterais, workarounds). O código que
+                  não pertence a jornada alguma é identificado como morto e isolado.
+                </p>
+              </details>
+            </figure>
+
+            <aside class="ec-analogy">
+              <div class="ec-analogy__icon" aria-hidden="true">📐</div>
+              <h3 class="ec-analogy__title">Régua de confiança da evidência</h3>
+              <p>Cada comportamento descoberto carrega o grau de certeza da sua origem:</p>
+              <table>
+                <tbody>
+                  <tr><th>Sólido &amp; Comprovado</th><td>Confirmado por múltiplas fontes; vira verdade do As-Is.</td></tr>
+                  <tr><th>Ainda é Hipótese</th><td>Evidência parcial; aguarda validação humana.</td></tr>
+                  <tr><th>Decisão em Aberto</th><td>Insuficiente; nunca promovido — fica explícito como dúvida.</td></tr>
+                </tbody>
+              </table>
+            </aside>
+          </div>
+
+          <!-- Prática educativa -->
+          <div class="ec-practice">
+            <h3 class="ec-practice__head">Prática · Governança Fail-Closed e validação humana</h3>
+            <p class="ec-practice__intro">
+              O ponto-chave: o inventário <strong>não</strong> é aceito porque a IA o produziu.
+            </p>
+            <div class="ec-prose">
+              <p>
+                Cada comportamento descoberto passa por <strong>validação humana via PR Review</strong> e
+                por uma postura
+                <button class="ec-term" data-term="fail-closed" type="button">Fail-Closed</button> — quando
+                a evidência é insuficiente, o item é marcado como <em>hipótese</em> ou <em>decisão em
+                aberto</em>, <strong>nunca</strong> promovido a verdade. Um "não confirmado" honesto vale
+                mais que um "confirmado" inventado.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefício -->
+          <div class="ec-callout ec-callout--biz">
+            <span class="ec-callout__icon" aria-hidden="true">💡</span>
+            <div class="ec-callout__body">
+              <span class="ec-callout__label">Benefício para o Negócio</span>
+              Mapear a verdade antes de migrar evita o pior risco de toda modernização: descobrir, em
+              produção, que uma regra silenciosa que valia milhões foi apagada. O Inventário de
+              Comportamentos transforma <strong>conhecimento tribal em ativo auditável</strong>.
+            </div>
+          </div>
+
+          <!-- Referências cruzadas -->
+          <div class="ec-xref">
+            <p class="ec-xref__title">📄 Referências cruzadas (conceito → fonte)</p>
+            <ul class="ec-xref__list">
+              <li><span class="ec-xref__concept">As-Is / To-Be</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">propostav2.md §1</a></li>
+              <li><span class="ec-xref__concept">Descoberta por jornadas</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">propostav2.md §2</a></li>
+              <li><span class="ec-xref__concept">Matriz de Evidências</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">propostav2.md §3</a></li>
+              <li><span class="ec-xref__concept">Inventário de Comportamentos</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">propostav2.md §4</a></li>
+            </ul>
+          </div>
+
+          <!-- Explore o pilar -->
+          <div class="ec-pillar-cta">
+            <div class="ec-pillar-cta__text">
+              <strong>Explore o pilar completo</strong>
+              <span>Engenharia Reversa Assistida por IA — a página-fonte com o método em profundidade.</span>
+            </div>
+            <a href="./proposta-engenharia-reversa.html" class="ec-btn ec-btn--primary">Engenharia Reversa →</a>
+          </div>
+
+          <!-- Reflexão -->
+          <div class="ec-reflect" data-ec-reflect data-from="2" data-to="3">
+            <p class="ec-reflect__q">
+              "Quanto da lógica crítica do seu sistema vive apenas na cabeça de poucas pessoas?"
+            </p>
+            <p class="ec-reflect__meta">
+              Se você já tem um inventário explícito e auditável, está no nível Mapeado.
+              <a href="#maturidade" class="ec-reflect__jump">Maturidade 2 → 3</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- ===================== MÓDULO 2 ===================== -->
+        <article id="modulo-2" class="ec-module ec-reveal" aria-labelledby="m2-titulo">
+          <div class="ec-module__recap">
+            <span>A verdade do sistema está mapeada. Agora se constrói sobre ela com rigor.</span>
+            <span class="ec-module__tag">Módulo 2 · Arquitetando a Confiança</span>
+          </div>
+
+          <p class="ec-eyebrow">Conceito central</p>
+          <h2 id="m2-titulo" class="ec-title ec-title--underline">A confiança vem da engenharia</h2>
+          <p class="ec-concept">
+            A capacidade vem do modelo; a confiança vem da engenharia. Um sistema de IA confiável tem
+            muito pouca IA no caminho crítico. A confiança não nasce de um prompt mais inteligente —
+            nasce de <strong>arquitetura mais disciplinada</strong>.
+          </p>
+
+          <div class="ec-prose">
+            <p>
+              Depois de mapear a verdade, é hora de construir sobre ela com rigor. O primeiro princípio
+              invariante é
+              <button class="ec-term" data-term="determinismo-primeiro" type="button">determinístico-primeiro</button>:
+              resolva com regras e dados tudo o que for possível, e gaste IA apenas no
+              <button class="ec-term" data-term="residuo-interpretativo" type="button">resíduo interpretativo</button>
+              — a fração da tarefa que só o modelo resolve. Mesma entrada deve produzir mesma saída; o
+              não-determinismo é isolado e testável.
+            </p>
+            <p>
+              O segundo princípio é a separação
+              <button class="ec-term" data-term="cerebro-vitrine" type="button">Cérebro × Vitrine</button>.
+              O motor cognitivo (pesado, sensível, com acesso a dados) é um sistema; a interface exposta é
+              outro. Eles se comunicam por um <strong>contrato estreito</strong>. A vitrine nunca toca o
+              banco diretamente; o cérebro nunca confia cegamente no que vem de fora.
+            </p>
+            <p>
+              O terceiro são os
+              <button class="ec-term" data-term="contrato-rigido" type="button">contratos rígidos</button>
+              em toda fronteira: a saída do LLM é input não confiável até ser validada por um schema
+              estrito que rejeita campos inesperados. É um "firewall" entre a probabilidade do modelo e o
+              determinismo do sistema. Sobre essa base assentam o isolamento das camadas epistêmicas
+              (evidência ≠ inferência ≠ julgamento), o
+              <button class="ec-term" data-term="open-world" type="button">Mundo Aberto</button>
+              (ausência de dado é incerteza explícita, nunca "falso"), os
+              <button class="ec-term" data-term="ledger-de-quota" type="button">ledgers de quota</button>
+              (FinOps) e a governança fail-closed.
+            </p>
+            <p>
+              Por fim, o
+              <button class="ec-term" data-term="mcp" type="button">MCP (Model Context Protocol)</button>
+              é a fronteira de segurança e interoperabilidade: o protocolo padronizado pelo qual o agente
+              ganha "mãos e olhos" de forma controlada, declarando explicitamente quais ferramentas pode
+              usar — o que também é uma fronteira de segurança.
+            </p>
+          </div>
+
+          <!-- Visual: pipeline determinístico (diagrama-chave) -->
+          <figure class="ec-mermaid" data-ec-mermaid style="margin:1.8rem 0;">
+            <figcaption class="ec-mermaid__cap">Pipeline determinístico (DAG) — o diagrama-chave</figcaption>
+            <div class="ec-mermaid__graph" data-ec-mermaid-graph></div>
+            <script type="text/plain" data-ec-mermaid-src>
+flowchart LR
+    IN[Entrada] --> V1[Validação determinística<br/>regras + dados]
+    V1 --> P[Poda precoce<br/>filtro barato primeiro]
+    P --> RES[Resíduo interpretativo]
+    RES --> LLM[[LLM<br/>chamado DENTRO da etapa]]
+    LLM --> CT{Contrato rígido<br/>schema valida a saída}
+    CT -- inválido --> REJ[🚫 Rejeita / degrada para incerteza]
+    CT -- válido --> OUT[Saída confiável]
+    LED[(Ledger de quota)] -. governa custo .-> LLM
+    style LLM fill:#2a1a3a,stroke:#8a2be2,color:#e6d5ff
+    style CT fill:#1a2733,stroke:#007bff,color:#cfe8ff
+    style REJ fill:#3a0d0d,stroke:#ff5555,color:#ffd5d5
+            </script>
+            <details class="ec-mermaid__alt">
+              <summary>Equivalente textual</summary>
+              <p>
+                A entrada passa por validação determinística e poda precoce; só o resíduo interpretativo
+                chega ao LLM, que é invocado dentro de uma etapa fixa. A saída do modelo é validada por um
+                contrato rígido: se inválida, é rejeitada ou degradada para incerteza; se válida, vira
+                saída confiável. Um ledger de quota governa o custo da chamada. O LLM nunca decide qual é a
+                próxima etapa.
+              </p>
+            </details>
+          </figure>
+
+          <div class="ec-visual ec-visual--split">
+            <figure class="ec-mermaid" data-ec-mermaid>
+              <figcaption class="ec-mermaid__cap">Cérebro × Vitrine</figcaption>
+              <div class="ec-mermaid__graph" data-ec-mermaid-graph></div>
+              <script type="text/plain" data-ec-mermaid-src>
+flowchart LR
+    subgraph Vitrine [Vitrine — leve, exposta]
+        UI[Interface / API pública]
+    end
+    subgraph Cerebro [Cérebro — pesado, sensível]
+        ENG[Motor cognitivo]
+        DB[(Dados)]
+    end
+    UI <-->|contrato estreito / HTTP| ENG
+    ENG --- DB
+    style Cerebro fill:#1a2733,stroke:#007bff,color:#cfe8ff
+    style Vitrine fill:#2a1a3a,stroke:#8a2be2,color:#e6d5ff
+              </script>
+              <details class="ec-mermaid__alt">
+                <summary>Equivalente textual</summary>
+                <p>
+                  A Vitrine (interface exposta, leve) e o Cérebro (motor cognitivo pesado com acesso a
+                  dados) são sistemas separados, ligados por um contrato estreito. A Vitrine nunca toca os
+                  dados diretamente.
+                </p>
+              </details>
+            </figure>
+
+            <aside class="ec-analogy">
+              <div class="ec-analogy__icon" aria-hidden="true">🏎️</div>
+              <h3 class="ec-analogy__title">O Freio de F1</h3>
+              <p>
+                Um carro de F1 não anda rápido <em>apesar</em> dos freios — anda rápido <strong>por causa</strong>
+                deles. É o freio potente que dá ao piloto a coragem de chegar voando na curva. Contratos,
+                determinismo e fail-closed são os freios que permitem inovar com IA em alta velocidade sem
+                sair da pista.
+              </p>
+            </aside>
+          </div>
+
+          <!-- Prática educativa: e se eu não fizer? -->
+          <div class="ec-practice">
+            <h3 class="ec-practice__head">Prática · "E se eu <em>não</em> fizer isso?"</h3>
+            <p class="ec-practice__intro">
+              Cada princípio é uma decisão arquitetural, não um slogan. Abra para ver a consequência de
+              ignorá-lo.
+            </p>
+            <div class="ec-ifnot">
+              <details class="ec-ifnot__item">
+                <summary>Sem contrato rígido na saída do LLM</summary>
+                <p class="ec-ifnot__risk">
+                  <strong>Risco:</strong> um campo inventado pelo modelo (um preço, um CPF, um status)
+                  atravessa o sistema e chega ao cliente como se fosse verdade. Nenhum erro é lançado.
+                </p>
+              </details>
+              <details class="ec-ifnot__item">
+                <summary>Sem ledger de quota (FinOps)</summary>
+                <p class="ec-ifnot__risk">
+                  <strong>Risco:</strong> a conta de API estoura sem aviso. O custo só aparece na fatura —
+                  a "conta de nuvem-surpresa" que mata projetos de IA.
+                </p>
+              </details>
+              <details class="ec-ifnot__item">
+                <summary>Sem Mundo Aberto (ausência = incerteza)</summary>
+                <p class="ec-ifnot__risk">
+                  <strong>Risco:</strong> falta de dado vira "falso" silencioso. O sistema afirma com
+                  confiança o que deveria admitir não saber — e a decisão errada é tomada.
+                </p>
+              </details>
+              <details class="ec-ifnot__item">
+                <summary>Sem separação Cérebro × Vitrine</summary>
+                <p class="ec-ifnot__risk">
+                  <strong>Risco:</strong> a interface exposta toca o banco sensível diretamente. Uma falha
+                  na vitrine vira uma brecha no cérebro — a superfície de ataque e de erro explode.
+                </p>
+              </details>
+            </div>
+          </div>
+
+          <!-- Benefício -->
+          <div class="ec-callout ec-callout--biz">
+            <span class="ec-callout__icon" aria-hidden="true">💡</span>
+            <div class="ec-callout__body">
+              <span class="ec-callout__label">Benefício para o Negócio</span>
+              Estas práticas atacam o maior bloqueador de adoção corporativa de IA: a desconfiança.
+              Determinístico-primeiro corta custo e erro na mesma jogada; contratos impedem dados
+              inventados de chegar ao cliente; abraçar a incerteza evita a decisão errada com falsa
+              confiança. O resultado é um sistema em que <strong>executivos e auditores se sentem seguros
+              para confiar</strong>.
+            </div>
+          </div>
+
+          <!-- Referências cruzadas -->
+          <div class="ec-xref">
+            <p class="ec-xref__title">📄 Referências cruzadas (conceito → fonte)</p>
+            <ul class="ec-xref__list">
+              <li><span class="ec-xref__concept">Os 10 princípios</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-engenharia-agentes-ia.md</a></li>
+              <li><span class="ec-xref__concept">Determinístico-primeiro</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-eai §2</a></li>
+              <li><span class="ec-xref__concept">Cérebro × Vitrine</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-eai §2</a></li>
+              <li><span class="ec-xref__concept">Ledgers / FinOps</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-eai §4</a></li>
+              <li><span class="ec-xref__concept">MCP como fronteira</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-agent-driven §2</a></li>
+            </ul>
+          </div>
+
+          <!-- Explore o pilar -->
+          <div class="ec-pillar-cta">
+            <div class="ec-pillar-cta__text">
+              <strong>Explore o pilar completo</strong>
+              <span>Engenharia de Agentes de IA — os dez princípios em uma jornada interativa.</span>
+            </div>
+            <a href="./engenharia-agentes-ia.html" class="ec-btn ec-btn--primary">Engenharia de Agentes →</a>
+          </div>
+
+          <!-- Reflexão -->
+          <div class="ec-reflect" data-ec-reflect data-from="3" data-to="4">
+            <p class="ec-reflect__q">
+              "Onde, no seu sistema, a saída de um LLM toca dados ou o cliente sem passar por um contrato?"
+            </p>
+            <p class="ec-reflect__meta">
+              Se toda fronteira tem um contrato e o LLM nunca pilota o fluxo, você está Arquitetado.
+              <a href="#maturidade" class="ec-reflect__jump">Maturidade 3 → 4</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- ===================== MÓDULO 3 ===================== -->
+        <article id="modulo-3" class="ec-module ec-reveal" aria-labelledby="m3-titulo">
+          <div class="ec-module__recap">
+            <span>O comportamento está governado. Agora se escala a intenção — sem perder o controle.</span>
+            <span class="ec-module__tag">Módulo 3 · A Nova Maestria</span>
+          </div>
+
+          <p class="ec-eyebrow">Conceito central</p>
+          <h2 id="m3-titulo" class="ec-title ec-title--underline">De Executor a Orquestrador Cognitivo</h2>
+          <p class="ec-concept">
+            A maestria não está em digitar código mais rápido — está em dirigir a inteligência da máquina
+            com intenção clara. Como um chef executivo que não cozinha cada prato, mas garante que cada
+            prato saia certo, o profissional sobe da execução para o <strong>julgamento</strong>.
+          </p>
+
+          <div class="ec-prose">
+            <p>
+              O Vibe Coding maduro não é "caos de prompts": é <strong>intenção estruturada e
+              persistente</strong>. O humano fornece clareza, contexto, exemplos e iteração; a máquina
+              materializa. Quando essa intenção vive num prompt efêmero, ela se perde. Quando vive numa
+              <strong>especificação versionada</strong>, ela escala.
+            </p>
+            <p>
+              É por isso que o método central é o
+              <button class="ec-term" data-term="sdd" type="button">Spec-Driven Development (SDD)</button>:
+              a especificação é a <strong>fonte da verdade</strong>. Em vez de pedir "faça X" e torcer,
+              escreve-se o <em>o quê</em> e o <em>porquê</em> — e a IA implementa <em>contra</em> essa
+              spec, com os testes
+              (<button class="ec-term" data-term="bdd" type="button">BDD</button>) como alvo objetivo. O
+              contexto sai da cabeça e entra no repositório, onde a máquina consegue ler e seguir.
+            </p>
+            <p>
+              O fluxo prático, validado no estudo de caso Devin + Salesforce, tem quatro passos:
+              <strong>Spec</strong> (definição SDD do comportamento desejado) → <strong>Retrieve</strong>
+              (descoberta autônoma do contexto relevante) → <strong>Refatorar</strong> (edição guiada pela
+              spec) → <strong>Validar</strong> (Apex Tests automáticos que provam que a intenção foi
+              cumprida). Note como isso fecha o ciclo da jornada: a spec é o As-Is/To-Be do Módulo 1
+              tornado executável, sob os contratos do Módulo 2.
+            </p>
+            <p>
+              Por fim, o <strong>arsenal de inteligência organizacional</strong>, que cresce com o tempo:
+              <strong>Skills</strong> (procedimentos reutilizáveis — refatoração sem risco, testes
+              exaustivos, documentação), <strong>Playbooks</strong> (receitas de processo — code review
+              iterativo, onboarding, migração de framework) e <strong>Knowledge</strong> (o ativo que
+              acumula — arquitetura e padrões, convenções, lições aprendidas e <em>gotchas</em>).
+              Versionar esse estado cognitivo no Git é o que permite reverter não só o código, mas o
+              raciocínio que o produziu.
+            </p>
+          </div>
+
+          <!-- Visual: fluxo SDD + analogia chef -->
+          <div class="ec-visual ec-visual--split">
+            <figure class="ec-mermaid" data-ec-mermaid>
+              <figcaption class="ec-mermaid__cap">Fluxo Spec-Driven Development</figcaption>
+              <div class="ec-mermaid__graph" data-ec-mermaid-graph></div>
+              <script type="text/plain" data-ec-mermaid-src>
+flowchart LR
+    SPEC[📜 SPEC<br/>definição SDD = fonte da verdade] --> RET[🔍 RETRIEVE<br/>descoberta autônoma do contexto]
+    RET --> REF[✏️ REFATORAR<br/>edição guiada pela spec]
+    REF --> VAL{✅ VALIDAR<br/>testes BDD / Apex Tests}
+    VAL -- falha --> REF
+    VAL -- passa --> DONE[Comportamento provado = intenção cumprida]
+    DONE -. lições .-> KN[(Knowledge<br/>ativo que cresce)]
+    style SPEC fill:#1a2733,stroke:#007bff,color:#cfe8ff
+    style VAL fill:#2a1a3a,stroke:#8a2be2,color:#e6d5ff
+              </script>
+              <details class="ec-mermaid__alt">
+                <summary>Equivalente textual</summary>
+                <p>
+                  A spec SDD é a fonte da verdade; a partir dela a IA descobre o contexto (retrieve),
+                  refatora guiada pela spec e valida com testes. Se falha, volta a refatorar; se passa, a
+                  intenção está cumprida e as lições alimentam o Knowledge organizacional.
+                </p>
+              </details>
+            </figure>
+
+            <aside class="ec-analogy">
+              <div class="ec-analogy__icon" aria-hidden="true">👨‍🍳</div>
+              <h3 class="ec-analogy__title">O Chef de Cozinha</h3>
+              <p>A maestria é julgamento, não digitação.</p>
+              <table>
+                <thead>
+                  <tr><th>Papel</th><th>Quem</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>O cliente</strong></td><td>A intenção / o negócio define o que entregar.</td></tr>
+                  <tr><td><strong>O cozinheiro</strong></td><td>A IA executa com velocidade e técnica.</td></tr>
+                  <tr><td><strong>O chef executivo</strong></td><td>Você garante que cada prato saia certo — julgamento, padrão, contexto.</td></tr>
+                </tbody>
+              </table>
+            </aside>
+          </div>
+
+          <!-- Prática educativa -->
+          <div class="ec-practice">
+            <h3 class="ec-practice__head">Prática · Mapeie uma tarefa para o arsenal</h3>
+            <p class="ec-practice__intro">
+              Pegue uma tarefa real do seu dia a dia e responda: cada execução deveria deixar a
+              organização mais inteligente.
+            </p>
+            <div class="ec-prose">
+              <p>
+                Qual <strong>Skill</strong> a executa (o procedimento reutilizável)? Qual
+                <strong>Playbook</strong> a enquadra (a receita de processo)? Qual
+                <strong>Knowledge</strong> ela alimenta (o aprendizado que fica)? Se a resposta para as
+                três for "nenhuma", a tarefa terminou e não deixou rastro — a inteligência evaporou com o
+                prompt.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefício -->
+          <div class="ec-callout ec-callout--biz">
+            <span class="ec-callout__icon" aria-hidden="true">💡</span>
+            <div class="ec-callout__body">
+              <span class="ec-callout__label">Benefício para o Negócio</span>
+              SDD e o arsenal transformam a IA de fonte de surpresas em colaborador previsível. A
+              intencionalidade deixa de depender do talento individual de quem escreve o prompt e passa a
+              ser um <strong>ativo da organização</strong> — versionado, audível e reutilizável. É a
+              economia de escala da inteligência.
+            </div>
+          </div>
+
+          <!-- Referências cruzadas -->
+          <div class="ec-xref">
+            <p class="ec-xref__title">📄 Referências cruzadas (conceito → fonte)</p>
+            <ul class="ec-xref__list">
+              <li><span class="ec-xref__concept">Orquestrador Cognitivo / Chef</span>
+                <a href="./devin.html">devin.html</a></li>
+              <li><span class="ec-xref__concept">Spec-Driven Development</span>
+                <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">guia-agent-driven §2</a></li>
+              <li><span class="ec-xref__concept">Spec→Retrieve→Refatorar→Validar</span>
+                <a href="./devin.html">devin.html (caso Salesforce)</a></li>
+              <li><span class="ec-xref__concept">Skills / Playbooks / Knowledge</span>
+                <a href="./devin.html">devin.html</a></li>
+            </ul>
+          </div>
+
+          <!-- Explore o pilar -->
+          <div class="ec-pillar-cta">
+            <div class="ec-pillar-cta__text">
+              <strong>Explore o pilar completo</strong>
+              <span>Vibe Coding com Devin — a evolução para Orquestrador Cognitivo, em profundidade.</span>
+            </div>
+            <a href="./devin.html" class="ec-btn ec-btn--primary">Vibe Coding com Devin →</a>
+          </div>
+
+          <!-- Reflexão -->
+          <div class="ec-reflect" data-ec-reflect data-from="4" data-to="5">
+            <p class="ec-reflect__q">
+              "Sua intenção vive num prompt que você joga fora, ou numa especificação que sua organização
+              versiona e reusa?"
+            </p>
+            <p class="ec-reflect__meta">
+              Se a spec é sua fonte da verdade e o conhecimento acumula, você é Governado.
+              <a href="#maturidade" class="ec-reflect__jump">Maturidade 4 → 5</a>
+            </p>
+          </div>
+        </article>
+
+        <!-- ===================== FECHO: MATURIDADE ===================== -->
+        <section id="maturidade" class="ec-module ec-reveal" aria-labelledby="mat-titulo">
+          <p class="ec-eyebrow">Fecho da jornada</p>
+          <h2 id="mat-titulo" class="ec-title ec-title--underline">Onde está o seu sistema/time hoje?</h2>
+          <p class="ec-lede">
+            A régua "da Mágica ao Governado" é o eixo da jornada. Marque o seu estágio e receba o próximo
+            passo concreto.
+          </p>
+
+          <div class="ec-ruler" data-ec-ruler>
+            <div class="ec-ruler__grid" role="tablist" aria-label="Estágios de maturidade">
+              <button class="ec-ruler__step" role="tab" data-stage="1" aria-selected="false" aria-controls="ruler-panel">
+                <span class="ec-ruler__num">1</span>
+                <span class="ec-ruler__name">Mágica</span>
+                <span class="ec-ruler__sym">"Funcionou na demo."</span>
+              </button>
+              <button class="ec-ruler__step" role="tab" data-stage="2" aria-selected="false" aria-controls="ruler-panel">
+                <span class="ec-ruler__num">2</span>
+                <span class="ec-ruler__name">Consciência</span>
+                <span class="ec-ruler__sym">Reconhece o Crash Silencioso.</span>
+              </button>
+              <button class="ec-ruler__step" role="tab" data-stage="3" aria-selected="false" aria-controls="ruler-panel">
+                <span class="ec-ruler__num">3</span>
+                <span class="ec-ruler__name">Mapeado</span>
+                <span class="ec-ruler__sym">Implícito virou explícito.</span>
+              </button>
+              <button class="ec-ruler__step" role="tab" data-stage="4" aria-selected="false" aria-controls="ruler-panel">
+                <span class="ec-ruler__num">4</span>
+                <span class="ec-ruler__name">Arquitetado</span>
+                <span class="ec-ruler__sym">Contratos, determinismo, MCP.</span>
+              </button>
+              <button class="ec-ruler__step" role="tab" data-stage="5" aria-selected="false" aria-controls="ruler-panel">
+                <span class="ec-ruler__num">5</span>
+                <span class="ec-ruler__name">Governado</span>
+                <span class="ec-ruler__sym">A spec é a fonte da verdade.</span>
+              </button>
+            </div>
+
+            <div class="ec-ruler__panel" id="ruler-panel" role="tabpanel" data-ec-ruler-panel aria-live="polite">
+              <p class="ec-ruler__placeholder">Selecione um estágio acima para ver o sintoma e o próximo passo concreto.</p>
+            </div>
+          </div>
+
+          <!-- Dogfooding -->
+          <div class="ec-dogfood ec-reveal">
+            <h3>Este site pratica o que ensina</h3>
+            <ul>
+              <li><strong>Determinístico-primeiro:</strong> conteúdo e navegação são estáticos; nada depende de chamar um LLM em runtime.</li>
+              <li><strong>Pouca IA no caminho crítico:</strong> o site não executa modelos ao vivo — é conteúdo curado e referenciado.</li>
+              <li><strong>Reaproveitamento sobre reinvenção:</strong> a jornada referencia as três páginas-fonte em vez de duplicá-las — não se paga duas vezes pelo mesmo processamento.</li>
+              <li><strong>Rastreabilidade:</strong> todo conceito técnico aponta para o arquivo-fonte no repositório.</li>
+              <li><strong>Intenção versionada:</strong> a especificação deste site vive em <em>docs/specs/pages/engenharia-confianca/</em> — não num prompt efêmero.</li>
+            </ul>
+          </div>
+
+          <p class="ec-closer">
+            "Você não escreve apenas código para a máquina executar. Você escreve o contexto que ensina a
+            máquina a executar com a sua intenção. Faça esse contexto bem — e a confiança escala junto."
+          </p>
+        </section>
+
+      </div><!-- /.ec-content -->
+    </div><!-- /.ec-layout -->
+  </main>
+
+  <footer class="ec-footer">
+    <div class="ec-container ec-footer__inner">
+      <p class="ec-footer__brand">A Engenharia da Confiança</p>
+      <p class="ec-footer__meta">
+        Uma jornada que conecta Engenharia Reversa, Engenharia de Agentes e Vibe Coding ·
+        Maurício Yokoyama Issei
+      </p>
+      <p class="ec-footer__nav">
+        <a href="./catalogo.html">Catálogo</a> ·
+        <a href="./proposta-engenharia-reversa.html">Engenharia Reversa</a> ·
+        <a href="./engenharia-agentes-ia.html">Engenharia de Agentes</a> ·
+        <a href="./devin.html">Vibe Coding</a> ·
+        <a href="#hero">Voltar ao topo</a>
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/engenharia-confianca.js"></script>
+</body>
+
+</html>
