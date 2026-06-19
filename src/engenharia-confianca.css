@@ -304,7 +304,8 @@ body.ec-body {
   position: relative;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
-  margin: 0 0 1rem;
+  margin: 0 0 1.4rem; /* UX: respiro maior abaixo do título do módulo */
+  line-height: 1.15;
 }
 .ec-title--underline { padding-bottom: 0.5rem; display: inline-block; }
 .ec-title--underline::after {
@@ -317,8 +318,11 @@ body.ec-body {
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
-.ec-lede { font-size: 1.12rem; color: var(--ec-text); max-width: 70ch; }
-.ec-prose p { margin: 0 0 1.1rem; max-width: 72ch; }
+.ec-lede { font-size: 1.12rem; color: var(--ec-text); max-width: 70ch; line-height: 1.7; }
+/* UX (carga cognitiva): largura de medida ~70ch é a faixa ótima de leitura (50–75 cpl);
+   line-height generoso e margem maior entre parágrafos dão "respiro" e reduzem fadiga. */
+.ec-prose p { margin: 0 0 1.5rem; max-width: 70ch; line-height: 1.8; }
+.ec-prose p:last-child { margin-bottom: 0; }
 .ec-prose strong { color: var(--ec-heading); }
 
 /* ============================ Hero ============================ */
@@ -517,7 +521,9 @@ body.ec-body {
 
 /* ============================ Módulo (gabarito) ============================ */
 
-.ec-module { scroll-margin-top: 110px; padding-block: 3.2rem; border-top: 1px solid var(--ec-border); }
+/* UX (ritmo): mais ar entre módulos. O padding fluido escala com o viewport
+   (clamp) — compacto no celular, espaçoso no desktop/ultrawide. */
+.ec-module { scroll-margin-top: 110px; padding-block: clamp(3rem, 5.5vw, 5rem); border-top: 1px solid var(--ec-border); }
 .ec-module:first-of-type { border-top: none; }
 .ec-module__recap {
   font-size: 0.84rem;
@@ -836,6 +842,219 @@ body.ec-body {
 
 .ec-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .ec-reveal.is-in { opacity: 1; transform: none; }
+
+/* ============================ Rail (TOC + glossário) ============================ */
+/* UX (wayfinding): a coluna lateral vira um único trilho sticky. Agrupar índice e
+   glossário evita uma 3ª coluna e mantém ambos no campo de visão durante a leitura. */
+
+.ec-rail { display: flex; flex-direction: column; gap: 1.6rem; }
+
+@media (min-width: 1100px) {
+  .ec-rail {
+    position: sticky;
+    top: 96px;
+    max-height: calc(100vh - 116px);
+    overflow: auto;
+    padding-right: 0.4rem; /* respiro para a scrollbar interna */
+  }
+  /* O trilho já rola; o glossário interno volta a ser estático para não criar
+     sticky aninhado. */
+  .ec-rail .ec-gloss { position: static; top: auto; max-height: none; overflow: visible; }
+}
+
+/* No mobile o trilho some: o índice reaparece como menu colapsável (.ec-toc-m)
+   e o glossário pelo drawer (FAB). */
+@media (max-width: 1099px) {
+  .ec-rail { display: none; }
+}
+
+/* Índice lateral (Sticky ToC) */
+.ec-toc {
+  border: 1px solid var(--ec-border);
+  border-radius: var(--ec-radius);
+  background: var(--ec-surface);
+  padding: 1rem 1.1rem;
+}
+.ec-toc__title {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--ec-muted); margin: 0 0 0.7rem;
+}
+.ec-toc__list { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+.ec-toc__list li { margin: 0; }
+.ec-toc__list a,
+.ec-toc__gloss {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.6rem;        /* UX: alvo de toque confortável (~44px de altura) */
+  min-height: 44px;
+  border-radius: 8px;
+  color: var(--ec-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.ec-toc__list a:hover { background: rgba(255,255,255,0.05); color: var(--ec-heading); text-decoration: none; }
+/* Estado atual via scrollspy (mesmo aria-current usado pela nav do topo) */
+.ec-toc__list a[aria-current="true"] {
+  background: rgba(0, 123, 255, 0.12);
+  border-left-color: var(--ec-accent);
+  color: var(--ec-heading);
+}
+.ec-toc__n {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.9rem; height: 1.5rem;
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--ec-heading);
+  background: var(--ec-bg);
+  border: 1px solid var(--ec-border);
+  border-radius: 6px;
+  flex: none;
+}
+
+/* Índice colapsável (mobile/tablet) */
+.ec-toc-m {
+  display: none;
+  border: 1px solid var(--ec-border);
+  border-radius: var(--ec-radius);
+  background: var(--ec-surface);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+@media (max-width: 1099px) { .ec-toc-m { display: block; } }
+.ec-toc-m__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  min-height: 48px;             /* UX: alvo de toque generoso no resumo */
+  font-weight: 600;
+  color: var(--ec-heading);
+}
+.ec-toc-m__summary::-webkit-details-marker { display: none; }
+.ec-toc-m__chev { transition: transform 0.2s ease; color: var(--ec-link); }
+.ec-toc-m[open] .ec-toc-m__chev { transform: rotate(180deg); }
+.ec-toc-m__list { list-style: none; margin: 0; padding: 0 0.6rem 0.6rem; }
+.ec-toc-m__list a,
+.ec-toc-m__gloss {
+  display: flex; align-items: center; gap: 0.6rem;
+  width: 100%;
+  padding: 0.7rem 0.6rem;
+  min-height: 44px;            /* UX: alvo de toque adequado */
+  border-radius: 8px;
+  color: var(--ec-text);
+  font: inherit; font-size: 0.92rem;
+  background: transparent; border: none; text-align: left;
+  cursor: pointer; text-decoration: none;
+}
+.ec-toc-m__list a:hover,
+.ec-toc-m__gloss:hover { background: rgba(255,255,255,0.05); color: var(--ec-heading); text-decoration: none; }
+
+/* ============================ Callout de conceito ============================ */
+/* UX: variante para isolar conceitos densos (Limiar de 98%, A2UI). Borda lateral
+   em gradiente + fundo suave criam uma "ilha" visual que quebra a parede de texto. */
+.ec-callout--concept {
+  background: linear-gradient(180deg, rgba(138,43,226,0.07), rgba(0,123,255,0.05));
+  border-color: rgba(138, 43, 226, 0.32);
+  border-left: 4px solid transparent;
+  border-image: var(--ec-gradient) 1;
+  border-image-slice: 1;
+}
+.ec-callout--concept .ec-callout__label {
+  display: block;
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ec-link); font-weight: 700; margin-bottom: 0.3rem;
+}
+.ec-callout--concept .ec-callout__body { line-height: 1.75; }
+/* dentro de prosa, o callout respira como um parágrafo de destaque */
+.ec-prose .ec-callout--concept { max-width: none; margin: 1.8rem 0; }
+
+/* ============================ Diagram container (placeholder) ============================ */
+/* UX: reserva o espaço do diagrama futuro com um esqueleto responsivo, comunicando a
+   intenção (Inventário → Schemas → MCP) sem deixar buraco no layout. */
+.diagram-container {
+  margin: clamp(2rem, 5vw, 3.5rem) 0;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1.5px dashed var(--ec-border);
+  border-radius: var(--ec-radius);
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.012) 0 12px, transparent 12px 24px),
+    var(--ec-surface);
+  text-align: center;
+}
+.diagram-container__badge {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ec-muted);
+  border: 1px solid var(--ec-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.diagram-container__flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 1.1rem;
+}
+.diagram-container__node {
+  display: flex; flex-direction: column; gap: 0.2rem;
+  justify-content: center;
+  min-width: 150px; flex: 1 1 150px; max-width: 240px;
+  padding: 0.8rem 1rem;
+  background: var(--ec-bg);
+  border: 1px solid var(--ec-border);
+  border-radius: 10px;
+  color: var(--ec-heading);
+  font-weight: 600; font-size: 0.86rem;
+}
+.diagram-container__node small { color: var(--ec-link); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; }
+.diagram-container__arrow { display: flex; align-items: center; color: var(--ec-accent-2); font-size: 1.3rem; font-weight: 700; }
+.diagram-container__cap { font-size: 0.88rem; color: var(--ec-muted); max-width: 64ch; margin: 0 auto; line-height: 1.6; }
+.diagram-container__cap strong { color: var(--ec-text); }
+/* UX: no mobile o fluxo empilha na vertical e a seta aponta para baixo */
+@media (max-width: 640px) {
+  .diagram-container__flow { flex-direction: column; align-items: stretch; }
+  .diagram-container__node { max-width: none; }
+  .diagram-container__arrow { justify-content: center; transform: rotate(90deg); }
+}
+
+/* ============================ Responsividade fluida ============================ */
+/* UX: do ultrawide ao smartphone, ajustando medida de leitura, densidade e alvos de toque. */
+
+/* Ultrawide / monitores grandes: aproveita a largura sem esticar demais a medida. */
+@media (min-width: 1600px) {
+  .ec-layout { max-width: 1320px; grid-template-columns: 280px minmax(0, 1fr); gap: 3rem; }
+  .ec-container { max-width: 1320px; }
+  .ec-prose p { max-width: 72ch; font-size: 1.05rem; }
+}
+
+/* Faixa desktop padrão: largura da coluna do trilho levemente maior p/ o ToC. */
+@media (min-width: 1100px) and (max-width: 1599px) {
+  .ec-layout { grid-template-columns: 260px minmax(0, 1fr); }
+}
+
+/* Tablets premium: nav do topo com alvos de toque maiores; respiro preservado. */
+@media (min-width: 641px) and (max-width: 1099px) {
+  .ec-nav__trail a { padding: 0.5rem 0.7rem; min-height: 40px; display: inline-flex; align-items: center; }
+  .ec-section { padding-block: 3.2rem; }
+}
+
+/* Smartphones: compacta hero/medida, garante toque ≥44px na navegação do topo. */
+@media (max-width: 640px) {
+  .ec-nav__inner { gap: 0.6rem; }
+  .ec-nav__trail { gap: 0.2rem; }
+  .ec-nav__trail a { padding: 0.55rem 0.6rem; min-height: 44px; display: inline-flex; align-items: center; }
+  .ec-hero { padding-block: 3rem 2.5rem; }
+  .ec-prose p { font-size: 1rem; }
+  .ec-callout { flex-direction: column; gap: 0.5rem; }
+}
 
 /* ============================ Reduced motion ============================ */
 
