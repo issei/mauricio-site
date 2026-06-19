@@ -75,9 +75,32 @@ test.describe('Engenharia da Confiança — jornada', () => {
     await page.goto(PATH);
     const gloss = page.locator('#glossario');
     await expect(gloss).toBeVisible();
-    await expect(gloss.locator('dt')).toHaveCount(18);
+    await expect(gloss.locator('dt')).toHaveCount(21);
     await expect(page.locator('#g-crash-silencioso')).toContainText('Crash Silencioso');
     await expect(page.locator('#g-mcp')).toContainText('Model Context Protocol');
+    // verbetes adicionados na refatoração ISM v1.0
+    await expect(page.locator('#g-ism')).toContainText('Intentional Systems Model');
+    await expect(page.locator('#g-limiar-98')).toContainText('98%');
+    await expect(page.locator('#g-a2ui')).toContainText('Agent-to-User Interface');
+  });
+
+  test('refatoração ISM: M0 formaliza o modelo; M2 traz o Limiar de 98%; M3 traz A2UI', async ({ page }) => {
+    await page.goto(PATH);
+    // ISM v1.0 ancorado na introdução do M0
+    await expect(page.locator('#modulo-0')).toContainText('Intentional Systems Model (ISM) v1.0');
+    // Limiar de 98% no M2 com fallback estruturado
+    await expect(page.locator('#modulo-2')).toContainText('Limiar de 98% de Certeza');
+    await expect(page.locator('#modulo-2')).toContainText('fallback estruturado');
+    // A2UI no M3 (renderização determinística)
+    await expect(page.locator('#modulo-3')).toContainText('A2UI');
+    await expect(page.locator('#modulo-3')).toContainText('emitir intenção de interface');
+  });
+
+  test('encadeamento de artefatos M1 → M2 → M3 está explícito', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('#modulo-1')).toContainText('Encadeamento de artefatos');
+    await expect(page.locator('#modulo-2')).toContainText('assinatura das ferramentas');
+    await expect(page.locator('#modulo-3')).toContainText('costura a jornada');
   });
 
   test('glossário: termo inline destaca o verbete correspondente (desktop)', async ({ page }) => {
