@@ -543,9 +543,9 @@ def run_pipeline(item, llm):
         return True
 
 ledger = TokenLedger(daily_cap=1000)
-for lead in fila:
-    if not ledger.try_spend(cost(lead)):
-        mark_pending(lead)                     # retoma na proxima onda
+for item in fila:
+    if not ledger.try_spend(cost(item)):
+        mark_pending(item)                     # retoma na proxima onda
         break                                  # para limpo, em ponto seguro
 </code></pre>
           </figure>
