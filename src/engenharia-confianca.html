@@ -197,15 +197,15 @@
             </div>
             <div class="ec-gloss__entry" id="g-cerebro-vitrine">
               <dt>Cérebro × Vitrine</dt>
-              <dd>Separação física entre motor cognitivo (sensível) e interface (exposta), ligados por contrato estreito.</dd>
+              <dd>Separação física entre motor cognitivo (sensível) e interface (exposta), ligados por contrato estreito. Estendida à apresentação, vira <a href="#g-a2ui">A2UI</a>.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-contrato-rigido">
               <dt>Contrato rígido (schema)</dt>
-              <dd>Esquema estrito que rejeita campos inesperados na saída do LLM; a saída é input não confiável até validar.</dd>
+              <dd>Esquema estrito que rejeita campos inesperados na saída do LLM; a saída é input não confiável até validar. Rejeita também inferências abaixo do <a href="#g-limiar-98">Limiar de 98% de Certeza</a>, forçando fallback estruturado.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-open-world">
               <dt>Open-World / Mundo Aberto</dt>
-              <dd>Ausência de dado é incerteza explícita, nunca "falso"; ensinar o sistema a dizer "não sei".</dd>
+              <dd>Ausência de dado é incerteza explícita, nunca "falso"; ensinar o sistema a dizer "não sei". Operacionalmente, ancora o <a href="#g-limiar-98">Limiar de 98%</a>: abaixo do piso de confiança, a saída é tratada como incerteza, não como fato.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-ledger-de-quota">
               <dt>Ledger de quota</dt>
@@ -221,11 +221,11 @@
             </div>
             <div class="ec-gloss__entry" id="g-fail-closed">
               <dt>Fail-closed</dt>
-              <dd>Se não foi possível concluir, não se marca como concluído; registra-se o bloqueio e para-se num ponto seguro.</dd>
+              <dd>Se não foi possível concluir, não se marca como concluído; registra-se o bloqueio e para-se num ponto seguro. Disparado quando a confiança fica abaixo do <a href="#g-limiar-98">Limiar de 98%</a> — para-se em vez de promover um palpite.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-mcp">
               <dt>MCP (Model Context Protocol)</dt>
-              <dd>Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança).</dd>
+              <dd>Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança). Evolui para <a href="#g-a2ui">A2UI</a> quando o agente o usa não só para consultar dados, mas para emitir intenção de interface a ser renderizada deterministicamente.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-sdd">
               <dt>SDD (Spec-Driven Development)</dt>
@@ -233,7 +233,19 @@
             </div>
             <div class="ec-gloss__entry" id="g-orquestrador-cognitivo">
               <dt>Orquestrador Cognitivo</dt>
-              <dd>Quem dirige a inteligência da máquina com intenção (o "chef executivo"), em vez de executar cada linha.</dd>
+              <dd>Quem dirige a inteligência da máquina com intenção (o "chef executivo"), em vez de executar cada linha. Consome as <em>tools</em> tipadas derivadas dos schemas (M2) e pode operar em modo <a href="#g-a2ui">A2UI</a>.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-ism">
+              <dt>ISM (Intentional Systems Model) v1.0</dt>
+              <dd>Modelo de referência que trata cada output de IA como artefato governado por arquitetura, não por probabilidade — com foco em qualidade e clareza determinística. Esta jornada (M0 → M3) é sua implementação prática; cada fase produz o insumo governado da seguinte.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-limiar-98">
+              <dt>Limiar de 98% de Certeza</dt>
+              <dd>Piso de confiança abaixo do qual toda inferência do LLM é interceptada pela arquitetura e degradada para um <strong>fallback estruturado</strong> (incerteza explícita, revisão humana ou rota determinística), em vez de virar fato. Une <a href="#g-contrato-rigido">contrato rígido</a>, <a href="#g-open-world">Open-World</a> e <a href="#g-fail-closed">fail-closed</a> num único critério.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-a2ui">
+              <dt>A2UI (Agent-to-User Interface)</dt>
+              <dd>Arquitetura em que o orquestrador usa o <a href="#g-mcp">MCP</a> para emitir intenção de interface: o Cérebro decide <em>o quê</em> mostrar (dados estruturados sob contrato) e a Vitrine determinística decide <em>como</em> renderizar — a separação <a href="#g-cerebro-vitrine">Cérebro × Vitrine</a> na camada de apresentação.</dd>
             </div>
           </dl>
         </div>
@@ -263,6 +275,18 @@
           </p>
 
           <div class="ec-prose">
+            <p>
+              <strong>Nota de arquitetura — Intentional Systems Model (ISM) v1.0.</strong> Esta jornada,
+              do Módulo 0 ao Módulo 3, não é uma coletânea de boas práticas avulsas: é a
+              <strong>implementação prática do</strong>
+              <button class="ec-term" data-term="ism" type="button">Intentional Systems Model (ISM) v1.0</button>
+              — um modelo de referência cujo objetivo é a <strong>qualidade e a clareza determinística dos
+              outputs de IA</strong>. O ISM trata cada saída do modelo como um artefato que precisa ser
+              governado por arquitetura, não pela esperança de que o prompt acerte. Os quatro módulos são
+              as quatro fases dessa implementação: reconhecer a falha de intenção (M0), congelar a verdade
+              do sistema (M1), impor as garantias de execução (M2) e versionar a intenção que orquestra
+              tudo (M3). Leia o que segue como a especificação de infraestrutura de um sistema intencional.
+            </p>
             <p>
               A IA é um amplificador. Entregue a ela uma organização com clareza e ela escala a clareza;
               entregue uma organização com confusão e ela escala a confusão — só que mais rápido e com
@@ -456,6 +480,14 @@ flowchart LR
               regras core, efeitos colaterais e workarounds históricos, cada um classificado pela
               confiança da evidência.
             </p>
+            <p>
+              <strong>Encadeamento de artefatos (M1 → M2).</strong> Este inventário não morre como
+              documentação de prateleira: ele é a <strong>matéria-prima dos contratos</strong>. Cada regra
+              core e cada efeito colateral catalogado vira uma cláusula nos <em>schemas</em> de validação do
+              Módulo 2 — o As-Is auditado é o que define, sem ambiguidade, o que um output válido pode e não
+              pode conter. Mapear a verdade não é um exercício de arqueologia; é gerar a especificação
+              executável das fronteiras que vêm a seguir.
+            </p>
           </div>
 
           <!-- Visual -->
@@ -617,7 +649,30 @@ flowchart TD
               <button class="ec-term" data-term="mcp" type="button">MCP (Model Context Protocol)</button>
               é a fronteira de segurança e interoperabilidade: o protocolo padronizado pelo qual o agente
               ganha "mãos e olhos" de forma controlada, declarando explicitamente quais ferramentas pode
-              usar — o que também é uma fronteira de segurança.
+              usar — uma fronteira de segurança que, no Módulo 3, deixa de ser só consulta de dados e passa
+              a governar até a renderização da interface (<button class="ec-term" data-term="a2ui" type="button">A2UI</button>).
+            </p>
+            <p>
+              <strong>O Limiar de 98% de Certeza.</strong> Contrato rígido, Mundo Aberto e fail-closed não
+              são três regras soltas — convergem num único critério operacional. Toda inferência do LLM
+              carrega um grau de confiança, e a arquitetura define um piso explícito: o
+              <button class="ec-term" data-term="limiar-98" type="button">Limiar de 98% de Certeza</button>.
+              Qualquer saída cuja confiança fique <strong>abaixo desse limite é interceptada pela
+              arquitetura antes de virar fato</strong>: o schema a rejeita (contrato rígido), o sistema a
+              trata como ausência de evidência e não como verdade (Mundo Aberto) e para num ponto seguro,
+              registrando o bloqueio (fail-closed). O que se devolve nunca é um palpite silencioso, e sim um
+              <strong>fallback estruturado</strong> — pedir revisão humana, responder "incerto" de forma
+              explícita ou acionar a rota determinística alternativa. É assim que se torna o Crash
+              Silencioso impossível por construção.
+            </p>
+            <p>
+              <strong>Encadeamento de artefatos (M1 → M2 → M3).</strong> Note de onde vêm esses schemas:
+              eles não são inventados no vácuo — derivam diretamente do
+              <button class="ec-term" data-term="inventario-de-comportamentos" type="button">Inventário de Comportamentos</button>
+              do Módulo 1. E, uma vez estáveis, deixam de ser apenas validadores defensivos: com suas
+              pré-condições e pós-condições, eles passam a ser a <strong>assinatura das ferramentas
+              (tools)</strong> que o Orquestrador Cognitivo do Módulo 3 vai consumir via MCP. A regra
+              auditada vira contrato; o contrato vira tool.
             </p>
           </div>
 
@@ -631,8 +686,8 @@ flowchart LR
     V1 --> P[Poda precoce<br/>filtro barato primeiro]
     P --> RES[Resíduo interpretativo]
     RES --> LLM[[LLM<br/>chamado DENTRO da etapa]]
-    LLM --> CT{Contrato rígido<br/>schema valida a saída}
-    CT -- inválido --> REJ[🚫 Rejeita / degrada para incerteza]
+    LLM --> CT{Contrato rígido<br/>schema + confiança ≥ 98%?}
+    CT -- abaixo de 98% / inválido --> REJ[🚫 Fallback estruturado<br/>incerteza / revisão humana]
     CT -- válido --> OUT[Saída confiável]
     LED[(Ledger de quota)] -. governa custo .-> LLM
     style LLM fill:#2a1a3a,stroke:#8a2be2,color:#e6d5ff
@@ -644,9 +699,10 @@ flowchart LR
               <p>
                 A entrada passa por validação determinística e poda precoce; só o resíduo interpretativo
                 chega ao LLM, que é invocado dentro de uma etapa fixa. A saída do modelo é validada por um
-                contrato rígido: se inválida, é rejeitada ou degradada para incerteza; se válida, vira
-                saída confiável. Um ledger de quota governa o custo da chamada. O LLM nunca decide qual é a
-                próxima etapa.
+                contrato rígido que exige conformidade de schema e confiança de pelo menos 98%: abaixo
+                desse limiar ou fora do schema, é interceptada e degradada para um fallback estruturado
+                (incerteza explícita ou revisão humana); se válida, vira saída confiável. Um ledger de
+                quota governa o custo da chamada. O LLM nunca decide qual é a próxima etapa.
               </p>
             </details>
           </figure>
@@ -828,6 +884,29 @@ flowchart LR
               acumula — arquitetura e padrões, convenções, lições aprendidas e <em>gotchas</em>).
               Versionar esse estado cognitivo no Git é o que permite reverter não só o código, mas o
               raciocínio que o produziu.
+            </p>
+            <p>
+              <strong>Da consulta à renderização — A2UI.</strong> O MCP que vimos no Módulo 2 como
+              fronteira de ferramentas evolui aqui para algo mais ambicioso. Numa arquitetura
+              <button class="ec-term" data-term="a2ui" type="button">A2UI (Agent-to-User Interface)</button>,
+              o Orquestrador Cognitivo não usa o MCP apenas para <em>consultar</em> APIs e trazer dados de
+              volta — ele o usa para <strong>emitir intenção de interface</strong>. O Cérebro decide
+              <em>o quê</em> apresentar e devolve dados estruturados sob contrato; a Vitrine, determinística,
+              decide <em>como</em> renderizar. A interface deixa de ser texto livre imprevisível e passa a
+              ser um output governado pelos mesmos schemas — testável, auditável e reproduzível. É a
+              separação Cérebro × Vitrine estendida à camada de apresentação.
+            </p>
+            <p>
+              <strong>O fio que costura a jornada (M1 → M2 → M3).</strong> Repare no encadeamento dos
+              artefatos: o
+              <button class="ec-term" data-term="inventario-de-comportamentos" type="button">Inventário de Comportamentos</button>
+              (M1) gera as regras; as regras viram <em>schemas</em> de validação (M2); os schemas, com suas
+              pré e pós-condições, definem o contrato das <strong>tools</strong> expostas via MCP/A2UI; e é
+              esse conjunto de ferramentas tipadas que o Orquestrador Cognitivo consome no fluxo SDD (M3).
+              A intenção percorre toda a cadeia sem se perder — do que o sistema faz hoje (As-Is) ao que a
+              spec manda fazer amanhã. Esse encadeamento é a espinha dorsal do
+              <button class="ec-term" data-term="ism" type="button">ISM v1.0</button>: cada fase produz o
+              insumo governado da fase seguinte.
             </p>
           </div>
 
