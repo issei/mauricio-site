@@ -70,21 +70,6 @@
     </div>
   </header>
 
-  <!-- Glossário: botão flutuante (mobile/tablet) + drawer -->
-  <button type="button" class="ec-gloss-fab" data-ec-gloss-open aria-haspopup="dialog" aria-expanded="false">
-    📖 Glossário
-  </button>
-  <div class="ec-drawer" data-ec-drawer role="dialog" aria-modal="true" aria-label="Glossário unificado" aria-hidden="true">
-    <div class="ec-drawer__backdrop" data-ec-gloss-close></div>
-    <div class="ec-drawer__panel" data-ec-drawer-panel>
-      <div class="ec-drawer__head">
-        <strong>Glossário</strong>
-        <button type="button" class="ec-drawer__close" data-ec-gloss-close aria-label="Fechar glossário">×</button>
-      </div>
-      <!-- O conteúdo do glossário (aside#glossario) é movido para cá pelo JS no mobile. -->
-    </div>
-  </div>
-
   <main id="conteudo">
 
     <!-- ============================ HERO ============================ -->
@@ -102,7 +87,12 @@
             <span class="ec-arc__chaos">CAOS · IA como Mágica</span>
             <span class="ec-arc__gov">GOVERNANÇA · IA como Engenharia</span>
           </div>
-          <div class="ec-arc__track" aria-hidden="true"></div>
+          <div class="ec-arc__track" aria-hidden="true">
+            <span class="ec-arc__marker" style="left:8%"></span>
+            <span class="ec-arc__marker" style="left:36%"></span>
+            <span class="ec-arc__marker" style="left:64%"></span>
+            <span class="ec-arc__marker" style="left:92%"></span>
+          </div>
           <div class="ec-arc__steps">
             <span><strong>M0 · Despertar</strong>reconhecer o problema</span>
             <span><strong>M1 · Mapear</strong>revelar a verdade</span>
@@ -147,159 +137,14 @@
       </div>
     </section>
 
-    <!-- ============================ LAYOUT: sidebar + módulos ============================ -->
+    <!-- ============================ JORNADA (coluna única, editorial) ============================ -->
+    <!-- UX: sem sidebar. Leitura em coluna única de medida ótima; navegação só no topo;
+         glossário foi para o fim da página (+ termos pontilhados inline). -->
     <div class="ec-layout">
-
-      <!-- UX: a coluna lateral agrupa o índice (wayfinding) + o glossário num único
-           container sticky (.ec-rail). Mantém ambos sempre à mão sem somar uma 3ª coluna
-           que sobrecarregaria a grade. No mobile a rail é ocultada e cada peça reaparece
-           na forma certa: o índice como menu colapsável e o glossário no drawer. -->
-      <div class="ec-rail">
-
-        <!-- Índice lateral fixo (Sticky ToC) — navegação rápida entre as etapas da jornada.
-             Reaproveita o scrollspy existente (data-ec-navlink → aria-current). -->
-        <nav class="ec-toc" aria-label="Índice da jornada">
-          <p class="ec-toc__title">Nesta jornada</p>
-          <ol class="ec-toc__list">
-            <li><a href="#modulo-0" data-ec-navlink><span class="ec-toc__n">M0</span> O Despertar</a></li>
-            <li><a href="#modulo-1" data-ec-navlink><span class="ec-toc__n">M1</span> Mapear a Verdade</a></li>
-            <li><a href="#modulo-2" data-ec-navlink><span class="ec-toc__n">M2</span> Arquitetar a Confiança</a></li>
-            <li><a href="#modulo-3" data-ec-navlink><span class="ec-toc__n">M3</span> A Nova Maestria</a></li>
-            <li><a href="#maturidade" data-ec-navlink><span class="ec-toc__n">★</span> Maturidade</a></li>
-            <li><a href="#glossario" class="ec-toc__gloss"><span class="ec-toc__n">📖</span> Glossário</a></li>
-          </ol>
-        </nav>
-
-      <!-- Glossário (sidebar desktop / movido ao drawer no mobile) -->
-      <aside id="glossario" class="ec-gloss" data-ec-gloss aria-label="Glossário unificado">
-        <p class="ec-gloss__title">Glossário unificado</p>
-
-        <div class="ec-gloss__group">
-          <h4>Termos-âncora</h4>
-          <dl>
-            <div class="ec-gloss__entry" id="g-crash-silencioso">
-              <dt>Crash Silencioso</dt>
-              <dd>Falha sem erro de código, mas com perda de valor. <a href="#modulo-0">M0 →</a></dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-residuo-interpretativo">
-              <dt>Resíduo Interpretativo</dt>
-              <dd>A única parte da tarefa onde a IA é realmente necessária — depois que os dados estruturados resolveram todo o resto. <a href="#modulo-2">M2 →</a></dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-vazamento-de-modo">
-              <dt>Vazamento de Modo</dt>
-              <dd>Quando um protótipo descartável vira produção sem o devido upgrade de rigor.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-sistema-intencional">
-              <dt>Sistema Intencional</dt>
-              <dd>Onde o comportamento é governado pela arquitetura, não pela probabilidade. <a href="#modulo-3">M3 →</a></dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="ec-gloss__group">
-          <h4>Termos de engenharia</h4>
-          <dl>
-            <div class="ec-gloss__entry" id="g-alucinacao-sintatica">
-              <dt>Alucinação sintática</dt>
-              <dd>Código que <em>parece</em> perfeito (sintaxe, nomes, estrutura) mas está logicamente errado.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-matriz-de-evidencias">
-              <dt>Matriz de Evidências</dt>
-              <dd>Pool multifacetado (estrutural, estado, operacional, humano) que evita falsos-positivos na descoberta.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-inventario-de-comportamentos">
-              <dt>Inventário de Comportamentos</dt>
-              <dd>Ativo holístico do As-Is: regras core, efeitos colaterais e workarounds, classificados por confiança.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-determinismo-primeiro">
-              <dt>Determinístico-primeiro</dt>
-              <dd>Resolver com regras e dados; gastar IA apenas no resíduo interpretativo.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-cerebro-vitrine">
-              <dt>Cérebro × Vitrine</dt>
-              <dd>Separação física entre motor cognitivo (sensível) e interface (exposta), ligados por contrato estreito. Estendida à apresentação, vira <a href="#g-a2ui">A2UI</a>.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-contrato-rigido">
-              <dt>Contrato rígido (schema)</dt>
-              <dd>Esquema estrito que rejeita campos inesperados na saída do LLM; a saída é input não confiável até validar. Rejeita também inferências abaixo do <a href="#g-limiar-98">Limiar de 98% de Certeza</a>, forçando fallback estruturado.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-open-world">
-              <dt>Open-World / Mundo Aberto</dt>
-              <dd>Ausência de dado é incerteza explícita, nunca "falso"; ensinar o sistema a dizer "não sei". Operacionalmente, ancora o <a href="#g-limiar-98">Limiar de 98%</a>: abaixo do piso de confiança, a saída é tratada como incerteza, não como fato.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-ledger-de-quota">
-              <dt>Ledger de quota</dt>
-              <dd>Estado de domínio persistente que governa gasto/créditos e recusa a despesa antes do provedor.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-poda-precoce">
-              <dt>Poda precoce</dt>
-              <dd>Colocar o filtro mais barato e discriminante o mais cedo possível no pipeline.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-bdd">
-              <dt>BDD</dt>
-              <dd>Cenários Dado/Quando/Então com fixtures gravadas; testa o sistema ao redor do modelo, não a "inteligência" do modelo.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-fail-closed">
-              <dt>Fail-closed</dt>
-              <dd>Se não foi possível concluir, não se marca como concluído; registra-se o bloqueio e para-se num ponto seguro. Disparado quando a confiança fica abaixo do <a href="#g-limiar-98">Limiar de 98%</a> — para-se em vez de promover um palpite.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-mcp">
-              <dt>MCP (Model Context Protocol)</dt>
-              <dd>Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança). Evolui para <a href="#g-a2ui">A2UI</a> quando o agente o usa não só para consultar dados, mas para emitir intenção de interface a ser renderizada deterministicamente.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-sdd">
-              <dt>SDD (Spec-Driven Development)</dt>
-              <dd>A especificação como fonte da verdade; a IA implementa contra a spec, com testes como alvo.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-orquestrador-cognitivo">
-              <dt>Orquestrador Cognitivo</dt>
-              <dd>Quem dirige a inteligência da máquina com intenção (o "chef executivo"), em vez de executar cada linha. Consome as <em>tools</em> tipadas derivadas dos schemas (M2) e pode operar em modo <a href="#g-a2ui">A2UI</a>.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-ism">
-              <dt>ISM (Intentional Systems Model) v1.0</dt>
-              <dd>Modelo de referência que trata cada output de IA como artefato governado por arquitetura, não por probabilidade — com foco em qualidade e clareza determinística. Esta jornada (M0 → M3) é sua implementação prática; cada fase produz o insumo governado da seguinte.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-limiar-98">
-              <dt>Limiar de 98% de Certeza</dt>
-              <dd>Piso de confiança abaixo do qual toda inferência do LLM é interceptada pela arquitetura e degradada para um <strong>fallback estruturado</strong> (incerteza explícita, revisão humana ou rota determinística), em vez de virar fato. Une <a href="#g-contrato-rigido">contrato rígido</a>, <a href="#g-open-world">Open-World</a> e <a href="#g-fail-closed">fail-closed</a> num único critério.</dd>
-            </div>
-            <div class="ec-gloss__entry" id="g-a2ui">
-              <dt>A2UI (Agent-to-User Interface)</dt>
-              <dd>Arquitetura em que o orquestrador usa o <a href="#g-mcp">MCP</a> para emitir intenção de interface: o Cérebro decide <em>o quê</em> mostrar (dados estruturados sob contrato) e a Vitrine determinística decide <em>como</em> renderizar — a separação <a href="#g-cerebro-vitrine">Cérebro × Vitrine</a> na camada de apresentação.</dd>
-            </div>
-          </dl>
-        </div>
-        <p style="font-size:0.76rem;color:var(--ec-muted);">
-          Glossário consolidado em
-          <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">docs/specs/pages/engenharia-confianca</a>.
-        </p>
-      </aside>
-
-      </div><!-- /.ec-rail -->
-
-      <!-- ============================ CONTEÚDO ============================ -->
       <div class="ec-content">
 
-        <!-- UX (mobile): em telas estreitas a rail some; o índice volta como um menu
-             colapsável elegante (<details>), fechado por padrão para não roubar a primeira
-             dobra. O item "Glossário" reusa o gatilho do drawer (data-ec-gloss-open). -->
-        <details class="ec-toc-m">
-          <summary class="ec-toc-m__summary">
-            <span>Índice da jornada</span>
-            <span class="ec-toc-m__chev" aria-hidden="true">▾</span>
-          </summary>
-          <ol class="ec-toc-m__list">
-            <li><a href="#modulo-0"><span class="ec-toc__n">M0</span> O Despertar</a></li>
-            <li><a href="#modulo-1"><span class="ec-toc__n">M1</span> Mapear a Verdade</a></li>
-            <li><a href="#modulo-2"><span class="ec-toc__n">M2</span> Arquitetar a Confiança</a></li>
-            <li><a href="#modulo-3"><span class="ec-toc__n">M3</span> A Nova Maestria</a></li>
-            <li><a href="#maturidade"><span class="ec-toc__n">★</span> Maturidade</a></li>
-            <li><button type="button" class="ec-toc-m__gloss" data-ec-gloss-open aria-haspopup="dialog"><span class="ec-toc__n">📖</span> Glossário</button></li>
-          </ol>
-        </details>
-
         <!-- ===================== MÓDULO 0 ===================== -->
-        <article id="modulo-0" class="ec-module ec-reveal" aria-labelledby="m0-titulo">
+        <article id="modulo-0" class="ec-module ec-reveal" data-num="01" aria-labelledby="m0-titulo">
           <div class="ec-module__recap">
             <span>Você chega aqui perguntando: "por que minha IA falha?"</span>
             <span class="ec-module__tag">Módulo 0 · O Despertar da Liderança</span>
@@ -478,7 +323,7 @@ flowchart LR
         </article>
 
         <!-- ===================== MÓDULO 1 ===================== -->
-        <article id="modulo-1" class="ec-module ec-reveal" aria-labelledby="m1-titulo">
+        <article id="modulo-1" class="ec-module ec-reveal" data-num="02" aria-labelledby="m1-titulo">
           <div class="ec-module__recap">
             <span>Você já reconhece o Crash Silencioso. Agora precisa revelar a verdade do que existe.</span>
             <span class="ec-module__tag">Módulo 1 · Mapeando a Verdade</span>
@@ -641,7 +486,7 @@ flowchart TD
         </article>
 
         <!-- ===================== MÓDULO 2 ===================== -->
-        <article id="modulo-2" class="ec-module ec-reveal" aria-labelledby="m2-titulo">
+        <article id="modulo-2" class="ec-module ec-reveal" data-num="03" aria-labelledby="m2-titulo">
           <div class="ec-module__recap">
             <span>A verdade do sistema está mapeada. Agora se constrói sobre ela com rigor.</span>
             <span class="ec-module__tag">Módulo 2 · Arquitetando a Confiança</span>
@@ -903,7 +748,7 @@ flowchart LR
         </figure>
 
         <!-- ===================== MÓDULO 3 ===================== -->
-        <article id="modulo-3" class="ec-module ec-reveal" aria-labelledby="m3-titulo">
+        <article id="modulo-3" class="ec-module ec-reveal" data-num="04" aria-labelledby="m3-titulo">
           <div class="ec-module__recap">
             <span>O comportamento está governado. Agora se escala a intenção — sem perder o controle.</span>
             <span class="ec-module__tag">Módulo 3 · A Nova Maestria</span>
@@ -1149,6 +994,115 @@ flowchart LR
           <p class="ec-closer">
             "Você não escreve apenas código para a máquina executar. Você escreve o contexto que ensina a
             máquina a executar com a sua intenção. Faça esse contexto bem — e a confiança escala junto."
+          </p>
+        </section>
+
+        <!-- ===================== GLOSSÁRIO (fim da página) ===================== -->
+        <!-- UX: glossário deixou de ser parede lateral; virou um destino arejado no fim da
+             jornada. Os termos pontilhados no texto rolam até aqui e destacam o verbete. -->
+        <section id="glossario" class="ec-glossary ec-reveal" aria-labelledby="gloss-titulo">
+          <p class="ec-eyebrow">Vocabulário de engenharia</p>
+          <h2 id="gloss-titulo" class="ec-title ec-title--underline">Glossário unificado</h2>
+          <p class="ec-lede">
+            Os quatro termos-âncora que estruturam a narrativa e o vocabulário de engenharia que a
+            sustenta. Cada termo pontilhado no texto traz você até aqui.
+          </p>
+
+          <h3 class="ec-glossary__group-title">Termos-âncora</h3>
+          <dl class="ec-glossary__grid">
+            <div class="ec-gloss__entry" id="g-crash-silencioso">
+              <dt>Crash Silencioso</dt>
+              <dd>Falha sem erro de código, mas com perda de valor. <a href="#modulo-0">M0 →</a></dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-residuo-interpretativo">
+              <dt>Resíduo Interpretativo</dt>
+              <dd>A única parte da tarefa onde a IA é realmente necessária — depois que os dados estruturados resolveram todo o resto. <a href="#modulo-2">M2 →</a></dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-vazamento-de-modo">
+              <dt>Vazamento de Modo</dt>
+              <dd>Quando um protótipo descartável vira produção sem o devido upgrade de rigor.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-sistema-intencional">
+              <dt>Sistema Intencional</dt>
+              <dd>Onde o comportamento é governado pela arquitetura, não pela probabilidade. <a href="#modulo-3">M3 →</a></dd>
+            </div>
+          </dl>
+
+          <h3 class="ec-glossary__group-title">Termos de engenharia</h3>
+          <dl class="ec-glossary__grid">
+            <div class="ec-gloss__entry" id="g-alucinacao-sintatica">
+              <dt>Alucinação sintática</dt>
+              <dd>Código que <em>parece</em> perfeito (sintaxe, nomes, estrutura) mas está logicamente errado.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-matriz-de-evidencias">
+              <dt>Matriz de Evidências</dt>
+              <dd>Pool multifacetado (estrutural, estado, operacional, humano) que evita falsos-positivos na descoberta.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-inventario-de-comportamentos">
+              <dt>Inventário de Comportamentos</dt>
+              <dd>Ativo holístico do As-Is: regras core, efeitos colaterais e workarounds, classificados por confiança.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-determinismo-primeiro">
+              <dt>Determinístico-primeiro</dt>
+              <dd>Resolver com regras e dados; gastar IA apenas no resíduo interpretativo.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-cerebro-vitrine">
+              <dt>Cérebro × Vitrine</dt>
+              <dd>Separação física entre motor cognitivo (sensível) e interface (exposta), ligados por contrato estreito. Estendida à apresentação, vira <a href="#g-a2ui">A2UI</a>.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-contrato-rigido">
+              <dt>Contrato rígido (schema)</dt>
+              <dd>Esquema estrito que rejeita campos inesperados na saída do LLM; a saída é input não confiável até validar. Rejeita também inferências abaixo do <a href="#g-limiar-98">Limiar de 98% de Certeza</a>, forçando fallback estruturado.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-open-world">
+              <dt>Open-World / Mundo Aberto</dt>
+              <dd>Ausência de dado é incerteza explícita, nunca "falso"; ensinar o sistema a dizer "não sei". Operacionalmente, ancora o <a href="#g-limiar-98">Limiar de 98%</a>: abaixo do piso de confiança, a saída é tratada como incerteza, não como fato.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-ledger-de-quota">
+              <dt>Ledger de quota</dt>
+              <dd>Estado de domínio persistente que governa gasto/créditos e recusa a despesa antes do provedor.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-poda-precoce">
+              <dt>Poda precoce</dt>
+              <dd>Colocar o filtro mais barato e discriminante o mais cedo possível no pipeline.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-bdd">
+              <dt>BDD</dt>
+              <dd>Cenários Dado/Quando/Então com fixtures gravadas; testa o sistema ao redor do modelo, não a "inteligência" do modelo.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-fail-closed">
+              <dt>Fail-closed</dt>
+              <dd>Se não foi possível concluir, não se marca como concluído; registra-se o bloqueio e para-se num ponto seguro. Disparado quando a confiança fica abaixo do <a href="#g-limiar-98">Limiar de 98%</a> — para-se em vez de promover um palpite.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-mcp">
+              <dt>MCP (Model Context Protocol)</dt>
+              <dd>Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança). Evolui para <a href="#g-a2ui">A2UI</a> quando o agente o usa não só para consultar dados, mas para emitir intenção de interface a ser renderizada deterministicamente.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-sdd">
+              <dt>SDD (Spec-Driven Development)</dt>
+              <dd>A especificação como fonte da verdade; a IA implementa contra a spec, com testes como alvo.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-orquestrador-cognitivo">
+              <dt>Orquestrador Cognitivo</dt>
+              <dd>Quem dirige a inteligência da máquina com intenção (o "chef executivo"), em vez de executar cada linha. Consome as <em>tools</em> tipadas derivadas dos schemas (M2) e pode operar em modo <a href="#g-a2ui">A2UI</a>.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-ism">
+              <dt>ISM (Intentional Systems Model) v1.0</dt>
+              <dd>Modelo de referência que trata cada output de IA como artefato governado por arquitetura, não por probabilidade — com foco em qualidade e clareza determinística. Esta jornada (M0 → M3) é sua implementação prática; cada fase produz o insumo governado da seguinte.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-limiar-98">
+              <dt>Limiar de 98% de Certeza</dt>
+              <dd>Piso de confiança abaixo do qual toda inferência do LLM é interceptada pela arquitetura e degradada para um <strong>fallback estruturado</strong> (incerteza explícita, revisão humana ou rota determinística), em vez de virar fato. Une <a href="#g-contrato-rigido">contrato rígido</a>, <a href="#g-open-world">Open-World</a> e <a href="#g-fail-closed">fail-closed</a> num único critério.</dd>
+            </div>
+            <div class="ec-gloss__entry" id="g-a2ui">
+              <dt>A2UI (Agent-to-User Interface)</dt>
+              <dd>Arquitetura em que o orquestrador usa o <a href="#g-mcp">MCP</a> para emitir intenção de interface: o Cérebro decide <em>o quê</em> mostrar (dados estruturados sob contrato) e a Vitrine determinística decide <em>como</em> renderizar — a separação <a href="#g-cerebro-vitrine">Cérebro × Vitrine</a> na camada de apresentação.</dd>
+            </div>
+          </dl>
+
+          <p class="ec-glossary__note">
+            Glossário consolidado em
+            <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">docs/specs/pages/engenharia-confianca</a>.
           </p>
         </section>
 

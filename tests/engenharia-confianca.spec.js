@@ -71,7 +71,7 @@ test.describe('Engenharia da Confiança — jornada', () => {
     await expect(page.locator('#modulo-2 .ec-mermaid__alt p').first()).toContainText('resíduo interpretativo');
   });
 
-  test('glossário: termos-âncora + termos de engenharia presentes na sidebar', async ({ page }) => {
+  test('glossário: termos-âncora + termos de engenharia na seção final', async ({ page }) => {
     await page.goto(PATH);
     const gloss = page.locator('#glossario');
     await expect(gloss).toBeVisible();
@@ -163,15 +163,15 @@ test.describe('Engenharia da Confiança — jornada', () => {
     await expect(page.locator('a[href="./engenharia-confianca.html"]')).toBeVisible();
   });
 
-  test('wayfinding: índice lateral sticky com 6 itens e scrollspy', async ({ page }) => {
+  test('editorial: layout em coluna única (sem sidebar) e numerais-fantasma nos módulos', async ({ page }) => {
     await page.goto(PATH);
-    const toc = page.locator('.ec-toc');
-    await expect(toc).toBeVisible();
-    await expect(toc.locator('.ec-toc__list li')).toHaveCount(6);
-    // ao saltar para M3, o item correspondente do índice marca aria-current
-    await page.locator('.ec-toc a[href="#modulo-3"]').click();
-    await expect(page.locator('#modulo-3')).toBeInViewport({ ratio: 0.1 });
-    await expect(page.locator('.ec-toc a[href="#modulo-3"]')).toHaveAttribute('aria-current', 'true');
+    // a antiga sidebar/índice lateral não existe mais
+    await expect(page.locator('.ec-rail')).toHaveCount(0);
+    await expect(page.locator('.ec-toc')).toHaveCount(0);
+    await expect(page.locator('.ec-gloss-fab')).toHaveCount(0);
+    // cada módulo carrega seu numeral-fantasma
+    await expect(page.locator('#modulo-0')).toHaveAttribute('data-num', '01');
+    await expect(page.locator('#modulo-3')).toHaveAttribute('data-num', '04');
   });
 
   test('callouts de conceito isolam Limiar de 98% (M2) e A2UI (M3)', async ({ page }) => {
@@ -192,27 +192,15 @@ test.describe('Engenharia da Confiança — jornada', () => {
     await expect(dc).toContainText('Tools via MCP');
   });
 
-  test('mobile: índice colapsável aparece e fica fechado por padrão', async ({ page }) => {
+  test('glossário no fim: termo inline rola até o verbete em viewport mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto(PATH);
-    const tocM = page.locator('.ec-toc-m');
-    await expect(tocM).toBeVisible();
-    await expect(tocM).not.toHaveAttribute('open', /.*/);
-    await tocM.locator('summary').click();
-    await expect(tocM.locator('.ec-toc-m__list a[href="#modulo-1"]')).toBeVisible();
-  });
-
-  test('mobile: glossário vira botão flutuante e abre drawer', async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 812 });
-    await page.goto(PATH);
-    const fab = page.locator('.ec-gloss-fab');
-    await expect(fab).toBeVisible();
-    await fab.click();
-    await expect(page.locator('[data-ec-drawer]')).toHaveClass(/is-open/);
-    // o glossário foi movido para dentro do drawer
-    await expect(page.locator('[data-ec-drawer-panel] #glossario')).toBeVisible();
-    await page.locator('[data-ec-drawer] .ec-drawer__close').click();
-    await expect(page.locator('[data-ec-drawer]')).not.toHaveClass(/is-open/);
+    // sem drawer/FAB; o glossário é uma seção no fim acessível pelos termos inline
+    await expect(page.locator('.ec-gloss-fab')).toHaveCount(0);
+    const term = page.locator('.ec-term[data-term="mcp"]').first();
+    await term.scrollIntoViewIfNeeded();
+    await term.click();
+    await expect(page.locator('#g-mcp')).toHaveClass(/is-flash/);
   });
 
   test('degradado: legível em viewport mobile sem scroll horizontal', async ({ page }) => {
