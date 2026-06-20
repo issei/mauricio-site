@@ -104,83 +104,23 @@ function initJourneyObserver() {
   sections.forEach((s) => observer.observe(s));
 }
 
-/* ============================ Glossário: drawer + termos inline ============================ */
+/* ============================ Glossário: termos inline → verbete no fim ============================ */
+// Editorial sem sidebar: o glossário vive no fim da página. Cada termo pontilhado no
+// texto rola suavemente até o verbete correspondente e o destaca (flash).
 function initGlossary() {
-  const aside = document.querySelector('[data-ec-gloss]');
-  const drawer = document.querySelector('[data-ec-drawer]');
-  const drawerPanel = document.querySelector('[data-ec-drawer-panel]');
-  // Vários gatilhos podem abrir o glossário: o FAB e o item "Glossário" do índice mobile.
-  const openers = Array.from(document.querySelectorAll('[data-ec-gloss-open]'));
-  // A rail (TOC + glossário) é o lar do glossário no desktop; devolvemos o nó a ela.
-  const rail = document.querySelector('.ec-rail');
-  const desktopMq = window.matchMedia('(min-width: 1100px)');
-  if (!aside) return;
-
-  let lastFocus = null;
-
-  const isDesktop = () => desktopMq.matches;
-  const setExpanded = (v) => openers.forEach((o) => o.setAttribute('aria-expanded', String(v)));
-
-  const openDrawer = () => {
-    if (!drawer || !drawerPanel) return;
-    lastFocus = document.activeElement;
-    // move o glossário para dentro do drawer (fonte única, sem duplicar IDs)
-    drawerPanel.appendChild(aside);
-    drawer.classList.add('is-open');
-    drawer.setAttribute('aria-hidden', 'false');
-    setExpanded(true);
-    const closeBtn = drawer.querySelector('[data-ec-gloss-close]');
-    if (closeBtn && closeBtn.focus) closeBtn.focus();
-  };
-
-  const closeDrawer = () => {
-    if (!drawer) return;
-    drawer.classList.remove('is-open');
-    drawer.setAttribute('aria-hidden', 'true');
-    setExpanded(false);
-    // devolve o glossário para o trilho lateral (sua casa no desktop)
-    if (rail) rail.appendChild(aside);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  };
-
-  openers.forEach((o) => o.addEventListener('click', openDrawer));
-  document.querySelectorAll('[data-ec-gloss-close]').forEach((el) => {
-    el.addEventListener('click', closeDrawer);
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) closeDrawer();
-  });
-
-  // destaca um verbete (flash) e rola até ele
   const flashEntry = (term) => {
     const entry = document.getElementById(`g-${term}`);
     if (!entry) return;
     entry.scrollIntoView({ block: 'center', behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     entry.classList.remove('is-flash');
-    // reflow para reiniciar a transição
-    void entry.offsetWidth;
+    void entry.offsetWidth; // reflow para reiniciar a transição
     entry.classList.add('is-flash');
     window.setTimeout(() => entry.classList.remove('is-flash'), 2200);
   };
 
-  // termos inline: abrem o drawer (mobile) ou destacam na sidebar (desktop)
   document.querySelectorAll('.ec-term[data-term]').forEach((btn) => {
     btn.setAttribute('aria-describedby', `g-${btn.dataset.term}`);
-    btn.addEventListener('click', () => {
-      const term = btn.dataset.term;
-      if (isDesktop()) {
-        flashEntry(term);
-      } else {
-        openDrawer();
-        // espera o drawer abrir antes de rolar até o verbete
-        window.setTimeout(() => flashEntry(term), 120);
-      }
-    });
-  });
-
-  // se o usuário cruzar o breakpoint com o drawer aberto, normaliza
-  desktopMq.addEventListener?.('change', () => {
-    if (isDesktop() && drawer && drawer.classList.contains('is-open')) closeDrawer();
+    btn.addEventListener('click', () => flashEntry(btn.dataset.term));
   });
 }
 

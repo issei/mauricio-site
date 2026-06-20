@@ -272,19 +272,18 @@ body.ec-body {
 }
 .ec-btn--ghost:hover { transform: translateY(-2px); border-color: var(--ec-accent); color: var(--ec-heading); }
 
-/* ============================ Layout: sidebar + conteúdo ============================ */
+/* ============================ Layout: coluna única editorial ============================ */
+/* UX: sem sidebar. Uma coluna de leitura centrada, com medida ótima — a página "respira"
+   e o olho tem um único caminho. O hero (acima) usa container largo p/ contraste. */
 
 .ec-layout {
   max-width: 1180px;
   margin-inline: auto;
   padding-inline: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
 }
-
-@media (min-width: 1100px) {
-  .ec-layout { grid-template-columns: 250px minmax(0, 1fr); gap: 2.5rem; }
+.ec-content {
+  max-width: 760px;
+  margin-inline: auto;
 }
 
 /* ============================ Seções / módulos ============================ */
@@ -379,7 +378,7 @@ body.ec-body {
 .ec-arc__labels .ec-arc__chaos { color: var(--ec-danger); }
 .ec-arc__labels .ec-arc__gov { color: var(--ec-ok-2); }
 .ec-arc__track {
-  height: 12px;
+  height: 18px;
   border-radius: 999px;
   background: linear-gradient(90deg, #3a0d0d 0%, #4a2a0d 30%, #1a2733 62%, #0d3a1a 100%);
   background-size: 240% 100%;
@@ -393,6 +392,16 @@ body.ec-body {
   top: 0; left: 0; height: 100%; width: 40%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
   animation: ec-arc-shine 4.5s linear infinite;
+}
+/* marcadores dos 4 módulos sobre o arco */
+.ec-arc__marker {
+  position: absolute;
+  top: 50%;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 3px var(--ec-bg), 0 0 8px rgba(255,255,255,0.5);
 }
 @keyframes ec-arc-flow { from { background-position: 0% 0; } to { background-position: 100% 0; } }
 @keyframes ec-arc-shine { from { transform: translateX(-120%); } to { transform: translateX(320%); } }
@@ -435,76 +444,36 @@ body.ec-body {
 .ec-paincard__q { font-weight: 700; color: var(--ec-heading); }
 .ec-paincard__go { margin-top: auto; font-size: 0.82rem; font-weight: 600; color: var(--ec-link); }
 
-/* ============================ Glossário sidebar/drawer ============================ */
+/* ============================ Glossário (seção no fim da página) ============================ */
+/* UX: glossário arejado em grade, como destino de leitura. Os termos pontilhados rolam
+   até o verbete e o destacam (flash). */
 
-.ec-gloss {
-  align-self: start;
+.ec-glossary { scroll-margin-top: 110px; padding-block: clamp(3rem, 5.5vw, 5rem); border-top: 1px solid var(--ec-border); }
+.ec-glossary__group-title {
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--ec-link); font-weight: 700;
+  margin: 2.2rem 0 0.8rem;
 }
-@media (min-width: 1100px) {
-  .ec-gloss { position: sticky; top: 120px; max-height: calc(100vh - 140px); overflow: auto; }
+.ec-glossary__grid {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem 2rem;
 }
-.ec-gloss__title { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ec-muted); margin: 0 0 0.8rem; }
-.ec-gloss__group { margin-bottom: 1.3rem; }
-.ec-gloss__group > h4 { font-size: 0.8rem; color: var(--ec-link); margin: 0 0 0.5rem; }
-.ec-gloss dl { margin: 0; }
-.ec-gloss dt {
-  font-weight: 700;
-  color: var(--ec-heading);
-  font-size: 0.92rem;
+@media (min-width: 620px) { .ec-glossary__grid { grid-template-columns: 1fr 1fr; } }
+.ec-glossary dt { font-weight: 700; color: var(--ec-heading); font-size: 0.95rem; }
+.ec-glossary dd { margin: 0.2rem 0 0; font-size: 0.88rem; color: var(--ec-muted); line-height: 1.6; }
+.ec-glossary dd a { font-size: 0.84rem; }
+.ec-glossary__note { font-size: 0.78rem; color: var(--ec-muted); margin-top: 2rem; }
+
+.ec-gloss__entry {
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  margin-inline: -0.85rem;
   scroll-margin-top: 120px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-.ec-gloss dd { margin: 0.15rem 0 0.85rem; font-size: 0.85rem; color: var(--ec-muted); line-height: 1.55; }
-.ec-gloss dd a { font-size: 0.8rem; }
-.ec-gloss__entry { border-radius: 8px; padding: 0.35rem 0.5rem; margin-inline: -0.5rem; transition: background 0.3s ease; }
 .ec-gloss__entry.is-flash { background: rgba(0, 123, 255, 0.16); box-shadow: inset 0 0 0 1px rgba(0,123,255,0.4); }
-
-/* Botão flutuante do glossário (mobile/tablet) */
-.ec-gloss-fab {
-  position: fixed;
-  right: 1rem; bottom: 1rem;
-  z-index: 115;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: var(--ec-gradient);
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  padding: 0.7rem 1.1rem;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
-}
-@media (min-width: 1100px) { .ec-gloss-fab { display: none; } }
-
-/* Drawer: o mesmo glossário deslizando da direita */
-.ec-drawer {
-  position: fixed;
-  inset: 0;
-  z-index: 130;
-  display: none;
-}
-.ec-drawer.is-open { display: block; }
-.ec-drawer__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
-.ec-drawer__panel {
-  position: absolute;
-  top: 0; right: 0; height: 100%;
-  width: min(380px, 90vw);
-  background: var(--ec-surface);
-  border-left: 1px solid var(--ec-border);
-  padding: 1.25rem;
-  overflow: auto;
-  transform: translateX(100%);
-  transition: transform 0.28s ease;
-}
-.ec-drawer.is-open .ec-drawer__panel { transform: translateX(0); }
-.ec-drawer__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
-.ec-drawer__close {
-  background: transparent; border: 1px solid var(--ec-border); color: var(--ec-text);
-  border-radius: 8px; width: 34px; height: 34px; cursor: pointer; font-size: 1.1rem; line-height: 1;
-}
-.ec-drawer__close:hover { border-color: var(--ec-accent); color: var(--ec-heading); }
 
 /* Termo de glossário inline */
 .ec-term {
@@ -523,8 +492,25 @@ body.ec-body {
 
 /* UX (ritmo): mais ar entre módulos. O padding fluido escala com o viewport
    (clamp) — compacto no celular, espaçoso no desktop/ultrawide. */
-.ec-module { scroll-margin-top: 110px; padding-block: clamp(3rem, 5.5vw, 5rem); border-top: 1px solid var(--ec-border); }
+.ec-module { position: relative; scroll-margin-top: 110px; padding-block: clamp(3rem, 5.5vw, 5rem); border-top: 1px solid var(--ec-border); }
 .ec-module:first-of-type { border-top: none; }
+/* UX: numeral-fantasma como marco de "novo capítulo" — identidade visual sem ruído (atrás,
+   baixa opacidade, contornado). pointer-events:none p/ não interferir na seleção/cliques. */
+.ec-module[data-num]::before {
+  content: attr(data-num);
+  position: absolute;
+  top: clamp(1.5rem, 4vw, 2.6rem);
+  right: 0;
+  font-size: clamp(4.5rem, 12vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(138, 43, 226, 0.18);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.ec-module > * { position: relative; z-index: 1; }
 .ec-module__recap {
   font-size: 0.84rem;
   color: var(--ec-muted);
@@ -550,24 +536,22 @@ body.ec-body {
   padding: 0.15rem 0.65rem;
   white-space: nowrap;
 }
+/* UX: o Conceito central vira o "lead" editorial do módulo — sem caixa pesada, tipografia
+   grande e filete de gradiente. É a única âncora de destaque no topo de cada módulo. */
 .ec-concept {
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-  font-weight: 700;
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.5;
   color: var(--ec-heading);
-  background: var(--ec-surface);
-  border: 1px solid var(--ec-border);
-  border-radius: var(--ec-radius);
-  padding: 1.2rem 1.4rem;
-  margin: 0 0 1.8rem;
-  position: relative;
-  overflow: hidden;
+  background: transparent;
+  border: none;
+  border-left: 4px solid transparent;
+  border-image: var(--ec-gradient) 1;
+  padding: 0.2rem 0 0.2rem 1.4rem;
+  margin: 0 0 2.2rem;
+  max-width: 60ch;
 }
-.ec-concept::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0; width: 4px;
-  background: var(--ec-gradient);
-}
+.ec-concept em { color: var(--ec-text); font-style: italic; }
 
 /* ============================ Visual: Mermaid + analogia ============================ */
 
@@ -581,12 +565,15 @@ body.ec-body {
   .ec-visual--split { grid-template-columns: 1.4fr 1fr; align-items: start; }
 }
 
+/* UX: cards "momento" (diagrama, prática) ganham elevação real — superfície mais clara
+   + sombra — para se destacarem da prosa em vez de competir com ela. */
 .ec-mermaid {
-  background: var(--ec-surface);
+  background: var(--ec-surface-2);
   border: 1px solid var(--ec-border);
   border-radius: var(--ec-radius);
-  padding: 1.1rem;
+  padding: 1.4rem;
   margin: 0;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
 }
 .ec-mermaid__cap { font-size: 0.82rem; color: var(--ec-muted); font-weight: 600; margin-bottom: 0.7rem; }
 .ec-mermaid__graph { overflow-x: auto; min-height: 40px; }
@@ -601,7 +588,8 @@ body.ec-body {
   background: var(--ec-surface-2);
   border: 1px solid var(--ec-border);
   border-radius: var(--ec-radius);
-  padding: 1.2rem;
+  padding: 1.3rem;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
 }
 .ec-analogy__icon { font-size: 1.6rem; }
 .ec-analogy__title { font-size: 1rem; font-weight: 700; color: var(--ec-heading); margin: 0.4rem 0 0.5rem; }
@@ -614,11 +602,12 @@ body.ec-body {
 /* ============================ Prática educativa ============================ */
 
 .ec-practice {
-  background: var(--ec-surface);
+  background: var(--ec-surface-2);
   border: 1px solid var(--ec-border);
   border-radius: var(--ec-radius);
-  padding: 1.3rem;
-  margin: 1.8rem 0;
+  padding: 1.5rem;
+  margin: 2.4rem 0;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
 }
 .ec-practice__head { font-size: 1.02rem; font-weight: 700; color: var(--ec-heading); margin: 0 0 0.3rem; }
 .ec-practice__intro { font-size: 0.9rem; color: var(--ec-muted); margin: 0 0 1.1rem; }
@@ -685,8 +674,8 @@ body.ec-body {
 .ec-callout {
   border-radius: var(--ec-radius);
   border: 1px solid var(--ec-border);
-  padding: 1.1rem 1.3rem;
-  margin: 1.8rem 0;
+  padding: 1.2rem 1.4rem;
+  margin: 2.4rem 0;
   display: flex;
   gap: 0.9rem;
   align-items: flex-start;
@@ -702,21 +691,20 @@ body.ec-body {
 
 /* ============================ Faixa de referência cruzada ============================ */
 
-.ec-xref { margin: 1.8rem 0; }
-.ec-xref__title { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ec-muted); margin: 0 0 0.7rem; }
-.ec-xref__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+/* UX: referências demovidas a texto utilitário (sem caixas) — informação de apoio, baixo
+   peso visual. Separadas por um divisor sutil, fluindo como uma nota de rodapé do módulo. */
+.ec-xref { margin: 2rem 0; padding-top: 1rem; border-top: 1px solid var(--ec-border); }
+.ec-xref__title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ec-muted); margin: 0 0 0.5rem; }
+.ec-xref__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
 .ec-xref__list li {
   display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
+  align-items: baseline;
+  gap: 0.4rem;
   font-size: 0.82rem;
-  background: var(--ec-surface);
-  border: 1px solid var(--ec-border);
-  border-radius: 999px;
-  padding: 0.3rem 0.7rem;
 }
-.ec-xref__list .ec-xref__concept { color: var(--ec-text); }
-.ec-xref__list a { color: var(--ec-link); font-size: 0.8rem; }
+.ec-xref__list li + li::before { content: "·"; color: var(--ec-border); margin-right: 0.6rem; }
+.ec-xref__list .ec-xref__concept { color: var(--ec-muted); }
+.ec-xref__list a { color: var(--ec-link); font-size: 0.82rem; }
 
 /* ============================ CTA "explore o pilar" + reflexão ============================ */
 
@@ -842,117 +830,6 @@ body.ec-body {
 
 .ec-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .ec-reveal.is-in { opacity: 1; transform: none; }
-
-/* ============================ Rail (TOC + glossário) ============================ */
-/* UX (wayfinding): a coluna lateral vira um único trilho sticky. Agrupar índice e
-   glossário evita uma 3ª coluna e mantém ambos no campo de visão durante a leitura. */
-
-.ec-rail { display: flex; flex-direction: column; gap: 1.6rem; }
-
-@media (min-width: 1100px) {
-  .ec-rail {
-    position: sticky;
-    top: 96px;
-    max-height: calc(100vh - 116px);
-    overflow: auto;
-    padding-right: 0.4rem; /* respiro para a scrollbar interna */
-  }
-  /* O trilho já rola; o glossário interno volta a ser estático para não criar
-     sticky aninhado. */
-  .ec-rail .ec-gloss { position: static; top: auto; max-height: none; overflow: visible; }
-}
-
-/* No mobile o trilho some: o índice reaparece como menu colapsável (.ec-toc-m)
-   e o glossário pelo drawer (FAB). */
-@media (max-width: 1099px) {
-  .ec-rail { display: none; }
-}
-
-/* Índice lateral (Sticky ToC) */
-.ec-toc {
-  border: 1px solid var(--ec-border);
-  border-radius: var(--ec-radius);
-  background: var(--ec-surface);
-  padding: 1rem 1.1rem;
-}
-.ec-toc__title {
-  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
-  color: var(--ec-muted); margin: 0 0 0.7rem;
-}
-.ec-toc__list { list-style: none; margin: 0; padding: 0; counter-reset: none; }
-.ec-toc__list li { margin: 0; }
-.ec-toc__list a,
-.ec-toc__gloss {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.6rem;        /* UX: alvo de toque confortável (~44px de altura) */
-  min-height: 44px;
-  border-radius: 8px;
-  color: var(--ec-text);
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-left: 2px solid transparent;
-  text-decoration: none;
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
-}
-.ec-toc__list a:hover { background: rgba(255,255,255,0.05); color: var(--ec-heading); text-decoration: none; }
-/* Estado atual via scrollspy (mesmo aria-current usado pela nav do topo) */
-.ec-toc__list a[aria-current="true"] {
-  background: rgba(0, 123, 255, 0.12);
-  border-left-color: var(--ec-accent);
-  color: var(--ec-heading);
-}
-.ec-toc__n {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 1.9rem; height: 1.5rem;
-  font-size: 0.72rem; font-weight: 700;
-  color: var(--ec-heading);
-  background: var(--ec-bg);
-  border: 1px solid var(--ec-border);
-  border-radius: 6px;
-  flex: none;
-}
-
-/* Índice colapsável (mobile/tablet) */
-.ec-toc-m {
-  display: none;
-  border: 1px solid var(--ec-border);
-  border-radius: var(--ec-radius);
-  background: var(--ec-surface);
-  margin-bottom: 2rem;
-  overflow: hidden;
-}
-@media (max-width: 1099px) { .ec-toc-m { display: block; } }
-.ec-toc-m__summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 1.1rem;
-  min-height: 48px;             /* UX: alvo de toque generoso no resumo */
-  font-weight: 600;
-  color: var(--ec-heading);
-}
-.ec-toc-m__summary::-webkit-details-marker { display: none; }
-.ec-toc-m__chev { transition: transform 0.2s ease; color: var(--ec-link); }
-.ec-toc-m[open] .ec-toc-m__chev { transform: rotate(180deg); }
-.ec-toc-m__list { list-style: none; margin: 0; padding: 0 0.6rem 0.6rem; }
-.ec-toc-m__list a,
-.ec-toc-m__gloss {
-  display: flex; align-items: center; gap: 0.6rem;
-  width: 100%;
-  padding: 0.7rem 0.6rem;
-  min-height: 44px;            /* UX: alvo de toque adequado */
-  border-radius: 8px;
-  color: var(--ec-text);
-  font: inherit; font-size: 0.92rem;
-  background: transparent; border: none; text-align: left;
-  cursor: pointer; text-decoration: none;
-}
-.ec-toc-m__list a:hover,
-.ec-toc-m__gloss:hover { background: rgba(255,255,255,0.05); color: var(--ec-heading); text-decoration: none; }
 
 /* ============================ Callout de conceito ============================ */
 /* UX: variante para isolar conceitos densos (Limiar de 98%, A2UI). Borda lateral
