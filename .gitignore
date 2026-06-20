@@ -51,5 +51,12 @@ desktop.ini
 /playwright/.cache/
 /playwright/.auth/
 
-# Claude AI / Claude Code cache e configurações locais
-.claude/
+# Claude AI / Claude Code
+# Ignora cache e configuração LOCAL, mas COMPARTILHA automações do time
+# (skills, subagents e hooks/settings versionados).
+.claude/*
+!.claude/settings.json
+!.claude/skills/
+!.claude/agents/
+.claude/settings.local.json
+.claude/worktrees/
