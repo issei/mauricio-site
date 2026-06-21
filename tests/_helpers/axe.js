@@ -9,12 +9,9 @@ import { expect } from '@playwright/test';
  * @param {string} [context] - seletor opcional para limitar o escopo da análise
  */
 export async function expectNoSeriousA11yViolations(page, context) {
-  let builder = new AxeBuilder({ page }).withTags([
-    'wcag2a',
-    'wcag2aa',
-    'wcag21a',
-    'wcag21aa',
-  ]);
+  let builder = new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .exclude('iframe'); // iframes de origem cruzada não são auditáveis por nós
   if (context) builder = builder.include(context);
 
   const results = await builder.analyze();

@@ -56,7 +56,8 @@ test.describe('Engenharia da Confiança — jornada', () => {
       await expect(page.locator(`.ec-nav__trail a[href="${href}"]`)).toBeVisible();
     }
     await page.locator('.ec-nav__trail a[href="#modulo-2"]').click();
-    await expect(page.locator('#modulo-2')).toBeInViewport({ ratio: 0.1 });
+    // Asserta o título da seção em viewport (robusto à altura do módulo, que cresce com o conteúdo)
+    await expect(page.locator('#m2-titulo')).toBeInViewport();
     await expect(page.locator('.ec-nav__trail a[aria-current="true"]')).toHaveCount(1);
   });
 
