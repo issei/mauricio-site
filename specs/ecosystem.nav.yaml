@@ -1,0 +1,194 @@
+# =============================================================================
+# ecosystem.nav.yaml — SSOT da navegação do ecossistema (16 sites + 1 extra)
+# -----------------------------------------------------------------------------
+# Fonte da verdade do grafo de navegação. Materializa SPEC_ECOSYSTEM.md §2 e
+# RESEARCH_MAPPING.md §1–§2 após o portão HITL (§8).
+#
+# Governança (SPEC §4.4): agentes que editam UMA página individual NÃO alteram
+# este arquivo, a ordem dos pilares, nem o glossário sem bump de `meta.version`
+# e aprovação humana. Qualquer alteração de grafo → bump de versão.
+#
+# Invariantes (SPEC §2.2) — devem permanecer verdadeiras:
+#   INV-1  todo node em pillars[].nodes existe em `nodes`
+#   INV-2  `pillars` tem ordem 1→5 e exatamente os 5 pilares de CA-01
+#   INV-3  todo node.file corresponde a um arquivo real em src/
+#   INV-4  crosslinks[].from/to são slugs válidos (existem em `nodes`)
+#   INV-5  URLs derivadas usam meta.canonical_base (sem mistura absoluto/relativo)
+# =============================================================================
+
+meta:
+  version: "1.0.0"            # semver; bump obrigatório a cada alteração de grafo
+  canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
+  author: "Maurício Yokoyama Issei"
+  updated: "2026-06-21"
+
+# Decisões humanas que liberaram esta SSOT (HITL — SPEC §7/§8), registradas
+# para rastreabilidade. Não são consumidas pelo componente.
+hitl_decisions:
+  url_convention: "relativa-atual"          # ./arquivo.html (não relativa-raiz)
+  devops_title_canonico: "DevOps Salesforce — Entrega Contínua Agêntica"
+  devops_title_nota: >-
+    O <title> da página devops-salesforce.html NÃO está vazio (premissa
+    RESEARCH §4.1 ficou obsoleta). A página já usa
+    "Arquitetura Híbrida DevOps Salesforce | Flosum + GitHub + Devin AI",
+    que foi mantido. O título canônico acima vale como rótulo de menu.
+  life_e_life3d: "ambos em p5; life3d rotulado (3D)"
+  crosslinks_proposed: "aprovados — materializar links reais na origem"
+
+# ----- Pilares: ordem = jornada CA-01 (NÃO reordenar sem bump major) ----------
+pillars:
+  - id: p1
+    order: 1
+    label: "Fundação"
+    subtitle: "Mentalidade"
+    summary: "Princípios de pensamento sistêmico e gestão do conhecimento."
+    nodes: [know, devin]
+
+  - id: p2
+    order: 2
+    label: "Engenharia de Confiança"
+    subtitle: "O Método"
+    summary: "Da intenção à execução agêntica confiável."
+    nodes: [engenharia-confianca, engenharia-agentes-ia, knowledge-os-presentation]
+
+  - id: p3
+    order: 3
+    label: "Ecossistema Salesforce"
+    subtitle: "A Aplicação"
+    summary: "Métodos agênticos aplicados à plataforma Salesforce."
+    nodes: [devops-salesforce, proposta-engenharia-reversa, salesforce-agentic-quickstart, salesforce-agentic-dev]
+
+  - id: p4
+    order: 4
+    label: "Sustentação & Resiliência"
+    subtitle: "O Valor"
+    summary: "Operação de serviço, SRE e resiliência em produção."
+    nodes: [sustentacao, service-operations-2-0, proposta, proposta-observabilidade-mobile]
+
+  - id: p5
+    order: 5
+    label: "Soluções & Portfólio"
+    subtitle: "Resultados"
+    summary: "Soluções entregues e a jornada pessoal."
+    nodes: [socialselling, index, life, life3d]
+
+# ----- Nós: chave = slug do arquivo (sem .html). blurb ≤ 60 chars (SPEC §4.2) --
+nodes:
+  # --- P1 · Fundação ---------------------------------------------------------
+  know:
+    file: "know.html"
+    title: "Navegando na Complexidade"
+    blurb: "O fim das melhores práticas."
+    pillar: p1
+  devin:
+    file: "devin.html"
+    title: "Vibe Coding com Devin"
+    blurb: "Engenharia agêntica na prática."
+    pillar: p1
+
+  # --- P2 · Engenharia de Confiança ------------------------------------------
+  engenharia-confianca:
+    file: "engenharia-confianca.html"
+    title: "A Engenharia da Confiança"
+    blurb: "Da intenção à execução agêntica."
+    pillar: p2
+  engenharia-agentes-ia:
+    file: "engenharia-agentes-ia.html"
+    title: "Engenharia de Agentes de IA"
+    blurb: "Os princípios da IA confiável."
+    pillar: p2
+  knowledge-os-presentation:
+    file: "knowledge-os-presentation.html"
+    title: "Knowledge OS Enterprise"
+    blurb: "Rastreabilidade e segurança para a IA."
+    pillar: p2
+
+  # --- P3 · Ecossistema Salesforce -------------------------------------------
+  devops-salesforce:
+    file: "devops-salesforce.html"
+    title: "DevOps Salesforce — Entrega Contínua Agêntica"
+    label: "DevOps Salesforce"          # rótulo curto de menu
+    blurb: "Entrega contínua agêntica no Salesforce."
+    pillar: p3
+  proposta-engenharia-reversa:
+    file: "proposta-engenharia-reversa.html"
+    title: "Engenharia Reversa Assistida por IA"
+    blurb: "Salesforce legado transformado por IA."
+    pillar: p3
+  salesforce-agentic-quickstart:
+    file: "salesforce-agentic-quickstart.html"
+    title: "Quick Start: Salesforce + Devin + Flosum"
+    blurb: "Primeiro deploy governado."
+    pillar: p3
+  salesforce-agentic-dev:
+    file: "salesforce-agentic-dev.html"
+    title: "Agentic DevOps for Salesforce"
+    blurb: "Portal de treinamento Spec-Driven."
+    pillar: p3
+
+  # --- P4 · Sustentação & Resiliência ----------------------------------------
+  sustentacao:
+    file: "sustentacao.html"
+    title: "Do Caos à Resiliência"
+    blurb: "Gestão de incidentes e SRE."
+    pillar: p4
+  service-operations-2-0:
+    file: "service-operations-2-0.html"
+    title: "Service Operations 2.0"
+    blurb: "Protocolo Manchester aplicado à TI."
+    pillar: p4
+  proposta:
+    file: "proposta.html"
+    title: "Inteligência de Vendas: Salesforce + AWS"
+    blurb: "Dados de vendas em tempo real."
+    pillar: p4
+  # Extra fora dos 16 canônicos (RESEARCH §1): mantido no hub por afinidade
+  # SRE/observabilidade. canonical: false sinaliza que está fora do grafo-base.
+  proposta-observabilidade-mobile:
+    file: "proposta-observabilidade-mobile.html"
+    title: "Observabilidade SRE para Mobilidade"
+    blurb: "Correlação device-rede-app."
+    pillar: p4
+    canonical: false
+
+  # --- P5 · Soluções & Portfólio ---------------------------------------------
+  socialselling:
+    file: "socialselling.html"
+    title: "SocialSelling"
+    blurb: "Boas práticas de vendas sociais com IA."
+    pillar: p5
+  index:
+    file: "index.html"
+    title: "Maurício Yokoyama Issei"
+    label: "Perfil"
+    blurb: "Tech Lead / Análise de Sistemas."
+    pillar: p5
+  life:
+    file: "life.html"
+    title: "A Jornada em Pixel Art"
+    blurb: "Narrativa pessoal desde 1982."
+    pillar: p5
+  life3d:
+    file: "life3d.html"
+    title: "Vida em 3D"
+    label: "Vida em 3D (3D)"
+    blurb: "Memórias numa viagem imersiva."
+    pillar: p5
+
+# ----- Arestas transversais (cross-linking dirigido) — SPEC §2.1 / RESEARCH §2.2
+# status: proposed | existing   ·   approved: decisão humana de materializar link
+crosslinks:
+  - from: knowledge-os-presentation
+    to: proposta-engenharia-reversa
+    rationale: "Knowledge OS fundamenta a engenharia reversa assistida por IA."
+    status: proposed
+    approved: true            # HITL 2026-06-21 — inserir link real na origem
+  - from: devin
+    to: salesforce-agentic-quickstart
+    rationale: "Devin como executor concreto no stack Salesforce."
+    status: proposed
+    approved: true            # HITL 2026-06-21 — inserir link real na origem
+  - from: engenharia-agentes-ia
+    to: socialselling
+    rationale: "Agentes de IA aplicados a Social Selling."
+    status: existing

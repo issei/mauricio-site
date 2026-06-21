@@ -24,10 +24,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO & Meta Tags -->
-    <title>Catálogo de Conteúdos | Maurício Yokoyama Issei</title>
+    <title>Catálogo · Mapa do Ecossistema | Maurício Yokoyama Issei</title>
     <meta name="description"
-        content="Explore o catálogo completo de artigos, propostas técnicas, jornadas interativas e planos de desenvolvimento de Maurício Issei.">
+        content="O mapa do ecossistema de Maurício Issei: uma jornada em cinco pilares — Mentalidade, Método, Aplicação, Valor e Resultados — que conecta artigos, propostas técnicas e experiências interativas.">
+    <meta name="author" content="Maurício Yokoyama Issei">
     <link rel="canonical" href="https://mauricio.issei.com.br/catalogo.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mauricio.issei.com.br/catalogo.html">
+    <meta property="og:title" content="Catálogo · Mapa do Ecossistema | Maurício Yokoyama Issei">
+    <meta property="og:description"
+        content="Uma jornada em cinco pilares — Mentalidade → Método → Aplicação → Valor → Resultados — conectando todo o conteúdo técnico de Maurício Issei.">
+    <meta property="og:image" content="https://mauricio.issei.com.br/foto1.png">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Catálogo · Mapa do Ecossistema | Maurício Yokoyama Issei">
+    <meta name="twitter:description"
+        content="A rede de conteúdos de Maurício Issei organizada como uma jornada cognitiva em cinco pilares.">
+    <meta name="twitter:image" content="https://mauricio.issei.com.br/foto1.png">
 
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
@@ -40,11 +56,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Structured Data: breadcrumb + coleção em pilares -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://mauricio.issei.com.br/" },
+            { "@type": "ListItem", "position": 2, "name": "Catálogo", "item": "https://mauricio.issei.com.br/catalogo.html" }
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "name": "Catálogo · Mapa do Ecossistema",
+          "url": "https://mauricio.issei.com.br/catalogo.html",
+          "about": "Jornada em cinco pilares: Mentalidade, Método, Aplicação, Valor e Resultados.",
+          "isPartOf": { "@type": "WebSite", "name": "Maurício Yokoyama Issei", "url": "https://mauricio.issei.com.br/" }
+        }
+      ]
+    }
+    </script>
+
     <style>
+        :root {
+            --eco-bg: #0d1117;
+            --eco-text: #c9d1d9;
+            --eco-accent: #007bff;
+            --eco-accent-2: #8a2be2;
+            --eco-accent-soft: #6ea8ff;
+            /* texto pequeno acessível sobre fundo escuro (AA) */
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
+            background-color: var(--eco-bg);
+            color: var(--eco-text);
             scroll-behavior: smooth;
         }
 
@@ -61,7 +109,7 @@
             bottom: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, #007bff, #8a2be2);
+            background: linear-gradient(90deg, var(--eco-accent), var(--eco-accent-2));
             border-radius: 2px;
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
         }
@@ -81,8 +129,16 @@
             box-shadow: 0 10px 30px rgba(0, 123, 255, 0.1);
         }
 
+        /* Foco visível para navegação por teclado (WCAG 2.4.7) */
+        .card-glass:focus-visible,
+        .journey-step:focus-visible {
+            outline: 2px solid var(--eco-accent-soft);
+            outline-offset: 3px;
+            border-color: rgba(0, 123, 255, 0.5);
+        }
+
         .gradient-text {
-            background: linear-gradient(135deg, #007bff 0%, #8a2be2 100%);
+            background: linear-gradient(135deg, var(--eco-accent) 0%, var(--eco-accent-2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -95,11 +151,173 @@
             letter-spacing: 0.1em;
             padding: 2px 8px;
             border-radius: 4px;
-            background: rgba(0, 123, 255, 0.1);
-            color: #007bff;
-            border: 1px solid rgba(0, 123, 255, 0.2);
+            background: rgba(0, 123, 255, 0.12);
+            color: var(--eco-accent-soft);
+            border: 1px solid rgba(0, 123, 255, 0.25);
             margin-bottom: 12px;
             display: inline-block;
+        }
+
+        /* ===== Journey rail (L0/L1 — Progressive Disclosure) ===== */
+        .journey {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .journey {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            /* linha-guia da jornada (sequência CA-01) */
+            .journey::before {
+                content: '';
+                position: absolute;
+                top: 34px;
+                left: 8%;
+                right: 8%;
+                height: 2px;
+                background: linear-gradient(90deg, var(--eco-accent), var(--eco-accent-2));
+                opacity: 0.35;
+                z-index: 0;
+            }
+        }
+
+        .journey-step {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 6px;
+            padding: 14px 10px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--eco-text);
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .journey-step:hover {
+            border-color: rgba(0, 123, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .journey-badge {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: #fff;
+            background: linear-gradient(135deg, var(--eco-accent), var(--eco-accent-2));
+            box-shadow: 0 0 14px rgba(0, 123, 255, 0.35);
+        }
+
+        .journey-eyebrow {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--eco-accent-soft);
+        }
+
+        .journey-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        /* ===== Cabeçalho de pilar ===== */
+        .pillar-head {
+            display: flex;
+            align-items: baseline;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .pillar-num {
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .pillar-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--eco-accent-soft);
+        }
+
+        .pillar-summary {
+            color: #9ca3af;
+            max-width: 46rem;
+        }
+
+        /* Conector de herança entre pilares (arestas RESEARCH §2.3) */
+        .eco-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: #8b95a5;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            padding: 6px 0;
+        }
+
+        .eco-connector .line {
+            width: 1px;
+            height: 28px;
+            background: linear-gradient(180deg, rgba(0, 123, 255, 0.5), rgba(138, 43, 226, 0.15));
+        }
+
+        /* Anotação de crosslink (não-link, informativa) */
+        .crosslink {
+            margin-top: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #9aa6c2;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            padding-top: 10px;
+        }
+
+        .crosslink i {
+            color: var(--eco-accent-soft);
+        }
+
+        /* Compensa a navbar fixa ao saltar para âncoras */
+        .anchor-target {
+            scroll-margin-top: 96px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .card-glass,
+            .journey-step {
+                transition: none;
+            }
+
+            .card-glass:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -118,7 +336,7 @@
                     class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Sobre Mim</a>
                 <a href="./index.html#experience"
                     class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Experiência</a>
-                <a href="./catalogo.html" class="text-blue-400 font-semibold">Catálogo</a>
+                <a href="./catalogo.html" class="text-blue-400 font-semibold" aria-current="page">Catálogo</a>
             </div>
         </div>
     </nav>
@@ -126,123 +344,299 @@
     <main class="pt-32 pb-16 px-6">
         <div class="container mx-auto max-w-6xl">
             <!-- Hero / Intro -->
-            <div class="text-center mb-20">
+            <div class="text-center mb-14">
+                <p class="text-sm font-semibold tracking-[0.2em] uppercase text-blue-400 mb-4">Mapa do Ecossistema</p>
                 <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight">Catálogo de <span
                         class="gradient-text">Conteúdos</span></h1>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                    Bem-vindo ao repositório central de informações. Aqui você encontrará uma curadoria organizada de
-                    artigos técnicos, estudos de caso, planos estratégicos e experiências interativas desenvolvidas para
-                    compartilhar conhecimento e visão sobre tecnologia e liderança.
+                    Não é uma lista — é uma jornada. Cada conteúdo é um nó de uma rede que conduz da
+                    <strong class="text-gray-200">mentalidade</strong> ao
+                    <strong class="text-gray-200">resultado</strong>, atravessando o método, sua aplicação no Salesforce
+                    e a sustentação em produção.
                 </p>
             </div>
 
-            <!-- Categorias -->
-            <div class="space-y-24">
+            <!-- Journey rail (L1 — os 5 pilares, sumário em 1 linha) -->
+            <nav aria-label="Jornada do ecossistema em cinco pilares" class="mb-24">
+                <ol class="journey">
+                    <li>
+                        <a href="#p1" class="journey-step">
+                            <span class="journey-badge" aria-hidden="true">01</span>
+                            <span class="journey-eyebrow">Mentalidade</span>
+                            <span class="journey-label">Fundação</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#p2" class="journey-step">
+                            <span class="journey-badge" aria-hidden="true">02</span>
+                            <span class="journey-eyebrow">O Método</span>
+                            <span class="journey-label">Engenharia de Confiança</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#p3" class="journey-step">
+                            <span class="journey-badge" aria-hidden="true">03</span>
+                            <span class="journey-eyebrow">A Aplicação</span>
+                            <span class="journey-label">Ecossistema Salesforce</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#p4" class="journey-step">
+                            <span class="journey-badge" aria-hidden="true">04</span>
+                            <span class="journey-eyebrow">O Valor</span>
+                            <span class="journey-label">Sustentação &amp; Resiliência</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#p5" class="journey-step">
+                            <span class="journey-badge" aria-hidden="true">05</span>
+                            <span class="journey-eyebrow">Resultados</span>
+                            <span class="journey-label">Soluções &amp; Portfólio</span>
+                        </a>
+                    </li>
+                </ol>
+            </nav>
 
-                <!-- Engenharia & Salesforce DevOps -->
-                <section id="devops">
-                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Engenharia & Salesforce DevOps</h2>
+            <!-- Pilares -->
+            <div class="space-y-10">
+
+                <!-- P1 · Fundação -->
+                <section id="p1" class="anchor-target" aria-labelledby="p1-title">
+                    <header class="mb-10">
+                        <div class="pillar-head">
+                            <span class="pillar-num gradient-text" aria-hidden="true">01</span>
+                            <div>
+                                <p class="pillar-eyebrow">Mentalidade</p>
+                                <h2 id="p1-title" class="text-3xl font-bold text-white section-title">Fundação</h2>
+                            </div>
+                        </div>
+                        <p class="pillar-summary mt-5">Princípios de pensamento sistêmico e gestão do conhecimento — o
+                            ponto de partida antes de qualquer ferramenta.</p>
+                    </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <a href="./devops-salesforce.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Arquitetura Híbrida DevOps Salesforce</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Uma visão estratégica sobre como
-                                unir governança do Flosum, flexibilidade do GitHub e velocidade da IA Agentic no
-                                ecossistema Salesforce.</p>
+                        <a href="./know.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Navegando na Complexidade</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">O Framework Cynefin e o fim das
+                                melhores práticas: como liderar inovação e processos emergentes em ambientes complexos.
+                            </p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
                         </a>
-                        <a href="./salesforce-agentic-dev.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Agentic DevOps for Salesforce</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Guia prático sobre Spec-Driven
-                                Development e o uso de agentes autônomos para desenvolvimento eficiente e sem débito
-                                técnico.</p>
+                        <a href="./devin.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Vibe Coding com Devin</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Engenharia agêntica na prática: o
+                                Devin como executor de tarefas de engenharia, da intenção ao código.</p>
+                            <span class="crosslink"><i class="fa-solid fa-arrow-turn-down" aria-hidden="true"></i>
+                                Executor concreto no Ecossistema Salesforce</span>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                    </div>
+                </section>
+
+                <div class="eco-connector" aria-hidden="true">
+                    <span class="line"></span>
+                    <span>herda o pensamento sistêmico</span>
+                    <i class="fa-solid fa-chevron-down" style="color: var(--eco-accent-soft);"></i>
+                </div>
+
+                <!-- P2 · Engenharia de Confiança -->
+                <section id="p2" class="anchor-target" aria-labelledby="p2-title">
+                    <header class="mb-10">
+                        <div class="pillar-head">
+                            <span class="pillar-num gradient-text" aria-hidden="true">02</span>
+                            <div>
+                                <p class="pillar-eyebrow">O Método</p>
+                                <h2 id="p2-title" class="text-3xl font-bold text-white section-title">Engenharia de
+                                    Confiança</h2>
+                            </div>
+                        </div>
+                        <p class="pillar-summary mt-5">Da intenção à execução agêntica confiável — a disciplina-ponte que
+                            transforma mentalidade em método.</p>
+                    </header>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./engenharia-confianca.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Jornada · 4 módulos</span>
+                            <h3 class="text-xl font-bold text-white mb-3">A Engenharia da Confiança</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Da Intenção à Execução Agêntica:
+                                quatro módulos que conectam Engenharia Reversa, Engenharia de Agentes e Vibe Coding — do
+                                caos da IA-como-mágica à governança da IA-como-engenharia.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Iniciar a jornada →</span>
+                        </a>
+                        <a href="./engenharia-agentes-ia.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Engenharia de Agentes de IA</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Os dez princípios que tornam
+                                sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança
+                                agent-driven.</p>
+                            <span class="crosslink"><i class="fa-solid fa-arrow-turn-down" aria-hidden="true"></i>
+                                Agentes de IA aplicados ao SocialSelling</span>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./knowledge-os-presentation.html"
+                            class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Knowledge OS Enterprise</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">O sistema de conhecimento que dá
+                                rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle.</p>
+                            <span class="crosslink"><i class="fa-solid fa-arrow-turn-down" aria-hidden="true"></i>
+                                Fundamenta a Engenharia Reversa</span>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                    </div>
+                </section>
+
+                <div class="eco-connector" aria-hidden="true">
+                    <span class="line"></span>
+                    <span>aplica o método</span>
+                    <i class="fa-solid fa-chevron-down" style="color: var(--eco-accent-soft);"></i>
+                </div>
+
+                <!-- P3 · Ecossistema Salesforce -->
+                <section id="p3" class="anchor-target" aria-labelledby="p3-title">
+                    <header class="mb-10">
+                        <div class="pillar-head">
+                            <span class="pillar-num gradient-text" aria-hidden="true">03</span>
+                            <div>
+                                <p class="pillar-eyebrow">A Aplicação</p>
+                                <h2 id="p3-title" class="text-3xl font-bold text-white section-title">Ecossistema
+                                    Salesforce</h2>
+                            </div>
+                        </div>
+                        <p class="pillar-summary mt-5">Métodos agênticos aplicados à plataforma Salesforce — onde o
+                            método encontra a engenharia real.</p>
+                    </header>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./devops-salesforce.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">DevOps Salesforce</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Entrega contínua agêntica:
+                                arquitetura híbrida unindo a governança do Flosum, a flexibilidade do GitHub e a
+                                velocidade da IA no ecossistema Salesforce.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./proposta-engenharia-reversa.html"
+                            class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Engenharia Reversa Assistida por IA</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Transformação de sistemas
+                                Salesforce legados via IA: do código herdado à especificação viva, sem refactor manual.
+                            </p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
                         </a>
                         <a href="./salesforce-agentic-quickstart.html"
                             class="card-glass p-6 rounded-2xl flex flex-col h-full">
                             <h3 class="text-xl font-bold text-white mb-3">Quick Start: Salesforce + Devin + Flosum</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Tutorial passo a passo para
-                                configurar seu ambiente de desenvolvimento agentic e realizar o primeiro deploy
-                                governado em tempo recorde.</p>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Passo a passo para configurar o
+                                ambiente de desenvolvimento agêntico e realizar o primeiro deploy governado em tempo
+                                recorde.</p>
+                            <span class="crosslink"><i class="fa-solid fa-arrow-turn-up" aria-hidden="true"></i>
+                                Tem o Devin como executor</span>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./salesforce-agentic-dev.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Agentic DevOps for Salesforce</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Portal de treinamento em
+                                Spec-Driven Development e agentes autônomos para desenvolvimento eficiente e sem débito
+                                técnico.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
                         </a>
                     </div>
                 </section>
 
-                <!-- Arquitetura & Observabilidade -->
-                <section id="arquitetura">
-                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Arquitetura & Observabilidade</h2>
+                <div class="eco-connector" aria-hidden="true">
+                    <span class="line"></span>
+                    <span>é sustentado por</span>
+                    <i class="fa-solid fa-chevron-down" style="color: var(--eco-accent-soft);"></i>
+                </div>
+
+                <!-- P4 · Sustentação & Resiliência -->
+                <section id="p4" class="anchor-target" aria-labelledby="p4-title">
+                    <header class="mb-10">
+                        <div class="pillar-head">
+                            <span class="pillar-num gradient-text" aria-hidden="true">04</span>
+                            <div>
+                                <p class="pillar-eyebrow">O Valor</p>
+                                <h2 id="p4-title" class="text-3xl font-bold text-white section-title">Sustentação &amp;
+                                    Resiliência</h2>
+                            </div>
+                        </div>
+                        <p class="pillar-summary mt-5">Operação de serviço, SRE e resiliência em produção — onde a
+                            engenharia entregue se prova ao longo do tempo.</p>
+                    </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <a href="./proposta-observabilidade-mobile.html"
-                            class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Observabilidade SRE para Mobilidade</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Arquitetura técnica detalhando a
-                                correlação inteligente entre dispositivos, rede e aplicações usando Datadog e Azure.</p>
+                        <a href="./sustentacao.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Do Caos à Resiliência</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Sustentação de sistemas em
+                                produção: gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em
+                                crise.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./service-operations-2-0.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Service Operations 2.0</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Visão executiva do Protocolo
+                                Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento
+                                comercial.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
                         </a>
                         <a href="./proposta.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
                             <h3 class="text-xl font-bold text-white mb-3">Inteligência de Vendas: Salesforce + AWS</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Proposta de solução para
-                                otimização de rotas comerciais e redução de ruído de dados através de integração
-                                avançada Event-Driven.</p>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Inteligência de vendas em tempo
+                                real via arquitetura event-driven: redução de ruído de dados e otimização de rotas
+                                comerciais.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
                         </a>
-                        <a href="./engenharia-agentes-ia.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Engenharia de Agentes de IA</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Jornada interativa pelos dez
-                                princípios que tornam sistemas de IA confiáveis: pouca IA no caminho crítico, contratos,
-                                FinOps e governança agent-driven.</p>
-                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
-                        </a>
-                        <a href="./engenharia-confianca.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <span class="category-tag">Jornada · 4 módulos</span>
-                            <h3 class="text-xl font-bold text-white mb-3">A Engenharia da Confiança</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Da Intenção à Execução Agêntica:
-                                quatro módulos que conectam Engenharia Reversa, Engenharia de Agentes e Vibe Coding —
-                                do Caos da IA-como-mágica à Governança da IA-como-engenharia.</p>
-                            <span class="text-blue-400 text-xs font-semibold mt-4">Iniciar a jornada →</span>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- Gestão & Liderança -->
-                <section id="gestao">
-                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Gestão & Liderança</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <a href="./service-operations-2-0.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Service Operations 2.0</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Visão executiva sobre o Modelo
-                                Manchester de TI para resiliência sistêmica e proteção do faturamento comercial.</p>
-                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
-                        </a>
-                        <a href="./sustentacao.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Do Caos à Resiliência: Sustentação</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Jornada de aprendizado sobre
-                                gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em crise.</p>
-                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
-                        </a>
-                        <a href="./know.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Navegando na Complexidade</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Exploração sobre o Framework
-                                Cynefin e como liderar inovação e processos emergentes em ambientes complexos.</p>
+                        <a href="./proposta-observabilidade-mobile.html"
+                            class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">Observabilidade SRE para Mobilidade</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Correlação inteligente entre
+                                dispositivos, rede e aplicações usando Datadog e Azure.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
                         </a>
                     </div>
                 </section>
 
-                <!-- Jornada & Biografia -->
-                <section id="jornada">
-                    <h2 class="text-3xl font-bold text-white mb-10 section-title">Jornada & Biografia</h2>
+                <div class="eco-connector" aria-hidden="true">
+                    <span class="line"></span>
+                    <span>gera resultados</span>
+                    <i class="fa-solid fa-chevron-down" style="color: var(--eco-accent-soft);"></i>
+                </div>
+
+                <!-- P5 · Soluções & Portfólio -->
+                <section id="p5" class="anchor-target" aria-labelledby="p5-title">
+                    <header class="mb-10">
+                        <div class="pillar-head">
+                            <span class="pillar-num gradient-text" aria-hidden="true">05</span>
+                            <div>
+                                <p class="pillar-eyebrow">Resultados</p>
+                                <h2 id="p5-title" class="text-3xl font-bold text-white section-title">Soluções &amp;
+                                    Portfólio</h2>
+                            </div>
+                        </div>
+                        <p class="pillar-summary mt-5">Soluções entregues e a jornada pessoal — o destino da rede, onde o
+                            método vira resultado.</p>
+                    </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <a href="./socialselling.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <h3 class="text-xl font-bold text-white mb-3">SocialSelling</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Overview do projeto e modelo de
+                                boas práticas para vendas sociais potencializadas por agentes de IA.</p>
+                            <span class="crosslink"><i class="fa-solid fa-arrow-turn-up" aria-hidden="true"></i>
+                                Resultado da Engenharia de Agentes de IA</span>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Acessar conteúdo →</span>
+                        </a>
+                        <a href="./index.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Perfil</span>
+                            <h3 class="text-xl font-bold text-white mb-3">Maurício Yokoyama Issei</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed flex-grow">Tech Lead e Análise de Sistemas: a
+                                trajetória profissional e o ponto de partida de todo o ecossistema.</p>
+                            <span class="text-blue-400 text-xs font-semibold mt-4">Ver perfil →</span>
+                        </a>
                         <a href="./life.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
-                            <h3 class="text-xl font-bold text-white mb-3">Narrativa Pixel Art</h3>
+                            <h3 class="text-xl font-bold text-white mb-3">A Jornada em Pixel Art</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Experiência interativa contando a
                                 trajetória pessoal e profissional desde o início em 1982 até os dias de hoje.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Iniciar jornada →</span>
                         </a>
                         <a href="./life3d.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">3D</span>
                             <h3 class="text-xl font-bold text-white mb-3">Vida em 3D</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Uma viagem contemplativa e
-                                imersiva em 3D pela história e memórias de Mauricio Issei.</p>
+                                imersiva em 3D pela história e memórias de Maurício Issei.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Iniciar jornada →</span>
                         </a>
                     </div>
@@ -255,6 +649,7 @@
     <!-- Footer -->
     <footer class="bg-gray-950 text-gray-500 py-12 text-center text-sm border-t border-white/5">
         <div class="container mx-auto px-6">
+            <p class="text-gray-400 mb-2">Mentalidade → Método → Aplicação → Valor → Resultados</p>
             <p>&copy; <span id="current-year"></span> Maurício Issei. Todos os direitos reservados.</p>
             <p class="mt-2">Arquitetura de Informação e Design para Performance.</p>
         </div>
