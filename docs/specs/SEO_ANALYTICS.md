@@ -73,7 +73,7 @@ Localizado em `public/robots.txt`.
 ```text
 User-agent: *
 Allow: /
-Content-Signal: ai-train=yes, search=yes, ai-input=yes
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 Sitemap: https://mauricio.issei.com.br/sitemap.xml
 
 ```

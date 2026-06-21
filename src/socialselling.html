@@ -4,20 +4,7 @@
 <head>
     <!-- Google Consent Mode v2 — default DENIED (LGPD/ANPD/GDPR) -->
     <!-- Spec: docs/specs/pages/LEGAL_PAGES.md §6.2 — deve carregar ANTES de GTM/GA4 -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('consent', 'default', {
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            analytics_storage: 'denied',
-            functionality_storage: 'granted',
-            security_storage: 'granted',
-            wait_for_update: 500
-        });
-        gtag('js', new Date());
-    </script>
+
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -29,10 +16,8 @@
         })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
     <!-- End Google Tag Manager -->
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
-    <script>
-        gtag('config', 'G-GEKLHZYVYX');
-    </script>
+
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SocialSelling — Overview do Projeto &amp; Modelo de Boas Práticas</title>
@@ -77,6 +62,192 @@
             font-variant-numeric: tabular-nums
         }
     </style>
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="social selling, prospecção com IA, ADR, SDD, SDD-to-Code Loop, gates, determinismo, Open-World, aprendizado por feedback" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/socialselling" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/socialselling.md" title="SocialSelling — Busca de clientes mais eficiente com IA — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="SocialSelling — Busca de clientes mais eficiente com IA" />
+<meta property="og:description" content="Overview do projeto SocialSelling: arquitetura, especificações (ADRs/SDDs), boas práticas (SDD-to-Code Loop, gates, determinismo, Open-World) e aprendizado por feedback." />
+<meta property="og:url" content="https://mauricio.issei.com.br/socialselling" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-socialselling.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="SocialSelling — Busca de clientes mais eficiente com IA" />
+<meta property="article:published_time" content="2026-03-01T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-06-21T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="IA · Vendas" />
+<meta property="article:tag" content="Social Selling" />
+<meta property="article:tag" content="IA" />
+<meta property="article:tag" content="Spec-Driven Development" />
+<meta property="article:tag" content="Determinismo" />
+<meta property="article:tag" content="ADR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SocialSelling — Busca de clientes mais eficiente com IA" />
+<meta name="twitter:description" content="Overview do projeto SocialSelling: arquitetura, especificações (ADRs/SDDs), boas práticas (SDD-to-Code Loop, gates, determinismo, Open-World) e aprendizado por feedback." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-socialselling.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/socialselling#webpage",
+      "url": "https://mauricio.issei.com.br/socialselling",
+      "name": "SocialSelling — Busca de clientes mais eficiente com IA",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-03-01",
+      "dateModified": "2026-06-21",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-socialselling.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/socialselling#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/socialselling#article"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mauricio.issei.com.br/socialselling#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/socialselling#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/socialselling#webpage"
+      },
+      "headline": "SocialSelling — Busca de clientes mais eficiente com IA",
+      "description": "Overview do projeto SocialSelling: arquitetura, especificações (ADRs/SDDs), boas práticas (SDD-to-Code Loop, gates, determinismo, Open-World) e aprendizado por feedback.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-03-01",
+      "dateModified": "2026-06-21",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-socialselling.png",
+      "isAccessibleForFree": true,
+      "keywords": "social selling, prospecção com IA, ADR, SDD, SDD-to-Code Loop, gates, determinismo, Open-World, aprendizado por feedback",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Social Selling"
+        },
+        {
+          "@type": "Thing",
+          "name": "Spec-Driven Development"
+        },
+        {
+          "@type": "Thing",
+          "name": "Determinismo"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Times de Vendas, Engenheiros de IA, Líderes Comerciais"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/socialselling#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SocialSelling — Busca de clientes mais eficiente com IA"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/socialselling#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o projeto SocialSelling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É um sistema que torna a busca e a qualificação de clientes mais eficientes e automáticas com IA. Foi construído com engenharia disciplinada: decisões em ADRs/SDDs, um loop SDD-to-Code com gates determinísticos e aprendizado por feedback."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como o determinismo e o Open-World aparecem aqui?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O caminho crítico resolve o que dá para resolver com regras (determinístico-primeiro) e trata ausência de dado como incerteza explícita (Open-World), não como \"falso\". Isso evita que a IA invente qualificações e mantém o resultado auditável."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é o SDD-to-Code Loop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É o ciclo em que a especificação dirige a implementação e os gates validam cada passo antes de avançar: escreve-se a intenção, a IA implementa contra ela e os testes/gates provam a conformidade. O aprendizado por feedback realimenta a spec."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
 </head>
 
 <body class="bg-ink-900 text-slate-300 antialiased">
@@ -1673,7 +1844,38 @@
             </section>
 
             <!-- FOOTER -->
-            <footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-500">
+            <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que é o SocialSelling</h2>
+    <p class="aeo-tldr__lede">O <strong>SocialSelling</strong> torna a busca de clientes <strong>mais eficiente e automática com IA</strong>, construído com engenharia de verdade: decisões registradas em <strong>ADRs/SDDs</strong>, um <strong>SDD-to-Code Loop</strong> com gates determinísticos e aprendizado contínuo por feedback.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>Prospecção automática com IA</strong> — encontra e qualifica clientes com menos esforço manual.</li>
+      <li><strong>ADRs/SDDs</strong> — arquitetura e comportamento documentados como fonte da verdade.</li>
+      <li><strong>SDD-to-Code Loop + gates</strong> — determinismo e Open-World no caminho crítico.</li>
+      <li><strong>Aprendizado por feedback</strong> — o sistema melhora com o resultado real.</li>
+    </ul>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que é o projeto SocialSelling?</summary>
+      <div class="aeo-faq__a"><p>É um sistema que torna a busca e a qualificação de clientes mais eficientes e automáticas com IA. Foi construído com engenharia disciplinada: decisões em ADRs/SDDs, um loop SDD-to-Code com gates determinísticos e aprendizado por feedback.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Como o determinismo e o Open-World aparecem aqui?</summary>
+      <div class="aeo-faq__a"><p>O caminho crítico resolve o que dá para resolver com regras (determinístico-primeiro) e trata ausência de dado como incerteza explícita (Open-World), não como &quot;falso&quot;. Isso evita que a IA invente qualificações e mantém o resultado auditável.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é o SDD-to-Code Loop?</summary>
+      <div class="aeo-faq__a"><p>É o ciclo em que a especificação dirige a implementação e os gates validam cada passo antes de avançar: escreve-se a intenção, a IA implementa contra ela e os testes/gates provam a conformidade. O aprendizado por feedback realimenta a spec.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+<footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-500">
                 <p>SocialSelling · overview gerado a partir das especificações vivas do repositório. Fonte da verdade:
                     <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-000-escopo-canonico.md"
                         class="text-brand-400 hover:underline">ADR-000</a> ·

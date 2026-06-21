@@ -1,0 +1,61 @@
+/* Blocos AEO/GEO (Em síntese + FAQ) — estilo autocontido, dark-tech, acessível.
+   Injetado por scripts/seo/build-aeo.mjs como /aeo.css. Namespace .aeo-* para
+   não colidir com o CSS de cada página. Links sublinhados (axe link-in-text). */
+.aeo {
+  --aeo-bg: #161b22; --aeo-bg2: #1c2230; --aeo-border: #30363d;
+  --aeo-text: #c9d1d9; --aeo-head: #ffffff; --aeo-muted: #8b949e;
+  --aeo-link: #58a6ff; --aeo-accent: #007bff;
+  max-width: 1080px; margin: 3.5rem auto; padding: 0 1.25rem;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+  color: var(--aeo-text); line-height: 1.7; box-sizing: border-box;
+}
+.aeo *, .aeo *::before, .aeo *::after { box-sizing: border-box; }
+.aeo .aeo-eyebrow {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--aeo-link); margin: 0 0 0.4rem;
+}
+
+/* Em síntese */
+.aeo-tldr {
+  background: var(--aeo-bg2); border: 1px solid var(--aeo-border);
+  border-left: 4px solid var(--aeo-accent); border-radius: 14px;
+  padding: 1.6rem 1.8rem; margin: 0 0 1.6rem;
+  box-shadow: 0 0 0 1px rgba(0,123,255,0.12), 0 12px 32px rgba(0,0,0,0.45);
+}
+.aeo-tldr__title { font-size: 1.5rem; line-height: 1.2; color: var(--aeo-head); margin: 0.1rem 0 0.8rem; }
+.aeo-tldr__lede { font-size: 1.02rem; margin: 0 0 1rem; max-width: 74ch; }
+.aeo-tldr__lede strong { color: var(--aeo-head); }
+.aeo-tldr__points { margin: 0 0 1rem; padding-left: 1.25rem; display: grid; gap: 0.5rem; }
+.aeo-tldr__points li { font-size: 0.95rem; line-height: 1.6; }
+.aeo-tldr__points li strong { color: var(--aeo-head); }
+.aeo-tldr__foot { font-size: 0.84rem; color: var(--aeo-muted); margin: 0; line-height: 1.6; }
+.aeo-tldr__foot strong { color: var(--aeo-text); }
+
+/* FAQ */
+.aeo-faq__title { font-size: 1.5rem; line-height: 1.2; color: var(--aeo-head); margin: 0.1rem 0 1rem; }
+.aeo-faq__item { background: var(--aeo-bg); border: 1px solid var(--aeo-border); border-radius: 14px; overflow: hidden; margin-bottom: 0.7rem; }
+.aeo-faq__item[open] { border-color: var(--aeo-accent); }
+.aeo-faq__q {
+  cursor: pointer; list-style: none; padding: 1rem 1.3rem;
+  font-weight: 700; font-size: 1rem; color: var(--aeo-head);
+  display: flex; align-items: flex-start; gap: 0.6rem;
+}
+.aeo-faq__q::-webkit-details-marker { display: none; }
+.aeo-faq__q::before { content: "▸"; color: var(--aeo-link); transition: transform 0.2s ease; flex: none; }
+.aeo-faq__item[open] .aeo-faq__q::before { transform: rotate(90deg); }
+.aeo-faq__a { padding: 0 1.3rem 1.2rem; }
+.aeo-faq__a p { margin: 0; font-size: 0.92rem; line-height: 1.7; max-width: 76ch; }
+.aeo-faq__a strong { color: var(--aeo-head); }
+
+/* Links sempre sublinhados (contraste + distinção sem depender de cor) */
+.aeo a { color: var(--aeo-link); text-decoration: underline; text-underline-offset: 2px; }
+.aeo a:hover { color: #79b8ff; }
+
+@media (max-width: 640px) {
+  .aeo { margin: 2.5rem auto; }
+  .aeo-tldr { padding: 1.2rem 1.15rem; }
+  .aeo-tldr__title, .aeo-faq__title { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aeo-faq__q::before { transition: none; }
+}
