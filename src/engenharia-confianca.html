@@ -52,21 +52,6 @@
         <a href="#maturidade" data-ec-navlink>Maturidade</a>
       </nav>
 
-      <div class="ec-journey" aria-hidden="true">
-        <div class="ec-journey__steps" data-ec-journey>
-          <span class="ec-journey__step" data-step="0"><span class="ec-journey__bullet"></span>M0</span>
-          <span class="ec-journey__sep">—</span>
-          <span class="ec-journey__step" data-step="1"><span class="ec-journey__bullet"></span>M1</span>
-          <span class="ec-journey__sep">—</span>
-          <span class="ec-journey__step" data-step="2"><span class="ec-journey__bullet"></span>M2</span>
-          <span class="ec-journey__sep">—</span>
-          <span class="ec-journey__step" data-step="3"><span class="ec-journey__bullet"></span>M3</span>
-        </div>
-        <span class="ec-matbadge" data-ec-matbadge>
-          Maturidade <span class="ec-matbadge__lvl" data-mat-lvl>1</span>
-          <span data-mat-name>Mágica</span>
-        </span>
-      </div>
     </div>
   </header>
 
@@ -133,6 +118,19 @@
         <div class="ec-hero__cta" style="margin-top:2rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
           <a href="#modulo-0" class="ec-btn ec-btn--primary">Iniciar a jornada do início ▾</a>
           <a href="#maturidade" class="ec-btn ec-btn--ghost">Ver o Modelo de Maturidade</a>
+        </div>
+
+        <div class="ec-video-summary">
+          <p class="ec-video__caption">Vídeo · Visão geral da jornada</p>
+          <div class="ec-video__frame">
+            <iframe
+              src="https://www.youtube.com/embed/0fkru6v1O-c"
+              title="A Engenharia da Confiança — Visão geral da jornada"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -296,6 +294,149 @@ flowchart LR
             </div>
           </div>
 
+          <!-- Micro-caso real (M0) -->
+          <section class="ec-block" aria-labelledby="m0-caso">
+            <p class="ec-block__kicker">Caso real · O custo do Crash Silencioso</p>
+            <h3 id="m0-caso" class="ec-block__title">Quando a confiança é alta e a realidade mudou</h3>
+            <p class="ec-block__intro">
+              O Crash Silencioso não é uma hipótese acadêmica — ele já custou centenas de milhões. O
+              caso abaixo mostra um modelo tecnicamente "funcionando" enquanto destruía valor.
+            </p>
+            <article class="ec-case">
+              <div class="ec-case__head">
+                <span class="ec-case__sector">Imobiliário / Financeiro</span>
+                <p class="ec-case__name">Zillow Offers — <span style="color:var(--ec-danger)">US$ 500M+ de prejuízo</span></p>
+              </div>
+              <dl class="ec-case__dl">
+                <div class="ec-case__row">
+                  <dt>Situação</dt>
+                  <dd>Uma rede neural (<em>Neural Zestimate</em>) precificava imóveis para compra
+                  institucional em massa, treinada em dados de um mercado de alta liquidez.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Crash Silencioso</dt>
+                  <dd>Após a virada macroeconômica pós-pandemia, a relação de preços mudou. O modelo
+                  seguiu sugerindo preços inflacionados com <strong>altíssima confiança</strong> — sem
+                  estourar nenhum alerta (<em>concept drift</em>).</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Diagnóstico ISM</dt>
+                  <dd>Ausência de
+                  <button class="ec-term" data-term="fail-closed" type="button">Fail-Closed</button>
+                  e de observabilidade ligada aos KPIs de negócio. A empresa operava na "Mágica":
+                  velocidade de requisição acima de um inventário de comportamento ajustado.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--good">
+                  <dt>O que o ISM teria mudado</dt>
+                  <dd>Monitorar o desvio populacional (<strong>PSI</strong>) e degradar para
+                  <em>fallback</em> seguro ao cruzar o limiar interromperia a aquisição de milhares de
+                  imóveis supervalorizados.</dd>
+                </div>
+              </dl>
+              <span class="ec-case__src">
+                Fontes:
+                <a href="https://neuralwired.com/2026/06/17/model-drift-zillow-ml-monitoring-2026/" target="_blank" rel="noopener">Model Drift — Zillow (NeuralWired)</a> ·
+                <a href="https://mindcto.com/insights/ai-economic-fallacy-zillow" target="_blank" rel="noopener">The $500M Cautionary Tale (MindCTO)</a>
+              </span>
+            </article>
+          </section>
+
+          <!-- KPIs do M0 -->
+          <section class="ec-block" aria-labelledby="m0-kpi">
+            <p class="ec-block__kicker">Governança quantitativa · M0</p>
+            <h3 id="m0-kpi" class="ec-block__title">KPIs do Despertar</h3>
+            <p class="ec-block__intro">
+              Para um "sistema intencional", cada fase precisa ser auditável. No M0, dois indicadores
+              transformam a falha etérea da IA em dívida técnica explícita para executivos.
+            </p>
+            <div class="ec-tablewrap">
+              <table class="ec-table">
+                <caption>Indicadores de sucesso do Módulo 0 (Despertar).</caption>
+                <thead>
+                  <tr><th scope="col">Métrica</th><th scope="col">Fórmula / Coleta</th><th scope="col">Meta orientativa</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Crash Silencioso Index (CSI)</th>
+                    <td>Execuções com <code>200 OK</code> técnico mas impacto nocivo ao negócio ÷ total de execuções (coleta retroativa).</td>
+                    <td><span class="ec-metric">&lt; 5%</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cobertura da Matriz de Evidências</th>
+                    <td>% de decisões de negócio com evidência classificada (fato × inferência × suposição).</td>
+                    <td><span class="ec-metric">&gt; 80%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size:0.86rem;color:var(--ec-muted);margin:0;">
+              O <strong>CSI</strong> é a espinha dorsal da narrativa do M0: ele converte "o robô comprou
+              caro sem dar erro" num número que o financeiro entende e prioriza.
+            </p>
+          </section>
+
+          <!-- A Jornada Humana do ISM (dimensão sociotécnica) -->
+          <section class="ec-block" aria-labelledby="m0-humana">
+            <p class="ec-block__kicker">Dimensão sociotécnica</p>
+            <h3 id="m0-humana" class="ec-block__title">A Jornada Humana do ISM</h3>
+            <p class="ec-block__intro">
+              A transição de "IA como mágica" para "IA como engenharia" é, antes de tudo, uma mudança de
+              mentalidade. Ignorar a dimensão humana gera resistência mesmo quando o argumento técnico é
+              irrefutável. O ISM ancora-se na <strong>Segurança Psicológica</strong> (Amy Edmondson):
+              sem um clima seguro para relatar anomalias, engenheiros camuflam modelos degenerados — e a
+              pequena deriva vira a <strong>"Normalização do Desvio"</strong> (Diane Vaughan) que
+              afundou a <a href="https://www.zdnet.com/article/billion-dollar-failures-how-bad-decisions-and-poor-it-killed-target-canada/" target="_blank" rel="noopener">Target Canada</a>,
+              onde analistas, temendo represálias, desativaram o alerta de ruptura de estoque enquanto o
+              painel executivo seguia "verde".
+            </p>
+            <div class="ec-human">
+              <div class="ec-human__card">
+                <p class="ec-human__role">Liderança Executiva</p>
+                <p class="ec-human__challenge"><span class="ec-human__label">Desafio típico</span>Resistência a "mais processo" quando a demo já funciona.</p>
+                <p class="ec-human__strategy"><span class="ec-human__label">Estratégia do ISM</span>Traduzir o Crash Silencioso em risco financeiro auditável; usar a Matriz de Evidências como instrumento de governança executiva.</p>
+              </div>
+              <div class="ec-human__card">
+                <p class="ec-human__role">Times Técnicos</p>
+                <p class="ec-human__challenge"><span class="ec-human__label">Desafio típico</span>Percepção de que engenharia de confiança é burocracia que freia entregas.</p>
+                <p class="ec-human__strategy"><span class="ec-human__label">Estratégia do ISM</span>Demonstrar com o caso Devin+Salesforce que SDD <em>acelera</em> — elimina o retrabalho causado por falha de intenção.</p>
+              </div>
+              <div class="ec-human__card">
+                <p class="ec-human__role">Stakeholders de Negócio</p>
+                <p class="ec-human__challenge"><span class="ec-human__label">Desafio típico</span>Dificuldade de articular o valor de algo que "ainda não deu errado".</p>
+                <p class="ec-human__strategy"><span class="ec-human__label">Estratégia do ISM</span>Quantificar com CSI retrospectivo: identificar crashes silenciosos já ocorridos e seu impacto. O passado justifica o futuro.</p>
+              </div>
+            </div>
+
+            <!-- Checklist de prontidão organizacional -->
+            <div class="ec-checklist" data-ec-checklist>
+              <h4 class="ec-practice__head">Checklist · Prontidão organizacional</h4>
+              <p class="ec-practice__intro">
+                Marque o que já é verdade na sua organização. Sem JS, o checklist continua sendo um guia
+                de leitura; com JS, ele estima sua prontidão para iniciar o ISM.
+              </p>
+              <ul class="ec-checklist__list">
+                <li class="ec-checklist__item"><input type="checkbox" id="ck1" data-ec-check><label for="ck1">Processos críticos têm donos e critérios de sucesso documentados.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck2" data-ec-check><label for="ck2">Decisões de tecnologia são tomadas com base em dados, não em intuição.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck3" data-ec-check><label for="ck3">Os times se sentem seguros para registrar incertezas explicitamente.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck4" data-ec-check><label for="ck4">Existe alguém responsável por auditar outputs de modelos em produção.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck5" data-ec-check><label for="ck5">Engenheiros, analistas de negócio e líderes definem sistemas juntos.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck6" data-ec-check><label for="ck6">Relatar uma falha de modelo não gera retaliação (segurança psicológica).</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck7" data-ec-check><label for="ck7">Há um inventário, mesmo parcial, das regras de negócio críticas.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck8" data-ec-check><label for="ck8">Saídas de IA passam por validação antes de virar decisão.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck9" data-ec-check><label for="ck9">A organização sabe distinguir fato observado de inferência do modelo.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck10" data-ec-check><label for="ck10">Existe orçamento/quota explícito para o custo de chamadas a modelos.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck11" data-ec-check><label for="ck11">Incidentes de IA são revisados sem busca por um único culpado.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck12" data-ec-check><label for="ck12">Especificações de comportamento vivem no repositório, não só em prompts.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck13" data-ec-check><label for="ck13">Métricas de negócio (não só de uptime) monitoram sistemas com IA.</label></li>
+                <li class="ec-checklist__item"><input type="checkbox" id="ck14" data-ec-check><label for="ck14">Dizer "não sei / não confirmado" é aceito como resposta válida.</label></li>
+              </ul>
+              <div class="ec-checklist__foot">
+                <button type="button" class="ec-mini-btn" data-ec-checklist-run>Ver meu nível de prontidão</button>
+                <p class="ec-checklist__result" data-ec-checklist-result role="status" aria-live="polite"></p>
+              </div>
+            </div>
+          </section>
+
           <!-- Referências cruzadas -->
           <div class="ec-xref">
             <p class="ec-xref__title">📄 Referências cruzadas (conceito → fonte)</p>
@@ -448,6 +589,100 @@ flowchart TD
               Comportamentos transforma <strong>conhecimento tribal em ativo auditável</strong>.
             </div>
           </div>
+
+          <!-- Micro-caso real (M1) -->
+          <section class="ec-block" aria-labelledby="m1-caso">
+            <p class="ec-block__kicker">Caso real · Mapeamento de evidências</p>
+            <h3 id="m1-caso" class="ec-block__title">Quando a evidência está contaminada</h3>
+            <p class="ec-block__intro">
+              Mapear comportamentos sem isolar correlações espúrias produz um inventário que confirma o
+              passado em vez de prever o futuro. Foi o que aconteceu com um modelo clínico adotado em
+              larga escala.
+            </p>
+            <article class="ec-case">
+              <div class="ec-case__head">
+                <span class="ec-case__sector">Saúde</span>
+                <p class="ec-case__name">Epic Sepsis Model — <span style="color:var(--ec-danger)">67% dos casos reais perdidos</span></p>
+              </div>
+              <dl class="ec-case__dl">
+                <div class="ec-case__row">
+                  <dt>Situação</dt>
+                  <dd>Modelo de regressão integrado a prontuários para prever sepse, com altíssima
+                  precisão interna relatada.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Crash Silencioso</dt>
+                  <dd>Vazamento de dados (<em>label leakage</em>): as próprias intervenções médicas
+                  (ex.: antibióticos) eram usadas para "prever" a sepse — uma confirmação
+                  retrospectiva disfarçada de predição. Resultado: fadiga de alarmes.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Diagnóstico ISM</dt>
+                  <dd>Falha no <strong>mapeamento semântico</strong> de evidências. Sem separar
+                  evidência de inferência, o inventário herdou uma correlação espúria.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--good">
+                  <dt>O que o ISM teria mudado</dt>
+                  <dd>A
+                  <button class="ec-term" data-term="matriz-de-evidencias" type="button">Matriz de Evidências</button>
+                  classificaria a relação "antibiótico → sepse" como hipótese suspeita, nunca promovida
+                  a verdade do As-Is sem validação humana.</dd>
+                </div>
+              </dl>
+              <span class="ec-case__src">
+                Fontes:
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8218233/" target="_blank" rel="noopener">External Validation of the Epic Sepsis Model (PMC/NIH)</a> ·
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12949446/" target="_blank" rel="noopener">Multicenter Prospective Validation (PMC/NIH)</a>
+              </span>
+            </article>
+          </section>
+
+          <!-- KPIs do M1 -->
+          <section class="ec-block" aria-labelledby="m1-kpi">
+            <p class="ec-block__kicker">Governança quantitativa · M1</p>
+            <h3 id="m1-kpi" class="ec-block__title">KPIs do Mapeamento</h3>
+            <p class="ec-block__intro">
+              O inventário só é confiável se for medível. Estes indicadores expõem o quanto do As-Is foi
+              de fato congelado — e quanto ainda é hipótese.
+            </p>
+            <div class="ec-tablewrap">
+              <table class="ec-table">
+                <caption>Indicadores de sucesso do Módulo 1 (Mapear).</caption>
+                <thead>
+                  <tr><th scope="col">Métrica</th><th scope="col">Fórmula / Coleta</th><th scope="col">Meta orientativa</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Taxa de Cobertura As-Is</th>
+                    <td>% de jornadas críticas com inventário completo e validado por humano.</td>
+                    <td><span class="ec-metric">&gt; 95%</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Taxa de Hipóteses Pendentes</th>
+                    <td>% de comportamentos ainda não confirmados por validação humana (Fail-Closed honesto).</td>
+                    <td><span class="ec-metric">&lt; 10%</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Population Stability Index (PSI)</th>
+                    <td>Distância entre a distribuição de treino e a de produção — alerta precoce de <em>data/concept drift</em>.</td>
+                    <td><span class="ec-metric">&lt; 0,10</span> estável · alerta em <code>0,25</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <details class="ec-disclose">
+              <summary>Por que o PSI é o alarme precoce do ISM</summary>
+              <div class="ec-disclose__body">
+                O PSI compara histogramas da mesma variável entre dois períodos. Convenção de mercado:
+                <code>&lt; 0,10</code> estável; <code>0,10–0,25</code> desvio menor (atenção);
+                <code>&gt; 0,25</code> mudança significativa. Ao monitorar a saída do orquestrador, a
+                equipe degrada a máquina preditiva para o <em>fallback</em> seguro assim que o PSI estoura
+                0,25 — exatamente o freio que faltou ao Zillow. Limitação: o PSI é univariado e perde
+                derivas multivariadas; por isso ele complementa, e não substitui, o monitoramento de
+                calibração.
+              </div>
+            </details>
+          </section>
 
           <!-- Referências cruzadas -->
           <div class="ec-xref">
@@ -690,6 +925,219 @@ flowchart LR
             </div>
           </div>
 
+          <!-- Micro-caso real (M2) -->
+          <section class="ec-block" aria-labelledby="m2-caso">
+            <p class="ec-block__kicker">Caso real · O contrato que faltava</p>
+            <h3 id="m2-caso" class="ec-block__title">Saída do Cérebro direto na Vitrine</h3>
+            <p class="ec-block__intro">
+              Sem um contrato rígido na fronteira, a saída probabilística do modelo vira fato sem
+              reconciliação. O caso jurídico abaixo virou jurisprudência sobre os riscos disso.
+            </p>
+            <article class="ec-case">
+              <div class="ec-case__head">
+                <span class="ec-case__sector">Jurídico</span>
+                <p class="ec-case__name">Mata v. Avianca — <span style="color:var(--ec-danger)">sanções federais por citações fictícias</span></p>
+              </div>
+              <dl class="ec-case__dl">
+                <div class="ec-case__row">
+                  <dt>Situação</dt>
+                  <dd>Advogados usaram um LLM para fundamentar uma petição na Corte do Distrito Sul de
+                  Nova York.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Crash Silencioso</dt>
+                  <dd>O modelo devolveu citações <strong>perfeitas em estrutura, mas inexistentes</strong>:
+                  estocasticamente exatas ao padrão jurídico, sem aderência à realidade.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Diagnóstico ISM</dt>
+                  <dd>Ausência de
+                  <button class="ec-term" data-term="contrato-rigido" type="button">contrato rígido</button>:
+                  a saída do
+                  <button class="ec-term" data-term="cerebro-vitrine" type="button">Cérebro</button>
+                  passou direto para a Vitrine (a petição final), sem reconciliação contra base
+                  determinística.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--good">
+                  <dt>O que o ISM teria mudado</dt>
+                  <dd>Toda afirmação gerada seria validada por <em>schema</em> contra uma base de
+                  jurisprudência real; uma citação não encontrada dispararia
+                  <button class="ec-term" data-term="fail-closed" type="button">Fail-Closed</button>.</dd>
+                </div>
+              </dl>
+              <span class="ec-case__src">
+                Fontes:
+                <a href="https://www.law.berkeley.edu/wp-content/uploads/archive/2025/12/Mata-v-Avianca-Inc.pdf" target="_blank" rel="noopener">Mata v. Avianca, 678 F.Supp.3d 443 (Berkeley Law, PDF)</a>
+              </span>
+            </article>
+          </section>
+
+          <!-- KPIs do M2 -->
+          <section class="ec-block" aria-labelledby="m2-kpi">
+            <p class="ec-block__kicker">Governança quantitativa · M2</p>
+            <h3 id="m2-kpi" class="ec-block__title">KPIs da Arquitetura</h3>
+            <p class="ec-block__intro">
+              O
+              <button class="ec-term" data-term="limiar-98" type="button">Limiar de 98% de Certeza</button>
+              só é defensável se for medível. Estes indicadores tornam o "firewall" entre probabilidade
+              e determinismo auditável.
+            </p>
+            <div class="ec-tablewrap">
+              <table class="ec-table">
+                <caption>Indicadores de sucesso do Módulo 2 (Arquitetar).</caption>
+                <thead>
+                  <tr><th scope="col">Métrica</th><th scope="col">Fórmula / Coleta</th><th scope="col">Meta orientativa</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Taxa de Interceptação pelo Limiar 98%</th>
+                    <td>Chamadas ao <em>fallback</em> ÷ total de chamadas ao LLM. Conta as "anomalias que não viraram acidente".</td>
+                    <td><span class="ec-metric">Monitorar</span> · baseline por sistema</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Expected Calibration Error (ECE)</th>
+                    <td>Diferença média entre confiança declarada e acurácia real, por <em>bin</em> de probabilidade.</td>
+                    <td><span class="ec-metric">&rarr; 0</span> (bem calibrado)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Latência de Detecção de Contrato Inválido</th>
+                    <td>Tempo médio entre o output inválido e a interceptação pelo <em>schema</em>.</td>
+                    <td><span class="ec-metric">&lt; 200ms</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <details class="ec-disclose">
+              <summary>Rigor estatístico: por que o ECE justifica o Limiar de 98%</summary>
+              <div class="ec-disclose__body">
+                Redes neurais modernas são <strong>mal calibradas</strong> — produzem predições erradas
+                com confiança altíssima (Guo et al., 2017). O <code>softmax</code> não é uma
+                probabilidade confiável. O ECE mede esse desalinhamento particionando as predições em
+                <em>bins</em> e ponderando a diferença absoluta entre acurácia e confiança em cada um.
+                Um ECE alto significa que o "98%" declarado pelo modelo não vale 98% — e legitima impor
+                um freio externo (o Limiar) em vez de confiar no número do próprio modelo. Limitação: o
+                ECE é sensível ao método de <em>binning</em> e pode mascarar erros raros mas graves; por
+                isso é par do PSI (M1), não substituto.
+              </div>
+            </details>
+          </section>
+
+          <!-- Integração ISM × Frameworks -->
+          <section class="ec-block" aria-labelledby="m2-frameworks">
+            <p class="ec-block__kicker">Mapeamento de mercado</p>
+            <h3 id="m2-frameworks" class="ec-block__title">O ISM × frameworks e normas existentes</h3>
+            <p class="ec-block__intro">
+              O ISM não substitui seu legado processual — é a argamassa que preenche as ranhuras entre a
+              alta governança e as esteiras de engenharia. Onde ele se conecta:
+            </p>
+            <div class="ec-tablewrap">
+              <table class="ec-table">
+                <caption>Como o ISM se integra a metodologias consagradas e a normas globais de IA.</caption>
+                <thead>
+                  <tr><th scope="col">Framework / Norma</th><th scope="col">Como o ISM se integra</th><th scope="col">Entrada no ISM</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">DevOps / CI-CD</th>
+                    <td>O Inventário de Comportamentos (M1) alimenta os testes da esteira; contratos rígidos (M2) viram <em>gates</em> de bloqueio. O ISM troca o <em>Fail-Fast</em> cego pelo <em>Fail-Closed</em>.</td>
+                    <td><code>M1 → M2</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">MLOps</th>
+                    <td>O Limiar de 98% e os <em>schemas</em> complementam o monitoramento de <em>drift</em>; o Fail-Closed é análogo a um <em>circuit breaker</em> de modelos.</td>
+                    <td><code>M2</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Agile / Scrum</th>
+                    <td>Spec-Driven Development (M3) é compatível com a <em>Definition of Done</em>: cada spec versionada é um critério de aceite executável.</td>
+                    <td><code>M3</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DataOps</th>
+                    <td>A Matriz de Evidências (M1) formaliza a linhagem de dados; o princípio Open-World documenta lacunas de qualidade em vez de inferir sobre elas.</td>
+                    <td><code>M1</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SRE</th>
+                    <td>O Crash Silencioso é a falha de integridade que o <code>HTTP 200</code> esconde. Amplie os SLIs para incluir taxa de <em>fallback</em> e rejeições por <em>schema</em>.</td>
+                    <td><code>M2</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">ITSM / ITIL</th>
+                    <td>Fail-Closed e <em>ledgers</em> de quota têm analogia direta com <em>Change Management</em> e gestão de capacidade.</td>
+                    <td><code>M2</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">NIST AI RMF</th>
+                    <td><em>Map</em> adere ao M1; <em>Measure</em>/<em>Manage</em> ao M2; <em>Govern</em> ecoa o M0. O ISM é o manual operacional prático para os controles abstratos do RMF.</td>
+                    <td><code>M0–M2</code></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">ISO/IEC 42001</th>
+                    <td>O Inventário (M1) atende ao mapeamento de propósito; a taxonomia Cérebro × Vitrine e os Contratos de Schema (M2) atendem aos controles técnicos do Anexo A.</td>
+                    <td><code>M1 → M2</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 class="ec-block__title" style="font-size:1.05rem;margin-top:1.8rem;">O ISM no seu contexto</h4>
+            <p class="ec-block__intro">
+              Selecione o framework que você já pratica para ver onde o ISM se encaixa — e a armadilha de
+              integração a evitar.
+            </p>
+            <div class="ec-context">
+              <details class="ec-context__item">
+                <summary>Eu venho de DevOps / CI-CD</summary>
+                <div class="ec-context__body">
+                  <strong class="ec-context__entry">3 pontos de conexão</strong>
+                  <ul>
+                    <li>Contratos rígidos viram <em>gates</em> de bloqueio na pipeline (linting dinâmico).</li>
+                    <li>O Inventário de Comportamentos define o que os testes da esteira devem cobrir.</li>
+                    <li>Cada deploy reverte código <em>e</em> a spec que o originou.</li>
+                  </ul>
+                  <p class="ec-context__trap"><strong>Armadilha:</strong> tratar o <em>Fail-Fast</em> como virtude absoluta. O ISM impõe <em>Fail-Closed</em> — velocidade sem freio é o que produz o Crash Silencioso.</p>
+                </div>
+              </details>
+              <details class="ec-context__item">
+                <summary>Eu venho de MLOps</summary>
+                <div class="ec-context__body">
+                  <strong class="ec-context__entry">3 pontos de conexão</strong>
+                  <ul>
+                    <li>O monitoramento de <em>drift</em> alimenta o acionamento do Limiar de 98%.</li>
+                    <li>O Fail-Closed é o <em>circuit breaker</em> do modelo no momento da anomalia.</li>
+                    <li>ECE e PSI passam a ser SLIs de confiança, não só métricas de laboratório.</li>
+                  </ul>
+                  <p class="ec-context__trap"><strong>Armadilha:</strong> avaliar sucesso só por métricas agregadas (AUC, F1). O ISM prioriza a interceptação determinística unitária no <em>edge</em>.</p>
+                </div>
+              </details>
+              <details class="ec-context__item">
+                <summary>Eu venho de Agile / Scrum</summary>
+                <div class="ec-context__body">
+                  <strong class="ec-context__entry">3 pontos de conexão</strong>
+                  <ul>
+                    <li>Cada spec SDD versionada é um critério de aceite executável.</li>
+                    <li>O M3 do ISM vira a <em>Definition of Done</em> de toda tarefa que chame um LLM.</li>
+                    <li>Épicos e histórias traduzem-se diretamente em especificações.</li>
+                  </ul>
+                  <p class="ec-context__trap"><strong>Armadilha:</strong> sacrificar contratos para fechar o Sprint. A dívida técnica de um Crash Silencioso custa mais que a "velocidade percebida".</p>
+                </div>
+              </details>
+              <details class="ec-context__item">
+                <summary>Eu venho de DataOps</summary>
+                <div class="ec-context__body">
+                  <strong class="ec-context__entry">3 pontos de conexão</strong>
+                  <ul>
+                    <li>A Matriz de Evidências formaliza linhagem e origem ontológica dos dados.</li>
+                    <li>Lacunas detectadas ativam a <em>Open-World Assumption</em>, forçando abstenção.</li>
+                    <li>Catálogo de metadados e o Inventário de Comportamentos se reforçam.</li>
+                  </ul>
+                  <p class="ec-context__trap"><strong>Armadilha:</strong> deixar o inventário virar documentação morta. Ele precisa rodar em <em>loop</em> contínuo contra as specs vivas.</p>
+                </div>
+              </details>
+            </div>
+          </section>
+
           <!-- Referências cruzadas -->
           <div class="ec-xref">
             <p class="ec-xref__title">📄 Referências cruzadas (conceito → fonte)</p>
@@ -728,22 +1176,69 @@ flowchart LR
           </div>
         </article>
 
-        <!-- UX: ponte visual M2 → M3. Placeholder responsivo reservando o espaço do futuro
-             diagrama de fluxo de dados (Inventário → Schemas → MCP), tornando o encadeamento
-             de artefatos tangível antes mesmo da arte final. Acessível como figura rotulada. -->
-        <figure class="diagram-container" role="group" aria-label="Espaço reservado para o diagrama de fluxo de dados">
-          <span class="diagram-container__badge">Diagrama · em breve</span>
+        <!-- Diagrama de encadeamento ISM v1.0 (DAG, três camadas) — fluxo de dados M1 → M2 → M3.
+             O SVG é decorativo (aria-hidden); a leitura acessível vem do fluxo textual + figcaption. -->
+        <figure class="diagram-container" aria-labelledby="dag-cap">
+          <span class="diagram-container__badge">Diagrama · Encadeamento de artefatos (ISM v1.0)</span>
+
+          <svg class="diagram-container__svg" viewBox="0 0 700 320" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="ec-dag-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#8b949e" />
+              </marker>
+            </defs>
+            <!-- rótulos de camada -->
+            <text x="20" y="55" fill="#a371f7" font-family="Inter, sans-serif" font-size="11" font-weight="700">ENTRADA · M1</text>
+            <text x="20" y="161" fill="#58a6ff" font-family="Inter, sans-serif" font-size="11" font-weight="700">PROCESSO · M2</text>
+            <text x="20" y="267" fill="#55ff99" font-family="Inter, sans-serif" font-size="11" font-weight="700">SAÍDA · M3</text>
+
+            <!-- M1 -->
+            <rect x="150" y="12" width="400" height="74" rx="12" fill="#1c2230" stroke="#8a2be2" stroke-width="1.5" />
+            <text x="350" y="44" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-size="15" font-weight="700">Inventário de Comportamentos</text>
+            <text x="350" y="66" text-anchor="middle" fill="#8b949e" font-family="Inter, sans-serif" font-size="11">Engenharia Reversa + Validação Humana</text>
+
+            <!-- M1 → M2 -->
+            <line x1="350" y1="86" x2="350" y2="116" stroke="#8b949e" stroke-width="2" marker-end="url(#ec-dag-arrow)" />
+            <text x="362" y="106" fill="#8b949e" font-family="Inter, sans-serif" font-size="11">regras auditadas</text>
+
+            <!-- M2 -->
+            <rect x="150" y="118" width="400" height="74" rx="12" fill="#1c2230" stroke="#007bff" stroke-width="1.5" />
+            <text x="350" y="150" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-size="15" font-weight="700">Schemas de Validação · contratos rígidos</text>
+            <text x="350" y="172" text-anchor="middle" fill="#8b949e" font-family="Inter, sans-serif" font-size="11">Arquiteto de Sistema</text>
+
+            <!-- M2 → M3 -->
+            <line x1="350" y1="192" x2="350" y2="222" stroke="#8b949e" stroke-width="2" marker-end="url(#ec-dag-arrow)" />
+            <text x="362" y="212" fill="#8b949e" font-family="Inter, sans-serif" font-size="11">pré/pós-condições = assinatura das tools</text>
+
+            <!-- M3 -->
+            <rect x="150" y="224" width="400" height="74" rx="12" fill="#1c2230" stroke="#a371f7" stroke-width="1.5" />
+            <text x="350" y="256" text-anchor="middle" fill="#ffffff" font-family="Inter, sans-serif" font-size="15" font-weight="700">Tools via MCP / A2UI</text>
+            <text x="350" y="278" text-anchor="middle" fill="#8b949e" font-family="Inter, sans-serif" font-size="11">Orquestrador Cognitivo · SDD + BDD</text>
+          </svg>
+
+          <!-- representação textual estrutural (espelha o SVG; permanece visível e estável) -->
           <div class="diagram-container__flow" aria-hidden="true">
-            <span class="diagram-container__node">Inventário de Comportamentos<small>M1</small></span>
+            <span class="diagram-container__node">Inventário de Comportamentos<small>M1 · Entrada</small></span>
             <span class="diagram-container__arrow">→</span>
-            <span class="diagram-container__node">Schemas de Validação<small>M2</small></span>
+            <span class="diagram-container__node">Schemas de Validação<small>M2 · Processamento</small></span>
             <span class="diagram-container__arrow">→</span>
-            <span class="diagram-container__node">Tools via MCP / A2UI<small>M3</small></span>
+            <span class="diagram-container__node">Tools via MCP / A2UI<small>M3 · Saída</small></span>
           </div>
-          <figcaption class="diagram-container__cap">
-            Aqui entrará o <strong>diagrama de fluxo de dados</strong> que visualiza o encadeamento de
-            artefatos do ISM v1.0: como o Inventário de Comportamentos (M1) gera os schemas de validação
-            (M2) que compõem as ferramentas consumidas pelo Orquestrador Cognitivo (M3).
+
+          <p class="diagram-container__feedback">
+            ↺ <strong>Feedback:</strong> as lições aprendidas no M3 retornam como
+            <em>Knowledge</em> e alimentam o Arsenal organizacional (Skills · Playbooks),
+            que refina o próximo ciclo de mapeamento.
+          </p>
+
+          <figcaption id="dag-cap" class="diagram-container__cap">
+            <strong>Encadeamento de artefatos do ISM v1.0.</strong> Fluxo de dados em três camadas: na
+            <strong>Entrada (M1)</strong>, a Engenharia Reversa com validação humana produz o Inventário
+            de Comportamentos; suas regras auditadas alimentam o <strong>Processamento (M2)</strong>, onde
+            o arquiteto deriva os Schemas de Validação (contratos rígidos). As pré e pós-condições desses
+            schemas viram a assinatura das ferramentas da <strong>Saída (M3)</strong> — as Tools expostas
+            via MCP / A2UI que o Orquestrador Cognitivo consome no fluxo SDD. As lições retornam como
+            Knowledge para o Arsenal organizacional, fechando o ciclo.
           </figcaption>
         </figure>
 
@@ -899,6 +1394,82 @@ flowchart LR
             </div>
           </div>
 
+          <!-- Micro-caso real (M3) -->
+          <section class="ec-block" aria-labelledby="m3-caso">
+            <p class="ec-block__kicker">Caso real · Dívida técnica gerada por IA</p>
+            <h3 id="m3-caso" class="ec-block__title">Código que parece pronto e custa caro depois</h3>
+            <p class="ec-block__intro">
+              Assistentes de código entregam velocidade aparente — e dívida técnica silenciosa. A
+              orquestração sem spec é o que transforma ganho de curto prazo em retrabalho sênior.
+            </p>
+            <article class="ec-case">
+              <div class="ec-case__head">
+                <span class="ec-case__sector">Tecnologia / SaaS</span>
+                <p class="ec-case__name">Análise GitClear — <span style="color:var(--ec-danger)">salto em <em>code churn</em> e duplicação</span></p>
+              </div>
+              <dl class="ec-case__dl">
+                <div class="ec-case__row">
+                  <dt>Situação</dt>
+                  <dd>Análise de mais de 150 milhões de linhas de código com forte adoção de assistentes
+                  de codificação (estilo Copilot).</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Crash Silencioso</dt>
+                  <dd>Crescimento exponencial de <em>code churn</em> (código refeito em poucos dias) e de
+                  duplicação — código sintaticamente ótimo, mas cego ao contexto arquitetural do
+                  repositório.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--bad">
+                  <dt>Diagnóstico ISM</dt>
+                  <dd>A IA ditou a arquitetura em vez de executar contra um contrato. O desenvolvedor
+                  virou revisor passivo de predições.</dd>
+                </div>
+                <div class="ec-case__row ec-case__row--good">
+                  <dt>O que o ISM teria mudado</dt>
+                  <dd>Sob
+                  <button class="ec-term" data-term="sdd" type="button">Spec-Driven Development</button>,
+                  a especificação (BDD/Gherkin) é a intenção inegociável: a IA implementa
+                  <em>contra</em> a spec, com testes como alvo objetivo.</dd>
+                </div>
+              </dl>
+              <span class="ec-case__src">
+                Fontes:
+                <a href="https://www.gitclear.com/press_mentions" target="_blank" rel="noopener">GitClear — Press &amp; research</a> ·
+                <a href="https://www.ofashandfire.com/blog/ai-generated-code-quality-crisis" target="_blank" rel="noopener">AI Code Quality Crisis 2026</a>
+              </span>
+            </article>
+          </section>
+
+          <!-- KPIs do M3 -->
+          <section class="ec-block" aria-labelledby="m3-kpi">
+            <p class="ec-block__kicker">Governança quantitativa · M3</p>
+            <h3 id="m3-kpi" class="ec-block__title">KPIs da Orquestração</h3>
+            <p class="ec-block__intro">
+              A intencionalidade vira ativo da organização quando é medível. Estes indicadores mostram se
+              a spec — e não o prompt efêmero — é a fonte da verdade.
+            </p>
+            <div class="ec-tablewrap">
+              <table class="ec-table">
+                <caption>Indicadores de sucesso do Módulo 3 (Orquestrar).</caption>
+                <thead>
+                  <tr><th scope="col">Métrica</th><th scope="col">Fórmula / Coleta</th><th scope="col">Meta orientativa</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Cobertura de Specs Versionadas</th>
+                    <td>% de features entregues com spec SDD no repositório.</td>
+                    <td><span class="ec-metric">&gt; 90%</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Taxa de Reuso do Arsenal</th>
+                    <td>Itens de Skills/Playbooks acionados ÷ total de execuções de tarefas.</td>
+                    <td><span class="ec-metric">Crescente</span> (mês a mês)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
           <!-- Referências cruzadas -->
           <div class="ec-xref">
             <p class="ec-xref__title">📄 Referências cruzadas (conceito → fonte)</p>
@@ -941,8 +1512,11 @@ flowchart LR
           <p class="ec-eyebrow">Fecho da jornada</p>
           <h2 id="mat-titulo" class="ec-title ec-title--underline">Onde está o seu sistema/time hoje?</h2>
           <p class="ec-lede">
-            A régua "da Mágica ao Governado" é o eixo da jornada. Marque o seu estágio e receba o próximo
-            passo concreto.
+            A régua "da Mágica ao Governado" é o eixo da jornada — e espelha modelos consagrados: a saída
+            do heroísmo empírico <em>ad-hoc</em> para a governança mensurável do <strong>CMMI</strong> e a
+            progressão do <strong>Microsoft AI Adoption Maturity Model</strong> (da demonstração à
+            orquestração governada). Clique num estágio para ver sintoma, próximo passo e os KPIs do
+            nível — ou faça a autoavaliação guiada.
           </p>
 
           <div class="ec-ruler" data-ec-ruler>
@@ -979,6 +1553,52 @@ flowchart LR
             </div>
           </div>
 
+          <!-- Autoavaliação guiada de maturidade -->
+          <details class="ec-selfassess" data-ec-selfassess>
+            <summary>Descobrir meu nível — autoavaliação em 5 perguntas</summary>
+            <div class="ec-selfassess__body">
+              <div class="ec-selfassess__q" role="group" aria-labelledby="sa1-l">
+                <p id="sa1-l">1. Você reconhece pelo menos um Crash Silencioso que já viveu?</p>
+                <div class="ec-selfassess__opts">
+                  <label><input type="radio" name="sa1" value="sim"> Sim</label>
+                  <label><input type="radio" name="sa1" value="nao"> Não</label>
+                </div>
+              </div>
+              <div class="ec-selfassess__q" role="group" aria-labelledby="sa2-l">
+                <p id="sa2-l">2. Você tem um inventário auditável do que o sistema faz hoje (As-Is)?</p>
+                <div class="ec-selfassess__opts">
+                  <label><input type="radio" name="sa2" value="sim"> Sim</label>
+                  <label><input type="radio" name="sa2" value="nao"> Não</label>
+                </div>
+              </div>
+              <div class="ec-selfassess__q" role="group" aria-labelledby="sa3-l">
+                <p id="sa3-l">3. Toda fronteira de IA passa por um contrato/schema antes de virar decisão?</p>
+                <div class="ec-selfassess__opts">
+                  <label><input type="radio" name="sa3" value="sim"> Sim</label>
+                  <label><input type="radio" name="sa3" value="nao"> Não</label>
+                </div>
+              </div>
+              <div class="ec-selfassess__q" role="group" aria-labelledby="sa4-l">
+                <p id="sa4-l">4. Sua intenção vive numa spec versionada (SDD), não num prompt efêmero?</p>
+                <div class="ec-selfassess__opts">
+                  <label><input type="radio" name="sa4" value="sim"> Sim</label>
+                  <label><input type="radio" name="sa4" value="nao"> Não</label>
+                </div>
+              </div>
+              <div class="ec-selfassess__q" role="group" aria-labelledby="sa5-l">
+                <p id="sa5-l">5. O conhecimento (Skills, Playbooks, Knowledge) acumula e é reusado?</p>
+                <div class="ec-selfassess__opts">
+                  <label><input type="radio" name="sa5" value="sim"> Sim</label>
+                  <label><input type="radio" name="sa5" value="nao"> Não</label>
+                </div>
+              </div>
+              <div class="ec-selfassess__foot">
+                <button type="button" class="ec-mini-btn" data-ec-selfassess-run>Ver meu nível sugerido</button>
+                <p class="ec-selfassess__result" data-ec-selfassess-result role="status" aria-live="polite"></p>
+              </div>
+            </div>
+          </details>
+
           <!-- Dogfooding -->
           <div class="ec-dogfood ec-reveal">
             <h3>Este site pratica o que ensina</h3>
@@ -994,6 +1614,116 @@ flowchart LR
           <p class="ec-closer">
             "Você não escreve apenas código para a máquina executar. Você escreve o contexto que ensina a
             máquina a executar com a sua intenção. Faça esse contexto bem — e a confiança escala junto."
+          </p>
+        </section>
+
+        <!-- ===================== REFERÊNCIAS E BASE BIBLIOGRÁFICA ===================== -->
+        <section id="bibliografia" class="ec-glossary ec-reveal" aria-labelledby="bib-titulo">
+          <p class="ec-eyebrow">Credenciais técnicas</p>
+          <h2 id="bib-titulo" class="ec-title ec-title--underline">Referências e base bibliográfica</h2>
+          <p class="ec-lede">
+            O ISM v1.0 não é um esforço em desarmonia com o mercado — é uma destilação pragmática de
+            linhas de pesquisa consolidadas. Cada pilar está ancorado em literatura verificável.
+          </p>
+
+          <div class="ec-biblio__group">
+            <h3>Fundamentos acadêmicos</h3>
+            <ul class="ec-biblio__list">
+              <li>
+                <cite>Sculley, D. et al. (2015).</cite> Hidden Technical Debt in Machine Learning Systems. NeurIPS.
+                <span class="ec-biblio__meta">Ancora o Crash Silencioso e a dívida técnica oculta (M0–M1).</span>
+                <a href="https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-syst" target="_blank" rel="noopener">papers.nips.cc</a>
+              </li>
+              <li>
+                <cite>Gal, Y. &amp; Ghahramani, Z. (2016).</cite> Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning.
+                <span class="ec-biblio__meta">Fundamenta a incerteza preditiva e o Limiar de Certeza (M2).</span>
+                <a href="https://arxiv.org/abs/1506.02142" target="_blank" rel="noopener">arXiv:1506.02142</a>
+              </li>
+              <li>
+                <cite>Geifman, Y. &amp; El-Yaniv, R. (2017).</cite> Selective Classification for Deep Neural Networks.
+                <span class="ec-biblio__meta">Prova matemática da abstenção / Fail-Closed (M2).</span>
+                <a href="https://www.semanticscholar.org/paper/Selective-Classification-for-Deep-Neural-Networks-Geifman-El-Yaniv/2ed7cc027367295b1a7d7cd49406acfa5c580138" target="_blank" rel="noopener">Semantic Scholar</a>
+              </li>
+              <li>
+                <cite>Guo, C. et al. (2017).</cite> On Calibration of Modern Neural Networks.
+                <span class="ec-biblio__meta">Mostra o "excesso de confiança" que justifica o ECE (M2).</span>
+                <a href="https://arxiv.org/abs/1706.04599" target="_blank" rel="noopener">arXiv:1706.04599</a>
+              </li>
+              <li>
+                <cite>Dekker, S. (2011).</cite> Drift into Failure.
+                <span class="ec-biblio__meta">Acidentes como desvio incremental em sistemas complexos (M0).</span>
+                <a href="https://www.researchgate.net/publication/306219866_Drift_into_Failure_From_Hunting_Broken_Components_to_Understanding_Complex_Systems" target="_blank" rel="noopener">ResearchGate</a>
+              </li>
+              <li>
+                <cite>Vaughan, D. (1996).</cite> The Challenger Launch Decision — "Normalização do Desvio".
+                <span class="ec-biblio__meta">Base sociotécnica da Jornada Humana (M0).</span>
+                <a href="https://en.wikipedia.org/wiki/Normalization_of_deviance" target="_blank" rel="noopener">Verbete de referência</a>
+              </li>
+              <li>
+                <cite>Edmondson, A. (2018).</cite> The Fearless Organization — Segurança Psicológica.
+                <span class="ec-biblio__meta">Condição para relatar anomalias sem retaliação (M0).</span>
+                <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=54851" target="_blank" rel="noopener">Harvard Business School</a>
+              </li>
+              <li>
+                <cite>Martraire, C. (2019).</cite> Living Documentation + BDD (Dan North).
+                <span class="ec-biblio__meta">Documentação viva e especificação executável (M3).</span>
+                <a href="https://arxiv.org/pdf/2403.14965" target="_blank" rel="noopener">LLMs &amp; BDD (arXiv 2024)</a>
+              </li>
+              <li>
+                <cite>Reiter, R. (1987).</cite> A Theory of Diagnosis from First Principles.
+                <span class="ec-biblio__meta">Raiz formal da Open-World Assumption (M2).</span>
+              </li>
+              <li>
+                <cite>Kleppmann, M. (2017).</cite> Designing Data-Intensive Applications, cap. 4.
+                <span class="ec-biblio__meta">Schema evolution e contratos de dados (M2).</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="ec-biblio__group">
+            <h3>Normas e modelos de maturidade</h3>
+            <ul class="ec-biblio__list">
+              <li>
+                <cite>NIST (2023).</cite> AI Risk Management Framework (<em>Map · Measure · Manage · Govern</em>).
+                <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov</a>
+              </li>
+              <li>
+                <cite>ISO/IEC 42001:2023.</cite> Sistema de Gestão de Inteligência Artificial.
+                <a href="https://aws.amazon.com/blogs/security/ai-lifecycle-risk-management-iso-iec-420012023-for-ai-governance/" target="_blank" rel="noopener">Visão geral (AWS Security)</a>
+              </li>
+              <li>
+                <cite>CMMI.</cite> Capability Maturity Model Integration (Inicial → Otimizado).
+                <a href="https://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration" target="_blank" rel="noopener">Referência</a>
+              </li>
+              <li>
+                <cite>Microsoft.</cite> AI / Agentic Adoption Maturity Model.
+                <a href="https://learn.microsoft.com/en-us/agents/adoption-maturity-model/" target="_blank" rel="noopener">Microsoft Learn</a>
+              </li>
+              <li>
+                <cite>Anthropic (2024).</cite> Model Context Protocol (MCP).
+                <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontextprotocol.io</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="ec-biblio__group">
+            <h3>Métricas de calibração e deriva</h3>
+            <ul class="ec-biblio__list">
+              <li>
+                <cite>Expected Calibration Error (ECE).</cite> Explicação visual passo a passo.
+                <a href="https://towardsdatascience.com/expected-calibration-error-ece-a-step-by-step-visual-explanation-with-python-code-c3e9aa12937d/" target="_blank" rel="noopener">Towards Data Science</a>
+              </li>
+              <li>
+                <cite>Population Stability Index (PSI).</cite> Detecção de <em>data drift</em>.
+                <a href="https://www.geeksforgeeks.org/data-science/population-stability-index-psi/" target="_blank" rel="noopener">GeeksforGeeks</a>
+              </li>
+            </ul>
+          </div>
+
+          <p class="ec-glossary__note">
+            Acesso ao conhecimento: a especificação e os guias-fonte do ISM v1.0 vivem em
+            <a href="https://github.com/issei/curriculo" target="_blank" rel="noopener">docs/specs/pages/engenharia-confianca</a>.
+            Links externos pertencem aos respectivos autores e editores, citados para fins educacionais.
           </p>
         </section>
 
@@ -1124,6 +1854,60 @@ flowchart LR
         <a href="./devin.html">Vibe Coding</a> ·
         <a href="#hero">Voltar ao topo</a>
       </p>
+
+      <nav class="ec-footer__refs" aria-label="Referências externas e fontes de alta confiança">
+        <p class="ec-footer__refs-title">Referências externas e fontes de alta confiança</p>
+        <div class="ec-footer__refgrid">
+          <div class="ec-footer__refcol">
+            <h3>Casos reais</h3>
+            <ul>
+              <li><a href="https://neuralwired.com/2026/06/17/model-drift-zillow-ml-monitoring-2026/" target="_blank" rel="noopener">Zillow Offers — Model Drift</a></li>
+              <li><a href="https://mindcto.com/insights/ai-economic-fallacy-zillow" target="_blank" rel="noopener">Zillow — US$ 500M (MindCTO)</a></li>
+              <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8218233/" target="_blank" rel="noopener">Epic Sepsis Model (PMC/NIH)</a></li>
+              <li><a href="https://www.law.berkeley.edu/wp-content/uploads/archive/2025/12/Mata-v-Avianca-Inc.pdf" target="_blank" rel="noopener">Mata v. Avianca (Berkeley Law)</a></li>
+              <li><a href="https://www.zdnet.com/article/billion-dollar-failures-how-bad-decisions-and-poor-it-killed-target-canada/" target="_blank" rel="noopener">Target Canada (ZDNET)</a></li>
+              <li><a href="https://www.gitclear.com/press_mentions" target="_blank" rel="noopener">GitClear — code churn</a></li>
+            </ul>
+          </div>
+          <div class="ec-footer__refcol">
+            <h3>Fundamentos acadêmicos</h3>
+            <ul>
+              <li><a href="https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-syst" target="_blank" rel="noopener">Sculley et al. — Hidden Technical Debt</a></li>
+              <li><a href="https://arxiv.org/abs/1506.02142" target="_blank" rel="noopener">Gal &amp; Ghahramani — Bayesian Uncertainty</a></li>
+              <li><a href="https://www.semanticscholar.org/paper/Selective-Classification-for-Deep-Neural-Networks-Geifman-El-Yaniv/2ed7cc027367295b1a7d7cd49406acfa5c580138" target="_blank" rel="noopener">Geifman &amp; El-Yaniv — Selective Classification</a></li>
+              <li><a href="https://arxiv.org/abs/1706.04599" target="_blank" rel="noopener">Guo et al. — On Calibration</a></li>
+              <li><a href="https://www.researchgate.net/publication/306219866_Drift_into_Failure_From_Hunting_Broken_Components_to_Understanding_Complex_Systems" target="_blank" rel="noopener">Dekker — Drift into Failure</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Normalization_of_deviance" target="_blank" rel="noopener">Vaughan — Normalização do Desvio</a></li>
+              <li><a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=54851" target="_blank" rel="noopener">Edmondson — Fearless Organization</a></li>
+            </ul>
+          </div>
+          <div class="ec-footer__refcol">
+            <h3>Normas e maturidade</h3>
+            <ul>
+              <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a></li>
+              <li><a href="https://aws.amazon.com/blogs/security/ai-lifecycle-risk-management-iso-iec-420012023-for-ai-governance/" target="_blank" rel="noopener">ISO/IEC 42001:2023</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration" target="_blank" rel="noopener">CMMI</a></li>
+              <li><a href="https://learn.microsoft.com/en-us/agents/adoption-maturity-model/" target="_blank" rel="noopener">Microsoft AI Adoption Maturity</a></li>
+              <li><a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Model Context Protocol (Anthropic)</a></li>
+            </ul>
+          </div>
+          <div class="ec-footer__refcol">
+            <h3>Métricas e UX pedagógica</h3>
+            <ul>
+              <li><a href="https://towardsdatascience.com/expected-calibration-error-ece-a-step-by-step-visual-explanation-with-python-code-c3e9aa12937d/" target="_blank" rel="noopener">Expected Calibration Error (ECE)</a></li>
+              <li><a href="https://www.geeksforgeeks.org/data-science/population-stability-index-psi/" target="_blank" rel="noopener">Population Stability Index (PSI)</a></li>
+              <li><a href="https://arxiv.org/pdf/2403.14965" target="_blank" rel="noopener">LLMs + BDD (Spec-Driven)</a></li>
+              <li><a href="https://uxplanet.org/design-patterns-progressive-disclosure-for-mobile-apps-f41001a293ba" target="_blank" rel="noopener">Revelação Progressiva (UX)</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="ec-footer__copy">
+          © <span>2026</span> Maurício Yokoyama Issei. Conteúdo original sob a metodologia ISM v1.0
+          (Intentional Systems Model). As marcas, obras e materiais externos referenciados acima são
+          propriedade de seus respectivos autores e editores, citados para fins educacionais e de
+          rastreabilidade (<em>fair use</em>), sem vínculo ou endosso.
+        </p>
+      </nav>
     </div>
   </footer>
 

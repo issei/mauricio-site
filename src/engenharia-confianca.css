@@ -40,7 +40,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
 
 body.ec-body {
   margin: 0;
@@ -357,6 +357,40 @@ body.ec-body {
   padding-left: 1.1rem;
   margin: 0 0 2rem;
   max-width: 40ch;
+}
+
+/* ============================ Vídeo resumo ============================ */
+
+.ec-video-summary {
+  margin-top: 2.5rem;
+  border: 1px solid var(--ec-border);
+  border-radius: var(--ec-radius);
+  background: var(--ec-surface);
+  overflow: hidden;
+  max-width: 760px;
+}
+.ec-video__caption {
+  padding: 0.55rem 1rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ec-muted);
+  margin: 0;
+  border-bottom: 1px solid var(--ec-border);
+}
+.ec-video__frame {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.ec-video__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 /* Arco animado CAOS → GOVERNANÇA */
@@ -901,6 +935,150 @@ body.ec-body {
   .diagram-container__node { max-width: none; }
   .diagram-container__arrow { justify-content: center; transform: rotate(90deg); }
 }
+
+/* ============================ ISM v1.0 — enriquecimento (ondas 1–3) ============================ */
+/* Componentes da fusão Pesquisa acadêmica + Especificação de Enriquecimento: micro-casos
+   reais, KPIs quantitativos, integração com frameworks, a Jornada Humana (cultura),
+   maturidade ativa, contexto por framework e bibliografia. Reutilizam os tokens e
+   funcionam sem JS (progressive enhancement / Revelação Progressiva via <details>). */
+
+/* Cabeçalho de subseção interna do módulo */
+.ec-block { margin: 3rem 0; }
+.ec-block__kicker { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ec-muted); font-weight: 700; margin: 0 0 0.35rem; }
+.ec-block__title { font-size: clamp(1.15rem, 2.2vw, 1.45rem); margin: 0 0 0.55rem; }
+.ec-block__intro { color: var(--ec-muted); font-size: 0.95rem; max-width: 66ch; margin: 0 0 1.2rem; }
+
+/* Micro-caso real (desastre documentado) */
+.ec-case {
+  background: var(--ec-surface-2);
+  border: 1px solid var(--ec-border);
+  border-left: 4px solid var(--ec-danger);
+  border-radius: var(--ec-radius);
+  padding: 1.4rem 1.5rem;
+  margin: 1.6rem 0;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
+}
+.ec-case__head { display: flex; flex-wrap: wrap; gap: 0.5rem 0.8rem; align-items: center; margin-bottom: 0.9rem; }
+.ec-case__sector { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ec-danger); background: var(--ec-surface); border: 1px solid rgba(248, 81, 73, 0.5); border-radius: 999px; padding: 0.13rem 0.6rem; }
+.ec-case__name { font-size: 1.05rem; font-weight: 700; color: var(--ec-heading); margin: 0; }
+.ec-case__dl { display: grid; gap: 0; margin: 0; }
+@media (min-width: 640px) { .ec-case__dl { grid-template-columns: 1fr 1fr; column-gap: 1.4rem; } }
+.ec-case__row { border-top: 1px solid var(--ec-border); padding: 0.6rem 0; }
+.ec-case__row dt { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ec-link); font-weight: 700; margin-bottom: 0.2rem; }
+.ec-case__row dd { margin: 0; font-size: 0.9rem; color: var(--ec-text); line-height: 1.6; }
+.ec-case__row--bad dt { color: var(--ec-danger); }
+.ec-case__row--good dt { color: var(--ec-ok-2); }
+.ec-case__src { display: block; margin-top: 1rem; font-size: 0.78rem; color: var(--ec-muted); }
+.ec-case__src a { font-size: 0.78rem; }
+
+/* Links embutidos em texto corrido recebem sublinhado (WCAG link-in-text-block) */
+.ec-case__src a, .ec-block__intro a, .ec-biblio__list a, .ec-glossary__note a,
+.ec-disclose__body a, .ec-context__body a { text-decoration: underline; }
+
+/* Tabela de dados genérica (KPIs, integração, conformidade) — rolável sem estourar a página */
+.ec-tablewrap { overflow-x: auto; margin: 1.4rem 0; border: 1px solid var(--ec-border); border-radius: var(--ec-radius); -webkit-overflow-scrolling: touch; }
+.ec-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 560px; }
+.ec-table caption { caption-side: top; text-align: left; padding: 0.85rem 1rem 0.2rem; font-size: 0.8rem; color: var(--ec-muted); }
+.ec-table th, .ec-table td { padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--ec-border); text-align: left; vertical-align: top; line-height: 1.55; }
+.ec-table thead th { color: var(--ec-link); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; background: var(--ec-surface); }
+.ec-table tbody th { color: var(--ec-heading); font-weight: 600; }
+.ec-table tbody tr:last-child td, .ec-table tbody tr:last-child th { border-bottom: 0; }
+.ec-table code { background: var(--ec-bg); border: 1px solid var(--ec-border); border-radius: 6px; padding: 0.05rem 0.35rem; font-size: 0.82em; color: var(--ec-text); }
+.ec-table .ec-metric { color: var(--ec-ok-2); font-weight: 700; white-space: nowrap; }
+
+/* A Jornada Humana — camadas culturais (sociotécnica) */
+.ec-human { display: grid; gap: 0.9rem; margin: 1.4rem 0; }
+@media (min-width: 760px) { .ec-human { grid-template-columns: repeat(3, 1fr); } }
+.ec-human__card { background: var(--ec-surface); border: 1px solid var(--ec-border); border-top: 3px solid var(--ec-human); border-radius: 12px; padding: 1.1rem 1.2rem; }
+.ec-human__role { font-size: 0.95rem; font-weight: 700; color: var(--ec-heading); margin: 0 0 0.55rem; }
+.ec-human__label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; display: block; margin-bottom: 0.15rem; }
+.ec-human__challenge { color: var(--ec-muted); font-size: 0.86rem; margin: 0 0 0.7rem; }
+.ec-human__challenge .ec-human__label { color: var(--ec-danger); }
+.ec-human__strategy { color: var(--ec-text); font-size: 0.88rem; margin: 0; }
+.ec-human__strategy .ec-human__label { color: var(--ec-ok-2); }
+
+/* Checklist de prontidão organizacional */
+.ec-checklist { background: var(--ec-surface-2); border: 1px solid var(--ec-border); border-radius: var(--ec-radius); padding: 1.4rem 1.5rem; margin: 1.6rem 0; box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42); }
+.ec-checklist__list { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.4rem; }
+@media (min-width: 760px) { .ec-checklist__list { grid-template-columns: 1fr 1fr; column-gap: 1.4rem; } }
+.ec-checklist__item { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.88rem; color: var(--ec-text); padding: 0.45rem 0.1rem; border-bottom: 1px solid var(--ec-border); }
+.ec-checklist__item input { margin-top: 0.2rem; width: 18px; height: 18px; accent-color: var(--ec-accent); flex: none; }
+.ec-checklist__item label { cursor: pointer; line-height: 1.5; }
+.ec-checklist__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; }
+.ec-checklist__result { font-size: 0.9rem; color: var(--ec-muted); min-height: 1.4em; }
+.ec-checklist__result strong { color: var(--ec-heading); }
+
+/* Botão utilitário dos widgets */
+.ec-mini-btn { font: inherit; font-size: 0.82rem; font-weight: 700; cursor: pointer; color: var(--ec-heading); background: var(--ec-gradient); border: none; border-radius: 999px; padding: 0.5rem 1.15rem; }
+.ec-mini-btn:hover { opacity: 0.92; }
+
+/* "ISM no seu contexto" + Revelação Progressiva (accordion nativo) */
+.ec-context { display: grid; gap: 0.7rem; margin: 1.4rem 0; }
+.ec-context__item { border: 1px solid var(--ec-border); border-radius: 10px; background: var(--ec-surface); overflow: hidden; }
+.ec-context__item > summary { cursor: pointer; list-style: none; padding: 0.85rem 1.1rem; font-weight: 700; color: var(--ec-heading); display: flex; align-items: center; gap: 0.6rem; }
+.ec-context__item > summary::-webkit-details-marker { display: none; }
+.ec-context__item > summary::before { content: "▸"; color: var(--ec-link); transition: transform 0.2s ease; }
+.ec-context__item[open] > summary::before { transform: rotate(90deg); }
+.ec-context__body { padding: 0 1.1rem 1rem; }
+.ec-context__body strong.ec-context__entry { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--ec-link); margin-bottom: 0.2rem; }
+.ec-context__body ul { margin: 0.3rem 0 0.9rem; padding-left: 1.1rem; }
+.ec-context__body li { font-size: 0.88rem; margin-bottom: 0.3rem; }
+.ec-context__trap { font-size: 0.86rem; color: var(--ec-text); border-left: 3px solid var(--ec-warn); padding-left: 0.75rem; }
+.ec-context__trap strong { color: var(--ec-warn); }
+
+/* Deep-dive / revelação progressiva genérica */
+.ec-disclose { margin: 1.2rem 0; border: 1px dashed var(--ec-border); border-radius: 10px; background: rgba(255, 255, 255, 0.015); }
+.ec-disclose > summary { cursor: pointer; padding: 0.7rem 1rem; font-weight: 600; font-size: 0.86rem; color: var(--ec-link); list-style: none; }
+.ec-disclose > summary::-webkit-details-marker { display: none; }
+.ec-disclose > summary::before { content: "＋ "; color: var(--ec-muted); }
+.ec-disclose[open] > summary::before { content: "− "; }
+.ec-disclose__body { padding: 0 1rem 1rem; font-size: 0.88rem; color: var(--ec-text); line-height: 1.7; }
+.ec-disclose__body code { background: var(--ec-bg); border: 1px solid var(--ec-border); border-radius: 6px; padding: 0.05rem 0.35rem; font-size: 0.85em; }
+
+/* Autoavaliação de maturidade */
+.ec-selfassess { margin-top: 1.4rem; border: 1px solid rgba(0, 123, 255, 0.35); border-radius: var(--ec-radius); background: rgba(0, 123, 255, 0.04); overflow: hidden; }
+.ec-selfassess > summary { cursor: pointer; list-style: none; padding: 1rem 1.3rem; font-weight: 700; color: var(--ec-heading); }
+.ec-selfassess > summary::-webkit-details-marker { display: none; }
+.ec-selfassess > summary::before { content: "🧭 "; }
+.ec-selfassess__body { padding: 0 1.3rem 1.3rem; }
+.ec-selfassess__q { padding: 0.75rem 0; border-bottom: 1px solid var(--ec-border); }
+.ec-selfassess__q p { margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--ec-text); font-weight: 600; }
+.ec-selfassess__opts { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.ec-selfassess__opts label { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; color: var(--ec-muted); border: 1px solid var(--ec-border); border-radius: 999px; padding: 0.28rem 0.75rem; cursor: pointer; }
+.ec-selfassess__opts input { accent-color: var(--ec-accent); }
+.ec-selfassess__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; margin-top: 1rem; }
+.ec-selfassess__result { font-size: 0.92rem; color: var(--ec-muted); min-height: 1.4em; }
+.ec-selfassess__result strong { color: var(--ec-heading); }
+
+/* KPIs no painel da régua de maturidade */
+.ec-ruler__kpis { margin: 0.7rem 0 0; padding-left: 1.1rem; }
+.ec-ruler__kpis li { font-size: 0.84rem; color: var(--ec-muted); margin-bottom: 0.2rem; }
+.ec-ruler__kpis li strong { color: var(--ec-text); }
+
+/* Bibliografia */
+.ec-biblio__group { margin: 1.6rem 0; }
+.ec-biblio__group h3 { font-size: 1rem; margin: 0 0 0.8rem; color: var(--ec-heading); }
+.ec-biblio__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.ec-biblio__list li { font-size: 0.88rem; color: var(--ec-text); padding-left: 0.9rem; border-left: 2px solid var(--ec-border); line-height: 1.6; }
+.ec-biblio__list cite { font-style: normal; color: var(--ec-heading); font-weight: 600; }
+.ec-biblio__list .ec-biblio__meta { color: var(--ec-muted); font-size: 0.82rem; }
+
+/* DAG (M1→M2→M3): SVG + faixa de feedback no antigo placeholder */
+.diagram-container__svg { width: 100%; height: auto; display: block; margin: 0 auto 1.2rem; max-width: 760px; }
+.diagram-container__feedback { font-size: 0.82rem; color: var(--ec-muted); margin: 0.4rem auto 1.1rem; max-width: 64ch; }
+.diagram-container__feedback strong { color: var(--ec-human); }
+
+/* Footer: referências externas e direitos */
+.ec-footer__refs { border-top: 1px solid var(--ec-border); margin: 1.8rem auto 0; padding-top: 1.6rem; text-align: left; max-width: 1180px; }
+.ec-footer__refs-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ec-muted); font-weight: 700; margin: 0 0 1.1rem; text-align: center; }
+.ec-footer__refgrid { display: grid; gap: 1.3rem; }
+@media (min-width: 680px) { .ec-footer__refgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .ec-footer__refgrid { grid-template-columns: repeat(4, 1fr); } }
+.ec-footer__refcol h3 { font-size: 0.8rem; color: var(--ec-heading); margin: 0 0 0.55rem; }
+.ec-footer__refcol ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+.ec-footer__refcol a { font-size: 0.8rem; color: var(--ec-muted); }
+.ec-footer__refcol a:hover { color: var(--ec-link); }
+.ec-footer__copy { font-size: 0.78rem; color: var(--ec-muted); margin: 1.8rem auto 0; max-width: 86ch; text-align: center; line-height: 1.6; }
 
 /* ============================ Responsividade fluida ============================ */
 /* UX: do ultrawide ao smartphone, ajustando medida de leitura, densidade e alvos de toque. */
