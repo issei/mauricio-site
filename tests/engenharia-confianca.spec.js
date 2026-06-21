@@ -195,6 +195,9 @@ test.describe('Engenharia da Confiança — jornada', () => {
 
   test('glossário no fim: termo inline rola até o verbete em viewport mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
+    // reduced-motion torna o scrollIntoView instantâneo: elimina a corrida com o
+    // smooth-scroll (página longa) que tornava o clique instável no webkit sob carga.
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(PATH);
     // sem drawer/FAB; o glossário é uma seção no fim acessível pelos termos inline
     await expect(page.locator('.ec-gloss-fab')).toHaveCount(0);

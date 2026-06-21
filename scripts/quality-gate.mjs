@@ -19,10 +19,17 @@ import { spawnSync } from 'node:child_process';
 const args = process.argv.slice(2);
 const skipBuild = args.includes('--no-build');
 
-const grepIdx = args.indexOf('--grep');
-const grep = grepIdx !== -1 ? args[grepIdx + 1] : null;
-const projIdx = args.indexOf('--project');
-const project = projIdx !== -1 ? args[projIdx + 1] : null;
+// Aceita as duas formas de flag: "--project chromium" e "--project=chromium".
+// (O hook Stop usa a forma com "=", que antes era ignorada — rodando a suíte
+// inteira em 3 navegadores em vez do smoke chromium pretendido.)
+function getFlag(name) {
+  const eq = args.find((a) => a.startsWith(`${name}=`));
+  if (eq) return eq.slice(name.length + 1);
+  const i = args.indexOf(name);
+  return i !== -1 ? args[i + 1] : null;
+}
+const grep = getFlag('--grep');
+const project = getFlag('--project');
 
 // shell:true para resolver `npx`/`.cmd` no Windows de forma portável.
 function run(label, command) {

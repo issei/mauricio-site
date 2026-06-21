@@ -9,6 +9,18 @@ import { expect } from '@playwright/test';
  * @param {string} [context] - seletor opcional para limitar o escopo da análise
  */
 export async function expectNoSeriousA11yViolations(page, context) {
+  // Aguarda o CSS assentar antes de auditar. No dev server (Vite) o CSS é
+  // injetado via JS; há uma janela de FOUC em que o texto ainda usa a cor padrão
+  // (#000) sobre o fundo escuro, gerando falso-positivo de contraste intermitente
+  // (sobretudo no webkit sob carga). Esperamos as fontes e a cor de texto temática
+  // serem aplicadas, com timeout tolerante para não travar a auditoria.
+  await page.evaluate(() => document.fonts && document.fonts.ready).catch(() => {});
+  await page
+    .waitForFunction(() => getComputedStyle(document.body).color !== 'rgb(0, 0, 0)', undefined, {
+      timeout: 4000,
+    })
+    .catch(() => {});
+
   let builder = new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
     .exclude('iframe'); // iframes de origem cruzada não são auditáveis por nós
