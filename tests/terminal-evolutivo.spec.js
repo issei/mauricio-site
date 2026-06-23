@@ -75,6 +75,27 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
     await expect(star).toContainText('R$3');
   });
 
+  test('ponte de transição + STAR colapsado por padrão (título + ganho)', async ({ page }) => {
+    await page.goto(PATH);
+    // ponte que justifica a entrada das métricas (emocional → corporativo)
+    await expect(page.locator('#era4 .bridge')).toContainText('escala corporativa');
+    // STAR começa fechado, exibindo só título + ganho principal
+    const star = page.locator('#era4 .star > details', { hasText: 'Economia' });
+    await expect(star).not.toHaveAttribute('open', /.*/);
+    await expect(star.locator('summary')).toContainText('Economia');
+    await expect(star.locator('summary')).toContainText('R$3MM');
+    // o detalhe técnico (Situação/Ação/Resultado) só existe ao abrir
+    await expect(star.locator('.star__body')).toBeHidden();
+  });
+
+  test('reveal: passagens ficam visíveis ao rolar (com JS)', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('html')).toHaveClass(/reveal-ready/);
+    await scrollToCenter(page, '#era1');
+    const p = page.locator('#era1 .passage').first();
+    await expect.poll(() => p.evaluate((el) => getComputedStyle(el).opacity)).toBe('1');
+  });
+
   test('vídeo: facade injeta o iframe só ao clicar', async ({ page }) => {
     await page.goto(PATH);
     const box = page.locator('.video[data-video]');
@@ -138,6 +159,8 @@ test.describe('Terminal Evolutivo — sem JavaScript', () => {
   test('conteúdo e SEO intactos sem JS', async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator('html')).toHaveClass(/no-js/);
+    // sem JS, o reveal não é "armado" → passagens visíveis por padrão
+    await expect(page.locator('html')).not.toHaveClass(/reveal-ready/);
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('#era1')).toContainText('Infância');
     await expect(page.locator('#era5')).toContainText('Maturidade');

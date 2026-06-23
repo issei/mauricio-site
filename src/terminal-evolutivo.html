@@ -353,14 +353,18 @@
         }
 
         .passage {
-            opacity: 0;
-            transform: translateY(14px);
             transition: opacity .7s ease, transform .7s ease;
         }
 
-        .is-visible .passage,
-        .no-js .passage,
-        .passage.is-visible {
+        /* Só escondemos para animar quando o JS confirma que vai revelar
+           (html.reveal-ready). Sem JS, com erro de módulo ou em reduce-motion,
+           o conteúdo permanece visível por padrão — progressive enhancement. */
+        html.reveal-ready .passage {
+            opacity: 0;
+            transform: translateY(14px);
+        }
+
+        html.reveal-ready .passage.is-visible {
             opacity: 1;
             transform: none;
         }
@@ -488,6 +492,43 @@
             border: 1px solid var(--line);
             border-radius: 6px;
             padding: .1rem .5rem;
+        }
+
+        /* afford. de expandir: só título + ganho ficam visíveis; o detalhe
+           técnico (S/T/A/R) abre sob clique. O chevron sinaliza a ação. */
+        .star summary::after {
+            content: "▾";
+            margin-left: .2rem;
+            color: var(--dim);
+            font-size: .9rem;
+            transition: transform .2s ease;
+        }
+
+        .star details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* ---------- PONTE DE TRANSIÇÃO (emocional → corporativo) ---------- */
+        .bridge {
+            max-width: 54ch;
+            margin: 3.2rem auto 1.5rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--line);
+            text-align: center;
+        }
+
+        .bridge__lead {
+            font-family: var(--display);
+            color: var(--strong);
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            line-height: 1.25;
+            margin: 0 0 .6rem;
+        }
+
+        .bridge__sub {
+            color: var(--dim);
+            font-size: .95rem;
+            margin: 0;
         }
 
         /* ---------- MARCO DO ARQUITETO ---------- */
@@ -646,6 +687,10 @@
 
             .cursor::after {
                 animation: none;
+            }
+
+            .star summary::after {
+                transition: none;
             }
 
             .passage {
@@ -1043,6 +1088,13 @@
                             decoding="async">
                         <figcaption>A família, o eixo.</figcaption>
                     </figure>
+                </div>
+
+                <div class="bridge passage">
+                    <p class="bridge__lead">O treinamento acabou. Era hora de aplicar os conceitos —
+                        agora em escala corporativa, onde cada decisão vira número.</p>
+                    <p class="bridge__sub">Os cartões abaixo mostram só o projeto e o ganho principal.
+                        Abra cada um para o detalhe técnico — Situação · Tarefa · Ação · Resultado.</p>
                 </div>
 
                 <h3>Casos de sucesso — consolidação (STAR)</h3>
