@@ -18,7 +18,7 @@ const PAGES = [
   'know', 'devin', 'engenharia-confianca', 'engenharia-agentes-ia', 'knowledge-os-presentation',
   'devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev',
   'sustentacao', 'service-operations-2-0', 'proposta', 'proposta-observabilidade-mobile',
-  'socialselling', 'index', 'life', 'life3d',
+  'socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo',
 ];
 
 let injected = 0, skipped = 0;
