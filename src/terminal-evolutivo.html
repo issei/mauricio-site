@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Terminal Evolutivo: A Jornada de Maurício Issei | 1982–2026</title>
+    <meta name="description"
+        content="Da TV de tubo à IA agêntica: a evolução de Maurício Issei numa narrativa interativa cuja estética envelhece conforme você rola — de espectador a operador a arquiteto.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================================================
+           TERMINAL EVOLUTIVO — foreground CSS (5 temas + scrim)
+           O fundo 3D é pintado pelo <canvas id="bg-webgl"> (Three.js).
+           O CSS governa apenas o foreground; cada tema redefine os
+           mesmos nomes de variável. body tem cor sólida por tema
+           (determinística p/ contraste e fallback sem WebGL).
+           ========================================================= */
+        :root {
+            --maxw: 64ch;
+            --fade: 600ms;
+            /* base / fallback (sobrescrito por .theme-*) */
+            --page: #080a10;
+            --text: #d9dff0;
+            --strong: #fff;
+            --dim: #9aa6bd;
+            --accent: #8b7bff;
+            --accent2: #2bd4b5;
+            --line: rgba(139, 123, 255, .26);
+            --surface: rgba(16, 20, 30, .72);
+            --radius: 16px;
+            --display: 'Inter', system-ui, sans-serif;
+            --body-font: 'Inter', system-ui, sans-serif;
+        }
+
+        /* ---- FASE 1 · Terminal Analógico (1982–1994) ---- */
+        .theme-terminal {
+            --page: #070803;
+            --text: #7dfb9a;
+            --strong: #c7ffd5;
+            --dim: #46c66a;
+            --accent: #ffb000;
+            --accent2: #ff7b00;
+            --line: rgba(125, 251, 154, .22);
+            --surface: rgba(8, 12, 4, .74);
+            --radius: 0px;
+            --display: 'VT323', 'IBM Plex Mono', monospace;
+            --body-font: 'IBM Plex Mono', ui-monospace, monospace;
+        }
+
+        /* ---- FASE 2 · O Treinamento / wireframe (1995–1999) ---- */
+        .theme-wire {
+            --page: #03100b;
+            --text: #9effc4;
+            --strong: #e0ffee;
+            --dim: #46d98f;
+            --accent: #00ff9c;
+            --accent2: #39d0ff;
+            --line: rgba(0, 255, 156, .22);
+            --surface: rgba(3, 14, 9, .72);
+            --radius: 2px;
+            --display: 'IBM Plex Mono', monospace;
+            --body-font: 'IBM Plex Mono', ui-monospace, monospace;
+        }
+
+        /* ---- FASE 3 · A Rede Discada / nós (2000–2009) ---- */
+        .theme-net {
+            --page: #070f1d;
+            --text: #cfe3ff;
+            --strong: #ffffff;
+            --dim: #8fb1d6;
+            --accent: #4aa8ff;
+            --accent2: #00d2c6;
+            --line: rgba(74, 168, 255, .22);
+            --surface: rgba(10, 18, 32, .68);
+            --radius: 10px;
+            --display: 'Inter', system-ui, sans-serif;
+            --body-font: 'Inter', system-ui, sans-serif;
+        }
+
+        /* ---- FASE 4 · A Nuvem Corporativa / blocos (2010–2019) ---- */
+        /* Único tema claro: scrim claro (exceção consciente ao Dark-Tech). */
+        .theme-cloud {
+            --page: #eef3fb;
+            --text: #1f2d3d;
+            --strong: #0b1f33;
+            --dim: #465563;
+            --accent: #0a66c2;
+            --accent2: #0090c8;
+            --line: rgba(13, 71, 161, .18);
+            --surface: rgba(255, 255, 255, .88);
+            --radius: 14px;
+            --display: 'Inter', system-ui, sans-serif;
+            --body-font: 'Inter', system-ui, sans-serif;
+        }
+
+        /* ---- FASE 5 · O Prompt da IA / rede neural (2020–2026) ---- */
+        .theme-ai {
+            --page: #080a10;
+            --text: #d9dff0;
+            --strong: #ffffff;
+            --dim: #9aa6bd;
+            --accent: #8b7bff;
+            --accent2: #2bd4b5;
+            --line: rgba(139, 123, 255, .26);
+            --surface: rgba(16, 20, 30, .68);
+            --radius: 16px;
+            --display: 'Inter', system-ui, sans-serif;
+            --body-font: 'Inter', system-ui, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--page);
+            color: var(--text);
+            font-family: var(--body-font);
+            font-size: 18px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color var(--fade) ease, color var(--fade) ease;
+            overflow-x: hidden;
+        }
+
+        /* canvas de fundo: fixo, atrás do conteúdo, decorativo */
+        #bg-webgl {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            display: block;
+        }
+
+        /* conteúdo sempre acima do canvas */
+        .skip,
+        header,
+        main,
+        footer,
+        .timeline {
+            position: relative;
+            z-index: 1;
+        }
+
+        a {
+            color: var(--accent);
+            text-underline-offset: .18em;
+        }
+
+        a:focus-visible,
+        summary:focus-visible,
+        button:focus-visible,
+        .timeline a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
+        .skip {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            background: var(--surface);
+            color: var(--strong);
+            padding: .6rem 1rem;
+            border: 1px solid var(--line);
+            z-index: 50;
+        }
+
+        .skip:focus {
+            left: .5rem;
+            top: .5rem;
+        }
+
+        .wrap {
+            width: min(var(--maxw), calc(100% - 2.5rem));
+            margin-inline: auto;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 0 3rem;
+        }
+
+        .hero__eyebrow {
+            font-family: var(--body-font);
+            color: var(--dim);
+            font-size: .9rem;
+            letter-spacing: .04em;
+        }
+
+        .hero__prompt {
+            color: var(--accent);
+        }
+
+        h1 {
+            font-family: var(--display);
+            color: var(--strong);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            font-size: clamp(2.4rem, 7vw, 4.6rem);
+            margin: .6rem 0 1rem;
+        }
+
+        .theme-terminal h1 {
+            letter-spacing: 0;
+            font-weight: 400;
+        }
+
+        .hero__sub {
+            color: var(--text);
+            font-size: 1.15rem;
+            max-width: 56ch;
+        }
+
+        .cursor::after {
+            content: "▌";
+            margin-left: .1ch;
+            color: var(--accent);
+            animation: blink 1s steps(2) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .8rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .7rem 1.2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--accent);
+            color: var(--strong);
+            background: var(--surface);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--body-font);
+            transition: transform .15s ease, border-color var(--fade) ease;
+        }
+
+        .btn--primary {
+            border: 0;
+            color: #0a0d14;
+            /* accent sólido + texto escuro = contraste AA garantido em todos os temas */
+            background: var(--accent);
+        }
+
+        .theme-cloud .btn--primary {
+            color: #fff;
+            /* accent escuro (azul) no tema claro pede texto branco */
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ---------- TIMELINE ---------- */
+        .timeline {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            gap: .2rem;
+            flex-wrap: wrap;
+            padding: .5rem;
+            background: var(--surface);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
+            transition: background-color var(--fade) ease;
+        }
+
+        .timeline a {
+            color: var(--dim);
+            text-decoration: none;
+            font-size: .8rem;
+            font-weight: 600;
+            padding: .3rem .6rem;
+            border-radius: 999px;
+            font-family: var(--body-font);
+        }
+
+        .timeline a.is-active {
+            color: var(--strong);
+            background: color-mix(in srgb, var(--accent) 22%, transparent);
+        }
+
+        /* ---------- ERAS ---------- */
+        .era {
+            padding: 8vh 0;
+        }
+
+        .era__eyebrow {
+            font-family: var(--body-font);
+            color: var(--accent);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-family: var(--display);
+            color: var(--strong);
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            line-height: 1.1;
+            margin: .3rem 0 1rem;
+        }
+
+        .theme-terminal h2,
+        .theme-wire h2 {
+            font-weight: 400;
+        }
+
+        h3 {
+            font-family: var(--display);
+            color: var(--strong);
+            font-size: 1.25rem;
+            margin: 2rem 0 .6rem;
+        }
+
+        .passage {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .is-visible .passage,
+        .no-js .passage,
+        .passage.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--strong);
+        }
+
+        figure {
+            margin: 1.6rem 0;
+        }
+
+        figure img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            display: block;
+        }
+
+        figcaption {
+            color: var(--dim);
+            font-size: .85rem;
+            margin-top: .5rem;
+        }
+
+        .photo-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+        }
+
+        .photo-row figure {
+            margin: 0;
+        }
+
+        /* ---------- STAR cards ---------- */
+        .star {
+            margin: 1rem 0;
+        }
+
+        .star>details {
+            background: var(--surface);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            transition: background-color var(--fade) ease, border-color var(--fade) ease, border-radius var(--fade) ease;
+        }
+
+        .star summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            flex-wrap: wrap;
+            padding: 1rem 1.1rem;
+        }
+
+        .star summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .star__kpi {
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--accent);
+            background: color-mix(in srgb, var(--accent) 14%, transparent);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: .15rem .7rem;
+            white-space: nowrap;
+        }
+
+        .theme-terminal .star summary::before {
+            content: "> ";
+            color: var(--accent);
+            font-family: var(--body-font);
+        }
+
+        .star__title {
+            font-weight: 700;
+            color: var(--strong);
+            flex: 1;
+            min-width: 12ch;
+        }
+
+        .star__year {
+            color: var(--dim);
+            font-size: .85rem;
+            font-family: var(--body-font);
+        }
+
+        .star__body {
+            padding: 0 1.1rem 1.1rem;
+            border-top: 1px solid var(--line);
+        }
+
+        .star__body p {
+            margin: .7rem 0;
+        }
+
+        .star__body b {
+            color: var(--strong);
+        }
+
+        .stack {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+            padding: 0;
+            margin: .8rem 0 0;
+        }
+
+        .stack li {
+            font-size: .76rem;
+            font-family: var(--body-font);
+            color: var(--dim);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: .1rem .5rem;
+        }
+
+        /* ---------- MARCO DO ARQUITETO ---------- */
+        .marco {
+            min-height: 80svh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .marco__quote {
+            font-family: var(--display);
+            color: var(--strong);
+            font-weight: 800;
+            font-size: clamp(2rem, 6vw, 3.6rem);
+            line-height: 1.12;
+            margin: 0 auto .8rem;
+            max-width: 18ch;
+        }
+
+        .marco__sub {
+            color: var(--text);
+            max-width: 52ch;
+            margin-inline: auto;
+        }
+
+        /* ---------- KPI FINAL ---------- */
+        .kpi-final {
+            margin: 2.5rem 0;
+            padding: 1.6rem;
+            background: var(--surface);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.2rem;
+            margin: 0;
+        }
+
+        .kpi-grid div {
+            border-left: 3px solid var(--accent);
+            padding-left: .8rem;
+        }
+
+        .kpi-grid dt {
+            color: var(--dim);
+            font-size: .82rem;
+        }
+
+        .kpi-grid dd {
+            margin: .2rem 0 0;
+            font-family: var(--display);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--strong);
+        }
+
+        /* ---------- VÍDEO facade ---------- */
+        .video {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: #000;
+            margin: 1.6rem 0;
+        }
+
+        .video button {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            border: 0;
+            cursor: pointer;
+            color: #fff;
+            font-family: var(--body-font);
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .6rem;
+            background: radial-gradient(circle at center, rgba(139, 123, 255, .25), rgba(0, 0, 0, .55));
+        }
+
+        .video__play {
+            font-size: 2.4rem;
+            line-height: 1;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 3rem 0 6rem;
+            margin-top: 4vh;
+        }
+
+        .foot-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .foot-links a {
+            display: block;
+            padding: 1rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--surface);
+            color: var(--strong);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .foot-links span {
+            display: block;
+            color: var(--dim);
+            font-size: .82rem;
+            font-weight: 400;
+            margin-top: .2rem;
+        }
+
+        .foot-credit {
+            color: var(--dim);
+            font-size: .85rem;
+            margin-top: 2rem;
+        }
+
+        /* Bloco AEO (Em síntese/FAQ): card dark autocontido em QUALQUER tema —
+           garante contraste mesmo quando o body está no tema claro (F4).
+           `body .aeo` vence o /aeo.css por especificidade. */
+        body .aeo {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 1.75rem 1.5rem;
+            color: #c9d1d9;
+        }
+
+        /* ---------- reduce motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            :root {
+                --fade: 0ms;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .cursor::after {
+                animation: none;
+            }
+
+            .passage {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="Maurício Issei, jornada, scrollytelling, narrativa interativa, WebGL, Three.js, Tech Lead, Arquiteto de Soluções, IA Agêntica, trajetória" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/terminal-evolutivo" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/terminal-evolutivo.md" title="Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026) — Markdown para IA" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026)" />
+<meta property="og:description" content="Da TV de tubo à IA agêntica: a evolução de Maurício Issei em cinco fases, numa narrativa interativa (HTML semântico + WebGL) cuja estética envelhece conforme você rola." />
+<meta property="og:url" content="https://mauricio.issei.com.br/terminal-evolutivo" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-terminal-evolutivo.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026)" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026)" />
+<meta name="twitter:description" content="Da TV de tubo à IA agêntica: a evolução de Maurício Issei em cinco fases, numa narrativa interativa (HTML semântico + WebGL) cuja estética envelhece conforme você rola." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-terminal-evolutivo.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": [
+        "WebPage",
+        "AboutPage"
+      ],
+      "@id": "https://mauricio.issei.com.br/terminal-evolutivo#webpage",
+      "url": "https://mauricio.issei.com.br/terminal-evolutivo",
+      "name": "Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026)",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-06-22",
+      "dateModified": "2026-06-22",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-terminal-evolutivo.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/terminal-evolutivo#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/terminal-evolutivo#webpage"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/terminal-evolutivo#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026)"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/terminal-evolutivo#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o Terminal Evolutivo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É uma página de portfólio em scrollytelling que conta a evolução de Maurício Issei de 1982 a 2026 em cinco fases. O diferencial é que a própria estética da página evolui conforme o usuário rola, espelhando a maturidade tecnológica de cada época — de um terminal analógico a uma rede neural holográfica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais resultados de carreira a página destaca?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Casos reais com impacto mensurável: economia de mais de R$3 milhões na renegociação do contrato Salesforce (2020), aumento de mais de 15% no atingimento de metas com a Pipe Automática (2025) e a redução do SLA de Agrupamento Comercial de 10 dias para tempo real (2024). Somam-se 20+ anos em tecnologia e 15+ em grandes empresas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A página funciona sem WebGL ou JavaScript?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O conteúdo é HTML semântico linear e legível por leitores de tela; o fundo 3D (WebGL/Three.js) é progressive enhancement puramente decorativo. Sem WebGL ou sem JavaScript, a página exibe um fundo sólido por tema e todo o conteúdo permanece intacto e indexável."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/terminal-evolutivo#glossario",
+      "name": "Glossário — Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026)",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/terminal-evolutivo#g-scrollytelling",
+          "name": "Scrollytelling",
+          "description": "Narrativa cuja progressão visual é controlada pelo scroll do usuário."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/terminal-evolutivo#g-progressive-enhancement",
+          "name": "Progressive enhancement",
+          "description": "Camada extra (WebGL) que enriquece a experiência sem ser pré-requisito do conteúdo."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/terminal-evolutivo#g-morphing-semantico",
+          "name": "Morphing semântico",
+          "description": "Transição contínua entre cenas 3D interpolando um único sistema de partículas, sem fade."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/terminal-evolutivo#g-marco-do-arquiteto",
+          "name": "Marco do Arquiteto",
+          "description": "Beat narrativo da virada de Analista para Arquiteto: desenhar sistemas em vez de só construí-los."
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="theme-terminal">
+    <canvas id="bg-webgl" aria-hidden="true"></canvas>
+    <a class="skip" href="#story">Pular para o conteúdo</a>
+
+    <header class="hero" id="top">
+        <div class="wrap">
+            <p class="hero__eyebrow"><span class="hero__prompt">&gt;</span> boot sequence... 44 níveis carregados.</p>
+            <h1>A Jornada de um Arquiteto de&nbsp;Si&nbsp;Mesmo</h1>
+            <p class="hero__sub">De espectador a operador a mentor — a evolução de
+                <strong>Maurício Issei</strong> de 1982 a 2026, contada por uma página que
+                <span class="cursor">envelhece conforme você rola</span>
+            </p>
+            <div class="cta-row">
+                <a class="btn btn--primary" href="#era1">iniciar a jornada ▸</a>
+                <a class="btn" href="#kpi">resumo para recrutadores</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="timeline" aria-label="Linha do tempo da jornada">
+        <a href="#era1" data-jump="1982-1994">1982</a>
+        <a href="#era2" data-jump="1995-1999">1995</a>
+        <a href="#era3" data-jump="2000-2009">2000</a>
+        <a href="#era4" data-jump="2010-2019">2010</a>
+        <a href="#era5" data-jump="2020-2026">2020</a>
+    </nav>
+
+    <main id="story">
+
+        <!-- ===================== FASE 1 ===================== -->
+        <section class="era" id="era1" data-theme="terminal" data-scene="crt" data-era="1982-1994"
+            aria-labelledby="era1-title">
+            <div class="wrap">
+                <p class="era__eyebrow">Fase 1 · O Terminal Analógico · 1982–1994</p>
+                <h2 id="era1-title">Infância — o despertar do herói</h2>
+                <div class="passage">
+                    <p class="lead">Ele nasceu em 17 de março de 1982, num Brasil ainda analógico,
+                        onde o tempo parecia mais lento e o futuro ainda não tinha nome.</p>
+                    <p>A infância foi marcada por uma televisão de tubo, antenas ajustadas
+                        manualmente e os heróis japoneses — <em>Jaspion</em>, <em>Changeman</em>.
+                        Mais do que entretenimento, eram arquétipos. Ali, criança, ele absorveu
+                        conceitos que não estavam nos livros: o bem exige sacrifício, a evolução
+                        é contínua, a disciplina é silenciosa, o herói nunca luta sozinho.</p>
+                    <p>Enquanto outras crianças apenas assistiam, ele internalizava. Cada
+                        transformação, cada derrota seguida de superação, instalava um
+                        <strong>modelo mental de crescimento</strong>. Era o primeiro
+                        "sistema operacional interno".</p>
+                </div>
+                <div class="photo-row">
+                    <figure>
+                        <img src="/fotos/1982.jpeg" alt="Maurício ainda bebê, em 1982 — o início da jornada."
+                            loading="lazy" decoding="async">
+                        <figcaption>1982 — o início.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/fotos/infancia.png" alt="Cena de infância nos anos 80, diante da televisão de tubo."
+                            loading="lazy" decoding="async">
+                        <figcaption>Infância analógica.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== FASE 2 ===================== -->
+        <section class="era" id="era2" data-theme="wire" data-scene="wire" data-era="1995-1999"
+            aria-labelledby="era2-title">
+            <div class="wrap">
+                <p class="era__eyebrow">Fase 2 · O Treinamento · 1995–1999</p>
+                <h2 id="era2-title">Adolescência — de espectador a operador</h2>
+                <div class="passage">
+                    <p class="lead">Se a infância foi o despertar, a adolescência foi o treinamento.</p>
+                    <p><em>Dragon Ball</em> trouxe a evolução progressiva — não existe limite,
+                        apenas o próximo nível. <em>Zillion</em> trouxe estratégia e precisão.
+                        E ele entendeu algo fundamental: crescimento não é evento, é processo.</p>
+                    <p>Paralelamente, outra magia surgiu: o computador. Um <strong>Pentium 100&nbsp;MHz</strong>
+                        com kit multimídia, CD-ROM e jogos como <em>Full Throttle</em>, <em>TIE Fighter</em>
+                        e <em>Doom</em>. Não eram apenas jogos — eram portais. Diferente da TV, o
+                        computador respondia. Ele não consumia: <strong>participava</strong>. O embrião
+                        de uma mudança irreversível — de espectador para operador.</p>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">1997–1999</span>
+                            <span class="star__title">Curso Técnico em Processamento de Dados</span>
+                            <span class="star__year">Colégio Guarani</span>
+                        </summary>
+                        <div class="star__body">
+                            <p>A primeira formalização do interesse: lógica, algoritmos e a base
+                                técnica que transformaria a curiosidade em ofício.</p>
+                            <ul class="stack">
+                                <li>Lógica</li>
+                                <li>Algoritmos</li>
+                                <li>Fundamentos</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <figure>
+                    <img src="/fotos/programa.jpg" alt="Primeiros passos com o computador e a programação." loading="lazy"
+                        decoding="async">
+                    <figcaption>Os primeiros comandos.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ===================== FASE 3 ===================== -->
+        <section class="era" id="era3" data-theme="net" data-scene="nodes" data-era="2000-2009"
+            aria-labelledby="era3-title">
+            <div class="wrap">
+                <p class="era__eyebrow">Fase 3 · A Rede Discada · 2000–2009</p>
+                <h2 id="era3-title">Início adulto — a escolha do caminho</h2>
+                <div class="passage">
+                    <p class="lead">A virada do milênio não foi só simbólica — foi estrutural.</p>
+                    <p>A internet discada entrou como ritual: conectar, ouvir o som metálico da
+                        linha, esperar, explorar. Lento, limitado, revolucionário. Com a banda
+                        larga, o mundo deixou de ser fragmentado e passou a ser contínuo. Foi
+                        quando ele fez uma escolha silenciosa, mas definitiva: não queria apenas
+                        usar tecnologia — queria <strong>entendê-la</strong>.</p>
+                    <p>De usuário curioso a executor técnico, de executor a analista em formação.
+                        E, como em <em>One Piece</em>, onde a jornada ganha sentido nas conexões,
+                        em <strong>2009</strong> ele encontrou o amor da sua vida. A evolução
+                        individual deu lugar à construção conjunta.</p>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">2003–2012</span>
+                            <span class="star__title">Analista Programador Java — Sysgen</span>
+                            <span class="star__year">J2EE · MDA · UML</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Contexto:</b> aplicações web e console em Java (J2EE/J2SE) com
+                                framework ASPER e arquitetura MVC.</p>
+                            <p><b>Diferencial:</b> modelagem UML com geração de código via
+                                <b>MDA (Model-Driven Architecture)</b> pela ferramenta Celero — a
+                                primeira experiência tratando modelo como fonte da verdade.</p>
+                            <ul class="stack">
+                                <li>Java J2EE/J2SE</li>
+                                <li>MVC</li>
+                                <li>UML</li>
+                                <li>MDA</li>
+                                <li>DB2</li>
+                                <li>PostgreSQL</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">2005–2008</span>
+                            <span class="star__title">Analista de Desenvolvimento Java — Telefônica</span>
+                            <span class="star__year">EJB · JBoss · Oracle</span>
+                        </summary>
+                        <div class="star__body">
+                            <p>Sistemas de gestão de almoxarifado de peças e de aprovisionamento de
+                                rede — escala corporativa e os primeiros papéis de liderança de equipe.</p>
+                            <ul class="stack">
+                                <li>Java</li>
+                                <li>EJB</li>
+                                <li>JBoss</li>
+                                <li>Oracle</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="photo-row">
+                    <figure>
+                        <img src="/fotos/formatura.jpg"
+                            alt="Formatura em Sistemas de Informação na Universidade Mackenzie." loading="lazy"
+                            decoding="async">
+                        <figcaption>Bacharelado em SI — Mackenzie (2001–2005).</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/fotos/casamento.jpg" alt="Dia do casamento, em 2009." loading="lazy"
+                            decoding="async">
+                        <figcaption>2009 — o amor da sua vida.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== FASE 4 ===================== -->
+        <section class="era" id="era4" data-theme="cloud" data-scene="blocks" data-era="2010-2019"
+            aria-labelledby="era4-title">
+            <div class="wrap">
+                <p class="era__eyebrow">Fase 4 · A Nuvem Corporativa · 2010–2019</p>
+                <h2 id="era4-title">Família e consolidação — o peso do legado</h2>
+                <div class="passage">
+                    <p class="lead">Se antes ele buscava evolução, agora precisava sustentar.</p>
+                    <p>Em <strong>2012</strong>, o nascimento da filha; em <strong>2016</strong>,
+                        os gêmeos — a responsabilidade não dobrou, multiplicou. No trabalho, duas
+                        linhas correram em paralelo: ele deixou de ser executor e passou a operar
+                        em níveis mais abstratos — sistemas, arquiteturas, integrações, decisões
+                        estruturais. Começou a enxergar não apenas o código, mas o
+                        <strong>ecossistema</strong>.</p>
+                    <p>Como em <em>Bleach</em>, onde proteger os outros redefine o propósito:
+                        crescer deixou de ser opcional e virou responsabilidade.</p>
+                </div>
+                <div class="photo-row">
+                    <figure>
+                        <img src="/fotos/filha.jpeg" alt="2012 — o nascimento da filha." loading="lazy"
+                            decoding="async">
+                        <figcaption>2012 — a filha.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/fotos/gemeos.jpeg" alt="2016 — a chegada dos gêmeos." loading="lazy"
+                            decoding="async">
+                        <figcaption>2016 — os gêmeos.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/fotos/familia.jpeg" alt="A família, eixo central da jornada." loading="lazy"
+                            decoding="async">
+                        <figcaption>A família, o eixo.</figcaption>
+                    </figure>
+                </div>
+
+                <h3>Casos de sucesso — consolidação (STAR)</h3>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">estabilidade</span>
+                            <span class="star__title">Transição do Time de Sustentação (Rede)</span>
+                            <span class="star__year">2018</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Situação:</b> Cockpit e Força Campo recém-implantados, sem processo
+                                de sustentação e mudança definido, com alto volume de erros.</p>
+                            <p><b>Ação:</b> criou o fluxo de chamados, centralizou as implantações
+                                Salesforce com segurança da informação, padronizou versionamento e
+                                sandboxes, e priorizou correções de causa-raiz com a fábrica.</p>
+                            <p><b>Resultado:</b> <b>estabilidade do ambiente Salesforce</b> e ampliação
+                                do número de executivos e técnicos usando as ferramentas.</p>
+                            <ul class="stack">
+                                <li>Salesforce</li>
+                                <li>Cockpit</li>
+                                <li>Força Campo</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">−incidentes</span>
+                            <span class="star__title">Sustentação AFVC — Força Campo & Vendas</span>
+                            <span class="star__year">2019</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Situação:</b> alto volume de chamados críticos em Logística e
+                                Comercial (falhas de OS, roteirização, app offline, abends batch).</p>
+                            <p><b>Ação:</b> discovery das funcionalidades, capacitação do time,
+                                priorização e desenvolvimento de correções de causa-raiz.</p>
+                            <p><b>Resultado:</b> redução de problemas críticos e <b>menor tempo de
+                                    atendimento de incidentes</b>; mais entregas, com qualidade.</p>
+                            <ul class="stack">
+                                <li>Salesforce</li>
+                                <li>Android</li>
+                                <li>Mainframe</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">−R$3MM</span>
+                            <span class="star__title">Economia no contrato Salesforce</span>
+                            <span class="star__year">2020</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Situação:</b> vencimento do 1º contrato Salesforce e forte expansão
+                                de usuários, sem base histórica nem clareza de precificação de licenças.</p>
+                            <p><b>Ação:</b> planilhou todos os custos no menor nível de detalhe,
+                                construiu a defesa para o CINVEST e negociou em parceria com o CoE
+                                Salesforce do Itaú e o time de compras.</p>
+                            <p><b>Resultado:</b> <b>economia de mais de R$3 milhões</b> no contrato
+                                final e clareza das áreas sobre o custo de cada licença.</p>
+                            <ul class="stack">
+                                <li>Salesforce</li>
+                                <li>Gestão de Contratos</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">metas batidas</span>
+                            <span class="star__title">Sustentação Core Rede (GE1/WF1) com Splunk</span>
+                            <span class="star__year">2020</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Situação:</b> unificação da sustentação com os sistemas core, com
+                                metas de redução de chamados, abends e tempo de atendimento.</p>
+                            <p><b>Ação:</b> análise de chamados críticos, melhorias de log,
+                                integração de captura no <b>Splunk</b> e capacitação do time em
+                                Salesforce.</p>
+                            <p><b>Resultado:</b> atingimento das metas de redução de incidentes e de
+                                tempo de atendimento; menos abends na malha batch.</p>
+                            <ul class="stack">
+                                <li>Splunk</li>
+                                <li>Salesforce</li>
+                                <li>Mainframe</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============== MARCO DO ARQUITETO (F4 → F5) ============== -->
+        <section class="era marco" id="marco" data-theme="ai" data-scene="neural" data-era="2020-2026"
+            aria-label="Marco: de analista a arquiteto">
+            <div class="wrap">
+                <p class="marco__quote">Deixei de construir sistemas. Passei a desenhar sistemas.</p>
+                <p class="marco__sub">De executor a analista, de analista a arquiteto — de resolver
+                    problemas a antecipá-los. A mudança de papel que dá sentido ao próximo nível.</p>
+            </div>
+        </section>
+
+        <!-- ===================== FASE 5 ===================== -->
+        <section class="era" id="era5" data-theme="ai" data-scene="neural" data-era="2020-2026"
+            aria-labelledby="era5-title">
+            <div class="wrap">
+                <p class="era__eyebrow">Fase 5 · O Prompt da IA · 2020–2026</p>
+                <h2 id="era5-title">Maturidade — o arquiteto e o mentor</h2>
+                <div class="passage">
+                    <p class="lead">Aqui a jornada muda de natureza: não é mais sobre crescer
+                        rápido, é sobre crescer com precisão.</p>
+                    <p>A tecnologia deixou de ser ferramenta e virou extensão da mente. Cloud,
+                        sistemas distribuídos, automação — linguagem, não novidade. A maturidade
+                        trouxe consciência: ele entende seus padrões, ciclos e limites — e como
+                        expandi-los. Se os primeiros 44 anos foram sobre evoluir, o próximo nível é
+                        sobre <strong>orquestrar</strong>. Como nos melhores arcos: o personagem não
+                        para quando fica forte — ele muda de papel. De herói para mentor.</p>
+                </div>
+
+                <h3>Últimos grandes marcos (STAR)</h3>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">10d → tempo real</span>
+                            <span class="star__title">Agrupamento Comercial</span>
+                            <span class="star__year">2024</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Situação:</b> automações legadas com SLA de até <b>10 dias</b> para
+                                efetivar a taxa do contrato, com falhas e dependências manuais.</p>
+                            <p><b>Ação:</b> discovery, desenho da solução técnica e desenvolvimento
+                                de uma aplicação de validação de arranjo dos participantes.</p>
+                            <p><b>Resultado:</b> efetivação <b>em tempo de proposta</b> — de 10 dias
+                                para tempo real.</p>
+                            <ul class="stack">
+                                <li>Java</li>
+                                <li>AWS</li>
+                                <li>APIs</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">+15% metas</span>
+                            <span class="star__title">Pipe Automática Comercial</span>
+                            <span class="star__year">2025</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Situação:</b> a lista de atuação do executivo não tinha priorização
+                                inteligente para otimizar o planejamento do dia e da meta.</p>
+                            <p><b>Ação:</b> discovery e solução de viabilidade rápida, processando a
+                                inteligência de priorização na própria Salesforce com batches agendados.</p>
+                            <p><b>Resultado:</b> <b>aumento de mais de 15%</b> no atingimento das metas
+                                e agilidade nos agendamentos e atendimentos.</p>
+                            <ul class="stack">
+                                <li>Salesforce</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">+ casos</span>
+                            <span class="star__title">Ver mais casos (2022–2023)</span>
+                            <span class="star__year">Cockpit · D0 · Callback WF</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Conta Corrente PJ no Cockpit (2022):</b> autonomia ao executivo para
+                                iniciar a abertura de conta Itaú PJ; solução estável e escalável.</p>
+                            <p><b>D0 / Ipricing 2.0 (2022):</b> entrega completa da proposta em D0,
+                                resolvendo 3 grandes épicos em duas entregas estratégicas.</p>
+                            <p><b>Callback do WF (2023):</b> serviço de retorno de status que deu
+                                rapidez à informação da proposta e atacou a causa-raiz dos travamentos.</p>
+                            <p>Histórico completo no <a href="/index.html">currículo</a>.</p>
+                            <ul class="stack">
+                                <li>Salesforce</li>
+                                <li>AWS</li>
+                                <li>APIs</li>
+                                <li>Low-code</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <h3>Foco atual — Engenharia de IA Agêntica</h3>
+                <div class="passage">
+                    <p>Certificações 2025 que ancoram a virada para a IA agêntica:
+                        <strong>AI Agentic Design Patterns</strong>, <strong>AI Agents with
+                            LangGraph</strong>, <strong>AI with Knowledge Graphs</strong> e
+                        <strong>GenAI for Leaders</strong> — combinadas a 20+ anos de arquitetura
+                        de soluções.</p>
+                </div>
+
+                <figure>
+                    <img src="/fotos/careca.jpeg" alt="Maurício Issei hoje — arquiteto e mentor." loading="lazy"
+                        decoding="async">
+                    <figcaption>Hoje — arquiteto e mentor.</figcaption>
+                </figure>
+
+                <h3>A jornada em vídeo</h3>
+                <div class="video" data-video="nQt9JjzXDd4">
+                    <button type="button" aria-label="Assistir ao vídeo da jornada no YouTube">
+                        <span class="video__play" aria-hidden="true">▶</span>
+                        Assistir no YouTube
+                    </button>
+                </div>
+
+                <!-- KPI Final Agregado -->
+                <section class="kpi-final" id="kpi" aria-label="Resumo de carreira para recrutadores">
+                    <h3 style="margin-top:0">Em números</h3>
+                    <dl class="kpi-grid">
+                        <div>
+                            <dt>Experiência em tecnologia</dt>
+                            <dd>20+ anos</dd>
+                        </div>
+                        <div>
+                            <dt>Em grandes empresas</dt>
+                            <dd>15+ anos</dd>
+                        </div>
+                        <div>
+                            <dt>Tech Lead na Rede</dt>
+                            <dd>7 anos</dd>
+                        </div>
+                        <div>
+                            <dt>Foco atual</dt>
+                            <dd>IA Agêntica</dd>
+                        </div>
+                        <div>
+                            <dt>Custos</dt>
+                            <dd>−R$3MM</dd>
+                        </div>
+                        <div>
+                            <dt>Metas</dt>
+                            <dd>+15%</dd>
+                        </div>
+                    </dl>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que é o Terminal Evolutivo</h2>
+    <p class="aeo-tldr__lede">O <strong>Terminal Evolutivo</strong> conta a evolução de <strong>Maurício Issei</strong> de 1982 a 2026 em <strong>cinco fases</strong> — de espectador a operador a arquiteto/mentor — numa página de *scrollytelling* cuja <strong>estética envelhece conforme você rola</strong> (terminal CRT → wireframe → rede de dados → blocos corporativos → rede neural).</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>Cinco fases</strong> alinhadas aos arcos de vida: Infância, Treinamento, Rede Discada, Nuvem Corporativa e o Prompt da IA.</li>
+      <li><strong>Casos STAR reais</strong> embutidos no fluxo: −R$3MM no contrato Salesforce, +15% nas metas com a Pipe Automática, 10 dias → tempo real no Agrupamento.</li>
+      <li><strong>Marco do Arquiteto</strong> — a virada de Analista para Arquiteto: &quot;deixei de construir sistemas; passei a desenhar sistemas&quot;.</li>
+      <li><strong>Arquitetura híbrida</strong> — foreground HTML semântico (a11y/SEO) sobre fundo WebGL, com fallback acessível sem WebGL/JS.</li>
+    </ul>
+    <p class="aeo-tldr__foot">Veja também o <a href="/index.html">currículo completo</a> e o <a href="/catalogo.html">mapa do ecossistema</a>.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que é o Terminal Evolutivo?</summary>
+      <div class="aeo-faq__a"><p>É uma página de portfólio em scrollytelling que conta a evolução de Maurício Issei de 1982 a 2026 em cinco fases. O diferencial é que a própria estética da página evolui conforme o usuário rola, espelhando a maturidade tecnológica de cada época — de um terminal analógico a uma rede neural holográfica.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quais resultados de carreira a página destaca?</summary>
+      <div class="aeo-faq__a"><p>Casos reais com impacto mensurável: economia de mais de R$3 milhões na renegociação do contrato Salesforce (2020), aumento de mais de 15% no atingimento de metas com a Pipe Automática (2025) e a redução do SLA de Agrupamento Comercial de 10 dias para tempo real (2024). Somam-se 20+ anos em tecnologia e 15+ em grandes empresas.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">A página funciona sem WebGL ou JavaScript?</summary>
+      <div class="aeo-faq__a"><p>Sim. O conteúdo é HTML semântico linear e legível por leitores de tela; o fundo 3D (WebGL/Three.js) é progressive enhancement puramente decorativo. Sem WebGL ou sem JavaScript, a página exibe um fundo sólido por tema e todo o conteúdo permanece intacto e indexável.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+
+    <footer data-theme="ai">
+        <div class="wrap">
+            <h2 style="font-size:1.4rem">Continue a explorar</h2>
+            <ul class="foot-links">
+                <li><a href="/index.html">Currículo completo<span>Experiência, stack e casos STAR</span></a></li>
+                <li><a href="/life.html">A Jornada em Pixel Art<span>A mesma história como jogo 2D</span></a></li>
+                <li><a href="/life3d.html">Vida em 3D<span>Experiência imersiva contemplativa</span></a></li>
+                <li><a href="/catalogo.html">Mapa do Ecossistema<span>Todo o conteúdo, em 5 pilares</span></a></li>
+            </ul>
+            <p class="foot-credit">© 2026 Maurício Yokoyama Issei · Terminal Evolutivo —
+                narrativa interativa (HTML semântico + WebGL, com fallback acessível).</p>
+        </div>
+    </footer>
+
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <script type="module" src="./js/terminal-evolutivo.js"></script>
+    <script type="module" src="./js/eco-nav.js"></script>
+</body>
+
+</html>

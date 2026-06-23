@@ -22,14 +22,14 @@
  */
 
 const DATA = {
-  version: '1.0.0',
+  version: '1.1.0',
   base: './', // D-05: URL relativa atual
   pillars: [
     { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin'] },
     { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['engenharia-confianca', 'engenharia-agentes-ia', 'knowledge-os-presentation'] },
     { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
     { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta', 'proposta-observabilidade-mobile'] },
-    { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d'] },
+    { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo'] },
   ],
   nodes: {
     know: { file: 'know.html', title: 'Navegando na Complexidade', blurb: 'O fim das melhores práticas.' },
@@ -49,6 +49,7 @@ const DATA = {
     index: { file: 'index.html', title: 'Maurício Yokoyama Issei', blurb: 'Tech Lead / Análise de Sistemas.' },
     life: { file: 'life.html', title: 'A Jornada em Pixel Art', blurb: 'Narrativa pessoal desde 1982.' },
     life3d: { file: 'life3d.html', title: 'Vida em 3D', blurb: 'Memórias numa viagem imersiva.' },
+    'terminal-evolutivo': { file: 'terminal-evolutivo.html', title: 'Terminal Evolutivo', blurb: 'A jornada 1982–2026 que envelhece ao rolar.' },
   },
   crosslinks: [
     { from: 'knowledge-os-presentation', to: 'proposta-engenharia-reversa', rationale: 'Knowledge OS fundamenta a Engenharia Reversa assistida por IA.' },
@@ -271,8 +272,11 @@ class EcoNav extends HTMLElement {
       });
     });
 
-    // Esc fecha; clique-fora fecha
-    this.addEventListener('keydown', (e) => { if (e.key === 'Escape' && this._open) { this.setOpen(false); this.fab.focus(); } });
+    // Esc fecha; clique-fora fecha. O listener no document garante o Esc mesmo
+    // quando o foco não está dentro do host (WebKit não foca botão ao clicar).
+    this._onDocKey = (e) => { if (e.key === 'Escape' && this._open) { this.setOpen(false); this.fab.focus(); } };
+    this.addEventListener('keydown', this._onDocKey);
+    document.addEventListener('keydown', this._onDocKey);
     this._onDocClick = (e) => { if (this._open && !e.composedPath().includes(this)) this.setOpen(false); };
     document.addEventListener('click', this._onDocClick);
   }
@@ -291,6 +295,7 @@ class EcoNav extends HTMLElement {
 
   disconnectedCallback() {
     if (this._onDocClick) document.removeEventListener('click', this._onDocClick);
+    if (this._onDocKey) document.removeEventListener('keydown', this._onDocKey);
   }
 }
 

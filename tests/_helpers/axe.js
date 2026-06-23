@@ -20,6 +20,18 @@ export async function expectNoSeriousA11yViolations(page, context) {
       timeout: 4000,
     })
     .catch(() => {});
+  // Mesma janela de FOUC para o /aeo.css (stylesheet separado): no webkit sob carga
+  // o <link> pode ainda não ter aplicado quando auditamos, fazendo o texto do bloco
+  // .aeo herdar cores da página (falso-positivo de contraste). Espera o bloco AEO
+  // ganhar seu fundo temático antes de prosseguir.
+  await page
+    .waitForFunction(() => {
+      const el = document.querySelector('.aeo-tldr');
+      if (!el) return true; // página sem bloco AEO
+      const bg = getComputedStyle(el).backgroundColor;
+      return bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent';
+    }, undefined, { timeout: 4000 })
+    .catch(() => {});
 
   let builder = new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
