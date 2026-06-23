@@ -33,6 +33,8 @@
 3. **Corrigir a cronologia do arquiteto.** A semente é **2003** (MDA/UML na Sysgen), não 2020. Reposicionar o Marco: o arquiteto já existia; o que mudou na fase de IA foi a **escala** (Cloud/SRE) e o **papel** (orquestrar/mentorar).
 4. **Viabilizador de times, não herói solo.** Creditar pares, líderes e times formados; conectar "proteção/compromisso" a estabilidade de ecossistemas e formação de gente (coerente com Business Agility/Scrum/Agile Coach).
 5. **Desidratar o tom.** Frases curtas, diretas, escaneáveis. Cortar prosa densa ("a virada do milênio não foi apenas simbólica — foi estrutural").
+6. **Preservar o calor nas entrelinhas.** Desidratar ≠ esfriar. Manter a emoção em subtexto (a paixão que aparece no vídeo do YouTube), sobretudo nos fechamentos de fase, nas pontes humanas (ex.: 2009) e no Marco — sem virar relatório de LinkedIn.
+7. **Evitar o "whiplash" técnico↔pessoal.** Toda transição de assunto frio (legado/PL/SQL) para quente (família) precisa de uma frase-ponte que conecte os dois mundos (ver F3).
 
 ### 2.2 Reescrita fase a fase (copy pronta para colar)
 
@@ -49,7 +51,7 @@
 >
 > Na **Sysgen (2003–2012)**: Java J2EE, MVC e — já ali — modelagem **UML com geração de código por MDA**. Foi a primeira vez que tratei o **modelo como fonte da verdade**: a semente do arquiteto nasceu em 2003, não em 2020. Na **Telefônica (2005–2008)**: EJB, JBoss e Oracle em sistemas de rede e almoxarifado, e as primeiras equipes sob minha responsabilidade.
 >
-> Foram madrugadas de bug em produção, PL/SQL travado e legado que ninguém queria tocar. É aí — não na teoria — que a resiliência se aprende. E, em 2009, no meio dessa rotina, conheci minha esposa. A evolução individual deu lugar à construção a dois.
+> Foram madrugadas de bug em produção, PL/SQL travado e legado que ninguém queria tocar. É aí — não na teoria — que se aprende o valor de **sustentar sistemas críticos**. E foi no meio dessa rotina intensa, em **2009**, que percebi: a fundação mais crítica que eu construiria não seria de software. Conheci minha esposa — e a evolução individual deu lugar à construção a dois.
 
 **F4 · `#era4` (2010–2019) — remove Bleach; família via engenharia/times; Indra/Serasa; mantém STAR**
 > 2012, minha filha; 2016, os gêmeos. A responsabilidade não dobrou — multiplicou. No trabalho, parei de só executar.
@@ -69,13 +71,15 @@
 **F5 · `#era5` (2020–2026) — escala + IA agêntica + orquestração/mentoria; anti-herói**
 > Aqui a régua muda: não é crescer rápido, é crescer **com precisão e em escala**. Cloud, sistemas distribuídos, SRE e observabilidade deixaram de ser projeto e viraram linguagem. O foco migrou do código para a **orquestração**: IA agêntica, automação e — principalmente — formar quem entrega.
 >
-> Os resultados recentes vêm de **time**, não de heroísmo: Agrupamento Comercial de 10 dias para tempo real (2024) e Pipe Automática com +15% nas metas (2025). Em paralelo, as certificações de 2025 em IA agêntica (AI Agentic Design Patterns, LangGraph, Knowledge Graphs) consolidaram a virada.
+> Os resultados recentes vêm de **time**, não de heroísmo: Agrupamento Comercial de 10 dias para tempo real (2024) e Pipe Automática com +15% nas metas (2025) — esta já embutindo **inteligência de priorização** (regras e processamento em lote), o embrião determinístico do raciocínio que agora levo adiante. Esses 20 anos de arquitetura complexa — AWS, Salesforce, microsserviços, SRE — são a base que hoje **direciono de propósito** para construir sistemas **agênticos de verdade**: não como buzzword, mas com método (as certificações de 2025 em IA agêntica — AI Agentic Design Patterns, LangGraph, Knowledge Graphs — formalizam a virada).
 >
 > Se os primeiros anos foram sobre evoluir, agora é sobre **multiplicar**. O papel deixou de ser o de quem resolve sozinho e passou a ser o de quem **habilita o time**. De operador a arquiteto a mentor.
 
 ### 2.3 Rebalanceamento STAR (confirma a v2.1)
 
 Mantido: **−R$3MM** e **Core Rede/Splunk** na **F4** (consolidação); **F5** fica limpa — Agrupamento (2024), Pipe Automática (2025) e o bloco de **certificações IA 2025**. Atualizar, se necessário, o `tldr`/`mdSections` em `scripts/seo/pages.mjs` para refletir o novo tom (sem anime; com trincheira) e reexecutar `build-aeo.mjs terminal-evolutivo` + o `.md` companion.
+
+**Honestidade sobre IA (lacuna F5).** Pelas fontes (`llms-full.txt`), os casos de 2024/2025 usaram **inteligência determinística** — regras, priorização em lote, validações —, **não agentes LLM**. A `Ação` do STAR da Pipe Automática já diz "processando a inteligência de priorização na própria Salesforce com batches agendados", coerente com o princípio *determinístico-primeiro* das páginas de Engenharia de IA. Portanto a narrativa posiciona a IA agêntica como **direção intencional atual**, ancorada em 20 anos de arquitetura — **sem alegar uso de LLM onde não houve**. ⚠️ **Decisão do dono:** se algum projeto recente de fato empregou IA/agentes, avisar para fortalecer a `Ação` do STAR correspondente (e a copy da F5) com o caso concreto.
 
 ---
 
