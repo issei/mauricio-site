@@ -22,6 +22,20 @@ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const THEMES = ['theme-terminal', 'theme-wire', 'theme-net', 'theme-cloud', 'theme-ai'];
 const SCENES = ['crt', 'wire', 'nodes', 'blocks', 'neural'];
 
+// Revela as passagens ao entrar na viewport (enhancement). Só "arma" o
+// esconde-para-revelar quando há IntersectionObserver e sem reduce-motion —
+// caso contrário o conteúdo permanece visível por padrão (CSS).
+const passages = document.querySelectorAll('.passage');
+if (!reduce && 'IntersectionObserver' in window && passages.length) {
+  document.documentElement.classList.add('reveal-ready');
+  const revealIO = new IntersectionObserver((entries, obs) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+    }
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  passages.forEach((el) => revealIO.observe(el));
+}
+
 function syncTimeline(section) {
   document.querySelectorAll('.timeline [data-jump]').forEach((a) => {
     const on = a.dataset.jump === section.dataset.era;
