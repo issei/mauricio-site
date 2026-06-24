@@ -43,22 +43,22 @@
 **F1 · `#era1` (1982–1994) — mantém o gancho, só enxuga**
 > Nasci em 1982, num Brasil analógico: TV de tubo, antena ajustada na mão e os heróis japoneses — Jaspion, Changeman. Deles veio, sem que eu percebesse, um modelo mental que carrego até hoje: evolução é contínua, disciplina é silenciosa e **ninguém vence sozinho**. Enquanto os outros assistiam, eu absorvia. Era um espectador — por enquanto.
 
-**F2 · `#era2` (1995–1999) — mantém os jogos, remove o anime**
-> Aos poucos, a tela deixou de ser só para assistir. Um **Pentium 100 MHz** com CD-ROM trouxe Doom, TIE Fighter e Full Throttle — e a diferença que mudou tudo: o computador **respondia**. Eu não consumia mais; eu operava. O **curso técnico em Processamento de Dados** (1997–1999) deu nome ao vício: lógica, algoritmo, a máquina fazendo o que eu mandava. De espectador a **operador**.
+**F2 · `#era2` (1995–1999) — jogos + trabalho/estudo concomitantes**
+> Aos poucos, a tela deixou de ser só para assistir. Um **Pentium 100 MHz** com CD-ROM trouxe Doom, TIE Fighter e Full Throttle — e a diferença que mudou tudo: o computador **respondia**. Eu não consumia mais; eu operava. O **curso técnico em Processamento de Dados** (Colégio Guarani, 1997–1999) deu nome ao vício: lógica, algoritmo, a máquina obedecendo. E, **em paralelo ao colégio técnico**, veio o primeiro emprego — **auditor no Shopping Eldorado**. Estudar e trabalhar ao mesmo tempo começou cedo; nunca mais parou. De espectador a **operador**.
 
-**F3 · `#era3` (2000–2009) — remove Naruto/One Piece; injeta a trincheira e a semente do arquiteto**
-> A virada do milênio foi prática: a discada virou banda larga e eu decidi que não bastava usar — eu queria entender por dentro. Vieram a graduação em **Sistemas de Informação (Mackenzie)** e 14 anos de trincheira que raramente aparecem num portfólio.
+**F3 · `#era3` (2000–2009) — a trincheira: trabalho de dia, estudo de noite, e a perda que forçou o amadurecimento**
+> A virada do milênio foi de trabalho braçal e estudo. Em **2000**, cursinho no Etapa (unidade São Joaquim) para entrar no **Mackenzie em 2001** (Sistemas de Informação). Mas a faculdade era à noite — porque o dia era de trabalho: **call center (2000–2003)**, onde aprendi a ouvir o usuário antes de servi-lo com código, e depois a **Sysgen (2003–2005)**. Trabalhar de dia e estudar de madrugada cobrou seu preço: acumulei **dependências** em matérias, recuperadas **sacrificando as férias**, ano após ano.
 >
-> Na **Sysgen (2003–2012)**: Java J2EE, MVC e — já ali — modelagem **UML com geração de código por MDA**. Foi a primeira vez que tratei o **modelo como fonte da verdade**: a semente do arquiteto nasceu em 2003, não em 2020. Na **Telefônica (2005–2008)**: EJB, JBoss e Oracle em sistemas de rede e almoxarifado, e as primeiras equipes sob minha responsabilidade.
+> Em **abril de 2004**, perdi meu pai. Filho único, amadureci de uma vez: aprendi a dirigir, vendi o carro dele e comprei o meu primeiro com o salário daquela época. A vida não esperou eu ficar pronto.
 >
-> Foram madrugadas de bug em produção, PL/SQL travado e legado que ninguém queria tocar. É aí — não na teoria — que se aprende o valor de **sustentar sistemas críticos**. E foi no meio dessa rotina intensa, em **2009**, que percebi: a fundação mais crítica que eu construiria não seria de software. Conheci minha esposa — e a evolução individual deu lugar à construção a dois.
+> Na **Sysgen**, Java J2EE, MVC e — já em 2003 — modelagem **UML com geração de código por MDA**: a primeira vez que tratei o **modelo como fonte da verdade**. A semente do arquiteto nasceu ali, não em 2020. Na **Telefônica**, EJB, JBoss e Oracle, e as primeiras equipes sob minha responsabilidade — legado pesado, bug em produção, resiliência forjada no fogo. E foi nesse meio, em **2009**, que conheci minha esposa.
 
-**F4 · `#era4` (2010–2019) — remove Bleach; família via engenharia/times; Indra/Serasa; mantém STAR**
-> 2012, minha filha; 2016, os gêmeos. A responsabilidade não dobrou — multiplicou. No trabalho, parei de só executar.
+**F4 · `#era4` (2010–2019) — o legado: sacrifício e o batismo de fogo**
+> Casar custou caro — literalmente. Fiquei **sem férias em 2009 e 2010** e, em **2011**, vendi férias e bônus para pagar a festa; a lua de mel foram **5 dias**. Prioridade é o que se faz, não o que se diz.
 >
-> Na **Indra (2012–2017)** liderei times de sistemas de seguros (JBoss Seam, Spring, RichFaces, Oracle PL/SQL) e, em paralelo, puxei inovação em **mobile e AWS** — serverless, microsserviços, Android/Ionic, DevOps. Era arquitetura de verdade, com time, anos antes de "cloud" virar palavra de efeito. Na **Serasa (2017–2018)**, a API corporativa de **OAuth 2** e cadastro unificado.
+> Com a chegada da **filha (2012)**, troquei conforto por estabilidade: fui para a **Indra em fevereiro de 2012**. O batismo de fogo veio em **julho** — uma janela de implantação de **107 horas trabalhadas em 7 dias**. Foi ali que juntei as três frentes que me formaram arquiteto: **sustentação** (manter o crítico de pé), **inovação móvel** (AWS, microsserviços, Android/Ionic) e **arquitetura junto ao time comercial** (entender o negócio, não só o código).
 >
-> Aqui, proteger deixou de ser sentimento e virou prática diária: **estabilidade de ecossistemas e formação de gente**. Em 2018 entrei na **Rede como Tech Lead** — e os números começaram a aparecer.
+> Proteger deixou de ser sentimento e virou prática diária: **estabilidade de ecossistemas e formação de gente**. O alicerce profissional e o familiar cresceram juntos.
 
 *(A ponte `.bridge` e os 4 cards STAR da F4 — Transição de Sustentação 2018, AFVC 2019, −R$3MM 2020, Core Rede/Splunk 2020 — permanecem como na v2.1.)*
 
@@ -68,16 +68,20 @@
 - `.marco__sub`:
   > O arquiteto foi forjado no legado dos anos 2000 (UML, MDA, arquitetura de soluções). O que mudou na virada para a IA não foi a natureza do trabalho — foi a **escala** (cloud, SRE) e o **papel**: de resolver sozinho a **orquestrar e mentorar**.
 
-**F5 · `#era5` (2020–2026) — escala + IA agêntica + orquestração/mentoria; anti-herói**
-> Aqui a régua muda: não é crescer rápido, é crescer **com precisão e em escala**. Cloud, sistemas distribuídos, SRE e observabilidade deixaram de ser projeto e viraram linguagem. O foco migrou do código para a **orquestração**: IA agêntica, automação e — principalmente — formar quem entrega.
+**F5 · `#era5` (2020–2026) + fechamento — a maturidade forjada na turbulência**
+> Em **2016**, a surpresa em dobro: os **gêmeos**. E, em **janeiro de 2017**, a vida cobrou tudo de uma vez — minha esposa internada, o estresse acumulado de anos e uma **alopecia** que me deixou careca por um ano. Foi o fundo do poço que me ensinou sobre limite, e sobre pedir ajuda.
 >
-> Os resultados recentes vêm de **time**, não de heroísmo: Agrupamento Comercial de 10 dias para tempo real (2024) e Pipe Automática com +15% nas metas (2025) — esta já embutindo **inteligência de priorização** (regras e processamento em lote), o embrião determinístico do raciocínio que agora levo adiante. Esses 20 anos de arquitetura complexa — AWS, Salesforce, microsserviços, SRE — são a base que hoje **direciono de propósito** para construir sistemas **agênticos de verdade**: não como buzzword, mas com método (as certificações de 2025 em IA agêntica — AI Agentic Design Patterns, LangGraph, Knowledge Graphs — formalizam a virada).
+> A reação foi por etapas. Saí da Indra e passei pela **Serasa (dez/2017–jan/2018)**, uma imersão em **agilidade acelerada** (API corporativa de **OAuth 2**). Tinha proposta da **Rede**, mas adiei a saída até **concluir o mega projeto** sob minha responsabilidade — porque entregar o que se promete também é arquitetura. Em **2019**, financiei e **reestruturei a casa**: demoli 65% para otimizar a planta — a mesma mentalidade de refatorar um sistema, aplicada a tijolo.
 >
-> Se os primeiros anos foram sobre evoluir, agora é sobre **multiplicar**. O papel deixou de ser o de quem resolve sozinho e passou a ser o de quem **habilita o time**. De operador a arquiteto a mentor.
+> Daí em diante, a régua mudou: não é crescer rápido, é crescer **com precisão e em escala**. Cloud, SRE e observabilidade viraram linguagem; o foco migrou do código para a **orquestração** — IA agêntica, automação e formar quem entrega. Os resultados vêm de **time**: Agrupamento Comercial de 10 dias para tempo real (2024), Pipe Automática com +15% nas metas (2025), e as certificações de 2025 em IA agêntica (AI Agentic Design Patterns, LangGraph, Knowledge Graphs) consolidando a virada.
+>
+> Hoje o alicerce é coletivo. Minha esposa cresceu de **analista a empresária**; sogros, cunhados, sobrinhos e primos são rede de apoio real. Eu deixei de ser quem resolve sozinho e passei a ser quem **habilita o time**. De operador a arquiteto a mentor.
 
 ### 2.3 Rebalanceamento STAR (confirma a v2.1)
 
 Mantido: **−R$3MM** e **Core Rede/Splunk** na **F4** (consolidação); **F5** fica limpa — Agrupamento (2024), Pipe Automática (2025) e o bloco de **certificações IA 2025**. Atualizar, se necessário, o `tldr`/`mdSections` em `scripts/seo/pages.mjs` para refletir o novo tom (sem anime; com trincheira) e reexecutar `build-aeo.mjs terminal-evolutivo` + o `.md` companion.
+
+> **Nota de coerência (Rede entre F4 e F5).** Com os novos fatos, a *chegada* à Rede (2018) é narrada na **F5** (ponte 2017–2019: crise → Serasa → decisão ética → Rede). Já os **casos STAR da Rede** (Transição 2018, AFVC 2019, −R$3MM 2020, Core Rede 2020) seguem na **F4** como bloco temático de "casos de sucesso" — a ponte `.bridge` os introduz de forma genérica ("aplicar em escala corporativa"), sem nomear a Rede, então não há contradição visível. **Decisão do dono:** se preferir cronologia estrita, mover Transição/AFVC para a F5 ou abrir a F4 com uma linha citando a entrada na Rede.
 
 **Honestidade sobre IA (lacuna F5).** Pelas fontes (`llms-full.txt`), os casos de 2024/2025 usaram **inteligência determinística** — regras, priorização em lote, validações —, **não agentes LLM**. A `Ação` do STAR da Pipe Automática já diz "processando a inteligência de priorização na própria Salesforce com batches agendados", coerente com o princípio *determinístico-primeiro* das páginas de Engenharia de IA. Portanto a narrativa posiciona a IA agêntica como **direção intencional atual**, ancorada em 20 anos de arquitetura — **sem alegar uso de LLM onde não houve**. ⚠️ **Decisão do dono:** se algum projeto recente de fato empregou IA/agentes, avisar para fortalecer a `Ação` do STAR correspondente (e a copy da F5) com o caso concreto.
 
@@ -143,29 +147,27 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
 **(b) Legenda como log de terminal (metadado).** Trocar legendas "fofas" por metadados, conectando a foto ao tema Tech Lead — **sem sacrificar a11y**:
 ```html
 <figure>
-  <img src="/fotos/formatura.jpg" alt="Formatura em Sistemas de Informação, Universidade Mackenzie" loading="lazy" decoding="async">
+  <img src="/fotos/callcenter.jpg" alt="Maurício de headset no call center, início dos anos 2000" loading="lazy" decoding="async">
   <figcaption>
-    <span class="img-meta">[SYS_RECORD: 2005_FORMATURA.JPG]</span>
-    <span>A base formal: Sistemas de Informação (Mackenzie).</span>
+    <span class="img-meta">[SYS_RECORD: 2002_SUPORTE.JPG]</span>
+    <span>A trincheira: onde aprendi a ouvir o usuário.</span>
   </figcaption>
 </figure>
 ```
 - `alt` permanece **descritivo** (leitor de tela) — o `[SYS_RECORD:…]` é floreio visual, nunca o único texto.
 - `.img-meta` usa `--dim` em `font-mono` pequena; **validar contraste AA** por tema (o `--dim` atual já passa).
 
-**(c) Curadoria cirúrgica (de 11 → ~6–7) com cronologia corrigida.** A crítica acerta em cortar; ajusto a alocação para bater com o CV e com a divisão de fases:
+**(c) Curadoria por fase (cronologia atualizada com os novos fatos biográficos).** 1–3 fotos por era (sem empilhar); dropa apenas `infancia.png`:
 
 | Fase | Foto(s) | Tratamento | Observação |
 |:--|:--|:--|:--|
 | F1 (infância) | `1982.jpeg` (recorte **1:1**) | filtro verde + scanline | dropar `infancia.png` (colagem larga demais) |
-| F2 (adolescência) | `programa.jpg` | pálido/contrastado | **não** usar `eldorado.jpg` aqui (é dos anos 2000 → F3) |
-| F3 (trincheira) | `formatura.jpg` | pálido | casa com "graduação (Mackenzie)" no texto; `casamento.jpg` fecha a F3 (2009). **`callcenter.jpg` → ver nota ↓** |
-| F4 (legado) | `familia.jpeg` | cor plena + sombra | **1 foto** (o alicerce); dropar fotos individuais de filha/gêmeos (evita virar Instagram); casamento fica na F3 (cronologia) |
-| F5 (IA/mentor) | `careca.jpeg` | cor plena + leve glow | foto atual de trabalho |
+| F2 (adolescência) | `programa.jpg` + `eldorado.jpg` | pálido/contrastado | estágio de **auditor no Eldorado concomitante** ao técnico (Guarani, 1997–99) |
+| F3 (trincheira) | `callcenter.jpg` + `formatura.jpg` (`.photo-row`) | pálido | call center (2000–2003) + formatura Mackenzie (2005); **o texto da F3 agora apoia a foto de suporte** (conflito resolvido) |
+| F4 (legado) | `casamento.jpg` (2011) + `filha.jpeg` (2012) + `gemeos.jpeg` (2016) | cor plena + sombra | os motores da mudança de carreira (estabilidade → Indra) |
+| F5 (maturidade) | `familia.jpeg` + `careca.jpeg` | cor plena + leve glow | eixo familiar completo; `careca.jpeg` conecta à superação da alopecia (2017) |
 
-> Divergência com a crítica: ela sugeria `eldorado.jpg` na F2 e `casamento.jpg` na F4. Pela cronologia real (`eldorado`/`callcenter`/`formatura` = anos 2000; casamento = 2009), `eldorado`→F3 e `casamento`→fim da F3. F4 fica só com `familia.jpeg`.
-
-> **Conflito foto × texto na F3 (`callcenter.jpg`).** O texto da F3 (§2.2) fala de Sysgen/Telefônica/Java/MVC/UML/MDA/EJB e **não menciona suporte/call center**; pôr uma foto de headset de suporte ao lado de "modelagem MDA" quebra a coesão. **Default:** **não** usar `callcenter.jpg` na F3. **Decisão do dono:** se o início em suporte for real e relevante, (i) acrescentar **uma frase** na F3, *antes* da Sysgen (ex.: *"Comecei no suporte, ouvindo o usuário antes de servi-lo com código"*) — e então `callcenter.jpg` volta com a legenda da §3.3(b); ou (ii) manter só `formatura.jpg`. Confirmar também o conteúdo real de `eldorado.jpg` antes de usar (alt inferido, ver R-riscos do SDD).
+> **Cronologia corrigida (novos fatos):** `eldorado.jpg` → **F2** (estágio concomitante ao técnico — não é dos anos 2000); `callcenter.jpg` → **F3** (2000–2003, agora citado no texto — conflito resolvido); `casamento.jpg` → **F4** (festa em **2011**, não 2009); `filha`/`gemeos` → **F4** (os motores da transição p/ a Indra); `familia`/`careca` → **F5** (presente).
 
 **(d) Performance/a11y.** Filtros CSS em imagens `loading="lazy"` com `aspect-ratio` fixo são baratos; **não animar** `filter` (custo de paint). Manter dimensões/`decoding="async"`. Sob `no-webgl`/sem-JS, os filtros continuam (são CSS puro) — coerente com o fallback.
 
