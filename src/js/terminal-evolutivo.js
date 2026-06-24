@@ -22,6 +22,17 @@ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const THEMES = ['theme-terminal', 'theme-wire', 'theme-net', 'theme-cloud', 'theme-ai'];
 const SCENES = ['crt', 'wire', 'nodes', 'blocks', 'neural'];
 
+// cor do <meta theme-color> por fase (barra do navegador móvel acompanha o tema)
+const THEME_COLORS = {
+  terminal: '#070803', wire: '#03100b', net: '#070f1d', cloud: '#0e141d', ai: '#080a10',
+};
+function setThemeColor(theme) {
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
+  meta.setAttribute('content', THEME_COLORS[theme] || '#080a10');
+}
+setThemeColor('terminal'); // estado inicial (hero)
+
 // Revela as passagens ao entrar na viewport (enhancement). Só "arma" o
 // esconde-para-revelar quando há IntersectionObserver e sem reduce-motion —
 // caso contrário o conteúdo permanece visível por padrão (CSS).
@@ -69,6 +80,7 @@ function tick() {
 function setTheme(section) {
   body.classList.remove(...THEMES);
   body.classList.add('theme-' + section.dataset.theme);
+  setThemeColor(section.dataset.theme);
   syncTimeline(section);
   if (S && reduce) {
     const idx = Math.max(0, SCENES.indexOf(section.dataset.scene));

@@ -66,26 +66,45 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
     await expect(page.locator('.timeline a[aria-current="true"]')).toHaveCount(1);
   });
 
-  test('casos STAR: acordeão <details> abre por teclado/clique', async ({ page }) => {
+  test('casos STAR: caso principal inline + secundários em acordeão', async ({ page }) => {
     await page.goto(PATH);
-    const star = page.locator('#era4 .star > details', { hasText: 'Economia' });
-    await expect(star).not.toHaveAttribute('open', /.*/);
-    await star.locator('summary').click();
-    await expect(star).toHaveAttribute('open', '');
-    await expect(star).toContainText('R$3');
+    // caso principal (hero) visível por padrão, com Ação/Resultado, SEM clique
+    const hero = page.locator('#era4 .star--hero');
+    await expect(hero).toContainText('Economia');
+    await expect(hero).toContainText('R$3');
+    await expect(hero.locator('.star__body')).toBeVisible();
+    // secundário começa colapsado e abre ao clicar
+    const sec = page.locator('#era4 .star > details', { hasText: 'AFVC' });
+    await expect(sec).not.toHaveAttribute('open', /.*/);
+    await expect(sec.locator('.star__body')).toBeHidden();
+    await sec.locator('summary').click();
+    await expect(sec).toHaveAttribute('open', '');
   });
 
-  test('ponte de transição + STAR colapsado por padrão (título + ganho)', async ({ page }) => {
+  test('ponte de transição + caso principal inline na F5', async ({ page }) => {
     await page.goto(PATH);
-    // ponte que justifica a entrada das métricas (emocional → corporativo)
     await expect(page.locator('#era4 .bridge')).toContainText('escala corporativa');
-    // STAR começa fechado, exibindo só título + ganho principal
-    const star = page.locator('#era4 .star > details', { hasText: 'Economia' });
-    await expect(star).not.toHaveAttribute('open', /.*/);
-    await expect(star.locator('summary')).toContainText('Economia');
-    await expect(star.locator('summary')).toContainText('R$3MM');
-    // o detalhe técnico (Situação/Ação/Resultado) só existe ao abrir
-    await expect(star.locator('.star__body')).toBeHidden();
+    const heroF5 = page.locator('#era5 .star--hero');
+    await expect(heroF5).toContainText('Pipe Automática');
+    await expect(heroF5.locator('.star__body')).toBeVisible();
+  });
+
+  test('fechamento e vídeo: KPI isolado + vídeo como CTA de saída no fim', async ({ page }) => {
+    await page.goto(PATH);
+    // KPI vive numa seção de fechamento própria (não mais dentro da F5)
+    await expect(page.locator('section.closing#kpi dl.kpi-grid div')).toHaveCount(6);
+    await expect(page.locator('#era5 .video')).toHaveCount(0);
+    // vídeo é a última seção antes do footer (CTA de saída)
+    await expect(page.locator('main .outro .video[data-video]')).toHaveCount(1);
+  });
+
+  test('theme-color (barra móvel) acompanha a fase', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(PATH);
+    await scrollToCenter(page, '#era4');
+    await expect.poll(() => page.getAttribute('meta[name="theme-color"]', 'content')).toBe('#0e141d');
+    await scrollToCenter(page, '#era5');
+    await expect.poll(() => page.getAttribute('meta[name="theme-color"]', 'content')).toBe('#080a10');
   });
 
   test('reveal: passagens ficam visíveis ao rolar (com JS)', async ({ page }) => {
