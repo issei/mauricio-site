@@ -107,6 +107,7 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
    - `blocks`: posições de uma grade 3D de cubos (já existe; reusar como instâncias).
    - `neural`: camadas (planos) + links esparsos entre camadas adjacentes.
 2. **Camada de linhas (`LineSegments`).** Um segundo buffer de posições derivado dos pontos (via listas de arestas por estado) que **morfa junto** e tem **força (opacidade) por fase**: ~0 na F1, alta na F2/F3, baixa na F4, média/fluida na F5. Implementar como um único `LineSegments` cujas posições são reescritas no `setProgress`.
+   > ⚠️ **Buffer de capacidade fixa (gotcha WebGL).** Não se redimensiona `BufferAttribute` de forma barata em runtime. Alocar **uma vez, com a capacidade MÁXIMA de arestas entre todas as fases**: `maxEdges = max(arestas por fase)` → `new Float32Array(maxEdges * 2 * 3)`. Nas fases que usam menos arestas, **esconder o excedente** com **linhas degeneradas** (os dois vértices do segmento na mesma coordenada → comprimento zero, não rasteriza) e/ou `alpha = 0` no shader; opcionalmente, `geometry.setDrawRange(0, segmentosAtivos*2)` limita o que é desenhado por fase. O `setProgress` apenas reescreve posições/alphas **dentro** dessa capacidade fixa — nunca realoca. O mesmo princípio vale para os `Points`: manter **N fixo** e variar só posição/cor/alpha entre as densidades de cada fase.
 3. **Camada de cubos (`InstancedMesh`).** Para a F4 (blocos maciços), um `InstancedMesh` de cubos posicionado no estado `blocks`, com **escala dirigida pelo progresso**: cresce de 0→cheio ao entrar na F4 e encolhe ao sair (crossfade com os pontos), evitando recriar cena. Luz simples (`HemisphereLight` + `DirectionalLight`).
 4. **Blueprint (Marco).** No trecho de scroll do `#marco`, exibir as **arestas** dos cubos alinhados (linhas luminosas) + um grid-plano sutil, como "planta". É um realce temporário entre `blocks` e `neural` (pico em `progress` ≈ fronteira F4→F5).
 5. **Bloom só na F5.** `UnrealBloomPass` ativado apenas perto da fase neural (e desligado em mobile/low-end).
@@ -180,8 +181,8 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
    if (!meta) { meta = document.createElement('meta'); meta.name = 'theme-color'; document.head.appendChild(meta); }
    meta.setAttribute('content', THEME_COLORS[section.dataset.theme]);
    ```
-   > Obs.: o injetor AEO insere uma `theme-color` fixa (`#0d1117`). Na F4 (tema claro) a barra deve ficar clara; nas demais, escura. O JS sobrescreve a fixa em runtime — sem conflito com o build AEO.
-2. **Contraste do tema claro (F4).** Já validado na v2.1 (botão primário com texto branco sobre azul `#0a66c2`; texto `#1f2d3d`/`#465563` sobre scrim claro). **Revalidar** após qualquer ajuste de cor de link/realce introduzido pela cena.
+   > Obs.: o injetor AEO insere uma `theme-color` fixa (`#0d1117`). O JS a sobrescreve em runtime, por fase — **incluindo a F4, que também é escura** ("Dark Mode Premium", `#0e141d`, desde a v2.2). A barra do navegador fica escura em **toda** a jornada; sem conflito com o build AEO.
+2. **Contraste (todas as fases — não há mais tema claro).** A F4 virou Dark Mode Premium na v2.2; o botão primário voltou a usar texto escuro sobre accent claro (regra única, sem override de tema). Revalidar AA dos tokens da F4 dark (`--text:#c6d3e6` / `--page:#0e141d`; `--accent:#4f93e0`) e dos demais temas após qualquer ajuste de cor de link/realce introduzido pela cena.
 3. **`onEnter`/`onEnterBack`.** Já implementado na v2.1 (sem flicker em scroll curto). Manter; o `theme-color` entra no mesmo callback.
 
 ---
@@ -212,7 +213,7 @@ R1 (texto/AEO) ─> R2 (cena 3D) ─> R3 (orquestrador) ─> R4 (a11y/perf) ─>
 
 - **Narrativa madura:** o corpo das Fases 3–5 **não contém** `/Naruto|One Piece|Bleach|Dragon Ball|Zillion/`; **contém** `Sysgen`, `Indra`, `MDA` e `OAuth`; o `#marco` cita `2000` (ou "anos 2000").
 - **Cronologia:** `#era3` contém "2003" e "semente do arquiteto"; `#marco__sub` contém "escala" e "orquestrar".
-- **`theme-color`:** ao rolar até `#era4`, `meta[name=theme-color]` = `#eef3fb`; ao rolar até `#era5`, volta a `#080a10`.
+- **`theme-color`:** ao rolar até `#era4`, `meta[name=theme-color]` = `#0e141d` (F4 dark premium); ao rolar até `#era5`, `#080a10`.
 - **Mantidos (v2.1):** 5 eras + marco + KPI; STAR colapsado (título+ganho); reveal das passagens; idle = 0 frames; axe (tema escuro e claro); sem-JS íntegro.
 
 > O conteúdo do 3D (formas) não é testável por DOM; cobre-se indiretamente por: `theme-color` correto, ausência de erro de console no `goto`, e o teste de fallback (`no-webgl`).
