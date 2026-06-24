@@ -2,7 +2,7 @@
 
 **Versão**: 3.0 (refatoração da v2.1 publicada)
 **Data**: 2026-06-23
-**Status**: Especificação aprovada — implementação pendente
+**Status**: ✅ IMPLEMENTADO e publicado na main (commit 487a531) — R1–R5 concluídos
 **Decisão de base**: [ADR-te-001](../../../decisions/ADR-te-001-refatoracao-narrativa-e-3d-semantico.md)
 **SDD de base**: [00_SDD_terminal_evolutivo.md](00_SDD_terminal_evolutivo.md) (v2.1)
 
