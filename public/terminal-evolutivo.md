@@ -8,7 +8,7 @@ O **Terminal Evolutivo** conta a evolução de **Maurício Issei** de 1982 a 202
 
 - **Cinco fases** alinhadas aos arcos de vida: Infância, Treinamento, Rede Discada, Nuvem Corporativa e o Prompt da IA.
 - **Casos STAR reais** embutidos no fluxo: −R$3MM no contrato Salesforce, +15% nas metas com a Pipe Automática, 10 dias → tempo real no Agrupamento.
-- **Marco do Arquiteto** — a virada de Analista para Arquiteto: "deixei de construir sistemas; passei a desenhar sistemas".
+- **Marco do Arquiteto** — a virada de Analista para Arquiteto: "desenhar sistemas eu já fazia; agora desenho a inteligência — e os times — que os operam".
 - **Arquitetura híbrida** — foreground HTML semântico (a11y/SEO) sobre fundo WebGL, com fallback acessível sem WebGL/JS.
 
 ## As cinco fases

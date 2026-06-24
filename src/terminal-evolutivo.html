@@ -375,6 +375,11 @@
             margin: 1.6rem 0;
         }
 
+        .figure--solo {
+            max-width: 420px;
+            margin-inline: auto;
+        }
+
         figure img {
             width: 100%;
             height: auto;
@@ -399,6 +404,51 @@
 
         .photo-row figure {
             margin: 0;
+        }
+
+        /* ---- Fotos como "Data Records": envelhecem por era (CSS, sem editar imagem) ---- */
+        figure img {
+            transition: filter var(--fade) ease;
+        }
+
+        .theme-terminal figure img {
+            filter: grayscale(1) sepia(1) hue-rotate(60deg) contrast(1.35) brightness(.9);
+            opacity: .9;
+        }
+
+        .theme-wire figure img,
+        .theme-net figure img {
+            filter: contrast(1.15) saturate(.6);
+        }
+
+        .theme-cloud figure img,
+        .theme-ai figure img {
+            filter: none;
+        }
+
+        /* scanline CRT sobre as fotos da Fase 1 */
+        .theme-terminal figure {
+            position: relative;
+        }
+
+        .theme-terminal figure::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: var(--radius);
+            background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, .28) 2px 3px);
+            mix-blend-mode: multiply;
+        }
+
+        /* legenda em formato de log de terminal */
+        figcaption .img-meta {
+            display: block;
+            font-family: 'IBM Plex Mono', ui-monospace, monospace;
+            font-size: .72rem;
+            letter-spacing: .02em;
+            color: var(--accent);
+            margin-bottom: .15rem;
         }
 
         /* ---------- STAR cards ---------- */
@@ -768,6 +818,7 @@
         }
     </style>
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -962,8 +1013,8 @@
         <a href="#era1" data-jump="1982-1994">1982</a>
         <a href="#era2" data-jump="1995-1999">1995</a>
         <a href="#era3" data-jump="2000-2009">2000</a>
-        <a href="#era4" data-jump="2010-2019">2010</a>
-        <a href="#era5" data-jump="2020-2026">2020</a>
+        <a href="#era4" data-jump="2010-2015">2010</a>
+        <a href="#era5" data-jump="2016-2026">2016</a>
     </nav>
 
     <main id="story">
@@ -973,32 +1024,23 @@
             aria-labelledby="era1-title">
             <div class="wrap">
                 <p class="era__eyebrow">Fase 1 · O Terminal Analógico · 1982–1994</p>
-                <h2 id="era1-title">Infância — o despertar do herói</h2>
+                <h2 id="era1-title">Infância — o despertar</h2>
                 <div class="passage">
-                    <p class="lead">Ele nasceu em 17 de março de 1982, num Brasil ainda analógico,
-                        onde o tempo parecia mais lento e o futuro ainda não tinha nome.</p>
-                    <p>A infância foi marcada por uma televisão de tubo, antenas ajustadas
-                        manualmente e os heróis japoneses — <em>Jaspion</em>, <em>Changeman</em>.
-                        Mais do que entretenimento, eram arquétipos. Ali, criança, ele absorveu
-                        conceitos que não estavam nos livros: o bem exige sacrifício, a evolução
-                        é contínua, a disciplina é silenciosa, o herói nunca luta sozinho.</p>
-                    <p>Enquanto outras crianças apenas assistiam, ele internalizava. Cada
-                        transformação, cada derrota seguida de superação, instalava um
-                        <strong>modelo mental de crescimento</strong>. Era o primeiro
-                        "sistema operacional interno".</p>
+                    <p class="lead">Nasci em 1982, num Brasil analógico: TV de tubo, antena ajustada
+                        na mão e os heróis japoneses — Jaspion, Changeman.</p>
+                    <p>Deles veio, sem que eu percebesse, um modelo mental que carrego até hoje:
+                        evolução é contínua, disciplina é silenciosa e <strong>ninguém vence
+                            sozinho</strong>. Enquanto os outros assistiam, eu absorvia. Era um
+                        espectador — por enquanto.</p>
                 </div>
-                <div class="photo-row">
-                    <figure>
-                        <img src="/fotos/1982.jpeg" alt="Maurício ainda bebê, em 1982 — o início da jornada."
-                            loading="lazy" decoding="async">
-                        <figcaption>1982 — o início.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/fotos/infancia.png" alt="Cena de infância nos anos 80, diante da televisão de tubo."
-                            loading="lazy" decoding="async">
-                        <figcaption>Infância analógica.</figcaption>
-                    </figure>
-                </div>
+                <figure class="figure--solo">
+                    <img src="/fotos/1982.jpeg" alt="Maurício ainda bebê, em 1982 — o início da jornada."
+                        loading="lazy" decoding="async">
+                    <figcaption>
+                        <span class="img-meta">[SYS_RECORD: 1982_INICIO.JPG]</span>
+                        O ponto de origem.
+                    </figcaption>
+                </figure>
             </div>
         </section>
 
@@ -1009,39 +1051,34 @@
                 <p class="era__eyebrow">Fase 2 · O Treinamento · 1995–1999</p>
                 <h2 id="era2-title">Adolescência — de espectador a operador</h2>
                 <div class="passage">
-                    <p class="lead">Se a infância foi o despertar, a adolescência foi o treinamento.</p>
-                    <p><em>Dragon Ball</em> trouxe a evolução progressiva — não existe limite,
-                        apenas o próximo nível. <em>Zillion</em> trouxe estratégia e precisão.
-                        E ele entendeu algo fundamental: crescimento não é evento, é processo.</p>
-                    <p>Paralelamente, outra magia surgiu: o computador. Um <strong>Pentium 100&nbsp;MHz</strong>
-                        com kit multimídia, CD-ROM e jogos como <em>Full Throttle</em>, <em>TIE Fighter</em>
-                        e <em>Doom</em>. Não eram apenas jogos — eram portais. Diferente da TV, o
-                        computador respondia. Ele não consumia: <strong>participava</strong>. O embrião
-                        de uma mudança irreversível — de espectador para operador.</p>
+                    <p class="lead">Aos poucos, a tela deixou de ser só para assistir.</p>
+                    <p>Um <strong>Pentium 100&nbsp;MHz</strong> com CD-ROM trouxe Doom, TIE Fighter e
+                        Full Throttle — e a diferença que mudou tudo: o computador
+                        <strong>respondia</strong>. Eu não consumia mais; eu operava. O <strong>curso
+                            técnico em Processamento de Dados</strong> (Colégio Guarani, 1997–1999) deu
+                        nome ao vício: lógica, algoritmo, a máquina obedecendo.</p>
+                    <p>E, em paralelo ao colégio técnico, veio o primeiro emprego — <strong>auditor no
+                            Shopping Eldorado</strong>. Estudar e trabalhar ao mesmo tempo começou cedo;
+                        nunca mais parou. De espectador a <strong>operador</strong>.</p>
                 </div>
-                <div class="star">
-                    <details>
-                        <summary>
-                            <span class="star__kpi">1997–1999</span>
-                            <span class="star__title">Curso Técnico em Processamento de Dados</span>
-                            <span class="star__year">Colégio Guarani</span>
-                        </summary>
-                        <div class="star__body">
-                            <p>A primeira formalização do interesse: lógica, algoritmos e a base
-                                técnica que transformaria a curiosidade em ofício.</p>
-                            <ul class="stack">
-                                <li>Lógica</li>
-                                <li>Algoritmos</li>
-                                <li>Fundamentos</li>
-                            </ul>
-                        </div>
-                    </details>
+                <div class="photo-row">
+                    <figure>
+                        <img src="/fotos/programa.jpg" alt="Primeiros passos com o computador e a programação."
+                            loading="lazy" decoding="async">
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: 1997_PRIMEIROS_COMANDOS.JPG]</span>
+                            A máquina começa a obedecer.
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/fotos/eldorado.jpg" alt="Primeiro emprego, como auditor no Shopping Eldorado."
+                            loading="lazy" decoding="async">
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: 1998_PRIMEIRO_EMPREGO.JPG]</span>
+                            Trabalho e estudo, em paralelo.
+                        </figcaption>
+                    </figure>
                 </div>
-                <figure>
-                    <img src="/fotos/programa.jpg" alt="Primeiros passos com o computador e a programação." loading="lazy"
-                        decoding="async">
-                    <figcaption>Os primeiros comandos.</figcaption>
-                </figure>
             </div>
         </section>
 
@@ -1050,19 +1087,45 @@
             aria-labelledby="era3-title">
             <div class="wrap">
                 <p class="era__eyebrow">Fase 3 · A Rede Discada · 2000–2009</p>
-                <h2 id="era3-title">Início adulto — a escolha do caminho</h2>
+                <h2 id="era3-title">A trincheira — trabalho de dia, estudo de noite</h2>
                 <div class="passage">
-                    <p class="lead">A virada do milênio não foi só simbólica — foi estrutural.</p>
-                    <p>A internet discada entrou como ritual: conectar, ouvir o som metálico da
-                        linha, esperar, explorar. Lento, limitado, revolucionário. Com a banda
-                        larga, o mundo deixou de ser fragmentado e passou a ser contínuo. Foi
-                        quando ele fez uma escolha silenciosa, mas definitiva: não queria apenas
-                        usar tecnologia — queria <strong>entendê-la</strong>.</p>
-                    <p>De usuário curioso a executor técnico, de executor a analista em formação.
-                        E, como em <em>One Piece</em>, onde a jornada ganha sentido nas conexões,
-                        em <strong>2009</strong> ele encontrou o amor da sua vida. A evolução
-                        individual deu lugar à construção conjunta.</p>
+                    <p class="lead">A virada do milênio foi de trabalho braçal e estudo.</p>
+                    <p>Em <strong>2000</strong>, cursinho no Etapa (São Joaquim) para entrar no
+                        <strong>Mackenzie em 2001</strong> (Sistemas de Informação). Mas a faculdade
+                        era à noite — porque o dia era de trabalho: <strong>call center (2000–2003)</strong>,
+                        onde aprendi a ouvir o usuário antes de servi-lo com código, e depois a
+                        <strong>Sysgen</strong>. Trabalhar de dia e estudar de madrugada cobrou seu
+                        preço: acumulei dependências, recuperadas <strong>sacrificando as férias</strong>,
+                        ano após ano.</p>
+                    <p>Em <strong>abril de 2004</strong>, perdi meu pai. Filho único, amadureci de uma
+                        vez: aprendi a dirigir, vendi o carro dele e comprei o meu primeiro com o
+                        salário daquela época. A vida não esperou eu ficar pronto.</p>
+                    <p>Foi também na Sysgen que, já em 2003, tratei o <strong>modelo como fonte da
+                            verdade</strong> (UML + geração de código por MDA): a semente do arquiteto
+                        nasceu ali, não em 2020. E foi no meio dessa rotina, em <strong>2009</strong>,
+                        que conheci minha esposa.</p>
                 </div>
+                <div class="photo-row">
+                    <figure>
+                        <img src="/fotos/callcenter.jpg"
+                            alt="Maurício de headset no call center, início dos anos 2000." loading="lazy"
+                            decoding="async">
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: 2002_SUPORTE.JPG]</span>
+                            A trincheira: ouvir o usuário.
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/fotos/formatura.jpg"
+                            alt="Formatura em Sistemas de Informação na Universidade Mackenzie." loading="lazy"
+                            decoding="async">
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: 2005_FORMATURA.JPG]</span>
+                            A base formal — Mackenzie.
+                        </figcaption>
+                    </figure>
+                </div>
+                <p class="star-more">Bastidores técnicos — detalhe no <a href="/index.html">currículo</a>:</p>
                 <div class="star">
                     <details>
                         <summary>
@@ -1071,18 +1134,14 @@
                             <span class="star__year">J2EE · MDA · UML</span>
                         </summary>
                         <div class="star__body">
-                            <p><b>Contexto:</b> aplicações web e console em Java (J2EE/J2SE) com
-                                framework ASPER e arquitetura MVC.</p>
-                            <p><b>Diferencial:</b> modelagem UML com geração de código via
-                                <b>MDA (Model-Driven Architecture)</b> pela ferramenta Celero — a
-                                primeira experiência tratando modelo como fonte da verdade.</p>
+                            <p>Aplicações web e console em Java (J2EE/J2SE) com framework ASPER e MVC;
+                                modelagem UML com geração de código via <b>MDA</b> (Celero).</p>
                             <ul class="stack">
-                                <li>Java J2EE/J2SE</li>
+                                <li>Java J2EE</li>
                                 <li>MVC</li>
                                 <li>UML</li>
                                 <li>MDA</li>
                                 <li>DB2</li>
-                                <li>PostgreSQL</li>
                             </ul>
                         </div>
                     </details>
@@ -1095,8 +1154,8 @@
                             <span class="star__year">EJB · JBoss · Oracle</span>
                         </summary>
                         <div class="star__body">
-                            <p>Sistemas de gestão de almoxarifado de peças e de aprovisionamento de
-                                rede — escala corporativa e os primeiros papéis de liderança de equipe.</p>
+                            <p>Almoxarifado de peças e aprovisionamento de rede — escala corporativa e
+                                os primeiros papéis de liderança de equipe.</p>
                             <ul class="stack">
                                 <li>Java</li>
                                 <li>EJB</li>
@@ -1106,89 +1165,75 @@
                         </div>
                     </details>
                 </div>
-                <div class="photo-row">
-                    <figure>
-                        <img src="/fotos/formatura.jpg"
-                            alt="Formatura em Sistemas de Informação na Universidade Mackenzie." loading="lazy"
-                            decoding="async">
-                        <figcaption>Bacharelado em SI — Mackenzie (2001–2005).</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/fotos/casamento.jpg" alt="Dia do casamento, em 2009." loading="lazy"
-                            decoding="async">
-                        <figcaption>2009 — o amor da sua vida.</figcaption>
-                    </figure>
-                </div>
             </div>
         </section>
 
         <!-- ===================== FASE 4 ===================== -->
-        <section class="era" id="era4" data-theme="cloud" data-scene="blocks" data-era="2010-2019"
+        <section class="era" id="era4" data-theme="cloud" data-scene="blocks" data-era="2010-2015"
             aria-labelledby="era4-title">
             <div class="wrap">
-                <p class="era__eyebrow">Fase 4 · A Nuvem Corporativa · 2010–2019</p>
-                <h2 id="era4-title">Família e consolidação — o peso do legado</h2>
+                <p class="era__eyebrow">Fase 4 · A Nuvem Corporativa · 2010–2015</p>
+                <h2 id="era4-title">O legado — sacrifício e batismo de fogo</h2>
                 <div class="passage">
-                    <p class="lead">Se antes ele buscava evolução, agora precisava sustentar.</p>
-                    <p>Em <strong>2012</strong>, o nascimento da filha; em <strong>2016</strong>,
-                        os gêmeos — a responsabilidade não dobrou, multiplicou. No trabalho, duas
-                        linhas correram em paralelo: ele deixou de ser executor e passou a operar
-                        em níveis mais abstratos — sistemas, arquiteturas, integrações, decisões
-                        estruturais. Começou a enxergar não apenas o código, mas o
-                        <strong>ecossistema</strong>.</p>
-                    <p>Como em <em>Bleach</em>, onde proteger os outros redefine o propósito:
-                        crescer deixou de ser opcional e virou responsabilidade.</p>
+                    <p class="lead">Casar custou caro — literalmente.</p>
+                    <p>Fiquei <strong>sem férias em 2009 e 2010</strong> e, em <strong>2011</strong>,
+                        vendi férias e bônus para pagar a festa; a lua de mel foram <strong>5 dias</strong>.
+                        Prioridade é o que se faz, não o que se diz.</p>
+                    <p>Com a chegada da <strong>filha (2012)</strong>, troquei conforto por estabilidade:
+                        fui para a <strong>Indra em fevereiro de 2012</strong>. O batismo de fogo veio
+                        em julho — uma janela de implantação de <strong>107 horas em 7 dias</strong>.
+                        Foi ali que juntei as três frentes que me formaram arquiteto: sustentação,
+                        inovação móvel (AWS, microsserviços, Android/Ionic) e arquitetura junto ao time
+                        comercial.</p>
+                    <p>Proteger deixou de ser sentimento e virou prática diária: <strong>estabilidade de
+                            ecossistemas e formação de gente</strong>.</p>
                 </div>
                 <div class="photo-row">
                     <figure>
+                        <img src="/fotos/casamento.jpg" alt="Dia do casamento." loading="lazy" decoding="async">
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: 2011_CASAMENTO.JPG]</span>
+                            A fundação mais crítica não era de software.
+                        </figcaption>
+                    </figure>
+                    <figure>
                         <img src="/fotos/filha.jpeg" alt="2012 — o nascimento da filha." loading="lazy"
                             decoding="async">
-                        <figcaption>2012 — a filha.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/fotos/gemeos.jpeg" alt="2016 — a chegada dos gêmeos." loading="lazy"
-                            decoding="async">
-                        <figcaption>2016 — os gêmeos.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/fotos/familia.jpeg" alt="A família, eixo central da jornada." loading="lazy"
-                            decoding="async">
-                        <figcaption>A família, o eixo.</figcaption>
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: 2012_FILHA.JPG]</span>
+                            O motivo da estabilidade.
+                        </figcaption>
                     </figure>
                 </div>
 
                 <div class="bridge passage">
-                    <p class="bridge__lead">O treinamento acabou. Era hora de aplicar os conceitos —
-                        agora em escala corporativa, onde cada decisão vira número.</p>
-                    <p class="bridge__sub">O caso principal abaixo fica <strong>aberto</strong>;
-                        os complementares abrem sob clique — Situação · Tarefa · Ação · Resultado.</p>
+                    <p class="bridge__lead">Aqui, o trabalho é o pano de fundo — a profundidade técnica
+                        está no <a href="/index.html">currículo</a>.</p>
+                    <p class="bridge__sub">Alguns resultados da era corporativa, em resumo — abra para
+                        o detalhe (Situação · Tarefa · Ação · Resultado).</p>
                 </div>
 
-                <h3>Casos de sucesso — consolidação (STAR)</h3>
-
-                <article class="star star--hero">
-                    <span class="star__hero-tag">Caso principal</span>
-                    <div class="star__head">
-                        <span class="star__kpi">−R$3MM</span>
-                        <h4 class="star__title">Economia no contrato Salesforce</h4>
-                        <span class="star__year">2020</span>
-                    </div>
-                    <div class="star__body">
-                        <p><b>Situação:</b> vencimento do 1º contrato Salesforce e forte expansão
-                            de usuários, sem base histórica nem clareza de precificação de licenças.</p>
-                        <p><b>Ação:</b> planilhou todos os custos no menor nível de detalhe,
-                            construiu a defesa para o CINVEST e negociou em parceria com o CoE
-                            Salesforce do Itaú e o time de compras.</p>
-                        <p><b>Resultado:</b> <b>economia de mais de R$3 milhões</b> no contrato
-                            final e clareza das áreas sobre o custo de cada licença.</p>
-                        <ul class="stack">
-                            <li>Salesforce</li>
-                            <li>Gestão de Contratos</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <p class="star-more">Outros casos da fase:</p>
+                <h3>Casos de sucesso (resumo)</h3>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">−R$3MM</span>
+                            <span class="star__title">Economia no contrato Salesforce</span>
+                            <span class="star__year">2020</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Situação:</b> vencimento do 1º contrato Salesforce e forte expansão de
+                                usuários, sem base histórica de precificação.</p>
+                            <p><b>Ação:</b> custos detalhados, defesa para o CINVEST e negociação com o
+                                CoE Salesforce do Itaú e o time de compras.</p>
+                            <p><b>Resultado:</b> <b>economia de mais de R$3 milhões</b> no contrato final.</p>
+                            <ul class="stack">
+                                <li>Salesforce</li>
+                                <li>Gestão de Contratos</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
                 <div class="star">
                     <details>
                         <summary>
@@ -1197,17 +1242,12 @@
                             <span class="star__year">2018</span>
                         </summary>
                         <div class="star__body">
-                            <p><b>Situação:</b> Cockpit e Força Campo recém-implantados, sem processo
-                                de sustentação e mudança definido, com alto volume de erros.</p>
-                            <p><b>Ação:</b> criou o fluxo de chamados, centralizou as implantações
-                                Salesforce com segurança da informação, padronizou versionamento e
-                                sandboxes, e priorizou correções de causa-raiz com a fábrica.</p>
-                            <p><b>Resultado:</b> <b>estabilidade do ambiente Salesforce</b> e ampliação
-                                do número de executivos e técnicos usando as ferramentas.</p>
+                            <p>Criou o fluxo de chamados, centralizou implantações Salesforce e
+                                priorizou correções de causa-raiz — <b>estabilidade do ambiente</b> e
+                                adoção ampliada.</p>
                             <ul class="stack">
                                 <li>Salesforce</li>
                                 <li>Cockpit</li>
-                                <li>Força Campo</li>
                             </ul>
                         </div>
                     </details>
@@ -1216,42 +1256,16 @@
                     <details>
                         <summary>
                             <span class="star__kpi">−incidentes</span>
-                            <span class="star__title">Sustentação AFVC — Força Campo & Vendas</span>
-                            <span class="star__year">2019</span>
+                            <span class="star__title">Sustentação AFVC + Core Rede (Splunk)</span>
+                            <span class="star__year">2019–2020</span>
                         </summary>
                         <div class="star__body">
-                            <p><b>Situação:</b> alto volume de chamados críticos em Logística e
-                                Comercial (falhas de OS, roteirização, app offline, abends batch).</p>
-                            <p><b>Ação:</b> discovery das funcionalidades, capacitação do time,
-                                priorização e desenvolvimento de correções de causa-raiz.</p>
-                            <p><b>Resultado:</b> redução de problemas críticos e <b>menor tempo de
-                                    atendimento de incidentes</b>; mais entregas, com qualidade.</p>
+                            <p>Capacitação de time e correções de causa-raiz; captura de logs no
+                                <b>Splunk</b> — metas de redução de incidentes e de tempo de atendimento
+                                batidas.</p>
                             <ul class="stack">
                                 <li>Salesforce</li>
-                                <li>Android</li>
-                                <li>Mainframe</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-                <div class="star">
-                    <details>
-                        <summary>
-                            <span class="star__kpi">metas batidas</span>
-                            <span class="star__title">Sustentação Core Rede (GE1/WF1) com Splunk</span>
-                            <span class="star__year">2020</span>
-                        </summary>
-                        <div class="star__body">
-                            <p><b>Situação:</b> unificação da sustentação com os sistemas core, com
-                                metas de redução de chamados, abends e tempo de atendimento.</p>
-                            <p><b>Ação:</b> análise de chamados críticos, melhorias de log,
-                                integração de captura no <b>Splunk</b> e capacitação do time em
-                                Salesforce.</p>
-                            <p><b>Resultado:</b> atingimento das metas de redução de incidentes e de
-                                tempo de atendimento; menos abends na malha batch.</p>
-                            <ul class="stack">
                                 <li>Splunk</li>
-                                <li>Salesforce</li>
                                 <li>Mainframe</li>
                             </ul>
                         </div>
@@ -1261,57 +1275,89 @@
         </section>
 
         <!-- ============== MARCO DO ARQUITETO (F4 → F5) ============== -->
-        <section class="era marco" id="marco" data-theme="ai" data-scene="neural" data-era="2020-2026"
+        <section class="era marco" id="marco" data-theme="ai" data-scene="neural" data-era="2016-2026"
             aria-label="Marco: de analista a arquiteto">
             <div class="wrap">
-                <p class="marco__quote">Deixei de construir sistemas. Passei a desenhar sistemas.</p>
-                <p class="marco__sub">De executor a analista, de analista a arquiteto — de resolver
-                    problemas a antecipá-los. A mudança de papel que dá sentido ao próximo nível.</p>
+                <p class="marco__quote">Desenhar sistemas eu já fazia. Agora desenho a inteligência —
+                    e os times — que os operam.</p>
+                <p class="marco__sub">O arquiteto foi forjado no legado dos anos 2000. O que mudou na
+                    virada para a IA não foi a natureza do trabalho — foi a escala (cloud, SRE) e o
+                    papel: de resolver sozinho a orquestrar e mentorar.</p>
             </div>
         </section>
 
         <!-- ===================== FASE 5 ===================== -->
-        <section class="era" id="era5" data-theme="ai" data-scene="neural" data-era="2020-2026"
+        <section class="era" id="era5" data-theme="ai" data-scene="neural" data-era="2016-2026"
             aria-labelledby="era5-title">
             <div class="wrap">
-                <p class="era__eyebrow">Fase 5 · O Prompt da IA · 2020–2026</p>
-                <h2 id="era5-title">Maturidade — o arquiteto e o mentor</h2>
+                <p class="era__eyebrow">Fase 5 · O Prompt da IA · 2016–2026</p>
+                <h2 id="era5-title">Maturidade — forjada na turbulência</h2>
                 <div class="passage">
-                    <p class="lead">Aqui a jornada muda de natureza: não é mais sobre crescer
-                        rápido, é sobre crescer com precisão.</p>
-                    <p>A tecnologia deixou de ser ferramenta e virou extensão da mente. Cloud,
-                        sistemas distribuídos, automação — linguagem, não novidade. A maturidade
-                        trouxe consciência: ele entende seus padrões, ciclos e limites — e como
-                        expandi-los. Se os primeiros 44 anos foram sobre evoluir, o próximo nível é
-                        sobre <strong>orquestrar</strong>. Como nos melhores arcos: o personagem não
-                        para quando fica forte — ele muda de papel. De herói para mentor.</p>
+                    <p class="lead">Em <strong>2016</strong>, a surpresa em dobro: os gêmeos. E, em
+                        <strong>janeiro de 2017</strong>, a vida cobrou tudo de uma vez.</p>
+                    <p>Minha esposa internada, o estresse acumulado de anos e uma
+                        <strong>alopecia</strong> que me deixou careca por um ano. Foi o fundo do poço
+                        que me ensinou sobre limite — e sobre pedir ajuda.</p>
+                </div>
+                <div class="photo-row">
+                    <figure>
+                        <img src="/fotos/gemeos.jpeg" alt="2016 — a chegada dos gêmeos." loading="lazy"
+                            decoding="async">
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: 2016_GEMEOS.JPG]</span>
+                            A surpresa em dobro.
+                        </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/fotos/familia.jpeg" alt="A família, eixo central da jornada." loading="lazy"
+                            decoding="async">
+                        <figcaption>
+                            <span class="img-meta">[SYS_RECORD: HOJE_FAMILIA.JPG]</span>
+                            O eixo de tudo.
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="passage">
+                    <p>A reação foi por etapas. Saí da Indra e passei pela <strong>Serasa
+                            (dez/2017–jan/2018)</strong>, uma imersão em agilidade acelerada (API
+                        corporativa de OAuth 2). Tinha proposta da <strong>Rede</strong>, mas adiei a
+                        saída até <strong>concluir o mega projeto</strong> sob minha responsabilidade —
+                        porque entregar o que se promete também é arquitetura. Em <strong>2019</strong>,
+                        financiei e reestruturei a casa: demoli 65% para otimizar a planta — a mesma
+                        mentalidade de refatorar um sistema, aplicada a tijolo.</p>
+                    <p>Daí em diante, a régua mudou: não é crescer rápido, é crescer <strong>com
+                            precisão e em escala</strong>. Cloud, SRE e observabilidade viraram
+                        linguagem; o foco migrou do código para a <strong>orquestração</strong> — IA
+                        agêntica, automação e formar quem entrega.</p>
                 </div>
 
-                <h3>Últimos grandes marcos (STAR)</h3>
+                <h3>Foco atual — Engenharia de IA Agêntica</h3>
+                <div class="passage">
+                    <p>Certificações 2025 que ancoram a virada: <strong>AI Agentic Design
+                            Patterns</strong>, <strong>AI Agents with LangGraph</strong>,
+                        <strong>AI with Knowledge Graphs</strong> e <strong>GenAI for Leaders</strong> —
+                        sobre 20+ anos de arquitetura de soluções.</p>
+                </div>
 
-                <article class="star star--hero">
-                    <span class="star__hero-tag">Caso principal</span>
-                    <div class="star__head">
-                        <span class="star__kpi">+15% metas</span>
-                        <h4 class="star__title">Pipe Automática Comercial</h4>
-                        <span class="star__year">2025</span>
-                    </div>
-                    <div class="star__body">
-                        <p><b>Situação:</b> a lista de atuação do executivo não tinha priorização
-                            inteligente para otimizar o planejamento do dia e da meta.</p>
-                        <p><b>Ação:</b> discovery e solução de viabilidade rápida, processando a
-                            <b>inteligência de priorização</b> na própria Salesforce com batches agendados
-                            — o embrião determinístico do raciocínio que hoje levo para sistemas agênticos.</p>
-                        <p><b>Resultado:</b> <b>aumento de mais de 15%</b> no atingimento das metas
-                            e agilidade nos agendamentos e atendimentos.</p>
-                        <ul class="stack">
-                            <li>Salesforce</li>
-                            <li>Batch/Regras</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <p class="star-more">Outros casos da fase:</p>
+                <p class="star-more">Resultados recentes, em resumo — detalhe no <a href="/index.html">currículo</a>:</p>
+                <div class="star">
+                    <details>
+                        <summary>
+                            <span class="star__kpi">+15% metas</span>
+                            <span class="star__title">Pipe Automática Comercial</span>
+                            <span class="star__year">2025</span>
+                        </summary>
+                        <div class="star__body">
+                            <p><b>Ação:</b> inteligência de priorização na própria Salesforce com batches
+                                agendados — o embrião determinístico do raciocínio que hoje levo para
+                                sistemas agênticos. <b>Resultado:</b> +15% no atingimento das metas.</p>
+                            <ul class="stack">
+                                <li>Salesforce</li>
+                                <li>Batch/Regras</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
                 <div class="star">
                     <details>
                         <summary>
@@ -1320,12 +1366,9 @@
                             <span class="star__year">2024</span>
                         </summary>
                         <div class="star__body">
-                            <p><b>Situação:</b> automações legadas com SLA de até <b>10 dias</b> para
-                                efetivar a taxa do contrato, com falhas e dependências manuais.</p>
-                            <p><b>Ação:</b> discovery, desenho da solução técnica e desenvolvimento
-                                de uma aplicação de validação de arranjo dos participantes.</p>
-                            <p><b>Resultado:</b> efetivação <b>em tempo de proposta</b> — de 10 dias
-                                para tempo real.</p>
+                            <p><b>Ação:</b> app de validação de arranjo de participantes.
+                                <b>Resultado:</b> efetivação em tempo de proposta — de 10 dias para
+                                tempo real.</p>
                             <ul class="stack">
                                 <li>Java</li>
                                 <li>AWS</li>
@@ -1334,44 +1377,21 @@
                         </div>
                     </details>
                 </div>
-                <div class="star">
-                    <details>
-                        <summary>
-                            <span class="star__kpi">+ casos</span>
-                            <span class="star__title">Ver mais casos (2022–2023)</span>
-                            <span class="star__year">Cockpit · D0 · Callback WF</span>
-                        </summary>
-                        <div class="star__body">
-                            <p><b>Conta Corrente PJ no Cockpit (2022):</b> autonomia ao executivo para
-                                iniciar a abertura de conta Itaú PJ; solução estável e escalável.</p>
-                            <p><b>D0 / Ipricing 2.0 (2022):</b> entrega completa da proposta em D0,
-                                resolvendo 3 grandes épicos em duas entregas estratégicas.</p>
-                            <p><b>Callback do WF (2023):</b> serviço de retorno de status que deu
-                                rapidez à informação da proposta e atacou a causa-raiz dos travamentos.</p>
-                            <p>Histórico completo no <a href="/index.html">currículo</a>.</p>
-                            <ul class="stack">
-                                <li>Salesforce</li>
-                                <li>AWS</li>
-                                <li>APIs</li>
-                                <li>Low-code</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
 
-                <h3>Foco atual — Engenharia de IA Agêntica</h3>
                 <div class="passage">
-                    <p>Certificações 2025 que ancoram a virada para a IA agêntica:
-                        <strong>AI Agentic Design Patterns</strong>, <strong>AI Agents with
-                            LangGraph</strong>, <strong>AI with Knowledge Graphs</strong> e
-                        <strong>GenAI for Leaders</strong> — combinadas a 20+ anos de arquitetura
-                        de soluções.</p>
+                    <p>Hoje o alicerce é coletivo. Minha esposa cresceu de <strong>analista a
+                            empresária</strong>; sogros, cunhados, sobrinhos e primos são rede de apoio
+                        real. Deixei de ser quem resolve sozinho e passei a ser quem <strong>habilita o
+                            time</strong>. De operador a arquiteto a mentor.</p>
                 </div>
 
-                <figure>
+                <figure class="figure--solo">
                     <img src="/fotos/careca.jpeg" alt="Maurício Issei hoje — arquiteto e mentor." loading="lazy"
                         decoding="async">
-                    <figcaption>Hoje — arquiteto e mentor.</figcaption>
+                    <figcaption>
+                        <span class="img-meta">[SYS_RECORD: HOJE_TRABALHO.JPG]</span>
+                        Hoje — superada a alopecia de 2017; arquiteto e mentor.
+                    </figcaption>
                 </figure>
             </div>
         </section>
@@ -1423,6 +1443,7 @@
         </section>
     </main>
 
+
     <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Resumo e perguntas frequentes">
   <div class="aeo-tldr">
@@ -1432,7 +1453,7 @@
     <ul class="aeo-tldr__points">
       <li><strong>Cinco fases</strong> alinhadas aos arcos de vida: Infância, Treinamento, Rede Discada, Nuvem Corporativa e o Prompt da IA.</li>
       <li><strong>Casos STAR reais</strong> embutidos no fluxo: −R$3MM no contrato Salesforce, +15% nas metas com a Pipe Automática, 10 dias → tempo real no Agrupamento.</li>
-      <li><strong>Marco do Arquiteto</strong> — a virada de Analista para Arquiteto: &quot;deixei de construir sistemas; passei a desenhar sistemas&quot;.</li>
+      <li><strong>Marco do Arquiteto</strong> — a virada de Analista para Arquiteto: &quot;desenhar sistemas eu já fazia; agora desenho a inteligência — e os times — que os operam&quot;.</li>
       <li><strong>Arquitetura híbrida</strong> — foreground HTML semântico (a11y/SEO) sobre fundo WebGL, com fallback acessível sem WebGL/JS.</li>
     </ul>
     <p class="aeo-tldr__foot">Veja também o <a href="/index.html">currículo completo</a> e o <a href="/catalogo.html">mapa do ecossistema</a>.</p>
@@ -1455,8 +1476,7 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
-
-    <footer data-theme="ai">
+<footer data-theme="ai">
         <div class="wrap">
             <h2 style="font-size:1.4rem">Continue a explorar</h2>
             <ul class="foot-links">
