@@ -1,26 +1,27 @@
 /**
- * terminal-evolutivo.js — orquestrador do scrollytelling (SDD §3.2)
+ * terminal-evolutivo.js — orquestrador do scrollytelling v3 "Semântica Humana"
+ * Spec: docs/specs/pages/terminal-evolutivo/01_SDD_v3_semantica_humana.md
  * ---------------------------------------------------------------------------
- * - Tema do FOREGROUND: trocado por ScrollTrigger.onEnter/onEnterBack (sem
- *   flicker em scrolls curtos). Funciona SEMPRE, mesmo sem WebGL.
- * - BACKGROUND WebGL (opcional): morphing contínuo + voo de câmera, "scrubado"
- *   pelo scroll, com RENDER SOB DEMANDA (sem ticker contínuo: idle = 0 frames).
- * - Fallback: se WebGL falhar, body.no-webgl e a página segue íntegra.
- * - Respeita prefers-reduced-motion e trata perda de contexto WebGL (iOS).
+ * SEM WebGL/Three.js. O ambiente é CSS+SVG (#ambient). Este módulo só governa
+ * o FOREGROUND e degrada com graça (sem JS, a página fica íntegra):
+ *   1. Tema por era  — ScrollTrigger onEnter/onEnterBack (sem flicker)
+ *   2. Reveal        — IntersectionObserver nas .passage
+ *   3. Silêncio 2004 — body.is-mourning dessatura o #ambient (sem trava de scroll)
+ *   4. Blueprint     — o SVG do Marco "se desenha" ao entrar na viewport
+ *   5. Hero          — o subtítulo emerge de um leve desfoque ("sintonizando")
+ *   6. Vídeo facade  — iframe só ao clicar (perf + privacidade)
+ * Respeita prefers-reduced-motion em tudo que anima.
  */
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { createScene } from './te-scene.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const body = document.body;
-const canvas = document.getElementById('bg-webgl');
-const eras = [...document.querySelectorAll('.era[data-scene]')];
+const eras = [...document.querySelectorAll('.era[data-theme]')];
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const THEMES = ['theme-terminal', 'theme-wire', 'theme-net', 'theme-cloud', 'theme-ai'];
-const SCENES = ['crt', 'wire', 'nodes', 'blocks', 'neural'];
 
 // cor do <meta theme-color> por fase (barra do navegador móvel acompanha o tema)
 const THEME_COLORS = {
@@ -33,9 +34,9 @@ function setThemeColor(theme) {
 }
 setThemeColor('terminal'); // estado inicial (hero)
 
-// Revela as passagens ao entrar na viewport (enhancement). Só "arma" o
-// esconde-para-revelar quando há IntersectionObserver e sem reduce-motion —
-// caso contrário o conteúdo permanece visível por padrão (CSS).
+// ---- Reveal das passagens (enhancement) ------------------------------------
+// Só "arma" o esconde-para-revelar quando há IntersectionObserver e sem
+// reduce-motion — caso contrário o conteúdo permanece visível por padrão (CSS).
 const passages = document.querySelectorAll('.passage');
 if (!reduce && 'IntersectionObserver' in window && passages.length) {
   document.documentElement.classList.add('reveal-ready');
@@ -47,6 +48,13 @@ if (!reduce && 'IntersectionObserver' in window && passages.length) {
   passages.forEach((el) => revealIO.observe(el));
 }
 
+// ---- Hero: "sintonizando o sinal" (subtítulo emerge do desfoque) -----------
+const tune = document.querySelector('.hero__tune');
+if (tune && document.documentElement.classList.contains('reveal-ready')) {
+  requestAnimationFrame(() => requestAnimationFrame(() => tune.classList.add('is-tuned')));
+}
+
+// ---- Timeline lateral ------------------------------------------------------
 function syncTimeline(section) {
   document.querySelectorAll('.timeline [data-jump]').forEach((a) => {
     const on = a.dataset.jump === section.dataset.era;
@@ -55,40 +63,12 @@ function syncTimeline(section) {
   });
 }
 
-// ---- WebGL (best-effort) ---------------------------------------------------
-let S = null;
-const lowMem = !!navigator.deviceMemory && navigator.deviceMemory <= 2;
-const tier = lowMem ? 'low' : 'high'; // te-scene também rebaixa em mobile
-try {
-  if (canvas) S = createScene(canvas, { tier });
-} catch (e) {
-  S = null;
-}
-if (!S) body.classList.add('no-webgl');
-
-// render sob demanda (single-flight rAF)
-let rafId = null;
-function requestRender() {
-  if (!S || rafId != null) return;
-  rafId = requestAnimationFrame(tick);
-}
-function tick() {
-  rafId = null;
-  S.render();
-  if (!reduce && S.isAnimating()) requestRender();
-}
-
-// ---- FOREGROUND: troca de tema por fase (sempre, com ou sem WebGL) ---------
+// ---- Tema do foreground por fase (sempre; com ou sem movimento) ------------
 function setTheme(section) {
   body.classList.remove(...THEMES);
   body.classList.add('theme-' + section.dataset.theme);
   setThemeColor(section.dataset.theme);
-  syncTimeline(section);
-  if (S && reduce) {
-    const idx = Math.max(0, SCENES.indexOf(section.dataset.scene));
-    S.setProgress(idx / (SCENES.length - 1));
-    requestRender();
-  }
+  if (section.dataset.era) syncTimeline(section);
 }
 
 eras.forEach((section) =>
@@ -101,43 +81,27 @@ eras.forEach((section) =>
   })
 );
 
-// ---- BACKGROUND: morph contínuo + câmera (scrub) só com WebGL e movimento ---
-if (S) {
-  S.setProgress(0);
-  requestRender();
-
-  if (!reduce) {
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '#story',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1,
-        onUpdate: (self) => { S.setProgress(self.progress); requestRender(); },
-      },
-    })
-      .to(S.camera.position, { z: 6, y: -1.6, ease: 'none' })
-      .to(S.camera.rotation, { x: 0.16, ease: 'none' }, 0);
-  }
-
-  // resize adaptativo (debounced)
-  let rt;
-  window.addEventListener('resize', () => {
-    clearTimeout(rt);
-    rt = setTimeout(() => { S.resize(); requestRender(); }, 150);
+// ---- Silêncio de Abril/2004: dessatura o ambiente enquanto a seção domina ---
+// Sem trava de scroll (a11y): o peso vem do vazio de 100svh. A classe entra/sai
+// pela posição; sob reduce-motion o CSS faz a troca instantânea.
+const silence = document.querySelector('.silence');
+if (silence) {
+  ScrollTrigger.create({
+    trigger: silence,
+    start: 'top 55%',
+    end: 'bottom 45%',
+    onToggle: (self) => body.classList.toggle('is-mourning', self.isActive),
   });
+}
 
-  // perda/recuperação de contexto WebGL (Safari/iOS — SDD §7.5)
-  canvas.addEventListener('webglcontextlost', (e) => { e.preventDefault(); body.classList.add('no-webgl'); });
-  canvas.addEventListener('webglcontextrestored', () => {
-    body.classList.remove('no-webgl');
-    S.rebuild();
-    requestRender();
-  });
-
-  window.addEventListener('pagehide', () => {
-    if (rafId) cancelAnimationFrame(rafId);
-    S.dispose();
+// ---- Marco: o blueprint "se desenha" ao entrar na viewport (uma vez) -------
+const marco = document.querySelector('.marco');
+if (marco) {
+  ScrollTrigger.create({
+    trigger: marco,
+    start: 'top 70%',
+    once: true,
+    onEnter: () => marco.classList.add('is-drawn'),
   });
 }
 

@@ -68,18 +68,19 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
 
   test('trabalho como background: casos STAR colapsados + link ao currículo', async ({ page }) => {
     await page.goto(PATH);
-    // não há mais card "hero" inline; o trabalho é evidência de apoio
+    // não há card "hero" inline; o trabalho é evidência de apoio
     await expect(page.locator('.star--hero')).toHaveCount(0);
-    // o caso âncora (−R$3MM) existe como acordeão colapsado na F4
-    const eco = page.locator('#era4 .star > details', { hasText: 'Economia' });
+    // o caso âncora (−R$3MM, 2020/Rede) é acordeão colapsado na F5 — cronologicamente correto
+    const eco = page.locator('#era5 .star > details', { hasText: 'Economia' });
     await expect(eco).not.toHaveAttribute('open', /.*/);
     await eco.locator('summary').scrollIntoViewIfNeeded();
     await eco.locator('summary').click();
     await expect(eco).toHaveAttribute('open', '');
     await expect(eco).toContainText('R$3');
-    // a ponte remete ao currículo (profundidade técnica fora da página)
+    // a F4 tem a ponte ao currículo + o marco da era (107h na Indra, 2012)
     await expect(page.locator('#era4 .bridge')).toContainText('currículo');
     await expect(page.locator('#era4 a[href="/index.html"]')).not.toHaveCount(0);
+    await expect(page.locator('#era4 .star > details', { hasText: 'Indra' })).toHaveCount(1);
   });
 
   test('F5: foco em IA + resultados recentes como acordeão (não destaque)', async ({ page }) => {
@@ -111,11 +112,34 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
     await expect(page.locator('.timeline a[data-jump="2016-2026"]')).toHaveCount(1);
   });
 
-  test('fotos como Data Records: legenda em log + gêmeos sincronizada na F5', async ({ page }) => {
+  test('fotos com legenda humana (sem prefixo de log) + gêmeos na F5', async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator('figcaption .img-meta').first()).toContainText('SYS_RECORD');
-    await expect(page.locator('#era5 img[src="/fotos/gemeos.jpeg"]')).toHaveCount(1);
+    // ideia v3 §VI: legendas e alt humanos, sem prefixo decorativo [SYS_RECORD]
+    await expect(page.locator('.img-meta')).toHaveCount(0);
+    await expect(page.locator('main')).not.toContainText('SYS_RECORD');
+    const gemeos = page.locator('#era5 img[src="/fotos/gemeos.jpeg"]');
+    await expect(gemeos).toHaveCount(1);
+    await expect(gemeos).toHaveAttribute('alt', /Ctrl\+C e Ctrl\+V/);
     await expect(page.locator('#era4 img[src="/fotos/gemeos.jpeg"]')).toHaveCount(0);
+  });
+
+  test('v3: ambiente CSS (sem WebGL) + beats de silêncio, careca e finale', async ({ page }) => {
+    await page.goto(PATH);
+    // sem canvas WebGL; o ambiente decorativo é uma <div> aria-hidden
+    await expect(page.locator('#bg-webgl')).toHaveCount(0);
+    await expect(page.locator('#ambient')).toHaveCount(1);
+    await expect(page.locator('#ambient')).toHaveAttribute('aria-hidden', 'true');
+    // Silêncio Absoluto de Abril/2004 (perda do pai)
+    const silence = page.locator('.silence');
+    await expect(silence).toHaveCount(1);
+    await expect(silence).toContainText('2004');
+    // careca = beat de 2017 (com dignidade), na F5 — não mais "hoje/mentor"
+    const careca = page.locator('#era5 img[src="/fotos/careca.jpeg"]');
+    await expect(careca).toHaveCount(1);
+    await expect(careca).toHaveAttribute('alt', /alopecia, 2017/);
+    // a família (2025) é a última figura da narrativa (imagem-finale)
+    await expect(page.locator('main figure').last().locator('img'))
+      .toHaveAttribute('src', '/fotos/familia.jpeg');
   });
 
   test('fechamento e vídeo: KPI isolado + vídeo como CTA de saída no fim', async ({ page }) => {
@@ -160,22 +184,6 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
     const res = await page.goto('/catalogo.html');
     expect(res?.status()).toBe(200);
     await expect(page.locator('a[href="./terminal-evolutivo.html"]')).toBeVisible();
-  });
-
-  test('render sob demanda: estabiliza em idle (quando há WebGL)', async ({ page }) => {
-    await page.goto(PATH);
-    await scrollToCenter(page, '#era3');
-    const renders = () => page.evaluate(() => (typeof window.__teRenders === 'number' ? window.__teRenders : null));
-    const first = await renders();
-    test.skip(first === null, 'WebGL indisponível neste navegador — fallback CSS ativo');
-    // espera o scrub do GSAP assentar (deixa de crescer)
-    let prev = -1, cur = first;
-    for (let i = 0; i < 10 && cur !== prev; i++) { prev = cur; await page.waitForTimeout(400); cur = await renders(); }
-    // assentado → idle não deve renderizar novos frames
-    const a = cur;
-    await page.waitForTimeout(700);
-    const b = await renders();
-    expect(b).toBe(a);
   });
 
   test('a11y: skip link, h1 único e axe sem violações (tema escuro e claro)', async ({ page }) => {
