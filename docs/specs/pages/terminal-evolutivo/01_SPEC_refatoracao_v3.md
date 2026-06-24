@@ -119,6 +119,52 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
 - Manter: `dpr` cap (≤2), **render sob demanda** (idle = 0 frames), `dispose()`/`rebuild()` (context loss), reduced-motion = 1 frame estático por fase.
 - Meta de bundle: o 3D continua **code-split**; novas geometrias não trazem dependências novas (tudo em `three`).
 
+### 3.3 Tratamento das fotos como "Data Records" (não "álbum de família")
+
+**Problema.** Em `life.html` as fotos são recompensas emocionais (surgem gigantes, translúcidas — pegada de jogo). No Terminal Evolutivo, que é um **portfólio executivo** sobre fundo WebGL, jogar as fotos cruas (coloridas, estética de álbum) no meio do texto causa **choque estético** (parece blog pessoal dentro de um terminal). Solução: as fotos viram **registros visuais recuperados pelo sistema** que "envelhecem" junto com a página — **via CSS, sem editar imagem**.
+
+**(a) Filtro por era (reusa as classes de tema já existentes).**
+```css
+/* F1 — monitor de fósforo (verde/âmbar) */
+.theme-terminal figure img { filter: grayscale(1) sepia(1) hue-rotate(60deg) contrast(1.4) brightness(.9); opacity: .85; }
+/* F2/F3 — digital antigo: pálido, contrastado */
+.theme-wire figure img, .theme-net figure img { filter: contrast(1.2) saturate(.6); }
+/* F4/F5 — presente: cor plena + elevação elegante (F4 agora é DARK premium) */
+.theme-cloud figure img, .theme-ai figure img { filter: none; box-shadow: 0 8px 30px rgba(0,0,0,.4); }
+@media (prefers-reduced-motion: reduce) { /* filtros são estáticos — nada a desligar */ }
+```
+
+> ⚠️ **Correção de engenharia (vs. a crítica):** **não usar `mix-blend-mode: hard-light`** nas imagens para "fundir" com a cena 3D. O `<canvas>` está num **stacking context separado** (`z-index:-1`, atrás do `body`), então o blend não acontece contra os pixels do WebGL — produz resultado imprevisível/sujo. Para o look "monitor CRT", usar `filter` + **overlay de scanline** no próprio `figure` (`figure::after` com `repeating-linear-gradient`), que é determinístico e barato. Manter `filter` como o mecanismo principal.
+
+**(b) Legenda como log de terminal (metadado).** Trocar legendas "fofas" por metadados, conectando a foto ao tema Tech Lead — **sem sacrificar a11y**:
+```html
+<figure>
+  <img src="/fotos/callcenter.jpg" alt="Maurício de headset no call center, início dos anos 2000" loading="lazy" decoding="async">
+  <figcaption>
+    <span class="img-meta">[SYS_RECORD: 2002_SUPORTE.JPG]</span>
+    <span>A trincheira: onde aprendi a ouvir o usuário.</span>
+  </figcaption>
+</figure>
+```
+- `alt` permanece **descritivo** (leitor de tela) — o `[SYS_RECORD:…]` é floreio visual, nunca o único texto.
+- `.img-meta` usa `--dim` em `font-mono` pequena; **validar contraste AA** por tema (o `--dim` atual já passa).
+
+**(c) Curadoria cirúrgica (de 11 → ~6–7) com cronologia corrigida.** A crítica acerta em cortar; ajusto a alocação para bater com o CV e com a divisão de fases:
+
+| Fase | Foto(s) | Tratamento | Observação |
+|:--|:--|:--|:--|
+| F1 (infância) | `1982.jpeg` (recorte **1:1**) | filtro verde + scanline | dropar `infancia.png` (colagem larga demais) |
+| F2 (adolescência) | `programa.jpg` | pálido/contrastado | **não** usar `eldorado.jpg` aqui (é dos anos 2000 → F3) |
+| F3 (trincheira) | `formatura.jpg` + `callcenter.jpg` (`.photo-row`) | pálido | prova visual de "executei e me formei"; `casamento.jpg` fecha a F3 (2009) |
+| F4 (legado) | `familia.jpeg` | cor plena + sombra | **1 foto** (o alicerce); dropar fotos individuais de filha/gêmeos (evita virar Instagram); casamento fica na F3 (cronologia) |
+| F5 (IA/mentor) | `careca.jpeg` | cor plena + leve glow | foto atual de trabalho |
+
+> Divergência com a crítica: ela sugeria `eldorado.jpg` na F2 e `casamento.jpg` na F4. Pela cronologia real (`eldorado`/`callcenter`/`formatura` = anos 2000; casamento = 2009), `eldorado`→F3 e `casamento`→fim da F3. F4 fica só com `familia.jpeg`.
+
+**(d) Performance/a11y.** Filtros CSS em imagens `loading="lazy"` com `aspect-ratio` fixo são baratos; **não animar** `filter` (custo de paint). Manter dimensões/`decoding="async"`. Sob `no-webgl`/sem-JS, os filtros continuam (são CSS puro) — coerente com o fallback.
+
+> **Status:** parte do **Pilar 2 da v3.0** (direção de arte). Pode ser implementado junto do R1 (é HTML/CSS de foreground, sem depender do 3D semântico).
+
 ---
 
 ## 4. Pilar 3 — Refinamentos técnicos
@@ -144,7 +190,7 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
 
 > Construção incremental; cada passo verificável. Foreground/narrativa primeiro (sem risco de a11y), 3D depois.
 
-> **R1 · Narrativa (texto).** Substituir a copy das Fases 2–5 e do Marco em `terminal-evolutivo.html` (§2.2). Atualizar `tldr`/`mdSections` em `pages.mjs` se o tom mudar; rodar `build-aeo.mjs terminal-evolutivo` (+`.md`). **Critério:** sem "Naruto/One Piece/Bleach/Dragon Ball/Zillion" nas Fases 3–5; presença de Sysgen/Telefônica/Indra/MDA/OAuth; Marco cita os anos 2000.
+> **R1 · Narrativa (texto) + fotos como Data Records.** Substituir a copy das Fases 2–5 e do Marco em `terminal-evolutivo.html` (§2.2). Aplicar o tratamento das fotos (§3.3): filtros CSS por era, legendas-log, curadoria (~6–7 fotos). Atualizar `tldr`/`mdSections` em `pages.mjs` se o tom mudar; rodar `build-aeo.mjs terminal-evolutivo` (+`.md`). **Critério:** sem "Naruto/One Piece/Bleach/Dragon Ball/Zillion" nas Fases 3–5; presença de Sysgen/Telefônica/Indra/MDA/OAuth; Marco cita os anos 2000; fotos com filtro por era e legenda em formato `[SYS_RECORD:…]`.
 
 > **R2 · Cena semântica (`te-scene.js`).** Reescrever os 5 estados como formas literais (§3.1); adicionar `LineSegments` (força por fase) e `InstancedMesh` de cubos (escala por progresso); blueprint no Marco; bloom só na F5. **Critério:** ao variar `setProgress(0→1)`, vê-se grade CRT → wireframe → nós/links → blocos → neural; `dispose()` limpo; sem leak.
 
