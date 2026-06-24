@@ -106,11 +106,14 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
    - `nodes`: ~12–16 hubs + índices de links entre hubs.
    - `blocks`: posições de uma grade 3D de cubos (já existe; reusar como instâncias).
    - `neural`: camadas (planos) + links esparsos entre camadas adjacentes.
+   > ⚠️ **Contagem de vértices FIXA (obrigatório p/ o lerp).** Para interpolar posições entre dois estados num **único** `BufferGeometry`, todos os estados precisam do **mesmo N de vértices**. Definir um N alto fixo (ex.: **2048**) e fazer **todo** gerador de estado retornar 2048 posições/cores/alpha. Em fases que "usam" menos pontos, **estacionar o excedente** — colapsar no centro de um nó/hub **e/ou** `alpha=0` — nunca deixá-los em coordenadas antigas/aleatórias, senão o morph espalha pontos pela tela.
 2. **Camada de linhas (`LineSegments`).** Um segundo buffer de posições derivado dos pontos (via listas de arestas por estado) que **morfa junto** e tem **força (opacidade) por fase**: ~0 na F1, alta na F2/F3, baixa na F4, média/fluida na F5. Implementar como um único `LineSegments` cujas posições são reescritas no `setProgress`.
    > ⚠️ **Buffer de capacidade fixa (gotcha WebGL).** Não se redimensiona `BufferAttribute` de forma barata em runtime. Alocar **uma vez, com a capacidade MÁXIMA de arestas entre todas as fases**: `maxEdges = max(arestas por fase)` → `new Float32Array(maxEdges * 2 * 3)`. Nas fases que usam menos arestas, **esconder o excedente** com **linhas degeneradas** (os dois vértices do segmento na mesma coordenada → comprimento zero, não rasteriza) e/ou `alpha = 0` no shader; opcionalmente, `geometry.setDrawRange(0, segmentosAtivos*2)` limita o que é desenhado por fase. O `setProgress` apenas reescreve posições/alphas **dentro** dessa capacidade fixa — nunca realoca. O mesmo princípio vale para os `Points`: manter **N fixo** e variar só posição/cor/alpha entre as densidades de cada fase.
 3. **Camada de cubos (`InstancedMesh`).** Para a F4 (blocos maciços), um `InstancedMesh` de cubos posicionado no estado `blocks`, com **escala dirigida pelo progresso**: cresce de 0→cheio ao entrar na F4 e encolhe ao sair (crossfade com os pontos), evitando recriar cena. Luz simples (`HemisphereLight` + `DirectionalLight`).
-4. **Blueprint (Marco).** No trecho de scroll do `#marco`, exibir as **arestas** dos cubos alinhados (linhas luminosas) + um grid-plano sutil, como "planta". É um realce temporário entre `blocks` e `neural` (pico em `progress` ≈ fronteira F4→F5).
+4. **Blueprint (Marco) — transição de MATERIAL, não um 6º estado de pontos.** O `#marco` **não é uma Era**: é uma ponte entre F4 (blocos) e F5 (neural). Tratá-lo como uma **banda de progresso** global (ex.: ~`0.70`–`0.80`, **calibrada aos offsets reais das seções**, não assumida). Nessa banda, o `InstancedMesh` da F4 recebe um **override de material** (wireframe / emissivo / `EdgesGeometry`) + grid-plano sutil = a "planta luminosa"; só depois os cubos se dissolvem no sistema de pontos (neural F5). **Implicação para `setProgress(p)`:** ele gerencia **dois tipos de estado** — (a) morph de posição/cor/alpha de pontos e linhas; **(b) estado de material da F4** (sólido → wireframe/emissivo na banda do marco → fade-out). O blueprint **não** é representável só movendo pontos.
 5. **Bloom só na F5.** `UnrealBloomPass` ativado apenas perto da fase neural (e desligado em mobile/low-end).
+
+> **Mapa de progresso (calibrar, não assumir).** As 5 fases + o `#marco` **não** ocupam frações iguais do scroll (o marco em `100svh` adiciona altura). Derivar as bandas dos **offsets reais** das seções — alimentar o `setProgress` global a partir de `ScrollTrigger`s por seção (cada um normaliza seu próprio trecho) **ou** posicionar os keyframes da timeline-mestra nas posições reais. Evitar o pitfall de assumir, p.ex., "blocos = 0.75".
 
 ### 3.2 Performance budget revisado (acréscimo sobre o §7 do SDD)
 
@@ -140,10 +143,10 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
 **(b) Legenda como log de terminal (metadado).** Trocar legendas "fofas" por metadados, conectando a foto ao tema Tech Lead — **sem sacrificar a11y**:
 ```html
 <figure>
-  <img src="/fotos/callcenter.jpg" alt="Maurício de headset no call center, início dos anos 2000" loading="lazy" decoding="async">
+  <img src="/fotos/formatura.jpg" alt="Formatura em Sistemas de Informação, Universidade Mackenzie" loading="lazy" decoding="async">
   <figcaption>
-    <span class="img-meta">[SYS_RECORD: 2002_SUPORTE.JPG]</span>
-    <span>A trincheira: onde aprendi a ouvir o usuário.</span>
+    <span class="img-meta">[SYS_RECORD: 2005_FORMATURA.JPG]</span>
+    <span>A base formal: Sistemas de Informação (Mackenzie).</span>
   </figcaption>
 </figure>
 ```
@@ -156,11 +159,13 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
 |:--|:--|:--|:--|
 | F1 (infância) | `1982.jpeg` (recorte **1:1**) | filtro verde + scanline | dropar `infancia.png` (colagem larga demais) |
 | F2 (adolescência) | `programa.jpg` | pálido/contrastado | **não** usar `eldorado.jpg` aqui (é dos anos 2000 → F3) |
-| F3 (trincheira) | `formatura.jpg` + `callcenter.jpg` (`.photo-row`) | pálido | prova visual de "executei e me formei"; `casamento.jpg` fecha a F3 (2009) |
+| F3 (trincheira) | `formatura.jpg` | pálido | casa com "graduação (Mackenzie)" no texto; `casamento.jpg` fecha a F3 (2009). **`callcenter.jpg` → ver nota ↓** |
 | F4 (legado) | `familia.jpeg` | cor plena + sombra | **1 foto** (o alicerce); dropar fotos individuais de filha/gêmeos (evita virar Instagram); casamento fica na F3 (cronologia) |
 | F5 (IA/mentor) | `careca.jpeg` | cor plena + leve glow | foto atual de trabalho |
 
 > Divergência com a crítica: ela sugeria `eldorado.jpg` na F2 e `casamento.jpg` na F4. Pela cronologia real (`eldorado`/`callcenter`/`formatura` = anos 2000; casamento = 2009), `eldorado`→F3 e `casamento`→fim da F3. F4 fica só com `familia.jpeg`.
+
+> **Conflito foto × texto na F3 (`callcenter.jpg`).** O texto da F3 (§2.2) fala de Sysgen/Telefônica/Java/MVC/UML/MDA/EJB e **não menciona suporte/call center**; pôr uma foto de headset de suporte ao lado de "modelagem MDA" quebra a coesão. **Default:** **não** usar `callcenter.jpg` na F3. **Decisão do dono:** se o início em suporte for real e relevante, (i) acrescentar **uma frase** na F3, *antes* da Sysgen (ex.: *"Comecei no suporte, ouvindo o usuário antes de servi-lo com código"*) — e então `callcenter.jpg` volta com a legenda da §3.3(b); ou (ii) manter só `formatura.jpg`. Confirmar também o conteúdo real de `eldorado.jpg` antes de usar (alt inferido, ver R-riscos do SDD).
 
 **(d) Performance/a11y.** Filtros CSS em imagens `loading="lazy"` com `aspect-ratio` fixo são baratos; **não animar** `filter` (custo de paint). Manter dimensões/`decoding="async"`. Sob `no-webgl`/sem-JS, os filtros continuam (são CSS puro) — coerente com o fallback.
 
