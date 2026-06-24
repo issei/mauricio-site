@@ -488,7 +488,7 @@ export const PAGES = [
       points: [
         '**Cinco fases** alinhadas aos arcos de vida: Infância, Treinamento, Rede Discada, Nuvem Corporativa e o Prompt da IA.',
         '**Casos STAR reais** embutidos no fluxo: −R$3MM no contrato Salesforce, +15% nas metas com a Pipe Automática, 10 dias → tempo real no Agrupamento.',
-        '**Marco do Arquiteto** — a virada de Analista para Arquiteto: "deixei de construir sistemas; passei a desenhar sistemas".',
+        '**Marco do Arquiteto** — a virada de Analista para Arquiteto: "desenhar sistemas eu já fazia; agora desenho a inteligência — e os times — que os operam".',
         '**Arquitetura híbrida** — foreground HTML semântico (a11y/SEO) sobre fundo WebGL, com fallback acessível sem WebGL/JS.',
       ],
       foot: 'Veja também o [currículo completo](/index.html) e o [mapa do ecossistema](/catalogo.html).',

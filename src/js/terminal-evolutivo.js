@@ -57,8 +57,10 @@ function syncTimeline(section) {
 
 // ---- WebGL (best-effort) ---------------------------------------------------
 let S = null;
+const lowMem = !!navigator.deviceMemory && navigator.deviceMemory <= 2;
+const tier = lowMem ? 'low' : 'high'; // te-scene também rebaixa em mobile
 try {
-  if (canvas) S = createScene(canvas);
+  if (canvas) S = createScene(canvas, { tier });
 } catch (e) {
   S = null;
 }

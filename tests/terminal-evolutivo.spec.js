@@ -46,7 +46,7 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
     for (const id of ['#era1', '#era2', '#era3', '#era4', '#era5', '#marco']) {
       await expect(page.locator(id)).toHaveCount(1);
     }
-    await expect(page.locator('.marco__quote')).toContainText('desenhar sistemas');
+    await expect(page.locator('.marco__quote')).toContainText('Desenhar sistemas');
     await expect(page.locator('#kpi dl.kpi-grid div')).toHaveCount(6);
     await expect(page.locator('#kpi')).toContainText('20+ anos');
   });
@@ -56,7 +56,7 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
     await page.goto(PATH);
     // topo: tema terminal
     await expect(page.locator('body')).toHaveClass(/theme-terminal/);
-    // rola até a Nuvem (F4 · tema claro)
+    // rola até a Nuvem (F4 · dark premium)
     await scrollToCenter(page, '#era4');
     await expect.poll(() => page.evaluate(() => document.body.className)).toContain('theme-cloud');
     // rola até a IA (F5)
@@ -66,27 +66,56 @@ test.describe('Terminal Evolutivo — scrollytelling', () => {
     await expect(page.locator('.timeline a[aria-current="true"]')).toHaveCount(1);
   });
 
-  test('casos STAR: caso principal inline + secundários em acordeão', async ({ page }) => {
+  test('trabalho como background: casos STAR colapsados + link ao currículo', async ({ page }) => {
     await page.goto(PATH);
-    // caso principal (hero) visível por padrão, com Ação/Resultado, SEM clique
-    const hero = page.locator('#era4 .star--hero');
-    await expect(hero).toContainText('Economia');
-    await expect(hero).toContainText('R$3');
-    await expect(hero.locator('.star__body')).toBeVisible();
-    // secundário começa colapsado e abre ao clicar
-    const sec = page.locator('#era4 .star > details', { hasText: 'AFVC' });
-    await expect(sec).not.toHaveAttribute('open', /.*/);
-    await expect(sec.locator('.star__body')).toBeHidden();
-    await sec.locator('summary').click();
-    await expect(sec).toHaveAttribute('open', '');
+    // não há mais card "hero" inline; o trabalho é evidência de apoio
+    await expect(page.locator('.star--hero')).toHaveCount(0);
+    // o caso âncora (−R$3MM) existe como acordeão colapsado na F4
+    const eco = page.locator('#era4 .star > details', { hasText: 'Economia' });
+    await expect(eco).not.toHaveAttribute('open', /.*/);
+    await eco.locator('summary').scrollIntoViewIfNeeded();
+    await eco.locator('summary').click();
+    await expect(eco).toHaveAttribute('open', '');
+    await expect(eco).toContainText('R$3');
+    // a ponte remete ao currículo (profundidade técnica fora da página)
+    await expect(page.locator('#era4 .bridge')).toContainText('currículo');
+    await expect(page.locator('#era4 a[href="/index.html"]')).not.toHaveCount(0);
   });
 
-  test('ponte de transição + caso principal inline na F5', async ({ page }) => {
+  test('F5: foco em IA + resultados recentes como acordeão (não destaque)', async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator('#era4 .bridge')).toContainText('escala corporativa');
-    const heroF5 = page.locator('#era5 .star--hero');
-    await expect(heroF5).toContainText('Pipe Automática');
-    await expect(heroF5.locator('.star__body')).toBeVisible();
+    await expect(page.locator('#era5')).toContainText('IA Agêntica');
+    const pipe = page.locator('#era5 .star > details', { hasText: 'Pipe Automática' });
+    await expect(pipe).toHaveCount(1);
+    await expect(pipe).not.toHaveAttribute('open', /.*/);
+  });
+
+  test('narrativa madura: sem anime nas fases adultas; trincheira e fatos de vida', async ({ page }) => {
+    await page.goto(PATH);
+    const adult = (await page.locator('#era3, #era4, #era5').allInnerTexts()).join(' ');
+    expect(adult).not.toMatch(/Naruto|One Piece|Bleach|Dragon Ball|Zillion/);
+    await expect(page.locator('#era3')).toContainText('Sysgen');
+    await expect(page.locator('#era3')).toContainText('2003');
+    await expect(page.locator('#era3')).toContainText('meu pai');
+    await expect(page.locator('#era5')).toContainText('alopecia');
+    await expect(page.locator('#era5')).toContainText('Serasa');
+    await expect(page.locator('#marco')).toContainText('anos 2000');
+  });
+
+  test('cronologia: data-era calibrado e timeline consistente', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('#era4')).toHaveAttribute('data-era', '2010-2015');
+    await expect(page.locator('#era5')).toHaveAttribute('data-era', '2016-2026');
+    await expect(page.locator('#marco')).toHaveAttribute('data-era', '2016-2026');
+    await expect(page.locator('.timeline a[data-jump="2010-2015"]')).toHaveCount(1);
+    await expect(page.locator('.timeline a[data-jump="2016-2026"]')).toHaveCount(1);
+  });
+
+  test('fotos como Data Records: legenda em log + gêmeos sincronizada na F5', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('figcaption .img-meta').first()).toContainText('SYS_RECORD');
+    await expect(page.locator('#era5 img[src="/fotos/gemeos.jpeg"]')).toHaveCount(1);
+    await expect(page.locator('#era4 img[src="/fotos/gemeos.jpeg"]')).toHaveCount(0);
   });
 
   test('fechamento e vídeo: KPI isolado + vídeo como CTA de saída no fim', async ({ page }) => {
