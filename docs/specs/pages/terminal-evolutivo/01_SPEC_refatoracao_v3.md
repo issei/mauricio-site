@@ -22,6 +22,8 @@
 
 **Invariante inegociável:** sem WebGL/JS ou sob `prefers-reduced-motion`, conteúdo 100% legível e indexável.
 
+> **Hierarquia editorial (v3 — prioriza toda a página):** **a transição dos fatos de vida é o protagonista**; o **trabalho é background** — conectado, mas não o destaque. O currículo ([`index.html`](../../../../src/index.html)) já carrega a profundidade técnica e os casos STAR completos. Aqui, cada fase é conduzida pelo **arco humano** (espectador → operador → arquiteto → mentor), e a carreira entra como **evidência de apoio**: compacta, subordinada à narrativa, com a profundidade remetida ao currículo. Isso **qualifica** a decisão da v2.2 de destacar o STAR inline (ver §2.3).
+
 ---
 
 ## 2. Pilar 1 — Refatoração narrativa
@@ -35,6 +37,7 @@
 5. **Desidratar o tom.** Frases curtas, diretas, escaneáveis. Cortar prosa densa ("a virada do milênio não foi apenas simbólica — foi estrutural").
 6. **Preservar o calor nas entrelinhas.** Desidratar ≠ esfriar. Manter a emoção em subtexto (a paixão que aparece no vídeo do YouTube), sobretudo nos fechamentos de fase, nas pontes humanas (ex.: 2009) e no Marco — sem virar relatório de LinkedIn.
 7. **Evitar o "whiplash" técnico↔pessoal.** Toda transição de assunto frio (legado/PL/SQL) para quente (família) precisa de uma frase-ponte que conecte os dois mundos (ver F3).
+8. **Vida em primeiro plano; trabalho como background.** Cada passagem é conduzida pelo **fato de vida**; a carreira entra como **contexto de apoio** (1–2 frases, o essencial), nunca como o foco. A profundidade técnica vive no currículo, não aqui (ver Hierarquia editorial, §1, e §2.3).
 
 ### 2.2 Reescrita fase a fase (copy pronta para colar)
 
@@ -77,7 +80,11 @@
 >
 > Hoje o alicerce é coletivo. Minha esposa cresceu de **analista a empresária**; sogros, cunhados, sobrinhos e primos são rede de apoio real. Eu deixei de ser quem resolve sozinho e passei a ser quem **habilita o time**. De operador a arquiteto a mentor.
 
-### 2.3 Rebalanceamento STAR (confirma a v2.1)
+### 2.3 Casos STAR como *background* (evidência de apoio, não destaque)
+
+Coerente com a **Hierarquia editorial (§1)**, o trabalho é **subordinado** à narrativa de vida. Isto **ajusta a v2.2** (que elevara o caso principal a card inline): cada fase mantém **um único resultado-âncora** — o número (−R$3MM, +15%, 10d→tempo real) — como uma linha de evidência **ao lado** do fato de vida; o **detalhe STAR completo** (S/T/A/R) fica **compacto/colapsado** e remete ao currículo ([`index.html`](../../../../src/index.html)). A seção "Em números" vira um **fecho enxuto**, não um bloco pesado. Sem grade densa de cards competindo com a história — o valor não some (há o número-âncora + o link do CV), mas não rouba o protagonismo.
+
+> Tensão reconhecida: a v2.2 trouxe o STAR para inline por causa de uma crítica anterior ("ocultação de valor"). Aqui o dono **reprioriza** — como o CV existe, o valor técnico pode ser mais leve nesta página. As duas leituras são válidas; **para o Terminal Evolutivo vence a vida-em-primeiro-plano**.
 
 Mantido: **−R$3MM** e **Core Rede/Splunk** na **F4** (consolidação); **F5** fica limpa — Agrupamento (2024), Pipe Automática (2025) e o bloco de **certificações IA 2025**. Atualizar, se necessário, o `tldr`/`mdSections` em `scripts/seo/pages.mjs` para refletir o novo tom (sem anime; com trincheira) e reexecutar `build-aeo.mjs terminal-evolutivo` + o `.md` companion.
 
@@ -198,7 +205,7 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
 
 > Construção incremental; cada passo verificável. Foreground/narrativa primeiro (sem risco de a11y), 3D depois.
 
-> **R1 · Narrativa (texto) + fotos como Data Records.** Substituir a copy das Fases 2–5 e do Marco em `terminal-evolutivo.html` (§2.2). Aplicar o tratamento das fotos (§3.3): filtros CSS por era, legendas-log, curadoria (~6–7 fotos). Atualizar `tldr`/`mdSections` em `pages.mjs` se o tom mudar; rodar `build-aeo.mjs terminal-evolutivo` (+`.md`). **Critério:** sem "Naruto/One Piece/Bleach/Dragon Ball/Zillion" nas Fases 3–5; presença de Sysgen/Telefônica/Indra/MDA/OAuth; Marco cita os anos 2000; fotos com filtro por era e legenda em formato `[SYS_RECORD:…]`.
+> **R1 · Narrativa + fotos + trabalho como background.** Substituir a copy das Fases 2–5 e do Marco em `terminal-evolutivo.html` (§2.2). Aplicar o tratamento das fotos (§3.3): filtros CSS por era, legendas-log, curadoria por fase. **Rebaixar os casos STAR a evidência de apoio (§2.3):** um número-âncora por fase + detalhe compacto/colapsado + link ao currículo; "Em números" como fecho enxuto (sem card-grid dominante). Atualizar `tldr`/`mdSections` em `pages.mjs` se o tom mudar; rodar `build-aeo.mjs terminal-evolutivo` (+`.md`). **Critério:** sem anime nas Fases 3–5; presença de Sysgen/Indra/MDA/OAuth; Marco cita os anos 2000; fotos com filtro por era e legenda `[SYS_RECORD:…]`; **a narrativa de vida lidera e o trabalho não domina visualmente**.
 
 > **R2 · Cena semântica (`te-scene.js`).** Reescrever os 5 estados como formas literais (§3.1); adicionar `LineSegments` (força por fase) e `InstancedMesh` de cubos (escala por progresso); blueprint no Marco; bloom só na F5. **Critério:** ao variar `setProgress(0→1)`, vê-se grade CRT → wireframe → nós/links → blocos → neural; `dispose()` limpo; sem leak.
 
