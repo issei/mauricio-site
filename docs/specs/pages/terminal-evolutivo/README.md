@@ -25,7 +25,7 @@ cima com fundo transparente. **100% legível sem JS e sem WebGL** (fallback CSS 
 - `src/terminal-evolutivo.html` + `src/js/terminal-evolutivo.js` (orquestrador) + `src/js/te-scene.js` (Three.js)
 - Dependências: `three` + `gsap` (com `ScrollTrigger`) via npm (bundle Vite, não CDN)
 - URL: `mauricio.issei.com.br/terminal-evolutivo`
-- Status: **v2.1 em produção · v3.0 especificada (implementação pendente)**
+- Status: **v3.0 implementada e publicada na main** (narrativa de vida + WebGL semântico + trabalho como background)
 
 ## Fontes de conteúdo
 - Narrativa (5 arcos): `docs/references/jornada.txt`
