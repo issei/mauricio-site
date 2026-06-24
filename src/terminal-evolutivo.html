@@ -85,16 +85,18 @@
         }
 
         /* ---- FASE 4 · A Nuvem Corporativa / blocos (2010–2019) ---- */
-        /* Único tema claro: scrim claro (exceção consciente ao Dark-Tech). */
+        /* "Dark Mode Premium": cinza-azulado escuro + glassmorphism fino.
+           Mantém a metáfora corporativa SEM quebrar a continuidade luminosa
+           da jornada (todas as fases escuras). */
         .theme-cloud {
-            --page: #eef3fb;
-            --text: #1f2d3d;
-            --strong: #0b1f33;
-            --dim: #465563;
-            --accent: #0a66c2;
-            --accent2: #0090c8;
-            --line: rgba(13, 71, 161, .18);
-            --surface: rgba(255, 255, 255, .88);
+            --page: #0e141d;
+            --text: #c6d3e6;
+            --strong: #ffffff;
+            --dim: #8b9bb1;
+            --accent: #4f93e0;
+            --accent2: #36c7c0;
+            --line: rgba(130, 170, 220, .18);
+            --surface: rgba(20, 28, 42, .58);
             --radius: 14px;
             --display: 'Inter', system-ui, sans-serif;
             --body-font: 'Inter', system-ui, sans-serif;
@@ -275,11 +277,6 @@
             color: #0a0d14;
             /* accent sólido + texto escuro = contraste AA garantido em todos os temas */
             background: var(--accent);
-        }
-
-        .theme-cloud .btn--primary {
-            color: #fff;
-            /* accent escuro (azul) no tema claro pede texto branco */
         }
 
         .btn:hover {
@@ -532,11 +529,14 @@
         }
 
         /* ---------- MARCO DO ARQUITETO ---------- */
+        /* Respiro agressivo: ocupa a tela inteira sozinho, forçando uma pausa
+           dramática no scroll antes da Fase 5. */
         .marco {
-            min-height: 80svh;
+            min-height: 100svh;
             display: flex;
             align-items: center;
             text-align: center;
+            padding: 8vh 0;
         }
 
         .marco__quote {
@@ -551,6 +551,73 @@
 
         .marco__sub {
             color: var(--text);
+            max-width: 52ch;
+            margin-inline: auto;
+        }
+
+        /* ---------- STAR HERO (caso principal visível por padrão) ---------- */
+        .star--hero {
+            background: var(--surface);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 1.1rem 1.2rem 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .star--hero .star__head {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            flex-wrap: wrap;
+            margin-bottom: .5rem;
+        }
+
+        .star--hero .star__title {
+            font-size: 1.15rem;
+            margin: 0;
+        }
+
+        .star--hero .star__body {
+            padding: 0;
+            border-top: 0;
+        }
+
+        .star__hero-tag {
+            width: 100%;
+            font-size: .68rem;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            color: var(--dim);
+            font-family: var(--body-font);
+        }
+
+        .star-more {
+            color: var(--dim);
+            font-size: .9rem;
+            margin: 1.6rem 0 .4rem;
+        }
+
+        /* ---------- FECHAMENTO (Em números) ---------- */
+        .closing {
+            padding: 9vh 0;
+            border-top: 1px solid var(--line);
+        }
+
+        /* ---------- OUTRO (vídeo como CTA de saída) ---------- */
+        .outro {
+            padding: 4vh 0 9vh;
+            text-align: center;
+        }
+
+        .outro h2 {
+            margin-bottom: 1rem;
+        }
+
+        .outro .video {
+            text-align: left;
             max-width: 52ch;
             margin-inline: auto;
         }
@@ -1093,11 +1160,35 @@
                 <div class="bridge passage">
                     <p class="bridge__lead">O treinamento acabou. Era hora de aplicar os conceitos —
                         agora em escala corporativa, onde cada decisão vira número.</p>
-                    <p class="bridge__sub">Os cartões abaixo mostram só o projeto e o ganho principal.
-                        Abra cada um para o detalhe técnico — Situação · Tarefa · Ação · Resultado.</p>
+                    <p class="bridge__sub">O caso principal abaixo fica <strong>aberto</strong>;
+                        os complementares abrem sob clique — Situação · Tarefa · Ação · Resultado.</p>
                 </div>
 
                 <h3>Casos de sucesso — consolidação (STAR)</h3>
+
+                <article class="star star--hero">
+                    <span class="star__hero-tag">Caso principal</span>
+                    <div class="star__head">
+                        <span class="star__kpi">−R$3MM</span>
+                        <h4 class="star__title">Economia no contrato Salesforce</h4>
+                        <span class="star__year">2020</span>
+                    </div>
+                    <div class="star__body">
+                        <p><b>Situação:</b> vencimento do 1º contrato Salesforce e forte expansão
+                            de usuários, sem base histórica nem clareza de precificação de licenças.</p>
+                        <p><b>Ação:</b> planilhou todos os custos no menor nível de detalhe,
+                            construiu a defesa para o CINVEST e negociou em parceria com o CoE
+                            Salesforce do Itaú e o time de compras.</p>
+                        <p><b>Resultado:</b> <b>economia de mais de R$3 milhões</b> no contrato
+                            final e clareza das áreas sobre o custo de cada licença.</p>
+                        <ul class="stack">
+                            <li>Salesforce</li>
+                            <li>Gestão de Contratos</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <p class="star-more">Outros casos da fase:</p>
                 <div class="star">
                     <details>
                         <summary>
@@ -1139,28 +1230,6 @@
                                 <li>Salesforce</li>
                                 <li>Android</li>
                                 <li>Mainframe</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-                <div class="star">
-                    <details>
-                        <summary>
-                            <span class="star__kpi">−R$3MM</span>
-                            <span class="star__title">Economia no contrato Salesforce</span>
-                            <span class="star__year">2020</span>
-                        </summary>
-                        <div class="star__body">
-                            <p><b>Situação:</b> vencimento do 1º contrato Salesforce e forte expansão
-                                de usuários, sem base histórica nem clareza de precificação de licenças.</p>
-                            <p><b>Ação:</b> planilhou todos os custos no menor nível de detalhe,
-                                construiu a defesa para o CINVEST e negociou em parceria com o CoE
-                                Salesforce do Itaú e o time de compras.</p>
-                            <p><b>Resultado:</b> <b>economia de mais de R$3 milhões</b> no contrato
-                                final e clareza das áreas sobre o custo de cada licença.</p>
-                            <ul class="stack">
-                                <li>Salesforce</li>
-                                <li>Gestão de Contratos</li>
                             </ul>
                         </div>
                     </details>
@@ -1219,6 +1288,30 @@
                 </div>
 
                 <h3>Últimos grandes marcos (STAR)</h3>
+
+                <article class="star star--hero">
+                    <span class="star__hero-tag">Caso principal</span>
+                    <div class="star__head">
+                        <span class="star__kpi">+15% metas</span>
+                        <h4 class="star__title">Pipe Automática Comercial</h4>
+                        <span class="star__year">2025</span>
+                    </div>
+                    <div class="star__body">
+                        <p><b>Situação:</b> a lista de atuação do executivo não tinha priorização
+                            inteligente para otimizar o planejamento do dia e da meta.</p>
+                        <p><b>Ação:</b> discovery e solução de viabilidade rápida, processando a
+                            <b>inteligência de priorização</b> na própria Salesforce com batches agendados
+                            — o embrião determinístico do raciocínio que hoje levo para sistemas agênticos.</p>
+                        <p><b>Resultado:</b> <b>aumento de mais de 15%</b> no atingimento das metas
+                            e agilidade nos agendamentos e atendimentos.</p>
+                        <ul class="stack">
+                            <li>Salesforce</li>
+                            <li>Batch/Regras</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <p class="star-more">Outros casos da fase:</p>
                 <div class="star">
                     <details>
                         <summary>
@@ -1237,26 +1330,6 @@
                                 <li>Java</li>
                                 <li>AWS</li>
                                 <li>APIs</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-                <div class="star">
-                    <details>
-                        <summary>
-                            <span class="star__kpi">+15% metas</span>
-                            <span class="star__title">Pipe Automática Comercial</span>
-                            <span class="star__year">2025</span>
-                        </summary>
-                        <div class="star__body">
-                            <p><b>Situação:</b> a lista de atuação do executivo não tinha priorização
-                                inteligente para otimizar o planejamento do dia e da meta.</p>
-                            <p><b>Ação:</b> discovery e solução de viabilidade rápida, processando a
-                                inteligência de priorização na própria Salesforce com batches agendados.</p>
-                            <p><b>Resultado:</b> <b>aumento de mais de 15%</b> no atingimento das metas
-                                e agilidade nos agendamentos e atendimentos.</p>
-                            <ul class="stack">
-                                <li>Salesforce</li>
                             </ul>
                         </div>
                     </details>
@@ -1300,45 +1373,52 @@
                         decoding="async">
                     <figcaption>Hoje — arquiteto e mentor.</figcaption>
                 </figure>
+            </div>
+        </section>
 
-                <h3>A jornada em vídeo</h3>
+        <!-- ============== FECHAMENTO · Em números (síntese p/ recrutadores) ============== -->
+        <section class="closing" id="kpi" data-theme="ai" aria-labelledby="kpi-title">
+            <div class="wrap">
+                <h2 id="kpi-title">Em números</h2>
+                <dl class="kpi-grid">
+                    <div>
+                        <dt>Experiência em tecnologia</dt>
+                        <dd>20+ anos</dd>
+                    </div>
+                    <div>
+                        <dt>Em grandes empresas</dt>
+                        <dd>15+ anos</dd>
+                    </div>
+                    <div>
+                        <dt>Tech Lead na Rede</dt>
+                        <dd>7 anos</dd>
+                    </div>
+                    <div>
+                        <dt>Foco atual</dt>
+                        <dd>IA Agêntica</dd>
+                    </div>
+                    <div>
+                        <dt>Custos</dt>
+                        <dd>−R$3MM</dd>
+                    </div>
+                    <div>
+                        <dt>Metas</dt>
+                        <dd>+15%</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ============== OUTRO · vídeo como CTA de saída ============== -->
+        <section class="outro" data-theme="ai" aria-labelledby="video-title">
+            <div class="wrap">
+                <h2 id="video-title">A jornada, em vídeo</h2>
                 <div class="video" data-video="nQt9JjzXDd4">
                     <button type="button" aria-label="Assistir ao vídeo da jornada no YouTube">
                         <span class="video__play" aria-hidden="true">▶</span>
                         Assistir no YouTube
                     </button>
                 </div>
-
-                <!-- KPI Final Agregado -->
-                <section class="kpi-final" id="kpi" aria-label="Resumo de carreira para recrutadores">
-                    <h3 style="margin-top:0">Em números</h3>
-                    <dl class="kpi-grid">
-                        <div>
-                            <dt>Experiência em tecnologia</dt>
-                            <dd>20+ anos</dd>
-                        </div>
-                        <div>
-                            <dt>Em grandes empresas</dt>
-                            <dd>15+ anos</dd>
-                        </div>
-                        <div>
-                            <dt>Tech Lead na Rede</dt>
-                            <dd>7 anos</dd>
-                        </div>
-                        <div>
-                            <dt>Foco atual</dt>
-                            <dd>IA Agêntica</dd>
-                        </div>
-                        <div>
-                            <dt>Custos</dt>
-                            <dd>−R$3MM</dd>
-                        </div>
-                        <div>
-                            <dt>Metas</dt>
-                            <dd>+15%</dd>
-                        </div>
-                    </dl>
-                </section>
             </div>
         </section>
     </main>

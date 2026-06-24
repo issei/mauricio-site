@@ -127,7 +127,7 @@ O `te-scene.js` v2 já tem **um sistema de pontos com 5 estados-alvo** e `setPro
    ```js
    const THEME_COLORS = {
      terminal: '#070803', wire: '#03100b', net: '#070f1d',
-     cloud: '#eef3fb', ai: '#080a10',
+     cloud: '#0e141d', ai: '#080a10', // F4 = Dark Mode Premium (v2.2)
    };
    // dentro de setTheme:
    let meta = document.querySelector('meta[name="theme-color"]');

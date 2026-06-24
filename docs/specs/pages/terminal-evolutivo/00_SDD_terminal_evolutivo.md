@@ -23,6 +23,13 @@
 > - **Render sob demanda** corrigido (remove o `ticker` contínuo): modos **Idle / Scroll / Animation**.
 > - **Nova §7.5 Safari/iOS**: tratamento de *WebGL Context Loss* e degradação do `backdrop-filter`.
 
+> **Changelog v2.1 → v2.2 (refino de design)** — *layout/UX; arquitetura e narrativa mantidas*
+> - **Fase 4 agora "Dark Mode Premium"** (cinza-azulado + glassmorphism): elimina o salto para tema claro e **resolve o risco R1** — a jornada fica luminosamente contínua.
+> - **Caso STAR principal de cada fase inline** (visível por padrão, `.star--hero`); secundários permanecem em acordeão.
+> - **Marco do Arquiteto em 100svh** (respiro/negative-space agressivo).
+> - **Fase 5 dividida**: KPIs viram seção de fechamento própria (`.closing#kpi`); vídeo vira CTA de saída no fim (`.outro`).
+> - **`theme-color` dinâmico por fase** (barra do navegador móvel acompanha o tema).
+
 ---
 
 ## 0. Sumário Executivo
@@ -644,7 +651,7 @@ Contraste medido contra o **scrim** do card (não contra a cena WebGL, que varia
 | Terminal âmbar (F1) | `#ffb000` / `#0a0a02` | ~10:1 ✅ |
 | Wire (F2) | `#7cffb2` / `#02100a` | ~11:1 ✅ |
 | Net (F3) | `#cde3ff` / `#08111f` | ~12:1 ✅ |
-| Nuvem (F4) | `#1f2d3d` / scrim branco `.82` | ~AA ✅ (auditar; R1) |
+| Nuvem (F4 · dark premium, v2.2) | `#c6d3e6` / `#0e141d` | ~11:1 ✅ |
 | IA (F5) | `#d7dde7` / `#0b0d12` | ~13:1 ✅ |
 
 ### 6.3 Alt-text das fotos (rascunho)
@@ -779,7 +786,7 @@ iOS Safari é o ambiente de maior risco: GPU/memória restritas, descarte agress
 
 | # | Risco / Tensão | Severidade | Mitigação |
 |:--|:--|:--|:--|
-| R1 | **Tema "Nuvem" claro (F4) contraria o STYLE_GUIDE** ("NÃO altere fundo para tons claros") | Média | Exceção *consciente e escopada*: a era 2010s era clara. Texto sobre **scrim** branco com AA garantido (§6.2). O resto do site segue Dark-Tech |
+| R1 | ~~Tema "Nuvem" claro (F4) contraria o STYLE_GUIDE~~ — **RESOLVIDO (v2.2)** | — | F4 passou a "Dark Mode Premium" (cinza-azulado + glass); a jornada é toda escura e contínua, sem exceção ao Dark-Tech |
 | R2 | Legibilidade do texto sobre cena WebGL animada | **Alta** | Scrim obrigatório (`--surface` alpha + `backdrop-filter`) em todo bloco de texto; fallback `--surface-solid` sem blur onde `backdrop-filter` falha (§7.5); auditar AA no pior frame (mais claro) da cena |
 | R3 | WebGL trava/aquece em mobile/low-end | **Alta** | Tiers de capacidade (§7.3), `dpr` cap, menos partículas, sem bloom; pausar fora de vista; degradar antes de travar |
 | R4 | Peso do bundle `three`+`gsap` atrasa o conteúdo | Média | Code-split do 3D; HTML/CSS críticos primeiro; canvas carrega depois e nunca bloqueia (§7.1) |
