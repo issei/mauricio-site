@@ -4,7 +4,8 @@
 **Data**: 2026-06-28
 **Autor**: Direção conceitual (Maurício Issei + ghostwriting assistido)
 **Tipo**: Brief de direção criativa e narrativa — **NÃO é especificação técnica**
-**Status**: Proposta conceitual aprovada na alma (metáfora + narrativa). **Estrutura e visual ainda ABERTOS** — destinados a prototipagem (Claude Design) e posterior tradução em SDD.
+**Status**: Direção conceitual **aprovada e IMPLEMENTADA** como "Caminho 2 · Laca e Folha" (ver §16). Metáfora, arco e método narrativo decididos; a estrutura e o visual — antes abertos — foram resolvidos pelo protótipo e portados para produção (`src/terminal-evolutivo.html`, gate verde). Pendentes: regeneração AEO/SEO e commit/push.
+**Revisado**: 2026-06-28 (sincronizado com a implementação).
 **Sucede**: [`01_SDD_v3_semantica_humana.md`](01_SDD_v3_semantica_humana.md) (v3 "Semântica Humana", implementada e publicada — ver `commit ba957d3`).
 **Entregável de produto**: `src/terminal-evolutivo.html` (+ JS/CSS) · URL: `mauricio.issei.com.br/terminal-evolutivo`
 
@@ -21,6 +22,8 @@ Este brief é **deliberadamente autossuficiente**. Ele foi escrito para que qual
 5. **Prototipar o visual** a partir de sementes (não de decisões fechadas) (§10) e de um prompt pronto (§12).
 
 > ⚠️ **Hierarquia de decisões.** O que está **decidido**: o propósito (§1), a metáfora Shokunin·Kintsugi·Bambu (§3–§5), o arco emocional (§6), o método narrativo **"cena primeiro, nome depois"** (§9.7 + §7.2), o final aberto (§7), os princípios de design e restrições inegociáveis (§9, §11). O que está **aberto de propósito**: a estrutura/esqueleto (§7.1: tríptico vs. cronológico) e toda a linguagem visual concreta (§10) — cor, tipografia, movimento, uso ou não de WebGL. Estes últimos serão decididos **vendo**, via protótipo. Não trave o que está marcado como aberto; não reabra o que está marcado como decidido sem justificar.
+>
+> 🟢 **ATUALIZAÇÃO (2026-06-28):** os itens "abertos" acima foram RESOLVIDOS — a direção **"Caminho 2 · Laca e Folha"** foi prototipada e **implementada** (gate verde). Ver §16. O brief permanece como a fonte da INTENÇÃO; a §16 registra a EXECUÇÃO.
 
 ---
 
@@ -77,7 +80,7 @@ O menino que, nos anos 80, absorvia heróis japoneses de TV (**Jaspion, Changema
 ### 3.2 Evidência de que a metáfora já estava latente no produto atual (v3)
 Dois fatos verificáveis no código publicado confirmam que os instintos de design já apontavam para cá:
 - **O acento do site é `#d9b06a`** — um âmbar dourado que o próprio CSS descreve como "o âmbar da infância, retornando como calor maduro". Isso é, literalmente, **o ouro do Kintsugi**.
-- **As duas fotos que o site se recusa a filtrar** (classe `figure--bare`, `filter: none !important`) são a **careca de 2017** (a rachadura) e a **família de 2025** (a raiz/o bambuzal) — mostradas "sem mediação". A rachadura e a raiz, já exibidas em verdade.
+- **As duas fotos que o site se recusa a filtrar** (classe `figure--bare`, `filter: none !important`) são a **careca de 2017** (a rachadura) e a **família de 2026** (a raiz/o bambuzal) — mostradas "sem mediação". A rachadura e a raiz, já exibidas em verdade.
 
 ### 3.3 Os três pilares mapeados nas três paixões
 | Pilar japonês | Significado-núcleo | Paixão correspondente | Função na narrativa |
@@ -183,6 +186,8 @@ A alma está decidida; o esqueleto, não. As duas opções nascem da mesma alma 
 - *Contra:* exige curadoria de voz constante para não recair em "e aí, e aí, e aí" (energia de currículo).
 
 > Há também um **híbrido** possível: cronologia como eixo (B), com **três "câmaras" temáticas** (A) destacadas em momentos-chave — o ofício como fio condutor, as fraturas douradas como interlúdios escuros, o bambuzal como final. Vale prototipar.
+
+> ✅ **ESCOLHIDO (protótipo "Laca e Folha", §16):** essencialmente a **Opção B / híbrido** — scrollytelling de cenas no eixo cronológico (1982 → 2026 → "continua"), os três pilares como lentes, **sem timeline nem rótulos de conceito**.
 
 ### 7.2 A nomeação — a chave entregue no fim (opcional e diegética)
 Depois que o visitante **viveu** as cenas — e só então — o site pode oferecer, discretamente e para quem quiser, as três palavras que nomeiam o que ele acabou de sentir: *Shokunin, Kintsugi, Bambu*. Não como rótulos no topo dos capítulos, mas como um **presente no fim**, perto do nó de bambu que continua:
@@ -387,22 +392,62 @@ Pesquisa de sites biográficos premiados (Awwwards/Webby). Filtro: a maioria é 
 - **Estrutura adiada** (tríptico vs. cronológico) — a ser decidida por protótipo.
 - **Visual adiado** — a ser decidido por protótipo (Claude Design), a partir das sementes (§10) e do prompt (§12).
 - **Preservar a herança da v3** (a11y, fallback, envelhecimento reverso, SEO/AEO) — não regredir.
+- **Direção visual = "Caminho 2 · Laca e Folha" (2026-06-28).** Prototipada no Claude Design e implementada em produção (§16): cena-cronológico; gesto assinatura = costura dourada do Kintsugi + colmo de bambu; **sem WebGL** (CSS + SVG); fontes Spectral + IBM Plex Mono.
+- **Correção de a11y herdada do protótipo.** Rótulos mono escuros reprovavam contraste AA; ajustados (§16.3). A11y é inegociável (§11.1).
 
-### 15.2 Perguntas em aberto (para resolver no protótipo / próxima SDD)
-1. **Esqueleto:** tríptico (A), cronológico-bambu (B) ou híbrido (§7.1)?
-2. **Gesto visual assinatura:** qual é o ÚNICO? (candidato forte: a costura dourada do Kintsugi; alternativas: o crescimento do colmo de bambu; a luz controlada do ofício.)
-3. **WebGL sim ou não?** Só entra se for diegético e único (§11.7). Decidir vendo — pode ser que CSS/SVG já entregue a intenção (como na v3).
-4. **Som?** A pesquisa sugere feedback auditivo tátil; avaliar com cautela (autoplay e a11y). Provavelmente opcional/ativado pelo usuário.
-5. **Como a "adição de nós" futura será operacionalizada?** (estrutura de conteúdo que permita acrescentar capítulos sem reescrever o todo.)
-6. **`infancia.png`:** incluir (pequena, subordinada) ou omitir? (risco de kitsch — decisão do dono.)
+### 15.2 Perguntas — agora majoritariamente RESOLVIDAS pela implementação (§16)
+1. **Esqueleto:** ✅ cronológico-cena (Opção B / híbrido) — beats 1982 → "continua", sem timeline.
+2. **Gesto visual assinatura:** ✅ a costura dourada do Kintsugi (nervura-de-folha) + o colmo de bambu no final. SVG inline.
+3. **WebGL?** ✅ NÃO — CSS + SVG inline entregaram a intenção (como a v3 previa).
+4. **Som?** ⏳ não implementado — segue como possibilidade futura, opcional e com cautela de a11y.
+5. **"Adição de nós" futura:** ⏳ parcial — os beats são seções independentes (adicionáveis), mas falta um padrão formal de capítulo; tratar na SDD.
+6. **`infancia.png`:** ✅ omitida (o protótipo não a usou).
 
-### 15.3 Próximos passos sugeridos
-1. Prototipar 2–3 direções visuais (Claude Design) usando §12.
-2. Escolher esqueleto (§7.1) **vendo** o protótipo.
-3. Reescrever a copy completa na voz de ensaio (já há um rascunho do Manifesto/Engrenagens/Notas; reaproveitar e expandir por pilar).
-4. Traduzir a direção escolhida em **SDD técnica** (sucessora da `01_SDD_v3`), preservando §11.
-5. Implementar incrementalmente, mantendo o gate verde a cada passo.
+### 15.3 Próximos passos
+1. ✅ Prototipar (Claude Design) → "Caminho 2 · Laca e Folha".
+2. ✅ Escolher esqueleto **vendo** o protótipo (cena-cronológico).
+3. ✅ Implementar em `src/terminal-evolutivo.html` (gate verde 114/114). Ver §16.
+4. ⏳ **Regenerar AEO/SEO** para a narrativa "Laca e Folha" (JSON-LD, card visível, `og:description`, meta `description`, `.md`) — hoje ainda descrevem a v3.
+5. ⏳ Confirmar a substituição da v3 em produção e **commit + push**.
+6. ⏳ (Opcional) Destilar a execução numa **SDD técnica** sucessora da `01_SDD_v3`, preservando §11.
 
 ---
 
-*Fim do brief. Este documento é a fonte conceitual da v4. Onde ele e o código divergirem, este documento descreve a INTENÇÃO; a SDD técnica futura é quem decide a EXECUÇÃO — preservando as restrições inegociáveis (§11).*
+## 16. O que foi implementado — "Caminho 2 · Laca e Folha" (2026-06-28)
+
+> Registro da EXECUÇÃO (as §§1–14 são a INTENÇÃO). O protótipo do Claude Design **"Caminho 2 - Laca e Folha"** foi escolhido e portado para produção em `src/terminal-evolutivo.html`, **substituindo a v3**. Estado: implementado no working tree, **gate verde (114/114 chromium, axe incluído)**; **pendentes** a regeneração AEO/SEO e o commit/push.
+
+### 16.1 Esqueleto escolhido — scrollytelling de cenas (Opção B / híbrido)
+Eixo cronológico 1982 → 2026 → "continua". Sete beats + coda, **sem timeline, sem rótulos de conceito**:
+1. **Início (1982)** — "Tem um bebê numa foto de 1982… também seja um pouco a sua" (alavanca da generosidade, §9.6).
+2. **O Ofício** (Shokunin, não nomeado) — call center; "escutar antes de responder".
+3. **A Fundação** — casamento/filha; "durar, não só vencer".
+4. **A Casa Cheia** — gêmeos (Ctrl+C / Ctrl+V).
+5. **O Vale** (Kintsugi) — silêncio de 2017; a costura dourada cura a fratura; careca sem filtro; "pedi ajuda".
+6. **A Rede** (bambuzal) — família; "a rede distribui".
+7. **Final aberto** — colmo de bambu, aberto no topo; "CONTINUA".
+8. **Coda** — os três nomes (職人 / 金継ぎ / 竹) só aqui; "Primeiro veio a vida" (§7.2 honrado).
+
+### 16.2 Gesto assinatura e linguagem visual (decididos — substituem as sementes da §10 para esta página)
+- **Gesto único:** a **costura dourada do Kintsugi** como nervura-de-folha (daí "laca e folha") + o **colmo de bambu** no final. **SVG inline, sem WebGL** (resolve §15.2-q3 e honra §11.7).
+- **Paleta:** laca `#0a0706`; ouro `#d9b06a` (o do Kintsugi); verde-folha (`oklch(.76 .07 148)`).
+- **Tipografia:** **Spectral** (serifa — corpo/títulos) + **IBM Plex Mono** (rótulos).
+- **Movimento:** reveal por `IntersectionObserver` (progressive enhancement); foto sangrando com scrim de laca; grão por seção (`feTurbulence`). Sem scroll-jacking.
+
+### 16.3 Restrições da §11 — como foram honradas (e uma reinterpretação)
+- a11y/axe **verde**, fallback **sem JS**, `reduce-motion`, `<head>` SEO e footer do ecossistema: preservados.
+- **Correção de a11y herdada do protótipo:** rótulos mono escuros reprovavam contraste AA (`#7a6c56` ~3,9:1; `#6f685d` ~3,3:1) → ajustados para `#8c7f63` / `#8f877a` (~5:1+).
+- **Envelhecimento reverso (§11.4) — reinterpretado, não literal.** Não há mais a escala de densidade por 5 eras; em vez disso o **grão decresce beat a beat** (.07 → .025) e os trechos mais vazios são o **Vale** e a **coda** (respiro máximo no fim). O espírito ("maturidade = menos ruído") foi mantido; a mecânica mudou.
+
+### 16.4 Descartado
+Timeline de 5 eras, KPI "Em números", outro de vídeo, tema-por-era, módulos JS antigos (`terminal-evolutivo.js`, `eco-nav.js`) e `infancia.png`.
+
+### 16.5 Débito pendente
+- **AEO/SEO desatualizado:** o JSON-LD do `<head>` e o card visível "Em síntese/FAQ" ainda descrevem a v3 ("cinco fases / envelhecimento reverso / Marco do Arquiteto"). São **gerados** (§11.6) — regenerar via `scripts/seo/*` após atualizar a fonte AEO da página (inclui `og:description`, meta `description`, `og-image` e o `.md`).
+- **Testes:** `tests/terminal-evolutivo.spec.js` reescrito para a nova estrutura (11 testes verdes: SEO, cenas, "nome só na coda", o Vale, reveal, axe, mobile, ecossistema, sem-JS).
+- **Commit/push** pendentes de aprovação do dono e da regeneração AEO.
+- **Inconsistência a confirmar:** a foto da família aparece como **2026** no protótipo/produção, mas a §8 (fonte da verdade), a §3.2 e a §10 dizem **2025**. Confirmar a data real e alinhar.
+
+---
+
+*Fim do brief. Este documento é a fonte conceitual da v4. As §§1–14 descrevem a INTENÇÃO; a §16 registra a EXECUÇÃO ("Laca e Folha"). Onde intenção e código divergirem, preservam-se as restrições inegociáveis (§11).*
