@@ -146,7 +146,7 @@ export function buildHead(p) {
   L.push(`<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${SITE.ga4}');</script>`);
   // Identidade / indexação
   L.push(`<meta name="author" content="${esc(SITE.name)}" />`);
-  L.push(`<meta name="theme-color" content="#0d1117" />`);
+  L.push(`<meta name="theme-color" content="${p.themeColor || '#0d1117'}" />`);
   if (p.keywords?.length) L.push(`<meta name="keywords" content="${esc(p.keywords.join(', '))}" />`);
   L.push(`<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`);
   L.push(`<link rel="canonical" href="${url}" />`);
