@@ -8,6 +8,7 @@ com uma estética que **evolui conforme o scroll** através de **5 eras visuais*
 |:----|:-------|:---------|
 | [`00_SDD_terminal_evolutivo.md`](00_SDD_terminal_evolutivo.md) | **v2.1** | Arquitetura híbrida (canvas WebGL `z-index:-1` + HTML por cima); CSS de foreground (5 temas/scrim); motor GSAP ScrollTrigger ⇄ Three.js; mapeamento 5 fases × cena WebGL × STAR × foto; **§7 Performance Budget WebGL**; milestones M1–M9. **Implementada e publicada.** |
 | [`01_SPEC_refatoracao_v3.md`](01_SPEC_refatoracao_v3.md) | **v3.0** | Refatoração: **narrativa madura** (sem anime nas fases adultas, trincheira 2003–2017, cronologia do arquiteto corrigida, anti-herói) + **WebGL semântico** (morph em formas literais: grade CRT → wireframe → nós/links → blocos → blueprint → neural) + theme-color dinâmico. Copy pronta para colar + plano R1–R5. |
+| [`02_BRIEF_conceitual_shokunin_kintsugi_bambu.md`](02_BRIEF_conceitual_shokunin_kintsugi_bambu.md) | **v4.0** *(conceitual)* | **Direção criativa, não técnica.** Reescreve a alma do site em torno de três filosofias japonesas — **Shokunin** (ofício/evolução), **Kintsugi** (fraturas viradas ouro/resiliência) e **Bambu** (raízes, flexão, legado e final aberto). Objetivo: conexão, não venda nem recrutamento. **Autossuficiente** (legível por LLM sem contexto): propósito, biografia-fonte completa, arco emocional, princípios de design, restrições inegociáveis herdadas da v3, sementes visuais e **prompt pronto para prototipagem (Claude Design)**. Estrutura e visual **abertos de propósito**. |
 | [`../../../decisions/ADR-te-001-...`](../../../decisions/ADR-te-001-refatoracao-narrativa-e-3d-semantico.md) | ADR | Decisão de refatorar para a v3.0 (contexto das críticas, alternativas, consequências). |
 
 ## Em uma frase (v2.0)
@@ -20,6 +21,8 @@ cima com fundo transparente. **100% legível sem JS e sem WebGL** (fallback CSS 
 - **v1.0:** 3 fases, HTML/CSS/JS puro, `IntersectionObserver`, ornamentos (CRT/glow) em CSS.
 - **v2.0/2.1:** 5 fases, arquitetura híbrida WebGL, GSAP ScrollTrigger; CSS só no foreground; a11y via *progressive enhancement* + fallback. **Implementada e publicada na main.**
 - **v3.0 (próxima, especificada):** mesmo esqueleto; refatora **conteúdo** (narrativa madura) e **cenas 3D** (formas semânticas que morfam) + theme-color dinâmico. Ver `01_SPEC_refatoracao_v3.md` e ADR-te-001.
+- **v3 "Semântica Humana" (implementada e publicada, `commit ba957d3`):** Three.js/WebGL **removido**; ambiente vira CSS+SVG; narrativa de vida em 1º plano, trabalho como background. Ver `01_SDD_v3_semantica_humana.md`.
+- **v4.0 (conceitual, em aberto):** nova **alma** = Shokunin · Kintsugi · Bambu; foco em conexão (não venda); final aberto (bambu que continua). **Estrutura e visual a prototipar.** Ver `02_BRIEF_conceitual_shokunin_kintsugi_bambu.md`.
 
 ## Entregável de produto
 - `src/terminal-evolutivo.html` + `src/js/terminal-evolutivo.js` (orquestrador) + `src/js/te-scene.js` (Three.js)
