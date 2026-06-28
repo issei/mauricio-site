@@ -50,7 +50,7 @@ Reflexivo, genuíno, levemente instigante. Ritmo de **carta de um amigo** ou de 
 
 ## 2. Quem é Maurício (síntese)
 
-**Maurício Yokoyama Issei.** Nascido em **17 de março de 1982**, São Paulo, Brasil. Descendência japonesa — o sobrenome **Issei (一世)** carrega, na cultura nikkei, o sentido de **"primeira geração"** (a geração imigrante). Tech Lead / Arquiteto de Soluções; hoje voltado à **Engenharia de IA Agêntica**. Casado, **três filhos** (uma filha e gêmeos — dois meninos). Mora em São Paulo, numa casa que ele mesmo reformou.
+**Maurício Yokoyama Issei.** Nascido em **17 de março de 1982**, São Paulo, Brasil. Descendente de japoneses, Maurício carrega o sobrenome **横山 (Yokoyama)** **井清 (Issei)**. Curiosamente, sua pronúncia remete a **Issei (一世)**, termo usado na cultura nikkei para designar a primeira geração de imigrantes japoneses. Embora sejam grafias e significados distintos, essa coincidência dialoga simbolicamente com a narrativa de construir caminhos e deixar um legado. Tech Lead / Arquiteto de Soluções; hoje voltado à **Engenharia de IA Agêntica**. Casado, **três filhos** (uma filha e gêmeos — dois meninos). Mora em São Paulo, numa casa que ele mesmo reformou.
 
 ### 2.1 As três paixões (a tese da vida, nas palavras dele)
 Maurício resumiu a própria vida em três paixões que formam um **ciclo causal** (um *flywheel*, um volante que se realimenta):
@@ -72,7 +72,7 @@ Tudo na narrativa orbita essa virada. Ela foi conquistada na dor (ver §6, Kints
 ## 3. A metáfora central — Shokunin · Kintsugi · Bambu
 
 ### 3.1 A descoberta: a metáfora não foi escolhida, foi herdada
-O menino que, nos anos 80, absorvia heróis japoneses de TV (**Jaspion, Changeman**) e deles tirou seu primeiro modelo mental ("evolução é contínua, disciplina é silenciosa, ninguém vence sozinho")… cresceu e foi entender a própria vida através da **filosofia japonesa**. Seu próprio nome carrega *Issei* — "primeira geração". **A forma voltou à raiz.** A metáfora não é uma camada estética por cima da biografia; é a biografia se reconhecendo. Por isso ela é mais forte do que qualquer metáfora "inventada" (ex.: uma metáfora de "sinal/terminal" considerada e descartada nesta fase).
+O menino que, nos anos 80, absorvia heróis japoneses de TV (**Jaspion, Changeman**) e deles tirou seu primeiro modelo mental ("evolução é contínua, disciplina é silenciosa, ninguém vence sozinho")… cresceu e foi entender a própria vida através da **filosofia japonesa**. Até o próprio sobrenome — *Issei* (井清) — ecoa, por coincidência fonética, *一世* ("primeira geração"); são grafias e significados distintos (ver §2), mas a ressonância simbólica é real. **A forma voltou à raiz.** A metáfora não é uma camada estética por cima da biografia; é a biografia se reconhecendo. Por isso ela é mais forte do que qualquer metáfora "inventada" (ex.: uma metáfora de "sinal/terminal" considerada e descartada nesta fase).
 
 ### 3.2 Evidência de que a metáfora já estava latente no produto atual (v3)
 Dois fatos verificáveis no código publicado confirmam que os instintos de design já apontavam para cá:
@@ -215,19 +215,19 @@ Por que isto funciona:
 - Foto: `eldorado.jpg` (1998).
 
 ### Era 3 · 2000–2009 — A trincheira (throughput máximo, margens mínimas)
-- Internet discada como **primeiro emprego de verdade**: suporte técnico no provedor **iG** e depois **OSite** (2000–2002). Ali aprendeu a **ouvir o usuário** antes de servi-lo com código.
+- Internet discada como **primeiro emprego de verdade**: suporte técnico no provedor **iG** e depois **OSite** (2000–2002). Ali aprendeu a **ouvir o usuário**, a entender a necessidade do cliente, antes de servi-lo.
 - Cursinho **Etapa** (2000); **Mackenzie a partir de 2001** (Sistemas de Informação), à noite. Acumulou dependências, recuperadas **sacrificando férias**, ano após ano.
 - **2003:** programador na **Sysgen** — tratou o **modelo como fonte da verdade** (UML + geração de código por **MDA**). "A semente do arquiteto nasceu nos anos 2000, não em 2020."
 - **Abril/2004:** **perdeu o pai.** (VALE — ver §6.)
 - **2005:** formou-se na Mackenzie; na foto, ao lado da **mãe**.
-- **2009:** conheceu a **esposa** — a vida deixa de ser só evolução individual e passa a ser construção conjunta.
+- **2009:** conheceu o **amor da vida** dele, a mulher que se tornou esposa e mãe de seus filhos — a vida deixa de ser só evolução individual e passa a ser construção conjunta.
 - Fotos: `callcenter.jpg` (2002), `programa.jpg` (Sysgen, 2003), `formatura.jpg` (2005, com a mãe).
 - Trabalho (pano de fundo, "STAR"): Analista Programador Java — **Sysgen** (2003–2012; J2EE, MVC, UML, MDA, DB2); Analista de Desenvolvimento Java — **Telefônica** (2005–2008; EJB, JBoss, Oracle; primeiros papéis de liderança).
 
 ### Era 4 · 2010–2015 — A fundação (sacrifício consciente)
-- Sem férias em 2009 e 2010; em **2011** vendeu férias e bônus para pagar a festa de casamento; lua de mel de **5 dias**. *"Prioridade é o que se faz, não o que se diz."*
+- Sem férias em 2009 e 2010; em **2011** vendeu férias e bônus para pagar a festa de casamento; *"Prioridade é o que se faz, não o que se diz."*
 - **2011:** casamento (`casamento.jpg`).
-- **2012:** nasce a **filha** (`filha.jpeg`) → troca conforto por estabilidade e vai para a **Indra**. Batismo de fogo: janela de implantação de **107 horas em 7 dias**. Juntou três frentes que o formaram arquiteto: sustentação, inovação móvel (AWS, microsserviços, Android/Ionic) e arquitetura junto ao time comercial.
+- **2012:** nasce a **filha** (`filha.jpeg`) → troca conforto por estabilidade e vai para a **Indra**. Ritmo acelerado: janela de implantação de **107 horas em 7 dias**. Juntou três frentes que o formaram arquiteto: sustentação, inovação móvel (Kony, Android, AWS, microsserviços, Android/Ionic) e arquitetura junto ao time comercial da consultoria.
 
 ### Marco do Arquiteto · transição Era 4 → 5
 > *"Desenhar sistemas eu já fazia. Agora desenho a inteligência — e os times — que os operam."*
@@ -235,8 +235,8 @@ Por que isto funciona:
 
 ### Era 5 · 2016–2026 — Maturidade (forjada na turbulência)
 - **2016:** nascem os **gêmeos** — bodies com **Ctrl+C** e **Ctrl+V** (`gemeos.jpeg`). A responsabilidade não dobrou; multiplicou.
-- **Janeiro/2017:** esposa internada, estresse acumulado, **alopecia** (careca por um ano). Fundo do poço; o ponto único de falha falhou. Lição: limite e pedir ajuda. (VALE — ver §6.) Foto `careca.jpeg` (2017, com os filhos — **sem filtro**, dignidade).
-- **Dez/2017–jan/2018:** passagem pela **Serasa** (imersão em agilidade; OAuth 2 corporativo). Tinha proposta da **Rede**, mas adiou a saída até **concluir o mega projeto** sob sua responsabilidade — "entregar o que se promete também é arquitetura".
+- **Janeiro/2017:** esposa internada, estresse acumulado, **alopecia** (careca por um ano). Burnout; o ponto único de falha falhou. Lição: limite e pedir ajuda. (VALE — ver §6.) Foto `careca.jpeg` (2017, com os filhos — **sem filtro**, dignidade).
+- **Dez/2017–jan/2018:** passagem pela **Serasa** (imersão em agilidade; OAuth 2 corporativo). Tinha proposta da **Rede**, mas adiou a saída até **concluir o projeto** sob sua responsabilidade — "entregar o que se promete é responsabilidade".
 - **2019:** financiou e reestruturou a casa — **demoliu 65%** para otimizar a planta (a mentalidade de refatorar um sistema, aplicada a tijolo).
 - Daí em diante: cloud, SRE, observabilidade como linguagem; foco do código para a **orquestração** — IA agêntica, automação, formar quem entrega.
 - **2025:** certificações que ancoram a virada — AI Agentic Design Patterns; AI Agents with LangGraph; AI with Knowledge Graphs; GenAI for Leaders.
@@ -245,9 +245,9 @@ Por que isto funciona:
 - Trabalho (pano de fundo, "STAR"): Pipe Automática Comercial (2025, +15% metas); Agrupamento Comercial (2024, 10 dias → tempo real); Economia no contrato Salesforce (2020, −R$3MM); Sustentação AFVC + Core Rede / Splunk (2018–2020).
 
 ### Números (modo informativo, isolado do fluxo emocional)
-20+ anos em tecnologia · 15+ em grandes empresas · 7 anos como Tech Lead na Rede · foco atual: IA Agêntica · −R$3MM (contrato Salesforce) · +15% (metas).
+20+ anos em tecnologia · 15+ em grandes empresas · 8 anos como Tech Lead na Rede · foco atual: IA Agêntica · −R$3MM (contrato Salesforce) · +15% (metas).
 
-> ⚠️ Os números acima são **intermezzo executivo** — devem ficar **declaradamente fora** do fluxo narrativo (um "modo informativo" opcional, para quem quiser). Não deixe que contaminem o tom de ensaio.
+> ⚠️ Os números acima são **intermezzo executivo** — devem ficar **declaradamente fora** do fluxo narrativo. Não deixe que contaminem o tom de ensaio.
 
 ---
 
@@ -304,7 +304,7 @@ NÃO um portfólio. Objetivo: criar CONEXÃO emocional (o leitor pensa na própr
 admiração nem venda. Tom: ensaio íntimo, primeira pessoa, reflexivo.
 
 A alma do site são três filosofias japonesas que sintetizam a vida do autor (Maurício Issei,
-descendente de japoneses — "Issei" = primeira geração; cresceu com heróis japoneses de TV):
+descendente de japoneses — o sobrenome ecoa foneticamente "primeira geração"; cresceu com heróis japoneses de TV):
 
 1) SHOKUNIN (o ofício como caminho de aperfeiçoamento) → o trabalho/evolução, com dignidade,
    sem cara de currículo. Estética: precisão, contenção, subtração; grafite/aço; tipografia
@@ -368,7 +368,7 @@ Pesquisa de sites biográficos premiados (Awwwards/Webby). Filtro: a maioria é 
 - **Shokunin (職人):** artesão japonês cuja identidade é a devoção infinita ao ofício; a obra nunca está "pronta".
 - **Kintsugi (金継ぎ):** arte de reparar cerâmica quebrada com laca e ouro, tornando a fratura visível e valiosa; filosofia de abraçar o dano como parte da história.
 - **Bambu (竹) / fushi (節):** planta de raízes interconectadas que verga sem quebrar e cresce em segmentos marcados por nós (*fushi*); um bambuzal é um só organismo subterrâneo.
-- **Issei (一世):** "primeira geração" (de imigrantes japoneses) — também o nome do autor.
+- **Issei (井清):** sobrenome do autor. Homófono de **一世 (issei)**, termo nikkei para "primeira geração" de imigrantes — grafias e significados distintos; é a coincidência fonética que ressoa com a narrativa de legado (ver §2).
 - **Scrollytelling:** narrativa cuja progressão visual é controlada pelo scroll.
 - **Progressive enhancement:** camada extra (CSS/JS/WebGL) que enriquece sem ser pré-requisito do conteúdo.
 - **Envelhecimento reverso:** a página começa densa/analógica e vai ficando limpa/espaçosa; maturidade = eliminar ruído.
