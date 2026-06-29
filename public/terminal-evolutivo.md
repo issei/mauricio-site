@@ -4,7 +4,7 @@
 
 ## A narrativa, em cenas
 
-A página é uma sequência de cenas, do bebê de 1982 ao presente: o ofício (as noites no suporte da internet discada, aprender a escutar antes de responder); a primeira fratura (abril de 2004, a perda do pai, e o aprendizado de seguir mesmo sem estar pronto); a fundação (o casamento, a primeira filha, querer "durar, não só vencer"); a casa cheia (os gêmeos com bodies Ctrl+C e Ctrl+V); o vale (janeiro de 2017, o esgotamento e a alopecia, a primeira vez que pediu ajuda); a rede (a família reunida — de ponto único de falha a um bambuzal); e um final aberto: a história continua. Uma coda revela, só no fim, os três nomes: Shokunin, Kintsugi e Bambu.
+A página é uma sequência de cenas, do bebê de 1982 ao presente: o ofício (as noites no suporte da internet discada, aprender a escutar antes de responder); a primeira fratura (abril de 2004, a perda do pai, e o aprendizado de seguir mesmo sem estar pronto); a formatura (2005, o diploma em logística como a entrega que o pai não viu, ao lado da mãe); a fundação (o casamento em 2011); o nascimento da filha (2012, quando o vetor da vida muda de velocidade para durabilidade — de correr para vencer a fincar raiz para proteger); a casa cheia (os gêmeos com bodies Ctrl+C e Ctrl+V); o vale (janeiro de 2017, o esgotamento e a alopecia, a primeira vez que pediu ajuda); a rede (a família reunida — de ponto único de falha a um bambuzal); e um final aberto: a história continua. Uma coda revela, só no fim, os três nomes: Shokunin, Kintsugi e Bambu.
 
 ## Três filosofias japonesas
 

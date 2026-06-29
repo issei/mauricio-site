@@ -402,6 +402,121 @@
             margin: 46px auto 0;
         }
 
+        /* ---------- INTERLÚDIOS DE VIDRO · 2005 e 2012 ----------
+           Foto em tela cheia + cartão de vidro fosco (glassmorphism) com a copy:
+           a memória atrás do vidro. 2005 tem parallax (a entrega se montando);
+           2012 "ancora" (sem parallax) e ganha uma raiz dourada descendo — o
+           primeiro nó da estrutura, foreshadow do bambu. */
+        .glassbeat {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8vh var(--bleed);
+            overflow: hidden;
+        }
+
+        .glassbeat--right {
+            overflow: visible;
+        }
+
+        .glassbeat__bg {
+            position: absolute;
+            inset: 0;
+            margin: 0;
+        }
+
+        .glassbeat__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .glassbeat__bg img[data-parallax] {
+            transform: scale(1.16) translateY(var(--py, 0px));
+            will-change: transform;
+        }
+
+        .glassbeat__bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, rgba(8, 6, 4, .88) 0%, rgba(8, 6, 4, .64) 42%, rgba(8, 6, 4, .28) 100%);
+        }
+
+        .glassbeat--right .glassbeat__bg::after {
+            background: linear-gradient(255deg, rgba(8, 6, 4, .88) 0%, rgba(8, 6, 4, .64) 42%, rgba(8, 6, 4, .28) 100%);
+        }
+
+        .glass {
+            position: relative;
+            z-index: 1;
+            max-width: 470px;
+            padding: 2.4rem 2.2rem;
+            background: rgba(12, 9, 6, .40);
+            -webkit-backdrop-filter: blur(16px) saturate(1.08);
+            backdrop-filter: blur(16px) saturate(1.08);
+            border: 1px solid rgba(217, 176, 106, .20);
+            border-top: 2px solid var(--gold);
+            border-radius: 3px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
+        }
+
+        .glass--right {
+            margin-left: auto;
+        }
+
+        .glass .eyebrow {
+            margin-bottom: .2rem;
+        }
+
+        .glass h2 {
+            margin-top: .7rem;
+        }
+
+        .glass .text {
+            margin-top: 1.2rem;
+            font-size: 17px;
+        }
+
+        /* raiz dourada que desce (2012 → bambu) */
+        .rootline {
+            position: absolute;
+            left: 50%;
+            bottom: 4vh;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 26vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .rootline path {
+            stroke-dasharray: 1;
+            stroke-dashoffset: 0;
+        }
+
+        html[data-js] .rootline[data-reveal] path {
+            stroke-dashoffset: 1;
+        }
+
+        html[data-js] .rootline[data-reveal][data-inview] path {
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 2s ease .4s;
+        }
+
+        @media (max-width: 720px) {
+            .glassbeat {
+                align-items: flex-end;
+                padding-bottom: 14vh;
+            }
+
+            .glass {
+                max-width: 100%;
+                padding: 1.6rem 1.4rem;
+            }
+        }
+
         /* ---------- O VALE · Kintsugi (silêncio) ---------- */
         .vale {
             position: relative;
@@ -697,6 +812,7 @@
   <!-- ============================================================ -->
   <!-- ============================================================ -->
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -900,6 +1016,20 @@
             <p class="silence__note" data-reveal>Filho único, amadureci de uma vez. Aprendi a dirigir, vendi o carro dele, comprei o meu primeiro com o salário daquele ano. A vida não esperou eu ficar pronto — e nunca espera. Naquele momento, eu só sabia uma forma de seguir: sozinho. Levaria mais de uma década pra descobrir que existia outra.</p>
         </section>
 
+        <!-- ============ 2005 · A FORMATURA (a entrega que ele não viu) ============ -->
+        <section class="glassbeat" aria-labelledby="b2005-title">
+            <figure class="glassbeat__bg">
+                <img src="/fotos/formatura.jpg" alt="Formatura em Sistemas de Informação na Mackenzie, 2005, ao lado da mãe."
+                    style="object-position:center 28%; filter:saturate(.92) contrast(1.03);" data-parallax="0.06" loading="lazy" decoding="async">
+            </figure>
+            <div class="glass" data-reveal>
+                <p class="eyebrow">2005 · A ENTREGA</p>
+                <h2 id="b2005-title">Eu me formei em logística. Mas o curso de verdade aconteceu fora da sala.</h2>
+                <p class="text">De dia o telemarketing, de madrugada o estudo, e nas frestas a luta pra não desabar. Acumulei matérias atrasadas como gargalos numa linha que nunca para — e paguei cada uma sacrificando férias inteiras. Eu não estudei logística no quadro-negro: <span class="em">era a carga atravessando o gargalo</span>.</p>
+                <p class="text text--italic">No ano anterior, eu tinha perdido meu pai — e, pra ele, estudo era a coisa mais valiosa que existia. Quando subi pra pegar o diploma, foi a única entrega que importava. Ele não chegou a vê-la. Quem segurava o peso comigo, ao meu lado na foto, era minha mãe.</p>
+            </div>
+        </section>
+
         <!-- ============ BEAT 3 · A FUNDAÇÃO — instantâneo centrado ============ -->
         <section class="beat--center"
             style="background:radial-gradient(125% 100% at 50% 42%, #16110b 0%, #0a0706 66%);"
@@ -909,14 +1039,38 @@
                 <rect width="100%" height="100%" filter="url(#g3)" />
             </svg>
             <div class="copy--center">
-                <p class="eyebrow">2011 · 2012</p>
-                <h2 id="b3-title" data-reveal>Paguei a festa de casamento com as férias que nunca tirei. No ano seguinte, nasceu minha filha — e, pela primeira vez, eu quis <span class="em">durar</span>, não só vencer.</h2>
+                <p class="eyebrow">2011 · A FUNDAÇÃO</p>
+                <h2 id="b3-title" data-reveal>Em 2011, casei. Paguei a festa de casamento com as férias que nunca tirei e o bônus que vendi — e a lua de mel durou <span class="em">cinco dias</span>.</h2>
                 <figure class="shot" data-reveal>
                     <img src="/fotos/casamento.jpg" alt="Casamento em 2011 — a fundação mais crítica não era de software."
                         style="filter:sepia(.08) saturate(.95) contrast(1.02) brightness(.98);" loading="lazy" decoding="async">
                 </figure>
-                <p class="text text--italic" data-reveal style="max-width:540px; margin-inline:auto;">Até ali, eu media a vida em conquistas. De repente havia alguém por quem valia a pena construir devagar, com raiz. A fundação mais importante que assentei nunca foi de software — e me custou caro, em horas e em renúncia. Eu pagaria de novo, sem pensar.</p>
+                <p class="text text--italic" data-reveal style="max-width:540px; margin-inline:auto;">Prioridade não é o que a gente diz; é o que a gente faz, e o quanto abre mão. Ali assentei a fundação mais importante da minha vida — e ela não era de software. Era de gente: alguém com quem valia a pena dividir o peso e o resto do caminho.</p>
             </div>
+        </section>
+
+        <!-- ============ 2012 · O NASCIMENTO DA FILHA (o vetor muda de direção) ============ -->
+        <section class="glassbeat glassbeat--right" aria-labelledby="b2012-title">
+            <figure class="glassbeat__bg">
+                <img src="/fotos/filha.jpeg" alt="Filha recém-nascida em 2012 — o vetor de força da vida muda de direção."
+                    style="object-position:center 38%; filter:saturate(.94) contrast(1.02);" loading="lazy" decoding="async">
+            </figure>
+            <div class="glass glass--right" data-reveal>
+                <p class="eyebrow">2012 · A VIRADA DE VETOR</p>
+                <h2 id="b2012-title">Até aqui, eu media a vida em velocidade. Então minha filha nasceu — e o <span class="em">vetor de força</span> inteiro mudou de direção.</h2>
+                <p class="text">Eu era um sistema afinado para vencer. E todo sistema no pico está, no mesmo gesto, afinado para quebrar. De um dia para o outro, a métrica deixou de ser velocidade e virou durabilidade: parei de querer ser rápido. Quis ser fundação.</p>
+                <p class="text text--italic">Troquei a corrida pela raiz — fui buscar estabilidade e me enterrei no trabalho pra proteger o que agora importava. (Sem perceber, plantei ali a semente do esgotamento que viria.) Pela primeira vez, a vida tinha um motivo para durar.</p>
+            </div>
+            <svg class="rootline" data-reveal viewBox="0 0 60 220" fill="none" aria-hidden="true">
+                <defs>
+                    <linearGradient id="rootGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#d9b06a" />
+                        <stop offset=".6" stop-color="#b88a45" />
+                        <stop offset="1" stop-color="#b88a45" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+                <path d="M30,0 C30,48 22,68 30,108 C38,150 30,182 30,220" pathLength="1" stroke="url(#rootGrad)" stroke-width="2.4" stroke-linecap="round" />
+            </svg>
         </section>
 
         <!-- ============ BEAT 4 · A CASA CHEIA (gêmeos 2016) — instantâneo centrado ============ -->
