@@ -315,6 +315,94 @@
             animation: hintBob 2.6s ease-in-out infinite;
         }
 
+        /* ---------- ERA 1 · A INFÂNCIA (1982–1990) · estética do ruído ----------
+           A colagem "infancia.png" como uma parede de memória onde a câmera mergulha
+           (push-in no eixo Z, dirigido pelo scroll via --zoom), banhada pela luz quente
+           do abajur, com grão analógico forte. Filho único, mundo lotado. */
+        .era1 {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 var(--bleed) 10vh;
+            overflow: hidden;
+            background: #0a0604;
+        }
+
+        .era1__bg {
+            position: absolute;
+            inset: 0;
+            margin: 0;
+        }
+
+        .era1__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 42%;
+        }
+
+        /* push-in no eixo Z: a câmera mergulha na colagem, convergindo na foto central */
+        .era1__bg img[data-zoom] {
+            transform: scale(var(--zoom, 1.08)) translateY(var(--py, 0px));
+            transform-origin: 48% 46%;
+            will-change: transform;
+        }
+
+        /* luz quente do abajur (canto inferior esquerdo) */
+        .era1__lamp {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(40% 56% at 12% 90%, rgba(232, 170, 82, .36), rgba(232, 170, 82, .10) 42%, transparent 70%);
+            mix-blend-mode: screen;
+        }
+
+        /* vinheta + scrim (a copy mora embaixo) */
+        .era1__scrim {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(105deg, rgba(6, 4, 3, .96) 0%, rgba(6, 4, 3, .85) 26%, rgba(6, 4, 3, .48) 44%, transparent 58%),
+                linear-gradient(to top, rgba(6, 4, 3, .94) 0%, rgba(6, 4, 3, .5) 22%, transparent 46%),
+                radial-gradient(130% 96% at 58% 30%, transparent 48%, rgba(6, 4, 3, .5) 100%);
+        }
+
+        .era1 .copy {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, .85), 0 1px 3px rgba(0, 0, 0, .9);
+        }
+
+        .era1 .copy .text {
+            font-size: 17px;
+        }
+
+        /* mobile: a colagem larga só mostra a tira central (a foto na moldura);
+           a copy ocupa a largura toda, então o scrim de baixo precisa ser pesado. */
+        @media (max-width: 720px) {
+            .era1 {
+                padding: 0 26px 9vh;
+            }
+
+            .era1__scrim {
+                background:
+                    linear-gradient(to top, rgba(6, 4, 3, .98) 0%, rgba(6, 4, 3, .95) 44%, rgba(6, 4, 3, .66) 62%, rgba(6, 4, 3, .20) 82%, transparent 92%),
+                    radial-gradient(150% 78% at 50% 12%, transparent 36%, rgba(6, 4, 3, .55) 100%);
+            }
+
+            .era1 .copy h2 {
+                font-size: clamp(23px, 7vw, 28px);
+            }
+
+            .era1 .copy .text {
+                font-size: 14.5px;
+                line-height: 1.55;
+            }
+        }
+
         /* ---------- Beat centrado · foto landscape inteira (ex.: os três filhos) ----------
            Fotos de grupo horizontais NÃO cabem num recorte vertical de meia-coluna sem
            cortar gente. Aqui a foto é mostrada por inteiro, como um instantâneo de família. */
@@ -813,6 +901,7 @@
   <!-- ============================================================ -->
   <!-- ============================================================ -->
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -980,6 +1069,27 @@
                 <p class="lead">Cresci num Brasil de TV de tubo e antena ajustada na mão, e ia levar a vida inteira pra aprender o que de fato importava. Esta é a minha história — e, em alguns trechos, talvez seja um pouco a sua também.</p>
             </div>
             <p class="scroll-hint" aria-hidden="true">ROLE DEVAGAR ↓</p>
+        </section>
+
+        <!-- ============ ERA 1 · A INFÂNCIA (1982–1990) — o primeiro boot ============ -->
+        <section class="era1" aria-labelledby="era1-title">
+            <figure class="era1__bg">
+                <img src="/fotos/infancia.png"
+                    alt="Colagem da infância nos anos 80: ao centro, Maurício criança numa moldura de madeira; à esquerda, desenhos da Hanna-Barbera; à direita, uma parede de heróis de Tokusatsu; um abajur de luz quente ilumina a cena."
+                    data-parallax="0.04" data-zoom="1.08" loading="lazy" decoding="async">
+            </figure>
+            <span class="era1__lamp" aria-hidden="true"></span>
+            <span class="era1__scrim" aria-hidden="true"></span>
+            <svg class="grain" style="opacity:.14;" aria-hidden="true">
+                <filter id="gE1"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" /></filter>
+                <rect width="100%" height="100%" filter="url(#gE1)" />
+            </svg>
+            <div class="copy" data-reveal>
+                <p class="eyebrow eyebrow--bright">1982–1990 · O PRIMEIRO BOOT</p>
+                <h2 id="era1-title">Fui filho único. Mas o quarto vivia <span class="em">lotado</span>.</h2>
+                <p class="text">Sem irmãos, a imaginação virou o processador central — rodava o dia inteiro, preenchendo cada vazio. A TV ligava e o quarto enchia: à esquerda os desenhos, à direita uma parede de heróis. Jaspion, Changeman, Kamen Rider não eram passatempo. Eram <strong>código moral</strong> — me ensinaram a única regra que sobreviveu a tudo: <span class="em">cair faz parte; o que conta é levantar</span>.</p>
+                <p class="text">Lá fora, a rua era meu ambiente de testes. No asfalto eu media a física na pele: o guidão da bicicleta, o tombo do skate, a velocidade contra o medo. No controle do videogame, com os amigos, eu treinava a lógica mais difícil de todas — a das conexões humanas. No centro de tudo, um menino com uma guitarrinha de brinquedo, sem saber que já ensaiava construir mundos. Era ruído. Era cru. E era meu.</p>
+            </div>
         </section>
 
         <!-- ============ BEAT 2 · O OFÍCIO (Shokunin, sem nomear) ============ -->
@@ -1315,17 +1425,25 @@
            sem JS, as fotos ficam estáticas (--py nunca é setado → 0). */
         (function () {
             if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            var els = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+            var els = Array.prototype.slice.call(document.querySelectorAll('[data-parallax], [data-zoom]'));
             if (!els.length) return;
             var ticking = false;
             function update() {
                 var vh = window.innerHeight || 800;
                 for (var i = 0; i < els.length; i++) {
                     var el = els[i];
-                    var f = parseFloat(el.getAttribute('data-parallax')) || 0.08;
                     var r = el.getBoundingClientRect();
                     var d = (r.top + r.height / 2) - vh / 2;
-                    el.style.setProperty('--py', (-d * f).toFixed(1) + 'px');
+                    if (el.hasAttribute('data-parallax')) {
+                        var f = parseFloat(el.getAttribute('data-parallax')) || 0.08;
+                        el.style.setProperty('--py', (-d * f).toFixed(1) + 'px');
+                    }
+                    if (el.hasAttribute('data-zoom')) {
+                        var prog = 0.5 - d / vh;          // ~0 ao entrar (baixo) → ~1 ao sair (topo)
+                        prog = prog < 0 ? 0 : (prog > 1 ? 1 : prog);
+                        var z0 = parseFloat(el.getAttribute('data-zoom')) || 1.08;
+                        el.style.setProperty('--zoom', (z0 + prog * 0.14).toFixed(3));
+                    }
                 }
                 ticking = false;
             }
