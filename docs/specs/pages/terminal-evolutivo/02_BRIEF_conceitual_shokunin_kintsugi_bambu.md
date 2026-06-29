@@ -246,7 +246,7 @@ Por que isto funciona:
 - Daí em diante: cloud, SRE, observabilidade como linguagem; foco do código para a **orquestração** — IA agêntica, automação, formar quem entrega.
 - **2025:** certificações que ancoram a virada — AI Agentic Design Patterns; AI Agents with LangGraph; AI with Knowledge Graphs; GenAI for Leaders.
 - Hoje: a esposa cresceu de **analista a empresária**; rede de apoio familiar real. **De operador a arquiteto a mentor — de ponto único de falha a uma rede.**
-- Foto final: `familia.jpeg` (2025, a família reunida — **sem filtro**; o alicerce coletivo).
+- Foto final: `familia.jpeg` (2026, a família reunida — **sem filtro**; o alicerce coletivo).
 - Trabalho (pano de fundo, "STAR"): Pipe Automática Comercial (2025, +15% metas); Agrupamento Comercial (2024, 10 dias → tempo real); Economia no contrato Salesforce (2020, −R$3MM); Sustentação AFVC + Core Rede / Splunk (2018–2020).
 
 ### Números (modo informativo, isolado do fluxo emocional)
@@ -281,7 +281,7 @@ Por que isto funciona:
 **Constantes transversais (herdadas e desejadas):**
 - O **ouro `#d9b06a`** é o fio condutor (já é o acento do site) — calor maduro, ouro do Kintsugi.
 - **Envelhecimento reverso** (ver §11.4): começa denso/texturizado → termina espaçoso/limpo. *Maturidade é eliminação de ruído, não adição de efeito* — princípio que casa com Shokunin (subtração) e Bambu (o oco).
-- Fotos como **artefatos com peso** (lição do caso Getty/Gehry — ver §13), não ilustração decorativa. As fotos de vale (careca 2017) e raiz (família 2025) ficam **sem filtro**.
+- Fotos como **artefatos com peso** (lição do caso Getty/Gehry — ver §13), não ilustração decorativa. As fotos de vale (careca 2017) e raiz (família 2026) ficam **sem filtro**.
 
 ---
 
@@ -446,7 +446,7 @@ Timeline de 5 eras, KPI "Em números", outro de vídeo, tema-por-era, módulos J
 - **AEO/SEO desatualizado:** o JSON-LD do `<head>` e o card visível "Em síntese/FAQ" ainda descrevem a v3 ("cinco fases / envelhecimento reverso / Marco do Arquiteto"). São **gerados** (§11.6) — regenerar via `scripts/seo/*` após atualizar a fonte AEO da página (inclui `og:description`, meta `description`, `og-image` e o `.md`).
 - **Testes:** `tests/terminal-evolutivo.spec.js` reescrito para a nova estrutura (11 testes verdes: SEO, cenas, "nome só na coda", o Vale, reveal, axe, mobile, ecossistema, sem-JS).
 - **Commit/push** pendentes de aprovação do dono e da regeneração AEO.
-- **Inconsistência a confirmar:** a foto da família aparece como **2026** no protótipo/produção, mas a §8 (fonte da verdade), a §3.2 e a §10 dizem **2025**. Confirmar a data real e alinhar.
+- **Data da foto de família:** alinhada a **2026** (valor da produção) em §3.2, §8 e §10. Se a data real for 2025, é um ajuste de uma linha — confirmar com o dono.
 
 ---
 

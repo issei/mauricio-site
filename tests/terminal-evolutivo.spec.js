@@ -37,7 +37,9 @@ test.describe('Terminal Evolutivo — Laca e Folha', () => {
     const main = page.locator('main');
     await expect(main).toContainText('escutar');         // o ofício (Shokunin, sem nomear)
     await expect(main).toContainText('perdi meu pai');   // a primeira fratura (2004)
-    await expect(main).toContainText('casamento');       // a fundação
+    await expect(main).toContainText('gargalo');         // a formatura (2005)
+    await expect(main).toContainText('casamento');       // a fundação (2011)
+    await expect(main).toContainText('vetor');           // o nascimento da filha (2012)
     await expect(main).toContainText('ctrl');            // a casa cheia (gêmeos)
     await expect(main).toContainText('pedi ajuda');      // o vale (Kintsugi)
     await expect(main).toContainText('rede divide');     // a rede (bambuzal)
