@@ -318,7 +318,7 @@
         /* ---------- ERA 1 · A INFÂNCIA (1982–1990) · estética do ruído ----------
            A colagem "infancia.png" como uma parede de memória onde a câmera mergulha
            (push-in no eixo Z, dirigido pelo scroll via --zoom), banhada pela luz quente
-           do abajur, com grão analógico forte. Filho único, mundo lotado. */
+           do abajur, com grão analógico forte. Sem irmãos, o quarto se enchia de imaginação. */
         .era1 {
             position: relative;
             min-height: 100vh;
@@ -806,15 +806,21 @@
         .final__bamboo .sway-base,
         .final__bamboo .sway-tip,
         .final__bamboo .grove-l,
-        .final__bamboo .grove-r {
+        .final__bamboo .grove-r,
+        .final__bamboo .grove-l2,
+        .final__bamboo .grove-r2,
+        .final__bamboo .grove-c {
             transform-box: fill-box;
             transform-origin: 50% 100%;
         }
 
-        .final__bamboo .sway-base { animation: swayBase 8.5s ease-in-out infinite; }
-        .final__bamboo .sway-tip { animation: swayTip 6.2s ease-in-out infinite; }
-        .final__bamboo .grove-l { animation: swayGrove 12s ease-in-out infinite; }
-        .final__bamboo .grove-r { animation: swayGrove 14s ease-in-out infinite reverse; }
+        .final__bamboo .sway-base { animation: swayBase 7.5s ease-in-out infinite; }
+        .final__bamboo .sway-tip { animation: swayTip 5.4s ease-in-out infinite; }
+        .final__bamboo .grove-l { animation: swayGrove 11s ease-in-out infinite; }
+        .final__bamboo .grove-r { animation: swayGrove 13s ease-in-out infinite reverse; }
+        .final__bamboo .grove-l2 { animation: swayGrove 14.5s ease-in-out infinite .6s; }
+        .final__bamboo .grove-r2 { animation: swayGrove 12s ease-in-out infinite reverse .9s; }
+        .final__bamboo .grove-c { animation: swayGrove 15.5s ease-in-out infinite .3s; }
         .final__bamboo .bamboo-nodes { animation: nodeGlow 6.5s ease-in-out infinite; }
         .final__bamboo .bamboo-shoot {
             stroke-dasharray: 1;
@@ -822,9 +828,9 @@
             animation: drawShoot 3s ease .4s both;
         }
 
-        @keyframes swayBase { 0%, 100% { transform: rotate(-.8deg); } 50% { transform: rotate(.8deg); } }
-        @keyframes swayTip { 0%, 100% { transform: rotate(-1.6deg); } 50% { transform: rotate(1.8deg); } }
-        @keyframes swayGrove { 0%, 100% { transform: rotate(-1.3deg); } 50% { transform: rotate(1.3deg); } }
+        @keyframes swayBase { 0%, 100% { transform: rotate(-1.2deg); } 50% { transform: rotate(1.2deg); } }
+        @keyframes swayTip { 0%, 100% { transform: rotate(-2.4deg); } 50% { transform: rotate(2.6deg); } }
+        @keyframes swayGrove { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
         @keyframes nodeGlow { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
         @keyframes drawShoot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 
@@ -1065,7 +1071,7 @@
       },
       "inLanguage": "pt-BR",
       "datePublished": "2026-06-22",
-      "dateModified": "2026-06-28",
+      "dateModified": "2026-06-30",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-terminal-evolutivo.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/terminal-evolutivo#breadcrumb"
@@ -1185,7 +1191,7 @@
             </svg>
             <div class="copy" data-reveal>
                 <p class="eyebrow eyebrow--bright">1982–1990 · O PRIMEIRO BOOT</p>
-                <h2 id="era1-title">Fui filho único. Mas o quarto vivia <span class="em">lotado</span>.</h2>
+                <h2 id="era1-title">O quarto era pequeno. A imaginação não tinha <span class="em">fim</span>.</h2>
                 <p class="text">Sem irmãos, a imaginação virou o processador central — rodava o dia inteiro, preenchendo cada vazio. A TV ligava e o quarto enchia: à esquerda os desenhos, à direita uma parede de heróis. Jaspion, Changeman, Kamen Rider não eram passatempo. Eram <strong>código moral</strong> — me ensinaram a única regra que sobreviveu a tudo: <span class="em">cair faz parte; o que conta é levantar</span>.</p>
                 <p class="text">Lá fora, a rua era meu ambiente de testes. No asfalto eu media a física na pele: o guidão da bicicleta, o tombo do skate, a velocidade contra o medo. No controle do videogame, com os amigos, eu treinava a lógica mais difícil de todas — a das conexões humanas. No centro de tudo, um menino com uma guitarrinha de brinquedo, sem saber que já ensaiava construir mundos. Era ruído. Era cru. E era meu.</p>
             </div>
@@ -1200,19 +1206,19 @@
                 <rect width="100%" height="100%" filter="url(#g2)" />
             </svg>
             <figure class="photo" data-reveal style="left:0; width:46%;">
-                <img src="/fotos/callcenter.jpg" alt="Suporte de headset no call center, 2002 — aprender a ouvir o usuário."
+                <img src="/fotos/callcenter.jpg" alt="Suporte de headset no call center, 2000 — aprender a ouvir o usuário."
                     style="object-position:50% 28%; filter:sepia(.14) saturate(.85) contrast(1.04) brightness(.92);"
                     data-parallax="0.07" loading="lazy" decoding="async">
                 <span class="scrim" aria-hidden="true"
                     style="background:linear-gradient(265deg, #0a0706 6%, rgba(10,7,6,.7) 34%, rgba(10,7,6,0) 70%);"></span>
             </figure>
             <div class="copy copy--right" style="max-width:500px;">
-                <p class="eyebrow">AS NOITES NA LINHA DISCADA</p>
-                <h2 id="b2-title" data-reveal>Meu primeiro emprego de verdade foi atender gente a noite inteira num provedor de internet discada, lá por 2002.</h2>
-                <p class="text" data-reveal>Cedo descobri uma coisa que carrego até hoje: quase nunca o problema era técnico. Antes de tentar resolver, era preciso <span class="em">escutar</span> a pessoa do outro lado.</p>
+                <p class="eyebrow">2000 · APRENDER A OUVIR</p>
+                <h2 id="b2-title" data-reveal>Em 2000, aos 18, eu passava o dia inteiro atendendo gente perdida na internet <span class="em">discada</span>.</h2>
+                <p class="text" data-reveal>Não foi meu primeiro emprego — aos 16 eu já auditava lojas num shopping, estágio do curso técnico. Mas foi ali, na linha, que descobri o que carrego até hoje: quase nunca o problema era técnico. Antes de tentar resolver, era preciso <span class="em">escutar</span> a pessoa do outro lado.</p>
                 <div class="hairline" data-reveal>
                     <span aria-hidden="true"></span>
-                    <span>de dia o trabalho · de madrugada a faculdade</span>
+                    <span>de dia o trabalho · à noite, os estudos</span>
                 </div>
                 <p class="text text--italic" data-reveal>Sem perceber, eu não estava só aprendendo a consertar máquina. Estava treinando a paciência que a vida ia me cobrar muito depois.</p>
             </div>
@@ -1234,8 +1240,8 @@
             <div class="split__copy">
                 <div class="inner" data-reveal>
                     <p class="eyebrow">2005 · A ENTREGA</p>
-                    <h2 id="b2005-title">Eu me formei em logística. Mas o curso de verdade aconteceu fora da sala.</h2>
-                    <p class="text">De dia o telemarketing, de madrugada o estudo, e nas frestas a luta pra não desabar. Acumulei matérias atrasadas como gargalos numa linha que nunca para — e paguei cada uma sacrificando férias inteiras. Eu não estudei logística no quadro-negro: <span class="em">era a carga atravessando o gargalo</span>.</p>
+                    <h2 id="b2005-title">Eu me formei em Sistemas de Informação, com especialização em <span class="em">logística</span>. Mas o curso de verdade aconteceu fora da sala.</h2>
+                    <p class="text">Foram anos de trabalho de dia e estudo à noite, e nas frestas a luta pra não desabar. Acumulei matérias atrasadas como gargalos numa linha que nunca para — e paguei cada uma sacrificando férias inteiras. Eu não estudei logística só no quadro-negro: <span class="em">era a carga atravessando o gargalo</span>.</p>
                     <p class="text text--italic">No ano anterior, eu tinha perdido meu pai — e, pra ele, estudo era a coisa mais valiosa que existia. Quando subi pra pegar o diploma, foi a única entrega que importava. Ele não chegou a vê-la. Quem segurava o peso comigo, ao meu lado na foto, era minha mãe.</p>
                 </div>
             </div>
@@ -1250,13 +1256,14 @@
                 <rect width="100%" height="100%" filter="url(#g3)" />
             </svg>
             <div class="copy--center">
-                <p class="eyebrow">2011 · A FUNDAÇÃO</p>
-                <h2 id="b3-title" data-reveal>Em 2011, casei. Paguei a festa de casamento com as férias que nunca tirei e o bônus que vendi — e a lua de mel durou <span class="em">cinco dias</span>.</h2>
+                <p class="eyebrow">2009 – 2011 · A FUNDAÇÃO</p>
+                <h2 id="b3-title" data-reveal>Em 2009, conheci o amor da minha vida — e foi ela que mudou tudo de <span class="em">lugar</span>.</h2>
                 <figure class="shot" data-reveal>
                     <img src="/fotos/casamento.jpg" alt="Casamento em 2011 — a fundação mais crítica não era de software."
                         style="filter:sepia(.08) saturate(.95) contrast(1.02) brightness(.98);" loading="lazy" decoding="async">
                 </figure>
-                <p class="text text--italic" data-reveal style="max-width:540px; margin-inline:auto;">Prioridade não é o que a gente diz; é o que a gente faz, e o quanto abre mão. Ali assentei a fundação mais importante da minha vida — e ela não era de software. Era de gente: alguém com quem valia a pena dividir o peso e o resto do caminho.</p>
+                <p class="text" data-reveal style="max-width:540px; margin-inline:auto;">Em 2011, casei. Paguei a festa com as férias que nunca tirei e o bônus que vendi; a lua de mel foi curta — escolha nossa — e ainda assim inteira.</p>
+                <p class="text text--italic" data-reveal style="max-width:540px; margin-inline:auto;">Prioridade não é o que a gente diz; é o que a gente faz, e o quanto abre mão. Ali assentei a fundação mais importante da minha vida — e ela não era de software. Era de gente: alguém com quem valia a pena dividir o peso e o resto do caminho. Esse amor é, até hoje, o <span class="em">alicerce</span> da minha família.</p>
             </div>
         </section>
 
@@ -1368,7 +1375,7 @@
                     <img src="/fotos/careca.jpeg" alt="Maurício com os filhos durante a alopecia, 2017 — o fundo do poço e a virada."
                         loading="lazy" decoding="async">
                 </figure>
-                <p class="vale__turn" data-reveal>A alopecia levou meu cabelo por um ano inteiro. Mas o que ela me ensinou eu carrego até hoje: foi a primeira vez, na vida inteira, que eu pedi ajuda.</p>
+                <p class="vale__turn" data-reveal>A alopecia levou meu cabelo por um ano inteiro. Mas me deixou o que carrego até hoje: nenhuma dose de esforço sustenta uma vida se a saúde fica de fora da conta. Cuidar da família e cuidar de mim são o mesmo equilíbrio — e ele se refaz todo dia.</p>
             </div>
         </section>
 
@@ -1382,11 +1389,11 @@
             </svg>
             <div class="copy--center" style="max-width:780px;">
                 <p class="eyebrow">HOJE · 2026</p>
-                <h2 id="b6-title" data-reveal style="font-size:clamp(27px,2.9vw,38px); line-height:1.3; color:var(--ink-bright);">Por anos eu fui o único fio que segurava tudo — até quase <span class="em">arrebentar</span>.</h2>
+                <h2 id="b6-title" data-reveal style="font-size:clamp(27px,2.9vw,38px); line-height:1.3; color:var(--ink-bright);">Por muito tempo, eu fui o ponto de apoio de todos — e, sozinho, o ponto único de <span class="em">falha</span>.</h2>
                 <figure class="shot shot--wide" data-reveal>
                     <img src="/fotos/familia.jpeg" alt="A família reunida em 2026 — o alicerce coletivo." loading="lazy" decoding="async">
                 </figure>
-                <p class="text" data-reveal style="max-width:580px; margin-inline:auto;">Hoje é diferente. Minha mulher, que começou como analista e virou empresária. Os sogros, os cunhados, os sobrinhos. O time que aprendi a formar, em vez de carregar nas costas. Quando a vida aperta — e ela aperta —, o peso não cai mais sobre um ponto só. Cai sobre uma rede inteira. E rede divide.</p>
+                <p class="text" data-reveal style="max-width:580px; margin-inline:auto;">Hoje é diferente. Minha mulher, que começou como analista e virou empresária. E uma família querida que cresceu ao redor — laços fortes, gente que está sempre por perto, uma rede de apoio e de amor. O time que aprendi a formar, em vez de carregar nas costas. Quando a vida aperta — e ela aperta —, o peso não cai mais sobre um ponto só. Cai sobre uma rede inteira. E rede divide.</p>
             </div>
         </section>
 
@@ -1427,13 +1434,29 @@
 
                 <!-- bambuzal ao fundo: dois colmos fantasma (a rede) -->
                 <g class="grove" filter="url(#groveBlur)">
+                    <g class="grove-l2">
+                        <path d="M19,550 L23,245 L33,245 L31,550 Z" fill="url(#cyl)" opacity=".12" />
+                        <ellipse cx="26" cy="380" rx="8" ry="2.8" fill="url(#goldNode)" opacity=".12" />
+                    </g>
                     <g class="grove-l">
                         <path d="M68,550 L74,250 L86,250 L84,550 Z" fill="url(#cyl)" opacity=".22" />
                         <ellipse cx="79" cy="372" rx="11" ry="3.5" fill="url(#goldNode)" opacity=".22" />
                     </g>
+                    <g class="grove-c">
+                        <path d="M99,550 L103,176 L114,176 L111,550 Z" fill="url(#cyl)" opacity=".13" />
+                        <ellipse cx="106" cy="304" rx="9" ry="3" fill="url(#goldNode)" opacity=".13" />
+                    </g>
                     <g class="grove-r">
-                        <path d="M220,550 L226,212 L236,212 L234,550 Z" fill="url(#cyl)" opacity=".17" />
-                        <ellipse cx="228" cy="330" rx="9" ry="3" fill="url(#goldNode)" opacity=".18" />
+                        <path d="M189,550 L194,168 L205,168 L201,550 Z" fill="url(#cyl)" opacity=".16" />
+                        <ellipse cx="197" cy="302" rx="9" ry="3" fill="url(#goldNode)" opacity=".16" />
+                    </g>
+                    <g class="grove-r2">
+                        <path d="M226,550 L231,210 L241,210 L237,550 Z" fill="url(#cyl)" opacity=".20" />
+                        <ellipse cx="233" cy="334" rx="9" ry="3" fill="url(#goldNode)" opacity=".20" />
+                    </g>
+                    <g class="grove-c">
+                        <path d="M267,550 L271,250 L280,250 L277,550 Z" fill="url(#cyl)" opacity=".11" />
+                        <ellipse cx="273" cy="384" rx="8" ry="2.8" fill="url(#goldNode)" opacity=".11" />
                     </g>
                 </g>
 
@@ -1455,6 +1478,11 @@
                             <g transform="translate(158,120) rotate(-44)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
                             <g transform="translate(159,104) rotate(-20) scale(.85)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
                             <g transform="translate(150,86) rotate(-92) scale(.8)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
+                            <g transform="translate(140,166) rotate(-140) scale(.92)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
+                            <g transform="translate(160,154) rotate(-36) scale(.8)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
+                            <g transform="translate(143,114) rotate(-166) scale(.7)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
+                            <g transform="translate(157,138) rotate(-28) scale(.9)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
+                            <g transform="translate(149,70) rotate(-104) scale(.68)"><path d="M0,0 C10,-5 26,-4 35,0 C26,4 10,5 0,0 Z" /></g>
                         </g>
                         <!-- broto novo no topo (cresce ao carregar) -->
                         <path class="bamboo-shoot" d="M150,60 C156,44 162,32 159,18" pathLength="1" fill="none" stroke="#8fae54" stroke-width="2.4" stroke-linecap="round" opacity=".8" />

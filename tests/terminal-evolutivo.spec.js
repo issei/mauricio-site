@@ -39,10 +39,10 @@ test.describe('Terminal Evolutivo — Laca e Folha', () => {
     await expect(main).toContainText('escutar');         // o ofício (Shokunin, sem nomear)
     await expect(main).toContainText('perdi meu pai');   // a primeira fratura (2004)
     await expect(main).toContainText('gargalo');         // a formatura (2005)
-    await expect(main).toContainText('casamento');       // a fundação (2011)
+    await expect(main).toContainText('casei');           // a fundação (2011)
     await expect(main).toContainText('vetor');           // o nascimento da filha (2012)
     await expect(main).toContainText('ctrl');            // a casa cheia (gêmeos)
-    await expect(main).toContainText('pedi ajuda');      // o vale (Kintsugi)
+    await expect(main).toContainText('mesmo equilíbrio'); // o vale (Kintsugi)
     await expect(main).toContainText('rede divide');     // a rede (bambuzal)
     await expect(main).toContainText('CONTINUA');        // final aberto (o bambu continua)
   });
@@ -132,7 +132,7 @@ test.describe('Terminal Evolutivo — sem JavaScript', () => {
     await expect(page.locator('h1')).toHaveCount(1);
     const main = page.locator('main');
     await expect(main).toContainText('1982');
-    await expect(main).toContainText('pedi ajuda');
+    await expect(main).toContainText('mesmo equilíbrio');
     await expect(main).toContainText('CONTINUA');
     // um elemento data-reveal permanece visível sem JS (opacity 1, não 0)
     const r = page.locator('[data-reveal]').first();
