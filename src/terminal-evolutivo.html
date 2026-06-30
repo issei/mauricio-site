@@ -380,17 +380,24 @@
             font-size: 17px;
         }
 
-        /* mobile: a colagem larga só mostra a tira central (a foto na moldura);
-           a copy ocupa a largura toda, então o scrim de baixo precisa ser pesado. */
+        /* mobile: a colagem larga aparece INTEIRA (contain, sem zoom-crop) no topo;
+           a copy desce, sobre o fundo escuro. A foto nunca fica escondida. */
         @media (max-width: 720px) {
             .era1 {
                 padding: 0 26px 9vh;
             }
 
+            .era1__bg img {
+                object-fit: contain;
+                object-position: center 14%;
+            }
+
+            .era1__bg img[data-zoom] {
+                transform: none;
+            }
+
             .era1__scrim {
-                background:
-                    linear-gradient(to top, rgba(6, 4, 3, .98) 0%, rgba(6, 4, 3, .95) 44%, rgba(6, 4, 3, .66) 62%, rgba(6, 4, 3, .20) 82%, transparent 92%),
-                    radial-gradient(150% 78% at 50% 12%, transparent 36%, rgba(6, 4, 3, .55) 100%);
+                background: linear-gradient(to top, rgba(6, 4, 3, .97) 0%, rgba(6, 4, 3, .88) 32%, rgba(6, 4, 3, .35) 50%, transparent 62%);
             }
 
             .era1 .copy h2 {
@@ -400,6 +407,98 @@
             .era1 .copy .text {
                 font-size: 14.5px;
                 line-height: 1.55;
+            }
+        }
+
+        /* ---------- SPLIT EDITORIAL · foto grande visível ao lado da copy (2005, 2012) ----------
+           Desktop: a foto ocupa uma metade, nítida, SEM overlay; a copy na outra
+           metade sobre laca. Mobile: empilha (foto inteira em cima, copy embaixo).
+           Substitui o overlay de vidro, que escondia a foto (sobretudo no mobile). */
+        .split {
+            position: relative;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.04fr 1fr;
+            align-items: stretch;
+            background: var(--laca);
+        }
+
+        .split--rev {
+            grid-template-columns: 1fr 1.04fr;
+        }
+
+        .split--rev .split__media {
+            order: 2;
+        }
+
+        .split__media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .split__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .split__media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(90deg, transparent 70%, rgba(10, 7, 6, .6) 100%);
+        }
+
+        .split--rev .split__media::after {
+            background: linear-gradient(270deg, transparent 70%, rgba(10, 7, 6, .6) 100%);
+        }
+
+        .split__copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8vh var(--bleed);
+        }
+
+        .split__copy .inner {
+            max-width: 480px;
+        }
+
+        .split--rev .split__copy .inner {
+            margin-left: auto;
+        }
+
+        .split__copy .eyebrow {
+            margin-bottom: .2rem;
+        }
+
+        @media (max-width: 720px) {
+            .split {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .split__media,
+            .split--rev .split__media {
+                order: 0;
+                height: 52vh;
+            }
+
+            .split__media::after {
+                background: none;
+            }
+
+            .split__copy {
+                padding: 7vh 26px 9vh;
+            }
+
+            .split__copy .inner {
+                max-width: 100%;
+            }
+
+            .rootline {
+                display: none;
             }
         }
 
@@ -1127,16 +1226,18 @@
         </section>
 
         <!-- ============ 2005 · A FORMATURA (a entrega que ele não viu) ============ -->
-        <section class="glassbeat" aria-labelledby="b2005-title">
-            <figure class="glassbeat__bg">
+        <section class="split" aria-labelledby="b2005-title">
+            <figure class="split__media">
                 <img src="/fotos/formatura.jpg" alt="Formatura em Sistemas de Informação na Mackenzie, 2005, ao lado da mãe."
-                    style="object-position:center 28%; filter:saturate(.92) contrast(1.03);" data-parallax="0.06" loading="lazy" decoding="async">
+                    style="object-position:center 26%; filter:saturate(.94) contrast(1.02);" loading="lazy" decoding="async">
             </figure>
-            <div class="glass" data-reveal>
-                <p class="eyebrow">2005 · A ENTREGA</p>
-                <h2 id="b2005-title">Eu me formei em logística. Mas o curso de verdade aconteceu fora da sala.</h2>
-                <p class="text">De dia o telemarketing, de madrugada o estudo, e nas frestas a luta pra não desabar. Acumulei matérias atrasadas como gargalos numa linha que nunca para — e paguei cada uma sacrificando férias inteiras. Eu não estudei logística no quadro-negro: <span class="em">era a carga atravessando o gargalo</span>.</p>
-                <p class="text text--italic">No ano anterior, eu tinha perdido meu pai — e, pra ele, estudo era a coisa mais valiosa que existia. Quando subi pra pegar o diploma, foi a única entrega que importava. Ele não chegou a vê-la. Quem segurava o peso comigo, ao meu lado na foto, era minha mãe.</p>
+            <div class="split__copy">
+                <div class="inner" data-reveal>
+                    <p class="eyebrow">2005 · A ENTREGA</p>
+                    <h2 id="b2005-title">Eu me formei em logística. Mas o curso de verdade aconteceu fora da sala.</h2>
+                    <p class="text">De dia o telemarketing, de madrugada o estudo, e nas frestas a luta pra não desabar. Acumulei matérias atrasadas como gargalos numa linha que nunca para — e paguei cada uma sacrificando férias inteiras. Eu não estudei logística no quadro-negro: <span class="em">era a carga atravessando o gargalo</span>.</p>
+                    <p class="text text--italic">No ano anterior, eu tinha perdido meu pai — e, pra ele, estudo era a coisa mais valiosa que existia. Quando subi pra pegar o diploma, foi a única entrega que importava. Ele não chegou a vê-la. Quem segurava o peso comigo, ao meu lado na foto, era minha mãe.</p>
+                </div>
             </div>
         </section>
 
@@ -1160,16 +1261,18 @@
         </section>
 
         <!-- ============ 2012 · O NASCIMENTO DA FILHA (o vetor muda de direção) ============ -->
-        <section class="glassbeat glassbeat--right" aria-labelledby="b2012-title">
-            <figure class="glassbeat__bg">
+        <section class="split split--rev" aria-labelledby="b2012-title">
+            <figure class="split__media">
                 <img src="/fotos/filha.jpeg" alt="Filha recém-nascida em 2012 — o vetor de força da vida muda de direção."
-                    style="object-position:center 38%; filter:saturate(.94) contrast(1.02);" loading="lazy" decoding="async">
+                    style="object-position:center 36%; filter:saturate(.96) contrast(1.01);" loading="lazy" decoding="async">
             </figure>
-            <div class="glass glass--right" data-reveal>
-                <p class="eyebrow">2012 · A VIRADA DE VETOR</p>
-                <h2 id="b2012-title">Até aqui, eu media a vida em velocidade. Então minha filha nasceu — e o <span class="em">vetor de força</span> inteiro mudou de direção.</h2>
-                <p class="text">Eu era um sistema afinado para vencer. E todo sistema no pico está, no mesmo gesto, afinado para quebrar. De um dia para o outro, a métrica deixou de ser velocidade e virou durabilidade: parei de querer ser rápido. Quis ser fundação.</p>
-                <p class="text text--italic">Troquei a corrida pela raiz — fui buscar estabilidade e me enterrei no trabalho pra proteger o que agora importava. (Sem perceber, plantei ali a semente do esgotamento que viria.) Pela primeira vez, a vida tinha um motivo para durar.</p>
+            <div class="split__copy">
+                <div class="inner" data-reveal>
+                    <p class="eyebrow">2012 · A VIRADA DE VETOR</p>
+                    <h2 id="b2012-title">Até aqui, eu media a vida em velocidade. Então minha filha nasceu — e o <span class="em">vetor de força</span> inteiro mudou de direção.</h2>
+                    <p class="text">Eu era um sistema afinado para vencer. E todo sistema no pico está, no mesmo gesto, afinado para quebrar. De um dia para o outro, a métrica deixou de ser velocidade e virou durabilidade: parei de querer ser rápido. Quis ser fundação.</p>
+                    <p class="text text--italic">Troquei a corrida pela raiz — fui buscar estabilidade e me enterrei no trabalho pra proteger o que agora importava. (Sem perceber, plantei ali a semente do esgotamento que viria.) Pela primeira vez, a vida tinha um motivo para durar.</p>
+                </div>
             </div>
             <svg class="rootline" data-reveal viewBox="0 0 60 220" fill="none" aria-hidden="true">
                 <defs>
