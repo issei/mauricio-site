@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LifeOS — Terminal Evolutivo 3D | Maurício Issei (1982–2026)</title>
+<meta name="description" content="A vida de um Tech Lead como um sistema em produção há 44 anos. Portal 3D gamificado: Git, SRE e Kintsugi.">
+<link rel="icon" href="/favicon.svg">
+<!-- SEC-01 RG-06: CSP — connect-src 'none': o jogo não fala com a rede após o load.
+     RG-06 baseline não previa 'unsafe-inline' em script-src; ADR-001 (sem build)
+     exige script de boot + importmap inline, então o desvio é aceito e documentado
+     aqui (mesmo padrão de risco residual documentado que RG-05 já prevê p/ SRI).
+     worker-src 'self' blob:: Tone.js cria seu clock via Worker a partir de um
+     blob URL; sem isso o navegador bloqueia (fallback de script-src cobre
+     'blob:' de forma inconsistente entre navegadores) e o áudio perde precisão. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; worker-src 'self' blob:; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'none'; object-src 'none'; base-uri 'self'">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<script type="importmap">
+{ "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
+} }
+</script>
+<!-- SEC-01 RG-05: SRI — three via importmap não suporta integrity (risco residual
+     aceito, documentado no próprio RG-05); Tone.js é <script src> comum e pode
+     ser pinado. -->
+<script src="https://cdn.jsdelivr.net/npm/tone@14.8.49/build/Tone.js"
+        integrity="sha384-c6Uo4N9c3SOEigMVzP6IshUG1wQ5uMp3xeoQFiHWAQ86joWdgyajkvopySyKy/Z6"
+        crossorigin="anonymous"></script>
+<style>
+  :root { --bg:#05070a; --ink:#c8d6cf; --dim:#5c6d64; --gold:#d9b06a; --accent:#4dff9c; }
+  * { box-sizing:border-box; margin:0; }
+  html,body { height:100%; background:var(--bg); color:var(--ink);
+    font-family:'Share Tech Mono','Courier New',monospace; overflow:hidden; }
+  #canvas3d { position:fixed; inset:0; width:100%; height:100%; display:block; }
+
+  /* ---------- splash (GMP-06) ---------- */
+  #splash { position:fixed; inset:0; background:#0a0706; z-index:50;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:18px; transition:opacity .8s; padding:20px; }
+  #splash.off { opacity:0; pointer-events:none; }
+  #boot-log { font-size:14px; line-height:1.7; color:var(--dim); min-height:150px;
+    width:min(520px,90vw); white-space:pre-wrap; }
+  #start-btn { background:none; border:1px solid var(--accent); color:var(--accent);
+    font:inherit; font-size:16px; padding:12px 28px; cursor:pointer; min-height:48px; }
+  #start-btn:disabled { border-color:var(--dim); color:var(--dim); cursor:wait; }
+  #start-btn::after { content:'_'; animation:blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity:0; } }
+
+  /* ---------- HUD / telemetria (UI-01/02) ---------- */
+  #hud { position:fixed; top:10px; right:10px; z-index:20; display:flex;
+    flex-direction:column; gap:6px; align-items:flex-end; transition:opacity .4s; }
+  #hud[data-state="FOCUS"] { opacity:.12; }
+  .tele-strip { display:flex; gap:14px; background:#0a0f0cd9; border:1px solid #1c2a22;
+    padding:4px 10px; font-size:11px; }
+  .tele-strip-item b { color:var(--dim); font-weight:normal; margin-right:5px; }
+  .tele-strip-item i { font-style:normal; color:var(--ink); }
+  .tele-panel { background:#0a0f0cee; border:1px solid #1c2a22; padding:6px 10px; width:172px; }
+  .tele-panel label { display:block; font-size:10px; color:var(--dim); letter-spacing:.08em; }
+  .tele-panel output { font-size:16px; }
+  .tele-panel small { display:block; font-size:9px; color:var(--gold); min-height:11px; }
+  .tele-panel.pulse { animation:pulse .3s 2; }
+  @keyframes pulse { 50% { border-color:var(--gold); } }
+
+  /* ---------- modal de memória (UI-04) ---------- */
+  #modal { position:fixed; inset:0; z-index:40; display:none; background:#05070ae6;
+    align-items:center; justify-content:center; padding:16px; }
+  #modal.open { display:flex; }
+  .modal-frame { background:#0a0706f5; border:1px solid var(--accent); max-width:880px;
+    width:100%; max-height:92vh; overflow:auto; padding:22px;
+    display:grid; grid-template-columns:minmax(0,46%) 1fr; gap:20px; }
+  #decode-canvas { width:100%; aspect-ratio:4/3; background:#000; image-rendering:pixelated; }
+  #decode-status { font-size:11px; color:var(--dim); margin-top:6px; }
+  #hold-prompt { font-size:13px; color:var(--gold); margin-top:10px; letter-spacing:.05em; }
+  .modal-copy p.period { color:var(--dim); font-size:12px; }
+  .modal-copy h2 { font-family:'VT323',monospace; font-size:30px; color:#fff; margin:6px 0 12px; }
+  .modal-copy .memo { font-size:15px; line-height:1.75; max-width:68ch; min-height:120px; }
+  #modal-close { margin-top:18px; background:none; border:1px solid var(--dim);
+    color:var(--ink); font:inherit; padding:10px 20px; cursor:pointer; min-height:48px; }
+  #modal-close:disabled { opacity:.3; cursor:default; }
+  @media (max-width:640px){ .modal-frame { grid-template-columns:1fr; } }
+
+  /* ---------- efeitos / controles ---------- */
+  #glitch-flash { position:fixed; inset:0; background:#fff; opacity:0; z-index:45;
+    pointer-events:none; transition:opacity .12s; }
+  #glitch-flash.on { opacity:.85; }
+  #dpad { position:fixed; left:14px; bottom:14px; z-index:20; display:none;
+    grid-template:repeat(3,54px)/repeat(3,54px); gap:4px; }
+  @media (pointer:coarse){ #dpad { display:grid; } }
+  #dpad button { background:#0a0f0cbb; border:1px solid #1c2a22; color:var(--dim);
+    font-size:20px; touch-action:none; }
+  #dpad .u{grid-area:1/2} #dpad .l{grid-area:2/1} #dpad .r{grid-area:2/3} #dpad .d{grid-area:3/2}
+  #phase-label { position:fixed; top:10px; left:12px; z-index:20; font-size:12px;
+    color:var(--dim); background:#0a0f0cd9; border:1px solid #1c2a22; padding:4px 10px; }
+</style>
+</head>
+<body>
+<canvas id="canvas3d"></canvas>
+<div id="glitch-flash" aria-hidden="true"></div>
+<p id="phase-label" aria-live="polite"></p>
+<aside id="hud" data-state="AMBIENT" aria-label="Telemetria do sistema"></aside>
+
+<div id="dpad" aria-hidden="true">
+  <button class="u" data-x="0" data-z="-1">▲</button>
+  <button class="l" data-x="-1" data-z="0">◀</button>
+  <button class="r" data-x="1" data-z="0">▶</button>
+  <button class="d" data-x="0" data-z="1">▼</button>
+</div>
+
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-frame">
+    <div>
+      <canvas id="decode-canvas" width="480" height="360"></canvas>
+      <p id="decode-status">aguardando pacote…</p>
+      <p id="hold-prompt" hidden>SEGURE PARA SUSTENTAR A DECODIFICAÇÃO</p>
+    </div>
+    <div class="modal-copy">
+      <p class="period" id="modal-period"></p>
+      <h2 id="modal-title"></h2>
+      <p class="memo" id="modal-text" aria-live="polite"></p>
+      <button id="modal-close" disabled>[ESC] fechar</button>
+    </div>
+  </div>
+</div>
+
+<div id="splash">
+  <pre id="boot-log" aria-live="polite"></pre>
+  <button id="start-btn" disabled>&gt; INICIAR JORNADA</button>
+</div>
+
+<script type="module">
+import { bus } from './lifeos/core/bus.js';
+import { createSession } from './lifeos/core/session.js';
+import { createA11y } from './lifeos/core/a11y.js';
+import { createStory } from './lifeos/story/engine.js';
+import { ARC_THEME } from './lifeos/story/data.js';
+import { createScene } from './lifeos/scene/core.js';
+import { createGrid } from './lifeos/scene/grid.js';
+import { createParticles } from './lifeos/scene/particles.js';
+import { createPostFX } from './lifeos/scene/postfx.js';
+import { createAvatar } from './lifeos/avatar/avatar.js';
+import { createAudio } from './lifeos/audio/engine.js';
+import { createMonolith } from './lifeos/gameplay/monolith.js';
+import { createDashboard } from './lifeos/ui/dashboard.js';
+
+// ---------- boot (GMP-06 RG-01/02) ----------
+const BOOT_LINES = [
+  'BIOS lifeos v5.0.0',
+  'memória: 44 anos detectados',
+  'montando /familia (5 nós)',
+  'montando /carreira (26 anos)',
+  'pronto.',
+];
+const bootLog = document.getElementById('boot-log');
+const startBtn = document.getElementById('start-btn');
+
+async function typeBoot() {
+  for (const line of BOOT_LINES) {
+    bootLog.textContent += line + '\n';
+    await new Promise((r) => setTimeout(r, 450));
+  }
+}
+
+// ---------- montagem ----------
+const session = createSession();
+const a11y = createA11y(session);
+const story = createStory(session);
+const audio = createAudio();
+const sceneApi = createScene(document.getElementById('canvas3d'), session);
+createGrid(sceneApi, session);
+createParticles(sceneApi, session);
+createPostFX(sceneApi, a11y);
+createAvatar(sceneApi, session);
+createMonolith(sceneApi, story, session, audio, {
+  modal: document.getElementById('modal'),
+  canvas: document.getElementById('decode-canvas'),
+  status: document.getElementById('decode-status'),
+  period: document.getElementById('modal-period'),
+  title: document.getElementById('modal-title'),
+  text: document.getElementById('modal-text'),
+  closeBtn: document.getElementById('modal-close'),
+  holdPrompt: document.getElementById('hold-prompt'),
+});
+createDashboard(document.getElementById('hud'), session, story);
+
+// quadrante por fase + rótulo (coerência R3: tudo deriva de phase:changed)
+const phaseLabel = document.getElementById('phase-label');
+bus.subscribe('phase:changed', ({ marco }) => {
+  sceneApi.buildPhase(marco, ARC_THEME[marco.arc].accent);
+  phaseLabel.textContent = `${marco.period} · ${marco.order}/12`;
+});
+
+// d-pad touch (CMP-17)
+for (const b of document.querySelectorAll('#dpad button')) {
+  const set = () => sceneApi.setTouch(Number(b.dataset.x), Number(b.dataset.z));
+  const clear = () => sceneApi.setTouch(0, 0);
+  b.addEventListener('pointerdown', set);
+  b.addEventListener('pointerup', clear);
+  b.addEventListener('pointercancel', clear);
+}
+
+// ESC fecha modal quando revelado (UI-04 RG-06)
+addEventListener('keydown', (e) => {
+  const closeBtn = document.getElementById('modal-close');
+  if (e.code === 'Escape' && !closeBtn.disabled &&
+      document.getElementById('modal').classList.contains('open')) closeBtn.click();
+});
+
+// ---------- início (gesto do usuário → áudio) ----------
+const splash = document.getElementById('splash');
+let started = false;
+startBtn.addEventListener('click', () => {
+  if (started) return;                 // idempotente (GMP-06 §extremos)
+  started = true;
+  bus.publish('audio:unlocked', {});
+  session.set({ audioUnlocked: true });
+  splash.classList.add('off');
+  story.boot();
+  sceneApi.start();
+  a11y.announce();
+});
+
+typeBoot().then(() => { startBtn.disabled = false; });
+
+// WebGL2 indisponível → fallback (GMP-06 RG-05)
+if (!document.createElement('canvas').getContext('webgl2')) {
+  bootLog.textContent = 'renderizador WebGL2 indisponível neste navegador.\n' +
+    'a jornada continua nas versões irmãs:\n';
+  const links = document.createElement('p');
+  const mkLink = (href, label) => {
+    const a = document.createElement('a');
+    a.href = href; a.textContent = label; a.style.color = 'var(--accent)';
+    return a;
+  };
+  links.append(mkLink('/life.html', 'Jornada em Pixel Art'), ' · ',
+               mkLink('/terminal-evolutivo.html', 'Terminal Evolutivo'));
+  splash.appendChild(links);
+  startBtn.remove();
+}
+</script>
+</body>
+</html>

@@ -45,6 +45,14 @@ story-data · eventos · arc-theme · telemetria · cli · avatar · audio-cues 
 ### 17-security ✅ SEC-01 (hardening: textContent, CSP, save hostil, SRI)
 ### 18-observability 🟡 OBS-01 (telemetria real — rascunho; ativação é decisão do dono)
 
+## Estado da implementação (BKL-01 — MVP)
+✅ Implementado em `src/lifeos/` (13 módulos, 1.530 linhas) + entry `src/lifeos.html`:
+bus, session, a11y, dados (CTR-01/03/04/06), story engine, scene core+input,
+audio (4 cadeias+SFX), grid c/ cicatrizes, partículas (4 modos), postfx CRT
+c/ safe-mode+fallback, avatar v1–v5, monolito (reveal+hold 3 ciclos), dashboard
+(AMBIENT/PAGED/FOCUS). Testes: `tests/t1-t3.test.mjs` (16 verdes). SEC-01 grep: limpo.
+⬜ Próximo: validação visual em navegador (T4/T5 exigem WebGL) → BKL-02 (Alpha).
+
 ## Docs com gate humano pendente
 | Doc | Status | Ação do dono |
 |---|---|---|

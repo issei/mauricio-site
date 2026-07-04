@@ -96,6 +96,10 @@ export function createSession(storage = globalThis.localStorage) {
       const sc = state.scars.find((s) => s.scarId === scarId);
       if (sc && sc.state === 'open') { sc.state = 'gilded'; persist(store); }
     },
+    addWalkUnits(delta) {                           // CTR-08: stats.totalWalkUnits é persistente
+      state.stats.totalWalkUnits += delta;
+      persist(store);
+    },
     reset() {                                       // GMP-06 RG-04: apaga TUDO
       state = freshState();
       try { store.removeItem?.(KEY); } catch { /* ok */ }

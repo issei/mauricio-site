@@ -74,7 +74,7 @@ export function createScene(canvas, session) {
     if (walking) {
       walkCycle += dt * speed * 1.6;
       playerRoot.rotation.y = Math.atan2(vel.x, vel.z);
-      session.get().stats.totalWalkUnits += speed * dt;
+      session.addWalkUnits(speed * dt);
       idleAccum = 0; idleEmitted = 0;
       if (now - lastMoveEmit > 100) {                        // throttle 100ms (RG-06)
         lastMoveEmit = now;
