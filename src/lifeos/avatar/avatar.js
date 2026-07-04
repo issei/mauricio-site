@@ -46,9 +46,10 @@ export function createAvatar(sceneApi, session) {
   const armR = mk('armR', G.limb, cloth, 0.48, 1.2, 0);
 
   let version = 0;
-  let cyclePrev = 0;
 
-  const ACCESSORY_NAMES = ['hair', 'glasses', 'backpack', 'headset', 'notebook', 'aura', 'circuits'];
+  const ACCESSORY_NAMES = ['hair', 'glasses', 'backpack', 'headset', 'notebook', 'aura', 'circuits', 'shadowL', 'shadowR'];
+  const shadowMat = (hex) => new THREE.MeshBasicMaterial({ color: hex, transparent: true, opacity: 0.25 });
+  const shadowGeo = new THREE.PlaneGeometry(0.7, 1.2);
 
   function teardown() {                            // CTR-06 RG-01
     for (const n of ACCESSORY_NAMES) {
@@ -86,17 +87,28 @@ export function createAvatar(sceneApi, session) {
       const cir = mk('circuits', G.torso, gold, 0, 1.15, 0);
       cir.scale.setScalar(1.04);
     }
+    // AVT-01 RG-07: sombra dupla (verde/rosa) apenas no quadrante 5 (conflito)
+    if (marco.id === 'parallel_overload') {
+      const sL = mk('shadowL', shadowGeo, shadowMat(0xff77c8), -0.5, 0.011, 0.3);
+      sL.rotation.x = -Math.PI / 2;
+      const sR = mk('shadowR', shadowGeo, shadowMat(0x4dff9c), 0.5, 0.011, -0.3);
+      sR.rotation.x = -Math.PI / 2;
+    }
 
+    const changed = v !== version;
     const from = version; version = v;
-    const seen = session.get().avatarSeenVersions;
-    if (!seen.includes(v)) { seen.push(v); session.set({ avatarSeenVersions: seen }); }
-    bus.publish('avatar:version-changed', { from, to: v, changelog: spec.changelog });
+    if (changed) {
+      const seen = session.get().avatarSeenVersions;
+      if (!seen.includes(v)) { seen.push(v); session.set({ avatarSeenVersions: seen }); }
+      bus.publish('avatar:version-changed', { from, to: v, changelog: spec.changelog });
+    }
   }
 
   bus.subscribe('phase:changed', ({ marco }) => {
     // Corpo pertence à época (ADR-002): versão = a do marco visitado.
-    if (marco.avatarVersion !== version) apply(marco.avatarVersion, marco);
-    else apply(version, marco);                    // re-aplica p/ headset phase:
+    // apply() sempre roda (headset/sombra dependem do marco), mas só publica
+    // avatar:version-changed quando a versão realmente muda (CTR-06 RG-02).
+    apply(marco.avatarVersion, marco);
   });
 
   bus.subscribe('vale:act2', () => {               // AVT-02 RG-09: queda em cena
@@ -130,7 +142,6 @@ export function createAvatar(sceneApi, session) {
       parts.notebook.position.z = Math.sin(sessionT * 1.57) * 0.4;
     }
     if (parts.aura) parts.aura.material.opacity = 0.22 + 0.08 * Math.sin(sessionT * Math.PI);  // .5Hz
-    cyclePrev = cyc;
   });
 
   return { get version() { return version; }, _parts: parts };

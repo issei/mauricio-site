@@ -16,9 +16,9 @@ export function createDashboard(container, session, story) {
   let uiState = 'AMBIENT';                        // UI-02
   let pagedMetric = null, pagedTimer = null;
   const lastPaged = {};                           // cooldown 8s
-  let walking = false, locVal = 0, phaseT = 0, prevThreads = 1;
+  let walking = false, locVal = 0, phaseT = 0, prevThreads = 1, prevLocMode = null;
 
-  container.innerHTML = '';                       // estático, sem interpolação
+  container.replaceChildren();                    // SEC-01 RG-01
   const strip = el('div', 'tele-strip');          // régua AMBIENT
   container.appendChild(strip);
   const stripVals = {};
@@ -93,6 +93,10 @@ export function createDashboard(container, session, story) {
 
     // loc
     const L = R.loc;
+    if (L.mode !== prevLocMode) {
+      if (prevLocMode !== null) page('loc', PAGED_THRESHOLDS.loc.citavel(L.mode));
+      prevLocMode = L.mode;
+    }
     if (L.mode === 'linear' && walking) locVal += 3 * (L.rate ?? 1);
     else if (L.mode === 'exp' && walking) locVal += Math.max(3, locVal * 0.004) * (L.rate ?? 1);
 
