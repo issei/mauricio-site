@@ -1,8 +1,8 @@
 // Suíte T1–T3 (subconjunto MVP) — TST-01. Executar: node tests/t1-t3.test.mjs
 import { strict as assert } from 'node:assert';
-import { STORY_DATA, ARC_THEME, TELEMETRY_RULES, AVATAR_VERSIONS } from '../src/lifeos/story/data.js';
-import { bus } from '../src/lifeos/core/bus.js';
-import { createSession } from '../src/lifeos/core/session.js';
+import { STORY_DATA, ARC_THEME, TELEMETRY_RULES, AVATAR_VERSIONS } from '../public/lifeos/story/data.js';
+import { bus } from '../public/lifeos/core/bus.js';
+import { createSession } from '../public/lifeos/core/session.js';
 
 let passed = 0;
 function t(name, fn) { try { fn(); passed++; console.log(`ok   ${name}`); } catch (e) { console.error(`FAIL ${name}: ${e.message}`); process.exitCode = 1; } }
