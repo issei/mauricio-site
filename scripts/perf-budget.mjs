@@ -65,8 +65,13 @@ const parts = [[BUDGET.page, criticalKB]];
 
 // Stylesheets sem media condicional bloqueiam o render. Módulos com defer/async
 // (todo <script type="module"> é deferido por definição) não bloqueiam.
+//
+// O conteúdo de <noscript> sai da conta: aquele <link> é o fallback de quem não
+// executa JavaScript e nunca é buscado pelos demais — contá-lo faria a página
+// parecer ter o dobro de recursos críticos.
+const htmlSemNoscript = html.replace(/<noscript>[\s\S]*?<\/noscript>/gi, ' ');
 const blocking = [];
-for (const m of html.matchAll(/<link\b[^>]*>/gi)) {
+for (const m of htmlSemNoscript.matchAll(/<link\b[^>]*>/gi)) {
   const tag = m[0];
   if (!/rel=["']?stylesheet/i.test(tag)) continue;
   if (/\bmedia=["'](?!all)/i.test(tag)) continue; // media condicional não bloqueia
@@ -136,8 +141,36 @@ if (reincidentes.length) {
   failures.push(`CDN proibida em ${reincidentes.length} página(s):\n    ${reincidentes.join('\n    ')}`);
 }
 
+/*
+ * Nenhuma página pode bloquear o primeiro render num round-trip a terceiro.
+ * Folhas externas devem ser assíncronas (media="print" + onload), com o
+ * <noscript> preservando o recurso para quem não executa JavaScript.
+ */
+const bloqueiaTerceiro = [];
+for (const arquivo of paginas) {
+  const conteudo = readFileSync(join(DIST, arquivo), 'utf8');
+  const head = conteudo.slice(0, conteudo.indexOf('</head>'));
+  // Fora de <noscript>, onde o link bloqueante é justamente o fallback correto.
+  const semNoscript = head.replace(/<noscript>[\s\S]*?<\/noscript>/gi, ' ');
+
+  for (const m of semNoscript.matchAll(/<link\b[^>]*>/gi)) {
+    const tag = m[0];
+    if (!/rel=["']?stylesheet/i.test(tag)) continue;
+    if (!/https?:\/\//i.test(tag)) continue;              // folha própria: ok
+    if (/media=["']print["']/i.test(tag)) continue;       // já assíncrona
+    const href = (tag.match(/href=["']([^"']+)["']/i) || [])[1] || '?';
+    bloqueiaTerceiro.push(`${arquivo}: ${href.slice(0, 60)}`);
+  }
+}
+if (bloqueiaTerceiro.length) {
+  failures.push(
+    `CSS de terceiro bloqueando o render em ${bloqueiaTerceiro.length} caso(s):\n    ` +
+    bloqueiaTerceiro.slice(0, 10).join('\n    ')
+  );
+}
+
 console.log(`=== Orçamento de performance :: ${BUDGET.page} ===`);
-console.log(`  site: ${paginas.length} páginas · 0 usando CDN que compila no navegador`);
+console.log(`  site: ${paginas.length} páginas · ${reincidentes.length} com CDN que compila no cliente · ${bloqueiaTerceiro.length} com CSS de terceiro bloqueante`);
 if (verbose || failures.length) {
   for (const [name, kb] of parts) console.log(`  ${kb.toFixed(1).padStart(6)}KB  ${name}`);
   console.log(`  bloqueantes: ${blocking.length ? blocking.join(", ") : "nenhum"} · inline no head: ${inlineHeadScripts}`);
