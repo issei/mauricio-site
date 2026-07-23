@@ -49,7 +49,8 @@ if (!skipBuild) steps.push(['build', 'npx vite build']);
 // pega à mão um contador de Hero ou um card de Hub editado manualmente.
 steps.push([
   'artefatos gerados em dia',
-  'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check',
+  'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check' +
+    ' && node scripts/optimize-critical-path.mjs --check',
 ]);
 
 // Coerência do GRAFO, não de uma página: links quebrados, órfãs, SSOT

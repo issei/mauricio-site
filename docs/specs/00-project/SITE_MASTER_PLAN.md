@@ -112,6 +112,8 @@ Verificados automaticamente. Um invariante sem verificação é uma intenção.
 | INV-S9 | **Fundo escuro em toda página** — nenhuma superfície clara | `audit-site.mjs` |
 | INV-S10 | Sem jargão de marketing; lexical lock respeitado | `audit-site.mjs` |
 | INV-S11 | axe sem violações serious/critical | suítes Playwright |
+| INV-S12 | Nenhum CSS de terceiro bloqueia o primeiro render | `perf-budget.mjs` |
+| INV-S13 | Nenhuma página compila CSS no navegador | `perf-budget.mjs` |
 
 ---
 
@@ -161,13 +163,28 @@ config eram idênticos. O CSS compilado fica em ~15–16 KB gzip por página.
 `scripts/perf-budget.mjs` passou a reprovar o build se qualquer página do site
 voltar a referenciar uma CDN que compila no cliente.
 
-**Pendente — Google Fonts e Font Awesome.** Continuam bloqueantes em ~28 e ~13
-páginas. Menos graves (são CSS, não compilação em runtime), mas ainda um
-round-trip a terceiro no caminho crítico.
-**Como fazer:** o padrão já está provado em `apresentacao` — ícones em SVG
-inline e nenhum script no `<head>`. Substituir Font Awesome exige varrer os
-ícones usados página a página; é trabalho mecânico e volumoso, melhor em PR
-próprio, e o `perf-budget` já tem onde apertar o teto quando for feito.
+**Feito (2026-07-23) — Google Fonts e Font Awesome fora do caminho crítico.**
+29 páginas bloqueavam o primeiro render num round-trip ao Google Fonts; 15
+faziam um segundo ao cdnjs — e **duas carregavam ícones que a página não usa**
+(`proposta-engenharia-reversa` e `service-operations-2-0`), onde o link foi
+simplesmente removido.
+
+Nas demais, as folhas passaram a `media="print"` + `onload="this.media='all'"`,
+com `<noscript>` preservando o recurso para quem não executa JavaScript: nada se
+perde, a página apenas deixa de **esperar**. Aplicado também a `vsl.html`
+(video.js) e a `public/lifeos.html`, que fica fora do pipeline do Vite e chega a
+`dist/` por cópia.
+
+`scripts/optimize-critical-path.mjs` é idempotente e roda no gate com `--check`;
+`perf-budget.mjs` reprova o build se qualquer página do site voltar a bloquear o
+render num terceiro. A página v3.0 ficou com **um único** recurso bloqueante.
+
+**Nota sobre a escolha.** Trocar Font Awesome por SVG inline seria mais puro,
+mas exigiria varrer 57 ícones distintos só em `knowledge-os-presentation`, com
+risco visual em 13 páginas. O carregamento assíncrono resolve o problema real —
+o round-trip no caminho crítico — sem tocar em nenhum ícone. A substituição por
+SVG continua valendo a pena onde houver poucos ícones, e agora é otimização, não
+correção.
 
 ### 5.4 `life` e `life3d` invisíveis para busca · risco baixo, valor médio
 
@@ -212,5 +229,6 @@ reprova o build.
 
 | Data | Mudança |
 |---|---|
+| 2026-07-23 | Google Fonts, Font Awesome e video.js fora do caminho crítico em 31 páginas; ícones não usados removidos de 2. §5.3 concluído. |
 | 2026-07-23 | `cdn.tailwindcss.com` removido de 6 páginas; folhas próprias com `@theme`; perf-budget vigia o site inteiro. |
 | 2026-07-23 | Documento criado. Página `apresentacao` (v3.0) entra como tier S; auditoria global no gate; `know` migrada para Dark Tech; sitemap e backups saneados. |
