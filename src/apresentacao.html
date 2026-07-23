@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="ap-nojs">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Arquitetura de IA auditável — Maurício Yokoyama Issei</title>
+  <meta name="description"
+    content="Governança de IA corporativa, arquitetura de software e sistemas de agentes: complexidade técnica traduzida em decisões que sua empresa pode auditar." />
+
+
+
+
+
+
+
+
+  <!-- Descoberta por agentes (RFC 8288), coerente com o restante do site -->
+  <link rel="describedby" href="/llms.txt" type="text/plain" title="LLM-optimized profile index" />
+  <link rel="service-doc" href="/cv-for-ai.md" type="text/markdown" title="Structured CV for AI agents" />
+
+  <!--
+    Orçamento crítico (spec §4.3): apenas DOIS recursos bloqueantes — a folha de
+    tokens e a fonte. Sem Font Awesome (ícones são SVG inline) e sem script
+    inline no <head>. A analítica entra no fim do <body>, fora do caminho de
+    primeiro render.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+  <link rel="stylesheet" href="./apresentacao.css" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0A0A0C" />
+<meta name="keywords" content="governança de IA, arquitetura de IA auditável, GraphRAG, ontologias, Spec-Driven Development, DevOps Salesforce, auditabilidade, rastreabilidade, determinismo" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/apresentacao" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/apresentacao.md" title="Arquitetura de IA auditável — Markdown para IA" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Arquitetura de IA auditável" />
+<meta property="og:description" content="Governança de IA corporativa, arquitetura de software e sistemas de agentes: complexidade técnica traduzida em decisões que sua empresa pode auditar." />
+<meta property="og:url" content="https://mauricio.issei.com.br/apresentacao" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-apresentacao.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Arquitetura de IA auditável" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Arquitetura de IA auditável" />
+<meta name="twitter:description" content="Governança de IA corporativa, arquitetura de software e sistemas de agentes: complexidade técnica traduzida em decisões que sua empresa pode auditar." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-apresentacao.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": [
+        "WebPage",
+        "WebPage"
+      ],
+      "@id": "https://mauricio.issei.com.br/apresentacao#webpage",
+      "url": "https://mauricio.issei.com.br/apresentacao",
+      "name": "Arquitetura de IA auditável",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-07-23",
+      "dateModified": "2026-07-23",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-apresentacao.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/apresentacao#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/apresentacao#webpage"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/apresentacao#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Arquitetura de IA auditável"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/apresentacao#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que torna uma arquitetura de IA auditável?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A capacidade de reconstruir, para qualquer saída, a evidência que a sustentou: quais fontes foram consultadas, sob qual versão da especificação, com qual aprovação. Auditabilidade não é um relatório produzido depois — é o subproduto de um caminho único de decisão e entrega."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é GraphRAG e por que reduz alucinação?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É a recuperação de contexto a partir de um grafo de conhecimento com relações tipadas, em vez de apenas similaridade de texto. Como cada resposta carrega os nós percorridos, existe proveniência verificável; e como a ausência de dado é tratada como incerteza explícita (open-world), o sistema prefere não responder a inventar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é Spec-Driven Development na prática?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A especificação é a fonte da verdade e o alvo executável: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. Um critério só vale se puder falhar — \"melhorar a performance\" não é critério, \"p95 abaixo de 400 ms\" é."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais princípios de governança são declarados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Determinismo (mesma entrada, mesma saída, com o não-determinismo isolado e testável), auditabilidade (toda decisão guarda evidência reexecutável), rastreabilidade (do comportamento em produção até a linha da especificação que o exigiu) e reversibilidade (nenhuma mudança entra sem caminho de volta exercitado)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Por que a página tem duas perspectivas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque a mesma arquitetura precisa ser defendida em dois vocabulários: risco, governança e retorno para a decisão executiva; ontologias, contratos e latência para a decisão de engenharia. Os pares de frase mantêm estrutura sintática e métricas idênticas — é a mesma verdade contada de dois jeitos, não duas afirmações diferentes."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/apresentacao#glossario",
+      "name": "Glossário — Arquitetura de IA auditável",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/apresentacao#g-auditabilidade",
+          "name": "Auditabilidade",
+          "description": "Toda decisão automatizada guarda a evidência que a sustentou, em formato reexecutável por terceiros."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/apresentacao#g-rastreabilidade",
+          "name": "Rastreabilidade",
+          "description": "Do comportamento em produção é possível chegar à linha da especificação que o exigiu e à aprovação que o liberou."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/apresentacao#g-reversibilidade",
+          "name": "Reversibilidade",
+          "description": "Nenhuma mudança entra sem caminho de volta conhecido e exercitado. Rollback não testado não é rollback."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/apresentacao#g-proveniencia",
+          "name": "Proveniência",
+          "description": "Registro dos nós e fontes percorridos para produzir uma resposta, nó a nó."
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="ap-body">
+  <a class="ap-skip" href="#conteudo">Ir para o conteúdo</a>
+
+  <!-- Indicador de progresso adaptativo (spec §2.G) -->
+  <div class="ap-progress" role="progressbar" aria-label="Progresso de leitura pelas três camadas"
+    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="ap-progress-bar" data-ap-progress></div>
+  </div>
+
+  <!-- ═══ Seletor de Perspectiva — persistente durante toda a rolagem ═══════ -->
+  <div class="ap-selector-dock">
+    <div class="ap-shell">
+      <div class="ap-selector" data-ap-selector>
+        <span class="ap-selector-label" id="ap-selector-label">Perspectiva</span>
+        <div class="ap-switch" role="radiogroup" aria-labelledby="ap-selector-label">
+          <button type="button" class="ap-switch-opt" role="radio" data-persona="exec"
+            aria-checked="true" tabindex="0">Executiva</button>
+          <button type="button" class="ap-switch-opt" role="radio" data-persona="eng"
+            aria-checked="false" tabindex="-1">Engenharia</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="conteudo">
+
+    <!-- ═══ HERO — Camada 1 ═══════════════════════════════════════════════ -->
+    <section class="ap-hero" data-layer="1" aria-labelledby="ap-hero-title">
+      <div class="ap-shell ap-hero-grid">
+        <div>
+          <p class="ap-eyebrow">Arquitetura executiva · Governança de IA · Sistemas de agentes</p>
+
+          <h1 class="ap-h1" id="ap-hero-title">
+            Complexidade de IA e arquitetura de software, estruturada em decisões que sua empresa
+            pode auditar.
+          </h1>
+
+          <p class="ap-lede ap-pair" data-pair="hero-lede">
+            <span data-persona="exec">Governança, engenharia de sistemas e agentes inteligentes
+              desenhados para transformar risco técnico em vantagem competitiva mensurável.</span>
+            <span data-persona="eng" hidden>Contratos, topologia de agentes e esteiras
+              determinísticas construídos para transformar saída probabilística em comportamento
+              verificável em produção.</span>
+          </p>
+
+          <!-- AP-COUNTER:START -->
+      <p class="ap-counter ap-mono">
+        <b>120+</b>
+        <span>especificações auditáveis geridas · 3 decisões de arquitetura registradas</span>
+      </p>
+<!-- AP-COUNTER:END -->
+        </div>
+
+        <!--
+          Caos → sistema. O movimento é a mensagem: nenhuma legenda explica a
+          animação (spec §2.A). Decorativa, portanto aria-hidden — o significado
+          já está no texto ao lado.
+        -->
+        <svg class="ap-figure" viewBox="0 0 200 200" aria-hidden="true" focusable="false"
+          data-ap-figure>
+          <g class="ap-figure-lines">
+            <line class="ap-figure-line" x1="40" y1="40" x2="160" y2="40" />
+            <line class="ap-figure-line" x1="40" y1="80" x2="160" y2="80" />
+            <line class="ap-figure-line" x1="40" y1="120" x2="160" y2="120" />
+            <line class="ap-figure-line" x1="40" y1="160" x2="160" y2="160" />
+            <line class="ap-figure-line" x1="40" y1="40" x2="40" y2="160" />
+            <line class="ap-figure-line" x1="80" y1="40" x2="80" y2="160" />
+            <line class="ap-figure-line" x1="120" y1="40" x2="120" y2="160" />
+            <line class="ap-figure-line" x1="160" y1="40" x2="160" y2="160" />
+          </g>
+          <g class="ap-figure-dots">
+            <circle class="ap-dot" cx="40" cy="40" r="3" style="--dx: 22; --dy: -14" />
+            <circle class="ap-dot" cx="80" cy="40" r="3" style="--dx: -31; --dy: 26" />
+            <circle class="ap-dot" cx="120" cy="40" r="3" style="--dx: 18; --dy: 34" />
+            <circle class="ap-dot" cx="160" cy="40" r="3" style="--dx: -24; --dy: -19" />
+            <circle class="ap-dot" cx="40" cy="80" r="3" style="--dx: 29; --dy: 21" />
+            <circle class="ap-dot" cx="80" cy="80" r="3" style="--dx: -16; --dy: -28" />
+            <circle class="ap-dot" cx="120" cy="80" r="3" style="--dx: 33; --dy: -12" />
+            <circle class="ap-dot" cx="160" cy="80" r="3" style="--dx: -27; --dy: 30" />
+            <circle class="ap-dot" cx="40" cy="120" r="3" style="--dx: -20; --dy: 25" />
+            <circle class="ap-dot" cx="80" cy="120" r="3" style="--dx: 26; --dy: -31" />
+            <circle class="ap-dot" cx="120" cy="120" r="3" style="--dx: -34; --dy: 17" />
+            <circle class="ap-dot" cx="160" cy="120" r="3" style="--dx: 15; --dy: 28" />
+            <circle class="ap-dot" cx="40" cy="160" r="3" style="--dx: 31; --dy: -22" />
+            <circle class="ap-dot" cx="80" cy="160" r="3" style="--dx: -18; --dy: -33" />
+            <circle class="ap-dot" cx="120" cy="160" r="3" style="--dx: 24; --dy: 19" />
+            <circle class="ap-dot" cx="160" cy="160" r="3" style="--dx: -29; --dy: -16" />
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ═══ Dimensões do Seletor — cartões, não tabela (spec §2.B.4) ═══════ -->
+    <section data-layer="1" aria-labelledby="ap-dim-title">
+      <div class="ap-shell">
+        <h2 class="ap-h2" id="ap-dim-title">A mesma arquitetura, dois vocabulários</h2>
+        <p class="ap-p">
+          O que muda entre a leitura executiva e a de engenharia não é a verdade — é a métrica com
+          que ela se prova.
+        </p>
+
+        <dl class="ap-dimensions">
+          <div class="ap-dimension" data-persona="exec" data-active="true">
+            <dt>Foco central</dt>
+            <dd class="ap-pair" data-pair="dim-foco">
+              <span data-persona="exec">Risco, governança, custo total de propriedade e
+                escalabilidade.</span>
+              <span data-persona="eng" hidden>Ontologias, GraphRAG, spec-driven development e DevOps
+                Salesforce.</span>
+            </dd>
+          </div>
+          <div class="ap-dimension">
+            <dt>Linguagem visual</dt>
+            <dd class="ap-pair" data-pair="dim-linguagem">
+              <span data-persona="exec">Curvas de eficiência e mapas de maturidade.</span>
+              <span data-persona="eng" hidden>Diagramas de componentes e topologia de agentes.</span>
+            </dd>
+          </div>
+          <div class="ap-dimension">
+            <dt>Métrica prioritária</dt>
+            <dd class="ap-pair" data-pair="dim-metrica">
+              <span data-persona="exec">Retorno sobre investimento e conformidade
+                regulatória.</span>
+              <span data-persona="eng" hidden>Cobertura de especificação, latência e
+                estabilidade.</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ═══════════ ZONA 1 · GraphRAG & Ontologias ═══════════════════════════ -->
+    <section aria-labelledby="ap-z1-title" data-zone="graphrag">
+
+      <!-- Superfície -->
+      <div data-layer="1">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 1 · Superfície</p>
+          <span class="ap-complexity">Complexidade: Estratégica</span>
+          <h2 class="ap-h2" id="ap-z1-title">A memória institucional sem alucinação</h2>
+          <p class="ap-lede ap-pair" data-pair="graphrag-superficie">
+            <span data-persona="exec">Sua IA responde com a memória da empresa, não com o que ela
+              imagina.</span>
+            <span data-persona="eng" hidden>O agente recupera do grafo de conhecimento, não do que o
+              modelo memorizou.</span>
+          </p>
+          <p class="ap-p">
+            <dfn class="ap-term">GraphRAG</dfn> —
+            <span class="ap-value">a diferença entre uma IA que responde e uma IA que sabe por que
+              responde.</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Mecanismo -->
+      <div data-layer="2">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 2 · Mecanismo</p>
+          <p class="ap-p ap-pair" data-pair="graphrag-mecanismo">
+            <span data-persona="exec">Cada resposta aponta para a fonte que a originou, com trilha de
+              auditoria.</span>
+            <span data-persona="eng" hidden>Cada resposta carrega os nós percorridos no grafo, com
+              trilha de proveniência.</span>
+          </p>
+
+          <svg viewBox="0 0 560 200" role="img" aria-labelledby="ap-z1-svg-t ap-z1-svg-d"
+            class="ap-diagram">
+            <title id="ap-z1-svg-t">Silos de conhecimento conectados a agentes por um grafo</title>
+            <desc id="ap-z1-svg-d">Três silos de conhecimento — contratos, tickets e
+              especificações — convergem para um nó central de ontologia, que alimenta dois agentes
+              consumidores. Cada aresta representa uma relação tipada e rastreável.</desc>
+            <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.35">
+              <path d="M120 40 L270 100" /><path d="M120 100 L270 100" />
+              <path d="M120 160 L270 100" /><path d="M310 100 L450 60" />
+              <path d="M310 100 L450 140" />
+            </g>
+            <g fill="currentColor" font-size="11" font-family="ui-monospace, monospace">
+              <rect x="24" y="28" width="92" height="24" rx="4" fill="none" stroke="currentColor"
+                opacity="0.5" />
+              <text x="34" y="44">contratos</text>
+              <rect x="24" y="88" width="92" height="24" rx="4" fill="none" stroke="currentColor"
+                opacity="0.5" />
+              <text x="34" y="104">tickets</text>
+              <rect x="24" y="148" width="92" height="24" rx="4" fill="none" stroke="currentColor"
+                opacity="0.5" />
+              <text x="34" y="164">specs</text>
+              <circle cx="290" cy="100" r="20" fill="none" stroke="currentColor" />
+              <text x="270" y="136">ontologia</text>
+              <rect x="450" y="46" width="86" height="26" rx="4" fill="none" stroke="currentColor"
+                opacity="0.5" />
+              <text x="460" y="63">agente A</text>
+              <rect x="450" y="126" width="86" height="26" rx="4" fill="none" stroke="currentColor"
+                opacity="0.5" />
+              <text x="460" y="143">agente B</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Núcleo -->
+      <div data-layer="3">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 3 · Núcleo</p>
+          <span class="ap-complexity">Complexidade: Tópico Profundo</span>
+          <div class="ap-core-grid">
+            <div class="ap-card">
+              <h3 class="ap-h3">Tipos de relação</h3>
+              <div class="ap-table-wrap">
+                <table class="ap-spec-table">
+                  <caption class="ap-sr">Tipos de relação do grafo e sua cardinalidade</caption>
+                  <thead>
+                    <tr><th scope="col">Relação</th><th scope="col">Origem → destino</th>
+                      <th scope="col">Cardinalidade</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="ap-param">derivaDe</td><td>spec → contrato</td><td>n:1</td></tr>
+                    <tr><td class="ap-param">contradiz</td><td>spec → spec</td><td>n:n</td></tr>
+                    <tr><td class="ap-param">evidencia</td><td>ticket → regra</td><td>n:1</td></tr>
+                    <tr><td class="ap-param">substitui</td><td>versão → versão</td><td>1:1</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ap-card">
+              <h3 class="ap-h3">Camadas de contexto</h3>
+              <p class="ap-p">
+                A recuperação percorre da camada mais específica para a mais geral e para no primeiro
+                nível que satisfaz o <span class="ap-param">limiar_de_certeza</span>. Abaixo dele a
+                resposta não é emitida: é degradada para incerteza explícita.
+              </p>
+              <p class="ap-p">
+                Ausência de dado é tratada como <span class="ap-param">open-world</span> — incerteza,
+                nunca negação.
+              </p>
+            </div>
+          </div>
+
+          <p class="ap-reflect ap-pair" data-pair="graphrag-reflexao">
+            <span data-persona="exec">Sua organização sabe explicar, para um auditor ou regulador,
+              por que uma resposta de IA foi gerada?</span>
+            <span data-persona="eng" hidden>Seu pipeline registra, para cada resposta de agente, a
+              proveniência de todos os nós consultados?</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ ZONA 2 · Spec-Driven Development ═════════════════════════ -->
+    <section aria-labelledby="ap-z2-title" data-zone="sdd">
+
+      <div data-layer="1">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 1 · Superfície</p>
+          <span class="ap-complexity">Complexidade: Estratégica</span>
+          <h2 class="ap-h2" id="ap-z2-title">O blueprint digital inviolável</h2>
+          <p class="ap-lede ap-pair" data-pair="sdd-superficie">
+            <span data-persona="exec">A especificação vira contrato: o que foi aprovado é exatamente
+              o que entra em produção.</span>
+            <span data-persona="eng" hidden>A spec vira alvo executável: o que foi versionado é
+              exatamente o que o agente implementa.</span>
+          </p>
+          <p class="ap-p">
+            <dfn class="ap-term">Spec-Driven Development</dfn> —
+            <span class="ap-value">escrever o combinado antes do código, para que a ambiguidade não
+              vire retrabalho.</span>
+          </p>
+        </div>
+      </div>
+
+      <div data-layer="2">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 2 · Mecanismo</p>
+          <p class="ap-p ap-pair" data-pair="sdd-mecanismo">
+            <span data-persona="exec">O que muda no negócio muda antes no documento, depois no
+              sistema.</span>
+            <span data-persona="eng" hidden>O que muda no comportamento muda antes na spec, depois no
+              código.</span>
+          </p>
+
+          <svg viewBox="0 0 560 120" role="img" aria-labelledby="ap-z2-svg-t ap-z2-svg-d"
+            class="ap-diagram">
+            <title id="ap-z2-svg-t">Fluxo linear de especificação a orquestração</title>
+            <desc id="ap-z2-svg-d">Quatro etapas encadeadas da esquerda para a direita:
+              especificação, critérios de aceite, geração assistida e orquestração. Um retorno da
+              última etapa para a primeira indica que mudanças voltam à especificação, nunca direto
+              ao código.</desc>
+            <g fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="14" y="28" width="112" height="36" rx="5" opacity="0.5" />
+              <rect x="158" y="28" width="112" height="36" rx="5" opacity="0.5" />
+              <rect x="302" y="28" width="112" height="36" rx="5" opacity="0.5" />
+              <rect x="440" y="28" width="106" height="36" rx="5" opacity="0.5" />
+              <path d="M126 46 L158 46" /><path d="M270 46 L302 46" />
+              <path d="M414 46 L440 46" />
+              <path d="M493 64 L493 92 L70 92 L70 64" stroke-dasharray="3 3" opacity="0.6" />
+            </g>
+            <g fill="currentColor" font-size="11" font-family="ui-monospace, monospace">
+              <text x="30" y="50">especificação</text>
+              <text x="184" y="50">critérios</text>
+              <text x="330" y="50">geração</text>
+              <text x="458" y="50">orquestra</text>
+              <text x="228" y="108" opacity="0.7">mudança volta à spec</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div data-layer="3">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 3 · Núcleo</p>
+          <span class="ap-complexity">Complexidade: Tópico Profundo</span>
+          <div class="ap-core-grid">
+            <div class="ap-card">
+              <h3 class="ap-h3">Estrutura de uma especificação formal</h3>
+              <div class="ap-table-wrap">
+                <table class="ap-spec-table">
+                  <caption class="ap-sr">Seções obrigatórias de uma especificação e seu papel</caption>
+                  <thead>
+                    <tr><th scope="col">Seção</th><th scope="col">Papel</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="ap-param">contexto</td><td>por que a mudança existe</td></tr>
+                    <tr><td class="ap-param">invariantes</td><td>o que não pode deixar de ser verdade</td></tr>
+                    <tr><td class="ap-param">critérios</td><td>como se prova que está pronto</td></tr>
+                    <tr><td class="ap-param">fora de escopo</td><td>o que deliberadamente não muda</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ap-card">
+              <h3 class="ap-h3">Critério de validação</h3>
+              <p class="ap-p">
+                Um critério só vale se puder falhar. "Melhorar a performance" não é critério;
+                <span class="ap-param">p95 &lt; 400 ms</span> é. Toda linha da seção de critérios
+                vira um teste, e a especificação é considerada incompleta enquanto algum critério
+                não tiver como reprovar.
+              </p>
+              <p class="ap-p">
+                É a mesma disciplina aplicada a esta página: os dezessete requisitos da sua
+                especificação têm, cada um, um teste nomeado.
+              </p>
+            </div>
+          </div>
+
+          <p class="ap-reflect ap-pair" data-pair="sdd-reflexao">
+            <span data-persona="exec">Quanto do que sua área aprovou em reunião chegou ao código sem
+              perder intenção?</span>
+            <span data-persona="eng" hidden>Quanto do que sua spec definiu chegou ao merge sem perder
+              critério de aceite?</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ ZONA 3 · Salesforce DevOps & Governança ══════════════════ -->
+    <section aria-labelledby="ap-z3-title" data-zone="devops">
+
+      <div data-layer="1">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 1 · Superfície</p>
+          <span class="ap-complexity">Complexidade: Estratégica</span>
+          <h2 class="ap-h2" id="ap-z3-title">A esteira contínua de resiliência</h2>
+          <p class="ap-lede ap-pair" data-pair="devops-superficie">
+            <span data-persona="exec">Cada mudança no Salesforce chega à produção por um caminho
+              previsível e reversível.</span>
+            <span data-persona="eng" hidden>Cada commit no Salesforce chega à produção por uma
+              esteira validada e reversível.</span>
+          </p>
+          <p class="ap-p">
+            <dfn class="ap-term">Esteira de entrega</dfn> —
+            <span class="ap-value">o caminho único e vigiado por onde toda mudança passa, para que
+              nenhuma chegue sem registro.</span>
+          </p>
+        </div>
+      </div>
+
+      <div data-layer="2">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 2 · Mecanismo</p>
+          <p class="ap-p ap-pair" data-pair="devops-mecanismo">
+            <span data-persona="exec">Nenhuma entrega passa sem checagem de qualidade e registro de
+              aprovação.</span>
+            <span data-persona="eng" hidden>Nenhum merge passa sem cobertura de teste e política de
+              branch aplicada.</span>
+          </p>
+
+          <svg viewBox="0 0 560 140" role="img" aria-labelledby="ap-z3-svg-t ap-z3-svg-d"
+            class="ap-diagram">
+            <title id="ap-z3-svg-t">Circuito de controle de qualidade e conformidade</title>
+            <desc id="ap-z3-svg-d">Um ciclo fechado com quatro estações — commit, validação,
+              aprovação e produção — e um caminho de retorno de produção para commit representando o
+              rollback automático quando uma checagem falha.</desc>
+            <g fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="70" cy="60" r="26" opacity="0.5" />
+              <circle cx="230" cy="60" r="26" opacity="0.5" />
+              <circle cx="390" cy="60" r="26" opacity="0.5" />
+              <circle cx="510" cy="60" r="26" opacity="0.5" />
+              <path d="M96 60 L204 60" /><path d="M256 60 L364 60" />
+              <path d="M416 60 L484 60" />
+              <path d="M510 86 L510 116 L70 116 L70 86" stroke-dasharray="3 3" opacity="0.6" />
+            </g>
+            <g fill="currentColor" font-size="10" font-family="ui-monospace, monospace"
+              text-anchor="middle">
+              <text x="70" y="63">commit</text>
+              <text x="230" y="63">validação</text>
+              <text x="390" y="63">aprovação</text>
+              <text x="510" y="63">produção</text>
+              <text x="290" y="132" opacity="0.7">rollback automático</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div data-layer="3">
+        <div class="ap-shell ap-reveal">
+          <p class="ap-layer-mark">Camada 3 · Núcleo</p>
+          <span class="ap-complexity">Complexidade: Tópico Profundo</span>
+          <div class="ap-core-grid">
+            <div class="ap-card">
+              <h3 class="ap-h3">Matriz de checagens automatizadas</h3>
+              <div class="ap-table-wrap">
+                <table class="ap-spec-table">
+                  <caption class="ap-sr">Checagens automatizadas, momento de execução e efeito na
+                    falha</caption>
+                  <thead>
+                    <tr><th scope="col">Checagem</th><th scope="col">Momento</th>
+                      <th scope="col">Falha</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="ap-param">cobertura</td><td>pré-merge</td><td>bloqueia</td></tr>
+                    <tr><td class="ap-param">análise estática</td><td>pré-merge</td><td>bloqueia</td></tr>
+                    <tr><td class="ap-param">smoke pós-deploy</td><td>pós-deploy</td><td>reverte</td></tr>
+                    <tr><td class="ap-param">trilha de aprovação</td><td>pré-deploy</td><td>bloqueia</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ap-card">
+              <h3 class="ap-h3">Pontos de auditoria</h3>
+              <p class="ap-p">
+                Cada estação da esteira grava quem aprovou, o que mudou e contra qual versão da
+                especificação. A auditoria não é um relatório produzido depois: é o subproduto
+                natural de um caminho único de entrega.
+              </p>
+              <p class="ap-p ap-mono" style="font-size: 0.85rem">
+                <span class="ap-live-dot" aria-hidden="true"></span>
+                <span class="ap-sr">Estado do ambiente:</span> esteira operando
+              </p>
+            </div>
+          </div>
+
+          <p class="ap-reflect ap-pair" data-pair="devops-reflexao">
+            <span data-persona="exec">Se o próximo deploy falhar hoje, sua operação sabe em quanto
+              tempo volta ao normal?</span>
+            <span data-persona="eng" hidden>Se o próximo deploy falhar hoje, sua esteira sabe em qual
+              commit reverter sozinha?</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROVA DE GOVERNANÇA (spec §2.D) ═══════════════════════════════ -->
+    <section data-layer="3" data-zone="governanca" aria-labelledby="ap-gov-title">
+      <div class="ap-shell ap-reveal">
+        <p class="ap-layer-mark">Prova de governança</p>
+        <h2 class="ap-h2" id="ap-gov-title">Princípios que podem ser verificados</h2>
+        <p class="ap-p ap-pair" data-pair="gov-determinismo">
+          <span data-persona="exec">Determinismo antes de inteligência: o modelo entra somente onde
+            regras não bastam.</span>
+          <span data-persona="eng" hidden>Determinístico-primeiro: o modelo atua somente no resíduo
+            que regras não resolvem.</span>
+        </p>
+
+        <div class="ap-principles">
+          <article class="ap-principle">
+            <h3>Determinismo</h3>
+            <p>A mesma entrada produz a mesma saída. O não-determinismo fica isolado num ponto
+              nomeado do sistema, e esse ponto é testável.</p>
+          </article>
+          <article class="ap-principle">
+            <h3>Auditabilidade</h3>
+            <p>Toda decisão automatizada guarda a evidência que a sustentou, em formato que um
+              terceiro consegue reexecutar.</p>
+          </article>
+          <article class="ap-principle">
+            <h3>Rastreabilidade</h3>
+            <p>De um comportamento em produção é possível chegar à linha da especificação que o
+              exigiu, e à aprovação que o liberou.</p>
+          </article>
+          <article class="ap-principle">
+            <h3>Reversibilidade</h3>
+            <p>Nenhuma mudança entra sem um caminho de volta conhecido e exercitado. Rollback não
+              testado não é rollback.</p>
+          </article>
+        </div>
+
+        <p class="ap-compliance">
+          Acessibilidade é a mesma tese aplicada a esta própria interface: esta página é verificada
+          contra a WCAG 2.1 AA a cada build, com o texto desta camada em contraste igual ou superior
+          a 7:1. Um site que argumenta por governança e não audita a si mesmo está apenas fazendo
+          publicidade.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ HUB DE CONEXÃO (spec §2.E) ════════════════════════════════════ -->
+    <section data-layer="2" aria-labelledby="ap-hub-title" data-ap-hub>
+      <div class="ap-shell">
+        <p class="ap-layer-mark">Hub de conexão</p>
+        <h2 class="ap-h2" id="ap-hub-title">Aprofundar é uma escolha, não uma imposição</h2>
+        <p class="ap-p">
+          Cada item traz o tempo estimado de consumo, calculado a partir do próprio conteúdo — não
+          estimado a olho.
+        </p>
+
+        <div class="ap-tablist" role="tablist" aria-label="Profundidade do conteúdo">
+          <button type="button" class="ap-tab" role="tab" data-tab="decidir"
+            aria-selected="true" tabindex="0" aria-controls="ap-hub-panel">
+            Para decidir <span class="ap-tab-count">(5)</span>
+          </button>
+          <button type="button" class="ap-tab" role="tab" data-tab="planejar"
+            aria-selected="false" tabindex="-1" aria-controls="ap-hub-panel">
+            Para planejar <span class="ap-tab-count">(5)</span>
+          </button>
+          <button type="button" class="ap-tab" role="tab" data-tab="especificar"
+            aria-selected="false" tabindex="-1" aria-controls="ap-hub-panel">
+            Para especificar <span class="ap-tab-count">(4)</span>
+          </button>
+        </div>
+
+        <!-- AP-HUB:START -->
+        <div class="ap-hub-grid" id="ap-hub-panel" role="tabpanel" aria-labelledby="ap-hub-title">
+        <a class="ap-hub-item" href="./sustentacao.html" data-hub-item data-tab="decidir">
+          <h3>Do Caos à Resiliência</h3>
+          <p>Jornada prática sobre incidentes, confiabilidade, comunicação e tomada de decisão em ambientes críticos de produção.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Estratégica</span>
+            <span>3 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./terminal-evolutivo.html" data-hub-item data-tab="decidir">
+          <h3>Terminal Evolutivo</h3>
+          <p>A vida de Maurício Issei contada em cenas: o ofício, as fraturas que viraram ouro e a rede que sustenta, em scrollytelling.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Estratégica</span>
+            <span>5 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./service-operations-2-0.html" data-hub-item data-tab="decidir">
+          <h3>Service Operations 2.0</h3>
+          <p>O modelo Service Operations 2.0 para o conselho executivo: transformar operações legadas com automação, IA e governança ágil para conquistar e reter clientes.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Estratégica</span>
+            <span>9 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./know.html" data-hub-item data-tab="decidir">
+          <h3>Navegando na Complexidade</h3>
+          <p>Por que copiar a fórmula do sucesso falha em sistemas complexos: contexto, o framework Cynefin e os limites das melhores práticas.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Estratégica</span>
+            <span>9 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./socialselling.html" data-hub-item data-tab="decidir">
+          <h3>SocialSelling</h3>
+          <p>Overview do projeto SocialSelling: arquitetura, especificações ADR/SDD, gates de determinismo e aprendizado por feedback.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Estratégica</span>
+            <span>18 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./proposta.html" data-hub-item data-tab="planejar" hidden>
+          <h3>Inteligência de Vendas em Tempo Real</h3>
+          <p>Proposta de inteligência de vendas em tempo real combinando Salesforce e AWS para elevar a eficiência comercial com dados e IA.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Técnica Aplicada</span>
+            <span>2 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./proposta-observabilidade-mobile.html" data-hub-item data-tab="planejar" hidden>
+          <h3>Observabilidade SRE para Mobilidade Corporativa</h3>
+          <p>Arquitetura de Observabilidade SRE para mobilidade corporativa com Datadog, Azure e Android Enterprise: visibilidade fim a fim da frota de dispositivos.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Técnica Aplicada</span>
+            <span>4 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./salesforce-agentic-quickstart.html" data-hub-item data-tab="planejar" hidden>
+          <h3>Quick Start</h3>
+          <p>Do zero ao primeiro deploy governado em menos de 60 minutos: repositório configurado, especificação escrita e Devin executando no seu contexto Salesforce.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Técnica Aplicada</span>
+            <span>9 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./devops-salesforce.html" data-hub-item data-tab="planejar" hidden>
+          <h3>DevOps para Salesforce</h3>
+          <p>Transforme sua esteira de DevOps Salesforce combinando a governança do Flosum, a flexibilidade do GitHub e a velocidade autônoma do Devin AI.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Técnica Aplicada</span>
+            <span>10 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./devin.html" data-hub-item data-tab="planejar" hidden>
+          <h3>Vibe Coding com Devin</h3>
+          <p>Como o Vibe Coding maduro vira engenharia: Spec-Driven Development, testes BDD, o arsenal Skills/Playbooks/Knowledge e a renderização governada (A2UI) — do estudo de caso Devin + Salesforce.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Técnica Aplicada</span>
+            <span>35 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./proposta-engenharia-reversa.html" data-hub-item data-tab="especificar" hidden>
+          <h3>Engenharia Reversa Assistida por IA</h3>
+          <p>Proposta executiva de Engenharia Reversa Assistida por IA para Salesforce: baseline As-Is por evidências e governança fail-closed.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Tópico Profundo</span>
+            <span>7 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./salesforce-agentic-dev.html" data-hub-item data-tab="especificar" hidden>
+          <h3>Desenvolver Salesforce com IA Agentic sem gerar débito técnico</h3>
+          <p>Como desenvolver Salesforce com IA agêntica sem gerar débito técnico: Spec-Driven Development, Devin, Flosum CLI e Modelo Federado.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Tópico Profundo</span>
+            <span>21 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./knowledge-os-presentation.html" data-hub-item data-tab="especificar" hidden>
+          <h3>Knowledge OS Enterprise</h3>
+          <p>Plataforma IA-First de conhecimento corporativo com limites, rastreabilidade e custos sob controle: decisões baseadas em evidência.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Tópico Profundo</span>
+            <span>23 min</span>
+          </span>
+        </a>
+        <a class="ap-hub-item" href="./engenharia-agentes-ia.html" data-hub-item data-tab="especificar" hidden>
+          <h3>Engenharia de Agentes de IA</h3>
+          <p>Os dez princípios de engenharia que tornam agentes de IA confiáveis: determinístico-primeiro, Cérebro × Vitrine, contratos rígidos, Limiar de Certeza, FinOps por ledger e o MCP como fronteira.</p>
+          <span class="ap-hub-meta">
+            <span class="ap-complexity">Tópico Profundo</span>
+            <span>31 min</span>
+          </span>
+        </a>
+        </div>
+        <!-- AP-HUB:END -->
+      </div>
+    </section>
+
+    <!-- ═══ PONTO DE CONTATO (spec §2.F) ══════════════════════════════════ -->
+    <section data-layer="1" aria-labelledby="ap-contato-title">
+      <div class="ap-shell ap-reveal">
+        <p class="ap-layer-mark" id="ap-contato-title">Ponto de contato</p>
+        <p class="ap-contact-question">
+          Qual etapa da sua arquitetura de IA está sem governança hoje?
+        </p>
+        <p class="ap-p">
+          Comece a conversa pela lacuna, não pela apresentação institucional. A especificação vem
+          antes da execução — inclusive aqui.
+        </p>
+        <p>
+          <a class="ap-cta" href="https://www.linkedin.com/in/mauricioissei/" rel="noopener">
+            Descrever a lacuna
+          </a>
+          <a class="ap-cta-secondary" href="./catalogo.html">Ver o mapa do ecossistema</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+
+<!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">Complexidade de IA, estruturada para auditoria</h2>
+    <p class="aeo-tldr__lede">Três sistemas — <strong>memória institucional sem alucinação</strong>, <strong>especificação como contrato</strong> e <strong>esteira contínua de resiliência</strong> — apresentados em duas leituras da mesma verdade: a executiva, medida em risco e retorno, e a de engenharia, medida em cobertura e latência.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>GraphRAG e ontologias</strong> — a resposta da IA vem da memória da empresa, com trilha de proveniência nó a nó.</li>
+      <li><strong>Spec-Driven Development</strong> — o que foi aprovado é exatamente o que entra em produção; a mudança volta à spec, nunca direto ao código.</li>
+      <li><strong>DevOps Salesforce</strong> — caminho único e vigiado de entrega, com rollback conhecido e exercitado.</li>
+      <li><strong>Determinismo, auditabilidade, rastreabilidade e reversibilidade</strong> — quatro princípios declarados de forma verificável, não decorativa.</li>
+    </ul>
+    <p class="aeo-tldr__foot">Aprofunde em <a href="/engenharia-confianca">Engenharia da Confiança</a> e <a href="/engenharia-agentes-ia">Engenharia de Agentes de IA</a>.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que torna uma arquitetura de IA auditável?</summary>
+      <div class="aeo-faq__a"><p>A capacidade de reconstruir, para qualquer saída, a evidência que a sustentou: quais fontes foram consultadas, sob qual versão da especificação, com qual aprovação. Auditabilidade não é um relatório produzido depois — é o subproduto de um caminho único de decisão e entrega.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é GraphRAG e por que reduz alucinação?</summary>
+      <div class="aeo-faq__a"><p>É a recuperação de contexto a partir de um grafo de conhecimento com relações tipadas, em vez de apenas similaridade de texto. Como cada resposta carrega os nós percorridos, existe proveniência verificável; e como a ausência de dado é tratada como incerteza explícita (open-world), o sistema prefere não responder a inventar.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é Spec-Driven Development na prática?</summary>
+      <div class="aeo-faq__a"><p>A especificação é a fonte da verdade e o alvo executável: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. Um critério só vale se puder falhar — &quot;melhorar a performance&quot; não é critério, &quot;p95 abaixo de 400 ms&quot; é.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quais princípios de governança são declarados?</summary>
+      <div class="aeo-faq__a"><p>Determinismo (mesma entrada, mesma saída, com o não-determinismo isolado e testável), auditabilidade (toda decisão guarda evidência reexecutável), rastreabilidade (do comportamento em produção até a linha da especificação que o exigiu) e reversibilidade (nenhuma mudança entra sem caminho de volta exercitado).</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Por que a página tem duas perspectivas?</summary>
+      <div class="aeo-faq__a"><p>Porque a mesma arquitetura precisa ser defendida em dois vocabulários: risco, governança e retorno para a decisão executiva; ontologias, contratos e latência para a decisão de engenharia. Os pares de frase mantêm estrutura sintática e métricas idênticas — é a mesma verdade contada de dois jeitos, não duas afirmações diferentes.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+<footer class="ap-footer">
+    <div class="ap-shell">
+      <p>
+        <strong>Maurício Yokoyama Issei</strong> — Tech Lead e Arquiteto de Soluções de IA.
+      </p>
+      <p>
+        Esta página é auditada automaticamente contra WCAG 2.1 AA e funciona sem JavaScript.
+      </p>
+      <nav class="ap-footer-links" aria-label="Links do rodapé">
+        <a href="./index.html">Perfil</a>
+        <a href="./catalogo.html">Catálogo</a>
+        <a href="./engenharia-confianca.html">Engenharia da Confiança</a>
+        <a href="./privacidade.html">Privacidade</a>
+        <a href="./termos.html">Termos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/apresentacao/apresentacao.js"></script>
+  <script type="module" src="./js/eco-nav.js"></script>
+</body>
+
+</html>

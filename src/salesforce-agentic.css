@@ -1,0 +1,33 @@
+/* =============================================================================
+ * salesforce-agentic.css — tema compartilhado
+ * -----------------------------------------------------------------------------
+ * Substitui o `cdn.tailwindcss.com`, que compilava o CSS no navegador a cada
+ * visita. Tradução literal do bloco `tailwind.config` que vivia inline no
+ * <head>. Compartilhada por salesforce-agentic-dev e -quickstart, cujos
+ * blocos de config eram idênticos (SITE_MASTER_PLAN §5.3).
+ * ========================================================================== */
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dbe7ff;
+  --color-brand-200: #bcd0ff;
+  --color-brand-300: #8eaeff;
+  --color-brand-400: #5b82ff;
+  --color-brand-500: #3a5cff;
+  --color-brand-600: #2640f0;
+  --color-brand-700: #1f31c8;
+  --color-brand-800: #1d2da0;
+  --color-brand-900: #1d2c80;
+
+  --color-ink-900: #070914;
+  --color-ink-800: #0c1020;
+  --color-ink-700: #11162a;
+  --color-ink-600: #171d36;
+  --color-ink-500: #1f2742;
+
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --shadow-glow: 0 0 60px -10px rgba(91, 130, 255, 0.45);
+}
