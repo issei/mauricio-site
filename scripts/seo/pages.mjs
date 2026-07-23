@@ -120,7 +120,7 @@ export const PAGES = [
     slug: 'proposta-engenharia-reversa', type: 'TechArticle', tier: 'S', hasMd: true,
     title: 'Engenharia Reversa Assistida por IA — Mapear a Verdade do Legado',
     headline: 'Engenharia Reversa Assistida por IA: congelar o As-Is com fidelidade',
-    description: 'Antes de modernizar, congele o As-Is. Como a engenharia reversa assistida por IA revela o conhecimento tribal de sistemas legados via Matriz de Evidências e Inventário de Comportamentos.',
+    description: 'Proposta executiva de Engenharia Reversa Assistida por IA para Salesforce: baseline As-Is por evidências e governança fail-closed.',
     datePublished: '2026-05-01', dateModified: '2026-06-21',
     section: 'Modernização de Legado',
     tags: ['Engenharia Reversa', 'Salesforce', 'As-Is To-Be', 'Modernização', 'Legado'],
@@ -170,7 +170,7 @@ export const PAGES = [
     slug: 'knowledge-os-presentation', type: 'TechArticle', tier: 'S', hasMd: true,
     title: 'Knowledge OS Enterprise — Arquitetura IA-First de Conhecimento',
     headline: 'Knowledge OS Enterprise: conhecimento corporativo como infraestrutura cognitiva governada',
-    description: 'Plataforma IA-First de conhecimento corporativo: GraphRAG, governança federada, Spec-Driven Development, observabilidade cognitiva, FinOps e Índice de Reuso.',
+    description: 'Plataforma IA-First de conhecimento corporativo com limites, rastreabilidade e custos sob controle: decisões baseadas em evidência.',
     datePublished: '2026-05-07', dateModified: '2026-06-21',
     section: 'Arquitetura Enterprise',
     tags: ['Knowledge OS', 'GraphRAG', 'Knowledge Graph', 'AI-First', 'FinOps de IA'],
@@ -213,7 +213,7 @@ export const PAGES = [
   {
     slug: 'salesforce-agentic-dev', type: 'TechArticle', tier: 'A', hasMd: true,
     title: 'Desenvolver Salesforce com IA Agentic sem gerar débito técnico',
-    description: 'Guia prático de desenvolvimento Salesforce com IA agêntica sem dívida técnica: Spec-Driven Development, Devin (Cognition), Flosum CLI, Modelo Federado e Salesforce CLI.',
+    description: 'Como desenvolver Salesforce com IA agêntica sem gerar débito técnico: Spec-Driven Development, Devin, Flosum CLI e Modelo Federado.',
     datePublished: '2026-04-20', dateModified: '2026-06-21',
     section: 'Salesforce · DevOps', tags: ['Salesforce', 'Devin', 'Flosum', 'Spec-Driven Development', 'DevOps'],
     keywords: ['Salesforce', 'IA agêntica', 'débito técnico', 'Spec-Driven Development', 'Devin', 'Flosum CLI', 'Modelo Federado', 'Salesforce CLI', 'Apex', 'governança'],
@@ -352,7 +352,7 @@ export const PAGES = [
   {
     slug: 'socialselling', type: 'TechArticle', tier: 'A', hasMd: true,
     title: 'SocialSelling — Busca de clientes mais eficiente com IA',
-    description: 'Overview do projeto SocialSelling: arquitetura, especificações (ADRs/SDDs), boas práticas (SDD-to-Code Loop, gates, determinismo, Open-World) e aprendizado por feedback.',
+    description: 'Overview do projeto SocialSelling: arquitetura, especificações ADR/SDD, gates de determinismo e aprendizado por feedback.',
     datePublished: '2026-03-01', dateModified: '2026-06-21',
     section: 'IA · Vendas', tags: ['Social Selling', 'IA', 'Spec-Driven Development', 'Determinismo', 'ADR'],
     keywords: ['social selling', 'prospecção com IA', 'ADR', 'SDD', 'SDD-to-Code Loop', 'gates', 'determinismo', 'Open-World', 'aprendizado por feedback'],
@@ -406,7 +406,7 @@ export const PAGES = [
   {
     slug: 'proposta', type: 'Article', tier: 'A', hasMd: true,
     title: 'Inteligência de Vendas em Tempo Real — Salesforce + AWS',
-    description: 'Proposta de inteligência de vendas em tempo real combinando Salesforce e AWS para revolucionar a eficiência comercial com dados e IA.',
+    description: 'Proposta de inteligência de vendas em tempo real combinando Salesforce e AWS para elevar a eficiência comercial com dados e IA.',
     datePublished: '2026-02-01', dateModified: '2026-06-21',
     section: 'IA · Vendas', tags: ['Salesforce', 'AWS', 'Inteligência de Vendas', 'Tempo Real', 'IA'],
     keywords: ['inteligência de vendas', 'tempo real', 'Salesforce', 'AWS', 'eficiência comercial', 'dados', 'IA', 'eventos'],
@@ -460,7 +460,7 @@ export const PAGES = [
   {
     slug: 'life', type: 'AboutPage', tier: 'B', hasMd: false, ogType: 'website',
     title: 'A Jornada de Maurício Issei — Narrativa Interativa em Pixel Art',
-    description: 'A trajetória de vida e carreira de Maurício Issei numa experiência interativa em Pixel Art: uma viagem visual de 1982 aos dias de hoje — tecnologia, família e evolução.',
+    description: 'A trajetória de vida e carreira de Maurício Issei em Pixel Art interativo: uma viagem visual de 1982 aos dias de hoje.',
     datePublished: '2026-01-20', dateModified: '2026-06-21',
     keywords: ['Maurício Issei', 'jornada', 'narrativa interativa', 'pixel art', 'trajetória', 'carreira'],
     og: { eyebrow: 'Narrativa · Pixel Art', title: 'A {Jornada} de Maurício Issei', subtitle: 'De 1982 aos dias de hoje: tecnologia, família e evolução' },
@@ -478,7 +478,7 @@ export const PAGES = [
     themeColor: '#0a0706',
     title: 'Terminal Evolutivo — A Jornada de Maurício Issei (1982–2026)',
     headline: 'Terminal Evolutivo: uma vida contada em cenas — o ofício, as fraturas viradas ouro e a rede que sustenta',
-    description: 'A vida de Maurício Issei contada em cenas — não um currículo. Uma narrativa íntima em scrollytelling, do bebê de 1982 ao presente que continua: o ofício, as fraturas que viraram ouro e a rede que distribui o peso.',
+    description: 'A vida de Maurício Issei contada em cenas: o ofício, as fraturas que viraram ouro e a rede que sustenta, em scrollytelling.',
     datePublished: '2026-06-22', dateModified: '2026-06-30',
     keywords: ['Maurício Issei', 'história de vida', 'scrollytelling', 'narrativa interativa', 'ensaio pessoal', 'Shokunin', 'Kintsugi', 'Bambu', 'memória', 'filosofia japonesa'],
     about: [{ name: 'Maurício Yokoyama Issei' }, { name: 'História de vida' }, { name: 'Scrollytelling' }],
@@ -510,11 +510,67 @@ export const PAGES = [
     slug: 'know', type: 'Article', tier: 'B', hasMd: false,
     title: 'Navegando na Complexidade — O Fim das Melhores Práticas',
     headline: 'Por que copiar a fórmula do sucesso falha em sistemas complexos',
-    description: 'Por que copiar a fórmula do sucesso falha em sistemas complexos: uma reflexão sobre contexto, o framework Cynefin e os limites das "melhores práticas".',
+    description: 'Por que copiar a fórmula do sucesso falha em sistemas complexos: contexto, o framework Cynefin e os limites das melhores práticas.',
     datePublished: '2026-02-05', dateModified: '2026-06-21',
     section: 'Complexidade', tags: ['Complexidade', 'Cynefin', 'Sistemas Complexos', 'Liderança'],
     keywords: ['complexidade', 'Cynefin', 'melhores práticas', 'sistemas complexos', 'contexto', 'liderança', 'tomada de decisão'],
     about: [{ name: 'Sistemas Complexos' }, { name: 'Cynefin' }, { name: 'Tomada de Decisão' }],
     og: { eyebrow: 'Complexidade · Reflexão', title: 'O Fim das {Melhores Práticas}', subtitle: 'Por que copiar a fórmula do sucesso falha', thesis: 'Em sistemas complexos, o contexto vence a receita.' },
+  },
+
+  {
+    // aeoCss: false — o bloco .aeo é estilizado em src/apresentacao.css, para
+    // não somar um terceiro CSS bloqueante ao orçamento crítico (spec §4.3).
+    // themeColor acompanha --ap-l1-bg: o padrão do site (#0d1117) pintaria a
+    // barra do navegador móvel com a paleta Dark Tech, que não é a desta página.
+    slug: 'apresentacao', type: 'WebPage', tier: 'S', hasMd: true, ogType: 'website',
+    aeoCss: false, themeColor: '#0A0A0C',
+    title: 'Arquitetura de IA auditável',
+    headline: 'Complexidade de IA estruturada em decisões auditáveis',
+    description: 'Governança de IA corporativa, arquitetura de software e sistemas de agentes: complexidade técnica traduzida em decisões que sua empresa pode auditar.',
+    datePublished: '2026-07-23', dateModified: '2026-07-23',
+    section: 'Arquitetura de IA',
+    tags: ['Governança de IA', 'Arquitetura de Software', 'Sistemas de Agentes', 'GraphRAG', 'Spec-Driven Development'],
+    keywords: ['governança de IA', 'arquitetura de IA auditável', 'GraphRAG', 'ontologias', 'Spec-Driven Development', 'DevOps Salesforce', 'auditabilidade', 'rastreabilidade', 'determinismo'],
+    about: [
+      { name: 'Governança de IA' }, { name: 'Arquitetura de Software' },
+      { name: 'GraphRAG' }, { name: 'Spec-Driven Development' }, { name: 'Auditabilidade' },
+    ],
+    audience: 'Executivos de Tecnologia, Arquitetos de Soluções, Líderes de Engenharia',
+    tldr: {
+      heading: 'Complexidade de IA, estruturada para auditoria',
+      lede: 'Três sistemas — **memória institucional sem alucinação**, **especificação como contrato** e **esteira contínua de resiliência** — apresentados em duas leituras da mesma verdade: a executiva, medida em risco e retorno, e a de engenharia, medida em cobertura e latência.',
+      points: [
+        '**GraphRAG e ontologias** — a resposta da IA vem da memória da empresa, com trilha de proveniência nó a nó.',
+        '**Spec-Driven Development** — o que foi aprovado é exatamente o que entra em produção; a mudança volta à spec, nunca direto ao código.',
+        '**DevOps Salesforce** — caminho único e vigiado de entrega, com rollback conhecido e exercitado.',
+        '**Determinismo, auditabilidade, rastreabilidade e reversibilidade** — quatro princípios declarados de forma verificável, não decorativa.',
+      ],
+      foot: 'Aprofunde em [Engenharia da Confiança](/engenharia-confianca) e [Engenharia de Agentes de IA](/engenharia-agentes-ia).',
+    },
+    faq: [
+      { q: 'O que torna uma arquitetura de IA auditável?', a: 'A capacidade de reconstruir, para qualquer saída, a evidência que a sustentou: quais fontes foram consultadas, sob qual versão da especificação, com qual aprovação. Auditabilidade não é um relatório produzido depois — é o subproduto de um caminho único de decisão e entrega.' },
+      { q: 'O que é GraphRAG e por que reduz alucinação?', a: 'É a recuperação de contexto a partir de um grafo de conhecimento com relações tipadas, em vez de apenas similaridade de texto. Como cada resposta carrega os nós percorridos, existe proveniência verificável; e como a ausência de dado é tratada como incerteza explícita (open-world), o sistema prefere não responder a inventar.' },
+      { q: 'O que é Spec-Driven Development na prática?', a: 'A especificação é a fonte da verdade e o alvo executável: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. Um critério só vale se puder falhar — "melhorar a performance" não é critério, "p95 abaixo de 400 ms" é.' },
+      { q: 'Quais princípios de governança são declarados?', a: 'Determinismo (mesma entrada, mesma saída, com o não-determinismo isolado e testável), auditabilidade (toda decisão guarda evidência reexecutável), rastreabilidade (do comportamento em produção até a linha da especificação que o exigiu) e reversibilidade (nenhuma mudança entra sem caminho de volta exercitado).' },
+      { q: 'Por que a página tem duas perspectivas?', a: 'Porque a mesma arquitetura precisa ser defendida em dois vocabulários: risco, governança e retorno para a decisão executiva; ontologias, contratos e latência para a decisão de engenharia. Os pares de frase mantêm estrutura sintática e métricas idênticas — é a mesma verdade contada de dois jeitos, não duas afirmações diferentes.' },
+    ],
+    terms: [
+      { slug: 'auditabilidade', name: 'Auditabilidade', def: 'Toda decisão automatizada guarda a evidência que a sustentou, em formato reexecutável por terceiros.' },
+      { slug: 'rastreabilidade', name: 'Rastreabilidade', def: 'Do comportamento em produção é possível chegar à linha da especificação que o exigiu e à aprovação que o liberou.' },
+      { slug: 'reversibilidade', name: 'Reversibilidade', def: 'Nenhuma mudança entra sem caminho de volta conhecido e exercitado. Rollback não testado não é rollback.' },
+      { slug: 'proveniencia', name: 'Proveniência', def: 'Registro dos nós e fontes percorridos para produzir uma resposta, nó a nó.' },
+    ],
+    mdSections: [
+      { h: 'As três camadas', body: 'A página se organiza em profundidade crescente: Superfície (o que o negócio ganha, sem jargão não traduzido), Mecanismo (como as peças se conectam) e Núcleo (a densidade técnica, reservada a quem escolhe ativamente ir até lá). A densidade é sempre uma escolha do visitante, nunca uma imposição.' },
+      { h: 'Duas leituras da mesma verdade', body: 'Um seletor persistente alterna entre a perspectiva Executiva e a de Engenharia. Os pares de frase mantêm o mesmo número de sentenças, a mesma pontuação e as mesmas métricas, variando apenas o vocabulário — restrição que torna a transição uma transmutação e não uma troca de conteúdo.' },
+    ],
+    og: {
+      eyebrow: 'Arquitetura executiva · Governança de IA',
+      title: 'Arquitetura de IA {auditável}',
+      subtitle: 'Complexidade estruturada em decisões que se pode auditar',
+      thesis: 'A capacidade vem do modelo; a confiança vem da engenharia.',
+      chips: [{ k: '01', label: 'GraphRAG' }, { k: '02', label: 'SDD' }, { k: '03', label: 'DevOps' }, { k: '04', label: 'Governança' }],
+    },
   },
 ];

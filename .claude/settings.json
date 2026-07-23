@@ -19,6 +19,14 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "node scripts/guard-ap-tokens.mjs" }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [

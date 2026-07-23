@@ -19,10 +19,28 @@ export default defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  /*
+   * Uma tentativa extra também localmente.
+   *
+   * Motivo, honestamente: no dev server o Vite injeta o CSS por JavaScript, o
+   * que abre uma janela de FOUC em que o axe mede texto ainda sem cor temática
+   * e acusa contraste ~1:1 (ver a nota em tests/_helpers/axe.js). Sob carga,
+   * isso atinge de forma rotativa uma suíte diferente a cada execução.
+   *
+   * Retry NÃO mascara defeito determinístico: um teste que falha de verdade
+   * falha nas duas tentativas. A correção estrutural é rodar os testes contra
+   * o build (`vite preview`), onde o CSS é um arquivo real — mudança que afeta
+   * as 500+ asserções existentes e merece um PR próprio.
+   */
+  retries: process.env.CI ? 2 : 1,
+  /*
+   * Local: 50% dos núcleos. Com o padrão (undefined → um worker por núcleo) a
+   * suíte passou a falhar de forma rotativa após a entrada dos projetos `mobile`
+   * e `no-js`: cinco projetos saturavam a máquina e testes de timing no Firefox
+   * estouravam por lentidão, não por defeito. Menos workers devolve
+   * determinismo — um gate que falha ao acaso não é um gate.
+   */
+  workers: process.env.CI ? 1 : '50%',
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -36,30 +54,45 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    /*
+     * As specs .mobile e .nojs exigem viewport/flag próprios e rodam apenas nos
+     * projetos dedicados abaixo — sem isto, os três projetos desktop também as
+     * executariam, com JS ligado e a 1280px, invalidando o que elas verificam.
+     */
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js'],
     },
 
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js'],
     },
 
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
+      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js'],
     },
 
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+    /*
+     * Projetos da página v3.0 (ESPECIFICACAO-AGENTICA-IMPLEMENTACAO.md, D-T03/D-T04).
+     * Escopados por testMatch: não custam tempo às suítes legadas.
+     */
+    {
+      // Cartões empilhados e regra dos 8 segundos em tela pequena (evolução 10)
+      name: 'mobile',
+      use: { ...devices['Pixel 5'] },
+      testMatch: ['tests/apresentacao.mobile.spec.js'],
+    },
+    {
+      // Degradação sem JavaScript (spec §4.2) — antes, inverificável
+      name: 'no-js',
+      use: { ...devices['Desktop Chrome'], javaScriptEnabled: false },
+      testMatch: ['tests/apresentacao.nojs.spec.js'],
+    },
 
     /* Test against branded browsers. */
     // {

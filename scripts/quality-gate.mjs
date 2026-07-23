@@ -45,10 +45,31 @@ function run(label, command) {
 const steps = [];
 if (!skipBuild) steps.push(['build', 'npx vite build']);
 
+// Artefatos gerados não podem divergir da fonte. Barato e determinístico —
+// pega à mão um contador de Hero ou um card de Hub editado manualmente.
+steps.push([
+  'artefatos gerados em dia',
+  'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check' +
+    ' && node scripts/optimize-critical-path.mjs --check',
+]);
+
+// Coerência do GRAFO, não de uma página: links quebrados, órfãs, SSOT
+// divergentes, ícones inexistentes. Cada suíte olhava a sua página e ninguém
+// olhava as arestas entre elas.
+steps.push(['coerência global do site', 'node scripts/audit-site.mjs --strict']);
+
+// Invariantes puros ANTES do E2E: falham em ~100ms e evitam subir navegador
+// para descobrir que um token de cor ou um par de frases está fora do contrato.
+steps.push(['invariantes (node:test)', 'node --test tests/*.test.mjs']);
+
 let pwCmd = 'npx playwright test';
 if (grep) pwCmd += ` --grep ${JSON.stringify(grep)}`;
 if (project) pwCmd += ` --project ${JSON.stringify(project)}`;
 steps.push(['testes (playwright + axe)', pwCmd]);
+
+// Orçamento de performance: só no gate completo. Depende de dist/, que só
+// existe após o build — em --no-build o artefato pode estar velho ou ausente.
+if (!skipBuild) steps.push(['orçamento de performance', 'node scripts/perf-budget.mjs']);
 
 console.log('=== Quality Gate :: engenharia-agentes-ia ===');
 for (const [label, command] of steps) run(label, command);

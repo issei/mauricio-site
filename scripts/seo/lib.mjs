@@ -177,7 +177,10 @@ export function buildHead(p) {
   L.push(`<meta name="twitter:creator" content="${SITE.twitter}" />`);
   L.push(`<meta name="twitter:site" content="${SITE.twitter}" />`);
   // CSS dos blocos visíveis (quando houver)
-  if (p.tldr || p.faq) L.push(`<link rel="stylesheet" href="/aeo.css" />`);
+  // `aeoCss: false` para páginas que já estilizam o bloco .aeo na própria folha
+  // (evita um recurso bloqueante a mais no caminho crítico). Omitir mantém o
+  // comportamento padrão de todas as outras páginas.
+  if ((p.tldr || p.faq) && p.aeoCss !== false) L.push(`<link rel="stylesheet" href="/aeo.css" />`);
   // JSON-LD
   L.push(`<script type="application/ld+json">\n${jsonld}\n</script>`);
   L.push(`<!-- AEO:END -->`);
