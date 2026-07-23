@@ -60,9 +60,16 @@
     </style>
 </head>
 <body>
-   
+
+    <!-- Visualmente oculto: a página é um visualizador de tela cheia, mas
+         precisa de um <h1> para leitores de tela e para a hierarquia. -->
+    <h1
+        style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+        Mapa mental do Plano de Desenvolvimento Individual
+    </h1>
+
     <div id="mapa-container">
-        <object id="mapa-svg" type="image/svg+xml" data="pdi.svg">
+        <object id="mapa-svg" type="image/svg+xml" data="pdi.svg" aria-label="Mapa mental do PDI">
         </object>
     </div>
 
