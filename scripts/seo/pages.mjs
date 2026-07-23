@@ -517,4 +517,60 @@ export const PAGES = [
     about: [{ name: 'Sistemas Complexos' }, { name: 'Cynefin' }, { name: 'Tomada de Decisão' }],
     og: { eyebrow: 'Complexidade · Reflexão', title: 'O Fim das {Melhores Práticas}', subtitle: 'Por que copiar a fórmula do sucesso falha', thesis: 'Em sistemas complexos, o contexto vence a receita.' },
   },
+
+  {
+    // aeoCss: false — o bloco .aeo é estilizado em src/apresentacao.css, para
+    // não somar um terceiro CSS bloqueante ao orçamento crítico (spec §4.3).
+    // themeColor acompanha --ap-l1-bg: o padrão do site (#0d1117) pintaria a
+    // barra do navegador móvel com a paleta Dark Tech, que não é a desta página.
+    slug: 'apresentacao', type: 'WebPage', tier: 'S', hasMd: true, ogType: 'website',
+    aeoCss: false, themeColor: '#0A0A0C',
+    title: 'Arquitetura de IA auditável',
+    headline: 'Complexidade de IA estruturada em decisões auditáveis',
+    description: 'Governança de IA corporativa, arquitetura de software e sistemas de agentes: complexidade técnica traduzida em decisões que sua empresa pode auditar.',
+    datePublished: '2026-07-23', dateModified: '2026-07-23',
+    section: 'Arquitetura de IA',
+    tags: ['Governança de IA', 'Arquitetura de Software', 'Sistemas de Agentes', 'GraphRAG', 'Spec-Driven Development'],
+    keywords: ['governança de IA', 'arquitetura de IA auditável', 'GraphRAG', 'ontologias', 'Spec-Driven Development', 'DevOps Salesforce', 'auditabilidade', 'rastreabilidade', 'determinismo'],
+    about: [
+      { name: 'Governança de IA' }, { name: 'Arquitetura de Software' },
+      { name: 'GraphRAG' }, { name: 'Spec-Driven Development' }, { name: 'Auditabilidade' },
+    ],
+    audience: 'Executivos de Tecnologia, Arquitetos de Soluções, Líderes de Engenharia',
+    tldr: {
+      heading: 'Complexidade de IA, estruturada para auditoria',
+      lede: 'Três sistemas — **memória institucional sem alucinação**, **especificação como contrato** e **esteira contínua de resiliência** — apresentados em duas leituras da mesma verdade: a executiva, medida em risco e retorno, e a de engenharia, medida em cobertura e latência.',
+      points: [
+        '**GraphRAG e ontologias** — a resposta da IA vem da memória da empresa, com trilha de proveniência nó a nó.',
+        '**Spec-Driven Development** — o que foi aprovado é exatamente o que entra em produção; a mudança volta à spec, nunca direto ao código.',
+        '**DevOps Salesforce** — caminho único e vigiado de entrega, com rollback conhecido e exercitado.',
+        '**Determinismo, auditabilidade, rastreabilidade e reversibilidade** — quatro princípios declarados de forma verificável, não decorativa.',
+      ],
+      foot: 'Aprofunde em [Engenharia da Confiança](/engenharia-confianca) e [Engenharia de Agentes de IA](/engenharia-agentes-ia).',
+    },
+    faq: [
+      { q: 'O que torna uma arquitetura de IA auditável?', a: 'A capacidade de reconstruir, para qualquer saída, a evidência que a sustentou: quais fontes foram consultadas, sob qual versão da especificação, com qual aprovação. Auditabilidade não é um relatório produzido depois — é o subproduto de um caminho único de decisão e entrega.' },
+      { q: 'O que é GraphRAG e por que reduz alucinação?', a: 'É a recuperação de contexto a partir de um grafo de conhecimento com relações tipadas, em vez de apenas similaridade de texto. Como cada resposta carrega os nós percorridos, existe proveniência verificável; e como a ausência de dado é tratada como incerteza explícita (open-world), o sistema prefere não responder a inventar.' },
+      { q: 'O que é Spec-Driven Development na prática?', a: 'A especificação é a fonte da verdade e o alvo executável: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. Um critério só vale se puder falhar — "melhorar a performance" não é critério, "p95 abaixo de 400 ms" é.' },
+      { q: 'Quais princípios de governança são declarados?', a: 'Determinismo (mesma entrada, mesma saída, com o não-determinismo isolado e testável), auditabilidade (toda decisão guarda evidência reexecutável), rastreabilidade (do comportamento em produção até a linha da especificação que o exigiu) e reversibilidade (nenhuma mudança entra sem caminho de volta exercitado).' },
+      { q: 'Por que a página tem duas perspectivas?', a: 'Porque a mesma arquitetura precisa ser defendida em dois vocabulários: risco, governança e retorno para a decisão executiva; ontologias, contratos e latência para a decisão de engenharia. Os pares de frase mantêm estrutura sintática e métricas idênticas — é a mesma verdade contada de dois jeitos, não duas afirmações diferentes.' },
+    ],
+    terms: [
+      { slug: 'auditabilidade', name: 'Auditabilidade', def: 'Toda decisão automatizada guarda a evidência que a sustentou, em formato reexecutável por terceiros.' },
+      { slug: 'rastreabilidade', name: 'Rastreabilidade', def: 'Do comportamento em produção é possível chegar à linha da especificação que o exigiu e à aprovação que o liberou.' },
+      { slug: 'reversibilidade', name: 'Reversibilidade', def: 'Nenhuma mudança entra sem caminho de volta conhecido e exercitado. Rollback não testado não é rollback.' },
+      { slug: 'proveniencia', name: 'Proveniência', def: 'Registro dos nós e fontes percorridos para produzir uma resposta, nó a nó.' },
+    ],
+    mdSections: [
+      { h: 'As três camadas', body: 'A página se organiza em profundidade crescente: Superfície (o que o negócio ganha, sem jargão não traduzido), Mecanismo (como as peças se conectam) e Núcleo (a densidade técnica, reservada a quem escolhe ativamente ir até lá). A densidade é sempre uma escolha do visitante, nunca uma imposição.' },
+      { h: 'Duas leituras da mesma verdade', body: 'Um seletor persistente alterna entre a perspectiva Executiva e a de Engenharia. Os pares de frase mantêm o mesmo número de sentenças, a mesma pontuação e as mesmas métricas, variando apenas o vocabulário — restrição que torna a transição uma transmutação e não uma troca de conteúdo.' },
+    ],
+    og: {
+      eyebrow: 'Arquitetura executiva · Governança de IA',
+      title: 'Arquitetura de IA {auditável}',
+      subtitle: 'Complexidade estruturada em decisões que se pode auditar',
+      thesis: 'A capacidade vem do modelo; a confiança vem da engenharia.',
+      chips: [{ k: '01', label: 'GraphRAG' }, { k: '02', label: 'SDD' }, { k: '03', label: 'DevOps' }, { k: '04', label: 'Governança' }],
+    },
+  },
 ];

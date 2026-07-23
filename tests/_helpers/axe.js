@@ -24,6 +24,20 @@ export async function expectNoSeriousA11yViolations(page, context) {
   // o <link> pode ainda não ter aplicado quando auditamos, fazendo o texto do bloco
   // .aeo herdar cores da página (falso-positivo de contraste). Espera o bloco AEO
   // ganhar seu fundo temático antes de prosseguir.
+  // Espera a FOLHA /aeo.css estar de fato registrada em document.styleSheets.
+  // Checar apenas o backgroundColor do .aeo-tldr era insuficiente: no webkit sob
+  // carga a folha chega depois, e o axe media texto grafite sobre fundo grafite
+  // (razão ~1.01) num bloco que, estilizado, tem contraste de sobra. Páginas que
+  // estilizam o bloco .aeo na própria folha (aeoCss: false) não têm o link e
+  // caem no retorno true imediato.
+  await page
+    .waitForFunction(() => {
+      const link = document.querySelector('link[href*="aeo.css"]');
+      if (!link) return true;
+      return [...document.styleSheets].some((s) => (s.href || '').includes('aeo.css'));
+    }, undefined, { timeout: 6000 })
+    .catch(() => {});
+
   await page
     .waitForFunction(() => {
       const el = document.querySelector('.aeo-tldr');
