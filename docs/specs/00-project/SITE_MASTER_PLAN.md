@@ -42,14 +42,14 @@ técnica. Palavras = texto visível, medido do HTML.
 
 | Página | Palavras | CSS | Papel |
 |---|---:|---|---|
-| `salesforce-agentic-dev` | 4.260 | inline | Portal de treinamento |
-| `socialselling` | 3.476 | inline | Overview de projeto com ADRs |
-| `devops-salesforce` | 1.879 | inline | Arquitetura híbrida de entrega |
+| `salesforce-agentic-dev` | 4.260 | dedicado | Portal de treinamento |
+| `socialselling` | 3.476 | dedicado | Overview de projeto com ADRs |
+| `devops-salesforce` | 1.879 | dedicado | Arquitetura híbrida de entrega |
 | `service-operations-2-0` | 1.766 | Tailwind | Modelo para conselho executivo |
-| `salesforce-agentic-quickstart` | 1.667 | inline | Primeiro deploy governado |
-| `proposta-observabilidade-mobile` | 880 | inline | Proposta SRE |
+| `salesforce-agentic-quickstart` | 1.667 | dedicado | Primeiro deploy governado |
+| `proposta-observabilidade-mobile` | 880 | dedicado | Proposta SRE |
 | `sustentacao` | 616 | Tailwind | Incidentes e resiliência |
-| `proposta` | 479 | inline | Inteligência de vendas |
+| `proposta` | 479 | dedicado | Inteligência de vendas |
 
 ### Tier B — perfil, navegação e narrativa
 
@@ -83,9 +83,10 @@ O que atravessa todas as páginas e, por isso, não pertence a nenhuma.
 
 ### 3.1 Estratégias de CSS — e por que a divergência é aceitável
 
-Três abordagens convivem: **dedicado** (páginas grandes e autorais),
-**Tailwind via `input.css`** (páginas de layout convencional) e **inline**
-(propostas, que nasceram como documentos autocontidos).
+Duas abordagens convivem: **dedicado** (folha própria com `@import "tailwindcss"`
+e `@theme`, para páginas com paleta autoral) e **Tailwind via `input.css`**
+(páginas que usam a paleta padrão do site). A terceira — CSS compilado no
+navegador pelo CDN do Tailwind — foi eliminada em 2026-07-23 (§5.3).
 
 Isso não é dívida a ser paga por uniformização. Unificar exigiria reescrever
 19 páginas que hoje passam no gate, com risco alto e ganho estético. O que
@@ -143,15 +144,30 @@ sugere uma garantia falsa.
 **Caminho correto:** CloudFront Function injetando `nonce` por resposta +
 migração dos scripts inline. É trabalho de infraestrutura, não de página.
 
-### 5.3 Terceiros bloqueantes no `<head>` · risco médio, valor alto
+### 5.3 Terceiros bloqueantes no `<head>` · parcialmente resolvido
 
-Todas as páginas, exceto `apresentacao`, carregam Google Fonts e Font Awesome de
-CDN no caminho crítico. `proposta.html` ainda carrega `cdn.tailwindcss.com`, que
-compila CSS **no navegador**.
+**Feito (2026-07-23) — `cdn.tailwindcss.com` eliminado do site.** Seis páginas
+o carregavam: `devops-salesforce`, `proposta`, `proposta-observabilidade-mobile`,
+`salesforce-agentic-dev`, `salesforce-agentic-quickstart` e `socialselling`.
+Esse CDN não é só mais um recurso: ele **compila CSS no navegador**, custando
+~118 KB gzip de JavaScript por página mais o tempo de compilação antes do
+primeiro pixel.
 
-**Como fazer:** o padrão já está provado em `apresentacao` (2 requisições
-bloqueantes, 15KB) — ícones em SVG inline e analítica fora do `<head>`.
-Estender `scripts/perf-budget.mjs` para as demais páginas, com tetos por tier.
+Cada uma ganhou uma folha própria com `@theme` — tradução literal do bloco
+`tailwind.config` que vivia inline —, resolvida em build. `salesforce-agentic-dev`
+e `-quickstart` compartilham `salesforce-agentic.css`, porque seus blocos de
+config eram idênticos. O CSS compilado fica em ~15–16 KB gzip por página.
+
+`scripts/perf-budget.mjs` passou a reprovar o build se qualquer página do site
+voltar a referenciar uma CDN que compila no cliente.
+
+**Pendente — Google Fonts e Font Awesome.** Continuam bloqueantes em ~28 e ~13
+páginas. Menos graves (são CSS, não compilação em runtime), mas ainda um
+round-trip a terceiro no caminho crítico.
+**Como fazer:** o padrão já está provado em `apresentacao` — ícones em SVG
+inline e nenhum script no `<head>`. Substituir Font Awesome exige varrer os
+ícones usados página a página; é trabalho mecânico e volumoso, melhor em PR
+próprio, e o `perf-budget` já tem onde apertar o teto quando for feito.
 
 ### 5.4 `life` e `life3d` invisíveis para busca · risco baixo, valor médio
 
@@ -196,4 +212,5 @@ reprova o build.
 
 | Data | Mudança |
 |---|---|
+| 2026-07-23 | `cdn.tailwindcss.com` removido de 6 páginas; folhas próprias com `@theme`; perf-budget vigia o site inteiro. |
 | 2026-07-23 | Documento criado. Página `apresentacao` (v3.0) entra como tier S; auditoria global no gate; `know` migrada para Dark Tech; sitemap e backups saneados. |

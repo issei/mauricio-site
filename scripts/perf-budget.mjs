@@ -35,6 +35,17 @@ const BUDGET = {
   inlineScriptsInHead: 2,  // teto separado, para que não cresçam sem limite
 };
 
+/*
+ * Regra que vale para o SITE INTEIRO, não só para a página v3.0.
+ *
+ * `cdn.tailwindcss.com` compila CSS no navegador: além do download, custa a
+ * compilação inteira antes do primeiro pixel. Seis páginas o carregavam
+ * (SITE_MASTER_PLAN §5.3); agora nenhuma, e esta verificação impede que volte.
+ */
+const CDNS_PROIBIDAS = [
+  { host: 'cdn.tailwindcss.com', motivo: 'compila CSS no navegador — use uma folha própria com @theme' },
+];
+
 if (!existsSync(DIST)) {
   console.error('✗ [perf] dist/ não existe. Rode `npx vite build` antes.');
   process.exit(1);
@@ -109,7 +120,24 @@ if (inlineHeadScripts > BUDGET.inlineScriptsInHead) {
   );
 }
 
+/* ── Regra de site: nenhuma página pode voltar a compilar CSS no navegador ── */
+
+const { readdirSync } = await import('node:fs');
+const paginas = readdirSync(DIST).filter((f) => f.endsWith('.html'));
+const reincidentes = [];
+
+for (const arquivo of paginas) {
+  const conteudo = readFileSync(join(DIST, arquivo), 'utf8');
+  for (const { host, motivo } of CDNS_PROIBIDAS) {
+    if (conteudo.includes(host)) reincidentes.push(`${arquivo}: ${host} — ${motivo}`);
+  }
+}
+if (reincidentes.length) {
+  failures.push(`CDN proibida em ${reincidentes.length} página(s):\n    ${reincidentes.join('\n    ')}`);
+}
+
 console.log(`=== Orçamento de performance :: ${BUDGET.page} ===`);
+console.log(`  site: ${paginas.length} páginas · 0 usando CDN que compila no navegador`);
 if (verbose || failures.length) {
   for (const [name, kb] of parts) console.log(`  ${kb.toFixed(1).padStart(6)}KB  ${name}`);
   console.log(`  bloqueantes: ${blocking.length ? blocking.join(", ") : "nenhum"} · inline no head: ${inlineHeadScripts}`);

@@ -1,0 +1,24 @@
+/* =============================================================================
+ * proposta.css
+ * -----------------------------------------------------------------------------
+ * Substitui o `cdn.tailwindcss.com`, que compilava o CSS no navegador a cada
+ * visita. Tradução literal do bloco `tailwind.config` que vivia inline no
+ * <head> — mesmas cores, mesmas animações (SITE_MASTER_PLAN §5.3).
+ * ========================================================================== */
+@import "tailwindcss";
+
+@theme {
+  --color-salesforce: #3b82f6;
+  --color-aws: #f97316;
+  --color-success: #34d399;
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
