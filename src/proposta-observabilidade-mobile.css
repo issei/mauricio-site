@@ -1,0 +1,18 @@
+/* =============================================================================
+ * proposta-observabilidade-mobile.css
+ * -----------------------------------------------------------------------------
+ * Substitui o `cdn.tailwindcss.com`, que compilava o CSS NO NAVEGADOR a cada
+ * visita: centenas de KB de JavaScript no caminho crítico, mais o custo da
+ * compilação antes do primeiro pixel.
+ *
+ * Os tokens abaixo são a tradução literal do bloco `tailwind.config` que vivia
+ * inline no <head> da página. Mesmas cores, mesma fonte — agora resolvidos em
+ * build (SITE_MASTER_PLAN §5.3).
+ * ========================================================================== */
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2563eb;
+  --color-sre: #22c55e;
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
