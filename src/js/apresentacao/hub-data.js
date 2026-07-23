@@ -20,7 +20,7 @@ export const HUB_ITEMS = [
   {
     "slug": "terminal-evolutivo",
     "title": "Terminal Evolutivo",
-    "blurb": "A vida de Maurício Issei contada em cenas — não um currículo. Uma narrativa íntima em scrollytelling, do bebê de 1982 ao presente que continua: o ofício, as fraturas que viraram ouro e a rede que distribui o peso.",
+    "blurb": "A vida de Maurício Issei contada em cenas: o ofício, as fraturas que viraram ouro e a rede que sustenta, em scrollytelling.",
     "href": "./terminal-evolutivo.html",
     "tab": "decidir",
     "minutes": 5,
@@ -38,7 +38,7 @@ export const HUB_ITEMS = [
   {
     "slug": "know",
     "title": "Navegando na Complexidade",
-    "blurb": "Por que copiar a fórmula do sucesso falha em sistemas complexos: uma reflexão sobre contexto, o framework Cynefin e os limites das \"melhores práticas\".",
+    "blurb": "Por que copiar a fórmula do sucesso falha em sistemas complexos: contexto, o framework Cynefin e os limites das melhores práticas.",
     "href": "./know.html",
     "tab": "decidir",
     "minutes": 9,
@@ -47,7 +47,7 @@ export const HUB_ITEMS = [
   {
     "slug": "socialselling",
     "title": "SocialSelling",
-    "blurb": "Overview do projeto SocialSelling: arquitetura, especificações (ADRs/SDDs), boas práticas (SDD-to-Code Loop, gates, determinismo, Open-World) e aprendizado por feedback.",
+    "blurb": "Overview do projeto SocialSelling: arquitetura, especificações ADR/SDD, gates de determinismo e aprendizado por feedback.",
     "href": "./socialselling.html",
     "tab": "decidir",
     "minutes": 18,
@@ -56,7 +56,7 @@ export const HUB_ITEMS = [
   {
     "slug": "proposta",
     "title": "Inteligência de Vendas em Tempo Real",
-    "blurb": "Proposta de inteligência de vendas em tempo real combinando Salesforce e AWS para revolucionar a eficiência comercial com dados e IA.",
+    "blurb": "Proposta de inteligência de vendas em tempo real combinando Salesforce e AWS para elevar a eficiência comercial com dados e IA.",
     "href": "./proposta.html",
     "tab": "planejar",
     "minutes": 2,
@@ -101,7 +101,7 @@ export const HUB_ITEMS = [
   {
     "slug": "proposta-engenharia-reversa",
     "title": "Engenharia Reversa Assistida por IA",
-    "blurb": "Antes de modernizar, congele o As-Is. Como a engenharia reversa assistida por IA revela o conhecimento tribal de sistemas legados via Matriz de Evidências e Inventário de Comportamentos.",
+    "blurb": "Proposta executiva de Engenharia Reversa Assistida por IA para Salesforce: baseline As-Is por evidências e governança fail-closed.",
     "href": "./proposta-engenharia-reversa.html",
     "tab": "especificar",
     "minutes": 7,
@@ -110,7 +110,7 @@ export const HUB_ITEMS = [
   {
     "slug": "salesforce-agentic-dev",
     "title": "Desenvolver Salesforce com IA Agentic sem gerar débito técnico",
-    "blurb": "Guia prático de desenvolvimento Salesforce com IA agêntica sem dívida técnica: Spec-Driven Development, Devin (Cognition), Flosum CLI, Modelo Federado e Salesforce CLI.",
+    "blurb": "Como desenvolver Salesforce com IA agêntica sem gerar débito técnico: Spec-Driven Development, Devin, Flosum CLI e Modelo Federado.",
     "href": "./salesforce-agentic-dev.html",
     "tab": "especificar",
     "minutes": 21,
@@ -119,7 +119,7 @@ export const HUB_ITEMS = [
   {
     "slug": "knowledge-os-presentation",
     "title": "Knowledge OS Enterprise",
-    "blurb": "Plataforma IA-First de conhecimento corporativo: GraphRAG, governança federada, Spec-Driven Development, observabilidade cognitiva, FinOps e Índice de Reuso.",
+    "blurb": "Plataforma IA-First de conhecimento corporativo com limites, rastreabilidade e custos sob controle: decisões baseadas em evidência.",
     "href": "./knowledge-os-presentation.html",
     "tab": "especificar",
     "minutes": 23,

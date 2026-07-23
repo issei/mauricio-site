@@ -52,6 +52,11 @@ steps.push([
   'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check',
 ]);
 
+// Coerência do GRAFO, não de uma página: links quebrados, órfãs, SSOT
+// divergentes, ícones inexistentes. Cada suíte olhava a sua página e ninguém
+// olhava as arestas entre elas.
+steps.push(['coerência global do site', 'node scripts/audit-site.mjs --strict']);
+
 // Invariantes puros ANTES do E2E: falham em ~100ms e evitam subir navegador
 // para descobrir que um token de cor ou um par de frases está fora do contrato.
 steps.push(['invariantes (node:test)', 'node --test tests/*.test.mjs']);
