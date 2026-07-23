@@ -305,8 +305,61 @@ const MARKETING = [
   'game-changer', 'solução completa', 'de última geração',
 ];
 
+/**
+ * Luminância relativa de um hex (WCAG 2.1). Duplicada aqui de propósito: este
+ * script roda no gate antes dos testes e não deve importar de tests/.
+ */
+function luminancia(hex) {
+  const h = hex.replace('#', '');
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+  const [r, g, b] = [0, 2, 4].map((i) => {
+    const v = parseInt(full.slice(i, i + 2), 16) / 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+/**
+ * Croma absoluto (max−min dos canais), 0–1. Separa superfície neutra de cor de
+ * acento.
+ *
+ * Usa-se croma e não saturação HSL: para cores muito claras o denominador da
+ * HSL fica minúsculo e infla o resultado — #FDFBF7, um creme quase branco,
+ * marcava 0.59 e escapava do filtro. Em croma ele marca 0.02, que é o que a
+ * percepção diz.
+ */
+function croma(hex) {
+  const h = hex.replace('#', '');
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16) / 255);
+  return Math.max(r, g, b) - Math.min(r, g, b);
+}
+
 for (const slug of publicas) {
   const html = docs.get(slug);
+
+  /*
+   * INV-S9 — fundo escuro em toda página (AGENTS.md: "Pure Dark Mode. Never use
+   * light backgrounds"). `know.html` violava isso com uma paleta editorial clara
+   * e nada acusava, porque a verificação era por página e nenhuma suíte
+   * comparava páginas entre si.
+   *
+   * Procura declarações de fundo com luminância alta em CSS embutido. Não
+   * substitui o axe — que mede contraste real, com cascata e opacidade — mas
+   * pega a regressão na fonte, antes de subir navegador.
+   */
+  for (const m of html.matchAll(/background(?:-color)?:\s*(#[0-9a-fA-F]{3,6})\b/g)) {
+    // Luminância sozinha acusaria acentos vivos (#00f5a0, #22d3ee) usados
+    // em badges e barras, que não são superfície. O que a norma proíbe é
+    // SUPERFÍCIE clara — quase sempre neutra. Exige-se as duas condições.
+    if (luminancia(m[1]) > 0.5 && croma(m[1]) < 0.15) {
+      erro(`${slug}.html`, `fundo claro declarado: ${m[1]} — o site é dark mode (INV-S9)`);
+    }
+  }
+  for (const m of html.matchAll(/background(?:-color)?:\s*(white|ivory|snow|ghostwhite|floralwhite)\b/gi)) {
+    erro(`${slug}.html`, `fundo claro declarado: ${m[1]} — o site é dark mode (INV-S9)`);
+  }
+
   const texto = html
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
