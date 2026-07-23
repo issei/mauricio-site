@@ -25,6 +25,13 @@ Revise apenas os arquivos alterados (use `git diff --name-only HEAD` e foque em 
 - Fonte **Inter** em tudo; gradiente de acento `#007bff → #8a2be2`.
 - Glow/elevação sutis em hover; nada de cor fora da paleta.
 
+> **Exceção registrada — `apresentacao` (ADR-ap-001).** `src/apresentacao.html`,
+> `src/apresentacao.css` e `src/js/apresentacao/**` seguem a paleta da spec UX v3.0
+> (`#0A0A0C`/`#101014`/`#17171C`, cobalto `#4C8DFF`, verde `#3FD07A`, âmbar `#E0A33E`),
+> com piso de **7:1** na Camada 3. **Não reprove esses arquivos por desviarem do Dark Tech.**
+> O que se verifica ali é o oposto: qualquer hexadecimal fora de `apresentacao.css`
+> é violação, e o namespace `.ap-` não pode vazar para outras páginas.
+
 ### 3. SEO
 - `<title>` 10–60 chars; `<meta name="description">` 50–160 chars.
 - `<link rel="canonical">` presente e correto; OG tags; `robots` sem `noindex` indevido.

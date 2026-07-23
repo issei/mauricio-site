@@ -17,10 +17,14 @@
 # =============================================================================
 
 meta:
-  version: "1.0.0"            # semver; bump obrigatório a cada alteração de grafo
+  version: "1.2.0"            # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-06-21"
+  updated: "2026-07-23"
+  # 1.2.0 — entra `apresentacao` em p2 (Arquitetura de IA auditável) e o nó
+  #         `terminal-evolutivo` em p5, que existia apenas na cópia compilada
+  #         de src/js/eco-nav.js (1.1.0). O YAML tinha ficado para trás: as duas
+  #         cópias desta SSOT precisam ser editadas juntas — ver ECOSYSTEM.md.
 
 # Decisões humanas que liberaram esta SSOT (HITL — SPEC §7/§8), registradas
 # para rastreabilidade. Não são consumidas pelo componente.
@@ -49,7 +53,7 @@ pillars:
     label: "Engenharia de Confiança"
     subtitle: "O Método"
     summary: "Da intenção à execução agêntica confiável."
-    nodes: [engenharia-confianca, engenharia-agentes-ia, knowledge-os-presentation]
+    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, knowledge-os-presentation]
 
   - id: p3
     order: 3
@@ -70,7 +74,7 @@ pillars:
     label: "Soluções & Portfólio"
     subtitle: "Resultados"
     summary: "Soluções entregues e a jornada pessoal."
-    nodes: [socialselling, index, life, life3d]
+    nodes: [socialselling, index, life, life3d, terminal-evolutivo]
 
 # ----- Nós: chave = slug do arquivo (sem .html). blurb ≤ 60 chars (SPEC §4.2) --
 nodes:
@@ -87,6 +91,11 @@ nodes:
     pillar: p1
 
   # --- P2 · Engenharia de Confiança ------------------------------------------
+  apresentacao:
+    file: "apresentacao.html"
+    title: "Arquitetura de IA auditável"
+    blurb: "Complexidade traduzida em decisões auditáveis."
+    pillar: p2
   engenharia-confianca:
     file: "engenharia-confianca.html"
     title: "A Engenharia da Confiança"
@@ -173,6 +182,11 @@ nodes:
     title: "Vida em 3D"
     label: "Vida em 3D (3D)"
     blurb: "Memórias numa viagem imersiva."
+    pillar: p5
+  terminal-evolutivo:
+    file: "terminal-evolutivo.html"
+    title: "Terminal Evolutivo"
+    blurb: "A jornada 1982–2026 que envelhece ao rolar."
     pillar: p5
 
 # ----- Arestas transversais (cross-linking dirigido) — SPEC §2.1 / RESEARCH §2.2

@@ -68,6 +68,20 @@ When proposing or implementing changes to AWS (S3, CloudFront, IAM, etc.):
 - **Accents**: High-contrast gradients (`#007bff` to `#8a2be2`).
 - **Micro-interactions**: Subtle hover elevations and neon glows (`box-shadow`).
 
+### Exceção registrada: `apresentacao` (namespace `.ap-*`)
+
+`src/apresentacao.html` e `src/apresentacao.css` implementam a especificação UX v3.0,
+que define uma paleta própria (`#0A0A0C` / `#101014` / `#17171C`, acentos cobalto/verde/âmbar)
+e um piso de contraste de **7:1** na Camada 3. **É a única exceção à paleta Dark Tech.**
+
+- Escopo: apenas esses dois arquivos e `src/js/apresentacao/**`. Fora deles a exceção não vale.
+- Todo seletor e custom property usa o prefixo `ap-`, para impedir vazamento.
+- **Nenhum hexadecimal** pode ser escrito fora de `src/apresentacao.css` — aplicado
+  mecanicamente pelo hook `scripts/guard-ap-tokens.mjs` e por `tests/apresentacao.tokens.test.mjs`.
+- Decisão e contrastes calculados: [`ADR-ap-001`](docs/specs/pages/apresentação/ADR-ap-001-namespace-e-excecao-dark-tech.md).
+
+Ao revisar essa página, **não** a reprove por usar cores fora da paleta Dark Tech.
+
 ---
 
 ## ✅ Quality & Validation
