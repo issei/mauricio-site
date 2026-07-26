@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1117" />
+
+  <title>Operação Capital Cognitivo — Simulador de FinOps de IA</title>
+  <meta name="description"
+    content="Simulador executivo interativo: investigue a fatura oculta de IA e domine o framework Useful Intelligence per Dollar (UI/$) defendendo suas decisões." />
+  <meta name="author" content="Maurício Yokoyama Issei" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" />
+  </noscript>
+
+  <link rel="stylesheet" href="./operacao-capital-cognitivo.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Maurício Yokoyama Issei" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Operação Capital Cognitivo — Simulador de FinOps & IA" />
+  <meta property="og:description"
+    content="Descubra por que a IA mais cara não é a que cobra mais por token. Simule, investigue e defenda suas decisões." />
+  <meta property="og:image" content="https://mauricio.issei.com.br/og-operacao-capital-cognitivo.png" />
+  <meta property="og:url" content="https://mauricio.issei.com.br/operacao-capital-cognitivo" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Operação Capital Cognitivo — Simulador FinOps & IA" />
+  <meta name="twitter:description"
+    content="Domine o framework Useful Intelligence per Dollar investigando uma crise corporativa real de IA." />
+  <meta name="twitter:image" content="https://mauricio.issei.com.br/og-operacao-capital-cognitivo.png" />
+
+  <link rel="canonical" href="https://mauricio.issei.com.br/operacao-capital-cognitivo" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Operação Capital Cognitivo",
+    "description": "Simulador executivo interativo de FinOps e Arquitetura de IA",
+    "educationalLevel": "Professional",
+    "teaches": "FinOps de IA, Useful Intelligence per Dollar, Capital Cognitivo",
+    "author": { "@type": "Person", "name": "Maurício Yokoyama Issei", "url": "https://mauricio.issei.com.br" },
+    "inLanguage": "pt-BR",
+    "url": "https://mauricio.issei.com.br/operacao-capital-cognitivo"
+  }
+  </script>
+</head>
+
+<body class="min-h-screen antialiased">
+
+  <!-- ================= HUD PERSISTENTE ================= -->
+  <header id="hud" hidden class="sticky top-0 z-50 backdrop-blur-lg border-b"
+    style="background: var(--hud-bg); border-color: var(--hud-border);">
+    <div class="container mx-auto px-4 py-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+      <span id="hud-quarter" class="font-mono font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">Q1</span>
+
+      <div class="flex flex-col">
+        <span class="text-xs text-gray-500 uppercase tracking-wider">Caixa</span>
+        <span id="hud-cash" class="font-mono font-bold text-white" aria-live="polite">R$ 850.000</span>
+      </div>
+      <div class="flex flex-col" data-hud="ui" hidden>
+        <span class="text-xs text-gray-500 uppercase tracking-wider">UI/$</span>
+        <span id="hud-ui-dollar" class="font-mono font-bold text-teal-400" aria-live="polite">—</span>
+      </div>
+      <div class="flex flex-col" data-hud="capital" hidden>
+        <span class="text-xs text-gray-500 uppercase tracking-wider">Capital Cog.</span>
+        <span id="hud-capital" class="font-mono font-bold text-purple-400" aria-live="polite">—/100</span>
+      </div>
+      <div class="flex flex-col" data-hud="vcore" hidden>
+        <span class="text-xs text-gray-500 uppercase tracking-wider">V_core</span>
+        <span id="hud-vcore" class="font-mono font-bold" aria-live="polite">—</span>
+      </div>
+
+      <div class="flex flex-col flex-1 min-w-[120px] max-w-[220px]">
+        <div class="flex justify-between text-xs text-gray-500 mb-1">
+          <span>Moral Devs</span><span id="hud-morale-pct">50%</span>
+        </div>
+        <progress id="hud-morale" value="50" max="100"
+          class="w-full h-1.5 [&::-webkit-progress-bar]:bg-gray-700 [&::-webkit-progress-value]:bg-violet-500"
+          aria-label="Moral da equipe de desenvolvimento"></progress>
+      </div>
+      <div class="flex flex-col flex-1 min-w-[120px] max-w-[220px]" data-hud="sla" hidden>
+        <div class="flex justify-between text-xs text-gray-500 mb-1"><span>SLA</span><span id="hud-sla">—</span></div>
+        <progress id="hud-sla-bar" value="71" max="100"
+          class="w-full h-1.5 [&::-webkit-progress-bar]:bg-gray-700 [&::-webkit-progress-value]:bg-teal-500"
+          aria-label="Conformidade de SLA"></progress>
+      </div>
+
+      <nav id="chapter-breadcrumb" aria-label="Progresso dos capítulos"
+        class="flex items-center gap-1.5 ml-auto text-xs"></nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <!-- ================= INTRO ================= -->
+    <section id="scene-intro" class="scene text-center py-16">
+      <p class="text-xs text-blue-400 uppercase tracking-[0.3em] mb-4">Simulador Executivo</p>
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Operação Capital Cognitivo</h1>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-4">
+        Você é o novo Arquiteto de IA e FinOps da <strong class="text-white">Nexus Tech Corp</strong>.
+        A empresa está em crise por uso descontrolado de IA. Você tem 24 horas para explicar — ou os projetos
+        de IA são cancelados.
+      </p>
+      <p class="text-sm text-gray-400 max-w-2xl mx-auto mb-10">
+        Ao longo de 6 capítulos, você vai reconstruir por descoberta o framework
+        <em>Useful Intelligence per Dollar</em> e defendê-lo perante o Conselho.
+      </p>
+      <button id="btn-start"
+        class="cta-gradient text-white font-semibold py-3 px-8 rounded-xl text-lg hover:scale-105 transition-transform">
+        Aceitar o cargo →
+      </button>
+    </section>
+
+    <!-- ================= CAP 1 ================= -->
+    <section id="scene-cap1" class="scene" hidden aria-labelledby="cap1-h">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#f59e0b;">🔍 Capítulo 1</p>
+      <h2 id="cap1-h" class="text-3xl font-extrabold text-white mb-4">O Mistério dos R$ 37 Mil Desaparecidos</h2>
+      <p class="text-gray-400 mb-6">A CFO <strong>Helena Vance</strong>: "A fatura da API foi de R$ 3.000. Mas o
+        financeiro aponta R$ 40.000 em custos de IA. R$ 37.000 desapareceram. Explique."</p>
+
+      <div id="invoice-explorer" class="bg-occ-surface rounded-2xl border border-gray-700/50 overflow-hidden"></div>
+
+      <div id="cap1-reveal" hidden class="mt-8">
+        <div class="flex flex-col items-center gap-4">
+          <canvas id="tco-pie-chart" width="280" height="280" role="img"
+            aria-label="Composição do TCO: API 7,5%, Tempo Dev 72%, Infraestrutura 12%, Governança 8,5%"></canvas>
+          <div id="tco-pie-legend" class="flex flex-wrap gap-3 justify-center text-sm"></div>
+          <button id="show-tco-table" class="text-xs text-blue-400 underline" aria-expanded="false" aria-controls="tco-data-table">Ver dados em tabela</button>
+          <table id="tco-data-table" hidden class="w-full text-sm mt-2" aria-label="Composição do TCO em formato tabular">
+            <thead><tr><th scope="col" class="text-left">Categoria</th><th scope="col" class="text-right">Valor</th><th scope="col" class="text-right">%</th></tr></thead>
+            <tbody>
+              <tr><th scope="row" class="text-left font-normal">Custo de API</th><td class="text-right font-mono">R$ 3.000</td><td class="text-right">7,5%</td></tr>
+              <tr><th scope="row" class="text-left font-normal">Tempo Dev (Revisão + Verification Load)</th><td class="text-right font-mono">R$ 28.800</td><td class="text-right">72%</td></tr>
+              <tr><th scope="row" class="text-left font-normal">Infra / Vector DB / Observabilidade</th><td class="text-right font-mono">R$ 4.800</td><td class="text-right">12%</td></tr>
+              <tr><th scope="row" class="text-left font-normal">Overhead de Governança / Compliance</th><td class="text-right font-mono">R$ 3.400</td><td class="text-right">8,5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 text-sm text-amber-200">
+          💡 Em pipelines de engenharia de software de empresas Fortune 500, o custo de API representa
+          <strong>menos de 10% do TCO real</strong>. Quem otimiza só a fatura de tokens discute a ponta do iceberg.
+        </div>
+        <button data-next class="mt-8 cta-gradient text-white font-semibold py-3 px-6 rounded-xl">Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ================= CAP 2 ================= -->
+    <section id="scene-cap2" class="scene" hidden aria-labelledby="cap2-h">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#ef4444;">⚠️ Capítulo 2</p>
+      <h2 id="cap2-h" class="text-3xl font-extrabold text-white mb-4">A Armadilha da IA "Barata"</h2>
+      <p class="text-gray-400 mb-6">O CTO <strong>Dr. Aris Thorne</strong> quer migrar tudo para o <em>Model-Lite</em>
+        (90% mais barato por token). O CRO <strong>Marcus Brody</strong> hesita: "Risco jurídico não é brincadeira."</p>
+
+      <div id="cap2-body" class="space-y-6"></div>
+    </section>
+
+    <!-- ================= CAP 3 ================= -->
+    <section id="scene-cap3" class="scene" hidden aria-labelledby="cap3-h">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#8a2be2;">💡 Capítulo 3</p>
+      <h2 id="cap3-h" class="text-3xl font-extrabold text-white mb-4">A Invenção da Métrica</h2>
+      <p class="text-gray-400 mb-6">A diretoria exige um indicador único de eficiência real. Monte a fração
+        que captura "trabalho útil por real investido".</p>
+
+      <div id="formula-canvas-instructions" class="sr-only">
+        Arraste os blocos para o numerador ou denominador. Alternativamente, clique em um bloco para
+        selecioná-lo e depois clique na zona de destino para posicioná-lo.
+      </div>
+      <div id="formula-canvas" role="application" aria-describedby="formula-canvas-instructions"
+        class="bg-occ-bg rounded-2xl border border-purple-500/20 p-6 md:p-8"></div>
+    </section>
+
+    <!-- ================= CAP 4 ================= -->
+    <section id="scene-cap4" class="scene" hidden aria-labelledby="cap4-h">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#3b82f6;">📐 Capítulo 4</p>
+      <h2 id="cap4-h" class="text-3xl font-extrabold text-white mb-4">Formalização Matemática</h2>
+      <div id="cap4-body" class="space-y-6"></div>
+    </section>
+
+    <!-- ================= CAP 5 ================= -->
+    <section id="scene-cap5" class="scene" hidden aria-labelledby="cap5-h">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#0d9488;">🧪 Capítulo 5</p>
+      <h2 id="cap5-h" class="text-3xl font-extrabold text-white mb-4">O Laboratório "E Se?"</h2>
+      <p class="text-gray-400 mb-6">Assuma a operação de Q1 a Q4. Configure a arquitetura para maximizar o UI/$
+        e sobreviver aos eventos de mercado. Suas decisões de hoje afetam o próximo trimestre.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div id="sandbox-controls" class="bg-occ-surface rounded-2xl border border-teal-500/20 p-6 space-y-5"></div>
+        <div class="space-y-6">
+          <div class="bg-occ-bg rounded-2xl p-4 border border-gray-700/40">
+            <h4 class="text-sm font-semibold text-gray-400 mb-3">Fluxo de Custos do TCO</h4>
+            <svg id="sankey-chart" width="100%" height="200" viewBox="0 0 600 200" role="img"
+              aria-label="Diagrama Sankey da distribuição de custos"></svg>
+          </div>
+          <div class="bg-occ-bg rounded-2xl p-4 border border-gray-700/40">
+            <h4 class="text-sm font-semibold text-gray-400 mb-3">Evolução histórica</h4>
+            <canvas id="history-chart" width="520" height="180" role="img"
+              aria-label="Gráfico da evolução de UI/$ e caixa por trimestre"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAP 6 ================= -->
+    <section id="scene-cap6" class="scene" hidden aria-labelledby="cap6-h">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#f59e0b;">⚖️ Capítulo 6</p>
+      <h2 id="cap6-h" class="text-3xl font-extrabold text-white mb-2">A Sessão do Conselho</h2>
+      <p class="text-gray-400 mb-6">Os conselheiros consultaram as métricas do Gêmeo Digital. Defenda cada decisão
+        com um argumento e uma evidência do Mural.</p>
+
+      <div class="mb-6">
+        <div class="flex justify-between text-sm mb-2">
+          <span class="text-gray-400">Confiança do Conselho</span>
+          <span id="board-confidence-pct" class="font-mono font-bold text-white">60%</span>
+        </div>
+        <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+          <div id="board-confidence-bar" class="h-full rounded-full transition-all duration-500"
+            style="width:60%; background:linear-gradient(90deg,#eab308,#f59e0b);"></div>
+        </div>
+      </div>
+
+      <div id="board-dialog-area" class="space-y-6"></div>
+      <button id="btn-open-evidence" class="fixed bottom-4 left-4 z-40 bg-occ-surface border border-gray-600 rounded-full px-4 py-2 text-sm">🗂 Evidências</button>
+    </section>
+
+    <!-- ================= TRANSFER / VICTORY / FAILURE ================= -->
+    <section id="scene-transfer" class="scene" hidden aria-labelledby="tr-h">
+      <h2 id="tr-h" class="text-3xl font-extrabold text-white mb-4">🎯 Caso de Transferência</h2>
+      <div id="transfer-case" class="bg-occ-surface rounded-2xl border border-gray-700/50 p-6"></div>
+    </section>
+
+    <section id="scene-victory" class="scene text-center py-16" hidden aria-labelledby="vic-h">
+      <h2 id="vic-h" class="text-4xl font-extrabold mb-4" style="color:var(--color-sim-green);">Vitória</h2>
+      <p id="victory-text" class="text-gray-300 max-w-xl mx-auto"></p>
+    </section>
+
+    <section id="scene-failure" class="scene text-center py-16" hidden aria-labelledby="fail-h">
+      <h2 id="fail-h" class="text-4xl font-extrabold mb-4" style="color:var(--color-sim-red);">Game Over</h2>
+      <p id="failure-text" class="text-gray-300 max-w-xl mx-auto"></p>
+      <button id="btn-replay" class="mt-8 bg-transparent border border-gray-600 text-gray-300 py-2 px-5 rounded-lg hover:text-white">Tentar novamente</button>
+    </section>
+
+  </main>
+
+  <!-- ================= COMPONENTES GLOBAIS ================= -->
+  <div id="toast-evidence" role="status" aria-live="polite" hidden
+    class="fixed bottom-4 right-4 z-50 bg-gray-900 border border-green-500/50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-xl">
+    <span class="text-2xl" id="toast-evidence-icon">💸</span>
+    <div>
+      <p class="text-xs text-green-400 font-semibold uppercase">Nova Evidência</p>
+      <p class="text-sm text-white font-medium" id="toast-evidence-title">—</p>
+    </div>
+  </div>
+
+  <dialog id="event-alert-dialog"
+    class="backdrop:bg-black/60 bg-occ-surface border border-amber-500/30 rounded-2xl p-6 w-full max-w-md text-white"
+    aria-labelledby="dialog-title">
+    <div class="flex items-start gap-4 mb-4">
+      <span id="dialog-severity-icon" class="text-4xl">⚡</span>
+      <div>
+        <p class="text-xs text-amber-400 uppercase tracking-widest font-semibold mb-1">Alerta Executivo — <span id="dialog-quarter">Q3</span></p>
+        <h2 id="dialog-title" class="text-xl font-bold"></h2>
+      </div>
+    </div>
+    <p id="dialog-description" class="text-gray-300 mb-2"></p>
+    <p id="dialog-impact" class="text-sm text-amber-300 bg-amber-500/10 rounded-lg p-3 mb-4"></p>
+    <p id="dialog-mitigation" class="text-sm text-gray-400 mb-6" hidden></p>
+    <button id="dialog-close" class="w-full py-3 cta-gradient rounded-xl font-semibold">Entendido — Avançar</button>
+  </dialog>
+
+  <aside id="evidence-panel"
+    class="fixed right-0 top-0 h-full w-72 max-w-[85vw] bg-occ-bg border-l border-gray-700 transform translate-x-full transition-transform duration-300 z-40 flex flex-col"
+    aria-label="Mural de Evidências">
+    <div class="flex justify-between items-center p-4 border-b border-gray-700">
+      <h3 class="font-semibold">🗂 Mural de Evidências <span id="evidence-count" class="text-xs text-gray-500"></span></h3>
+      <button id="evidence-panel-close" aria-label="Fechar painel de evidências" class="text-gray-400 hover:text-white text-xl">×</button>
+    </div>
+    <div id="evidence-panel-cards" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
+  </aside>
+
+  <script type="module" src="./js/operacao-capital-cognitivo/main.js"></script>
+</body>
+
+</html>
