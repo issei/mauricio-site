@@ -104,6 +104,23 @@
     </div>
   </header>
 
+  <!-- ================= BARRA DE CONTROLES ================= -->
+  <div id="sim-toolbar" hidden class="sticky top-[52px] z-40 bg-occ-bg/90 backdrop-blur border-b border-gray-800">
+    <div class="container mx-auto px-4 py-2 flex items-center gap-2 text-sm">
+      <button id="btn-back" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white disabled:opacity-30" title="Voltar ao capítulo anterior">← Voltar</button>
+      <button id="btn-restart" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white" title="Recomeçar do início">↻ Recomeçar</button>
+      <div class="ml-auto flex items-center gap-2">
+        <button id="btn-help" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white">❓ Ajuda</button>
+        <button id="btn-glossary" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white">📖 Glossário</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FAIXA DE OBJETIVO ================= -->
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div id="objective-bar" hidden class="mt-4 rounded-xl border border-blue-500/25 bg-blue-500/5 p-3"></div>
+  </div>
+
   <main class="container mx-auto px-4 py-8 max-w-4xl">
 
     <!-- ================= INTRO ================= -->
@@ -115,14 +132,35 @@
         A empresa está em crise por uso descontrolado de IA. Você tem 24 horas para explicar — ou os projetos
         de IA são cancelados.
       </p>
-      <p class="text-sm text-gray-400 max-w-2xl mx-auto mb-10">
+      <p class="text-sm text-gray-400 max-w-2xl mx-auto mb-8">
         Ao longo de 6 capítulos, você vai reconstruir por descoberta o framework
         <em>Useful Intelligence per Dollar</em> e defendê-lo perante o Conselho.
+        <strong class="text-gray-300">Não precisa saber nada de IA para começar</strong> — o simulador explica tudo no caminho.
       </p>
+
+      <div class="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10 text-left">
+        <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
+          <p class="text-2xl mb-1">🧭</p>
+          <p class="text-sm text-white font-medium">Sempre há um objetivo</p>
+          <p class="text-xs text-gray-400">Uma faixa no topo diz o que fazer em cada tela. Clique em "Como fazer?" para o passo a passo.</p>
+        </div>
+        <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
+          <p class="text-2xl mb-1">📖</p>
+          <p class="text-sm text-white font-medium">Tudo é explicado</p>
+          <p class="text-xs text-gray-400">Botões <strong>Ajuda</strong> e <strong>Glossário</strong> traduzem cada termo técnico em linguagem simples.</p>
+        </div>
+        <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
+          <p class="text-2xl mb-1">↺</p>
+          <p class="text-sm text-white font-medium">Sem medo de errar</p>
+          <p class="text-xs text-gray-400">Você pode <strong>Voltar</strong> ou <strong>Recomeçar</strong> a qualquer momento. É um laboratório.</p>
+        </div>
+      </div>
+
       <button id="btn-start"
         class="cta-gradient text-white font-semibold py-3 px-8 rounded-xl text-lg hover:scale-105 transition-transform">
-        Aceitar o cargo →
+        Começar →
       </button>
+      <p class="mt-4"><button id="btn-glossary-intro" class="text-sm text-blue-400 underline">Ver o glossário antes de começar</button></p>
     </section>
 
     <!-- ================= CAP 1 ================= -->
@@ -279,6 +317,20 @@
     <p id="dialog-impact" class="text-sm text-amber-300 bg-amber-500/10 rounded-lg p-3 mb-4"></p>
     <p id="dialog-mitigation" class="text-sm text-gray-400 mb-6" hidden></p>
     <button id="dialog-close" class="w-full py-3 cta-gradient rounded-xl font-semibold">Entendido — Avançar</button>
+  </dialog>
+
+  <dialog id="help-dialog"
+    class="backdrop:bg-black/60 bg-occ-surface border border-blue-500/30 rounded-2xl p-6 w-full max-w-lg text-white"
+    aria-labelledby="help-title">
+    <div class="flex justify-end"><button id="help-close" aria-label="Fechar ajuda" class="text-gray-400 hover:text-white text-xl">×</button></div>
+    <div id="help-body" aria-live="polite"></div>
+  </dialog>
+
+  <dialog id="glossary-dialog"
+    class="backdrop:bg-black/60 bg-occ-surface border border-blue-500/30 rounded-2xl p-6 w-full max-w-lg text-white max-h-[85vh] overflow-y-auto"
+    aria-labelledby="glossary-title">
+    <div class="flex justify-end"><button id="glossary-close" aria-label="Fechar glossário" class="text-gray-400 hover:text-white text-xl">×</button></div>
+    <div id="glossary-body"></div>
   </dialog>
 
   <aside id="evidence-panel"

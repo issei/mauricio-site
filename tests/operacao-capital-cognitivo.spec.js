@@ -92,6 +92,41 @@ test.describe('Digital Twin — conceitos v4.1 via UI', () => {
   });
 });
 
+test.describe('Camada de orientação (amigável para leigos)', () => {
+  test('intro explica como funciona e oferece glossário', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('#btn-glossary-intro')).toBeVisible();
+    await page.click('#btn-glossary-intro');
+    await expect(page.locator('#glossary-dialog')).toBeVisible();
+    await expect(page.locator('#glossary-body')).toContainText('UI/$');
+    // Referências com links reais que abrem em nova aba
+    const refLink = page.locator('#glossary-body a[target="_blank"]').first();
+    await expect(refLink).toHaveAttribute('href', /https?:\/\//);
+  });
+
+  test('faixa de objetivo aparece no capítulo com passo a passo na ajuda', async ({ page }) => {
+    await page.goto(PATH);
+    await page.click('#btn-start');
+    await expect(page.locator('#objective-bar')).toBeVisible();
+    await expect(page.locator('#objective-bar')).toContainText('objetivo');
+    await page.click('#objective-help');
+    await expect(page.locator('#help-dialog')).toBeVisible();
+    await expect(page.locator('#help-body')).toContainText('Passo a passo');
+  });
+
+  test('barra de controles: Voltar/Recomeçar/Ajuda/Glossário; Voltar desabilitado no Cap.1', async ({ page }) => {
+    await page.goto(PATH);
+    await page.click('#btn-start');
+    await expect(page.locator('#sim-toolbar')).toBeVisible();
+    await expect(page.locator('#btn-back')).toBeDisabled();
+    // avança 2 caps via debug e volta um
+    await page.evaluate(() => window.__DEBUG_skipToChapter(3));
+    await expect(page.locator('#btn-back')).toBeEnabled();
+    await page.click('#btn-back');
+    await expect(page.locator('#scene-cap2')).toBeVisible();
+  });
+});
+
 test.describe('Acessibilidade WCAG 2.2 AA', () => {
   test('intro sem violações serious/critical', async ({ page }) => {
     await page.goto(PATH);
