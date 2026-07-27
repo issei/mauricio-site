@@ -123,44 +123,129 @@
 
   <main class="container mx-auto px-4 py-8 max-w-4xl">
 
-    <!-- ================= INTRO ================= -->
-    <section id="scene-intro" class="scene text-center py-16">
-      <p class="text-xs text-blue-400 uppercase tracking-[0.3em] mb-4">Simulador Executivo</p>
-      <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Operação Capital Cognitivo</h1>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-4">
-        Você é o novo Arquiteto de IA e FinOps da <strong class="text-white">Nexus Tech Corp</strong>.
-        A empresa está em crise por uso descontrolado de IA. Você tem 24 horas para explicar — ou os projetos
-        de IA são cancelados.
-      </p>
-      <p class="text-sm text-gray-400 max-w-2xl mx-auto mb-8">
-        Ao longo de 6 capítulos, você vai reconstruir por descoberta o framework
-        <em>Useful Intelligence per Dollar</em> e defendê-lo perante o Conselho.
-        <strong class="text-gray-300">Não precisa saber nada de IA para começar</strong> — o simulador explica tudo no caminho.
-      </p>
+    <!-- ================= LANDING CONCEITUAL (pré-atividade) ================= -->
+    <section id="scene-intro" class="scene">
 
-      <div class="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10 text-left">
-        <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
-          <p class="text-2xl mb-1">🧭</p>
-          <p class="text-sm text-white font-medium">Sempre há um objetivo</p>
-          <p class="text-xs text-gray-400">Uma faixa no topo diz o que fazer em cada tela. Clique em "Como fazer?" para o passo a passo.</p>
+      <!-- Hero -->
+      <div class="text-center py-14">
+        <p class="text-xs text-blue-400 uppercase tracking-[0.3em] mb-4">Simulador Executivo · FinOps de IA</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Operação Capital Cognitivo</h1>
+        <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-4">
+          Um simulador interativo que ensina, por descoberta, a economia real da Inteligência Artificial nas empresas:
+          por que a IA mais cara <strong class="text-white">não</strong> é a que cobra mais por uso — e como medir o que
+          ela realmente entrega.
+        </p>
+        <p class="text-sm text-gray-400 max-w-2xl mx-auto mb-8">
+          <strong class="text-gray-300">Não precisa saber nada de IA para começar.</strong>
+          Cada tela tem objetivo, passo a passo e um glossário em linguagem simples.
+        </p>
+        <button id="btn-start"
+          class="cta-gradient text-white font-semibold py-3 px-8 rounded-xl text-lg hover:scale-105 transition-transform">
+          Começar a simulação →
+        </button>
+        <p class="mt-4"><button id="btn-glossary-intro" class="text-sm text-blue-400 underline">Ver o glossário antes de começar</button></p>
+      </div>
+
+      <!-- A tese -->
+      <div class="rounded-2xl border border-amber-500/25 bg-amber-500/5 p-6 md:p-8 mb-12">
+        <h2 class="text-2xl font-bold text-white mb-3">A ideia central</h2>
+        <p class="text-gray-300 mb-3">
+          Quando uma empresa adota IA, ela enxerga só a <strong>ponta do iceberg</strong>: a fatura de uso (a API).
+          Mas o custo real é dominado pelo que fica submerso — as <strong>horas humanas</strong> gastas revisando e
+          corrigindo o que a IA produziu, a infraestrutura e a governança.
+        </p>
+        <p class="text-gray-400 text-sm">
+          Em pipelines de software de grandes empresas, a API costuma ser <strong class="text-amber-300">menos de 10% do
+          custo total</strong>. Quem otimiza só o preço do token está discutindo a parte errada do problema. O simulador
+          te leva a redescobrir isso — e a inventar a métrica que corrige o erro.
+        </p>
+      </div>
+
+      <!-- O objetivo -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">O que você sai sabendo</h2>
+        <ul class="grid md:grid-cols-2 gap-3 text-sm text-gray-300">
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">📊 <strong>Ler o custo total (TCO)</strong> de uma operação de IA — não só a fatura de API.</li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">🧭 <strong>Usar o UI/$</strong> (Useful Intelligence per Dollar) para comparar decisões de arquitetura.</li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">🧠 <strong>Enxergar o custo humano</strong> não-linear: a fadiga de verificar IA errada (V_core).</li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">⚖️ <strong>Defender escolhas</strong> com evidência — inclusive em setores regulados (Governed UI/$).</li>
+        </ul>
+      </div>
+
+      <!-- A jornada -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-1">A jornada em 6 capítulos</h2>
+        <p class="text-sm text-gray-400 mb-4">Uma investigação guiada, do mistério à defesa perante o Conselho.</p>
+        <ol class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-amber-400 font-bold">1 · O Mistério</span><p class="text-gray-400 mt-1">Onde foram parar R$ 37 mil da fatura de IA?</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-red-400 font-bold">2 · A Armadilha</span><p class="text-gray-400 mt-1">Por que a IA "barata" sai caríssima.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-purple-400 font-bold">3 · A Invenção</span><p class="text-gray-400 mt-1">Você mesmo deduz a métrica de eficiência.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-blue-400 font-bold">4 · A Formalização</span><p class="text-gray-400 mt-1">As fórmulas oficiais por trás da intuição.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-teal-400 font-bold">5 · O Laboratório</span><p class="text-gray-400 mt-1">Operar a empresa por 4 trimestres sob incerteza.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-amber-400 font-bold">6 · O Conselho</span><p class="text-gray-400 mt-1">Defender cada decisão com evidências.</p></li>
+        </ol>
+      </div>
+
+      <!-- Base científica -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">Rigor, não achismo</h2>
+        <div class="grid md:grid-cols-3 gap-3 text-sm mb-4">
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">🗂</p><p class="text-white font-medium">11 evidências</p><p class="text-gray-400 text-xs">Cada conceito vem com fonte, nível epistemológico e limitações declaradas.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">📐</p><p class="text-white font-medium">3 modelos formais</p><p class="text-gray-400 text-xs">Cost-of-Pass, UI/$ e Governed UI/$ — a matemática por trás das decisões.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">🔗</p><p class="text-white font-medium">Referências reais</p><p class="text-gray-400 text-xs">Links para as fontes (RouteLLM, prompt caching, Context Rot e mais) no glossário.</p></div>
         </div>
-        <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
-          <p class="text-2xl mb-1">📖</p>
-          <p class="text-sm text-white font-medium">Tudo é explicado</p>
-          <p class="text-xs text-gray-400">Botões <strong>Ajuda</strong> e <strong>Glossário</strong> traduzem cada termo técnico em linguagem simples.</p>
-        </div>
-        <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
-          <p class="text-2xl mb-1">↺</p>
-          <p class="text-sm text-white font-medium">Sem medo de errar</p>
-          <p class="text-xs text-gray-400">Você pode <strong>Voltar</strong> ou <strong>Recomeçar</strong> a qualquer momento. É um laboratório.</p>
+        <p class="text-xs text-gray-400">
+          Nota honesta: UI/$, V_core e afins são <strong>convenções operacionais de FinOps em consolidação</strong> —
+          bússolas direcionais, não normas ISO/IEEE. Os números do simulador são parâmetros de ensino, não medições absolutas.
+          <button id="btn-glossary-intro-2" class="text-blue-400 underline">Ver referências</button>
+        </p>
+      </div>
+
+      <!-- Para quem é -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">Para quem é</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Engenheiros</p><p class="text-gray-400 text-xs mt-1">que implementam IA e querem critério de custo.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Arquitetos / Tech Leads</p><p class="text-gray-400 text-xs mt-1">que precisam de padrões defensáveis.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Gestores / Executivos</p><p class="text-gray-400 text-xs mt-1">que decidem orçamento sem entrar no código.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Estudantes</p><p class="text-gray-400 text-xs mt-1">que querem rigor e fontes verificáveis.</p></div>
         </div>
       </div>
 
-      <button id="btn-start"
-        class="cta-gradient text-white font-semibold py-3 px-8 rounded-xl text-lg hover:scale-105 transition-transform">
-        Começar →
-      </button>
-      <p class="mt-4"><button id="btn-glossary-intro" class="text-sm text-blue-400 underline">Ver o glossário antes de começar</button></p>
+      <!-- Como funciona -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-4">Como funciona</h2>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
+            <p class="text-2xl mb-1">🧭</p>
+            <p class="text-sm text-white font-medium">Sempre há um objetivo</p>
+            <p class="text-xs text-gray-400">Uma faixa no topo diz o que fazer. Clique em "Como fazer?" para o passo a passo.</p>
+          </div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
+            <p class="text-2xl mb-1">📖</p>
+            <p class="text-sm text-white font-medium">Tudo é explicado</p>
+            <p class="text-xs text-gray-400"><strong>Ajuda</strong> e <strong>Glossário</strong> traduzem cada termo em linguagem simples.</p>
+          </div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
+            <p class="text-2xl mb-1">↺</p>
+            <p class="text-sm text-white font-medium">Sem medo de errar</p>
+            <p class="text-xs text-gray-400"><strong>Voltar</strong> ou <strong>Recomeçar</strong> quando quiser. É um laboratório.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA final com o enquadramento narrativo -->
+      <div class="rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 md:p-8 text-center mb-8">
+        <h2 class="text-2xl font-bold text-white mb-3">Sua missão começa agora</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto mb-6">
+          Você acaba de ser contratado como Arquiteto de IA e FinOps da <strong class="text-white">Nexus Tech Corp</strong>,
+          uma empresa em crise por uso descontrolado de IA. Tem 24 horas para explicar o rombo — ou os projetos de IA são cancelados.
+        </p>
+        <button data-start
+          class="cta-gradient text-white font-semibold py-3 px-8 rounded-xl text-lg hover:scale-105 transition-transform">
+          Aceitar o cargo e começar →
+        </button>
+      </div>
     </section>
 
     <!-- ================= CAP 1 ================= -->

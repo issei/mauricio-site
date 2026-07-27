@@ -92,6 +92,31 @@ test.describe('Digital Twin — conceitos v4.1 via UI', () => {
   });
 });
 
+test.describe('Landing conceitual (pré-atividade)', () => {
+  test('apresenta tese, objetivo, jornada e base científica antes da simulação', async ({ page }) => {
+    await page.goto(PATH);
+    const intro = page.locator('#scene-intro');
+    await expect(intro).toContainText('A ideia central');
+    await expect(intro).toContainText('O que você sai sabendo');
+    await expect(intro).toContainText('A jornada em 6 capítulos');
+    await expect(intro).toContainText('Rigor, não achismo');
+    await expect(intro).toContainText('Para quem é');
+    // exatamente um h1 na página
+    await expect(page.locator('h1')).toHaveCount(1);
+    // HUD e barra de controles ainda ocultos (a atividade não começou)
+    await expect(page.locator('#hud')).toBeHidden();
+    await expect(page.locator('#sim-toolbar')).toBeHidden();
+  });
+
+  test('o CTA final inicia a atividade interativa', async ({ page }) => {
+    await page.goto(PATH);
+    await page.click('#scene-intro [data-start]');
+    await expect(page.locator('#scene-cap1')).toBeVisible();
+    await expect(page.locator('#hud')).toBeVisible();
+    await expect(page.locator('#sim-toolbar')).toBeVisible();
+  });
+});
+
 test.describe('Camada de orientação (amigável para leigos)', () => {
   test('intro explica como funciona e oferece glossário', async ({ page }) => {
     await page.goto(PATH);

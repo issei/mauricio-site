@@ -110,7 +110,8 @@ function restart() {
 }
 
 // ----- Wiring global -----
-document.getElementById('btn-start')?.addEventListener('click', () => goToChapter(1));
+document.querySelectorAll('#btn-start, [data-start]').forEach((b) => b.addEventListener('click', () => goToChapter(1)));
+document.getElementById('btn-glossary-intro-2')?.addEventListener('click', () => openGlossary());
 document.getElementById('btn-replay')?.addEventListener('click', () => restart());
 document.getElementById('btn-open-evidence')?.addEventListener('click', () => { renderEvidencePanel(board); openEvidencePanel(); });
 document.getElementById('evidence-panel-close')?.addEventListener('click', closeEvidencePanel);
