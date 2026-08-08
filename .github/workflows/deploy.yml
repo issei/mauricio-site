@@ -41,9 +41,11 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to S3
-        # O sync garante que o S3 seja um espelho exato da pasta dist/
+        # O sync garante que o S3 seja um espelho exato da pasta dist/.
+        # --exclude "static/*" preserva a pasta de assets grandes (áudios, PDFs,
+        # imagens > 3MB) mantida manualmente via AWS Console — ver docs/s3-migration/.
         run: |
-          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET_NAME }} --delete
+          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET_NAME }} --delete --exclude "static/*"
 
 
       - name: Invalidate CloudFront Cache

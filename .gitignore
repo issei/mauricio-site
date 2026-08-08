@@ -60,3 +60,23 @@ desktop.ini
 !.claude/agents/
 .claude/settings.local.json
 .claude/worktrees/
+
+# Assets grandes (>3MB) — migrados para s3://mauricio.issei.com.br/static/
+# Mantidos apenas no bucket S3, fora do alcance do deploy (--exclude "static/*").
+# Ver docs/s3-migration/ para inventário e procedimento de manutenção.
+# Listados por nome exato (não wildcard) para não capturar novos PDFs/imagens pequenos por engano.
+public/Do_caos_à_eficiência_preditiva_real.m4a
+public/A_transição_para_orquestrador_de_agentes_IA.m4a
+public/DeepDive-Organizacao.m4a
+public/Do_Caos_à_Resiliência_em_Incidentes_Críticos.m4a
+public/Consertar_o_Sistema_ou_Gerenciar_a_Crise.m4a
+public/Eventos_Salesforce_ML_feedback_em_tempo_real.m4a
+public/Debate-Organizacao.m4a
+public/Critica-Organizacao.m4a
+public/Antigravity_IA_do_Google_Revolução_ou_Risco.m4a
+public/Engenharia_de_Confiabilidade_em_Produção.pdf
+public/Confiabilidade_Móvel_Unificada.pdf
+public/fotos/infancia.png
+public/Inteligência_de_Vendas_em_Tempo_Real.pdf
+src/infosust.png
+public/arq-proposta.png
