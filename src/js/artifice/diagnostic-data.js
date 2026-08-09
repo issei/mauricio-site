@@ -45,9 +45,13 @@ export const QUESTIONS = [
   },
 ];
 
-// Antídotos recomendados por faixa (Seção 04, Card de Resultado).
+// Caminhos de Emancipação Positiva (spec 01, WU-05).
+// Deliberadamente construtivos: o diagnóstico não termina em denúncia da
+// estrutura, e sim em movimentos que o profissional controla a partir de
+// segunda-feira. Cada item é uma ação, não um lamento.
 export const ANTIDOTES = [
-  'Inicie o descolamento da sua identidade do crachá — seu valor não está escrito num organograma.',
-  'Exija a aplicação do índice ISOM (Sustentabilidade Operacional e Mentoria) no seu próximo ciclo de avaliação.',
-  'Baixe a minuta de diretrizes para lideranças na seção de Acervo Acadêmico e leve-a ao seu gestor.',
+  'Torne legível o trabalho invisível: registre risco evitado, complexidade removida e autonomia gerada nos seus liderados — o que não é medido não é discutido, e você não precisa de permissão para começar a medir.',
+  'Leve o vocabulário para o ciclo de avaliação: proponha MCSR, ISOM e AEGW como critérios explícitos, com exemplos do seu próprio semestre. Negociação com dados muda mais que reclamação.',
+  'Exerça liderança de influência: alinhar times, comunicar trade-offs e sustentar um rumo arquitetural é ofício sênior legítimo — não é politicagem, e é o que faz o bom trabalho sobreviver na organização.',
+  'Separe identidade de cargo: seu ofício e sua reputação técnica são seus e são portáteis. Se a estrutura não muda depois de um ciclo honesto de negociação, escolher uma organização que já reconheça esse valor também é um resultado do diagnóstico.',
 ];

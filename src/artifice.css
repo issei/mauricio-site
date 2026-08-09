@@ -237,6 +237,37 @@ body.art-body {
 .art-table .col-corporativa { color: var(--color-art-rose); }
 
 /* ------------------------------------------------------------------ */
+/* Hub multimídia — marcadores de tempo do vídeo                       */
+/* ------------------------------------------------------------------ */
+.video-chapter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-art-border);
+  background: transparent;
+  color: var(--color-art-text);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.video-chapter:hover {
+  border-color: var(--color-art-cyan);
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.video-chapter[aria-pressed="true"] {
+  border-color: var(--color-art-cyan);
+  background: rgba(56, 189, 248, 0.12);
+}
+
+/* <details> do equivalente textual e da marginália */
+summary::-webkit-details-marker { color: var(--color-art-muted); }
+summary:focus-visible { outline: 2px solid var(--color-art-cyan); outline-offset: 2px; }
+
+/* ------------------------------------------------------------------ */
 /* Tabs (WAI-ARIA) — sem layout shift na troca                         */
 /* ------------------------------------------------------------------ */
 .art-tablist {

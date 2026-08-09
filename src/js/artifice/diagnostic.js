@@ -180,14 +180,17 @@ export function initDiagnostic(root) {
         <p class="text-sm text-art-muted leading-relaxed mb-6">${theory.corpo}</p>
 
         <div class="border-t border-art-border pt-5">
-          <p class="text-xs uppercase tracking-widest text-art-cyan art-mono mb-3">Antídoto recomendado</p>
+          <p class="text-xs uppercase tracking-widest text-art-cyan art-mono mb-1">Caminhos de emancipação</p>
+          <p class="text-xs text-art-muted mb-3">
+            O diagnóstico não termina na estrutura: começa no que você controla a partir de segunda-feira.
+          </p>
           <ol class="space-y-2 text-sm text-art-text list-decimal list-inside">
             ${ANTIDOTES.map((a) => `<li>${esc(a)}</li>`).join('')}
           </ol>
         </div>
 
         <div class="flex flex-wrap gap-3 mt-6">
-          <a href="#acervo" class="art-cta-gradient text-[#041018] font-semibold py-2.5 px-5 rounded-lg text-sm">Ver minuta de diretrizes no acervo →</a>
+          <a href="#antidoto" class="art-cta-gradient text-[#041018] font-semibold py-2.5 px-5 rounded-lg text-sm">Ver o framework de métricas reais →</a>
           <button type="button" id="diagnostic-restart" class="border border-art-border text-art-muted hover:text-art-text py-2.5 px-5 rounded-lg text-sm">↻ Refazer diagnóstico</button>
         </div>
       </div>`;

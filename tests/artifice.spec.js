@@ -5,8 +5,17 @@ const PATH = '/artifice.html';
 
 test.describe('O Artífice Invisível — Smoke & SEO', () => {
   test('carrega com 200, título, canonical e description corretos, sem erros de console', async ({ page }) => {
+    // Só nos responsabilizamos pelo que é nosso: o embed do YouTube é de terceiro
+    // e, sem rede (o gate roda offline), falha o carregamento e loga por conta
+    // própria. Filtramos por origem para o teste continuar sinalizando defeito
+    // real da página em vez de ruído do iframe.
     const errors = [];
-    page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+    page.on('console', (m) => {
+      if (m.type() !== 'error') return;
+      const from = m.location()?.url || '';
+      if (/youtube|ytimg|googletagmanager|google-analytics/.test(from)) return;
+      errors.push(`${m.text()} @ ${from}`);
+    });
     const res = await page.goto(PATH);
     expect(res?.status()).toBe(200);
 
@@ -33,8 +42,105 @@ test.describe('O Artífice Invisível — Smoke & SEO', () => {
   });
 });
 
+test.describe('Guardrails de conteúdo (spec 01 §2)', () => {
+  test.beforeEach(async ({ page }) => { await page.goto(PATH); });
+
+  test('o manifesto não usa datas específicas e não culpa o indivíduo', async ({ page }) => {
+    const texto = await page.locator('#hero').innerText();
+    // §2.1 proíbe datas específicas ("Em 2007 fui promovido...").
+    expect(texto).not.toMatch(/\b(19|20)\d{2}\b/);
+    expect(texto).toContain('Anos atrás');
+    // O diagnóstico é estrutural, não pessoal.
+    expect(texto).toContain('não é uma falha pessoal');
+    expect(texto).toContain('descompasso estrutural');
+  });
+
+  test('§2.2 · maestria responsável é distinguida de over-engineering', async ({ page }) => {
+    const aside = page.locator('aside[aria-labelledby="aside-maestria-h"]');
+    await expect(aside).toHaveCount(1);
+    await expect(aside).toContainText('over-engineering');
+    await expect(aside).toContainText('problemas de negócio de forma sustentável');
+  });
+
+  test('§2.3 · o paradoxo da IA equilibra deskilling com Maestria Aumentada', async ({ page }) => {
+    await page.locator('#paradoxo-5-trigger').click();
+    const panel = page.locator('#paradoxo-5-panel');
+    await expect(panel).toContainText('de-skilling');
+    await expect(panel).toContainText('Maestria Aumentada');
+    await expect(panel).toContainText('curador');
+  });
+
+  test('§2.4 · politicagem é distinguida de liderança de influência legítima', async ({ page }) => {
+    await page.locator('#paradoxo-2-trigger').click();
+    const panel = page.locator('#paradoxo-2-panel');
+    await expect(panel).toContainText('liderança de influência');
+    await expect(panel).toContainText('Staff Engineer');
+    await expect(panel).toContainText('jogo político superficial');
+  });
+});
+
+test.describe('Seção 1.5 — Hub Multimídia (vídeo-síntese)', () => {
+  test.beforeEach(async ({ page }) => { await page.goto(PATH); });
+
+  test('o player usa youtube-nocookie, carrega lazy e tem nome acessível', async ({ page }) => {
+    const frame = page.locator('#video-frame');
+    await expect(frame).toHaveCount(1);
+    await expect(frame).toHaveAttribute('loading', 'lazy');
+    await expect(frame).toHaveAttribute('src', /youtube-nocookie\.com\/embed\/FJ4NEOgw_SY/);
+    const title = await frame.getAttribute('title');
+    expect(title.length).toBeGreaterThan(15);
+  });
+
+  test('o vídeo aparece entre o Hero e os 5 Paradoxos', async ({ page }) => {
+    const ordem = await page.evaluate(() => {
+      const pos = (id) => document.getElementById(id).compareDocumentPosition(document.getElementById('video'));
+      return {
+        depoisDoHero: !!(pos('hero') & Node.DOCUMENT_POSITION_FOLLOWING),
+        antesDosParadoxos: !!(pos('paradoxos') & Node.DOCUMENT_POSITION_PRECEDING),
+      };
+    });
+    expect(ordem.depoisDoHero).toBe(true);
+    expect(ordem.antesDosParadoxos).toBe(true);
+  });
+
+  test('os 4 marcadores de tempo avançam o vídeo para o ponto certo', async ({ page }) => {
+    const chapters = page.locator('.video-chapter');
+    await expect(chapters).toHaveCount(4);
+
+    // 01:21 → start=81
+    await chapters.nth(1).click();
+    await expect(page.locator('#video-frame')).toHaveAttribute('src', /[?&]start=81\b/);
+    await expect(chapters.nth(1)).toHaveAttribute('aria-pressed', 'true');
+    await expect(chapters.nth(0)).toHaveAttribute('aria-pressed', 'false');
+
+    // 04:41 → start=281
+    await chapters.nth(3).click();
+    await expect(page.locator('#video-frame')).toHaveAttribute('src', /[?&]start=281\b/);
+    await expect(chapters.nth(3)).toHaveAttribute('aria-pressed', 'true');
+
+    // a mudança é anunciada a leitores de tela
+    await expect(page.locator('#video-status')).toContainText('04:41');
+  });
+
+  test('há equivalente textual do vídeo para leitura e ingestão por IA', async ({ page }) => {
+    const det = page.locator('#video details');
+    await expect(det).toHaveCount(1);
+    await det.locator('summary').click();
+    await expect(det).toContainText('Refinamento tácito');
+    await expect(det).toContainText('Duas lógicas');
+  });
+});
+
 test.describe('Seção 02 — Os 5 Paradoxos', () => {
   test.beforeEach(async ({ page }) => { await page.goto(PATH); });
+
+  test('cada painel do accordion é uma region rotulada pelo próprio gatilho', async ({ page }) => {
+    for (let i = 1; i <= 5; i++) {
+      const panel = page.locator(`#paradoxo-${i}-panel`);
+      await expect(panel).toHaveAttribute('role', 'region');
+      await expect(panel).toHaveAttribute('aria-labelledby', `paradoxo-${i}-trigger`);
+    }
+  });
 
   test('accordion tem 5 cards, todos colapsados por padrão, e expandem ao clicar', async ({ page }) => {
     const triggers = page.locator('.paradox__trigger');
@@ -124,6 +230,19 @@ test.describe('Seção 04 — Widget de Autodiagnóstico', () => {
     await expect(page.locator('#diagnostic-back')).toBeEnabled();
     await page.click('#diagnostic-back');
     await expect(page.locator('.art-step[data-step="0"]')).toBeVisible();
+  });
+
+  test('o resultado aponta caminhos de emancipação positiva (acionáveis), não só denúncia', async ({ page }) => {
+    for (let step = 0; step < 4; step++) {
+      await page.locator(`.art-step[data-step="${step}"] input`).first().check();
+      await page.click('#diagnostic-next');
+    }
+    const result = page.locator('#diagnostic-result');
+    await expect(result).toContainText('Caminhos de emancipação');
+    await expect(result).toContainText('a partir de segunda-feira');
+    // pelo menos 4 movimentos concretos, e o vocabulário construtivo da spec
+    expect(await result.locator('ol li').count()).toBeGreaterThanOrEqual(4);
+    await expect(result).toContainText('liderança de influência');
   });
 
   test('respostas de menor risco (opção C) geram diagnóstico de baixo risco e "Refazer" reinicia', async ({ page }) => {
