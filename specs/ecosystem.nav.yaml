@@ -17,10 +17,14 @@
 # =============================================================================
 
 meta:
-  version: "1.2.0"            # semver; bump obrigatório a cada alteração de grafo
+  version: "1.3.0"            # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-07-23"
+  updated: "2026-08-08"
+  # 1.3.0 — entra `artifice` (O Artífice Invisível) em p1 (Fundação/Mentalidade):
+  #         diagnóstico sociológico da invisibilidade da maestria técnica, no
+  #         mesmo pilar de `know` e `devin`. Atualizar src/js/eco-nav.js junto
+  #         (cópia compilada da SSOT) — ver ECOSYSTEM.md.
   # 1.2.0 — entra `apresentacao` em p2 (Arquitetura de IA auditável) e o nó
   #         `terminal-evolutivo` em p5, que existia apenas na cópia compilada
   #         de src/js/eco-nav.js (1.1.0). O YAML tinha ficado para trás: as duas
@@ -46,7 +50,7 @@ pillars:
     label: "Fundação"
     subtitle: "Mentalidade"
     summary: "Princípios de pensamento sistêmico e gestão do conhecimento."
-    nodes: [know, devin]
+    nodes: [know, devin, artifice]
 
   - id: p2
     order: 2
@@ -88,6 +92,11 @@ nodes:
     file: "devin.html"
     title: "Vibe Coding com Devin"
     blurb: "Engenharia agêntica na prática."
+    pillar: p1
+  artifice:
+    file: "artifice.html"
+    title: "O Artífice Invisível"
+    blurb: "O paradoxo da maestria no trabalho tecnológico."
     pillar: p1
 
   # --- P2 · Engenharia de Confiança ------------------------------------------
