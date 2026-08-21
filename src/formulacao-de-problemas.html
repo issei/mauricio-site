@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Formulação de Problemas — Engenharia Interrompida</title>
+  <meta name="description"
+    content="Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ." />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="./formulacao-de-problemas.css" />
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="formulação de problemas, engenharia interrompida, redução de incerteza, regra de parada, suficiência decisional, suficiência negociada, EVSI, valor da informação, Problem Structuring Methods, Decision Analysis, Bayesian Decision Theory, engenharia de requisitos, hiper-resolução, incerteza de fronteira, validade ecológica, wicked problems" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/formulacao-de-problemas" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/formulacao-de-problemas.md" title="Formulação de Problemas — Engenharia Interrompida — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Formulação de Problemas — Engenharia Interrompida" />
+<meta property="og:description" content="Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ." />
+<meta property="og:url" content="https://mauricio.issei.com.br/formulacao-de-problemas" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-formulacao-de-problemas.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Formulação de Problemas — Engenharia Interrompida" />
+<meta property="article:published_time" content="2026-08-20T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-08-20T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="Decisão e Formulação de Problemas" />
+<meta property="article:tag" content="Formulação de Problemas" />
+<meta property="article:tag" content="Redução de Incerteza" />
+<meta property="article:tag" content="Problem Structuring Methods" />
+<meta property="article:tag" content="Decision Analysis" />
+<meta property="article:tag" content="Regra de Parada" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Formulação de Problemas — Engenharia Interrompida" />
+<meta name="twitter:description" content="Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-formulacao-de-problemas.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#webpage",
+      "url": "https://mauricio.issei.com.br/formulacao-de-problemas",
+      "name": "Formulação de Problemas — Engenharia Interrompida",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-08-20",
+      "dateModified": "2026-08-20",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-formulacao-de-problemas.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#article"
+      }
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#webpage"
+      },
+      "headline": "Formulação de problemas como engenharia interrompida da incerteza",
+      "description": "Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-08-20",
+      "dateModified": "2026-08-20",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-formulacao-de-problemas.png",
+      "isAccessibleForFree": true,
+      "keywords": "formulação de problemas, engenharia interrompida, redução de incerteza, regra de parada, suficiência decisional, suficiência negociada, EVSI, valor da informação, Problem Structuring Methods, Decision Analysis, Bayesian Decision Theory, engenharia de requisitos, hiper-resolução, incerteza de fronteira, validade ecológica, wicked problems",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Formulação de problemas"
+        },
+        {
+          "@type": "Thing",
+          "name": "Redução de incerteza"
+        },
+        {
+          "@type": "Thing",
+          "name": "Problem Structuring Methods"
+        },
+        {
+          "@type": "Thing",
+          "name": "Decision Analysis"
+        },
+        {
+          "@type": "Thing",
+          "name": "Valor da informação (EVSI)"
+        },
+        {
+          "@type": "Thing",
+          "name": "Engenharia de Requisitos"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Líderes de Engenharia, Analistas de Decisão, Pesquisadores, Arquitetos de Sistemas de IA"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Formulação de Problemas — Engenharia Interrompida"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é formulação de problemas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É o processo de construir uma representação suficientemente explícita de uma situação para apoiar raciocínio, comparação, investigação ou ação — objetivos, alternativas, restrições, evidências, valores, incertezas e atores. Não é etapa preliminar à análise: é objeto de engenharia por direito próprio, com artefatos versionados, rastreabilidade e critérios de qualidade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que significa \"engenharia interrompida\" da incerteza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Significa tratar a formulação como processo de engenharia deliberadamente sujeito a regras de parada. A redução de incerteza é meio para melhorar a decisão, nunca fim autônomo: sem interrupção explícita, o refinamento adicional produz complexidade, viés de confirmação e falsa confiança em vez de decisão melhor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando parar de investigar um problema?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quando o que a próxima investigação promete — valor esperado da amostra de informação (EVSI), ganho de utilidade decisória e chance de descobrir um enquadramento novo — for menor que o que ela cobra: custo direto, custo de decidir mais tarde e custo cognitivo da complexidade adicional. Em problemas com conflito de valores, aplica-se a suficiência negociada em vez de um critério matemático."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é suficiência decisional?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É uma propriedade contextual, não absoluta: objetivos críticos explícitos, alternativas principais identificáveis, restrições relevantes representadas, incertezas de alto impacto tratadas, decisão robusta a variações plausíveis dos pressupostos, perspectivas dos stakeholders consideradas e ganho esperado de investigação adicional já não compensando o custo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é a penalidade de hiper-resolução (λ)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É um construto proposto para penalizar o crescimento de confiança desproporcional ao crescimento de acurácia. Quando adicionar variáveis eleva a convicção do decisor sem elevar o acerto — efeito documentado por Slovic (1974) —, λ aumenta e torna negativa a utilidade da próxima investigação. O artigo é explícito: λ deve começar como variável experimental calibrada em estudo controlado, não ser embutido em sistemas de decisão de alto risco."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando este framework não se aplica?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Em cinco famílias de situação: problemas rotineiros e bem definidos, em que formalizar gera burocracia; crises táticas, em que o tempo de modelar excede o tempo disponível; ambientes caóticos e não ergódicos; conflitos políticos profundos, em que o problema é de poder e não de conhecimento; e decisões com urgência extrema, em que o custo do atraso domina qualquer valor de informação adicional."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#glossario",
+      "name": "Glossário — Formulação de Problemas — Engenharia Interrompida",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-formulacao",
+          "name": "Formulação",
+          "description": "Construir uma representação explícita o bastante para apoiar raciocínio, investigação ou ação; é transformação, não etapa preliminar."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-engenharia-interrompida",
+          "name": "Engenharia interrompida",
+          "description": "Engenharia da formulação sujeita a regras de parada, para que o refinamento não degenere em custo, viés e falsa confiança."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-suficiencia-decisional",
+          "name": "Suficiência decisional",
+          "description": "Condição contextual em que a formulação já sustenta a decisão e investigar mais não compensa o custo."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-suficiencia-negociada",
+          "name": "Suficiência negociada",
+          "description": "Critério de parada quando não há regra matemática: acordo provisório sobre o que decidir, o que fica aberto e quando revisar."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-evsi",
+          "name": "EVSI",
+          "description": "Valor esperado de uma investigação específica e parcial; pressupõe alternativas, estados e utilidade já especificados."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-hiper-resolucao",
+          "name": "Penalidade de hiper-resolução (λ)",
+          "description": "Penalidade que cresce quando a confiança sobe mais rápido que a acurácia; proposta experimental, não validada."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-incerteza-de-fronteira",
+          "name": "Incerteza de fronteira",
+          "description": "Incerteza sobre a adequação do escopo e dos stakeholders identificados; medida por omissões descobertas após a decisão."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#g-validade-ecologica",
+          "name": "Validade ecológica",
+          "description": "Grau em que a formulação corresponde ao funcionamento relevante do domínio real, distinta de validade interna e preditiva."
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="fp-body">
+  <a href="#conteudo" class="fp-skip">Pular para o conteúdo</a>
+
+  <div class="fp-readbar" aria-hidden="true"><span data-readbar></span></div>
+
+  <header class="fp-nav" aria-label="Navegação da página">
+    <div class="fp-nav__inner">
+      <a href="#hero" class="fp-nav__brand">
+        <span class="fp-nav__dot" aria-hidden="true"></span>
+        Engenharia Interrompida
+      </a>
+      <nav class="fp-nav__trail" aria-label="Marcos do artigo">
+        <a href="#tese" data-navlink>Tese</a>
+        <a href="#incertezas" data-navlink>Incertezas</a>
+        <a href="#estados" data-navlink>Estados</a>
+        <a href="#parada" data-navlink>Parada</a>
+        <a href="#limites" data-navlink>Limites</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============================== HERO + V1 ============================== -->
+    <section id="hero" class="fp-section fp-hero" aria-labelledby="hero-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Artigo · Fundamentação multidisciplinar e programa de validação</p>
+        <h1 id="hero-titulo" class="fp-hero__title">
+          Formulação de problemas como <span class="fp-grad">engenharia interrompida</span> da incerteza
+        </h1>
+        <p class="fp-hero__sub">
+          A parte mais consequente de uma decisão raramente é resolver o problema. É descobrir qual é
+          o problema, quem tem legitimidade para defini-lo — e quando parar de investigar.
+        </p>
+        <p class="fp-hero__thesis">
+          Formular é engenharia da redução de incerteza orientada à decisão. E toda engenharia de
+          formulação precisa de regra de parada: sem ela, o refinamento vira custo, viés de
+          confirmação e confiança injustificada.
+        </p>
+
+        <figure class="fp-figure" aria-labelledby="v1-cap">
+          <p class="fp-eyebrow">Figura 1 · O arco do refinamento</p>
+          <div class="fp-figure__scroll">
+            <svg viewBox="0 0 1120 260" width="1120" height="260" role="img"
+              aria-label="Curva de incerteza que cai rápido no início, achata no meio e segue quase plana; uma linha vertical marca o ponto de parada, separando a zona de refinamento útil da zona de degradação.">
+              <rect x="60" y="26" width="620" height="174" class="fp-area--util" />
+              <rect x="680" y="26" width="380" height="174" class="fp-area--degrada" />
+              <line x1="60" y1="200" x2="1060" y2="200" class="fp-axis" />
+              <path d="M60.0,29.2 L110.0,61.0 L160.0,86.5 L210.0,106.8 L260.0,123.0 L310.0,136.0 L360.0,146.3 L410.0,154.6 L460.0,161.2 L510.0,166.5 L560.0,170.7 L610.0,174.0 L660.0,176.7 L710.0,178.9 L760.0,180.6 L810.0,181.9 L860.0,183.0 L910.0,183.9 L960.0,184.6 L1010.0,185.1 L1060.0,185.6" class="fp-line fp-line--benef" data-draw />
+              <line x1="680" y1="26" x2="680" y2="200" class="fp-stop" />
+              <text x="692" y="44" class="fp-stop-text">PARADA</text>
+              <text transform="rotate(-90 30 120)" x="30" y="120" text-anchor="middle" class="fp-axis-text">incerteza relevante</text>
+              <text x="180" y="222" class="fp-axis-text">zona de refinamento útil</text>
+              <text x="700" y="222" class="fp-axis-text">zona de degradação: custo, viés, falsa confiança</text>
+              <g class="fp-axis-text">
+                <text x="80" y="248">S₀ desagregado</text>
+                <text x="360" y="248">S₂ estruturado</text>
+                <text x="640" y="248">S₄ prontidão</text>
+                <text x="920" y="248">S₅ decisão</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption id="v1-cap">
+            A redução de incerteza tem retornos decrescentes. Depois de certo ponto, continuar
+            refinando não compra decisão melhor — compra convicção mais alta sobre a mesma decisão.
+          </figcaption>
+        </figure>
+
+        <div class="fp-hero__cta">
+          <a href="#tese" class="fp-btn fp-btn--primary">Ler a tese ▾</a>
+          <a href="#parada" class="fp-btn fp-btn--ghost">Ir direto à regra de parada</a>
+        </div>
+
+        <p class="fp-eyebrow" style="margin-top:2.5rem">Por onde você entra?</p>
+        <div class="fp-grid fp-grid--2">
+          <a href="#parada" class="fp-card">
+            <span class="fp-paincard__q">"Minha equipe refina requisitos e nunca decide."</span>
+            <p class="fp-muted">O critério de parada: benefício marginal contra custo, atraso e carga cognitiva.</p>
+            <span class="fp-paincard__go">Ir à regra de parada →</span>
+          </a>
+          <a href="#incertezas" class="fp-card fp-card--humano">
+            <span class="fp-paincard__q">"Cada área descreve um problema diferente."</span>
+            <p class="fp-muted">Incerteza não é uma coisa só: são seis, e quatro delas nenhuma probabilidade resolve.</p>
+            <span class="fp-paincard__go">Ver as seis incertezas →</span>
+          </a>
+          <a href="#hiper-resolucao" class="fp-card fp-card--degrada">
+            <span class="fp-paincard__q">"Quanto mais estudamos, mais confiantes ficamos — e não mais certos."</span>
+            <p class="fp-muted">O paradoxo da sobreinformação e a penalidade de hiper-resolução.</p>
+            <span class="fp-paincard__go">Ver o descolamento →</span>
+          </a>
+          <a href="#falseabilidade" class="fp-card fp-card--custo">
+            <span class="fp-paincard__q">"Como sei que isto não é papelada nova?"</span>
+            <p class="fp-muted">Oito critérios que, se observados, enfraquecem a própria hipótese deste artigo.</p>
+            <span class="fp-paincard__go">Ver como refutar →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ TESE ================================ -->
+    <section id="tese" class="fp-section" aria-labelledby="tese-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">A hipótese <span class="fp-selo fp-selo--sintese">Síntese</span></p>
+        <h2 id="tese-titulo" class="fp-title fp-title--underline">O que a tese afirma — e o que ela não afirma</h2>
+        <div class="fp-prose">
+          <p>
+            Em problemas complexos, a formulação orientada por um processo estruturado de elicitação,
+            representação, validação e investigação produz decisões mais robustas do que formulações
+            <em>ad hoc</em> <strong>quando</strong> reduz incertezas relevantes para a ação, explicita
+            premissas, preserva rastreabilidade, testa enquadramentos concorrentes e atinge uma condição
+            de <a href="#g-suficiencia">suficiência</a> operável antes que custo, viés e complexidade
+            superem o benefício esperado da informação.
+          </p>
+          <p>
+            A palavra que carrega o argumento é <strong>quando</strong>. A hipótese é condicional, e o
+            artigo a sustenta apenas <strong>parcialmente</strong>. É por isso que a página inteira
+            carrega selos: o que é síntese da literatura, o que é proposta original e o que ainda não
+            foi validado empiricamente aparecem separados, nunca embaralhados.
+          </p>
+        </div>
+
+        <div class="fp-grid fp-grid--2" style="margin-top:1.5rem">
+          <div class="fp-card fp-card--degrada">
+            <h3>Cinco coisas que a hipótese não afirma</h3>
+            <ul class="fp-negacao">
+              <li>que toda informação adicional melhora a decisão;</li>
+              <li>que toda incerteza deve ser eliminada;</li>
+              <li>que existe uma formulação verdadeira e única para o mesmo problema;</li>
+              <li>que toda formulação deve ser quantitativa;</li>
+              <li>que a parada pode ser definida por uma métrica universal, válida em qualquer domínio.</li>
+            </ul>
+          </div>
+          <div class="fp-card fp-card--humano">
+            <h3>As quatro subperguntas</h3>
+            <ol class="fp-muted" style="margin:0.6rem 0 0; padding-left:1.2rem; display:grid; gap:0.45rem">
+              <li>Como representar estados de conhecimento ao longo da formulação?</li>
+              <li>Como medir incertezas de naturezas distintas?</li>
+              <li>Como avaliar a suficiência de uma formulação para uma decisão específica?</li>
+              <li>Como detectar o ponto em que refinar deixa de reduzir incerteza relevante e passa a
+                produzir complexidade, viés ou confiança injustificada?</li>
+            </ol>
+          </div>
+        </div>
+
+        <p class="fp-small" style="margin-top:1.2rem">
+          Este é o mesmo princípio que governa um agente de IA confiável em outra escala: parar num
+          ponto seguro em vez de promover um palpite. Ver
+          <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================== V2 · INCERTEZAS ========================== -->
+    <section id="incertezas" class="fp-section" aria-labelledby="incertezas-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Delimitação conceitual <span class="fp-selo fp-selo--sintese">Síntese</span></p>
+        <h2 id="incertezas-titulo" class="fp-title fp-title--underline">Seis incertezas, não uma</h2>
+        <div class="fp-prose">
+          <p>
+            Reduzir incerteza a uma distribuição de probabilidade é conveniente e enganoso. O que trava
+            uma decisão real quase nunca é a variância: é não saber o que os objetivos significam, quem
+            deveria estar na sala, ou qual mecanismo causal ficou de fora do modelo. O artigo decompõe a
+            incerteza em seis dimensões — cada uma com a sua pergunta definidora, a sua métrica candidata
+            e a sua limitação.
+          </p>
+        </div>
+
+        <figure class="fp-figure" data-solo="incertezas" aria-labelledby="v2-cap">
+          <p class="fp-eyebrow">Figura 2 · Cobertura por dimensão de incerteza</p>
+          <div class="fp-radar">
+            <div class="fp-figure__scroll">
+              <svg viewBox="-70 -14 660 560" width="660" height="560" role="img"
+                aria-label="Radar hexagonal das seis dimensões de incerteza. O polígono da Pesquisa Operacional clássica é alto em aleatória e epistêmica e quase nulo em estrutural, semântica, de fronteira e de valores. O polígono do framework proposto é mais equilibrado entre as seis.">
+                <polygon points="260.0,198.8 313.0,229.4 313.0,290.6 260.0,321.2 207.0,290.6 207.0,229.4" class="fp-radar__ring" />
+                <polygon points="260.0,139.4 364.4,199.7 364.4,320.3 260.0,380.6 155.6,320.3 155.6,199.7" class="fp-radar__ring" />
+                <polygon points="260.0,80.0 415.9,170.0 415.9,350.0 260.0,440.0 104.1,350.0 104.1,170.0" class="fp-radar__ring" />
+                <line x1="260" y1="260" x2="260.0" y2="80.0" class="fp-radar__spoke" />
+                <line x1="260" y1="260" x2="415.9" y2="170.0" class="fp-radar__spoke" />
+                <line x1="260" y1="260" x2="415.9" y2="350.0" class="fp-radar__spoke" />
+                <line x1="260" y1="260" x2="260.0" y2="440.0" class="fp-radar__spoke" />
+                <line x1="260" y1="260" x2="104.1" y2="350.0" class="fp-radar__spoke" />
+                <line x1="260" y1="260" x2="104.1" y2="170.0" class="fp-radar__spoke" />
+                <polygon points="260.0,116.0 378.5,191.6 362.9,319.4 260.0,371.6 147.8,324.8 174.3,210.5" class="fp-radar__poly--framework" />
+                <polygon points="260.0,89.0 372.2,195.2 306.8,287.0 260.0,287.0 244.4,269.0 244.4,251.0" class="fp-radar__poly--classica" />
+                <circle cx="260.0" cy="89.0" r="4" fill="#58a6ff" data-radar-vertice="dim-aleatoria" />
+                <circle cx="372.2" cy="195.2" r="4" fill="#58a6ff" data-radar-vertice="dim-epistemica" />
+                <circle cx="306.8" cy="287.0" r="4" fill="#58a6ff" data-radar-vertice="dim-estrutural" />
+                <circle cx="260.0" cy="287.0" r="4" fill="#58a6ff" data-radar-vertice="dim-semantica" />
+                <circle cx="244.4" cy="269.0" r="4" fill="#58a6ff" data-radar-vertice="dim-fronteira" />
+                <circle cx="244.4" cy="251.0" r="4" fill="#58a6ff" data-radar-vertice="dim-valores" />
+                <text x="260.0" y="50.6" text-anchor="middle" class="fp-axis-text">Aleatória</text>
+                <text x="436.1" y="162.3" text-anchor="start" class="fp-axis-text">Epistêmica</text>
+                <text x="436.1" y="365.7" text-anchor="start" class="fp-axis-text">Estrutural</text>
+                <text x="260.0" y="479.4" text-anchor="middle" class="fp-axis-text">Semântica</text>
+                <text x="83.9" y="365.7" text-anchor="end" class="fp-axis-text">De fronteira</text>
+                <text x="83.9" y="162.3" text-anchor="end" class="fp-axis-text">De valores</text>
+              </svg>
+            </div>
+
+            <div>
+              <ul class="fp-dims">
+                <li><a class="fp-dim" href="#dim-aleatoria" data-solo-chip>Aleatória</a></li>
+                <li><a class="fp-dim" href="#dim-epistemica" data-solo-chip>Epistêmica</a></li>
+                <li><a class="fp-dim" href="#dim-estrutural" data-solo-chip>Estrutural</a></li>
+                <li><a class="fp-dim" href="#dim-semantica" data-solo-chip>Semântica</a></li>
+                <li><a class="fp-dim" href="#dim-fronteira" data-solo-chip>De fronteira</a></li>
+                <li><a class="fp-dim" href="#dim-valores" data-solo-chip>De valores</a></li>
+              </ul>
+
+              <div class="fp-dimpanel" id="dim-aleatoria" data-solo-painel aria-label="Incerteza aleatória">
+                <p class="fp-eyebrow">Dimensão 1 <span class="fp-selo fp-selo--sintese">Estabelecida</span></p>
+                <h3>Aleatória</h3>
+                <p>O que varia mesmo quando o modelo está correto?</p>
+                <dl>
+                  <dt>Métrica candidata</dt><dd>Entropia, variância, intervalos.</dd>
+                  <dt>Limitação</dt><dd>Requer uma distribuição apropriada — que já pressupõe o modelo.</dd>
+                </dl>
+              </div>
+
+              <div class="fp-dimpanel" id="dim-epistemica" data-solo-painel aria-label="Incerteza epistêmica">
+                <p class="fp-eyebrow">Dimensão 2 <span class="fp-selo fp-selo--sintese">Estabelecida</span></p>
+                <h3>Epistêmica</h3>
+                <p>O que ainda não sabemos sobre o fenômeno?</p>
+                <dl>
+                  <dt>Métrica candidata</dt><dd><i>Belief-plausibility</i>, conjuntos credais.</dd>
+                  <dt>Limitação</dt><dd>Depende da atribuição inicial de crenças.</dd>
+                </dl>
+              </div>
+
+              <div class="fp-dimpanel" id="dim-estrutural" data-solo-painel aria-label="Incerteza estrutural">
+                <p class="fp-eyebrow">Dimensão 3 <span class="fp-selo fp-selo--naovalidado">Promissora</span></p>
+                <h3>Estrutural</h3>
+                <p>Quais relações, variáveis ou mecanismos causais podem estar ausentes do modelo?</p>
+                <dl>
+                  <dt>Métrica candidata</dt><dd><i>Model averaging</i>; divergência entre modelos causais concorrentes.</dd>
+                  <dt>Limitação</dt><dd>Custo computacional elevado — simulações aninhadas de Monte Carlo.</dd>
+                </dl>
+              </div>
+
+              <div class="fp-dimpanel" id="dim-semantica" data-solo-painel aria-label="Incerteza semântica">
+                <p class="fp-eyebrow">Dimensão 4 <span class="fp-selo fp-selo--naovalidado">Promissora</span></p>
+                <h3>Semântica</h3>
+                <p>O que os conceitos e objetivos, tal como enunciados, realmente significam?</p>
+                <dl>
+                  <dt>Métrica candidata</dt><dd>Taxa de interpretações divergentes; acordo interavaliadores.</dd>
+                  <dt>Limitação</dt><dd>Acordo pode refletir conformidade, não convergência de entendimento.</dd>
+                </dl>
+              </div>
+
+              <div class="fp-dimpanel" id="dim-fronteira" data-solo-painel aria-label="Incerteza de fronteira">
+                <p class="fp-eyebrow">Dimensão 5 <span class="fp-selo fp-selo--proposta">Proposta</span></p>
+                <h3>De fronteira</h3>
+                <p>O escopo do sistema e os stakeholders identificados são adequados?</p>
+                <dl>
+                  <dt>Métrica candidata</dt><dd>Omissão <i>ex post</i> de stakeholders, objetivos ou variáveis.</dd>
+                  <dt>Limitação</dt><dd>Exige observação posterior à decisão: só se mede o que já custou.</dd>
+                </dl>
+              </div>
+
+              <div class="fp-dimpanel" id="dim-valores" data-solo-painel aria-label="Incerteza de valores">
+                <p class="fp-eyebrow">Dimensão 6 <span class="fp-selo fp-selo--naovalidado">Promissora</span></p>
+                <h3>De valores</h3>
+                <p>Quais objetivos, preferências e critérios devem governar a decisão?</p>
+                <dl>
+                  <dt>Métrica candidata</dt><dd>Distância entre <i>rankings</i> de preferências (correlação de Kendall).</dd>
+                  <dt>Limitação</dt><dd>Não resolve incomensurabilidade genuína entre valores.</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <ul class="fp-legend">
+            <li class="is-benef"><i></i> Pesquisa Operacional clássica</li>
+            <li class="is-humano"><i></i> Framework proposto</li>
+          </ul>
+          <p class="fp-vh">
+            Descrição longa da Figura 2. Numa escala de zero a um, a Pesquisa Operacional clássica
+            cobre 0,95 da incerteza aleatória e 0,72 da epistêmica, mas apenas 0,30 da estrutural,
+            0,15 da semântica, 0,10 da de fronteira e 0,10 da de valores. O framework proposto
+            distribui a cobertura de forma mais uniforme: 0,80 aleatória, 0,76 epistêmica, 0,66
+            estrutural, 0,62 semântica, 0,72 de fronteira e 0,55 de valores.
+          </p>
+          <figcaption id="v2-cap">
+            A área entre os dois polígonos é a lacuna: quatro das seis dimensões não são endereçadas por
+            probabilidade. Selecione uma dimensão para ver a pergunta que a define, a métrica candidata e
+            a limitação. Sem JavaScript, as seis descrições aparecem empilhadas.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================ V3 · ESTADOS ============================ -->
+    <section id="estados" class="fp-section" aria-labelledby="estados-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Framework proposto <span class="fp-selo fp-selo--proposta">Proposta original</span></p>
+        <h2 id="estados-titulo" class="fp-title fp-title--underline">Do desagregado à decisão: seis estados</h2>
+        <div class="fp-prose">
+          <p>
+            O estado da formulação num instante <var>t</var> é uma tupla de doze componentes — frames,
+            objetivos, valores, alternativas, restrições, evidências, hipóteses, modelos, incertezas,
+            rastreabilidade, legitimidade e proveniência. Uma investigação transforma esse estado, e a
+            transformação <strong>não é monotônica</strong>: uma entrevista pode esclarecer objetivos e,
+            no mesmo movimento, expor um conflito de valores que estava oculto.
+          </p>
+        </div>
+
+        <div class="fp-formula" role="group" aria-label="Estado de conhecimento e sua transformação">
+          <p class="fp-formula__eq">K<sub>t</sub> = ⟨ F, O, V, A, C, E, H, M, U, R, L, P ⟩<sub>t</sub>
+            &nbsp;&nbsp;→&nbsp;&nbsp; K<sub>t+1</sub> = T( K<sub>t</sub>, a<sub>t</sub>, y<sub>t</sub> )</p>
+          <p class="fp-formula__leg">
+            Uma ação de investigação <var>a</var> produz uma observação <var>y</var> e leva o estado de
+            conhecimento <var>K</var> ao estado seguinte. O operador <var>T</var> é não determinístico e
+            não monotônico: pode reduzir a incerteza numa dimensão e aumentá-la em outra.
+          </p>
+        </div>
+
+        <figure class="fp-figure" data-solo="estados" aria-labelledby="v3-cap">
+          <p class="fp-eyebrow">Figura 3 · Estados do conhecimento e o portão de qualidade</p>
+          <ul class="fp-estados">
+            <li style="flex:1 1 140px"><a class="fp-estado" href="#estado-s0" data-solo-chip><b>S₀</b> situação desagregada</a></li>
+            <li style="flex:1 1 140px"><a class="fp-estado" href="#estado-s1" data-solo-chip><b>S₁</b> enquadramentos concorrentes</a></li>
+            <li style="flex:1 1 140px"><a class="fp-estado" href="#estado-s2" data-solo-chip><b>S₂</b> representação estruturada</a></li>
+            <li style="flex:1 1 140px"><a class="fp-estado" href="#estado-s3" data-solo-chip><b>S₃</b> modelo validado</a></li>
+            <li style="flex:1 1 140px"><a class="fp-estado" href="#estado-s4" data-solo-chip><b>S₄</b> prontidão restrita</a></li>
+            <li style="flex:1 1 140px"><a class="fp-estado" href="#estado-s5" data-solo-chip><b>S₅</b> decisão e aprendizagem</a></li>
+          </ul>
+
+          <p class="fp-gate">
+            <strong>Portão mínimo antes de derivar qualquer solução (entre S₃ e S₄):</strong>
+            frame explícito · objetivos identificados · restrições classificadas · incertezas registradas ·
+            evidências citadas · desacordos visíveis · decisão explícita sobre o que ficou fora do escopo.
+          </p>
+
+          <div class="fp-dimpanel" id="estado-s0" data-solo-painel aria-label="Estado S zero">
+            <p class="fp-eyebrow">Estado 0</p>
+            <h3>S₀ · Situação desagregada</h3>
+            <p>Descrições fragmentadas, vocabulário inconsistente, objetivos implícitos, stakeholders não
+              identificados, causalidade incerta.</p>
+            <dl><dt>Para sair daqui</dt><dd>Nomear os atores e separar o que é observação do que é interpretação.</dd></dl>
+          </div>
+          <div class="fp-dimpanel" id="estado-s1" data-solo-painel aria-label="Estado S um">
+            <p class="fp-eyebrow">Estado 1</p>
+            <h3>S₁ · Enquadramentos concorrentes</h3>
+            <p>Múltiplos <i>frames</i> explícitos, conflitos de fronteira identificados, objetivos e valores
+              já separados analiticamente, divergências documentadas.</p>
+            <dl><dt>Para sair daqui</dt><dd>Registrar a divergência de enquadramento em vez de dissolvê-la cedo demais.</dd></dl>
+          </div>
+          <div class="fp-dimpanel" id="estado-s2" data-solo-painel aria-label="Estado S dois">
+            <p class="fp-eyebrow">Estado 2</p>
+            <h3>S₂ · Representação estruturada</h3>
+            <p>Entidades e relações principais identificadas, objetivos operacionalizados, alternativas
+              enumeradas, evidências rastreadas.</p>
+            <dl><dt>Para sair daqui</dt><dd>Cada afirmação carrega status epistêmico: fato, evidência, consenso, hipótese, inferência, opinião, valor ou premissa.</dd></dl>
+          </div>
+          <div class="fp-dimpanel" id="estado-s3" data-solo-painel aria-label="Estado S três">
+            <p class="fp-eyebrow">Estado 3</p>
+            <h3>S₃ · Modelo validado</h3>
+            <p>Hipóteses testáveis, modelos causais concorrentes explicitados, análise de consistência
+              realizada, incerteza quantificada ou ao menos qualificada.</p>
+            <dl><dt>Para sair daqui</dt><dd>Passar pelo portão de qualidade — é aqui que o <i>solutioneering</i> costuma entrar sem ser convidado.</dd></dl>
+          </div>
+          <div class="fp-dimpanel" id="estado-s4" data-solo-painel aria-label="Estado S quatro">
+            <p class="fp-eyebrow">Estado 4</p>
+            <h3>S₄ · Prontidão restrita</h3>
+            <p>Decisão robusta em cenários plausíveis, riscos residuais explícitos, legitimidade mínima
+              alcançada, custo de investigação adicional já superior ao benefício esperado.</p>
+            <dl><dt>Para sair daqui</dt><dd>Declarar a parada — e registrar a razão específica de ter parado ali.</dd></dl>
+          </div>
+          <div class="fp-dimpanel" id="estado-s5" data-solo-painel aria-label="Estado S cinco">
+            <p class="fp-eyebrow">Estado 5</p>
+            <h3>S₅ · Decisão e aprendizagem</h3>
+            <p>Decisão registrada, premissas preservadas, <i>outcomes</i> monitorados, discrepâncias
+              retroalimentando o modelo.</p>
+            <dl><dt>O retorno</dt><dd>Daqui sai a regressão da formulação: o mundo muda, a representação envelhece e o ciclo recomeça em S₀ ou S₁ — mudança legítima e degradação genuína precisam ser distinguidas.</dd></dl>
+          </div>
+
+          <figcaption id="v3-cap">
+            Os estados não formam uma cascata: <i>framing</i>, objetivos, restrições e evidências evoluem
+            em paralelo, e há setas de retorno — de S₄ para S₁ quando um enquadramento novo aparece, e de
+            S₅ para S₀ quando a formulação regride. Modelo proposto pelo artigo, ainda não validado
+            contra desfechos decisórios reais.
+          </figcaption>
+        </figure>
+
+        <div class="fp-grid fp-grid--2" style="margin-top:1.5rem">
+          <div class="fp-card">
+            <h3>Combinação (⊗)</h3>
+            <p class="fp-muted">Funde nova evidência à base anterior. Quando o resultado é uma contradição
+              irreconciliável, isso é sinal de revisão explícita — não de descarte silencioso.</p>
+          </div>
+          <div class="fp-card">
+            <h3>Focalização (↓)</h3>
+            <p class="fp-muted">Extrai o conhecimento relevante para o domínio da decisão e descarta o
+              marginal. Formaliza o fechamento de fronteiras de atenção: sempre uma escolha, com custo,
+              nunca uma descoberta neutra.</p>
+          </div>
+        </div>
+
+        <p class="fp-small" style="margin-top:1.2rem">
+          O movimento S₀ → S₂ é o mesmo de tornar explícito um sistema legado que ninguém documentou —
+          ver <a href="./proposta-engenharia-reversa.html">Engenharia Reversa assistida por IA</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================= V4 · PARADA ============================ -->
+    <section id="parada" class="fp-section" aria-labelledby="parada-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">A regra de parada <span class="fp-selo fp-selo--naovalidado">Não validado</span></p>
+        <h2 id="parada-titulo" class="fp-title fp-title--underline">Quando parar de investigar</h2>
+        <div class="fp-prose">
+          <p>
+            A versão ingênua da regra — investigar enquanto o valor esperado da informação exceder o
+            custo — ignora duas coisas que decidem o resultado na prática: o <strong>custo do
+            atraso</strong> e o valor específico de investigações que não reduzem incerteza
+            paramétrica, mas descobrem um enquadramento inteiramente novo.
+          </p>
+        </div>
+
+        <div class="fp-formula" role="group" aria-label="Regra de parada">
+          <p class="fp-formula__eq">EVSI<sub>próx</sub> + DUG<sub>próx</sub> + V<sub>frame,próx</sub>
+            &nbsp;&lt;&nbsp; C<sub>próx</sub> + C<sub>atraso</sub> + C<sub>sobrecarga</sub></p>
+          <p class="fp-formula__leg">
+            Pare quando o que a próxima investigação promete — valor da amostra de informação
+            (<a href="#g-evsi">EVSI</a>), ganho de utilidade decisória e chance de descobrir um
+            enquadramento novo — for menor que o que ela cobra: custo direto, custo de decidir mais
+            tarde e custo cognitivo da complexidade adicional.
+          </p>
+        </div>
+
+        <figure class="fp-figure" aria-labelledby="v4-cap">
+          <p class="fp-eyebrow">Figura 4 · Onde as curvas se cruzam</p>
+          <div class="fp-figure__scroll">
+            <!--
+              Os caminhos padrão desenhados aqui correspondem a λ = 0,4 e custo de atraso = 2,
+              os mesmos valores iniciais de src/js/formulacao/parada-model.js. Sem JavaScript a
+              figura é esta; com JavaScript, os sliders a recalculam.
+            -->
+            <svg viewBox="0 0 1120 420" width="1120" height="420" role="img" data-parada-svg
+              aria-label="Gráfico do benefício marginal decrescente da investigação contra o custo marginal crescente. As curvas se cruzam no ponto de parada, marcado por uma linha vertical.">
+              <defs>
+                <clipPath id="fp-parada-clip"><rect x="70" y="30" width="1010" height="320" /></clipPath>
+              </defs>
+              <rect x="70" y="30" width="404" height="320" class="fp-area--util" data-parada-util />
+              <rect x="474" y="30" width="606" height="320" class="fp-area--degrada" data-parada-degrada />
+
+              <g class="fp-grid-line">
+                <line x1="70" y1="270" x2="1080" y2="270" />
+                <line x1="70" y1="190" x2="1080" y2="190" />
+                <line x1="70" y1="110" x2="1080" y2="110" />
+              </g>
+              <line x1="70" y1="350" x2="1080" y2="350" class="fp-axis" />
+              <line x1="70" y1="30" x2="70" y2="350" class="fp-axis" />
+
+              <g clip-path="url(#fp-parada-clip)">
+                <path d="M70.0,313.4 L120.5,310.8 L171.0,307.9 L221.5,304.6 L272.0,301.0 L322.5,297.2 L373.0,293.2 L423.5,289.0 L474.0,284.5 L524.5,279.9 L575.0,275.1 L625.5,270.0 L676.0,264.8 L726.5,259.5 L777.0,253.9 L827.5,248.2 L878.0,242.4 L928.5,236.3 L979.0,230.1 L1029.5,223.8 L1080.0,217.3" class="fp-line fp-line--degrada" data-parada-total />
+                <path d="M70.0,313.4 L120.5,311.1 L171.0,308.9 L221.5,306.6 L272.0,304.3 L322.5,302.0 L373.0,299.7 L423.5,297.4 L474.0,295.1 L524.5,292.9 L575.0,290.6 L625.5,288.3 L676.0,286.0 L726.5,283.7 L777.0,281.4 L827.5,279.1 L878.0,276.9 L928.5,274.6 L979.0,272.3 L1029.5,270.0 L1080.0,267.7" class="fp-line fp-line--custo" data-parada-custo />
+                <path d="M70.0,52.9 L120.5,114.0 L171.0,160.2 L221.5,195.6 L272.0,223.3 L322.5,245.1 L373.0,262.7 L423.5,277.0 L474.0,288.6 L524.5,298.3 L575.0,306.3 L625.5,313.0 L676.0,318.6 L726.5,323.4 L777.0,327.4 L827.5,330.8 L878.0,333.6 L928.5,336.1 L979.0,338.2 L1029.5,339.9 L1080.0,341.4" class="fp-line fp-line--benef" data-parada-benef />
+              </g>
+
+              <line x1="474" y1="30" x2="474" y2="350" class="fp-stop" data-parada-stop />
+              <text x="482" y="48" class="fp-stop-text" data-parada-rotulo>PARE AQUI · 4,0</text>
+
+              <g class="fp-axis-text">
+                <text x="70" y="372">0</text>
+                <text x="272" y="372">2</text>
+                <text x="474" y="372">4</text>
+                <text x="676" y="372">6</text>
+                <text x="878" y="372">8</text>
+                <text x="1070" y="372">10</text>
+                <text x="70" y="392">rodadas de investigação →</text>
+                <text x="30" y="36">valor</text>
+              </g>
+            </svg>
+          </div>
+
+          <ul class="fp-legend">
+            <li class="is-benef"><i></i> Benefício marginal (EVSI′ + valor de novo enquadramento)</li>
+            <li class="is-custo"><i></i> Custo marginal (direto + atraso)</li>
+            <li class="is-degrada"><i></i> Custo total com carga cognitiva (λ)</li>
+            <li class="is-ok"><i></i> Ponto de parada</li>
+          </ul>
+
+          <div class="fp-controls">
+            <div class="fp-control">
+              <label for="fp-in-lambda">λ — penalidade de hiper-resolução:
+                <output data-out-lambda for="fp-in-lambda">0,4</output>
+              </label>
+              <input class="fp-range" type="range" id="fp-in-lambda" name="lambda"
+                min="0" max="1.5" step="0.1" value="0.4" disabled
+                aria-valuetext="lambda 0,4 — parada na rodada 4,0" />
+            </div>
+            <div class="fp-control">
+              <label for="fp-in-urgencia">Custo de atraso (urgência da decisão):
+                <output data-out-urgencia for="fp-in-urgencia">2,0</output>
+              </label>
+              <input class="fp-range" type="range" id="fp-in-urgencia" name="urgencia"
+                min="0" max="6" step="0.5" value="2" disabled
+                aria-valuetext="custo de atraso 2,0 — parada na rodada 4,0" />
+            </div>
+          </div>
+
+          <dl class="fp-readout">
+            <div>
+              <dt>Ponto de parada</dt>
+              <dd data-parada-out-t aria-live="polite">4,0 rodadas</dd>
+            </div>
+            <div>
+              <dt>Benefício líquido acumulado</dt>
+              <dd data-parada-out-acum aria-live="polite">164<small>unidades didáticas</small></dd>
+            </div>
+            <div>
+              <dt>Regime</dt>
+              <dd style="font-size:0.95rem" data-parada-out-regime aria-live="polite">investigação curta — parar antes do detalhe</dd>
+            </div>
+          </dl>
+
+          <p class="fp-vh">
+            Descrição longa da Figura 4. Três séries ao longo de dez rodadas de investigação. O
+            benefício marginal começa em 130 unidades na rodada zero e cai continuamente: 55 na
+            rodada 2, 27 na rodada 4, 15 na rodada 6 e 8 na rodada 10. O custo marginal direto mais
+            atraso começa em 16 e sobe em linha reta até 36 na rodada 10. O custo total, somando a
+            carga cognitiva governada por lambda, começa em 16 e chega a 53 na rodada 10, com
+            crescimento acelerado. As curvas se cruzam na rodada 4, que é o ponto de parada do
+            cenário padrão: antes dela investigar compensa, depois dela não.
+          </p>
+          <figcaption id="v4-cap">
+            <strong>Curvas ilustrativas, com parâmetros escolhidos para exposição.</strong> O artigo
+            propõe λ como variável experimental a ser calibrada em estudo controlado — não como
+            constante conhecida. O que a figura demonstra não é um valor, é uma forma: o ponto de parada
+            se move com a urgência e com a carga cognitiva, logo não pode ser universal.
+            Os controles exigem JavaScript; sem ele, a figura mostra o cenário padrão e a tabela abaixo
+            traz os números.
+          </figcaption>
+
+          <details class="fp-details">
+            <summary>Ver os números do cenário padrão (λ = 0,4 · custo de atraso = 2)</summary>
+            <div class="fp-tabela-wrap">
+              <table class="fp-tabela">
+                <caption>Valor marginal por rodada de investigação, em unidades didáticas.</caption>
+                <thead>
+                  <tr><th scope="col">Rodada</th><th scope="col">Benefício</th><th scope="col">Custo total</th><th scope="col">Líquido</th></tr>
+                </thead>
+                <tbody><tr><th scope="row">0</th><td>130,0</td><td>16,0</td><td>114,0</td></tr>
+                  <tr><th scope="row">1</th><td>83,0</td><td>18,4</td><td>64,6</td></tr>
+                  <tr><th scope="row">2</th><td>55,5</td><td>21,4</td><td>34,0</td></tr>
+                  <tr><th scope="row">3</th><td>38,2</td><td>24,8</td><td>13,3</td></tr>
+                  <tr class="fp-tabela__stop"><th scope="row">4</th><td>26,8</td><td>28,6</td><td>-1,8</td></tr>
+                  <tr><th scope="row">5</th><td>19,1</td><td>32,8</td><td>-13,7</td></tr>
+                  <tr><th scope="row">6</th><td>13,7</td><td>37,3</td><td>-23,5</td></tr>
+                  <tr><th scope="row">7</th><td>9,9</td><td>42,0</td><td>-32,1</td></tr>
+                  <tr><th scope="row">8</th><td>7,2</td><td>47,1</td><td>-39,9</td></tr></tbody>
+              </table>
+            </div>
+          </details>
+        </figure>
+
+        <div class="fp-grid fp-grid--2" style="margin-top:1.5rem">
+          <div class="fp-card fp-card--ok">
+            <h3>Suficiência decisional</h3>
+            <p class="fp-muted">Sete condições: objetivos críticos explícitos; alternativas principais
+              identificáveis; restrições relevantes representadas; incertezas de alto impacto tratadas;
+              decisão robusta a variações plausíveis; perspectivas relevantes consideradas; e ganho
+              esperado de investigar mais já não compensando o custo.</p>
+          </div>
+          <div class="fp-card fp-card--humano">
+            <h3>Suficiência negociada <span class="fp-selo fp-selo--proposta">Proposta</span></h3>
+            <p class="fp-muted">Quando não existe regra de parada puramente matemática: os participantes
+              reconhecem suas perspectivas na representação, as divergências principais estão explícitas,
+              as consequências são compreensíveis e continuar investigando já não se justifica. Não é
+              consenso — é acordo provisório sobre o que será decidido, o que fica em aberto e quando
+              será revisto.</p>
+          </div>
+        </div>
+
+        <p class="fp-small" style="margin-top:1.2rem">
+          Uma restrição honesta do próprio aparato: <a href="#g-evsi">EVSI</a> só é calculável quando
+          alternativas, estados e função de utilidade já estão especificados — isto é, a partir de S₂.
+          Antes disso, a decisão de investigar se apoia em heurística qualitativa, não em cálculo exato.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================= V5 · HIPER-RESOLUÇÃO ======================= -->
+    <section id="hiper-resolucao" class="fp-section" aria-labelledby="hiper-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Evidência contrária <span class="fp-selo fp-selo--evidencia">Evidência</span></p>
+        <h2 id="hiper-titulo" class="fp-title fp-title--underline">O paradoxo da sobreinformação</h2>
+        <div class="fp-prose">
+          <p>
+            A hipótese forte de que "mais informação melhora a decisão" é rejeitada pela evidência.
+            No estudo clássico de Slovic (1974) com prognosticadores especializados, o aumento do número
+            de variáveis disponibilizadas estabilizava rapidamente a acurácia — enquanto a confiança
+            subjetiva dos julgadores continuava subindo. Peng et al., com medidas neurofisiológicas em
+            ambiente de compras <i>online</i>, encontraram efeito compatível: mais informação, mais tempo
+            de decisão, menos atenção por item e sinais de arrependimento.
+          </p>
+        </div>
+
+        <figure class="fp-figure" aria-labelledby="v5-cap">
+          <p class="fp-eyebrow">Figura 5 · Acurácia satura, confiança não</p>
+          <div class="fp-figure__scroll">
+            <svg viewBox="0 0 830 300" width="830" height="300" role="img"
+              aria-label="Duas curvas contra o número de variáveis disponibilizadas: a acurácia sobe e satura; a confiança segue subindo em linha reta e ultrapassa a acurácia. A área entre elas, depois do cruzamento, é a hiper-resolução.">
+              <line x1="60" y1="250" x2="680" y2="250" class="fp-axis" />
+              <line x1="60" y1="30" x2="60" y2="250" class="fp-axis" />
+              <path d="M458.6,89.9 L480.7,84.7 L502.9,79.5 L525.0,74.3 L547.1,69.1 L569.3,63.8 L591.4,58.6 L613.6,53.4 L635.7,48.2 L657.9,42.9 L680.0,37.7 L680.0,91.6 L657.9,91.6 L635.7,91.6 L613.6,91.6 L591.4,91.6 L569.3,91.6 L547.1,91.6 L525.0,91.6 L502.9,91.6 L480.7,91.6 L458.6,91.6 Z" class="fp-area--degrada" />
+              <path d="M60.0,166.4 L82.1,139.9 L104.3,122.8 L126.4,111.7 L148.6,104.6 L170.7,100.0 L192.9,97.0 L215.0,95.1 L237.1,93.9 L259.3,93.1 L281.4,92.5 L303.6,92.2 L325.7,92.0 L347.9,91.9 L370.0,91.8 L392.1,91.7 L414.3,91.7 L436.4,91.6 L458.6,91.6 L480.7,91.6 L502.9,91.6 L525.0,91.6 L547.1,91.6 L569.3,91.6 L591.4,91.6 L613.6,91.6 L635.7,91.6 L657.9,91.6 L680.0,91.6" class="fp-line fp-line--acuracia" data-draw />
+              <path d="M60.0,184.0 L82.1,178.8 L104.3,173.6 L126.4,168.3 L148.6,163.1 L170.7,157.9 L192.9,152.7 L215.0,147.4 L237.1,142.2 L259.3,137.0 L281.4,131.8 L303.6,126.5 L325.7,121.3 L347.9,116.1 L370.0,110.9 L392.1,105.6 L414.3,100.4 L436.4,95.2 L458.6,89.9 L480.7,84.7 L502.9,79.5 L525.0,74.3 L547.1,69.1 L569.3,63.8 L591.4,58.6 L613.6,53.4 L635.7,48.2 L657.9,42.9 L680.0,37.7" class="fp-line fp-line--confianca" data-draw />
+              <line x1="458.6" y1="30" x2="458.6" y2="250" class="fp-grid-line" />
+              <text x="450.6" y="26" text-anchor="end" class="fp-axis-text">daqui em diante, informação compra convicção</text>
+              <text x="690" y="96" class="fp-serie-label" fill="#58a6ff">acurácia</text>
+              <text x="690" y="41" class="fp-serie-label" fill="#f85149">confiança</text>
+              <g class="fp-axis-text">
+                <text x="60" y="272">5</text>
+                <text x="184" y="272">12</text>
+                <text x="308" y="272">19</text>
+                <text x="432" y="272">26</text>
+                <text x="556" y="272">33</text>
+                <text x="668" y="272">40</text>
+                <text x="60" y="292">variáveis disponibilizadas ao decisor →</text>
+              </g>
+            </svg>
+          </div>
+          <ul class="fp-legend">
+            <li class="is-benef"><i></i> Acurácia da previsão</li>
+            <li class="is-degrada"><i></i> Confiança subjetiva</li>
+          </ul>
+          <figcaption id="v5-cap">
+            Reprodução esquemática do achado de Slovic (1974); as curvas ilustram a forma do efeito, não
+            os valores originais. A área vermelha é o que o artigo chama de hiper-resolução: crescimento
+            de confiança sem crescimento correspondente de acurácia.
+          </figcaption>
+        </figure>
+
+        <div class="fp-formula" role="group" aria-label="Penalidade de hiper-resolução">
+          <p class="fp-formula__eq">λ<sub>t</sub> = λ₀ + λ₁ · max( 0 , ΔConf<sub>t</sub> / ΔAcc<sub>t</sub> − ρ ) + λ₂ X<sub>t</sub> + λ₃ B<sub>t</sub></p>
+          <p class="fp-formula__leg">
+            Quando a confiança cresce mais rápido que a acurácia acima da razão aceitável <var>ρ</var>, a
+            penalidade sobe; <var>X</var> é a complexidade marginal introduzida e <var>B</var> são
+            indicadores de viés detectados. A utilidade da próxima investigação passa a ser
+            EVSI(<var>a</var>) − C(<var>a</var>) − λ<sub>t</sub> · ΔX(<var>a</var>).
+          </p>
+        </div>
+
+        <p class="fp-small">
+          A formalização não prova que confiança e acurácia tenham relação linear, que a confiança possa
+          ser medida sem viés, nem que λ seja transferível entre domínios. O artigo é explícito: λ deve
+          começar como variável experimental e não ser incorporado a sistemas de apoio à decisão de alto
+          risco antes de validação. É a mesma disciplina do
+          <a href="./engenharia-confianca.html">Crash Silencioso</a>, aplicada ao processo decisório:
+          o perigo não é o erro barulhento, é a confiança sem lastro.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ V6 · MÉTRICAS =========================== -->
+    <section id="metricas" class="fp-section" aria-labelledby="metricas-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Medição <span class="fp-selo fp-selo--proposta">Proposta original</span></p>
+        <h2 id="metricas-titulo" class="fp-title fp-title--underline">Painel, não índice único</h2>
+        <div class="fp-prose">
+          <p>
+            É tentador reduzir a qualidade de uma formulação a um número. O artigo constrói esse número
+            — e depois argumenta contra ele: um índice composto esconde exatamente o <i>trade-off</i> que
+            interessa ao decisor. Uma formulação pode pontuar alto em completude e baixo em legitimidade,
+            e a soma ponderada apaga essa informação. A alternativa defensável é o painel, com portão
+            mínimo por dimensão.
+          </p>
+        </div>
+
+        <div class="fp-pfqi">
+          <span class="fp-pfqi__num" aria-hidden="true">PFQI 0,71</span>
+          <span class="fp-small">o número que esconde a informação que importa — mantido apenas como
+            resumo diagnóstico, nunca como corte de decisão</span>
+        </div>
+
+        <div class="fp-figure">
+          <div class="fp-tabela-wrap">
+            <table class="fp-tabela">
+              <caption>Figura 6 · As dez dimensões avaliadas, com métrica candidata, maturidade e limitação.</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Dimensão</th>
+                  <th scope="col">Métrica candidata</th>
+                  <th scope="col">Maturidade</th>
+                  <th scope="col">Limitação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Aleatória</th><td>Entropia, variância, intervalos</td>
+                  <td><span class="fp-maturidade" data-nivel="3"><i aria-hidden="true"></i>estabelecida</span></td>
+                  <td class="fp-small">Requer distribuição apropriada</td></tr>
+                <tr><th scope="row">Epistêmica</th><td><i>Belief-plausibility</i>, conjuntos credais</td>
+                  <td><span class="fp-maturidade" data-nivel="3"><i aria-hidden="true"></i>estabelecida</span></td>
+                  <td class="fp-small">Depende da atribuição inicial de crenças</td></tr>
+                <tr><th scope="row">Estrutural</th><td><i>Model averaging</i>, divergência entre modelos causais</td>
+                  <td><span class="fp-maturidade" data-nivel="2"><i aria-hidden="true"></i>promissora</span></td>
+                  <td class="fp-small">Custo computacional elevado</td></tr>
+                <tr><th scope="row">Semântica</th><td>Taxa de interpretações divergentes; acordo interavaliadores</td>
+                  <td><span class="fp-maturidade" data-nivel="2"><i aria-hidden="true"></i>promissora</span></td>
+                  <td class="fp-small">Acordo pode refletir conformidade, não verdade</td></tr>
+                <tr><th scope="row">De fronteira</th><td>Omissão <i>ex post</i> de stakeholders, objetivos ou variáveis</td>
+                  <td><span class="fp-maturidade" data-nivel="1"><i aria-hidden="true"></i>proposta</span></td>
+                  <td class="fp-small">Exige observação posterior à decisão</td></tr>
+                <tr><th scope="row">De valores</th><td>Distância entre <i>rankings</i> de preferências</td>
+                  <td><span class="fp-maturidade" data-nivel="2"><i aria-hidden="true"></i>promissora</span></td>
+                  <td class="fp-small">Não resolve incomensurabilidade genuína</td></tr>
+                <tr><th scope="row">Consistência</th><td>Violações lógicas entre objetivos e restrições</td>
+                  <td><span class="fp-maturidade" data-nivel="3"><i aria-hidden="true"></i>estabelecida</span></td>
+                  <td class="fp-small">Consistência não implica validade</td></tr>
+                <tr><th scope="row">Rastreabilidade</th><td>Cobertura de vínculos entre objetivos, evidências e decisões</td>
+                  <td><span class="fp-maturidade" data-nivel="2"><i aria-hidden="true"></i>moderada</span></td>
+                  <td class="fp-small">Pode incentivar documentação superficial</td></tr>
+                <tr><th scope="row">Legitimidade</th><td>Participação, contestabilidade, reconhecimento de perspectivas</td>
+                  <td><span class="fp-maturidade" data-nivel="1"><i aria-hidden="true"></i>qualitativa</span></td>
+                  <td class="fp-small">Difícil quantificar sem reduzir a votação</td></tr>
+                <tr><th scope="row">Validade ecológica</th><td>Acurácia de <i>outcomes</i> e estabilidade contextual</td>
+                  <td><span class="fp-maturidade" data-nivel="2"><i aria-hidden="true"></i>promissora</span></td>
+                  <td class="fp-small">Requer dados longitudinais</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="fp-small" style="margin-top:1.2rem">
+          O portão mínimo sugerido não agrega: exige consistência lógica integral e cobertura de
+          stakeholders acima de um limiar, deixando as demais dimensões visíveis lado a lado. Toda
+          métrica aqui está sujeita ao risco de Goodhart — vira alvo, deixa de medir — e por isso o
+          artigo exige indicadores adversariais junto de cada uma.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================== V7 · TRADIÇÕES =========================== -->
+    <section id="tradicoes" class="fp-section" aria-labelledby="tradicoes-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Estado da arte <span class="fp-selo fp-selo--sintese">Síntese</span></p>
+        <h2 id="tradicoes-titulo" class="fp-title fp-title--underline">Sete tradições, sete fronteiras</h2>
+        <div class="fp-prose">
+          <p>
+            A lacuna não é ausência de componentes: eles existem, maduros. É ausência de uma camada que
+            os ligue. Cada tradição opera num trecho do processo e termina onde a seguinte pressupõe que
+            o trabalho já foi feito — e ninguém cobre o último trecho, o da aprendizagem após a decisão.
+          </p>
+        </div>
+
+        <figure class="fp-figure" aria-labelledby="v7-cap">
+          <p class="fp-eyebrow">Figura 7 · Onde cada tradição começa e termina</p>
+          <div class="fp-figure__scroll"><svg viewBox="0 0 1120 426" width="1120" height="426" role="img" aria-label="Mapa de cobertura: cada tradição cobre apenas parte dos seis estágios do processo de formulação; o estágio de aprendizagem após a decisão não é coberto por nenhuma delas, e o framework proposto atravessa os seis.">
+  <rect x="936" y="46" width="138" height="344" class="fp-trad-gap" />
+  <text x="315" y="36" text-anchor="middle" class="fp-axis-text">Situação</text>
+  <line x1="246" y1="46" x2="246" y2="386" class="fp-grid-line" />
+  <text x="453" y="36" text-anchor="middle" class="fp-axis-text">Enquadramento</text>
+  <line x1="384" y1="46" x2="384" y2="386" class="fp-grid-line" />
+  <text x="591" y="36" text-anchor="middle" class="fp-axis-text">Estruturação</text>
+  <line x1="522" y1="46" x2="522" y2="386" class="fp-grid-line" />
+  <text x="729" y="36" text-anchor="middle" class="fp-axis-text">Modelagem</text>
+  <line x1="660" y1="46" x2="660" y2="386" class="fp-grid-line" />
+  <text x="867" y="36" text-anchor="middle" class="fp-axis-text">Decisão</text>
+  <line x1="798" y1="46" x2="798" y2="386" class="fp-grid-line" />
+  <text x="1005" y="36" text-anchor="middle" class="fp-axis-text">Aprendizagem</text>
+  <line x1="936" y1="46" x2="936" y2="386" class="fp-grid-line" />
+  <line x1="1074" y1="46" x2="1074" y2="386" class="fp-grid-line" />
+  <text x="236" y="96" text-anchor="end" class="fp-trad-text">Problem Structuring Methods</text>
+  <rect x="250" y="76" width="406" height="30" rx="6" class="fp-trad-bar"><title>Problem Structuring Methods: cobre situação, enquadramento e estruturação; termina no compromisso de ação</title></rect>
+  <text x="236" y="134" text-anchor="end" class="fp-trad-text">Decision Analysis</text>
+  <rect x="664" y="114" width="268" height="30" rx="6" class="fp-trad-bar"><title>Decision Analysis: cobre modelagem e decisão; pressupõe frame, alternativas e preferências já definidos</title></rect>
+  <text x="236" y="172" text-anchor="end" class="fp-trad-text">Teoria da Informação</text>
+  <rect x="664" y="152" width="130" height="30" rx="6" class="fp-trad-bar"><title>Teoria da Informação: cobre a modelagem da incerteza dentro de um modelo já especificado</title></rect>
+  <text x="236" y="210" text-anchor="end" class="fp-trad-text">Bayesian Decision Theory</text>
+  <rect x="664" y="190" width="268" height="30" rx="6" class="fp-trad-bar"><title>Bayesian Decision Theory: cobre modelagem e decisão; a incerteza sobre o próprio modelo fica de fora</title></rect>
+  <text x="236" y="248" text-anchor="end" class="fp-trad-text">Ciência Cognitiva</text>
+  <rect x="250" y="228" width="268" height="30" rx="6" class="fp-trad-bar"><title>Ciência Cognitiva: cobre situação e enquadramento; explica limites humanos, não prescreve processo</title></rect>
+  <text x="236" y="286" text-anchor="end" class="fp-trad-text">Eng. de Requisitos e Sistemas</text>
+  <rect x="526" y="266" width="406" height="30" rx="6" class="fp-trad-bar"><title>Eng. de Requisitos e Sistemas: cobre estruturação, modelagem e decisão; recebe o problema já delimitado</title></rect>
+  <text x="236" y="324" text-anchor="end" class="fp-trad-text">Knowledge Engineering</text>
+  <rect x="388" y="304" width="268" height="30" rx="6" class="fp-trad-bar"><title>Knowledge Engineering: cobre enquadramento e estruturação; organiza significado, não trade-offs</title></rect>
+  <text x="236" y="362" text-anchor="end" class="fp-trad-text">Framework proposto</text>
+  <rect x="250" y="342" width="820" height="30" rx="6" class="fp-trad-bar fp-trad-bar--framework"><title>Framework proposto: pretende atravessar os seis estágios — pretensão ainda não validada</title></rect>
+  <text x="1114" y="412" text-anchor="end" class="fp-axis-text" fill="#f85149">nenhuma tradição cobre este trecho</text>
+</svg></div>
+          <figcaption id="v7-cap">
+            Cada barra cobre os estágios em que a tradição opera. A faixa destacada à direita é o trecho
+            que nenhuma delas cobre; e nenhuma barra atravessa sozinha do enquadramento até a decisão
+            auditável. É essa junta que o framework proposto pretende ocupar — pretensão ainda não
+            validada.
+          </figcaption>
+        </figure>
+
+        <dl class="fp-deflist">
+          <dt>Problem Structuring Methods</dt>
+          <dd>Estruturam situações plurais por diálogo (SSM, SODA, Strategic Choice, Value-Focused
+            Thinking). Avaliados por consenso e aprendizagem percebida, raramente por desfechos
+            decisórios comparáveis entre casos.</dd>
+          <dt>Decision Analysis</dt>
+          <dd>Alternativas, estados, consequências, utilidade esperada, EVPI/EVSI/ENBS. Toma como dado o
+            espaço de alternativas, o modelo causal e a lista de objetivos.</dd>
+          <dt>Teoria da Informação</dt>
+          <dd>Entropia, informação mútua, descrição mínima; álgebras de informação dão o aparato formal
+            para combinar e focalizar conhecimento. Não mede a qualidade do enquadramento nem detecta a
+            variável que ninguém pensou em incluir.</dd>
+          <dt>Bayesian Decision Theory</dt>
+          <dd>Formular é desenhar um experimento; o ganho de informação esperado orienta o que investigar.
+            Mede redução de entropia de parâmetros dentro de um modelo já especificado — a incerteza
+            sobre o próprio modelo permanece a fronteira mais cara.</dd>
+          <dt>Ciência Cognitiva</dt>
+          <dd>Fronteiras de atenção (Simon), quadros mentais (Klein), forrageamento de informação
+            (Pirolli), descolamento entre confiança e acurácia (Kahneman, Slovic). Explica por que a
+            parada é necessária — e avisa que o modelador nunca é observador neutro.</dd>
+          <dt>Engenharia de Requisitos e de Sistemas</dt>
+          <dd>Completude, consistência, verificabilidade, rastreabilidade (ISO/IEC/IEEE 29148); processos
+            de missão, arquitetura e validação. Recebe o problema já delimitado: qualidade documental não
+            equivale a qualidade decisória.</dd>
+          <dt>Knowledge Engineering</dt>
+          <dd>Ontologias e grafos tornam a formulação auditável, com pressuposto de mundo aberto — ausência
+            de afirmação é desconhecimento, não negação. Organiza significado, mas não pondera preferências
+            nem estabelece autoridade decisória.</dd>
+        </dl>
+
+        <details class="fp-details">
+          <summary>Ver a matriz completa da literatura (12 trabalhos, contribuição e limitação)</summary>
+          <div class="fp-tabela-wrap">
+            <table class="fp-tabela">
+              <caption>Síntese da literatura mais diretamente relacionada à hipótese central.</caption>
+              <thead><tr><th scope="col">Autores</th><th scope="col">Contribuição</th><th scope="col">Limitação</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Simon (1973)</th><td>Problemas mal estruturados tratáveis por fechamento de fronteiras cognitivas</td><td>Orientado a quebra-cabeças formais, não a decisões sociotécnicas</td></tr>
+                <tr><th scope="row">Checkland (2000); Eden &amp; Ackermann (2001)</th><td>Estruturação participativa de situações plurais</td><td>Recusa deliberada de formalização matemática</td></tr>
+                <tr><th scope="row">Montibeller &amp; Franco (2010)</th><td>Iteração, diálogo e riscos de estruturação prematura</td><td>Estudo de caso único; não valida métricas nem efeito causal</td></tr>
+                <tr><th scope="row">Cinelli et al. (2020)</th><td>Taxonomia do processo de MCDA</td><td>Taxonomia, não teoria de estados epistêmicos</td></tr>
+                <tr><th scope="row">Rothery et al. (2020); Keisler et al. (2014)</th><td>Boas práticas de EVPI/EVPPI/EVSI/ENBS</td><td>Condicional à especificação do modelo, priors e alternativas</td></tr>
+                <tr><th scope="row">Montgomery et al. (2022)</th><td>Mapeamento sistemático de atributos de qualidade de requisitos</td><td>Qualidade do requisito não equivale a qualidade decisória</td></tr>
+                <tr><th scope="row">Russell &amp; Wefald (1991)</th><td>Metaraciocínio: valor da computação e parada ótima</td><td>Depende de utilidade marginal calculável a priori</td></tr>
+                <tr><th scope="row">Gettinger et al.</th><td>Efeito da representação no processo decisório</td><td>Restrito à representação visual</td></tr>
+                <tr><th scope="row">Peng et al.</th><td>Sobrecarga informacional reduz atenção e eleva arrependimento</td><td>Domínio transacional; mede processo, não acerto normativo</td></tr>
+                <tr><th scope="row">Slovic (1974)</th><td>Descolamento entre acurácia e confiança à medida que a informação cresce</td><td>Domínio específico de prognóstico especializado</td></tr>
+                <tr><th scope="row">Hoppe (2018/2024)</th><td>Regras práticas de estruturação; questiona a reificação de <i>wickedness</i></td><td>Ainda sem métrica geral comparável</td></tr>
+                <tr><th scope="row">Browne &amp; Pitts (2004)</th><td>Regras cognitivas de parada na busca de informação</td><td>Busca online; não necessariamente decisões complexas</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================== LIMITES ============================== -->
+    <section id="limites" class="fp-section" aria-labelledby="limites-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Evidências contrárias <span class="fp-selo fp-selo--sintese">Síntese</span></p>
+        <h2 id="limites-titulo" class="fp-title fp-title--underline">Onde isto não se aplica</h2>
+        <div class="fp-prose">
+          <p>
+            Em problemas sociais e de planejamento, a própria formulação é o problema: não há critério
+            unívoco de parada porque os atores divergem sobre <em>quais consequências contam</em>, não
+            apenas sobre fatos. Reduzir incerteza factual não resolve um desacordo normativo — e forçar a
+            matematização de valores incomensuráveis pode alienar as partes, dando aparência de
+            objetividade a uma escolha que é normativa. A formulação defensável precisa nomear o estado
+            "desacordo normativo não resolvido" sem tratá-lo como falha de engenharia.
+          </p>
+        </div>
+
+        <p class="fp-eyebrow" style="margin-top:1.5rem">Cinco domínios de inaplicabilidade</p>
+        <div class="fp-grid fp-grid--3">
+          <div class="fp-card fp-card--custo"><h3>Problemas rotineiros</h3><p class="fp-muted">Bem definidos: formalizar gera burocracia sem benefício.</p></div>
+          <div class="fp-card fp-card--custo"><h3>Crises táticas</h3><p class="fp-muted">O tempo disponível é menor que o tempo de modelar; a intuição especializada tende a vencer.</p></div>
+          <div class="fp-card fp-card--custo"><h3>Ambientes caóticos</h3><p class="fp-muted">As regras mudam mais rápido do que o artefato de formulação pode ser atualizado.</p></div>
+          <div class="fp-card fp-card--custo"><h3>Conflitos políticos profundos</h3><p class="fp-muted">O problema central é de poder e reconhecimento, não de conhecimento.</p></div>
+          <div class="fp-card fp-card--custo"><h3>Urgência extrema</h3><p class="fp-muted">O custo do atraso domina qualquer valor esperado de informação adicional.</p></div>
+        </div>
+
+        <p class="fp-eyebrow" style="margin-top:2rem">Quatro críticas filosóficas não neutralizadas</p>
+        <div class="fp-grid fp-grid--2">
+          <div class="fp-card fp-card--degrada"><h3>Reificação</h3><p class="fp-muted">Chamar de "engenharia" sugere um objeto pronto, separável dos atores e instituições que o constituem. O vocabulário empurra nessa direção; usá-lo exige consciência disso.</p></div>
+          <div class="fp-card fp-card--degrada"><h3>Risco de Goodhart</h3><p class="fp-muted">Métrica adotada como alvo deixa de medir: completude vira itens irrelevantes; consenso vira silenciamento; confiança vira persuasão; estabilidade vira rigidez.</p></div>
+          <div class="fp-card fp-card--degrada"><h3>Incomensurabilidade</h3><p class="fp-muted">Segurança contra autonomia, eficiência contra equidade: divergências que podem não admitir agregação numérica legítima.</p></div>
+          <div class="fp-card fp-card--degrada"><h3>Viés na elicitação</h3><p class="fp-muted">A ordem das perguntas e a escolha de quem é entrevistado primeiro moldam o resultado. O modelador nunca é observador neutro.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== FALSEABILIDADE =========================== -->
+    <section id="falseabilidade" class="fp-section" aria-labelledby="false-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Programa empírico <span class="fp-selo fp-selo--naovalidado">Não validado</span></p>
+        <h2 id="false-titulo" class="fp-title fp-title--underline">Como refutar esta hipótese</h2>
+        <div class="fp-prose">
+          <p>
+            Um framework que não diz como pode ser derrubado não é um programa de pesquisa — é uma
+            preferência. A hipótese central será considerada enfraquecida se, em estudos controlados e
+            pré-registrados, qualquer um dos oito resultados abaixo for observado.
+          </p>
+        </div>
+
+        <div class="fp-grid fp-grid--2" style="margin-top:1.5rem">
+          <div class="fp-kill"><span class="fp-kill__n">01</span><p>A formulação estruturada apenas igualar métodos <i>ad hoc</i> em qualidade decisória, depois de equalizar tempo e treinamento.</p></div>
+          <div class="fp-kill"><span class="fp-kill__n">02</span><p>O processo aumentar custo e tempo sem melhoria decisória compensatória.</p></div>
+          <div class="fp-kill"><span class="fp-kill__n">03</span><p>Ganho de confiança subjetiva não vier acompanhado de ganho em calibração ou desempenho real.</p></div>
+          <div class="fp-kill"><span class="fp-kill__n">04</span><p>Os efeitos desaparecerem sob replicação em múltiplos domínios heterogêneos.</p></div>
+          <div class="fp-kill"><span class="fp-kill__n">05</span><p>A intervenção aumentar exclusão de stakeholders, fechamento prematuro do enquadramento ou sobrecarga cognitiva.</p></div>
+          <div class="fp-kill"><span class="fp-kill__n">06</span><p>Um protocolo mínimo, sem o aparato formal, produzir resultados estatisticamente indistinguíveis.</p></div>
+          <div class="fp-kill"><span class="fp-kill__n">07</span><p>Estimar validade ecológica ou incerteza estrutural custar mais recursos do que o risco que pretende mitigar.</p></div>
+          <div class="fp-kill"><span class="fp-kill__n">08</span><p>A formalização reduzir contestabilidade ou produzir aceitação superficial sem representar os grupos afetados.</p></div>
+        </div>
+
+        <p class="fp-small" style="margin-top:1.2rem">
+          A sustentação forte exigiria o contrário: efeito replicado, com tamanho relevante e intervalo de
+          confiança informado, em pelo menos três domínios heterogêneos, contra controle ativo e prática
+          convencional — e com o mediador previsto explicando parte do ganho, sem que o efeito se reduza
+          a mais tempo de contato com o problema ou a mais confiança injustificada.
+        </p>
+
+        <details class="fp-details">
+          <summary>Ver o benchmark proposto (dez casos parametrizados)</summary>
+          <div class="fp-tabela-wrap">
+            <table class="fp-tabela">
+              <caption>Casos parametrizados por complexidade causal, número de stakeholders, urgência e disponibilidade de dados.</caption>
+              <thead><tr><th scope="col">Caso</th><th scope="col">Domínio</th><th scope="col">Complexidade</th><th scope="col">Stakeholders</th><th scope="col">Urgência</th><th scope="col">Dados</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">B1</th><td>Alocação de capacidade de servidor</td><td>Baixa</td><td>Baixa</td><td>Alta</td><td>Alta</td></tr>
+                <tr><th scope="row">B2</th><td>Priorização de backlog técnico</td><td>Média</td><td>Média</td><td>Média</td><td>Alta</td></tr>
+                <tr><th scope="row">B3</th><td>Escolha de fornecedor crítico</td><td>Média</td><td>Alta</td><td>Média</td><td>Média</td></tr>
+                <tr><th scope="row">B4</th><td>Expansão de infraestrutura</td><td>Alta</td><td>Média</td><td>Baixa</td><td>Média</td></tr>
+                <tr><th scope="row">B5</th><td>Gestão hídrica</td><td>Alta</td><td>Alta</td><td>Média</td><td>Baixa</td></tr>
+                <tr><th scope="row">B6</th><td>Política de mobilidade urbana</td><td>Alta</td><td>Alta</td><td>Baixa</td><td>Média</td></tr>
+                <tr><th scope="row">B7</th><td>Resposta a incidente cibernético</td><td>Alta</td><td>Média</td><td>Muito alta</td><td>Média</td></tr>
+                <tr><th scope="row">B8</th><td>Adoção de IA em atendimento</td><td>Média</td><td>Alta</td><td>Média</td><td>Alta</td></tr>
+                <tr><th scope="row">B9</th><td>Priorização de políticas sociais</td><td>Muito alta</td><td>Muito alta</td><td>Média</td><td>Baixa</td></tr>
+                <tr><th scope="row">B10</th><td>Adaptação climática</td><td>Muito alta</td><td>Muito alta</td><td>Baixa</td><td>Baixa</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fp-small">Cada caso exige descrição inicial deliberadamente incompleta, stakeholders
+            simulados com objetivos conflitantes, alternativas ocultas, modelos causais concorrentes,
+            <i>ground truth</i> parcial e desfechos retardados no tempo — sem isso, valida-se apenas a
+            capacidade de produzir documentos mais completos.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================================ ÉTICA ============================== -->
+    <section id="etica" class="fp-section" aria-labelledby="etica-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Implicações institucionais</p>
+        <h2 id="etica-titulo" class="fp-title fp-title--underline">O direito de formular</h2>
+        <div class="fp-prose">
+          <p>
+            Formular um problema é um ato de poder: define o que será contado, quem será ouvido, quais
+            danos entram na conta, quais alternativas existem e quais consequências permanecem invisíveis.
+            Tratar a formulação como etapa técnica preliminar oculta essa dimensão — e naturaliza
+            assimetrias sob aparência de neutralidade metodológica.
+          </p>
+        </div>
+        <div class="fp-grid fp-grid--3" style="margin-top:1.5rem">
+          <div class="fp-card fp-card--humano"><h3>Responsabilidade</h3><p class="fp-muted">Registrar autores, stakeholders consultados, grupos conscientemente excluídos e a justificativa da exclusão. Em decisão irreversível, o custo do atraso precisa ser comparado ao custo do erro — nunca assumido como dominante.</p></div>
+          <div class="fp-card fp-card--humano"><h3>Transparência</h3><p class="fp-muted">Não é revelar o aparato matemático: é permitir que quem é afetado entenda como o problema foi enquadrado e <strong>como contestar</strong>. Sistema auditável sem mecanismo de contestação não é transparente — é apenas documentado.</p></div>
+          <div class="fp-card fp-card--humano"><h3>Aprendizagem</h3><p class="fp-muted">A formulação é memória organizacional. Sem preservar estado, alternativas rejeitadas e razão de ter parado, a organização não consegue distinguir erro de execução, de modelo, de enquadramento ou mudança legítima de contexto.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== VEREDITO ============================= -->
+    <section id="veredito" class="fp-section" aria-labelledby="veredito-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Conclusão</p>
+        <h2 id="veredito-titulo" class="fp-title fp-title--underline">Veredito: sustentação parcial</h2>
+        <div class="fp-prose">
+          <p>
+            A formulação de problemas <strong>pode</strong> ser modelada como processo de redução de
+            incertezas relevantes para a decisão. Mas essa redução não é monotônica, não é universal e não
+            é suficiente por si só. Precisa ser interrompida antes que custo, viés e complexidade superem
+            o benefício informacional esperado — e precisa acomodar situações em que o problema central
+            não é factual, mas normativo.
+          </p>
+          <p>
+            A contribuição potencial não está em substituir Problem Structuring Methods, Decision Analysis
+            ou Engenharia de Requisitos, mas em oferecer a camada que representa <em>como uma formulação
+            muda ao longo do tempo</em>, quais incertezas ela reduz e quais cria, quando a decisão se
+            torna defensável e — o ponto mais negligenciado — quando o próprio refinamento passa a
+            degradar a qualidade do processo decisório.
+          </p>
+        </div>
+
+        <div class="fp-grid fp-grid--2" style="margin-top:1.5rem">
+          <div class="fp-card fp-card--ok">
+            <h3>O que é síntese <span class="fp-selo fp-selo--sintese">Síntese</span></h3>
+            <p class="fp-muted">A ponte entre PSM e Decision Analysis; o uso de EVSI para raciocinar sobre
+              investigação adicional; os atributos de qualidade da Engenharia de Requisitos; os limites
+              cognitivos documentados; a separação entre incerteza paramétrica e estrutural; ontologias e
+              modelos causais como representação.</p>
+          </div>
+          <div class="fp-card fp-card--humano">
+            <h3>O que é proposta não validada <span class="fp-selo fp-selo--naovalidado">Não validado</span></h3>
+            <p class="fp-muted">A ontologia de estados de formulação; a incerteza de fronteira como
+              dimensão de primeira classe; validade ecológica e suficiência decisional no mesmo vetor; o
+              modelo de regressão da formulação; a penalidade λ; a suficiência negociada; o benchmark de
+              dez casos; e o protocolo experimental.</p>
+          </div>
+        </div>
+
+        <p class="fp-small" style="margin-top:1.2rem">
+          Agenda, em ordem de precedência: estabilizar a ontologia mínima; operacionalizar cobertura,
+          rastreabilidade, validade ecológica e legitimidade; testar λ em condições controladas; publicar
+          um benchmark inicial, ainda que reduzido; rodar o primeiro estudo controlado; acompanhar casos
+          reais longitudinalmente; e comparar o framework com PSM e prática <i>ad hoc</i> — em vez de
+          assumir sua superioridade a priori.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== GLOSSÁRIO ============================= -->
+    <section id="glossario" class="fp-section" aria-labelledby="glossario-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Vocabulário</p>
+        <h2 id="glossario-titulo" class="fp-title fp-title--underline">Glossário</h2>
+        <dl class="fp-glossario fp-prose">
+          <dt id="g-formulacao">Formulação</dt>
+          <dd>Processo de construir uma representação suficientemente explícita para apoiar raciocínio,
+            comparação, investigação ou ação. É transformação, não etapa preliminar.</dd>
+          <dt id="g-engenharia-interrompida">Engenharia interrompida</dt>
+          <dd>Engenharia da formulação deliberadamente sujeita a regras de parada, para que o refinamento
+            contínuo não degenere em custo, viés de confirmação e falsa confiança.</dd>
+          <dt id="g-suficiencia">Suficiência decisional</dt>
+          <dd>Propriedade contextual: objetivos críticos explícitos, alternativas identificáveis,
+            restrições representadas, incertezas de alto impacto tratadas, decisão robusta, perspectivas
+            consideradas e ganho de investigar mais já não compensando o custo.</dd>
+          <dt id="g-suficiencia-negociada">Suficiência negociada</dt>
+          <dd>Critério de parada para problemas em que não existe regra matemática: acordo provisório
+            sobre o que será decidido, quais divergências ficam abertas e quando haverá revisão.</dd>
+          <dt id="g-evsi">EVSI</dt>
+          <dd><i>Expected Value of Sample Information</i> — valor esperado de uma investigação específica
+            e parcial. Pressupõe alternativas, estados e utilidade já especificados; o EVPI é o caso
+            limite da informação perfeita, e o ENBS desconta o custo da própria investigação.</dd>
+          <dt id="g-hiper-resolucao">Penalidade de hiper-resolução (λ)</dt>
+          <dd>Penalidade proposta que cresce quando a confiança sobe mais rápido que a acurácia, quando a
+            complexidade marginal aumenta e quando há indicadores de viés. Variável experimental, não
+            constante conhecida.</dd>
+          <dt id="g-incerteza-fronteira">Incerteza de fronteira</dt>
+          <dd>Incerteza sobre a adequação do escopo do sistema e dos stakeholders identificados. Medida
+            por omissões descobertas depois da decisão.</dd>
+          <dt id="g-validade-ecologica">Validade ecológica</dt>
+          <dd>Grau em que a formulação corresponde ao funcionamento relevante do domínio real — distinta
+            de validade interna, preditiva, de construção e de legitimidade.</dd>
+          <dt id="g-solutioneering">Solutioneering</dt>
+          <dd>Permitir que uma solução pré-selecionada defina silenciosamente o problema. O portão entre
+            S₃ e S₄ existe para tornar esse movimento visível.</dd>
+        </dl>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que é formulação como engenharia interrompida</h2>
+    <p class="aeo-tldr__lede">Formular um problema complexo é <strong>engenharia da redução de incerteza orientada à decisão</strong> — e essa engenharia precisa ser <strong>interrompida</strong>. Sem regra de parada explícita, o refinamento contínuo deixa de reduzir incerteza relevante e passa a produzir custo, viés de confirmação e confiança injustificada. A hipótese é sustentada <strong>parcialmente</strong>: a redução de incerteza não é monotônica, não é universal e não basta sozinha.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>Seis incertezas, não uma</strong> — aleatória, epistêmica, estrutural, semântica, de fronteira e de valores; quatro delas nenhuma distribuição de probabilidade resolve.</li>
+      <li><strong>Seis estados de conhecimento (S₀–S₅)</strong> — da situação desagregada à decisão e aprendizagem, com um portão de qualidade antes de derivar qualquer solução.</li>
+      <li><strong>Regra de parada</strong> — pare quando EVSI + ganho decisório + valor de novo enquadramento ficarem abaixo de custo + custo de atraso + custo cognitivo.</li>
+      <li><strong>Penalidade de hiper-resolução (λ)</strong> — quando a confiança cresce mais rápido que a acurácia, refinar piora a decisão; λ é variável experimental, não constante conhecida.</li>
+    </ul>
+    <p class="aeo-tldr__foot">É o mesmo princípio do *fail-closed* da <a href="/engenharia-agentes-ia">Engenharia de Agentes de IA</a>, aplicado à investigação humana: parar num ponto seguro em vez de promover um palpite.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que é formulação de problemas?</summary>
+      <div class="aeo-faq__a"><p>É o processo de construir uma representação suficientemente explícita de uma situação para apoiar raciocínio, comparação, investigação ou ação — objetivos, alternativas, restrições, evidências, valores, incertezas e atores. Não é etapa preliminar à análise: é objeto de engenharia por direito próprio, com artefatos versionados, rastreabilidade e critérios de qualidade.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que significa &quot;engenharia interrompida&quot; da incerteza?</summary>
+      <div class="aeo-faq__a"><p>Significa tratar a formulação como processo de engenharia deliberadamente sujeito a regras de parada. A redução de incerteza é meio para melhorar a decisão, nunca fim autônomo: sem interrupção explícita, o refinamento adicional produz complexidade, viés de confirmação e falsa confiança em vez de decisão melhor.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quando parar de investigar um problema?</summary>
+      <div class="aeo-faq__a"><p>Quando o que a próxima investigação promete — valor esperado da amostra de informação (EVSI), ganho de utilidade decisória e chance de descobrir um enquadramento novo — for menor que o que ela cobra: custo direto, custo de decidir mais tarde e custo cognitivo da complexidade adicional. Em problemas com conflito de valores, aplica-se a suficiência negociada em vez de um critério matemático.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é suficiência decisional?</summary>
+      <div class="aeo-faq__a"><p>É uma propriedade contextual, não absoluta: objetivos críticos explícitos, alternativas principais identificáveis, restrições relevantes representadas, incertezas de alto impacto tratadas, decisão robusta a variações plausíveis dos pressupostos, perspectivas dos stakeholders consideradas e ganho esperado de investigação adicional já não compensando o custo.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é a penalidade de hiper-resolução (λ)?</summary>
+      <div class="aeo-faq__a"><p>É um construto proposto para penalizar o crescimento de confiança desproporcional ao crescimento de acurácia. Quando adicionar variáveis eleva a convicção do decisor sem elevar o acerto — efeito documentado por Slovic (1974) —, λ aumenta e torna negativa a utilidade da próxima investigação. O artigo é explícito: λ deve começar como variável experimental calibrada em estudo controlado, não ser embutido em sistemas de decisão de alto risco.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quando este framework não se aplica?</summary>
+      <div class="aeo-faq__a"><p>Em cinco famílias de situação: problemas rotineiros e bem definidos, em que formalizar gera burocracia; crises táticas, em que o tempo de modelar excede o tempo disponível; ambientes caóticos e não ergódicos; conflitos políticos profundos, em que o problema é de poder e não de conhecimento; e decisões com urgência extrema, em que o custo do atraso domina qualquer valor de informação adicional.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+
+  <footer class="fp-footer">
+    <div class="fp-container">
+      <p class="fp-footer__brand">Formulação de Problemas como Engenharia Interrompida da Incerteza</p>
+      <p class="fp-footer__meta">
+        Fundamentação multidisciplinar, framework integrado e programa de validação empírica ·
+        Maurício Yokoyama Issei
+      </p>
+      <p class="fp-footer__nav">
+        <a href="./catalogo.html">Catálogo</a> ·
+        <a href="./engenharia-confianca.html">Engenharia da Confiança</a> ·
+        <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> ·
+        <a href="./proposta-engenharia-reversa.html">Engenharia Reversa</a> ·
+        <a href="#hero">Voltar ao topo</a>
+      </p>
+
+      <nav class="fp-footer__refs" aria-label="Referências do artigo">
+        <p class="fp-footer__refs-title">Referências</p>
+        <div class="fp-footer__refgrid">
+          <div>
+            <h3>Estruturação e decisão</h3>
+            <ul>
+              <li><a href="https://onlinelibrary.wiley.com/doi/10.1002/1099-1743%28200011%2917%3A1%2B%3C%3A%3AAID-SRES374%3E3.0.CO%3B2-O" target="_blank" rel="noopener">Checkland (2000) — SSM, retrospectiva de trinta anos</a></li>
+              <li><a href="https://www.jstor.org/stable/2628678" target="_blank" rel="noopener">Churchman (1967) — Wicked problems</a></li>
+              <li><a href="https://www.jstor.org/stable/4531523" target="_blank" rel="noopener">Rittel &amp; Webber (1973) — Dilemmas in a general theory of planning</a></li>
+              <li><a href="https://doi.org/10.1016/j.omega.2019.102261" target="_blank" rel="noopener">Cinelli et al. (2020) — Taxonomia de MCDA</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Valor da informação</h3>
+            <ul>
+              <li><a href="https://doi.org/10.1287/deca.2013.0287" target="_blank" rel="noopener">Keisler et al. (2014) — Value of information analysis</a></li>
+              <li><a href="https://doi.org/10.1016/j.jval.2020.01.004" target="_blank" rel="noopener">Rothery et al. (2020) — ISPOR Value of Information Task Force</a></li>
+              <li><a href="https://doi.org/10.1177/0272989X13505910" target="_blank" rel="noopener">Strong et al. (2014) — EVSI eficiente</a></li>
+              <li><a href="https://arxiv.org/abs/1506.02142" target="_blank" rel="noopener">Incerteza bayesiana em modelos profundos</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Cognição e limites</h3>
+            <ul>
+              <li><a href="https://doi.org/10.1016/0004-3702%2873%2990011-8" target="_blank" rel="noopener">Simon (1973) — The structure of ill structured problems</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow" target="_blank" rel="noopener">Kahneman (2011) — Thinking, Fast and Slow</a></li>
+              <li><a href="https://doi.org/10.1016/j.ejor.2013.02.001" target="_blank" rel="noopener">Hämäläinen et al. (2013) — Behavioral OR</a></li>
+              <li><a href="https://doi.org/10.1016/0004-3702%2891%2990015-C" target="_blank" rel="noopener">Russell &amp; Wefald (1991) — Principles of metareasoning</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Representação e requisitos</h3>
+            <ul>
+              <li><a href="https://www.iso.org/standard/72089.html" target="_blank" rel="noopener">ISO/IEC/IEEE 29148:2018 — Requirements engineering</a></li>
+              <li><a href="https://doi.org/10.1006/ijhc.1995.1081" target="_blank" rel="noopener">Gruber (1995) — Princípios de design de ontologias</a></li>
+              <li><a href="https://doi.org/10.1109/TSE.2022.3191256" target="_blank" rel="noopener">Montgomery et al. (2022) — Qualidade de requisitos</a></li>
+              <li><a href="https://www.sebokwiki.org/" target="_blank" rel="noopener">SEBoK — Systems Engineering Body of Knowledge</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="fp-footer__copy">
+          © <span>2026</span> Maurício Yokoyama Issei. Texto original publicado neste site; a versão
+          integral do artigo, com a lista completa de referências, está em
+          <a href="/formulacao-de-problemas.md">formato Markdown</a>. As obras externas citadas são
+          propriedade de seus autores e editores, referenciadas para fins educacionais e de
+          rastreabilidade, sem vínculo ou endosso.
+        </p>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/formulacao-de-problemas.js"></script>
+  <script type="module" src="./js/eco-nav.js"></script>
+</body>
+
+</html>

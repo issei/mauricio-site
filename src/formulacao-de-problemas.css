@@ -1,0 +1,541 @@
+@import "tailwindcss";
+
+/*
+ * Formulação de Problemas como Engenharia Interrompida da Incerteza
+ * Fonte da verdade: docs/specs/pages/formulacao-de-problemas/ (docs 00–05)
+ * Base de design: STYLE_GUIDE.md / AGENTS.md ("Dark Tech & Developer Centric").
+ * Prefixo de namespace: .fp-  (evita colisão com as outras páginas do MPA).
+ *
+ * A cor aqui não é decoração: cada acento semântico é o vocabulário das
+ * visualizações (azul = benefício da investigação, âmbar = custo, vermelho =
+ * degradação, verde = suficiência, roxo = juízo humano). Trocar um valor destes
+ * troca o significado de um gráfico — ver doc 02 §1.
+ */
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+}
+
+:root {
+  /* Superfícies (GitHub Dark Dimmed) */
+  --fp-bg: #0d1117;
+  --fp-surface: #161b22;
+  --fp-surface-2: #1c2230;
+  --fp-border: #30363d;
+
+  /* Texto */
+  --fp-text: #c9d1d9;
+  --fp-heading: #ffffff;
+  --fp-muted: #8b949e;
+
+  /* Acentos decorativos — nunca em texto pequeno */
+  --fp-accent: #007bff;
+  --fp-accent-2: #8a2be2;
+  --fp-gradient: linear-gradient(90deg, var(--fp-accent), var(--fp-accent-2));
+
+  /* Semânticos */
+  --fp-link: #58a6ff;
+  --fp-custo: #d29922;
+  --fp-degrada: #f85149;
+  --fp-ok: #2ea043;
+  --fp-humano: #a371f7;
+
+  --fp-radius: 14px;
+  --fp-shadow: 0 0 0 1px rgba(0, 123, 255, 0.15), 0 12px 32px rgba(0, 0, 0, 0.45);
+  --fp-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body.fp-body {
+  margin: 0;
+  font-family: var(--font-inter);
+  background-color: var(--fp-bg);
+  color: var(--fp-text);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.fp-body h1,
+.fp-body h2,
+.fp-body h3,
+.fp-body h4 { color: var(--fp-heading); line-height: 1.2; }
+
+.fp-body a { color: var(--fp-link); text-decoration: none; }
+.fp-body a:hover { text-decoration: underline; }
+
+.fp-body :focus-visible {
+  outline: 2px solid var(--fp-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.fp-grad {
+  background: var(--fp-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Conteúdo só para leitor de tela (descrições longas de gráfico). */
+.fp-vh {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.fp-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--fp-surface);
+  color: var(--fp-heading);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--fp-accent);
+  border-radius: 0 0 8px 0;
+}
+.fp-skip:focus { left: 0; }
+
+/* ─────────────────────────────── Layout ─────────────────────────────── */
+
+.fp-container { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+.fp-prose { width: min(68ch, 100%); }
+.fp-prose p { margin: 0 0 1.1rem; }
+
+.fp-section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+.fp-section + .fp-section { border-top: 1px solid rgba(48, 54, 61, 0.6); }
+
+.fp-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fp-link);
+  margin: 0 0 0.6rem;
+}
+
+.fp-title {
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  font-weight: 700;
+  margin: 0 0 1.2rem;
+  position: relative;
+}
+.fp-title--underline::after {
+  content: "";
+  display: block;
+  width: 64px; height: 3px;
+  margin-top: 0.7rem;
+  border-radius: 2px;
+  background: var(--fp-gradient);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.fp-lede { font-size: 1.12rem; color: var(--fp-text); }
+.fp-muted { color: var(--fp-muted); }
+.fp-small { font-size: 0.85rem; color: var(--fp-muted); }
+
+/* ───────────────────────── Barra de leitura + nav ───────────────────── */
+
+.fp-readbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: rgba(48, 54, 61, 0.5);
+  z-index: 120;
+}
+.fp-readbar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--fp-gradient);
+}
+
+.fp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 17, 23, 0.82);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--fp-border);
+}
+.fp-nav__inner {
+  width: min(1120px, 100% - 2.5rem);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.2rem;
+  padding-block: 0.7rem;
+}
+.fp-nav__brand {
+  font-weight: 700;
+  color: var(--fp-heading) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.fp-nav__dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--fp-gradient);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+}
+.fp-nav__trail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-left: auto;
+  font-size: 0.86rem;
+}
+.fp-nav__trail a { color: var(--fp-muted); padding: 0.25rem 0; }
+.fp-nav__trail a:hover,
+.fp-nav__trail a[aria-current="true"] { color: var(--fp-link); }
+
+/* ───────────────────────────── Selos ────────────────────────────────── */
+
+.fp-selo {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--fp-border);
+  color: var(--fp-muted);
+  background: var(--fp-surface-2);
+  vertical-align: middle;
+}
+.fp-selo--sintese { border-color: var(--fp-link); color: var(--fp-link); }
+.fp-selo--proposta { border-color: var(--fp-humano); color: var(--fp-humano); }
+.fp-selo--naovalidado { border-color: var(--fp-custo); color: var(--fp-custo); }
+.fp-selo--evidencia { border-color: var(--fp-ok); color: #56d364; }
+
+/* ───────────────────────────── Cartões ──────────────────────────────── */
+
+.fp-grid { display: grid; gap: 1rem; }
+.fp-grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.fp-grid--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+.fp-card {
+  background: var(--fp-surface);
+  border: 1px solid var(--fp-border);
+  border-top: 3px solid var(--fp-accent);
+  border-radius: var(--fp-radius);
+  padding: 1.15rem 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fp-card h3 { font-size: 1.05rem; margin: 0.35rem 0 0.5rem; }
+.fp-card p { margin: 0; font-size: 0.94rem; }
+a.fp-card:hover { transform: translateY(-3px); box-shadow: var(--fp-shadow); text-decoration: none; }
+
+.fp-card--custo { border-top-color: var(--fp-custo); }
+.fp-card--degrada { border-top-color: var(--fp-degrada); }
+.fp-card--humano { border-top-color: var(--fp-humano); }
+.fp-card--ok { border-top-color: var(--fp-ok); }
+
+.fp-paincard__q { display: block; color: var(--fp-heading); font-weight: 600; margin-bottom: 0.4rem; }
+.fp-paincard__go { display: block; margin-top: 0.8rem; font-size: 0.8rem; font-weight: 600; color: var(--fp-link); }
+
+/* ───────────────────────── Listas especiais ─────────────────────────── */
+
+.fp-negacao { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.55rem; }
+.fp-negacao li {
+  position: relative;
+  padding-left: 1.9rem;
+  color: var(--fp-muted);
+}
+.fp-negacao li::before {
+  content: "\00d7";
+  position: absolute;
+  left: 0.35rem;
+  top: -0.05rem;
+  color: var(--fp-degrada);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.fp-kill {
+  background: var(--fp-surface);
+  border: 1px solid var(--fp-border);
+  border-left: 3px solid var(--fp-degrada);
+  border-radius: 0 var(--fp-radius) var(--fp-radius) 0;
+  padding: 0.9rem 1.1rem;
+}
+.fp-kill__n {
+  font-family: var(--fp-mono);
+  font-size: 0.78rem;
+  color: var(--fp-degrada);
+  font-weight: 700;
+}
+.fp-kill p { margin: 0.25rem 0 0; font-size: 0.94rem; }
+
+/* ───────────────────────────── Fórmulas ─────────────────────────────── */
+
+.fp-formula {
+  background: var(--fp-surface-2);
+  border: 1px solid var(--fp-border);
+  border-left: 3px solid var(--fp-link);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+}
+.fp-formula__eq {
+  font-family: var(--fp-mono);
+  font-size: 0.98rem;
+  color: var(--fp-heading);
+  white-space: nowrap;
+}
+.fp-formula var { color: var(--fp-link); font-style: italic; }
+.fp-formula__leg { margin: 0.6rem 0 0; font-size: 0.84rem; color: var(--fp-muted); white-space: normal; }
+
+/* ─────────────────────── Envelope de visualização ───────────────────── */
+
+.fp-figure {
+  margin: 1.6rem 0 0;
+  background: var(--fp-surface);
+  border: 1px solid var(--fp-border);
+  border-radius: var(--fp-radius);
+  padding: 1.25rem;
+}
+.fp-figure__scroll { overflow-x: auto; }
+.fp-figure svg { display: block; max-width: 100%; height: auto; }
+.fp-figure figcaption { margin-top: 0.9rem; font-size: 0.85rem; color: var(--fp-muted); }
+
+.fp-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin: 0.9rem 0 0; padding: 0; list-style: none; font-size: 0.82rem; }
+.fp-legend li { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--fp-muted); }
+.fp-legend i { width: 16px; height: 3px; border-radius: 2px; background: currentColor; display: inline-block; }
+.fp-legend .is-benef { color: var(--fp-link); }
+.fp-legend .is-custo { color: var(--fp-custo); }
+.fp-legend .is-degrada { color: var(--fp-degrada); }
+.fp-legend .is-ok { color: #56d364; }
+.fp-legend .is-humano { color: var(--fp-humano); }
+
+/* Traços dos gráficos ------------------------------------------------- */
+.fp-axis { stroke: var(--fp-border); stroke-width: 1; }
+.fp-grid-line { stroke: rgba(48, 54, 61, 0.7); stroke-width: 1; stroke-dasharray: 3 4; }
+.fp-axis-text { fill: #8b949e; font-size: 12px; font-family: var(--fp-mono); }
+.fp-serie-label { font-size: 12px; font-weight: 700; font-family: var(--font-inter); }
+
+.fp-line { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fp-line--benef { stroke: var(--fp-link); }
+.fp-line--custo { stroke: var(--fp-custo); }
+.fp-line--degrada { stroke: var(--fp-degrada); }
+.fp-line--acuracia { stroke: var(--fp-link); }
+.fp-line--confianca { stroke: var(--fp-degrada); }
+
+.fp-area--util { fill: rgba(88, 166, 255, 0.12); }
+.fp-area--degrada { fill: rgba(248, 81, 73, 0.14); }
+.fp-stop { stroke: #2ea043; stroke-width: 2; stroke-dasharray: 5 4; }
+.fp-stop-text { fill: #56d364; font-size: 12px; font-weight: 700; }
+
+/* Animação de traço (desligada sob reduced-motion, ver bloco final). */
+[data-draw] { stroke-dasharray: var(--fp-len, 1400); stroke-dashoffset: var(--fp-len, 1400); }
+[data-draw].is-drawn { animation: fp-draw 900ms ease forwards; }
+@keyframes fp-draw { to { stroke-dashoffset: 0; } }
+
+/* ─────────────────────── V2 · rosácea de incertezas ─────────────────── */
+
+.fp-radar { display: grid; grid-template-columns: minmax(260px, 420px) minmax(260px, 1fr); gap: 1.5rem; align-items: start; }
+@media (max-width: 860px) { .fp-radar { grid-template-columns: 1fr; } }
+
+.fp-radar__poly--classica { fill: rgba(88, 166, 255, 0.16); stroke: var(--fp-link); stroke-width: 2; }
+.fp-radar__poly--framework { fill: rgba(163, 113, 247, 0.10); stroke: var(--fp-humano); stroke-width: 2; stroke-dasharray: 6 4; }
+.fp-radar__ring { fill: none; stroke: rgba(48, 54, 61, 0.9); stroke-width: 1; }
+.fp-radar__spoke { stroke: rgba(48, 54, 61, 0.9); stroke-width: 1; }
+
+.fp-dims { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0 0 1rem; list-style: none; }
+.fp-dim {
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: var(--fp-surface-2);
+  color: var(--fp-text);
+  border: 1px solid var(--fp-border);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  min-height: 32px;
+}
+.fp-dim:hover { border-color: var(--fp-link); color: var(--fp-heading); }
+.fp-dim[aria-selected="true"] { border-color: var(--fp-link); color: var(--fp-heading); background: rgba(88, 166, 255, 0.14); box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.35); }
+
+.fp-dimpanel { background: var(--fp-surface-2); border: 1px solid var(--fp-border); border-radius: var(--fp-radius); padding: 1.1rem 1.2rem; }
+.fp-dimpanel h3 { margin: 0.4rem 0 0.6rem; font-size: 1.05rem; }
+.fp-dimpanel dt { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fp-muted); margin-top: 0.7rem; }
+.fp-dimpanel dd { margin: 0.15rem 0 0; font-size: 0.94rem; }
+.fp-dimpanel details { margin-top: 0.7rem; }
+
+/* ─────────────────────── V3 · estados do conhecimento ───────────────── */
+
+.fp-estados { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0 0 1rem; list-style: none; }
+.fp-estado {
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  flex: 1 1 140px;
+  text-align: left;
+  background: var(--fp-surface-2);
+  color: var(--fp-text);
+  border: 1px solid var(--fp-border);
+  border-top: 3px solid var(--fp-border);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}
+.fp-estado b { display: block; color: var(--fp-heading); font-family: var(--fp-mono); font-size: 0.8rem; }
+.fp-estado:hover { border-color: var(--fp-link); }
+.fp-estado[aria-selected="true"] { border-color: var(--fp-link); border-top-color: var(--fp-accent); background: rgba(88, 166, 255, 0.12); }
+
+.fp-gate {
+  border: 1px dashed var(--fp-custo);
+  color: var(--fp-custo);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.82rem;
+  margin: 0.8rem 0;
+  background: rgba(210, 153, 34, 0.06);
+}
+
+/* ─────────────────────── V4 · controles da regra de parada ──────────── */
+
+.fp-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem 1.5rem; margin: 1.1rem 0 0; }
+.fp-control label { display: block; font-size: 0.85rem; color: var(--fp-text); margin-bottom: 0.35rem; }
+.fp-control output { font-family: var(--fp-mono); color: var(--fp-link); font-variant-numeric: tabular-nums; }
+
+.fp-range { width: 100%; accent-color: #58a6ff; height: 26px; }
+
+.fp-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin-top: 1.1rem; }
+.fp-readout div { background: var(--fp-surface-2); border: 1px solid var(--fp-border); border-radius: 10px; padding: 0.7rem 0.9rem; }
+.fp-readout dt { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fp-muted); }
+.fp-readout dd { margin: 0.2rem 0 0; font-family: var(--fp-mono); font-size: 1.15rem; color: var(--fp-heading); font-variant-numeric: tabular-nums; }
+.fp-readout dd small { font-family: var(--font-inter); font-size: 0.8rem; color: var(--fp-muted); display: block; font-variant-numeric: normal; }
+
+/* ─────────────────────── V6 · painel de métricas ────────────────────── */
+
+.fp-tabela-wrap { overflow-x: auto; }
+.fp-tabela { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 640px; }
+.fp-tabela caption { text-align: left; color: var(--fp-muted); font-size: 0.85rem; padding-bottom: 0.7rem; }
+.fp-tabela th, .fp-tabela td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--fp-border); vertical-align: top; }
+.fp-tabela thead th { color: var(--fp-muted); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+.fp-tabela tbody tr:hover { background: rgba(28, 34, 48, 0.6); }
+.fp-tabela td b { color: var(--fp-heading); }
+
+.fp-maturidade { display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap; }
+.fp-maturidade i { width: 34px; height: 6px; border-radius: 3px; background: var(--fp-border); display: inline-block; }
+.fp-maturidade[data-nivel="3"] i { background: var(--fp-ok); }
+.fp-maturidade[data-nivel="2"] i { background: var(--fp-custo); }
+.fp-maturidade[data-nivel="1"] i { background: var(--fp-humano); }
+
+.fp-pfqi { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.8rem; margin-bottom: 1.1rem; }
+.fp-pfqi__num { font-family: var(--fp-mono); font-size: 2rem; color: var(--fp-muted); text-decoration: line-through; }
+
+/* ─────────────────────── V7 · mapa das tradições ────────────────────── */
+
+.fp-trad-bar { fill: rgba(88, 166, 255, 0.22); stroke: var(--fp-link); stroke-width: 1; }
+.fp-trad-bar--framework { fill: rgba(138, 43, 226, 0.28); stroke: var(--fp-humano); }
+.fp-trad-gap { fill: rgba(248, 81, 73, 0.10); stroke: var(--fp-degrada); stroke-width: 1; stroke-dasharray: 4 4; }
+.fp-trad-text { fill: #c9d1d9; font-size: 12px; }
+
+.fp-deflist dt { color: var(--fp-heading); font-weight: 600; margin-top: 0.9rem; }
+.fp-deflist dd { margin: 0.2rem 0 0; font-size: 0.92rem; color: var(--fp-text); }
+
+/* ───────────────────────── Glossário e termos ───────────────────────── */
+
+.fp-glossario dt { color: var(--fp-heading); font-weight: 600; margin-top: 1rem; scroll-margin-top: 80px; }
+.fp-glossario dd { margin: 0.2rem 0 0; }
+
+details.fp-details {
+  background: var(--fp-surface);
+  border: 1px solid var(--fp-border);
+  border-radius: var(--fp-radius);
+  padding: 0.9rem 1.1rem;
+  margin-top: 1.2rem;
+}
+details.fp-details > summary { cursor: pointer; color: var(--fp-link); font-weight: 600; }
+details.fp-details > summary::marker { color: var(--fp-muted); }
+
+/* ───────────────────────────── Botões ───────────────────────────────── */
+
+.fp-btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fp-btn--primary { background: var(--fp-gradient); color: #fff !important; }
+.fp-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0, 123, 255, 0.35); text-decoration: none; }
+.fp-btn--ghost { border: 1px solid var(--fp-link); color: var(--fp-link); }
+.fp-btn--ghost:hover { background: rgba(88, 166, 255, 0.12); text-decoration: none; }
+
+/* ───────────────────────────── Hero ─────────────────────────────────── */
+
+.fp-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+.fp-hero__title { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 800; line-height: 1.05; margin: 0 0 1rem; letter-spacing: -0.02em; }
+.fp-hero__sub { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--fp-muted); max-width: 62ch; margin: 0 0 1.2rem; }
+.fp-hero__thesis {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--fp-heading);
+  border-left: 3px solid var(--fp-accent);
+  padding-left: 1rem;
+  max-width: 62ch;
+}
+.fp-hero__cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
+
+/* ───────────────────────────── Rodapé ───────────────────────────────── */
+
+.fp-footer { border-top: 1px solid var(--fp-border); background: var(--fp-surface); padding-block: 2.5rem; margin-top: 3rem; }
+.fp-footer__brand { color: var(--fp-heading); font-weight: 700; margin: 0 0 0.3rem; }
+.fp-footer__meta { color: var(--fp-muted); font-size: 0.9rem; margin: 0 0 1rem; }
+.fp-footer__nav { font-size: 0.9rem; margin: 0 0 1.6rem; }
+.fp-footer__refs-title { color: var(--fp-heading); font-weight: 600; margin: 0 0 0.8rem; }
+.fp-footer__refgrid { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.fp-footer__refgrid h3 { font-size: 0.9rem; color: var(--fp-link); margin: 0 0 0.5rem; }
+.fp-footer__refgrid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; font-size: 0.86rem; }
+.fp-footer__copy { font-size: 0.8rem; color: var(--fp-muted); margin-top: 1.6rem; }
+
+/* ─────────────────── Revelação (enriquecimento por JS) ──────────────── */
+
+/*
+ * O estado inicial escondido só existe quando há JavaScript (classe `js`
+ * aplicada pelo módulo de entrada). Sem JS — ou se o módulo falhar — o
+ * conteúdo nasce visível: nenhuma informação depende da animação.
+ */
+.js .fp-reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.js .fp-reveal.is-in { opacity: 1; transform: none; }
+
+/* ─────────────────────────── Reduced motion ─────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .fp-reveal { opacity: 1; transform: none; }
+  [data-draw] { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+}
+
+/* Linha do ponto de parada na tabela de fallback de V4. */
+.fp-tabela__stop { background: rgba(46, 160, 67, 0.12); }
+.fp-tabela__stop th, .fp-tabela__stop td { color: var(--fp-heading); font-weight: 600; }
+
+/* Vértice realçado do radar (V2) quando a dimensão está selecionada. */
+[data-radar-vertice] { transition: stroke-width 0.2s ease; }
+[data-radar-vertice].is-ativo { stroke: #58a6ff; stroke-width: 6; stroke-opacity: 0.45; }
+
+/*
+ * Link dentro de texto secundário: o azul de link contra o cinza da prosa
+ * miúda tem contraste de 1,2:1 — abaixo do piso de 3:1 da WCAG 1.4.1 para
+ * distinguir o link pela cor. O sublinhado é o portador redundante.
+ */
+.fp-body main a:not([class]),
+.fp-body footer a:not([class]) { text-decoration: underline; text-underline-offset: 2px; }

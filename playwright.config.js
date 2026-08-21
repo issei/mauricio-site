@@ -62,19 +62,19 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js'],
+      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js'],
     },
 
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js'],
+      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js'],
     },
 
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js'],
+      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js'],
     },
 
     /*
@@ -91,7 +91,7 @@ export default defineConfig({
       // Degradação sem JavaScript (spec §4.2) — antes, inverificável
       name: 'no-js',
       use: { ...devices['Desktop Chrome'], javaScriptEnabled: false },
-      testMatch: ['tests/apresentacao.nojs.spec.js'],
+      testMatch: ['tests/apresentacao.nojs.spec.js', 'tests/formulacao.nojs.spec.js'],
     },
 
     /* Test against branded browsers. */
