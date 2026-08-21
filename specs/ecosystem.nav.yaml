@@ -17,10 +17,14 @@
 # =============================================================================
 
 meta:
-  version: "1.3.0"            # semver; bump obrigatório a cada alteração de grafo
+  version: "1.4.0"            # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-08-08"
+  updated: "2026-08-21"
+  # 1.4.0 — entra `formulacao-de-problemas` (Formulação de Problemas) em p1
+  #         (Fundação/Mentalidade): resolve a decisão pendente D-1 do doc de
+  #         spec da página, que deixou a página fora do grafo por padrão.
+  #         Atualizar src/js/eco-nav.js junto (cópia compilada da SSOT).
   # 1.3.0 — entra `artifice` (O Artífice Invisível) em p1 (Fundação/Mentalidade):
   #         diagnóstico sociológico da invisibilidade da maestria técnica, no
   #         mesmo pilar de `know` e `devin`. Atualizar src/js/eco-nav.js junto
@@ -50,7 +54,7 @@ pillars:
     label: "Fundação"
     subtitle: "Mentalidade"
     summary: "Princípios de pensamento sistêmico e gestão do conhecimento."
-    nodes: [know, devin, artifice]
+    nodes: [know, devin, artifice, formulacao-de-problemas]
 
   - id: p2
     order: 2
@@ -97,6 +101,11 @@ nodes:
     file: "artifice.html"
     title: "O Artífice Invisível"
     blurb: "O paradoxo da maestria no trabalho tecnológico."
+    pillar: p1
+  formulacao-de-problemas:
+    file: "formulacao-de-problemas.html"
+    title: "Formulação de Problemas"
+    blurb: "Formular é engenharia da incerteza, não intuição."
     pillar: p1
 
   # --- P2 · Engenharia de Confiança ------------------------------------------

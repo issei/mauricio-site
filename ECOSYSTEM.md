@@ -63,8 +63,9 @@ Blurbs ≤ 60 caracteres, afirmativos. Proibido jargão de marketing vazio
 `INV-3` todo `node.file` existe em `src/` · `INV-4` `crosslinks[].from/to` são slugs válidos ·
 `INV-5` URLs derivam de `meta.canonical_base` (`./`).
 
-## Estado atual (v1.0.0)
+## Estado atual (v1.4.0)
 
-- 16 nós canônicos + 1 extra (`proposta-observabilidade-mobile`, `canonical: false`, em P4).
-- Injetado nas 17 páginas-nó (não no `catalogo.html`, que é o próprio mapa).
+- 20 nós canônicos + 1 extra (`proposta-observabilidade-mobile`, `canonical: false`, em P4).
+- Injetado em 20 das 21 páginas-nó (não no `catalogo.html`, que é o próprio mapa; `terminal-evolutivo.html`
+  segue sem o script — pendência anterior a esta alteração, fora de escopo aqui).
 - Crosslinks materializados: `knowledge-os-presentation → proposta-engenharia-reversa`, `devin → salesforce-agentic-quickstart`. `engenharia-agentes-ia → socialselling` já existia.
