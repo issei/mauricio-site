@@ -9,9 +9,9 @@ critérios de entrada (DoR) e de saída (DoD), gates e plano de reversão. Base 
 1. A especificação (docs 00–04) está aprovada e é a fonte da verdade. Mudança de requisito →
    atualiza-se o doc **antes** do código.
 2. Nada de dependência nova: `package.json` não muda.
-3. O grafo do ecossistema (`specs/ecosystem.nav.yaml`) **não** é alterado — exige bump de versão e
-   aprovação humana (ECOSYSTEM.md). A página entra na rede por `catalogo.html`, pelo Hub e por
-   crosslinks no corpo. Entrada no grafo fica registrada como decisão pendente (§6).
+3. O grafo do ecossistema (`specs/ecosystem.nav.yaml`) foi alterado em 2026-08-21 (aprovação
+   humana, D-1 resolvida): a página entrou em P1 — Fundação, com bump `meta.version` 1.3.0 →
+   1.4.0. Continua acessível também por `catalogo.html`, pelo Hub e por crosslinks no corpo.
 4. O gate é fail-closed: `npm run gate` verde é condição de "pronto", não formalidade.
 
 ## 2. Definição de Pronto para começar (DoR) — vale para toda tarefa
@@ -135,6 +135,6 @@ nenhuma outra página depende deste código, e o único acoplamento com o resto 
 
 | # | Decisão | Por que não foi tomada pelo agente |
 | :-- | :-- | :-- |
-| D-1 | Entrada de `formulacao-de-problemas` no grafo `ecosystem.nav.yaml` (candidato: pilar P1 — Fundação) | ECOSYSTEM.md exige bump de `meta.version` e aprovação humana para alterar o grafo |
+| D-1 | ~~Entrada de `formulacao-de-problemas` no grafo `ecosystem.nav.yaml` (candidato: pilar P1 — Fundação)~~ — **resolvida em 2026-08-21**: aprovada, entrou em P1, `meta.version` 1.4.0 | ECOSYSTEM.md exige bump de `meta.version` e aprovação humana para alterar o grafo |
 | D-2 | Autoria do artigo: publicado como texto próprio (o original traz `[Nome do autor]`) | Atribuição é decisão editorial do dono do site |
 | D-3 | Vídeo de apoio (`VideoObject`) para o hero | Depende de gravação inexistente |
