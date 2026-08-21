@@ -209,6 +209,65 @@ export const PAGES = [
     },
   },
 
+  {
+    slug: 'formulacao-de-problemas', type: 'ScholarlyArticle', tier: 'S', hasMd: true,
+    title: 'Formulação de Problemas — Engenharia Interrompida',
+    headline: 'Formulação de problemas como engenharia interrompida da incerteza',
+    description: 'Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ.',
+    datePublished: '2026-08-20', dateModified: '2026-08-20',
+    section: 'Decisão e Formulação de Problemas',
+    tags: ['Formulação de Problemas', 'Redução de Incerteza', 'Problem Structuring Methods', 'Decision Analysis', 'Regra de Parada'],
+    keywords: ['formulação de problemas', 'engenharia interrompida', 'redução de incerteza', 'regra de parada', 'suficiência decisional', 'suficiência negociada', 'EVSI', 'valor da informação', 'Problem Structuring Methods', 'Decision Analysis', 'Bayesian Decision Theory', 'engenharia de requisitos', 'hiper-resolução', 'incerteza de fronteira', 'validade ecológica', 'wicked problems'],
+    about: [
+      { name: 'Formulação de problemas' }, { name: 'Redução de incerteza' },
+      { name: 'Problem Structuring Methods' }, { name: 'Decision Analysis' },
+      { name: 'Valor da informação (EVSI)' }, { name: 'Engenharia de Requisitos' },
+    ],
+    audience: 'Líderes de Engenharia, Analistas de Decisão, Pesquisadores, Arquitetos de Sistemas de IA',
+    tldr: {
+      heading: 'O que é formulação como engenharia interrompida',
+      lede: 'Formular um problema complexo é **engenharia da redução de incerteza orientada à decisão** — e essa engenharia precisa ser **interrompida**. Sem regra de parada explícita, o refinamento contínuo deixa de reduzir incerteza relevante e passa a produzir custo, viés de confirmação e confiança injustificada. A hipótese é sustentada **parcialmente**: a redução de incerteza não é monotônica, não é universal e não basta sozinha.',
+      points: [
+        '**Seis incertezas, não uma** — aleatória, epistêmica, estrutural, semântica, de fronteira e de valores; quatro delas nenhuma distribuição de probabilidade resolve.',
+        '**Seis estados de conhecimento (S₀–S₅)** — da situação desagregada à decisão e aprendizagem, com um portão de qualidade antes de derivar qualquer solução.',
+        '**Regra de parada** — pare quando EVSI + ganho decisório + valor de novo enquadramento ficarem abaixo de custo + custo de atraso + custo cognitivo.',
+        '**Penalidade de hiper-resolução (λ)** — quando a confiança cresce mais rápido que a acurácia, refinar piora a decisão; λ é variável experimental, não constante conhecida.',
+      ],
+      foot: 'É o mesmo princípio do *fail-closed* da [Engenharia de Agentes de IA](/engenharia-agentes-ia), aplicado à investigação humana: parar num ponto seguro em vez de promover um palpite.',
+    },
+    faq: [
+      { q: 'O que é formulação de problemas?', a: 'É o processo de construir uma representação suficientemente explícita de uma situação para apoiar raciocínio, comparação, investigação ou ação — objetivos, alternativas, restrições, evidências, valores, incertezas e atores. Não é etapa preliminar à análise: é objeto de engenharia por direito próprio, com artefatos versionados, rastreabilidade e critérios de qualidade.' },
+      { q: 'O que significa "engenharia interrompida" da incerteza?', a: 'Significa tratar a formulação como processo de engenharia deliberadamente sujeito a regras de parada. A redução de incerteza é meio para melhorar a decisão, nunca fim autônomo: sem interrupção explícita, o refinamento adicional produz complexidade, viés de confirmação e falsa confiança em vez de decisão melhor.' },
+      { q: 'Quando parar de investigar um problema?', a: 'Quando o que a próxima investigação promete — valor esperado da amostra de informação (EVSI), ganho de utilidade decisória e chance de descobrir um enquadramento novo — for menor que o que ela cobra: custo direto, custo de decidir mais tarde e custo cognitivo da complexidade adicional. Em problemas com conflito de valores, aplica-se a suficiência negociada em vez de um critério matemático.' },
+      { q: 'O que é suficiência decisional?', a: 'É uma propriedade contextual, não absoluta: objetivos críticos explícitos, alternativas principais identificáveis, restrições relevantes representadas, incertezas de alto impacto tratadas, decisão robusta a variações plausíveis dos pressupostos, perspectivas dos stakeholders consideradas e ganho esperado de investigação adicional já não compensando o custo.' },
+      { q: 'O que é a penalidade de hiper-resolução (λ)?', a: 'É um construto proposto para penalizar o crescimento de confiança desproporcional ao crescimento de acurácia. Quando adicionar variáveis eleva a convicção do decisor sem elevar o acerto — efeito documentado por Slovic (1974) —, λ aumenta e torna negativa a utilidade da próxima investigação. O artigo é explícito: λ deve começar como variável experimental calibrada em estudo controlado, não ser embutido em sistemas de decisão de alto risco.' },
+      { q: 'Quando este framework não se aplica?', a: 'Em cinco famílias de situação: problemas rotineiros e bem definidos, em que formalizar gera burocracia; crises táticas, em que o tempo de modelar excede o tempo disponível; ambientes caóticos e não ergódicos; conflitos políticos profundos, em que o problema é de poder e não de conhecimento; e decisões com urgência extrema, em que o custo do atraso domina qualquer valor de informação adicional.' },
+    ],
+    terms: [
+      { slug: 'formulacao', name: 'Formulação', def: 'Construir uma representação explícita o bastante para apoiar raciocínio, investigação ou ação; é transformação, não etapa preliminar.' },
+      { slug: 'engenharia-interrompida', name: 'Engenharia interrompida', def: 'Engenharia da formulação sujeita a regras de parada, para que o refinamento não degenere em custo, viés e falsa confiança.' },
+      { slug: 'suficiencia-decisional', name: 'Suficiência decisional', def: 'Condição contextual em que a formulação já sustenta a decisão e investigar mais não compensa o custo.' },
+      { slug: 'suficiencia-negociada', name: 'Suficiência negociada', def: 'Critério de parada quando não há regra matemática: acordo provisório sobre o que decidir, o que fica aberto e quando revisar.' },
+      { slug: 'evsi', name: 'EVSI', def: 'Valor esperado de uma investigação específica e parcial; pressupõe alternativas, estados e utilidade já especificados.' },
+      { slug: 'hiper-resolucao', name: 'Penalidade de hiper-resolução (λ)', def: 'Penalidade que cresce quando a confiança sobe mais rápido que a acurácia; proposta experimental, não validada.' },
+      { slug: 'incerteza-de-fronteira', name: 'Incerteza de fronteira', def: 'Incerteza sobre a adequação do escopo e dos stakeholders identificados; medida por omissões descobertas após a decisão.' },
+      { slug: 'validade-ecologica', name: 'Validade ecológica', def: 'Grau em que a formulação corresponde ao funcionamento relevante do domínio real, distinta de validade interna e preditiva.' },
+    ],
+    mdSections: [
+      { h: 'A tese e sua condição', body: 'A formulação estruturada produz decisões mais robustas que formulações ad hoc quando reduz incertezas relevantes para a ação, explicita premissas, preserva rastreabilidade, testa enquadramentos concorrentes e atinge suficiência antes que custo, viés e complexidade superem o benefício esperado da informação. A palavra que carrega o argumento é "quando": a hipótese é condicional e sustentada apenas parcialmente. Ela não afirma que toda informação adicional melhora a decisão, que toda incerteza deve ser eliminada, que existe uma formulação verdadeira e única, nem que a parada admite métrica universal.' },
+      { h: 'O que é síntese e o que é proposta não validada', body: 'São síntese da literatura: a ponte entre Problem Structuring Methods e Decision Analysis, o uso de EVSI para raciocinar sobre investigação adicional, os atributos de qualidade da Engenharia de Requisitos, os limites cognitivos documentados por Slovic e Kahneman, a separação entre incerteza paramétrica e estrutural, e o uso de ontologias para representação. São propostas originais ainda não validadas: a ontologia de estados de formulação, a incerteza de fronteira como dimensão de primeira classe, o modelo de regressão da formulação, a penalidade de hiper-resolução λ, a suficiência negociada, o benchmark de dez casos e o protocolo experimental.' },
+      { h: 'Onde a abordagem não se aplica', body: 'Problemas rotineiros, crises táticas, ambientes caóticos e não ergódicos, conflitos políticos profundos e decisões com urgência extrema. Em problemas wicked, reduzir incerteza factual não resolve o desacordo, porque o desacordo é normativo: forçar a matematização de valores incomensuráveis dá aparência de objetividade a uma escolha que não é factual. O framework precisa nomear o estado "desacordo normativo não resolvido" em vez de tratá-lo como falha a eliminar.' },
+    ],
+    og: {
+      eyebrow: 'Decisão · Formulação de problemas',
+      title: 'Engenharia {interrompida} da incerteza',
+      titleSize: 76,
+      subtitle: 'Formular é engenharia — e toda engenharia precisa saber parar',
+      thesis: 'Refinar além do ponto não compra decisão melhor: compra convicção.',
+      chips: [{ k: '6', label: 'Incertezas' }, { k: 'S₀–S₅', label: 'Estados' }, { k: 'STOP', label: 'Regra de parada' }, { k: 'λ', label: 'Hiper-resolução' }],
+    },
+  },
+
   // ===================================================================== TIER A
   {
     slug: 'salesforce-agentic-dev', type: 'TechArticle', tier: 'A', hasMd: true,

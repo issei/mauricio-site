@@ -126,6 +126,15 @@ export const HUB_ITEMS = [
     "complexity": "Tópico Profundo"
   },
   {
+    "slug": "formulacao-de-problemas",
+    "title": "Formulação de Problemas",
+    "blurb": "Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ.",
+    "href": "./formulacao-de-problemas.html",
+    "tab": "especificar",
+    "minutes": 26,
+    "complexity": "Tópico Profundo"
+  },
+  {
     "slug": "engenharia-agentes-ia",
     "title": "Engenharia de Agentes de IA",
     "blurb": "Os dez princípios de engenharia que tornam agentes de IA confiáveis: determinístico-primeiro, Cérebro × Vitrine, contratos rígidos, Limiar de Certeza, FinOps por ledger e o MCP como fronteira.",
