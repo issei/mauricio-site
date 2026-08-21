@@ -147,6 +147,45 @@ test.describe('Formulação de Problemas — página', () => {
     }
   });
 
+  test('pipeline: seção de vídeo posicionada após os estados, com embed acessível', async ({ page }) => {
+    await page.goto(PATH);
+
+    const secao = page.locator('#pipeline');
+    await expect(secao.locator('h2')).toHaveText(/Pipeline da Decisão Computacional/);
+
+    // Os três pontos que a seção promete conectar ao artigo.
+    await expect(secao).toContainText('Armadilha do Solucionismo');
+    await expect(secao).toContainText('PFQi');
+    await expect(secao).toContainText('supervisão humana');
+    // …e as amarras que impedem a seção de contradizer o resto da página.
+    await expect(secao.locator('a[href="#g-solutioneering"]')).toHaveCount(1);
+    await expect(secao.locator('a[href="#metricas"]')).toHaveCount(1);
+
+    // Ordem no documento: vem depois da Figura 3 (estados) e antes da regra de parada.
+    const ordem = await page.evaluate(() => {
+      const ids = [...document.querySelectorAll('main section[id]')].map((s) => s.id);
+      return { estados: ids.indexOf('estados'), pipeline: ids.indexOf('pipeline'), parada: ids.indexOf('parada') };
+    });
+    expect(ordem.estados).toBeLessThan(ordem.pipeline);
+    expect(ordem.pipeline).toBeLessThan(ordem.parada);
+
+    const iframe = secao.locator('.fp-video__frame iframe');
+    await expect(iframe).toHaveAttribute('title', 'Vídeo: O Pipeline da Decisão');
+    await expect(iframe).toHaveAttribute('loading', 'lazy');
+    await expect(iframe).toHaveAttribute('src', /lhEdMm7qvAU/);
+
+    // Proporção 16:9 preservada — a moldura reserva a altura antes do lazy-load.
+    const caixa = await secao.locator('.fp-video__frame').boundingBox();
+    expect(caixa.height / caixa.width).toBeCloseTo(9 / 16, 2);
+  });
+
+  test('pipeline: a proporção 16:9 sobrevive ao mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto(PATH);
+    const caixa = await page.locator('#pipeline .fp-video__frame').boundingBox();
+    expect(caixa.height / caixa.width).toBeCloseTo(9 / 16, 2);
+  });
+
   test('a11y: axe sem violações serious/critical', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(PATH);

@@ -1,6 +1,6 @@
 # Formulação de Problemas — Engenharia Interrompida
 
-> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/formulacao-de-problemas>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-08-20 · Atualizado: 2026-08-20.
+> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/formulacao-de-problemas>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-08-20 · Atualizado: 2026-08-21.
 
 ## Em síntese
 

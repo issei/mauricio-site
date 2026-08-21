@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="./formulacao-de-problemas.css" />
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -40,7 +41,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Formulação de Problemas — Engenharia Interrompida" />
 <meta property="article:published_time" content="2026-08-20T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-08-20T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-08-21T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Decisão e Formulação de Problemas" />
 <meta property="article:tag" content="Formulação de Problemas" />
@@ -91,7 +92,7 @@
       },
       "inLanguage": "pt-BR",
       "datePublished": "2026-08-20",
-      "dateModified": "2026-08-20",
+      "dateModified": "2026-08-21",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-formulacao-de-problemas.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#breadcrumb"
@@ -124,7 +125,7 @@
         "@id": "https://mauricio.issei.com.br/#author"
       },
       "datePublished": "2026-08-20",
-      "dateModified": "2026-08-20",
+      "dateModified": "2026-08-21",
       "inLanguage": "pt-BR",
       "image": "https://mauricio.issei.com.br/og-formulacao-de-problemas.png",
       "isAccessibleForFree": true,
@@ -292,6 +293,17 @@
           "description": "Grau em que a formulação corresponde ao funcionamento relevante do domínio real, distinta de validade interna e preditiva."
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#video",
+      "name": "Da Teoria à Prática: O Pipeline da Decisão Computacional",
+      "description": "Como a formulação sai da teoria da incerteza e vira pipeline de decisão computacional: a Armadilha do Solucionismo, a narrativa humana traduzida em formulação mensurável (PFQi) e o limite inegociável da supervisão humana na fronteira das máquinas.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/lhEdMm7qvAU/maxresdefault.jpg",
+      "uploadDate": "2026-08-21",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/lhEdMm7qvAU",
+      "contentUrl": "https://www.youtube.com/watch?v=lhEdMm7qvAU",
+      "inLanguage": "pt-BR"
     }
   ]
 }
@@ -314,6 +326,7 @@
         <a href="#tese" data-navlink>Tese</a>
         <a href="#incertezas" data-navlink>Incertezas</a>
         <a href="#estados" data-navlink>Estados</a>
+        <a href="#pipeline" data-navlink>Pipeline</a>
         <a href="#parada" data-navlink>Parada</a>
         <a href="#limites" data-navlink>Limites</a>
       </nav>
@@ -708,6 +721,57 @@
           O movimento S₀ → S₂ é o mesmo de tornar explícito um sistema legado que ninguém documentou —
           ver <a href="./proposta-engenharia-reversa.html">Engenharia Reversa assistida por IA</a>.
         </p>
+      </div>
+    </section>
+
+    <!-- ===================== PIPELINE (complemento em vídeo) ================ -->
+    <section id="pipeline" class="fp-section" aria-labelledby="pipeline-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Complemento em vídeo</p>
+        <h2 id="pipeline-titulo" class="fp-title fp-title--underline">
+          Da Teoria à Prática: O Pipeline da Decisão Computacional
+        </h2>
+        <div class="fp-prose">
+          <p>
+            Até aqui a incerteza foi tratada como objeto de teoria: seis dimensões, seis estados, uma
+            regra de parada. Executar isso num sistema real é outro problema. Exige traduzir o rigor
+            conceitual para engenharia — contratos, esquemas, pontos de decisão auditáveis — sem que
+            a tradução dissolva justamente aquilo que tornava a formulação defensável.
+          </p>
+          <p>
+            Três pontos do vídeo conversam diretamente com o que está acima. O primeiro é a
+            <strong>Armadilha do Solucionismo</strong>: a mesma
+            <a href="#g-solutioneering">solutioneering</a> que o portão entre S₃ e S₄ existe para
+            expor — quando a solução preferida chega antes do problema, o resto do processo vira
+            justificativa. O segundo é a transformação da <strong>narrativa humana</strong> em
+            formulação mensurável pelo <strong>PFQi</strong> (Índice de Qualidade de Formulação): a
+            passagem do relato ambíguo para algo que se compara, versiona e audita. Vale lê-la com a
+            ressalva de <a href="#metricas">Painel, não índice único</a> — o índice é resumo
+            diagnóstico, nunca corte de decisão.
+          </p>
+          <p>
+            O terceiro é o limite inegociável: a <strong>supervisão humana na fronteira das
+            máquinas</strong>. Um pipeline reduz incerteza factual, ordena evidências e recusa a
+            inferência que não alcança o limiar; não decide quais consequências contam, nem assume a
+            responsabilidade por elas. É o princípio do <em>fail-closed</em> da
+            <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> aplicado a quem
+            responde pela decisão: quando não se pode concluir com segurança, o sistema para e
+            devolve a escolha a um humano.
+          </p>
+        </div>
+
+        <div class="fp-video">
+          <p class="fp-video__caption">Vídeo · O Pipeline da Decisão Computacional</p>
+          <div class="fp-video__frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/lhEdMm7qvAU"
+              title="Vídeo: O Pipeline da Decisão"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1391,6 +1455,7 @@
 
   </main>
 
+
   <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Resumo e perguntas frequentes">
   <div class="aeo-tldr">
@@ -1435,8 +1500,7 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
-
-  <footer class="fp-footer">
+<footer class="fp-footer">
     <div class="fp-container">
       <p class="fp-footer__brand">Formulação de Problemas como Engenharia Interrompida da Incerteza</p>
       <p class="fp-footer__meta">

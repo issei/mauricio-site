@@ -126,6 +126,7 @@ Cada ficha traz: **intenção** (o que o leitor precisa concluir), **dado** (ori
 | `.fp-card--custo` | Cartão dos cinco domínios de inaplicabilidade (triagem Cynefin) — variação do cartão padrão, não um componente novo. |
 | Termo de glossário inline | Âncora direta para a entrada correspondente no glossário do fim da página (sem popover e sem componente próprio — um destino real funciona com e sem JavaScript, e `audit-site.mjs` cobra a existência da âncora). |
 | `.fp-readbar` | Barra de progresso de leitura no topo (padrão `engenharia-confianca`). |
+| `.fp-video` | Embed do complemento em vídeo, com a mesma anatomia de `engenharia-confianca`: legenda em cima, moldura com proporção **16:9** travada por `padding-bottom: 56.25%`. A altura é reservada antes do carregamento — com `loading="lazy"` no iframe, sem isso o player empurraria o conteúdo ao entrar. `title` obrigatório no iframe; embed via `youtube-nocookie`. |
 
 ## 4. Orçamento
 
