@@ -131,7 +131,7 @@ export const HUB_ITEMS = [
     "blurb": "Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ.",
     "href": "./formulacao-de-problemas.html",
     "tab": "especificar",
-    "minutes": 26,
+    "minutes": 27,
     "complexity": "Tópico Profundo"
   },
   {

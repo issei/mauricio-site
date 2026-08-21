@@ -117,6 +117,36 @@ test.describe('Formulação de Problemas — página', () => {
     await expect(page.locator('.aeo-faq__item')).toHaveCount(6);
   });
 
+  test('fórmulas: equação oculta ao leitor de tela, com leitura em prosa', async ({ page }) => {
+    await page.goto(PATH);
+    const formulas = page.locator('.fp-formula');
+    const total = await formulas.count();
+    expect(total).toBeGreaterThan(0);
+
+    for (let i = 0; i < total; i++) {
+      const bloco = formulas.nth(i);
+      // A linha da equação é decorativa para quem ouve: soletrar subscritos não
+      // comunica nada. Quem carrega o significado é a leitura em prosa.
+      await expect(bloco.locator('.fp-formula__eq')).toHaveAttribute('aria-hidden', 'true');
+      await expect(bloco.locator('.fp-vh')).toContainText('Leitura da fórmula:');
+    }
+  });
+
+  test('glossário: todo termo linkado tem destino na página', async ({ page }) => {
+    await page.goto(PATH);
+    const quebrados = await page.evaluate(() =>
+      [...document.querySelectorAll('a[href^="#g-"]')]
+        .map((a) => a.getAttribute('href').slice(1))
+        .filter((id) => !document.getElementById(id))
+    );
+    expect(quebrados).toEqual([]);
+
+    // O jargão que o artigo usa sem definir no corpo precisa estar no glossário.
+    for (const id of ['g-belief-plausibility', 'g-conjuntos-credais', 'g-model-averaging', 'g-kendall']) {
+      await expect(page.locator(`#${id}`)).toHaveCount(1);
+    }
+  });
+
   test('a11y: axe sem violações serious/critical', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(PATH);

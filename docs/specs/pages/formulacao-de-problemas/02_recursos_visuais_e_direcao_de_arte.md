@@ -118,7 +118,7 @@ Cada ficha traz: **intenção** (o que o leitor precisa concluir), **dado** (ori
 
 | Componente | Uso |
 | :-- | :-- |
-| `.fp-formula` | Bloco de fórmula em HTML semântico, fundo `#161b22`, borda esquerda azul, `aria-label` com a leitura em português. Máx. 6 na página. |
+| `.fp-formula` | Bloco de fórmula em HTML semântico, fundo `#161b22`, borda esquerda azul. Máx. 6 na página. **A linha da equação é `aria-hidden`** e vem acompanhada de uma **leitura em prosa** num `.fp-vh` — um leitor de tela recebe "a penalidade lambda no instante t é a soma de quatro parcelas…", não a soletração de subscritos. É por isso que a página não usa KaTeX nem MathJax: além de violarem o orçamento de performance (zero terceiros bloqueantes), o MathML tem suporte irregular entre leitores de tela, e a prosa escrita à mão entrega mais. |
 | `.fp-selo` | Selo de status epistêmico (doc 01 §5). |
 | `.fp-vh` | Descrição longa de figura, só para leitor de tela (Figuras 2 e 4). |
 | `.fp-negacao` | Lista das cinco coisas que a hipótese **não** afirma — tipografia riscada leve + ícone `×`. |
