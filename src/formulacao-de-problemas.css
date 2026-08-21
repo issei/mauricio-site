@@ -448,6 +448,45 @@ a.fp-card:hover { transform: translateY(-3px); box-shadow: var(--fp-shadow); tex
 .fp-deflist dt { color: var(--fp-heading); font-weight: 600; margin-top: 0.9rem; }
 .fp-deflist dd { margin: 0.2rem 0 0; font-size: 0.92rem; color: var(--fp-text); }
 
+/* ─────────────────────────── Vídeo (embed 16:9) ─────────────────────────
+ * Mesma anatomia do embed de engenharia-confianca.html: legenda em cima,
+ * moldura com proporção travada embaixo. A proporção é mantida por
+ * padding-bottom de 56,25% (9/16) com o iframe em posição absoluta — o
+ * container reserva a altura ANTES de o iframe carregar, então nada salta na
+ * tela quando o player entra (o `loading="lazy"` torna isso obrigatório).
+ */
+.fp-video {
+  margin-top: 1.6rem;
+  border: 1px solid var(--fp-border);
+  border-radius: var(--fp-radius);
+  background: var(--fp-surface);
+  overflow: hidden;
+  max-width: 860px;
+}
+.fp-video__caption {
+  padding: 0.55rem 1rem;
+  margin: 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fp-muted);
+  border-bottom: 1px solid var(--fp-border);
+}
+.fp-video__frame {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.fp-video__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 /* ───────────────────────── Glossário e termos ───────────────────────── */
 
 .fp-glossario dt { color: var(--fp-heading); font-weight: 600; margin-top: 1rem; scroll-margin-top: 80px; }

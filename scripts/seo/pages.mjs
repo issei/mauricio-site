@@ -214,8 +214,16 @@ export const PAGES = [
     title: 'Formulação de Problemas — Engenharia Interrompida',
     headline: 'Formulação de problemas como engenharia interrompida da incerteza',
     description: 'Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ.',
-    datePublished: '2026-08-20', dateModified: '2026-08-20',
+    datePublished: '2026-08-20', dateModified: '2026-08-21',
     section: 'Decisão e Formulação de Problemas',
+    video: {
+      name: 'Da Teoria à Prática: O Pipeline da Decisão Computacional',
+      description: 'Como a formulação sai da teoria da incerteza e vira pipeline de decisão computacional: a Armadilha do Solucionismo, a narrativa humana traduzida em formulação mensurável (PFQi) e o limite inegociável da supervisão humana na fronteira das máquinas.',
+      thumb: 'https://i.ytimg.com/vi/lhEdMm7qvAU/maxresdefault.jpg',
+      uploadDate: '2026-08-21',
+      embed: 'https://www.youtube-nocookie.com/embed/lhEdMm7qvAU',
+      url: 'https://www.youtube.com/watch?v=lhEdMm7qvAU',
+    },
     tags: ['Formulação de Problemas', 'Redução de Incerteza', 'Problem Structuring Methods', 'Decision Analysis', 'Regra de Parada'],
     keywords: ['formulação de problemas', 'engenharia interrompida', 'redução de incerteza', 'regra de parada', 'suficiência decisional', 'suficiência negociada', 'EVSI', 'valor da informação', 'Problem Structuring Methods', 'Decision Analysis', 'Bayesian Decision Theory', 'engenharia de requisitos', 'hiper-resolução', 'incerteza de fronteira', 'validade ecológica', 'wicked problems'],
     about: [

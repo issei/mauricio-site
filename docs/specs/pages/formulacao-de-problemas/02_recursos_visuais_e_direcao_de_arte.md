@@ -118,7 +118,7 @@ Cada ficha traz: **intenção** (o que o leitor precisa concluir), **dado** (ori
 
 | Componente | Uso |
 | :-- | :-- |
-| `.fp-formula` | Bloco de fórmula em HTML semântico, fundo `#161b22`, borda esquerda azul, `aria-label` com a leitura em português. Máx. 6 na página. |
+| `.fp-formula` | Bloco de fórmula em HTML semântico, fundo `#161b22`, borda esquerda azul. Máx. 6 na página. **A linha da equação é `aria-hidden`** e vem acompanhada de uma **leitura em prosa** num `.fp-vh` — um leitor de tela recebe "a penalidade lambda no instante t é a soma de quatro parcelas…", não a soletração de subscritos. É por isso que a página não usa KaTeX nem MathJax: além de violarem o orçamento de performance (zero terceiros bloqueantes), o MathML tem suporte irregular entre leitores de tela, e a prosa escrita à mão entrega mais. |
 | `.fp-selo` | Selo de status epistêmico (doc 01 §5). |
 | `.fp-vh` | Descrição longa de figura, só para leitor de tela (Figuras 2 e 4). |
 | `.fp-negacao` | Lista das cinco coisas que a hipótese **não** afirma — tipografia riscada leve + ícone `×`. |
@@ -126,6 +126,7 @@ Cada ficha traz: **intenção** (o que o leitor precisa concluir), **dado** (ori
 | `.fp-card--custo` | Cartão dos cinco domínios de inaplicabilidade (triagem Cynefin) — variação do cartão padrão, não um componente novo. |
 | Termo de glossário inline | Âncora direta para a entrada correspondente no glossário do fim da página (sem popover e sem componente próprio — um destino real funciona com e sem JavaScript, e `audit-site.mjs` cobra a existência da âncora). |
 | `.fp-readbar` | Barra de progresso de leitura no topo (padrão `engenharia-confianca`). |
+| `.fp-video` | Embed do complemento em vídeo, com a mesma anatomia de `engenharia-confianca`: legenda em cima, moldura com proporção **16:9** travada por `padding-bottom: 56.25%`. A altura é reservada antes do carregamento — com `loading="lazy"` no iframe, sem isso o player empurraria o conteúdo ao entrar. `title` obrigatório no iframe; embed via `youtube-nocookie`. |
 
 ## 4. Orçamento
 

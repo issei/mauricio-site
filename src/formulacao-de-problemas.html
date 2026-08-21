@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="./formulacao-de-problemas.css" />
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -40,7 +41,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Formulação de Problemas — Engenharia Interrompida" />
 <meta property="article:published_time" content="2026-08-20T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-08-20T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-08-21T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Decisão e Formulação de Problemas" />
 <meta property="article:tag" content="Formulação de Problemas" />
@@ -91,7 +92,7 @@
       },
       "inLanguage": "pt-BR",
       "datePublished": "2026-08-20",
-      "dateModified": "2026-08-20",
+      "dateModified": "2026-08-21",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-formulacao-de-problemas.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#breadcrumb"
@@ -124,7 +125,7 @@
         "@id": "https://mauricio.issei.com.br/#author"
       },
       "datePublished": "2026-08-20",
-      "dateModified": "2026-08-20",
+      "dateModified": "2026-08-21",
       "inLanguage": "pt-BR",
       "image": "https://mauricio.issei.com.br/og-formulacao-de-problemas.png",
       "isAccessibleForFree": true,
@@ -292,6 +293,17 @@
           "description": "Grau em que a formulação corresponde ao funcionamento relevante do domínio real, distinta de validade interna e preditiva."
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://mauricio.issei.com.br/formulacao-de-problemas#video",
+      "name": "Da Teoria à Prática: O Pipeline da Decisão Computacional",
+      "description": "Como a formulação sai da teoria da incerteza e vira pipeline de decisão computacional: a Armadilha do Solucionismo, a narrativa humana traduzida em formulação mensurável (PFQi) e o limite inegociável da supervisão humana na fronteira das máquinas.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/lhEdMm7qvAU/maxresdefault.jpg",
+      "uploadDate": "2026-08-21",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/lhEdMm7qvAU",
+      "contentUrl": "https://www.youtube.com/watch?v=lhEdMm7qvAU",
+      "inLanguage": "pt-BR"
     }
   ]
 }
@@ -314,6 +326,7 @@
         <a href="#tese" data-navlink>Tese</a>
         <a href="#incertezas" data-navlink>Incertezas</a>
         <a href="#estados" data-navlink>Estados</a>
+        <a href="#pipeline" data-navlink>Pipeline</a>
         <a href="#parada" data-navlink>Parada</a>
         <a href="#limites" data-navlink>Limites</a>
       </nav>
@@ -523,7 +536,7 @@
                 <h3>Epistêmica</h3>
                 <p>O que ainda não sabemos sobre o fenômeno?</p>
                 <dl>
-                  <dt>Métrica candidata</dt><dd><i>Belief-plausibility</i>, conjuntos credais.</dd>
+                  <dt>Métrica candidata</dt><dd><a href="#g-belief-plausibility"><i>Belief-plausibility</i></a>, <a href="#g-conjuntos-credais">conjuntos credais</a>.</dd>
                   <dt>Limitação</dt><dd>Depende da atribuição inicial de crenças.</dd>
                 </dl>
               </div>
@@ -533,7 +546,7 @@
                 <h3>Estrutural</h3>
                 <p>Quais relações, variáveis ou mecanismos causais podem estar ausentes do modelo?</p>
                 <dl>
-                  <dt>Métrica candidata</dt><dd><i>Model averaging</i>; divergência entre modelos causais concorrentes.</dd>
+                  <dt>Métrica candidata</dt><dd><a href="#g-model-averaging"><i>Model averaging</i></a>; divergência entre modelos causais concorrentes.</dd>
                   <dt>Limitação</dt><dd>Custo computacional elevado — simulações aninhadas de Monte Carlo.</dd>
                 </dl>
               </div>
@@ -563,7 +576,7 @@
                 <h3>De valores</h3>
                 <p>Quais objetivos, preferências e critérios devem governar a decisão?</p>
                 <dl>
-                  <dt>Métrica candidata</dt><dd>Distância entre <i>rankings</i> de preferências (correlação de Kendall).</dd>
+                  <dt>Métrica candidata</dt><dd>Distância entre <i>rankings</i> de preferências (<a href="#g-kendall">correlação de Kendall</a>).</dd>
                   <dt>Limitação</dt><dd>Não resolve incomensurabilidade genuína entre valores.</dd>
                 </dl>
               </div>
@@ -606,8 +619,15 @@
         </div>
 
         <div class="fp-formula" role="group" aria-label="Estado de conhecimento e sua transformação">
-          <p class="fp-formula__eq">K<sub>t</sub> = ⟨ F, O, V, A, C, E, H, M, U, R, L, P ⟩<sub>t</sub>
+          <p class="fp-formula__eq" aria-hidden="true">K<sub>t</sub> = ⟨ F, O, V, A, C, E, H, M, U, R, L, P ⟩<sub>t</sub>
             &nbsp;&nbsp;→&nbsp;&nbsp; K<sub>t+1</sub> = T( K<sub>t</sub>, a<sub>t</sub>, y<sub>t</sub> )</p>
+          <p class="fp-vh">
+            Leitura da fórmula: o estado de conhecimento K no instante t é a tupla de doze
+            componentes — frames, objetivos, valores, alternativas, restrições, evidências,
+            hipóteses, modelos, incertezas, rastreabilidade, legitimidade e proveniência. O estado
+            seguinte, K em t mais um, é o resultado de aplicar o operador de transformação T ao
+            estado atual, à ação de investigação a e à observação y obtidas em t.
+          </p>
           <p class="fp-formula__leg">
             Uma ação de investigação <var>a</var> produz uma observação <var>y</var> e leva o estado de
             conhecimento <var>K</var> ao estado seguinte. O operador <var>T</var> é não determinístico e
@@ -704,6 +724,57 @@
       </div>
     </section>
 
+    <!-- ===================== PIPELINE (complemento em vídeo) ================ -->
+    <section id="pipeline" class="fp-section" aria-labelledby="pipeline-titulo">
+      <div class="fp-container">
+        <p class="fp-eyebrow">Complemento em vídeo</p>
+        <h2 id="pipeline-titulo" class="fp-title fp-title--underline">
+          Da Teoria à Prática: O Pipeline da Decisão Computacional
+        </h2>
+        <div class="fp-prose">
+          <p>
+            Até aqui a incerteza foi tratada como objeto de teoria: seis dimensões, seis estados, uma
+            regra de parada. Executar isso num sistema real é outro problema. Exige traduzir o rigor
+            conceitual para engenharia — contratos, esquemas, pontos de decisão auditáveis — sem que
+            a tradução dissolva justamente aquilo que tornava a formulação defensável.
+          </p>
+          <p>
+            Três pontos do vídeo conversam diretamente com o que está acima. O primeiro é a
+            <strong>Armadilha do Solucionismo</strong>: a mesma
+            <a href="#g-solutioneering">solutioneering</a> que o portão entre S₃ e S₄ existe para
+            expor — quando a solução preferida chega antes do problema, o resto do processo vira
+            justificativa. O segundo é a transformação da <strong>narrativa humana</strong> em
+            formulação mensurável pelo <strong>PFQi</strong> (Índice de Qualidade de Formulação): a
+            passagem do relato ambíguo para algo que se compara, versiona e audita. Vale lê-la com a
+            ressalva de <a href="#metricas">Painel, não índice único</a> — o índice é resumo
+            diagnóstico, nunca corte de decisão.
+          </p>
+          <p>
+            O terceiro é o limite inegociável: a <strong>supervisão humana na fronteira das
+            máquinas</strong>. Um pipeline reduz incerteza factual, ordena evidências e recusa a
+            inferência que não alcança o limiar; não decide quais consequências contam, nem assume a
+            responsabilidade por elas. É o princípio do <em>fail-closed</em> da
+            <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> aplicado a quem
+            responde pela decisão: quando não se pode concluir com segurança, o sistema para e
+            devolve a escolha a um humano.
+          </p>
+        </div>
+
+        <div class="fp-video">
+          <p class="fp-video__caption">Vídeo · O Pipeline da Decisão Computacional</p>
+          <div class="fp-video__frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/lhEdMm7qvAU"
+              title="Vídeo: O Pipeline da Decisão"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================= V4 · PARADA ============================ -->
     <section id="parada" class="fp-section" aria-labelledby="parada-titulo">
       <div class="fp-container">
@@ -719,8 +790,15 @@
         </div>
 
         <div class="fp-formula" role="group" aria-label="Regra de parada">
-          <p class="fp-formula__eq">EVSI<sub>próx</sub> + DUG<sub>próx</sub> + V<sub>frame,próx</sub>
+          <p class="fp-formula__eq" aria-hidden="true">EVSI<sub>próx</sub> + DUG<sub>próx</sub> + V<sub>frame,próx</sub>
             &nbsp;&lt;&nbsp; C<sub>próx</sub> + C<sub>atraso</sub> + C<sub>sobrecarga</sub></p>
+          <p class="fp-vh">
+            Leitura da fórmula: pare de investigar quando a soma de três ganhos esperados da próxima
+            rodada — o valor da amostra de informação (EVSI), o ganho de utilidade decisória (DUG) e
+            o valor de descobrir um enquadramento novo — for menor que a soma de três custos: o custo
+            direto da próxima investigação, o custo de atraso da decisão e o custo de sobrecarga
+            cognitiva.
+          </p>
           <p class="fp-formula__leg">
             Pare quando o que a próxima investigação promete — valor da amostra de informação
             (<a href="#g-evsi">EVSI</a>), ganho de utilidade decisória e chance de descobrir um
@@ -935,7 +1013,16 @@
         </figure>
 
         <div class="fp-formula" role="group" aria-label="Penalidade de hiper-resolução">
-          <p class="fp-formula__eq">λ<sub>t</sub> = λ₀ + λ₁ · max( 0 , ΔConf<sub>t</sub> / ΔAcc<sub>t</sub> − ρ ) + λ₂ X<sub>t</sub> + λ₃ B<sub>t</sub></p>
+          <p class="fp-formula__eq" aria-hidden="true">λ<sub>t</sub> = λ₀ + λ₁ · max( 0 , ΔConf<sub>t</sub> / ΔAcc<sub>t</sub> − ρ ) + λ₂ X<sub>t</sub> + λ₃ B<sub>t</sub></p>
+          <p class="fp-vh">
+            Leitura da fórmula: a penalidade de hiper-resolução lambda no instante t é a soma de
+            quatro parcelas. Primeira, uma penalidade basal lambda zero. Segunda, o coeficiente
+            lambda um multiplicado pelo maior valor entre zero e a razão entre a variação de
+            confiança e a variação de acurácia, subtraída da razão máxima aceitável rho — ou seja,
+            só há penalidade quando a confiança cresce proporcionalmente mais rápido que a acurácia.
+            Terceira, o coeficiente lambda dois multiplicado pela complexidade marginal X. Quarta, o
+            coeficiente lambda três multiplicado pelos indicadores de viés B.
+          </p>
           <p class="fp-formula__leg">
             Quando a confiança cresce mais rápido que a acurácia acima da razão aceitável <var>ρ</var>, a
             penalidade sobe; <var>X</var> é a complexidade marginal introduzida e <var>B</var> são
@@ -1336,6 +1423,23 @@
           <dd>Penalidade proposta que cresce quando a confiança sobe mais rápido que a acurácia, quando a
             complexidade marginal aumenta e quando há indicadores de viés. Variável experimental, não
             constante conhecida.</dd>
+          <dt id="g-belief-plausibility">Belief-plausibility</dt>
+          <dd>Par de medidas da teoria da evidência: a <em>crença</em> é o suporte mínimo que as
+            evidências dão a uma hipótese e a <em>plausibilidade</em> é o máximo ainda compatível com
+            elas. O intervalo entre as duas mede o quanto se ignora, em vez de forçar uma
+            probabilidade única.</dd>
+          <dt id="g-conjuntos-credais">Conjuntos credais</dt>
+          <dd>Conjunto de distribuições de probabilidade tratadas como igualmente admissíveis quando
+            a evidência não basta para eleger uma. Representam incerteza epistêmica sem fingir
+            precisão que não existe.</dd>
+          <dt id="g-model-averaging">Model averaging</dt>
+          <dd>Em vez de eleger um único modelo causal, pondera as previsões de modelos concorrentes
+            pela credibilidade de cada um. É assim que se estima incerteza <strong>estrutural</strong>
+            — e o custo computacional é o preço dessa honestidade.</dd>
+          <dt id="g-kendall">Correlação de Kendall (τ)</dt>
+          <dd>Mede a concordância entre dois ordenamentos contando os pares que aparecem na mesma
+            ordem em ambos. Aqui serve para medir a distância entre os <i>rankings</i> de preferências
+            de stakeholders diferentes — a incerteza de valores.</dd>
           <dt id="g-incerteza-fronteira">Incerteza de fronteira</dt>
           <dd>Incerteza sobre a adequação do escopo do sistema e dos stakeholders identificados. Medida
             por omissões descobertas depois da decisão.</dd>
@@ -1350,6 +1454,7 @@
     </section>
 
   </main>
+
 
   <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Resumo e perguntas frequentes">
@@ -1395,8 +1500,7 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
-
-  <footer class="fp-footer">
+<footer class="fp-footer">
     <div class="fp-container">
       <p class="fp-footer__brand">Formulação de Problemas como Engenharia Interrompida da Incerteza</p>
       <p class="fp-footer__meta">

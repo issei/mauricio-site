@@ -11,6 +11,8 @@
 | Movimento | `prefers-reduced-motion` desliga tudo, sem perda de conteúdo | teste com `emulateMedia` |
 | Sem JavaScript | Todo o conteúdo permanece legível; controles que dependem de JS nascem `disabled` | projeto `no-js` do Playwright (`tests/formulacao.nojs.spec.js`) |
 | Gráficos | `role="img"` + `aria-label` curto + descrição longa em `.fp-vh`; ou marcação de tabela real | axe + revisão |
+| Fórmulas | Equação visual `aria-hidden`; leitura em prosa obrigatória em `.fp-vh`, começando por "Leitura da fórmula:" | teste dedicado na suíte da página |
+| Jargão técnico | Todo termo especializado citado no corpo tem destino no glossário da própria página (âncora `#g-…`), não tooltip | teste que resolve todo `a[href^="#g-"]` |
 | Live regions | Leituras recalculadas de V4 em `aria-live="polite"` (nunca `assertive`) | revisão |
 | Alvos de toque | ≥ 24×24 px em todos os controles | revisão em 375 px |
 | Zoom | 200% sem perda de conteúdo; sem scroll horizontal em 375 px | teste Playwright |
