@@ -367,7 +367,7 @@ a.fp-card:hover { transform: translateY(-3px); box-shadow: var(--fp-shadow); tex
   min-height: 32px;
 }
 .fp-dim:hover { border-color: var(--fp-link); color: var(--fp-heading); }
-.fp-dim[aria-selected="true"] { border-color: var(--fp-link); color: var(--fp-heading); background: rgba(88, 166, 255, 0.14); box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.35); }
+.fp-dim[aria-current="true"] { border-color: var(--fp-link); color: var(--fp-heading); background: rgba(88, 166, 255, 0.14); box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.35); }
 
 .fp-dimpanel { background: var(--fp-surface-2); border: 1px solid var(--fp-border); border-radius: var(--fp-radius); padding: 1.1rem 1.2rem; }
 .fp-dimpanel h3 { margin: 0.4rem 0 0.6rem; font-size: 1.05rem; }
@@ -378,11 +378,16 @@ a.fp-card:hover { transform: translateY(-3px); box-shadow: var(--fp-shadow); tex
 /* ─────────────────────── V3 · estados do conhecimento ───────────────── */
 
 .fp-estados { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0 0 1rem; list-style: none; }
+.fp-estados > li { flex: 1 1 140px; display: flex; }
 .fp-estado {
   font: inherit;
   font-size: 0.85rem;
   cursor: pointer;
-  flex: 1 1 140px;
+  /* O chip carrega um <b> em bloco: sem `display:block` a caixa inline se
+     fragmenta em volta do filho e o rótulo escapa da borda. `width:100%`
+     preenche o <li>, que é o item flex de fato. */
+  display: block;
+  width: 100%;
   text-align: left;
   background: var(--fp-surface-2);
   color: var(--fp-text);
@@ -393,7 +398,7 @@ a.fp-card:hover { transform: translateY(-3px); box-shadow: var(--fp-shadow); tex
 }
 .fp-estado b { display: block; color: var(--fp-heading); font-family: var(--fp-mono); font-size: 0.8rem; }
 .fp-estado:hover { border-color: var(--fp-link); }
-.fp-estado[aria-selected="true"] { border-color: var(--fp-link); border-top-color: var(--fp-accent); background: rgba(88, 166, 255, 0.12); }
+.fp-estado[aria-current="true"] { border-color: var(--fp-link); border-top-color: var(--fp-accent); background: rgba(88, 166, 255, 0.12); }
 
 .fp-gate {
   border: 1px dashed var(--fp-custo);
