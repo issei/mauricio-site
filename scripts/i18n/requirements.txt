@@ -1,0 +1,14 @@
+# Motor de tradução local do gêmeo /en/ — nenhuma API de LLM envolvida.
+#
+# Instalação (uma vez, por máquina de desenvolvimento):
+#   python3 -m venv .venv-i18n
+#   . .venv-i18n/bin/activate          # Windows: .venv-i18n\Scripts\activate
+#   pip install -r scripts/i18n/requirements.txt
+#   python3 scripts/i18n/translate.py --install-model
+#
+# O `--install-model` baixa `translate-pt_en` de data.argosopentech.com. É o
+# ÚNICO passo que usa rede: depois dele a tradução roda inteiramente offline.
+#
+# Peso: argostranslate traz ctranslate2 e stanza (que puxa torch) — reserve
+# ~6 GB de disco. Nada disso entra no bundle do site; é ferramenta de build.
+argostranslate==1.11.0

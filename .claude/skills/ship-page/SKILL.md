@@ -16,6 +16,15 @@ npm run gate
 ```
 Tem que sair verde (build OK + Playwright cross-browser, incl. a11y axe). Se vermelho, **não prossiga** — corrija e rode de novo.
 
+### 1b. Gêmeo `/en/` em dia
+```bash
+npm run i18n:check
+```
+Se acusar `VELHO` ou `FALTANDO`, rode a skill [`sync-i18n`](../sync-i18n/SKILL.md)
+antes de seguir. Deploy com espelho velho publica uma página em inglês que
+mente sobre o conteúdo atual. (O `npm run gate` do passo 1 já roda esta
+conferência; o comando avulso serve para diagnosticar sem esperar a suíte.)
+
 ### 2. Checklist de release (por página alterada)
 Para cada `src/*.html` no diff:
 - [ ] `<title>` 10–60 chars e `<meta name="description">` 50–160 chars.
@@ -24,6 +33,7 @@ Para cada `src/*.html` no diff:
 - [ ] Exatamente um `<h1>`.
 - [ ] Linkada em `src/catalogo.html` (se for conteúdo público).
 - [ ] Tokens Dark Tech respeitados; texto/azul com contraste AA.
+- [ ] Espelho em `src/en/` regerado e commitado junto com o manifesto.
 
 Use `git diff --name-only origin/main...HEAD -- src` para listar o que mudou.
 

@@ -5,12 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 5173 --strictPort",
+    "prebuild": "node scripts/sync-i18n.mjs --soft",
     "build": "vite build",
     "preview": "vite preview",
     "start": "npm run dev",
     "test": "playwright test",
     "test:unit": "node --test tests/eai.test.js",
-    "gate": "node scripts/quality-gate.mjs"
+    "gate": "node scripts/quality-gate.mjs",
+    "i18n:sync": "node scripts/sync-i18n.mjs",
+    "i18n:sync:all": "node scripts/sync-i18n.mjs --all",
+    "i18n:check": "node scripts/sync-i18n.mjs --check",
+    "i18n:install": "python3 scripts/i18n/translate.py --install-model"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
