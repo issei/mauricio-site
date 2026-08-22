@@ -84,6 +84,29 @@ test.describe('Formulação de Problemas — página', () => {
     }
   });
 
+  test('chips dos estados: caixa em bloco e o chip ativo realmente destacado', async ({ page }) => {
+    await page.goto(PATH);
+    const chips = page.locator('[data-solo="estados"] [data-solo-chip]');
+
+    // O chip carrega um <b> em bloco. Se a âncora voltar a ser `inline`, a
+    // caixa se fragmenta em volta do filho e o rótulo escapa da borda.
+    for (const chip of await chips.all()) {
+      await expect(chip).toHaveCSS('display', 'block');
+    }
+
+    // O realce do selecionado é o que o JS marca (`aria-current`); um seletor
+    // de CSS que não case com isso deixa a figura sem estado visível.
+    const fundoDe = (c) => c.evaluate((el) => getComputedStyle(el).backgroundColor);
+    const ativo = await fundoDe(chips.nth(0));
+    const inerte = await fundoDe(chips.nth(1));
+    expect(ativo).not.toBe(inerte);
+
+    await chips.nth(3).click();
+    await expect(chips.nth(3)).toHaveAttribute('aria-current', 'true');
+    expect(await fundoDe(chips.nth(3))).toBe(ativo);
+    expect(await fundoDe(chips.nth(0))).toBe(inerte);
+  });
+
   test('regra de parada: mover λ antecipa o ponto de parada', async ({ page }) => {
     await page.goto(PATH);
     const leitura = page.locator('[data-parada-out-t]');
