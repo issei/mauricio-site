@@ -21,6 +21,24 @@ You have access to specialized skills and patterns located in `.agents/skills/`.
 1.  **[mauricio-site-patterns](file:///.agents/skills/mauricio-site-patterns/SKILL.md)**: The "Source of Truth" for coding conventions, workflows, and the design system.
 2.  **[test-skill](file:///.agents/skills/test-skill/SKILL.md)**: Repository structure validation.
 
+### 🌐 i18n — o gêmeo `/en/` é obrigação, não opcional
+
+O site publica duas línguas a partir de uma fonte só: PT-BR na raiz, e um gêmeo
+**gerado** em `/en/`. Toda edição em ativo público PT-BR (`src/*.html`,
+`public/*.md`, `cv.json`, `star.json`, `llms*.txt`, `cv-for-ai.md`) deixa o
+espelho em inglês velho — e um espelho velho está publicado e indexado,
+mentindo sobre o conteúdo atual.
+
+Depois de qualquer edição desse tipo, rode a skill
+[`sync-i18n`](.claude/skills/sync-i18n/SKILL.md) — ou, no mínimo,
+`npm run i18n:sync && npm run i18n:check`.
+
+- A tradução é **local** (Argos Translate, `scripts/i18n/`). **Não use LLM para
+  traduzir**: custo de token zero é o ponto da arquitetura.
+- **Nunca edite `src/en/**` nem `public/en/**` à mão** — são gerados e
+  sobrescritos. Corrija o português.
+- `npm run gate` já cobra que os espelhos estejam em dia.
+
 ### ⌨️ Available Commands
 - **`/skill-create`**: Use this command to analyze Git history and generate new `SKILL.md` files for emerging patterns. See [skill-create.md](file:///.agents/commands/skill-create.md).
 
@@ -97,6 +115,7 @@ Ao revisar essa página, **não** a reprove por usar cores fora da paleta Dark T
 | Path | Purpose |
 | :--- | :--- |
 | `src/` | Active source code (HTML, CSS, JS). |
+| `src/en/`, `public/en/` | **Gerados.** Gêmeo em inglês — não editar à mão. |
 | `public/` | Assets and the `cv.json` local fallback. |
 | `.agents/` | **YOUR HOME**. Skills, commands, and workflows. |
 | `docs/specs/` | Detailed technical specifications. |

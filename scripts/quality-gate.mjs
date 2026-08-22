@@ -53,6 +53,11 @@ steps.push([
     ' && node scripts/optimize-critical-path.mjs --check',
 ]);
 
+// O gêmeo em inglês é artefato gerado como qualquer outro: se a fonte em
+// PT-BR mudou e o espelho de `/en/` não, a página publicada em inglês está
+// mentindo sobre o conteúdo atual. Só CONFERE — sincronizar é `npm run i18n:sync`.
+steps.push(['espelhos /en/ em dia', 'node scripts/sync-i18n.mjs --check']);
+
 // Coerência do GRAFO, não de uma página: links quebrados, órfãs, SSOT
 // divergentes, ícones inexistentes. Cada suíte olhava a sua página e ninguém
 // olhava as arestas entre elas.

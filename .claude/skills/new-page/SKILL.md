@@ -83,3 +83,9 @@ Critério de pronto: build verde + testes (smoke + a11y + mobile) verdes em chro
 
 ### 6. Commit
 `feat: Add new page for <descrição>` (prefixo `feat:` para páginas novas).
+
+### Último passo: o gêmeo em inglês
+
+Uma página nova não existe só em português. Antes de considerar a página pronta,
+rode a skill [`sync-i18n`](../sync-i18n/SKILL.md) para gerar `src/en/<slug>.html`
+e o `public/en/<slug>.md` correspondente — o `npm run gate` cobra isso.

@@ -309,11 +309,72 @@ function switchLanguage(targetLang) {
 
 ---
 
-## 7. Próximos Passos (Fases Futuras de Implementação)
+## 7. Automação da Geração (implementado)
 
-Após a aprovação formal desta SDD, as seguintes etapas de execução técnica poderão ser iniciadas:
-1. Criação da estrutura de diretórios `src/en/` e `public/en/`.
-2. Tradução do arquivo de dados base `public/en/cv.json` e dos arquivos AEO (`llms.txt`, `llms-full.txt`, `cv-for-ai.md`).
-3. Adaptação das páginas HTML em `src/en/` e seus scripts associados.
-4. Atualização e implantação dos scripts de CloudFront Functions em `infra/cloudfront-functions/`.
-5. Validação via Playwright de SEO, redirecionamentos e integridade AEO.
+O gêmeo `/en/` **não é escrito à mão**: é derivado do PT-BR por um tradutor
+local. Traduzir com LLM custaria tokens a cada edição de conteúdo e tornaria o
+resultado irreprodutível; o motor escolhido é o **Argos Translate** (NMT
+open-source sobre CTranslate2), rodando na CPU da máquina de build. **Nenhuma
+chamada de API de LLM participa da tradução.**
+
+### 7.1. Componentes
+
+| Componente | Papel |
+|---|---|
+| `scripts/i18n/assets.py` | Mapa PT→EN dos ativos públicos — **fonte única** do escopo desta SDD (§2, §3). |
+| `scripts/i18n/engine.py` | Motores de tradução, cache de segmentos em disco, proteção por marcador. |
+| `scripts/i18n/links.py` | Reescrita de rota: só muda o link cujo alvo tem espelho. |
+| `scripts/i18n/html_tx.py` | HTML: `lang`, `hreflang`, `canonical`, rotas, texto e `alt`/`title`/`aria-label`. |
+| `scripts/i18n/jsonld_tx.py` | JSON-LD (§6.2) e JSON de dados (`cv.json`, `star.json`). |
+| `scripts/i18n/markdown_tx.py` | Markdown e `llms.txt`/`llms-full.txt`. |
+| `scripts/i18n/translate.py` | CLI do tradutor. |
+| `scripts/sync-i18n.mjs` | Orquestrador: detecta espelho velho por hash, chama o tradutor, grava o manifesto. |
+| `.claude/skills/sync-i18n/SKILL.md` | Skill agêntica: dispara o ciclo após qualquer edição de ativo público PT-BR. |
+| `tests/i18n.test.mjs` | Invariantes de estrutura, no `npm run gate`. |
+
+### 7.2. Garantias de preservação
+
+* **HTML não é reconstruído.** O parser reemite cada token como veio da origem e
+  faz cirurgia pontual só onde precisa mudar — o diff entre PT-BR e EN mostra a
+  tradução, não a reformatação de um pretty-printer.
+* `<script>`, `<style>`, `<code>`, `<pre>`, `<kbd>`, `<samp>`, `<svg>` e
+  qualquer elemento `translate="no"` saem byte a byte iguais; entidades HTML
+  (`&gt;`, `&nbsp;`) são preservadas exatamente.
+* Em Markdown, cerca de código, bloco indentado, front matter e tabela são
+  copiados literalmente; `#`, `-`, `>`, `**` e `` ` `` sobrevivem porque o
+  marcador é recortado antes de o texto ir ao modelo.
+* Em JSON, só **valores** de prosa são traduzidos: chave, tipo e forma são
+  preservados (`src/js/cv-renderer.js` lê `dado.Resumo`).
+* Trechos opacos viram marcador antes do NMT e são **conferidos na volta**. Se o
+  modelo estragar algum, um caminho determinístico assume: traduz cada trecho
+  isolado e remonta. Perde-se contexto de frase; não se perde a sintaxe.
+
+### 7.3. Sincronismo (manifesto)
+
+`scripts/i18n/i18n-manifest.json` guarda o sha256 de cada fonte no momento em
+que o espelho foi gerado. Comparar `mtime` não serviria: um `git checkout`
+reescreve a data de todo mundo e o espelho "envelheceria" sem que uma linha
+mudasse. Fonte, espelho e manifesto são commitados juntos.
+
+O `--check` distingue dois estados de propósito: **VELHO** (espelho publicado
+mentindo sobre o conteúdo atual) é sempre falha; **FALTANDO** (página ainda sem
+versão em inglês) só é cobrado depois que o gêmeo foi implantado, ou sob
+`--strict`.
+
+### 7.4. Integração ao build
+
+| Momento | Comando | Comportamento |
+|---|---|---|
+| Antes do build estático | `prebuild` → `sync-i18n --soft` | Traduz o que está velho. Sem Argos instalado, **avisa e segue** com os espelhos versionados — não derruba o deploy por falta de um modelo de 5 GB. |
+| Quality gate | `sync-i18n --check` | Só confere. Vermelho se algum espelho divergiu da fonte. |
+| Quality gate | `node --test tests/*.test.mjs` | Invariantes de `lang`, `canonical`, `hreflang`, `inLanguage`, preservação de código e forma do `cv.json`. |
+| Build | `vite.config.js` | `src/en/*.html` entram como pontos de entrada próprios e as rotas `/en/` no `sitemap.xml`. |
+
+### 7.5. Etapas ainda pendentes
+
+1. Instalar o modelo (`npm run i18n:install`) e gerar os espelhos com tradução
+   real (`npm run i18n:sync:all`) numa máquina que alcance
+   `data.argosopentech.com`.
+2. Implantar as CloudFront Functions do §5 em `infra/cloudfront-functions/`.
+3. Seletor de idioma no cabeçalho/rodapé (§6.4).
+4. Suíte Playwright de redirecionamento por idioma e negociação `text/markdown`.

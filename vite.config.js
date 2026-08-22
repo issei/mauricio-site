@@ -14,12 +14,22 @@ import sitemap from 'vite-plugin-sitemap';
  */
 const EXCLUIR = /(^|[.-])(bkp|backup|template)$/i;
 
-const htmlFiles = globSync('src/*.html').filter(
+/*
+ * `src/en/*.html` é o gêmeo digital em inglês, gerado por
+ * `scripts/i18n/translate.py` (ver a skill `sync-i18n`). Entra no build como
+ * ponto de entrada próprio para que o Vite processe os seus assets e o
+ * sitemap ofereça as rotas `/en/` ao Google.
+ *
+ * A chave do input é o caminho relativo SEM extensão (`en/index`, não
+ * `index`): duas páginas com o mesmo nome-base em pastas diferentes colidiriam
+ * e o Rollup descartaria uma delas em silêncio.
+ */
+const htmlFiles = globSync(['src/*.html', 'src/en/*.html']).filter(
   (file) => !EXCLUIR.test(parse(file).name)
 );
 const htmlInput = Object.fromEntries(
   htmlFiles.map(file => [
-    parse(file).name,
+    file.replace(/^src\//, '').replace(/\.html$/, ''),
     resolve(__dirname, file)
   ])
 );
