@@ -86,7 +86,7 @@ export const HUB_ITEMS = [
     "blurb": "Transforme sua esteira de DevOps Salesforce combinando a governança do Flosum, a flexibilidade do GitHub e a velocidade autônoma do Devin AI.",
     "href": "./devops-salesforce.html",
     "tab": "planejar",
-    "minutes": 10,
+    "minutes": 16,
     "complexity": "Técnica Aplicada"
   },
   {
