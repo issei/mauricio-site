@@ -82,11 +82,11 @@ export const HUB_ITEMS = [
   },
   {
     "slug": "devops-salesforce",
-    "title": "DevOps para Salesforce",
-    "blurb": "Transforme sua esteira de DevOps Salesforce combinando a governança do Flosum, a flexibilidade do GitHub e a velocidade autônoma do Devin AI.",
+    "title": "DevOps Salesforce com IA",
+    "blurb": "Manual prático para adotar Devin, Claude Code e Flosum no Salesforce: setup, conexão da IA ao org, arquitetura Flosum–Git, specs executáveis e governança.",
     "href": "./devops-salesforce.html",
     "tab": "planejar",
-    "minutes": 16,
+    "minutes": 18,
     "complexity": "Técnica Aplicada"
   },
   {

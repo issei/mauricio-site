@@ -51,6 +51,10 @@ function processPage(p) {
   let html = fs.readFileSync(file, 'utf8');
 
   // 1) limpa execuções anteriores
+  // O separador `<!-- ==== -->` é a primeira linha do bloco gerado, mas fica
+  // FORA dos marcadores AEO:START/END — sem removê-lo aqui, cada regeneração
+  // deixava mais uma linha dele acumulada no <head>.
+  html = html.replace(/(?:^[\t ]*<!-- ={10,} -->\n)+(?=[\t ]*<!-- AEO:START)/gm, '');
   html = stripMarked(html, '<!-- AEO:START', '<!-- AEO:END -->');
   html = stripMarked(html, '<!-- AEO-BODY:START', '<!-- AEO-BODY:END -->');
 
