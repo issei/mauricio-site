@@ -4,20 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DevOps Salesforce — Flosum, GitHub e Devin AI</title>
+  <title>DevOps Salesforce com IA: Manual Prático Devin, Claude e Flosum</title>
   <meta name="description"
-    content="Transforme sua esteira de DevOps Salesforce combinando governança do Flosum, flexibilidade do GitHub e velocidade autônoma do Devin AI." />
+    content="Manual prático completo para adotar Devin, Claude Code e Flosum em DevOps Salesforce: da fundação à governança com Spec-Driven Development." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" /></noscript>
-    <link rel="stylesheet" href="./devops-salesforce.css" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" /></noscript>
+  <link rel="stylesheet" href="./devops-salesforce.css" />
   <style>
     body {
       font-family: "Inter", sans-serif;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #00f5a0 0%, #1e3a8a 100%);
+      background: linear-gradient(135deg, #00f5a0 0%, #3b82f6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -25,6 +25,13 @@
 
     .gradient-text-orange {
       background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-purple {
+      background: linear-gradient(135deg, #c792ea 0%, #a78bfa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -73,17 +80,6 @@
       transform: translateY(-2px);
     }
 
-    .step-connector {
-      background: linear-gradient(90deg, #1e3a8a, #00f5a0);
-    }
-
-    .stat-card {
-      background: linear-gradient(135deg,
-          rgba(30, 58, 138, 0.3),
-          rgba(0, 245, 160, 0.05));
-      border: 1px solid rgba(0, 245, 160, 0.15);
-    }
-
     .badge {
       background: rgba(0, 245, 160, 0.1);
       border: 1px solid rgba(0, 245, 160, 0.3);
@@ -96,8 +92,16 @@
       color: #fb923c;
     }
 
-    .timeline-dot {
-      background: linear-gradient(135deg, #00f5a0, #1e3a8a);
+    .badge-purple {
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      color: #c792ea;
+    }
+
+    .badge-blue {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
     }
 
     .section-divider {
@@ -140,23 +144,6 @@
       background-size: 60px 60px;
     }
 
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
     .neon-border {
       box-shadow:
         0 0 0 1px rgba(0, 245, 160, 0.2),
@@ -174,6 +161,22 @@
     ::-webkit-scrollbar-thumb {
       background: #1e3a8a;
       border-radius: 3px;
+    }
+
+    .code-block {
+      background: #030712;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      overflow-x: auto;
+    }
+
+    .code-block pre, .code-block code {
+      color: #e2e8f0 !important;
+    }
+
+    .table-custom th, .table-custom td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
   </style>
   <!-- ============================================================ -->
@@ -380,1456 +383,678 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
-        <span class="font-bold text-white text-sm tracking-wide">DevOps<span class="gradient-text">Hybrid</span></span>
+        <span class="font-bold text-white text-sm tracking-wide">DevOps<span class="gradient-text">Salesforce</span></span>
       </div>
-      <div class="hidden md:flex items-center gap-8 text-sm text-white/60">
-        <a href="#desafio" class="hover:text-white transition-colors">O Desafio</a>
-        <a href="#solucao" class="hover:text-white transition-colors">A Solução</a>
-        <a href="#business-agility" class="hover:text-white transition-colors">Estratégia</a>
-        <a href="#engenharia" class="hover:text-white transition-colors">Engenharia</a>
-        <a href="#casos" class="hover:text-white transition-colors">Casos de Uso</a>
+      <div class="hidden md:flex items-center gap-6 text-sm text-white/60">
+        <a href="#sumario" class="hover:text-white transition-colors">Sumário</a>
+        <a href="#fundacao" class="hover:text-white transition-colors">Parte 1 — Fundação</a>
+        <a href="#arquitetura" class="hover:text-white transition-colors">Parte 2 — Arquitetura</a>
+        <a href="#metodologia" class="hover:text-white transition-colors">Parte 3 — Metodologia</a>
+        <a href="#governanca" class="hover:text-white transition-colors">Parte 4 — Governança</a>
       </div>
       <a href="https://mauricio.issei.com.br/#contact"
-        class="hidden md:block btn-primary px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-300">Entrar
-        em Contato</a>
+        class="hidden md:block btn-primary px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-300">Falar com Especialista</a>
     </div>
   </nav>
 
-  <!-- ══════════════════ HERO ══════════════════ -->
-  <section class="hero-bg grid-bg min-h-screen flex items-center pt-20">
-    <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-6">
-          <span class="w-2 h-2 bg-neon-400 rounded-full animate-pulse-slow"></span>
-          Arquitetura Híbrida Enterprise · Salesforce DevOps
-        </div>
-        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-6">
-          A Evolução do Ecossistema Salesforce:
-          <span class="gradient-text"> Unindo Governança, Código e IA.</span>
-        </h1>
-        <p class="text-white/60 text-lg lg:text-xl leading-relaxed mb-10">
-          Transforme sua esteira de DevOps combinando a segurança e
-          orquestração do <strong class="text-white">Flosum</strong>, a
-          flexibilidade moderna do
-          <strong class="text-white">GitHub</strong> e a velocidade de
-          codificação autônoma do
-          <strong class="text-neon-400">Devin AI</strong>.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="https://mauricio.issei.com.br/#contact"
-            class="btn-primary px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 text-center inline-block">
-            🚀 Entrar em Contato
-          </a>
-          <a href="#solucao"
-            class="btn-secondary px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 text-center inline-block">
-            Ver a Arquitetura →
-          </a>
-        </div>
-        <div class="mt-10 flex items-center gap-6 text-sm text-white/40">
-          <div class="flex items-center gap-2">
-            <span class="text-neon-400">✓</span> Facilita Auditorias SOX &amp;
-            HIPAA
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-neon-400">✓</span> Deployment IDs Rastreáveis
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-neon-400">✓</span> DORA Metrics
-          </div>
-        </div>
+  <!-- ══════════════════ HERO & INTRODUÇÃO ══════════════════ -->
+  <section class="hero-bg grid-bg pt-32 pb-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-6">
+        <span class="w-2 h-2 bg-neon-400 rounded-full animate-pulse-slow"></span>
+        Manual Prático de Engenharia · Salesforce + IA + Flosum
       </div>
-      <div class="relative">
-        <div class="absolute inset-0 bg-gradient-to-r from-neon-400/10 to-navy-600/20 rounded-2xl blur-xl"></div>
-        <div class="relative rounded-2xl overflow-hidden neon-border">
-          <div class="bg-navy-800/60 p-1 rounded-2xl border border-white/10">
-            <div class="bg-navy-800 rounded-xl px-4 py-3 flex items-center gap-2 mb-1">
-              <div class="flex gap-1.5">
-                <span class="w-3 h-3 rounded-full bg-red-500/70"></span><span
-                  class="w-3 h-3 rounded-full bg-yellow-500/70"></span><span
-                  class="w-3 h-3 rounded-full bg-green-500/70"></span>
-              </div>
-              <span class="text-white/30 text-xs mx-auto">DevOps Salesforce: Devin AI + Flosum + GitHub</span>
-            </div>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube.com/embed/IhUUpLGyIpA"
-                title="DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total"
-                allowfullscreen loading="lazy"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h1 class="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-6">
+        DevOps Salesforce com IA: <br />
+        <span class="gradient-text">O Manual Prático para Adotar Devin, Claude e Flosum</span>
+      </h1>
+      <p class="text-white/70 text-lg lg:text-xl leading-relaxed mb-10">
+        Transforme sua operação Salesforce de uma estrutura institucional em um fluxo ágil e seguro. Um guia didático e direto para desenvolvedores, arquitetos e administradores irem do zero até a execução automatizada por IA com governança Flosum.
+      </p>
 
-  <!-- ══════════════════ O DESAFIO ══════════════════ -->
-  <section id="desafio" class="py-24 bg-navy-800/30">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge-orange px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          ⚠️ Por que mudar?
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          O Gargalo Operacional
-          <span class="gradient-text-orange">do Crescimento</span>
+      <!-- SUMÁRIO DO MANUAL -->
+      <div id="sumario" class="card-glass rounded-2xl p-8 mb-12 border border-neon-400/20">
+        <h2 class="text-xl font-bold mb-6 text-neon-400 flex items-center gap-2">
+          <svg aria-hidden="true" class="w-5 h-5 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
+          Sumário do Manual
         </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Sua equipe é talentosa. O problema está na arquitetura que os
-          prende.
-        </p>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <p class="font-bold text-white mb-2 uppercase text-xs tracking-wider text-neon-400">Parte 1 — Fundação</p>
+            <ul class="space-y-2 text-white/70">
+              <li><a href="#secao-1" class="hover:text-neon-400 transition-colors">1. Guia de Setup Inicial</a></li>
+              <li><a href="#secao-2" class="hover:text-neon-400 transition-colors">2. Conectando a IA ao Ambiente Salesforce</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-bold text-white mb-2 uppercase text-xs tracking-wider font-bold text-blue-400">Parte 2 — Arquitetura</p>
+            <ul class="space-y-2 text-white/70">
+              <li><a href="#secao-3" class="hover:text-neon-400 transition-colors">3. Arquitetura em Profundidade: o Flosum Cloud Agent</a></li>
+              <li><a href="#secao-4" class="hover:text-neon-400 transition-colors">4. O Padrão de Metadados: Por Que a Estrutura Importa Para a IA</a></li>
+              <li><a href="#secao-5" class="hover:text-neon-400 transition-colors">5. Fluxo de CI/CD: do Merge ao Deploy Protegido</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-bold text-white mb-2 uppercase text-xs tracking-wider text-orange-400">Parte 3 — Metodologia</p>
+            <ul class="space-y-2 text-white/70">
+              <li><a href="#secao-6" class="hover:text-neon-400 transition-colors">6. Spec-Driven Development: o Manifesto da Nova Mentalidade</a></li>
+              <li><a href="#secao-7" class="hover:text-neon-400 transition-colors">7. Template de Especificação: o Contrato Entre Você e a IA</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-bold text-white mb-2 uppercase text-xs tracking-wider text-purple-400">Parte 4 — Governança</p>
+            <ul class="space-y-2 text-white/70">
+              <li><a href="#secao-8" class="hover:text-neon-400 transition-colors">8. O Repositório Como Cérebro da IA</a></li>
+              <li><a href="#secao-9" class="hover:text-neon-400 transition-colors">9. Governança e Habilidades: Playbooks e Skills Reutilizáveis</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-1">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-            style="background: rgba(249, 115, 22, 0.15)">
-            <svg aria-hidden="true" class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-3 text-orange-400">
-            Tempo Perdido em Tarefas Manuais
-          </h3>
-          <p class="text-white/50 text-sm leading-relaxed">
-            Desenvolvedores seniores gastam horas resolvendo conflitos de
-            arquivos XML gigantes — trabalho que não agrega valor estratégico
-            ao negócio.
-          </p>
-        </div>
-        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-2">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-            style="background: rgba(249, 115, 22, 0.15)">
-            <svg aria-hidden="true" class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-3 text-orange-400">
-            Flosum Isolado do Git Moderno
-          </h3>
-          <p class="text-white/50 text-sm leading-relaxed">
-            A integração exige orquestração. O Flosum não se conecta nativamente
-            ao GitHub e ferramentas CI/CD modernas sem provisionamento e
-            manutenção do Flosum Cloud Agent em infraestrutura própria (especialmente para orgs no modelo MDAPI legado,
-            sem Source Tracking).
-          </p>
-        </div>
-        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-3">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-            style="background: rgba(249, 115, 22, 0.15)">
-            <svg aria-hidden="true" class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-3 text-orange-400">
-            Devin AI "Cego" para o Ambiente
-          </h3>
-          <p class="text-white/50 text-sm leading-relaxed">
-            Sem acesso nativo ao formato Salesforce, o Devin AI não consegue
-            operar autonomamente — a automação que poderia poupar grande parte do
-            esforço repetitivo fica bloqueada.
-          </p>
-        </div>
+
+      <!-- INTRODUÇÃO CONTENT -->
+      <div class="card-glass rounded-2xl p-8 border-l-4 border-l-neon-400">
+        <h2 class="text-2xl font-bold mb-4 text-white">Introdução</h2>
+        <p class="text-white/70 leading-relaxed mb-4">
+          Toda organização Salesforce que tenta colocar um agente de IA para codificar direto em produção comete o mesmo erro: trata a IA como se fosse mais um desenvolvedor júnior, sem lhe dar o que um desenvolvedor júnior nunca teria — acesso direto e sem rede de segurança a um org compartilhado por dezenas de equipes.
+        </p>
+        <p class="text-white/70 leading-relaxed">
+          Este manual resolve isso em quatro camadas: <strong>fundação</strong> (ambiente instalado corretamente), <strong>arquitetura</strong> (como Flosum liga Salesforce ao Git e protege o deploy), <strong>metodologia</strong> (como escrever specs que a IA executa sem alucinar) e <strong>governança</strong> (como o próprio repositório vira a memória de longo prazo da IA). Siga as seções em ordem — cada uma depende da anterior.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════ A SOLUÇÃO ══════════════════ -->
-  <section id="solucao" class="py-24 bg-navy-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          🌉 A Arquitetura Híbrida
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          O Melhor dos Dois Mundos:
-          <span class="gradient-text">A Ponte Tecnológica</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Três componentes orquestrados em perfeita harmonia para eliminar os
-          gargalos e escalar com IA.
+  <!-- ══════════════════ PARTE 1 — FUNDAÇÃO ══════════════════ -->
+  <section id="fundacao" class="py-20 bg-navy-800/40 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-4">
+        Parte 1
+      </div>
+      <h2 class="text-3xl lg:text-4xl font-black mb-12">
+        Fundação: <span class="gradient-text">Setup e Primeira Conexão</span>
+      </h2>
+
+      <!-- SEÇÃO 1 -->
+      <div id="secao-1" class="mb-16 animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-neon-400/20 text-neon-400 flex items-center justify-center text-sm font-black">1</span>
+          Guia de Setup Inicial
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          A ordem de instalação importa. Instalar Java antes do resto é a causa mais comum de ambientes quebrados em times que estão começando. Siga esta sequência:
         </p>
-      </div>
 
-      <!-- Architecture flow diagram -->
-      <div class="flex flex-col lg:flex-row items-stretch gap-0 mb-16">
-        <!-- GitHub Card -->
-        <div
-          class="flex-1 card-glass rounded-2xl lg:rounded-r-none p-8 transition-all duration-300 border-t-2 border-t-blue-400 animated animated-delay-1">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/20">
-              <svg aria-hidden="true" class="w-7 h-7 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs text-white/40 font-medium uppercase tracking-wider">
-                01
-              </p>
-              <p class="text-xs text-blue-400 font-semibold">GitHub</p>
-            </div>
+        <div class="space-y-6">
+          <!-- Passo 1 -->
+          <div class="card-glass rounded-xl p-6 border-l-2 border-l-blue-400">
+            <h4 class="text-lg font-bold text-blue-400 mb-2">Passo 1 — Visual Studio Code</h4>
+            <p class="text-white/70 text-sm leading-relaxed">
+              Baixe e instale o VS Code em <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="text-neon-400 underline hover:text-neon-300">code.visualstudio.com</a>. É o editor-base sobre o qual toda a stack (Salesforce + IA) vai rodar.
+            </p>
           </div>
-          <h3 class="text-xl font-bold mb-3">A Oficina de IA</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-6">
-            O ambiente ágil e moderno onde o Devin AI vive, analisa o código e
-            constrói soluções de forma autônoma 24/7. Pull Requests, branches
-            e code review — tudo no ecossistema Git que sua equipe já conhece.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="text-xs bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Pull
-              Requests</span>
-            <span class="text-xs bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Code
-              Review</span>
-            <span class="text-xs bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Actions
-              CI/CD</span>
-          </div>
-        </div>
 
-        <!-- Arrow connector -->
-        <div class="hidden lg:flex items-center justify-center w-16 relative z-10">
-          <div class="flex flex-col items-center gap-1">
-            <div class="h-px w-16 step-connector"></div>
-            <svg aria-hidden="true" class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-            </svg>
-          </div>
-        </div>
-
-        <!-- Translator Card -->
-        <div
-          class="flex-1 card-glass rounded-2xl lg:rounded-none p-8 transition-all duration-300 border-t-2 border-t-neon-400 animated animated-delay-2">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-neon-400/10">
-              <svg aria-hidden="true" class="w-7 h-7 text-neon-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs text-white/40 font-medium uppercase tracking-wider">
-                02
-              </p>
-              <p class="text-xs text-neon-400 font-semibold">
-                Flosum Cloud Agent
-              </p>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold mb-3">O Flosum Cloud Agent</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-6">
-            Middleware em Node.js (AWS / Heroku) que converte o formato
-            monolítico do Salesforce para a taxonomia granular SFDX.
-            Autenticação segura via OAuth 2.0 e Tokens PAT garantem
-            comunicação protegida entre os mundos.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">OAuth
-              2.0</span>
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">SFDX
-              Converter</span>
-            <span
-              class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">Node.js</span>
-          </div>
-        </div>
-
-        <!-- Arrow connector -->
-        <div class="hidden lg:flex items-center justify-center w-16 relative z-10">
-          <div class="flex flex-col items-center gap-1">
-            <div class="h-px w-16 step-connector"></div>
-            <svg aria-hidden="true" class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-            </svg>
-          </div>
-        </div>
-
-        <!-- Flosum Card -->
-        <div
-          class="flex-1 card-glass rounded-2xl lg:rounded-l-none p-8 transition-all duration-300 border-t-2 border-t-purple-400 animated animated-delay-3">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-purple-500/20">
-              <svg aria-hidden="true" class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs text-white/40 font-medium uppercase tracking-wider">
-                03
-              </p>
-              <p class="text-xs text-purple-400 font-semibold">Flosum</p>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold mb-3">A Torre de Controle</h3>
-          <p class="text-white/50 text-sm leading-relaxed mb-6">
-            O sistema nervoso central que recebe o código aprovado e usa o
-            Smart Merge para resolver conflitos XML semanticamente, garantindo
-            deploys seguros e rastreáveis em produção.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="text-xs bg-purple-500/10 border border-purple-500/20 text-purple-300 px-3 py-1 rounded-full">Smart
-              Merge</span>
-            <span
-              class="text-xs bg-purple-500/10 border border-purple-500/20 text-purple-300 px-3 py-1 rounded-full">Deploy
-              Orquestrado</span>
-            <span
-              class="text-xs bg-purple-500/10 border border-purple-500/20 text-purple-300 px-3 py-1 rounded-full">Audit
-              Trail</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════ BUSINESS AGILITY ══════════════════ -->
-  <section id="business-agility" class="py-24 bg-navy-800/30">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <!-- Coluna da Esquerda: Copy & Storytelling -->
-        <div class="animated">
-          <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-6">
-            <span class="w-2 h-2 bg-neon-400 rounded-full animate-pulse-slow"></span>
-            💡 Aceleração de Produto
-          </div>
-          <h2 class="text-3xl lg:text-4xl font-black mb-6">
-            Da Ideia à Viabilidade em
-            <span class="gradient-text">Minutos</span>
-          </h2>
-          <p class="text-white/60 text-lg leading-relaxed mb-6">
-            No cenário tradicional, validar uma nova funcionalidade exige semanas de reuniões para estimar impactos e viabilidade técnica.
-          </p>
-          <p class="text-white/60 text-lg leading-relaxed mb-8">
-            Com o recurso <strong class="text-white">Ask Devin</strong>, times de Produto e Negócios podem consultar a base de código do Salesforce diretamente em linguagem natural. Obtenha insights técnicos profundos, descubra dependências e planeje o <em>Go-to-Market</em> sem interromper a equipe de engenharia.
-          </p>
-
-          <ul class="flex flex-col gap-4">
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style="background: rgba(0, 245, 160, 0.15)">
-                <svg aria-hidden="true" class="w-3 h-3 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg>
-              </span>
-              <p class="text-white/70 text-base">Identificação instantânea de módulos e objetos impactados.</p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style="background: rgba(0, 245, 160, 0.15)">
-                <svg aria-hidden="true" class="w-3 h-3 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg>
-              </span>
-              <p class="text-white/70 text-base">Redução drástica no tempo de planejamento de Sprints.</p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style="background: rgba(0, 245, 160, 0.15)">
-                <svg aria-hidden="true" class="w-3 h-3 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg>
-              </span>
-              <p class="text-white/70 text-base">Decisões estratégicas baseadas na realidade do código.</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Coluna da Direita: Mockup de Interface "Ask Devin" -->
-        <div class="animated animated-delay-2">
-          <div class="card-glass rounded-2xl overflow-hidden neon-border bg-navy-800/80">
-            <!-- Cabeçalho do Chat -->
-            <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/5" style="background: rgba(255,255,255,0.03)">
-              <div class="flex gap-1.5">
-                <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
-                <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
-                <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-              </div>
-              <span class="text-white/40 text-xs font-medium mx-auto">Ask Devin · Análise de Viabilidade</span>
-            </div>
-
-            <!-- Conteúdo do Chat -->
-            <div class="p-6 flex flex-col gap-6">
-              <!-- Balão de Mensagem 1 (Usuário/PM) -->
-              <div class="flex flex-col items-end gap-2 max-w-[85%] self-end">
-                <div class="bg-blue-600/30 rounded-2xl rounded-tr-none p-4 border border-blue-500/20">
-                  <p class="text-sm text-white leading-relaxed">
-                    Queremos lançar um novo fluxo de checkout com split de pagamento. É viável na nossa arquitetura atual? Quais módulos do Salesforce seriam impactados?
-                  </p>
+          <!-- Passo 2 -->
+          <div class="card-glass rounded-xl p-6 border-l-2 border-l-blue-400">
+            <h4 class="text-lg font-bold text-blue-400 mb-2">Passo 2 — Salesforce CLI + Salesforce Extension Pack</h4>
+            <ol class="list-decimal list-inside text-white/70 text-sm space-y-3 leading-relaxed">
+              <li>
+                Instale o Salesforce CLI (<code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf</code>), via instalador oficial ou npm:
+                <div class="code-block p-4 mt-2 mb-2">
+                  <pre class="font-mono text-xs text-white/90"><code>npm install --global @salesforce/cli
+sf --version</code></pre>
                 </div>
-                <span class="text-[10px] text-white/30 uppercase tracking-widest font-bold">Produto / Business</span>
-              </div>
+              </li>
+              <li>
+                Dentro do VS Code, abra a aba de Extensões (<code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">Ctrl+Shift+X</code> / <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">Cmd+Shift+X</code>) e instale o <strong>Salesforce Extension Pack</strong>. Ele traz suporte a Apex, Lightning Web Components, visualização de metadados e o <em>Apex Replay Debugger</em>.
+              </li>
+            </ol>
+          </div>
 
-              <!-- Balão de Mensagem 2 (Devin AI) -->
-              <div class="flex flex-col items-start gap-2 max-w-[90%] self-start">
-                <div class="bg-white/5 rounded-2xl rounded-tl-none p-4 border border-neon-400/20 relative">
-                  <div class="absolute -left-1.5 top-0 w-3 h-3 bg-navy-800 rotate-45 border-l border-t border-neon-400/20"></div>
-                  <div class="text-sm text-white/90 leading-relaxed">
-                    <p class="mb-3 font-bold text-neon-400">Sim, é viável.</p>
-                    <p class="mb-2">Analisei a base de código atual:</p>
-                    <ul class="flex flex-col gap-1.5 mb-3">
-                      <li class="flex items-start gap-2">
-                        <span class="text-neon-400">•</span>
-                        <span>A classe <code class="bg-white/10 px-1 rounded text-xs">OrderController.cls</code> e a trigger <code class="bg-white/10 px-1 rounded text-xs">PaymentTrigger</code> precisarão de refatoração.</span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <span class="text-neon-400">•</span>
-                        <span>O objeto customizado <code class="bg-white/10 px-1 rounded text-xs">Invoice__c</code> precisará de 2 novos campos relacionais.</span>
-                      </li>
-                      <li class="flex items-start gap-2 text-orange-400">
-                        <span class="font-bold">•</span>
-                        <span><strong>Risco:</strong> Há uma dependência legada no pacote de faturamento.</span>
-                      </li>
-                    </ul>
-                    <p class="text-white/70">Estimo um esforço médio. Deseja que eu gere um documento de arquitetura e rascunhe os Pull Requests iniciais?</p>
-                  </div>
+          <!-- Passo 3 -->
+          <div class="card-glass rounded-xl p-6 border-l-2 border-l-blue-400">
+            <h4 class="text-lg font-bold text-blue-400 mb-2">Passo 3 — Java Development Kit (JDK) 21</h4>
+            <p class="text-white/70 text-sm leading-relaxed mb-3">
+              O Apex Language Server — o motor que dá autocomplete, navegação e debug de Apex dentro do Salesforce Extension Pack — roda sobre uma JVM. Sem o JDK correto instalado, essas funcionalidades simplesmente não aparecem.
+            </p>
+            <ul class="list-disc list-inside text-white/70 text-sm space-y-2 leading-relaxed">
+              <li>Instale o <strong>JDK 21</strong> (versão recomendada atualmente; 17 e 11 ainda são aceitas). Builds gratuitas como <strong>Zulu OpenJDK</strong> ou <strong>Oracle JDK</strong> funcionam bem.</li>
+              <li>O VS Code tenta localizar o Java automaticamente pela variável de ambiente <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">JAVA_HOME</code>. Se não encontrar, aponte manualmente em <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">Settings → salesforcedx-vscode-apex.java.home</code> para a pasta de instalação do JDK 21.</li>
+            </ul>
+          </div>
+
+          <!-- Checklist -->
+          <div class="bg-neon-400/10 border border-neon-400/30 rounded-xl p-5 text-sm">
+            <p class="font-bold text-neon-400 mb-1">Checklist de validação:</p>
+            <p class="text-white/80 leading-relaxed">
+              Abra um arquivo <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">.cls</code> qualquer — se aparecer autocomplete e não houver aviso de "Java not found" no canto inferior direito, o ambiente está pronto para a próxima etapa.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-divider my-12"></div>
+
+      <!-- SEÇÃO 2 -->
+      <div id="secao-2" class="animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-neon-400/20 text-neon-400 flex items-center justify-center text-sm font-black">2</span>
+          Conectando a IA ao Ambiente Salesforce
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Com o ambiente-base pronto, o próximo passo é dar à IA os dois acessos que ela precisa: ao <strong>código</strong> (via editor) e ao <strong>org vivo</strong> (via API). Sem o segundo, a IA só enxerga arquivos estáticos — não consegue confirmar se o que ela está lendo bate com a realidade do org.
+        </p>
+
+        <div class="space-y-6 mb-10">
+          <!-- Passo 1 IA -->
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-white mb-3">Passo 1 — Instalar a extensão de IA no editor</h4>
+            <ul class="space-y-3 text-white/70 text-sm leading-relaxed">
+              <li>
+                <strong class="text-white">Claude Code:</strong> na aba de Extensões do VS Code, busque "Claude Code" e clique em instalar (funciona também em forks do VS Code). Alternativamente, instale via terminal:
+                <div class="code-block p-4 my-2">
+                  <pre class="font-mono text-xs text-white/90"><code>npm install -g @anthropic-ai/claude-code</code></pre>
                 </div>
-                <span class="text-[10px] text-neon-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 bg-neon-400 rounded-full animate-pulse"></span>
-                  Devin Autonomous AI
-                </span>
+                e rode <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">claude</code> dentro do terminal integrado do VS Code. É necessário um plano Claude (Pro, Max, Team ou Enterprise) ou uma chave de API.
+              </li>
+              <li>
+                <strong class="text-white">Devin:</strong> por ser um agente autônomo que trabalha em sandbox na nuvem, a conexão principal do Devin acontece pelo app/web dele, integrado ao seu repositório GitHub/GitLab — não como uma extensão local rodando sobre a sua máquina. Use o Devin Desktop quando precisar de uma sessão interativa local.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Passo 2 IA -->
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-white mb-2">Passo 2 — Autenticar na organização Salesforce</h4>
+            <p class="text-white/70 text-sm leading-relaxed mb-3">
+              Toda a autenticação passa pelo Salesforce CLI, que tanto Claude Code quanto Devin conseguem invocar via terminal:
+            </p>
+            <div class="code-block p-4">
+              <pre class="font-mono text-xs text-white/90"><code>sf org login web --alias minha-org --set-default</code></pre>
+            </div>
+            <p class="text-white/60 text-xs mt-2">
+              Isso abre o navegador para o fluxo OAuth padrão da Salesforce e grava um alias local reutilizável.
+            </p>
+          </div>
+
+          <!-- Passo 3 IA -->
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-white mb-2">Passo 3 — Conectar um MCP Server de Salesforce</h4>
+            <p class="text-white/70 text-sm leading-relaxed">
+              Um editor de código, sozinho, só lê arquivos. Para a IA conseguir consultar metadados e registros <strong>reais</strong> do org, ela precisa de um servidor MCP (Model Context Protocol) Salesforce conectado — seja o servidor de desenvolvimento local da Salesforce (que reaproveita a autenticação do CLI) ou um servidor MCP hospedado. É esse servidor que expõe ferramentas como "listar objetos", "descrever campos" e "rodar SOQL" para o modelo.
+            </p>
+          </div>
+
+          <!-- Passo 4 IA -->
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-white mb-2">Passo 4 — Validar a conexão</h4>
+            <p class="text-white/70 text-sm leading-relaxed mb-3">
+              O teste mais simples e mais revelador: peça à IA, em linguagem natural, algo que só teria resposta correta se ela estivesse realmente conectada ao org:
+            </p>
+            <div class="bg-navy-900/80 border border-white/10 rounded-lg p-4 font-mono text-xs text-neon-400 space-y-1">
+              <p>"Liste os objetos customizados desta org."</p>
+              <p>"Quantos registros existem na tabela Account?"</p>
+            </div>
+            <p class="text-white/60 text-xs mt-3">
+              Se a resposta vier com nomes de objetos reais do seu org (não genéricos) ou com um número que bate com um <code class="text-neon-400 bg-black/40 px-1 py-0.5 rounded font-mono">SELECT COUNT() FROM Account</code> manual, a cadeia <strong>editor → CLI → org → IA</strong> está validada de ponta a ponta.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tabela Comparativa -->
+        <h4 class="text-xl font-bold mb-4 text-white">Qual IA usar em cada situação</h4>
+        <div class="overflow-x-auto rounded-xl border border-white/10 mb-6">
+          <table class="w-full text-left text-sm table-custom bg-navy-800/60">
+            <thead>
+              <tr class="bg-white/5 text-neon-400 font-bold">
+                <th class="w-1/2">Cenário</th>
+                <th class="w-1/2">Ferramenta mais indicada</th>
+              </tr>
+            </thead>
+            <tbody class="text-white/80">
+              <tr>
+                <td>Pair programming interativo, revisão linha a linha, decisões que exigem julgamento constante</td>
+                <td><strong class="text-white">Claude Code</strong> — roda no seu editor, com revisão de diff a cada mudança</td>
+              </tr>
+              <tr>
+                <td>Ticket bem delimitado que pode rodar sozinho (ex.: atualizar 40 classes para um novo padrão de log)</td>
+                <td><strong class="text-white">Devin</strong> — agente autônomo em sandbox, entrega um Pull Request pronto para revisão</td>
+              </tr>
+              <tr>
+                <td>Exploração de arquitetura, refatoração ambígua</td>
+                <td><strong class="text-white">Claude Code</strong></td>
+              </tr>
+              <tr>
+                <td>Tarefas repetitivas em lote, delegadas via Slack/Jira sem supervisão passo a passo</td>
+                <td><strong class="text-white">Devin</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-navy-900/60 border border-white/10 rounded-lg p-4 text-xs text-white/50 italic">
+          Preços e limites de uso mudam com frequência nos dois produtos — confirme sempre na página oficial de cada um antes de dimensionar custo de equipe.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ PARTE 2 — ARQUITETURA ══════════════════ -->
+  <section id="arquitetura" class="py-20 bg-navy-900 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 badge-blue px-4 py-2 rounded-full text-xs font-semibold mb-4">
+        Parte 2
+      </div>
+      <h2 class="text-3xl lg:text-4xl font-black mb-12">
+        Arquitetura: <span class="gradient-text">As Peças por Trás da Integração</span>
+      </h2>
+
+      <!-- SEÇÃO 3 -->
+      <div id="secao-3" class="mb-16 animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm font-black">3</span>
+          Arquitetura em Profundidade: o Flosum Cloud Agent
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Salesforce fala <strong>API de Metadados</strong> (XML, chamadas SOAP/REST autenticadas contra um org). Git fala <strong>objetos de repositório</strong> (blobs, commits, protocolo HTTP/SSH). Essas duas linguagens não se entendem sozinhas — é aí que entra o <strong>Flosum Cloud Agent</strong> (também documentado como <em>Flosum Agent</em> nos materiais oficiais da Flosum).
+        </p>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Ele é um serviço construído em <strong>Node.js</strong>, normalmente hospedado fora do org Salesforce (em plataformas como Heroku), que funciona como tradutor bidirecional:
+        </p>
+
+        <!-- DIAGRAMA -->
+        <div class="card-glass rounded-xl p-6 font-mono text-xs text-neon-400 overflow-x-auto mb-8 text-center border border-neon-400/30">
+          Org Salesforce &nbsp;→&nbsp; Pacote gerenciado Flosum &nbsp;→&nbsp; Flosum Cloud Agent (Node.js) &nbsp;→&nbsp; GitHub / GitLab / Bitbucket / Azure DevOps
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+              <span class="text-neon-400">→</span> No sentido Salesforce → Git:
+            </h4>
+            <p class="text-white/70 text-sm leading-relaxed">
+              Quando um desenvolvedor faz commit de um componente dentro do Flosum, o pacote gerenciado (que vive dentro do seu org Salesforce) envia a mensagem para o Agent. O Agent traduz o payload de metadados para a estrutura de arquivos e commits que o provedor Git espera, e efetiva o push.
+            </p>
+          </div>
+
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+              <span class="text-blue-400">←</span> No sentido Git → Salesforce:
+            </h4>
+            <p class="text-white/70 text-sm leading-relaxed">
+              Quando algo é alterado direto no repositório (ou em resposta a um merge), o Agent recebe o evento, traduz de volta para o formato de metadados e sincroniza o estado dentro do Flosum, que por sua vez pode disparar deploy para um org-alvo via API de Metadados.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
+          <h4 class="text-lg font-bold text-blue-400 mb-2">Por que isso importa para IA:</h4>
+          <p class="text-white/80 text-sm leading-relaxed">
+            Ferramentas como Claude Code e Devin foram treinadas e otimizadas para trabalhar sobre repositórios Git comuns — não sobre a API de Metadados da Salesforce diretamente. O Agent é o que torna seu org "legível" como um repositório Git normal, permitindo que a IA opere sem precisar entender os detalhes de autenticação e serialização da plataforma Salesforce.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-divider my-12"></div>
+
+      <!-- SEÇÃO 4 -->
+      <div id="secao-4" class="mb-16 animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm font-black">4</span>
+          O Padrão de Metadados: Por Que a Estrutura Importa Para a IA
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Modelos de IA generativa foram treinados em uma quantidade massiva de repositórios Salesforce públicos que seguem uma convenção: o formato de origem do <strong>Salesforce DX</strong>, com a raiz do código-fonte em:
+        </p>
+
+        <div class="code-block p-6 mb-6">
+          <pre class="font-mono text-xs text-white/90"><code>force-app/
+└── main/
+    └── default/
+        ├── classes/
+        ├── triggers/
+        ├── lwc/
+        ├── aura/
+        ├── objects/
+        ├── flows/
+        ├── layouts/
+        └── permissionsets/</code></pre>
+        </div>
+
+        <p class="text-white/70 leading-relaxed mb-6">
+          Essa estrutura não é só uma convenção estética — é o mapa mental que o modelo usa para prever onde um arquivo deveria estar. Quando um repositório se desvia dela (pastas customizadas, formato de metadados legado, nomes de API divergentes dos nomes de arquivo), a IA passa a <strong>alucinar caminhos</strong>: sugere editar um arquivo que não existe, cria um componente na pasta errada, ou falha em enxergar a dependência entre uma classe Apex e o objeto customizado que ela manipula.
+        </p>
+
+        <div class="card-glass rounded-xl p-6 border-l-4 border-l-orange-400">
+          <h4 class="text-lg font-bold text-orange-400 mb-2">Regra prática:</h4>
+          <p class="text-white/80 text-sm leading-relaxed mb-3">
+            Se seu projeto ainda usa o formato de metadados legado, converta antes de expor o repositório à IA:
+          </p>
+          <div class="code-block p-4 mb-3">
+            <pre class="font-mono text-xs text-white/90"><code>sf project convert source -r caminho/do/metadata/legado -d force-app</code></pre>
+          </div>
+          <p class="text-white/70 text-xs">
+            Mantenha nomes de API idênticos aos nomes de arquivo, e evite pastas customizadas fora da árvore <code class="text-neon-400 bg-black/40 px-1 py-0.5 rounded font-mono">force-app/main/default/</code>. Cada exceção à convenção é um ponto a mais onde a IA vai "adivinhar" — e adivinhar em um org de produção compartilhado tem custo real.
+          </p>
+        </div>
+      </div>
+
+      <div class="section-divider my-12"></div>
+
+      <!-- SEÇÃO 5 -->
+      <div id="secao-5" class="animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm font-black">5</span>
+          Fluxo de CI/CD: do Merge ao Deploy Protegido
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Depois que uma IA (ou um humano) abre um Pull Request e ele é aprovado e mesclado na branch de integração, o fluxo automático assume:
+        </p>
+
+        <ol class="space-y-4 text-white/80 text-sm leading-relaxed mb-8">
+          <li class="card-glass rounded-xl p-5 flex items-start gap-4">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center shrink-0 text-xs">1</span>
+            <div>
+              <strong class="text-white">Webhook de pós-merge:</strong> o provedor Git (GitHub, GitLab, Bitbucket) dispara um webhook assim que o merge acontece.
+            </div>
+          </li>
+          <li class="card-glass rounded-xl p-5 flex items-start gap-4">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center shrink-0 text-xs">2</span>
+            <div>
+              <strong class="text-white">Flosum Cloud Agent recebe o evento</strong> e notifica o Flosum dentro do org, que reconhece a nova revisão na branch correspondente.
+            </div>
+          </li>
+          <li class="card-glass rounded-xl p-5 flex items-start gap-4">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center shrink-0 text-xs">3</span>
+            <div>
+              <strong class="text-white">O Pipeline é acionado automaticamente</strong> — no Flosum, um pipeline é uma sequência configurável de passos (validação, deploy, rollback) que pode ser disparada automaticamente a cada commit em uma branch ou repositório vinculado, sem intervenção manual.
+            </div>
+          </li>
+          <li class="card-glass rounded-xl p-5 flex items-start gap-4">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center shrink-0 text-xs">4</span>
+            <div>
+              <strong class="text-white">Deployment com escopo dinâmico:</strong> usando <em>Delta Deployments</em>, o pipeline envia apenas os componentes que de fato mudaram — não o pacote inteiro — reduzindo tempo de deploy e superfície de risco.
+            </div>
+          </li>
+          <li class="card-glass rounded-xl p-5 flex items-start gap-4">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center shrink-0 text-xs">5</span>
+            <div>
+              <strong class="text-white">Antes de tocar no org-alvo, duas proteções entram em ação:</strong>
+              <div class="grid md:grid-cols-2 gap-4 mt-3">
+                <div class="bg-navy-900/80 p-4 rounded-lg border border-white/10">
+                  <span class="text-neon-400 font-bold block mb-1">Overwrite Protection</span>
+                  <p class="text-white/60 text-xs">Compara o que está sendo implantado contra o estado atual real do org de destino. Se alguém alterou aquele mesmo componente diretamente no org (fora do fluxo Git) ou outra branch já o modificou, o deploy é sinalizado em vez de simplesmente sobrescrever.</p>
+                </div>
+                <div class="bg-navy-900/80 p-4 rounded-lg border border-white/10">
+                  <span class="text-purple-400 font-bold block mb-1">Smart Merge</span>
+                  <p class="text-white/60 text-xs">Faz uma comparação semântica (campo a campo, método a método — não linha a linha como um <code class="text-neon-400 font-mono">git diff</code> comum) entre as versões em conflito. Isso permite que duas equipes alterando <strong>campos diferentes do mesmo objeto</strong> ou <strong>métodos diferentes da mesma classe</strong> tenham ambas as mudanças preservadas, em vez de uma sobrescrever a outra.</p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          </li>
+        </ol>
 
-  <!-- ══════════════════ ENGENHARIA E GOVERNANÇA ══════════════════ -->
-  <section id="engenharia" class="py-24 bg-navy-800">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          🛠️ Centro de Engenharia
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          Engenharia e <span class="gradient-text">Governança</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          A fundação técnica que torna tudo possível. Transparência total em nossa arquitetura de Agent.
-        </p>
-      </div>
-    </div>
-    
-    <!-- ══════════════════ DEEP DIVE TÉCNICO ══════════════════ -->
-  <div id="deep-dive" class="pt-10 mb-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          ⚙️ Under the Hood
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          Deep Dive Técnico:
-          <span class="gradient-text">O Motor Node.js</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Arquitetura Enterprise baseada na imagem oficial do Flosum Cloud Agent, orquestrada para alta disponibilidade.
-        </p>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-10 items-start">
-        <!-- Left column: Architecture pillars -->
-        <div class="flex flex-col gap-6 animated animated-delay-1">
-          <!-- Item 1 -->
-          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-              style="background: rgba(0, 245, 160, 0.12)">
-              <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-bold text-white mb-1">
-                Autenticação Server-to-Server:
-              </p>
-              <p class="text-white/50 text-sm leading-relaxed">
-                Utiliza fluxo OAuth 2.0 JWT Bearer Token com chaves RSA-4096
-                (<code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">jsonwebtoken</code>
-                +
-                <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">axios</code>) para
-                conexão contínua sem intervenção humana.
-              </p>
-            </div>
-          </div>
-          <!-- Item 2 -->
-          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-              style="background: rgba(0, 245, 160, 0.12)">
-              <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-bold text-white mb-1">Conversor SFDX Nativo:</p>
-              <p class="text-white/50 text-sm leading-relaxed">
-                Executa comandos do Salesforce CLI (<code
-                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">sf project convert mdapi</code>)
-                via processos Node para desembrulhar pacotes legados ZIP em
-                pacotes modulares instantaneamente.
-              </p>
-            </div>
-          </div>
-          <!-- Item 3 -->
-          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-              style="background: rgba(0, 245, 160, 0.12)">
-              <svg class="w-6 h-6 text-neon-400" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-bold text-white mb-1">
-                Integração GitHub via Octokit:
-              </p>
-              <p class="text-white/50 text-sm leading-relaxed">
-                Consome webhooks do Flosum via Express.js/Fastify e utiliza a
-                SDK oficial do GitHub para criar feature branches e injetar os metadados convertidos, permitindo que o
-                Devin abra Pull Requests para revisão antes do merge.
-              </p>
-            </div>
-          </div>
-          <!-- Item 4 -->
-          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-              style="background: rgba(0, 245, 160, 0.12)">
-              <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-bold text-white mb-1">
-                Gestão de Segredos Cloud Native:
-              </p>
-              <p class="text-white/50 text-sm leading-relaxed">
-                Credenciais como
-                <code
-                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SALESFORCE_TOKEN</code>
-                e chaves RSA nunca ficam no disco. São injetadas dinamicamente
-                via
-                <code
-                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">AWS Secrets Manager</code>
-                ou
-                <code
-                  class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">Kubernetes Secrets</code>.
-              </p>
-            </div>
-          </div>
-          <!-- Item 5 -->
-          <div class="card-glass rounded-2xl p-6 transition-all duration-300 flex items-start gap-5">
-            <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-              style="background: rgba(59, 130, 246, 0.2)">
-              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-bold text-white mb-1">
-                Arquitetura de Agente Agnóstica (Node.js)
-              </p>
-              <p class="text-white/50 text-sm leading-relaxed">
-                O Flosum Agent é um middleware leve em Node.js projetado para contentores. Embora as bases da arquitetura e integração Git estejam documentadas para PaaS, nossa solução eleva este padrão para uma operação Serverless de alta disponibilidade.
-                <br>
-                <a href="https://success.flosum.com/s/article/Heroku-Flosum-Agent-Git-Integration" target="_blank" rel="noopener noreferrer" class="text-neon-400 hover:text-neon-500 text-sm font-semibold mt-3 inline-block transition-colors">📄 Ver Referência da Arquitetura →</a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right column: Code window -->
-        <div class="animated animated-delay-2">
-          <div class="rounded-2xl overflow-hidden neon-border" style="
-                background: #030712;
-                border: 1px solid rgba(0, 245, 160, 0.5);
-                box-shadow: 0 0 20px rgba(0, 245, 160, 0.15);
-              ">
-            <!-- macOS window chrome -->
-            <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/5" style="background: #111827">
-              <span class="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors cursor-pointer"></span>
-              <span
-                class="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer"></span>
-              <span
-                class="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 transition-colors cursor-pointer"></span>
-              <span class="ml-4 text-xs text-white/30 font-mono">k8s/flosum-agent-deployment.yaml</span>
-              <span class="ml-auto text-xs badge px-2 py-0.5 rounded">Kubernetes / Docker</span>
-            </div>
-            <!-- Code content -->
-            <div class="p-6 overflow-x-auto">
-              <pre class="text-sm font-mono leading-relaxed"
-                style="tab-size: 2"><code><span style="color:#6b7280;"># Deployment oficial do Flosum Agent no AWS EKS</span>
-<span style="color:#c792ea;">apiVersion</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">apps/v1</span>
-<span style="color:#c792ea;">kind</span><span style="color:#89ddff;">:</span> <span style="color:#82aaff;">Deployment</span>
-<span style="color:#c792ea;">metadata</span><span style="color:#89ddff;">:</span>
-  <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosum-agent</span>
-<span style="color:#c792ea;">spec</span><span style="color:#89ddff;">:</span>
-  <span style="color:#c792ea;">replicas</span><span style="color:#89ddff;">:</span> <span style="color:#f78c6c;">2</span>
-  <span style="color:#c792ea;">template</span><span style="color:#89ddff;">:</span>
-    <span style="color:#c792ea;">spec</span><span style="color:#89ddff;">:</span>
-      <span style="color:#c792ea;">containers</span><span style="color:#89ddff;">:</span>
-      <span style="color:#89ddff;">-</span> <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosum-node-agent</span>
-        <span style="color:#c792ea;">image</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosumhub/agent:latest</span>
-        <span style="color:#c792ea;">ports</span><span style="color:#89ddff;">:</span>
-        <span style="color:#89ddff;">-</span> <span style="color:#c792ea;">containerPort</span><span style="color:#89ddff;">:</span> <span style="color:#f78c6c;">3000</span>
-        <span style="color:#c792ea;">env</span><span style="color:#89ddff;">:</span>
-        <span style="color:#6b7280;"># Autenticação JWT via AWS Secrets Manager</span>
-        <span style="color:#89ddff;">-</span> <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#00f5a0;">SALESFORCE_TOKEN</span>
-          <span style="color:#c792ea;">valueFrom</span><span style="color:#89ddff;">:</span>
-            <span style="color:#c792ea;">secretKeyRef</span><span style="color:#89ddff;">:</span>
-              <span style="color:#c792ea;">name</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">flosum-secrets</span>
-              <span style="color:#c792ea;">key</span><span style="color:#89ddff;">:</span> <span style="color:#c3e88d;">sf-jwt-token</span>
-        <span style="color:#6b7280;"># Rotação de chaves e Least Privilege aplicados</span>
-        <span style="color:#c792ea;">securityContext</span><span style="color:#89ddff;">:</span>
-          <span style="color:#c792ea;">runAsNonRoot</span><span style="color:#89ddff;">:</span> <span style="color:#f78c6c;">true</span></code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-  <div id="matriz" class="mb-20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          🤝 Sinergia Homem-Máquina
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          Matriz de Responsabilidade:
-          <span class="gradient-text">Quem faz o quê?</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          IA executa, Humano governa.
-        </p>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Coluna Devin AI -->
-        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-1"
-          style="border-top: 2px solid rgba(0, 245, 160, 0.6)">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center"
-              style="background: rgba(0, 245, 160, 0.15)">
-              <svg aria-hidden="true" class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs text-neon-400 font-semibold uppercase tracking-wider">
-                Automação
-              </p>
-              <h3 class="text-xl font-black text-white">
-                Devin AI
-                <span class="text-neon-400">(Execução &amp; Automação)</span>
-              </h3>
-            </div>
-          </div>
-          <ul class="flex flex-col gap-4">
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(0, 245, 160, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-neon-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Codificação de tarefas
-                <span class="text-neon-400 font-semibold">bem delimitadas e repetitivas</span>
-                24/7
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(0, 245, 160, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-neon-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Criação de Scratch Orgs no CLI
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(0, 245, 160, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-neon-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Escrita de Testes Unitários
-                <span class="text-neon-400 font-semibold">(garantindo 75%+ de cobertura)</span>
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(0, 245, 160, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-neon-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Refatoração de dívida técnica
-                <span class="text-neon-400 font-semibold">(SonarQube)</span>
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(0, 245, 160, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-neon-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Abertura de Pull Requests detalhados
-              </p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Coluna Engenheiro Humano -->
-        <div class="card-glass rounded-2xl p-8 transition-all duration-300 animated animated-delay-2"
-          style="border-top: 2px solid rgba(251, 146, 60, 0.6)">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center"
-              style="background: rgba(249, 115, 22, 0.15)">
-              <svg aria-hidden="true" class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs text-orange-400 font-semibold uppercase tracking-wider">
-                Governança
-              </p>
-              <h3 class="text-xl font-black text-white">
-                Engenheiro Humano
-                <span class="text-orange-400">(Estratégia &amp; Governança)</span>
-              </h3>
-            </div>
-          </div>
-          <ul class="flex flex-col gap-4">
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(249, 115, 22, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-orange-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Revisão de código e aprovação de PRs
-                <span class="text-orange-400 font-semibold">(Peer Review)</span>
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(249, 115, 22, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-orange-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Decisões de arquitetura de software
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(249, 115, 22, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-orange-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Estratégia e modelagem de metadados complexos
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(249, 115, 22, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-orange-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Resolução de conflitos de negócio
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(249, 115, 22, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-orange-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Aprovação final de deploy via
-                <span class="text-orange-400 font-semibold">Flosum</span>
-              </p>
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                style="background: rgba(249, 115, 22, 0.15)"><svg aria-hidden="true" class="w-3 h-3 text-orange-400"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg></span>
-              <p class="text-white/70 text-sm leading-relaxed">
-                Revisão qualitativa dos testes gerados
-                <span class="text-orange-400 font-semibold">(garantir asserts de regras de negócio, não apenas
-                  cobertura de linhas)</span>
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-  <div id="setup-aws" class="pb-10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          ☁️ 100% Serverless AWS
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          Setup do Flosum Agent via <span class="gradient-text">AWS Fargate</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Orquestração sem gestão de servidores. Implementação via Amazon ECS para o middleware Node.js, garantindo zero manutenção de SO e segurança nativa.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-        <!-- Step 1 -->
-        <div
-          class="card-glass rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 animated animated-delay-1">
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-navy-900 font-black text-lg"
-              style="background: linear-gradient(135deg, #00f5a0, #00d48a)">
-              1
-            </div>
-            <div class="h-px flex-1" style="
-                  background: linear-gradient(
-                    90deg,
-                    rgba(0, 245, 160, 0.4),
-                    transparent
-                  );
-                "></div>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-base mb-2">
-              Amazon ECS &amp; Fargate
-            </h3>
-            <p class="text-white/50 text-sm leading-relaxed">
-              Execução da imagem oficial (<code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">flosumhub/agent</code>) diretamente no AWS Fargate (2 vCPUs / 16GB RAM), eliminando instâncias EC2 e o overhead do EKS.
-            </p>
-          </div>
-          <div class="mt-auto">
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">AWS Fargate</span>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div
-          class="card-glass rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 animated animated-delay-2">
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-navy-900 font-black text-lg"
-              style="background: linear-gradient(135deg, #00f5a0, #00d48a)">
-              2
-            </div>
-            <div class="h-px flex-1" style="
-                  background: linear-gradient(
-                    90deg,
-                    rgba(0, 245, 160, 0.4),
-                    transparent
-                  );
-                "></div>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-base mb-2">
-              Application Load Balancer &amp; ACM
-            </h3>
-            <p class="text-white/50 text-sm leading-relaxed">
-              O AWS ALB atua como proxy reverso com terminação SSL via AWS Certificate Manager (ACM), atendendo à exigência de Root CA do Salesforce.
-            </p>
-          </div>
-          <div class="mt-auto">
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">ALB + ACM</span>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div
-          class="card-glass rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 animated animated-delay-3">
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-navy-900 font-black text-lg"
-              style="background: linear-gradient(135deg, #00f5a0, #00d48a)">
-              3
-            </div>
-            <div class="h-px flex-1" style="
-                  background: linear-gradient(
-                    90deg,
-                    rgba(0, 245, 160, 0.4),
-                    transparent
-                  );
-                "></div>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-base mb-2">
-              Storage Serverless (EFS)
-            </h3>
-            <p class="text-white/50 text-sm leading-relaxed">
-              Mapeamento do diretório <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">/home/node/data</code> em volumes elásticos do Amazon EFS, garantindo a persistência de logs e processamento de snapshots.
-            </p>
-          </div>
-          <div class="mt-auto">
-            <span class="text-xs bg-neon-400/10 border border-neon-400/20 text-neon-400 px-3 py-1 rounded-full">Amazon EFS</span>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div
-          class="card-glass rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 animated animated-delay-3">
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-navy-900 font-black text-lg"
-              style="background: linear-gradient(135deg, #fb923c, #f97316)">
-              4
-            </div>
-            <div class="h-px flex-1" style="
-                  background: linear-gradient(
-                    90deg,
-                    rgba(251, 146, 60, 0.4),
-                    transparent
-                  );
-                "></div>
-          </div>
-          <div>
-            <h3 class="font-bold text-white text-base mb-2">
-              Segurança &amp; Secrets Manager
-            </h3>
-            <p class="text-white/50 text-sm leading-relaxed">
-              Injeção nativa do <code class="text-neon-400 bg-neon-400/10 px-1.5 py-0.5 rounded text-xs font-mono">SALESFORCE_TOKEN</code> via AWS Secrets Manager e restrição de tráfego via Security Groups.
-            </p>
-          </div>
-          <div class="mt-auto">
-            <span
-              class="text-xs bg-orange-400/10 border border-orange-400/20 text-orange-400 px-3 py-1 rounded-full">Secrets Manager</span>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-12"><a href="https://success.flosum.com/s/article/Flosum-Agent-AWS-Setup" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-neon-400 text-sm transition-colors">Consulte o Guia Oficial de Setup AWS da Flosum ↗</a></div>
-    </div>
-  </div>
-  </section>
-
-  <!-- ══════════════════ PLAYBOOK DE PROMPTS ══════════════════ -->
-  <section id="playbooks" class="py-24 bg-navy-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          💬 Prompt Engineering
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          Playbook de Prompts para
-          <span class="gradient-text">Salesforce</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Como delegar tarefas complexas para o Devin AI obter a maior taxa de
-          sucesso.
-        </p>
-      </div>
-
-      <div class="flex flex-col gap-10 max-w-4xl mx-auto">
-        <!-- Exemplo 1 -->
-        <div class="animated animated-delay-1">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="badge px-3 py-1 rounded-full text-xs font-bold">Cenário 01</span>
-            <h3 class="font-bold text-white text-lg">
-              Refatoração e Remoção de N+1
-            </h3>
-          </div>
-          <div class="rounded-2xl overflow-hidden neon-border" style="
-                background: #030712;
-                border: 1px solid rgba(0, 245, 160, 0.15);
-              ">
-            <!-- Terminal chrome -->
-            <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/5" style="background: #111827">
-              <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-              <span class="ml-4 text-xs text-white/30 font-mono">Devin AI · Slack / Jira</span>
-              <span class="ml-auto badge px-2 py-0.5 rounded text-xs">Prompt</span>
-            </div>
-            <div class="p-6">
-              <pre class="text-sm font-mono leading-relaxed whitespace-pre-wrap break-words" style="color: #e2e8f0"><span style="color:#6b7280;">// Prompt de delegação de tarefa</span>
-<span style="color:#00f5a0;">@Devin</span><span style="color:#e2e8f0;">, refatore a </span><span style="color:#c3e88d;">`AccountTrigger`</span><span style="color:#e2e8f0;"> para evitar queries SOQL dentro
-de loops (N+1). Use a classe </span><span style="color:#c3e88d;">`AccountTriggerHandler`</span><span style="color:#e2e8f0;"> existente
-como padrão de projeto arquitetural.
-
-Após a implementação, execute </span><span style="color:#fb923c;">sf apex run test</span><span style="color:#e2e8f0;"> e certifique-se
-de que a cobertura da classe passe de </span><span style="color:#00f5a0;">80%</span><span style="color:#e2e8f0;"> antes de abrir
-o Pull Request.</span></pre>
-            </div>
-          </div>
-        </div>
-
-        <!-- Exemplo 2 -->
-        <div class="animated animated-delay-2">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="badge-orange px-3 py-1 rounded-full text-xs font-bold">Cenário 02</span>
-            <h3 class="font-bold text-white text-lg">
-              Criação de Componentes (LWC)
-            </h3>
-          </div>
-          <div class="rounded-2xl overflow-hidden" style="
-                background: #030712;
-                border: 1px solid rgba(251, 146, 60, 0.2);
-                box-shadow:
-                  0 0 0 1px rgba(251, 146, 60, 0.1),
-                  inset 0 0 30px rgba(251, 146, 60, 0.02);
-              ">
-            <!-- Terminal chrome -->
-            <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/5" style="background: #111827">
-              <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-              <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
-              <span class="ml-4 text-xs text-white/30 font-mono">Devin AI · Slack / Jira</span>
-              <span class="ml-auto badge-orange px-2 py-0.5 rounded text-xs">Prompt</span>
-            </div>
-            <div class="p-6">
-              <pre class="text-sm font-mono leading-relaxed whitespace-pre-wrap break-words"
-                style="color: #e2e8f0"><span style="color:#6b7280;">// Prompt de criação de componente</span>
-<span style="color:#00f5a0;">@Devin</span><span style="color:#e2e8f0;">, crie um Lightning Web Component chamado
-</span><span style="color:#c3e88d;">`OrderDashboard`</span><span style="color:#e2e8f0;">. Ele deve buscar dados do Apex
-</span><span style="color:#c3e88d;">`OrderController`</span><span style="color:#e2e8f0;">.
-
-Por favor, respeite a taxonomia SFDX:
-</span><span style="color:#fb923c;">force-app/main/default/lwc</span><span style="color:#e2e8f0;">
-
-Garanta que os arquivos </span><span style="color:#c3e88d;">`.js-meta.xml`</span><span style="color:#e2e8f0;"> estejam
-expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span><span style="color:#e2e8f0;">.</span></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════ JORNADA / TIMELINE ══════════════════ -->
-  <section id="jornada" class="py-24 bg-navy-800/20">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          🔄 Como Funciona na Prática
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          A Nova Jornada de <span class="gradient-text">Trabalho</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Do ticket à produção — com IA, automação e controle total. Cinco
-          passos que transformam como sua equipe entrega, incluindo o fluxo
-          reverso de sincronização.
-        </p>
-      </div>
-
-      <!-- Desktop steps horizontal -->
-      <div class="hidden lg:flex justify-between items-start relative mt-12 w-full mb-16">
-        <!-- Connector line -->
-        <div class="absolute top-[28px] left-[10%] right-[10%] h-px bg-white/10 z-0 step-connector"></div>
-        
-        <!-- Step 1 -->
-        <div class="flex flex-col items-center text-center w-1/5 px-2 relative z-10 animated animated-delay-1">
-          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0, 245, 160, 0.15), rgba(30, 58, 138, 0.3));">
-            <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-[10px]">1</span>
-            <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
-          </div>
-          <h3 class="font-bold text-white mb-2 text-sm">Delegação<br>Inteligente</h3>
-          <p class="text-white/45 text-xs leading-relaxed">A demanda chega via Jira. O dev marca <span class="text-neon-400 font-mono">@Devin</span>.</p>
-        </div>
-        
-        <!-- Step 2 -->
-        <div class="flex flex-col items-center text-center w-1/5 px-2 relative z-10 animated animated-delay-2">
-          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0, 245, 160, 0.15), rgba(30, 58, 138, 0.3));">
-            <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-[10px]">2</span>
-            <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
-          </div>
-          <h3 class="font-bold text-white mb-2 text-sm">Trabalho<br>Autônomo</h3>
-          <p class="text-white/45 text-xs leading-relaxed">Devin cria Scratch Org, escreve código e testes (75%+), e abre o PR.</p>
-        </div>
-        
-        <!-- Step 3 -->
-        <div class="flex flex-col items-center text-center w-1/5 px-2 relative z-10 animated animated-delay-3">
-          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0, 245, 160, 0.15), rgba(30, 58, 138, 0.3));">
-            <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-[10px]">3</span>
-            <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-          </div>
-          <h3 class="font-bold text-white mb-2 text-sm">Revisão<br>de Elite</h3>
-          <p class="text-white/45 text-xs leading-relaxed">Engenheiros atuam como arquitetos, revisando e aprovando o PR.</p>
-        </div>
-        
-        <!-- Step 4 -->
-        <div class="flex flex-col items-center text-center w-1/5 px-2 relative z-10 animated">
-          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-neon-400/30" style="background: linear-gradient(135deg, rgba(0, 245, 160, 0.15), rgba(30, 58, 138, 0.3));">
-            <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-[10px]">4</span>
-            <svg class="w-6 h-6 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" /></svg>
-          </div>
-          <h3 class="font-bold text-white mb-2 text-sm">Merge &amp;<br>Aprovação</h3>
-          <p class="text-white/45 text-xs leading-relaxed">Código mergeado na branch principal com ID rastreável.</p>
-        </div>
-        
-        <!-- Step 5 -->
-        <div class="flex flex-col items-center text-center w-1/5 px-2 relative z-10 animated animated-delay-3">
-          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-purple-400/30" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(30, 58, 138, 0.3)); box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);">
-            <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-white font-black text-[10px]" style="background: linear-gradient(135deg, #a78bfa, #7c3aed)">5</span>
-            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-          </div>
-          <h3 class="font-bold text-purple-400 mb-2 text-sm">Sincronização<br>Reversa</h3>
-          <p class="text-white/45 text-xs leading-relaxed">Webhook aciona o Flosum para retorno ao processo do Salesforce.</p>
-        </div>
-      </div>
-
-      <!-- Mobile steps vertical -->
-      <div class="lg:hidden flex flex-col gap-8">
-        <div class="flex gap-4 animated">
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">
-              1
-            </div>
-            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
-          </div>
-          <div class="pb-8">
-            <h3 class="font-bold text-white mb-2">Delegação Inteligente</h3>
-            <p class="text-white/45 text-sm">
-              A demanda chega via Jira ou Slack. O PM ou Dev simplesmente
-              marca o <span class="text-neon-400 font-mono">@Devin</span>.
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 animated">
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">
-              2
-            </div>
-            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
-          </div>
-          <div class="pb-8">
-            <h3 class="font-bold text-white mb-2">Trabalho Autônomo</h3>
-            <p class="text-white/45 text-sm">
-              Devin cria Scratch Org, escreve código e testes unitários (75%+), e abre o PR.
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 animated">
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">
-              3
-            </div>
-            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
-          </div>
-          <div class="pb-8">
-            <h3 class="font-bold text-white mb-2">Revisão Humana de Elite</h3>
-            <p class="text-white/45 text-sm">
-              Engenheiros seniores atuam como arquitetos, validam o PR e
-              aprovam. Sem escrever código do zero.
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 animated">
-          <div class="flex flex-col items-center">
-            <div
-              class="w-10 h-10 rounded-full timeline-dot flex items-center justify-center text-navy-900 font-black text-sm shrink-0">
-              4
-            </div>
-            <div class="flex-1 w-0.5 bg-gradient-to-b from-neon-400/50 to-transparent mt-2"></div>
-          </div>
-          <div class="pb-8">
-            <h3 class="font-bold text-white mb-2">Merge &amp; Aprovação</h3>
-            <p class="text-white/45 text-sm">
-              Engenheiro aprova o PR. O código é mergeado na branch principal
-              com Deployment ID rastreável.
-            </p>
-          </div>
-        </div>
-        <div class="flex gap-4 animated">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm shrink-0"
-            style="background: linear-gradient(135deg, #a78bfa, #7c3aed)">
-            5
-          </div>
-          <div>
-            <h3 class="font-bold text-white mb-2">
-              Deploy &amp; Sincronização Reversa
-            </h3>
-            <p class="text-white/45 text-sm">
-              Após o merge, um webhook (nativo ou GitHub Actions) aciona o Flosum Git Sync. O código
-              retorna ao Salesforce, onde o
-              <span class="text-purple-400 font-semibold">Smart Merge</span>
-              resolve conflitos XML antes da promoção para QA/UAT.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <!-- ══════════════════ GANHOS DE NEGÓCIO ══════════════════ -->
-  <section id="ganhos" class="py-24 bg-navy-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-          📈 Valor Real
-        </div>
-        <h2 class="text-3xl lg:text-4xl font-black mb-5">
-          Os Ganhos de <span class="gradient-text">Negócio</span>
-        </h2>
-        <p class="text-white/50 max-w-2xl mx-auto text-lg">
-          Métricas reais, impacto real. Não é promessa de plataforma — é
-          resultado mensurável.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 mb-16">
-        <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-1">
-          <div class="text-4xl font-black text-neon-400 mb-2 animate-glow leading-tight">
-            Escalabilidade<br />Acelerada
-          </div>
-          <h3 class="font-bold text-white text-lg mb-3 mt-2">
-            Paralelização com IA
-          </h3>
-          <p class="text-white/45 text-sm leading-relaxed">
-            A IA absorve o volume de trabalho braçal, liberando o time humano
-            para inovação arquitetural e decisões estratégicas.
-            <span class="text-white/30">(Baseado na paralelização de tarefas com IA)</span>
+        <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-5 text-sm">
+          <p class="text-purple-300 leading-relaxed">
+            Esse par — <strong>Overwrite Protection + Smart Merge</strong> — é o que torna seguro delegar deploys a um fluxo majoritariamente automatizado num org enterprise com múltiplas squads mexendo nos mesmos objetos em paralelo.
           </p>
         </div>
-        <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-2">
-          <div class="text-4xl font-black text-neon-400 mb-2 animate-glow leading-tight">
-            Auditoria<br />Completa
-          </div>
-          <h3 class="font-bold text-white text-lg mb-3 mt-2">
-            Trilha de Ponta a Ponta
-          </h3>
-          <p class="text-white/45 text-sm leading-relaxed">
-            Cada linha de código em produção tem um Deployment ID rastreável
-            no GitHub com audit trail completo — facilitando auditorias SOX e
-            HIPAA.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ PARTE 3 — METODOLOGIA ══════════════════ -->
+  <section id="metodologia" class="py-20 bg-navy-800/40 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 badge-orange px-4 py-2 rounded-full text-xs font-semibold mb-4">
+        Parte 3
+      </div>
+      <h2 class="text-3xl lg:text-4xl font-black mb-12">
+        Metodologia: <span class="gradient-text-orange">Pensar Antes de Escrever o Prompt</span>
+      </h2>
+
+      <!-- SEÇÃO 6 -->
+      <div id="secao-6" class="mb-16 animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center text-sm font-black">6</span>
+          Spec-Driven Development: o Manifesto da Nova Mentalidade
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Em 2024 e 2025, a indústria inteira passou pelo mesmo ciclo: prompts soltos geravam código plausível que divergia da intenção real — o que passou a ser chamado de <em>vibe coding</em>. A resposta a isso, hoje adotada por ferramentas como GitHub Spec Kit, AWS Kiro e as próprias skills do Claude Code, tem nome: <strong>Spec-Driven Development (SDD)</strong>.
+        </p>
+
+        <div class="card-glass rounded-2xl p-8 border-l-4 border-l-orange-400 my-8">
+          <p class="text-xl font-bold text-white italic text-center leading-relaxed">
+            "Você não escreve mais o COMO. Você escreve o QUÊ e o PORQUÊ — e a IA resolve a implementação."
           </p>
         </div>
-        <div class="stat-card rounded-2xl p-8 text-center animated animated-delay-3">
-          <div class="text-4xl font-black text-neon-400 mb-2 animate-glow leading-tight">
-            Otimização<br />DORA
-          </div>
-          <h3 class="font-bold text-white text-lg mb-3 mt-2">
-            Visibilidade Contínua
-          </h3>
-          <p class="text-white/45 text-sm leading-relaxed">
-            Visibilidade contínua de Lead Time e Deployment Frequency. A
-            arquitetura estrutura o pipeline para que as métricas DORA possam
-            ser medidas e melhoradas.
+
+        <p class="text-white/70 leading-relaxed mb-6">
+          Isso exige uma mudança real de hábito:
+        </p>
+
+        <ul class="space-y-4 text-white/80 text-sm leading-relaxed mb-8">
+          <li class="card-glass rounded-xl p-5 flex items-start gap-3">
+            <span class="text-orange-400 font-bold">•</span>
+            <div><strong class="text-white">O entregável do desenvolvedor deixa de ser código e passa a ser a especificação.</strong> Código se tornou barato de gerar; intenção clara continua sendo o recurso escasso.</div>
+          </li>
+          <li class="card-glass rounded-xl p-5 flex items-start gap-3">
+            <span class="text-orange-400 font-bold">•</span>
+            <div><strong class="text-white">Ambiguidade não é economia de tempo — é dívida técnica que a IA vai pagar por você, do jeito errado.</strong> Um prompt vago como "melhora esse fluxo de aprovação" convida a IA a tomar decisões de negócio que não são dela para tomar.</div>
+          </li>
+          <li class="card-glass rounded-xl p-5 flex items-start gap-3">
+            <span class="text-orange-400 font-bold">•</span>
+            <div><strong class="text-white">Em um org Salesforce compartilhado, uma suposição errada não gera só um bug — gera um incidente.</strong> Validation rules, flows e integrações estão todos interligados; a IA não tem como saber que um campo é usado por uma integração externa se ninguém documentou isso em lugar nenhum.</div>
+          </li>
+          <li class="card-glass rounded-xl p-5 flex items-start gap-3">
+            <span class="text-orange-400 font-bold">•</span>
+            <div><strong class="text-white">Escrever a spec é o novo "pensar antes de codificar".</strong> O tempo que antes ia para desenhar a solução na cabeça agora vai para escrevê-la de forma que outra inteligência (artificial) consiga executá-la sem reinterpretar.</div>
+          </li>
+        </ul>
+
+        <p class="text-white/70 leading-relaxed">
+          Na prática, isso significa: antes de abrir uma sessão de Devin ou Claude Code para uma tarefa não trivial, você escreve uma spec curta e objetiva — não um documento de 10 páginas, mas o suficiente para eliminar as perguntas que a IA teria que adivinhar sozinha.
+        </p>
+      </div>
+
+      <div class="section-divider my-12"></div>
+
+      <!-- SEÇÃO 7 -->
+      <div id="secao-7" class="animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center text-sm font-black">7</span>
+          Template de Especificação: o Contrato Entre Você e a IA
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Uma spec malfeita custa caro de duas formas: retrabalho humano e <strong>consumo desnecessário de computação da IA</strong>. Ferramentas de agente autônomo como o Devin cobram (ou historicamente cobraram, e ainda usam como unidade interna de medição) por <strong>ACU — Agent Compute Unit</strong>, uma medida normalizada de tempo de máquina virtual, inferência de modelo e rede consumidos por tarefa. Quanto mais vaga a spec, mais a IA precisa explorar, testar hipóteses e refazer trabalho — e mais ACUs (ou computação equivalente em qualquer ferramenta agiêntica) isso queima. Escopo claro não é burocracia: é economia de computação.
+        </p>
+
+        <p class="text-white/70 leading-relaxed mb-4">
+          Use este modelo como ponto de partida — adapte, mas não remova nenhuma das cinco seções:
+        </p>
+
+        <!-- TEMPLATE CODE BLOCK -->
+        <div class="code-block p-6 mb-8 border border-orange-400/30">
+          <pre class="font-mono text-xs text-white/90 leading-relaxed"><code># SPEC-[ID]: [Título curto e específico da tarefa]
+
+## 1. Contexto de Negócio
+Por que essa mudança existe? Qual problema de negócio ela resolve?
+Quem pediu e qual a urgência real?
+
+## 2. Objetivo (O Quê)
+Descreva o resultado final observável, não a implementação.
+Ex: "Todo Account sem segmento definido deve ser classificado
+automaticamente como 'Não Classificado' ao ser salvo."
+
+## 3. Justificativa (Por Quê)
+Qual dor específica isso resolve? O que acontece se não for feito?
+
+## 4. Matriz de Impacto
+| Componente (API Name) | Tipo | Ação Esperada | Risco / Dependência |
+|---|---|---|---|
+| Account.Segmento_Mercado__c | Custom Field | Criar | Baixo — campo novo |
+| AtualizaSegmentoTrigger | Apex Trigger | Modificar | Médio — 3 testes existentes |
+| Fluxo_Onboarding_Cliente | Flow | Somente leitura/referência | Alto — não alterar nesta spec |
+
+## 5. Limites de Atuação (Escopo)
+### Dentro do escopo
+- Criar o campo e a lógica de valor-padrão
+- Atualizar os testes Apex diretamente afetados
+
+### Fora do escopo (a IA NÃO deve tocar)
+- Qualquer Flow relacionado a onboarding
+- Layouts de página não mencionados acima
+- Perfis e permission sets não listados
+
+## 6. Critérios de Aceite
+- [ ] Ao salvar um Account sem valor em Segmento_Mercado__c, o
+      sistema deve atribuir automaticamente "Não Classificado".
+- [ ] O campo deve ser visível apenas para os profiles "Vendas" e
+      "Administrador do Sistema".
+- [ ] Nenhum teste Apex existente pode cair abaixo de 90% de cobertura.</code></pre>
+        </div>
+
+        <div class="bg-navy-900/80 border border-white/10 rounded-xl p-6 text-sm text-white/70 space-y-2">
+          <p class="font-bold text-white">Por que essa estrutura reduz custo de computação:</p>
+          <p>A <strong>Matriz de Impacto</strong> elimina a fase de "exploração cega" em que a IA teria que varrer o repositório inteiro tentando adivinhar o que é relevante.</p>
+          <p>Os <strong>Limites de Atuação</strong> evitam que ela abra mudanças em componentes vizinhos "por precaução".</p>
+          <p>E <strong>Critérios de Aceite</strong> verificáveis eliminam ciclos de ida-e-volta de "não era bem isso que eu queria".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ PARTE 4 — GOVERNANÇA ══════════════════ -->
+  <section id="governanca" class="py-20 bg-navy-900 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="inline-flex items-center gap-2 badge-purple px-4 py-2 rounded-full text-xs font-semibold mb-4">
+        Parte 4
+      </div>
+      <h2 class="text-3xl lg:text-4xl font-black mb-12">
+        Governança: <span class="gradient-text-purple">O Repositório Como Cérebro</span>
+      </h2>
+
+      <!-- SEÇÃO 8 -->
+      <div id="secao-8" class="mb-16 animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-sm font-black">8</span>
+          O Repositório Como Cérebro da IA
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          Um repositório Git, para uma IA agiêntica, não é só onde o código mora — é a <strong>única memória de longo prazo</strong> que ela tem entre sessões. Se o contexto de negócio não está no repositório, ele não existe para a IA. Estruture o repositório assim:
+        </p>
+
+        <div class="code-block p-6 mb-8 border border-purple-400/30">
+          <pre class="font-mono text-xs text-white/90 leading-relaxed"><code>meu-repo-salesforce/
+├── force-app/
+│   └── main/default/           # código-fonte (ver Seção 4)
+├── knowledge-base/
+│   ├── mapa-propriedade-metadados.md   # quem é dono de quê
+│   ├── integracoes-externas.md         # o que consome cada objeto
+│   └── glossario-negocio.md            # termos de negócio ↔ API Names
+├── specs/
+│   └── SPEC-001-classificacao-conta.md # specs no formato da Seção 7
+├── playbooks/                  # ver Seção 9
+├── .agents/skills/             # ver Seção 9
+├── AGENTS.md
+└── README.md</code></pre>
+        </div>
+
+        <p class="text-white/70 leading-relaxed mb-6">
+          A pasta <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">knowledge-base/</code> carrega o que o metadado XML nunca vai contar sozinho: qual time é dono do objeto <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">Opportunity</code>, quais sistemas externos consomem o campo <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">Account.SAP_ID__c</code> via integração, ou o que "MRR" significa no vocabulário da empresa. Sem esse mapa, a IA trata todo componente como igualmente seguro de alterar — o que é exatamente o oposto da realidade em um org maduro.
+        </p>
+
+        <div class="card-glass rounded-xl p-6 border-l-4 border-l-purple-400 mb-6">
+          <h4 class="text-lg font-bold text-purple-300 mb-2">O arquivo AGENTS.md na raiz:</h4>
+          <p class="text-white/70 text-sm leading-relaxed mb-3">
+            O arquivo <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">AGENTS.md</code> merece atenção especial: deixou de ser convenção de um único fornecedor e hoje é um padrão aberto, mantido pela Agentic AI Foundation (projeto da Linux Foundation), lido nativamente por Claude Code, Codex, Cursor, Copilot, Gemini e outros. Nele, documente comandos exatos (<code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf project deploy validate</code>, <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf apex run test --code-coverage</code>), a versão de API Salesforce em uso, e links para as pastas <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">knowledge-base/</code> e <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">playbooks/</code>.
+          </p>
+        </div>
+
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5 text-sm">
+          <p class="font-bold text-red-400 mb-1">Um alerta importante:</p>
+          <p class="text-white/80 leading-relaxed">
+            Pesquisa recente (ETH Zürich, 2026) mostrou que arquivos de contexto <strong>gerados automaticamente</strong> por comandos tipo <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">/init</code> podem, em alguns casos, piorar a taxa de acerto do agente — enquanto arquivos <strong>escritos e curados por humanos</strong> ajudam de forma consistente. Trate o <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">AGENTS.md</code> como documento vivo que você escreve e revisa, não como artefato gerado uma vez e esquecido.
           </p>
         </div>
       </div>
 
-      <div class="grid md:grid-cols-4 gap-4 animated">
-        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
-          <span class="text-2xl">🏆</span>
-          <div>
-            <p class="font-semibold text-sm">Lead Time</p>
-            <p class="text-white/40 text-xs">De dias para horas</p>
+      <div class="section-divider my-12"></div>
+
+      <!-- SEÇÃO 9 -->
+      <div id="secao-9" class="animated">
+        <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
+          <span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-sm font-black">9</span>
+          Governança e Habilidades: Playbooks e Skills Reutilizáveis
+        </h3>
+        <p class="text-white/70 leading-relaxed mb-6">
+          As duas últimas pastas fecham o ciclo de governança — e não são invenção deste manual: elas espelham diretamente conceitos que Devin e Claude já usam nativamente.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-purple-300 mb-3 flex items-center gap-2">
+              <svg aria-hidden="true" class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              playbooks/ — procedimentos operacionais
+            </h4>
+            <p class="text-white/70 text-sm leading-relaxed">
+              Um playbook documenta um procedimento que a equipe repete: como fazer rollback de um deploy em produção, os passos de um hotfix urgente, o checklist de preparação de release sazonal. O Devin, por exemplo, tem seu próprio conceito nativo de <em>Playbook</em> — um prompt reutilizável e compartilhável para tarefas multi-etapa recorrentes, com seções como Procedimento, Especificações (pós-condições) e Ações Proibidas. Ao manter seus playbooks versionados no repositório, você tem uma fonte única: o mesmo texto documenta o processo para humanos <strong>e</strong> alimenta diretamente a sessão de um agente de IA.
+            </p>
           </div>
-        </div>
-        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
-          <span class="text-2xl">🛡️</span>
-          <div>
-            <p class="font-semibold text-sm">Zero Deploys Manuais</p>
-            <p class="text-white/40 text-xs">Totalmente orquestrado</p>
-          </div>
-        </div>
-        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
-          <span class="text-2xl">🔍</span>
-          <div>
-            <p class="font-semibold text-sm">Rastreabilidade Total</p>
-            <p class="text-white/40 text-xs">Cada commit identificado</p>
-          </div>
-        </div>
-        <div class="card-glass rounded-xl p-5 flex items-center gap-3">
-          <span class="text-2xl">⚡</span>
-          <div>
-            <p class="font-semibold text-sm">75%+ Test Coverage</p>
-            <p class="text-white/40 text-xs">Mínimo para deploy, estruturado pela IA</p>
+
+          <div class="card-glass rounded-xl p-6">
+            <h4 class="text-lg font-bold text-neon-400 mb-3 flex items-center gap-2">
+              <svg aria-hidden="true" class="w-5 h-5 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              .agents/skills/ — padrões de código reutilizáveis
+            </h4>
+            <p class="text-white/70 text-sm leading-relaxed">
+              Aqui vivem os padrões específicos da empresa que você não quer reexplicar em todo prompt: como estruturar um handler de trigger Apex, a convenção de nomenclatura de Custom Metadata Types, o padrão obrigatório de tratamento de erro. Isso não é um conceito abstrato — é exatamente como o Devin trata suas <em>Skills</em> (instruções passo a passo versionadas no repositório, distintas de prompts avulsos) e como o próprio Claude organiza <em>Skills</em> como pastas de instruções reutilizáveis. Empacotar o padrão de código da empresa dessa forma significa que qualquer sessão de IA — de qualquer desenvolvedor do time — parte do mesmo padrão de qualidade, em vez de reinventar convenções a cada tarefa.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════ CASOS DE USO ══════════════════ -->
-  <section id="casos" class="py-24" style="background: linear-gradient(180deg, #0d1634 0%, #0a0f1e 100%)">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="section-divider mb-16"></div>
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="animated">
-          <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-5">
-            🎯 Por Onde Começar?
-          </div>
-          <h2 class="text-3xl lg:text-4xl font-black mb-5">
-            Estratégia <span class="gradient-text">Wide &amp; Shallow</span>
-          </h2>
-          <p class="text-white/50 text-lg mb-8 leading-relaxed">
-            Tarefas <strong class="text-white">amplas e rasas</strong> são o
-            ponto de entrada ideal. O Devin AI brilha em trabalho de alto
-            volume com baixa complexidade cognitiva — o tipo de trabalho que
-            drena seus melhores engenheiros.
-          </p>
-          <p class="text-white/40 text-sm leading-relaxed">
-            Comece com um projeto piloto delimitado. Meça o ROI. Escale com
-            confiança. Essa é a abordagem que transforma ceticismo em
-            advocacia interna.
-          </p>
-        </div>
-        <div class="grid gap-5 animated animated-delay-2">
-          <div class="card-glass rounded-2xl p-7 flex items-start gap-5 transition-all duration-300">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="
-                  background: linear-gradient(
-                    135deg,
-                    rgba(0, 245, 160, 0.2),
-                    rgba(0, 245, 160, 0.05)
-                  );
-                ">
-              <svg aria-hidden="true" class="w-7 h-7 text-neon-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div>
-              <div class="badge inline-block px-3 py-1 rounded-full text-xs font-bold mb-2">
-                Serviço #1
-              </div>
-              <h3 class="font-bold text-white text-lg mb-2">
-                Cobertura de Testes Unitários
-              </h3>
-              <p class="text-white/40 text-sm leading-relaxed">
-                Devin analisa toda a codebase, identifica gaps de cobertura e
-                escreve testes Apex até atingir ou superar 75%. Volume alto,
-                padrão repetível — perfeito para IA.
-              </p>
-            </div>
-          </div>
-          <div class="card-glass rounded-2xl p-7 flex items-start gap-5 transition-all duration-300">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="
-                  background: linear-gradient(
-                    135deg,
-                    rgba(249, 115, 22, 0.2),
-                    rgba(249, 115, 22, 0.05)
-                  );
-                ">
-              <svg aria-hidden="true" class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-              </svg>
-            </div>
-            <div>
-              <div class="badge-orange inline-block px-3 py-1 rounded-full text-xs font-bold mb-2">
-                Serviço #2
-              </div>
-              <h3 class="font-bold text-white text-lg mb-2">
-                Remoção de Dívida Técnica (SonarQube)
-              </h3>
-              <p class="text-white/40 text-sm leading-relaxed">
-                Integração com SonarQube para listar todos os code smells,
-                bugs e violações. O Devin resolve sistematicamente, commit por
-                commit, com total rastreabilidade.
-              </p>
-            </div>
-          </div>
-          <div class="card-glass rounded-2xl p-7 flex items-start gap-5 transition-all duration-300">
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="
-                  background: linear-gradient(
-                    135deg,
-                    rgba(139, 92, 246, 0.2),
-                    rgba(139, 92, 246, 0.05)
-                  );
-                ">
-              <svg aria-hidden="true" class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-            </div>
-            <div>
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-2" style="
-                    background: rgba(139, 92, 246, 0.1);
-                    border: 1px solid rgba(139, 92, 246, 0.3);
-                    color: #a78bfa;
-                  ">
-                Serviço #3
-              </div>
-              <h3 class="font-bold text-white text-lg mb-2">
-                Modernização e Migração para LWC
-              </h3>
-              <p class="text-white/40 text-sm leading-relaxed">
-                Conversão sistemática de Aura Components para Lightning Web
-                Components. Devin segue padrões definidos, cria testes e abre
-                PRs para revisão humana.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════ CTA FINAL ══════════════════ -->
-  <section id="cta" class="py-32" style="
-        background: radial-gradient(
-          ellipse at 50% 0%,
-          rgba(0, 245, 160, 0.12) 0%,
-          rgba(30, 58, 138, 0.15) 40%,
-          #0a0f1e 70%
-        );
-      ">
+  <!-- ══════════════════ CONCLUSÃO ══════════════════ -->
+  <section id="conclusao" class="py-24" style="background: radial-gradient(ellipse at 50% 0%, rgba(0, 245, 160, 0.12) 0%, rgba(30, 58, 138, 0.15) 40%, #0a0f1e 70%);">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <div class="animated">
-        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-8">
-          🚀 Comece a Transformação
+        <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-6">
+          🏁 Conclusão
         </div>
-        <h2 class="text-4xl lg:text-5xl xl:text-6xl font-black mb-6 leading-tight">
-          Sua esteira de DevOps está pronta para a
-          <span class="gradient-text">Era da Automação com IA?</span>
+        <h2 class="text-3xl lg:text-4xl xl:text-5xl font-black mb-6 leading-tight">
+          Da Página Estática ao <span class="gradient-text">Manual Vivo</span>
         </h2>
-        <p class="text-white/50 text-xl mb-4 leading-relaxed max-w-2xl mx-auto">
-          Não é mais uma questão de <em>se</em> é possível, mas de
-          <strong class="text-white">quando você vai começar</strong>.
-        </p>
-        <p class="text-white/35 text-base mb-12 max-w-xl mx-auto">
-          As barreiras de proteção já são definidas por código. A arquitetura
-          está estruturada e validada. O próximo passo é implementar na sua organização.
+        <p class="text-white/70 text-lg mb-8 leading-relaxed max-w-3xl mx-auto">
+          As nove seções acima cobrem o ciclo completo: <strong>instalar</strong> o ambiente, <strong>conectar</strong> a IA ao org real, <strong>entender</strong> como Flosum liga Salesforce ao Git com segurança, <strong>escrever</strong> specs que reduzem retrabalho e custo de computação, e <strong>estruturar</strong> o repositório para que ele funcione como memória de longo prazo da IA.
         </p>
 
-        <div class="flex justify-center">
+        <div class="card-glass rounded-2xl p-8 max-w-2xl mx-auto mb-12 border border-neon-400/30">
+          <p class="text-white/80 leading-relaxed">
+            Trate esta página como o <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">AGENTS.md</code> da sua própria documentação: um documento vivo, revisado à medida que sua equipe descobre novos atritos — não um artefato publicado uma vez e esquecido.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="https://mauricio.issei.com.br/#contact"
-            class="btn-primary px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 inline-block">🚀
-            Entrar em Contato</a>
+            class="btn-primary px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 inline-block">
+            🚀 Falar com um Arquiteto Salesforce
+          </a>
+          <a href="#sumario"
+            class="btn-secondary px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 inline-block">
+            ↑ Voltar ao Sumário
+          </a>
         </div>
       </div>
     </div>
-    </div>
   </section>
 
-  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <!-- ══════════════════ FOOTER & AEO ══════════════════ -->
 
 <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Resumo e perguntas frequentes">
@@ -1871,15 +1096,14 @@ expostos para a </span><span style="color:#00f5a0;">Lightning App Builder</span>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
-        <span class="font-bold text-white text-sm">DevOps<span class="gradient-text">Hybrid</span></span>
+        <span class="font-bold text-white text-sm">DevOps<span class="gradient-text">Salesforce</span></span>
       </div>
       <p class="text-white/25 text-xs text-center">
-        Arquitetura Híbrida DevOps para Salesforce · Flosum + GitHub + Devin
-        AI · Transformação com IA
+        Manual Prático de DevOps Salesforce com IA · Devin + Claude Code + Flosum
       </p>
       <div class="flex items-center gap-2 text-xs text-white/25">
         <span class="w-1.5 h-1.5 bg-neon-400 rounded-full animate-pulse-slow"></span>
-        Arquitetura em Produção
+        Manual de Engenharia Vivo
       </div>
     </div>
   </footer>
