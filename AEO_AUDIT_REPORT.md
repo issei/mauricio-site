@@ -2,15 +2,15 @@
 
 **Data:** 2026-08-25  
 **Página:** https://mauricio.issei.com.br/salesforce-agentic-quickstart.html  
-**Status:** ⚠️ **PARCIALMENTE APROVADA** (AEO/SEO correto, acessibilidade deficiente)
+**Status:** ✅ **APROVADA** (AEO/SEO correto; correções de acessibilidade aplicadas nesta branch)
 
 ---
 
 ## 📊 Resumo Executivo
 
-A implementação **AEO (SEO + Resposta de Answer Engine)** está **corretamente implementada** no bloco gerado pelo `scripts/seo/build-aeo.mjs`. No entanto, a página **viola dois requisitos críticos de acessibilidade WCAG 2.1 AA** que são obrigatórios conforme a especificação da mauricio-site.
+A implementação **AEO (SEO + Resposta de Answer Engine)** está **corretamente implementada** no bloco gerado pelo `scripts/seo/build-aeo.mjs`. A auditoria original também identificou **dois problemas de acessibilidade WCAG 2.1 AA** (skip link ausente e `<main>` sem `id="conteudo"`) — ambos **corrigidos** no commit `25d7813` desta branch.
 
-**Resultado:** A página falhará no quality gate (`npm run gate`) quando forem executados os testes de acessibilidade.
+**Resultado após correção:** validado com axe-core contra o dev server — **0 violações serious/critical**. O skip link é o primeiro elemento focável da página, fica visível ao receber foco e aponta corretamente para `#conteudo`.
 
 ---
 
@@ -93,54 +93,68 @@ O bloco `<script type="application/ld+json">` contém um `@graph` com os seguint
 
 ---
 
-## ❌ Problemas de Acessibilidade (Críticos)
+## ✅ Correções de Acessibilidade Aplicadas (commit `25d7813`)
 
-Estes problemas **não afetam AEO/SEO**, mas **violam o contrato WCAG 2.1 AA** da mauricio-site e causarão **falha no quality gate**.
+Estes problemas **não afetavam AEO/SEO**, mas **violavam o contrato WCAG 2.1 AA** da mauricio-site e causariam **falha no quality gate**. Ambos foram corrigidos nesta branch.
 
-### Problema 1: Skip Link Ausente
+### Correção 1: Skip Link
 
 **Especificação:** `docs/specs/pages/formulacao-de-problemas/04_acessibilidade_seo_aeo.md` (linha 7)  
 **Regra:** `<a class="fp-skip">` → `<main id="conteudo">`
 
-**Atual:**
+**Antes:**
 ```html
-<!-- Após </header> (linha 455) -->
-<main class="pt-16">  <!-- ← Sem id="conteudo" -->
-  ...
-</main>
+<main class="pt-16">  <!-- ← Sem id="conteudo"; sem skip link em nenhum lugar da página -->
 ```
 
-**Esperado:**
+**Depois:**
 ```html
-<!-- Após </header> -->
-<a class="fp-skip" href="#conteudo">Pular para conteúdo principal</a>
-<main id="conteudo" class="pt-16">
+<body class="bg-ink-900 ...">
+
+  <a href="#conteudo" class="saq-skip">Pular para o conteúdo</a>
+
+  <!-- Google Tag Manager (noscript) -->
   ...
-</main>
+  <header ...> ... </header>
+
+  <main id="conteudo" class="pt-16">
 ```
 
-**Impacto:**
-- ❌ Usuários navegando apenas por teclado não conseguem pular a navegação
-- ❌ Leitores de tela não têm um ponto de parada rápido
-- ❌ Falha na auditoria axe: `bypass-regions`
+**Detalhe importante:** o skip link foi colocado logo após `<body>`, **antes** do `<header>` — não depois, como uma primeira tentativa havia feito. Colocá-lo após o header o tornaria o *último* item da nav a receber foco em vez do primeiro, anulando o propósito de "pular a navegação". A classe `.saq-skip` (escopada à página, seguindo o padrão `fp-skip`/`ec-skip` já usado em outras páginas do site) foi adicionada ao `<style>` inline existente.
+
+**Impacto corrigido:**
+- ✓ Usuários navegando por teclado agora pulam a navegação com o primeiro `Tab`
+- ✓ Leitores de tela têm um ponto de parada rápido
+- ✓ Auditoria axe: sem violação `bypass-regions`
 
 ---
 
-### Problema 2: Main tag sem id="conteudo"
+### Correção 2: Main tag com id="conteudo"
 
-**Localização:** Linha 457
+**Localização:** Linha 457 (original) → aplicado
 
-**Atual:**
-```html
-<main class="pt-16">
-```
-
-**Esperado:**
 ```html
 <main id="conteudo" class="pt-16">
 ```
 
 **Justificativa:** O `id` é o destino do skip link, obrigatório para WCAG 2.1 AA.
+
+---
+
+### Validação
+
+Verificado com `@axe-core/playwright` contra o dev server (`vite`), Chromium:
+
+```
+H1 count: 1
+Skip link href: #conteudo
+Main id: conteudo
+Skip link on first Tab: { left: '0px', focused: true }
+Active element after Tab: { tag: 'A', cls: 'saq-skip', href: '#conteudo' }
+
+Total violations: 1 (moderate, pré-existente — landmark-complementary-is-top-level, fora de escopo)
+Serious/critical violations: 0
+```
 
 ---
 
@@ -168,52 +182,29 @@ Estes problemas **não afetam AEO/SEO**, mas **violam o contrato WCAG 2.1 AA** d
 - [x] FAQ estruturado em JSON-LD
 
 ### Acessibilidade (WCAG 2.1 AA)
-- [ ] H1 único: ✓ (1 encontrado)
-- [ ] Skip link presente: ❌ **FALHA**
-- [ ] Main tag com id="conteudo": ❌ **FALHA**
-- [ ] Sem noindex: ✓
-- [ ] Google Analytics: ✓
+- [x] H1 único: ✓ (1 encontrado)
+- [x] Skip link presente: ✓ **CORRIGIDO** (commit `25d7813`)
+- [x] Main tag com id="conteudo": ✓ **CORRIGIDO** (commit `25d7813`)
+- [x] Sem noindex: ✓
+- [x] Google Analytics: ✓
+- [x] Zero violações axe serious/critical: ✓ (validado localmente)
 
 ---
 
 ## 🛠️ Correções Necessárias
 
-### Passo 1: Adicionar Skip Link
-**Arquivo:** `src/salesforce-agentic-quickstart.html`  
-**Local:** Após a tag `</header>` (antes de `<main>`)
+**Arquivo modificado:** `src/salesforce-agentic-quickstart.html`  
+**Commit:** `25d7813` nesta branch (`claude/aeo-salesforce-page-audit-a1i2cb`)
 
-```html
-  </header>
-
-  <a class="fp-skip" href="#conteudo">Pular para conteúdo principal</a>
-
-  <main id="conteudo" class="pt-16">
-```
-
-### Passo 2: Adicionar id ao Main
-**Arquivo:** `src/salesforce-agentic-quickstart.html`  
-**Linha:** 457 (atual)
-
-**De:**
-```html
-<main class="pt-16">
-```
-
-**Para:**
-```html
-<main id="conteudo" class="pt-16">
-```
+Ver diff completo com `git show 25d7813`. Resumo: `.saq-skip` CSS adicionada ao `<style>` inline, `<a href="#conteudo" class="saq-skip">` inserida logo após `<body>`, e `id="conteudo"` adicionado ao `<main>`.
 
 ---
 
 ## 📋 Próximos Passos
 
-1. **Aplicar correções** (2 linhas de código)
-2. **Executar testes locais:**
-   ```bash
-   npm run gate
-   ```
-3. **Confirmar** que todos os testes passam (acessibilidade, AEO, build)
+1. ~~Aplicar correções~~ ✅ Concluído (commit `25d7813`)
+2. ~~Validar localmente com axe-core~~ ✅ 0 violações serious/critical
+3. **Aguardar CI do PR** (`Build + Playwright + a11y`) confirmar em ambiente completo (todos os browsers do projeto)
 
 ---
 
@@ -228,6 +219,6 @@ Estes problemas **não afetam AEO/SEO**, mas **violam o contrato WCAG 2.1 AA** d
 ---
 
 **Auditoria:** Manual + Análise Automatizada  
-**Ferramentas:** grep, schema validation, link checking  
-**Status:** Pronto para correção
+**Ferramentas:** grep, schema validation, link checking, axe-core/playwright  
+**Status:** Correções aplicadas e validadas localmente; aguardando CI
 
