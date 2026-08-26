@@ -1,0 +1,123 @@
+# apm.yml — manifesto APM (Agent Package Manager) do mauricio-site.
+#
+# Uma fonte só descreve o contexto de TODOS os harnesses (Claude Code, Copilot,
+# Cursor, Codex, Antigravity). `apm install` resolve a árvore e faz o deploy dos
+# primitivos em formato nativo de cada um; `apm.lock.yaml` fixa commit + hash,
+# então dois desenvolvedores recebem contexto byte a byte idêntico.
+#
+# Convenções do repositório: AGENTS.md (diretiva primária) e docs/specs/.
+
+name: mauricio-site
+version: 1.0.0
+description: >-
+  Site MPA (Vite 6 + Tailwind v4 + JS vanilla) de Maurício Yokoyama Issei,
+  desenvolvido em fluxo agent-driven e spec-driven: skills, subagentes e um
+  quality gate determinístico (build + Playwright + axe) versionados junto do
+  código, com gêmeo digital PT-BR/EN gerado localmente.
+author: Maurício Yokoyama Issei
+license: UNLICENSED
+
+# Harnesses para os quais os primitivos são compilados. `claude` é o primário
+# (.claude/); `antigravity` já tem contrapartida local em .antigravity/rules.md.
+target: [claude, copilot, cursor, codex, antigravity]
+
+# ---------------------------------------------------------------------------
+# Inclusões locais
+# ---------------------------------------------------------------------------
+# `auto` = consentimento explícito para publicar/deployar o layout local
+# autoritativo deste repositório, sem enumerar caminho a caminho:
+#
+#   .agents/skills/   build-eai-section · mauricio-site-patterns ·
+#                     run-quality-gate · test-skill
+#   .agents/commands/ skill-create
+#   .claude/skills/   new-page · ship-page · sync-i18n
+#   .claude/agents/   a11y-design-reviewer · tone-reviewer
+#
+# Registrar o campo (em vez de omiti-lo) evita o "audit advisory" de
+# consentimento implícito e satisfaz manifest.require_explicit_includes.
+includes: auto
+
+# ---------------------------------------------------------------------------
+# Dependências
+# ---------------------------------------------------------------------------
+dependencies:
+  # Pacotes APM externos. Sem pin de tag: quem fixa a versão exata é o
+  # apm.lock.yaml (commit SHA + content hash). Para congelar por release,
+  # troque por `<pacote>#v<x.y.z>`.
+  apm:
+    # Engenharia de contexto, descoberta de skills, verificação anti-alucinação,
+    # revisão devil's-advocate e manutenção de CLAUDE.md/AGENTS.md.
+    - thinkjones/awesome-apm-stacks/user-core
+
+    # Disciplina de código: TDD, code review, toolkit de PR, fluxos de git.
+    # Complementa o "teste antes do código" da skill build-eai-section.
+    - thinkjones/awesome-apm-stacks/code-core
+
+    # UI/UX, design de interface e acessibilidade — par externo das nossas
+    # regras "Dark Tech" e do subagente a11y-design-reviewer.
+    - thinkjones/awesome-apm-stacks/design-frontend
+
+    # E2E/Playwright: linguagem comum com scripts/quality-gate.mjs e
+    # tests/*.spec.js (axe incluso).
+    - thinkjones/awesome-apm-stacks/test-core
+
+    # CI/CD, Docker e triagem de incidente — cobre .github/workflows/
+    # (deploy OIDC para AWS + gate de regressão).
+    - thinkjones/awesome-apm-stacks/architect-devops
+
+    # Skill de referência da Anthropic para revisão de diff, usada pelo
+    # preflight antes do push para main (que dispara deploy automático).
+    - anthropics/skills/skills/code-review
+
+  # Servidores MCP — instalados em todo cliente detectado.
+  mcp:
+    # Revisão de PR, status de CI e o padrão GitHub-as-a-CMS (cv.json servido
+    # do repositório issei/curriculo).
+    - name: io.github.github/github-mcp-server
+      transport: http
+      tools: [repos, issues, pull_requests, actions]
+      env:
+        GITHUB_TOKEN: "${env:GITHUB_TOKEN}"
+
+    # Docs versionadas de Vite 6, Tailwind v4 e Playwright — o que já está em
+    # .mcp.json, agora declarado uma vez para todos os harnesses.
+    - name: io.github.upstash/context7
+
+    # Navegador dirigido por agente: inspeção de snapshot de acessibilidade e
+    # verificação visual das páginas antes de rodar o gate inteiro.
+    - name: io.github.microsoft/playwright-mcp
+
+    # Acesso a arquivo para harnesses sem ferramenta de edição nativa.
+    # Escopo fechado nos diretórios de conteúdo — nunca a raiz do repositório.
+    - name: filesystem
+      registry: false
+      transport: stdio
+      command: npx
+      args:
+        - "-y"
+        - "@modelcontextprotocol/server-filesystem"
+        - "./src"
+        - "./public"
+        - "./docs"
+
+# ---------------------------------------------------------------------------
+# Scripts — `apm run <nome>`
+# ---------------------------------------------------------------------------
+scripts:
+  # `apm run` sem argumento cai aqui.
+  start: "npm run dev"
+
+  # Gate ÚNICO e fail-closed: vite build → Playwright (smoke + comportamento + axe).
+  gate: "npm run gate"
+  test: "npx playwright test"
+
+  # Gêmeo /en/: tradução local (Argos), custo zero de token. Nunca via LLM.
+  i18n: "npm run i18n:sync && npm run i18n:check"
+  "i18n:check": "npm run i18n:check"
+
+  # Preflight de push para main (main = deploy automático na AWS).
+  preflight: "npm run i18n:sync && npm run gate"
+
+  # Revisões agênticas pontuais, antes do gate completo.
+  "review:a11y": "claude -p 'Use o subagente a11y-design-reviewer nas páginas alteradas.'"
+  "review:tone": "claude -p 'Use o subagente tone-reviewer no copy pt-BR alterado.'"
