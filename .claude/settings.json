@@ -15,7 +15,10 @@
       {
         "matcher": "Write|Edit",
         "hooks": [
-          { "type": "command", "command": "node scripts/guard-protected-files.mjs" }
+          {
+            "type": "command",
+            "command": "node scripts/guard-protected-files.mjs"
+          }
         ]
       }
     ],
@@ -23,16 +26,25 @@
       {
         "matcher": "Write|Edit",
         "hooks": [
-          { "type": "command", "command": "node scripts/guard-ap-tokens.mjs" }
+          {
+            "type": "command",
+            "command": "node scripts/guard-ap-tokens.mjs"
+          }
         ]
       }
     ],
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "node scripts/stop-gate.mjs" }
+          {
+            "type": "command",
+            "command": "node scripts/stop-gate.mjs"
+          }
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "ponytail@ponytail": true
   }
 }
