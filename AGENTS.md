@@ -55,6 +55,12 @@ you need to understand or locate code:
 - **Shell** (always works): `codegraph explore "<symbol names or question>"`
   prints the same output.
 
+**Gap: no HTML support.** CodeGraph has no HTML parser, so the 36
+`src/*.html` pages — this repo's actual feature units, each with inline
+`<script type="module">` — have zero nodes in the index. For logic that
+lives inside `.html` files, fall back to grep/Read; CodeGraph only covers
+`.js`/`.mjs`/`.cjs`/`.py`.
+
 If `.codegraph/` is missing (fresh clone, another machine), skip it and fall
 back to grep/Read — indexing is a local, per-machine decision.
 
