@@ -3,7 +3,7 @@
 //  - buildBody(): seção visível "Em síntese" + FAQ (quando a página tem tldr/faq)
 //  - buildMd():   companion Markdown limpo para ingestão por LLMs
 // Tudo determinístico → reexecutável. JSON-LD via JSON.stringify (escapado).
-import { SITE, PERSON, WEBSITE } from './identity.mjs';
+import { SITE, PERSON, PERSON_PROFILE, WEBSITE } from './identity.mjs';
 
 const PAGE_SUBTYPES = new Set(['CollectionPage', 'AboutPage', 'ProfilePage', 'WebPage']);
 
@@ -74,6 +74,9 @@ export function buildGraph(p) {
     graph.push(article);
   } else if (p.type === 'ProfilePage') {
     webpage.mainEntity = { '@id': PERSON['@id'] };
+    // Aqui o Person é a entidade principal: troca o nó enxuto pelo completo
+    // (mesmo @id), com formação e diploma verificável.
+    graph[graph.indexOf(PERSON)] = PERSON_PROFILE;
   } else if (p.itemList?.length) {
     webpage.mainEntity = { '@id': `${url}#itemlist` };
   } else {
