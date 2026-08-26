@@ -42,6 +42,22 @@ Depois de qualquer edição desse tipo, rode a skill
 ### ⌨️ Available Commands
 - **`/skill-create`**: Use this command to analyze Git history and generate new `SKILL.md` files for emerging patterns. See [skill-create.md](file:///.agents/commands/skill-create.md).
 
+### 🕸️ CodeGraph — indexed code graph
+
+This repo is indexed by [CodeGraph](https://github.com/colbymchenry/codegraph)
+(`.codegraph/` at the repo root — local runtime data only, gitignored except
+`.gitignore` itself). Reach for it **before** grep/find or reading files when
+you need to understand or locate code:
+
+- **MCP tool** (when available): `codegraph_explore` answers most code
+  questions in one call — verbatim source of the relevant symbols plus the
+  call paths between them, including dynamic-dispatch hops grep can't follow.
+- **Shell** (always works): `codegraph explore "<symbol names or question>"`
+  prints the same output.
+
+If `.codegraph/` is missing (fresh clone, another machine), skip it and fall
+back to grep/Read — indexing is a local, per-machine decision.
+
 ---
 
 ## 📐 Spec-Driven Development (SDD)
@@ -118,6 +134,7 @@ Ao revisar essa página, **não** a reprove por usar cores fora da paleta Dark T
 | `src/en/`, `public/en/` | **Gerados.** Gêmeo em inglês — não editar à mão. |
 | `public/` | Assets and the `cv.json` local fallback. |
 | `.agents/` | **YOUR HOME**. Skills, commands, and workflows. |
+| `.codegraph/` | CodeGraph's local index (gitignored). See CodeGraph section above. |
 | `docs/specs/` | Detailed technical specifications. |
 | `tests/` | E2E Playwright specifications. |
 
