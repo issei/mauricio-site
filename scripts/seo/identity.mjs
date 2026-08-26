@@ -23,6 +23,30 @@ export const PERSON = {
   ],
 };
 
+// Instituição de origem, reutilizada em alumniOf e recognizedBy.
+export const MACKENZIE = {
+  '@type': 'EducationalOrganization',
+  name: 'Universidade Presbiteriana Mackenzie',
+  url: 'https://www.mackenzie.br',
+};
+
+// Person estendido, usado só na ProfilePage (/index), onde a pessoa é a
+// entidade principal: publica a formação e o diploma digital verificável
+// no e-Diploma (MEC), casando com o link exibido na seção "Formação".
+export const PERSON_PROFILE = {
+  ...PERSON,
+  alumniOf: MACKENZIE,
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    name: 'Pós-graduação em Ciência de Dados – Data Analytics / Big Data',
+    credentialCategory: 'Postgraduate degree',
+    educationalLevel: 'Postgraduate',
+    identifier: 'EED4D2846DDD86592422CC674AB449',
+    url: 'https://www.e-diploma.com.br/Verificar/Autenticidade.aspx?id=565267%7CEED4D2846DDD86592422CC674AB449%7C11489',
+    recognizedBy: MACKENZIE,
+  },
+};
+
 export const WEBSITE = {
   '@type': 'WebSite',
   '@id': `${SITE.origin}/#website`,
