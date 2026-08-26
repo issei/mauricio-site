@@ -190,6 +190,22 @@
       border-color: rgba(58, 92, 255, 0.5);
       color: #ffffff;
     }
+
+    /* Skip link (acessibilidade — navegação por teclado) */
+    .saq-skip {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 200;
+      background: #0c1020;
+      color: #ffffff;
+      padding: 0.75rem 1rem;
+      border: 1px solid #3a5cff;
+      border-radius: 0 0 8px 0;
+    }
+    .saq-skip:focus {
+      left: 0;
+    }
   </style>
   <!-- ============================================================ -->
   <!-- ============================================================ -->
@@ -382,6 +398,8 @@
 
 <body class="bg-ink-900 text-slate-100 font-sans antialiased selection:bg-brand-500/40 selection:text-white">
 
+  <a href="#conteudo" class="saq-skip">Pular para o conteúdo</a>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -454,7 +472,7 @@
     </div>
   </header>
 
-  <main class="pt-16">
+  <main id="conteudo" class="pt-16">
 
     <!-- =========================================================
        HERO
