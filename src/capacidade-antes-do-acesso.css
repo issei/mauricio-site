@@ -1,0 +1,489 @@
+@import "tailwindcss";
+
+/*
+ * Capacidade Antes do Acesso — Competência Docente, Mediação Pedagógica e a
+ * Governança da IA Generativa na Educação Infantil e Fundamental Inicial.
+ *
+ * Base de design: AGENTS.md / STYLE_GUIDE.md ("Dark Tech & Developer Centric").
+ * Prefixo de namespace: .ca-  (evita colisão com as outras páginas do MPA).
+ *
+ * A cor carrega significado epistêmico, não decoração: azul = síntese da
+ * literatura, roxo = proposta original do artigo, âmbar = evidência limitada,
+ * vermelho = proposição não sustentada, verde = evidência causal forte.
+ * Trocar um destes valores troca o que um selo afirma sobre a força da
+ * evidência — que é o assunto do artigo inteiro.
+ */
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+}
+
+:root {
+  /* Superfícies (GitHub Dark Dimmed) */
+  --ca-bg: #0d1117;
+  --ca-surface: #161b22;
+  --ca-surface-2: #1c2230;
+  --ca-border: #30363d;
+
+  /* Texto */
+  --ca-text: #c9d1d9;
+  --ca-heading: #ffffff;
+  --ca-muted: #8b949e;
+
+  /* Acentos decorativos — nunca em texto pequeno */
+  --ca-accent: #007bff;
+  --ca-accent-2: #8a2be2;
+  --ca-gradient: linear-gradient(90deg, var(--ca-accent), var(--ca-accent-2));
+
+  /* Semânticos (força da evidência) */
+  --ca-link: #58a6ff;
+  --ca-forte: #3fb950;      /* evidência causal A */
+  --ca-limitada: #d29922;   /* evidência C/D, descritiva ou normativa */
+  --ca-nao: #f85149;        /* proposição não sustentada */
+  --ca-proposta: #a371f7;   /* proposição analítica original */
+
+  --ca-radius: 14px;
+  --ca-shadow: 0 0 0 1px rgba(0, 123, 255, 0.15), 0 12px 32px rgba(0, 0, 0, 0.45);
+  --ca-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body.ca-body {
+  margin: 0;
+  font-family: var(--font-inter);
+  background-color: var(--ca-bg);
+  color: var(--ca-text);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.ca-body h1,
+.ca-body h2,
+.ca-body h3,
+.ca-body h4 { color: var(--ca-heading); line-height: 1.25; }
+
+.ca-body a { color: var(--ca-link); text-decoration: none; }
+.ca-body a:hover { text-decoration: underline; }
+
+/*
+ * Link dentro de bloco de texto vem sublinhado por padrão. Cor sozinha não
+ * distingue o link da prosa ao redor (WCAG 1.4.1) — e aqui a prosa cinza
+ * (--ca-muted) contra o azul do link dá 1,21:1, muito abaixo dos 3:1 exigidos.
+ * Cartões, botões e a trilha de navegação ficam de fora: ali o link é o
+ * elemento inteiro, não uma palavra no meio de uma frase.
+ */
+.ca-body .ca-prose a,
+.ca-body .ca-small a,
+.ca-body .ca-quote a,
+.ca-body .ca-table a,
+.ca-body .ca-footer__copy a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ca-body :focus-visible {
+  outline: 2px solid var(--ca-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.ca-grad {
+  background: var(--ca-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Conteúdo só para leitor de tela (descrições longas de diagrama). */
+.ca-vh {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ca-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--ca-surface);
+  color: var(--ca-heading);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ca-accent);
+  border-radius: 0 0 8px 0;
+}
+.ca-skip:focus { left: 0; }
+
+/* ─────────────────────────────── Layout ─────────────────────────────── */
+
+.ca-container { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+.ca-prose { width: min(70ch, 100%); }
+.ca-prose p { margin: 0 0 1.1rem; }
+.ca-prose ul, .ca-prose ol { margin: 0 0 1.1rem; padding-left: 1.25rem; }
+.ca-prose li { margin-bottom: 0.45rem; }
+
+.ca-section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.ca-section + .ca-section { border-top: 1px solid rgba(48, 54, 61, 0.6); }
+
+.ca-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ca-link);
+  margin: 0 0 0.6rem;
+}
+
+.ca-title {
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  font-weight: 700;
+  margin: 0 0 1.2rem;
+}
+.ca-title--underline::after {
+  content: "";
+  display: block;
+  width: 64px; height: 3px;
+  margin-top: 0.7rem;
+  border-radius: 2px;
+  background: var(--ca-gradient);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.ca-muted { color: var(--ca-muted); }
+.ca-small { font-size: 0.88rem; color: var(--ca-muted); }
+
+/* ───────────────────────── Barra de leitura e nav ───────────────────── */
+
+.ca-readbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 120;
+}
+.ca-readbar > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--ca-gradient);
+}
+
+.ca-nav {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  background: rgba(13, 17, 23, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--ca-border);
+}
+.ca-nav__inner {
+  width: min(1120px, 100% - 2.5rem);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 56px;
+  flex-wrap: wrap;
+  padding-block: 0.4rem;
+}
+.ca-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--ca-heading) !important;
+  font-size: 0.94rem;
+  text-decoration: none;
+}
+.ca-nav__dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--ca-gradient);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+}
+.ca-nav__trail {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+.ca-nav__trail a { color: var(--ca-muted); }
+.ca-nav__trail a:hover,
+.ca-nav__trail a[aria-current="true"] { color: var(--ca-link); text-decoration: none; }
+
+/* ─────────────────────────────── Selos ─────────────────────────────── */
+
+.ca-selo {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.16rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.ca-selo--sintese { color: var(--ca-link); }
+.ca-selo--proposta { color: var(--ca-proposta); }
+.ca-selo--forte { color: var(--ca-forte); }
+.ca-selo--limitada { color: var(--ca-limitada); }
+.ca-selo--naosustentada { color: var(--ca-nao); }
+
+/* ─────────────────────────── Cartões e grades ──────────────────────── */
+
+.ca-grid { display: grid; gap: 1.1rem; }
+.ca-grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.ca-grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+
+.ca-card {
+  background: var(--ca-surface);
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+  padding: 1.25rem 1.35rem;
+  border-top: 3px solid var(--ca-accent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.ca-card h3 { font-size: 1.05rem; margin: 0 0 0.5rem; }
+.ca-card p { margin: 0 0 0.6rem; }
+.ca-card p:last-child { margin-bottom: 0; }
+
+a.ca-card { display: block; text-decoration: none; color: inherit; }
+a.ca-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ca-shadow);
+  border-color: var(--ca-accent);
+  text-decoration: none;
+}
+
+.ca-card--proposta { border-top-color: var(--ca-proposta); }
+.ca-card--forte { border-top-color: var(--ca-forte); }
+.ca-card--limitada { border-top-color: var(--ca-limitada); }
+.ca-card--nao { border-top-color: var(--ca-nao); }
+
+.ca-card__q {
+  display: block;
+  font-weight: 600;
+  color: var(--ca-heading);
+  margin-bottom: 0.5rem;
+}
+.ca-card__go {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ca-link);
+}
+
+.ca-kicker {
+  font-family: var(--ca-mono);
+  font-size: 0.78rem;
+  color: var(--ca-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ──────────────────────────────── Hero ─────────────────────────────── */
+
+.ca-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+.ca-hero__title {
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.1rem;
+  max-width: 20ch;
+}
+.ca-hero__sub {
+  font-size: clamp(1.02rem, 1.9vw, 1.22rem);
+  color: var(--ca-text);
+  max-width: 62ch;
+  margin: 0 0 1.1rem;
+}
+.ca-hero__thesis {
+  border-left: 3px solid var(--ca-accent-2);
+  padding: 0.35rem 0 0.35rem 1rem;
+  max-width: 62ch;
+  color: var(--ca-heading);
+  font-weight: 500;
+  margin: 0 0 1.8rem;
+}
+.ca-hero__cta { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+
+.ca-btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 1px solid var(--ca-border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.ca-btn:hover { transform: translateY(-2px); text-decoration: none; }
+.ca-btn--primary {
+  background: var(--ca-gradient);
+  color: #fff !important;
+  border-color: transparent;
+}
+.ca-btn--primary:hover { box-shadow: 0 8px 24px rgba(0, 123, 255, 0.35); }
+.ca-btn--ghost { background: var(--ca-surface); color: var(--ca-link) !important; }
+.ca-btn--ghost:hover { border-color: var(--ca-link); }
+
+/* ──────────────────────────── Figuras / SVG ────────────────────────── */
+
+.ca-figure {
+  margin: 2rem 0 0;
+  background: var(--ca-surface);
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+  padding: 1.2rem;
+}
+.ca-figure__scroll { overflow-x: auto; }
+.ca-figure svg { max-width: 100%; height: auto; display: block; }
+.ca-figure figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.88rem;
+  color: var(--ca-muted);
+  max-width: 78ch;
+}
+
+.ca-axis { stroke: #30363d; stroke-width: 1.5; }
+.ca-axis-text { fill: #8b949e; font-size: 13px; font-family: 'Inter', sans-serif; }
+.ca-bar-label { fill: #e6edf3; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; }
+.ca-bar--forte { fill: #3fb950; }
+.ca-bar--nao { fill: #f85149; }
+.ca-bar--base { fill: #30363d; }
+.ca-node {
+  fill: #1c2230;
+  stroke: #30363d;
+  stroke-width: 1.5;
+}
+.ca-node--proposta { stroke: #a371f7; }
+.ca-node-text { fill: #e6edf3; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; }
+.ca-flow { stroke: #58a6ff; stroke-width: 2; fill: none; marker-end: url(#ca-seta); }
+
+/* ─────────────────────────────── Tabelas ───────────────────────────── */
+
+.ca-tablewrap {
+  overflow-x: auto;
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+  margin-top: 1.5rem;
+  background: var(--ca-surface);
+}
+.ca-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 560px;
+}
+.ca-table caption {
+  text-align: left;
+  padding: 0.9rem 1rem 0;
+  color: var(--ca-muted);
+  font-size: 0.85rem;
+}
+.ca-table th,
+.ca-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ca-border);
+  vertical-align: top;
+}
+.ca-table thead th {
+  color: var(--ca-heading);
+  font-weight: 600;
+  background: var(--ca-surface-2);
+  white-space: nowrap;
+}
+.ca-table tbody tr:last-child td { border-bottom: 0; }
+.ca-table th[scope="row"] { color: var(--ca-heading); font-weight: 600; }
+
+/* ────────────────────────── Continuum vertical ─────────────────────── */
+
+.ca-continuum { list-style: none; margin: 1.8rem 0 0; padding: 0; display: grid; gap: 0; }
+.ca-continuum li {
+  position: relative;
+  padding: 0.9rem 0 0.9rem 2.4rem;
+  border-left: 2px solid var(--ca-border);
+}
+.ca-continuum li::before {
+  content: "";
+  position: absolute;
+  left: -7px; top: 1.35rem;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--ca-bg);
+  border: 2px solid var(--ca-accent);
+}
+.ca-continuum li:last-child::before { border-color: var(--ca-forte); }
+.ca-continuum strong { color: var(--ca-heading); display: block; }
+
+/* ───────────────────────────── Citação-chave ───────────────────────── */
+
+.ca-quote {
+  margin: 1.6rem 0 0;
+  padding: 1.2rem 1.4rem;
+  background: var(--ca-surface-2);
+  border: 1px solid var(--ca-border);
+  border-left: 3px solid var(--ca-proposta);
+  border-radius: 0 var(--ca-radius) var(--ca-radius) 0;
+  color: var(--ca-heading);
+  font-weight: 500;
+}
+.ca-quote p { margin: 0; }
+
+/* ─────────────────────────────── Rodapé ────────────────────────────── */
+
+.ca-footer {
+  border-top: 1px solid var(--ca-border);
+  padding-block: 3rem;
+  background: #0a0d12;
+}
+.ca-footer__brand { color: var(--ca-heading); font-weight: 700; margin: 0 0 0.4rem; }
+.ca-footer__meta { color: var(--ca-muted); font-size: 0.9rem; margin: 0 0 1.2rem; }
+.ca-footer__nav { font-size: 0.9rem; margin: 0 0 2rem; color: var(--ca-muted); }
+.ca-footer__refs-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ca-link);
+  margin: 0 0 1rem;
+}
+.ca-footer__refgrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+.ca-footer__refgrid h3 { font-size: 0.95rem; margin: 0 0 0.5rem; }
+.ca-footer__refgrid ul { margin: 0; padding-left: 1.1rem; font-size: 0.86rem; }
+.ca-footer__refgrid li { margin-bottom: 0.4rem; }
+.ca-footer__copy {
+  margin-top: 2rem;
+  font-size: 0.82rem;
+  color: var(--ca-muted);
+  max-width: 80ch;
+}
+
+/* ─────────────────────── Movimento reduzido ────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ca-body *,
+  .ca-body *::before,
+  .ca-body *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  a.ca-card:hover, .ca-btn:hover { transform: none; }
+}
