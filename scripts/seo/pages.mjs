@@ -276,6 +276,66 @@ export const PAGES = [
     },
   },
 
+  {
+    slug: 'capacidade-antes-do-acesso', type: 'ScholarlyArticle', tier: 'S', hasMd: true,
+    title: 'Capacidade Antes do Acesso — IA na Educação Infantil',
+    headline: 'Capacidade antes do acesso: competência docente, mediação pedagógica e a governança da IA generativa na educação fundacional',
+    description: 'Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial: necessidade, suficiência e condicionalidade.',
+    datePublished: '2026-08-27', dateModified: '2026-08-27',
+    section: 'Educação e Governança de IA',
+    tags: ['Governança de IA', 'Educação Infantil', 'Mediação Pedagógica', 'Competência Docente', 'Cognitive Offloading'],
+    keywords: ['capacity-before-access', 'capacidade antes do acesso', 'mediação pedagógica', 'competência digital docente', 'IA generativa na educação', 'educação infantil', 'ensino fundamental inicial', 'ECEC', 'cognitive offloading', 'substituição cognitiva', 'guardrails pedagógicos', 'política norueguesa de IA', 'AI-TPACK', 'DigCompEdu', 'EU AI Act', 'governança educacional'],
+    about: [
+      { name: 'Governança da IA na educação' }, { name: 'Mediação pedagógica' },
+      { name: 'Competência digital docente' }, { name: 'Educação Infantil (ECEC)' },
+      { name: 'Cognitive offloading' },
+      { name: 'EU AI Act', sameAs: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+    ],
+    audience: 'Gestores Educacionais, Formadores de Professores, Pesquisadores em Educação, Formuladores de Política Pública',
+    tldr: {
+      heading: 'O que é "capacidade antes do acesso"',
+      lede: 'A integração responsável da IA generativa nos anos fundacionais **não é função do acesso da criança à tecnologia**, mas da interação entre prontidão desenvolvimental, competência adulta, qualidade da mediação, governança institucional e a função cognitiva atribuída à IA na atividade. *Capacity-before-access* é apresentada aqui como **proposição analítica derivada da comparação de políticas** — não como princípio já consagrado na literatura.',
+      points: [
+        '**Dois domínios, não um** — Educação Infantil (0–6) e Fundamental inicial (~6–13) não se generalizam entre si; confundi-los invalida a conclusão.',
+        '**Quatro camadas de competência** — capacidade, julgamento, mediação e governança; a literatura quase sempre mede só a primeira, e por autopercepção.',
+        '**Necessária, não suficiente** — P1 é parcialmente sustentável, P2 não é sustentada por nenhum estudo revisado, P3 (condicionalidade) é a mais forte.',
+        '**Substituição × ampliação** — com acesso irrestrito, −17% no teste final sem IA; com guardrails pedagógicos, ganho mantido (Bastani et al., 2025, PNAS).',
+      ],
+      foot: 'É o mesmo princípio do *fail-closed* da [Engenharia de Agentes de IA](/engenharia-agentes-ia), aplicado à sala de aula: o desenho decide o desfecho, não a ferramenta.',
+    },
+    faq: [
+      { q: 'O que significa "capacidade antes do acesso"?', a: 'É a proposição de que o acesso de crianças à IA generativa deveria ser condicionado à capacidade de mediação disponível — competência do adulto, qualidade da intervenção pedagógica e salvaguardas institucionais — e não apenas à idade cronológica. O artigo a trata como proposição analítica derivada da comparação entre arquiteturas de política, não como princípio já estabelecido pela literatura ou por qualquer política em vigor.' },
+      { q: 'Por que separar Educação Infantil de anos iniciais do Fundamental?', a: 'Porque são domínios distintos e a evidência de um não se transfere para o outro. Educação Infantil (ECEC) designa 0 a 6 anos, antes da escolarização obrigatória, onde o uso direto da ferramenta pela criança é mínimo e o foco recai sobre a formação do adulto. O Fundamental inicial (cerca de 6 a 13 anos) é onde a política norueguesa de 2026 legisla e onde a criança já está em alfabetização e numeramento. Tratá-los como bloco único é o erro metodológico mais recorrente neste campo.' },
+      { q: 'Quais são as quatro camadas da competência adulta?', a: 'Capacidade (o professor sabe como a ferramenta funciona), julgamento (sabe decidir quando usar, quando não usar e com que propósito), mediação (sabe intervir durante o uso — questionar, verificar, retirar o apoio) e governança (a instituição permite e estrutura essa intervenção, com tempo, infraestrutura e política). A maior parte da literatura mede apenas a primeira, em geral por autopercepção, silenciando justamente as camadas que a evidência mais forte sugere serem decisivas.' },
+      { q: 'Quando o descarregamento cognitivo vira substituição?', a: 'Descarregar carga operacional pode ser desejável e liberar capacidade para raciocínio de ordem superior; a pergunta precisa é quando o offloading se converte em substituição do processo cognitivo que a criança precisa desenvolver. No ensaio randomizado de Bastani et al. (2025), o acesso irrestrito ao modelo melhorou 48% o desempenho durante a prática mas produziu resultado 17% inferior ao controle no teste final sem IA; com guardrails que proibiam entregar a resposta final, a melhora foi de 127% e o ganho se manteve.' },
+      { q: 'A restrição de smartphones serve como evidência sobre IA generativa?', a: 'Não diretamente. Os mecanismos de risco são distintos: smartphone e redes sociais operam sobre atenção, distração e comparação social, enquanto a IA generativa opera sobre produção cognitiva, terceirização de raciocínio e escrita. As evidências sobre restrição de dispositivos são tratadas como evidência comparativa de política — útil para entender como restrições institucionais se comportam — e não como evidência causal sobre IA.' },
+      { q: 'O que a política norueguesa de 2026 demonstra?', a: 'Demonstra desenho de política (policy design): uma arquitetura coerente que combina idade mínima, competência docente prévia e finalidade pedagógica explícita, com restrição quase total entre 6 e 13 anos e uso gradual entre 14 e 16 condicionado à competência do professor. Não demonstra eficácia de política (policy effectiveness): é recente demais para avaliação longitudinal de impacto, e nenhuma política, por si só, constitui um experimento.' },
+      { q: 'A capacitação docente basta para integrar IA com responsabilidade?', a: 'Não segundo a literatura revisada. Nenhum estudo sustenta a suficiência da competência docente como variável isolada, e o próprio EU AI Act rejeita essa premissa de forma implícita ao exigir supervisão institucional para usos de alto risco, independentemente da competência individual do educador. A competência adulta é provavelmente condição habilitante necessária; a variável intermediária mais provável é a qualidade da mediação pedagógica.' },
+    ],
+    terms: [
+      { slug: 'capacity-before-access', name: 'Capacidade antes do acesso', def: 'Proposição de condicionar o acesso à capacidade de mediação disponível, não só à idade cronológica.' },
+      { slug: 'dominio-a-ecec', name: 'Domínio A (ECEC)', def: 'Educação Infantil, 0–6 anos: o foco recai sobre a competência do adulto, a montante de qualquer uso direto.' },
+      { slug: 'dominio-b-fundamental', name: 'Domínio B (Fundamental inicial)', def: 'Anos iniciais, ~6–13: onde restrição, introdução condicionada e mediação incidem sobre o uso pela criança.' },
+      { slug: 'mediacao-pedagogica', name: 'Mediação pedagógica', def: 'Intervenção do adulto durante o uso — questionar, verificar e retirar o apoio progressivamente.' },
+      { slug: 'substituicao-cognitiva', name: 'Substituição cognitiva', def: 'Quando a ferramenta executa o processo cognitivo que a criança precisaria desenvolver por si.' },
+      { slug: 'guardrails-pedagogicos', name: 'Guardrails pedagógicos', def: 'Restrições de desenho que impedem a IA de entregar a resposta final, convertendo substituição em scaffold.' },
+      { slug: 'policy-design', name: 'Policy design × policy effectiveness', def: 'Desenho coerente de uma política não é prova de que ela produz melhores desfechos: uma política não é um experimento.' },
+    ],
+    mdSections: [
+      { h: 'A unidade de análise', body: 'A unidade relevante não é a díade criança + IA, mas o sistema adulto + mediação + tecnologia + criança + contexto institucional. Isso explica por que duas salas usando exatamente a mesma ferramenta produzem resultados opostos: quando a criança pergunta, a IA responde e a criança copia, a função cognitiva da ferramenta é substituir; quando o professor propõe o problema, a criança formula, a IA oferece um contraexemplo e o professor questiona o raciocínio, a função é ampliar. A variável relevante não é se a IA foi usada, mas qual função cognitiva ela desempenhou.' },
+      { h: 'As três arquiteturas de governança', body: 'A comparação informativa não é o par binário proibição–capacitação, mas três modelos: restrição por idade (idade cronológica como salvaguarda principal, caso da recomendação da UNESCO de 13 anos); acesso condicionado à capacidade (idade + competência docente prévia + introdução gradual, caso norueguês para o 8º–10º ano); e acesso irrestrito orientado pelo mercado (disponibilidade tecnológica como determinante, caso da adoção comercial sem mediação de política). A pergunta produtiva é qual arquitetura corresponde melhor ao risco, à maturidade desenvolvimental e à capacidade de mediação de cada contexto.' },
+      { h: 'O que o artigo não conclui', body: 'Não conclui que se deva usar IA com crianças, nem que se deva proibi-la. Conclui sobre arquitetura de governança condicional, cuja validade preditiva permanece aberta. A limitação declarada é a ausência de estudos longitudinais e experimentais ligando competência docente, qualidade de mediação e desfechos infantis especificamente com IA generativa nos dois domínios etários — e toda afirmação do artigo está calibrada por essa ausência. A restrição aparece como mecanismo de governança transitório enquanto a capacidade não está estabelecida, não como etapa obrigatoriamente anterior em todo contexto.' },
+    ],
+    og: {
+      eyebrow: 'Educação · Governança de IA',
+      title: 'Capacidade antes do {acesso}',
+      titleSize: 78,
+      subtitle: 'Quem medeia a IA que chega à criança',
+      thesis: 'O desenho da atividade decide o desfecho — não a ferramenta.',
+      chips: [{ k: 'A/B', label: 'Dois domínios' }, { k: '4', label: 'Camadas' }, { k: 'P1–P3', label: 'Proposições' }, { k: '−17%', label: 'Sem guardrails' }],
+    },
+  },
+
   // ===================================================================== TIER A
   {
     slug: 'salesforce-agentic-dev', type: 'TechArticle', tier: 'A', hasMd: true,
