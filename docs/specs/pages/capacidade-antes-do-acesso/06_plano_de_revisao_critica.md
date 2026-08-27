@@ -139,7 +139,19 @@ O problema é a posição: ele é injetado no marcador `<!-- AEO-BODY -->`, que 
 inteiro.
 
 **Ação:** mover o marcador `<!-- AEO-BODY -->` para logo após o herói. Não é escrever resumo novo —
-é mover uma linha. O `build-aeo` respeita o marcador onde ele estiver.
+é mover uma linha.
+
+> **Achado durante a execução — o marcador não sobrevivia à regeneração.**
+> `build-aeo` consome o `<!-- AEO-BODY -->` na primeira injeção (ele *vira* o bloco) e, na limpeza
+> da execução seguinte, apagava o bloco sem deixar nada no lugar. Sem marcador, caía no fallback
+> "antes do último `<footer>`" — devolvendo ao rodapé um resumo deliberadamente posicionado no topo,
+> **em silêncio**. A posição sobrevivia a uma execução e se perdia na próxima.
+>
+> Vale para qualquer página, não só esta. Corrigido em `scripts/seo/build-aeo.mjs`: a limpeza agora
+> repõe o marcador no lugar do bloco. Verificado com duas regenerações consecutivas.
+>
+> Quem pegou foi o teste de posição escrito para P2-1 — que existia justamente porque uma guarda de
+> existência não teria pego nada: o bloco continuava lá, só que no lugar errado.
 
 ### P2-2 · Rótulos de status epistêmico
 
