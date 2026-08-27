@@ -30,6 +30,11 @@ dist-ssr/
 .idx/dist/
 
 # AWS / Variáveis de Ambiente
+# Ambiente do tradutor local do gêmeo /en/ (scripts/i18n/README.md manda criá-lo
+# nesta pasta). É ferramenta de build, pesa centenas de MB e nunca entra no repo.
+.venv-i18n/
+scripts/i18n/__pycache__/
+
 .env
 .env.local
 .env.development.local
