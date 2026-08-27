@@ -2,7 +2,8 @@
 
 **Origem:** análise crítica externa da página publicada (revisão editorial, argumentativa e
 metodológica), recebida em 2026-08-27.
-**Status:** plano aprovado para execução? **não** — aguarda decisão sobre os itens P3.
+**Status:** fases 1–3 **executadas** em 2026-08-27. Pendentes: P1-1 e P3-1 (egresso bloqueado)
+e P3-2 (decisão do usuário).
 **Página:** `src/capacidade-antes-do-acesso.html` · SSOT de conteúdo: `scripts/seo/pages.mjs`.
 
 ---

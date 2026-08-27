@@ -31,7 +31,7 @@ Não conclui que se deva usar IA com crianças, nem que se deva proibi-la. Concl
 
 **Por que separar Educação Infantil de anos iniciais do Fundamental?**
 
-Porque são domínios distintos e a evidência de um não se transfere para o outro. Educação Infantil (ECEC) designa 0 a 6 anos, antes da escolarização obrigatória, onde o uso direto da ferramenta pela criança é mínimo e o foco recai sobre a formação do adulto. O Fundamental inicial (cerca de 6 a 13 anos) é onde a política norueguesa de 2026 legisla e onde a criança já está em alfabetização e numeramento. Tratá-los como bloco único é o erro metodológico mais recorrente neste campo.
+Porque são domínios distintos e a evidência de um não se transfere para o outro. Educação Infantil (ECEC) designa 0 a 6 anos, antes da escolarização obrigatória, onde o uso direto da ferramenta pela criança é mínimo e o foco recai sobre a formação do adulto. O Fundamental inicial (cerca de 6 a 13 anos) é onde a Noruega publicou, em 2026, orientações oficiais por etapa escolar, e onde a criança já está em alfabetização e numeramento. Tratá-los como bloco único compromete a validade da inferência, porque a evidência de um domínio não sustenta conclusões sobre o outro.
 
 **Quais são as quatro camadas da competência adulta?**
 

@@ -14,12 +14,19 @@ function esc(s = '') {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
-// Mini-rich p/ texto visível: escapa tudo, depois habilita **negrito** e [texto](url).
+// Mini-rich p/ texto visível: escapa tudo, depois habilita **negrito**, *itálico*
+// e [texto](url).
+//
+// O itálico entra DEPOIS do negrito e por isso não o quebra: quando chega aqui,
+// os `**` já viraram <strong> e não sobrou asterisco duplo para o padrão simples
+// capturar. Sem esta linha, um `*termo*` no SSOT chegava ao leitor com os
+// asteriscos literais — visível hoje em duas páginas.
 function rich(s = '') {
   let h = esc(s);
   h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g,
     (_, t, u) => `<a href="${esc(u)}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ''}>${t}</a>`);
   h = h.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  h = h.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
   return h;
 }
 
