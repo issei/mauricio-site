@@ -203,7 +203,7 @@ function renderEducation(data) {
             <p class="text-blue-300 text-md mb-2">${edu.Instituicao}</p>
             <p class="text-gray-400 text-sm">${edu.Periodo || edu.Ano}</p>
             ${edu.Diploma_Digital_Codigo ? `<p class="text-gray-500 text-xs mt-2">Código do Diploma: <span class="font-mono">${edu.Diploma_Digital_Codigo}</span></p>` : ''}
-            ${edu.Verificacao ? `<a href="${edu.Verificacao}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Assinatura <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>` : ''}
+            ${edu.Verificacao ? `<a href="${edu.Verificacao}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:underline text-sm mt-3" aria-label="Verificar diploma de ${edu.Curso} — ${edu.Instituicao} (abre em nova aba)">Verificar diploma <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>` : ''}
         `;
         container.appendChild(eduDiv);
     });

@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Capacidade Antes do Acesso — IA na Educação Infantil</title>
+  <meta name="description"
+    content="Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial: necessidade, suficiência e condicionalidade." />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="./capacidade-antes-do-acesso.css" />
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="capacity-before-access, capacidade antes do acesso, mediação pedagógica, competência digital docente, IA generativa na educação, educação infantil, ensino fundamental inicial, ECEC, cognitive offloading, substituição cognitiva, guardrails pedagógicos, política norueguesa de IA, AI-TPACK, DigCompEdu, EU AI Act, governança educacional" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/capacidade-antes-do-acesso" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/capacidade-antes-do-acesso.md" title="Capacidade Antes do Acesso — IA na Educação Infantil — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Capacidade Antes do Acesso — IA na Educação Infantil" />
+<meta property="og:description" content="Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial: necessidade, suficiência e condicionalidade." />
+<meta property="og:url" content="https://mauricio.issei.com.br/capacidade-antes-do-acesso" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-capacidade-antes-do-acesso.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Capacidade Antes do Acesso — IA na Educação Infantil" />
+<meta property="article:published_time" content="2026-08-27T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-08-27T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="Educação e Governança de IA" />
+<meta property="article:tag" content="Governança de IA" />
+<meta property="article:tag" content="Educação Infantil" />
+<meta property="article:tag" content="Mediação Pedagógica" />
+<meta property="article:tag" content="Competência Docente" />
+<meta property="article:tag" content="Cognitive Offloading" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Capacidade Antes do Acesso — IA na Educação Infantil" />
+<meta name="twitter:description" content="Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial: necessidade, suficiência e condicionalidade." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-capacidade-antes-do-acesso.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#webpage",
+      "url": "https://mauricio.issei.com.br/capacidade-antes-do-acesso",
+      "name": "Capacidade Antes do Acesso — IA na Educação Infantil",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-08-27",
+      "dateModified": "2026-08-27",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-capacidade-antes-do-acesso.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#article"
+      }
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#webpage"
+      },
+      "headline": "Capacidade antes do acesso: competência docente, mediação pedagógica e a governança da IA generativa na educação fundacional",
+      "description": "Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial: necessidade, suficiência e condicionalidade.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-08-27",
+      "dateModified": "2026-08-27",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-capacidade-antes-do-acesso.png",
+      "isAccessibleForFree": true,
+      "keywords": "capacity-before-access, capacidade antes do acesso, mediação pedagógica, competência digital docente, IA generativa na educação, educação infantil, ensino fundamental inicial, ECEC, cognitive offloading, substituição cognitiva, guardrails pedagógicos, política norueguesa de IA, AI-TPACK, DigCompEdu, EU AI Act, governança educacional",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Governança da IA na educação"
+        },
+        {
+          "@type": "Thing",
+          "name": "Mediação pedagógica"
+        },
+        {
+          "@type": "Thing",
+          "name": "Competência digital docente"
+        },
+        {
+          "@type": "Thing",
+          "name": "Educação Infantil (ECEC)"
+        },
+        {
+          "@type": "Thing",
+          "name": "Cognitive offloading"
+        },
+        {
+          "@type": "Thing",
+          "name": "EU AI Act",
+          "sameAs": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Gestores Educacionais, Formadores de Professores, Pesquisadores em Educação, Formuladores de Política Pública"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Capacidade Antes do Acesso — IA na Educação Infantil"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que significa \"capacidade antes do acesso\"?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É a proposição de que o acesso de crianças à IA generativa deveria ser condicionado à capacidade de mediação disponível — competência do adulto, qualidade da intervenção pedagógica e salvaguardas institucionais — e não apenas à idade cronológica. O artigo a trata como proposição analítica derivada da comparação entre arquiteturas de política, não como princípio já estabelecido pela literatura ou por qualquer política em vigor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Por que separar Educação Infantil de anos iniciais do Fundamental?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque são domínios distintos e a evidência de um não se transfere para o outro. Educação Infantil (ECEC) designa 0 a 6 anos, antes da escolarização obrigatória, onde o uso direto da ferramenta pela criança é mínimo e o foco recai sobre a formação do adulto. O Fundamental inicial (cerca de 6 a 13 anos) é onde a Noruega publicou, em 2026, orientações oficiais por etapa escolar, e onde a criança já está em alfabetização e numeramento. Tratá-los como bloco único compromete a validade da inferência, porque a evidência de um domínio não sustenta conclusões sobre o outro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais são as quatro camadas da competência adulta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Capacidade (o professor sabe como a ferramenta funciona), julgamento (sabe decidir quando usar, quando não usar e com que propósito), mediação (sabe intervir durante o uso — questionar, verificar, retirar o apoio) e governança (a instituição permite e estrutura essa intervenção, com tempo, infraestrutura e política). A maior parte da literatura mede apenas a primeira, em geral por autopercepção, silenciando justamente as camadas que a evidência mais forte sugere serem decisivas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando o descarregamento cognitivo vira substituição?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Descarregar carga operacional pode ser desejável e liberar capacidade para raciocínio de ordem superior; a pergunta precisa é quando o offloading se converte em substituição do processo cognitivo que a criança precisa desenvolver. No ensaio randomizado de Bastani et al. (2025), o acesso irrestrito ao modelo melhorou 48% o desempenho durante a prática mas produziu resultado 17% inferior ao controle no teste final sem IA; com guardrails que proibiam entregar a resposta final, a melhora foi de 127% e o ganho se manteve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A restrição de smartphones serve como evidência sobre IA generativa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não diretamente. Os mecanismos de risco são distintos: smartphone e redes sociais operam sobre atenção, distração e comparação social, enquanto a IA generativa opera sobre produção cognitiva, terceirização de raciocínio e escrita. As evidências sobre restrição de dispositivos são tratadas como evidência comparativa de política — útil para entender como restrições institucionais se comportam — e não como evidência causal sobre IA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que a política norueguesa de 2026 demonstra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Demonstra desenho de política (policy design): uma arquitetura coerente que combina idade mínima, competência docente prévia e finalidade pedagógica explícita, com restrição quase total entre 6 e 13 anos e uso gradual entre 14 e 16 condicionado à competência do professor. Não demonstra eficácia de política (policy effectiveness): é recente demais para avaliação longitudinal de impacto, e nenhuma política, por si só, constitui um experimento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A capacitação docente basta para integrar IA com responsabilidade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não segundo a literatura revisada. Nenhum estudo sustenta a suficiência da competência docente como variável isolada, e o próprio EU AI Act rejeita essa premissa de forma implícita ao exigir supervisão institucional para usos de alto risco, independentemente da competência individual do educador. A competência adulta é provavelmente condição habilitante necessária; a variável intermediária mais provável é a qualidade da mediação pedagógica."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#glossario",
+      "name": "Glossário — Capacidade Antes do Acesso — IA na Educação Infantil",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#g-capacity-before-access",
+          "name": "Capacidade antes do acesso",
+          "description": "Proposição de condicionar o acesso à capacidade de mediação disponível, não só à idade cronológica."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#g-dominio-a-ecec",
+          "name": "Domínio A (ECEC)",
+          "description": "Educação Infantil, 0–6 anos: o foco recai sobre a competência do adulto, a montante de qualquer uso direto."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#g-dominio-b-fundamental",
+          "name": "Domínio B (Fundamental inicial)",
+          "description": "Anos iniciais, ~6–13: onde restrição, introdução condicionada e mediação incidem sobre o uso pela criança."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#g-mediacao-pedagogica",
+          "name": "Mediação pedagógica",
+          "description": "Intervenção do adulto durante o uso — questionar, verificar e retirar o apoio progressivamente."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#g-substituicao-cognitiva",
+          "name": "Substituição cognitiva",
+          "description": "Quando a ferramenta executa o processo cognitivo que a criança precisaria desenvolver por si."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#g-guardrails-pedagogicos",
+          "name": "Guardrails pedagógicos",
+          "description": "Restrições de desenho que impedem a IA de entregar a resposta final, convertendo substituição em scaffold."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/capacidade-antes-do-acesso#g-policy-design",
+          "name": "Policy design × policy effectiveness",
+          "description": "Desenho coerente de uma política não é prova de que ela produz melhores desfechos: uma política não é um experimento."
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="ca-body">
+  <a href="#conteudo" class="ca-skip">Pular para o conteúdo</a>
+
+  <div class="ca-readbar" aria-hidden="true"><span data-readbar></span></div>
+
+  <header class="ca-nav" aria-label="Navegação da página">
+    <div class="ca-nav__inner">
+      <a href="#hero" class="ca-nav__brand">
+        <span class="ca-nav__dot" aria-hidden="true"></span>
+        Capacidade Antes do Acesso
+      </a>
+      <nav class="ca-nav__trail" aria-label="Marcos do artigo">
+        <a href="#dominios" data-navlink>Domínios</a>
+        <a href="#camadas" data-navlink>Camadas</a>
+        <a href="#proposicoes" data-navlink>Proposições</a>
+        <a href="#offloading" data-navlink>Offloading</a>
+        <a href="#noruega" data-navlink>Noruega</a>
+        <a href="#veredito" data-navlink>Veredito</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ================================ HERO ================================ -->
+    <section id="hero" class="ca-section ca-hero" aria-labelledby="hero-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Artigo · Revisão crítica de literatura e desenho de política</p>
+        <h1 id="hero-titulo" class="ca-hero__title">
+          Capacidade antes do acesso: quem <span class="ca-grad">medeia</span> a IA que chega à
+          criança
+        </h1>
+        <p class="ca-hero__sub">
+          O debate público sobre IA generativa na escola foi reduzido a duas opções — liberar ou
+          proibir. Nenhuma das duas descreve a variável que a evidência mais forte disponível aponta
+          como decisiva: o que o adulto faz enquanto a criança usa.
+        </p>
+        <p class="ca-hero__thesis">
+          A integração responsável da IA generativa nos anos fundacionais não é função do acesso da
+          criança à tecnologia, mas da interação entre prontidão desenvolvimental, competência
+          adulta, mediação pedagógica, governança institucional e a função cognitiva atribuída à IA
+          dentro da atividade de aprendizagem.
+        </p>
+
+        <figure class="ca-figure" aria-labelledby="v1-cap">
+          <p class="ca-eyebrow">Figura 1 · O que muda o resultado não é a ferramenta</p>
+          <div class="ca-figure__scroll">
+            <svg viewBox="0 0 1080 300" width="1080" height="300" role="img"
+              aria-labelledby="v1-titulo" aria-describedby="v1-desc">
+              <title id="v1-titulo">Duas salas de aula com a mesma ferramenta de IA e desfechos
+                opostos</title>
+              <desc id="v1-desc">No cenário de substituição, a criança pergunta, a IA responde e a
+                criança copia: o processo cognitivo que deveria ser desenvolvido é executado pela
+                máquina. No cenário de ampliação, o professor propõe um problema, a criança formula
+                uma hipótese, a IA oferece um contraexemplo, a criança verifica e reformula e o
+                professor questiona o raciocínio: o apoio amplia o processo e é retirado
+                progressivamente.</desc>
+
+              <text x="0" y="22" class="ca-bar-label">Cenário A · substituição</text>
+              <g>
+                <rect x="0" y="42" width="200" height="58" rx="10" class="ca-node" />
+                <text x="100" y="76" text-anchor="middle" class="ca-node-text">criança pergunta</text>
+                <rect x="270" y="42" width="200" height="58" rx="10" class="ca-node" />
+                <text x="370" y="76" text-anchor="middle" class="ca-node-text">IA responde</text>
+                <rect x="540" y="42" width="230" height="58" rx="10" class="ca-node" />
+                <text x="655" y="76" text-anchor="middle" class="ca-node-text">criança copia</text>
+                <line x1="205" y1="71" x2="262" y2="71" class="ca-flow" />
+                <line x1="475" y1="71" x2="532" y2="71" class="ca-flow" />
+                <text x="800" y="65" class="ca-axis-text">função cognitiva da IA:</text>
+                <text x="800" y="86" class="ca-bar-label" fill="#ff7b72">SUBSTITUTE</text>
+              </g>
+
+              <text x="0" y="162" class="ca-bar-label">Cenário B · ampliação</text>
+              <g>
+                <rect x="0" y="182" width="180" height="58" rx="10" class="ca-node ca-node--proposta" />
+                <text x="90" y="216" text-anchor="middle" class="ca-node-text">professor propõe</text>
+                <rect x="240" y="182" width="180" height="58" rx="10" class="ca-node" />
+                <text x="330" y="216" text-anchor="middle" class="ca-node-text">criança formula</text>
+                <rect x="480" y="182" width="180" height="58" rx="10" class="ca-node" />
+                <text x="570" y="216" text-anchor="middle" class="ca-node-text">IA contraexemplifica</text>
+                <rect x="720" y="182" width="180" height="58" rx="10" class="ca-node ca-node--proposta" />
+                <text x="810" y="216" text-anchor="middle" class="ca-node-text">professor questiona</text>
+                <line x1="185" y1="211" x2="232" y2="211" class="ca-flow" />
+                <line x1="425" y1="211" x2="472" y2="211" class="ca-flow" />
+                <line x1="665" y1="211" x2="712" y2="211" class="ca-flow" />
+                <text x="930" y="205" class="ca-axis-text">função:</text>
+                <text x="930" y="226" class="ca-bar-label" fill="#56d364">SCAFFOLD</text>
+              </g>
+
+              <defs>
+                <marker id="ca-seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6"
+                  markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#58a6ff" />
+                </marker>
+              </defs>
+            </svg>
+          </div>
+          <figcaption id="v1-cap">
+            O mesmo modelo, desenhos de uso diferentes, resultados contrastantes. A variável
+            relevante não é "a IA foi utilizada?", mas qual função cognitiva ela desempenhou dentro
+            da arquitetura pedagógica — o que desloca o debate de acesso para desenho de atividade.
+          </figcaption>
+        </figure>
+
+        <div class="ca-hero__cta">
+          <a href="#proposicoes" class="ca-btn ca-btn--primary">Ler as três proposições ▾</a>
+          <a href="#veredito" class="ca-btn ca-btn--ghost">Ir direto ao veredito</a>
+        </div>
+
+        <p class="ca-eyebrow" style="margin-top:2.5rem">Por onde você entra?</p>
+        <div class="ca-grid ca-grid--2">
+          <a href="#dominios" class="ca-card">
+            <span class="ca-card__q">"Educação Infantil e anos iniciais dão na mesma coisa, não?"</span>
+            <p class="ca-muted">Não. Misturar 0–6 com 6–13 anos invalida a conclusão — e é o erro
+              metodológico mais comum neste campo.</p>
+            <span class="ca-card__go">Ver os dois domínios →</span>
+          </a>
+          <a href="#camadas" class="ca-card ca-card--proposta">
+            <span class="ca-card__q">"Já capacitamos os professores em ferramentas."</span>
+            <p class="ca-muted">Capacidade é só a primeira de quatro camadas. Julgamento, mediação e
+              governança quase nunca são medidos.</p>
+            <span class="ca-card__go">Ver as quatro camadas →</span>
+          </a>
+          <a href="#offloading" class="ca-card ca-card--forte">
+            <span class="ca-card__q">"A IA faz a criança pensar menos?"</span>
+            <p class="ca-muted">Depende do desenho: no experimento mais diretamente informativo
+              desta matriz, o mesmo modelo ficou 17% abaixo do controle no teste final sem IA — ou
+              manteve o ganho, conforme as salvaguardas.</p>
+            <span class="ca-card__go">Ver a evidência causal →</span>
+          </a>
+          <a href="#restricoes" class="ca-card ca-card--limitada">
+            <span class="ca-card__q">"Proibir celular funcionou, então proibir IA funciona."</span>
+            <p class="ca-muted">Mecanismos de risco distintos: atenção e distração de um lado,
+              produção cognitiva do outro.</p>
+            <span class="ca-card__go">Ver por que não é proxy →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que é &quot;capacidade antes do acesso&quot;</h2>
+    <p class="aeo-tldr__lede">A integração responsável da IA generativa nos anos fundacionais <strong>não é função do acesso da criança à tecnologia</strong>, mas da interação entre prontidão desenvolvimental, competência adulta, qualidade da mediação, governança institucional e a função cognitiva atribuída à IA na atividade. <em>Capacity-before-access</em> é apresentada aqui como <strong>proposição analítica derivada da comparação de políticas</strong> — não como princípio já consagrado na literatura.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>Dois domínios, não um</strong> — Educação Infantil (0–6) e Fundamental inicial (~6–13) não se generalizam entre si; confundi-los invalida a conclusão.</li>
+      <li><strong>Quatro camadas de competência</strong> — capacidade, julgamento, mediação e governança; a literatura quase sempre mede só a primeira, e por autopercepção.</li>
+      <li><strong>Necessária, não suficiente</strong> — P1 é parcialmente sustentável, P2 não é sustentada por nenhum estudo revisado, P3 (condicionalidade) é a mais forte.</li>
+      <li><strong>Substituição × ampliação</strong> — com acesso irrestrito, −17% no teste final sem IA; com guardrails pedagógicos, ganho mantido (Bastani et al., 2025, PNAS).</li>
+    </ul>
+    <p class="aeo-tldr__foot">É o mesmo princípio do <em>fail-closed</em> da <a href="/engenharia-agentes-ia">Engenharia de Agentes de IA</a>, aplicado à sala de aula: o desenho decide o desfecho, não a ferramenta.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que significa &quot;capacidade antes do acesso&quot;?</summary>
+      <div class="aeo-faq__a"><p>É a proposição de que o acesso de crianças à IA generativa deveria ser condicionado à capacidade de mediação disponível — competência do adulto, qualidade da intervenção pedagógica e salvaguardas institucionais — e não apenas à idade cronológica. O artigo a trata como proposição analítica derivada da comparação entre arquiteturas de política, não como princípio já estabelecido pela literatura ou por qualquer política em vigor.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Por que separar Educação Infantil de anos iniciais do Fundamental?</summary>
+      <div class="aeo-faq__a"><p>Porque são domínios distintos e a evidência de um não se transfere para o outro. Educação Infantil (ECEC) designa 0 a 6 anos, antes da escolarização obrigatória, onde o uso direto da ferramenta pela criança é mínimo e o foco recai sobre a formação do adulto. O Fundamental inicial (cerca de 6 a 13 anos) é onde a Noruega publicou, em 2026, orientações oficiais por etapa escolar, e onde a criança já está em alfabetização e numeramento. Tratá-los como bloco único compromete a validade da inferência, porque a evidência de um domínio não sustenta conclusões sobre o outro.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quais são as quatro camadas da competência adulta?</summary>
+      <div class="aeo-faq__a"><p>Capacidade (o professor sabe como a ferramenta funciona), julgamento (sabe decidir quando usar, quando não usar e com que propósito), mediação (sabe intervir durante o uso — questionar, verificar, retirar o apoio) e governança (a instituição permite e estrutura essa intervenção, com tempo, infraestrutura e política). A maior parte da literatura mede apenas a primeira, em geral por autopercepção, silenciando justamente as camadas que a evidência mais forte sugere serem decisivas.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quando o descarregamento cognitivo vira substituição?</summary>
+      <div class="aeo-faq__a"><p>Descarregar carga operacional pode ser desejável e liberar capacidade para raciocínio de ordem superior; a pergunta precisa é quando o offloading se converte em substituição do processo cognitivo que a criança precisa desenvolver. No ensaio randomizado de Bastani et al. (2025), o acesso irrestrito ao modelo melhorou 48% o desempenho durante a prática mas produziu resultado 17% inferior ao controle no teste final sem IA; com guardrails que proibiam entregar a resposta final, a melhora foi de 127% e o ganho se manteve.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">A restrição de smartphones serve como evidência sobre IA generativa?</summary>
+      <div class="aeo-faq__a"><p>Não diretamente. Os mecanismos de risco são distintos: smartphone e redes sociais operam sobre atenção, distração e comparação social, enquanto a IA generativa opera sobre produção cognitiva, terceirização de raciocínio e escrita. As evidências sobre restrição de dispositivos são tratadas como evidência comparativa de política — útil para entender como restrições institucionais se comportam — e não como evidência causal sobre IA.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que a política norueguesa de 2026 demonstra?</summary>
+      <div class="aeo-faq__a"><p>Demonstra desenho de política (policy design): uma arquitetura coerente que combina idade mínima, competência docente prévia e finalidade pedagógica explícita, com restrição quase total entre 6 e 13 anos e uso gradual entre 14 e 16 condicionado à competência do professor. Não demonstra eficácia de política (policy effectiveness): é recente demais para avaliação longitudinal de impacto, e nenhuma política, por si só, constitui um experimento.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">A capacitação docente basta para integrar IA com responsabilidade?</summary>
+      <div class="aeo-faq__a"><p>Não segundo a literatura revisada. Nenhum estudo sustenta a suficiência da competência docente como variável isolada, e o próprio EU AI Act rejeita essa premissa de forma implícita ao exigir supervisão institucional para usos de alto risco, independentemente da competência individual do educador. A competência adulta é provavelmente condição habilitante necessária; a variável intermediária mais provável é a qualidade da mediação pedagógica.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+
+    <!-- ============================== DOMÍNIOS ============================== -->
+    <section id="dominios" class="ca-section" aria-labelledby="dominios-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Delimitação <span class="ca-selo ca-selo--sintese">Síntese</span></p>
+        <h2 id="dominios-titulo" class="ca-title ca-title--underline">
+          Dois domínios etários que a literatura trata como um só
+        </h2>
+        <div class="ca-prose">
+          <p>
+            "Educação Infantil" (<em>Early Childhood Education and Care</em>, ECEC) designa, na
+            literatura internacional, crianças de 0 a 6 anos, antes da escolarização obrigatória. O
+            caso empírico mais robusto disponível para discutir IA generativa — a política norueguesa
+            de 2026 — recai sobre o 1º ao 7º ano do <em>grunnskole</em>, aproximadamente 6 a 13 anos.
+            É Ensino Fundamental inicial, não Educação Infantil.
+          </p>
+          <p>
+            Tratar os dois como equivalentes compromete a validade da inferência, porque a
+            política norueguesa não é uma política de ECEC. Este artigo separa os domínios desde o
+            início — e a separação muda o que cada evidência pode sustentar.
+          </p>
+        </div>
+
+        <div class="ca-grid ca-grid--2" style="margin-top:1.6rem">
+          <div class="ca-card">
+            <p class="ca-kicker">DOMÍNIO A · 0–6 anos</p>
+            <h3>ECEC / Educação Infantil</h3>
+            <p class="ca-muted">
+              Foco a montante: desenvolvimento da competência digital e em IA dos adultos
+              responsáveis. O uso direto da ferramenta por crianças nesta faixa é mínimo ou
+              inexistente — e a expertise em desenvolvimento infantil, não a técnica, é o núcleo da
+              profissão docente.
+            </p>
+          </div>
+          <div class="ca-card ca-card--limitada">
+            <p class="ca-kicker">DOMÍNIO B · ~6–13 anos</p>
+            <h3>Ensino Fundamental inicial</h3>
+            <p class="ca-muted">
+              Foco nos efeitos de restrição, introdução condicionada e mediação docente sobre o uso
+              (ou não uso) de IA generativa por crianças em processo de alfabetização e numeramento.
+              É aqui que a Noruega publicou orientações oficiais por etapa escolar.
+            </p>
+          </div>
+        </div>
+
+        <p class="ca-small" style="margin-top:1.2rem">
+          Com a separação, a Noruega deixa de ser lida como evidência sobre Educação Infantil e passa
+          a ser descrita pelo que é: um caso de governança da IA na fase de formação das competências
+          fundacionais, com implicações <strong>indiretas</strong> para o Domínio A.
+        </p>
+
+        <h3 style="margin-top:2.2rem">As camadas que o debate público colapsa</h3>
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <caption>Tabela 1 · Acesso, uso e integração não são a mesma coisa.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Camada</th>
+                <th scope="col">Definição operacional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Acesso</th>
+                <td>A criança tem a possibilidade técnica de utilizar a IA, independentemente do uso
+                  efetivo.</td>
+              </tr>
+              <tr>
+                <th scope="row">Uso</th>
+                <td>A criança efetivamente interage com a ferramenta, com ou sem supervisão.</td>
+              </tr>
+              <tr>
+                <th scope="row">Uso mediado</th>
+                <td>O uso ocorre sob desenho, supervisão, questionamento e retirada progressiva do
+                  apoio por um adulto competente.</td>
+              </tr>
+              <tr>
+                <th scope="row">Integração pedagógica</th>
+                <td>A tecnologia está subordinada a objetivos curriculares e desenvolvimentais
+                  explícitos.</td>
+              </tr>
+              <tr>
+                <th scope="row">Alfabetização em IA</th>
+                <td>Distinguem-se aprender <em>com</em> IA, aprender <em>sobre</em> IA, aprender
+                  <em>por meio de</em> IA e <em>utilizar</em> IA para executar a tarefa — este último
+                  o caso de risco de terceirização cognitiva.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CAMADAS =============================== -->
+    <section id="camadas" class="ca-section" aria-labelledby="camadas-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Decomposição <span class="ca-selo ca-selo--proposta">Proposta original</span></p>
+        <h2 id="camadas-titulo" class="ca-title ca-title--underline">
+          "Competência digital docente" é ampla demais para ser útil
+        </h2>
+        <div class="ca-prose">
+          <p>
+            O conceito único de competência digital docente esconde quatro camadas distintas e
+            parcialmente independentes. A distinção importa porque a maior parte da literatura mede
+            apenas a primeira — e em geral por autopercepção —, silenciando exatamente as camadas que
+            a evidência mais forte sugere serem as que alteram o desfecho educacional.
+          </p>
+        </div>
+
+        <div class="ca-grid ca-grid--2" style="margin-top:1.6rem">
+          <div id="camada-capacidade" class="ca-card">
+            <p class="ca-kicker">CAMADA 1</p>
+            <h3>Capacidade <span class="ca-muted" style="font-weight:400">(capacity)</span></h3>
+            <p>O professor <strong>sabe</strong> como a ferramenta funciona, técnica e teoricamente?</p>
+            <p class="ca-small">Falha típica: desconhecer que a resposta de um modelo de linguagem
+              pode ser fabricada.</p>
+          </div>
+          <div id="camada-julgamento" class="ca-card ca-card--proposta">
+            <p class="ca-kicker">CAMADA 2</p>
+            <h3>Julgamento <span class="ca-muted" style="font-weight:400">(judgment)</span></h3>
+            <p>O professor <strong>sabe decidir</strong> quando usar, quando não usar e com que
+              propósito?</p>
+            <p class="ca-small">Falha típica: dominar a ferramenta e ainda assim introduzi-la sem
+              finalidade pedagógica clara.</p>
+          </div>
+          <div id="camada-mediacao" class="ca-card ca-card--forte">
+            <p class="ca-kicker">CAMADA 3</p>
+            <h3>Mediação <span class="ca-muted" style="font-weight:400">(mediation)</span></h3>
+            <p>O professor <strong>sabe intervir</strong> durante o uso — questionar, verificar,
+              retirar o apoio?</p>
+            <p class="ca-small">Falha típica: permitir que a criança copie a resposta da IA sem
+              checagem nem discussão.</p>
+          </div>
+          <div id="camada-governanca" class="ca-card ca-card--limitada">
+            <p class="ca-kicker">CAMADA 4</p>
+            <h3>Governança <span class="ca-muted" style="font-weight:400">(governance)</span></h3>
+            <p>A instituição <strong>permite e estrutura</strong> essa intervenção — tempo,
+              infraestrutura, política, supervisão?</p>
+            <p class="ca-small">Falha típica: o professor tem capacidade e julgamento, mas a escola
+              não oferece tempo, filtros nem apoio.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:2.4rem">Uma cadeia causal mais forte do que "formação → melhor uso"</h3>
+        <div class="ca-prose">
+          <p>
+            A literatura da OCDE sobre desenvolvimento profissional em ECEC não afirma simplesmente
+            que professores precisam saber tecnologia: ela diferencia competências fundacionais,
+            intensificadas e especializadas, e ancora a competência digital na própria compreensão do
+            desenvolvimento infantil. A cadeia que daí decorre é mais defensável porque torna a
+            competência tecnológica <strong>subordinada</strong> ao conhecimento sobre a criança — não
+            um substituto dele.
+          </p>
+        </div>
+
+        <figure class="ca-figure" aria-labelledby="v2-cap">
+          <p class="ca-eyebrow">Figura 2 · A cadeia causal proposta</p>
+          <div class="ca-figure__scroll">
+            <svg viewBox="0 0 1000 130" width="1000" height="130" role="img"
+              aria-labelledby="v2-titulo" aria-describedby="v2-desc">
+              <title id="v2-titulo">Cadeia causal da competência ao desfecho</title>
+              <desc id="v2-desc">Conhecimento sobre desenvolvimento infantil leva a competência
+                digital e em IA, que leva a julgamento pedagógico, que leva a uso mediado da
+                tecnologia, que leva ao desfecho desenvolvimental e educacional.</desc>
+              <g>
+                <rect x="0" y="30" width="180" height="60" rx="10" class="ca-node ca-node--proposta" />
+                <text x="90" y="56" text-anchor="middle" class="ca-node-text">desenvolvimento</text>
+                <text x="90" y="76" text-anchor="middle" class="ca-node-text">infantil</text>
+                <rect x="212" y="30" width="170" height="60" rx="10" class="ca-node" />
+                <text x="297" y="56" text-anchor="middle" class="ca-node-text">competência</text>
+                <text x="297" y="76" text-anchor="middle" class="ca-node-text">em IA</text>
+                <rect x="414" y="30" width="170" height="60" rx="10" class="ca-node" />
+                <text x="499" y="56" text-anchor="middle" class="ca-node-text">julgamento</text>
+                <text x="499" y="76" text-anchor="middle" class="ca-node-text">pedagógico</text>
+                <rect x="616" y="30" width="170" height="60" rx="10" class="ca-node" />
+                <text x="701" y="56" text-anchor="middle" class="ca-node-text">uso mediado</text>
+                <text x="701" y="76" text-anchor="middle" class="ca-node-text">da tecnologia</text>
+                <rect x="818" y="30" width="180" height="60" rx="10" class="ca-node" />
+                <text x="908" y="56" text-anchor="middle" class="ca-node-text">desfecho</text>
+                <text x="908" y="76" text-anchor="middle" class="ca-node-text">educacional</text>
+                <line x1="184" y1="60" x2="204" y2="60" class="ca-flow" />
+                <line x1="386" y1="60" x2="406" y2="60" class="ca-flow" />
+                <line x1="588" y1="60" x2="608" y2="60" class="ca-flow" />
+                <line x1="790" y1="60" x2="810" y2="60" class="ca-flow" />
+              </g>
+            </svg>
+          </div>
+          <figcaption id="v2-cap">
+            Ponto de particular relevância para o Domínio A, onde a expertise em desenvolvimento
+            infantil é, por definição, o núcleo da profissão.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================ PROPOSIÇÕES ============================= -->
+    <section id="proposicoes" class="ca-section" aria-labelledby="proposicoes-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Reformulação da hipótese <span class="ca-selo ca-selo--proposta">Proposta original</span></p>
+        <h2 id="proposicoes-titulo" class="ca-title ca-title--underline">
+          Três proposições que precisam ser testadas separadamente
+        </h2>
+        <div class="ca-prose">
+          <p>
+            A formulação forte — "a capacitação docente é condição necessária e suficiente" — não
+            sobrevive a um teste sério porque mistura três afirmações de tipos diferentes. Decompostas,
+            elas têm status epistêmico distinto:
+          </p>
+        </div>
+
+        <div class="ca-grid ca-grid--3" style="margin-top:1.6rem">
+          <div class="ca-card ca-card--limitada">
+            <p class="ca-kicker">P1 · NECESSIDADE</p>
+            <p>Sem competência adulta suficiente, nas quatro camadas, a integração responsável da IA
+              generativa é improvável.</p>
+            <p><span class="ca-selo ca-selo--limitada">Parcialmente sustentável</span></p>
+          </div>
+          <div class="ca-card ca-card--nao">
+            <p class="ca-kicker">P2 · SUFICIÊNCIA</p>
+            <p>Competência adulta suficiente, isoladamente, garante a integração responsável da IA
+              generativa.</p>
+            <p><span class="ca-selo ca-selo--naosustentada">Não sustentada</span></p>
+          </div>
+          <div class="ca-card ca-card--forte">
+            <p class="ca-kicker">P3 · CONDICIONALIDADE</p>
+            <p>O efeito educacional depende da interação entre competência adulta, qualidade da
+              mediação, maturidade da criança e desenho da tarefa.</p>
+            <p><span class="ca-selo ca-selo--forte">A mais forte</span></p>
+          </div>
+        </div>
+
+        <div class="ca-quote">
+          <p>
+            A separação evita apresentar <em>capacity-before-access</em> como tese demonstrada. Ela é
+            tratada, do início ao fim, como <strong>proposição analítica derivada da síntese
+            comparativa de políticas</strong> — não como princípio estabelecido na literatura.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= OFFLOADING ============================= -->
+    <section id="offloading" class="ca-section" aria-labelledby="offloading-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Mecanismo <span class="ca-selo ca-selo--forte">Evidência causal A</span></p>
+        <h2 id="offloading-titulo" class="ca-title ca-title--underline">
+          A pergunta não é se há descarregamento cognitivo, mas quando ele vira substituição
+        </h2>
+        <div class="ca-prose">
+          <p>
+            Nem todo <em>cognitive offloading</em> é prejudicial. Descarregar pode ser desejável,
+            temporário, estratégico ou compensatório — um recurso externo que reduz carga operacional
+            e libera capacidade para raciocínio de ordem superior. A pergunta cientificamente precisa
+            é outra: <strong>quando o descarregamento se converte em substituição cognitiva?</strong>
+          </p>
+          <p>
+            A evidência causal mais robusta de toda a matriz revisada responde a isso de forma
+            operacional. O ensaio controlado randomizado de Bastani e colegas (2025, <em>PNAS</em>),
+            com cerca de mil estudantes de ensino médio na Turquia, comparou dois acessos ao mesmo
+            modelo. O grupo com acesso irrestrito melhorou 48% durante a prática e teve desempenho
+            <strong>17% inferior ao controle</strong> no teste final sem IA. O grupo cuja IA foi
+            restringida por <em>guardrails</em> pedagógicos — instruída a nunca entregar a resposta
+            final — melhorou 127% durante a prática e <strong>manteve o ganho</strong> no teste final.
+          </p>
+        </div>
+
+        <figure class="ca-figure" aria-labelledby="v3-cap">
+          <p class="ca-eyebrow">Figura 3 · O mesmo modelo, dois desenhos, efeitos opostos</p>
+          <div class="ca-figure__scroll">
+            <svg viewBox="0 0 900 300" width="900" height="300" role="img"
+              aria-labelledby="v3-titulo" aria-describedby="v3-desc">
+              <title id="v3-titulo">Desempenho no teste final sem IA, por desenho de acesso</title>
+              <desc id="v3-desc">Tomando o grupo de controle como linha de base zero, o grupo com
+                acesso irrestrito ao modelo ficou dezessete por cento abaixo do controle no teste
+                final sem IA, enquanto o grupo com guardrails pedagógicos manteve o ganho obtido
+                durante a prática, permanecendo no nível do controle ou acima dele.</desc>
+
+              <line x1="240" y1="40" x2="860" y2="40" class="ca-axis" stroke-dasharray="4 4" />
+              <text x="240" y="30" class="ca-axis-text">linha de base: grupo de controle (sem IA)</text>
+
+              <text x="0" y="86" class="ca-bar-label">GPT Base</text>
+              <text x="0" y="106" class="ca-axis-text">acesso irrestrito</text>
+              <rect x="240" y="64" width="180" height="40" rx="4" class="ca-bar--nao" />
+              <text x="432" y="90" class="ca-bar-label" fill="#ff7b72">−17% no teste final</text>
+
+              <text x="0" y="176" class="ca-bar-label">GPT Tutor</text>
+              <text x="0" y="196" class="ca-axis-text">com guardrails</text>
+              <rect x="240" y="154" width="330" height="40" rx="4" class="ca-bar--forte" />
+              <text x="582" y="180" class="ca-bar-label" fill="#56d364">ganho mantido</text>
+
+              <text x="0" y="248" class="ca-bar-label">Durante a prática</text>
+              <rect x="240" y="234" width="120" height="18" rx="4" class="ca-bar--base" />
+              <text x="372" y="248" class="ca-axis-text">+48% (Base) · +127% (Tutor)</text>
+              <text x="0" y="286" class="ca-axis-text">O ganho de um dos dois não sobreviveu à retirada da ferramenta.</text>
+            </svg>
+          </div>
+          <figcaption id="v3-cap">
+            <p><strong>O que os percentuais medem.</strong> Desempenho em tarefas de matemática do
+            ensino médio, cerca de 1.000 estudantes distribuídos entre os braços, na Turquia. Os
+            valores de <em>prática</em> (+48%, +127%) e o de <em>teste final</em> (−17%) vêm de
+            momentos de medição distintos e não formam um par: o primeiro é medido com a ferramenta
+            disponível, o segundo depois de retirada. É essa retirada que separa ganho aparente de
+            aprendizagem retida — e é por isso que o número da prática, sozinho, não informa nada
+            sobre o que a criança aprendeu. Antes de citar qualquer um destes valores em decisão de
+            política, consulte o artigo original para intervalos de confiança e n por braço.
+          </p>
+          <p style="margin-top:0.6rem">
+            Força A para a população e a tarefa estudadas — adolescentes, matemática. A extrapolação
+            para crianças pequenas é hipótese, não dado: a suposição de que crianças em
+            desenvolvimento de autorregulação e controle inibitório sejam mais vulneráveis à
+            substituição prematura é plausível, mas <strong>não foi testada</strong> nos domínios A ou B.
+          </p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================= RESTRIÇÕES ============================= -->
+    <section id="restricoes" class="ca-section" aria-labelledby="restricoes-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Instrumento de política <span class="ca-selo ca-selo--limitada">Evidência comparativa</span></p>
+        <h2 id="restricoes-titulo" class="ca-title ca-title--underline">
+          Por que celular não é proxy de IA generativa
+        </h2>
+        <div class="ca-prose">
+          <p>
+            Há sete modalidades de restrição em uso: proibição total; restrição de acesso; restrição
+            por idade; restrição por contexto; uso supervisionado; uso condicionado à competência
+            docente prévia; e uso curricularmente integrado. Um erro recorrente na literatura de
+            política pública é tratar evidência sobre restrição de smartphones como prova indireta
+            sobre IA. São mecanismos de risco distintos.
+          </p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <caption>Tabela 2 · O que exatamente cada tecnologia coloca em risco.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tecnologia</th>
+                <th scope="col">Mecanismo de risco predominante</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Smartphone</th>
+                <td>Atenção, distração, interrupção, comunicação social.</td>
+              </tr>
+              <tr>
+                <th scope="row">Redes sociais</th>
+                <td>Comparação social, dependência, exposição a conteúdo.</td>
+              </tr>
+              <tr>
+                <th scope="row">IA generativa</th>
+                <td>Produção cognitiva, terceirização de raciocínio e escrita, automação da tarefa.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-grid ca-grid--2" style="margin-top:1.6rem">
+          <div class="ca-card ca-card--limitada">
+            <h3>O que a evidência de smartphones mostra</h3>
+            <p class="ca-muted">
+              Um estudo quasi-experimental norueguês com dados administrativos encontrou redução de
+              bullying e melhora de desempenho entre meninas, sem efeito médio agregado detectável
+              (força B). Uma revisão rápida com metanálise de cinco estudos achou efeito agregado
+              modesto — d ≈ 0,16 —, mais forte para bem-estar social do que para desempenho (força B).
+              Uma análise realista sugeriu possível piora para meninos e aumento de disparidade de
+              gênero.
+            </p>
+          </div>
+          <div class="ca-card">
+            <h3>O paralelo brasileiro</h3>
+            <p class="ca-muted">
+              A Lei paulista nº 18.058/2024 e a Lei federal nº 15.100/2025 restringem dispositivos
+              pessoais em escolas, com exceções pedagógicas e de acessibilidade. Relatos
+              institucionais indicam melhora de foco e interação social nos primeiros semestres; em
+              comunidades menos favorecidas, a implementação abrupta associou-se a comportamentos
+              agressivos — restrição isolada, sem acompanhamento psicossocial, não resolve
+              dependências cultivadas fora da escola.
+            </p>
+          </div>
+        </div>
+
+        <p class="ca-small" style="margin-top:1.2rem">
+          Essas evidências impedem afirmar que restrições tecnológicas são simplesmente ineficazes —
+          mas não autorizam concluir que restringir IA generativa produziria os mesmos efeitos.
+        </p>
+      </div>
+    </section>
+
+    <!-- =============================== NORUEGA ============================== -->
+    <section id="noruega" class="ca-section" aria-labelledby="noruega-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Estudo de caso <span class="ca-selo ca-selo--limitada">Desenho de política</span></p>
+        <h2 id="noruega-titulo" class="ca-title ca-title--underline">
+          A Noruega demonstra desenho de política — não eficácia de política
+        </h2>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <caption>Tabela 3 · Diretriz oficial norueguesa por etapa (Udir/Regjeringen, 2026).</caption>
+            <thead>
+              <tr>
+                <th scope="col">Faixa etária / etapa</th>
+                <th scope="col">Diretriz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">0–5 anos <span class="ca-muted">(Domínio A)</span></th>
+                <td>Restrição de tempo de tela de lazer (0,5–1 h/dia); ênfase em interação com adultos
+                  sem intermediação de telas.</td>
+              </tr>
+              <tr>
+                <th scope="row">6–13 anos <span class="ca-muted">(1º–7º ano, Domínio B)</span></th>
+                <td>Em regra, os alunos <strong>não</strong> têm acesso a IA generativa para trabalhos
+                  escolares.</td>
+              </tr>
+              <tr>
+                <th scope="row">14–16 anos <span class="ca-muted">(8º–10º ano)</span></th>
+                <td>Uso gradual e cauteloso, <strong>condicionado a que os professores tenham
+                  adquirido competência suficiente previamente</strong>.</td>
+              </tr>
+              <tr>
+                <th scope="row">17–19 anos</th>
+                <td>Uso independente permitido, com expectativa de aprendizagem crítica do uso da IA.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose" style="margin-top:1.6rem">
+          <p>
+            Dados administrativos (Udir, 2025) indicam que nove em cada dez escolas norueguesas
+            relatam ter filtros de conteúdo, mas as próprias escolas relatam falta de competência
+            institucional para apoiar professores no uso de IA — o que sustenta a leitura de que a
+            restrição <strong>precedeu</strong>, e não seguiu, a consolidação da competência docente.
+          </p>
+        </div>
+
+        <div class="ca-quote">
+          <p>
+            A Noruega demonstra <strong>policy design</strong>: uma arquitetura coerente de idade +
+            competência docente + finalidade pedagógica.<br />
+            A Noruega <strong>não</strong> demonstra <strong>policy effectiveness</strong>: que essa
+            arquitetura produz melhores desfechos de aprendizagem do que as alternativas.
+          </p>
+        </div>
+
+        <div class="ca-prose" style="margin-top:1.6rem">
+          <p>
+            Nenhuma política, por si só, constitui um experimento. A política de 2026 é recente demais
+            para avaliação longitudinal de impacto. O que existe é evidência anterior e correlata — a
+            restrição de smartphones de 2024 — que informou a base argumentativa para estender a
+            restrição à IA, mas essa generalização é inferência de política, não dado direto.
+          </p>
+          <p>
+            Há ainda um detalhe que a leitura apressada perde: a política condiciona o uso nos anos
+            8–10 à competência docente prévia, <strong>e também</strong> mantém restrição por idade
+            nos anos 1–7 independentemente da competência disponível. O modelo real é aditivo, não
+            substitutivo — <strong>idade mínima + competência docente prévia + finalidade pedagógica
+            explícita</strong>. Não é correto descrevê-lo como troca de "idade" por "competência".
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ARQUITETURAS ============================ -->
+    <section id="arquiteturas" class="ca-section" aria-labelledby="arquiteturas-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Comparação <span class="ca-selo ca-selo--sintese">Síntese</span></p>
+        <h2 id="arquiteturas-titulo" class="ca-title ca-title--underline">
+          Três arquiteturas de governança, não duas
+        </h2>
+
+        <div class="ca-grid ca-grid--3" style="margin-top:1.4rem">
+          <div class="ca-card">
+            <p class="ca-kicker">MODELO 1</p>
+            <h3>Restrição por idade</h3>
+            <p class="ca-muted">Idade cronológica como salvaguarda principal. Exemplo: a recomendação
+              da UNESCO de idade mínima de 13 anos para uso educacional de IA generativa.</p>
+          </div>
+          <div class="ca-card ca-card--proposta">
+            <p class="ca-kicker">MODELO 2</p>
+            <h3>Acesso condicionado à capacidade</h3>
+            <p class="ca-muted">Idade + competência docente prévia + introdução gradual. Exemplo: a
+              política norueguesa de 2026 para o 8º–10º ano.</p>
+          </div>
+          <div class="ca-card ca-card--nao">
+            <p class="ca-kicker">MODELO 3</p>
+            <h3>Acesso irrestrito / orientado pelo mercado</h3>
+            <p class="ca-muted">Disponibilidade tecnológica como principal determinante do acesso.
+              Exemplo: adoção comercial em plataformas educacionais sem mediação de política pública.</p>
+          </div>
+        </div>
+
+        <div class="ca-quote">
+          <p>
+            A pergunta produtiva não é "qual modelo é certo?", mas: qual arquitetura oferece melhor
+            correspondência entre risco, maturidade desenvolvimental e capacidade de mediação
+            disponível em cada contexto institucional?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== VEREDITO ============================== -->
+    <section id="veredito" class="ca-section" aria-labelledby="veredito-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Teste das proposições</p>
+        <h2 id="veredito-titulo" class="ca-title ca-title--underline">
+          O que a evidência sustenta — e o que ela não sustenta
+        </h2>
+
+        <div class="ca-grid" style="margin-top:1.4rem">
+          <div class="ca-card ca-card--limitada">
+            <h3>P1 · Necessidade <span class="ca-selo ca-selo--limitada">Parcialmente sustentável</span></h3>
+            <p class="ca-muted">
+              A evidência é indireta, mas convergente: a ausência de desenho pedagógico competente
+              produz prejuízo mensurável (Bastani et al., 2025); escolas norueguesas sem competência
+              institucional sinalizam risco de adoção acrítica; a literatura de AI-TPACK mostra que
+              conhecimento técnico isolado não substitui julgamento pedagógico-ético.
+            </p>
+            <p><strong>Formulação calibrada:</strong> a competência adulta é provavelmente uma
+              condição habilitante necessária em muitas formas de integração responsável, mas essa
+              necessidade não foi testada diretamente nos domínios A e B com IA generativa.</p>
+          </div>
+
+          <div class="ca-card ca-card--nao">
+            <h3>P2 · Suficiência <span class="ca-selo ca-selo--naosustentada">Não sustentada</span></h3>
+            <p class="ca-muted">
+              Nenhum estudo revisado testa diretamente essa proposição. O próprio EU AI Act rejeita a
+              premissa de forma implícita ao exigir infraestrutura institucional de supervisão — a
+              camada de governança — para sistemas de alto risco, independentemente da competência
+              individual do educador.
+            </p>
+            <p><strong>Formulação calibrada:</strong> a literatura atual não permite sustentar a
+              suficiência da capacitação docente como variável isolada.</p>
+          </div>
+
+          <div class="ca-card ca-card--forte">
+            <h3>P3 · Condicionalidade <span class="ca-selo ca-selo--forte">A mais forte</span></h3>
+            <p class="ca-muted">
+              O desenho experimental de Bastani et al. (2025) demonstra, com força A, que a presença
+              de <em>guardrails</em> pedagógicos — manifestação de competência de desenho, análoga à
+              camada de julgamento — altera substancialmente o efeito da IA sobre a retenção da
+              aprendizagem em adolescentes.
+            </p>
+            <p><strong>Formulação calibrada:</strong> a competência docente pode ser necessária, mas
+              dificilmente é suficiente; a variável intermediária mais provável é a qualidade da
+              mediação pedagógica — e é essa variável, não a "competência" em abstrato, que a agenda
+              futura deveria priorizar medir diretamente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= CONTINUUM ============================== -->
+    <section id="continuum" class="ca-section" aria-labelledby="continuum-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Modelo <span class="ca-selo ca-selo--proposta">Proposta original</span></p>
+        <h2 id="continuum-titulo" class="ca-title ca-title--underline">
+          Um continuum de governança, não uma dicotomia
+        </h2>
+        <div class="ca-prose">
+          <p>
+            Em vez do eixo binário proibição ↔ acesso, um continuum gradual, cruzado por um eixo
+            transversal de função cognitiva — substituição de um lado, ampliação do outro — presente
+            em qualquer ponto da sequência:
+          </p>
+        </div>
+
+        <ol class="ca-continuum">
+          <li>
+            <strong>Restrição protetiva</strong>
+            <span class="ca-muted">Temporária e seletiva, enquanto a capacidade não existe.</span>
+          </li>
+          <li>
+            <strong>Construção de capacidade adulta</strong>
+            <span class="ca-muted">Camadas 1 e 2: capacidade e julgamento.</span>
+          </li>
+          <li>
+            <strong>Acesso mediado pelo professor</strong>
+            <span class="ca-muted">Camada 3: intervenção durante o uso, com retirada progressiva do apoio.</span>
+          </li>
+          <li>
+            <strong>Uso apropriado à idade e ao desenvolvimento</strong>
+            <span class="ca-muted">A prontidão desenvolvimental como critério, não a disponibilidade da ferramenta.</span>
+          </li>
+          <li>
+            <strong>Ampliação cognitiva</strong>
+            <span class="ca-muted">Camada 4: governança institucional sustentando o processo.</span>
+          </li>
+        </ol>
+
+        <h3 style="margin-top:2.4rem">O continuum como critério operável
+          <span class="ca-selo ca-selo--proposta">Proposta original</span>
+        </h3>
+        <p class="ca-small">
+          Um continuum que não diz o que fazer na segunda-feira é vocabulário, não governança. A
+          tabela abaixo é a forma operável da mesma sequência — e permanece proposta: nenhuma linha
+          dela foi validada empiricamente nos domínios A ou B.
+        </p>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <caption>Tabela 6 · Do continuum ao critério de decisão, por etapa.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Etapa</th>
+                <th scope="col">Finalidade permitida</th>
+                <th scope="col">Papel do adulto</th>
+                <th scope="col">Salvaguarda mínima</th>
+                <th scope="col">Critério de retirada do apoio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">0–5 <span class="ca-muted">(Domínio A)</span></th>
+                <td>Nenhuma que envolva uso direto pela criança. A IA é ferramenta do adulto.</td>
+                <td>Formar-se nas camadas 1 e 2 antes de qualquer introdução.</td>
+                <td>Interação humana sem intermediação de tela como padrão.</td>
+                <td>Não se aplica — não há apoio a retirar.</td>
+              </tr>
+              <tr>
+                <th scope="row">6–9 <span class="ca-muted">(Domínio B)</span></th>
+                <td>Aprender <em>sobre</em> IA como objeto, em contexto mediado e coletivo.</td>
+                <td>Conduz a atividade; a criança não opera a ferramenta sozinha.</td>
+                <td>Nenhuma tarefa cujo produto a IA possa gerar por inteiro.</td>
+                <td>A criança sabe explicar o que a ferramenta fez e por que pode errar.</td>
+              </tr>
+              <tr>
+                <th scope="row">10–13 <span class="ca-muted">(Domínio B)</span></th>
+                <td>Aprender <em>com</em> IA em tarefa cujo trabalho cognitivo central permanece da
+                  criança.</td>
+                <td>Intervém durante o uso: questiona, exige verificação, interrompe a cópia.</td>
+                <td><em>Guardrails</em> que impeçam a entrega da resposta final.</td>
+                <td>A criança demonstra o resultado <strong>sem</strong> a ferramenta disponível.</td>
+              </tr>
+              <tr>
+                <th scope="row">14–16</th>
+                <td>Uso gradual, condicionado à competência docente prévia.</td>
+                <td>Desenha a tarefa e audita o processo, não só o produto.</td>
+                <td>Finalidade pedagógica declarada antes do uso, não depois.</td>
+                <td>Avaliação sem IA mantém o desempenho obtido com ela.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="ca-small" style="margin-top:1rem">
+          A última coluna é a que carrega o peso. É o teste de Bastani transposto para a sala: se o
+          desempenho não sobrevive à retirada da ferramenta, o que houve foi substituição — e nenhum
+          ganho medido durante a prática desmente isso.
+        </p>
+
+        <div class="ca-quote">
+          <p>
+            Que condições de governança e desenho pedagógico deslocam o uso da IA de substituição para
+            ampliação, em cada ponto do continuum e em cada domínio etário?
+          </p>
+        </div>
+
+        <p class="ca-small" style="margin-top:1.2rem">
+          A formulação evita apresentar restrição e capacitação como políticas concorrentes: a
+          restrição protetiva pode funcionar como mecanismo de governança <strong>transitório</strong>
+          — sem que isso implique que sejam etapas obrigatoriamente sequenciais em todo contexto.
+        </p>
+      </div>
+    </section>
+
+    <!-- =============================== MATRIZ =============================== -->
+    <section id="matriz" class="ca-section" aria-labelledby="matriz-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Auditoria de evidências</p>
+        <h2 id="matriz-titulo" class="ca-title ca-title--underline">Matriz de evidências</h2>
+        <p class="ca-small">
+          Uma escala de força só é auditável se o critério que separa um grau do seguinte estiver
+          escrito. O desta matriz:
+        </p>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <caption>Tabela 4 · Rubrica de classificação da força de evidência.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Grau</th>
+                <th scope="col">Critério de atribuição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><strong style="color:#3fb950">A</strong></th>
+                <td>Ensaio randomizado com desfecho comportamental medido e teste sem a ferramenta
+                  disponível.</td>
+              </tr>
+              <tr>
+                <th scope="row">B</th>
+                <td>Quasi-experimental com grupo de comparação, ou síntese sistemática — em ambos os
+                  casos com limitações declaradas de validade externa.</td>
+              </tr>
+              <tr>
+                <th scope="row">C</th>
+                <td>Descritivo, amostra pequena, sem grupo de controle, ou desfecho medido por
+                  autopercepção.</td>
+              </tr>
+              <tr>
+                <th scope="row">D</th>
+                <td>Norma, framework, diretriz oficial ou validação de construto. Diz o que se deve
+                  fazer ou como medir — não o que produziu efeito.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <caption>Tabela 5 · O que cada fonte sustenta, e com que força.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Estudo / documento</th>
+                <th scope="col">Domínio e população</th>
+                <th scope="col">Achado principal</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Força</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><a href="#ref-bastani">Bastani et al. (2025), PNAS</a></th>
+                <td>Adolescentes, ensino médio, Turquia (fora dos domínios A/B)</td>
+                <td><em>Guardrails</em> pedagógicos revertem substituição em ampliação</td>
+                <td>Educacional causal</td>
+                <td><strong style="color:#3fb950">A</strong></td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-dardanou">Dardanou et al. (2023), OECD WP 295</a></th>
+                <td>Domínio A, profissionais de ECEC</td>
+                <td>Mediação, brincar e colaboração são centrais; formação contínua e situada é mais
+                  promissora</td>
+                <td>Política / formação</td>
+                <td>B/C</td>
+              </tr>
+              <tr>
+                <th scope="row">Estudo quasi-experimental (Noruega, smartphones)
+                  <span class="ca-selo ca-selo--naosustentada">citação não fixada</span></th>
+                <td>Estudantes secundários</td>
+                <td>Redução de bullying; melhora entre meninas; sem efeito médio agregado</td>
+                <td>Comparativa de política (não IA)</td>
+                <td>B</td>
+              </tr>
+              <tr>
+                <th scope="row">Revisão rápida PRISMA (5 estudos, smartphones)
+                  <span class="ca-selo ca-selo--naosustentada">citação não fixada</span></th>
+                <td>Estudantes, múltiplos países</td>
+                <td>Efeito agregado modesto (d ≈ 0,16)</td>
+                <td>Comparativa de política (não IA)</td>
+                <td>B</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-celik">Celik (2023), AI-TPACK</a></th>
+                <td>Professores, internacional</td>
+                <td>Conhecimento técnico isolado não basta; julgamento pedagógico é central</td>
+                <td>Construto</td>
+                <td>B/C</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-ning">Ning et al. (2024)</a></th>
+                <td>400 professores, China</td>
+                <td>Componentes compostos medeiam relações de competência</td>
+                <td>Construto</td>
+                <td>B/C</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-romero">Romero-Tena et al. (2020)</a></th>
+                <td>Domínio A, 535 estudantes de ECE, Espanha</td>
+                <td>Aumento de autopercepção de competência (camada 1 apenas)</td>
+                <td>Educacional</td>
+                <td>C</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-yang">Yang et al. (2024)</a></th>
+                <td>Domínio A, 6 crianças de 5 anos, Hong Kong</td>
+                <td>Crianças aprendem <em>sobre</em> IA em contexto mediado</td>
+                <td>Educacional</td>
+                <td>C</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-unesco">UNESCO (2024), AI CFT</a></th>
+                <td>Professores, global</td>
+                <td>Cinco domínios de competência; tecnologia não substitui o professor</td>
+                <td>Normativa</td>
+                <td>D</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-aiact">EU AI Act, Art. 4º e Anexo III</a></th>
+                <td>Sistemas educacionais, UE</td>
+                <td>Literacia obrigatória; usos de alto risco exigem supervisão institucional</td>
+                <td>Normativa / regulatória</td>
+                <td>D</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-udir">Política norueguesa 2026 (Udir/Regjeringen)</a></th>
+                <td>Domínio B, 1º–19º ano</td>
+                <td>Restrição quase total 6–13; uso gradual 14–16 condicionado a competência docente</td>
+                <td><strong>Policy design</strong>, não <em>effectiveness</em></td>
+                <td>D</td>
+              </tr>
+              <tr>
+                <th scope="row"><a href="#ref-lei15100">Leis nº 15.100/2025 e SP nº 18.058/2024</a></th>
+                <td>Educação básica, Brasil</td>
+                <td>Restrição de dispositivos com exceções pedagógicas</td>
+                <td>Comparativa de política (não IA)</td>
+                <td>D</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="ca-small" style="margin-top:1.2rem">
+          <strong>Sobre as duas linhas marcadas "citação não fixada".</strong> São as únicas da
+          matriz sem autoria, ano e DOI resolvidos. O achado que elas reportam é usado no texto
+          apenas como evidência comparativa de política — nunca como evidência sobre IA — mas quem
+          quiser auditá-las não tem, hoje, por onde começar. Ficam marcadas até que a citação
+          completa seja fixada: uma matriz que existe para permitir auditoria deve declarar onde
+          ela mesma não a permite.
+        </p>
+
+        <p class="ca-small" style="margin-top:1.2rem">
+          <strong>Nota sobre referências não verificadas.</strong> Itens localizados em levantamentos
+          automatizados com identificadores DOI incompletos — majoritariamente <em>scoping</em> e
+          <em>systematic reviews</em> sobre riscos de IA em K-12 e frameworks de alfabetização em IA —
+          não puderam ser verificados quanto a título, autoria, existência e resultados relatados.
+          Foram classificados como <strong>referência não verificada</strong>, excluídos desta matriz
+          e da lista de referências, e usados apenas qualitativamente na identificação de lacunas.
+        </p>
+      </div>
+    </section>
+
+    <!-- =============================== AGENDA =============================== -->
+    <section id="agenda" class="ca-section" aria-labelledby="agenda-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">O que falta saber</p>
+        <h2 id="agenda-titulo" class="ca-title ca-title--underline">Agenda de pesquisa</h2>
+        <div class="ca-prose">
+          <p>
+            A lacuna não é tratada aqui como problema a ser resolvido por inferência otimista: a
+            literatura oferece frameworks suficientes para formular a hipótese e insuficientes para
+            estabelecer causalidade. Cinco desenhos fechariam essa distância.
+          </p>
+        </div>
+
+        <div class="ca-grid ca-grid--2" style="margin-top:1.4rem">
+          <div class="ca-card">
+            <h3>1 · RCT de quatro braços</h3>
+            <p class="ca-muted">Adaptando Bastani et al. (2025) separadamente para os domínios A e B:
+              sem IA; IA sem mediação; IA com professor capacitado nas quatro camadas; IA com
+              professor capacitado e restrições adicionais. Desfechos: leitura, escrita, cálculo
+              emergente, autonomia e indicadores de substituição versus ampliação.</p>
+          </div>
+          <div class="ca-card">
+            <h3>2 · Estudo longitudinal por camada</h3>
+            <p class="ca-muted">Medir separadamente capacidade, julgamento, mediação e governança
+              institucional, evitando o erro recorrente de medir apenas autopercepção da primeira.</p>
+          </div>
+          <div class="ca-card ca-card--proposta">
+            <h3>3 · Estudo de mediação formal</h3>
+            <p class="ca-muted">Testar diretamente o modelo <em>competência docente em IA → qualidade
+              da mediação pedagógica → desfecho infantil</em>, com observação direta em sala — não
+              apenas questionários.</p>
+          </div>
+          <div class="ca-card">
+            <h3>4 · Dose-resposta e limiares</h3>
+            <p class="ca-muted">Comparar 3–5, 6–8, 9–11, 12–13 e 14–16 anos, testando se a
+              vulnerabilidade à substituição cognitiva varia não linearmente com a idade — hipótese
+              sugerida, mas não testada, pela própria arquitetura etária da política norueguesa.</p>
+          </div>
+          <div class="ca-card ca-card--limitada">
+            <h3>5 · Avaliação de impacto da política norueguesa</h3>
+            <p class="ca-muted">Quando houver dados longitudinais, testar se a arquitetura "idade +
+              competência docente + finalidade pedagógica" produz melhores desfechos do que os outros
+              dois modelos de governança.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== LIMITES ============================== -->
+    <section id="limites" class="ca-section" aria-labelledby="limites-titulo">
+      <div class="ca-container">
+        <p class="ca-eyebrow">Conclusão</p>
+        <h2 id="limites-titulo" class="ca-title ca-title--underline">
+          Restrição e capacitação não precisam ser políticas concorrentes
+        </h2>
+        <div class="ca-prose">
+          <p>
+            A resposta mais defensável é condicional, não binária. A competência adulta — decomposta
+            em capacidade, julgamento, mediação e governança — é provavelmente condição habilitante
+            necessária, mas nenhuma evidência revisada sustenta sua suficiência isolada. A
+            condicionalidade é a proposição mais bem apoiada: o desenho da tarefa e a qualidade da
+            mediação alteram o efeito da IA sobre a aprendizagem — cadeia demonstrada em adolescentes,
+            não em crianças dos domínios A ou B.
+          </p>
+          <p>
+            A restrição pode funcionar como mecanismo de governança temporário até que a capacidade
+            humana e institucional para mediação responsável esteja estabelecida. Sem que isso
+            implique que uma deva sempre preceder a outra em todo contexto, nem que a combinação já
+            tenha sido validada empiricamente como superior às alternativas.
+          </p>
+        </div>
+
+        <div class="ca-quote">
+          <p>
+            Esta não é uma conclusão de que "devemos usar IA nas crianças", nem de que "devemos
+            proibi-la". É uma conclusão sobre arquitetura de governança condicional — cuja validade
+            preditiva permanece uma questão em aberto.
+          </p>
+        </div>
+
+        <div class="ca-card ca-card--limitada" style="margin-top:1.8rem">
+          <h3>Limitação principal declarada</h3>
+          <p class="ca-muted">
+            Ausência de estudos longitudinais e experimentais que liguem competência docente,
+            qualidade de mediação e desfechos infantis especificamente com IA generativa nos dois
+            domínios etários definidos. Toda afirmação acima está calibrada por essa ausência.
+          </p>
+        </div>
+
+        <p class="ca-small" style="margin-top:1.4rem">
+          O mesmo princípio governa um agente de IA confiável em outra escala: parar num ponto seguro
+          em vez de promover um palpite. Ver
+          <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> e, sobre quando parar
+          de refinar um problema, <a href="./formulacao-de-problemas.html">Formulação de Problemas</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+
+<!-- AEO-BODY -->
+<footer class="ca-footer">
+    <div class="ca-container">
+      <p class="ca-footer__brand">Capacidade Antes do Acesso</p>
+      <p class="ca-footer__meta">
+        Competência docente, mediação pedagógica e a governança da IA generativa na Educação Infantil
+        e no Fundamental inicial · Maurício Yokoyama Issei
+      </p>
+      <p class="ca-footer__nav">
+        <a href="./catalogo.html">Catálogo</a> ·
+        <a href="./formulacao-de-problemas.html">Formulação de Problemas</a> ·
+        <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> ·
+        <a href="./engenharia-confianca.html">Engenharia da Confiança</a> ·
+        <a href="#hero">Voltar ao topo</a>
+      </p>
+
+      <nav class="ca-footer__refs" aria-label="Referências do artigo">
+        <p class="ca-footer__refs-title">Referências</p>
+        <div class="ca-footer__refgrid">
+          <div>
+            <h3>Evidência causal</h3>
+            <ul>
+              <li id="ref-bastani"><a href="https://www.pnas.org/doi/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al. (2025) — Generative AI without guardrails can harm learning (PNAS)</a></li>
+              <li id="ref-celik"><a href="https://doi.org/10.1016/j.chb.2022.107468" target="_blank" rel="noopener">Celik (2023) — Towards Intelligent-TPACK</a></li>
+              <li id="ref-ning"><a href="https://doi.org/10.3390/su16030978" target="_blank" rel="noopener">Ning et al. (2024) — Teachers' AI-TPACK</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Formação e ECEC</h3>
+            <ul>
+              <li id="ref-dardanou"><a href="https://doi.org/10.1787/a3dd3f26-en" target="_blank" rel="noopener">Dardanou et al. (2023) — OECD Education Working Paper No. 295</a></li>
+              <li id="ref-romero"><a href="https://doi.org/10.3390/su122310093" target="_blank" rel="noopener">Romero-Tena et al. (2020) — Digital competence of ECE trainee teachers</a></li>
+              <li id="ref-yang"><a href="https://doi.org/10.1111/jcal.13020" target="_blank" rel="noopener">Yang et al. (2024) — AI education for young children</a></li>
+              <li><a href="https://doi.org/10.1111/j.1467-9620.2006.00684.x" target="_blank" rel="noopener">Mishra &amp; Koehler (2006) — TPACK</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Política e regulação</h3>
+            <ul>
+              <li id="ref-udir"><a href="https://www.udir.no" target="_blank" rel="noopener">Utdanningsdirektoratet (2026) — Orientações sobre IA por etapa</a></li>
+              <li><a href="https://www.regjeringen.no/no/dokumenter/meld.-st.-32-20242025/id3108037/" target="_blank" rel="noopener">Regjeringen (2025) — Meld. St. 32: Trygg digital oppvekst</a></li>
+              <li id="ref-aiact"><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">Regulamento (UE) 2024/1689 — EU AI Act</a></li>
+              <li id="ref-lei15100"><a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15100.htm" target="_blank" rel="noopener">Lei nº 15.100/2025 — Dispositivos pessoais em escolas</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Frameworks normativos</h3>
+            <ul>
+              <li id="ref-unesco"><a href="https://www.unesco.org/en/articles/ai-competency-framework-teachers" target="_blank" rel="noopener">UNESCO (2024) — AI competency framework for teachers</a></li>
+              <li><a href="https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research" target="_blank" rel="noopener">UNESCO (2023) — Guidance for generative AI in education</a></li>
+              <li><a href="https://doi.org/10.1787/a1874d63-en" target="_blank" rel="noopener">OCDE (2024) — Trustworthy AI in education</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="ca-footer__copy">
+          © <span>2026</span> Maurício Yokoyama Issei. Revisão crítica de literatura empírica,
+          conceitual e documental (2016–2026); a versão integral, com a lista completa de referências,
+          está em <a href="/capacidade-antes-do-acesso.md">formato Markdown</a>. As obras externas
+          citadas são propriedade de seus autores e editores, referenciadas para fins educacionais e
+          de rastreabilidade, sem vínculo ou endosso.
+        </p>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module">
+    /*
+     * Dois enfeites, ambos com degradação limpa: a barra de progresso de leitura
+     * e o realce do marco atual na trilha de navegação. Nada de conteúdo depende
+     * deste script — sem JavaScript a página continua íntegra.
+     */
+    const reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const barra = document.querySelector('[data-readbar]');
+    if (barra && !reduzido) {
+      const atualizar = () => {
+        const alcance = document.documentElement.scrollHeight - window.innerHeight;
+        const razao = alcance > 0 ? window.scrollY / alcance : 0;
+        barra.style.width = `${Math.min(100, Math.max(0, razao * 100))}%`;
+      };
+      addEventListener('scroll', atualizar, { passive: true });
+      addEventListener('resize', atualizar, { passive: true });
+      atualizar();
+    }
+
+    const links = [...document.querySelectorAll('[data-navlink]')];
+    const secoes = links
+      .map((a) => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+
+    if (secoes.length && 'IntersectionObserver' in window) {
+      const observador = new IntersectionObserver(
+        (entradas) => {
+          for (const entrada of entradas) {
+            if (!entrada.isIntersecting) continue;
+            for (const a of links) {
+              if (a.getAttribute('href') === `#${entrada.target.id}`) a.setAttribute('aria-current', 'true');
+              else a.removeAttribute('aria-current');
+            }
+          }
+        },
+        { rootMargin: '-45% 0px -50% 0px' }
+      );
+      secoes.forEach((s) => observador.observe(s));
+    }
+  </script>
+</body>
+
+</html>

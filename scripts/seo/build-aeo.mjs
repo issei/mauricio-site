@@ -56,7 +56,18 @@ function processPage(p) {
   // deixava mais uma linha dele acumulada no <head>.
   html = html.replace(/(?:^[\t ]*<!-- ={10,} -->\n)+(?=[\t ]*<!-- AEO:START)/gm, '');
   html = stripMarked(html, '<!-- AEO:START', '<!-- AEO:END -->');
-  html = stripMarked(html, '<!-- AEO-BODY:START', '<!-- AEO-BODY:END -->');
+  // O bloco visível some, mas o MARCADOR fica no lugar dele.
+  //
+  // O marcador `<!-- AEO-BODY -->` é consumido na primeira injeção (vira o
+  // bloco). Se a limpeza o apagasse junto, a regeneração seguinte não teria
+  // como saber onde o autor quis o bloco e cairia no fallback "antes do último
+  // <footer>" — devolvendo ao rodapé um resumo deliberadamente posicionado no
+  // topo. Era exatamente o que acontecia: a posição sobrevivia a uma execução e
+  // se perdia na próxima, em silêncio.
+  html = html.replace(
+    /([\t ]*)<!-- AEO-BODY:START[\s\S]*?<!-- AEO-BODY:END -->\n?/,
+    (_, indent) => `${indent}<!-- AEO-BODY -->\n`
+  );
 
   // 2) split head/body e de-dup no head
   const hi = html.indexOf('</head>');
