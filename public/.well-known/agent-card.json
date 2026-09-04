@@ -1,0 +1,31 @@
+{
+  "name": "Maurício Yokoyama Issei — Portfolio Agent",
+  "version": "1.0.0",
+  "description": "Agente de descoberta para o portfólio profissional de Maurício Yokoyama Issei (Tech Lead e Arquiteto), expondo CV estruturado, projetos STAR e ferramentas MCP para consulta por agentes de IA.",
+  "supportedInterfaces": [
+    {
+      "url": "https://mauricio.issei.com.br/.well-known/mcp/server-card.json",
+      "transport": "mcp"
+    },
+    {
+      "url": "https://mauricio.issei.com.br/openapi.json",
+      "transport": "http+json"
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "skills": [
+    {
+      "id": "get_cv_data",
+      "name": "Consultar CV estruturado",
+      "description": "Recupera o currículo completo de Maurício Issei em formato JSON estruturado (experiência, formação, certificações)."
+    },
+    {
+      "id": "get_star_projects",
+      "name": "Consultar estudos de caso de projetos",
+      "description": "Recupera estudos de caso de projetos formatados com a metodologia Situação-Tarefa-Ação-Resultado (STAR)."
+    }
+  ]
+}
