@@ -8,24 +8,32 @@ O protocolo DNS-AID utiliza registros DNS dos tipos `HTTPS` e `SVCB` no subdomí
 
 ## 2. Registros DNS Necessários
 
-Cadastrar no Route 53 na zona hospedada de `issei.com.br`:
+Cadastrar no Route 53 na zona hospedada de `issei.com.br` (com o parâmetro `mandatory=alpn,port` conforme a especificação v2):
 
 ```dns
 ; Descoberta geral (ai-catalog / ARD)
-_index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 key65001="/.well-known/ai-catalog.json"
+_index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 mandatory=alpn,port key65001="/.well-known/ai-catalog.json"
 
 ; Endpoint MCP
-_mcp._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="mcp" port=443 key65001="/.well-known/mcp/server-card.json"
+_mcp._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="mcp" port=443 mandatory=alpn,port key65001="/.well-known/mcp/server-card.json"
 
 ; Endpoint A2A
-_a2a._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="a2a" port=443 key65001="/.well-known/agent-card.json"
+_a2a._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="a2a" port=443 mandatory=alpn,port key65001="/.well-known/agent-card.json"
 ```
 
 *Nota: `key65001` representa o parâmetro numérico de chave privada/experimental para "endpoint path" até padronização formal da IANA.*
 
-## 3. Habilitação de DNSSEC no Route 53
+## 3. Script de Automação Route 53
 
-Para que os validadores DNS-AID confirmem a autenticidade das respostas DNS (evitando status `NXDOMAIN` ou rejeição de segurança), a assinatura DNSSEC precisa estar ativa na zona:
+Para aplicar os 3 registros automaticamente via AWS CLI no Route 53, utilize o script `scripts/setup-dns-aid-route53.sh`:
+
+```bash
+HOSTED_ZONE_ID="SUA_HOSTED_ZONE_ID" ./scripts/setup-dns-aid-route53.sh
+```
+
+## 4. Habilitação de DNSSEC no Route 53
+
+Para que os validadores DNS-AID confirmem a autenticidade das respostas DNS, a assinatura DNSSEC precisa estar ativa na zona:
 
 1. Acesse o console do **AWS Route 53**.
 2. Selecione a zona hospedada `issei.com.br`.
@@ -33,7 +41,7 @@ Para que os validadores DNS-AID confirmem a autenticidade das respostas DNS (evi
 4. Siga as instruções para criar a chave KSK (Key Signing Key) no AWS KMS.
 5. Copie os registros **DS (Delegation Signer)** fornecidos pelo Route 53 e adicione-os no registrador do domínio principal (ex.: Registro.br ou AWS Registrar).
 
-## 4. Verificação
+## 5. Verificação
 
 Após propagação DNS, execute a consulta DNS-over-HTTPS:
 
@@ -41,4 +49,4 @@ Após propagação DNS, execute a consulta DNS-over-HTTPS:
 curl -H "accept: application/dns-json" "https://cloudflare-dns.com/dns-query?name=_index._agents.mauricio.issei.com.br&type=HTTPS"
 ```
 
-A resposta deve conter `Status: 0` (NOERROR) e a chave `AD: true` (Authenticated Data).
+A resposta deve conter `Status: 0` (NOERROR) com o bloco `Answer`.

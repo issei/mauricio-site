@@ -1,0 +1,17 @@
+{
+  "issuer": "https://mauricio.issei.com.br",
+  "authorization_endpoint": "https://mauricio.issei.com.br/oauth/authorize",
+  "token_endpoint": "https://mauricio.issei.com.br/oauth/token",
+  "jwks_uri": "https://mauricio.issei.com.br/.well-known/jwks.json",
+  "response_types_supported": ["code", "token"],
+  "grant_types_supported": ["authorization_code", "implicit"],
+  "subject_types_supported": ["public"],
+  "id_token_signing_alg_values_supported": ["RS256"],
+  "scopes_supported": ["openid", "profile", "cv:read", "projects:read"],
+  "token_endpoint_auth_methods_supported": ["client_secret_basic", "client_secret_post"],
+  "claims_supported": ["sub", "name", "email", "profile"],
+  "service_documentation": "https://mauricio.issei.com.br/cv-for-ai.md",
+  "ui_locales_supported": ["pt-BR", "en"],
+  "op_policy_uri": "https://mauricio.issei.com.br/privacidade",
+  "op_tos_uri": "https://mauricio.issei.com.br/termos"
+}
