@@ -5,7 +5,7 @@ Este documento descreve como agentes de IA podem se autenticar (ou consumir sem 
 ## Recursos protegidos
 
 - Resource: `https://mauricio.issei.com.br`
-- Authorization Server: `https://mauricio.issei.com.br` (metadata em `/.well-known/openid-configuration`)
+- Authorization Server: `https://mauricio.issei.com.br` (metadata em `/.well-known/oauth-authorization-server` e `/.well-known/openid-configuration`)
 - Protected Resource Metadata: `/.well-known/oauth-protected-resource`
 - Scopes disponíveis: `cv:read`, `projects:read`, `profile`
 - Método de apresentação de token: `header` (Bearer)
