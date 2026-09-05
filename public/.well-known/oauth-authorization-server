@@ -13,5 +13,20 @@
   "service_documentation": "https://mauricio.issei.com.br/cv-for-ai.md",
   "ui_locales_supported": ["pt-BR", "en"],
   "op_policy_uri": "https://mauricio.issei.com.br/privacidade",
-  "op_tos_uri": "https://mauricio.issei.com.br/termos"
+  "op_tos_uri": "https://mauricio.issei.com.br/termos",
+  "agent_auth": {
+    "skill": "portfolio-read",
+    "register_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
+    "methods": [
+      {
+        "type": "anonymous",
+        "scopes": ["cv:read", "projects:read", "profile"]
+      }
+    ]
+  },
+  "identity_types_supported": ["anonymous"],
+  "anonymous": {
+    "credential_types_supported": ["none"]
+  },
+  "claim_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource"
 }
