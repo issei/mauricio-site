@@ -67,19 +67,20 @@ E, junto a esse bloco, incluir também o objeto de identidade que o checker espe
 
 ---
 
-## 2. DNS-AID — publicar os registros SVCB/HTTPS (ainda pendente)
+## 2. DNS-AID — publicar os registros SVCB/HTTPS ✅ CONCLUÍDO
 
-Nenhuma mudança de especificação aqui — os registros ainda não foram publicados no Route 53 (todas as consultas continuam `NXDOMAIN`). Usar o script `setup-dns-aid-route53.sh` já entregue anteriormente.
-
-**Um ajuste no conteúdo dos registros**, com base na confirmação da skill oficial: incluir o parâmetro `mandatory=alpn,port` no valor de cada registro, conforme o exemplo oficial da spec:
+Aplicado em `2026-09-05` na hosted zone `Z1D4C1H8BQ1VJ1` (`issei.com.br`), change `C052794839V2RRB0KNYXK` (`INSYNC`). Os 3 registros resolvem via Cloudflare DoH com `Status: 0` / `Answer` não vazio.
 
 ```dns
-_index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 mandatory=alpn,port key65001="/.well-known/ai-catalog.json"
+_index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 mandatory=alpn,port
 
-_mcp._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="mcp" port=443 mandatory=alpn,port key65001="/.well-known/mcp/server-card.json"
+_mcp._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="mcp" port=443 mandatory=alpn,port
 
-_a2a._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="a2a" port=443 mandatory=alpn,port key65001="/.well-known/agent-card.json"
+_a2a._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="a2a" port=443 mandatory=alpn,port
 ```
+
+> **`mandatory=alpn,port`** incluído conforme o exemplo oficial da skill DNS-AID.
+> **`key65001="..."` removido:** o Route 53 rejeita SvcParamKeys genéricos (`keyNNNNN`) com `InvalidChangeBatch` — só aceita `mandatory`, `alpn`, `no-default-alpn`, `port`, `ipv4hint`, `ech`, `ipv6hint`. O exemplo oficial da skill também não carrega parâmetro de path; o caminho dos manifestos fica em `/.well-known/ai-catalog.json` (ARD).
 
 Se o script `setup-dns-aid-route53.sh` já foi executado e mesmo assim o rescan continua `NXDOMAIN`, verificar nesta ordem:
 1. `aws route53 list-resource-record-sets --hosted-zone-id <ID> --query "ResourceRecordSets[?contains(Name, '_agents')]"` — confirmar que os 3 registros existem na zona certa.

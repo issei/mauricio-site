@@ -12,16 +12,18 @@ Cadastrar no Route 53 na zona hospedada de `issei.com.br` (com o parâmetro `man
 
 ```dns
 ; Descoberta geral (ai-catalog / ARD)
-_index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 mandatory=alpn,port key65001="/.well-known/ai-catalog.json"
+_index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 mandatory=alpn,port
 
 ; Endpoint MCP
-_mcp._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="mcp" port=443 mandatory=alpn,port key65001="/.well-known/mcp/server-card.json"
+_mcp._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="mcp" port=443 mandatory=alpn,port
 
 ; Endpoint A2A
-_a2a._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="a2a" port=443 mandatory=alpn,port key65001="/.well-known/agent-card.json"
+_a2a._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="a2a" port=443 mandatory=alpn,port
 ```
 
-*Nota: `key65001` representa o parâmetro numérico de chave privada/experimental para "endpoint path" até padronização formal da IANA.*
+*Nota: o Route 53 rejeita SvcParamKeys genéricos (`keyNNNNN`, ex.: `key65001` para "endpoint path") com `InvalidChangeBatch` — só aceita os registrados: `mandatory`, `alpn`, `no-default-alpn`, `port`, `ipv4hint`, `ech`, `ipv6hint`. O caminho de cada manifesto (`ai-catalog.json`, `mcp/server-card.json`, `agent-card.json`) é resolvido via `/.well-known/ai-catalog.json` (ARD), não pelo DNS. O exemplo oficial da skill DNS-AID também não usa parâmetro de path.*
+
+Estado atual (aplicado em `Z1D4C1H8BQ1VJ1`, change `C052794839V2RRB0KNYXK`, `INSYNC`): os 3 registros resolvem via Cloudflare DoH com `Status: 0`. `AD:false` (zona `NOT_SIGNING`) — DNSSEC não é bloqueante para `dnsAid: pass`.
 
 ## 3. Script de Automação Route 53
 

@@ -4,6 +4,12 @@
 # Descrição: Cria/atualiza os registros HTTPS e SVCB para o protocolo DNS-AID
 #            no AWS Route 53 sob o subdomínio _agents.mauricio.issei.com.br
 #
+#            NOTA: o Route 53 só aceita SvcParamKeys registrados (mandatory,
+#            alpn, no-default-alpn, port, ipv4hint, ech, ipv6hint). Chaves
+#            genéricas keyNNNNN (ex.: key65001 para "endpoint path") são
+#            REJEITADAS com InvalidChangeBatch. O caminho de cada manifesto
+#            fica publicado em /.well-known/ai-catalog.json (ARD), não no DNS.
+#
 # Uso: HOSTED_ZONE_ID="Z1234567890ABC" ./scripts/setup-dns-aid-route53.sh
 # ==============================================================================
 
@@ -31,7 +37,7 @@ BATCH_JSON=$(cat <<EOF
         "TTL": 3600,
         "ResourceRecords": [
           {
-            "Value": "1 mauricio.issei.com.br. alpn=\"h2,http/1.1\" port=443 mandatory=alpn,port key65001=\"/.well-known/ai-catalog.json\""
+            "Value": "1 mauricio.issei.com.br. alpn=\"h2,http/1.1\" port=443 mandatory=alpn,port"
           }
         ]
       }
@@ -44,7 +50,7 @@ BATCH_JSON=$(cat <<EOF
         "TTL": 3600,
         "ResourceRecords": [
           {
-            "Value": "1 mauricio.issei.com.br. alpn=\"mcp\" port=443 mandatory=alpn,port key65001=\"/.well-known/mcp/server-card.json\""
+            "Value": "1 mauricio.issei.com.br. alpn=\"mcp\" port=443 mandatory=alpn,port"
           }
         ]
       }
@@ -57,7 +63,7 @@ BATCH_JSON=$(cat <<EOF
         "TTL": 3600,
         "ResourceRecords": [
           {
-            "Value": "1 mauricio.issei.com.br. alpn=\"a2a\" port=443 mandatory=alpn,port key65001=\"/.well-known/agent-card.json\""
+            "Value": "1 mauricio.issei.com.br. alpn=\"a2a\" port=443 mandatory=alpn,port"
           }
         ]
       }
@@ -67,8 +73,22 @@ BATCH_JSON=$(cat <<EOF
 EOF
 )
 
-aws route53 change-resource-record-sets \
+CHANGE_ID=$(aws route53 change-resource-record-sets \
   --hosted-zone-id "$HOSTED_ZONE_ID" \
-  --change-batch "$BATCH_JSON"
+  --change-batch "$BATCH_JSON" \
+  --query 'ChangeInfo.Id' --output text)
 
-echo "Registros DNS-AID aplicados com sucesso no Route 53."
+echo "Change submetido: ${CHANGE_ID} — aguardando INSYNC..."
+aws route53 wait resource-record-sets-changed --id "$CHANGE_ID"
+echo "Registros DNS-AID propagados nos servidores autoritativos do Route 53."
+
+echo "Validação externa (Cloudflare DoH):"
+for sub in _index _mcp _a2a; do
+  curl -s -H 'accept: application/dns-json' \
+    "https://cloudflare-dns.com/dns-query?name=${sub}._agents.mauricio.issei.com.br&type=SVCB&do=1" \
+    | grep -o '"Status":[0-9]*\|"data":"[^"]*"' || true
+  curl -s -H 'accept: application/dns-json' \
+    "https://cloudflare-dns.com/dns-query?name=${sub}._agents.mauricio.issei.com.br&type=HTTPS&do=1" \
+    | grep -o '"Status":[0-9]*\|"data":"[^"]*"' || true
+done
+echo "Depois rode o rescan e confira checks.discoverability.dnsAid.status == \"pass\"."
