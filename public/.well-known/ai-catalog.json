@@ -1,0 +1,49 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Maurício Yokoyama Issei",
+    "identifier": "did:web:mauricio.issei.com.br"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:mauricio.issei.com.br:server:portfolio-mcp",
+      "displayName": "Portfolio MCP Server",
+      "type": "application/mcp-server-card+json",
+      "url": "https://mauricio.issei.com.br/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "quais ferramentas MCP este portfólio expõe",
+        "como conectar um agente ao servidor MCP do Maurício Issei"
+      ]
+    },
+    {
+      "identifier": "urn:air:mauricio.issei.com.br:data:cv",
+      "displayName": "Currículo estruturado (CV)",
+      "type": "application/json",
+      "url": "https://mauricio.issei.com.br/cv.json",
+      "representativeQueries": [
+        "qual a experiência profissional do Maurício Issei",
+        "quais certificações e formações o Maurício Issei possui",
+        "resumo do currículo do Maurício Yokoyama Issei"
+      ]
+    },
+    {
+      "identifier": "urn:air:mauricio.issei.com.br:api:openapi",
+      "displayName": "API do portfólio (OpenAPI)",
+      "type": "application/openapi+json;version=3.0",
+      "url": "https://mauricio.issei.com.br/openapi.json",
+      "representativeQueries": [
+        "quais endpoints a API do portfólio expõe",
+        "como acessar os dados de projetos via API"
+      ]
+    },
+    {
+      "identifier": "urn:air:mauricio.issei.com.br:skills:index",
+      "displayName": "Índice de skills do agente",
+      "type": "application/json",
+      "url": "https://mauricio.issei.com.br/.well-known/agent-skills/index.json",
+      "representativeQueries": [
+        "quais skills de agente este site publica"
+      ]
+    }
+  ]
+}
