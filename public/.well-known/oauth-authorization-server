@@ -15,12 +15,15 @@
   "op_policy_uri": "https://mauricio.issei.com.br/privacidade",
   "op_tos_uri": "https://mauricio.issei.com.br/termos",
   "agent_auth": {
-    "skill": "portfolio-read",
+    "skill": "https://mauricio.issei.com.br/.well-known/agent-skills/cv-data-access/SKILL.md",
     "register_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
+    "identity_types_supported": ["anonymous"],
     "methods": [
       {
         "type": "anonymous",
-        "scopes": ["cv:read", "projects:read", "profile"]
+        "credential_types_supported": ["none"],
+        "scopes": ["cv:read", "projects:read", "profile"],
+        "claim_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource"
       }
     ]
   },
