@@ -18,9 +18,17 @@
     "skill": "https://mauricio.issei.com.br/auth.md",
     "register_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
     "identity_types_supported": ["anonymous"],
+    "anonymous": {
+      "credential_types_supported": ["none"]
+    },
+    "claim_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
     "methods": [
       {
         "type": "anonymous",
+        "identity_types_supported": ["anonymous"],
+        "anonymous": {
+          "credential_types_supported": ["none"]
+        },
         "credential_types_supported": ["none"],
         "scopes": ["cv:read", "projects:read", "profile"],
         "claim_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource"
