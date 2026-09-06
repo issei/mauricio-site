@@ -11,6 +11,11 @@
   },
   "endpoint": "https://mauricio.issei.com.br/mcp",
   "transport": "streamable-http",
+  "status": {
+    "endpoint": "planned",
+    "note": "The streamable-http endpoint at /mcp is not live yet — do not attempt to connect to it. Available today: the tools below run in-page via WebMCP (navigator.modelContext) at https://mauricio.issei.com.br, exposed there as get_cv_data and get_star_projects; and every resource URI listed in this card is fetchable directly over HTTPS with no credentials.",
+    "availableToday": ["webmcp", "static-resources"]
+  },
   "capabilities": {
     "tools": true,
     "resources": true,
