@@ -65,7 +65,7 @@ Notas que custaram uma iteração de deploy cada:
 
 ## 2. DNS-AID — publicar os registros SVCB/HTTPS ✅ CONCLUÍDO
 
-Aplicado em `2026-09-05` na hosted zone `Z1D4C1H8BQ1VJ1` (`issei.com.br`), change `C052794839V2RRB0KNYXK` (`INSYNC`). Os 3 registros resolvem via Cloudflare DoH com `Status: 0` / `Answer` não vazio.
+Aplicado em `2026-09-05` na hosted zone pública de `issei.com.br`, change `C052794839V2RRB0KNYXK` (`INSYNC`). Os 3 registros resolvem via Cloudflare DoH com `Status: 0` / `Answer` não vazio.
 
 ```dns
 _index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 mandatory=alpn,port
@@ -89,7 +89,7 @@ Se o script `setup-dns-aid-route53.sh` já foi executado e mesmo assim o rescan 
 > sem assinar, a mensagem vira *"DNS-AID records found, but DNSSEC was not
 > validated"* e o check continua `fail`.
 >
-> DNSSEC habilitado na zona `Z1D4C1H8BQ1VJ1` + DS cadastrado no Registro.br
+> DNSSEC habilitado na zona `issei.com.br` + DS cadastrado no Registro.br
 > (keytag `42785`). Detalhes, custo e **ordem obrigatória de rollback** em
 > `docs/AGENT_READINESS.md` §4.
 

@@ -80,14 +80,44 @@ entrar por qualquer uma delas, e nenhuma depende das outras:
 Peças que **não aparecem no repositório** e por isso são invisíveis numa leitura
 só do código:
 
-| Recurso | Identificador | Função |
+| Recurso | Nome | Função |
 |---|---|---|
-| CloudFront | `E201F4RL889YZH` | distribuição de `mauricio.issei.com.br` |
-| Response Headers Policy | `70469a4a-da13-4d13-a26b-437250892de5` — `RFC8288-Link-Headers-AgentDiscovery` | injeta o header `Link` em toda resposta |
+| CloudFront | distribuição com alias `mauricio.issei.com.br` | entrega do site |
+| Response Headers Policy | `RFC8288-Link-Headers-AgentDiscovery` | injeta o header `Link` em toda resposta |
 | CloudFront Function | `MarkdownCovert` (viewer-request) | negociação de conteúdo Markdown |
-| Route 53 Hosted Zone | `Z1D4C1H8BQ1VJ1` (`issei.com.br`) | registros DNS-AID + DNSSEC |
-| KMS key (us-east-1) | `848ce584-…` / `alias/dnssec-issei-com-br` | KSK do DNSSEC — **~US$1/mês** |
+| Route 53 Hosted Zone | `issei.com.br` (pública) | registros DNS-AID + DNSSEC |
+| KMS key (us-east-1) | `alias/dnssec-issei-com-br` | KSK do DNSSEC — **~US$1/mês** |
 | KSK | `issei_com_br_ksk`, keytag `42785` | assina a zona |
+
+> Este repositório é **público**: identificadores opacos de recurso (distribution
+> ID, hosted zone ID, key ID, account ID) ficam deliberadamente **fora** da
+> documentação. Eles não são credenciais, mas em repositório aberto só servem a
+> reconhecimento e a engenharia social contra o suporte da AWS — quem tem acesso
+> ao console resolve pelo nome. Para obtê-los:
+
+```bash
+aws cloudfront list-distributions \
+  --query "DistributionList.Items[?contains(Aliases.Items,'mauricio.issei.com.br')].[Id,DefaultCacheBehavior.ResponseHeadersPolicyId]" --output text
+
+aws route53 list-hosted-zones-by-name --dns-name issei.com.br. \
+  --query "HostedZones[0].Id" --output text
+
+aws kms describe-key --region us-east-1 --key-id alias/dnssec-issei-com-br \
+  --query "KeyMetadata.KeyId" --output text
+```
+
+### Proteção contra destruição acidental
+
+A KMS key é **ponto único de falha de `issei.com.br` inteiro**: com o DS publicado
+no Registro.br, apagá-la ou desabilitá-la derruba a resolução de todo o domínio
+para resolvers validadores — não só do subdomínio do portfólio.
+
+A key policy carrega um statement `DenyAccidentalKeyDestruction` que nega
+`kms:ScheduleKeyDeletion` e `kms:DisableKey` a **todos os principals**. O root
+mantém `kms:*` (inclusive `PutKeyPolicy`), então destruir a chave exige antes
+remover esse statement — de um clique acidental para um ato deliberado em dois
+passos. Não interfere em `Sign`/`GetPublicKey`/`DescribeKey`/`CreateGrant`, que
+são o que o Route 53 usa para assinar.
 
 > **A zona autoritativa é `issei.com.br`, não `mauricio.issei.com.br`.** Não
 > existe hosted zone para o subdomínio; os registros `_agents.mauricio…` moram
