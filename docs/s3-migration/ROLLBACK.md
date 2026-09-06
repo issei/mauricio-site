@@ -87,5 +87,5 @@ código, já que os HTMLs antigos apontavam para a raiz.
 
 - [ ] `git status` limpo (sem mudanças não commitadas de outra tarefa)
 - [ ] Branch correta (`main` ou branch de feature, conforme o fluxo do time)
-- [ ] `aws sts get-caller-identity` confirma a conta AWS correta (497568177086)
+- [ ] `aws sts get-caller-identity` confirma a conta AWS correta (conferir o `Account` retornado contra o cadastrado no gerenciador de segredos da equipe — este repositório é público, o número não fica versionado)
 - [ ] Backup mental: os arquivos originais continuam em disco local até você apagá-los manualmente — o `git rm --cached` NUNCA apaga do disco

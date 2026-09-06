@@ -27,49 +27,45 @@ O scanner detectou que a **PRM** (`/.well-known/oauth-protected-resource`) já �
 
 Copiar o conteúdo do `/.well-known/openid-configuration` atual para este novo path (mesmo `issuer`, mesmo `Content-Type: application/json`, HTTP 200). Se o `openid-configuration` tiver campos específicos de OIDC que não fazem sentido em RFC 8414 puro (ex.: `userinfo_endpoint`, `subject_types_supported` sem uso), pode mantê-los — não invalida o documento, campos extras são ignorados.
 
-### 1.2 Editar `/auth.md` — adicionar bloco `agent_auth`
+### 1.2 Adicionar bloco `agent_auth` ✅ CONCLUÍDO
 
-Manter tudo que já existe em `/auth.md` e garantir que ele contenha, em algum bloco JSON (formatado como code block markdown), exatamente esta estrutura:
+> ⚠️ **CORREÇÃO — a versão original desta seção estava errada.** Ela mandava pôr o
+> `agent_auth` dentro do `/auth.md`, em bloco ```json``` markdown. O scanner **não
+> parseia** blocos JSON do `auth.md`: ele lê o `agent_auth` do documento de
+> **Authorization Server metadata**. Evidência: `Find agent_auth metadata →
+> "Authorization Server metadata has no agent_auth block"`.
+>
+> Fonte da verdade atual: **`docs/AGENT_READINESS.md` §5**.
 
-```json
-{
-  "agent_auth": {
-    "skill": "portfolio-read",
-    "register_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
-    "methods": [
-      {
-        "type": "anonymous",
-        "scopes": ["cv:read", "projects:read", "profile"]
-      }
-    ]
-  }
-}
-```
-
-E, junto a esse bloco, incluir também o objeto de identidade que o checker espera para o fluxo anônimo (referência: skill `auth-md`, seção "Flow Metadata → Anonymous"):
+O bloco vai em **`/.well-known/oauth-authorization-server`**, com os três campos
+do fluxo anônimo **dentro** dele (em `methods[]` ou no topo do documento são ignorados):
 
 ```json
-{
+"agent_auth": {
+  "skill": "https://mauricio.issei.com.br/auth.md",
+  "register_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
   "identity_types_supported": ["anonymous"],
-  "anonymous": {
-    "credential_types_supported": ["none"]
-  },
-  "claim_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource"
+  "anonymous": { "credential_types_supported": ["none"] },
+  "claim_uri": "https://mauricio.issei.com.br/.well-known/oauth-protected-resource",
+  "methods": [{ "type": "anonymous", "scopes": ["cv:read", "projects:read", "profile"] }]
 }
 ```
 
-> Se o `auth.md` atual já tem uma seção parecida mas incompleta, só garanta que os 3 campos obrigatórios do `agent_auth` estejam presentes juntos no mesmo bloco: `skill`, `register_uri`, e `methods` (com pelo menos 1 método completo, com `type` e `scopes`/credenciais). É provavelmente isso que falta hoje — os "2 marcadores" encontrados são prováveis referências textuais à PRM sem esse bloco estruturado.
+Notas que custaram uma iteração de deploy cada:
+- `skill` aponta para o **`/auth.md`**, não para uma agent-skill publicada.
+- O `/auth.md` só precisa existir, servir `text/markdown` e ter um H1 contendo `auth.md`.
 
 ### Critério de aceite
 1. `GET /.well-known/oauth-authorization-server` → 200, JSON válido, `issuer: https://mauricio.issei.com.br` (igual ao do openid-configuration).
-2. `GET /auth.md` → 200, contém o bloco `agent_auth` com `skill`, `register_uri` e `methods` completos.
-3. Rescan: `checks.discovery.authMd.status == "pass"`.
+2. O mesmo documento contém `agent_auth` com `skill`, `register_uri`, `identity_types_supported`, `anonymous.credential_types_supported`, `claim_uri` e `methods`.
+3. `GET /auth.md` → 200, `text/markdown`, H1 contendo "auth.md".
+4. Rescan: `checks.discovery.authMd.status == "pass"` → *"Auth.md support detected (anonymous)"*.
 
 ---
 
 ## 2. DNS-AID — publicar os registros SVCB/HTTPS ✅ CONCLUÍDO
 
-Aplicado em `2026-09-05` na hosted zone `Z1D4C1H8BQ1VJ1` (`issei.com.br`), change `C052794839V2RRB0KNYXK` (`INSYNC`). Os 3 registros resolvem via Cloudflare DoH com `Status: 0` / `Answer` não vazio.
+Aplicado em `2026-09-05` na hosted zone pública de `issei.com.br`, change `C052794839V2RRB0KNYXK` (`INSYNC`). Os 3 registros resolvem via Cloudflare DoH com `Status: 0` / `Answer` não vazio.
 
 ```dns
 _index._agents.mauricio.issei.com.br. 3600 IN HTTPS 1 mauricio.issei.com.br. alpn="h2,http/1.1" port=443 mandatory=alpn,port
@@ -87,7 +83,15 @@ Se o script `setup-dns-aid-route53.sh` já foi executado e mesmo assim o rescan 
 2. Confirmar que a hosted zone editada é a que realmente é autoritativa (`dig NS issei.com.br +short` deve bater com os nameservers da hosted zone do Route 53 usada).
 3. Rodar a validação externa: `curl -s -H 'accept: application/dns-json' "https://cloudflare-dns.com/dns-query?name=_index._agents.mauricio.issei.com.br&type=HTTPS"` e conferir se `Answer` aparece.
 
-DNSSEC continua **opcional** para este check específico — o requisito de assinatura é para robustez (dados autenticados), mas não é bloqueante para o `status: pass` do check em si segundo a skill oficial; o item de DNSSEC pode ficar para depois, tratado separadamente.
+> ⚠️ **CORREÇÃO — a versão original desta seção estava errada.** Ela afirmava que
+> o DNSSEC era *opcional* e *não bloqueante* para o `status: pass`. Na prática o
+> scanner **exige** `dnssecValidated: true`: com os 3 registros publicados e a zona
+> sem assinar, a mensagem vira *"DNS-AID records found, but DNSSEC was not
+> validated"* e o check continua `fail`.
+>
+> DNSSEC habilitado na zona `issei.com.br` + DS cadastrado no Registro.br
+> (keytag `42785`). Detalhes, custo e **ordem obrigatória de rollback** em
+> `docs/AGENT_READINESS.md` §4.
 
 ### Critério de aceite
 1. Consulta DoH para `_index`, `_mcp` e `_a2a._agents.mauricio.issei.com.br` (tipo `HTTPS`/`SVCB`) retorna `Answer` não vazio.

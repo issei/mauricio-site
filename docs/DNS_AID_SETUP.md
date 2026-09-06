@@ -23,7 +23,9 @@ _a2a._agents.mauricio.issei.com.br. 3600 IN SVCB 1 mauricio.issei.com.br. alpn="
 
 *Nota: o Route 53 rejeita SvcParamKeys genéricos (`keyNNNNN`, ex.: `key65001` para "endpoint path") com `InvalidChangeBatch` — só aceita os registrados: `mandatory`, `alpn`, `no-default-alpn`, `port`, `ipv4hint`, `ech`, `ipv6hint`. O caminho de cada manifesto (`ai-catalog.json`, `mcp/server-card.json`, `agent-card.json`) é resolvido via `/.well-known/ai-catalog.json` (ARD), não pelo DNS. O exemplo oficial da skill DNS-AID também não usa parâmetro de path.*
 
-Estado atual (aplicado em `Z1D4C1H8BQ1VJ1`, change `C052794839V2RRB0KNYXK`, `INSYNC`): os 3 registros resolvem via Cloudflare DoH com `Status: 0`. `AD:false` (zona `NOT_SIGNING`) — DNSSEC não é bloqueante para `dnsAid: pass`.
+Estado atual (aplicado na hosted zone de `issei.com.br`, `INSYNC`): os 3 registros resolvem via Cloudflare DoH com `Status: 0` e `AD: true` — zona assinada, DS publicado no Registro.br (keytag `42785`).
+
+> ⚠️ **DNSSEC é bloqueante** para o `dnsAid`, ao contrário do que versões anteriores desta doc afirmavam: sem a zona assinada o check fica `fail` com *"records found, but DNSSEC was not validated"*. Ver `docs/AGENT_READINESS.md` §4, inclusive a **ordem obrigatória de rollback**.
 
 ## 3. Script de Automação Route 53
 
