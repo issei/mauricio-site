@@ -141,7 +141,8 @@ Desenvolvimento de sistema de gestão de almoxarifado de peças e sistema de apr
 
 ## Certificações
 
-### AI & Agentic Systems (2025)
+### AI & Agentic Systems (2025-2026)
+- **MCP Developer Blueprint** | O'Reilly Media | [Verificar](https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8)
 - **AI Agentic Design Patterns** | O'Reilly Media | [Verificar](https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07)
 - **AI with Knowledge Graphs** | O'Reilly Media | [Verificar](https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7)
 - **Building Intelligent AI Agents** | O'Reilly Media | [Verificar](https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259)
