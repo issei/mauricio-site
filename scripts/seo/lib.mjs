@@ -7,7 +7,10 @@ import { SITE, PERSON, PERSON_PROFILE, WEBSITE } from './identity.mjs';
 
 const PAGE_SUBTYPES = new Set(['CollectionPage', 'AboutPage', 'ProfilePage', 'WebPage']);
 
-export const pageUrl = (slug) => `${SITE.origin}/${slug}`;
+// A home é `https://.../`, não `https://.../index`: o canonical precisa apontar
+// para a URL que o sitemap e os links internos usam, senão o Google trata a raiz
+// como "página alternativa com tag canônica adequada" e indexa a outra.
+export const pageUrl = (slug) => (slug === 'index' ? `${SITE.origin}/` : `${SITE.origin}/${slug}`);
 
 function esc(s = '') {
   return String(s)
@@ -93,7 +96,7 @@ export function buildGraph(p) {
   // Breadcrumb: Início → Catálogo → página (sem 3º item p/ a própria home/catálogo).
   const crumbs = [{ '@type': 'ListItem', position: 1, name: 'Início', item: `${SITE.origin}/` }];
   if (p.slug !== 'index' && p.slug !== 'catalogo') {
-    crumbs.push({ '@type': 'ListItem', position: 2, name: 'Catálogo', item: `${SITE.origin}/catalogo.html` });
+    crumbs.push({ '@type': 'ListItem', position: 2, name: 'Catálogo', item: `${SITE.origin}/catalogo` });
     crumbs.push({ '@type': 'ListItem', position: 3, name: p.breadcrumbName || p.title });
   } else if (p.slug === 'catalogo') {
     crumbs.push({ '@type': 'ListItem', position: 2, name: 'Catálogo' });
