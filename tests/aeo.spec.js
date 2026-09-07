@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 import { PAGES } from '../scripts/seo/pages.mjs';
+import { pageUrl } from '../scripts/seo/lib.mjs';
 
 // Invariantes AEO/GEO para TODAS as páginas tratadas (fonte: scripts/seo/pages.mjs).
 // Cresce automaticamente conforme novas páginas entram em pages.mjs.
@@ -14,9 +15,14 @@ for (const p of PAGES) {
       // H1 único
       await expect(page.locator('h1')).toHaveCount(1);
 
-      // canonical aponta para a própria página, sem noindex
+      // canonical aponta para a própria página, sem noindex.
+      //
+      // Compara com `pageUrl()`, a mesma função que gera o atributo, e não com
+      // um `toContain(slug)`: a home canoniza para `https://.../` — sem o slug
+      // `index` — e a versão por substring dava verde justamente no caso em que
+      // o canonical apontava para a URL errada.
       const canonical = await page.getAttribute('link[rel="canonical"]', 'href');
-      expect(canonical).toContain(p.slug);
+      expect(canonical).toBe(pageUrl(p.slug));
       const robots = await page.getAttribute('meta[name="robots"]', 'content');
       expect(robots || '').not.toMatch(/noindex/);
 

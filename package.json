@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "start": "npm run dev",
     "test": "playwright test",
-    "test:unit": "node --test tests/eai.test.js",
+    "test:unit": "node --test tests/eai.test.js tests/cloudfront-viewer-request.test.js",
     "gate": "node scripts/quality-gate.mjs",
     "i18n:sync": "node scripts/sync-i18n.mjs",
     "i18n:sync:all": "node scripts/sync-i18n.mjs --all",

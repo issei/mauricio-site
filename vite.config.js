@@ -64,6 +64,13 @@ export default defineConfig({
         '/mapmind',
         '/exemplopdi',
         '/vsl',
+        /*
+         * Não são páginas: `seo-aeo.jsonld.html` é um bloco JSON-LD e
+         * `/assets/*` são artefatos com hash. O sitemap os oferecia ao Google
+         * como URLs, e o Google os contava em "Não encontrado (404)".
+         */
+        '/seo-aeo.jsonld',
+        /^\/assets\//,
       ],
     })
   ]
