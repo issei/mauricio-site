@@ -46,6 +46,9 @@ const CASOS = [
   ['/devin.html', '/devin.md', 'text/markdown'],
   ['/', '/index.html', 'text/html,application/xhtml+xml,*/*;q=0.8'],
   ['/devin', '/devin.html', 'text/html,application/xhtml+xml,*/*;q=0.8'],
+  ['/agent-ready', '/agent-ready.md', 'text/markdown'],
+  ['/agent-ready', '/agent-ready.html', 'text/html,application/xhtml+xml,*/*;q=0.8'],
+  ['/agent-ready', '/agent-ready.html'],
   // Sem .md publicado: cai no HTML em vez de 404.
   ['/catalogo', '/catalogo.html', 'text/markdown'],
 ];

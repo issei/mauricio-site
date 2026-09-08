@@ -17,10 +17,15 @@
 # =============================================================================
 
 meta:
-  version: "1.4.0"            # semver; bump obrigatório a cada alteração de grafo
+  version: "1.5.0"            # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-08-21"
+  updated: "2026-09-07"
+  # 1.5.0 — entra `agent-ready` (Agent Ready) em p2 (Engenharia de Confiança/
+  #         O Método): a fronteira agente↔sistema publicada na Web como
+  #         superfície descobrível, legível e invocável. Fica no mesmo pilar de
+  #         `engenharia-agentes-ia`, que trata a mesma fronteira por dentro.
+  #         Atualizar src/js/eco-nav.js junto (cópia compilada da SSOT).
   # 1.4.0 — entra `formulacao-de-problemas` (Formulação de Problemas) em p1
   #         (Fundação/Mentalidade): resolve a decisão pendente D-1 do doc de
   #         spec da página, que deixou a página fora do grafo por padrão.
@@ -61,7 +66,7 @@ pillars:
     label: "Engenharia de Confiança"
     subtitle: "O Método"
     summary: "Da intenção à execução agêntica confiável."
-    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, knowledge-os-presentation]
+    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, agent-ready, knowledge-os-presentation]
 
   - id: p3
     order: 3
@@ -123,6 +128,11 @@ nodes:
     file: "engenharia-agentes-ia.html"
     title: "Engenharia de Agentes de IA"
     blurb: "Os princípios da IA confiável."
+    pillar: p2
+  agent-ready:
+    file: "agent-ready.html"
+    title: "Agent Ready"
+    blurb: "A superfície do site legível por agentes de IA."
     pillar: p2
   knowledge-os-presentation:
     file: "knowledge-os-presentation.html"
