@@ -71,6 +71,8 @@ var MARKDOWN_MAP = {
   '/':                                     '/index.md',
   '/index':                                '/index.md',
   '/index.html':                           '/index.md',
+  '/agent-ready':                          '/agent-ready.md',
+  '/agent-ready.html':                     '/agent-ready.md',
   '/apresentacao':                         '/apresentacao.md',
   '/apresentacao.html':                    '/apresentacao.md',
   '/artifice':                             '/artifice.md',
