@@ -44,7 +44,7 @@ Certificado em **SRE**, com especializações em **Data Science**, **Business Ag
 - **Aumento de 15%** no atingimento de metas comerciais com Pipe Automática (2025)
 - **Redução de SLA de 10 dias para tempo real** no Agrupamento Comercial (2024)
 - **18 projetos documentados** com metodologia STAR (2018–2025)
-- **6 certificações em AI & Agentic Systems** (2025)
+- **7 certificações em AI & Agentic Systems** (2025-2026)
 
 ---
 
