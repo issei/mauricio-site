@@ -4,6 +4,9 @@ test.describe('OAuth Protected Resource Metadata Discovery', () => {
   test('should serve RFC 9728 compliant metadata at /.well-known/oauth-protected-resource', async ({ request }) => {
     const response = await request.get('/.well-known/oauth-protected-resource');
     expect(response.ok()).toBe(true);
+    // RFC 9728 §3.1: metadata MUST be served as application/json. Served from S3
+    // sync it defaults to binary/octet-stream and strict scanners reject it.
+    expect(response.headers()['content-type']).toContain('application/json');
 
     const metadata = await response.json();
     expect(metadata).toHaveProperty('resource', 'https://mauricio.issei.com.br');

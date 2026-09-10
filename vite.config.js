@@ -34,6 +34,28 @@ const htmlInput = Object.fromEntries(
   ])
 );
 
+/*
+ * `.well-known/*` são nomes IANA sem extensão. Servidos por sync do S3 eles
+ * caem em `binary/octet-stream`, e o dev/preview do Vite faz o mesmo — aí um
+ * scanner estrito (isitagentready, cliente RFC 9728) rejeita o JSON. Em
+ * produção o header é corrigido por `infra/scripts/apply-markdown-headers.sh`;
+ * aqui, para o dev bater com a produção e os testes poderem cobrir isso.
+ */
+const wellKnownJsonContentType = () => {
+  const mw = (req, res, next) => {
+    if (req.url && req.url.startsWith('/.well-known/') && !/\.\w+$/.test(req.url.split('?')[0])) {
+      const type = req.url.includes('api-catalog') ? 'application/linkset+json' : 'application/json';
+      res.setHeader('Content-Type', `${type}; charset=utf-8`);
+    }
+    next();
+  };
+  return {
+    name: 'well-known-json-content-type',
+    configureServer(s) { s.middlewares.use(mw); },
+    configurePreviewServer(s) { s.middlewares.use(mw); },
+  };
+};
+
 export default defineConfig({
   root: 'src',
   publicDir: '../public',
@@ -47,6 +69,7 @@ export default defineConfig({
   },
   plugins: [
     tailwindcss(),
+    wellKnownJsonContentType(),
     sitemap({
       hostname: 'https://mauricio.issei.com.br',
       generateRobotsTxt: false,

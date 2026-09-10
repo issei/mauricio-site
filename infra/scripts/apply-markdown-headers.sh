@@ -1,40 +1,54 @@
 #!/bin/bash
 # ------------------------------------------------------------------------------
-# AWS CloudShell Script: Apply Markdown Content-Type Headers
+# AWS CloudShell Script: Apply Content-Type headers for agent-facing files
 # ------------------------------------------------------------------------------
-# Purpose: Sets the correct Content-Type for markdown and text files in S3
-# and invalidates the CloudFront cache.
+# Purpose: `aws s3 sync` guesses MIME by extension, so the extensionless
+# `.well-known/*` metadata files land as `binary/octet-stream` — which strict
+# agent scanners (isitagentready, RFC 9728 clients) reject as "not JSON", i.e.
+# "no OAuth Protected Resource Metadata found". This re-PUTs the affected
+# objects with the right Content-Type and invalidates CloudFront.
+#
+# Run in AWS CloudShell after `deploy.bat` (or `aws s3 sync dist/ ...`).
 # ------------------------------------------------------------------------------
 
-# --- Configuration (Update these if necessary) ---
-BUCKET_NAME="mauricio-issei-site" # Default name from specs
-DISTRIBUTION_ID="E1234567890ABC" # Replace with your actual CloudFront ID
+set -euo pipefail
 
-echo "🚀 Starting manual infrastructure update..."
+BUCKET_NAME="mauricio.issei.com.br"      # S3 bucket (matches deploy.bat)
+DISTRIBUTION_ID="E201F4RL889YZH"         # CloudFront distribution (matches deploy.bat)
 
-# 1. Update Content-Type for Markdown files (.md)
-echo "📄 Setting Content-Type: text/markdown for all .md files..."
-aws s3 cp s3://$BUCKET_NAME/ s3://$BUCKET_NAME/ \
+echo "🚀 Applying Content-Type headers on s3://$BUCKET_NAME ..."
+
+# 1. Markdown twins (.md) — served to agents that send `Accept: text/markdown`
+echo "📄 text/markdown  → *.md"
+aws s3 cp "s3://$BUCKET_NAME/" "s3://$BUCKET_NAME/" \
   --exclude "*" --include "*.md" \
-  --no-guess-mime-type \
-  --content-type "text/markdown; charset=utf-8" \
-  --metadata-directive REPLACE \
-  --recursive
+  --no-guess-mime-type --content-type "text/markdown; charset=utf-8" \
+  --metadata-directive REPLACE --recursive
 
-# 2. Update Content-Type for Plain Text files (.txt)
-echo "📑 Setting Content-Type: text/plain for all .txt files..."
-aws s3 cp s3://$BUCKET_NAME/ s3://$BUCKET_NAME/ \
+# 2. Plain-text catalogs (.txt) — llms.txt, llms-full.txt, robots.txt
+echo "📑 text/plain     → *.txt"
+aws s3 cp "s3://$BUCKET_NAME/" "s3://$BUCKET_NAME/" \
   --exclude "*" --include "*.txt" \
-  --no-guess-mime-type \
-  --content-type "text/plain; charset=utf-8" \
-  --metadata-directive REPLACE \
-  --recursive
+  --no-guess-mime-type --content-type "text/plain; charset=utf-8" \
+  --metadata-directive REPLACE --recursive
 
-# 3. Create CloudFront Invalidation
-echo "🧹 Invalidating CloudFront cache (/*)..."
-aws cloudfront create-invalidation \
-  --distribution-id $DISTRIBUTION_ID \
-  --paths "/*"
+# 3. Extensionless .well-known JSON (IANA registered names, no file extension).
+#    api-catalog is an RFC 9727 linkset → application/linkset+json.
+echo "🔗 application/json → .well-known/* (extensionless)"
+for name in oauth-protected-resource oauth-authorization-server openid-configuration agent-catalog; do
+  aws s3 cp "s3://$BUCKET_NAME/.well-known/$name" "s3://$BUCKET_NAME/.well-known/$name" \
+    --no-guess-mime-type --content-type "application/json; charset=utf-8" \
+    --metadata-directive REPLACE
+done
+aws s3 cp "s3://$BUCKET_NAME/.well-known/api-catalog" "s3://$BUCKET_NAME/.well-known/api-catalog" \
+  --no-guess-mime-type --content-type "application/linkset+json; charset=utf-8" \
+  --metadata-directive REPLACE
 
-echo "✅ Done! Infrastructure updated successfully."
-echo "💡 Note: Ensure the CloudFront Function 'markdown-negotiation' is also published and associated."
+# 4. Invalidate CloudFront so the new headers take effect
+echo "🧹 CloudFront invalidation (/*) ..."
+aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*"
+
+echo "✅ Done."
+echo "💡 Also publish + associate the CloudFront Function 'MarkdownCovert'"
+echo "   (infra/cloudfront-functions/viewer-request.js) on the viewer-request event,"
+echo "   with a Response Headers Policy carrying 'Vary: Accept'."
