@@ -66,6 +66,57 @@ export const PAGES = [
   },
 
   {
+    slug: 'case-agents', type: 'TechArticle', tier: 'S', hasMd: true,
+    title: 'Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei',
+    headline: 'Case Agents: Roteamento de Queries e Seleção Segura de Tools em Agente Bancário',
+    description: 'Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero.',
+    datePublished: '2026-09-10', dateModified: '2026-09-10',
+    section: 'Engenharia de Confiança · Agentes de IA',
+    tags: ['Case Agents', 'Roteamento de IA', 'Tool Retrieval', 'Barreira Pré-Execução', 'Guarda de Direção', 'Engenharia de Confiança'],
+    keywords: ['case agents', 'roteamento de queries', 'tool retrieval', 'barreira pre-execucao', 'guarda de direcao', 'crash silencioso', 'banco digital', 'fast path', 'agent', 'BM25F', 'taxonomia', 'Platt scaling'],
+    about: [
+      { name: 'Engenharia de Confiança' },
+      { name: 'Tool Retrieval' },
+      { name: 'Roteamento de Agentes de IA' },
+      { name: 'Evaluation Harness' },
+    ],
+    audience: 'Engenheiros de IA, Arquitetos de Soluções, Tech Leads, Profissionais de FinOps e Segurança em IA',
+    tldr: {
+      heading: 'O que é o projeto Case Agents',
+      lede: 'O **case-agents** é a implementação e benchmark de um cérebro de roteamento para agente bancário: decide se uma query necessita de LLM, seleciona 2 ferramentas entre 285 registradas e **bloqueia a execução quando a decisão não é confiável o bastante**.',
+      points: [
+        '**A capacidade é escolher a ferramenta certa; a confiança é saber quando não executar nenhuma.**',
+        '**Governança do catálogo** — colapso de duplicatas semânticas em 14 capacidades canônicas elevou o Hit Rate@2 de 35% para 100%.',
+        '**O Crash Silencioso contido** — a Guarda de Direção (leitura vs escrita) impediu que uma consulta de e-mail alterasse o cadastro do cliente.',
+        '**Economia de custo real** — 77,8% de economia com 100% de sucesso nas execuções.',
+      ],
+      foot: 'Caso de estudo da [Engenharia da Confiança](/engenharia-confianca) e [Engenharia de Agentes de IA](/engenharia-agentes-ia).',
+    },
+    faq: [
+      { q: 'O que é o projeto Case Agents?', a: 'É o desenvolvimento e avaliação do cérebro de roteamento e seleção de ferramentas de um agente de atendimento bancário digital. Ele classifica a mensagem em FAST_PATH ou AGENT, recupera as 2 ferramentas mais relevantes entre 285 e aplica uma barreira pré-execução de 4 camadas antes de chamar qualquer LLM.' },
+      { q: 'O que é o Crash Silencioso medido no projeto?', a: 'Uma falha em que uma query de consulta ("Qual é o e-mail cadastrado na minha conta?") resolveu com alta confiança e margem folgada (0.47) para a ferramenta de alteração de cadastro (atualizar_email). A falha passou por 54 testes e 3 guardas tradicionais sem gerar exceção.' },
+      { q: 'Como a Guarda de Direção funciona?', a: 'A Guarda de Direção (G4) analisa o verbo da query e compara com o modo de operação (read/write) declarado na ferramenta. Se a query for de leitura e a ferramenta for de escrita, o sistema descarta totalmente a ferramenta para evitar danos irreversíveis ao cadastro do cliente.' },
+      { q: 'Como alcançar 100% de sucesso com economia de custo?', a: 'Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%.' },
+    ],
+    terms: [
+      { slug: 'barreira-pre-execucao', name: 'Barreira Pré-Execução', def: 'Conjunto de 4 guardas determinísticas que autorizam ou desviam a execução de uma ferramenta antes de invocar o LLM.' },
+      { slug: 'guarda-de-direcao', name: 'Guarda de Direção', def: 'Restrição semântica que impede ferramentas de escrita (alteração de estado) em requisições de leitura.' },
+      { slug: 'colapso-capacidade', name: 'Colapso por Capacidade', def: 'Agrupamento de variantes operacionais redundantes sob uma capacidade canônica única.' },
+    ],
+    mdSections: [
+      { h: 'O problema e o domínio', body: 'No domínio bancário, executar uma ferramenta errada na conta do cliente é inaceitável. O cérebro de roteamento precisa decidir com segurança e abster-se quando a confiança for insuficiente.' },
+      { h: 'A barreira e os resultados', body: 'Quatro camadas de segurança levaram as execuções incorretas de 7 para zero, mantendo 100% de acerto nas 20 queries transacionais e 77,8% de economia de custo no benchmark do MVP.' },
+    ],
+    og: {
+      eyebrow: 'P2 · Engenharia de Confiança',
+      title: 'Case {Agents}',
+      subtitle: 'A tool errada não é uma aproximação aceitável',
+      thesis: '285 ferramentas, 30 queries, zero execuções incorretas.',
+      chips: [{ k: '100%', label: 'Hit Rate@2' }, { k: '0', label: 'Incorretas' }, { k: 'G1-G4', label: 'Guardas' }, { k: '71', label: 'Testes' }],
+    },
+  },
+
+  {
     slug: 'agent-ready', type: 'TechArticle', tier: 'S', hasMd: true,
     title: 'Agent Ready — o site legível por agentes',
     headline: 'Como tornar um site Agent-Ready: os padrões, a implementação e o que o score não prova',

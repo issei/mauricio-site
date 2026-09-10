@@ -17,10 +17,13 @@
 # =============================================================================
 
 meta:
-  version: "1.5.0"            # semver; bump obrigatório a cada alteração de grafo
+  version: "1.6.0"            # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-09-07"
+  updated: "2026-09-10"
+  # 1.6.0 — entra `case-agents` (Case Agents) em p2 (Engenharia de Confiança/
+  #         O Método): roteamento de queries, seleção de 2 de 285 tools e
+  #         barreira pré-execução de 4 camadas num agente bancário.
   # 1.5.0 — entra `agent-ready` (Agent Ready) em p2 (Engenharia de Confiança/
   #         O Método): a fronteira agente↔sistema publicada na Web como
   #         superfície descobrível, legível e invocável. Fica no mesmo pilar de
@@ -66,7 +69,7 @@ pillars:
     label: "Engenharia de Confiança"
     subtitle: "O Método"
     summary: "Da intenção à execução agêntica confiável."
-    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, agent-ready, knowledge-os-presentation]
+    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, agent-ready, knowledge-os-presentation, case-agents]
 
   - id: p3
     order: 3
@@ -138,6 +141,12 @@ nodes:
     file: "knowledge-os-presentation.html"
     title: "Knowledge OS Enterprise"
     blurb: "Rastreabilidade e segurança para a IA."
+    pillar: p2
+  case-agents:
+    file: "case-agents.html"
+    title: "Case Agents: a tool errada não é uma aproximação aceitável"
+    label: "Case Agents"
+    blurb: "Quando o agente não deve executar."
     pillar: p2
 
   # --- P3 · Ecossistema Salesforce -------------------------------------------
@@ -234,3 +243,18 @@ crosslinks:
     to: socialselling
     rationale: "Agentes de IA aplicados a Social Selling."
     status: existing
+  - from: case-agents
+    to: engenharia-confianca
+    rationale: "O ISM é o framework que o projeto instancia; o Crash Silencioso é o defeito que ele mediu."
+    status: proposed
+    approved: true
+  - from: case-agents
+    to: engenharia-agentes-ia
+    rationale: "Espectro de Autonomia justifica a assimetria da guarda de direção."
+    status: proposed
+    approved: true
+  - from: agent-ready
+    to: case-agents
+    rationale: "A mesma fronteira agente<->sistema: agent-ready por fora, case-agents por dentro."
+    status: proposed
+    approved: true
