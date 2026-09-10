@@ -30,6 +30,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/case-agents" />
 <link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/case-agents.md" title="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei — Markdown para IA" />
+<link rel="webmcp" href="/.well-known/webmcp.json" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Maurício Yokoyama Issei" />
 <meta property="og:locale" content="pt_BR" />
@@ -344,6 +345,7 @@
         <div class="ca-video">
           <iframe src="https://www.youtube-nocookie.com/embed/JSYL3Ax7A7o?rel=0&amp;modestbranding=1"
             title="A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário — resumo do projeto"
+            aria-label="Vídeo: A Máquina da Confiança — resumo do case agents em 8 minutos"
             loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
@@ -367,9 +369,9 @@
             <table class="ca-table">
               <thead>
                 <tr>
-                  <th>Pilar</th>
-                  <th>Problema de Engenharia</th>
-                  <th>Componente no Código</th>
+                  <th scope="col">Pilar</th>
+                  <th scope="col">Problema de Engenharia</th>
+                  <th scope="col">Componente no Código</th>
                 </tr>
               </thead>
               <tbody>
@@ -518,6 +520,7 @@
         <div class="ca-video">
           <iframe src="https://www.youtube-nocookie.com/embed/HlgRNYHvOtg?rel=0&amp;modestbranding=1"
             title="A Evolução da Programação e o Vibe Coding — vídeo sobre Looks Right e Engenharia de Intenção"
+            aria-label="Vídeo: A Evolução da Programação — Looks Right e Engenharia de Intenção"
             loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
@@ -628,6 +631,7 @@ Para a escrita vencer por ajuste de α:
         <div class="ca-video" style="margin-top: 28px;">
           <iframe src="https://www.youtube-nocookie.com/embed/m69fzdS-EG0?rel=0&amp;modestbranding=1"
             title="O Novo Paradigma da IA — vídeo sobre Tool Calling, ReAct e limites de autonomia"
+            aria-label="Vídeo: O Novo Paradigma da IA — Tool Calling, ReAct e autonomia agêntica"
             loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
@@ -761,10 +765,10 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
           <table class="ca-table">
             <thead>
               <tr>
-                <th>Métrica / Iteração</th>
-                <th>Commit inicial (<code translate="no">fc830dc</code>)</th>
-                <th>Iteração com Crash (<code translate="no">c8f30d2</code>)</th>
-                <th>Versão publicada (<code translate="no">1f780c0</code>)</th>
+                <th scope="col">Métrica / Iteração</th>
+                <th scope="col">Commit inicial (<code translate="no">fc830dc</code>)</th>
+                <th scope="col">Iteração com Crash (<code translate="no">c8f30d2</code>)</th>
+                <th scope="col">Versão publicada (<code translate="no">1f780c0</code>)</th>
               </tr>
             </thead>
             <tbody>
