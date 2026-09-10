@@ -40,12 +40,15 @@ test.describe('Case Agents — página', () => {
     await expect(reportLink).toBeVisible();
   });
 
-  test('seção do Crash Silencioso e comparador visual visíveis', async ({ page }) => {
+  test('seção do Crash Silencioso e comparador antes/depois visíveis', async ({ page }) => {
     await page.goto(PATH);
     const section = page.locator('#crash-silencioso');
     await expect(section).toBeVisible();
     await expect(section).toContainText('Qual e o email cadastrado na minha conta?');
-    await expect(section.locator('.ca-crash-box')).toBeVisible();
+    // Comparador-assinatura: ranking antes (erro) e depois (guarda de direção)
+    await expect(section.locator('.ca-compare-card--failed .ca-ranking')).toBeVisible();
+    await expect(section.locator('.ca-compare-card--passed .ca-ranking')).toBeVisible();
+    await expect(section).toContainText('EXECUÇÃO INCORRETA');
   });
 
   test('diagrama de fluxo da Barreira de 4 camadas presente e acessível', async ({ page }) => {

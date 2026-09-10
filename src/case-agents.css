@@ -329,32 +329,8 @@ code:not(pre code) {
 
 /* ── Componentes de Destaque ─────────────────────────────────────────────── */
 
-/* D-3: Token de Alerta escopado para Erro de Execução (Crash Silencioso) */
-.ca-crash-box {
-  border: 1px solid var(--ca-alert-border);
-  background: var(--ca-alert-bg);
-  border-radius: var(--ca-radius);
-  padding: 20px 22px;
-  margin: 24px 0;
-}
-.ca-crash-box__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--ca-mono);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #ff7b72;
-  background: rgba(248, 81, 73, 0.15);
-  border: 1px solid var(--ca-alert-border);
-  padding: 4px 10px;
-  border-radius: 999px;
-  margin-bottom: 12px;
-}
-
-/* Comparador "Antes vs Depois" do Crash Silencioso */
+/* Comparador "Antes vs Depois" do Crash Silencioso — token de alerta D-3 no
+   card --failed, token de sucesso no --passed. Corte seco, sem transição. */
 .ca-compare-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -394,13 +370,19 @@ code:not(pre code) {
   border-radius: 8px;
   padding: 12px;
   margin: 10px 0;
+  overflow-x: auto;            /* nunca quebra linha de score — rola (spec §12.2) */
 }
 .ca-ranking__item {
   display: flex;
   justify-content: space-between;
+  gap: 18px;
+  align-items: baseline;
   padding: 4px 6px;
   border-radius: 4px;
+  white-space: nowrap;
 }
+/* O vermelho/verde nunca é o único portador de significado: cada linha carrega
+   ícone (✕/✓) + rótulo textual (ESCRITA/LEITURA/DESCARTADA). Requisito a11y. */
 .ca-ranking__item--alert {
   background: rgba(248, 81, 73, 0.25);
   color: #ff7b72;

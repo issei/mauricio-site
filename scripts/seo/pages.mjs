@@ -67,6 +67,7 @@ export const PAGES = [
 
   {
     slug: 'case-agents', type: 'TechArticle', tier: 'S', hasMd: true,
+    codeRepository: 'https://github.com/issei/case-agents', programmingLanguage: 'Python',
     title: 'Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei',
     headline: 'Case Agents: Roteamento de Queries e Seleção Segura de Tools em Agente Bancário',
     description: 'Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero.',
@@ -112,7 +113,7 @@ export const PAGES = [
       title: 'Case {Agents}',
       subtitle: 'A tool errada não é uma aproximação aceitável',
       thesis: '285 ferramentas, 30 queries, zero execuções incorretas.',
-      chips: [{ k: '100%', label: 'Hit Rate@2' }, { k: '0', label: 'Incorretas' }, { k: 'G1-G4', label: 'Guardas' }, { k: '71', label: 'Testes' }],
+      chips: [{ k: '100%', label: 'Hit Rate@2' }, { k: '0', label: 'Incorretas' }, { k: 'G1-G4', label: 'Guardas' }, { k: '72', label: 'Testes' }],
     },
   },
 
