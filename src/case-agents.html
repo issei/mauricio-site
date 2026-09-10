@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei</title>
+  <meta name="description"
+    content="Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero." />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="./case-agents.css" />
+  <link rel="stylesheet" href="/aeo.css" />
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/case-agents" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/case-agents.md" title="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei" />
+<meta property="og:description" content="Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero." />
+<meta property="og:url" content="https://mauricio.issei.com.br/case-agents" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-case-agents.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei" />
+<meta property="article:published_time" content="2026-09-10T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-09-10T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="Engenharia de Confiança · Agentes de IA" />
+<meta property="article:tag" content="Case Agents" />
+<meta property="article:tag" content="Roteamento de IA" />
+<meta property="article:tag" content="Tool Retrieval" />
+<meta property="article:tag" content="Barreira Pré-Execução" />
+<meta property="article:tag" content="Guarda de Direção" />
+<meta property="article:tag" content="Engenharia de Confiança" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei" />
+<meta name="twitter:description" content="Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-case-agents.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/case-agents#webpage",
+      "url": "https://mauricio.issei.com.br/case-agents",
+      "name": "Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-10",
+      "dateModified": "2026-09-10",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-case-agents.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/case-agents#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/case-agents#article"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mauricio.issei.com.br/case-agents#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/case-agents#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/case-agents#webpage"
+      },
+      "headline": "Case Agents: Roteamento de Queries e Seleção Segura de Tools em Agente Bancário",
+      "description": "Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-09-10",
+      "dateModified": "2026-09-10",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-case-agents.png",
+      "isAccessibleForFree": true,
+      "keywords": "case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling",
+      "codeRepository": "https://github.com/issei/case-agents",
+      "programmingLanguage": "Python",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Engenharia de Confiança"
+        },
+        {
+          "@type": "Thing",
+          "name": "Tool Retrieval"
+        },
+        {
+          "@type": "Thing",
+          "name": "Roteamento de Agentes de IA"
+        },
+        {
+          "@type": "Thing",
+          "name": "Evaluation Harness"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Engenheiros de IA, Arquitetos de Soluções, Tech Leads, Profissionais de FinOps e Segurança em IA"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/case-agents#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/case-agents#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o projeto Case Agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É o desenvolvimento e avaliação do cérebro de roteamento e seleção de ferramentas de um agente de atendimento bancário digital. Ele classifica a mensagem em FAST_PATH ou AGENT, recupera as 2 ferramentas mais relevantes entre 285 e aplica uma barreira pré-execução de 4 camadas antes de chamar qualquer LLM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é o Crash Silencioso medido no projeto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uma falha em que uma query de consulta (\"Qual é o e-mail cadastrado na minha conta?\") resolveu com alta confiança e margem folgada (0.47) para a ferramenta de alteração de cadastro (atualizar_email). A falha passou por 54 testes e 3 guardas tradicionais sem gerar exceção."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como a Guarda de Direção funciona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Guarda de Direção (G4) analisa o verbo da query e compara com o modo de operação (read/write) declarado na ferramenta. Se a query for de leitura e a ferramenta for de escrita, o sistema descarta totalmente a ferramenta para evitar danos irreversíveis ao cadastro do cliente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como alcançar 100% de sucesso com economia de custo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/case-agents#glossario",
+      "name": "Glossário — Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/case-agents#g-barreira-pre-execucao",
+          "name": "Barreira Pré-Execução",
+          "description": "Conjunto de 4 guardas determinísticas que autorizam ou desviam a execução de uma ferramenta antes de invocar o LLM."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/case-agents#g-guarda-de-direcao",
+          "name": "Guarda de Direção",
+          "description": "Restrição semântica que impede ferramentas de escrita (alteração de estado) em requisições de leitura."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/case-agents#g-colapso-capacidade",
+          "name": "Colapso por Capacidade",
+          "description": "Agrupamento de variantes operacionais redundantes sob uma capacidade canônica única."
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="ca-body">
+  <a href="#conteudo" class="ca-skip">Pular para o conteúdo</a>
+
+  <div class="ca-readbar" aria-hidden="true"><span data-readbar></span></div>
+
+  <header class="ca-nav" aria-label="Navegação da página">
+    <div class="ca-nav__inner">
+      <a href="#hero" class="ca-nav__brand">
+        <span class="ca-nav__dot" aria-hidden="true"></span>
+        Case Agents
+      </a>
+      <nav class="ca-nav__trail" aria-label="Seções do case">
+        <a href="#problema" data-navlink>O Problema</a>
+        <a href="#crash-silencioso" data-navlink>O Crash Silencioso</a>
+        <a href="#por-que-nenhum-peso-resolve" data-navlink>Aritmética</a>
+        <a href="#barreira" data-navlink>A Barreira</a>
+        <a href="#arquitetura" data-navlink>Arquitetura</a>
+        <a href="#governanca-catalogo" data-navlink>Taxonomia</a>
+        <a href="#economia-honesta" data-navlink>Métricas</a>
+        <a href="#metodo" data-navlink>Método</a>
+        <a href="#evidencia" data-navlink>Suíte</a>
+        <a href="#limitacoes" data-navlink>Limitações</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ══════════════════════════════════════════════════════ ATO 1: HERO ═══ -->
+    <section id="hero" class="ca-hero">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow"><span translate="no">P2</span> · Engenharia de Confiança · Roteamento e Seleção de Tools</p>
+        <h1>A tool errada não é uma <em>aproximação aceitável</em></h1>
+
+        <p class="ca-hero__thesis">
+          285 ferramentas, 30 queries, um domínio bancário. Como uma barreira pré-execução de quatro
+          camadas levou 7 execuções incorretas a zero — e por que a economia de custo caiu no caminho.
+        </p>
+
+        <div class="ca-hero__cta">
+          <a class="ca-btn ca-btn--primary" href="https://github.com/issei/case-agents" target="_blank" rel="noopener">
+            Ver o repositório no GitHub
+          </a>
+          <a class="ca-btn ca-btn--secondary" href="#crash-silencioso">
+            Como o defeito foi encontrado ↓
+          </a>
+        </div>
+
+        <div class="ca-score" role="group" aria-label="Métricas principais do benchmark">
+          <div class="ca-score__cell">
+            <span class="ca-score__n ca-score__n--pass">100%</span>
+            <span class="ca-score__k">Accuracy Router</span>
+          </div>
+          <div class="ca-score__cell">
+            <span class="ca-score__n ca-score__n--pass">100%</span>
+            <span class="ca-score__k">Hit Rate@2</span>
+          </div>
+          <div class="ca-score__cell">
+            <span class="ca-score__n ca-score__n--pass">0</span>
+            <span class="ca-score__k">Execuções Incorretas</span>
+          </div>
+          <div class="ca-score__cell">
+            <span class="ca-score__n ca-score__n--pass">77,8%</span>
+            <span class="ca-score__k">Economia de Custo</span>
+          </div>
+          <div class="ca-score__cell">
+            <span class="ca-score__n">72</span>
+            <span class="ca-score__k">Testes · 0 skips</span>
+          </div>
+        </div>
+
+        <p class="ca-score__foot">
+          Saída determinística de <code translate="no">python -m candidate_starter.run_case</code> medida no benchmark do MVP.
+          A capacidade é escolher a ferramenta certa. A confiança é saber quando não executar nenhuma.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ 1. O PROBLEMA ═══ -->
+    <section id="problema" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">01 · O Enunciado</p>
+        <h2>O projeto: o que foi pedido num cérebro de agente bancário</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            Construir o <em>cérebro de roteamento</em> de um agente de atendimento de um banco digital.
+            Antes de qualquer chamada a LLM caro, o sistema decide o caminho mais barato e seguro para responder cada mensagem.
+          </p>
+
+          <h3 id="tres-pilares">Os três pilares da arquitetura</h3>
+          <div class="ca-tablewrap">
+            <table class="ca-table">
+              <thead>
+                <tr>
+                  <th>Pilar</th>
+                  <th>Problema de Engenharia</th>
+                  <th>Componente no Código</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1 · Router</strong></td>
+                  <td>Classificar a query em <code translate="no">FAST_PATH</code> (saudação/FAQ) ou <code translate="no">AGENT</code> (precisa de tool + raciocínio).</td>
+                  <td><code translate="no">candidate_starter/router.py</code></td>
+                </tr>
+                <tr>
+                  <td><strong>2 · Tool Retrieval</strong></td>
+                  <td>Selecionar as <strong>2 ferramentas mais relevantes entre 285</strong> antes de montar o prompt do LLM.</td>
+                  <td><code translate="no">candidate_starter/retrieval.py</code></td>
+                </tr>
+                <tr>
+                  <td><strong>3 · Evaluation Harness</strong></td>
+                  <td>Medir qualidade, custo, latência e segurança de forma determinística offline.</td>
+                  <td><code translate="no">candidate_starter/harness.py</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="restricao-bancaria">A restrição inegociável do domínio</h3>
+          <div class="ca-principle">
+            <p>
+              "Este é um domínio bancário. Uma tool incorreta não é uma aproximação aceitável.
+              Nunca execute uma tool se a decisão estiver abaixo dos limiares de segurança.
+              Nunca remova os quality gates apenas para aumentar recall ou economia.
+              <strong>Não use <code translate="no">expected_tool</code> do dataset dentro da lógica de produção.</strong>
+              Esse campo só pode ser usado pelo harness para avaliar offline."
+            </p>
+          </div>
+
+          <h3 id="a-fronteira">A Fronteira: produção não vê o gabarito</h3>
+          <p>
+            O que separa engenharia de ajuste ao gabarito é uma linha só: <code translate="no">expected_tool</code>
+            vive na <strong>camada de avaliação</strong> e nunca na <strong>lógica de produção</strong>.
+          </p>
+
+          <div class="ca-compare-grid">
+            <div class="ca-compare-card ca-compare-card--passed">
+              <div class="ca-compare-card__head">
+                <strong style="color:var(--ca-heading);">Lógica de produção</strong>
+                <span class="ca-tag ca-tag--real" translate="no">router · retrieval · taxonomy</span>
+              </div>
+              <p class="ca-small">
+                Decide com <strong>sinais disponíveis no momento do pedido</strong>: confiança do router,
+                score do retriever, margem relativa e o verbo da query. Nada mais.
+              </p>
+            </div>
+            <div class="ca-compare-card">
+              <div class="ca-compare-card__head">
+                <strong style="color:var(--ca-heading);">Camada de avaliação</strong>
+                <span class="ca-tag ca-tag--real" translate="no">harness.py</span>
+              </div>
+              <p class="ca-small">
+                <code translate="no">expected_tool</code> do <code translate="no">eval_dataset.json</code> só é lido
+                <strong>aqui</strong>, offline, para pontuar o Hit Rate depois que a decisão já foi tomada.
+              </p>
+            </div>
+          </div>
+
+          <div class="ca-code">
+            <div class="ca-code__head">
+              <span class="ca-tag ca-tag--real">Prova da Fronteira</span>
+              <span class="ca-code__path">verificação léxica estática</span>
+            </div>
+            <pre tabindex="0"><code translate="no">grep -n "expected_tool" candidate_starter/retrieval.py candidate_starter/router.py candidate_starter/taxonomy.py
+# Saída: zero resultados.</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════ ATO 2: CRASH SILENCIOSO ═══ -->
+    <section id="crash-silencioso" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">02 · A Falha Medida</p>
+        <h2>O Crash Silencioso: a falha que 54 testes não pegaram</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            Numa iteração intermediária (commit <code translate="no">c8f30d2</code>), o projeto exibia:
+            54 testes no verde, router 100%, Hit Rate@2 de 100%, zero execuções incorretas e status aprovado com louvor.
+            Uma revisão externa, porém, solicitou um teste de colisão entre vocabulário de leitura e escrita.
+          </p>
+
+          <p style="font-weight:600; color:var(--ca-heading);">
+            Query do Cliente: <em style="font-style:normal; color:#e6edf3;">"Qual e o email cadastrado na minha conta?"</em> — uma LEITURA.
+          </p>
+
+          <div class="ca-compare-grid">
+            <div class="ca-compare-card ca-compare-card--failed">
+              <div class="ca-compare-card__head">
+                <strong style="color:var(--ca-alert);">✕ Antes — 3 guardas</strong>
+                <span class="ca-tag" style="color:var(--ca-alert);">Executa a escrita</span>
+              </div>
+              <div class="ca-ranking" tabindex="0" role="group" aria-label="Ranking antes da guarda de direção">
+                <div class="ca-ranking__item ca-ranking__item--alert">
+                  <span><span aria-hidden="true">✕</span> Top-1 · <span translate="no">atualizar_email</span> — ESCRITA</span>
+                  <span>0.4795</span>
+                </div>
+                <div class="ca-ranking__item">
+                  <span><span aria-hidden="true">·</span> Top-2 · <span translate="no">confirmar_email_cadastrado</span></span>
+                  <span>0.2554</span>
+                </div>
+              </div>
+              <p class="ca-small" style="margin:10px 0 0;">
+                Margem <span translate="no">(0.4795 − 0.2554) / 0.4795 = 0.467</span> &gt;&gt; 0.25 → a guarda de margem
+                <strong>não pega</strong>. Confiança alta, score alto, margem folgada: <strong>EXECUÇÃO INCORRETA</strong> —
+                o agente altera o cadastro de quem só perguntou.
+              </p>
+            </div>
+
+            <div class="ca-compare-card ca-compare-card--passed">
+              <div class="ca-compare-card__head">
+                <strong style="color:var(--ca-pass);">✓ Depois — guarda de direção (G4)</strong>
+                <span class="ca-tag" style="color:var(--ca-pass);">Executa a leitura</span>
+              </div>
+              <div class="ca-ranking" tabindex="0" role="group" aria-label="Ranking depois da guarda de direção">
+                <div class="ca-ranking__item ca-ranking__item--pass">
+                  <span><span aria-hidden="true">✓</span> Top-1 · <span translate="no">consultar_email_vinculado_conta</span> — LEITURA</span>
+                  <span>0.3891</span>
+                </div>
+                <div class="ca-ranking__item">
+                  <span><span aria-hidden="true">✕</span> <span translate="no">atualizar_email</span> — ESCRITA, DESCARTADA</span>
+                  <span>—</span>
+                </div>
+              </div>
+              <p class="ca-small" style="margin:10px 0 0;">
+                A query é de leitura; a capacidade de escrita é <strong>descartada</strong> antes do ranking.
+                Margem <span translate="no">(0.3891 − 0.1792) / 0.3891 = 0.539</span> &gt; 0.25 → executa a
+                <strong>consulta</strong>, corte seco, sem transição.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Nenhuma das três guardas antigas pegou: o erro <strong>não é um empate</strong> — é uma decisão
+            confiante e errada. Isso ilustra a tese central do pilar
+            <a href="./engenharia-confianca.html">Engenharia de Confiança</a>: o erro mais perigoso em IA
+            não gera exceção de código. Ele passa no verde e toma uma decisão ruinosa com margem folgada.
+          </p>
+        </div>
+
+        <div class="ca-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/HlgRNYHvOtg?rel=0&amp;modestbranding=1"
+            title="A Evolução da Programação e o Vibe Coding — vídeo sobre Looks Right e Engenharia de Intenção"
+            loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 3. ARITMÉTICA DA FALHA ═══ -->
+    <section id="por-que-nenhum-peso-resolve" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">03 · Diagnóstico Estrutural</p>
+        <h2>Por que nenhum peso de vetorização resolve o problema</h2>
+
+        <div class="ca-prose">
+          <p>
+            Quando o problema apareceu, a primeira tentativa foi ajustar a combinação de pesos entre busca lexical e busca por intenção (<code translate="no">score = (1−α)·lexical + α·intent</code>). A demonstração matemática abaixo prova por que isso é impossível:
+          </p>
+
+          <div class="ca-code">
+            <div class="ca-code__head">
+              <span class="ca-tag ca-tag--real">Análise Aritmética</span>
+              <span class="ca-code__path">Query de escrita vs Ferramenta de leitura</span>
+            </div>
+            <pre tabindex="0"><code translate="no">Query: "Quero mudar o e-mail vinculado a minha conta" (ESCRITA)
+
+consultar_email_vinculado_conta  -> lexical = 0.8457 | intent = 0.4400
+atualizar_email                  -> lexical = 0.1983 | intent = 0.3200
+
+Para a escrita vencer por ajuste de α:
+(1 - α)·0.1983 + α·0.3200 > (1 - α)·0.8457 + α·0.4400
+α·(0.3200 - 0.4400 - 0.1983 + 0.8457) > 0.8457 - 0.1983
+0.5274·α > 0.6474  =>  α > 1.227 (IMPOSSÍVEL, pois α ∈ [0, 1])</code></pre>
+          </div>
+
+          <p>
+            <strong>A lição estrutural:</strong> Leitura e escrita sobre o mesmo objeto compartilham todos os substantivos (<code translate="no">e-mail</code>, <code translate="no">conta</code>, <code translate="no">cadastro</code>).
+            A diferença entre consultar e alterar é <strong>uma só palavra: o verbo</strong>. Num saco de palavras com TF-IDF, esse verbo é diluído entre dez tokens. A direção da operação não é recuperável por similaridade textual — precisa ser uma <strong>restrição semântica declarada</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════ ATO 3: A BARREIRA ═══ -->
+    <section id="barreira" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">04 · A Solução Rígida</p>
+        <h2>A Barreira Pré-Execução de 4 Camadas</h2>
+
+        <div class="ca-prose">
+          <p>
+            Quatro guardas determinísticas encadeadas. A query só avança para o LLM e para a execução de tools se passar por todas as quatro travas. Se qualquer guarda reprovar, o sistema desvia para abstenção ou atendimento humano.
+          </p>
+        </div>
+
+        <div class="ca-barrier-flow">
+          <div class="ca-barrier-step">
+            <div class="ca-barrier-step__num">G1</div>
+            <div class="ca-barrier-step__desc">
+              <h4>Confiança de Roteamento</h4>
+              <p>Confiança calibrada do Router &lt; 0.75? Se reprovar, o retriever nem é invocado.</p>
+            </div>
+            <div class="ca-barrier-step__fallback" translate="no">
+              HUMAN_FALLBACK_LOW_CONFIDENCE
+            </div>
+          </div>
+
+          <div class="ca-barrier-step">
+            <div class="ca-barrier-step__num">G2</div>
+            <div class="ca-barrier-step__desc">
+              <h4>Score Mínimo do Candidato</h4>
+              <p>Nenhum candidato no retriever atinge o score lexical/intent mínimo de 0.10?</p>
+            </div>
+            <div class="ca-barrier-step__fallback" translate="no">
+              ABSTAIN_LOW_SCORE
+            </div>
+          </div>
+
+          <div class="ca-barrier-step">
+            <div class="ca-barrier-step__num">G3</div>
+            <div class="ca-barrier-step__desc">
+              <h4>Margem Relativa entre Candidatos</h4>
+              <p>Margem <code translate="no">(s₁ − s₂)/s₁ &lt; 0.25</code>? Top-1 e top-2 estão próximos demais (empate técnico).</p>
+            </div>
+            <div class="ca-barrier-step__fallback" translate="no">
+              AMBIGUOUS_CONFIRMATION
+            </div>
+          </div>
+
+          <div class="ca-barrier-step">
+            <div class="ca-barrier-step__num">G4</div>
+            <div class="ca-barrier-step__desc">
+              <h4>Guarda de Direção (Leitura vs Escrita)</h4>
+              <p>Direção extraída do verbo da query é diferente da direção (<code translate="no">mode: read|write</code>) declarada na ferramenta?</p>
+            </div>
+            <div class="ca-barrier-step__fallback">
+              Descarte (Leitura→Escrita) ou Rebaixamento
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-prose">
+          <h3 id="assimetria-deliberada">A assimetria deliberada da Guarda 4</h3>
+          <ul>
+            <li><strong>Query de LEITURA + Tool de ESCRITA:</strong> Descarte total da tool. Alterar o cadastro de quem apenas perguntou é dano irreversível ao cliente.</li>
+            <li><strong>Query de ESCRITA + Tool de LEITURA:</strong> Rebaixamento de score, não descarte. Consultar para quem pediu alteração é tarefa não cumprida — recuperável na mensagem seguinte.</li>
+          </ul>
+        </div>
+
+        <div class="ca-video" style="margin-top: 28px;">
+          <iframe src="https://www.youtube-nocookie.com/embed/m69fzdS-EG0?rel=0&amp;modestbranding=1"
+            title="O Novo Paradigma da IA — vídeo sobre Tool Calling, ReAct e limites de autonomia"
+            loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════ 5. ARQUITETURA ═══ -->
+    <section id="arquitetura" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">05 · O Pipeline</p>
+        <h2>A Arquitetura Final em 4 Camadas</h2>
+
+        <div class="ca-prose">
+          <p>
+            O fluxo completo do pedido até a autorização de execução:
+          </p>
+        </div>
+
+        <div class="ca-compare-grid">
+          <div class="ca-compare-card">
+            <div class="ca-compare-card__head">
+              <strong style="color:var(--ca-heading);">1 · Calibração do Router</strong>
+              <span class="ca-tag ca-tag--real" translate="no">router.py</span>
+            </div>
+            <p class="ca-small">
+              <code translate="no">TfidfVectorizer(ngram_range=(1,2))</code> + <code translate="no">LogisticRegression</code> calibrado via <code translate="no">CalibratedClassifierCV(method="sigmoid")</code> em Platt scaling.
+              Resolve o problema de subconfiança por regularização L2 em dataset pequeno sem inflar artificialmente as probabilidades.
+            </p>
+          </div>
+
+          <div class="ca-compare-card">
+            <div class="ca-compare-card__head">
+              <strong style="color:var(--ca-heading);">2 · Taxonomia &amp; Governança</strong>
+              <span class="ca-tag ca-tag--real" translate="no">taxonomy.py</span>
+            </div>
+            <p class="ca-small">
+              Declaração de 14 capacidades canônicas e 45 variantes com modo de operação (<code translate="no">read</code> ou <code translate="no">write</code>).
+              Mapeia o vocabulário do usuário (aliases) para intenções e resolve duplicações semânticas do catálogo.
+            </p>
+          </div>
+
+          <div class="ca-compare-card">
+            <div class="ca-compare-card__head">
+              <strong style="color:var(--ca-heading);">3 · Retriever Multi-campo</strong>
+              <span class="ca-tag ca-tag--real" translate="no">retrieval.py</span>
+            </div>
+            <p class="ca-small">
+              Combinação de score BM25F: <code translate="no">score = 0.5·lexical + 0.5·intent</code>.
+              O glossário de aliases é indexado em campo separado para evitar que a normalização L2 dilua os termos originais. Realiza colapso por capacidade devolvendo top-k canônicos distintos.
+            </p>
+          </div>
+
+          <div class="ca-compare-card">
+            <div class="ca-compare-card__head">
+              <strong style="color:var(--ca-heading);">4 · Barreira &amp; Harness</strong>
+              <span class="ca-tag ca-tag--real" translate="no">harness.py</span>
+            </div>
+            <p class="ca-small">
+              Quality Gate tri-estado (<code translate="no">APROVADO</code>, <code translate="no">REPROVADO</code>, <code translate="no">INDETERMINADO</code>).
+              Valida as 4 guardas antes do mock de execução. Se não houver query transacional no benchmark, o resultado é marcado como INDETERMINADO por segurança.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 6. GOVERNANÇA CATÁLOGO ═══ -->
+    <section id="governanca-catalogo" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">06 · Governança de Catálogo</p>
+        <h2>O catálogo é o problema, não a vetorização</h2>
+
+        <div class="ca-prose">
+          <p>
+            O diagnóstico inicial de baixo recall (35% Hit Rate@2) parecia uma falha do modelo. O exame do registrador de ferramentas revelou a causa real: <strong>duplicações semânticas acumuladas por times diferentes ao longo de anos</strong>.
+          </p>
+
+          <div class="ca-code">
+            <div class="ca-code__head">
+              <span class="ca-tag ca-tag--real">Exemplo de Duplicação no Registrador</span>
+              <span class="ca-code__path">4 das 8 ferramentas para "obter fatura"</span>
+            </div>
+            <pre tabindex="0"><code translate="no">consultar_fatura                  -> "Gera o PDF ou linha digitável da fatura do mês atual."
+gerar_linha_digitavel_fatura      -> "Gera a linha digitável da fatura ... para pagamentos."
+enviar_pdf_fatura_atual           -> "Envia o PDF da fatura atual ... para o cliente."
+consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atual."</code></pre>
+          </div>
+
+          <p>
+            Para um retriever lexical simples, a variante hiperespecífica sempre vence a canônica porque repete palavra por palavra da query.
+            A solução foi introduzir o conceito de <strong>Capacidade Canônica com Colapso</strong>: o retriever agrupa as variantes sob a mesma capacidade e devolve em <code translate="no">k=2</code> duas capacidades <strong>distintas</strong>.
+            A variante específica que casou é preservada em <code translate="no">matched_variant</code> como trilha de auditoria para o runtime.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 7. ECONOMIA HONESTA ═══ -->
+    <section id="economia-honesta" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">07 · Evolução Medida</p>
+        <h2>Economia sem taxa de sucesso é risco disfarçado</h2>
+
+        <div class="ca-prose">
+          <p>
+            Conforme a Lei de Goodhart ("quando uma métrica vira meta, ela deixa de ser uma boa métrica"), otimizar cegamente a economia de custos levou o pipeline inicial a abster-se de quase metade das chamadas, inflando artificialmente a porcentagem de economia.
+          </p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th>Métrica / Iteração</th>
+                <th>Commit inicial (<code translate="no">fc830dc</code>)</th>
+                <th>Iteração com Crash (<code translate="no">c8f30d2</code>)</th>
+                <th>Versão publicada (<code translate="no">1f780c0</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Testes Automatizados</strong></td>
+                <td>35</td>
+                <td>54</td>
+                <td><strong>72 passed, 0 skipped</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Hit Rate@2</strong></td>
+                <td>35%</td>
+                <td>100%</td>
+                <td><strong>100%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Execução Correta Top-1</strong></td>
+                <td>20% (4/20)</td>
+                <td>95% (19/20)</td>
+                <td><strong>100% (20/20)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Execuções Incorretas</strong></td>
+                <td><span style="color:var(--ca-alert); font-weight:bold;">7 incorretas</span></td>
+                <td>0 (mas vulnerável)</td>
+                <td><span style="color:var(--ca-pass); font-weight:bold;">0 incorretas</span></td>
+              </tr>
+              <tr>
+                <td><strong>Leitura Resolvendo Escrita</strong></td>
+                <td>Não medido</td>
+                <td><span style="color:var(--ca-alert); font-weight:bold;">Sim (margem 0.47)</span></td>
+                <td><span style="color:var(--ca-pass); font-weight:bold;">Impossível (G4)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Fallback por Baixa Confiança</strong></td>
+                <td>9 abstenções</td>
+                <td>0</td>
+                <td><strong>0</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Economia de Custo Medida</strong></td>
+                <td>87,8% (inflada)</td>
+                <td>78,9%</td>
+                <td><strong>77,8% (líquida real)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Status do Harness</strong></td>
+                <td><span style="color:var(--ca-alert);">REPROVADO</span></td>
+                <td>APROVADO</td>
+                <td><span style="color:var(--ca-pass); font-weight:bold;">APROVADO NO BENCHMARK</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose">
+          <p class="ca-small">
+            <strong>Por que a economia caiu de 87,8% para 77,8%?</strong>
+            Na primeira versão, 9 abstenções indevidas evitavam chamadas de LLM, inflando a economia enquanto entregavam apenas 20% de sucesso. A versão final resolve 20 de 20 queries transacionais com 100% de acerto e paga LLM por todas elas. 77,8% é a economia real e honesta sobre a operação.
+          </p>
+
+          <div style="margin-top:20px;">
+            <a class="ca-btn ca-btn--secondary" href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" target="_blank" rel="noopener">
+              📄 Baixar candidate_report.json (Relatório Oficial de Benchmark)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 8. O MÉTODO ═══ -->
+    <section id="metodo" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">08 · O Processo</p>
+        <h2>Como foi desenvolvido: o método agêntico com crítica incorporada</h2>
+
+        <div class="ca-prose">
+          <p>
+            O desenvolvimento não seguiu uma linha reta. Duas rodadas foram impulsionadas por <strong>revisão adversarial externa</strong>, onde cada apontamento gerou um ciclo de diagnóstico, medição em ADR (Architecture Decision Record) e suíte de testes estendida. A terceira não teve revisor: apareceu porque o <strong>estado estacionário foi testado</strong> em vez de aceito no verde.
+          </p>
+
+          <div class="ca-timeline">
+            <div class="ca-timeline__item">
+              <div class="ca-timeline__round">Rodada 1</div>
+              <div>
+                <h4 style="margin:0 0 4px; color:var(--ca-heading);">Crítica ao Commit <code translate="no">fc830dc</code></h4>
+                <p class="ca-small" style="margin:0;">
+                  Diagnóstico de recall de 35%, 7 execuções incorretas e economia inflada. Produziu as ADRs 0006 e 0007, elevando a suíte de 35 para 54 testes.
+                </p>
+              </div>
+            </div>
+
+            <div class="ca-timeline__item">
+              <div class="ca-timeline__round">Rodada 2</div>
+              <div>
+                <h4 style="margin:0 0 4px; color:var(--ca-heading);">Reavaliação Adversarial do Commit <code translate="no">c8f30d2</code></h4>
+                <p class="ca-small" style="margin:0;">
+                  Mapeamento de 8 riscos remanescentes. O teste de colisão leitura/escrita recomendado expôs o Crash Silencioso. Gerou a ADR-0008 (guarda de direção) e somou os testes de colisão à suíte.
+                </p>
+              </div>
+            </div>
+
+            <div class="ca-timeline__item">
+              <div class="ca-timeline__round">Rodada 3</div>
+              <div>
+                <h4 style="margin:0 0 4px; color:var(--ca-heading);">A saga da procedência do relatório — commits <code translate="no">0d2c9ae</code> … <code translate="no">1f780c0</code></h4>
+                <p class="ca-small" style="margin:0;">
+                  Regenerar o <code translate="no">candidate_report.json</code> e rodar a suíte de novo revelou a contagem com um <code translate="no">1 skipped</code> a mais. O <em>skip</em> não era condicional benigno — era um teste desistindo em silêncio. Corrigido, a suíte fecha em <strong>72 passed, 0 skipped</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 id="saga-procedencia">A procedência que contaminava a própria medição</h3>
+          <p>
+            O relatório de métricas é versionado — e um JSON versionado envelhece em silêncio: o código muda, o arquivo fica, e quem lê acredita em números que o commit atual não produz mais. O projeto tem um teste que <strong>recomputa as decisões</strong> contra o código vigente. Esse teste teve <strong>três defeitos da mesma família</strong>, todos com o relatório sujando a medição que deveria auditá-lo:
+          </p>
+          <ol>
+            <li>
+              <strong>Asserção insatisfazível.</strong> Exigia <code translate="no">snapshot.git_commit == HEAD</code>. Como commitar o relatório cria um commit novo, o <code translate="no">snapshot</code> sempre aponta para o anterior — a asserção nunca poderia passar. A propriedade realmente auditável é outra: <em>entre o commit que gerou o relatório e o HEAD, nada fora de <code translate="no">reports/</code> mudou</em> — e a falha passa a <strong>nomear os arquivos</strong> atrasados.
+            </li>
+            <li>
+              <strong><code translate="no">git_dirty</code> se auto-sujava.</strong> <code translate="no">build_snapshot()</code> contava <code translate="no">reports/</code> na verificação de árvore suja. Como o relatório é escrito pela própria função, da segunda execução em diante ele se declarava irreprodutível por causa do arquivo que acabara de gerar.
+            </li>
+            <li>
+              <strong><code translate="no">_git().strip()</code> comia o espaço do prefixo de status.</strong> O filtro fatiava <code translate="no">line[3:]</code> do <code translate="no">--porcelain</code>, mas o <code translate="no">.strip()</code> na saída remove o espaço inicial da primeira linha: o caminho saía deslocado (<code translate="no">eports/...</code>), o filtro nunca casava e o teste <strong>voltava a pular em silêncio</strong>. Resolvido delegando o filtro ao próprio git (pathspec <code translate="no">':(exclude)reports'</code>), sem parsing.
+            </li>
+          </ol>
+          <p>
+            <strong>Uma suíte verde com <code translate="no">1 skipped</code> parecia saudável. Não era</strong> — o <em>skip</em> era um teste desistindo em silêncio, e só apareceu porque o estado estacionário foi testado (regenerar o relatório, rodar a suíte de novo) em vez de aceitar o verde. É a terceira instância da tese desta página: <strong>métricas verdes não são cobertura</strong>.
+          </p>
+
+          <h3 id="principios-decisoes">Princípios que governaram as decisões</h3>
+          <ul>
+            <li><strong>Medir antes de editar:</strong> Nenhuma alteração foi feita sem antes registrar a tabela de métricas antes/depois na ADR.</li>
+            <li><strong>Nunca mover a trave:</strong> Soluções fáceis (como subir parâmetros de probabilidade para mascarar erros) foram sumariamente rejeitadas.</li>
+            <li><strong>Testes de Ausência de Efeito:</strong> Testes que garantem que <code translate="no">mock_tool_execution</code> <strong>nunca é chamada</strong> se qualquer guarda reprovar.</li>
+            <li><strong>Testar o estado estacionário:</strong> Não basta a suíte passar uma vez — ela tem de continuar passando depois que o sistema escreve os próprios artefatos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 9. EVIDÊNCIA E SUÍTE ═══ -->
+    <section id="evidencia" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">09 · Especificação Executável</p>
+        <h2>A Suíte de 72 Testes como Especificação do Sistema</h2>
+
+        <div class="ca-prose">
+          <p>
+            Oito arquivos de teste divididos por invariantes de segurança e integridade. A parte
+            mais valiosa não verifica um valor retornado; verifica que <strong>nada aconteceu</strong>:
+          </p>
+
+          <div class="ca-code">
+            <div class="ca-code__head">
+              <span class="ca-tag ca-tag--real" translate="no">test_taxonomy.py</span>
+              <span class="ca-code__path">A invariante de segurança mais cara do domínio, verificada no ranking completo</span>
+            </div>
+            <pre tabindex="0"><code translate="no">def test_a_read_request_can_never_resolve_to_a_write_capability(retriever):
+    """Antes da guarda de direcao, "Qual e o email cadastrado na minha conta?"
+    devolvia atualizar_email (ESCRITA) em 1o lugar com margem relativa de 0.47 —
+    acima do limiar de 0.25: a guarda de margem NAO pegava."""
+    for query in read_requests:            # 5 consultas puras
+        for m in retriever.search(query, k=3).matches:
+            assert CAPABILITY_MODE.get(m.name) != "write"</code></pre>
+          </div>
+
+          <h3 id="categorias-testes">Categorias da Suíte de Testes</h3>
+          <ul>
+            <li><strong>Ausência de efeito:</strong> <code translate="no">mock_tool_execution</code> nunca é chamada quando qualquer guarda reprova (<code translate="no">executed.assert_not_called()</code>).</li>
+            <li><strong>Integridade da Taxonomia:</strong> 7 invariantes de autoria (existência no catálogo, ausência de colisão, leitura ≠ escrita, direção declarada e herdada).</li>
+            <li><strong>Generalização sem Ajuste ao Gabarito:</strong> 12 paráfrases escritas com vocabulário totalmente ausente do dataset oficial (9/12 no top-1, 11/12 no top-2).</li>
+            <li><strong>Estabilidade e Procedência:</strong> Embaralhar a ordem do catálogo não altera decisão alguma; o relatório em JSON corresponde exatamente ao commit e código vigentes — e essa checagem <strong>não pode pular</strong> (foi o defeito da rodada 3).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 10. LIMITAÇÕES ═══ -->
+    <section id="limitacoes" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">10 · Transparência Técnica</p>
+        <h2>Limitações Reais do Projeto (O que o benchmark não cobre)</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            Publicar limitações é o que separa engenharia de propaganda. As 7 restrições abaixo estão registradas no README do repositório oficial:
+          </p>
+
+          <ol>
+            <li><strong>Aprovado neste benchmark, não para produção bancária viva:</strong> 30 queries, 53 exemplos de treino e tools mockadas. Tráfego real com adversários exige camadas de MFA, autorização e idempotência fora deste escopo.</li>
+            <li><strong>A guarda de direção só protege o que está declarado:</strong> <strong>59 das 285</strong> ferramentas têm <code translate="no">mode</code> (14 capacidades canônicas + 45 variantes). As outras <strong>226</strong> passam sem restrição de direção. O lugar arquitetural correto para <code translate="no">mode</code> é o <strong>próprio registry</strong> — é metadado do endpoint, não da taxonomia.</li>
+            <li><strong>Teto de recuperação lexical em paráfrase:</strong> O recall de paráfrases puras sem palavras-chave atinge 9/12 no top-1. O próximo degrau exige embeddings densos/reranker.</li>
+            <li><strong>Taxonomia mantida manualmente:</strong> 14 capacidades e 45 variantes configuradas em código Python sobre 285 ferramentas.</li>
+            <li><strong>As guardas 2 e 3 não são mais exercitadas pelo benchmark oficial:</strong> Com 20/20 e zero abstenções, elas passam a ser provadas só pelos testes de ausência de efeito. <strong>Um benchmark que nunca aciona a rede de segurança não demonstra que ela funciona.</strong></li>
+            <li><strong>Folga de calibração do router é estreita:</strong> A query <code translate="no">AGENT</code> menos confiante registra <strong>0.7674</strong> contra o limiar de 0.75 — <strong>0.017</strong> de folga, registrada como risco. (Já as margens das decisões corretas ficam entre <strong>0.592 e 0.741</strong> contra o limiar de 0.25: essa, sim, folgada.)</li>
+            <li><strong>Custo de fallback humano é premissa, não medição:</strong> O número confiável é o ponto de equilíbrio, que é derivado das medições.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 11. REFERÊNCIAS ═══ -->
+    <section id="referencias" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">11 · Ecossistema &amp; Links</p>
+        <h2>Referências Conceituais do Site</h2>
+
+        <div class="ca-refs">
+          <div>
+            <h3>Engenharia de Confiança</h3>
+            <ul>
+              <li><a href="./engenharia-confianca.html">A Engenharia da Confiança</a> — O modelo ISM e a contenção do Crash Silencioso.</li>
+              <li><a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> — Os Cinco Pilares e o Espectro de Autonomia.</li>
+              <li><a href="./agent-ready.html">Agent Ready</a> — A superfície do site legível por agentes.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Fundação &amp; Método</h3>
+            <ul>
+              <li><a href="./formulacao-de-problemas.html">Formulação de Problemas</a> — Reformular o problema de retrieval para governança de catálogo.</li>
+              <li><a href="./knowledge-os-presentation.html">Knowledge OS Enterprise</a> — Context Lakes e conhecimentos explícitos.</li>
+              <li><a href="./artifice.html">O Artífice Invisível</a> — Tornando visível o trabalho de engenharia por trás do 100%.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Código-fonte do Projeto</h3>
+            <ul>
+              <li><a href="https://github.com/issei/case-agents" target="_blank" rel="noopener">Repositório GitHub <code translate="no">issei/case-agents</code></a></li>
+              <li><a href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">8 ADRs no Repositório</a></li>
+              <li><a href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" target="_blank" rel="noopener">candidate_report.json</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Eco Nav Component Inject -->
+  <eco-nav></eco-nav>
+
+  <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que é o projeto Case Agents</h2>
+    <p class="aeo-tldr__lede">O <strong>case-agents</strong> é a implementação e benchmark de um cérebro de roteamento para agente bancário: decide se uma query necessita de LLM, seleciona 2 ferramentas entre 285 registradas e <strong>bloqueia a execução quando a decisão não é confiável o bastante</strong>.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>A capacidade é escolher a ferramenta certa; a confiança é saber quando não executar nenhuma.</strong></li>
+      <li><strong>Governança do catálogo</strong> — colapso de duplicatas semânticas em 14 capacidades canônicas elevou o Hit Rate@2 de 35% para 100%.</li>
+      <li><strong>O Crash Silencioso contido</strong> — a Guarda de Direção (leitura vs escrita) impediu que uma consulta de e-mail alterasse o cadastro do cliente.</li>
+      <li><strong>Economia de custo real</strong> — 77,8% de economia com 100% de sucesso nas execuções.</li>
+    </ul>
+    <p class="aeo-tldr__foot">Caso de estudo da <a href="/engenharia-confianca">Engenharia da Confiança</a> e <a href="/engenharia-agentes-ia">Engenharia de Agentes de IA</a>.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que é o projeto Case Agents?</summary>
+      <div class="aeo-faq__a"><p>É o desenvolvimento e avaliação do cérebro de roteamento e seleção de ferramentas de um agente de atendimento bancário digital. Ele classifica a mensagem em FAST_PATH ou AGENT, recupera as 2 ferramentas mais relevantes entre 285 e aplica uma barreira pré-execução de 4 camadas antes de chamar qualquer LLM.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é o Crash Silencioso medido no projeto?</summary>
+      <div class="aeo-faq__a"><p>Uma falha em que uma query de consulta (&quot;Qual é o e-mail cadastrado na minha conta?&quot;) resolveu com alta confiança e margem folgada (0.47) para a ferramenta de alteração de cadastro (atualizar_email). A falha passou por 54 testes e 3 guardas tradicionais sem gerar exceção.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Como a Guarda de Direção funciona?</summary>
+      <div class="aeo-faq__a"><p>A Guarda de Direção (G4) analisa o verbo da query e compara com o modo de operação (read/write) declarado na ferramenta. Se a query for de leitura e a ferramenta for de escrita, o sistema descarta totalmente a ferramenta para evitar danos irreversíveis ao cadastro do cliente.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Como alcançar 100% de sucesso com economia de custo?</summary>
+      <div class="aeo-faq__a"><p>Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+
+<footer class="ca-footer">
+    <div class="ca-wrap">
+      <p class="ca-footer__copy">
+        © 2026 Maurício Yokoyama Issei. Projeto <span translate="no">case-agents</span> documentado sob a especificação
+        <code translate="no">docs/specs/pages/case-agents/00_SDD_case_agents.md</code>.
+        As métricas citadas correspondem à execução determinística do benchmark no repositório oficial.
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/eco-nav.js"></script>
+
+  <script type="module">
+    /* Barra de Progresso de Leitura e Realce de Navegação */
+    const reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const barra = document.querySelector('[data-readbar]');
+    if (barra && !reduzido) {
+      const atualizar = () => {
+        const alcance = document.documentElement.scrollHeight - window.innerHeight;
+        const razao = alcance > 0 ? window.scrollY / alcance : 0;
+        barra.style.width = `${Math.min(100, Math.max(0, razao * 100))}%`;
+      };
+      addEventListener('scroll', atualizar, { passive: true });
+      addEventListener('resize', atualizar, { passive: true });
+      atualizar();
+    }
+
+    const links = [...document.querySelectorAll('[data-navlink]')];
+    const secoes = links
+      .map((a) => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+
+    if (secoes.length && 'IntersectionObserver' in window) {
+      const observador = new IntersectionObserver(
+        (entradas) => {
+          for (const entrada of entradas) {
+            if (!entrada.isIntersecting) continue;
+            for (const a of links) {
+              if (a.getAttribute('href') === `#${entrada.target.id}`) a.setAttribute('aria-current', 'true');
+              else a.removeAttribute('aria-current');
+            }
+          }
+        },
+        { rootMargin: '-45% 0px -50% 0px' }
+      );
+      secoes.forEach((s) => observador.observe(s));
+    }
+  </script>
+</body>
+
+</html>

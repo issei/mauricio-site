@@ -63,7 +63,7 @@ O site já define o inimigo. Em
 
 Esta página existe porque o projeto `case-agents` produziu **uma instância medida desse
 inimigo**, em domínio bancário, e a corrigiu com evidência executável. Não é uma alegoria: é um
-sistema com 71 testes onde, numa das iterações, uma pergunta do cliente resolvia para uma
+sistema com 72 testes onde, numa das iterações, uma pergunta do cliente resolvia para uma
 **alteração de cadastro** com margem de confiança folgada — passando por três guardas de
 segurança e uma suíte inteira no verde.
 
@@ -415,12 +415,15 @@ Enunciado → implementação → REVISÃO EXTERNA → diagnóstico medido → c
 ```
 
 O projeto passou por **duas rodadas completas de revisão adversarial** documentadas, cada uma
-produzindo um commit de correção. Não é desenvolvimento linear: é **crítica incorporada ao loop**.
+produzindo um commit de correção — e uma terceira volta, sem revisor externo, que só apareceu
+porque o estado estacionário foi testado em vez de aceito no verde. Não é desenvolvimento
+linear: é **crítica incorporada ao loop**.
 
 | Rodada | Entrada | Achado principal | Saída |
 | :--- | :--- | :--- | :--- |
 | 1 | Crítica do commit `fc830dc` | Hit Rate@2 de 35%, 7 execuções incorretas, economia inflada por abstenção | ADR-006, ADR-007 · 35 → 54 testes |
 | 2 | Reavaliação do commit `c8f30d2` | 8 riscos remanescentes + 8 testes recomendados; um deles expôs o Crash Silencioso | ADR-008 · 54 → 71 testes |
+| 3 | Teste do estado estacionário (regenerar o relatório e rodar a suíte de novo), commits `0d2c9ae`…`1f780c0` | O teste de procedência estava com `71 passed, 1 skipped` — o *skip* era o próprio teste desistindo em silêncio (asserção insatisfazível, `git_dirty` auto-sujando, `_git().strip()` comendo o prefixo do `--porcelain`) | 71 → **72 passed, 0 skipped** |
 
 ### 7.2 Os princípios que governaram as decisões
 
@@ -472,9 +475,28 @@ em silêncio. O código muda, o arquivo continua lá, e quem lê acredita em nú
 atual não produz mais. Há um teste que **recomputa as decisões** contra o código atual e falha se
 divergirem.
 
+**A saga da procedência (commits `0d2c9ae`…`1f780c0`).** O próprio teste de procedência teve
+três defeitos da mesma família — o relatório contaminando a medição que deveria auditá-lo:
+
+1. **Asserção insatisfazível.** Exigia `snapshot.git_commit == HEAD`. Como commitar o relatório
+   cria um commit novo, o snapshot sempre aponta para o anterior; a asserção nunca poderia passar.
+   Corrigida para a propriedade auditável: *entre o commit que gerou o relatório e o HEAD, nada
+   fora de `reports/` mudou* — e a falha passa a **nomear os arquivos** atrasados.
+2. **`git_dirty` se auto-sujava.** `build_snapshot()` contava `reports/` na verificação de árvore
+   suja; como o relatório é escrito pela própria função, da segunda execução em diante ele se
+   declarava irreprodutível por causa do arquivo que acabara de gerar.
+3. **`_git().strip()` comia o espaço do prefixo de status.** O filtro fatiava `line[3:]` do
+   `--porcelain`, mas o `.strip()` na saída remove o espaço inicial da primeira linha: o caminho
+   saía deslocado (`eports/...`), o filtro nunca casava e o teste **voltava a pular em silêncio**.
+   Resolvido delegando o filtro ao git (`pathspec ':(exclude)reports'`), sem parsing.
+
+`71 passed, 1 skipped` parecia saudável e não era: o *skip* era um teste desistindo em silêncio,
+só exposto porque o estado estacionário foi testado. É a **terceira instância** da tese da página
+— *métricas verdes não são cobertura*. Hoje a suíte é **72 passed, 0 skipped**.
+
 ### 7.4 A suíte como especificação executável
 
-71 testes em 8 arquivos. As categorias que importam:
+72 testes em 8 arquivos. As categorias que importam:
 
 | Categoria | O que prova |
 | :--- | :--- |
@@ -485,7 +507,7 @@ divergirem.
 | **Estabilidade** | Embaralhar a ordem do catálogo não muda decisão alguma |
 | **Distribuição de confiança** | A confiança não está nem saturada em 1.0 nem achatada — sem dispersão, o limiar é decorativo |
 | **Economia líquida** | O ponto de equilíbrio do custo humano é derivado, e a economia fica negativa acima dele |
-| **Procedência** | O relatório versionado corresponde ao commit e ao código atuais |
+| **Procedência** | O relatório versionado corresponde ao commit e ao código atuais — e a checagem não pode pular: o *skip* silencioso foi o defeito da rodada 3 |
 
 ---
 
@@ -504,15 +526,15 @@ Saída de `python -m candidate_starter.run_case`. Números medidos, não estimad
 | **Execuções incorretas** | **0** |
 | Abstenções | 0 |
 | Economia de custo | **77,8%** (US$ 0,20 vs US$ 0,90) |
-| Redução de latência | ~90–93% (varia: mocks usam `sleep` aleatório) |
-| Testes | **71** (+1 skip condicional) |
+| Redução de latência | ~90–94% (varia: mocks usam `sleep` aleatório) |
+| Testes | **72** (0 skips) |
 | Status | `APROVADO NO BENCHMARK DO MVP` · `MVP_BENCHMARK_ONLY` |
 
 ### 8.2 A evolução — e por que a economia caiu duas vezes
 
-| Métrica | `fc830dc` | `c8f30d2` | Atual |
+| Métrica | `fc830dc` | `c8f30d2` | Atual (`1f780c0`) |
 | :--- | ---: | ---: | ---: |
-| Testes | 35 | 54 | **71** |
+| Testes | 35 | 54 | **72** |
 | Hit Rate@2 | 35% | 100% | **100%** |
 | Execução correta top-1 | 20% (4/20) | 95% (19/20) | **100%** (20/20) |
 | **Execuções incorretas** | **7** | **0** | **0** |
@@ -910,14 +932,17 @@ Todas estão registradas no [README do repositório](https://github.com/issei/ca
 ### 14.4 Nota de procedência desta spec
 
 Escrita a partir da leitura direta do código em `D:\projetos\case-agents`, com as métricas obtidas
-por execução real de `python -m pytest -q` (71 passed, 1 skipped) e
-`python -m candidate_starter.run_case`.
+por execução real de `python -m pytest -q` e `python -m candidate_starter.run_case`.
 
-**Fronteira de commit:** o commit publicado mais recente é `c8f30d2`. A iteração descrita em §6
-(guarda de direção, ADR-008, 71 testes) **estava implementada e validada localmente, mas ainda não
-publicada** no momento desta redação. Ao implementar a página, **reconfirmar os números contra o
-`main` publicado** — e, se a iteração não tiver sido publicada, ajustar §8 para o estado de
-`c8f30d2` (95% de execução correta, 54 testes) ou aguardar o push.
+**Fronteira de commit (revisada 2026-09-10):** a iteração descrita em §6 (guarda de direção,
+ADR-008) **foi publicada**, junto com a saga da procedência do relatório (§7.3). O `main`
+publicado está em `1f780c0` — snapshot registrado no `candidate_report.json` — com um commit
+adicional (`67a7622`) que só re-executa o relatório e muda apenas números de latência
+não-determinísticos. `python -m pytest -q` retorna **72 passed, 0 skipped**;
+`python -m candidate_starter.run_case` confirma router 100% (30/30), Hit Rate@1 e @2 100%,
+execução correta 20/20, 0 incorretas, 0 abstenções, economia de custo 77,8%, status
+`APROVADO NO BENCHMARK DO MVP` / `MVP_BENCHMARK_ONLY`. §8 reflete esse estado; não há mais
+necessidade de rebaixar para `c8f30d2`.
 
 ---
 

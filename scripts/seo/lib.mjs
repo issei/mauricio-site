@@ -75,6 +75,8 @@ export function buildGraph(p) {
       isAccessibleForFree: true,
     };
     if (p.keywords?.length) article.keywords = p.keywords.join(', ');
+    if (p.codeRepository) article.codeRepository = p.codeRepository;
+    if (p.programmingLanguage) article.programmingLanguage = p.programmingLanguage;
     if (p.about?.length) article.about = p.about.map((a) => ({ '@type': 'Thing', name: a.name, ...(a.sameAs ? { sameAs: a.sameAs } : {}) }));
     if (p.mentions?.length) article.mentions = p.mentions.map((m) => ({ '@type': 'Thing', name: m }));
     if (p.teaches?.length) article.teaches = p.teaches;
