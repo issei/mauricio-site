@@ -325,6 +325,14 @@ code:not(pre code) {
   color: var(--ca-muted);
   margin-top: 4px;
 }
+.ca-score__scope {
+  margin: 0 0 10px;
+  font-family: var(--ca-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ca-muted);
+}
 .ca-score__foot { margin: 12px 0 0; font-size: 0.83rem; color: var(--ca-muted); max-width: 74ch; }
 
 /* ── Componentes de Destaque ─────────────────────────────────────────────── */
@@ -434,6 +442,58 @@ code:not(pre code) {
   border-radius: 6px;
   text-align: center;
 }
+
+/* ── Diagrama do pipeline (visão geral, sem dependência) ─────────────────── */
+
+.ca-flow { margin: 22px 0 8px; }
+.ca-flow__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.ca-flow__node {
+  position: relative;
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+  background: var(--ca-surface);
+  padding: 12px 16px;
+  margin-bottom: 26px;
+  font-size: 0.9rem;
+}
+.ca-flow__node:last-child { margin-bottom: 0; }
+.ca-flow__node:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  transform: translateX(-50%);
+  font-family: var(--ca-mono);
+  color: var(--ca-muted);
+  line-height: 1;
+}
+.ca-flow__node--guard { border-color: var(--ca-accent); }
+.ca-flow__k {
+  font-weight: 700;
+  color: var(--ca-heading);
+}
+.ca-flow__branch,
+.ca-flow__cont {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--ca-muted);
+}
+.ca-flow__branch {
+  padding: 4px 10px;
+  border-left: 2px solid var(--ca-border);
+}
+.ca-flow__branch--fail {
+  color: var(--ca-warn);
+  border-left-color: var(--ca-warn-border);
+}
+.ca-flow > figcaption { margin-top: 14px; }
 
 /* ── Blocos de código e cartões ───────────────────────────────────────────── */
 

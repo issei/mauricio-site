@@ -302,22 +302,23 @@ layers led 7 incorrect executions to zero — and why cost savings fell in the w
           </a>
         </div>
 
-        <div class="ca-score" role="group" aria-label="Main benchmark metrics">
+        <p class="ca-score__scope">Measured in the MVP benchmark · 30 queries · 53 training examples · molded tools · offline</p>
+        <div class="ca-score" role="group" aria-label="Main MVP benchmark metrics">
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">100%</span>
-            <span class="ca-score__k">Accuracy Router</span>
+            <span class="ca-score__k">Router Accuracy · benchmark</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">100%</span>
-            <span class="ca-score__k">Hit Rate@2</span>
+            <span class="ca-score__k">Hit Rate@2 · benchmark</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">0</span>
-            <span class="ca-score__k">Incorrect Executions</span>
+            <span class="ca-score__k">Executions Incorrect · 20 queries</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">77,8%</span>
-            <span class="ca-score__k">Cost Saving</span>
+            <span class="ca-score__k">Economy of LLM · benchmark</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n">72</span>
@@ -326,8 +327,9 @@ layers led 7 incorrect executions to zero — and why cost savings fell in the w
         </div>
 
         <p class="ca-score__foot">
-          Deterministic output of <code translate="no">python -m candidate_starter.run_case</code> measured in the MVP benchmark.
-The ability is to choose the right tool. Trust is knowing when not to execute any.
+          Deterministic output of <code translate="no">python -m candidate_starter.run_case</code> Measured in the MVP benchmark —
+is not the system's accuracy in production or total financial economy. The ability is to choose the right tool;
+Trust is knowing when not to execute any.
         </p>
       </div>
     </section>
@@ -628,6 +630,26 @@ The difference between consultation and change is <strong>one word: the verb</st
           </p>
         </div>
 
+        <figure class="ca-flow" role="group" aria-label="Diagram of decision pipeline, from application to tool execution">
+          <ol class="ca-flow__list">
+            <li class="ca-flow__node"><span class="ca-flow__k">Query</span> user</li>
+            <li class="ca-flow__node">
+              <span class="ca-flow__k">Router</span> — TF-IDF + LogisticRegression + Platt scaling
+              <span class="ca-flow__branch"><code translate="no">FAST_PATH</code> → local response, zero cost of LLM</span>
+              <span class="ca-flow__cont"><code translate="no">AGENT</code> below</span>
+            </li>
+            <li class="ca-flow__node"><span class="ca-flow__k">Taxonomy</span> — catalogue governance: capacity</li>
+            <li class="ca-flow__node"><span class="ca-flow__k">Retriever</span> — <code translate="no">top-k</code> different capacities</li>
+            <li class="ca-flow__node ca-flow__node--guard">
+              <span class="ca-flow__k">Barrier</span> — 4 guards in order: <span translate="no">G1</span> · <span translate="no">G2</span> · <span translate="no">G3</span> · <span translate="no">G4</span>
+              <span class="ca-flow__branch ca-flow__branch--fail">Failure in any guard → Abstention or human care</span>
+            </li>
+            <li class="ca-flow__node"><span class="ca-flow__k">LLM</span> — called only after the barrier authorized</li>
+            <li class="ca-flow__node"><span class="ca-flow__k">Tool execution</span></li>
+          </ol>
+          <figcaption class="ca-small">Router, taxonomy, retriever and guards are deterministic; the LLM enters only after authorization.</figcaption>
+        </figure>
+
         <div class="ca-compare-grid">
           <div class="ca-compare-card">
             <div class="ca-compare-card__head">
@@ -767,7 +789,7 @@ The specific variant that married is preserved in <code translate="no">matched_v
                 <td><strong>0</strong></td>
               </tr>
               <tr>
-                <td><strong>Cost Saving Measure</strong></td>
+                <td><strong>Economy of LLM measured (benchmark)</strong></td>
                 <td>87.8% (inflated)</td>
                 <td>78,9%</td>
                 <td><strong>77.8% (real net)</strong></td>
@@ -785,7 +807,14 @@ The specific variant that married is preserved in <code translate="no">matched_v
         <div class="ca-prose">
           <p class="ca-small">
             <strong>Why did the economy fall from 87.8% to 77.8%?</strong>
-            In the first version, 9 improper abstentions avoided LLM calls, inflating the economy while delivering only 20% success. The final version solves 20 out of 20 transactional issues with 100% hit and paid LLM for all of them. 77.8% is the real and honest economy about the operation.
+            In the first version, 9 improper abstentions avoided LLM calls, inflating the economy while delivering only 20% success. The final version solves 20 out of 20 transactional issues with 100% hit and paid LLM for all of them.
+          </p>
+          <p class="ca-small">
+            <strong>What 77.8% measures — and what does not measure.</strong> It is the reduction of <strong>cost of LLM calls</strong>
+            between the smart pipeline and the "everything for LLM" baseline on the offline benchmark. It's not a financial economy
+Total system: the cost of human fallback, for example, is premise and not measurement — so report
+public <code translate="no">cost_savings_pct_on_resolved</code>, <code translate="no">deferred_to_human</code> and
+            <code translate="no">human_fallback_breakeven_cost_usd</code> side by side.
           </p>
 
           <div style="margin-top:20px;">

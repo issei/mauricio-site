@@ -724,7 +724,7 @@ acerto"; abrir assim a transformaria em vitrine e destruiria a tese.
 | 3 | **O Crash Silencioso** | **Narrativa + medição** | O bloco de scores do §6.2. Núcleo emocional |
 | 4 | **Por que nenhum peso resolve** | Diagrama + aritmética | A demonstração dos 0.647 (§6.3) |
 | 5 | **A Barreira** | Diagrama interativo | As 4 guardas em sequência (§11.4) |
-| 6 | **A arquitetura** | Grid de cards | 4 camadas (§4) |
+| 6 | **A arquitetura** | Diagrama de fluxo + grid de cards | Pipeline `Query → Router → Taxonomia → Retriever → G1–G4 → LLM → tool` (§4), com as saídas `FAST_PATH` e falha-de-guarda anotadas |
 | 7 | **Governança de catálogo** | Antes/depois | O colapso por capacidade (§4.2) |
 | 8 | **Economia honesta** | Tabela + citação | Goodhart (§8.2, §10.3) |
 | 9 | **O método** | Timeline | As duas rodadas de revisão (§7.1) |
@@ -742,6 +742,12 @@ acerto"; abrir assim a transformaria em vitrine e destruiria a tese.
 - **CTA primário:** `Ver o repositório` → `https://github.com/issei/case-agents`
 - **CTA secundário:** `Como o defeito foi encontrado` → âncora `#crash-silencioso`
 - **Fundo:** gradiente radial `rgba(0,123,255,0.1)` (padrão da casa).
+- **Placar de métricas — escopo inconfundível.** Cada número carrega o escopo no próprio
+  rótulo (`Accuracy do Router · benchmark`, `Hit Rate@2 · benchmark`, `Economia de LLM ·
+  benchmark`), com uma linha de contexto acima do placar (`30 queries · tools mockadas ·
+  offline`) e um rodapé que nega explicitamente as leituras amplas: **não é** precisão do
+  sistema em produção **nem** economia financeira total. Os 100% são legítimos dentro do
+  benchmark — a mudança é semântica, não numérica.
 
 **b) Bloco "A Decisão Confiante e Errada"** — o componente assinatura da página.
 Renderizar o ranking real com os dois candidatos, a margem calculada e o veredito, em monoespaçada
@@ -756,6 +762,15 @@ avaliado, limiar, e para onde a query vai se reprovar. Interação mínima: hove
 `expected_tool` explicitamente do lado direito e o comando `grep` do §7.2 como prova.
 
 **e) Tabela de evolução** — a de §8.2, com as duas quedas de economia anotadas como **correções**.
+A linha da economia deve dizer **"Economia de LLM medida (benchmark)"**, não "Economia de Custo",
+e o corpo da seção deve conter um parágrafo curto separando *redução de custo de chamadas de LLM
+no benchmark* de *economia financeira total do sistema* (o custo do fallback humano é premissa).
+
+**f) Diagrama do pipeline** — uma visão geral única, na seção "A arquitetura", do pedido até a
+execução: `Query → Router → Taxonomia → Retriever → Barreira (G1–G4) → LLM → tool`, com `FAST_PATH`
+saindo no Router e a falha de guarda saindo na Barreira para *abstenção / atendimento humano*.
+**Sem dependência nova** (CSS/HTML puro ou SVG inline; nada de runtime de Mermaid nesta página).
+Complementa — não substitui — o diagrama de guardas (c) e o grid de 4 cards.
 
 ### 11.5 Vídeos — regra de contenção
 
