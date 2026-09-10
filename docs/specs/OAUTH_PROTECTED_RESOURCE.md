@@ -19,6 +19,18 @@ The metadata MUST be served at the following well-known URI:
 
 The response MUST be served with `Content-Type: application/json`.
 
+`aws s3 sync` guesses MIME from the extension, and `.well-known/*` names have
+none — objects land as `binary/octet-stream`, which strict RFC 9728 clients
+reject. Enforced in three places:
+
+- **Production**: `infra/scripts/apply-markdown-headers.sh` re-PUTs the
+  extensionless `.well-known` JSON with the right `--content-type` after deploy
+  (`api-catalog` → `application/linkset+json`, the rest → `application/json`).
+- **Dev/preview**: `wellKnownJsonContentType()` middleware in `vite.config.js`
+  so local runs match production.
+- **Gate**: `tests/oauth-discovery.spec.js` asserts `content-type` contains
+  `application/json`.
+
 ### Metadata Fields
 
 The following fields will be included:

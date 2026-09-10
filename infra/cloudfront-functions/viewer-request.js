@@ -79,6 +79,8 @@ var MARKDOWN_MAP = {
   '/artifice.html':                        '/artifice.md',
   '/capacidade-antes-do-acesso':           '/capacidade-antes-do-acesso.md',
   '/capacidade-antes-do-acesso.html':      '/capacidade-antes-do-acesso.md',
+  '/case-agents':                          '/case-agents.md',
+  '/case-agents.html':                     '/case-agents.md',
   '/devin':                                '/devin.md',
   '/devin.html':                           '/devin.md',
   '/devops-salesforce':                    '/devops-salesforce.md',
