@@ -297,22 +297,23 @@
           </a>
         </div>
 
-        <div class="ca-score" role="group" aria-label="Métricas principais do benchmark">
+        <p class="ca-score__scope">Medido no benchmark do MVP · 30 queries · 53 exemplos de treino · tools mockadas · offline</p>
+        <div class="ca-score" role="group" aria-label="Métricas principais do benchmark do MVP">
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">100%</span>
-            <span class="ca-score__k">Accuracy Router</span>
+            <span class="ca-score__k">Accuracy do Router · benchmark</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">100%</span>
-            <span class="ca-score__k">Hit Rate@2</span>
+            <span class="ca-score__k">Hit Rate@2 · benchmark</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">0</span>
-            <span class="ca-score__k">Execuções Incorretas</span>
+            <span class="ca-score__k">Execuções Incorretas · 20 queries</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n ca-score__n--pass">77,8%</span>
-            <span class="ca-score__k">Economia de Custo</span>
+            <span class="ca-score__k">Economia de LLM · benchmark</span>
           </div>
           <div class="ca-score__cell">
             <span class="ca-score__n">72</span>
@@ -321,8 +322,9 @@
         </div>
 
         <p class="ca-score__foot">
-          Saída determinística de <code translate="no">python -m candidate_starter.run_case</code> medida no benchmark do MVP.
-          A capacidade é escolher a ferramenta certa. A confiança é saber quando não executar nenhuma.
+          Saída determinística de <code translate="no">python -m candidate_starter.run_case</code> medida no benchmark do MVP —
+          não é precisão do sistema em produção nem economia financeira total. A capacidade é escolher a ferramenta certa;
+          a confiança é saber quando não executar nenhuma.
         </p>
       </div>
     </section>
@@ -623,6 +625,26 @@ Para a escrita vencer por ajuste de α:
           </p>
         </div>
 
+        <figure class="ca-flow" role="group" aria-label="Diagrama do pipeline de decisão, do pedido até a execução da ferramenta">
+          <ol class="ca-flow__list">
+            <li class="ca-flow__node"><span class="ca-flow__k">Query</span> do usuário</li>
+            <li class="ca-flow__node">
+              <span class="ca-flow__k">Router</span> — TF-IDF + LogisticRegression + Platt scaling
+              <span class="ca-flow__branch"><code translate="no">FAST_PATH</code> → resposta local, custo zero de LLM</span>
+              <span class="ca-flow__cont"><code translate="no">AGENT</code> segue abaixo</span>
+            </li>
+            <li class="ca-flow__node"><span class="ca-flow__k">Taxonomia</span> — governança do catálogo: capacidade ≠ endpoint</li>
+            <li class="ca-flow__node"><span class="ca-flow__k">Retriever</span> — <code translate="no">top-k</code> capacidades distintas</li>
+            <li class="ca-flow__node ca-flow__node--guard">
+              <span class="ca-flow__k">Barreira</span> — 4 guardas em ordem: <span translate="no">G1</span> · <span translate="no">G2</span> · <span translate="no">G3</span> · <span translate="no">G4</span>
+              <span class="ca-flow__branch ca-flow__branch--fail">falha em qualquer guarda → abstenção ou atendimento humano</span>
+            </li>
+            <li class="ca-flow__node"><span class="ca-flow__k">LLM</span> — chamado só depois que a barreira autorizou</li>
+            <li class="ca-flow__node"><span class="ca-flow__k">Execução da ferramenta</span></li>
+          </ol>
+          <figcaption class="ca-small">Router, taxonomia, retriever e guardas são determinísticos; o LLM entra apenas depois da autorização.</figcaption>
+        </figure>
+
         <div class="ca-compare-grid">
           <div class="ca-compare-card">
             <div class="ca-compare-card__head">
@@ -762,7 +784,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
                 <td><strong>0</strong></td>
               </tr>
               <tr>
-                <td><strong>Economia de Custo Medida</strong></td>
+                <td><strong>Economia de LLM medida (benchmark)</strong></td>
                 <td>87,8% (inflada)</td>
                 <td>78,9%</td>
                 <td><strong>77,8% (líquida real)</strong></td>
@@ -780,7 +802,14 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
         <div class="ca-prose">
           <p class="ca-small">
             <strong>Por que a economia caiu de 87,8% para 77,8%?</strong>
-            Na primeira versão, 9 abstenções indevidas evitavam chamadas de LLM, inflando a economia enquanto entregavam apenas 20% de sucesso. A versão final resolve 20 de 20 queries transacionais com 100% de acerto e paga LLM por todas elas. 77,8% é a economia real e honesta sobre a operação.
+            Na primeira versão, 9 abstenções indevidas evitavam chamadas de LLM, inflando a economia enquanto entregavam apenas 20% de sucesso. A versão final resolve 20 de 20 queries transacionais com 100% de acerto e paga LLM por todas elas.
+          </p>
+          <p class="ca-small">
+            <strong>O que 77,8% mede — e o que não mede.</strong> É a redução do <strong>custo de chamadas de LLM</strong>
+            entre o pipeline inteligente e o baseline "tudo pro LLM", no benchmark offline. Não é economia financeira
+            total do sistema: o custo do fallback humano, por exemplo, é premissa e não medição — por isso o relatório
+            publica <code translate="no">cost_savings_pct_on_resolved</code>, <code translate="no">deferred_to_human</code> e
+            <code translate="no">human_fallback_breakeven_cost_usd</code> lado a lado.
           </p>
 
           <div style="margin-top:20px;">
