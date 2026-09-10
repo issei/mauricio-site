@@ -774,10 +774,18 @@ Complementa — não substitui — o diagrama de guardas (c) e o grid de 4 cards
 
 ### 11.5 Vídeos — regra de contenção
 
-**Máximo 2 embeds.** Recomendados: Vídeo 3 na seção 3, Vídeo 2 na seção 5. Os demais entram como
-citação textual com link. Usar `youtube-nocookie.com/embed/<id>?rel=0&modestbranding=1`, `loading="lazy"`,
-com `title` descritivo — padrão de `agent-ready` e `artifice`, e compatível com a política de
-cookies vigente ([`LEGAL_PAGES.md`](../LEGAL_PAGES.md)).
+**Máximo 2 embeds de referência conceitual** (vídeos do canal citados por sinergia — §10).
+Recomendados: Vídeo 3 na seção 3, Vídeo 2 na seção 5. Os demais entram como citação textual com link.
+
+**Além desses, 1 vídeo-resumo do próprio case** é permitido — o explicador que o autor gravou
+*sobre este projeto* (`JSYL3Ax7A7o`, *"A Máquina da Confiança: Estudo de Caso em Desenvolvimento
+Agêntico Bancário"*), posicionado como **visão geral logo após o Hero** (`#resumo-video`), antes
+do aprofundamento técnico. É categoria distinta: não é referência conceitual, é o sumário da
+página em vídeo. Teto total: **3 embeds**.
+
+Usar `youtube-nocookie.com/embed/<id>?rel=0&modestbranding=1`, `loading="lazy"`, com `title`
+descritivo — padrão de `agent-ready` e `artifice`, e compatível com a política de cookies vigente
+([`LEGAL_PAGES.md`](../LEGAL_PAGES.md)).
 
 ### 11.6 Design system
 
@@ -942,7 +950,7 @@ Todas estão registradas no [README do repositório](https://github.com/issei/ca
 | **D-2** | Entrar no grafo do ecossistema (§13) | **Sim, em P2.** Requer bump `1.6.0` + aprovação. |
 | **D-3** | Introduzir token de alerta (vermelho) fora da paleta Dark Tech | **Sim, escopado a `case-agents.css`.** A página precisa distinguir visualmente "executou errado" de "absteve-se". Registrar como ADR de página, no precedente de [`ADR-ap-001`](../apresentação/ADR-ap-001-namespace-e-excecao-dark-tech.md). |
 | **D-4** | Publicar o `candidate_report.json` como download na página | **Sim** — coerente com a tese de evidência verificável. |
-| **D-5** | Quantos vídeos embutir | **2** (§11.5). |
+| **D-5** | Quantos vídeos embutir | **2 de referência conceitual + 1 vídeo-resumo do case** = 3 no total (§11.5). O resumo (`JSYL3Ax7A7o`) entra como visão geral após o Hero. |
 
 ### 14.4 Nota de procedência desta spec
 

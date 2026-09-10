@@ -65,7 +65,10 @@ test.describe('Case Agents — página', () => {
     const iframes = page.locator('.ca-video iframe');
     const count = await iframes.count();
     expect(count).toBeGreaterThan(0);
-    expect(count).toBeLessThanOrEqual(2); // Regra de contenção (máximo 2 embeds - D-5)
+    // Contenção (D-5): até 2 vídeos de referência conceitual (§10) + 1 vídeo-resumo do próprio case.
+    expect(count).toBeLessThanOrEqual(3);
+    // O vídeo-resumo do case está presente.
+    await expect(page.locator('#resumo-video .ca-video iframe')).toHaveCount(1);
 
     for (let i = 0; i < count; i++) {
       const iframe = iframes.nth(i);
