@@ -26,7 +26,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling" />
+<meta name="keywords" content="case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, cold hot path, rust inference, ADR-009" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/case-agents" />
 <link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/case-agents.md" title="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei — Markdown para IA" />
@@ -42,7 +42,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei" />
 <meta property="article:published_time" content="2026-09-10T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-09-10T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-09-11T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Engenharia de Confiança · Agentes de IA" />
 <meta property="article:tag" content="Case Agents" />
@@ -51,6 +51,7 @@
 <meta property="article:tag" content="Barreira Pré-Execução" />
 <meta property="article:tag" content="Guarda de Direção" />
 <meta property="article:tag" content="Engenharia de Confiança" />
+<meta property="article:tag" content="Arquitetura de Alta Performance" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei" />
 <meta name="twitter:description" content="Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero." />
@@ -94,7 +95,7 @@
       },
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-case-agents.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/case-agents#breadcrumb"
@@ -127,13 +128,13 @@
         "@id": "https://mauricio.issei.com.br/#author"
       },
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "pt-BR",
       "image": "https://mauricio.issei.com.br/og-case-agents.png",
       "isAccessibleForFree": true,
-      "keywords": "case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling",
+      "keywords": "case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, rust inference, cold hot path",
       "codeRepository": "https://github.com/issei/case-agents",
-      "programmingLanguage": "Python",
+      "programmingLanguage": "Python, Rust",
       "about": [
         {
           "@type": "Thing",
@@ -149,7 +150,7 @@
         },
         {
           "@type": "Thing",
-          "name": "Evaluation Harness"
+          "name": "Arquitetura Produtiva de Alta Performance"
         }
       ],
       "audience": {
@@ -210,10 +211,18 @@
         },
         {
           "@type": "Question",
-          "name": "Como alcançar 100% de sucesso com economia de custo?",
+          "name": "Qual é a estratégia de duas branches do projeto?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%."
+            "text": "O repositório mantém duas abordagens no Git: a branch feature/solucao-enxuta, focada em prototipagem rápida e validação de hipóteses com código enxuto, e a branch main (solucao-sdd-vibe), focada em robustez enterprise com Spec-Driven Development, 9 ADRs, taxonomia canônica, calibração Platt Scaling e blueprint de arquitetura produtiva."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona a Arquitetura Produtiva de Alta Performance (ADR-009)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A arquitetura produtiva separa rigidamente o Cold Path (treinamento e calibração em Python 3.12 offline/CI) do Hot Path (Gateway de inferência OmniRoute em Rust/Go stateless online). Com motor embutido in-process, o hot path atinge latência p99 inferior a 1-3 ms, elimina pausas de Garbage Collection e executa os guard rails diretamente na memória RAM."
           }
         }
       ]
@@ -241,6 +250,12 @@
           "@id": "https://mauricio.issei.com.br/case-agents#g-colapso-capacidade",
           "name": "Colapso por Capacidade",
           "description": "Agrupamento de variantes operacionais redundantes sob uma capacidade canônica única."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/case-agents#g-cold-hot-path",
+          "name": "Desacoplamento Cold/Hot Path",
+          "description": "Padrão arquitetural que isola treinamento em Python offline do gateway compilado em Rust no caminho crítico de produção."
         }
       ]
     }
@@ -263,10 +278,12 @@
       </a>
       <nav class="ca-nav__trail" aria-label="Seções do case">
         <a href="#problema" data-navlink>O Problema</a>
+        <a href="#estrategia-branches" data-navlink>Branches</a>
         <a href="#crash-silencioso" data-navlink>O Crash Silencioso</a>
         <a href="#por-que-nenhum-peso-resolve" data-navlink>Aritmética</a>
         <a href="#barreira" data-navlink>A Barreira</a>
-        <a href="#arquitetura" data-navlink>Arquitetura</a>
+        <a href="#arquitetura" data-navlink>Pipeline MVP</a>
+        <a href="#arquitetura-produtiva" data-navlink>Arquitetura Produtiva</a>
         <a href="#governanca-catalogo" data-navlink>Taxonomia</a>
         <a href="#economia-honesta" data-navlink>Métricas</a>
         <a href="#metodo" data-navlink>Método</a>
@@ -281,20 +298,24 @@
     <!-- ══════════════════════════════════════════════════════ ATO 1: HERO ═══ -->
     <section id="hero" class="ca-hero">
       <div class="ca-wrap">
-        <p class="ca-eyebrow"><span translate="no">P2</span> · Engenharia de Confiança · Roteamento e Seleção de Tools</p>
+        <p class="ca-eyebrow"><span translate="no">P2</span> · Engenharia de Confiança · Arquitetura Produtiva &amp; Roteamento Determinístico</p>
         <h1>A tool errada não é uma <em>aproximação aceitável</em></h1>
 
         <p class="ca-hero__thesis">
-          285 ferramentas, 30 queries, um domínio bancário. Como uma barreira pré-execução de quatro
-          camadas levou 7 execuções incorretas a zero — e por que a economia de custo caiu no caminho.
+          285 ferramentas, 30 queries, um domínio bancário de missão crítica. Como uma barreira pré-execução de quatro
+          camadas levou 7 execuções incorretas a zero — e como a solução evoluiu de uma prova de conceito (PoC) para um
+          blueprint de arquitetura produtiva de alta performance com desacoplamento Cold/Hot Path e SLAs sub-2ms.
         </p>
 
         <div class="ca-hero__cta">
           <a class="ca-btn ca-btn--primary" href="https://github.com/issei/case-agents" target="_blank" rel="noopener">
-            Ver o repositório no GitHub
+            Ver repositório no GitHub
           </a>
-          <a class="ca-btn ca-btn--secondary" href="#crash-silencioso">
-            Como o defeito foi encontrado ↓
+          <a class="ca-btn ca-btn--secondary" href="#arquitetura-produtiva">
+            Arquitetura Produtiva (Rust/Go) ↓
+          </a>
+          <a class="ca-btn ca-btn--secondary" href="#estrategia-branches">
+            Estratégia de Branches ↓
           </a>
         </div>
 
@@ -446,10 +467,140 @@
       </div>
     </section>
 
+    <!-- ════════════════════════════════════ 2. ESTRATÉGIA DE BRANCHES ═══ -->
+    <section id="estrategia-branches" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">02 · Ciclo de Vida &amp; Decisão de Engenharia</p>
+        <h2>Duas Estratégias, Um Domínio: Agilidade de Prototipagem vs Robustez Enterprise</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            Em engenharia de software sênior, uma solução técnica não existe no vácuo. O repositório oficial
+            <code translate="no">case-agents</code> implementa e documenta <strong>duas abordagens arquiteturais ativas em branches paralelas</strong>,
+            demonstrando a transição deliberada de uma Prova de Conceito (PoC) exploratória para um sistema de governança de missão crítica.
+          </p>
+        </div>
+
+        <div class="ca-branch-grid">
+          <!-- Branch 1: feature/solucao-enxuta -->
+          <div class="ca-branch-card ca-branch-card--enxuta">
+            <div class="ca-branch-card__header">
+              <div>
+                <h3 class="ca-branch-card__title">Abordagem 1: Solução Enxuta (Lean PoC)</h3>
+                <span class="ca-small">Branch: <code translate="no">feature/solucao-enxuta</code></span>
+              </div>
+              <span class="ca-branch-card__tag ca-branch-card__tag--enxuta">Agilidade &amp; MVP</span>
+            </div>
+
+            <p class="ca-small">
+              Foco estrito em <strong>velocidade de experimentação e footprint mínimo</strong>. Implementa o roteador
+              e o retriever em código Python direto, sem acoplamento a taxonomias manuais ou calibrações matemáticas avançadas.
+              Ideal para validação rápida de viabilidade de produto e benchmark de partida.
+            </p>
+
+            <div class="ca-branch-meta">
+              <div>
+                <span>Cobertura de Testes</span>
+                <span>35 testes unitários</span>
+              </div>
+              <div>
+                <span>Governança de Catálogo</span>
+                <span>Sem taxonomia (Flat)</span>
+              </div>
+              <div>
+                <span>Calibração do Router</span>
+                <span>L2 pura (não calibrada)</span>
+              </div>
+              <div>
+                <span>Guarda Direcional</span>
+                <span>Inexistente (vulnerável)</span>
+              </div>
+            </div>
+
+            <div class="ca-prose" style="margin-top: 10px;">
+              <h4 style="font-size:0.9rem; margin-bottom:4px;">Prós &amp; Trade-offs:</h4>
+              <ul class="ca-small" style="padding-left:18px; margin-bottom:16px;">
+                <li><strong>Pró:</strong> Código enxuto (~300 linhas), fácil de auditar e entregar em poucos dias.</li>
+                <li><strong>Pró:</strong> Baixo atrito cognitivo para times em estágio inicial de produto.</li>
+                <li><strong>Contra:</strong> Atinge apenas <strong>35% de Hit Rate@2</strong> no catálogo de 285 tools devido a colisões léxicas.</li>
+                <li><strong>Contra:</strong> Registra <strong>45% de abstenções indevidas</strong> e vulnerabilidade ao Crash Silencioso.</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 12px;">
+              <a class="ca-btn ca-btn--secondary" href="https://github.com/issei/case-agents/tree/feature/solucao-enxuta" target="_blank" rel="noopener" style="width:100%; justify-content:center;">
+                Explorar branch feature/solucao-enxuta ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Branch 2: main / solucao-sdd-vibe -->
+          <div class="ca-branch-card ca-branch-card--enterprise">
+            <div class="ca-branch-card__header">
+              <div>
+                <h3 class="ca-branch-card__title">Abordagem 2: SDD Enterprise &amp; Confiança</h3>
+                <span class="ca-small">Branch: <code translate="no">main</code> (antiga <code translate="no">solucao-sdd-vibe</code>)</span>
+              </div>
+              <span class="ca-branch-card__tag ca-branch-card__tag--enterprise">Produção &amp; Escala</span>
+            </div>
+
+            <p class="ca-small">
+              Foco em <strong>confiabilidade bancária, conformidade e ciclo de vida industrial</strong>. Adota Spec-Driven Development (SDD),
+              9 ADRs formais, taxonomia canônica de capacidades, calibração Platt Scaling, barreira de 4 camadas (incluindo Guarda de Direção)
+              e o blueprint para inferência compilada de alta performance.
+            </p>
+
+            <div class="ca-branch-meta">
+              <div>
+                <span>Cobertura de Testes</span>
+                <span style="color:var(--ca-pass);">72 testes / 0 skips</span>
+              </div>
+              <div>
+                <span>Governança de Catálogo</span>
+                <span style="color:var(--ca-pass);">14 capacidades + colapso</span>
+              </div>
+              <div>
+                <span>Calibração do Router</span>
+                <span style="color:var(--ca-pass);">Platt Scaling Sigmoid</span>
+              </div>
+              <div>
+                <span>Guarda Direcional</span>
+                <span style="color:var(--ca-pass);">G4 Ativa (Read != Write)</span>
+              </div>
+            </div>
+
+            <div class="ca-prose" style="margin-top: 10px;">
+              <h4 style="font-size:0.9rem; margin-bottom:4px;">Prós &amp; Trade-offs:</h4>
+              <ul class="ca-small" style="padding-left:18px; margin-bottom:16px;">
+                <li><strong>Pró:</strong> <strong>100% de Hit Rate@2</strong> e <strong>zero execuções incorretas</strong> garantidas formalmente.</li>
+                <li><strong>Pró:</strong> Proteção comprovada contra danos ao cadastro bancário do cliente (G4).</li>
+                <li><strong>Pró:</strong> Pronta para escala industrial: manifesto <code translate="no">APM.yml</code> e ADR-009 (Rust/Go).</li>
+                <li><strong>Contra:</strong> Exige disciplina contínua de governança do catálogo e testes de paridade.</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 12px;">
+              <a class="ca-btn ca-btn--primary" href="https://github.com/issei/case-agents/tree/main" target="_blank" rel="noopener" style="width:100%; justify-content:center;">
+                Explorar branch main (Produção) ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-principle">
+          <p>
+            <strong>A lição da dualidade:</strong> Na fase de validação (PoC), a Solução Enxuta é tentadora pela velocidade.
+            Contudo, em finanças ou saúde, o custo de uma execução incorreta em produção supera infinitamente o custo da governança.
+            A branch <code translate="no">main</code> existe para demonstrar como transpor essa barreira com rigor de engenharia.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════════════════════════════════════ ATO 2: CRASH SILENCIOSO ═══ -->
     <section id="crash-silencioso" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">02 · A Falha Medida</p>
+        <p class="ca-eyebrow">03 · A Falha Medida</p>
         <h2>O Crash Silencioso: a falha que 54 testes não pegaram</h2>
 
         <div class="ca-prose">
@@ -527,10 +678,10 @@
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 3. ARITMÉTICA DA FALHA ═══ -->
+    <!-- ════════════════════════════════════ 4. ARITMÉTICA DA FALHA ═══ -->
     <section id="por-que-nenhum-peso-resolve" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">03 · Diagnóstico Estrutural</p>
+        <p class="ca-eyebrow">04 · Diagnóstico Estrutural</p>
         <h2>Por que nenhum peso de vetorização resolve o problema</h2>
 
         <div class="ca-prose">
@@ -565,7 +716,7 @@ Para a escrita vencer por ajuste de α:
     <!-- ════════════════════════════════════════ ATO 3: A BARREIRA ═══ -->
     <section id="barreira" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">04 · A Solução Rígida</p>
+        <p class="ca-eyebrow">05 · A Solução Rígida</p>
         <h2>A Barreira Pré-Execução de 4 Camadas</h2>
 
         <div class="ca-prose">
@@ -638,15 +789,15 @@ Para a escrita vencer por ajuste de α:
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════ 5. ARQUITETURA ═══ -->
+    <!-- ════════════════════════════════════════ 6. ARQUITETURA MVP ═══ -->
     <section id="arquitetura" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">05 · O Pipeline</p>
-        <h2>A Arquitetura Final em 4 Camadas</h2>
+        <p class="ca-eyebrow">06 · O Pipeline do MVP</p>
+        <h2>A Arquitetura em 4 Camadas (Validação Matemática em Python)</h2>
 
         <div class="ca-prose">
           <p>
-            O fluxo completo do pedido até a autorização de execução:
+            O fluxo completo do pedido até a autorização de execução no motor de validação:
           </p>
         </div>
 
@@ -718,10 +869,200 @@ Para a escrita vencer por ajuste de α:
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 6. GOVERNANÇA CATÁLOGO ═══ -->
+    <!-- ════════════════════════════════════ 7. ARQUITETURA PRODUTIVA (ADR-009) ═══ -->
+    <section id="arquitetura-produtiva" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">07 · Da Prova de Conceito à Produção</p>
+        <h2>Arquitetura Multi-Linguagem de Alta Performance (ADR-009 &amp; RFC)</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            O pipeline em Python do MVP provou a solidez matemática do motor: 100% de precisão e zero execuções incorretas.
+            Entretanto, transferir pods Python diretamente para o caminho crítico de produção bancária (atendendo dezenas de milhares
+            de requisições por segundo com SLA <code translate="no">p99 &lt; 1-3 ms</code>) esbarra em limitações incontornáveis:
+            o <strong>Global Interpreter Lock (GIL)</strong>, o <strong>jitter imprevisível de Garbage Collection (GC)</strong>
+            e o custo de dispatch dinâmico.
+          </p>
+
+          <p>
+            A resposta de engenharia formalizada no <strong>ADR-009</strong> e no <strong>RFC de Arquitetura</strong> é o
+            <strong>desacoplamento estrito entre Cold Path e Hot Path</strong>:
+          </p>
+        </div>
+
+        <!-- Diagrama Cold Path vs Hot Path -->
+        <div class="ca-arch-flow">
+          <!-- Cold Path Box -->
+          <div class="ca-arch-box ca-arch-box--cold">
+            <div class="ca-arch-box__head">
+              <h3 style="margin:0; font-size:1.15rem; color:var(--ca-heading);">Cold Path: Pesquisa &amp; MLOps</h3>
+              <span class="ca-arch-box__pill ca-arch-box__pill--cold">Python 3.12 · Offline / CI</span>
+            </div>
+            <p class="ca-small">
+              Mantém o ecossistema Python onde ele é imbatível: engenharia de features, treino com <code translate="no">scikit-learn</code>,
+              calibração via <code translate="no">CalibratedClassifierCV</code> (Platt Scaling), SHAP e geração de artefatos determinísticos.
+            </p>
+
+            <ul class="ca-arch-specs">
+              <li><strong>Exportação ONNX:</strong> Grafo de inferência linear compilado (<code translate="no">modelo_router.onnx</code>).</li>
+              <li><strong>Matriz Esparsa CSR:</strong> Os 285 documentos do catálogo são pré-computados e serializados em <code translate="no">doc_matrix.csr</code>.</li>
+              <li><strong>Vocabulário Determinístico:</strong> Dicionário TF-IDF indexado com pesos IDF (<code translate="no">vocab_tfidf.json</code>).</li>
+              <li><strong>Imutabilidade Bancária:</strong> Artefatos versionados em Object Storage assinados com hash SHA-256.</li>
+              <li><strong style="color:var(--ca-alert);">Isolamento Rígido:</strong> O runtime de produção <strong>nunca importa Python, numpy ou scikit-learn</strong>.</li>
+            </ul>
+          </div>
+
+          <!-- Hot Path Box -->
+          <div class="ca-arch-box ca-arch-box--hot">
+            <div class="ca-arch-box__head">
+              <h3 style="margin:0; font-size:1.15rem; color:var(--ca-heading);">Hot Path: OmniRoute Gateway</h3>
+              <span class="ca-arch-box__pill ca-arch-box__pill--hot">Rust / Go · Online Stateless</span>
+            </div>
+            <p class="ca-small">
+              Ponto de entrada único stateless via gRPC ou HTTP/2. Motor de inferência embutido (<em>in-process</em>),
+              eliminando saltos de rede, serialização intermediária ou chamadas IPC.
+            </p>
+
+            <ul class="ca-arch-specs">
+              <li><strong>Zero Garbage Collection:</strong> Rust opera sem coletor de lixo, eliminando jitter e garantindo latência p99 determinística (&lt; 1-3 ms).</li>
+              <li><strong>Zero-Allocation no Hot Path:</strong> Pools estáticos e buffers pré-alocados via <code translate="no">tokio</code> e arenas de memória.</li>
+              <li><strong>Guarda de 4 Camadas em RAM:</strong> Router, Retriever (multiplicação de matriz esparsa paralela) e Guard Rails executados em &lt; 10 µs.</li>
+              <li><strong>Container Distroless:</strong> Binário estático único (~20 MB) com superfície de ataque mínima e memory safety comprovada pelo compilador.</li>
+              <li><strong>Slot-Filling Enxuto:</strong> O LLM só é invocado quando a ferramenta já foi isolada e autorizada.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ca-prose">
+          <h3 id="escolha-tecnologica">Matriz de Decisão Tecnológica: Rust vs Go</h3>
+          <p>
+            O documento de arquitetura compara detalhadamente as opções de engenharia para o OmniRoute Gateway:
+          </p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Critério de Avaliação</th>
+                <th scope="col">Rust (Recomendado Primário)</th>
+                <th scope="col">Go (Alternativa Secundária)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Gerenciamento de Memória</strong></td>
+                <td><strong style="color:var(--ca-pass);">Zero GC</strong> (Ownership &amp; Borrow Checker). Sem pausas imprevisíveis.</td>
+                <td>Garbage Collector com pausas sub-milissegundos, mas com risco de jitter sob alto volume de strings.</td>
+              </tr>
+              <tr>
+                <td><strong>Latência p99</strong></td>
+                <td><strong style="color:var(--ca-pass);">Sub-milissegundo (&lt; 1 ms)</strong> determinística e previsível.</td>
+                <td>2 ms a 5 ms (pequenas oscilações durante coletas do GC).</td>
+              </tr>
+              <tr>
+                <td><strong>Concorrência</strong></td>
+                <td><code translate="no">tokio</code> (I/O não-bloqueante) + <code translate="no">rayon</code> (paralelismo de dados).</td>
+                <td>Goroutines nativas e canais. Excelente concorrência I/O.</td>
+              </tr>
+              <tr>
+                <td><strong>Álgebra Linear &amp; ONNX</strong></td>
+                <td>Crate <code translate="no">ort</code> (bindings oficiais ONNX Runtime de zero-overhead) + <code translate="no">sprs</code> (CSR).</td>
+                <td><code translate="no">onnxruntime-go</code> via CGo (custo de troca de contexto Go ↔ C).</td>
+              </tr>
+              <tr>
+                <td><strong>Conformidade e Segurança</strong></td>
+                <td>Prevenção formal de data races e buffer overflows em tempo de compilação.</td>
+                <td>Memory safe, porém com risco de alocações excessivas no heap.</td>
+              </tr>
+              <tr>
+                <td><strong>Artefato de Entrega</strong></td>
+                <td>Binário estático (~15-25 MB), container <code translate="no">distroless</code>.</td>
+                <td>Binário estático (~20-30 MB), container <code translate="no">distroless</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose">
+          <h3 id="ecossistema-adrs">O Ecossistema de Decisões de Arquitetura (9 ADRs)</h3>
+          <p>
+            Cada escolha estrutural foi registrada segundo o padrão Architecture Decision Record (ADR),
+            garantindo que qualquer novo membro do time compreenda o contexto, alternativas descartadas e consequências:
+          </p>
+        </div>
+
+        <div class="ca-adr-grid">
+          <a class="ca-adr-card ca-adr-card--featured" href="https://github.com/issei/case-agents/blob/main/docs/adr/0009-arquitetura-multi-linguagem-inferencia-alta-performance.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-009 · Destaque</span>
+              <h4 class="ca-adr-card__title">Arquitetura Multi-Linguagem &amp; Desacoplamento Cold/Hot Path</h4>
+              <p class="ca-adr-card__desc">Segregação do pipeline Python offline para inferência compilada em Rust/Go com latência p99 &lt; 1-3 ms.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">Ver ADR ↗</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0008-guarda-de-direcao-leitura-escrita.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-008 · Segurança</span>
+              <h4 class="ca-adr-card__title">Guarda de Direção (Leitura vs Escrita)</h4>
+              <p class="ca-adr-card__desc">Contenção definitiva do Crash Silencioso: queries de leitura nunca executam tools de escrita.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">Ver ADR ↗</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0007-calibracao-de-probabilidade-e-guarda-de-margem.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-007 · Estatística</span>
+              <h4 class="ca-adr-card__title">Calibração Platt Scaling &amp; Guarda de Margem</h4>
+              <p class="ca-adr-card__desc">Platt Scaling em estimador logístico, eliminando 45% de falsos negativos por subconfiança.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">Ver ADR ↗</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0006-taxonomia-de-capacidades-e-colapso-de-duplicatas.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-006 · Catálogo</span>
+              <h4 class="ca-adr-card__title">Taxonomia de Capacidades e Colapso Canônico</h4>
+              <p class="ca-adr-card__desc">Colapso de duplicatas operacionais redundantes, elevando o Hit Rate@2 de 35% para 100%.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">Ver ADR ↗</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0005-alinhamento-apm-e-omniroute-gateway.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-005 · Compliance</span>
+              <h4 class="ca-adr-card__title">Alinhamento APM &amp; OmniRoute Gateway</h4>
+              <p class="ca-adr-card__desc">Manifesto corporativo de empacotamento em conformidade com LGPD, PCI-DSS v4.0 e BACEN 4893.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">Ver ADR ↗</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADRs 0001 a 0004</span>
+              <h4 class="ca-adr-card__title">Fundamentos: Normalização, Router, Ranking e Harness</h4>
+              <p class="ca-adr-card__desc">Normalização Unicode NFKD canônica, separação léxica e harness determinístico de métricas.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">Ver Todos ↗</span>
+          </a>
+        </div>
+
+        <div class="ca-hero__cta" style="margin-top: 24px;">
+          <a class="ca-btn ca-btn--primary" href="https://github.com/issei/case-agents/blob/main/docs/architecture/proposta-arquitetura-multi-linguagem.md" target="_blank" rel="noopener">
+            Ler o RFC Completo de Arquitetura Multi-Linguagem ↗
+          </a>
+          <a class="ca-btn ca-btn--secondary" href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">
+            Navegar pelos 9 ADRs no GitHub ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 8. GOVERNANÇA CATÁLOGO ═══ -->
     <section id="governanca-catalogo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">06 · Governança de Catálogo</p>
+        <p class="ca-eyebrow">08 · Governança de Catálogo</p>
         <h2>O catálogo é o problema, não a vetorização</h2>
 
         <div class="ca-prose">
@@ -749,10 +1090,10 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 7. ECONOMIA HONESTA ═══ -->
+    <!-- ════════════════════════════════════ 9. ECONOMIA HONESTA ═══ -->
     <section id="economia-honesta" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">07 · Evolução Medida</p>
+        <p class="ca-eyebrow">09 · Evolução Medida</p>
         <h2>Economia sem taxa de sucesso é risco disfarçado</h2>
 
         <div class="ca-prose">
@@ -846,10 +1187,10 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 8. O MÉTODO ═══ -->
+    <!-- ════════════════════════════════════ 10. O MÉTODO ═══ -->
     <section id="metodo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">08 · O Processo</p>
+        <p class="ca-eyebrow">10 · O Processo</p>
         <h2>Como foi desenvolvido: o método agêntico com crítica incorporada</h2>
 
         <div class="ca-prose">
@@ -919,10 +1260,10 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 9. EVIDÊNCIA E SUÍTE ═══ -->
+    <!-- ════════════════════════════════════ 11. EVIDÊNCIA E SUÍTE ═══ -->
     <section id="evidencia" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">09 · Especificação Executável</p>
+        <p class="ca-eyebrow">11 · Especificação Executável</p>
         <h2>A Suíte de 72 Testes como Especificação do Sistema</h2>
 
         <div class="ca-prose">
@@ -956,10 +1297,10 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 10. LIMITAÇÕES ═══ -->
+    <!-- ════════════════════════════════════ 12. LIMITAÇÕES ═══ -->
     <section id="limitacoes" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">10 · Transparência Técnica</p>
+        <p class="ca-eyebrow">12 · Transparência Técnica</p>
         <h2>Limitações Reais do Projeto (O que o benchmark não cobre)</h2>
 
         <div class="ca-prose">
@@ -980,10 +1321,10 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 11. REFERÊNCIAS ═══ -->
+    <!-- ════════════════════════════════════ 13. REFERÊNCIAS ═══ -->
     <section id="referencias" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">11 · Ecossistema &amp; Links</p>
+        <p class="ca-eyebrow">13 · Ecossistema &amp; Links</p>
         <h2>Referências Conceituais do Site</h2>
 
         <div class="ca-refs">
@@ -1004,11 +1345,14 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
             </ul>
           </div>
           <div>
-            <h3>Código-fonte do Projeto</h3>
+            <h3>Repositório &amp; Arquitetura</h3>
             <ul>
-              <li><a href="https://github.com/issei/case-agents" target="_blank" rel="noopener">Repositório GitHub <code translate="no">issei/case-agents</code></a></li>
-              <li><a href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">8 ADRs no Repositório</a></li>
-              <li><a href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" target="_blank" rel="noopener">candidate_report.json</a></li>
+              <li><a href="https://github.com/issei/case-agents" target="_blank" rel="noopener">Repositório Oficial <code translate="no">issei/case-agents</code></a></li>
+              <li><a href="https://github.com/issei/case-agents/tree/feature/solucao-enxuta" target="_blank" rel="noopener">Branch <code translate="no">feature/solucao-enxuta</code> (PoC Ágil)</a></li>
+              <li><a href="https://github.com/issei/case-agents/tree/main" target="_blank" rel="noopener">Branch <code translate="no">main</code> (Produção &amp; SDD)</a></li>
+              <li><a href="https://github.com/issei/case-agents/blob/main/docs/architecture/proposta-arquitetura-multi-linguagem.md" target="_blank" rel="noopener">RFC: Proposta de Arquitetura Multi-Linguagem</a></li>
+              <li><a href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">9 Registros de Decisão de Arquitetura (ADRs)</a></li>
+              <li><a href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" target="_blank" rel="noopener">Relatório Oficial <code translate="no">candidate_report.json</code></a></li>
             </ul>
           </div>
         </div>
@@ -1030,7 +1374,8 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       <li><strong>A capacidade é escolher a ferramenta certa; a confiança é saber quando não executar nenhuma.</strong></li>
       <li><strong>Governança do catálogo</strong> — colapso de duplicatas semânticas em 14 capacidades canônicas elevou o Hit Rate@2 de 35% para 100%.</li>
       <li><strong>O Crash Silencioso contido</strong> — a Guarda de Direção (leitura vs escrita) impediu que uma consulta de e-mail alterasse o cadastro do cliente.</li>
-      <li><strong>Economia de custo real</strong> — 77,8% de economia com 100% de sucesso nas execuções.</li>
+      <li><strong>Estratégia de duas branches</strong> — comparativo explícito entre prototipagem ágil (<code translate="no">feature/solucao-enxuta</code>) e robustez industrial (<code translate="no">main</code>).</li>
+      <li><strong>Arquitetura produtiva multi-linguagem (ADR-009)</strong> — segregação rígida Cold Path (Python MLOps) e Hot Path (Rust/Go stateless com SLA p99 &lt; 1-3 ms).</li>
     </ul>
     <p class="aeo-tldr__foot">Caso de estudo da <a href="/engenharia-confianca">Engenharia da Confiança</a> e <a href="/engenharia-agentes-ia">Engenharia de Agentes de IA</a>.</p>
   </div>
@@ -1061,7 +1406,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
     <div class="ca-wrap">
       <p class="ca-footer__copy">
         © 2026 Maurício Yokoyama Issei. Projeto <span translate="no">case-agents</span> documentado sob a especificação
-        <code translate="no">docs/specs/pages/case-agents/00_SDD_case_agents.md</code>.
+        <code translate="no">docs/specs/pages/case-agents/00_SDD_case_agents.md</code> e proposta arquitetural <code translate="no">ADR-009</code>.
         As métricas citadas correspondem à execução determinística do benchmark no repositório oficial.
       </p>
     </div>
