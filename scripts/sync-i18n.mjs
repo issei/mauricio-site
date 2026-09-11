@@ -31,6 +31,8 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { resolvePython } from './i18n/resolve-python.mjs';
+
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const TRADUTOR = join(ROOT, 'scripts', 'i18n', 'translate.py');
 const MANIFESTO = join(ROOT, 'scripts', 'i18n', 'i18n-manifest.json');
@@ -62,7 +64,12 @@ const arquivosPedidos = (() => {
   return args.slice(i + 1, fim === -1 ? undefined : fim);
 })();
 
-const PY = process.env.I18N_PYTHON || 'python3';
+const PY = resolvePython(ROOT);
+
+if (tem('--install-model')) {
+  const res = spawnSync(PY, [TRADUTOR, '--install-model'], { stdio: 'inherit' });
+  process.exit(res.status ?? 0);
+}
 
 const log = (...m) => { if (!quieto) console.log('[i18n]', ...m); };
 const erro = (...m) => console.error('[i18n]', ...m);
@@ -77,7 +84,10 @@ const erro = (...m) => console.error('[i18n]', ...m);
  * espelho que ninguém atualiza. Uma fonte, dois leitores.
  */
 function carregaMapa() {
-  const res = spawnSync(PY, [TRADUTOR, '--print-map'], { encoding: 'utf-8' });
+  const res = spawnSync(PY, [TRADUTOR, '--print-map'], {
+    encoding: 'utf-8',
+    env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' },
+  });
   if (res.status !== 0) {
     const motivo = res.error?.code === 'ENOENT'
       ? `\`${PY}\` não encontrado (defina I18N_PYTHON se o interpretador tiver outro nome)`
@@ -148,7 +158,10 @@ function traduz(ativos) {
   const res = spawnSync(
     PY,
     [TRADUTOR, '--engine', motor, ...(quieto ? ['--quiet'] : []), ...ativos.map((a) => a.source)],
-    { stdio: 'inherit' }
+    {
+      stdio: 'inherit',
+      env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' },
+    }
   );
   if (res.error?.code === 'ENOENT') return 2; // sem Python é o mesmo que sem motor
   return res.status ?? 1;

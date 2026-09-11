@@ -19,11 +19,12 @@ import { mkdtempSync, rmSync, existsSync, readFileSync, readdirSync } from 'node
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { resolvePython } from '../scripts/i18n/resolve-python.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const TRADUTOR = join(ROOT, 'scripts', 'i18n', 'translate.py');
 const SITE = 'https://mauricio.issei.com.br';
-const PY = process.env.I18N_PYTHON || 'python3';
+const PY = resolvePython(ROOT);
 
 /** Amostra representativa: a home (JS inline + JSON-LD), uma página densa,
  *  uma legal, um markdown com cerca de código, o AEO e os dados. */
@@ -43,7 +44,11 @@ function gera(motor = 'identity', arquivos = AMOSTRA) {
   const res = spawnSync(
     PY,
     [TRADUTOR, '--engine', motor, '--quiet', '--out-root', dir, ...arquivos],
-    { cwd: ROOT, encoding: 'utf-8' }
+    {
+      cwd: ROOT,
+      encoding: 'utf-8',
+      env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' },
+    }
   );
   assert.equal(res.status, 0, `tradutor falhou: ${res.stderr || res.stdout}`);
   return dir;
