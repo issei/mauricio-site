@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0d1117" />
 
-  <title>Operação Capital Cognitivo — Simulador de FinOps de IA</title>
+  <title>Cognitive Capital Operation — AI FinOps Simulator</title>
   <meta name="description"
-    content="Simulador executivo interativo: investigue a fatura oculta de IA e domine o framework Useful Intelligence per Dollar (UI/$) defendendo suas decisões." />
+    content="Interactive executive simulator: investigate the hidden AI invoice and master the Userful Intelligence per Dollar framework (UI/$) defending your decisions." />
   <meta name="author" content="Maurício Yokoyama Issei" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
@@ -30,17 +30,17 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Maurício Yokoyama Issei" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="Operação Capital Cognitivo — Simulador de FinOps &amp; IA" />
+  <meta property="og:title" content="Cognitive Capital Operation — FinOps &amp; IA Simulator" />
   <meta property="og:description"
-    content="Descubra por que a IA mais cara não é a que cobra mais por token. Simule, investigue e defenda suas decisões." />
+    content="Find out why the most expensive AI isn't the one that charges the most for token. Simulate, investigate and defend your decisions." />
   <meta property="og:image" content="https://mauricio.issei.com.br/og-operacao-capital-cognitivo.png" />
   <meta property="og:url" content="https://mauricio.issei.com.br/en/operacao-capital-cognitivo" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Operação Capital Cognitivo — Simulador FinOps &amp; IA" />
+  <meta name="twitter:title" content="Cognitive Capital Operation — FinOps &amp; IA Simulator" />
   <meta name="twitter:description"
-    content="Domine o framework Useful Intelligence per Dollar investigando uma crise corporativa real de IA." />
+    content="Master the Userful Intelligence per Dollar framework investigating a real AI corporate crisis." />
   <meta name="twitter:image" content="https://mauricio.issei.com.br/og-operacao-capital-cognitivo.png" />
 
   <link rel="canonical" href="https://mauricio.issei.com.br/en/operacao-capital-cognitivo" />
@@ -49,13 +49,13 @@
 {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "name": "Operação Capital Cognitivo",
-  "description": "Simulador executivo interativo de FinOps e Arquitetura de IA",
+  "name": "Operation Cognitive Capital",
+  "description": "Interactive FinOps Executive Simulator and AI Architecture",
   "educationalLevel": "Professional",
   "teaches": "FinOps de IA, Useful Intelligence per Dollar, Capital Cognitivo",
   "author": {
     "@type": "Person",
-    "name": "Maurício Yokoyama Issei",
+    "name": "Mauricio Yokoyama Issei",
     "url": "https://mauricio.issei.com.br/en/"
   },
   "inLanguage": "en-US",
@@ -77,8 +77,8 @@
       <span id="hud-quarter" class="font-mono font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">Q1</span>
 
       <div class="flex flex-col">
-        <span class="text-xs text-gray-500 uppercase tracking-wider">Caixa</span>
-        <span id="hud-cash" class="font-mono font-bold text-white" aria-live="polite">R$ 850.000</span>
+        <span class="text-xs text-gray-500 uppercase tracking-wider">Box</span>
+        <span id="hud-cash" class="font-mono font-bold text-white" aria-live="polite">R$ 850,000</span>
       </div>
       <div class="flex flex-col" data-hud="ui" hidden>
         <span class="text-xs text-gray-500 uppercase tracking-wider">UI/$</span>
@@ -89,7 +89,7 @@
         <span id="hud-capital" class="font-mono font-bold text-purple-400" aria-live="polite">—/100</span>
       </div>
       <div class="flex flex-col" data-hud="vcore" hidden>
-        <span class="text-xs text-gray-500 uppercase tracking-wider">V_core</span>
+        <span class="text-xs text-gray-500 uppercase tracking-wider">V core</span>
         <span id="hud-vcore" class="font-mono font-bold" aria-live="polite">—</span>
       </div>
 
@@ -99,16 +99,16 @@
         </div>
         <progress id="hud-morale" value="50" max="100"
           class="w-full h-1.5 [&::-webkit-progress-bar]:bg-gray-700 [&::-webkit-progress-value]:bg-violet-500"
-          aria-label="Moral da equipe de desenvolvimento"></progress>
+          aria-label="Moral of the development team"></progress>
       </div>
       <div class="flex flex-col flex-1 min-w-[120px] max-w-[220px]" data-hud="sla" hidden>
         <div class="flex justify-between text-xs text-gray-500 mb-1"><span>SLA</span><span id="hud-sla">—</span></div>
         <progress id="hud-sla-bar" value="71" max="100"
           class="w-full h-1.5 [&::-webkit-progress-bar]:bg-gray-700 [&::-webkit-progress-value]:bg-teal-500"
-          aria-label="Conformidade de SLA"></progress>
+          aria-label="SLA Compliance"></progress>
       </div>
 
-      <nav id="chapter-breadcrumb" aria-label="Progresso dos capítulos"
+      <nav id="chapter-breadcrumb" aria-label="Progress in Chapters"
         class="flex items-center gap-1.5 ml-auto text-xs"></nav>
     </div>
   </header>
@@ -116,11 +116,11 @@
   <!-- ================= BARRA DE CONTROLES ================= -->
   <div id="sim-toolbar" hidden class="sticky top-[52px] z-40 bg-occ-bg/90 backdrop-blur border-b border-gray-800">
     <div class="container mx-auto px-4 py-2 flex items-center gap-2 text-sm">
-      <button id="btn-back" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white disabled:opacity-30" title="Voltar ao capítulo anterior">← Voltar</button>
-      <button id="btn-restart" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white" title="Recomeçar do início">↻ Recomeçar</button>
+      <button id="btn-back" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white disabled:opacity-30" title="Return to previous chapter">← Back</button>
+      <button id="btn-restart" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white" title="Start over"></button>
       <div class="ml-auto flex items-center gap-2">
-        <button id="btn-help" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white">❓ Ajuda</button>
-        <button id="btn-glossary" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white">📖 Glossário</button>
+        <button id="btn-help" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white">Help</button>
+        <button id="btn-glossary" class="border border-gray-700 rounded-lg px-3 py-1 text-gray-300 hover:text-white">Glossary</button>
       </div>
     </div>
   </div>
@@ -137,179 +137,179 @@
 
       <!-- Hero -->
       <div class="text-center py-14">
-        <p class="text-xs text-blue-400 uppercase tracking-[0.3em] mb-4">Simulador Executivo · FinOps de IA</p>
-        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Operação Capital Cognitivo</h1>
+        <p class="text-xs text-blue-400 uppercase tracking-[0.3em] mb-4">Executive Simulator · FinOps of AI</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Operation Cognitive Capital</h1>
         <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-4">
-          Um simulador interativo que ensina, por descoberta, a economia real da Inteligência Artificial nas empresas:
-          por que a IA mais cara <strong class="text-white">não</strong> é a que cobra mais por uso — e como medir o que
-          ela realmente entrega.
+          An interactive simulator that teaches by discovery the real economy of Artificial Intelligence in companies:
+Why the most expensive AI <strong class="text-white">no</strong> is the one that charges most for use — and how to measure what
+She really delivers.
         </p>
         <p class="text-sm text-gray-400 max-w-2xl mx-auto mb-8">
-          <strong class="text-gray-300">Não precisa saber nada de IA para começar.</strong>
-          Cada tela tem objetivo, passo a passo e um glossário em linguagem simples.
+          <strong class="text-gray-300">You don't need to know anything about AI in the first place.</strong>
+          Each screen has purpose, step by step and a glossary in simple language.
         </p>
         <button id="btn-start"
           class="cta-gradient text-white font-semibold py-3 px-8 rounded-xl text-lg hover:scale-105 transition-transform">
-          Começar a simulação →
+          Start simulation →
         </button>
-        <p class="mt-4"><button id="btn-glossary-intro" class="text-sm text-blue-400 underline">Ver o glossário antes de começar</button></p>
+        <p class="mt-4"><button id="btn-glossary-intro" class="text-sm text-blue-400 underline">View glossary before starting</button></p>
       </div>
 
       <!-- A tese -->
       <div class="rounded-2xl border border-amber-500/25 bg-amber-500/5 p-6 md:p-8 mb-12">
-        <h2 class="text-2xl font-bold text-white mb-3">A ideia central</h2>
+        <h2 class="text-2xl font-bold text-white mb-3">The central idea</h2>
         <p class="text-gray-300 mb-3">
-          Quando uma empresa adota IA, ela enxerga só a <strong>ponta do iceberg</strong>: a fatura de uso (a API).
-          Mas o custo real é dominado pelo que fica submerso — as <strong>horas humanas</strong> gastas revisando e
-          corrigindo o que a IA produziu, a infraestrutura e a governança.
+          When a company adopts AI, it sees only the <strong>tip of the iceberg</strong>: the usage invoice (the API).
+But the real cost is dominated by what is submerged — the <strong>human hours</strong> spends reviewing and
+correcting what the AI has produced, infrastructure and governance.
         </p>
         <p class="text-gray-400 text-sm">
-          Em pipelines de software de grandes empresas, a API costuma ser <strong class="text-amber-300">menos de 10% do
-          custo total</strong>. Quem otimiza só o preço do token está discutindo a parte errada do problema. O simulador
-          te leva a redescobrir isso — e a inventar a métrica que corrige o erro.
+          In large business software pipelines, the API is usually <strong class="text-amber-300">less than 10% of
+total cost</strong>. Who optimizes only the price of the token is discussing the wrong part of the problem. The simulator
+It leads you to rediscover that -- and invent the metric that corrects the error.
         </p>
       </div>
 
       <!-- O objetivo -->
       <div class="mb-12">
-        <h2 class="text-2xl font-bold text-white mb-4">O que você sai sabendo</h2>
+        <h2 class="text-2xl font-bold text-white mb-4">What you come out knowing</h2>
         <ul class="grid md:grid-cols-2 gap-3 text-sm text-gray-300">
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">📊 <strong>Ler o custo total (TCO)</strong> de uma operação de IA — não só a fatura de API.</li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">🧭 <strong>Usar o UI/$</strong> (Useful Intelligence per Dollar) para comparar decisões de arquitetura.</li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">🧠 <strong>Enxergar o custo humano</strong> não-linear: a fadiga de verificar IA errada (V_core).</li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">⚖️ <strong>Defender escolhas</strong> com evidência — inclusive em setores regulados (Governed UI/$).</li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">📊 <strong>Read the total cost (TCO)</strong> of an AI operation — not just the API invoice.</li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">🧭 <strong>Use UI/$</strong> (Useful Intelligence per Dollar) to compare architectural decisions.</li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">🧠 <strong>See human cost</strong> nonlinear: the fatigue of checking wrong AI (V core).</li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">⚖️ <strong>Defend Choices</strong> with evidence — including in regulated sectors (Governed UI/$).</li>
         </ul>
       </div>
 
       <!-- A jornada -->
       <div class="mb-12">
-        <h2 class="text-2xl font-bold text-white mb-1">A jornada em 6 capítulos</h2>
-        <p class="text-sm text-gray-400 mb-4">Uma investigação guiada, do mistério à defesa perante o Conselho.</p>
+        <h2 class="text-2xl font-bold text-white mb-1">The journey in 6 chapters</h2>
+        <p class="text-sm text-gray-400 mb-4">A guided investigation, from mystery to defense before the Council.</p>
         <ol class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-amber-400 font-bold">1 · O Mistério</span><p class="text-gray-400 mt-1">Onde foram parar R$ 37 mil da fatura de IA?</p></li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-red-400 font-bold">2 · A Armadilha</span><p class="text-gray-400 mt-1">Por que a IA "barata" sai caríssima.</p></li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-purple-400 font-bold">3 · A Invenção</span><p class="text-gray-400 mt-1">Você mesmo deduz a métrica de eficiência.</p></li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-blue-400 font-bold">4 · A Formalização</span><p class="text-gray-400 mt-1">As fórmulas oficiais por trás da intuição.</p></li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-teal-400 font-bold">5 · O Laboratório</span><p class="text-gray-400 mt-1">Operar a empresa por 4 trimestres sob incerteza.</p></li>
-          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-amber-400 font-bold">6 · O Conselho</span><p class="text-gray-400 mt-1">Defender cada decisão com evidências.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-amber-400 font-bold">1 · The Mystery</span><p class="text-gray-400 mt-1">Where did R$ 37,000 of the AI invoice go?</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-red-400 font-bold">2 · The Trap</span><p class="text-gray-400 mt-1">Because the AI "barata" is expensive.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-purple-400 font-bold">3 · The Invention</span><p class="text-gray-400 mt-1">You deduce the efficiency metric yourself.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-blue-400 font-bold">4 · Formalization</span><p class="text-gray-400 mt-1">The official formulas behind intuition.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-teal-400 font-bold">5 · The Laboratory</span><p class="text-gray-400 mt-1">Operating the company for four quarters under uncertainty.</p></li>
+          <li class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><span class="text-amber-400 font-bold">6 · The Council</span><p class="text-gray-400 mt-1">Defend every decision with evidence.</p></li>
         </ol>
       </div>
 
       <!-- Base científica -->
       <div class="mb-12">
-        <h2 class="text-2xl font-bold text-white mb-4">Rigor, não achismo</h2>
+        <h2 class="text-2xl font-bold text-white mb-4">Rigor, not achism</h2>
         <div class="grid md:grid-cols-3 gap-3 text-sm mb-4">
-          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">🗂</p><p class="text-white font-medium">11 evidências</p><p class="text-gray-400 text-xs">Cada conceito vem com fonte, nível epistemológico e limitações declaradas.</p></div>
-          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">📐</p><p class="text-white font-medium">3 modelos formais</p><p class="text-gray-400 text-xs">Cost-of-Pass, UI/$ e Governed UI/$ — a matemática por trás das decisões.</p></div>
-          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">🔗</p><p class="text-white font-medium">Referências reais</p><p class="text-gray-400 text-xs">Links para as fontes (RouteLLM, prompt caching, Context Rot e mais) no glossário.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">🗂</p><p class="text-white font-medium">11 evidence</p><p class="text-gray-400 text-xs">Each concept comes with source, epistemological level and declared limitations.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">📐</p><p class="text-white font-medium">3 formal models</p><p class="text-gray-400 text-xs">Cost-of-Pass, UI/$ and Governmentd UI/$ — the math behind the decisions.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-2xl mb-1">🔗</p><p class="text-white font-medium">Real references</p><p class="text-gray-400 text-xs">Links to the fonts (RouteLLM, prompt caching, Context Rot and more) in the glossary.</p></div>
         </div>
         <p class="text-xs text-gray-400">
-          Nota honesta: UI/$, V_core e afins são <strong>convenções operacionais de FinOps em consolidação</strong> —
-          bússolas direcionais, não normas ISO/IEEE. Os números do simulador são parâmetros de ensino, não medições absolutas.
-          <button id="btn-glossary-intro-2" class="text-blue-400 underline">Ver referências</button>
+          Honest note: UI/$, V core and such are <strong>FinOps operational conventions in consolidation</strong> —
+directional compasses, not ISO/IEEE standards. Simulator numbers are teaching parameters, not absolute measurements.
+          <button id="btn-glossary-intro-2" class="text-blue-400 underline">View references</button>
         </p>
       </div>
 
       <!-- Para quem é -->
       <div class="mb-12">
-        <h2 class="text-2xl font-bold text-white mb-4">Para quem é</h2>
+        <h2 class="text-2xl font-bold text-white mb-4">Who's it for?</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
-          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Engenheiros</p><p class="text-gray-400 text-xs mt-1">que implementam IA e querem critério de custo.</p></div>
-          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Arquitetos / Tech Leads</p><p class="text-gray-400 text-xs mt-1">que precisam de padrões defensáveis.</p></div>
-          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Gestores / Executivos</p><p class="text-gray-400 text-xs mt-1">que decidem orçamento sem entrar no código.</p></div>
-          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Estudantes</p><p class="text-gray-400 text-xs mt-1">que querem rigor e fontes verificáveis.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Engineers</p><p class="text-gray-400 text-xs mt-1">that implement AI and want cost criterion.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Architects / Tech Leads</p><p class="text-gray-400 text-xs mt-1">who need defensible standards.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Managers / Executives</p><p class="text-gray-400 text-xs mt-1">who decide to budget without entering the code.</p></div>
+          <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4"><p class="text-white font-medium">Students</p><p class="text-gray-400 text-xs mt-1">They want strictness and verifiable sources.</p></div>
         </div>
       </div>
 
       <!-- Como funciona -->
       <div class="mb-12">
-        <h2 class="text-2xl font-bold text-white mb-4">Como funciona</h2>
+        <h2 class="text-2xl font-bold text-white mb-4">How it works</h2>
         <div class="grid sm:grid-cols-3 gap-4">
           <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
             <p class="text-2xl mb-1">🧭</p>
-            <p class="text-sm text-white font-medium">Sempre há um objetivo</p>
-            <p class="text-xs text-gray-400">Uma faixa no topo diz o que fazer. Clique em "Como fazer?" para o passo a passo.</p>
+            <p class="text-sm text-white font-medium">There's always a goal</p>
+            <p class="text-xs text-gray-400">A banner on top tells you what to do. Click "How to do?" for step by step.</p>
           </div>
           <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
             <p class="text-2xl mb-1">📖</p>
-            <p class="text-sm text-white font-medium">Tudo é explicado</p>
-            <p class="text-xs text-gray-400"><strong>Ajuda</strong> e <strong>Glossário</strong> traduzem cada termo em linguagem simples.</p>
+            <p class="text-sm text-white font-medium">Everything is explained</p>
+            <p class="text-xs text-gray-400"><strong>Help</strong> and <strong>Glossary</strong> translate each term into simple language.</p>
           </div>
           <div class="rounded-xl border border-gray-700/50 bg-occ-surface p-4">
             <p class="text-2xl mb-1">↺</p>
-            <p class="text-sm text-white font-medium">Sem medo de errar</p>
-            <p class="text-xs text-gray-400"><strong>Voltar</strong> ou <strong>Recomeçar</strong> quando quiser. É um laboratório.</p>
+            <p class="text-sm text-white font-medium">No fear of error</p>
+            <p class="text-xs text-gray-400"><strong>Back</strong> or <strong>Restart</strong> Anytime. It's a lab.</p>
           </div>
         </div>
       </div>
 
       <!-- CTA final com o enquadramento narrativo -->
       <div class="rounded-2xl border border-blue-500/25 bg-gradient-to-br from-blue-500/10 to-purple-500/10 p-6 md:p-8 text-center mb-8">
-        <h2 class="text-2xl font-bold text-white mb-3">Sua missão começa agora</h2>
+        <h2 class="text-2xl font-bold text-white mb-3">Your mission begins now</h2>
         <p class="text-gray-300 max-w-2xl mx-auto mb-6">
-          Você acaba de ser contratado como Arquiteto de IA e FinOps da <strong class="text-white">Nexus Tech Corp</strong>,
-          uma empresa em crise por uso descontrolado de IA. Tem 24 horas para explicar o rombo — ou os projetos de IA são cancelados.
+          You've just been hired as the AI Architect and FinOps of <strong class="text-white">Nexus Tech Corp</strong>,
+a company in crisis for uncontrolled use of AI. You have 24 hours to explain the break — or AI projects are cancelled.
         </p>
         <button data-start
           class="cta-gradient text-white font-semibold py-3 px-8 rounded-xl text-lg hover:scale-105 transition-transform">
-          Aceitar o cargo e começar →
+          Accept the position and get started →
         </button>
       </div>
     </section>
 
     <!-- ================= CAP 1 ================= -->
     <section id="scene-cap1" class="scene" hidden aria-labelledby="cap1-h">
-      <p class="text-xs uppercase tracking-widest mb-2" style="color:#f59e0b;">🔍 Capítulo 1</p>
-      <h2 id="cap1-h" class="text-3xl font-extrabold text-white mb-4">O Mistério dos R$ 37 Mil Desaparecidos</h2>
-      <p class="text-gray-400 mb-6">A CFO <strong>Helena Vance</strong>: "A fatura da API foi de R$ 3.000. Mas o
-        financeiro aponta R$ 40.000 em custos de IA. R$ 37.000 desapareceram. Explique."</p>
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#f59e0b;">Chapter 1</p>
+      <h2 id="cap1-h" class="text-3xl font-extrabold text-white mb-4">The Mystery of the R $ 37 thousand Missing</h2>
+      <p class="text-gray-400 mb-6">THE CFO <strong>Helena Vance</strong>: "The API invoice was R$3,000. But the
+financial points R $ 40,000 in AI costs. R$ 37,000 is gone. Explain."</p>
 
       <div id="invoice-explorer" class="bg-occ-surface rounded-2xl border border-gray-700/50 overflow-hidden"></div>
 
       <div id="cap1-reveal" hidden class="mt-8">
         <div class="flex flex-col items-center gap-4">
           <canvas id="tco-pie-chart" width="280" height="280" role="img"
-            aria-label="Composição do TCO: API 7,5%, Tempo Dev 72%, Infraestrutura 12%, Governança 8,5%"></canvas>
+            aria-label="TCO Composition: API 7.5%, Time Dev 72%, Infrastructure 12%, Governance 8.5%"></canvas>
           <div id="tco-pie-legend" class="flex flex-wrap gap-3 justify-center text-sm"></div>
-          <button id="show-tco-table" class="text-xs text-blue-400 underline" aria-expanded="false" aria-controls="tco-data-table">Ver dados em tabela</button>
-          <table id="tco-data-table" hidden class="w-full text-sm mt-2" aria-label="Composição do TCO em formato tabular">
-            <thead><tr><th scope="col" class="text-left">Categoria</th><th scope="col" class="text-right">Valor</th><th scope="col" class="text-right">%</th></tr></thead>
+          <button id="show-tco-table" class="text-xs text-blue-400 underline" aria-expanded="false" aria-controls="tco-data-table">See table data</button>
+          <table id="tco-data-table" hidden class="w-full text-sm mt-2" aria-label="Composition of TCO in tabular format">
+            <thead><tr><th scope="col" class="text-left">Category</th><th scope="col" class="text-right">Value</th><th scope="col" class="text-right">%</th></tr></thead>
             <tbody>
-              <tr><th scope="row" class="text-left font-normal">Custo de API</th><td class="text-right font-mono">R$ 3.000</td><td class="text-right">7,5%</td></tr>
-              <tr><th scope="row" class="text-left font-normal">Tempo Dev (Revisão + Verification Load)</th><td class="text-right font-mono">R$ 28.800</td><td class="text-right">72%</td></tr>
-              <tr><th scope="row" class="text-left font-normal">Infra / Vector DB / Observabilidade</th><td class="text-right font-mono">R$ 4.800</td><td class="text-right">12%</td></tr>
-              <tr><th scope="row" class="text-left font-normal">Overhead de Governança / Compliance</th><td class="text-right font-mono">R$ 3.400</td><td class="text-right">8,5%</td></tr>
+              <tr><th scope="row" class="text-left font-normal">API Cost</th><td class="text-right font-mono">R$3,000</td><td class="text-right">7,5%</td></tr>
+              <tr><th scope="row" class="text-left font-normal">Time Dev (Review + Verification Load)</th><td class="text-right font-mono">R$ 28,800</td><td class="text-right">72%</td></tr>
+              <tr><th scope="row" class="text-left font-normal">Infra / Vector DB / Observability</th><td class="text-right font-mono">R$ 4,800</td><td class="text-right">12%</td></tr>
+              <tr><th scope="row" class="text-left font-normal">Governance Overhead / Compliance</th><td class="text-right font-mono">R$ 3,400</td><td class="text-right">8,5%</td></tr>
             </tbody>
           </table>
         </div>
         <div class="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4 text-sm text-amber-200">
-          💡 Em pipelines de engenharia de software de empresas Fortune 500, o custo de API representa
-          <strong>menos de 10% do TCO real</strong>. Quem otimiza só a fatura de tokens discute a ponta do iceberg.
+          In business software engineering pipelines Fortune 500, API cost represents
+          <strong>less than 10% of the actual TCO</strong>. Who optimizes only the token invoice discusses the tip of the iceberg.
         </div>
-        <button data-next class="mt-8 cta-gradient text-white font-semibold py-3 px-6 rounded-xl">Continuar →</button>
+        <button data-next class="mt-8 cta-gradient text-white font-semibold py-3 px-6 rounded-xl">Continue →</button>
       </div>
     </section>
 
     <!-- ================= CAP 2 ================= -->
     <section id="scene-cap2" class="scene" hidden aria-labelledby="cap2-h">
-      <p class="text-xs uppercase tracking-widest mb-2" style="color:#ef4444;">⚠️ Capítulo 2</p>
-      <h2 id="cap2-h" class="text-3xl font-extrabold text-white mb-4">A Armadilha da IA "Barata"</h2>
-      <p class="text-gray-400 mb-6">O CTO <strong>Dr. Aris Thorne</strong> quer migrar tudo para o <em>Model-Lite</em>
-        (90% mais barato por token). O CRO <strong>Marcus Brody</strong> hesita: "Risco jurídico não é brincadeira."</p>
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#ef4444;">Chapter 2</p>
+      <h2 id="cap2-h" class="text-3xl font-extrabold text-white mb-4">The trap of the AI "Barata"</h2>
+      <p class="text-gray-400 mb-6">THE CTO <strong>Dr. Aris Thorne</strong> wants to migrate everything to the <em>Model-Lite</em>
+        (90% cheaper for token). THE CRO <strong>Marcus Brody.</strong> He hesitates, "Legal risk is no joke."</p>
 
       <div id="cap2-body" class="space-y-6"></div>
     </section>
 
     <!-- ================= CAP 3 ================= -->
     <section id="scene-cap3" class="scene" hidden aria-labelledby="cap3-h">
-      <p class="text-xs uppercase tracking-widest mb-2" style="color:#8a2be2;">💡 Capítulo 3</p>
-      <h2 id="cap3-h" class="text-3xl font-extrabold text-white mb-4">A Invenção da Métrica</h2>
-      <p class="text-gray-400 mb-6">A diretoria exige um indicador único de eficiência real. Monte a fração
-        que captura "trabalho útil por real investido".</p>
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#8a2be2;">Chapter 3</p>
+      <h2 id="cap3-h" class="text-3xl font-extrabold text-white mb-4">Invention of Metrics</h2>
+      <p class="text-gray-400 mb-6">The board requires a unique indicator of real efficiency. Mount the fraction
+that captures "useful work by real invested".</p>
 
       <div id="formula-canvas-instructions" class="sr-only">
-        Arraste os blocos para o numerador ou denominador. Alternativamente, clique em um bloco para
-        selecioná-lo e depois clique na zona de destino para posicioná-lo.
+        Drag the blocks to the numerator or denominator. Alternatively, click on a block to
+select it and then click on the destination zone to position it.
       </div>
       <div id="formula-canvas" role="application" aria-describedby="formula-canvas-instructions"
         class="bg-occ-bg rounded-2xl border border-purple-500/20 p-6 md:p-8"></div>
@@ -317,30 +317,30 @@
 
     <!-- ================= CAP 4 ================= -->
     <section id="scene-cap4" class="scene" hidden aria-labelledby="cap4-h">
-      <p class="text-xs uppercase tracking-widest mb-2" style="color:#3b82f6;">📐 Capítulo 4</p>
-      <h2 id="cap4-h" class="text-3xl font-extrabold text-white mb-4">Formalização Matemática</h2>
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#3b82f6;">Chapter 4</p>
+      <h2 id="cap4-h" class="text-3xl font-extrabold text-white mb-4">Math formalization</h2>
       <div id="cap4-body" class="space-y-6"></div>
     </section>
 
     <!-- ================= CAP 5 ================= -->
     <section id="scene-cap5" class="scene" hidden aria-labelledby="cap5-h">
-      <p class="text-xs uppercase tracking-widest mb-2" style="color:#0d9488;">🧪 Capítulo 5</p>
-      <h2 id="cap5-h" class="text-3xl font-extrabold text-white mb-4">O Laboratório "E Se?"</h2>
-      <p class="text-gray-400 mb-6">Assuma a operação de Q1 a Q4. Configure a arquitetura para maximizar o UI/$
-        e sobreviver aos eventos de mercado. Suas decisões de hoje afetam o próximo trimestre.</p>
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#0d9488;">Chapter 5</p>
+      <h2 id="cap5-h" class="text-3xl font-extrabold text-white mb-4">The lab "What If?"</h2>
+      <p class="text-gray-400 mb-6">Take over from Q1 to Q4. Configure the architecture to maximize UI/$
+and survive market events. Your decisions today affect the next quarter.</p>
 
       <div class="grid md:grid-cols-2 gap-6">
         <div id="sandbox-controls" class="bg-occ-surface rounded-2xl border border-teal-500/20 p-6 space-y-5"></div>
         <div class="space-y-6">
           <div class="bg-occ-bg rounded-2xl p-4 border border-gray-700/40">
-            <h4 class="text-sm font-semibold text-gray-400 mb-3">Fluxo de Custos do TCO</h4>
+            <h4 class="text-sm font-semibold text-gray-400 mb-3">TCO Cost Flow</h4>
             <svg id="sankey-chart" width="100%" height="200" viewBox="0 0 600 200" role="img"
-              aria-label="Diagrama Sankey da distribuição de custos"></svg>
+              aria-label="Sankey diagram of cost distribution"></svg>
           </div>
           <div class="bg-occ-bg rounded-2xl p-4 border border-gray-700/40">
-            <h4 class="text-sm font-semibold text-gray-400 mb-3">Evolução histórica</h4>
+            <h4 class="text-sm font-semibold text-gray-400 mb-3">Historical evolution</h4>
             <canvas id="history-chart" width="520" height="180" role="img"
-              aria-label="Gráfico da evolução de UI/$ e caixa por trimestre"></canvas>
+              aria-label="Chart of UI/$ evolution and cash per quarter"></canvas>
           </div>
         </div>
       </div>
@@ -348,14 +348,14 @@
 
     <!-- ================= CAP 6 ================= -->
     <section id="scene-cap6" class="scene" hidden aria-labelledby="cap6-h">
-      <p class="text-xs uppercase tracking-widest mb-2" style="color:#f59e0b;">⚖️ Capítulo 6</p>
-      <h2 id="cap6-h" class="text-3xl font-extrabold text-white mb-2">A Sessão do Conselho</h2>
-      <p class="text-gray-400 mb-6">Os conselheiros consultaram as métricas do Gêmeo Digital. Defenda cada decisão
-        com um argumento e uma evidência do Mural.</p>
+      <p class="text-xs uppercase tracking-widest mb-2" style="color:#f59e0b;">Chapter 6</p>
+      <h2 id="cap6-h" class="text-3xl font-extrabold text-white mb-2">The Council meeting</h2>
+      <p class="text-gray-400 mb-6">The counselors consulted the Digital Twin metrics. Defend each decision
+With an argument and evidence from Mural.</p>
 
       <div class="mb-6">
         <div class="flex justify-between text-sm mb-2">
-          <span class="text-gray-400">Confiança do Conselho</span>
+          <span class="text-gray-400">Council Trust</span>
           <span id="board-confidence-pct" class="font-mono font-bold text-white">60%</span>
         </div>
         <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
@@ -365,24 +365,24 @@
       </div>
 
       <div id="board-dialog-area" class="space-y-6"></div>
-      <button id="btn-open-evidence" class="fixed bottom-4 left-4 z-40 bg-occ-surface border border-gray-600 rounded-full px-4 py-2 text-sm">🗂 Evidências</button>
+      <button id="btn-open-evidence" class="fixed bottom-4 left-4 z-40 bg-occ-surface border border-gray-600 rounded-full px-4 py-2 text-sm"></button>
     </section>
 
     <!-- ================= TRANSFER / VICTORY / FAILURE ================= -->
     <section id="scene-transfer" class="scene" hidden aria-labelledby="tr-h">
-      <h2 id="tr-h" class="text-3xl font-extrabold text-white mb-4">🎯 Caso de Transferência</h2>
+      <h2 id="tr-h" class="text-3xl font-extrabold text-white mb-4"></h2>
       <div id="transfer-case" class="bg-occ-surface rounded-2xl border border-gray-700/50 p-6"></div>
     </section>
 
     <section id="scene-victory" class="scene text-center py-16" hidden aria-labelledby="vic-h">
-      <h2 id="vic-h" class="text-4xl font-extrabold mb-4" style="color:var(--color-sim-green);">Vitória</h2>
+      <h2 id="vic-h" class="text-4xl font-extrabold mb-4" style="color:var(--color-sim-green);">Victory</h2>
       <p id="victory-text" class="text-gray-300 max-w-xl mx-auto"></p>
     </section>
 
     <section id="scene-failure" class="scene text-center py-16" hidden aria-labelledby="fail-h">
       <h2 id="fail-h" class="text-4xl font-extrabold mb-4" style="color:var(--color-sim-red);">Game Over</h2>
       <p id="failure-text" class="text-gray-300 max-w-xl mx-auto"></p>
-      <button id="btn-replay" class="mt-8 bg-transparent border border-gray-600 text-gray-300 py-2 px-5 rounded-lg hover:text-white">Tentar novamente</button>
+      <button id="btn-replay" class="mt-8 bg-transparent border border-gray-600 text-gray-300 py-2 px-5 rounded-lg hover:text-white">Try again</button>
     </section>
 
   </main>
@@ -392,7 +392,7 @@
     class="fixed bottom-4 right-4 z-50 bg-gray-900 border border-green-500/50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-xl">
     <span class="text-2xl" id="toast-evidence-icon">💸</span>
     <div>
-      <p class="text-xs text-green-400 font-semibold uppercase">Nova Evidência</p>
+      <p class="text-xs text-green-400 font-semibold uppercase">New Evidence</p>
       <p class="text-sm text-white font-medium" id="toast-evidence-title">—</p>
     </div>
   </div>
@@ -403,36 +403,36 @@
     <div class="flex items-start gap-4 mb-4">
       <span id="dialog-severity-icon" class="text-4xl">⚡</span>
       <div>
-        <p class="text-xs text-amber-400 uppercase tracking-widest font-semibold mb-1">Alerta Executivo — <span id="dialog-quarter">Q3</span></p>
+        <p class="text-xs text-amber-400 uppercase tracking-widest font-semibold mb-1">Executive Alert — <span id="dialog-quarter">Q3</span></p>
         <h2 id="dialog-title" class="text-xl font-bold"></h2>
       </div>
     </div>
     <p id="dialog-description" class="text-gray-300 mb-2"></p>
     <p id="dialog-impact" class="text-sm text-amber-300 bg-amber-500/10 rounded-lg p-3 mb-4"></p>
     <p id="dialog-mitigation" class="text-sm text-gray-400 mb-6" hidden></p>
-    <button id="dialog-close" class="w-full py-3 cta-gradient rounded-xl font-semibold">Entendido — Avançar</button>
+    <button id="dialog-close" class="w-full py-3 cta-gradient rounded-xl font-semibold">Roger — Forward</button>
   </dialog>
 
   <dialog id="help-dialog"
     class="backdrop:bg-black/60 bg-occ-surface border border-blue-500/30 rounded-2xl p-6 w-full max-w-lg text-white"
     aria-labelledby="help-title">
-    <div class="flex justify-end"><button id="help-close" aria-label="Fechar ajuda" class="text-gray-400 hover:text-white text-xl">×</button></div>
+    <div class="flex justify-end"><button id="help-close" aria-label="Close Help" class="text-gray-400 hover:text-white text-xl">×</button></div>
     <div id="help-body" aria-live="polite"></div>
   </dialog>
 
   <dialog id="glossary-dialog"
     class="backdrop:bg-black/60 bg-occ-surface border border-blue-500/30 rounded-2xl p-6 w-full max-w-lg text-white max-h-[85vh] overflow-y-auto"
     aria-labelledby="glossary-title">
-    <div class="flex justify-end"><button id="glossary-close" aria-label="Fechar glossário" class="text-gray-400 hover:text-white text-xl">×</button></div>
+    <div class="flex justify-end"><button id="glossary-close" aria-label="Close glossary" class="text-gray-400 hover:text-white text-xl">×</button></div>
     <div id="glossary-body"></div>
   </dialog>
 
   <aside id="evidence-panel"
     class="fixed right-0 top-0 h-full w-72 max-w-[85vw] bg-occ-bg border-l border-gray-700 transform translate-x-full transition-transform duration-300 z-40 flex flex-col"
-    aria-label="Mural de Evidências">
+    aria-label="Evidence Wall">
     <div class="flex justify-between items-center p-4 border-b border-gray-700">
-      <h3 class="font-semibold">🗂 Mural de Evidências <span id="evidence-count" class="text-xs text-gray-500"></span></h3>
-      <button id="evidence-panel-close" aria-label="Fechar painel de evidências" class="text-gray-400 hover:text-white text-xl">×</button>
+      <h3 class="font-semibold"> <span id="evidence-count" class="text-xs text-gray-500"></span></h3>
+      <button id="evidence-panel-close" aria-label="Close Evidence Panel" class="text-gray-400 hover:text-white text-xl">×</button>
     </div>
     <div id="evidence-panel-cards" class="flex-1 overflow-y-auto p-3 space-y-2"></div>
   </aside>

@@ -15,7 +15,7 @@
     "i18n:sync": "node scripts/sync-i18n.mjs",
     "i18n:sync:all": "node scripts/sync-i18n.mjs --all",
     "i18n:check": "node scripts/sync-i18n.mjs --check",
-    "i18n:install": "python3 scripts/i18n/translate.py --install-model"
+    "i18n:install": "node scripts/sync-i18n.mjs --install-model"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",

@@ -27,10 +27,11 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="case agents, query routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling" />
+<meta name="keywords" content="case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, cold hot path, rust inference, ADR-009" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/en/case-agents" />
 <link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/en/case-agents.md" title="Case Agents: the wrong tool is not an acceptable approach " />
+<link rel="webmcp" href="/.well-known/webmcp.json" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Maurício Yokoyama Issei" />
 <meta property="og:locale" content="en_US" />
@@ -42,7 +43,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Case Agents: the wrong tool is not an acceptable approach " />
 <meta property="article:published_time" content="2026-09-10T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-09-10T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-09-11T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Engenharia de Confiança · Agentes de IA" />
 <meta property="article:tag" content="Case Agents" />
@@ -51,6 +52,7 @@
 <meta property="article:tag" content="Barreira Pré-Execução" />
 <meta property="article:tag" content="Guarda de Direção" />
 <meta property="article:tag" content="Engenharia de Confiança" />
+<meta property="article:tag" content="Arquitetura de Alta Performance" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Case Agents: the wrong tool is not an acceptable approach " />
 <meta name="twitter:description" content="Queries routing and selection of tools in a banking agent: a four-layer pre-execution barrier led to 7 incorrect executions to zero." />
@@ -94,7 +96,7 @@
       },
       "inLanguage": "en-US",
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-case-agents.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/en/case-agents#breadcrumb"
@@ -127,13 +129,13 @@
         "@id": "https://mauricio.issei.com.br/en/#author"
       },
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-11",
       "inLanguage": "en-US",
       "image": "https://mauricio.issei.com.br/og-case-agents.png",
       "isAccessibleForFree": true,
-      "keywords": "case agents, query routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling",
+      "keywords": "case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, rust inference, cold hot path",
       "codeRepository": "https://github.com/issei/case-agents",
-      "programmingLanguage": "Python",
+      "programmingLanguage": "Python, Rust",
       "about": [
         {
           "@type": "Thing",
@@ -149,7 +151,7 @@
         },
         {
           "@type": "Thing",
-          "name": "Evaluation Harness"
+          "name": "High Performance Productive Architecture"
         }
       ],
       "audience": {
@@ -210,10 +212,18 @@
         },
         {
           "@type": "Question",
-          "name": "How to achieve 100% success with cost savings?",
+          "name": "What is the strategy of two branches of the project?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Declaring the governance of the tool catalog (collapse of semantic duplicates in canonical capabilities) and applying the 4-layer pre-execution barrier (router confidence, minimum score, relative margin and direction). Net cost savings were 77.8%."
+            "text": "The repository maintains two approaches in Git: a branch feature/solucao-swine, focused on rapid prototyping and validation of hypotheses with lean code, and the branch main (solucao-sdd-vibe), focused on robustness enterprise with Spec-Driven Development, 9 ADRs, canonical taxonomy, Platt Scaling calibration and blueprint of productive architecture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does High Performance Production Architecture (ADR-009) work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The productive architecture rigidly separates Cold Path (training and calibration in Python 3.12 offline/CI) from Hot Path (OmniRoute Inference Gateway in Rust/Go stateless online). With built-in in-process engine, the hot path reaches latency p99 below 1-3 ms, eliminates Garbage Collection pauses and runs the guard rails directly in RAM memory."
           }
         }
       ]
@@ -241,6 +251,12 @@
           "@id": "https://mauricio.issei.com.br/en/case-agents#g-colapso-capacidade",
           "name": "Capacity Collapse",
           "description": "Grouping of redundant operational variants under a unique canonical capacity."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/en/case-agents#g-cold-hot-path",
+          "name": "Cold/Hot Path Decoupling",
+          "description": "Architectural pattern that isolates offline Python training from the gateway compiled in Rust in critical production path."
         }
       ]
     }
@@ -267,10 +283,12 @@
       </a>
       <nav class="ca-nav__trail" aria-label="Case sections">
         <a href="#problema" data-navlink>The Problem</a>
+        <a href="#estrategia-branches" data-navlink>Branches</a>
         <a href="#crash-silencioso" data-navlink>The Silent Crash</a>
         <a href="#por-que-nenhum-peso-resolve" data-navlink>Arithmetic</a>
         <a href="#barreira" data-navlink>The Barrier</a>
-        <a href="#arquitetura" data-navlink>Architecture</a>
+        <a href="#arquitetura" data-navlink>Pipeline MVP</a>
+        <a href="#arquitetura-produtiva" data-navlink>Productive Architecture</a>
         <a href="#governanca-catalogo" data-navlink>Taxonomy</a>
         <a href="#economia-honesta" data-navlink>Metrics</a>
         <a href="#metodo" data-navlink>Method</a>
@@ -285,20 +303,24 @@
     <!-- ══════════════════════════════════════════════════════ ATO 1: HERO ═══ -->
     <section id="hero" class="ca-hero">
       <div class="ca-wrap">
-        <p class="ca-eyebrow"><span translate="no">P2</span> · Trust Engineering · Route and Tool Selection</p>
+        <p class="ca-eyebrow"><span translate="no">P2</span> · Trust Engineering · Productive Architecture &amp; Deterministic Routing</p>
         <h1>The wrong tool is not a <em>acceptable approach</em></h1>
 
         <p class="ca-hero__thesis">
-          285 tools, 30 queries, a banking domain. As a pre-execution barrier of four
-layers led 7 incorrect executions to zero — and why cost savings fell in the way.
+          285 tools, 30 queries, a critical mission banking domain. As a pre-execution barrier of four
+layers led 7 incorrect executions to zero — and how the solution evolved from a proof of concept (PoC) to a
+High performance productive architecture blueprint with Cold/Hot Path decoupling and SLAs sub-2ms.
         </p>
 
         <div class="ca-hero__cta">
           <a class="ca-btn ca-btn--primary" href="https://github.com/issei/case-agents" target="_blank" rel="noopener">
             View repository in GitHub
           </a>
-          <a class="ca-btn ca-btn--secondary" href="#crash-silencioso">
-            How the defect was found ↓
+          <a class="ca-btn ca-btn--secondary" href="#arquitetura-produtiva">
+            Productive Architecture (Rust/Go) ↓
+          </a>
+          <a class="ca-btn ca-btn--secondary" href="#estrategia-branches">
+            Branches Strategy ↓
           </a>
         </div>
 
@@ -349,6 +371,7 @@ Four guards and what the numbers prove -- and what they don't prove.
         <div class="ca-video">
           <iframe src="https://www.youtube-nocookie.com/embed/JSYL3Ax7A7o?rel=0&amp;modestbranding=1"
             title="The Trust Machine: Case Study in Banking Genetic Development — Project Summary"
+            aria-label="Video: The Trust Machine — Case Agents Summary in 8 Minutes"
             loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
@@ -372,9 +395,9 @@ Before any expensive LLM call, the system decides the cheapest and safest way to
             <table class="ca-table">
               <thead>
                 <tr>
-                  <th>Pillar</th>
-                  <th>Engineering Problem</th>
-                  <th>Code Component</th>
+                  <th scope="col">Pillar</th>
+                  <th scope="col">Engineering Problem</th>
+                  <th scope="col">Code Component</th>
                 </tr>
               </thead>
               <tbody>
@@ -449,10 +472,140 @@ score of the retriever, relative margin and the verb of the query. Nothing more.
       </div>
     </section>
 
+    <!-- ════════════════════════════════════ 2. ESTRATÉGIA DE BRANCHES ═══ -->
+    <section id="estrategia-branches" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">02 · Lifecycle &amp; Engineering Decision</p>
+        <h2>Two Strategies, One Domain: Prototyping Agility vs Robustez Enterprise</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            In senior software engineering, a technical solution does not exist in the vacuum. The official repository
+            <code translate="no">case-agents</code> implements and documents <strong>two active architectural approaches in parallel branches</strong>,
+demonstrating the deliberate transition of an exploratory Concept Proof (PoC) to a mission-critical governance system.
+          </p>
+        </div>
+
+        <div class="ca-branch-grid">
+          <!-- Branch 1: feature/solucao-enxuta -->
+          <div class="ca-branch-card ca-branch-card--enxuta">
+            <div class="ca-branch-card__header">
+              <div>
+                <h3 class="ca-branch-card__title">Approach 1: Lean PoC</h3>
+                <span class="ca-small">Branch: <code translate="no">feature/solucao-enxuta</code></span>
+              </div>
+              <span class="ca-branch-card__tag ca-branch-card__tag--enxuta">Agility &amp; MVP</span>
+            </div>
+
+            <p class="ca-small">
+              Strict focus on <strong>minimum testing speed and footprint</strong>. Implement router
+and the retriever in direct Python code, without coupling to manual taxonomies or advanced mathematical calibrations.
+Ideal for quick validation of product viability and starting benchmark.
+            </p>
+
+            <div class="ca-branch-meta">
+              <div>
+                <span>Test Coverage</span>
+                <span>35 unit tests</span>
+              </div>
+              <div>
+                <span>Catalog Governance</span>
+                <span>No taxonomy (Flat)</span>
+              </div>
+              <div>
+                <span>Router Calibration</span>
+                <span>Pure L2 (not calibrated)</span>
+              </div>
+              <div>
+                <span>Directional Guard</span>
+                <span>Non-existent (vulnerable)</span>
+              </div>
+            </div>
+
+            <div class="ca-prose" style="margin-top: 10px;">
+              <h4 style="font-size:0.9rem; margin-bottom:4px;">Pros &amp; Trade-offs:</h4>
+              <ul class="ca-small" style="padding-left:18px; margin-bottom:16px;">
+                <li><strong>Pro:</strong> Clean code (~300 lines), easy to audit and deliver in a few days.</li>
+                <li><strong>Pro:</strong> Low cognitive friction for early-stage teams.</li>
+                <li><strong>Against:</strong> Hits only <strong>35% Hit Rate@2</strong> in the catalog of 285 tools due to lexical collisions.</li>
+                <li><strong>Against:</strong> Register <strong>45% undue abstentions</strong> and vulnerability to Silent Crash.</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 12px;">
+              <a class="ca-btn ca-btn--secondary" href="https://github.com/issei/case-agents/tree/feature/solucao-enxuta" target="_blank" rel="noopener" style="width:100%; justify-content:center;">
+                Explore branch feature/solucao-swine
+              </a>
+            </div>
+          </div>
+
+          <!-- Branch 2: main / solucao-sdd-vibe -->
+          <div class="ca-branch-card ca-branch-card--enterprise">
+            <div class="ca-branch-card__header">
+              <div>
+                <h3 class="ca-branch-card__title">Approach 2: SDD Enterprise &amp; Trust</h3>
+                <span class="ca-small">Branch: <code translate="no">main</code> (old <code translate="no">solucao-sdd-vibe</code>)</span>
+              </div>
+              <span class="ca-branch-card__tag ca-branch-card__tag--enterprise">Production &amp; Scale</span>
+            </div>
+
+            <p class="ca-small">
+              Focus on <strong>banking reliability, compliance and industrial life cycle</strong>. Adopt Spec-Driven Development (SDD),
+9 formal ADRs, canonical capacity taxonomy, Platt Scaling calibration, 4-layer barrier (including Steering Guard)
+and the blueprint for high performance compiled inference.
+            </p>
+
+            <div class="ca-branch-meta">
+              <div>
+                <span>Test Coverage</span>
+                <span style="color:var(--ca-pass);">72 tests / 0 skips</span>
+              </div>
+              <div>
+                <span>Catalog Governance</span>
+                <span style="color:var(--ca-pass);">14 capabilities + collapse</span>
+              </div>
+              <div>
+                <span>Router Calibration</span>
+                <span style="color:var(--ca-pass);">Platt Scaling Sigmoid</span>
+              </div>
+              <div>
+                <span>Directional Guard</span>
+                <span style="color:var(--ca-pass);">G4 Active (Read != Write)</span>
+              </div>
+            </div>
+
+            <div class="ca-prose" style="margin-top: 10px;">
+              <h4 style="font-size:0.9rem; margin-bottom:4px;">Pros &amp; Trade-offs:</h4>
+              <ul class="ca-small" style="padding-left:18px; margin-bottom:16px;">
+                <li><strong>Pro:</strong> <strong>100% Hit Rate@2</strong> and <strong>zero incorrect executions</strong> formally guaranteed.</li>
+                <li><strong>Pro:</strong> Proven protection against damage to the client's bank record (G4).</li>
+                <li><strong>Pro:</strong> Ready for industrial scale: manifesto <code translate="no">APM.yml</code> and ADR-009 (rust/Go).</li>
+                <li><strong>Against:</strong> Requires continuous discipline of catalog governance and parity tests.</li>
+              </ul>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 12px;">
+              <a class="ca-btn ca-btn--primary" href="https://github.com/issei/case-agents/tree/main" target="_blank" rel="noopener" style="width:100%; justify-content:center;">
+                Explore branch main (Production)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-principle">
+          <p>
+            <strong>The lesson of duality:</strong> In the validation phase (PoC), the Shiny Solution is tempting by speed.
+However, in finance or health, the cost of incorrect execution in production exceeds the cost of governance infinitely.
+A branch <code translate="no">main</code> there is to demonstrate how to overcome this barrier with engineering rigor.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════════════════════════════════════ ATO 2: CRASH SILENCIOSO ═══ -->
     <section id="crash-silencioso" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">02 · The Measure Failure</p>
+        <p class="ca-eyebrow">03 · The Measure Failure</p>
         <h2>Silent Crash: the failure that 54 tests did not catch</h2>
 
         <div class="ca-prose">
@@ -523,16 +676,17 @@ does not generate code exception. He passes the green and makes a ruinous decisi
         <div class="ca-video">
           <iframe src="https://www.youtube-nocookie.com/embed/HlgRNYHvOtg?rel=0&amp;modestbranding=1"
             title="The Evolution of Programming and Vibe Coding — Video on Looks Right and Intent Engineering"
+            aria-label="Video: The Evolution of Programming — Looks Right and Intent Engineering"
             loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 3. ARITMÉTICA DA FALHA ═══ -->
+    <!-- ════════════════════════════════════ 4. ARITMÉTICA DA FALHA ═══ -->
     <section id="por-que-nenhum-peso-resolve" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">03 · Structural Diagnosis</p>
+        <p class="ca-eyebrow">04 · Structural Diagnosis</p>
         <h2>Why no vectorization weight solves the problem</h2>
 
         <div class="ca-prose">
@@ -567,7 +721,7 @@ The difference between consultation and change is <strong>one word: the verb</st
     <!-- ════════════════════════════════════════ ATO 3: A BARREIRA ═══ -->
     <section id="barreira" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">04 · The Rigid Solution</p>
+        <p class="ca-eyebrow">05 · The Rigid Solution</p>
         <h2>The 4 Layers Pre-Execution Barrier</h2>
 
         <div class="ca-prose">
@@ -633,21 +787,22 @@ The difference between consultation and change is <strong>one word: the verb</st
         <div class="ca-video" style="margin-top: 28px;">
           <iframe src="https://www.youtube-nocookie.com/embed/m69fzdS-EG0?rel=0&amp;modestbranding=1"
             title="The New AI Paradigm — Tool Calling, ReAct video and autonomy limits"
+            aria-label="Video: The New AI Paradigm — Tool Calling, ReAct and Agentic Autonomy"
             loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════ 5. ARQUITETURA ═══ -->
+    <!-- ════════════════════════════════════════ 6. ARQUITETURA MVP ═══ -->
     <section id="arquitetura" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">05 · Pipeline</p>
-        <h2>The Final Architecture in 4 Layers</h2>
+        <p class="ca-eyebrow">06 · MVP Pipeline</p>
+        <h2>Architecture in 4 Layers (Mathematics Validation in Python)</h2>
 
         <div class="ca-prose">
           <p>
-            the full flow of the application until the implementation authorisation:
+            the complete flow of the application until the execution authorisation on the validation engine:
           </p>
         </div>
 
@@ -719,10 +874,200 @@ Validate the four guards before the execution mock. If there is no transactional
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 6. GOVERNANÇA CATÁLOGO ═══ -->
+    <!-- ════════════════════════════════════ 7. ARQUITETURA PRODUTIVA (ADR-009) ═══ -->
+    <section id="arquitetura-produtiva" class="ca-section">
+      <div class="ca-wrap">
+        <p class="ca-eyebrow">07 · From proof of concept to production</p>
+        <h2>High Performance Multi-Language Architecture (ADR-009 &amp; RFC)</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            MVP Python pipeline proved the mathematical solidity of the engine: 100% accuracy and zero incorrect executions.
+However, transfer Python pods directly to critical banking production path (attending tens of thousands
+requests per second with SLA <code translate="no">p99 &lt; 1-3 ms</code>) runs into unavoidable limitations:
+o <strong>Global Interpreter Lock (GIL)</strong>, the <strong>Garbage Collection (GC) unpredictable jitter</strong>
+            and the cost of dynamic dismatch.
+          </p>
+
+          <p>
+            The formalized engineering response in <strong>ADR-009</strong> and <strong>RFC Architecture</strong> is the
+            <strong>strict decoupling between Cold Path and Hot Path</strong>:
+          </p>
+        </div>
+
+        <!-- Diagrama Cold Path vs Hot Path -->
+        <div class="ca-arch-flow">
+          <!-- Cold Path Box -->
+          <div class="ca-arch-box ca-arch-box--cold">
+            <div class="ca-arch-box__head">
+              <h3 style="margin:0; font-size:1.15rem; color:var(--ca-heading);">Cold Path: Search &amp; MLOps</h3>
+              <span class="ca-arch-box__pill ca-arch-box__pill--cold">Python 3.12 · Offline / CI</span>
+            </div>
+            <p class="ca-small">
+              Keeps the Python ecosystem where it is unbeatable: feature engineering, training with <code translate="no">scikit-learn</code>,
+calibration via <code translate="no">CalibratedClassifierCV</code> (Platt Scaling), SHAP and generation of deterministic artifacts.
+            </p>
+
+            <ul class="ca-arch-specs">
+              <li><strong>ONNX Export:</strong> Compiled linear inference graph (<code translate="no">modelo_router.onnx</code>).</li>
+              <li><strong>CSR Sparsa Matrix:</strong> The 285 documents in the catalogue are pre-computed and serialized in <code translate="no">doc_matrix.csr</code>.</li>
+              <li><strong>Deterministic Vocabulary:</strong> TF-IDF Dictionary indexed with IDF weights (<code translate="no">vocab_tfidf.json</code>).</li>
+              <li><strong>Banking immutability:</strong> Artifacts versioned in Object Storage signed with hash SHA-256.</li>
+              <li><strong style="color:var(--ca-alert);">Hard Insulation:</strong> The production runtime <strong>never matters Python, numpy or scikit-learn</strong>.</li>
+            </ul>
+          </div>
+
+          <!-- Hot Path Box -->
+          <div class="ca-arch-box ca-arch-box--hot">
+            <div class="ca-arch-box__head">
+              <h3 style="margin:0; font-size:1.15rem; color:var(--ca-heading);">Hot Path: OmniRoute Gateway</h3>
+              <span class="ca-arch-box__pill ca-arch-box__pill--hot">Rust / Go · Online Stateless</span>
+            </div>
+            <p class="ca-small">
+              Single stateless input point via gRPC or HTTP/2. Built-in inference motor (<em>in-process</em>),
+eliminating network jumps, intermediate serialization or IPC calls.
+            </p>
+
+            <ul class="ca-arch-specs">
+              <li><strong>Zero Garbage Collection:</strong> Rust operates without garbage collector, eliminating jitter and ensuring deterministic latency p99 (&lt; 1-3 ms).</li>
+              <li><strong>Zero-allocation on Hot Path:</strong> Static pools and pre-allocated buffers via <code translate="no">tokio</code> and memory arenas.</li>
+              <li><strong>Guard of 4 Layers in RAM:</strong> Router, Retriever (multiplication of parallel sparse matrix) and Guard Rails executed in &lt; 10 μs.</li>
+              <li><strong>Distroless Container:</strong> Single static torque (~20 MB) with minimal attack surface and memory safety proven by the compiler.</li>
+              <li><strong>Slot-Filling Rinse:</strong> The LLM is only invoked when the tool has already been isolated and authorized.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ca-prose">
+          <h3 id="escolha-tecnologica">Technology Decision Matrix: Rust vs Go</h3>
+          <p>
+            The architecture document thoroughly compares engineering options for OmniRoute Gateway:
+          </p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Assessment Criteria</th>
+                <th scope="col">Rust (Primary Recommended)</th>
+                <th scope="col">Go (secondary alternative)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Memory Management</strong></td>
+                <td><strong style="color:var(--ca-pass);">Zero GC</strong> (Ownership &amp; Borrow Checker). No unpredictable breaks.</td>
+                <td>Garbage Collector with sub-millissecond pauses, but with jitter risk under high string volume.</td>
+              </tr>
+              <tr>
+                <td><strong>Latency p99</strong></td>
+                <td><strong style="color:var(--ca-pass);">Sub-milissecond (&lt; 1 ms)</strong> deterministic and predictable.</td>
+                <td>2 ms to 5 ms (small oscillations during GC collections).</td>
+              </tr>
+              <tr>
+                <td><strong>Competition</strong></td>
+                <td><code translate="no">tokio</code> (I/O non-blocking) + <code translate="no">rayon</code> (data parallelism).</td>
+                <td>Native Goroutines and canals. Excellent I/O competition.</td>
+              </tr>
+              <tr>
+                <td><strong>Linear algebra &amp; ONNX</strong></td>
+                <td>Crate <code translate="no">ort</code> (official ONNX Runtime zero-overhead bindings) + <code translate="no">sprs</code> (CSR).</td>
+                <td><code translate="no">onnxruntime-go</code> via CGo (context exchange cost Go ↔ C).</td>
+              </tr>
+              <tr>
+                <td><strong>Compliance and Security</strong></td>
+                <td>Formal prevention of data races and buffer overflows in compilation time.</td>
+                <td>Memory safe, but at risk of excessive allocations in the heap.</td>
+              </tr>
+              <tr>
+                <td><strong>Artifact of Delivery</strong></td>
+                <td>Static torque (~15-25 MB), container <code translate="no">distroless</code>.</td>
+                <td>Static torque (~20-30 MB), container <code translate="no">distroless</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose">
+          <h3 id="ecossistema-adrs">The Architecture Decision Ecosystem (9 ADRs)</h3>
+          <p>
+            Each structural choice was recorded according to the Architecture Decision Record (ADR),
+ensuring that any new team member understands the context, discarded alternatives and consequences:
+          </p>
+        </div>
+
+        <div class="ca-adr-grid">
+          <a class="ca-adr-card ca-adr-card--featured" href="https://github.com/issei/case-agents/blob/main/docs/adr/0009-arquitetura-multi-linguagem-inferencia-alta-performance.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-009 · Highlight</span>
+              <h4 class="ca-adr-card__title">Multi-Language architecture &amp; Cold/Hot Path Decoupling</h4>
+              <p class="ca-adr-card__desc">Offline Python pipeline segregation for inference compiled in Rust/Go with latency p99 &lt; 1-3 ms.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">See ADR</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0008-guarda-de-direcao-leitura-escrita.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-008 · Security</span>
+              <h4 class="ca-adr-card__title">Steering Guard (Read vs Writing)</h4>
+              <p class="ca-adr-card__desc">Silent Crash Final Containment: Reading Queries never perform writing tools.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">See ADR</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0007-calibracao-de-probabilidade-e-guarda-de-margem.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-007 · Statistics</span>
+              <h4 class="ca-adr-card__title">Platt Scaling &amp; Margin Guard Calibration</h4>
+              <p class="ca-adr-card__desc">Platt Scaling in logistic estimator, eliminating 45% of false negatives by underconfidence.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">See ADR</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0006-taxonomia-de-capacidades-e-colapso-de-duplicatas.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-006 · Catalogue</span>
+              <h4 class="ca-adr-card__title">Ability Taxonomy and Canon Collapse</h4>
+              <p class="ca-adr-card__desc">Collapse of redundant operational duplicates, raising Hit Rate@2 from 35% to 100%.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">See ADR</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0005-alinhamento-apm-e-omniroute-gateway.md" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADR-005 · Compliance</span>
+              <h4 class="ca-adr-card__title">Alignment APM &amp; OmniRoute Gateway</h4>
+              <p class="ca-adr-card__desc">Corporate package manifest in accordance with LGPD, PCI-DSS v4.0 and BACEN 4893.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">See ADR</span>
+          </a>
+
+          <a class="ca-adr-card" href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">
+            <div>
+              <span class="ca-adr-card__num">ADRs 0001 to 0004</span>
+              <h4 class="ca-adr-card__title">Grounds: Normalization, Router, Ranking and Harness</h4>
+              <p class="ca-adr-card__desc">Unicode NFKD canonical normalization, lexical separation and deterministic harmony of metrics.</p>
+            </div>
+            <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">See All</span>
+          </a>
+        </div>
+
+        <div class="ca-hero__cta" style="margin-top: 24px;">
+          <a class="ca-btn ca-btn--primary" href="https://github.com/issei/case-agents/blob/main/docs/architecture/proposta-arquitetura-multi-linguagem.md" target="_blank" rel="noopener">
+            Read RFC Complete Multi-Language Architecture
+          </a>
+          <a class="ca-btn ca-btn--secondary" href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">
+            Browse the 9 ADRs in GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ 8. GOVERNANÇA CATÁLOGO ═══ -->
     <section id="governanca-catalogo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">06 · Catalog Governance</p>
+        <p class="ca-eyebrow">08 · Catalog Governance</p>
         <h2>The catalog is the problem, not the vectorization</h2>
 
         <div class="ca-prose">
@@ -750,10 +1095,10 @@ The specific variant that married is preserved in <code translate="no">matched_v
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 7. ECONOMIA HONESTA ═══ -->
+    <!-- ════════════════════════════════════ 9. ECONOMIA HONESTA ═══ -->
     <section id="economia-honesta" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">07 · Measured Evolution</p>
+        <p class="ca-eyebrow">09 · Measured Evolution</p>
         <h2>Economy without success rate is disguised risk</h2>
 
         <div class="ca-prose">
@@ -766,10 +1111,10 @@ The specific variant that married is preserved in <code translate="no">matched_v
           <table class="ca-table">
             <thead>
               <tr>
-                <th>Metric / Iteration</th>
-                <th>Initial commit (<code translate="no">fc830dc</code>)</th>
-                <th>Crash Iteration (<code translate="no">c8f30d2</code>)</th>
-                <th>Published version (<code translate="no">1f780c0</code>)</th>
+                <th scope="col">Metric / Iteration</th>
+                <th scope="col">Initial commit (<code translate="no">fc830dc</code>)</th>
+                <th scope="col">Crash Iteration (<code translate="no">c8f30d2</code>)</th>
+                <th scope="col">Published version (<code translate="no">1f780c0</code>)</th>
               </tr>
             </thead>
             <tbody>
@@ -847,10 +1192,10 @@ public <code translate="no">cost_savings_pct_on_resolved</code>, <code translate
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 8. O MÉTODO ═══ -->
+    <!-- ════════════════════════════════════ 10. O MÉTODO ═══ -->
     <section id="metodo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">08 · Procedure</p>
+        <p class="ca-eyebrow">10 · The Process</p>
         <h2>How was developed: the agentic method with embedded criticism</h2>
 
         <div class="ca-prose">
@@ -920,10 +1265,10 @@ public <code translate="no">cost_savings_pct_on_resolved</code>, <code translate
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 9. EVIDÊNCIA E SUÍTE ═══ -->
+    <!-- ════════════════════════════════════ 11. EVIDÊNCIA E SUÍTE ═══ -->
     <section id="evidencia" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">09 · Executable Specification</p>
+        <p class="ca-eyebrow">11 · Executable Specification</p>
         <h2>The Suite of 72 Tests as System Specification</h2>
 
         <div class="ca-prose">
@@ -957,10 +1302,10 @@ more valuable does not check a returned value; check that <strong>Nothing happen
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 10. LIMITAÇÕES ═══ -->
+    <!-- ════════════════════════════════════ 12. LIMITAÇÕES ═══ -->
     <section id="limitacoes" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">10 · Technical Transparency</p>
+        <p class="ca-eyebrow">12 · Technical Transparency</p>
         <h2>Real Project Limitations (What Benchmark Does Not Cover)</h2>
 
         <div class="ca-prose">
@@ -981,10 +1326,10 @@ more valuable does not check a returned value; check that <strong>Nothing happen
       </div>
     </section>
 
-    <!-- ════════════════════════════════════ 11. REFERÊNCIAS ═══ -->
+    <!-- ════════════════════════════════════ 13. REFERÊNCIAS ═══ -->
     <section id="referencias" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">11 · Ecosystem &amp; Links</p>
+        <p class="ca-eyebrow">13 · Ecosystem &amp; Links</p>
         <h2>Conceptual References of the Site</h2>
 
         <div class="ca-refs">
@@ -1005,11 +1350,14 @@ more valuable does not check a returned value; check that <strong>Nothing happen
             </ul>
           </div>
           <div>
-            <h3>Project Source Code</h3>
+            <h3>Repository &amp; Architecture</h3>
             <ul>
-              <li><a href="https://github.com/issei/case-agents" target="_blank" rel="noopener">GitHub Repository <code translate="no">issei/case-agents</code></a></li>
-              <li><a href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">8 ADRs in the Repository</a></li>
-              <li><a href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" target="_blank" rel="noopener">candidate report.json</a></li>
+              <li><a href="https://github.com/issei/case-agents" target="_blank" rel="noopener">Official Repository <code translate="no">issei/case-agents</code></a></li>
+              <li><a href="https://github.com/issei/case-agents/tree/feature/solucao-enxuta" target="_blank" rel="noopener">Branch <code translate="no">feature/solucao-enxuta</code> (Agil PoC)</a></li>
+              <li><a href="https://github.com/issei/case-agents/tree/main" target="_blank" rel="noopener">Branch <code translate="no">main</code> (&amp; production SDD)</a></li>
+              <li><a href="https://github.com/issei/case-agents/blob/main/docs/architecture/proposta-arquitetura-multi-linguagem.md" target="_blank" rel="noopener">RFC: Multi-Language Architecture Proposal</a></li>
+              <li><a href="https://github.com/issei/case-agents/tree/main/docs/adr" target="_blank" rel="noopener">9 Registers of Architecture Decision (ADRs)</a></li>
+              <li><a href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" target="_blank" rel="noopener">Official report <code translate="no">candidate_report.json</code></a></li>
             </ul>
           </div>
         </div>
@@ -1031,7 +1379,8 @@ more valuable does not check a returned value; check that <strong>Nothing happen
       <li><strong>The ability is to choose the right tool; trust is to know when not to execute any.</strong></li>
       <li><strong>Catalog governance</strong> — collapse of semantic duplicates in 14 canonical capabilities raised Hit Rate@2 from 35% to 100%.</li>
       <li><strong>The Silent Crash contained</strong> — the Board of Directors (reading vs writing) prevented an e-mail consultation from changing the client's record.</li>
-      <li><strong>Real cost savings</strong> — 77.8% of economy with 100% success in executions.</li>
+      <li><strong>Two branch strategy</strong> — explicit comparison between agile prototyping (<code translate="no">feature/solucao-enxuta</code>) and industrial robustness (<code translate="no">main</code>).</li>
+      <li><strong>Multi-language production architecture (ADR-009)</strong> — rigid segregation Cold Path (Python MLOps) and Hot Path (Rust/Go stateless with SLA p99 &lt; 1-3 ms).</li>
     </ul>
     <p class="aeo-tldr__foot">Case study <a href="/en/engenharia-confianca">Trust Engineering</a> and <a href="/en/engenharia-agentes-ia">AI Agent Engineering</a>.</p>
   </div>
@@ -1062,7 +1411,7 @@ more valuable does not check a returned value; check that <strong>Nothing happen
     <div class="ca-wrap">
       <p class="ca-footer__copy">
         © 2026 Mauritius Yokoyama Issei. Project <span translate="no">case-agents</span> documented under specification
-        <code translate="no">docs/specs/pages/case-agents/00_SDD_case_agents.md</code>.
+        <code translate="no">docs/specs/pages/case-agents/00_SDD_case_agents.md</code> and architectural proposal <code translate="no">ADR-009</code>.
 The aforementioned metrics correspond to the deterministic execution of the benchmark in the official repository.
       </p>
     </div>

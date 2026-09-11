@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Vida em 3D | Mauricio Issei</title>
+    <title>3D Life </title>
 
     <meta name="description"
-        content="Explore a trajetória de vida de Mauricio Issei em uma experiência 3D imersiva. Uma jornada contemplativa de 1982 aos dias de hoje.">
+        content="Explore Mauricio Issei's life trajectory in an immersive 3D experience. A contemplative journey from 1982 to today.">
 
 
 
@@ -408,22 +408,22 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="Maurício Issei, vida em 3D, experiência imersiva, WebGL, trajetória" />
+<meta name="keywords" content="Mauricio Issei, 3D life, immersive experience, WebGL, trajectory" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/en/life3d" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Maurício Yokoyama Issei" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:title" content="Vida em 3D — Maurício Issei" />
-<meta property="og:description" content="A trajetória de vida de Maurício Issei numa experiência 3D imersiva: uma jornada contemplativa de 1982 aos dias de hoje." />
+<meta property="og:title" content="3D Life — Mauritius Issei" />
+<meta property="og:description" content="The life trajectory of Maurício Issei in an immersive 3D experience: a contemplative journey from 1982 to today." />
 <meta property="og:url" content="https://mauricio.issei.com.br/en/life3d" />
 <meta property="og:image" content="https://mauricio.issei.com.br/og-life3d.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Vida em 3D — Maurício Issei" />
+<meta property="og:image:alt" content="3D Life — Mauritius Issei" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Vida em 3D — Maurício Issei" />
-<meta name="twitter:description" content="A trajetória de vida de Maurício Issei numa experiência 3D imersiva: uma jornada contemplativa de 1982 aos dias de hoje." />
+<meta name="twitter:title" content="3D Life — Mauritius Issei" />
+<meta name="twitter:description" content="The life trajectory of Maurício Issei in an immersive 3D experience: a contemplative journey from 1982 to today." />
 <meta name="twitter:image" content="https://mauricio.issei.com.br/og-life3d.png" />
 <meta name="twitter:creator" content="@mauricioissei" />
 <meta name="twitter:site" content="@mauricioissei" />
@@ -435,7 +435,7 @@
       "@type": "WebSite",
       "@id": "https://mauricio.issei.com.br/en/#website",
       "url": "https://mauricio.issei.com.br/en/",
-      "name": "Maurício Yokoyama Issei",
+      "name": "Mauricio Yokoyama Issei",
       "inLanguage": "en-US",
       "publisher": {
         "@id": "https://mauricio.issei.com.br/en/#author"
@@ -444,9 +444,9 @@
     {
       "@type": "Person",
       "@id": "https://mauricio.issei.com.br/en/#author",
-      "name": "Maurício Yokoyama Issei",
+      "name": "Mauricio Yokoyama Issei",
       "url": "https://mauricio.issei.com.br/en/",
-      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "jobTitle": "Tech Lead / AI Solutions Architect",
       "sameAs": [
         "https://www.linkedin.com/in/mauricioissei/",
         "https://github.com/issei",
@@ -460,7 +460,7 @@
       ],
       "@id": "https://mauricio.issei.com.br/en/life3d#webpage",
       "url": "https://mauricio.issei.com.br/en/life3d",
-      "name": "Vida em 3D — Maurício Issei",
+      "name": "3D Life — Mauritius Issei",
       "isPartOf": {
         "@id": "https://mauricio.issei.com.br/en/#website"
       },
@@ -482,19 +482,19 @@
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Início",
+          "name": "Start",
           "item": "https://mauricio.issei.com.br/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Catálogo",
+          "name": "Catalog",
           "item": "https://mauricio.issei.com.br/en/catalogo"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Vida em 3D — Maurício Issei"
+          "name": "3D Life — Mauritius Issei"
         }
       ]
     }
@@ -509,7 +509,7 @@
 </head>
 
 <body>
-    <canvas id="canvas3d" role="img" aria-label="Cenário 3D interativo da jornada de vida"></canvas>
+    <canvas id="canvas3d" role="img" aria-label="Interactive 3D scenario of the journey of life"></canvas>
 
     <!-- UI Layer -->
     <div id="ui">
@@ -518,21 +518,21 @@
                 <span id="phase-title-hud">...</span>
                 <span id="phase-period-hud">...</span>
             </div>
-            <div id="hint" aria-hidden="true">W A S D · setas</div>
+            <div id="hint" aria-hidden="true">W The S D · arrows</div>
         </header>
 
-        <div id="proximity-hint" aria-live="polite">◆ MEMÓRIA À FRENTE ◆</div>
+        <div id="proximity-hint" aria-live="polite">◆ MEMORY TO FRONT ◆</div>
 
-        <nav id="progress-dots" aria-label="Progresso da jornada"></nav>
+        <nav id="progress-dots" aria-label="Progress of the journey"></nav>
 
-        <nav id="touch-controls" aria-label="Controles táteis">
+        <nav id="touch-controls" aria-label="Tactile controls">
             <div class="ctrl-row">
-                <button class="ctrl-btn" id="btn-fwd" aria-label="Avançar">↑</button>
+                <button class="ctrl-btn" id="btn-fwd" aria-label="Forward">↑</button>
             </div>
             <div class="ctrl-row">
-                <button class="ctrl-btn" id="btn-left" aria-label="Esquerda">←</button>
-                <button class="ctrl-btn" id="btn-back" aria-label="Recuar">↓</button>
-                <button class="ctrl-btn" id="btn-right" aria-label="Direita">→</button>
+                <button class="ctrl-btn" id="btn-left" aria-label="Left">←</button>
+                <button class="ctrl-btn" id="btn-back" aria-label="Back">↓</button>
+                <button class="ctrl-btn" id="btn-right" aria-label="Right">→</button>
             </div>
         </nav>
     </div>
@@ -548,28 +548,28 @@
             <p id="modal-text"></p>
             <div id="modal-footer">
                 <span id="modal-counter"></span>
-                <button class="btn-pixel" id="btn-continue">Continuar →</button>
+                <button class="btn-pixel" id="btn-continue">Continue →</button>
             </div>
         </div>
     </div>
 
     <!-- Ending Screen -->
-    <div id="ending" role="region" aria-label="Fim da jornada">
-        <h2>Fim da Jornada</h2>
-        <p>Essa jornada mostra uma forma de construir uma vida.<br>Fica a pergunta: <strong>Qual é o seu próximo nível?</strong></p>
-        <a href="life.html" class="btn-pixel">← Versão 2D</a>
-        <a href="index.html" class="btn-pixel" style="margin-top: 4px;">↩ Início</a>
+    <div id="ending" role="region" aria-label="End of journey">
+        <h2>End of Journey</h2>
+        <p>This journey shows a way to build a life.<br>The question remains: <strong>What's your next level?</strong></p>
+        <a href="life.html" class="btn-pixel">← 2D version</a>
+        <a href="index.html" class="btn-pixel" style="margin-top: 4px;"></a>
     </div>
 
     <!-- Fade overlay -->
     <div id="fade" aria-hidden="true"></div>
 
     <!-- Intro Screen -->
-    <div id="intro" role="dialog" aria-modal="true" aria-label="Tela de entrada da experiência 3D">
-        <h1>Vida em 3D</h1>
-        <p class="subtitle">Uma jornada contemplativa pela história de Mauricio Issei — de 1982 aos dias de hoje.</p>
-        <button class="btn-pixel" id="btn-start">▶ Iniciar Jornada</button>
-        <p class="controls-hint">W A S D · Setas do teclado · Toque na tela</p>
+    <div id="intro" role="dialog" aria-modal="true" aria-label="3D Experience Input Screen">
+        <h1>3D Life</h1>
+        <p class="subtitle">A contemplative journey through the history of Mauricio Issei — from 1982 to today.</p>
+        <button class="btn-pixel" id="btn-start"></button>
+        <p class="controls-hint">W A S D · Keyboard arrows · Tap the screen</p>
     </div>
 
     <div role="status" aria-live="assertive" id="a11y-announcer" class="sr-only"></div>

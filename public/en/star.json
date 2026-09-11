@@ -1,392 +1,392 @@
 {
     "2018": [
         {
-            "titulo": "Transição do Time de Sustentação",
-            "situacao": "- Projetos do Cockpit e do Força Campo, recentemente implantados em produção, sem um processo de sustentação e de mudanças bem definidos, com um alto volume de erros e reclamações.",
+            "titulo": "Transition of the Support Team",
+            "situacao": "- Cockpit and Field Force projects, recently deployed in production, without a well-defined process of support and change, with a high volume of errors and complaints.",
             "tarefas": [
-                "Analisar e direcionar erros, falhas e funcionalidades incompletas",
-                "Alinhar processos de versionamento, mudança e de implantações",
-                "Implementar monitorações",
-                "Tratar incidentes"
+                "Analyze and target incomplete errors, failures and features",
+                "Align versioning, change and deployment processes",
+                "Implement monitoring",
+                "Treat incidents"
             ],
             "acoes": [
-                "Alinhado e criado um fluxo de chamados de sustentação para os executivos comerciais e para os técnicos e gestores de Logística",
-                "Alinhado com a área de mudanças e de segurança da informação a responsabilidade do time de sustentação ser responsável por validar e executar as implantações dos times na Salesforce de forma centralizada",
-                "Alinhado com os times melhores práticas para versionamento e utilizações de Sandboxes de desenvolvimento",
-                "Especificado e priorizado junto com fábrica de desenvolvimento Salesforce as correções de causa raiz para os problemas produtivos",
-                "Alinhado com time de CMR monitorações e alarmes"
+                "Aligned and created a stream of support calls for commercial executives and logistics technicians and managers",
+                "Aligned with the area of change and information security, the support team's responsibility is to validate and implement the deployments of the teams in Salesforce centrally",
+                "Aligned with best practice teams for versioning and using development Sandboxes",
+                "Specified and prioritized along with Salesforce development plant root cause corrections for productive problems",
+                "Lined up with CMR team monitoring and alarms"
             ],
             "resultados": [
-                "Redução e estabilidade do ambiente Salesforce, tanto para o Força de Vendas como para o Força de Campo",
-                "Ampliação do número de executivos e técnicos utilizando as ferramentas",
-                "Maior foco e número de entregas de projetos pelos times de projetos"
+                "Reduction and stability of the Salesforce environment for both the Sales Force and the Field Force",
+                "Extension of the number of executives and technicians using the tools",
+                "Higher focus and number of project deliveries by project teams"
             ]
         }
     ],
     "2019": [
         {
-            "titulo": "Sustentação AFVC",
+            "titulo": "AFVC support",
             "sub_projetos": [
                 {
-                    "titulo": "Força Campo",
+                    "titulo": "Field Force",
                     "situacao": [
-                        "Continuidade do trabalho de sustentação com aumento do time de sustentação precisando de capacitação e organização para atender um volume grande de chamados e problemas com alta criticidade recorrentes em Logística",
-                        "Exemplos de problemas comuns:",
-                        "- Falhas na criação de OS",
-                        "- Falhas na roteirização das OSs",
-                        "- Falhas no app Força Campo para atuação do Técnico"
+                        "Continuity of support work with increased support team needing training and organization to meet a large volume of calls and problems with recurrent high criticality in Logistics",
+                        "Examples of common problems:",
+                        "- Failures in OS creation",
+                        "- Failures in OS routing",
+                        "- Failures in the Force Field app for the Technician's performance"
                     ],
                     "tarefas": [
-                        "Discovery das funcionalidades do Força Campo",
-                        "Treinamento de time para atendimento da Sustentação",
-                        "Priorização de backlog de correções de causa raiz",
-                        "Desenvolvimento de correções de causa raiz"
+                        "Discovery of Field Force Features",
+                        "Team training for Support",
+                        "Root Cause Correction Backlog Priorization",
+                        "Development of root cause corrections"
                     ],
                     "acoes": [
-                        "Participação em refinamentos com os times de projetos, opinando sobre melhores práticas e qualidade do desenvolvimento",
-                        "Validação de toda nova entrega, compartilhando conhecimento com time de sustentação do que estava sendo evoluído",
-                        "Especificando e validando desenvolvimento de Fábrica de Software nas tratativas de causa raiz"
+                        "Participation in refinements with project teams, opinioning on best practices and development quality",
+                        "Validation of every new delivery, sharing knowledge with support team of what was being evolved",
+                        "Specifying and Validating Software Factory Development in Root Cause Treatises"
                     ],
                     "resultados": [
-                        "Redução de problemas críticos de impacto à operação Logística",
-                        "Menor tempo de atendimento dos incidentes",
-                        "Melhor gestão dos incidentes e problemas",
-                        "Time de projetos com mais entregas e com maior qualidade"
+                        "Reduction of critical impact problems for the Logistics operation",
+                        "Less time to attend to incidents",
+                        "Improved incident and problem management",
+                        "Project team with more deliveries and higher quality"
                     ]
                 },
                 {
-                    "titulo": "Força Vendas",
+                    "titulo": "Sales Force",
                     "situacao": [
-                        "Continuidade do trabalho de sustentação com divisão do time de sustentação para focar nos processos do Comercial, que estava em expansão e com alto volume de chamados e problemas",
-                        "Exemplo de problemas comuns:",
-                        "- Falhas na sincronização de dados no App Offline do Cockpit (versão Android)",
-                        "- Abends recorrentes de malha batch da sigla TV2",
-                        "- Alto volume de erros em funcionalidades do Cockpit"
+                        "Continuity of support work with division of support team to focus on Commercial processes, which was expanding and with high volume of calls and problems",
+                        "Example of common problems:",
+                        "- Data synchronization failures in the Cockpit Offline App (Android version)",
+                        "- What? Recurrent TV2 mesh batch Abends",
+                        "- High volume of errors in Cockpit features"
                     ],
                     "tarefas": [
-                        "Discovery das funcionalidades do Cockpit",
-                        "Treinamento de time para atendimento da Sustentação",
-                        "Priorização de backlog de correções de causa raiz",
-                        "Desenvolvimento de correções de causa raiz"
+                        "Discovery of Cockpit Features",
+                        "Team training for Support",
+                        "Root Cause Correction Backlog Priorization",
+                        "Development of root cause corrections"
                     ],
                     "acoes": [
-                        "Participação de refinamentos com time de projetos, opinando sobre melhores práticas e qualidade do desenvolvimento",
-                        "Validação de toda nova entrega, compartilhando conhecimento com time de sustentação do que estava sendo evoluído",
-                        "Especificando e validando desenvolvimento de Fábrica de Software nas tratativas de causa raiz"
+                        "Participation of refinements with project team, opining on best practices and development quality",
+                        "Validation of every new delivery, sharing knowledge with support team of what was being evolved",
+                        "Specifying and Validating Software Factory Development in Root Cause Treatises"
                     ],
                     "resultados": [
-                        "Redução de problemas críticos de impacto à operação comercial",
-                        "Menor tempo de atendimento dos incidentes",
-                        "Melhor gestão dos incidentes e problemas",
-                        "Time de projetos com mais entregas e com maior qualidade"
+                        "Reduction of critical impact problems for commercial operation",
+                        "Less time to attend to incidents",
+                        "Improved incident and problem management",
+                        "Project team with more deliveries and higher quality"
                     ]
                 }
             ]
         },
         {
-            "titulo": "Sustentação Credenciamento Rede (Força Vendas + WF1)",
-            "situacao": "- Priorização e metas corporativas para o Comercial realizar mais Credenciamentos, onde foi desenvolvido na própria Salesforce (fora do app Android) o credenciamento Cockpit que nascia com mais integrações online com o WF1 e GE. Já com o time de sustentação apartado do time de Logística",
+            "titulo": "Support Network Accreditation (Force Sales + WF1)",
+            "situacao": "- Prioritization and corporate goals for Commercial perform more Accreditations, where was developed in Salesforce itself (outside the Android app) Cockpit accreditation that was born with more online integrations with WF1 and GE. With the support team away from the Logistics team",
             "tarefas": [
-                "Mapeamento das integrações e arquitetura do Credenciamento Cockpit",
-                "Acompanhamento dos refinamentos do novo Credenciamento",
-                "Atendimento dos incidentes"
+                "Mapping of Cockpit Accreditation integrations and architecture",
+                "Monitoring the refinements of the new Accreditation",
+                "Attendance of incidents"
             ],
             "acoes": [
-                "Validação de toda nova entrega de mudanças em produção",
-                "Execução dos Runbooks de implantação em produção e acompanhamento das validações",
-                "Direcionamento para o time de projetos de melhorias e tratativas de causa raiz de incidentes"
+                "Validation of every new delivery of changes in production",
+                "Execution of implementation Runbooks in production and monitoring of validations",
+                "Direction for the team of improvement projects and root cause treatatives of incidents"
             ],
             "resultados": [
-                "Rapidez em atendimento de incidentes",
-                "Redução de problemas críticos para operação comercial",
-                "Maior número de entregas com qualidade do time de projetos"
+                "Rapid incident response",
+                "Reduction of critical problems for commercial operation",
+                "Largest number of project team quality deliveries"
             ]
         }
     ],
     "2020": [
         {
-            "titulo": "Revisão orçamentária e CINVEST do novo contrato Salesforce até 2025",
-            "situacao": "- Com o vencimento do primeiro contrato da Salesforce e significativa expansão de usuários das ferramentas, time não conhecia como era precificado os tipos de licenças e não tinha uma base histórica das aquisições avulsas que já haviam sido feitas e precisava fechar um orçamento bem conservador para o próximo ano (2019–2020)",
+            "titulo": "Budget review and CINVEST of the new Salesforce contract by 2025",
+            "situacao": "- What? With the maturity of Salesforce's first contract and significant expansion of tool users, team did not know how the types of licenses were priced and did not have a historical basis of individual acquisitions that had already been made and needed to close a very conservative budget for next year (2019–2020)",
             "tarefa": [
-                "Reuniões com a Salesforce para detalhar cada tipo de licença",
-                "Revisão de todas as funcionalidades e necessidades previstas para correlacionar com as licenças corretas",
-                "Alinhar com cada área quantidade de usuários e expectativas de expansões de time",
-                "Definir uma gestão de limites de licenças entre as áreas"
+                "Meetings with Salesforce to detail each type of license",
+                "Review of all features and needs foreseen to correlate with correct licenses",
+                "Align with each area number of users and expectations of team expansions",
+                "Set license limits management between areas"
             ],
             "acoes": [
-                "Planilhado todos os custos no menor nível de detalhe da Salesforce do que já estava em produção e do que era estimado para o próximo ano",
-                "Elaborado apresentação e defesa para CINVEST",
-                "Detalhado para cada time como era composto o orçamento da área"
+                "Spreaded all costs at the lowest level of detail of Salesforce than was already in production and what was estimated for next year",
+                "Prepared presentation and defense for CINVEST",
+                "Detailed for each team as the area budget was composed"
             ],
             "resultados": [
-                "Economia de mais de 3MM na negociação do contrato final, com alocação de licenças não utilizadas em outros tipos de licenças que atendiam as expansões dos times de Logística, Comercial e da Central de Atendimento",
-                "Novo contrato negociado em parceria com CoE Salesforce do Itaú e time de compras, possibilitando uma negociação de maior magnitude e beneficiando tanto a Rede quanto o Itaú no contrato firmado até 2025",
-                "Clareza das áreas sobre o custo de cada tipo de licença"
+                "Economy of more than 3MM in the negotiation of the final contract, with allocation of unused licenses in other types of licenses that met the expansions of Logistics, Commercial and Service Center teams",
+                "New contract negotiated in partnership with CoE Salesforce of Itaú and purchasing team, enabling a negotiation of greater magnitude and benefiting both the Network and Itaú in the contract signed until 2025",
+                "Clearness of areas on the cost of each type of license"
             ]
         },
         {
-            "titulo": "Revisão orçamentária de fornecedores (MGI Tech & Maplink)",
-            "situacao": "- Falta de clareza e conhecimento sobre a precificação do que já estava em uso na produção e das estimativas de expansão das áreas para elaboração de orçamento da área de TI",
+            "titulo": "Supplier Budget Review (MGI Tech & Maplink)",
+            "situacao": "- Lack of clarity and knowledge about the pricing of what was already in use in the production and the estimates of expansion of the areas for budgeting of the IT area",
             "tarefa": [
-                "Alinhamento com cada fornecedor para esclarecer a precificação de cada funcionalidade e recurso contratado",
-                "Alinhamento com as áreas de Logística e Comercial sobre recursos subutilizados e planejamento de expansão e melhorias/trocas",
-                "Elaboração das novas condições e necessidades para novo contrato com cada fornecedor"
+                "Alignment with each supplier to clarify the pricing of each functionality and contracted resource",
+                "Alignment with Logistics and Commercial areas on underutilized resources and expansion planning and improvements/exchanges",
+                "Preparation of new conditions and requirements for new contracts with each supplier"
             ],
             "acoes": [
-                "Planilhado e construído apresentação e defesa para CINVEST sobre os custos e utilização dos fornecedores",
-                "Cancelado a contratação de aluguel de tablets para os comerciais, passando a utilizarem equipamento adquirido e gerenciado pela própria área de mobilidade do Banco",
-                "Revisto e atualizado a versão de celulares alugados para os técnicos de Logística",
-                "Separado o contrato de equipamento e recursos dos fornecedores, do contrato de prestação de serviços, suporte e gestão. Tendo cláusulas de multas específicas para cada um"
+                "Planned and built presentation and defense for CINVEST on the costs and use of suppliers",
+                "Cancelled hiring tablet rental for commercials, using equipment acquired and managed by the Bank's own mobility area",
+                "Reviewed and updated the version of rented mobile phones for Logistics technicians",
+                "Separated from the supplier's equipment and resources contract, the service contract, support and management. Having specific fines clauses for each"
             ],
             "resultados": [
-                "Economia de aproximadamente 500k nos contratos renegociados com os fornecedores, otimizando melhor os recursos utilizados e estimados",
-                "Melhor gestão orçamentária dos fornecedores feita pela gerência da sustentação AFVC"
+                "Economy of approximately 500k in renegotiated contracts with suppliers, better optimising the resources used and estimated",
+                "Better budget management of suppliers made by AFVC support management"
             ]
         },
         {
-            "titulo": "Sustentação Core Rede (GE1, WF1, WM1, etc.)",
-            "situacao": "- Com sustentação do Força de Vendas muito mais tranquila, foi unificado a sustentação com os sistemas Core Rede do WF1, GE1, etc., com a necessidade e metas para redução do número de chamados, abends, tempo do atendimento de incidentes e direcionamento de correções de causa raiz para os times de projetos",
+            "titulo": "Core Network Support (GE1, WF1, WM1, etc.)",
+            "situacao": "- What? With much quieter Sales Force support, support was unified with the Core Network systems of WF1, GE1, etc., with the need and goals to reduce the number of calls, abends, time of incident attendance and direction of root cause corrections for project teams",
             "tarefa": [
-                "Análise de chamados críticos com necessidade de soluções paliativas rápidas",
-                "Especificação de melhorias de causa raiz",
-                "Desenvolvimento de melhorias e correções",
-                "Validação e acompanhamento de implantações de projetos",
-                "Acompanhamento de refinamentos de projetos com viés de sustentação, priorizando com os times requisitos não funcionais de monitoração, segurança e qualidade"
+                "Analysis of so-called critics in need of quick palliative solutions",
+                "Specification of Root Cause Improvements",
+                "Development of improvements and corrections",
+                "Validation and monitoring of project deployments",
+                "Monitoring of project refinements with support bias, prioritizing with teams non-functional monitoring, safety and quality requirements"
             ],
             "acoes": [
-                "Atendimento aos chamados de variados problemas (Cadastrais, Credenciamento, Domicílio Bancário, Habilitação de produtos, Projetos estruturantes, etc.)",
-                "Melhorias em logs",
-                "Incluído integrações para captura de logs no Splunk",
-                "Treinamento do time de sustentação com conhecimento sobre a Salesforce"
+                "Service to calls of various problems (Cadastrals, Accreditation, Banking, Product Qualification, Structural Projects, etc.)",
+                "Log improvements",
+                "Included integrations to capture logs in Splunk",
+                "Support team training with knowledge of Salesforce"
             ],
             "resultados": [
-                "Atingimento de metas de redução de incidentes e de tempo de atendimento dos chamados",
-                "Redução de abends da malha batch",
-                "Time de sustentação com capacitação também em Salesforce"
+                "Achievement of targets for reducing incidents and time of call attendance",
+                "Reduction of batch mesh abends",
+                "Support team with training also in Salesforce"
             ]
         }
     ],
     "2021": [
         {
-            "titulo": "Discovery para mudança de IPs do Sybase ASE Corp, na reestruturação de escopo PCI",
-            "situacao": "- Para segregar as redes PCI da Não PCI, foi aberto um projeto para avaliar a alteração do IP do servidor do Sybase ASE Corporativo (siglas GE1, WF1, WM1, etc.) sendo necessário mapear e estimar todas aplicações e serviços que precisariam ser ajustados",
+            "titulo": "Discovery for changing Sybase ASE Corp IPs in PCI scope restructuring",
+            "situacao": "- What? To segregate the non-PCI PCI networks, a project was opened to evaluate the change in the IP of the server of the corporate Sybase ASE ( GE1, WF1, WM1, etc.) being necessary to map and estimate all applications and services that would need to be adjusted",
             "tarefa": [
-                "Encontrar, mapear e estimar esforço para manutenção de cada aplicação ou serviço"
+                "Find, map and estimate effort to maintain each application or service"
             ],
             "acoes": [
-                "Busca de fontes versionados",
-                "Análise das configurações de cada aplicação/serviço",
-                "Levantamento de como testar cada aplicação e serviço",
-                "Aplicar e testar em homologação a alteração"
+                "Search for versioned fonts",
+                "Analysis of the settings of each application/service",
+                "Survey how to test each application and service",
+                "Apply and test under approval the change"
             ],
             "resultados": [
-                "Projeto foi despriorizado após inicial estimativa de alto impacto em um volume muito grande de aplicações e serviços ainda em levantamento",
-                "Foi apresentado pelo time de infraestrutura outra solução que não seria necessário alterar o IP atual",
-                "Mapeamento e entendimento do time de sustentação sobre muitas aplicações legadas"
+                "Project was depriorized after initial high impact estimate on a very large volume of applications and services still in survey",
+                "The infrastructure team presented another solution that would not need to change the current IP",
+                "Mapping and understanding of the support team on many legacy applications"
             ]
         },
         {
-            "titulo": "Onboarding do novo modelo de Comunidade Integrada e do Build&Run",
-            "situacao": "- Integração dos times de projetos com os times de sustentação, sendo necessário incluir na rotina do time de projetos processos de atendimento de chamados, plantão, monitoração e governança do ambiente produtivo",
+            "titulo": "Onboarding of the new Integrated Community and Build&Run model",
+            "situacao": "- Integration of project teams with support teams, being necessary to include in the routine of the project team processes of call, shift, monitoring and governance of the productive environment",
             "tarefa": [
-                "Documentar backlog de sustentação",
-                "Capacitar time de projetos no atendimento de incidentes"
+                "Document Support Backlog",
+                "Empower project team in incident care"
             ],
             "acoes": [
-                "Realização de acompanhamento em duplas com dev e sustentação nos atendimentos dos incidentes e no plantão",
-                "Passagem de conhecimento sobre problemas produtivos recorrentes"
+                "Follow-up in pairs with dev and support in incident care and on shift",
+                "Pass of knowledge on recurrent productive problems"
             ],
             "resultados": [
-                "Times com rotinas de entregas e de sustentação em revezamento de 'rebatedor' e plantonista"
+                "Times with delivery routines and support in relay of 'beater' and timer"
             ]
         }
     ],
     "2022": [
         {
-            "titulo": "Abertura de Conta Corrente PJ pelo Cockpit Rede",
-            "situacao": "- Projeto com viés de experimentação do modelo comercial da Rede para dar autonomia ao Executivo para iniciar a abertura de Conta Corrente Itaú PJ no próprio Cockpit Rede",
+            "titulo": "PJ Current Account Opening by Cockpit Network",
+            "situacao": "- Project with experimentation bias of the commercial model of the Network to give autonomy to the Executive to start the opening of Current Account Itaú PJ in Cockpit Network itself",
             "tarefa": [
-                "Participação de refinamentos técnicos",
-                "Desenvolvimento de telas e integrações",
-                "Acompanhamento de implantações e de validações",
-                "Revisão e refatoração de integrações",
-                "Discovery para evolução do MVP",
-                "Atendimento de incidentes"
+                "Participation of technical refinements",
+                "Screen development and integrations",
+                "Monitoring of deployments and validations",
+                "Review and refactoring of integrations",
+                "Discovery for MVP evolution",
+                "Attendance of incidents"
             ],
             "acoes": [
-                "No acompanhamento do piloto foi identificado melhorias pontuais no MVP para ampliar o número de executivos que experimentavam a solução",
-                "Melhorado logs e monitorações das integrações para rápida identificação de problemas ou divergências"
+                "In the pilot's follow-up, point improvements in the MVP were identified to increase the number of executives who experienced the solution.",
+                "Improved integration logs and monitoring for quick identification of problems or divergences"
             ],
             "resultados": [
-                "Solução estável e proporcionou escalar para a maioria dos executivos utilizarem",
-                "Com ajustes do modelo de atendimento foi encurtado o processo, não sendo necessário atuação do gerente do banco, dando mais autonomia para o executivo"
+                "Stable solution and provided scaling for most executives to use",
+                "With adjustments of the care model, the process was shortened and the bank manager did not need to act, giving more autonomy to the executive"
             ]
         },
         {
-            "titulo": "Projetos de evolução do Credenciamento no Plano Padrão",
+            "titulo": "Accreditation Development Projects in the Standard Plan",
             "situacao": [
-                "O credenciamento no plano padrão era tratado em um fluxo diferente de telas com informações, integrações e preenchimento específicos. As principais necessidades da área comercial foram abertas em 3 grandes épicos:",
-                "- Envio de mais de uma máquina no Credenciamento Plano Padrão",
-                "- Envio de mais de uma tecnologia no Credenciamento Plano Padrão",
-                "- Validação de elegibilidade de contratação de Flex no Credenciamento Plano Padrão"
+                "The accreditation in the standard plane was treated in a different flow of screens with specific information, integrations and filling. The main needs of the commercial area were opened in three major epics:",
+                "- What? Sending more than one machine in the Standard Plan Accreditation",
+                "- What? Sending more than one technology in Standard Plan Accreditation",
+                "- Validation of Flex hiring eligibility in the Standard Plan Accreditation"
             ],
             "tarefa": [
-                "Implementar no fluxo do plano padrão o preenchimento da quantidade de máquinas por tipo de tecnologia",
-                "Implementar a mesma consulta de elegibilidade da contratação de Flex do Ipricing",
-                "Homologar todas as integrações até a geração das Ordens de Serviço e do PV"
+                "Implement in the flow of the standard plane the filling of the amount of machines per type of technology",
+                "Implement the same Ipricing Flex hire eligibility query",
+                "Homologize all integrations until Service Orders and PV generation"
             ],
             "acoes": [
-                "Refinado as necessidades e elaborado uma estratégia de entregas curtas de simples implementação e em paralelo o discovery da total absorção do fluxo do plano padrão, dentro do processo de negociação do Ipricing 2.0",
-                "Foi entregue inicialmente a possibilidade apenas de informar mais de uma máquina para uma única tecnologia",
-                "Foi entregue na sequência a jornada unificada do Ipricing 2.0 considerando como as opções de oferta padrão, com ou sem Flex dependendo da elegibilidade e também com a possibilidade de escolher mais de um tipo de tecnologia e também informar mais de uma máquina por tecnologia na proposta"
+                "Refined needs and elaborated a short delivery strategy of simple implementation and in parallel the discovery of total absorption of the flow of the standard plan within the trading process of Ipricing 2.0",
+                "Initially the possibility was given only to inform more than one machine for a single technology",
+                "It was delivered following the unified journey of Ipricing 2.0 considering as the standard offer options, with or without Flex depending on eligibility and also with the possibility to choose more than one type of technology and also inform more than one machine per technology in the proposal"
             ],
             "resultados": [
-                "Otimização da operação logística, conseguindo realizar em D0 em boa parte dos atendimentos a entrega completa da proposta realizada pelo comercial",
-                "Otimização do operacional do Executivo que não necessita abrir novas solicitações de máquina após a proposta",
-                "Executivo informa corretamente ao cliente em tempo de contratação se possui a antecipação em D2",
-                "Agilidade na entrega das demandas, sendo os 3 grandes épicos resolvidos em duas entregas estratégicas",
-                "Padronização da jornada de negociação sem mais a necessidade de duas squads para cuidar do Credenciamento Cockpit"
+                "Optimization of the logistics operation, being able to perform in D0 in most of the consultations the complete delivery of the proposal made by the commercial",
+                "Optimization of the Executive operational that does not need to open new machine requests after the proposal",
+                "Executive informs the customer correctly in hiring time if it has the anticipation in D2",
+                "Agility in the delivery of demands, being the three great epics solved in two strategic deliveries",
+                "Standardization of the trading day without the need for two squads to take care of Cockpit Accreditation"
             ]
         },
         {
-            "titulo": "Credenciamento Pessoa Física",
+            "titulo": "Accreditation Physical Person",
             "situacao": [
-                "Os executivos comerciais apenas tinham a opção de credenciamento de Pessoa Física com plano padrão através do envio por e-mail do formulário PCAE para a central de atendimento que enviava a proposta.",
-                "Somente após a efetivação do PV e atualização dos dados na Salesforce (D+2) o executivo poderia renegociar as taxas para o cliente PF no Ipricing 2.0"
+                "Commercial executives only had the option of accreditation of Physical Person with standard plan by e-mailing the PCAE form to the service center that sent the proposal.",
+                "Only after the implementation of PV and updating data in Salesforce (D+2) could the executive renegotiate fees for PF client in Ipricing 2.0"
             ],
             "tarefa": [
-                "Desenvolvimento de um novo fluxo para o PF",
-                "Homologação das integrações",
-                "Implantação com estratégia de expansão de usuários em ondas, com acompanhamento e validação de cada nova proposta"
+                "Development of a new flow to PF",
+                "Approval of integrations",
+                "Implementation with wave expansion strategy, with monitoring and validation of each new proposal"
             ],
             "acoes": [
-                "Buscado desenvolver um fluxo de telas componentizado com funcionalidades 'funcionais' na Salesforce (low-code) e com micro componentes de telas mais especializados",
-                "Atendimento em paralelo de outro épico envolvido para simplificação e redução de dados cadastrais da proposta de credenciamento"
+                "Seeked to develop a flow of composite screens with 'functional' features in Salesforce (low-code) and with more specialized micro screen components",
+                "Support in parallel of another epic involved to simplify and reduce registration data of the accreditation proposal"
             ],
             "resultados": [
-                "Entregue jornada no Cockpit integrada com a negociação do Ipricing, com todas funcionalidades já evoluídas do PJ como a solicitações de mais de uma máquina e mais de uma tecnologia, elegibilidade de Flex, ofertas e negociação de preço"
+                "Deliver day in Cockpit integrated with Ipricing trading, with all features already evolved from PJ as requests for more than one machine and more than one technology, Flex eligibility, offers and price trading"
             ]
         },
         {
-            "titulo": "Validação do Domicílio Bancário no canal",
-            "situacao": "- Necessidade de validar em tempo de preenchimento de proposta se os dados de domicílio bancário do Itaú, são válidos com uma conta apta para receber pagamentos",
+            "titulo": "Validation of the Banking House in the channel",
+            "situacao": "- What? Need to validate in time to fill out a proposal if Itaú banking home data, are valid with an account able to receive payments",
             "tarefa": [
-                "Desenhar arquitetura de integração",
-                "Refinar com UX como tratar as validações",
-                "Homologação integrada com squad do GE"
+                "Draw integration architecture",
+                "Refine with UX how to treat validations",
+                "Integrated approval with GE square"
             ],
             "acoes": [
-                "Foi implementado na camada da AWS a integração entre o TV2 e o GE1, sendo apenas o TV2 responsável pela integração com a Salesforce que dispara a consulta"
+                "Integration between TV2 and GE1 has been implemented in the AWS layer, and only TV2 is responsible for the integration with Salesforce that triggers the consultation."
             ],
             "resultados": [
-                "Projeto implantado em fases, com público de piloto controlado, com validação e acompanhamento gradual de cada fase, sendo feita expansão total após bastante validações com os executivos e de implementações de melhorias",
-                "Validação com regra de negócio dinâmica sendo o GE1 responsável por determinar se é um retorno de impedimento ou que aceita o domicílio com as mensagens de orientação",
-                "Pequena redução nos casos de suspensão bancária de clientes Itaú. Descoberto que a situação que torna a conta apta para recebimento não se resume em um status"
+                "Project implemented in phases, with controlled pilot audience, with validation and gradual monitoring of each phase, being made total expansion after much validation with executives and implementations of improvements",
+                "Validation with dynamic business rule being the GE1 responsible for determining whether it is an impediment return or that accepts the home with the guidance messages",
+                "Small reduction in cases of bank suspension of customers Itaú. Discovered that the situation that makes the account fit for receipt is not summed up in a status"
             ]
         },
         {
-            "titulo": "Envio da Formalização do Credenciamento Pelo WhatsApp",
-            "situacao": "- O envio do link para o cliente realizar a formalização da proposta de credenciamento PJ é somente realizado por e-mail",
+            "titulo": "WhatsApp Accreditation Formalization Upload",
+            "situacao": "- What? Sending the link to the client to formalize the PJ accreditation proposal is only performed by email",
             "tarefa": [
-                "Arquitetura de integração entre TV2, QI1 e EP8 do Itaú via ambiente interno",
-                "Autenticação do serviço do Itaú via STS",
-                "Liberação de rotas, regras de segurança e cadastros de aplicações no Itaú",
-                "Condicionar a funcionalidade para público controlado de piloto",
-                "Projeto correlacionado a evoluções da formalização que tem como objetivo dar mais clareza ao cliente do que está sendo contratado"
+                "Integration architecture between TV2, QI1 and EP8 of Itaú via internal environment",
+                "Authentication of the Itaú service via STS",
+                "Release of routes, security rules and application registrations in Itaú",
+                "Condition functionality for pilot controlled audience",
+                "Project correlated with formalization developments that aims to give more clarity to the client than is being contracted"
             ],
             "acoes": [
-                "Desenhado e alinhado uma arquitetura de integração interna entre AWS Rede e Gateway interno banco",
-                "Realizado os cadastros de aplicações de consumo no STS e do Gateway do banco",
-                "Por falta de time técnico e de priorização pela squad da sigla QI1, foi realizado todo desenvolvimento da parte da sigla de forma de 'innersource'",
-                "Integração desenvolvida com configurações parametrizadas para possibilitar o reuso por outros canais"
+                "Designed and aligned an internal integration architecture between AWS Network and internal bank Gateway",
+                "Registered consumer applications in the bank’s STS and Gateway",
+                "Due to the lack of technical team and prioritization by the quad of the acronym IQ1, all development of the acronym form 'innersource' was carried out.",
+                "Integration developed with parameterized configurations to enable reuse by other channels"
             ],
             "resultados": [
-                "Piloto em produção funcionou bem, mas foi pivotado devido à correlação deste projeto com as melhorias da formalização que não foram bem aceitas pelos executivos e com falta de processos automatizados que dependia de uma atuação operacional do time de TI para efetivar propostas que não tinham interação do cliente e também sobre formalização de propostas de agrupamento que não era coerente enviar valores e condições que não seriam as efetivadas para o cliente após os processos do agrupamento e equiparação de taxas"
+                "Pilot in production worked well, but was pivoted due to the correlation of this project with the improvements of formalization that were not well accepted by executives and with lack of automated processes that depended on an operational performance of the IT team to carry out proposals that had no interaction of the client and also on formalization of cluster proposals that it was not coherent to send values and conditions that would not be effective to the client after the processes of grouping and equating fees"
             ]
         }
     ],
     "2023": [
         {
-            "titulo": "Atualização do status do Credenciamento em Callback do WF",
+            "titulo": "WF Callback Accreditation Status Update",
             "situacao": [
-                "Após o envio das propostas pelo executivo, o executivo precisava ficar consultando o status para saber se a proposta estava efetivada ou teve algum problema. Para os casos que tiveram algum problema não havia detalhes que orientassem o executivo sobre o que fazer, sendo necessário a abertura de incidente pelo executivo para análise e orientação ou tratativa da proposta",
-                "Alto volume de incidentes e problemas de propostas paradas, pendentes de processamento (status C)"
+                "After the executive sent the proposals, the executive needed to consult the status to know if the proposal was effective or had any problems. For cases that had a problem there were no details that would guide the executive on what to do, requiring the opening of incident by the executive for analysis and orientation or treatment of the proposal",
+                "High volume of incidents and problems of proposals stopped, pending processing (status C)"
             ],
             "tarefa": [
-                "Implementar serviço que recebe o retorno do status da proposta, que é enviado pelo WF após o processamento",
-                "Mapeamento dos principais motivos de propostas que ficavam paradas por erros ou falhas",
-                "Refinamento de soluções de causa raiz para os problemas identificados"
+                "Implement service that receives the return of proposal status, which is sent by WF after processing",
+                "Mapping the main reasons for proposals that were stopped by errors or failures",
+                "Refining root cause solutions for identified problems"
             ],
             "acoes": [
-                "Implementado serviço de callback do WF para o TV2",
-                "Abertas histórias e priorizadas correções de causa raiz dos problemas das propostas"
+                "Implemented WF callback service for TV2",
+                "Open stories and prioritized root cause corrections of the proposals problems"
             ],
             "resultados": [
-                "Rapidez no retorno da informação da situação da proposta para os executivos",
-                "Priorização de correções de causa raiz de validações e problemas que deixavam a proposta pendente"
+                "Rapid feedback on the situation of the proposal for executives",
+                "Prioritization of root cause corrections of validations and problems that left the proposal pending"
             ]
         }
     ],
     "2024": [
         {
-            "titulo": "Projeto de Agrupamento Comercial",
+            "titulo": "Commercial Grouping Project",
             "situacao": [
-                "Automações legadas tinham um processo com SLA de até 10 dias para efetivar a taxa do contrato para o cliente",
-                "Processo com falhas e com muitas dependências manuais",
-                "Sem validação do arranjo dos participantes do grupo"
+                "Legacy automations had a SLA process of up to 10 days to effect the contract fee for the customer",
+                "Failure process with many manual dependencies",
+                "No validation of the arrangement of the group participants"
             ],
             "tarefa": [
-                "Discovery e desenho de solução técnica para viabilizar a modernização",
-                "Desenvolvimento de aplicação de validação de arranjo de participantes"
+                "Discovery and design of a technical solution to enable modernization",
+                "Development of participant arrangement validation application"
             ],
             "acoes": [
-                "Implementado e refinado solução para implementação do novo agrupamento Comercial junto ao time"
+                "Implemented and refined solution for implementation of the new Commercial Group with the team"
             ],
             "resultados": [
-                "Modernização do processo com validação e efetivação em tempo de proposta"
+                "Modernization of the process with validation and execution in proposal time"
             ]
         },
         {
-            "titulo": "Projeto de Entrega na Hora da Máquina pelo Executivo",
-            "situacao": "- Apenas era entregue a máquina após processo de abertura de Ordem de Serviço que era atendido apenas por técnicos",
+            "titulo": "Machine Time Delivery Project by the Executive",
+            "situacao": "- What? It was only delivered the machine after opening of Service Order process that was attended only by technicians",
             "tarefa": [
-                "Viabilizar solução para validação do modelo de atendimento comercial onde era utilizada uma nova tecnologia de auto inicialização da máquina no ato da proposta"
+                "Enable solution to validate the commercial service model where a new machine auto boot technology was used in the act of the proposal"
             ],
             "acoes": [
-                "Implementado no primeiro semestre de 2024 um MVP para validação do modelo",
-                "Implementado no segundo semestre arquitetura definitiva para escolha do tipo de tecnologia e quantidade que pode ser entregue na hora pelo comercial"
+                "Implemented in the first half of 2024 an MVP for model validation",
+                "Implemented in the second semester definitive architecture to choose the type of technology and quantity that can be delivered on time by commercial"
             ],
             "resultados": [
-                "Velocidade e metas de ativação no ato do Credenciamento"
+                "Speed and activation targets in the act of Accreditation"
             ]
         },
         {
-            "titulo": "Implementação do Likert nas Jornadas",
-            "situacao": "- Sem dados de avaliação das jornadas comerciais",
+            "titulo": "Implementation of Likert on Days",
+            "situacao": "- What? No business day evaluation data",
             "tarefa": [
-                "Viabilizar a captura das informações de satisfação da jornada de forma controlada e reutilizável pelas outras jornadas"
+                "Facilitate the capture of the journey satisfaction information in a controlled and reusable way by other journeys"
             ],
             "acoes": [
-                "Desenhado solução técnica para padronizar a captura e validação de elegibilidade para captura da pesquisa",
-                "Elaborado POC no Quicksight de relatório de acompanhamento analítico"
+                "Designed technical solution to standardize the capture and validation of eligibility for capture of the search",
+                "Prepared POC in Quicksight analytical follow-up report"
             ],
             "resultados": [
-                "Visibilidade e criação de OKR de satisfação das jornadas"
+                "Visibility and creation of OKR of satisfaction of the journeys"
             ]
         }
     ],
     "2025": [
         {
-            "titulo": "Pipe Automática Comercial",
-            "situacao": "- Lista de atuação do executivo não tinha uma priorização inteligente para otimizar o tempo de planejamento do dia e da meta a ser atendida pelo executivo",
+            "titulo": "Commercial Automatic Pipe",
+            "situacao": "- The executive's work list did not have an intelligent prioritization to optimize the day planning time and the goal to be met by the executive",
             "tarefa": [
-                "Discovery e implementação de solução de viabilidade rápida para atender as dores e avaliar o modelo e metodologia do planejamento"
+                "Discovery and implementation of quick feasibility solution to meet pain and evaluate the planning model and methodology"
             ],
             "acoes": [
-                "Desenhado solução de contorno para processar a inteligência de priorização na própria Salesforce com processos batchs agendados"
+                "Designed outline solution to process prioritization intelligence in Salesforce itself with scheduled batch processes"
             ],
             "resultados": [
-                "Aumento de mais de 15% no atingimento das metas e agilidade nos agendamentos e atendimentos aos clientes"
+                "Increase of more than 15% in achieving goals and agility in scheduling and customer service"
             ]
         }
     ]
