@@ -6,10 +6,12 @@
  * significava escolher uma e perder a outra — foi o que aconteceu: a
  * negociação de Markdown ficou ativa e as URLs sem `.html` passaram a devolver
  * 404 (21 páginas em "Não encontrado" no Search Console, exatamente as do
- * sitemap). As duas responsabilidades vivem aqui, nesta ordem.
+ * sitemap). As responsabilidades vivem aqui, nesta ordem.
  *
  * Runtime: cloudfront-js-2.0
  * Evento:  viewer-request
+ * Deploy:  publicada pelo `.github/workflows/deploy.yml` a cada push na main.
+ * Spec:    docs/specs/AGENT_READINESS_POR_PAGINA.md
  *
  * Cache: a behavior precisa de uma Response Headers Policy com `Vary: Accept`,
  * senão o cache serve Markdown para navegador.
@@ -23,39 +25,41 @@ function handler(event) {
     uri = uri.slice(0, -1);
   }
 
-  // ── 2. Negociação de conteúdo: agente que pede Markdown ganha o .md ────────
-  var accept = (request.headers['accept'] || {}).value || '';
-  if (prefersMarkdown(accept)) {
-    var mdUri = MARKDOWN_MAP[uri];
-    if (mdUri) {
-      request.uri = mdUri;
-      return request;
-    }
-    // Sem mapeamento → cai no fluxo HTML abaixo em vez de 404.
+  // ── 2. PRM por caminho (RFC 9728 §3.1) ─────────────────────────────────────
+  //
+  // O agente deriva `/.well-known/oauth-protected-resource<caminho>` da URL que
+  // quer acessar. Não dá para servir por arquivo: `oauth-protected-resource` já
+  // é o arquivo da raiz e não pode ser também diretório. Só caminhos com forma
+  // de página são aceitos — a function não reflete string arbitrária.
+  if (uri.indexOf(PRM_PATH + '/') === 0) {
+    var recurso = uri.slice(PRM_PATH.length);
+    return PAGINA.test(recurso) ? respostaPrm(recurso) : request;
   }
 
-  // ── 3. Raiz → documento de índice ─────────────────────────────────────────
-  if (uri === '/') {
-    request.uri = '/index.html';
-    return request;
-  }
-
-  // ── 4. Sufixa `.html` só quando o último segmento não tem extensão ─────────
-  //
-  // O teste antigo era `!uri.includes('.')`, que olhava a URI inteira: qualquer
-  // ponto em qualquer lugar do caminho desligava a regra. O teste correto é o
-  // último segmento — `/devin` recebe `.html`, `/assets/devin-BRjrEIyn.js` não.
-  //
-  // Exceção: `/.well-known/*` é um registro IANA de nomes SEM extensão
-  // (api-catalog, openid-configuration, oauth-protected-resource...). Sufixar
-  // `.html` ali quebraria a descoberta por agentes, que hoje responde 200.
+  // ── 3. `/.well-known/*`: nomes IANA sem extensão — sufixar `.html` ou `.md`
+  //       quebraria a descoberta por agentes, que hoje responde 200. ─────────
   if (uri.indexOf('/.well-known/') === 0) {
     return request;
   }
 
-  var lastSegment = uri.slice(uri.lastIndexOf('/') + 1);
-  if (lastSegment.indexOf('.') === -1) {
-    request.uri = uri + '.html';
+  // ── 4. Negociação de conteúdo: agente que pede Markdown ganha o .md ────────
+  //
+  // Por REGRA, não por mapa: o mapa escrito à mão esquecia páginas novas e todo
+  // o `/en/`. A regra não confere se o `.md` existe — quem garante é a etapa
+  // `scripts/check-md-twins.mjs` do quality gate.
+  var base = baseDaPagina(uri);
+  var accept = (request.headers['accept'] || {}).value || '';
+  if (prefersMarkdown(accept)) {
+    var mdUri = CATALOGOS[uri] || (base && base + '.md');
+    if (mdUri) {
+      request.uri = mdUri;
+      return request;
+    }
+  }
+
+  // ── 5. Página → `.html`; o resto (assets, sitemap, llms.txt) passa intacto ──
+  if (base) {
+    request.uri = base + '.html';
   } else if (request.uri !== uri) {
     request.uri = uri; // preserva a normalização da barra final
   }
@@ -64,59 +68,52 @@ function handler(event) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// URI → arquivo Markdown. Chaves normalizadas (sem barra final).
-// Adicione uma entrada sempre que uma nova página ganhar `.md` em public/.
+// baseDaPagina(uri) — caminho da página sem extensão, ou null se não é página.
+// O teste é o ÚLTIMO segmento: `/devin` é página, `/assets/devin-BRjrEIyn.js`
+// não. `/en` é diretório: o documento é `/en/index`.
 // ─────────────────────────────────────────────────────────────────────────────
-var MARKDOWN_MAP = {
-  '/':                                     '/index.md',
-  '/index':                                '/index.md',
-  '/index.html':                           '/index.md',
-  '/agent-ready':                          '/agent-ready.md',
-  '/agent-ready.html':                     '/agent-ready.md',
-  '/apresentacao':                         '/apresentacao.md',
-  '/apresentacao.html':                    '/apresentacao.md',
-  '/artifice':                             '/artifice.md',
-  '/artifice.html':                        '/artifice.md',
-  '/capacidade-antes-do-acesso':           '/capacidade-antes-do-acesso.md',
-  '/capacidade-antes-do-acesso.html':      '/capacidade-antes-do-acesso.md',
-  '/case-agents':                          '/case-agents.md',
-  '/case-agents.html':                     '/case-agents.md',
-  '/devin':                                '/devin.md',
-  '/devin.html':                           '/devin.md',
-  '/devops-salesforce':                    '/devops-salesforce.md',
-  '/devops-salesforce.html':               '/devops-salesforce.md',
-  '/engenharia-agentes-ia':                '/engenharia-agentes-ia.md',
-  '/engenharia-agentes-ia.html':           '/engenharia-agentes-ia.md',
-  '/engenharia-confianca':                 '/engenharia-confianca.md',
-  '/engenharia-confianca.html':            '/engenharia-confianca.md',
-  '/formulacao-de-problemas':              '/formulacao-de-problemas.md',
-  '/formulacao-de-problemas.html':         '/formulacao-de-problemas.md',
-  '/knowledge-os-presentation':            '/knowledge-os-presentation.md',
-  '/knowledge-os-presentation.html':       '/knowledge-os-presentation.md',
-  '/proposta':                             '/proposta.md',
-  '/proposta.html':                        '/proposta.md',
-  '/proposta-engenharia-reversa':          '/proposta-engenharia-reversa.md',
-  '/proposta-engenharia-reversa.html':     '/proposta-engenharia-reversa.md',
-  '/proposta-observabilidade-mobile':      '/proposta-observabilidade-mobile.md',
-  '/proposta-observabilidade-mobile.html': '/proposta-observabilidade-mobile.md',
-  '/salesforce-agentic-dev':               '/salesforce-agentic-dev.md',
-  '/salesforce-agentic-dev.html':          '/salesforce-agentic-dev.md',
-  '/salesforce-agentic-quickstart':        '/salesforce-agentic-quickstart.md',
-  '/salesforce-agentic-quickstart.html':   '/salesforce-agentic-quickstart.md',
-  '/service-operations-2-0':               '/service-operations-2-0.md',
-  '/service-operations-2-0.html':          '/service-operations-2-0.md',
-  '/socialselling':                        '/socialselling.md',
-  '/socialselling.html':                   '/socialselling.md',
-  '/sustentacao':                          '/sustentacao.md',
-  '/sustentacao.html':                     '/sustentacao.md',
-  '/terminal-evolutivo':                   '/terminal-evolutivo.md',
-  '/terminal-evolutivo.html':              '/terminal-evolutivo.md',
-  '/career-highlights-star':               '/career-highlights-star.md',
-  '/llms':                                 '/llms.txt',
-  '/llms.txt':                             '/llms.txt',
-  '/llms-full':                            '/llms-full.txt',
-  '/llms-full.txt':                        '/llms-full.txt',
+function baseDaPagina(uri) {
+  if (uri === '/') return '/index';
+  if (uri === '/en') return '/en/index';
+  if (/\.html$/.test(uri)) return uri.slice(0, -5);
+  var ultimo = uri.slice(uri.lastIndexOf('/') + 1);
+  return ultimo.indexOf('.') === -1 ? uri : null;
+}
+
+// Catálogos para agentes que não seguem a regra `<caminho>.md`.
+var CATALOGOS = {
+  '/llms':      '/llms.txt',
+  '/llms-full': '/llms-full.txt',
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PRM (RFC 9728). Os campos abaixo espelham `public/.well-known/oauth-protected-resource`
+// — o teste da function falha se divergirem. Só `resource` muda por caminho.
+// ─────────────────────────────────────────────────────────────────────────────
+var ORIGEM = 'https://mauricio.issei.com.br';
+var PRM_PATH = '/.well-known/oauth-protected-resource';
+var PAGINA = /^(\/en)?(\/[a-z0-9-]+(\.html)?)?$/;
+var PRM = {
+  authorization_servers: [ORIGEM],
+  scopes_supported: ['cv:read', 'projects:read', 'profile'],
+  bearer_methods_supported: ['header'],
+  resource_documentation: ORIGEM + '/cv-for-ai.md',
+  resource_policy_uri: ORIGEM + '/privacidade',
+};
+
+function respostaPrm(caminho) {
+  var doc = { resource: ORIGEM + caminho };
+  for (var campo in PRM) doc[campo] = PRM[campo];
+  return {
+    statusCode: 200,
+    statusDescription: 'OK',
+    headers: {
+      'content-type': { value: 'application/json; charset=utf-8' },
+      'cache-control': { value: 'public, max-age=3600' },
+    },
+    body: { encoding: 'text', data: JSON.stringify(doc) },
+  };
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // prefersMarkdown(acceptHeader) — RFC 7231 §5.3.2.

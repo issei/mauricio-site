@@ -52,11 +52,16 @@ O pipeline é acionado a cada **push na branch main**.
 3.  **Install**: `npm install` (instala dependências, incluindo Vite e Tailwind).
 4.  **Build**: `npm run build`. O Vite gera os arquivos estáticos na pasta `dist/`.
 5.  **Auth AWS**: Assume a role via OIDC.
-6.  **S3 Sync**:
+6.  **Test Edge Function**: `node --test tests/cloudfront-viewer-request.test.js` — a function fica na frente de todo request; regressão de roteamento falha antes do sync.
+7.  **S3 Sync**:
     *   Comando: `aws s3 sync dist/ s3://... --delete`
     *   Sincroniza a pasta `dist` com o bucket.
     *   `--delete`: Remove arquivos no bucket que não existem mais no build (limpeza automática).
-7.  **CloudFront Invalidation**:
+8.  **Publish CloudFront Function** (`MarkdownCovert`, viewer-request):
+    *   `update-function` com `infra/cloudfront-functions/viewer-request.js` → `test-function` no estágio DEVELOPMENT (evento `infra/cloudfront-functions/test-event.json`; falha o job em erro de runtime) → `publish-function` para LIVE.
+    *   Existe porque o publish manual deixou a function em produção defasada do repo (`docs/specs/AGENT_READINESS_POR_PAGINA.md`, C2).
+    *   **Permissão exigida no role**: `cloudfront:DescribeFunction`, `cloudfront:UpdateFunction`, `cloudfront:TestFunction` e `cloudfront:PublishFunction`, com `Resource` restrito à function `MarkdownCovert` (policy inline no role de deploy). Sem ela o job falha depois do sync e antes da invalidação — "Re-run failed jobs" após corrigir.
+9.  **CloudFront Invalidation**:
     *   Comando: `aws cloudfront create-invalidation ...`
     *   Invalida o cache globalmente (`/*`) para garantir que os usuários vejam a versão nova imediatamente.
 

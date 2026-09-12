@@ -40,6 +40,11 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Test Edge Function
+        # A function de viewer-request fica na frente de TODO request do site:
+        # uma regressão de roteamento derruba páginas inteiras. Falha antes do sync.
+        run: node --test tests/cloudfront-viewer-request.test.js
+
       - name: Deploy to S3
         # O sync garante que o S3 seja um espelho exato da pasta dist/.
         # --exclude "static/*" preserva a pasta de assets grandes (áudios, PDFs,
@@ -47,6 +52,27 @@ jobs:
         run: |
           aws s3 sync dist/ s3://${{ secrets.S3_BUCKET_NAME }} --delete --exclude "static/*"
 
+      - name: Publish CloudFront Function (viewer-request)
+        # Antes, o publish era manual e a function em produção ficou defasada do
+        # repo (docs/specs/AGENT_READINESS_POR_PAGINA.md, C2). Roda depois do
+        # sync — os .md já existem quando a regra passa a apontar para eles — e
+        # testa no estágio DEVELOPMENT antes de promover para LIVE.
+        # Requer cloudfront:{Describe,Update,Test,Publish}Function no role (CICD_OIDC.md).
+        env:
+          FN: MarkdownCovert
+        run: |
+          ETAG=$(aws cloudfront describe-function --name "$FN" --query ETag --output text)
+          ETAG=$(aws cloudfront update-function --name "$FN" --if-match "$ETAG" \
+            --function-config "Comment=viewer-request deploy ${GITHUB_SHA::7},Runtime=cloudfront-js-2.0" \
+            --function-code fileb://infra/cloudfront-functions/viewer-request.js \
+            --query ETag --output text)
+          R=$(aws cloudfront test-function --name "$FN" --if-match "$ETAG" --stage DEVELOPMENT \
+            --event-object fileb://infra/cloudfront-functions/test-event.json --output json)
+          echo "$R" | jq -e '(.TestResult.FunctionErrorMessage // "") == ""' >/dev/null \
+            || { echo "::error::$(echo "$R" | jq -r .TestResult.FunctionErrorMessage)"; exit 1; }
+          echo "$R" | jq -r .TestResult.FunctionOutput | grep -q '/devin.md' \
+            || { echo "::error::test-function: saída inesperada"; exit 1; }
+          aws cloudfront publish-function --name "$FN" --if-match "$ETAG"
 
       - name: Invalidate CloudFront Cache
         # Limpa o cache para que as alterações reflitam imediatamente no domínio
