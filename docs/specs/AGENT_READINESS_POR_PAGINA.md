@@ -1,6 +1,8 @@
 # Agent Readiness por página — SDD
 
-> **Status:** aprovado para execução · **Data:** 2026-09-12
+> **Status:** executado localmente (T0–T7) · **Data:** 2026-09-12
+> A seção 4 foi escrita para uma sessão cloud; a execução acabou local, com o
+> i18n rodando no Argos da máquina do mantenedor.
 > **Origem:** scan Cloudflare Radar / isitagentready de `/curiosidade-e-investigacao`
 > (nível 2 "Bot-Aware") + varredura das 61 URLs do sitemap em produção.
 > **Base:** [`docs/AGENT_READINESS.md`](../AGENT_READINESS.md). Este SDD estende o
