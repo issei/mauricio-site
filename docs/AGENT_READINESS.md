@@ -5,7 +5,10 @@ Documenta **o que está implementado**, **onde fica cada peça** (repo *e* AWS) 
 **as armadilhas** que custaram caro descobrir.
 
 Referência de validação: [isitagentready.com](https://isitagentready.com).
-Estado atual: **16 pass / 0 fail / 6 neutral** — nível 5 "Agent-Native".
+Estado atual: **16 pass / 0 fail / 6 neutral** — nível 5 "Agent-Native", na raiz
+**e em cada página do sitemap** desde a
+[`AGENT_READINESS_POR_PAGINA`](specs/AGENT_READINESS_POR_PAGINA.md) (antes dela,
+páginas internas ficavam no nível 2).
 
 ---
 
@@ -42,9 +45,14 @@ entrar por qualquer uma delas, e nenhuma depende das outras:
 
 ### Content Accessibility
 
+> **Três checks são por página**, não por site: `markdownNegotiation`,
+> `oauthProtectedResource` e `webMcp` avaliam a URL informada ao scanner. O
+> "16/0" da raiz não valia para as páginas internas até a
+> [`AGENT_READINESS_POR_PAGINA`](specs/AGENT_READINESS_POR_PAGINA.md) (set/2026).
+
 | Check | Satisfeito por | Onde |
 |---|---|---|
-| `markdownNegotiation` | gêmeo `.md` de cada página HTML | `public/*.md` + CloudFront Function `MarkdownCovert` |
+| `markdownNegotiation` | gêmeo `.md` de cada página, servido por **regra** (`<caminho>` → `<caminho>.md`, inclusive `/en/`) | `public/*.md` + CloudFront Function `MarkdownCovert`; o gate exige o gêmeo de toda URL do sitemap (`scripts/check-md-twins.mjs`) |
 
 ### Bot Access Control
 
@@ -61,12 +69,12 @@ entrar por qualquer uma delas, e nenhuma depende das outras:
 | `apiCatalog` | linkset RFC 9727 (3 âncoras) | `public/.well-known/api-catalog` |
 | `ard` | catálogo de recursos agênticos (4 entradas) | `public/.well-known/ai-catalog.json` |
 | `oauthDiscovery` | OIDC discovery | `public/.well-known/openid-configuration` |
-| `oauthProtectedResource` | PRM RFC 9728 | `public/.well-known/oauth-protected-resource` |
+| `oauthProtectedResource` | PRM RFC 9728 — da raiz e **por caminho** (§3.1: `/.well-known/oauth-protected-resource/<página>`, `resource` = URL da página) | raiz: `public/.well-known/oauth-protected-resource`; por caminho: sintetizado pela CloudFront Function `MarkdownCovert` (um arquivo não pode ser também diretório) |
 | `authMd` | `/auth.md` + bloco `agent_auth` | `public/auth.md` + `public/.well-known/oauth-authorization-server` |
 | `mcpServerCard` | MCP server card | `public/.well-known/mcp/server-card.json` |
 | `a2aAgentCard` | A2A agent card | `public/.well-known/agent-card.json` |
 | `agentSkills` | índice de skills + `SKILL.md` | `public/.well-known/agent-skills/` |
-| `webMcp` | 2 tools via `navigator.modelContext` | `src/index.html` |
+| `webMcp` | 2 tools via `navigator.modelContext`, em **toda** página | `public/webmcp.js`, injetado pelo plugin `webmcp` do `vite.config.js` (e à mão em `public/lifeos.html`); teste `tests/webmcp.spec.js` |
 
 ### Commerce — 5 checks `neutral`
 
@@ -126,8 +134,15 @@ são o que o Route 53 usa para assinar.
 ### Deploy
 
 `push` na `main` → GitHub Actions (`.github/workflows/deploy.yml`) → build Vite
-→ OIDC na AWS → sync no S3 → invalidação do CloudFront. Tudo em `public/` é
-copiado literalmente para a raiz do site.
+→ OIDC na AWS → teste da function → sync no S3 → **publish da CloudFront
+Function** (`update` → `test-function` em DEVELOPMENT → `publish` para LIVE) →
+invalidação do CloudFront. Tudo em `public/` é copiado literalmente para a raiz
+do site.
+
+O publish da function era manual e a versão em produção ficou defasada do repo
+(rotas commitadas nunca publicadas). Agora ela acompanha cada deploy; o role de
+deploy tem as 4 permissões de CloudFront Function descritas em
+`docs/specs/CICD_OIDC.md`.
 
 ---
 
