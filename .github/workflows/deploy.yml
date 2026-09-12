@@ -72,7 +72,16 @@ jobs:
             || { echo "::error::$(echo "$R" | jq -r .TestResult.FunctionErrorMessage)"; exit 1; }
           echo "$R" | jq -r .TestResult.FunctionOutput | grep -q '/devin.md' \
             || { echo "::error::test-function: saída inesperada"; exit 1; }
-          aws cloudfront publish-function --name "$FN" --if-match "$ETAG"
+          # Saída suprimida: o log do Actions é público e o JSON traz o ARN (com o
+          # número da conta), que fica fora do repo por política (AGENT_READINESS §3).
+          aws cloudfront publish-function --name "$FN" --if-match "$ETAG" > /dev/null
+          # Publicar não basta: a function precisa estar associada à distribution.
+          # Foi exatamente o que passou despercebido — publicada, mas UNASSOCIATED.
+          STATUS=$(aws cloudfront describe-function --name "$FN" --stage LIVE \
+            --query FunctionSummary.Status --output text)
+          echo "$FN LIVE: $STATUS"
+          [ "$STATUS" != "UNASSOCIATED" ] \
+            || echo "::warning::$FN publicada, mas não associada a nenhuma distribution — o site não a executa."
 
       - name: Invalidate CloudFront Cache
         # Limpa o cache para que as alterações reflitam imediatamente no domínio
