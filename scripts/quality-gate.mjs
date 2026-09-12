@@ -45,6 +45,10 @@ function run(label, command) {
 const steps = [];
 if (!skipBuild) steps.push(['build', 'npx vite build']);
 
+// A function de edge serve `<caminho>.md` por regra, sem conferir se o arquivo
+// existe: toda URL do sitemap precisa do gêmeo. Lê dist/, então só após o build.
+if (!skipBuild) steps.push(['gêmeos .md do sitemap', 'node scripts/check-md-twins.mjs']);
+
 // Artefatos gerados não podem divergir da fonte. Barato e determinístico —
 // pega à mão um contador de Hero ou um card de Hub editado manualmente.
 steps.push([
@@ -65,7 +69,7 @@ steps.push(['coerência global do site', 'node scripts/audit-site.mjs --strict']
 
 // Invariantes puros ANTES do E2E: falham em ~100ms e evitam subir navegador
 // para descobrir que um token de cor ou um par de frases está fora do contrato.
-steps.push(['invariantes (node:test)', 'node --test tests/*.test.mjs']);
+steps.push(['invariantes (node:test)', 'node --test tests/*.test.mjs tests/cloudfront-viewer-request.test.js']);
 
 let pwCmd = 'npx playwright test';
 if (grep) pwCmd += ` --grep ${JSON.stringify(grep)}`;
