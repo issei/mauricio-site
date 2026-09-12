@@ -4,6 +4,9 @@ setlocal enabledelayedexpansion
 :: Gera data e hora atual no formato dd/MM/yyyy HH:mm:ss
 for /f "tokens=* delims=" %%i in ('powershell -command "Get-Date -Format \"dd/MM/yyyy HH:mm:ss\" "') do set "DATAHORA=%%i"
 
+:: ID da distribuição CloudFront vem do ambiente — repo público, ver docs/AGENT_READINESS.md §3
+if not defined DISTRIBUTION_ID echo ❌ Defina DISTRIBUTION_ID ^(set DISTRIBUTION_ID=...^). Abortando. & exit /b 1
+
 echo [1/5] Vuild...
 call npm run build
 
@@ -16,7 +19,7 @@ echo [2/5] Publicando para bucket S3...
 call aws s3 sync dist/ s3://mauricio.issei.com.br/ --delete
 
 echo [5/5] Invalidando cache CloudFront...
-call aws cloudfront create-invalidation --distribution-id E201F4RL889YZH --paths "/*" >nul 2>&1
+call aws cloudfront create-invalidation --distribution-id %DISTRIBUTION_ID% --paths "/*" >nul 2>&1
 
 echo [5/5] Commitando alterações no Git...
 call git add .
