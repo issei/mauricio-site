@@ -1,6 +1,6 @@
 # Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei
 
-> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/case-agents>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-09-10 · Atualizado: 2026-09-10.
+> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/case-agents>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-09-10 · Atualizado: 2026-09-11.
 
 ## Em síntese
 
@@ -37,10 +37,19 @@ A Guarda de Direção (G4) analisa o verbo da query e compara com o modo de oper
 
 Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%.
 
+**Qual é a estratégia de duas branches do projeto?**
+
+O repositório mantém duas abordagens no Git: a branch feature/solucao-enxuta, focada em prototipagem rápida e validação de hipóteses com código enxuto, e a branch main (solucao-sdd-vibe), focada em robustez enterprise com Spec-Driven Development, 9 ADRs, taxonomia canônica, calibração Platt Scaling e blueprint de arquitetura produtiva.
+
+**Como funciona a Arquitetura Produtiva de Alta Performance (ADR-009)?**
+
+A arquitetura produtiva separa rigidamente o Cold Path (treinamento e calibração em Python 3.12 offline/CI) do Hot Path (Gateway de inferência OmniRoute em Rust/Go stateless online). Com motor embutido in-process, o hot path atinge latência p99 inferior a 1-3 ms, elimina pausas de Garbage Collection e executa os guard rails diretamente na memória RAM.
+
 ## Glossário
 
 - **Barreira Pré-Execução** — Conjunto de 4 guardas determinísticas que autorizam ou desviam a execução de uma ferramenta antes de invocar o LLM.
 - **Guarda de Direção** — Restrição semântica que impede ferramentas de escrita (alteração de estado) em requisições de leitura.
 - **Colapso por Capacidade** — Agrupamento de variantes operacionais redundantes sob uma capacidade canônica única.
+- **Desacoplamento Cold/Hot Path** — Padrão arquitetural que isola treinamento em Python offline do gateway compilado em Rust no caminho crítico de produção.
 
 *© 2026 Maurício Yokoyama Issei. Conteúdo citável com atribuição (fair use educacional).*

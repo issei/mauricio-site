@@ -67,19 +67,19 @@ export const PAGES = [
 
   {
     slug: 'case-agents', type: 'TechArticle', tier: 'S', hasMd: true,
-    codeRepository: 'https://github.com/issei/case-agents', programmingLanguage: 'Python',
+    codeRepository: 'https://github.com/issei/case-agents', programmingLanguage: 'Python, Rust',
     title: 'Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei',
     headline: 'Case Agents: Roteamento de Queries e Seleção Segura de Tools em Agente Bancário',
     description: 'Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero.',
-    datePublished: '2026-09-10', dateModified: '2026-09-10',
+    datePublished: '2026-09-10', dateModified: '2026-09-11',
     section: 'Engenharia de Confiança · Agentes de IA',
-    tags: ['Case Agents', 'Roteamento de IA', 'Tool Retrieval', 'Barreira Pré-Execução', 'Guarda de Direção', 'Engenharia de Confiança'],
-    keywords: ['case agents', 'roteamento de queries', 'tool retrieval', 'barreira pre-execucao', 'guarda de direcao', 'crash silencioso', 'banco digital', 'fast path', 'agent', 'BM25F', 'taxonomia', 'Platt scaling'],
+    tags: ['Case Agents', 'Roteamento de IA', 'Tool Retrieval', 'Barreira Pré-Execução', 'Guarda de Direção', 'Engenharia de Confiança', 'Arquitetura de Alta Performance'],
+    keywords: ['case agents', 'roteamento de queries', 'tool retrieval', 'barreira pre-execucao', 'guarda de direcao', 'crash silencioso', 'banco digital', 'fast path', 'agent', 'BM25F', 'taxonomia', 'Platt scaling', 'rust inference', 'cold hot path', 'ADR-009'],
     about: [
       { name: 'Engenharia de Confiança' },
       { name: 'Tool Retrieval' },
       { name: 'Roteamento de Agentes de IA' },
-      { name: 'Evaluation Harness' },
+      { name: 'Arquitetura Produtiva de Alta Performance' },
     ],
     audience: 'Engenheiros de IA, Arquitetos de Soluções, Tech Leads, Profissionais de FinOps e Segurança em IA',
     tldr: {
@@ -98,11 +98,14 @@ export const PAGES = [
       { q: 'O que é o Crash Silencioso medido no projeto?', a: 'Uma falha em que uma query de consulta ("Qual é o e-mail cadastrado na minha conta?") resolveu com alta confiança e margem folgada (0.47) para a ferramenta de alteração de cadastro (atualizar_email). A falha passou por 54 testes e 3 guardas tradicionais sem gerar exceção.' },
       { q: 'Como a Guarda de Direção funciona?', a: 'A Guarda de Direção (G4) analisa o verbo da query e compara com o modo de operação (read/write) declarado na ferramenta. Se a query for de leitura e a ferramenta for de escrita, o sistema descarta totalmente a ferramenta para evitar danos irreversíveis ao cadastro do cliente.' },
       { q: 'Como alcançar 100% de sucesso com economia de custo?', a: 'Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%.' },
+      { q: 'Qual é a estratégia de duas branches do projeto?', a: 'O repositório mantém duas abordagens no Git: a branch feature/solucao-enxuta, focada em prototipagem rápida e validação de hipóteses com código enxuto, e a branch main (solucao-sdd-vibe), focada em robustez enterprise com Spec-Driven Development, 9 ADRs, taxonomia canônica, calibração Platt Scaling e blueprint de arquitetura produtiva.' },
+      { q: 'Como funciona a Arquitetura Produtiva de Alta Performance (ADR-009)?', a: 'A arquitetura produtiva separa rigidamente o Cold Path (treinamento e calibração em Python 3.12 offline/CI) do Hot Path (Gateway de inferência OmniRoute em Rust/Go stateless online). Com motor embutido in-process, o hot path atinge latência p99 inferior a 1-3 ms, elimina pausas de Garbage Collection e executa os guard rails diretamente na memória RAM.' },
     ],
     terms: [
       { slug: 'barreira-pre-execucao', name: 'Barreira Pré-Execução', def: 'Conjunto de 4 guardas determinísticas que autorizam ou desviam a execução de uma ferramenta antes de invocar o LLM.' },
       { slug: 'guarda-de-direcao', name: 'Guarda de Direção', def: 'Restrição semântica que impede ferramentas de escrita (alteração de estado) em requisições de leitura.' },
       { slug: 'colapso-capacidade', name: 'Colapso por Capacidade', def: 'Agrupamento de variantes operacionais redundantes sob uma capacidade canônica única.' },
+      { slug: 'cold-hot-path', name: 'Desacoplamento Cold/Hot Path', def: 'Padrão arquitetural que isola treinamento em Python offline do gateway compilado em Rust no caminho crítico de produção.' },
     ],
     mdSections: [
       { h: 'O problema e o domínio', body: 'No domínio bancário, executar uma ferramenta errada na conta do cliente é inaceitável. O cérebro de roteamento precisa decidir com segurança e abster-se quando a confiança for insuficiente.' },

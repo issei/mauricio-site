@@ -21,12 +21,13 @@
   <link rel="stylesheet" href="./case-agents.css" />
   <link rel="stylesheet" href="/aeo.css" />
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, cold hot path, rust inference, ADR-009" />
+<meta name="keywords" content="case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, rust inference, cold hot path, ADR-009" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/case-agents" />
 <link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/case-agents.md" title="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei — Markdown para IA" />
@@ -131,7 +132,7 @@
       "inLanguage": "pt-BR",
       "image": "https://mauricio.issei.com.br/og-case-agents.png",
       "isAccessibleForFree": true,
-      "keywords": "case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, rust inference, cold hot path",
+      "keywords": "case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, rust inference, cold hot path, ADR-009",
       "codeRepository": "https://github.com/issei/case-agents",
       "programmingLanguage": "Python, Rust",
       "about": [
@@ -206,6 +207,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "A Guarda de Direção (G4) analisa o verbo da query e compara com o modo de operação (read/write) declarado na ferramenta. Se a query for de leitura e a ferramenta for de escrita, o sistema descarta totalmente a ferramenta para evitar danos irreversíveis ao cadastro do cliente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como alcançar 100% de sucesso com economia de custo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%."
           }
         },
         {
@@ -1373,8 +1382,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       <li><strong>A capacidade é escolher a ferramenta certa; a confiança é saber quando não executar nenhuma.</strong></li>
       <li><strong>Governança do catálogo</strong> — colapso de duplicatas semânticas em 14 capacidades canônicas elevou o Hit Rate@2 de 35% para 100%.</li>
       <li><strong>O Crash Silencioso contido</strong> — a Guarda de Direção (leitura vs escrita) impediu que uma consulta de e-mail alterasse o cadastro do cliente.</li>
-      <li><strong>Estratégia de duas branches</strong> — comparativo explícito entre prototipagem ágil (<code translate="no">feature/solucao-enxuta</code>) e robustez industrial (<code translate="no">main</code>).</li>
-      <li><strong>Arquitetura produtiva multi-linguagem (ADR-009)</strong> — segregação rígida Cold Path (Python MLOps) e Hot Path (Rust/Go stateless com SLA p99 &lt; 1-3 ms).</li>
+      <li><strong>Economia de custo real</strong> — 77,8% de economia com 100% de sucesso nas execuções.</li>
     </ul>
     <p class="aeo-tldr__foot">Caso de estudo da <a href="/engenharia-confianca">Engenharia da Confiança</a> e <a href="/engenharia-agentes-ia">Engenharia de Agentes de IA</a>.</p>
   </div>
@@ -1397,9 +1405,18 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
       <summary class="aeo-faq__q">Como alcançar 100% de sucesso com economia de custo?</summary>
       <div class="aeo-faq__a"><p>Declarando a governança do catálogo de ferramentas (colapso de duplicatas semânticas em capacidades canônicas) e aplicando a barreira pré-execução de 4 camadas (confiança do router, score mínimo, margem relativa e direção). A economia de custo líquida ficou em 77,8%.</p></div>
     </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Qual é a estratégia de duas branches do projeto?</summary>
+      <div class="aeo-faq__a"><p>O repositório mantém duas abordagens no Git: a branch feature/solucao-enxuta, focada em prototipagem rápida e validação de hipóteses com código enxuto, e a branch main (solucao-sdd-vibe), focada em robustez enterprise com Spec-Driven Development, 9 ADRs, taxonomia canônica, calibração Platt Scaling e blueprint de arquitetura produtiva.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Como funciona a Arquitetura Produtiva de Alta Performance (ADR-009)?</summary>
+      <div class="aeo-faq__a"><p>A arquitetura produtiva separa rigidamente o Cold Path (treinamento e calibração em Python 3.12 offline/CI) do Hot Path (Gateway de inferência OmniRoute em Rust/Go stateless online). Com motor embutido in-process, o hot path atinge latência p99 inferior a 1-3 ms, elimina pausas de Garbage Collection e executa os guard rails diretamente na memória RAM.</p></div>
+    </details>
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
 
 <footer class="ca-footer">
     <div class="ca-wrap">

@@ -22,12 +22,13 @@
   <link rel="stylesheet" href="../case-agents.css" />
   <link rel="stylesheet" href="/aeo.css" />
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, cold hot path, rust inference, ADR-009" />
+<meta name="keywords" content="case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, rust inference, cold hot path, ADR-009" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/en/case-agents" />
 <link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/en/case-agents.md" title="Case Agents: the wrong tool is not an acceptable approach " />
@@ -132,7 +133,7 @@
       "inLanguage": "en-US",
       "image": "https://mauricio.issei.com.br/og-case-agents.png",
       "isAccessibleForFree": true,
-      "keywords": "case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, rust inference, cold hot path",
+      "keywords": "case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, rust inference, cold hot path, ADR-009",
       "codeRepository": "https://github.com/issei/case-agents",
       "programmingLanguage": "Python, Rust",
       "about": [
@@ -207,6 +208,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "The Direction Guard (G4) analyzes the query verb and compares it to the mode of operation (read/write) stated in the tool. If the query is read and the tool is written, the system completely discards the tool to prevent irreversible damage to the client's registration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to achieve 100% success with cost savings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Declaring the governance of the tool catalog (collapse of semantic duplicates in canonical capabilities) and applying the 4-layer pre-execution barrier (router confidence, minimum score, relative margin and direction). Net cost savings were 77.8%."
           }
         },
         {
@@ -1378,8 +1387,7 @@ more valuable does not check a returned value; check that <strong>Nothing happen
       <li><strong>The ability is to choose the right tool; trust is to know when not to execute any.</strong></li>
       <li><strong>Catalog governance</strong> — collapse of semantic duplicates in 14 canonical capabilities raised Hit Rate@2 from 35% to 100%.</li>
       <li><strong>The Silent Crash contained</strong> — the Board of Directors (reading vs writing) prevented an e-mail consultation from changing the client's record.</li>
-      <li><strong>Two branch strategy</strong> — explicit comparison between agile prototyping (<code translate="no">feature/solucao-enxuta</code>) and industrial robustness (<code translate="no">main</code>).</li>
-      <li><strong>Multi-language production architecture (ADR-009)</strong> — rigid segregation Cold Path (Python MLOps) and Hot Path (Rust/Go stateless with SLA p99 &lt; 1-3 ms).</li>
+      <li><strong>Real cost savings</strong> — 77.8% of economy with 100% success in executions.</li>
     </ul>
     <p class="aeo-tldr__foot">Case study <a href="/en/engenharia-confianca">Trust Engineering</a> and <a href="/en/engenharia-agentes-ia">AI Agent Engineering</a>.</p>
   </div>
@@ -1402,9 +1410,18 @@ more valuable does not check a returned value; check that <strong>Nothing happen
       <summary class="aeo-faq__q">How to achieve 100% success with cost savings?</summary>
       <div class="aeo-faq__a"><p>Declaring the governance of the tool catalog (collapse of semantic duplicates in canonical capabilities) and applying the 4-layer pre-execution barrier (router confidence, minimum score, relative margin and direction). Net cost savings were 77.8%.</p></div>
     </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">What is the strategy of two branches of the project?</summary>
+      <div class="aeo-faq__a"><p>The repository maintains two approaches in Git: a branch feature/solucao-swine, focused on rapid prototyping and validation of hypotheses with lean code, and the branch main (solucao-sdd-vibe), focused on robustness enterprise with Spec-Driven Development, 9 ADRs, canonical taxonomy, Platt Scaling calibration and blueprint of productive architecture.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">How does High Performance Production Architecture (ADR-009) work?</summary>
+      <div class="aeo-faq__a"><p>The productive architecture rigidly separates Cold Path (training and calibration in Python 3.12 offline/CI) from Hot Path (OmniRoute Inference Gateway in Rust/Go stateless online). With built-in in-process engine, the hot path reaches latency p99 below 1-3 ms, eliminates Garbage Collection pauses and runs the guard rails directly in RAM memory.</p></div>
+    </details>
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
 
 <footer class="ca-footer">
     <div class="ca-wrap">
