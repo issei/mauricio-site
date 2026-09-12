@@ -939,4 +939,57 @@ export const PAGES = [
       chips: [{ k: '01', label: 'Taylorismo' }, { k: '02', label: 'Carreira em Y' }, { k: '03', label: 'Glue Work' }, { k: '05', label: 'Automação' }],
     },
   },
+
+  {
+    slug: 'curiosidade-e-investigacao', type: 'TechArticle', tier: 'A', hasMd: true,
+    title: 'Quando a curiosidade deixa de ser conteúdo e vira investigação | Maurício Yokoyama Issei',
+    headline: 'Quando a curiosidade deixa de ser conteúdo e vira investigação',
+    description: 'Um ensaio sobre transformar informação em pergunta, fontes em explicação e curiosidade em conhecimento — com a IA como bancada de trabalho, não como oráculo.',
+    datePublished: '2026-09-12', dateModified: '2026-09-12',
+    section: 'Aprendizagem e Cognição · Engenharia de IA',
+    tags: ['Curiosidade Epistêmica', 'Aprendizagem', 'Ilusão de Profundidade Explicativa', 'Prática de Recuperação', 'IA como Ferramenta', 'Metacognição'],
+    keywords: ['curiosidade epistêmica', 'lacuna de informação', 'investigação orientada', 'cognitive offloading', 'ilusão de profundidade explicativa', 'prática de recuperação', 'autoexplicação', 'expectativa de ensino', 'persuasão narrativa', 'aprendizagem autorregulada', 'NotebookLM', 'andaime cognitivo', 'scaffolding'],
+    about: [
+      { name: 'Curiosidade Epistêmica' },
+      { name: 'Metacognição' },
+      { name: 'Uso de IA na Aprendizagem' },
+      { name: 'Investigação Orientada por Perguntas' },
+    ],
+    audience: 'Profissionais de tecnologia, educadores, pesquisadores e qualquer pessoa que use IA generativa para aprender',
+    tldr: {
+      heading: 'O que este ensaio argumenta',
+      lede: 'Informação não é conhecimento, acesso não é compreensão, e reconhecer uma explicação não é dominá-la. A curiosidade só vira conhecimento quando passa por uma pergunta, uma investigação com fontes verificáveis e um teste de explicação sem consulta — a IA acelera a organização desse percurso, mas não substitui o julgamento.',
+      points: [
+        '**Informação não é conhecimento** — o feed recompensa a caça, não a digestão.',
+        '**Acesso não é compreensão** — investigar ficou barato; julgar continua caro.',
+        '**Reconhecimento não é domínio** — a ilusão de profundidade explicativa é o risco central do uso de IA para aprender.',
+        '**O antídoto é o teste da explicação** — fechar a fonte e tentar explicar sem consulta expõe o que ainda não foi compreendido.',
+      ],
+      foot: 'Ensaio pessoal com respaldo parcial na literatura de psicologia cognitiva e aprendizagem — não um método validado.',
+    },
+    faq: [
+      { q: 'Qual é a diferença entre informação e conhecimento?', a: 'Informação é o que passa pelo feed e é reconhecido; conhecimento é o que permanece e pode ser reproduzido. A teoria do forrageamento de informação explica por que ambientes como feeds recompensam a busca contínua (a caça) e não a digestão: o custo de encontrar uma informação é baixo, mas o custo de integrá-la continua alto.' },
+      { q: 'Qual é o papel da IA na investigação, segundo o ensaio?', a: 'A IA funciona como bancada de trabalho, não como oráculo: organiza fontes selecionadas previamente, localiza passagens e compara formulações, mas o julgamento sobre qualidade, relevância e causalidade continua sendo humano. É a metáfora do andaime cognitivo — a ferramenta sustenta, mas não constrói.' },
+      { q: 'O que é a ilusão de profundidade explicativa?', a: 'É um fenômeno documentado por Rozenblit e Keil em que pessoas sentem que compreendem um sistema complexo com muito mais profundidade do que conseguem de fato explicar quando são colocadas à prova. Ler uma síntese fluente gerada por IA produz familiaridade, que é facilmente confundida com competência real.' },
+      { q: 'O que é a prática de recuperação e por que ela aparece no ensaio?', a: 'É recuperar informação da memória sem consultar nenhuma fonte, o que produz retenção mais duradoura do que reler um texto pronto. No ensaio, isso vira um teste concreto: fechar o notebook e tentar explicar o que foi lido — quase sempre é o momento em que a ilusão de compreensão se desfaz.' },
+      { q: 'O ciclo apresentado (feed → curiosidade → investigação → publicação) é um método científico validado?', a: 'Não. O próprio ensaio classifica o ciclo como modelo interpretativo de uma prática pessoal, com respaldo parcial na literatura sobre aprendizagem autorregulada — que descreve processos iterativos análogos —, mas sem validação empírica do pacote completo como sistema de aprendizagem.' },
+    ],
+    terms: [
+      { slug: 'curiosidade-epistemica', name: 'Curiosidade Epistêmica', def: 'Estado motivacional orientado a fechar uma lacuna percebida entre o que se sabe e o que se gostaria de saber, que direciona atenção e busca.' },
+      { slug: 'ilusao-profundidade-explicativa', name: 'Ilusão de Profundidade Explicativa', def: 'Tendência a superestimar a própria compreensão de um sistema complexo até ser exigida uma explicação real do mecanismo.' },
+      { slug: 'pratica-de-recuperacao', name: 'Prática de Recuperação', def: 'Técnica de estudo que consiste em recuperar informação da memória sem consulta, produzindo retenção mais duradoura do que a releitura.' },
+      { slug: 'andaime-cognitivo', name: 'Andaime Cognitivo', def: 'Metáfora (scaffolding) para uma ferramenta que assume parte da carga cognitiva extrínseca de uma tarefa sem substituir o raciocínio de quem a executa.' },
+    ],
+    mdSections: [
+      { h: 'As três distinções centrais', body: 'Informação não é conhecimento: o feed recompensa a caça, não a digestão. Acesso não é compreensão: investigar ficou barato, julgar continua caro. Reconhecimento não é domínio: a familiaridade com uma explicação fluente é facilmente confundida com competência real.' },
+      { h: 'O antídoto', body: 'Fechar a fonte e tentar explicar sem consulta — prática de recuperação, autoexplicação e expectativa de ensino têm respaldo na literatura como mecanismos que expõem lacunas que a leitura passiva não revela.' },
+    ],
+    og: {
+      eyebrow: 'Ensaio · Aprendizagem e IA',
+      title: 'Curiosidade {vira} Investigação',
+      subtitle: 'Quando a curiosidade deixa de ser conteúdo e vira investigação',
+      thesis: 'A interface começa como um feed que captura atenção e termina como uma bancada que organiza atenção.',
+      chips: [{ k: '3', label: 'Distinções' }, { k: '12', label: 'Etapas do ciclo' }, { k: '16', label: 'Referências' }, { k: '0', label: 'Métodos validados' }],
+    },
+  },
 ];
