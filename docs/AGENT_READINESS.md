@@ -122,6 +122,11 @@ aws kms describe-key --region us-east-1 --key-id alias/dnssec-issei-com-br \
   --query "KeyMetadata.KeyId" --output text
 ```
 
+Os scripts versionados seguem a mesma regra: recebem esses IDs por variável de
+ambiente obrigatória, nunca hardcoded — `infra/scripts/apply-markdown-headers.sh`
+e `deploy.bat` (`DISTRIBUTION_ID`), `scripts/setup-dns-aid-route53.sh`
+(`HOSTED_ZONE_ID`); o CI usa secrets do GitHub.
+
 ### Proteção contra destruição acidental
 
 A KMS key é **ponto único de falha de `issei.com.br` inteiro**: com o DS publicado

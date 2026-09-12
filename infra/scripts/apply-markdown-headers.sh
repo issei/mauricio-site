@@ -9,12 +9,22 @@
 # objects with the right Content-Type and invalidates CloudFront.
 #
 # Run in AWS CloudShell after `deploy.bat` (or `aws s3 sync dist/ ...`).
+#
+# Usage — both values are required env vars. The repo is public, so opaque
+# AWS identifiers stay out of it (docs/AGENT_READINESS.md §3); resolve them
+# by name in CloudShell:
+#
+#   export BUCKET_NAME="mauricio.issei.com.br"
+#   export DISTRIBUTION_ID="$(aws cloudfront list-distributions \
+#     --query "DistributionList.Items[?contains(Aliases.Items,'mauricio.issei.com.br')].Id" \
+#     --output text)"
+#   bash infra/scripts/apply-markdown-headers.sh
 # ------------------------------------------------------------------------------
 
 set -euo pipefail
 
-BUCKET_NAME="mauricio.issei.com.br"      # S3 bucket (matches deploy.bat)
-DISTRIBUTION_ID="E201F4RL889YZH"         # CloudFront distribution (matches deploy.bat)
+BUCKET_NAME="${BUCKET_NAME:?defina BUCKET_NAME (ver cabeçalho do script)}"
+DISTRIBUTION_ID="${DISTRIBUTION_ID:?defina DISTRIBUTION_ID (ver cabeçalho do script)}"
 
 echo "🚀 Applying Content-Type headers on s3://$BUCKET_NAME ..."
 

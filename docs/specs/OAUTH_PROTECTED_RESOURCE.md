@@ -26,6 +26,8 @@ reject. Enforced in three places:
 - **Production**: `infra/scripts/apply-markdown-headers.sh` re-PUTs the
   extensionless `.well-known` JSON with the right `--content-type` after deploy
   (`api-catalog` → `application/linkset+json`, the rest → `application/json`).
+  Requires `BUCKET_NAME` and `DISTRIBUTION_ID` in the environment — no AWS
+  identifier is hardcoded (see the script header and `docs/AGENT_READINESS.md` §3).
 - **Dev/preview**: `wellKnownJsonContentType()` middleware in `vite.config.js`
   so local runs match production.
 - **Gate**: `tests/oauth-discovery.spec.js` asserts `content-type` contains
