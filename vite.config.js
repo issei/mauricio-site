@@ -56,6 +56,20 @@ const wellKnownJsonContentType = () => {
   };
 };
 
+/*
+ * WebMCP em toda página (docs/specs/AGENT_READINESS_POR_PAGINA.md, D3): o
+ * scanner de agent readiness carrega a página e conta as tools registradas em
+ * `navigator.modelContext`. Injetar no build cobre também as páginas futuras.
+ * Sem `order: 'pre'`, a tag entra depois do processamento de HTML do Vite e
+ * `public/webmcp.js` não é empacotado.
+ */
+const webmcp = () => ({
+  name: 'webmcp',
+  transformIndexHtml: () => [
+    { tag: 'script', attrs: { type: 'module', src: '/webmcp.js' }, injectTo: 'body' },
+  ],
+});
+
 export default defineConfig({
   root: 'src',
   publicDir: '../public',
@@ -70,6 +84,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     wellKnownJsonContentType(),
+    webmcp(),
     sitemap({
       hostname: 'https://mauricio.issei.com.br',
       generateRobotsTxt: false,
