@@ -52,9 +52,9 @@
 - `.ai/state/PROGRESS.md` — âncora de estado: onda atual, próxima ação, fila de WUs, histórico,
   ledger de tokens da onda, lista de `BLOCKED:`. Lido no início e atualizado no fim de cada iteração.
 - `.ai/learnings.md` — lições recorrentes (para não tropeçar duas vezes).
-- `.agents/skills/build-eai-section/SKILL.md` — procedimento padrão para implementar **uma seção** da
+- `.claude/skills/build-eai-section/SKILL.md` — procedimento padrão para implementar **uma seção** da
   página a partir do SDD correspondente (ler SDD → criar markup semântico → tokens → animação → teste).
-- `.agents/skills/run-quality-gate/SKILL.md` — como rodar o gate e interpretar falhas.
+- `.claude/skills/run-quality-gate/SKILL.md` — como rodar o gate e interpretar falhas.
 - `docs/governance/dor-dod-eai.md` — DoR/DoD desta entrega (§4).
 - `docs/decisions/ADR-eai-001-build-autonomo-e-finops.md` — política de ondas, model routing, teto de
   tokens (perfil **moderado**) e **push direto na `main`** a cada WU verde.

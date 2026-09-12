@@ -27,11 +27,14 @@ target: [claude, copilot, cursor, codex, antigravity]
 # `auto` = consentimento explícito para publicar/deployar o layout local
 # autoritativo deste repositório, sem enumerar caminho a caminho:
 #
-#   .agents/skills/   build-eai-section · mauricio-site-patterns ·
-#                     run-quality-gate · test-skill
-#   .agents/commands/ skill-create
-#   .claude/skills/   new-page · ship-page · sync-i18n
+#   .claude/skills/   new-page · ship-page · sync-i18n · build-eai-section ·
+#                     mauricio-site-patterns · run-quality-gate
 #   .claude/agents/   a11y-design-reviewer · tone-reviewer
+#
+# `.agents/skills/{test-skill,mauricio-site-patterns}` e `.agents/commands/skill-create`
+# foram removidos/migrados: Claude Code só descobre skills em `.claude/skills/`,
+# nunca em `.agents/`. test-skill era um placeholder vazio; skill-create era
+# boilerplate genérico incompatível com este stack.
 #
 # Registrar o campo (em vez de omiti-lo) evita o "audit advisory" de
 # consentimento implícito e satisfaz manifest.require_explicit_includes.

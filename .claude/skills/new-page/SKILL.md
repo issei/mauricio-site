@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Scaffolda uma página `src/<nome>.html` no padrão do repositório, **sem esquecer** nenhum passo do ritual (SEO, tokens Dark Tech, teste Playwright + axe, link no catálogo). O Vite descobre `src/*.html` automaticamente — não é preciso tocar em `vite.config.js`.
 
-> Leia antes: [`AGENTS.md`](../../../AGENTS.md) e [`.agents/skills/mauricio-site-patterns/SKILL.md`](../../../.agents/skills/mauricio-site-patterns/SKILL.md). Use uma página existente complexa (ex.: `src/engenharia-confianca.html` ou `src/service-operations-2-0.html`) como referência visual.
+> Leia antes: [`AGENTS.md`](../../../AGENTS.md) e [`mauricio-site-patterns`](../mauricio-site-patterns/SKILL.md). Use uma página existente complexa (ex.: `src/engenharia-confianca.html` ou `src/service-operations-2-0.html`) como referência visual.
 
 ## Entradas a confirmar com o usuário
 1. **slug** do arquivo (`src/<slug>.html`) e **título** (10–60 chars).
