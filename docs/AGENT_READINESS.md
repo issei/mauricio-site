@@ -92,7 +92,15 @@ só do código:
 |---|---|---|
 | CloudFront | distribuição com alias `mauricio.issei.com.br` | entrega do site |
 | Response Headers Policy | `RFC8288-Link-Headers-AgentDiscovery` | injeta o header `Link` em toda resposta |
-| CloudFront Function | `MarkdownCovert` (viewer-request) | negociação de conteúdo Markdown |
+| CloudFront Function | `MarkdownCovert` (viewer-request) | roteamento `.html`, negociação Markdown, PRM por caminho — código em `infra/cloudfront-functions/viewer-request.js`, publicada pelo deploy |
+
+> ⚠️ **Publicada não é associada.** Em set/2026 o deploy publicou a
+> `MarkdownCovert` e a AWS respondeu `Status: UNASSOCIATED`: ela nunca tinha
+> sido ligada à distribution — o site rodava outra function no viewer-request,
+> e por isso a produção nunca refletiu o repo. A associação é um passo manual
+> (`update-distribution`), fora do alcance do role de deploy. O passo de publish
+> agora imprime o `Status` e emite um aviso no Actions se continuar
+> `UNASSOCIATED`.
 | Route 53 Hosted Zone | `issei.com.br` (pública) | registros DNS-AID + DNSSEC |
 | KMS key (us-east-1) | `alias/dnssec-issei-com-br` | KSK do DNSSEC — **~US$1/mês** |
 | KSK | `issei_com_br_ksk`, keytag `42785` | assina a zona |
