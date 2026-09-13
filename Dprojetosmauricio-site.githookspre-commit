@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+cd "$(git rev-parse --show-toplevel)"
+
+if ! npm run i18n:sync --check 2>/dev/null; then
+  echo "→ [pre-commit] espelhos /en/ desatualizados, sincronizando..."
+  npm run i18n:sync >/dev/null 2>&1
+  git add src/en public/en scripts/i18n/i18n-manifest.json
+  echo "→ [pre-commit] sincronizado. Incluído no commit."
+fi
