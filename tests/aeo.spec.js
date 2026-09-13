@@ -11,6 +11,7 @@ for (const p of PAGES) {
     test('metadados + JSON-LD estruturado', async ({ page }) => {
       const res = await page.goto(`/${p.slug}.html`);
       expect(res?.status()).toBe(200);
+      await page.waitForLoadState('networkidle');
 
       // H1 único
       await expect(page.locator('h1')).toHaveCount(1);
