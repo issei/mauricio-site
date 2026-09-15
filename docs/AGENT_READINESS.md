@@ -101,6 +101,19 @@ só do código:
 > (`update-distribution`), fora do alcance do role de deploy. O passo de publish
 > agora imprime o `Status` e emite um aviso no Actions se continuar
 > `UNASSOCIATED`.
+>
+> **Status em 13/set/2026: ainda `UNASSOCIATED`** (confirmado no log do último
+> deploy e por varredura em produção — 0/61 páginas do sitemap com PRM por
+> caminho, e negociação de Markdown restrita ao subconjunto que o `MARKDOWN_MAP`
+> antigo já cobria + nenhuma rota `/en/`, exatamente o sintoma de C1/C6 da
+> `AGENT_READINESS_POR_PAGINA` — sinal de que a function realmente em execução
+> no viewer-request ainda é a anterior à D1/D2). Fix pronto, requer permissão de
+> console (não a do role de deploy):
+>
+> ```bash
+> export DOMAIN="mauricio.issei.com.br"
+> bash infra/scripts/associate-viewer-request-function.sh
+> ```
 | Route 53 Hosted Zone | `issei.com.br` (pública) | registros DNS-AID + DNSSEC |
 | KMS key (us-east-1) | `alias/dnssec-issei-com-br` | KSK do DNSSEC — **~US$1/mês** |
 | KSK | `issei_com_br_ksk`, keytag `42785` | assina a zona |
