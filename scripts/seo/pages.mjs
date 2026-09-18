@@ -9,6 +9,58 @@
 export const PAGES = [
   // ===================================================================== TIER S
   {
+    slug: 'develop-engineering', type: 'TechArticle', tier: 'S', hasMd: true,
+    title: 'Deterministic Grounding para Engenharia Agentic de Software',
+    headline: 'Deterministic Grounding para Engenharia Agentic de Software',
+    description: 'Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global.',
+    datePublished: '2026-09-18', dateModified: '2026-09-18',
+    section: 'Engenharia da Confiança · Agentes de IA',
+    tags: ['Deterministic Grounding', 'Engenharia Agêntica', 'Action Gateway', 'Snapshot Capsule', 'Oráculos'],
+    keywords: ['deterministic grounding', 'engenharia agentic', 'agent-repository gap', 'snapshot capsule', 'action gateway', 'oráculos', 'evidence record', 'reconciliação'],
+    about: [
+      { name: 'Engenharia de Confiança' },
+      { name: 'Deterministic Grounding' },
+      { name: 'Action Gateway' },
+      { name: 'Snapshot Capsule' }
+    ],
+    audience: 'Tech Leads, Arquitetos de Software, Engenheiros de IA, Líderes de Engenharia',
+    tldr: {
+      heading: 'O que é Deterministic Grounding',
+      lede: 'Um agente de desenvolvimento pode produzir código sintaticamente correto, passar em testes isolados e ainda violar a arquitetura, o escopo autorizado ou o estado real do repositório. **Deterministic Grounding** estabelece o ancoramento explícito de estado, limitação de autoridade por Action Gateway e validação com oráculos auditáveis.',
+      points: [
+        '**Agent–Repository Gap (G_t)** — a diferença entre o que o agente acredita (A_t) e o que foi observado no repositório (S_t).',
+        '**Snapshot Capsule** — envelope imutável que sela commit, árvore, lockfile e ambiente antes da ação.',
+        '**Action Gateway** — barreira de 12 passos que impede execução fora do escopo (Diff Lens e allowlist).',
+        '**Evidence Record** — registro com veredictos delimitados (PASS, FAIL, UNKNOWN, CONFLICT) e fronteiras de observação.',
+      ],
+      foot: 'Integra a jornada da [Engenharia da Confiança](/engenharia-confianca) e [Engenharia de Agentes de IA](/engenharia-agentes-ia).'
+    },
+    faq: [
+      { q: 'O que é o Agent–Repository Gap?', a: 'É a diferença entre as premissas que orientam a ação do agente no contexto A_t e os predicados verificáveis sobre o estado observável S_t no repositório.' },
+      { q: 'Por que um resultado de teste verde (PASS) não garante correção global?', a: 'Porque um oracle testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste.' },
+      { q: 'O que é a Snapshot Capsule?', a: 'É o envelope imutável contendo commit SHA, branch, tree digest, lockfile, toolchain, ambiente de execução e um digest único que garante que o contexto do agente corresponde exatamente ao estado do repositório.' },
+      { q: 'Qual a diferença entre Autonomia e Autoridade?', a: 'Autonomia é a capacidade do modelo de planejar e encadear ações de forma flexível; Autoridade é a permissão efetiva para produzir efeitos no repositório, que deve ser restrita e mediada pelo Action Gateway.' }
+    ],
+    terms: [
+      { slug: 'agent-repository-gap', name: 'Agent–Repository Gap', def: 'Desalinhamento entre o contexto/memória do agente e o estado observável do repositório.' },
+      { slug: 'snapshot-capsule', name: 'Snapshot Capsule', def: 'Envelope de proveniência que sela a identidade do repositório antes de qualquer ação.' },
+      { slug: 'action-gateway', name: 'Action Gateway', def: 'Componente que medeia propostas não confiáveis do agente e aplica allowlist, least privilege e policy-as-code.' },
+      { slug: 'evidence-record', name: 'Evidence Record', def: 'Atestado imutável de validação contendo subject, oracle, validator, envelope e limitações explícitas.' }
+    ],
+    mdSections: [
+      { h: 'O problema e o gap', body: 'Código correto em isolamento ainda pode ser uma mudança errada no repositório. O Agent-Repository Gap mede o desalinhamento entre o contexto do agente e o estado observável do sistema.' },
+      { h: 'A solução e os oráculos', body: 'Snapshot Capsule para ancorar o estado, Action Gateway para limitar autoridade, e oráculos auditáveis para gerar Evidence Records com veredictos explícitos.' }
+    ],
+    og: {
+      eyebrow: 'Engenharia de IA · Deterministic Grounding',
+      title: 'Deterministic {Grounding}',
+      subtitle: 'Ancorar contexto, restringir ações e validar mudanças com evidência',
+      thesis: 'Código correto em isolamento ainda pode ser uma mudança errada.',
+      chips: [{ k: '01', label: 'Gap' }, { k: '02', label: 'Capsule' }, { k: '03', label: 'Gateway' }, { k: '04', label: 'Evidence' }]
+    }
+  },
+
+  {
     slug: 'engenharia-agentes-ia', type: 'TechArticle', tier: 'S', hasMd: true,
     title: 'Engenharia de Agentes de IA — Os 10 princípios do determinismo',
     headline: 'Engenharia de Agentes de IA: dez princípios para sistemas confiáveis',

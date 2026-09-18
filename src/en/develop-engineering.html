@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Deterministic Grounding for Software Agentic Engineering</title>
+  <meta name="description"
+    content="How to anchor context, constrain actions, and validate changes without confusing a green test with global correctness." />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%230d1117'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='%2358a6ff'%3EDG%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
+
+  <style>
+    :root {
+      --dg-bg-950: #0d1117;
+      --dg-bg-900: #161b22;
+      --dg-border: #30363d;
+      --dg-text-100: #ffffff;
+      --dg-text-300: #c9d1d9;
+      --dg-blue: #58a6ff;
+      --dg-purple: #a371f7;
+      --dg-amber: #d29922;
+      --dg-red: #f85149;
+      --dg-green: #3fb950;
+      --dg-gray: #8b949e;
+      --dg-magenta: #db61a2;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--dg-bg-950);
+      color: var(--dg-text-300);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .dg-skip {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--dg-blue);
+      color: #000;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      z-index: 9999;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: top 0.2s ease;
+    }
+    .dg-skip:focus {
+      top: 1rem;
+    }
+
+    .dg-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .dg-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--dg-border);
+      z-index: 1000;
+      padding: 0.8rem 0;
+    }
+    .dg-nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .dg-nav__brand {
+      color: var(--dg-text-100);
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .dg-nav__dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--dg-blue);
+      border-radius: 50%;
+    }
+    .dg-nav__trail {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      font-size: 0.85rem;
+    }
+    .dg-nav__trail a {
+      color: var(--dg-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .dg-nav__trail a:hover, .dg-nav__trail a:focus {
+      color: var(--dg-blue);
+    }
+
+    .dg-section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--dg-border);
+    }
+
+    .dg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid currentColor;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .dg-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dg-gray);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dg-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--dg-text-100);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .dg-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dg-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .dg-grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .dg-grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .dg-grid--4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .dg-grid--5 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+    .dg-card {
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .dg-card:hover {
+      border-color: var(--dg-blue);
+    }
+
+    .dg-hero-gap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .dg-hero-gap { grid-template-columns: 1fr; }
+    }
+    .dg-hero-layer {
+      padding: 1rem;
+      border-radius: 6px;
+      background: rgba(13, 17, 23, 0.6);
+      border: 1px solid var(--dg-border);
+    }
+    .dg-hero-layer--agent { border-color: var(--dg-purple); }
+    .dg-hero-layer--repo { border-color: var(--dg-blue); }
+
+    .dg-gap-indicator {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 0.8rem;
+      background: rgba(248, 81, 73, 0.1);
+      border: 1px dashed var(--dg-red);
+      color: var(--dg-red);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      border-radius: 6px;
+    }
+
+    .dg-btn-action {
+      background: linear-gradient(90deg, #007bff, #8a2be2);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  </style>
+
+  <meta name="author" content="Maurício Yokoyama Issei" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://mauricio.issei.com.br/en/develop-engineering" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Maurício Yokoyama Issei" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Deterministic Grounding for Software Agentic Engineering" />
+  <meta property="og:description" content="How to anchor context, constrain actions, and validate changes without confusing a green test with global correctness." />
+  <meta property="og:url" content="https://mauricio.issei.com.br/en/develop-engineering" />
+</head>
+
+<body>
+  <a href="#conteudo" class="dg-skip">Skip to main content</a>
+
+  <header class="dg-nav" aria-label="Page Navigation">
+    <div class="dg-container dg-nav__inner">
+      <a href="#cena-00" class="dg-nav__brand">
+        <span class="dg-nav__dot" aria-hidden="true"></span>
+        Deterministic Grounding
+      </a>
+      <nav class="dg-nav__trail" aria-label="Article Scenes">
+        <a href="#cena-00">00. Deviation</a>
+        <a href="#cena-01">01. Gap</a>
+        <a href="#cena-02">02. Capsule</a>
+        <a href="#cena-03">03. Contract</a>
+        <a href="#cena-04">04. Graph</a>
+        <a href="#cena-05">05. Gateway</a>
+        <a href="#cena-06">06. Oracles</a>
+        <a href="#cena-07">07. Evidence</a>
+        <a href="#cena-08">08. Reconciliation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="cena-00" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Technical Article · Agentic Engineering
+          <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
+        </p>
+        <h1 class="dg-title">
+          Deterministic Grounding for Software Agentic Engineering
+        </h1>
+        <p style="font-size: 1.25rem; color: var(--dg-text-100); font-weight: 600; max-width: 900px; margin-bottom: 1rem;">
+          How to anchor context, constrain actions, and validate changes without confusing a green test with global correctness.
+        </p>
+        <p style="font-size: 1.1rem; color: var(--dg-text-300); max-width: 850px; margin-bottom: 2rem;">
+          An agent can produce syntactically correct code, pass available unit tests, and yet violate architecture, scope, privacy, or the repository's current state.
+        </p>
+
+        <div class="dg-hero-gap">
+          <div class="dg-hero-layer dg-hero-layer--agent">
+            <p class="dg-eyebrow" style="color: var(--dg-purple)">Agent Premises (A_t)</p>
+            <p class="dg-mono" style="font-size: 0.85rem; color: var(--dg-text-300);">
+              Prompt: "Add PDF Export Route"<br/>
+              Retrieved Context: RAG Index (Commit C1)<br/>
+              Hypothesis: 'pdf-kit' v1.2 dep present<br/>
+              Plan: Modify src/api/export.js and package.json
+            </p>
+          </div>
+
+          <div class="dg-hero-layer dg-hero-layer--repo">
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">Observable Repository State (S_t)</p>
+            <p class="dg-mono" style="font-size: 0.85rem; color: var(--dg-text-300);">
+              Snapshot: Commit C2 (HEAD)<br/>
+              Lockfile: pdf-kit removed in C2<br/>
+              Policy: src/api/ restricted by ADR-014<br/>
+              Real Diff: Change in C1 conflicts with C2
+            </p>
+          </div>
+
+          <div class="dg-gap-indicator">
+            Agent–Repository Gap: G_t = Premises(A_t) − Verified_predicates(S_t) ≠ 0
+          </div>
+        </div>
+
+        <p style="font-size: 1.15rem; color: var(--dg-amber); font-weight: 700; text-align: center; margin-top: 1.5rem;">
+          "Correct code in isolation can still be the wrong change."
+        </p>
+      </div>
+    </section>
+
+    <!-- Detailed scenes mirrored in English -->
+    <section id="cena-08" class="dg-section">
+      <div class="dg-container">
+        <div class="dg-card" style="border-color: var(--dg-blue); background: rgba(88, 166, 255, 0.03);">
+          <h3 style="color: var(--dg-text-100); margin-bottom: 0.8rem;">Start with an MVA (Minimum Viable Architecture)</h3>
+          <p style="font-size: 0.95rem; margin-bottom: 1rem;">
+            Implement a low-risk pipeline following the 7 operational actions checklist:
+          </p>
+          <a href="#cena-00" class="dg-btn-action">Define the First Envelope</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

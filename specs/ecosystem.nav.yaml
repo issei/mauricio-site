@@ -17,10 +17,13 @@
 # =============================================================================
 
 meta:
-  version: "1.6.0"            # semver; bump obrigatório a cada alteração de grafo
+  version: "1.7.0"            # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-09-10"
+  updated: "2026-09-18"
+  # 1.7.0 — entra `develop-engineering` (Deterministic Grounding) em p2
+  #         (Engenharia de Confiança / O Método): ancoramento de estado,
+  #         Snapshot Capsule, Action Gateway e oráculos auditáveis.
   # 1.6.0 — entra `case-agents` (Case Agents) em p2 (Engenharia de Confiança/
   #         O Método): roteamento de queries, seleção de 2 de 285 tools e
   #         barreira pré-execução de 4 camadas num agente bancário.
@@ -69,7 +72,7 @@ pillars:
     label: "Engenharia de Confiança"
     subtitle: "O Método"
     summary: "Da intenção à execução agêntica confiável."
-    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, agent-ready, knowledge-os-presentation, case-agents]
+    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, develop-engineering, agent-ready, knowledge-os-presentation, case-agents]
 
   - id: p3
     order: 3
@@ -131,6 +134,12 @@ nodes:
     file: "engenharia-agentes-ia.html"
     title: "Engenharia de Agentes de IA"
     blurb: "Os princípios da IA confiável."
+    pillar: p2
+  develop-engineering:
+    file: "develop-engineering.html"
+    title: "Deterministic Grounding para Engenharia Agentic de Software"
+    label: "Deterministic Grounding"
+    blurb: "Ancorar estado, restríngir ações e validar mudanças."
     pillar: p2
   agent-ready:
     file: "agent-ready.html"
