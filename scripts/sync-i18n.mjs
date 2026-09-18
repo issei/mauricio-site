@@ -107,8 +107,16 @@ function carregaMapa() {
   return JSON.parse(res.stdout);
 }
 
+/*
+ * Hash normalizado por final de linha: o checkout do Windows (autocrlf) grava
+ * CRLF enquanto o runner do CI (Linux) grava LF para o mesmo conteúdo. Hashear
+ * os bytes crus faz o mesmo arquivo, sem nenhuma mudança de conteúdo, produzir
+ * dois sha256 diferentes — e todo espelho aparece "velho" num dos dois lados.
+ */
 const sha = (caminho) =>
-  createHash('sha256').update(readFileSync(caminho)).digest('hex');
+  createHash('sha256')
+    .update(readFileSync(caminho, 'utf-8').replace(/\r\n/g, '\n'))
+    .digest('hex');
 
 function leManifesto() {
   if (!existsSync(MANIFESTO)) return { versao: 1, ativos: {} };
