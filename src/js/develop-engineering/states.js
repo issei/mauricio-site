@@ -22,7 +22,7 @@ export const GAP_STATES = Object.freeze({
     label: 'Desired State (D)',
     authority: 'Especificação / Requisitos (o que deveria ser verdadeiro)',
     allows: [
-      'Definir propriedades, contratos, critérios de aceitação e invariantis esperadas.',
+      'Definir propriedades, contratos, critérios de aceitação e invariantes esperadas.',
       'Definir o comportamento e restrições autorizadas para a mudança.'
     ],
     prohibits: [

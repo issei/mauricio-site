@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 
 test.describe('Develop Engineering - Deterministic Grounding Page', () => {
   test('smoke & basic layout test', async ({ page }) => {
@@ -72,5 +73,25 @@ test.describe('Develop Engineering - Deterministic Grounding Page', () => {
     const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
     const clientWidth = await page.evaluate(() => document.documentElement.clientWidth);
     expect(scrollWidth).toBeLessThanOrEqual(clientWidth + 1);
+  });
+
+  test('state cards in Scene 01 are keyboard-operable', async ({ page }) => {
+    await page.goto('/develop-engineering.html');
+
+    const desiredCard = page.locator('.dg-state-card[data-state-id="DESIRED"]');
+    await expect(desiredCard).toHaveAttribute('tabindex', '0');
+    await expect(desiredCard).toHaveAttribute('aria-pressed', 'false');
+
+    await desiredCard.focus();
+    await page.keyboard.press('Enter');
+    await expect(desiredCard).toHaveClass(/is-active/);
+    await expect(desiredCard).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('#dg-state-panel-title')).toContainText('Desired State');
+  });
+
+  test('a11y: axe sem violações serious/critical', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/develop-engineering.html');
+    await expectNoSeriousA11yViolations(page);
   });
 });

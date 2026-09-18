@@ -115,6 +115,9 @@
       color: var(--dg-gray);
       text-decoration: none;
       transition: color 0.2s;
+      padding: 0.6rem 0.2rem;
+      display: inline-flex;
+      align-items: center;
     }
     .dg-nav__trail a:hover, .dg-nav__trail a:focus {
       color: var(--dg-blue);
@@ -231,6 +234,20 @@
     .dg-state-card.is-active {
       border-color: var(--dg-blue);
       box-shadow: 0 0 12px rgba(88, 166, 255, 0.2);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--dg-blue);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
     .dg-state-card__title {
       color: var(--dg-text-100);
@@ -370,7 +387,7 @@
     }
     .dg-diff-line--proposed { background: rgba(163, 113, 247, 0.15); color: var(--dg-purple); }
     .dg-diff-line--authorized { background: rgba(88, 166, 255, 0.15); color: var(--dg-blue); }
-    .dg-diff-line--blocked { background: rgba(248, 81, 73, 0.2); color: var(--dg-red); border: 1px solid var(--dg-red); }
+    .dg-diff-line--blocked { color: var(--dg-red); border: 1px solid var(--dg-red); }
 
     /* Tables & Filter Controls (Cena 06 & 07) */
     .dg-table-wrap {
@@ -398,6 +415,7 @@
       border: 1px solid var(--dg-border);
       color: var(--dg-text-300);
       padding: 0.4rem 0.8rem;
+      min-height: 44px;
       border-radius: 4px;
       font-size: 0.8rem;
       font-family: 'JetBrains Mono', monospace;
@@ -405,9 +423,14 @@
       transition: border-color 0.2s, background 0.2s;
     }
     .dg-filter-btn.is-active {
+      border-width: 2px;
       border-color: var(--dg-blue);
       color: var(--dg-blue);
       background: var(--dg-bg-950);
+      font-weight: 700;
+    }
+    .dg-filter-btn.is-active::before {
+      content: '✓ ';
     }
 
     /* Ledger Ficha (Cena 07) */
@@ -753,31 +776,31 @@
 
         <!-- 5 State Cards -->
         <div class="dg-grid dg-grid--5" id="dg-state-cards-container">
-          <div class="dg-card dg-state-card is-active" data-state-id="CURRENT">
+          <div class="dg-card dg-state-card is-active" data-state-id="CURRENT" role="button" tabindex="0" aria-pressed="true">
             <div class="dg-state-card__title">Current State (S_t)</div>
             <div class="dg-state-card__auth">Repositório / Runtime</div>
             <span class="dg-badge" style="color: var(--dg-blue)">✓ OBSERVED</span>
           </div>
 
-          <div class="dg-card dg-state-card" data-state-id="DESIRED">
+          <div class="dg-card dg-state-card" data-state-id="DESIRED" role="button" tabindex="0" aria-pressed="false">
             <div class="dg-state-card__title">Desired State (D)</div>
             <div class="dg-state-card__auth">Especificação / Requisitos</div>
             <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
           </div>
 
-          <div class="dg-card dg-state-card" data-state-id="HISTORICAL">
+          <div class="dg-card dg-state-card" data-state-id="HISTORICAL" role="button" tabindex="0" aria-pressed="false">
             <div class="dg-state-card__title">Historical State</div>
             <div class="dg-state-card__auth">Memória / RAG / Commits</div>
             <span class="dg-badge" style="color: var(--dg-purple)">↳ INFERENCE</span>
           </div>
 
-          <div class="dg-card dg-state-card" data-state-id="POLICY">
+          <div class="dg-card dg-state-card" data-state-id="POLICY" role="button" tabindex="0" aria-pressed="false">
             <div class="dg-state-card__title">Policy State</div>
             <div class="dg-state-card__auth">Action Gateway / Regras</div>
             <span class="dg-badge" style="color: var(--dg-amber)">⚡ DOCUMENTED</span>
           </div>
 
-          <div class="dg-card dg-state-card" data-state-id="EVIDENCE">
+          <div class="dg-card dg-state-card" data-state-id="EVIDENCE" role="button" tabindex="0" aria-pressed="false">
             <div class="dg-state-card__title">Evidence State</div>
             <div class="dg-state-card__auth">Oráculos / Validação</div>
             <span class="dg-badge" style="color: var(--dg-green)">✓ ESTABLISHED</span>
@@ -785,7 +808,7 @@
         </div>
 
         <!-- Painel de autoridade e limites do estado selecionado -->
-        <div class="dg-card" id="dg-state-detail-panel" style="margin-top: 1.5rem; background: var(--dg-bg-900);">
+        <div class="dg-card" id="dg-state-detail-panel" style="margin-top: 1.5rem; background: var(--dg-bg-900);" aria-live="polite">
           <h3 id="dg-state-panel-title" style="color: var(--dg-text-100); margin-bottom: 0.5rem;">Current State (S_t)</h3>
           <p id="dg-state-panel-auth" class="dg-mono" style="color: var(--dg-blue); font-size: 0.9rem; margin-bottom: 1rem;">
             Autoridade: Repositório / Runtime (o que é observado agora)
@@ -1101,17 +1124,17 @@
         </p>
         <h2 class="dg-title">O Resultado Verde é Menor do que Parece</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          Um teste verde (<span class="dg-mono" style="color: var(--dg-green)">PASS</span>) prova apenas que a propriedade testada foi satisfied sob o envelope de execução observado. Não prova correção global nem ausência de colaterais.
+          Um teste verde (<span class="dg-mono" style="color: var(--dg-green)">PASS</span>) prova apenas que a propriedade testada foi satisfeita sob o envelope de execução observado. Não prova correção global nem ausência de colaterais.
         </p>
 
         <!-- Filtros de Veredicto -->
         <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
           <span class="dg-mono" style="font-size: 0.85rem; color: var(--dg-gray);">Filtrar por Veredicto:</span>
-          <button class="dg-filter-btn is-active" data-verdict-filter="ALL">TODOS (10)</button>
-          <button class="dg-filter-btn" data-verdict-filter="PASS">PASS</button>
-          <button class="dg-filter-btn" data-verdict-filter="FAIL">FAIL</button>
-          <button class="dg-filter-btn" data-verdict-filter="UNKNOWN">UNKNOWN</button>
-          <button class="dg-filter-btn" data-verdict-filter="CONFLICT">CONFLICT</button>
+          <button class="dg-filter-btn is-active" data-verdict-filter="ALL" aria-pressed="true">TODOS (10)</button>
+          <button class="dg-filter-btn" data-verdict-filter="PASS" aria-pressed="false">PASS</button>
+          <button class="dg-filter-btn" data-verdict-filter="FAIL" aria-pressed="false">FAIL</button>
+          <button class="dg-filter-btn" data-verdict-filter="UNKNOWN" aria-pressed="false">UNKNOWN</button>
+          <button class="dg-filter-btn" data-verdict-filter="CONFLICT" aria-pressed="false">CONFLICT</button>
           <span id="dg-oracle-hidden-counter" class="dg-mono" style="font-size: 0.85rem; color: var(--dg-amber); margin-left: auto;" aria-live="polite">
             Exibindo 10 de 10 oráculos (0 ocultos)
           </span>
@@ -1331,9 +1354,8 @@
   </main>
 
   <script type="module">
-    import { resolveEpistemicBadge } from './js/develop-engineering/epistemic.js';
-    import { GAP_STATES, getGapStateClaims } from './js/develop-engineering/states.js';
-    import { VERDICTS, filterVerdicts } from './js/develop-engineering/verdicts.js';
+    import { getGapStateClaims } from './js/develop-engineering/states.js';
+    import { filterVerdicts } from './js/develop-engineering/verdicts.js';
     import { evaluateComparatorAblation } from './js/develop-engineering/comparator.js';
 
     // Interaction logic for Cena 01 State Cards
@@ -1344,21 +1366,33 @@
       const panelAllows = document.getElementById('dg-state-panel-allows');
       const panelProhibits = document.getElementById('dg-state-panel-prohibits');
 
+      function selectStateCard(card) {
+        const stateId = card.getAttribute('data-state-id');
+        cards.forEach(c => {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-pressed', 'false');
+        });
+        card.classList.add('is-active');
+        card.setAttribute('aria-pressed', 'true');
+
+        const claims = getGapStateClaims(stateId);
+        if (panelTitle) panelTitle.textContent = claims.label;
+        if (panelAuth) panelAuth.textContent = `Autoridade: ${claims.authority}`;
+
+        if (panelAllows) {
+          panelAllows.innerHTML = claims.allows.map(a => `<li>${a}</li>`).join('');
+        }
+        if (panelProhibits) {
+          panelProhibits.innerHTML = claims.prohibits.map(p => `<li>${p}</li>`).join('');
+        }
+      }
+
       cards.forEach(card => {
-        card.addEventListener('click', () => {
-          const stateId = card.getAttribute('data-state-id');
-          cards.forEach(c => c.classList.remove('is-active'));
-          card.classList.add('is-active');
-
-          const claims = getGapStateClaims(stateId);
-          if (panelTitle) panelTitle.textContent = claims.label;
-          if (panelAuth) panelAuth.textContent = `Autoridade: ${claims.authority}`;
-
-          if (panelAllows) {
-            panelAllows.innerHTML = claims.allows.map(a => `<li>${a}</li>`).join('');
-          }
-          if (panelProhibits) {
-            panelProhibits.innerHTML = claims.prohibits.map(p => `<li>${p}</li>`).join('');
+        card.addEventListener('click', () => selectStateCard(card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            selectStateCard(card);
           }
         });
       });
@@ -1402,8 +1436,12 @@
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const filterValue = btn.getAttribute('data-verdict-filter');
-          filterBtns.forEach(b => b.classList.remove('is-active'));
+          filterBtns.forEach(b => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-pressed', 'false');
+          });
           btn.classList.add('is-active');
+          btn.setAttribute('aria-pressed', 'true');
 
           const { visibleItems, hiddenCount, totalCount } = filterVerdicts(allItems, filterValue);
 
