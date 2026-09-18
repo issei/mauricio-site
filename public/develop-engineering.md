@@ -6,7 +6,7 @@
 
 Um agente de desenvolvimento pode produzir código sintaticamente correto, passar em testes isolados e ainda violar a arquitetura, o escopo autorizado ou o estado real do repositório. **Deterministic Grounding** estabelece o ancoramento explícito de estado, limitação de autoridade por Action Gateway e validação com oráculos auditáveis.
 
-- **Agent–Repository Gap (G_t)** — a diferença entre o que o agente acredita (A_t) e o que foi observado no repositório (S_t).
+- **Agent–Repository Gap** — a diferença entre o que o agente acredita saber do repositório e o que realmente está lá agora.
 - **Snapshot Capsule** — envelope imutável que sela commit, árvore, lockfile e ambiente antes da ação.
 - **Action Gateway** — barreira de 12 passos que impede execução fora do escopo (Diff Lens e allowlist).
 - **Evidence Record** — registro com veredictos delimitados (PASS, FAIL, UNKNOWN, CONFLICT) e fronteiras de observação.
@@ -23,11 +23,11 @@ Snapshot Capsule para ancorar o estado, Action Gateway para limitar autoridade, 
 
 **O que é o Agent–Repository Gap?**
 
-É a diferença entre as premissas que orientam a ação do agente no contexto A_t e os predicados verificáveis sobre o estado observável S_t no repositório.
+É a diferença entre o que o agente acredita saber do repositório (memória, contexto recuperado, plano) e o que pode ser verificado nele agora (commit atual, dependências, regras vigentes). Quanto maior a diferença, maior o risco de uma mudança que parece certa e não é.
 
 **Por que um resultado de teste verde (PASS) não garante correção global?**
 
-Porque um oracle testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste.
+Porque um oráculo (uma verificação automática) testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste.
 
 **O que é a Snapshot Capsule?**
 

@@ -6,67 +6,67 @@
 export const GAP_STATES = Object.freeze({
   CURRENT: {
     id: 'CURRENT',
-    label: 'Current State (S_t)',
-    authority: 'Repositório / Runtime (o que é observado agora)',
+    label: 'Current State',
+    authority: 'O repositório e o ambiente de execução, do jeito que estão agora',
     allows: [
-      'Afirmar o commit SHA, a árvore de arquivos, o lockfile e dependências instaladas no snapshot.',
-      'Verificar o estado das alterações não commitadas e o build atual.'
+      'Dizer qual é o commit atual, quais arquivos existem e quais dependências estão instaladas.',
+      'Dizer quais arquivos mudaram desde o último commit.'
     ],
     prohibits: [
-      'Afirmar intenções humanas ou requisitos futuros.',
-      'Garantir que a arquitetura ideal esteja sendo respeitada sem verificação externa.'
+      'Dizer o que o time pretende fazer ou o que os requisitos vão exigir no futuro.',
+      'Garantir que a arquitetura desejada está sendo seguida. Isso precisa de verificação à parte.'
     ]
   },
   DESIRED: {
     id: 'DESIRED',
-    label: 'Desired State (D)',
-    authority: 'Especificação / Requisitos (o que deveria ser verdadeiro)',
+    label: 'Desired State',
+    authority: 'A especificação e os requisitos (o que deveria ser verdade)',
     allows: [
-      'Definir propriedades, contratos, critérios de aceitação e invariantes esperadas.',
-      'Definir o comportamento e restrições autorizadas para a mudança.'
+      'Definir o que a mudança precisa fazer: contratos, critérios de aceitação e regras que nunca podem ser quebradas.',
+      'Definir os limites autorizados para a mudança.'
     ],
     prohibits: [
-      'Garantir que o código atual reflete estes requisitos sem ter sido testado.',
-      'Substituir a autoridade do que realmente foi observado no repositório.'
+      'Afirmar que o código de hoje já cumpre esses requisitos sem que alguém tenha testado.',
+      'Se sobrepor ao que foi realmente observado no repositório.'
     ]
   },
   HISTORICAL: {
     id: 'HISTORICAL',
     label: 'Historical State',
-    authority: 'Memória / Commits Anteriores / RAG (o que foi observado antes)',
+    authority: 'Memória, commits anteriores e contexto recuperado (o que já foi visto antes)',
     allows: [
-      'Fornecer contexto histórico, evolução de decisões e padrões de código antigos.',
-      'Orientar a recuperação de soluções semelhantes aplicadas anteriormente.'
+      'Dar contexto: como decisões passadas foram tomadas e como problemas parecidos foram resolvidos.',
+      'Ajudar a encontrar soluções semelhantes já aplicadas no projeto.'
     ],
     prohibits: [
-      'Servir como autoridade para o commit corrente se o repositório avançou.',
-      'Garantir que uma dependência histórica ainda existe no lockfile atual.'
+      'Valer como verdade sobre o commit atual se o repositório já andou desde então.',
+      'Garantir que uma dependência usada antes ainda está no projeto hoje.'
     ]
   },
   POLICY: {
     id: 'POLICY',
     label: 'Policy State',
-    authority: 'Governança / Action Gateway (o que é permitido fazer)',
+    authority: 'As regras de governança e o Action Gateway (o que é permitido fazer)',
     allows: [
-      'Determinar o escopo autorizado de arquivos, diretórios e ferramentas.',
-      'Bloquear execuções fora da allowlist antes da aplicação de efeitos.'
+      'Definir quais arquivos, pastas e ferramentas o agente pode tocar.',
+      'Bloquear qualquer ação fora da lista de permitidos antes de ela ter efeito.'
     ],
     prohibits: [
-      'Validar se a mudança produz o comportamento funcional correto.',
-      'Conceder autoridade irrestrita baseada apenas em confiança na intenção.'
+      'Dizer se a mudança funciona corretamente. Permissão não é validação.',
+      'Dar autoridade irrestrita só porque a intenção parece boa.'
     ]
   },
   EVIDENCE: {
     id: 'EVIDENCE',
     label: 'Evidence State',
-    authority: 'Oráculos / Validação (o que foi demonstrado no envelope)',
+    authority: 'Testes e verificações (o que foi comprovado, e sob quais condições)',
     allows: [
-      'Provar que uma propriedade específica passou sob um oracle, subject e configuração identificados.',
-      'Registrar veredictos explícitos (PASS, FAIL, UNKNOWN, CONFLICT).'
+      'Provar que uma propriedade específica passou, indicando qual verificação (oráculo) rodou, sobre o quê e com qual configuração.',
+      'Registrar o resultado com um veredicto claro: PASS, FAIL, UNKNOWN ou CONFLICT.'
     ],
     prohibits: [
-      'Garantir a correção global do software além do escopo do oracle executado.',
-      'Tratar skip, timeout ou ausência de teste como aprovação funcional.'
+      'Garantir que o software inteiro está correto, além do que aquela verificação cobre.',
+      'Tratar teste pulado, timeout ou ausência de teste como aprovação.'
     ]
   }
 });

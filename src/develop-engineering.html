@@ -94,6 +94,9 @@
       color: var(--dg-text-100);
       font-weight: 700;
       text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-right: 1.5rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -108,6 +111,7 @@
     .dg-nav__trail {
       display: flex;
       gap: 1rem;
+      min-width: 0;
       overflow-x: auto;
       font-size: 0.85rem;
     }
@@ -115,9 +119,13 @@
       color: var(--dg-gray);
       text-decoration: none;
       transition: color 0.2s;
-      padding: 0.6rem 0.2rem;
+      padding: 0.75rem 0.2rem;
       display: inline-flex;
       align-items: center;
+      white-space: nowrap;
+    }
+    .dg-nav__trail a:focus-visible {
+      outline-offset: -2px;
     }
     .dg-nav__trail a:hover, .dg-nav__trail a:focus {
       color: var(--dg-blue);
@@ -127,6 +135,9 @@
     .dg-section {
       padding: 5rem 0;
       border-bottom: 1px solid var(--dg-border);
+    }
+    html {
+      scroll-padding-top: 5rem;
     }
 
     /* Epistemic Badge */
@@ -263,25 +274,41 @@
 
     /* Failure Card Component */
     .dg-failure-card {
-      background: rgba(248, 81, 73, 0.05);
-      border: 1px solid var(--dg-red);
+      background: rgba(210, 153, 34, 0.05);
+      border: 1px solid var(--dg-amber);
       border-radius: 8px;
       padding: 1.5rem;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
     }
     .dg-failure-card__header {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--dg-red);
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem;
+      color: var(--dg-amber);
       font-weight: 700;
       font-size: 1.1rem;
       margin-bottom: 1rem;
     }
+    .dg-failure-card__header span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
 
     /* Capsule Layer Styles (Cena 02) */
+    .dg-capsule-layer__why {
+      display: block;
+      margin-top: 0.15rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 0.75rem;
+      color: var(--dg-gray);
+    }
     .dg-capsule-layer {
       display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1rem;
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 1rem;
@@ -294,7 +321,7 @@
     }
     .dg-capsule-layer.is-missing {
       border-color: var(--dg-gray);
-      opacity: 0.6;
+      border-style: dashed;
     }
 
     /* Pipeline Flow Styles (Cena 03) */
@@ -410,6 +437,15 @@
       font-weight: 700;
     }
 
+    #dg-glossary-table tbody th {
+      background: transparent;
+      color: var(--dg-text-100);
+      font-weight: 600;
+    }
+    #dg-glossary-table td:first-of-type {
+      color: var(--dg-blue);
+    }
+
     .dg-filter-btn {
       background: var(--dg-bg-900);
       border: 1px solid var(--dg-border);
@@ -455,8 +491,6 @@
       margin-top: 1rem;
     }
   </style>
-
-  <!-- AEO:START — Bloco gerado para SEO/AEO (pode ser regerado)   -->
   <!-- ============================================================ -->
   <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
@@ -623,7 +657,7 @@
           "name": "O que é o Agent–Repository Gap?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "É a diferença entre as premissas que orientam a ação do agente no contexto A_t e os predicados verificáveis sobre o estado observável S_t no repositório."
+            "text": "É a diferença entre o que o agente acredita saber do repositório (memória, contexto recuperado, plano) e o que pode ser verificado nele agora (commit atual, dependências, regras vigentes). Quanto maior a diferença, maior o risco de uma mudança que parece certa e não é."
           }
         },
         {
@@ -631,7 +665,7 @@
           "name": "Por que um resultado de teste verde (PASS) não garante correção global?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Porque um oracle testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste."
+            "text": "Porque um oráculo (uma verificação automática) testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste."
           }
         },
         {
@@ -700,15 +734,16 @@
         Deterministic Grounding
       </a>
       <nav class="dg-nav__trail" aria-label="Cenas do artigo">
-        <a href="#cena-00">00. Desvio</a>
-        <a href="#cena-01">01. Gap</a>
+        <a href="#cena-00">00. O desvio</a>
+        <a href="#cena-01">01. Fontes de verdade</a>
         <a href="#cena-02">02. Capsule</a>
         <a href="#cena-03">03. Contrato</a>
-        <a href="#cena-04">04. Grafo</a>
+        <a href="#cena-04">04. Limites</a>
         <a href="#cena-05">05. Gateway</a>
-        <a href="#cena-06">06. Oráculos</a>
-        <a href="#cena-07">07. Evidence</a>
-        <a href="#cena-08">08. Reconciliação</a>
+        <a href="#cena-06">06. Testes</a>
+        <a href="#cena-07">07. Evidência</a>
+        <a href="#cena-08">08. Decisão</a>
+        <a href="#cena-09">09. Glossário</a>
       </nav>
     </div>
   </header>
@@ -726,41 +761,48 @@
           Deterministic Grounding para Engenharia Agentic de Software
         </h1>
         <p style="font-size: 1.25rem; color: var(--dg-text-100); font-weight: 600; max-width: 900px; margin-bottom: 1rem;">
-          Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global.
+          Um agente de IA pode passar em todos os testes e ainda entregar a mudança errada. Este artigo mostra por quê, e como evitar.
+        </p>
+        <p style="font-size: 1.1rem; color: var(--dg-text-300); max-width: 850px; margin-bottom: 1rem;">
+          O agente trabalha com o que acredita saber do repositório: contexto recuperado, memória, um plano. Se essa informação já não vale mais, o código pode estar correto isolado e errado para o projeto de hoje, violando a arquitetura, o escopo autorizado ou a privacidade.
         </p>
         <p style="font-size: 1.1rem; color: var(--dg-text-300); max-width: 850px; margin-bottom: 2rem;">
-          Um agente pode produzir código sintaticamente correto, passar nos testes disponíveis e ainda violar a arquitetura, o escopo, a privacidade ou o estado atual do repositório.
+          <strong>Deterministic Grounding</strong> é a prática de ancorar o que o agente sabe num estado verificável do repositório, limitar o que ele tem permissão de fazer e validar cada mudança com evidência registrada.
         </p>
 
         <!-- Camadas Desalinhadas (Agente vs Repositório) -->
         <div class="dg-hero-gap">
           <div class="dg-hero-layer dg-hero-layer--agent">
-            <p class="dg-eyebrow" style="color: var(--dg-purple)">Premissas do Agente (A_t)</p>
+            <p class="dg-eyebrow" style="color: var(--dg-purple)">O que o agente acredita</p>
             <p class="dg-mono" style="font-size: 0.85rem; color: var(--dg-text-300);">
-              Prompt: "Adicionar rota de exportação PDF"<br/>
-              Contexto recuperado: RAG Index (Commit C1)<br/>
-              Hipótese: Dep de 'pdf-kit' v1.2 presente<br/>
-              Plano: Modificar src/api/export.js e package.json
+              Pedido: "Adicionar rota de exportação em PDF"<br/>
+              Contexto recuperado: índice do commit C1<br/>
+              Suposição: a dependência 'pdf-kit' v1.2 está no projeto<br/>
+              Plano: editar src/api/export.js e package.json
             </p>
           </div>
 
           <div class="dg-hero-layer dg-hero-layer--repo">
-            <p class="dg-eyebrow" style="color: var(--dg-blue)">Estado Observável do Repositório (S_t)</p>
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">O que o repositório tem agora</p>
             <p class="dg-mono" style="font-size: 0.85rem; color: var(--dg-text-300);">
-              Snapshot: Commit C2 (HEAD)<br/>
-              Lockfile: pdf-kit removido em C2<br/>
-              Policy: src/api/ restrita por ADR-014<br/>
-              Diff Real: Mudança em C1 gera conflito em C2
+              Snapshot: commit C2 (o mais recente)<br/>
+              Lockfile: 'pdf-kit' foi removido em C2<br/>
+              Regra: src/api/ restrita pela ADR-014 (registro de decisão de arquitetura)<br/>
+              Resultado: a mudança feita sobre C1 conflita com C2
             </p>
           </div>
 
           <div class="dg-gap-indicator">
-            Agent–Repository Gap: G_t = Premissas(A_t) − Predicados_verificados(S_t) ≠ 0
+            Agent–Repository Gap: o agente planeja sobre C1, mas o repositório já está em C2
           </div>
         </div>
 
-        <p style="font-size: 1.15rem; color: var(--dg-amber); font-weight: 700; text-align: center; margin-top: 1.5rem;">
-          "Código correto em isolamento ainda pode ser uma mudança errada."
+        <p style="max-width: 850px; margin: 1.5rem auto 0; text-align: center;">
+          É como abrir um Pull Request (pedido de revisão de código) a partir de uma cópia do projeto feita uma semana atrás: sozinho, o código está correto; contra o que o time mudou desde então, já nasce quebrado.
+        </p>
+
+        <p style="font-size: 0.85rem; color: var(--dg-gray); max-width: 850px; margin: 2rem auto 0; text-align: center;">
+          Os selos coloridos ao lado dos títulos indicam o grau de certeza de cada trecho: OBSERVED (observado), ESTABLISHED (estabelecido), DOCUMENTED (documentado), PROPOSED (proposta) e INFERENCE (inferência).
         </p>
       </div>
     </section>
@@ -769,63 +811,63 @@
     <section id="cena-01" class="dg-section">
       <div class="dg-container">
         <p class="dg-eyebrow">Cena 01 · O Agent–Repository Gap</p>
-        <h2 class="dg-title">A_t, S_t, D, G_t e os 5 Estados do Sistema</h2>
-        <p style="margin-bottom: 2rem;">
-          Para evitar que a ação do agente seja guiada por premissas obsoletas ou ilusões de contexto, é necessário separar rigidamente a autoridade de cada estado:
+        <h2 class="dg-title">Cinco fontes de verdade, cada uma com autoridade limitada</h2>
+        <p style="margin-bottom: 2rem; max-width: 850px;">
+          O erro do exemplo acima nasce de tratar informações de origens diferentes como se fossem um contexto só. Cada fonte só pode afirmar certas coisas, e nenhuma pode falar no lugar da outra. Clique em cada cartão para ver o que ela autoriza afirmar e o que não autoriza.
         </p>
 
         <!-- 5 State Cards -->
         <div class="dg-grid dg-grid--5" id="dg-state-cards-container">
           <div class="dg-card dg-state-card is-active" data-state-id="CURRENT" role="button" tabindex="0" aria-pressed="true">
-            <div class="dg-state-card__title">Current State (S_t)</div>
-            <div class="dg-state-card__auth">Repositório / Runtime</div>
+            <div class="dg-state-card__title">Current State</div>
+            <div class="dg-state-card__auth">O que existe agora</div>
             <span class="dg-badge" style="color: var(--dg-blue)">✓ OBSERVED</span>
           </div>
 
           <div class="dg-card dg-state-card" data-state-id="DESIRED" role="button" tabindex="0" aria-pressed="false">
-            <div class="dg-state-card__title">Desired State (D)</div>
-            <div class="dg-state-card__auth">Especificação / Requisitos</div>
+            <div class="dg-state-card__title">Desired State</div>
+            <div class="dg-state-card__auth">O que deveria ser verdade</div>
             <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
           </div>
 
           <div class="dg-card dg-state-card" data-state-id="HISTORICAL" role="button" tabindex="0" aria-pressed="false">
             <div class="dg-state-card__title">Historical State</div>
-            <div class="dg-state-card__auth">Memória / RAG / Commits</div>
+            <div class="dg-state-card__auth">O que já foi visto antes</div>
             <span class="dg-badge" style="color: var(--dg-purple)">↳ INFERENCE</span>
           </div>
 
           <div class="dg-card dg-state-card" data-state-id="POLICY" role="button" tabindex="0" aria-pressed="false">
             <div class="dg-state-card__title">Policy State</div>
-            <div class="dg-state-card__auth">Action Gateway / Regras</div>
+            <div class="dg-state-card__auth">O que é permitido fazer</div>
             <span class="dg-badge" style="color: var(--dg-amber)">⚡ DOCUMENTED</span>
           </div>
 
           <div class="dg-card dg-state-card" data-state-id="EVIDENCE" role="button" tabindex="0" aria-pressed="false">
             <div class="dg-state-card__title">Evidence State</div>
-            <div class="dg-state-card__auth">Oráculos / Validação</div>
+            <div class="dg-state-card__auth">O que foi comprovado</div>
             <span class="dg-badge" style="color: var(--dg-green)">✓ ESTABLISHED</span>
           </div>
         </div>
 
         <!-- Painel de autoridade e limites do estado selecionado -->
         <div class="dg-card" id="dg-state-detail-panel" style="margin-top: 1.5rem; background: var(--dg-bg-900);" aria-live="polite">
-          <h3 id="dg-state-panel-title" style="color: var(--dg-text-100); margin-bottom: 0.5rem;">Current State (S_t)</h3>
+          <h3 id="dg-state-panel-title" style="color: var(--dg-text-100); margin-bottom: 0.5rem;">Current State</h3>
           <p id="dg-state-panel-auth" class="dg-mono" style="color: var(--dg-blue); font-size: 0.9rem; margin-bottom: 1rem;">
-            Autoridade: Repositório / Runtime (o que é observado agora)
+            Autoridade: O repositório e o ambiente de execução, do jeito que estão agora
           </p>
           <div class="dg-grid dg-grid--2">
             <div>
               <p style="color: var(--dg-green); font-weight: 700; margin-bottom: 0.5rem;">✓ O que autoriza afirmar:</p>
               <ul id="dg-state-panel-allows" style="padding-left: 1.2rem; font-size: 0.95rem;">
-                <li>Afirmar o commit SHA, a árvore de arquivos, o lockfile e dependências instaladas no snapshot.</li>
-                <li>Verificar o estado das alterações não commitadas e o build atual.</li>
+                <li>Dizer qual é o commit atual, quais arquivos existem e quais dependências estão instaladas.</li>
+                <li>Dizer quais arquivos mudaram desde o último commit.</li>
               </ul>
             </div>
             <div>
               <p style="color: var(--dg-red); font-weight: 700; margin-bottom: 0.5rem;">✗ O que NÃO autoriza afirmar:</p>
               <ul id="dg-state-panel-prohibits" style="padding-left: 1.2rem; font-size: 0.95rem;">
-                <li>Afirmar intenções humanas ou requisitos futuros.</li>
-                <li>Garantir que a arquitetura ideal esteja sendo respeitada sem verificação externa.</li>
+                <li>Dizer o que o time pretende fazer ou o que os requisitos vão exigir no futuro.</li>
+                <li>Garantir que a arquitetura desejada está sendo seguida. Isso precisa de verificação à parte.</li>
               </ul>
             </div>
           </div>
@@ -834,16 +876,16 @@
         <!-- Failure Card #1 -->
         <div class="dg-failure-card">
           <div class="dg-failure-card__header">
-            <span>⚠️ Failure Card #1</span> · Contraexemplo: Contexto Stale e Violação Arquitetural
+            <span>Bastidores · Caso 1</span> · O índice de dois commits atrás
           </div>
           <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
             <div>
-              <p><strong>Cenário:</strong> O agente recupera o índice de contexto construído no commit <span class="dg-mono">C1</span>. O repositório avançou para <span class="dg-mono">C2</span>, onde uma regra arquitetural nova proíbe chamadas diretas de banco no controller.</p>
-              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> O código gerado é sintaticamente correto, compila e passa nos testes unitários isolados.</p>
+              <p><strong>O que aconteceu:</strong> o agente recuperou o índice de contexto construído no commit <span class="dg-mono">C1</span>. O repositório já estava em <span class="dg-mono">C2</span>, onde uma regra nova de arquitetura proíbe chamadas diretas ao banco de dentro do controller.</p>
+              <p style="margin-top: 0.5rem;"><strong>Por que parecia sucesso:</strong> o código gerado compila e passa nos testes unitários.</p>
             </div>
             <div>
-              <p><strong>Propriedade não observada:</strong> O alinhamento do RAG com o SHA corrente (<span class="dg-mono">C2</span>) e a nova regra de acoplamento de camadas.</p>
-              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: Coerência de texto recuperado não é atualidade do repositório.</p>
+              <p><strong>O que ninguém tinha checado:</strong> se o índice ainda correspondia ao commit atual (<span class="dg-mono">C2</span>) e se a nova regra de camadas valia para o trecho alterado.</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: um índice recuperado pode parecer coerente e estar desatualizado. Compare o commit dele com o atual antes de usar.</p>
             </div>
           </div>
         </div>
@@ -857,9 +899,9 @@
           Cena 02 · Identidade de Estado
           <span class="dg-badge" style="color: var(--dg-blue)">📄 DOCUMENTED</span>
         </p>
-        <h2 class="dg-title">A Snapshot Capsule</h2>
+        <h2 class="dg-title">Snapshot Capsule: provar onde o agente está olhando</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          Nenhum contexto recuperado deve ser fornecido ao agente sem estar explicitamente selado em um envelope de proveniência contendo os 7 atributos do estado observável.
+          Pense numa pulseira de festival: vale para uma noite e um portão, não dá para reaproveitar em outro dia, e sem ela a segurança não deixa entrar. A Snapshot Capsule (um envelope selado com a identidade exata do repositório) faz o mesmo com o contexto do agente: nenhum contexto recuperado chega a ele sem estar selado com os 7 atributos abaixo. Se um deles faltar, o contexto inteiro passa a ser tratado como não confiável.
         </p>
 
         <!-- Container da Cápsula Empilhada -->
@@ -871,31 +913,31 @@
 
           <div id="dg-capsule-layers-list">
             <div class="dg-capsule-layer">
-              <span>01. Commit SHA</span>
+              <span>01. Commit SHA<small class="dg-capsule-layer__why">Identificador único do commit: mostra qual versão exata do código o agente está vendo.</small></span>
               <span class="dg-mono" style="color: var(--dg-blue)">a8f3d1e992b47c01</span>
             </div>
             <div class="dg-capsule-layer">
-              <span>02. Branch Name</span>
+              <span>02. Branch Name<small class="dg-capsule-layer__why">Em qual linha de trabalho estamos.</small></span>
               <span class="dg-mono" style="color: var(--dg-text-300)">main</span>
             </div>
             <div class="dg-capsule-layer">
-              <span>03. Tree Digest</span>
+              <span>03. Tree Digest<small class="dg-capsule-layer__why">Prova que os arquivos batem com o commit declarado.</small></span>
               <span class="dg-mono" style="color: var(--dg-blue)">sha256:e3b0c44298fc1c14</span>
             </div>
             <div class="dg-capsule-layer">
-              <span>04. Lockfile Hash</span>
+              <span>04. Lockfile Hash<small class="dg-capsule-layer__why">Impressão digital do lockfile (o arquivo que trava as versões das dependências): as instaladas são as esperadas.</small></span>
               <span class="dg-mono" style="color: var(--dg-blue)">sha256:7f83b1657ff1fc53</span>
             </div>
             <div class="dg-capsule-layer">
-              <span>05. Toolchain Version</span>
+              <span>05. Toolchain Version<small class="dg-capsule-layer__why">Versões do runtime e das ferramentas de build.</small></span>
               <span class="dg-mono" style="color: var(--dg-text-300)">Node v22.22.1 / Vite v6.0</span>
             </div>
             <div class="dg-capsule-layer">
-              <span>06. Execution Environment</span>
+              <span>06. Execution Environment<small class="dg-capsule-layer__why">Onde o código roda de fato.</small></span>
               <span class="dg-mono" style="color: var(--dg-text-300)">Linux x86_64 Sandbox</span>
             </div>
             <div class="dg-capsule-layer" id="dg-capsule-digest-layer">
-              <span>07. Immutable Capsule Digest</span>
+              <span>07. Immutable Capsule Digest<small class="dg-capsule-layer__why">Um hash de tudo acima: se qualquer item mudar, ele muda.</small></span>
               <span class="dg-mono" style="color: var(--dg-purple)">capsule:99a1f48b02c3</span>
             </div>
           </div>
@@ -906,7 +948,7 @@
               Simular Item Ausente (Quebrar Lacre)
             </button>
             <p id="dg-capsule-explanation" style="font-size: 0.85rem; color: var(--dg-gray);">
-              Estado atual: <strong>Identidade verificada. Todos os 7 predicados de S_t estão ancorados.</strong>
+              Estado atual: <strong>Os 7 atributos estão presentes e batem com o repositório. O contexto é confiável.</strong>
             </p>
           </div>
         </div>
@@ -920,9 +962,9 @@
           Cena 03 · Contratos & Requisitos
           <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
         </p>
-        <h2 class="dg-title">Da Intenção Humana ao Contrato Verificável</h2>
+        <h2 class="dg-title">Prompt não é contrato</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          Prompt não é contrato. A intenção humana deve passar por uma linha de transformação com critérios formais e propriedades negativas explícitas.
+          Um pedido em linguagem natural é uma intenção, não uma especificação que dá para testar. Entre a necessidade de quem pediu e a prova de que ela foi atendida existe uma cadeia de transformações. É pulando etapas que requisitos que parecem óbvios, como privacidade, se perdem pelo caminho.
         </p>
 
         <!-- Linha de transformação -->
@@ -931,50 +973,56 @@
           <span class="dg-pipeline-arrow">→</span>
           <span class="dg-pipeline-step">Intenção</span>
           <span class="dg-pipeline-arrow">→</span>
-          <span class="dg-pipeline-step">Desired State (D)</span>
+          <span class="dg-pipeline-step">Desired State</span>
           <span class="dg-pipeline-arrow">→</span>
           <span class="dg-pipeline-step">Requisito Mínimo</span>
           <span class="dg-pipeline-arrow">→</span>
           <span class="dg-pipeline-step">Contrato (4 Níveis)</span>
           <span class="dg-pipeline-arrow">→</span>
-          <span class="dg-pipeline-step">Oracle</span>
+          <span class="dg-pipeline-step">Oráculo</span>
           <span class="dg-pipeline-arrow">→</span>
           <span class="dg-pipeline-step">Evidência</span>
         </div>
+        <p style="max-width: 850px; font-size: 0.95rem; color: var(--dg-gray);">
+          Oráculo (em inglês, oracle) é qualquer verificação automática que dá um veredito sobre uma propriedade: um teste, um linter (que checa estilo e padrões do código), um scanner de segurança.
+        </p>
 
         <!-- Os 4 Níveis de Contrato -->
-        <div class="dg-grid dg-grid--4" style="margin-top: 2rem;">
+        <p style="margin-top: 2rem; max-width: 850px;">
+          O contrato é como revisar o mesmo Pull Request em quatro zooms. Cada nível pode aprovar algo que o outro reprovaria:
+        </p>
+        <div class="dg-grid dg-grid--4" style="margin-top: 1rem;">
           <div class="dg-card">
             <p class="dg-eyebrow" style="color: var(--dg-blue)">Nível 1 · Interface</p>
-            <p style="font-size: 0.95rem;">Tipos, schemas, assinaturas de métodos e formatos de mensagem.</p>
+            <p style="font-size: 0.95rem;"><strong>A forma bate?</strong> Tipos, schemas, assinaturas de métodos e formatos de mensagem.</p>
           </div>
           <div class="dg-card">
             <p class="dg-eyebrow" style="color: var(--dg-blue)">Nível 2 · Comportamento</p>
-            <p style="font-size: 0.95rem;">Pré-condições, pós-condições, invariantes e efeitos colaterais.</p>
+            <p style="font-size: 0.95rem;"><strong>Faz o que promete, e só isso?</strong> Pré-condições, pós-condições, invariantes (o que nunca pode mudar) e efeitos colaterais.</p>
           </div>
           <div class="dg-card">
             <p class="dg-eyebrow" style="color: var(--dg-purple)">Nível 3 · Arquitetura</p>
-            <p style="font-size: 0.95rem;">Camadas, fronteiras de módulo, dependências permitidas e isolamento.</p>
+            <p style="font-size: 0.95rem;"><strong>Vive onde deveria?</strong> Camadas, fronteiras entre módulos, dependências permitidas e isolamento.</p>
           </div>
           <div class="dg-card">
             <p class="dg-eyebrow" style="color: var(--dg-amber)">Nível 4 · Semântica</p>
-            <p style="font-size: 0.95rem;">Ownership de dados, privacidade, retenção e impactos regulatórios.</p>
+            <p style="font-size: 0.95rem;"><strong>É seguro e está em conformidade?</strong> Quem é dono dos dados, privacidade, retenção e impactos regulatórios.</p>
           </div>
         </div>
 
         <!-- Failure Card #2 -->
         <div class="dg-failure-card">
           <div class="dg-failure-card__header">
-            <span>⚠️ Failure Card #2</span> · Contraexemplo: Serviço de Fotos e Privacidade Oculta
+            <span>Bastidores · Caso 2</span> · Os metadados da foto (EXIF) que ninguém pediu
           </div>
           <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
             <div>
-              <p><strong>Cenário:</strong> O agente implementa um serviço de envio de fotos. Todos os testes de API (Nível 1 e 2) retornam <span class="dg-mono" style="color: var(--dg-green)">PASS</span>.</p>
-              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> A API envia e armazena fotos com tempo de resposta excelente.</p>
+              <p><strong>O que aconteceu:</strong> o agente implementou um serviço de envio de fotos. Todos os testes de API (níveis 1 e 2 do contrato) deram <span class="dg-mono" style="color: var(--dg-green)">PASS</span>.</p>
+              <p style="margin-top: 0.5rem;"><strong>Por que parecia sucesso:</strong> a API recebia e guardava as fotos com ótimo tempo de resposta.</p>
             </div>
             <div>
-              <p><strong>Propriedade não observada:</strong> A implementação grava EXIF com localização em logs abertos e compartilha metadados com terceiros sem consentimento (Violação Nível 4).</p>
-              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: O caminho principal de API PASS continua verde, mas uma trilha lateral permanece sem validação por ausência de oracle.</p>
+              <p><strong>O que ninguém tinha checado:</strong> a implementação gravava o EXIF (metadados da câmera, incluindo a localização) em logs abertos e compartilhava esses metadados com terceiros sem consentimento. É uma violação de nível 4.</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: o caminho principal continua verde, e uma trilha lateral fica sem vigilância porque nenhum oráculo foi escrito para ela.</p>
             </div>
           </div>
         </div>
@@ -988,9 +1036,9 @@
           Cena 04 · Análise Estrutural
           <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
         </p>
-        <h2 class="dg-title">O Software como Estrutura Parcial</h2>
+        <h2 class="dg-title">A análise estática vê o que está escrito, não o que acontece em execução</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          Análise estática e grafos de código (AST/CST, símbolos e relações tipadas) fornecem grounding estrutural, mas possuem fronteiras de observabilidade inerentes. Nenhuma análise estática captura o runtime de forma completa.
+          Análise estática (ler o código sem executá-lo) e grafos de código (AST/CST, a árvore sintática do código, mais os símbolos e as relações entre eles) formam um mapa confiável de tudo que está escrito. Mas o mapa não mostra o que só acontece durante a execução: nenhuma análise estática captura o runtime por completo.
         </p>
 
         <!-- Grafo em SVG Inline -->
@@ -1034,7 +1082,7 @@
         </div>
 
         <div class="dg-boundary-marker">
-          <strong>Boundary Marker:</strong> O grafo representa apenas predicados estaticamente extraíveis. Chamadas via reflexão, <span class="dg-mono">eval</span>, plugins dinâmicos ou geração de código no runtime terminam em <span class="dg-mono" style="color: var(--dg-amber)">POSSIBLE</span> ou <span class="dg-mono" style="color: var(--dg-gray)">UNKNOWN</span>, e nunca devem ser tratadas como inexistentes.
+          <strong>Boundary Marker (marcador de fronteira):</strong> o grafo só representa o que dá para extrair sem executar o código. Chamadas por reflexão, <span class="dg-mono">eval</span>, plugins dinâmicos ou código gerado em execução aparecem como <span class="dg-mono" style="color: var(--dg-amber)">POSSIBLE</span> (pode acontecer) ou <span class="dg-mono" style="color: var(--dg-gray)">UNKNOWN</span> (não dá para saber), e nunca devem ser tratadas como inexistentes.
         </div>
       </div>
     </section>
@@ -1046,69 +1094,78 @@
           Cena 05 · Governança de Ação
           <span class="dg-badge" style="color: var(--dg-amber)">⚡ DOCUMENTED</span>
         </p>
-        <h2 class="dg-title">Autonomia não é Autoridade & Action Gateway</h2>
+        <h2 class="dg-title">Autonomia não é autoridade: o Action Gateway</h2>
+        <p style="margin-bottom: 1rem; max-width: 850px;">
+          Um modelo avançado consegue montar planos complexos sozinho. Isso é <strong>autonomia</strong>: o quanto ele planeja e encadeia ações. <strong>Autoridade</strong> é outra coisa: a permissão de realmente alterar o repositório, disparar um deploy ou chamar uma ferramenta privilegiada. Quem decide isso é o <strong>Action Gateway</strong>, e apenas ele.
+        </p>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          Modelos avançados podem propor planos complexos de forma autônoma. No entanto, a autoridade para aplicar alterações no repositório, disparar deploys ou invocar ferramentas privilegiadas pertence exclusivamente ao <strong>Action Gateway</strong>.
+          Pense nele como um revisor de Pull Request automático e inflexível: se a mudança toca um arquivo fora da lista de permitidos, ele bloqueia, por melhor que o código esteja.
         </p>
 
         <!-- Matriz Autonomia x Autoridade -->
         <div class="dg-matrix">
           <div class="dg-matrix-quadrant">
             <p class="dg-eyebrow">Baixa Autonomia · Baixa Autoridade</p>
-            <p style="font-size: 0.95rem;">Automação rígida, scripts locais e tarefas rotineiras de leitura.</p>
+            <p style="font-size: 0.95rem;">Automação rígida, scripts locais e leitura de rotina. Pouco risco e pouca capacidade.</p>
           </div>
           <div class="dg-matrix-quadrant">
             <p class="dg-eyebrow" style="color: var(--dg-red)">Baixa Autonomia · Alta Autoridade</p>
-            <p style="font-size: 0.95rem;">Scripts de deploy com blast radius elevado sem verificação flexível.</p>
+            <p style="font-size: 0.95rem;">Scripts de deploy com grande blast radius (o quanto um erro pode se espalhar) e nenhum julgamento para perceber que algo está errado.</p>
           </div>
           <div class="dg-matrix-quadrant dg-matrix-quadrant--recommended">
             <p class="dg-eyebrow" style="color: var(--dg-blue)">✦ Alta Autonomia · Baixa Autoridade (Zona Recomendada)</p>
-            <p style="font-size: 0.95rem;">Agente investiga, planeja e propõe alterações; execução é estritamente mediada e limitada a sandbox.</p>
+            <p style="font-size: 0.95rem;">O agente investiga, planeja e propõe. A execução é sempre intermediada e limitada a um sandbox (ambiente isolado).</p>
           </div>
           <div class="dg-matrix-quadrant" style="border-color: var(--dg-red);">
             <p class="dg-eyebrow" style="color: var(--dg-red)">⚠️ Alta Autonomia · Alta Autoridade (Zona de Alto Risco)</p>
-            <p style="font-size: 0.95rem;">Agente decide e executa direto em produção. Fusão perigosa de decisão e execução.</p>
+            <p style="font-size: 0.95rem;">O agente decide e executa direto em produção: decisão e execução no mesmo passo, sem barreira no meio.</p>
           </div>
         </div>
 
         <!-- 12 Passos do Action Gateway -->
-        <p class="dg-eyebrow" style="color: var(--dg-blue); margin-top: 2rem;">Action Gateway · Os 12 Passos de Verificação</p>
+        <p class="dg-eyebrow" style="color: var(--dg-blue); margin-top: 2rem;">Action Gateway · os 12 passos, em 3 fases</p>
+        <p style="max-width: 850px; font-size: 0.95rem; color: var(--dg-gray);">
+          Antes de qualquer efeito real, cada proposta passa por 12 checagens: entender o pedido (1 a 5), decidir se é permitido (6 a 9) e executar e provar (10 a 12).
+        </p>
         <div class="dg-gateway-list">
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">01.</span> Receber proposta não confiável</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">01.</span> Receber a proposta (tratada como não confiável)</div>
           <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">02.</span> Normalizar ferramenta e versão</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">03.</span> Validar schema de entrada</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">04.</span> Resolver recursos canônicos</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">05.</span> Identificar principal e ambiente</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">06.</span> Verificar escopo e allowlist</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">07.</span> Calcular blast radius / fan-out</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">08.</span> Consultar Policy-as-Code</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">09.</span> Verificar aprovação vinculada</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">10.</span> Revalidar snapshot pré-efeito</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">11.</span> Executar com privilégio mínimo</div>
-          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">12.</span> Registrar evidência / proveniência</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">03.</span> Validar o formato da entrada (schema)</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">04.</span> Resolver os recursos citados para seus nomes canônicos</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">05.</span> Identificar quem está agindo e em qual ambiente</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">06.</span> Verificar o escopo contra a lista de permitidos (allowlist)</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">07.</span> Calcular o blast radius: quanto pode se espalhar se der errado</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">08.</span> Consultar as regras versionadas (Policy-as-Code)</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">09.</span> Verificar se existe aprovação vinculada a esta ação</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">10.</span> Revalidar o snapshot imediatamente antes do efeito</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">11.</span> Executar com o mínimo de privilégio necessário</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">12.</span> Registrar a evidência e a origem de tudo</div>
         </div>
 
         <!-- Diff Lens Component -->
         <div class="dg-diff-lens">
-          <p class="dg-eyebrow" style="color: var(--dg-purple)">Diff Lens · Intercepção de Escopo de Ação</p>
-          <div class="dg-diff-line dg-diff-line--proposed">[Proposto pelo Agente] Modificar src/api/export.js e infra/deploy.yaml</div>
-          <div class="dg-diff-line dg-diff-line--authorized">[Escopo Autorizado] Allowlist: src/api/** apenas</div>
-          <div class="dg-diff-line dg-diff-line--blocked">[Ação Interrompida pelo Gateway] BLOQUEADO: Tentativa de alteração fora do escopo em infra/deploy.yaml. Nenhum efeito aplicado.</div>
+          <p class="dg-eyebrow" style="color: var(--dg-purple)">Diff Lens · o Gateway comparando o pedido com o escopo permitido</p>
+          <div class="dg-diff-line dg-diff-line--proposed">[Proposto pelo agente] Modificar src/api/export.js e infra/deploy.yaml</div>
+          <div class="dg-diff-line dg-diff-line--authorized">[Escopo autorizado] Lista de permitidos: apenas src/api/**</div>
+          <div class="dg-diff-line dg-diff-line--blocked">[Interrompido pelo Gateway] BLOQUEADO: alteração fora do escopo em infra/deploy.yaml. Nenhum efeito aplicado.</div>
         </div>
+        <p style="max-width: 850px; font-size: 0.95rem;">
+          O Gateway não aprova só metade da proposta: ele bloqueia a ação inteira até o escopo ser corrigido.
+        </p>
 
         <!-- Failure Card #3 -->
         <div class="dg-failure-card">
           <div class="dg-failure-card__header">
-            <span>⚠️ Failure Card #3</span> · Contraexemplo: Chamada Secundária com Autoridade Elevada
+            <span>Bastidores · Caso 3</span> · A escrita escondida atrás de uma leitura
           </div>
           <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
             <div>
-              <p><strong>Cenário:</strong> Uma ferramenta inocente de leitura (<span class="dg-mono">release_status</span>) é invocada. Um ticket induz o agente a chamar internamente uma segunda ferramenta (<span class="dg-mono">sync_environment</span>) com permissão de escrita.</p>
-              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> A primeira chamada passa na verificação inicial de leitura.</p>
+              <p><strong>O que aconteceu:</strong> uma ferramenta de leitura, sem risco (<span class="dg-mono">release_status</span>), é chamada normalmente. Um ticket induz o agente a chamar, por dentro, uma segunda ferramenta (<span class="dg-mono">sync_environment</span>) que tem permissão de escrita.</p>
+              <p style="margin-top: 0.5rem;"><strong>Por que parecia sucesso:</strong> a primeira chamada passa na verificação de leitura.</p>
             </div>
             <div>
-              <p><strong>Propriedade não observada:</strong> A segunda chamada surge como uma entidade nova no pipeline e necessita de mediação independente pelo Action Gateway.</p>
-              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: Schema válido e aprovação da chamada primária não autorizam encadeamentos secundários privilegiados.</p>
+              <p><strong>O que ninguém tinha checado:</strong> a segunda chamada é uma ação nova no fluxo e precisa ser avaliada pelo Action Gateway por conta própria. Ela não herda a aprovação da primeira.</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: formato válido e aprovação da chamada principal não autorizam chamadas encadeadas com mais privilégio.</p>
             </div>
           </div>
         </div>
@@ -1122,9 +1179,12 @@
           Cena 06 · Força Epistemológica
           <span class="dg-badge" style="color: var(--dg-blue)">✓ ESTABLISHED</span>
         </p>
-        <h2 class="dg-title">O Resultado Verde é Menor do que Parece</h2>
-        <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          Um teste verde (<span class="dg-mono" style="color: var(--dg-green)">PASS</span>) prova apenas que a propriedade testada foi satisfeita sob o envelope de execução observado. Não prova correção global nem ausência de colaterais.
+        <h2 class="dg-title">Passar no teste não é o mesmo que estar certo</h2>
+        <p style="margin-bottom: 1rem; max-width: 850px;">
+          Um teste que passa (<span class="dg-mono" style="color: var(--dg-green)">PASS</span>) prova uma coisa só: a propriedade que ele verifica foi satisfeita nas condições em que ele rodou. Não prova que o sistema está correto nem que não houve efeitos colaterais. A tabela mostra 10 tipos de verificação (oráculos), o que cada PASS garante e o que continua sem garantia.
+        </p>
+        <p style="margin-bottom: 1.5rem; max-width: 850px; font-size: 0.9rem; color: var(--dg-gray);">
+          Os veredictos possíveis: <strong>PASS</strong> (passou), <strong>FAIL</strong> (falhou), <strong>UNKNOWN</strong> (sem base para concluir, por teste pulado, timeout ou ausência de teste) e <strong>CONFLICT</strong> (registros válidos com resultados incompatíveis entre si).
         </p>
 
         <!-- Filtros de Veredicto -->
@@ -1145,72 +1205,72 @@
           <table class="dg-table" id="dg-oracle-table">
             <thead>
               <tr>
-                <th>Oracle / Validador</th>
+                <th>Verificação (oráculo)</th>
                 <th>Veredicto</th>
-                <th>O que o PASS estabelece</th>
-                <th>O que NÃO estabelece sozinho</th>
+                <th>O que garante quando passa</th>
+                <th>O que continua sem garantia</th>
               </tr>
             </thead>
             <tbody>
               <tr data-verdict="PASS">
-                <td>01. Parser (Sintaxe)</td>
+                <td>01. Parser (sintaxe)</td>
                 <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
-                <td>Entrada analisável conforme gramática da linguagem.</td>
-                <td>Correta tipagem, semântica ou funcionamento.</td>
+                <td>A entrada é válida segundo a gramática da linguagem.</td>
+                <td>Tipos corretos, significado certo ou funcionamento.</td>
               </tr>
               <tr data-verdict="PASS">
-                <td>02. Type Checker</td>
+                <td>02. Type Checker (tipos)</td>
                 <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
-                <td>Tipos satisfazem as regras do sistema de tipos estático.</td>
-                <td>Comportamento no runtime ou ausência de bugs lógicos.</td>
+                <td>Os tipos respeitam as regras do sistema de tipos.</td>
+                <td>Comportamento em execução e bugs de lógica.</td>
               </tr>
               <tr data-verdict="PASS">
-                <td>03. Análise Estática / Linter</td>
+                <td>03. Análise estática / Linter</td>
                 <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
-                <td>Regra de linter e padrões abstratos satisfeitos.</td>
-                <td>Completude e ausência de regressões funcionais.</td>
+                <td>As regras e padrões configurados foram respeitados.</td>
+                <td>Que nada está faltando e que não há regressão funcional.</td>
               </tr>
               <tr data-verdict="PASS">
-                <td>04. Teste Unitário</td>
+                <td>04. Teste unitário</td>
                 <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
-                <td>Caso específico executado passou sob inputs definidos.</td>
-                <td>Casos de borda não escritos ou requisitos omitidos.</td>
+                <td>O caso testado passou com as entradas usadas.</td>
+                <td>Casos de borda que ninguém escreveu e requisitos esquecidos.</td>
               </tr>
               <tr data-verdict="PASS">
-                <td>05. Teste de Integração</td>
+                <td>05. Teste de integração</td>
                 <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
-                <td>Componentes interagiram com sucesso no cenário testado.</td>
-                <td>Comportamento sob alta concorrência ou em prod.</td>
+                <td>Os componentes funcionaram juntos no cenário testado.</td>
+                <td>Comportamento sob muita concorrência ou em produção.</td>
               </tr>
               <tr data-verdict="PASS">
-                <td>06. Scanner de Segurança</td>
+                <td>06. Scanner de segurança</td>
                 <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
-                <td>Nenhuma assinatura de vulnerabilidade conhecida encontrada.</td>
-                <td>Ausência de falhas de lógica de negócios inéditas.</td>
+                <td>Nenhuma vulnerabilidade conhecida foi encontrada.</td>
+                <td>Falhas de lógica de negócio que nunca foram catalogadas.</td>
               </tr>
               <tr data-verdict="UNKNOWN">
-                <td>07. Monitor de Runtime</td>
+                <td>07. Monitor de runtime</td>
                 <td><span class="dg-badge" style="color: var(--dg-gray)">UNKNOWN</span></td>
-                <td>Métricas normais durante a janela capturada.</td>
-                <td>Comportamento em janelas não observadas ou de pico.</td>
+                <td>As métricas estiveram normais na janela observada.</td>
+                <td>O que acontece fora dessa janela, como em horários de pico.</td>
               </tr>
               <tr data-verdict="FAIL">
-                <td>08. Model Checker</td>
+                <td>08. Model Checker (modelo formal)</td>
                 <td><span class="dg-badge" style="color: var(--dg-red)">FAIL</span></td>
-                <td>Modelo formal satisfaz propriedades invariantes.</td>
-                <td>Fidelidade absoluta do modelo ao código concreto.</td>
+                <td>O modelo formal respeita as invariantes.</td>
+                <td>Que o modelo representa fielmente o código real.</td>
               </tr>
               <tr data-verdict="CONFLICT">
-                <td>09. Verificador Formal</td>
+                <td>09. Verificador formal</td>
                 <td><span class="dg-badge" style="color: var(--dg-magenta)">CONFLICT</span></td>
-                <td>Prova matemática de correspondência com a spec.</td>
-                <td>Correção da intenção humana original da spec.</td>
+                <td>Prova matemática de que o código corresponde à especificação.</td>
+                <td>Que a especificação captura o que a pessoa realmente queria.</td>
               </tr>
               <tr data-verdict="PASS">
-                <td>10. Revisão Humana</td>
+                <td>10. Revisão humana</td>
                 <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
-                <td>Avaliador humano aprovou a mudança conforme seu julgamento.</td>
-                <td>Garantia matemática contra omissão ou falha de revisão.</td>
+                <td>Uma pessoa avaliou e aprovou a mudança, segundo seu julgamento.</td>
+                <td>Proteção contra algo que a pessoa deixou passar.</td>
               </tr>
             </tbody>
           </table>
@@ -1219,16 +1279,16 @@
         <!-- Failure Card #4 -->
         <div class="dg-failure-card">
           <div class="dg-failure-card__header">
-            <span>⚠️ Failure Card #4</span> · Contraexemplo: Teste Desabilitado e Falso Agregado Verde
+            <span>Bastidores · Caso 4</span> · O teste que sumiu em vez do bug
           </div>
           <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
             <div>
-              <p><strong>Cenário:</strong> O teste <span class="dg-mono">test_rejects_negative_amount()</span> falha após uma mudança. Para convergir, o teste é marcado com <span class="dg-mono" style="color: var(--dg-amber)">skip</span>.</p>
-              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> A suíte de testes no CI fica 100% verde (0 falhas aparentes).</p>
+              <p><strong>O que aconteceu:</strong> o teste <span class="dg-mono">test_rejects_negative_amount()</span> falha depois de uma mudança. Para a suíte voltar a passar, ele é marcado com <span class="dg-mono" style="color: var(--dg-amber)">skip</span> (pular).</p>
+              <p style="margin-top: 0.5rem;"><strong>Por que parecia sucesso:</strong> a suíte de testes fica 100% verde, sem nenhuma falha à vista.</p>
             </div>
             <div>
-              <p><strong>Propriedade não observada:</strong> A diminuição da cobertura do inventário esperado de testes. O skip oculta o gap em vez de resolvê-lo.</p>
-              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: Menos testes falhando não significa mais software correto — significa apenas menor observação.</p>
+              <p><strong>O que ninguém tinha checado:</strong> a cobertura do que deveria ser testado diminuiu. O skip esconde a lacuna em vez de resolvê-la.</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: menos testes falhando não significa software mais correto. Pode significar apenas menos coisa sendo observada.</p>
             </div>
           </div>
         </div>
@@ -1242,9 +1302,9 @@
           Cena 07 · Auditabilidade
           <span class="dg-badge" style="color: var(--dg-green)">✓ ESTABLISHED</span>
         </p>
-        <h2 class="dg-title">Evidence Record & Evidence Ledger</h2>
+        <h2 class="dg-title">Evidence Record: o recibo de cada validação</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          Toda validação deve gerar um <strong>Evidence Record</strong> imutável, registrando não só o resultado, mas a proveniência, a versão do validador, o envelope e o limite explícito de cobertura.
+          Toda validação deve gerar um <strong>Evidence Record</strong> imutável. Ele não guarda só o resultado: registra de onde veio (a proveniência), qual versão do validador rodou, em que ambiente e o que ficou de fora. É um recibo, não um certificado: prova que passou naquele teste, naquelas condições, e não garante que nada vai quebrar depois.
         </p>
 
         <!-- Evidence Ledger Ficha -->
@@ -1255,19 +1315,22 @@
           </div>
           <div class="dg-grid dg-grid--2" style="font-size: 0.85rem; color: var(--dg-text-300);">
             <div>
-              <p>Subject URI: <span class="dg-mono">git://repo@a8f3d1e/src/api/export.js</span></p>
-              <p>Commit SHA: <span class="dg-mono">a8f3d1e992b47c01</span></p>
-              <p>Requirement ID: <span class="dg-mono">REQ-EXPORT-001</span></p>
-              <p>Oracle ID & Tipo: <span class="dg-mono">orc_pytest_v8.2 (Integration Test)</span></p>
+              <p>Alvo (Subject URI): <span class="dg-mono">git://repo@a8f3d1e/src/api/export.js</span></p>
+              <p>Commit: <span class="dg-mono">a8f3d1e992b47c01</span></p>
+              <p>Requisito: <span class="dg-mono">REQ-EXPORT-001</span></p>
+              <p>Verificação (oráculo): <span class="dg-mono">orc_nodetest_v22 (teste de integração)</span></p>
             </div>
             <div>
-              <p>Validator Binary: <span class="dg-mono">node-test-runner:v22.22.1</span></p>
-              <p>Execution Envelope: <span class="dg-mono">Docker Sandbox / Isolated Net</span></p>
-              <p style="color: var(--dg-amber);">Coverage Boundary: <span class="dg-mono">Covered 88% lines / EXIF logging NOT covered</span></p>
-              <p>Provenance Signature: <span class="dg-mono">sig:sha256:990a1f...</span></p>
+              <p>Executor (validator): <span class="dg-mono">node-test-runner:v22.22.1</span></p>
+              <p>Ambiente de execução: <span class="dg-mono">Docker Sandbox / rede isolada</span></p>
+              <p style="color: var(--dg-amber);">O que ficou fora (Coverage Boundary): <span class="dg-mono">88% das linhas cobertas / logging de EXIF NÃO coberto</span></p>
+              <p>Assinatura de origem (Provenance): <span class="dg-mono">sig:sha256:990a1f...</span></p>
             </div>
           </div>
         </div>
+        <p style="max-width: 850px; font-size: 0.95rem;">
+          Repare no campo em destaque: o registro declara o próprio ponto cego. Aqui, o PASS com 88% de cobertura não diz nada sobre o logging de EXIF do Caso 2.
+        </p>
       </div>
     </section>
 
@@ -1278,56 +1341,56 @@
           Cena 08 · Decisão & Fechamento
           <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
         </p>
-        <h2 class="dg-title">Reconciliação, MVA & Comparador Baseline</h2>
+        <h2 class="dg-title">Da evidência à decisão, e por onde começar</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
-          A reconciliação compara o estado desejado (D), o estado corrente (S_t), a evidência obtida e as regras de policy para emitir uma das 7 decisões possíveis.
+          A reconciliação é o momento de decidir o que fazer com a mudança. Ela compara o estado desejado, o estado atual, a evidência obtida e as regras de política, e produz uma entre 7 decisões possíveis, não só aceitar ou rejeitar.
         </p>
 
         <!-- 4 Painéis de Reconciliação -->
         <div class="dg-grid dg-grid--4" style="margin-bottom: 2rem;">
           <div class="dg-card">
-            <p class="dg-eyebrow" style="color: var(--dg-purple)">01. Desired State (D)</p>
-            <p style="font-size: 0.85rem;">Invariantes e requisitos de aceitação declarados.</p>
+            <p class="dg-eyebrow" style="color: var(--dg-purple)">01. Desired State</p>
+            <p style="font-size: 0.85rem;">Os requisitos de aceitação e as regras que nunca podem ser quebradas.</p>
           </div>
           <div class="dg-card">
-            <p class="dg-eyebrow" style="color: var(--dg-blue)">02. Current State (S_t)</p>
-            <p style="font-size: 0.85rem;">Diff do repositório pós-ação do agente.</p>
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">02. Current State</p>
+            <p style="font-size: 0.85rem;">O diff (a diferença entre o código antes e depois) do repositório após a ação do agente.</p>
           </div>
           <div class="dg-card">
             <p class="dg-eyebrow" style="color: var(--dg-green)">03. Evidence State</p>
-            <p style="font-size: 0.85rem;">Evidence Record com veredictos e limites.</p>
+            <p style="font-size: 0.85rem;">O Evidence Record, com veredictos e limites.</p>
           </div>
           <div class="dg-card">
             <p class="dg-eyebrow" style="color: var(--dg-amber)">04. Policy State</p>
-            <p style="font-size: 0.85rem;">Allowlist de escopo e aprovação de ação.</p>
+            <p style="font-size: 0.85rem;">A lista de permitidos e as aprovações da ação.</p>
           </div>
         </div>
 
         <!-- 7 Saídas de Decisão -->
-        <p class="dg-eyebrow" style="color: var(--dg-blue);">As 7 Saídas do Processo de Reconciliação</p>
+        <p class="dg-eyebrow" style="color: var(--dg-blue);">As 7 decisões possíveis</p>
         <div class="dg-grid dg-grid--3" style="font-size: 0.9rem; margin-bottom: 2rem;">
-          <div class="dg-card"><strong style="color: var(--dg-green)">1. Aceitar Mudança:</strong> Evidência satisfatória e dentro da policy.</div>
-          <div class="dg-card"><strong style="color: var(--dg-red)">2. Bloquear Mudança:</strong> Violação de escopo ou falha de oracle.</div>
-          <div class="dg-card"><strong style="color: var(--dg-amber)">3. Pedir Revisão Humana:</strong> Impacto elevado ou incerteza detectada.</div>
-          <div class="dg-card"><strong style="color: var(--dg-blue)">4. Iniciar Novo Ciclo:</strong> Reajuste de plano pelo agente.</div>
-          <div class="dg-card"><strong style="color: var(--dg-purple)">5. Corrigir Oracle:</strong> Teste flaky ou oracle incorreto.</div>
-          <div class="dg-card"><strong style="color: var(--dg-purple)">6. Alterar Spec:</strong> Decisão explícita humana de mudar requisito.</div>
-          <div class="dg-card"><strong style="color: var(--dg-amber)">7. Exceção com Prazo:</strong> Liberação temporária acompanhada.</div>
+          <div class="dg-card"><strong style="color: var(--dg-green)">1. Aceitar a mudança:</strong> a evidência basta e tudo está dentro da política.</div>
+          <div class="dg-card"><strong style="color: var(--dg-red)">2. Bloquear a mudança:</strong> houve violação de escopo ou uma verificação falhou.</div>
+          <div class="dg-card"><strong style="color: var(--dg-amber)">3. Pedir revisão humana:</strong> o impacto é alto ou há incerteza.</div>
+          <div class="dg-card"><strong style="color: var(--dg-blue)">4. Iniciar novo ciclo:</strong> o agente ajusta o plano e tenta de novo.</div>
+          <div class="dg-card"><strong style="color: var(--dg-purple)">5. Corrigir a verificação:</strong> o teste é instável (flaky) ou está errado.</div>
+          <div class="dg-card"><strong style="color: var(--dg-purple)">6. Alterar a especificação:</strong> uma pessoa decide, explicitamente, mudar o requisito.</div>
+          <div class="dg-card"><strong style="color: var(--dg-amber)">7. Exceção com prazo:</strong> liberação temporária, acompanhada e com data para acabar.</div>
         </div>
 
         <!-- Comparador Baseline vs Proposed e Ablação -->
         <div class="dg-card" style="background: var(--dg-bg-900); margin-bottom: 2rem;">
-          <p class="dg-eyebrow" style="color: var(--dg-purple)">Comparador de Hipótese Experimental (Ablação Representativa)</p>
+          <p class="dg-eyebrow" style="color: var(--dg-purple)">Experimento: e se você desligar um controle?</p>
           <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-            Alterne os mecanismos ativados para visualizar quais das 5 classes de desvio voltam a ficar sem mitigação:
+            Desligue os mecanismos abaixo e veja quais das 5 classes de desvio (dependência inventada, contexto desatualizado, mudança fora de escopo, violação de arquitetura e estado divergente do repositório) voltam a ficar sem proteção. Cada classe depende de pelo menos um controle, e a violação de arquitetura depende de dois (validação e grounding).
           </p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
-            <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-grounding" checked /> Grounding (S_t)</label>
+            <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-grounding" checked /> Grounding (ancorar o estado)</label>
             <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-gateway" checked /> Action Gateway</label>
             <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-validation" checked /> Validação / Oráculos</label>
           </div>
-          <div id="dg-ablation-results" class="dg-mono" style="font-size: 0.85rem; padding: 0.8rem; background: var(--dg-bg-950); border-radius: 6px; border: 1px solid var(--dg-border);">
-            Status: <strong>Todas as 5 classes de desvio mitigadas.</strong>
+          <div id="dg-ablation-results" role="status" class="dg-mono" style="font-size: 0.85rem; padding: 0.8rem; background: var(--dg-bg-950); border-radius: 6px; border: 1px solid var(--dg-border);">
+            <span style="color: var(--dg-green)">✓ Todas as 5 classes de desvio estão protegidas.</span>
           </div>
         </div>
 
@@ -1335,18 +1398,58 @@
         <div class="dg-card" style="border-color: var(--dg-blue); background: rgba(88, 166, 255, 0.03);">
           <h3 style="color: var(--dg-text-100); margin-bottom: 0.8rem;">Comece com um MVA (Minimum Viable Architecture)</h3>
           <p style="font-size: 0.95rem; margin-bottom: 1rem;">
-            Implemente um pipeline de baixo risco seguindo o checklist de 7 ações operacionais:
+            Um MVA é a menor versão do pipeline que já vale rodar. Monte-o com um risco baixo, seguindo estas 7 ações:
           </p>
           <ol style="padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.8;">
-            <li>Escolha uma tarefa delimitada e de baixo impacto.</li>
-            <li>Fixe a Snapshot Capsule (SHA, tree digest e lockfile).</li>
-            <li>Declare allowlist e denylist de arquivos no Action Gateway.</li>
-            <li>Transforme pelo menos um requisito em contrato e oracle independente.</li>
-            <li>Execute o agente em sandbox sem autoridade implícita.</li>
-            <li>Registre explicitamente veredictos PASS, FAIL, UNKNOWN e CONFLICT no Evidence Record.</li>
-            <li>Compare os resultados com um baseline sem grounding.</li>
+            <li>Escolha uma tarefa pequena e de baixo impacto.</li>
+            <li>Fixe a Snapshot Capsule (o SHA do commit, o tree digest e o hash do lockfile).</li>
+            <li>Declare no Action Gateway a lista de arquivos permitidos e a de proibidos.</li>
+            <li>Transforme pelo menos um requisito em contrato, com um oráculo independente para verificá-lo.</li>
+            <li>Rode o agente em sandbox, sem nenhuma autoridade implícita.</li>
+            <li>Registre os veredictos PASS, FAIL, UNKNOWN e CONFLICT no Evidence Record.</li>
+            <li>Compare o resultado com um baseline (a mesma tarefa, sem grounding).</li>
           </ol>
-          <a href="#cena-02" class="dg-btn-action">Definir o Primeiro Envelope</a>
+          <a href="#cena-02" class="dg-btn-action">Começar pela Snapshot Capsule</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 09 — Glossário -->
+    <section id="cena-09" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">Cena 09 · Glossário</p>
+        <h2 class="dg-title">Os termos, em linguagem comum</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          Os termos originais continuam corretos e aparecem ao longo do artigo. Esta tabela é o atalho para lembrar o que cada um quer dizer.
+        </p>
+        <div class="dg-table-wrap">
+          <table class="dg-table" id="dg-glossary-table" aria-label="Glossário de termos">
+            <thead>
+              <tr>
+                <th scope="col">Termo original</th>
+                <th scope="col">Em linguagem comum</th>
+                <th scope="col">O que significa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Agent–Repository Gap</th><td>O desalinhamento</td><td>A diferença entre o que o agente acredita saber do repositório e o que realmente está lá agora. Em textos acadêmicos aparece como <span class="dg-mono">G_t = A_t − S_t</span>, onde A_t é o que o agente assume no instante t e S_t é o estado real do repositório nesse instante.</td></tr>
+              <tr><th scope="row">Snapshot Capsule</th><td>O lacre de contexto</td><td>Envelope selado que prova qual commit e qual ambiente o agente está vendo.</td></tr>
+              <tr><th scope="row">Action Gateway</th><td>O revisor de Pull Request inflexível</td><td>A barreira que decide o que o agente pode de fato executar.</td></tr>
+              <tr><th scope="row">Allowlist</th><td>Lista de permitidos</td><td>Só o que está na lista pode ser tocado. O resto é bloqueado.</td></tr>
+              <tr><th scope="row">Policy-as-Code</th><td>Regra escrita como código</td><td>Regras de permitido e proibido versionadas, em vez de uma política em PDF que ninguém consulta.</td></tr>
+              <tr><th scope="row">Blast radius</th><td>Raio de estrago</td><td>Quanto uma ação pode se espalhar se der errado.</td></tr>
+              <tr><th scope="row">Oracle (oráculo)</th><td>A verificação automática</td><td>Qualquer checagem automática que dá um veredito sobre uma propriedade: teste, linter, scanner.</td></tr>
+              <tr><th scope="row">Evidence Record</th><td>O recibo de validação</td><td>Registro imutável do que foi checado, por quem e sob quais condições.</td></tr>
+              <tr><th scope="row">Coverage Boundary</th><td>O que ficou fora do teste</td><td>O limite explícito do que a validação não cobriu.</td></tr>
+              <tr><th scope="row">Provenance (proveniência)</th><td>Rastro de origem</td><td>A cadeia verificável de quem gerou e assinou uma evidência.</td></tr>
+              <tr><th scope="row">Desired State</th><td>O que deveria ser verdade</td><td>Requisitos e critérios de aceitação declarados.</td></tr>
+              <tr><th scope="row">Current State</th><td>O que é verdade agora</td><td>O estado observável do repositório neste momento.</td></tr>
+              <tr><th scope="row">Contrato de 4 níveis</th><td>Revisão em 4 zooms</td><td>Interface, comportamento, arquitetura e semântica. Cada nível pode aprovar o que outro reprovaria.</td></tr>
+              <tr><th scope="row">Autonomia vs. autoridade</th><td>Pensar sozinho vs. poder executar</td><td>Quanto o agente planeja sem ajuda, contra quanto ele pode alterar de verdade.</td></tr>
+              <tr><th scope="row">Reconciliation (reconciliação)</th><td>A decisão final</td><td>Etapa que junta requisito, estado, evidência e política e decide o próximo passo.</td></tr>
+              <tr><th scope="row">MVA (Minimum Viable Architecture)</th><td>O mínimo que já vale rodar</td><td>A menor versão do pipeline de governança que já traz benefício.</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -1356,7 +1459,7 @@
   <script type="module">
     import { getGapStateClaims } from './js/develop-engineering/states.js';
     import { filterVerdicts } from './js/develop-engineering/verdicts.js';
-    import { evaluateComparatorAblation } from './js/develop-engineering/comparator.js';
+    import { evaluateComparatorAblation, MISMATCH_CLASSES } from './js/develop-engineering/comparator.js';
 
     // Interaction logic for Cena 01 State Cards
     document.addEventListener('DOMContentLoaded', () => {
@@ -1411,13 +1514,13 @@
             digestLayer.classList.add('is-missing');
             statusBadge.style.color = 'var(--dg-gray)';
             statusBadge.textContent = '∅ UNKNOWN';
-            explanation.innerHTML = '<strong style="color: var(--dg-amber)">Lacre quebrado: Item Ausente (Digest nulo). O estado da cápsula regride imediatamente para UNKNOWN. Contexto não confiável.</strong>';
+            explanation.innerHTML = '<strong style="color: var(--dg-amber)">Lacre quebrado: falta o digest (item 07). Sem ele não dá para provar que o contexto é o do commit certo. A cápsula vira UNKNOWN (não confiável) e o contexto não deve ser usado.</strong>';
             btnToggle.textContent = 'Restaurar Lacre da Cápsula';
           } else {
             digestLayer.classList.remove('is-missing');
             statusBadge.style.color = 'var(--dg-green)';
             statusBadge.textContent = '✓ SEALED';
-            explanation.innerHTML = 'Estado atual: <strong>Identidade verificada. Todos os 7 predicados de S_t estão ancorados.</strong>';
+            explanation.innerHTML = 'Estado atual: <strong>Os 7 atributos estão presentes e batem com o repositório. O contexto é confiável.</strong>';
             btnToggle.textContent = 'Simular Item Ausente (Quebrar Lacre)';
           }
         });
@@ -1461,6 +1564,14 @@
       const chkValidation = document.getElementById('dg-chk-validation');
       const ablationResults = document.getElementById('dg-ablation-results');
 
+      const CLASS_LABEL_PT = {
+        DEPENDENCY_HALLUCINATION: 'Dependência inventada',
+        STALE_CONTEXT: 'Contexto desatualizado',
+        SCOPE_VIOLATION: 'Mudança fora de escopo',
+        ARCHITECTURAL_VIOLATION: 'Violação de arquitetura',
+        REPOSITORY_STATE_MISMATCH: 'Estado divergente do repositório'
+      };
+
       function updateAblationUI() {
         if (!ablationResults) return;
         const res = evaluateComparatorAblation({
@@ -1470,9 +1581,12 @@
         });
 
         if (res.unmitigated.length === 0) {
-          ablationResults.innerHTML = '<span style="color: var(--dg-green)">✓ Status: Todas as 5 classes de desvio mitigadas.</span>';
+          ablationResults.innerHTML = '<span style="color: var(--dg-green)">✓ Todas as 5 classes de desvio estão protegidas.</span>';
         } else {
-          ablationResults.innerHTML = `<span style="color: var(--dg-red)">⚠️ Desvios Sem Mitigação (${res.unmitigated.length}): ${res.unmitigated.join(', ')}</span>`;
+          const items = res.unmitigated
+            .map(id => `<li><strong>${CLASS_LABEL_PT[id]}</strong>: ${MISMATCH_CLASSES[id].description}</li>`)
+            .join('');
+          ablationResults.innerHTML = `<span style="color: var(--dg-red)">⚠️ Sem proteção (${res.unmitigated.length} de 5):</span><ul style="margin: 0.5rem 0 0 1.2rem;">${items}</ul>`;
         }
       }
 
@@ -1488,7 +1602,7 @@
     <h2 class="aeo-tldr__title">O que é Deterministic Grounding</h2>
     <p class="aeo-tldr__lede">Um agente de desenvolvimento pode produzir código sintaticamente correto, passar em testes isolados e ainda violar a arquitetura, o escopo autorizado ou o estado real do repositório. <strong>Deterministic Grounding</strong> estabelece o ancoramento explícito de estado, limitação de autoridade por Action Gateway e validação com oráculos auditáveis.</p>
     <ul class="aeo-tldr__points">
-      <li><strong>Agent–Repository Gap (G_t)</strong> — a diferença entre o que o agente acredita (A_t) e o que foi observado no repositório (S_t).</li>
+      <li><strong>Agent–Repository Gap</strong> — a diferença entre o que o agente acredita saber do repositório e o que realmente está lá agora.</li>
       <li><strong>Snapshot Capsule</strong> — envelope imutável que sela commit, árvore, lockfile e ambiente antes da ação.</li>
       <li><strong>Action Gateway</strong> — barreira de 12 passos que impede execução fora do escopo (Diff Lens e allowlist).</li>
       <li><strong>Evidence Record</strong> — registro com veredictos delimitados (PASS, FAIL, UNKNOWN, CONFLICT) e fronteiras de observação.</li>
@@ -1500,11 +1614,11 @@
     <h2 class="aeo-faq__title">Perguntas frequentes</h2>
     <details class="aeo-faq__item" open>
       <summary class="aeo-faq__q">O que é o Agent–Repository Gap?</summary>
-      <div class="aeo-faq__a"><p>É a diferença entre as premissas que orientam a ação do agente no contexto A_t e os predicados verificáveis sobre o estado observável S_t no repositório.</p></div>
+      <div class="aeo-faq__a"><p>É a diferença entre o que o agente acredita saber do repositório (memória, contexto recuperado, plano) e o que pode ser verificado nele agora (commit atual, dependências, regras vigentes). Quanto maior a diferença, maior o risco de uma mudança que parece certa e não é.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Por que um resultado de teste verde (PASS) não garante correção global?</summary>
-      <div class="aeo-faq__a"><p>Porque um oracle testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste.</p></div>
+      <div class="aeo-faq__a"><p>Porque um oráculo (uma verificação automática) testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">O que é a Snapshot Capsule?</summary>
@@ -1517,6 +1631,8 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
+
 </body>
 
 </html>
