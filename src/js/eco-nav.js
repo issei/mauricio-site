@@ -22,11 +22,11 @@
  */
 
 const DATA = {
-  version: '1.6.0',
+  version: '1.7.0',
   base: './', // D-05: URL relativa atual
   pillars: [
     { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas'] },
-    { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'agent-ready', 'knowledge-os-presentation', 'case-agents'] },
+    { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents'] },
     { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
     { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta', 'proposta-observabilidade-mobile'] },
     { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo'] },
@@ -39,6 +39,7 @@ const DATA = {
     apresentacao: { file: 'apresentacao.html', title: 'Arquitetura de IA auditável', blurb: 'Complexidade traduzida em decisões auditáveis.' },
     'engenharia-confianca': { file: 'engenharia-confianca.html', title: 'A Engenharia da Confiança', blurb: 'Da intenção à execução agêntica.' },
     'engenharia-agentes-ia': { file: 'engenharia-agentes-ia.html', title: 'Engenharia de Agentes de IA', blurb: 'Os princípios da IA confiável.' },
+    'develop-engineering': { file: 'develop-engineering.html', title: 'Deterministic Grounding', blurb: 'Ancorar estado, restringir ações e validar mudanças.' },
     'agent-ready': { file: 'agent-ready.html', title: 'Agent Ready', blurb: 'A superfície do site legível por agentes de IA.' },
     'knowledge-os-presentation': { file: 'knowledge-os-presentation.html', title: 'Knowledge OS Enterprise', blurb: 'Rastreabilidade e segurança para a IA.' },
     'case-agents': { file: 'case-agents.html', title: 'Case Agents: a tool errada não é uma aproximação aceitável', blurb: 'Quando o agente não deve executar.' },

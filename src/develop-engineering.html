@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Deterministic Grounding para Engenharia Agentic de Software</title>
+  <meta name="description"
+    content="Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global." />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%230d1117'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='%2358a6ff'%3EDG%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" /></noscript>
+
+  <style>
+    /* ============================================================ */
+    /* WP-0.1: Transcrição exata dos tokens --dg-* (Dark Tech v1.1) */
+    /* ============================================================ */
+    :root {
+      --dg-bg-950: #0d1117;
+      --dg-bg-900: #161b22;
+      --dg-border: #30363d;
+      --dg-text-100: #ffffff;
+      --dg-text-300: #c9d1d9;
+      --dg-blue: #58a6ff;
+      --dg-purple: #a371f7;
+      --dg-amber: #d29922;
+      --dg-red: #f85149;
+      --dg-green: #3fb950;
+      --dg-gray: #8b949e;
+      --dg-magenta: #db61a2;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--dg-bg-950);
+      color: var(--dg-text-300);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .dg-skip {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--dg-blue);
+      color: #000;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      z-index: 9999;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: top 0.2s ease;
+    }
+    .dg-skip:focus {
+      top: 1rem;
+    }
+
+    .dg-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Top Nav */
+    .dg-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--dg-border);
+      z-index: 1000;
+      padding: 0.8rem 0;
+    }
+    .dg-nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .dg-nav__brand {
+      color: var(--dg-text-100);
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .dg-nav__dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--dg-blue);
+      border-radius: 50%;
+    }
+    .dg-nav__trail {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      font-size: 0.85rem;
+    }
+    .dg-nav__trail a {
+      color: var(--dg-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .dg-nav__trail a:hover, .dg-nav__trail a:focus {
+      color: var(--dg-blue);
+    }
+
+    /* Sections */
+    .dg-section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--dg-border);
+    }
+
+    /* Epistemic Badge */
+    .dg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid currentColor;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* Shared Typography */
+    .dg-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dg-gray);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dg-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--dg-text-100);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .dg-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Cards & Grids */
+    .dg-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .dg-grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .dg-grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .dg-grid--4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .dg-grid--5 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+    .dg-card {
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .dg-card:hover {
+      border-color: var(--dg-blue);
+    }
+
+    /* Hero Layers */
+    .dg-hero-gap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .dg-hero-gap { grid-template-columns: 1fr; }
+    }
+    .dg-hero-layer {
+      padding: 1rem;
+      border-radius: 6px;
+      background: rgba(13, 17, 23, 0.6);
+      border: 1px solid var(--dg-border);
+    }
+    .dg-hero-layer--agent { border-color: var(--dg-purple); }
+    .dg-hero-layer--repo { border-color: var(--dg-blue); }
+
+    .dg-gap-indicator {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 0.8rem;
+      background: rgba(248, 81, 73, 0.1);
+      border: 1px dashed var(--dg-red);
+      color: var(--dg-red);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      border-radius: 6px;
+    }
+
+    /* State Card Styles */
+    .dg-state-card {
+      cursor: pointer;
+      position: relative;
+    }
+    .dg-state-card.is-active {
+      border-color: var(--dg-blue);
+      box-shadow: 0 0 12px rgba(88, 166, 255, 0.2);
+    }
+    .dg-state-card__title {
+      color: var(--dg-text-100);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .dg-state-card__auth {
+      font-size: 0.8rem;
+      color: var(--dg-gray);
+      margin-bottom: 1rem;
+    }
+
+    /* Failure Card Component */
+    .dg-failure-card {
+      background: rgba(248, 81, 73, 0.05);
+      border: 1px solid var(--dg-red);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    .dg-failure-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--dg-red);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Capsule Layer Styles (Cena 02) */
+    .dg-capsule-layer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      background: var(--dg-bg-950);
+      border: 1px solid var(--dg-border);
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+    .dg-capsule-layer.is-missing {
+      border-color: var(--dg-gray);
+      opacity: 0.6;
+    }
+
+    /* Pipeline Flow Styles (Cena 03) */
+    .dg-pipeline-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+    .dg-pipeline-step {
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dg-text-100);
+    }
+    .dg-pipeline-arrow {
+      color: var(--dg-blue);
+      font-weight: 700;
+    }
+
+    /* Boundary Marker (Cena 04) */
+    .dg-boundary-marker {
+      border-left: 3px solid var(--dg-amber);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--dg-amber);
+      background: rgba(210, 153, 34, 0.05);
+      padding: 0.8rem 1rem;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* Matrix Quadrants (Cena 05) */
+    .dg-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 768px) {
+      .dg-matrix { grid-template-columns: 1fr; }
+    }
+    .dg-matrix-quadrant {
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      padding: 1.2rem;
+      border-radius: 8px;
+    }
+    .dg-matrix-quadrant--recommended {
+      border: 2px solid var(--dg-blue);
+      box-shadow: 0 0 10px rgba(88, 166, 255, 0.15);
+    }
+
+    /* Action Gateway Steps List */
+    .dg-gateway-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+      font-size: 0.85rem;
+    }
+    .dg-gateway-step {
+      background: var(--dg-bg-950);
+      border: 1px solid var(--dg-border);
+      padding: 0.8rem;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    /* Diff Lens (Cena 05) */
+    .dg-diff-lens {
+      background: var(--dg-bg-950);
+      border: 1px solid var(--dg-border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin: 1.5rem 0;
+    }
+    .dg-diff-line {
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.2rem;
+    }
+    .dg-diff-line--proposed { background: rgba(163, 113, 247, 0.15); color: var(--dg-purple); }
+    .dg-diff-line--authorized { background: rgba(88, 166, 255, 0.15); color: var(--dg-blue); }
+    .dg-diff-line--blocked { background: rgba(248, 81, 73, 0.2); color: var(--dg-red); border: 1px solid var(--dg-red); }
+
+    /* Tables & Filter Controls (Cena 06 & 07) */
+    .dg-table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .dg-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    .dg-table th, .dg-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--dg-border);
+    }
+    .dg-table th {
+      background: var(--dg-bg-900);
+      color: var(--dg-text-100);
+      font-weight: 700;
+    }
+
+    .dg-filter-btn {
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      color: var(--dg-text-300);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .dg-filter-btn.is-active {
+      border-color: var(--dg-blue);
+      color: var(--dg-blue);
+      background: var(--dg-bg-950);
+    }
+
+    /* Ledger Ficha (Cena 07) */
+    .dg-ledger-item {
+      background: var(--dg-bg-900);
+      border: 1px solid var(--dg-border);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    .dg-btn-action {
+      background: linear-gradient(90deg, #007bff, #8a2be2);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  </style>
+
+  <!-- AEO:START — Bloco gerado para SEO/AEO (pode ser regerado)   -->
+  <!-- ============================================================ -->
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="deterministic grounding, engenharia agentic, agent-repository gap, snapshot capsule, action gateway, oráculos, evidence record, reconciliação" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/develop-engineering" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/develop-engineering.md" title="Deterministic Grounding para Engenharia Agentic de Software — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Deterministic Grounding para Engenharia Agentic de Software" />
+<meta property="og:description" content="Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global." />
+<meta property="og:url" content="https://mauricio.issei.com.br/develop-engineering" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-develop-engineering.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Deterministic Grounding para Engenharia Agentic de Software" />
+<meta property="article:published_time" content="2026-09-18T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-09-18T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="Engenharia da Confiança · Agentes de IA" />
+<meta property="article:tag" content="Deterministic Grounding" />
+<meta property="article:tag" content="Engenharia Agêntica" />
+<meta property="article:tag" content="Action Gateway" />
+<meta property="article:tag" content="Snapshot Capsule" />
+<meta property="article:tag" content="Oráculos" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Deterministic Grounding para Engenharia Agentic de Software" />
+<meta name="twitter:description" content="Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-develop-engineering.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/develop-engineering#webpage",
+      "url": "https://mauricio.issei.com.br/develop-engineering",
+      "name": "Deterministic Grounding para Engenharia Agentic de Software",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-develop-engineering.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/develop-engineering#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/develop-engineering#article"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mauricio.issei.com.br/develop-engineering#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/develop-engineering#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/develop-engineering#webpage"
+      },
+      "headline": "Deterministic Grounding para Engenharia Agentic de Software",
+      "description": "Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-develop-engineering.png",
+      "isAccessibleForFree": true,
+      "keywords": "deterministic grounding, engenharia agentic, agent-repository gap, snapshot capsule, action gateway, oráculos, evidence record, reconciliação",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Engenharia de Confiança"
+        },
+        {
+          "@type": "Thing",
+          "name": "Deterministic Grounding"
+        },
+        {
+          "@type": "Thing",
+          "name": "Action Gateway"
+        },
+        {
+          "@type": "Thing",
+          "name": "Snapshot Capsule"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Tech Leads, Arquitetos de Software, Engenheiros de IA, Líderes de Engenharia"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/develop-engineering#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Deterministic Grounding para Engenharia Agentic de Software"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/develop-engineering#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é o Agent–Repository Gap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É a diferença entre as premissas que orientam a ação do agente no contexto A_t e os predicados verificáveis sobre o estado observável S_t no repositório."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Por que um resultado de teste verde (PASS) não garante correção global?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque um oracle testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é a Snapshot Capsule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É o envelope imutável contendo commit SHA, branch, tree digest, lockfile, toolchain, ambiente de execução e um digest único que garante que o contexto do agente corresponde exatamente ao estado do repositório."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a diferença entre Autonomia e Autoridade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Autonomia é a capacidade do modelo de planejar e encadear ações de forma flexível; Autoridade é a permissão efetiva para produzir efeitos no repositório, que deve ser restrita e mediada pelo Action Gateway."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/develop-engineering#glossario",
+      "name": "Glossário — Deterministic Grounding para Engenharia Agentic de Software",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/develop-engineering#g-agent-repository-gap",
+          "name": "Agent–Repository Gap",
+          "description": "Desalinhamento entre o contexto/memória do agente e o estado observável do repositório."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/develop-engineering#g-snapshot-capsule",
+          "name": "Snapshot Capsule",
+          "description": "Envelope de proveniência que sela a identidade do repositório antes de qualquer ação."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/develop-engineering#g-action-gateway",
+          "name": "Action Gateway",
+          "description": "Componente que medeia propostas não confiáveis do agente e aplica allowlist, least privilege e policy-as-code."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/develop-engineering#g-evidence-record",
+          "name": "Evidence Record",
+          "description": "Atestado imutável de validação contendo subject, oracle, validator, envelope e limitações explícitas."
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body>
+  <a href="#conteudo" class="dg-skip">Pular para o conteúdo</a>
+
+  <header class="dg-nav" aria-label="Navegação da página">
+    <div class="dg-container dg-nav__inner">
+      <a href="#cena-00" class="dg-nav__brand">
+        <span class="dg-nav__dot" aria-hidden="true"></span>
+        Deterministic Grounding
+      </a>
+      <nav class="dg-nav__trail" aria-label="Cenas do artigo">
+        <a href="#cena-00">00. Desvio</a>
+        <a href="#cena-01">01. Gap</a>
+        <a href="#cena-02">02. Capsule</a>
+        <a href="#cena-03">03. Contrato</a>
+        <a href="#cena-04">04. Grafo</a>
+        <a href="#cena-05">05. Gateway</a>
+        <a href="#cena-06">06. Oráculos</a>
+        <a href="#cena-07">07. Evidence</a>
+        <a href="#cena-08">08. Reconciliação</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- CENA 00 — O desvio (Hero) -->
+    <section id="cena-00" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Artigo Técnico · Engenharia Agêntica
+          <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
+        </p>
+        <h1 class="dg-title">
+          Deterministic Grounding para Engenharia Agentic de Software
+        </h1>
+        <p style="font-size: 1.25rem; color: var(--dg-text-100); font-weight: 600; max-width: 900px; margin-bottom: 1rem;">
+          Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global.
+        </p>
+        <p style="font-size: 1.1rem; color: var(--dg-text-300); max-width: 850px; margin-bottom: 2rem;">
+          Um agente pode produzir código sintaticamente correto, passar nos testes disponíveis e ainda violar a arquitetura, o escopo, a privacidade ou o estado atual do repositório.
+        </p>
+
+        <!-- Camadas Desalinhadas (Agente vs Repositório) -->
+        <div class="dg-hero-gap">
+          <div class="dg-hero-layer dg-hero-layer--agent">
+            <p class="dg-eyebrow" style="color: var(--dg-purple)">Premissas do Agente (A_t)</p>
+            <p class="dg-mono" style="font-size: 0.85rem; color: var(--dg-text-300);">
+              Prompt: "Adicionar rota de exportação PDF"<br/>
+              Contexto recuperado: RAG Index (Commit C1)<br/>
+              Hipótese: Dep de 'pdf-kit' v1.2 presente<br/>
+              Plano: Modificar src/api/export.js e package.json
+            </p>
+          </div>
+
+          <div class="dg-hero-layer dg-hero-layer--repo">
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">Estado Observável do Repositório (S_t)</p>
+            <p class="dg-mono" style="font-size: 0.85rem; color: var(--dg-text-300);">
+              Snapshot: Commit C2 (HEAD)<br/>
+              Lockfile: pdf-kit removido em C2<br/>
+              Policy: src/api/ restrita por ADR-014<br/>
+              Diff Real: Mudança em C1 gera conflito em C2
+            </p>
+          </div>
+
+          <div class="dg-gap-indicator">
+            Agent–Repository Gap: G_t = Premissas(A_t) − Predicados_verificados(S_t) ≠ 0
+          </div>
+        </div>
+
+        <p style="font-size: 1.15rem; color: var(--dg-amber); font-weight: 700; text-align: center; margin-top: 1.5rem;">
+          "Código correto em isolamento ainda pode ser uma mudança errada."
+        </p>
+      </div>
+    </section>
+
+    <!-- CENA 01 — Dois estados, uma mudança -->
+    <section id="cena-01" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">Cena 01 · O Agent–Repository Gap</p>
+        <h2 class="dg-title">A_t, S_t, D, G_t e os 5 Estados do Sistema</h2>
+        <p style="margin-bottom: 2rem;">
+          Para evitar que a ação do agente seja guiada por premissas obsoletas ou ilusões de contexto, é necessário separar rigidamente a autoridade de cada estado:
+        </p>
+
+        <!-- 5 State Cards -->
+        <div class="dg-grid dg-grid--5" id="dg-state-cards-container">
+          <div class="dg-card dg-state-card is-active" data-state-id="CURRENT">
+            <div class="dg-state-card__title">Current State (S_t)</div>
+            <div class="dg-state-card__auth">Repositório / Runtime</div>
+            <span class="dg-badge" style="color: var(--dg-blue)">✓ OBSERVED</span>
+          </div>
+
+          <div class="dg-card dg-state-card" data-state-id="DESIRED">
+            <div class="dg-state-card__title">Desired State (D)</div>
+            <div class="dg-state-card__auth">Especificação / Requisitos</div>
+            <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
+          </div>
+
+          <div class="dg-card dg-state-card" data-state-id="HISTORICAL">
+            <div class="dg-state-card__title">Historical State</div>
+            <div class="dg-state-card__auth">Memória / RAG / Commits</div>
+            <span class="dg-badge" style="color: var(--dg-purple)">↳ INFERENCE</span>
+          </div>
+
+          <div class="dg-card dg-state-card" data-state-id="POLICY">
+            <div class="dg-state-card__title">Policy State</div>
+            <div class="dg-state-card__auth">Action Gateway / Regras</div>
+            <span class="dg-badge" style="color: var(--dg-amber)">⚡ DOCUMENTED</span>
+          </div>
+
+          <div class="dg-card dg-state-card" data-state-id="EVIDENCE">
+            <div class="dg-state-card__title">Evidence State</div>
+            <div class="dg-state-card__auth">Oráculos / Validação</div>
+            <span class="dg-badge" style="color: var(--dg-green)">✓ ESTABLISHED</span>
+          </div>
+        </div>
+
+        <!-- Painel de autoridade e limites do estado selecionado -->
+        <div class="dg-card" id="dg-state-detail-panel" style="margin-top: 1.5rem; background: var(--dg-bg-900);">
+          <h3 id="dg-state-panel-title" style="color: var(--dg-text-100); margin-bottom: 0.5rem;">Current State (S_t)</h3>
+          <p id="dg-state-panel-auth" class="dg-mono" style="color: var(--dg-blue); font-size: 0.9rem; margin-bottom: 1rem;">
+            Autoridade: Repositório / Runtime (o que é observado agora)
+          </p>
+          <div class="dg-grid dg-grid--2">
+            <div>
+              <p style="color: var(--dg-green); font-weight: 700; margin-bottom: 0.5rem;">✓ O que autoriza afirmar:</p>
+              <ul id="dg-state-panel-allows" style="padding-left: 1.2rem; font-size: 0.95rem;">
+                <li>Afirmar o commit SHA, a árvore de arquivos, o lockfile e dependências instaladas no snapshot.</li>
+                <li>Verificar o estado das alterações não commitadas e o build atual.</li>
+              </ul>
+            </div>
+            <div>
+              <p style="color: var(--dg-red); font-weight: 700; margin-bottom: 0.5rem;">✗ O que NÃO autoriza afirmar:</p>
+              <ul id="dg-state-panel-prohibits" style="padding-left: 1.2rem; font-size: 0.95rem;">
+                <li>Afirmar intenções humanas ou requisitos futuros.</li>
+                <li>Garantir que a arquitetura ideal esteja sendo respeitada sem verificação externa.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Failure Card #1 -->
+        <div class="dg-failure-card">
+          <div class="dg-failure-card__header">
+            <span>⚠️ Failure Card #1</span> · Contraexemplo: Contexto Stale e Violação Arquitetural
+          </div>
+          <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
+            <div>
+              <p><strong>Cenário:</strong> O agente recupera o índice de contexto construído no commit <span class="dg-mono">C1</span>. O repositório avançou para <span class="dg-mono">C2</span>, onde uma regra arquitetural nova proíbe chamadas diretas de banco no controller.</p>
+              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> O código gerado é sintaticamente correto, compila e passa nos testes unitários isolados.</p>
+            </div>
+            <div>
+              <p><strong>Propriedade não observada:</strong> O alinhamento do RAG com o SHA corrente (<span class="dg-mono">C2</span>) e a nova regra de acoplamento de camadas.</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: Coerência de texto recuperado não é atualidade do repositório.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 02 — A Snapshot Capsule -->
+    <section id="cena-02" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Cena 02 · Identidade de Estado
+          <span class="dg-badge" style="color: var(--dg-blue)">📄 DOCUMENTED</span>
+        </p>
+        <h2 class="dg-title">A Snapshot Capsule</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          Nenhum contexto recuperado deve ser fornecido ao agente sem estar explicitamente selado em um envelope de proveniência contendo os 7 atributos do estado observável.
+        </p>
+
+        <!-- Container da Cápsula Empilhada -->
+        <div class="dg-card" style="background: var(--dg-bg-900); position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <p class="dg-eyebrow" style="color: var(--dg-blue); margin: 0;">Snapshot Identity Digest</p>
+            <span id="dg-capsule-status-badge" class="dg-badge" style="color: var(--dg-green)">✓ SEALED</span>
+          </div>
+
+          <div id="dg-capsule-layers-list">
+            <div class="dg-capsule-layer">
+              <span>01. Commit SHA</span>
+              <span class="dg-mono" style="color: var(--dg-blue)">a8f3d1e992b47c01</span>
+            </div>
+            <div class="dg-capsule-layer">
+              <span>02. Branch Name</span>
+              <span class="dg-mono" style="color: var(--dg-text-300)">main</span>
+            </div>
+            <div class="dg-capsule-layer">
+              <span>03. Tree Digest</span>
+              <span class="dg-mono" style="color: var(--dg-blue)">sha256:e3b0c44298fc1c14</span>
+            </div>
+            <div class="dg-capsule-layer">
+              <span>04. Lockfile Hash</span>
+              <span class="dg-mono" style="color: var(--dg-blue)">sha256:7f83b1657ff1fc53</span>
+            </div>
+            <div class="dg-capsule-layer">
+              <span>05. Toolchain Version</span>
+              <span class="dg-mono" style="color: var(--dg-text-300)">Node v22.22.1 / Vite v6.0</span>
+            </div>
+            <div class="dg-capsule-layer">
+              <span>06. Execution Environment</span>
+              <span class="dg-mono" style="color: var(--dg-text-300)">Linux x86_64 Sandbox</span>
+            </div>
+            <div class="dg-capsule-layer" id="dg-capsule-digest-layer">
+              <span>07. Immutable Capsule Digest</span>
+              <span class="dg-mono" style="color: var(--dg-purple)">capsule:99a1f48b02c3</span>
+            </div>
+          </div>
+
+          <!-- Controle de simulação de lacre incompleto -->
+          <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--dg-border); display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <button id="dg-btn-toggle-capsule" class="dg-mono" style="background: var(--dg-bg-950); color: var(--dg-text-100); border: 1px solid var(--dg-border); padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
+              Simular Item Ausente (Quebrar Lacre)
+            </button>
+            <p id="dg-capsule-explanation" style="font-size: 0.85rem; color: var(--dg-gray);">
+              Estado atual: <strong>Identidade verificada. Todos os 7 predicados de S_t estão ancorados.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 03 — Da intenção ao contrato -->
+    <section id="cena-03" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Cena 03 · Contratos & Requisitos
+          <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
+        </p>
+        <h2 class="dg-title">Da Intenção Humana ao Contrato Verificável</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          Prompt não é contrato. A intenção humana deve passar por uma linha de transformação com critérios formais e propriedades negativas explícitas.
+        </p>
+
+        <!-- Linha de transformação -->
+        <div class="dg-pipeline-flow">
+          <span class="dg-pipeline-step">Necessidade Humana</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Intenção</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Desired State (D)</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Requisito Mínimo</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Contrato (4 Níveis)</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Oracle</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Evidência</span>
+        </div>
+
+        <!-- Os 4 Níveis de Contrato -->
+        <div class="dg-grid dg-grid--4" style="margin-top: 2rem;">
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">Nível 1 · Interface</p>
+            <p style="font-size: 0.95rem;">Tipos, schemas, assinaturas de métodos e formatos de mensagem.</p>
+          </div>
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">Nível 2 · Comportamento</p>
+            <p style="font-size: 0.95rem;">Pré-condições, pós-condições, invariantes e efeitos colaterais.</p>
+          </div>
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-purple)">Nível 3 · Arquitetura</p>
+            <p style="font-size: 0.95rem;">Camadas, fronteiras de módulo, dependências permitidas e isolamento.</p>
+          </div>
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-amber)">Nível 4 · Semântica</p>
+            <p style="font-size: 0.95rem;">Ownership de dados, privacidade, retenção e impactos regulatórios.</p>
+          </div>
+        </div>
+
+        <!-- Failure Card #2 -->
+        <div class="dg-failure-card">
+          <div class="dg-failure-card__header">
+            <span>⚠️ Failure Card #2</span> · Contraexemplo: Serviço de Fotos e Privacidade Oculta
+          </div>
+          <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
+            <div>
+              <p><strong>Cenário:</strong> O agente implementa um serviço de envio de fotos. Todos os testes de API (Nível 1 e 2) retornam <span class="dg-mono" style="color: var(--dg-green)">PASS</span>.</p>
+              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> A API envia e armazena fotos com tempo de resposta excelente.</p>
+            </div>
+            <div>
+              <p><strong>Propriedade não observada:</strong> A implementação grava EXIF com localização em logs abertos e compartilha metadados com terceiros sem consentimento (Violação Nível 4).</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: O caminho principal de API PASS continua verde, mas uma trilha lateral permanece sem validação por ausência de oracle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 04 — O software como estrutura parcial -->
+    <section id="cena-04" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Cena 04 · Análise Estrutural
+          <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
+        </p>
+        <h2 class="dg-title">O Software como Estrutura Parcial</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          Análise estática e grafos de código (AST/CST, símbolos e relações tipadas) fornecem grounding estrutural, mas possuem fronteiras de observabilidade inerentes. Nenhuma análise estática captura o runtime de forma completa.
+        </p>
+
+        <!-- Grafo em SVG Inline -->
+        <div class="dg-card" style="background: var(--dg-bg-950); overflow-x: auto;">
+          <svg viewBox="0 0 900 240" width="100%" height="240" role="img" aria-label="Grafo técnico de extração estrutural de software">
+            <!-- Connectors -->
+            <path d="M 110 120 L 210 120" stroke="var(--dg-blue)" stroke-width="2" />
+            <path d="M 290 120 L 370 120" stroke="var(--dg-blue)" stroke-width="2" />
+            <path d="M 450 120 L 530 120" stroke="var(--dg-blue)" stroke-width="2" />
+            <path d="M 610 120 L 690 120" stroke="var(--dg-purple)" stroke-dasharray="4" stroke-width="2" />
+            <path d="M 770 120 L 830 120" stroke="var(--dg-gray)" stroke-dasharray="4" stroke-width="2" />
+
+            <!-- Nodes -->
+            <g transform="translate(30, 95)">
+              <rect width="80" height="50" rx="6" fill="var(--dg-bg-900)" stroke="var(--dg-blue)" />
+              <text x="40" y="30" fill="var(--dg-text-100)" font-size="12" font-family="JetBrains Mono" text-anchor="middle">Repository</text>
+            </g>
+            <g transform="translate(210, 95)">
+              <rect width="80" height="50" rx="6" fill="var(--dg-bg-900)" stroke="var(--dg-blue)" />
+              <text x="40" y="30" fill="var(--dg-text-100)" font-size="12" font-family="JetBrains Mono" text-anchor="middle">AST/CST</text>
+            </g>
+            <g transform="translate(370, 95)">
+              <rect width="80" height="50" rx="6" fill="var(--dg-bg-900)" stroke="var(--dg-blue)" />
+              <text x="40" y="30" fill="var(--dg-text-100)" font-size="12" font-family="JetBrains Mono" text-anchor="middle">Symbols</text>
+            </g>
+            <g transform="translate(530, 95)">
+              <rect width="80" height="50" rx="6" fill="var(--dg-bg-900)" stroke="var(--dg-blue)" />
+              <text x="40" y="30" fill="var(--dg-text-100)" font-size="12" font-family="JetBrains Mono" text-anchor="middle">Relations</text>
+            </g>
+            <g transform="translate(690, 95)">
+              <rect width="80" height="50" rx="6" fill="var(--dg-bg-900)" stroke="var(--dg-purple)" />
+              <text x="40" y="25" fill="var(--dg-purple)" font-size="11" font-family="JetBrains Mono" text-anchor="middle">Runtime</text>
+              <text x="40" y="40" fill="var(--dg-amber)" font-size="10" font-family="JetBrains Mono" text-anchor="middle">POSSIBLE</text>
+            </g>
+            <g transform="translate(830, 95)">
+              <rect width="60" height="50" rx="6" fill="var(--dg-bg-900)" stroke="var(--dg-gray)" />
+              <text x="30" y="25" fill="var(--dg-gray)" font-size="11" font-family="JetBrains Mono" text-anchor="middle">Eval</text>
+              <text x="30" y="40" fill="var(--dg-gray)" font-size="10" font-family="JetBrains Mono" text-anchor="middle">UNKNOWN</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="dg-boundary-marker">
+          <strong>Boundary Marker:</strong> O grafo representa apenas predicados estaticamente extraíveis. Chamadas via reflexão, <span class="dg-mono">eval</span>, plugins dinâmicos ou geração de código no runtime terminam em <span class="dg-mono" style="color: var(--dg-amber)">POSSIBLE</span> ou <span class="dg-mono" style="color: var(--dg-gray)">UNKNOWN</span>, e nunca devem ser tratadas como inexistentes.
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 05 — Autonomia não é autoridade -->
+    <section id="cena-05" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Cena 05 · Governança de Ação
+          <span class="dg-badge" style="color: var(--dg-amber)">⚡ DOCUMENTED</span>
+        </p>
+        <h2 class="dg-title">Autonomia não é Autoridade & Action Gateway</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          Modelos avançados podem propor planos complexos de forma autônoma. No entanto, a autoridade para aplicar alterações no repositório, disparar deploys ou invocar ferramentas privilegiadas pertence exclusivamente ao <strong>Action Gateway</strong>.
+        </p>
+
+        <!-- Matriz Autonomia x Autoridade -->
+        <div class="dg-matrix">
+          <div class="dg-matrix-quadrant">
+            <p class="dg-eyebrow">Baixa Autonomia · Baixa Autoridade</p>
+            <p style="font-size: 0.95rem;">Automação rígida, scripts locais e tarefas rotineiras de leitura.</p>
+          </div>
+          <div class="dg-matrix-quadrant">
+            <p class="dg-eyebrow" style="color: var(--dg-red)">Baixa Autonomia · Alta Autoridade</p>
+            <p style="font-size: 0.95rem;">Scripts de deploy com blast radius elevado sem verificação flexível.</p>
+          </div>
+          <div class="dg-matrix-quadrant dg-matrix-quadrant--recommended">
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">✦ Alta Autonomia · Baixa Autoridade (Zona Recomendada)</p>
+            <p style="font-size: 0.95rem;">Agente investiga, planeja e propõe alterações; execução é estritamente mediada e limitada a sandbox.</p>
+          </div>
+          <div class="dg-matrix-quadrant" style="border-color: var(--dg-red);">
+            <p class="dg-eyebrow" style="color: var(--dg-red)">⚠️ Alta Autonomia · Alta Autoridade (Zona de Alto Risco)</p>
+            <p style="font-size: 0.95rem;">Agente decide e executa direto em produção. Fusão perigosa de decisão e execução.</p>
+          </div>
+        </div>
+
+        <!-- 12 Passos do Action Gateway -->
+        <p class="dg-eyebrow" style="color: var(--dg-blue); margin-top: 2rem;">Action Gateway · Os 12 Passos de Verificação</p>
+        <div class="dg-gateway-list">
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">01.</span> Receber proposta não confiável</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">02.</span> Normalizar ferramenta e versão</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">03.</span> Validar schema de entrada</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">04.</span> Resolver recursos canônicos</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">05.</span> Identificar principal e ambiente</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">06.</span> Verificar escopo e allowlist</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">07.</span> Calcular blast radius / fan-out</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">08.</span> Consultar Policy-as-Code</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">09.</span> Verificar aprovação vinculada</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">10.</span> Revalidar snapshot pré-efeito</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">11.</span> Executar com privilégio mínimo</div>
+          <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">12.</span> Registrar evidência / proveniência</div>
+        </div>
+
+        <!-- Diff Lens Component -->
+        <div class="dg-diff-lens">
+          <p class="dg-eyebrow" style="color: var(--dg-purple)">Diff Lens · Intercepção de Escopo de Ação</p>
+          <div class="dg-diff-line dg-diff-line--proposed">[Proposto pelo Agente] Modificar src/api/export.js e infra/deploy.yaml</div>
+          <div class="dg-diff-line dg-diff-line--authorized">[Escopo Autorizado] Allowlist: src/api/** apenas</div>
+          <div class="dg-diff-line dg-diff-line--blocked">[Ação Interrompida pelo Gateway] BLOQUEADO: Tentativa de alteração fora do escopo em infra/deploy.yaml. Nenhum efeito aplicado.</div>
+        </div>
+
+        <!-- Failure Card #3 -->
+        <div class="dg-failure-card">
+          <div class="dg-failure-card__header">
+            <span>⚠️ Failure Card #3</span> · Contraexemplo: Chamada Secundária com Autoridade Elevada
+          </div>
+          <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
+            <div>
+              <p><strong>Cenário:</strong> Uma ferramenta inocente de leitura (<span class="dg-mono">release_status</span>) é invocada. Um ticket induz o agente a chamar internamente uma segunda ferramenta (<span class="dg-mono">sync_environment</span>) com permissão de escrita.</p>
+              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> A primeira chamada passa na verificação inicial de leitura.</p>
+            </div>
+            <div>
+              <p><strong>Propriedade não observada:</strong> A segunda chamada surge como uma entidade nova no pipeline e necessita de mediação independente pelo Action Gateway.</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: Schema válido e aprovação da chamada primária não autorizam encadeamentos secundários privilegiados.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 06 — O resultado verde é menor do que parece -->
+    <section id="cena-06" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Cena 06 · Força Epistemológica
+          <span class="dg-badge" style="color: var(--dg-blue)">✓ ESTABLISHED</span>
+        </p>
+        <h2 class="dg-title">O Resultado Verde é Menor do que Parece</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          Um teste verde (<span class="dg-mono" style="color: var(--dg-green)">PASS</span>) prova apenas que a propriedade testada foi satisfied sob o envelope de execução observado. Não prova correção global nem ausência de colaterais.
+        </p>
+
+        <!-- Filtros de Veredicto -->
+        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
+          <span class="dg-mono" style="font-size: 0.85rem; color: var(--dg-gray);">Filtrar por Veredicto:</span>
+          <button class="dg-filter-btn is-active" data-verdict-filter="ALL">TODOS (10)</button>
+          <button class="dg-filter-btn" data-verdict-filter="PASS">PASS</button>
+          <button class="dg-filter-btn" data-verdict-filter="FAIL">FAIL</button>
+          <button class="dg-filter-btn" data-verdict-filter="UNKNOWN">UNKNOWN</button>
+          <button class="dg-filter-btn" data-verdict-filter="CONFLICT">CONFLICT</button>
+          <span id="dg-oracle-hidden-counter" class="dg-mono" style="font-size: 0.85rem; color: var(--dg-amber); margin-left: auto;" aria-live="polite">
+            Exibindo 10 de 10 oráculos (0 ocultos)
+          </span>
+        </div>
+
+        <!-- Tabela de 10 Oráculos -->
+        <div class="dg-table-wrap">
+          <table class="dg-table" id="dg-oracle-table">
+            <thead>
+              <tr>
+                <th>Oracle / Validador</th>
+                <th>Veredicto</th>
+                <th>O que o PASS estabelece</th>
+                <th>O que NÃO estabelece sozinho</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-verdict="PASS">
+                <td>01. Parser (Sintaxe)</td>
+                <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
+                <td>Entrada analisável conforme gramática da linguagem.</td>
+                <td>Correta tipagem, semântica ou funcionamento.</td>
+              </tr>
+              <tr data-verdict="PASS">
+                <td>02. Type Checker</td>
+                <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
+                <td>Tipos satisfazem as regras do sistema de tipos estático.</td>
+                <td>Comportamento no runtime ou ausência de bugs lógicos.</td>
+              </tr>
+              <tr data-verdict="PASS">
+                <td>03. Análise Estática / Linter</td>
+                <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
+                <td>Regra de linter e padrões abstratos satisfeitos.</td>
+                <td>Completude e ausência de regressões funcionais.</td>
+              </tr>
+              <tr data-verdict="PASS">
+                <td>04. Teste Unitário</td>
+                <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
+                <td>Caso específico executado passou sob inputs definidos.</td>
+                <td>Casos de borda não escritos ou requisitos omitidos.</td>
+              </tr>
+              <tr data-verdict="PASS">
+                <td>05. Teste de Integração</td>
+                <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
+                <td>Componentes interagiram com sucesso no cenário testado.</td>
+                <td>Comportamento sob alta concorrência ou em prod.</td>
+              </tr>
+              <tr data-verdict="PASS">
+                <td>06. Scanner de Segurança</td>
+                <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
+                <td>Nenhuma assinatura de vulnerabilidade conhecida encontrada.</td>
+                <td>Ausência de falhas de lógica de negócios inéditas.</td>
+              </tr>
+              <tr data-verdict="UNKNOWN">
+                <td>07. Monitor de Runtime</td>
+                <td><span class="dg-badge" style="color: var(--dg-gray)">UNKNOWN</span></td>
+                <td>Métricas normais durante a janela capturada.</td>
+                <td>Comportamento em janelas não observadas ou de pico.</td>
+              </tr>
+              <tr data-verdict="FAIL">
+                <td>08. Model Checker</td>
+                <td><span class="dg-badge" style="color: var(--dg-red)">FAIL</span></td>
+                <td>Modelo formal satisfaz propriedades invariantes.</td>
+                <td>Fidelidade absoluta do modelo ao código concreto.</td>
+              </tr>
+              <tr data-verdict="CONFLICT">
+                <td>09. Verificador Formal</td>
+                <td><span class="dg-badge" style="color: var(--dg-magenta)">CONFLICT</span></td>
+                <td>Prova matemática de correspondência com a spec.</td>
+                <td>Correção da intenção humana original da spec.</td>
+              </tr>
+              <tr data-verdict="PASS">
+                <td>10. Revisão Humana</td>
+                <td><span class="dg-badge" style="color: var(--dg-green)">PASS</span></td>
+                <td>Avaliador humano aprovou a mudança conforme seu julgamento.</td>
+                <td>Garantia matemática contra omissão ou falha de revisão.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Failure Card #4 -->
+        <div class="dg-failure-card">
+          <div class="dg-failure-card__header">
+            <span>⚠️ Failure Card #4</span> · Contraexemplo: Teste Desabilitado e Falso Agregado Verde
+          </div>
+          <div class="dg-grid dg-grid--2" style="font-size: 0.95rem;">
+            <div>
+              <p><strong>Cenário:</strong> O teste <span class="dg-mono">test_rejects_negative_amount()</span> falha após uma mudança. Para convergir, o teste é marcado com <span class="dg-mono" style="color: var(--dg-amber)">skip</span>.</p>
+              <p style="margin-top: 0.5rem;"><strong>Aparência de Sucesso:</strong> A suíte de testes no CI fica 100% verde (0 falhas aparentes).</p>
+            </div>
+            <div>
+              <p><strong>Propriedade não observada:</strong> A diminuição da cobertura do inventário esperado de testes. O skip oculta o gap em vez de resolvê-lo.</p>
+              <p style="margin-top: 0.5rem; color: var(--dg-amber); font-weight: 600;">Lição: Menos testes falhando não significa mais software correto — significa apenas menor observação.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 07 — Evidence Record -->
+    <section id="cena-07" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Cena 07 · Auditabilidade
+          <span class="dg-badge" style="color: var(--dg-green)">✓ ESTABLISHED</span>
+        </p>
+        <h2 class="dg-title">Evidence Record & Evidence Ledger</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          Toda validação deve gerar um <strong>Evidence Record</strong> imutável, registrando não só o resultado, mas a proveniência, a versão do validador, o envelope e o limite explícito de cobertura.
+        </p>
+
+        <!-- Evidence Ledger Ficha -->
+        <div class="dg-ledger-item">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap;">
+            <span style="color: var(--dg-blue); font-weight: 700;">Record ID: ev_8f9a2b01c4</span>
+            <span class="dg-badge" style="color: var(--dg-green)">✓ VERDICT: PASS</span>
+          </div>
+          <div class="dg-grid dg-grid--2" style="font-size: 0.85rem; color: var(--dg-text-300);">
+            <div>
+              <p>Subject URI: <span class="dg-mono">git://repo@a8f3d1e/src/api/export.js</span></p>
+              <p>Commit SHA: <span class="dg-mono">a8f3d1e992b47c01</span></p>
+              <p>Requirement ID: <span class="dg-mono">REQ-EXPORT-001</span></p>
+              <p>Oracle ID & Tipo: <span class="dg-mono">orc_pytest_v8.2 (Integration Test)</span></p>
+            </div>
+            <div>
+              <p>Validator Binary: <span class="dg-mono">node-test-runner:v22.22.1</span></p>
+              <p>Execution Envelope: <span class="dg-mono">Docker Sandbox / Isolated Net</span></p>
+              <p style="color: var(--dg-amber);">Coverage Boundary: <span class="dg-mono">Covered 88% lines / EXIF logging NOT covered</span></p>
+              <p>Provenance Signature: <span class="dg-mono">sig:sha256:990a1f...</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 08 — Reconciliação, MVA e Fechamento -->
+    <section id="cena-08" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">
+          Cena 08 · Decisão & Fechamento
+          <span class="dg-badge" style="color: var(--dg-purple)">✦ PROPOSED</span>
+        </p>
+        <h2 class="dg-title">Reconciliação, MVA & Comparador Baseline</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          A reconciliação compara o estado desejado (D), o estado corrente (S_t), a evidência obtida e as regras de policy para emitir uma das 7 decisões possíveis.
+        </p>
+
+        <!-- 4 Painéis de Reconciliação -->
+        <div class="dg-grid dg-grid--4" style="margin-bottom: 2rem;">
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-purple)">01. Desired State (D)</p>
+            <p style="font-size: 0.85rem;">Invariantes e requisitos de aceitação declarados.</p>
+          </div>
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-blue)">02. Current State (S_t)</p>
+            <p style="font-size: 0.85rem;">Diff do repositório pós-ação do agente.</p>
+          </div>
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-green)">03. Evidence State</p>
+            <p style="font-size: 0.85rem;">Evidence Record com veredictos e limites.</p>
+          </div>
+          <div class="dg-card">
+            <p class="dg-eyebrow" style="color: var(--dg-amber)">04. Policy State</p>
+            <p style="font-size: 0.85rem;">Allowlist de escopo e aprovação de ação.</p>
+          </div>
+        </div>
+
+        <!-- 7 Saídas de Decisão -->
+        <p class="dg-eyebrow" style="color: var(--dg-blue);">As 7 Saídas do Processo de Reconciliação</p>
+        <div class="dg-grid dg-grid--3" style="font-size: 0.9rem; margin-bottom: 2rem;">
+          <div class="dg-card"><strong style="color: var(--dg-green)">1. Aceitar Mudança:</strong> Evidência satisfatória e dentro da policy.</div>
+          <div class="dg-card"><strong style="color: var(--dg-red)">2. Bloquear Mudança:</strong> Violação de escopo ou falha de oracle.</div>
+          <div class="dg-card"><strong style="color: var(--dg-amber)">3. Pedir Revisão Humana:</strong> Impacto elevado ou incerteza detectada.</div>
+          <div class="dg-card"><strong style="color: var(--dg-blue)">4. Iniciar Novo Ciclo:</strong> Reajuste de plano pelo agente.</div>
+          <div class="dg-card"><strong style="color: var(--dg-purple)">5. Corrigir Oracle:</strong> Teste flaky ou oracle incorreto.</div>
+          <div class="dg-card"><strong style="color: var(--dg-purple)">6. Alterar Spec:</strong> Decisão explícita humana de mudar requisito.</div>
+          <div class="dg-card"><strong style="color: var(--dg-amber)">7. Exceção com Prazo:</strong> Liberação temporária acompanhada.</div>
+        </div>
+
+        <!-- Comparador Baseline vs Proposed e Ablação -->
+        <div class="dg-card" style="background: var(--dg-bg-900); margin-bottom: 2rem;">
+          <p class="dg-eyebrow" style="color: var(--dg-purple)">Comparador de Hipótese Experimental (Ablação Representativa)</p>
+          <p style="font-size: 0.9rem; margin-bottom: 1rem;">
+            Alterne os mecanismos ativados para visualizar quais das 5 classes de desvio voltam a ficar sem mitigação:
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+            <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-grounding" checked /> Grounding (S_t)</label>
+            <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-gateway" checked /> Action Gateway</label>
+            <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-validation" checked /> Validação / Oráculos</label>
+          </div>
+          <div id="dg-ablation-results" class="dg-mono" style="font-size: 0.85rem; padding: 0.8rem; background: var(--dg-bg-950); border-radius: 6px; border: 1px solid var(--dg-border);">
+            Status: <strong>Todas as 5 classes de desvio mitigadas.</strong>
+          </div>
+        </div>
+
+        <!-- Fechamento "Comece com um MVA" -->
+        <div class="dg-card" style="border-color: var(--dg-blue); background: rgba(88, 166, 255, 0.03);">
+          <h3 style="color: var(--dg-text-100); margin-bottom: 0.8rem;">Comece com um MVA (Minimum Viable Architecture)</h3>
+          <p style="font-size: 0.95rem; margin-bottom: 1rem;">
+            Implemente um pipeline de baixo risco seguindo o checklist de 7 ações operacionais:
+          </p>
+          <ol style="padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.8;">
+            <li>Escolha uma tarefa delimitada e de baixo impacto.</li>
+            <li>Fixe a Snapshot Capsule (SHA, tree digest e lockfile).</li>
+            <li>Declare allowlist e denylist de arquivos no Action Gateway.</li>
+            <li>Transforme pelo menos um requisito em contrato e oracle independente.</li>
+            <li>Execute o agente em sandbox sem autoridade implícita.</li>
+            <li>Registre explicitamente veredictos PASS, FAIL, UNKNOWN e CONFLICT no Evidence Record.</li>
+            <li>Compare os resultados com um baseline sem grounding.</li>
+          </ol>
+          <a href="#cena-02" class="dg-btn-action">Definir o Primeiro Envelope</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module">
+    import { resolveEpistemicBadge } from './js/develop-engineering/epistemic.js';
+    import { GAP_STATES, getGapStateClaims } from './js/develop-engineering/states.js';
+    import { VERDICTS, filterVerdicts } from './js/develop-engineering/verdicts.js';
+    import { evaluateComparatorAblation } from './js/develop-engineering/comparator.js';
+
+    // Interaction logic for Cena 01 State Cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('#dg-state-cards-container .dg-state-card');
+      const panelTitle = document.getElementById('dg-state-panel-title');
+      const panelAuth = document.getElementById('dg-state-panel-auth');
+      const panelAllows = document.getElementById('dg-state-panel-allows');
+      const panelProhibits = document.getElementById('dg-state-panel-prohibits');
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const stateId = card.getAttribute('data-state-id');
+          cards.forEach(c => c.classList.remove('is-active'));
+          card.classList.add('is-active');
+
+          const claims = getGapStateClaims(stateId);
+          if (panelTitle) panelTitle.textContent = claims.label;
+          if (panelAuth) panelAuth.textContent = `Autoridade: ${claims.authority}`;
+
+          if (panelAllows) {
+            panelAllows.innerHTML = claims.allows.map(a => `<li>${a}</li>`).join('');
+          }
+          if (panelProhibits) {
+            panelProhibits.innerHTML = claims.prohibits.map(p => `<li>${p}</li>`).join('');
+          }
+        });
+      });
+
+      // Interaction logic for Cena 02 Capsule Lacre Toggle
+      const btnToggle = document.getElementById('dg-btn-toggle-capsule');
+      const digestLayer = document.getElementById('dg-capsule-digest-layer');
+      const statusBadge = document.getElementById('dg-capsule-status-badge');
+      const explanation = document.getElementById('dg-capsule-explanation');
+
+      let isBroken = false;
+      if (btnToggle && digestLayer && statusBadge && explanation) {
+        btnToggle.addEventListener('click', () => {
+          isBroken = !isBroken;
+          if (isBroken) {
+            digestLayer.classList.add('is-missing');
+            statusBadge.style.color = 'var(--dg-gray)';
+            statusBadge.textContent = '∅ UNKNOWN';
+            explanation.innerHTML = '<strong style="color: var(--dg-amber)">Lacre quebrado: Item Ausente (Digest nulo). O estado da cápsula regride imediatamente para UNKNOWN. Contexto não confiável.</strong>';
+            btnToggle.textContent = 'Restaurar Lacre da Cápsula';
+          } else {
+            digestLayer.classList.remove('is-missing');
+            statusBadge.style.color = 'var(--dg-green)';
+            statusBadge.textContent = '✓ SEALED';
+            explanation.innerHTML = 'Estado atual: <strong>Identidade verificada. Todos os 7 predicados de S_t estão ancorados.</strong>';
+            btnToggle.textContent = 'Simular Item Ausente (Quebrar Lacre)';
+          }
+        });
+      }
+
+      // Interaction logic for Cena 06 Oracle Table Verdict Filters
+      const filterBtns = document.querySelectorAll('[data-verdict-filter]');
+      const oracleRows = document.querySelectorAll('#dg-oracle-table tbody tr');
+      const counterText = document.getElementById('dg-oracle-hidden-counter');
+
+      const allItems = Array.from(oracleRows).map(row => ({
+        element: row,
+        verdict: row.getAttribute('data-verdict')
+      }));
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filterValue = btn.getAttribute('data-verdict-filter');
+          filterBtns.forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+
+          const { visibleItems, hiddenCount, totalCount } = filterVerdicts(allItems, filterValue);
+
+          allItems.forEach(item => {
+            item.element.style.display = visibleItems.some(v => v.element === item.element) ? '' : 'none';
+          });
+
+          if (counterText) {
+            counterText.textContent = `Exibindo ${visibleItems.length} de ${totalCount} oráculos (${hiddenCount} ocultos)`;
+          }
+        });
+      });
+
+      // Interaction logic for Cena 08 Ablation Checkboxes
+      const chkGrounding = document.getElementById('dg-chk-grounding');
+      const chkGateway = document.getElementById('dg-chk-gateway');
+      const chkValidation = document.getElementById('dg-chk-validation');
+      const ablationResults = document.getElementById('dg-ablation-results');
+
+      function updateAblationUI() {
+        if (!ablationResults) return;
+        const res = evaluateComparatorAblation({
+          grounding: Boolean(chkGrounding?.checked),
+          gateway: Boolean(chkGateway?.checked),
+          validation: Boolean(chkValidation?.checked)
+        });
+
+        if (res.unmitigated.length === 0) {
+          ablationResults.innerHTML = '<span style="color: var(--dg-green)">✓ Status: Todas as 5 classes de desvio mitigadas.</span>';
+        } else {
+          ablationResults.innerHTML = `<span style="color: var(--dg-red)">⚠️ Desvios Sem Mitigação (${res.unmitigated.length}): ${res.unmitigated.join(', ')}</span>`;
+        }
+      }
+
+      [chkGrounding, chkGateway, chkValidation].forEach(chk => {
+        chk?.addEventListener('change', updateAblationUI);
+      });
+    });
+  </script>
+<!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que é Deterministic Grounding</h2>
+    <p class="aeo-tldr__lede">Um agente de desenvolvimento pode produzir código sintaticamente correto, passar em testes isolados e ainda violar a arquitetura, o escopo autorizado ou o estado real do repositório. <strong>Deterministic Grounding</strong> estabelece o ancoramento explícito de estado, limitação de autoridade por Action Gateway e validação com oráculos auditáveis.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>Agent–Repository Gap (G_t)</strong> — a diferença entre o que o agente acredita (A_t) e o que foi observado no repositório (S_t).</li>
+      <li><strong>Snapshot Capsule</strong> — envelope imutável que sela commit, árvore, lockfile e ambiente antes da ação.</li>
+      <li><strong>Action Gateway</strong> — barreira de 12 passos que impede execução fora do escopo (Diff Lens e allowlist).</li>
+      <li><strong>Evidence Record</strong> — registro com veredictos delimitados (PASS, FAIL, UNKNOWN, CONFLICT) e fronteiras de observação.</li>
+    </ul>
+    <p class="aeo-tldr__foot">Integra a jornada da <a href="/engenharia-confianca">Engenharia da Confiança</a> e <a href="/engenharia-agentes-ia">Engenharia de Agentes de IA</a>.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que é o Agent–Repository Gap?</summary>
+      <div class="aeo-faq__a"><p>É a diferença entre as premissas que orientam a ação do agente no contexto A_t e os predicados verificáveis sobre o estado observável S_t no repositório.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Por que um resultado de teste verde (PASS) não garante correção global?</summary>
+      <div class="aeo-faq__a"><p>Porque um oracle testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é a Snapshot Capsule?</summary>
+      <div class="aeo-faq__a"><p>É o envelope imutável contendo commit SHA, branch, tree digest, lockfile, toolchain, ambiente de execução e um digest único que garante que o contexto do agente corresponde exatamente ao estado do repositório.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Qual a diferença entre Autonomia e Autoridade?</summary>
+      <div class="aeo-faq__a"><p>Autonomia é a capacidade do modelo de planejar e encadear ações de forma flexível; Autoridade é a permissão efetiva para produzir efeitos no repositório, que deve ser restrita e mediada pelo Action Gateway.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+</body>
+
+</html>
