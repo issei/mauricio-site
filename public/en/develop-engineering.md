@@ -7,7 +7,7 @@
 
 A development agent can produce syntactically correct code, pass isolated tests and still violate the architecture, authorized scope or actual status of the repository. **Deterministic Grounding** establishes explicit state anchoring, authority limitation by Action Gateway and validation with auditable oracles.
 
-- **Agent–Repository Gap (G t)** — the difference between what the agent believes (A_t) and what was observed in the repository (S)_t).
+- **Agent–Repository Gap** — the difference between what the agent believes to know about the repository and what is really there now.
 - **Snapshot Capsule** — immutable envelope that seals commit, tree, lockfile and environment before action.
 - **Action Gateway** — 12-step barrier preventing execution outside the scope (Diff Lens and allowlist).
 - **Evidence Record** — registration with bounded verdicts (PASS, FAIL, UNKNOWN, CONFLICT) and observation borders.
@@ -24,11 +24,11 @@ Snapshot Capsule to anchor the state, Action Gateway to limit authority, and aud
 
 **What is Agent–Repository Gap?**
 
-It is the difference between the premises that guide the action of the agent in context A_t and verifiable predicates on the observable state S_t in the repository.
+It is the difference between what the agent believes to know from the repository (memory, recovered context, plan) and what can be verified in it now (current commit, dependencies, current rules). The greater the difference, the greater the risk of a change that seems right and not.
 
 **Why does a green test result (PASS) not guarantee global correction?**
 
-Because an oracle tests only one specific property under a restricted execution envelope. He does not observe collaterals out of its scope, privacy leaks or unmapped architectural violations in the test.
+Because an oracle (an automatic check) tests only one specific property under a restricted execution envelope. He does not observe collaterals out of its scope, privacy leaks or unmapped architectural violations in the test.
 
 **What is Snapshot Capsule?**
 
