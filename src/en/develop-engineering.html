@@ -438,7 +438,7 @@
       font-weight: 700;
     }
 
-    #dg-glossary-table tbody th {
+    .dg-table tbody th {
       background: transparent;
       color: var(--dg-text-100);
       font-weight: 600;
@@ -492,6 +492,7 @@
       margin-top: 1rem;
     }
   </style>
+  <!-- ============================================================ -->
   <!-- ============================================================ -->
   <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
@@ -674,7 +675,7 @@
           "name": "What is Snapshot Capsule?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is the immutable envelope containing commit SHA, branch, tree digest, lockfile, toolchain, execution environment and a unique digest that ensures that the agent context corresponds exactly to the repository state."
+            "text": "It is the immutable envelope proposed in this article, containing commit SHA, branch, tree digest, lockfile, toolchain, execution environment and a unique digest. Digest allows verifying the identity of the set of artifacts included in the capsule. This does not prove that the envelope contains all relevant reality or that the agent's interpretation is correct."
           }
         },
         {
@@ -683,6 +684,22 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Autonomy is the ability of the model to plan and chain actions flexibly; Authority is the effective permission to produce effects on the repository, which must be restricted and mediated by Action Gateway."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when real sources disagree?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The model does not solve the conflict in silence. The system records the CONFLICK verdict, preserves the provenance of each source, verifies the scope and freshness of each source and sends for human review conflicts of intent, security or high impact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does \"deterministic\" mean in this article?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It means that the same input, with the same version of the validator, the same configuration, the same dependencies and the same controlled environment, produces the same verification result. This applies to the verifiable part of the process; the entire process still combines observed facts, approximate inferences, probabilistic decisions of the model and unknown states."
           }
         }
       ]
@@ -715,7 +732,13 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/develop-engineering#g-evidence-record",
           "name": "Evidence Record",
-          "description": "Unchangeable validation attestation containing subject, oracle, validator, envelope and explicit limitations."
+          "description": "Unchangeable validation certificate containing verified property, oracle type and version, scope, environment, result, provenance and explicit limitations."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/en/develop-engineering#g-determinismo-operacional",
+          "name": "Determinism (operational)",
+          "description": "Same input, same version of the validator, same configuration, same dependencies and even controlled environment produce the same verification result."
         }
       ]
     }
@@ -743,12 +766,13 @@
         <a href="#cena-01">01. Sources of Truth</a>
         <a href="#cena-02">02. Capsule</a>
         <a href="#cena-03">03. Contract</a>
-        <a href="#cena-04">04. Limits</a>
+        <a href="#cena-04">04. Static</a>
         <a href="#cena-05">05. Gateway</a>
         <a href="#cena-06">06. Tests</a>
         <a href="#cena-07">07. Evidence</a>
         <a href="#cena-08">08. Decision</a>
-        <a href="#cena-09">09. Glossary</a>
+        <a href="#cena-09">09. Limitations</a>
+        <a href="#cena-10">10. Glossary</a>
       </nav>
     </div>
   </header>
@@ -766,13 +790,13 @@
           Deterministic Grounding for Agent Software Engineering
         </h1>
         <p style="font-size: 1.25rem; color: var(--dg-text-100); font-weight: 600; max-width: 900px; margin-bottom: 1rem;">
-          An AI agent can pass all the tests and still deliver the wrong change. This article shows why, and how to avoid.
+          An AI agent can pass all the tests and still deliver the wrong change. This article shows why and proposes a way to reduce this risk.
         </p>
         <p style="font-size: 1.1rem; color: var(--dg-text-300); max-width: 850px; margin-bottom: 1rem;">
           The agent works with what he believes he knows about the repository: context recovered, memory, a plan. If this information is no longer valid, the code may be correct in isolation and wrong for today's project, violating architecture, authorized scope or privacy.
         </p>
         <p style="font-size: 1.1rem; color: var(--dg-text-300); max-width: 850px; margin-bottom: 2rem;">
-          <strong>Deterministic Grounding</strong> it is the practice of anchoring what the agent knows in a verifiable state of the repository, limiting what he is allowed to do and validating each change with recorded evidence.
+          <strong>Deterministic Grounding</strong> it is the provisional name that this article proposes (it is not standardized terminology) for a practice in three parts: anchor what the agent knows in a verifiable state of the repository, limit what it is allowed to do and validate each change with recorded evidence. The mechanisms described are proposed, yet without measurement of efficacy; see the limitations in Scene 09.
         </p>
 
         <!-- Camadas Desalinhadas (Agente vs Repositório) -->
@@ -878,6 +902,23 @@
           </div>
         </div>
 
+        <!-- Conflito entre fontes de verdade -->
+        <div class="dg-card" style="margin-top: 1.5rem;">
+          <p class="dg-eyebrow" style="color: var(--dg-amber)">When two sources disagree</p>
+          <p style="font-size: 0.95rem; margin-bottom: 0.5rem;">
+            These states do not always agree: the specification asks one thing, the repository shows another, the memory holds a third. The model does not solve this conflict in silence. The system:
+          </p>
+          <ul style="padding-left: 1.2rem; font-size: 0.95rem;">
+            <li>records the verdict <span class="dg-mono">CONFLICK</span>;</li>
+            <li>preserves where all information came from (the provenance);</li>
+            <li>verifies the scope and freshness of each source (which commits it and still applies);</li>
+            <li>sends for human review the conflicts of intent, security or high impact.</li>
+          </ul>
+          <p style="font-size: 0.95rem; margin-top: 0.75rem;">
+            There is still a sixth type of information, the <strong>derived structural status</strong>: the code graph extracted from the repository (Cena 04). It's derived, not primary source. The repository has the final word about what exists now.
+          </p>
+        </div>
+
         <!-- Failure Card #1 -->
         <div class="dg-failure-card">
           <div class="dg-failure-card__header">
@@ -902,7 +943,7 @@
       <div class="dg-container">
         <p class="dg-eyebrow">
           Scene 02 · Identity of State
-          <span class="dg-badge" style="color: var(--dg-blue)">DOCUMENTED</span>
+          <span class="dg-badge" style="color: var(--dg-purple)">PROPOSED</span>
         </p>
         <h2 class="dg-title">Snapshot Capsule: prove where the agent is looking</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
@@ -953,9 +994,17 @@
               Simulate Absent Item (Break Lacre)
             </button>
             <p id="dg-capsule-explanation" style="font-size: 0.85rem; color: var(--dg-gray);">
-              Current status: <strong>The 7 attributes are present and match the repository. The context is reliable.</strong>
+              Current status: <strong>The 7 attributes are present and match the repository: the snapshot identity is verified.</strong>
             </p>
           </div>
+        </div>
+
+        <div class="dg-boundary-marker">
+          <strong>What the digest proves, and what does not prove:</strong> it allows verifying the identity of the set of artifacts included in the capsule. This does not prove that the capsule contains all relevant reality (external dependencies, runtime, data), nor that the interpretation of the agent is correct, nor that the action is safe.
+        </div>
+
+        <div class="dg-boundary-marker" id="dg-determinismo">
+          <strong>What "deterministic" means in this article:</strong> the same input, with the same version of the validator, the same configuration, the same dependencies and the same controlled environment, produces the same verification result. That goes for the verifiable part of the process. The whole process still combines observed facts, approximate inferences, probabilistic model decisions and unknown states (UNKNOWN).
         </div>
       </div>
     </section>
@@ -1014,6 +1063,33 @@
             <p style="font-size: 0.95rem;"><strong>Is it safe and compliant?</strong> Who owns the data, privacy, retention and regulatory impacts.</p>
           </div>
         </div>
+
+        <!-- Restrição, política, imposição, validação -->
+        <p style="margin-top: 2rem; max-width: 850px;">
+          Declaring a rule is not the same as making it fulfilled, and validating an action does not prove that it is correct in general. So the chain below separates each paper:
+        </p>
+        <div class="dg-pipeline-flow">
+          <span class="dg-pipeline-step">Request</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Restriction</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Policy</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Taxation</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Action</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Validation</span>
+          <span class="dg-pipeline-arrow">→</span>
+          <span class="dg-pipeline-step">Evidence</span>
+        </div>
+        <ul style="padding-left: 1.2rem; font-size: 0.95rem; max-width: 850px;">
+          <li><strong>Constraint:</strong> Which must be true, or what limits the solution.</li>
+          <li><strong>Policy:</strong> which is authorized or prohibited.</li>
+          <li><strong>Enforcement:</strong> the mechanism that prevents rape. Declaring a policy does not prevent anything on its own.</li>
+          <li><strong>Validation:</strong> how a property is valued.</li>
+          <li><strong>Evidence:</strong> what result was produced.</li>
+        </ul>
 
         <!-- Failure Card #2 -->
         <div class="dg-failure-card">
@@ -1097,11 +1173,11 @@
       <div class="dg-container">
         <p class="dg-eyebrow">
           Scene 05 · Governance of Action
-          <span class="dg-badge" style="color: var(--dg-amber)">DOCUMENTED</span>
+          <span class="dg-badge" style="color: var(--dg-purple)">PROPOSED</span>
         </p>
         <h2 class="dg-title">Autonomy is not authority: Action Gateway</h2>
         <p style="margin-bottom: 1rem; max-width: 850px;">
-          An advanced model can assemble complex plans on its own. That's... <strong>autonomy</strong>: how much he plans and chain actions. <strong>Authority</strong> is another thing: the permission to actually change the repository, shoot a deploy or call a privileged tool. That's the decision. <strong>Action Gateway</strong>And just him.
+          An advanced model can assemble complex plans on its own. That's... <strong>autonomy</strong>: how much he plans and chain actions. <strong>Authority</strong> is another thing: the permission to actually change the repository, shoot a deploy or call a privileged tool. In the design proposed here, who decides that is the <strong>Action Gateway</strong>And just him.
         </p>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
           Think of it as an automatic and inflexible Pull Request reviewer: if the change touches a file outside the allowed list, it blocks, no matter how good the code is.
@@ -1128,9 +1204,9 @@
         </div>
 
         <!-- 12 Passos do Action Gateway -->
-        <p class="dg-eyebrow" style="color: var(--dg-blue); margin-top: 2rem;">Action Gateway · the 12 steps in 3 steps</p>
+        <p class="dg-eyebrow" style="color: var(--dg-blue); margin-top: 2rem;">Action Gateway · the 12 steps (proposal of this article) in 3 steps</p>
         <p style="max-width: 850px; font-size: 0.95rem; color: var(--dg-gray);">
-          Before any real effect, each proposal passes 12 checks: understand the request (1 to 5), decide whether it is allowed (6 to 9) and execute and prove (10 to 12).
+          The 12 steps and Diff Lens are a design of this article, not an established standard. Before any real effect, each proposal would go through 12 checks: understand the request (1 to 5), decide whether it is allowed (6 to 9) and execute and prove (10 to 12).
         </p>
         <div class="dg-gateway-list">
           <div class="dg-gateway-step"><span class="dg-mono" style="color: var(--dg-blue)">01.</span> Receive the proposal (treated as unreliable)</div>
@@ -1156,6 +1232,9 @@
         </div>
         <p style="max-width: 850px; font-size: 0.95rem;">
           Gateway does not only approve half of the proposal: it blocks the entire action until the scope is corrected.
+        </p>
+        <p style="max-width: 850px; font-size: 0.95rem;">
+          He can only block what his rules, permissions and schemas cover. A tool that no one has mapped passes it without being seen. That's why Gateway's coverage and effectiveness need to be demonstrated, not presumed.
         </p>
 
         <!-- Failure Card #3 -->
@@ -1323,18 +1402,20 @@
               <p>Target (URI Subject): <span class="dg-mono">git://repo@a8f3d1e/src/api/export.js</span></p>
               <p>Commit: <span class="dg-mono">a8f3d1e992b47c01</span></p>
               <p>Request: <span class="dg-mono">REQ-EXPORT-001</span></p>
+              <p>Verified property (predicate): <span class="dg-mono">POST /export returns a valid PDF</span></p>
               <p>Verification (oracle): <span class="dg-mono">orc nodest v22 (integration test)</span></p>
             </div>
             <div>
               <p>Executor (validator): <span class="dg-mono">Node-test-runner:v22.22.1</span></p>
               <p>Implementation environment: <span class="dg-mono">Docker Sandbox / isolated network</span></p>
               <p style="color: var(--dg-amber);">What was out: <span class="dg-mono">88% of the covered lines / EXIF logging NOT covered</span></p>
+              <p>Limitations declared: <span class="dg-mono">does not cover competition or malformed entries</span></p>
               <p>Origin Signature (Provinance): <span class="dg-mono">sig: sha256:990a1f...</span></p>
             </div>
           </div>
         </div>
         <p style="max-width: 850px; font-size: 0.95rem;">
-          Notice the highlighted field: the record states the blind spot itself. Here, PASS with 88% coverage says nothing about Case 2 EXIF logging.
+          Notice the highlighted field: the record states the blind spot itself. Here, PASS with 88% coverage says nothing about Case 2 EXIF logging. The oracle type matters: a parser PASS and a PASS of a formalized business rule do not have the same weight (Cena 06).
         </p>
       </div>
     </section>
@@ -1383,11 +1464,35 @@
           <div class="dg-card"><strong style="color: var(--dg-amber)">7. Time-limit exception:</strong> temporary release, accompanied and date to end.</div>
         </div>
 
+        <!-- Ciclo de grounding -->
+        <p class="dg-eyebrow" style="color: var(--dg-blue);">Grounding is a cycle, not a step</p>
+        <p style="max-width: 850px; font-size: 0.95rem; margin-bottom: 0.5rem;">
+          Five words appear in this article and mean different things: <strong>grounding</strong> (associate something to the observed reality), <strong>levy</strong> (restring or blocking), <strong>validation</strong> (assess properties), <strong>evidence</strong> (record the result) and <strong>reconciliation</strong> (compare states and decide). The grounding cycle runs through five moments:
+        </p>
+        <div class="dg-table-wrap">
+          <table class="dg-table" id="dg-lifecycle-table" aria-label="The five moments of the grounding cycle">
+            <thead>
+              <tr>
+                <th scope="col">Moment</th>
+                <th scope="col">What do you do?</th>
+                <th scope="col">Mechanism in this article</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Background</th><td>It associates the recovered context with current facts and entities.</td><td>Snapshot Capsule (Cena 02)</td></tr>
+              <tr><th scope="row">Planning</th><td>Face the plan with the current state and specification.</td><td>Contract and Desired State (Cena 03)</td></tr>
+              <tr><th scope="row">Implementation</th><td>Restricts authorized actions.</td><td>Action Gateway (Cena 05)</td></tr>
+              <tr><th scope="row">Validation</th><td>Evaluate action against defined properties.</td><td>Oracles (Scene 06)</td></tr>
+              <tr><th scope="row">Reconciliation</th><td>Compare desired status, current status and evidence.</td><td>The 7 decisions (this scene)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
         <!-- Comparador Baseline vs Proposed e Ablação -->
         <div class="dg-card" style="background: var(--dg-bg-900); margin-bottom: 2rem;">
           <p class="dg-eyebrow" style="color: var(--dg-purple)">Experiment: What if you turn off a control?</p>
           <p style="font-size: 0.9rem; margin-bottom: 1rem;">
-            Turn off the mechanisms below and see which of the 5 classes of deviation (invented dependence, outdated context, out-of-scope change, violation of architecture and divergent status of the repository) are back to unprotected. Each class depends on at least one control, and the violation of architecture depends on two (validation and grounding).
+            Turn off the mechanisms below and see which of the 5 classes of deviation (invented dependence, outdated context, out-of-scope change, violation of architecture and divergent status of the repository) are back to unprotected. Each class depends on at least one control, and the violation of architecture depends on two (validation and grounding). It's a simulation of the coverage logic, not a measured result in real projects.
           </p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
             <label class="dg-mono" style="font-size: 0.85rem;"><input type="checkbox" id="dg-chk-grounding" checked /> Grounding</label>
@@ -1419,10 +1524,33 @@
       </div>
     </section>
 
-    <!-- CENA 09 — Glossário -->
+    <!-- CENA 09 — Limitações -->
     <section id="cena-09" class="dg-section">
       <div class="dg-container">
-        <p class="dg-eyebrow">Scene 09 · Glossary</p>
+        <p class="dg-eyebrow">Scene 09 · Limitations</p>
+        <h2 class="dg-title">What this article still does not prove</h2>
+        <p style="margin-bottom: 1.5rem; max-width: 850px;">
+          This text describes an architecture proposal, not a measured result. Before adopting any part of it, consider:
+        </p>
+        <ul style="padding-left: 1.2rem; max-width: 850px; line-height: 1.8;">
+          <li><strong>It's a proposition.</strong> Snapshot Capsule, Action Gateway (with 12 steps and Diff Lens) and Evidence Record are drawings of this article. There is no measurement of their effectiveness so far.</li>
+          <li><strong>The name is provisional.</strong> "Deterministic Grounding" is not standardized terminology.</li>
+          <li><strong>Scene 08's experiment is a simulation.</strong> It shows that control covers what class of deviation, not how much each reduces errors in practice.</li>
+          <li><strong>Gateway only blocks what he knows.</strong> Tool effects without rule, permission or corresponding schema escape from it.</li>
+          <li><strong>Digest proves identity, not completeness.</strong> It covers the artifacts included in the capsule, and only them.</li>
+          <li><strong>Static analysis does not see dynamic code</strong> (Scene 04), and a PASS applies only to the property and environment in which it was obtained (Scene 06).</li>
+          <li><strong>Sources are missing.</strong> The article still does not cite primary sources with verification date. The statements are the author's proposal, not the result of a literature review.</li>
+        </ul>
+        <div class="dg-boundary-marker" style="margin-top: 1.5rem;">
+          <strong>Hypothesis to test:</strong> anchoring the state, restricting the actions and validating with evidence reduces the deviations from a baseline without grounding. Testing this requires comparing the same task with and without each control, measuring the deviations that occurred (a real ablation, with data).
+        </div>
+      </div>
+    </section>
+
+    <!-- CENA 10 — Glossário -->
+    <section id="cena-10" class="dg-section">
+      <div class="dg-container">
+        <p class="dg-eyebrow">Scene 10 · Glossary</p>
         <h2 class="dg-title">The terms, in common language</h2>
         <p style="margin-bottom: 1.5rem; max-width: 850px;">
           The original terms remain correct and appear throughout the article. This table is the shortcut to remember what each one means.
@@ -1452,6 +1580,9 @@
               <tr><th scope="row">Contract of 4 levels</th><td>4 zoom revision</td><td>Interface, behavior, architecture and semantics. Each level can approve what another would fail.</td></tr>
               <tr><th scope="row">Autonomy vs. Authority</th><td>Thinking alone vs. being able to execute</td><td>When the agent plans without help, against how much he can really change.</td></tr>
               <tr><th scope="row">Reconciliation</th><td>The final decision</td><td>Stage that joins requirement, state, evidence and politics and decides the next step.</td></tr>
+              <tr><th scope="row">Determinism (in this article)</th><td>Same input, same result</td><td>Same input, same version of the validator, same configuration, same dependencies and even controlled environment produce the same verification result.</td></tr>
+              <tr><th scope="row">Constraint / Policy / Enforcement</th><td>Restriction / rule / imposition</td><td>The restriction says what must be true, the policy says what is authorized and the imposition is the mechanism that prevents the violation.</td></tr>
+              <tr><th scope="row">Grounding lifecycle</th><td>The Grounding Cycle</td><td>The five moments when the agent is anchored in reality: context, planning, execution, validation and reconciliation.</td></tr>
               <tr><th scope="row">MVA (Minimum Viable Architecture)</th><td>The least it's worth rolling</td><td>The smallest version of the governance pipeline that already brings benefits.</td></tr>
             </tbody>
           </table>
@@ -1525,7 +1656,7 @@
             digestLayer.classList.remove('is-missing');
             statusBadge.style.color = 'var(--dg-green)';
             statusBadge.textContent = '✓ SEALED';
-            explanation.innerHTML = 'Estado atual: <strong>Os 7 atributos estão presentes e batem com o repositório. O contexto é confiável.</strong>';
+            explanation.innerHTML = 'Estado atual: <strong>Os 7 atributos estão presentes e batem com o repositório: a identidade do snapshot está verificada.</strong>';
             btnToggle.textContent = 'Simular Item Ausente (Quebrar Lacre)';
           }
         });
@@ -1605,11 +1736,11 @@
   <div class="aeo-tldr">
     <p class="aeo-eyebrow">In short</p>
     <h2 class="aeo-tldr__title">What is Deterministic Grounding</h2>
-    <p class="aeo-tldr__lede">A development agent can produce syntactically correct code, pass isolated tests and still violate the architecture, authorized scope or actual status of the repository. <strong>Deterministic Grounding</strong> establishes explicit state anchoring, authority limitation by Action Gateway and validation with auditable oracles.</p>
+    <p class="aeo-tldr__lede">A development agent can produce syntactically correct code, pass isolated tests and still violate the architecture, authorized scope or actual status of the repository. <strong>Deterministic Grounding</strong> it is the provisional name that this article proposes (it is not standardized terminology) for a practice in three parts: anchor the state explicitly, limit authority through an Action Gateway and validate with auditable oracles.</p>
     <ul class="aeo-tldr__points">
       <li><strong>Agent–Repository Gap</strong> — the difference between what the agent believes to know about the repository and what is really there now.</li>
-      <li><strong>Snapshot Capsule</strong> — immutable envelope that seals commit, tree, lockfile and environment before action.</li>
-      <li><strong>Action Gateway</strong> — 12-step barrier preventing execution outside the scope (Diff Lens and allowlist).</li>
+      <li><strong>Snapshot Capsule</strong> (proposal) — immutable envelope that seals commit, tree, lockfile and environment before action.</li>
+      <li><strong>Action Gateway</strong> (proposal) — component that mediates agent actions by allowlist, Diff Lens and policy-as-code and can block those that leave the defined scope; its coverage and effectiveness need to be demonstrated.</li>
       <li><strong>Evidence Record</strong> — registration with bounded verdicts (PASS, FAIL, UNKNOWN, CONFLICT) and observation borders.</li>
     </ul>
     <p class="aeo-tldr__foot">Integrates the journey of <a href="/en/engenharia-confianca">Trust Engineering</a> and <a href="/en/engenharia-agentes-ia">AI Agent Engineering</a>.</p>
@@ -1627,15 +1758,24 @@
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is Snapshot Capsule?</summary>
-      <div class="aeo-faq__a"><p>It is the immutable envelope containing commit SHA, branch, tree digest, lockfile, toolchain, execution environment and a unique digest that ensures that the agent context corresponds exactly to the repository state.</p></div>
+      <div class="aeo-faq__a"><p>It is the immutable envelope proposed in this article, containing commit SHA, branch, tree digest, lockfile, toolchain, execution environment and a unique digest. Digest allows verifying the identity of the set of artifacts included in the capsule. This does not prove that the envelope contains all relevant reality or that the agent's interpretation is correct.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What's the difference between Autonomy and Authority?</summary>
       <div class="aeo-faq__a"><p>Autonomy is the ability of the model to plan and chain actions flexibly; Authority is the effective permission to produce effects on the repository, which must be restricted and mediated by Action Gateway.</p></div>
     </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">What happens when real sources disagree?</summary>
+      <div class="aeo-faq__a"><p>The model does not solve the conflict in silence. The system records the CONFLICK verdict, preserves the provenance of each source, verifies the scope and freshness of each source and sends for human review conflicts of intent, security or high impact.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">What does &quot;terministic&quot; mean in this article?</summary>
+      <div class="aeo-faq__a"><p>It means that the same input, with the same version of the validator, the same configuration, the same dependencies and the same controlled environment, produces the same verification result. This applies to the verifiable part of the process; the entire process still combines observed facts, approximate inferences, probabilistic decisions of the model and unknown states.</p></div>
+    </details>
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
 
 
 </body>
