@@ -94,6 +94,58 @@ test.describe('Case Agents — página', () => {
     await expectNoSeriousA11yViolations(page);
   });
 
+  test('estatística no código: 5 técnicas, trechos da branch enxuta com link permanente e medições', async ({ page }) => {
+    await page.goto(PATH);
+    const section = page.locator('#tecnicas-estatisticas');
+    await expect(section).toBeVisible();
+
+    // 5 técnicas + o comparativo enxuta × main
+    await expect(section.locator('h3')).toHaveCount(6);
+    for (const id of ['tecnica-classificacao', 'tecnica-calibracao', 'tecnica-recuperacao', 'tecnica-decisao', 'tecnica-metricas']) {
+      await expect(section.locator(`h3#${id}`)).toBeVisible();
+    }
+
+    // Os trechos são do código real: cada técnica tem o seu símbolo
+    const codigo = await section.locator('.ca-code pre').allTextContents();
+    const todo = codigo.join('\n');
+    for (const simbolo of ['TfidfVectorizer', 'LogisticRegression', 'CalibratedClassifierCV', 'cosine_similarity', 'Guard Rail 3', 'compute_precision_at_k']) {
+      expect(todo, `trecho com ${simbolo}`).toContain(simbolo);
+    }
+
+    // Links permanentes: sempre o commit completo da branch enxuta, nunca "main" ou "HEAD"
+    const links = await section.locator('a[href*="github.com/issei/case-agents/blob/"]').evaluateAll(
+      (as) => as.map((a) => a.getAttribute('href'))
+    );
+    const permanentes = links.filter((h) => /\/blob\/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131\/candidate_starter\/[\w.]+#L\d+-L\d+$/.test(h));
+    expect(permanentes.length).toBeGreaterThanOrEqual(10);
+
+    // Medições da branch enxuta — e a explicação de por que o número impresso engana
+    await expect(section).toContainText('26,3%');
+    await expect(section).toContainText('top-2 20/20');
+    await expect(section).toContainText('20 de 20');
+  });
+
+  test('menu e numeração: link para a nova seção e eyebrows em ordem crescente, sem repetição', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('nav.ca-nav__trail a[href="#tecnicas-estatisticas"]')).toHaveCount(1);
+
+    const numeros = await page.locator('main .ca-section > .ca-wrap > .ca-eyebrow').evaluateAll(
+      (els) => els.map((e) => Number((e.textContent.match(/^(\d+)\s·/) || [])[1])).filter((n) => !Number.isNaN(n))
+    );
+    expect(numeros.length).toBeGreaterThanOrEqual(14);
+    expect(numeros).toEqual([...numeros].sort((a, b) => a - b));
+    expect(new Set(numeros).size).toBe(numeros.length);
+  });
+
+  test('card da branch enxuta descreve o que o código de fato contém', async ({ page }) => {
+    await page.goto(PATH);
+    const card = page.locator('.ca-branch-card--enxuta');
+    await expect(card).toContainText('Platt Scaling (cv=3)');
+    await expect(card).toContainText('15 testes unitários');
+    await expect(card).not.toContainText('não calibrada');
+    await expect(card).not.toContainText('Inexistente');
+  });
+
   test('responsividade mobile: sem transbordo horizontal em 360px', async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 780 });
     await page.goto(PATH);

@@ -127,10 +127,10 @@ export const PAGES = [
     title: 'Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei',
     headline: 'Case Agents: Roteamento de Queries e Seleção Segura de Tools em Agente Bancário',
     description: 'Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero.',
-    datePublished: '2026-09-10', dateModified: '2026-09-11',
+    datePublished: '2026-09-10', dateModified: '2026-09-19',
     section: 'Engenharia de Confiança · Agentes de IA',
     tags: ['Case Agents', 'Roteamento de IA', 'Tool Retrieval', 'Barreira Pré-Execução', 'Guarda de Direção', 'Engenharia de Confiança', 'Arquitetura de Alta Performance'],
-    keywords: ['case agents', 'roteamento de queries', 'tool retrieval', 'barreira pre-execucao', 'guarda de direcao', 'crash silencioso', 'banco digital', 'fast path', 'agent', 'BM25F', 'taxonomia', 'Platt scaling', 'rust inference', 'cold hot path', 'ADR-009'],
+    keywords: ['case agents', 'roteamento de queries', 'tool retrieval', 'barreira pre-execucao', 'guarda de direcao', 'crash silencioso', 'banco digital', 'fast path', 'agent', 'BM25F', 'taxonomia', 'Platt scaling', 'TF-IDF', 'regressão logística', 'similaridade de cosseno', 'rust inference', 'cold hot path', 'ADR-009'],
     about: [
       { name: 'Engenharia de Confiança' },
       { name: 'Tool Retrieval' },
@@ -166,6 +166,7 @@ export const PAGES = [
     mdSections: [
       { h: 'O problema e o domínio', body: 'No domínio bancário, executar uma ferramenta errada na conta do cliente é inaceitável. O cérebro de roteamento precisa decidir com segurança e abster-se quando a confiança for insuficiente.' },
       { h: 'A barreira e os resultados', body: 'Quatro camadas de segurança levaram as execuções incorretas de 7 para zero, mantendo 100% de acerto nas 20 queries transacionais e 77,8% de economia de custo no benchmark do MVP.' },
+      { h: 'As cinco técnicas estatísticas', body: 'A decisão não é tomada por um LLM. (1) TF-IDF com n-grams e regressão logística classificam a mensagem em FAST_PATH ou AGENT; (2) o escalonamento de Platt, com validação cruzada estratificada, calibra a probabilidade para que o limiar de 0,75 signifique acerto; (3) similaridade de cosseno em dois campos, com colapso por capacidade (máximo por grupo), escolhe 2 ferramentas entre 285; (4) três limiares — confiança ≥ 0,75, score ≥ 0,10 e margem relativa (s1 − s2)/s1 ≥ 0,25 — mais uma guarda de direção leitura/escrita decidem quando não executar; (5) acurácia, matriz de confusão, hit rate@k e economia percentual medem o resultado. O código explicado é o da branch feature/solucao-enxuta (commit e2dcd7f). Nessa branch o harness imprime Precision@2 de 26,3% porque compara o nome da variante com o nome canônico; recontado por capacidade, são 20/20 no top-2.' },
     ],
     og: {
       eyebrow: 'P2 · Engenharia de Confiança',

@@ -1,6 +1,6 @@
 # Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei
 
-> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/case-agents>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-09-10 · Atualizado: 2026-09-11.
+> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/case-agents>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-09-10 · Atualizado: 2026-09-19.
 
 ## Em síntese
 
@@ -18,6 +18,10 @@ No domínio bancário, executar uma ferramenta errada na conta do cliente é ina
 ## A barreira e os resultados
 
 Quatro camadas de segurança levaram as execuções incorretas de 7 para zero, mantendo 100% de acerto nas 20 queries transacionais e 77,8% de economia de custo no benchmark do MVP.
+
+## As cinco técnicas estatísticas
+
+A decisão não é tomada por um LLM. (1) TF-IDF com n-grams e regressão logística classificam a mensagem em FAST_PATH ou AGENT; (2) o escalonamento de Platt, com validação cruzada estratificada, calibra a probabilidade para que o limiar de 0,75 signifique acerto; (3) similaridade de cosseno em dois campos, com colapso por capacidade (máximo por grupo), escolhe 2 ferramentas entre 285; (4) três limiares — confiança ≥ 0,75, score ≥ 0,10 e margem relativa (s1 − s2)/s1 ≥ 0,25 — mais uma guarda de direção leitura/escrita decidem quando não executar; (5) acurácia, matriz de confusão, hit rate@k e economia percentual medem o resultado. O código explicado é o da branch feature/solucao-enxuta (commit e2dcd7f). Nessa branch o harness imprime Precision@2 de 26,3% porque compara o nome da variante com o nome canônico; recontado por capacidade, são 20/20 no top-2.
 
 ## Perguntas frequentes
 

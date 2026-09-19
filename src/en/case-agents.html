@@ -23,12 +23,13 @@
   <link rel="stylesheet" href="/aeo.css" />
   <!-- ============================================================ -->
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, rust inference, cold hot path, ADR-009" />
+<meta name="keywords" content="case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, TF-IDF, logistic regression, cosine similarity, rust inference, cold hot path, ADR-009" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/en/case-agents" />
 <link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/en/case-agents.md" title="Case Agents: the wrong tool is not an acceptable approach " />
@@ -43,7 +44,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Case Agents: the wrong tool is not an acceptable approach " />
 <meta property="article:published_time" content="2026-09-10T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-09-11T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-09-19T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Engenharia de Confiança · Agentes de IA" />
 <meta property="article:tag" content="Case Agents" />
@@ -96,7 +97,7 @@
       },
       "inLanguage": "en-US",
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-19",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-case-agents.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/en/case-agents#breadcrumb"
@@ -129,11 +130,11 @@
         "@id": "https://mauricio.issei.com.br/en/#author"
       },
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-19",
       "inLanguage": "en-US",
       "image": "https://mauricio.issei.com.br/og-case-agents.png",
       "isAccessibleForFree": true,
-      "keywords": "case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, rust inference, cold hot path, ADR-009",
+      "keywords": "case agents, Queries routing, retrieval tool, pre-execution barrier, direction guard, silent crash, digital bank, fast path, agent, BM25F, taxonomy, Platt scaling, TF-IDF, logistic regression, cosine similarity, rust inference, cold hot path, ADR-009",
       "codeRepository": "https://github.com/issei/case-agents",
       "programmingLanguage": "Python, Rust",
       "about": [
@@ -296,6 +297,7 @@
         <a href="#por-que-nenhum-peso-resolve" data-navlink>Arithmetic</a>
         <a href="#barreira" data-navlink>The Barrier</a>
         <a href="#arquitetura" data-navlink>Pipeline MVP</a>
+        <a href="#tecnicas-estatisticas" data-navlink>Statistics</a>
         <a href="#arquitetura-produtiva" data-navlink>Productive Architecture</a>
         <a href="#governanca-catalogo" data-navlink>Taxonomy</a>
         <a href="#economia-honesta" data-navlink>Metrics</a>
@@ -507,36 +509,36 @@ demonstrating the deliberate transition of an exploratory Concept Proof (PoC) to
 
             <p class="ca-small">
               Strict focus on <strong>minimum testing speed and footprint</strong>. Implement router
-and the retriever in direct Python code, without coupling to manual taxonomies or advanced mathematical calibrations.
+and the retriever in direct Python: Platt calibration, capacity collapse and steering guard exist, but embedded in <code translate="no">router.py</code> and <code translate="no">retrieval.py</code>, no taxonomy module and no ADRs.
 Ideal for quick validation of product viability and starting benchmark.
             </p>
 
             <div class="ca-branch-meta">
               <div>
                 <span>Test Coverage</span>
-                <span>35 unit tests</span>
+                <span>15 unit tests</span>
               </div>
               <div>
                 <span>Catalog Governance</span>
-                <span>No taxonomy (Flat)</span>
+                <span>Built-in dictionary (12 capacities)</span>
               </div>
               <div>
                 <span>Router Calibration</span>
-                <span>Pure L2 (not calibrated)</span>
+                <span>Platt Scaling (cv=3)</span>
               </div>
               <div>
                 <span>Directional Guard</span>
-                <span>Non-existent (vulnerable)</span>
+                <span>Partial (reading→written by prefix)</span>
               </div>
             </div>
 
             <div class="ca-prose" style="margin-top: 10px;">
               <h4 style="font-size:0.9rem; margin-bottom:4px;">Pros &amp; Trade-offs:</h4>
               <ul class="ca-small" style="padding-left:18px; margin-bottom:16px;">
-                <li><strong>Pro:</strong> Clean code (~300 lines), easy to audit and deliver in a few days.</li>
+                <li><strong>Pro:</strong> Clean code (~560 lines in four modules and a script), easy to audit and deliver in a few days.</li>
                 <li><strong>Pro:</strong> Low cognitive friction for early-stage teams.</li>
-                <li><strong>Against:</strong> Hits only <strong>35% Hit Rate@2</strong> in the catalog of 285 tools due to lexical collisions.</li>
-                <li><strong>Against:</strong> Register <strong>45% undue abstentions</strong> and vulnerability to Silent Crash.</li>
+                <li><strong>Against:</strong> Branch Harness Prints <strong>26.3% of Precision@2</strong>, because it compares the name of the variant with the canonical name; recounted by capacity, are 20/20 in the top-2 (see <a href="#tecnicas-estatisticas">Statistics in Code</a>).</li>
+                <li><strong>Against:</strong> <strong>16.7% abstentions</strong> (5 out of 30), and the steering guard only covers reading→written in the tools that the prefix of the name reveals (167 out of 285 tools).</li>
               </ul>
             </div>
 
@@ -882,10 +884,719 @@ Validate the four guards before the execution mock. If there is no transactional
       </div>
     </section>
 
+    <!-- ════════════════════════════════════ 7. ESTATÍSTICA NO CÓDIGO ═══ -->
+    <section id="tecnicas-estatisticas" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">07 · Statistics in the Code</p>
+        <h2>The five statistical techniques of the case and Python implementing them</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            Whoever decides on this pipeline is not a language model. There are five classic statistical and statistical techniques
+information retrieval, each responding to a concrete problem of banking service. Each technique
+below has two layers: the concept, in simple language, and the Python excerpt that implements it.
+          </p>
+          <p>
+            The snippets are from the branch <code translate="no">feature/solucao-enxuta</code> (commit)
+            <a href="https://github.com/issei/case-agents/tree/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131" target="_blank" rel="noopener"><code translate="no">e2dcd7f</code></a>),
+the simplified version: four modules and an execution script, about 560 lines, without
+            <code translate="no">taxonomy.py</code> And no ADRs. Where the <code translate="no">main</code> does different, a note warns.
+The numbers come from the output of <code translate="no">python -m candidate_starter.run_case</code> in this branch and
+offline recounts on the same report. It's not the numbers of <code translate="no">main</code> quoted in the rest
+from the page.
+          </p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Technique</th>
+                <th scope="col">Operational problem</th>
+                <th scope="col">Where in code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1 · TF-IDF + logistic regression</strong></td>
+                <td>Decide, cheap and in milliseconds, if the message needs an agent.</td>
+                <td><code translate="no">router.py</code> · <code translate="no">QueryRouter</code></td>
+              </tr>
+              <tr>
+                <td><strong>2 · Platt scaling + cross-validation stratified</strong></td>
+                <td>Doing the number "0.75" means a probability of right.</td>
+                <td><code translate="no">router.py</code> · <code translate="no">fit()</code></td>
+              </tr>
+              <tr>
+                <td><strong>3 · Multi-field cosine + capacity collapse</strong></td>
+                <td>Find two tools between 285 without returning two duplicates.</td>
+                <td><code translate="no">retrieval.py</code> · <code translate="no">ToolRetriever.search</code></td>
+              </tr>
+              <tr>
+                <td><strong>4 · Thresholds, relative margin and steering guard</strong></td>
+                <td>Know when <em>no</em> execute.</td>
+                <td><code translate="no">harness.py</code> · <code translate="no">run_harness</code>; <code translate="no">retrieval.py</code></td>
+              </tr>
+              <tr>
+                <td><strong>5 · Evaluation and economics metrics</strong></td>
+                <td>Prove it works without counting how I get what's just abstention.</td>
+                <td><code translate="no">harness.py</code> · <code translate="no">compute_*</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ─────────────── Técnica 1 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-classificacao">1 · Supervised classification: TF-IDF and logistic regression</h3>
+          <p>
+            <strong>Operational problem.</strong> Greetings and FAQ questions ("What time is it?") do not require
+LLM or tool. Answer this locally has zero cost of LLM. The router needs to separate
+            <code translate="no">FAST_PATH</code> of <code translate="no">AGENT</code> in milliseconds, before any man calls.
+          </p>
+          <p>
+            <strong>Concept.</strong> Supervised rating is to teach with examples already labeled: here, 53 messages marked
+            <code translate="no">FAST_PATH</code> (25) or <code translate="no">AGENT</code> (28) The model learns what separates the two
+classes and applies this to new messages, in two steps: turn text into numbers and learn a boundary between classes.
+          </p>
+          <p>
+            O <strong>TF-IDF</strong> gives each term a weight that grows with its frequency in the message (TF) and decreases with the number of
+messages from the set containing it (IDF). "De" appears in almost everything and weighs little; "block" appears in few and weighs much.
+With n-grams from 1 to 2 terms, pairs like "second way" also saw terms. Each message becomes a sparse vector (almost everything
+zero) length 1.
+          </p>
+          <p>
+            A <strong>logistic regression</strong> transforms a weighted sum of the terms into a probability, between 0 and 1, of a
+message be <code translate="no">AGENT</code>. A <strong>regularisation L2</strong> penalty large weights, for model not
+decorate 53 examples; <code translate="no">C</code> control force (1.0 is the scikit-learn pattern and is the value used).
+It is a linear and light classifier, and each term has a coefficient that you can read, which matters in an audit.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Formulas</span>
+            <span class="ca-code__path">what scikit-learn calculates below</span>
+          </div>
+          <pre tabindex="0"><code translate="no">tf-idf(t, d) = tf(t, d) × idf(t)          idf(t) = ln((1 + n) / (1 + df(t))) + 1
+vetor(d)     = tf-idf(d) / ‖tf-idf(d)‖₂             (norma L2 = 1)
+P(AGENT | x) = σ(w·x + b) = 1 / (1 + e^−(w·x + b))
+o treino minimiza:  ½‖w‖² + C · Σ log-loss(yᵢ, P(xᵢ))       (C = 1,0)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">router.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/router.py#L18-L23" target="_blank" rel="noopener">lines 18–23 </a>
+          </div>
+          <pre tabindex="0"><code translate="no">self._vectorizer = TfidfVectorizer(
+    ngram_range=(1, 2),
+    min_df=1,
+    preprocessor=normalize,
+)
+self._base_clf = LogisticRegression(C=1.0, max_iter=1000, random_state=42)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">normalization.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/normalization.py#L22-L42" target="_blank" rel="noopener">lines 22–42 </a>
+          </div>
+          <pre tabindex="0"><code translate="no">def normalize(text: str) -> str:
+    if not text:
+        return ""
+
+    # 1. Lowercase
+    text = text.lower()
+
+    # 2. Remover acentos
+    text = remove_accents(text)
+
+    # 3. Variantes ortográficas do domínio (antes de remover pontuação se houver hífens)
+    for pattern, replacement in DOMAIN_VARIANTS:
+        text = re.sub(pattern, replacement, text)
+
+    # 4. Remover caracteres especiais (manter apenas letras, números e espaços)
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+
+    # 5. Colapsar múltiplos espaços
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p>
+            <code translate="no">normalize()</code> is the <code translate="no">preprocessor</code> vectorizer, then the same treatment
+(low, without accent, domain variants as "second way" → <code translate="no">segundavia</code>, no score)
+in practice and consultation. If the two were normalized differently, the vocabulary learned would not marry the
+Real question.
+          </p>
+          <p><strong>Measured in this branch:</strong></p>
+          <ul>
+            <li>Vocabulary of <strong>378 terms</strong> (unigrams and bigrams) on the 53 training examples.</li>
+            <li>Router <strong>30/30</strong> in benchmark; confusion matrix <span translate="no">FAST_PATH 10 · 0 / AGENT 0 · 20</span>.</li>
+            <li><code translate="no">predict()</code>, already with the calibration of technique 2: median of <strong>2,2 ms</strong> and p95 of <strong>4,4 ms</strong> in 200 local calls (Windows, scikit-learn 1.9).</li>
+          </ul>
+        </div>
+
+        <!-- ─────────────── Técnica 2 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-calibracao">2 · Probability calibration: Platt scaling and cross-validation stratified</h3>
+          <p>
+            <strong>Operational problem.</strong> Guard G1 threshold of 0.75 (section <a href="#barreira">The Barrier</a>) is only a policy
+risk if "0.75" means "the model fits in about 75% of cases". Regular logistic regression, with 53 examples and
+378 terms, shrink the weights and return shy odds, close to 0.5, even when the class is right. No calibration,
+in this branch, <strong>20 of the 20 messages <code translate="no">AGENT</code> Benchmark is below 0.75</strong> (the highest confidence is 0.713),
+Although the router hits them all. The threshold would no longer separate a good decision from a bad decision and only rule out coverage.
+          </p>
+          <p>
+            <strong>Concept.</strong> Calibrate is to correct the number scale without changing what the model decides. O
+            <strong>Platt schedule</strong> trains a second logistic regression of a single variable on the gross score
+            <em>f</em> The model. Parameters A and B are estimated by maximum likelihood in forecasts made on examples that the
+template <em>no</em> saw in practice (<em>out-of-fold</em>: predictions about the part of the data left out in each round). To estimate them in the very examples of training would measure the
+model memory, not the ability to generalize.
+          </p>
+          <p>
+            A <strong>cross-validation stratified</strong> divides the 53 examples into 3 folds that preserve the proportion of classes; each
+fold serves once as an unseen set. No shuffle (<code translate="no">shuffle=False</code>), the folds are the same in
+Any machine, and the tests are reproducible. Code does not call <code translate="no">StratifiedKFold</code> directly: pass
+            <code translate="no">cv=3</code> to a classifier makes the scikit-learn use this divider (checked in version 1.9). The number of
+folds come from the smallest class: 3 if it has at least 3 examples, 2 if it has 2, and without calibration below that, for the
+            <code translate="no">fit()</code> do not break into tiny test sets.
+          </p>
+          <p>
+            <strong>Why sigmoid and not isotonic.</strong> Isotonic calibration is nonparametric: with few data it overfits and
+saturates confidence around 1, the opposite problem. The sigmoid has two parameters and is stable. A <code translate="no">main</code>
+            measured this comparison in the
+            <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0007-calibracao-de-probabilidade-e-guarda-de-margem.md" target="_blank" rel="noopener">ADR-007</a>.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Formulas</span>
+            <span class="ca-code__path">Platt schedule and folds</span>
+          </div>
+          <pre tabindex="0"><code translate="no">Platt:  p(AGENT | f) = 1 / (1 + exp(A·f + B))      A, B por máxima verossimilhança, em dados fora da dobra
+Dobras: StratifiedKFold(n_splits=3, shuffle=False)   → 3 modelos calibrados; a probabilidade final é a média</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">router.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/router.py#L31-L47" target="_blank" rel="noopener">lines 31–47 </a>
+          </div>
+          <pre tabindex="0"><code translate="no"># Contar menor número de amostras por classe
+unique_labels, counts = np.unique(labels, return_counts=True)
+min_class_count = int(np.min(counts))
+
+if min_class_count >= 3:
+    cv = 3
+elif min_class_count >= 2:
+    cv = 2
+else:
+    cv = None
+
+if cv is not None:
+    self._clf = CalibratedClassifierCV(estimator=self._base_clf, method="sigmoid", cv=cv)
+else:
+    self._clf = self._base_clf
+
+self._clf.fit(X, labels)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">router.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/router.py#L59-L63" target="_blank" rel="noopener">lines 59–63 </a>
+          </div>
+          <pre tabindex="0"><code translate="no">X_q = self._vectorizer.transform([query])
+probs = self._clf.predict_proba(X_q)[0]
+best_idx = np.argmax(probs)
+route = str(self.classes_[best_idx])
+confidence = float(probs[best_idx])</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Measured in this branch:</strong></p>
+          <ul>
+            <li>No calibration, <strong>20 of 20</strong> messages <code translate="no">AGENT</code> are below 0.75. With calibration, <strong>1 of 20</strong> (0,732).</li>
+            <li>
+              In the entire benchmark, G1 barred 2 messages: "I changed number, I need to update the registered phone"
+(<code translate="no">AGENT</code>, 0.732) and "What documents do I need to open an account?" (<code translate="no">FAST_PATH</code>, 0.718).
+In this branch, G1 is for both routes.
+            </li>
+            <li>The least confidence accepted is <strong>0,753</strong>: 0.003 slack on the threshold. Calibration corrected the scale, but the margin remains narrow.</li>
+            <li>
+              The repository does not measure the calibration itself (Brier score, expected calibration error, reliability curve), only its effect on the threshold.
+With 20 queries <code translate="no">AGENT</code>, a reliability curve would have few points per range.
+            </li>
+          </ul>
+        </div>
+
+        <!-- ─────────────── Técnica 3 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-recuperacao">3 · Vector recovery: Cosine similarity, multi-field score and capacity collapse</h3>
+          <p>
+            <strong>Operational problem.</strong> The catalog has 285 tools. Putting all in the prompt of an LLM bursts the context, confuses
+the model and cost expensive, so the retriever chooses the 2 most relevant before any call. And the catalogue has duplicates:
+8 different tools make "get the invoice".
+          </p>
+          <p>
+            <strong>Concept.</strong> A <strong>Cosine similarity</strong> measures the angle between two vectors: 1 when they have the same
+weighted vocabulary, 0 when they do not share any term. Since TF-IDF already delivers vectors of length 1, cosine is only
+the scalar product, that is, a multiplication of sparse matrix between the query and the 285 tools.
+          </p>
+          <p>
+            The score combines two fields with equal weight. The tool document is <code translate="no">nome + descrição + categoria</code>;
+Intention field is <code translate="no">nome + descrição</code>. Keep fields separate, instead of concatenating everything, exists for
+that L2 normalization does not dilute the original terms when adding synonyms to the same text
+(the <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0006-taxonomia-de-capacidades-e-colapso-de-duplicatas.md" target="_blank" rel="noopener">ADR-006</a>
+            ed <code translate="no">main</code> document this problem). A list of functional words (<code translate="no">a</code>,
+            <code translate="no">de</code>, <code translate="no">para</code>, <code translate="no">quero</code>...) comes out of vocabulary first, for a
+Query short not only score by prepositions.
+          </p>
+          <p>
+            <strong>A limit on this branch.</strong> The two fields come out of the same text: they differ only by category. Measured, the correlation between
+two similarities is at least 0.97, and the top-1 of the combined score is identical to that of the single field in the 30 queries. Here, α = 0,5
+It hardly changes the result. A second field only helps when it brings new information, like the handwritten glossary of
+            <code translate="no">main</code>.
+          </p>
+          <p>
+            O <strong>capacity collapse</strong> groups duplicates with an embedded dictionary (<code translate="no">CANONICAL_TOOL_MAP</code>:
+49 tools in 12 capacities) and holds the highest score per group (<em>max-pooling</em>, a maximum aggregation). Like this.
+            <code translate="no">k=2</code> returns two distinct capacities, not two variants of it. Then the code orders by score
+decreasing and cuts into <code translate="no">k</code>. Candidates with score 0 are discarded: a query without any common word with
+the catalog returns empty list. Empates follow the order of the catalogue, because the <code translate="no">sorted</code> Python is stable.
+This is deterministic for the same file, but it is not an explicit tiebreaker (a <code translate="no">main</code> Untie by the name of
+capacity).
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Formulas</span>
+            <span class="ca-code__path">cosine, score and collapse</span>
+          </div>
+          <pre tabindex="0"><code translate="no">cos(q, d)          = (q · d) / (‖q‖ · ‖d‖) = q · d          (vetores TF-IDF com ‖v‖₂ = 1)
+score(ferramenta)  = (1 − α) · cos(q, documento) + α · cos(q, intenção)        α = 0,5
+score(capacidade)  = max { score(t) : t pertence à capacidade }                (colapso por máximo)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">retrieval.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L164-L177" target="_blank" rel="noopener">lines 164–177 </a>
+          </div>
+          <pre tabindex="0"><code translate="no">doc_texts = []
+intent_texts = []
+
+for tool in tools:
+    # Document text: name + description + category
+    doc_text = f"{tool.name} {tool.description} {tool.category}"
+    doc_texts.append(doc_text)
+
+    # Intent text: name.replace("_", " ") + description
+    intent_text = f"{tool.name.replace('_', ' ')} {tool.description}"
+    intent_texts.append(intent_text)
+
+self._doc_matrix = self._doc_vectorizer.fit_transform(doc_texts)
+self._intent_matrix = self._intent_vectorizer.fit_transform(intent_texts)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">retrieval.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L195-L220" target="_blank" rel="noopener">lines 195–220 </a>
+          </div>
+          <pre tabindex="0"><code translate="no">doc_sims = cosine_similarity(q_doc_vec, self._doc_matrix)[0]
+intent_sims = cosine_similarity(q_intent_vec, self._intent_matrix)[0]
+
+combined_scores = (1 - self.alpha) * doc_sims + self.alpha * intent_sims
+
+# Apply direction guard & canonical collapsing
+canonical_best: Dict[str, Tuple[str, float]] = {}
+
+for idx, tool in enumerate(self._tools):
+    score = float(combined_scores[idx])
+    # … (guarda de direção: técnica 4)
+    if score &lt;= 0:
+        continue
+
+    canon_group = get_canonical_name(tool.name)
+    if canon_group not in canonical_best or score > canonical_best[canon_group][1]:
+        canonical_best[canon_group] = (tool.name, score)
+
+# Sort matches by score descending
+sorted_matches = sorted(canonical_best.values(), key=lambda item: item[1], reverse=True)
+top_k_matches = [ToolMatch(name=name, score=score) for name, score in sorted_matches[:k]]</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Measured in this branch:</strong> recounting by capacity (<code translate="no">get_canonical_name</code> on the result),
+expected capacity is in the <strong>top-1 in 19 of 20</strong> transactional and <strong>top-2 in 20 of 20</strong>. The report
+Print shows another number. The explanation is in technique 5.</p>
+        </div>
+
+        <!-- ─────────────── Técnica 4 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-decisao">4 · Decision under uncertainty: thresholds, relative margin and steering guard</h3>
+          <p>
+            <strong>Operational problem.</strong> Choosing the best tool is not enough: the system needs to know when <em>no</em> execute.
+A mistake that passes in silence (see <a href="#crash-silencioso">The Silent Crash</a>) costs more than a confirmation question.
+          </p>
+          <p>
+            <strong>Concept.</strong> Instead of always acting on the best candidate, the pipeline tests three statistical signals, in order, and only
+Execute if everyone passes. None of them read the <code translate="no">expected_tool</code> the gauge.
+          </p>
+          <ul>
+            <li><strong>G1 · confidence:</strong> the calibrated probability of the router is ≥ 0.75.</li>
+            <li><strong>G2 · minimum relevance:</strong> the top-1 score is ≥ 0.10, a floor against weddings by chance.</li>
+            <li>
+              <strong>G3 · relative margin:</strong> <code translate="no">(s₁ − s₂) / s₁ ≥ 0,25</code>. Measure how much the first candidate wins the second
+              <em>in proportion of the score itself</em>. It is relative not to depend on the scale: a difference of 0.03 weighs different when the
+Top-1 is 0.18 and when it's 0.80.
+            </li>
+          </ul>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">harness.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L107-L141" target="_blank" rel="noopener">lines 107–141 </a>
+          </div>
+          <pre tabindex="0"><code translate="no"># Guard Rail 1: Router confidence >= 0.75
+confidence = route_result.confidence if route_result.confidence is not None else 1.0
+if confidence &lt; 0.75:
+    row["final_status"] = "HUMAN_FALLBACK_LOW_CONFIDENCE"
+    abstentions += 1
+elif route_result.route == "FAST_PATH":
+    fast_path_answer(query)
+else:
+    retrieval_result = retriever.search(query, k=k)
+    # …
+    # Guard Rail 2: Top-1 score >= 0.10
+    top1_score = top_k_matches[0].score if top_k_matches else 0.0
+    if top1_score &lt; 0.10:
+        row["final_status"] = "ABSTAIN_LOW_SCORE"
+        abstentions += 1
+    else:
+        # Guard Rail 3: Margin relative >= 0.25
+        top2_score = top_k_matches[1].score if len(top_k_matches) > 1 else 0.0
+        margin = (top1_score - top2_score) / top1_score if top1_score > 0 else 0.0
+        if margin &lt; 0.25:
+            row["final_status"] = "AMBIGUOUS_CONFIRMATION"
+            abstentions += 1
+        else:
+            # Executa a tool top-1
+            mock_tool_execution(top_k_names[0], query)</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>The margin in three real issues</strong>, all diverted by G3 in the benchmark:</p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Query</th>
+                <th scope="col">Top-1 and top-2 (score)</th>
+                <th scope="col">Margin</th>
+                <th scope="col">Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"I lost my card on the street, I need to block it now"</td>
+                <td><code translate="no">bloquear_cartao</code> 0,180 · <code translate="no">bloquear_cartao_temporariamente</code> 0,177</td>
+                <td>0,017</td>
+                <td translate="no">AMBIGUOUS_CONFIRMATION</td>
+              </tr>
+              <tr>
+                <td>"I changed addresses, how do I update my delivery?"</td>
+                <td><code translate="no">alterar_endereco</code> 0,474 · <code translate="no">consultar_endereco_cadastrado</code> 0,434</td>
+                <td>0,084</td>
+                <td translate="no">AMBIGUOUS_CONFIRMATION</td>
+              </tr>
+              <tr>
+                <td>"Did my new card arrive, how do I unlock?"</td>
+                <td><code translate="no">instrucoes_desbloqueio_cartao_novo</code> 0,546 · <code translate="no">confirmar_recebimento_cartao_novo</code> 0,420</td>
+                <td>0,231</td>
+                <td translate="no">AMBIGUOUS_CONFIRMATION</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose">
+          <p>
+            The third failure by 0.019: 0.25 is a policy, not a constant of nature. In this branch the three thresholds are literal in
+code; <code translate="no">main</code> are named constants, and the margin is harness parameter.
+          </p>
+          <p>
+            <strong>G4 · steering guard.</strong> It is not a measure of similarity, and the reason is statistical: reading and writing about the
+even given divide almost all the terms (the section <a href="#por-que-nenhum-peso-resolve">Why no weight solves</a> shows the
+arithmetic). Then the direction enters as a declared sign: Query verbs and keywords say whether it is reading or writing, and the
+tool name prefix (<code translate="no">consultar_</code>, <code translate="no">atualizar_</code>...) says what kind she is.
+Reading Query with writing tool: zeroed score.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">retrieval.py</span>
+            <span class="ca-code__path">lines
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L119-L137" target="_blank" rel="noopener">119–137 ↗</a> and
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L207-L209" target="_blank" rel="noopener">207–209 ↗</a></span>
+          </div>
+          <pre tabindex="0"><code translate="no">def infer_query_direction(query_norm: str) -> str:
+    """Inferir direção da query: 'read', 'write', ou 'unknown'."""
+    has_read = any(re.search(rf"\b{kw}\b", query_norm) for kw in READ_QUERY_KEYWORDS)
+    has_write = any(re.search(rf"\b{kw}\b", query_norm) for kw in WRITE_QUERY_KEYWORDS)
+
+    if has_read and not has_write:
+        return "read"
+    if has_write and not has_read:
+        return "write"
+    return "unknown"
+
+
+def infer_tool_direction(tool_name: str) -> str:
+    """Inferir direção da ferramenta pelo prefixo."""
+    if tool_name.startswith(READ_TOOL_PREFIXES):
+        return "read"
+    if tool_name.startswith(WRITE_TOOL_PREFIXES):
+        return "write"
+    return "unknown"
+
+# …
+# Direction guard rule: read query + write tool -> score = 0
+if query_direction == "read" and tool_direction == "write":
+    score = 0.0</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Measured and limited in this branch:</strong></p>
+          <ul>
+            <li>
+              <strong>Protected reading.</strong> "What's the email registered to my account?" <code translate="no">confirmar_email_cadastrado</code>
+              (reading) first. <code translate="no">atualizar_email</code> doesn't appear among the first three.
+            </li>
+            <li>
+              <strong>Writing→reading is not treated.</strong> The lean specification expected to lower the reading tool, but the code does nothing in this
+Meaning. "I want to change the email linked to my account" executes <code translate="no">consultar_email_vinculado_conta</code> (score 0.664):
+It doesn't change anything, but it doesn't comply.
+            </li>
+            <li>
+              <strong>You only see what the name reveals.</strong> By prefix, 82 of the 285 tools are read, 85 are write and
+              <strong>118 tools (41%)</strong> they do not reveal direction by name and pass without restriction.
+            </li>
+            <li>
+              <strong>Reading grouped under writing.</strong> The collapse dictionary puts <code translate="no">consultar_email_vinculado_conta</code> and
+              <code translate="no">confirmar_email_cadastrado</code>, reading tools, under <code translate="no">atualizar_email</code>That's writing.
+A <code translate="no">main</code> prohibits this by invariant: reading and writing do not group.
+            </li>
+          </ul>
+        </div>
+
+        <!-- ─────────────── Técnica 5 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-metricas">5 · Evaluation and economics metrics</h3>
+          <p>
+            <strong>Operational problem.</strong> Without measurement, "works" is opinion. And a misread metric is worse than none: cost savings
+It goes up when the system abstains further, even if it answers less.
+          </p>
+          <p>
+            <strong>Concept.</strong> A <strong>accuracy</strong> is the proportion of correct answers: correct answers divided by the total. A <strong>confusion matrix 2×2</strong> separates the two errors
+possible, which cost different things: send an FAQ to the agent spends LLM for nothing; send a transactional request to
+            <code translate="no">FAST_PATH</code> gives the customer a generic response in place of the operation. The code initializes all cells with zero,
+then the structure is complete even without cross errors.
+          </p>
+          <p>
+            O <strong>hit rate@k</strong> is the fraction of the queries in which the expected tool appears among the first k. Not Precision@K
+classic (relevant between k, divided by k): with one relevant tool and k = 2, maximum precision@2 would be 0.5. The function if
+flame <code translate="no">compute_precision_at_k</code>But what she calculates is hit rate.
+          </p>
+          <p>
+            A <strong>economy</strong> is the percentage reduction against baseline (send all message to the LLM, with all the tools in the prompt),
+with guard to baseline zero. In MVP, costs and latencies come from mock constants (US$ 0.03 per baseline call, US$ 0.01 per
+called the agent), so the percentage measures the pipeline structure, not a real price.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Formulas</span>
+            <span class="ca-code__path">Harness metrics</span>
+          </div>
+          <pre tabindex="0"><code translate="no">acurácia     = acertos / total
+hit rate@k   = (queries com a ferramenta esperada no top-k) / (queries avaliadas)
+economia %   = (baseline − pipeline) / baseline × 100            (0 se baseline = 0)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">harness.py</span>
+            <span class="ca-code__path">lines
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L22-L28" target="_blank" rel="noopener">22–28 ↗</a>,
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L36-L40" target="_blank" rel="noopener">36–40 ↗</a> and
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L52-L54" target="_blank" rel="noopener">52–54 ↗</a></span>
+          </div>
+          <pre tabindex="0"><code translate="no">correct = sum(1 for yt, yp in zip(y_true, y_pred) if yt == yp)
+accuracy = correct / len(y_true)
+
+matrix = {l1: {l2: 0 for l2 in labels} for l1 in labels}
+for yt, yp in zip(y_true, y_pred):
+    if yt in matrix and yp in matrix[yt]:
+        matrix[yt][yp] += 1
+# …
+def compute_precision_at_k(hits: List[int]) -> float:
+    """Calcula Precision@K a partir de uma lista de 0/1 (acertou ou não a tool)."""
+    if not hits:
+        return 0.0
+    return float(sum(hits) / len(hits))
+# …
+cost_savings = 0.0
+if baseline_cost_usd > 0:
+    cost_savings = ((baseline_cost_usd - smart_cost_usd) / baseline_cost_usd) * 100.0</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Output of <code translate="no">python -m candidate_starter.run_case</code> in lean branch</strong>, 30 queries:</p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Metric</th>
+                <th scope="col">Value</th>
+                <th scope="col">Origin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Router accuracy</td>
+                <td>100% (30/30) · matrix <span translate="no">10 · 0 / 0 · 20</span></td>
+                <td>printed</td>
+              </tr>
+              <tr>
+                <td><code translate="no">precision_at_k</code> (k = 2)</td>
+                <td>26,3% (5/19)</td>
+                <td>printed</td>
+              </tr>
+              <tr>
+                <td>Expected capacity per capacity</td>
+                <td>top-1 19/20 · top-2 20/20</td>
+                <td>offline recount</td>
+              </tr>
+              <tr>
+                <td>Abstentions</td>
+                <td>5 (16.7%): 2 per G1.0 per G2, 3 per G3</td>
+                <td>printed; division by guard, recount</td>
+              </tr>
+              <tr>
+                <td>Executions</td>
+                <td>16, of which 15 in expected capacity</td>
+                <td>offline recount</td>
+              </tr>
+              <tr>
+                <td>Cost: pipeline/baseline</td>
+                <td>US$ 0.16003 / US$ 0.90000 → savings of 82.2%</td>
+                <td>printed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose">
+          <p>
+            <strong>Because 26.3% is not the quality of recovery.</strong> O <code translate="no">ToolMatch.name</code> which the retriever returns is the name of
+            <em>variant that married</em> (e.g. <code translate="no">verificar_saldo_conta_corrente</code>), and <code translate="no">expected_tool</code>
+            the dataset is the name <em>canonical</em> (<code translate="no">consultar_saldo</code>). The string comparison fails even with the right ability.
+Recounting for capacity, the result is 19/20 and 20/20. The denominator is also 19, not 20: the Query barred by G1 never reached the retriever and
+It's out of line.
+          </p>
+          <p>
+            <strong>Because 82.2% is larger than 77.8% of the rest of the page.</strong> Five messages were diverted by abstention and did not call LLM. It's the
+the same effect as described in <a href="#economia-honesta">Economy without success rate is disguised risk</a>: the economy rises when the system does
+Less. The execution that comes out of the expected capacity is "Send the pdf of my current invoice" → <code translate="no">reenviar_fatura_email</code>, that the
+dictionary does not group into <code translate="no">consultar_fatura</code>. And the right 15 include the email query, whose reading tool
+dictionary groups under <code translate="no">atualizar_email</code>. The lean branch does not calculate incorrect executions or the balance point of the
+human service cost: these two accounts only exist in the <code translate="no">main</code>.
+          </p>
+        </div>
+
+        <!-- ─────────────── Comparativo ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="enxuta-vs-main">lean branch × <code translate="no">main</code>, technique by technique</h3>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Point</th>
+                <th scope="col">lean Branch</th>
+                <th scope="col"><code translate="no">main</code></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Calibration folds</strong></td>
+                <td><code translate="no">cv</code> = 3 (less class ≥ 3)</td>
+                <td>until 5: <code translate="no">min(5, menor classe)</code></td>
+              </tr>
+              <tr>
+                <td><strong>Second score field</strong></td>
+                <td>derived from name and description: almost redundant</td>
+                <td>Handwritten glossary by capacity, indexed in separate field</td>
+              </tr>
+              <tr>
+                <td><strong>Capacity collapse</strong></td>
+                <td>built-in dictionary: 49 variants, 12 capacities</td>
+                <td><code translate="no">taxonomy.py</code>: 14 capacities, 45 variants, with tested invariants</td>
+              </tr>
+              <tr>
+                <td><strong>Untie</strong></td>
+                <td>stable order of the catalog</td>
+                <td>direction, then <code translate="no">−score</code>, then capacity name</td>
+              </tr>
+              <tr>
+                <td><strong>Score floor (G2)</strong></td>
+                <td>in harness; the retriever only discards score ≤ 0</td>
+                <td><code translate="no">min_score</code> in the retriever, with 0,10 passed by those who mount it</td>
+              </tr>
+              <tr>
+                <td><strong>Direction (G4)</strong></td>
+                <td>name prefix; read-only→write zera</td>
+                <td><code translate="no">mode</code> declared (59 of 285); reading→discard writing, writing→low reading</td>
+              </tr>
+              <tr>
+                <td><strong>Metrics</strong></td>
+                <td><code translate="no">precision_at_k</code> by exact name</td>
+                <td>hit rate@1 and @k, correct and incorrect executions, balance point, quality gate tri-state</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-principle">
+          <p>
+            The five techniques are simple and cheap in both branches. What separates the lean from <code translate="no">main</code> is not a technique anymore
+sophisticated, but what surrounds each: a field with new information, declared direction, a metric contract that compares capacity with
+ability and an explicit tiebreaker.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════════════════════════════ 7. ARQUITETURA PRODUTIVA (ADR-009) ═══ -->
     <section id="arquitetura-produtiva" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">07 · From proof of concept to production</p>
+        <p class="ca-eyebrow">08 · From proof of concept to production</p>
         <h2>High Performance Multi-Language Architecture (ADR-009 &amp; RFC)</h2>
 
         <div class="ca-prose">
@@ -1075,7 +1786,7 @@ ensuring that any new team member understands the context, discarded alternative
     <!-- ════════════════════════════════════ 8. GOVERNANÇA CATÁLOGO ═══ -->
     <section id="governanca-catalogo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">08 · Catalog Governance</p>
+        <p class="ca-eyebrow">09 · Catalog Governance</p>
         <h2>The catalog is the problem, not the vectorization</h2>
 
         <div class="ca-prose">
@@ -1106,7 +1817,7 @@ The specific variant that married is preserved in <code translate="no">matched_v
     <!-- ════════════════════════════════════ 9. ECONOMIA HONESTA ═══ -->
     <section id="economia-honesta" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">09 · Measured Evolution</p>
+        <p class="ca-eyebrow">10 · Measured Evolution</p>
         <h2>Economy without success rate is disguised risk</h2>
 
         <div class="ca-prose">
@@ -1203,7 +1914,7 @@ public <code translate="no">cost_savings_pct_on_resolved</code>, <code translate
     <!-- ════════════════════════════════════ 10. O MÉTODO ═══ -->
     <section id="metodo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">10 · The Process</p>
+        <p class="ca-eyebrow">11 · The Case</p>
         <h2>How was developed: the agentic method with embedded criticism</h2>
 
         <div class="ca-prose">
@@ -1276,7 +1987,7 @@ public <code translate="no">cost_savings_pct_on_resolved</code>, <code translate
     <!-- ════════════════════════════════════ 11. EVIDÊNCIA E SUÍTE ═══ -->
     <section id="evidencia" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">11 · Executable Specification</p>
+        <p class="ca-eyebrow">12 · Executable Specification</p>
         <h2>The Suite of 72 Tests as System Specification</h2>
 
         <div class="ca-prose">
@@ -1313,7 +2024,7 @@ more valuable does not check a returned value; check that <strong>Nothing happen
     <!-- ════════════════════════════════════ 12. LIMITAÇÕES ═══ -->
     <section id="limitacoes" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">12 · Technical Transparency</p>
+        <p class="ca-eyebrow">13 · Technical Transparency</p>
         <h2>Real Project Limitations (What Benchmark Does Not Cover)</h2>
 
         <div class="ca-prose">
@@ -1337,7 +2048,7 @@ more valuable does not check a returned value; check that <strong>Nothing happen
     <!-- ════════════════════════════════════ 13. REFERÊNCIAS ═══ -->
     <section id="referencias" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">13 · Ecosystem &amp; Links</p>
+        <p class="ca-eyebrow">14 · Ecosystem &amp; Links</p>
         <h2>Conceptual References of the Site</h2>
 
         <div class="ca-refs">
@@ -1421,6 +2132,7 @@ more valuable does not check a returned value; check that <strong>Nothing happen
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
 
 
 <footer class="ca-footer">
