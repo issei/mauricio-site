@@ -5,11 +5,11 @@
 
 ## In short
 
-A development agent can produce syntactically correct code, pass isolated tests and still violate the architecture, authorized scope or actual status of the repository. **Deterministic Grounding** establishes explicit state anchoring, authority limitation by Action Gateway and validation with auditable oracles.
+A development agent can produce syntactically correct code, pass isolated tests and still violate the architecture, authorized scope or actual status of the repository. **Deterministic Grounding** it is the provisional name that this article proposes (it is not standardized terminology) for a practice in three parts: anchor the state explicitly, limit authority through an Action Gateway and validate with auditable oracles.
 
 - **Agent–Repository Gap** — the difference between what the agent believes to know about the repository and what is really there now.
-- **Snapshot Capsule** — immutable envelope that seals commit, tree, lockfile and environment before action.
-- **Action Gateway** — 12-step barrier preventing execution outside the scope (Diff Lens and allowlist).
+- **Snapshot Capsule** (proposal) — immutable envelope that seals commit, tree, lockfile and environment before action.
+- **Action Gateway** (proposal) — component that mediates agent actions by allowlist, Diff Lens and policy-as-code and can block those that leave the defined scope; its coverage and effectiveness need to be demonstrated.
 - **Evidence Record** — registration with bounded verdicts (PASS, FAIL, UNKNOWN, CONFLICT) and observation borders.
 
 ## The problem and gap
@@ -19,6 +19,10 @@ Correct code in isolation can still be a wrong change in the repository. Agent-R
 ## The solution and the oracles
 
 Snapshot Capsule to anchor the state, Action Gateway to limit authority, and auditable oracles to generate Evidence Records with explicit verdicts.
+
+## Limitations
+
+Snapshot Capsule, Action Gateway (12 steps and Diff Lens) and Evidence Record are proposed in this article, yet without measuring effectiveness. "Deterministic Grounding" is a temporary name, not standardized terminology. An Action Gateway only blocks what its rules and permissions cover, and the digest of a capsule only proves the identity of the artifacts included. The article still does not cite primary sources.
 
 ## Frequently Asked Questions
 
@@ -32,17 +36,26 @@ Because an oracle (an automatic check) tests only one specific property under a 
 
 **What is Snapshot Capsule?**
 
-It is the immutable envelope containing commit SHA, branch, tree digest, lockfile, toolchain, execution environment and a unique digest that ensures that the agent context corresponds exactly to the repository state.
+It is the immutable envelope proposed in this article, containing commit SHA, branch, tree digest, lockfile, toolchain, execution environment and a unique digest. Digest allows verifying the identity of the set of artifacts included in the capsule. This does not prove that the envelope contains all relevant reality or that the agent's interpretation is correct.
 
 **What's the difference between Autonomy and Authority?**
 
 Autonomy is the ability of the model to plan and chain actions flexibly; Authority is the effective permission to produce effects on the repository, which must be restricted and mediated by Action Gateway.
+
+**What happens when real sources disagree?**
+
+The model does not solve the conflict in silence. The system records the CONFLICK verdict, preserves the provenance of each source, verifies the scope and freshness of each source and sends for human review conflicts of intent, security or high impact.
+
+**What does "deterministic" mean in this article?**
+
+It means that the same input, with the same version of the validator, the same configuration, the same dependencies and the same controlled environment, produces the same verification result. This applies to the verifiable part of the process; the entire process still combines observed facts, approximate inferences, probabilistic decisions of the model and unknown states.
 
 ## Glossary
 
 - **Agent–Repository Gap** — Disalignment between the agent's context/memory and the repository's observable state.
 - **Snapshot Capsule** — Origin envelope sealing the identity of the repository before any action.
 - **Action Gateway** — Component that mediates unreliable agent proposals and applies allowlist, least privilege and policy-as-code.
-- **Evidence Record** — Unchangeable validation attestation containing subject, oracle, validator, envelope and explicit limitations.
+- **Evidence Record** — Unchangeable validation certificate containing verified property, oracle type and version, scope, environment, result, provenance and explicit limitations.
+- **Determinism (operational)** — Same input, same version of the validator, same configuration, same dependencies and even controlled environment produce the same verification result.
 
 *© 2026 Mauritius Yokoyama Issei. Citable content with assignment (fair use educational).*
