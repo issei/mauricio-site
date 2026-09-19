@@ -22,12 +22,13 @@
   <link rel="stylesheet" href="/aeo.css" />
   <!-- ============================================================ -->
   <!-- ============================================================ -->
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, rust inference, cold hot path, ADR-009" />
+<meta name="keywords" content="case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, TF-IDF, regressão logística, similaridade de cosseno, rust inference, cold hot path, ADR-009" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/case-agents" />
 <link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/case-agents.md" title="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei — Markdown para IA" />
@@ -42,7 +43,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei" />
 <meta property="article:published_time" content="2026-09-10T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-09-11T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-09-19T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Engenharia de Confiança · Agentes de IA" />
 <meta property="article:tag" content="Case Agents" />
@@ -95,7 +96,7 @@
       },
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-19",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-case-agents.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/case-agents#breadcrumb"
@@ -128,11 +129,11 @@
         "@id": "https://mauricio.issei.com.br/#author"
       },
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-11",
+      "dateModified": "2026-09-19",
       "inLanguage": "pt-BR",
       "image": "https://mauricio.issei.com.br/og-case-agents.png",
       "isAccessibleForFree": true,
-      "keywords": "case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, rust inference, cold hot path, ADR-009",
+      "keywords": "case agents, roteamento de queries, tool retrieval, barreira pre-execucao, guarda de direcao, crash silencioso, banco digital, fast path, agent, BM25F, taxonomia, Platt scaling, TF-IDF, regressão logística, similaridade de cosseno, rust inference, cold hot path, ADR-009",
       "codeRepository": "https://github.com/issei/case-agents",
       "programmingLanguage": "Python, Rust",
       "about": [
@@ -291,6 +292,7 @@
         <a href="#por-que-nenhum-peso-resolve" data-navlink>Aritmética</a>
         <a href="#barreira" data-navlink>A Barreira</a>
         <a href="#arquitetura" data-navlink>Pipeline MVP</a>
+        <a href="#tecnicas-estatisticas" data-navlink>Estatística</a>
         <a href="#arquitetura-produtiva" data-navlink>Arquitetura Produtiva</a>
         <a href="#governanca-catalogo" data-navlink>Taxonomia</a>
         <a href="#economia-honesta" data-navlink>Métricas</a>
@@ -502,36 +504,36 @@
 
             <p class="ca-small">
               Foco estrito em <strong>velocidade de experimentação e footprint mínimo</strong>. Implementa o roteador
-              e o retriever em código Python direto, sem acoplamento a taxonomias manuais ou calibrações matemáticas avançadas.
+              e o retriever em Python direto: calibração Platt, colapso por capacidade e guarda de direção existem, mas embutidos em <code translate="no">router.py</code> e <code translate="no">retrieval.py</code>, sem módulo de taxonomia e sem ADRs.
               Ideal para validação rápida de viabilidade de produto e benchmark de partida.
             </p>
 
             <div class="ca-branch-meta">
               <div>
                 <span>Cobertura de Testes</span>
-                <span>35 testes unitários</span>
+                <span>15 testes unitários</span>
               </div>
               <div>
                 <span>Governança de Catálogo</span>
-                <span>Sem taxonomia (Flat)</span>
+                <span>Dicionário embutido (12 capacidades)</span>
               </div>
               <div>
                 <span>Calibração do Router</span>
-                <span>L2 pura (não calibrada)</span>
+                <span>Platt Scaling (cv=3)</span>
               </div>
               <div>
                 <span>Guarda Direcional</span>
-                <span>Inexistente (vulnerável)</span>
+                <span>Parcial (leitura→escrita, por prefixo)</span>
               </div>
             </div>
 
             <div class="ca-prose" style="margin-top: 10px;">
               <h4 style="font-size:0.9rem; margin-bottom:4px;">Prós &amp; Trade-offs:</h4>
               <ul class="ca-small" style="padding-left:18px; margin-bottom:16px;">
-                <li><strong>Pró:</strong> Código enxuto (~300 linhas), fácil de auditar e entregar em poucos dias.</li>
+                <li><strong>Pró:</strong> Código enxuto (~560 linhas em quatro módulos e um script), fácil de auditar e entregar em poucos dias.</li>
                 <li><strong>Pró:</strong> Baixo atrito cognitivo para times em estágio inicial de produto.</li>
-                <li><strong>Contra:</strong> Atinge apenas <strong>35% de Hit Rate@2</strong> no catálogo de 285 tools devido a colisões léxicas.</li>
-                <li><strong>Contra:</strong> Registra <strong>45% de abstenções indevidas</strong> e vulnerabilidade ao Crash Silencioso.</li>
+                <li><strong>Contra:</strong> O harness da branch imprime <strong>26,3% de Precision@2</strong>, porque compara o nome da variante com o nome canônico; recontado por capacidade, são 20/20 no top-2 (ver <a href="#tecnicas-estatisticas">Estatística no Código</a>).</li>
+                <li><strong>Contra:</strong> <strong>16,7% de abstenções</strong> (5 de 30), e a guarda de direção só cobre leitura→escrita nas ferramentas que o prefixo do nome revela (167 das 285 ferramentas).</li>
               </ul>
             </div>
 
@@ -877,10 +879,719 @@ Para a escrita vencer por ajuste de α:
       </div>
     </section>
 
+    <!-- ════════════════════════════════════ 7. ESTATÍSTICA NO CÓDIGO ═══ -->
+    <section id="tecnicas-estatisticas" class="ca-section">
+      <div class="ca-wrap ca-narrow">
+        <p class="ca-eyebrow">07 · Estatística no Código</p>
+        <h2>As cinco técnicas estatísticas do case e o Python que as implementa</h2>
+
+        <div class="ca-prose">
+          <p class="ca-lede">
+            Quem decide, neste pipeline, não é um modelo de linguagem. São cinco técnicas clássicas de estatística e de
+            recuperação de informação, cada uma respondendo a um problema concreto do atendimento bancário. Cada técnica
+            abaixo tem duas camadas: o conceito, em linguagem simples, e o trecho de Python que o implementa.
+          </p>
+          <p>
+            Os trechos são da branch <code translate="no">feature/solucao-enxuta</code> (commit
+            <a href="https://github.com/issei/case-agents/tree/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131" target="_blank" rel="noopener"><code translate="no">e2dcd7f</code></a>),
+            a versão simplificada: quatro módulos e um script de execução, cerca de 560 linhas, sem
+            <code translate="no">taxonomy.py</code> e sem ADRs. Onde a <code translate="no">main</code> faz diferente, uma nota avisa.
+            Os números vêm da saída de <code translate="no">python -m candidate_starter.run_case</code> nessa branch e de
+            recontagens offline sobre o mesmo relatório. Não são os números da <code translate="no">main</code> citados no resto
+            da página.
+          </p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Técnica</th>
+                <th scope="col">Problema operacional</th>
+                <th scope="col">Onde no código</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1 · TF-IDF + regressão logística</strong></td>
+                <td>Decidir, barato e em milissegundos, se a mensagem precisa de agente.</td>
+                <td><code translate="no">router.py</code> · <code translate="no">QueryRouter</code></td>
+              </tr>
+              <tr>
+                <td><strong>2 · Platt scaling + validação cruzada estratificada</strong></td>
+                <td>Fazer o número "0,75" significar uma probabilidade de acerto.</td>
+                <td><code translate="no">router.py</code> · <code translate="no">fit()</code></td>
+              </tr>
+              <tr>
+                <td><strong>3 · Cosseno multi-campo + colapso por capacidade</strong></td>
+                <td>Achar 2 ferramentas entre 285, sem devolver duas duplicatas.</td>
+                <td><code translate="no">retrieval.py</code> · <code translate="no">ToolRetriever.search</code></td>
+              </tr>
+              <tr>
+                <td><strong>4 · Limiares, margem relativa e guarda de direção</strong></td>
+                <td>Saber quando <em>não</em> executar.</td>
+                <td><code translate="no">harness.py</code> · <code translate="no">run_harness</code>; <code translate="no">retrieval.py</code></td>
+              </tr>
+              <tr>
+                <td><strong>5 · Métricas de avaliação e economia</strong></td>
+                <td>Provar que funciona sem contar como ganho o que é só abstenção.</td>
+                <td><code translate="no">harness.py</code> · <code translate="no">compute_*</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ─────────────── Técnica 1 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-classificacao">1 · Classificação supervisionada: TF-IDF e regressão logística</h3>
+          <p>
+            <strong>Problema operacional.</strong> Saudações e perguntas de FAQ ("Qual o horário de atendimento?") não precisam
+            de LLM nem de ferramenta. Responder isso localmente tem custo zero de LLM. O router precisa separar
+            <code translate="no">FAST_PATH</code> de <code translate="no">AGENT</code> em milissegundos, antes de qualquer chamada cara.
+          </p>
+          <p>
+            <strong>Conceito.</strong> Classificação supervisionada é ensinar com exemplos já rotulados: aqui, 53 mensagens marcadas
+            <code translate="no">FAST_PATH</code> (25) ou <code translate="no">AGENT</code> (28). O modelo aprende o que separa as duas
+            classes e aplica isso a mensagens novas, em dois passos: transformar texto em números e aprender uma fronteira entre as classes.
+          </p>
+          <p>
+            O <strong>TF-IDF</strong> dá a cada termo um peso que cresce com a frequência dele na mensagem (TF) e diminui com o número de
+            mensagens do conjunto que o contêm (IDF). "De" aparece em quase tudo e pesa pouco; "bloquear" aparece em poucas e pesa muito.
+            Com n-grams de 1 a 2 termos, pares como "segunda via" também viram termos. Cada mensagem vira um vetor esparso (quase tudo
+            zero) de comprimento 1.
+          </p>
+          <p>
+            A <strong>regressão logística</strong> transforma uma soma ponderada dos termos em uma probabilidade, entre 0 e 1, de a
+            mensagem ser <code translate="no">AGENT</code>. A <strong>regularização L2</strong> penaliza pesos grandes, para o modelo não
+            decorar 53 exemplos; <code translate="no">C</code> controla a força (1,0 é o padrão do scikit-learn e é o valor usado).
+            É um classificador linear e leve, e cada termo tem um coeficiente que dá para ler, o que importa numa auditoria.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Fórmulas</span>
+            <span class="ca-code__path">o que o scikit-learn calcula por baixo</span>
+          </div>
+          <pre tabindex="0"><code translate="no">tf-idf(t, d) = tf(t, d) × idf(t)          idf(t) = ln((1 + n) / (1 + df(t))) + 1
+vetor(d)     = tf-idf(d) / ‖tf-idf(d)‖₂             (norma L2 = 1)
+P(AGENT | x) = σ(w·x + b) = 1 / (1 + e^−(w·x + b))
+o treino minimiza:  ½‖w‖² + C · Σ log-loss(yᵢ, P(xᵢ))       (C = 1,0)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">router.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/router.py#L18-L23" target="_blank" rel="noopener">linhas 18–23 ↗</a>
+          </div>
+          <pre tabindex="0"><code translate="no">self._vectorizer = TfidfVectorizer(
+    ngram_range=(1, 2),
+    min_df=1,
+    preprocessor=normalize,
+)
+self._base_clf = LogisticRegression(C=1.0, max_iter=1000, random_state=42)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">normalization.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/normalization.py#L22-L42" target="_blank" rel="noopener">linhas 22–42 ↗</a>
+          </div>
+          <pre tabindex="0"><code translate="no">def normalize(text: str) -> str:
+    if not text:
+        return ""
+
+    # 1. Lowercase
+    text = text.lower()
+
+    # 2. Remover acentos
+    text = remove_accents(text)
+
+    # 3. Variantes ortográficas do domínio (antes de remover pontuação se houver hífens)
+    for pattern, replacement in DOMAIN_VARIANTS:
+        text = re.sub(pattern, replacement, text)
+
+    # 4. Remover caracteres especiais (manter apenas letras, números e espaços)
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+
+    # 5. Colapsar múltiplos espaços
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p>
+            <code translate="no">normalize()</code> é o <code translate="no">preprocessor</code> do vetorizador, então o mesmo tratamento
+            (minúsculas, sem acento, variantes de domínio como "segunda via" → <code translate="no">segundavia</code>, sem pontuação) vale
+            no treino e na consulta. Se os dois fossem normalizados de jeitos diferentes, o vocabulário aprendido não casaria com a
+            pergunta real.
+          </p>
+          <p><strong>Medido nesta branch:</strong></p>
+          <ul>
+            <li>Vocabulário de <strong>378 termos</strong> (unigramas e bigramas) sobre os 53 exemplos de treino.</li>
+            <li>Router <strong>30/30</strong> no benchmark; matriz de confusão <span translate="no">FAST_PATH 10 · 0 / AGENT 0 · 20</span>.</li>
+            <li><code translate="no">predict()</code>, já com a calibração da técnica 2: mediana de <strong>2,2 ms</strong> e p95 de <strong>4,4 ms</strong> em 200 chamadas locais (Windows, scikit-learn 1.9).</li>
+          </ul>
+        </div>
+
+        <!-- ─────────────── Técnica 2 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-calibracao">2 · Calibração de probabilidades: Platt scaling e validação cruzada estratificada</h3>
+          <p>
+            <strong>Problema operacional.</strong> O limiar de 0,75 da guarda G1 (seção <a href="#barreira">A Barreira</a>) só é uma política
+            de risco se "0,75" significar "o modelo acerta em cerca de 75% dos casos". Uma regressão logística regularizada, com 53 exemplos e
+            378 termos, encolhe os pesos e devolve probabilidades tímidas, perto de 0,5, mesmo quando a classe está certa. Sem calibração,
+            nesta branch, <strong>20 das 20 mensagens <code translate="no">AGENT</code> do benchmark ficam abaixo de 0,75</strong> (a maior confiança é 0,713),
+            embora o router acerte todas. O limiar deixaria de separar decisão boa de decisão ruim e só descartaria cobertura.
+          </p>
+          <p>
+            <strong>Conceito.</strong> Calibrar é corrigir a escala do número sem mudar o que o modelo decide. O
+            <strong>escalonamento de Platt</strong> treina uma segunda regressão logística, de uma única variável, sobre o score bruto
+            <em>f</em> do modelo. Os parâmetros A e B são estimados por máxima verossimilhança em previsões feitas sobre exemplos que o
+            modelo <em>não</em> viu no treino (<em>out-of-fold</em>: previsões sobre a parte dos dados deixada de fora em cada rodada). Estimá-los nos próprios exemplos de treino mediria a
+            memória do modelo, não a capacidade de generalizar.
+          </p>
+          <p>
+            A <strong>validação cruzada estratificada</strong> divide os 53 exemplos em 3 dobras que preservam a proporção de classes; cada
+            dobra serve uma vez de conjunto não visto. Sem embaralhar (<code translate="no">shuffle=False</code>), as dobras são as mesmas em
+            qualquer máquina, e os testes são reproduzíveis. O código não chama <code translate="no">StratifiedKFold</code> diretamente: passar
+            <code translate="no">cv=3</code> a um classificador faz o scikit-learn usar esse divisor (conferido na versão 1.9). O número de
+            dobras vem da menor classe: 3 se ela tem ao menos 3 exemplos, 2 se tem 2, e sem calibração abaixo disso, para o
+            <code translate="no">fit()</code> não quebrar em conjuntos minúsculos de teste.
+          </p>
+          <p>
+            <strong>Por que sigmoide e não isotônica.</strong> A calibração isotônica é não paramétrica: com poucos dados ela sobreajusta e
+            satura a confiança perto de 1, o problema oposto. A sigmoide tem dois parâmetros e é estável. A <code translate="no">main</code>
+            mediu essa comparação no
+            <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0007-calibracao-de-probabilidade-e-guarda-de-margem.md" target="_blank" rel="noopener">ADR-007</a>.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Fórmulas</span>
+            <span class="ca-code__path">escalonamento de Platt e dobras</span>
+          </div>
+          <pre tabindex="0"><code translate="no">Platt:  p(AGENT | f) = 1 / (1 + exp(A·f + B))      A, B por máxima verossimilhança, em dados fora da dobra
+Dobras: StratifiedKFold(n_splits=3, shuffle=False)   → 3 modelos calibrados; a probabilidade final é a média</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">router.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/router.py#L31-L47" target="_blank" rel="noopener">linhas 31–47 ↗</a>
+          </div>
+          <pre tabindex="0"><code translate="no"># Contar menor número de amostras por classe
+unique_labels, counts = np.unique(labels, return_counts=True)
+min_class_count = int(np.min(counts))
+
+if min_class_count >= 3:
+    cv = 3
+elif min_class_count >= 2:
+    cv = 2
+else:
+    cv = None
+
+if cv is not None:
+    self._clf = CalibratedClassifierCV(estimator=self._base_clf, method="sigmoid", cv=cv)
+else:
+    self._clf = self._base_clf
+
+self._clf.fit(X, labels)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">router.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/router.py#L59-L63" target="_blank" rel="noopener">linhas 59–63 ↗</a>
+          </div>
+          <pre tabindex="0"><code translate="no">X_q = self._vectorizer.transform([query])
+probs = self._clf.predict_proba(X_q)[0]
+best_idx = np.argmax(probs)
+route = str(self.classes_[best_idx])
+confidence = float(probs[best_idx])</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Medido nesta branch:</strong></p>
+          <ul>
+            <li>Sem calibração, <strong>20 de 20</strong> mensagens <code translate="no">AGENT</code> ficam abaixo de 0,75. Com calibração, <strong>1 de 20</strong> (0,732).</li>
+            <li>
+              No benchmark inteiro, G1 barrou 2 mensagens: "Troquei de número, preciso atualizar o telefone cadastrado"
+              (<code translate="no">AGENT</code>, 0,732) e "Quais documentos preciso para abrir uma conta?" (<code translate="no">FAST_PATH</code>, 0,718).
+              Nesta branch, G1 vale para as duas rotas.
+            </li>
+            <li>A menor confiança aceita é <strong>0,753</strong>: folga de 0,003 sobre o limiar. A calibração corrigiu a escala, mas a margem continua estreita.</li>
+            <li>
+              O repositório não mede a calibração em si (Brier score, erro esperado de calibração, curva de confiabilidade), só o efeito dela no limiar.
+              Com 20 queries <code translate="no">AGENT</code>, uma curva de confiabilidade teria poucos pontos por faixa.
+            </li>
+          </ul>
+        </div>
+
+        <!-- ─────────────── Técnica 3 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-recuperacao">3 · Recuperação vetorial: similaridade de cosseno, score multi-campo e colapso por capacidade</h3>
+          <p>
+            <strong>Problema operacional.</strong> O catálogo tem 285 ferramentas. Pôr todas no prompt de um LLM estoura o contexto, confunde
+            o modelo e custa caro, então o retriever escolhe as 2 mais relevantes antes de qualquer chamada. E o catálogo tem duplicatas:
+            8 ferramentas diferentes fazem "obter a fatura".
+          </p>
+          <p>
+            <strong>Conceito.</strong> A <strong>similaridade de cosseno</strong> mede o ângulo entre dois vetores: 1 quando têm o mesmo
+            vocabulário ponderado, 0 quando não compartilham nenhum termo. Como o TF-IDF já entrega vetores de comprimento 1, o cosseno é só
+            o produto escalar, ou seja, uma multiplicação de matriz esparsa entre a query e as 285 ferramentas.
+          </p>
+          <p>
+            O score combina dois campos com peso igual. O documento da ferramenta é <code translate="no">nome + descrição + categoria</code>; o
+            campo de "intenção" é <code translate="no">nome + descrição</code>. Manter campos separados, em vez de concatenar tudo, existe para
+            que a normalização L2 não dilua os termos originais quando se acrescentam sinônimos ao mesmo texto
+            (o <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0006-taxonomia-de-capacidades-e-colapso-de-duplicatas.md" target="_blank" rel="noopener">ADR-006</a>
+            da <code translate="no">main</code> documenta esse problema). Uma lista de palavras funcionais (<code translate="no">a</code>,
+            <code translate="no">de</code>, <code translate="no">para</code>, <code translate="no">quero</code>…) sai do vocabulário antes, para uma
+            query curta não pontuar só por preposições.
+          </p>
+          <p>
+            <strong>Um limite desta branch.</strong> Os dois campos saem do mesmo texto: diferem só pela categoria. Medido, a correlação entre as
+            duas similaridades é de pelo menos 0,97, e o top-1 do score combinado é idêntico ao do campo único nas 30 queries. Aqui, α = 0,5
+            praticamente não muda o resultado. Um segundo campo só ajuda quando traz informação nova, como o glossário escrito à mão da
+            <code translate="no">main</code>.
+          </p>
+          <p>
+            O <strong>colapso por capacidade</strong> agrupa as duplicatas com um dicionário embutido (<code translate="no">CANONICAL_TOOL_MAP</code>:
+            49 ferramentas em 12 capacidades) e guarda, por grupo, o maior score (<em>max-pooling</em>, uma agregação por máximo). Assim
+            <code translate="no">k=2</code> devolve duas capacidades distintas, não duas variantes da mesma. Depois, o código ordena por score
+            decrescente e corta em <code translate="no">k</code>. Candidatos com score 0 são descartados: uma query sem nenhuma palavra em comum com
+            o catálogo devolve lista vazia. Empates seguem a ordem do catálogo, porque o <code translate="no">sorted</code> do Python é estável.
+            Isso é determinístico para o mesmo arquivo, mas não é um desempate explícito (a <code translate="no">main</code> desempata pelo nome da
+            capacidade).
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Fórmulas</span>
+            <span class="ca-code__path">cosseno, score e colapso</span>
+          </div>
+          <pre tabindex="0"><code translate="no">cos(q, d)          = (q · d) / (‖q‖ · ‖d‖) = q · d          (vetores TF-IDF com ‖v‖₂ = 1)
+score(ferramenta)  = (1 − α) · cos(q, documento) + α · cos(q, intenção)        α = 0,5
+score(capacidade)  = max { score(t) : t pertence à capacidade }                (colapso por máximo)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">retrieval.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L164-L177" target="_blank" rel="noopener">linhas 164–177 ↗ (indexação)</a>
+          </div>
+          <pre tabindex="0"><code translate="no">doc_texts = []
+intent_texts = []
+
+for tool in tools:
+    # Document text: name + description + category
+    doc_text = f"{tool.name} {tool.description} {tool.category}"
+    doc_texts.append(doc_text)
+
+    # Intent text: name.replace("_", " ") + description
+    intent_text = f"{tool.name.replace('_', ' ')} {tool.description}"
+    intent_texts.append(intent_text)
+
+self._doc_matrix = self._doc_vectorizer.fit_transform(doc_texts)
+self._intent_matrix = self._intent_vectorizer.fit_transform(intent_texts)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">retrieval.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L195-L220" target="_blank" rel="noopener">linhas 195–220 ↗ (com corte)</a>
+          </div>
+          <pre tabindex="0"><code translate="no">doc_sims = cosine_similarity(q_doc_vec, self._doc_matrix)[0]
+intent_sims = cosine_similarity(q_intent_vec, self._intent_matrix)[0]
+
+combined_scores = (1 - self.alpha) * doc_sims + self.alpha * intent_sims
+
+# Apply direction guard & canonical collapsing
+canonical_best: Dict[str, Tuple[str, float]] = {}
+
+for idx, tool in enumerate(self._tools):
+    score = float(combined_scores[idx])
+    # … (guarda de direção: técnica 4)
+    if score &lt;= 0:
+        continue
+
+    canon_group = get_canonical_name(tool.name)
+    if canon_group not in canonical_best or score > canonical_best[canon_group][1]:
+        canonical_best[canon_group] = (tool.name, score)
+
+# Sort matches by score descending
+sorted_matches = sorted(canonical_best.values(), key=lambda item: item[1], reverse=True)
+top_k_matches = [ToolMatch(name=name, score=score) for name, score in sorted_matches[:k]]</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Medido nesta branch:</strong> recontando por capacidade (<code translate="no">get_canonical_name</code> sobre o resultado), a
+          capacidade esperada está no <strong>top-1 em 19 das 20</strong> queries transacionais e no <strong>top-2 em 20 das 20</strong>. O relatório
+          impresso mostra outro número. A explicação está na técnica 5.</p>
+        </div>
+
+        <!-- ─────────────── Técnica 4 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-decisao">4 · Decisão sob incerteza: limiares, margem relativa e guarda de direção</h3>
+          <p>
+            <strong>Problema operacional.</strong> Escolher a melhor ferramenta não basta: o sistema precisa saber quando <em>não</em> executar.
+            Um erro que passa em silêncio (ver <a href="#crash-silencioso">O Crash Silencioso</a>) custa mais do que uma pergunta de confirmação.
+          </p>
+          <p>
+            <strong>Conceito.</strong> Em vez de agir sempre sobre o melhor candidato, o pipeline testa três sinais estatísticos, em ordem, e só
+            executa se todos passarem. Nenhum deles lê o <code translate="no">expected_tool</code> do gabarito.
+          </p>
+          <ul>
+            <li><strong>G1 · confiança:</strong> a probabilidade calibrada do router é ≥ 0,75.</li>
+            <li><strong>G2 · relevância mínima:</strong> o score do top-1 é ≥ 0,10, um piso contra casamentos por acaso.</li>
+            <li>
+              <strong>G3 · margem relativa:</strong> <code translate="no">(s₁ − s₂) / s₁ ≥ 0,25</code>. Mede quanto o primeiro candidato vence o segundo
+              <em>em proporção do próprio score</em>. É relativa para não depender da escala: uma diferença de 0,03 pesa diferente quando o
+              top-1 vale 0,18 e quando vale 0,80.
+            </li>
+          </ul>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">harness.py</span>
+            <a class="ca-code__path" href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L107-L141" target="_blank" rel="noopener">linhas 107–141 ↗ (com corte)</a>
+          </div>
+          <pre tabindex="0"><code translate="no"># Guard Rail 1: Router confidence >= 0.75
+confidence = route_result.confidence if route_result.confidence is not None else 1.0
+if confidence &lt; 0.75:
+    row["final_status"] = "HUMAN_FALLBACK_LOW_CONFIDENCE"
+    abstentions += 1
+elif route_result.route == "FAST_PATH":
+    fast_path_answer(query)
+else:
+    retrieval_result = retriever.search(query, k=k)
+    # …
+    # Guard Rail 2: Top-1 score >= 0.10
+    top1_score = top_k_matches[0].score if top_k_matches else 0.0
+    if top1_score &lt; 0.10:
+        row["final_status"] = "ABSTAIN_LOW_SCORE"
+        abstentions += 1
+    else:
+        # Guard Rail 3: Margin relative >= 0.25
+        top2_score = top_k_matches[1].score if len(top_k_matches) > 1 else 0.0
+        margin = (top1_score - top2_score) / top1_score if top1_score > 0 else 0.0
+        if margin &lt; 0.25:
+            row["final_status"] = "AMBIGUOUS_CONFIRMATION"
+            abstentions += 1
+        else:
+            # Executa a tool top-1
+            mock_tool_execution(top_k_names[0], query)</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>A margem em três queries reais</strong>, todas desviadas por G3 no benchmark:</p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Query</th>
+                <th scope="col">Top-1 e top-2 (score)</th>
+                <th scope="col">Margem</th>
+                <th scope="col">Resultado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"Perdi meu cartão na rua, preciso bloquear agora"</td>
+                <td><code translate="no">bloquear_cartao</code> 0,180 · <code translate="no">bloquear_cartao_temporariamente</code> 0,177</td>
+                <td>0,017</td>
+                <td translate="no">AMBIGUOUS_CONFIRMATION</td>
+              </tr>
+              <tr>
+                <td>"Mudei de endereço, como atualizo minha entrega?"</td>
+                <td><code translate="no">alterar_endereco</code> 0,474 · <code translate="no">consultar_endereco_cadastrado</code> 0,434</td>
+                <td>0,084</td>
+                <td translate="no">AMBIGUOUS_CONFIRMATION</td>
+              </tr>
+              <tr>
+                <td>"Chegou meu cartão novo, como faço para desbloquear?"</td>
+                <td><code translate="no">instrucoes_desbloqueio_cartao_novo</code> 0,546 · <code translate="no">confirmar_recebimento_cartao_novo</code> 0,420</td>
+                <td>0,231</td>
+                <td translate="no">AMBIGUOUS_CONFIRMATION</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose">
+          <p>
+            A terceira falha por 0,019: 0,25 é uma política, não uma constante da natureza. Nesta branch os três limiares são literais no
+            código; na <code translate="no">main</code> são constantes nomeadas, e a margem é parâmetro do harness.
+          </p>
+          <p>
+            <strong>G4 · guarda de direção.</strong> Ela não é uma medida de similaridade, e o motivo é estatístico: leitura e escrita sobre o
+            mesmo dado dividem quase todos os termos (a seção <a href="#por-que-nenhum-peso-resolve">Por que nenhum peso resolve</a> mostra a
+            aritmética). Então a direção entra como sinal declarado: verbos e palavras-chave da query dizem se ela é de leitura ou de escrita, e o
+            prefixo do nome da ferramenta (<code translate="no">consultar_</code>, <code translate="no">atualizar_</code>…) diz de que tipo ela é.
+            Query de leitura com ferramenta de escrita: score zerado.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">retrieval.py</span>
+            <span class="ca-code__path">linhas
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L119-L137" target="_blank" rel="noopener">119–137 ↗</a> e
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/retrieval.py#L207-L209" target="_blank" rel="noopener">207–209 ↗</a></span>
+          </div>
+          <pre tabindex="0"><code translate="no">def infer_query_direction(query_norm: str) -> str:
+    """Inferir direção da query: 'read', 'write', ou 'unknown'."""
+    has_read = any(re.search(rf"\b{kw}\b", query_norm) for kw in READ_QUERY_KEYWORDS)
+    has_write = any(re.search(rf"\b{kw}\b", query_norm) for kw in WRITE_QUERY_KEYWORDS)
+
+    if has_read and not has_write:
+        return "read"
+    if has_write and not has_read:
+        return "write"
+    return "unknown"
+
+
+def infer_tool_direction(tool_name: str) -> str:
+    """Inferir direção da ferramenta pelo prefixo."""
+    if tool_name.startswith(READ_TOOL_PREFIXES):
+        return "read"
+    if tool_name.startswith(WRITE_TOOL_PREFIXES):
+        return "write"
+    return "unknown"
+
+# …
+# Direction guard rule: read query + write tool -> score = 0
+if query_direction == "read" and tool_direction == "write":
+    score = 0.0</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Medido e limitado nesta branch:</strong></p>
+          <ul>
+            <li>
+              <strong>Leitura protegida.</strong> "Qual e o email cadastrado na minha conta?" resolve <code translate="no">confirmar_email_cadastrado</code>
+              (leitura) em primeiro. <code translate="no">atualizar_email</code> não aparece entre os três primeiros.
+            </li>
+            <li>
+              <strong>Escrita→leitura não é tratada.</strong> A especificação enxuta previa rebaixar a ferramenta de leitura, mas o código não faz nada nesse
+              sentido. "Quero mudar o e-mail vinculado à minha conta" executa <code translate="no">consultar_email_vinculado_conta</code> (score 0,664):
+              não altera nada, mas não cumpre o pedido.
+            </li>
+            <li>
+              <strong>Só enxerga o que o nome revela.</strong> Por prefixo, 82 das 285 ferramentas são de leitura, 85 são de escrita e
+              <strong>118 ferramentas (41%)</strong> não revelam direção pelo nome e passam sem restrição.
+            </li>
+            <li>
+              <strong>Leitura agrupada sob escrita.</strong> O dicionário de colapso põe <code translate="no">consultar_email_vinculado_conta</code> e
+              <code translate="no">confirmar_email_cadastrado</code>, ferramentas de leitura, sob <code translate="no">atualizar_email</code>, que é de escrita.
+              A <code translate="no">main</code> proíbe isso por invariante: leitura e escrita não se agrupam.
+            </li>
+          </ul>
+        </div>
+
+        <!-- ─────────────── Técnica 5 ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="tecnica-metricas">5 · Métricas de avaliação e economia</h3>
+          <p>
+            <strong>Problema operacional.</strong> Sem medição, "funciona" é opinião. E uma métrica mal lida é pior que nenhuma: a economia de custo
+            sobe quando o sistema se abstém mais, mesmo que atenda menos.
+          </p>
+          <p>
+            <strong>Conceito.</strong> A <strong>acurácia</strong> é a proporção de acertos: acertos divididos pelo total. A <strong>matriz de confusão 2×2</strong> separa os dois erros
+            possíveis, que custam coisas diferentes: mandar uma FAQ ao agente gasta LLM à toa; mandar um pedido transacional ao
+            <code translate="no">FAST_PATH</code> dá ao cliente uma resposta genérica no lugar da operação. O código inicializa todas as células com zero,
+            então a estrutura fica completa mesmo sem erros cruzados.
+          </p>
+          <p>
+            O <strong>hit rate@k</strong> é a fração das queries em que a ferramenta esperada aparece entre as k primeiras. Não é a Precision@K
+            clássica (relevantes entre as k, divididos por k): com uma só ferramenta relevante e k = 2, a Precision@2 máxima seria 0,5. A função se
+            chama <code translate="no">compute_precision_at_k</code>, mas o que ela calcula é hit rate.
+          </p>
+          <p>
+            A <strong>economia</strong> é a redução percentual contra o baseline (mandar toda mensagem ao LLM, com todas as ferramentas no prompt),
+            com guarda para baseline zero. No MVP, custos e latências vêm de constantes de mock (US$ 0,03 por chamada do baseline, US$ 0,01 por
+            chamada do agente), então o percentual mede a estrutura do pipeline, não um preço real.
+          </p>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real">Fórmulas</span>
+            <span class="ca-code__path">métricas do harness</span>
+          </div>
+          <pre tabindex="0"><code translate="no">acurácia     = acertos / total
+hit rate@k   = (queries com a ferramenta esperada no top-k) / (queries avaliadas)
+economia %   = (baseline − pipeline) / baseline × 100            (0 se baseline = 0)</code></pre>
+        </div>
+
+        <div class="ca-code">
+          <div class="ca-code__head">
+            <span class="ca-tag ca-tag--real" translate="no">harness.py</span>
+            <span class="ca-code__path">linhas
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L22-L28" target="_blank" rel="noopener">22–28 ↗</a>,
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L36-L40" target="_blank" rel="noopener">36–40 ↗</a> e
+              <a href="https://github.com/issei/case-agents/blob/e2dcd7f3bdbe7d7408ff80a837bd8a247b431131/candidate_starter/harness.py#L52-L54" target="_blank" rel="noopener">52–54 ↗</a></span>
+          </div>
+          <pre tabindex="0"><code translate="no">correct = sum(1 for yt, yp in zip(y_true, y_pred) if yt == yp)
+accuracy = correct / len(y_true)
+
+matrix = {l1: {l2: 0 for l2 in labels} for l1 in labels}
+for yt, yp in zip(y_true, y_pred):
+    if yt in matrix and yp in matrix[yt]:
+        matrix[yt][yp] += 1
+# …
+def compute_precision_at_k(hits: List[int]) -> float:
+    """Calcula Precision@K a partir de uma lista de 0/1 (acertou ou não a tool)."""
+    if not hits:
+        return 0.0
+    return float(sum(hits) / len(hits))
+# …
+cost_savings = 0.0
+if baseline_cost_usd > 0:
+    cost_savings = ((baseline_cost_usd - smart_cost_usd) / baseline_cost_usd) * 100.0</code></pre>
+        </div>
+
+        <div class="ca-prose">
+          <p><strong>Saída de <code translate="no">python -m candidate_starter.run_case</code> na branch enxuta</strong>, 30 queries:</p>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Métrica</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Origem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Acurácia do router</td>
+                <td>100% (30/30) · matriz <span translate="no">10 · 0 / 0 · 20</span></td>
+                <td>impresso</td>
+              </tr>
+              <tr>
+                <td><code translate="no">precision_at_k</code> (k = 2)</td>
+                <td>26,3% (5/19)</td>
+                <td>impresso</td>
+              </tr>
+              <tr>
+                <td>Capacidade esperada, por capacidade</td>
+                <td>top-1 19/20 · top-2 20/20</td>
+                <td>recontagem offline</td>
+              </tr>
+              <tr>
+                <td>Abstenções</td>
+                <td>5 (16,7%): 2 por G1, 0 por G2, 3 por G3</td>
+                <td>impresso; divisão por guarda, recontagem</td>
+              </tr>
+              <tr>
+                <td>Execuções</td>
+                <td>16, das quais 15 na capacidade esperada</td>
+                <td>recontagem offline</td>
+              </tr>
+              <tr>
+                <td>Custo: pipeline / baseline</td>
+                <td>US$ 0,16003 / US$ 0,90000 → economia de 82,2%</td>
+                <td>impresso</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-prose">
+          <p>
+            <strong>Por que 26,3% não é a qualidade da recuperação.</strong> O <code translate="no">ToolMatch.name</code> que o retriever devolve é o nome da
+            <em>variante que casou</em> (por exemplo <code translate="no">verificar_saldo_conta_corrente</code>), e o <code translate="no">expected_tool</code>
+            do dataset é o nome <em>canônico</em> (<code translate="no">consultar_saldo</code>). A comparação por string falha mesmo com a capacidade certa.
+            Recontando por capacidade, o resultado é 19/20 e 20/20. O denominador também é 19, não 20: a query barrada por G1 nunca chegou ao retriever e
+            ficou fora da conta.
+          </p>
+          <p>
+            <strong>Por que 82,2% é maior que os 77,8% do resto da página.</strong> Cinco mensagens foram desviadas por abstenção e não chamaram LLM. É o
+            mesmo efeito descrito em <a href="#economia-honesta">Economia sem taxa de sucesso é risco disfarçado</a>: a economia sobe quando o sistema faz
+            menos. A execução que sai da capacidade esperada é "Manda o pdf da minha fatura atual" → <code translate="no">reenviar_fatura_email</code>, que o
+            dicionário não agrupa em <code translate="no">consultar_fatura</code>. E as 15 certas incluem a query de e-mail, cuja ferramenta de leitura o
+            dicionário agrupa sob <code translate="no">atualizar_email</code>. A branch enxuta não calcula execuções incorretas nem o ponto de equilíbrio do
+            custo de atendimento humano: essas duas contas só existem na <code translate="no">main</code>.
+          </p>
+        </div>
+
+        <!-- ─────────────── Comparativo ─────────────── -->
+        <div class="ca-prose">
+          <h3 id="enxuta-vs-main">Branch enxuta × <code translate="no">main</code>, técnica por técnica</h3>
+        </div>
+
+        <div class="ca-tablewrap">
+          <table class="ca-table">
+            <thead>
+              <tr>
+                <th scope="col">Ponto</th>
+                <th scope="col">Branch enxuta</th>
+                <th scope="col"><code translate="no">main</code></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dobras da calibração</strong></td>
+                <td><code translate="no">cv</code> = 3 (menor classe ≥ 3)</td>
+                <td>até 5: <code translate="no">min(5, menor classe)</code></td>
+              </tr>
+              <tr>
+                <td><strong>Segundo campo do score</strong></td>
+                <td>derivado de nome e descrição: quase redundante</td>
+                <td>glossário escrito à mão por capacidade, indexado em campo separado</td>
+              </tr>
+              <tr>
+                <td><strong>Colapso por capacidade</strong></td>
+                <td>dicionário embutido: 49 variantes, 12 capacidades</td>
+                <td><code translate="no">taxonomy.py</code>: 14 capacidades, 45 variantes, com invariantes testadas</td>
+              </tr>
+              <tr>
+                <td><strong>Desempate</strong></td>
+                <td>ordem estável do catálogo</td>
+                <td>direção, depois <code translate="no">−score</code>, depois nome da capacidade</td>
+              </tr>
+              <tr>
+                <td><strong>Piso de score (G2)</strong></td>
+                <td>no harness; o retriever só descarta score ≤ 0</td>
+                <td><code translate="no">min_score</code> no retriever, com 0,10 passado por quem o monta</td>
+              </tr>
+              <tr>
+                <td><strong>Direção (G4)</strong></td>
+                <td>prefixo do nome; só leitura→escrita zera</td>
+                <td><code translate="no">mode</code> declarado (59 de 285); leitura→escrita descarta, escrita→leitura rebaixa</td>
+              </tr>
+              <tr>
+                <td><strong>Métricas</strong></td>
+                <td><code translate="no">precision_at_k</code> por nome exato</td>
+                <td>hit rate@1 e @k, execuções corretas e incorretas, ponto de equilíbrio, quality gate tri-estado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ca-principle">
+          <p>
+            As cinco técnicas são simples e baratas nas duas branches. O que separa a enxuta da <code translate="no">main</code> não é uma técnica mais
+            sofisticada, e sim o que cerca cada uma: um campo com informação nova, a direção declarada, um contrato de métrica que compara capacidade com
+            capacidade e um desempate explícito.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════════════════════════════ 7. ARQUITETURA PRODUTIVA (ADR-009) ═══ -->
     <section id="arquitetura-produtiva" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">07 · Da Prova de Conceito à Produção</p>
+        <p class="ca-eyebrow">08 · Da Prova de Conceito à Produção</p>
         <h2>Arquitetura Multi-Linguagem de Alta Performance (ADR-009 &amp; RFC)</h2>
 
         <div class="ca-prose">
@@ -1070,7 +1781,7 @@ Para a escrita vencer por ajuste de α:
     <!-- ════════════════════════════════════ 8. GOVERNANÇA CATÁLOGO ═══ -->
     <section id="governanca-catalogo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">08 · Governança de Catálogo</p>
+        <p class="ca-eyebrow">09 · Governança de Catálogo</p>
         <h2>O catálogo é o problema, não a vetorização</h2>
 
         <div class="ca-prose">
@@ -1101,7 +1812,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
     <!-- ════════════════════════════════════ 9. ECONOMIA HONESTA ═══ -->
     <section id="economia-honesta" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">09 · Evolução Medida</p>
+        <p class="ca-eyebrow">10 · Evolução Medida</p>
         <h2>Economia sem taxa de sucesso é risco disfarçado</h2>
 
         <div class="ca-prose">
@@ -1198,7 +1909,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
     <!-- ════════════════════════════════════ 10. O MÉTODO ═══ -->
     <section id="metodo" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">10 · O Processo</p>
+        <p class="ca-eyebrow">11 · O Processo</p>
         <h2>Como foi desenvolvido: o método agêntico com crítica incorporada</h2>
 
         <div class="ca-prose">
@@ -1271,7 +1982,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
     <!-- ════════════════════════════════════ 11. EVIDÊNCIA E SUÍTE ═══ -->
     <section id="evidencia" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">11 · Especificação Executável</p>
+        <p class="ca-eyebrow">12 · Especificação Executável</p>
         <h2>A Suíte de 72 Testes como Especificação do Sistema</h2>
 
         <div class="ca-prose">
@@ -1308,7 +2019,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
     <!-- ════════════════════════════════════ 12. LIMITAÇÕES ═══ -->
     <section id="limitacoes" class="ca-section">
       <div class="ca-wrap ca-narrow">
-        <p class="ca-eyebrow">12 · Transparência Técnica</p>
+        <p class="ca-eyebrow">13 · Transparência Técnica</p>
         <h2>Limitações Reais do Projeto (O que o benchmark não cobre)</h2>
 
         <div class="ca-prose">
@@ -1332,7 +2043,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
     <!-- ════════════════════════════════════ 13. REFERÊNCIAS ═══ -->
     <section id="referencias" class="ca-section">
       <div class="ca-wrap">
-        <p class="ca-eyebrow">13 · Ecossistema &amp; Links</p>
+        <p class="ca-eyebrow">14 · Ecossistema &amp; Links</p>
         <h2>Referências Conceituais do Site</h2>
 
         <div class="ca-refs">
@@ -1416,6 +2127,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
 
 
 <footer class="ca-footer">
