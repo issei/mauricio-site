@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Boutique Empresarial — Architecture Showcase &amp; Engenharia Agêntica</title>
+  <meta name="description"
+    content="Showcase da arquitetura de software, metodologia SDD, desenvolvimento agêntico multi-modelo e infraestrutura Serverless por trás do projeto Boutique Empresarial." />
+
+  <!-- Fonts: Playfair Display for H1 headlines + Inter for UI/Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+      rel="stylesheet" />
+  </noscript>
+
+  <link rel="stylesheet" href="./input.css" />
+  <link rel="stylesheet" href="/aeo.css" />
+  <link rel="canonical" href="https://mauricio.issei.com.br/boutique-empresarial-showcase.html" />
+
+  <!-- AEO / JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://mauricio.issei.com.br/#website",
+        "url": "https://mauricio.issei.com.br/",
+        "name": "Maurício Yokoyama Issei",
+        "inLanguage": "pt-BR"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://mauricio.issei.com.br/#author",
+        "name": "Maurício Yokoyama Issei",
+        "jobTitle": "Engenheiro de Software Principal & Arquiteto de Sistemas Agênticos"
+      },
+      {
+        "@type": "TechArticle",
+        "@id": "https://mauricio.issei.com.br/boutique-empresarial-showcase.html#article",
+        "headline": "Boutique Empresarial — Engineering & Agentic Architecture Showcase",
+        "description": "Análise detalhada da arquitetura estática MPA de alta performance, SDD (Specification Driven Development), pipeline agêntico multi-modelo e Quality Gate determinístico do projeto Boutique Empresarial.",
+        "author": { "@id": "https://mauricio.issei.com.br/#author" },
+        "inLanguage": "pt-BR"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://mauricio.issei.com.br/boutique-empresarial-showcase.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qual é a stack principal do projeto Boutique Empresarial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O projeto utiliza uma arquitetura MPA (Multi-Page Application) estática de alta performance desenvolvida com Vite 6, Tailwind CSS v4, HTML5 semântico e CSS puro com zero-runtime JavaScript no cliente. O backend serverless de captura é suportado por Google Apps Script com integração assíncrona."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O que é Specification Driven Development (SDD) e VibeCoding?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SDD é a metodologia onde toda especificação técnica em docs/specs/ atua como fonte única da verdade (SSOT). Nenhuma alteração de código ocorre sem especificação prévia aprovada. O VibeCoding é a agilidade na implementação guiada rigorosamente por esses contratos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como funciona o desenvolvimento agêntico multi-modelo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O repositório utiliza subagentes especializados (.claude/agents/) sob o princípio 'modelo caro decide, modelo barato executa, o gate arbitra', garantindo eficiência operacional e FinOps de IA."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O que garante que o código não quebrará em produção (Quality Gate)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O Quality Gate determinístico fail-closed via npm run gate executa build de produção, testes Playwright cross-browser e auditoria de acessibilidade WCAG 2.1 AA com axe-core. O deploy na AWS só é autorizado pelo GitHub Actions OIDC se o gate estiver 100% verde."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 bg-slate-950 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="./catalogo.html" class="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium text-sm transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Voltar ao Catálogo</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-cyan-950 text-cyan-300 border border-cyan-800">
+          Architecture Showcase
+        </span>
+        <a href="https://boutiqueempresarial.com.br/" target="_blank" rel="noopener noreferrer"
+           class="text-xs font-mono text-slate-300 hover:text-slate-100 transition-colors hidden sm:inline-block">
+          boutiqueempresarial.com.br ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="relative py-20 lg:py-28 overflow-hidden border-b border-slate-800 bg-slate-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-widest text-cyan-300 bg-cyan-950 border border-cyan-800 uppercase mb-6">
+            ARQUITETURA DE SOFTWARE • DESENVOLVIMENTO AGÊNTICO
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-50 tracking-tight leading-tight mb-6">
+            A Engenharia, Metodologia e Filosofia do Projeto <span class="text-cyan-400">Boutique Empresarial</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-300 font-light leading-relaxed mb-8">
+            Uma imersão na arquitetura estática de alta performance, governança agêntica baseada em especificações (SDD) e pipeline determinístico de entrega contínua impulsionado por Vite 6, Tailwind v4, Claude Code e AWS CloudFront.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="https://github.com/issei/boutiqueempresarial-site" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-lg">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>Ver no GitHub</span>
+            </a>
+
+            <a href="https://github.com/issei/boutiqueempresarial-site/tree/main/docs/specs" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-slate-100 bg-slate-900 hover:bg-slate-800 border border-slate-700 transition-colors">
+              <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>Explorar Especificações</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. VISÃO GERAL DA ARQUITETURA -->
+    <section class="py-16 lg:py-24 bg-slate-900 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-3">Visão Geral da Arquitetura</h2>
+          <p class="text-3xl sm:text-4xl font-serif font-bold text-slate-100">O Funil Único &amp; A Stack de Alta Performance</p>
+          <p class="mt-4 text-slate-300 font-light">Eliminando o peso de frameworks runtime para garantir carregamento instantâneo e máxima eficiência de conversão.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-6 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/40 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-100 mb-2">MPA Estático &amp; Zero-Runtime</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Multi-Page Application construída com Vite 6 + Tailwind CSS v4. Código HTML e CSS puros com tempo de carregamento inferior a 1 segundo e zero sobrecarga de frameworks JavaScript no cliente.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/40 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v25a1 1 0 01-1 1H4a1 1 0 01-1-1V4z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11h8M8 15h5" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-100 mb-2">Funil de Conversão de 7 Etapas</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Foco cirúrgico em conversão: Landing Page do Diagnóstico Gratuito &rarr; Formulário conversacional progressivo de 7 etapas &rarr; Página de confirmação otimizada.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/40 transition-colors">
+            <div class="w-12 h-12 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-100 mb-2">Backend Serverless GAS</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Captura e persistência serverless via Google Apps Script (GAS) integrado de forma assíncrona, eliminando a complexidade e custos de infraestrutura de servidores dedicados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. OS 4 PILARES DA ENGENHARIA -->
+    <section class="py-20 lg:py-28 bg-slate-950 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-3">Fundação Metodológica</h2>
+          <p class="text-3xl sm:text-4xl font-serif font-bold text-slate-100">Os 4 Pilares da Engenharia Boutique</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Card 01 -->
+          <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all shadow-xl">
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800">Pilar 01</span>
+              <span class="text-xs font-mono text-slate-300">docs/specs/</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 mb-3">Specification Driven Development (SDD) &amp; VibeCoding</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              A documentação estruturada em <code class="text-cyan-300 font-mono text-xs">docs/specs/</code> atua como Fonte Única da Verdade (SSOT). Nenhuma linha de código é alterada sem uma especificação técnica previamente aprovada.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-slate-300 border-t border-slate-800 pt-4">
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Contratos e ADRs imutáveis
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Fluxo de implementação ágil (VibeCoding) guiado por especificações
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 02 -->
+          <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all shadow-xl">
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800">Pilar 02</span>
+              <span class="text-xs font-mono text-slate-300">.claude/agents/</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 mb-3">Pipeline Multi-Agente &amp; Matriz de Modelos</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Arquitetura agent-driven impulsionada por subagentes especializados (<code class="text-cyan-300 font-mono text-xs">page-auditor</code>, <code class="text-cyan-300 font-mono text-xs">head-fixer</code>, <code class="text-cyan-300 font-mono text-xs">copy-writer</code>, <code class="text-cyan-300 font-mono text-xs">gate-runner</code>).
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-slate-300 border-t border-slate-800 pt-4">
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Princípio de FinOps: "Modelo caro decide, modelo barato executa, o gate arbitra"
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Orquestração com subagentes isolados para qualidade de código
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 03 -->
+          <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all shadow-xl">
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800">Pilar 03</span>
+              <span class="text-xs font-mono text-slate-300">npm run gate</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 mb-3">Quality Gate Determinístico (Fail-Closed)</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Comando unificado de validação que bloqueia o deploy em caso de qualquer divergência.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-slate-300 border-t border-slate-800 pt-4">
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Build Vite 6 sem erros + suíte Playwright cross-browser (Chromium, Firefox, WebKit)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Auditoria automatizada de acessibilidade WCAG 2.1 AA via <code class="text-cyan-300">axe-core</code>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 04 -->
+          <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all shadow-xl">
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800">Pilar 04</span>
+              <span class="text-xs font-mono text-slate-300">/.well-known/</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-100 mb-3">Agent Readiness &amp; Compatibilidade AEO / WebMCP</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Infraestrutura totalmente otimizada para descoberta e consumo machine-readable por Answer Engines e agentes autônomos de IA.
+            </p>
+            <ul class="space-y-2 text-xs font-mono text-slate-300 border-t border-slate-800 pt-4">
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Registros <code class="text-cyan-300">llms.txt</code>, RFC 8288 Link Headers e DNS-AID
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Runtime WebMCP integrado via <code class="text-cyan-300">navigator.modelContext</code>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ANATOMIA DO REPOSITÓRIO -->
+    <section class="py-20 lg:py-24 bg-slate-900 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-12">
+          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-3">Anatomia do Repositório</h2>
+          <p class="text-3xl font-serif font-bold text-slate-100">Explorador da Estrutura de Código</p>
+          <p class="mt-2 text-slate-300 text-sm">Organização rigorosa de diretórios para separação clara de responsabilidades.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono text-xs">
+          <div class="p-5 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-3 text-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              <span>src/</span>
+            </div>
+            <p class="text-slate-300 font-sans text-xs leading-relaxed">
+              Páginas HTML5, CSS Tailwind v4, scripts conversacionais do formulário e ativos visuais da aplicação.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-3 text-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              <span>docs/specs/</span>
+            </div>
+            <p class="text-slate-300 font-sans text-xs leading-relaxed">
+              Especificações técnicas do SDD, contratos de componentes, regras AEO e plano multi-agente (SSOT).
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-3 text-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              <span>.claude/agents/</span>
+            </div>
+            <p class="text-slate-300 font-sans text-xs leading-relaxed">
+              Subagentes especializados com prompts de sistema e regras de escopo para auditoria, testes e cópias.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-3 text-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              <span>public/.well-known/</span>
+            </div>
+            <p class="text-slate-300 font-sans text-xs leading-relaxed">
+              Manifestos Machine-Readable, Agent Cards, esquemas OAuth e descoberta por bots de inteligência artificial.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-3 text-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              <span>scripts/</span>
+            </div>
+            <p class="text-slate-300 font-sans text-xs leading-relaxed">
+              Automações do Quality Gate (<code class="text-cyan-300">quality-gate.mjs</code>), auditorias globais de SEO e geradores.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-950 border border-slate-800">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-3 text-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+              <span>tests/</span>
+            </div>
+            <p class="text-slate-300 font-sans text-xs leading-relaxed">
+              Testes E2E com Playwright, cenários funcionais do formulário e verificações automatizadas de acessibilidade axe-core.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PIPELINE DE CI/CD & INFRAESTRUTURA AWS -->
+    <section class="py-20 lg:py-28 bg-slate-950 text-slate-100 border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-16">
+          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-3">Infraestrutura AWS &amp; CI/CD</h2>
+          <p class="text-3xl sm:text-4xl font-serif font-bold text-slate-100">Deploy Automatizado, Seguro &amp; Global</p>
+          <p class="mt-4 text-slate-300 font-light leading-relaxed">
+            Estratégia de distribuição global através de CloudFront, S3 e GitHub Actions autenticado via OIDC sem credenciais de longa duração.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="text-cyan-400 font-mono text-xs font-bold mb-2">01. AUTENTICAÇÃO OIDC</div>
+            <h3 class="text-lg font-bold text-slate-100 mb-2">GitHub Actions &amp; AWS IAM</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Uso de OpenID Connect (OIDC) para emitir credenciais temporárias de perfil AWS IAM durante a execução do workflow, eliminando segredos estáticos no repositório.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="text-cyan-400 font-mono text-xs font-bold mb-2">02. BORDA &amp; CACHE</div>
+            <h3 class="text-lg font-bold text-slate-100 mb-2">Amazon CloudFront + S3</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Hospedagem de ativos estáticos no Amazon S3 protegidos por Origin Access Control (OAC), servidos globalmente via CloudFront CDN com indevida expiração de cache por invalidadores.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="text-cyan-400 font-mono text-xs font-bold mb-2">03. EDGE FUNCTIONS</div>
+            <h3 class="text-lg font-bold text-slate-100 mb-2">CloudFront Functions</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Manipulação de cabeçalhos de segurança na borda (CSP, HSTS, X-Frame-Options) e reescrita de URLs limpas sem adição de latência à requisição final do usuário.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. BLOCO AEO / RESUMO MACHINE-READABLE -->
+    <section class="py-20 lg:py-28 bg-slate-900">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-3">Em Síntese • AEO</h2>
+          <p class="text-3xl font-serif font-bold text-slate-100">Resumo Machine-Readable &amp; Perguntas Frequentes</p>
+        </div>
+
+        <div class="space-y-4">
+          <details class="group p-6 rounded-xl bg-slate-950 border border-slate-800 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+            <summary class="flex items-center justify-between font-semibold text-slate-100 group-open:text-cyan-400 transition-colors">
+              <span>Qual é a stack principal do projeto Boutique Empresarial?</span>
+              <span class="ml-4 transition-transform group-open:rotate-180 text-cyan-400">▼</span>
+            </summary>
+            <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+              O projeto utiliza uma arquitetura MPA (Multi-Page Application) estática de alta performance desenvolvida com Vite 6, Tailwind CSS v4, HTML5 semântico e CSS puro com zero-runtime JavaScript no cliente. O backend serverless de captura é suportado por Google Apps Script com integração assíncrona.
+            </p>
+          </details>
+
+          <details class="group p-6 rounded-xl bg-slate-950 border border-slate-800 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+            <summary class="flex items-center justify-between font-semibold text-slate-100 group-open:text-cyan-400 transition-colors">
+              <span>O que é Specification Driven Development (SDD) e VibeCoding?</span>
+              <span class="ml-4 transition-transform group-open:rotate-180 text-cyan-400">▼</span>
+            </summary>
+            <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+              SDD é a metodologia onde toda especificação técnica em <code class="text-cyan-300 font-mono">docs/specs/</code> atua como fonte única da verdade (SSOT). Nenhuma alteração de código ocorre sem especificação prévia aprovada. O VibeCoding é a agilidade na implementação guiada rigorosamente por esses contratos.
+            </p>
+          </details>
+
+          <details class="group p-6 rounded-xl bg-slate-950 border border-slate-800 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+            <summary class="flex items-center justify-between font-semibold text-slate-100 group-open:text-cyan-400 transition-colors">
+              <span>Como funciona o desenvolvimento agêntico multi-modelo?</span>
+              <span class="ml-4 transition-transform group-open:rotate-180 text-cyan-400">▼</span>
+            </summary>
+            <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+              O repositório utiliza subagentes especializados (<code class="text-cyan-300 font-mono">.claude/agents/</code>) sob o princípio "modelo caro decide, modelo barato executa, o gate arbitra", garantindo eficiência operacional e FinOps de IA.
+            </p>
+          </details>
+
+          <details class="group p-6 rounded-xl bg-slate-950 border border-slate-800 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+            <summary class="flex items-center justify-between font-semibold text-slate-100 group-open:text-cyan-400 transition-colors">
+              <span>O que garante que o código não quebrará em produção (Quality Gate)?</span>
+              <span class="ml-4 transition-transform group-open:rotate-180 text-cyan-400">▼</span>
+            </summary>
+            <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+              O Quality Gate determinístico fail-closed via <code class="text-cyan-300 font-mono">npm run gate</code> executa build de produção, testes Playwright cross-browser e auditoria de acessibilidade WCAG 2.1 AA com axe-core. O deploy na AWS só é autorizado pelo GitHub Actions OIDC se o gate estiver 100% verde.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-slate-950 border-t border-slate-800 text-xs font-mono text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p>&copy; Boutique Empresarial Architecture Showcase — Maurício Yokoyama Issei</p>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="./catalogo.html" class="hover:text-slate-200 transition-colors">Catálogo</a>
+        <a href="https://github.com/issei/boutiqueempresarial-site" target="_blank" rel="noopener noreferrer" class="hover:text-slate-200 transition-colors">GitHub Repository</a>
+        <a href="#hero" class="hover:text-slate-200 transition-colors">Voltar ao topo ↑</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

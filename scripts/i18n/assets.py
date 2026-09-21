@@ -42,6 +42,7 @@ HTML_NAO_PUBLICAS = frozenset(
         "exemplopdi",
         "mapmind",
         "vsl",
+        "boutique-empresarial-showcase",
     }
 )
 
