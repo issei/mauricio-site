@@ -36,6 +36,7 @@ const NAO_PUBLICAS = new Set([
   'index-bkp', 'index.template', 'devin-bkp',
   'privacidade', 'termos', 'cookies',      // legais: linkadas no rodapé
   'exemplopdi', 'mapmind', 'vsl',          // experimentos/utilitários
+  'boutique-empresarial-showcase',         // showcase isolado
   'catalogo',                              // é o próprio hub
 ]);
 
