@@ -4,7 +4,8 @@
 // section, tags[], keywords[], about[], mentions[], teaches[], audience,
 // citation[], tldr{heading,lede,points[],foot}, faq[{q,a}], terms[{slug,name,def}],
 // mdSections[{h,body}], og{eyebrow,title('{x}'=gradiente),subtitle,thesis,chips[]},
-// hasMd, ogType, ogTitle, ogDescription, video.
+// hasMd, ogType, ogTitle, ogDescription, video, extraGraph[] (nós JSON-LD prontos).
+import { CERTIFICATIONS } from './identity.mjs';
 
 export const PAGES = [
   // ===================================================================== TIER S
@@ -759,12 +760,27 @@ export const PAGES = [
 
   // ===================================================================== TIER B
   {
-    slug: 'index', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'website',
-    title: 'Maurício Yokoyama Issei — Tech Lead & Arquiteto de Soluções de IA',
-    description: 'Tech Lead com mais de 20 anos em desenvolvimento de software e liderança técnica, com foco em soluções robustas em Salesforce, AWS, APIs e Engenharia de IA.',
-    datePublished: '2026-01-10', dateModified: '2026-06-21',
-    keywords: ['Maurício Yokoyama Issei', 'Tech Lead', 'Arquiteto de Soluções', 'Salesforce', 'AWS', 'APIs', 'Engenharia de IA', 'SRE'],
-    og: { eyebrow: 'Tech Lead · Arquiteto de IA', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS, APIs e Engenharia de IA' },
+    // Home "Mapa de Linhas" (docs/specs/pages/portfolio/). O conteúdo do <body>
+    // vem de scripts/gen-portfolio.mjs; dateModified também é a data de
+    // "Última atualização" e o ano do © que o gerador grava na página.
+    slug: 'index', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
+    title: 'Maurício Yokoyama Issei — Tech Lead | Salesforce, AWS, APIs',
+    description: 'Tech Lead com mais de 20 anos em software e liderança técnica: Salesforce, AWS e APIs. Experiência, 19 projetos no formato STAR, certificações e recomendações.',
+    datePublished: '2026-01-10', dateModified: '2026-09-22',
+    keywords: ['Maurício Yokoyama Issei', 'Tech Lead', 'Especialista em Análise de Sistemas', 'Salesforce', 'AWS', 'APIs', 'SRE', 'Java', 'Node.js', 'Datadog', 'Liderança Técnica'],
+    extraGraph: [CERTIFICATIONS],
+    og: { eyebrow: 'Tech Lead · Especialista em Análise de Sistemas', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS e APIs' },
+  },
+  {
+    // Home anterior, preservada com a mesma aparência; conteúdo gravado no
+    // HTML por scripts/gen-portfolio.mjs (blocos CV:*), sem fetch.
+    slug: 'curriculo', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
+    title: 'Currículo — Maurício Yokoyama Issei',
+    description: 'Currículo completo de Maurício Yokoyama Issei: mais de 20 anos em desenvolvimento de software e liderança técnica, com foco em Salesforce, AWS e APIs.',
+    datePublished: '2026-09-22', dateModified: '2026-09-22',
+    keywords: ['Maurício Yokoyama Issei', 'currículo', 'Tech Lead', 'Salesforce', 'AWS', 'APIs'],
+    extraGraph: [CERTIFICATIONS],
+    og: { eyebrow: 'Currículo', title: 'Maurício {Yokoyama Issei}', subtitle: 'Experiência, projetos, formação e recomendações' },
   },
   {
     slug: 'catalogo', type: 'CollectionPage', tier: 'B', hasMd: true, ogType: 'website',

@@ -135,6 +135,8 @@ export function buildGraph(p) {
       })),
     });
   }
+  // Nós prontos específicos da página (ex.: ItemList de certificações da home).
+  if (p.extraGraph?.length) graph.push(...p.extraGraph);
   if (p.video) {
     graph.push({
       '@type': 'VideoObject', '@id': `${url}#video`,

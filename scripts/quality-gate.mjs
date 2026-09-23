@@ -54,6 +54,7 @@ if (!skipBuild) steps.push(['gêmeos .md do sitemap', 'node scripts/check-md-twi
 steps.push([
   'artefatos gerados em dia',
   'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check' +
+    ' && node scripts/gen-portfolio.mjs --check' +
     ' && node scripts/optimize-critical-path.mjs --check',
 ]);
 
