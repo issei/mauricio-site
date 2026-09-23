@@ -171,7 +171,6 @@ function hero() {
     </dl>
     <div class="pf-cta">
       <a class="pf-btn" href="#experience">Ver experiência</a>
-      <a class="pf-btn pf-btn--ghost" href="./curriculo.html">Currículo em formato clássico</a>
       <a class="pf-btn pf-btn--ghost pf-btn--yt" href="${esc(cv.Contato.youtube)}" ${ext(`Canal ${YT_HANDLE} no YouTube`)}>${icon('youtube')} ${esc(YT_HANDLE)}</a>
     </div>
     ${socials()}
