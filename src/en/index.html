@@ -5,7 +5,6 @@
 <head>
     <!-- Google Consent Mode v2 — default DENIED (LGPD/ANPD/GDPR) -->
     <!-- Spec: docs/specs/pages/LEGAL_PAGES.md §6.2 — deve carregar ANTES de GTM/GA4 -->
-
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -16,314 +15,66 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
     <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
     <!-- Clarity tracking code for https://mauricio.issei.com.br -->
-<script>
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yduzohu3o0");
-</script>
-
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "yduzohu3o0");
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO & Meta Tags -->
-    <title>Mauricio Yokoyama Issei — Tech Lead and Architect</title>
+    <!--
+      Home "Mapa de Linhas" — spec: docs/specs/pages/portfolio/ (SDD v1.1 + delta v1.2).
+      TODO o conteúdo do <body> entre PF:START/END é gerado por scripts/gen-portfolio.mjs
+      a partir de public/cv.json. Nenhum JavaScript desta página insere texto.
+    -->
+    <title>Mauricio Yokoyama Issei — Tech Lead </title>
     <meta name="description"
-        content="More than 20 years of experience in software development and technical leadership, focusing on robust and innovative solutions in Salesforce, AWS and APIs.">
+        content="Tech Lead with more than 20 years in software and technical leadership: Salesforce, AWS and APIs. Experience, 19 projects in STAR format, certifications and recommendations.">
 
     <!-- RFC 8288 Link Relations for Agent Discovery -->
-    <!-- rel="describedby": machine-readable profile/documentation for AI agents and crawlers -->
     <link rel="describedby" href="/en/llms.txt" type="text/plain" title="LLM-optimized profile index" />
     <link rel="describedby" href="/en/llms-full.txt" type="text/plain" title="Full LLM-optimized profile" />
-    <!-- rel="service-doc": human+machine readable curriculum vitae structured for AI -->
     <link rel="service-doc" href="/en/cv-for-ai.md" type="text/markdown" title="Structured CV for AI agents" />
-    <!-- rel="describedby": structured JSON data source -->
     <link rel="describedby" href="/en/cv.json" type="application/json" title="Structured CV Data (JSON)" />
-    <!-- rel="api-catalog": well-known agent resource catalog (RFC 8615 + RFC 8288) -->
     <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json"
         title="API Resource Catalog" />
     <link rel="ai-catalog" href="/.well-known/ai-catalog.json" type="application/json"
         title="AI Resource Catalog (ARD)" />
-    <!-- Open Graph / Facebook -->
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-
-
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mauricio.issei.com.br/en/">
-    <meta property="twitter:title" content="Mauricio Yokoyama Issei - Tech Lead ">
-    <meta property="twitter:description"
-        content="More than 20 years of experience in software development and technical leadership, focusing on robust and innovative solutions in Salesforce, AWS and APIs.">
-    <meta property="twitter:image" content="">
-
-    <link rel="icon"
-        href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E">
-
-    <!-- Tailwind Play CDN -->
-    <link href="../input.css" rel="stylesheet">
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" /></noscript>
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" data-async-css media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
-    <!-- SEO & Meta Tags -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0d1117;
-            /* Fundo escuro */
-            color: #c9d1d9;
-            /* Texto cinza claro */
-            scroll-behavior: smooth;
-        }
-
-        /* Scrollbar customizada para um visual elegante */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #161b22;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #4a5568;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
-        }
-
-        /* Animação de fundo da seção Hero */
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            opacity: 0.2;
-        }
-
-        .hero-background::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 123, 255, 0.1) 0%, transparent 70%);
-            animation: pulse 15s infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.8);
-                opacity: 0.1;
-            }
-
-            50% {
-                transform: scale(1.2);
-                opacity: 0.2;
-            }
-
-            100% {
-                transform: scale(0.8);
-                opacity: 0.1;
-            }
-        }
-
-        /* Títulos de seção com um brilho sutil */
-        .section-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 8px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #007bff, #8a2be2);
-            /* Gradiente de azul para roxo */
-            border-radius: 2px;
-            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5), 0 0 20px rgba(138, 43, 226, 0.5);
-        }
-
-        /* Efeito de hover no card do projeto */
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2), 0 5px 10px rgba(138, 43, 226, 0.1);
-        }
-
-        /* Efeito do ponto na linha do tempo */
-        .timeline-dot {
-            position: relative;
-            width: 16px;
-            height: 16px;
-            background-color: #007bff;
-            border-radius: 50%;
-            border: 2px solid #8a2be2;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:hover .timeline-dot {
-            transform: scale(1.2);
-            box-shadow: 0 0 15px #007bff, 0 0 25px #8a2be2;
-        }
-
-        /* Estilização específica do Modal */
-        .modal {
-            display: none;
-            /* Oculto por padrão */
-            position: fixed;
-            /* Fica no lugar */
-            z-index: 1000;
-            /* Fica no topo */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Largura total */
-            height: 100%;
-            /* Altura total */
-            overflow: auto;
-            /* Habilita scroll se necessário */
-            background-color: rgba(0, 0, 0, 0.8);
-            /* Preto com opacidade */
-            backdrop-filter: blur(5px);
-            /* Efeito de vidro fosco */
-            -webkit-backdrop-filter: blur(5px);
-            /* Suporte para Safari */
-            padding: 20px;
-        }
-
-        .modal-content {
-            background-color: #161b22;
-            margin: 5% auto;
-            /* 5% do topo e centralizado */
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3), 0 4px 8px rgba(138, 43, 226, 0.2);
-            position: relative;
-            width: 90%;
-            max-width: 900px;
-            animation: fadeIn 0.3s ease-out;
-            max-height: 90vh;
-            /* Limita a altura para habilitar scroll dentro do modal */
-            overflow-y: auto;
-            /* Habilita scroll para o conteúdo do modal */
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .close-button {
-            color: #c9d1d9;
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 36px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: #007bff;
-        }
-
-        /* Estilos dos botões */
-        .btn-primary {
-            background: linear-gradient(90deg, #007bff, #8a2be2);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5), 0 3px 8px rgba(138, 43, 226, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: #21262d;
-            color: #007bff;
-            border: 1px solid #007bff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background-color: #007bff;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-        }
-
-        /* Animações ao rolar */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+    <link rel="stylesheet" href="../index.css">
   <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="Mauricio Yokoyama Issei, Tech Lead, Solutions Architect, Salesforce, AWS, APIs, IA Engineering, SRE" />
+<meta name="keywords" content="Mauricio Yokoyama Issei, Tech Lead, Systems Analysis Specialist, Salesforce, AWS, APIs, SRE, Java, Node.js, Datadog, Technical Leadership" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/en/" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="profile" />
 <meta property="og:site_name" content="Maurício Yokoyama Issei" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:title" content="Mauricio Yokoyama Issei — Tech Lead &amp; AI Solutions Architect" />
-<meta property="og:description" content="Tech Lead with more than 20 years in software development and technical leadership, focusing on robust solutions in Salesforce, AWS, APIs and AI Engineering." />
+<meta property="og:title" content="Mauricio Yokoyama Issei — Tech Lead " />
+<meta property="og:description" content="Tech Lead with more than 20 years in software and technical leadership: Salesforce, AWS and APIs. Experience, 19 projects in STAR format, certifications and recommendations." />
 <meta property="og:url" content="https://mauricio.issei.com.br/en/" />
 <meta property="og:image" content="https://mauricio.issei.com.br/og-index.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Mauricio Yokoyama Issei — Tech Lead &amp; AI Solutions Architect" />
+<meta property="og:image:alt" content="Mauricio Yokoyama Issei — Tech Lead " />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Mauricio Yokoyama Issei — Tech Lead &amp; AI Solutions Architect" />
-<meta name="twitter:description" content="Tech Lead with more than 20 years in software development and technical leadership, focusing on robust solutions in Salesforce, AWS, APIs and AI Engineering." />
+<meta name="twitter:title" content="Mauricio Yokoyama Issei — Tech Lead " />
+<meta name="twitter:description" content="Tech Lead with more than 20 years in software and technical leadership: Salesforce, AWS and APIs. Experience, 19 projects in STAR format, certifications and recommendations." />
 <meta name="twitter:image" content="https://mauricio.issei.com.br/og-index.png" />
 <meta name="twitter:creator" content="@mauricioissei" />
 <meta name="twitter:site" content="@mauricioissei" />
@@ -346,17 +97,78 @@
       "@id": "https://mauricio.issei.com.br/en/#author",
       "name": "Mauricio Yokoyama Issei",
       "url": "https://mauricio.issei.com.br/en/",
-      "jobTitle": "Tech Lead / AI Solutions Architect",
+      "jobTitle": "Tech Lead Systems Analysis Specialist",
       "sameAs": [
         "https://www.linkedin.com/in/mauricioissei/",
         "https://github.com/issei",
-        "https://www.youtube.com/@MauricioIssei"
+        "https://www.youtube.com/@MauricioIssei",
+        "https://www.instagram.com/yokoyamaissei/"
       ],
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Mackenzie Presbyterian University",
-        "url": "https://www.mackenzie.br"
+      "email": "mailto:mauricio@issei.com.br",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Network"
       },
+      "knowsAbout": [
+        "Java",
+        "Node.js",
+        "Python",
+        "Go",
+        ". NET",
+        "SOLID",
+        "JavaScript",
+        "Spring Boot",
+        "MLOps",
+        "Web Security",
+        "Git",
+        "Github",
+        "Vue3",
+        "Machine Learning",
+        "AWS (S3, Lambda, DynamoDB, API Gateway, EKS, EC2, ECS, Code Deploy, Code Pipeline, Cloudwatch, IAM, SNS, SQLS)",
+        "Linux",
+        "Jenkins",
+        "IC/CD",
+        "Datadog",
+        "Splunk",
+        "SRE",
+        "Salesforce",
+        "REST/SOAP APIs",
+        "OAuth 2",
+        "Swagger",
+        "Apigee",
+        "Data Science",
+        "Data View",
+        "Statistical Tests (Python/R)",
+        "R",
+        "Statistics",
+        "Date Mesh",
+        "Scrum",
+        "Kanban",
+        "Lean Startup",
+        "Agile Coach",
+        "Digital Products Management",
+        "Agile Metrics",
+        "Business Agility",
+        "Technical Leadership",
+        "Communication",
+        "Focus",
+        "Pitch",
+        "Feedback",
+        "Interpersonal Relationship",
+        "Design Thinking",
+        "UX Strategy"
+      ],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Mackenzie Presbyterian University",
+          "url": "https://www.mackenzie.br"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Guarani College"
+        }
+      ],
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
         "name": "Post-graduation in Data Science – Data Analytics / Big Data",
@@ -378,13 +190,13 @@
       ],
       "@id": "https://mauricio.issei.com.br/en/#webpage",
       "url": "https://mauricio.issei.com.br/en/",
-      "name": "Mauricio Yokoyama Issei — Tech Lead & AI Solutions Architect",
+      "name": "Mauricio Yokoyama Issei — Tech Lead ",
       "isPartOf": {
         "@id": "https://mauricio.issei.com.br/en/#website"
       },
       "inLanguage": "en-US",
       "datePublished": "2026-01-10",
-      "dateModified": "2026-06-21",
+      "dateModified": "2026-09-22",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-index.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/en/#breadcrumb"
@@ -404,6 +216,401 @@
           "item": "https://mauricio.issei.com.br/en/"
         }
       ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://mauricio.issei.com.br/en/#certifications",
+      "name": "Professional Certifications of Mauricio Yokoyama Issei",
+      "numberOfItems": 26,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "MCP Developer Blueprint",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "O'Reilly Media, Inc."
+            },
+            "url": "https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8",
+            "dateCreated": "2026-09"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "GitHub Copilot Guide",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "O'Reilly Media, Inc."
+            },
+            "url": "https://www.credly.com/badges/116915b5-f94e-4d73-8e5f-9793766be71c",
+            "dateCreated": "2025-10"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AI Agency Design Patterns",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "O'Reilly Media, Inc."
+            },
+            "url": "https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07",
+            "dateCreated": "2025-10"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AI with Knowledge Graphs",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "O'Reilly Media, Inc."
+            },
+            "url": "https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7",
+            "dateCreated": "2025-10"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Building Intelligent AI Agents",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "O'Reilly Media, Inc."
+            },
+            "url": "https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259",
+            "dateCreated": "2025-10"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AI Agents with LangGraph",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "O'Reilly Media, Inc."
+            },
+            "url": "https://www.credly.com/badges/26427ba5-8744-4540-ab80-345844ea80c0",
+            "dateCreated": "2025-10"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "GenAI for Leaders",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "O'Reilly Media, Inc."
+            },
+            "url": "https://www.credly.com/badges/8122b027-8d0f-49de-b264-1a75491cbe0c",
+            "dateCreated": "2025-09"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AI for Leaders",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "StartSe University"
+            },
+            "url": "https://lms.startse.com/certificado/v2/678fc9c0f8158077f9db505c?studentId=5e337f0a99763dac88d37e79",
+            "dateCreated": "2025-04"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Datadog Power User",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Appoena"
+            },
+            "url": "https://badges.com.br/share/465eef0a1c14fc6a0383f3a805d294d0.php?a=7683",
+            "dateCreated": "2025-02"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Troubleshooting with Datadog",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Appoena"
+            },
+            "url": "https://badges.com.br/share/2e2541209f996bea07bc41521d86e4a3.php?a=7527",
+            "dateCreated": "2024-10"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Solutions Architecture",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Itaú Unibanco"
+            },
+            "url": "https://www.credly.com/badges/92fc3afc-6e11-4433-9a44-8dc5f6215dd0",
+            "dateCreated": "2024-09-26"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Practicer – Leadership D&A",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Itaú Unibanco"
+            },
+            "url": "https://www.credly.com/badges/a8dad682-bc42-4978-b085-ae720cbd8667",
+            "dateCreated": "2024-07-31"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Practitioner – Generative AI",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Itaú Unibanco"
+            },
+            "url": "https://www.credly.com/badges/231cd871-ab40-4c65-8834-e9ca77792f56",
+            "dateCreated": "2024-06-27"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Practicer – D&A Foundation",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Itaú Unibanco"
+            },
+            "url": "https://www.credly.com/badges/1f596ad2-9834-45b7-99f0-298eddd56cb7",
+            "dateCreated": "2024-05-29"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Practicer – D&A Foundation",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Itaú Unibanco"
+            },
+            "url": "http://badges.com.br/share/96939e18d6e0d41488339e14dc93d614.php?a=3694",
+            "dateCreated": "2023-11-27"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Solutions Architecture",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Itaú Unibanco"
+            },
+            "url": "http://badges.com.br/share/113a264018cdb4367fce684877af45d1.php?a=2148",
+            "dateCreated": "2022-04-30"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AWS Certified Cloud Practitioner",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Amazon Web Services (AWS)"
+            },
+            "url": "https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951?source=linked_in_profile",
+            "dateCreated": "2022-01"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "SRE Essentials",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Itcerts"
+            },
+            "url": "https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458",
+            "dateCreated": "2021-03"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "UX",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "FIAP"
+            },
+            "url": "https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=78eb0d83a5db0aadce891455e7d54dfb&action=view",
+            "dateCreated": "2021-03"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Artificial Intelligence",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "FIAP"
+            },
+            "url": "https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=d49e69fc55f98e0ce7abeeabba01fe8f&action=view",
+            "dateCreated": "2021-03"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Design Think",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "FIAP"
+            },
+            "url": "https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=5aeee13691392217120b14b94ffb905b&action=view",
+            "dateCreated": "2021-03"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Alura Training and Training",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Alura"
+            },
+            "url": "https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Salesforce Trailhead Training",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Salesforce"
+            },
+            "url": "https://www.salesforce.com/trailblazer/issei",
+            "dateCreated": "2018"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Salesforce Workshop for Developers",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Salesforce"
+            },
+            "url": "https://cursos.alura.com.br/certificate/17c88e93-13d1-4ac2-826c-7254c53a93a0",
+            "dateCreated": "2017-12"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 25,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "AWS Technical Professional",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Amazon Web Services (AWS)"
+            },
+            "dateCreated": "2017-04"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 26,
+          "item": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Kony Certified Developer",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Kony, Inc."
+            },
+            "dateCreated": "2016-04"
+          }
+        }
+      ]
     }
   ]
 }
@@ -415,269 +622,919 @@
     <link rel="alternate" hreflang="x-default" href="https://mauricio.issei.com.br/" />
 </head>
 
-<body class="antialiased">
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg backdrop-blur-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#hero"
-                class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Mauritius
-Yokoyama Issei</a>
-            <div class="hidden md:flex space-x-4 text-sm">
-                <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">About Me</a>
-                <a href="#skills"
-                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Skills</a>
-                <a href="#experience"
-                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Experience</a>
-                <a href="#projects"
-                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Projects</a>
-                <a href="#education"
-                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Training</a>
-                <a href="#courses" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Courses</a>
-                <a href="#recommendations"
-                    class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Recommendations</a>
-                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Contact</a>
-                <a href="./catalogo.html" class="text-blue-400 hover:bg-gray-700">Catalog</a>
-            </div>
-            <!-- Botão do Menu Mobile -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none"
-                aria-controls="mobile-menu" aria-expanded="false">
-                <span class="sr-only">Open Main Menu</span>
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-            </button>
-        </div>
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 py-2">
-            <a href="#about" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">About Me</a>
-            <a href="#skills" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Skills</a>
-            <a href="#experience" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Experience</a>
-            <a href="#projects" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Projects</a>
-            <a href="#education" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Training</a>
-            <a href="#courses" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Courses</a>
-            <a href="#recommendations" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Recommendations</a>
-            <a href="#contact" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Contact</a>
-            <a href="./catalogo.html" class="block px-6 py-2 text-blue-400 hover:bg-gray-700">Catalog</a>
+    <a class="pf-skip" href="#conteudo">Skip to content</a>
+
+    <nav class="pf-nav" aria-label="Main navigation">
+        <div class="pf-nav-in">
+            <a class="pf-brand" href="#home">Mauricio Yokoyama Issei</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Training</a></li>
+                <li><a href="#recommendations">Recommendations</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="./catalogo.html">Catalog</a></li>
+            </ul>
         </div>
     </nav>
 
-    <main class="pt-20">
-        <!-- Seção Hero -->
-        <section id="hero"
-            class="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white overflow-hidden p-6">
-            <div class="hero-background"></div>
-            <div id="hero-content" class="text-center z-10 max-w-4xl mx-auto">
-                <!--
-                  Conteúdo estático de fallback, substituído por js/cv-renderer.js
-                  com os dados de cv.json. NÃO remover: sem ele a home fica sem
-                  <h1> e com o hero vazio para crawlers que não executam
-                  JavaScript e enquanto o fetch do CV não resolve.
-                -->
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
-                    Mauricio Yokoyama Issei
-                </h1>
-                <p class="text-2xl md:text-4xl font-light mb-8 text-blue-300">
-                    Tech Lead Systems Analysis Specialist
-                </p>
-                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
-                    More than 20 years of experience in software development and leadership
-technical, focusing on robust and innovative solutions in Salesforce, AWS and APIs.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#projects" class="btn-primary inline-block">View Projects</a>
-                    <a href="https://www.linkedin.com/in/mauricioissei/" target="_blank"
-                        rel="noopener" class="btn-secondary inline-block">Connect to LinkedIn</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Sobre Mim -->
-        <section id="about" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll" aria-labelledby="about-title">
-            <div class="container mx-auto max-w-6xl">
-                <h2 id="about-title" class="text-4xl font-bold text-white mb-12 text-center section-title">About Me
-                </h2>
-                <div class="flex flex-col md:flex-row items-center md:space-x-12">
-                    <div class="md:w-1/3 mb-8 md:mb-0 flex-shrink-0">
-                        <img src="../foto1.png" alt="Mauricio Yokoyama Issei"
-                            onerror="this.onerror=null;this.src='https://placehold.co/400x400/21262d/c9d1d9?text=Mauricio+Yokoyama+Issei';"
-                            alt="Maurício Yokoyama Issei"
-                            class="rounded-full shadow-lg border-4 border-blue-500 w-64 h-64 mx-auto object-cover"
-                            loading="lazy">
-                    </div>
-                    <div id="about-content" class="md:w-2/3 text-lg text-gray-300 leading-relaxed">
-                        <!-- Conteúdo Sobre Mim será carregado aqui -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Habilidades -->
-        <section id="skills" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="skills-title">
-            <div class="container mx-auto max-w-7xl">
-                <h2 id="skills-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Skills
-& Skills</h2>
-                <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Habilidades serão carregadas dinamicamente aqui -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Experiência -->
-        <section id="experience" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll"
-            aria-labelledby="experience-title">
-            <div class="container mx-auto max-w-5xl">
-                <h2 id="experience-title" class="text-4xl font-bold text-white mb-16 text-center section-title">
-                    Professional Experience</h2>
-                <div id="experience-container" class="relative border-l-2 border-gray-700 ml-4 md:ml-0">
-                    <!-- Experiência será carregada dinamicamente aqui -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Projetos -->
-        <section id="projects" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll"
-            aria-labelledby="projects-title">
-            <div class="container mx-auto max-w-7xl">
-                <h2 id="projects-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Projects
-Highlighting</h2>
-                <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Projetos serão carregados dinamicamente aqui -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Modal de Detalhes do Projeto -->
-        <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-project-name">
-            <div class="modal-content">
-                <span class="close-button" onclick="closeModal()" role="button" tabindex="0"
-                    aria-label="Close project detail">&times;</span>
-                <h3 id="modal-project-name" class="text-3xl font-bold text-white mb-4" tabindex="-1"></h3>
-                <p id="modal-project-period" class="text-md text-gray-400 mb-2"></p>
-                <p id="modal-project-company" class="text-md text-gray-400 mb-6"></p>
-
-                <div id="modal-project-star-details">
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Situation:</h4>
-                    <p id="modal-project-situacao" class="text-gray-300 mb-4 bg-gray-800 p-3 rounded"></p>
-
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Tasks:</h4>
-                    <ul id="modal-project-tarefas"
-                        class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
-
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Actions:</h4>
-                    <ul id="modal-project-acoes"
-                        class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
-
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Results:</h4>
-                    <ul id="modal-project-resultados"
-                        class="list-disc list-inside text-gray-300 mb-4 pl-4 bg-gray-800 p-3 rounded space-y-1"></ul>
-                </div>
-
-                <h4 class="text-xl font-semibold text-blue-400 mb-2 mt-4" id="modal-project-tech-title"
-                    style="display:none;">Technologies:</h4>
-                <div id="modal-project-technologies" class="flex flex-wrap gap-2"></div>
-            </div>
-        </div>
-
-        <!-- Seção de Formação e Certificações -->
-        <section id="education" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll"
-            aria-labelledby="education-title">
-            <div class="container mx-auto max-w-6xl">
-                <h2 id="education-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Training
-& Certifications</h2>
-
-                <div class="mb-16">
-                    <h3 class="text-3xl font-semibold text-blue-400 mb-8 text-center">Academic Training</h3>
-                    <div id="education-container" class="space-y-8">
-                        <!-- Formação será carregada dinamicamente aqui -->
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-3xl font-semibold text-blue-400 mb-8 text-center">Certifications</h3>
-                    <div id="certifications-container"
-                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        <!-- Certificações serão carregadas dinamicamente aqui -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Cursos -->
-        <section id="courses" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll" aria-labelledby="courses-title">
-            <div class="container mx-auto max-w-7xl">
-                <h2 id="courses-title" class="text-4xl font-bold text-white mb-12 text-center section-title">Courses and
-Capacitations (Allura)</h2>
-                <a href="https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0"
-                    target="_blank" class="text-blue-400 hover:underline text-sm mt-2 self-start">View General Certificate
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
-                <div id="courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cursos serão carregados dinamicamente aqui -->
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Seção de Recomendações -->
-        <section id="recommendations" class="py-16 md:py-24 bg-gray-900 px-6 animate-on-scroll"
-            aria-labelledby="recommendations-title">
-            <div class="container mx-auto max-w-6xl">
-                <h2 id="recommendations-title" class="text-4xl font-bold text-white mb-12 text-center section-title">
-                    Recommendations</h2>
-                <div id="recommendations-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Recomendações serão carregadas dinamicamente aqui -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Contato -->
-        <section id="contact" class="py-16 md:py-24 bg-gray-800 px-6 animate-on-scroll"
-            aria-labelledby="contact-title-main">
-            <div class="container mx-auto max-w-4xl text-center">
-                <h2 id="contact-title-main" class="text-4xl font-bold text-white mb-12 section-title">Contact
-                </h2>
-                <div id="contact-container">
-                    <!-- Conteúdo de Contato será carregado aqui -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-500 py-8 text-center text-sm">
-        <div class="container mx-auto px-6">
-            <p>&copy; <span id="current-year"></span> Maurice Issei. All rights reserved.</p>
-            <p class="mt-2">Developed with <i class="fa-solid fa-heart text-red-500"></i> and technology.</p>
-            <p class="mt-3 text-xs">
-                <a href="./privacidade.html" class="hover:text-blue-400 mx-2">Privacy</a>·
-                <a href="./termos.html" class="hover:text-blue-400 mx-2">Terms</a>·
-                <a href="./cookies.html" class="hover:text-blue-400 mx-2">Cookies</a>·
-                <a href="#" onclick="event.preventDefault(); if(window.cookieConsent) window.cookieConsent.open();"
-                    class="hover:text-blue-400 mx-2">Cookies Preferences</a>
-            </p>
-        </div>
-    </footer>
+<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json (NÃO editar à mão) -->
+<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span><i data-l="dev"></i><i data-l="lid"></i><i data-l="cld"></i><i data-l="plt"></i><i data-l="agi"></i></div>
+<div class="pf-bundle" aria-hidden="true"><i data-l="dev"></i><i data-l="lid"></i><i data-l="cld"></i><i data-l="plt"></i><i data-l="agi"></i><i data-l="uxd"></i><i data-l="dat"></i></div>
+<header id="home" class="pf-hero">
+  <div class="pf-hero-lines" aria-hidden="true"><i data-l="dev"></i><i data-l="lid"></i><i data-l="cld"></i><i data-l="plt"></i><i data-l="agi"></i><i data-l="uxd"></i><i data-l="dat"></i></div>
+  <div class="pf-wrap">
+    <p class="pf-eyebrow">Tech Lead · Network</p>
+    <h1>Mauricio Yokoyama Issei</h1>
+    <p class="pf-hero-title">Tech Lead Systems Analysis Specialist</p>
+    <p class="pf-hero-lead">More than 20 years of experience in software development and technical leadership, focusing on robust and innovative solutions in Salesforce, AWS and APIs.</p>
+    <dl class="pf-facts">
+      <div><dt>Location</dt><dd>São Paulo, SP, Brazil</dd></div>
+      <div><dt>Working model</dt><dd>Hybrid</dd></div>
+      <div><dt>Career since</dt><dd>2003 (Sysgen)</dd></div>
+      <div><dt>Current action</dt><dd>Network since 2018</dd></div>
+    </dl>
+    <div class="pf-cta">
+      <a class="pf-btn" href="#experience">View experience</a>
+      <a class="pf-btn pf-btn--ghost" href="./curriculo.html">Classic format curriculum</a>
+      <a class="pf-btn pf-btn--ghost pf-btn--yt" href="https://www.youtube.com/@MauricioIssei" target="_blank" rel="noopener noreferrer" aria-label="Channel @MauricioIssei on YouTube (Opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg> ♪ I don't know ♪</a>
+    </div>
+    <ul class="pf-social">
+  <li><a href="https://www.linkedin.com/in/mauricioissei/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn of Mauritius Yokoyama Issei (Opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></li>
+  <li><a href="https://github.com/issei" target="_blank" rel="noopener noreferrer" aria-label="GitHub of Mauritius Yokoyama Issei (opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.46-1.1-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a></li>
+  <li><a href="https://www.youtube.com/@MauricioIssei" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel of Mauritius Yokoyama Issei (opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg></a></li>
+  <li><a href="https://www.instagram.com/yokoyamaissei/" target="_blank" rel="noopener noreferrer" aria-label="Instagram by Mauricio Yokoyama Issei (Opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85C2.42 3.92 3.94 2.37 7.15 2.27 8.42 2.21 8.8 2.2 12 2.2zm0 4.86a4.94 4.94 0 1 0 0 9.88 4.94 4.94 0 0 0 0-9.88zm0 8.15a3.21 3.21 0 1 1 0-6.42 3.21 3.21 0 0 1 0 6.42zm5.14-9.5a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg></a></li>
+  <li><a href="mailto:mauricio@issei.com.br" aria-label="Send email to mauricio@issei.com.br"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3zM5.2 7l6.8 4.2L18.8 7z"/></svg></a></li>
+</ul>
+  </div>
+</header>
+<main id="conteudo">
+<section id="about" class="pf-section" aria-labelledby="about-title">
+  <div class="pf-wrap">
+    <h2 class="pf-h2" id="about-title">About</h2>
+    
+<div class="pf-about"><p>I specialize in Systems Analysis with over 20 years of experience in software development, system analysis, platform integration and problem solving.</p>
+<p>My expertise includes observability and support skills, AWS, REST/SOAP APIs, Salesforce and System Development (Java, Node.js, Python, Go and .NET).</p>
+<p>I am proud to lead teams and deliver robust technological solutions, prioritizing operational efficiency, innovation and measurable results. SRE certified, with expertise in Data Science, Business Agility and AWS, I combine technical knowledge and strategic vision to manage complex projects.</p>
+<p>In addition, I stress the creation of collaborative environments and the positive impact on teams and organizations. I love challenges where I can combine technical expertise, business vision and agile practices to achieve transformative results.</p></div>
+<h3 class="pf-h3">Linemap</h3>
+<div class="pf-metro" id="mapa">
+  <ul class="pf-legend" aria-label="Lines: competence groups">
+    <li><a class="pf-key" data-l="dev" href="#linha-dev"><span class="pf-key-code">DE V</span> Developer <span class="pf-key-since">since 2003</span></a></li>
+    <li><a class="pf-key" data-l="lid" href="#linha-lid"><span class="pf-key-code">LID</span> Leadership &amp; Interpersonal Skills <span class="pf-key-since">since 2005</span></a></li>
+    <li><a class="pf-key" data-l="cld" href="#linha-cld"><span class="pf-key-code">CLD</span> Cloud &amp; DevOps <span class="pf-key-since">since 2012</span></a></li>
+    <li><a class="pf-key" data-l="plt" href="#linha-plt"><span class="pf-key-code">PLT</span> &amp; APIs Platforms <span class="pf-key-since">since 2017</span></a></li>
+    <li><a class="pf-key" data-l="agi" href="#linha-agi"><span class="pf-key-code">AGI</span> Management &amp; Agile methodologies <span class="pf-key-since">since 2017</span></a></li>
+    <li><a class="pf-key" data-l="uxd" href="#linha-uxd"><span class="pf-key-code">UXD</span> UX &amp; Design <span class="pf-key-since">since 2017</span></a></li>
+    <li><a class="pf-key" data-l="dat" href="#linha-dat"><span class="pf-key-code">DAT</span> Data Science &amp; Analytics <span class="pf-key-since">since 2019</span></a></li>
+  </ul>
+  <nav class="pf-grid" style="--years:24" aria-label="Map of lines: competencies and projects per year from 2003 to 2026">
+<span class="pf-yr" style="--c:2;--r:1" aria-hidden="true">2003</span>
+<span class="pf-yr" style="--c:3;--r:1" aria-hidden="true">2004</span>
+<span class="pf-yr" style="--c:4;--r:1" aria-hidden="true">2005</span>
+<span class="pf-yr" style="--c:5;--r:1" aria-hidden="true">2006</span>
+<span class="pf-yr" style="--c:6;--r:1" aria-hidden="true">2007</span>
+<span class="pf-yr" style="--c:7;--r:1" aria-hidden="true">2008</span>
+<span class="pf-yr" style="--c:8;--r:1" aria-hidden="true">2009</span>
+<span class="pf-yr" style="--c:9;--r:1" aria-hidden="true">2010</span>
+<span class="pf-yr" style="--c:10;--r:1" aria-hidden="true">2011</span>
+<span class="pf-yr" style="--c:11;--r:1" aria-hidden="true">2012</span>
+<span class="pf-yr" style="--c:12;--r:1" aria-hidden="true">2013</span>
+<span class="pf-yr" style="--c:13;--r:1" aria-hidden="true">2014</span>
+<span class="pf-yr" style="--c:14;--r:1" aria-hidden="true">2015</span>
+<span class="pf-yr" style="--c:15;--r:1" aria-hidden="true">2016</span>
+<span class="pf-yr" style="--c:16;--r:1" aria-hidden="true">2017</span>
+<span class="pf-yr" style="--c:17;--r:1" aria-hidden="true">2018</span>
+<span class="pf-yr" style="--c:18;--r:1" aria-hidden="true">2019</span>
+<span class="pf-yr" style="--c:19;--r:1" aria-hidden="true">2020</span>
+<span class="pf-yr" style="--c:20;--r:1" aria-hidden="true">2021</span>
+<span class="pf-yr" style="--c:21;--r:1" aria-hidden="true">2022</span>
+<span class="pf-yr" style="--c:22;--r:1" aria-hidden="true">2023</span>
+<span class="pf-yr" style="--c:23;--r:1" aria-hidden="true">2024</span>
+<span class="pf-yr" style="--c:24;--r:1" aria-hidden="true">2025</span>
+<span class="pf-yr" style="--c:25;--r:1" aria-hidden="true">2026</span>
+<span class="pf-code" data-l="dev" style="--c:1;--r:2" aria-hidden="true">DE V</span>
+<span class="pf-code" data-l="lid" style="--c:1;--r:3" aria-hidden="true">LID</span>
+<span class="pf-code" data-l="cld" style="--c:1;--r:4" aria-hidden="true">CLD</span>
+<span class="pf-code" data-l="plt" style="--c:1;--r:5" aria-hidden="true">PLT</span>
+<span class="pf-code" data-l="agi" style="--c:1;--r:6" aria-hidden="true">AGI</span>
+<span class="pf-code" data-l="uxd" style="--c:1;--r:7" aria-hidden="true">UXD</span>
+<span class="pf-code" data-l="dat" style="--c:1;--r:8" aria-hidden="true">DAT</span>
+<span class="pf-seg" data-l="dev" style="--c:2;--c2:26;--r:2;--n:24" aria-hidden="true"></span>
+<span class="pf-seg" data-l="lid" style="--c:4;--c2:26;--r:3;--n:22" aria-hidden="true"></span>
+<span class="pf-seg" data-l="cld" style="--c:11;--c2:26;--r:4;--n:15" aria-hidden="true"></span>
+<span class="pf-seg" data-l="plt" style="--c:16;--c2:26;--r:5;--n:10" aria-hidden="true"></span>
+<span class="pf-seg" data-l="agi" style="--c:16;--c2:26;--r:6;--n:10" aria-hidden="true"></span>
+<span class="pf-seg" data-l="uxd" style="--c:16;--c2:26;--r:7;--n:10" aria-hidden="true"></span>
+<span class="pf-seg" data-l="dat" style="--c:18;--c2:26;--r:8;--n:8" aria-hidden="true"></span>
+<a class="pf-hub" href="#exp-sysgen" style="--c:2;--r:2;--r2:3"><span class="pf-sr">2003, Sysgen: Development</span></a>
+<span class="pf-hub-name" style="--c:2;--r:9" aria-hidden="true">Sysgen</span>
+<a class="pf-hub" href="#exp-telefonica" style="--c:4;--r:2;--r2:4"><span class="pf-sr">2005, Telephone: Development, Leadership &amp; Interpersonal Skills</span></a>
+<span class="pf-hub-name" style="--c:4;--r:9" aria-hidden="true">Telephone</span>
+<a class="pf-hub" href="#exp-indra" style="--c:11;--r:2;--r2:5"><span class="pf-sr">2012, Indra: Leadership &amp; Interpersonal Skills, Cloud &amp; DevOps, Development</span></a>
+<span class="pf-hub-name" style="--c:11;--r:9" aria-hidden="true">Indra</span>
+<a class="pf-hub" href="#exp-serasa-experian" style="--c:16;--r:2;--r2:8"><span class="pf-sr">2017, Serasa Experian: Cloud &amp; DevOps, UX &amp; Design, Development, Platforms &amp; APIs, Management &amp; Agile Methodologies</span></a>
+<span class="pf-hub-name" style="--c:16;--r:9" aria-hidden="true">Serasa Experian</span>
+<a class="pf-hub" href="#exp-rede" style="--c:17;--r:3;--r2:6"><span class="pf-sr">2018, Network: Platforms &amp; APIs, Cloud &amp; DevOps, Leadership &amp; Interpersonal Skills</span></a>
+<span class="pf-hub-name" style="--c:17;--r:9" aria-hidden="true">Network</span>
+<a class="pf-stop" data-l="plt" href="#rede-2018" style="--c:17;--r:5"><span class="pf-sr">2018, Platforms &amp; APIs: Transition of the Support Team</span></a>
+<a class="pf-stop" data-l="dev" href="#rede-2019" style="--c:18;--r:2"><span class="pf-stop-n" aria-hidden="true">2</span><span class="pf-sr">2019, Development: Support Accreditation Network (Força Vendas + WF1); AFVC Support - Sales Force</span></a>
+<a class="pf-stop" data-l="plt" href="#rede-2019" style="--c:18;--r:5"><span class="pf-stop-n" aria-hidden="true">3</span><span class="pf-sr">2019, Platforms &amp; APIs: Support Network Accreditation (Force Sales + WF1); AFVC Support - Sales Force; AFVC Support - Field Force</span></a>
+<a class="pf-stop" data-l="dat" href="#education" style="--c:18;--r:8"><span class="pf-sr">2019, Data Science &amp; Analytics: Post-graduation in Data Science – Data Analytics / Big Data</span></a>
+<a class="pf-stop" data-l="cld" href="#rede-2020" style="--c:19;--r:4"><span class="pf-sr">2020, Cloud &amp; DevOps: Core Network Support (GE1, WF1, WM1, etc.)</span></a>
+<a class="pf-stop" data-l="plt" href="#rede-2020" style="--c:19;--r:5"><span class="pf-stop-n" aria-hidden="true">2</span><span class="pf-sr">2020, &amp; APIs: Core Network Support (GE1, WF1, WM1, etc.); Budget Review and CINVEST of the new Salesforce contract</span></a>
+<a class="pf-stop" data-l="agi" href="#rede-2020" style="--c:19;--r:6"><span class="pf-stop-n" aria-hidden="true">2</span><span class="pf-sr">2020, Management &amp; Agile methodologies: Supplier budget review (MGI Tech &amp; Maplink); Budget Review and CINVEST of the new Salesforce contract</span></a>
+<a class="pf-stop" data-l="cld" href="#rede-2021" style="--c:20;--r:4"><span class="pf-stop-n" aria-hidden="true">2</span><span class="pf-sr">2021, Cloud &amp; DevOps: Onboarding of the new Integrated Community model and Build&amp;Run; Discovery for switching Sybase ASE Corp IPs</span></a>
+<a class="pf-stop" data-l="agi" href="#rede-2021" style="--c:20;--r:6"><span class="pf-sr">2021, Management &amp; Agile methodologies: Onboarding of the new Integrated Community model and Build&amp;Run</span></a>
+<a class="pf-stop" data-l="cld" href="#rede-2022" style="--c:21;--r:4"><span class="pf-stop-n" aria-hidden="true">2</span><span class="pf-sr">2022, Cloud &amp; DevOps: Sending WhatsApp Accreditation Formalization; Validation of the Banking House in the channel</span></a>
+<a class="pf-stop" data-l="plt" href="#rede-2022" style="--c:21;--r:5"><span class="pf-stop-n" aria-hidden="true">5</span><span class="pf-sr">2022, Platforms &amp; APIs: Sending WhatsApp Accreditation Formalization; Validation of the Banking House in the channel; Physical Person Accreditation; Evolution of Accreditation in the Standard Plan; PJ Current Account Opening by Cockpit Network</span></a>
+<a class="pf-stop" data-l="cld" href="#rede-2023" style="--c:22;--r:4"><span class="pf-sr">2023, Cloud &amp; DevOps: WF Callback Accreditation Status Update</span></a>
+<a class="pf-stop" data-l="plt" href="#rede-2023" style="--c:22;--r:5"><span class="pf-sr">2023, &amp; APIs: WF Callback Accreditation Status Update</span></a>
+<a class="pf-stop" data-l="dev" href="#rede-2024" style="--c:23;--r:2"><span class="pf-sr">2024, Development: Commercial Grouping Project</span></a>
+<a class="pf-stop" data-l="cld" href="#rede-2024" style="--c:23;--r:4"><span class="pf-stop-n" aria-hidden="true">2</span><span class="pf-sr">2024, Cloud &amp; DevOps: Machine Time Delivery Project by the Executive; Commercial Grouping Project</span></a>
+<a class="pf-stop" data-l="plt" href="#rede-2024" style="--c:23;--r:5"><span class="pf-stop-n" aria-hidden="true">3</span><span class="pf-sr">2024, Platforms &amp; APIs: Implementation of Likert on Days; Project of Delivery at Machine Time by the Executive; Commercial Grouping Project</span></a>
+<a class="pf-stop" data-l="dat" href="#rede-2024" style="--c:23;--r:8"><span class="pf-sr">2024, Data Science &amp; Analytics: Implementation of Likert on Days</span></a>
+<a class="pf-stop" data-l="plt" href="#rede-2025" style="--c:24;--r:5"><span class="pf-sr">2025, Platforms &amp; APIs: Pipe Automatic Commercial</span></a>
+  </nav>
+  <p class="pf-map-note">Each line is a competency group: it begins at the first station where it appears and follows until today. The points are projects, and the stations that cross various lines are employers.</p>
+</div>
+<h3 class="pf-h3">Competences per line</h3>
+<ul class="pf-lines">
+  <li class="pf-line-card" id="linha-dev" data-l="dev">
+    <h4><span class="pf-key-code">DE V</span> Developer</h4>
+    <p class="pf-since">Since 2003 (first season: Sysgen)</p>
+    <ul class="pf-pills"><li>Java</li><li>Node.js</li><li>Python</li><li>Go</li><li>. NET</li><li>SOLID</li><li>JavaScript</li><li>Spring Boot</li><li>MLOps</li><li>Web Security</li><li>Git</li><li>Github</li><li>Vue3</li><li>Machine Learning</li></ul>
+  </li>
+  <li class="pf-line-card" id="linha-lid" data-l="lid">
+    <h4><span class="pf-key-code">LID</span> Leadership &amp; Interpersonal Skills</h4>
+    <p class="pf-since">Since 2005 (first station: Telephone)</p>
+    <ul class="pf-pills"><li>Technical Leadership</li><li>Communication</li><li>Focus</li><li>Pitch</li><li>Feedback</li><li>Interpersonal Relationship</li></ul>
+  </li>
+  <li class="pf-line-card" id="linha-cld" data-l="cld">
+    <h4><span class="pf-key-code">CLD</span> Cloud &amp; DevOps</h4>
+    <p class="pf-since">Since 2012 (first station: Indra)</p>
+    <ul class="pf-pills"><li>AWS (S3, Lambda, DynamoDB, API Gateway, EKS, EC2, ECS, Code Deploy, Code Pipeline, Cloudwatch, IAM, SNS, SQLS)</li><li>Linux</li><li>Jenkins</li><li>IC/CD</li><li>Datadog</li><li>Splunk</li><li>SRE</li></ul>
+  </li>
+  <li class="pf-line-card" id="linha-plt" data-l="plt">
+    <h4><span class="pf-key-code">PLT</span> &amp; APIs Platforms</h4>
+    <p class="pf-since">Since 2017 (first season: Serasa Experian)</p>
+    <ul class="pf-pills"><li>Salesforce</li><li>REST/SOAP APIs</li><li>OAuth 2</li><li>Swagger</li><li>Apigee</li></ul>
+  </li>
+  <li class="pf-line-card" id="linha-agi" data-l="agi">
+    <h4><span class="pf-key-code">AGI</span> Management &amp; Agile methodologies</h4>
+    <p class="pf-since">Since 2017 (first season: Serasa Experian)</p>
+    <ul class="pf-pills"><li>Scrum</li><li>Kanban</li><li>Lean Startup</li><li>Agile Coach</li><li>Digital Products Management</li><li>Agile Metrics</li><li>Business Agility</li></ul>
+  </li>
+  <li class="pf-line-card" id="linha-uxd" data-l="uxd">
+    <h4><span class="pf-key-code">UXD</span> UX &amp; Design</h4>
+    <p class="pf-since">Since 2017 (first season: Serasa Experian)</p>
+    <ul class="pf-pills"><li>Design Thinking</li><li>UX Strategy</li></ul>
+  </li>
+  <li class="pf-line-card" id="linha-dat" data-l="dat">
+    <h4><span class="pf-key-code">DAT</span> Data Science &amp; Analytics</h4>
+    <p class="pf-since">Since 2019 (first station: Post-graduation in Data Science – Data Analytics / Big Data)</p>
+    <ul class="pf-pills"><li>Data Science</li><li>Data View</li><li>Statistical Tests (Python/R)</li><li>R</li><li>Statistics</li><li>Date Mesh</li></ul>
+  </li>
+</ul>
+  </div>
+</section>
+<section id="results" class="pf-section" aria-labelledby="results-title">
+  <div class="pf-wrap">
+    <h2 class="pf-h2" id="results-title">Quantified results</h2>
+    <p class="pf-lead">Project results that cite percentage, value or term, transcribed without editing. Each line leads to the source project.</p>
+<ol class="pf-board">
+  <li>
+    <span class="pf-board-val" aria-hidden="true"><span class="pf-flap">1</span><span class="pf-flap">5</span><span class="pf-flap">%</span></span>
+    <span class="pf-board-text">Increase of more than <strong class="pf-metric">15%</strong> in achieving goals and agility in scheduling and customer care.</span>
+    <a class="pf-board-src" href="#p-2025-pipe-automatica-comercial">Commercial Automatic Pipe · 2025</a>
+  </li>
+  <li>
+    <span class="pf-board-val" aria-hidden="true"><span class="pf-flap">D</span><span class="pf-flap">0</span></span>
+    <span class="pf-board-text">Optimization of the logistic operation, managing to perform in <strong class="pf-metric">D0</strong> in most cases the complete delivery of the proposal made by the commercial.</span>
+    <a class="pf-board-src" href="#p-2022-evolucao-do-credenciamento-no-plano-padrao">Development of Accreditation in the Standard Plan · 2022</a>
+  </li>
+  <li>
+    <span class="pf-board-val" aria-hidden="true"><span class="pf-flap">D</span><span class="pf-flap">2</span></span>
+    <span class="pf-board-text">Executive informs the customer correctly in hiring time if it has the anticipation in <strong class="pf-metric">D2</strong>.</span>
+    <a class="pf-board-src" href="#p-2022-evolucao-do-credenciamento-no-plano-padrao">Development of Accreditation in the Standard Plan · 2022</a>
+  </li>
+  <li>
+    <span class="pf-board-val" aria-hidden="true"><span class="pf-flap">5</span><span class="pf-flap">0</span><span class="pf-flap">0</span><span class="pf-flap">k</span></span>
+    <span class="pf-board-text">Economy of approximately <strong class="pf-metric">500 k</strong> in renegotiated contracts.</span>
+    <a class="pf-board-src" href="#p-2020-revisao-orcamentaria-de-fornecedores-mgi-tech-maplink">Supplier budget review (MGI Tech &amp; Maplink) · 2020</a>
+  </li>
+  <li>
+    <span class="pf-board-val" aria-hidden="true"><span class="pf-flap">3</span><span class="pf-flap">M</span><span class="pf-flap">M</span></span>
+    <span class="pf-board-text">Economy <strong class="pf-metric">3MM</strong> in the final contract negotiation.</span>
+    <a class="pf-board-src" href="#p-2020-revisao-orcamentaria-e-cinvest-do-novo-contrato-salesforce">Budget review and CINVEST of the new Salesforce contract · 2020</a>
+  </li>
+</ol>
+  </div>
+</section>
+<section id="experience" class="pf-section" aria-labelledby="experience-title">
+  <div class="pf-wrap">
+    <h2 class="pf-h2" id="experience-title">Experience</h2>
+    <p class="pf-lead">5 employers and 19 projects described in STAR format (Situation, Tasks, Actions, Results). Open a project to see the detail.</p>
+<div class="pf-exps">
+<article class="pf-exp" id="exp-rede" aria-labelledby="exp-rede-h">
+  <header class="pf-exp-head">
+    <p class="pf-exp-when">Feb 2018 – the moment · São Paulo, SP, Brazil · Hybrid</p>
+    <h3 id="exp-rede-h">Tech Lead <span class="pf-exp-org">Network</span></h3>
+    <ul class="pf-ticks" aria-label="Map Lines"><li data-l="plt"><abbr title="Platforms &amp; APIs">PLT</abbr></li><li data-l="cld"><abbr title="Cloud &amp; DevOps">CLD</abbr></li><li data-l="lid"><abbr title="Leadership &amp; Interpersonal Skills">LID</abbr></li></ul>
+  </header>
+  <p class="pf-exp-desc">Technical Leader responsible for solutions on the Salesforce platform, with on-premise integration architectures and AWS. I act in the definition and development of best practices, strengthening the corporate knowledge base, focusing on the needs of customers.</p>
+  <h4 class="pf-h4">Results</h4><ul><li>Reduction and stability of the Salesforce environment (2018)</li><li>Extension of the number of executives and technicians using the tools (2018)</li><li>Reduction of critical impact problems to the Logistics operation (2019)</li><li>Less time to attend incidents (2019)</li><li>Economy <strong class="pf-metric">3MM</strong> in the negotiation of the Salesforce contract (2020)</li><li>Achievement of incident reduction targets and service time (2020)</li><li>Stable and scalable PJ Account Opening Solution (2022)</li><li>Optimization of logistics operation with deliveries in <strong class="pf-metric">D0</strong> (2022)</li><li>Modernization of the Commercial Grouping Process (2024)</li><li>Increase of more than <strong class="pf-metric">15%</strong> in achieving the goals with the Automatic Pipe (2025)</li></ul>
+  
+  <ul class="pf-pills"><li>Salesforce Administration</li><li>SRE</li><li>Technical Leadership</li><li>Solutions Architecture</li></ul>
+  <h4 class="pf-h4">Projects in STAR format (19)</h4>
+  <div class="pf-years">
+  <section class="pf-year" id="rede-2025" aria-label="2025 projects">
+    <p class="pf-year-num" aria-hidden="true">2025</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2025-pipe-automatica-comercial" data-l="plt">
+  <summary>
+    <h5>Commercial Automatic Pipe</h5>
+    <span class="pf-star-key">Increase of more than <strong class="pf-metric">15%</strong> in achieving goals and agility in scheduling and customer care.</span>
+    <span class="pf-pills"><span>Salesforce</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>The executive's work list did not have an intelligent prioritization to optimize the planning time of the day and the goal to be met by the executive.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Discovery and implementation of quick feasibility solution to meet pain and evaluate the planning model and methodology.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Designed outline solution to process prioritization intelligence in Salesforce itself with scheduled batch processes.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Increase of more than <strong class="pf-metric">15%</strong> in achieving goals and agility in scheduling and customer care.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  <section class="pf-year" id="rede-2024" aria-label="2024 Projects">
+    <p class="pf-year-num" aria-hidden="true">2024</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2024-implementacao-do-likert-nas-jornadas" data-l="dat">
+  <summary>
+    <h5>Implementation of Likert on Days</h5>
+    
+    <span class="pf-pills"><span>Quicksight</span><span>Salesforce</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>No business day evaluation data.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>To enable the capture of the information of the journey satisfaction in a controlled and reusable way by the other journeys.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Designed technical solution to standardize the capture and validation of eligibility for capture of the research.</li><li>Developed POC in Quicksight analytical follow-up report.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Visibility and creation of OKR of satisfaction of the journeys.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2024-projeto-de-entrega-na-hora-da-maquina-pelo-executivo" data-l="plt">
+  <summary>
+    <h5>Machine Time Delivery Project by the Executive</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>AWS</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>It was only delivered the machine after opening process of Order of Service which was attended only by technicians.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>To enable a solution to validate the commercial service model where a new machine auto boot technology was used at the time of the proposal.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Implemented in the first half of 2024 an MVP for validation of the model.</li><li>Implemented in the second semester definitive architecture to choose the type of technology and quantity that can be delivered on time by commercial.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Speed and activation targets in the act of Accreditation.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2024-projeto-de-agrupamento-comercial" data-l="dev">
+  <summary>
+    <h5>Commercial Grouping Project</h5>
+    
+    <span class="pf-pills"><span>Java</span><span>AWS</span><span>APIs</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Legacy automations had a SLA process of up to 10 days to effect the contract fee for the customer. Failure process with many manual dependencies. No validation of the arrangement of the group participants.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Discovery and design of a technical solution to enable modernization.</li><li>Development of application of validation of arrangement of participants.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Implemented and refined solution for implementation of the new Commercial Group with the team.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Modernization of the process with validation and execution in time of proposal.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  <section class="pf-year" id="rede-2023" aria-label="2023 Projects">
+    <p class="pf-year-num" aria-hidden="true">2023</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2023-atualizacao-do-status-do-credenciamento-em-callback-do-wf" data-l="plt">
+  <summary>
+    <h5>WF Callback Accreditation Status Update</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>AWS</span><span>APIs</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>After the executive sent the proposals, the executive needed to consult the status to know if the proposal was effective or had any problems. For cases that had a problem there were no details that would guide the executive on what to do, requiring the opening of an incident by the executive for analysis and orientation or treatment of the proposal. High volume of incidents and problems of proposals stopped, pending processing (status C).</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Implement service that receives the return of the status of the proposal, which is sent by the WF after processing.</li><li>Mapping the main reasons for proposals that were stopped by errors or failures.</li><li>Refining root cause solutions for identified problems.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Implemented WF callback service for TV2.</li><li>Open stories and prioritized root cause corrections of the problems of the proposals.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Rapid feedback on the situation of the proposal for executives.</li><li>Prioritization of root cause corrections of validations and problems that left the proposal pending.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  <section class="pf-year" id="rede-2022" aria-label="2022 projects">
+    <p class="pf-year-num" aria-hidden="true">2022</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2022-envio-da-formalizacao-do-credenciamento-pelo-whatsapp" data-l="cld">
+  <summary>
+    <h5>WhatsApp Accreditation Formalization Upload</h5>
+    
+    <span class="pf-pills"><span>AWS</span><span>STS</span><span>WhatsApp API</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Sending the link to the client to formalize the PJ accreditation proposal is only performed by email.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Integration architecture between TV2, QI1 and EP8 of Itaú via internal environment.</li><li>Authentication of the Itaú service via STS.</li><li>Release of routes, security rules and application registrations in Itaú.</li><li>Condition functionality for controlled pilot audience.</li><li>Project correlated with formalization developments that aims to give more clarity to the client than is being contracted.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Designed and aligned an internal integration architecture between AWS Network and Gateway internal bank.</li><li>Registered consumer applications in the STS and the bank Gateway.</li><li>Due to lack of technical team and prioritization by the quad of the acronym IQ1, all development of the acronym form of 'innersource' was carried out.</li><li>Integration developed with parameterized configurations to enable reuse by other channels.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Pilot in production worked well, but was pivoted due to the correlation of this project with the improvements of formalization that were not well accepted by executives and with a lack of automated processes that depended on an operational performance of the IT team to effect proposals that did not have customer interaction and also on formalization of cluster proposals that was not coherent to send values and conditions that would not be effective to the customer after the processes of grouping and equating fees.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2022-validacao-do-domicilio-bancario-no-canal" data-l="cld">
+  <summary>
+    <h5>Validation of the Banking House in the channel</h5>
+    
+    <span class="pf-pills"><span>AWS</span><span>Salesforce</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>The need to validate in time to fill out a proposal if Itaú's banking home data are valid with an account suitable for receiving payments.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Draw integration architecture.</li><li>Refine with UX how to treat validations.</li><li>Integrated approval with GE quad.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Integration between TV2 and GE1 was implemented in the AWS layer, and only TV2 is responsible for integration with Salesforce that triggers the consultation.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Project implemented in phases, with controlled pilot audience, with validation and gradual monitoring of each phase, being made total expansion after a lot of validations with executives and implementations of improvements.</li><li>Validation with dynamic business rule being the GE1 responsible for determining whether it is an impediment return or that accepts the home with the guidance messages.</li><li>Small reduction in cases of bank suspension of customers Itaú. It is discovered that the situation that makes the account fit for receipt is not summed up in a status.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2022-credenciamento-pessoa-fisica" data-l="plt">
+  <summary>
+    <h5>Accreditation Physical Person</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>Ipricing</span><span>Low code</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Commercial executives only had the option of accreditation of Physical Person with standard plan by e-mailing the PCAE form to the service center that sent the proposal. Only after the implementation of the PV and updating the data in Salesforce (D+2) could the executive renegotiate the fees for the PF client in Ipricing 2.0.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Development of a new flow to PF.</li><li>Approval of integrations.</li><li>Implantation with an expansion strategy for wave users, with monitoring and validation of each new proposal.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Seeked to develop a flow of composite screens with 'functional' features at Salesforce (low-code) and with more specialized micro screen components.</li><li>Support in parallel of another epic involved to simplify and reduce registration data of the accreditation proposal.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Deliver day in Cockpit integrated with Ipricing trading, with all already evolved PJ features such as requests for more than one machine and more than one technology, Flex eligibility, offers and price trading.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2022-evolucao-do-credenciamento-no-plano-padrao" data-l="plt">
+  <summary>
+    <h5>Evolution of Accreditation in the Standard Plan</h5>
+    <span class="pf-star-key">Optimization of the logistic operation, managing to perform in <strong class="pf-metric">D0</strong> in most cases the complete delivery of the proposal made by the commercial.</span>
+    <span class="pf-pills"><span>Salesforce</span><span>Ipricing</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>The accreditation in the standard plane was treated in a different flow of screens with specific information, integrations and filling. The main needs of the commercial area were opened in three major epics: Sending more than one machine in the Standard Plan Accreditation, Sending more than one technology in the Standard Plan Accreditation, Validation of Flex hiring eligibility in the Standard Plan Accreditation.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Implement in the flow of the standard plane the filling of the amount of machines per type of technology.</li><li>Implement the same eligibility consultation of Ipricing Flex contracting.</li><li>To homologate all integrations to the generation of Service Orders and PV.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Refined needs and elaborated a short delivery strategy of simple implementation and in parallel the discovery of total absorption of the flow of the standard plan within the trading process of Ipricing 2.0.</li><li>The possibility was initially given only to inform more than one machine for a single technology.</li><li>It was delivered following the unified journey of Ipricing 2.0 considering as the standard offer options, with or without Flex depending on eligibility and also with the possibility to choose more than one type of technology and also inform more than one machine per technology in the proposal.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Optimization of the logistic operation, managing to perform in <strong class="pf-metric">D0</strong> in most cases the complete delivery of the proposal made by the commercial.</li><li>Optimization of the Executive operational that does not need to open new machine requests after the proposal.</li><li>Executive informs the customer correctly in hiring time if it has the anticipation in <strong class="pf-metric">D2</strong>.</li><li>Agility in the delivery of demands, being the three great epics solved in two strategic deliveries.</li><li>Standardization of the negotiation day without further the need for two squads to take care of Cockpit Accreditation.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2022-abertura-de-conta-corrente-pj-pelo-cockpit-rede" data-l="plt">
+  <summary>
+    <h5>PJ Current Account Opening by Cockpit Network</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>Cockpit Network</span><span>Itaú PJ</span><span>APIs</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Project with experimentation bias of the commercial model of the Network to give autonomy to the Executive to start the opening of Current Account Itaú PJ in the Cockpit Network itself.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Participation of technical refinements.</li><li>Screen development and integrations.</li><li>Monitoring of deployments and validations.</li><li>Review and refactoring of integrations.</li><li>Discovery for MVP evolution.</li><li>Incident service.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>In the pilot's follow-up point improvements in the MVP were identified to increase the number of executives who experienced the solution.</li><li>Improved integration logs and monitoring to quickly identify problems or divergences.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Stable solution and provided scaling for most executives to use.</li><li>With adjustments of the care model, the process was shortened and the bank manager did not need to act, giving more autonomy to the executive.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  <section class="pf-year" id="rede-2021" aria-label="2021 projects">
+    <p class="pf-year-num" aria-hidden="true">2021</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2021-onboarding-do-novo-modelo-de-comunidade-integrada-e-build-run" data-l="agi">
+  <summary>
+    <h5>Onboarding of the new Integrated Community model and Build&amp;Run</h5>
+    
+    <span class="pf-pills"><span>Agile</span><span>DevOps</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Integration of project teams with support teams, being necessary to include in the routine of the project team processes of call, shift, monitoring and governance of the productive environment.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Document support backlog.</li><li>Enable project team in incident care.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Follow-up in pairs with dev and support in incident care and on shift.</li><li>Pass of knowledge on recurrent productive problems.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Times with delivery routines and support in relay of 'beater' and timer.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2021-discovery-para-mudanca-de-ips-do-sybase-ase-corp" data-l="cld">
+  <summary>
+    <h5>Discovery for switching Sybase ASE Corp IPs</h5>
+    
+    <span class="pf-pills"><span>Sybase</span><span>Infrastructure</span><span>PCI Compliance</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>To segregate non-PCI PCI networks, a project was opened to evaluate the change in the IP of the server of the corporate Sybase ASE ( GE1, WF1, WM1, etc.) and it was necessary to map and estimate all applications and services that needed to be adjusted.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Find, map and estimate effort to maintain each application or service.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Search for versioned sources.</li><li>Analysis of the settings of each application/service.</li><li>Survey of how to test each application and service.</li><li>Apply and test under approval the change.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Project was depriorized after initial high impact estimation in a very large volume of applications and services still under survey.</li><li>Another solution was presented by the infrastructure team that would not need to change the current IP.</li><li>Mapping and understanding the support team over many legacy applications.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  <section class="pf-year" id="rede-2020" aria-label="2020 projects">
+    <p class="pf-year-num" aria-hidden="true">2020</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2020-sustentacao-core-rede-ge1-wf1-wm1-etc" data-l="cld">
+  <summary>
+    <h5>Core Network Support (GE1, WF1, WM1, etc.)</h5>
+    
+    <span class="pf-pills"><span>Splunk</span><span>Salesforce</span><span>Mainframe</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>With much quieter Sales Force support, support was unified with the Core Network systems of WF1, GE1, etc., with the need and goals to reduce the number of calls, abends, time of incident attendance and direction of root cause corrections for project teams.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Analysis of so-called critics in need of quick palliative solutions.</li><li>Specification of root cause improvements.</li><li>Development of improvements and corrections.</li><li>Validation and monitoring of project deployments.</li><li>Follow-up of project refinements with support bias, prioritizing with teams non-functional monitoring, safety and quality requirements.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Attention to calls for various problems (Cadastrals, Accreditation, Banking, Product Qualification, Structural Projects, etc.).</li><li>Log improvements.</li><li>Included integrations for capture of logs in Splunk.</li><li>Support team training with knowledge of Salesforce.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Achievement of targets for reducing incidents and time of attendance of calls.</li><li>Reduction of batch mesh abends.</li><li>Support team with training also in Salesforce.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2020-revisao-orcamentaria-de-fornecedores-mgi-tech-maplink" data-l="agi">
+  <summary>
+    <h5>Supplier budget review (MGI Tech &amp; Maplink)</h5>
+    <span class="pf-star-key">Economy of approximately <strong class="pf-metric">500 k</strong> in renegotiated contracts.</span>
+    <span class="pf-pills"><span>Contract Management</span><span>Budget</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Lack of clarity and knowledge about the pricing of what was already in use in the production and the estimates of expansion of the areas to prepare the IT budget.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Alignment with each supplier to clarify pricing.</li><li>Alignment with Logistics and Commercial areas on underutilized resources and expansion planning.</li><li>Elaboration of new conditions and needs for new contract.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Planned and built presentation and defense for CINVEST.</li><li>Canceled hiring tablet rentals for commercials.</li><li>Reviewed and updated the version of mobile phones rented to logistics technicians.</li><li>Separated from the supplier's equipment and resources contract, the service contract.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Economy of approximately <strong class="pf-metric">500 k</strong> in renegotiated contracts.</li><li>Better budget management of suppliers.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2020-revisao-orcamentaria-e-cinvest-do-novo-contrato-salesforce" data-l="plt">
+  <summary>
+    <h5>Budget Review and CINVEST of the new Salesforce contract</h5>
+    <span class="pf-star-key">Economy <strong class="pf-metric">3MM</strong> in the final contract negotiation.</span>
+    <span class="pf-pills"><span>Salesforce</span><span>Contract Management</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>With the maturity of Salesforce's first contract and significant expansion of tool users, the team did not know how the types of licenses were priced and did not have a historical basis for the individual acquisitions that had already been made and needed to close a very conservative budget.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Meetings with Salesforce to detail each type of license.</li><li>Review of all planned features and needs.</li><li>Align with each area number of users and expansion expectations.</li><li>Set license limits management.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Spread all costs at the lowest level of detail.</li><li>Prepared presentation and defense for CINVEST.</li><li>Detailed for each team as the budget was composed.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Economy <strong class="pf-metric">3MM</strong> in the final contract negotiation.</li><li>New contract negotiated in partnership with CoE Salesforce of Itaú and purchasing team.</li><li>Clearness of areas on the cost of each type of license.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  <section class="pf-year" id="rede-2019" aria-label="Projects in 2019">
+    <p class="pf-year-num" aria-hidden="true">2019</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2019-sustentacao-credenciamento-rede-forca-vendas-wf1" data-l="plt">
+  <summary>
+    <h5>Support Network Accreditation (Force Sales + WF1)</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>Android</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Prioritization and corporate goals for Commercial perform more Accreditations, where was developed in Salesforce itself (outside the Android app) Cockpit accreditation that was born with more online integrations with WF1 and GE. Already with the support team away from the Logistics team.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Mapping of Cockpit Accreditation integrations and architecture.</li><li>Monitoring the refinements of the new Accreditation.</li><li>Attendance of incidents.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Validation of every new delivery of changes in production.</li><li>Execution of implementation Runbooks in production and monitoring of validations.</li><li>Direction for the team of improvement projects and treatatives of root cause of incidents.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Rapid incident response.</li><li>Reduction of critical problems for commercial operation.</li><li>Higher number of deliveries with quality of the project team.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2019-sustentacao-afvc-forca-vendas" data-l="plt">
+  <summary>
+    <h5>AFVC Support - Sales Force</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>Android</span><span>Mainframe</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Continuity of support work with division of support team to focus on the processes of Commercial, which was expanding and with high volume of calls and problems. Example of common problems: Data synchronization failures in Cockpit's Offline App (Android version), recurrent network-batch Abends of the acronym TV2, High volume of errors in Cockpit features.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Discovery of Cockpit features.</li><li>Team training for support.</li><li>Prioritization of root cause corrections backlog.</li><li>Development of root cause corrections.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Participation of refinements with project team, opining on best practices and development quality.</li><li>Validation of every new delivery, sharing knowledge with the support team of what was being evolved.</li><li>Specifying and validating Software Factory development in root cause treatatives.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Reduction of critical impact problems for commercial operation.</li><li>Less time to attend to incidents.</li><li>Better management of incidents and problems.</li><li>Team of projects with more deliveries and higher quality.</li></ul></section>
+  </div>
+</details>
+<details class="pf-star" id="p-2019-sustentacao-afvc-forca-campo" data-l="plt">
+  <summary>
+    <h5>AFVC Support - Field Force</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>App Field Force</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Continuity of support work with increased support team needing training and organization to meet a large volume of calls and problems with recurrent high criticality in Logistics. Examples of common problems: Failures in OS creation, Failures in OS routing, Failures in the Force Field app for the Technician.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Discovery of Field Force features.</li><li>Team training for support.</li><li>Prioritization of root cause corrections backlog.</li><li>Development of root cause corrections.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Participation in refinements with project teams, opinioning on best practices and development quality.</li><li>Validation of every new delivery, sharing knowledge with the support team of what was being evolved.</li><li>Specifying and validating Software Factory development in root cause treatatives.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Reduction of critical impact problems for the Logistics operation.</li><li>Less time to attend to incidents.</li><li>Better management of incidents and problems.</li><li>Team of projects with more deliveries and higher quality.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  <section class="pf-year" id="rede-2018" aria-label="2018 Projects">
+    <p class="pf-year-num" aria-hidden="true">2018</p>
+    <div class="pf-year-list">
+<details class="pf-star" id="p-2018-transicao-do-time-de-sustentacao" data-l="plt">
+  <summary>
+    <h5>Transition of the Support Team</h5>
+    
+    <span class="pf-pills"><span>Salesforce</span><span>Cockpit</span><span>Field Force</span></span>
+  </summary>
+  <div class="pf-star-body">
+    <section class="pf-step" data-step="S"><h6>Situation</h6><p>Cockpit and Campo Force projects, recently deployed in production, without a well-defined process of support and change, with a high volume of errors and complaints.</p></section>
+    <section class="pf-step" data-step="T"><h6>Tasks</h6><ul><li>Analyze and direct incomplete errors, failures and features.</li><li>Align versioning, change and deployment processes.</li><li>Implement monitoring.</li><li>Treat incidents.</li></ul></section>
+    <section class="pf-step" data-step="A"><h6>Actions</h6><ul><li>Aligned and created a stream of support calls for commercial executives and logistics technicians and managers.</li><li>Aligned with the area of information change and security, the support team's responsibility is to validate and implement the deployments of the teams in Salesforce in a centralized manner.</li><li>Aligned with best practice teams for versioning and using development Sandboxes.</li><li>Specified and prioritized along with Salesforce development plant the root cause corrections for productive problems.</li><li>Lined up with CMR team monitoring and alarms.</li></ul></section>
+    <section class="pf-step" data-step="R"><h6>Results</h6><ul><li>Reduction and stability of the Salesforce environment, both for the Sales Force and for the Field Force.</li><li>Extension of the number of executives and technicians using the tools.</li><li>More focus and number of project deliveries by project teams.</li></ul></section>
+  </div>
+</details>
+    </div>
+  </section>
+  </div>
+</article>
+<article class="pf-exp" id="exp-serasa-experian" aria-labelledby="exp-serasa-experian-h">
+  <header class="pf-exp-head">
+    <p class="pf-exp-when">Dec 2017 – Jan 2018 (2 months) · São Paulo, Brazil</p>
+    <h3 id="exp-serasa-experian-h">Development Analyst <span class="pf-exp-org">Serasa Experian</span></h3>
+    <ul class="pf-ticks" aria-label="Map Lines"><li data-l="cld"><abbr title="Cloud &amp; DevOps">CLD</abbr></li><li data-l="uxd"><abbr title="UX &amp; Design">UXD</abbr></li><li data-l="dev"><abbr title="Developer">DE V</abbr></li><li data-l="plt"><abbr title="Platforms &amp; APIs">PLT</abbr></li><li data-l="agi"><abbr title="Agile Management &amp; Methodologies">AGI</abbr></li></ul>
+  </header>
+  <p class="pf-exp-desc">Acting in the Digital Strategy team, contributing to the development of the OAuth 2 corporate API and unified registration. Participation in the Serasa Entrepreneur project. Agile project with Scrum, API First architecture, using Java (Spring), Swagger, automated tests with JUnit and Cucumber, continuous integration with Jenkins, Git versioning, API management with Apigee and AWS infrastructure.</p>
+  
+  
+  <ul class="pf-pills"><li>Amazon Web Services</li><li>User experience (UX)</li><li>Java</li><li>REST APIs</li><li>Scrum</li></ul>
+  
+</article>
+<article class="pf-exp" id="exp-indra" aria-labelledby="exp-indra-h">
+  <header class="pf-exp-head">
+    <p class="pf-exp-when">Feb 2012 – Dec 2017 (5 years and 11 months) · São Paulo, Brazil</p>
+    <h3 id="exp-indra-h">Senior Java / Mobile Systems Analyst <span class="pf-exp-org">Indra</span></h3>
+    <ul class="pf-ticks" aria-label="Map Lines"><li data-l="lid"><abbr title="Leadership &amp; Interpersonal Skills">LID</abbr></li><li data-l="cld"><abbr title="Cloud &amp; DevOps">CLD</abbr></li><li data-l="dev"><abbr title="Developer">DE V</abbr></li></ul>
+  </header>
+  <p class="pf-exp-desc">Leadership of the systems development team for insurance clients. Responsible for surveying and analyzing requirements, defining solutions architecture, quality control, customer relationship and support.</p>
+  
+  <h4 class="pf-h4">Main projects</h4><ul><li>Technical leader of innovation team, with proposals and solutions Mobile and AWS (serverless architectures, microservices, native Android, Ionic, DevOps)</li><li>Java Insurance System, JBoss Seam, Spring, RichFaces, Oracle PL/SQL</li><li>Support and development of operational support systems</li></ul>
+  <ul class="pf-pills"><li>Team leadership</li><li>Amazon Web Services</li><li>Android</li><li>Ionic</li><li>Java</li><li>Oracle PL/SQL</li></ul>
+  
+</article>
+<article class="pf-exp" id="exp-telefonica" aria-labelledby="exp-telefonica-h">
+  <header class="pf-exp-head">
+    <p class="pf-exp-when">Apr 2005 – Sep 2008 (3 years and 6 months) · São Paulo, Brazil</p>
+    <h3 id="exp-telefonica-h">Java Development Analyzer <span class="pf-exp-org">Telephone</span></h3>
+    <ul class="pf-ticks" aria-label="Map Lines"><li data-l="dev"><abbr title="Developer">DE V</abbr></li><li data-l="lid"><abbr title="Leadership &amp; Interpersonal Skills">LID</abbr></li></ul>
+  </header>
+  <p class="pf-exp-desc">Development of parts storage management system and network supply system.</p>
+  
+  
+  <ul class="pf-pills"><li>Java</li><li>EJB</li><li>JBoss</li><li>Oracle</li><li>Team leadership</li></ul>
+  
+</article>
+<article class="pf-exp" id="exp-sysgen" aria-labelledby="exp-sysgen-h">
+  <header class="pf-exp-head">
+    <p class="pf-exp-when">Aug 2003 – Jan 2012 (8 years and 6 months) · São Paulo, Brazil</p>
+    <h3 id="exp-sysgen-h">Java Developer Analyzer <span class="pf-exp-org">Sysgen</span></h3>
+    <ul class="pf-ticks" aria-label="Map Lines"><li data-l="dev"><abbr title="Developer">DE V</abbr></li></ul>
+  </header>
+  <p class="pf-exp-desc">Application development Web and console in Java (J2EE and J2SE), using ASPER framework and MVC architecture. Applications based on UML modeling, with code generation via MDA (Model-Driven Architecture) by Celero tool, focused on business rules.</p>
+  
+  
+  <ul class="pf-pills"><li>Java (J2EE/J2SE)</li><li>MVC</li><li>UML</li><li>MDA</li><li>DB2</li><li>PostgreSQL</li></ul>
+  
+</article>
+</div>
+  </div>
+</section>
+<section id="education" class="pf-section" aria-labelledby="education-title">
+  <div class="pf-wrap">
+    <h2 class="pf-h2" id="education-title">Training and certifications</h2>
+    
+<h3 class="pf-h3">Academic training</h3>
+<ol class="pf-edu">
+  <li>
+    <p class="pf-edu-when">February 2019 – July 2021</p>
+    <p class="pf-edu-course">Post-graduation in Data Science – Data Analytics / Big Data</p>
+    <p class="pf-edu-inst">Mackenzie Presbyterian University</p>
+    <p class="pf-edu-code">Digital diploma: <code>EED4D2846DDD86592422CC674AB449</code></p>
+    <a class="pf-btn pf-btn--ghost pf-btn--sm" href="https://www.e-diploma.com.br/Verificar/Autenticidade.aspx?id=565267%7CEED4D2846DDD86592422CC674AB449%7C11489" target="_blank" rel="noopener noreferrer" aria-label="Check diploma: Post-graduation in Data Science – Data Analytics / Big Data (opens in new tab)">Check diploma</a>
+  </li>
+  <li>
+    <p class="pf-edu-when">2001 – 2005</p>
+    <p class="pf-edu-course">Bachelor of Information Systems, with emphasis on Logistics and Supply Chain</p>
+    <p class="pf-edu-inst">Mackenzie Presbyterian University</p>
+    
+    
+  </li>
+  <li>
+    <p class="pf-edu-when">1997 – 1999</p>
+    <p class="pf-edu-course">Technical Course in Data Processing</p>
+    <p class="pf-edu-inst">Guarani College</p>
+    
+    
+  </li>
+</ol>
+<h3 class="pf-h3">Featured Certifications</h3>
+<ul class="pf-featured">
+<li class="pf-ticket pf-ticket--featured">
+    <span class="pf-ticket-date">January 2022</span>
+    <span class="pf-ticket-name">AWS Certified Cloud Practitioner</span>
+    <span class="pf-ticket-org">Amazon Web Services (AWS)</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951?source=linked_in_profile" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: AWS Certified Cloud Practitioner (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket pf-ticket--featured">
+    <span class="pf-ticket-date">March 2021</span>
+    <span class="pf-ticket-name">SRE Essentials</span>
+    <span class="pf-ticket-org">Itcerts</span>
+    <a class="pf-ticket-link" href="https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: SRE Essentials (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket pf-ticket--featured">
+    <span class="pf-ticket-date">February 2025</span>
+    <span class="pf-ticket-name">Datadog Power User</span>
+    <span class="pf-ticket-org">Appoena</span>
+    <a class="pf-ticket-link" href="https://badges.com.br/share/465eef0a1c14fc6a0383f3a805d294d0.php?a=7683" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Datadog Power User (Opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket pf-ticket--featured">
+    <span class="pf-ticket-date">26 September 2024</span>
+    <span class="pf-ticket-name">Solutions Architecture</span>
+    <span class="pf-ticket-org">Itaú Unibanco</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/92fc3afc-6e11-4433-9a44-8dc5f6215dd0" target="_blank" rel="noopener noreferrer" aria-label="Check credential: Solutions Architecture (opens in new tab)">Check</a>
+  </li>
+</ul>
+<h3 class="pf-h3">All certifications (26)</h3>
+<div class="pf-certs">
+  <section class="pf-cert-year" aria-label="Certifications of 2026">
+    <p class="pf-cert-y" aria-hidden="true">2026</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">September 2026</span>
+    <span class="pf-ticket-name">MCP Developer Blueprint</span>
+    <span class="pf-ticket-org">O'Reilly Media, Inc.</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: MCP Developer Blueprint (Opens in new tab)">Check</a>
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="2025 Certifications">
+    <p class="pf-cert-y" aria-hidden="true">2025</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">October 2025</span>
+    <span class="pf-ticket-name">GitHub Copilot Guide</span>
+    <span class="pf-ticket-org">O'Reilly Media, Inc.</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/116915b5-f94e-4d73-8e5f-9793766be71c" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: GitHub Copilot Guide (Opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">October 2025</span>
+    <span class="pf-ticket-name">AI Agency Design Patterns</span>
+    <span class="pf-ticket-org">O'Reilly Media, Inc.</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: AI Agent Design Patterns (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">October 2025</span>
+    <span class="pf-ticket-name">AI with Knowledge Graphs</span>
+    <span class="pf-ticket-org">O'Reilly Media, Inc.</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: AI with Knowledge Graphs">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">October 2025</span>
+    <span class="pf-ticket-name">Building Intelligent AI Agents</span>
+    <span class="pf-ticket-org">O'Reilly Media, Inc.</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Building Intelligent AI Agents (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">October 2025</span>
+    <span class="pf-ticket-name">AI Agents with LangGraph</span>
+    <span class="pf-ticket-org">O'Reilly Media, Inc.</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/26427ba5-8744-4540-ab80-345844ea80c0" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: AI Agents with LangGraph (Opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">September 2025</span>
+    <span class="pf-ticket-name">GenAI for Leaders</span>
+    <span class="pf-ticket-org">O'Reilly Media, Inc.</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/8122b027-8d0f-49de-b264-1a75491cbe0c" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: GenAI for Leaders (Opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">April 2025</span>
+    <span class="pf-ticket-name">AI for Leaders</span>
+    <span class="pf-ticket-org">StartSe University</span>
+    <a class="pf-ticket-link" href="https://lms.startse.com/certificado/v2/678fc9c0f8158077f9db505c?studentId=5e337f0a99763dac88d37e79" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: AI for Leaders (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">February 2025</span>
+    <span class="pf-ticket-name">Datadog Power User</span>
+    <span class="pf-ticket-org">Appoena</span>
+    <a class="pf-ticket-link" href="https://badges.com.br/share/465eef0a1c14fc6a0383f3a805d294d0.php?a=7683" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Datadog Power User (Opens in new tab)">Check</a>
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="Certifications of 2024">
+    <p class="pf-cert-y" aria-hidden="true">2024</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">October 2024</span>
+    <span class="pf-ticket-name">Troubleshooting with Datadog</span>
+    <span class="pf-ticket-org">Appoena</span>
+    <a class="pf-ticket-link" href="https://badges.com.br/share/2e2541209f996bea07bc41521d86e4a3.php?a=7527" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Troubleshooting with Datadog (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">26 September 2024</span>
+    <span class="pf-ticket-name">Solutions Architecture</span>
+    <span class="pf-ticket-org">Itaú Unibanco</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/92fc3afc-6e11-4433-9a44-8dc5f6215dd0" target="_blank" rel="noopener noreferrer" aria-label="Check credential: Solutions Architecture (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">31 July 2024</span>
+    <span class="pf-ticket-name">Practicer – Leadership D&amp;A</span>
+    <span class="pf-ticket-org">Itaú Unibanco</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/a8dad682-bc42-4978-b085-ae720cbd8667" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Practicer – Leadership D&amp;A (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">27 June 2024</span>
+    <span class="pf-ticket-name">Practitioner – Generative AI</span>
+    <span class="pf-ticket-org">Itaú Unibanco</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/231cd871-ab40-4c65-8834-e9ca77792f56" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Practitioner – Generative AI (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">29 May 2024</span>
+    <span class="pf-ticket-name">Practitioner – D&amp;A Foundation</span>
+    <span class="pf-ticket-org">Itaú Unibanco</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/1f596ad2-9834-45b7-99f0-298eddd56cb7" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Practitioner – D&amp;A Foundation (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">13/03/2018 to 10/12/2024</span>
+    <span class="pf-ticket-name">Alura Training and Training</span>
+    <span class="pf-ticket-org">Alura</span>
+    <a class="pf-ticket-link" href="https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Alura Training and Training (opens in new tab)">Check</a>
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="Certifications of 2023">
+    <p class="pf-cert-y" aria-hidden="true">2023</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">27 November 2023</span>
+    <span class="pf-ticket-name">Practitioner – D&amp;A Foundation</span>
+    <span class="pf-ticket-org">Itaú Unibanco</span>
+    <a class="pf-ticket-link" href="http://badges.com.br/share/96939e18d6e0d41488339e14dc93d614.php?a=3694" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Practitioner – D&amp;A Foundation (opens in new tab)">Check</a>
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="2022 certifications">
+    <p class="pf-cert-y" aria-hidden="true">2022</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">30 April 2022</span>
+    <span class="pf-ticket-name">Solutions Architecture</span>
+    <span class="pf-ticket-org">Itaú Unibanco</span>
+    <a class="pf-ticket-link" href="http://badges.com.br/share/113a264018cdb4367fce684877af45d1.php?a=2148" target="_blank" rel="noopener noreferrer" aria-label="Check credential: Solutions Architecture (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">January 2022</span>
+    <span class="pf-ticket-name">AWS Certified Cloud Practitioner</span>
+    <span class="pf-ticket-org">Amazon Web Services (AWS)</span>
+    <a class="pf-ticket-link" href="https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951?source=linked_in_profile" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: AWS Certified Cloud Practitioner (opens in new tab)">Check</a>
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="2021 Certifications">
+    <p class="pf-cert-y" aria-hidden="true">2021</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">March 2021</span>
+    <span class="pf-ticket-name">SRE Essentials</span>
+    <span class="pf-ticket-org">Itcerts</span>
+    <a class="pf-ticket-link" href="https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: SRE Essentials (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">March 2021</span>
+    <span class="pf-ticket-name">UX</span>
+    <span class="pf-ticket-org">FIAP</span>
+    <a class="pf-ticket-link" href="https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=78eb0d83a5db0aadce891455e7d54dfb&amp;action=view" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: UX (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">March 2021</span>
+    <span class="pf-ticket-name">Artificial Intelligence</span>
+    <span class="pf-ticket-org">FIAP</span>
+    <a class="pf-ticket-link" href="https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=d49e69fc55f98e0ce7abeeabba01fe8f&amp;action=view" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Artificial Intelligence (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">March 2021</span>
+    <span class="pf-ticket-name">Design Think</span>
+    <span class="pf-ticket-org">FIAP</span>
+    <a class="pf-ticket-link" href="https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=5aeee13691392217120b14b94ffb905b&amp;action=view" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Design Think (opens in new tab)">Check</a>
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="2018 Certifications">
+    <p class="pf-cert-y" aria-hidden="true">2018</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">2018</span>
+    <span class="pf-ticket-name">Salesforce Trailhead Training</span>
+    <span class="pf-ticket-org">Salesforce</span>
+    <a class="pf-ticket-link" href="https://www.salesforce.com/trailblazer/issei" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Salesforce Trailhead training (opens in new tab)">Check</a>
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="2017 Certifications">
+    <p class="pf-cert-y" aria-hidden="true">2017</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">December 2017</span>
+    <span class="pf-ticket-name">Salesforce Workshop for Developers</span>
+    <span class="pf-ticket-org">Salesforce</span>
+    <a class="pf-ticket-link" href="https://cursos.alura.com.br/certificate/17c88e93-13d1-4ac2-826c-7254c53a93a0" target="_blank" rel="noopener noreferrer" aria-label="Check credentials: Salesforce Workshop for Developers (opens in new tab)">Check</a>
+  </li>
+<li class="pf-ticket">
+    <span class="pf-ticket-date">April 2017</span>
+    <span class="pf-ticket-name">AWS Technical Professional</span>
+    <span class="pf-ticket-org">Amazon Web Services (AWS)</span>
+    
+  </li>
+    </ul>
+  </section>
+  <section class="pf-cert-year" aria-label="2016 Certifications">
+    <p class="pf-cert-y" aria-hidden="true">2016</p>
+    <ul class="pf-tickets">
+<li class="pf-ticket">
+    <span class="pf-ticket-date">April 2016</span>
+    <span class="pf-ticket-name">Kony Certified Developer</span>
+    <span class="pf-ticket-org">Kony, Inc.</span>
+    
+  </li>
+    </ul>
+  </section>
+</div>
+<h3 class="pf-h3">Alura Trails</h3>
+<div class="pf-alura">
+  <details class="pf-alura-cat">
+    <summary>Software Development and Programming <span class="pf-count">11</span></summary>
+    <ul class="pf-pills"><li>Java SOLID</li><li>Docker</li><li>Java OO</li><li>HTTP</li><li>Functional JavaScript</li><li>Spring Boot API REST (Security, Cache, Monitoring)</li><li>MLOps</li><li>Web Security</li><li>Git and Github</li><li>Vue3</li><li>Machine Learning with SKLearn</li></ul>
+  </details>
+  <details class="pf-alura-cat">
+    <summary>Data Science and Data Analysis <span class="pf-count">7</span></summary>
+    <ul class="pf-pills"><li>Data Science: analysis and visualization</li><li>Python statistical tests</li><li>Data Visualization (Graph Design)</li><li>A: Data analysis</li><li>Statistics with R (Hypothesis and Correlations)</li><li>Machine Learning: Model validation</li><li>Date Mesh</li></ul>
+  </details>
+  <details class="pf-alura-cat">
+    <summary>Agile Management and Methodologies <span class="pf-count">8</span></summary>
+    <ul class="pf-pills"><li>Lean Startup</li><li>Advanced Agile (Nexus)</li><li>Agile Management in Practice</li><li>Agile Coach</li><li>Digital product management</li><li>Agile Metrics</li><li>Kanban</li><li>Agile Team Organization</li></ul>
+  </details>
+  <details class="pf-alura-cat">
+    <summary>Leadership and Interpersonal Skills <span class="pf-count">7</span></summary>
+    <ul class="pf-pills"><li>Focus and Productivity</li><li>Effective Communication</li><li>Impact Presentations (Pitch)</li><li>Leadership</li><li>Stress Management</li><li>Feedback</li><li>Profession Tech Lead (Practics and Management)</li></ul>
+  </details>
+  <details class="pf-alura-cat">
+    <summary>UX and Design <span class="pf-count">2</span></summary>
+    <ul class="pf-pills"><li>Design Thinking</li><li>UX Strategy</li></ul>
+  </details>
+  <details class="pf-alura-cat">
+    <summary>Infrastructure and Cloud <span class="pf-count">5</span></summary>
+    <ul class="pf-pills"><li>Amazon Code Deploy</li><li>Linux I &amp; II</li><li>AWS Certified Cloud Practitioner</li><li>Amazon S3</li><li>Deploy on Amazon EC2</li></ul>
+  </details>
+</div>
+<p class="pf-alura-all"><a href="https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0" target="_blank" rel="noopener noreferrer" aria-label="Alura General Certificate (Opens in new tab)">See general certificate Alura</a></p>
+  </div>
+</section>
+<section id="recommendations" class="pf-section" aria-labelledby="recommendations-title">
+  <div class="pf-wrap">
+    <h2 class="pf-h2" id="recommendations-title">Recommendations</h2>
+    <p class="pf-lead">6 recommendations received on LinkedIn in full text.</p>
+<div class="pf-recs">
+  <figure class="pf-rec">
+    <blockquote><p>I had the pleasure of working alongside the Issei throughout this year, and I couldn't help but highlight its exceptional qualities. His technical capacity is impressive, always accompanied by an untiring willingness to collaborate and share his knowledge. It is extremely dedicated, ensuring the delivery of high quality solutions and a lasting legacy. In addition, Issei stands out for his excellent interpersonal relationship, always inspiring the people around him. Together, we can create a positive working environment, open to learning, where communication and collaboration flow naturally.</p></blockquote>
+    <figcaption><cite>Mylena Mancilha</cite><span>Digital Products </span><span>September 18, 2024 – worked with Mauritius on the same team</span></figcaption>
+  </figure>
+  <figure class="pf-rec">
+    <blockquote><p>It is with great pleasure that I write this recommendation for Mauricio Issei. I had the opportunity to work with Mauritius on some great and challenging projects and was deeply impressed by his ability to inspire and lead the team. Mauricio is an exceptional professional, whose commitment and dedication are evident in all the tasks he performs. His passion for work is contagious, and he is able to motivate his colleagues to achieve their best performance. One of the most striking features of Mauritius is its leadership and teamwork. It has a clear and strategic vision, capable of guiding the group towards the established goals. Their ability to make quick and effective decisions, even in pressure situations, is remarkable. It is important to highlight that Mauricio's professional expertise is impressive. It has an in-depth knowledge in its area of activity, always updated with the latest trends and best practices. I recommend Maurice Issei without hesitation. If you have the opportunity to work with him or have him on your team, you will stand before an inspiring leader and an exemplary professional.</p></blockquote>
+    <figcaption><cite>Saulo Oliveira</cite><span>.NET Developer</span><span>6 July 2023 – Mauricio answered</span></figcaption>
+  </figure>
+  <figure class="pf-rec">
+    <blockquote><p>Mauritius is extremely professional and objective for problem solving. It has a holistic view of business and system architecture. In the time we worked together, I had the opportunity to learn and evolve professionally.</p></blockquote>
+    <figcaption><cite>Vinicius Custodio</cite><span>Software Engineer at Shape Digital</span><span>August 2, 2021 – worked with Mauritius on the same team</span></figcaption>
+  </figure>
+  <figure class="pf-rec">
+    <blockquote><p>I worked with Mauricio in different projects and technologies, in every situation Mauricio succeeded to high level of quality. Mauricio is a very strong team player, always able to help someone else. He is a fast learner and has a strong technical knowledge. Mauricio also appreciates and delivers a very clean code. I recommend Mauricio and desire to work with him soon.</p></blockquote>
+    <figcaption><cite>Paulo Soderi Noronha</cite><span>Project Manager at Indra USA</span><span>April 24, 2017 – worked with Mauritius on the same team</span></figcaption>
+  </figure>
+  <figure class="pf-rec">
+    <blockquote><p>Mauritius is a professional with high performance standards. Recognized by their peers, customers and employees. Takes risks in a mature and balanced way, always achieving the goals.</p></blockquote>
+    <figcaption><cite>Laercio Lamarca</cite><span>Executive Manager </span><span>21 April 2017 – supervised Mauritius directly</span></figcaption>
+  </figure>
+  <figure class="pf-rec">
+    <blockquote><p>I had the honor of having Mauricio on my team, highly competent professional, reliable, partner, adapts easily to any kind of project. Your work is always delivered on time, with low rate of rework and rejections. As a solution architect, he was present in several projects, proposing and developing high complexity solutions. It became a reference to the client and Indra herself. I hope we can work together again.</p></blockquote>
+    <figcaption><cite>Rogerio Cruz</cite><span>Project Manager </span><span>April 7, 2015 – supervised Mauritius directly</span></figcaption>
+  </figure>
+</div>
+  </div>
+</section>
+</main>
+<footer class="pf-footer" id="contact">
+  <div class="pf-wrap">
+    <h2 class="pf-h2">Contact</h2>
+    <p class="pf-contact"><a href="mailto:mauricio@issei.com.br">mauricio@issei.com.br</a></p>
+    <ul class="pf-social">
+  <li><a href="https://www.linkedin.com/in/mauricioissei/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn of Mauritius Yokoyama Issei (Opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></li>
+  <li><a href="https://github.com/issei" target="_blank" rel="noopener noreferrer" aria-label="GitHub of Mauritius Yokoyama Issei (opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.46-1.1-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a></li>
+  <li><a href="https://www.youtube.com/@MauricioIssei" target="_blank" rel="noopener noreferrer" aria-label="YouTube channel of Mauritius Yokoyama Issei (opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg></a></li>
+  <li><a href="https://www.instagram.com/yokoyamaissei/" target="_blank" rel="noopener noreferrer" aria-label="Instagram by Mauricio Yokoyama Issei (Opens in new tab)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85C2.42 3.92 3.94 2.37 7.15 2.27 8.42 2.21 8.8 2.2 12 2.2zm0 4.86a4.94 4.94 0 1 0 0 9.88 4.94 4.94 0 0 0 0-9.88zm0 8.15a3.21 3.21 0 1 1 0-6.42 3.21 3.21 0 0 1 0 6.42zm5.14-9.5a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg></a></li>
+  <li><a href="mailto:mauricio@issei.com.br" aria-label="Send email to mauricio@issei.com.br"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3zM5.2 7l6.8 4.2L18.8 7z"/></svg></a></li>
+</ul>
+    <nav aria-label="Footer navigation"><ul class="pf-foot-nav"><li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#education">Training</a></li><li><a href="#recommendations">Recommendations</a></li><li><a href="#contact">Contact</a></li><li><a href="./curriculo.html">Classic format curriculum</a></li><li><a href="./catalogo.html">Catalog</a></li></ul></nav>
+    <p class="pf-ai-note">The structured data of this page (JSON-LD, the format that searchers and AI agents read) fully reflect the public information of the curriculum and are generated from the same cv.json that produces the visible text. Last updated: 22/09/2026. Machine versions: <a href="/en/cv.json">cv.json</a> · <a href="/en/cv-for-ai.md">cv-for-ai. md</a> · <a href="/en/llms.txt">Illms. txt</a>.</p>
+    <p class="pf-legal">© 2026 Mauritius Yokoyama Issei. All rights reserved. · <a href="./privacidade.html">Privacy</a> · <a href="./termos.html">Terms</a> · <a href="./cookies.html">Cookies</a> · <button type="button" class="pf-linkbtn" onclick="window.cookieConsent && window.cookieConsent.open()">Cookies Preferences</button></p>
+  </div>
+</footer>
+<!-- PF:END -->
 
     <!-- Cookie Consent Banner — LGPD/ANPD/GDPR (Consent Mode v2) -->
     <script type="module" src="../js/cookie-consent.js"></script>
-
-    <script type="module">
-        import { initCVRenderer } from '../js/cv-renderer.js';
-
-        // URL do cv.json
-        const CV_JSON_URL = './cv.json';
-
-        // Inicia a renderização
-        initCVRenderer(CV_JSON_URL);
-
-        // WebMCP: public/webmcp.js, injetado em toda página pelo vite.config.js.
-    </script>
-<script type="module" src="../js/eco-nav.js"></script>
+    <script type="module" src="../js/eco-nav.js"></script>
 </body>
 
 </html>

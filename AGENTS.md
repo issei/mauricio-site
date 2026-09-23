@@ -118,6 +118,17 @@ e um piso de contraste de **7:1** na Camada 3. **É a única exceção à paleta
 
 Ao revisar essa página, **não** a reprove por usar cores fora da paleta Dark Tech.
 
+### Exceção registrada: home "Mapa de Linhas" (namespace `pf-`)
+
+`src/index.html` + `src/index.css` mantêm a base Dark Tech e acrescentam **7 cores
+categóricas** (`--pf-l-*`), uma por linha do mapa de competências. As cores existem só em
+`src/index.css`, cada uma com ≥ 4.5:1 sobre `#0d1117` (`tests/portfolio.tokens.test.mjs`).
+Decisão: [`ADR-pf-001`](docs/specs/pages/portfolio/ADR-pf-001-paleta-de-linhas.md).
+
+O conteúdo de `src/index.html` e de `src/curriculo.html` é **gerado** a partir de
+`public/cv.json` por `scripts/gen-portfolio.mjs` (blocos `PF:*` e `CV:*`). Não edite
+esses blocos à mão: edite o `cv.json` e rode o gerador. O `npm run gate` confere se estão em dia.
+
 ---
 
 ## ✅ Quality & Validation
