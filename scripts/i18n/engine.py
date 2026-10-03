@@ -49,6 +49,14 @@ TO_CODE = "en"
 _SLOT = "zzph{}zz"
 _SLOT_RE = re.compile(r"zzph(\d+)zz", re.IGNORECASE)
 
+#: Siglas compostas em caixa alta (AG-UI, JSON-LD). O NMT as "corrige" — AG-UI
+#: sai AG-IU em quase toda frase —, e não há nada nelas para traduzir: seguem o
+#: mesmo caminho dos demais trechos protegidos, com marcador próprio (`zzsg`)
+#: para não colidir com os marcadores do chamador (`zzph`).
+_SIGLA = re.compile(r"\b[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+\b")
+_SIGLA_SLOT = "zzsg{}zz"
+_SIGLA_RE = re.compile(r"zzsg(\d+)zz", re.IGNORECASE)
+
 #: Texto sem letra alguma (número, pontuação, emoji) não vai ao modelo: não há
 #: o que traduzir e a ida custa tempo.
 _TEM_LETRA = re.compile(r"[^\W\d_]", re.UNICODE)
@@ -87,7 +95,34 @@ class BaseEngine:
         core = text.strip()
         if not core:
             return text
-        return f"{prefix}{self._translate_cached(core)}{suffix}"
+        return f"{prefix}{self._traduz_protegendo_siglas(core)}{suffix}"
+
+    def _traduz_protegendo_siglas(self, core: str) -> str:
+        siglas: list[str] = []
+
+        def troca(m: re.Match) -> str:
+            siglas.append(m.group(0))
+            return _SIGLA_SLOT.format(len(siglas) - 1)
+
+        molde = _SIGLA.sub(troca, core)
+        if not siglas:
+            return self._translate_cached(core)
+        traduzido = self._translate_cached(molde)
+        achados = sorted(int(m.group(1)) for m in _SIGLA_RE.finditer(traduzido))
+        if achados == list(range(len(siglas))):
+            return _SIGLA_RE.sub(lambda m: siglas[int(m.group(1))], traduzido)
+        # O modelo perdeu ou duplicou um marcador: traduz o texto entre as siglas,
+        # trecho a trecho, e devolve cada sigla como veio. Perde o contexto da frase,
+        # nunca a sigla.
+        self.fallbacks += 1
+        partes: list[str] = []
+        pos = 0
+        for m in _SIGLA.finditer(core):
+            partes.append(self.translate(core[pos : m.start()]))
+            partes.append(m.group(0))
+            pos = m.end()
+        partes.append(self.translate(core[pos:]))
+        return "".join(partes)
 
     def translate_with_slots(self, template: str, slots: list[str]) -> str:
         """
