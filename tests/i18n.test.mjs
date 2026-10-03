@@ -298,3 +298,48 @@ test('sintaxe sobrevive a um modelo que destrói os marcadores', { skip: !temPyt
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+/**
+ * O NMT "corrige" siglas compostas — AG-UI sai AG-IU em quase toda frase. Elas
+ * não têm o que traduzir: vão ao modelo como marcador e voltam intactas. Um
+ * motor que grava o que recebe prova QUAL texto foi enviado.
+ */
+const SIGLAS_PY = `
+import sys
+sys.path.insert(0, 'scripts/i18n')
+from engine import BaseEngine
+
+class Gravador(BaseEngine):
+    name = 'gravador'
+    def __init__(self, destroi=False):
+        super().__init__()
+        self.vistos = []
+        self.destroi = destroi
+    def _translate_raw(self, t):
+        self.vistos.append(t)
+        return t.replace('zzsg', 'zz') if self.destroi else t
+    def _translate_cached(self, c):
+        return self._translate_raw(c)
+
+e = Gravador()
+print(e.translate('o protocolo AG-UI e o JSON-LD'))
+print('|'.join(e.vistos))
+d = Gravador(destroi=True)
+print(d.translate('o protocolo AG-UI'))
+print(d.fallbacks)
+`;
+
+test('siglas compostas (AG-UI) não vão ao modelo e sobrevivem a marcador destruído', { skip: !temPython }, () => {
+  const res = spawnSync(PY, ['-c', SIGLAS_PY], {
+    cwd: ROOT,
+    encoding: 'utf-8',
+    env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' },
+  });
+  assert.equal(res.status, 0, res.stderr);
+  const [restaurado, enviado, contingencia, fallbacks] = res.stdout.trim().split(/\r?\n/);
+  assert.equal(restaurado, 'o protocolo AG-UI e o JSON-LD');
+  assert.doesNotMatch(enviado, /AG-UI|JSON-LD/, 'a sigla foi enviada ao modelo');
+  assert.match(enviado, /zzsg0zz.*zzsg1zz/);
+  assert.equal(contingencia, 'o protocolo AG-UI', 'sem marcador de volta, traduz o original');
+  assert.equal(fallbacks, '1');
+});

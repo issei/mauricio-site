@@ -28,6 +28,7 @@ Da intenção à execução agêntica confiável: a disciplina-ponte que transfo
 - [Agent Ready](https://mauricio.issei.com.br/agent-ready) — como tornar um site legível, descobrível e utilizável por agentes de IA, com o código real deste domínio.
 - [Case Agents](https://mauricio.issei.com.br/case-agents) — roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso.
 - [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — o sistema de conhecimento que dá rastreabilidade e segurança à IA.
+- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) — como um portal corporativo evolui para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.
 
 ## 03 · A Aplicação — Ecossistema Salesforce
 
