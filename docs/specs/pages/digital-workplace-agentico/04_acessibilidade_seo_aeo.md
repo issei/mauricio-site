@@ -24,7 +24,7 @@
 
 | Campo | Valor |
 | :-- | :-- |
-| `<title>` | `Digital Workplace Agêntico — Do Portal ao Agente` (48 chars) |
+| `<title>` | `Digital Workplace agêntico — Do Portal ao Agente` (48 chars) |
 | `description` | ≤ 160 chars, ex.: "Como um portal corporativo evolui para um Digital Workplace agêntico: maturidade, arquitetura, AG-UI, identidade delegada, conhecimento governado e roadmap." (validar contagem) |
 | `canonical` | `https://mauricio.issei.com.br/digital-workplace-agentico` |
 | `robots` | `index, follow, max-image-preview:large, max-snippet:-1` |
@@ -54,6 +54,12 @@ do slug e procura os termos proibidos.
 `<link rel="alternate" type="text/markdown">`. Conteúdo: a página inteira em Markdown, com selos
 como `**[FATO]**` etc., tabelas completas e as 30 perguntas. Mesmas regras do doc 06.
 
+**Como é gerado (decisão de implementação).** O Markdown não é digitado: a entrada do slug em `pages.mjs` declara
+`mdFromMain: true`, e `scripts/seo/html-to-md.mjs` converte o `<main>` da página (títulos, tabelas, listas, `details`,
+selos) e o anexa depois de "Em síntese" e das `mdSections`, sob "Conteúdo completo da página". Controles (botões,
+formulário) e o que a página marca com `data-md="skip"` ficam de fora; cada `fieldset` de V8 vira um item de lista.
+Assim o `.md` nunca diverge do HTML.
+
 ## 5. i18n
 
 - Depois de criar/alterar `src/digital-workplace-agentico.html` ou `public/digital-workplace-agentico.md`:
@@ -62,6 +68,19 @@ como `**[FATO]**` etc., tabelas completas e as 30 perguntas. Mesmas regras do do
 - O gêmeo também passa pela guarda legal (a tradução não pode reintroduzir nada, mas o teste cobre).
 - Termos técnicos que o Argos traduz mal (AG-UI, MCP, A2A, EXP, HITL) devem estar em `<code>` ou
   na lista de preservação do tradutor (`scripts/i18n/`), conforme o README do tradutor.
+
+**O que a implementação fez (medido com o próprio Argos, não suposto):**
+
+- **Siglas compostas em caixa alta** (AG-UI, JSON-LD): o NMT as "corrige" (`AG-UI` → `AG-IU` em quase toda frase).
+  `scripts/i18n/engine.py` agora as protege com marcador próprio (`zzsg`), em todo caminho (HTML, JSON-LD, Markdown);
+  teste em `tests/i18n.test.mjs`. As demais siglas (MCP, A2A, EXP, HITL, A2UI, BFF) saem intactas e ficaram como estão.
+- **"agêntico"**: o modelo só o acerta em minúscula e como sintagma nominal ("Digital Workplace agêntico" →
+  "Agentic Digital Workplace"); capitalizado vira "Genetic", e no meio da frase vira "agency". Por isso o `<title>`, a
+  marca da navegação, o rodapé e a descrição usam "agêntico" minúsculo e abrem a frase com o termo; onde o adjetivo
+  falhava dentro de frase ("plataforma agêntica", "workflow agêntico") o texto diz "orientada a agentes" / "com agentes";
+  a pergunta 1 do FAQ pergunta pelo "Digital Workplace orientado a agentes" e a resposta cita o termo "agêntico".
+- **Nomes de estágio em inglês** ("Agentic Workplace"): `<span translate="no">` no HTML; no Markdown derivado viram
+  código inline, que o tradutor preserva.
 
 ## 6. Vocabulário controlado
 

@@ -1,3 +1,8 @@
+## 2026-10-03
+* **Update**: Linked `digital-workplace-agentico.md` to `i18n-terminologia-argos.md` (o /en/ sai do Argos; siglas como AG-UI, MCP, EXP e HITL herdam a limitação de terminologia).
+* **Update**: Linked `digital-workplace-agentico.md` to `agent-readiness-por-pagina.md` (gera o gêmeo .md exigido pelo gate de toda URL do sitemap (aqui derivado do <main>)).
+* **Creation**: Documented concept `digital-workplace-agentico.md` (Digital Workplace Agêntico: página sob restrição legal, .md derivado do HTML).
+
 ## 2026-09-23
 * **Update**: Linked `home-mapa-de-linhas.md` to `i18n-terminologia-argos.md` (o /en/ da home sai do Argos; rótulos do mapa herdam a limitação de terminologia (ex.: 'Mapa de linhas' → 'Linemap')).
 * **Update**: Linked `home-mapa-de-linhas.md` to `agent-readiness-por-pagina.md` (gera public/curriculo.md, o gêmeo .md que o gate exige para /curriculo).

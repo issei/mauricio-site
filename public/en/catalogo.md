@@ -29,6 +29,7 @@ From intention to reliable agentic execution: the discipline-bridge that transfo
 - [Agent Ready](https://mauricio.issei.com.br/en/agent-ready) — how to make a website readable, findable and usable by AI agents, with the actual code of this domain.
 - [Case Agents](https://mauricio.issei.com.br/en/case-agents) — Queries routing and secure selection of tools in a banking agent: 4-layer pre-execution barrier and Silent Crash control.
 - [Knowledge OS Enterprise](https://mauricio.issei.com.br/en/knowledge-os-presentation) — the knowledge system that gives traceability and security to AI.
+- [Agentic Digital Workplace](https://mauricio.issei.com.br/en/digital-workplace-agentico) — as a corporate portal evolves to a platform that solves intentions: five stages of maturity, layered architecture, AG-UI, delegated identity, governed knowledge and roadmap.
 
 ## 03 · Application — Salesforce Ecosystem
 

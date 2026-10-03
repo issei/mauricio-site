@@ -51,6 +51,7 @@ const INTENT = {
   'knowledge-os-presentation': { tab: 'especificar', complexity: 'Tópico Profundo' },
   'proposta-engenharia-reversa': { tab: 'especificar', complexity: 'Tópico Profundo' },
   'formulacao-de-problemas': { tab: 'especificar', complexity: 'Tópico Profundo' },
+  'digital-workplace-agentico': { tab: 'especificar', complexity: 'Tópico Profundo' },
   'salesforce-agentic-dev': { tab: 'especificar', complexity: 'Tópico Profundo' },
 };
 
