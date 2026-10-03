@@ -29,7 +29,7 @@ governado, identidade delegada, processos e operação).
 | Arquivo | `src/digital-workplace-agentico.html` |
 | URL | `https://mauricio.issei.com.br/digital-workplace-agentico` |
 | Namespace CSS/JS | `.dw-` / `src/js/digital-workplace/` |
-| `<title>` | `Digital Workplace Agêntico — Do Portal ao Agente` (48 chars) |
+| `<title>` | `Digital Workplace agêntico — Do Portal ao Agente` (48 chars; "agêntico" em minúscula: o Argos traduz "Agêntico" capitalizado como "Genetic", ver doc 04 §5) |
 | Tier editorial | S (estudo longo, base de conhecimento) |
 | Pilar do ecossistema (proposto) | P2 — Engenharia de Confiança (decisão HITL D-1) |
 | Fonte | Cópia neutra do estudo em [`docs/references/digital-workplace-agentico/`](../../../references/digital-workplace-agentico/README.md) |
