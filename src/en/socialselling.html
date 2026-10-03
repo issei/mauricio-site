@@ -255,7 +255,7 @@
             <a href="#topo" class="flex items-center gap-2 font-semibold text-white">
                 <span
                     class="inline-grid place-items-center w-7 h-7 rounded-lg bg-brand-600 text-white text-sm font-bold">S</span>
-                SocialSelling <span class="hidden sm:inline text-slate-500 font-normal">· Overview</span>
+                SocialSelling <span class="hidden sm:inline text-slate-400 font-normal">· Overview</span>
             </a>
             <nav class="hidden md:flex items-center gap-5 text-sm">
                 <a href="#arquitetura" class="hover:text-white transition">Architecture</a>
@@ -275,7 +275,7 @@
         <!-- ░░ SIDEBAR ░░ -->
         <aside class="hidden lg:block w-56 shrink-0 py-10">
             <div class="sticky top-20 space-y-1 text-sm">
-                <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Content</p>
+                <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Content</p>
                 <a href="#visao" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">1 · &amp; view
 scope</a>
                 <a href="#arquitetura" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">2 ·
@@ -296,7 +296,7 @@ Self-learning</a>
 versions</a>
                 <a href="#operacao" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">10 ·
 Planning &amp; operation</a>
-                <p class="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">Reference
+                <p class="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Reference
 technique</p>
                 <a href="#contratos" class="block px-3 py-1.5 rounded-lg hover:bg-white/5 hover:text-white">11 ·
 Contracts &amp; data model</a>
@@ -408,35 +408,35 @@ The only variable cost is the tokens of two cognition/search APIs.
 
                 <!-- Pipeline -->
                 <div class="mt-7 rounded-2xl border border-white/10 bg-ink-800 p-6">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Pipeline
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">Pipeline
 deterministic (modules, non-runtime agents)</p>
                     <div class="flex flex-col sm:flex-row items-stretch gap-2 text-center">
                         <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
                             <div class="text-white font-semibold text-sm">M1 · Search</div>
                             <div class="text-xs text-slate-400 mt-1">Tavily + Apollo</div>
                         </div>
-                        <div class="self-center text-slate-600">→</div>
+                        <div class="self-center text-slate-400">→</div>
                         <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
                             <div class="text-white font-semibold text-sm">M2 · Extraction</div>
                             <div class="text-xs text-slate-400 mt-1">Gemini (lot)</div>
                         </div>
-                        <div class="self-center text-slate-600">→</div>
+                        <div class="self-center text-slate-400">→</div>
                         <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
                             <div class="text-white font-semibold text-sm">M3 · Score</div>
                             <div class="text-xs text-slate-400 mt-1">linear · pure</div>
                         </div>
-                        <div class="self-center text-slate-600">→</div>
+                        <div class="self-center text-slate-400">→</div>
                         <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
                             <div class="text-white font-semibold text-sm">M4 · Ranking</div>
                             <div class="text-xs text-slate-400 mt-1">tie-break stable</div>
                         </div>
-                        <div class="self-center text-slate-600">→</div>
+                        <div class="self-center text-slate-400">→</div>
                         <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
                             <div class="text-white font-semibold text-sm">M5 · XAI</div>
                             <div class="text-xs text-slate-400 mt-1">explanation</div>
                         </div>
                     </div>
-                    <p class="mt-4 text-xs text-slate-500">M3 and M4 are <strong class="text-slate-300">functions
+                    <p class="mt-4 text-xs text-slate-400">M3 and M4 are <strong class="text-slate-300">functions
 pure</strong>: same input → byte-identical output. The orchestrator injects customers, cache,
 clock and config.</p>
                 </div>
@@ -444,7 +444,7 @@ clock and config.</p>
                 <!-- Módulos de suporte -->
                 <div class="mt-5 grid sm:grid-cols-2 gap-3">
                     <div class="rounded-2xl border border-violet-500/20 bg-violet-500/5 p-4">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Support modules
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Support modules
                         </p>
                         <div class="space-y-2 text-sm">
                             <div class="flex items-start gap-2">
@@ -471,7 +471,7 @@ details and feedback buttons.</span>
                         </div>
                     </div>
                     <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">External sensors
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">External sensors
                         </p>
                         <div class="space-y-3">
                             <div>
@@ -481,7 +481,7 @@ intention.</p>
                             </div>
                             <div>
                                 <h3 class="font-semibold text-white text-sm">Gemini <span
-                                        class="text-xs text-slate-500 font-normal">(gemini-2.5-flash /
+                                        class="text-xs text-slate-400 font-normal">(gemini-2.5-flash /
 flash-lite)</span></h3>
                                 <p class="text-xs text-slate-400 mt-0.5">Cognition (M2). Extract structured entities +
 persona/intention in batches.</p>
@@ -508,17 +508,17 @@ learning.</p>
                 <div class="mt-6 flex flex-col sm:flex-row gap-2 items-stretch text-center text-sm">
                     <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-4">
                         <div class="text-white font-semibold">Observed Evidence</div>
-                        <div class="text-xs text-slate-500 mt-1">layer 1 · what was seen</div>
+                        <div class="text-xs text-slate-400 mt-1">layer 1 · what was seen</div>
                     </div>
-                    <div class="self-center text-slate-600">≠</div>
+                    <div class="self-center text-slate-400">≠</div>
                     <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-4">
                         <div class="text-white font-semibold">Inferences</div>
-                        <div class="text-xs text-slate-500 mt-1">layer 2 · which has been deducted</div>
+                        <div class="text-xs text-slate-400 mt-1">layer 2 · which has been deducted</div>
                     </div>
-                    <div class="self-center text-slate-600">≠</div>
+                    <div class="self-center text-slate-400">≠</div>
                     <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-4">
                         <div class="text-white font-semibold">Evaluated Hypotheses</div>
-                        <div class="text-xs text-slate-500 mt-1">layer 3 · score &amp; XAI</div>
+                        <div class="text-xs text-slate-400 mt-1">layer 3 · score &amp; XAI</div>
                     </div>
                 </div>
 
@@ -782,7 +782,7 @@ raw message to the frontend.</p>
                 </div>
 
                 <div class="mt-5 rounded-2xl border border-white/10 bg-ink-800 p-5">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Gate command
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Gate command
 (Windows)</p>
                     <pre class="text-sm text-slate-300 overflow-x-auto"><code>.venv\Scripts\python.exe -m ruff check .   # lint
 .venv\Scripts\python.exe -m mypy           # tipos (strict)
@@ -844,7 +844,7 @@ cross-provider</td>
                         </tbody>
                     </table>
                 </div>
-                <p class="mt-4 text-sm text-slate-500">All opt-in (<code class="text-brand-200">[apollo].enabled</code>
+                <p class="mt-4 text-sm text-slate-400">All opt-in (<code class="text-brand-200">[apollo].enabled</code>
                     · <code class="text-brand-200">[corpus].enabled</code> · <code
                         class="text-brand-200">[gemini].rpd_enabled</code>). Deferred with documented reason — no
 Risky refining for completeness.</p>
@@ -951,7 +951,7 @@ feedback store, schemas).</p>
                     </div>
                 </div>
                 <div class="mt-6 rounded-2xl border border-white/10 bg-ink-800 p-5">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">How to turn on volume +
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">How to turn on volume +
 learning (real run)</p>
                     <pre class="text-sm text-slate-300 overflow-x-auto"><code># 1) runtime.toml
 [apollo].enabled = true   [corpus].enabled = true
@@ -980,31 +980,31 @@ to think and evolve the system; development runs on the scheduled run.
 
                 <!-- Fluxo geral do board -->
                 <div class="mt-7 rounded-2xl border border-white/10 bg-ink-800 p-6">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Board Flow (GitHub)
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">Board Flow (GitHub)
 Project #1</p>
                     <div class="flex flex-col sm:flex-row items-stretch gap-2 text-center text-sm">
                         <div class="flex-1 rounded-xl bg-white/5 border border-white/10 p-3">
                             <div class="text-white font-semibold">Backlog</div>
-                            <div class="text-xs text-slate-500 mt-1">card draft</div>
+                            <div class="text-xs text-slate-400 mt-1">card draft</div>
                         </div>
-                        <div class="self-center text-slate-600 flex flex-col items-center gap-0.5">
+                        <div class="self-center text-slate-400 flex flex-col items-center gap-0.5">
                             <span class="text-[10px] text-emerald-400 font-semibold">DoR 100%</span>
                             <span>→</span>
-                            <span class="text-[10px] text-slate-500">only human moves</span>
+                            <span class="text-[10px] text-slate-400">only human moves</span>
                         </div>
                         <div class="flex-1 rounded-xl bg-brand-600/15 border border-brand-500/30 p-3">
                             <div class="text-white font-semibold">All</div>
                             <div class="text-xs text-slate-400 mt-1">approved p/ night</div>
                         </div>
-                        <div class="self-center text-slate-600 flex flex-col items-center gap-0.5">
+                        <div class="self-center text-slate-400 flex flex-col items-center gap-0.5">
                             <span class="text-[10px] text-amber-400 font-semibold">night run</span>
                             <span>→</span>
                         </div>
                         <div class="flex-1 rounded-xl bg-white/5 border border-white/10 p-3">
                             <div class="text-white font-semibold">In Progress</div>
-                            <div class="text-xs text-slate-500 mt-1">skill runs</div>
+                            <div class="text-xs text-slate-400 mt-1">skill runs</div>
                         </div>
-                        <div class="self-center text-slate-600 flex flex-col items-center gap-0.5">
+                        <div class="self-center text-slate-400 flex flex-col items-center gap-0.5">
                             <span class="text-[10px] text-emerald-400 font-semibold">DoD 100%</span>
                             <span>→</span>
                         </div>
@@ -1013,7 +1013,7 @@ Project #1</p>
                             <div class="text-xs text-slate-400 mt-1">Merged PR</div>
                         </div>
                     </div>
-                    <p class="mt-4 text-xs text-slate-500">Card blocked (Incomplete DoR or red gate after 2
+                    <p class="mt-4 text-xs text-slate-400">Card blocked (Incomplete DoR or red gate after 2
 attempts) → <code class="text-brand-200">BLOCKED:</code> in <code
                             class="text-brand-200">PROGRESS.md</code> and return it to Backlog. Never guess — for and
 report.</p>
@@ -1039,7 +1039,7 @@ move to <strong class="text-slate-300">All</strong> (only human does that).</li>
                             <li class="flex gap-2"><span class="text-amber-400 shrink-0">5.</span>Large developments →
 break into several small cards (1 WU each).</li>
                         </ul>
-                        <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-500">
+                        <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-400">
                             <strong class="text-slate-400">I do it on the day:</strong> specs, ADRs, contracts, docs, tooling
 (scripts/CI/skills), board governance and curatorship.
                         </div>
@@ -1066,7 +1066,7 @@ in feature branch; if WU closed: PR auto-merge + tag.</li>
                                     class="text-brand-200">PROGRESS.md</code> + lessons. Stop at a secure checkpoint.
                             </li>
                         </ul>
-                        <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-500">
+                        <div class="mt-4 pt-3 border-t border-white/10 text-xs text-slate-400">
                             <strong class="text-slate-400">Vira card:</strong> implementation <code
                                 class="text-brand-200">src/socialselling/</code>, <code
                                 class="text-brand-200">tests/</code>, fixtures — everything that changes the behavior of
@@ -1080,7 +1080,7 @@ product.
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
                         <h3 class="font-semibold text-emerald-300 flex items-center gap-2">Definition of Ready (DoR)
                         </h3>
-                        <p class="text-xs text-slate-500 mt-1 mb-3">Card can go from Backlog → All?</p>
+                        <p class="text-xs text-slate-400 mt-1 mb-3">Card can go from Backlog → All?</p>
                         <ul class="space-y-1.5 text-sm text-slate-400">
                             <li>1 Objective observable in 1 sentence (why + verifiable result)</li>
                             <li>2 Sliced in 1 WU — fits in an execution window</li>
@@ -1096,7 +1096,7 @@ product.
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
                         <h3 class="font-semibold text-brand-300 flex items-center gap-2">Definition of Done (DoD)
                         </h3>
-                        <p class="text-xs text-slate-500 mt-1 mb-3">Card can go from In Progress → Done?</p>
+                        <p class="text-xs text-slate-400 mt-1 mb-3">Card can go from In Progress → Done?</p>
                         <ul class="space-y-1.5 text-sm text-slate-400">
                             <li>1 Green and byte-identical BDD scenarios (zero flakiness)</li>
                             <li>2 Committed Fixtures; Tests Do Not Play Network</li>
@@ -1138,7 +1138,7 @@ green</li>
                                     class="text-brand-200">main</code> broken or critical bug — fix on time via PR
 + green gate, register later.</li>
                         </ul>
-                        <p class="mt-3 text-xs text-slate-500">Out of these two cases, product implementation =
+                        <p class="mt-3 text-xs text-slate-400">Out of these two cases, product implementation =
 card/night.</p>
                     </div>
                 </div>
@@ -1153,7 +1153,7 @@ card/night.</p>
                             <p class="text-slate-400">Source of truth from where we left off. The run <strong>read in
 start</strong> and <strong>update at end</strong>. Contains: current milestone, green tag,
 WU in progress, step (S1–S6), branch, next action, blocks and run history.</p>
-                            <p class="text-slate-500 text-xs mt-2">State never lives in session — lives in git +
+                            <p class="text-slate-400 text-xs mt-2">State never lives in session — lives in git +
 PROGRESS. md. Any new run rebuilds the context by reading these two.</p>
                         </div>
                         <div>
@@ -1251,7 +1251,7 @@ via reverse, never reset/force.</p>
 
             <!-- ░░ REFERÊNCIA TÉCNICA ░░ -->
             <div class="mt-20 pt-8 border-t border-white/10">
-                <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Technical reference</p>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Technical reference</p>
             </div>
 
             <!-- 11 · CONTRATOS & MODELO DE DADOS -->
@@ -1267,14 +1267,14 @@ changeable references between layers.
 
                 <!-- Fluxo de tipos pelo pipeline -->
                 <div class="mt-6 rounded-2xl border border-white/10 bg-ink-800 p-6">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-5">Flow of contracts
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-5">Flow of contracts
 by pipeline</p>
                     <div class="space-y-3 text-sm">
                         <div class="flex items-start gap-3">
-                            <span class="font-mono text-xs text-slate-500 w-8 shrink-0 pt-0.5">IN</span>
+                            <span class="font-mono text-xs text-slate-400 w-8 shrink-0 pt-0.5">IN</span>
                             <div class="flex-1 rounded-xl bg-white/5 border border-white/10 p-3">
                                 <span class="font-semibold text-white">ICPcriteria</span>
-                                <span class="ml-2 text-slate-500 text-xs">— universal pipeline entry</span>
+                                <span class="ml-2 text-slate-400 text-xs">— universal pipeline entry</span>
                                 <p class="text-slate-400 mt-1 text-xs">Firmographics
 geographies, business models) · Technographics (tech
 mandate/preferred/excluded) · PersonaMatrix (target rolls, minimum seniority) ·
@@ -1285,7 +1285,7 @@ intent triggers (signs of hypothesis)</p>
                             <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M1</span>
                             <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
                                 <span class="font-semibold text-white">ObservedEvidence</span>
-                                <span class="ml-2 text-xs text-slate-500">— layer 1 · what has been seen</span>
+                                <span class="ml-2 text-xs text-slate-400">— layer 1 · what has been seen</span>
                                 <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">evidence_id</code>
                                     (hash SHA-256 stable) · <code class="text-brand-200">query</code>, <code
                                         class="text-brand-200">source_url</code>, <code
@@ -1298,7 +1298,7 @@ intent triggers (signs of hypothesis)</p>
                             <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M2</span>
                             <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
                                 <span class="font-semibold text-white">Inference</span>
-                                <span class="ml-2 text-xs text-slate-500">— layer 2 · which has been deducted</span>
+                                <span class="ml-2 text-xs text-slate-400">— layer 2 · which has been deducted</span>
                                 <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">CompanyEntity</code>
                                     (name, domain, industry, technologies, contacts, social networks) · <code
                                         class="text-brand-200">PersonEntity</code> (name, position, seniority) · <code
@@ -1313,7 +1313,7 @@ compulsory) · <code class="text-brand-200">intent_signals</code>, <code
                             <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M3</span>
                             <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
                                 <span class="font-semibold text-white">ProspectScore</span>
-                                <span class="ml-2 text-xs text-slate-500">— layer 3 · evaluation</span>
+                                <span class="ml-2 text-xs text-slate-400">— layer 3 · evaluation</span>
                                 <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">fit</code>, <code
                                         class="text-brand-200">intent</code>, <code
                                         class="text-brand-200">confidence</code>, <code
@@ -1326,7 +1326,7 @@ compulsory) · <code class="text-brand-200">intent_signals</code>, <code
                             <span class="font-mono text-xs text-brand-400 w-8 shrink-0 pt-0.5">M5</span>
                             <div class="flex-1 rounded-xl bg-brand-600/10 border border-brand-500/20 p-3">
                                 <span class="font-semibold text-white">XAIPayload</span>
-                                <span class="ml-2 text-xs text-slate-500">— structured justification</span>
+                                <span class="ml-2 text-xs text-slate-400">— structured justification</span>
                                 <p class="text-slate-400 mt-1 text-xs"><code
                                         class="text-brand-200">positive_signals</code>, <code
                                         class="text-brand-200">negative_signals</code> (list of <code
@@ -1340,7 +1340,7 @@ compulsory) · <code class="text-brand-200">intent_signals</code>, <code
                             <span class="font-mono text-xs text-emerald-400 w-8 shrink-0 pt-0.5">OUT</span>
                             <div class="flex-1 rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-3">
                                 <span class="font-semibold text-emerald-300">LeadCard</span>
-                                <span class="ml-2 text-xs text-slate-500">— actionable pipeline output</span>
+                                <span class="ml-2 text-xs text-slate-400">— actionable pipeline output</span>
                                 <p class="text-slate-400 mt-1 text-xs"><code class="text-brand-200">display_name</code>,
                                     <code class="text-brand-200">company</code>, <code
                                         class="text-brand-200">role</code>, <code class="text-brand-200">sector</code>,
@@ -1379,13 +1379,13 @@ of intention</span><span class="text-slate-300">0.40</span></div>
                             <div class="flex justify-between"><span><code class="text-brand-200">persona_fit</code>
                                     (founder)</span><span class="text-slate-300">0.0</span></div>
                         </div>
-                        <p class="mt-3 text-xs text-slate-500">M3 and M4 are pure functions: same input → output
+                        <p class="mt-3 text-xs text-slate-400">M3 and M4 are pure functions: same input → output
 byte-identic (1e-9). Hard filter (disqualifier detected) zeros the lead. Configurable weights
 ed <code class="text-brand-200">runtime.toml</code> and readjustable by feedback </p>
                     </div>
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
                         <h3 class="font-semibold text-white mb-3">Hypothesis Catalogue (Intent)</h3>
-                        <p class="text-xs text-slate-500 mb-3">Intent =  <code
+                        <p class="text-xs text-slate-400 mb-3">Intent =  <code
                                 class="text-brand-200">intent_signals</code> detected by M2. Config <code
                                 class="text-brand-200">config/hypotheses_catalog.json</code>.</p>
                         <div class="space-y-2 text-xs">
@@ -1584,7 +1584,7 @@ network</strong>. Every external call is mocked with supervised recorded fixture
                 <div class="mt-6 grid sm:grid-cols-3 gap-4">
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
                         <h3 class="font-semibold text-white text-sm">Gherkin Features</h3>
-                        <p class="text-xs text-slate-500 mt-1 mb-3"><code class="text-brand-200">tests/features/</code>
+                        <p class="text-xs text-slate-400 mt-1 mb-3"><code class="text-brand-200">tests/features/</code>
                         </p>
                         <div class="space-y-1 text-xs text-slate-400">
                             <div><code class="text-slate-300">m1_busca.feature</code> · M2 · M3 · M4 · M5</div>
@@ -1592,7 +1592,7 @@ network</strong>. Every external call is mocked with supervised recorded fixture
                             <div><code class="text-slate-300">objetivo_ranking.feature</code> — business objective
                             </div>
                         </div>
-                        <p class="text-xs text-slate-500 mt-3">Each module requires 3 scenarios: <strong
+                        <p class="text-xs text-slate-400 mt-3">Each module requires 3 scenarios: <strong
                                 class="text-slate-400">Happy</strong> (normal path) + <strong
                                 class="text-slate-400">degraded</strong> (429/timeout → degrades, does not break) + <strong
                                 class="text-slate-400">Open-World</strong> (sign missing → uncertainty ↑, never false).
@@ -1600,7 +1600,7 @@ network</strong>. Every external call is mocked with supervised recorded fixture
                     </div>
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
                         <h3 class="font-semibold text-white text-sm"></h3>
-                        <p class="text-xs text-slate-500 mt-1 mb-3"><code class="text-brand-200">tests/fixtures/</code>
+                        <p class="text-xs text-slate-400 mt-1 mb-3"><code class="text-brand-200">tests/fixtures/</code>
                         </p>
                         <p class="text-xs text-slate-400">Real API responses captured once, with supervision, via
 dedicated scripts:</p>
@@ -1610,7 +1610,7 @@ dedicated scripts:</p>
                             <div><code class="text-brand-200">record_apollo_fixtures.py</code> <span
                                     class="text-amber-400">(requires paid plan)</span></div>
                         </div>
-                        <p class="text-xs text-slate-500 mt-3">Once recorded, the tests use them via <code
+                        <p class="text-xs text-slate-400 mt-3">Once recorded, the tests use them via <code
                                 class="text-brand-200">FakeTavilyClient</code> / <code
                                 class="text-brand-200">FakeGeminiClient</code> — network is never touched in IC.</p>
                     </div>
@@ -1674,12 +1674,12 @@ extra instrumentation. Traceability: <code
                                         </tr>
                                         <tr>
                                             <td class="py-1.5 pr-3">Latency (N≤50 leads)</td>
-                                            <td class="text-slate-500">p95 calibrating via trace</td>
+                                            <td class="text-slate-400">p95 calibrating via trace</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <p class="mt-2 text-xs text-slate-500">Error zero budget for determinism and testing.
+                            <p class="mt-2 text-xs text-slate-400">Error zero budget for determinism and testing.
 Latency/cost: target calibrating — does not block merge in PoC.</p>
                         </div>
                     </div>
@@ -1869,7 +1869,7 @@ a feature = change the hot path; disconnect = zero impact. The E2E smoke validat
   </div>
 </section>
 <!-- AEO-BODY:END -->
-<footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-500">
+<footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-400">
                 <p>SocialSelling · overview generated from vivid repository specifications. Source of truth:
                     <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-000-escopo-canonico.md"
                         class="text-brand-400 hover:underline">ADR-000</a> ·

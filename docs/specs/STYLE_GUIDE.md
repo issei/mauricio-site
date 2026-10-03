@@ -25,6 +25,15 @@ O design deve transmitir competência técnica, modernidade e imersão. Baseado 
 | **Accent Secondary (Purple)** | `#8a2be2` | `text-purple-600` | Gradientes secundários. |
 | **Gradient Accent** | `linear-gradient(90deg, #007bff, #8a2be2)` | `bg-gradient-to-r from-blue-500 to-purple-600` | Botões Primários, Sublinhados de Título. |
 
+
+### Piso de contraste do texto (A11Y.md, WCAG 1.4.3 — decisão 2026-10-03)
+
+- **Texto de apoio (muted)**: `#99a1af` (`text-gray-400`); nas páginas de matiz slate, `text-slate-400`. **Nunca** `text-gray-500/600/700` nem `text-slate-500/600/700` como cor de texto — medidos entre 1,9:1 e 4,2:1 sobre os fundos do site.
+- **Texto azul**: `#58a6ff`. `#007bff` só como fundo, borda ou ícone.
+- **CTA preenchido**: texto `#ffffff` sobre `#2563eb` (5,17:1); sobre verde `#22c55e`, texto `slate-900` (branco dá 2,3:1).
+- **Link em corpo de texto** precisa de sublinhado quando a cor do link não contrasta 3:1 com o texto ao redor (SC 1.4.1) — clarear o texto de apoio reduz essa diferença.
+- A varredura `npm run a11y:sweep` (catraca) barra regressão; ver `A11Y-DECISIONS.md`.
+
 ---
 
 ## Tipografia
