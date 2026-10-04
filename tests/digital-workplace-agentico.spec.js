@@ -37,11 +37,22 @@ test.describe('Digital Workplace Agêntico — página', () => {
     expect(await page.getAttribute('link[rel="alternate"][type="text/markdown"]', 'href')).toContain('digital-workplace-agentico.md');
   });
 
-  test('as dezessete seções do mapa existem, em ordem de leitura', async ({ page }) => {
+  test('o vídeo de resumo: iframe com título acessível, entre o hero e o problema', async ({ page }) => {
+    await page.goto(PATH);
+    const frame = page.locator('#video iframe');
+    await expect(frame).toHaveAttribute('title', 'Vídeo: Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA');
+    await expect(frame).toHaveAttribute('src', /^https:\/\/www\.youtube-nocookie\.com\/embed\/Z-8YtFXi-oo/);
+    const ids = await page.$$eval('main > section', (els) => els.map((e) => e.id));
+    expect(ids.indexOf('video')).toBe(ids.indexOf('hero') + 1);
+    expect(ids.indexOf('problema')).toBe(ids.indexOf('video') + 1);
+    await expect(page.locator('#video a[href="#problema"]').last()).toBeVisible();
+  });
+
+  test('as dezoito seções do mapa existem, em ordem de leitura', async ({ page }) => {
     await page.goto(PATH);
     const ids = await page.$$eval('main > section', (els) => els.map((e) => e.id));
     expect(ids).toEqual([
-      'hero', 'problema', 'maturidade', 'arquitetura', 'fluxo', 'pilares', 'conhecimento', 'confianca',
+      'hero', 'video', 'problema', 'maturidade', 'arquitetura', 'fluxo', 'pilares', 'conhecimento', 'confianca',
       'processos', 'papeis', 'decisoes', 'operacao', 'roadmap', 'prontidao', 'perguntas', 'estudar',
     ]);
     await expect(page.locator('#aeo .aeo-tldr')).toHaveCount(1);

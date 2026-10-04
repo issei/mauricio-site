@@ -87,21 +87,41 @@ The whole page, with the collectible deepenings and the thirty critical question
 
 **Complete index**
 
-1. The problem: the collaborator as a human integrator
-2. Five stages, from link to resolved intention
-3. Six-layer reference architecture
-4. A request from start to finish
-5. The eight technical pillars
-6. The chain of knowledge
-7. Identity, autonomy and governance
-8. The agent within the process
-9. Twelve lenses, an architectural board
-10. Trade-offs, anti-patterns and technological matrix
-11. Operate an agent
-12. Phases and trails
-13. Agent readiness index
-14. Thirty critical questions
-15. Study trails by profile
+1. Video summary
+2. The problem: the collaborator as a human integrator
+3. Five stages, from link to resolved intention
+4. Six-layer reference architecture
+5. A request from start to finish
+6. The eight technical pillars
+7. The chain of knowledge
+8. Identity, autonomy and governance
+9. The agent within the process
+10. Twelve lenses, an architectural board
+11. Trade-offs, anti-patterns and technological matrix
+12. Operate an agent
+13. Phases and trails
+14. Agent readiness index
+15. Thirty critical questions
+16. Study trails by profile
+
+Video summary **[RECOMMENDATION]**
+
+#### Before technical layers: video study
+
+The video presents the ladder of evolution of the portal and the governance foundations that precede the agent. If you already know the model, skip to the problem: nothing that comes after depends on watching.
+
+**==References== How to Evolve from the Corporate Portal to the AI Agent.** The video deals with the architecture of knowledge and the danger of hallucination. Reinforces that maximum autonomy for sensitive actions remains in the **level 2**, which requires the formal review by HITL (identity, autonomy and governance). *
+
+Skip the video and continue reading ↓
+
+**Textual video summary**
+
+- **Knowledge:** the agent only responds well about what the architecture of knowledge governs; without canonical source, validity and permissions, the fluent response may be wrong (hallucination). See the chain of knowledge.
+- **Delegated identity:** the agent acts with the identity of the collaborator in minimum scope, not in his place. See identity and governance.
+- **MCP:** is the bridge between the abstract intention of the request and the actual execution in the backend systems, by the integration layer. See architecture in six layers.
+- **Autonomy:** sensitive actions are at level 2, at most, with human confirmation (HITL) before effect.
+
+Support text, not an integral transcript of the video.
 
 The Problem **[INFERENCE]**
 
