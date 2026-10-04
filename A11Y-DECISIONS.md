@@ -16,6 +16,10 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Skip link** → `<a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>` como 1º filho do `<body>` + `<style id="a11y-skip">` inline no `<head>` (aparece só no foco, `transition:none`); alvo `<main id="conteudo">`. Inline por página: as páginas misturam 5 mecanismos de CSS. *(2026-10-03, Fase 4)*
 - **Botão de mídia play/pause** → nome fixo + `aria-pressed`; ícone `aria-hidden`; foco com `focus-visible:outline`, nunca `focus:outline-none` sozinho (D-04: corrigido no lugar, 1 uso). *(2026-10-03)*
 - **Foco na carga** → nenhuma página move o foco sozinha ao carregar (`life.html` deixou de focar o canvas): tira o skip link da ordem de Tab. *(2026-10-03)*
+- **Grid responsivo** → `minmax(min(100%, Npx), 1fr)`, nunca `minmax(Npx, 1fr)` puro (mínimo maior que a tela estoura a 320 px); item de grid/flex que contém `<pre>`, tabela ou texto sem espaço leva `min-width:0`. *(2026-10-03, Fase 5)*
+- **Bloco que rola** → `src/js/a11y-scroll-regions.js` dá `tabindex=0` + `role=region` + `aria-label` só quando o conteúdo de fato rola; tabela larga vai dentro de `overflow-x-auto`. *(2026-10-03)*
+- **Movimento reduzido** → bloco `@media (prefers-reduced-motion: reduce)` com `animation-duration:.01ms; iteration-count:1; transition-duration:.01ms` em toda página que anima (snippet inline `<style id=a11y-motion>`). *(2026-10-03)*
+- **Modal sem `<dialog>`** (currículo) → botão de fechar nativo, resto da página `inert` enquanto aberto, foco devolvido ao gatilho. *(2026-10-03)*
 - **Perfil de conformidade** → WCAG 2.2 AA, Compliance Profile **Standard**; as exceções localizadas de 7:1 (`apresentacao`, ADR-ap-001) permanecem. *(2026-10-03)*
 - **Integração do protocolo** → cópia versionada em `docs/a11y/` com SHA fixado e carga preguiçosa; sem `@import` no `AGENTS.md` (41 KB entraria em toda sessão). *(2026-10-03)*
 - **Páginas utilitárias** → só `boutique-empresarial-showcase` é corrigida; as demais seguem em `EXCEPTIONS.md` com a catraca impedindo piora. *(2026-10-03)*

@@ -393,6 +393,8 @@
   ]
 }
 </script>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 <!-- AEO:END -->
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/salesforce-agentic-quickstart" />
@@ -1713,6 +1715,7 @@ methadata trampling.
       }
     }, { threshold: 0.08 });
     document.querySelectorAll('section, footer').forEach(el => {
+<script type="module" src="./js/a11y-scroll-regions.js"></script>
       el.classList.add('reveal');
       io.observe(el);
     });

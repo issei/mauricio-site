@@ -406,7 +406,7 @@ img, svg { max-width: 100%; height: auto; }
   background: var(--ap-cobalt);
 }
 
-.ap-core-grid { display: grid; gap: var(--ap-l3-gap); }
+.ap-core-grid { display: grid; gap: var(--ap-l3-gap); grid-template-columns: minmax(0, 1fr); } /* min-width:auto do cartão estourava a 320px (WCAG 1.4.10) */
 @media (min-width: 56rem) { .ap-core-grid { grid-template-columns: 1fr 1fr; } }
 
 .ap-card {

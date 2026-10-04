@@ -38,6 +38,8 @@ Isto é um fato registrado, não uma defesa: se um visitante chegar nelas, as ba
 - **WCAG:** 2.4.1, 1.3.1; **verificar** 2.2.2/1.4.2 (`autoplay` no markup, achado `verify-a11y: media-autoplay`) · **Severidade:** 🟠 High
 - **Quebrado:** mídia que inicia sozinha sem mecanismo de pausa comprovado; sem landmark. **Contorno:** nenhum verificado. **Resolução:** `muted` + controle de pausa; `<main>` + skip link.
 
+> **Atualização Fase 5:** a catraca passou a medir `motion:reduce`. `admin` e `admin-editor` (6 animações infinitas cada) e `exemplopdi` (1) ignoram `prefers-reduced-motion` — mesmo escopo e prazo das exceções abaixo; `test-github` e `exemplopdi` também seguem com rolagem horizontal a 320 px.
+
 ### EXC-006 — `src/exemplopdi.html`
 - **WCAG:** 1.4.3 (2 nós `#6a7282` sobre `#0d1117` = 3,91:1), 1.4.10 (rolagem horizontal a 320 px, 461 px de largura), 2.4.1 · **Severidade:** 🟠 High
 - **Contorno:** conteúdo de exemplo/demonstração, não proposta. **Resolução:** token muted `#99a1af` (já aprovado) + reflow.

@@ -608,6 +608,7 @@
 </script>
 <!-- AEO:END -->
   <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 </head>
 
 <body class="antialiased">
@@ -1913,7 +1914,7 @@
                     <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Inspirado em Data Mesh: <strong>core central + domain ownership</strong> — sem cair no extremo do data lake monolítico nem no caos do bottom-up puro.</p>
                 </div>
 
-                <table class="matrix">
+                <div class="overflow-x-auto"><table class="matrix">
                     <thead>
                         <tr>
                             <th>Papel</th>
@@ -1967,7 +1968,7 @@
                             <td>Export &lt; 1h</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
 
                 <div class="grid md:grid-cols-2 gap-6 mt-10">
                     <div class="card">
@@ -2072,7 +2073,7 @@
                     <p class="text-gray-400 mt-4 max-w-2xl mx-auto">SLOs por domínio + camada FinOps explícita. Dashboard "Knowledge Vital Signs" plugado em alerting padrão (Datadog / Grafana).</p>
                 </div>
 
-                <table class="matrix">
+                <div class="overflow-x-auto"><table class="matrix">
                     <thead>
                         <tr>
                             <th>Camada</th>
@@ -2114,7 +2115,7 @@
                         <tr><td>Hard Escalations / semana</td><td>Acionamentos do Circuit Breaker (limite de tentativas).</td><td>&lt; 5% das execuções</td></tr>
                         <tr><td>Budget Utilization</td><td>% do budget mensal consumido.</td><td>Alertas em 70% / 90% / 100%</td></tr>
                     </tbody>
-                </table>
+                </table></div>
 
                 <div class="mt-10 card">
                     <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-stethoscope text-green-400"></i> Tracing semântico ponta-a-ponta</h3>
@@ -2442,6 +2443,7 @@
     </footer>
 
 <script type="module" src="./js/eco-nav.js"></script>
+<script type="module" src="./js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>
