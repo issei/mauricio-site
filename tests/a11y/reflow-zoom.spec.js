@@ -14,6 +14,9 @@ test('life e life3d não bloqueiam o zoom (WCAG 1.4.4)', async ({ page }) => {
 
 test('life3d: fases são uma lista; só a atual leva aria-current', async ({ page }) => {
   await page.goto('/life3d.html');
+  // a página cria o WebGLRenderer no topo do script: sem WebGL (Firefox headless do CI) o init nunca roda
+  const temWebGL = await page.evaluate(() => !!document.createElement('canvas').getContext('webgl'));
+  test.skip(!temWebGL, 'sem WebGL neste navegador: life3d não inicializa');
   const items = page.locator('#progress-dots ol > li.dot');
   await expect.poll(() => items.count(), { timeout: 15_000 }).toBeGreaterThan(5); // os pontos são montados por script
   await expect(items.first()).toContainText(/Fase 1 de \d+/);
