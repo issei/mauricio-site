@@ -43,6 +43,8 @@
 .aeo-faq__q::-webkit-details-marker { display: none; }
 .aeo-faq__q::before { content: "▸"; color: var(--aeo-link); transition: transform 0.2s ease; flex: none; }
 .aeo-faq__item[open] .aeo-faq__q::before { transform: rotate(90deg); }
+/* o item tem overflow:hidden — o anel de foco precisa ficar DENTRO da caixa, senão é recortado */
+.aeo .aeo-faq__item .aeo-faq__q:focus-visible { outline-offset: -4px; } /* especificidade acima da regra de foco de cada página */
 .aeo-faq__a { padding: 0 1.3rem 1.2rem; }
 .aeo-faq__a p { margin: 0; font-size: 0.92rem; line-height: 1.7; max-width: 76ch; }
 .aeo-faq__a strong { color: var(--aeo-head); }

@@ -3,6 +3,7 @@
  * Determinístico e acessível: o parágrafo aria-live é o equivalente textual.
  * T4: descrições por cenário + realce visual da etapa que falha em cada caso.
  */
+import { enhanceTablist } from './a11y-tabs.js';
 const SCENARIOS = {
   feliz: {
     fail: null,
@@ -27,6 +28,7 @@ function initFlow() {
   if (!root) return;
   const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
   const desc = root.querySelector('[data-flow-desc]');
+  enhanceTablist(root.querySelector('[role="tablist"]'), { panel: desc });
 
   const setScenario = (name) => {
     const sc = SCENARIOS[name];

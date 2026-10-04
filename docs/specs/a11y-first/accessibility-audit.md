@@ -140,6 +140,18 @@ Formato: **Local** · **Evidência** · **Quem/qual tarefa** · **WCAG** · **Ca
 ### 🟡 F-18 — Interface de consentimento em português nos espelhos EN (**aberto**)
 - `src/js/cookie-consent.js` é compartilhado: `/en/index.html` mostra banner, modal e botões em PT-BR. **WCAG** 3.1.1/3.1.2 (idioma da página/das partes) e compreensão. Corrigir exige dicionário EN e **revisão do texto jurídico** (LGPD/GDPR) — decisão do autor; não feito.
 
+### 🟠 F-19…F-26 — Achados da Fase 6 (todos **corrigidos**; ver `implementation-plan.md` Fase 6)
+| ID | Achado | WCAG | Evidência |
+| :-- | :-- | :-- | :-- |
+| F-19 | Espelho EN tinha botão (`life3d #btn-start`) e link (`case-agents`) **sem texto**; o tradutor devolvia vazio para segmento que abre com símbolo/emoji. A catraca só olhava o PT | 4.1.2, 2.4.4 | M (axe no EN) |
+| F-20 | Foco invisível: anel padrão do Chrome quase preto sobre fundo escuro (`devin`: 4 cards e 2 links) | 2.4.7 | M (computed `rgb(16,16,16)`) |
+| F-21 | `<summary>` de acordeão em contêiner `overflow:hidden`: anel recortado (FAQ AEO em ≥ 5 páginas, `engenharia-confianca`, `formulacao`) | 2.4.7 | M (pixel focado = desfocado) |
+| F-22 | `<eco-nav>` fixo cobre o link focado no fim da página (rodapé do `devin`) | 2.4.11 | M |
+| F-23 | 4 tablists sem tabindex móvel, setas ou Home/End (EAI maturidade e pipeline, devin IDE, confiança); sem `aria-controls`/`tabpanel` | 2.1.1, 4.1.2 | M (probe) |
+| F-24 | `#help-dialog`/`#glossary-dialog` (OCC): `aria-labelledby` para ids inexistentes → diálogo **sem nome** | 4.1.2 | C |
+| F-25 | Quiz EAI: opções sem nome de grupo e sem estado da escolhida; calibrador sem região de status | 1.3.1, 4.1.3 | M |
+| F-26 | `artifice`: skip link com `focus:not-sr-only` que o Tailwind não gerou — nunca aparece (e o contraste de `.tk-com` em código das páginas Salesforce: 4,19:1) | 2.4.1, 1.4.3 | M |
+
 ### ⚙️ G-01 — O gate verde não significa "sem violação"
 - **Evidência (C+M):** `grep expectNoSeriousA11yViolations(page)` → axe de **página inteira** em 14 páginas; `aeo.spec` e `eco-nav.spec` auditam só `.aeo`/`eco-nav`. Resultado: as **11 páginas com contraste reprovado (F-04) não estão entre as 14** — o CI nunca as audita por inteiro, então "gate verde" coexiste com ~128 nós de contraste serious. E `index` (auditada) passa o gate e falha 2.5.8 (F-10) porque o gate não conhece WCAG 2.2.
 - Lacunas: (1) tags param em `wcag21aa` — **2.5.8 e demais critérios 2.2 não existem para o gate**; (2) filtra só `serious|critical`; (3) roda no dev server (FOUC já documentado em `axe.js`); (4) 5 specs com `keyboard.press`; (5) sem teste de ordem de foco, trap/restauração, 320 px ou `forced-colors` genérico.

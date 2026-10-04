@@ -124,7 +124,7 @@
     }
 
     pre.code .tk-com {
-      color: #64748b;
+      color: #94a3b8; /* #64748b dava 4,19:1 sobre o fundo do bloco */
       font-style: italic;
     }
 
@@ -2368,7 +2368,7 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
                         <label class="flex items-start gap-3 cursor-pointer group">
                           <input type="checkbox" class="chk mt-0.5" x-model="it.done">
                           <span class="text-sm text-slate-300 group-hover:text-white"
-                            :class="it.done && 'line-through text-slate-500'" x-text="it.t"></span>
+                            :class="it.done && 'line-through text-slate-400'" x-text="it.t"></span>
                         </label>
                       </li>
                     </template>
@@ -2802,7 +2802,7 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
 
         <!-- Linha final do rodapé -->
         <div
-          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
           <p>© <span id="year"></span> Agentic DevOps for Salesforce — portal de treinamento.</p>
           <div class="flex items-center gap-4">
             <a href="#hero" class="hover:text-slate-300">Voltar ao topo ↑</a>

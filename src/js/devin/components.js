@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { enhanceTablist } from '../a11y-tabs.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,6 +38,7 @@ export function initFileExplorer() {
   const explorer = document.getElementById('file-explorer');
   if (!explorer) return;
 
+  enhanceTablist(explorer.querySelector('[role="tablist"]'));
   const tabs   = explorer.querySelectorAll('.ep07-ide__tab');
   const panels = explorer.querySelectorAll('.ep07-ide__panel');
 

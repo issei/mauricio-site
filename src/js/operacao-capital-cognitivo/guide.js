@@ -125,7 +125,7 @@ export function openHelp(chapter) {
   if (!dlg || !g) return;
   const terms = (g.terms || []).map((t) => glossaryMap[t]).filter(Boolean);
   document.getElementById('help-body').innerHTML = `
-    <h2 class="text-xl font-bold text-white mb-1">${g.title}</h2>
+    <h2 id="help-title" class="text-xl font-bold text-white mb-1">${g.title}</h2>
     <p class="text-sm text-gray-300 mb-4">${g.objective}</p>
     <p class="text-xs uppercase tracking-wider text-blue-400 mb-2">Passo a passo</p>
     <ol class="list-decimal list-inside text-sm text-gray-300 space-y-1 mb-4">${g.steps.map((s) => `<li>${s}</li>`).join('')}</ol>
@@ -141,10 +141,10 @@ export function openGlossary() {
   const dlg = document.getElementById('glossary-dialog');
   if (!dlg) return;
   document.getElementById('glossary-body').innerHTML = `
-    <h2 class="text-xl font-bold text-white mb-3">📖 Glossário — em linguagem simples</h2>
+    <h2 id="glossary-title" class="text-xl font-bold text-white mb-3">📖 Glossário — em linguagem simples</h2>
     <dl class="text-sm space-y-3 mb-6">${GLOSSARY.map((g) => `<div><dt class="text-white font-medium">${g.term}</dt><dd class="text-gray-400">${g.def}</dd></div>`).join('')}</dl>
     <h3 class="text-sm uppercase tracking-wider text-blue-400 mb-2">Referências (fontes reais)</h3>
     <ul class="text-sm space-y-1 mb-3">${REFERENCES.map((r) => `<li><a href="${r.url}" target="_blank" rel="noopener noreferrer" class="text-blue-400 underline">${r.label} ↗</a></li>`).join('')}</ul>
-    <p class="text-xs text-gray-500">Nota: alguns nomes de conferências e artigos citados no simulador são ilustrativos/pedagógicos. Os coeficientes numéricos são parâmetros de ensino, não medições absolutas.</p>`;
+    <p class="text-xs text-gray-400">Nota: alguns nomes de conferências e artigos citados no simulador são ilustrativos/pedagógicos. Os coeficientes numéricos são parâmetros de ensino, não medições absolutas.</p>`;
   if (typeof dlg.showModal === 'function') dlg.showModal();
 }

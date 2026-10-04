@@ -70,6 +70,28 @@ const webmcp = () => ({
   ],
 });
 
+/*
+ * Indicador de foco de base em toda página (docs/specs/a11y-first, Fase 6).
+ * O anel padrão do Chrome sai quase preto (rgb(16,16,16)) em páginas escuras — invisível, e
+ * a SC 2.4.7 falha sem que o axe note. `:where()` tem especificidade zero: qualquer estilo de
+ * foco da própria página continua mandando; só preenche o que não tem nenhum.
+ * `summary` em contêiner `overflow:hidden` (acordeões com cantos arredondados) tem o anel recortado:
+ * o deslocamento negativo o mantém dentro da caixa.
+ */
+const focusBase = () => ({
+  name: 'a11y-focus-base',
+  transformIndexHtml: () => [
+    {
+      tag: 'style',
+      attrs: { id: 'a11y-base' },
+      children:
+        ':where(a[href],button,summary,input,select,textarea,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #58a6ff;outline-offset:2px}' +
+        'summary:focus-visible{outline-offset:-4px}',
+      injectTo: 'head-prepend',
+    },
+  ],
+});
+
 export default defineConfig({
   root: 'src',
   publicDir: '../public',
@@ -85,6 +107,7 @@ export default defineConfig({
     tailwindcss(),
     wellKnownJsonContentType(),
     webmcp(),
+    focusBase(),
     sitemap({
       hostname: 'https://mauricio.issei.com.br',
       generateRobotsTxt: false,
