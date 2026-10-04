@@ -38,6 +38,16 @@ Depois de qualquer edição desse tipo, rode a skill
   sobrescritos. Corrija o português.
 - `npm run gate` já cobra que os espelhos estejam em dia.
 
+### ♿ Acessibilidade — protocolo A11Y.md (WCAG 2.2 AA, perfil Standard)
+
+Ao criar ou editar UI (`src/**/*.html|css`, `src/js/**`), aplique
+[`docs/a11y/A11Y.md`](docs/a11y/A11Y.md) e carregue **só** o guia do componente
+em `docs/a11y/references/` — não o diretório inteiro. Consulte
+[`A11Y-DECISIONS.md`](A11Y-DECISIONS.md) antes de criar um padrão interativo e
+[`EXCEPTIONS.md`](EXCEPTIONS.md) antes de "corrigir" uma página listada lá.
+`npm run gate` roda a catraca (`tests/a11y/baseline.json`): a dívida só desce.
+Plano e auditoria: `docs/specs/a11y-first/`.
+
 ### 🕸️ CodeGraph — indexed code graph
 
 This repo is indexed by [CodeGraph](https://github.com/colbymchenry/codegraph)
