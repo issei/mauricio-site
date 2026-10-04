@@ -20,8 +20,8 @@ para `EXCEPTIONS.md` (7 registradas na raiz: EXC-001…007). Cada decisão abaix
 | D-05 | Preferência de movimento | cada página lê `matchMedia` · leitor único | **manter por página** até haver ≥ 3 que precisem de reação em runtime (YAGNI); `ACC-01` já define `a11y:changed` para o jogo | proposto |
 | D-06 | Páginas utilitárias públicas (`admin`, `admin-editor`, `diagnostic`, `test-github`, `mapmind`, `vsl`, `exemplopdi`, `boutique-empresarial-showcase`) | corrigir · remover da produção · `noindex` + exceção com prazo | **decisão do autor** (Q2). Sugestão: remover `test-github`, `diagnostic`; `admin*` atrás de autenticação/remover do bundle público; os demais corrigir | **decidido 2026-10-03:** corrigir só `boutique-empresarial-showcase`; o resto **não mexe** → `EXCEPTIONS.md` EXC-001…007 |
 | D-07 | Libras / alternativa em língua de sinais para vídeo/áudio | só legenda+transcrição · adicionar janela de Libras | **legenda + transcrição** (obrigatório 1.2.x); Libras é **recomendação** (`guide-sign-language-br.md`), não SC — custo de produção alto | proposto |
-| D-08 | Modal de cookies | `<dialog>`+`showModal()` · `div` + trap manual | **`<dialog>`** (menos código, comportamento nativo) | proposto |
-| D-09 | Alvo mínimo | 24 px (AA) · 44 px (House Rule) | **44 px** em nav/botões/consentimento; links em linha isentos; **24 px** é o piso inegociável | proposto |
+| D-08 | Modal de cookies | `<dialog>`+`showModal()` · `div` + trap manual | **`<dialog>`** (menos código, comportamento nativo) | **aprovado 2026-10-03** (autor, "segue para a Fase 3") |
+| D-09 | Alvo mínimo | 24 px (AA) · 44 px (House Rule) | **44 px** em nav/botões/consentimento; links em linha isentos; **24 px** é o piso inegociável | **aprovado 2026-10-03** |
 | D-10 | Piso do texto de apoio | manter `gray-500` · adotar `gray-400 #99a1af` | **`#99a1af`** (5,85–7,74:1 medido) | **aprovado 2026-10-03** (autor) |
 | D-11 | Verificação independente | só autor · segundo agente/contexto fresco | **fresh-context obrigatório** antes de qualquer `PASS`; `cross-agent` se houver ferramenta; senão `self-reported ⚠️` | proposto |
 

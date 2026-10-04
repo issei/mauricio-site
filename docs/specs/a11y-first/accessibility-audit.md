@@ -35,7 +35,7 @@ Ressalva metodológica: o contraste foi **reconferido** com animações finaliza
 
 | Sev. | Qtde | Achados |
 | :-- | :-: | :-- |
-| 🔴 CRITICAL | 3 | F-01 modal de cookies sem gestão de foco (site inteiro) · F-02 botão sem nome (`proposta`) · F-03 campos sem rótulo (`diagnostic`, `test-github`) |
+| 🔴 CRITICAL | 3 | F-01 modal de cookies sem gestão de foco (5 páginas, incluindo a home) · F-02 botão sem nome (`proposta`) · F-03 campos sem rótulo (`diagnostic`, `test-github`) |
 | 🟠 HIGH | 8 | F-04 contraste sistêmico · F-05 zoom bloqueado (`life`, `life3d`) · F-06 reflow 320px · F-07 ARIA proibido (`life3d`) · F-08 movimento reduzido · F-09 bypass blocks/landmarks · F-10 alvo do botão de consentimento · F-11 link só por cor |
 | 🟡 MEDIUM | 4 | F-12 região rolável sem foco · F-13 h1 duplicado/iframe como 1º foco · F-14 `span role=button` · F-15 alvos <24px (heurística) |
 | ⚙️ Processo | 1 | G-01 o gate cobre axe de página inteira em 14 de 41 páginas e não conhece WCAG 2.2 |
@@ -52,7 +52,7 @@ Isto **não** é conformidade — é ponto de partida real e reutilizável.
 Formato: **Local** · **Evidência** · **Quem/qual tarefa** · **WCAG** · **Causa raiz** · **Correção** · **Trade-off** · **Decisão humana?**
 
 ### 🔴 F-01 — Modal de preferências de cookies declara `aria-modal` e não gerencia foco
-- **Local:** `src/js/cookie-consent.js:187–250` (`buildModal`). Carregado em todas as páginas → **41 PT + 32 EN**.
+- **Local:** `src/js/cookie-consent.js:187–250` (`buildModal`). Carregado em **5 páginas PT** (`index`, `curriculo`, `cookies`, `privacidade`, `termos`) e nos 5 espelhos EN. **Correção:** a 1ª versão desta auditoria dizia "site inteiro" (41+32); medi depois com `grep cookie-consent` — o alcance real é 10 páginas.
 - **Evidência (C):** `role="dialog" aria-modal="true"` existem; **não há** `.focus()` ao abrir, nem contenção de Tab, nem retorno ao gatilho ao fechar. O listener de `Escape` (l. 247) é registrado em `document` a cada construção e só se remove no próprio Esc — fechar por clique ou botão o **vaza**. `guide-consent-banners.md` (A11Y.md) exige, para modal: mover foco para dentro, contê-lo, fechar com Esc e devolver o foco.
 - **Quem/tarefa:** usuário de teclado e de leitor de tela em T7 (decidir sobre cookies). `aria-modal="true"` esconde o resto da página para o leitor de tela enquanto o foco real pode ficar **atrás** do diálogo.
 - **WCAG:** 2.4.3 Ordem do foco (A), 2.1.2 (A, risco), 4.1.2 (A).
@@ -132,6 +132,14 @@ Formato: **Local** · **Evidência** · **Quem/qual tarefa** · **WCAG** · **Ca
 ### 🟡 F-15 — Alvos < 24 px (heurística)
 - **H/M:** 24 páginas têm links de navegação/rodapé com 16–22 px de altura. axe só marcou 2 porque SC 2.5.8 admite exceção por **espaçamento** e por link **em linha** — a sonda os trata como candidatos. **Não declarar falha** sem checar o espaçamento; medir na Fase 5. Nomes que valem triagem: `engenharia-confianca` (55), `salesforce-agentic-quickstart` (48), `curriculo` (34).
 
+### 🟠 F-17 — O `<eco-nav>` cobria os botões Recusar/Aceitar do banner (achado na Fase 3, **corrigido**)
+- **Evidência (M):** `eco-nav` é `position:fixed; right:1rem; bottom:1rem; z-index:2147483000`; o banner fica no mesmo canto. A 1280×720 o host (1017–1264 × 659–704) cobre "Recusar todos" (961–1099) e "Aceitar todos" (1109–1240); a 375×812 cobre "Aceitar todos". O Playwright reportou `<eco-nav> intercepts pointer events`.
+- **Quem/tarefa:** qualquer pessoa em T7 na 1ª visita — clique/toque nos botões principais é interceptado. **WCAG** 2.4.11, 2.5.8. Existia antes da Fase 3 (nenhum teste olhava).
+- **Correção:** `cookie-consent.js` publica `--cc-banner-h`; `eco-nav.js` usa `bottom: calc(1rem + var(--cc-banner-h, 0px))`. Teste de não-sobreposição em desktop e mobile. **Efeito colateral:** em tela estreita a faixa tem ~540 px, então o botão do eco-nav sobe até ~215 px do topo enquanto não há decisão; o painel dele abre para cima nesse espaço — **não verificado**.
+
+### 🟡 F-18 — Interface de consentimento em português nos espelhos EN (**aberto**)
+- `src/js/cookie-consent.js` é compartilhado: `/en/index.html` mostra banner, modal e botões em PT-BR. **WCAG** 3.1.1/3.1.2 (idioma da página/das partes) e compreensão. Corrigir exige dicionário EN e **revisão do texto jurídico** (LGPD/GDPR) — decisão do autor; não feito.
+
 ### ⚙️ G-01 — O gate verde não significa "sem violação"
 - **Evidência (C+M):** `grep expectNoSeriousA11yViolations(page)` → axe de **página inteira** em 14 páginas; `aeo.spec` e `eco-nav.spec` auditam só `.aeo`/`eco-nav`. Resultado: as **11 páginas com contraste reprovado (F-04) não estão entre as 14** — o CI nunca as audita por inteiro, então "gate verde" coexiste com ~128 nós de contraste serious. E `index` (auditada) passa o gate e falha 2.5.8 (F-10) porque o gate não conhece WCAG 2.2.
 - Lacunas: (1) tags param em `wcag21aa` — **2.5.8 e demais critérios 2.2 não existem para o gate**; (2) filtra só `serious|critical`; (3) roda no dev server (FOUC já documentado em `axe.js`); (4) 5 specs com `keyboard.press`; (5) sem teste de ordem de foco, trap/restauração, 320 px ou `forced-colors` genérico.
@@ -165,11 +173,11 @@ Formato: **Local** · **Evidência** · **Quem/qual tarefa** · **WCAG** · **Ca
 
 | Tarefa | Bloqueios | Atritos |
 | :-- | :-- | :-- |
-| T1 Entender quem é / achar prova | — | F-04 (rodapé), F-06 `index`, F-10 |
-| T2 Ver o currículo e baixar | F-01 | F-04, F-10, F-14, F-15 |
+| T1 Entender quem é / achar prova | F-01 (`index`) | F-04 (rodapé), F-06 `index`, F-10 |
+| T2 Ver o currículo e baixar | F-01 (`curriculo`) | F-04, F-10, F-14, F-15 |
 | T3 Ler uma proposta | F-02 (`proposta`) | F-04 (6 págs.), F-09 (4 págs. sem `main`) |
-| T4 Usar página interativa (quiz/simulador) | F-01 | F-06, F-08, F-12 |
-| T5 Percorrer a jornada (`life*`, `terminal-evolutivo`) | F-01 | F-05, F-07, F-08 |
-| T6 Navegar o ecossistema | F-01 | F-09, F-15 |
+| T4 Usar página interativa (quiz/simulador) | — | F-06, F-08, F-12 |
+| T5 Percorrer a jornada (`life*`, `terminal-evolutivo`) | — | F-05, F-07, F-08 |
+| T6 Navegar o ecossistema | — | F-09, F-15 |
 | T7 Decidir sobre cookies | **F-01** | F-10 |
 | T8 Mantenedor edita o CV (`admin*`) | F-03 | F-14 |

@@ -82,7 +82,9 @@ function pillarOf(slug) {
 
 const STYLE = `
   :host {
-    position: fixed; right: 1rem; bottom: 1rem; z-index: 2147483000;
+    position: fixed; right: 1rem; z-index: 2147483000;
+    /* acima da faixa de cookies, que cobriria os botões Recusar/Aceitar (--cc-banner-h vem de cookie-consent.js) */
+    bottom: calc(1rem + var(--cc-banner-h, 0px));
     /* tokens herdados do host com fallback (SPEC §4.3) */
     --a: var(--eco-accent, #007bff);
     --a2: var(--eco-accent-2, #8a2be2);

@@ -37,13 +37,15 @@ Responsivo ✔ 320 px e 200 % de texto · Erro ✔ usuário corrige e continua �
 - **Aceite:** gate verde **com** o baseline atual; adicionar uma violação artificial derruba o gate; nenhuma página tem tratamento especial.
 
 ### Fase 2 — Contraste por token (F-04) 🟠
+> **Entregue 2026-10-03** — `color-contrast` 128 → 2 no baseline (as 2 restantes são `exemplopdi`, EXC-006, que o autor decidiu não mexer). 126 nós em 10 páginas; baseline 207 → 81. Desvios do plano: `devin` tinha paleta própria (9 cinzas `#334155`, 23 `#64748B`, laranja/roxo em painéis) e exigiu edição no `devin.css`, não só troca de utilitário; o texto do diploma em `curriculo` vem de `scripts/gen-portfolio.mjs` (corrigido na fonte); clarear o texto de apoio fez um link de `sustentacao` perder distinção por cor (→ sublinhado; é a mesma família de F-11, Fase 4).
 - **Arquivos:** os 15 `src/*.html` com `text-gray-500/600`, `text-slate-500`; `src/curriculo.html` e `src/index.html` **via** `cv.json`/`scripts/gen-portfolio.mjs` quando o trecho é gerado; `STYLE_GUIDE.md` (+ regra do piso).
 - **Mudanças:** `gray-500/600 → gray-400 (#99a1af)`; `#007bff` em texto → `#58a6ff`; CTA `#2563eb` com texto `#fff`; documentar o piso. Sem tocar `apresentacao.css`.
 - **Riscos:** muted mais claro altera a hierarquia → **revisão visual do autor** antes do merge. `guard-ap-tokens` não é afetado.
 - **Testes:** sweep (color-contrast = 0 nas 11 páginas); `tests/portfolio.tokens.test.mjs` continua verde.
 - **Aceite:** baseline de `color-contrast` cai a 0 e é regravado.
 
-### Fase 3 — Consentimento (F-01, F-10) 🔴 → T7 em **todas** as páginas
+### Fase 3 — Consentimento (F-01, F-10, F-17) 🔴 → T7 nas 5 páginas que carregam o componente
+> **Entregue 2026-10-03** (branch `feat/a11y-first-fase3`). `<dialog>` + `showModal()`; categorias viram checkbox nativo (a escolha tem "Salvar" → não é switch, `guide-form-controls`); região viva única; banner reserva a própria altura (2.4.11); botões 44 px com paridade; `<eco-nav>` sobe acima do banner (F-17, **achado novo**); botão fixo some enquanto há banner. 11 testes × 3 navegadores; contra o código antigo, 10 de 11 falham. Baseline 81 → 79 (`target-size` em `index`/`curriculo`). Aberto: F-18 (texto em PT nos espelhos EN) e validação com leitor de tela real (humano).
 - **Arquivos:** `src/js/cookie-consent.js` (+ strings EN se existirem); novo `tests/a11y/consent.spec.js`.
 - **Mudanças:** `<dialog>` + `showModal()`; foco entra, Esc fecha, foco **retorna** ao gatilho; um só listener; toggles com um mecanismo de estado e nome claro; botões ≥ 44 px com paridade aceitar/recusar; `role=status` ao salvar.
 - **Dependências:** D-08, D-09; **decisão humana** sobre o texto dos toggles.
