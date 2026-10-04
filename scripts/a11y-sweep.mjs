@@ -14,6 +14,8 @@
  *   static:no-skip-link  1º Tab não cai num skip link que aponta para um id existente
  *   static:h1-count      nº de <h1> diferente de 1
  *   reflow:320           rolagem horizontal da página inteira a 320 px (SC 1.4.10)
+ *   motion:reduce        animações CSS/WAAPI ainda correndo com prefers-reduced-motion (infinitas ou > 1 ms
+ *                        depois de .finish()). Piso: GSAP/rAF e vídeo não aparecem em getAnimations().
  *
  * Estado medido: movimento reduzido, rastreadores bloqueados (CDNs liberadas — exige rede),
  * banner de cookies visível (contexto novo = sem consentimento gravado).
@@ -97,6 +99,10 @@ async function measure(browser, base, file) {
         /pular|ir para|skip/i.test(a.textContent ?? '');
     });
     if (!skip) bump('static:no-skip-link');
+
+    const motion = await desktop.page.evaluate(() => document.getAnimations()
+      .filter((a) => a.playState === 'running' && a.effect?.getComputedTiming().duration > 1).length);
+    bump('motion:reduce', motion);
   } finally {
     await desktop.ctx.close();
   }

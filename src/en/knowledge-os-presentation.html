@@ -613,6 +613,7 @@
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/knowledge-os-presentation" />
     <link rel="alternate" hreflang="x-default" href="https://mauricio.issei.com.br/knowledge-os-presentation" />
   <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 </head>
 
 <body class="antialiased">
@@ -1918,7 +1919,7 @@ It changed how I think about documenting."
                     <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Inspired by Data Mesh: <strong>core central + domain ownership</strong> — without falling to the extreme of the monolithic date lake or the chaos of the pure bottom-up.</p>
                 </div>
 
-                <table class="matrix">
+                <div class="overflow-x-auto"><table class="matrix">
                     <thead>
                         <tr>
                             <th>Paper</th>
@@ -1972,7 +1973,7 @@ It changed how I think about documenting."
                             <td>Export &lt; 1h</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
 
                 <div class="grid md:grid-cols-2 gap-6 mt-10">
                     <div class="card">
@@ -2077,7 +2078,7 @@ It changed how I think about documenting."
                     <p class="text-gray-400 mt-4 max-w-2xl mx-auto">SLOs per domain + explicit FinOps layer. Dashboard "Knowledge Vital Signs" plugged into default warning (Datadog / Grafana).</p>
                 </div>
 
-                <table class="matrix">
+                <div class="overflow-x-auto"><table class="matrix">
                     <thead>
                         <tr>
                             <th>Layer</th>
@@ -2119,7 +2120,7 @@ It changed how I think about documenting."
                         <tr><td>Hard Escalations/week</td><td>Circuit Breaker drives.</td><td>&lt; 5% of executions</td></tr>
                         <tr><td>Budget Usage</td><td>% of monthly budget consumed.</td><td>Alerts at 70% / 90% / 100%</td></tr>
                     </tbody>
-                </table>
+                </table></div>
 
                 <div class="mt-10 card">
                     <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-stethoscope text-green-400"></i> Semantic tip-to-point tracing</h3>
@@ -2447,6 +2448,7 @@ platform and pilot domain. Output: Priority backlog for Phase 1 — Foundation.
     </footer>
 
 <script type="module" src="../js/eco-nav.js"></script>
+<script type="module" src="./js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>

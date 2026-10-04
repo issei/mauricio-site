@@ -104,7 +104,7 @@ Formato: **Local** · **Evidência** · **Quem/qual tarefa** · **WCAG** · **Ca
 ### 🟠 F-07 — ARIA proibido em 11 elementos
 - **Local:** `src/life3d.html`, pontos de `#progress-dots` (`.active`). **M** (axe `aria-prohibited-attr`, serious). **WCAG** 4.1.2. Atributo de nome em elemento sem papel que o suporte. **Correção:** dar papel adequado (lista de `<button>`/`aria-current="step"`) ou remover o atributo.
 
-### 🟠 F-08 — Movimento reduzido incompleto
+### 🟠 F-08 — Movimento reduzido incompleto  _(Fase 5: 9 páginas corrigidas; **a leitura "devin 7→21" estava errada** — eram transições de 0,01 ms do próprio bloco de movimento reduzido; contando só animações > 1 ms, o `devin` tem 0 sob `reduce`)_
 - **Evidência (M):** com `reducedMotion: reduce`, ainda correm animações CSS/WAAPI em 10 páginas; `devin.html` **sobe de 7 para 21** (o ramo "reduzido" cria animação). **H:** 24 de 41 arquivos (HTML+CSS próprio) não citam `prefers-reduced-motion`.
 - **Limite da sonda:** `document.getAnimations()` não enxerga GSAP/rAF; não mede paralaxe nem vídeo/autoplay. Número = **piso**, não total.
 - **WCAG** 2.3.3 (AAA — **House Rule** do A11Y.md no Standard), 2.2.2 (A) para qualquer movimento >5 s sem pausa. **Decisão humana?** Não; **sim** para "o que é conteúdo e o que é enfeite" nas páginas de storytelling (`devin`, `terminal-evolutivo`, `life*`).

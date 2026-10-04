@@ -449,3 +449,12 @@ summary:focus-visible { outline: 2px solid var(--color-art-cyan); outline-offset
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
+
+/* Reflow a 320px (WCAG 1.4.10): o tooltip (oculto, mas ainda parte da área rolável) ancora na largura do bloco
+   dos termos, não no botão — que podia estar perto da borda direita. */
+@media (max-width: 640px) {
+  :has(> .art-term) { position: relative; }
+  .art-term { position: static; }
+  .art-term__tip { left: 0; right: 0; width: auto; max-width: none; }
+}
+.art-pullquote cite { overflow-wrap: anywhere; }

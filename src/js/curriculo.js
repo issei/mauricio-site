@@ -81,13 +81,23 @@ function openModal(triggerElement) {
 
     projectModal.style.display = 'block';
     document.body.style.overflow = 'hidden';
+    setBackgroundInert(true);
     document.getElementById('modal-project-name').focus();
+}
+
+// aria-modal não prende o Tab: enquanto o modal está aberto, tudo que NÃO é ele nem um ancestral dele
+// fica inerte (o modal mora dentro de <main>, então sobe a árvore e inertiza os irmãos de cada nível).
+function setBackgroundInert(on) {
+    for (let node = projectModal; node && node !== document.body; node = node.parentElement) {
+        for (const sibling of node.parentElement.children) if (sibling !== node) sibling.inert = on;
+    }
 }
 
 function closeModal() {
     if (!projectModal) return;
     projectModal.style.display = 'none';
     document.body.style.overflow = 'auto';
+    setBackgroundInert(false);
     if (lastFocusedElement) {
         lastFocusedElement.focus();
     }

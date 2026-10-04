@@ -245,6 +245,12 @@
         }
 
         .close-button {
+            background: none;
+            border: 0;
+            padding: 0 .4rem;
+            line-height: 1;
+            min-width: 44px;
+            min-height: 44px;
             color: #c9d1d9;
             position: absolute;
             top: 15px;
@@ -256,7 +262,7 @@
         }
 
         .close-button:hover,
-        .close-button:focus {
+        .close-button:focus-visible {
             color: #007bff;
         }
 
@@ -879,6 +885,7 @@
 </script>
 <!-- AEO:END -->
   <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 </head>
 
 <body class="antialiased">
@@ -1966,8 +1973,8 @@
         <!-- Modal de Detalhes do Projeto -->
         <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-project-name">
             <div class="modal-content">
-                <span class="close-button" onclick="closeModal()" role="button" tabindex="0"
-                    aria-label="Fechar detalhe do projeto">&times;</span>
+                <button type="button" class="close-button" onclick="closeModal()"
+                    aria-label="Fechar detalhe do projeto"><span aria-hidden="true">&times;</span></button>
                 <h3 id="modal-project-name" class="text-3xl font-bold text-white mb-4" tabindex="-1"></h3>
                 <p id="modal-project-period" class="text-md text-gray-400 mb-2"></p>
                 <p id="modal-project-company" class="text-md text-gray-400 mb-6"></p>

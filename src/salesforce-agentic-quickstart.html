@@ -393,6 +393,8 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 </head>
 
 <body class="bg-ink-900 text-slate-100 font-sans antialiased selection:bg-brand-500/40 selection:text-white">
@@ -1713,6 +1715,7 @@ Pare e me informe se qualquer guardrail falhar.</pre>
     });
   </script>
 <script type="module" src="./js/eco-nav.js"></script>
+<script type="module" src="./js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>
