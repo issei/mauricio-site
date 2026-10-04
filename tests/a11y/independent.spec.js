@@ -86,7 +86,8 @@ test('index (pt): o banner não leva lang redundante', async ({ page }) => {
 });
 
 /* 5 — conteúdo revelado só por hover ganha foco (2.4.7) */
-test('devin: o e-mail do encerramento fica visível quando recebe foco', async ({ page }) => {
+test('devin: o e-mail do encerramento fica visível quando recebe foco', async ({ page, browserName }) => {
+  test.skip(browserName === 'webkit', 'Safari não tabula links');
   await semBanner(page);
   await page.goto('/devin.html');
   const cta = page.locator('.ep09-encerramento__cta');

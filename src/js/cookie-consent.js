@@ -346,12 +346,22 @@ function init() {
             document.documentElement.style.setProperty('--cc-banner-h', h + 'px');
         });
         bannerWatch.observe(banner);
+        document.addEventListener('focusin', keepFocusAboveBanner);
         announce('Aviso de cookies. Você pode aceitar, recusar ou personalizar.');
+    }
+
+    // `scroll-padding-bottom` não basta: o Firefox não rola para um foco já parcialmente visível. Rola pela sobreposição.
+    function keepFocusAboveBanner(e) {
+        const el = e.target;
+        if (!banner || !(el instanceof Element) || banner.contains(el)) return;
+        const overlap = el.getBoundingClientRect().bottom - banner.getBoundingClientRect().top;
+        if (overlap > 0) window.scrollBy(0, overlap + 8);
     }
 
     function hideBanner() {
         if (!banner) return;
         bannerWatch.disconnect();
+        document.removeEventListener('focusin', keepFocusAboveBanner);
         document.body.style.paddingBottom = bodyPaddingBefore;
         document.documentElement.style.removeProperty('--cc-banner-h');
         document.documentElement.style.removeProperty('scroll-padding-bottom');
