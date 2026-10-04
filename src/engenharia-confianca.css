@@ -732,6 +732,7 @@ body.ec-body {
 .ec-xref__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
 .ec-xref__list li {
   display: inline-flex;
+  flex-wrap: wrap; /* a 320px o link ia para fora do item (WCAG 1.4.10) */
   align-items: baseline;
   gap: 0.4rem;
   font-size: 0.82rem;
@@ -1176,3 +1177,6 @@ body.ec-body {
   .ec-btn:hover, .ec-paincard:hover, .ec-ruler__step:hover { transform: none; }
   * { scroll-behavior: auto !important; }
 }
+
+/* Anel de foco de <summary> dentro de contêiner overflow:hidden (acordeões): fica DENTRO da caixa, senão é recortado (WCAG 2.4.7) */
+.ec-body details > summary:focus-visible { outline-offset: -4px; }

@@ -725,6 +725,7 @@ acerto"; abrir assim a transformaria em vitrine e destruiria a tese.
 | 4 | **Por que nenhum peso resolve** | Diagrama + aritmética | A demonstração dos 0.647 (§6.3) |
 | 5 | **A Barreira** | Diagrama interativo | As 4 guardas em sequência (§11.4) |
 | 6 | **A arquitetura** | Diagrama de fluxo + grid de cards | Pipeline `Query → Router → Taxonomia → Retriever → G1–G4 → LLM → tool` (§4), com as saídas `FAST_PATH` e falha-de-guarda anotadas |
+| 6b | **Estatística no código** | Conceito + trecho de Python + medição | As cinco técnicas estatísticas, explicadas e localizadas no código da branch `feature/solucao-enxuta` (§11.7) |
 | 7 | **Governança de catálogo** | Antes/depois | O colapso por capacidade (§4.2) |
 | 8 | **Economia honesta** | Tabela + citação | Goodhart (§8.2, §10.3) |
 | 9 | **O método** | Timeline | As duas rodadas de revisão (§7.1) |
@@ -802,6 +803,64 @@ Paleta **Dark Tech** padrão, **sem exceção** (a exceção `.ap-*` de `apresen
 
 Um `src/case-agents.css` dedicado é justificado pela densidade (blocos de score, diagrama de
 guardas), seguindo o precedente de `engenharia-confianca.css` e `formulacao-de-problemas.css`.
+
+### 11.7 Seção «Estatística no código» (`#tecnicas-estatisticas`)
+
+**Objetivo.** Explicar, em duas camadas, cada técnica estatística que decide algo no pipeline:
+o **conceito** (legível por quem não é engenheiro) e o **trecho de Python** que o implementa.
+
+**Fonte de verdade do código: a branch `feature/solucao-enxuta`**, commit
+`e2dcd7f3bdbe7d7408ff80a837bd8a247b431131` (versão simplificada: `router.py`, `retrieval.py`,
+`harness.py`, `normalization.py`; sem `taxonomy.py`, sem ADRs). Motivo: é o código mais curto
+que ainda contém as cinco técnicas, então o trecho cabe na página inteiro.
+
+Regras de conteúdo:
+
+1. **Trechos verbatim**, com caminho e faixa de linhas, e link permanente (por commit) para o GitHub.
+   Só é permitido dedentar e marcar cortes com `# …`.
+2. **Toda medição da seção vem de execução real** na branch (`python -m candidate_starter.run_case`
+   e recontagens offline sobre o mesmo relatório) — nunca dos números da `main`. Onde a métrica
+   impressa engana, a página diz por quê (ex.: `precision_at_k` compara nome exato; ver §11.7.2).
+3. **Onde a `main` faz diferente, há uma nota**, e a seção fecha com uma tabela «branch enxuta ×
+   `main`». A página não descreve a `main` como se fosse a enxuta, nem o contrário.
+4. **As cinco técnicas**, nesta ordem, cada uma com problema operacional explícito:
+   (1) TF-IDF + regressão logística; (2) calibração de Platt + validação cruzada estratificada;
+   (3) similaridade de cosseno multi-campo + colapso por capacidade; (4) limiares, margem relativa
+   e guarda de direção; (5) métricas de avaliação e economia.
+5. **Jargão explicado na primeira ocorrência** (TF-IDF, regularização L2, calibração, cosseno,
+   hit rate) — o público inclui quem não é dev. Sem frase de efeito sem conteúdo.
+6. Fórmulas em `<pre>` (padrão do bloco «Análise Aritmética»); sem MathJax, sem dependência nova.
+
+#### 11.7.1 O que a branch enxuta de fato contém (verificado em 2026-09-19)
+
+| Técnica | Implementação na branch enxuta |
+| :--- | :--- |
+| Router | `TfidfVectorizer(ngram_range=(1,2), min_df=1, preprocessor=normalize)` + `LogisticRegression(C=1.0, max_iter=1000, random_state=42)` |
+| Calibração | `CalibratedClassifierCV(method="sigmoid", cv=3)`; `cv` = 3 se a menor classe tem ≥ 3 exemplos, 2 se ≥ 2, senão sem calibração. `StratifiedKFold` é implícito (scikit-learn, `shuffle=False`) |
+| Retriever | dois `TfidfVectorizer`, α = 0,5; colapso por dicionário embutido (49 variantes → 12 capacidades); ordena por `score` (ordem estável do catálogo em empate) |
+| Guardas | G1 0,75 · G2 0,10 · G3 0,25 no `run_harness` (literais no código); G4 no retriever, por palavras-chave e prefixo do nome |
+| Métricas | matriz de confusão, `compute_precision_at_k` (na prática, hit rate), `compute_savings`; **sem** ponto de equilíbrio, **sem** contagem de execuções incorretas |
+
+Medição (`run_case`, 30 queries): router 30/30; `precision_at_k` impresso 26,3 % (5/19);
+5 abstenções (2 por G1, 0 por G2, 3 por G3); 16 execuções; economia de custo 82,2 %.
+
+#### 11.7.2 Duas armadilhas que a seção **deve** explicar, não esconder
+
+- **`precision_at_k` = 26,3 % não é qualidade de recuperação.** O `ToolMatch.name` da branch é o
+  nome da *variante que casou*; `expected_tool` do dataset é o nome *canônico*. Recontado por
+  capacidade (`get_canonical_name`): 19/20 no top-1 e 20/20 no top-2. A métrica impressa mede
+  igualdade de string, não relevância — e o denominador (19) exclui a query barrada por G1.
+- **Os dois campos do score são quase o mesmo texto.** Correlação ≥ 0,97 entre as similaridades e
+  top-1 idêntico ao do campo único nas 30 queries. O ganho multi-campo da `main` vem do glossário
+  autorado (informação nova), que a enxuta não tem.
+
+#### 11.7.3 Correção do card «Solução Enxuta» (§ Branches)
+
+O card afirmava «35 testes», «Sem taxonomia (Flat)», «L2 pura (não calibrada)», «Guarda Direcional
+inexistente», «~300 linhas» e «35 % Hit Rate@2 / 45 % de abstenções». Nenhum confere com o
+`HEAD` da branch (15 testes; calibração Platt; guarda parcial; ~560 linhas; 26,3 % / 16,7 %).
+Os números antigos vinham da história da `main` (commit `fc830dc`), não da branch. O card foi
+corrigido junto com esta seção, para a página não se contradizer.
 
 ---
 

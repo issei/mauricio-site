@@ -52,6 +52,18 @@ jobs:
         run: |
           aws s3 sync dist/ s3://${{ secrets.S3_BUCKET_NAME }} --delete --exclude "static/*"
 
+      - name: Fix Content-Type dos manifestos .well-known sem extensão
+        # aws s3 sync deduz o Content-Type pela extensão do arquivo. Os manifestos
+        # OAuth/OIDC e de descoberta agêntica (RFC 8414/9727/9728) não têm extensão
+        # e caem no default binary/octet-stream — pendência conhecida
+        # (docs/AGENT_READINESS.md §8). Ferramentas mais estritas (validadores ARD/
+        # OAuth) rejeitam esse Content-Type mesmo com corpo JSON válido.
+        run: |
+          for f in api-catalog agent-catalog oauth-authorization-server oauth-protected-resource openid-configuration; do
+            aws s3 cp "dist/.well-known/$f" "s3://${{ secrets.S3_BUCKET_NAME }}/.well-known/$f" \
+              --content-type "application/json" --metadata-directive REPLACE
+          done
+
       - name: Publish CloudFront Function (viewer-request)
         # Antes, o publish era manual e a function em produção ficou defasada do
         # repo (docs/specs/AGENT_READINESS_POR_PAGINA.md, C2). Roda depois do

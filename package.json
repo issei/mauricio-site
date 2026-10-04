@@ -12,10 +12,13 @@
     "test": "playwright test",
     "test:unit": "node --test tests/eai.test.js tests/cloudfront-viewer-request.test.js",
     "gate": "node scripts/quality-gate.mjs",
+    "a11y:sweep": "node scripts/a11y-sweep.mjs",
+    "a11y:update": "node scripts/a11y-sweep.mjs --update",
     "i18n:sync": "node scripts/sync-i18n.mjs",
     "i18n:sync:all": "node scripts/sync-i18n.mjs --all",
     "i18n:check": "node scripts/sync-i18n.mjs --check",
-    "i18n:install": "node scripts/sync-i18n.mjs --install-model"
+    "i18n:install": "node scripts/sync-i18n.mjs --install-model",
+    "a11y:static": "node scripts/a11y-static.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",

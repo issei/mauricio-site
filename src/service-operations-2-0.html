@@ -301,9 +301,12 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 </head>
 
 <body class="antialiased selection:bg-neon-400 selection:text-navy-900">
+    <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -362,6 +365,7 @@
     </nav>
 
     <!-- Hero Section -->
+  <main id="conteudo">
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-hero-glow">
         <!-- Grade de fundo sutil -->
         <div
@@ -443,7 +447,7 @@
                 </div>
                 <div class="flex-1 h-px" style="background: linear-gradient(90deg, rgba(0,245,160,0.3), transparent);">
                 </div>
-                <span class="text-xs text-gray-500 font-medium uppercase tracking-widest">Triagem por Impacto
+                <span class="text-xs text-gray-400 font-medium uppercase tracking-widest">Triagem por Impacto
                     Comercial</span>
             </div>
 
@@ -474,7 +478,7 @@
                         Nenhuma funcionalidade de cadastro está disponível. A operação comercial está parada.
                     </p>
                     <div class="flex items-end justify-between">
-                        <span class="text-xs text-gray-500 font-medium">Impacto Direto</span>
+                        <span class="text-xs text-gray-400 font-medium">Impacto Direto</span>
                         <span class="font-black text-2xl" style="color: #ef4444;">Venda Perdida</span>
                     </div>
                 </div>
@@ -502,7 +506,7 @@
                         apresenta erro. O consultor precisa contornar e o cliente sente a fricção da operação.
                     </p>
                     <div class="flex items-end justify-between">
-                        <span class="text-xs text-gray-500 font-medium">Impacto Indireto</span>
+                        <span class="text-xs text-gray-400 font-medium">Impacto Indireto</span>
                         <span class="font-black text-2xl" style="color: #eab308;">Atrito na Jornada</span>
                     </div>
                 </div>
@@ -530,7 +534,7 @@
                         solicitações de melhoria de UX no sistema de apoio ao consultor. Sem impacto imediato em vendas.
                     </p>
                     <div class="flex items-end justify-between">
-                        <span class="text-xs text-gray-500 font-medium">Melhoria Contínua</span>
+                        <span class="text-xs text-gray-400 font-medium">Melhoria Contínua</span>
                         <span class="font-black text-2xl" style="color: #00f5a0;">Evolução</span>
                     </div>
                 </div>
@@ -719,7 +723,7 @@
                             <span class="text-xs font-black uppercase tracking-widest" style="color: #00f5a0;">Theory of
                                 Constraints (ToC)</span>
                             <span class="w-1.5 h-1.5 rounded-full" style="background:#00f5a0;"></span>
-                            <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Foco no Gargalo
+                            <span class="text-xs text-gray-400 font-medium uppercase tracking-wider">Foco no Gargalo
                                 Crítico</span>
                         </div>
                         <p class="text-white font-semibold text-lg leading-snug">
@@ -1115,7 +1119,7 @@
                             <div class="flex justify-between items-end mb-8 border-b border-navy-700 pb-5">
                                 <div>
                                     <div
-                                        class="text-[10px] text-gray-500 uppercase tracking-widest font-black mb-1.5 flex items-center gap-2">
+                                        class="text-[10px] text-gray-400 uppercase tracking-widest font-black mb-1.5 flex items-center gap-2">
                                         Monitoramento
                                         <div class="flex gap-0.5">
                                             <div class="w-1 h-2 bg-neon-400 animate-pulse"></div>
@@ -1133,7 +1137,7 @@
                                 </div>
                                 <div class="text-right">
                                     <div
-                                        class="text-[10px] text-gray-500 uppercase tracking-widest font-black mb-1.5 border-b border-gray-700/50 pb-1">
+                                        class="text-[10px] text-gray-400 uppercase tracking-widest font-black mb-1.5 border-b border-gray-700/50 pb-1">
                                         Métrica Rápida</div>
                                     <div
                                         class="text-sm text-neon-400 font-bold drop-shadow-[0_0_10px_rgba(0,245,160,0.6)] mt-2">
@@ -1201,7 +1205,7 @@
                     class="text-gray-400 max-w-2xl mx-auto text-lg hover:text-neon-400 transition-colors cursor-default mb-4">
                     Resultados diretos da aplicação do modelo de Service Operations 2.0 na nossa balança comercial.</p>
                 <div class="inline-block px-4 py-2 mt-2 bg-navy-800 border border-white/5 rounded-lg">
-                    <p class="text-xs text-gray-500 font-medium">* KPIs representam metas projetadas baseadas em
+                    <p class="text-xs text-gray-400 font-medium">* KPIs representam metas projetadas baseadas em
                         benchmarks de implementação de Lean Healthcare e SRE em operações de alta complexidade.</p>
                 </div>
             </div>
@@ -1400,7 +1404,7 @@
                     <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8235665/" target="_blank"
                         rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
@@ -1413,7 +1417,7 @@
                     <a href="https://www.researchgate.net/publication/351200030_Improving_Patient_Flow_and_Decreasing_Patient_Length_of_Stay_in_the_Pediatric_Emergency_Department_Through_Implementation_of_a_Fast_Track"
                         target="_blank" rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
@@ -1426,7 +1430,7 @@
                     <a href="https://www.emerald.com/ijlss/article/doi/10.1108/IJLSS-06-2025-0169/1316430/Evaluation-of-the-medium-to-long-term-effects-of"
                         target="_blank" rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
@@ -1445,7 +1449,7 @@
                     <a href="https://www.pmgacademy.com/artigos/itil/o-que-e-itil-4-o-guia-definitivo-da-itil-4/"
                         target="_blank" rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
@@ -1458,7 +1462,7 @@
                     <a href="https://itpartners.com.br/assets/upload/files/IT%20PARTNERS%20-%20CURSO%20VERISM%20FUNDAMENTOS.pdf"
                         target="_blank" rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
@@ -1471,7 +1475,7 @@
                     <a href="https://itsm.tools/the-similarities-and-differences-between-itil-4-and-verism/"
                         target="_blank" rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
@@ -1490,7 +1494,7 @@
                     <a href="https://www.wibas.com/cmmi/incident-resolution-and-prevention-irp-cmmi-svc" target="_blank"
                         rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
@@ -1502,7 +1506,7 @@
                     </a>
                     <a href="https://bdta.abcd.usp.br/item/002158367" target="_blank" rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
@@ -1522,7 +1526,7 @@
                     <a href="https://docs.datadoghq.com/integrations/amazon-api-gateway/" target="_blank"
                         rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
@@ -1535,7 +1539,7 @@
                     <a href="https://www.checklyhq.com/docs/guides/end-to-end-monitoring/" target="_blank"
                         rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
@@ -1554,7 +1558,7 @@
                     <a href="https://mauricio.issei.com.br/devops-salesforce" target="_blank"
                         rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
@@ -1563,7 +1567,7 @@
                             <p
                                 class="text-xs text-gray-400 group-hover:text-gray-200 transition-colors group-hover:underline decoration-neon-400/50 underline-offset-2 leading-relaxed font-bold">
                                 DevOps para Salesforce: Agilidade e Entrega Contínua</p>
-                            <p class="text-[10px] text-gray-500 leading-tight">Estratégia de integração contínua
+                            <p class="text-[10px] text-gray-400 leading-tight">Estratégia de integração contínua
                                 (CI/CD), automação de testes e governança de releases para garantir que a evolução do
                                 sistema de conquista comercial ocorra sem interrupções na operação.</p>
                         </div>
@@ -1577,7 +1581,7 @@
                         Capacitação & Prontidão</h3>
                     <a href="https://mauricio.issei.com.br/sustentacao" target="_blank" rel="noopener noreferrer"
                         class="group flex items-start gap-3 p-4 rounded-xl bg-navy-800/50 border border-white/5 hover:border-neon-500/30 transition-all duration-300">
-                        <svg class="w-4 h-4 text-gray-500 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
+                        <svg class="w-4 h-4 text-gray-400 group-hover:text-neon-400 mt-1 shrink-0 transition-colors"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -1586,7 +1590,7 @@
                             <p
                                 class="text-xs text-gray-400 group-hover:text-gray-200 transition-colors group-hover:underline decoration-neon-400/50 underline-offset-2 leading-relaxed font-bold">
                                 Plano de Prontidão e Sustentação de Missão Crítica</p>
-                            <p class="text-[10px] text-gray-500 leading-tight">Detalhamento da preparação do time
+                            <p class="text-[10px] text-gray-400 leading-tight">Detalhamento da preparação do time
                                 técnico, matriz de competências e plano de continuidade operacional para o Sistema de
                                 Conquista Comercial.</p>
                         </div>
@@ -1596,7 +1600,7 @@
 
             <!-- Nota de Rodapé da Seção -->
             <div class="text-center pt-8 border-t border-white/5">
-                <p class="text-gray-500 text-xs font-medium tracking-wide">
+                <p class="text-gray-400 text-xs font-medium tracking-wide">
                     O alinhamento entre frameworks globais e a prontidão do nosso time técnico garante a <span
                         class="text-neon-400/70">resiliência total do faturamento comercial.</span>
                 </p>
@@ -1670,6 +1674,7 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
+  </main>
 <footer class="bg-[#03050a] py-12 border-t border-white/10 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
@@ -1705,7 +1710,7 @@
             <div class="w-full h-px bg-white/5 mb-8"></div>
 
             <!-- Credenciais / Badge -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-gray-500">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-gray-400">
                 <p>&copy; 2026 Service Operations 2.0. Todos os direitos reservados.</p>
                 <div
                     class="flex items-center gap-2 px-4 py-2 rounded-full bg-navy-900 border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-default hover:border-neon-400/30 transition-colors">

@@ -43,12 +43,15 @@
 .aeo-faq__q::-webkit-details-marker { display: none; }
 .aeo-faq__q::before { content: "▸"; color: var(--aeo-link); transition: transform 0.2s ease; flex: none; }
 .aeo-faq__item[open] .aeo-faq__q::before { transform: rotate(90deg); }
+/* o item tem overflow:hidden — o anel de foco precisa ficar DENTRO da caixa, senão é recortado */
+.aeo .aeo-faq__item .aeo-faq__q:focus-visible { outline-offset: -4px; } /* especificidade acima da regra de foco de cada página */
 .aeo-faq__a { padding: 0 1.3rem 1.2rem; }
 .aeo-faq__a p { margin: 0; font-size: 0.92rem; line-height: 1.7; max-width: 76ch; }
 .aeo-faq__a strong { color: var(--aeo-head); }
 
 /* Links sempre sublinhados (contraste + distinção sem depender de cor) */
-.aeo a { color: var(--aeo-link); text-decoration: underline; text-underline-offset: 2px; }
+/* Especificidade maior que o `.<pagina>-body a { text-decoration: none }` de cada página: só a cor não distingue o link do texto (WCAG 1.4.1). */
+.aeo a, .aeo .aeo-tldr a, .aeo .aeo-faq a { color: var(--aeo-link); text-decoration: underline; text-underline-offset: 2px; }
 .aeo a:hover { color: #79b8ff; }
 
 @media (max-width: 640px) {

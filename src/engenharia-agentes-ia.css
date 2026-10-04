@@ -451,7 +451,7 @@ body.eai-body {
 /* ====================== Referência + caso (WU-6) ====================== */
 .eai-gloss {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 0.9rem;
   margin: 0;
 }
@@ -522,7 +522,7 @@ body.eai-body {
 .eai-dict {
   list-style: none; margin: 0; padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr));
   gap: 0.9rem;
 }
 .eai-dcard {
@@ -694,7 +694,7 @@ body.eai-body {
   font-size: 0.95rem;
 }
 .eai-chap__body p { margin: 0 0 0.6rem; }
-.eai-chap__link { color: var(--eai-accent); text-decoration: none; font-weight: 600; }
+.eai-chap__link { color: var(--eai-accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; min-height: 24px; } /* alvo ≥ 24px (WCAG 2.5.8) */
 .eai-chap__link:hover { text-decoration: underline; }
 @media (max-width: 560px) {
   .eai-chap__meta { display: none; }
@@ -705,7 +705,7 @@ body.eai-body {
 .eai-cw-grid {
   margin-top: 2.25rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
   gap: 1.1rem;
   align-items: start;
 }
@@ -820,7 +820,7 @@ body.eai-body {
   list-style: none;
   counter-reset: df;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
   gap: 0.85rem;
 }
 .eai-df__steps li {
@@ -853,7 +853,7 @@ body.eai-body {
   margin: 2.5rem 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
   gap: 1rem;
 }
 .eai-pcard {
@@ -1242,7 +1242,7 @@ body.eai-body {
 .eai-flow__intro > p { margin: 0 0 0.85rem; font-size: 0.92rem; color: var(--eai-muted); }
 .eai-flow__gloss {
   margin: 0; display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 0.6rem;
 }
 .eai-flow__gloss > div {
   padding: 0.7rem 0.85rem; border: 1px solid var(--eai-border);

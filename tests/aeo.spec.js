@@ -11,7 +11,9 @@ for (const p of PAGES) {
     test('metadados + JSON-LD estruturado', async ({ page }) => {
       const res = await page.goto(`/${p.slug}.html`);
       expect(res?.status()).toBe(200);
-      await page.waitForLoadState('networkidle');
+      // Espera pelo que o teste lê (não `networkidle`: as páginas carregam GA4/fontes
+      // e, no webkit, a rede nunca fica ociosa — estourava o timeout de 30s).
+      await page.locator('script[type="application/ld+json"]').first().waitFor({ state: 'attached' });
 
       // H1 único
       await expect(page.locator('h1')).toHaveCount(1);

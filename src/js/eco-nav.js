@@ -22,14 +22,14 @@
  */
 
 const DATA = {
-  version: '1.7.0',
+  version: '1.8.0',
   base: './', // D-05: URL relativa atual
   pillars: [
     { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas'] },
     { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents'] },
     { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
     { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta', 'proposta-observabilidade-mobile'] },
-    { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo'] },
+    { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo', 'boutique-empresarial-showcase'] },
   ],
   nodes: {
     know: { file: 'know.html', title: 'Navegando na Complexidade', blurb: 'O fim das melhores práticas.' },
@@ -56,6 +56,7 @@ const DATA = {
     life: { file: 'life.html', title: 'A Jornada em Pixel Art', blurb: 'Narrativa pessoal desde 1982.' },
     life3d: { file: 'life3d.html', title: 'Vida em 3D', blurb: 'Memórias numa viagem imersiva.' },
     'terminal-evolutivo': { file: 'terminal-evolutivo.html', title: 'Terminal Evolutivo', blurb: 'A jornada 1982–2026 que envelhece ao rolar.' },
+    'boutique-empresarial-showcase': { file: 'boutique-empresarial-showcase.html', title: 'Boutique Empresarial', blurb: 'Arquitetura, SDD e pipeline agêntico de um projeto real.' },
   },
   crosslinks: [
     { from: 'knowledge-os-presentation', to: 'proposta-engenharia-reversa', rationale: 'Knowledge OS fundamenta a Engenharia Reversa assistida por IA.' },
@@ -80,8 +81,15 @@ function pillarOf(slug) {
 }
 
 const STYLE = `
+  /* Foco de outro elemento caiu embaixo do botão (rodapé, fim da página): sai da frente — continua na ordem
+     de Tab e volta sozinho quando recebe o foco (WCAG 2.4.11, Foco Não Obscurecido). */
+  :host([data-away]) { opacity: 0; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) { :host { transition: none; } }
   :host {
-    position: fixed; right: 1rem; bottom: 1rem; z-index: 2147483000;
+    position: fixed; right: 1rem; z-index: 2147483000;
+    /* acima da faixa de cookies, que cobriria os botões Recusar/Aceitar (--cc-banner-h vem de cookie-consent.js) */
+    bottom: calc(1rem + var(--cc-banner-h, 0px));
+    transition: opacity .15s;
     /* tokens herdados do host com fallback (SPEC §4.3) */
     --a: var(--eco-accent, #007bff);
     --a2: var(--eco-accent-2, #8a2be2);
@@ -176,6 +184,8 @@ class EcoNav extends HTMLElement {
     if (this._mounted) return;
     this._mounted = true;
     this._open = false;
+    // Rótulos só em português: em página `lang="en"` marca o trecho (WCAG 3.1.2).
+    if (!/^pt/i.test(document.documentElement.lang)) this.lang = 'pt-BR';
     this.slug = currentSlug();
     this.curPillar = pillarOf(this.slug);
     this.attachShadow({ mode: 'open' });
@@ -288,6 +298,14 @@ class EcoNav extends HTMLElement {
     document.addEventListener('keydown', this._onDocKey);
     this._onDocClick = (e) => { if (this._open && !e.composedPath().includes(this)) this.setOpen(false); };
     document.addEventListener('click', this._onDocClick);
+    this._onFocusIn = (e) => {
+      if (e.composedPath().includes(this)) { this.removeAttribute('data-away'); return; }
+      const a = e.target.getBoundingClientRect?.();
+      const h = this.getBoundingClientRect();
+      const covered = !!a && a.width > 0 && a.height > 0 && a.left < h.right && a.right > h.left && a.top < h.bottom && a.bottom > h.top;
+      this.toggleAttribute('data-away', covered);
+    };
+    document.addEventListener('focusin', this._onFocusIn);
   }
 
   toggle() { this.setOpen(!this._open); }
@@ -305,6 +323,7 @@ class EcoNav extends HTMLElement {
   disconnectedCallback() {
     if (this._onDocClick) document.removeEventListener('click', this._onDocClick);
     if (this._onDocKey) document.removeEventListener('keydown', this._onDocKey);
+    if (this._onFocusIn) document.removeEventListener('focusin', this._onFocusIn);
   }
 }
 

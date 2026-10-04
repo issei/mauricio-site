@@ -21,7 +21,7 @@ function levelBadge(card) {
   const letter = card.evidenceLevel.replace('Level_', '');
   const cat = CATEGORY_ABBR[card.category] || card.category;
   return `<span class="text-[10px] font-bold rounded-full px-2 py-0.5" style="background:${color}22;color:${color}">${letter}</span>
-          <span class="text-[10px] text-gray-500">${cat}</span>`;
+          <span class="text-[10px] text-gray-400">${cat}</span>`;
 }
 
 export function renderEvidencePanel(board, { selectable = false, requiredCategory = null, onSelect = null } = {}) {
@@ -45,9 +45,9 @@ export function renderEvidencePanel(board, { selectable = false, requiredCategor
       <div class="flex items-center justify-between gap-2 mb-1">
         <span class="flex items-center gap-2"><span>${card.icon}</span><span class="font-medium text-white text-xs">${card.title}</span></span>
       </div>
-      <div class="flex items-center gap-2">${locked ? '<span class="text-[10px] text-gray-500">BLOQUEADO</span>' : levelBadge(card)}</div>
-      ${card.unlocked ? `<p class="text-xs text-gray-500 mt-2">${card.claim}</p>
-        <p class="text-[11px] text-gray-600 mt-1"><strong>Limitações:</strong> ${card.limitations}</p>` : ''}`;
+      <div class="flex items-center gap-2">${locked ? '<span class="text-[10px] text-gray-400">BLOQUEADO</span>' : levelBadge(card)}</div>
+      ${card.unlocked ? `<p class="text-xs text-gray-400 mt-2">${card.claim}</p>
+        <p class="text-[11px] text-gray-400 mt-1"><strong>Limitações:</strong> ${card.limitations}</p>` : ''}`;
     if (card.unlocked && selectable && onSelect) {
       const pick = () => onSelect(card.id);
       div.addEventListener('click', pick);
@@ -57,5 +57,6 @@ export function renderEvidencePanel(board, { selectable = false, requiredCategor
   }
 }
 
-export function openEvidencePanel() { document.getElementById('evidence-panel')?.classList.remove('translate-x-full'); }
-export function closeEvidencePanel() { document.getElementById('evidence-panel')?.classList.add('translate-x-full'); }
+// `inert` tira o painel fechado (fora da tela) da ordem de Tab e da árvore de acessibilidade (WCAG 2.4.3/2.4.7)
+export function openEvidencePanel() { const p = document.getElementById('evidence-panel'); if (p) { p.inert = false; p.classList.remove('translate-x-full'); } }
+export function closeEvidencePanel() { const p = document.getElementById('evidence-panel'); if (p) { p.inert = true; p.classList.add('translate-x-full'); } }

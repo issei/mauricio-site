@@ -54,6 +54,7 @@ if (!skipBuild) steps.push(['gêmeos .md do sitemap', 'node scripts/check-md-twi
 steps.push([
   'artefatos gerados em dia',
   'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check' +
+    ' && node scripts/gen-portfolio.mjs --check' +
     ' && node scripts/optimize-critical-path.mjs --check',
 ]);
 
@@ -75,6 +76,14 @@ let pwCmd = 'npx playwright test';
 if (grep) pwCmd += ` --grep ${JSON.stringify(grep)}`;
 if (project) pwCmd += ` --project ${JSON.stringify(project)}`;
 steps.push(['testes (playwright + axe)', pwCmd]);
+
+// Acessibilidade WCAG 2.2 AA em TODAS as páginas, contra o build, com catraca: a dívida
+// conhecida está em tests/a11y/baseline.json e só pode descer (docs/specs/a11y-first/, G-01).
+// Depende de dist/ — só no gate completo.
+if (!skipBuild) steps.push(['a11y: varredura WCAG 2.2 (catraca)', 'node scripts/a11y-sweep.mjs']);
+
+// Gate estático do A11Y.md (verify-a11y.py) com teto de erros: só pode descer. Não depende de dist/.
+steps.push(['a11y: gate estático (verify-a11y.py, teto)', 'node scripts/a11y-static.mjs']);
 
 // Orçamento de performance: só no gate completo. Depende de dist/, que só
 // existe após o build — em --no-build o artefato pode estar velho ou ausente.

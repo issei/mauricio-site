@@ -362,7 +362,7 @@ sha256sum public/.well-known/agent-skills/<nome>/SKILL.md
 
 | Item | Impacto | Ação sugerida |
 |---|---|---|
-| `.well-known` sem extensão servido como `binary/octet-stream` | scanner tolera; outras ferramentas podem não tolerar | definir `ContentType: application/json` no objeto S3, ou via response headers policy |
+| ~~`.well-known` sem extensão servido como `binary/octet-stream`~~ | ~~scanner tolera; outras ferramentas podem não tolerar~~ | **Resolvido em 2026-09-23**: deploy.yml agora força `Content-Type: application/json` em `api-catalog`, `agent-catalog`, `oauth-authorization-server`, `oauth-protected-resource` e `openid-configuration` após o `aws s3 sync` (esses 5 arquivos, sem extensão, eram os únicos afetados — os demais manifestos JSON já tinham `.json` e content-type correto). Fix retroativo em `infra/scripts/fix-well-known-content-type.sh`. |
 | `webBotAuth` `neutral` | informativo, não conta contra o score | publicar `/.well-known/http-message-signatures-directory` se quiser identidade de agente assinada |
 | `spec-agent-readiness-v2` §1.2 desatualizada | pode induzir a erro | já contradita por esta KB; corrigir ou marcar como superseta |
 | KMS key do DNSSEC | ~US$1/mês recorrente | manter enquanto o DNSSEC existir — ver ordem de rollback (§4) |

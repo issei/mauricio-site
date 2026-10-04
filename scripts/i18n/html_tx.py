@@ -72,7 +72,7 @@ CDATA = frozenset({"script", "style"})
 #: Especificador de módulo ES relativo dentro de `<script type="module">`
 #: inline. É a ÚNICA coisa que se mexe dentro de um script — e mexe porque o
 #: Rollup resolve o caminho a partir do arquivo HTML: em `src/en/index.html`,
-#: `./js/cv-renderer.js` simplesmente não existe e o build quebra.
+#: `./js/<módulo>.js` simplesmente não existe e o build quebra.
 _ESPECIFICADOR = re.compile(
     r"""(\bfrom\s*|\bimport\s*\(\s*|\bimport\s+)(['"])(\.\.?/[^'"]+)\2"""
 )

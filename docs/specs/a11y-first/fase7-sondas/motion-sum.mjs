@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+const rf=JSON.parse(fs.readFileSync('reflow.json','utf8'));
+console.log('REFLOW pages',rf.length,'scrolling:',rf.filter(x=>x.scrolls).length);
+rf.filter(x=>x.scrolls).forEach(x=>console.log((x.exc?'[EXC] ':'')+x.id,'sw',x.sw,'cw',x.cw,'nover',x.nover,x.over.join(' | ')));
+console.log('viewport meta distinct:',[...new Set(rf.map(x=>x.vp))]);
+console.log('pages w/ element overflow (clip-free) but doc no scroll:',rf.filter(x=>!x.scrolls&&x.nover>0).map(x=>x.id+':'+x.nover));
+const mr=JSON.parse(fs.readFileSync('motion-reduce.json','utf8')), mn=JSON.parse(fs.readFileSync('motion-normal.json','utf8'));
+console.log('MOTION reduce: pages with infinite anims:'); mr.filter(x=>x.infinite>0).forEach(x=>console.log((x.exc?'[EXC] ':'')+x.id,'inf',x.infinite,'running',x.running,JSON.stringify(x.kinds).slice(0,300)));
+console.log('videos playing under reduce:'); mr.forEach(x=>x.vids?.forEach(v=>{ if(!v.paused||v.autoplay) console.log(x.id,JSON.stringify(v));}));
+console.log('NORMAL: infinite per page (>0):'); mn.filter(x=>x.infinite>0).forEach(x=>console.log(x.id,x.infinite));
+console.log('total infinite reduce', mr.reduce((s,x)=>s+x.infinite,0), 'normal', mn.reduce((s,x)=>s+x.infinite,0));

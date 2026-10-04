@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>A Jornada em Pixel Art — Maurício Issei</title>
 
@@ -835,10 +835,13 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 </head>
 
 <body>
-    <main id="game-container" class="scanlines" role="main">
+    <a class="a11y-skip" href="#game-container">Pular para o conteúdo</a>
+    <main id="game-container" class="scanlines">
         <div class="stage" id="stage">
             <!-- Title moved inside stage so it sits directly above the canvas and is centered -->
             <div class="title-container" aria-hidden="false">
@@ -888,7 +891,7 @@
                         class="border border-white/20 px-2 py-1 rounded">←</kbd> <kbd
                         class="border border-white/20 px-2 py-1 rounded">→</kbd></div>
             </header>
-            <nav class="touch-controls" aria-label="Controles táteis" role="navigation">
+            <nav class="touch-controls" aria-label="Controles táteis">
                 <button class="d-pad-btn" id="btn-left" aria-label="Mover para esquerda" tabindex="0">←</button>
                 <button class="d-pad-btn" id="btn-right" aria-label="Mover para direita" tabindex="0">→</button>
             </nav>
@@ -1059,9 +1062,8 @@
                 loadingScreen.style.opacity = '0';
                 if (a11yAnnouncer) a11yAnnouncer.textContent = 'Carregamento concluído.';
                 setTimeout(() => { loadingScreen.style.display = 'none'; }, 380);
-                // focaliza o canvas para permitir interação imediata
-                const canvas = document.getElementById('gameCanvas');
-                if (canvas) canvas.focus();
+                // Sem canvas.focus(): as teclas são ouvidas em window, e roubar o foco na carga
+                // empurrava o skip link para fora da ordem de Tab (WCAG 2.4.1 / 3.2.1).
             }
 
             function preloadImages(items, onProgress, onComplete) {

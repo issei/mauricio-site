@@ -201,7 +201,7 @@ def translate_json_data(bruto: str, engine) -> str:
     """
     `cv.json` / `star.json`: traduz VALORES de texto, preserva CHAVES e tipos.
 
-    Chave preservada porque `src/js/cv-renderer.js` lê `dado.Resumo` — renomear
+    Chave preservada porque `scripts/gen-portfolio.mjs` lê `cv.Resumo` — renomear
     para `Summary` quebraria o renderizador nas duas línguas.
     """
     dado = json.loads(bruto)

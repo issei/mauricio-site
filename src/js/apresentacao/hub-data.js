@@ -142,5 +142,14 @@ export const HUB_ITEMS = [
     "tab": "especificar",
     "minutes": 31,
     "complexity": "Tópico Profundo"
+  },
+  {
+    "slug": "digital-workplace-agentico",
+    "title": "Digital Workplace agêntico",
+    "blurb": "Digital Workplace agêntico: maturidade, arquitetura, AG-UI, identidade delegada, conhecimento governado e roadmap de um portal corporativo.",
+    "href": "./digital-workplace-agentico.html",
+    "tab": "especificar",
+    "minutes": 80,
+    "complexity": "Tópico Profundo"
   }
 ];

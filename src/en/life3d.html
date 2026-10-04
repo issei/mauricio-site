@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>3D Life </title>
 
@@ -122,6 +122,8 @@
             display: flex;
             gap: 8px;
         }
+
+        #progress-dots ol { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
 
         .dot {
             width: 8px;
@@ -504,6 +506,7 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/life3d" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/life3d" />
@@ -511,6 +514,8 @@
 </head>
 
 <body>
+    <a class="a11y-skip" href="#conteudo">Skip to content</a>
+    <main id="conteudo">
     <canvas id="canvas3d" role="img" aria-label="Interactive 3D scenario of the journey of life"></canvas>
 
     <!-- UI Layer -->
@@ -570,9 +575,11 @@
     <div id="intro" role="dialog" aria-modal="true" aria-label="3D Experience Input Screen">
         <h1>3D Life</h1>
         <p class="subtitle">A contemplative journey through the history of Mauricio Issei — from 1982 to today.</p>
-        <button class="btn-pixel" id="btn-start"></button>
+        <button class="btn-pixel" id="btn-start">▶ Start Journey</button>
         <p class="controls-hint">W A S D · Keyboard arrows · Tap the screen</p>
     </div>
+
+    </main>
 
     <div role="status" aria-live="assertive" id="a11y-announcer" class="sr-only"></div>
 
@@ -1459,12 +1466,15 @@
         function buildDots() {
             const nav = document.getElementById('progress-dots');
             nav.innerHTML = '';
+            // Lista de fases (aria-label em <div> sem papel é proibido — WCAG 4.1.2); a fase atual leva aria-current.
+            const list = document.createElement('ol');
             STORY_DATA.forEach((_, i) => {
-                const dot = document.createElement('div');
+                const dot = document.createElement('li');
                 dot.className = 'dot';
-                dot.setAttribute('aria-label', `Fase ${i + 1}`);
-                nav.appendChild(dot);
+                dot.innerHTML = `<span class="sr-only">Phase ${i + 1} of ${STORY_DATA.length}</span>`;
+                list.appendChild(dot);
             });
+            nav.appendChild(list);
         }
 
         function updateDots() {
@@ -1472,6 +1482,7 @@
             dots.forEach((d, i) => {
                 d.classList.toggle('done',   i < currentPhaseIndex);
                 d.classList.toggle('active', i === currentPhaseIndex);
+                if (i === currentPhaseIndex) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
             });
         }
 

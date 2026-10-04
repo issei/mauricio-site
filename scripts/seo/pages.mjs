@@ -4,7 +4,8 @@
 // section, tags[], keywords[], about[], mentions[], teaches[], audience,
 // citation[], tldr{heading,lede,points[],foot}, faq[{q,a}], terms[{slug,name,def}],
 // mdSections[{h,body}], og{eyebrow,title('{x}'=gradiente),subtitle,thesis,chips[]},
-// hasMd, ogType, ogTitle, ogDescription, video.
+// hasMd, ogType, ogTitle, ogDescription, video, extraGraph[] (nós JSON-LD prontos).
+import { CERTIFICATIONS } from './identity.mjs';
 
 export const PAGES = [
   // ===================================================================== TIER S
@@ -26,11 +27,11 @@ export const PAGES = [
     audience: 'Tech Leads, Arquitetos de Software, Engenheiros de IA, Líderes de Engenharia',
     tldr: {
       heading: 'O que é Deterministic Grounding',
-      lede: 'Um agente de desenvolvimento pode produzir código sintaticamente correto, passar em testes isolados e ainda violar a arquitetura, o escopo autorizado ou o estado real do repositório. **Deterministic Grounding** estabelece o ancoramento explícito de estado, limitação de autoridade por Action Gateway e validação com oráculos auditáveis.',
+      lede: 'Um agente de desenvolvimento pode produzir código sintaticamente correto, passar em testes isolados e ainda violar a arquitetura, o escopo autorizado ou o estado real do repositório. **Deterministic Grounding** é o nome provisório que este artigo propõe (não é terminologia padronizada) para uma prática em três partes: ancorar o estado de forma explícita, limitar a autoridade por meio de um Action Gateway e validar com oráculos auditáveis.',
       points: [
         '**Agent–Repository Gap** — a diferença entre o que o agente acredita saber do repositório e o que realmente está lá agora.',
-        '**Snapshot Capsule** — envelope imutável que sela commit, árvore, lockfile e ambiente antes da ação.',
-        '**Action Gateway** — barreira de 12 passos que impede execução fora do escopo (Diff Lens e allowlist).',
+        '**Snapshot Capsule** (proposta) — envelope imutável que sela commit, árvore, lockfile e ambiente antes da ação.',
+        '**Action Gateway** (proposta) — componente que medeia as ações do agente por allowlist, Diff Lens e policy-as-code e pode bloquear as que saem do escopo definido; sua cobertura e eficácia precisam ser demonstradas.',
         '**Evidence Record** — registro com veredictos delimitados (PASS, FAIL, UNKNOWN, CONFLICT) e fronteiras de observação.',
       ],
       foot: 'Integra a jornada da [Engenharia da Confiança](/engenharia-confianca) e [Engenharia de Agentes de IA](/engenharia-agentes-ia).'
@@ -38,18 +39,22 @@ export const PAGES = [
     faq: [
       { q: 'O que é o Agent–Repository Gap?', a: 'É a diferença entre o que o agente acredita saber do repositório (memória, contexto recuperado, plano) e o que pode ser verificado nele agora (commit atual, dependências, regras vigentes). Quanto maior a diferença, maior o risco de uma mudança que parece certa e não é.' },
       { q: 'Por que um resultado de teste verde (PASS) não garante correção global?', a: 'Porque um oráculo (uma verificação automática) testa apenas uma propriedade específica sob um envelope de execução restrito. Ele não observa colaterais fora do seu escopo, vazamentos de privacidade ou violações arquiteturais não mapeadas no teste.' },
-      { q: 'O que é a Snapshot Capsule?', a: 'É o envelope imutável contendo commit SHA, branch, tree digest, lockfile, toolchain, ambiente de execução e um digest único que garante que o contexto do agente corresponde exatamente ao estado do repositório.' },
-      { q: 'Qual a diferença entre Autonomia e Autoridade?', a: 'Autonomia é a capacidade do modelo de planejar e encadear ações de forma flexível; Autoridade é a permissão efetiva para produzir efeitos no repositório, que deve ser restrita e mediada pelo Action Gateway.' }
+      { q: 'O que é a Snapshot Capsule?', a: 'É o envelope imutável proposto neste artigo, contendo commit SHA, branch, tree digest, lockfile, toolchain, ambiente de execução e um digest único. O digest permite verificar a identidade do conjunto de artefatos incluídos na cápsula. Isso não prova que o envelope contém toda a realidade relevante, nem que a interpretação do agente esteja correta.' },
+      { q: 'Qual a diferença entre Autonomia e Autoridade?', a: 'Autonomia é a capacidade do modelo de planejar e encadear ações de forma flexível; Autoridade é a permissão efetiva para produzir efeitos no repositório, que deve ser restrita e mediada pelo Action Gateway.' },
+      { q: 'O que acontece quando as fontes de verdade discordam?', a: 'O modelo não resolve o conflito em silêncio. O sistema registra o veredito CONFLICT, preserva a proveniência de cada fonte, verifica escopo e frescor de cada uma e envia para revisão humana os conflitos de intenção, de segurança ou de alto impacto.' },
+      { q: 'O que significa "determinístico" neste artigo?', a: 'Significa que a mesma entrada, com a mesma versão do validador, a mesma configuração, as mesmas dependências e o mesmo ambiente controlado, produz o mesmo resultado de verificação. Isso vale para a parte verificável do processo; o processo inteiro ainda combina fatos observados, inferências aproximadas, decisões probabilísticas do modelo e estados desconhecidos.' }
     ],
     terms: [
       { slug: 'agent-repository-gap', name: 'Agent–Repository Gap', def: 'Desalinhamento entre o contexto/memória do agente e o estado observável do repositório.' },
       { slug: 'snapshot-capsule', name: 'Snapshot Capsule', def: 'Envelope de proveniência que sela a identidade do repositório antes de qualquer ação.' },
       { slug: 'action-gateway', name: 'Action Gateway', def: 'Componente que medeia propostas não confiáveis do agente e aplica allowlist, least privilege e policy-as-code.' },
-      { slug: 'evidence-record', name: 'Evidence Record', def: 'Atestado imutável de validação contendo subject, oracle, validator, envelope e limitações explícitas.' }
+      { slug: 'evidence-record', name: 'Evidence Record', def: 'Atestado imutável de validação contendo propriedade verificada, tipo e versão do oráculo, escopo, ambiente, resultado, proveniência e limitações explícitas.' },
+      { slug: 'determinismo-operacional', name: 'Determinismo (operacional)', def: 'Mesma entrada, mesma versão do validador, mesma configuração, mesmas dependências e mesmo ambiente controlado produzem o mesmo resultado de verificação.' }
     ],
     mdSections: [
       { h: 'O problema e o gap', body: 'Código correto em isolamento ainda pode ser uma mudança errada no repositório. O Agent-Repository Gap mede o desalinhamento entre o contexto do agente e o estado observável do sistema.' },
-      { h: 'A solução e os oráculos', body: 'Snapshot Capsule para ancorar o estado, Action Gateway para limitar autoridade, e oráculos auditáveis para gerar Evidence Records com veredictos explícitos.' }
+      { h: 'A solução e os oráculos', body: 'Snapshot Capsule para ancorar o estado, Action Gateway para limitar autoridade, e oráculos auditáveis para gerar Evidence Records com veredictos explícitos.' },
+      { h: 'Limitações', body: 'Snapshot Capsule, Action Gateway (12 passos e Diff Lens) e Evidence Record são propostas deste artigo, ainda sem medição de eficácia. "Deterministic Grounding" é um nome provisório, não terminologia padronizada. Um Action Gateway só bloqueia o que suas regras e permissões cobrem, e o digest de uma cápsula só prova a identidade dos artefatos incluídos. O artigo ainda não cita fontes primárias.' }
     ],
     og: {
       eyebrow: 'Engenharia de IA · Deterministic Grounding',
@@ -123,10 +128,10 @@ export const PAGES = [
     title: 'Case Agents: a tool errada não é uma aproximação aceitável | Maurício Yokoyama Issei',
     headline: 'Case Agents: Roteamento de Queries e Seleção Segura de Tools em Agente Bancário',
     description: 'Roteamento de queries e seleção de tools num agente bancário: uma barreira pré-execução de quatro camadas levou 7 execuções incorretas a zero.',
-    datePublished: '2026-09-10', dateModified: '2026-09-11',
+    datePublished: '2026-09-10', dateModified: '2026-09-19',
     section: 'Engenharia de Confiança · Agentes de IA',
     tags: ['Case Agents', 'Roteamento de IA', 'Tool Retrieval', 'Barreira Pré-Execução', 'Guarda de Direção', 'Engenharia de Confiança', 'Arquitetura de Alta Performance'],
-    keywords: ['case agents', 'roteamento de queries', 'tool retrieval', 'barreira pre-execucao', 'guarda de direcao', 'crash silencioso', 'banco digital', 'fast path', 'agent', 'BM25F', 'taxonomia', 'Platt scaling', 'rust inference', 'cold hot path', 'ADR-009'],
+    keywords: ['case agents', 'roteamento de queries', 'tool retrieval', 'barreira pre-execucao', 'guarda de direcao', 'crash silencioso', 'banco digital', 'fast path', 'agent', 'BM25F', 'taxonomia', 'Platt scaling', 'TF-IDF', 'regressão logística', 'similaridade de cosseno', 'rust inference', 'cold hot path', 'ADR-009'],
     about: [
       { name: 'Engenharia de Confiança' },
       { name: 'Tool Retrieval' },
@@ -162,6 +167,7 @@ export const PAGES = [
     mdSections: [
       { h: 'O problema e o domínio', body: 'No domínio bancário, executar uma ferramenta errada na conta do cliente é inaceitável. O cérebro de roteamento precisa decidir com segurança e abster-se quando a confiança for insuficiente.' },
       { h: 'A barreira e os resultados', body: 'Quatro camadas de segurança levaram as execuções incorretas de 7 para zero, mantendo 100% de acerto nas 20 queries transacionais e 77,8% de economia de custo no benchmark do MVP.' },
+      { h: 'As cinco técnicas estatísticas', body: 'A decisão não é tomada por um LLM. (1) TF-IDF com n-grams e regressão logística classificam a mensagem em FAST_PATH ou AGENT; (2) o escalonamento de Platt, com validação cruzada estratificada, calibra a probabilidade para que o limiar de 0,75 signifique acerto; (3) similaridade de cosseno em dois campos, com colapso por capacidade (máximo por grupo), escolhe 2 ferramentas entre 285; (4) três limiares — confiança ≥ 0,75, score ≥ 0,10 e margem relativa (s1 − s2)/s1 ≥ 0,25 — mais uma guarda de direção leitura/escrita decidem quando não executar; (5) acurácia, matriz de confusão, hit rate@k e economia percentual medem o resultado. O código explicado é o da branch feature/solucao-enxuta (commit e2dcd7f). Nessa branch o harness imprime Precision@2 de 26,3% porque compara o nome da variante com o nome canônico; recontado por capacidade, são 20/20 no top-2.' },
     ],
     og: {
       eyebrow: 'P2 · Engenharia de Confiança',
@@ -754,12 +760,27 @@ export const PAGES = [
 
   // ===================================================================== TIER B
   {
-    slug: 'index', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'website',
-    title: 'Maurício Yokoyama Issei — Tech Lead & Arquiteto de Soluções de IA',
-    description: 'Tech Lead com mais de 20 anos em desenvolvimento de software e liderança técnica, com foco em soluções robustas em Salesforce, AWS, APIs e Engenharia de IA.',
-    datePublished: '2026-01-10', dateModified: '2026-06-21',
-    keywords: ['Maurício Yokoyama Issei', 'Tech Lead', 'Arquiteto de Soluções', 'Salesforce', 'AWS', 'APIs', 'Engenharia de IA', 'SRE'],
-    og: { eyebrow: 'Tech Lead · Arquiteto de IA', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS, APIs e Engenharia de IA' },
+    // Home "Mapa de Linhas" (docs/specs/pages/portfolio/). O conteúdo do <body>
+    // vem de scripts/gen-portfolio.mjs; dateModified também é a data de
+    // "Última atualização" e o ano do © que o gerador grava na página.
+    slug: 'index', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
+    title: 'Maurício Yokoyama Issei — Tech Lead | Salesforce, AWS, APIs',
+    description: 'Tech Lead com mais de 20 anos em software e liderança técnica: Salesforce, AWS e APIs. Experiência, 19 projetos no formato STAR, certificações e recomendações.',
+    datePublished: '2026-01-10', dateModified: '2026-09-22',
+    keywords: ['Maurício Yokoyama Issei', 'Tech Lead', 'Especialista em Análise de Sistemas', 'Salesforce', 'AWS', 'APIs', 'SRE', 'Java', 'Node.js', 'Datadog', 'Liderança Técnica'],
+    extraGraph: [CERTIFICATIONS],
+    og: { eyebrow: 'Tech Lead · Especialista em Análise de Sistemas', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS e APIs' },
+  },
+  {
+    // Home anterior, preservada com a mesma aparência; conteúdo gravado no
+    // HTML por scripts/gen-portfolio.mjs (blocos CV:*), sem fetch.
+    slug: 'curriculo', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
+    title: 'Currículo — Maurício Yokoyama Issei',
+    description: 'Currículo completo de Maurício Yokoyama Issei: mais de 20 anos em desenvolvimento de software e liderança técnica, com foco em Salesforce, AWS e APIs.',
+    datePublished: '2026-09-22', dateModified: '2026-09-22',
+    keywords: ['Maurício Yokoyama Issei', 'currículo', 'Tech Lead', 'Salesforce', 'AWS', 'APIs'],
+    extraGraph: [CERTIFICATIONS],
+    og: { eyebrow: 'Currículo', title: 'Maurício {Yokoyama Issei}', subtitle: 'Experiência, projetos, formação e recomendações' },
   },
   {
     slug: 'catalogo', type: 'CollectionPage', tier: 'B', hasMd: true, ogType: 'website',
@@ -802,6 +823,7 @@ export const PAGES = [
         '- [Agent Ready](https://mauricio.issei.com.br/agent-ready) — como tornar um site legível, descobrível e utilizável por agentes de IA, com o código real deste domínio.',
         '- [Case Agents](https://mauricio.issei.com.br/case-agents) — roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso.',
         '- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — o sistema de conhecimento que dá rastreabilidade e segurança à IA.',
+        '- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) — como um portal corporativo evolui para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.',
       ].join('\n') },
       { h: '03 · A Aplicação — Ecossistema Salesforce', body: [
         'Métodos agênticos aplicados à plataforma Salesforce: onde o método encontra a engenharia real.',
@@ -1131,6 +1153,66 @@ export const PAGES = [
       subtitle: 'Quando a curiosidade deixa de ser conteúdo e vira investigação',
       thesis: 'A interface começa como um feed que captura atenção e termina como uma bancada que organiza atenção.',
       chips: [{ k: '3', label: 'Distinções' }, { k: '12', label: 'Etapas do ciclo' }, { k: '16', label: 'Referências' }, { k: '0', label: 'Métodos validados' }],
+    },
+  },
+
+  {
+    slug: 'digital-workplace-agentico', type: 'TechArticle', tier: 'S', hasMd: true,
+    // `mdFromMain`: o .md companheiro anexa a <main> da página convertida (scripts/seo/html-to-md.mjs).
+    mdFromMain: true,
+    title: 'Digital Workplace agêntico — Do Portal ao Agente',
+    headline: 'Digital Workplace agêntico: do portal que apresenta à plataforma que resolve',
+    description: 'Digital Workplace agêntico: maturidade, arquitetura, AG-UI, identidade delegada, conhecimento governado e roadmap de um portal corporativo.',
+    datePublished: '2026-10-03', dateModified: '2026-10-03',
+    section: 'Arquitetura de Plataformas de Agentes',
+    tags: ['Digital Workplace', 'Agentes de IA', 'AG-UI', 'Arquitetura de Referência', 'Governança de IA'],
+    keywords: ['Digital Workplace agêntico', 'Employee Experience Platform', 'EXP', 'AG-UI', 'MCP', 'A2A', 'A2UI', 'Component Registry', 'RAG', 'permission-aware retrieval', 'identidade delegada', 'RFC 8693', 'human-in-the-loop', 'modelo de maturidade', 'portal corporativo', 'LGPD'],
+    about: [
+      { name: 'Digital Workplace agêntico' }, { name: 'Employee Experience Platform' },
+      { name: 'AG-UI (Agent User Interaction Protocol)' }, { name: 'Identidade delegada de agentes' },
+      { name: 'RAG e conhecimento governado' }, { name: 'Governança de IA' },
+    ],
+    audience: 'Arquitetos corporativos, Product Managers, UX, Especialistas em IA, Segurança, SRE',
+    tldr: {
+      heading: 'Digital Workplace agêntico, em poucas linhas',
+      lede: 'É um portal corporativo que deixa de **organizar links** e passa a **resolver intenções**: o colaborador pede, o agente prepara, a pessoa confirma e o processo corre no sistema de registro. O agente é um elo de uma cadeia — **intenção, agente, conhecimento, ferramentas, processo, experiência** — e depende das fundações que atravessa: se um elo falta, ele herda a falha e não a corrige. Sem elas, passa a executar ações com credenciais amplas demais e sem trilha de auditoria.',
+      points: [
+        '**Cinco estágios que se acumulam** — da intranet à plataforma agêntica; o modelo descreve o custo de cada salto de estágio, e a maturidade se avalia por jornada, não pelo portal inteiro.',
+        '**Seis camadas e uma faixa transversal** — o estudo recomenda que a regra viva no domínio, que a identidade se propague e nunca se substitua, que o agente seja um canal e que a UI generativa componha componentes aprovados.',
+        '**Autonomia sobe com evidência** — níveis de 0 a 4 por classe de ação; o estudo recomenda manter ações financeiras, legais ou sobre dados sensíveis no nível 2 (execução com confirmação) até haver evidência de segurança.',
+        '**Caminho crítico** — identidade delegada e conteúdo governado com permissões costumam ser as dependências mais lentas (inferência do estudo); por isso o roadmap as começa na fase 0.',
+      ],
+      foot: 'É o mesmo princípio de autonomia proporcional à evidência da [Engenharia da Confiança](/engenharia-confianca), aplicado ao portal corporativo.',
+    },
+    faq: [
+      { q: 'O que é um Digital Workplace orientado a agentes?', a: 'É um portal corporativo orientado a intenção e agentes: em vez de organizar links para sistemas, ele recebe o pedido do colaborador, prepara a ação com um agente, pede confirmação e acompanha o processo até o fim. O estudo o descreve como o quinto estágio de um modelo de maturidade que acumula os anteriores: sem identidade delegada, contratos de API, conteúdo governado e processos explícitos, o agente executa ações com credenciais amplas demais e sem trilha de auditoria.' },
+      { q: 'O que é uma EXP e como ela difere de uma intranet?', a: 'A Employee Experience Platform (EXP) organiza serviços e jornadas do colaborador sobre os sistemas de registro, com identidade, contexto e entrega em vários canais. A intranet informa e encaminha; a EXP executa e acompanha. A intranet organiza páginas e mede alcance; a EXP organiza jornadas, mede resolução e esforço e mantém o estado das solicitações. Uma EXP não precisa ser componível: o que o agente exige é que as capacidades estejam expostas por contrato.' },
+      { q: 'O que é o protocolo AG-UI?', a: 'O AG-UI (Agent User Interaction Protocol) é um protocolo de interação entre um agente e a aplicação que o usuário opera, baseado em fluxos de eventos: execuções, mensagens, chamadas de ferramenta, estado compartilhado, atividade e interrupções para confirmação humana. Não é uma especificação de UI generativa, não integra sistemas corporativos e não autoriza ações. Complementa o MCP, que liga agente e ferramentas, e o A2A, que liga agentes entre si.' },
+      { q: 'Por que RAG não substitui a governança de conteúdo?', a: 'Porque cada elo da cadeia do conhecimento herda a qualidade do anterior e não consegue corrigi-la. O RAG recupera o trecho mais similar, não o vigente nem o aplicável: sem fonte canônica, vigência, dono e permissões no índice, a resposta pode sair fluente e errada. O estudo recomenda seis requisitos bloqueantes antes do RAG e, para ações, a regra de que o documento explica, mas a API decide.' },
+      { q: 'Com que identidade um agente corporativo deve agir?', a: 'Com delegação, não impersonação: um token obtido por token exchange (RFC 8693) em que o sujeito é o colaborador e o ator é o agente, com escopo mínimo e audiência específica por ferramenta. O servidor de ferramentas valida a audiência e não repassa o token recebido; a autorização final deve acontecer no ponto do dado, e o “de quem” vem do token, nunca de parâmetros gerados pelo modelo.' },
+      { q: 'Por onde começar a evolução de um portal para esse modelo?', a: 'O estudo recomenda começar por uma jornada piloto de alto volume e baixo risco, e não pela empresa inteira; férias e chamado de TI são hipóteses de bons pilotos, não regra. O roadmap tem seis fases com critério de passagem — descoberta, fundações mínimas, respostas com fonte, agente com ferramentas de leitura, ações com confirmação, expansão por evidência — e sete trilhas paralelas. Identidade delegada e conteúdo governado começam na fase 0, por costumarem ser o caminho crítico.' },
+    ],
+    terms: [
+      { slug: 'digital-workplace-agentico', name: 'Digital Workplace agêntico', def: 'Portal corporativo que resolve intenções por meio de um agente, sobre fundações de identidade, conhecimento, APIs e processos; quinto estágio do modelo de maturidade.' },
+      { slug: 'exp', name: 'Employee Experience Platform (EXP)', def: 'Camada que organiza serviços e jornadas do colaborador sobre os sistemas de registro, com identidade, contexto e entrega em vários canais.' },
+      { slug: 'ag-ui', name: 'AG-UI', def: 'Protocolo de interação entre agente e aplicação, baseado em fluxos de eventos, estado compartilhado e interrupções; não é especificação de UI nem de integração.' },
+      { slug: 'component-registry', name: 'Component Registry', def: 'Contrato entre o agente e o design system: catálogo de componentes aprovados, com schema de props, efeitos e requisitos de acessibilidade.' },
+      { slug: 'permission-aware-retrieval', name: 'Permission-aware retrieval', def: 'Recuperação em que a permissão do usuário é filtrada no índice, antes de o modelo ver o conteúdo.' },
+      { slug: 'identidade-delegada', name: 'Identidade delegada', def: 'Token em que o sujeito é o usuário e o ator é o agente (RFC 8693), de modo que cada ação seja atribuível aos dois; o estudo recomenda limitá-la à interseção das permissões de ambos.' },
+      { slug: 'hitl', name: 'Human-in-the-loop (HITL)', def: 'Confirmação ou decisão humana formal antes de uma ação com efeito, registrada como evento e com regra explícita de não execução se não for respondida.' },
+      { slug: 'indice-de-prontidao', name: 'Índice de prontidão para agentes', def: 'Pontuação de 0 a 20 de uma jornada em dez critérios; sugere se ela está pronta para trabalhar fundações, para RAG e leitura ou para ações com confirmação.' },
+    ],
+    mdSections: [
+      { h: 'A tese e suas fundações', body: 'Um agente corporativo depende das fundações que atravessa: intenção priorizada, conhecimento governado, identidade delegada, contratos de API e processos explícitos. A cadeia do estágio 5 — intenção, agente, conhecimento, ferramentas, processo de negócio, experiência dinâmica — dá ao agente o mesmo peso dos demais elos: se outro elo falha, ele herda a falha e não a corrige.' },
+      { h: 'Os cinco estágios', body: '1. Intranet tradicional (conteúdo, links, sistemas): “onde fica?”. 2. Digital Workplace (conteúdo, serviços, personalização): “como peço?”. 3. EXP componível (APIs, headless, jornadas): “como resolvo de ponta a ponta?”. 4. AI-Enhanced Workplace (busca, RAG, copilots): “qual é a regra?”. 5. Agentic Workplace: “faça isso para mim”. No modelo proposto pelo estudo, cada estágio acumula os anteriores, e a maturidade se avalia por jornada: uma organização pode estar no estágio 5 para consultar saldo de férias e no 2 para solicitar acesso.' },
+      { h: 'Por onde começar', body: 'Por uma jornada piloto de alto volume e baixo risco, com seis fases de critério de passagem e sete trilhas paralelas. Identidade delegada (T2) e conteúdo governado (T3) costumam ser o caminho crítico e começam na fase 0. O estudo recomenda exigir evidência de segurança e de qualidade a cada ampliação de autonomia. O índice de prontidão agêntica, de 0 a 20, sugere o que a jornada suporta hoje.' },
+    ],
+    og: {
+      eyebrow: 'Arquitetura · Digital Workplace',
+      title: 'Do portal ao {agente}',
+      subtitle: 'Do portal que apresenta à plataforma que resolve',
+      thesis: 'Um agente depende das fundações que atravessa.',
+      chips: [{ k: 'EXP', label: 'Experiência' }, { k: 'AG-UI', label: 'Interação' }, { k: 'RAG', label: 'Conhecimento' }, { k: 'IAM', label: 'Identidade' }],
     },
   },
 ];

@@ -124,7 +124,7 @@
     }
 
     pre.code .tk-com {
-      color: #64748b;
+      color: #94a3b8; /* #64748b dava 4,19:1 sobre o fundo do bloco */
       font-style: italic;
     }
 
@@ -397,9 +397,13 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 </head>
 
 <body class="bg-ink-900 text-slate-100 font-sans antialiased selection:bg-brand-500/40 selection:text-white">
+    <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
@@ -450,7 +454,7 @@
       </nav>
 
       <!-- Mobile toggle -->
-      <button @click="open = !open"
+      <button @click="open = !open" aria-label="Abrir menu" :aria-expanded="open"
         class="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 hover:bg-white/5">
         <svg x-show="!open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 6h16M4 12h16M4 18h16" />
@@ -483,7 +487,7 @@
     </div>
   </header>
 
-  <main class="pt-16">
+  <main id="conteudo" class="pt-16">
 
     <!-- =========================================================
      1. HERO
@@ -565,22 +569,22 @@
           <div class="bg-ink-900/60 p-6">
             <dt class="text-xs uppercase tracking-wider text-slate-400">Modelo</dt>
             <dd class="mt-2 text-2xl font-bold text-white">Federado</dd>
-            <p class="mt-1 text-xs text-slate-400">Multi-times, multi-repos, sem monorepo</p>
+            <dd class="mt-1 text-xs text-slate-400">Multi-times, multi-repos, sem monorepo</dd>
           </div>
           <div class="bg-ink-900/60 p-6">
             <dt class="text-xs uppercase tracking-wider text-slate-400">Method</dt>
             <dd class="mt-2 text-2xl font-bold text-white">Spec-Driven</dd>
-            <p class="mt-1 text-xs text-slate-400">Templates estruturados orquestram a IA</p>
+            <dd class="mt-1 text-xs text-slate-400">Templates estruturados orquestram a IA</dd>
           </div>
           <div class="bg-ink-900/60 p-6">
             <dt class="text-xs uppercase tracking-wider text-slate-400">Source of Truth</dt>
             <dd class="mt-2 text-2xl font-bold text-white">Flosum CLI</dd>
-            <p class="mt-1 text-xs text-slate-400">Versionamento, merge e promoção</p>
+            <dd class="mt-1 text-xs text-slate-400">Versionamento, merge e promoção</dd>
           </div>
           <div class="bg-ink-900/60 p-6">
             <dt class="text-xs uppercase tracking-wider text-slate-400">Auth</dt>
             <dd class="mt-2 text-2xl font-bold text-white">sf · Web Login</dd>
-            <p class="mt-1 text-xs text-slate-400">Sem JWT, sem chaves locais</p>
+            <dd class="mt-1 text-xs text-slate-400">Sem JWT, sem chaves locais</dd>
           </div>
         </dl>
       </div>
@@ -1324,7 +1328,7 @@
           <!-- Template + exemplo -->
           <div class="lg:col-span-7 space-y-6">
             <div>
-              <div class="flex items-center justify-between">
+              <div class="flex items-center justify-between flex-wrap gap-2">
                 <h3 class="text-lg font-semibold">Template SDD (markdown)</h3>
                 <span
                   class="text-[11px] uppercase tracking-wider rounded-full bg-white/5 border border-white/10 px-2 py-0.5 text-slate-300">specs/&lt;ticket&gt;.md</span>
@@ -2364,7 +2368,7 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
                         <label class="flex items-start gap-3 cursor-pointer group">
                           <input type="checkbox" class="chk mt-0.5" x-model="it.done">
                           <span class="text-sm text-slate-300 group-hover:text-white"
-                            :class="it.done && 'line-through text-slate-500'" x-text="it.t"></span>
+                            :class="it.done && 'line-through text-slate-400'" x-text="it.t"></span>
                         </label>
                       </li>
                     </template>
@@ -2798,7 +2802,7 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
 
         <!-- Linha final do rodapé -->
         <div
-          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
           <p>© <span id="year"></span> Agentic DevOps for Salesforce — portal de treinamento.</p>
           <div class="flex items-center gap-4">
             <a href="#hero" class="hover:text-slate-300">Voltar ao topo ↑</a>
@@ -2833,6 +2837,7 @@ npx <span class="tk-fn">@flosum/cli</span> package deploy \
     });
   </script>
 <script type="module" src="./js/eco-nav.js"></script>
+<script type="module" src="./js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>

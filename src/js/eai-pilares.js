@@ -4,6 +4,7 @@
  * e o Calibrador de Autonomia (Pilar 1, painel dentro de #simulador).
  * Sem localStorage, sem framework — só DOM + os helpers puros.
  */
+import { enhanceTablist } from './a11y-tabs.js';
 import {
   classifyAutonomy,
   MODE_LEAK_TEXT,
@@ -17,6 +18,7 @@ function initMaturity() {
   const tabs = Array.from(root.querySelectorAll('[data-maturity-stage]'));
   const panel = root.querySelector('[data-maturity-panel]');
   if (!tabs.length || !panel) return;
+  enhanceTablist(root.querySelector('[role="tablist"]'), { panel });
 
   const render = (id) => {
     const stage = maturityStage(id);

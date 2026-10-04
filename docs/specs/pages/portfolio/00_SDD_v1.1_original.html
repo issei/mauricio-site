@@ -1,0 +1,982 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}</style><style>:root{color-scheme:light dark;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])){--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}}:root[data-theme="dark"]{color-scheme:dark;--md-bg:#0d0d0d;--md-text:rgba(255,255,255,.85);--md-muted:rgba(255,255,255,.6);--md-fill:rgba(255,255,255,.06);--md-fill-strong:rgba(255,255,255,.09);--md-rule:rgba(255,255,255,.14);--md-rule-strong:rgba(255,255,255,.22);--md-link:hsl(210 100% 72%)}:root[data-theme="light"]{color-scheme:light}@media print{:root,:root[data-theme="dark"]{color-scheme:light;--md-bg:#fff;--md-text:rgba(0,0,0,.8);--md-muted:rgba(0,0,0,.6);--md-fill:rgba(0,0,0,.04);--md-fill-strong:rgba(0,0,0,.06);--md-rule:rgba(0,0,0,.1);--md-rule-strong:rgba(0,0,0,.16);--md-link:hsl(210 100% 45%)}}body{background:var(--md-bg);color:var(--md-text);max-width:720px;margin:0 auto;padding:32px;display:flex;flex-direction:column;gap:10px;font:14px/1.55 -apple-system,BlinkMacSystemFont,'SF Pro','Segoe UI',sans-serif;overflow-wrap:break-word}body>:first-child{margin-top:0}h1,h2,h3,h4,h5,h6{margin:6px 0 0;line-height:1.25;font-weight:600;text-wrap:balance}h1{font-size:1.35em}h2{font-size:1.15em;color:var(--md-muted)}h3,h4,h5,h6{font-size:1em}p,ul,ol,blockquote,table,pre,hr{margin:0}strong{font-weight:600}a{color:var(--md-link);text-decoration:none}a:hover{text-decoration:underline}ul,ol{display:flex;flex-direction:column;gap:6px;padding-left:22px}ul{list-style:disc}ol{list-style:decimal}:is(li,td,th)>*+:is(p,ul,ol,blockquote){margin-top:6px}blockquote{display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--md-rule);padding-left:10px;color:var(--md-muted)}:not(pre)>code{background:var(--md-fill);padding:1px 3px;border-radius:4px;font:.92em 'SF Mono',ui-monospace,Menlo,Consolas,monospace}a>code{background:none;color:inherit}pre{background:var(--md-fill);padding:10px 12px;border-radius:6px;overflow-x:auto;font:12px/1.5 'SF Mono',ui-monospace,Menlo,Consolas,monospace;margin-block:4px}pre code{background:none;padding:0;font:inherit}table{width:100%;border-collapse:separate;border-spacing:2px;font:inherit}th,td{padding:6px 8px;border-radius:3px;text-align:left;vertical-align:top}th{background:var(--md-fill-strong);font-weight:600}td{background:var(--md-fill)}:is(th,td) :not(pre)>code{background:transparent}hr{border:0;border-top:1px solid var(--md-rule-strong);margin-block:10px}img{max-width:100%;height:auto;border-radius:4px}</style>
+</head><body>
+<h1>Especificação SDD — Portfólio &quot;Dual-Faced&quot;</h1>
+<h2>Maurício Yokoyama Issei — mauricio.issei.com.br</h2>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo de documento</td>
+<td>Especificação Técnica (Spec Driven Development)</td>
+</tr>
+<tr>
+<td>Escopo</td>
+<td>SPA em arquivo único <code>index.html</code> (HTML5 + Tailwind CDN + JS vanilla)</td>
+</tr>
+<tr>
+<td>Fontes de dados autoritativas</td>
+<td><code>cv.json</code>, <code>star.json</code> (não inventar fatos além destes arquivos)</td>
+</tr>
+<tr>
+<td>Público desta especificação</td>
+<td>Time/agente de engenharia responsável pela implementação</td>
+</tr>
+<tr>
+<td>Versão</td>
+<td>1.1 — conteúdo 100% estático, zero dependência de JS, compatível com tradutores do navegador</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Pronta para implementação, com 1 pendência de dado assinalada na seção 12.4</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota de escopo:</strong> este documento é a especificação, não o código. Ele define objetivo, arquitetura de informação, design system, contratos de dados, requisitos de SEO/IA e critérios de aceite necessários para que qualquer engenheiro (humano ou agente) implemente o <code>index.html</code> final de forma determinística e sem ambiguidade.</p>
+</blockquote>
+<blockquote>
+<p><strong>Regra de ouro desta versão (v1.1):</strong> todo o conteúdo textual de <code>cv.json</code> e <code>star.json</code> deve ser <strong>compilado/embutido diretamente no HTML estático</strong> no momento da geração do arquivo — nunca carregado, montado ou revelado via JavaScript em tempo de execução. Isso é requisito duro para três públicos simultâneos: (a) crawlers de SEO/ATS, (b) agentes de IA que fazem parsing do HTML puro, e (c) <strong>ferramentas de tradução do navegador</strong> (Google Translate, Microsoft Translator, Safari Translate), que só traduzem texto que já existe como nó de texto real no DOM no momento em que analisam a página. Ver seção 4.1 para as regras detalhadas e seção 12 para os critérios de aceite correspondentes.</p>
+</blockquote>
+<hr>
+<h2>1. Visão Geral e Conceito</h2>
+<p>O produto é uma <strong>Single Page Application em arquivo único</strong>, servida em <code>mauricio.issei.com.br</code>, com um conceito de <strong>&quot;Dual-Faced Portfolio&quot;</strong>: o mesmo HTML precisa performar bem para dois consumidores com necessidades opostas:</p>
+<ol>
+<li><strong>Humanos</strong> (recrutadores, gestores, tech leads) — precisam de uma leitura rápida, visualmente elegante, que comunique senioridade (+20 anos) e resultados de negócio em poucos segundos de scroll.</li>
+<li><strong>Máquinas</strong> (crawlers de SEO, parsers de ATS, agentes de IA que fazem RAG sobre currículos) — precisam de HTML semântico, marcação ARIA e um bloco <code>JSON-LD</code> exaustivo, capaz de reconstruir 100% do currículo sem depender do CSS/JS.</li>
+</ol>
+<p><strong>Consequência arquitetural direta:</strong> todo componente visual &quot;bonito&quot; (cards colapsáveis, carrossel de depoimentos, pills de skills) deve ter, no DOM, o conteúdo completo já renderizado em texto/semântica — nada pode existir <em>apenas</em> dentro de um <code>data-*</code> JS ou ser injetado exclusivamente após interação do usuário. Colapsar visualmente ≠ remover do DOM/acessibilidade.</p>
+<hr>
+<h2>2. Personas</h2>
+<table>
+<thead>
+<tr>
+<th>Persona</th>
+<th>Objetivo ao visitar a página</th>
+<th>O que precisa encontrar em &lt;15s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recrutador(a) técnico(a)</strong></td>
+<td>Decidir se avança o perfil para a próxima etapa</td>
+<td>Título, anos de experiência, stack principal (Salesforce/AWS/Java), 1 resultado quantificado</td>
+</tr>
+<tr>
+<td><strong>Tech Lead / Hiring Manager</strong></td>
+<td>Avaliar profundidade técnica e senioridade real</td>
+<td>Seção de experiência com métricas STAR, stack por período, certificações validáveis</td>
+</tr>
+<tr>
+<td><strong>ATS (parser automatizado)</strong></td>
+<td>Extrair campos estruturados (nome, cargo, skills, datas, contato)</td>
+<td>Tags semânticas + <code>JSON-LD</code> completo no <code>&lt;head&gt;</code></td>
+</tr>
+<tr>
+<td><strong>Agente de IA / LLM (RAG, resumo automático)</strong></td>
+<td>Responder perguntas sobre a carreira do candidato a partir da página</td>
+<td>Texto integralmente presente no DOM, hierarquia de headings coerente, <code>@graph</code> rico em <code>knowsAbout</code>/<code>ItemList</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>3. Escopo</h2>
+<p><strong>Dentro do escopo:</strong></p>
+<ul>
+<li>1 página (<code>index.html</code>), 6 seções + header + footer, conforme seção 5.</li>
+<li>Modo claro e escuro (dark mode), com persistência local (ex.: <code>localStorage</code>, respeitando restrições do ambiente de destino).</li>
+<li>Todo o conteúdo vem exclusivamente de <code>cv.json</code> e <code>star.json</code>.</li>
+<li>JSON-LD completo (<code>Person</code>, <code>ProfilePage</code>, <code>ItemList</code> de certificações).</li>
+</ul>
+<p><strong>Fora do escopo (não implementar nesta entrega):</strong></p>
+<ul>
+<li>Backend, formulário de contato com envio de e-mail (o CTA de contato aponta para <code>mailto:</code> e redes sociais).</li>
+<li>CMS ou geração dinâmica — o conteúdo é estático, compilado a partir dos JSONs no momento do build.</li>
+<li>Internacionalização (i18n) — página apenas em pt-BR nesta versão.</li>
+</ul>
+<hr>
+<h2>4. Stack Técnica e Restrições</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Definição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marcação</td>
+<td>HTML5 semântico (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>)</td>
+</tr>
+<tr>
+<td>Estilo</td>
+<td>Tailwind CSS via CDN — <code>&lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;</code></td>
+</tr>
+<tr>
+<td>Tipografia</td>
+<td>Google Fonts — família <strong>Inter</strong> (peso 400/500/600/700/800)</td>
+</tr>
+<tr>
+<td>Interatividade</td>
+<td>JavaScript vanilla (sem framework), <strong>estritamente decorativo/comportamental</strong> — nunca responsável por inserir, buscar ou revelar conteúdo textual. Usos permitidos: alternar classe de dark mode, destacar item ativo do menu no scroll, rolagem suave (<code>scroll-behavior</code>). Ver regras completas na seção 4.1</td>
+</tr>
+<tr>
+<td>Ícones</td>
+<td>SVG inline (sem dependência externa de icon-font, para não quebrar o requisito de arquivo único/offline-first)</td>
+</tr>
+<tr>
+<td>Arquivo</td>
+<td>Único <code>index.html</code> autocontido</td>
+</tr>
+<tr>
+<td>Compatibilidade</td>
+<td>Últimas 2 versões de Chrome, Safari, Firefox, Edge; iOS Safari e Chrome Android</td>
+</tr>
+</tbody>
+</table>
+<h3>4.1 Estratégia de Renderização — Zero dependência de JS para conteúdo</h3>
+<p>Esta seção substitui qualquer indicação anterior de &quot;expandir/colapsar via JS&quot; ou &quot;carrossel via JS&quot; para fins de <strong>carregamento de conteúdo</strong>. O objetivo é que a página funcione, com todo o texto visível e correto, <strong>mesmo com JavaScript completamente desabilitado no navegador</strong> — e que ferramentas de tradução automática do navegador consigam varrer e traduzir 100% do conteúdo já na primeira renderização.</p>
+<p><strong>Regras obrigatórias:</strong></p>
+<ol>
+<li><strong>Compilação em build-time, não fetch em runtime.</strong> Todo o conteúdo de <code>cv.json</code> e <code>star.json</code> (todas as 5 experiências, os 19 projetos STAR, as 26 certificações, os 6 depoimentos, as 6 categorias de cursos Alura) deve ser transcrito/injetado como texto literal dentro das tags HTML no momento em que o <code>index.html</code> é gerado. É <strong>proibido</strong>: <code>fetch('cv.json')</code>, <code>fetch('star.json')</code>, <code>XMLHttpRequest</code>, <code>import()</code> dinâmico de dados, ou qualquer template renderizado no cliente após o <code>DOMContentLoaded</code>.</li>
+<li><strong>Elementos expansíveis usam HTML nativo, não JS.</strong> Os cards STAR (seção 9.3) e o agrupamento de trilhas Alura (seção 9.4.4) devem ser implementados com os elementos nativos <code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code>, e não com <code>&lt;div&gt;</code> + <code>onclick</code> + <code>classList.toggle</code>. Vantagens diretas: (a) o navegador já cuida de <code>aria-expanded</code>/foco/teclado sem nenhum JS; (b) o conteúdo interno permanece um nó de texto real do DOM mesmo fechado, logo é indexável, traduzível e legível por parser de IA independentemente do estado visual; (c) funciona 100% com JS desabilitado. Customizar apenas a aparência do <code>&lt;summary&gt;</code> via CSS (remover marcador nativo, adicionar ícone de seta rotacionável via <code>::marker</code>/<code>::before</code>).</li>
+<li><strong>Nada de <code>display:none</code>/<code>hidden</code> para esconder texto que deveria estar acessível.</strong> Se algum bloco precisar iniciar oculto por design, usar <code>&lt;details&gt;</code> (regra 2) ou técnicas puramente visuais que não removem o nó da árvore de acessibilidade (ex.: <code>max-height: 0; overflow: hidden</code> em conjunto com o atributo <code>open</code> do <code>&lt;details&gt;</code>), nunca <code>content: &quot;...&quot;</code> via CSS para texto que faz parte do currículo.</li>
+<li><strong>Depoimentos (seção 9.5): grid estático ou scroll-snap em CSS puro</strong>, sem JS de &quot;próximo/anterior&quot;. Usar <code>display: grid</code> (masonry/2-3 colunas) como padrão, ou, se o efeito de carrossel for desejado visualmente, <code>overflow-x: auto; scroll-snap-type: x mandatory</code> — em ambos os casos os 6 depoimentos completos já estão todos no DOM, visíveis por scroll/leitura contínua, sem depender de clique em botão de navegação para existir.</li>
+<li><strong>Dark mode com fallback 100% CSS.</strong> O tema padrão deve respeitar <code>@media (prefers-color-scheme: dark)</code> nativamente; o botão de toggle em JS é apenas uma sobreposição de conveniência (progressive enhancement) que troca uma classe/atributo — se o JS falhar ou estiver desabilitado, o tema ainda funciona corretamente a partir da preferência do sistema.</li>
+<li><strong>Sem Shadow DOM e sem Web Components com conteúdo encapsulado.</strong> Ferramentas de tradução e crawlers frequentemente não atravessam <code>shadow root</code>; todo o conteúdo textual deve viver no <em>light DOM</em>.</li>
+<li><strong>Frases não devem ser fragmentadas artificialmente em múltiplos elementos inline via JS</strong> (ex.: um <code>&lt;span&gt;</code> por palavra para animação). Isso quebra a tradução automática, que trabalha melhor com frases inteiras em um nó de texto contíguo. Animações de entrada (fade/slide), se usadas, devem ser aplicadas ao elemento-contêiner (ex.: o <code>&lt;article&gt;</code> ou <code>&lt;li&gt;</code> inteiro), nunca fatiando o texto.</li>
+<li><strong>Teste de aceite direto:</strong> abrir o DevTools, desabilitar JavaScript, recarregar a página (<code>Ctrl+Shift+R</code>) e confirmar visualmente que todo o texto de todas as seções, incluindo o conteúdo &quot;de dentro&quot; de cada card STAR e de cada grupo de cursos Alura, está presente e legível — apenas o toggle manual de tema e eventuais efeitos de transição podem deixar de funcionar.</li>
+</ol>
+<hr>
+<h2>5. Arquitetura da Informação (Sitemap de página única)</h2>
+<pre><code>index.html
+├── &lt;head&gt;                     → Meta tags + JSON-LD (seção 8 e 9)
+├── &lt;header id=&#34;home&#34;&gt;         → Hero + Quick Facts (seção 6.1)
+├── &lt;nav&gt;                      → Âncoras: Sobre, Experiência, Formação, Recomendações, Contato
+├── &lt;main&gt;
+│   ├── &lt;section id=&#34;about&#34;&gt;          → Sobre + Skills-to-Tenure Mapping (6.2)
+│   ├── &lt;section id=&#34;experience&#34;&gt;     → Timeline Rede (STAR) + experiências anteriores (6.3)
+│   ├── &lt;section id=&#34;education&#34;&gt;      → Formação + Certificações (6.4)
+│   └── &lt;section id=&#34;recommendations&#34;&gt;→ Depoimentos (6.5)
+└── &lt;footer&gt;                   → Navegação interna, copyright, nota sobre JSON-LD (6.6)
+</code></pre>
+<p>Ordem de navegação = ordem de leitura = ordem de prioridade de decisão do recrutador (resumo → prova técnica → validação externa → prova social).</p>
+<hr>
+<h2>6. Design System — &quot;Tech Elegance&quot;</h2>
+<h3>6.1 Paleta de cores</h3>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Uso</th>
+<th>Light mode</th>
+<th>Dark mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--bg-primary</code></td>
+<td>Fundo de seções claras</td>
+<td><code>#F8FAFC</code> (slate-50)</td>
+<td><code>#0B0F19</code> (quase preto)</td>
+</tr>
+<tr>
+<td><code>--bg-secondary</code></td>
+<td>Fundo de seções alternadas/escuras</td>
+<td><code>#0F172A</code> (slate-900)</td>
+<td><code>#111827</code></td>
+</tr>
+<tr>
+<td><code>--surface</code></td>
+<td>Cards, superfícies elevadas</td>
+<td><code>#FFFFFF</code></td>
+<td><code>#1A2233</code></td>
+</tr>
+<tr>
+<td><code>--text-primary</code></td>
+<td>Texto principal</td>
+<td><code>#0F172A</code></td>
+<td><code>#F1F5F9</code></td>
+</tr>
+<tr>
+<td><code>--text-secondary</code></td>
+<td>Texto de apoio/legendas</td>
+<td><code>#475569</code></td>
+<td><code>#94A3B8</code></td>
+</tr>
+<tr>
+<td><code>--accent-primary</code></td>
+<td>Links, CTAs, destaques (azul corporativo)</td>
+<td><code>#2563EB</code> (blue-600)</td>
+<td><code>#3B82F6</code> (blue-500)</td>
+</tr>
+<tr>
+<td><code>--accent-secondary</code></td>
+<td>Destaque técnico (verde tech, usado em métricas/resultados)</td>
+<td><code>#10B981</code> (emerald-500)</td>
+<td><code>#34D399</code></td>
+</tr>
+<tr>
+<td><code>--border</code></td>
+<td>Bordas sutis</td>
+<td><code>#E2E8F0</code></td>
+<td><code>#293244</code></td>
+</tr>
+</tbody>
+</table>
+<p>Regra de contraste: todo par texto/fundo deve atingir no mínimo <strong>WCAG AA (4.5:1)</strong> — validar especialmente <code>--text-secondary</code> sobre <code>--surface</code> em dark mode.</p>
+<h3>6.2 Tipografia</h3>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Fonte</th>
+<th>Peso</th>
+<th>Tamanho (mobile → desktop)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nome (H1, hero)</td>
+<td>Inter</td>
+<td>800</td>
+<td><code>text-4xl</code> → <code>text-6xl</code></td>
+</tr>
+<tr>
+<td>Título/cargo (hero)</td>
+<td>Inter</td>
+<td>500</td>
+<td><code>text-lg</code> → <code>text-2xl</code></td>
+</tr>
+<tr>
+<td>H2 (título de seção)</td>
+<td>Inter</td>
+<td>700</td>
+<td><code>text-2xl</code> → <code>text-4xl</code></td>
+</tr>
+<tr>
+<td>H3 (empresa/projeto)</td>
+<td>Inter</td>
+<td>600</td>
+<td><code>text-lg</code> → <code>text-xl</code></td>
+</tr>
+<tr>
+<td>Corpo de texto</td>
+<td>Inter</td>
+<td>400</td>
+<td><code>text-base</code> (16px), <code>leading-relaxed</code></td>
+</tr>
+<tr>
+<td>Métricas em destaque</td>
+<td>Inter</td>
+<td>700</td>
+<td><code>text-xl</code>, cor <code>--accent-secondary</code></td>
+</tr>
+<tr>
+<td>Legendas/labels</td>
+<td>Inter</td>
+<td>500</td>
+<td><code>text-sm</code>, <code>uppercase</code>, <code>tracking-wide</code></td>
+</tr>
+</tbody>
+</table>
+<h3>6.3 Grid, espaçamento e breakpoints</h3>
+<ul>
+<li>Mobile-first absoluto: base = 375px; breakpoints Tailwind padrão (<code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>).</li>
+<li>Container central: <code>max-w-6xl mx-auto px-4 sm:px-6 lg:px-8</code>.</li>
+<li>Espaçamento vertical entre seções: <code>py-16 md:py-24</code>.</li>
+<li>Grid de skills: 2 colunas no mobile → 3–5 colunas conforme categoria em desktop.</li>
+<li>Grid de certificações em destaque: 1 coluna mobile → 3 colunas desktop (<code>grid md:grid-cols-3 gap-6</code>).</li>
+<li>Timeline de experiência: coluna única com linha vertical conectando os <code>&lt;article&gt;</code> (efeito &quot;trilha do tempo&quot;), colapsando para lista simples em mobile.</li>
+</ul>
+<h3>6.4 Dark mode</h3>
+<ul>
+<li><strong>Base sempre funcional sem JS:</strong> o tema segue <code>@media (prefers-color-scheme: dark)</code> nativamente via CSS puro — isso já cobre 100% dos visitantes, com ou sem JavaScript habilitado.</li>
+<li>Toggle no header (ícone sol/lua) é uma <strong>camada de conveniência opcional</strong> que sobrepõe a preferência do sistema, aplicando/removendo a classe <code>dark</code> na raiz (<code>&lt;html class=&quot;dark&quot;&gt;</code>, <code>tailwind.config = { darkMode: 'class' }</code>) e persistindo a escolha. Trata-se de puro comportamento visual — não afeta a disponibilidade de nenhum conteúdo textual, portanto não conflita com a regra de zero-JS-para-conteúdo da seção 4.1.</li>
+<li>Estado padrão: seguir preferência do sistema operacional na primeira visita.</li>
+</ul>
+<h3>6.5 Componentes-base reutilizáveis</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pill</code></td>
+<td>Tag arredondada (<code>rounded-full</code>), <code>px-3 py-1</code>, <code>text-sm</code>, fundo <code>--surface</code> + borda <code>--border</code>; usada para tecnologias e cursos agrupados</td>
+</tr>
+<tr>
+<td><code>Botão primário</code></td>
+<td><code>bg-accent-primary text-white rounded-lg px-5 py-2.5 font-medium hover:opacity-90 transition</code></td>
+</tr>
+<tr>
+<td><code>Botão &quot;Ver Credencial&quot;</code></td>
+<td>Botão secundário sutil, ícone de link externo (SVG), <code>target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;</code>, <code>aria-label=&quot;Verificar credencial: {nome do certificado}&quot;</code></td>
+</tr>
+<tr>
+<td><code>Card</code></td>
+<td><code>bg-surface rounded-2xl shadow-sm border border-[--border] p-6 md:p-8</code></td>
+</tr>
+<tr>
+<td><code>MetricBadge</code></td>
+<td>Badge de destaque para números (<code>+3MM</code>, <code>+15%</code>) em <code>--accent-secondary</code>, peso 700</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>7. Requisitos de SEO e Meta Tags (<code>&lt;head&gt;</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Conteúdo obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;title&gt;</code></td>
+<td><code>Maurício Yokoyama Issei — Tech Lead &amp; Especialista em Análise de Sistemas | +20 anos Salesforce, AWS, APIs</code></td>
+</tr>
+<tr>
+<td><code>&lt;meta name=&quot;description&quot;&gt;</code></td>
+<td>Resumo de 150–160 caracteres baseado no <code>ResumoHero</code> de <code>cv.json</code></td>
+</tr>
+<tr>
+<td><code>&lt;meta name=&quot;keywords&quot;&gt;</code></td>
+<td>Lista derivada de <code>Habilidades</code> (Salesforce, AWS, Tech Lead, SRE, Java, Node.js, etc.)</td>
+</tr>
+<tr>
+<td><code>&lt;link rel=&quot;canonical&quot;&gt;</code></td>
+<td><code>https://mauricio.issei.com.br/</code></td>
+</tr>
+<tr>
+<td><code>&lt;meta name=&quot;author&quot;&gt;</code></td>
+<td><code>Maurício Yokoyama Issei</code></td>
+</tr>
+<tr>
+<td><code>&lt;meta name=&quot;robots&quot;&gt;</code></td>
+<td><code>index, follow</code></td>
+</tr>
+<tr>
+<td>Open Graph</td>
+<td><code>og:type=profile</code>, <code>og:title</code>, <code>og:description</code>, <code>og:url</code>, <code>og:image</code> (foto/avatar profissional), <code>og:locale=pt_BR</code></td>
+</tr>
+<tr>
+<td>Twitter Card</td>
+<td><code>twitter:card=summary_large_image</code>, <code>twitter:title</code>, <code>twitter:description</code></td>
+</tr>
+<tr>
+<td><code>&lt;html lang=&quot;pt-BR&quot;&gt;</code></td>
+<td>Obrigatório para leitores de tela e SEO regional</td>
+</tr>
+<tr>
+<td>Favicon</td>
+<td>Ícone simples com iniciais &quot;MI&quot; ou logotipo pessoal</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>8. Dados Estruturados — JSON-LD (Schema.org)</h2>
+<p>Bloco único <code>&lt;script type=&quot;application/ld+json&quot;&gt;</code> no <code>&lt;head&gt;</code>, estruturado como <code>@graph</code>. Todos os valores abaixo vêm de <code>cv.json</code>; <strong>nenhum dado deve ser inventado</strong>.</p>
+<pre><code class="language-json">{
+  &#34;@context&#34;: &#34;https://schema.org&#34;,
+  &#34;@graph&#34;: [
+    {
+      &#34;@type&#34;: &#34;Person&#34;,
+      &#34;@id&#34;: &#34;https://mauricio.issei.com.br/#person&#34;,
+      &#34;name&#34;: &#34;Maurício Yokoyama Issei&#34;,
+      &#34;jobTitle&#34;: &#34;Tech Lead | Especialista em Análise de Sistemas&#34;,
+      &#34;url&#34;: &#34;https://mauricio.issei.com.br/&#34;,
+      &#34;email&#34;: &#34;mailto:mauricio@issei.com.br&#34;,
+      &#34;image&#34;: &#34;https://mauricio.issei.com.br/assets/avatar.jpg&#34;,
+      &#34;sameAs&#34;: [
+        &#34;https://www.linkedin.com/in/mauricioissei/&#34;,
+        &#34;https://github.com/issei&#34;,
+        &#34;https://www.youtube.com/@MauricioIssei&#34;,
+        &#34;https://www.instagram.com/yokoyamaissei/&#34;
+      ],
+      &#34;alumniOf&#34;: [
+        {
+          &#34;@type&#34;: &#34;CollegeOrUniversity&#34;,
+          &#34;name&#34;: &#34;Universidade Presbiteriana Mackenzie&#34;
+        },
+        {
+          &#34;@type&#34;: &#34;EducationalOrganization&#34;,
+          &#34;name&#34;: &#34;Colégio Guarani&#34;
+        }
+      ],
+      &#34;worksFor&#34;: {
+        &#34;@type&#34;: &#34;Organization&#34;,
+        &#34;name&#34;: &#34;Rede&#34;
+      },
+      &#34;knowsAbout&#34;: [
+        &#34;Java&#34;, &#34;Node.js&#34;, &#34;Python&#34;, &#34;Go&#34;, &#34;.NET&#34;, &#34;SOLID&#34;, &#34;JavaScript&#34;,
+        &#34;Spring Boot&#34;, &#34;MLOps&#34;, &#34;Segurança Web&#34;, &#34;Git&#34;, &#34;Vue3&#34;,
+        &#34;Machine Learning&#34;, &#34;AWS&#34;, &#34;Amazon S3&#34;, &#34;AWS Lambda&#34;, &#34;DynamoDB&#34;,
+        &#34;API Gateway&#34;, &#34;EKS&#34;, &#34;EC2&#34;, &#34;ECS&#34;, &#34;CodeDeploy&#34;, &#34;CodePipeline&#34;,
+        &#34;CloudWatch&#34;, &#34;IAM&#34;, &#34;SNS&#34;, &#34;SQS&#34;, &#34;Linux&#34;, &#34;Jenkins&#34;, &#34;CI/CD&#34;,
+        &#34;Datadog&#34;, &#34;Splunk&#34;, &#34;SRE&#34;, &#34;Salesforce&#34;, &#34;APIs REST&#34;, &#34;APIs SOAP&#34;,
+        &#34;OAuth 2&#34;, &#34;Swagger&#34;, &#34;Apigee&#34;, &#34;Data Science&#34;, &#34;Visualização de Dados&#34;,
+        &#34;R&#34;, &#34;Estatística&#34;, &#34;Data Mesh&#34;, &#34;Scrum&#34;, &#34;Kanban&#34;, &#34;Lean Startup&#34;,
+        &#34;Agile Coach&#34;, &#34;Business Agility&#34;, &#34;Liderança Técnica&#34;,
+        &#34;Design Thinking&#34;, &#34;UX Strategy&#34;
+      ]
+    },
+    {
+      &#34;@type&#34;: &#34;ProfilePage&#34;,
+      &#34;@id&#34;: &#34;https://mauricio.issei.com.br/#profilepage&#34;,
+      &#34;dateCreated&#34;: &#34;2018-01-01&#34;,
+      &#34;dateModified&#34;: &#34;2026-09-22&#34;,
+      &#34;mainEntity&#34;: { &#34;@id&#34;: &#34;https://mauricio.issei.com.br/#person&#34; }
+    },
+    {
+      &#34;@type&#34;: &#34;ItemList&#34;,
+      &#34;@id&#34;: &#34;https://mauricio.issei.com.br/#certifications&#34;,
+      &#34;name&#34;: &#34;Certificações profissionais de Maurício Yokoyama Issei&#34;,
+      &#34;itemListElement&#34;: [
+        {
+          &#34;@type&#34;: &#34;ListItem&#34;,
+          &#34;position&#34;: 1,
+          &#34;item&#34;: {
+            &#34;@type&#34;: &#34;EducationalOccupationalCredential&#34;,
+            &#34;name&#34;: &#34;AWS Certified Cloud Practitioner&#34;,
+            &#34;credentialCategory&#34;: &#34;certificate&#34;,
+            &#34;recognizedBy&#34;: { &#34;@type&#34;: &#34;Organization&#34;, &#34;name&#34;: &#34;Amazon Web Services (AWS)&#34; },
+            &#34;url&#34;: &#34;https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951?source=linked_in_profile&#34;,
+            &#34;dateCreated&#34;: &#34;2022-01&#34;
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<blockquote>
+<p><strong>Regra de implementação:</strong> o array <code>itemListElement</code> de <code>ItemList</code> deve conter <strong>todos os 26 registros</strong> de <code>Certificados</code> em <code>cv.json</code> (ver tabela completa na seção 10.4), cada um com <code>url</code> = campo <code>Verificacao</code> quando existir. Para os 2 certificados sem link (<code>AWS Profissional Technical</code>, <code>Kony Certified Developer</code>), omitir a propriedade <code>url</code> — nunca preencher com link fictício.</p>
+<p>O array <code>knowsAbout</code> acima é ilustrativo; a implementação final deve espelhar 1:1 todas as entradas de <code>Habilidades</code> em <code>cv.json</code> (7 categorias, ~50 termos), sem paráfrase.</p>
+</blockquote>
+<hr>
+<h2>9. Especificação de Conteúdo por Seção</h2>
+<h3>9.1 <code>&lt;header&gt;</code> — Hero Section</h3>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Fonte de dado (<code>cv.json</code>)</th>
+<th>Regra de renderização</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nome (H1)</td>
+<td><code>Nome</code></td>
+<td>Texto integral, sem abreviação</td>
+</tr>
+<tr>
+<td>Título</td>
+<td><code>Titulo</code></td>
+<td>Subtítulo direto abaixo do H1</td>
+</tr>
+<tr>
+<td>Resumo executivo</td>
+<td><code>ResumoHero</code></td>
+<td>Parágrafo de destaque, <code>text-lg</code>/<code>text-xl</code>, largura máxima <code>max-w-3xl</code> para legibilidade</td>
+</tr>
+<tr>
+<td>Links sociais</td>
+<td><code>Contato.LinkedIn</code>, <code>Contato.GitHub</code>, <code>Contato.youtube</code>, <code>Contato.instagram</code>, <code>Contato.Email</code></td>
+<td>5 ícones SVG com <code>aria-label</code> descritivo; e-mail usa <code>mailto:mauricio@issei.com.br</code></td>
+</tr>
+<tr>
+<td>Quick Facts (bloco ATS)</td>
+<td>Inferido do contexto (<code>São Paulo, SP, Brasil</code>, <code>Híbrida</code>, extraído de <code>Experiencia[0].Local</code>)</td>
+<td>Renderizar como <code>&lt;dl&gt;</code> (lista de definição) com <code>&lt;dt&gt;</code>/<code>&lt;dd&gt;</code> — semanticamente rico para parsers: Localização, Modelo de trabalho, Anos de experiência (+20), Disponibilidade</td>
+</tr>
+<tr>
+<td>CTA primário</td>
+<td>—</td>
+<td>Botão &quot;Ver Experiência&quot; → âncora <code>#experience</code></td>
+</tr>
+</tbody>
+</table>
+<h3>9.2 <code>&lt;section id=&quot;about&quot;&gt;</code> — Sobre + Skills-to-Tenure Mapping</h3>
+<ul>
+<li>Bloco de texto: usar os 4 parágrafos de <code>Resumo</code> (array) na íntegra, sem reescrever — cada item do array vira um <code>&lt;p&gt;</code>.</li>
+<li><strong>Skills-to-Tenure Mapping</strong>: grid de 7 grupos de skills (chaves de <code>Habilidades</code>), cada grupo em um <code>Card</code> com:
+<ul>
+<li>Título do grupo (ex.: &quot;Desenvolvimento&quot;, &quot;Cloud &amp; DevOps&quot;).</li>
+<li>Lista de <code>Pill</code>s com os itens do array.</li>
+<li>Um subtítulo textual de senioridade por grupo (para reforço de ATS), calculado assim:
+<ul>
+<li><strong>Desenvolvimento / Plataformas &amp; APIs / Liderança</strong>: &quot;+20 anos&quot; (cobre toda a carreira, desde Sysgen 2003).</li>
+<li><strong>Cloud &amp; DevOps</strong>: &quot;+7 anos&quot; (desde a atuação em AWS na Rede, 2018→2026, e presença de AWS já em Indra 2012 como plano de fundo técnico — usar &quot;+7 anos&quot; apenas para o eixo em que a AWS é competência-chave contínua e explícita, referenciando <code>Experiencia</code> do período Rede: 2018–presente).</li>
+<li><strong>Data Science &amp; Analytics</strong>: &quot;+5 anos&quot; (desde a pós-graduação Mackenzie, fev/2019).</li>
+<li><strong>Gestão &amp; Metodologias Ágeis</strong>: &quot;+8 anos&quot; (desde Serasa Experian, 2017, primeira menção explícita a Scrum).</li>
+</ul>
+</li>
+<li>Esses períodos são <strong>inferências textuais de apoio a SEO/ATS</strong>, não números fixos em <code>cv.json</code>; devem ser implementados como texto auxiliar (<code>&lt;p class=&quot;text-sm text-secondary&quot;&gt;</code>), nunca como afirmação isolada sem contexto, e devem ser revisados por Maurício antes da publicação (ver seção 12.4).</li>
+</ul>
+</li>
+</ul>
+<h3>9.3 <code>&lt;section id=&quot;experience&quot;&gt;</code> — Timeline + STAR Cards</h3>
+<p><strong>Estrutura geral:</strong> um <code>&lt;article&gt;</code> por vínculo empregatício, ordem cronológica inversa, usando <code>Experiencia</code> (5 itens) como fonte.</p>
+<p><strong>Experiência atual (Rede, fev/2018–presente):</strong> este é o <code>&lt;article&gt;</code> mais rico. Além do cabeçalho padrão (cargo, período, local, descrição, competências-chave), renderizar a lista de <strong>19 projetos</strong> de <code>star.json</code>/<code>Projetos</code> como <strong>cards expansíveis</strong>, agrupados por ano (decrescente: 2025 → 2018).</p>
+<p><strong>Contrato de dados do STAR Card:</strong></p>
+<pre><code class="language-ts">interface STARCard {
+  nome: string;        // Projetos[].Nome
+  periodo: string;     // Projetos[].Periodo (ano)
+  situacao: string;    // Projetos[].Situacao
+  tarefas: string[];   // Projetos[].Tarefas
+  acoes: string[];     // Projetos[].Acoes
+  resultados: string[];// Projetos[].Resultados  → destacar métricas numéricas (regex: %, MM, k, D0, D2) com &lt;MetricBadge&gt;
+  tecnologias: string[]; // Projetos[].Tecnologias → renderizadas como &lt;Pill&gt;
+}
+</code></pre>
+<p><strong>Comportamento de UI (sem JS, conforme seção 4.1):</strong> cada STAR Card é um elemento <code>&lt;details class=&quot;star-card&quot;&gt;</code>. O <code>&lt;summary&gt;</code> é a &quot;fachada fechada&quot; do card e contém <code>nome</code> + <code>periodo</code> + <code>tecnologias</code> (pills) + até 1 resultado-resumo em destaque — todo esse conteúdo já é um nó de texto real, visível e traduzível mesmo com o <code>&lt;details&gt;</code> fechado. O corpo do <code>&lt;details&gt;</code> (irmão do <code>&lt;summary&gt;</code>, dentro do mesmo elemento) contém Situação → Tarefas → Ações → Resultados, cada bloco com seu rótulo semântico (<code>Situação</code>, <code>Tarefa</code>, <code>Ação</code>, <code>Resultado</code>) em <code>&lt;h4&gt;</code>/<code>&lt;dt&gt;</code>, reforçando a semântica STAR também para IA. Não usar <code>&lt;button&gt;</code> + <code>&lt;div&gt;</code> + JS para este padrão — o navegador nativamente cuida de <code>aria-expanded</code>, foco e teclado. CSS pode customizar livremente a seta/ícone do <code>&lt;summary&gt;</code> e a transição de abertura, mas o texto interno nunca é inserido, removido ou buscado via JavaScript.</p>
+<p><strong>Lista completa dos 19 projetos a implementar</strong> (título · ano · 1 métrica-chave para o card fechado):</p>
+<table>
+<thead>
+<tr>
+<th>Ano</th>
+<th>Projeto</th>
+<th>Métrica de destaque no card fechado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>Pipe Automática Comercial</td>
+<td>+15% no atingimento de metas</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Implementação do Likert nas Jornadas</td>
+<td>Criação de OKR de satisfação</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Projeto de Entrega na Hora da Máquina pelo Executivo</td>
+<td>Velocidade de ativação no Credenciamento</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Projeto de Agrupamento Comercial</td>
+<td>Modernização com validação em tempo de proposta</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>Atualização do status do Credenciamento em Callback do WF</td>
+<td>Redução de incidentes por propostas paradas</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Envio da Formalização do Credenciamento Pelo WhatsApp</td>
+<td>Piloto de integração via STS/Itaú</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Validação do Domicílio Bancário no canal</td>
+<td>Redução de suspensão bancária de clientes</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Credenciamento Pessoa Física</td>
+<td>Jornada unificada com Ipricing</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Evolução do Credenciamento no Plano Padrão</td>
+<td>Entregas em D0</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Abertura de Conta Corrente PJ pelo Cockpit Rede</td>
+<td>Escala para maioria dos executivos</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>Onboarding do novo modelo de Comunidade Integrada e Build&amp;Run</td>
+<td>Rotina unificada dev + sustentação</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>Discovery para mudança de IPs do Sybase ASE Corp</td>
+<td>Mapeamento de risco de PCI Compliance</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>Sustentação Core Rede (GE1, WF1, WM1, etc.)</td>
+<td>Redução de abends da malha batch</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>Revisão orçamentária de fornecedores (MGI Tech &amp; Maplink)</td>
+<td>Economia de ~500k</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>Revisão orçamentária e CINVEST do novo contrato Salesforce</td>
+<td><strong>Economia de +3MM</strong></td>
+</tr>
+<tr>
+<td>2019</td>
+<td>Sustentação Credenciamento Rede (Força Vendas + WF1)</td>
+<td>Redução de problemas críticos comerciais</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>Sustentação AFVC - Força Vendas</td>
+<td>Menor tempo de atendimento de incidentes</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>Sustentação AFVC - Força Campo</td>
+<td>Redução de problemas críticos logísticos</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>Transição do Time de Sustentação</td>
+<td>Estabilidade do ambiente Salesforce</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Fonte única da verdade:</strong> o conteúdo completo (Situação/Tarefas/Ações/Resultados/Tecnologias) de cada um dos 19 itens já está integralmente disponível em <code>star.json</code> e em <code>cv.json → Projetos</code>; a implementação deve consumir esses arquivos diretamente (via build-time include ou script de geração), <strong>não retranscrever manualmente</strong> para evitar divergência de fonte.</p>
+</blockquote>
+<p><strong>Experiências anteriores (Serasa Experian, Indra, Sysgen, Telefônica):</strong> cada uma em <code>&lt;article&gt;</code> mais simples — cargo, empresa, período, local, descrição (<code>Descricao</code>), competências-chave (<code>Competencias</code>) como <code>Pill</code>s, e (quando existir) lista de <code>Principais_Projetos</code> (caso de Indra). Sem cards STAR expansíveis aqui — são &quot;cargo + período + stack + descrição resumida&quot;, conforme diretriz original.</p>
+<h3>9.4 <code>&lt;section id=&quot;education&quot;&gt;</code> — Formação e Certificações</h3>
+<p><strong>9.4.1 Formação acadêmica</strong> (<code>Formacao_Academica</code>, 3 registros): lista cronológica inversa com instituição, curso, período. O registro de Pós-graduação (Mackenzie, 2019–2021) inclui número do diploma digital e deve ter botão &quot;Verificar Diploma&quot; apontando para:
+<code>https://www.e-diploma.com.br/Verificar/Autenticidade.aspx?id=565267%7CEED4D2846DDD86592422CC674AB449%7C11489</code></p>
+<p><strong>9.4.2 Certificações em destaque</strong> (cards próprios, grid 3 colunas desktop): priorizar as certificações mais estratégicas para a vaga-alvo (Arquitetura AWS, SRE, Datadog, Pós-graduação em Data Science), cada uma com botão &quot;Ver Credencial&quot; apontando para o link real de <code>Verificacao</code>. Exemplos obrigatórios de card em destaque:</p>
+<ul>
+<li><strong>AWS Certified Cloud Practitioner</strong> (jan/2022) → <code>https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951?source=linked_in_profile</code></li>
+<li><strong>SRE Essentials</strong> — Itcerts (mar/2021) → <code>https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458</code></li>
+<li><strong>Datadog Power User</strong> — Appoena (fev/2025) → <code>https://badges.com.br/share/465eef0a1c14fc6a0383f3a805d294d0.php?a=7683</code></li>
+<li><strong>Arquitetura de Soluções</strong> — Itaú Unibanco (set/2024) → <code>https://www.credly.com/badges/92fc3afc-6e11-4433-9a44-8dc5f6215dd0</code></li>
+</ul>
+<p><strong>9.4.3 Lista completa e agrupada de certificações (todas as 26, na íntegra):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Certificação</th>
+<th>Instituição</th>
+<th>Link de verificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set/2026</td>
+<td>MCP Developer Blueprint</td>
+<td>O'Reilly Media, Inc.</td>
+<td><a href="https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8">https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8</a></td>
+</tr>
+<tr>
+<td>out/2025</td>
+<td>GitHub Copilot Guide</td>
+<td>O'Reilly Media, Inc.</td>
+<td><a href="https://www.credly.com/badges/116915b5-f94e-4d73-8e5f-9793766be71c">https://www.credly.com/badges/116915b5-f94e-4d73-8e5f-9793766be71c</a></td>
+</tr>
+<tr>
+<td>out/2025</td>
+<td>AI Agentic Design Patterns</td>
+<td>O'Reilly Media, Inc.</td>
+<td><a href="https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07">https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07</a></td>
+</tr>
+<tr>
+<td>out/2025</td>
+<td>AI with Knowledge Graphs</td>
+<td>O'Reilly Media, Inc.</td>
+<td><a href="https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7">https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7</a></td>
+</tr>
+<tr>
+<td>out/2025</td>
+<td>Building Intelligent AI Agents</td>
+<td>O'Reilly Media, Inc.</td>
+<td><a href="https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259">https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259</a></td>
+</tr>
+<tr>
+<td>out/2025</td>
+<td>AI Agents with LangGraph</td>
+<td>O'Reilly Media, Inc.</td>
+<td><a href="https://www.credly.com/badges/26427ba5-8744-4540-ab80-345844ea80c0">https://www.credly.com/badges/26427ba5-8744-4540-ab80-345844ea80c0</a></td>
+</tr>
+<tr>
+<td>set/2025</td>
+<td>GenAI for Leaders</td>
+<td>O'Reilly Media, Inc.</td>
+<td><a href="https://www.credly.com/badges/8122b027-8d0f-49de-b264-1a75491cbe0c">https://www.credly.com/badges/8122b027-8d0f-49de-b264-1a75491cbe0c</a></td>
+</tr>
+<tr>
+<td>abr/2025</td>
+<td>AI for Leaders</td>
+<td>StartSe University</td>
+<td><a href="https://lms.startse.com/certificado/v2/678fc9c0f8158077f9db505c?studentId=5e337f0a99763dac88d37e79">https://lms.startse.com/certificado/v2/678fc9c0f8158077f9db505c?studentId=5e337f0a99763dac88d37e79</a></td>
+</tr>
+<tr>
+<td>fev/2025</td>
+<td>Datadog Power User</td>
+<td>Appoena</td>
+<td><a href="https://badges.com.br/share/465eef0a1c14fc6a0383f3a805d294d0.php?a=7683">https://badges.com.br/share/465eef0a1c14fc6a0383f3a805d294d0.php?a=7683</a></td>
+</tr>
+<tr>
+<td>out/2024</td>
+<td>Troubleshooting com Datadog</td>
+<td>Appoena</td>
+<td><a href="https://badges.com.br/share/2e2541209f996bea07bc41521d86e4a3.php?a=7527">https://badges.com.br/share/2e2541209f996bea07bc41521d86e4a3.php?a=7527</a></td>
+</tr>
+<tr>
+<td>26/set/2024</td>
+<td>Arquitetura de Soluções</td>
+<td>Itaú Unibanco</td>
+<td><a href="https://www.credly.com/badges/92fc3afc-6e11-4433-9a44-8dc5f6215dd0">https://www.credly.com/badges/92fc3afc-6e11-4433-9a44-8dc5f6215dd0</a></td>
+</tr>
+<tr>
+<td>31/jul/2024</td>
+<td>Practitioner – Leadership D&amp;A</td>
+<td>Itaú Unibanco</td>
+<td><a href="https://www.credly.com/badges/a8dad682-bc42-4978-b085-ae720cbd8667">https://www.credly.com/badges/a8dad682-bc42-4978-b085-ae720cbd8667</a></td>
+</tr>
+<tr>
+<td>27/jun/2024</td>
+<td>Practitioner – Generative AI</td>
+<td>Itaú Unibanco</td>
+<td><a href="https://www.credly.com/badges/231cd871-ab40-4c65-8834-e9ca77792f56">https://www.credly.com/badges/231cd871-ab40-4c65-8834-e9ca77792f56</a></td>
+</tr>
+<tr>
+<td>29/mai/2024</td>
+<td>Practitioner – D&amp;A Foundation</td>
+<td>Itaú Unibanco</td>
+<td><a href="https://www.credly.com/badges/1f596ad2-9834-45b7-99f0-298eddd56cb7">https://www.credly.com/badges/1f596ad2-9834-45b7-99f0-298eddd56cb7</a></td>
+</tr>
+<tr>
+<td>27/nov/2023</td>
+<td>Practitioner – D&amp;A Foundation</td>
+<td>Itaú Unibanco</td>
+<td><a href="http://badges.com.br/share/96939e18d6e0d41488339e14dc93d614.php?a=3694">http://badges.com.br/share/96939e18d6e0d41488339e14dc93d614.php?a=3694</a></td>
+</tr>
+<tr>
+<td>30/abr/2022</td>
+<td>Arquitetura de Soluções</td>
+<td>Itaú Unibanco</td>
+<td><a href="http://badges.com.br/share/113a264018cdb4367fce684877af45d1.php?a=2148">http://badges.com.br/share/113a264018cdb4367fce684877af45d1.php?a=2148</a></td>
+</tr>
+<tr>
+<td>jan/2022</td>
+<td>AWS Certified Cloud Practitioner</td>
+<td>Amazon Web Services (AWS)</td>
+<td><a href="https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951?source=linked_in_profile">https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951?source=linked_in_profile</a></td>
+</tr>
+<tr>
+<td>mar/2021</td>
+<td>SRE Essentials</td>
+<td>Itcerts</td>
+<td><a href="https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458">https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458</a></td>
+</tr>
+<tr>
+<td>mar/2021</td>
+<td>UX</td>
+<td>FIAP</td>
+<td><a href="https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=78eb0d83a5db0aadce891455e7d54dfb&amp;action=view">https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=78eb0d83a5db0aadce891455e7d54dfb&amp;action=view</a></td>
+</tr>
+<tr>
+<td>mar/2021</td>
+<td>Inteligência Artificial</td>
+<td>FIAP</td>
+<td><a href="https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=d49e69fc55f98e0ce7abeeabba01fe8f&amp;action=view">https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=d49e69fc55f98e0ce7abeeabba01fe8f&amp;action=view</a></td>
+</tr>
+<tr>
+<td>mar/2021</td>
+<td>Design Think</td>
+<td>FIAP</td>
+<td><a href="https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=5aeee13691392217120b14b94ffb905b&amp;action=view">https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=5aeee13691392217120b14b94ffb905b&amp;action=view</a></td>
+</tr>
+<tr>
+<td>2018–2024</td>
+<td>Formação e Capacitação Alura</td>
+<td>Alura</td>
+<td><a href="https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0">https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0</a></td>
+</tr>
+<tr>
+<td>2018</td>
+<td>Formação Salesforce Trailhead</td>
+<td>Salesforce</td>
+<td><a href="https://www.salesforce.com/trailblazer/issei">https://www.salesforce.com/trailblazer/issei</a></td>
+</tr>
+<tr>
+<td>dez/2017</td>
+<td>Workshop Salesforce para Desenvolvedores</td>
+<td>Salesforce</td>
+<td><a href="https://cursos.alura.com.br/certificate/17c88e93-13d1-4ac2-826c-7254c53a93a0">https://cursos.alura.com.br/certificate/17c88e93-13d1-4ac2-826c-7254c53a93a0</a></td>
+</tr>
+<tr>
+<td>abr/2017</td>
+<td>AWS Profissional Technical</td>
+<td>Amazon Web Services (AWS)</td>
+<td><em>sem link — não exibir botão</em></td>
+</tr>
+<tr>
+<td>abr/2016</td>
+<td>Kony Certified Developer</td>
+<td>Kony, Inc.</td>
+<td><em>sem link — não exibir botão</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>9.4.4 Trilhas Alura agrupadas</strong> (<code>Cursos_Alura</code>, 6 categorias): cada categoria (<code>Desenvolvimento de Software e Programação</code>, <code>Data Science e Análise de Dados</code>, <code>Gestão e Metodologias Ágeis</code>, <code>Liderança e Habilidades Interpessoais</code>, <code>UX e Design</code>, <code>Infraestrutura e Cloud</code>) é um <code>&lt;details&gt;</code> com o nome da categoria no <code>&lt;summary&gt;</code> e a lista de cursos (como <code>Pill</code>s dentro de um <code>&lt;ul&gt;</code>) no corpo — mesma regra da seção 4.1: sem JS, conteúdo sempre presente no DOM. Alternativa mais compacta (se preferível visualmente): manter todas as categorias sempre abertas em um grid de <code>Pill</code>s, sem accordion algum — ambas as opções atendem ao requisito de zero-JS; a escolha entre &quot;sempre visível&quot; e &quot;<code>&lt;details&gt;</code> colapsável&quot; é puramente estética. Incluir link único para o certificado geral Alura ao final do bloco.</p>
+<h3>9.5 <code>&lt;section id=&quot;recommendations&quot;&gt;</code> — Recomendações</h3>
+<p>Grid Masonry estático (padrão recomendado) ou lista com <code>scroll-snap</code> em CSS puro (ver regra 4 da seção 4.1 — sem JS de navegação) com os <strong>6 depoimentos completos</strong> de <code>Recomendacoes_Recebidas</code> — texto integral, sem corte/reticências (cortar recomendação real é falsificação de dado de terceiro). Todos os 6 depoimentos ficam no DOM desde o primeiro carregamento, independentemente de o layout visual ser grid ou faixa rolável. Cada card (<code>&lt;blockquote&gt;</code> semântico) contém:</p>
+<ul>
+<li>Citação completa (<code>Recomendacao</code>) em <code>&lt;blockquote&gt;</code> + <code>&lt;cite&gt;</code> para o autor.</li>
+<li>Nome do autor (<code>Autor</code>), cargo (<code>Cargo</code>), e contexto de relação (<code>Data_Trabalho</code>, ex.: &quot;supervisionava Maurício diretamente&quot; / &quot;trabalhou com Maurício na mesma equipe&quot;).</li>
+</ul>
+<p>Lista dos 6 registros a implementar: Mylena Mancilha, Saulo Oliveira, Vinicius Custodio, Paulo Soderi Noronha, Laercio Lamarca, Rogerio Cruz (dados completos disponíveis em <code>cv.json → Recomendacoes_Recebidas</code>, usar texto literal).</p>
+<h3>9.6 <code>&lt;footer&gt;</code></h3>
+<ul>
+<li>Navegação interna espelhando o menu do header.</li>
+<li>Copyright: <code>© {ano atual} Maurício Yokoyama Issei. Todos os direitos reservados.</code></li>
+<li>Nota de transparência para IA/ATS: <em>&quot;Os dados estruturados desta página (JSON-LD) refletem integralmente as informações públicas do currículo. Última atualização: {data de build}.&quot;</em></li>
+<li>Repetição dos links sociais (redundância proposital para robustez de crawler).</li>
+</ul>
+<hr>
+<h2>10. Acessibilidade (WCAG 2.1 AA)</h2>
+<ul>
+<li>Hierarquia de headings sem saltos (H1 único no hero → H2 por seção → H3 por card/artigo).</li>
+<li>Todo botão de expandir/colapsar usa <code>aria-expanded</code> + <code>aria-controls</code>.</li>
+<li>Todo link externo usa <code>rel=&quot;noopener noreferrer&quot;</code> + texto acessível indicando destino (não apenas &quot;clique aqui&quot;).</li>
+<li>Contraste mínimo AA em ambos os temas (ver seção 6.1).</li>
+<li>Carrossel de depoimentos deve ser navegável por teclado (<code>tabindex</code>, setas) e ter <code>aria-live=&quot;polite&quot;</code> se autoplay existir (recomenda-se <strong>não</strong> usar autoplay, para não prejudicar leitura por screen readers).</li>
+<li>Imagens (avatar) com <code>alt</code> descritivo.</li>
+<li>Foco visível (<code>focus-visible</code>) customizado com a cor <code>--accent-primary</code>.</li>
+<li><strong>Compatibilidade com tradução automática do navegador:</strong> por decorrência direta das regras da seção 4.1 (conteúdo sempre em texto real, sem Shadow DOM, sem fragmentação de frases via JS, uso de <code>&lt;details&gt;</code> nativo), a página deve poder ser traduzida integralmente pelas ferramentas embutidas do Chrome, Edge e Safari sem que nenhum trecho fique &quot;preso&quot; atrás de um clique em JS — inclusive o conteúdo interno dos cards STAR e dos accordions de Alura, mesmo fechados.</li>
+</ul>
+<hr>
+<h2>11. Requisitos Não Funcionais</h2>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Requisito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance</td>
+<td>Lighthouse Performance ≥ 90 (mobile); CLS &lt; 0.1; sem imagens não otimizadas</td>
+</tr>
+<tr>
+<td>Peso do arquivo</td>
+<td><code>index.html</code> autocontido deve permanecer abaixo de 500KB (excluindo CDN de Tailwind/fontes)</td>
+</tr>
+<tr>
+<td>SEO</td>
+<td>Lighthouse SEO = 100; JSON-LD validado sem erros no Rich Results Test do Google</td>
+</tr>
+<tr>
+<td>Acessibilidade</td>
+<td>Lighthouse Accessibility ≥ 95</td>
+</tr>
+<tr>
+<td>Responsividade</td>
+<td>Testado em 375px, 768px, 1024px, 1440px</td>
+</tr>
+<tr>
+<td>Robustez de conteúdo</td>
+<td>Nenhuma informação exclusiva de <code>cv.json</code>/<code>star.json</code> pode ficar de fora do DOM renderizado</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>12. Critérios de Aceite (Definition of Done)</h2>
+<ol>
+<li>Todas as 5 experiências profissionais de <code>Experiencia</code> estão presentes, na ordem cronológica inversa correta.</li>
+<li>Os 19 projetos STAR de <code>star.json</code>/<code>Projetos</code> estão todos implementados como cards, agrupados por ano, com Situação/Tarefa/Ação/Resultado completos e visíveis ao expandir.</li>
+<li>As 26 certificações estão listadas; todos os 24 links de <code>Verificacao</code> existentes apontam exatamente para as URLs de <code>cv.json</code> (nenhuma URL inventada ou alterada); os 2 certificados sem link não exibem botão de verificação quebrado.</li>
+<li>O diploma digital da Pós-graduação exibe o link de verificação correto (<code>e-diploma.com.br</code>).</li>
+<li>As 6 recomendações estão com texto literal e completo, sem cortes.</li>
+<li>O <code>JSON-LD</code> no <code>&lt;head&gt;</code> é um <code>@graph</code> válido contendo <code>Person</code>, <code>ProfilePage</code> e <code>ItemList</code>, e passa validação sem erros.</li>
+<li><code>&lt;html lang=&quot;pt-BR&quot;&gt;</code>, meta tags de SEO e Open Graph presentes conforme seção 7.</li>
+<li>Dark mode funcional e persistente, com contraste AA validado nos dois temas.</li>
+<li>Página navegável 100% via teclado; Lighthouse Accessibility ≥ 95.</li>
+<li>Nenhum dado presente na página existe fora de <code>cv.json</code>/<code>star.json</code> (checagem manual de &quot;não inventar fatos&quot;).</li>
+<li><strong>Com JavaScript completamente desabilitado no navegador</strong>, 100% do conteúdo textual (incluindo o corpo de cada <code>&lt;details&gt;</code> fechado — cards STAR e categorias Alura), todos os links (com seus <code>href</code> corretos) e o bloco <code>JSON-LD</code> permanecem presentes e corretos no HTML; apenas o toggle manual de tema e transições visuais podem deixar de responder.</li>
+<li>Inspeção do HTML entregue (via &quot;Exibir código-fonte&quot; ou <code>curl</code>) confirma <strong>ausência total</strong> de <code>fetch(...)</code>, <code>XMLHttpRequest</code>, ou qualquer chamada a <code>cv.json</code>/<code>star.json</code> em tempo de execução — todo o conteúdo já está transcrito como texto estático nas tags.</li>
+<li>Teste manual com a ferramenta de tradução nativa do Chrome (traduzir página para inglês/espanhol) confirma que <strong>todas as seções, incluindo o interior dos cards STAR e das categorias de cursos Alura, são traduzidas corretamente</strong>, sem trechos ignorados ou fragmentados em pedaços sem sentido.</li>
+<li>Nenhum elemento de conteúdo usa Shadow DOM; nenhuma frase do currículo é fragmentada em múltiplos elementos inline apenas para fins de animação.</li>
+</ol>
+<h3>12.4 Pendências / dados a confirmar antes da publicação</h3>
+<ul>
+<li><strong>Idiomas (<code>knowsLanguage</code>)</strong>: a diretriz original de geração sugere incluir Português/Inglês/Espanhol no JSON-LD, mas <strong>nenhum dos arquivos-fonte (<code>cv.json</code>, <code>star.json</code>, currículo em PDF/Markdown) contém informação sobre idiomas falados</strong>. Recomendação: <strong>não incluir</strong> a propriedade <code>knowsLanguage</code> além de <code>&quot;Portuguese&quot;</code> até que Maurício confirme os demais idiomas — incluir dado não verificado violaria a diretriz de &quot;não inventar fatos&quot;.</li>
+<li><strong>Foto/avatar</strong>: nenhum arquivo de imagem foi fornecido nesta rodada; o campo <code>image</code> do <code>Person</code> e o <code>og:image</code> ficam como placeholder até o recebimento do asset.</li>
+<li><strong>Faixas de &quot;+X anos&quot; por grupo de skill</strong> (seção 9.2): são inferências de apoio a SEO calculadas a partir das datas de <code>Experiencia</code>/<code>Formacao_Academica</code>; recomenda-se validação humana rápida antes de publicar como afirmação textual.</li>
+</ul>
+<hr>
+<h2>13. Anexo — Mapeamento de Arquivos-Fonte → Seções da UI</h2>
+<table>
+<thead>
+<tr>
+<th>Seção da UI</th>
+<th>Campo(s) de origem em <code>cv.json</code></th>
+<th>Campo(s) de origem em <code>star.json</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hero</td>
+<td><code>Nome</code>, <code>Titulo</code>, <code>ResumoHero</code>, <code>Contato.*</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sobre</td>
+<td><code>Resumo[]</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Skills-to-Tenure</td>
+<td><code>Habilidades{}</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Experiência (timeline)</td>
+<td><code>Experiencia[]</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Projetos STAR (Rede)</td>
+<td><code>Projetos[]</code> (espelha <code>star.json</code>)</td>
+<td>Estrutura por ano com <code>titulo/situacao/tarefas/acoes/resultados</code> (alguns anos com <code>sub_projetos[]</code>, ex.: 2019 &quot;Sustentação AFVC&quot;)</td>
+</tr>
+<tr>
+<td>Formação acadêmica</td>
+<td><code>Formacao_Academica[]</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Certificações</td>
+<td><code>Certificados[]</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Trilhas Alura</td>
+<td><code>Cursos_Alura{}</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Recomendações</td>
+<td><code>Recomendacoes_Recebidas[]</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observação de integridade de dados:</strong> em <code>star.json</code>, o ano de 2019 agrega o projeto &quot;Sustentação AFVC&quot; com dois <code>sub_projetos</code> (Força Campo e Força Vendas); em <code>cv.json → Projetos</code> esses mesmos dados aparecem como dois registros de nível superior (&quot;Sustentação AFVC - Força Vendas&quot; e &quot;Sustentação AFVC - Força Campo&quot;). A implementação deve tratar <code>cv.json → Projetos</code> como a fonte já normalizada (19 cards de nível único) e usar <code>star.json</code> apenas como referência cruzada de validação, evitando duplicar os sub-projetos de 2019.</p>
+<hr>
+<p><em>Fim da especificação SDD. Próximo passo sugerido: aprovação desta spec por Maurício Issei (em especial a pendência de idiomas) antes do início da implementação do <code>index.html</code>.</em></p>
+
+</body></html>

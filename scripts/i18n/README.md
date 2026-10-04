@@ -76,7 +76,7 @@ arquivo inteiro e o diff entre PT-BR e EN deixaria de ser legível.
 `/en/proposta`; `/aeo.css` e `/favicon.svg` não viram nada, porque existe um
 único arquivo desses servindo as duas línguas.
 
-**Chave de JSON nunca é traduzida.** `src/js/cv-renderer.js` lê `dado.Resumo`;
+**Chave de JSON nunca é traduzida.** `scripts/gen-portfolio.mjs` lê `cv.Resumo`;
 renomear para `Summary` quebraria o renderizador nas duas línguas.
 
 **A estrutura não depende do comportamento do modelo.** Trechos opacos viram

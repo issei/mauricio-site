@@ -3,7 +3,13 @@
 //  - buildBody(): seção visível "Em síntese" + FAQ (quando a página tem tldr/faq)
 //  - buildMd():   companion Markdown limpo para ingestão por LLMs
 // Tudo determinístico → reexecutável. JSON-LD via JSON.stringify (escapado).
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { SITE, PERSON, PERSON_PROFILE, WEBSITE } from './identity.mjs';
+import { mainToMarkdown } from './html-to-md.mjs';
+
+const SRC_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../src');
 
 const PAGE_SUBTYPES = new Set(['CollectionPage', 'AboutPage', 'ProfilePage', 'WebPage']);
 
@@ -135,6 +141,8 @@ export function buildGraph(p) {
       })),
     });
   }
+  // Nós prontos específicos da página (ex.: ItemList de certificações da home).
+  if (p.extraGraph?.length) graph.push(...p.extraGraph);
   if (p.video) {
     graph.push({
       '@type': 'VideoObject', '@id': `${url}#video`,
@@ -267,6 +275,15 @@ export function buildMd(p) {
       L.push(s.body);
       L.push('');
     }
+  }
+  // A página inteira em Markdown, derivada do <main> (nunca digitada): ver html-to-md.mjs.
+  if (p.mdFromMain) {
+    const page = fs.readFileSync(path.join(SRC_DIR, `${p.slug}.html`), 'utf8');
+    L.push('## Conteúdo completo da página');
+    L.push('');
+    // Dois níveis abaixo de "## Conteúdo completo": h1 → ###, h2 → ####.
+    L.push(mainToMarkdown(page).replace(/^(#{1,4}) /gm, '##$1 '));
+    L.push('');
   }
   if (p.faq?.length) {
     L.push('## Perguntas frequentes');
