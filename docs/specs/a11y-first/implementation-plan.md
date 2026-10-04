@@ -44,7 +44,8 @@ Responsivo ✔ 320 px e 200 % de texto · Erro ✔ usuário corrige e continua �
 - **Testes:** sweep (color-contrast = 0 nas 11 páginas); `tests/portfolio.tokens.test.mjs` continua verde.
 - **Aceite:** baseline de `color-contrast` cai a 0 e é regravado.
 
-### Fase 3 — Consentimento (F-01, F-10) 🔴 → T7 em **todas** as páginas
+### Fase 3 — Consentimento (F-01, F-10, F-17) 🔴 → T7 nas 5 páginas que carregam o componente
+> **Entregue 2026-10-03** (branch `feat/a11y-first-fase3`). `<dialog>` + `showModal()`; categorias viram checkbox nativo (a escolha tem "Salvar" → não é switch, `guide-form-controls`); região viva única; banner reserva a própria altura (2.4.11); botões 44 px com paridade; `<eco-nav>` sobe acima do banner (F-17, **achado novo**); botão fixo some enquanto há banner. 11 testes × 3 navegadores; contra o código antigo, 10 de 11 falham. Baseline 81 → 79 (`target-size` em `index`/`curriculo`). Aberto: F-18 (texto em PT nos espelhos EN) e validação com leitor de tela real (humano).
 - **Arquivos:** `src/js/cookie-consent.js` (+ strings EN se existirem); novo `tests/a11y/consent.spec.js`.
 - **Mudanças:** `<dialog>` + `showModal()`; foco entra, Esc fecha, foco **retorna** ao gatilho; um só listener; toggles com um mecanismo de estado e nome claro; botões ≥ 44 px com paridade aceitar/recusar; `role=status` ao salvar.
 - **Dependências:** D-08, D-09; **decisão humana** sobre o texto dos toggles.
