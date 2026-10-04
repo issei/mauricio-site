@@ -171,7 +171,7 @@ function hero() {
     </dl>
     <div class="pf-cta">
       <a class="pf-btn" href="#experience">Ver experiência</a>
-      <a class="pf-btn pf-btn--ghost pf-btn--yt" href="${esc(cv.Contato.youtube)}" ${ext(`Canal ${YT_HANDLE} no YouTube`)}>${icon('youtube')} ${esc(YT_HANDLE)}</a>
+      <a class="pf-btn pf-btn--ghost pf-btn--yt" href="${esc(cv.Contato.youtube)}" ${ext(`Canal ${YT_HANDLE} no YouTube`)}>${icon('youtube')} <span translate="no">${esc(YT_HANDLE)}</span></a>
     </div>
     ${socials()}
   </div>
@@ -338,7 +338,7 @@ ${Object.entries(cv.Cursos_Alura).map(([k, list]) => `  <details class="pf-alura
     ${pills(list)}
   </details>`).join('\n')}
 </div>
-${alura ? `<p class="pf-alura-all"><a href="${esc(alura.Verificacao)}" ${ext('Certificado geral Alura')}>Ver certificado geral Alura</a></p>` : ''}`;
+${alura ? `<p class="pf-alura-all"><a href="${esc(alura.Verificacao)}" target="_blank" rel="noopener noreferrer">Ver certificado geral Alura<span class="pf-sr"> (abre em nova aba)</span></a></p>` : ''}`;
 }
 /** As chaves de Cursos_Alura vêm sem acento (são identificadores); só a acentuação é restaurada. */
 const ALURA_LABEL = {
@@ -494,7 +494,7 @@ const CV = {
             <p class="text-blue-300 text-md mb-2">${esc(edu.Instituicao)}</p>
             <p class="text-gray-400 text-sm">${esc(edu.Periodo || edu.Ano)}</p>
             ${edu.Diploma_Digital_Codigo ? `<p class="text-gray-400 text-xs mt-2">Código do Diploma: <span class="font-mono">${esc(edu.Diploma_Digital_Codigo)}</span></p>` : ''}
-            ${edu.Verificacao ? `<a href="${esc(edu.Verificacao)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:underline text-sm mt-3" aria-label="Verificar diploma de ${esc(edu.Curso)} — ${esc(edu.Instituicao)} (abre em nova aba)">Verificar diploma <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>` : ''}
+            ${edu.Verificacao ? `<a href="${esc(edu.Verificacao)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:underline text-sm mt-3" aria-label="Verificar diploma: ${esc(edu.Curso)} — ${esc(edu.Instituicao)} (abre em nova aba)">Verificar diploma <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>` : ''}
         </div>`).join('\n'),
 
   'certifications-container': cv.Certificados.map((cert) => `<div class="bg-gray-700 p-4 rounded-lg shadow-md flex flex-col justify-between h-full">
