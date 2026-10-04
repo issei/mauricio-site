@@ -205,8 +205,14 @@ function announce(message) {
     setTimeout(() => { live.textContent = message; }, 50);
 }
 
+// O texto do consentimento só existe em português (F-18): em página `lang="en"` marca o trecho (WCAG 3.1.2).
+function ptLang(el) {
+    if (!/^pt/i.test(document.documentElement.lang)) el.lang = 'pt-BR';
+    return el;
+}
+
 function buildBanner(onAccept, onReject, onCustomize) {
-    const div = document.createElement('div');
+    const div = ptLang(document.createElement('div'));
     div.className = 'cc-banner';
     div.setAttribute('role', 'region');
     div.setAttribute('aria-label', 'Aviso de cookies');
@@ -231,7 +237,7 @@ function buildBanner(onAccept, onReject, onCustomize) {
 }
 
 function buildModal(initial, onSave) {
-    const dialog = document.createElement('dialog');
+    const dialog = ptLang(document.createElement('dialog'));
     dialog.className = 'cc-dialog';
     dialog.setAttribute('aria-labelledby', 'cc-modal-title');
 
@@ -276,7 +282,7 @@ function buildModal(initial, onSave) {
 }
 
 function buildFab(onClick) {
-    const btn = document.createElement('button');
+    const btn = ptLang(document.createElement('button'));
     btn.type = 'button';
     btn.className = 'cc-fab';
     btn.setAttribute('aria-label', 'Preferências de cookies');
@@ -295,7 +301,7 @@ function init() {
     let bannerWatch = null;
     let bodyPaddingBefore = '';
 
-    const live = document.createElement('div');
+    const live = ptLang(document.createElement('div'));
     live.id = 'cc-live';
     live.className = 'cc-sr-only';
     live.setAttribute('role', 'status');
@@ -335,19 +341,34 @@ function init() {
         bannerWatch = new ResizeObserver(() => {
             const h = banner.offsetHeight;
             document.body.style.paddingBottom = basePadding + h + 'px';
+            // Tab em elemento já visível não rola: sem isto o foco fica sob a faixa fixa (WCAG 2.4.11).
+            document.documentElement.style.scrollPaddingBottom = h + 'px';
             document.documentElement.style.setProperty('--cc-banner-h', h + 'px');
         });
         bannerWatch.observe(banner);
+        document.addEventListener('focusin', keepFocusAboveBanner);
         announce('Aviso de cookies. Você pode aceitar, recusar ou personalizar.');
+    }
+
+    // `scroll-padding-bottom` não basta: o Firefox não rola para um foco já parcialmente visível. Rola pela sobreposição.
+    function keepFocusAboveBanner(e) {
+        const el = e.target;
+        if (!banner || !(el instanceof Element) || banner.contains(el)) return;
+        const overlap = el.getBoundingClientRect().bottom - banner.getBoundingClientRect().top;
+        if (overlap > 0) window.scrollBy(0, overlap + 8);
     }
 
     function hideBanner() {
         if (!banner) return;
         bannerWatch.disconnect();
+        document.removeEventListener('focusin', keepFocusAboveBanner);
         document.body.style.paddingBottom = bodyPaddingBefore;
         document.documentElement.style.removeProperty('--cc-banner-h');
+        document.documentElement.style.removeProperty('scroll-padding-bottom');
         fab.hidden = false;
+        const tinhaFoco = banner.contains(document.activeElement);
         banner.remove();
+        if (tinhaFoco) fab.focus(); // o botão clicado some: sem isto o foco cai no <body>
         banner = null;
     }
 

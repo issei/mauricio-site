@@ -694,7 +694,7 @@ body.eai-body {
   font-size: 0.95rem;
 }
 .eai-chap__body p { margin: 0 0 0.6rem; }
-.eai-chap__link { color: var(--eai-accent); text-decoration: none; font-weight: 600; }
+.eai-chap__link { color: var(--eai-accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; min-height: 24px; } /* alvo ≥ 24px (WCAG 2.5.8) */
 .eai-chap__link:hover { text-decoration: underline; }
 @media (max-width: 560px) {
   .eai-chap__meta { display: none; }

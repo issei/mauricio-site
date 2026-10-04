@@ -57,5 +57,6 @@ export function renderEvidencePanel(board, { selectable = false, requiredCategor
   }
 }
 
-export function openEvidencePanel() { document.getElementById('evidence-panel')?.classList.remove('translate-x-full'); }
-export function closeEvidencePanel() { document.getElementById('evidence-panel')?.classList.add('translate-x-full'); }
+// `inert` tira o painel fechado (fora da tela) da ordem de Tab e da árvore de acessibilidade (WCAG 2.4.3/2.4.7)
+export function openEvidencePanel() { const p = document.getElementById('evidence-panel'); if (p) { p.inert = false; p.classList.remove('translate-x-full'); } }
+export function closeEvidencePanel() { const p = document.getElementById('evidence-panel'); if (p) { p.inert = true; p.classList.add('translate-x-full'); } }

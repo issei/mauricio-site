@@ -82,6 +82,9 @@ steps.push(['testes (playwright + axe)', pwCmd]);
 // Depende de dist/ — só no gate completo.
 if (!skipBuild) steps.push(['a11y: varredura WCAG 2.2 (catraca)', 'node scripts/a11y-sweep.mjs']);
 
+// Gate estático do A11Y.md (verify-a11y.py) com teto de erros: só pode descer. Não depende de dist/.
+steps.push(['a11y: gate estático (verify-a11y.py, teto)', 'node scripts/a11y-static.mjs']);
+
 // Orçamento de performance: só no gate completo. Depende de dist/, que só
 // existe após o build — em --no-build o artefato pode estar velho ou ausente.
 if (!skipBuild) steps.push(['orçamento de performance', 'node scripts/perf-budget.mjs']);

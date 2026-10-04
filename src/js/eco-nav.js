@@ -184,6 +184,8 @@ class EcoNav extends HTMLElement {
     if (this._mounted) return;
     this._mounted = true;
     this._open = false;
+    // Rótulos só em português: em página `lang="en"` marca o trecho (WCAG 3.1.2).
+    if (!/^pt/i.test(document.documentElement.lang)) this.lang = 'pt-BR';
     this.slug = currentSlug();
     this.curPillar = pillarOf(this.slug);
     this.attachShadow({ mode: 'open' });

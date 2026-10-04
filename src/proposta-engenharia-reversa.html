@@ -1759,8 +1759,10 @@
 
             // Animation loop
             let frameCount = 0;
+            // sem movimento reduzido: laço contínuo; com ele: um único quadro estático (WCAG 2.2.2/2.3.3)
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             function animate() {
-                requestAnimationFrame(animate);
+                if (!reduceMotion) requestAnimationFrame(animate);
                 frameCount++;
 
                 // Update particle positions
@@ -1779,7 +1781,7 @@
                 particleGeometry.attributes.position.needsUpdate = true;
 
                 // Update connections every 3 frames for performance
-                if (frameCount % 3 === 0) {
+                if (frameCount % 3 === 0 || reduceMotion) {
                     updateConnections();
                 }
 

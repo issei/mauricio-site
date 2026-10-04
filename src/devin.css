@@ -2370,6 +2370,8 @@ html.lenis body {
   transition: opacity 0.3s ease;
 }
 
+/* o link é revelado por hover; quem navega por teclado precisa vê-lo ao focar (WCAG 2.4.7) */
+.ep09-encerramento__cta:focus-visible,
 .ep09-encerramento__cta:hover {
   opacity: 1 !important;
   text-decoration: underline;
