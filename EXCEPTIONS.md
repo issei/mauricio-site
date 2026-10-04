@@ -38,13 +38,12 @@ Isto é um fato registrado, não uma defesa: se um visitante chegar nelas, as ba
 - **WCAG:** 2.4.1, 1.3.1; **verificar** 2.2.2/1.4.2 (`autoplay` no markup, achado `verify-a11y: media-autoplay`) · **Severidade:** 🟠 High
 - **Quebrado:** mídia que inicia sozinha sem mecanismo de pausa comprovado; sem landmark. **Contorno:** nenhum verificado. **Resolução:** `muted` + controle de pausa; `<main>` + skip link.
 
-> **Atualização Fase 5:** a catraca passou a medir `motion:reduce`. `admin` e `admin-editor` (6 animações infinitas cada) e `exemplopdi` (1) ignoram `prefers-reduced-motion` — mesmo escopo e prazo das exceções abaixo; `test-github` e `exemplopdi` também seguem com rolagem horizontal a 320 px.
+> **Atualização Fase 5 (revista na Fase 7):** a catraca passou a medir `motion:reduce` e conta `admin` e `admin-editor` (8 animações em execução cada) e `exemplopdi` (1) após `prefers-reduced-motion`; o auditor independente mediu 0 *animações CSS infinitas* nas mesmas páginas. As medições divergem porque contam coisas diferentes (a catraca inclui transições longas de utilitários do Tailwind CDN). Vale a contagem mais severa até a página ser corrigida. `test-github` e `exemplopdi` também seguem com rolagem horizontal a 320 px.
 
 ### EXC-006 — `src/exemplopdi.html`
 - **WCAG:** 1.4.3 (2 nós `#6a7282` sobre `#0d1117` = 3,91:1), 1.4.10 (rolagem horizontal a 320 px, 461 px de largura), 2.4.1 · **Severidade:** 🟠 High
 - **Contorno:** conteúdo de exemplo/demonstração, não proposta. **Resolução:** token muted `#99a1af` (já aprovado) + reflow.
 
-### EXC-007 — `aria-soup` em `src/life.html`, `src/proposta-engenharia-reversa.html`, `src/engenharia-agentes-ia.html`
-- **WCAG:** 4.1.2 (**não é violação de SC**; é anti-padrão do A11Y.md §6) · **Severidade:** 🔵 Low
-- **Fato:** `role="main"` em `<main>`, `role="navigation"` em `<nav>`, `role="list"` em `<ul>/<ol>`. Os `role="list"` costumam ser deliberados (Safari/VoiceOver remove a semântica de lista com `list-style:none`) — **não confirmado no código**; `main`/`navigation` são redundantes puros.
-- **Resolução:** manter `role="list"` se confirmada a intenção (registrar em `A11Y-DECISIONS.md`); remover os outros dois.
+### EXC-007 — `aria-soup` — **ENCERRADA (Fase 7)**
+- `role="main"`/`role="navigation"` redundantes foram removidos (último caso: `src/life.html`, `<nav aria-label="Controles táteis">`).
+- Os `role="list"` em `engenharia-agentes-ia` são deliberados (Safari/VoiceOver remove a semântica de lista com `list-style:none`; o auditor mediu `list-style-type:none` em 7 das 8 listas): registrados em `A11Y-DECISIONS.md`, não são desvio. O `verify-a11y.py` os reporta como erro: falso positivo conhecido.

@@ -444,7 +444,7 @@
       </nav>
 
       <!-- Mobile toggle -->
-      <button @click="open = !open"
+      <button @click="open = !open" aria-label="Abrir menu" :aria-expanded="open"
         class="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 hover:bg-white/5">
         <svg x-show="!open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 6h16M4 12h16M4 18h16" />

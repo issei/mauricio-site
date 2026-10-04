@@ -28,3 +28,12 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Perfil de conformidade** → WCAG 2.2 AA, Compliance Profile **Standard**; as exceções localizadas de 7:1 (`apresentacao`, ADR-ap-001) permanecem. *(2026-10-03)*
 - **Integração do protocolo** → cópia versionada em `docs/a11y/` com SHA fixado e carga preguiçosa; sem `@import` no `AGENTS.md` (41 KB entraria em toda sessão). *(2026-10-03)*
 - **Páginas utilitárias** → só `boutique-empresarial-showcase` é corrigida; as demais seguem em `EXCEPTIONS.md` com a catraca impedindo piora. *(2026-10-03)*
+
+## `role="list"` em `<ul>/<ol>` com `list-style:none` (decidido na Fase 7)
+- **Decisão:** manter. Safari/VoiceOver deixa de anunciar "lista, N itens" quando `list-style:none`; o `role="list"` explícito restaura. É o único uso de `role` redundante aceito; `role="main"`/`"navigation"` em landmark nativo continuam proibidos.
+- **Onde:** `engenharia-agentes-ia` (8 listas). **Consequência:** `verify-a11y.py` reporta `aria-soup` (16 ocorrências com o espelho EN): falso positivo conhecido, declarado no `REPORT.md`.
+- **Evidência:** auditor independente mediu `list-style-type: none` (Fase 7). Comportamento em VoiceOver real: **não verificado**.
+
+## Banner de cookies e foco (Fase 7)
+- A faixa fixa reserva altura no fim da página (`padding-bottom`) **e** `scroll-padding-bottom` (senão o Tab em elemento já visível o deixa sob a faixa). Ao fechar a faixa pelo teclado o foco vai ao botão de preferências.
+- Texto do consentimento só em português (F-18): em páginas `lang="en"` os elementos levam `lang="pt-BR"` (SC 3.1.2) até a tradução jurídica existir. O mesmo vale para `<eco-nav>`.
