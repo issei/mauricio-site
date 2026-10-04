@@ -2594,8 +2594,15 @@ html.lenis body {
   pointer-events: none;
 }
 
-.devin-toc__item:hover .devin-toc__label {
-  opacity: 1;
+.devin-toc__item:hover .devin-toc__label,
+.devin-toc__item:focus-visible .devin-toc__label {
+  opacity: 1; /* por teclado o rótulo também aparece: o ponto de 6px sozinho não diz onde o foco está */
+}
+
+.devin-toc__item:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 @media (max-width: 1199px) {

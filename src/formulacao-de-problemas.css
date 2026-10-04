@@ -583,3 +583,6 @@ details.fp-details > summary::marker { color: var(--fp-muted); }
  */
 .fp-body main a:not([class]),
 .fp-body footer a:not([class]) { text-decoration: underline; text-underline-offset: 2px; }
+
+/* idem: <summary> em contêiner com overflow:hidden tem o anel recortado (WCAG 2.4.7) */
+.fp-body details > summary:focus-visible { outline-offset: -4px; }

@@ -15,7 +15,7 @@ export function renderBreadcrumb(currentChapter, doneSet) {
   if (!nav) return;
   nav.innerHTML = CHAPTERS.map((c) => {
     const state = doneSet.has(c.n) ? '✓' : c.n === currentChapter ? '●' : '○';
-    const cls = doneSet.has(c.n) ? 'text-green-400' : c.n === currentChapter ? 'text-blue-400' : 'text-gray-600';
+    const cls = doneSet.has(c.n) ? 'text-green-400' : c.n === currentChapter ? 'text-blue-400' : 'text-gray-400';
     return `<span class="${cls}" title="Capítulo ${c.n}">${state}</span>`;
   }).join('');
 }

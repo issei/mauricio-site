@@ -20,6 +20,11 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Bloco que rola** → `src/js/a11y-scroll-regions.js` dá `tabindex=0` + `role=region` + `aria-label` só quando o conteúdo de fato rola; tabela larga vai dentro de `overflow-x-auto`. *(2026-10-03)*
 - **Movimento reduzido** → bloco `@media (prefers-reduced-motion: reduce)` com `animation-duration:.01ms; iteration-count:1; transition-duration:.01ms` em toda página que anima (snippet inline `<style id=a11y-motion>`). *(2026-10-03)*
 - **Modal sem `<dialog>`** (currículo) → botão de fechar nativo, resto da página `inert` enquanto aberto, foco devolvido ao gatilho. *(2026-10-03)*
+- **Foco** → toda página recebe `:where(a[href],button,summary,input,select,textarea,[tabindex]):focus-visible{outline:2px solid #58a6ff;outline-offset:2px}` do plugin Vite `a11y-focus-base` (especificidade zero: o estilo da página manda); `summary` usa `outline-offset:-4px` (contêiner `overflow:hidden` recorta o anel). Nunca confiar no anel padrão do navegador em fundo escuro. *(2026-10-03, Fase 6)*
+- **Tabs** → `enhanceTablist()` de `src/js/a11y-tabs.js`: tabindex móvel, ←/→ (↑/↓ se vertical), Home/End, ativação automática, `aria-controls` + `role=tabpanel` + `aria-labelledby`. Quem seleciona é a página (`aria-selected`). *(2026-10-03)*
+- **Opções de pergunta (quiz)** → `role=group` nomeado pelo enunciado; a escolhida leva `aria-pressed`; explicação em `aria-live=polite`. **Resultado que muda sob controle** (calibrador) → `role=status`. *(2026-10-03)*
+- **Elemento fixo que cobre o foco** (`<eco-nav>`) → sai da frente (`data-away`) quando o foco de outro elemento cai embaixo dele e volta ao receber foco. *(2026-10-03)*
+- **Tradutor** → segmento cuja tradução volta vazia mantém o texto de origem (um botão em PT é melhor que um botão sem nome). *(2026-10-03)*
 - **Perfil de conformidade** → WCAG 2.2 AA, Compliance Profile **Standard**; as exceções localizadas de 7:1 (`apresentacao`, ADR-ap-001) permanecem. *(2026-10-03)*
 - **Integração do protocolo** → cópia versionada em `docs/a11y/` com SHA fixado e carga preguiçosa; sem `@import` no `AGENTS.md` (41 KB entraria em toda sessão). *(2026-10-03)*
 - **Páginas utilitárias** → só `boutique-empresarial-showcase` é corrigida; as demais seguem em `EXCEPTIONS.md` com a catraca impedindo piora. *(2026-10-03)*
