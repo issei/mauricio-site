@@ -198,7 +198,7 @@ class EcoNav extends HTMLElement {
     const acc = DATA.pillars.map((p) => this.pillarMarkup(p)).join('');
     return `
       <button class="fab" type="button" aria-expanded="false" aria-controls="eco-panel"
-              aria-label="Abrir o mapa do ecossistema do site">
+              aria-label="Ecossistema ${pillLabel}: abrir o mapa do site">
         <span class="fab__icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round">
