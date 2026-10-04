@@ -247,7 +247,7 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 .pf-grid {
   --lw: 4px;
   position: relative; display: grid;
-  grid-template-columns: 2.6rem repeat(7, minmax(1.5rem, 1fr)) 6rem;
+  grid-template-columns: 2.2rem repeat(7, minmax(1rem, 1fr)) minmax(4.5rem, 6rem); /* soma mínima 219px: cabe em 320px (WCAG 1.4.10) */
   grid-template-rows: 2.75rem repeat(var(--years), 1.85rem);
 }
 .pf-grid > .pf-code { writing-mode: vertical-rl; transform: rotate(180deg); align-self: end; padding-bottom: .35rem; }

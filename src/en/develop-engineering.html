@@ -185,10 +185,12 @@
       display: grid;
       gap: 1.5rem;
     }
-    .dg-grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-    .dg-grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .dg-grid--4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-    .dg-grid--5 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .dg-hero-gap > * { min-width: 0; }
+    .dg-mono { overflow-wrap: anywhere; } /* reflow a 320px (WCAG 1.4.10) */
+    .dg-grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+    .dg-grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+    .dg-grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+    .dg-grid--5 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
 
     .dg-card {
       background: var(--dg-bg-900);
@@ -383,7 +385,7 @@
     /* Action Gateway Steps List */
     .dg-gateway-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
       gap: 0.8rem;
       margin: 1.5rem 0;
       font-size: 0.85rem;
@@ -1272,8 +1274,8 @@
         </p>
 
         <!-- Filtros de Veredicto -->
-        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
-          <span class="dg-mono" style="font-size: 0.85rem; color: var(--dg-gray);">Filter by Verdict:</span>
+        <div role="group" aria-labelledby="dg-filter-label" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem;">
+          <span id="dg-filter-label" class="dg-mono" style="font-size: 0.85rem; color: var(--dg-gray);">Filter by Verdict:</span>
           <button class="dg-filter-btn is-active" data-verdict-filter="ALL" aria-pressed="true">ALL (10)</button>
           <button class="dg-filter-btn" data-verdict-filter="PASS" aria-pressed="false">PASS</button>
           <button class="dg-filter-btn" data-verdict-filter="FAIL" aria-pressed="false">FAIL</button>

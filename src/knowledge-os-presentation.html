@@ -607,9 +607,12 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 </head>
 
 <body class="antialiased">
+    <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -636,7 +639,7 @@
         </div>
     </nav>
 
-    <main class="pt-24">
+    <main id="conteudo" class="pt-24">
 
         <!-- ===================== HERO ===================== -->
         <header class="relative px-6 py-20 md:py-32 overflow-hidden">
@@ -1056,7 +1059,7 @@
                                 <div class="v3-layer-value-anchor"><i class="fas fa-star"></i> Humanos e agentes consultam o conhecimento onde já trabalham</div>
                                 <div class="mt-1">
                                     <span class="pill pill-blue"><span class="mono">L7</span> Experience</span>
-                                    <h3 class="text-lg font-bold text-white mt-1">Interfaces de Consumo <span class="text-gray-500 text-sm font-normal">via Docusaurus, Slack/Teams, IDE, MCP, ChatOps</span></h3>
+                                    <h3 class="text-lg font-bold text-white mt-1">Interfaces de Consumo <span class="text-gray-400 text-sm font-normal">via Docusaurus, Slack/Teams, IDE, MCP, ChatOps</span></h3>
                                     <p class="text-gray-400 text-sm mt-1">Docusaurus (humano) · Slack/Teams agent · IDE plugin · MCP servers · ChatOps · API pública.</p>
                                 </div>
                             </div>
@@ -1069,7 +1072,7 @@
                                 <div class="v3-layer-value-anchor"><i class="fas fa-star"></i> Trabalho que se repete, delegado — com limites claros</div>
                                 <div class="mt-1">
                                     <span class="pill pill-blue"><span class="mono">L6</span> Orchestration</span>
-                                    <h3 class="text-lg font-bold text-white mt-1">Agentes Cognitivos &amp; Workflows <span class="text-gray-500 text-sm font-normal">via LangGraph / Mastra / CrewAI</span></h3>
+                                    <h3 class="text-lg font-bold text-white mt-1">Agentes Cognitivos &amp; Workflows <span class="text-gray-400 text-sm font-normal">via LangGraph / Mastra / CrewAI</span></h3>
                                     <p class="text-gray-400 text-sm mt-1">Agent runtime · DSL declarativa para fluxos · políticas de tool-use · approval gates · Circuit Breakers.</p>
                                 </div>
                             </div>
@@ -1082,7 +1085,7 @@
                                 <div class="v3-layer-value-anchor"><i class="fas fa-star"></i> Você sabe quando o conhecimento envelhece — antes do incidente</div>
                                 <div class="mt-1">
                                     <span class="pill pill-blue"><span class="mono">L5</span> Reasoning</span>
-                                    <h3 class="text-lg font-bold text-white mt-1">Quality Gates Cognitivos &amp; Observabilidade <span class="text-gray-500 text-sm font-normal">via OpenTelemetry + LLM spans</span></h3>
+                                    <h3 class="text-lg font-bold text-white mt-1">Quality Gates Cognitivos &amp; Observabilidade <span class="text-gray-400 text-sm font-normal">via OpenTelemetry + LLM spans</span></h3>
                                     <p class="text-gray-400 text-sm mt-1">Groundedness · faithfulness · answer-relevance · citation coverage · safety filters · PII redaction.</p>
                                 </div>
                             </div>
@@ -1095,7 +1098,7 @@
                                 <div class="v3-layer-value-anchor"><i class="fas fa-star"></i> Respostas com fonte: sua IA nunca responde sem evidência</div>
                                 <div class="mt-1">
                                     <span class="pill pill-blue"><span class="mono">L4</span> Retrieval</span>
-                                    <h3 class="text-lg font-bold text-white mt-1">GraphRAG Híbrido + Retrieval Semântico <span class="text-gray-500 text-sm font-normal">via vector + BM25 + graph traversal</span></h3>
+                                    <h3 class="text-lg font-bold text-white mt-1">GraphRAG Híbrido + Retrieval Semântico <span class="text-gray-400 text-sm font-normal">via vector + BM25 + graph traversal</span></h3>
                                     <p class="text-gray-400 text-sm mt-1">Vector search (denso) · BM25 (esparso) · graph traversal · re-ranking · query routing · retrieval policy declarativa.</p>
                                 </div>
                             </div>
@@ -1108,7 +1111,7 @@
                                 <div class="v3-layer-value-anchor"><i class="fas fa-star"></i> Relacionamentos, não documentos: entenda o que impacta o quê</div>
                                 <div class="mt-1">
                                     <span class="pill pill-blue"><span class="mono">L3</span> Knowledge Model</span>
-                                    <h3 class="text-lg font-bold text-white mt-1">Knowledge Graph + Ontologia <span class="text-gray-500 text-sm font-normal">via JSON-LD / SHACL</span></h3>
+                                    <h3 class="text-lg font-bold text-white mt-1">Knowledge Graph + Ontologia <span class="text-gray-400 text-sm font-normal">via JSON-LD / SHACL</span></h3>
                                     <p class="text-gray-400 text-sm mt-1">Core ontology · domain extensions · entidades canônicas · capability map · entity resolution.</p>
                                 </div>
                             </div>
@@ -1121,7 +1124,7 @@
                                 <div class="v3-layer-value-anchor"><i class="fas fa-star"></i> Decisões que não se perdem: cada escolha, rastreável no tempo</div>
                                 <div class="mt-1">
                                     <span class="pill pill-blue"><span class="mono">L2</span> Specification</span>
-                                    <h3 class="text-lg font-bold text-white mt-1">SDD + Contratos Semânticos <span class="text-gray-500 text-sm font-normal">via Specs versionadas, ADRs, OpenAPI, AsyncAPI</span></h3>
+                                    <h3 class="text-lg font-bold text-white mt-1">SDD + Contratos Semânticos <span class="text-gray-400 text-sm font-normal">via Specs versionadas, ADRs, OpenAPI, AsyncAPI</span></h3>
                                     <p class="text-gray-400 text-sm mt-1">Specs versionadas · ADRs · OpenAPI · AsyncAPI · DSL de regras de negócio · contract tests entre domínios.</p>
                                 </div>
                             </div>
@@ -1134,7 +1137,7 @@
                                 <div class="v3-layer-value-anchor"><i class="fas fa-star"></i> O fim do retrabalho: conectamos onde sua equipe já trabalha</div>
                                 <div class="mt-1">
                                     <span class="pill pill-blue"><span class="mono">L1</span> Substrate</span>
-                                    <h3 class="text-lg font-bold text-white mt-1">Fontes &amp; Ingestão <span class="text-gray-500 text-sm font-normal">via OpenKB, GitHub, Confluence, Jira, etc.</span></h3>
+                                    <h3 class="text-lg font-bold text-white mt-1">Fontes &amp; Ingestão <span class="text-gray-400 text-sm font-normal">via OpenKB, GitHub, Confluence, Jira, etc.</span></h3>
                                     <p class="text-gray-400 text-sm mt-1">OpenKB · GitHub · Confluence · Jira · ServiceNow · Salesforce · Datadog · CDC pipelines · CRDT para colaboração.</p>
                                 </div>
                             </div>
@@ -1160,7 +1163,7 @@
                         <span class="arrow-flow">→</span>
                         <span class="pill pill-red">LEARN</span>
                     </div>
-                    <p class="text-center text-gray-500 text-xs mt-4 max-w-3xl mx-auto">
+                    <p class="text-center text-gray-400 text-xs mt-4 max-w-3xl mx-auto">
                         <strong class="text-gray-400">Self-healing:</strong> falhas em VALIDATE re-acionam RETRIEVE com contexto expandido.
                         <strong class="text-gray-400">Backpressure:</strong> baixa confiança em REASON aciona escalation para humano via approval gate.
                     </p>
@@ -1426,22 +1429,22 @@
                     <div class="kpi-card">
                         <div class="kpi-value">↑</div>
                         <div class="kpi-label">Reuso Cross-team</div>
-                        <p class="text-xs text-gray-500 mt-2">Quantas vezes seu conteúdo ajudou outros times</p>
+                        <p class="text-xs text-gray-400 mt-2">Quantas vezes seu conteúdo ajudou outros times</p>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-value">★</div>
                         <div class="kpi-label">Impact Score</div>
-                        <p class="text-xs text-gray-500 mt-2">Soma ponderada de decisões influenciadas</p>
+                        <p class="text-xs text-gray-400 mt-2">Soma ponderada de decisões influenciadas</p>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-value">%</div>
                         <div class="kpi-label">Knowledge Freshness</div>
-                        <p class="text-xs text-gray-500 mt-2">% das suas contribuições ainda válidas</p>
+                        <p class="text-xs text-gray-400 mt-2">% das suas contribuições ainda válidas</p>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-value">∞</div>
                         <div class="kpi-label">Citations</div>
-                        <p class="text-xs text-gray-500 mt-2">Quantas specs referenciam seu trabalho</p>
+                        <p class="text-xs text-gray-400 mt-2">Quantas specs referenciam seu trabalho</p>
                     </div>
                 </div>
 
@@ -1452,7 +1455,7 @@
                         para resolver um bug em outro time, meu nome aparece no trace.
                         Isso mudou como eu penso sobre documentar."
                     </p>
-                    <footer class="text-sm text-gray-500">— Engenheiro Sênior, Plataforma</footer>
+                    <footer class="text-sm text-gray-400">— Engenheiro Sênior, Plataforma</footer>
                 </blockquote>
             </div>
         </section>
@@ -1911,7 +1914,7 @@
                     <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Inspirado em Data Mesh: <strong>core central + domain ownership</strong> — sem cair no extremo do data lake monolítico nem no caos do bottom-up puro.</p>
                 </div>
 
-                <table class="matrix">
+                <div class="overflow-x-auto"><table class="matrix">
                     <thead>
                         <tr>
                             <th>Papel</th>
@@ -1965,7 +1968,7 @@
                             <td>Export &lt; 1h</td>
                         </tr>
                     </tbody>
-                </table>
+                </table></div>
 
                 <div class="grid md:grid-cols-2 gap-6 mt-10">
                     <div class="card">
@@ -2070,7 +2073,7 @@
                     <p class="text-gray-400 mt-4 max-w-2xl mx-auto">SLOs por domínio + camada FinOps explícita. Dashboard "Knowledge Vital Signs" plugado em alerting padrão (Datadog / Grafana).</p>
                 </div>
 
-                <table class="matrix">
+                <div class="overflow-x-auto"><table class="matrix">
                     <thead>
                         <tr>
                             <th>Camada</th>
@@ -2112,7 +2115,7 @@
                         <tr><td>Hard Escalations / semana</td><td>Acionamentos do Circuit Breaker (limite de tentativas).</td><td>&lt; 5% das execuções</td></tr>
                         <tr><td>Budget Utilization</td><td>% do budget mensal consumido.</td><td>Alertas em 70% / 90% / 100%</td></tr>
                     </tbody>
-                </table>
+                </table></div>
 
                 <div class="mt-10 card">
                     <h3 class="text-xl font-bold text-white mb-3"><i class="fas fa-stethoscope text-green-400"></i> Tracing semântico ponta-a-ponta</h3>
@@ -2411,11 +2414,11 @@
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <h3 class="text-white font-bold mb-3">Knowledge OS Enterprise</h3>
-                    <p class="text-gray-500 text-sm">Especificação revisada em 8 de maio de 2026 — versão 3.0 (Adoção &amp; Segurança). Material aberto a iteração e crítica.</p>
+                    <p class="text-gray-400 text-sm">Especificação revisada em 8 de maio de 2026 — versão 3.0 (Adoção &amp; Segurança). Material aberto a iteração e crítica.</p>
                 </div>
                 <div>
                     <h3 class="text-white font-bold mb-3">Referências conceituais</h3>
-                    <ul class="text-gray-500 text-sm space-y-1">
+                    <ul class="text-gray-400 text-sm space-y-1">
                         <li>• Edwards et al., <em>GraphRAG</em> (Microsoft Research, 2024)</li>
                         <li>• Zaharia et al., <em>Compound AI Systems</em> (BAIR, 2024)</li>
                         <li>• Dehghani, <em>Data Mesh</em> (O'Reilly)</li>
@@ -2425,7 +2428,7 @@
                 </div>
                 <div>
                     <h3 class="text-white font-bold mb-3">Autor</h3>
-                    <p class="text-gray-500 text-sm">Maurício Yokoyama Issei — Tech Lead / Enterprise Architect.</p>
+                    <p class="text-gray-400 text-sm">Maurício Yokoyama Issei — Tech Lead / Enterprise Architect.</p>
                     <div class="flex gap-3 mt-3 text-gray-400">
                         <a href="https://www.linkedin.com/in/mauricioissei/" class="hover:text-blue-400" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
                         <a href="https://github.com/issei" class="hover:text-blue-400" aria-label="GitHub"><i class="fab fa-github fa-lg"></i></a>
@@ -2434,12 +2437,13 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-6 text-center">
-                <p class="text-gray-600 text-xs">&copy; 2026 Maurício Yokoyama Issei · Knowledge OS Enterprise v3.0 — Adoção &amp; Segurança · <a href="./privacidade.html" class="hover:text-blue-400">Privacidade</a> · <a href="./termos.html" class="hover:text-blue-400">Termos</a></p>
+                <p class="text-gray-400 text-xs">&copy; 2026 Maurício Yokoyama Issei · Knowledge OS Enterprise v3.0 — Adoção &amp; Segurança · <a href="./privacidade.html" class="hover:text-blue-400">Privacidade</a> · <a href="./termos.html" class="hover:text-blue-400">Termos</a></p>
             </div>
         </div>
     </footer>
 
 <script type="module" src="./js/eco-nav.js"></script>
+<script type="module" src="./js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>

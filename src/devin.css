@@ -329,7 +329,7 @@ html.lenis body {
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: #64748B;
+  color: #94A3B8;
   cursor: pointer;
   border: none;
   background: none;
@@ -419,7 +419,7 @@ html.lenis body {
 
 .ep01-hero__credit {
   font-size: 0.8125rem;
-  color: #64748B;
+  color: #94A3B8;
   letter-spacing: 0.04em;
 }
 
@@ -478,7 +478,7 @@ html.lenis body {
 
 .ep01-apresentacao__posicao {
   font-size: 0.9375rem;
-  color: #64748B;
+  color: #94A3B8;
   letter-spacing: 0.02em;
 }
 
@@ -693,7 +693,7 @@ html.lenis body {
 
 .ep02-diagrama__caption {
   font-size: 0.75rem;
-  color: #64748B;
+  color: #94A3B8;
   text-align: center;
   margin-top: 1.5rem;
   font-style: italic;
@@ -1091,7 +1091,7 @@ html.lenis body {
 
 .ep07-step__label {
   font-size: 0.6875rem;
-  color: #64748B;
+  color: #94A3B8;
   font-weight: 500;
 }
 
@@ -1514,7 +1514,7 @@ html.lenis body {
 
 .ep08-terminal__title {
   font-size: 0.75rem;
-  color: #64748B;
+  color: #94A3B8;
   margin-left: 0.5rem;
 }
 
@@ -1529,7 +1529,7 @@ html.lenis body {
 }
 
 .ep08-terminal__muted {
-  color: #64748B;
+  color: #94A3B8;
 }
 
 .ep08-terminal__success {
@@ -1599,7 +1599,7 @@ html.lenis body {
 
 .ep08-reflexao__rodape {
   font-size: 0.8125rem;
-  color: #64748B;
+  color: #94A3B8;
   font-style: italic;
   opacity: 0;
 }
@@ -1828,7 +1828,7 @@ html.lenis body {
 
 .ep09-atitude__sublabel {
   font-size: 0.875rem;
-  color: #64748B;
+  color: #94A3B8;
   margin-bottom: 1.25rem;
 }
 
@@ -1934,7 +1934,7 @@ html.lenis body {
 
 .ep09-contexto__subtitulo {
   font-size: 0.875rem;
-  color: #64748B;
+  color: #94A3B8;
   margin-bottom: 1rem;
 }
 
@@ -2355,7 +2355,7 @@ html.lenis body {
 
 .ep09-encerramento__cargo {
   font-size: 0.875rem;
-  color: #64748B;
+  color: #94A3B8;
 }
 
 .ep09-encerramento__cta {
@@ -2389,12 +2389,12 @@ html.lenis body {
 
 .devin-footer__text {
   font-size: 0.8125rem;
-  color: #64748B;
+  color: #94A3B8;
 }
 
 .devin-footer__link {
   font-size: 0.8125rem;
-  color: #64748B;
+  color: #94A3B8;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -2587,15 +2587,22 @@ html.lenis body {
 .devin-toc__label {
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
-  color: #64748B;
+  color: #94A3B8;
   opacity: 0;
   transition: opacity 0.2s ease;
   white-space: nowrap;
   pointer-events: none;
 }
 
-.devin-toc__item:hover .devin-toc__label {
-  opacity: 1;
+.devin-toc__item:hover .devin-toc__label,
+.devin-toc__item:focus-visible .devin-toc__label {
+  opacity: 1; /* por teclado o rótulo também aparece: o ponto de 6px sozinho não diz onde o foco está */
+}
+
+.devin-toc__item:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 @media (max-width: 1199px) {
@@ -2618,7 +2625,7 @@ html.lenis body {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--color-human);
+  color: #FF7A2E; /* 4,85:1 sobre o painel #1f3356 (var(--color-human) dá 4,20:1) */
   text-transform: uppercase;
   margin-bottom: 1rem;
   display: block;
@@ -2661,7 +2668,7 @@ html.lenis body {
 }
 
 .epoch-grid__desc {
-  color: #64748B;
+  color: #94A3B8;
   font-size: 0.75rem;
   display: block;
 }
@@ -2680,7 +2687,7 @@ html.lenis body {
 }
 
 .collab-modes__label {
-  color: var(--color-human);
+  color: #FF7A2E; /* 4,85:1 sobre o painel #1f3356 (var(--color-human) dá 4,20:1) */
   font-weight: 700;
   font-size: 0.8125rem;
   min-width: 175px;
@@ -2860,7 +2867,7 @@ html.lenis body {
 .ep04-pilar-card__explanation {
   font-size: 0.875rem;
   line-height: 1.7;
-  color: #64748B;
+  color: #94A3B8;
   padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -2881,7 +2888,7 @@ html.lenis body {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: #64748B;
+  color: #94A3B8;
 }
 
 .ep04-pilar-card__example .ep04-example__text {
@@ -2971,7 +2978,7 @@ html.lenis body {
 
 .ep05-cognitive-map__caption {
   font-size: 0.75rem;
-  color: #334155;
+  color: #94A3B8;
   text-align: center;
   margin-top: 12px;
   letter-spacing: 0.04em;
@@ -3032,7 +3039,7 @@ html.lenis body {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #64748B;
+  color: #94A3B8;
   margin-bottom: 8px;
 }
 
@@ -3066,7 +3073,7 @@ html.lenis body {
 .ep05-block__note {
   font-size: 0.875rem;
   line-height: 1.7;
-  color: #64748B;
+  color: #94A3B8;
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -3102,7 +3109,7 @@ html.lenis body {
   content: '—';
   position: absolute;
   left: 0;
-  color: #334155;
+  color: #94A3B8;
 }
 
 .ep05-block__list--checks li::before {
@@ -3199,7 +3206,7 @@ html.lenis body {
 
 .ep05-mem-pipeline__caption {
   font-size: 0.75rem;
-  color: #334155;
+  color: #94A3B8;
   text-align: center;
   margin-top: 12px;
   letter-spacing: 0.04em;
@@ -3250,7 +3257,7 @@ html.lenis body {
 }
 
 .ep05-mem-card__tag--iterativa {
-  color: #8B5CF6;
+  color: #A78BFA;
   background: rgba(139, 92, 246, 0.08);
   border-color: rgba(139, 92, 246, 0.2);
 }
@@ -3274,7 +3281,7 @@ html.lenis body {
 
 .ep05-mem-card__meta {
   font-size: 0.75rem;
-  color: #334155;
+  color: #94A3B8;
   font-weight: 600;
   letter-spacing: 0.06em;
   padding-top: 8px;
@@ -3316,14 +3323,14 @@ html.lenis body {
 }
 
 .ep05-mem-flow__seta {
-  color: #334155;
+  color: #94A3B8;
   font-size: 1rem;
   flex-shrink: 0;
 }
 
 .ep05-mem-flow__legenda {
   font-size: 0.8125rem;
-  color: #334155;
+  color: #94A3B8;
   line-height: 1.6;
   margin-bottom: clamp(32px, 5vh, 48px);
 }
@@ -3415,7 +3422,7 @@ html.lenis body {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #334155;
+  color: #94A3B8;
   margin-top: 2.5rem;
 }
 
@@ -3465,7 +3472,7 @@ html.lenis body {
   padding: 0.5rem 1.25rem;
   font-size: 0.75rem;
   font-family: 'Inter', sans-serif;
-  color: #64748B;
+  color: #94A3B8;
   cursor: pointer;
   border: none;
   background: none;
@@ -3599,7 +3606,7 @@ html.lenis body {
 }
 
 .video-card__desc {
-  color: #64748B;
+  color: #94A3B8;
   font-size: 0.8125rem;
   line-height: 1.4;
   display: block;
@@ -3637,7 +3644,7 @@ html.lenis body {
 }
 
 .ep09-video-header__subtitle {
-  color: #64748B;
+  color: #94A3B8;
   font-size: 0.9375rem;
   line-height: 1.7;
   margin-bottom: 2rem;
@@ -4305,7 +4312,7 @@ html.atm--no-blend .atm-diffuse {
   font-weight: 800;
   line-height: 1;
   color: var(--arsenal-num-color, #FF6200);
-  opacity: 0.7;
+  opacity: 1;
   font-family: 'Inter', sans-serif;
 }
 
@@ -4318,7 +4325,7 @@ html.atm--no-blend .atm-diffuse {
 }
 
 .ep06-arsenal--knowledge .ep06-arsenal__number {
-  color: #8B5CF6;
+  color: #A78BFA;
 }
 
 .ep06-arsenal__icon {
@@ -4379,7 +4386,7 @@ html.atm--no-blend .atm-diffuse {
   position: absolute;
   left: 0;
   font-size: 0.75rem;
-  color: #334155;
+  color: #94A3B8;
 }
 
 /* Matrix comparativa */
@@ -4435,7 +4442,7 @@ html.atm--no-blend .atm-diffuse {
 }
 
 .ep06-matrix__cell--low {
-  color: #475569;
+  color: #94A3B8;
 }
 
 /* Evolution flow SVG */
@@ -4453,7 +4460,7 @@ html.atm--no-blend .atm-diffuse {
 
 .ep06-evolution__caption {
   font-size: 0.75rem;
-  color: #334155;
+  color: #94A3B8;
   text-align: center;
   margin-top: 12px;
   letter-spacing: 0.04em;
@@ -4804,7 +4811,7 @@ html.atm--no-blend .atm-diffuse {
 }
 
 .ep06-diagrama-ciclo__seta {
-  color: #64748B;
+  color: #94A3B8;
   font-size: 1.25rem;
 }
 

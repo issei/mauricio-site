@@ -283,9 +283,11 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
 </head>
 
 <body class="devin-body">
+    <a class="a11y-skip" href="#devin-main">Pular para o conteúdo</a>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -598,7 +600,7 @@
             É pensar melhor.
           </p>
           <p class="ep03-pausa__line js-ep03-pausa-linha2"
-            style="font-size: clamp(1rem, 2.5vw, 1.4rem); color: #64748B; margin-top: 1.5rem;">
+            style="font-size: clamp(1rem, 2.5vw, 1.4rem); color: #94A3B8; margin-top: 1.5rem;">
             É governar intenção com a mesma disciplina que antes você governava sintaxe.
           </p>
         </article>
@@ -730,7 +732,7 @@
             <p class="ep04-transicao__question-line ep04-transicao__question-line--1">Mas afinal —</p>
             <p class="ep04-transicao__question-line ep04-transicao__question-line--2">quem é o Devin?</p>
           </blockquote>
-          <p style="color: #64748B; font-size: 1rem; margin-top: 2rem; max-width: 36rem; line-height: 1.7;">
+          <p style="color: #94A3B8; font-size: 1rem; margin-top: 2rem; max-width: 36rem; line-height: 1.7;">
             Não é um chatbot que responde perguntas. É um <em>agente operacional</em> — um executor orientado a
             objetivos que usa ferramentas reais para alterar sistemas reais. A diferença muda tudo.
           </p>
@@ -2474,7 +2476,7 @@
             <span class="ep07-ide__dot ep07-ide__dot--amber"></span>
             <span class="ep07-ide__dot ep07-ide__dot--green"></span>
           </div>
-          <div class="ep07-ide__tabs" role="tablist">
+          <div class="ep07-ide__tabs" role="tablist" aria-label="Arquivos do projeto">
             <button class="ep07-ide__tab" role="tab" aria-selected="true" data-panel="estrutura"
               aria-controls="ide-panel-estrutura">Estrutura</button>
             <button class="ep07-ide__tab" role="tab" aria-selected="false" data-panel="terminal"
@@ -2995,7 +2997,7 @@ edit force-app/main/default/classes/OrderServiceTest.cls</pre>
                 Ele não toca pelo músico. O que ele faz — e que ninguém mais no palco consegue fazer —
                 é garantir que todos entrem em cena no milissegundo exato.
               </p>
-              <p class="ep09-contexto__cenario" style="color: #64748B; font-size: 0.9rem; margin-top: 0.75rem;">
+              <p class="ep09-contexto__cenario" style="color: #94A3B8; font-size: 0.9rem; margin-top: 0.75rem;">
                 Na era da IA, o líder técnico evolui para <strong>Arquiteto de Contexto</strong>: sua função principal
                 não é supervisionar tarefas, mas proteger a carga cognitiva da equipe e criar as condições para que o
                 sincronismo aconteça.
@@ -3320,7 +3322,7 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
               </div>
             </div>
             <p
-              style="color: #64748B; font-size: 0.8125rem; margin-top: 1.25rem; border-top: 1px solid #1E293B; padding-top: 1rem;">
+              style="color: #94A3B8; font-size: 0.8125rem; margin-top: 1.25rem; border-top: 1px solid #1E293B; padding-top: 1rem;">
               O profissional que prospera na economia cognitiva navega pelos três modos com consciência — e sabe quando
               usar cada um. Isso é a <strong style="color: #94A3B8;">Inteligência Centauro</strong>: o humano no comando
               estratégico, a máquina na execução tática.
@@ -3586,6 +3588,7 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
 
   <script type="module" src="./js/devin.js"></script>
 <script type="module" src="./js/eco-nav.js"></script>
+<script type="module" src="./js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>

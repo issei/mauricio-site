@@ -23,13 +23,23 @@ function initQuiz() {
     const id = q.getAttribute('data-qid');
     const fb = q.querySelector('[data-quiz-fb]');
     const buttons = Array.from(q.querySelectorAll('.eai-quiz__opts button'));
+    // As opções são lidas SEM a pergunta quando se navega por Tab: o grupo leva o enunciado como nome,
+    // e a opção escolhida carrega aria-pressed (antes só a classe CSS dizia qual era).
+    const prompt = q.querySelector('.eai-quiz__prompt');
+    const opts = q.querySelector('.eai-quiz__opts');
+    if (prompt && opts) {
+      prompt.id = prompt.id || `${id}-prompt`;
+      opts.setAttribute('role', 'group');
+      opts.setAttribute('aria-labelledby', prompt.id);
+    }
+    buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
 
     buttons.forEach((btn, index) => {
       btn.addEventListener('click', () => {
         const result = feedbackFor(id, index);
         if (!result) return;
 
-        buttons.forEach((b) => b.classList.remove('is-correct', 'is-wrong'));
+        buttons.forEach((b) => { b.classList.remove('is-correct', 'is-wrong'); b.setAttribute('aria-pressed', String(b === btn)); });
         btn.classList.add(result.correct ? 'is-correct' : 'is-wrong');
 
         if (fb) {

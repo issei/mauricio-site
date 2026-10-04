@@ -112,7 +112,7 @@
 
     pre.code .tk-key { color: #93c5fd; }
     pre.code .tk-str { color: #86efac; }
-    pre.code .tk-com { color: #64748b; font-style: italic; }
+    pre.code .tk-com { color: #94a3b8; font-style: italic; } /* #64748b dava 4,19:1 sobre #060814 */
     pre.code .tk-num { color: #fcd34d; }
     pre.code .tk-fn  { color: #f0abfc; }
 
@@ -393,6 +393,8 @@
   ]
 }
 </script>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 <!-- AEO:END -->
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/salesforce-agentic-quickstart" />
@@ -566,7 +568,7 @@ If you don't, complete the prerequisites below before you begin.
             </template>
           </div>
 
-          <p class="mt-3 text-xs text-slate-500">Click on each step to mark it as it advances in the guide.</p>
+          <p class="mt-3 text-xs text-slate-400">Click on each step to mark it as it advances in the guide.</p>
         </div>
 
         <!-- Orientação por perfil -->
@@ -667,7 +669,7 @@ Skip Step 4.</strong></p>
                   <label class="flex items-start gap-3 cursor-pointer group">
                     <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                     <span class="text-sm text-slate-300 group-hover:text-white"
-                      :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                      :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                   </label>
                 </li>
               </template>
@@ -783,7 +785,7 @@ Skip Step 4.</strong></p>
                     <label class="flex items-start gap-3 cursor-pointer group">
                       <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                       <span class="text-sm text-slate-300 group-hover:text-white"
-                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                        :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                     </label>
                   </li>
                 </template>
@@ -912,7 +914,7 @@ Responsável pelo deploy: <span class="tk-fn">Flosum</span> (nunca o Devin diret
                     <label class="flex items-start gap-3 cursor-pointer group">
                       <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                       <span class="text-sm text-slate-300 group-hover:text-white"
-                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                        :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                     </label>
                   </li>
                 </template>
@@ -987,7 +989,7 @@ Audit and Smart Merge. The Web Login preserves identity without compromising the
                     <label class="flex items-start gap-3 cursor-pointer group">
                       <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                       <span class="text-sm text-slate-300 group-hover:text-white"
-                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                        :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                     </label>
                   </li>
                 </template>
@@ -1122,7 +1124,7 @@ Right.
                     <label class="flex items-start gap-3 cursor-pointer group">
                       <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                       <span class="text-sm text-slate-300 group-hover:text-white"
-                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                        :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                     </label>
                   </li>
                 </template>
@@ -1257,7 +1259,7 @@ complete</a>
                     <label class="flex items-start gap-3 cursor-pointer group">
                       <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                       <span class="text-sm text-slate-300 group-hover:text-white"
-                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                        :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                     </label>
                   </li>
                 </template>
@@ -1342,7 +1344,7 @@ Conclusion)</p>
                     <label class="flex items-start gap-3 cursor-pointer group">
                       <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                       <span class="text-sm text-slate-300 group-hover:text-white"
-                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                        :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                     </label>
                   </li>
                 </template>
@@ -1490,7 +1492,7 @@ for shared environments. <strong class="text-white">Never ask Devin</strong> to 
                     <label class="flex items-start gap-3 cursor-pointer group">
                       <input type="checkbox" class="chk mt-0.5" x-model="item.done">
                       <span class="text-sm text-slate-300 group-hover:text-white"
-                        :class="item.done && 'line-through text-slate-500'" x-text="item.t"></span>
+                        :class="item.done && 'line-through text-slate-400'" x-text="item.t"></span>
                     </label>
                   </li>
                 </template>
@@ -1684,7 +1686,7 @@ methadata trampling.
         </div>
 
         <div
-          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
+          class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
           <p>© <span id="year"></span> Agent DevOps for Salesforce — Quick Start</p>
           <div class="flex items-center gap-4">
             <a href="#hero" class="hover:text-slate-300">Return to top ↑</a>
@@ -1713,6 +1715,7 @@ methadata trampling.
       }
     }, { threshold: 0.08 });
     document.querySelectorAll('section, footer').forEach(el => {
+<script type="module" src="../js/a11y-scroll-regions.js"></script>
       el.classList.add('reveal');
       io.observe(el);
     });

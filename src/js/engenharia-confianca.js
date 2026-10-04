@@ -8,6 +8,7 @@
  * + termos inline), régua de maturidade interativa, práticas de M0/M2, Mermaid com
  * fallback textual e scroll-reveal — sempre respeitando prefers-reduced-motion.
  */
+import { enhanceTablist } from './a11y-tabs.js';
 
 const prefersReducedMotion =
   window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -187,20 +188,11 @@ function initRuler() {
     `;
   };
 
-  tabs.forEach((tab, i) => {
+  tabs.forEach((tab) => {
     tab.addEventListener('click', () => select(Number(tab.dataset.stage)));
-    // navegação por teclado entre tabs (setas)
-    tab.addEventListener('keydown', (e) => {
-      let target = null;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') target = tabs[(i + 1) % tabs.length];
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') target = tabs[(i - 1 + tabs.length) % tabs.length];
-      if (target) {
-        e.preventDefault();
-        target.focus();
-        select(Number(target.dataset.stage));
-      }
-    });
   });
+  // setas, Home/End, tabindex móvel e painel: padrão Tabs compartilhado (a11y-tabs.js)
+  enhanceTablist(root.querySelector('[role="tablist"]'), { panel });
 }
 
 /* ============================ Prática M0: classificar cenários ============================ */

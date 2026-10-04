@@ -23,7 +23,7 @@ export function initCap1({ board, ctx }) {
   wrap.innerHTML = `
     <div class="bg-occ-surface-2 px-6 py-4 border-b border-gray-700/50">
       <h3 class="font-mono text-green-400 text-sm">NEXUS TECH CORP — RELATÓRIO FINANCEIRO DE IA</h3>
-      <p class="text-sm text-gray-500">Período: Outubro/2025 · Status: ⚠️ Investigação em curso</p>
+      <p class="text-sm text-gray-400">Período: Outubro/2025 · Status: ⚠️ Investigação em curso</p>
     </div>
     <div id="invoice-lines" class="divide-y divide-gray-700/30"></div>`;
   const linesEl = $('#invoice-lines', wrap);
@@ -39,7 +39,7 @@ export function initCap1({ board, ctx }) {
           ${line.mystery ? '<span class="bg-amber-500/20 text-amber-400 text-xs px-2 py-0.5 rounded">?</span>' : ''}</span>
         <span class="flex items-center gap-4">
           ${line.mystery ? '<span class="font-mono text-amber-400 font-bold">Investigar ↓</span>' : `<span class="font-mono text-white font-bold">${line.value}</span><span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded">${line.pct}</span>`}
-          <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+          <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
         </span>
       </summary>
       <div class="px-6 pb-4 pt-2 bg-occ-bg/50 text-sm text-gray-400" id="invoice-${line.id}-detail"></div>`;
@@ -52,7 +52,7 @@ export function initCap1({ board, ctx }) {
           <p>Sarah Chen (VP Ops): "Aloquei 3 devs sêniores (R$ 120/hora) por 2 semanas para corrigir outputs incorretos."</p>
           <p class="font-mono text-amber-300 mt-2">3 devs × R$ 120/h × 80h = R$ 28.800</p>
           <button id="ctx-switch-btn" class="text-xs text-blue-400 underline mt-2">Por que 80h e não 40h?</button>
-          <p id="ctx-switch-detail" hidden class="mt-2 text-gray-500">Cada troca entre revisar a IA e o próprio código custa ~23 min de recontextualização. Metade do tempo é essa fricção — a <strong>Carga de Verificação</strong>, não a correção em si.</p>`;
+          <p id="ctx-switch-detail" hidden class="mt-2 text-gray-400">Cada troca entre revisar a IA e o próprio código custa ~23 min de recontextualização. Metade do tempo é essa fricção — a <strong>Carga de Verificação</strong>, não a correção em si.</p>`;
         $('#ctx-switch-btn', detailEl)?.addEventListener('click', (e) => { e.preventDefault(); $('#ctx-switch-detail', detailEl).hidden = false; });
       } else {
         detailEl.textContent = line.detail;
@@ -114,7 +114,7 @@ export function initCap2({ engine, board, ctx }) {
       <button id="btn-run-simulation" class="cta-gradient text-white font-semibold py-2 px-5 rounded-xl">Executar simulação</button>
       <div id="sim-result" hidden class="mt-6">
         <div class="overflow-x-auto"><table class="w-full text-sm">
-          <thead><tr class="text-gray-500 text-left"><th>Modelo</th><th>R_m</th><th>Tentativas/tarefa</th><th>Horas Dev</th><th>V_core</th><th class="text-right">TCO real</th></tr></thead>
+          <thead><tr class="text-gray-400 text-left"><th>Modelo</th><th>R_m</th><th>Tentativas/tarefa</th><th>Horas Dev</th><th>V_core</th><th class="text-right">TCO real</th></tr></thead>
           <tbody>
             <tr class="border-t border-gray-700/40"><th scope="row" class="text-left font-normal py-2">Model-Lite</th><td>42%</td><td class="font-mono">2,38</td><td>87h</td><td class="font-mono" style="color:var(--color-sim-vcore)">68</td><td class="text-right font-mono">R$ 12.900</td></tr>
             <tr class="border-t border-gray-700/40"><th scope="row" class="text-left font-normal py-2">Model-Pro</th><td>91%</td><td class="font-mono">1,10</td><td>10h</td><td class="font-mono" style="color:var(--color-sim-vcore-ok)">24</td><td class="text-right font-mono">R$ 2.450</td></tr>
@@ -153,9 +153,9 @@ export function initCap3({ board, ctx }) {
   canvas.innerHTML = `
     <div id="formula-blocks" class="flex flex-wrap gap-2 mb-8" aria-label="Blocos de conceito"></div>
     <div class="flex flex-col items-center gap-3">
-      <div id="formula-numerator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-500 text-sm p-2" role="group" aria-label="Numerador" aria-live="assertive">Numerador — arraste aqui</div>
-      <div class="text-3xl text-gray-500">÷</div>
-      <div id="formula-denominator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-500 text-sm p-2" role="group" aria-label="Denominador" aria-live="assertive">Denominador — arraste aqui</div>
+      <div id="formula-numerator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-400 text-sm p-2" role="group" aria-label="Numerador" aria-live="assertive">Numerador — arraste aqui</div>
+      <div class="text-3xl text-gray-400">÷</div>
+      <div id="formula-denominator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-400 text-sm p-2" role="group" aria-label="Denominador" aria-live="assertive">Denominador — arraste aqui</div>
     </div>
     <div id="formula-validator" class="mt-6 text-center text-sm" hidden></div>
     <div id="formula-naming" class="mt-8" hidden>
@@ -257,7 +257,7 @@ function modelCard(title, formula, note) {
   return `<div class="bg-occ-surface rounded-xl border border-gray-700/50 p-4">
     <p class="text-xs text-blue-400 uppercase tracking-wider mb-2">${title}</p>
     <p class="formula text-white text-sm mb-2">${formula}</p>
-    <p class="text-xs text-gray-500">${note}</p></div>`;
+    <p class="text-xs text-gray-400">${note}</p></div>`;
 }
 
 // =============================== CAP 5 ===============================

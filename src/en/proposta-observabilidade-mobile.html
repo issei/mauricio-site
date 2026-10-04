@@ -232,12 +232,15 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/proposta-observabilidade-mobile" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/proposta-observabilidade-mobile" />
     <link rel="alternate" hreflang="x-default" href="https://mauricio.issei.com.br/proposta-observabilidade-mobile" />
 </head>
 <body class="bg-slate-900 text-slate-200 antialiased">
+    <a class="a11y-skip" href="#conteudo">Skip to content</a>
     
     <!-- Navbar -->
     <nav class="fixed w-full top-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
@@ -282,6 +285,7 @@
     </nav>
     
     <!-- Hero Section -->
+  <main id="conteudo">
     <section class="gradient-bg pt-32 pb-20 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -293,7 +297,7 @@
                         Smart correlation between Device, Network, Identity and Application
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#video" class="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-blue-700 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl">
+                        <a href="#video" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white hover:bg-blue-700 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
                             </svg>
@@ -900,7 +904,7 @@
                     <p class="text-sm text-slate-400 mb-6 font-light">Strategic vision and business value</p>
                     <a href="https://mauricio.issei.com.br/static/docs/confiabilidade-movel-unificada.pdf" 
                        target="_blank"
-                       class="inline-flex items-center justify-center w-full px-6 py-3 bg-primary hover:bg-blue-700 rounded-xl font-semibold transition-all">
+                       class="inline-flex items-center justify-center w-full px-6 py-3 bg-primary text-white hover:bg-blue-700 rounded-xl font-semibold transition-all">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
@@ -919,7 +923,7 @@
                     <p class="text-sm text-slate-400 mb-6 font-light">Architecture, implementation and runbooks</p>
                     <a href="https://mauricio.issei.com.br/mainV8.pdf" 
                        target="_blank"
-                       class="inline-flex items-center justify-center w-full px-6 py-3 bg-sre hover:bg-green-600 rounded-xl font-semibold transition-all">
+                       class="inline-flex items-center justify-center w-full px-6 py-3 bg-sre text-slate-900 hover:bg-green-600 rounded-xl font-semibold transition-all">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
@@ -968,6 +972,7 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
+  </main>
 <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-3 gap-8 mb-8">
@@ -995,7 +1000,7 @@
                 </div>
             </div>
             
-            <div class="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+            <div class="border-t border-slate-800 pt-8 text-center text-sm text-slate-400">
                 <p>&copy; 2026 Observation Architecture SRE. All rights reserved.</p>
             </div>
         </div>

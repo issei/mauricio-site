@@ -14,6 +14,8 @@
  *   static:no-skip-link  1º Tab não cai num skip link que aponta para um id existente
  *   static:h1-count      nº de <h1> diferente de 1
  *   reflow:320           rolagem horizontal da página inteira a 320 px (SC 1.4.10)
+ *   motion:reduce        animações CSS/WAAPI ainda correndo com prefers-reduced-motion (infinitas ou > 1 ms
+ *                        depois de .finish()). Piso: GSAP/rAF e vídeo não aparecem em getAnimations().
  *
  * Estado medido: movimento reduzido, rastreadores bloqueados (CDNs liberadas — exige rede),
  * banner de cookies visível (contexto novo = sem consentimento gravado).
@@ -29,7 +31,7 @@
 import { chromium } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { preview } from 'vite';
-import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';
 import { dirname, join, resolve, parse } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { compare, prune } from './a11y-ratchet.mjs';
@@ -51,10 +53,21 @@ if (!existsSync(DIST)) {
   process.exit(2);
 }
 
-const pages = readdirSync(join(ROOT, 'src'))
-  .filter((f) => f.endsWith('.html') && !EXCLUIR.test(parse(f).name) && existsSync(join(DIST, f)))
-  .filter((f) => !only || only.includes(f))
+// PT-BR (raiz) e o gêmeo EN (`en/<arquivo>`): o espelho é público e indexado, e tradução mais longa estoura
+// layout e pode esvaziar um botão — o que o PT não mostra. Chave do baseline: `<arquivo>` ou `en/<arquivo>`.
+const list = (dir, prefix) => readdirSync(join(ROOT, 'src', dir))
+  .filter((f) => f.endsWith('.html') && !EXCLUIR.test(parse(f).name) && existsSync(join(DIST, dir, f)))
+  .map((f) => prefix + f);
+const pages = [...list('', ''), ...list('en', 'en/')]
+  .filter((k) => !only || only.includes(k))
   .sort();
+
+// Build velho = medição de outra coisa (um `vite build` que falhou deixa o dist anterior de pé).
+const velhos = pages.filter((k) => statSync(join(ROOT, 'src', k)).mtimeMs > statSync(join(DIST, k)).mtimeMs + 1000);
+if (velhos.length && !args.includes('--base')) {
+  console.error(`✗ a11y-sweep: dist/ mais velho que a fonte em ${velhos.length} página(s) (ex.: ${velhos[0]}) — o vite build falhou ou não rodou.`);
+  process.exit(2);
+}
 
 async function measure(browser, base, file) {
   const url = `${base}/${file}`;
@@ -94,9 +107,13 @@ async function measure(browser, base, file) {
       const a = document.activeElement;
       const href = a?.tagName === 'A' ? a.getAttribute('href') ?? '' : '';
       return href.length > 1 && href.startsWith('#') && !!document.getElementById(href.slice(1)) &&
-        /pular|ir para|skip/i.test(a.textContent ?? '');
+        /pular|ir para|skip|go to|jump to/i.test(a.textContent ?? '');
     });
     if (!skip) bump('static:no-skip-link');
+
+    const motion = await desktop.page.evaluate(() => document.getAnimations()
+      .filter((a) => a.playState === 'running' && a.effect?.getComputedTiming().duration > 1).length);
+    bump('motion:reduce', motion);
   } finally {
     await desktop.ctx.close();
   }
@@ -136,7 +153,7 @@ async function run() {
   return measured;
 }
 
-console.log(`▶ a11y-sweep: ${pages.length} página(s), WCAG 2.2 AA, build de produção`);
+console.log(`▶ a11y-sweep: ${pages.length} página(s) (PT + EN), WCAG 2.2 AA, build de produção`);
 const measured = prune(await run());
 const baseline = existsSync(BASELINE) ? JSON.parse(readFileSync(BASELINE, 'utf8')) : {};
 // Com --only, compara só o subconjunto medido.

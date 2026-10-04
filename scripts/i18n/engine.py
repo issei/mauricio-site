@@ -95,7 +95,13 @@ class BaseEngine:
         core = text.strip()
         if not core:
             return text
-        return f"{prefix}{self._traduz_protegendo_siglas(core)}{suffix}"
+        traduzido = self._traduz_protegendo_siglas(core)
+        if not traduzido.strip():
+            # O modelo devolveu vazio (acontece com segmento que abre com símbolo/emoji, ex. "▶ Iniciar
+            # Jornada"). Um botão ou link sem texto é pior que o original em PT: mantém a fonte.
+            self.fallbacks += 1
+            traduzido = core
+        return f"{prefix}{traduzido}{suffix}"
 
     def _traduz_protegendo_siglas(self, core: str) -> str:
         siglas: list[str] = []
