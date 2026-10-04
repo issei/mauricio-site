@@ -46,11 +46,8 @@ test.describe('Consentimento de cookies — acessibilidade (T7)', () => {
   }
 
   test('a faixa fixa reserva a própria altura no fim da página (2.4.11)', async ({ page }) => {
-    const { pad, h } = await page.evaluate(() => ({
-      pad: parseFloat(getComputedStyle(document.body).paddingBottom),
-      h: document.querySelector('.cc-banner').offsetHeight,
-    }));
-    expect(pad).toBeGreaterThanOrEqual(h);
+    // a reserva é aplicada por um ResizeObserver: espera o primeiro quadro em vez de ler na hora
+    await expect.poll(() => page.evaluate(() => parseFloat(getComputedStyle(document.body).paddingBottom) - document.querySelector('.cc-banner').offsetHeight)).toBeGreaterThanOrEqual(0);
     await page.getByRole('button', { name: 'Recusar todos', exact: true }).click();
     const after = await page.evaluate(() => document.body.style.paddingBottom);
     expect(after).toBe('');

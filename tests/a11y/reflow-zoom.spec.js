@@ -15,7 +15,7 @@ test('life e life3d não bloqueiam o zoom (WCAG 1.4.4)', async ({ page }) => {
 test('life3d: fases são uma lista; só a atual leva aria-current', async ({ page }) => {
   await page.goto('/life3d.html');
   const items = page.locator('#progress-dots ol > li.dot');
-  expect(await items.count()).toBeGreaterThan(5);
+  await expect.poll(() => items.count(), { timeout: 15_000 }).toBeGreaterThan(5); // os pontos são montados por script
   await expect(items.first()).toContainText(/Fase 1 de \d+/);
   await expect(page.locator('#progress-dots [aria-label]')).toHaveCount(0); // nada de aria-label em <div>
   expect(await page.locator('#progress-dots [aria-current="step"]').count()).toBeLessThanOrEqual(1);
