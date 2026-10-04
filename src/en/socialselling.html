@@ -241,9 +241,11 @@
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/socialselling" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/socialselling" />
     <link rel="alternate" hreflang="x-default" href="https://mauricio.issei.com.br/socialselling" />
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#fff;color:#0d1117;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:0;transition:none}.a11y-skip:focus{top:1rem}</style>
 </head>
 
 <body class="bg-ink-900 text-slate-300 antialiased">
+    <a class="a11y-skip" href="#conteudo">Skip to content</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -310,7 +312,7 @@ Configuration (runtime.toml)</a>
         </aside>
 
         <!-- ░░ MAIN ░░ -->
-        <main class="min-w-0 flex-1 py-10 lg:py-14">
+        <main id="conteudo" class="min-w-0 flex-1 py-10 lg:py-14">
 
             <!-- HERO -->
             <section class="card-grad rounded-3xl border border-white/10 p-8 sm:p-12">
@@ -1872,9 +1874,9 @@ a feature = change the hot path; disconnect = zero impact. The E2E smoke validat
 <footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-400">
                 <p>SocialSelling · overview generated from vivid repository specifications. Source of truth:
                     <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-000-escopo-canonico.md"
-                        class="text-brand-400 hover:underline">ADR-000</a> ·
+                        class="text-brand-400 underline">ADR-000</a> ·
 operating memory: <a href="https://github.com/issei/SocialSelling/tree/main/CLAUDE.md"
-                        class="text-brand-400 hover:underline">CLAUDE. md</a>.
+                        class="text-brand-400 underline">CLAUDE. md</a>.
                 </p>
                 <p class="mt-2">Explanatory document and best practice model — update it when a decision or
 practice change.</p>

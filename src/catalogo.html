@@ -432,9 +432,11 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#fff;color:#0d1117;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:0;transition:none}.a11y-skip:focus{top:1rem}</style>
 </head>
 
 <body class="antialiased">
+    <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg backdrop-blur-sm">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -453,7 +455,7 @@
         </div>
     </nav>
 
-    <main class="pt-32 pb-16 px-6">
+    <main id="conteudo" class="pt-32 pb-16 px-6">
         <div class="container mx-auto max-w-6xl">
             <!-- Hero / Intro -->
             <div class="text-center mb-14">

@@ -62,7 +62,7 @@ Formato: **Local** · **Evidência** · **Quem/qual tarefa** · **WCAG** · **Ca
 - **Decisão humana?** Não para o mecanismo; **sim** para o texto dos toggles (copy jurídico/LGPD).
 - **Severidade:** CRITICAL pela definição do próprio A11Y.md ("modal sem gerenciamento de foco"). **Não verificado com leitor de tela real** — a medição de runtime fica na Fase 3 (`tests/a11y/consent.spec.js`).
 
-### 🔴 F-02 — Botão de reprodução sem nome acessível
+### 🔴 F-02 — Botão de reprodução sem nome acessível  _(Fase 4: resolvido)_
 - **Local:** `src/proposta.html` `#playBtn` (l. ~273). **M** (axe `button-name`, critical, 1 nó).
 - **Quem/tarefa:** usuário de leitor de tela em T4 (assistir ao vídeo/áudio da proposta) — ouve "botão" e não sabe o que faz. **WCAG** 4.1.2 (A).
 - **Correção:** `aria-label` ou texto visível ("Reproduzir áudio da proposta"); refletir estado (pausar). **Decisão humana?** Não.
@@ -109,7 +109,7 @@ Formato: **Local** · **Evidência** · **Quem/qual tarefa** · **WCAG** · **Ca
 - **Limite da sonda:** `document.getAnimations()` não enxerga GSAP/rAF; não mede paralaxe nem vídeo/autoplay. Número = **piso**, não total.
 - **WCAG** 2.3.3 (AAA — **House Rule** do A11Y.md no Standard), 2.2.2 (A) para qualquer movimento >5 s sem pausa. **Decisão humana?** Não; **sim** para "o que é conteúdo e o que é enfeite" nas páginas de storytelling (`devin`, `terminal-evolutivo`, `life*`).
 
-### 🟠 F-09 — Contornar blocos e landmarks
+### 🟠 F-09 — Contornar blocos e landmarks  _(Fase 4: resolvido, exceto as páginas em EXCEPTIONS.md)_
 - **Evidência (M):** só **16/41** páginas têm skip link real como 1º foco. **14** não têm `<main>` no DOM em runtime: `404`, `admin`, `admin-editor` (tem `<main>` no HTML-fonte e não no DOM medido — ?), `devops-salesforce`, `diagnostic`, `know`, `life3d`, `mapmind`, `proposta-observabilidade-mobile`, `proposta`, `service-operations-2-0`, `sustentacao`, `test-github`, `vsl`.
 - Inclui páginas **indexadas e de proposta comercial** (T3): `devops-salesforce`, `proposta`, `service-operations-2-0`, `sustentacao`. **WCAG** 2.4.1 (A), 1.3.1.
 - Primeiro foco incomum: `life.html` → `DIV`; `know.html` → `IFRAME`; `mapmind.html` → `OBJECT`. **Correção:** `<main id="conteudo">` + skip link (padrão já existe em `index.html`); não criar variante nova.

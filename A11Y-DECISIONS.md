@@ -13,6 +13,9 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Escolha com botão Salvar** → checkbox nativo (pode ter aparência de chave), não `role=switch`; item obrigatório fica focável com `aria-disabled` e a descrição associada. *(2026-10-03)*
 - **Botões de ação principal** → ≥ 44 px de altura; Aceitar e Recusar com mesmo tamanho e tipografia, borda do Recusar ≥ 3:1. *(2026-10-03, D-09)*
 - **Elemento fixo no canto** → quem cobre outro publica uma variável CSS e o outro se desloca (`--cc-banner-h` ↔ `<eco-nav>`); nada de z-index maior. *(2026-10-03)*
+- **Skip link** → `<a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>` como 1º filho do `<body>` + `<style id="a11y-skip">` inline no `<head>` (aparece só no foco, `transition:none`); alvo `<main id="conteudo">`. Inline por página: as páginas misturam 5 mecanismos de CSS. *(2026-10-03, Fase 4)*
+- **Botão de mídia play/pause** → nome fixo + `aria-pressed`; ícone `aria-hidden`; foco com `focus-visible:outline`, nunca `focus:outline-none` sozinho (D-04: corrigido no lugar, 1 uso). *(2026-10-03)*
+- **Foco na carga** → nenhuma página move o foco sozinha ao carregar (`life.html` deixou de focar o canvas): tira o skip link da ordem de Tab. *(2026-10-03)*
 - **Perfil de conformidade** → WCAG 2.2 AA, Compliance Profile **Standard**; as exceções localizadas de 7:1 (`apresentacao`, ADR-ap-001) permanecem. *(2026-10-03)*
 - **Integração do protocolo** → cópia versionada em `docs/a11y/` com SHA fixado e carga preguiçosa; sem `@import` no `AGENTS.md` (41 KB entraria em toda sessão). *(2026-10-03)*
 - **Páginas utilitárias** → só `boutique-empresarial-showcase` é corrigida; as demais seguem em `EXCEPTIONS.md` com a catraca impedindo piora. *(2026-10-03)*
