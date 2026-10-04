@@ -86,21 +86,41 @@ A página inteira, com os aprofundamentos recolhíveis e as trinta perguntas cr�
 
 **Índice completo**
 
-1. O problema: o colaborador como integrador humano
-2. Cinco estágios, do link à intenção resolvida
-3. Arquitetura de referência em seis camadas
-4. Um pedido do começo ao fim
-5. Os oito pilares técnicos
-6. A cadeia do conhecimento
-7. Identidade, autonomia e governança
-8. O agente dentro do processo
-9. Doze lentes, um conselho de arquitetura
-10. Trade-offs, anti-patterns e matriz tecnológica
-11. Operar um agente
-12. Fases e trilhas
-13. Índice de prontidão para agentes
-14. Trinta perguntas críticas
-15. Trilhas de estudo por perfil
+1. Resumo em vídeo
+2. O problema: o colaborador como integrador humano
+3. Cinco estágios, do link à intenção resolvida
+4. Arquitetura de referência em seis camadas
+5. Um pedido do começo ao fim
+6. Os oito pilares técnicos
+7. A cadeia do conhecimento
+8. Identidade, autonomia e governança
+9. O agente dentro do processo
+10. Doze lentes, um conselho de arquitetura
+11. Trade-offs, anti-patterns e matriz tecnológica
+12. Operar um agente
+13. Fases e trilhas
+14. Índice de prontidão para agentes
+15. Trinta perguntas críticas
+16. Trilhas de estudo por perfil
+
+Resumo em vídeo **[RECOMENDAÇÃO]**
+
+#### Antes das camadas técnicas: o estudo em vídeo
+
+O vídeo apresenta a escada de evolução do portal e as fundações de governança que precedem o agente. Se já conhece o modelo, pule para o problema: nada do que vem depois depende de assistir.
+
+***Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA.** O vídeo trata da arquitetura do conhecimento e do perigo da alucinação. Reforça que a autonomia máxima para ações sensíveis fica no **nível 2**, o que obriga a revisão formal por HITL (identidade, autonomia e governança).*
+
+Pular o vídeo e continuar a leitura ↓
+
+**Resumo textual do vídeo**
+
+- **Conhecimento:** o agente só responde bem sobre o que a arquitetura do conhecimento governa; sem fonte canônica, vigência e permissões, a resposta fluente pode estar errada (alucinação). Ver a cadeia do conhecimento.
+- **Identidade delegada:** o agente age com a identidade do colaborador em escopo mínimo, e não no lugar dele. Ver identidade e governança.
+- **MCP:** é a ponte entre a intenção abstrata do pedido e a execução real nos sistemas de backend, pela camada de integração. Ver a arquitetura em seis camadas.
+- **Autonomia:** ações sensíveis ficam no nível 2, no máximo, com confirmação humana (HITL) antes do efeito.
+
+Texto de apoio, não uma transcrição integral do vídeo.
 
 O problema **[INFERÊNCIA]**
 

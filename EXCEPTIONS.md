@@ -44,6 +44,11 @@ Isto é um fato registrado, não uma defesa: se um visitante chegar nelas, as ba
 - **WCAG:** 1.4.3 (2 nós `#6a7282` sobre `#0d1117` = 3,91:1), 1.4.10 (rolagem horizontal a 320 px, 461 px de largura), 2.4.1 · **Severidade:** 🟠 High
 - **Contorno:** conteúdo de exemplo/demonstração, não proposta. **Resolução:** token muted `#99a1af` (já aprovado) + reflow.
 
+### EXC-008 — `src/digital-workplace-agentico.html` (vídeo embutido)
+- **WCAG:** 1.2.2 (legendas, pré-gravado) · **Severidade:** 🟡 Medium · **Aberta em:** 2026-10-04
+- **Quebrado:** o vídeo do YouTube só tem legendas autogeradas (ou não verificadas) — rascunho, não alternativa entregue (`docs/a11y/references/guide-media.md` §2). Não há transcrição integral.
+- **Contorno:** resumo textual em `<details>` na própria seção e link "Pular o vídeo". **Resolução:** revisar/publicar legendas PT-BR no YouTube Studio e linkar a transcrição; então remover esta entrada. Revisão: 2027-04-03.
+
 ### EXC-007 — `aria-soup` — **ENCERRADA (Fase 7)**
 - `role="main"`/`role="navigation"` redundantes foram removidos (último caso: `src/life.html`, `<nav aria-label="Controles táteis">`).
 - Os `role="list"` em `engenharia-agentes-ia` são deliberados (Safari/VoiceOver remove a semântica de lista com `list-style:none`; o auditor mediu `list-style-type:none` em 7 das 8 listas): registrados em `A11Y-DECISIONS.md`, não são desvio. O `verify-a11y.py` os reporta como erro: falso positivo conhecido.

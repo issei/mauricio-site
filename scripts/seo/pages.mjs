@@ -1173,6 +1173,14 @@ export const PAGES = [
       { name: 'RAG e conhecimento governado' }, { name: 'Governança de IA' },
     ],
     audience: 'Arquitetos corporativos, Product Managers, UX, Especialistas em IA, Segurança, SRE',
+    video: {
+      name: 'Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA',
+      description: 'Resumo em vídeo do estudo: arquitetura do conhecimento e alucinação, identidade delegada, MCP como ponte para os sistemas de backend e autonomia limitada ao nível 2 com HITL para ações sensíveis.',
+      thumb: 'https://i.ytimg.com/vi/Z-8YtFXi-oo/maxresdefault.jpg',
+      uploadDate: '2026-10-03', // ponytail: aproximada (= datePublished); corrigir com a data real do YouTube
+      embed: 'https://www.youtube-nocookie.com/embed/Z-8YtFXi-oo',
+      url: 'https://www.youtube.com/watch?v=Z-8YtFXi-oo',
+    },
     tldr: {
       heading: 'Digital Workplace agêntico, em poucas linhas',
       lede: 'É um portal corporativo que deixa de **organizar links** e passa a **resolver intenções**: o colaborador pede, o agente prepara, a pessoa confirma e o processo corre no sistema de registro. O agente é um elo de uma cadeia — **intenção, agente, conhecimento, ferramentas, processo, experiência** — e depende das fundações que atravessa: se um elo falta, ele herda a falha e não a corrige. Sem elas, passa a executar ações com credenciais amplas demais e sem trilha de auditoria.',
