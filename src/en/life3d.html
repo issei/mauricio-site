@@ -504,6 +504,7 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/life3d" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/life3d" />
@@ -511,6 +512,8 @@
 </head>
 
 <body>
+    <a class="a11y-skip" href="#conteudo">Skip to content</a>
+    <main id="conteudo">
     <canvas id="canvas3d" role="img" aria-label="Interactive 3D scenario of the journey of life"></canvas>
 
     <!-- UI Layer -->
@@ -573,6 +576,8 @@
         <button class="btn-pixel" id="btn-start"></button>
         <p class="controls-hint">W A S D · Keyboard arrows · Tap the screen</p>
     </div>
+
+    </main>
 
     <div role="status" aria-live="assertive" id="a11y-announcer" class="sr-only"></div>
 
