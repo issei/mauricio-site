@@ -1136,7 +1136,7 @@ body.eai-body {
 .eai-footer__nav a:hover { text-decoration: underline; }
 
 /* ====================== Reveal on scroll ====================== */
-[data-eai-reveal] {
+.js [data-eai-reveal] {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;

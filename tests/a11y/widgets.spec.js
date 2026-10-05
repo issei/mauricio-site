@@ -137,3 +137,32 @@ test('eco-nav sai da frente de um link focado embaixo dele e volta quando recebe
   await page.keyboard.press('Tab'); // próxima parada = o próprio eco-nav
   await expect(eco).not.toHaveAttribute('data-away', '');
 });
+
+/* ── Tooltip da artifice (auditoria-v2, AV2-06): SC 1.4.13 + nome do botão ───── */
+
+test('artifice: Esc dispensa o tooltip aberto por foco ou hover; a citação não entra no nome do botão', async ({ page }) => {
+  await abre(page, '/artifice.html');
+  const termo = page.locator('button[aria-describedby="tip-dejours"]');
+  const tip = page.locator('#tip-dejours');
+  await expect(termo).toHaveAccessibleName('Christophe Dejours');
+  await expect(termo).toHaveAccessibleDescription(/sofrimento ético/);
+  // foco por teclado (:focus-visible)
+  await termo.focus();
+  await page.keyboard.press('Shift+Tab');
+  await page.keyboard.press('Tab');
+  await expect(termo).toBeFocused();
+  await expect(tip).toBeVisible();
+  await expect(termo, 'com o tooltip visível, o nome continua só o termo').toHaveAccessibleName('Christophe Dejours');
+  await page.keyboard.press('Escape');
+  await expect(tip).toBeHidden();
+  // ao sair e voltar, o tooltip reaparece
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Shift+Tab');
+  await expect(tip).toBeVisible();
+  // hover: Esc com o ponteiro ainda em cima
+  await page.keyboard.press('Tab');
+  await termo.hover();
+  await expect(tip).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(tip).toBeHidden();
+});

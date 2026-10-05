@@ -112,10 +112,19 @@ body.art-body {
   line-height: 1.4;
   color: var(--color-art-text);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(4px);
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  /* `display:none`, não `visibility:hidden`: o tooltip oculto ainda alargava a área rolável (146 px de rolagem
+     horizontal a 768 px, auditoria-v2 AV2-18). */
+  display: none;
+}
+
+/* Ponte invisível sobre o vão de 0,5rem: o ponteiro vai do termo ao tooltip sem perdê-lo (SC 1.4.13, "pairável"). */
+.art-term__tip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 0.5rem;
 }
 
 .art-term__tip cite {
@@ -131,9 +140,13 @@ body.art-body {
 .art-term:hover .art-term__tip,
 .art-term:focus-visible .art-term__tip,
 .art-term.is-open .art-term__tip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  display: block;
+}
+
+/* Esc dispensa o tooltip mesmo com o ponteiro ou o foco ainda no termo (SC 1.4.13, "dispensável"); terms.js limpa
+   a marca ao sair do termo. */
+.art-term[data-dismissed] .art-term__tip {
+  display: none;
 }
 
 /* ------------------------------------------------------------------ */

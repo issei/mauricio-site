@@ -16,6 +16,14 @@
  *   reflow:320           rolagem horizontal da página inteira a 320 px (SC 1.4.10)
  *   motion:reduce        animações CSS/WAAPI ainda correndo com prefers-reduced-motion (infinitas ou > 1 ms
  *                        depois de .finish()). Piso: GSAP/rAF e vídeo não aparecem em getAnimations().
+ *   bp:<regra>           nós violando regra best-practice do axe (heading-order, empty-heading, region…): não é
+ *                        falha WCAG por si, mas o espelho EN com <h3> vazio escapou por estar fora das tags medidas
+ *   spacing:clip         elementos com texto que passam a ser cortados com o CSS do SC 1.4.12 (espaçamento)
+ *   nojs:hidden          1 se mais de 5% do texto fica invisível com JavaScript desligado (A11Y.md §6)
+ *
+ * Página que diverge do baseline é medida DE NOVO, sozinha, e só a segunda medição conta: sob carga (4 páginas em
+ * paralelo) uma métrica de tempo, como motion:reduce, oscilava e derrubava o gate sem mudança de código
+ * (docs/specs/a11y-first/auditoria-v2.md, AV2-11).
  *
  * Estado medido: movimento reduzido, rastreadores bloqueados (CDNs liberadas — exige rede),
  * banner de cookies visível (contexto novo = sem consentimento gravado).
@@ -92,8 +100,8 @@ async function measure(browser, base, file) {
     // Guarda contra servidor errado: página sem texto e sem <title> = nada foi servido, e a medição seria ruído.
     const { len, title } = await desktop.page.evaluate(() => ({ len: document.body?.innerText.trim().length ?? 0, title: document.title }));
     if (len < 50 && !title) throw new Error(`${file}: página vazia (${len} chars) — servidor/dist errado`);
-    const res = await new AxeBuilder({ page: desktop.page }).withTags(TAGS).exclude('iframe').analyze();
-    for (const v of res.violations) bump(`axe:${v.id}`, v.nodes.length);
+    const res = await new AxeBuilder({ page: desktop.page }).withTags([...TAGS, 'best-practice']).exclude('iframe').analyze();
+    for (const v of res.violations) bump(`${v.tags.some((t) => TAGS.includes(t)) ? 'axe' : 'bp'}:${v.id}`, v.nodes.length);
 
     const s = await desktop.page.evaluate(() => ({
       main: document.querySelectorAll('main').length,
@@ -114,8 +122,44 @@ async function measure(browser, base, file) {
     const motion = await desktop.page.evaluate(() => document.getAnimations()
       .filter((a) => a.playState === 'running' && a.effect?.getComputedTiming().duration > 1).length);
     bump('motion:reduce', motion);
+
+    // SC 1.4.12: recorte NOVO de texto depois do CSS do critério (o que já era cortado antes não conta)
+    const cortados = () => desktop.page.evaluate(() => [...document.querySelectorAll('body *')].filter((el) => {
+      const cs = getComputedStyle(el);
+      const corta = (v) => v === 'hidden' || v === 'clip';
+      if (cs.display === 'none' || cs.visibility === 'hidden' || el.closest('[aria-hidden="true"]')) return false;
+      if ((!corta(cs.overflowX) && !corta(cs.overflowY)) || el.clientWidth <= 2 || el.clientHeight <= 2) return false;
+      if (!(el.innerText || '').trim()) return false;
+      return (corta(cs.overflowY) && el.scrollHeight > el.clientHeight + 2) || (corta(cs.overflowX) && el.scrollWidth > el.clientWidth + 2);
+    }).length);
+    const antes = await cortados();
+    await desktop.page.addStyleTag({ content: '*{line-height:1.5!important;letter-spacing:.12em!important;word-spacing:.16em!important}p{margin-bottom:2em!important}' });
+    await desktop.page.waitForTimeout(300);
+    bump('spacing:clip', (await cortados()) - antes);
   } finally {
     await desktop.ctx.close();
+  }
+
+  const semJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
+  try {
+    const p = await semJs.newPage();
+    await p.goto(url, { waitUntil: 'load', timeout: 45000 });
+    const pct = await p.evaluate(() => {
+      const total = (document.body?.textContent || '').replace(/\s+/g, ' ').trim().length;
+      const oculto = (n) => { const c = getComputedStyle(n); return +c.opacity === 0 || c.visibility === 'hidden'; };
+      let escondido = 0;
+      for (const el of document.querySelectorAll('body *')) {
+        if (!oculto(el) || el.closest('[aria-hidden="true"],[role="dialog"],[role="tooltip"],noscript,template,dialog')) continue;
+        let a = el.parentElement; while (a && a !== document.body && !oculto(a)) a = a.parentElement;
+        if (a && a !== document.body) continue; // conta só o ancestral oculto mais alto
+        const t = (el.textContent || '').replace(/\s+/g, ' ').trim().length;
+        if (t >= 20) escondido += t;
+      }
+      return total ? escondido / total : 0;
+    });
+    if (pct > 0.05) bump('nojs:hidden');
+  } finally {
+    await semJs.close();
   }
 
   const narrow = await open(320, 640);
@@ -128,7 +172,7 @@ async function measure(browser, base, file) {
   return out;
 }
 
-async function run() {
+async function run(lista, pool) {
   let server = null;
   let base = flag('--base');
   if (!base) {
@@ -138,9 +182,9 @@ async function run() {
   }
   const browser = await chromium.launch();
   const measured = {};
-  const queue = [...pages];
+  const queue = [...lista];
   try {
-    await Promise.all(Array.from({ length: Math.min(POOL, queue.length) }, async () => {
+    await Promise.all(Array.from({ length: Math.min(pool, queue.length) }, async () => {
       for (let f = queue.shift(); f; f = queue.shift()) {
         measured[f] = await measure(browser, base, f);
         process.stderr.write(`  · ${f}\n`);
@@ -154,11 +198,17 @@ async function run() {
 }
 
 console.log(`▶ a11y-sweep: ${pages.length} página(s) (PT + EN), WCAG 2.2 AA, build de produção`);
-const measured = prune(await run());
+let measured = prune(await run(pages, POOL));
 const baseline = existsSync(BASELINE) ? JSON.parse(readFileSync(BASELINE, 'utf8')) : {};
 // Com --only, compara só o subconjunto medido.
 const scoped = only ? Object.fromEntries(Object.entries(baseline).filter(([p]) => only.includes(p))) : baseline;
-const { regressions, improvements } = compare(scoped, measured);
+let { regressions, improvements } = compare(scoped, measured);
+const divergentes = [...new Set([...regressions, ...improvements].map((l) => l.split(' ')[0]))];
+if (divergentes.length) {
+  console.log(`↻ a11y-sweep: ${divergentes.length} página(s) divergente(s); medindo de novo, uma por vez: ${divergentes.join(', ')}`);
+  measured = prune({ ...measured, ...(await run(divergentes, 1)) });
+  ({ regressions, improvements } = compare(scoped, measured));
+}
 const total = (c) => Object.values(c).reduce((a, k) => a + Object.values(k).reduce((x, y) => x + y, 0), 0);
 
 if (update) {

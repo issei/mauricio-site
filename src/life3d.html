@@ -402,6 +402,8 @@
             white-space: nowrap;
             border-width: 0;
         }
+            /* <main> recebe foco por script ao iniciar a jornada (não é controle): sem anel em volta da tela toda */
+        main#conteudo:focus { outline: none; }
     </style>
   <!-- ============================================================ -->
   <!-- ============================================================ -->
@@ -510,7 +512,7 @@
 
 <body>
     <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
-    <main id="conteudo">
+    <main id="conteudo" tabindex="-1">
     <canvas id="canvas3d" role="img" aria-label="Cenário 3D interativo da jornada de vida"></canvas>
 
     <!-- UI Layer -->
@@ -567,7 +569,7 @@
     <div id="fade" aria-hidden="true"></div>
 
     <!-- Intro Screen -->
-    <div id="intro" role="dialog" aria-modal="true" aria-label="Tela de entrada da experiência 3D">
+    <div id="intro">
         <h1>Vida em 3D</h1>
         <p class="subtitle">Uma jornada contemplativa pela história de Mauricio Issei — de 1982 aos dias de hoje.</p>
         <button class="btn-pixel" id="btn-start">▶ Iniciar Jornada</button>
@@ -1536,6 +1538,8 @@
                 const intro = document.getElementById('intro');
                 intro.style.opacity = '0';
                 setTimeout(() => { intro.style.display = 'none'; }, 700);
+                // o botão some com a tela de entrada: o foco vai ao <main>, não cai no <body> (SC 2.4.3)
+                document.getElementById('conteudo').focus({ preventScroll: true });
 
                 gameActive = true;
                 revealTriggered = false;
