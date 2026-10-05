@@ -153,11 +153,11 @@ export function initCap3({ board, ctx }) {
   canvas.innerHTML = `
     <div id="formula-blocks" class="flex flex-wrap gap-2 mb-8" aria-label="Blocos de conceito"></div>
     <div class="flex flex-col items-center gap-3">
-      <div id="formula-numerator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-400 text-sm p-2" role="group" aria-label="Numerador" aria-live="assertive">Numerador — arraste aqui</div>
-      <div class="text-3xl text-gray-400">÷</div>
-      <div id="formula-denominator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-400 text-sm p-2" role="group" aria-label="Denominador" aria-live="assertive">Denominador — arraste aqui</div>
+      <div id="formula-numerator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-400 text-sm p-2"><span class="w-full text-center">Numerador</span><span data-hint>arraste ou selecione um bloco e clique aqui</span></div>
+      <div class="text-3xl text-gray-400" aria-hidden="true">÷</div>
+      <div id="formula-denominator" class="drop-zone min-w-[220px] min-h-[52px] border-2 border-dashed border-gray-600 rounded-xl flex flex-wrap items-center justify-center gap-1 text-gray-400 text-sm p-2"><span class="w-full text-center">Denominador</span><span data-hint>arraste ou selecione um bloco e clique aqui</span></div>
     </div>
-    <div id="formula-validator" class="mt-6 text-center text-sm" hidden></div>
+    <div id="formula-validator" class="mt-6 text-center text-sm" role="status"></div>
     <div id="formula-naming" class="mt-8" hidden>
       <label class="block text-sm text-gray-400 mb-2" for="metric-name-input">Ótima lógica. Dê um nome para esse indicador:</label>
       <input type="text" id="metric-name-input" maxlength="60" placeholder="Ex.: Índice de Eficiência de IA"
@@ -172,12 +172,24 @@ export function initCap3({ board, ctx }) {
   let selected = null;
   const groupColor = { num: '#8a2be2', mon: '#3b82f6', hum: '#f97316' };
 
+  // Teclado (SC 2.1.1): bloco e zona seguem `div` porque o Firefox não arrasta `<button draggable>`;
+  // ganham o papel de botão e Enter/Espaço, e o caminho "selecionar → colocar" funciona sem arrastar.
+  const asButton = (node, activate) => {
+    node.setAttribute('role', 'button'); node.tabIndex = 0;
+    node.addEventListener('click', activate);
+    node.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  };
+
   F_BLOCKS.forEach((b) => {
     const chip = el('div', 'formula-block bg-occ-surface border rounded-lg px-3 py-2 text-sm text-white');
     chip.style.borderColor = groupColor[b.group];
-    chip.textContent = b.label; chip.tabIndex = 0; chip.dataset.concept = b.c; chip.draggable = true;
+    chip.textContent = b.label; chip.dataset.concept = b.c; chip.draggable = true;
+    chip.setAttribute('aria-pressed', 'false');
     chip.addEventListener('dragstart', (e) => e.dataTransfer.setData('text/plain', b.c));
-    chip.addEventListener('click', () => { document.querySelectorAll('.formula-block').forEach((x) => x.classList.remove('selected')); chip.classList.add('selected'); selected = b.c; });
+    asButton(chip, () => {
+      document.querySelectorAll('.formula-block').forEach((x) => { x.classList.remove('selected'); x.setAttribute('aria-pressed', 'false'); });
+      chip.classList.add('selected'); chip.setAttribute('aria-pressed', 'true'); selected = b.c;
+    });
     blocksEl.appendChild(chip);
   });
 
@@ -186,7 +198,7 @@ export function initCap3({ board, ctx }) {
     const key = zone === num ? 'num' : 'den';
     if (placed[key].includes(concept)) return;
     placed[key].push(concept);
-    if (placed[key].length === 1) zone.innerHTML = '';
+    zone.querySelector('[data-hint]')?.remove();
     const tag = el('span', 'inline-block bg-occ-bg rounded px-2 py-1 text-xs text-white'); tag.textContent = b.label; tag.style.border = `1px solid ${groupColor[b.group]}`;
     zone.appendChild(tag);
     validate();
@@ -194,11 +206,11 @@ export function initCap3({ board, ctx }) {
   [num, den].forEach((zone) => {
     zone.addEventListener('dragover', (e) => e.preventDefault());
     zone.addEventListener('drop', (e) => { e.preventDefault(); place(zone, e.dataTransfer.getData('text/plain')); });
-    zone.addEventListener('click', () => { if (selected) { place(zone, selected); } });
+    asButton(zone, () => { if (selected) { place(zone, selected); } });
   });
 
   function validate() {
-    const v = $('#formula-validator', canvas); v.hidden = false;
+    const v = $('#formula-validator', canvas);
     const numOk = placed.num.length === 1 && placed.num[0] === 'work';
     const denOk = ['api', 'infra', 'human'].every((x) => placed.den.includes(x)) && placed.den.length === 3;
     if (numOk && denOk) {

@@ -863,7 +863,7 @@ body.ec-body {
 
 /* ============================ Scroll reveal ============================ */
 
-.ec-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js .ec-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .ec-reveal.is-in { opacity: 1; transform: none; }
 
 /* ============================ Callout de conceito ============================ */

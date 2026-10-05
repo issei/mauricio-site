@@ -1,6 +1,6 @@
 ---
 name: a11y-design-reviewer
-description: Reviews changed src/*.html and *.css against the mauricio-site house rules — WCAG 2.1 AA accessibility (the axe gate), the "Dark Tech" design tokens, and the SEO checklist. Use proactively after creating or editing a page, before running the full Playwright gate.
+description: Reviews changed src/*.html and *.css against the mauricio-site house rules — WCAG 2.2 AA accessibility (docs/a11y/A11Y.md; the axe ratchet), the "Dark Tech" design tokens, and the SEO checklist. Use proactively after creating or editing a page, before running the full Playwright gate.
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -11,7 +11,7 @@ Revise apenas os arquivos alterados (use `git diff --name-only HEAD` e foque em 
 
 ## Checklist de revisão
 
-### 1. Acessibilidade (WCAG 2.1 AA — o gate roda axe e falha em serious/critical)
+### 1. Acessibilidade (WCAG 2.2 AA — protocolo `docs/a11y/A11Y.md`; a catraca `scripts/a11y-sweep.mjs` mede todas as páginas no build)
 - **Contraste**: texto sobre `#0d1117`/`#161b22`/`#1c2230` precisa de ≥ 4.5:1 (texto normal) / 3:1 (texto grande). Sinalize uso de `#007bff` em texto pequeno (falha ~4.3:1) — o token correto para texto é `#58a6ff`.
 - **Um único `<h1>`** por página; hierarquia de headings sem saltos.
 - **Skip link** (`href="#conteudo"`) e landmark `<main id="conteudo">`.

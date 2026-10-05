@@ -237,12 +237,12 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/socialselling" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/socialselling" />
     <link rel="alternate" hreflang="x-default" href="https://mauricio.issei.com.br/socialselling" />
-  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
-  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 </head>
 
 <body class="bg-ink-900 text-slate-300 antialiased">
@@ -327,7 +327,7 @@ green · 150+ tests</span>
 database-less</span>
                     <span
                         class="px-2.5 py-1 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/20">feedback
-Learning · ADR-007</span>
+learning · ADR-007</span>
                 </div>
                 <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight tracking-tight">
                     More efficient customer search<br class="hidden sm:block"> and automatic with AI.
@@ -454,7 +454,7 @@ clock and config.</p>
                                 <span class="font-mono text-violet-300 shrink-0">Learning/</span>
                                 <span class="text-slate-400">Logistic regression (pure Python) that readjusts <code
                                         class="text-brand-200">w_fit</code>/<code class="text-brand-200">w_intent</code>
-                                    from votes </span>
+                                    from votes ADR-007).</span>
                             </div>
                             <div class="flex items-start gap-2">
                                 <span class="font-mono text-brand-300 shrink-0">corpus/</span>
@@ -464,7 +464,7 @@ idempotent by <code class="text-brand-200">entity_id</code>) (ADR-006).</span>
                             <div class="flex items-start gap-2">
                                 <span class="font-mono text-brand-300 shrink-0">apollo/</span>
                                 <span class="text-slate-400">Incremental enrichment ladder B2B: discovery →
-firmography → contact véveal (ADR-004).</span>
+firmography → contact reveal (ADR-004).</span>
                             </div>
                             <div class="flex items-start gap-2">
                                 <span class="font-mono text-brand-300 shrink-0">web/</span>
@@ -729,14 +729,14 @@ Not in the system. PoC remains dry; discipline is total.</p>
                     <h3 class="font-semibold text-amber-300">Operating mode: Day vs. Night (L-057)</h3>
                     <div class="mt-3 grid sm:grid-cols-2 gap-4 text-sm">
                         <div>
-                            <p class="text-slate-200 font-medium"></p>
+                            <p class="text-slate-200 font-medium">☀️ Sessão de dia (interativa)</p>
                             <p class="text-slate-400 mt-1">Specifies and generates cards — <strong class="text-slate-300">no
 develops the product</strong>. Author of ADRs, SDDs, docs, tooling and curation of
 board. Card only goes to <em>All</em> with 100% DoR (Gherkin, fixtures, without ambiguity).
                             </p>
                         </div>
                         <div>
-                            <p class="text-slate-200 font-medium"></p>
+                            <p class="text-slate-200 font-medium">🌙 Run noturno (autônomo)</p>
                             <p class="text-slate-400 mt-1">Consumes column <em>All</em> via skill <code
                                     class="text-brand-200">github-sdd-sync</code>. Revalida DoR, implements, requires DoD
 (green gate, PR CI-green, PROGRESS and updated lessons).</p>
@@ -819,30 +819,30 @@ Makes it hit the wall faster. Hence the four pillars.
                                 <td class="px-4 py-3 text-white font-medium">A · Cognitive ceiling</td>
                                 <td class="px-4 py-3 text-slate-400">Batch extraction + RPD budget + waves
 resumables (ADR-005)</td>
-                                <td class="px-4 py-3"><span class="text-emerald-300"></span></td>
+                                <td class="px-4 py-3"><span class="text-emerald-300">✅ core</span></td>
                             </tr>
                             <tr>
                                 <td class="px-4 py-3 text-white font-medium">B · Cumulative corpus</td>
                                 <td class="px-4 py-3 text-slate-400">Runs accumulate; upsert idempotent; wave advances only
-with result (ADR-006)</td>
-                                <td class="px-4 py-3"><span class="text-emerald-300"></span></td>
+result (ADR-006)</td>
+                                <td class="px-4 py-3"><span class="text-emerald-300">✅ core</span></td>
                             </tr>
                             <tr>
                                 <td class="px-4 py-3 text-white font-medium">Apollo · Discovery</td>
                                 <td class="px-4 py-3 text-slate-400">People Search + org-enrich + reveal (ADR-004) — API
 master requires paid plan</td>
-                                <td class="px-4 py-3"><span class="text-emerald-300"></span></td>
+                                <td class="px-4 py-3"><span class="text-emerald-300">✅ implementado</span></td>
                             </tr>
                             <tr>
                                 <td class="px-4 py-3 text-white font-medium">C · Scalable state</td>
                                 <td class="px-4 py-3 text-slate-400">JSON monolithic → NDJSON/shards (no seat)</td>
-                                <td class="px-4 py-3"><span class="text-amber-300"></span></td>
+                                <td class="px-4 py-3"><span class="text-amber-300">⏸ diferido</span></td>
                             </tr>
                             <tr>
                                 <td class="px-4 py-3 text-white font-medium">D · Entity resolution</td>
                                 <td class="px-4 py-3 text-slate-400">Canon domain + exclusion of vendors + dedup
 cross-provider</td>
-                                <td class="px-4 py-3"><span class="text-amber-300"></span></td>
+                                <td class="px-4 py-3"><span class="text-amber-300">⏸ diferido</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -880,14 +880,14 @@ Byte-identical re-execution. It also applies to the feedback model (full-batch w
 raw: a provider does not drop the lot.</p>
                     </div>
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
-                        <span class="text-xs font-mono text-brand-300">L-051 · CSS position-events</span>
+                        <span class="text-xs font-mono text-brand-300">L-051 · CSS point-events</span>
                         <p class="text-sm text-slate-300 mt-1.5">Container <code
                                 class="text-brand-200">fixed inset-0 z-50</code> closed needs to <code
                                 class="text-brand-200">pointer-events:none</code>; without it an invisible layer swallows
 all clicks without visible error.</p>
                     </div>
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
-                        <span class="text-xs font-mono text-brand-300">L-052 · deterministic ML</span>
+                        <span class="text-xs font-mono text-brand-300">L-052 · ML deterministic</span>
                         <p class="text-sm text-slate-300 mt-1.5">Logistic regression with full-batch gradient, init in
 zeros, samples sorted by <code class="text-brand-200">company_id</code> and without <code
                                 class="text-brand-200">random</code> → same feedback. json 
@@ -1120,7 +1120,7 @@ product.
                 <!-- Guardrails & Exceções -->
                 <div class="mt-5 grid sm:grid-cols-2 gap-4">
                     <div class="rounded-2xl border border-rose-500/20 bg-rose-500/5 p-5">
-                        <h3 class="font-semibold text-rose-300"></h3>
+                        <h3 class="font-semibold text-rose-300">⛔ Guardrails de autonomia (inegociáveis)</h3>
                         <ul class="mt-3 space-y-1.5 text-sm text-slate-400">
                             <li>Never commit/push directly to <code class="text-brand-200">main</code> — only via PR with CI
 green</li>
@@ -1602,7 +1602,7 @@ network</strong>. Every external call is mocked with supervised recorded fixture
                         </p>
                     </div>
                     <div class="rounded-2xl border border-white/10 bg-ink-800 p-5">
-                        <h3 class="font-semibold text-white text-sm"></h3>
+                        <h3 class="font-semibold text-white text-sm">🗂️ Fixtures gravadas</h3>
                         <p class="text-xs text-slate-400 mt-1 mb-3"><code class="text-brand-200">tests/fixtures/</code>
                         </p>
                         <p class="text-xs text-slate-400">Real API responses captured once, with supervision, via
@@ -1622,7 +1622,7 @@ dedicated scripts:</p>
                         <ul class="mt-3 space-y-1.5 text-xs text-slate-400">
                             <li>Byte-identical execution (smoke executes 2×)</li>
                             <li>Numeric tolerance <code class="text-brand-200">abs(a-b) ≤ 1e-9</code></li>
-                            <li>SDs per hash SHA-256 stable (never random UUID)</li>
+                            <li>IDs per stable hash SHA-256 (never random UUID)</li>
                             <li>Clock injected as parameter (<code class="text-brand-200">now: datetime</code>)</li>
                             <li>Flakiness = failure (zero tolerance)</li>
                             <li><code class="text-brand-200">mypy --strict</code> no errors</li>

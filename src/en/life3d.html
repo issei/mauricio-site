@@ -403,6 +403,8 @@
             white-space: nowrap;
             border-width: 0;
         }
+            /* <main> recebe foco por script ao iniciar a jornada (não é controle): sem anel em volta da tela toda */
+        main#conteudo:focus { outline: none; }
     </style>
   <!-- ============================================================ -->
   <!-- ============================================================ -->
@@ -515,7 +517,7 @@
 
 <body>
     <a class="a11y-skip" href="#conteudo">Skip to content</a>
-    <main id="conteudo">
+    <main id="conteudo" tabindex="-1">
     <canvas id="canvas3d" role="img" aria-label="Interactive 3D scenario of the journey of life"></canvas>
 
     <!-- UI Layer -->
@@ -565,17 +567,17 @@
         <h2>End of Journey</h2>
         <p>This journey shows a way to build a life.<br>The question remains: <strong>What's your next level?</strong></p>
         <a href="life.html" class="btn-pixel">← 2D version</a>
-        <a href="index.html" class="btn-pixel" style="margin-top: 4px;"></a>
+        <a href="index.html" class="btn-pixel" style="margin-top: 4px;">↩ Início</a>
     </div>
 
     <!-- Fade overlay -->
     <div id="fade" aria-hidden="true"></div>
 
     <!-- Intro Screen -->
-    <div id="intro" role="dialog" aria-modal="true" aria-label="3D Experience Input Screen">
+    <div id="intro">
         <h1>3D Life</h1>
         <p class="subtitle">A contemplative journey through the history of Mauricio Issei — from 1982 to today.</p>
-        <button class="btn-pixel" id="btn-start">▶ Start Journey</button>
+        <button class="btn-pixel" id="btn-start">▶ Iniciar Jornada</button>
         <p class="controls-hint">W A S D · Keyboard arrows · Tap the screen</p>
     </div>
 
@@ -1471,7 +1473,7 @@
             STORY_DATA.forEach((_, i) => {
                 const dot = document.createElement('li');
                 dot.className = 'dot';
-                dot.innerHTML = `<span class="sr-only">Phase ${i + 1} of ${STORY_DATA.length}</span>`;
+                dot.innerHTML = `<span class="sr-only">Fase ${i + 1} de ${STORY_DATA.length}</span>`;
                 list.appendChild(dot);
             });
             nav.appendChild(list);
@@ -1541,6 +1543,8 @@
                 const intro = document.getElementById('intro');
                 intro.style.opacity = '0';
                 setTimeout(() => { intro.style.display = 'none'; }, 700);
+                // o botão some com a tela de entrada: o foco vai ao <main>, não cai no <body> (SC 2.4.3)
+                document.getElementById('conteudo').focus({ preventScroll: true });
 
                 gameActive = true;
                 revealTriggered = false;

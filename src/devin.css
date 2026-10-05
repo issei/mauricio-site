@@ -665,7 +665,8 @@ html.lenis body {
   border-radius: 6px;
   padding: 1.25rem 1.5rem;
   text-align: center;
-  flex: 0 0 auto;
+  /* encolhe e quebra a descrição (SC 1.4.12: com espaçamento ampliado a 3ª caixa saía da seção, auditoria-v2 AV2-07) */
+  flex: 0 1 auto;
   min-width: 160px;
 }
 
@@ -985,7 +986,7 @@ html.lenis body {
 }
 
 /* Exercise cards */
-.ep07-exercise-card {
+.js .ep07-exercise-card {
   background: #1A1D21;
   border: 1px solid #334155;
   border-radius: 8px;
@@ -1221,7 +1222,7 @@ html.lenis body {
   margin-top: 2rem;
 }
 
-.ep07-mentoria__card {
+.js .ep07-mentoria__card {
   background: #1A1D21;
   border: 1px solid #334155;
   border-radius: 8px;
@@ -1348,7 +1349,7 @@ html.lenis body {
   gap: 1.5rem;
 }
 
-.ep07-aplicacao-card {
+.js .ep07-aplicacao-card {
   background: #0B1F33;
   border: 1px solid #334155;
   border-radius: 8px;
@@ -1401,7 +1402,7 @@ html.lenis body {
   margin-bottom: 4rem;
 }
 
-.ep08-passo {
+.js .ep08-passo {
   display: flex;
   gap: 2rem;
   align-items: flex-start;
@@ -1560,7 +1561,7 @@ html.lenis body {
   margin: 0 auto;
 }
 
-.ep08-reflexao__label {
+.js .ep08-reflexao__label {
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -1580,7 +1581,7 @@ html.lenis body {
   margin-bottom: 2rem;
 }
 
-.ep08-reflexao__pergunta--1 {
+.js .ep08-reflexao__pergunta--1 {
   font-size: clamp(2rem, 4vw, 3rem);
   color: #FFFFFF;
   font-weight: 400;
@@ -1588,7 +1589,7 @@ html.lenis body {
   transform: translateY(20px);
 }
 
-.ep08-reflexao__pergunta--2 {
+.js .ep08-reflexao__pergunta--2 {
   font-size: clamp(2rem, 4vw, 3rem);
   color: #F5F7FA;
   font-style: italic;
@@ -1597,7 +1598,7 @@ html.lenis body {
   transform: translateY(20px);
 }
 
-.ep08-reflexao__rodape {
+.js .ep08-reflexao__rodape {
   font-size: 0.8125rem;
   color: #94A3B8;
   font-style: italic;
@@ -1615,7 +1616,7 @@ html.lenis body {
   margin-bottom: 4rem;
 }
 
-.ep08-mudanca__titulo-afirmacao {
+.js .ep08-mudanca__titulo-afirmacao {
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
   color: #FFFFFF;
@@ -1625,7 +1626,7 @@ html.lenis body {
   transform: translateY(20px);
 }
 
-.ep08-mudanca__subtitulo {
+.js .ep08-mudanca__subtitulo {
   font-size: clamp(1.25rem, 2.5vw, 2rem);
   color: #FF6200;
   font-style: italic;
@@ -1641,7 +1642,7 @@ html.lenis body {
   margin-bottom: 4rem;
 }
 
-.ep08-transformacao-card {
+.js .ep08-transformacao-card {
   background: #0B1F33;
   border: 1px solid #334155;
   border-radius: 8px;
@@ -1654,7 +1655,7 @@ html.lenis body {
   background: #1A1D21;
 }
 
-.ep08-transformacao-card--ponte {
+.js .ep08-transformacao-card--ponte {
   background: transparent;
   border: none;
   padding: 0;
@@ -1714,7 +1715,7 @@ html.lenis body {
   height: 90px;
 }
 
-.ep08-mudanca__sintese {
+.js .ep08-mudanca__sintese {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 700;
   color: #FF6200;
@@ -1732,7 +1733,7 @@ html.lenis body {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.ep08-ato-tres__label {
+.js .ep08-ato-tres__label {
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -1748,7 +1749,7 @@ html.lenis body {
   font-style: normal;
 }
 
-.ep08-pergunta__linha-1 {
+.js .ep08-pergunta__linha-1 {
   font-size: clamp(1.75rem, 3.5vw, 3rem);
   font-weight: 400;
   color: #FFFFFF;
@@ -1758,7 +1759,7 @@ html.lenis body {
   transform: translateY(20px);
 }
 
-.ep08-pergunta__linha-2 {
+.js .ep08-pergunta__linha-2 {
   font-size: clamp(1.75rem, 3.5vw, 3rem);
   font-weight: 700;
   color: #FF6200;
@@ -1809,7 +1810,7 @@ html.lenis body {
   margin-bottom: 3rem;
 }
 
-.ep09-atitude-card {
+.js .ep09-atitude-card {
   background: #1A1D21;
   border: 1px solid #334155;
   border-radius: 8px;
@@ -1872,7 +1873,7 @@ html.lenis body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.ep09-estagiario__linha1 {
+.js .ep09-estagiario__linha1 {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 400;
   color: #F5F7FA;
@@ -1881,7 +1882,7 @@ html.lenis body {
   opacity: 0;
 }
 
-.ep09-estagiario__linha2 {
+.js .ep09-estagiario__linha2 {
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
   font-weight: 700;
   color: #FF6200;
@@ -1908,7 +1909,7 @@ html.lenis body {
   gap: 1.5rem;
 }
 
-.ep09-contexto-card {
+.js .ep09-contexto-card {
   background: #1A1D21;
   border: 1px solid #334155;
   border-radius: 8px;
@@ -1977,7 +1978,7 @@ html.lenis body {
   margin-bottom: 3rem;
 }
 
-.ep09-cultura__definicao {
+.js .ep09-cultura__definicao {
   font-size: clamp(1.75rem, 3vw, 2.75rem);
   font-weight: 700;
   color: #FFFFFF;
@@ -1995,7 +1996,7 @@ html.lenis body {
   margin-bottom: 3rem;
 }
 
-.ep09-pilar-cultura {
+.js .ep09-pilar-cultura {
   background: #1A1D21;
   border: 1px solid #334155;
   border-left: 4px solid #FF6200;
@@ -2025,7 +2026,7 @@ html.lenis body {
   line-height: 1.7;
 }
 
-.ep09-cultura__sintese {
+.js .ep09-cultura__sintese {
   font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   font-weight: 700;
   color: #FF6200;
@@ -2051,7 +2052,7 @@ html.lenis body {
   margin-bottom: 5rem;
 }
 
-.ep09-agil-card {
+.js .ep09-agil-card {
   background: #1A1D21;
   border: 1px solid #334155;
   border-radius: 8px;
@@ -2230,7 +2231,7 @@ html.lenis body {
   text-align: center;
 }
 
-.ep09-fechamento__frase-principal {
+.js .ep09-fechamento__frase-principal {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: #FFFFFF;
@@ -2249,7 +2250,7 @@ html.lenis body {
   text-align: left;
 }
 
-.ep09-fechamento__corpo p {
+.js .ep09-fechamento__corpo p {
   font-size: 1.0625rem;
   color: #94A3B8;
   line-height: 1.8;
@@ -2277,7 +2278,7 @@ html.lenis body {
   gap: 1.25rem;
 }
 
-.ep09-passo-card {
+.js .ep09-passo-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 8px;
@@ -2329,14 +2330,14 @@ html.lenis body {
   gap: 1.5rem;
 }
 
-.ep09-encerramento__obrigado {
+.js .ep09-encerramento__obrigado {
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   color: #FFFFFF;
   opacity: 0;
 }
 
-.ep09-encerramento__convite {
+.js .ep09-encerramento__convite {
   font-size: 1.25rem;
   color: #94A3B8;
   opacity: 0;
@@ -2358,7 +2359,7 @@ html.lenis body {
   color: #94A3B8;
 }
 
-.ep09-encerramento__cta {
+.js .ep09-encerramento__cta {
   margin-top: 0.5rem;
   display: inline-block;
   color: #FF6200;

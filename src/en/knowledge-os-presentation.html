@@ -608,12 +608,12 @@
 }
 </script>
 <!-- AEO:END -->
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/knowledge-os-presentation" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/knowledge-os-presentation" />
     <link rel="alternate" hreflang="x-default" href="https://mauricio.issei.com.br/knowledge-os-presentation" />
-  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
-  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 </head>
 
 <body class="antialiased">
@@ -1682,7 +1682,7 @@ It changed how I think about documenting."
                             <li>Lineage navigates: regulatory requirement → spec → ADR → code → test → deploy.</li>
                             <li>Each node with timestamp, author, approval and version.</li>
                             <li>Answer always cited; no citation, no statement.</li>
-                            <li>Export auditable (PDF + JSON-LD signed).</li>
+                            <li>Export auditable (PDF + signed JSON-LD).</li>
                         </ol>
                     </div>
                 </div>
@@ -1749,7 +1749,7 @@ It changed how I think about documenting."
                             <h4 class="text-sm uppercase tracking-wide text-gray-400 mb-2">Capabilities that the graph enables</h4>
                             <div class="card">
                                 <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-search text-blue-400"></i> Impact Analysis</h5>
-                                <p class="text-xs text-gray-400">"Data ADR-019, which specs/contracts/tests will be affected?" — automatic response via traversal.</p>
+                                <p class="text-xs text-gray-400">"Dado ADR-019, which specs/contracts/tests will be affected?" — auto-response via traversal.</p>
                             </div>
                             <div class="card">
                                 <h5 class="font-semibold text-white text-sm mb-1"><i class="fas fa-bolt text-purple-400"></i> Conflict Detection</h5>
@@ -2174,9 +2174,9 @@ It changed how I think about documenting."
                             <div>
                                 <h4 class="text-sm font-bold text-green-300 mb-1">Output criteria</h4>
                                 <ul class="text-xs text-gray-400 space-y-1">
-                                    <li> &gt; 60% in the pilot domain</li>
-                                    <li> &gt; 0.75 in internal benchmark</li>
-                                    <li></li>
+                                    <li>✓ Knowledge Coverage &gt; 60% no domínio piloto</li>
+                                    <li>✓ Recall@10 &gt; 0.75 em benchmark interno</li>
+                                    <li>✓ Knowledge Council operando</li>
                                     <li>NPS internal &gt; 40 between engineers</li>
                                 </ul>
                             </div>
@@ -2203,9 +2203,9 @@ It changed how I think about documenting."
                             <div>
                                 <h4 class="text-sm font-bold text-green-300 mb-1">Output criteria</h4>
                                 <ul class="text-xs text-gray-400 space-y-1">
-                                    <li>♪ Groundedness ♪ &gt; 0.85 in production</li>
+                                    <li>✓ Groundedness &gt; 0.85 em produção</li>
                                     <li>♪ Hallucination rate &lt; 5% ♪</li>
-                                    <li></li>
+                                    <li>✓ Time-to-Decision −30% vs baseline</li>
                                     <li>At least 1 incident solved with lineage</li>
                                 </ul>
                             </div>
@@ -2232,9 +2232,9 @@ It changed how I think about documenting."
                                 <h4 class="text-sm font-bold text-green-300 mb-1">Output criteria</h4>
                                 <ul class="text-xs text-gray-400 space-y-1">
                                     <li>3+ areas in production without central coordination</li>
-                                    <li> &gt; 3x</li>
-                                    <li> &lt; 4 h</li>
-                                    <li>Drift between domains &lt; 1% per quarter</li>
+                                    <li>✓ Reuse Index &gt; 3x</li>
+                                    <li>✓ Audit Time &lt; 4h</li>
+                                    <li>✓ Drift entre domínios &lt; 1% por trimestre</li>
                                 </ul>
                             </div>
                         </div>
@@ -2259,8 +2259,8 @@ It changed how I think about documenting."
                             <div>
                                 <h4 class="text-sm font-bold text-green-300 mb-1">Output criteria</h4>
                                 <ul class="text-xs text-gray-400 space-y-1">
-                                    <li></li>
-                                    <li>✓ &gt; 30% of PRs with cognitive contribution</li>
+                                    <li>✓ Time-to-Decision −60% vs baseline</li>
+                                    <li>✓ &gt; 30% de PRs com contribuição cognitiva</li>
                                     <li>Past regulatory audit with lineage</li>
                                     <li>Knowledge operating as a product</li>
                                 </ul>

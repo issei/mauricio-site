@@ -48,6 +48,8 @@ export async function expectNoSeriousA11yViolations(page, context) {
     .catch(() => {});
 
   let builder = new AxeBuilder({ page })
+    // Tags até 2.1: os critérios novos do 2.2 (alvo, foco obscurecido…) são cobrados em TODAS as páginas, no build,
+    // pela catraca (scripts/a11y-sweep.mjs) e por tests/a11y/. Aqui a asserção é por página, no dev server.
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
     .exclude('iframe'); // iframes de origem cruzada não são auditáveis por nós
   if (context) builder = builder.include(context);

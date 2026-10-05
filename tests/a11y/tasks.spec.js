@@ -55,6 +55,32 @@ test('proposta: botão de áudio tem nome, estado e foco visível', async ({ pag
   expect(outline).not.toBe('none');
 });
 
+// T4 (auditoria-v2, AV2-01): a fração do capítulo 3 do OCC só se montava com mouse — blocos `div` com
+// tabindex e só `click`, zonas sem foco — e sem ela os capítulos 4–6 não liberam.
+test('OCC cap. 3: monta a fração só com teclado', async ({ page }) => {
+  await page.goto('/operacao-capital-cognitivo.html');
+  await page.waitForFunction(() => typeof window.__DEBUG_skipToChapter === 'function');
+  await page.evaluate(() => window.__DEBUG_skipToChapter(3));
+  const bloco = (nome) => page.getByRole('button', { name: nome, exact: true });
+  const num = page.getByRole('button', { name: /^Numerador/ });
+  const den = page.getByRole('button', { name: /^Denominador/ });
+  for (const [nome, zona, tecla] of [
+    ['Trabalho Correto Aprovado', num, 'Enter'],
+    ['Custo API', den, ' '],
+    ['Custo de Infraestrutura', den, 'Enter'],
+    ['Custo Revisão Humana', den, ' '],
+  ]) {
+    await bloco(nome).focus();
+    await page.keyboard.press(tecla);
+    await expect(bloco(nome)).toHaveAttribute('aria-pressed', 'true');
+    await zona.focus();
+    await page.keyboard.press(tecla);
+  }
+  await expect(page.locator('#formula-validator')).toHaveAttribute('role', 'status');
+  await expect(page.locator('#formula-validator')).toContainText('Lógica correta');
+  await expect(page.locator('#formula-naming')).toBeVisible();
+});
+
 test('curriculo: botão secundário mantém 4,5:1 também no hover', async ({ page }) => {
   await page.goto('/curriculo.html');
   const btn = page.locator('a.btn-secondary', { hasText: 'LinkedIn' }).first();

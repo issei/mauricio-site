@@ -35,6 +35,40 @@ for (const pagina of ['index', 'curriculo']) {
   });
 }
 
+/* 1b — auditoria-v2 (AV2-05): voltando com Shift+Tab, o foco não some inteiro sob o cabeçalho fixo (2.4.11).
+   O teste 1 só olhava o banner do rodapé; aqui é o cabeçalho, que só cobre quem navega para TRÁS. */
+for (const pagina of ['curriculo', 'service-operations-2-0', 'index', 'apresentacao', 'knowledge-os-presentation', 'proposta-engenharia-reversa']) {
+  test(`${pagina}: Shift+Tab de baixo para cima nunca esconde o foco inteiro sob um fixo/sticky opaco`, async ({ page, browserName }) => {
+    test.skip(browserName === 'webkit', 'Safari não tabula links');
+    test.setTimeout(120_000);
+    await semBanner(page);
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(`/${pagina}.html`);
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    const cobertos = [];
+    for (let i = 0; i < 120; i++) {
+      await page.keyboard.press('Shift+Tab');
+      await page.evaluate(() => new Promise((ok) => { let y = -1, n = 0; const t = () => { n = scrollY === y ? n + 1 : 0; y = scrollY; n >= 3 ? ok() : requestAnimationFrame(t); }; t(); }));
+      const r = await page.evaluate(() => {
+        let a = document.activeElement;
+        if (!a || a === document.body) return { fim: true };
+        while (a.shadowRoot?.activeElement) a = a.shadowRoot.activeElement;
+        if (a.closest('eco-nav') || a.tagName === 'ECO-NAV' || a.closest('.a11y-skip')) return null;
+        const b = a.getBoundingClientRect();
+        if (!b.width || !b.height || b.bottom < 0 || b.top > innerHeight) return null;
+        // coberto = os 4 cantos e o centro caem num elemento fixo/sticky de fundo opaco que não é o foco
+        const opaco = (n) => { for (; n; n = n.parentElement) { const c = getComputedStyle(n); if (c.position === 'fixed' || c.position === 'sticky') { const al = c.backgroundColor.match(/[\d.]+/g); return al && (al.length < 4 || +al[3] >= 0.75); } } return false; };
+        const pts = [[b.left + 2, b.top + 2], [b.right - 2, b.top + 2], [b.left + 2, b.bottom - 2], [b.right - 2, b.bottom - 2], [b.left + b.width / 2, b.top + b.height / 2]];
+        const coberto = pts.every(([x, y]) => { const t = document.elementFromPoint(x, y); return t && !a.contains(t) && !t.contains(a) && opaco(t); });
+        return coberto ? { nome: `${a.tagName} ${(a.textContent || '').trim().slice(0, 30)}` } : null;
+      });
+      if (r?.fim) break;
+      if (r?.nome) cobertos.push(r.nome);
+    }
+    expect(cobertos, 'paradas de Shift+Tab inteiras sob cabeçalho fixo').toEqual([]);
+  });
+}
+
 test('recusar pelo teclado devolve o foco ao botão de preferências, não ao <body>', async ({ page }) => {
   await page.goto('/index.html');
   const recusar = page.getByRole('button', { name: 'Recusar todos', exact: true });

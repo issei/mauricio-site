@@ -113,7 +113,7 @@
       height: 1px;
     }
 
-    .animated {
+    .js .animated {
       opacity: 0;
       transform: translateY(30px);
       transition:
@@ -1053,7 +1053,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
     <div class="max-w-4xl mx-auto px-6 text-center">
       <div class="animated">
         <div class="inline-flex items-center gap-2 badge px-4 py-2 rounded-full text-xs font-semibold mb-6">
-          
+          🏁 Conclusão
         </div>
         <h2 class="text-3xl lg:text-4xl xl:text-5xl font-black mb-6 leading-tight">
           From Static Page to <span class="gradient-text">Live Manual</span>
@@ -1155,12 +1155,12 @@ Qual dor específica isso resolve? O que acontece se não for feito?
       },
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
     );
-<script type="module" src="../js/a11y-scroll-regions.js"></script>
     document
       .querySelectorAll(".animated")
       .forEach((el) => observer.observe(el));
   </script>
 <script type="module" src="../js/eco-nav.js"></script>
+<script type="module" src="../js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>

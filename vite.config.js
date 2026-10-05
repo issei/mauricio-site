@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve, parse } from 'path';
+import { existsSync } from 'fs';
 import tailwindcss from '@tailwindcss/vite'
 import { globSync } from 'glob';
 import sitemap from 'vite-plugin-sitemap';
@@ -71,12 +72,36 @@ const webmcp = () => ({
 });
 
 /*
+ * `hreflang` recíproco (SDD-i18n-en §6.1; auditoria-v2 AV2-13): o gerador do gêmeo escreve o trio no espelho EN,
+ * mas a página PT ficava sem a volta — e anotação sem volta é ignorada pelos buscadores. Injetar no build cobre as
+ * páginas PT com espelho sem editar a fonte (o que tornaria todos os espelhos "velhos" para o sync-i18n).
+ */
+const SITE = 'https://mauricio.issei.com.br';
+const hreflangPt = () => ({
+  name: 'hreflang-pt',
+  transformIndexHtml(html, ctx) {
+    const file = ctx.filename.replace(/\\/g, '/');
+    const nome = file.split('/').pop();
+    if (!file.endsWith(`/src/${nome}`) || html.includes('hreflang=') || !existsSync(resolve(__dirname, 'src/en', nome))) return;
+    const slug = nome.replace(/\.html$/, '');
+    const pt = slug === 'index' ? '/' : `/${slug}`;
+    const en = slug === 'index' ? '/en/' : `/en/${slug}`;
+    return [['pt-BR', pt], ['en', en], ['x-default', pt]].map(([lang, rota]) => ({
+      tag: 'link', attrs: { rel: 'alternate', hreflang: lang, href: SITE + rota }, injectTo: 'head',
+    }));
+  },
+});
+
+/*
  * Indicador de foco de base em toda página (docs/specs/a11y-first, Fase 6).
  * O anel padrão do Chrome sai quase preto (rgb(16,16,16)) em páginas escuras — invisível, e
  * a SC 2.4.7 falha sem que o axe note. `:where()` tem especificidade zero: qualquer estilo de
  * foco da própria página continua mandando; só preenche o que não tem nenhum.
  * `summary` em contêiner `overflow:hidden` (acordeões com cantos arredondados) tem o anel recortado:
  * o deslocamento negativo o mantém dentro da caixa.
+ * `scroll-padding-top` (SC 2.4.11, auditoria-v2 AV2-05): ao voltar com Shift+Tab o navegador rola o foco para a
+ * borda de cima da janela, para baixo do cabeçalho fixo (28 páginas têm um, de 61 a 81 px). 6rem cobre todos;
+ * `:where()` deixa a página com valor próprio (develop-engineering, salesforce-agentic-*) mandar.
  */
 const focusBase = () => ({
   name: 'a11y-focus-base',
@@ -86,9 +111,16 @@ const focusBase = () => ({
       attrs: { id: 'a11y-base' },
       children:
         ':where(a[href],button,summary,input,select,textarea,[tabindex]:not([tabindex="-1"])):focus-visible{outline:2px solid #58a6ff;outline-offset:2px}' +
-        'summary:focus-visible{outline-offset:-4px}',
+        'summary:focus-visible{outline-offset:-4px}' +
+        ':where(html){scroll-padding-top:6rem}',
       injectTo: 'head-prepend',
     },
+    /*
+     * "Conteúdo refém do JavaScript" (A11Y.md §6; auditoria-v2 AV2-09): animação de entrada que parte de `opacity:0`
+     * deixava até 91% do texto invisível sem JS. A classe `js` entra antes do primeiro paint e as regras de revelação
+     * só escondem sob `.js` — sem script, o estado padrão é o legível.
+     */
+    { tag: 'script', children: "document.documentElement.classList.add('js')", injectTo: 'head-prepend' },
   ],
 });
 
@@ -108,6 +140,7 @@ export default defineConfig({
     wellKnownJsonContentType(),
     webmcp(),
     focusBase(),
+    hreflangPt(),
     sitemap({
       hostname: 'https://mauricio.issei.com.br',
       generateRobotsTxt: false,

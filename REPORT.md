@@ -10,11 +10,11 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
 
 ## 📌 Contexto da Validação
 - **Funcionalidade/Épico:** retrofit de acessibilidade do site inteiro — 42 páginas PT em `src/*.html` e 33 espelhos EN gerados em `src/en/*.html`. Fases 1–8 em `docs/specs/a11y-first/implementation-plan.md`.
-- **Data do Teste:** 04/10/2026
-- **Cobre a interface em:** branch `feat/a11y-first-fase7`, commit `c9d085c` (build de produção, `vite build`, servido por `vite preview`)
+- **Data do Teste:** 04/10/2026; **revisado em 05/10/2026** pela auditoria v2 (`docs/specs/a11y-first/auditoria-v2.md`)
+- **Cobre a interface em:** branch `fix/a11y-auditoria-v2` sobre `main @ fa5f4a8` (build de produção, `vite build`, servido por `vite preview`)
 - **Versão do padrão:** 2.2.0
 - **Status de Conformidade:** ⚠️ CONDICIONAL (Passa com Exceções)
-  - Motivos: 7 páginas utilitárias em `EXCEPTIONS.md` (EXC-001…006, decisão do dono); checkpoints humanos pendentes (§3, §5); achados abertos da verificação independente (nota 3).
+  - Motivos: 7 páginas utilitárias em `EXCEPTIONS.md` (EXC-001…006, 008, decisão do dono); checkpoints humanos pendentes (§3, §5); achados abertos da verificação independente (nota 3) e da auditoria v2 (nota 7).
 - **Independência da Verificação:** self-reported ⚠️ — o nível geral é o mais baixo que se aplica. Uma auditoria em contexto novo (subagente, ver abaixo) cobriu só o build em `cb060c6`; o build atual, com as correções feitas depois dela, não foi reauditado por ninguém além do autor.
   - *Quem verificou:* subagente do Claude Code em sessão nova sobre o repositório (não leu `docs/specs/a11y-first/`, `A11Y-DECISIONS.md`, `REPORT.md`, `tests/a11y/` nem o histórico git; escreveu as próprias sondas). Mesma família de modelo do autor — por isso não é verificação por agente de outro modelo. Relatório e sondas: `docs/specs/a11y-first/verificacao-independente-fase7.md`, `docs/specs/a11y-first/fase7-sondas/`.
   - *Limite:* as correções feitas **depois** dessa auditoria (commit `c9d085c`) foram verificadas apenas por testes escritos pelo autor (`tests/a11y/independent.spec.js`). O auditor não as reexecutou.
@@ -23,7 +23,7 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - O gate está em `npm run gate` como **teto** (`scripts/a11y-static.mjs`, `tests/a11y/static-baseline.json`): o nº de erros só pode descer.
 
 ## 1. Verificação Técnica (Automated & Semantics)
-- [~] **Axe-Core:** catraca `scripts/a11y-sweep.mjs` mede 75 páginas (PT+EN) com tags wcag2a/2aa/21a/21aa/22aa contra o build de produção; **toda página fora de `EXCEPTIONS.md` está com 0 ocorrências** nas métricas da catraca (axe, `<main>`, skip link, `<h1>` único, reflow 320, movimento reduzido). Dívida restante: 38 ocorrências, todas nas páginas excepcionadas (`tests/a11y/baseline.json`). **Ressalva:** o auditor independente reproduziu 54/75 páginas limpas no axe; as outras têm 58 nós dentro do player do YouTube (DOM de terceiro), 6 em páginas excepcionadas e 2 `frame-title` (corrigidos depois, ver nota 3). O axe não decide 2 447 nós de contraste "incomplete" (texto sobre gradiente/imagem/canvas): **não verificados**.
+- [~] **Axe-Core:** catraca `scripts/a11y-sweep.mjs` mede 75 páginas (PT+EN) com tags wcag2a/2aa/21a/21aa/22aa contra o build de produção (desde a auditoria v2 também regras *best-practice* do axe como `bp:*`, recorte sob espaçamento de texto `spacing:clip` e texto invisível sem JS `nojs:hidden`; página divergente é medida de novo, sozinha, antes de falhar); **toda página fora de `EXCEPTIONS.md` está com 0 ocorrências** nas métricas da catraca (axe, `<main>`, skip link, `<h1>` único, reflow 320, movimento reduzido). Dívida restante: 38 ocorrências, todas nas páginas excepcionadas (`tests/a11y/baseline.json`). **Ressalva:** o auditor independente reproduziu 54/75 páginas limpas no axe; as outras têm 58 nós dentro do player do YouTube (DOM de terceiro), 6 em páginas excepcionadas e 2 `frame-title` (corrigidos depois, ver nota 3). O axe não decide 2 447 nós de contraste "incomplete" (texto sobre gradiente/imagem/canvas): **não verificados**.
 - [x] **Semântica HTML:** `<main id="conteudo">` + skip link nas páginas fora das exceções; `<dialog>` nativo no consentimento; botões nativos onde havia `div` clicável (exceto `admin-editor`, EXC-003). Evidência: auditor, item 2.
 - [x] **Hierarquia de Títulos:** um `<h1>` por página e `lang` coerente (pt-BR nas raízes, en nos espelhos), medidos pela catraca e pelo auditor. Saltos de nível entre `h2…h6` **não** foram medidos.
 
@@ -32,12 +32,13 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
 - [x] **Navegação Lógica:** sem armadilha de foco nas 8 páginas percorridas por Tab (index, catalogo, engenharia-agentes-ia, devin, artifice, operacao-capital-cognitivo, curriculo, life3d). Ordem visual × ordem do DOM **não** comparada de forma sistemática.
 - [~] **Foco Capturado (Modals/Overlays):** foco entra, Esc fecha e o foco volta ao gatilho no consentimento (`<dialog>`), no modal do currículo e nos diálogos do OCC (testes + auditor). **Aberto:** `life3d #intro` (`role=dialog aria-modal`) não gerencia o foco (nota 3, item 12).
 - [x] **Foco não obscurecido (SC 2.4.11):** `<eco-nav>` sai da frente do foco; o banner de cookies reserva altura, usa `scroll-padding-bottom` **e** um `focusin` que rola pela sobreposição (achado 1 do auditor; o CI mostrou que só o `scroll-padding` não basta no Firefox, que não rola para foco já parcialmente visível). Coberto por `independent.spec.js` em chromium, firefox e webkit; revisado em 04/10/2026 após o commit `114f40f`.
+  - **Auditoria v2 (05/10/2026):** o item estava `[x]` só para o rodapé. Voltando com Shift+Tab, o foco ficava **inteiro** sob o cabeçalho fixo em `curriculo`, `service-operations-2-0`, `index`, `apresentacao` e `proposta-engenharia-reversa` (AV2-05, capturas e teste). Corrigido com `scroll-padding-top:6rem` de especificidade zero no plugin `a11y-focus-base` (28 páginas têm cabeçalho fixo). Regressão: `independent.spec.js` (Shift+Tab em 6 páginas), que falha em 5 delas sem a correção. Chromium e Firefox locais; WebKit pula (Safari não tabula links).
 
 ## 3. Comportamento e Retorno de Tarefas
 - [ ] **Screen Reader Test:** **não realizado.** Nenhum par leitor de tela + navegador foi usado. Árvore de acessibilidade só lida por `ariaSnapshot` do Playwright. **Quem deve executar:** pessoa com leitor de tela — **dono ainda não designado (Q5 sem resposta)**. Sugestão mínima: NVDA + Firefox e VoiceOver + Safari nas tarefas T1–T7 de `docs/specs/a11y-first/product-spec.md`.
   - Par(es) usado(s): nenhum · Quem executou e quando: ninguém · Cenários executados: nenhum.
 - [~] **Controle por Voz (SC 2.5.3):** *rótulo no nome* verificado por teste em todas as 75 páginas (`tests/a11y/label-in-name.spec.js`, inclui o shadow DOM do `eco-nav`) depois que um scanner externo apontou 2 falhas (link da Alura e botão do `eco-nav`) e a sonda revelou 60 divergências em 46 páginas; corrigidas em 04/10/2026. **Não verificado:** uso real de Voice Control/Voice Access/Dragon, e controles sem `aria-label` cujo nome vem de `aria-labelledby` ou `title`. Quem deve: pessoa com a ferramenta.
-- [~] **Estados interativos inventariados:** *navegados por teste:* abas (14 tablists PT+EN, `widgets.spec.js`), quiz EAI, calibrador EAI, diálogos do OCC, consentimento (banner, modal, salvar), eco-nav (aberto/fechado/`data-away`), painel de evidências (fechado `inert`, aberto), modal do currículo, menu do celular (3 páginas, 375 px). *Lidos no código, não navegados:* simulador do OCC além de abrir/fechar, `terminal-evolutivo`, `life`/`life3d` (jogo), formulários das páginas excepcionadas. *Não verificado:* demais componentes sem estado dinâmico testado.
+- [~] **Estados interativos inventariados:** *navegados por teste:* abas (14 tablists PT+EN, `widgets.spec.js`), quiz EAI, calibrador EAI, diálogos do OCC, **montagem da fração do OCC (cap. 3) só por teclado** (auditoria v2, AV2-01: antes era impossível sem mouse e travava os capítulos 4–6; `tasks.spec.js`), tooltips da `artifice` (Esc dispensa, AV2-06), consentimento (banner, modal, salvar), eco-nav (aberto/fechado/`data-away`), painel de evidências (fechado `inert`, aberto), modal do currículo, menu do celular (3 páginas, 375 px). *Lidos no código, não navegados:* simulador do OCC além de abrir/fechar, `terminal-evolutivo`, `life`/`life3d` (jogo), formulários das páginas excepcionadas. *Não verificado:* demais componentes sem estado dinâmico testado.
 - [~] **Mudança de Status (`aria-live`):** regiões vivas existem (`#cc-live`, `role=status` no veredito do calibrador, `[data-quiz-fb]` `aria-live=polite`); **o que o leitor de tela de fato anuncia não foi ouvido.**
 - [~] **Preenchimento de Formulários:** o site público quase não tem formulários; os 3 campos sem rótulo estão em `diagnostic.html` e `test-github.html` (EXC-001/002). Não verificado em `admin*.html` além do que está em EXC-003.
 
@@ -68,7 +69,11 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
 
 ## 6. Carga Cognitiva e Fluxo
 - N/A para a maior parte: o site é de leitura e navegação, sem autenticação nem limite de tempo públicos.
-- [ ] **Espaçamento de texto (SC 1.4.12), conteúdo em hover/foco (1.4.13), arrastar (2.5.7), ajuda consistente (3.2.6), 1.3.4/1.3.5:** não escrevi sondas. Quem deve: revisão manual.
+- [x] **Espaçamento de texto (SC 1.4.12):** sonda nas 75 páginas (auditoria v2); a única falha (`devin #calculadora`, caixa "RESULTADO" cortada) foi corrigida e a métrica `spacing:clip` entrou na catraca (0 em todas).
+- [~] **Conteúdo em hover/foco (SC 1.4.13):** o único tooltip próprio do site (`artifice`) não fechava com Esc e punha a citação no nome do botão; corrigido e coberto por `widgets.spec.js` nos 3 navegadores. Regras CSS "só em `:hover`" varridas: a única em uso (`sustentacao`, rótulo redundante sobre o infográfico) não esconde informação. Tooltips nativos (`title`) não auditados.
+- [x] **Arrastar (SC 2.5.7):** o único arrasto (OCC cap. 3) tem alternativa de ponteiro único (selecionar e clicar), confirmada por sonda.
+- [x] **Orientação (SC 1.3.4):** 0 `@media (orientation)` em folhas same-origin e 0 `orientation.lock` no código. **1.3.5:** N/A (nenhum campo público pede dado pessoal).
+- [ ] **Ajuda consistente (SC 3.2.6):** não verificado. Quem deve: revisão manual.
 - [~] **Alvos (SC 2.5.8):** medidos em 8 páginas; a falha encontrada (`a.eai-chap__link`) foi corrigida. As outras 67 páginas: **não medidas** pelo auditor; a catraca mede alvos pelo axe `target-size`.
 
 ---
@@ -87,3 +92,21 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
 - **Nota 4 — Exceções aceitas:** `EXCEPTIONS.md` (EXC-001…006; EXC-007 encerrada). Dono e aprovador: Maurício Yokoyama Issei, 03/10/2026. Revisão **proposta** para 03/04/2027 (o autor ajusta). A catraca impede piora nessas páginas.
 - **Nota 5 — Ambiente.** O gate completo de 3 navegadores (~50 min) não roda de forma confiável na máquina local (o servidor de desenvolvimento do Playwright cai); a confirmação dos 3 navegadores é o CI do PR. Resultado local desta entrega: Chromium 392/392 (suíte completa); `node:test` 194/194; catraca sem regressão (38 ocorrências, todas em exceções); `audit-site --strict` sem erros.
 - **Nota 6 — O que falta para sair de CONDICIONAL:** (a) teste com leitor de tela real por quem for designado (Q5); (b) revisão humana de legendas/transcrição/audiodescrição; (c) decisão sobre F-18 e SC 2.2.2; (d) reauditoria independente **depois** das correções desta entrega, idealmente por outro modelo.
+- **Nota 7 — Auditoria v2 (05/10/2026, `docs/specs/a11y-first/auditoria-v2.md`).** Sondas novas sobre os critérios que este relatório listava como "não medidos" acharam falhas que a catraca não via. **Corrigidas neste PR:**
+  - AV2-01: fração do OCC por teclado, que quebrava T4;
+  - AV2-05: foco sob cabeçalho fixo;
+  - AV2-06: tooltip da `artifice`;
+  - AV2-07: espaçamento no `devin`;
+  - AV2-09: texto invisível sem JS em 7 páginas (até 91%), com a classe `js` antes do primeiro paint;
+  - AV2-10: espelhos EN com texto vazio em 7 páginas, mais o invariante `tests/i18n-mirror-empty.test.mjs`;
+  - AV2-11: catraca determinística;
+  - AV2-13: `hreflang` recíproco;
+  - AV2-15: `<h2>` vazio;
+  - `life3d #intro` sem a falsa semântica de diálogo.
+
+  **Abertos, com dono:**
+  - mídia (AV2-02 transcrições, AV2-03 legendas), humano;
+  - movimento sem pausa (AV2-08), decisão de design do dono (ADR-AV2-04);
+  - deploy sem depender do gate (AV2-12), ruleset do GitHub, ação do dono;
+  - saltos de título h2→h4 (AV2-16), registrados na catraca como `bp:heading-order`;
+  - aba inicial da régua de maturidade da `engenharia-confianca`, mantida sem seleção por decisão de UX (autoavaliação).
