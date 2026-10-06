@@ -1126,9 +1126,10 @@
                 MAX_SPEED: 1.5,
                 ACCELERATION: 0.1,
                 FRICTION: 0.85,
-                ANIM_FPS: 220,
-                BOB_INTENSITY: 2.8,
-                HAIR_INERTIA: 0.3
+                STRIDE_PX: 5,         // px andados por quadro do ciclo de caminhada
+                BREATH_MS: 900,       // meia respiração parado
+                BLINK_EVERY_MS: 3200,
+                BLINK_MS: 130
             },
             CAMERA: {
                 FOLLOW_RATIO: 1 / 3,
@@ -1341,6 +1342,274 @@
                 }
             }
         }
+
+        // ============================================================================
+        // SPRITE DO PERSONAGEM (pixel art em código, sem arquivo de imagem)
+        // Arte: vista 3/4 andando para a direita — topete espetado, óculos de armação
+        // grossa, camiseta preta, jeans escuro, tênis preto.
+        // Cada peça é um mapa de caracteres (1 caractere = 1 pixel, '.' = vazio). Os
+        // quadros são compostos uma única vez em canvas offscreen; durante o jogo o
+        // personagem custa um drawImage por quadro.
+        // ============================================================================
+        const PlayerSprite = (() => {
+            const PALETTE = {
+                H: '#0d0d12', h: '#2a3550',                              // cabelo / fios
+                S: '#ec9e67', L: '#f7c194', s: '#cf714d', m: '#8e4b34',  // pele: base, luz, sombra, boca
+                G: '#0a0a0d', W: '#f5f2f1', E: '#160e0b',                // armação, reflexo da lente, pupila
+                T: '#1f1f27', t: '#131318', U: '#363642',                // camiseta
+                J: '#27314f', j: '#181e33', K: '#3b4972',                // jeans
+                B: '#16161b', b: '#40404b', Z: '#74786f',                // tênis e sola
+                O: '#0a0a0d'                                             // contorno
+            };
+            // Braço e perna do lado longe da câmera descem um tom.
+            const SHADE = { S: 's', L: 'S', s: 'm', T: 't', U: 'T', J: 'j', K: 'J', b: 'B', Z: 'b' };
+
+            const HEAD = [
+                '...........HH....',
+                '..........HHH.H..',
+                '.....H...HHHhHH..',
+                '....HHH.HHhHHhHH.',
+                '...HHhHHHhHHHhHHH',
+                '..HHhHHHhHHHhHHHH',
+                '.HHhHHHhHHHHHHHHH',
+                '.HHHHHHHHsSSHSSS.',
+                'HHHHHHHHsLLLSSSS.',
+                'HHHHHHsGGGGGSGGGG',
+                'HHHSSGGGWLEGGGWEG',
+                'HHHSmssGLLEGSGLEG',
+                '.HHSSssGGGGGSGGGG',
+                '.HHsSSSSSSSSSSSsS',
+                '.HHHsSSSSSSSSSSS.',
+                '..HHHsSSSSmSSSS..',
+                '.....sSSSSSmmS...',
+                '.......sssSSs....'
+            ];
+            // Olhos fechados: a pupila vira pálpebra (linha de cima) e vinco (linha de baixo).
+            const HEAD_BLINK = HEAD.map((row, y) =>
+                y === 10 ? row.replace(/E/g, 'L') : y === 11 ? row.replace(/E/g, 'm') : row);
+
+            const TORSO = [
+                '...sss.....',
+                '...sss.....',
+                '.TTsssTTT..',
+                'TTTTTTTTTTT',
+                'TUTTTTTTTTT',
+                'TUTTTTTTTTt',
+                'TUTTTTTTTTt',
+                'TTTTTTTTTTt',
+                'TTTTTTTTTTt',
+                'TTTTTTTTTTt',
+                'TTTTTTTTTTt',
+                'TTTTTTTTTtt',
+                'ttttttttttt',
+                'JJJJJJJJJJj',
+                'KJJJJJJJJJj',
+                '.JJJJ.JJJj.'
+            ];
+
+            // Braço perto da câmera: manga, braço e punho; 'back'/'fwd' deslocam a mão 1px.
+            const ARM_NEAR = {
+                mid: [
+                    '...TTT.', '..TTTTT', '..TTTTT', '..UTTTt', '..SSSs.', '..LSSs.', '..LSSs.',
+                    '..LSSs.', '..SSSs.', '..SSSs.', '.SSSSs.', '.SSSSs.', '..sss..'
+                ],
+                back: [
+                    '...TTT.', '..TTTTT', '..TTTTT', '..UTTTt', '..SSSs.', '..LSSs.', '.LSSs..',
+                    '.LSSs..', '.SSSs..', '.SSSs..', 'SSSSs..', 'SSSSs..', '.sss...'
+                ],
+                fwd: [
+                    '...TTT.', '..TTTTT', '..TTTTT', '..UTTTt', '..SSSs.', '..LSSs.', '...LSSs',
+                    '...LSSs', '...SSSs', '...SSSs', '..SSSSs', '..SSSSs', '...sss.'
+                ]
+            };
+            // Braço longe da câmera: quase todo atrás do tronco.
+            const ARM_FAR = {
+                mid: [
+                    'TTT...', 'TTTT..', 'TTTT..', 'TTTt..', '..SSS.', '..SSS.', '..SSS.',
+                    '..SSS.', '..SSS.', '..SSS.', '..SSSS', '..SSSS', '...ss.'
+                ],
+                fwd: [
+                    'TTT....', 'TTTT...', 'TTTT...', 'TTTt...', '..SSS..', '..SSS..', '...SSS.',
+                    '...SSS.', '...SSS.', '...SSS.', '...SSSS', '...SSSS', '....ss.'
+                ],
+                back: [
+                    'TTT...', 'TTTT..', 'TTTT..', 'TTTt..', '..SSS.', '..SSS.', '.SSS..',
+                    '.SSS..', '.SSS..', '.SSS..', '.SSSS.', '.SSSS.', '..ss..'
+                ]
+            };
+
+            // Pernas: quadril no centro da coluna 6, linha 0; a sola padrão fica na linha 16.
+            // P1 é 1px mais curta e P3 1px mais longa para compensar o sobe-desce do corpo.
+            const LEG = {
+                // contato: perna da frente estendida, calcanhar no chão
+                P0: [
+                    '....JJJJJ.......', '....JJJJJ.......', '.....JJJJJ......', '.....KJJJj......',
+                    '......KJJJj.....', '......KJJJj.....', '.......KJJj.....', '.......KJJj.....',
+                    '........KJJj....', '........KJJj....', '.........KJJj...', '.........KJJj...',
+                    '.........KJJj...', '.........jjjj...', '.........BBBBb..', '.........BBBBBBb',
+                    '.........ZZZZZZZ'
+                ],
+                // descida: pé da frente apoiado, joelho flexionado
+                P1: [
+                    '....JJJJJ.......', '....JJJJJ.......', '.....JJJJJ......', '.....KJJJj......',
+                    '......KJJJj.....', '......KJJJj.....', '.......KJJj.....', '.......KJJj.....',
+                    '.......KJJj.....', '........KJJj....', '........KJJj....', '........KJJj....',
+                    '........jjjj....', '........BBBBb...', '........BBBBBBb.', '........ZZZZZZZ.'
+                ],
+                // passagem: perna de apoio na vertical
+                P2: [
+                    '....JJJJJ.......', '....JJJJJ.......', '....JJJJJ.......', '....KJJJj.......',
+                    '....KJJJj.......', '....KJJJj.......', '....KJJJj.......', '.....KJJj.......',
+                    '.....KJJj.......', '.....KJJj.......', '.....KJJj.......', '.....KJJj.......',
+                    '.....KJJj.......', '.....jjjj.......', '....BBBBb.......', '....BBBBBBb.....',
+                    '....ZZZZZZZ.....'
+                ],
+                // impulso: apoio levemente atrás, perna esticada
+                P3: [
+                    '....JJJJJ.......', '....JJJJJ.......', '....JJJJJ.......', '....KJJJj.......',
+                    '....KJJJj.......', '...KJJJj........', '...KJJJj........', '...KJJj.........',
+                    '...KJJj.........', '..KJJj..........', '..KJJj..........', '..KJJj..........',
+                    '..KJJj..........', '..KJJj..........', '..jjjj..........', '.BBBBb..........',
+                    '.BBBBBBb........', '.ZZZZZZZ........'
+                ],
+                // ponta do pé: perna de trás estendida, calcanhar no ar
+                P4: [
+                    '....JJJJJ.......', '....JJJJJ.......', '...JJJJJ........', '...KJJJj........',
+                    '...KJJJj........', '..KJJJj.........', '..KJJJj.........', '..KJJj..........',
+                    '.KJJj...........', '.KJJj...........', '.KJJj...........', 'KJJj............',
+                    'KJJj............', 'jjjj............', 'BBBb............', '.BBBBb..........',
+                    '..ZZZZ..........'
+                ],
+                // recolhe: pé de trás no ar
+                P5: [
+                    '....JJJJJ.......', '....JJJJJ.......', '....JJJJJ.......', '...KJJJj........',
+                    '...KJJJj........', '...KJJJj........', '...KJJJj........', '...KJJj.........',
+                    '..KJJj..........', '.KJJj...........', 'KJJj............', 'jjjj............',
+                    'BBBb............', '.BBBBb..........', '..ZZZZ..........'
+                ],
+                // passagem: perna livre, joelho à frente, pé no ar
+                P6: [
+                    '....JJJJJ.......', '....JJJJJ.......', '.....JJJJJ......', '.....KJJJj......',
+                    '......KJJJj.....', '......KJJJj.....', '......KJJJj.....', '......KJJj......',
+                    '.....KJJj.......', '.....KJJj.......', '....KJJj........', '....KJJj........',
+                    '....jjjj........', '...BBBBb........', '....BBBBBb......', '.....ZZZZZ......'
+                ],
+                // alcance: perna da frente esticando, pé ainda no ar
+                P7: [
+                    '....JJJJJ.......', '....JJJJJ.......', '.....JJJJJ......', '.....KJJJj......',
+                    '......KJJJj.....', '......KJJJj.....', '.......KJJj.....', '.......KJJj.....',
+                    '........KJJj....', '........KJJj....', '.........KJJj...', '.........KJJj...',
+                    '.........jjjj...', '.........BBBBb..', '.........BBBBBBb', '.........ZZZZZZZ'
+                ]
+            };
+
+            // Ciclo de 8 quadros: a perna perto da câmera lidera e os braços vão em oposição.
+            // Andando, os quadris ficam quase alinhados (12/13) para as pernas não cruzarem em X.
+            const WALK = [
+                { bob: 0, near: 'P0', far: 'P4', armN: 'back', armF: 'fwd' },
+                { bob: 1, near: 'P1', far: 'P5', armN: 'back', armF: 'fwd' },
+                { bob: 0, near: 'P2', far: 'P6', armN: 'mid', armF: 'mid' },
+                { bob: -1, near: 'P3', far: 'P7', armN: 'fwd', armF: 'back' },
+                { bob: 0, near: 'P4', far: 'P0', armN: 'fwd', armF: 'back' },
+                { bob: 1, near: 'P5', far: 'P1', armN: 'fwd', armF: 'back' },
+                { bob: 0, near: 'P6', far: 'P2', armN: 'mid', armF: 'mid' },
+                { bob: -1, near: 'P7', far: 'P3', armN: 'back', armF: 'fwd' }
+            ].map(pose => ({ ...pose, hipN: 12, hipF: 13 }));
+            const IDLE = { bob: 0, near: 'P2', far: 'P2', armN: 'mid', armF: 'mid', hipN: 11, hipF: 15 };
+
+            const W = 30, H = 50;                // quadro com 1px de folga para o contorno
+            const ANCHOR_X = 14, ANCHOR_Y = 49;  // centro dos pés / linha de contorno da sola
+            const N4 = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+
+            // upperBob move cabeça, tronco e braços sem tirar os pés do chão (respiração).
+            function layersFor(pose, head, upperBob = pose.bob) {
+                return [
+                    { name: 'armF', rows: ARM_FAR[pose.armF], x: 16, y: 21 + upperBob, shade: true },
+                    { name: 'legF', rows: LEG[pose.far], x: pose.hipF - 6, y: 32 + pose.bob, shade: true },
+                    { name: 'legN', rows: LEG[pose.near], x: pose.hipN - 6, y: 32 + pose.bob, ringOver: ['legF'] },
+                    { name: 'torso', rows: TORSO, x: 8, y: 19 + upperBob, ringOver: ['armF'] },
+                    { name: 'armN', rows: ARM_NEAR[pose.armN], x: 4, y: 21 + upperBob, ringOver: true },
+                    { name: 'head', rows: head, x: 6, y: 2 + upperBob, ringOver: true }
+                ];
+            }
+
+            function compose(layers) {
+                const px = new Array(W * H).fill(null);
+                const owner = new Array(W * H).fill(null);
+                for (const layer of layers) {
+                    const mine = [];
+                    layer.rows.forEach((row, ry) => {
+                        for (let rx = 0; rx < row.length; rx++) {
+                            if (row[rx] === '.') continue;
+                            const X = layer.x + rx, Y = layer.y + ry;
+                            if (X < 0 || Y < 0 || X >= W || Y >= H) continue;
+                            px[Y * W + X] = layer.shade ? (SHADE[row[rx]] || row[rx]) : row[rx];
+                            owner[Y * W + X] = layer.name;
+                            mine.push(Y * W + X);
+                        }
+                    });
+                    // Contorno interno: a peça da frente ganha 1px de linha sobre o que fica atrás.
+                    if (!layer.ringOver) continue;
+                    for (const i of mine) {
+                        for (const [dx, dy] of N4) {
+                            const nx = (i % W) + dx, ny = ((i / W) | 0) + dy;
+                            if (nx < 0 || ny < 0 || nx >= W || ny >= H) continue;
+                            const o = owner[ny * W + nx];
+                            if (o && o !== layer.name && (layer.ringOver === true || layer.ringOver.includes(o))) {
+                                px[ny * W + nx] = 'O';
+                            }
+                        }
+                    }
+                }
+                // Contorno externo da silhueta em vizinhança 4 (sem cantos, como na pixel art).
+                return px.map((c, i) => {
+                    if (c !== null) return c;
+                    const x = i % W, y = (i / W) | 0;
+                    return N4.some(([dx, dy]) => {
+                        const nx = x + dx, ny = y + dy;
+                        return nx >= 0 && ny >= 0 && nx < W && ny < H && px[ny * W + nx] !== null;
+                    }) ? 'O' : null;
+                });
+            }
+
+            const RGB = Object.fromEntries(Object.entries(PALETTE).map(([k, hex]) =>
+                [k, [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16))]));
+
+            function toCanvas(px, flip) {
+                const canvas = document.createElement('canvas');
+                canvas.width = W;
+                canvas.height = H;
+                const g = canvas.getContext('2d');
+                const img = g.createImageData(W, H);
+                px.forEach((k, i) => {
+                    if (k === null) return;
+                    const x = i % W, y = (i / W) | 0;
+                    const o = (y * W + (flip ? W - 1 - x : x)) * 4;
+                    [img.data[o], img.data[o + 1], img.data[o + 2]] = RGB[k];
+                    img.data[o + 3] = 255;
+                });
+                g.putImageData(img, 0, 0);
+                return canvas;
+            }
+
+            let baked = null;
+            function bake() {
+                if (baked) return baked;
+                const frames = {
+                    walk: WALK.map(pose => compose(layersFor(pose, HEAD))),
+                    idle: [0, 1].map(b => compose(layersFor(IDLE, HEAD, b))),
+                    idleBlink: [0, 1].map(b => compose(layersFor(IDLE, HEAD_BLINK, b)))
+                };
+                baked = { right: {}, left: {} };
+                for (const [key, list] of Object.entries(frames)) {
+                    baked.right[key] = list.map(px => toCanvas(px, false));
+                    baked.left[key] = list.map(px => toCanvas(px, true));
+                }
+                return baked;
+            }
+
+            return { bake, W, H, ANCHOR_X, ANCHOR_Y, WALK_FRAMES: WALK.length };
+        })();
 
         // ============================================================================
         // RENDERIZADOR
@@ -1937,401 +2206,47 @@
             drawPlayer(x, y, isMoving, isMovingLeft, gameTime) {
                 const ctx = this.ctx;
                 const t = gameTime.getElapsed();
+                const P = CONFIG.PLAYER;
+                const sprites = PlayerSprite.bake();
 
-                // ==========================================
-                // 1. PALETA DE CORES (Material System)
-                // ==========================================
-                const PALETTE = {
-                    // Pele (3 tons para volume)
-                    skin: {
-                        base: "#ffcc99",
-                        shadow: "#e0a672",
-                        highlight: "#ffd9b3",
-                        blush: "#ffb6c1"
-                    },
-                    // Cabelo (3 tons + destaques)
-                    hair: {
-                        base: "#0f0f0f",
-                        shadow: "#050505",
-                        highlight: "#2a2a2a",
-                        rimLight: "#404040"
-                    },
-                    // Camiseta preta (4 tons)
-                    shirt: {
-                        base: "#1a1a1a",
-                        light: "#2d2d2d",
-                        dark: "#0f0f0f",
-                        deepShadow: "#050505",
-                        logo: "#00ffcc"
-                    },
-                    // Jeans (3 tons + desgaste)
-                    jeans: {
-                        base: "#2c4c6d",
-                        light: "#4a6a8d",
-                        dark: "#1a3a5a",
-                        worn: "#5a7a9d"
-                    },
-                    // Tênis
-                    shoes: {
-                        base: "#2d2d2d",
-                        highlight: "#4d4d4d",
-                        sole: "#1a1a1a",
-                        detail: "#ffffff"
-                    },
-                    // Óculos
-                    glasses: {
-                        frame: "#0a0a0a",
-                        frameInner: "#1a1a1a",
-                        lens: "rgba(80, 120, 180, 0.35)",
-                        reflect: "rgba(255, 255, 255, 0.7)",
-                        reflectSec: "rgba(180, 220, 255, 0.25)"
-                    },
-                    // Sistema de outlines
-                    outline: "#0a0a0a"
-                };
+                // Só anda quando x muda de fato: com as duas setas apertadas, ou na pausa do
+                // level-up, a tecla continua pressionada mas o personagem está parado.
+                const walking = isMoving && this._lastPlayerX !== undefined && x !== this._lastPlayerX;
+                this._lastPlayerX = x;
+                // A direção persiste ao soltar a tecla (keys.left volta a false ao soltar ←).
+                if (walking) this._facing = isMovingLeft ? -1 : 1;
+                const left = this._facing === -1;
+                const set = left ? sprites.left : sprites.right;
 
-                // ==========================================
-                // 2. FÍSICA DA ANIMAÇÃO (Logic Engine)
-                // ==========================================
-
-                // A. Ciclo de Caminhada (Walk Cycle)
-                const walkSpeed = 120; // ms por ciclo completo
-                const walkPhase = (t / walkSpeed) * Math.PI * 2;
-
-                // B. Bobbing Vertical (Impacto e Impulso)
-                // Corpo: |sin(x)| para simular contato com chão + impulso
-                const bodyBob = isMoving
-                    ? Math.abs(Math.sin(walkPhase)) * 2.8
-                    : Math.sin(t * 0.0025) * 0.4;
-
-                // Cabeça: Atraso de fase (-0.2 rad) = pescoço flexível
-                const headBob = isMoving
-                    ? Math.abs(Math.sin(walkPhase - 0.2)) * 2.5
-                    : Math.sin(t * 0.0025 - 0.1) * 0.35;
-
-                // C. Secondary Motion: Cabelo (Inércia e Atraso)
-                // Atraso horizontal e vertical
-                const hairLagVertical = isMoving
-                    ? Math.sin(walkPhase - 0.4) * 1.8
-                    : Math.sin(t * 0.003 + 0.5) * 0.6;
-                const hairLagHorizontal = isMoving
-                    ? Math.cos(walkPhase - 0.3) * 0.5
-                    : 0;
-
-                // D. Ciclo de Caminhada Cruzado (Braços vs Pernas)
-                // Pernas: Amplitude maior (peso)
-                const legSwing = isMoving ? Math.sin(walkPhase) * 5.5 : 0;
-                // Braços: Fase oposta (cos vs sin), amplitude menor
-                const armSwing = isMoving
-                    ? Math.cos(walkPhase) * 4.5
-                    : Math.sin(t * 0.002) * 0.8;
-
-                // ==========================================
-                // 3. POSICIONAMENTO PIXEL-PERFECT
-                // ==========================================
-                const dir = isMovingLeft ? -1 : 1;
-
-                // Âncora do Torso (Centro de Massa)
-                const torsoX = Math.floor(x);
-                const torsoY = Math.floor(y - bodyBob);
-
-                // Cabeça segue torso com próprio bob
-                const headY = Math.floor(torsoY - 13 - (headBob - bodyBob));
-
-                // Cabelo com lag completo
-                const hairY = Math.floor(headY + hairLagVertical * 0.3);
-                const hairX = Math.floor(torsoX + hairLagHorizontal);
-
-                ctx.save();
-
-                // ==========================================
-                // 4. RENDERIZAÇÃO POR CAMADAS (Z-Order)
-                // ==========================================
-
-                // ─────────────────────────────────────────
-                // CAMADA 1: SOMBRA (Projetada no Chão)
-                // ─────────────────────────────────────────
-                ctx.fillStyle = 'rgba(0,0,0,0.28)';
-                const shadowEllipse = isMoving ? 11 - (bodyBob * 0.4) : 10;
-                ctx.beginPath();
-                ctx.ellipse(torsoX + 8, y + 18, shadowEllipse, 3.5, 0, 0, Math.PI * 2);
-                ctx.fill();
-
-                // ─────────────────────────────────────────
-                // CAMADA 2: MEMBROS TRASEIROS (Depth Shading)
-                // ─────────────────────────────────────────
-
-                // 2A. PERNA TRASEIRA
-                const legBackY = torsoY + 13 - legSwing;
-                const legBackX = dir === 1 ? torsoX + 2 : torsoX + 10;
-
-                // Outline
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(legBackX, legBackY - 1, 5, 10);
-
-                // Jeans (tom escuro para profundidade)
-                ctx.fillStyle = PALETTE.jeans.dark;
-                ctx.fillRect(legBackX + 1, legBackY, 3, 8);
-
-                // Costura (depth shading)
-                ctx.fillStyle = PALETTE.jeans.light;
-                ctx.fillRect(legBackX + 2, legBackY, 1, 8);
-
-                // Tênis traseiro
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(legBackX, legBackY + 8, 5, 3);
-                ctx.fillStyle = PALETTE.shoes.base;
-                ctx.fillRect(legBackX, legBackY + 8, 4, 2);
-                ctx.fillStyle = PALETTE.shoes.sole;
-                ctx.fillRect(legBackX, legBackY + 10, 5, 1);
-
-                // 2B. BRAÇO TRASEIRO
-                const armBackY = torsoY + 6 - armSwing;
-                const armBackX = dir === 1 ? torsoX + 2 : torsoX + 13;
-
-                // Outline
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(armBackX, armBackY - 1, 4, 9);
-
-                // Manga (tom escuro)
-                ctx.fillStyle = PALETTE.shirt.dark;
-                ctx.fillRect(armBackX, armBackY, 3, 4);
-                ctx.fillStyle = PALETTE.shirt.deepShadow;
-                ctx.fillRect(armBackX, armBackY, 1, 4);
-
-                // Antebraço (skin shadow)
-                ctx.fillStyle = PALETTE.skin.shadow;
-                ctx.fillRect(armBackX, armBackY + 4, 3, 3);
-
-                // Mão
-                ctx.fillStyle = PALETTE.skin.shadow;
-                ctx.fillRect(armBackX, armBackY + 7, 3, 1);
-
-                // ─────────────────────────────────────────
-                // CAMADA 3: TORSO (Âncora Central)
-                // ─────────────────────────────────────────
-
-                // Outline do corpo
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(torsoX + 2, torsoY + 1, 13, 12);
-
-                // Base da camiseta
-                ctx.fillStyle = PALETTE.shirt.base;
-                ctx.fillRect(torsoX + 3, torsoY + 2, 11, 10);
-
-                // Shading volumétrico (luz superior esquerda)
-                ctx.fillStyle = PALETTE.shirt.light;
-                ctx.fillRect(torsoX + 4, torsoY + 2, 3, 10); // Luz lateral
-                ctx.fillRect(torsoX + 4, torsoY + 2, 9, 3);  // Luz ombros
-
-                // Área de sombra (oclusão)
-                ctx.fillStyle = PALETTE.shirt.dark;
-                ctx.fillRect(torsoX + 11, torsoY + 3, 2, 8); // Lado direito
-                ctx.fillRect(torsoX + 4, torsoY + 9, 9, 2);  // Base
-
-                // Gola em V
-                ctx.fillStyle = PALETTE.shirt.deepShadow;
-                ctx.fillRect(torsoX + 7, torsoY + 2, 3, 2);
-                ctx.fillRect(torsoX + 6, torsoY + 3, 1, 1);
-                ctx.fillRect(torsoX + 10, torsoY + 3, 1, 1);
-
-                // Logo cyberpunk (detalhe focal)
-                ctx.fillStyle = PALETTE.shirt.logo;
-                ctx.fillRect(torsoX + 7, torsoY + 5, 3, 1);
-                ctx.fillRect(torsoX + 8, torsoY + 6, 1, 2);
-
-                // Costura central (anti-aliasing seletivo)
-                ctx.fillStyle = "rgba(255,255,255,0.05)";
-                ctx.fillRect(torsoX + 8, torsoY + 4, 1, 7);
-
-                // ─────────────────────────────────────────
-                // CAMADA 4: MEMBROS FRONTAIS (Base + Highlights)
-                // ─────────────────────────────────────────
-
-                // 4A. PERNA FRONTAL
-                const legFrontY = torsoY + 13 + legSwing;
-                const legFrontX = dir === 1 ? torsoX + 9 : torsoX + 3;
-
-                // Outline
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(legFrontX, legFrontY - 1, 5, 10);
-
-                // Jeans (tom base)
-                ctx.fillStyle = PALETTE.jeans.base;
-                ctx.fillRect(legFrontX, legFrontY, 4, 8);
-
-                // Costura frontal (highlight)
-                ctx.fillStyle = PALETTE.jeans.light;
-                ctx.fillRect(legFrontX + 1, legFrontY, 1, 8);
-
-                // Joelho desgastado
-                ctx.fillStyle = PALETTE.jeans.worn;
-                ctx.fillRect(legFrontX, legFrontY + 3, 3, 2);
-
-                // Barra
-                ctx.fillStyle = PALETTE.jeans.dark;
-                ctx.fillRect(legFrontX, legFrontY + 7, 4, 1);
-
-                // Tênis frontal (detalhado)
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(legFrontX - 1, legFrontY + 8, 6, 3);
-                ctx.fillStyle = PALETTE.shoes.base;
-                ctx.fillRect(legFrontX - 1, legFrontY + 8, 5, 2);
-                ctx.fillStyle = PALETTE.shoes.highlight;
-                ctx.fillRect(legFrontX - 1, legFrontY + 8, 4, 1);
-                ctx.fillStyle = PALETTE.shoes.detail;
-                ctx.fillRect(legFrontX - 1, legFrontY + 10, 5, 1);
-                // Detalhe lateral (rim light)
-                ctx.fillStyle = "rgba(255,255,255,0.3)";
-                ctx.fillRect(legFrontX, legFrontY + 9, 1, 1);
-
-                // 4B. BRAÇO FRONTAL
-                const armFrontY = torsoY + 6 + armSwing;
-                const armFrontX = dir === 1 ? torsoX + 14 : torsoX + 2;
-
-                // Outline
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(armFrontX, armFrontY - 1, 4, 9);
-
-                // Manga (highlight)
-                ctx.fillStyle = PALETTE.shirt.light;
-                ctx.fillRect(armFrontX, armFrontY, 3, 4);
-                ctx.fillStyle = PALETTE.shirt.base;
-                ctx.fillRect(armFrontX + 1, armFrontY + 1, 2, 3);
-
-                // Antebraço (skin base)
-                ctx.fillStyle = PALETTE.skin.base;
-                ctx.fillRect(armFrontX, armFrontY + 4, 3, 3);
-
-                // Sombra do antebraço
-                ctx.fillStyle = "rgba(224,166,114,0.4)";
-                ctx.fillRect(armFrontX, armFrontY + 6, 3, 1);
-
-                // Mão frontal
-                ctx.fillStyle = PALETTE.skin.shadow;
-                ctx.fillRect(armFrontX, armFrontY + 7, 3, 1);
-                ctx.fillStyle = PALETTE.skin.base;
-                ctx.fillRect(armFrontX, armFrontY + 7, 2, 1);
-
-                // ─────────────────────────────────────────
-                // CAMADA 5: CABEÇA (Alta Prioridade Visual)
-                // ─────────────────────────────────────────
-
-                // Outline da cabeça
-                ctx.fillStyle = PALETTE.outline;
-                ctx.fillRect(torsoX + 3, headY, 11, 13);
-
-                // Pescoço (conector flexível)
-                ctx.fillStyle = PALETTE.skin.shadow;
-                ctx.fillRect(torsoX + 6, torsoY - 1, 5, 3);
-                ctx.fillStyle = PALETTE.skin.base;
-                ctx.fillRect(torsoX + 7, torsoY - 1, 3, 2);
-
-                // Base do rosto
-                ctx.fillStyle = PALETTE.skin.base;
-                ctx.fillRect(torsoX + 4, headY + 1, 9, 11);
-
-                // Depth shading (lado oposto à luz)
-                ctx.fillStyle = "rgba(224,166,114,0.3)";
-                ctx.fillRect(torsoX + (dir === 1 ? 11 : 4), headY + 1, 2, 10);
-
-                // Blush bilateral (vida)
-                ctx.fillStyle = PALETTE.skin.blush;
-                ctx.fillRect(torsoX + 10, headY + 7, 2, 1);
-                ctx.fillRect(torsoX + 5, headY + 7, 2, 1);
-
-                // Orelhas
-                ctx.fillStyle = PALETTE.skin.shadow;
-                ctx.fillRect(torsoX + 3, headY + 5, 1, 3);
-                ctx.fillRect(torsoX + 13, headY + 5, 1, 3);
-
-                // ─────────────────────────────────────────
-                // ÓCULOS (Frame Fixo + Reflexo Dinâmico)
-                // ─────────────────────────────────────────
-
-                // Armação externa
-                ctx.fillStyle = PALETTE.glasses.frame;
-                ctx.fillRect(torsoX + 5, headY + 4, 3, 4);  // Lente esq
-                ctx.fillRect(torsoX + 9, headY + 4, 3, 4);  // Lente dir
-                ctx.fillRect(torsoX + 8, headY + 5, 1, 2);  // Ponte
-                ctx.fillRect(torsoX + 4, headY + 5, 1, 1);  // Haste esq
-                ctx.fillRect(torsoX + 12, headY + 5, 2, 1); // Haste dir
-
-                // Armação interna (profundidade)
-                ctx.fillStyle = PALETTE.glasses.frameInner;
-                ctx.fillRect(torsoX + 5, headY + 4, 3, 1);
-                ctx.fillRect(torsoX + 9, headY + 4, 3, 1);
-                ctx.fillRect(torsoX + 5, headY + 7, 3, 1);
-                ctx.fillRect(torsoX + 9, headY + 7, 3, 1);
-
-                // Lentes semi-transparentes
-                ctx.fillStyle = PALETTE.glasses.lens;
-                ctx.fillRect(torsoX + 6, headY + 5, 2, 2);
-                ctx.fillRect(torsoX + 10, headY + 5, 2, 2);
-
-                // Reflexo dinâmico (muda com tempo)
-                if (Math.floor(t / 400) % 2 === 0) {
-                    ctx.fillStyle = PALETTE.glasses.reflect;
-                    ctx.fillRect(torsoX + 6, headY + 5, 1, 1);
-                    ctx.fillRect(torsoX + 10, headY + 5, 1, 1);
-                }
-
-                // Reflexo secundário
-                ctx.fillStyle = PALETTE.glasses.reflectSec;
-                ctx.fillRect(torsoX + 7, headY + 6, 1, 1);
-                ctx.fillRect(torsoX + 11, headY + 6, 1, 1);
-
-                // ─────────────────────────────────────────
-                // OLHOS (Atrás dos Óculos)
-                // ─────────────────────────────────────────
-                ctx.fillStyle = "#3d2817";
-                const eyeX = torsoX + (dir === 1 ? 10 : 6);
-
-                // Piscar ocasional
-                if (Math.floor(t / 3500) % 25 === 0) {
-                    ctx.fillRect(eyeX, headY + 6, 2, 1);
+                let frame;
+                if (walking) {
+                    // Quadro pela distância andada, não pelo relógio: a passada acompanha o chão.
+                    const n = PlayerSprite.WALK_FRAMES;
+                    const step = Math.floor((left ? -x : x) / P.STRIDE_PX);
+                    frame = set.walk[((step % n) + n) % n];
                 } else {
-                    ctx.fillRect(eyeX, headY + 6, 1, 2);
-                    // Pupila
-                    ctx.fillStyle = "#000000";
-                    ctx.fillRect(eyeX, headY + 6, 1, 1);
+                    // Respirar e piscar são animações automáticas: somem com movimento reduzido.
+                    this._reducedMotion = this._reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)');
+                    const still = this._reducedMotion.matches;
+                    const breath = still ? 0 : Math.floor(t / P.BREATH_MS) % 2;
+                    const blink = !still && (t % P.BLINK_EVERY_MS) < P.BLINK_MS;
+                    frame = (blink ? set.idleBlink : set.idle)[breath];
                 }
 
-                // ─────────────────────────────────────────
-                // CABELO (Secondary Motion + Rim Light)
-                // ─────────────────────────────────────────
+                // Pés em (x + 8, y + 23), presos ao grid de pixels da tela: a câmera anda em
+                // frações de pixel e um drawImage fracionário deforma a pixel art.
+                const m = ctx.getTransform();
+                const camX = m.e / m.a;
+                const footX = Math.round(x + 8 + camX) - camX;
+                const footY = y + 23;
 
-                // Massa principal (shadow)
-                ctx.fillStyle = PALETTE.hair.shadow;
-                ctx.fillRect(hairX + 3, hairY, 11, 6);
+                ctx.fillStyle = 'rgba(0,0,0,0.25)';
+                ctx.fillRect(footX - 7, footY - 1, 15, 1);
+                ctx.fillRect(footX - 9, footY, 19, 1);
+                ctx.fillRect(footX - 7, footY + 1, 15, 1);
 
-                // Base do cabelo
-                ctx.fillStyle = PALETTE.hair.base;
-                ctx.fillRect(hairX + 4, hairY + 1, 9, 4);
-                ctx.fillRect(hairX + 4, hairY - 2, 9, 3);
-
-                // Mechas frontais
-                ctx.fillRect(hairX + 3, hairY + 1, 2, 5);
-                ctx.fillRect(hairX + 11, hairY + 1, 3, 4);
-
-                // Spikes (topete)
-                ctx.fillRect(hairX + 5, hairY - 4, 2, 2);
-                ctx.fillRect(hairX + 9, hairY - 3, 2, 2);
-                ctx.fillRect(hairX + 7, hairY - 5, 2, 3);
-
-                // Highlights (rim light)
-                ctx.fillStyle = PALETTE.hair.highlight;
-                ctx.fillRect(hairX + 5, hairY - 3, 2, 1);
-                ctx.fillRect(hairX + 8, hairY - 2, 3, 1);
-                ctx.fillRect(hairX + 5, hairY, 2, 1);
-                ctx.fillRect(hairX + 9, hairY + 1, 3, 1);
-
-                // Rim light no topo (anti-aliasing seletivo)
-                ctx.fillStyle = PALETTE.hair.rimLight;
-                ctx.fillRect(hairX + 6, hairY - 4, 1, 1);
-                ctx.fillRect(hairX + 9, hairY - 3, 1, 1);
-
-                ctx.restore();
+                const anchorX = left ? PlayerSprite.W - 1 - PlayerSprite.ANCHOR_X : PlayerSprite.ANCHOR_X;
+                ctx.drawImage(frame, footX - anchorX, footY - PlayerSprite.ANCHOR_Y);
             }
 
             // ... Mantenha o drawProps igual
