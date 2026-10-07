@@ -12,6 +12,7 @@
  * Uso:
  *   node scripts/quality-gate.mjs            # build + testes
  *   node scripts/quality-gate.mjs --no-build # só testes (iteração rápida)
+ *   node scripts/quality-gate.mjs --no-e2e   # tudo menos o Playwright (job estático do CI)
  *   node scripts/quality-gate.mjs --grep "EAI" --project chromium  # foco
  */
 import { spawnSync } from 'node:child_process';
@@ -72,10 +73,12 @@ steps.push(['coerência global do site', 'node scripts/audit-site.mjs --strict']
 // para descobrir que um token de cor ou um par de frases está fora do contrato.
 steps.push(['invariantes (node:test)', 'node --test tests/*.test.mjs tests/cloudfront-viewer-request.test.js']);
 
+// --no-e2e: o CI roda o Playwright em shards paralelos num job próprio
+// (.github/workflows/quality-gate.yml); este job fica com o resto do gate.
 let pwCmd = 'npx playwright test';
 if (grep) pwCmd += ` --grep ${JSON.stringify(grep)}`;
 if (project) pwCmd += ` --project ${JSON.stringify(project)}`;
-steps.push(['testes (playwright + axe)', pwCmd]);
+if (!args.includes('--no-e2e')) steps.push(['testes (playwright + axe)', pwCmd]);
 
 // Acessibilidade WCAG 2.2 AA em TODAS as páginas, contra o build, com catraca: a dívida
 // conhecida está em tests/a11y/baseline.json e só pode descer (docs/specs/a11y-first/, G-01).

@@ -544,44 +544,26 @@ afterEach(() => {
 
 ### GitHub Actions Workflow
 
-```yaml
-# .github/workflows/test.yml
-name: Tests
+Fonte da verdade: [`.github/workflows/quality-gate.yml`](../../.github/workflows/quality-gate.yml).
 
-on: [push, pull_request]
+| Job | O que roda | Paralelismo |
+| :--- | :--- | :--- |
+| `static` | `node scripts/quality-gate.mjs --no-e2e`: build, geradores `--check`, i18n, `audit-site`, `node --test`, varredura a11y (catraca), a11y estático, perf | 1 runner, em paralelo aos shards |
+| `e2e` | `npx playwright test --shard=i/6` | 6 runners × 2 workers |
+| `report` | `playwright merge-reports` dos blobs → artefato `playwright-report` | — |
+| `gate` | Check único para a branch protection: verde só se `static` e todos os shards passaram | — |
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Run unit tests
-        run: npm run test:unit
-      
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-      
-      - name: Run E2E tests
-        run: npx playwright test
-      
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report/
-```
+**Camadas (por projeto Playwright, não por tag):**
+
+| Gatilho | Camada | Projetos |
+| :--- | :--- | :--- |
+| `pull_request` | `fast` | `chromium`, `mobile`, `no-js` |
+| `push` na `main`, nightly (03:00 BRT), manual | `full` | + `firefox`, `webkit` |
+
+Regressão exclusiva de Firefox/WebKit aparece no push da `main` ou no nightly, não no PR.
+Para cobrar os 3 navegadores antes do merge, rode `npm run gate` localmente (roda tudo).
+
+Reproduzir um shard: `CI=1 npx playwright test --shard=3/6 --project=chromium --project=mobile --project=no-js`.
 
 ---
 

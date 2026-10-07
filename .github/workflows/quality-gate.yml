@@ -1,0 +1,141 @@
+name: CI - Quality Gate
+
+# Gate de regressão (separado do deploy.yml). NÃO faz deploy.
+#
+# Caminho crítico = max(static, shard mais lento), não a soma: o job estático
+# (build, geradores, i18n, node:test, varredura a11y, perf) roda em paralelo
+# com o Playwright fatiado em SHARD_TOTAL runners.
+#
+# Camadas (docs/specs/TESTING_GUIDE.md, "CI/CD Integration"):
+#   fast (pull_request)               chromium + mobile + no-js
+#   full (push main, nightly, manual) + firefox + webkit
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * *' # 03:00 BRT — regressão completa diária
+  workflow_dispatch:
+
+concurrency:
+  group: quality-gate-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CI: 'true'
+  TIER: ${{ github.event_name == 'pull_request' && 'fast' || 'full' }}
+
+jobs:
+  static:
+    name: Build + invariantes + a11y sweep
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-fast-${{ hashFiles('package-lock.json') }}
+
+      # Com o cache restaurado, o download é pulado; só as libs de sistema (apt) instalam.
+      - name: Install Chromium (a11y sweep)
+        run: npx playwright install --with-deps chromium
+
+      - name: Gate sem Playwright
+        run: node scripts/quality-gate.mjs --no-e2e
+
+  e2e:
+    name: Playwright ${{ matrix.shard }}/6 (${{ github.event_name == 'pull_request' && 'fast' || 'full' }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6] # mantenha em sincronia com SHARD_TOTAL
+    env:
+      SHARD_TOTAL: 6
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-${{ env.TIER }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install browsers
+        run: |
+          if [ "$TIER" = fast ]; then npx playwright install --with-deps chromium
+          else npx playwright install --with-deps; fi
+
+      - name: Playwright (shard ${{ matrix.shard }}/${{ env.SHARD_TOTAL }})
+        run: |
+          PROJECTS=""
+          [ "$TIER" = fast ] && PROJECTS="--project=chromium --project=mobile --project=no-js"
+          npx playwright test --shard=${{ matrix.shard }}/$SHARD_TOTAL $PROJECTS
+
+      - name: Upload blob report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-report-${{ matrix.shard }}
+          path: blob-report
+          retention-days: 3
+
+  report:
+    name: Relatório Playwright (merge)
+    if: ${{ !cancelled() }}
+    needs: e2e
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: blob-report-*
+          path: all-blob-reports
+          merge-multiple: true
+
+      - run: npx playwright merge-reports --reporter html ./all-blob-reports
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 14
+
+  # Check único para a branch protection: verde só se static E todos os shards passaram.
+  gate:
+    name: Quality Gate
+    if: always()
+    needs: [static, e2e]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resultado
+        run: |
+          echo "static=${{ needs.static.result }} e2e=${{ needs.e2e.result }}"
+          [ "${{ needs.static.result }}" = success ] && [ "${{ needs.e2e.result }}" = success ]
