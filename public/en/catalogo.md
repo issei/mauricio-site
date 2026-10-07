@@ -17,6 +17,7 @@ Principles of systemic thinking and knowledge management: the starting point bef
 - [Capacity Before Access](https://mauricio.issei.com.br/en/capacidade-antes-do-acesso) — teaching competence, pedagogical mediation and governance of the IA in early childhood education and fundamental.
 - [The Invisible Artificer](https://mauricio.issei.com.br/en/artifice) — the paradox of technical mastery: why sophistication becomes invisible burden, and how to regain the sovereignty of craft.
 - [Curiosity and Research](https://mauricio.issei.com.br/en/curiosidade-e-investigacao) — information is not knowledge: transform curiosity into investigation using AI as a bench, not as an oracle.
+- [The Self-regulated Learning Cycle](https://mauricio.issei.com.br/en/aprendizagem-autorregulada) — what science proves about recovery, spacing, self-explanation and oriented search, with a 45–60 min protocol, study form and [full scientific review](https://mauricio.issei.com.br/en/aprendizagem-autorregulada-artigo).
 
 ## 02 · The Method — Trust Engineering
 
