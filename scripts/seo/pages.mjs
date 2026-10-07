@@ -1253,8 +1253,8 @@ export const PAGES = [
       heading: 'Acessibilidade como requisito, em poucas linhas',
       lede: 'O protocolo **A11Y.md** entrou no repositório como contexto dos agentes de IA que escrevem o código, e a acessibilidade passou a ser medida a cada pull request por uma **catraca**: uma medição automática que reprova qualquer mudança que aumente a contagem de falhas. A página mostra o fluxo, o código de cada mudança e o que **ninguém verificou**: o relatório do site está em **CONDICIONAL**, porque a aprovação depende de testes que só pessoas podem fazer.',
       points: [
-        '**Medição** — a primeira varredura completa achou 207 ocorrências em 36 páginas; fora das 7 páginas utilitárias com exceção registrada, as ocorrências de regras WCAG do axe e das sondas de estrutura, largura mínima, movimento e espaçamento chegaram a zero.',
-        '**Independência** — um agente em contexto novo achou falhas que a catraca verde não via; uma segunda auditoria, não independente, achou outras, como um exercício impossível de concluir sem mouse.',
+        '**Medição** — a primeira varredura completa achou 207 ocorrências em 36 páginas; fora das 7 páginas utilitárias com exceção registrada, as ocorrências detectáveis pelo gate automatizado chegaram a zero. Isso não significa ausência de barreiras, e o estudo não isola o efeito do A11Y.md.',
+        '**Revisão independente** — um agente de IA em contexto novo achou falhas que a catraca verde não via; uma segunda auditoria, feita no mesmo trabalho que corrigiu os achados, achou outras, como um exercício impossível de concluir sem mouse. Nenhuma avaliação humana independente foi feita.',
         '**Limite** — nenhuma pessoa testou o site com leitor de tela, controle por voz ou Safari; o relatório declara o nível de independência mais baixo, *self-reported*.',
       ],
       foot: 'A ideia é a da [Engenharia da Confiança](/engenharia-confianca): um agente ganha autonomia na medida da evidência que produz.',

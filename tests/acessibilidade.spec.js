@@ -18,8 +18,9 @@ test('estrutura: seções na ordem do SDD, sete diffs e a trilha da catraca', as
   const ids = await page.locator('main > section').evaluateAll((els) => els.map((e) => e.id));
   expect(ids).toEqual(SECOES);
   await expect(page.locator('article.ac-change')).toHaveCount(7);
-  await expect(page.locator('.ac-table tbody tr')).toHaveCount(6);
-  await expect(page.locator('.ac-table th[scope="col"]')).toHaveCount(3);
+  await expect(page.locator('.ac-table--fases tbody tr')).toHaveCount(6);
+  await expect(page.locator('.ac-table--fases th[scope="col"]')).toHaveCount(3);
+  await expect(page.locator('#evidencia-permite')).toHaveCount(1);
 });
 
 test('primeiro Tab é o link de salto e leva ao <main>', async ({ page, browserName }) => {

@@ -160,7 +160,8 @@ body.ac-body {
   .ac-table { font-size: .86rem; }
   .ac-table th, .ac-table td { padding: .45rem .3rem; overflow-wrap: anywhere; }
   .ac-table thead th { letter-spacing: 0; overflow-wrap: normal; }
-  .ac-table td:nth-child(2) { white-space: nowrap; font-size: .8rem; }
+  .ac-table td:nth-child(2):not(:last-child) { white-space: normal; }
+  .ac-table--fases td:nth-child(2) { white-space: nowrap; font-size: .8rem; }
   .ac-table td.ac-num { width: auto; }
   .ac-bar { display: none; }
 }
