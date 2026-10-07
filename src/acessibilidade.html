@@ -284,7 +284,7 @@
             <dd>207</dd>
           </div>
           <div>
-            <dt>ocorrências de regras WCAG fora das 7 páginas utilitárias com exceção registrada (2026-10-05)</dt>
+            <dt>ocorrências detectáveis pelo gate automatizado, fora das 7 páginas utilitárias com exceção registrada (2026-10-05)</dt>
             <dd>0</dd>
           </div>
           <div>
@@ -296,7 +296,7 @@
             <dd data-evidence="screen-reader">0</dd>
           </div>
         </dl>
-        <p class="ac-small ac-status__foot">O zero do segundo item vale para as regras WCAG do axe, medidas a 1280 px e sem o conteúdo de iframes de terceiros (como o player do YouTube), e para as sondas de estrutura, de largura mínima, de movimento e de espaçamento. Não cobre o que exige verificação humana. Detalhes em <a href="#resultado">Resultado</a> e <a href="#limites">Limites</a>.</p>
+        <p class="ac-small ac-status__foot">O zero do segundo item vale para as regras WCAG do axe, medidas a 1280 px e sem o conteúdo de iframes de terceiros (como o player do YouTube), e para as sondas de estrutura, de largura mínima, de movimento e de espaçamento. Isso não significa ausência de barreiras de acessibilidade: é só o resultado das verificações automatizadas executadas nessas condições. Não cobre o que exige verificação humana. Detalhes em <a href="#resultado">Resultado</a> e <a href="#limites">Limites</a>.</p>
 
         <p class="ac-doors">
           <a href="#implementacao">Ver o fluxo real</a>
@@ -406,8 +406,8 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
             <p class="ac-ev">Evidência: <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/implementation-plan.md" translate="no">implementation-plan.md</a> · <a href="https://github.com/issei/mauricio-site/pull/81">PR #81</a>.</p>
           </li>
           <li>
-            <h3>Verificação independente</h3>
-            <p>Um agente em contexto novo, numa sessão sem memória do trabalho anterior, que não leu as especificações, os testes nem o histórico do código, escreveu as próprias sondas (testes automáticos para este site) sobre 75 páginas e encontrou 4 falhas de gravidade alta que os testes existentes não viam. Uma delas: o banner de cookies cobria 29 das 131 paradas de Tab da página inicial.</p>
+            <h3>Revisão independente por agente em contexto novo</h3>
+            <p>Um agente em contexto novo, numa sessão sem memória do trabalho anterior, que não leu as especificações, os testes nem o histórico do código, escreveu as próprias sondas (testes automáticos para este site) sobre 75 páginas e encontrou 4 falhas de gravidade alta que os testes existentes não viam. Uma delas: o banner de cookies cobria 29 das 131 paradas de Tab da página inicial. A revisão foi feita em contexto separado, mas continua sendo uma avaliação automatizada por IA e não substitui uma avaliação humana independente.</p>
             <p class="ac-ev">Evidência: <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/verificacao-independente-fase7.md" translate="no">verificacao-independente-fase7.md</a> · correções no <a href="https://github.com/issei/mauricio-site/commit/c9d085ca97acfb240108a83628b9ea4c6d3a26d0" translate="no">commit c9d085c</a>.</p>
           </li>
           <li>
@@ -426,7 +426,7 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
             <p class="ac-ev">Evidência: <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md" translate="no">auditoria-v2.md</a> · <a href="https://github.com/issei/mauricio-site/pull/85">PR #85</a>.</p>
           </li>
         </ol>
-        <p class="ac-prose ac-small">Hoje, todo pull request para a branch principal roda o gate completo no CI: catraca, verificador estático e testes Playwright em Chromium, Firefox e WebKit. O deploy, porém, não espera esse resultado (veja <a href="#limites">Limites</a>).</p>
+        <p class="ac-prose ac-small">Hoje, todo pull request para a branch principal roda o gate completo no CI: catraca, verificador estático e testes Playwright em Chromium, Firefox e WebKit. O deploy, porém, não espera esse resultado (veja <a href="#limites">Limites</a>). O gate impede que certas falhas avancem pelo fluxo protegido de desenvolvimento; isso não significa que toda regressão de acessibilidade esteja bloqueada antes de ir ao ar.</p>
       </div>
     </section>
 
@@ -579,10 +579,10 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
 
         <div class="ac-prose">
           <h3 id="catraca">A catraca, fase a fase</h3>
-          <p>A contagem de ocorrências registrada na referência da catraca ao fim de cada fase. Uma ocorrência é um elemento reprovado por uma regra, ou uma falha de uma sonda própria (sem <code>&lt;main&gt;</code>, sem link de salto, rolagem a 320 px, animação sob movimento reduzido).</p>
+          <p>A contagem de ocorrências registrada na referência da catraca ao fim de cada fase. Uma ocorrência é uma unidade contabilizada pelo gate de validação: um elemento reprovado por uma regra, ou uma falha de uma sonda própria (sem <code>&lt;main&gt;</code>, sem link de salto, rolagem a 320 px, animação sob movimento reduzido). Ela não representa necessariamente uma violação distinta da WCAG.</p>
         </div>
         <div class="ac-tablewrap">
-          <table class="ac-table">
+          <table class="ac-table ac-table--fases">
             <caption>Número de ocorrências na catraca ao fim de cada fase. Fonte: mensagens dos commits e implementation-plan.md.</caption>
             <thead>
               <tr>
@@ -627,6 +627,8 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
         </div>
         <div class="ac-prose">
           <p class="ac-small">A Fase 4 partiu de 77, não de 79: uma correção feita em paralelo (commit a191c24, 2 ocorrências) entrou por merge. A subida de 34 para 38 veio de 4 animações de um CDN externo nas páginas de administração. Ao fim da Fase 5, as 34 ocorrências estavam todas nas páginas utilitárias registradas em <code>EXCEPTIONS.md</code>; as 38 da Fase 6 também. A auditoria v2 acrescentou métricas novas, com contagem própria (veja <a href="#resultado">Resultado</a>).</p>
+          <h3 id="causalidade">Limite de causalidade</h3>
+          <p>A queda de 207 ocorrências para o estado atual aconteceu durante um conjunto de mudanças que incluiu regras novas, testes, sondas, correções e alterações no escopo da medição. Este relato não isola o efeito do A11Y.md, e não há experimento controlado. O que ele demonstra é que o protocolo foi incorporado ao processo de engenharia e passou a orientar o contexto usado na implementação e na validação.</p>
         </div>
       </div>
     </section>
@@ -637,6 +639,7 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
           <p class="ac-eyebrow">05 · Validação</p>
           <h2 id="validacao-titulo" class="ac-title">Quem verificou o quê</h2>
           <p class="ac-lede">O A11Y.md separa três tipos de verificação: a automática, a feita por alguém que não escreveu o código e a que exige uma pessoa. Este projeto tem as duas primeiras. A terceira está quase toda pendente.</p>
+          <p>A WCAG 2.2 AA é usada aqui como referência de engenharia e de validação. Isso não constitui declaração de conformidade com a WCAG 2.2 AA.</p>
         </div>
         <div class="ac-grid ac-grid--3">
           <div class="ac-card">
@@ -649,10 +652,10 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
             </ul>
           </div>
           <div class="ac-card">
-            <h3>Independente</h3>
+            <h3>Revisão independente por agente</h3>
             <ul>
               <li><strong>Fase 7:</strong> um agente em contexto novo, que não leu o histórico, as especificações nem os testes, refez as verificações por conta própria e achou 4 falhas altas. Todas foram corrigidas e ganharam teste de regressão.</li>
-              <li><strong>Limite:</strong> é o único auditor independente até aqui, e é da mesma família de modelo do agente que escreveu o código. As correções feitas depois dele, do commit c9d085c em diante, não passaram por nova auditoria independente. Por isso o relatório declara o nível de independência mais baixo: <span data-evidence="report-independence">self-reported</span>.</li>
+              <li><strong>Limite:</strong> é a única revisão independente até aqui. Ela é automatizada por IA, da mesma família de modelo do agente que escreveu o código, e não substitui uma avaliação humana independente. As correções feitas depois dela, do commit c9d085c em diante, não foram revistas de novo. Por isso o relatório declara o nível de independência mais baixo: <span data-evidence="report-independence">self-reported</span>.</li>
             </ul>
           </div>
           <div class="ac-card">
@@ -665,7 +668,7 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
         </div>
         <div class="ac-prose">
           <h3 id="por-que-nao-outra-ferramenta">Por que não Lighthouse nem um MCP de acessibilidade</h3>
-          <p>A auditoria de acessibilidade do Lighthouse roda o axe-core, o mesmo motor da catraca (veja o <a href="https://github.com/GoogleChrome/lighthouse/blob/main/core/gather/gatherers/accessibility.js">código-fonte do Lighthouse</a>). A auditoria v2 constatou o mesmo nos servidores MCP de acessibilidade disponíveis (MCP é o protocolo que conecta ferramentas a agentes de IA), e registrou como proposta estender a catraca em vez de somar ferramentas: o gate precisa ser determinístico e rodar no GitHub Actions sem uma sessão de agente. Os achados da auditoria v2 vieram de sondas próprias e de regras de boas práticas do próprio axe; o do rótulo no nome veio de um scanner externo, e a correção ganhou um teste próprio.</p>
+          <p>A auditoria de acessibilidade do Lighthouse usa o axe-core como motor (veja o <a href="https://github.com/GoogleChrome/lighthouse/blob/main/core/gather/gatherers/accessibility.js">código-fonte do Lighthouse</a>). Por isso ela não deve ser tratada como uma segunda engine independente de validação em relação à catraca, que também usa o axe-core. A auditoria v2 constatou o mesmo nos servidores MCP de acessibilidade disponíveis (MCP é o protocolo que conecta ferramentas a agentes de IA), e registrou como proposta estender a catraca em vez de somar ferramentas: o gate precisa ser determinístico e rodar no GitHub Actions sem uma sessão de agente. Os achados da auditoria v2 vieram de sondas próprias e de regras de boas práticas do próprio axe; o do rótulo no nome veio de um scanner externo, e a correção ganhou um teste próprio.</p>
           <p class="ac-ev">Evidência: <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md" translate="no">auditoria-v2.md</a>, ADR-AV2-01 e ADR-AV2-02 (propostas) · <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/.github/workflows/test.yml">workflow de testes no GitHub Actions</a>.</p>
         </div>
       </div>
@@ -700,11 +703,11 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
           </div>
           <div class="ac-card">
             <h3>Movimento</h3>
-            <p>Com a preferência de movimento reduzido ativa, nenhuma animação CSS infinita fora das exceções. Sem essa preferência, a animação de fundo da página <a href="./proposta-engenharia-reversa.html">Engenharia Reversa Assistida por IA</a> e o jogo <a href="./life.html">A Jornada em Pixel Art</a> não têm controle de pausa (em aberto).</p>
+            <p>Tratamento parcial de <code>prefers-reduced-motion</code>: com a preferência ativa, a medição não encontrou animação CSS infinita fora das exceções, mas o inventário e a classificação completa das animações continuam pendentes. Sem essa preferência, a animação de fundo da página <a href="./proposta-engenharia-reversa.html">Engenharia Reversa Assistida por IA</a> e o jogo <a href="./life.html">A Jornada em Pixel Art</a> não têm controle de pausa (em aberto).</p>
           </div>
           <div class="ac-card">
             <h3>Reflow e zoom</h3>
-            <p>A 320 px, só 2 páginas excepcionadas rolam na horizontal. Nenhuma página bloqueia o zoom. Entre 640 e 1024 px, 3 páginas ainda rolam na horizontal (em aberto). Texto ampliado a 200% não foi medido.</p>
+            <p>A 320 px, só 2 páginas excepcionadas rolam na horizontal. Nenhuma página bloqueia o zoom. Entre 640 e 1024 px, 3 páginas ainda rolam na horizontal (em aberto). O teste em 320 px de largura não substitui a validação de zoom de 200%. <span class="ac-selo ac-selo--limite">Ainda não verificado</span> Texto ampliado a 200%.</p>
           </div>
         </div>
         <p class="ac-prose ac-ev">Evidência: <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md">REPORT.md em 2026-10-05</a>, seções 1, 2, 4 e 5 · <a href="https://github.com/issei/mauricio-site/blob/main/REPORT.md">versão atual do REPORT.md</a>.</p>
@@ -717,22 +720,46 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
         <h2 id="limites-titulo" class="ac-title">O que não é possível concluir</h2>
         <p class="ac-lede">Ausência de erro automático não é ausência de barreira. O próprio histórico deste site mostra isso duas vezes:</p>
         <ul>
-          <li>Com a catraca verde, o banner de cookies cobria 29 das 131 paradas de Tab da página inicial. Quem achou foi o auditor independente.</li>
+          <li>Com a catraca verde, o banner de cookies cobria 29 das 131 paradas de Tab da página inicial. Quem achou foi a revisão por agente em contexto novo.</li>
           <li>Com a catraca verde, um exercício do simulador OCC não podia ser concluído sem mouse. Quem achou foi a auditoria v2.</li>
         </ul>
+
+        <h3 id="evidencia-permite">O que a evidência permite afirmar</h3>
+        <div class="ac-tablewrap">
+          <table class="ac-table">
+            <caption>Cada afirmação, a evidência que existe e o estado. "Não declarado" e "Não demonstrado" são limites deliberados, não pendências escondidas.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Afirmação</th>
+                <th scope="col">Evidência</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">O site tem validação automatizada de acessibilidade</th><td>Gate local e CI em cada pull request (<code>quality-gate.mjs</code>, <code>test.yml</code>)</td><td>Comprovado</td></tr>
+              <tr><th scope="row">As ocorrências detectáveis pelo gate diminuíram</th><td>Referência da catraca registrada em cada fase (tabela da seção 04)</td><td>Comprovado, com mudança de escopo na Fase 6</td></tr>
+              <tr><th scope="row">O A11Y.md foi incorporado ao processo</th><td><code>docs/a11y/</code>, <code>AGENTS.md</code>, <code>REPORT.md</code></td><td>Comprovado</td></tr>
+              <tr><th scope="row">O site está em conformidade com a WCAG 2.2 AA</th><td>Não houve avaliação completa nem avaliação humana</td><td>Não declarado</td></tr>
+              <tr><th scope="row">Uma pessoa validou o site com leitor de tela</th><td>Nenhum teste realizado</td><td>Não verificado</td></tr>
+              <tr><th scope="row">A automação detecta todas as barreiras</th><td>O próprio histórico mostra falhas que a catraca verde não via</td><td>Não demonstrado</td></tr>
+              <tr><th scope="row">O A11Y.md causou a redução das ocorrências</th><td>Não houve experimento controlado</td><td>Não demonstrado</td></tr>
+              <tr><th scope="row">O site funciona com texto ampliado a 200%</th><td>Medido só a 320 px de largura, e só o que o gate mede</td><td>Não verificado</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <h3 id="nao-verificado">Não verificado ou em aberto</h3>
         <ul>
           <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Leitor de tela real:</strong> nenhum par leitor e navegador (por exemplo, NVDA com Firefox ou VoiceOver com Safari) foi usado. O que as regiões dinâmicas (aria-live) anunciam nunca foi ouvido.</li>
           <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Controle por voz:</strong> o rótulo no nome foi testado por código; ninguém usou Voice Control, Voice Access ou Dragon.</li>
           <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Safari:</strong> link de salto e foco não foram verificados nele (o Safari não leva o Tab a links na configuração padrão).</li>
-          <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Mídia:</strong> vídeos e áudios sem legenda revisada por pessoa nem transcrição verificada.</li>
+          <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Mídia:</strong> vídeos e áudios sem legenda revisada por pessoa nem transcrição verificada. Ainda não verificado por avaliação humana; a existência de mecanismos técnicos não garante que o conteúdo seja acessível.</li>
           <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Movimento:</strong> 118 animações infinitas em 32 páginas ainda não foram classificadas como essenciais ou decorativas, e não têm mecanismo de pausa conhecido.</li>
           <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Idioma:</strong> o aviso de cookies e o menu do ecossistema não foram traduzidos. Nas páginas em inglês, o texto deles continua em português, marcado com o idioma certo para o leitor de tela.</li>
           <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Publicação:</strong> o deploy não espera o gate terminar. Uma regressão pode ir ao ar antes de os testes a acusarem.</li>
-          <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Independência:</strong> as correções feitas depois da auditoria da Fase 7, do commit c9d085c em diante, não passaram por nova auditoria independente.</li>
+          <li><span class="ac-selo ac-selo--limite">Limite</span> <strong>Independência:</strong> a única revisão independente foi feita por IA. Nenhuma avaliação humana independente foi realizada, e as correções feitas depois da Fase 7, do commit c9d085c em diante, não foram revistas de novo.</li>
         </ul>
-        <p>Por isso o relatório fica em CONDICIONAL. Sair desse status exige pessoas: teste com leitor de tela real, revisão humana de legendas, decisões do dono sobre a tradução do aviso de cookies e a pausa das animações, e uma nova auditoria independente, de preferência por outro modelo. E novos componentes podem trazer barreiras novas: a catraca impede que uma contagem suba, não que surja um problema que ela não mede.</p>
+        <p>Por isso o relatório fica em CONDICIONAL. Sair desse status exige pessoas: teste com leitor de tela real, revisão humana de legendas, decisões do dono sobre a tradução do aviso de cookies e a pausa das animações, e uma nova revisão independente, de preferência por pessoas e, em complemento, por outro modelo. E novos componentes podem trazer barreiras novas: a catraca impede que uma contagem suba, não que surja um problema que ela não mede.</p>
         <p class="ac-ev">Evidência: <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md">REPORT.md em 2026-10-05</a>, seções 3 e 5 e notas 3, 6 e 7 · <a href="https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md" translate="no">auditoria-v2.md</a>.</p>
       </div>
     </section>
@@ -766,8 +793,8 @@ em docs/a11y/references/ — não o diretório inteiro.</code></pre>
     <h2 class="aeo-tldr__title">Acessibilidade como requisito, em poucas linhas</h2>
     <p class="aeo-tldr__lede">O protocolo <strong>A11Y.md</strong> entrou no repositório como contexto dos agentes de IA que escrevem o código, e a acessibilidade passou a ser medida a cada pull request por uma <strong>catraca</strong>: uma medição automática que reprova qualquer mudança que aumente a contagem de falhas. A página mostra o fluxo, o código de cada mudança e o que <strong>ninguém verificou</strong>: o relatório do site está em <strong>CONDICIONAL</strong>, porque a aprovação depende de testes que só pessoas podem fazer.</p>
     <ul class="aeo-tldr__points">
-      <li><strong>Medição</strong> — a primeira varredura completa achou 207 ocorrências em 36 páginas; fora das 7 páginas utilitárias com exceção registrada, as ocorrências de regras WCAG do axe e das sondas de estrutura, largura mínima, movimento e espaçamento chegaram a zero.</li>
-      <li><strong>Independência</strong> — um agente em contexto novo achou falhas que a catraca verde não via; uma segunda auditoria, não independente, achou outras, como um exercício impossível de concluir sem mouse.</li>
+      <li><strong>Medição</strong> — a primeira varredura completa achou 207 ocorrências em 36 páginas; fora das 7 páginas utilitárias com exceção registrada, as ocorrências detectáveis pelo gate automatizado chegaram a zero. Isso não significa ausência de barreiras, e o estudo não isola o efeito do A11Y.md.</li>
+      <li><strong>Revisão independente</strong> — um agente de IA em contexto novo achou falhas que a catraca verde não via; uma segunda auditoria, feita no mesmo trabalho que corrigiu os achados, achou outras, como um exercício impossível de concluir sem mouse. Nenhuma avaliação humana independente foi feita.</li>
       <li><strong>Limite</strong> — nenhuma pessoa testou o site com leitor de tela, controle por voz ou Safari; o relatório declara o nível de independência mais baixo, <em>self-reported</em>.</li>
     </ul>
     <p class="aeo-tldr__foot">A ideia é a da <a href="/engenharia-confianca">Engenharia da Confiança</a>: um agente ganha autonomia na medida da evidência que produz.</p>

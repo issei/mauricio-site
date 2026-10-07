@@ -7,8 +7,8 @@
 
 Protocol **A11Y. md** entered the repository as context of the AI agents who write the code, and accessibility became measured to each pull request by a **ratchet**: an automatic measurement that fails any change that increases the failure count. The page shows the flow, the code of each change and what **No one checked**: the site report is in **CONDITIONAL**Because approval depends on tests only people can do.
 
-- **Measurement** — the first complete scan found 207 occurrences on 36 pages; outside the 7 utilitarian pages with the exception recorded, the occurrences of the WCAG rules of the axe and the probes of structure, minimum width, movement and spacing reached zero.
-- **Independence** — an agent in a new context found faults that the green turnstile could not see; a second, non-independent audit found others as an impossible exercise to complete without a mouse.
+- **Measurement** — the first complete scan found 207 occurrences on 36 pages; outside the 7 utilitarian pages with the exception recorded, the occurrences detected by the automated gate reached zero. This does not mean absence of barriers, and the study does not isolate the effect of A11Y. md.
+- **Independent review** — an AI agent in a new context found faults that the green turnstile did not see; a second audit, done in the same work that corrected the findings, found others, as an impossible exercise to complete without mouse. No independent human evaluation has been made.
 - **Limit** — no person has tested the site with screen reader, voice control or Safari; the report declares the lowest level of independence, *self-reported*.
 
 ## Full content of the page
@@ -26,7 +26,7 @@ How A11Y.md was incorporated into the development of this site — and what chan
 
 This page does not state that the site is accessible. It shows the process used, what was measured, by whom, and what has not yet been verified. The facts cited point to a public repository file or commit; what is inference is marked as such.
 
-The zero of the second item applies to the WCAG rules of the axe, measured at 1280 px and without the content of third-party iframes (such as YouTube player), and for the minimum width, motion and spacing probes. It doesn't cover what requires human verification. Results and Limits details.
+The zero of the second item applies to the WCAG rules of the axe, measured at 1280 px and without the content of third-party iframes (such as YouTube player), and for the minimum width, motion and spacing probes. This does not mean the absence of accessibility barriers: it is only the result of automated checks performed under these conditions. It doesn't cover what requires human verification. Results and Limits details.
 
 View real flow View code changes See what not verified
 
@@ -121,8 +121,8 @@ The summary "require, context, code, validation" is more linear than what happen
 5. Five-phase correction
   Contrast; consent of cookies; page structure and jump link; 320 px width and movement; interactive tasks. From Phase 2 to Phase 5, each one lowered the ratchet reference. In Phase 6 the measurement was expanded and the count rose from 34 to 38 (see table). From the third stage onwards, each brought new browser tests.
   Evidence: [implementation-plan.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/implementation-plan.md) · [PR #81](https://github.com/issei/mauricio-site/pull/81).
-6. ♪ Independent check ♪
-  An agent in a new context, in a session with no memory of the previous work, who did not read the specifications, tests or code history, wrote the probes themselves (automatic tests for this site) on 75 pages and found 4 high gravity faults that the existing tests did not see. One of them: the cookie banner covered 29 of the 131 Tab stops on the home page.
+6. # Independent review by agent in new context
+  An agent in a new context, in a session with no memory of the previous work, who did not read the specifications, tests or code history, wrote the probes themselves (automatic tests for this site) on 75 pages and found 4 high gravity faults that the existing tests did not see. One of them: the cookie banner covered 29 of the 131 Tab stops on the home page. The review was carried out in a separate context, but remains an automated AI evaluation and does not replace an independent human evaluation.
   Evidence: [check-independent-phase7. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/verificacao-independente-fase7.md) · corrections in [commit c9d085 c](https://github.com/issei/mauricio-site/commit/c9d085ca97acfb240108a83628b9ea4c6d3a26d0).
 7. Report and static gate
   The `REPORT.md` report was filled out from the A11Y.md template, with CONDITIONAL status. The static checker entered the gate with a ceiling of errors that can only decrease.
@@ -134,7 +134,7 @@ The summary "require, context, code, validation" is more linear than what happen
   Audit v2 measured what the report listed as "not measured", separating fact, inference and hypothesis. She is not independent: the same work that wrote her corrected the findings. Among other failures, he found an exercise of the [Operation Cognitive Capital](https://mauricio.issei.com.br/en/operacao-capital-cognitivo) simulator (OCC) that could not be completed without a mouse and locked the following chapters. The ratchet has gained new metrics: text spacing, hidden content without JavaScript and best practice rules of the axe.
   Evidence: [audit-v2. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md) · [PR #85](https://github.com/issei/mauricio-site/pull/85).
 
-Today, every pull request for the main branch runs the full gate in CI: turnstile, static verifier and Playwright tests in Chromium, Firefox and WebKit. Deploy, however, does not expect this result (see Limits).
+Today, every pull request for the main branch runs the full gate in CI: turnstile, static verifier and Playwright tests in Chromium, Firefox and WebKit. Deploy, however, does not expect this result (see Limits). Gate prevents certain failures from advancing through the protected flow of development; this does not mean that all accessibility regression is blocked before going on air.
 
 04 · What changed in the code
 
@@ -333,7 +333,7 @@ WCAG 2.1.1 Keyboard.
 
 ##### The turnstile, phase by phase
 
-The count of occurrences recorded in the reference of the ratchet at the end of each phase. An occurrence is an element reproved by a rule, or a failure of a probe itself (without `<main>`, without jumping link, scrolling to 320 px, animation under reduced motion).
+The count of occurrences recorded in the reference of the ratchet at the end of each phase. An occurrence is a unit accounted for by the validation gate: an element disapproved by a rule, or a failure of a probe itself (without `<main>`, without jump link, scrolling at 320 px, animation under reduced motion). It does not necessarily represent a distinct violation of WCAG.
 
 **Number of occurrences in the ratchet at the end of each phase. Source: commit messages and implementation-plan.md.**
 
@@ -348,11 +348,17 @@ The count of occurrences recorded in the reference of the ratchet at the end of 
 
 Phase 4 started with 77, not 79: a parallel correction (commit a191c24, 2 occurrences) entered by merge. The rise from 34 to 38 came from 4 animations of an external CDN on the administration pages. At the end of Phase 5, the 34 occurrences were all on the utilitarian pages recorded in `EXCEPTIONS.md`; the 38 in Phase 6 also. The audit v2 added new metrics, with own count (see Result).
 
+##### Causation limit
+
+The fall of 207 occurrences to the current state occurred during a set of changes that included new rules, tests, probes, corrections and changes in the measurement scope. This report does not isolate the effect of A11Y.md, and there is no controlled experiment. What he demonstrates is that the protocol was incorporated into the engineering process and began to guide the context used in implementation and validation.
+
 05 · Validation
 
 #### Who checked what?
 
 The A11Y.md separates three types of verification: the automatic, the done by someone who did not write the code and the one who requires a person. This project has the first two. The third is almost all pending.
+
+WCAG 2.2 AA is used here as an engineering and validation reference. This does not constitute a declaration of compliance with WCAG 2.2 AA.
 
 ##### Automated
 
@@ -361,10 +367,10 @@ The A11Y.md separates three types of verification: the automatic, the done by so
 - **Audit v2:** New probes for what was marked "not measured". It is not independent: it was done in the same work that corrected the findings.
 - **7 Playwright suites** in `tests/a11y/`: keyboard consent, visible focus by comparison of pixels, name label, 320 px width and zoom, tasks, widgets and auditor regressions.
 
-##### Independent
+##### Independent review by agent
 
 - **Phase 7:** an agent in a new context, who did not read the history, specifications or tests, re-checked on his own and found four high failures. All were corrected and won regression test.
-- **Limit:** He's the only independent auditor so far, and he's from the same model family as the agent who wrote the code. The corrections made after him, from the c9d085c commit onward, did not undergo a new independent audit. That is why the report states the lowest level of independence: self-reported.
+- **Limit:** It's the only independent review so far. It is automated by AI, from the same model family as the agent who wrote the code, and does not replace an independent human evaluation. The corrections made after it, from the commit c9d085c onward, were not reviewed again. That is why the report states the lowest level of independence: self-reported.
 
 ##### Human
 
@@ -373,7 +379,7 @@ The A11Y.md separates three types of verification: the automatic, the done by so
 
 ##### Why not Lighthouse or an accessibility MCP
 
-The Lighthouse accessibility audit runs the axe-core, the same engine as the ratchet (see [Lighthouse source code](https://github.com/GoogleChrome/lighthouse/blob/main/core/gather/gatherers/accessibility.js)). The v2 audit found the same on available accessibility MCP servers (MCP is the protocol that connects tools to AI agents), and registered as a proposal to extend the turnstile instead of adding tools: the gate needs to be deterministic and run on GitHub Actions without an agent session. The findings of the audit v2 came from own probes and rules of good practice of the axe itself; the label in the name came from an external scanner, and the correction gained a test of its own.
+Lighthouse accessibility audit uses axe-core as an engine (see [Lighthouse source code](https://github.com/GoogleChrome/lighthouse/blob/main/core/gather/gatherers/accessibility.js)). Therefore it should not be treated as a second independent engine of validation in relation to the ratchet, which also uses the axe-core. The v2 audit found the same on available accessibility MCP servers (MCP is the protocol that connects tools to AI agents), and registered as a proposal to extend the turnstile instead of adding tools: the gate needs to be deterministic and run on GitHub Actions without an agent session. The findings of the audit v2 came from own probes and rules of good practice of the axe itself; the label in the name came from an external scanner, and the correction gained a test of its own.
 
 Evidence: [audit-v2. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md), ADR-AV2-01 and ADR-AV2-02 (proposed) · [GitHub Actions test workflow](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/.github/workflows/test.yml).
 
@@ -407,11 +413,11 @@ Solid pairs of color measured between 6,65:1 and 12,26:1, above the minimum of 4
 
 ##### Movement
 
-With the preference of active reduced motion, no infinite CSS animation outside the exceptions. Without this preference, the background animation of the [Reverse Engineering Assisted by AI](https://mauricio.issei.com.br/en/proposta-engenharia-reversa) page and the game [The Journey in Pixel Art](https://mauricio.issei.com.br/en/life) do not have pause control (open).
+Partial treatment of `prefers-reduced-motion`: with active preference, the measurement found no infinite CSS animation outside the exceptions, but the inventory and complete classification of the animations remain pending. Without this preference, the background animation of the [Reverse Engineering Assisted by AI](https://mauricio.issei.com.br/en/proposta-engenharia-reversa) page and the game [The Journey in Pixel Art](https://mauricio.issei.com.br/en/life) have no pause control (open).
 
 ##### Reflow and zoom
 
-At 320 px, only 2 pages excepted roll horizontally. No page blocks the zoom. Between 640 and 1024 px, 3 pages still roll horizontally (open). Text magnified to 200% was not measured.
+At 320 px, only 2 pages excepted roll horizontally. No page blocks the zoom. Between 640 and 1024 px, 3 pages still roll horizontally (open). The 320 px wide test does not replace the 200% zoom validation. Not yet verified Text magnified to 200%.
 
 Evidence: [REPORT.md on 2026-10-05](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md), sections 1, 2, 4 and 5 · [Current version of REPORT. md](https://github.com/issei/mauricio-site/blob/main/REPORT.md).
 
@@ -421,21 +427,36 @@ Evidence: [REPORT.md on 2026-10-05](https://github.com/issei/mauricio-site/blob/
 
 Absence of automatic error is not absence of barrier. The site's own history shows this twice:
 
-- With the green turnstile, the cookie banner covered 29 of the 131 Tab stops on the home page. The independent auditor found it.
+- With the green turnstile, the cookie banner covered 29 of the 131 Tab stops on the home page. It was the review by agent in a new context.
 - With green turnstile, an OCC simulator exercise could not be completed without mouse. The audit v2 found it.
+
+##### What evidence allows us to affirm
+
+**Every statement, the evidence that exists and the state. "Undeclared" and "Unproven" are deliberate limits, not hidden pending.**
+
+| Statement | Evidence | Status |
+| --- | --- | --- |
+| The site has automated accessibility validation | Local Gate and CI on each pull request (`quality-gate.mjs`, `test.yml`) | Proven |
+| Gate-detectable occurrences decreased | Ratchet reference recorded in each phase (table of section 04) | Proven, with scope change in Phase 6 |
+| A11Y.md has been incorporated into the process | `docs/a11y/`, `AGENTS.md`, `REPORT.md` | Proven |
+| The site complies with WCAG 2.2 AA | There was no complete evaluation or human evaluation. | Not declared |
+| One person validated the site with screen reader | No test performed | Not verified |
+| Automation detects all barriers | The history itself shows flaws that the green turnstile did not see | Not shown |
+| A11Y.md caused the reduction of occurrences | There was no controlled experiment. | Not shown |
+| The site works with extended text to 200% | Measured only at 320 px wide, and only what the gate measures | Not verified |
 
 ##### Not checked or open
 
 - Limit **Real screen reader:** no reader and browser pair (e.g. NVDA with Firefox or VoiceOver with Safari) was used. What the dynamic (aria-live) regions announce has never been heard.
 - Limit **Voice control:** the name label was code tested; no one used Voice Control, Voice Access or Dragon.
 - Limit **Safari:** jump link and focus were not checked on it (Safari does not lead Tab to links in the default setting).
-- Limit **Media:** videos and audios without subtitles reviewed by person or transcribed verified.
+- Limit **Media:** videos and audios without subtitles reviewed by person or transcribed verified. Not yet verified by human evaluation; the existence of technical mechanisms does not guarantee that the content is accessible.
 - Limit **Movement:** 118 infinite animations in 32 pages have not yet been classified as essential or decorative, and have no known pause mechanism.
 - Limit **Language:** the cookie warning and ecosystem menu have not been translated. On the English pages, their text remains in Portuguese, marked with the right language for the screen reader.
 - Limit **Publication:** The deploy doesn't wait for the gate to end. A regression can go on the air before the tests charge her.
-- Limit **Independence:** the corrections made after the audit of Phase 7, the commit c9d085c onwards, did not undergo a new independent audit.
+- Limit **Independence:** the only independent review was done by ai. No independent human evaluation was performed, and corrections made after Phase 7, of the c9d085c commit onward, were not reviewed again.
 
-That's why the report stays in CONDITIONAL. Getting out of this status requires people: testing with real screen reader, human review of subtitles, owner's decisions on the translation of the cookie notice and pause of the animations, and a new independent audit, preferably by another model. And new components can bring new barriers: the ratchet prevents a count from rising, not that there is a problem that it does not measure.
+That's why the report stays in CONDITIONAL. Getting out of this status requires people: testing with real screen reader, human review of subtitles, decisions of the owner on the translation of the cookie notice and pause of the animations, and a new independent review, preferably by people and, in addition, by another model. And new components can bring new barriers: the ratchet prevents a count from rising, not that there is a problem that it does not measure.
 
 Evidence: [REPORT.md on 2026-10-05](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md), sections 3 and 5 and notes 3, 6 and 7 · [audit-v2. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md).
 
