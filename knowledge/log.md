@@ -1,4 +1,5 @@
 ## 2026-10-07
+* **Creation**: Documented concept `aprendizagem-autorregulada.md` (Páginas /aprendizagem-autorregulada: landing + revisão científica, copy calibrada à evidência).
 * **Update**: Linked `acessibilidade-case.md` to `i18n-terminologia-argos.md` (o espelho /en/ da página herda as limitações do Argos (hash e nomes de arquivo protegidos com translate=no)).
 * **Creation**: Documented concept `acessibilidade-case.md` (Página /acessibilidade: case verificável do retrofit, ligada ao REPORT.md).
 

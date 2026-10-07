@@ -16,6 +16,7 @@ Princípios de pensamento sistêmico e gestão do conhecimento: o ponto de parti
 - [Capacidade Antes do Acesso](https://mauricio.issei.com.br/capacidade-antes-do-acesso) — competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial.
 - [O Artífice Invisível](https://mauricio.issei.com.br/artifice) — o paradoxo da maestria técnica: por que a sofisticação vira carga invisível, e como recuperar a soberania do ofício.
 - [Curiosidade e Investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao) — informação não é conhecimento: transformar curiosidade em investigação usando a IA como bancada, não como oráculo.
+- [O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/aprendizagem-autorregulada) — o que a ciência comprova sobre recuperação, espaçamento, autoexplicação e busca orientada, com protocolo de 45–60 min, ficha de estudo e a [revisão científica completa](https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo).
 
 ## 02 · O Método — Engenharia de Confiança
 
