@@ -1,0 +1,185 @@
+/*
+ * Acessibilidade como requisito de engenharia — folha da página (namespace .ac-)
+ * Spec: docs/specs/pages/acessibilidade/00_SDD_acessibilidade.md
+ * Base "Dark Tech" (STYLE_GUIDE.md). Sem Tailwind: a página é HTML nativo e esta folha basta.
+ * Cores de texto = pares já medidos no REPORT.md §4 (≥ 6,65:1). Cor nunca é o único sinal:
+ * selos têm rótulo, linhas de diff mantêm o prefixo - / +.
+ */
+
+:root {
+  --ac-bg: #0d1117;
+  --ac-surface: #161b22;
+  --ac-surface-2: #1c2230;
+  --ac-border: #30363d;
+  --ac-text: #c9d1d9;
+  --ac-heading: #ffffff;
+  --ac-muted: #99a1af;   /* A11Y-DECISIONS: texto de apoio */
+  --ac-link: #58a6ff;    /* texto azul; #007bff só em fundo/borda */
+  --ac-accent: #007bff;
+  --ac-accent-2: #8a2be2;
+  --ac-gradient: linear-gradient(90deg, var(--ac-accent), var(--ac-accent-2));
+  --ac-fato: #58a6ff;
+  --ac-inferencia: #a371f7;
+  --ac-limite: #d29922;
+  --ac-del: #ffa198;
+  --ac-add: #7ee787;
+  --ac-radius: 14px;
+  --ac-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body.ac-body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--ac-bg);
+  color: var(--ac-text);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ac-body h1, .ac-body h2, .ac-body h3 { color: var(--ac-heading); line-height: 1.2; }
+.ac-body h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 .6rem; }
+.ac-body a { color: var(--ac-link); text-decoration: underline; text-underline-offset: 2px; }
+.ac-body a:hover { text-decoration-thickness: 2px; }
+.ac-body ul, .ac-body ol { padding-left: 1.3rem; }
+.ac-body li { margin-bottom: .45rem; }
+.ac-body li::marker { color: var(--ac-muted); }
+.ac-body code { font-family: var(--ac-mono); font-size: .88em; color: var(--ac-heading); background: var(--ac-surface-2); padding: .05em .35em; border-radius: 4px; overflow-wrap: anywhere; }
+
+.ac-skip { position: absolute; left: 1rem; top: -4rem; z-index: 2147483001; padding: .6rem 1rem; border-radius: 8px; background: var(--ac-surface); color: var(--ac-heading); border: 2px solid var(--ac-link); font-weight: 600; text-decoration: none; }
+.ac-skip:focus { top: 1rem; }
+
+/* ───────────── Layout ───────────── */
+
+.ac-wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+.ac-prose { max-width: 68ch; }
+.ac-wrap.ac-prose { max-width: none; }
+.ac-wrap.ac-prose > * { max-width: 68ch; }
+.ac-prose p { margin: 0 0 1.1rem; }
+.ac-section { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.ac-section + .ac-section { border-top: 1px solid var(--ac-border); }
+.ac-eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ac-link); margin: 0 0 .6rem; }
+.ac-title { font-size: clamp(1.6rem, 3.4vw, 2.3rem); font-weight: 700; margin: 0 0 1.3rem; }
+.ac-title::after { content: ""; display: block; width: 64px; height: 3px; margin-top: .7rem; border-radius: 2px; background: var(--ac-gradient); box-shadow: 0 0 10px rgba(0, 123, 255, .5); }
+.ac-lede { font-size: 1.12rem; }
+.ac-small { font-size: .88rem; color: var(--ac-muted); }
+
+.ac-grid { display: grid; gap: 1rem; margin: 1.4rem 0 0; }
+.ac-grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.ac-grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+
+.ac-card { background: var(--ac-surface); border: 1px solid var(--ac-border); border-top: 3px solid var(--ac-accent); border-radius: var(--ac-radius); padding: 1.1rem 1.25rem; min-width: 0; transition: transform .2s ease, box-shadow .2s ease; }
+.ac-card:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(0, 123, 255, .2), 0 12px 32px rgba(0, 0, 0, .45); }
+.ac-card h3, .ac-card h4 { margin: .3rem 0 .6rem; font-size: 1.05rem; font-weight: 600; color: var(--ac-heading); line-height: 1.2; }
+.ac-card p, .ac-card ul { font-size: .95rem; margin: 0 0 .6rem; }
+.ac-card > :last-child { margin-bottom: 0; }
+.ac-card--limite { border-top-color: var(--ac-limite); }
+.ac-card--inferencia { border-top-color: var(--ac-inferencia); }
+
+/* ───────────── Navegação ───────────── */
+
+.ac-nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 17, 23, .9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ac-border); }
+.ac-nav__inner { width: min(1080px, 100% - 2.5rem); margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; gap: .3rem 1.2rem; padding-block: .55rem; }
+.ac-nav__brand { font-weight: 700; color: var(--ac-heading) !important; text-decoration: none !important; display: inline-flex; align-items: center; gap: .5rem; min-height: 24px; }
+.ac-nav__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ac-gradient); box-shadow: 0 0 8px rgba(0, 123, 255, .8); }
+.ac-nav__trail { display: flex; flex-wrap: wrap; gap: 0 1rem; margin-left: auto; font-size: .86rem; }
+.ac-nav__trail a { color: var(--ac-muted); text-decoration: none; display: inline-block; padding: .2rem 0; min-height: 24px; }
+.ac-nav__trail a:hover { color: var(--ac-link); text-decoration: underline; }
+@media (max-width: 720px) { .ac-nav__trail { display: none; } }
+
+/* ───────────── Selos epistêmicos ───────────── */
+
+.ac-selo { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .1rem .55rem; border-radius: 999px; border: 1px solid currentColor; background: var(--ac-surface-2); line-height: 1.5; vertical-align: middle; margin-right: .15rem; }
+.ac-selo--fato { color: var(--ac-fato); }
+.ac-selo--inferencia { color: var(--ac-inferencia); }
+.ac-selo--limite { color: var(--ac-limite); }
+
+/* ───────────── Hero ───────────── */
+
+.ac-hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+/* Título num nó de texto só: o tradutor perde palavras quando a frase é cortada por marcadores. */
+.ac-hero__title { font-size: clamp(2.1rem, 6vw, 3.8rem); font-weight: 800; line-height: 1.06; letter-spacing: -.02em; margin: 0 0 1rem; overflow-wrap: break-word; hyphens: auto; background: linear-gradient(90deg, var(--ac-heading) 0%, var(--ac-link) 60%, var(--ac-inferencia) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--ac-heading); }
+.ac-hero__sub { font-size: clamp(1.05rem, 2.2vw, 1.3rem); max-width: 62ch; margin: 0 0 1.4rem; }
+.ac-hero__tese { font-weight: 600; color: var(--ac-heading); border-left: 3px solid var(--ac-accent); padding-left: 1rem; max-width: 64ch; margin: 1.4rem 0 0; }
+
+.ac-body ol.ac-flow { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; padding: 0; margin: 0; }
+.ac-flow li { position: relative; margin: 0; padding: .35rem .8rem; border: 1px solid var(--ac-border); border-radius: 8px; background: var(--ac-surface); font-family: var(--ac-mono); font-size: .9rem; color: var(--ac-heading); }
+/* Seta desenhada com borda: não é texto, o leitor de tela não a anuncia. */
+.ac-flow li + li::before { content: ""; position: absolute; left: -1.05rem; top: 50%; width: .5rem; height: .5rem; border-top: 2px solid var(--ac-link); border-right: 2px solid var(--ac-link); transform: translateY(-50%) rotate(45deg); }
+
+.ac-status { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1px; margin: 2rem 0 0; background: var(--ac-border); border: 1px solid var(--ac-border); border-radius: var(--ac-radius); overflow: hidden; }
+.ac-status > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; background: var(--ac-surface); padding: 1rem 1.1rem; }
+.ac-status dt { font-size: .86rem; color: var(--ac-muted); line-height: 1.45; }
+.ac-status dd { margin: 0 0 .3rem; font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 800; color: var(--ac-heading); line-height: 1.1; }
+.ac-status dd.ac-status__word { font-size: clamp(1.15rem, 2.6vw, 1.4rem); color: var(--ac-limite); padding-top: .35rem; }
+.ac-status__foot { margin: .8rem 0 0; }
+
+.ac-after-flow { margin-top: 1.4rem; }
+.ac-doors { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; margin-top: 1.4rem; font-weight: 600; }
+
+/* ───────────── Etapas (lista ordenada nativa) ───────────── */
+
+.ac-body ol.ac-steps { padding-left: 1.6rem; margin: 1.6rem 0 0; }
+.ac-steps > li { padding: .2rem 0 1rem .4rem; margin: 0; border-left: 2px solid var(--ac-border); padding-left: 1rem; }
+.ac-steps > li::marker { color: var(--ac-link); font-weight: 700; }
+.ac-steps h3 { margin: 0 0 .3rem; font-size: 1.08rem; }
+.ac-steps p { margin: 0 0 .3rem; max-width: 70ch; }
+.ac-ev { font-size: .88rem; color: var(--ac-muted); }
+
+/* ───────────── Cartões de código ───────────── */
+
+.ac-change { background: var(--ac-surface); border: 1px solid var(--ac-border); border-radius: var(--ac-radius); padding: 1.2rem 1.3rem; margin: 1.4rem 0 0; min-width: 0; }
+.ac-change h3 { margin: 0 0 .7rem; }
+.ac-change dl { margin: 0; display: grid; grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr); gap: .35rem 1rem; font-size: .95rem; }
+.ac-change dt { font-weight: 700; color: var(--ac-heading); }
+.ac-change dd { margin: 0; min-width: 0; }
+@media (max-width: 560px) { .ac-change dl { grid-template-columns: minmax(0, 1fr); } .ac-change dd { margin-bottom: .5rem; } }
+
+.ac-body pre { font-family: var(--ac-mono); font-size: .84rem; line-height: 1.6; background: var(--ac-surface-2); border: 1px solid var(--ac-border); border-radius: 10px; padding: .9rem 1rem; margin: .9rem 0 .2rem; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ac-text); }
+.ac-body pre code { background: none; padding: 0; font-size: inherit; color: inherit; }
+.ac-del { color: var(--ac-del); }
+.ac-add { color: var(--ac-add); }
+.ac-skipline { color: var(--ac-muted); }
+
+/* ───────────── Tabela da catraca ───────────── */
+
+.ac-tablewrap { margin: 1.2rem 0 0; }
+.ac-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.ac-table caption { text-align: left; color: var(--ac-muted); font-size: .86rem; padding-bottom: .7rem; }
+.ac-table th, .ac-table td { text-align: left; padding: .55rem .6rem; border-bottom: 1px solid var(--ac-border); vertical-align: top; }
+.ac-table thead th { color: var(--ac-muted); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
+.ac-table tbody th { color: var(--ac-heading); font-weight: 600; }
+.ac-table td.ac-num { width: 40%; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ac-heading); }
+/* Barra decorativa (aria-hidden): o número ao lado é o dado. Uma série, uma cor; ponta arredondada. */
+.ac-bar { display: inline-block; vertical-align: middle; height: .7rem; width: calc(var(--v) / 207 * 70%); min-width: 4px; margin-right: .6rem; background: var(--ac-link); border-radius: 0 4px 4px 0; }
+/* A 320 px a tabela precisa caber sem rolar (SC 1.4.10): células quebram palavra, cabeçalho sem espaçamento extra. */
+@media (max-width: 560px) {
+  .ac-table { font-size: .86rem; }
+  .ac-table th, .ac-table td { padding: .45rem .3rem; overflow-wrap: anywhere; }
+  .ac-table thead th { letter-spacing: 0; overflow-wrap: normal; }
+  .ac-table td:nth-child(2) { white-space: nowrap; font-size: .8rem; }
+  .ac-table td.ac-num { width: auto; }
+  .ac-bar { display: none; }
+}
+
+/* ───────────── Rodapé ───────────── */
+
+/* padding-bottom: o botão fixo do <eco-nav> (canto inferior direito) não pode cobrir o último link. */
+.ac-footer { border-top: 1px solid var(--ac-border); background: var(--ac-surface); padding-block: 2.5rem 6.5rem; margin-top: 3rem; font-size: .92rem; }
+.ac-footer h2 { font-size: 1.1rem; margin: 0 0 1rem; }
+.ac-footer h3 { font-size: .9rem; color: var(--ac-link); margin: 0 0 .5rem; }
+.ac-footer__grid { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.ac-footer ul { padding-left: 1.1rem; margin: 0; }
+.ac-footer li { margin-bottom: .3rem; }
+.ac-footer__meta { color: var(--ac-muted); margin: 1.8rem 0 0; }
+
+/* ───────────── Movimento reduzido ───────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .ac-card:hover { transform: none; }
+}

@@ -1,3 +1,7 @@
+## 2026-10-07
+* **Update**: Linked `acessibilidade-case.md` to `i18n-terminologia-argos.md` (o espelho /en/ da página herda as limitações do Argos (hash e nomes de arquivo protegidos com translate=no)).
+* **Creation**: Documented concept `acessibilidade-case.md` (Página /acessibilidade: case verificável do retrofit, ligada ao REPORT.md).
+
 ## 2026-10-06
 * **Update**: Linked `life-personagem-sprite.md` to `i18n-terminologia-argos.md` (o gêmeo /en/life.html sai do mesmo pipeline Argos, mas o script do jogo é copiado sem tradução: STORY_DATA (a narrativa no canvas) segue em PT-BR no /en/).
 * **Creation**: Documented concept `life-personagem-sprite.md` (Personagem de /life: sprite em mapa de pixels pré-renderizado).
