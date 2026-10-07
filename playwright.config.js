@@ -40,9 +40,14 @@ export default defineConfig({
    * estouravam por lentidão, não por defeito. Menos workers devolve
    * determinismo — um gate que falha ao acaso não é um gate.
    */
-  workers: process.env.CI ? 1 : '50%',
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  /*
+   * CI: 2 workers por shard (runner de 4 vCPU — o dev server divide a máquina
+   * com os navegadores). A escala vem dos shards da matriz, não daqui.
+   * PW_WORKERS sobrescreve, para calibrar sem mexer no arquivo.
+   */
+  workers: Number(process.env.PW_WORKERS) || (process.env.CI ? 2 : '50%'),
+  /* CI: blob por shard (unido no job merge-reports) + anotações no PR. */
+  reporter: process.env.CI ? [['blob'], ['github']] : 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
