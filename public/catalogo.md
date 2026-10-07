@@ -29,6 +29,7 @@ Da intenção à execução agêntica confiável: a disciplina-ponte que transfo
 - [Case Agents](https://mauricio.issei.com.br/case-agents) — roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso.
 - [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — o sistema de conhecimento que dá rastreabilidade e segurança à IA.
 - [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) — como um portal corporativo evolui para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.
+- [Acessibilidade como requisito de engenharia](https://mauricio.issei.com.br/acessibilidade) — como o A11Y.md entrou no desenvolvimento deste site com agentes de IA: fluxo real, diffs, catraca de acessibilidade e o que ainda não foi verificado.
 
 ## 03 · A Aplicação — Ecossistema Salesforce
 

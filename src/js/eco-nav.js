@@ -22,11 +22,11 @@
  */
 
 const DATA = {
-  version: '1.8.0',
+  version: '1.9.0',
   base: './', // D-05: URL relativa atual
   pillars: [
     { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas'] },
-    { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents'] },
+    { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents', 'acessibilidade'] },
     { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
     { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta', 'proposta-observabilidade-mobile'] },
     { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo', 'boutique-empresarial-showcase'] },
@@ -43,6 +43,7 @@ const DATA = {
     'agent-ready': { file: 'agent-ready.html', title: 'Agent Ready', blurb: 'A superfície do site legível por agentes de IA.' },
     'knowledge-os-presentation': { file: 'knowledge-os-presentation.html', title: 'Knowledge OS Enterprise', blurb: 'Rastreabilidade e segurança para a IA.' },
     'case-agents': { file: 'case-agents.html', title: 'Case Agents: a tool errada não é uma aproximação aceitável', blurb: 'Quando o agente não deve executar.' },
+    acessibilidade: { file: 'acessibilidade.html', title: 'Acessibilidade como requisito', blurb: 'O A11Y.md no contexto do agente, com evidência.' },
     'devops-salesforce': { file: 'devops-salesforce.html', title: 'DevOps Salesforce', blurb: 'Entrega contínua agêntica no Salesforce.' },
     'proposta-engenharia-reversa': { file: 'proposta-engenharia-reversa.html', title: 'Engenharia Reversa Assistida por IA', blurb: 'Salesforce legado transformado por IA.' },
     'salesforce-agentic-quickstart': { file: 'salesforce-agentic-quickstart.html', title: 'Quick Start: Salesforce + Devin + Flosum', blurb: 'Primeiro deploy governado.' },

@@ -824,6 +824,7 @@ export const PAGES = [
         '- [Case Agents](https://mauricio.issei.com.br/case-agents) — roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso.',
         '- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — o sistema de conhecimento que dá rastreabilidade e segurança à IA.',
         '- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) — como um portal corporativo evolui para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.',
+        '- [Acessibilidade como requisito de engenharia](https://mauricio.issei.com.br/acessibilidade) — como o A11Y.md entrou no desenvolvimento deste site com agentes de IA: fluxo real, diffs, catraca de acessibilidade e o que ainda não foi verificado.',
       ].join('\n') },
       { h: '03 · A Aplicação — Ecossistema Salesforce', body: [
         'Métodos agênticos aplicados à plataforma Salesforce: onde o método encontra a engenharia real.',
@@ -1221,6 +1222,55 @@ export const PAGES = [
       subtitle: 'Do portal que apresenta à plataforma que resolve',
       thesis: 'Um agente depende das fundações que atravessa.',
       chips: [{ k: 'EXP', label: 'Experiência' }, { k: 'AG-UI', label: 'Interação' }, { k: 'RAG', label: 'Conhecimento' }, { k: 'IAM', label: 'Identidade' }],
+    },
+  },
+
+  {
+    slug: 'acessibilidade', type: 'TechArticle', tier: 'A', hasMd: true,
+    // Case do retrofit a11y-first. Toda afirmação tem fonte (docs/specs/pages/acessibilidade/00_SDD_acessibilidade.md §0).
+    mdFromMain: true,
+    title: 'Acessibilidade como requisito de engenharia',
+    headline: 'Acessibilidade como requisito de engenharia: como o A11Y.md entrou no desenvolvimento deste site',
+    description: 'Case verificável: como o A11Y.md entrou no desenvolvimento deste site com IA, o que mudou no código, como foi validado e o que ainda não foi.',
+    datePublished: '2026-10-06', dateModified: '2026-10-06',
+    section: 'Engenharia de Software',
+    tags: ['Acessibilidade', 'WCAG 2.2', 'A11Y.md', 'Agentes de IA', 'Quality Gate'],
+    keywords: ['acessibilidade web', 'WCAG 2.2 AA', 'A11Y.md', 'axe-core', 'catraca de acessibilidade', 'verificação independente', 'desenvolvimento assistido por IA', 'Claude Code', 'skip link', 'foco visível', 'reflow', 'prefers-reduced-motion', 'rótulo no nome'],
+    about: [
+      { name: 'Acessibilidade web' },
+      { name: 'WCAG 2.2', sameAs: 'https://www.w3.org/TR/WCAG22/' },
+      { name: 'A11Y.md', sameAs: 'https://github.com/fecarrico/A11Y.md' },
+      { name: 'Desenvolvimento assistido por IA' },
+    ],
+    audience: 'Engenheiros de software, Tech Leads, designers e profissionais de acessibilidade',
+    citation: [
+      { name: 'CARRIÇO, Felipe A. A11Y.md — Accessibility as a Baseline, v2.2.0 (MIT).', url: 'https://github.com/fecarrico/A11Y.md' },
+      { name: 'W3C (2023). Web Content Accessibility Guidelines (WCAG) 2.2.', url: 'https://www.w3.org/TR/WCAG22/' },
+      { name: 'W3C WAI. ARIA Authoring Practices Guide.', url: 'https://www.w3.org/WAI/ARIA/apg/' },
+      { name: 'Deque Systems. axe-core.', url: 'https://github.com/dequelabs/axe-core' },
+    ],
+    tldr: {
+      heading: 'Acessibilidade como requisito, em poucas linhas',
+      lede: 'O protocolo **A11Y.md** entrou no repositório como contexto dos agentes de IA que escrevem o código, e a acessibilidade passou a ser medida a cada pull request por uma **catraca**: uma medição automática que reprova qualquer mudança que aumente a contagem de falhas. A página mostra o fluxo, o código de cada mudança e o que **ninguém verificou**: o relatório do site está em **CONDICIONAL**, porque a aprovação depende de testes que só pessoas podem fazer.',
+      points: [
+        '**Medição** — a primeira varredura completa achou 207 ocorrências em 36 páginas; fora das 7 páginas utilitárias com exceção registrada, as ocorrências de regras WCAG do axe e das sondas de estrutura, largura mínima, movimento e espaçamento chegaram a zero.',
+        '**Independência** — um agente em contexto novo achou falhas que a catraca verde não via; uma segunda auditoria, não independente, achou outras, como um exercício impossível de concluir sem mouse.',
+        '**Limite** — nenhuma pessoa testou o site com leitor de tela, controle por voz ou Safari; o relatório declara o nível de independência mais baixo, *self-reported*.',
+      ],
+      foot: 'A ideia é a da [Engenharia da Confiança](/engenharia-confianca): um agente ganha autonomia na medida da evidência que produz.',
+    },
+    faq: [
+      { q: 'O site é acessível?', a: 'O relatório de verificação do próprio site não afirma isso: o status é CONDICIONAL. Com exceção de 7 páginas utilitárias, a medição automática do site registra zero ocorrências de regras WCAG do axe (sem contar iframes de terceiros, como o player do YouTube) e das sondas de estrutura, de largura mínima, de movimento e de espaçamento. Mas nenhuma pessoa testou o site com leitor de tela, controle por voz ou Safari, e as legendas dos vídeos não foram revisadas.' },
+      { q: 'O que é o A11Y.md?', a: 'É um padrão aberto, de licença MIT, escrito para agentes de IA que geram interface. Define um contrato de comportamento para o agente, perfis de conformidade com a WCAG 2.2, guias por componente carregados sob demanda, registros de decisões e exceções, um modelo de relatório e a exigência de verificação independente. Este site usa a versão 2.2.0, perfil Standard (AA).' },
+      { q: 'Como o A11Y.md foi integrado ao desenvolvimento com IA?', a: 'Como uma cópia fixa em docs/a11y/, presa a um commit do repositório original. O arquivo principal não é carregado em toda sessão, porque custaria cerca de 10 mil tokens; o AGENTS.md manda aplicá-lo a toda edição de interface e ler só o guia do componente em questão. O subagente revisor do repositório foi atualizado para conferir páginas contra o protocolo, e o gate de qualidade mede o resultado a cada pull request.' },
+      { q: 'Uma ferramenta automática basta para validar acessibilidade?', a: 'Não basta. O histórico deste site tem dois exemplos: com a medição automática aprovando tudo, o banner de cookies cobria 29 das 131 paradas de Tab da página inicial, e um exercício do simulador OCC não podia ser concluído sem mouse. As duas falhas foram achadas por auditorias com sondas próprias, não pelo axe. Leitor de tela, controle por voz e legendas exigem pessoas.' },
+    ],
+    og: {
+      eyebrow: 'Case · Acessibilidade',
+      title: 'Acessibilidade como {requisito}',
+      subtitle: 'Como o A11Y.md entrou no desenvolvimento deste site',
+      thesis: 'O relatório diz o que ninguém verificou.',
+      chips: [{ k: '207', label: '1ª medição' }, { k: '0', label: 'falhas WCAG (axe) fora das exceções' }, { k: 'WCAG', label: '2.2 AA' }, { k: '0', label: 'Testes com leitor de tela' }],
     },
   },
 ];
