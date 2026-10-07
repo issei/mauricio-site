@@ -3,6 +3,15 @@
 // os testes leem os pixels da faixa do chão onde o personagem anda.
 import { test, expect } from '@playwright/test';
 
+// DPR 1 em todos os motores. O WebKit do Playwright no Linux (o do CI) aplica o
+// devicePixelRatio duas vezes quando um canvas 2D passa a ser acelerado: com DPR 2
+// (perfil Desktop Safari), a tela mostra só o quarto superior esquerdo do mundo,
+// ampliado 2×, e o personagem sai da faixa lida aqui. Reproduz numa página mínima,
+// sem nada do life.html (canvas 1480×760, CSS 740×380, setTransform(2, …)); no WebKit
+// do Windows, no Chromium e no Firefox não acontece. É defeito do motor de teste, não
+// da página — Chromium e Firefox já rodam com DPR 1, então isto só iguala o WebKit.
+test.use({ deviceScaleFactor: 1 });
+
 // Cores exatas da paleta da sprite (drawImage sem suavização preserva o valor).
 const COR = {
   pele: [0xec, 0x9e, 0x67],
