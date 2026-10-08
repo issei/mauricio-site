@@ -361,6 +361,26 @@ and implementation adopted so far.
                 </div>
             </section>
 
+            <!-- EDITORIAL:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão; fonte: scripts/editorial/editorial.data.mjs) -->
+<div class="ed ed--inline" data-editorial="socialselling">
+  <dl class="ed-facts">
+    <div class="ed-fact ed-fact--wide"><dt>Who's it for?</dt><dd>Who wants to understand the product and who wants to reproduce the development method.</dd></div>
+    <div class="ed-fact"><dt>Format</dt><dd>Project documentation</dd></div>
+    <div class="ed-fact"><dt>Depth</dt><dd>Technical reference · ~2 min for central idea · ~17 min complete</dd></div>
+  </dl>
+  <nav class="ed-routes" aria-labelledby="ed-routes-label">
+    <p class="ed-label" id="ed-routes-label">What you'll find</p>
+    <ul>
+      <li><span class="ed-mode">Understand</span> <a href="#visao">1 · Vision and scope</a>, <a href="#arquitetura">2 · PoC architecture</a> and <a href="#camadas">3 · Inviolable rules</a>: what the system does, as it runs in a single local process and the four invariants on which the correction depends.</li>
+      <li><span class="ed-mode">Apply</span> <a href="#decisoes">4 · ADRs</a>, <a href="#specs">5 · SDDs</a>, <a href="#praticas">6 · Good practices</a> and <a href="#aprendizagem">8 · Self-learning</a>: Versioned decisions, specification before code and lessons that feedback the project.</li>
+      <li><span class="ed-mode">Deepen</span> <a href="#volume">7 · Volume strategy</a> and <a href="#operacao">10 · Planning and operation</a>: the theory of restrictions applied to the funnel and the separation between authorship of spec and autonomous execution.</li>
+      <li><span class="ed-mode">Consult</span> <a href="#versoes">9 · Versions</a>, <a href="#contratos">11 · Contracts</a>, <a href="#codigo">Code</a>, <a href="#testes">13 · Tests</a> and <a href="#configuracao">14 · Configuration</a>: the technical reference: data models, structure, suite and runtime. Toml.</li>
+    </ul>
+  </nav>
+  <p class="ed-shortcut">You prefer the essentials first? <a href="#em-sintese">Read synthesis (~1 min)</a></p>
+</div>
+<!-- EDITORIAL:END -->
+
             <!-- 1 · VISÃO -->
             <section id="visao" class="mt-16 scroll-mt-20">
                 <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">1</span>
@@ -1843,7 +1863,7 @@ a feature = change the hot path; disconnect = zero impact. The E2E smoke validat
 
 <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Summary and FAQs">
-  <div class="aeo-tldr">
+  <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">In short</p>
     <h2 class="aeo-tldr__title">What SocialSelling is</h2>
     <p class="aeo-tldr__lede">O <strong>SocialSelling</strong> makes customer search <strong>more efficient and automatic with AI</strong>, built with real engineering: decisions recorded in <strong>ADRs/SDDs</strong>, one <strong>SDD-to-Code Loop</strong> with deterministic gates and continuous feedback learning.</p>
@@ -1872,6 +1892,15 @@ a feature = change the hot path; disconnect = zero impact. The E2E smoke validat
   </div>
 </section>
 <!-- AEO-BODY:END -->
+<!-- EDITORIAL-NEXT:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão) -->
+<nav class="ed ed-next" aria-labelledby="ed-next-label">
+  <p class="ed-label" id="ed-next-label">If this theme interests you</p>
+  <ul>
+    <li><a href="./engenharia-agentes-ia.html">AI Agent Engineering</a> <span class="ed-why">The principle that SocialSelling applies: deterministic pipeline, with little AI on the critical path.</span></li>
+    <li><a href="./boutique-empresarial-showcase.html">Business Boutique</a> <span class="ed-why">Another real project documented in the same way: architecture, SDD and agile pipeline.</span></li>
+  </ul>
+</nav>
+<!-- EDITORIAL-NEXT:END -->
 <footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-400">
                 <p>SocialSelling · overview generated from vivid repository specifications. Source of truth:
                     <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-000-escopo-canonico.md"
