@@ -366,6 +366,26 @@ Trust is knowing when not to execute any.
       </div>
     </section>
 
+<!-- EDITORIAL:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão; fonte: scripts/editorial/editorial.data.mjs) -->
+<div class="ed ed--section" data-editorial="case-agents">
+  <dl class="ed-facts">
+    <div class="ed-fact ed-fact--wide"><dt>In a sentence</dt><dd>A bank agent router that chooses 2 tools between 285 and blocks execution when the decision is unreliable enough. The ability is to choose the right tool; trust is to know when not to execute any.</dd></div>
+    <div class="ed-fact"><dt>Format</dt><dd>Technical Case</dd></div>
+    <div class="ed-fact"><dt>Depth</dt><dd>In-depth reading · ~3 min for central idea · ~31 min complete</dd></div>
+  </dl>
+  <nav class="ed-routes" aria-labelledby="ed-routes-label">
+    <p class="ed-label" id="ed-routes-label">What you'll find</p>
+    <ul>
+      <li><span class="ed-mode">Understand</span> <a href="#problema">The Problem</a>, <a href="#crash-silencioso">The Silent Crash</a> and <a href="#barreira">The four-layer barrier</a>: what was requested, the failure that 54 tests did not catch and the solution that zeroed the incorrect executions.</li>
+      <li><span class="ed-mode">Check</span> <a href="#evidencia">The suite of 72 tests</a> and <a href="#limitacoes">Real limitations</a>: what the numbers prove and what the benchmark does not cover.</li>
+      <li><span class="ed-mode">Apply</span> <a href="#governanca-catalogo">Catalog governance</a> and <a href="#metodo">The agency method</a>why the problem was the catalog, not the vectorization, and how the project was developed.</li>
+      <li><span class="ed-mode">Deepen</span> <a href="#tecnicas-estatisticas">Statistical techniques in Python</a> and <a href="#arquitetura-produtiva">The productive architecture</a>: the code of each guard and the evolution of the proof of concept to Rust and Go.</li>
+    </ul>
+  </nav>
+  <p class="ed-shortcut">You prefer the essentials first? <a href="#em-sintese">Read synthesis (~1 min)</a></p>
+</div>
+<!-- EDITORIAL:END -->
+
     <!-- ══════════════════════════════════════════════════ RESUMO EM VÍDEO ═══ -->
     <section id="resumo-video" class="ca-section">
       <div class="ca-wrap ca-narrow">
@@ -589,7 +609,7 @@ and the blueprint for high performance compiled inference.
               <ul class="ca-small" style="padding-left:18px; margin-bottom:16px;">
                 <li><strong>Pro:</strong> <strong>100% Hit Rate@2</strong> and <strong>zero incorrect executions</strong> formally guaranteed.</li>
                 <li><strong>Pro:</strong> Proven protection against damage to the client's bank record (G4).</li>
-                <li><strong>Pro:</strong> Ready for industrial scale: manifesto <code translate="no">APM.yml</code> and ADR-009 (rust/Go).</li>
+                <li><strong>Pro:</strong> Ready for industrial scale: manifesto <code translate="no">APM.yml</code> and ADR-009 (Rust/Go).</li>
                 <li><strong>Against:</strong> Requires continuous discipline of catalog governance and parity tests.</li>
               </ul>
             </div>
@@ -1145,7 +1165,7 @@ the model and cost expensive, so the retriever chooses the 2 most relevant befor
           </p>
           <p>
             <strong>Concept.</strong> A <strong>Cosine similarity</strong> measures the angle between two vectors: 1 when they have the same
-weighted vocabulary, 0 when they do not share any term. Since TF-IDF already delivers vectors of length 1, cosine is only
+weighted vocabulary, 0 when they do not share any term. As TF-IDF already delivers vectors of length 1, cosine is only
 the scalar product, that is, a multiplication of sparse matrix between the query and the 285 tools.
           </p>
           <p>
@@ -1630,8 +1650,8 @@ calibration via <code translate="no">CalibratedClassifierCV</code> (Platt Scalin
             <ul class="ca-arch-specs">
               <li><strong>ONNX Export:</strong> Compiled linear inference graph (<code translate="no">modelo_router.onnx</code>).</li>
               <li><strong>CSR Sparsa Matrix:</strong> The 285 documents in the catalogue are pre-computed and serialized in <code translate="no">doc_matrix.csr</code>.</li>
-              <li><strong>Deterministic Vocabulary:</strong> TF-IDF Dictionary indexed with IDF weights (<code translate="no">vocab_tfidf.json</code>).</li>
-              <li><strong>Banking immutability:</strong> Artifacts versioned in Object Storage signed with hash SHA-256.</li>
+              <li><strong>Deterministic Vocabulary:</strong> IDF-indexed TF-IDF Dictionary (<code translate="no">vocab_tfidf.json</code>).</li>
+              <li><strong>Banking immutability:</strong> Object Storage versioned artifacts signed with hash SHA-256.</li>
               <li><strong style="color:var(--ca-alert);">Hard Insulation:</strong> The production runtime <strong>never matters Python, numpy or scikit-learn</strong>.</li>
             </ul>
           </div>
@@ -1746,7 +1766,7 @@ ensuring that any new team member understands the context, discarded alternative
 
           <a class="ca-adr-card" href="https://github.com/issei/case-agents/blob/main/docs/adr/0006-taxonomia-de-capacidades-e-colapso-de-duplicatas.md" target="_blank" rel="noopener">
             <div>
-              <span class="ca-adr-card__num">ADR-006 · Catalogue</span>
+              <span class="ca-adr-card__num">ADR-006 · Catalog</span>
               <h4 class="ca-adr-card__title">Ability Taxonomy and Canon Collapse</h4>
               <p class="ca-adr-card__desc">Collapse of redundant operational duplicates, raising Hit Rate@2 from 35% to 100%.</p>
             </div>
@@ -1757,7 +1777,7 @@ ensuring that any new team member understands the context, discarded alternative
             <div>
               <span class="ca-adr-card__num">ADR-005 · Compliance</span>
               <h4 class="ca-adr-card__title">Alignment APM &amp; OmniRoute Gateway</h4>
-              <p class="ca-adr-card__desc">Corporate package manifest in accordance with LGPD, PCI-DSS v4.0 and BACEN 4893.</p>
+              <p class="ca-adr-card__desc">Corporate packaging manifesto in accordance with LGPD, PCI-DSS v4.0 and BACEN 4893.</p>
             </div>
             <span class="ca-tag ca-tag--real" style="margin-top:10px; align-self:flex-start;">See ADR</span>
           </a>
@@ -1904,7 +1924,7 @@ public <code translate="no">cost_savings_pct_on_resolved</code>, <code translate
 
           <div style="margin-top:20px;">
             <a class="ca-btn ca-btn--secondary" href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" target="_blank" rel="noopener">
-              📄 Download candidate_report.json (Official Benchmark Report)
+              📄 Baixar candidate_report.json (Relatório Oficial de Benchmark)
             </a>
           </div>
         </div>
@@ -1938,7 +1958,7 @@ public <code translate="no">cost_savings_pct_on_resolved</code>, <code translate
               <div>
                 <h4 style="margin:0 0 4px; color:var(--ca-heading);">Adverse Review of the Committee <code translate="no">c8f30d2</code></h4>
                 <p class="ca-small" style="margin:0;">
-                  Mapping of 8 remaining risks. The recommended reading/writing collision test exposed the Silent Crash. It generated ADR-008 and added the collision tests to the suite.
+                  Mapping of 8 remaining risks. The recommended reading/writing collision test exposed the Silent Crash. It generated the ADR-0008 and added the collision tests to the suite.
                 </p>
               </div>
             </div>
@@ -2090,7 +2110,7 @@ more valuable does not check a returned value; check that <strong>Nothing happen
 
   <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Summary and FAQs">
-  <div class="aeo-tldr">
+  <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">In short</p>
     <h2 class="aeo-tldr__title">What is the Case Agents project</h2>
     <p class="aeo-tldr__lede">O <strong>case-agents</strong> is the implementation and benchmark of a routing brain for banking agent: decides if a query needs LLM, selects 2 tools between 285 registered and <strong>blocks execution when the decision is not reliable enough</strong>.</p>
