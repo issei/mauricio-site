@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, PERSON, PERSON_PROFILE, WEBSITE } from './identity.mjs';
 import { mainToMarkdown } from './html-to-md.mjs';
+import { EDITORIAL } from '../editorial/editorial.data.mjs';
 
 const SRC_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../src');
 
@@ -220,7 +221,11 @@ export function buildBody(p) {
   out.push(`<section class="aeo" aria-label="Resumo e perguntas frequentes">`);
   if (p.tldr) {
     const t = p.tldr;
-    out.push(`  <div class="aeo-tldr">`);
+    // A camada editorial (scripts/gen-editorial.mjs) oferece um atalho para a
+    // síntese; o alvo só existe nas páginas que têm essa camada, para não
+    // alterar o HTML — e o espelho /en/ — de todas as outras.
+    const anchor = EDITORIAL[p.slug]?.summary ? ' id="em-sintese"' : '';
+    out.push(`  <div class="aeo-tldr"${anchor}>`);
     out.push(`    <p class="aeo-eyebrow">Em síntese</p>`);
     out.push(`    <h2 class="aeo-tldr__title">${rich(t.heading)}</h2>`);
     out.push(`    <p class="aeo-tldr__lede">${rich(t.lede)}</p>`);

@@ -1,3 +1,6 @@
+## 2026-10-08
+* **Creation**: Documented concept `camada-editorial.md` (Camada editorial).
+
 ## 2026-10-07
 * **Creation**: Documented concept `aprendizagem-autorregulada.md` (Páginas /aprendizagem-autorregulada: landing + revisão científica, copy calibrada à evidência).
 * **Update**: Linked `acessibilidade-case.md` to `i18n-terminologia-argos.md` (o espelho /en/ da página herda as limitações do Argos (hash e nomes de arquivo protegidos com translate=no)).

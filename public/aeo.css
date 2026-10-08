@@ -62,3 +62,50 @@
 @media (prefers-reduced-motion: reduce) {
   .aeo-faq__q::before { transition: none; }
 }
+
+/* ── Camada editorial (scripts/gen-editorial.mjs · docs/specs/editorial/EDITORIAL-LAYER.md)
+   Orientação de entrada e continuação de leitura. Mesmos tokens do bloco AEO, peso
+   visual menor: uma régua lateral, sem caixa com sombra — a camada é parte da página,
+   não um card sobre ela. Listas mantêm o marcador (sem list-style:none) para o
+   VoiceOver seguir anunciando "lista, N itens" sem precisar de role="list". */
+.ed {
+  --ed-text: #c9d1d9; --ed-head: #ffffff; --ed-muted: #8b949e;
+  --ed-link: #58a6ff; --ed-rule: #30363d; --ed-accent: #007bff;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+  color: var(--ed-text); line-height: 1.6; box-sizing: border-box;
+  text-align: start;
+}
+.ed *, .ed *::before, .ed *::after { box-sizing: border-box; }
+.ed--section { max-width: 1080px; margin: 2.5rem auto; padding: 0 1.25rem; }
+.ed--inline { margin: 2rem 0; }
+.ed-facts, .ed-routes {
+  border-left: 3px solid var(--ed-accent); padding-left: 1.1rem; max-width: 80ch;
+}
+.ed-facts { margin: 0; display: flex; flex-wrap: wrap; gap: 0.9rem 2rem; }
+.ed-fact { margin: 0; }
+.ed-fact--wide { flex: 1 1 100%; }
+.ed-facts dt, .ed .ed-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ed-link); margin: 0 0 0.25rem;
+}
+.ed-facts dd { margin: 0; font-size: 0.95rem; }
+.ed-fact--wide dd { font-size: 1.05rem; color: var(--ed-head); line-height: 1.55; }
+.ed-routes { margin-top: 1.1rem; }
+.ed ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.45rem; list-style: square; }
+.ed li { font-size: 0.93rem; line-height: 1.6; }
+.ed li::marker { color: var(--ed-muted); }
+.ed-mode {
+  display: inline-block; min-width: 6.2rem; font-size: 0.78rem; font-weight: 700;
+  color: var(--ed-head); letter-spacing: 0.02em;
+}
+.ed-shortcut { margin: 0.9rem 0 0; padding-left: 1.1rem; font-size: 0.88rem; color: var(--ed-muted); }
+.ed-next { max-width: 1080px; margin: 3rem auto; padding: 0 1.25rem; }
+.ed-next ul { max-width: 80ch; }
+.ed-why { display: block; color: var(--ed-muted); font-size: 0.88rem; }
+/* Especificidade acima do `a { text-decoration: none }` de cada página (WCAG 1.4.1). */
+.ed a, .ed .ed-routes a, .ed.ed-next a { color: var(--ed-link); text-decoration: underline; text-underline-offset: 2px; }
+.ed a:hover { color: #79b8ff; }
+@media (max-width: 640px) {
+  .ed-mode { display: block; min-width: 0; }
+  .ed-fact--wide dd { font-size: 1rem; }
+}

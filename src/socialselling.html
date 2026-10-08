@@ -356,6 +356,26 @@
                 </div>
             </section>
 
+            <!-- EDITORIAL:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão; fonte: scripts/editorial/editorial.data.mjs) -->
+<div class="ed ed--inline" data-editorial="socialselling">
+  <dl class="ed-facts">
+    <div class="ed-fact ed-fact--wide"><dt>Para quem é</dt><dd>Quem quer entender o produto e quem quer reproduzir o método de desenvolvimento.</dd></div>
+    <div class="ed-fact"><dt>Formato</dt><dd>Documentação de projeto</dd></div>
+    <div class="ed-fact"><dt>Profundidade</dt><dd>Referência técnica · ~2 min para a ideia central · ~17 min completo</dd></div>
+  </dl>
+  <nav class="ed-routes" aria-labelledby="ed-routes-label">
+    <p class="ed-label" id="ed-routes-label">O que você vai encontrar</p>
+    <ul>
+      <li><span class="ed-mode">Entender</span> <a href="#visao">1 · Visão e escopo</a>, <a href="#arquitetura">2 · Arquitetura do PoC</a> e <a href="#camadas">3 · Regras invioláveis</a>: o que o sistema faz, como roda num único processo local e as quatro invariantes de que a correção depende.</li>
+      <li><span class="ed-mode">Aplicar</span> <a href="#decisoes">4 · ADRs</a>, <a href="#specs">5 · SDDs</a>, <a href="#praticas">6 · Boas práticas</a> e <a href="#aprendizagem">8 · Auto-aprendizagem</a>: decisões versionadas, especificação antes do código e lições que retroalimentam o projeto.</li>
+      <li><span class="ed-mode">Aprofundar</span> <a href="#volume">7 · Estratégia de volume</a> e <a href="#operacao">10 · Planejamento e operação</a>: a Teoria das Restrições aplicada ao funil e a separação entre autoria de spec e execução autônoma.</li>
+      <li><span class="ed-mode">Consultar</span> <a href="#versoes">9 · Versões</a>, <a href="#contratos">11 · Contratos</a>, <a href="#codigo">12 · Código</a>, <a href="#testes">13 · Testes</a> e <a href="#configuracao">14 · Configuração</a>: a referência técnica: modelos de dados, estrutura, suíte e runtime.toml.</li>
+    </ul>
+  </nav>
+  <p class="ed-shortcut">Prefere o essencial antes? <a href="#em-sintese">Ler a síntese (~1 min)</a></p>
+</div>
+<!-- EDITORIAL:END -->
+
             <!-- 1 · VISÃO -->
             <section id="visao" class="mt-16 scroll-mt-20">
                 <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">1</span>
@@ -1838,7 +1858,7 @@
 
 <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Resumo e perguntas frequentes">
-  <div class="aeo-tldr">
+  <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">Em síntese</p>
     <h2 class="aeo-tldr__title">O que é o SocialSelling</h2>
     <p class="aeo-tldr__lede">O <strong>SocialSelling</strong> torna a busca de clientes <strong>mais eficiente e automática com IA</strong>, construído com engenharia de verdade: decisões registradas em <strong>ADRs/SDDs</strong>, um <strong>SDD-to-Code Loop</strong> com gates determinísticos e aprendizado contínuo por feedback.</p>
@@ -1867,6 +1887,15 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
+<!-- EDITORIAL-NEXT:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão) -->
+<nav class="ed ed-next" aria-labelledby="ed-next-label">
+  <p class="ed-label" id="ed-next-label">Se este tema interessa a você</p>
+  <ul>
+    <li><a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> <span class="ed-why">O princípio que o SocialSelling aplica: pipeline determinístico, com pouca IA no caminho crítico.</span></li>
+    <li><a href="./boutique-empresarial-showcase.html">Boutique Empresarial</a> <span class="ed-why">Outro projeto real documentado do mesmo jeito: arquitetura, SDD e pipeline agêntico.</span></li>
+  </ul>
+</nav>
+<!-- EDITORIAL-NEXT:END -->
 <footer class="mt-16 pt-8 border-t border-white/10 text-sm text-slate-400">
                 <p>SocialSelling · overview gerado a partir das especificações vivas do repositório. Fonte da verdade:
                     <a href="https://github.com/issei/SocialSelling/tree/main/docs/decisions/ADR-000-escopo-canonico.md"

@@ -21,6 +21,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from './seo/pages.mjs';
+import { stripEditorial } from './gen-editorial.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'src/js/apresentacao/hub-data.js');
@@ -69,7 +70,9 @@ function readingMinutes(slug) {
   const page = join(ROOT, 'src', `${slug}.html`);
   if (!existsSync(page)) return null;
 
-  const text = readFileSync(page, 'utf8')
+  // A camada editorial orienta a leitura; não é leitura. Contá-la faria o tempo
+  // de cada card subir só porque a página ganhou um mapa de entrada.
+  const text = stripEditorial(readFileSync(page, 'utf8'))
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<svg[\s\S]*?<\/svg>/gi, ' ')       // rótulos de diagrama não se leem em prosa

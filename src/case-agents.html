@@ -361,6 +361,26 @@
       </div>
     </section>
 
+<!-- EDITORIAL:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão; fonte: scripts/editorial/editorial.data.mjs) -->
+<div class="ed ed--section" data-editorial="case-agents">
+  <dl class="ed-facts">
+    <div class="ed-fact ed-fact--wide"><dt>Em uma frase</dt><dd>Um roteador para agente bancário que escolhe 2 ferramentas entre 285 e bloqueia a execução quando a decisão não é confiável o bastante. A capacidade é escolher a ferramenta certa; a confiança é saber quando não executar nenhuma.</dd></div>
+    <div class="ed-fact"><dt>Formato</dt><dd>Case técnico</dd></div>
+    <div class="ed-fact"><dt>Profundidade</dt><dd>Leitura aprofundada · ~3 min para a ideia central · ~31 min completo</dd></div>
+  </dl>
+  <nav class="ed-routes" aria-labelledby="ed-routes-label">
+    <p class="ed-label" id="ed-routes-label">O que você vai encontrar</p>
+    <ul>
+      <li><span class="ed-mode">Entender</span> <a href="#problema">O problema</a>, <a href="#crash-silencioso">O Crash Silencioso</a> e <a href="#barreira">A barreira de quatro camadas</a>: o que foi pedido, a falha que 54 testes não pegaram e a solução que zerou as execuções incorretas.</li>
+      <li><span class="ed-mode">Verificar</span> <a href="#evidencia">A suíte de 72 testes</a> e <a href="#limitacoes">Limitações reais</a>: o que os números provam e o que o benchmark não cobre.</li>
+      <li><span class="ed-mode">Aplicar</span> <a href="#governanca-catalogo">Governança do catálogo</a> e <a href="#metodo">O método agêntico</a>: por que o problema era o catálogo, não a vetorização, e como o projeto foi desenvolvido.</li>
+      <li><span class="ed-mode">Aprofundar</span> <a href="#tecnicas-estatisticas">As técnicas estatísticas em Python</a> e <a href="#arquitetura-produtiva">A arquitetura produtiva</a>: o código de cada guarda e a evolução da prova de conceito para Rust e Go.</li>
+    </ul>
+  </nav>
+  <p class="ed-shortcut">Prefere o essencial antes? <a href="#em-sintese">Ler a síntese (~1 min)</a></p>
+</div>
+<!-- EDITORIAL:END -->
+
     <!-- ══════════════════════════════════════════════════ RESUMO EM VÍDEO ═══ -->
     <section id="resumo-video" class="ca-section">
       <div class="ca-wrap ca-narrow">
@@ -2085,7 +2105,7 @@ consultar_valor_fatura_mes_atual  -> "Consulta o valor da fatura ... do mês atu
 
   <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Resumo e perguntas frequentes">
-  <div class="aeo-tldr">
+  <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">Em síntese</p>
     <h2 class="aeo-tldr__title">O que é o projeto Case Agents</h2>
     <p class="aeo-tldr__lede">O <strong>case-agents</strong> é a implementação e benchmark de um cérebro de roteamento para agente bancário: decide se uma query necessita de LLM, seleciona 2 ferramentas entre 285 registradas e <strong>bloqueia a execução quando a decisão não é confiável o bastante</strong>.</p>
