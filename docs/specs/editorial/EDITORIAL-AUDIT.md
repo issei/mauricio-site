@@ -180,14 +180,14 @@ pedem rótulos consistentes.
 | `artifice` | Ensaio | tese escondida atrás de pergunta retórica; síntese no fim; sem continuação | **A — feita no piloto** | piloto |
 | `case-agents` | Case técnico | trilha linear; narrativa e evidência intercaladas | **A feita no piloto**; parte B (recolher código) aguarda validação | piloto |
 | `socialselling` | Documentação | duas audiências sem rota; mapa só no desktop; sem continuação | **A — feita no piloto** | piloto |
-| `knowledge-os-presentation` | Apresentação | 14 seções sem mapa; h1 promocional | A | alta |
-| `devin` | Ensaio editorial | 20 títulos, vários retóricos | B | alta |
-| `develop-engineering` | Artigo técnico | sem tempo; síntese no fim | A | média |
-| `engenharia-agentes-ia` | Interativo | síntese no fim; sem rotas | A | média |
-| `formulacao-de-problemas` | Artigo | veredito do autor tardio | A (só "A tese" + profundidade) | média |
-| `salesforce-agentic-dev` | Guia | essencial × consulta misturados | A | média |
-| `acessibilidade` | Case | síntese no fim | A | baixa |
-| `devops-salesforce` | Manual | falta profundidade | A | baixa |
-| `know` | Ensaio curto | sem continuação | A (só continuação) | baixa |
-| `catalogo` | Mapa | taxonomia inconsistente; 2 páginas fora | etiqueta gerada + portas | média |
+| `knowledge-os-presentation` | Apresentação | 14 seções sem mapa; h1 promocional | **A — feita na Fase 5** | alta |
+| `devin` | Ensaio editorial | 20 títulos, vários retóricos | **B — feita na Fase 5** (rotas reconstroem o argumento; títulos mantidos) | alta |
+| `develop-engineering` | Artigo técnico | sem tempo; síntese no fim | **A — feita na Fase 5** | média |
+| `engenharia-agentes-ia` | Interativo | síntese no fim; sem rotas | **A — feita na Fase 5** | média |
+| `formulacao-de-problemas` | Artigo | veredito do autor tardio | **A — feita na Fase 5** (tese com o veredito + profundidade) | média |
+| `salesforce-agentic-dev` | Guia | essencial × consulta misturados | **A — feita na Fase 5** | média |
+| `acessibilidade` | Case | síntese no fim | **A — feita na Fase 5** (só profundidade + atalho) | baixa |
+| `devops-salesforce` | Manual | falta profundidade | **A — feita na Fase 5** (só profundidade + atalho) | baixa |
+| `know` | Ensaio curto | sem continuação | **A — feita na Fase 5** (só continuação) | baixa |
+| `catalogo` | Mapa | taxonomia inconsistente; 2 páginas fora | **Fase 5:** etiqueta nos 17 cards sem etiqueta + "Comece por aqui". Etiqueta gerada do SSOT não foi feita: ver EDITORIAL-LAYER §12. As 2 páginas fora seguem fora | média |
 | 19 páginas em D | vários | — | nenhuma | — |

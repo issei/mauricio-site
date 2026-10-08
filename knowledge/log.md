@@ -1,4 +1,7 @@
 ## 2026-10-08
+* **Update**: Updated concept `camada-editorial.md`.
+
+## 2026-10-08
 * **Creation**: Documented concept `camada-editorial.md` (Camada editorial).
 
 ## 2026-10-07

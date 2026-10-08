@@ -406,6 +406,10 @@
         }
     </style>
   <!-- ============================================================ -->
+
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -607,8 +611,6 @@
 }
 </script>
 <!-- AEO:END -->
-  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
-  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 </head>
 
 <body class="antialiased">
@@ -676,6 +678,26 @@
                 </div>
             </div>
         </header>
+
+        <!-- EDITORIAL:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão; fonte: scripts/editorial/editorial.data.mjs) -->
+<div class="ed ed--section" data-editorial="knowledge-os-presentation">
+  <dl class="ed-facts">
+    <div class="ed-fact ed-fact--wide"><dt>Em uma frase</dt><dd>O Knowledge OS trata o conhecimento corporativo como infraestrutura cognitiva governada, não como repositório passivo de documentos: uma plataforma que o transforma em ativo executável, com limites, rastreabilidade e custos sob controle.</dd></div>
+    <div class="ed-fact"><dt>Formato</dt><dd>Apresentação</dd></div>
+    <div class="ed-fact"><dt>Profundidade</dt><dd>Leitura aprofundada · ~3 min para a ideia central · ~20 min completo</dd></div>
+  </dl>
+  <nav class="ed-routes" aria-labelledby="ed-routes-label">
+    <p class="ed-label" id="ed-routes-label">O que você vai encontrar</p>
+    <ul>
+      <li><span class="ed-mode">Entender</span> <a href="#problema">O problema</a>, <a href="#executivo">Por que importa para o board</a> e <a href="#comparativo">Documentação tradicional × Knowledge OS</a>: os três problemas que corroem o valor do conhecimento, os outcomes mensuráveis e a comparação em nove dimensões.</li>
+      <li><span class="ed-mode">Aplicar</span> <a href="#operacional">Quatro jornadas de uso</a>, <a href="#adocao">Incentivo para documentar</a>, <a href="#governanca">Governança federada</a> e <a href="#roadmap">Adoção em 4 fases</a>: fluxos com handoffs humano ↔ agente e fases com critério objetivo de saída.</li>
+      <li><span class="ed-mode">Aprofundar</span> <a href="#arquitetura">Sete camadas</a>, <a href="#tipologia">Conhecimento tipado</a> e <a href="#cognitiva">Quatro memórias</a>: a plataforma por dentro: camadas com contrato próprio, seis tipos canônicos e memória separada por função.</li>
+      <li><span class="ed-mode">Verificar</span> <a href="#diagnostico">10 dimensões da revisão crítica</a>, <a href="#seguranca">Limites da IA</a> e <a href="#observabilidade">22 KPIs cognitivos</a>: cada gap da proposta original com sua contramedida, os Circuit Breakers e como medir.</li>
+    </ul>
+  </nav>
+  <p class="ed-shortcut">Prefere o essencial antes? <a href="#em-sintese">Ler a síntese (~1 min)</a></p>
+</div>
+<!-- EDITORIAL:END -->
 
         <!-- ===================== S01. O PROBLEMA ATUAL (v3.0) ===================== -->
         <section id="problema" class="py-20 px-6">
@@ -2375,7 +2397,7 @@
 
 <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Resumo e perguntas frequentes">
-  <div class="aeo-tldr">
+  <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">Em síntese</p>
     <h2 class="aeo-tldr__title">O que é o Knowledge OS Enterprise</h2>
     <p class="aeo-tldr__lede">O <strong>Knowledge OS</strong> trata o conhecimento corporativo como <strong>infraestrutura cognitiva governada</strong>, não como um repositório passivo de documentos. É uma plataforma IA-First que combina grafo de conhecimento, recuperação aumentada e governança para que decisões sejam mais rápidas e a IA opere com segurança.</p>
@@ -2409,6 +2431,7 @@
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
 <footer class="bg-black/40 border-t border-gray-800 py-12 px-6">
         <div class="container mx-auto max-w-6xl">
             <div class="grid md:grid-cols-3 gap-8 mb-8">

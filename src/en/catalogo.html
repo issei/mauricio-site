@@ -477,6 +477,17 @@ and support in production.
                 </p>
             </div>
 
+            <!-- Comece por aqui (docs/specs/editorial/EDITORIAL-AUDIT.md §6): três portas por objetivo,
+                 para quem chega sem saber por qual pilar entrar. Sem heading: não desloca h1 → h2. -->
+            <nav aria-labelledby="comece-titulo" class="max-w-3xl mx-auto mb-14">
+                <p id="comece-titulo" class="text-sm font-semibold tracking-[0.2em] uppercase text-blue-400 mb-4">Start here.</p>
+                <ul class="list-disc pl-5 space-y-2 text-gray-300 leading-relaxed">
+                    <li>Stop <strong class="text-gray-200">understand the method</strong>: <a href="./apresentacao.html" class="text-blue-400 underline underline-offset-2">Auditable AI architecture</a>, the overview in executive or engineering reading.</li>
+                    <li>Stop <strong class="text-gray-200">apply in Salesforce</strong>: <a href="./salesforce-agentic-quickstart.html" class="text-blue-400 underline underline-offset-2">Quick Start: Salesforce + Devin + Flosum</a>, step by step until the first deploy ruled.</li>
+                    <li>Stop <strong class="text-gray-200">evaluate the professional</strong>: <a href="./index.html" class="text-blue-400 underline underline-offset-2">the profile of Mauritius Yokoyama Issei</a>, the trajectory and starting point of the ecosystem.</li>
+                </ul>
+            </nav>
+
             <!-- Journey rail (L1 — os 5 pilares, sumário em 1 linha) -->
             <nav aria-label="Ecosystem journey on five pillars" class="mb-24">
                 <ol class="journey">
@@ -536,6 +547,7 @@ starting point before any tool.</p>
                     </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <a href="./know.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Test · Knowledge management</span>
                             <h3 class="text-xl font-bold text-white mb-3">Navigating in Complexity</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">The Cynefin Framework and the end of
 best practices: how to lead innovation and emerging processes in complex environments.
@@ -543,6 +555,7 @@ best practices: how to lead innovation and emerging processes in complex environ
                             <span class="text-blue-400 text-xs font-semibold mt-4">Access content →</span>
                         </a>
                         <a href="./devin.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Presentation · Agentic engineering</span>
                             <h3 class="text-xl font-bold text-white mb-3">Vibe Coding with Devin</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Agentic engineering in practice:
 Devin as an executor of engineering tasks, from intent to code.</p>
@@ -567,6 +580,7 @@ need, sufficiency and conditionality put to the test.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Access content →</span>
                         </a>
                         <a href="./artifice.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Test · Technical mastery</span>
                             <h3 class="text-xl font-bold text-white mb-3">The Invisible Artificer</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">The paradox of technical mastery:
 why sophistication becomes invisible burden — and how to regain the sovereignty of its
@@ -630,6 +644,7 @@ chaos of AI-as-magic to the governance of AI-as-engineering.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Start the journey →</span>
                         </a>
                         <a href="./engenharia-agentes-ia.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Interactive material · AI architecture</span>
                             <h3 class="text-xl font-bold text-white mb-3">AI Agent Engineering</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">The ten principles that make
 reliable AI systems: little AI on critical path, contracts, FinOps and governance
@@ -645,6 +660,7 @@ Agent-driven.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Access content →</span>
                         </a>
                         <a href="./operacao-capital-cognitivo.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Simulator · FinOps of AI</span>
                             <h3 class="text-xl font-bold text-white mb-3">Operation Cognitive Capital</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">IA FinOps Executive Simulator:
 investigate the hidden invoice and deduct the Userful Intelligence per Dollar framework (UI/$)
@@ -669,6 +685,7 @@ Signals, API Catalog, MCP and Agent Skills — with the actual code of this doma
                         </a>
                         <a href="./knowledge-os-presentation.html"
                             class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Presentation · Knowledge management</span>
                             <h3 class="text-xl font-bold text-white mb-3">Knowledge OS Enterprise</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">The Knowledge System It Gives
 traceability and security to AI: faster decisions without losing control.</p>
@@ -717,6 +734,7 @@ method finds real engineering.</p>
                     </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <a href="./devops-salesforce.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Practical Guide · Salesforce</span>
                             <h3 class="text-xl font-bold text-white mb-3">DevOps Salesforce</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Continuous delivery:
 hybrid architecture uniting Flosum governance, GitHub flexibility and the
@@ -725,6 +743,7 @@ AI speed in the Salesforce ecosystem.</p>
                         </a>
                         <a href="./proposta-engenharia-reversa.html"
                             class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Technical Proposal · Salesforce</span>
                             <h3 class="text-xl font-bold text-white mb-3">Reverse Engineering Assisted by AI</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">System Transformation
 Salesforce legacy via AI: from inherited code to live specification without manual refactor.
@@ -733,6 +752,7 @@ Salesforce legacy via AI: from inherited code to live specification without manu
                         </a>
                         <a href="./salesforce-agentic-quickstart.html"
                             class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Tutorial · Salesforce</span>
                             <h3 class="text-xl font-bold text-white mb-3">Quick Start: Salesforce + Devin + Flosum</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Step by step to configure the
 Agentic development environment and perform the first deploy governed in time
@@ -742,6 +762,7 @@ record.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Access content →</span>
                         </a>
                         <a href="./salesforce-agentic-dev.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Practical Guide · Salesforce</span>
                             <h3 class="text-xl font-bold text-white mb-3">Agent DevOps for Salesforce</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Training portal in
 Spec-Driven Development and autonomous agents for efficient and non-debit development
@@ -773,6 +794,7 @@ Engineering delivered proves itself over time.</p>
                     </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <a href="./sustentacao.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Course · Support</span>
                             <h3 class="text-xl font-bold text-white mb-3">From Chaos to Resilience</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">System support in
 production: critical incident management, reliability (SRE) and effective communication in
@@ -780,6 +802,7 @@ crisis.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Access content →</span>
                         </a>
                         <a href="./service-operations-2-0.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Presentation · IT operations</span>
                             <h3 class="text-xl font-bold text-white mb-3">Service Operations 2.0</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Executive view of the Protocol
 Manchester applied to IT, for systemic resilience and billing protection
@@ -787,6 +810,7 @@ commercial.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Access content →</span>
                         </a>
                         <a href="./proposta.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Technical proposal · Sales</span>
                             <h3 class="text-xl font-bold text-white mb-3">Sales Intelligence: Salesforce + AWS</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Time Sales Intelligence
 real via event-driven architecture: data noise reduction and route optimization
@@ -795,6 +819,7 @@ commercials.</p>
                         </a>
                         <a href="./proposta-observabilidade-mobile.html"
                             class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Technical proposal · Observability</span>
                             <h3 class="text-xl font-bold text-white mb-3">RES observability for Mobility</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Smart correlation between
 devices, network and applications using Datadog and Azure.</p>
@@ -825,6 +850,7 @@ method becomes a result.</p>
                     </header>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <a href="./socialselling.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Project documentation · Sales</span>
                             <h3 class="text-xl font-bold text-white mb-3">SocialSelling</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Project overview and template
 good practices for social sales enhanced by AI agents.</p>
@@ -840,6 +866,7 @@ professional trajectory and the starting point of the entire ecosystem.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">See profile →</span>
                         </a>
                         <a href="./life.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Narrative · Pixel art</span>
                             <h3 class="text-xl font-bold text-white mb-3">The Journey in Pixel Art</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Interactive experience telling the
 personal and professional trajectory from the beginning in 1982 to today.</p>
@@ -860,6 +887,7 @@ narrative that ages as you roll — with STAR cases embedded in the flow.</p>
                             <span class="text-blue-400 text-xs font-semibold mt-4">Start journey →</span>
                         </a>
                         <a href="./boutique-empresarial-showcase.html" class="card-glass p-6 rounded-2xl flex flex-col h-full">
+                            <span class="category-tag">Case · Web architecture</span>
                             <h3 class="text-xl font-bold text-white mb-3">Business Boutique</h3>
                             <p class="text-gray-400 text-sm leading-relaxed flex-grow">Static Architecture Showcase
 MPA, SDD methodology, multi-model agile pipeline and deterministic Quality Gate by

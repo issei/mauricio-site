@@ -23,7 +23,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { EDITORIAL } from './editorial/editorial.data.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -170,7 +170,8 @@ export function build(slug, html, entry = EDITORIAL[slug]) {
   // do arquivo, senão --check acusa divergência que é só de fim de linha.
   const eol = html.includes('\r\n') ? '\r\n' : '\n';
   const asFile = (block) => block.replace(/\n/g, eol);
-  let out = fill(html, 'EDITORIAL', asFile(renderIntro(slug, entry, m)));
+  // Sem `kind` a entrada é só continuação (ex.: know): nada de orientação de entrada.
+  let out = entry.kind ? fill(html, 'EDITORIAL', asFile(renderIntro(slug, entry, m))) : html;
   if (out === null) throw new Error(`${slug}: marcador <!-- EDITORIAL:START --> ausente`);
   if (entry.next?.length) {
     const withNext = fill(out, 'EDITORIAL-NEXT', asFile(renderNext(entry)));
@@ -182,7 +183,9 @@ export function build(slug, html, entry = EDITORIAL[slug]) {
 
 // ── CLI ─────────────────────────────────────────────────────────────────────
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// pathToFileURL: no Windows, `file://${argv[1]}` nunca bate com import.meta.url
+// (barra invertida, sem a terceira barra) e o CLI — inclusive o --check do gate — não rodava.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const slugs = only.length ? only : Object.keys(EDITORIAL);
   const stale = [];
   for (const slug of slugs) {

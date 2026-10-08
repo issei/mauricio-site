@@ -25,12 +25,16 @@
 //   routes     ≤ 5 rotas { mode, links: [[href, rótulo]], note }.
 //   summary    true → atalho para o "Em síntese" (#em-sintese) da página.
 //   next       ≤ 3 continuações { href, title, why } — só com relação real.
+//
+// Entrada sem `kind` é só continuação: a página já orienta bem na entrada e
+// só falta a saída (EDITORIAL-AUDIT §8, ex.: know). Não leva EDITORIAL:START.
 
 /** Formatos aceitos. Uma taxonomia pequena é preferível a uma sofisticada. */
 export const KINDS = [
   'Artigo', 'Ensaio', 'Ensaio com autodiagnóstico', 'Estudo técnico', 'Case técnico',
   'Guia prático', 'Tutorial', 'Documentação de projeto', 'Revisão científica',
-  'Apresentação', 'Proposta técnica', 'Simulador', 'Narrativa pessoal', 'Referência',
+  'Apresentação', 'Proposta técnica', 'Simulador', 'Material interativo', 'Narrativa pessoal',
+  'Referência',
 ];
 
 /** Profundidades aceitas. */
@@ -113,6 +117,155 @@ export const EDITORIAL = {
         why: 'O princípio que o SocialSelling aplica: pipeline determinístico, com pouca IA no caminho crítico.' },
       { href: './boutique-empresarial-showcase.html', title: 'Boutique Empresarial',
         why: 'Outro projeto real documentado do mesmo jeito: arquitetura, SDD e pipeline agêntico.' },
+    ],
+  },
+
+  // ── Fase 5 · prioridade alta ─────────────────────────────────────────────
+  'knowledge-os-presentation': {
+    placement: 'section',
+    kind: 'Apresentação',
+    depth: 'Leitura aprofundada',
+    oneLiner:
+      'O Knowledge OS trata o conhecimento corporativo como infraestrutura cognitiva governada, não como repositório passivo de documentos: uma plataforma que o transforma em ativo executável, com limites, rastreabilidade e custos sob controle.',
+    source: { oneLiner: 'scripts/seo/pages.mjs › knowledge-os-presentation.tldr.lede + parágrafo do hero' },
+    core: ['problema', 'executivo', 'comparativo'],
+    routes: [
+      { mode: 'Entender', links: [['#problema', 'O problema'], ['#executivo', 'Por que importa para o board'], ['#comparativo', 'Documentação tradicional × Knowledge OS']],
+        note: 'os três problemas que corroem o valor do conhecimento, os outcomes mensuráveis e a comparação em nove dimensões.' },
+      { mode: 'Aplicar', links: [['#operacional', 'Quatro jornadas de uso'], ['#adocao', 'Incentivo para documentar'], ['#governanca', 'Governança federada'], ['#roadmap', 'Adoção em 4 fases']],
+        note: 'fluxos com handoffs humano ↔ agente e fases com critério objetivo de saída.' },
+      { mode: 'Aprofundar', links: [['#arquitetura', 'Sete camadas'], ['#tipologia', 'Conhecimento tipado'], ['#cognitiva', 'Quatro memórias']],
+        note: 'a plataforma por dentro: camadas com contrato próprio, seis tipos canônicos e memória separada por função.' },
+      { mode: 'Verificar', links: [['#diagnostico', '10 dimensões da revisão crítica'], ['#seguranca', 'Limites da IA'], ['#observabilidade', '22 KPIs cognitivos']],
+        note: 'cada gap da proposta original com sua contramedida, os Circuit Breakers e como medir.' },
+    ],
+    summary: true,
+  },
+
+  devin: {
+    // Classe B do audit: as rotas reconstroem o arco do argumento sem
+    // reescrever os títulos retóricos das seções, que são do autor.
+    placement: 'section',
+    kind: 'Apresentação',
+    depth: 'Leitura aprofundada',
+    oneLiner:
+      'O Vibe Coding maduro não é caos de prompts: é intenção estruturada e persistente. O desenvolvedor deixa de ser executor de código e passa a orquestrador cognitivo, que dirige o agente com uma especificação versionada.',
+    source: { oneLiner: 'scripts/seo/pages.mjs › devin.tldr.lede + seção #identidade' },
+    core: ['fundamentos', 'calculadora', 'cozinheiro', 'identidade'],
+    routes: [
+      { mode: 'Entender', links: [['#calculadora', 'A calculadora como primeira IA'], ['#cozinheiro', 'O cozinheiro e o pedido abstrato'], ['#identidade', 'De executor a orquestrador']],
+        note: 'por que a ferramenta libera em vez de substituir, e qual papel muda.' },
+      { mode: 'Aplicar', links: [['#comunicacao-ia', 'Quatro pilares para falar com agentes'], ['#contexto-persistente', 'Contexto persistente'], ['#skills-playbooks', 'Skills, Playbooks e Knowledge']],
+        note: 'como conversar com qualquer agente e transformar conhecimento individual em arsenal versionado.' },
+      { mode: 'Aprofundar', links: [['#hands-on', 'Devin CLI + Salesforce + SDD'], ['#mentoria', 'Spec-Driven Development'], ['#fluxo', 'Da spec ao Apex Test']],
+        note: 'três exercícios incrementais e os quatro passos até o teste passar.' },
+      { mode: 'Aplicar', links: [['#amplificacao', 'O time em sincronia'], ['#cultura', 'Vibe Coding como mentalidade'], ['#gestao', 'O refinamento como super-prompt'], ['#fechamento', 'Próximos passos']],
+        note: 'para quem lidera o time.' },
+    ],
+    summary: true,
+  },
+
+  // ── Fase 5 · prioridade média ────────────────────────────────────────────
+  'develop-engineering': {
+    // h1 e primeira frase do hero já são a tese: sem "Em uma frase".
+    placement: 'section',
+    kind: 'Artigo',
+    depth: 'Leitura aprofundada',
+    core: ['cena-00', 'cena-01', 'cena-03', 'cena-06'],
+    routes: [
+      { mode: 'Entender', links: [['#cena-01', 'Cinco fontes de verdade'], ['#cena-03', 'Prompt não é contrato'], ['#cena-06', 'Passar no teste não é estar certo']],
+        note: 'por que uma mudança correta isolada pode estar errada para o projeto de hoje.' },
+      { mode: 'Aplicar', links: [['#cena-02', 'Snapshot Capsule'], ['#cena-05', 'Action Gateway'], ['#cena-07', 'Evidence Record'], ['#cena-08', 'Da evidência à decisão']],
+        note: 'ancorar, limitar e validar, e por onde começar.' },
+      { mode: 'Verificar', links: [['#cena-09', 'O que este artigo ainda não prova']],
+        note: 'os mecanismos são propostas, ainda sem medição de eficácia.' },
+      { mode: 'Consultar', links: [['#cena-10', 'Os termos, em linguagem comum']],
+        note: 'o glossário do artigo.' },
+    ],
+    summary: true,
+  },
+
+  'engenharia-agentes-ia': {
+    // h1 já é a tese; o hero já tem duas portas. Faltava o mapa do resto.
+    placement: 'section',
+    kind: 'Material interativo',
+    depth: 'Leitura aprofundada',
+    core: ['hero', 'fluxo', 'principios'],
+    routes: [
+      { mode: 'Entender', links: [['#fluxo', 'O caminho de uma resposta confiável'], ['#principios', 'Os dez princípios']],
+        note: 'a tese em dez regras: o LLM entra só onde é insubstituível.' },
+      { mode: 'Aplicar', links: [['#jornada', 'Aprenda por descoberta'], ['#simulador', 'Simulador de arquitetura'], ['#playground', 'Playground']],
+        note: 'dez capítulos e duas ferramentas que avaliam decisões por um modelo determinístico, sem IA.' },
+      { mode: 'Aprofundar', links: [['#pilares', 'Cinco pilares'], ['#codigo', 'Os princípios em código'], ['#governanca', 'Governança Agent-Driven']],
+        note: 'quanto rigor aplicar e quando, e o que muda quando a IA desenvolve sozinha.' },
+      { mode: 'Consultar', links: [['#referencia', 'Referência e caso real']],
+        note: 'os princípios em uma frase, o glossário e o caso que originou o conteúdo.' },
+    ],
+    summary: true,
+  },
+
+  'formulacao-de-problemas': {
+    // O hero já tem "Por onde você entra?". O que faltava era o veredito do
+    // próprio autor, que só aparecia no 2º bloco e no fim (audit §2).
+    placement: 'section',
+    kind: 'Artigo',
+    depth: 'Leitura aprofundada',
+    thesis:
+      'Formular é engenharia da redução de incerteza orientada à decisão, e precisa de regra de parada. O próprio artigo conclui que a hipótese tem sustentação parcial: a redução de incerteza não é monotônica, não é universal e não basta sozinha.',
+    source: { thesis: 'hero de src/formulacao-de-problemas.html + scripts/seo/pages.mjs › formulacao-de-problemas.tldr.lede' },
+    core: ['hero', 'tese', 'parada'],
+    routes: [
+      { mode: 'Verificar', links: [['#veredito', 'Veredito: sustentação parcial'], ['#limites', 'Onde isto não se aplica']],
+        note: 'a avaliação do autor e as fronteiras da hipótese.' },
+      { mode: 'Consultar', links: [['#glossario', 'Glossário']],
+        note: 'os termos do artigo.' },
+    ],
+    summary: true,
+  },
+
+  'salesforce-agentic-dev': {
+    // O hero já diz o que é e tem duas portas; faltava separar o essencial da consulta.
+    placement: 'section',
+    kind: 'Guia prático',
+    depth: 'Guia prático',
+    core: ['problema-solucao', 'agentic', 'sdd'],
+    routes: [
+      { mode: 'Entender', links: [['#problema-solucao', 'Por que quebra em escala'], ['#agentic', 'O que é Agentic Development'], ['#sdd', 'Spec-Driven Development']],
+        note: 'o problema, a mudança de paradigma e a spec como contrato entre time, agente e negócio.' },
+      { mode: 'Aplicar', links: [['#framework', 'O framework em 6 etapas'], ['#exemplo', 'Exemplo Apex + LWC'], ['#fluxo', 'O fluxo de trabalho']],
+        note: 'um ciclo aplicável em qualquer feature, a mesma feature feita de dois jeitos e a sequência da spec ao deploy.' },
+      { mode: 'Aprofundar', links: [['#arquitetura', 'Quatro pilares'], ['#devin', 'Orquestrando o Devin'], ['#acu', 'Custos (ACUs)']],
+        note: 'o papel de cada peça, Web e CLI, e como specs melhores economizam ACUs.' },
+      { mode: 'Consultar', links: [['#repo', 'Estrutura do repositório'], ['#governanca', 'Ownership e checklist']],
+        note: 'o template de referência e as fronteiras de metadata por time.' },
+    ],
+    summary: true,
+  },
+
+  // ── Fase 5 · prioridade baixa ────────────────────────────────────────────
+  acessibilidade: {
+    // O hero já tem tese, portas ("Ver o fluxo real"…) e limites declarados.
+    // Faltava só a profundidade e o atalho para a síntese, que fica no fim.
+    placement: 'section',
+    kind: 'Case técnico',
+    depth: 'Leitura aprofundada',
+    core: ['problema', 'decisao', 'ideia'],
+    summary: true,
+  },
+
+  'devops-salesforce': {
+    // Já tem sumário e a introdução enuncia as quatro camadas. Faltava a profundidade.
+    placement: 'section',
+    kind: 'Guia prático',
+    depth: 'Guia prático',
+    summary: true,
+  },
+
+  know: {
+    // Só continuação: a página orienta bem na entrada, mas termina sem saída.
+    next: [
+      { href: './artifice.html', title: 'O Artífice Invisível',
+        why: 'O mesmo descompasso visto pelo indivíduo: o trabalho que evita a crise não gera evidência para o sistema de avaliação.' },
     ],
   },
 };

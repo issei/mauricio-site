@@ -201,6 +201,11 @@
     }
   </style>
   <!-- ============================================================ -->
+
+  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
+  <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -398,9 +403,6 @@
 }
 </script>
 <!-- AEO:END -->
-  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
-  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
-  <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/salesforce-agentic-dev" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/salesforce-agentic-dev" />
@@ -459,7 +461,7 @@ Salesforce</span></span>
       </nav>
 
       <!-- Mobile toggle -->
-      <button @click="open = !open" aria-label="Open menu" :aria-expanded="open"
+      <button @click="open = !open" aria-label="Open Menu" :aria-expanded="open"
         class="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 hover:bg-white/5">
         <svg x-show="!open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 6h16M4 12h16M4 18h16" />
@@ -595,6 +597,25 @@ a teaching framework step by step.</p>
       </div>
     </section>
 
+
+    <!-- EDITORIAL:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão; fonte: scripts/editorial/editorial.data.mjs) -->
+<div class="ed ed--section" data-editorial="salesforce-agentic-dev">
+  <dl class="ed-facts">
+    <div class="ed-fact"><dt>Format</dt><dd>Practical guide</dd></div>
+    <div class="ed-fact"><dt>Depth</dt><dd>Practical guide · ~5 min for central idea · ~19 min complete</dd></div>
+  </dl>
+  <nav class="ed-routes" aria-labelledby="ed-routes-label">
+    <p class="ed-label" id="ed-routes-label">What you'll find</p>
+    <ul>
+      <li><span class="ed-mode">Understand</span> <a href="#problema-solucao">Why it breaks in scale</a>, <a href="#agentic">What is Agent Development</a> and <a href="#sdd">Spec-Driven Development</a>: the problem, the paradigm change and the spec as a contract between team, agent and business.</li>
+      <li><span class="ed-mode">Apply</span> <a href="#framework">The 6-step framework</a>, <a href="#exemplo">Example Apex + LWC</a> and <a href="#fluxo">The Workflow</a>: a cycle applicable in any feature, the same feature made in two ways and the sequence of spec to deploy.</li>
+      <li><span class="ed-mode">Deepen</span> <a href="#arquitetura">Four pillars</a>, <a href="#devin">Orchestrating Devin</a> and <a href="#acu">Costs (AUCs)</a>: the role of each piece, Web and CLI, and how better specs save ACUs.</li>
+      <li><span class="ed-mode">Consult</span> <a href="#repo">Repository structure</a> and <a href="#governanca">Ownership and checklist</a>: the reference template and metadata boundaries per team.</li>
+    </ul>
+  </nav>
+  <p class="ed-shortcut">You prefer the essentials first? <a href="#em-sintese">Read synthesis (~1 min)</a></p>
+</div>
+<!-- EDITORIAL:END -->
 
     <!-- =========================================================
      1.5 VÍDEO DE INTRODUÇÃO
@@ -2657,7 +2678,7 @@ active review of the framework.
 
 <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
 <section class="aeo" aria-label="Summary and FAQs">
-  <div class="aeo-tldr">
+  <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">In short</p>
     <h2 class="aeo-tldr__title">Develop Salesforce with AI without technical debit</h2>
     <p class="aeo-tldr__lede">Use AI in Salesforce <strong>without accumulating technical debt</strong> requires method: AI implements against a <strong>versioned specification</strong>, not against loose prompts, and each change goes through governance and automatic validation before deploy.</p>
@@ -2691,6 +2712,7 @@ active review of the framework.
   </div>
 </section>
 <!-- AEO-BODY:END -->
+
 <footer class="relative border-t border-white/10 bg-ink-900">
       <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
         <!-- Bloco de agradecimentos em destaque -->
