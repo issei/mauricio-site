@@ -18,9 +18,10 @@ test.describe('landing — O Ciclo da Aprendizagem Autorregulada', () => {
     await expect(page.locator('h1')).toContainText('Aprendizagem Autorregulada');
   });
 
-  test('estrutura: 6 seções, 5 passos do ciclo, 4 blocos do protocolo', async ({ page }) => {
+  test('estrutura: 7 seções (com vídeo), 5 passos do ciclo, 4 blocos do protocolo', async ({ page }) => {
     await page.goto(LANDING);
-    await expect(page.locator('[data-aa-section]')).toHaveCount(6);
+    await expect(page.locator('[data-aa-section]')).toHaveCount(7);
+    await expect(page.locator('#video iframe')).toHaveAttribute('src', 'https://www.youtube-nocookie.com/embed/edwg9s12EwE');
     await expect(page.locator('#ciclo ol > [data-aa-step]')).toHaveCount(5);
     await expect(page.locator('#protocolo ol > [data-aa-slot]')).toHaveCount(4);
     await expect(page.locator('#evidencias .aa-limit')).toContainText('nenhum estudo testou o ciclo completo');

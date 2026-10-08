@@ -1175,6 +1175,14 @@ export const PAGES = [
       { name: 'Metacognição' },
     ],
     audience: 'Estudantes, pesquisadores e profissionais que estudam por conta própria',
+    video: {
+      name: 'Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada',
+      description: 'Resumo em vídeo (6 min 51 s) do ciclo da aprendizagem autorregulada: por que reler não basta e as cinco etapas — previsão, busca orientada, recuperação, autoexplicação e espaçamento.',
+      thumb: 'https://i.ytimg.com/vi/edwg9s12EwE/maxresdefault.jpg',
+      uploadDate: '2026-10-07',
+      embed: 'https://www.youtube-nocookie.com/embed/edwg9s12EwE',
+      url: 'https://www.youtube.com/watch?v=edwg9s12EwE',
+    },
     tldr: {
       heading: 'O que esta página resume',
       lede: 'Estudar bem não é reler: é alternar previsão, busca orientada, recuperação sem consulta, autoexplicação e revisões espaçadas. Cada elo tem evidência própria; o ciclo completo, como pacote, ainda não foi testado.',
