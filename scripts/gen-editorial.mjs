@@ -166,10 +166,14 @@ function fill(html, name, block) {
 
 export function build(slug, html, entry = EDITORIAL[slug]) {
   const m = measure(html, entry);
-  let out = fill(html, 'EDITORIAL', renderIntro(slug, entry, m));
+  // Checkout no Windows com autocrlf traz CRLF: o bloco segue a quebra de linha
+  // do arquivo, senão --check acusa divergência que é só de fim de linha.
+  const eol = html.includes('\r\n') ? '\r\n' : '\n';
+  const asFile = (block) => block.replace(/\n/g, eol);
+  let out = fill(html, 'EDITORIAL', asFile(renderIntro(slug, entry, m)));
   if (out === null) throw new Error(`${slug}: marcador <!-- EDITORIAL:START --> ausente`);
   if (entry.next?.length) {
-    const withNext = fill(out, 'EDITORIAL-NEXT', renderNext(entry));
+    const withNext = fill(out, 'EDITORIAL-NEXT', asFile(renderNext(entry)));
     if (withNext === null) throw new Error(`${slug}: marcador <!-- EDITORIAL-NEXT:START --> ausente`);
     out = withNext;
   }
