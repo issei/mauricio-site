@@ -24,6 +24,14 @@ Find out what science really proves about how curiosity, focused search, recover
 
 Summary of a review with 103 references commented · ~6 min of reading
 
+In video · 7 min
+
+#### Watch the cycle explanation
+
+Would you rather listen before reading? The video runs through the problem of rereading and the five stages of the cycle, in about seven minutes.
+
+[Open on YouTube (new tab)](https://www.youtube.com/watch?v=edwg9s12EwE) · Text content is in the sections below.
+
 The Problem
 
 #### Why do most study routines fail?

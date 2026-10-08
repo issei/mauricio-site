@@ -101,7 +101,7 @@ Card no `catalogo.html` (categoria do ensaio de curiosidade) e linha em `public/
 ## 7. Testes
 
 `tests/aprendizagem-autorregulada.spec.js`:
-- landing: 200, h1 único, 6 seções, 5 passos, 4 blocos de tempo, CTA → artigo, link de download
+- landing: 200, h1 único, 7 seções (6 originais + vídeo `#video`, YouTube `edwg9s12EwE` via youtube-nocookie, logo após o hero; VideoObject no JSON-LD vem de `scripts/seo/pages.mjs`), 5 passos, 4 blocos de tempo, CTA → artigo, link de download
   da ficha responde 200; axe sem serious/critical; mobile 375 px sem scroll horizontal.
 - artigo: 200, h1 único, seções A–J, 103 referências com `id`, toda citação `#ref-N` resolve;
   axe; mobile sem scroll horizontal.

@@ -23,6 +23,14 @@ Descubra o que a ciência realmente comprova sobre como a curiosidade, a busca f
 
 Síntese de uma revisão com 103 referências comentadas · ~6 min de leitura
 
+Em vídeo · 7 min
+
+#### Assista à explicação do ciclo
+
+Prefere ouvir antes de ler? O vídeo percorre o problema da releitura e as cinco etapas do ciclo, em cerca de sete minutos.
+
+[Abrir no YouTube (nova aba)](https://www.youtube.com/watch?v=edwg9s12EwE) · O conteúdo em texto está nas seções abaixo.
+
 O problema
 
 #### Por que a maioria das rotinas de estudo falha?
