@@ -42,4 +42,12 @@ The above scopes expose only public reading data (curriculum, projects, profile)
 }
 ```
 
-For full details of the MCP server and available tools, see `/.well-known/mcp/server-card.json`.
+## OAuth metadata scope
+
+The `/.well-known/openid-configuration` and `/.well-known/oauth-authorization-server` documents exist for discovery compliance (RFC 8414 / OIDC Discovery) and for loading the `agent_auth` block. They are. **declarations**: there is no authority serving in this field.
+
+- No token is issued. `authorization_endpoint` e `token_endpoint` are declared by format requirement, but **do not respond** — do not try to run `authorization_code` or `implicit`.
+- `jwks_uri` solves for an empty set of keys (`{"keys": []}`), which is the truth: nothing is signed because nothing is issued.
+- The real access model is declared in `agent_auth`: **anônimo**, `credential_types supported: ["none"]`. Basta fazer `GET` in resources.
+
+For MCP server and tool details, see `/.well-known/mcp/server-card.json` — attention to `status` field: HTTP endpoint in `/mcp` is still **planned**. Today the tools run on their own website via WebMCP (`navigator.modelContext`), and all features are accessible by HTTPS directly.
