@@ -472,6 +472,7 @@ Development of parts storage management system and network supply system.
 ## Certifications
 
 - AI in Product Management — O'Reilly Media, Inc. (October 2026) · [check](https://www.credly.com/badges/3a1c354d-cc5a-4ee5-85b5-d270d9487a51)
+- Engineer Model Interaction — O'Reilly Media, Inc. (October 2026) · [check](https://www.credly.com/badges/59312b06-2747-4832-9d7a-591c5fe48d4c)
 - MCP Developer Blueprint — O'Reilly Media, Inc. (September 2026) · [check](https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8)
 - GitHub Copilot Guide — O'Reilly Media, Inc. (October 2025) · [check](https://www.credly.com/badges/116915b5-f94e-4d73-8e5f-9793766be71c)
 - AI Agency Design Patterns — O'Reilly Media, Inc. (October 2025) · [check](https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07)

@@ -45,7 +45,7 @@ Certificate **SRE**, with specialisations in **Data Science**, **Business Agilit
 - **15% increase** in the achievement of commercial goals with Automatic Pipe (2025)
 - **Reduction of SLA from 10 days to real time** no Commercial Grouping (2024)
 - **18 documented projects** with STAR methodology (2018–2025)
-- **8 Certifications in AI & Agent Systems** (2025-2026)
+- **9 certifications in AI & Agent Systems** (2025-2026)
 
 ---
 
