@@ -36,7 +36,7 @@ test.describe('Home — Mapa de Linhas', () => {
     await expect(card.locator('.pf-step[data-step="S"]')).toContainText(cv.Projetos[0].Situacao);
   });
 
-  test('§12.3–12.4: 26 certificações, links idênticos ao cv.json, diploma verificável', async ({ page }) => {
+  test('§12.3–12.4: 27 certificações, links idênticos ao cv.json, diploma verificável', async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator('.pf-certs .pf-ticket')).toHaveCount(cv.Certificados.length);
     const hrefs = await page.locator('.pf-certs .pf-ticket-link').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
