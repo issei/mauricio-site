@@ -14,7 +14,7 @@ const PATH = '/apresentacao.html';
 
 test('a página é alcançável a partir do catálogo', async ({ page }) => {
   await page.goto('/catalogo.html');
-  const link = page.locator('a[href="./apresentacao.html"]');
+  const link = page.locator('a.card-glass[href="./apresentacao.html"]');
   await expect(link).toHaveCount(1);
   await expect(link.locator('h3')).toContainText('Arquitetura de IA auditável');
 });
