@@ -22,6 +22,11 @@ const block = (html, name) => new RegExp(`<!-- ${name}:START[\\s\\S]*?<!-- ${nam
 
 for (const [slug, e] of Object.entries(EDITORIAL)) {
   test(`${slug}: taxonomia fechada`, () => {
+    if (!e.kind) {
+      // Entrada só de continuação: sem orientação, logo sem rotas nem bloco de entrada.
+      assert.ok(e.next?.length && !e.routes, 'entrada sem `kind` precisa ser só continuação');
+      return;
+    }
     assert.ok(KINDS.includes(e.kind), `formato fora da taxonomia: ${e.kind}`);
     assert.ok(DEPTHS.includes(e.depth), `profundidade fora da taxonomia: ${e.depth}`);
     for (const r of e.routes ?? []) assert.ok(MODES.includes(r.mode), `modo fora da taxonomia: ${r.mode}`);

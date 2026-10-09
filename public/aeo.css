@@ -69,7 +69,7 @@
    não um card sobre ela. Listas mantêm o marcador (sem list-style:none) para o
    VoiceOver seguir anunciando "lista, N itens" sem precisar de role="list". */
 .ed {
-  --ed-text: #c9d1d9; --ed-head: #ffffff; --ed-muted: #8b949e;
+  --ed-text: #c9d1d9; --ed-head: #ffffff; --ed-muted: #959da5; /* ≥ 4,5:1 também no azul-marinho #002d62 do devin */
   --ed-link: #58a6ff; --ed-rule: #30363d; --ed-accent: #007bff;
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
   color: var(--ed-text); line-height: 1.6; box-sizing: border-box;

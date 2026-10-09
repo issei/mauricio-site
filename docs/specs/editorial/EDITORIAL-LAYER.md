@@ -2,7 +2,7 @@
 
 > Fases 2–4 do metaprompt "Camada editorial concisa e navegação didática".
 > Diagnóstico que fundamenta esta spec: [`EDITORIAL-AUDIT.md`](EDITORIAL-AUDIT.md).
-> Status: **piloto em 3 páginas, aguardando validação do autor antes da Fase 5.**
+> Status: **piloto validado pelo autor (08/10/2026); Fase 5 aplicada em 9 páginas + catálogo (§12).**
 
 ## 1. O problema que a camada resolve
 
@@ -114,7 +114,10 @@ Decisões e motivo:
 
 Artigo · Ensaio · Ensaio com autodiagnóstico · Estudo técnico · Case técnico · Guia prático ·
 Tutorial · Documentação de projeto · Revisão científica · Apresentação · Proposta técnica ·
-Simulador · Narrativa pessoal · Referência.
+Simulador · Material interativo · Narrativa pessoal · Referência.
+
+"Material interativo" entrou na Fase 5 para `engenharia-agentes-ia` (princípios + jornada +
+simulador + playground): não é artigo nem simulador puro, e o audit já a tipava assim.
 
 ### 4.2 Profundidades (`DEPTHS`)
 
@@ -166,6 +169,9 @@ a evidência fica onde está, e a rota diz que ela é evidência.
 - é curta (≲ 6 min) e o hero já diz o que é;
 - é narrativa pessoal, tutorial imperativo ou proposta curta;
 - seria só para "ficar igual às outras".
+
+**Só continuação.** Entrada sem `kind` não recebe orientação de entrada, só `next` (ex.: `know`,
+que orienta bem na chegada mas termina sem saída). Não precisa do marcador `EDITORIAL:START`.
 
 **Continuação (`next`)** só quando a página não tem uma e existe relação semântica
 declarável (crosslink do `eco-nav`, mesmo pilar com tese vizinha, referência mútua). Nada de
@@ -225,12 +231,38 @@ Verificação técnica feita nesta entrega:
 
 Não verificado: leitor de tela real, controle por voz, Safari. Ver `REPORT.md`, nota 9.
 
-## 11. Pendências antes do merge
+## 11. Pendências antes do merge do piloto
 
-- **Espelhos `/en/`:** a tradução é local (Argos) e o modelo não está disponível no ambiente
-  de nuvem. `npm run i18n:sync && npm run i18n:check` precisa rodar numa máquina com o modelo.
+Resolvida: os espelhos `/en/` foram regenerados pelo Argos numa máquina com o modelo (commit `88cfb2b`).
 
-## 12. Fase 5 (só depois da validação)
+## 12. Fase 5 (após a validação do piloto)
 
-Ordem sugerida pelo audit §7: `knowledge-os-presentation`, `devin`, depois as de prioridade
-média. O catálogo passa a ler formato e profundidade deste SSOT.
+Aplicada às páginas que o audit marcou A/B, cada uma só com o que lhe faltava. As que já
+tinham portas de entrada ou sumário **não** ganharam rotas que as duplicariam.
+
+| Página | Classe | O que recebeu | O que ficou de fora, e por quê |
+| :--- | :--- | :--- | :--- |
+| `knowledge-os-presentation` | A | Em uma frase, formato, profundidade, 4 rotas, atalho | — |
+| `devin` | B | Em uma frase, formato, profundidade, 4 rotas que reconstroem o arco do argumento, atalho | títulos retóricos das seções mantidos: são do autor |
+| `develop-engineering` | A | formato, profundidade, 4 rotas (com "Verificar" → Cena 09), atalho | "Em uma frase": h1 + 1ª frase do hero já são a tese |
+| `engenharia-agentes-ia` | A | formato (Material interativo), profundidade, 4 rotas, atalho | "Em uma frase": o h1 é a tese |
+| `formulacao-de-problemas` | A | "A tese" com o veredito "sustentação parcial", profundidade, 2 rotas (Verificar, Consultar), atalho | rotas de entrada: o hero já tem "Por onde você entra?" |
+| `salesforce-agentic-dev` | A | formato, profundidade, 4 rotas separando essencial de consulta, atalho | "Em uma frase": o hero já diz o que é |
+| `acessibilidade` | A | formato, profundidade, atalho | rotas: o hero já tem três portas |
+| `devops-salesforce` | A | formato, profundidade, atalho | rotas: a página já tem sumário |
+| `know` | A (só saída) | continuação para `artifice` | orientação de entrada: não faltava |
+| `catalogo` | mapa | etiqueta de formato nos 17 cards que não tinham; "Comece por aqui" com 3 portas por objetivo | etiqueta gerada do SSOT e tempo por card: exigiriam dar formato e profundidade às 19 páginas D, que a §2 manda não tocar |
+
+Ajustes técnicos que a Fase 5 trouxe:
+- `gen-editorial.mjs` aceita entrada só de continuação. O CLI passou a usar `pathToFileURL`:
+  no Windows a comparação com `file://${argv[1]}` nunca batia, e o `--check` do gate não rodava.
+- `--ed-muted` subiu de `#8b949e` para `#959da5`. Sobre o azul-marinho `#002d62` do `devin`
+  o antigo dava 4,40:1 (o axe acusou); o novo dá 4,93:1, e mais que isso sobre `#0d1117`.
+- `build-aeo.mjs` deve rodar **só nos slugs que ganharam âncora** (`#em-sintese`). Sem argumento,
+  ele reescreve 31 páginas com mudanças que não são desta camada.
+
+Não feito, de propósito:
+- a parte "B" de `case-agents` (recolher o Python em `details`): muda a leitura da evidência e
+  não foi pedida na validação;
+- `engenharia-confianca` e `operacao-capital-cognitivo` fora de `pages.mjs` (audit §7.6): não é
+  camada editorial.
