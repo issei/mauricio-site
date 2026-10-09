@@ -98,10 +98,12 @@
         // Tenta importar config se existir (opcional)
         let config = {};
         try {
-            const module = await import('./config.js');
+            // Caminho em variável: o Vite não empacota, então credencial local nunca vai pro dist/.
+            const configUrl = '/config.js';
+            const module = await import(/* @vite-ignore */ configUrl);
             config = module.GITHUB_CONFIG || {};
         } catch (e) {
-            console.log('Config não encontrada ou erro ao carregar');
+            console.log('config.js ausente — preencha o token no formulário');
         }
 
         const githubService = new GitHubService();
