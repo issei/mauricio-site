@@ -76,7 +76,7 @@ Technical leader responsible for solutions on the platform **Salesforce**with in
 ---
 
 ### Development Analyst **Serasa Experian**
-**December 2017 – January 2018 (2 months)** 
+**December 2017 – January 2018 (2 months)** | São Paulo, Brasil
 
 Acting in the team of **Digital Strategy**, contributing to the development of the corporate API of **OAuth 2** and unified record. Participation in the Serasa Entrepreneur project.
 
@@ -87,7 +87,7 @@ Acting in the team of **Digital Strategy**, contributing to the development of t
 ---
 
 ### Senior Java / Mobile Systems Analyst **Indra**
-**February 2012 – December 2017 (5 years and 11 months)** 
+**February 2012 – December 2017 (5 years and 11 months)** | São Paulo, Brasil
 
 Leadership of the systems development team for insurance clients. Responsible for surveying and analyzing requirements, defining solutions architecture, quality control, customer relationship and support.
 
@@ -101,7 +101,7 @@ Leadership of the systems development team for insurance clients. Responsible fo
 ---
 
 ### Java Developer Analyst **Sysgen**
-**August 2003 – January 2012 (8 years and 6 months)** 
+**August 2003 – January 2012 (8 years and 6 months)** | São Paulo, Brasil
 
 Application development web and console in **Java (J2EE and J2SE)**, using ASPER framework and MVC architecture. UML modeling-based applications with code generation via **MDA (Model-Driven Architecture)** by the Celero tool.
 
@@ -110,7 +110,7 @@ Application development web and console in **Java (J2EE and J2SE)**, using ASPER
 ---
 
 ### Java Development Analyst  **Telephone**
-**April 2005 – September 2008 (3 years and 6 months)** 
+**April 2005 – September 2008 (3 years and 6 months)** | São Paulo, Brasil
 
 Development of parts storage management system and network supply system.
 
@@ -143,13 +143,14 @@ Emphasis on Logistics and Supply Chain
 ## Certifications
 
 ### AI & Agent Systems (2025-2026)
-- **MCP Developer Blueprint** ♪ O'Reilly Media ♪ [Check](https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8)
-- **AI Agency Design Patterns** ♪ O'Reilly Media ♪ [Check](https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07)
-- **AI with Knowledge Graphs** ♪ O'Reilly Media ♪ [Check](https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7)
-- **Building Intelligent AI Agents** ♪ O'Reilly Media ♪ [Check](https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259)
-- **AI Agents with LangGraph** ♪ O'Reilly Media ♪ [Check](https://www.credly.com/badges/26427ba5-8744-4540-ab80-345844ea80c0)
-- **GenAI for Leaders** ♪ O'Reilly Media ♪ [Check](https://www.credly.com/badges/8122b027-8d0f-49de-b264-1a75491cbe0c)
-- **AI for Leaders**  [Check](https://lms.startse.com/certificado/v2/678fc9c0f8158077f9db505c?studentId=5e337f0a99763dac88d37e79)
+- **AI in Product Management** | O'Reilly Media | [Check](https://www.credly.com/badges/3a1c354d-cc5a-4ee5-85b5-d270d9487a51)
+- **MCP Developer Blueprint** | O'Reilly Media | [Check](https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8)
+- **AI Agency Design Patterns** | O'Reilly Media | [Check](https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07)
+- **AI with Knowledge Graphs** | O'Reilly Media | [Check](https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7)
+- **Building Intelligent AI Agents** | O'Reilly Media | [Check](https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259)
+- **AI Agents with LangGraph** | O'Reilly Media | [Check](https://www.credly.com/badges/26427ba5-8744-4540-ab80-345844ea80c0)
+- **GenAI for Leaders** | O'Reilly Media | [Check](https://www.credly.com/badges/8122b027-8d0f-49de-b264-1a75491cbe0c)
+- **AI for Leaders** | StartSe University | [Check](https://lms.startse.com/certificado/v2/678fc9c0f8158077f9db505c?studentId=5e337f0a99763dac88d37e79)
 
 ### Observability & SRE (2024-2025)
 - **Datadog Power User** Appoena [Check](https://badges.com.br/share/465eef0a1c14fc6a0383f3a805d294d0.php?a=7683)
@@ -162,18 +163,18 @@ Emphasis on Logistics and Supply Chain
 - **Practicer – D&A Foundation** ♪ Itaú Unibanco ♪ [Check](https://www.credly.com/badges/1f596ad2-9834-45b7-99f0-298eddd56cb7)
 
 ### Cloud & Infrastructure (2021-2022)
-- **AWS Certified Cloud Practitioner**  [Check](https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951)
-- **SRE Essentials** ♪ Itcerts ♪ [Check](https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458)
+- **AWS Certified Cloud Practitioner** | Amazon Web Services | [Check](https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951)
+- **SRE Essentials** | Itcerts | [Check](https://www.credential.net/c07a4ff4-8839-43e3-8d23-2edef6446458)
 - **Solutions Architecture** ♪ Itaú Unibanco ♪ [Check](http://badges.com.br/share/113a264018cdb4367fce684877af45d1.php?a=2148)
 
 ### UX & Design (2021)
-- **UX** FIAP [Check](https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=78eb0d83a5db0aadce891455e7d54dfb&action=view)
-- **Artificial Intelligence** FIAP [Check](https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=d49e69fc55f98e0ce7abeeabba01fe8f&action=view)
-- **Design Think** FIAP [Check](https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=5aeee13691392217120b14b94ffb905b&action=view)
+- **UX** | FIAP | [Check](https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=78eb0d83a5db0aadce891455e7d54dfb&action=view)
+- **Artificial Intelligence** | FIAP | [Check](https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=d49e69fc55f98e0ce7abeeabba01fe8f&action=view)
+- **Design Think** | FIAP | [Check](https://on.fiap.com.br/local/nanocourses/gerar_certificado.php?chave=5aeee13691392217120b14b94ffb905b&action=view)
 
 ### Salesforce (2017-2018)
-- **Salesforce Trailhead Training** ♪ Salesforce ♪ [Check](https://www.salesforce.com/trailblazer/issei)
-- **Salesforce Workshop for Developers** ♪ Salesforce ♪ [Check](https://cursos.alura.com.br/certificate/17c88e93-13d1-4ac2-826c-7254c53a93a0)
+- **Salesforce Trailhead Training** | Salesforce | [Check](https://www.salesforce.com/trailblazer/issei)
+- **Salesforce Workshop for Developers** | Salesforce | [Check](https://cursos.alura.com.br/certificate/17c88e93-13d1-4ac2-826c-7254c53a93a0)
 
 ### Continuous Training
 - **Alura Training and Training** Alura  [Check](https://cursos.alura.com.br/user/mauricio-issei/fullCertificate/8c92662d32a5ec2020d3bd9066f610e0)
