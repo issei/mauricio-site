@@ -1139,7 +1139,8 @@
                 WIND_SPEED: 2.5,
                 SKYLINE_LAYERS: [0.08, 0.15, 0.25],
                 CLOUD_LAYERS: 3,
-                CITY_WINDOW_CHANCE: 0.35
+                CITY_WINDOW_CHANCE: 0.35,
+                PROP_COUNT: 5         // árvores por fase (1 a cada 140 px de PHASE_LENGTH)
             },
             STORY: {
                 PHASE_LENGTH: 700,
@@ -1779,11 +1780,12 @@
             // Background dividido em camadas para melhor legibilidade
             drawBackground(theme, groundY, cameraX, phaseIndex, memoryImage, memoryImageLoaded, memoryProgress, canvasWidth) {
                 this.drawSky(theme);
-                // Foto de memória entre céu e nuvens/prédios/chão
-                this.drawMemoryPhoto(memoryImage, memoryImageLoaded, memoryProgress, canvasWidth, groundY);
-                this.drawClouds(theme, cameraX);
                 this.drawMountains(theme, groundY, cameraX, phaseIndex);
                 this.drawCities(theme, groundY, cameraX, phaseIndex);
+                // Foto de memória acima do horizonte e abaixo das nuvens/chão: as camadas
+                // mais próximas de montanhas e prédios cobririam a metade de baixo dela.
+                this.drawMemoryPhoto(memoryImage, memoryImageLoaded, memoryProgress, canvasWidth, groundY);
+                this.drawClouds(theme, cameraX);
                 this.drawGround(theme, groundY, cameraX, phaseIndex);
             }
 
@@ -1963,7 +1965,7 @@
                     },
                     {
                         count: 8,
-                        parallax: CONFIG.PARALLAX_FACTOR,
+                        parallax: CONFIG.ENV.SKYLINE_LAYERS[2],
                         widthBase: 45,
                         heightBase: 50, // O prédio mais alto raramente passará de 110px
                         variance: 60,
@@ -2060,7 +2062,7 @@
                     },
                     {
                         count: 6,
-                        parallax: CONFIG.PARALLAX_FACTOR,
+                        parallax: CONFIG.ENV.SKYLINE_LAYERS[2], // mesma da camada de prédios mais próxima
                         heightBase: 80,
                         variance: 60,
                         color: Utils.adjustColor(theme.ground, -40),
@@ -2331,8 +2333,11 @@
                 const props = [];
                 const seed = phaseIndex * 1000;
 
-                for (let i = 0; i < CONFIG.PROP_COUNT; i++) {
-                    const x = (i * (10000 / CONFIG.PROP_COUNT)) + Utils.seededRandom(seed + i) * 50;
+                // Espalhadas pela fase, com meio passo de margem nas pontas: nenhuma nasce
+                // atrás do personagem (x = 20) nem embaixo do objetivo (x = 680).
+                const step = CONFIG.STORY.PHASE_LENGTH / CONFIG.ENV.PROP_COUNT;
+                for (let i = 0; i < CONFIG.ENV.PROP_COUNT; i++) {
+                    const x = (i + 0.5) * step + (Utils.seededRandom(seed + i) - 0.5) * 50;
                     const height = 30 + Utils.seededRandom(seed + i + 1) * 40;
 
                     props.push({
@@ -2392,13 +2397,13 @@
 
             fadeOut(callback) {
                 this.elements.fadeOverlay.style.opacity = '1';
-                setTimeout(callback, CONFIG.TRANSITION_DURATION);
+                setTimeout(callback, CONFIG.STORY.TRANSITION_DURATION);
             }
 
             fadeIn() {
                 setTimeout(() => {
                     this.elements.fadeOverlay.style.opacity = '0';
-                }, CONFIG.FADE_DURATION);
+                }, CONFIG.STORY.FADE_DURATION);
             }
 
             updateProgress(percentage) {
@@ -2736,7 +2741,7 @@
                 this.renderer.currentTheme = theme;
                 this.renderer.clear(theme.sky);
 
-                // Passa a foto de memória para o background, entre céu e nuvens/prédios/chão
+                // Passa a foto de memória para o background, acima do horizonte e abaixo das nuvens/chão
                 this.renderer.drawBackground(
                     theme,
                     this.groundY,
