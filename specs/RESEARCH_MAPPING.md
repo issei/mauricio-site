@@ -43,7 +43,6 @@ Títulos extraídos diretamente do `<title>` de cada arquivo (ground truth):
 | N09 | `salesforce-agentic-dev.html` | P3 Salesforce | Agentic DevOps for Salesforce — Portal de Treinamento |
 | N10 | `sustentacao.html` | P4 Sustentação | Do Caos à Resiliência: Sustentação de Sistemas em Produção |
 | N11 | `service-operations-2-0.html` | P4 Sustentação | Service Operations 2.0 — Visão Executiva |
-| N12 | `proposta.html` | P4 Sustentação | Inteligência de Vendas em Tempo Real: Salesforce + AWS |
 | N13 | `socialselling.html` | P5 Portfólio | SocialSelling — Overview do Projeto & Modelo de Boas Práticas |
 | N14 | `index.html` | P5 Portfólio | Maurício Yokoyama Issei — Tech Lead / Análise de Sistemas |
 | N15 | `life.html` | P5 Portfólio | A Jornada de Mauricio Issei — Narrativa em Pixel Art |
@@ -108,7 +107,6 @@ Estas são as conexões "fora do eixo" que a análise original destacou e que a 
                           ┌─────────────────────────────┐
                           │  P4 · SUSTENTAÇÃO (Valor)    │
                           │  N10 sustentacao · N11 svcops│
-                          │  N12 proposta (SF+AWS)       │
                           └──────────────┬──────────────┘
                                          │ gera
                                          ▼
@@ -137,7 +135,6 @@ Termos canônicos verificados no conteúdo. Esta é a **fonte normativa de vocab
 | **Service Operations 2.0** | Framework executivo de operação de serviço | N11 | "Service Cloud" da Salesforce |
 | **Protocolo Manchester** | Protocolo de triagem/priorização aplicado a operações | N11 | (uso clínico original) |
 | **Flosum** | Ferramenta de DevOps Salesforce no stack agêntico | N08 | — |
-| **Salesforce + AWS** | Arquitetura de inteligência de vendas em tempo real | N12 | — |
 
 ---
 

@@ -155,7 +155,6 @@ mauricio-site/
 │   ├── favicon.svg
 │   ├── robots.txt
 │   ├── site.webmanifest
-│   ├── arq-proposta.png
 │   └── *.pdf, *.m4a           # Documentos e áudios
 ├── src/                        # Código-fonte
 │   ├── index.html             # Página principal
@@ -170,7 +169,7 @@ mauricio-site/
 │   │   └── admin-ui.js        # Lógica do admin
 │   ├── admin.html             # Painel administrativo
 │   ├── admin-editor.html      # Editor de conteúdo
-│   ├── proposta.html          # Propostas técnicas
+│   ├── proposta.html          # Proposta executiva não listada (noindex)
 │   ├── know.html              # Página de conhecimento
 │   ├── life.html              # Linha do tempo pessoal
 │   └── *.html                 # Outras páginas

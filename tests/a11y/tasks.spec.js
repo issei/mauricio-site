@@ -44,17 +44,6 @@ for (const [page, target] of PAGES) {
   });
 }
 
-test('proposta: botão de áudio tem nome, estado e foco visível', async ({ page }) => {
-  await page.goto('/proposta.html');
-  const btn = page.getByRole('button', { name: 'Ouvir o Deep Dive da Arquitetura' });
-  await expect(btn).toHaveAttribute('aria-pressed', 'false');
-  await expect(btn.locator('i')).toHaveAttribute('aria-hidden', 'true');
-  await page.keyboard.press('Tab'); // skip link
-  await btn.focus();
-  const outline = await btn.evaluate((e) => getComputedStyle(e).outlineStyle);
-  expect(outline).not.toBe('none');
-});
-
 // T4 (auditoria-v2, AV2-01): a fração do capítulo 3 do OCC só se montava com mouse — blocos `div` com
 // tabindex e só `click`, zonas sem foco — e sem ela os capítulos 4–6 não liberam.
 test('OCC cap. 3: monta a fração só com teclado', async ({ page }) => {

@@ -61,7 +61,7 @@ npm run i18n:sync
 Para forçar arquivos específicos:
 
 ```bash
-node scripts/sync-i18n.mjs --files src/proposta.html public/proposta.md
+node scripts/sync-i18n.mjs --files src/know.html public/know.md
 ```
 
 **Se o motor não estiver instalado** o comando sai com código 2 e imprime as

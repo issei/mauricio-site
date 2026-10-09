@@ -17,7 +17,7 @@ const MARKER = 'js/eco-nav.js';
 const PAGES = [
   'know', 'devin', 'engenharia-confianca', 'engenharia-agentes-ia', 'knowledge-os-presentation',
   'devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev',
-  'sustentacao', 'service-operations-2-0', 'proposta', 'proposta-observabilidade-mobile',
+  'sustentacao', 'service-operations-2-0', 'proposta-observabilidade-mobile',
   'socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo',
 ];
 

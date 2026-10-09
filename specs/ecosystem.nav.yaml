@@ -17,10 +17,12 @@
 # =============================================================================
 
 meta:
-  version: "1.9.0"            # semver; bump obrigatório a cada alteração de grafo
+  version: "1.10.0"           # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-10-06"
+  updated: "2026-10-09"
+  # 1.10.0 — sai `proposta`: a página virou proposta executiva não listada (noindex),
+  #         fora do grafo público. Atualizar src/js/eco-nav.js junto.
   # 1.9.0 — entra `acessibilidade` (Acessibilidade como requisito de engenharia)
   #         em p2 (Engenharia de Confiança / O Método): case do retrofit WCAG 2.2
   #         com o A11Y.md como contexto dos agentes. Aprovado pelo autor em
@@ -95,7 +97,7 @@ pillars:
     label: "Sustentação & Resiliência"
     subtitle: "O Valor"
     summary: "Operação de serviço, SRE e resiliência em produção."
-    nodes: [sustentacao, service-operations-2-0, proposta, proposta-observabilidade-mobile]
+    nodes: [sustentacao, service-operations-2-0, proposta-observabilidade-mobile]
 
   - id: p5
     order: 5
@@ -206,11 +208,6 @@ nodes:
     file: "service-operations-2-0.html"
     title: "Service Operations 2.0"
     blurb: "Protocolo Manchester aplicado à TI."
-    pillar: p4
-  proposta:
-    file: "proposta.html"
-    title: "Inteligência de Vendas: Salesforce + AWS"
-    blurb: "Dados de vendas em tempo real."
     pillar: p4
   # Extra fora dos 16 canônicos (RESEARCH §1): mantido no hub por afinidade
   # SRE/observabilidade. canonical: false sinaliza que está fora do grafo-base.

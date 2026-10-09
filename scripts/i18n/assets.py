@@ -42,6 +42,7 @@ HTML_NAO_PUBLICAS = frozenset(
         "exemplopdi",
         "mapmind",
         "vsl",
+        "proposta",  # executiva não listada: sem gêmeo /en/
         "boutique-empresarial-showcase",
     }
 )

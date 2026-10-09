@@ -158,6 +158,8 @@ export default defineConfig({
         '/mapmind',
         '/exemplopdi',
         '/vsl',
+        '/proposta', // executiva não listada: noindex e fora do sitemap
+        '/proposta', // página executiva não listada: noindex, fora do sitemap
         '/boutique-empresarial-showcase',
         /*
          * Não são páginas: `seo-aeo.jsonld.html` é um bloco JSON-LD e
