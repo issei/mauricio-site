@@ -731,33 +731,6 @@ export const PAGES = [
     og: { eyebrow: 'SRE · Observabilidade', title: 'Observabilidade {SRE} Mobile', subtitle: 'Mobilidade corporativa com Datadog, Azure e Android', chips: [{ k: 'DDOG', label: 'Telemetria' }, { k: 'AZURE', label: 'Backend' }, { k: 'ANDROID', label: 'Frota' }, { k: 'MTTR', label: 'Menor' }] },
   },
 
-  {
-    slug: 'proposta', type: 'Article', tier: 'A', hasMd: true,
-    title: 'Inteligência de Vendas em Tempo Real — Salesforce + AWS',
-    description: 'Proposta de inteligência de vendas em tempo real combinando Salesforce e AWS para elevar a eficiência comercial com dados e IA.',
-    datePublished: '2026-02-01', dateModified: '2026-06-21',
-    section: 'IA · Vendas', tags: ['Salesforce', 'AWS', 'Inteligência de Vendas', 'Tempo Real', 'IA'],
-    keywords: ['inteligência de vendas', 'tempo real', 'Salesforce', 'AWS', 'eficiência comercial', 'dados', 'IA', 'eventos'],
-    about: [{ name: 'Inteligência de Vendas' }, { name: 'Salesforce' }, { name: 'AWS' }],
-    audience: 'Líderes Comerciais, Diretores de Vendas, Arquitetos de Dados',
-    tldr: {
-      heading: 'Inteligência de vendas em tempo real',
-      lede: 'Uma arquitetura que combina **Salesforce e AWS** para levar **inteligência de vendas em tempo real** ao time comercial: eventos e dados processados na hora viram sinais acionáveis, elevando a eficiência da operação de vendas.',
-      points: [
-        '**Tempo real** — eventos processados na hora, não em relatórios do dia seguinte.',
-        '**Salesforce + AWS** — o CRM como cérebro comercial, a nuvem como motor de dados.',
-        '**Sinais acionáveis** — a próxima melhor ação no momento certo.',
-        '**Eficiência comercial** — menos esforço manual, mais conversão.',
-      ],
-    },
-    faq: [
-      { q: 'O que é inteligência de vendas em tempo real?', a: 'É a capacidade de transformar eventos e dados de vendas em sinais acionáveis no momento em que acontecem, em vez de depender de relatórios atrasados. Combinando Salesforce e AWS, o time recebe a próxima melhor ação na hora certa.' },
-      { q: 'Como Salesforce e AWS se complementam?', a: 'O Salesforce é o cérebro comercial (CRM, processos e contexto do cliente); a AWS provê o motor de dados e eventos em tempo real (ingestão, processamento e IA). Juntos entregam decisões comerciais baseadas em dados atuais.' },
-      { q: 'Qual o ganho para a operação comercial?', a: 'Mais eficiência: menos trabalho manual de garimpar dados, priorização automática das melhores oportunidades e ação no momento de maior probabilidade de conversão.' },
-    ],
-    og: { eyebrow: 'IA · Vendas', title: 'Inteligência de {Vendas} em Tempo Real', subtitle: 'Salesforce + AWS para eficiência comercial', chips: [{ k: 'RT', label: 'Tempo real' }, { k: 'SFDC', label: 'CRM' }, { k: 'AWS', label: 'Dados' }, { k: 'AÇÃO', label: 'Sinais' }] },
-  },
-
   // ===================================================================== TIER B
   {
     // Home "Mapa de Linhas" (docs/specs/pages/portfolio/). O conteúdo do <body>
@@ -840,7 +813,6 @@ export const PAGES = [
         '',
         '- [Do Caos à Resiliência](https://mauricio.issei.com.br/sustentacao) — gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em crise.',
         '- [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0) — o Protocolo Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento.',
-        '- [Inteligência de Vendas: Salesforce + AWS](https://mauricio.issei.com.br/proposta) — inteligência de vendas em tempo real via arquitetura event-driven.',
         '- [Observabilidade SRE para Mobilidade](https://mauricio.issei.com.br/proposta-observabilidade-mobile) — correlação entre dispositivos, rede e aplicações com Datadog e Azure.',
       ].join('\n') },
       { h: '05 · Resultados — Soluções & Portfólio', body: [

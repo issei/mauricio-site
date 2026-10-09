@@ -125,7 +125,7 @@ test('rotas internas com espelho apontam para /en/', { skip: !temPython }, () =>
     for (const rel of AMOSTRA.filter((f) => f.endsWith('.html'))) {
       const html = ler(dir, rel.replace('src/', 'src/en/'));
       // Rotas de página conhecidas não podem ter sobrado sem prefixo.
-      for (const rota of ['/engenharia-confianca', '/proposta', '/catalogo.html', '/llms.txt']) {
+      for (const rota of ['/engenharia-confianca', '/service-operations-2-0', '/catalogo.html', '/llms.txt']) {
         assert.doesNotMatch(
           html,
           new RegExp(`href="${rota}"`),
@@ -146,7 +146,7 @@ test('ativo compartilhado (css/js/img) continua resolvendo de dentro de en/', { 
       for (const m of html.matchAll(/(?:href|src)="(\.\.?\/[^"#?]+)"/g)) {
         const ref = m[1];
         const alvo = resolve(ROOT, 'src/en', ref);
-        // Uma página irmã (`./proposta.html`) só existe depois de gerada; o
+        // Uma página irmã (`./service-operations-2-0.html`) só existe depois de gerada; o
         // que se cobra dela é que a FONTE correspondente exista. Qualquer
         // outra coisa — css, js, imagem, .md — tem de resolver para um arquivo
         // real a partir de `src/en/`, senão o link nasce 404.

@@ -31,7 +31,7 @@ offline. O ambiente pesa ~6 GB por causa do `torch` que o `stanza` puxa —
 npm run i18n:sync          # traduz só o que a fonte mudou (usa o manifesto)
 npm run i18n:sync:all      # retraduz tudo, ignorando o manifesto
 npm run i18n:check         # não escreve; sai ≠0 se algum espelho está velho
-node scripts/sync-i18n.mjs --files src/proposta.html public/proposta.md
+node scripts/sync-i18n.mjs --files src/know.html public/know.md
 ```
 
 `npm run build` dispara `prebuild`, que roda a sincronização em modo `--soft`:
@@ -72,8 +72,8 @@ Os três últimos são usados por `tests/i18n.test.mjs`, que roda no `npm run ga
 faz cirurgia pontual só onde precisa mudar. Um pretty-printer reescreveria o
 arquivo inteiro e o diff entre PT-BR e EN deixaria de ser legível.
 
-**Só se reescreve o link cujo alvo tem espelho.** `/proposta` vira
-`/en/proposta`; `/aeo.css` e `/favicon.svg` não viram nada, porque existe um
+**Só se reescreve o link cujo alvo tem espelho.** `/know` vira
+`/en/know`; `/aeo.css` e `/favicon.svg` não viram nada, porque existe um
 único arquivo desses servindo as duas línguas.
 
 **Chave de JSON nunca é traduzida.** `scripts/gen-portfolio.mjs` lê `cv.Resumo`;

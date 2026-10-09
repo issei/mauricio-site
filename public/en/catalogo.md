@@ -48,7 +48,6 @@ Service operation, SRE and resilience in production: where the delivered enginee
 
 - [From Chaos to Resilience](https://mauricio.issei.com.br/en/sustentacao) — critical incident management, reliability (SRE) and effective communication in crisis.
 - [Service Operations 2.0](https://mauricio.issei.com.br/en/service-operations-2-0) — the Manchester Protocol applied to IT, for systemic resilience and billing protection.
-- [Sales Intelligence: Salesforce + AWS](https://mauricio.issei.com.br/en/proposta) — real-time sales intelligence via event-driven architecture.
 - [RES observability for Mobility](https://mauricio.issei.com.br/en/proposta-observabilidade-mobile) — correlation between devices, network and applications with Datadog and Azure.
 
 ## 05 · Results — Solutions & Portfolio

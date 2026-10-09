@@ -47,7 +47,6 @@ Operação de serviço, SRE e resiliência em produção: onde a engenharia entr
 
 - [Do Caos à Resiliência](https://mauricio.issei.com.br/sustentacao) — gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em crise.
 - [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0) — o Protocolo Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento.
-- [Inteligência de Vendas: Salesforce + AWS](https://mauricio.issei.com.br/proposta) — inteligência de vendas em tempo real via arquitetura event-driven.
 - [Observabilidade SRE para Mobilidade](https://mauricio.issei.com.br/proposta-observabilidade-mobile) — correlação entre dispositivos, rede e aplicações com Datadog e Azure.
 
 ## 05 · Resultados — Soluções & Portfólio

@@ -22,13 +22,13 @@
  */
 
 const DATA = {
-  version: '1.9.0',
+  version: '1.10.0',
   base: './', // D-05: URL relativa atual
   pillars: [
     { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas'] },
     { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents', 'acessibilidade'] },
     { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
-    { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta', 'proposta-observabilidade-mobile'] },
+    { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta-observabilidade-mobile'] },
     { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo', 'boutique-empresarial-showcase'] },
   ],
   nodes: {
@@ -50,7 +50,6 @@ const DATA = {
     'salesforce-agentic-dev': { file: 'salesforce-agentic-dev.html', title: 'Agentic DevOps for Salesforce', blurb: 'Portal de treinamento Spec-Driven.' },
     sustentacao: { file: 'sustentacao.html', title: 'Do Caos à Resiliência', blurb: 'Gestão de incidentes e SRE.' },
     'service-operations-2-0': { file: 'service-operations-2-0.html', title: 'Service Operations 2.0', blurb: 'Protocolo Manchester aplicado à TI.' },
-    proposta: { file: 'proposta.html', title: 'Inteligência de Vendas: Salesforce + AWS', blurb: 'Dados de vendas em tempo real.' },
     'proposta-observabilidade-mobile': { file: 'proposta-observabilidade-mobile.html', title: 'Observabilidade SRE para Mobilidade', blurb: 'Correlação device-rede-app.' },
     socialselling: { file: 'socialselling.html', title: 'SocialSelling', blurb: 'Boas práticas de vendas sociais com IA.' },
     index: { file: 'index.html', title: 'Maurício Yokoyama Issei', blurb: 'Tech Lead / Análise de Sistemas.' },

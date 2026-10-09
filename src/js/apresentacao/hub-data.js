@@ -54,15 +54,6 @@ export const HUB_ITEMS = [
     "complexity": "Estratégica"
   },
   {
-    "slug": "proposta",
-    "title": "Inteligência de Vendas em Tempo Real",
-    "blurb": "Proposta de inteligência de vendas em tempo real combinando Salesforce e AWS para elevar a eficiência comercial com dados e IA.",
-    "href": "./proposta.html",
-    "tab": "planejar",
-    "minutes": 2,
-    "complexity": "Técnica Aplicada"
-  },
-  {
     "slug": "proposta-observabilidade-mobile",
     "title": "Observabilidade SRE para Mobilidade Corporativa",
     "blurb": "Arquitetura de Observabilidade SRE para mobilidade corporativa com Datadog, Azure e Android Enterprise: visibilidade fim a fim da frota de dispositivos.",
