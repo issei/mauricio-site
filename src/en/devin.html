@@ -60,7 +60,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Vibe Coding with Devin — From Executor to Cognitive Orchestrator" />
 <meta property="article:published_time" content="2026-05-19T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-06-21T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-10-10T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Agent-Driven Development" />
 <meta property="article:tag" content="Vibe Coding" />
@@ -111,7 +111,7 @@
       },
       "inLanguage": "en-US",
       "datePublished": "2026-05-19",
-      "dateModified": "2026-06-21",
+      "dateModified": "2026-10-10",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-devin.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/en/devin#breadcrumb"
@@ -144,7 +144,7 @@
         "@id": "https://mauricio.issei.com.br/en/#author"
       },
       "datePublished": "2026-05-19",
-      "dateModified": "2026-06-21",
+      "dateModified": "2026-10-10",
       "inLanguage": "en-US",
       "image": "https://mauricio.issei.com.br/og-devin.png",
       "isAccessibleForFree": true,
@@ -216,7 +216,7 @@
           "name": "What is Spec-Driven Development (SDD)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "In SDD the specification is the source of truth: what is written and why, and the AI implements against the spec with tests (BDD) as objective target. When the intention lives in a disposable prompt it gets lost; when it lives in a spec in the repository, it scales and is auditable."
+            "text": "In SDD the versioned specification is the reference of intention: write what and why, and the AI implements against the spec, with tests (BDD) to verify. Spec is not infallible: when spec, tests and code differ, a person with authority decides what to correct. When the intention lives in a disposable prompt, it gets lost; in a spec version in the repository, it can be reviewed and audited."
           }
         },
         {
@@ -261,7 +261,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/devin#g-sdd",
           "name": "SDD (Spec-Driven Development)",
-          "description": "The specification as source of truth; the AI implements against the spec, with testing as target."
+          "description": "The specification versioned as an intention reference; the AI implements against it and the tests verify the chosen behaviors."
         },
         {
           "@type": "DefinedTerm",
@@ -409,7 +409,7 @@
   <dl class="ed-facts">
     <div class="ed-fact ed-fact--wide"><dt>In a sentence</dt><dd>The mature Vibe Coding is not prompts chaos: it is structured and persistent intention. The developer ceases to be code executioner and becomes the cognitive orchestrator, who directs the agent with a versioned specification.</dd></div>
     <div class="ed-fact"><dt>Format</dt><dd>Presentation</dd></div>
-    <div class="ed-fact"><dt>Depth</dt><dd>In-depth reading · ~5 min for central idea · ~34 min complete</dd></div>
+    <div class="ed-fact"><dt>Depth</dt><dd>In-depth reading · ~5 min for central idea · ~35 min complete</dd></div>
   </dl>
   <nav class="ed-routes" aria-labelledby="ed-routes-label">
     <p class="ed-label" id="ed-routes-label">What you'll find</p>
@@ -924,13 +924,13 @@ who best articulates intention, gets better results. It's not magic. It's applie
             </div>
             <p class="ep04-pilar-card__body">
               Communicate as a senior professional guiding a highly capable beginner.
-No ambiguity, no misunderstanding. The AI will interpret exactly what you
-wrote — not what you meant. If the instruction is vague, the result will be vague.
+No ambiguity, no misunderstanding. The AI works from what you
+He wrote and filled out the rest by inference, which could be wrong. If the instruction is vague, the result will be vague.
             </p>
             <p class="ep04-pilar-card__explanation">
               Clarity is not verbosity — it is precision. Every word in instruction must carry
 intention. Remove anything ambiguous; add everything necessary to
-eliminate incorrect interpretations.
+reduce incorrect interpretations.
             </p>
             <div class="ep04-pilar-card__example" aria-label="Example of instruction with and without clarity">
               <p class="ep04-example__label">Not clear.</p>
@@ -1968,7 +1968,7 @@ iteration that works for a recurring pattern of work.
               <div class="ep06-playbook-card__dados">
                 <span><strong>Background:</strong> ~2–3 thousand tokens</span>
                 <span><strong>Time:</strong> ~15–20 min of iteration</span>
-                <span><strong>Result:</strong> Proven quality PR, no surprises in the merge.</span>
+                <span><strong>Result:</strong> PR reviewed and tested, with fewer surprises in the merge.</span>
               </div>
             </article>
 
@@ -2387,7 +2387,7 @@ Timeout, retry, fallback — complex orchestration.
 
         <header class="ep07-mentoria__header">
           <span class="devin-eyebrow">HANDS-ON · SDD</span>
-          <h2 class="devin-title-lg">Spec-Driven Development: the specification as a source of truth.</h2>
+          <h2 class="devin-title-lg">Spec-Driven Development: specification as intent anchor.</h2>
           <p class="devin-body-text ep07-mentoria__subtitulo">
             Instead of the agent guessing, he reads. Instead of improvising, he follows a score.
 That's what separates <em>Vibe Coding</em> of <em>Intent Engineering</em>: the developer
@@ -2447,7 +2447,7 @@ Coverage reached 92%. PR draft created automatically.
             </p>
             <p class="ep07-card__insight">
               <strong>With SDD — Spec Versioned</strong> agent reads document
-structured before any execution. The task is reproducible,
+structured before any execution. The task is recorded,
 auditable and reviewed by the entire team.
             </p>
           </article>
@@ -2456,17 +2456,17 @@ auditable and reviewed by the entire team.
         <!-- Momento 3: Generalização -->
         <div class="ep07-mentoria__momento ep07-mentoria__momento--sintese">
           <article class="ep07-mentoria__card ep07-mentoria__card--sintese ep07-mentoria__card--wide"
-            aria-label="Universalizable Lesson">
-            <h3 class="ep07-card__label">Universalizable Lesson</h3>
+            aria-label="Lesson Transferred">
+            <h3 class="ep07-card__label">Lesson Transferred</h3>
             <p class="ep07-card__body">
               Always specify the goal. Always include restrictions. Always provide examples
-the expected result. It goes for any tool, any language,
-any context.
+the expected result. It goes for most tools and languages.
             </p>
             <p class="ep07-card__insight">
-              <strong>EFFECT — Reproducibility:</strong> The same spec generates the same behavior
-at any session, with any member of the team. Bugs found in execution
-reveal flaws in the spec — not the agent.
+              <strong>EFFECT — Less variation:</strong> the same spec approaches the behavior
+between sessions and between people of the team, without making it identical — the agent is not
+deterministic. When a bug appears, the failure may be in spec, test or
+code; whoever has authority over the rule decides what to correct.
             </p>
             <p class="ep07-card__insight"
               style="margin-top: 0.75rem; border-top: 1px solid #334155; padding-top: 0.75rem;">
@@ -2597,7 +2597,7 @@ Documentation kept alive because integrated into the workflow.
           <span class="devin-eyebrow">HANDS-ON · FLUXO</span>
           <h2 class="devin-title-lg">Four steps from Spec to Apex Test coming through.</h2>
           <p class="devin-body-text">
-            Devin reads the spec. Devin executes Salesforce CLI. Devin validates. You review.
+            Devin reads the spec. Devin executes Salesforce CLI. Devin runs the tests. You review and decide.
           </p>
         </header>
 
@@ -2635,7 +2635,7 @@ developer needs to list the files manually.
               <p class="ep08-passo__desc">
                 Agent locates recovered files, applies described business rule
 in the spec and updates the corresponding tests. Each modification is guided by
-criteria for acceptance — not by free interpretation.
+criteria of acceptance, which reduces — without eliminating — free interpretation.
               </p>
               <pre class="ep08-code-inline">edit force-app/main/default/classes/OrderService.cls
 edit force-app/main/default/classes/OrderServiceTest.cls</pre>
@@ -3566,10 +3566,10 @@ on Salesforce: Quick Start with Flosum</a>
   <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">In short</p>
     <h2 class="aeo-tldr__title">What is Vibe Coding with Devin</h2>
-    <p class="aeo-tldr__lede">O <strong>Vibe Coding</strong> Mature is not prompt chaos: it is <strong>structured and persistent intention</strong>. The human rises from executioner to <strong>Cognitive Orchestrator</strong> — directs the machine's intelligence with clear intent, like an executive chef who ensures that each dish comes out right without cooking them all.</p>
+    <p class="aeo-tldr__lede">O <strong>Vibe Coding</strong> Mature is not prompt chaos: it is <strong>structured and persistent intention</strong>. The human rises from executioner to <strong>Cognitive Orchestrator</strong> — directs the machine's intelligence with clear intent, like an executive chef who answers for each dish without cooking them all.</p>
     <ul class="aeo-tldr__points">
-      <li><strong>Spec-Driven Development (SDD)</strong> — the versioned specification is the source of truth; the AI implements against it.</li>
-      <li><strong>BDD as target</strong> — Given/When/Then prove that the intention has been fulfilled.</li>
+      <li><strong>Spec-Driven Development (SDD)</strong> — the versioned specification is the reference of the intention: the AI implements against it, and differences between spec, tests and code are decided by people.</li>
+      <li><strong>BDD as verification</strong> — Given/When/Then check the chosen behaviors; do not prove alone that the intention has been fulfilled.</li>
       <li><strong>Arsenal Skills · Playbooks · Knowledge</strong> — organizational knowledge that accumulates and re-uses itself in Git.</li>
       <li><strong>A2UI</strong> — the agent issues interface intent; rendering is governed and deterministic.</li>
     </ul>
@@ -3584,7 +3584,7 @@ on Salesforce: Quick Start with Flosum</a>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is Spec-Driven Development (SDD)?</summary>
-      <div class="aeo-faq__a"><p>In SDD the specification is the source of truth: what is written and why, and the AI implements against the spec with tests (BDD) as objective target. When the intention lives in a disposable prompt it gets lost; when it lives in a spec in the repository, it scales and is auditable.</p></div>
+      <div class="aeo-faq__a"><p>In SDD the versioned specification is the reference of intention: write what and why, and the AI implements against the spec, with tests (BDD) to verify. Spec is not infallible: when spec, tests and code differ, a person with authority decides what to correct. When the intention lives in a disposable prompt, it gets lost; in a spec version in the repository, it can be reviewed and audited.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is the Cognitive Orchestrator?</summary>

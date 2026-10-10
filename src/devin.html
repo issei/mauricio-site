@@ -59,7 +59,7 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Vibe Coding com Devin — De Executor a Orquestrador Cognitivo" />
 <meta property="article:published_time" content="2026-05-19T08:00:00-03:00" />
-<meta property="article:modified_time" content="2026-06-21T10:00:00-03:00" />
+<meta property="article:modified_time" content="2026-10-10T10:00:00-03:00" />
 <meta property="article:author" content="Maurício Yokoyama Issei" />
 <meta property="article:section" content="Agent-Driven Development" />
 <meta property="article:tag" content="Vibe Coding" />
@@ -110,7 +110,7 @@
       },
       "inLanguage": "pt-BR",
       "datePublished": "2026-05-19",
-      "dateModified": "2026-06-21",
+      "dateModified": "2026-10-10",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-devin.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/devin#breadcrumb"
@@ -143,7 +143,7 @@
         "@id": "https://mauricio.issei.com.br/#author"
       },
       "datePublished": "2026-05-19",
-      "dateModified": "2026-06-21",
+      "dateModified": "2026-10-10",
       "inLanguage": "pt-BR",
       "image": "https://mauricio.issei.com.br/og-devin.png",
       "isAccessibleForFree": true,
@@ -215,7 +215,7 @@
           "name": "O que é Spec-Driven Development (SDD)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No SDD a especificação é a fonte da verdade: escreve-se o quê e o porquê, e a IA implementa contra a spec com testes (BDD) como alvo objetivo. Quando a intenção vive num prompt descartável ela se perde; quando vive numa spec no repositório, ela escala e é auditável."
+            "text": "No SDD a especificação versionada é a referência da intenção: escreve-se o quê e o porquê, e a IA implementa contra a spec, com testes (BDD) para verificar. A spec não é infalível: quando spec, testes e código divergem, uma pessoa com autoridade decide o que corrigir. Quando a intenção vive num prompt descartável, ela se perde; numa spec versionada no repositório, pode ser revisada e auditada."
           }
         },
         {
@@ -260,7 +260,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/devin#g-sdd",
           "name": "SDD (Spec-Driven Development)",
-          "description": "A especificação como fonte da verdade; a IA implementa contra a spec, com testes como alvo."
+          "description": "A especificação versionada como referência da intenção; a IA implementa contra ela e os testes verificam os comportamentos escolhidos."
         },
         {
           "@type": "DefinedTerm",
@@ -404,7 +404,7 @@
   <dl class="ed-facts">
     <div class="ed-fact ed-fact--wide"><dt>Em uma frase</dt><dd>O Vibe Coding maduro não é caos de prompts: é intenção estruturada e persistente. O desenvolvedor deixa de ser executor de código e passa a orquestrador cognitivo, que dirige o agente com uma especificação versionada.</dd></div>
     <div class="ed-fact"><dt>Formato</dt><dd>Apresentação</dd></div>
-    <div class="ed-fact"><dt>Profundidade</dt><dd>Leitura aprofundada · ~5 min para a ideia central · ~34 min completo</dd></div>
+    <div class="ed-fact"><dt>Profundidade</dt><dd>Leitura aprofundada · ~5 min para a ideia central · ~35 min completo</dd></div>
   </dl>
   <nav class="ed-routes" aria-labelledby="ed-routes-label">
     <p class="ed-label" id="ed-routes-label">O que você vai encontrar</p>
@@ -919,13 +919,13 @@
             </div>
             <p class="ep04-pilar-card__body">
               Comunique como um profissional sênior orientando um iniciante altamente capaz.
-              Sem ambiguidade, sem subentendidos. A IA vai interpretar exatamente o que você
-              escreveu — não o que você quis dizer. Se a instrução for vaga, o resultado será vago.
+              Sem ambiguidade, sem subentendidos. A IA trabalha a partir do que você
+              escreveu e preenche o resto por inferência, que pode estar errada. Se a instrução for vaga, o resultado será vago.
             </p>
             <p class="ep04-pilar-card__explanation">
               Clareza não é verbosidade — é precisão. Cada palavra na instrução deve carregar
               intenção. Remova tudo que for ambíguo; adicione tudo que for necessário para
-              eliminar interpretações incorretas.
+              reduzir interpretações incorretas.
             </p>
             <div class="ep04-pilar-card__example" aria-label="Exemplo de instrução com e sem clareza">
               <p class="ep04-example__label">❌ Pouco claro</p>
@@ -1963,7 +1963,7 @@
               <div class="ep06-playbook-card__dados">
                 <span><strong>Contexto:</strong> ~2–3 mil tokens</span>
                 <span><strong>Tempo:</strong> ~15–20 min de iteração</span>
-                <span><strong>Resultado:</strong> PR de qualidade comprovada, sem surpresas no merge.</span>
+                <span><strong>Resultado:</strong> PR revisado e testado, com menos surpresas no merge.</span>
               </div>
             </article>
 
@@ -2382,7 +2382,7 @@
 
         <header class="ep07-mentoria__header">
           <span class="devin-eyebrow">HANDS-ON · SDD</span>
-          <h2 class="devin-title-lg">Spec-Driven Development: a especificação como fonte da verdade.</h2>
+          <h2 class="devin-title-lg">Spec-Driven Development: a especificação como âncora da intenção.</h2>
           <p class="devin-body-text ep07-mentoria__subtitulo">
             Em vez de o agente adivinhar, ele lê. Em vez de improvisar, ele segue uma partitura.
             Isso é o que separa <em>Vibe Coding</em> de <em>Engenharia de Intenção</em>: o desenvolvedor
@@ -2442,7 +2442,7 @@
             </p>
             <p class="ep07-card__insight">
               <strong>Com SDD — Spec Versionada</strong> o agente lê o documento
-              estruturado antes de qualquer execução. A tarefa é reproduzível,
+              estruturado antes de qualquer execução. A tarefa fica registrada,
               auditável e revisável pela equipe inteira.
             </p>
           </article>
@@ -2451,17 +2451,17 @@
         <!-- Momento 3: Generalização -->
         <div class="ep07-mentoria__momento ep07-mentoria__momento--sintese">
           <article class="ep07-mentoria__card ep07-mentoria__card--sintese ep07-mentoria__card--wide"
-            aria-label="Lição universalizável">
-            <h3 class="ep07-card__label">Lição universalizável</h3>
+            aria-label="Lição que se transfere">
+            <h3 class="ep07-card__label">Lição que se transfere</h3>
             <p class="ep07-card__body">
               Sempre especifique o objetivo. Sempre inclua restrições. Sempre forneça exemplos
-              do resultado esperado. Vale para qualquer ferramenta, qualquer linguagem,
-              qualquer contexto.
+              do resultado esperado. Vale para a maioria das ferramentas e linguagens.
             </p>
             <p class="ep07-card__insight">
-              <strong>EFEITO — Reprodutibilidade:</strong> A mesma spec gera o mesmo comportamento
-              em qualquer sessão, com qualquer membro do time. Bugs encontrados na execução
-              revelam falhas na spec — não no agente.
+              <strong>EFEITO — Menos variação:</strong> a mesma spec aproxima o comportamento
+              entre sessões e entre pessoas do time, sem torná-lo idêntico — o agente não é
+              determinístico. Quando um bug aparece, a falha pode estar na spec, no teste ou no
+              código; quem tem autoridade sobre a regra decide o que corrigir.
             </p>
             <p class="ep07-card__insight"
               style="margin-top: 0.75rem; border-top: 1px solid #334155; padding-top: 0.75rem;">
@@ -2592,7 +2592,7 @@
           <span class="devin-eyebrow">HANDS-ON · FLUXO</span>
           <h2 class="devin-title-lg">Quatro passos da Spec até o Apex Test passando.</h2>
           <p class="devin-body-text">
-            Devin lê a spec. Devin executa o Salesforce CLI. Devin valida. Você revisa.
+            Devin lê a spec. Devin executa o Salesforce CLI. Devin roda os testes. Você revisa e decide.
           </p>
         </header>
 
@@ -2630,7 +2630,7 @@
               <p class="ep08-passo__desc">
                 O agente localiza os arquivos recuperados, aplica a regra de negócio descrita
                 na spec e atualiza os testes correspondentes. Cada modificação é guiada pelos
-                critérios de aceite — não por interpretação livre.
+                critérios de aceite, o que reduz — sem eliminar — a interpretação livre.
               </p>
               <pre class="ep08-code-inline">edit force-app/main/default/classes/OrderService.cls
 edit force-app/main/default/classes/OrderServiceTest.cls</pre>
@@ -3561,10 +3561,10 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
   <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">Em síntese</p>
     <h2 class="aeo-tldr__title">O que é Vibe Coding com Devin</h2>
-    <p class="aeo-tldr__lede">O <strong>Vibe Coding</strong> maduro não é caos de prompts: é <strong>intenção estruturada e persistente</strong>. O humano sobe de executor a <strong>Orquestrador Cognitivo</strong> — dirige a inteligência da máquina com intenção clara, como um chef executivo que garante que cada prato saia certo sem cozinhar todos.</p>
+    <p class="aeo-tldr__lede">O <strong>Vibe Coding</strong> maduro não é caos de prompts: é <strong>intenção estruturada e persistente</strong>. O humano sobe de executor a <strong>Orquestrador Cognitivo</strong> — dirige a inteligência da máquina com intenção clara, como um chef executivo que responde por cada prato sem cozinhar todos.</p>
     <ul class="aeo-tldr__points">
-      <li><strong>Spec-Driven Development (SDD)</strong> — a especificação versionada é a fonte da verdade; a IA implementa contra ela.</li>
-      <li><strong>BDD como alvo</strong> — cenários Dado/Quando/Então provam que a intenção foi cumprida.</li>
+      <li><strong>Spec-Driven Development (SDD)</strong> — a especificação versionada é a referência da intenção: a IA implementa contra ela, e divergências entre spec, testes e código são decididas por pessoas.</li>
+      <li><strong>BDD como verificação</strong> — cenários Dado/Quando/Então verificam os comportamentos escolhidos; não provam, sozinhos, que a intenção foi cumprida.</li>
       <li><strong>Arsenal Skills · Playbooks · Knowledge</strong> — conhecimento organizacional que acumula e se reusa no Git.</li>
       <li><strong>A2UI</strong> — o agente emite intenção de interface; a renderização é governada e determinística.</li>
     </ul>
@@ -3579,7 +3579,7 @@ Esperando aprovação de PR no repositório     → Sleep (contador parado)</pre
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">O que é Spec-Driven Development (SDD)?</summary>
-      <div class="aeo-faq__a"><p>No SDD a especificação é a fonte da verdade: escreve-se o quê e o porquê, e a IA implementa contra a spec com testes (BDD) como alvo objetivo. Quando a intenção vive num prompt descartável ela se perde; quando vive numa spec no repositório, ela escala e é auditável.</p></div>
+      <div class="aeo-faq__a"><p>No SDD a especificação versionada é a referência da intenção: escreve-se o quê e o porquê, e a IA implementa contra a spec, com testes (BDD) para verificar. A spec não é infalível: quando spec, testes e código divergem, uma pessoa com autoridade decide o que corrigir. Quando a intenção vive num prompt descartável, ela se perde; numa spec versionada no repositório, pode ser revisada e auditada.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">O que é o Orquestrador Cognitivo?</summary>
