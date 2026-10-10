@@ -157,8 +157,8 @@ const RULER = {
   },
   5: {
     name: 'Governado / Intencional',
-    symptom: 'A especificação é a fonte da verdade; a inteligência organizacional acumula em Skills/Knowledge.',
-    next: 'Você fechou o ciclo. Mantenha a spec como fonte da verdade: ao evoluir, atualize a especificação antes do código — e ensine o método ao time.',
+    symptom: 'A especificação versionada é a âncora da intenção; a inteligência organizacional acumula em Skills/Knowledge.',
+    next: 'Você fechou o ciclo. Mantenha a spec como âncora da intenção: ao evoluir, atualize a especificação antes do código, decida as divergências entre spec, testes e código com registro — e ensine o método ao time.',
     href: '#maturidade',
     kpis: ['Cobertura de Specs Versionadas > 90%', 'Taxa de Reuso do Arsenal crescente (mês a mês)'],
   },

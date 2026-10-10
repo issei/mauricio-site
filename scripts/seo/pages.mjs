@@ -935,7 +935,7 @@ export const PAGES = [
     title: 'Arquitetura de IA auditável',
     headline: 'Complexidade de IA estruturada em decisões auditáveis',
     description: 'Governança de IA corporativa, arquitetura de software e sistemas de agentes: complexidade técnica traduzida em decisões que sua empresa pode auditar.',
-    datePublished: '2026-07-23', dateModified: '2026-07-23',
+    datePublished: '2026-07-23', dateModified: '2026-10-10',
     section: 'Arquitetura de IA',
     tags: ['Governança de IA', 'Arquitetura de Software', 'Sistemas de Agentes', 'GraphRAG', 'Spec-Driven Development'],
     keywords: ['governança de IA', 'arquitetura de IA auditável', 'GraphRAG', 'ontologias', 'Spec-Driven Development', 'DevOps Salesforce', 'auditabilidade', 'rastreabilidade', 'determinismo'],
@@ -958,7 +958,7 @@ export const PAGES = [
     faq: [
       { q: 'O que torna uma arquitetura de IA auditável?', a: 'A capacidade de reconstruir, para qualquer saída, a evidência que a sustentou: quais fontes foram consultadas, sob qual versão da especificação, com qual aprovação. Auditabilidade não é um relatório produzido depois — é o subproduto de um caminho único de decisão e entrega.' },
       { q: 'O que é GraphRAG e por que reduz alucinação?', a: 'É a recuperação de contexto a partir de um grafo de conhecimento com relações tipadas, em vez de apenas similaridade de texto. Como cada resposta carrega os nós percorridos, existe proveniência verificável; e como a ausência de dado é tratada como incerteza explícita (open-world), o sistema prefere não responder a inventar.' },
-      { q: 'O que é Spec-Driven Development na prática?', a: 'A especificação é a fonte da verdade e o alvo executável: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. Um critério só vale se puder falhar — "melhorar a performance" não é critério, "p95 abaixo de 400 ms" é.' },
+      { q: 'O que é Spec-Driven Development na prática?', a: 'A especificação é a referência da intenção e a base dos testes: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. A spec não é infalível — quando ela, os testes e o código divergem, alguém com autoridade decide o que corrigir. Um critério só vale se puder falhar — "melhorar a performance" não é critério, "p95 abaixo de 400 ms" é.' },
       { q: 'Quais princípios de governança são declarados?', a: 'Determinismo (mesma entrada, mesma saída, com o não-determinismo isolado e testável), auditabilidade (toda decisão guarda evidência reexecutável), rastreabilidade (do comportamento em produção até a linha da especificação que o exigiu) e reversibilidade (nenhuma mudança entra sem caminho de volta exercitado).' },
       { q: 'Por que a página tem duas perspectivas?', a: 'Porque a mesma arquitetura precisa ser defendida em dois vocabulários: risco, governança e retorno para a decisão executiva; ontologias, contratos e latência para a decisão de engenharia. Os pares de frase mantêm estrutura sintática e métricas idênticas — é a mesma verdade contada de dois jeitos, não duas afirmações diferentes.' },
     ],

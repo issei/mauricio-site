@@ -1,6 +1,6 @@
 # Arquitetura de IA auditável
 
-> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/apresentacao>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-07-23 · Atualizado: 2026-07-23.
+> Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/apresentacao>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-07-23 · Atualizado: 2026-10-10.
 
 ## Em síntese
 
@@ -31,7 +31,7 @@ A capacidade de reconstruir, para qualquer saída, a evidência que a sustentou:
 
 **O que é Spec-Driven Development na prática?**
 
-A especificação é a fonte da verdade e o alvo executável: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. Um critério só vale se puder falhar — "melhorar a performance" não é critério, "p95 abaixo de 400 ms" é.
+A especificação é a referência da intenção e a base dos testes: critérios de aceite viram testes, e qualquer mudança de comportamento passa primeiro pela spec. A spec não é infalível — quando ela, os testes e o código divergem, alguém com autoridade decide o que corrigir. Um critério só vale se puder falhar — "melhorar a performance" não é critério, "p95 abaixo de 400 ms" é.
 
 **Quais princípios de governança são declarados?**
 

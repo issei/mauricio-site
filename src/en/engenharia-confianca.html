@@ -43,7 +43,7 @@
   <meta property="og:image:alt"
     content="Trust Engineering — ISM v1.0 journey in four modules: Awakening, Mapping, Architecting and Orchestrating." />
   <meta property="article:published_time" content="2026-06-19T08:00:00-03:00" />
-  <meta property="article:modified_time" content="2026-06-21T10:00:00-03:00" />
+  <meta property="article:modified_time" content="2026-10-10T10:00:00-03:00" />
   <meta property="article:author" content="Maurício Yokoyama Issei" />
   <meta property="article:section" content="Engenharia de IA" />
   <meta property="article:tag" content="Intentional Systems Model" />
@@ -126,7 +126,7 @@
       },
       "inLanguage": "en-US",
       "datePublished": "2026-06-19",
-      "dateModified": "2026-06-21",
+      "dateModified": "2026-10-10",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-engenharia-confianca.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/en/engenharia-confianca#breadcrumb"
@@ -162,7 +162,7 @@
         "@id": "https://mauricio.issei.com.br/en/#author"
       },
       "datePublished": "2026-06-19",
-      "dateModified": "2026-06-21",
+      "dateModified": "2026-10-10",
       "version": "1.0",
       "inLanguage": "en-US",
       "image": "https://mauricio.issei.com.br/og-engenharia-confianca.png",
@@ -316,7 +316,6 @@
           "item": "https://mauricio.issei.com.br/en/"
         },
         {
-  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
           "@type": "ListItem",
           "position": 2,
           "name": "Catalog",
@@ -424,7 +423,7 @@
           "name": "What is Spec-Driven Development (SDD) and why does it scale the intention?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "In the Spec-Driven Development specification is the source of truth: instead of asking for 'do X' and twist, you write what and why, and the AI implements against this spec, with (BDD) tests as objective target. When the intention lives in an ephemeral prompt, it gets lost; when it lives in a versioned specification in the Git, it climbs. It is the central method of Module 3, which transforms the Executor into Cognitive Orchestrator."
+            "text": "In the Spec-Driven Development the versioned specification is the reference of intention: instead of asking for 'do X' and twisting, you write what and why, and the AI implements against this spec, with tests (BDD) to check. Spec is not infallible: when spec, tests and code differ, a person with authority decides what to correct. When the intention lives in an ephemeral prompt, it gets lost; when it lives in a versioned specification in the Git, it climbs. It is the central method of Module 3, which transforms the Executor into Cognitive Orchestrator."
           }
         },
         {
@@ -448,7 +447,7 @@
           "name": "How do I figure out the AI maturity level of my team or system?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The rule from Magic to Ruler has five stages: Magic (worked in the demo), Consciousness (recognizes the Silent Crash), Maped (implicit became explicit), Architected (contracts, determinism, MCP) and Ruled (spec is the source of truth). The page brings a guided self-assessment of five questions and an organizational readiness checklist to place your team and indicate the next concrete step."
+            "text": "The rule from Magic to Ruler has five stages: Magic (worked in the demo), Consciousness (recognizes the Silent Crash), Maped (implicit became explicit), Architected (contracts, determinism, MCP) and Ruled (spec is the anchor of intention). The page brings a guided self-assessment of five questions and an organizational readiness checklist to place your team and indicate the next concrete step."
           }
         }
       ]
@@ -559,7 +558,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/engenharia-confianca#g-sdd",
           "name": "SDD (Spec-Driven Development)",
-          "description": "The specification as source of truth; the AI implements against the spec, with testing as target."
+          "description": "The specification versioned as an intention reference; the AI implements against it and the tests verify the chosen behaviors."
         },
         {
           "@type": "DefinedTerm",
@@ -601,6 +600,7 @@
   ]
 }
 </script>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/engenharia-confianca" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/engenharia-confianca" />
@@ -1882,19 +1882,19 @@ It materializes. When that intention lives in an ephemeral prompt, it gets lost.
             <p>
               This is why the central method is the
               <button class="ec-term" data-term="sdd" type="button">Spec-Driven Development (SDD)</button>:
-the specification is the <strong>source of truth</strong>. Instead of asking for "do X" and cheering,
+the specification is the <strong>anchor of intention</strong>. Instead of asking for "do X" and cheering,
 The <em>What?</em> and <em>Why</em> — and the AI implements <em>against</em> This
 spec, with the tests
-(<button class="ec-term" data-term="bdd" type="button">BDD</button>) as objective target. O
+(<button class="ec-term" data-term="bdd" type="button">BDD</button>) to check behavior. O
 context comes out of the head and enters the repository, where the machine can read and follow.
             </p>
             <p>
-              The practical flow, validated in the Devin + Salesforce case study, has four steps:
+              The practical flow, reported by the author in the Devin + Salesforce case study, has four steps:
               <strong>Spec</strong> (SDD definition of desired behavior) → <strong>Retrieve</strong>
               (autonomous discovery of the relevant context) → <strong>Refactor</strong> (edited edition by
-spec) → <strong>Validate</strong> (Apex Automatic Tests that prove the intent was
-completed). Note how this closes the cycle of the journey: the spec is the As-Is/To-Be of Module 1
-made executable under the contracts of Module 2.
+spec) → <strong>Validate</strong> (Appex Automatic Tests that check the criteria for
+Accepted). Note how this closes the cycle of the journey: the spec records the As-Is/To-Be of Module 1,
+and the tests make part of it verifiable under the contracts of Module 2.
             </p>
             <p>
               Finally, the <strong>Organisational intelligence arsenal</strong>, which grows over time:
@@ -1943,11 +1943,11 @@ Input ruled from the next stage.
               <div class="ec-mermaid__graph" data-ec-mermaid-graph></div>
               <script type="text/plain" data-ec-mermaid-src>
 flowchart LR
-    SPEC[📜 SPEC<br/>definição SDD = fonte da verdade] --> RET[🔍 RETRIEVE<br/>descoberta autônoma do contexto]
+    SPEC[📜 SPEC<br/>definição SDD = âncora da intenção] --> RET[🔍 RETRIEVE<br/>descoberta autônoma do contexto]
     RET --> REF[✏️ REFATORAR<br/>edição guiada pela spec]
     REF --> VAL{✅ VALIDAR<br/>testes BDD / Apex Tests}
     VAL -- falha --> REF
-    VAL -- passa --> DONE[Comportamento provado = intenção cumprida]
+    VAL -- passa --> DONE[Critérios verificados]
     DONE -. lições .-> KN[(Knowledge<br/>ativo que cresce)]
     style SPEC fill:#1a2733,stroke:#007bff,color:#cfe8ff
     style VAL fill:#2a1a3a,stroke:#8a2be2,color:#e6d5ff
@@ -1955,9 +1955,10 @@ flowchart LR
               <details class="ec-mermaid__alt">
                 <summary>Text equivalent</summary>
                 <p>
-                  The SDD spec is the source of truth; from it the AI discovers the context (retrieve),
-Spec-guided refactor and validated with tests. If it fails, refactor; if it passes, the
-intention is fulfilled and the lessons feed organizational knowledge.
+                  The SDD spec is the anchor of intention; from it the AI discovers the context (retrieve),
+Spec-guided refactor and run the tests. If it fails, refactor; if it passes, the
+Checked criteria were met — which does not prove the whole intention — and the lessons
+They feed the organizational knowledge.
                 </p>
               </details>
             </figure>
@@ -2061,7 +2062,7 @@ the specification (BDD/Gherkin) is the non-negotiable intention: the IA implemen
             <h3 id="m3-kpi" class="ec-block__title">Orchestration KPIs</h3>
             <p class="ec-block__intro">
               Intention becomes active in the organization when it is measurable. These indicators show whether
-spec — and not ephemeral prompt — is the source of truth.
+the spec — and not the ephemeral prompt — is the reference of intention.
             </p>
             <div class="ec-tablewrap">
               <table class="ec-table">
@@ -2116,7 +2117,7 @@ spec — and not ephemeral prompt — is the source of truth.
 Will you reverse and reverse?"
             </p>
             <p class="ec-reflect__meta">
-              If spec is your source of truth and knowledge accumulates, you are governed.
+              If the spec is the versed reference of your intention and knowledge accumulates, you are governed.
               <a href="#maturidade" class="ec-reflect__jump">Maturity 4 → 5</a>
             </p>
           </div>
@@ -2159,7 +2160,7 @@ level — or do guided self-assessment.
               <button class="ec-ruler__step" role="tab" data-stage="5" aria-selected="false" aria-controls="ruler-panel">
                 <span class="ec-ruler__num">5</span>
                 <span class="ec-ruler__name">Ruled</span>
-                <span class="ec-ruler__sym">Spec is the source of truth.</span>
+                <span class="ec-ruler__sym">Spec is the anchor of intent.</span>
               </button>
             </div>
 
@@ -2323,9 +2324,11 @@ decide <em>how</em> render, extending the separation
             <details class="ec-faq__item">
               <summary class="ec-faq__q">What is Spec-Driven Development (SDD) and why does it scale the intention?</summary>
               <div class="ec-faq__a">
-                <p>No <a href="#g-sdd">Spec-Driven Development</a> the specification is the source of truth:
-Instead of asking "do X" and cheering, you write the <em>What?</em> and <em>Why</em>, and the AI
-implements against this spec, with tests (<a href="#g-bdd">BDD</a>) as objective target.
+                <p>No <a href="#g-sdd">Spec-Driven Development</a> the versioned specification is the
+reference of intention: instead of asking "do X" and twisting, the <em>What?</em> and
+                  <em>Why</em>, and the AI implements against this spec, with tests (<a href="#g-bdd">BDD</a>)
+to check. Spec is not infallible: when spec, tests and code differ, a person
+with authority decides what to fix.
 When intent lives in an ephemeral prompt, it gets lost; when it lives in a specification
 versed in Git, she climbs. It is the central method of Module 3, which transforms the Executor
 ed <a href="#g-orquestrador-cognitivo">Cognitive Orchestrator</a>.</p>
@@ -2362,8 +2365,8 @@ column is anchored in verifiable literature (see the
                 <p>The "Magic to the Ruler" rule has five stages: <strong>Magic</strong> (worked
 in the demo), <strong>Consciousness</strong> (recognize Silent Crash),
                   <strong>Mapped</strong> (implicit became explicit), <strong>Architected</strong>
-                  (contracts, determinism, MCP) and <strong>Ruled</strong> (spec is the source of
-Truth). The section <a href="#maturidade">Maturity</a> brings a guided self-assessment of
+                  (contracts, determinism, MCP) and <strong>Ruled</strong> (Spec is the anchor of
+Intention). The section <a href="#maturidade">Maturity</a> brings a guided self-assessment of
 five questions and an organizational readiness checklist to situate your team and
 indicate the next concrete step.</p>
               </div>
@@ -2615,7 +2618,7 @@ sustains. Every word dotted in the text brings you here.
             </div>
             <div class="ec-gloss__entry" id="g-sdd">
               <dt>SDD (Spec-Driven Development)</dt>
-              <dd>The specification as source of truth; the AI implements against the spec, with testing as target.</dd>
+              <dd>The specification versioned as an intention reference; the AI implements against it and the tests verify the chosen behaviors.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-orquestrador-cognitivo">
               <dt>Cognitive Orchestrator</dt>
