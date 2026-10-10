@@ -204,6 +204,17 @@ export const EDITORIAL = {
     summary: true,
   },
 
+  // ── Especificação conversacional (landing, 2026-10-10) ───────────────────
+  // O hero já é a tese e as portas de entrada fazem o roteamento, então a camada
+  // só informa formato, profundidade e o atalho para a síntese (wireframe §1).
+  'especificacao-conversacional': {
+    placement: 'section',
+    kind: 'Ensaio',
+    depth: 'Leitura aprofundada',
+    core: ['hero', 'definicao', 'autoridade', 'divergencia'],
+    summary: true,
+  },
+
   'formulacao-de-problemas': {
     // O hero já tem "Por onde você entra?". O que faltava era o veredito do
     // próprio autor, que só aparecia no 2º bloco e no fim (audit §2).

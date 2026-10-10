@@ -6,6 +6,7 @@
 > proposto no Anexo A, aguardando aprovação. A fase 2 (implementação) não começou.
 > **Revisão 3 (2026-10-10):** D-4 aplicado na `devin` (Anexo A, itens 1–14) e D-7 aplicado em
 > `engenharia-confianca` e `apresentacao`. A landing continua na fase 1.
+> **Revisão 4 (2026-10-10):** fase 2 implementada (§9). A pasta foi mantida como `Vibe-Spec-ing/` (D-6).
 > **Base:** os 7 documentos desta pasta (`…_Artigo (1).md` e `…_Artigo (2).md` são idênticos).
 > Eixo narrativo: `Especificacao_Conversacional_Artigo.md` (legado + governança). Rigor e limites:
 > `Pesquisa, Síntese e Especificação do Projeto Vibe Spec-ing.md`. Articulação com TDD:
@@ -702,10 +703,10 @@ spec-retrospectiva.
 | D-3 | Página-irmã com o estudo integral (mapa de evidências, protocolo completo, comparação com TDD) | pendente — recomendação: depois; landing + kit cobrem a primeira versão |
 | D-4 | "A especificação como fonte da verdade" na `devin` | **Aplicado (2026-10-10):** sem nota na landing; a `devin` foi ajustada na origem (Anexo A, itens 1–14), com a spec da página atualizada antes |
 | D-5 | Nó em `specs/ecosystem.nav.yaml`, pilar p2, com crosslinks | pendente — exige aprovação e bump de versão |
-| D-6 | Pasta: manter `Vibe-Spec-ing/` ou renomear para o slug | pendente — recomendação: renomear na fase 2 |
+| D-6 | Pasta: manter `Vibe-Spec-ing/` ou renomear para o slug | **Mantida** na fase 2: renomear mexeria em referências cruzadas de specs e em commits já abertos (PR #103) sem ganho de conteúdo. Decidir de novo se a pasta ganhar a página-irmã (D-3) |
 | D-7 | A mesma tese em outras páginas: `engenharia-confianca` (≈ 10 ocorrências, inclusive o nível "Governado" do modelo de maturidade e o texto do quiz em `src/js/engenharia-confianca.js`), `apresentacao` (FAQ), `salesforce-agentic-dev` e `salesforce-agentic-quickstart` | **Aplicado (2026-10-10) em `engenharia-confianca` e `apresentacao`**, incluindo o diagrama "Comportamento provado = intenção cumprida" → "Critérios verificados". Ainda com a tese: `salesforce-agentic-dev`, `salesforce-agentic-quickstart` e os guias `public/referencias/guia-agent-driven-development.md` e `guia-engenharia-agentes-ia.md` (1 ocorrência cada). Usos legítimos de "fonte da verdade" para dados e configuração (SSOT) ficam como estão |
 
-## 9. Fora desta entrega (fase 2)
+## 9. Fase 2 — implementada em 2026-10-10 (antes: "fora desta entrega")
 
 `src/especificacao-conversacional.html` + CSS `.ecs-`; redação do kit em `public/downloads/` (com
 a matriz de 4 colunas e as métricas do §10);
@@ -714,6 +715,14 @@ responde 200, axe sem serious/critical, 375 px sem rolagem horizontal) e a guard
 em `scripts/seo/pages.mjs` + `build-aeo.mjs` + `gen-og.mjs`; entrada na camada editorial; card em
 `catalogo.html`, `public/catalogo.md` e `public/llms.txt`; `npm run i18n:sync && npm run i18n:check`;
 `npm run gate`.
+
+**Estado:** feito. Arquivos: `src/especificacao-conversacional.{html,css}`, `public/downloads/kit-especificacao-conversacional.md`, `tests/especificacao-conversacional.{spec.js,copy.test.mjs}`, entrada em `scripts/seo/pages.mjs` e `scripts/editorial/editorial.data.mjs` (formato Ensaio, atalho para a síntese, sem rotas), `scripts/gen-hub-data.mjs` (aba "especificar"), card no pilar 02 de `catalogo.html`, `public/catalogo.md` e `public/llms.txt`, `public/og-especificacao-conversacional.png` e o gêmeo `/en/`.
+
+**Desvios do wireframe, para revisão do autor:**
+- **Extensão.** O texto visível mede ~23 min completos e ~9 min na ideia central (gerador editorial, 200 ppm), contra 12–14 min e ~4 min previstos. Os parágrafos "Base:" de cada seção e a lista de referências respondem por boa parte da diferença.
+- **Seção de continuações (`#comece`).** Os três cartões foram escritos à mão (com justificativa), não pelo bloco `EDITORIAL-NEXT`, para manter o texto do wireframe.
+- **`eco-nav`.** A página carrega `eco-nav.js`, mas continua fora do grafo até a decisão D-5.
+- **Links de volta** (outras páginas → esta) seguem para mudança separada, depois de D-5.
 
 ## 10. Insumo avaliado: `análise do design thinking.md` (revisão 2)
 
