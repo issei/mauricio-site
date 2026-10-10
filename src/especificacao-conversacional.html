@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Especificação Conversacional Estruturada | Maurício Issei</title>
+  <meta name="description"
+    content="Workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código." />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="./especificacao-conversacional.css" />
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="especificação conversacional estruturada, engenharia de requisitos com IA, elicitação de requisitos com LLM, vibe spec-ing, spec-driven development, matriz de autoridade, política de divergência, drift de especificação, testes de caracterização, TDD, modernização de sistemas legados" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/especificacao-conversacional" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/especificacao-conversacional.md" title="Especificação Conversacional Estruturada | Maurício Issei — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Especificação Conversacional Estruturada | Maurício Issei" />
+<meta property="og:description" content="Workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código." />
+<meta property="og:url" content="https://mauricio.issei.com.br/especificacao-conversacional" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-especificacao-conversacional.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Especificação Conversacional Estruturada | Maurício Issei" />
+<meta property="article:published_time" content="2026-10-10T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-10-10T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="Engenharia de Requisitos e Agentes de IA" />
+<meta property="article:tag" content="Especificação Conversacional" />
+<meta property="article:tag" content="Engenharia de Requisitos" />
+<meta property="article:tag" content="Agentes de IA" />
+<meta property="article:tag" content="Sistemas Legados" />
+<meta property="article:tag" content="Governança" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Especificação Conversacional Estruturada | Maurício Issei" />
+<meta name="twitter:description" content="Workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-especificacao-conversacional.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/especificacao-conversacional#webpage",
+      "url": "https://mauricio.issei.com.br/especificacao-conversacional",
+      "name": "Especificação Conversacional Estruturada | Maurício Issei",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-10-10",
+      "dateModified": "2026-10-10",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-especificacao-conversacional.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/especificacao-conversacional#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/especificacao-conversacional#article"
+      }
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://mauricio.issei.com.br/especificacao-conversacional#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/especificacao-conversacional#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/especificacao-conversacional#webpage"
+      },
+      "headline": "Especificação Conversacional Estruturada: IA na elicitação de requisitos sob autoridade humana",
+      "description": "Workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-10-10",
+      "dateModified": "2026-10-10",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-especificacao-conversacional.png",
+      "isAccessibleForFree": true,
+      "keywords": "especificação conversacional estruturada, engenharia de requisitos com IA, elicitação de requisitos com LLM, vibe spec-ing, spec-driven development, matriz de autoridade, política de divergência, drift de especificação, testes de caracterização, TDD, modernização de sistemas legados",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Engenharia de requisitos"
+        },
+        {
+          "@type": "Thing",
+          "name": "Elicitação de requisitos com LLM"
+        },
+        {
+          "@type": "Thing",
+          "name": "Spec-Driven Development"
+        },
+        {
+          "@type": "Thing",
+          "name": "Testes de caracterização"
+        },
+        {
+          "@type": "Thing",
+          "name": "Modernização de sistemas legados"
+        },
+        {
+          "@type": "Thing",
+          "name": "ISO/IEC/IEEE 29148",
+          "sameAs": "https://www.iso.org/standard/72089.html"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Líderes de Engenharia, Analistas de Requisitos, Arquitetos de Software, Líderes de Produto, Equipes que usam agentes de IA em sistemas legados"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/especificacao-conversacional#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Especificação Conversacional Estruturada"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/especificacao-conversacional#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é Especificação Conversacional Estruturada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É um workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema como requisitos e critérios verificáveis, mantendo explícitas as fontes, as incertezas, as decisões e a forma de verificação. É uma proposta em avaliação, não um método validado nem uma norma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a diferença para Vibe Spec-ing e para Spec-Driven Development?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vibe Spec-ing foi o nome anterior deste enquadramento; mudou porque \"vibe\" sugere o contrário do que a proposta exige (registro, autoridade e verificação). Spec-Driven Development é um rótulo ainda instável para práticas em que a especificação vem antes do código (spec-first, spec-anchored, spec-as-source). A Especificação Conversacional Estruturada é um workflow específico dentro desse espaço, com autoridade humana e política de divergência explícitas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A IA pode aprovar requisitos ou regras de negócio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não, por padrão. O modelo pode perguntar, resumir, propor cenários, apontar contradições e preparar mudanças, mas não recebe autoridade para decidir valor, risco, conformidade, aceitação ou verdade de domínio. A matriz de autoridade atribui cada decisão a pessoas designadas; ela é uma política de governança proposta, a ajustar a cada organização."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Isso substitui o TDD ou os testes de aceitação?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Atuam em níveis diferentes: a especificação define qual problema, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo, por isso o resultado esperado é definido ou validado por pessoas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Serve para sistemas legados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A proposta foi pensada para esse caso: testes de caracterização registram o que o legado faz hoje, e a decisão de preservar, corrigir, substituir ou descontinuar cada regra cabe a quem tem autoridade de negócio. O risco declarado é a pós-racionalização: dar coerência ao que foi acidental ao reconstruir a intenção a partir do código."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Há evidência de que funciona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para componentes isolados, parcial: estudos mostram capacidade parcial de LLMs em elicitação, especificação e detecção de ambiguidade, em tarefas controladas. Para o workflow completo, não foi localizado estudo controlado ou longitudinal frente a uma linha de base alinhada à ISO/IEC/IEEE 29148 e ao SWEBOK. A página traz um protocolo de avaliação para testar no próprio contexto."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/especificacao-conversacional#glossario",
+      "name": "Glossário — Especificação Conversacional Estruturada | Maurício Issei",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-especificacao-conversacional-estruturada",
+          "name": "Especificação Conversacional Estruturada",
+          "description": "Workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-oraculo",
+          "name": "Oráculo de teste",
+          "description": "Fonte do resultado esperado com que um teste compara o comportamento observado."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-teste-de-caracterizacao",
+          "name": "Teste de caracterização",
+          "description": "Teste que registra o que um sistema existente faz hoje, inclusive defeitos e regras obsoletas, sem julgar se está certo."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-divergencia",
+          "name": "Divergência (drift)",
+          "description": "Situação em que artefatos que deveriam dizer a mesma coisa (especificação, testes, código, produção) passam a dizer coisas diferentes."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-matriz-de-autoridade",
+          "name": "Matriz de autoridade",
+          "description": "Política de governança proposta que separa quem decide cada tipo de decisão do que a IA pode fazer em cada uma."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-proveniencia",
+          "name": "Proveniência",
+          "description": "Registro de origem de uma afirmação ou decisão: fonte, autor, data e justificativa."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-spec-first",
+          "name": "Spec-first",
+          "description": "Modo em que a especificação é elaborada antes do código; o risco é congelar cedo uma interpretação do modelo."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-spec-retrospectiva",
+          "name": "Spec-retrospectiva",
+          "description": "Modo em que a intenção é reconstruída a partir de código, logs e incidentes; o risco é dar coerência ao que foi acidental."
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="ecs-body">
+  <a href="#conteudo" class="ecs-skip">Pular para o conteúdo</a>
+
+  <header class="ecs-nav" aria-label="Navegação da página">
+    <div class="ecs-nav__inner">
+      <a href="#hero" class="ecs-nav__brand">
+        <span class="ecs-nav__dot" aria-hidden="true"></span>
+        Especificação Conversacional
+      </a>
+      <nav class="ecs-nav__trail" aria-label="Seções da página">
+        <a href="#problema">Problema</a>
+        <a href="#causa">Causa</a>
+        <a href="#definicao">Definição</a>
+        <a href="#protocolo">Protocolo</a>
+        <a href="#autoridade">Autoridade</a>
+        <a href="#divergencia">Divergência</a>
+        <a href="#tdd">TDD</a>
+        <a href="#limites">Limites</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ================================ HERO ================================ -->
+    <section id="hero" class="ecs-section ecs-hero" aria-labelledby="hero-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Engenharia de requisitos · agentes de IA · sistemas legados</p>
+        <h1 id="hero-titulo" class="ecs-hero__title">
+          Especificação <span class="ecs-grad">Conversacional</span> Estruturada
+        </h1>
+        <p class="ecs-hero__lead">
+          Um workflow proposto para usar modelos de linguagem (LLMs, os sistemas de IA que geram
+          texto) na descoberta e no registro de requisitos, com decisões tomadas por pessoas com
+          autoridade e divergências rastreáveis entre documentação, testes e código.
+        </p>
+        <p class="ecs-aviso">
+          <span class="ecs-selo ecs-selo--proposta">Proposta</span>
+          <strong>Enquadramento em desenvolvimento.</strong> O workflow completo ainda não foi
+          comparado a uma linha de base; os componentes têm evidência parcial.
+        </p>
+        <p class="ecs-byline">
+          Por <a href="./curriculo.html">Maurício Yokoyama Issei</a> ·
+          <time datetime="2026-10-10">10 de outubro de 2026</time>
+        </p>
+
+        <div class="ecs-cta">
+          <a href="#protocolo" class="ecs-btn ecs-btn--primary">Ver as cinco práticas</a>
+          <a href="/downloads/kit-especificacao-conversacional.md" class="ecs-btn ecs-btn--ghost" download
+            data-ecs-cta="kit-hero">Baixar o kit de artefatos (.md)</a>
+        </div>
+
+        <figure class="ecs-figure" aria-labelledby="v1-cap">
+          <p class="ecs-figure__label">Figura 1 · O conflito que atravessa a página <span class="ecs-selo ecs-selo--cenario">Cenário ilustrativo</span></p>
+          <svg viewBox="0 0 520 340" role="img"
+            aria-label="Triângulo com três nós ligados entre si: documentação, teste de caracterização e código novo. No centro, a pergunta: quem decide?">
+            <line x1="260" y1="86" x2="123" y2="236" class="ecs-svg-edge" />
+            <line x1="260" y1="86" x2="397" y2="236" class="ecs-svg-edge" />
+            <line x1="238" y1="282" x2="282" y2="282" class="ecs-svg-edge" />
+            <rect x="150" y="8" width="220" height="78" rx="12" class="ecs-svg-node" />
+            <text x="260" y="34" text-anchor="middle" class="ecs-svg-t">Documentação</text>
+            <text x="260" y="54" text-anchor="middle" class="ecs-svg-s">“acima do limite,</text>
+            <text x="260" y="72" text-anchor="middle" class="ecs-svg-s">exige aprovação”</text>
+            <rect x="8" y="236" width="230" height="86" rx="12" class="ecs-svg-node" />
+            <text x="123" y="262" text-anchor="middle" class="ecs-svg-t">Teste de caracterização</text>
+            <text x="123" y="284" text-anchor="middle" class="ecs-svg-s">“o legado aprova</text>
+            <text x="123" y="302" text-anchor="middle" class="ecs-svg-s">direto”</text>
+            <rect x="282" y="236" width="230" height="86" rx="12" class="ecs-svg-node" />
+            <text x="397" y="262" text-anchor="middle" class="ecs-svg-t">Código novo</text>
+            <text x="397" y="284" text-anchor="middle" class="ecs-svg-s">“qual dos dois</text>
+            <text x="397" y="302" text-anchor="middle" class="ecs-svg-s">seguir?”</text>
+            <ellipse cx="260" cy="168" rx="62" ry="30" class="ecs-svg-node" />
+            <text x="260" y="174" text-anchor="middle" class="ecs-svg-c">Quem decide?</text>
+          </svg>
+          <figcaption id="v1-cap">
+            Documentação, testes e código podem dizer coisas diferentes sobre a mesma regra. Um
+            <strong>teste de caracterização</strong> é um teste que registra o que o sistema antigo
+            faz hoje, sem julgar se está certo. A figura volta resolvida em
+            <a href="#divergencia">Nenhum artefato, sozinho, preserva a intenção</a>.
+          </figcaption>
+        </figure>
+
+        <p class="ecs-eyebrow" style="margin-top:2.5rem">Por onde você entra?</p>
+        <div class="ecs-grid ecs-grid--2">
+          <a href="#causa" class="ecs-card">
+            <span class="ecs-card__q">“Vamos modernizar um sistema antigo e ninguém sabe quais regras ainda valem.”</span>
+            <p>Um pedido de modernização mistura sintomas, necessidades, objetivos e uma solução já escolhida.</p>
+            <span class="ecs-card__go">Ir à causa →</span>
+          </a>
+          <a href="#autoridade" class="ecs-card">
+            <span class="ecs-card__q">“O agente gera código mais rápido do que conseguimos revisar.”</span>
+            <p>Quem decide o quê, e o que a IA pode fazer em cada decisão.</p>
+            <span class="ecs-card__go">Ver a matriz de autoridade →</span>
+          </a>
+          <a href="#divergencia" class="ecs-card">
+            <span class="ecs-card__q">“A documentação diz uma coisa, os testes outra e o código uma terceira.”</span>
+            <p>Uma política para detectar, classificar e decidir cada divergência, com registro.</p>
+            <span class="ecs-card__go">Ver a política de divergência →</span>
+          </a>
+          <a href="#tdd" class="ecs-card">
+            <span class="ecs-card__q">“Já praticamos TDD (escrever o teste antes do código). Isso não basta?”</span>
+            <p>O TDD verifica; a especificação decide o que verificar.</p>
+            <span class="ecs-card__go">Ver a diferença →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL:START — gerado por scripts/gen-editorial.mjs (NÃO editar à mão; fonte: scripts/editorial/editorial.data.mjs) -->
+<div class="ed ed--section" data-editorial="especificacao-conversacional">
+  <dl class="ed-facts">
+    <div class="ed-fact"><dt>Formato</dt><dd>Ensaio</dd></div>
+    <div class="ed-fact"><dt>Profundidade</dt><dd>Leitura aprofundada · ~9 min para a ideia central · ~23 min completo</dd></div>
+  </dl>
+  <p class="ed-shortcut">Prefere o essencial antes? <a href="#em-sintese">Ler a síntese (~1 min)</a></p>
+</div>
+<!-- EDITORIAL:END -->
+
+    <!-- ============================== PROBLEMA ============================== -->
+    <section id="problema" class="ecs-section" aria-labelledby="problema-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">O problema <span class="ecs-selo ecs-selo--sintese">Síntese</span></p>
+        <h2 id="problema-titulo" class="ecs-title">Gerar código mais rápido não preserva, por si só, a intenção de negócio</h2>
+        <div class="ecs-prose">
+          <p>
+            Agentes de IA interpretam instruções, consultam arquivos, propõem alterações, geram
+            código e executam testes. Isso reduz o esforço de implementar, mas não garante que a
+            solução corresponda ao problema que deveria resolver.
+          </p>
+          <p>
+            Quando o agente encadeia tarefas, uma interpretação incompleta atravessa vários
+            artefatos antes de alguém percebê-la. O risco não é só o código errado: é uma
+            interpretação ainda não validada virar uma implementação aparentemente consistente.
+            Em sistemas legados (sistemas antigos que seguem em produção), o conhecimento de
+            negócio está espalhado entre código, integrações, documentação desatualizada e a
+            memória de poucas pessoas.
+          </p>
+          <p>
+            Nem o ganho de velocidade é consenso. Em uma tarefa controlada, desenvolvedores com IA
+            terminaram mais rápido (Peng et al., 2023). Em um estudo com 16 desenvolvedores
+            experientes e 246 tarefas reais, o uso de IA aumentou o tempo em 19% (Becker et al.,
+            2025, preprint, ainda sem revisão por pares). A página não discute quanto mais rápido
+            se chega, e sim o que se perde no caminho.
+          </p>
+        </div>
+
+        <figure class="ecs-figure" aria-labelledby="v2-cap">
+          <p class="ecs-figure__label">Figura 2 · A cadeia de transformações</p>
+          <ol class="ecs-chain">
+            <li>conversa</li>
+            <li>resumo</li>
+            <li>requisito</li>
+            <li>design</li>
+            <li>tarefa</li>
+            <li>código</li>
+            <li>teste</li>
+            <li>produto</li>
+          </ol>
+          <figcaption id="v2-cap">Em cada passagem entre duas etapas, três coisas podem acontecer:</figcaption>
+          <ul class="ecs-losses">
+            <li><strong>Perder contexto:</strong> o resumo descarta o que parecia detalhe.</li>
+            <li><strong>Introduzir inferência:</strong> o modelo preenche uma lacuna com algo plausível.</li>
+            <li><strong>Criar contradição:</strong> dois artefatos passam a dizer coisas diferentes.</li>
+          </ul>
+        </figure>
+
+        <p class="ecs-small" style="margin-top:1.2rem">
+          A mesma falha, vista quando chega à produção num sistema que parece funcionar:
+          <a href="./engenharia-confianca.html#modulo-0">O Crash Silencioso</a>.
+          Base: Hou et al. (2024), revisão sistemática do uso de LLMs em engenharia de software,
+          que atesta o uso amplo, não a eficácia deste workflow.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================ CAUSA ================================ -->
+    <section id="causa" class="ecs-section" aria-labelledby="causa-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">A causa <span class="ecs-selo ecs-selo--cenario">Cenário ilustrativo</span></p>
+        <h2 id="causa-titulo" class="ecs-title">Um pedido de modernização mistura quatro coisas diferentes</h2>
+        <div class="ecs-prose">
+          <p>
+            O cenário, construído para esta página, é a modernização de um sistema comercial com
+            mais de 15 anos: propostas, condições comerciais, aprovações, contratos e integração
+            com o faturamento. As mudanças levam semanas, e poucas pessoas conhecem todas as
+            regras. A diretoria pede:
+          </p>
+        </div>
+        <blockquote class="ecs-quote">
+          “Precisamos modernizar esse sistema, migrando para
+          <mark class="m-sol">uma arquitetura mais atual</mark><sup>(solução pressuposta)</sup>,
+          <mark class="m-obj">sem interromper a operação</mark><sup>(objetivo)</sup> e
+          <mark class="m-obj">sem perder as regras de negócio existentes</mark><sup>(objetivo)</sup>.”
+        </blockquote>
+        <div class="ecs-prose">
+          <p>
+            A frase expressa uma intenção legítima, mas não diz o que preservar, o que mudar nem
+            como medir o sucesso. Ela junta sintomas, necessidades a investigar, objetivos e uma
+            solução já escolhida, e cada categoria pede um tratamento diferente.
+          </p>
+        </div>
+
+        <div class="ecs-scroll" tabindex="0" role="region" aria-label="Tabela: as quatro categorias do pedido">
+          <table class="ecs-table ecs-table--stack">
+            <caption>Figura 3 · O pedido anotado. A frase literal só contém objetivos e uma solução; a necessidade não aparece nela.</caption>
+            <thead>
+              <tr><th scope="col">Categoria</th><th scope="col">No cenário</th><th scope="col">Tratamento</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Sintomas</th><td data-label="No cenário">mudanças demoradas, incidentes recorrentes, dependência de especialistas</td><td data-label="Tratamento">investigar a causa</td></tr>
+              <tr><th scope="row">Necessidades a investigar</th><td data-label="No cenário">reduzir custo e risco das mudanças; depender menos de conhecimento tácito (o que as pessoas sabem e nunca escreveram)</td><td data-label="Tratamento">confirmar com evidência</td></tr>
+              <tr><th scope="row">Objetivos declarados</th><td data-label="No cenário">“sem interromper a operação”, “sem perder as regras”</td><td data-label="Tratamento">tornar verificáveis (quais regras?)</td></tr>
+              <tr><th scope="row">Solução pressuposta</th><td data-label="No cenário">“arquitetura mais atual”</td><td data-label="Tratamento">avaliar como alternativa, não como requisito</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ecs-prose" style="margin-top:1.6rem">
+          <p>
+            Há uma segunda causa, decisiva em legado: <strong>o comportamento atual do sistema não
+            é necessariamente o comportamento desejado.</strong> Uma regra pode ser preservada,
+            corrigida, substituída ou descontinuada, e a decisão depende de evidência e de
+            autoridade de negócio, não do que o código executa hoje.
+          </p>
+          <p>
+            O pedido vira, então, uma sequência de decisões. Em cada etapa há um ponto em que a IA
+            ajuda e outro em que ela pode distorcer, mapeados em <a href="#etapas">Etapa por etapa</a>.
+          </p>
+        </div>
+        <p class="ecs-small">
+          Ver também: <a href="./formulacao-de-problemas.html#tese">formular o problema antes de comprometer a solução</a>
+          e <a href="./proposta-engenharia-reversa.html#inventario">o mesmo levantamento do estado atual (As-Is), aplicado a legado Salesforce</a>.
+          Base: ISO/IEC/IEEE 29148:2018 (elicitar, analisar, especificar, validar e gerenciar requisitos; verificação
+          e validação são coisas diferentes); NASA <em>Systems Engineering Handbook</em> (necessidades
+          respondem ao problema sem prescrever solução); Ferrari et al. (2016) e Burnay et al. (2014)
+          (ambiguidades revelam conhecimento tácito; partes interessadas omitem tópicos que ninguém
+          pergunta), razões para conversar com operação, suporte e integrações, e não só ler o código.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== DEFINIÇÃO ============================== -->
+    <section id="definicao" class="ecs-section" aria-labelledby="definicao-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">A solução proposta <span class="ecs-selo ecs-selo--proposta">Proposta</span></p>
+        <h2 id="definicao-titulo" class="ecs-title">A IA amplia a investigação; pessoas com autoridade decidem</h2>
+
+        <p class="ecs-def">
+          Especificação Conversacional Estruturada é um workflow humano–IA, governado por
+          artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a
+          intenção de um sistema como requisitos e critérios verificáveis, mantendo explícitas as
+          fontes, as incertezas, as decisões e a forma de verificação.
+        </p>
+
+        <div class="ecs-prose">
+          <p>
+            O modelo pode perguntar, resumir, propor cenários, apontar contradições, recuperar
+            contexto e preparar mudanças. Por padrão, não recebe autoridade para decidir valor,
+            risco, conformidade, aceitação ou verdade de domínio. A posição é compatível com as
+            atividades de elicitação, análise, validação e gestão descritas na ISO/IEC/IEEE 29148
+            e no SWEBOK (o guia de conhecimento de engenharia de software da IEEE Computer
+            Society); a proposta explora como a IA pode apoiá-las, sem substituí-las.
+          </p>
+        </div>
+
+        <div class="ecs-scroll" tabindex="0" role="region" aria-label="Tabela: conversar com IA e especificação conversacional estruturada">
+          <table class="ecs-table">
+            <caption>Figura 4 · Conversar com IA × especificação conversacional estruturada (spec = especificação)</caption>
+            <thead>
+              <tr><th scope="col">Conversar com IA</th><th scope="col">Especificação conversacional estruturada</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Histórico livre, sem estado governado</td><td>Artefatos versionados, com ID, responsável e política de mudança</td></tr>
+              <tr><td>O objetivo muda sem registro</td><td>Problema, critério de sucesso, escopo e fora de escopo explícitos</td></tr>
+              <tr><td>A decisão fica implícita na resposta</td><td>Decisões, alternativas rejeitadas e perguntas abertas registradas</td></tr>
+              <tr><td>Fluência é o critério percebido</td><td>Critérios de aceitação e verificação auditáveis</td></tr>
+              <tr><td>O prompt pode ir direto ao código</td><td>Especificação → revisão → testes → implementação → validação</td></tr>
+              <tr><td>Divergência entre spec e código é invisível</td><td>Divergência detectada por links, testes e revisão</td></tr>
+              <tr><td>A IA pode parecer autoridade</td><td>A IA propõe; pessoas designadas decidem</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ecs-grid ecs-grid--2">
+          <div class="ecs-card">
+            <h3>Spec-first</h3>
+            <p><strong>Finalidade:</strong> alinhar a intenção antes do código.</p>
+            <p><strong>Risco:</strong> congelar cedo uma interpretação do modelo.</p>
+          </div>
+          <div class="ecs-card">
+            <h3>Spec-retrospectiva</h3>
+            <p><strong>Finalidade:</strong> reconstruir a intenção a partir de código, logs e incidentes.</p>
+            <p><strong>Risco:</strong> dar coerência ao que foi acidental.</p>
+          </div>
+        </div>
+        <p class="ecs-small">Em legado, os dois modos aparecem.</p>
+
+        <div class="ecs-objection">
+          <h3>A objeção mais forte: isso é engenharia de requisitos com outro nome?</h3>
+          <p>
+            Em boa parte, sim. A contribuição possível é de interface e de orquestração, e só
+            existe se o workflow especificar entradas, portões de revisão, tipos de artefato,
+            autoridade, proveniência (o registro de origem e de quem decidiu), política de
+            divergência e métricas. Conversar com a IA e sair com um arquivo Markdown não é isso.
+          </p>
+        </div>
+
+        <div class="ecs-cols">
+          <div>
+            <h3>O que não é</h3>
+            <ul>
+              <li>Método validado ou norma.</li>
+              <li>Substituto de engenharia de requisitos, arquitetura, segurança ou governança.</li>
+              <li>Validação de negócio por aprovação em chat.</li>
+              <li>Garantia de completude, de ausência de alucinação ou de fim da divergência entre artefatos.</li>
+              <li>TDD, BDD ou Example Mapping com outro nome.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Nota de terminologia</h3>
+            <p class="ecs-small">
+              Este enquadramento já foi chamado de <em>Vibe Spec-ing</em>. O nome mudou porque
+              “vibe” sugere o contrário do que a proposta exige: registro, autoridade e
+              verificação. Rótulos parecidos (<em>vibe specs</em>, <em>vibe speccing</em>) circulam
+              informalmente para entrevistas com IA antes do código ou para especificações geradas
+              de logs de agentes.
+            </p>
+          </div>
+        </div>
+
+        <p class="ecs-small" style="margin-top:1.2rem">
+          Prática relacionada: <a href="./devin.html">Vibe Coding com Devin</a>, a orquestração de
+          agentes que esta proposta complementa; e a
+          <a href="./engenharia-agentes-ia.html#governanca">governança agent-driven</a>.
+          Base: SWEBOK Guide v4.0a (área de Requisitos) e ISO/IEC/IEEE 29148 como referência
+          disciplinar; Böckeler/Thoughtworks (2025) sobre “spec-driven development” como rótulo
+          ainda instável (spec-first, spec-anchored, spec-as-source). O uso informal do rótulo
+          (marmelab, 2025; Bechtel; McGuinness) é citado como uso, não como evidência.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================ ETAPAS ================================ -->
+    <section id="etapas" class="ecs-section" aria-labelledby="etapas-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">O workflow inteiro <span class="ecs-selo ecs-selo--proposta">Proposta</span></p>
+        <h2 id="etapas-titulo" class="ecs-title">Etapa por etapa: o que a IA acelera e o que pode distorcer</h2>
+        <div class="ecs-prose">
+          <p>
+            Quem conhece Design Thinking reconhece quatro das cinco etapas. A quinta, especificar
+            e evoluir os artefatos, é o acréscimo da engenharia de requisitos. Em cada etapa o
+            ganho vem junto com um risco conhecido e um controle. É um ciclo, não uma sequência:
+            qualquer etapa volta à anterior quando surge evidência nova. O vocabulário do Design
+            Thinking serve de mapa; não é apresentado como prova de nada.
+          </p>
+        </div>
+
+        <div class="ecs-scroll" tabindex="0" role="region" aria-label="Tabela: as cinco etapas do workflow">
+          <table class="ecs-table ecs-table--stack">
+            <caption>Figura 5 · Mapa de etapas: ganho, risco e controle</caption>
+            <thead>
+              <tr><th scope="col">Etapa</th><th scope="col">Onde a IA ajuda</th><th scope="col">O que pode distorcer</th><th scope="col">Controle</th><th scope="col">Seção</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Descobrir</th>
+                <td data-label="Onde a IA ajuda">sugerir perguntas e apontar tópicos que ninguém mencionou</td>
+                <td data-label="O que pode distorcer">resumo que deforma relatos; personas sintéticas (usuários simulados por IA) podem ancorar estereótipos; ilusão de completude</td>
+                <td data-label="Controle">registrar a origem; conferir com a observação da operação e a inspeção do legado</td>
+                <td data-label="Seção"><a href="#protocolo">Protocolo</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Definir o problema</th>
+                <td data-label="Onde a IA ajuda">pode ajudar a separar sintoma, necessidade, objetivo e solução presumida</td>
+                <td data-label="O que pode distorcer">hipótese de resultado virar requisito; solução congelada cedo</td>
+                <td data-label="Controle">decisão humana antes de formalizar; validar o entendimento não é validar o resultado</td>
+                <td data-label="Seção"><a href="#causa">Causa</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Explorar exemplos</th>
+                <td data-label="Onde a IA ajuda">gerar casos normais, de limite e negativos</td>
+                <td data-label="O que pode distorcer">especificação fluente que esconde premissa falsa; conflito harmonizado em silêncio</td>
+                <td data-label="Controle">exemplos validados por quem conhece o domínio; conflito preservado, não resolvido pelo modelo</td>
+                <td data-label="Seção"><a href="#protocolo">Protocolo</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Especificar e evoluir</th>
+                <td data-label="Onde a IA ajuda">estruturar a especificação e propor links de rastreabilidade</td>
+                <td data-label="O que pode distorcer">drift (a especificação e o código se afastam sem que ninguém perceba); perda de quem decidiu, com que evidência e o que foi rejeitado</td>
+                <td data-label="Controle">política de divergência; proveniência; rastreabilidade (a ligação entre decisão, regra, teste e código); histórico que não apaga versões</td>
+                <td data-label="Seção"><a href="#divergencia">Divergência</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Testar e validar</th>
+                <td data-label="Onde a IA ajuda">traduzir critérios em testes e apoiar testes de caracterização</td>
+                <td data-label="O que pode distorcer">teste verde contra um oráculo (o resultado esperado) errado, escrito pela própria IA</td>
+                <td data-label="Controle">oráculo definido por pessoas; testes independentes</td>
+                <td data-label="Seção"><a href="#tdd">TDD</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PROTOCOLO ============================== -->
+    <section id="protocolo" class="ecs-section" aria-labelledby="protocolo-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">O protocolo <span class="ecs-selo ecs-selo--proposta">Proposta</span> <span class="ecs-selo ecs-selo--cenario">Cenário ilustrativo</span></p>
+        <h2 id="protocolo-titulo" class="ecs-title">Cinco práticas para que a saída da IA possa ser contestada</h2>
+        <div class="ecs-prose">
+          <p>
+            A contribuição do modelo só é útil quando suas saídas podem ser examinadas e
+            contestadas. Comece por um fluxo representativo, não pelo sistema inteiro. No cenário,
+            a aprovação de proposta com desconto excepcional.
+          </p>
+        </div>
+        <ol class="ecs-steps">
+          <li><strong>Registrar a origem de cada afirmação.</strong>
+            <p>Entrevista, documento, inspeção de código, observação operacional, inferência ou decisão formal. A conversa com o modelo não substitui observar a operação nem inspecionar o legado: as fontes se conferem umas às outras.</p></li>
+          <li><strong>Separar fatos, hipóteses e propostas.</strong>
+            <p>Uma resposta plausível do modelo não é evidência de que a regra existe.</p></li>
+          <li><strong>Manter as pendências visíveis.</strong>
+            <p>Incerteza relevante fica aberta, com responsável, até ser resolvida ou aceita como risco.</p></li>
+          <li><strong>Usar exemplos e contraexemplos.</strong>
+            <p>Situação normal, limite e exceção. No cenário: dentro do limite, aprovação automática; acima, pessoa autorizada e justificativa; dados incompletos, a proposta não avança; valor alterado após a aprovação, pode exigir nova avaliação. São hipóteses até a confirmação. O modelo sugere casos; não os promove a regra aprovada.</p></li>
+          <li><strong>Revisão proporcional ao risco.</strong>
+            <p>Decisões comerciais, regulatórias e de integração crítica passam por quem tem autoridade.</p></li>
+        </ol>
+        <div class="ecs-prose" style="margin-top:1.2rem">
+          <p>
+            Não é burocracia para cada frase: é conseguir distinguir o que se sabe, o que se supõe
+            e o que se decidiu. E validar o entendimento não é validar o resultado. A conversa
+            mostra se as pessoas entendem a regra do mesmo jeito, não que a modernização vai
+            reduzir incidentes.
+          </p>
+        </div>
+
+        <figure class="ecs-figure" aria-labelledby="v5-cap">
+          <p class="ecs-figure__label">Figura 6 · Registro de afirmação (cenário ilustrativo)</p>
+          <div class="ecs-code" tabindex="0" role="region" aria-label="Exemplo de registro de afirmação em YAML">
+<pre><code><span class="c"># Cenário ilustrativo — fluxo: aprovação de proposta com desconto excepcional</span>
+id: AF-012
+afirmacao: &gt;
+  Proposta com desconto acima do limite exige aprovação
+  de pessoa autorizada e registro da justificativa.
+status: hipotese                    <span class="c"># [2] fato | hipotese | proposta | decisao</span>
+origens:                            <span class="c"># [1]</span>
+  - entrevista: operação comercial
+  - inspecao_de_codigo: rotina de aprovação do legado
+  - documento: manual de procedimentos (desatualizado)
+limite_de_desconto: nao_conhecido   <span class="c"># [3] as fontes divergem</span>
+exemplos: [EX-01, EX-02, EX-03]     <span class="c"># [4] normal, limite, exceção</span>
+sugerido_pela_ia: [EX-03]           <span class="c"># [4] candidato; não é regra aprovada</span>
+risco: alto                         <span class="c"># [5] exige revisão de quem tem autoridade</span>
+decide: responsável pela política comercial
+pendencia: aberta</code></pre>
+          </div>
+          <figcaption id="v5-cap">Nenhum valor de regra é inventado: o limite aparece como <code>nao_conhecido</code>, que é o ponto da prática 3.</figcaption>
+          <ol class="ecs-note-list">
+            <li>[1] <code>origens</code>: de onde vem a afirmação.</li>
+            <li>[2] <code>status</code>: fato, hipótese, proposta ou decisão.</li>
+            <li>[3] <code>nao_conhecido</code>: a pendência fica visível.</li>
+            <li>[4] <code>exemplos</code> e <code>sugerido_pela_ia</code>: casos normais, de limite e de exceção; a sugestão não é regra.</li>
+            <li>[5] <code>risco</code> e <code>decide</code>: a revisão exigida e quem decide.</li>
+          </ol>
+        </figure>
+
+        <p class="ecs-small" style="margin-top:1.2rem">
+          Ver também: <a href="./engenharia-confianca.html#modulo-1">Revelar o Implícito para torná-lo Explícito</a>
+          (inventário do estado atual e separação entre fato, inferência e julgamento),
+          <a href="./formulacao-de-problemas.html#parada">quando parar de investigar</a> e
+          <a href="./knowledge-os-presentation.html#tipologia">conhecimento tipado e endereçável</a>.
+          Base: o perfil de IA generativa do NIST (AI 600-1) trata a confabulação (respostas
+          plausíveis e falsas) e a configuração humano–IA como riscos a gerenciar; o W3C PROV-DM
+          oferece um modelo para registrar proveniência (entidade, atividade, agente); Parasuraman
+          &amp; Manzey (2010) e Buçinca et al. (2021) sobre viés de automação, com funções de
+          forçamento cognitivo que reduziram a dependência excessiva da IA em experimento; Cucumber,
+          <em>Example Mapping</em> (regras, exemplos e perguntas); SWEBOK lista várias fontes de
+          requisitos (partes interessadas, regras de negócio, conhecimento do domínio, ambiente
+          operacional), base da triangulação na prática 1.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== AUTORIDADE ============================== -->
+    <section id="autoridade" class="ecs-section" aria-labelledby="autoridade-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Governança <span class="ecs-selo ecs-selo--proposta">Proposta</span></p>
+        <h2 id="autoridade-titulo" class="ecs-title">Quem decide o quê, e o que a IA pode fazer em cada decisão</h2>
+        <div class="ecs-prose">
+          <p>
+            A matriz separa autoridade de assistência. É uma política de governança proposta, a
+            ajustar à estrutura de responsabilidade de cada organização, e não uma exigência de
+            norma.
+          </p>
+          <p>
+            Quando o agente também executa ferramentas, altera arquivos ou aciona pipelines, os
+            controles passam a cobrir permissões, escopo de execução, revisão de mudanças e
+            condições de interrupção: gerar uma sugestão e executar uma ação são níveis diferentes
+            de autonomia. A linha do oráculo liga esta seção a <a href="#tdd">TDD</a>: a IA pode
+            escrever o código do teste, mas o resultado esperado vem de quem tem autoridade sobre
+            a regra.
+          </p>
+        </div>
+
+        <div class="ecs-scroll" tabindex="0" role="region" aria-label="Tabela: matriz de autoridade">
+          <table class="ecs-table ecs-table--stack">
+            <caption>Figura 7 · Matriz de autoridade (a versão com a coluna “revisão obrigatória” está no kit)</caption>
+            <thead>
+              <tr><th scope="col">Decisão</th><th scope="col">Autoridade primária</th><th scope="col">Contribuição possível da IA</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Valor e prioridade de negócio</th><td data-label="Autoridade primária">Produto e negócio</td><td data-label="Contribuição da IA">Comparar alternativas e impactos</td></tr>
+              <tr><th scope="row">Preservar ou alterar regras comerciais</th><td data-label="Autoridade primária">Responsáveis pelo domínio</td><td data-label="Contribuição da IA">Identificar ambiguidades e casos-limite</td></tr>
+              <tr><th scope="row">Critérios de aceitação</th><td data-label="Autoridade primária">Negócio e engenharia</td><td data-label="Contribuição da IA">Propor formulações e exemplos de teste</td></tr>
+              <tr><th scope="row">Arquitetura</th><td data-label="Autoridade primária">Engenharia responsável</td><td data-label="Contribuição da IA">Sugerir alternativas e trade-offs</td></tr>
+              <tr><th scope="row">Compatibilidade de integrações</th><td data-label="Autoridade primária">Engenharia e responsáveis pelas integrações</td><td data-label="Contribuição da IA">Mapear contratos e possíveis impactos</td></tr>
+              <tr><th scope="row">Aceitação de risco residual</th><td data-label="Autoridade primária">Responsáveis formalmente designados</td><td data-label="Contribuição da IA">Identificar cenários e apoiar a análise</td></tr>
+              <tr><th scope="row">Redação da especificação</th><td data-label="Autoridade primária">Equipe responsável, com revisão</td><td data-label="Contribuição da IA">Estruturar e reformular conteúdo</td></tr>
+              <tr><th scope="row">Oráculo de teste (o resultado esperado)</th><td data-label="Autoridade primária">Negócio e engenharia</td><td data-label="Contribuição da IA">Gerar candidatos para validação</td></tr>
+              <tr><th scope="row">Código de teste</th><td data-label="Autoridade primária">Engenharia e QA</td><td data-label="Contribuição da IA">Escrever o código; o oráculo vem da linha acima</td></tr>
+              <tr><th scope="row">Classificação de uma divergência</th><td data-label="Autoridade primária">Responsável pelo artefato afetado</td><td data-label="Contribuição da IA">Detectar possíveis conflitos</td></tr>
+              <tr class="is-model"><th scope="row">Modelo / agente</th><td data-label="Autoridade primária"><strong>Nenhuma autoridade substantiva por padrão</strong></td><td data-label="Contribuição da IA">Propor, recuperar, transformar; executar só no escopo autorizado</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="ecs-small" style="margin-top:1.2rem">
+          O papel humano que esta matriz formaliza aparece em
+          <a href="./engenharia-confianca.html#modulo-3">De Executor a Orquestrador Cognitivo</a> e
+          <a href="./devin.html#identidade">Você não é mais um executor</a>. Os controles para quando
+          o agente executa estão em
+          <a href="./develop-engineering.html#cena-05">Autonomia não é autoridade: o Action Gateway</a>;
+          sobre quando ele não deve executar, ver
+          <a href="./case-agents.html#barreira">a barreira pré-execução</a>.
+          Base: a redação é inspirada na função <em>Govern</em> do NIST AI RMF 1.0 (papéis,
+          responsabilidades e prestação de contas); NIST AI 600-1 (configuração humano–IA);
+          ISO/IEC/IEEE 29148 (identificação de partes interessadas e gestão de requisitos).
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== DIVERGÊNCIA ============================== -->
+    <section id="divergencia" class="ecs-section" aria-labelledby="divergencia-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Divergência <span class="ecs-selo ecs-selo--proposta">Proposta</span> <span class="ecs-selo ecs-selo--cenario">Cenário ilustrativo</span></p>
+        <h2 id="divergencia-titulo" class="ecs-title">Nenhum artefato, sozinho, preserva a intenção</h2>
+        <p class="ecs-lede ecs-prose">
+          Documentação, testes e código vão divergir. O que importa é quem resolve, como, e onde a
+          decisão fica registrada.
+        </p>
+        <div class="ecs-prose">
+          <p>
+            Cada artefato tem uma responsabilidade e um limite. As regras de negócio registram
+            políticas aprovadas, mas não garantem a implementação. Os testes de caracterização
+            registram o legado, inclusive defeitos e regras obsoletas. O código implementa uma
+            versão, mas não comprova aderência à intenção. Não há fonte universal de verdade.
+          </p>
+          <p>
+            A divergência (em inglês, <em>drift</em>) é a situação em que artefatos que deveriam
+            dizer a mesma coisa passam a dizer coisas diferentes. A política proposta tem cinco
+            passos, mostrados abaixo no exemplo do desconto.
+          </p>
+        </div>
+
+        <figure class="ecs-figure" aria-labelledby="v7-cap">
+          <p class="ecs-figure__label">Figura 8 · Um conflito, do início ao fim (DIV-007 → DEC-031)</p>
+          <ol class="ecs-steps ecs-steps--h">
+            <li><strong>Identificar</strong>
+              <p>O teste de caracterização mostra que o legado aprova um desconto acima do limite sem aprovação. A regra AF-012 diz o contrário.</p></li>
+            <li><strong>Classificar a causa provável</strong>
+              <p>Informação incompleta, defeito, mudança de regra, obsolescência ou erro de implementação. Aqui, provável defeito; a hipótese ainda não é decisão.</p></li>
+            <li><strong>Identificar quem decide</strong>
+              <p>O responsável pela política comercial.</p></li>
+            <li><strong>Registrar a decisão</strong>
+              <p>DEC-031, com justificativa, impacto e artefatos afetados.</p></li>
+            <li><strong>Atualizar e verificar de novo</strong>
+              <p>Um teste de aceitação com o oráculo em AF-012 e DEC-031. O teste de caracterização fica, rotulado como evidência sobre o legado.</p></li>
+          </ol>
+          <svg viewBox="0 0 520 340" role="img" style="margin-top:1.4rem"
+            aria-label="O mesmo triângulo da figura 1, resolvido: a documentação confirma AF-012, o teste de caracterização é evidência sobre o legado, o código novo segue a decisão DEC-031. No centro: decisão registrada.">
+            <line x1="260" y1="86" x2="123" y2="236" class="ecs-svg-edge ecs-svg-edge--ok" />
+            <line x1="260" y1="86" x2="397" y2="236" class="ecs-svg-edge ecs-svg-edge--ok" />
+            <line x1="238" y1="282" x2="282" y2="282" class="ecs-svg-edge ecs-svg-edge--ok" />
+            <rect x="150" y="8" width="220" height="78" rx="12" class="ecs-svg-node ecs-svg-node--ok" />
+            <text x="260" y="34" text-anchor="middle" class="ecs-svg-t">Documentação</text>
+            <text x="260" y="54" text-anchor="middle" class="ecs-svg-s">AF-012 confirmada</text>
+            <text x="260" y="72" text-anchor="middle" class="ecs-svg-s">na decisão DEC-031</text>
+            <rect x="8" y="236" width="230" height="86" rx="12" class="ecs-svg-node ecs-svg-node--ok" />
+            <text x="123" y="262" text-anchor="middle" class="ecs-svg-t">Teste de caracterização</text>
+            <text x="123" y="284" text-anchor="middle" class="ecs-svg-s">evidência sobre o legado</text>
+            <text x="123" y="302" text-anchor="middle" class="ecs-svg-s">(DIV-007)</text>
+            <rect x="282" y="236" width="230" height="86" rx="12" class="ecs-svg-node ecs-svg-node--ok" />
+            <text x="397" y="262" text-anchor="middle" class="ecs-svg-t">Código novo</text>
+            <text x="397" y="284" text-anchor="middle" class="ecs-svg-s">segue a decisão</text>
+            <text x="397" y="302" text-anchor="middle" class="ecs-svg-s">DEC-031</text>
+            <ellipse cx="260" cy="168" rx="74" ry="34" class="ecs-svg-node ecs-svg-node--ok" />
+            <text x="260" y="164" text-anchor="middle" class="ecs-svg-c">Decisão</text>
+            <text x="260" y="182" text-anchor="middle" class="ecs-svg-c">registrada</text>
+          </svg>
+          <figcaption id="v7-cap">
+            O mesmo triângulo da Figura 1, resolvido. A decisão é do responsável pela política
+            comercial; o modelo pode ter detectado o conflito, mas não o resolveu.
+          </figcaption>
+        </figure>
+
+        <div class="ecs-prose" style="margin-top:1.6rem">
+          <p>
+            O caso inverso: se o código novo não satisfaz um critério aprovado, mudar o critério
+            exige decisão explícita. Editar o teste para ele passar é uma decisão sem registro. A
+            rastreabilidade vale nas duas direções (decisão → critério → teste → componente; falha
+            → regra a revisar), com profundidade proporcional à criticidade e à exigência de
+            auditoria. O objetivo não é impedir toda divergência, mas torná-la detectável,
+            explicável e tratável.
+          </p>
+        </div>
+
+        <div class="ecs-scroll" tabindex="0" role="region" aria-label="Tabela: tratamento por situação de divergência">
+          <table class="ecs-table">
+            <caption>Figura 9 · O que fazer em cada situação identificada</caption>
+            <thead>
+              <tr><th scope="col">Situação identificada</th><th scope="col">Tratamento proposto</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Comportamento intencional e ainda válido</td><td>Preservar e documentar</td></tr>
+              <tr><td>Defeito conhecido</td><td>Corrigir com aprovação e testes</td></tr>
+              <tr><td>Regra obsoleta</td><td>Descontinuar mediante decisão explícita</td></tr>
+              <tr><td>Informação insuficiente</td><td>Investigar e manter a pendência visível</td></tr>
+              <tr><td>Dependência de integração</td><td>Definir compatibilidade e estratégia de transição</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="ecs-more">
+          <summary>Os oito artefatos, sua responsabilidade e seu limite</summary>
+          <div class="ecs-more__body">
+            <div class="ecs-scroll" tabindex="0" role="region" aria-label="Tabela: artefatos, responsabilidade e limite">
+              <table class="ecs-table">
+                <thead>
+                  <tr><th scope="col">Artefato</th><th scope="col">Responsabilidade</th><th scope="col">Limite</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Contexto e objetivos</th><td>Registrar o problema e os resultados esperados</td><td>Não comprova que a solução alcançará os resultados</td></tr>
+                  <tr><th scope="row">Regras de negócio</th><td>Registrar políticas aprovadas</td><td>Não garante a implementação correta</td></tr>
+                  <tr><th scope="row">Exemplos e critérios de aceitação</th><td>Expressar comportamentos esperados</td><td>Não garantem a completude do domínio</td></tr>
+                  <tr><th scope="row">Testes de caracterização</th><td>Registrar comportamentos observados no legado</td><td>Podem capturar defeitos e regras obsoletas</td></tr>
+                  <tr><th scope="row">Testes de aceitação e regressão</th><td>Verificar comportamentos selecionados</td><td>Não comprovam todas as propriedades do sistema</td></tr>
+                  <tr><th scope="row">Contratos de integração</th><td>Definir compatibilidade esperada</td><td>Não eliminam todos os riscos de evolução</td></tr>
+                  <tr><th scope="row">Registros de decisão</th><td>Preservar justificativas e alternativas consideradas</td><td>Não garantem que uma decisão continuará adequada</td></tr>
+                  <tr><th scope="row">Código</th><td>Implementar o comportamento em uma versão específica</td><td>Não comprova, por si só, aderência à intenção</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="ecs-more">
+          <summary>Os dez estados de uma divergência</summary>
+          <div class="ecs-more__body">
+            <ul class="ecs-states">
+              <li><code>não conhecido</code></li>
+              <li><code>ambíguo</code></li>
+              <li><code>spec desatualizada</code></li>
+              <li><code>teste sem requisito</code></li>
+              <li><code>requisito sem teste</code></li>
+              <li><code>código fora da spec</code></li>
+              <li><code>produção divergente</code></li>
+              <li><code>risco aceito</code></li>
+              <li><code>bloqueado</code></li>
+              <li><code>resolvido</code></li>
+            </ul>
+            <p class="ecs-small">O agente nunca harmoniza silenciosamente versões conflitantes: se não puder demonstrar a relação, registra “não conhecido”.</p>
+          </div>
+        </details>
+
+        <p style="margin-top:1.4rem">
+          Os modelos de registro de divergência e a lista de estados estão no kit:
+          <a href="/downloads/kit-especificacao-conversacional.md" download data-ecs-cta="kit-divergencia">baixar o kit (.md)</a>.
+        </p>
+
+        <p class="ecs-small" style="margin-top:1rem">
+          A mesma tese pelo ângulo do <em>grounding</em> (ancorar a resposta em fontes):
+          <a href="./develop-engineering.html#cena-01">Cinco fontes de verdade, cada uma com autoridade limitada</a>
+          e <a href="./develop-engineering.html#cena-07">Evidence Record: o recibo de cada validação</a>.
+          Para a arquitetura auditável, ver <a href="./apresentacao.html">Arquitetura de IA auditável</a>.
+          Base: Gotel &amp; Finkelstein (1994) e Ramesh &amp; Jarke (2001) sobre rastreabilidade antes e
+          depois da especificação; Rempel &amp; Mäder (2017), em 24 projetos de código aberto, associaram
+          rastreabilidade mais completa a menos defeitos (associação, não causa); Fucci et al. (2022),
+          links ausentes entre requisitos e testes impediram avaliar uma intervenção de qualidade;
+          Böckeler (2025) sobre o drift entre especificação e código; W3C PROV-DM.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================= TDD ================================= -->
+    <section id="tdd" class="ecs-section" aria-labelledby="tdd-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Especificação e TDD <span class="ecs-selo ecs-selo--sintese">Síntese</span> <span class="ecs-selo ecs-selo--evidencia">Evidência</span></p>
+        <h2 id="tdd-titulo" class="ecs-title">A especificação decide o que verificar; o TDD verifica</h2>
+        <div class="ecs-prose">
+          <p>
+            Um termo antes de seguir: <strong>oráculo</strong> é a fonte do resultado esperado com
+            que o teste compara o comportamento observado.
+          </p>
+          <p>
+            A diferença entre as abordagens é a unidade de controle. O TDD (escrever um teste que
+            falha, o código mínimo para ele passar, e então refatorar) responde “qual é o próximo
+            menor incremento e como verifico que ele continua funcionando?”. A especificação
+            responde “qual problema, para quem, com quais regras, restrições e critérios?”. O TDD
+            torna o feedback barato; não torna o oráculo correto. Sem intenção e escopo, o TDD pode
+            testar a coisa errada com eficiência. Sem oráculos executáveis, a especificação pode
+            documentar uma intenção errada.
+          </p>
+          <p>
+            Há um risco específico de agentes: quando o mesmo modelo escreve a especificação e os
+            testes, um teste verde pode apenas confirmar o erro do próprio modelo. O controle é o
+            resultado esperado ser definido ou validado por pessoas antes de o teste ser gerado
+            (a linha do oráculo em <a href="#autoridade">Quem decide o quê</a>), e cada critério
+            crítico ter ao menos um teste que não nasceu do mesmo prompt nem do mesmo contexto.
+          </p>
+          <p>
+            Em legado, três tipos de teste têm papéis diferentes: caracterização (o que o legado
+            faz hoje), aceitação (os critérios aprovados) e TDD (a implementação local). Uma
+            sequência possível: caracterizar o legado, validar as regras com quem decide, escrever
+            testes de aceitação, implementar com TDD, comparar resultados e liberar com
+            monitoramento, critério de interrupção e reversão.
+          </p>
+        </div>
+
+        <figure class="ecs-figure" aria-labelledby="v8-cap">
+          <p class="ecs-figure__label">Figura 10 · O mesmo fluxo, duas perguntas diferentes <span class="ecs-selo ecs-selo--cenario">Cenário ilustrativo</span></p>
+          <div class="ecs-code" tabindex="0" role="region" aria-label="Exemplo de dois testes: caracterização e aceitação">
+<pre><code><span class="c">// Caracterização: registra o que o legado FAZ hoje — não o que deve fazer.
+// Divergência DIV-007 aberta: a política atual proíbe este comportamento.</span>
+test('legado: aprova desconto acima do limite sem aprovação', () =&gt; {
+  expect(legado.avaliar(propostaAcimaDoLimite()).status).toBe('APROVADA');
+});
+
+<span class="c">// Aceitação: o oráculo vem de AF-012, confirmada na decisão DEC-031.
+// O teste verifica a regra; quem a definiu foi o responsável pela política.</span>
+test('proposta acima do limite aguarda aprovação e exige justificativa', () =&gt; {
+  const r = avaliarProposta(propostaAcimaDoLimite());
+  expect(r.status).toBe('AGUARDANDO_APROVACAO');
+  expect(r.pendencias).toContain('JUSTIFICATIVA');
+});</code></pre>
+          </div>
+          <figcaption id="v8-cap">
+            O primeiro teste descreve o legado, e o segundo, a regra decidida. Os dois podem
+            coexistir: o primeiro é evidência, o segundo é critério.
+          </figcaption>
+        </figure>
+
+        <details class="ecs-more">
+          <summary>Especificação × TDD, critério a critério</summary>
+          <div class="ecs-more__body">
+            <div class="ecs-scroll" tabindex="0" role="region" aria-label="Tabela: especificação e TDD">
+              <table class="ecs-table">
+                <thead>
+                  <tr><th scope="col">Critério</th><th scope="col">Especificação conversacional</th><th scope="col">TDD</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Propósito</th><td>Reduzir a perda de intenção entre conversa, requisitos, código e testes</td><td>Guiar design e implementação incremental por testes executáveis, com feedback rápido</td></tr>
+                  <tr><th scope="row">Unidade de controle</th><td>Intenção de produto, regras, restrições e critérios</td><td>Comportamento observável do código, em geral função, classe ou módulo</td></tr>
+                  <tr><th scope="row">Oráculo</th><td>Só é verificável se cada requisito tem condição observável, limites e procedimento; texto fluente ou aprovação humana não basta</td><td>Um teste verde garante apenas que o comportamento exercitado satisfaz o oráculo codificado naquele ambiente</td></tr>
+                  <tr><th scope="row">Divergência</th><td>Risco elevado de spec drift; exige política explícita, versionamento e detecção</td><td>Detecta regressão no que é exercitado; testes podem ficar obsoletos ou ser alterados para acomodar o código</td></tr>
+                  <tr><th scope="row">Evidência</th><td>Componentes com estudos isolados; workflow completo sem estudo localizado</td><td>Efeito pequeno e contextual (ver abaixo)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <div class="ecs-prose" style="margin-top:1.4rem">
+          <p>
+            A evidência sobre o TDD é maior que a deste workflow, e contextual. Rafique &amp; Mišić
+            (2013), em uma meta-análise de 27 estudos, encontraram efeito pequeno em qualidade e
+            pouco ou nenhum em produtividade. Tosun et al. (2017), com 24 profissionais, não
+            acharam diferença estatística de qualidade externa e viram queda de produtividade na
+            tarefa complexa em código existente. Nagappan et al. (2008), em quatro equipes de IBM
+            e Microsoft, observaram densidade de defeitos 40–90% menor e 15–35% mais tempo de
+            desenvolvimento, com ameaças à validade declaradas pelos autores. Liu et al. (2023,
+            EvalPlus) mostraram que testes ampliados encontram erros que os testes originais
+            deixam passar. A conclusão é que a proposta não reivindica superioridade sobre o TDD
+            nem o substitui: fornece contexto e decisões; o TDD fornece feedback local e proteção
+            contra regressão.
+          </p>
+        </div>
+
+        <p class="ecs-small">
+          Ver também: <a href="./case-agents.html#crash-silencioso">a falha que 54 testes não pegaram</a>,
+          <a href="./develop-engineering.html#cena-06">Passar no teste não é o mesmo que estar certo</a>,
+          <a href="./devin.html#fluxo">da spec ao Apex Test, na prática Salesforce</a>,
+          <a href="./acessibilidade.html#problema">a mesma lógica em acessibilidade</a> e
+          <a href="./proposta-engenharia-reversa.html#ponte-tobe">do legado (As-Is) ao alvo (To-Be)</a>.
+          Base: Beck (2002), TDD; Feathers (2004), testes de caracterização em código legado.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================ LIMITES ================================ -->
+    <section id="limites" class="ecs-section" aria-labelledby="limites-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Medir e limites <span class="ecs-selo ecs-selo--naovalidado">Não validado</span> <span class="ecs-selo ecs-selo--evidencia">Evidência</span></p>
+        <h2 id="limites-titulo" class="ecs-title">O que medir, e o que esta proposta ainda não prova</h2>
+        <div class="ecs-prose">
+          <p>
+            Uma modernização não está concluída porque o código foi reescrito. Os indicadores
+            abaixo precisam de definição operacional, linha de base e período de observação; mais
+            documentos ou testes não provam, sozinhos, que o sistema ficou mais sustentável. As
+            definições completas (recall de requisitos, ambiguidade residual por 100 requisitos,
+            precisão e recall de links, métricas DORA) estão no kit.
+          </p>
+        </div>
+
+        <div class="ecs-cols">
+          <div class="ecs-card">
+            <h3>Processo</h3>
+            <ul>
+              <li>Regras críticas identificadas e validadas.</li>
+              <li>Critérios cobertos por ao menos um teste independente (não gerado do mesmo prompt da especificação).</li>
+              <li>Divergências entre especificação, testes e produção por release, por gravidade.</li>
+              <li>Afirmações e decisões com proveniência completa: fonte, autor, data e justificativa.</li>
+              <li>Tempo para reconstruir a justificativa de uma decisão antiga.</li>
+            </ul>
+          </div>
+          <div class="ecs-card">
+            <h3>Resultado operacional</h3>
+            <ul>
+              <li>Tempo para entender e implementar uma mudança de regra.</li>
+              <li>Incidentes, regressões e correções emergenciais após a liberação.</li>
+              <li>Retrabalho atribuído à divergência entre intenção e implementação, mensurável porque a política de divergência classifica a causa.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="ecs-h3">Escada de evidência</h3>
+        <div class="ecs-prose">
+          <p>Subir um degrau exige evidência nova; o degrau de baixo não prova o de cima.</p>
+        </div>
+        <ol class="ecs-ladder">
+          <li class="has-evidence"><strong>1. Capacidade do agente</strong> <span class="ecs-selo ecs-selo--evidencia">Estudado em tarefas isoladas</span></li>
+          <li class="has-evidence"><strong>2. Qualidade do artefato</strong> <span class="ecs-selo ecs-selo--evidencia">Estudado em tarefas isoladas</span></li>
+          <li class="has-gap"><strong>3. Resultado da tarefa</strong> <span class="ecs-selo ecs-selo--naovalidado">Sem estudo do workflow completo</span></li>
+          <li class="has-gap"><strong>4. Resultado operacional</strong> <span class="ecs-selo ecs-selo--naovalidado">Sem estudo do workflow completo</span></li>
+          <li class="has-gap"><strong>5. Resultado de negócio</strong> <span class="ecs-selo ecs-selo--naovalidado">Sem estudo do workflow completo</span></li>
+        </ol>
+
+        <h3 class="ecs-h3">O que a literatura permite dizer hoje</h3>
+        <div class="ecs-prose">
+          <p>
+            LLMs mostram capacidade parcial em tarefas controladas de elicitação, geração de
+            especificação e detecção de ambiguidade, com falhas em terminologia de domínio,
+            interfaces e restrições. A pesquisa é majoritariamente de laboratório, e LLMs como
+            revisores de requisitos tiveram resultados inconsistentes. Não foi localizado estudo
+            controlado ou longitudinal do workflow completo frente a uma linha de base alinhada à
+            ISO/IEC/IEEE 29148 e ao SWEBOK.
+          </p>
+        </div>
+
+        <h3 class="ecs-h3">Como avaliar no seu contexto</h3>
+        <ol class="ecs-steps">
+          <li><strong>Montar um pacote de referência independente</strong>
+            <p>Necessidades, regras, restrições e casos de fronteira, antes ou em paralelo à elicitação.</p></li>
+          <li><strong>Conduzir a elicitação com IA registrando a fonte</strong>
+            <p>Separando fato, inferência e proposta.</p></li>
+          <li><strong>Revisão cega</strong>
+            <p>Por pelo menos duas pessoas do domínio.</p></li>
+          <li><strong>Medir em quatro pontos</strong>
+            <p>Depois da definição, da especificação, da implementação e da operação.</p></li>
+          <li><strong>Publicar prompts, versões de modelo, artefatos e decisões de adjudicação</strong>
+            <p>Respeitando a privacidade.</p></li>
+          <li><strong>Tratar qualquer melhoria como evidência local</strong>
+            <p>Não como validação geral do workflow.</p></li>
+        </ol>
+        <p class="ecs-small">A comparação com uma linha de base humana ou híbrida e as hipóteses H1–H4 estão no kit.</p>
+
+        <p class="ecs-small" style="margin-top:1rem">
+          Ver também: <a href="./formulacao-de-problemas.html#falseabilidade">como refutar uma hipótese</a>,
+          <a href="./develop-engineering.html#cena-09">o que um artigo ainda não prova</a>,
+          <a href="./acessibilidade.html#limites">os limites no caso de acessibilidade</a>,
+          <a href="./sustentacao.html">sustentação</a> (incidentes e correções emergenciais como indicador) e
+          <a href="./operacao-capital-cognitivo.html">o custo total da IA</a>, inclusive inferência e revisão.
+          Base: ISO/IEC/IEEE 15939:2017 (a medição parte de uma necessidade de informação, com linha de base),
+          ISO/IEC 25010:2023 (atributos de qualidade de produto) e DORA (tempo de entrega, taxa de falha de
+          mudança, recuperação) servem de referência para definir indicadores. Estudos: Ronanki et al. (2023),
+          Krishna et al. (2024), Bashir et al. (2025), Zadenoori et al. (2025, preprint), Norheim et al. (2024),
+          Seifert et al., Montgomery et al. (2022).
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================ COMECE ================================ -->
+    <section id="comece" class="ecs-section" aria-labelledby="comece-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Por onde começar</p>
+        <h2 id="comece-titulo" class="ecs-title">Comece por um fluxo, não pelo sistema inteiro</h2>
+        <div class="ecs-prose">
+          <p>
+            Escolha um fluxo representativo, aplique as cinco práticas, registre a primeira
+            divergência e decida quem a resolve. Sem promessa de resultado: o objetivo é ter algo
+            que possa ser examinado e contestado.
+          </p>
+        </div>
+
+        <div class="ecs-kit">
+          <h3>Kit de artefatos (Markdown)</h3>
+          <ul>
+            <li>Matriz de autoridade editável, com a coluna de revisão obrigatória.</li>
+            <li>Modelo de registro de afirmação.</li>
+            <li>Registro de divergência, com estados e roteamento por tipo de conflito.</li>
+            <li>Checklist mínimo de divergência (drift).</li>
+            <li>Protocolo de avaliação resumido: hipóteses, linha de base, métricas e escada de evidência.</li>
+          </ul>
+          <div class="ecs-cta">
+            <a href="/downloads/kit-especificacao-conversacional.md" class="ecs-btn ecs-btn--primary" download
+              data-ecs-cta="kit-final">Baixar o kit (.md)</a>
+            <a href="https://www.linkedin.com/in/mauricioissei/" class="ecs-btn ecs-btn--ghost" target="_blank"
+              rel="noopener" data-ecs-cta="conversar">Conversar sobre um caso</a>
+          </div>
+        </div>
+
+        <p class="ecs-eyebrow" style="margin-top:2.5rem">Continue no ecossistema</p>
+        <div class="ecs-grid ecs-grid--3 ecs-next">
+          <a href="./engenharia-confianca.html" class="ecs-card">
+            <h3>A Engenharia da Confiança</h3>
+            <p>O arcabouço de governança de onde vêm o inventário do estado atual e a separação entre fato, inferência e julgamento.</p>
+          </a>
+          <a href="./apresentacao.html" class="ecs-card">
+            <h3>Arquitetura de IA auditável</h3>
+            <p>Rastreabilidade e reversibilidade como princípios verificáveis.</p>
+          </a>
+          <a href="./devin.html" class="ecs-card">
+            <h3>Vibe Coding com Devin</h3>
+            <p>A prática de orquestrar agentes que esta proposta complementa.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== REFERÊNCIAS ============================== -->
+    <section id="referencias" class="ecs-section" aria-labelledby="referencias-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Procedência</p>
+        <h2 id="referencias-titulo" class="ecs-title">Referências e procedência</h2>
+        <div class="ecs-prose">
+          <p>
+            Normas e guias são fundamento do desenho, não experimento: nenhuma delas valida este
+            workflow. As referências estão agrupadas pelo tipo de evidência.
+          </p>
+        </div>
+        <div class="ecs-refs">
+          <div>
+            <h3>1. Normas e guias</h3>
+            <ul>
+              <li><a href="https://www.iso.org/standard/72089.html" target="_blank" rel="noopener">ISO/IEC/IEEE 29148:2018 — Requirements engineering</a></li>
+              <li><a href="https://ieeecs-media.computer.org/media/education/swebok/swebok-v4.pdf" target="_blank" rel="noopener">SWEBOK Guide v4.0a — Software Requirements</a></li>
+              <li><a href="https://doi.org/10.6028/NIST.AI.100-1" target="_blank" rel="noopener">NIST AI RMF 1.0</a></li>
+              <li><a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank" rel="noopener">NIST AI 600-1 — Generative AI Profile</a></li>
+              <li><a href="https://www.iso.org/standard/71197.html" target="_blank" rel="noopener">ISO/IEC/IEEE 15939:2017 — Measurement process</a></li>
+              <li><a href="https://www.iso.org/standard/78176.html" target="_blank" rel="noopener">ISO/IEC 25010:2023 — Product quality model</a></li>
+              <li><a href="https://www.w3.org/TR/prov-dm/" target="_blank" rel="noopener">W3C PROV-DM</a></li>
+              <li><a href="https://www.nasa.gov/reference/4-1-stakeholder-expectations-definition/" target="_blank" rel="noopener">NASA Systems Engineering Handbook — Stakeholder Expectations</a></li>
+              <li><a href="https://dora.dev/guides/dora-metrics/" target="_blank" rel="noopener">DORA — métricas de entrega de software</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>2. Estudos empíricos</h3>
+            <ul>
+              <li><a href="https://doi.org/10.1007/s00766-016-0249-3" target="_blank" rel="noopener">Ferrari et al. (2016) — Ambiguity and tacit knowledge in elicitation interviews</a></li>
+              <li><a href="https://doi.org/10.1016/j.is.2014.05.006" target="_blank" rel="noopener">Burnay et al. (2014) — What stakeholders will or will not say</a></li>
+              <li><a href="https://doi.org/10.1109/TSE.2016.2622264" target="_blank" rel="noopener">Rempel &amp; Mäder (2017) — Traceability completeness and software quality</a></li>
+              <li><a href="https://doi.org/10.1016/j.jss.2022.111389" target="_blank" rel="noopener">Fucci et al. (2022) — When traceability goes awry</a></li>
+              <li><a href="https://doi.org/10.1109/TSE.2012.28" target="_blank" rel="noopener">Rafique &amp; Mišić (2013) — Meta-análise de TDD</a></li>
+              <li><a href="https://doi.org/10.1007/s10664-016-9490-0" target="_blank" rel="noopener">Tosun et al. (2017) — Industry experiment on TDD</a></li>
+              <li><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2009/10/Realizing-Quality-Improvement-Through-Test-Driven-Development-Results-and-Experiences-of-Four-Industrial-Teams-nagappan_tdd.pdf" target="_blank" rel="noopener">Nagappan et al. (2008) — TDD em quatro equipes industriais</a></li>
+              <li><a href="https://arxiv.org/abs/2307.07381" target="_blank" rel="noopener">Ronanki et al. (2023) — ChatGPT e elicitação de requisitos</a></li>
+              <li><a href="https://arxiv.org/abs/2404.17842" target="_blank" rel="noopener">Krishna et al. (2024) — LLMs em especificações de requisitos</a></li>
+              <li><a href="https://www.ipr.mdu.se/pdf_publications/7221.pdf" target="_blank" rel="noopener">Bashir et al. (2025) — Detecção de ambiguidade com LLMs</a></li>
+              <li><a href="https://arxiv.org/abs/2509.11446" target="_blank" rel="noopener">Zadenoori et al. (2025, preprint) — LLMs para engenharia de requisitos</a></li>
+              <li><a href="https://doi.org/10.1145/3695988" target="_blank" rel="noopener">Hou et al. (2024) — LLMs em engenharia de software</a></li>
+              <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-78386-9_3" target="_blank" rel="noopener">Seifert et al. — LLMs × revisores humanos de requisitos</a></li>
+              <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9110500/" target="_blank" rel="noopener">Montgomery et al. (2022) — Qualidade de requisitos</a></li>
+              <li><a href="https://arxiv.org/abs/2302.06590" target="_blank" rel="noopener">Peng et al. (2023) — IA e produtividade (Copilot)</a></li>
+              <li><a href="https://arxiv.org/abs/2507.09089" target="_blank" rel="noopener">Becker et al. (2025, preprint) — IA e desenvolvedores experientes</a></li>
+              <li><a href="https://arxiv.org/abs/2305.01210" target="_blank" rel="noopener">Liu et al. (2023) — EvalPlus</a></li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/21077562/" target="_blank" rel="noopener">Parasuraman &amp; Manzey (2010) — Complacency and bias in human use of automation</a></li>
+              <li><a href="https://dl.acm.org/doi/10.1145/3449287" target="_blank" rel="noopener">Buçinca et al. (2021) — Cognitive forcing functions</a></li>
+              <li>Norheim et al. (2024) — <em>Challenges in applying large language models to requirements engineering tasks</em>, Design Science, 10, e16</li>
+            </ul>
+          </div>
+          <div>
+            <h3>3. Prática e livros</h3>
+            <ul>
+              <li>Beck (2002) — <em>Test-Driven Development: By Example</em></li>
+              <li>Feathers (2004) — <em>Working Effectively with Legacy Code</em></li>
+              <li><a href="https://cucumber.io/docs/bdd/example-mapping/" target="_blank" rel="noopener">Cucumber — Example Mapping</a></li>
+              <li><a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html" target="_blank" rel="noopener">Böckeler/Thoughtworks (2025) — Understanding Spec-Driven-Development</a></li>
+              <li><a href="https://github.com/github/spec-kit" target="_blank" rel="noopener">GitHub Spec Kit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>4. Uso informal do rótulo (uso, não evidência)</h3>
+            <ul>
+              <li><a href="https://marmelab.com/blog/2025/10/30/vibe-spec-generate-specifications-from-coding-agent-logs.html" target="_blank" rel="noopener">marmelab (2025) — vibe-spec</a></li>
+              <li><a href="https://lukebechtel.com/blog/vibe-speccing" target="_blank" rel="noopener">Bechtel — Vibe Specs</a></li>
+              <li>McGuinness — texto sobre entrevistar o usuário antes da implementação</li>
+            </ul>
+            <h3 style="margin-top:1.2rem">5. Páginas do autor</h3>
+            <p class="ecs-small">Autorais: evidência do que o autor afirma, não validação independente.</p>
+            <ul>
+              <li><a href="./devin.html">Vibe Coding com Devin</a></li>
+              <li><a href="./engenharia-confianca.html">A Engenharia da Confiança</a></li>
+              <li><a href="./apresentacao.html">Arquitetura de IA auditável</a></li>
+              <li><a href="./case-agents.html">Case Agents</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="ecs-small" style="margin-top:1.6rem">
+          Procedência: síntese de documentos de pesquisa do autor (2026), conferidos contra as
+          fontes acima.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr" id="em-sintese">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que é a Especificação Conversacional Estruturada</h2>
+    <p class="aeo-tldr__lede">É uma <strong>proposta de workflow</strong> em que a IA ajuda a elicitar e registrar requisitos — perguntando, comparando interpretações e sugerindo exemplos — enquanto <strong>pessoas com autoridade decidem</strong>. Cada afirmação tem origem e status, e as divergências entre documentação, testes e código seguem uma política explícita. A eficácia do workflow completo ainda não foi avaliada.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>A IA propõe, pessoas decidem</strong> — a matriz de autoridade separa quem decide de quem assiste; o modelo não tem autoridade substantiva por padrão.</li>
+      <li><strong>Cinco práticas</strong> — registrar a origem, separar fato de hipótese, manter pendências visíveis, usar exemplos e contraexemplos, e revisar na proporção do risco.</li>
+      <li><strong>Divergência governada</strong> — documentação, testes e código vão divergir; a política define quem resolve, como, e onde a decisão fica registrada.</li>
+      <li><strong>Complementa o TDD, não o substitui</strong> — a especificação decide o que verificar; o TDD verifica. O oráculo (resultado esperado) vem de pessoas.</li>
+    </ul>
+    <p class="aeo-tldr__foot">Parte do mesmo método de <a href="/engenharia-confianca">A Engenharia da Confiança</a> e da prática de <a href="/devin">Vibe Coding com Devin</a>: a intenção registrada, com autoridade humana, antes do código.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que é Especificação Conversacional Estruturada?</summary>
+      <div class="aeo-faq__a"><p>É um workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema como requisitos e critérios verificáveis, mantendo explícitas as fontes, as incertezas, as decisões e a forma de verificação. É uma proposta em avaliação, não um método validado nem uma norma.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Qual a diferença para Vibe Spec-ing e para Spec-Driven Development?</summary>
+      <div class="aeo-faq__a"><p>Vibe Spec-ing foi o nome anterior deste enquadramento; mudou porque &quot;vibe&quot; sugere o contrário do que a proposta exige (registro, autoridade e verificação). Spec-Driven Development é um rótulo ainda instável para práticas em que a especificação vem antes do código (spec-first, spec-anchored, spec-as-source). A Especificação Conversacional Estruturada é um workflow específico dentro desse espaço, com autoridade humana e política de divergência explícitas.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">A IA pode aprovar requisitos ou regras de negócio?</summary>
+      <div class="aeo-faq__a"><p>Não, por padrão. O modelo pode perguntar, resumir, propor cenários, apontar contradições e preparar mudanças, mas não recebe autoridade para decidir valor, risco, conformidade, aceitação ou verdade de domínio. A matriz de autoridade atribui cada decisão a pessoas designadas; ela é uma política de governança proposta, a ajustar a cada organização.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Isso substitui o TDD ou os testes de aceitação?</summary>
+      <div class="aeo-faq__a"><p>Não. Atuam em níveis diferentes: a especificação define qual problema, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo, por isso o resultado esperado é definido ou validado por pessoas.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Serve para sistemas legados?</summary>
+      <div class="aeo-faq__a"><p>A proposta foi pensada para esse caso: testes de caracterização registram o que o legado faz hoje, e a decisão de preservar, corrigir, substituir ou descontinuar cada regra cabe a quem tem autoridade de negócio. O risco declarado é a pós-racionalização: dar coerência ao que foi acidental ao reconstruir a intenção a partir do código.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Há evidência de que funciona?</summary>
+      <div class="aeo-faq__a"><p>Para componentes isolados, parcial: estudos mostram capacidade parcial de LLMs em elicitação, especificação e detecção de ambiguidade, em tarefas controladas. Para o workflow completo, não foi localizado estudo controlado ou longitudinal frente a uma linha de base alinhada à ISO/IEC/IEEE 29148 e ao SWEBOK. A página traz um protocolo de avaliação para testar no próprio contexto.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+
+  <footer class="ecs-footer">
+    <div class="ecs-container">
+      <p class="ecs-footer__brand">Especificação Conversacional Estruturada</p>
+      <p>
+        Proposta de workflow em avaliação · Maurício Yokoyama Issei · © <span>2026</span>.
+        As obras externas citadas pertencem a seus autores e editores, referenciadas para fins
+        educacionais e de rastreabilidade, sem vínculo ou endosso.
+      </p>
+      <p>
+        <a href="./catalogo.html">Voltar ao catálogo</a> ·
+        <a href="/especificacao-conversacional.md">Versão em Markdown</a> ·
+        <a href="#hero">Voltar ao topo</a>
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/eco-nav.js"></script>
+</body>
+
+</html>

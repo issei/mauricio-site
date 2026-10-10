@@ -117,6 +117,15 @@ export const HUB_ITEMS = [
     "complexity": "Tópico Profundo"
   },
   {
+    "slug": "especificacao-conversacional",
+    "title": "Especificação Conversacional Estruturada",
+    "blurb": "Workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código.",
+    "href": "./especificacao-conversacional.html",
+    "tab": "especificar",
+    "minutes": 27,
+    "complexity": "Tópico Profundo"
+  },
+  {
     "slug": "formulacao-de-problemas",
     "title": "Formulação de Problemas",
     "blurb": "Formular é engenharia da redução de incerteza — e precisa parar. Seis incertezas, seis estados de conhecimento, regra de parada e o penalizador λ.",
