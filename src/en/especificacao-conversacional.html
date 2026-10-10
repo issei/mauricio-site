@@ -471,10 +471,9 @@ If it comes, it's what's lost on the way.
         </figure>
 
         <p class="ecs-small" style="margin-top:1.2rem">
-          The same failure, seen when it reaches production in a system that seems to work:
-          <a href="./engenharia-confianca.html#modulo-0">The Silent Crash</a>.
-Base: Hou et al. (2024), systematic review of the use of LLMs in software engineering,
-which attests to the wide use, not the effectiveness of this workflow.
+          Same failure, seen in production: <a href="./engenharia-confianca.html#modulo-0">The Silent Crash</a>.
+Base: Hou et al. (2024), systematic review; attests to the wide use of LLMs in engineering
+software, not the effectiveness of this workflow.
         </p>
       </div>
     </section>
@@ -535,12 +534,8 @@ help and another in which it can distort, mapped into <a href="#etapas">Step by 
         </div>
         <p class="ecs-small">
           See also: <a href="./formulacao-de-problemas.html#tese">formulate the problem before compromising the solution</a>
-          and <a href="./proposta-engenharia-reversa.html#inventario">the same survey of the current state (As-Is), applied the legacy Salesforce</a>.
-Base: ISO/IEC/IEEE 29148:2018 (request, analyse, specify, validate and manage requirements; verification
-and validation are different things); NASA <em>Systems Engineering Handbook</em> (needs)
-respond to the problem without prescribing solution; Ferrari et al. (2016) and Burnay et al. (2014)
-(ambiguities reveal tacit knowledge; stakeholders omit topics that no one else
-question), reasons to talk with operation, support and integrations, and not just read the code.
+          and <a href="./proposta-engenharia-reversa.html#inventario">the survey of the current state (As-Is) in Salesforce legacy</a>.
+Base: ISO/IEC/IEEE 29148:2018 (checking and validation are distinct); NASA <em>Systems Engineering Handbook</em> (needs do not prescribe solution); Ferrari et al. (2016) and Burnay et al. (2014) (ambiguities and omissions reveal tacit knowledge; so it is worth talking to operation, support and integrations, and not just reading the code).
         </p>
       </div>
     </section>
@@ -635,13 +630,9 @@ Of agents' logs.
         </div>
 
         <p class="ecs-small" style="margin-top:1.2rem">
-          Related practice: <a href="./devin.html">Vibe Coding with Devin</a>, orchestration of
-staff complementing this proposal; and
+          Related practice: <a href="./devin.html">Vibe Coding with Devin</a>, which this proposal complements, and
           <a href="./engenharia-agentes-ia.html#governanca">Agent-driven governance</a>.
-Base: SWEBOK Guide v4.0a (Requirement Area) and ISO/IEC/IEEE 29148 as reference
-Discipline; Böckeler/Thoughtworks (2025) on “spec-drive development” as a label
-still unstable (spec-first, spec-anchored, spec-as-source). The informal use of the label
-(marmelab, 2025; Bechtel; McGuinness) is cited as use, not as evidence.
+Base: SWEBOK Guide v4.0a (Requirement Area) as disciplinary reference. Böckeler/Thoughtworks (2025) describes “spec-driven development” as an unstable label (spec-first, spec-anchored, spec-as-source); informal uses (marmelab, Bechtel, McGuinness) are use, not evidence.
         </p>
       </div>
     </section>
@@ -773,18 +764,10 @@ pendencia: aberta</code></pre>
         </figure>
 
         <p class="ecs-small" style="margin-top:1.2rem">
-          See also: <a href="./engenharia-confianca.html#modulo-1">Reveal Implicit to Make It Explicit</a>
-          (inventory of the current state and separation between fact, inference and judgment),
+          See also: <a href="./engenharia-confianca.html#modulo-1">Reveal Implicit</a> (invented current state),
           <a href="./formulacao-de-problemas.html#parada">when you stop investigating</a> and
           <a href="./knowledge-os-presentation.html#tipologia">typed and addressable knowledge</a>.
-Base: the NIST generating AI profile (AI 600-1) treats confabulation (responses
-plausible and false) and human configuration–IA as risks to manage; W3C PROV-DM
-offers a model to register provenance (entity, activity, agent); Parasuraman
-&amp; Manzey (2010) and Buçinca et al. (2021) on automation bias, with functions of
-cognitive strength that reduced excessive dependence on AI in an experiment; Cucumber,
-          <em>Example Mapping</em> (rules, examples and questions); SWEBOK lists various sources of
-requirements (interested parties, business rules, domain knowledge, environment
-operational), triangulation basis in practice 1.
+Base: NIST AI 600-1 treats confabulation (possible and false responses) as a risk to manage; W3C PROV-DM offers a provenance model; Parasuraman &amp; Manzey (2010) and Buçinca et al. (2021) document the automation bias, and cognitive strength function reduced dependence on AI in an experiment; SWEBOK lists the sources of requirements that underpin practice 1.
         </p>
       </div>
     </section>
@@ -833,16 +816,10 @@ The rule.
         </div>
 
         <p class="ecs-small" style="margin-top:1.2rem">
-          The human role that this matrix formalizes appears in
-          <a href="./engenharia-confianca.html#modulo-3">From Executor to Cognitive Orchestrator</a> and
-          <a href="./devin.html#identidade">You're no longer an executioner</a>. The controls for when
-the executed agent are in
-          <a href="./develop-engineering.html#cena-05">Autonomy is not authority: Action Gateway</a>;
-about when he should not execute, see
-          <a href="./case-agents.html#barreira">the pre-execution barrier</a>.
-Base: the writing is inspired by the function <em>Government</em> NIST AI RMF 1.0 (papers,
-responsibilities and accountability); NIST AI 600-1 (human configuration–IA);
-ISO/IEC/IEEE 29148 (stakeholder identification and management of requirements).
+          See also: <a href="./engenharia-confianca.html#modulo-3">From Executor to Cognitive Orchestrator</a> and
+          <a href="./devin.html#identidade">You're no longer an executioner</a>, on the human role that the matrix formalizes;
+          <a href="./develop-engineering.html#cena-05">Autonomy is not authority: Action Gateway</a>, about the controls when the agent executes.
+Base: the writing is inspired by the function <em>Government</em> NIST AI RMF 1.0 (papers and accountability); NIST AI 600-1 (human configuration–IA); ISO/IEC/IEEE 29148 (interested parties and requirements management).
         </p>
       </div>
     </section>
@@ -990,11 +967,7 @@ Explicable and treatable.
           <a href="./develop-engineering.html#cena-01">Five sources of truth, each with limited authority</a>
           and <a href="./develop-engineering.html#cena-07">Evidence Record: the receipt of each validation</a>.
 For auditable architecture, see <a href="./apresentacao.html">Auditable AI architecture</a>.
-Base: Gotel &amp; Finkelstein (1994) and Ramesh &amp; Jarke (2001) on traceability before and
-after specification; Rempel &amp; Mäder (2017), in 24 open source projects, associated
-more complete traceability to less defects (association, not cause); Fucci et al. (2022),
-missing links between requirements and tests prevented evaluation of a quality intervention;
-Böckeler (2025) about the drift between specification and code; W3C PROV-DM.
+Base: Gotel &amp; Finkelstein (1994) on traceability before and after specification; Rempel &amp; Mäder (2017) associate more complete traceability with fewer defects in 24 open source projects (association, not cause); Fucci et al. (2022) show that missing links between requirements and tests prevented the evaluation of a quality intervention.
         </p>
       </div>
     </section>
@@ -1184,14 +1157,9 @@ ISO/IEC/IEEE 29148 and SWEBOK.
         <p class="ecs-small" style="margin-top:1rem">
           See also: <a href="./formulacao-de-problemas.html#falseabilidade">how to refute a hypothesis</a>,
           <a href="./develop-engineering.html#cena-09">what an article does not yet prove</a>,
-          <a href="./acessibilidade.html#limites">limits in the case of accessibility</a>,
-          <a href="./sustentacao.html">support</a> (incidents and emergency corrections as indicator) and
+          <a href="./sustentacao.html">support</a>, for incidents and emergency corrections as indicator, and
           <a href="./operacao-capital-cognitivo.html">the total cost of the AI</a>, including inference and review.
-Base: ISO/IEC/IEEE 15939:2017 (measurement part of a need for information with baseline),
-ISO/IEC 25010:2023 (product quality attributes) and DORA (delivery time, failure rate of
-change, recovery) serve as a reference to define indicators. Studies: Ronanki et al. (2023),
-Krishna et al. (2024), Bashir et al. (2025), Zadenoori et al. (2025, preprint), Norheim et al. (2024),
-Seifert et al., Montgomery et al. (2022).
+Base: ISO/IEC/IEEE 15939:2017 (baseline measurement) and ISO/IEC 25010:2023 (product quality) serve as a reference for defining indicators; DORA (delivery time, change failure, recovery) enters as operational indicator. The LLM studies on requirements are in Group 2 of the References.
         </p>
       </div>
     </section>
@@ -1238,7 +1206,7 @@ which may be examined and contested.
           </a>
           <a href="./devin.html" class="ecs-card">
             <h3>Vibe Coding with Devin</h3>
-            <p>The practice of orchestrating agents that this proposal complements.</p>
+            <p>How the spec comes into practice: the agent performs the task, and the team reviews and decides.</p>
           </a>
         </div>
       </div>
@@ -1276,6 +1244,7 @@ workflow. References are grouped by the type of evidence.
               <li><a href="https://doi.org/10.1007/s00766-016-0249-3" target="_blank" rel="noopener">Ferrari et al. (2016) — Ambiguity and tacit knowledge in solicitation interviews</a></li>
               <li><a href="https://doi.org/10.1016/j.is.2014.05.006" target="_blank" rel="noopener">Burnay et al. (2014) — What stakeholders will or will not say</a></li>
               <li><a href="https://doi.org/10.1109/TSE.2016.2622264" target="_blank" rel="noopener">Rempel &amp; Mäder (2017) — Traceability completeness and quality software</a></li>
+              <li><a href="https://doi.org/10.1109/ICRE.1994.292398" target="_blank" rel="noopener">Gotel &amp; Finkelstein (1994) — An analysis of the requirements traceability problem</a></li>
               <li><a href="https://doi.org/10.1016/j.jss.2022.111389" target="_blank" rel="noopener">Fucci et al. (2022) — When traceability goes awry</a></li>
               <li><a href="https://doi.org/10.1109/TSE.2012.28" target="_blank" rel="noopener">Rafique &amp; Mišić (2013) — Meta-analysis of TDD</a></li>
               <li><a href="https://doi.org/10.1007/s10664-016-9490-0" target="_blank" rel="noopener">Tosun et al. (2017) — Industry experiment on TDD</a></li>

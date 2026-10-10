@@ -17,10 +17,15 @@
 # =============================================================================
 
 meta:
-  version: "1.10.0"           # semver; bump obrigatório a cada alteração de grafo
+  version: "1.11.0"           # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-10-09"
+  updated: "2026-10-10"
+  # 1.11.0 — entra `especificacao-conversacional` (Especificação Conversacional
+  #         Estruturada) em p2 (Engenharia de Confiança / O Método): workflow proposto
+  #         para elicitar requisitos com IA sob autoridade humana. Dois crosslinks,
+  #         ambos já presentes na origem (engenharia-confianca, devin). Aprovado pelo
+  #         autor em 2026-10-10 (D-5 do wireframe). Atualizar src/js/eco-nav.js junto.
   # 1.10.0 — sai `proposta`: a página virou proposta executiva não listada (noindex),
   #         fora do grafo público. Atualizar src/js/eco-nav.js junto.
   # 1.9.0 — entra `acessibilidade` (Acessibilidade como requisito de engenharia)
@@ -83,7 +88,7 @@ pillars:
     label: "Engenharia de Confiança"
     subtitle: "O Método"
     summary: "Da intenção à execução agêntica confiável."
-    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, develop-engineering, agent-ready, knowledge-os-presentation, case-agents, acessibilidade]
+    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, develop-engineering, agent-ready, knowledge-os-presentation, case-agents, acessibilidade, especificacao-conversacional]
 
   - id: p3
     order: 3
@@ -173,6 +178,12 @@ nodes:
     title: "Acessibilidade como requisito de engenharia"
     label: "Acessibilidade"
     blurb: "O A11Y.md no contexto do agente, com evidência."
+    pillar: p2
+  especificacao-conversacional:
+    file: "especificacao-conversacional.html"
+    title: "Especificação Conversacional Estruturada"
+    label: "Especificação Conversacional"
+    blurb: "Elicitar requisitos com IA, sob autoridade humana."
     pillar: p2
 
   # --- P3 · Ecossistema Salesforce -------------------------------------------
@@ -288,3 +299,11 @@ crosslinks:
     rationale: "A mesma fronteira agente<->sistema: agent-ready por fora, case-agents por dentro."
     status: proposed
     approved: true
+  - from: especificacao-conversacional
+    to: engenharia-confianca
+    rationale: "A separação entre fato, inferência e julgamento vem do inventário do estado atual (Módulo 1)."
+    status: existing
+  - from: especificacao-conversacional
+    to: devin
+    rationale: "Prática de orquestração de agentes que esta proposta complementa."
+    status: existing
