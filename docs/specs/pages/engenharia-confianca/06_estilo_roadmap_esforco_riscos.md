@@ -126,7 +126,7 @@ O site **pratica o que ensina**: escopo fechado por fase, fail-closed (00 §1.4)
    aumenta credibilidade.
 4. **Valide com uma persona por extremo.** Teste a trilha linear com um "Rafael" e a entrada por dor
    com um "executivo Tanaka" antes de polir.
-5. **Mantenha a spec como fonte da verdade.** Se a narrativa evoluir, atualize estes documentos *antes*
+5. **Mantenha a spec como referência.** Se a narrativa evoluir, atualize estes documentos *antes*
    do código — coerente com o Módulo 3 que o próprio site ensina.
 
 > **Fecho.** Este conjunto de specs é, ele mesmo, um exemplo do Módulo 3: a intenção do site vive aqui,

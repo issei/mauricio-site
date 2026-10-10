@@ -41,7 +41,7 @@ Vocabulário de engenharia preferido ao de marketing (ver tom em 06 §1):
 | **Fail-closed** | Se não foi possível concluir, não se marca como concluído; registra-se o bloqueio e para-se num ponto seguro. | guia-eai §5 |
 | **XAI** | Explicação por *drivers* em linguagem natural + lacunas + proveniência, em vez do score bruto. | guia-eai §6 |
 | **MCP (Model Context Protocol)** | Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança). | [`guia-agent-driven-development.md`](../../../references/guia-agent-driven-development.md) §2 |
-| **SDD (Spec-Driven Development)** | A especificação como fonte da verdade; a IA implementa contra a spec, com testes como alvo. | [`guia-agent-driven-development.md`](../../../references/guia-agent-driven-development.md) §2 |
+| **SDD (Spec-Driven Development)** | A especificação versionada como referência da intenção; a IA implementa contra ela e os testes verificam os comportamentos escolhidos. | [`guia-agent-driven-development.md`](../../../references/guia-agent-driven-development.md) §2 |
 | **ADR** | Architecture Decision Record — registro datado de uma decisão de arquitetura e sua justificativa. | [`docs/decisions/`](../../../decisions/) |
 | **Alucinação sintática** | Código que *parece* perfeito (sintaxe, nomes, estrutura) mas está logicamente errado. | [`guia-agent-driven-development.md`](../../../references/guia-agent-driven-development.md) §1 |
 | **Inventário de Comportamentos** | Ativo holístico do As-Is: regras core, efeitos colaterais e workarounds, classificados por confiança. | [`propostav2.md`](../../../references/propostav2.md) §4 |

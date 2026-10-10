@@ -132,7 +132,7 @@ Após entender a anatomia do Devin e como estruturar contexto (Épico 05), este 
      5. Iteração até "aprovado".
    - Contexto Total: ~2-3 mil tokens (código + análise + feedback).
    - Tempo: ~15-20 minutos de iteração real.
-   - Resultado: PR de qualidade comprovada, sem surpresas em merge.
+   - Resultado: PR revisado e testado, com menos surpresas no merge.
 
    **Playbook 2 — ONBOARDING DE NOVO ENGENHEIRO**
    - Situação: Novo engenheiro chega, precisa entender projeto rapidamente.
@@ -386,7 +386,7 @@ Após entender a anatomia do Devin e como estruturar contexto (Épico 05), este 
       <p class="playbook-card__dados">
         <strong>Contexto total:</strong> ~2-3 mil tokens (código + análise + feedback)<br />
         <strong>Tempo:</strong> ~15-20 minutos de iteração real<br />
-        <strong>Resultado:</strong> PR de qualidade comprovada, sem surpresas em merge.
+        <strong>Resultado:</strong> PR revisado e testado, com menos surpresas no merge.
       </p>
     </article>
 

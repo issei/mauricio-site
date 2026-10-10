@@ -2,7 +2,7 @@
 
 > Versão Markdown, otimizada para leitura por IAs (GEO/AEO), da página
 > <https://mauricio.issei.com.br/engenharia-confianca>.
-> Autor: **Maurício Yokoyama Issei** · Idioma: pt-BR · Publicado: 2026-06-19 · Atualizado: 2026-06-21 ·
+> Autor: **Maurício Yokoyama Issei** · Idioma: pt-BR · Publicado: 2026-06-19 · Atualizado: 2026-10-10 ·
 > Licença de citação: fair use educacional, com atribuição.
 
 ## Em síntese (resposta direta)
@@ -113,12 +113,13 @@ A maestria não está em digitar código mais rápido — está em dirigir a int
 intenção clara. Como um chef executivo que não cozinha cada prato mas garante que cada prato saia certo, o
 profissional sobe da execução para o **julgamento**.
 
-O método central é o **Spec-Driven Development (SDD)**: a especificação é a fonte da verdade. Em vez de
+O método central é o **Spec-Driven Development (SDD)**: a especificação é a âncora da intenção. Em vez de
 pedir "faça X" e torcer, escreve-se o *o quê* e o *porquê*, e a IA implementa *contra* a spec, com testes
-(**BDD**) como alvo. O contexto sai da cabeça e entra no repositório.
+(**BDD**) para verificar o comportamento. O contexto sai da cabeça e entra no repositório.
 
-Fluxo prático (validado no caso Devin + Salesforce): **Spec** → **Retrieve** (descoberta autônoma de
-contexto) → **Refatorar** (edição guiada pela spec) → **Validar** (Apex Tests que provam a intenção).
+Fluxo prático (relatado pelo autor no caso Devin + Salesforce): **Spec** → **Retrieve** (descoberta
+autônoma de contexto) → **Refatorar** (edição guiada pela spec) → **Validar** (Apex Tests que verificam
+os critérios de aceite).
 
 **Arsenal de inteligência organizacional:** *Skills* (procedimentos reutilizáveis), *Playbooks* (receitas
 de processo) e *Knowledge* (arquitetura, convenções, lições e *gotchas*). Versionar esse estado cognitivo
@@ -141,7 +142,7 @@ Cinco estágios (espelham CMMI e o Microsoft AI Adoption Maturity Model):
 2. **Consciência** — reconhece o Crash Silencioso.
 3. **Mapeado** — o implícito virou explícito.
 4. **Arquitetado** — contratos, determinismo, MCP.
-5. **Governado** — a spec é a fonte da verdade.
+5. **Governado** — a spec é a âncora da intenção.
 
 ---
 
@@ -169,8 +170,10 @@ para o resíduo interpretativo. Mesma entrada → mesma saída; não-determinism
 declara quais ferramentas pode usar. O A2UI é sua evolução: o agente emite intenção de interface — o
 Cérebro decide o quê, a Vitrine determinística decide como renderizar.
 
-**O que é SDD?** Spec-Driven Development: a especificação é a fonte da verdade; a IA implementa contra a
-spec com testes (BDD) como alvo. Intenção versionada escala; prompt efêmero se perde.
+**O que é SDD?** Spec-Driven Development: a especificação versionada é a referência da intenção; a IA
+implementa contra a spec, com testes (BDD) para verificar. A spec não é infalível: quando spec, testes e
+código divergem, uma pessoa com autoridade decide o que corrigir. Intenção versionada escala; prompt
+efêmero se perde.
 
 **Quais são os quatro módulos?** Despertar (M0), Mapear (M1), Arquitetar (M2), Orquestrar (M3).
 
@@ -200,7 +203,7 @@ a autoavaliação guiada de 5 perguntas e o checklist de prontidão organizacion
 - **BDD** — Cenários Dado/Quando/Então com fixtures gravadas; testa o sistema ao redor do modelo.
 - **Fail-closed** — Se não foi possível concluir, não se marca como concluído; registra-se o bloqueio e para-se num ponto seguro.
 - **MCP (Model Context Protocol)** — Protocolo padronizado que dá ao agente "mãos e olhos" controlados (fronteira de segurança).
-- **SDD (Spec-Driven Development)** — A especificação como fonte da verdade; a IA implementa contra a spec.
+- **SDD (Spec-Driven Development)** — A especificação versionada como referência da intenção; a IA implementa contra ela e os testes verificam os comportamentos escolhidos.
 - **Orquestrador Cognitivo** — Quem dirige a inteligência da máquina com intenção, consumindo tools tipadas derivadas dos schemas.
 - **ISM (Intentional Systems Model) v1.0** — Modelo de referência que trata cada output de IA como artefato governado por arquitetura.
 - **Limiar de 98% de Certeza** — Piso de confiança abaixo do qual toda inferência é interceptada e degradada para fallback estruturado.
