@@ -105,8 +105,8 @@ Faseamento visual:
 
    **Momento 3 — A GENERALIZAÇÃO**
    - Ambos os lados: card única com síntese:
-     - Lição universalizável: "Sempre especifique o objetivo, sempre inclua restrições, sempre forneça exemplos do resultado esperado."
-     - Aplicabilidade: "Vale para qualquer ferramenta, qualquer linguagem, qualquer contexto."
+     - Lição que se transfere: "Sempre especifique o objetivo, sempre inclua restrições, sempre forneça exemplos do resultado esperado."
+     - Aplicabilidade: "Vale para a maioria das ferramentas e linguagens."
 
 ---
 

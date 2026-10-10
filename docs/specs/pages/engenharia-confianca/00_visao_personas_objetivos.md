@@ -63,7 +63,7 @@ Ao final, o leitor consegue:
 2. **Mapear** a verdade de um legado: tornar o implícito explícito antes de modernizar (As-Is → To-Be).
 3. **Justificar** uma arquitetura confiável: determinístico-primeiro, Cérebro × Vitrine, contratos
    rígidos, MCP como fronteira.
-4. **Operar** como Orquestrador Cognitivo: escrever a especificação como fonte da verdade (SDD) e
+4. **Operar** como Orquestrador Cognitivo: escrever a especificação como âncora da intenção (SDD) e
    acumular inteligência organizacional (Skills, Playbooks, Knowledge).
 
 ### 1.6 Não-objetivos (o que o site **não** é)
@@ -157,7 +157,7 @@ de cada página pergunta: **"Em que estágio está o seu sistema/time hoje?"**
 | 2 | **Consciência** | Reconhece o Crash Silencioso e o resíduo interpretativo; sabe o que não sabe. | M0 → M1 |
 | 3 | **Mapeado** | Tornou o implícito explícito; tem inventário de comportamentos do As-Is. | M1 |
 | 4 | **Arquitetado** | Comportamento governado por contratos, determinismo e fronteiras (MCP). | M2 |
-| 5 | **Governado / Intencional** | Especificação é a fonte da verdade; inteligência organizacional acumula em Skills/Knowledge. | M3 |
+| 5 | **Governado / Intencional** | Especificação versionada é a âncora da intenção; inteligência organizacional acumula em Skills/Knowledge. | M3 |
 
 ### 3.2 Objetivos de aprendizagem por módulo (mensuráveis)
 
@@ -168,7 +168,7 @@ Cada objetivo é redigido como "o leitor consegue…" e tem um **gate de reflex�
 | M0 | Distinguir falha *com* erro de código de falha *sem* erro (Crash Silencioso) e nomear a falha de intenção. | "Aponte um Crash Silencioso que você viveu: que valor se perdeu sem nenhum alerta vermelho?" |
 | M1 | Separar o que é regra de negócio *explícita* do que é conhecimento *implícito* (tácito) num legado. | "Quanto da lógica crítica do seu sistema vive só na cabeça de poucas pessoas?" |
 | M2 | Justificar por que determinismo, contratos e a separação Cérebro × Vitrine aumentam a confiança. | "Onde, no seu sistema, a saída de um LLM toca dados sem passar por um contrato?" |
-| M3 | Explicar a transição de Executor para Orquestrador Cognitivo e o papel da spec como fonte da verdade. | "Sua intenção vive num prompt efêmero ou numa especificação versionada?" |
+| M3 | Explicar a transição de Executor para Orquestrador Cognitivo e o papel da spec como âncora da intenção. | "Sua intenção vive num prompt efêmero ou numa especificação versionada?" |
 
 ### 3.3 Objetivo terminal (capstone narrativo)
 

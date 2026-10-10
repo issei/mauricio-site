@@ -372,7 +372,7 @@ Seção de transição. Fundo diferenciado (escuro, se o restante do site usa fu
 
 > Comunique como um profissional sênior orientando um iniciante altamente capaz. Sem ambiguidade, sem subentendidos.  
 >
-> A IA vai interpretar exatamente o que você escreveu — não o que você quis dizer. Se a instrução for vaga, o resultado será vago.  
+> A IA trabalha a partir do que você escreveu e preenche o resto por inferência, que pode estar errada. Se a instrução for vaga, o resultado será vago.  
 >
 > **Exemplo de prompt pouco claro:** *"Melhore esse código."*  
 > **Exemplo de prompt claro:** *"Refatore esse método para seguir o princípio de responsabilidade única, sem alterar o comportamento externo e mantendo os testes existentes passando."*
@@ -799,7 +799,7 @@ Regras críticas para o banco PostgreSQL legado da BUPJ:
 **Rótulo de seção:** `HANDS-ON · SDD`
 
 ### Título
-> Spec-Driven Development: a especificação como fonte da verdade.
+> Spec-Driven Development: a especificação como âncora da intenção.
 
 ### Subtítulo
 > Em vez de o agente adivinhar, ele lê. Em vez de improvisar, ele segue uma partitura.
@@ -810,10 +810,10 @@ Regras críticas para o banco PostgreSQL legado da BUPJ:
 > O desenvolvedor descreve uma tarefa de forma informal no chat. O agente improvisa com base na sua interpretação. O resultado varia com o prompt, o contexto da sessão e até com o humor estatístico do modelo. A mesma tarefa repetida amanhã pode gerar um resultado diferente.
 
 **COM SDD — Spec Versionada**
-> O desenvolvedor cria um documento estruturado com objetivo, escopo, critérios de aceite e restrições. O agente lê esse documento antes de qualquer execução. A tarefa é reproduzível, auditável e revisável pela equipe inteira antes de ser executada.
+> O desenvolvedor cria um documento estruturado com objetivo, escopo, critérios de aceite e restrições. O agente lê esse documento antes de qualquer execução. A tarefa fica registrada, auditável e revisável pela equipe inteira antes de ser executada.
 
-**EFEITO — Reprodutibilidade**
-> A mesma spec gera o mesmo comportamento em qualquer sessão, com qualquer membro do time. Bugs encontrados na execução revelam falhas na spec — não no agente. Isso inverte a dinâmica de debugging: você melhora a especificação, não só o código.
+**EFEITO — Menos variação**
+> A mesma spec aproxima o comportamento entre sessões e entre pessoas do time, sem torná-lo idêntico — o agente não é determinístico. Quando um bug aparece, a falha pode estar na spec, no teste ou no código; quem tem autoridade sobre a regra decide o que corrigir.
 
 ---
 
@@ -897,7 +897,7 @@ sf apex test run --tests OrderServiceTest --code-coverage --result-format human
 > Quatro passos da Spec até o Apex Test passando.
 
 ### Subtítulo
-> Devin lê a spec. Devin executa o Salesforce CLI. Devin valida. Você revisa.
+> Devin lê a spec. Devin executa o Salesforce CLI. Devin roda os testes. Você revisa e decide.
 
 ### Os quatro passos (timeline ou stepper visual)
 
@@ -925,7 +925,7 @@ sf project retrieve start --metadata ApexClass:OrderService
 
 **Passo 03 — REFATORAR (Edição guiada pela spec)**
 
-> O agente localiza os arquivos recuperados, aplica a regra de negócio descrita na spec e atualiza os testes correspondentes. Cada modificação é guiada pelos critérios de aceite — não por interpretação livre.
+> O agente localiza os arquivos recuperados, aplica a regra de negócio descrita na spec e atualiza os testes correspondentes. Cada modificação é guiada pelos critérios de aceite, o que reduz — sem eliminar — a interpretação livre.
 
 ```bash
 edit force-app/main/default/classes/OrderService.cls

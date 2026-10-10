@@ -113,24 +113,25 @@ diretamente.
 
 ## 4. Módulo 3 — Fluxo Spec-Driven Development
 
-**Objetivo:** mostrar a spec como fonte da verdade e o ciclo Spec → Retrieve → Refatorar → Validar com
+**Objetivo:** mostrar a spec como âncora da intenção e o ciclo Spec → Retrieve → Refatorar → Validar com
 loop de feedback. **Complexidade:** Baixa.
 
 ```mermaid
 flowchart LR
-    SPEC[📜 SPEC<br/>definição SDD = fonte da verdade] --> RET[🔍 RETRIEVE<br/>descoberta autônoma do contexto]
+    SPEC[📜 SPEC<br/>definição SDD = âncora da intenção] --> RET[🔍 RETRIEVE<br/>descoberta autônoma do contexto]
     RET --> REF[✏️ REFATORAR<br/>edição guiada pela spec]
     REF --> VAL{✅ VALIDAR<br/>testes BDD / Apex Tests}
     VAL -- falha --> REF
-    VAL -- passa --> DONE[Comportamento provado = intenção cumprida]
+    VAL -- passa --> DONE[Critérios verificados]
     DONE -. lições .-> KN[(Knowledge<br/>ativo que cresce)]
     style SPEC fill:#1a2733,stroke:#007bff,color:#cfe8ff
     style VAL fill:#2a1a3a,stroke:#8a2be2,color:#e6d5ff
 ```
 
-**Equivalente textual:** a spec SDD é a fonte da verdade; a partir dela a IA descobre o contexto
-(retrieve), refatora guiada pela spec e valida com testes. Se falha, volta a refatorar; se passa, a
-intenção está cumprida e as lições alimentam o Knowledge organizacional.
+**Equivalente textual:** a spec SDD é a âncora da intenção; a partir dela a IA descobre o contexto
+(retrieve), refatora guiada pela spec e roda os testes. Se falha, volta a refatorar; se passa, os
+critérios verificados foram atendidos — o que não prova a intenção inteira — e as lições alimentam o
+Knowledge organizacional.
 
 ---
 

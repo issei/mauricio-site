@@ -179,7 +179,7 @@ Este épico realiza uma **transição estrutural** (Seção 9) e inaugura o **co
         Sem ambiguidade, sem subentendidos.
       </p>
       <p class="pilar__explanation">
-        A IA vai interpretar exatamente o que você escreveu — não o que você quis dizer. 
+        A IA trabalha a partir do que você escreveu e preenche o resto por inferência, que pode estar errada. 
         Se a instrução for vaga, o resultado será vago.
       </p>
       <div class="pilar__example">

@@ -311,7 +311,7 @@ mais inteligente.
 ### CTA de reflexão
 
 > **"Sua intenção vive num prompt que você joga fora, ou numa especificação que sua organização
-> versiona e reusa?"** — Se a spec é sua fonte da verdade e o conhecimento acumula, você é
+> versiona e reusa?"** — Se a spec é a referência versionada da sua intenção e o conhecimento acumula, você é
 > Governado. *(Maturidade 4 → 5)*
 
 ---
