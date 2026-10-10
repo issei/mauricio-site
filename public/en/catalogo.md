@@ -32,6 +32,7 @@ From intention to reliable agentic execution: the discipline-bridge that transfo
 - [Knowledge OS Enterprise](https://mauricio.issei.com.br/en/knowledge-os-presentation) — the knowledge system that gives traceability and security to AI.
 - [Agentic Digital Workplace](https://mauricio.issei.com.br/en/digital-workplace-agentico) — as a corporate portal evolves to a platform that solves intentions: five stages of maturity, layered architecture, AG-UI, delegated identity, governed knowledge and roadmap.
 - [Accessibility as an engineering requirement](https://mauricio.issei.com.br/en/acessibilidade) — how A11Y.md has entered the development of this site with AI agents: real flow, diffs, accessibility turnstile and what has not yet been verified.
+- [Structured Conversational Specification](https://mauricio.issei.com.br/en/especificacao-conversacional) — a workflow proposed to use AI in eliciting requirements under human authority, with traceable divergences between documentation, testing and code, and which has not yet been evaluated.
 
 ## 03 · Application — Salesforce Ecosystem
 
