@@ -176,6 +176,13 @@ function rodar(e) {
   });
 }
 
+// Gate interrompido de fora (Ctrl+C, kill): derruba os filhos. Sem isto, no Windows o
+// Playwright e o dev server ficavam órfãos segurando a porta 5173 (visto em 2026-10-11:
+// um `playwright test` de um gate abortado vivo horas depois).
+for (const sinal of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
+  process.on(sinal, () => { encerrando = true; for (const f of vivos) matar(f); process.exit(130); });
+}
+
 const resultados = [];
 const inicio = Date.now();
 
