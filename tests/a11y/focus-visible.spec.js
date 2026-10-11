@@ -4,6 +4,7 @@
 // no CSS e o usuário não vê nada. Aqui se compara o PIXEL do elemento focado com o mesmo elemento
 // desfocado: se forem idênticos, não há indicador. Só chromium (custo: 2 capturas por parada).
 import { test, expect } from '@playwright/test';
+import { testDoGate } from '../_helpers/gate.js';
 
 const PAGINAS = [
   'engenharia-agentes-ia',
@@ -27,7 +28,7 @@ const MAX_PARADAS = 260;
 
 for (const entrada of PAGINAS) {
   const [pagina, modo = 'pixel'] = Array.isArray(entrada) ? entrada : [entrada];
-  test(`${pagina}: toda parada de Tab tem indicador de foco visível`, async ({ page, browserName }) => {
+  testDoGate(test, pagina)(`${pagina}: toda parada de Tab tem indicador de foco visível`, async ({ page, browserName }) => {
     test.skip(browserName !== 'chromium', 'comparação de pixel: só no chromium');
     test.setTimeout(240_000);
     await page.setViewportSize({ width: 1280, height: 800 });

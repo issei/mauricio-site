@@ -30,6 +30,8 @@ The zero of the second item applies to the WCAG rules of the axe, measured at 12
 
 View real flow View code changes See what not verified
 
+You prefer the essentials first? Read synthesis (~1 min)
+
 01 · The Problem
 
 #### An interface can pass the test and still block someone

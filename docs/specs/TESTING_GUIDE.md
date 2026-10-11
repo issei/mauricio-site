@@ -561,7 +561,26 @@ Fonte da verdade: [`.github/workflows/quality-gate.yml`](../../.github/workflows
 | `push` na `main`, nightly (03:00 BRT), manual | `full` | + `firefox`, `webkit` |
 
 Regressão exclusiva de Firefox/WebKit aparece no push da `main` ou no nightly, não no PR.
-Para cobrar os 3 navegadores antes do merge, rode `npm run gate` localmente (roda tudo).
+Para cobrar os 3 navegadores antes do merge, rode `npm run gate -- --full` localmente.
+
+### Gate local: escopo por impacto
+
+Plano, medições e decisões: [`QUALITY_GATE_PARALELO.md`](QUALITY_GATE_PARALELO.md).
+
+| Comando | Escopo |
+| :--- | :--- |
+| `npm run gate` | **Impacto**: compara com `origin/main`; Chromium (+ `mobile`/`no-js` se a página tiver), só as specs das páginas alteradas e as transversais filtradas por `GATE_PAGES`; varredura a11y só dessas páginas. Arquivo compartilhado (CSS/JS global, config, helpers de teste, `package.json`…) escala sozinho para **tudo**. |
+| `npm run gate -- --full` | Tudo, 5 projetos (o gate de antes). `CI=true` também força. |
+| `npm run gate -- --paginas devin,index` | Impacto forçado nessas páginas. |
+| `npm run gate -- --leve` | No escopo "tudo", só o Chromium (usado pelo hook de Stop). |
+
+As etapas rodam em paralelo (as que leem `dist/` esperam o build) e o gate continua
+fail-closed: a primeira falha encerra as demais. No fim, ele imprime o tempo de cada
+etapa e o que **não** rodou.
+
+Spec transversal nova (que visita várias páginas) declara cada teste com
+`testDoGate(test, 'pagina')(titulo, fn)` de `tests/_helpers/gate.js` e entra em
+`TRANSVERSAIS` de `scripts/gate/impacto.mjs`.
 
 Reproduzir um shard: `CI=1 npx playwright test --shard=3/6 --project=chromium --project=mobile --project=no-js`.
 

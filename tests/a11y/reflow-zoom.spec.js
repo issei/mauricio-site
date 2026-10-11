@@ -2,8 +2,9 @@
 // A catraca (scripts/a11y-sweep.mjs) já trava `reflow:320`, `meta-viewport`, `aria-prohibited-attr` e
 // `motion:reduce` nas 42 páginas; aqui se confere o COMPORTAMENTO que a catraca não enxerga.
 import { test, expect } from '@playwright/test';
+import { testDoGate } from '../_helpers/gate.js';
 
-test('life e life3d não bloqueiam o zoom (WCAG 1.4.4)', async ({ page }) => {
+testDoGate(test, 'life', 'life3d')('life e life3d não bloqueiam o zoom (WCAG 1.4.4)', async ({ page }) => {
   for (const p of ['life', 'life3d']) {
     await page.goto(`/${p}.html`);
     const content = await page.locator('meta[name="viewport"]').getAttribute('content');
@@ -12,7 +13,7 @@ test('life e life3d não bloqueiam o zoom (WCAG 1.4.4)', async ({ page }) => {
   }
 });
 
-test('life3d: fases são uma lista; só a atual leva aria-current', async ({ page }) => {
+testDoGate(test, 'life3d')('life3d: fases são uma lista; só a atual leva aria-current', async ({ page }) => {
   await page.goto('/life3d.html');
   // a página cria o WebGLRenderer no topo do script: sem WebGL (Firefox headless do CI) o init nunca roda
   const temWebGL = await page.evaluate(() => !!document.createElement('canvas').getContext('webgl'));
@@ -24,7 +25,7 @@ test('life3d: fases são uma lista; só a atual leva aria-current', async ({ pag
   expect(await page.locator('#progress-dots [aria-current="step"]').count()).toBeLessThanOrEqual(1);
 });
 
-test('a 320px o bloco de código que rola vira região focável e rola por teclado', async ({ page }) => {
+testDoGate(test, 'salesforce-agentic-dev')('a 320px o bloco de código que rola vira região focável e rola por teclado', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto('/salesforce-agentic-dev.html');
   await page.waitForFunction(() => document.querySelector('pre[data-a11y-scroll]'));
@@ -38,7 +39,7 @@ test('a 320px o bloco de código que rola vira região focável e rola por tecla
   await expect.poll(() => pre.evaluate((e) => e.scrollLeft)).toBeGreaterThan(before);
 });
 
-test('a 1280px blocos que cabem não ganham parada de Tab à toa', async ({ page }) => {
+testDoGate(test, 'salesforce-agentic-dev')('a 1280px blocos que cabem não ganham parada de Tab à toa', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/salesforce-agentic-dev.html');
   await page.waitForTimeout(600);
@@ -47,7 +48,7 @@ test('a 1280px blocos que cabem não ganham parada de Tab à toa', async ({ page
   expect(marcados).toBeLessThan(total);
 });
 
-test('curriculo: modal do projeto fecha por teclado, prende o foco e devolve ao gatilho', async ({ page }) => {
+testDoGate(test, 'curriculo')('curriculo: modal do projeto fecha por teclado, prende o foco e devolve ao gatilho', async ({ page }) => {
   await page.goto('/curriculo.html');
   await page.waitForFunction(() => typeof window.openModal === 'function');
   const gatilho = page.locator('#projects-container .project-card').first().getByRole('button', { name: 'Saiba Mais' });
@@ -76,7 +77,7 @@ test('curriculo: modal do projeto fecha por teclado, prende o foco e devolve ao 
   expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
 });
 
-test('movimento reduzido: nenhuma animação infinita nas propostas e no currículo', async ({ browser }) => {
+testDoGate(test, 'proposta', 'service-operations-2-0', 'sustentacao', 'curriculo')('movimento reduzido: nenhuma animação infinita nas propostas e no currículo', async ({ browser }) => {
   test.setTimeout(60_000); // 4 páginas com 1,2 s de espera cada: no WebKit do CI levava 24 s e às vezes passava dos 30 s padrão
   const ctx = await browser.newContext({ reducedMotion: 'reduce' });
   for (const p of ['proposta', 'service-operations-2-0', 'sustentacao', 'curriculo']) {

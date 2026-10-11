@@ -12,6 +12,27 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+/*
+ * testDir é a raiz (para cobrir e2e/ e tests/), então o glob 'tests/**' também
+ * casava com as cópias do repositório em .claude/worktrees/: cada worktree
+ * velha somava a suíte inteira de novo (9.286 testes locais contra 1.381 reais,
+ * medido em 2026-10-11). O testIgnore de projeto substitui o global, por isso a
+ * lista entra em todo projeto.
+ */
+const PREVIEW = process.env.PW_SERVIDOR === 'preview';
+// PW_PORTA: roda a suíte numa porta própria, sem disputar a 5173 com um dev server aberto.
+const PORTA = Number(process.env.PW_PORTA) || 5173;
+
+const SEMPRE_IGNORAR = ['**/.claude/**', '**/node_modules/**', '**/dist/**'];
+
+/*
+ * Specs que só fazem sentido no Chromium (comparação de pixel, varredura
+ * estática do DOM, hreflang). Fora do projeto por config, não por test.skip no
+ * corpo: o sharding só desconta testes pulados de forma ESTÁTICA, e um skip no
+ * corpo conta como carga num shard de firefox/webkit que não roda nada.
+ */
+const SO_CHROMIUM = ['**/a11y/focus-visible.spec.js', '**/a11y/label-in-name.spec.js', '**/hreflang.spec.js'];
+
 export default defineConfig({
   testDir: '.',
   testMatch: ['e2e/**/*.spec.js', 'tests/**/*.spec.js'],
@@ -51,7 +72,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'http://localhost:5173',
+    baseURL: `http://localhost:${PORTA}`,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -67,19 +88,19 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
+      testIgnore: [...SEMPRE_IGNORAR, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
     },
 
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
+      testIgnore: [...SEMPRE_IGNORAR, ...SO_CHROMIUM, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
     },
 
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-      testIgnore: ['**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
+      testIgnore: [...SEMPRE_IGNORAR, ...SO_CHROMIUM, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
     },
 
     /*
@@ -91,12 +112,14 @@ export default defineConfig({
       name: 'mobile',
       use: { ...devices['Pixel 5'] },
       testMatch: ['tests/apresentacao.mobile.spec.js'],
+      testIgnore: SEMPRE_IGNORAR,
     },
     {
       // Degradação sem JavaScript (spec §4.2) — antes, inverificável
       name: 'no-js',
       use: { ...devices['Desktop Chrome'], javaScriptEnabled: false },
       testMatch: ['tests/apresentacao.nojs.spec.js', 'tests/formulacao.nojs.spec.js', 'tests/index.nojs.spec.js', 'tests/digital-workplace.nojs.spec.js'],
+      testIgnore: SEMPRE_IGNORAR,
     },
 
     /* Test against branded browsers. */
@@ -110,11 +133,17 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
+  /*
+   * Servidor dos testes. Padrão: dev server do Vite. PW_SERVIDOR=preview serve o
+   * build (dist/, exige `vite build` antes): o CSS chega como arquivo, sem a
+   * janela de FOUC em que o axe mede contraste antes da cor temática (ver
+   * retries acima) — docs/specs/QUALITY_GATE_PARALELO.md, P3.
+   */
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:5173',
-    reuseExistingServer: !process.env.CI,
+    command: PREVIEW ? `npx vite preview --port ${PORTA} --strictPort` : `npx vite --port ${PORTA} --strictPort`,
+    url: `http://localhost:${PORTA}`,
+    // Em preview, nunca reaproveitar: o que estiver na 5173 pode ser o dev server.
+    reuseExistingServer: !process.env.CI && !PREVIEW,
   },
 });
 

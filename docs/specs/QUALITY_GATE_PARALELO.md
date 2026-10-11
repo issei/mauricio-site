@@ -1,7 +1,8 @@
 # Quality gate mais rápido — paralelismo e seleção por impacto
 
-Status: **plano** (nada implementado) · 2026-10-11 · Autor: Maurício Yokoyama Issei (com Claude)
+Status: **implementado** (P1, P2, P4, P5; P3 avaliado e não adotado) · 2026-10-11 · Autor: Maurício Yokoyama Issei (com Claude)
 Complementa a seção "CI/CD Integration" de [`TESTING_GUIDE.md`](TESTING_GUIDE.md).
+Resultado e decisões: [§8](#8-implementação-e-medições-2026-10-11). As seções 1–7 são o plano original.
 
 ## 1. Problema
 
@@ -165,3 +166,66 @@ sem mais runners.
 - [ ] Mudança em arquivo compartilhado escala para `--full` sem flag manual.
 - [ ] Falha em qualquer etapa paralela sai ≠ 0 e mata as irmãs.
 - [ ] Shard mais lento do CI `full` a no máximo 1,2× a média.
+
+## 8. Implementação e medições (2026-10-11)
+
+### 8.1 A causa principal não estava no plano
+
+`playwright.config.js` usa `testDir: '.'` com `testMatch: 'tests/**/*.spec.js'`.
+O glob também casava com as cópias do repositório em `.claude/worktrees/` (6
+worktrees de sessões antigas): **9.286 testes locais contra 1.381 reais**, quase
+7× o trabalho. No CI não há worktrees, por isso o CI nunca mostrou o problema.
+Correção: `SEMPRE_IGNORAR` (`.claude`, `node_modules`, `dist`) no `testIgnore` de
+todo projeto (o de projeto substitui o global).
+
+### 8.2 O que entrou
+
+| Item | Onde | Efeito |
+| --- | --- | --- |
+| Worktrees fora da suíte | `playwright.config.js` | 9.286 → 1.381 testes locais |
+| P5 — tempos por etapa | `scripts/quality-gate.mjs` | resumo `=== tempos ===` no fim de toda execução |
+| P2 — etapas em paralelo | `scripts/quality-gate.mjs` | as que leem `dist/` esperam o build; o resto, e o Playwright, começam juntos; fail-closed mata as irmãs (verificado: falha em `node:test` encerra tudo em 6 s, sem navegador órfão) |
+| P1 — escopo por impacto | `scripts/gate/impacto.mjs`, `tests/_helpers/gate.js`, `tests/gate-impacto.test.mjs` | padrão local; `--full`, `--paginas`, `--leve`; transversais declaram testes com `testDoGate` (pulados por declaração, sem abrir página) |
+| `label-in-name` por página | `tests/a11y/label-in-name.spec.js` | o teste único de ~93 s, o mais longo da suíte, virou 82 testes paralelizáveis e filtráveis; leitura resistente a navegação tardia (falhou uma vez sob carga com "Execution context was destroyed") |
+| P4 — shards | `playwright.config.js` | specs só-Chromium (`focus-visible`, `label-in-name`, `hreflang`) saem de firefox/webkit por `testIgnore`. O sharding só desconta testes pulados de forma **estática**; o skip no corpo contava como carga num shard que não rodava nada |
+| Hook de Stop | `scripts/stop-gate.mjs` | passou de "Chromium inteiro" para impacto + `--leve` |
+| `PW_PORTA`, `PW_SERVIDOR=preview` | `playwright.config.js` | suíte numa porta própria; preview opcional (ver 8.4) |
+
+### 8.3 Medições
+
+| Cenário | Antes | Depois |
+| --- | --- | --- |
+| Mudança em uma página (`--paginas especificacao-conversacional`) | > 10 min (abortado) | **36 s** (14 testes rodaram, 215 pulados por declaração) |
+| Etapas sem Playwright, suíte inteira (`--no-e2e`) | ~247 s em série | **192 s** (a varredura a11y, 182 s, é o caminho crítico) |
+| Chromium + mobile + no-js (camada `fast` do CI) | — | 562 testes, 391 s, verde |
+| `--full` local (5 projetos, Windows) | estimado ~16 min, sem medição | **23,6 min**, 1.401 passaram, 0 falhas |
+
+O `--full` local ficou acima da estimativa: Firefox e WebKit no Windows são lentos,
+e a varredura a11y em paralelo com o Playwright disputa CPU (408 s em paralelo
+contra 182–191 s sozinha). O tempo de relógio é o do Playwright, o caminho crítico;
+quanto a disputa por CPU o alongou não foi medido (exigiria um `--full` com as duas
+etapas em série). O `--full`
+existe para antes de um merge arriscado; o dia a dia é o escopo por impacto.
+
+### 8.4 P3 avaliado e não adotado
+
+Chromium contra o build (`PW_SERVIDOR=preview`): **352 s**, contra **370 s** no dev
+server, só 5% mais rápido. Sete testes do OCC quebram, porque dependem de ganchos
+de depuração (`window.__DEBUG_*`) e de imports de módulo (`/js/...`) que só
+existem no dev server. O ganho não paga a reescrita desses testes. O modo fica
+disponível para quem quiser medir contraste sem FOUC.
+
+### 8.5 Achados laterais
+
+- **`build-aeo.mjs` agora é idempotente.** A causa era o fim de linha: com
+  `core.autocrlf`, a cópia de trabalho vem em CRLF e as regex de limpeza esperam
+  `\n`. O script processa em LF, devolve o EOL original e só grava o que mudou.
+  Segunda execução seguida: 0 arquivos alterados. A primeira, sobre a `main`,
+  limpou o acumulado (14 separadores duplicados e blocos `<style>` reordenados
+  dentro do `<head>`, sem mudança de conteúdo) e revelou um descompasso de fonte:
+  a linha da Especificação Conversacional no `catalogo.md` tinha sido incluída à
+  mão, sem entrar em `pages.mjs`, e a regeneração a apagava. Corrigido na fonte.
+- **Regra `freshness` do `verify-a11y.py`: mantida.** Restringi-la a "mudanças de
+  marcação" exigiria classificar diffs de HTML, e a regra é a garantia de que
+  alguém olhou a acessibilidade depois de cada mudança de interface. O custo (uma
+  nota no `REPORT.md` por PR que toca `src/`) é o preço dessa garantia.

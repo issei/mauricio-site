@@ -861,6 +861,7 @@ export const PAGES = [
         '- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — o sistema de conhecimento que dá rastreabilidade e segurança à IA.',
         '- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) — como um portal corporativo evolui para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.',
         '- [Acessibilidade como requisito de engenharia](https://mauricio.issei.com.br/acessibilidade) — como o A11Y.md entrou no desenvolvimento deste site com agentes de IA: fluxo real, diffs, catraca de acessibilidade e o que ainda não foi verificado.',
+        '- [Especificação Conversacional Estruturada](https://mauricio.issei.com.br/especificacao-conversacional) — um workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código, e o que ainda não foi avaliado.',
       ].join('\n') },
       { h: '03 · A Aplicação — Ecossistema Salesforce', body: [
         'Métodos agênticos aplicados à plataforma Salesforce: onde o método encontra a engenharia real.',

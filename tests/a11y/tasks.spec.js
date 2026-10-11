@@ -2,6 +2,7 @@
 // A catraca (scripts/a11y-sweep.mjs) já exige skip link + <main> nas 42 páginas; aqui se confere o
 // COMPORTAMENTO em páginas que nasceram sem eles.
 import { test, expect } from '@playwright/test';
+import { testDoGate } from '../_helpers/gate.js';
 
 const PAGES = [
   ['devops-salesforce', 'conteudo'],
@@ -15,7 +16,7 @@ const PAGES = [
 ];
 
 for (const [page, target] of PAGES) {
-  test(`${page}: 1º Tab é o skip link, aparece no foco e leva ao <main>`, async ({ page: pw, browserName }) => {
+  testDoGate(test, page)(`${page}: 1º Tab é o skip link, aparece no foco e leva ao <main>`, async ({ page: pw, browserName }) => {
     // O Safari não põe links na ordem de Tab por padrão (só com Option+Tab ou VoiceOver); o Playwright
     // WebKit herda isso — o comportamento do skip link aí é de validação humana, não de Tab simulado.
     test.skip(browserName === 'webkit', 'WebKit não tabula links por padrão');
@@ -46,7 +47,7 @@ for (const [page, target] of PAGES) {
 
 // T4 (auditoria-v2, AV2-01): a fração do capítulo 3 do OCC só se montava com mouse — blocos `div` com
 // tabindex e só `click`, zonas sem foco — e sem ela os capítulos 4–6 não liberam.
-test('OCC cap. 3: monta a fração só com teclado', async ({ page }) => {
+testDoGate(test, 'operacao-capital-cognitivo')('OCC cap. 3: monta a fração só com teclado', async ({ page }) => {
   await page.goto('/operacao-capital-cognitivo.html');
   await page.waitForFunction(() => typeof window.__DEBUG_skipToChapter === 'function');
   await page.evaluate(() => window.__DEBUG_skipToChapter(3));
@@ -70,7 +71,7 @@ test('OCC cap. 3: monta a fração só com teclado', async ({ page }) => {
   await expect(page.locator('#formula-naming')).toBeVisible();
 });
 
-test('curriculo: botão secundário mantém 4,5:1 também no hover', async ({ page }) => {
+testDoGate(test, 'curriculo')('curriculo: botão secundário mantém 4,5:1 também no hover', async ({ page }) => {
   await page.goto('/curriculo.html');
   const btn = page.locator('a.btn-secondary', { hasText: 'LinkedIn' }).first();
   await btn.hover();
