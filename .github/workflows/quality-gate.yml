@@ -4,7 +4,7 @@ name: CI - Quality Gate
 #
 # Caminho crítico = max(static, shard mais lento), não a soma: o job estático
 # (build, geradores, i18n, node:test, varredura a11y, perf) roda em paralelo
-# com o Playwright fatiado por navegador (2 chromium, 2 firefox, 4 webkit) + 2 @lento.
+# com o Playwright fatiado por navegador (2 chromium, 3 firefox, 4 webkit) + 3 @lento.
 #
 # Camadas (docs/specs/TESTING_GUIDE.md, "CI/CD Integration"):
 #   fast (pull_request)               chromium + mobile + no-js
@@ -67,18 +67,26 @@ jobs:
       # shards, dimensionados pela carga medida (chromium 626 s, firefox 709 s, webkit
       # 1.203 s de worker), e os @lento (focus-visible, banner de cookies) têm os seus.
       # docs/specs/QUALITY_GATE_PARALELO.md, P4.
+      # PWTEST_SHARD_WEIGHTS (lido pelo Playwright 1.58, program.js): quantos testes cada shard
+      # recebe, na ordem da lista. Calculados com as durações reais do run 38154440101 para
+      # equalizar o TEMPO, não a contagem (simulado: 100–171 s de teste por shard, razão 1,07).
+      # A soma dos pesos era a contagem de testes do grupo; testes novos mudam a proporção,
+      # não quebram nada. Se uma versão futura ignorar a variável, o corte volta a ser igual.
+      # Recalcular: docs/specs/QUALITY_GATE_PARALELO.md §8.2c.
       matrix:
         include:
-          - { nome: 'chromium 1/2', projetos: '--project=chromium --project=mobile --project=no-js', shard: 1, total: 2, filtro: '--grep-invert @lento', so_full: false }
-          - { nome: 'chromium 2/2', projetos: '--project=chromium --project=mobile --project=no-js', shard: 2, total: 2, filtro: '--grep-invert @lento', so_full: false }
-          - { nome: 'firefox 1/2', projetos: '--project=firefox', shard: 1, total: 2, filtro: '--grep-invert @lento', so_full: true }
-          - { nome: 'firefox 2/2', projetos: '--project=firefox', shard: 2, total: 2, filtro: '--grep-invert @lento', so_full: true }
-          - { nome: 'webkit 1/4', projetos: '--project=webkit', shard: 1, total: 4, filtro: '--grep-invert @lento', so_full: true }
-          - { nome: 'webkit 2/4', projetos: '--project=webkit', shard: 2, total: 4, filtro: '--grep-invert @lento', so_full: true }
-          - { nome: 'webkit 3/4', projetos: '--project=webkit', shard: 3, total: 4, filtro: '--grep-invert @lento', so_full: true }
-          - { nome: 'webkit 4/4', projetos: '--project=webkit', shard: 4, total: 4, filtro: '--grep-invert @lento', so_full: true }
-          - { nome: 'lento 1/2', projetos: '', shard: 1, total: 2, filtro: '--grep @lento', so_full: false }
-          - { nome: 'lento 2/2', projetos: '', shard: 2, total: 2, filtro: '--grep @lento', so_full: false }
+          - { nome: 'chromium 1/2', projetos: '--project=chromium --project=mobile --project=no-js', shard: 1, total: 2, filtro: '--grep-invert @lento', so_full: false, pesos: '246:298' }
+          - { nome: 'chromium 2/2', projetos: '--project=chromium --project=mobile --project=no-js', shard: 2, total: 2, filtro: '--grep-invert @lento', so_full: false, pesos: '246:298' }
+          - { nome: 'firefox 1/3', projetos: '--project=firefox', shard: 1, total: 3, filtro: '--grep-invert @lento', so_full: true, pesos: '109:177:141' }
+          - { nome: 'firefox 2/3', projetos: '--project=firefox', shard: 2, total: 3, filtro: '--grep-invert @lento', so_full: true, pesos: '109:177:141' }
+          - { nome: 'firefox 3/3', projetos: '--project=firefox', shard: 3, total: 3, filtro: '--grep-invert @lento', so_full: true, pesos: '109:177:141' }
+          - { nome: 'webkit 1/4', projetos: '--project=webkit', shard: 1, total: 4, filtro: '--grep-invert @lento', so_full: true, pesos: '60:123:143:101' }
+          - { nome: 'webkit 2/4', projetos: '--project=webkit', shard: 2, total: 4, filtro: '--grep-invert @lento', so_full: true, pesos: '60:123:143:101' }
+          - { nome: 'webkit 3/4', projetos: '--project=webkit', shard: 3, total: 4, filtro: '--grep-invert @lento', so_full: true, pesos: '60:123:143:101' }
+          - { nome: 'webkit 4/4', projetos: '--project=webkit', shard: 4, total: 4, filtro: '--grep-invert @lento', so_full: true, pesos: '60:123:143:101' }
+          - { nome: 'lento 1/3', projetos: '', shard: 1, total: 3, filtro: '--grep @lento', so_full: false, pesos: '13:16:5' }
+          - { nome: 'lento 2/3', projetos: '', shard: 2, total: 3, filtro: '--grep @lento', so_full: false, pesos: '13:16:5' }
+          - { nome: 'lento 3/3', projetos: '', shard: 3, total: 3, filtro: '--grep @lento', so_full: false, pesos: '13:16:5' }
     env:
       # Na camada fast (PR) os shards de firefox/webkit não têm o que rodar: pulam todos os passos.
       PULA: ${{ github.event_name == 'pull_request' && matrix.so_full }}
@@ -114,7 +122,7 @@ jobs:
           PROJECTS="${{ matrix.projetos }}"
           # lento: na fast só o chromium; na full, todos os navegadores
           [ -z "$PROJECTS" ] && [ "$TIER" = fast ] && PROJECTS="--project=chromium"
-          npx playwright test --shard=${{ matrix.shard }}/${{ matrix.total }} ${{ matrix.filtro }} $PROJECTS --pass-with-no-tests
+          PWTEST_SHARD_WEIGHTS="${{ matrix.pesos }}" npx playwright test --shard=${{ matrix.shard }}/${{ matrix.total }} ${{ matrix.filtro }} $PROJECTS --pass-with-no-tests
 
       - name: Upload blob report
         if: ${{ !cancelled() && env.PULA != 'true' }}

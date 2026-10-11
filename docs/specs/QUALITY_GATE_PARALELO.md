@@ -221,6 +221,29 @@ Também neste PR: o gate derruba os filhos em SIGINT/SIGTERM/SIGHUP. Um
 segurando a porta 5173 (encerrado à mão). A interrupção em si não foi testada:
 no Windows não há como mandar um Ctrl+C real de forma não interativa.
 
+### 8.2c P4, terceira iteração: segmentos e pesos
+
+Depois do #111 o critério da §7 continuava aberto (1,29×). Duas mudanças:
+
+1. **PR #112** — o teste do banner virou 3 segmentos de paradas de Tab em paralelo
+   (a união cobre as mesmas paradas). CI `full` (run 38154440101): 158–284 s,
+   **1,24×**. O teto passou para `webkit 1/4`: os blocos contíguos ainda tinham
+   durações diferentes.
+2. **Pesos por shard** — `PWTEST_SHARD_WEIGHTS` (lido pelo Playwright 1.58) diz
+   quantos testes cada shard recebe, na ordem da lista. Os pesos foram calculados
+   a partir das durações reais daquele run, cortando a lista de cada grupo onde a
+   soma acumulada chega a 1/n do total. Firefox passou a 3 shards e `@lento` a 3.
+   Simulado: 100–171 s de teste por shard, **1,07×**. Conferido localmente: as
+   contagens por shard batem exatamente com os pesos.
+
+**Recalcular os pesos** quando a suíte crescer muito ou um shard destoar: baixar os
+`blob-report-*` de um run `full`, somar `result.duration` por teste (`onTestEnd`
+do `report.jsonl`), listar cada grupo na ordem do CI (`CI=1 npx playwright test
+--list --grep-invert @lento --project=webkit` etc.) e cortar a lista em n partes
+de mesma duração. Os pesos são as contagens de cada parte. Teste novo só desloca
+a proporção, não quebra nada; se uma versão do Playwright ignorar a variável, o
+corte volta a ser por contagem igual.
+
 ### 8.3 Medições
 
 | Cenário | Antes | Depois |
