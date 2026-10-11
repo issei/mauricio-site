@@ -193,15 +193,15 @@
           "name": "What is Structured Conversational Specification?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is a human workflow–IA, governed by artifacts and by human authority, to elicit, record, test and evolve the intention of a system as verifiable requirements and criteria, keeping explicit the sources, uncertainties, decisions and form of verification. It is an evaluation proposal, not a validated method or a standard."
+            "text": "It is a human–IA workflow, governed by artifacts and human authority, to elicit, record, test and evolve the intention of a system as verifiable requirements and criteria. Sources, uncertainties, decisions and form of verification are explicit. It is an evaluation proposal, not a validated method or a standard."
           }
         },
         {
           "@type": "Question",
-          "name": "What's the difference for Vibe Spec-ing and Spec-Driven Development?",
+          "name": "What is the difference between this proposal, Vibe Spec-ing and Spec-Driven Development?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vibe Spec-ing was the previous name of this framework; it changed because \"vibe\" suggests the opposite of what the proposal requires (registration, authority and verification). Spec-Driven Development is an unstable label for practices where the specification comes before the code (spec-first, spec-anchored, spec-as-source). The Structured Conversational Specification is a specific workflow within this space, with explicit human authority and policy of divergence."
+            "text": "Vibe Spec-ing was the previous name of this framework. It changed because \"vibe\" suggests the opposite of what the proposal requires: registration, authority and verification. Spec-Driven Development is an unstable label for practices where the specification comes before the code (spec-first, spec-anchored, spec-as-source). The Structured Conversational Specification is a specific workflow within this space, with explicit human authority and policy of divergence."
           }
         },
         {
@@ -209,7 +209,7 @@
           "name": "Can the AI approve business requirements or rules?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, by default. The model may ask, summarize, propose scenarios, point out contradictions and prepare changes, but does not receive authority to decide value, risk, compliance, acceptance or truth of domain. The authority matrix assigns each decision to designated persons; it is a proposed governance policy, adjusting to each organization."
+            "text": "No, by default. The model may ask, summarize, propose scenarios, point out contradictions and prepare changes, but does not receive authority to decide value, risk, compliance, acceptance or truth of domain. The authority matrix shall assign each decision to designated persons. It is a proposed governance policy, to be adjusted to each organization."
           }
         },
         {
@@ -217,7 +217,7 @@
           "name": "Does that replace the TDD or acceptance tests?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nope. They act at different levels: the specification defines which problem, for whom and with which criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself, so the expected result is defined or validated by people."
+            "text": "Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people."
           }
         },
         {
@@ -225,7 +225,7 @@
           "name": "Does it work for legacy systems?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The proposal was designed for this case: characterization tests record what the legacy does today, and the decision to preserve, correct, replace or discontinue each rule is up to those who have business authority. The declared risk is post-rationalization: to give coherence to what was accidental by rebuilding the intention from the code."
+            "text": "The proposal was made for this case. characterization tests record what the legacy does today, and the decision to preserve, correct, replace or discontinue each rule is up to those who have business authority. The declared risk is post-rationalization: to give coherence to what was accidental by rebuilding the intention from the code."
           }
         },
         {
@@ -233,7 +233,7 @@
           "name": "Is there evidence that it works?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "For isolated components, partial: studies show partial capacity of LLMs in elicitation, specification and detection of ambiguity in controlled tasks. For the complete workflow, no controlled or longitudinal study was located in front of a baseline aligned with ISO/IEC/IEEE 29148 and SWEBOK. The page brings an evaluation protocol to test in the context itself."
+            "text": "For isolated components, partial: studies show partial capacity of LLMs in elicitation, specification and detection of ambiguity in controlled tasks. For the complete workflow, no controlled or longitudinal study was located in front of a baseline aligned with ISO/IEC/IEEE 29148 and SWEBOK. The page proposes a protocol to evaluate the workflow in its own context."
           }
         }
       ]
@@ -260,7 +260,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#g-teste-de-caracterizacao",
           "name": "Characterization test",
-          "description": "Test that records what an existing system does today, including defects and obsolete rules, without judging whether it is right."
+          "description": "Test that records what an existing system does today, including defects and obsolete rules, without judging whether this behavior is correct."
         },
         {
           "@type": "DefinedTerm",
@@ -272,25 +272,25 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#g-matriz-de-autoridade",
           "name": "Authority Matrix",
-          "description": "Proposed governance policy that separates who decides each type of decision from what the AI can do in each."
+          "description": "Proposed governance policy that defines, for each type of decision, who decides and what the AI can do."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#g-proveniencia",
           "name": "Provenity",
-          "description": "Record of origin of a statement or decision: source, author, date and justification."
+          "description": "Registration of the origin of a statement or decision: source, author, date and justification."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#g-spec-first",
           "name": "Spec-first",
-          "description": "Mode in which the specification is drawn up before the code; the risk is to early freeze a template interpretation."
+          "description": "Mode in which the specification is drawn up before the code. The risk is to early freeze an interpretation of the model."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#g-spec-retrospectiva",
           "name": "Spec-retrospective",
-          "description": "Mode in which intent is rebuilt from code, logs and incidents; the risk is to give coherence to what was accidental."
+          "description": "Mode in which intent is rebuilt from code, logs and incidents. The risk is to give consistency to what was accidental."
         }
       ]
     }
@@ -337,8 +337,8 @@
         </h1>
         <p class="ecs-hero__lead">
           A workflow proposed to use language models (LLMs, AI systems that generate
-text) in the discovery and registration of requirements, with decisions made by people with
-authority and traceable divergences between documentation, testing and code.
+text) in the discovery and registration of requirements. It's people with authority who decide.
+and the differences between documentation, testing and code are traceable.
         </p>
         <p class="ecs-aviso">
           <span class="ecs-selo ecs-selo--proposta">Proposal</span>
@@ -381,7 +381,7 @@ compared to a baseline; components have partial evidence.
           <figcaption id="v1-cap">
             Documentation, testing and code can say different things about the same rule. One
             <strong>characterization test</strong> is a test that records what the old system
-It does today, without judging if it's right. The figure returns resolved in
+It does today, without judging if this behavior is correct. The figure returns resolved in
             <a href="#divergencia">No artifact alone preserves intent</a>.
           </figcaption>
         </figure>
@@ -445,8 +445,8 @@ memory of few people.
             Not even the speed gain is consensus. In a controlled task, developers with AI
 finished faster (Peng et al., 2023). In a study with 16 developers
 experienced and 246 real tasks, the use of AI increased time by 19% (Becker et al.,
-2025, preprint, still no peer review). The page does not discuss how much faster
-If it comes, it's what's lost on the way.
+2025, preprint, still no peer review). This page is not about speed, and
+What's lost between the conversation and the code.
           </p>
         </div>
 
@@ -544,13 +544,13 @@ Base: ISO/IEC/IEEE 29148:2018 (checking and validation are distinct); NASA <em>S
     <section id="definicao" class="ecs-section" aria-labelledby="definicao-titulo">
       <div class="ecs-container">
         <p class="ecs-eyebrow">The proposed solution <span class="ecs-selo ecs-selo--proposta">Proposal</span></p>
-        <h2 id="definicao-titulo" class="ecs-title">AI expands research; people with authority decide</h2>
+        <h2 id="definicao-titulo" class="ecs-title">The AI can extend the investigation; people with authority decide</h2>
 
         <p class="ecs-def">
           Structured Conversational Specification is a human–IA workflow, governed by
 artifacts and by human authority, to elicit, record, test and evolve to
-the intention of a system as verifiable requirements and criteria, keeping explicit the
-sources, uncertainties, decisions and form of verification.
+intention of a system as verifiable requirements and criteria. Sources, uncertainties,
+decisions and form of verification are explicit.
         </p>
 
         <div class="ecs-prose">
@@ -560,7 +560,7 @@ context and prepare changes. By default, you don't get the authority to decide v
 risk, compliance, acceptance or truth of domain. The position is compatible with
 elicitation, analysis, validation and management activities described in ISO/IEC/IEEE 29148
 and in SWEBOK (the IEEE Computer Software Engineering Knowledge Guide)
-Society); the proposal explores how the AI can support them without replacing them.
+Society). The proposal explores how the AI can support these activities without replacing them.
           </p>
         </div>
 
@@ -707,8 +707,8 @@ Thinking serves as a map; it is not presented as proof of anything.
         <h2 id="protocolo-titulo" class="ecs-title">Five practices for AI exit to be challenged</h2>
         <div class="ecs-prose">
           <p>
-            The contribution of the model is only useful when your outputs can be examined and
-contested. Start with a representative flow, not the entire system. On the set,
+            In this proposal, the contribution of the model only counts when its outputs can be
+examined and contested. Start with a representative flow, not the entire system. On the set,
 the approval of a proposal with exceptional discount.
           </p>
         </div>
@@ -721,15 +721,15 @@ the approval of a proposal with exceptional discount.
             <p>Relevant uncertainty remains open, responsible, until it is resolved or accepted as a risk.</p></li>
           <li><strong>Use examples and counterexamples.</strong>
             <p>Normal situation, limit and exception. In the scenario: within the limit, automatic approval; above, authorized person and justification; incomplete data, the proposal does not advance; altered value after approval, may require further evaluation. They're hypotheses until confirmation. The model suggests cases; it does not promote the approved rule.</p></li>
-          <li><strong>Risk proportional review.</strong>
+          <li><strong>Review in proportion to the risk.</strong>
             <p>Commercial, regulatory and critical integration decisions go through those with authority.</p></li>
         </ol>
         <div class="ecs-prose" style="margin-top:1.2rem">
           <p>
             It is not bureaucracy for every sentence: it is to be able to distinguish what is known, what is supposed to be
 and what you've decided. And validating understanding is not validating the result. The conversation
-shows if people understand the rule in the same way, not that modernization goes
-reduce incidents.
+can reveal if people understand the rule in different ways, not that the
+modernization will reduce incidents.
           </p>
         </div>
 
@@ -830,7 +830,7 @@ Base: the writing is inspired by the function <em>Government</em> NIST AI RMF 1.
         <p class="ecs-eyebrow">Divergence <span class="ecs-selo ecs-selo--proposta">Proposal</span> <span class="ecs-selo ecs-selo--cenario">illustrative scenario</span></p>
         <h2 id="divergencia-titulo" class="ecs-title">No artifact alone preserves intent</h2>
         <p class="ecs-lede ecs-prose">
-          Documentation, testing and code will diverge. What matters is who solves, how, and where
+          Documentation, testing and code tend to differ as the system evolves. What matters is who solves, how, and where
 The decision is registered.
         </p>
         <div class="ecs-prose">
@@ -953,7 +953,7 @@ Explicable and treatable.
               <li><code>bloqueado</code></li>
               <li><code>resolvido</code></li>
             </ul>
-            <p class="ecs-small">The agent never quietly harmonizes conflicting versions: if it cannot demonstrate the relationship, it records “unknown”.</p>
+            <p class="ecs-small">In the proposed workflow, the agent does not quietly harmonize conflicting versions: if it cannot demonstrate the relationship, record “unknown”.</p>
           </div>
         </details>
 
@@ -980,7 +980,7 @@ Base: Gotel &amp; Finkelstein (1994) on traceability before and after specificat
         <div class="ecs-prose">
           <p>
             A term before following: <strong>oracle</strong> is the source of the expected result with
-that the test compares the observed behavior.
+which the test compares the observed behavior.
           </p>
           <p>
             The difference between approaches is the control unit. The TDD (write a test that
@@ -1138,12 +1138,13 @@ ISO/IEC/IEEE 29148 and SWEBOK.
         </div>
 
         <h3 class="ecs-h3">How to evaluate in your context</h3>
+        <p class="ecs-small">An evaluation design proposed for this context, not a validated protocol.</p>
         <ol class="ecs-steps">
           <li><strong>Set up an independent reference package</strong>
             <p>Needs, rules, restrictions and border cases, before or in parallel to solicitation.</p></li>
           <li><strong>Conduct IA-elication by registering source</strong>
             <p>Separating fact, inference and proposition.</p></li>
-          <li><strong>Blind Review</strong>
+          <li><strong>Independent review</strong>
             <p>By at least two people in the domain.</p></li>
           <li><strong>Measure in four points</strong>
             <p>After the definition, specification, implementation and operation.</p></li>
@@ -1305,41 +1306,41 @@ sources above.
   <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">In short</p>
     <h2 class="aeo-tldr__title">What is Structured Conversational Specification</h2>
-    <p class="aeo-tldr__lede">It's a <strong>workflow proposal</strong> where the AI helps to elicit and register requirements — asking, comparing interpretations and suggesting examples — while <strong>persons with authority decide</strong>. Each statement has origin and status, and differences between documentation, testing and code follow an explicit policy. The efficacy of complete workflow has not yet been evaluated.</p>
+    <p class="aeo-tldr__lede">Structured Conversational Specification is a <strong>workflow proposal</strong> where the AI helps to elicit and register requirements: it asks questions, compares interpretations and suggests examples. It's up to you. <strong>persons with authority</strong>. Each statement has origin and status, and differences between documentation, testing and code follow an explicit policy. The efficacy of complete workflow has not yet been evaluated.</p>
     <ul class="aeo-tldr__points">
-      <li><strong>The IA proposes, people decide</strong> — the authority matrix separates those who decide who attends; the model has no substantive authority by default.</li>
-      <li><strong>Five Practices</strong> — record the origin, separate fact of hypothesis, keep to-dos visible, use examples and counterexamples, and review in proportion to the risk.</li>
-      <li><strong>Governmentd Divergence</strong> — documentation, testing and code will diverge; policy defines who resolves, how, and where the decision is registered.</li>
-      <li><strong>Complements TDD, does not replace it</strong> — the specification decides what to verify; the TDD checks. The oracle (expected result) comes from people.</li>
+      <li><strong>The AI proposes; people decide</strong> — the authority matrix separates who decides who it supports; the model has no substantive authority by default.</li>
+      <li><strong>Five Practices</strong> — record the origin, separate fact of hypothesis, keep to-dos visible, use examples and counterexamples and review in proportion to the risk.</li>
+      <li><strong>Governmentd Divergence</strong> — documentation, testing and code tend to differ; policy defines who resolves, how and where the decision is recorded.</li>
+      <li><strong>Complements TDD, does not replace it</strong> — the specification decides what to verify; the TDD checks. The oracle (the expected result) comes from people.</li>
     </ul>
-    <p class="aeo-tldr__foot">Part of the same method of <a href="/en/engenharia-confianca">Trust Engineering</a> and practice of <a href="/en/devin">Vibe Coding with Devin</a>: the registered intention, with human authority, before the code.</p>
+    <p class="aeo-tldr__foot">Part of the same method of <a href="/en/engenharia-confianca">Trust Engineering</a> and practice of <a href="/en/devin">Vibe Coding with Devin</a>: the registered intention, with human authority, before or after the code.</p>
   </div>
   <div class="aeo-faq">
     <p class="aeo-eyebrow">Frequently Asked Questions</p>
     <h2 class="aeo-faq__title">Frequently Asked Questions</h2>
     <details class="aeo-faq__item" open>
       <summary class="aeo-faq__q">What is Structured Conversational Specification?</summary>
-      <div class="aeo-faq__a"><p>It is a human workflow–IA, governed by artifacts and by human authority, to elicit, record, test and evolve the intention of a system as verifiable requirements and criteria, keeping explicit the sources, uncertainties, decisions and form of verification. It is an evaluation proposal, not a validated method or a standard.</p></div>
+      <div class="aeo-faq__a"><p>It is a human–IA workflow, governed by artifacts and human authority, to elicit, record, test and evolve the intention of a system as verifiable requirements and criteria. Sources, uncertainties, decisions and form of verification are explicit. It is an evaluation proposal, not a validated method or a standard.</p></div>
     </details>
     <details class="aeo-faq__item">
-      <summary class="aeo-faq__q">What's the difference for Vibe Spec-ing and Spec-Driven Development?</summary>
-      <div class="aeo-faq__a"><p>Vibe Spec-ing was the previous name of this framework; it changed because &quot;vibe&quot; suggests the opposite of what the proposal requires (registration, authority and verification). Spec-Driven Development is an unstable label for practices where the specification comes before the code (spec-first, spec-anchored, spec-as-source). The Structured Conversational Specification is a specific workflow within this space, with explicit human authority and policy of divergence.</p></div>
+      <summary class="aeo-faq__q">What is the difference between this proposal, Vibe Spec-ing and Spec-Driven Development?</summary>
+      <div class="aeo-faq__a"><p>Vibe Spec-ing was the previous name of this framework. It changed because &quot;vibe&quot; suggests the opposite of what the proposal requires: registration, authority and verification. Spec-Driven Development is an unstable label for practices where the specification comes before the code (spec-first, spec-anchored, spec-as-source). The Structured Conversational Specification is a specific workflow within this space, with explicit human authority and policy of divergence.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Can the AI approve business requirements or rules?</summary>
-      <div class="aeo-faq__a"><p>No, by default. The model may ask, summarize, propose scenarios, point out contradictions and prepare changes, but does not receive authority to decide value, risk, compliance, acceptance or truth of domain. The authority matrix assigns each decision to designated persons; it is a proposed governance policy, adjusting to each organization.</p></div>
+      <div class="aeo-faq__a"><p>No, by default. The model may ask, summarize, propose scenarios, point out contradictions and prepare changes, but does not receive authority to decide value, risk, compliance, acceptance or truth of domain. The authority matrix shall assign each decision to designated persons. It is a proposed governance policy, to be adjusted to each organization.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Does that replace the TDD or acceptance tests?</summary>
-      <div class="aeo-faq__a"><p>Nope. They act at different levels: the specification defines which problem, for whom and with which criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself, so the expected result is defined or validated by people.</p></div>
+      <div class="aeo-faq__a"><p>Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Does it work for legacy systems?</summary>
-      <div class="aeo-faq__a"><p>The proposal was designed for this case: characterization tests record what the legacy does today, and the decision to preserve, correct, replace or discontinue each rule is up to those who have business authority. The declared risk is post-rationalization: to give coherence to what was accidental by rebuilding the intention from the code.</p></div>
+      <div class="aeo-faq__a"><p>The proposal was made for this case. characterization tests record what the legacy does today, and the decision to preserve, correct, replace or discontinue each rule is up to those who have business authority. The declared risk is post-rationalization: to give coherence to what was accidental by rebuilding the intention from the code.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Is there evidence that it works?</summary>
-      <div class="aeo-faq__a"><p>For isolated components, partial: studies show partial capacity of LLMs in elicitation, specification and detection of ambiguity in controlled tasks. For the complete workflow, no controlled or longitudinal study was located in front of a baseline aligned with ISO/IEC/IEEE 29148 and SWEBOK. The page brings an evaluation protocol to test in the context itself.</p></div>
+      <div class="aeo-faq__a"><p>For isolated components, partial: studies show partial capacity of LLMs in elicitation, specification and detection of ambiguity in controlled tasks. For the complete workflow, no controlled or longitudinal study was located in front of a baseline aligned with ISO/IEC/IEEE 29148 and SWEBOK. The page proposes a protocol to evaluate the workflow in its own context.</p></div>
     </details>
   </div>
 </section>
