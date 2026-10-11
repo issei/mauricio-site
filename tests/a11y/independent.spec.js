@@ -18,33 +18,50 @@ const rolagemParada = (page, limite = 15_000) => page.evaluate((limite) => new P
   t();
 }), limite);
 
-/* 1 — o banner fixo não cobre nenhuma parada de Tab (2.4.11) */
+/* 1 — o banner fixo não cobre nenhuma parada de Tab (2.4.11)
+   O WebKit do CI (Linux) tabula links: ~126 paradas na home (o do Windows pula links: 26). E desenha a ~3
+   quadros/s, então cada parada medida custa ~1,7 s: era um teste único de ~215 s, o mais longo da suíte e o
+   teto do shard mais lento do CI. A caminhada é dividida em SEGMENTOS de paradas que rodam em paralelo: cada
+   um avança até o início do trecho sem medir (só Tab e a checagem de fim, sem esperar a rolagem) e mede dali.
+   A ordem de Tab não depende da rolagem, então a união dos segmentos cobre as mesmas paradas do teste único. */
+const fimDaCaminhada = (page) => page.evaluate(() => {
+  let a = document.activeElement;
+  if (!a || a === document.body) return false;
+  while (a.shadowRoot?.activeElement) a = a.shadowRoot.activeElement;
+  return !!(a.closest('.cc-banner') || a.closest('eco-nav') || a.tagName === 'ECO-NAV');
+});
+const SEGMENTOS = [[0, 45], [45, 90], [90, 200]];
+
 for (const pagina of ['index', 'curriculo']) {
-  testDoGate(test, pagina)(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele`, { tag: '@lento' }, async ({ page, browserName }) => {
-    // O WebKit do CI (Linux) tabula links: ~126 paradas na home (o do Windows pula links: 26). E desenha a ~3
-    // quadros/s, então cada parada custa ~1,7 s: ~3,7 min na home, contra ~20 s no Chromium e no Firefox do CI.
-    test.setTimeout(browserName === 'webkit' ? 360_000 : 120_000);
-    await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto(`/${pagina}.html`);
-    await expect(page.locator('.cc-banner')).toBeVisible();
-    const cobertos = [];
-    for (let i = 0; i < 200; i++) {
-      await page.keyboard.press('Tab');
-      await rolagemParada(page);
-      const r = await page.evaluate(() => {
-        let a = document.activeElement;
-        if (!a || a === document.body) return null;
-        while (a.shadowRoot?.activeElement) a = a.shadowRoot.activeElement;
-        if (a.closest('.cc-banner') || a.closest('eco-nav') || a.tagName === 'ECO-NAV') return { fim: true };
-        const b = a.getBoundingClientRect();
-        const topo = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2);
-        return { coberto: !!topo?.closest('.cc-banner'), nome: `${a.tagName}.${String(a.className).slice(0, 25)}` };
-      });
-      if (r?.fim) break;
-      if (r?.coberto) cobertos.push(r.nome);
-    }
-    expect(cobertos, 'paradas de Tab sob .cc-banner').toEqual([]);
-  });
+  for (const [de, ate] of SEGMENTOS) {
+    testDoGate(test, pagina)(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele (paradas ${de + 1}–${ate})`, { tag: '@lento' }, async ({ page, browserName }) => {
+      test.setTimeout(browserName === 'webkit' ? 180_000 : 90_000);
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(`/${pagina}.html`);
+      await expect(page.locator('.cc-banner')).toBeVisible();
+      for (let i = 0; i < de; i++) {
+        await page.keyboard.press('Tab');
+        if (await fimDaCaminhada(page)) return; // a página tem menos paradas que o início deste trecho
+      }
+      const cobertos = [];
+      for (let i = de; i < ate; i++) {
+        await page.keyboard.press('Tab');
+        await rolagemParada(page);
+        const r = await page.evaluate(() => {
+          let a = document.activeElement;
+          if (!a || a === document.body) return null;
+          while (a.shadowRoot?.activeElement) a = a.shadowRoot.activeElement;
+          if (a.closest('.cc-banner') || a.closest('eco-nav') || a.tagName === 'ECO-NAV') return { fim: true };
+          const b = a.getBoundingClientRect();
+          const topo = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2);
+          return { coberto: !!topo?.closest('.cc-banner'), nome: `${a.tagName}.${String(a.className).slice(0, 25)}` };
+        });
+        if (r?.fim) break;
+        if (r?.coberto) cobertos.push(r.nome);
+      }
+      expect(cobertos, 'paradas de Tab sob .cc-banner').toEqual([]);
+    });
+  }
 }
 
 /* 1b — auditoria-v2 (AV2-05): voltando com Shift+Tab, o foco não some inteiro sob o cabeçalho fixo (2.4.11).
