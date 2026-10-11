@@ -20,7 +20,7 @@ const rolagemParada = (page, limite = 15_000) => page.evaluate((limite) => new P
 
 /* 1 — o banner fixo não cobre nenhuma parada de Tab (2.4.11) */
 for (const pagina of ['index', 'curriculo']) {
-  testDoGate(test, pagina)(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele`, async ({ page, browserName }) => {
+  testDoGate(test, pagina)(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele`, { tag: '@lento' }, async ({ page, browserName }) => {
     // O WebKit do CI (Linux) tabula links: ~126 paradas na home (o do Windows pula links: 26). E desenha a ~3
     // quadros/s, então cada parada custa ~1,7 s: ~3,7 min na home, contra ~20 s no Chromium e no Firefox do CI.
     test.setTimeout(browserName === 'webkit' ? 360_000 : 120_000);

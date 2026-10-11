@@ -4,7 +4,7 @@ name: CI - Quality Gate
 #
 # Caminho crítico = max(static, shard mais lento), não a soma: o job estático
 # (build, geradores, i18n, node:test, varredura a11y, perf) roda em paralelo
-# com o Playwright fatiado em SHARD_TOTAL runners.
+# com o Playwright fatiado por navegador (2 chromium, 2 firefox, 4 webkit) + 2 @lento.
 #
 # Camadas (docs/specs/TESTING_GUIDE.md, "CI/CD Integration"):
 #   fast (pull_request)               chromium + mobile + no-js
@@ -55,47 +55,72 @@ jobs:
         run: node scripts/quality-gate.mjs --no-e2e
 
   e2e:
-    name: Playwright ${{ matrix.shard }}/6 (${{ github.event_name == 'pull_request' && 'fast' || 'full' }})
+    name: Playwright ${{ matrix.nome }} (${{ github.event_name == 'pull_request' && 'fast' || 'full' }})
     runs-on: ubuntu-latest
     timeout-minutes: 20
     strategy:
       fail-fast: false
+      # O sharding do Playwright corta a lista ORDENADA de testes em blocos contíguos,
+      # balanceados por contagem, não por duração. Com 6 shards sobre a lista inteira,
+      # o bloco do WebKit (o dobro do custo por teste) e os testes de Tab longos caíam
+      # nos mesmos shards: 208–552 s no run 38151493624. Agora cada navegador tem seus
+      # shards, dimensionados pela carga medida (chromium 626 s, firefox 709 s, webkit
+      # 1.203 s de worker), e os @lento (focus-visible, banner de cookies) têm os seus.
+      # docs/specs/QUALITY_GATE_PARALELO.md, P4.
       matrix:
-        shard: [1, 2, 3, 4, 5, 6] # mantenha em sincronia com SHARD_TOTAL
+        include:
+          - { nome: 'chromium 1/2', projetos: '--project=chromium --project=mobile --project=no-js', shard: 1, total: 2, filtro: '--grep-invert @lento', so_full: false }
+          - { nome: 'chromium 2/2', projetos: '--project=chromium --project=mobile --project=no-js', shard: 2, total: 2, filtro: '--grep-invert @lento', so_full: false }
+          - { nome: 'firefox 1/2', projetos: '--project=firefox', shard: 1, total: 2, filtro: '--grep-invert @lento', so_full: true }
+          - { nome: 'firefox 2/2', projetos: '--project=firefox', shard: 2, total: 2, filtro: '--grep-invert @lento', so_full: true }
+          - { nome: 'webkit 1/4', projetos: '--project=webkit', shard: 1, total: 4, filtro: '--grep-invert @lento', so_full: true }
+          - { nome: 'webkit 2/4', projetos: '--project=webkit', shard: 2, total: 4, filtro: '--grep-invert @lento', so_full: true }
+          - { nome: 'webkit 3/4', projetos: '--project=webkit', shard: 3, total: 4, filtro: '--grep-invert @lento', so_full: true }
+          - { nome: 'webkit 4/4', projetos: '--project=webkit', shard: 4, total: 4, filtro: '--grep-invert @lento', so_full: true }
+          - { nome: 'lento 1/2', projetos: '', shard: 1, total: 2, filtro: '--grep @lento', so_full: false }
+          - { nome: 'lento 2/2', projetos: '', shard: 2, total: 2, filtro: '--grep @lento', so_full: false }
     env:
-      SHARD_TOTAL: 6
+      # Na camada fast (PR) os shards de firefox/webkit não têm o que rodar: pulam todos os passos.
+      PULA: ${{ github.event_name == 'pull_request' && matrix.so_full }}
     steps:
       - uses: actions/checkout@v4
+        if: env.PULA != 'true'
 
       - uses: actions/setup-node@v4
+        if: env.PULA != 'true'
         with:
           node-version: 20
           cache: 'npm'
 
       - run: npm ci
+        if: env.PULA != 'true'
 
       - name: Cache Playwright browsers
+        if: env.PULA != 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: pw-${{ runner.os }}-${{ env.TIER }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install browsers
+        if: env.PULA != 'true'
         run: |
           if [ "$TIER" = fast ]; then npx playwright install --with-deps chromium
           else npx playwright install --with-deps; fi
 
-      - name: Playwright (shard ${{ matrix.shard }}/${{ env.SHARD_TOTAL }})
+      - name: Playwright (${{ matrix.nome }})
+        if: env.PULA != 'true'
         run: |
-          PROJECTS=""
-          [ "$TIER" = fast ] && PROJECTS="--project=chromium --project=mobile --project=no-js"
-          npx playwright test --shard=${{ matrix.shard }}/$SHARD_TOTAL $PROJECTS
+          PROJECTS="${{ matrix.projetos }}"
+          # lento: na fast só o chromium; na full, todos os navegadores
+          [ -z "$PROJECTS" ] && [ "$TIER" = fast ] && PROJECTS="--project=chromium"
+          npx playwright test --shard=${{ matrix.shard }}/${{ matrix.total }} ${{ matrix.filtro }} $PROJECTS --pass-with-no-tests
 
       - name: Upload blob report
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && env.PULA != 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: blob-report-${{ matrix.shard }}
+          name: blob-report-${{ strategy.job-index }}
           path: blob-report
           retention-days: 3
 

@@ -28,7 +28,7 @@ const MAX_PARADAS = 260;
 
 for (const entrada of PAGINAS) {
   const [pagina, modo = 'pixel'] = Array.isArray(entrada) ? entrada : [entrada];
-  testDoGate(test, pagina)(`${pagina}: toda parada de Tab tem indicador de foco visível`, async ({ page, browserName }) => {
+  testDoGate(test, pagina)(`${pagina}: toda parada de Tab tem indicador de foco visível`, { tag: '@lento' }, async ({ page, browserName }) => {
     test.skip(browserName !== 'chromium', 'comparação de pixel: só no chromium');
     test.setTimeout(240_000);
     await page.setViewportSize({ width: 1280, height: 800 });
