@@ -191,6 +191,24 @@ todo projeto (o de projeto substitui o global).
 | Hook de Stop | `scripts/stop-gate.mjs` | passou de "Chromium inteiro" para impacto + `--leve` |
 | `PW_PORTA`, `PW_SERVIDOR=preview` | `playwright.config.js` | suíte numa porta própria; preview opcional (ver 8.4) |
 
+### 8.2b P4, segunda iteração: shards por navegador
+
+O primeiro CI `full` depois do merge (run 38151493624) **piorou** o caminho crítico:
+shards de 208 a 552 s, contra 204 a 408 s antes. O blob de cada shard mostrou o
+motivo: o sharding corta a lista ORDENADA (projeto → arquivo → teste) em blocos
+contíguos de mesma contagem. O shard 5 pegou `webkit › tests/a11y` inteiro (o
+teste do banner, 215 s; o do currículo, 89 s; o `consent`), 965 s de worker.
+
+Correção, simulada com as durações reais daquele run antes de ir para o CI:
+
+- `@lento` (`{ tag: '@lento' }`) nos 22 testes de Tab longos: `focus-visible` e
+  o banner de cookies do `independent`. Têm 2 shards próprios.
+- O resto é dividido **por navegador**: chromium (+mobile, no-js) 2, firefox 2,
+  webkit 4, pela carga medida (626, 709 e 1.203 s de worker).
+- Estimativa por shard (2 workers): 91 a 225 s. O teto é o teste do banner no
+  WebKit (215 s), que é um teste só e não se divide.
+- Na camada `fast` (PR), os shards de firefox/webkit pulam todos os passos.
+
 ### 8.3 Medições
 
 | Cenário | Antes | Depois |

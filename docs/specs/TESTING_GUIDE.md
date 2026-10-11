@@ -549,7 +549,7 @@ Fonte da verdade: [`.github/workflows/quality-gate.yml`](../../.github/workflows
 | Job | O que roda | Paralelismo |
 | :--- | :--- | :--- |
 | `static` | `node scripts/quality-gate.mjs --no-e2e`: build, geradores `--check`, i18n, `audit-site`, `node --test`, varredura a11y (catraca), a11y estático, perf | 1 runner, em paralelo aos shards |
-| `e2e` | `npx playwright test --shard=i/6` | 6 runners × 2 workers |
+| `e2e` | `npx playwright test --shard=i/n` por navegador: chromium (+mobile, no-js) 2, firefox 2, webkit 4, e os testes `@lento` 2 | 10 runners × 2 workers (na camada fast, os de firefox/webkit pulam) |
 | `report` | `playwright merge-reports` dos blobs → artefato `playwright-report` | — |
 | `gate` | Check único para a branch protection: verde só se `static` e todos os shards passaram | — |
 
@@ -582,7 +582,9 @@ Spec transversal nova (que visita várias páginas) declara cada teste com
 `testDoGate(test, 'pagina')(titulo, fn)` de `tests/_helpers/gate.js` e entra em
 `TRANSVERSAIS` de `scripts/gate/impacto.mjs`.
 
-Reproduzir um shard: `CI=1 npx playwright test --shard=3/6 --project=chromium --project=mobile --project=no-js`.
+Reproduzir um shard: `CI=1 npx playwright test --shard=3/4 --grep-invert @lento --project=webkit` (ou `--grep @lento --shard=2/2`).
+
+Teste com mais de ~20 s no CI leva `{ tag: '@lento' }`: o sharding corta a lista por contagem, e testes longos juntos desequilibram um shard.
 
 ---
 
