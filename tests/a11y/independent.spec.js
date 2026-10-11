@@ -3,6 +3,7 @@
 // tinha consertado, o auditor testou o que o visitante faz (Tab com o banner de cookies na tela, skip link
 // numa página com scroll suave, menu no celular, página em inglês lida por leitor de tela).
 import { test, expect } from '@playwright/test';
+import { testDoGate } from '../_helpers/gate.js';
 
 const COM_CONSENTIMENTO = { v: '2.0', ts: 'x', categories: { necessary: true }, method: 'explicit' };
 const semBanner = (page) => page.addInitScript((c) => localStorage.setItem('consent_v', JSON.stringify(c)), COM_CONSENTIMENTO);
@@ -19,7 +20,7 @@ const rolagemParada = (page, limite = 15_000) => page.evaluate((limite) => new P
 
 /* 1 — o banner fixo não cobre nenhuma parada de Tab (2.4.11) */
 for (const pagina of ['index', 'curriculo']) {
-  test(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele`, async ({ page, browserName }) => {
+  testDoGate(test, pagina)(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele`, async ({ page, browserName }) => {
     // O WebKit do CI (Linux) tabula links: ~126 paradas na home (o do Windows pula links: 26). E desenha a ~3
     // quadros/s, então cada parada custa ~1,7 s: ~3,7 min na home, contra ~20 s no Chromium e no Firefox do CI.
     test.setTimeout(browserName === 'webkit' ? 360_000 : 120_000);
@@ -49,7 +50,7 @@ for (const pagina of ['index', 'curriculo']) {
 /* 1b — auditoria-v2 (AV2-05): voltando com Shift+Tab, o foco não some inteiro sob o cabeçalho fixo (2.4.11).
    O teste 1 só olhava o banner do rodapé; aqui é o cabeçalho, que só cobre quem navega para TRÁS. */
 for (const pagina of ['curriculo', 'service-operations-2-0', 'index', 'apresentacao', 'knowledge-os-presentation', 'proposta-engenharia-reversa']) {
-  test(`${pagina}: Shift+Tab de baixo para cima nunca esconde o foco inteiro sob um fixo/sticky opaco`, async ({ page, browserName }) => {
+  testDoGate(test, pagina)(`${pagina}: Shift+Tab de baixo para cima nunca esconde o foco inteiro sob um fixo/sticky opaco`, async ({ page, browserName }) => {
     test.skip(browserName === 'webkit', 'Safari não tabula links');
     test.setTimeout(120_000);
     await semBanner(page);
@@ -80,7 +81,7 @@ for (const pagina of ['curriculo', 'service-operations-2-0', 'index', 'apresenta
   });
 }
 
-test('recusar pelo teclado devolve o foco ao botão de preferências, não ao <body>', async ({ page }) => {
+testDoGate(test, 'index')('recusar pelo teclado devolve o foco ao botão de preferências, não ao <body>', async ({ page }) => {
   await page.goto('/index.html');
   const recusar = page.getByRole('button', { name: 'Recusar todos', exact: true });
   await recusar.focus();
@@ -90,7 +91,7 @@ test('recusar pelo teclado devolve o foco ao botão de preferências, não ao <b
 });
 
 /* 2 — skip link funciona onde há scroll suave (2.4.1) */
-test('engenharia-agentes-ia: o skip link leva o foco ao conteúdo e o próximo Tab segue de lá', async ({ page, browserName }) => {
+testDoGate(test, 'engenharia-agentes-ia')('engenharia-agentes-ia: o skip link leva o foco ao conteúdo e o próximo Tab segue de lá', async ({ page, browserName }) => {
   test.skip(browserName === 'webkit', 'Safari não tabula links');
   await semBanner(page);
   await page.goto('/engenharia-agentes-ia.html');
@@ -105,7 +106,7 @@ test('engenharia-agentes-ia: o skip link leva o foco ao conteúdo e o próximo T
 
 /* 3 — menus do celular têm nome e estado (4.1.2) */
 for (const pagina of ['salesforce-agentic-dev', 'salesforce-agentic-quickstart', 'proposta-observabilidade-mobile']) {
-  test(`${pagina} (375px): o botão de menu tem nome e aria-expanded`, async ({ page }) => {
+  testDoGate(test, pagina)(`${pagina} (375px): o botão de menu tem nome e aria-expanded`, async ({ page }) => {
     await semBanner(page);
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto(`/${pagina}.html`);
@@ -118,20 +119,20 @@ for (const pagina of ['salesforce-agentic-dev', 'salesforce-agentic-quickstart',
 }
 
 /* 4 — idioma das partes em página inglesa (3.1.2) */
-test('en/index: banner de cookies e eco-nav em português são marcados lang="pt-BR"', async ({ page }) => {
+testDoGate(test, 'index')('en/index: banner de cookies e eco-nav em português são marcados lang="pt-BR"', async ({ page }) => {
   await page.goto('/en/index.html');
   await expect(page.locator('.cc-banner')).toHaveAttribute('lang', 'pt-BR');
   await expect(page.locator('.cc-fab')).toHaveAttribute('lang', 'pt-BR');
   await expect(page.locator('eco-nav')).toHaveAttribute('lang', 'pt-BR');
 });
 
-test('index (pt): o banner não leva lang redundante', async ({ page }) => {
+testDoGate(test, 'index')('index (pt): o banner não leva lang redundante', async ({ page }) => {
   await page.goto('/index.html');
   await expect(page.locator('.cc-banner')).not.toHaveAttribute('lang', /.+/);
 });
 
 /* 5 — conteúdo revelado só por hover ganha foco (2.4.7) */
-test('devin: o e-mail do encerramento fica visível quando recebe foco', async ({ page, browserName }) => {
+testDoGate(test, 'devin')('devin: o e-mail do encerramento fica visível quando recebe foco', async ({ page, browserName }) => {
   test.skip(browserName === 'webkit', 'Safari não tabula links');
   await semBanner(page);
   await page.goto('/devin.html');
@@ -143,7 +144,7 @@ test('devin: o e-mail do encerramento fica visível quando recebe foco', async (
 });
 
 /* 6 — painel fechado não fica na ordem de Tab (2.4.3) */
-test('OCC: o painel de evidências fechado é inert; aberto, não', async ({ page }) => {
+testDoGate(test, 'operacao-capital-cognitivo')('OCC: o painel de evidências fechado é inert; aberto, não', async ({ page }) => {
   await semBanner(page);
   await page.goto('/operacao-capital-cognitivo.html');
   const painel = page.locator('#evidence-panel');
@@ -153,7 +154,7 @@ test('OCC: o painel de evidências fechado é inert; aberto, não', async ({ pag
 });
 
 /* 7 — movimento reduzido para o canvas (2.2.2/2.3.3) */
-test('proposta-engenharia-reversa: sob movimento reduzido o hero não roda laço de animação', async ({ page }) => {
+testDoGate(test, 'proposta-engenharia-reversa')('proposta-engenharia-reversa: sob movimento reduzido o hero não roda laço de animação', async ({ page }) => {
   await semBanner(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.addInitScript(() => {
@@ -170,7 +171,7 @@ test('proposta-engenharia-reversa: sob movimento reduzido o hero não roda laço
 });
 
 /* 8 — iframes têm título (4.1.2) */
-test('proposta-observabilidade-mobile: o vídeo incorporado tem title', async ({ page }) => {
+testDoGate(test, 'proposta-observabilidade-mobile')('proposta-observabilidade-mobile: o vídeo incorporado tem title', async ({ page }) => {
   await semBanner(page);
   await page.goto('/proposta-observabilidade-mobile.html');
   const sem = await page.evaluate(() => [...document.querySelectorAll('iframe')].filter((f) => !f.title?.trim()).map((f) => f.src));
@@ -178,7 +179,7 @@ test('proposta-observabilidade-mobile: o vídeo incorporado tem title', async ({
 });
 
 /* 10 — alvo mínimo (2.5.8) */
-test('engenharia-agentes-ia: os links de capítulo têm no mínimo 24px de altura', async ({ page }) => {
+testDoGate(test, 'engenharia-agentes-ia')('engenharia-agentes-ia: os links de capítulo têm no mínimo 24px de altura', async ({ page }) => {
   await semBanner(page);
   await page.goto('/engenharia-agentes-ia.html');
   const baixos = await page.evaluate(() => [...document.querySelectorAll('a.eai-chap__link')]

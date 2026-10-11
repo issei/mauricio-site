@@ -2,12 +2,14 @@ import { test, expect } from '@playwright/test';
 import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 import { PAGES } from '../scripts/seo/pages.mjs';
 import { pageUrl } from '../scripts/seo/lib.mjs';
+import { foraDoGate, FORA_DO_GATE } from './_helpers/gate.js';
 
 // Invariantes AEO/GEO para TODAS as páginas tratadas (fonte: scripts/seo/pages.mjs).
 // Cresce automaticamente conforme novas páginas entram em pages.mjs.
 
 for (const p of PAGES) {
   test.describe(`AEO · ${p.slug}`, () => {
+    test.skip(foraDoGate(p.slug), FORA_DO_GATE);
     test('metadados + JSON-LD estruturado', async ({ page }) => {
       const res = await page.goto(`/${p.slug}.html`);
       expect(res?.status()).toBe(200);

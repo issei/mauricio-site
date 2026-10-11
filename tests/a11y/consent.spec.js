@@ -2,10 +2,12 @@
 // Contexto novo do Playwright = sem consentimento gravado = o banner aparece.
 import { test, expect } from '@playwright/test';
 import { expectNoSeriousA11yViolations } from '../_helpers/axe.js';
+import { foraDoGate, FORA_DO_GATE } from '../_helpers/gate.js';
 
 const PAGE = '/index.html';
 
 test.describe('Consentimento de cookies — acessibilidade (T7)', () => {
+  test.skip(foraDoGate(PAGE), FORA_DO_GATE);
   test.beforeEach(async ({ page }) => {
     await page.goto(PAGE);
     await expect(page.getByRole('region', { name: 'Aviso de cookies' })).toBeVisible();

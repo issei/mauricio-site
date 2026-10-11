@@ -1,6 +1,7 @@
 // Fase 6 — T4/T5/T6: widgets interativos só com teclado (docs/specs/a11y-first/testing-strategy.md §3).
 // O que o axe não vê: ordem de Tab dentro do widget, setas/Home/End, nome do grupo, estado e anúncio.
 import { test, expect } from '@playwright/test';
+import { testDoGate } from '../_helpers/gate.js';
 
 const SEM_CONSENTIMENTO = { v: '2.0', ts: 'x', categories: { necessary: true }, method: 'explicit' };
 
@@ -20,7 +21,7 @@ const TABLISTS = [
 ];
 
 for (const [pagina, esperado] of TABLISTS) {
-  test(`${pagina}: tablists seguem o padrão Tabs (tabindex móvel, setas, Home/End, aria-controls)`, async ({ page }) => {
+  testDoGate(test, pagina)(`${pagina}: tablists seguem o padrão Tabs (tabindex móvel, setas, Home/End, aria-controls)`, async ({ page }) => {
     test.setTimeout(90_000); // devin (GSAP + Lenis) leva ~30s no WebKit sob carga
     await abre(page, `/${pagina}.html`);
     const lists = page.locator('[role="tablist"]');
@@ -63,7 +64,7 @@ for (const [pagina, esperado] of TABLISTS) {
 
 /* ── Quiz (T4): pergunta nomeia o grupo, escolha tem estado, resposta é anunciada ─ */
 
-test('EAI quiz: opções são um grupo com o enunciado como nome; a escolhida leva aria-pressed', async ({ page }) => {
+testDoGate(test, 'engenharia-agentes-ia')('EAI quiz: opções são um grupo com o enunciado como nome; a escolhida leva aria-pressed', async ({ page }) => {
   await abre(page, '/engenharia-agentes-ia.html');
   const q = page.locator('[data-quiz-q]').first();
   const grupo = q.getByRole('group');
@@ -87,7 +88,7 @@ test('EAI quiz: opções são um grupo com o enunciado como nome; a escolhida le
 
 /* ── Calibrador (T5): o veredito é anunciado ───────────────────────────────── */
 
-test('EAI calibrador: o veredito é uma região de status e muda ao mexer no controle', async ({ page }) => {
+testDoGate(test, 'engenharia-agentes-ia')('EAI calibrador: o veredito é uma região de status e muda ao mexer no controle', async ({ page }) => {
   await abre(page, '/engenharia-agentes-ia.html');
   const veredito = page.locator('[data-cal-result]');
   await expect(veredito).toHaveAttribute('role', 'status');
@@ -100,7 +101,7 @@ test('EAI calibrador: o veredito é uma região de status e muda ao mexer no con
 
 /* ── Diálogos do simulador OCC: nome acessível, Esc, foco de volta ───────────── */
 
-test('OCC: ajuda e glossário são diálogos nomeados e devolvem o foco ao fechar', async ({ page }) => {
+testDoGate(test, 'operacao-capital-cognitivo')('OCC: ajuda e glossário são diálogos nomeados e devolvem o foco ao fechar', async ({ page }) => {
   await abre(page, '/operacao-capital-cognitivo.html');
   const glossario = page.getByRole('button', { name: /glossário antes de começar/i });
   await expect(glossario).toBeVisible();
@@ -117,7 +118,7 @@ test('OCC: ajuda e glossário são diálogos nomeados e devolvem o foco ao fecha
 
 /* ── eco-nav (T6): não obscurece o foco (WCAG 2.4.11) ────────────────────────── */
 
-test('eco-nav sai da frente de um link focado embaixo dele e volta quando recebe o foco', async ({ page }) => {
+testDoGate(test, 'devin')('eco-nav sai da frente de um link focado embaixo dele e volta quando recebe o foco', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await abre(page, '/devin.html');
   await page.waitForTimeout(800);
@@ -140,7 +141,7 @@ test('eco-nav sai da frente de um link focado embaixo dele e volta quando recebe
 
 /* ── Tooltip da artifice (auditoria-v2, AV2-06): SC 1.4.13 + nome do botão ───── */
 
-test('artifice: Esc dispensa o tooltip aberto por foco ou hover; a citação não entra no nome do botão', async ({ page }) => {
+testDoGate(test, 'artifice')('artifice: Esc dispensa o tooltip aberto por foco ou hover; a citação não entra no nome do botão', async ({ page }) => {
   await abre(page, '/artifice.html');
   const termo = page.locator('button[aria-describedby="tip-dejours"]');
   const tip = page.locator('#tip-dejours');

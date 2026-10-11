@@ -7,6 +7,7 @@
  * recebe: amostra PT, EN, uma página nova e o lifeos (fora do Vite).
  */
 import { test, expect } from '@playwright/test';
+import { testDoGate } from './_helpers/gate.js';
 
 const PAGINAS = [
   '/index.html',
@@ -17,7 +18,7 @@ const PAGINAS = [
 ];
 
 for (const url of PAGINAS) {
-  test(`WebMCP registra as tools em ${url}`, async ({ page }) => {
+  testDoGate(test, url)(`WebMCP registra as tools em ${url}`, async ({ page }) => {
     await page.addInitScript(() => {
       // @ts-ignore — navigator.modelContext ainda não está nos tipos do DOM
       window.__tools = [];
