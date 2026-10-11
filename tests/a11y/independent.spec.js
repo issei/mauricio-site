@@ -7,18 +7,29 @@ import { test, expect } from '@playwright/test';
 const COM_CONSENTIMENTO = { v: '2.0', ts: 'x', categories: { necessary: true }, method: 'explicit' };
 const semBanner = (page) => page.addInitScript((c) => localStorage.setItem('consent_v', JSON.stringify(c)), COM_CONSENTIMENTO);
 
+/* Rolagem suave: mede só quando scrollY fica igual em 3 quadros seguidos. Três, não menos: no Chromium a rolagem
+   do foco só aparece em scrollY 2 a 3 quadros depois do Tab (sonda de 10/10/2026). Espera limitada por passo, num
+   relógio que não depende do rAF: um passo que não assenta falha aqui com o motivo, sem consumir o teste inteiro. */
+const rolagemParada = (page, limite = 15_000) => page.evaluate((limite) => new Promise((ok, falha) => {
+  const prazo = setTimeout(() => falha(new Error(`a rolagem não parou em ${limite} ms (scrollY ${scrollY})`)), limite);
+  let y = -1, n = 0;
+  const t = () => { n = scrollY === y ? n + 1 : 0; y = scrollY; if (n >= 3) { clearTimeout(prazo); ok(); } else requestAnimationFrame(t); };
+  t();
+}), limite);
+
 /* 1 — o banner fixo não cobre nenhuma parada de Tab (2.4.11) */
 for (const pagina of ['index', 'curriculo']) {
-  test(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele`, async ({ page }) => {
-    test.setTimeout(120_000);
+  test(`${pagina}: com o banner de cookies na tela, nenhuma parada de Tab fica atrás dele`, async ({ page, browserName }) => {
+    // O WebKit do CI (Linux) tabula links: ~126 paradas na home (o do Windows pula links: 26). E desenha a ~3
+    // quadros/s, então cada parada custa ~1,7 s: ~3,7 min na home, contra ~20 s no Chromium e no Firefox do CI.
+    test.setTimeout(browserName === 'webkit' ? 360_000 : 120_000);
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto(`/${pagina}.html`);
     await expect(page.locator('.cc-banner')).toBeVisible();
     const cobertos = [];
     for (let i = 0; i < 200; i++) {
       await page.keyboard.press('Tab');
-      // rolagem suave: mede só quando a página parou de rolar
-      await page.evaluate(() => new Promise((ok) => { let y = -1, n = 0; const t = () => { n = scrollY === y ? n + 1 : 0; y = scrollY; n >= 3 ? ok() : requestAnimationFrame(t); }; t(); }));
+      await rolagemParada(page);
       const r = await page.evaluate(() => {
         let a = document.activeElement;
         if (!a || a === document.body) return null;
@@ -48,7 +59,7 @@ for (const pagina of ['curriculo', 'service-operations-2-0', 'index', 'apresenta
     const cobertos = [];
     for (let i = 0; i < 120; i++) {
       await page.keyboard.press('Shift+Tab');
-      await page.evaluate(() => new Promise((ok) => { let y = -1, n = 0; const t = () => { n = scrollY === y ? n + 1 : 0; y = scrollY; n >= 3 ? ok() : requestAnimationFrame(t); }; t(); }));
+      await rolagemParada(page);
       const r = await page.evaluate(() => {
         let a = document.activeElement;
         if (!a || a === document.body) return { fim: true };

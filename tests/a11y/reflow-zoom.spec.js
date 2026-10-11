@@ -34,8 +34,8 @@ test('a 320px o bloco de código que rola vira região focável e rola por tecla
   await pre.focus();
   const before = await pre.evaluate((e) => e.scrollLeft);
   await page.keyboard.press('ArrowRight');
-  await page.waitForTimeout(150);
-  expect(await pre.evaluate((e) => e.scrollLeft)).toBeGreaterThan(before);
+  // espera a rolagem aparecer: 150 ms fixos às vezes não viam nada no WebKit do CI, que desenha a ~3 quadros/s
+  await expect.poll(() => pre.evaluate((e) => e.scrollLeft)).toBeGreaterThan(before);
 });
 
 test('a 1280px blocos que cabem não ganham parada de Tab à toa', async ({ page }) => {
@@ -77,6 +77,7 @@ test('curriculo: modal do projeto fecha por teclado, prende o foco e devolve ao 
 });
 
 test('movimento reduzido: nenhuma animação infinita nas propostas e no currículo', async ({ browser }) => {
+  test.setTimeout(60_000); // 4 páginas com 1,2 s de espera cada: no WebKit do CI levava 24 s e às vezes passava dos 30 s padrão
   const ctx = await browser.newContext({ reducedMotion: 'reduce' });
   for (const p of ['proposta', 'service-operations-2-0', 'sustentacao', 'curriculo']) {
     const page = await ctx.newPage();
