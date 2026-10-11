@@ -5,24 +5,38 @@
 
 ## In short
 
-It's a **workflow proposal** where the AI helps to elicit and register requirements — asking, comparing interpretations and suggesting examples — while **persons with authority decide**. Each statement has origin and status, and differences between documentation, testing and code follow an explicit policy. The efficacy of complete workflow has not yet been evaluated.
+Structured Conversational Specification is a **workflow proposal** where the AI helps to elicit and register requirements: it asks questions, compares interpretations and suggests examples. It's up to you. **persons with authority**. Each statement has origin and status, and differences between documentation, testing and code follow an explicit policy. The efficacy of complete workflow has not yet been evaluated.
 
-- **The IA proposes, people decide** — the authority matrix separates those who decide who attends; the model has no substantive authority by default.
-- **Five Practices** — record the origin, separate fact of hypothesis, keep to-dos visible, use examples and counterexamples, and review in proportion to the risk.
-- **Governmentd Divergence** — documentation, testing and code will diverge; policy defines who resolves, how, and where the decision is registered.
-- **Complements TDD, does not replace it** — the specification decides what to verify; the TDD checks. The oracle (expected result) comes from people.
+- **The AI proposes; people decide** — the authority matrix separates who decides who it supports; the model has no substantive authority by default.
+- **Five Practices** — record the origin, separate fact of hypothesis, keep to-dos visible, use examples and counterexamples and review in proportion to the risk.
+- **Governmentd Divergence** — documentation, testing and code tend to differ; policy defines who resolves, how and where the decision is recorded.
+- **Complements TDD, does not replace it** — the specification decides what to verify; the TDD checks. The oracle (the expected result) comes from people.
 
 ## Posture: proposed, not validated method
 
-The complete workflow has not yet been compared to a baseline, and its controlled or longitudinal study has not been located. The components have partial evidence in isolated tasks. Standards and guidelines (ISO/IEC/IEEE 29148, SWEBOK, NIST AI RMF and AI 600-1) are the basis of the design, not valid: the proposal is compatible with the activities that 29148 and SWEBOK describe and is inspired by the NIST Government function, without claiming compliance.
+The complete workflow has not yet been compared to a baseline, and no controlled or longitudinal study was found on it. The components have partial evidence in isolated tasks.
+
+The standards and guidelines (ISO/IEC/IEEE 29148, SWEBOK, NIST AI RMF and NIST AI 600-1) support the design, but do not validate it. The proposal is compatible with the activities described in 29148 and SWEBOK and is inspired by the NIST AI RMF Government function, without claiming compliance.
 
 ## The five practices of the Protocol
 
-1) Record the origin of each statement (interview, document, code inspection, operational observation, inference or formal decision). 2) Separate facts, hypotheses and proposals. 3) Keep to-dos visible, with responsibility. 4) Using examples and counterexamples; the model suggests cases, does not promote them the approved rule. 5) Risk proportional review.
+1. **Record the origin of each statement:** interview, document, code inspection, operational observation, inference or formal decision.
+2. **Separate facts, hypotheses and proposals.**
+3. **Keep to-does visible**Each with one in charge.
+4. **Use examples and counterexamples.** The model suggests cases, but does not promote them the approved rule.
+5. **Review in proportion to the risk.**
 
 ## Divergence policy
 
-There is no universal source of truth. When two artifacts conflict: identify artifacts and divergent behavior; classify the probable cause (incomplete information, defect, rule change, obsolescence or implementation error); identify who has authority; register the decision, justification, impact and affected artifacts; update and verify again. The goal is not to prevent all divergence, but to make it detectable, explainable and treatable.
+There is no universal source of truth. When two artifacts conflict:
+
+1. Identify the artifacts and divergent behavior.
+2. Sort probable cause: incomplete information, defect, rule change, obsolescence or implementation error.
+3. Identify who has the authority to decide.
+4. Record the decision, justification, impact and artifacts affected.
+5. Update the artifacts and recheck.
+
+The goal is not to prevent all divergence, but to make it detectable, explainable and treatable.
 
 ## Artifact kit
 
@@ -32,37 +46,37 @@ Authority matrix, statement record model, state divergence record and routing, d
 
 **What is Structured Conversational Specification?**
 
-It is a human workflow–IA, governed by artifacts and by human authority, to elicit, record, test and evolve the intention of a system as verifiable requirements and criteria, keeping explicit the sources, uncertainties, decisions and form of verification. It is an evaluation proposal, not a validated method or a standard.
+It is a human–IA workflow, governed by artifacts and human authority, to elicit, record, test and evolve the intention of a system as verifiable requirements and criteria. Sources, uncertainties, decisions and form of verification are explicit. It is an evaluation proposal, not a validated method or a standard.
 
-**What's the difference for Vibe Spec-ing and Spec-Driven Development?**
+**What is the difference between this proposal, Vibe Spec-ing and Spec-Driven Development?**
 
-Vibe Spec-ing was the previous name of this framework; it changed because "vibe" suggests the opposite of what the proposal requires (registration, authority and verification). Spec-Driven Development is an unstable label for practices where the specification comes before the code (spec-first, spec-anchored, spec-as-source). The Structured Conversational Specification is a specific workflow within this space, with explicit human authority and policy of divergence.
+Vibe Spec-ing was the previous name of this framework. It changed because "vibe" suggests the opposite of what the proposal requires: registration, authority and verification. Spec-Driven Development is an unstable label for practices where the specification comes before the code (spec-first, spec-anchored, spec-as-source). The Structured Conversational Specification is a specific workflow within this space, with explicit human authority and policy of divergence.
 
 **Can the AI approve business requirements or rules?**
 
-No, by default. The model may ask, summarize, propose scenarios, point out contradictions and prepare changes, but does not receive authority to decide value, risk, compliance, acceptance or truth of domain. The authority matrix assigns each decision to designated persons; it is a proposed governance policy, adjusting to each organization.
+No, by default. The model may ask, summarize, propose scenarios, point out contradictions and prepare changes, but does not receive authority to decide value, risk, compliance, acceptance or truth of domain. The authority matrix shall assign each decision to designated persons. It is a proposed governance policy, to be adjusted to each organization.
 
 **Does that replace the TDD or acceptance tests?**
 
-Nope. They act at different levels: the specification defines which problem, for whom and with which criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself, so the expected result is defined or validated by people.
+Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people.
 
 **Does it work for legacy systems?**
 
-The proposal was designed for this case: characterization tests record what the legacy does today, and the decision to preserve, correct, replace or discontinue each rule is up to those who have business authority. The declared risk is post-rationalization: to give coherence to what was accidental by rebuilding the intention from the code.
+The proposal was made for this case. characterization tests record what the legacy does today, and the decision to preserve, correct, replace or discontinue each rule is up to those who have business authority. The declared risk is post-rationalization: to give coherence to what was accidental by rebuilding the intention from the code.
 
 **Is there evidence that it works?**
 
-For isolated components, partial: studies show partial capacity of LLMs in elicitation, specification and detection of ambiguity in controlled tasks. For the complete workflow, no controlled or longitudinal study was located in front of a baseline aligned with ISO/IEC/IEEE 29148 and SWEBOK. The page brings an evaluation protocol to test in the context itself.
+For isolated components, partial: studies show partial capacity of LLMs in elicitation, specification and detection of ambiguity in controlled tasks. For the complete workflow, no controlled or longitudinal study was located in front of a baseline aligned with ISO/IEC/IEEE 29148 and SWEBOK. The page proposes a protocol to evaluate the workflow in its own context.
 
 ## Glossary
 
 - **Structured Conversational Specification** — Human workflow–IA, governed by artifacts and human authority, to elicit, record, test and evolve the intention of a system.
 - **Test Oracle** — Source of the expected result with which a test compares the observed behavior.
-- **Characterization test** — Test that records what an existing system does today, including defects and obsolete rules, without judging whether it is right.
+- **Characterization test** — Test that records what an existing system does today, including defects and obsolete rules, without judging whether this behavior is correct.
 - **Divergence (drift)** — Situation where artifacts that should say the same thing (specification, testing, code, production) come to say different things.
-- **Authority Matrix** — Proposed governance policy that separates who decides each type of decision from what the AI can do in each.
-- **Provenity** — Record of origin of a statement or decision: source, author, date and justification.
-- **Spec-first** — Mode in which the specification is drawn up before the code; the risk is to early freeze a template interpretation.
-- **Spec-retrospective** — Mode in which intent is rebuilt from code, logs and incidents; the risk is to give coherence to what was accidental.
+- **Authority Matrix** — Proposed governance policy that defines, for each type of decision, who decides and what the AI can do.
+- **Provenity** — Registration of the origin of a statement or decision: source, author, date and justification.
+- **Spec-first** — Mode in which the specification is drawn up before the code. The risk is to early freeze an interpretation of the model.
+- **Spec-retrospective** — Mode in which intent is rebuilt from code, logs and incidents. The risk is to give consistency to what was accidental.
 
 *© 2026 Mauritius Yokoyama Issei. Citable content with assignment (fair use educational).*

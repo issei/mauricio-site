@@ -192,15 +192,15 @@
           "name": "O que é Especificação Conversacional Estruturada?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "É um workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema como requisitos e critérios verificáveis, mantendo explícitas as fontes, as incertezas, as decisões e a forma de verificação. É uma proposta em avaliação, não um método validado nem uma norma."
+            "text": "É um workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema como requisitos e critérios verificáveis. Fontes, incertezas, decisões e forma de verificação ficam explícitas. É uma proposta em avaliação, não um método validado nem uma norma."
           }
         },
         {
           "@type": "Question",
-          "name": "Qual a diferença para Vibe Spec-ing e para Spec-Driven Development?",
+          "name": "Qual é a diferença entre esta proposta, o Vibe Spec-ing e o Spec-Driven Development?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vibe Spec-ing foi o nome anterior deste enquadramento; mudou porque \"vibe\" sugere o contrário do que a proposta exige (registro, autoridade e verificação). Spec-Driven Development é um rótulo ainda instável para práticas em que a especificação vem antes do código (spec-first, spec-anchored, spec-as-source). A Especificação Conversacional Estruturada é um workflow específico dentro desse espaço, com autoridade humana e política de divergência explícitas."
+            "text": "Vibe Spec-ing foi o nome anterior deste enquadramento. Mudou porque \"vibe\" sugere o contrário do que a proposta exige: registro, autoridade e verificação. Spec-Driven Development é um rótulo ainda instável para práticas em que a especificação vem antes do código (spec-first, spec-anchored, spec-as-source). A Especificação Conversacional Estruturada é um workflow específico dentro desse espaço, com autoridade humana e política de divergência explícitas."
           }
         },
         {
@@ -208,7 +208,7 @@
           "name": "A IA pode aprovar requisitos ou regras de negócio?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não, por padrão. O modelo pode perguntar, resumir, propor cenários, apontar contradições e preparar mudanças, mas não recebe autoridade para decidir valor, risco, conformidade, aceitação ou verdade de domínio. A matriz de autoridade atribui cada decisão a pessoas designadas; ela é uma política de governança proposta, a ajustar a cada organização."
+            "text": "Não, por padrão. O modelo pode perguntar, resumir, propor cenários, apontar contradições e preparar mudanças, mas não recebe autoridade para decidir valor, risco, conformidade, aceitação ou verdade de domínio. A matriz de autoridade atribui cada decisão a pessoas designadas. É uma política de governança proposta, a ser ajustada a cada organização."
           }
         },
         {
@@ -216,7 +216,7 @@
           "name": "Isso substitui o TDD ou os testes de aceitação?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Atuam em níveis diferentes: a especificação define qual problema, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo, por isso o resultado esperado é definido ou validado por pessoas."
+            "text": "Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas."
           }
         },
         {
@@ -224,7 +224,7 @@
           "name": "Serve para sistemas legados?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A proposta foi pensada para esse caso: testes de caracterização registram o que o legado faz hoje, e a decisão de preservar, corrigir, substituir ou descontinuar cada regra cabe a quem tem autoridade de negócio. O risco declarado é a pós-racionalização: dar coerência ao que foi acidental ao reconstruir a intenção a partir do código."
+            "text": "A proposta foi pensada para esse caso. Testes de caracterização registram o que o legado faz hoje, e a decisão de preservar, corrigir, substituir ou descontinuar cada regra cabe a quem tem autoridade de negócio. O risco declarado é a pós-racionalização: dar coerência ao que foi acidental ao reconstruir a intenção a partir do código."
           }
         },
         {
@@ -232,7 +232,7 @@
           "name": "Há evidência de que funciona?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para componentes isolados, parcial: estudos mostram capacidade parcial de LLMs em elicitação, especificação e detecção de ambiguidade, em tarefas controladas. Para o workflow completo, não foi localizado estudo controlado ou longitudinal frente a uma linha de base alinhada à ISO/IEC/IEEE 29148 e ao SWEBOK. A página traz um protocolo de avaliação para testar no próprio contexto."
+            "text": "Para componentes isolados, parcial: estudos mostram capacidade parcial de LLMs em elicitação, especificação e detecção de ambiguidade, em tarefas controladas. Para o workflow completo, não foi localizado estudo controlado ou longitudinal frente a uma linha de base alinhada à ISO/IEC/IEEE 29148 e ao SWEBOK. A página propõe um protocolo para avaliar o workflow no seu próprio contexto."
           }
         }
       ]
@@ -253,13 +253,13 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-oraculo",
           "name": "Oráculo de teste",
-          "description": "Fonte do resultado esperado com que um teste compara o comportamento observado."
+          "description": "Fonte do resultado esperado com o qual um teste compara o comportamento observado."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-teste-de-caracterizacao",
           "name": "Teste de caracterização",
-          "description": "Teste que registra o que um sistema existente faz hoje, inclusive defeitos e regras obsoletas, sem julgar se está certo."
+          "description": "Teste que registra o que um sistema existente faz hoje, inclusive defeitos e regras obsoletas, sem julgar se esse comportamento está correto."
         },
         {
           "@type": "DefinedTerm",
@@ -271,25 +271,25 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-matriz-de-autoridade",
           "name": "Matriz de autoridade",
-          "description": "Política de governança proposta que separa quem decide cada tipo de decisão do que a IA pode fazer em cada uma."
+          "description": "Política de governança proposta que define, para cada tipo de decisão, quem decide e o que a IA pode fazer."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-proveniencia",
           "name": "Proveniência",
-          "description": "Registro de origem de uma afirmação ou decisão: fonte, autor, data e justificativa."
+          "description": "Registro da origem de uma afirmação ou decisão: fonte, autor, data e justificativa."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-spec-first",
           "name": "Spec-first",
-          "description": "Modo em que a especificação é elaborada antes do código; o risco é congelar cedo uma interpretação do modelo."
+          "description": "Modo em que a especificação é elaborada antes do código. O risco é congelar cedo uma interpretação do modelo."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-spec-retrospectiva",
           "name": "Spec-retrospectiva",
-          "description": "Modo em que a intenção é reconstruída a partir de código, logs e incidentes; o risco é dar coerência ao que foi acidental."
+          "description": "Modo em que a intenção é reconstruída a partir de código, logs e incidentes. O risco é dar coerência ao que foi acidental."
         }
       ]
     }
@@ -332,8 +332,8 @@
         </h1>
         <p class="ecs-hero__lead">
           Um workflow proposto para usar modelos de linguagem (LLMs, os sistemas de IA que geram
-          texto) na descoberta e no registro de requisitos, com decisões tomadas por pessoas com
-          autoridade e divergências rastreáveis entre documentação, testes e código.
+          texto) na descoberta e no registro de requisitos. Quem decide são pessoas com autoridade,
+          e as divergências entre documentação, testes e código ficam rastreáveis.
         </p>
         <p class="ecs-aviso">
           <span class="ecs-selo ecs-selo--proposta">Proposta</span>
@@ -376,7 +376,7 @@
           <figcaption id="v1-cap">
             Documentação, testes e código podem dizer coisas diferentes sobre a mesma regra. Um
             <strong>teste de caracterização</strong> é um teste que registra o que o sistema antigo
-            faz hoje, sem julgar se está certo. A figura volta resolvida em
+            faz hoje, sem julgar se esse comportamento está correto. A figura volta resolvida em
             <a href="#divergencia">Nenhum artefato, sozinho, preserva a intenção</a>.
           </figcaption>
         </figure>
@@ -440,8 +440,8 @@
             Nem o ganho de velocidade é consenso. Em uma tarefa controlada, desenvolvedores com IA
             terminaram mais rápido (Peng et al., 2023). Em um estudo com 16 desenvolvedores
             experientes e 246 tarefas reais, o uso de IA aumentou o tempo em 19% (Becker et al.,
-            2025, preprint, ainda sem revisão por pares). A página não discute quanto mais rápido
-            se chega, e sim o que se perde no caminho.
+            2025, preprint, ainda sem revisão por pares). Esta página não trata de velocidade, e
+            sim do que se perde entre a conversa e o código.
           </p>
         </div>
 
@@ -539,13 +539,13 @@
     <section id="definicao" class="ecs-section" aria-labelledby="definicao-titulo">
       <div class="ecs-container">
         <p class="ecs-eyebrow">A solução proposta <span class="ecs-selo ecs-selo--proposta">Proposta</span></p>
-        <h2 id="definicao-titulo" class="ecs-title">A IA amplia a investigação; pessoas com autoridade decidem</h2>
+        <h2 id="definicao-titulo" class="ecs-title">A IA pode ampliar a investigação; pessoas com autoridade decidem</h2>
 
         <p class="ecs-def">
           Especificação Conversacional Estruturada é um workflow humano–IA, governado por
           artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a
-          intenção de um sistema como requisitos e critérios verificáveis, mantendo explícitas as
-          fontes, as incertezas, as decisões e a forma de verificação.
+          intenção de um sistema como requisitos e critérios verificáveis. Fontes, incertezas,
+          decisões e forma de verificação ficam explícitas.
         </p>
 
         <div class="ecs-prose">
@@ -555,7 +555,7 @@
             risco, conformidade, aceitação ou verdade de domínio. A posição é compatível com as
             atividades de elicitação, análise, validação e gestão descritas na ISO/IEC/IEEE 29148
             e no SWEBOK (o guia de conhecimento de engenharia de software da IEEE Computer
-            Society); a proposta explora como a IA pode apoiá-las, sem substituí-las.
+            Society). A proposta explora como a IA pode apoiar essas atividades, sem substituí-las.
           </p>
         </div>
 
@@ -702,8 +702,8 @@
         <h2 id="protocolo-titulo" class="ecs-title">Cinco práticas para que a saída da IA possa ser contestada</h2>
         <div class="ecs-prose">
           <p>
-            A contribuição do modelo só é útil quando suas saídas podem ser examinadas e
-            contestadas. Comece por um fluxo representativo, não pelo sistema inteiro. No cenário,
+            Nesta proposta, a contribuição do modelo só conta quando suas saídas podem ser
+            examinadas e contestadas. Comece por um fluxo representativo, não pelo sistema inteiro. No cenário,
             a aprovação de proposta com desconto excepcional.
           </p>
         </div>
@@ -716,15 +716,15 @@
             <p>Incerteza relevante fica aberta, com responsável, até ser resolvida ou aceita como risco.</p></li>
           <li><strong>Usar exemplos e contraexemplos.</strong>
             <p>Situação normal, limite e exceção. No cenário: dentro do limite, aprovação automática; acima, pessoa autorizada e justificativa; dados incompletos, a proposta não avança; valor alterado após a aprovação, pode exigir nova avaliação. São hipóteses até a confirmação. O modelo sugere casos; não os promove a regra aprovada.</p></li>
-          <li><strong>Revisão proporcional ao risco.</strong>
+          <li><strong>Revisar na proporção do risco.</strong>
             <p>Decisões comerciais, regulatórias e de integração crítica passam por quem tem autoridade.</p></li>
         </ol>
         <div class="ecs-prose" style="margin-top:1.2rem">
           <p>
             Não é burocracia para cada frase: é conseguir distinguir o que se sabe, o que se supõe
             e o que se decidiu. E validar o entendimento não é validar o resultado. A conversa
-            mostra se as pessoas entendem a regra do mesmo jeito, não que a modernização vai
-            reduzir incidentes.
+            pode revelar se as pessoas entendem a regra de jeitos diferentes, não que a
+            modernização vai reduzir incidentes.
           </p>
         </div>
 
@@ -825,7 +825,7 @@ pendencia: aberta</code></pre>
         <p class="ecs-eyebrow">Divergência <span class="ecs-selo ecs-selo--proposta">Proposta</span> <span class="ecs-selo ecs-selo--cenario">Cenário ilustrativo</span></p>
         <h2 id="divergencia-titulo" class="ecs-title">Nenhum artefato, sozinho, preserva a intenção</h2>
         <p class="ecs-lede ecs-prose">
-          Documentação, testes e código vão divergir. O que importa é quem resolve, como, e onde a
+          Documentação, testes e código tendem a divergir à medida que o sistema evolui. O que importa é quem resolve, como, e onde a
           decisão fica registrada.
         </p>
         <div class="ecs-prose">
@@ -948,7 +948,7 @@ pendencia: aberta</code></pre>
               <li><code>bloqueado</code></li>
               <li><code>resolvido</code></li>
             </ul>
-            <p class="ecs-small">O agente nunca harmoniza silenciosamente versões conflitantes: se não puder demonstrar a relação, registra “não conhecido”.</p>
+            <p class="ecs-small">No workflow proposto, o agente não harmoniza silenciosamente versões conflitantes: se não puder demonstrar a relação, registra “não conhecido”.</p>
           </div>
         </details>
 
@@ -975,7 +975,7 @@ pendencia: aberta</code></pre>
         <div class="ecs-prose">
           <p>
             Um termo antes de seguir: <strong>oráculo</strong> é a fonte do resultado esperado com
-            que o teste compara o comportamento observado.
+            o qual o teste compara o comportamento observado.
           </p>
           <p>
             A diferença entre as abordagens é a unidade de controle. O TDD (escrever um teste que
@@ -1133,12 +1133,13 @@ test('proposta acima do limite aguarda aprovação e exige justificativa', () =&
         </div>
 
         <h3 class="ecs-h3">Como avaliar no seu contexto</h3>
+        <p class="ecs-small">Um desenho de avaliação proposto para este contexto, não um protocolo validado.</p>
         <ol class="ecs-steps">
           <li><strong>Montar um pacote de referência independente</strong>
             <p>Necessidades, regras, restrições e casos de fronteira, antes ou em paralelo à elicitação.</p></li>
           <li><strong>Conduzir a elicitação com IA registrando a fonte</strong>
             <p>Separando fato, inferência e proposta.</p></li>
-          <li><strong>Revisão cega</strong>
+          <li><strong>Revisão independente</strong>
             <p>Por pelo menos duas pessoas do domínio.</p></li>
           <li><strong>Medir em quatro pontos</strong>
             <p>Depois da definição, da especificação, da implementação e da operação.</p></li>
@@ -1300,41 +1301,41 @@ test('proposta acima do limite aguarda aprovação e exige justificativa', () =&
   <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">Em síntese</p>
     <h2 class="aeo-tldr__title">O que é a Especificação Conversacional Estruturada</h2>
-    <p class="aeo-tldr__lede">É uma <strong>proposta de workflow</strong> em que a IA ajuda a elicitar e registrar requisitos — perguntando, comparando interpretações e sugerindo exemplos — enquanto <strong>pessoas com autoridade decidem</strong>. Cada afirmação tem origem e status, e as divergências entre documentação, testes e código seguem uma política explícita. A eficácia do workflow completo ainda não foi avaliada.</p>
+    <p class="aeo-tldr__lede">A Especificação Conversacional Estruturada é uma <strong>proposta de workflow</strong> em que a IA ajuda a elicitar e registrar requisitos: faz perguntas, compara interpretações e sugere exemplos. Quem decide são <strong>pessoas com autoridade</strong>. Cada afirmação tem origem e status, e as divergências entre documentação, testes e código seguem uma política explícita. A eficácia do workflow completo ainda não foi avaliada.</p>
     <ul class="aeo-tldr__points">
-      <li><strong>A IA propõe, pessoas decidem</strong> — a matriz de autoridade separa quem decide de quem assiste; o modelo não tem autoridade substantiva por padrão.</li>
-      <li><strong>Cinco práticas</strong> — registrar a origem, separar fato de hipótese, manter pendências visíveis, usar exemplos e contraexemplos, e revisar na proporção do risco.</li>
-      <li><strong>Divergência governada</strong> — documentação, testes e código vão divergir; a política define quem resolve, como, e onde a decisão fica registrada.</li>
-      <li><strong>Complementa o TDD, não o substitui</strong> — a especificação decide o que verificar; o TDD verifica. O oráculo (resultado esperado) vem de pessoas.</li>
+      <li><strong>A IA propõe; pessoas decidem</strong> — a matriz de autoridade separa quem decide de quem apoia; o modelo não tem autoridade substantiva por padrão.</li>
+      <li><strong>Cinco práticas</strong> — registrar a origem, separar fato de hipótese, manter as pendências visíveis, usar exemplos e contraexemplos e revisar na proporção do risco.</li>
+      <li><strong>Divergência governada</strong> — documentação, testes e código tendem a divergir; a política define quem resolve, como e onde a decisão fica registrada.</li>
+      <li><strong>Complementa o TDD, não o substitui</strong> — a especificação decide o que verificar; o TDD verifica. O oráculo (o resultado esperado) vem de pessoas.</li>
     </ul>
-    <p class="aeo-tldr__foot">Parte do mesmo método de <a href="/engenharia-confianca">A Engenharia da Confiança</a> e da prática de <a href="/devin">Vibe Coding com Devin</a>: a intenção registrada, com autoridade humana, antes do código.</p>
+    <p class="aeo-tldr__foot">Parte do mesmo método de <a href="/engenharia-confianca">A Engenharia da Confiança</a> e da prática de <a href="/devin">Vibe Coding com Devin</a>: a intenção registrada, com autoridade humana, antes ou depois do código.</p>
   </div>
   <div class="aeo-faq">
     <p class="aeo-eyebrow">Perguntas frequentes</p>
     <h2 class="aeo-faq__title">Perguntas frequentes</h2>
     <details class="aeo-faq__item" open>
       <summary class="aeo-faq__q">O que é Especificação Conversacional Estruturada?</summary>
-      <div class="aeo-faq__a"><p>É um workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema como requisitos e critérios verificáveis, mantendo explícitas as fontes, as incertezas, as decisões e a forma de verificação. É uma proposta em avaliação, não um método validado nem uma norma.</p></div>
+      <div class="aeo-faq__a"><p>É um workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema como requisitos e critérios verificáveis. Fontes, incertezas, decisões e forma de verificação ficam explícitas. É uma proposta em avaliação, não um método validado nem uma norma.</p></div>
     </details>
     <details class="aeo-faq__item">
-      <summary class="aeo-faq__q">Qual a diferença para Vibe Spec-ing e para Spec-Driven Development?</summary>
-      <div class="aeo-faq__a"><p>Vibe Spec-ing foi o nome anterior deste enquadramento; mudou porque &quot;vibe&quot; sugere o contrário do que a proposta exige (registro, autoridade e verificação). Spec-Driven Development é um rótulo ainda instável para práticas em que a especificação vem antes do código (spec-first, spec-anchored, spec-as-source). A Especificação Conversacional Estruturada é um workflow específico dentro desse espaço, com autoridade humana e política de divergência explícitas.</p></div>
+      <summary class="aeo-faq__q">Qual é a diferença entre esta proposta, o Vibe Spec-ing e o Spec-Driven Development?</summary>
+      <div class="aeo-faq__a"><p>Vibe Spec-ing foi o nome anterior deste enquadramento. Mudou porque &quot;vibe&quot; sugere o contrário do que a proposta exige: registro, autoridade e verificação. Spec-Driven Development é um rótulo ainda instável para práticas em que a especificação vem antes do código (spec-first, spec-anchored, spec-as-source). A Especificação Conversacional Estruturada é um workflow específico dentro desse espaço, com autoridade humana e política de divergência explícitas.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">A IA pode aprovar requisitos ou regras de negócio?</summary>
-      <div class="aeo-faq__a"><p>Não, por padrão. O modelo pode perguntar, resumir, propor cenários, apontar contradições e preparar mudanças, mas não recebe autoridade para decidir valor, risco, conformidade, aceitação ou verdade de domínio. A matriz de autoridade atribui cada decisão a pessoas designadas; ela é uma política de governança proposta, a ajustar a cada organização.</p></div>
+      <div class="aeo-faq__a"><p>Não, por padrão. O modelo pode perguntar, resumir, propor cenários, apontar contradições e preparar mudanças, mas não recebe autoridade para decidir valor, risco, conformidade, aceitação ou verdade de domínio. A matriz de autoridade atribui cada decisão a pessoas designadas. É uma política de governança proposta, a ser ajustada a cada organização.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Isso substitui o TDD ou os testes de aceitação?</summary>
-      <div class="aeo-faq__a"><p>Não. Atuam em níveis diferentes: a especificação define qual problema, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo, por isso o resultado esperado é definido ou validado por pessoas.</p></div>
+      <div class="aeo-faq__a"><p>Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Serve para sistemas legados?</summary>
-      <div class="aeo-faq__a"><p>A proposta foi pensada para esse caso: testes de caracterização registram o que o legado faz hoje, e a decisão de preservar, corrigir, substituir ou descontinuar cada regra cabe a quem tem autoridade de negócio. O risco declarado é a pós-racionalização: dar coerência ao que foi acidental ao reconstruir a intenção a partir do código.</p></div>
+      <div class="aeo-faq__a"><p>A proposta foi pensada para esse caso. Testes de caracterização registram o que o legado faz hoje, e a decisão de preservar, corrigir, substituir ou descontinuar cada regra cabe a quem tem autoridade de negócio. O risco declarado é a pós-racionalização: dar coerência ao que foi acidental ao reconstruir a intenção a partir do código.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Há evidência de que funciona?</summary>
-      <div class="aeo-faq__a"><p>Para componentes isolados, parcial: estudos mostram capacidade parcial de LLMs em elicitação, especificação e detecção de ambiguidade, em tarefas controladas. Para o workflow completo, não foi localizado estudo controlado ou longitudinal frente a uma linha de base alinhada à ISO/IEC/IEEE 29148 e ao SWEBOK. A página traz um protocolo de avaliação para testar no próprio contexto.</p></div>
+      <div class="aeo-faq__a"><p>Para componentes isolados, parcial: estudos mostram capacidade parcial de LLMs em elicitação, especificação e detecção de ambiguidade, em tarefas controladas. Para o workflow completo, não foi localizado estudo controlado ou longitudinal frente a uma linha de base alinhada à ISO/IEC/IEEE 29148 e ao SWEBOK. A página propõe um protocolo para avaliar o workflow no seu próprio contexto.</p></div>
     </details>
   </div>
 </section>

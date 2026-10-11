@@ -249,7 +249,7 @@ Objetivo: tornar a proposta **falsificável** no seu contexto. Nada aqui prevê 
    fronteira) antes ou em paralelo à elicitação assistida por IA.
 2. Conduzir a elicitação registrando a fonte de cada afirmação e separando fato, inferência e
    proposta.
-3. Fazer **revisão cega** por pelo menos duas pessoas do domínio.
+3. Fazer **revisão independente** por pelo menos duas pessoas do domínio.
 4. Medir depois da definição, da especificação, da implementação e da operação.
 5. Publicar prompts, versões de modelo, artefatos e decisões de adjudicação, respeitando a
    privacidade.
