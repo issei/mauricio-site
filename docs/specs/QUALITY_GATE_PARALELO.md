@@ -160,12 +160,12 @@ sem mais runners.
 
 ## 7. Critérios de aceite
 
-- [ ] Mudança em uma página: `npm run gate` termina em menos de 3 min, com a
-      lista do que rodou e do que não rodou.
-- [ ] `npm run gate -- --full` cobre exatamente o que o gate de hoje cobre.
-- [ ] Mudança em arquivo compartilhado escala para `--full` sem flag manual.
-- [ ] Falha em qualquer etapa paralela sai ≠ 0 e mata as irmãs.
-- [ ] Shard mais lento do CI `full` a no máximo 1,2× a média.
+- [x] Mudança em uma página: `npm run gate` termina em menos de 3 min, com a
+      lista do que rodou e do que não rodou (36 s; 15,7 s sem build).
+- [x] `npm run gate -- --full` cobre exatamente o que o gate de hoje cobre (mesmas etapas e os 5 projetos; 1.401 testes verdes).
+- [x] Mudança em arquivo compartilhado escala para `--full` sem flag manual (`tests/gate-impacto.test.mjs`; visto ao vivo: "escopo: tudo (arquivo compartilhado: playwright.config.js)").
+- [x] Falha em qualquer etapa paralela sai ≠ 0 e mata as irmãs (falha em `node:test`: saída 1 em 6 s, sem navegador órfão; interrupção via `GATE_TESTE_SINAL` no teste 217/233: saída 130, 0 processos e a porta livre).
+- [x] Shard mais lento do CI `full` a no máximo 1,2× a média (1,19×, run 38155467862).
 
 ## 8. Implementação e medições (2026-10-11)
 
@@ -243,6 +243,10 @@ do `report.jsonl`), listar cada grupo na ordem do CI (`CI=1 npx playwright test
 de mesma duração. Os pesos são as contagens de cada parte. Teste novo só desloca
 a proporção, não quebra nada; se uma versão do Playwright ignorar a variável, o
 corte volta a ser por contagem igual.
+
+**Medido no CI `full` da `main` (run 38155467862, PR #113):** 12 shards de 171 a
+249 s, média 209 s, **máximo 1,19× a média — critério da §7 atendido**. Caminho
+crítico do Playwright no CI: 552 s antes do #110, 249 s agora (−55%).
 
 ### 8.3 Medições
 
