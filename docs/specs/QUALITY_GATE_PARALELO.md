@@ -209,6 +209,18 @@ Correção, simulada com as durações reais daquele run antes de ir para o CI:
   WebKit (215 s), que é um teste só e não se divide.
 - Na camada `fast` (PR), os shards de firefox/webkit pulam todos os passos.
 
+**Medido no CI `full` da `main` (run 38153163874, PR #110):** shards de 148 a
+297 s, contra 208 a 552 s; o caminho crítico caiu 46%. O mais lento é `lento 2/2`
+(297 s), que carrega o teste do banner no WebKit. Os demais ficam entre 173 e
+257 s. Camada `fast` (PR #110): chromium 229 e 190 s, `lento` 122 e 111 s;
+firefox/webkit pulam em 2 a 4 s. Critério da §7 (mais lento ≤ 1,2× a média):
+média 231 s, máximo 1,29×: não atende, por causa do teste de 215 s, que é um só e não se divide. Para atender seria preciso encurtar esse teste (hoje ~126 paradas de Tab no WebKit).
+
+Também neste PR: o gate derruba os filhos em SIGINT/SIGTERM/SIGHUP. Um
+`playwright test` de um gate abortado às 09:01 seguia vivo horas depois,
+segurando a porta 5173 (encerrado à mão). A interrupção em si não foi testada:
+no Windows não há como mandar um Ctrl+C real de forma não interativa.
+
 ### 8.3 Medições
 
 | Cenário | Antes | Depois |
