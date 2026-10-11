@@ -29,6 +29,8 @@ O zero do segundo item vale para as regras WCAG do axe, medidas a 1280 px e sem 
 
 Ver o fluxo real Ver as mudanças no código Ver o que não foi verificado
 
+Prefere o essencial antes? Ler a síntese (~1 min)
+
 01 · O problema
 
 #### Uma interface pode passar no teste e ainda bloquear alguém

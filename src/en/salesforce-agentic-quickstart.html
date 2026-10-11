@@ -208,6 +208,8 @@
       left: 0;
     }
   </style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
+  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
   <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
@@ -393,8 +395,6 @@
   ]
 }
 </script>
-  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}pre{max-width:100%;overflow-x:auto}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
-  <style id="a11y-motion">@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
 <!-- AEO:END -->
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/salesforce-agentic-quickstart" />
@@ -449,7 +449,7 @@
       </nav>
 
       <!-- Mobile toggle -->
-      <button @click="open = !open" aria-label="Open menu" :aria-expanded="open"
+      <button @click="open = !open" aria-label="Open Menu" :aria-expanded="open"
         class="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 hover:bg-white/5">
         <svg x-show="!open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 6h16M4 12h16M4 18h16" />
@@ -1715,12 +1715,12 @@ methadata trampling.
       }
     }, { threshold: 0.08 });
     document.querySelectorAll('section, footer').forEach(el => {
-<script type="module" src="../js/a11y-scroll-regions.js"></script>
       el.classList.add('reveal');
       io.observe(el);
     });
   </script>
 <script type="module" src="../js/eco-nav.js"></script>
+<script type="module" src="../js/a11y-scroll-regions.js"></script>
 </body>
 
 </html>

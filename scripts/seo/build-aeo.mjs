@@ -48,7 +48,13 @@ function stripManagedHeadTags(head) {
 
 function processPage(p) {
   const file = path.join(SRC, `${p.slug}.html`);
-  let html = fs.readFileSync(file, 'utf8');
+  // Com core.autocrlf, a cópia de trabalho no Windows vem em CRLF. As regex de
+  // limpeza abaixo esperam \n: em CRLF elas não casavam, e cada execução
+  // empilhava mais um separador e mais um bloco (30 páginas tocadas numa
+  // regeneração de uma só, em 2026-10-11). Processa em LF e devolve o EOL original.
+  const original = fs.readFileSync(file, 'utf8');
+  const crlf = original.includes('\r\n');
+  let html = original.replace(/\r\n/g, '\n');
 
   // 1) limpa execuções anteriores
   // O separador `<!-- ==== -->` é a primeira linha do bloco gerado, mas fica
@@ -98,12 +104,19 @@ function processPage(p) {
     console.log(`\n===== ${p.slug} (dry) <head> =====\n` + html.slice(0, nh).slice(-2600));
     return;
   }
-  fs.writeFileSync(file, html);
-  console.log(`✓ ${p.slug}.html`);
+  // Grava só o que mudou: regenerar uma página não toca as outras.
+  const final = crlf ? html.replace(/\n/g, '\r\n') : html;
+  if (final !== original) fs.writeFileSync(file, final);
+  console.log(`${final === original ? '·' : '✓'} ${p.slug}.html`);
 
   if (p.hasMd && (doMd || true)) {
-    fs.writeFileSync(path.join(PUB, `${p.slug}.md`), buildMd(p));
-    console.log(`  ↳ public/${p.slug}.md`);
+    const mdFile = path.join(PUB, `${p.slug}.md`);
+    const antes = fs.existsSync(mdFile) ? fs.readFileSync(mdFile, 'utf8') : '';
+    const md = antes.includes('\r\n') ? buildMd(p).replace(/\r?\n/g, '\r\n') : buildMd(p);
+    if (md !== antes) {
+      fs.writeFileSync(mdFile, md);
+      console.log(`  ↳ public/${p.slug}.md`);
+    }
   }
 }
 
