@@ -182,6 +182,9 @@ function rodar(e) {
 for (const sinal of ['SIGINT', 'SIGTERM', 'SIGHUP']) {
   process.on(sinal, () => { encerrando = true; for (const f of vivos) matar(f); process.exit(130); });
 }
+// GATE_TESTE_SINAL=ms: dispara o mesmo caminho de SIGINT depois de ms, para verificar que nada fica
+// órfão. No Windows não há como mandar um Ctrl+C real a um processo de forma não interativa.
+if (process.env.GATE_TESTE_SINAL) setTimeout(() => process.emit('SIGINT'), Number(process.env.GATE_TESTE_SINAL));
 
 const resultados = [];
 const inicio = Date.now();
