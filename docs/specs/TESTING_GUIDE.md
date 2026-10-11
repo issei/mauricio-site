@@ -549,7 +549,7 @@ Fonte da verdade: [`.github/workflows/quality-gate.yml`](../../.github/workflows
 | Job | O que roda | Paralelismo |
 | :--- | :--- | :--- |
 | `static` | `node scripts/quality-gate.mjs --no-e2e`: build, geradores `--check`, i18n, `audit-site`, `node --test`, varredura a11y (catraca), a11y estático, perf | 1 runner, em paralelo aos shards |
-| `e2e` | `npx playwright test --shard=i/n` por navegador: chromium (+mobile, no-js) 2, firefox 2, webkit 4, e os testes `@lento` 2 | 10 runners × 2 workers (na camada fast, os de firefox/webkit pulam) |
+| `e2e` | `npx playwright test --shard=i/n` por navegador, com pesos (`PWTEST_SHARD_WEIGHTS`): chromium (+mobile, no-js) 2, firefox 3, webkit 4, e os testes `@lento` 3 | 12 runners × 2 workers (na camada fast, os de firefox/webkit pulam) |
 | `report` | `playwright merge-reports` dos blobs → artefato `playwright-report` | — |
 | `gate` | Check único para a branch protection: verde só se `static` e todos os shards passaram | — |
 
