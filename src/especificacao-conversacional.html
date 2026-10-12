@@ -216,7 +216,7 @@
           "name": "Isso substitui o TDD ou os testes de aceitação?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas."
+            "text": "Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna os critérios de aceite corretos. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas."
           }
         },
         {
@@ -251,8 +251,8 @@
         },
         {
           "@type": "DefinedTerm",
-          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-oraculo",
-          "name": "Oráculo de teste",
+          "@id": "https://mauricio.issei.com.br/especificacao-conversacional#g-criterios-de-aceite",
+          "name": "Critérios de aceite",
           "description": "Fonte do resultado esperado com o qual um teste compara o comportamento observado."
         },
         {
@@ -292,6 +292,14 @@
           "description": "Modo em que a intenção é reconstruída a partir de código, logs e incidentes. O risco é dar coerência ao que foi acidental."
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://mauricio.issei.com.br/especificacao-conversacional#video",
+      "name": "A Intenção do Negócio: Especificação Conversacional Estruturada com IA",
+      "description": "Introdução à proposta de Especificação Conversacional Estruturada e à preservação da intenção do negócio no desenvolvimento de software com IA.",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/vz9n5iKti9c",
+      "contentUrl": "https://youtu.be/vz9n5iKti9c"
     }
   ]
 }
@@ -309,6 +317,7 @@
         Especificação Conversacional
       </a>
       <nav class="ecs-nav__trail" aria-label="Seções da página">
+        <a href="#video">Vídeo</a>
         <a href="#problema">Problema</a>
         <a href="#causa">Causa</a>
         <a href="#definicao">Definição</a>
@@ -416,6 +425,35 @@
   <p class="ed-shortcut">Prefere o essencial antes? <a href="#em-sintese">Ler a síntese (~1 min)</a></p>
 </div>
 <!-- EDITORIAL:END -->
+
+    <!-- ============================== VÍDEO ============================== -->
+    <section id="video" class="ecs-section" aria-labelledby="video-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Vídeo</p>
+        <h2 id="video-titulo" class="ecs-title">Assista à introdução</h2>
+        <div class="ecs-prose">
+          <p class="ecs-lede">
+            Uma visão geral sobre como preservar a intenção do negócio no desenvolvimento de software impulsionado por IA.
+          </p>
+        </div>
+
+        <div class="ecs-video">
+          <div class="ecs-video__frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/vz9n5iKti9c?rel=0"
+              title="A Intenção do Negócio: Especificação Conversacional Estruturada com IA"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="ecs-video__caption">
+            Vídeo de introdução à proposta de Especificação Conversacional Estruturada, apresentado por Maurício Yokoyama Issei.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- ============================== PROBLEMA ============================== -->
     <section id="problema" class="ecs-section" aria-labelledby="problema-titulo">
@@ -685,8 +723,8 @@
               <tr>
                 <th scope="row">Testar e validar</th>
                 <td data-label="Onde a IA ajuda">traduzir critérios em testes e apoiar testes de caracterização</td>
-                <td data-label="O que pode distorcer">teste verde contra um oráculo (o resultado esperado) errado, escrito pela própria IA</td>
-                <td data-label="Controle">oráculo definido por pessoas; testes independentes</td>
+                <td data-label="O que pode distorcer">teste verde contra critérios de aceite errados, escritos pela própria IA</td>
+                <td data-label="Controle">critérios de aceite definidos por pessoas; testes independentes</td>
                 <td data-label="Seção"><a href="#tdd">TDD</a></td>
               </tr>
             </tbody>
@@ -782,7 +820,7 @@ pendencia: aberta</code></pre>
             Quando o agente também executa ferramentas, altera arquivos ou aciona pipelines, os
             controles passam a cobrir permissões, escopo de execução, revisão de mudanças e
             condições de interrupção: gerar uma sugestão e executar uma ação são níveis diferentes
-            de autonomia. A linha do oráculo liga esta seção a <a href="#tdd">TDD</a>: a IA pode
+            de autonomia. A linha dos critérios de aceite liga esta seção a <a href="#tdd">TDD</a>: a IA pode
             escrever o código do teste, mas o resultado esperado vem de quem tem autoridade sobre
             a regra.
           </p>
@@ -802,8 +840,8 @@ pendencia: aberta</code></pre>
               <tr><th scope="row">Compatibilidade de integrações</th><td data-label="Autoridade primária">Engenharia e responsáveis pelas integrações</td><td data-label="Contribuição da IA">Mapear contratos e possíveis impactos</td></tr>
               <tr><th scope="row">Aceitação de risco residual</th><td data-label="Autoridade primária">Responsáveis formalmente designados</td><td data-label="Contribuição da IA">Identificar cenários e apoiar a análise</td></tr>
               <tr><th scope="row">Redação da especificação</th><td data-label="Autoridade primária">Equipe responsável, com revisão</td><td data-label="Contribuição da IA">Estruturar e reformular conteúdo</td></tr>
-              <tr><th scope="row">Oráculo de teste (o resultado esperado)</th><td data-label="Autoridade primária">Negócio e engenharia</td><td data-label="Contribuição da IA">Gerar candidatos para validação</td></tr>
-              <tr><th scope="row">Código de teste</th><td data-label="Autoridade primária">Engenharia e QA</td><td data-label="Contribuição da IA">Escrever o código; o oráculo vem da linha acima</td></tr>
+              <tr><th scope="row">Critérios de aceite (o resultado esperado)</th><td data-label="Autoridade primária">Negócio e engenharia</td><td data-label="Contribuição da IA">Gerar candidatos para validação</td></tr>
+              <tr><th scope="row">Código de teste</th><td data-label="Autoridade primária">Engenharia e QA</td><td data-label="Contribuição da IA">Escrever o código; os critérios vêm da linha acima</td></tr>
               <tr><th scope="row">Classificação de uma divergência</th><td data-label="Autoridade primária">Responsável pelo artefato afetado</td><td data-label="Contribuição da IA">Detectar possíveis conflitos</td></tr>
               <tr class="is-model"><th scope="row">Modelo / agente</th><td data-label="Autoridade primária"><strong>Nenhuma autoridade substantiva por padrão</strong></td><td data-label="Contribuição da IA">Propor, recuperar, transformar; executar só no escopo autorizado</td></tr>
             </tbody>
@@ -854,7 +892,7 @@ pendencia: aberta</code></pre>
             <li><strong>Registrar a decisão</strong>
               <p>DEC-031, com justificativa, impacto e artefatos afetados.</p></li>
             <li><strong>Atualizar e verificar de novo</strong>
-              <p>Um teste de aceitação com o oráculo em AF-012 e DEC-031. O teste de caracterização fica, rotulado como evidência sobre o legado.</p></li>
+              <p>Um teste de aceitação com os critérios de aceite em AF-012 e DEC-031. O teste de caracterização fica, rotulado como evidência sobre o legado.</p></li>
           </ol>
           <svg viewBox="0 0 520 340" role="img" style="margin-top:1.4rem"
             aria-label="O mesmo triângulo da figura 1, resolvido: a documentação confirma AF-012, o teste de caracterização é evidência sobre o legado, o código novo segue a decisão DEC-031. No centro: decisão registrada.">
@@ -974,7 +1012,7 @@ pendencia: aberta</code></pre>
         <h2 id="tdd-titulo" class="ecs-title">A especificação decide o que verificar; o TDD verifica</h2>
         <div class="ecs-prose">
           <p>
-            Um termo antes de seguir: <strong>oráculo</strong> é a fonte do resultado esperado com
+            Um termo antes de seguir: <strong>critérios de aceite</strong> são a fonte do resultado esperado com
             o qual o teste compara o comportamento observado.
           </p>
           <p>
@@ -982,15 +1020,15 @@ pendencia: aberta</code></pre>
             falha, o código mínimo para ele passar, e então refatorar) responde “qual é o próximo
             menor incremento e como verifico que ele continua funcionando?”. A especificação
             responde “qual problema, para quem, com quais regras, restrições e critérios?”. O TDD
-            torna o feedback barato; não torna o oráculo correto. Sem intenção e escopo, o TDD pode
-            testar a coisa errada com eficiência. Sem oráculos executáveis, a especificação pode
+            torna o feedback barato; não torna os critérios de aceite corretos. Sem intenção e escopo, o TDD pode
+            testar a coisa errada com eficiência. Sem critérios de aceite executáveis, a especificação pode
             documentar uma intenção errada.
           </p>
           <p>
             Há um risco específico de agentes: quando o mesmo modelo escreve a especificação e os
             testes, um teste verde pode apenas confirmar o erro do próprio modelo. O controle é o
             resultado esperado ser definido ou validado por pessoas antes de o teste ser gerado
-            (a linha do oráculo em <a href="#autoridade">Quem decide o quê</a>), e cada critério
+            (a linha dos critérios de aceite em <a href="#autoridade">Quem decide o quê</a>), e cada critério
             crítico ter ao menos um teste que não nasceu do mesmo prompt nem do mesmo contexto.
           </p>
           <p>
@@ -1011,7 +1049,7 @@ test('legado: aprova desconto acima do limite sem aprovação', () =&gt; {
   expect(legado.avaliar(propostaAcimaDoLimite()).status).toBe('APROVADA');
 });
 
-<span class="c">// Aceitação: o oráculo vem de AF-012, confirmada na decisão DEC-031.
+<span class="c">// Aceitação: os critérios de aceite vêm de AF-012, confirmados na decisão DEC-031.
 // O teste verifica a regra; quem a definiu foi o responsável pela política.</span>
 test('proposta acima do limite aguarda aprovação e exige justificativa', () =&gt; {
   const r = avaliarProposta(propostaAcimaDoLimite());
@@ -1036,7 +1074,7 @@ test('proposta acima do limite aguarda aprovação e exige justificativa', () =&
                 <tbody>
                   <tr><th scope="row">Propósito</th><td>Reduzir a perda de intenção entre conversa, requisitos, código e testes</td><td>Guiar design e implementação incremental por testes executáveis, com feedback rápido</td></tr>
                   <tr><th scope="row">Unidade de controle</th><td>Intenção de produto, regras, restrições e critérios</td><td>Comportamento observável do código, em geral função, classe ou módulo</td></tr>
-                  <tr><th scope="row">Oráculo</th><td>Só é verificável se cada requisito tem condição observável, limites e procedimento; texto fluente ou aprovação humana não basta</td><td>Um teste verde garante apenas que o comportamento exercitado satisfaz o oráculo codificado naquele ambiente</td></tr>
+                  <tr><th scope="row">Critérios de aceite</th><td>Só é verificável se cada requisito tem condição observável, limites e procedimento; texto fluente ou aprovação humana não basta</td><td>Um teste verde garante apenas que o comportamento exercitado satisfaz os critérios de aceite codificados naquele ambiente</td></tr>
                   <tr><th scope="row">Divergência</th><td>Risco elevado de spec drift; exige política explícita, versionamento e detecção</td><td>Detecta regressão no que é exercitado; testes podem ficar obsoletos ou ser alterados para acomodar o código</td></tr>
                   <tr><th scope="row">Evidência</th><td>Componentes com estudos isolados; workflow completo sem estudo localizado</td><td>Efeito pequeno e contextual (ver abaixo)</td></tr>
                 </tbody>
@@ -1306,7 +1344,7 @@ test('proposta acima do limite aguarda aprovação e exige justificativa', () =&
       <li><strong>A IA propõe; pessoas decidem</strong> — a matriz de autoridade separa quem decide de quem apoia; o modelo não tem autoridade substantiva por padrão.</li>
       <li><strong>Cinco práticas</strong> — registrar a origem, separar fato de hipótese, manter as pendências visíveis, usar exemplos e contraexemplos e revisar na proporção do risco.</li>
       <li><strong>Divergência governada</strong> — documentação, testes e código tendem a divergir; a política define quem resolve, como e onde a decisão fica registrada.</li>
-      <li><strong>Complementa o TDD, não o substitui</strong> — a especificação decide o que verificar; o TDD verifica. O oráculo (o resultado esperado) vem de pessoas.</li>
+      <li><strong>Complementa o TDD, não o substitui</strong> — a especificação decide o que verificar; o TDD verifica. Os critérios de aceite (o resultado esperado) vêm de pessoas.</li>
     </ul>
     <p class="aeo-tldr__foot">Parte do mesmo método de <a href="/engenharia-confianca">A Engenharia da Confiança</a> e da prática de <a href="/devin">Vibe Coding com Devin</a>: a intenção registrada, com autoridade humana, antes ou depois do código.</p>
   </div>
@@ -1327,7 +1365,7 @@ test('proposta acima do limite aguarda aprovação e exige justificativa', () =&
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Isso substitui o TDD ou os testes de aceitação?</summary>
-      <div class="aeo-faq__a"><p>Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas.</p></div>
+      <div class="aeo-faq__a"><p>Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna os critérios de aceite corretos. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Serve para sistemas legados?</summary>

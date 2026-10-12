@@ -217,7 +217,7 @@
           "name": "Does that replace the TDD or acceptance tests?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people."
+            "text": "Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make acceptance criteria correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people."
           }
         },
         {
@@ -252,8 +252,8 @@
         },
         {
           "@type": "DefinedTerm",
-          "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#g-oraculo",
-          "name": "Test Oracle",
+          "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#g-criterios-de-aceite",
+          "name": "Acceptance criteria",
           "description": "Source of the expected result with which a test compares the observed behavior."
         },
         {
@@ -293,6 +293,14 @@
           "description": "Mode in which intent is rebuilt from code, logs and incidents. The risk is to give consistency to what was accidental."
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://mauricio.issei.com.br/en/especificacao-conversacional#video",
+      "name": "Business Intent: Conversational Specification Structured with AI",
+      "description": "Introduction to the proposal of Structured Conversational Specification and the preservation of business intention in the development of software with AI.",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/vz9n5iKti9c",
+      "contentUrl": "https://youtu.be/vz9n5iKti9c"
     }
   ]
 }
@@ -314,6 +322,7 @@
         Conversational Specification
       </a>
       <nav class="ecs-nav__trail" aria-label="Page sections">
+        <a href="#video">Video</a>
         <a href="#problema">Problem</a>
         <a href="#causa">Cause</a>
         <a href="#definicao">Definition</a>
@@ -421,6 +430,35 @@ It does today, without judging if this behavior is correct. The figure returns r
   <p class="ed-shortcut">You prefer the essentials first? <a href="#em-sintese">Read synthesis (~1 min)</a></p>
 </div>
 <!-- EDITORIAL:END -->
+
+    <!-- ============================== VÍDEO ============================== -->
+    <section id="video" class="ecs-section" aria-labelledby="video-titulo">
+      <div class="ecs-container">
+        <p class="ecs-eyebrow">Video</p>
+        <h2 id="video-titulo" class="ecs-title">Watch the introduction</h2>
+        <div class="ecs-prose">
+          <p class="ecs-lede">
+            An overview of how to preserve business intent in AI-driven software development.
+          </p>
+        </div>
+
+        <div class="ecs-video">
+          <div class="ecs-video__frame">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/vz9n5iKti9c?rel=0"
+              title="Business Intent: Conversational Specification Structured with AI"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="ecs-video__caption">
+            Video introduction to the proposed Structured Conversational Specification, presented by Mauricio Yokoyama Issei.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- ============================== PROBLEMA ============================== -->
     <section id="problema" class="ecs-section" aria-labelledby="problema-titulo">
@@ -690,8 +728,8 @@ Thinking serves as a map; it is not presented as proof of anything.
               <tr>
                 <th scope="row">Test and validate</th>
                 <td data-label="Onde a IA ajuda">translate criteria into tests and support characterization tests</td>
-                <td data-label="O que pode distorcer">green test against an oracle (the expected result) wrong, written by the AI itself</td>
-                <td data-label="Controle">oracle defined by persons; independent tests</td>
+                <td data-label="O que pode distorcer">Green test against wrong acceptance criteria, written by the AI itself</td>
+                <td data-label="Controle">acceptance criteria defined by persons; independent tests</td>
                 <td data-label="Seção"><a href="#tdd">TDD</a></td>
               </tr>
             </tbody>
@@ -787,7 +825,7 @@ standard.
             When the agent also executes tools, changes files or triggers pipelines, the
 controls begin to cover permissions, scope of execution, revision of changes and
 Break conditions: generate a suggestion and perform an action are different levels
-autonomy. The oracle line connects this section to <a href="#tdd">TDD</a>: the AI may
+autonomy. The line of acceptance criteria links this section to <a href="#tdd">TDD</a>: the AI may
 write the test code, but the expected result comes from those who have authority over
 The rule.
           </p>
@@ -807,8 +845,8 @@ The rule.
               <tr><th scope="row">Integration compatibility</th><td data-label="Autoridade primária">Engineering and integration managers</td><td data-label="Contribuição da IA">Map contracts and possible impacts</td></tr>
               <tr><th scope="row">Acceptance of residual risk</th><td data-label="Autoridade primária">Officially appointed officials</td><td data-label="Contribuição da IA">Identify scenarios and support analysis</td></tr>
               <tr><th scope="row">Writing of specification</th><td data-label="Autoridade primária">Responsible team, with review</td><td data-label="Contribuição da IA">Structure and reformulate content</td></tr>
-              <tr><th scope="row">Test Oracle (the expected result)</th><td data-label="Autoridade primária">Business and engineering</td><td data-label="Contribuição da IA">Generate validation candidates</td></tr>
-              <tr><th scope="row">Test code</th><td data-label="Autoridade primária">Engineering and QA</td><td data-label="Contribuição da IA">Write the code; the oracle comes from the line above</td></tr>
+              <tr><th scope="row">Acceptance criteria (the expected result)</th><td data-label="Autoridade primária">Business and engineering</td><td data-label="Contribuição da IA">Generate validation candidates</td></tr>
+              <tr><th scope="row">Test code</th><td data-label="Autoridade primária">Engineering and QA</td><td data-label="Contribuição da IA">Write code; criteria come from above</td></tr>
               <tr><th scope="row">Classification of a divergence</th><td data-label="Autoridade primária">Responsible for the affected artifact</td><td data-label="Contribuição da IA">Detect possible conflicts</td></tr>
               <tr class="is-model"><th scope="row">Model / agent</th><td data-label="Autoridade primária"><strong>No substantive authority by default</strong></td><td data-label="Contribuição da IA">Propose, recover, transform; execute only in the authorized scope</td></tr>
             </tbody>
@@ -859,7 +897,7 @@ steps, shown below in the discount example.
             <li><strong>Register the decision</strong>
               <p>DEC-031, with justification, impact and artifacts affected.</p></li>
             <li><strong>Refresh and recheck</strong>
-              <p>An acceptance test with the oracle in AF-012 and DEC-031. The characterization test is labeled as evidence of the legacy.</p></li>
+              <p>An acceptance test with the acceptance criteria in AF-012 and DEC-031. The characterization test is labeled as evidence of the legacy.</p></li>
           </ol>
           <svg viewBox="0 0 520 340" role="img" style="margin-top:1.4rem"
             aria-label="The same triangle in figure 1, solved: the documentation confirms AF-012, the characterization test is evidence about the legacy, the new code follows the decision DEC-031. At the center: registered decision.">
@@ -979,7 +1017,7 @@ Base: Gotel &amp; Finkelstein (1994) on traceability before and after specificat
         <h2 id="tdd-titulo" class="ecs-title">The specification decides what to check; the TDD checks</h2>
         <div class="ecs-prose">
           <p>
-            A term before following: <strong>oracle</strong> is the source of the expected result with
+            A term before following: <strong>acceptance criteria</strong> are the source of the expected result with
 which the test compares the observed behavior.
           </p>
           <p>
@@ -987,15 +1025,15 @@ which the test compares the observed behavior.
 failure, minimum code for it to pass, and then refactor) answers “what’s next
 smaller increment and how do I find that it continues to work?”. The specification
 answers “what problem, for whom, with what rules, restrictions and criteria?”. The TDD
-makes feedback cheap; does not make the oracle correct. Without intention and scope, TDD can
-test the wrong thing efficiently. Without executable oracles, the specification can
+makes feedback cheap; does not make the acceptance criteria correct. Without intention and scope, TDD can
+test the wrong thing efficiently. No executable acceptance criteria, the specification can
 document a wrong intention.
           </p>
           <p>
             There is a specific risk of agents: when the same model writes the specification and
 tests, a green test can only confirm the error of the model itself. Control is the
 expected result is defined or validated by people before the test is generated
-(the oracle line in <a href="#autoridade">Who decides what?</a>), and each criterion
+(the line of criteria for acceptance in <a href="#autoridade">Who decides what?</a>), and each criterion
 critical have at least one test that was not born from the same prompt or from the same context.
           </p>
           <p>
@@ -1016,7 +1054,7 @@ test('legado: aprova desconto acima do limite sem aprovação', () =&gt; {
   expect(legado.avaliar(propostaAcimaDoLimite()).status).toBe('APROVADA');
 });
 
-<span class="c">// Aceitação: o oráculo vem de AF-012, confirmada na decisão DEC-031.
+<span class="c">// Aceitação: os critérios de aceite vêm de AF-012, confirmados na decisão DEC-031.
 // O teste verifica a regra; quem a definiu foi o responsável pela política.</span>
 test('proposta acima do limite aguarda aprovação e exige justificativa', () =&gt; {
   const r = avaliarProposta(propostaAcimaDoLimite());
@@ -1041,7 +1079,7 @@ coexist: the first is evidence, the second is criterion.
                 <tbody>
                   <tr><th scope="row">Purpose</th><td>Reduce loss of intent between conversation, requirements, code and testing</td><td>Guide incremental design and implementation by executable tests with quick feedback</td></tr>
                   <tr><th scope="row">Control unit</th><td>Product intent, rules, restrictions and criteria</td><td>Observable code behaviour, in general function, class or module</td></tr>
-                  <tr><th scope="row">Oracle</th><td>It is only verifiable if each requirement has observable condition, limits and procedure; fluent text or human approval is not enough</td><td>A green test only ensures that the exercised behavior satisfies the oracle encoded in that environment</td></tr>
+                  <tr><th scope="row">Acceptance criteria</th><td>It is only verifiable if each requirement has observable condition, limits and procedure; fluent text or human approval is not enough</td><td>A green test only ensures that the exercised behavior meets the accepted criteria encoded in that environment</td></tr>
                   <tr><th scope="row">Divergence</th><td>High risk of drift spec; requires explicit policy, versioning and detection</td><td>Detects regression in what is exercised; tests can become obsolete or be changed to accommodate code</td></tr>
                   <tr><th scope="row">Evidence</th><td>Components with isolated studies; complete workflow without localized study</td><td>Small and contextual effect (see below)</td></tr>
                 </tbody>
@@ -1311,7 +1349,7 @@ sources above.
       <li><strong>The AI proposes; people decide</strong> — the authority matrix separates who decides who it supports; the model has no substantive authority by default.</li>
       <li><strong>Five Practices</strong> — record the origin, separate fact of hypothesis, keep to-dos visible, use examples and counterexamples and review in proportion to the risk.</li>
       <li><strong>Governmentd Divergence</strong> — documentation, testing and code tend to differ; policy defines who resolves, how and where the decision is recorded.</li>
-      <li><strong>Complements TDD, does not replace it</strong> — the specification decides what to verify; the TDD checks. The oracle (the expected result) comes from people.</li>
+      <li><strong>Complements TDD, does not replace it</strong> — the specification decides what to verify; the TDD checks. Acceptance criteria (the expected result) come from people.</li>
     </ul>
     <p class="aeo-tldr__foot">Part of the same method of <a href="/en/engenharia-confianca">Trust Engineering</a> and practice of <a href="/en/devin">Vibe Coding with Devin</a>: the registered intention, with human authority, before or after the code.</p>
   </div>
@@ -1332,7 +1370,7 @@ sources above.
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Does that replace the TDD or acceptance tests?</summary>
-      <div class="aeo-faq__a"><p>Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people.</p></div>
+      <div class="aeo-faq__a"><p>Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make acceptance criteria correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">Does it work for legacy systems?</summary>
