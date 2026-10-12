@@ -14,7 +14,7 @@ const PATH = '/especificacao-conversacional.html';
 const KIT = '/downloads/kit-especificacao-conversacional.md';
 
 const SECOES = [
-  'hero', 'problema', 'causa', 'definicao', 'etapas', 'protocolo',
+  'hero', 'video', 'problema', 'causa', 'definicao', 'etapas', 'protocolo',
   'autoridade', 'divergencia', 'tdd', 'limites', 'comece', 'referencias',
 ];
 
@@ -119,6 +119,32 @@ test.describe('Especificação Conversacional — página', () => {
       clientWidth: document.documentElement.clientWidth,
     }));
     expect(scrollWidth).toBeLessThanOrEqual(clientWidth);
+  });
+
+  test('vídeo: embed responsivo com iframe youtube-nocookie, lazy loading e acessibilidade', async ({ page }) => {
+    await page.goto(PATH);
+    const videoSection = page.locator('section#video');
+    await expect(videoSection).toBeVisible();
+    await expect(page.locator('#video-titulo')).toHaveText('Assista à introdução');
+
+    const iframe = videoSection.locator('iframe');
+    await expect(iframe).toHaveCount(1);
+    const src = await iframe.getAttribute('src');
+    expect(src).toBe('https://www.youtube-nocookie.com/embed/vz9n5iKti9c?rel=0');
+    expect(src).not.toContain('autoplay=1');
+    expect(src).not.toContain('loop=1');
+
+    expect(await iframe.getAttribute('loading')).toBe('lazy');
+    expect(await iframe.getAttribute('title')).toBe('A Intenção do Negócio: Especificação Conversacional Estruturada com IA');
+    expect(await iframe.getAttribute('allowfullscreen')).not.toBeNull();
+
+    const caption = videoSection.locator('.ecs-video__caption');
+    await expect(caption).toContainText('Vídeo de introdução à proposta de Especificação Conversacional Estruturada, apresentado por Maurício Yokoyama Issei.');
+
+    // Nav link aponta para #video
+    const navLink = page.locator('header a[href="#video"]');
+    await expect(navLink).toBeVisible();
+    await expect(navLink).toHaveText('Vídeo');
   });
 
   test('a11y: sem violações serious/critical (axe)', async ({ page }) => {

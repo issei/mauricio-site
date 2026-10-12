@@ -542,6 +542,41 @@ details.ecs-more > .ecs-more__body { padding: 0.2rem 1.1rem 1.1rem; }
 
 .ecs-term { border-bottom: 1px dotted var(--ecs-muted); cursor: help; }
 
+/* ─────────────────────────── Vídeo (embed 16:9) ───────────────────────── */
+
+.ecs-video {
+  margin-top: 1.8rem;
+  border: 1px solid var(--ecs-border);
+  border-radius: var(--ecs-radius);
+  background: var(--ecs-surface);
+  overflow: hidden;
+  max-width: 860px;
+}
+
+.ecs-video__frame {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.ecs-video__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.ecs-video__caption {
+  padding: 0.85rem 1.15rem;
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ecs-muted);
+  border-top: 1px solid var(--ecs-border);
+  background: var(--ecs-surface-2);
+}
+
 /* ───────────────────────────── Conversão ───────────────────────────── */
 
 .ecs-kit {
