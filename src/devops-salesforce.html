@@ -434,7 +434,7 @@
         <span class="gradient-text">O Manual Prático para Adotar Devin, Claude e Flosum</span>
       </h1>
       <p class="text-white/70 text-lg lg:text-xl leading-relaxed mb-10">
-        Do ambiente vazio ao deploy protegido: as nove seções abaixo mostram como instalar a stack, ligar Devin e Claude Code ao seu org, deixar o Flosum cuidar da esteira e escrever specs que a IA executa sem adivinhar. Escrito para quem já conhece Salesforce e está começando agora em fluxos de IA agiêntica — desenvolvedores, arquitetos técnicos e administradores.
+        Do ambiente vazio ao deploy protegido: as nove seções abaixo mostram como instalar a stack, ligar Devin e Claude Code ao seu org, deixar o Flosum cuidar da esteira e escrever specs que a IA executa sem adivinhar. Escrito para quem já conhece Salesforce e está começando agora em fluxos de IA agêntica — desenvolvedores, arquitetos técnicos e administradores.
       </p>
 
       <!-- SUMÁRIO DO MANUAL -->
@@ -482,7 +482,7 @@
       <div class="card-glass rounded-2xl p-8 border-l-4 border-l-neon-400">
         <h2 class="text-2xl font-bold mb-4 text-white">Introdução</h2>
         <p class="text-white/70 leading-relaxed mb-4">
-          Toda organização Salesforce que tenta colocar um agente de IA para codificar direto em produção comete o mesmo erro: trata a IA como se fosse mais um desenvolvedor júnior, sem lhe dar o que um desenvolvedor júnior nunca teria — acesso direto e sem rede de segurança a um org compartilhado por dezenas de equipes.
+          Toda organização Salesforce que tenta colocar um agente de IA para codificar direto em produção comete o mesmo erro: trata a IA como se fosse mais um desenvolvedor júnior, mas lhe dá o que um desenvolvedor júnior nunca teria: acesso direto e sem rede de segurança a um org compartilhado por dezenas de equipes.
         </p>
         <p class="text-white/70 leading-relaxed">
           Este manual resolve isso em quatro camadas: <strong>fundação</strong> (ambiente instalado corretamente), <strong>arquitetura</strong> (como Flosum liga Salesforce ao Git e protege o deploy), <strong>metodologia</strong> (como escrever specs que a IA executa sem alucinar) e <strong>governança</strong> (como o próprio repositório vira a memória de longo prazo da IA). Siga as seções em ordem — cada uma depende da anterior.
@@ -578,7 +578,7 @@ sf --version</code></pre>
           Conectando a IA ao Ambiente Salesforce
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          Com o ambiente-base pronto, o próximo passo é dar à IA os dois acessos que ela precisa: ao <strong>código</strong> (via editor) e ao <strong>org vivo</strong> (via API). Sem o segundo, a IA só enxerga arquivos estáticos — não consegue confirmar se o que ela está lendo bate com a realidade do org.
+          Com o ambiente-base pronto, o próximo passo é dar à IA os dois acessos de que ela precisa: ao <strong>código</strong> (via editor) e ao <strong>org vivo</strong> (via API). Sem o segundo, a IA só enxerga arquivos estáticos — não consegue confirmar se o que ela está lendo bate com a realidade do org.
         </p>
 
         <div class="space-y-6 mb-10">
@@ -875,7 +875,7 @@ sf --version</code></pre>
           </li>
           <li class="card-glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-orange-400 font-bold">•</span>
-            <div><strong class="text-white">Ambiguidade não é economia de tempo — é dívida técnica que a IA vai pagar por você, do jeito errado.</strong> Um prompt vago como "melhora esse fluxo de aprovação" convida a IA a tomar decisões de negócio que não são dela para tomar.</div>
+            <div><strong class="text-white">Ambiguidade não é economia de tempo — é dívida técnica que a IA vai pagar por você, do jeito errado.</strong> Um prompt vago como "melhora esse fluxo de aprovação" convida a IA a tomar decisões de negócio que não cabe a ela tomar.</div>
           </li>
           <li class="card-glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-orange-400 font-bold">•</span>
@@ -888,7 +888,7 @@ sf --version</code></pre>
         </ul>
 
         <p class="text-white/70 leading-relaxed">
-          Na prática, isso significa: antes de abrir uma sessão de Devin ou Claude Code para uma tarefa não trivial, você escreve uma spec curta e objetiva — não um documento de 10 páginas, mas o suficiente para eliminar as perguntas que a IA teria que adivinhar sozinha.
+          Na prática, isso significa: antes de abrir uma sessão de Devin ou Claude Code para uma tarefa não trivial, você escreve uma spec curta e objetiva — não um documento de 10 páginas, mas o suficiente para que a IA não precise adivinhar as respostas sozinha.
         </p>
       </div>
 
@@ -901,7 +901,7 @@ sf --version</code></pre>
           Template de Especificação: o Contrato Entre Você e a IA
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          Uma spec malfeita custa caro de duas formas: retrabalho humano e <strong>consumo desnecessário de computação da IA</strong>. Ferramentas de agente autônomo como o Devin cobram (ou historicamente cobraram, e ainda usam como unidade interna de medição) por <strong>ACU — Agent Compute Unit</strong>, uma medida normalizada de tempo de máquina virtual, inferência de modelo e rede consumidos por tarefa. Quanto mais vaga a spec, mais a IA precisa explorar, testar hipóteses e refazer trabalho — e mais ACUs (ou computação equivalente em qualquer ferramenta agiêntica) isso queima. Escopo claro não é burocracia: é economia de computação.
+          Uma spec malfeita custa caro de duas formas: retrabalho humano e <strong>consumo desnecessário de computação da IA</strong>. Ferramentas de agente autônomo como o Devin cobram (ou historicamente cobraram, e ainda usam como unidade interna de medição) por <strong>ACU — Agent Compute Unit</strong>, uma medida normalizada de tempo de máquina virtual, inferência de modelo e rede consumidos por tarefa. Quanto mais vaga a spec, mais a IA precisa explorar, testar hipóteses e refazer trabalho — e mais ACUs (ou computação equivalente em qualquer ferramenta agêntica) isso queima. Escopo claro não é burocracia: é economia de computação.
         </p>
 
         <p class="text-white/70 leading-relaxed mb-4">
@@ -976,7 +976,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
           O Repositório Como Cérebro da IA
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          Um repositório Git, para uma IA agiêntica, não é só onde o código mora — é a <strong>única memória de longo prazo</strong> que ela tem entre sessões. Se o contexto de negócio não está no repositório, ele não existe para a IA. Estruture o repositório assim:
+          Um repositório Git, para uma IA agêntica, não é só onde o código mora — é a <strong>única memória de longo prazo</strong> que ela tem entre sessões. Se o contexto de negócio não está no repositório, ele não existe para a IA. Estruture o repositório assim:
         </p>
 
         <div class="code-block p-6 mb-8 border border-purple-400/30">
