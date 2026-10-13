@@ -89,5 +89,6 @@ Usar, com escopo restrito:
   regressão da skill; é do tradutor, e vale saber antes de estender a 30 páginas.
 - **Modelo de tradução fora do container.** O ambiente de nuvem não alcança o servidor
   do Argos; o piloto usou o modelo `pt→en 1.9` já instalado na máquina do autor.
-- **Gate estático já vermelho no `main`.** `verify-a11y.py` acusa 22 erros com teto 21 sem
-  nenhuma alteração deste piloto (confirmado com `git stash`). Não é deste PR.
+- **Gate estático local × CI.** No container de nuvem, `verify-a11y.py` acusou 22 erros com
+  teto 21 também sem as alterações deste piloto (conferido com `git stash`); no CI do PR a
+  mesma etapa passou. A divergência é do ambiente local, não da página.
