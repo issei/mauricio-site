@@ -1,0 +1,70 @@
+# Questionário de evidências — Fase 0 (SDD-FDE §8)
+# Case: Pipe Automática Comercial
+#
+# COMO PREENCHER
+# - Responda em `resposta`. Deixe vazio o que não souber; "não sei" é melhor que estimativa.
+# - Em `classificacao`, marque: publica | confidencial | nao_publicavel.
+# - ESTE ARQUIVO ESTÁ NUM REPOSITÓRIO PÚBLICO. Responda aqui só o que for `publica`.
+#   Respostas confidenciais vão para a cópia fora do repositório (ADR-fde-001 §4),
+#   e aqui fica só `classificacao: confidencial` com `resposta` vazia.
+# - O bloco `registro_atual` é cópia literal de public/cv.json (somente leitura).
+
+id: "case-pipe-automatica"
+titulo: "Pipe Automática Comercial"
+projeto_ref: "Pipe Automática Comercial"
+periodo: "2025"
+cliente_ou_contexto: "Rede"
+
+registro_atual:
+  situacao: "Lista de atuação do executivo não tinha uma priorização inteligente para otimizar o tempo de planejamento do dia e da meta a ser atendida pelo executivo."
+  tarefas:
+    - "Discovery e implementação de solução de viabilidade rápida para atender as dores e avaliar o modelo e metodologia do planejamento."
+  acoes:
+    - "Desenhado solução de contorno para processar a inteligência de priorização na própria Salesforce com processos batchs agendados."
+  resultados:
+    - "Aumento de mais de 15% no atingimento das metas e agilidade nos agendamentos e atendimentos aos clientes."
+  tecnologias:
+    - "Salesforce"
+
+perguntas:
+  papel:
+    pergunta: "Papel exato: o que você decidiu, construiu ou liderou. Não presumir ownership além do que puder sustentar."
+    resposta: ""
+    classificacao: ""
+  componentes_construidos:
+    pergunta: "Componentes alterados ou criados: serviço, objeto Salesforce, API, fila, tabela, pipeline, dashboard."
+    resposta: ""
+    classificacao: ""
+  integracoes:
+    pergunta: "Sistemas integrados e o sentido da integração (quem chama quem)."
+    resposta: ""
+    classificacao: ""
+  decisoes_tecnicas:
+    pergunta: "Decisões técnicas e trade-offs: o que foi escolhido, o que foi descartado e por quê."
+    resposta: ""
+    classificacao: ""
+  validacao:
+    pergunta: "Como a solução foi validada: homologação, testes, logs, monitoramento, critérios de aceite."
+    resposta: ""
+    classificacao: ""
+  operacao:
+    pergunta: "Implantação e operação: ambiente, rollout (ondas, piloto, big bang), incidentes, causa-raiz, fallback."
+    resposta: ""
+    classificacao: ""
+  impacto_mensurado:
+    pergunta: "Métrica antes/depois, período e método de medição. Só números que possam ser publicados."
+    resposta: ""
+    classificacao: ""
+  impacto_nao_mensurado:
+    pergunta: "Ganhos qualitativos, sem converter em porcentagem."
+    resposta: ""
+    classificacao: ""
+  padrao_reutilizavel:
+    pergunta: "Ativo, componente, jornada ou decisão reaproveitada depois, e onde."
+    resposta: ""
+    classificacao: ""
+
+# Preenchido pelo auditor de evidências depois das respostas (não pelo autor):
+nivel_evidencia: "a_confirmar"   # confirmada | parcial | a_confirmar
+fonte: ""
+revisado_em: ""

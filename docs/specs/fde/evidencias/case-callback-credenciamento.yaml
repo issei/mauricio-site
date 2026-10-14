@@ -1,0 +1,76 @@
+# Questionário de evidências — Fase 0 (SDD-FDE §8)
+# Case: Atualização de status via callback
+#
+# COMO PREENCHER
+# - Responda em `resposta`. Deixe vazio o que não souber; "não sei" é melhor que estimativa.
+# - Em `classificacao`, marque: publica | confidencial | nao_publicavel.
+# - ESTE ARQUIVO ESTÁ NUM REPOSITÓRIO PÚBLICO. Responda aqui só o que for `publica`.
+#   Respostas confidenciais vão para a cópia fora do repositório (ADR-fde-001 §4),
+#   e aqui fica só `classificacao: confidencial` com `resposta` vazia.
+# - O bloco `registro_atual` é cópia literal de public/cv.json (somente leitura).
+
+id: "case-callback-credenciamento"
+titulo: "Atualização de status via callback"
+projeto_ref: "Atualização do status do Credenciamento em Callback do WF"
+periodo: "2023"
+cliente_ou_contexto: "Rede"
+
+registro_atual:
+  situacao: "Após o envio das propostas pelo executivo, o executivo precisava ficar consultando o status para saber se a proposta estava efetivada ou teve algum problema. Para os casos que tiveram algum problema não havia detalhes que orientassem o executivo sobre o que fazer, sendo necessário a abertura de incidente pelo executivo para análise e orientação ou tratativa da proposta. Alto volume de incidentes e problemas de propostas paradas, pendentes de processamento (status C)."
+  tarefas:
+    - "Implementar serviço que recebe o retorno do status da proposta, que é enviado pelo WF após o processamento."
+    - "Mapeamento dos principais motivos de propostas que ficavam paradas por erros ou falhas."
+    - "Refinamento de soluções de causa raiz para os problemas identificados."
+  acoes:
+    - "Implementado serviço de callback do WF para o TV2."
+    - "Abertas histórias e priorizadas correções de causa raiz dos problemas das propostas."
+  resultados:
+    - "Rapidez no retorno da informação da situação da proposta para os executivos."
+    - "Priorização de correções de causa raiz de validações e problemas que deixavam a proposta pendente."
+  tecnologias:
+    - "Salesforce"
+    - "AWS"
+    - "APIs"
+
+perguntas:
+  papel:
+    pergunta: "Papel exato: o que você decidiu, construiu ou liderou. Não presumir ownership além do que puder sustentar."
+    resposta: ""
+    classificacao: ""
+  componentes_construidos:
+    pergunta: "Componentes alterados ou criados: serviço, objeto Salesforce, API, fila, tabela, pipeline, dashboard."
+    resposta: ""
+    classificacao: ""
+  integracoes:
+    pergunta: "Sistemas integrados e o sentido da integração (quem chama quem)."
+    resposta: ""
+    classificacao: ""
+  decisoes_tecnicas:
+    pergunta: "Decisões técnicas e trade-offs: o que foi escolhido, o que foi descartado e por quê."
+    resposta: ""
+    classificacao: ""
+  validacao:
+    pergunta: "Como a solução foi validada: homologação, testes, logs, monitoramento, critérios de aceite."
+    resposta: ""
+    classificacao: ""
+  operacao:
+    pergunta: "Implantação e operação: ambiente, rollout (ondas, piloto, big bang), incidentes, causa-raiz, fallback."
+    resposta: ""
+    classificacao: ""
+  impacto_mensurado:
+    pergunta: "Métrica antes/depois, período e método de medição. Só números que possam ser publicados."
+    resposta: ""
+    classificacao: ""
+  impacto_nao_mensurado:
+    pergunta: "Ganhos qualitativos, sem converter em porcentagem."
+    resposta: ""
+    classificacao: ""
+  padrao_reutilizavel:
+    pergunta: "Ativo, componente, jornada ou decisão reaproveitada depois, e onde."
+    resposta: ""
+    classificacao: ""
+
+# Preenchido pelo auditor de evidências depois das respostas (não pelo autor):
+nivel_evidencia: "a_confirmar"   # confirmada | parcial | a_confirmar
+fonte: ""
+revisado_em: ""

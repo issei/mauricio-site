@@ -29,7 +29,8 @@ target: [claude, copilot, cursor, codex, antigravity]
 #
 #   .claude/skills/   new-page · ship-page · sync-i18n · build-eai-section ·
 #                     mauricio-site-patterns · run-quality-gate
-#   .claude/agents/   a11y-design-reviewer · tone-reviewer
+#   .claude/agents/   a11y-design-reviewer · tone-reviewer · fde-evidence-auditor ·
+#                     fde-case-writer · fde-mechanic
 #
 # `.agents/skills/{test-skill,mauricio-site-patterns}` e `.agents/commands/skill-create`
 # foram removidos/migrados: Claude Code só descobre skills em `.claude/skills/`,

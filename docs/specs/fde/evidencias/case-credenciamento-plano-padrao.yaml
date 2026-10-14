@@ -1,0 +1,79 @@
+# Questionário de evidências — Fase 0 (SDD-FDE §8)
+# Case: Evolução do Credenciamento no Plano Padrão
+#
+# COMO PREENCHER
+# - Responda em `resposta`. Deixe vazio o que não souber; "não sei" é melhor que estimativa.
+# - Em `classificacao`, marque: publica | confidencial | nao_publicavel.
+# - ESTE ARQUIVO ESTÁ NUM REPOSITÓRIO PÚBLICO. Responda aqui só o que for `publica`.
+#   Respostas confidenciais vão para a cópia fora do repositório (ADR-fde-001 §4),
+#   e aqui fica só `classificacao: confidencial` com `resposta` vazia.
+# - O bloco `registro_atual` é cópia literal de public/cv.json (somente leitura).
+
+id: "case-credenciamento-plano-padrao"
+titulo: "Evolução do Credenciamento no Plano Padrão"
+projeto_ref: "Evolução do Credenciamento no Plano Padrão"
+periodo: "2022"
+cliente_ou_contexto: "Rede"
+
+registro_atual:
+  situacao: "O credenciamento no plano padrão era tratado em um fluxo diferente de telas com informações, integrações e preenchimento específicos. As principais necessidades da área comercial foram abertas em 3 grandes épicos: Envio de mais de uma máquina no Credenciamento Plano Padrão, Envio de mais de uma tecnologia no Credenciamento Plano Padrão, Validação de elegibilidade de contratação de Flex no Credenciamento Plano Padrão."
+  tarefas:
+    - "Implementar no fluxo do plano padrão o preenchimento da quantidade de máquinas por tipo de tecnologia."
+    - "Implementar a mesma consulta de elegibilidade da contratação de Flex do Ipricing."
+    - "Homologar todas as integrações até a geração das Ordens de Serviço e do PV."
+  acoes:
+    - "Refinado as necessidades e elaborado uma estratégia de entregas curtas de simples implementação e em paralelo o discovery da total absorção do fluxo do plano padrão, dentro do processo de negociação do Ipricing 2.0."
+    - "Foi entregue inicialmente a possibilidade apenas de informar mais de uma máquina para uma única tecnologia."
+    - "Foi entregue na sequência a jornada unificada do Ipricing 2.0 considerando como as opções de oferta padrão, com ou sem Flex dependendo da elegibilidade e também com a possibilidade de escolher mais de um tipo de tecnologia e também informar mais de uma máquina por tecnologia na proposta."
+  resultados:
+    - "Otimização da operação logística, conseguindo realizar em D0 em boa parte dos atendimentos a entrega completa da proposta realizada pelo comercial."
+    - "Otimização do operacional do Executivo que não necessita abrir novas solicitações de máquina após a proposta."
+    - "Executivo informa corretamente ao cliente em tempo de contratação se possui a antecipação em D2."
+    - "Agilidade na entrega das demandas, sendo os 3 grandes épicos resolvidos em duas entregas estratégicas."
+    - "Padronização da jornada de negociação sem mais a necessidade de duas squads para cuidar do Credenciamento Cockpit."
+  tecnologias:
+    - "Salesforce"
+    - "Ipricing"
+
+perguntas:
+  papel:
+    pergunta: "Papel exato: o que você decidiu, construiu ou liderou. Não presumir ownership além do que puder sustentar."
+    resposta: ""
+    classificacao: ""
+  componentes_construidos:
+    pergunta: "Componentes alterados ou criados: serviço, objeto Salesforce, API, fila, tabela, pipeline, dashboard."
+    resposta: ""
+    classificacao: ""
+  integracoes:
+    pergunta: "Sistemas integrados e o sentido da integração (quem chama quem)."
+    resposta: ""
+    classificacao: ""
+  decisoes_tecnicas:
+    pergunta: "Decisões técnicas e trade-offs: o que foi escolhido, o que foi descartado e por quê."
+    resposta: ""
+    classificacao: ""
+  validacao:
+    pergunta: "Como a solução foi validada: homologação, testes, logs, monitoramento, critérios de aceite."
+    resposta: ""
+    classificacao: ""
+  operacao:
+    pergunta: "Implantação e operação: ambiente, rollout (ondas, piloto, big bang), incidentes, causa-raiz, fallback."
+    resposta: ""
+    classificacao: ""
+  impacto_mensurado:
+    pergunta: "Métrica antes/depois, período e método de medição. Só números que possam ser publicados."
+    resposta: ""
+    classificacao: ""
+  impacto_nao_mensurado:
+    pergunta: "Ganhos qualitativos, sem converter em porcentagem."
+    resposta: ""
+    classificacao: ""
+  padrao_reutilizavel:
+    pergunta: "Ativo, componente, jornada ou decisão reaproveitada depois, e onde."
+    resposta: ""
+    classificacao: ""
+
+# Preenchido pelo auditor de evidências depois das respostas (não pelo autor):
+nivel_evidencia: "a_confirmar"   # confirmada | parcial | a_confirmar
+fonte: ""
+revisado_em: ""

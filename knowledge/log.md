@@ -1,3 +1,6 @@
+## 2026-10-14
+* **Creation**: Documented concept `reposicionamento-fde.md` (Reposicionamento FDE: spec, cases em cases.json e evidência antes do texto).
+
 ## 2026-10-08
 * **Update**: Updated concept `camada-editorial.md`.
 
