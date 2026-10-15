@@ -1,0 +1,75 @@
+# Questionário de evidências — Fase 0 (SDD-FDE §8)
+# Case: Validação de domicílio bancário
+#
+# COMO PREENCHER
+# - Responda em `resposta`. Deixe vazio o que não souber; "não sei" é melhor que estimativa.
+# - Em `classificacao`, marque: publica | confidencial | nao_publicavel.
+# - ESTE ARQUIVO ESTÁ NUM REPOSITÓRIO PÚBLICO. Responda aqui só o que for `publica`.
+#   Respostas confidenciais vão para a cópia fora do repositório (ADR-fde-001 §4),
+#   e aqui fica só `classificacao: confidencial` com `resposta` vazia.
+# - O bloco `registro_atual` é cópia literal de public/cv.json (somente leitura).
+
+id: "case-domicilio-bancario"
+titulo: "Validação de domicílio bancário"
+projeto_ref: "Validação do Domicílio Bancário no canal"
+periodo: "2022"
+cliente_ou_contexto: "Rede"
+
+registro_atual:
+  situacao: "Necessidade de validar em tempo de preenchimento de proposta se os dados de domicílio bancário do Itaú, são válidos com uma conta apta para receber pagamentos."
+  tarefas:
+    - "Desenhar arquitetura de integração."
+    - "Refinar com UX como tratar as validações."
+    - "Homologação integrada com squad do GE."
+  acoes:
+    - "Foi implementado na camada da AWS a integração entre o TV2 e o GE1, sendo apenas o TV2 responsável pela integração com a Salesforce que dispara a consulta."
+  resultados:
+    - "Projeto implantado em fases, com público de piloto controlado, com validação e acompanhamento gradual de cada fase, sendo feita expansão total após bastante validações com os executivos e de implementações de melhorias."
+    - "Validação com regra de negócio dinâmica sendo o GE1 responsável por determinar se é um retorno de impedimento ou que aceita o domicílio com as mensagens de orientação."
+    - "Pequena redução nos casos de suspensão bancária de clientes Itaú. Descoberto que a situação que torna a conta apta para recebimento não se resume em um status."
+  tecnologias:
+    - "AWS"
+    - "Salesforce"
+
+perguntas:
+  papel:
+    pergunta: "Papel exato: o que você decidiu, construiu ou liderou. Não presumir ownership além do que puder sustentar."
+    resposta: ""
+    classificacao: ""
+  componentes_construidos:
+    pergunta: "Componentes alterados ou criados: serviço, objeto Salesforce, API, fila, tabela, pipeline, dashboard."
+    resposta: ""
+    classificacao: ""
+  integracoes:
+    pergunta: "Sistemas integrados e o sentido da integração (quem chama quem)."
+    resposta: ""
+    classificacao: ""
+  decisoes_tecnicas:
+    pergunta: "Decisões técnicas e trade-offs: o que foi escolhido, o que foi descartado e por quê."
+    resposta: ""
+    classificacao: ""
+  validacao:
+    pergunta: "Como a solução foi validada: homologação, testes, logs, monitoramento, critérios de aceite."
+    resposta: ""
+    classificacao: ""
+  operacao:
+    pergunta: "Implantação e operação: ambiente, rollout (ondas, piloto, big bang), incidentes, causa-raiz, fallback."
+    resposta: ""
+    classificacao: ""
+  impacto_mensurado:
+    pergunta: "Métrica antes/depois, período e método de medição. Só números que possam ser publicados."
+    resposta: ""
+    classificacao: ""
+  impacto_nao_mensurado:
+    pergunta: "Ganhos qualitativos, sem converter em porcentagem."
+    resposta: ""
+    classificacao: ""
+  padrao_reutilizavel:
+    pergunta: "Ativo, componente, jornada ou decisão reaproveitada depois, e onde."
+    resposta: ""
+    classificacao: ""
+
+# Preenchido pelo auditor de evidências depois das respostas (não pelo autor):
+nivel_evidencia: "a_confirmar"   # confirmada | parcial | a_confirmar
+fonte: ""
+revisado_em: ""

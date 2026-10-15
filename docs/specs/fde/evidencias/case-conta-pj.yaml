@@ -1,0 +1,80 @@
+# Questionário de evidências — Fase 0 (SDD-FDE §8)
+# Case: Abertura de Conta Corrente PJ
+#
+# COMO PREENCHER
+# - Responda em `resposta`. Deixe vazio o que não souber; "não sei" é melhor que estimativa.
+# - Em `classificacao`, marque: publica | confidencial | nao_publicavel.
+# - ESTE ARQUIVO ESTÁ NUM REPOSITÓRIO PÚBLICO. Responda aqui só o que for `publica`.
+#   Respostas confidenciais vão para a cópia fora do repositório (ADR-fde-001 §4),
+#   e aqui fica só `classificacao: confidencial` com `resposta` vazia.
+# - O bloco `registro_atual` é cópia literal de public/cv.json (somente leitura).
+
+id: "case-conta-pj"
+titulo: "Abertura de Conta Corrente PJ"
+projeto_ref: "Abertura de Conta Corrente PJ pelo Cockpit Rede"
+periodo: "2022"
+cliente_ou_contexto: "Rede"
+
+registro_atual:
+  situacao: "Projeto com viés de experimentação do modelo comercial da Rede para dar autonomia ao Executivo para iniciar a abertura de Conta Corrente Itaú PJ no próprio Cockpit Rede."
+  tarefas:
+    - "Participação de refinamentos técnicos."
+    - "Desenvolvimento de telas e integrações."
+    - "Acompanhamento de implantações e de validações."
+    - "Revisão e refatoração de integrações."
+    - "Discovery para evolução do MVP."
+    - "Atendimento de incidentes."
+  acoes:
+    - "No acompanhamento do piloto foi identificado melhorias pontuais no MVP para ampliar o número de executivos que experimentavam a solução."
+    - "Melhorado logs e monitorações das integrações para rápida identificação de problemas ou divergências."
+  resultados:
+    - "Solução estável e proporcionou escalar para a maioria dos executivos utilizarem."
+    - "Com ajustes do modelo de atendimento foi encurtado o processo, não sendo necessário atuação do gerente do banco, dando mais autonomia para o executivo."
+  tecnologias:
+    - "Salesforce"
+    - "Cockpit Rede"
+    - "Itaú PJ"
+    - "APIs"
+
+perguntas:
+  papel:
+    pergunta: "Papel exato: o que você decidiu, construiu ou liderou. Não presumir ownership além do que puder sustentar."
+    resposta: ""
+    classificacao: ""
+  componentes_construidos:
+    pergunta: "Componentes alterados ou criados: serviço, objeto Salesforce, API, fila, tabela, pipeline, dashboard."
+    resposta: ""
+    classificacao: ""
+  integracoes:
+    pergunta: "Sistemas integrados e o sentido da integração (quem chama quem)."
+    resposta: ""
+    classificacao: ""
+  decisoes_tecnicas:
+    pergunta: "Decisões técnicas e trade-offs: o que foi escolhido, o que foi descartado e por quê."
+    resposta: ""
+    classificacao: ""
+  validacao:
+    pergunta: "Como a solução foi validada: homologação, testes, logs, monitoramento, critérios de aceite."
+    resposta: ""
+    classificacao: ""
+  operacao:
+    pergunta: "Implantação e operação: ambiente, rollout (ondas, piloto, big bang), incidentes, causa-raiz, fallback."
+    resposta: ""
+    classificacao: ""
+  impacto_mensurado:
+    pergunta: "Métrica antes/depois, período e método de medição. Só números que possam ser publicados."
+    resposta: ""
+    classificacao: ""
+  impacto_nao_mensurado:
+    pergunta: "Ganhos qualitativos, sem converter em porcentagem."
+    resposta: ""
+    classificacao: ""
+  padrao_reutilizavel:
+    pergunta: "Ativo, componente, jornada ou decisão reaproveitada depois, e onde."
+    resposta: ""
+    classificacao: ""
+
+# Preenchido pelo auditor de evidências depois das respostas (não pelo autor):
+nivel_evidencia: "a_confirmar"   # confirmada | parcial | a_confirmar
+fonte: ""
+revisado_em: ""
