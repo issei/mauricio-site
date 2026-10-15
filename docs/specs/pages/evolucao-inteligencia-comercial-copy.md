@@ -91,7 +91,7 @@ montar o roteiro do dia equilibrando o potencial de cada empresa e o deslocament
 um trabalho manual. Hipótese a testar: priorizar também pelo esforço de atender, e não só pelo
 potencial. Uma empresa de potencial menor, perto de outras visitas do dia, pode valer mais que uma
 de potencial maior isolada no roteiro.
-*Critério para avançar:* adoção pelo comercial e qualidade das informações confirmadas.
+*Critério para avançar:* adoção pelo comercial e confirmação de que a qualidade das informações foi verificada.
 
 **Etapa 3 — Aprender com o resultado**
 Aprender com o uso e com o resultado: o motivo de uma recusa, registrado pelo comercial, passa a ser
@@ -117,7 +117,7 @@ As etapas não têm datas fixas. Cada uma só começa quando a anterior mostrar 
 | Consultas por caso | Quantas fontes o comercial abre para preparar uma abordagem. |
 | Tempo de preparação | Quanto leva para a abordagem ou a proposta ficar pronta. |
 | Completude do contexto | Em quantos casos o contexto necessário estava completo. |
-| Adoção | Quantos usuários do piloto passam a usar no dia a dia. |
+| Adoção | Quantos usuários do piloto passam a usar esse contexto no dia a dia. |
 
 As metas são definidas no diagnóstico, a partir da linha de base. A conversão em vendas fica para
 depois: ela depende de muitos fatores, e atribuir uma melhora ao piloto sem comparação controlada
