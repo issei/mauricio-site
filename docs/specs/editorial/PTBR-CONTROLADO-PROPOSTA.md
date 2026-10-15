@@ -1,6 +1,6 @@
 # PT-BR Controlado — revisão de `src/proposta.html`
 
-> Data: 2026-10-15. Pedido do autor: "Aplique a skill pt-br controlado na página proposta.html".
+> Data: 2026-10-15. Pedido do autor: "Aplique a skill pt-br controlado na página proposta.html". Atualizado com as respostas do autor às perguntas O4 e O5.
 > Skill: `ptbr-controlado` v0.1.0. Método igual ao do piloto: [`PTBR-CONTROLADO-PILOTO.md`](PTBR-CONTROLADO-PILOTO.md).
 
 ## Contexto
@@ -21,14 +21,19 @@ O texto já estava escrito em linguagem simples (frases curtas, termos explicado
 | O2 | B3.04 Um conceito, um termo | Média | Média | "…tempo… que poderia ir para a conversa com **o cliente**." | "…para a conversa com **a empresa**." | A página define *prospect* como "a empresa que ainda não é cliente". Chamar o mesmo interlocutor de "cliente" contradiz a definição. "A empresa" é o termo dos três cards anteriores. |
 | O3 | B4.05 Lista para comparar · B1.03 Frase sobrecarregada | Média | Alta | "O que o diagnóstico verifica": uma frase de 63 palavras com seis itens separados por ponto e vírgula, metade em forma de "se…", metade em forma de substantivo | Lista com os mesmos seis itens e as mesmas palavras | As duas subseções vizinhas ("O que se pede", "O que o diagnóstico entrega") já são listas. Os itens são o checklist do diagnóstico, e na lista o leitor consegue conferir um por um. |
 
+| O4 | "Critério para avançar: adoção pelo comercial e **qualidade das informações confirmadas**." | B2.06 Escopo de modificador | Alta | Média | Qual das duas leituras vale? (a) avançar exige que a qualidade das informações tenha sido confirmada; (b) avançar exige qualidade nas informações que o comercial confirmou. |
+| O5 | Indicador "Adoção": "Quantos usuários do piloto **passam a usar** no dia a dia." | B5.06 Precisão · B2.04 Escopo | Média | Média | Usar o quê? O verbo não tem objeto. |
+
 `verificar.py --comparar --estrito` sobre o texto visível: conteúdo protegido preservado; qualificadores e números do original presentes.
 
-## Perguntas ao autor (não alteradas)
+## Respostas do autor (O4 e O5 aplicadas)
 
-| ID | Trecho | Regra | Sev. | Conf. | Pergunta |
-|---|---|---|---|---|---|
-| O4 | "Critério para avançar: adoção pelo comercial e **qualidade das informações confirmadas**." | B2.06 Escopo de modificador | Alta | Média | Qual das duas leituras vale? (a) avançar exige que a qualidade das informações tenha sido confirmada; (b) avançar exige qualidade nas informações que o comercial confirmou. É um critério de decisão, então a leitura importa. |
-| O5 | Indicador "Adoção": "Quantos usuários do piloto **passam a usar** no dia a dia." | B5.06 Precisão · B2.04 Escopo | Média | Média | Usar o quê? O verbo não tem objeto. Sugestão, se for o caso: "passam a usar o contexto reunido no fluxo no dia a dia". |
+O autor respondeu às duas perguntas em 2026-10-15 (thread do projeto, 14:31 UTC):
+
+- **O4:** leitura (a). A qualidade das informações precisa ter sido confirmada. Texto aplicado: "adoção pelo comercial e confirmação de que a qualidade das informações foi verificada."
+- **O5:** adotada a sugestão de objeto ligada à nova solução, o contexto reunido no fluxo. Texto aplicado: "Quantos usuários do piloto passam a usar **esse contexto** no dia a dia."
+
+Os dois pontos ficam fora da lista de correções porque vieram de decisão do autor, não da revisão automática.
 
 ## Sugestões (severidade Baixa, não aplicadas)
 
