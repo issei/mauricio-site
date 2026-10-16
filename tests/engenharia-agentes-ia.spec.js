@@ -8,6 +8,12 @@ import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 const PATH = '/engenharia-agentes-ia.html';
 
 test.describe('EAI — shell + hero (WU-0/WU-1)', () => {
+  // O banner de cookies entra no layout depois do carregamento e fazia o tooltip do simulador fechar
+  // ao meio do teste (falhava em 2 de 4 execuções). O consentimento já dado tira o banner da cena.
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem('consent_v', JSON.stringify({ v: '2.0', ts: 'x', categories: { necessary: true }, method: 'explicit' })));
+  });
+
   test('caminho feliz: carrega, título/SEO e hero visíveis', async ({ page }) => {
     const consoleErrors = [];
     page.on('console', (msg) => {

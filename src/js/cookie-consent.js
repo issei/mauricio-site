@@ -130,7 +130,7 @@ function injectStyles() {
     max-width: 1200px; margin: 0 auto;
     display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
 }
-.cc-banner-text { flex: 1 1 320px; font-size: .95rem; line-height: 1.6; }
+.cc-banner-text { flex: 1 1 320px; font-size: .95rem; line-height: 1.6; margin: 0; }
 .cc-banner-text strong { color: #fff; display: block; margin-bottom: 4px; font-size: 1rem; }
 .cc-banner-text a { color: #60a5fa; text-decoration: underline; }
 .cc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -232,12 +232,12 @@ function buildBanner(onAccept, onReject, onCustomize) {
     div.setAttribute('aria-label', 'Aviso de cookies');
     div.innerHTML = `
         <div class="cc-banner-inner">
-            <div class="cc-banner-text">
+            <p class="cc-banner-text">
                 <strong>Sua privacidade importa</strong>
                 Usamos cookies para analisar o tráfego e melhorar sua experiência, conforme a LGPD e o Guia de Cookies da ANPD.
                 Você pode aceitar, recusar ou personalizar. Saiba mais em
                 <a href="${COOKIE_PAGE}">Cookies</a> e <a href="${PRIVACY_PAGE}">Privacidade</a>.
-            </div>
+            </p>
             <div class="cc-actions">
                 <button type="button" class="cc-btn cc-btn-customize" data-cc="customize">Personalizar</button>
                 <button type="button" class="cc-btn cc-btn-reject" data-cc="reject">Recusar todos</button>
