@@ -238,7 +238,7 @@
           "name": "What are Agent Skills?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised."
+            "text": "Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised."
           }
         },
         {
@@ -345,7 +345,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/agent-ready#g-agent-skills",
           "name": "Agent Skills",
-          "description": "SKILL.md reusable procedures indexed with digest SHA-256 verifiable."
+          "description": "Reusable procedures in SKILL.md, indexed with verifiable digest SHA-256."
         },
         {
           "@type": "DefinedTerm",
@@ -671,7 +671,7 @@ appears as the agent's safety limit.
 
         <div class="ar-prose">
           <p>
-            You just accepted that there is a fourth Web consumer. The intuition of
+            You just accepted that there is a third web consumer. The intuition of
             <em>why this changes the architecture of a site</em>, and not just its contents. O
 video below covers this question in narrative format; the rest of this page covers the
 implementation. If the intuition is already formed, jump straight to
@@ -2212,7 +2212,7 @@ these four questions remain agent-ready even when the ruler changes.
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What's Markdown for agents?</summary>
-      <div class="aeo-faq__a"><p>It is delivering the same URL in Markdown when the client sends Accept: text/markdown, by content negotiation (RFC 7231 §5.3.2). An application page with 197 KB of HTML usually fits in a few KB of Markdown — on this site, 3.7 KB for the same text, 52 times less bytes. Two traps: compare q quality values, since a browser sends <em>/</em>;q=0.8 and cannot receive Markdown, and issue Vary: Accept for CDN does not serve the wrong version.</p></div>
+      <div class="aeo-faq__a"><p>It is delivering the same URL in Markdown when the client sends Accept: text/markdown, by content negotiation (RFC 7231 §5.3.2). An application page with 197 KB of HTML usually fits in a few KB of Markdown — on this site, 3.7 KB for the same text, 52 times less bytes. Two traps: compare q quality values, since a browser sends */*;q=0.8 and cannot receive Markdown, and issue Vary: Accept for CDN does not serve the wrong version.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is an MCP Server Card?</summary>
@@ -2220,7 +2220,7 @@ these four questions remain agent-ready even when the ruler changes.
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What are Agent Skills?</summary>
-      <div class="aeo-faq__a"><p>Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.</p></div>
+      <div class="aeo-faq__a"><p>Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">How do agents find APIs?</summary>

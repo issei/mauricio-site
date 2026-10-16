@@ -36,7 +36,9 @@ function rich(s = '') {
   h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g,
     (_, t, u) => `<a href="${esc(u)}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ''}>${t}</a>`);
   h = h.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  h = h.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
+  // Não abre itálico em `*/*` (curinga do cabeçalho Accept): o asterisco não pode vir
+  // antes de `/` ou espaço, nem depois de `/` ou de uma palavra.
+  h = h.replace(/(?<![/\w])\*(?![\s/*])([^*\n]*[^*\s/\n])\*/g, '<em>$1</em>');
   return h;
 }
 

@@ -11,8 +11,8 @@ export const PAGES = [
   // ===================================================================== TIER S
   {
     slug: 'develop-engineering', type: 'TechArticle', tier: 'S', hasMd: true,
-    title: 'Deterministic Grounding para Engenharia Agentic de Software',
-    headline: 'Deterministic Grounding para Engenharia Agentic de Software',
+    title: 'Deterministic Grounding para Engenharia Agêntica de Software',
+    headline: 'Deterministic Grounding para Engenharia Agêntica de Software',
     description: 'Como ancorar contexto, restringir ações e validar mudanças sem confundir um resultado verde com correção global.',
     datePublished: '2026-09-18', dateModified: '2026-09-18',
     section: 'Engenharia da Confiança · Agentes de IA',
@@ -334,7 +334,7 @@ export const PAGES = [
       lede: 'Antes de modernizar (To-Be), é preciso **congelar uma fotografia de alta fidelidade do que o sistema realmente faz hoje (As-Is)**. O conhecimento crítico costuma viver escondido — em Apex, em Flows fragmentados e na cabeça de poucos. Modernizar sem mapear é apagar regras vitais sem saber.',
       points: [
         '**Descoberta guiada por jornadas** — parte-se de uma jornada de negócio e segue-se a trilha de execução, isolando o código morto.',
-        '**Matriz de Evidências** — cruza insumos estrutural, de estado, operacional e humano para evitar falsos-positivos.',
+        '**Matriz de Evidências** — cruza insumos estrutural, de estado, operacional e humano para evitar falsos positivos.',
         '**Inventário de Comportamentos** — regras core, efeitos colaterais e workarounds, classificados por confiança.',
         '**As-Is → contratos** — o inventário auditado vira a matéria-prima dos schemas de validação.',
       ],
@@ -344,12 +344,12 @@ export const PAGES = [
       { q: 'O que é engenharia reversa assistida por IA?', a: 'É o uso de IA para revelar e congelar, com alta fidelidade, o comportamento real de um sistema legado (o As-Is) antes de modernizá-lo. O objetivo não é gerar documentação eterna, e sim um inventário auditável para que arquitetos decidam o que preservar, redesenhar ou descontinuar.' },
       { q: 'Por que congelar o As-Is antes de modernizar?', a: 'Porque todo sistema legado sofre de "conhecimento tribal": regras que sustentam o negócio mas que ninguém escreveu. Modernizar sem mapear apaga regras vitais sem saber — o As-Is de alta fidelidade é a rede de segurança da transformação.' },
       { q: 'Qual a melhor estratégia de descoberta?', a: 'A descoberta guiada por jornadas críticas e risco (top-down com deep dive): parte-se de uma jornada de negócio, segue-se a trilha de execução (call stack) e mapeia-se todo componente que ela toca. Isso isola rapidamente o código morto, que não pertence a jornada nenhuma.' },
-      { q: 'O que é a Matriz de Evidências?', a: 'É um pool multifacetado que evita falsos-positivos: insumos estruturais (metadados, Apex, Flows), de estado (Custom Metadata/Settings), operacionais (Event Monitoring, Debug Logs, que revelam o código zumbi) e humanos (commits, tickets, entrevistas, que dão o porquê da regra).' },
+      { q: 'O que é a Matriz de Evidências?', a: 'É um pool multifacetado que evita falsos positivos: insumos estruturais (metadados, Apex, Flows), de estado (Custom Metadata/Settings), operacionais (Event Monitoring, Debug Logs, que revelam o código zumbi) e humanos (commits, tickets, entrevistas, que dão o porquê da regra).' },
       { q: 'O que é o Inventário de Comportamentos?', a: 'É o ativo final do mapeamento: não um catálogo de IFs/ELSEs, mas regras core, efeitos colaterais e workarounds históricos, cada um classificado pela confiança da evidência. Ele é a matéria-prima dos contratos de validação da fase seguinte.' },
     ],
     terms: [
       { slug: 'as-is', name: 'As-Is', def: 'Fotografia de alta fidelidade do que o sistema realmente faz hoje, antes de modernizar.' },
-      { slug: 'matriz-evidencias', name: 'Matriz de Evidências', def: 'Pool multifacetado (estrutural, estado, operacional, humano) que evita falsos-positivos na descoberta.' },
+      { slug: 'matriz-evidencias', name: 'Matriz de Evidências', def: 'Pool multifacetado (estrutural, estado, operacional, humano) que evita falsos positivos na descoberta.' },
       { slug: 'inventario-comportamentos', name: 'Inventário de Comportamentos', def: 'Regras core, efeitos colaterais e workarounds do As-Is, classificados por confiança da evidência.' },
       { slug: 'conhecimento-tribal', name: 'Conhecimento tribal', def: 'Regras que sustentam o negócio mas que ninguém documentou; vivem na cabeça de poucos.' },
     ],

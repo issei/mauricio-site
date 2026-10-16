@@ -1,4 +1,4 @@
-# Deterministic Grounding para Engenharia Agentic de Software
+# Deterministic Grounding para Engenharia Agêntica de Software
 
 > Versão Markdown (GEO/AEO) de <https://mauricio.issei.com.br/develop-engineering>. Autor: **Maurício Yokoyama Issei** · pt-BR · Publicado: 2026-09-18 · Atualizado: 2026-09-18.
 
