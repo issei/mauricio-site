@@ -8,10 +8,11 @@ const COOKIES_DE_ANALISE = /^(_ga|_gid|_gat|_clck|_clsk|_fbp|_gcl_)/;
 const TERCEIROS = /googletagmanager\.com|google-analytics\.com|clarity\.ms/;
 const CLARITY = /clarity\.ms/;
 
-// Páginas com GTM + gtag + banner (index, curriculo), GTM + gtag sem banner (devin, vsl) e só gtag (404).
-const PAGINAS = ['/index.html', '/curriculo.html', '/devin.html', '/vsl.html', '/404.html'];
-// Só estas carregam o banner de cookies (cookie-consent.js) e o Clarity.
-const COM_BANNER = ['/index.html', '/curriculo.html'];
+// Todas carregam o banner de cookies (cookie-consent.js); a 404 não rastreia (ID de analítica de mentira).
+const PAGINAS = ['/index.html', '/curriculo.html', '/devin.html', '/vsl.html', '/agent-ready.html', '/catalogo.html', '/apresentacao.html'];
+const SEM_BANNER = ['/404.html'];
+// O Clarity só existe nestas duas.
+const COM_CLARITY = ['/index.html', '/curriculo.html'];
 
 async function abrir(page, url) {
   const pedidos = [];
@@ -24,7 +25,7 @@ async function abrir(page, url) {
   return pedidos;
 }
 
-for (const url of PAGINAS) {
+for (const url of [...PAGINAS, ...SEM_BANNER]) {
   test(`${url}: o padrão "negado" vem antes de qualquer tag e nenhum cookie nasce`, async ({ page, context }) => {
     const pedidos = await abrir(page, url);
 
@@ -47,7 +48,7 @@ for (const url of PAGINAS) {
   });
 }
 
-for (const url of COM_BANNER) {
+for (const url of COM_CLARITY) {
   test(`${url}: aceitar carrega o Clarity (e reaplica na visita seguinte); recusar não`, async ({ page, context }) => {
     let pedidos = await abrir(page, url);
     await page.getByRole('button', { name: 'Aceitar todos', exact: true }).click();
@@ -68,5 +69,19 @@ for (const url of COM_BANNER) {
     await page.unroute(TERCEIROS);
     pedidos = await abrir(page, url);
     expect(pedidos.filter((u) => CLARITY.test(u))).toEqual([]);
+  });
+}
+
+for (const url of PAGINAS) {
+  test(`${url}: o banner aparece e a escolha chega ao Consent Mode`, async ({ page }) => {
+    await abrir(page, url);
+    await expect(page.getByRole('region', { name: 'Aviso de cookies' })).toBeVisible();
+    await page.getByRole('button', { name: 'Aceitar todos', exact: true }).click();
+    const depois = await page.evaluate(() => ({
+      salvo: JSON.parse(localStorage.getItem('consent_v') || 'null'),
+      update: (window.dataLayer || []).map((e) => Array.from(e.length === undefined ? [] : e)).find((e) => e[0] === 'consent' && e[1] === 'update'),
+    }));
+    expect(depois.salvo && depois.salvo.categories.analytics).toBe(true);
+    expect(depois.update && depois.update[2].analytics_storage).toBe('granted');
   });
 }
