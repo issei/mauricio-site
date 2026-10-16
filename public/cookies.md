@@ -18,6 +18,8 @@ Lista, de forma técnica e nominal, os cookies e tecnologias similares (local st
 | `consent_v` | primeiro | localStorage | persistente | Preferências de consentimento de cookies |
 | `_ga` | .mauricio.issei.com.br | cookie HTTP | 2 anos | Identificador único de visitante (GA4) |
 | `_ga_GEKLHZYVYX` | .mauricio.issei.com.br | cookie HTTP | 2 anos | Estado da sessão GA4 |
+| `_clck` | .mauricio.issei.com.br | cookie HTTP | 1 ano | Identificador de usuário e preferências do Microsoft Clarity |
+| `_clsk` | .mauricio.issei.com.br | cookie HTTP | 1 dia | Liga as visualizações de página de uma mesma visita no Microsoft Clarity |
 | `_gid` | .mauricio.issei.com.br | cookie HTTP | 24 horas | Diferenciar usuários no dia |
 | `_fbp` | .mauricio.issei.com.br | cookie HTTP | 90 dias | Identificador do navegador (Meta Pixel) para mensuração e remarketing |
 | `fr` | .facebook.com | cookie de terceiro | 90 dias | Direcionamento de anúncios da Meta |

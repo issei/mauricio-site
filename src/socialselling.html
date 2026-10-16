@@ -677,7 +677,7 @@
             <section id="specs" class="mt-16 scroll-mt-20">
                 <h2 class="text-2xl font-bold text-white flex items-center gap-3"><span class="text-brand-400">5</span>
                     Especificações de desenvolvimento (SDDs)</h2>
-                <p class="mt-4 text-slate-400 max-w-3xl">Cada ADR não-trivial vem acompanhado de uma SDD (Spec-Driven
+                <p class="mt-4 text-slate-400 max-w-3xl">Cada ADR não trivial vem acompanhado de uma SDD (Spec-Driven
                     Development): contratos, cenários, plano de testes e WUs. <strong
                         class="text-slate-200">Spec-first</strong> — o documento precede o código.</p>
                 <div class="mt-6 grid sm:grid-cols-2 gap-4">
@@ -1279,7 +1279,7 @@
                 <p class="mt-4 text-slate-400 max-w-3xl">
                     Todo o pipeline opera sobre contratos <strong class="text-slate-200">Pydantic v2</strong> declarados
                     em <code class="text-brand-200">src/socialselling/contracts.py</code> — único ponto de verdade dos
-                    modelos de dados. Cada módulo M1–M5 produz e consome tipos bem definidos; jamais compartilham
+                    modelos de dados. Cada módulo M1–M5 produz e consome tipos bem definidos; os módulos jamais compartilham
                     referências mutáveis entre camadas.
                 </p>
 
@@ -1905,7 +1905,7 @@
                 </p>
                 <p class="mt-2">Documento explicativo e modelo de boas práticas — atualize-o quando uma decisão ou
                     prática mudar.</p>
-                <p class="mt-2 text-xs">Última revisão: Junho 2026 · Seções 11–14 adicionadas (contratos, código,
+                <p class="mt-2 text-xs">Última revisão: junho de 2026 · Seções 11–14 adicionadas (contratos, código,
                     testes/observabilidade, configuração).</p>
             </footer>
 

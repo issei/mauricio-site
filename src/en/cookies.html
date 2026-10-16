@@ -331,11 +331,11 @@
             z-index: 100;
         }
     </style>
+  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/cookies" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/cookies" />
     <link rel="alternate" hreflang="x-default" href="https://mauricio.issei.com.br/cookies" />
-  <style id="a11y-reflow">@media (max-width:480px){main :is(.grid,.flex)>*,main [class*="grid"]>*{min-width:0}main :is(a,p,li,code){overflow-wrap:anywhere}}</style>
 </head>
 
 <body>
@@ -382,7 +382,7 @@ interface. Opt-in.</li>
 
         <h2>Nominal listing of cookies</h2>
         <p>This list is updated after each change in third party tools. If you identify inconsistency,
-inform the DPO.</p>
+inform the in charge (DPO).</p>
 
         <h3>Strictly necessary</h3>
         <div class="table-wrap">
@@ -408,7 +408,7 @@ inform the DPO.</p>
             </table>
         </div>
 
-        <h3>Analysis (Google Analytics 4)</h3>
+        <h3>Analysis (Google Analytics 4 and Microsoft Clarity)</h3>
         <div class="table-wrap">
             <table>
                 <thead>
@@ -434,6 +434,20 @@ inform the DPO.</p>
                         <td>HTTP Cookie</td>
                         <td>2 years</td>
                         <td>Status of session GA4 (specific property)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_clck</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>HTTP Cookie</td>
+                        <td>1 year</td>
+                        <td>Microsoft Clarity User ID and preferences (heat maps and session recording)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_clsk</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>HTTP Cookie</td>
+                        <td>1 day</td>
+                        <td>Connect the page views of the same visit on Microsoft Clarity</td>
                     </tr>
                     <tr>
                         <td><code>_gid</code></td>
@@ -485,10 +499,11 @@ inform the DPO.</p>
         </div>
 
         <div class="callout">
-            <strong>Audit pending</strong>
-            This list represents the expected typical set given the declared tracking (GTM) <code>GTM-KQ9R3GV3</code> +
-GA4 <code>G-GEKLHZYVYX</code>). Before publishing, it is recommended to scan via DevTools (Application →
-Storage → Cookies) and Tag Assistant to close the exact list and add/remove entries as real.
+            <strong>Last verified: 16/10/2026</strong>
+            We check the cookies on the homepage after accepting all categories. They showed up. <code>_ga</code>,
+            <code>_ga_GEKLHZYVYX</code>, <code>_clck</code> and <code>_clsk</code>, besides the key <code>consent_v</code> in
+local Storage. The marketing cookies above (Meta and Google Ads) did not appear in this check. Stay
+listed because Google Tag Manager (<code>GTM-KQ9R3GV3</code>) can activate them.
         </div>
 
         <h2>How to manage your preferences</h2>
@@ -499,7 +514,7 @@ preferences.</li>
             <li>Configure in your <strong>browser</strong> total blocking of third party cookies — information on
                 <a href="https://www.aboutcookies.org" rel="noopener">About cookies. org</a>.
             </li>
-            <li>If your browser sends the signal <strong>Global Privacy Control (GPC)</strong>, we respect
+            <li>If your browser sends the signal <strong>Global Privacy Control (GPC)</strong>, we respect that signal
 automatically as marketing opt-out/analysis.</li>
         </ul>
 
@@ -515,7 +530,7 @@ Your decision, all non-essential categories remain in <code>denied</code>. Analy
 fire after explicit consent or only send <em>pings</em> no cookies (model mode).</p>
 
         <h2>Third party cookies and jurisdictions</h2>
-        <p>Operators like Google and Meta can set additional cookies by accessing integrated content (videos from
+        <p>Operators like Google and Meta can set additional cookies when you access integrated content (videos from
 YouTube, maps, embeds). These providers are responsible for their own cookies — see:</p>
         <ul>
             <li>Google: <a href="https://policies.google.com/technologies/cookies"

@@ -540,7 +540,7 @@
             <div class="eai-pcard__head"><span class="eai-pcard__num">P2</span>
               <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/><path d="M8 4 6 20M18 4l-2 16"/></svg></div>
             <h3 class="eai-pcard__title">Determinismo é invariante testável</h3>
-            <p class="eai-pcard__text">Mesma entrada, mesma saída — sempre. Não-determinismo é defeito.</p>
+            <p class="eai-pcard__text">Mesma entrada, mesma saída — sempre. Não determinismo é defeito.</p>
           </article></li>
 
           <li><article class="eai-pcard" id="principio-3">
@@ -626,7 +626,7 @@
               <p class="eai-pilar__def">Autonomia não é interruptor (confio / não confio) — é um <strong>contínuo</strong>. A posição correta de uma tarefa nesse contínuo é função de duas variáveis: o <strong>custo do erro</strong> (de cosmético a catastrófico) e a <strong>reversibilidade</strong> (de instantânea a irreversível).</p>
               <ul class="eai-pilar__just">
                 <li><strong>Sobre-engenharia do trivial</strong> mata o time-to-market sem reduzir risco nenhum.</li>
-                <li><strong>Sub-engenharia do crítico</strong> deixa pagamentos e migrações na mão de um agente em "modo improviso".</li>
+                <li><strong>Subengenharia do crítico</strong> deixa pagamentos e migrações na mão de um agente em "modo improviso".</li>
                 <li>O risco mais insidioso é o <strong>vazamento de modo</strong>: o protótipo que "deu certo na demo" e vira produção sem atravessar a fronteira de rigor.</li>
               </ul>
               <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogia</span> O laboratório de P&amp;D e a linha de produção certificada. O erro não é ter os dois modos — é <em>mover um artefato entre zonas sem reprocessá-lo sob as regras da zona de destino</em>.</p>
@@ -737,12 +737,12 @@
               <p class="eai-pilar__def">A disciplina pesada — DAGs, contratos rígidos, Ledgers, ADRs — tem custo de <strong>setup</strong> e custo de <strong>rigidez</strong>. Esses custos só se pagam quando amortizados por <strong>longevidade, escala ou criticidade</strong>. Onde não há o que amortizar, o rigor é negativo, não neutro. Dois contextos pedem leveza deliberada:</p>
               <ul class="eai-pilar__just">
                 <li><strong>PoCs e protótipos</strong> com time-to-market dominante e horizonte de descarte: cada hora em contratos é subtraída da única métrica que importa — descobrir, rápido, se a ideia tem valor.</li>
-                <li><strong>Pesquisa aberta multi-passos</strong>: o caminho da solução é desconhecido a priori. Fixar um DAG cedo demais congela uma hipótese sobre o fluxo e destrói a capacidade de replanejar que torna o agente útil ali.</li>
+                <li><strong>Pesquisa aberta multipassos</strong>: o caminho da solução é desconhecido a priori. Fixar um DAG cedo demais congela uma hipótese sobre o fluxo e destrói a capacidade de replanejar que torna o agente útil ali.</li>
               </ul>
               <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogia</span> O andaime versus a estrutura permanente. O erro não é usar andaime — é <em>deixar o andaime virar a estrutura</em>.</p>
               <div class="eai-callout eai-callout--danger" role="note">
                 <p class="eai-callout__title">🔴 Regra de transição</p>
-                <p>A leveza é legítima <strong>enquanto o artefato permanecer no seu polo de origem</strong>. No instante em que ele é promovido — passa a ser dependido por usuários, dinheiro ou dados — a promoção <strong>obriga</strong> o upgrade de garantias. A pergunta de governança não é "isto é exploração ou produção?", mas <em>"alguém já depende disto como se fosse produção?"</em>. Se sim, a estrutura permanente não é opcional.</p>
+                <p>A leveza é legítima <strong>enquanto o artefato permanecer no seu polo de origem</strong>. No instante em que ele é promovido — quando usuários, dinheiro ou dados passam a depender dele — a promoção <strong>obriga</strong> o upgrade de garantias. A pergunta de governança não é "isto é exploração ou produção?", mas <em>"alguém já depende disto como se fosse produção?"</em>. Se sim, a estrutura permanente não é opcional.</p>
               </div>
               <p class="eai-pilar__links">Conecta com
                 <a href="#principio-4">P4 · determinístico-primeiro</a>,
@@ -977,7 +977,7 @@ for item in fila:
               <span class="eai-chap__meta">Intermediário · 6 min</span></summary>
             <div class="eai-chap__body">
               <p>Ninguém toma uma decisão importante porque "o algoritmo deu <code>0,674</code>". Compare com: <em>"priorizado porque sinalizou expansão recente e tem histórico de compra no setor; não foi possível confirmar o orçamento"</em>. O número é inútil e não inspira confiança; a justificativa, sim.</p>
-              <p><strong>O problema:</strong> a "caixa preta" é o maior bloqueador de adoção corporativa de IA. Um score opaco gera resistência do usuário, enxurrada de "por que o sistema sugeriu isso?" no suporte e reprovação em auditorias de explicabilidade.</p>
+              <p><strong>O problema:</strong> a "caixa-preta" é o maior bloqueador de adoção corporativa de IA. Um score opaco gera resistência do usuário, enxurrada de "por que o sistema sugeriu isso?" no suporte e reprovação em auditorias de explicabilidade.</p>
               <p><strong>A solução</strong> é trocar o número por uma explicação acionável com três elementos: <strong>drivers</strong> em linguagem natural (o que pesou a favor e contra), <strong>sinais ausentes</strong> (a honestidade do Open-World — mostrar a lacuna aumenta a confiança mais do que escondê-la) e <strong>proveniência</strong> (de qual fonte veio cada sinal, para o usuário verificar). Dois cuidados tornam a XAI confiável: gere a explicação por <strong>regras determinísticas sobre o mesmo objeto que gerou a pontuação</strong> — nunca com uma segunda chamada de LLM, que racionalizaria; e considere esconder o número e mostrar só o "por que agora" e "o que falta saber".</p>
               <p><strong>Na prática, isso significa que</strong> uma resposta explicável e modesta vence uma resposta exata e opaca em adoção.</p>
               <p><a class="eai-chap__link" href="#principio-10">Princípio 10 →</a></p>

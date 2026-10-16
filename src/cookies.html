@@ -377,7 +377,7 @@
 
         <h2>Listagem nominal de cookies</h2>
         <p>Esta lista é atualizada após cada mudança em ferramentas de terceiros. Caso identifique inconsistência,
-            informe ao DPO.</p>
+            informe ao Encarregado (DPO).</p>
 
         <h3>Estritamente necessários</h3>
         <div class="table-wrap">
@@ -403,7 +403,7 @@
             </table>
         </div>
 
-        <h3>Análise (Google Analytics 4)</h3>
+        <h3>Análise (Google Analytics 4 e Microsoft Clarity)</h3>
         <div class="table-wrap">
             <table>
                 <thead>
@@ -429,6 +429,20 @@
                         <td>Cookie HTTP</td>
                         <td>2 anos</td>
                         <td>Estado da sessão GA4 (propriedade específica)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_clck</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>1 ano</td>
+                        <td>Identificador de usuário e preferências do Microsoft Clarity (mapas de calor e gravação de sessão)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_clsk</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>1 dia</td>
+                        <td>Liga as visualizações de página de uma mesma visita no Microsoft Clarity</td>
                     </tr>
                     <tr>
                         <td><code>_gid</code></td>
@@ -480,10 +494,11 @@
         </div>
 
         <div class="callout">
-            <strong>Auditoria pendente</strong>
-            Esta lista representa o conjunto típico esperado dado o tracking declarado (GTM <code>GTM-KQ9R3GV3</code> +
-            GA4 <code>G-GEKLHZYVYX</code>). Antes de publicar, recomenda-se varredura via DevTools (Application →
-            Storage → Cookies) e Tag Assistant para fechar a lista exata e adicionar/remover entradas conforme o real.
+            <strong>Última verificação: 16/10/2026</strong>
+            Conferimos os cookies da página inicial depois de aceitar todas as categorias. Apareceram <code>_ga</code>,
+            <code>_ga_GEKLHZYVYX</code>, <code>_clck</code> e <code>_clsk</code>, além da chave <code>consent_v</code> no
+            localStorage. Os cookies de marketing acima (Meta e Google Ads) não apareceram nessa verificação. Ficam
+            listados porque o Google Tag Manager (<code>GTM-KQ9R3GV3</code>) pode ativá-los.
         </div>
 
         <h2>Como gerenciar suas preferências</h2>
@@ -494,7 +509,7 @@
             <li>Configure no seu <strong>navegador</strong> bloqueio total de cookies de terceiros — informações em
                 <a href="https://www.aboutcookies.org" rel="noopener">aboutcookies.org</a>.
             </li>
-            <li>Se seu navegador envia o sinal <strong>Global Privacy Control (GPC)</strong>, respeitamos
+            <li>Se seu navegador envia o sinal <strong>Global Privacy Control (GPC)</strong>, respeitamos esse sinal
                 automaticamente como opt-out de marketing/análise.</li>
         </ul>
 
@@ -506,11 +521,11 @@
 
         <h2>Bloqueio na origem (Consent Mode v2)</h2>
         <p>Implementamos o <strong>Google Consent Mode v2</strong> conforme exigência de março/2024. Antes de qualquer
-            decisão sua, todas as categorias não-essenciais ficam em <code>denied</code>. Tags de análise e marketing só
+            decisão sua, todas as categorias não essenciais ficam em <code>denied</code>. Tags de análise e marketing só
             disparam após consentimento explícito ou só enviam <em>pings</em> sem cookies (modo de modelagem).</p>
 
         <h2>Cookies de terceiros e jurisdições</h2>
-        <p>Operadores como Google e Meta podem definir cookies adicionais ao acessar conteúdos integrados (vídeos do
+        <p>Operadores como Google e Meta podem definir cookies adicionais quando você acessa conteúdos integrados (vídeos do
             YouTube, mapas, embeds). Esses provedores são responsáveis por seus próprios cookies — consulte:</p>
         <ul>
             <li>Google: <a href="https://policies.google.com/technologies/cookies"

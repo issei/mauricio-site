@@ -410,7 +410,7 @@
         <div class="ca-prose">
           <p class="ca-lede">
             Construir o <em>cérebro de roteamento</em> de um agente de atendimento de um banco digital.
-            Antes de qualquer chamada a LLM caro, o sistema decide o caminho mais barato e seguro para responder cada mensagem.
+            Antes de qualquer chamada a LLM caro, o sistema decide o caminho mais barato e seguro para responder a cada mensagem.
           </p>
 
           <h3 id="tres-pilares">Os três pilares da arquitetura</h3>
@@ -857,7 +857,7 @@ Para a escrita vencer por ajuste de α:
             </div>
             <p class="ca-small">
               <code translate="no">TfidfVectorizer(ngram_range=(1,2))</code> + <code translate="no">LogisticRegression</code> calibrado via <code translate="no">CalibratedClassifierCV(method="sigmoid")</code> em Platt scaling.
-              Resolve o problema de subconfiança por regularização L2 em dataset pequeno sem inflar artificialmente as probabilidades.
+              Resolve o problema de subconfiança causado pela regularização L2 em dataset pequeno, sem inflar artificialmente as probabilidades.
             </p>
           </div>
 
@@ -1699,7 +1699,7 @@ if baseline_cost_usd > 0:
               </tr>
               <tr>
                 <td><strong>Concorrência</strong></td>
-                <td><code translate="no">tokio</code> (I/O não-bloqueante) + <code translate="no">rayon</code> (paralelismo de dados).</td>
+                <td><code translate="no">tokio</code> (I/O não bloqueante) + <code translate="no">rayon</code> (paralelismo de dados).</td>
                 <td>Goroutines nativas e canais. Excelente concorrência I/O.</td>
               </tr>
               <tr>
