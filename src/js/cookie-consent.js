@@ -45,6 +45,9 @@ function ensureGtag() {
 }
 
 function setConsentDefault() {
+    // As páginas definem o padrão "negado" inline, antes do GTM (consent-default-inline). Repetir aqui,
+    // depois do `update` da escolha gravada, reabriria o consentimento negado.
+    if (window.__consentDefault) return;
     ensureGtag();
     window.gtag('consent', 'default', {
         ...DEFAULT_DENIED,
@@ -86,6 +89,17 @@ function applyConsent(categories) {
         security_storage: 'granted'
     });
     window.dataLayer.push({ event: 'consent_update', consent_categories: categories });
+    applyClarity(categories);
+}
+
+// O Clarity só carrega depois do aceite de "Análise" (window.loadClarity vem inline, com o ID de cada página).
+// Ao revogar, `consent=false` apaga os cookies dele e interrompe o rastreio.
+function applyClarity(categories) {
+    if (categories.analytics) {
+        if (typeof window.loadClarity === 'function') window.loadClarity(categories.marketing ? 'granted' : 'denied');
+    } else if (window.loadClarity && window.loadClarity.done && typeof window.clarity === 'function') {
+        window.clarity('consent', false);
+    }
 }
 
 function isGPCEnabled() {
