@@ -403,7 +403,7 @@
             </table>
         </div>
 
-        <h3>Análise (Google Analytics 4)</h3>
+        <h3>Análise (Google Analytics 4 e Microsoft Clarity)</h3>
         <div class="table-wrap">
             <table>
                 <thead>
@@ -429,6 +429,20 @@
                         <td>Cookie HTTP</td>
                         <td>2 anos</td>
                         <td>Estado da sessão GA4 (propriedade específica)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_clck</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>1 ano</td>
+                        <td>Identificador de usuário e preferências do Microsoft Clarity (mapas de calor e gravação de sessão)</td>
+                    </tr>
+                    <tr>
+                        <td><code>_clsk</code></td>
+                        <td>.mauricio.issei.com.br</td>
+                        <td>Cookie HTTP</td>
+                        <td>1 dia</td>
+                        <td>Liga as visualizações de página de uma mesma visita no Microsoft Clarity</td>
                     </tr>
                     <tr>
                         <td><code>_gid</code></td>
@@ -480,10 +494,11 @@
         </div>
 
         <div class="callout">
-            <strong>Auditoria pendente</strong>
-            Esta lista representa o conjunto típico esperado dado o tracking declarado (GTM <code>GTM-KQ9R3GV3</code> +
-            GA4 <code>G-GEKLHZYVYX</code>). Antes de publicar, recomenda-se varredura via DevTools (Application →
-            Storage → Cookies) e Tag Assistant para fechar a lista exata e adicionar/remover entradas conforme o real.
+            <strong>Última verificação: 16/10/2026</strong>
+            Conferimos os cookies da página inicial depois de aceitar todas as categorias. Apareceram <code>_ga</code>,
+            <code>_ga_GEKLHZYVYX</code>, <code>_clck</code> e <code>_clsk</code>, além da chave <code>consent_v</code> no
+            localStorage. Os cookies de marketing acima (Meta e Google Ads) não apareceram nessa verificação. Ficam
+            listados porque o Google Tag Manager (<code>GTM-KQ9R3GV3</code>) pode ativá-los.
         </div>
 
         <h2>Como gerenciar suas preferências</h2>
