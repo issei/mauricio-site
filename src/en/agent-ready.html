@@ -21,6 +21,21 @@
 
   <link rel="stylesheet" href="../agent-ready.css" />
   <!-- ============================================================ -->
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM, do gtag.js e do Clarity.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+    window.__consentDefault = true;
+    try {
+        var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+        if (cc && cc.v === '2.0' && cc.categories) {
+            var mk = cc.categories.marketing ? 'granted' : 'denied';
+            gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+        }
+    } catch (e) { }
+</script>
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -238,7 +253,7 @@
           "name": "What are Agent Skills?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised."
+            "text": "Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised."
           }
         },
         {
@@ -345,7 +360,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/agent-ready#g-agent-skills",
           "name": "Agent Skills",
-          "description": "SKILL.md reusable procedures indexed with digest SHA-256 verifiable."
+          "description": "Reusable procedures in SKILL.md, indexed with verifiable digest SHA-256."
         },
         {
           "@type": "DefinedTerm",
@@ -2220,7 +2235,7 @@ these four questions remain agent-ready even when the ruler changes.
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What are Agent Skills?</summary>
-      <div class="aeo-faq__a"><p>Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.</p></div>
+      <div class="aeo-faq__a"><p>Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">How do agents find APIs?</summary>

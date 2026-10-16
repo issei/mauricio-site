@@ -8,6 +8,21 @@
     <link href="./input.css" rel="stylesheet">
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://vjs.zencdn.net/8.10.0/video-js.css" /></noscript>
+    <!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM, do gtag.js e do Clarity.
+         Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+        window.__consentDefault = true;
+        try {
+            var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+            if (cc && cc.v === '2.0' && cc.categories) {
+                var mk = cc.categories.marketing ? 'granted' : 'denied';
+                gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+            }
+        } catch (e) { }
+    </script>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({

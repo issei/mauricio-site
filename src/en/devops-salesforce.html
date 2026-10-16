@@ -184,6 +184,21 @@
 
   <style id="a11y-skip">.a11y-skip{position:absolute;left:1rem;top:-4rem;z-index:2147483001;padding:.6rem 1rem;border-radius:8px;background:#161b22;color:#fff;font:600 .95rem/1.2 Inter,system-ui,sans-serif;text-decoration:none;border:2px solid #58a6ff;transition:none}.a11y-skip:focus{top:1rem}</style>
   <!-- ============================================================ -->
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM, do gtag.js e do Clarity.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+    window.__consentDefault = true;
+    try {
+        var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+        if (cc && cc.v === '2.0' && cc.categories) {
+            var mk = cc.categories.marketing ? 'granted' : 'denied';
+            gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+        }
+    } catch (e) { }
+</script>
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
@@ -361,7 +376,7 @@
           "name": "When to use Claude Code and when to use Devin?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Claude Code for interactive work in the editor: pair programming, diff review every change, ambiguous refactoring and architectural exploration. Devin for well-defined ticket that can run alone in sandbox and come back as Pull Request — repetitive batch tasks, delegated by Slack or Jira."
+            "text": "Claude Code for interactive work in the editor: pair programming, diff review with each change, ambiguous refactoring and architectural exploration. Devin for well-defined ticket that can run alone in sandbox and come back as Pull Request — repetitive batch tasks, delegated by Slack or Jira."
           }
         },
         {
@@ -369,7 +384,7 @@
           "name": "What is Flosum Cloud Agent for?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It's a Node service. js hosted out of the org which translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized."
+            "text": "It's a Node service. js hosted out of the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized."
           }
         },
         {
@@ -377,7 +392,7 @@
           "name": "How to prevent AI from hallucinating paths or breaking a shared org?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Three layer locks: repository in the Salesforce DX source format (force-app/main/default), a spec with Impact Matrix and Acting Limits before opening the agent session, and deploy protected by Overwrite Protection and Smart Merge on the Flosum pipeline."
+            "text": "Three Layer Locks: a repository in Salesforce DX source format (force-app/main/default), a spec with Impact Matrix and Acting Limits before opening the agent session, and deploy protected by Overwrite Protection and Smart Merge on the Flosum pipeline."
           }
         },
         {
@@ -523,7 +538,7 @@
           Initial Setup Guide
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          The installation order matters. Install Java before the rest is the most common cause of broken environments in teams that are starting. Follow this sequence:
+          The installation order matters. Install Java before the rest is the most common cause of broken environments on teams that are starting. Follow this sequence:
         </p>
 
         <div class="space-y-6">
@@ -531,7 +546,7 @@
           <div class="card-glass rounded-xl p-6 border-l-2 border-l-blue-400">
             <h4 class="text-lg font-bold text-blue-400 mb-2">Step 1 — Visual Studio Code</h4>
             <p class="text-white/70 text-sm leading-relaxed">
-              Download and install VS Code in <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="text-neon-400 underline hover:text-neon-300">code.visualstudio. with</a>. It is the base editor on which the entire stack (Salesforce + IA) will run.
+              Download and install VS Code in <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="text-neon-400 underline hover:text-neon-300">code.visualstudio. with</a>. It is the base editor on which the entire stack (Salesforce + AI) will run.
             </p>
           </div>
 
@@ -568,7 +583,7 @@ sf --version</code></pre>
           <div class="bg-neon-400/10 border border-neon-400/30 rounded-xl p-5 text-sm">
             <p class="font-bold text-neon-400 mb-1">Validation checklist:</p>
             <p class="text-white/80 leading-relaxed">
-              Open a file <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">.cls</code> any — if self-complete appears and there is no warning of "Java not found" in the lower right corner, the environment is ready for the next step.
+              Open a file <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">.cls</code> any — if it appears autocomplete and there is no warning of "Java not found" in the lower right corner, the environment is ready for the next step.
             </p>
           </div>
         </div>
@@ -583,13 +598,13 @@ sf --version</code></pre>
           Connecting AI to Salesforce Environment
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          With the base environment ready, the next step is to give the AI the two accesses it needs: <strong>code</strong> (via editor) and <strong>live org</strong> (via API). Without the second, the AI only sees static files — it cannot confirm if what it is reading matches the reality of the org.
+          With the base environment ready, the next step is to give the AI the two accesses it needs: <strong>code</strong> (via editor) and <strong>live org</strong> (via API). Without the second, AI only sees static files — it cannot confirm if what it is reading matches the reality of the org.
         </p>
 
         <div class="space-y-6 mb-10">
           <!-- Passo 1 IA -->
           <div class="card-glass rounded-xl p-6">
-            <h4 class="text-lg font-bold text-white mb-3">Step 1 — Install IA extension in the editor</h4>
+            <h4 class="text-lg font-bold text-white mb-3">Step 1 — Install the AI extension in the editor</h4>
             <ul class="space-y-3 text-white/70 text-sm leading-relaxed">
               <li>
                 <strong class="text-white">Claude Code:</strong> in the VS Code Extensions tab, search for "Claude Code" and click install (also works in VS Code forks). Alternatively, install via terminal:
@@ -622,7 +637,7 @@ sf --version</code></pre>
           <div class="card-glass rounded-xl p-6">
             <h4 class="text-lg font-bold text-white mb-2">Step 3 — Connecting a Salesforce MCP Server</h4>
             <p class="text-white/70 text-sm leading-relaxed">
-              A code editor, alone, reads only files. For AI to be able to consult metadata and records <strong>real</strong> from org, she needs an MCP server (Model Context Protocol) Salesforce connected — whether the Salesforce local development server (reusing CLI authentication) or a hosted MCP server. It is this server that exposes tools such as "list objects", "describe fields" and "turn SOQL" to the model.
+              A code editor, alone, reads only files. For AI to be able to consult metadata and records <strong>real</strong> from org, she needs an MCP server (Model Context Protocol) Salesforce connected — whether the Salesforce local development server (using CLI authentication) or a hosted MCP server. It is this server that exposes tools such as "list objects", "describe fields" and "turn SOQL" to the model.
             </p>
           </div>
 
@@ -633,7 +648,7 @@ sf --version</code></pre>
               The simplest and most revealing test: ask AI, in natural language, something that would only have the correct answer if it was actually connected to the org:
             </p>
             <div class="bg-navy-900/80 border border-white/10 rounded-lg p-4 font-mono text-xs text-neon-400 space-y-1">
-              <p>List the custom objects of this org.</p>
+              <p>"List the custom objects of this org."</p>
               <p>"How many records are there in the Account table?"</p>
             </div>
             <p class="text-white/60 text-xs mt-3">
@@ -658,7 +673,7 @@ sf --version</code></pre>
                 <td><strong class="text-white">Claude Code</strong> — runs in its editor, with diff revision at each change</td>
               </tr>
               <tr>
-                <td>Well delimited ticket that can run itself (e.g. update 40 classes to a new log pattern)</td>
+                <td>Well delimited Ticket that can run alone (e.g. update 40 classes to a new log pattern)</td>
                 <td><strong class="text-white">Devin</strong> — standalone agent in sandbox, delivers a Pull Request ready for review</td>
               </tr>
               <tr>
@@ -673,7 +688,7 @@ sf --version</code></pre>
           </table>
         </div>
         <div class="bg-navy-900/60 border border-white/10 rounded-lg p-4 text-xs text-white/50 italic">
-          Prices and usage limits often change in both products — always confirm on each other's official page before dimensioning team cost.
+          Prices and usage limits frequently change in both products — always confirm on each other's official page before dimensioning team cost.
         </div>
       </div>
     </div>
@@ -730,7 +745,7 @@ sf --version</code></pre>
         <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
           <h4 class="text-lg font-bold text-blue-400 mb-2">Because it matters to AI:</h4>
           <p class="text-white/80 text-sm leading-relaxed">
-            Tools like Claude Code and Devin have been trained and optimized to work on common Git repositories — not on Salesforce Metadata API directly. Agent is what makes your org "readable" as a normal Git repository, allowing AI to operate without having to understand the authentication and serialization details of the Salesforce platform.
+            Tools like Claude Code and Devin have been trained and optimized to work on common Git repositories — not on the Salesforce Metadata API directly. Agent is what makes your org "readable" as a normal Git repository, allowing AI to operate without having to understand the authentication and serialization details of the Salesforce platform.
           </p>
         </div>
       </div>
@@ -762,7 +777,7 @@ sf --version</code></pre>
         </div>
 
         <p class="text-white/70 leading-relaxed mb-6">
-          This structure is not just an aesthetic convention — it is the mental map that the model uses to predict where a file should be. When a repository deviates from it (custom folders, legacy metadata format, diverging API names of file names), the AI passes to <strong>hallucinate paths</strong>: suggests editing a file that does not exist, creates a component in the wrong folder, or fails to see the dependency between an Apex class and the custom object that it manipulates.
+          This structure is not just an aesthetic convention — it is the mental map that the model uses to predict where a file should be. When a repository deviates from it (custom folders, legacy metadata format, diverging API names of file names), the AI passes to <strong>hallucinate paths</strong>: suggests editing a file that does not exist, creates a component in the wrong folder, or fails to see the dependency between an Apex class and the custom object it handles.
         </p>
 
         <div class="card-glass rounded-xl p-6 border-l-4 border-l-orange-400">
@@ -774,7 +789,7 @@ sf --version</code></pre>
             <pre class="font-mono text-xs text-white/90"><code>sf project convert source -r caminho/do/metadata/legado -d force-app</code></pre>
           </div>
           <p class="text-white/70 text-xs">
-            Keep API names identical to filenames, and avoid custom folders outside the tree <code class="text-neon-400 bg-black/40 px-1 py-0.5 rounded font-mono">force-app/main/default/</code>. Each exception to the convention is one more point where the AI will "guess" — and guess at a shared production org has real cost.
+            Keep API names identical to file names, and avoid custom folders outside the tree <code class="text-neon-400 bg-black/40 px-1 py-0.5 rounded font-mono">force-app/main/default/</code>. Each exception to the convention is one more point where the AI will "guess" — and guess at a shared production org has real cost.
           </p>
         </div>
       </div>
@@ -813,17 +828,17 @@ sf --version</code></pre>
           <li class="card-glass rounded-xl p-5 flex items-start gap-4">
             <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center shrink-0 text-xs">4</span>
             <div>
-              <strong class="text-white">Deployment with dynamic scope:</strong> using <em>Delta Deployments</em>, the pipeline sends only components that have actually changed — not the entire package — reducing deploy time and risk surface.
+              <strong class="text-white">Deployment with dynamic scope:</strong> using <em>Delta Deployments</em>, the pipeline sends only the components that have actually changed — not the whole package — reducing deploy time and risk surface.
             </div>
           </li>
           <li class="card-glass rounded-xl p-5 flex items-start gap-4">
             <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center shrink-0 text-xs">5</span>
             <div>
-              <strong class="text-white">Before touching the target org, two protections take action:</strong>
+              <strong class="text-white">Before touching the target org, two protections come into action:</strong>
               <div class="grid md:grid-cols-2 gap-4 mt-3">
                 <div class="bg-navy-900/80 p-4 rounded-lg border border-white/10">
                   <span class="text-neon-400 font-bold block mb-1">Overwrite Protection</span>
-                  <p class="text-white/60 text-xs">Compares what is being implanted against the actual current state of destination org. If someone has changed that same component directly in the org (outside the Git stream) or other branch has already modified it, the deploy is signaled instead of simply overwriting.</p>
+                  <p class="text-white/60 text-xs">Compares what is being deployed against the actual current state of destination org. If someone has changed that same component directly in the org (outside the Git stream) or other branch has already modified it, the deploy is signaled instead of simply overwriting.</p>
                 </div>
                 <div class="bg-navy-900/80 p-4 rounded-lg border border-white/10">
                   <span class="text-purple-400 font-bold block mb-1">Smart Merge</span>
@@ -860,12 +875,12 @@ sf --version</code></pre>
           Spec-Driven Development: The Manifesto of New Mentality
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          In 2024 and 2025, the entire industry went through the same cycle: loose prompts generated plausible code that diverged from real intent — what became called <em>vibe coding</em>. The answer to this, adopted today by tools like GitHub Spec Kit, AWS Kiro and Claude Code's own skills, has a name: <strong>Spec-Driven Development (SDD)</strong>.
+          In 2024 and 2025, the entire industry went through the same cycle: loose prompts generated plausible code that diverged from real intent — which came to be called <em>vibe coding</em>. The answer to this, adopted today by tools such as GitHub Spec Kit, AWS Kiro and Claude Code's own skills, has a name: <strong>Spec-Driven Development (SDD)</strong>.
         </p>
 
         <blockquote class="card-glass rounded-2xl p-8 border-l-4 border-l-orange-400 my-8">
           <p class="text-xl font-bold text-white italic text-center leading-relaxed">
-            "You don't write HOW anymore. You write WHAT AND WHY — and the IA resolves implementation."
+            "You don't write HOW anymore. You write WHAT AND WHY — and the IA solves the implementation."
           </p>
         </blockquote>
 
@@ -884,16 +899,16 @@ sf --version</code></pre>
           </li>
           <li class="card-glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-orange-400 font-bold">•</span>
-            <div><strong class="text-white">In a shared org Salesforce, a wrong assumption does not only generate a bug — it generates an incident.</strong> Validation rules, flows and integrations are all interconnected; AI has no way of knowing that a field is used by external integration if no one has documented it anywhere.</div>
+            <div><strong class="text-white">In a shared Salesforce org, a wrong assumption does not only generate a bug — it generates an incident.</strong> Validation rules, flows and integrations are all interconnected; AI has no way of knowing that a field is used by external integration if no one has documented it anywhere.</div>
           </li>
           <li class="card-glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-orange-400 font-bold">•</span>
-            <div><strong class="text-white">Writing spec is the new "think before coding".</strong> The time I was going to draw the solution on my head now goes to write it so that another (artificial) intelligence can execute it without reinterpreting it.</div>
+            <div><strong class="text-white">Writing spec is the new "think before coding".</strong> The time I was going to draw the solution on the head now goes to write it so that another (artificial) intelligence can execute it without reinterpreting it.</div>
           </li>
         </ul>
 
         <p class="text-white/70 leading-relaxed">
-          In practice, this means: before opening a session of Devin or Claude Code for a non-trivial task, you write a short and objective spec — not a 10-page document, but enough for AI not to have to guess the answers alone.
+          In practice, this means: before opening a session of Devin or Claude Code for a non-trivial task, you write a short and objective spec — not a 10-page document, but enough for AI not to have to guess the answers by itself.
         </p>
       </div>
 
@@ -906,7 +921,7 @@ sf --version</code></pre>
           Specification Template: The Agreement Between You and AI
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          A flawed spec costs in two ways: human rework and <strong>Unnecessary consumption of AI computing</strong>. Independent agent tools such as Devin charge (or historically charged, and still use as internal measurement unit) by <strong>ACU — Agent Computer Unit</strong>, a standard measurement of virtual machine time, model inference and network consumed by task. The more vague the spec, the more the AI needs to explore, test hypotheses and redo work — and the more ACUs (or equivalent computing in any agency tool) it burns. Clear scope is not bureaucracy: it is computing economy.
+          A flawed spec costs in two ways: human rework and <strong>Unnecessary consumption of AI computing</strong>. Autonomous agent tools like Devin charge (or historically charged, and still use as internal measurement unit) by <strong>ACU — Agent Computer Unit</strong>, a standard measurement of virtual machine time, model inference and network consumed by task. The more vague the spec, the more the AI needs to explore, test hypotheses and redo work — and the more ACUs (or equivalent computing on any agency tool) it burns. Clear scope is not bureaucracy: it is computing economy.
         </p>
 
         <p class="text-white/70 leading-relaxed mb-4">
@@ -957,7 +972,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
         <div class="bg-navy-900/80 border border-white/10 rounded-xl p-6 text-sm text-white/70 space-y-2">
           <p class="font-bold text-white">Why this structure reduces computing cost:</p>
           <p>A <strong>Impact Matrix</strong> eliminates the "blind exploration" phase where the AI would have to sweep the entire repository trying to guess what's relevant.</p>
-          <p>The <strong>Acting Limits</strong> prevent it from opening changes in neighboring components "just in case."</p>
+          <p>The <strong>Acting Limits</strong> They prevent it from opening changes in neighboring components "just in case."</p>
           <p>And <strong>Acceptance Criteria</strong> Verifiables eliminate round-and-round cycles of "not quite what I wanted."</p>
         </div>
       </div>
@@ -1007,7 +1022,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
         <div class="card-glass rounded-xl p-6 border-l-4 border-l-purple-400 mb-6">
           <h4 class="text-lg font-bold text-purple-300 mb-2">The AGENTS file. root md:</h4>
           <p class="text-white/70 text-sm leading-relaxed mb-3">
-            File <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">AGENTS.md</code> deserves special attention: it is no longer a single supplier's convention and today it is an open standard, maintained by the Agency AI Foundation (Linux Foundation project), natively read by Claude Code, Codex, Cursor, Copilot, Gemini and others. In it, document exact commands (<code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf project deploy validate</code>, <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf apex run test --code-coverage</code>), the API version Salesforce in use, and links to folders <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">knowledge-base/</code> and <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">playbooks/</code>.
+            File <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">AGENTS.md</code> deserves special attention: it is no longer a single supplier convention and today is an open standard, maintained by the Agency AI Foundation (Linux Foundation project), natively read by Claude Code, Codex, Cursor, Copilot, Gemini and others. In it, document exact commands (<code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf project deploy validate</code>, <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf apex run test --code-coverage</code>), the API version Salesforce in use, and links to folders <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">knowledge-base/</code> and <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">playbooks/</code>.
           </p>
         </div>
 
@@ -1040,7 +1055,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
               playbooks/ operational procedures
             </h4>
             <p class="text-white/70 text-sm leading-relaxed">
-              A playbook documents a procedure that the team repeats: how to rollback a deploy in production, the steps of an urgent hotfix, the seasonal release preparation checklist. Devin, for example, has his own native concept of <em>Playbook</em> — a reusable and shareable prompt for recurring multi-stage tasks, with sections such as Procedure, Specifications (post-conditions) and Forbidden Actions. By keeping your playlists versioned in the repository, you have a unique source: the same text documents the human process <strong>and</strong> directly feeds the session of an AI agent.
+              A playbook documents a procedure that the team repeats: how to rollback a deploy in production, the steps of an urgent hotfix, the seasonal release preparation checklist. Devin, for example, has his own native concept of <em>Playbook</em> — a reusable and shared prompt for recurring multi-stage tasks, with sections such as Procedure, Specifications (post-conditions) and Forbidden Actions. By keeping your playlists versioned in the repository, you have a unique source: the same text documents the human process <strong>and</strong> directly feeds the session of an AI agent.
             </p>
           </div>
 
@@ -1101,12 +1116,12 @@ Qual dor específica isso resolve? O que acontece se não for feito?
   <div class="aeo-tldr" id="em-sintese">
     <p class="aeo-eyebrow">In short</p>
     <h2 class="aeo-tldr__title">The four-layer manual</h2>
-    <p class="aeo-tldr__lede">Putting an AI agent to write code in a shared org Salesforce is only safe in four layers: <strong>foundation</strong>, <strong>architecture</strong>, <strong>methodology</strong> and <strong>governance</strong>. There are nine sections, in order — each depends on the previous.</p>
+    <p class="aeo-tldr__lede">Putting an AI agent to write code in a shared org Salesforce is only safe in four layers: <strong>foundation</strong>, <strong>architecture</strong>, <strong>methodology</strong> and <strong>governance</strong>. There are nine sections, in order — each one depends on the previous one.</p>
     <ul class="aeo-tldr__points">
-      <li><strong>Foundation</strong> — VS Code, Salesforce CLI and JDK 21 in the right order; then IA connected to live org by an MCP Server, not only to files.</li>
+      <li><strong>Foundation</strong> — VS Code, Salesforce CLI and JDK 21 in the right order; then IA connected to live org by an MCP Server, not just to files.</li>
       <li><strong>Architecture</strong> — Flosum Cloud Agent translates metadata into Git in both directions; Delta Deployment, Overwrite Protection and Smart Merge protect the target org.</li>
       <li><strong>Methodology</strong> — Spec-Driven Development: You write WHO and WHY. Impact Matrix and Acting Limits cut rework and wasted computing.</li>
-      <li><strong>Governance</strong> — the repository is the long-term memory of AI: knowledge-base, AGENTS.md, playbooks and skill versions.</li>
+      <li><strong>Governance</strong> — the repository is the long-term memory of the AI: knowledge-base, AGENTS.md, playbooks and skill versions.</li>
     </ul>
   </div>
   <div class="aeo-faq">
@@ -1118,15 +1133,15 @@ Qual dor específica isso resolve? O que acontece se não for feito?
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">When to use Claude Code and when to use Devin?</summary>
-      <div class="aeo-faq__a"><p>Claude Code for interactive work in the editor: pair programming, diff review every change, ambiguous refactoring and architectural exploration. Devin for well-defined ticket that can run alone in sandbox and come back as Pull Request — repetitive batch tasks, delegated by Slack or Jira.</p></div>
+      <div class="aeo-faq__a"><p>Claude Code for interactive work in the editor: pair programming, diff review with each change, ambiguous refactoring and architectural exploration. Devin for well-defined ticket that can run alone in sandbox and come back as Pull Request — repetitive batch tasks, delegated by Slack or Jira.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is Flosum Cloud Agent for?</summary>
-      <div class="aeo-faq__a"><p>It's a Node service. js hosted out of the org which translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized.</p></div>
+      <div class="aeo-faq__a"><p>It's a Node service. js hosted out of the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">How to prevent AI from hallucinating paths or breaking a shared org?</summary>
-      <div class="aeo-faq__a"><p>Three layer locks: repository in the Salesforce DX source format (force-app/main/default), a spec with Impact Matrix and Acting Limits before opening the agent session, and deploy protected by Overwrite Protection and Smart Merge on the Flosum pipeline.</p></div>
+      <div class="aeo-faq__a"><p>Three Layer Locks: a repository in Salesforce DX source format (force-app/main/default), a spec with Impact Matrix and Acting Limits before opening the agent session, and deploy protected by Overwrite Protection and Smart Merge on the Flosum pipeline.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is Spec-Driven Development in practice?</summary>
