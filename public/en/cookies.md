@@ -19,6 +19,8 @@ It lists, in a technical and nominal way, the cookies and similar technologies (
 | `consent_v` | first | localStorage | persistent | Cookie consent preferences |
 | `_ga` | .mauricio.issei.com.br | HTTP cookie | 2 years | Unique visitor identifier (GA4) |
 | `_g_GEKLHZYVYX` | .mauricio.issei.com.br | HTTP cookie | 2 years | Status of session GA4 |
+| `_clck` | .mauricio.issei.com.br | HTTP cookie | 1 year | Microsoft Clarity User ID and preferences |
+| `_clsk` | .mauricio.issei.com.br | HTTP cookie | 1 day | Connect the page views of the same visit on Microsoft Clarity |
 | `_gid` | .mauricio.issei.com.br | HTTP cookie | 24 hours | Differentiate users in the day |
 | `_fbp` | .mauricio.issei.com.br | HTTP cookie | 90 days | Browser Identifier (Meta Pixel) for measurement and remarketing |
 | `fr` | Facebook. with | third party cookie | 90 days | Target Ad Direction |
