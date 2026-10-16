@@ -545,7 +545,7 @@ Smarter promps.
             <div class="eai-pcard__head"><span class="eai-pcard__num">P2</span>
               <svg class="eai-pcard__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16M4 15h16"/><path d="M8 4 6 20M18 4l-2 16"/></svg></div>
             <h3 class="eai-pcard__title">Determinism is testable invariant</h3>
-            <p class="eai-pcard__text">Same entry, same exit — always. Non-determinism is flawed.</p>
+            <p class="eai-pcard__text">Same entry, same exit — always. No determinism is flawed.</p>
           </article></li>
 
           <li><article class="eai-pcard" id="principio-3">
@@ -631,7 +631,7 @@ discipline is what makes autonomy reliable.
               <p class="eai-pilar__def">Autonomy is not a switch (trust/do not trust) — it is a <strong>continuous</strong>. The correct position of a task in this continuum is the function of two variables: <strong>error cost</strong> (from cosmetic to catastrophic) and <strong>reversibility</strong> (from instantaneous to irreversible).</p>
               <ul class="eai-pilar__just">
                 <li><strong>Over-engineering of the trivial</strong> Kills the time-to-market without reducing any risk.</li>
-                <li><strong>Sub-engineering of the critic</strong> leaves payments and migrations in the hands of an agent in "improvement mode".</li>
+                <li><strong>Subengineering of the critic</strong> leaves payments and migrations in the hands of an agent in "improvement mode".</li>
                 <li>The most insidious risk is the <strong>mode leakage</strong>: the prototype that "it worked on the demo" and becomes production without crossing the border of rigor.</li>
               </ul>
               <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogy</span> P&amp;D lab and certified production line. The mistake is not having both modes — it is <em>move an artifact between zones without reprocessing it under destination zone rules</em>.</p>
@@ -742,12 +742,12 @@ Diagnose your internship in <a href="#maturidade">maturity model</a> Down.</p>
               <p class="eai-pilar__def">Heavy discipline — DAGs, rigid contracts, Ledgers, ADRs — has cost of <strong>setup</strong> and cost of <strong>stiffness</strong>. These costs are only paid when amortised by <strong>longevity, scale or criticality</strong>. Where there is nothing to amortize, rigor is negative, not neutral. Two contexts call for deliberate lightness:</p>
               <ul class="eai-pilar__just">
                 <li><strong>PoCs and prototypes</strong> with dominant time-to-market and disposal horizon: every hour in contracts is subtracted from the only metric that matters — quickly find out if the idea has value.</li>
-                <li><strong>Open multi-step search</strong>: the path of the solution is unknown a priori. Setting a GAD too early freezes a hypothesis about the flow and destroys the ability to replan that makes the agent useful there.</li>
+                <li><strong>Open multistep search</strong>: the path of the solution is unknown a priori. Setting a GAD too early freezes a hypothesis about the flow and destroys the ability to replan that makes the agent useful there.</li>
               </ul>
               <p class="eai-pilar__analogy"><span class="eai-pilar__analogy-tag">Analogy</span> The scaffolding versus the permanent structure. The error is not using scaffolding — it is <em>let the scaffold turn the structure</em>.</p>
               <div class="eai-callout eai-callout--danger" role="note">
                 <p class="eai-callout__title">Transition rule</p>
-                <p>Lightness is legitimate <strong>while the artifact remains in its original pole</strong>. The moment it is promoted — it is spent by users, money or data — the promotion <strong>No, no, no.</strong> the upgrade of guarantees. The question of governance is not "is this exploitation or production?" but <em>"Does anyone ever depend on this as if it were production?"</em>. If so, the permanent structure is not optional.</p>
+                <p>Lightness is legitimate <strong>while the artifact remains in its original pole</strong>. The moment he is promoted — when users, money or data become dependent on him — the promotion <strong>No, no, no.</strong> the upgrade of guarantees. The question of governance is not "is this exploitation or production?" but <em>"Does anyone ever depend on this as if it were production?"</em>. If so, the permanent structure is not optional.</p>
               </div>
               <p class="eai-pilar__links">Connect with
                 <a href="#principio-4">P4 · deterministic-first</a>,
@@ -982,7 +982,7 @@ What you come out with.
               <span class="eai-chap__meta">Intermediate · 6 min</span></summary>
             <div class="eai-chap__body">
               <p>No one makes an important decision because "the algorithm gave <code>0,674</code>". Compare with: <em>"priorized because it signaled recent expansion and has a history of purchase in the sector; it was not possible to confirm the budget"</em>. The number is useless and does not inspire confidence; the justification, yes.</p>
-              <p><strong>The problem:</strong> the "black box" is the largest corporate adoption blocker of AI. An opaque score generates user resistance, flooded with "why did the system suggest this?" in support and failure in explanatory audits.</p>
+              <p><strong>The problem:</strong> the black box is the largest corporate adoption blocker of AI. An opaque score generates user resistance, flooded with "why did the system suggest this?" in support and failure in explanatory audits.</p>
               <p><strong>The solution</strong> is to exchange the number for an actionable explanation with three elements: <strong>drivers</strong> in natural language (which weighed for and against), <strong>absent signs</strong> (Open-World honesty — showing the gap increases confidence more than hiding it) and <strong>source</strong> (from which source came each signal, for the user to check). Two cares make XAI reliable: manages the explanation by <strong>deterministic rules on the same object that generated the score</strong> — never with a second call from LLM, which would rationalize; and consider hiding the number and showing only the "why now" and "what remains to be known".</p>
               <p><strong>In practice, this means that</strong> an explicable and modest response wins an exact and opaque response in adoption.</p>
               <p><a class="eai-chap__link" href="#principio-10">Principle 10 →</a></p>
