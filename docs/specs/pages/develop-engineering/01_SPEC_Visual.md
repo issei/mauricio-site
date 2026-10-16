@@ -1,5 +1,5 @@
 # Especificação Especializada de Design Visual
-## Deterministic Grounding para Engenharia Agentic de Software
+## Deterministic Grounding para Engenharia Agêntica de Software
 
 **Versão:** 1.1 — §4 revisada para herdar a paleta Dark Tech (ver nota na seção)  
 **Idioma da interface:** Português do Brasil  

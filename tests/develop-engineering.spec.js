@@ -11,7 +11,7 @@ test.describe('Develop Engineering - Deterministic Grounding Page', () => {
     // Single H1 check
     const h1s = page.locator('h1');
     await expect(h1s).toHaveCount(1);
-    await expect(h1s.first()).toContainText('Deterministic Grounding para Engenharia Agentic de Software');
+    await expect(h1s.first()).toContainText('Deterministic Grounding para Engenharia Agêntica de Software');
 
     // Skip link
     const skipLink = page.locator('a.dg-skip');

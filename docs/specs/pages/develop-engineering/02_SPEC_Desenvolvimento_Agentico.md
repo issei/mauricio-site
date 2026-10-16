@@ -1,5 +1,5 @@
 # 02 — Plano de Desenvolvimento Agêntico
-## Deterministic Grounding para Engenharia Agentic de Software
+## Deterministic Grounding para Engenharia Agêntica de Software
 
 > Como transformar [00_SPEC_Conteúdo.md](00_SPEC_Conteúdo.md) (conteúdo) e [01_SPEC_Visual.md](01_SPEC_Visual.md)
 > (design) em código publicável, usando o fluxo **agent-driven** já praticado neste repositório:

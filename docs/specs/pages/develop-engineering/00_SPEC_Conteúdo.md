@@ -1,5 +1,5 @@
 # Especificação Editorial da Página
-# Deterministic Grounding para Engenharia Agentic de Software
+# Deterministic Grounding para Engenharia Agêntica de Software
 
 **Versão:** 1.0  
 **Idioma do conteúdo:** Português do Brasil  
@@ -12,7 +12,7 @@
 
 ## 0. Instrução principal para a LLM autora
 
-Elabore uma nova página técnica, instrutiva e explicativa intitulada **“Deterministic Grounding para Engenharia Agentic de Software”**.
+Elabore uma nova página técnica, instrutiva e explicativa intitulada **“Deterministic Grounding para Engenharia Agêntica de Software”**.
 
 A página deve ser complementar ao conjunto de páginas existente do autor e deve ocupar uma lacuna específica: explicar **como ancorar um agente de desenvolvimento no estado atual do software, limitar sua autoridade operacional e validar suas mudanças com evidência rastreável**.
 
