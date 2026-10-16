@@ -686,7 +686,7 @@ appears as the agent's safety limit.
 
         <div class="ar-prose">
           <p>
-            You just accepted that there is a fourth Web consumer. The intuition of
+            You just accepted that there is a third web consumer. The intuition of
             <em>why this changes the architecture of a site</em>, and not just its contents. O
 video below covers this question in narrative format; the rest of this page covers the
 implementation. If the intuition is already formed, jump straight to
@@ -2227,7 +2227,7 @@ these four questions remain agent-ready even when the ruler changes.
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What's Markdown for agents?</summary>
-      <div class="aeo-faq__a"><p>It is delivering the same URL in Markdown when the client sends Accept: text/markdown, by content negotiation (RFC 7231 §5.3.2). An application page with 197 KB of HTML usually fits in a few KB of Markdown — on this site, 3.7 KB for the same text, 52 times less bytes. Two traps: compare q quality values, since a browser sends <em>/</em>;q=0.8 and cannot receive Markdown, and issue Vary: Accept for CDN does not serve the wrong version.</p></div>
+      <div class="aeo-faq__a"><p>It is delivering the same URL in Markdown when the client sends Accept: text/markdown, by content negotiation (RFC 7231 §5.3.2). An application page with 197 KB of HTML usually fits in a few KB of Markdown — on this site, 3.7 KB for the same text, 52 times less bytes. Two traps: compare q quality values, since a browser sends */*;q=0.8 and cannot receive Markdown, and issue Vary: Accept for CDN does not serve the wrong version.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is an MCP Server Card?</summary>

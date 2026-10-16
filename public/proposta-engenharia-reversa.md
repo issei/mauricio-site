@@ -7,7 +7,7 @@
 Antes de modernizar (To-Be), é preciso **congelar uma fotografia de alta fidelidade do que o sistema realmente faz hoje (As-Is)**. O conhecimento crítico costuma viver escondido — em Apex, em Flows fragmentados e na cabeça de poucos. Modernizar sem mapear é apagar regras vitais sem saber.
 
 - **Descoberta guiada por jornadas** — parte-se de uma jornada de negócio e segue-se a trilha de execução, isolando o código morto.
-- **Matriz de Evidências** — cruza insumos estrutural, de estado, operacional e humano para evitar falsos-positivos.
+- **Matriz de Evidências** — cruza insumos estrutural, de estado, operacional e humano para evitar falsos positivos.
 - **Inventário de Comportamentos** — regras core, efeitos colaterais e workarounds, classificados por confiança.
 - **As-Is → contratos** — o inventário auditado vira a matéria-prima dos schemas de validação.
 
@@ -31,7 +31,7 @@ A descoberta guiada por jornadas críticas e risco (top-down com deep dive): par
 
 **O que é a Matriz de Evidências?**
 
-É um pool multifacetado que evita falsos-positivos: insumos estruturais (metadados, Apex, Flows), de estado (Custom Metadata/Settings), operacionais (Event Monitoring, Debug Logs, que revelam o código zumbi) e humanos (commits, tickets, entrevistas, que dão o porquê da regra).
+É um pool multifacetado que evita falsos positivos: insumos estruturais (metadados, Apex, Flows), de estado (Custom Metadata/Settings), operacionais (Event Monitoring, Debug Logs, que revelam o código zumbi) e humanos (commits, tickets, entrevistas, que dão o porquê da regra).
 
 **O que é o Inventário de Comportamentos?**
 
@@ -40,7 +40,7 @@ A descoberta guiada por jornadas críticas e risco (top-down com deep dive): par
 ## Glossário
 
 - **As-Is** — Fotografia de alta fidelidade do que o sistema realmente faz hoje, antes de modernizar.
-- **Matriz de Evidências** — Pool multifacetado (estrutural, estado, operacional, humano) que evita falsos-positivos na descoberta.
+- **Matriz de Evidências** — Pool multifacetado (estrutural, estado, operacional, humano) que evita falsos positivos na descoberta.
 - **Inventário de Comportamentos** — Regras core, efeitos colaterais e workarounds do As-Is, classificados por confiança da evidência.
 - **Conhecimento tribal** — Regras que sustentam o negócio mas que ninguém documentou; vivem na cabeça de poucos.
 
