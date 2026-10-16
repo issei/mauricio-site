@@ -430,7 +430,7 @@ Four guards and what the numbers prove -- and what they don't prove.
         <div class="ca-prose">
           <p class="ca-lede">
             Build <em>routing brain</em> from a digital bank service agent.
-Before any expensive LLM call, the system decides the cheapest and safest way to answer each message.
+Before any expensive LLM call, the system decides the cheapest and safest way to respond to each message.
           </p>
 
           <h3 id="tres-pilares">The three pillars of architecture</h3>
@@ -877,7 +877,7 @@ The difference between consultation and change is <strong>one word: the verb</st
             </div>
             <p class="ca-small">
               <code translate="no">TfidfVectorizer(ngram_range=(1,2))</code> + <code translate="no">LogisticRegression</code> calibrated via <code translate="no">CalibratedClassifierCV(method="sigmoid")</code> Platt scaling.
-Solves the problem of underconfidence by regularization L2 in small dataset without artificially inflating probabilities.
+Solves the underconfidence problem caused by L2 regularization in small dataset, without artificially inflating the probabilities.
             </p>
           </div>
 
@@ -1719,7 +1719,7 @@ eliminating network jumps, intermediate serialization or IPC calls.
               </tr>
               <tr>
                 <td><strong>Competition</strong></td>
-                <td><code translate="no">tokio</code> (I/O non-blocking) + <code translate="no">rayon</code> (data parallelism).</td>
+                <td><code translate="no">tokio</code> (I/O not blocking) + <code translate="no">rayon</code> (data parallelism).</td>
                 <td>Native Goroutines and canals. Excellent I/O competition.</td>
               </tr>
               <tr>

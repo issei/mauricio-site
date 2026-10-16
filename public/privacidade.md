@@ -81,4 +81,4 @@ O site não é direcionado a menores de 18 anos e não coleta intencionalmente d
 
 ## 13. DPO, reclamações e foro
 
-Encarregado (DPO): mauricio@issei.com.br, resposta em até 15 dias úteis. Reclamações à ANPD (gov.br/anpd) ou à autoridade de proteção de dados do país de residência. Lei brasileira; foro da Comarca de São Paulo/SP, ressalvado o foro do domicílio do consumidor (CDC, art. 101, I). Mudanças materiais reabrem o banner e ficam sinalizadas por 30 dias.
+Encarregado (DPO): mauricio@issei.com.br, resposta em até 15 dias. Reclamações à ANPD (gov.br/anpd) ou à autoridade de proteção de dados do país de residência. Lei brasileira; foro da Comarca de São Paulo/SP, ressalvado o foro do domicílio do consumidor (CDC, art. 101, I). Mudanças materiais reabrem o banner e ficam sinalizadas por 30 dias.

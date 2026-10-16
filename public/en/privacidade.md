@@ -46,7 +46,7 @@ Data is not sold. Contracted operators: **AWS** (host S3 and CDN CloudFront), **
 
 ## 6. International transfer
 
-Operators process data in the US and other countries, based on LGPD art. 33 and CD/ANPD Resolution 19/2024: standard contractual clauses, EU-U.S. Data Privacy Framework and equivalent contractual guarantees.
+Operators process data in the US and other countries, based on LGPD art. 33 and CD/ANPD Resolution 19/2024: standard contractual clauses, EU-U. S. Data Privacy Framework and equivalent contractual guarantees.
 
 ## 7. Retention
 
@@ -82,4 +82,4 @@ The site is not directed to children under 18 and does not intentionally collect
 
 ## 13. DPO, complaints and forum
 
-Responsible (DPO): mauricio@issei.com.br, response in up to 15 working days. Claims to ANPD (gov.br/anpd) or the data protection authority of the country of residence. Brazilian law; foro da Comarca de São Paulo/SP, except for the consumer's home forum (CDC, art. 101, I). Material changes reopen the banner and are signaled for 30 days.
+Responsible (DPO): mauricio@issei.com.br, response in up to 15 days. Claims to ANPD (gov.br/anpd) or the data protection authority of the country of residence. Brazilian law; foro da Comarca de São Paulo/SP, except for the consumer's home forum (CDC, art. 101, I). Material changes reopen the banner and are signaled for 30 days.
