@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roteiro de entrevista: acessibilidade em streaming</title>
-  <meta name="description" content="Ferramenta para conduzir e registrar entrevistas sobre acessibilidade em streaming de vídeo. As anotações ficam só no seu navegador.">
+  <title>Entrevista por escrito: acessibilidade em streaming</title>
+  <meta name="description" content="Entrevista por escrito sobre como você usa serviços de streaming de vídeo. Suas respostas ficam só no seu navegador até você decidir enviá-las.">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#0d1117">
   <link rel="canonical" href="https://mauricio.issei.com.br/entrevista-acessibilidade-streaming">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="Roteiro de entrevista: acessibilidade em streaming">
-  <meta property="og:description" content="Ferramenta para conduzir e registrar entrevistas sobre acessibilidade em streaming de vídeo. As anotações ficam só no seu navegador.">
+  <meta property="og:title" content="Entrevista por escrito: acessibilidade em streaming">
+  <meta property="og:description" content="Entrevista por escrito sobre como você usa serviços de streaming de vídeo. Suas respostas ficam só no seu navegador até você decidir enviá-las.">
   <meta property="og:url" content="https://mauricio.issei.com.br/entrevista-acessibilidade-streaming">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,651 +26,534 @@
   <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
 
   <header class="et-topo">
-    <div class="et-wrap"><p>Roteiro de entrevista</p></div>
+    <div class="et-wrap"><p>Entrevista por escrito</p></div>
   </header>
 
   <main id="conteudo" class="et-wrap">
     <form id="entrevista" class="et-form" autocomplete="off" novalidate>
 
     <section id="inicio" aria-labelledby="t-inicio">
-      <h1 id="t-inicio">Entrevista sobre acessibilidade em serviços de streaming de vídeo no Brasil</h1>
-      <p>Use esta página para conduzir a entrevista e registrar o que a pessoa contar. Ela serve para entrevistas presenciais, por vídeo ou por telefone. A duração sugerida é de 60 a 90 minutos, com pausas formais aos 35 e aos 60 minutos.</p>
-      <p>Não é preciso seguir a ordem à risca nem fazer todas as perguntas. Priorize os episódios que a pessoa trouxer.</p>
+      <h1 id="t-inicio">Entrevista sobre acessibilidade em serviços de streaming de vídeo</h1>
+      <p>Agradecemos a sua participação. Esta entrevista faz parte da apuração de uma reportagem sobre como as pessoas usam serviços de streaming de vídeo no Brasil, em Smart TVs, celulares, tablets e outros aparelhos.</p>
+      <p>O objetivo é entender a sua experiência real, com as suas palavras. Não existe resposta certa ou errada.</p>
 
       <div class="et-aviso">
-        <h2 class="et-aviso-titulo">Fadiga e carga cognitiva</h2>
-        <p>Em conversas mediadas (por exemplo, com intérprete de Libras) ou com pessoas que sentem fadiga visual, auditiva ou cognitiva, o tempo efetivo rende menos. Nesses casos, planeje duas sessões mais curtas, em dias diferentes, e combine isso antes.</p>
-        <p>Ofereça pausa a qualquer momento, e não só nos pontos marcados. Se a pessoa demonstrar cansaço, proponha encerrar e retomar depois, sem pressionar para completar o roteiro.</p>
+        <h2 class="et-aviso-titulo">Combinados</h2>
+        <ul>
+          <li>A participação é voluntária. Nenhuma pergunta é obrigatória: pule as que quiser.</li>
+          <li>Responda no seu ritmo. Você pode parar a qualquer momento e voltar outro dia. As respostas ficam salvas neste navegador.</li>
+          <li>Exemplos de situações recentes ajudam bastante, mas não são obrigatórios.</li>
+          <li>Nada será publicado com o seu nome ou com as suas palavras sem a sua autorização. Você decide isso na Parte 9.</li>
+          <li>Se preferir, use um nome fictício.</li>
+          <li>Se preferir outro formato, como conversa, áudio ou vídeo em Libras, avise a pessoa que convidou você.</li>
+          <li>No fim, você baixa um arquivo com as respostas e o envia para a pessoa que convidou você.</li>
+        </ul>
       </div>
 
       <nav aria-labelledby="t-indice" class="et-indice">
-        <h2 id="t-indice">Blocos do roteiro</h2>
+        <h2 id="t-indice">Partes da entrevista</h2>
         <ol>
-          <li><a href="#privacidade">Antes de começar: onde ficam os dados</a></li>
-          <li><a href="#abertura">1. Abertura e consentimento</a></li>
-          <li><a href="#contexto">2. Contextualização do uso</a></li>
-          <li><a href="#principal">3. Bloco principal: experiência de uso e barreiras</a></li>
-          <li><a href="#barreiras">4. Aprofundamento sobre barreiras pouco evidentes</a></li>
-          <li><a href="#final">5. Bloco final: percepções, recomendações e autorização</a></li>
-          <li><a href="#orientacoes">6. Orientações ao entrevistador</a></li>
-          <li><a href="#topicos">Anexo: lista de tópicos para envio prévio</a></li>
-          <li><a href="#exportar">Guardar e exportar</a></li>
+          <li><a href="#privacidade">Onde ficam as suas respostas</a></li>
+          <li><a href="#antes">Antes de começar</a></li>
+          <li><a href="#rotina">Parte 1. Como o streaming entra na sua rotina</a></li>
+          <li><a href="#escolha">Parte 2. Como você escolhe o que assistir</a></li>
+          <li><a href="#comecar">Parte 3. Como você começa a assistir e deixa tudo do jeito que precisa</a></li>
+          <li><a href="#controle">Parte 4. Como você controla o que está passando</a></li>
+          <li><a href="#continuidade">Parte 5. Quando você troca de aparelho ou volta a algo que deixou pela metade</a></li>
+          <li><a href="#contornos">Parte 6. Quando você desistiu, pediu ajuda ou encontrou um jeito próprio de resolver</a></li>
+          <li><a href="#extras">Parte 7. Perguntas extras (opcionais)</a></li>
+          <li><a href="#final">Parte 8. Para terminar</a></li>
+          <li><a href="#autorizacao">Parte 9. Como as suas palavras podem ser usadas</a></li>
+          <li><a href="#enviar">Enviar as respostas</a></li>
         </ol>
       </nav>
     </section>
 
     <section id="privacidade" aria-labelledby="t-privacidade">
-      <h2 id="t-privacidade">Antes de começar: onde ficam os dados</h2>
-      <p>As anotações desta página ficam <strong>só neste navegador, neste aparelho</strong>. A página não envia nada a nenhum servidor e não carrega ferramentas de análise de navegação.</p>
+      <h2 id="t-privacidade">Onde ficam as suas respostas</h2>
+      <p>As respostas ficam <strong>só neste navegador, neste aparelho</strong>. A página não envia as suas respostas pela internet e não usa ferramentas de análise de navegação.</p>
       <ul>
-        <li>Use um aparelho seu, e não um aparelho compartilhado.</li>
-        <li>No fim, exporte o registro em “Guardar e exportar” e guarde o arquivo em local seguro, com acesso restrito à equipe de apuração.</li>
-        <li>Depois de exportar, apague os dados deste navegador.</li>
-        <li>Uma janela anônima ou privada apaga tudo ao ser fechada.</li>
+        <li>Se o aparelho é usado por outras pessoas, desmarque a caixa abaixo. Assim nada fica gravado nele.</li>
+        <li>Em uma janela anônima ou privada, as respostas se perdem quando a janela é fechada.</li>
+        <li>Depois de enviar as respostas, você pode apagá-las deste navegador, na seção “Enviar as respostas”.</li>
       </ul>
       <noscript>
-        <p class="et-alerta">O JavaScript está desligado. Você pode ler o roteiro e preencher os campos, mas nada será salvo nem exportado. Copie suas anotações antes de fechar a página.</p>
+        <p class="et-alerta">O JavaScript está desligado. Você pode ler e responder as perguntas, mas nada será salvo e o arquivo de respostas não pode ser gerado. Antes de fechar a página, copie as suas respostas para uma mensagem ou um documento.</p>
       </noscript>
 
       <div class="et-js et-salvar">
         <input type="checkbox" id="salvar-local" checked aria-describedby="salvar-local-ajuda">
         <label for="salvar-local">Salvar automaticamente neste navegador</label>
-        <p id="salvar-local-ajuda" class="et-ajuda">Desmarque para não gravar nada no aparelho. Nesse caso, o que você escreveu se perde ao fechar ou recarregar a página.</p>
+        <p id="salvar-local-ajuda" class="et-ajuda">Se você desmarcar, o que já estava gravado é apagado, e as respostas se perdem ao fechar ou recarregar a página.</p>
         <p class="et-ajuda" id="ultimo-salvamento">Nada salvo ainda.</p>
       </div>
+    </section>
 
-      <div class="et-js et-cronometro" role="group" aria-labelledby="t-cronometro">
-        <h3 id="t-cronometro">Cronômetro da entrevista</h3>
-        <p class="et-ajuda">Ao chegar a 35 e a 60 minutos, a página avisa que é hora da pausa sugerida pelo roteiro.</p>
-        <p class="et-tempo"><span class="et-sr">Tempo decorrido: </span><span id="tempo-decorrido">0:00</span></p>
-        <div class="et-botoes">
-          <button type="button" class="et-btn et-btn-primario" id="cron-iniciar">Iniciar</button>
-          <button type="button" class="et-btn" id="cron-pausar" disabled>Pausar</button>
-          <button type="button" class="et-btn" id="cron-zerar">Zerar</button>
-        </div>
+    <section id="antes" aria-labelledby="t-antes">
+      <h2 id="t-antes">Antes de começar</h2>
+      <div class="et-campo">
+        <label for="antes-nome">Seu nome ou o nome combinado com quem convidou você</label>
+        <p class="et-ajuda" id="antes-nome-ajuda">Serve só para a pessoa saber de quem são as respostas. Como você quer aparecer na reportagem é outra pergunta, na Parte 9.</p>
+        <textarea id="antes-nome" name="antes-nome" rows="4" aria-describedby="antes-nome-ajuda"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="antes-adaptacoes">Você precisa de alguma adaptação, ou prefere continuar em outro formato?</label>
+        <p class="et-ajuda" id="antes-adaptacoes-ajuda">Por exemplo: mais tempo, responder em partes, conversa por vídeo, áudio, intérprete de Libras ou outro recurso de apoio.</p>
+        <textarea id="antes-adaptacoes" name="antes-adaptacoes" rows="4" aria-describedby="antes-adaptacoes-ajuda"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="antes-duvidas">Você tem alguma dúvida sobre a entrevista?</label>
+        <p class="et-ajuda" id="antes-duvidas-ajuda">A pessoa que convidou você responde quando receber o arquivo.</p>
+        <textarea id="antes-duvidas" name="antes-duvidas" rows="4" aria-describedby="antes-duvidas-ajuda"></textarea>
       </div>
     </section>
 
-    <!-- 1. Abertura -->
-    <section id="abertura" aria-labelledby="t-abertura">
-      <h2 id="t-abertura">1. Abertura e consentimento</h2>
-      <h3>Fala sugerida (adapte ao seu jeito)</h3>
-      <blockquote class="et-fala">
-        <p>“Olá, [nome]. Obrigado(a) por conversar comigo. Estou levantando informações para uma reportagem sobre como as pessoas usam serviços de streaming de vídeo no Brasil, em Smart TVs, celulares, tablets e outros aparelhos. Quero entender a sua experiência real, com as suas palavras. Não existe resposta certa ou errada, e a sua vivência vai me ajudar a decidir o que vale investigar.</p>
-        <p>Antes de começar, alguns combinados:</p>
-        <ul>
-          <li>A participação é voluntária. Você pode pular qualquer pergunta, pedir uma pausa ou encerrar quando quiser.</li>
-          <li>Gostaria de gravar [áudio/vídeo] só para registrar com fidelidade o que você disser. Posso gravar?</li>
-          <li>As informações serão usadas na apuração e, possivelmente, na reportagem. Nada será publicado com o seu nome ou citação sem a sua autorização, que vou pedir de novo no final.</li>
-          <li>Se preferir, podemos usar um nome fictício ou uma descrição genérica (por exemplo, ‘usuária de leitor de tela’).</li>
-          <li>Você precisa de alguma adaptação para a conversa (ritmo, pausas, formato, intérprete, recurso de apoio)?</li>
-          <li>Você tem alguma dúvida antes de começarmos?”</li>
-        </ul>
-      </blockquote>
+    <section id="rotina" aria-labelledby="t-rotina">
+      <h2 id="t-rotina">Parte 1. Como o streaming entra na sua rotina</h2>
+      <div class="et-campo">
+        <label for="rotina-1">Como o streaming entra na sua rotina? Quando, onde e com quem você costuma assistir?</label>
+        <textarea id="rotina-1" name="rotina-1" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="rotina-2">Quais serviços de streaming você usa ou já usou? Como você chegou a eles?</label>
+        <textarea id="rotina-2" name="rotina-2" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="rotina-3">Em quais aparelhos você assiste (Smart TV, celular, tablet, computador, outros)? Como você escolhe qual aparelho usar em cada situação?</label>
+        <textarea id="rotina-3" name="rotina-3" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="rotina-4">Com que frequência você assiste, e quanto tempo costuma ficar em cada sessão?</label>
+        <textarea id="rotina-4" name="rotina-4" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="rotina-5">Quais recursos, ajustes ou tecnologias de apoio você usa, ou já tentou usar, ao assistir? Pode citar qualquer um, inclusive os que não são da plataforma.</label>
+        <textarea id="rotina-5" name="rotina-5" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="rotina-6">Em geral, você assiste sozinho ou sozinha, ou com outras pessoas? Alguém ajuda você em algum momento?</label>
+        <textarea id="rotina-6" name="rotina-6" rows="4"></textarea>
+      </div>
 
-      <h3>Envio prévio dos tópicos</h3>
-      <p>Ao agendar, ofereça à pessoa a <a href="#topicos">lista simplificada dos assuntos</a>, em texto simples, sem tabelas nem formatação complexa, e no canal que ela preferir (e-mail, mensagem, áudio, vídeo em Libras). Deixe claro que é opcional, que não é preciso preparar respostas e que a lista não é um questionário fixo. Se a pessoa usa leitor de tela, confirme que o arquivo é lido corretamente.</p>
-
-      <fieldset class="et-registro">
-        <legend>Registro da abertura</legend>
-
-        <div class="et-campo">
-          <label for="ab-identificador">Identificador da entrevista</label>
-          <p class="et-ajuda" id="ab-identificador-ajuda">Use um código ou um nome fictício. Evite o nome real da pessoa nesta página.</p>
-          <input type="text" id="ab-identificador" name="ab-identificador" aria-describedby="ab-identificador-ajuda">
-        </div>
-
-        <div class="et-campo">
-          <label for="ab-data">Data da entrevista</label>
-          <p class="et-ajuda" id="ab-data-ajuda">Formato: DD/MM/AAAA.</p>
-          <input type="text" id="ab-data" name="ab-data" inputmode="numeric" aria-describedby="ab-data-ajuda">
-        </div>
-
-        <fieldset class="et-opcoes">
-          <legend>Formato da conversa</legend>
-          <label><input type="radio" name="ab-formato" value="Presencial"> Presencial</label>
-          <label><input type="radio" name="ab-formato" value="Por vídeo"> Por vídeo</label>
-          <label><input type="radio" name="ab-formato" value="Por telefone"> Por telefone</label>
-        </fieldset>
-
-        <fieldset class="et-opcoes">
-          <legend>Consentimento para gravação</legend>
-          <label><input type="radio" name="ab-gravacao" value="Sim, verbal"> Sim, verbal</label>
-          <label><input type="radio" name="ab-gravacao" value="Sim, por escrito"> Sim, por escrito</label>
-          <label><input type="radio" name="ab-gravacao" value="Não autorizou"> Não autorizou</label>
-        </fieldset>
-
-        <fieldset class="et-opcoes">
-          <legend>O que será gravado</legend>
-          <label><input type="radio" name="ab-midia" value="Áudio"> Áudio</label>
-          <label><input type="radio" name="ab-midia" value="Vídeo"> Vídeo</label>
-          <label><input type="radio" name="ab-midia" value="Nada"> Nada</label>
-        </fieldset>
-
-        <div class="et-campo">
-          <label for="ab-identificacao">Preferência de identificação</label>
-          <p class="et-ajuda" id="ab-identificacao-ajuda">Por exemplo: nome, só o primeiro nome, nome fictício ou descrição genérica. Você pergunta de novo no Bloco 5.</p>
-          <input type="text" id="ab-identificacao" name="ab-identificacao" aria-describedby="ab-identificacao-ajuda">
-        </div>
-
-        <div class="et-campo">
-          <label for="ab-adaptacoes">Adaptações combinadas</label>
-          <p class="et-ajuda" id="ab-adaptacoes-ajuda">Ritmo, pausas, formato, intérprete ou recurso de apoio.</p>
-          <textarea id="ab-adaptacoes" name="ab-adaptacoes" rows="3" aria-describedby="ab-adaptacoes-ajuda"></textarea>
-        </div>
-
-        <fieldset class="et-opcoes">
-          <legend>Lista de tópicos enviada antes da conversa</legend>
-          <label><input type="radio" name="ab-lista" value="Enviada"> Enviada</label>
-          <label><input type="radio" name="ab-lista" value="Oferecida, a pessoa não quis"> Oferecida, a pessoa não quis</label>
-          <label><input type="radio" name="ab-lista" value="Não enviada"> Não enviada</label>
-        </fieldset>
-
-        <div class="et-campo">
-          <label for="ab-canal">Canal do envio da lista</label>
-          <input type="text" id="ab-canal" name="ab-canal">
-        </div>
-
-        <fieldset class="et-opcoes">
-          <legend>Mediação</legend>
-          <label><input type="radio" name="ab-mediacao" value="Sem mediação"> Sem mediação</label>
-          <label><input type="radio" name="ab-mediacao" value="Com intérprete de Libras"> Com intérprete de Libras</label>
-          <label><input type="radio" name="ab-mediacao" value="Com outra mediação"> Com outra mediação</label>
-        </fieldset>
-
-        <fieldset class="et-opcoes">
-          <legend>Sessões</legend>
-          <label><input type="radio" name="ab-sessoes" value="Sessão única"> Sessão única</label>
-          <label><input type="radio" name="ab-sessoes" value="Duas sessões em dias diferentes"> Duas sessões em dias diferentes</label>
-        </fieldset>
-
-        <div class="et-campo">
-          <label for="ab-duvidas">Dúvidas da pessoa antes de começar</label>
-          <textarea id="ab-duvidas" name="ab-duvidas" rows="3"></textarea>
-        </div>
-      </fieldset>
+      <h3>Se quiser contar mais</h3>
+      <div class="et-campo">
+        <label for="rotina-antes">Como você assistia antes de usar esses serviços?</label>
+        <textarea id="rotina-antes" name="rotina-antes" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="rotina-parou">Você parou de usar algum aparelho ou serviço? Se parou, conte como foi essa decisão.</label>
+        <textarea id="rotina-parou" name="rotina-parou" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="rotina-descricao">Se quiser, conte como você se descreve e quais palavras prefere que sejam usadas sobre você.</label>
+        <p class="et-ajuda" id="rotina-descricao-ajuda">Opcional. Use as suas próprias palavras.</p>
+        <textarea id="rotina-descricao" name="rotina-descricao" rows="4" aria-describedby="rotina-descricao-ajuda"></textarea>
+      </div>
     </section>
 
-    <!-- 2. Contextualização -->
-    <section id="contexto" aria-labelledby="t-contexto">
-      <h2 id="t-contexto">2. Contextualização do uso</h2>
-
-      <fieldset class="et-perguntas">
-        <legend>Perguntas principais <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ol>
-          <li><input type="checkbox" id="q2-1" name="q2-1"><label for="q2-1">Pode me contar como o streaming entra na sua rotina? Quando, onde e com quem você costuma assistir?</label></li>
-          <li><input type="checkbox" id="q2-2" name="q2-2"><label for="q2-2">Quais serviços de streaming você usa ou já usou? Como foi que você chegou a eles?</label></li>
-          <li><input type="checkbox" id="q2-3" name="q2-3"><label for="q2-3">Em quais aparelhos você assiste (Smart TV, celular, tablet, computador, outros)? Como você escolhe qual aparelho usar em cada situação?</label></li>
-          <li><input type="checkbox" id="q2-4" name="q2-4"><label for="q2-4">Com que frequência você assiste, e quanto tempo costuma ficar em cada sessão?</label></li>
-          <li><input type="checkbox" id="q2-5" name="q2-5"><label for="q2-5">Quais recursos, ajustes ou tecnologias de apoio você usa, ou já tentou usar, ao assistir? (Pode citar qualquer um, inclusive os que não são da plataforma.)</label></li>
-          <li><input type="checkbox" id="q2-6" name="q2-6"><label for="q2-6">Em geral, você assiste sozinho(a) ou com outras pessoas? Alguém ajuda você em algum momento?</label></li>
-        </ol>
-      </fieldset>
-
-      <h3>Perguntas de aprofundamento (se couber)</h3>
-      <ul>
-        <li>Como era antes de você usar esses serviços? Como você assistia?</li>
-        <li>Há algum aparelho ou serviço que você parou de usar? Pode me contar como foi essa decisão?</li>
-      </ul>
-
+    <section id="escolha" aria-labelledby="t-escolha">
+      <h2 id="t-escolha">Parte 2. Como você escolhe o que assistir</h2>
       <div class="et-nota">
-        <p><strong>Nota ao entrevistador:</strong> não pergunte sobre a deficiência de forma diagnóstica. Deixe a pessoa descrever como se identifica, se quiser. Anote termos que ela usar (por exemplo, “surda”, “deficiência auditiva”, “baixa visão”) e use os mesmos.</p>
+        <h3>Se ajudar, conte também</h3>
+        <ul>
+          <li>Em que momento você decidiu, e o que estava vendo, ouvindo ou sentindo na hora.</li>
+          <li>Como você ficou sabendo de um recurso que usou, e onde viu essa informação.</li>
+          <li>O que você fez quando o resultado foi diferente do que esperava.</li>
+          <li>O que outra pessoa ao seu lado teria feito diferente, se é que teria.</li>
+        </ul>
+      </div>
+      <div class="et-campo">
+        <label for="escolha-1">Conte a última vez em que você escolheu algo para assistir. O que você fez, passo a passo, desde que abriu o aplicativo?</label>
+        <textarea id="escolha-1" name="escolha-1" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="escolha-2">Como você costuma descobrir o que há para assistir?</label>
+        <textarea id="escolha-2" name="escolha-2" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="escolha-3">Como você decide se um conteúdo serve para você assistir naquele momento?</label>
+        <textarea id="escolha-3" name="escolha-3" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="escolha-4">Conte uma situação em que você quis procurar um tipo específico de conteúdo ou de recurso. O que você fez?</label>
+        <textarea id="escolha-4" name="escolha-4" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="escolha-5">Você usa a busca, as categorias, as listas ou as recomendações da plataforma? Se usa, de que forma?</label>
+        <textarea id="escolha-5" name="escolha-5" rows="4"></textarea>
       </div>
 
-      <div class="et-campo">
-        <label for="ctx-termos">Termos que a pessoa usa</label>
-        <p class="et-ajuda" id="ctx-termos-ajuda">Para se descrever e para falar de recursos e aparelhos. Use os mesmos termos no resto da conversa.</p>
-        <textarea id="ctx-termos" name="ctx-termos" rows="3" aria-describedby="ctx-termos-ajuda"></textarea>
-      </div>
-      <div class="et-campo">
-        <label for="ctx-notas">Anotações do Bloco 2</label>
-        <textarea id="ctx-notas" name="ctx-notas" rows="5"></textarea>
+      <div class="et-situacoes et-js" data-parte="A">
+        <h3>Situações que você quer detalhar (opcional)</h3>
+        <p class="et-ajuda">Se uma situação desta parte marcou você, detalhe-a aqui. Os campos ajudam a lembrar o que importa. Preencha só o que quiser.</p>
+        <p class="et-vazio">Nenhuma situação detalhada nesta parte.</p>
+        <ol class="et-lista-sit"></ol>
+        <button type="button" class="et-btn" data-adicionar="A">Adicionar uma situação à Parte 2</button>
       </div>
     </section>
 
-    <!-- 3. Bloco principal -->
-    <section id="principal" aria-labelledby="t-principal">
-      <h2 id="t-principal">3. Bloco principal: experiência de uso e barreiras</h2>
-      <p>Cada eixo tem um espaço para registrar episódios. Para cada episódio, anote aparelho, serviço (se a pessoa quiser citar), recurso envolvido, sequência de ações, resultado percebido e as palavras exatas usadas.</p>
-
-      <div class="et-aviso" id="regra-origem">
-        <h3 class="et-aviso-titulo">Ao registrar (Eixos B e C)</h3>
-        <p>Para cada episódio, anote em campos separados se o impedimento veio da <strong>ausência do recurso no conteúdo</strong> (por exemplo, o título não oferece determinado recurso) ou de uma <strong>barreira de interação</strong> (o recurso existe, mas a pessoa não conseguiu chegar a ele, ativá-lo ou mantê-lo com o controle remoto, o toque, o teclado ou o leitor de tela).</p>
-        <p>Se o relato não permitir distinguir, registre como “indefinido” e use as perguntas de aprofundamento (passos feitos, o que apareceu ou foi falado) para esclarecer, sem sugerir a causa.</p>
-      </div>
-
-      <!-- Eixo A -->
-      <section class="et-eixo" id="eixo-a" aria-labelledby="t-eixo-a">
-        <h3 id="t-eixo-a">Eixo A: Descoberta e escolha de conteúdo</h3>
-        <fieldset class="et-perguntas">
-          <legend>Perguntas principais <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-          <ol>
-            <li><input type="checkbox" id="qa-1" name="qa-1"><label for="qa-1">Pode me contar a última vez em que você escolheu algo para assistir? O que você fez, passo a passo, desde que abriu o aplicativo?</label></li>
-            <li><input type="checkbox" id="qa-2" name="qa-2"><label for="qa-2">Como você costuma descobrir o que há para assistir?</label></li>
-            <li><input type="checkbox" id="qa-3" name="qa-3"><label for="qa-3">Como você decide se um conteúdo serve para você assistir naquele momento?</label></li>
-            <li><input type="checkbox" id="qa-4" name="qa-4"><label for="qa-4">Pode me contar uma situação em que você quis procurar um tipo específico de conteúdo ou de recurso? O que você fez?</label></li>
-            <li><input type="checkbox" id="qa-5" name="qa-5"><label for="qa-5">De que forma você usa a busca, as categorias, as listas ou as recomendações da plataforma, se usa?</label></li>
-          </ol>
-        </fieldset>
-        <h4>Perguntas de aprofundamento</h4>
-        <ul>
-          <li>Em que momento dessa sequência você decidiu [o que a pessoa descreveu]? O que você estava vendo, ouvindo ou sentindo na hora?</li>
-          <li>Como você ficou sabendo de [recurso citado pela pessoa]? Onde você viu essa informação?</li>
-          <li>Quando o resultado foi diferente do que você esperava, o que você fez em seguida?</li>
-          <li>Se outra pessoa estivesse ao seu lado, o que ela teria feito diferente, se é que teria?</li>
-        </ul>
-        <div class="et-nota">
-          <p><strong>Nota ao entrevistador:</strong> observe como a pessoa descobre se um título tem determinado recurso (informação na tela, no catálogo, por terceiros, tentativa e erro). Atenção a atalhos, filtros, buscas por voz e uso de redes sociais ou comunidades. Não pergunte “tem filtro?” ou “é fácil achar?”.</p>
-        </div>
-        <div class="et-episodios et-js" data-eixo="A">
-          <h4>Episódios do Eixo A</h4>
-          <p class="et-vazio">Nenhum episódio registrado.</p>
-          <ol class="et-lista-ep"></ol>
-          <button type="button" class="et-btn" data-adicionar="A">Adicionar episódio ao Eixo A</button>
-        </div>
-        <div class="et-campo">
-          <label for="eixo-a-notas">Anotações do Eixo A</label>
-          <textarea id="eixo-a-notas" name="eixo-a-notas" rows="4"></textarea>
-        </div>
-      </section>
-
-      <!-- Eixo B -->
-      <section class="et-eixo" id="eixo-b" aria-labelledby="t-eixo-b">
-        <h3 id="t-eixo-b">Eixo B: Início e configuração da reprodução</h3>
-        <fieldset class="et-perguntas">
-          <legend>Perguntas principais <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-          <ol>
-            <li><input type="checkbox" id="qb-1" name="qb-1"><label for="qb-1">Pode descrever o que acontece desde o momento em que você escolhe um conteúdo até ele começar a rodar do jeito que você quer?</label></li>
-            <li><input type="checkbox" id="qb-2" name="qb-2"><label for="qb-2">Conte-me da última vez em que você precisou ajustar alguma coisa antes ou durante o início de um filme ou série. O que foi e como você fez?</label></li>
-            <li><input type="checkbox" id="qb-3" name="qb-3"><label for="qb-3">Em que lugares da plataforma você costuma procurar as opções de idioma, som, legenda, imagem ou outros ajustes?</label></li>
-            <li><input type="checkbox" id="qb-4" name="qb-4"><label for="qb-4">Pode me contar uma ocasião em que algo que você configurou não ficou como você esperava ao reproduzir o conteúdo?</label></li>
-            <li><input type="checkbox" id="qb-5" name="qb-5"><label for="qb-5">Como é, para você, assistir pela primeira vez a um conteúdo novo, em comparação com um que você já conhece?</label></li>
-          </ol>
-        </fieldset>
-        <h4>Perguntas de aprofundamento</h4>
-        <ul>
-          <li>Que passos você fez, exatamente, para chegar a essa opção? Quantas telas ou menus passou?</li>
-          <li>O que apareceu ou foi falado pelo aparelho enquanto você fazia isso?</li>
-          <li>Depois que ajustou, como você soube que tinha funcionado (ou não)?</li>
-          <li>Da próxima vez que assistir ao mesmo título, o que costuma acontecer com esses ajustes?</li>
-        </ul>
-        <div class="et-nota">
-          <p><strong>Nota ao entrevistador:</strong> explore tempo de espera, estados de carregamento, mudanças de foco ao abrir o player, ajustes que “voltam ao padrão” e dependência de ajustar tudo a cada título. Peça sempre a sequência real de ações. Registre a origem do impedimento em cada episódio (veja <a href="#regra-origem">Ao registrar</a>).</p>
-        </div>
-        <div class="et-episodios et-js" data-eixo="B">
-          <h4>Episódios do Eixo B</h4>
-          <p class="et-vazio">Nenhum episódio registrado.</p>
-          <ol class="et-lista-ep"></ol>
-          <button type="button" class="et-btn" data-adicionar="B">Adicionar episódio ao Eixo B</button>
-        </div>
-        <div class="et-campo">
-          <label for="eixo-b-notas">Anotações do Eixo B</label>
-          <textarea id="eixo-b-notas" name="eixo-b-notas" rows="4"></textarea>
-        </div>
-      </section>
-
-      <!-- Eixo C -->
-      <section class="et-eixo" id="eixo-c" aria-labelledby="t-eixo-c">
-        <h3 id="t-eixo-c">Eixo C: Navegação e controle durante o uso</h3>
-        <fieldset class="et-perguntas">
-          <legend>Perguntas principais <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-          <ol>
-            <li><input type="checkbox" id="qc-1" name="qc-1"><label for="qc-1">Pode me contar como você controla a reprodução durante um episódio ou filme (pausar, voltar, avançar, mudar de episódio, sair)?</label></li>
-            <li><input type="checkbox" id="qc-2" name="qc-2"><label for="qc-2">Descreva um momento recente em que você precisou fazer algo no meio da reprodução. O que você quis fazer e como fez?</label></li>
-            <li><input type="checkbox" id="qc-3" name="qc-3"><label for="qc-3">Como você se orienta nas telas e menus: sabe em que parte está, o que está selecionado, para onde vai a seguir?</label></li>
-            <li><input type="checkbox" id="qc-4" name="qc-4"><label for="qc-4">Como é usar o controle remoto, a tela de toque, o teclado, a voz ou um leitor de tela em cada situação em que você os utiliza?</label></li>
-            <li><input type="checkbox" id="qc-5" name="qc-5"><label for="qc-5">Pode me contar o que acontece quando você usa dois recursos ao mesmo tempo (por exemplo, legenda e outro ajuste, ou um recurso de apoio externo junto com o aplicativo)?</label></li>
-          </ol>
-        </fieldset>
-        <h4>Perguntas de aprofundamento</h4>
-        <ul>
-          <li>Para onde foi a sua atenção (ou o foco/cursor) depois que você [ação descrita]?</li>
-          <li>Que resposta você recebeu do aparelho (som, fala, vibração, mudança visual) depois de fazer isso?</li>
-          <li>Se você se perdeu ou apertou algo sem querer, como voltou ao ponto anterior?</li>
-          <li>Existe alguma ação que você prefere fazer em outro aparelho ou de outra forma? Por quê?</li>
-        </ul>
-        <div class="et-nota">
-          <p><strong>Nota ao entrevistador:</strong> observe menções a perda de foco, menus que se fecham, mudança do que é lido ou mostrado entre telas, controles que somem, tempo limite para agir, diferenças entre controle remoto, toque e leitor de tela. Se a entrevista for por vídeo, pergunte se a pessoa pode demonstrar, sem forçar. Registre separadamente ausência do recurso no conteúdo e barreira de interação (veja <a href="#regra-origem">Ao registrar</a>).</p>
-        </div>
-        <div class="et-episodios et-js" data-eixo="C">
-          <h4>Episódios do Eixo C</h4>
-          <p class="et-vazio">Nenhum episódio registrado.</p>
-          <ol class="et-lista-ep"></ol>
-          <button type="button" class="et-btn" data-adicionar="C">Adicionar episódio ao Eixo C</button>
-        </div>
-        <div class="et-campo">
-          <label for="eixo-c-notas">Anotações do Eixo C</label>
-          <textarea id="eixo-c-notas" name="eixo-c-notas" rows="4"></textarea>
-        </div>
-      </section>
-
-      <!-- Eixo D -->
-      <section class="et-eixo" id="eixo-d" aria-labelledby="t-eixo-d">
-        <h3 id="t-eixo-d">Eixo D: Continuidade entre dispositivos e sessões</h3>
-        <fieldset class="et-perguntas">
-          <legend>Perguntas principais <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-          <ol>
-            <li><input type="checkbox" id="qd-1" name="qd-1"><label for="qd-1">Pode me contar o que acontece quando você começa a assistir em um aparelho e continua em outro?</label></li>
-            <li><input type="checkbox" id="qd-2" name="qd-2"><label for="qd-2">Conte-me da última vez em que você retomou algo que tinha deixado pela metade. O que você encontrou e o que precisou fazer?</label></li>
-            <li><input type="checkbox" id="qd-3" name="qd-3"><label for="qd-3">Como as suas escolhas de ajustes ficam (ou não ficam) de um aparelho para outro, ou de um dia para o outro?</label></li>
-            <li><input type="checkbox" id="qd-4" name="qd-4"><label for="qd-4">Pode me contar uma situação em que o aplicativo mudou depois de uma atualização, ou você trocou de aparelho, e isso alterou a forma como você assiste?</label></li>
-            <li><input type="checkbox" id="qd-5" name="qd-5"><label for="qd-5">Como é, para você, usar o mesmo serviço em perfis, contas ou aparelhos diferentes (próprios ou de outras pessoas)?</label></li>
-          </ol>
-        </fieldset>
-        <h4>Perguntas de aprofundamento</h4>
-        <ul>
-          <li>O que você fez primeiro quando percebeu a mudança?</li>
-          <li>Como você descobriu que algo tinha mudado? Alguém avisou, apareceu algum aviso ou você percebeu por conta própria?</li>
-          <li>Você precisou refazer algum passo? Quanto tempo isso levou?</li>
-          <li>Como você lida com isso quando assiste na casa de outra pessoa ou em um aparelho novo?</li>
-        </ul>
-        <div class="et-nota">
-          <p><strong>Nota ao entrevistador:</strong> atenção a perfis (adulto/infantil), contas compartilhadas, login em TVs novas, perda de ponto de retomada, ajustes que variam por aparelho ou por versão do aplicativo. Evite supor que a continuidade falha ou funciona.</p>
-        </div>
-        <div class="et-episodios et-js" data-eixo="D">
-          <h4>Episódios do Eixo D</h4>
-          <p class="et-vazio">Nenhum episódio registrado.</p>
-          <ol class="et-lista-ep"></ol>
-          <button type="button" class="et-btn" data-adicionar="D">Adicionar episódio ao Eixo D</button>
-        </div>
-        <div class="et-campo">
-          <label for="eixo-d-notas">Anotações do Eixo D</label>
-          <textarea id="eixo-d-notas" name="eixo-d-notas" rows="4"></textarea>
-        </div>
-      </section>
-
-      <!-- Eixo E -->
-      <section class="et-eixo" id="eixo-e" aria-labelledby="t-eixo-e">
-        <h3 id="t-eixo-e">Eixo E: Situações de frustração, abandono ou soluções improvisadas</h3>
-        <fieldset class="et-perguntas">
-          <legend>Perguntas principais <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-          <ol>
-            <li><input type="checkbox" id="qe-1" name="qe-1"><label for="qe-1">Pode me contar uma vez em que você desistiu de assistir a algo, ou mudou de ideia no meio do caminho? O que aconteceu?</label></li>
-            <li><input type="checkbox" id="qe-2" name="qe-2"><label for="qe-2">Conte-me sobre alguma maneira própria de contornar situações no uso do streaming (um truque, uma ajuda, outro aparelho, outro serviço).</label></li>
-            <li><input type="checkbox" id="qe-3" name="qe-3"><label for="qe-3">Quando você precisou de ajuda para usar a plataforma, a quem ou a que você recorreu? Como foi o resultado?</label></li>
-            <li><input type="checkbox" id="qe-4" name="qe-4"><label for="qe-4">Pode me contar uma situação em que você tentou resolver algo pelo suporte, pelos canais de ajuda ou pela comunidade?</label></li>
-            <li><input type="checkbox" id="qe-5" name="qe-5"><label for="qe-5">Como você decide quando vale a pena insistir e quando é melhor procurar outra alternativa?</label></li>
-          </ol>
-        </fieldset>
-        <h4>Perguntas de aprofundamento</h4>
-        <ul>
-          <li>O que você tentou antes de chegar a essa solução?</li>
-          <li>Quanto tempo ou esforço isso exigiu, na sua percepção?</li>
-          <li>Como foi o efeito disso no seu dia ou na sua decisão de continuar usando o serviço?</li>
-          <li>Alguém mais adotou a mesma solução que você? Como ela passou de pessoa para pessoa?</li>
-        </ul>
-        <div class="et-nota">
-          <p><strong>Nota ao entrevistador:</strong> soluções improvisadas costumam revelar necessidades pouco documentadas. Registre com detalhes a solução e o contexto, sem julgar. Observe também casos de dependência de terceiros e de mudança para outros meios (TV aberta, download, outro serviço).</p>
-        </div>
-        <div class="et-episodios et-js" data-eixo="E">
-          <h4>Episódios do Eixo E</h4>
-          <p class="et-vazio">Nenhum episódio registrado.</p>
-          <ol class="et-lista-ep"></ol>
-          <button type="button" class="et-btn" data-adicionar="E">Adicionar episódio ao Eixo E</button>
-        </div>
-        <div class="et-campo">
-          <label for="eixo-e-notas">Anotações do Eixo E</label>
-          <textarea id="eixo-e-notas" name="eixo-e-notas" rows="4"></textarea>
-        </div>
-      </section>
-    </section>
-
-    <!-- 4. Barreiras pouco evidentes -->
-    <section id="barreiras" aria-labelledby="t-barreiras">
-      <h2 id="t-barreiras">4. Aprofundamento sobre barreiras pouco evidentes</h2>
-      <p>Use este bloco quando algum relato indicar um episódio que merece detalhe, ou ao final para cobrir pontos que não apareceram. Formule sempre a partir do que a pessoa já disse, sem sugerir o que deveria ter acontecido.</p>
-
-      <fieldset class="et-perguntas">
-        <legend>Estrutura de interface e informação <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ul>
-          <li><input type="checkbox" id="q4-1" name="q4-1"><label for="q4-1">“Como você sabe em que parte da plataforma está neste momento?”</label></li>
-          <li><input type="checkbox" id="q4-2" name="q4-2"><label for="q4-2">“Pode me contar como você se movimenta quando há um menu dentro de outro menu?”</label></li>
-          <li><input type="checkbox" id="q4-3" name="q4-3"><label for="q4-3">“O que você percebe (vê, ouve, sente) logo depois de apertar um botão ou tocar em algo?”</label></li>
-        </ul>
-      </fieldset>
-      <fieldset class="et-perguntas">
-        <legend>Foco, feedback e estados <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ul>
-          <li><input type="checkbox" id="q4-4" name="q4-4"><label for="q4-4">“Conte-me o que acontece com a sua atenção quando a tela muda ou algo novo aparece.”</label></li>
-          <li><input type="checkbox" id="q4-5" name="q4-5"><label for="q4-5">“O que você faz enquanto algo está carregando ou esperando resposta?”</label></li>
-          <li><input type="checkbox" id="q4-6" name="q4-6"><label for="q4-6">“Como você percebe que um comando foi aceito, recusado ou ainda está em andamento?”</label></li>
-        </ul>
-      </fieldset>
-      <fieldset class="et-perguntas">
-        <legend>Busca e recomendações <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ul>
-          <li><input type="checkbox" id="q4-7" name="q4-7"><label for="q4-7">“Pode me descrever como você faz uma busca por voz, por digitação ou por navegação?”</label></li>
-          <li><input type="checkbox" id="q4-8" name="q4-8"><label for="q4-8">“O que você faz com as sugestões que a plataforma mostra?”</label></li>
-        </ul>
-      </fieldset>
-      <fieldset class="et-perguntas">
-        <legend>Configurações e recursos <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ul>
-          <li><input type="checkbox" id="q4-9" name="q4-9"><label for="q4-9">“Onde você aprendeu a usar as opções que usa hoje?”</label></li>
-          <li><input type="checkbox" id="q4-10" name="q4-10"><label for="q4-10">“Como você encontra uma configuração quando precisa mudá-la?”</label></li>
-          <li><input type="checkbox" id="q4-11" name="q4-11"><label for="q4-11">“Conte-me sobre alguma opção que você descobriu por acaso ou por indicação de outra pessoa.”</label></li>
-        </ul>
-      </fieldset>
-      <fieldset class="et-perguntas">
-        <legend>Diferenças entre formas de controle <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ul>
-          <li><input type="checkbox" id="q4-12" name="q4-12"><label for="q4-12">“Como é para você fazer a mesma tarefa com o controle remoto, com a tela de toque e, se usa, com o leitor de tela ou com a voz?”</label></li>
-          <li><input type="checkbox" id="q4-13" name="q4-13"><label for="q4-13">“Em qual situação você escolhe uma forma de controle em vez de outra, e como decide?”</label></li>
-        </ul>
-      </fieldset>
-      <fieldset class="et-perguntas">
-        <legend>Interações entre recursos e mudanças <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ul>
-          <li><input type="checkbox" id="q4-14" name="q4-14"><label for="q4-14">“O que você observa quando usa mais de um recurso ao mesmo tempo?”</label></li>
-          <li><input type="checkbox" id="q4-15" name="q4-15"><label for="q4-15">“Pode me contar um episódio em que algo funcionava de um jeito e passou a funcionar de outro?”</label></li>
-        </ul>
-      </fieldset>
-
+    <section id="comecar" aria-labelledby="t-comecar">
+      <h2 id="t-comecar">Parte 3. Como você começa a assistir e deixa tudo do jeito que precisa</h2>
       <div class="et-nota">
-        <p><strong>Nota ao entrevistador:</strong> peça sempre o caso concreto (“Pode me contar a última vez?”). Se a pessoa generalizar (“sempre”, “nunca”), traga de volta ao episódio. Anote quais barreiras surgem apenas na sequência de ações, não em telas isoladas.</p>
+        <h3>Se ajudar, conte também</h3>
+        <ul>
+          <li>Que passos você fez para chegar a uma opção, e por quantas telas ou menus passou.</li>
+          <li>O que apareceu na tela ou foi falado pelo aparelho enquanto você fazia isso.</li>
+          <li>Como você soube que o ajuste funcionou, ou que não funcionou.</li>
+          <li>O que acontece com esses ajustes da próxima vez que você assiste ao mesmo título.</li>
+        </ul>
+      </div>
+      <div class="et-campo">
+        <label for="comecar-1">Descreva o que acontece desde o momento em que você escolhe um conteúdo até ele começar a rodar do jeito que você quer.</label>
+        <textarea id="comecar-1" name="comecar-1" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="comecar-2">Conte a última vez em que você precisou ajustar alguma coisa antes ou durante o início de um filme ou série. O que foi e como você fez?</label>
+        <textarea id="comecar-2" name="comecar-2" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="comecar-3">Em que lugares da plataforma você costuma procurar as opções de idioma, som, legenda, imagem ou outros ajustes?</label>
+        <textarea id="comecar-3" name="comecar-3" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="comecar-4">Conte uma ocasião em que algo que você configurou não ficou como você esperava ao reproduzir o conteúdo.</label>
+        <textarea id="comecar-4" name="comecar-4" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="comecar-5">Como é, para você, assistir pela primeira vez a um conteúdo novo, em comparação com um que você já conhece?</label>
+        <textarea id="comecar-5" name="comecar-5" rows="4"></textarea>
       </div>
 
-      <div class="et-campo">
-        <label for="b4-notas">Anotações do Bloco 4</label>
-        <textarea id="b4-notas" name="b4-notas" rows="5"></textarea>
+      <div class="et-situacoes et-js" data-parte="B">
+        <h3>Situações que você quer detalhar (opcional)</h3>
+        <p class="et-ajuda">Se uma situação desta parte marcou você, detalhe-a aqui. Os campos ajudam a lembrar o que importa. Preencha só o que quiser.</p>
+        <p class="et-vazio">Nenhuma situação detalhada nesta parte.</p>
+        <ol class="et-lista-sit"></ol>
+        <button type="button" class="et-btn" data-adicionar="B">Adicionar uma situação à Parte 3</button>
       </div>
     </section>
 
-    <!-- 5. Bloco final -->
+    <section id="controle" aria-labelledby="t-controle">
+      <h2 id="t-controle">Parte 4. Como você controla o que está passando</h2>
+      <div class="et-nota">
+        <h3>Se ajudar, conte também</h3>
+        <ul>
+          <li>Para onde foi a sua atenção, ou o foco ou o cursor, depois de cada ação.</li>
+          <li>Que resposta você recebeu do aparelho: som, fala, vibração ou mudança na tela.</li>
+          <li>Como você voltou ao ponto anterior quando se perdeu ou apertou algo sem querer.</li>
+          <li>Se há alguma ação que você prefere fazer em outro aparelho ou de outra forma, e por quê.</li>
+        </ul>
+      </div>
+      <div class="et-campo">
+        <label for="controle-1">Como você controla a reprodução durante um episódio ou filme (pausar, voltar, avançar, mudar de episódio, sair)?</label>
+        <textarea id="controle-1" name="controle-1" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="controle-2">Descreva um momento recente em que você precisou fazer algo no meio da reprodução. O que você quis fazer e como fez?</label>
+        <textarea id="controle-2" name="controle-2" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="controle-3">Como você se orienta nas telas e menus? Você sabe em que parte está, o que está selecionado e para onde vai a seguir?</label>
+        <textarea id="controle-3" name="controle-3" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="controle-4">Como é usar o controle remoto, a tela de toque, o teclado, a voz ou um leitor de tela em cada situação em que você os usa?</label>
+        <textarea id="controle-4" name="controle-4" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="controle-5">Conte o que acontece quando você usa dois recursos ao mesmo tempo (por exemplo, legenda e outro ajuste, ou um recurso de apoio externo junto com o aplicativo).</label>
+        <textarea id="controle-5" name="controle-5" rows="4"></textarea>
+      </div>
+
+      <div class="et-situacoes et-js" data-parte="C">
+        <h3>Situações que você quer detalhar (opcional)</h3>
+        <p class="et-ajuda">Se uma situação desta parte marcou você, detalhe-a aqui. Os campos ajudam a lembrar o que importa. Preencha só o que quiser.</p>
+        <p class="et-vazio">Nenhuma situação detalhada nesta parte.</p>
+        <ol class="et-lista-sit"></ol>
+        <button type="button" class="et-btn" data-adicionar="C">Adicionar uma situação à Parte 4</button>
+      </div>
+    </section>
+
+    <section id="continuidade" aria-labelledby="t-continuidade">
+      <h2 id="t-continuidade">Parte 5. Quando você troca de aparelho ou volta a algo que deixou pela metade</h2>
+      <div class="et-nota">
+        <h3>Se ajudar, conte também</h3>
+        <ul>
+          <li>O que você fez primeiro quando percebeu uma mudança.</li>
+          <li>Como você descobriu que algo tinha mudado: alguém avisou, apareceu um aviso ou você percebeu sozinho ou sozinha.</li>
+          <li>Se precisou refazer algum passo, e quanto tempo isso levou.</li>
+          <li>Como você lida com isso na casa de outra pessoa ou em um aparelho novo.</li>
+        </ul>
+      </div>
+      <div class="et-campo">
+        <label for="continuidade-1">Conte o que acontece quando você começa a assistir em um aparelho e continua em outro.</label>
+        <textarea id="continuidade-1" name="continuidade-1" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="continuidade-2">Conte a última vez em que você retomou algo que tinha deixado pela metade. O que você encontrou e o que precisou fazer?</label>
+        <textarea id="continuidade-2" name="continuidade-2" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="continuidade-3">Como as suas escolhas de ajustes ficam, ou não ficam, de um aparelho para outro, ou de um dia para o outro?</label>
+        <textarea id="continuidade-3" name="continuidade-3" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="continuidade-4">Conte uma situação em que o aplicativo mudou depois de uma atualização, ou em que você trocou de aparelho, e isso alterou a forma como você assiste.</label>
+        <textarea id="continuidade-4" name="continuidade-4" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="continuidade-5">Como é, para você, usar o mesmo serviço em perfis, contas ou aparelhos diferentes (seus ou de outras pessoas)?</label>
+        <textarea id="continuidade-5" name="continuidade-5" rows="4"></textarea>
+      </div>
+
+      <div class="et-situacoes et-js" data-parte="D">
+        <h3>Situações que você quer detalhar (opcional)</h3>
+        <p class="et-ajuda">Se uma situação desta parte marcou você, detalhe-a aqui. Os campos ajudam a lembrar o que importa. Preencha só o que quiser.</p>
+        <p class="et-vazio">Nenhuma situação detalhada nesta parte.</p>
+        <ol class="et-lista-sit"></ol>
+        <button type="button" class="et-btn" data-adicionar="D">Adicionar uma situação à Parte 5</button>
+      </div>
+    </section>
+
+    <section id="contornos" aria-labelledby="t-contornos">
+      <h2 id="t-contornos">Parte 6. Quando você desistiu, pediu ajuda ou encontrou um jeito próprio de resolver</h2>
+      <div class="et-nota">
+        <h3>Se ajudar, conte também</h3>
+        <ul>
+          <li>O que você tentou antes de chegar a uma solução.</li>
+          <li>Quanto tempo ou esforço isso exigiu, na sua percepção.</li>
+          <li>Que efeito isso teve no seu dia ou na sua decisão de continuar usando o serviço.</li>
+          <li>Se outras pessoas adotaram a mesma solução, e como ela passou de pessoa para pessoa.</li>
+        </ul>
+      </div>
+      <div class="et-campo">
+        <label for="contornos-1">Conte uma vez em que você desistiu de assistir a algo, ou mudou de ideia no meio do caminho. O que aconteceu?</label>
+        <textarea id="contornos-1" name="contornos-1" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="contornos-2">Conte alguma maneira própria de contornar situações no uso do streaming (um truque, uma ajuda, outro aparelho, outro serviço).</label>
+        <textarea id="contornos-2" name="contornos-2" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="contornos-3">Quando você precisou de ajuda para usar a plataforma, a quem ou a que você recorreu? Como foi o resultado?</label>
+        <textarea id="contornos-3" name="contornos-3" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="contornos-4">Conte uma situação em que você tentou resolver algo pelo suporte, pelos canais de ajuda ou pela comunidade.</label>
+        <textarea id="contornos-4" name="contornos-4" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="contornos-5">Como você decide quando vale a pena insistir e quando é melhor procurar outra alternativa?</label>
+        <textarea id="contornos-5" name="contornos-5" rows="4"></textarea>
+      </div>
+
+      <div class="et-situacoes et-js" data-parte="E">
+        <h3>Situações que você quer detalhar (opcional)</h3>
+        <p class="et-ajuda">Se uma situação desta parte marcou você, detalhe-a aqui. Os campos ajudam a lembrar o que importa. Preencha só o que quiser.</p>
+        <p class="et-vazio">Nenhuma situação detalhada nesta parte.</p>
+        <ol class="et-lista-sit"></ol>
+        <button type="button" class="et-btn" data-adicionar="E">Adicionar uma situação à Parte 6</button>
+      </div>
+    </section>
+
+    <section id="extras" aria-labelledby="t-extras">
+      <h2 id="t-extras">Parte 7. Perguntas extras (opcionais)</h2>
+      <p>Responda só se quiser e se ainda tiver disposição. Estas perguntas cobrem pontos que talvez não tenham aparecido nas partes anteriores. Abra um bloco para ver as perguntas.</p>
+
+      <details class="et-detalhe">
+        <summary>Onde você está nas telas</summary>
+        <div class="et-detalhe-corpo">
+          <div class="et-campo">
+            <label for="extras-1-1">Como você sabe em que parte da plataforma está?</label>
+            <textarea id="extras-1-1" name="extras-1-1" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-1-2">Como você se movimenta quando há um menu dentro de outro menu?</label>
+            <textarea id="extras-1-2" name="extras-1-2" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-1-3">O que você percebe (vê, ouve ou sente) logo depois de apertar um botão ou tocar em algo?</label>
+            <textarea id="extras-1-3" name="extras-1-3" rows="4"></textarea>
+          </div>
+        </div>
+      </details>
+
+      <details class="et-detalhe">
+        <summary>O que acontece depois de cada ação</summary>
+        <div class="et-detalhe-corpo">
+          <div class="et-campo">
+            <label for="extras-2-1">O que acontece com a sua atenção quando a tela muda ou algo novo aparece?</label>
+            <textarea id="extras-2-1" name="extras-2-1" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-2-2">O que você faz enquanto algo está carregando ou esperando resposta?</label>
+            <textarea id="extras-2-2" name="extras-2-2" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-2-3">Como você percebe que um comando foi aceito, recusado ou ainda está em andamento?</label>
+            <textarea id="extras-2-3" name="extras-2-3" rows="4"></textarea>
+          </div>
+        </div>
+      </details>
+
+      <details class="et-detalhe">
+        <summary>Busca e sugestões</summary>
+        <div class="et-detalhe-corpo">
+          <div class="et-campo">
+            <label for="extras-3-1">Descreva como você faz uma busca: por voz, digitando ou navegando pelas telas.</label>
+            <textarea id="extras-3-1" name="extras-3-1" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-3-2">O que você faz com as sugestões que a plataforma mostra?</label>
+            <textarea id="extras-3-2" name="extras-3-2" rows="4"></textarea>
+          </div>
+        </div>
+      </details>
+
+      <details class="et-detalhe">
+        <summary>Configurações e recursos</summary>
+        <div class="et-detalhe-corpo">
+          <div class="et-campo">
+            <label for="extras-4-1">Onde você aprendeu a usar as opções que usa hoje?</label>
+            <textarea id="extras-4-1" name="extras-4-1" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-4-2">Como você encontra uma configuração quando precisa mudá-la?</label>
+            <textarea id="extras-4-2" name="extras-4-2" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-4-3">Conte sobre alguma opção que você descobriu por acaso ou por indicação de outra pessoa.</label>
+            <textarea id="extras-4-3" name="extras-4-3" rows="4"></textarea>
+          </div>
+        </div>
+      </details>
+
+      <details class="et-detalhe">
+        <summary>Formas de controle</summary>
+        <div class="et-detalhe-corpo">
+          <div class="et-campo">
+            <label for="extras-5-1">Como é, para você, fazer a mesma tarefa com o controle remoto, com a tela de toque e, se usa, com o leitor de tela ou com a voz?</label>
+            <textarea id="extras-5-1" name="extras-5-1" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-5-2">Em qual situação você escolhe uma forma de controle em vez de outra, e como decide?</label>
+            <textarea id="extras-5-2" name="extras-5-2" rows="4"></textarea>
+          </div>
+        </div>
+      </details>
+
+      <details class="et-detalhe">
+        <summary>Recursos usados juntos e mudanças</summary>
+        <div class="et-detalhe-corpo">
+          <div class="et-campo">
+            <label for="extras-6-1">O que você observa quando usa mais de um recurso ao mesmo tempo?</label>
+            <textarea id="extras-6-1" name="extras-6-1" rows="4"></textarea>
+          </div>
+          <div class="et-campo">
+            <label for="extras-6-2">Conte uma situação em que algo funcionava de um jeito e passou a funcionar de outro.</label>
+            <textarea id="extras-6-2" name="extras-6-2" rows="4"></textarea>
+          </div>
+        </div>
+      </details>
+    </section>
+
     <section id="final" aria-labelledby="t-final">
-      <h2 id="t-final">5. Bloco final: percepções gerais, recomendações e autorização</h2>
-      <fieldset class="et-perguntas">
-        <legend>Perguntas <span class="et-legenda-ajuda">(marque as que você já fez)</span></legend>
-        <ol>
-          <li><input type="checkbox" id="q5-1" name="q5-1"><label for="q5-1">Olhando para tudo o que conversamos, o que mais marca a sua experiência com streaming?</label></li>
-          <li><input type="checkbox" id="q5-2" name="q5-2"><label for="q5-2">Existe algo que eu não perguntei e que você gostaria de contar?</label></li>
-          <li><input type="checkbox" id="q5-3" name="q5-3"><label for="q5-3">Se você pudesse sugerir alguma coisa para quem desenvolve ou oferece esses serviços, o que seria? (Pode ser qualquer coisa, grande ou pequena.)</label></li>
-          <li><input type="checkbox" id="q5-4" name="q5-4"><label for="q5-4">O que você gostaria que a reportagem investigasse ou mostrasse?</label></li>
-          <li><input type="checkbox" id="q5-5" name="q5-5"><label for="q5-5">Há outras pessoas (com experiências parecidas ou diferentes das suas) que você acha importante ouvir? Você se sentiria à vontade para me indicá-las ou para repassar o convite?</label></li>
-        </ol>
-      </fieldset>
-
+      <h2 id="t-final">Parte 8. Para terminar</h2>
       <div class="et-campo">
-        <label for="b5-notas">Anotações do Bloco 5</label>
-        <textarea id="b5-notas" name="b5-notas" rows="5"></textarea>
+        <label for="final-1">Olhando para tudo o que você contou, o que mais marca a sua experiência com streaming?</label>
+        <textarea id="final-1" name="final-1" rows="4"></textarea>
       </div>
+      <div class="et-campo">
+        <label for="final-2">Há algo que não foi perguntado e que você gostaria de contar?</label>
+        <textarea id="final-2" name="final-2" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="final-3">Se você pudesse sugerir alguma coisa para quem desenvolve ou oferece esses serviços, o que seria? Pode ser qualquer coisa, grande ou pequena.</label>
+        <textarea id="final-3" name="final-3" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="final-4">O que você gostaria que a reportagem investigasse ou mostrasse?</label>
+        <textarea id="final-4" name="final-4" rows="4"></textarea>
+      </div>
+      <div class="et-campo">
+        <label for="final-5">Há outras pessoas, com experiências parecidas ou diferentes das suas, que você acha importante ouvir? Se quiser, indique essas pessoas ou repasse o convite a elas.</label>
+        <p class="et-ajuda" id="final-5-ajuda">Só escreva o contato de alguém se essa pessoa concordar.</p>
+        <textarea id="final-5" name="final-5" rows="4" aria-describedby="final-5-ajuda"></textarea>
+      </div>
+    </section>
 
-      <h3>Encerramento e autorização de uso</h3>
-      <ul>
-        <li>Agradeça e explique os próximos passos (como e quando a pessoa será informada sobre o uso do relato).</li>
-        <li>Pergunte: “Posso usar trechos da nossa conversa na reportagem? Como você prefere ser identificado(a): com nome, só com primeiro nome, com nome fictício ou de forma anônima?”</li>
-        <li>Pergunte se há algum trecho que a pessoa não quer que seja usado.</li>
-        <li>Pergunte como prefere receber a confirmação das citações antes da publicação, e se quer revisar o texto que a mencionar.</li>
-        <li>Registre o consentimento em gravação ou por escrito, com data.</li>
-      </ul>
+    <section id="autorizacao" aria-labelledby="t-autorizacao">
+      <h2 id="t-autorizacao">Parte 9. Como as suas palavras podem ser usadas</h2>
+      <p>As suas respostas serão usadas na apuração e, se você autorizar, em trechos da reportagem. Nenhuma opção vem marcada: escolha a que vale para você.</p>
 
       <fieldset class="et-registro">
-        <legend>Registro da autorização</legend>
-
+        <legend>Autorização</legend>
         <fieldset class="et-opcoes">
-          <legend>Uso de trechos na reportagem</legend>
-          <label><input type="radio" name="au-uso" value="Autorizado"> Autorizado</label>
-          <label><input type="radio" name="au-uso" value="Autorizado com restrições"> Autorizado com restrições</label>
-          <label><input type="radio" name="au-uso" value="Não autorizado"> Não autorizado</label>
+          <legend>Trechos das suas respostas podem ser usados na reportagem?</legend>
+          <label><input type="radio" name="aut-uso" value="Sim"> Sim</label>
+          <label><input type="radio" name="aut-uso" value="Sim, com as restrições que escrevi abaixo"> Sim, com as restrições que escrevi abaixo</label>
+          <label><input type="radio" name="aut-uso" value="Não"> Não</label>
         </fieldset>
-
-        <fieldset class="et-opcoes">
-          <legend>Como a pessoa prefere ser identificada</legend>
-          <label><input type="radio" name="au-identificacao" value="Com nome"> Com nome</label>
-          <label><input type="radio" name="au-identificacao" value="Só com o primeiro nome"> Só com o primeiro nome</label>
-          <label><input type="radio" name="au-identificacao" value="Com nome fictício"> Com nome fictício</label>
-          <label><input type="radio" name="au-identificacao" value="De forma anônima"> De forma anônima</label>
+        <fieldset class="et-opcoes" aria-describedby="aut-identificacao-ajuda">
+          <legend>Como você prefere ser identificado ou identificada?</legend>
+          <p class="et-ajuda" id="aut-identificacao-ajuda">Uma descrição genérica é, por exemplo, “usuária de leitor de tela”.</p>
+          <label><input type="radio" name="aut-identificacao" value="Com o nome completo"> Com o nome completo</label>
+          <label><input type="radio" name="aut-identificacao" value="Só com o primeiro nome"> Só com o primeiro nome</label>
+          <label><input type="radio" name="aut-identificacao" value="Com um nome fictício"> Com um nome fictício</label>
+          <label><input type="radio" name="aut-identificacao" value="Com uma descrição genérica"> Com uma descrição genérica</label>
+          <label><input type="radio" name="aut-identificacao" value="De forma anônima"> De forma anônima</label>
         </fieldset>
-
         <div class="et-campo">
-          <label for="au-descricao">Nome fictício ou descrição genérica</label>
-          <p class="et-ajuda" id="au-descricao-ajuda">Por exemplo: “usuária de leitor de tela”.</p>
-          <input type="text" id="au-descricao" name="au-descricao" aria-describedby="au-descricao-ajuda">
+          <label for="aut-nome">Nome, nome fictício ou descrição que deve aparecer</label>
+          <p class="et-ajuda" id="aut-nome-ajuda">Preencha se escolheu uma dessas opções acima.</p>
+          <textarea id="aut-nome" name="aut-nome" rows="4" aria-describedby="aut-nome-ajuda"></textarea>
         </div>
-
         <div class="et-campo">
-          <label for="au-restricoes">Trechos que a pessoa não quer que sejam usados</label>
-          <textarea id="au-restricoes" name="au-restricoes" rows="3"></textarea>
+          <label for="aut-restricoes">Há algum trecho que você não quer que seja usado?</label>
+          <textarea id="aut-restricoes" name="aut-restricoes" rows="4"></textarea>
         </div>
-
-        <div class="et-campo">
-          <label for="au-confirmacao">Como prefere receber a confirmação das citações</label>
-          <input type="text" id="au-confirmacao" name="au-confirmacao">
-        </div>
-
         <fieldset class="et-opcoes">
-          <legend>Quer revisar o texto que a mencionar?</legend>
-          <label><input type="radio" name="au-revisar" value="Sim"> Sim</label>
-          <label><input type="radio" name="au-revisar" value="Não"> Não</label>
+          <legend>Você quer revisar o texto que mencionar você antes da publicação?</legend>
+          <label><input type="radio" name="aut-revisao" value="Sim"> Sim</label>
+          <label><input type="radio" name="aut-revisao" value="Não"> Não</label>
         </fieldset>
-
-        <fieldset class="et-opcoes">
-          <legend>Forma de registro do consentimento</legend>
-          <label><input type="radio" name="au-registro" value="Em gravação"> Em gravação</label>
-          <label><input type="radio" name="au-registro" value="Por escrito"> Por escrito</label>
-        </fieldset>
-
         <div class="et-campo">
-          <label for="au-data">Data do consentimento</label>
-          <p class="et-ajuda" id="au-data-ajuda">Formato: DD/MM/AAAA.</p>
-          <input type="text" id="au-data" name="au-data" inputmode="numeric" aria-describedby="au-data-ajuda">
-        </div>
-
-        <fieldset class="et-opcoes">
-          <legend>Combinados informados à pessoa</legend>
-          <label><input type="checkbox" name="au-retirar"> Informei que ela pode retirar a autorização antes da publicação, e como fazer isso</label>
-          <label><input type="checkbox" name="au-revisao-oferecida"> Ofereci a revisão das citações antes da publicação</label>
-        </fieldset>
-
-        <div class="et-campo">
-          <label for="au-indicacoes">Indicações de outras pessoas</label>
-          <p class="et-ajuda" id="au-indicacoes-ajuda">Anote só o que a pessoa autorizou repassar.</p>
-          <textarea id="au-indicacoes" name="au-indicacoes" rows="3" aria-describedby="au-indicacoes-ajuda"></textarea>
+          <label for="aut-contato">Como você prefere receber a confirmação das citações?</label>
+          <p class="et-ajuda" id="aut-contato-ajuda">Por exemplo: e-mail, mensagem, áudio ou vídeo em Libras.</p>
+          <textarea id="aut-contato" name="aut-contato" rows="4" aria-describedby="aut-contato-ajuda"></textarea>
         </div>
       </fieldset>
+      <p>Você pode retirar a autorização a qualquer momento antes da publicação. Para isso, avise a pessoa que convidou você. A data em que você baixar o arquivo de respostas fica registrada nele.</p>
     </section>
 
-    <!-- 6. Orientações -->
-    <section id="orientacoes" aria-labelledby="t-orientacoes">
-      <h2 id="t-orientacoes">6. Orientações ao entrevistador</h2>
-
-      <details class="et-detalhe">
-        <summary>Conduta geral</summary>
-        <ul>
-          <li>Deixe a pessoa conduzir. Pergunte “e o que aconteceu depois?”, “pode dar um exemplo?” e silencie para dar tempo de resposta.</li>
-          <li>Use as palavras da pessoa para se referir a recursos, aparelhos e à sua condição.</li>
-          <li>Evite reagir com surpresa, pena ou aprovação ao que for dito. Evite completar frases ou sugerir respostas.</li>
-          <li>Respeite pausas, cansaço e ritmo. Ofereça intervalos e formatos alternativos (partes em dias diferentes, mensagem de áudio, texto).</li>
-          <li>Não peça demonstração obrigatória; ofereça-a como opção.</li>
-        </ul>
-      </details>
-
-      <details class="et-detalhe">
-        <summary>Como registrar os relatos</summary>
-        <ul>
-          <li>Anote, para cada episódio: aparelho, serviço (se a pessoa quiser citar), recurso envolvido, sequência de ações, o que a pessoa fez, o resultado percebido e as palavras exatas usadas.</li>
-          <li>Separe o que é relato direto (o que a pessoa fez e viveu) do que é interpretação dela e do que é sua interpretação como entrevistador.</li>
-          <li>Marque a data aproximada do episódio e a versão do aparelho ou aplicativo, se a pessoa souber, pois a interface muda.</li>
-          <li>Guarde trechos literais importantes com marcação de tempo da gravação.</li>
-          <li>Anote o que não foi dito ou não pôde ser explorado, sem tirar conclusões.</li>
-        </ul>
-      </details>
-
-      <details class="et-detalhe">
-        <summary>Como distinguir experiência individual de padrão recorrente</summary>
-        <ul>
-          <li>Trate cada relato como uma experiência individual, válida por si só. Não generalize a partir de uma única conversa nem entre pessoas com o mesmo tipo de deficiência.</li>
-          <li>Considere um possível padrão apenas quando episódios semelhantes aparecerem em várias entrevistas, em contextos diferentes (aparelhos, serviços, perfis de usuário). Registre quantas pessoas relataram e em que condições.</li>
-          <li>Verifique cada possível padrão com outras fontes antes de afirmar algo na reportagem (testes diretos do pesquisador, resposta das empresas, especialistas, documentação oficial).</li>
-          <li>Anote também experiências divergentes ou contrárias. Elas fazem parte do quadro.</li>
-          <li>Não use as entrevistas como prova estatística nem como amostra representativa.</li>
-        </ul>
-      </details>
-
-      <details class="et-detalhe">
-        <summary>Como obter e documentar a autorização</summary>
-        <ul>
-          <li>Explique o uso antes de gravar e confirme no final, em linguagem simples.</li>
-          <li>Registre o consentimento (gravado ou escrito) com data, forma de identificação escolhida e eventuais restrições.</li>
-          <li>Deixe claro que a pessoa pode retirar a autorização antes da publicação, e informe como fazê-lo.</li>
-          <li>Ofereça a revisão das citações antes da publicação.</li>
-          <li>Proteja os dados: guarde gravações e anotações em local seguro e limite o acesso à equipe de apuração.</li>
-          <li>Em caso de dúvida sobre a capacidade de consentir, ou se houver um acompanhante ou responsável, busque o consentimento da própria pessoa, com apoio, e respeite a vontade que ela expressar.</li>
-        </ul>
-      </details>
-    </section>
-
-    <!-- Anexo -->
-    <section id="topicos" aria-labelledby="t-topicos">
-      <h2 id="t-topicos">Anexo: lista simplificada de tópicos para envio prévio</h2>
-      <p>O texto abaixo é simples: sem tabelas, negrito ou símbolos. Pode ser enviado por e-mail ou mensagem, lido em áudio ou gravado em Libras. Adapte ao canal da pessoa.</p>
-
-      <div class="et-campo et-js">
-        <label for="topicos-nome">Nome da pessoa no cumprimento</label>
-        <p class="et-ajuda" id="topicos-nome-ajuda">O nome entra só no texto abaixo e não é salvo.</p>
-        <input type="text" id="topicos-nome" aria-describedby="topicos-nome-ajuda">
-      </div>
-
-      <div class="et-campo">
-        <label for="topicos-texto">Texto para enviar</label>
-        <textarea id="topicos-texto" rows="16" readonly>Olá, [nome]. Antes da nossa conversa, aqui vai uma ideia dos assuntos de que vamos falar. Você não precisa preparar nada nem responder por escrito. Se algum assunto não fizer sentido para você, podemos pular.
-
-Vamos conversar sobre:
-Primeiro, como você assiste a filmes e séries: onde, quando, com quem e em quais aparelhos.
-Segundo, como você escolhe o que assistir.
-Terceiro, o que você faz para começar a assistir e deixar tudo do jeito que você precisa.
-Quarto, como você controla o que está passando enquanto assiste.
-Quinto, o que acontece quando você troca de aparelho ou volta a algo que deixou pela metade.
-Sexto, situações em que você desistiu, pediu ajuda ou encontrou um jeito próprio de resolver.
-Por fim, o que você gostaria de contar ou sugerir, e como prefere que suas palavras sejam usadas na reportagem.
-
-Se você tiver exemplos de situações recentes, eles ajudam bastante, mas não são obrigatórios. Se precisar de pausas, de mais tempo, de intérprete ou de outro formato para a conversa, é só me avisar.</textarea>
-      </div>
-      <div class="et-botoes et-js">
-        <button type="button" class="et-btn" id="topicos-copiar">Copiar texto</button>
-        <button type="button" class="et-btn" id="topicos-baixar">Baixar como arquivo de texto</button>
-      </div>
-    </section>
-
-    <!-- Guardar e exportar -->
-    <section id="exportar" aria-labelledby="t-exportar" class="et-js">
-      <h2 id="t-exportar">Guardar e exportar</h2>
-      <p>Exporte o registro antes de apagar os dados deste navegador. O arquivo de texto (.md) serve para ler e arquivar. O arquivo .json serve para continuar o registro depois, nesta página.</p>
+    <section id="enviar" aria-labelledby="t-enviar" class="et-js">
+      <h2 id="t-enviar">Enviar as respostas</h2>
+      <p>A página não envia as respostas sozinha. Para enviar:</p>
+      <ol>
+        <li>Baixe o arquivo de respostas. É um arquivo de texto simples, que abre em qualquer aparelho.</li>
+        <li>Envie o arquivo para a pessoa que convidou você, pelo canal que vocês combinaram, como e-mail ou mensagem.</li>
+        <li>Se preferir, copie as respostas e cole o texto direto na mensagem.</li>
+      </ol>
       <div class="et-botoes">
-        <button type="button" class="et-btn et-btn-primario" id="exportar-md">Exportar para leitura (.md)</button>
-        <button type="button" class="et-btn" id="exportar-json">Exportar para continuar depois (.json)</button>
+        <button type="button" class="et-btn et-btn-primario" id="baixar-txt">Baixar o arquivo de respostas (.txt)</button>
+        <button type="button" class="et-btn" id="copiar-respostas">Copiar as respostas</button>
       </div>
 
+      <h3>Continuar em outro aparelho</h3>
+      <p>Para continuar respondendo em outro aparelho, baixe o arquivo de continuação e abra-o nesta mesma página no outro aparelho. Este arquivo não é o que você envia.</p>
+      <div class="et-botoes">
+        <button type="button" class="et-btn" id="baixar-json">Baixar o arquivo de continuação (.json)</button>
+      </div>
       <div class="et-campo">
-        <label for="importar-arquivo">Continuar um registro exportado (.json)</label>
-        <p class="et-ajuda" id="importar-ajuda">O arquivo substitui o que está na página agora.</p>
+        <label for="importar-arquivo">Abrir um arquivo de continuação (.json)</label>
+        <p class="et-ajuda" id="importar-ajuda">As respostas do arquivo substituem as que estão na página agora.</p>
         <input type="file" id="importar-arquivo" accept=".json,application/json" aria-describedby="importar-ajuda importar-erro">
         <p class="et-erro" id="importar-erro" hidden></p>
       </div>
 
       <h3>Apagar</h3>
-      <p>Apaga as anotações desta página e deste navegador. Não é possível desfazer. Exporte antes.</p>
-      <button type="button" class="et-btn et-btn-perigo" id="apagar">Apagar os dados deste navegador</button>
+      <p>Apaga as respostas desta página e deste navegador. Não é possível desfazer. Baixe o arquivo antes.</p>
+      <button type="button" class="et-btn et-btn-perigo" id="apagar">Apagar as respostas deste navegador</button>
     </section>
 
     </form>

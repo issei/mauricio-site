@@ -1,19 +1,20 @@
-// Ferramenta de entrevista não listada (spec: docs/specs/pages/entrevista-acessibilidade-streaming/SPEC.md §8).
+// Entrevista por escrito, não listada (spec: docs/specs/pages/entrevista-acessibilidade-streaming/SPEC.md §8).
 import { test, expect } from '@playwright/test';
 import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 
 const PATH = '/entrevista-acessibilidade-streaming.html';
+const PERGUNTA_1 = 'Como o streaming entra na sua rotina? Quando, onde e com quem você costuma assistir?';
 
 test.describe('/entrevista-acessibilidade-streaming', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(PATH);
   });
 
-  test('carrega com H1 único e os blocos do roteiro em ordem', async ({ page }) => {
+  test('carrega com H1 único e as partes em ordem', async ({ page }) => {
     await expect(page.locator('h1')).toHaveCount(1);
     const ids = await page.locator('#entrevista > section').evaluateAll((s) => s.map((e) => e.id));
-    expect(ids).toEqual(['inicio', 'privacidade', 'abertura', 'contexto', 'principal', 'barreiras', 'final', 'orientacoes', 'topicos', 'exportar']);
-    await expect(page.locator('section.et-eixo')).toHaveCount(5);
+    expect(ids).toEqual(['inicio', 'privacidade', 'antes', 'rotina', 'escolha', 'comecar', 'controle', 'continuidade', 'contornos', 'extras', 'final', 'autorizacao', 'enviar']);
+    await expect(page.getByRole('textbox', { name: PERGUNTA_1 })).toBeVisible();
   });
 
   test('não é listada e não carrega analítica: noindex, sem hreflang, sem terceiros', async ({ page }) => {
@@ -24,125 +25,108 @@ test.describe('/entrevista-acessibilidade-streaming', () => {
     expect(html).not.toMatch(/googletagmanager|google-analytics|clarity\.ms|cookie-consent/);
   });
 
-  test('nenhuma requisição de rede leva os dados digitados', async ({ page }) => {
+  test('nenhuma requisição de rede leva as respostas', async ({ page }) => {
     const pedidos = [];
     page.on('request', (r) => { if (r.method() !== 'GET' || /SEGREDO-123/.test(r.url())) pedidos.push(r.url()); });
-    await page.fill('#ab-identificador', 'SEGREDO-123');
-    await page.fill('#ctx-notas', 'SEGREDO-123');
+    await page.fill('#antes-nome', 'SEGREDO-123');
+    await page.fill('#rotina-1', 'SEGREDO-123');
+    await page.getByRole('button', { name: /Baixar o arquivo de respostas/ }).click();
     await page.waitForTimeout(600);
     expect(pedidos).toEqual([]);
   });
 
   test('salva no navegador e recupera ao recarregar', async ({ page }) => {
-    await page.fill('#ab-identificador', 'E-07');
-    await page.getByRole('radio', { name: 'Por vídeo' }).check();
-    await page.getByRole('checkbox', { name: /última vez em que você escolheu algo/ }).check();
-    await expect(page.locator('#ultimo-salvamento')).toContainText('Salvo neste navegador');
+    await page.getByRole('textbox', { name: PERGUNTA_1 }).fill('À noite, na sala.');
+    await page.getByRole('radio', { name: 'Só com o primeiro nome' }).check();
+    await expect(page.locator('#ultimo-salvamento')).toContainText('Respostas salvas neste navegador');
     await page.reload();
-    await expect(page.locator('#ab-identificador')).toHaveValue('E-07');
-    await expect(page.getByRole('radio', { name: 'Por vídeo' })).toBeChecked();
-    await expect(page.getByRole('checkbox', { name: /última vez em que você escolheu algo/ })).toBeChecked();
-    await expect(page.locator('#ultimo-salvamento')).toContainText('Registro recuperado');
+    await expect(page.getByRole('textbox', { name: PERGUNTA_1 })).toHaveValue('À noite, na sala.');
+    await expect(page.getByRole('radio', { name: 'Só com o primeiro nome' })).toBeChecked();
+    await expect(page.locator('#ultimo-salvamento')).toContainText('Respostas recuperadas');
   });
 
   test('desligar o salvamento apaga o que estava gravado', async ({ page }) => {
-    await page.fill('#ctx-notas', 'algo');
-    await expect(page.locator('#ultimo-salvamento')).toContainText('Salvo');
+    await page.fill('#rotina-1', 'algo');
+    await expect(page.locator('#ultimo-salvamento')).toContainText('salvas');
     await page.getByRole('checkbox', { name: 'Salvar automaticamente neste navegador' }).uncheck();
     expect(await page.evaluate(() => localStorage.getItem('entrevista-streaming:v1'))).toBeNull();
     await page.reload();
-    await expect(page.locator('#ctx-notas')).toHaveValue('');
+    await expect(page.locator('#rotina-1')).toHaveValue('');
     await expect(page.getByRole('checkbox', { name: 'Salvar automaticamente neste navegador' })).not.toBeChecked();
   });
 
-  test('episódio: adicionar leva o foco ao primeiro campo, origem sem pré-seleção, remover pede confirmação', async ({ page }) => {
-    await page.getByRole('button', { name: 'Adicionar episódio ao Eixo B' }).click();
-    const grupo = page.getByRole('group', { name: 'Eixo B, episódio 1' });
+  test('situação: adicionar leva o foco ao primeiro campo, remover pede confirmação e renumera', async ({ page }) => {
+    const adicionar = page.getByRole('button', { name: 'Adicionar uma situação à Parte 3' });
+    await adicionar.click();
+    const grupo = page.getByRole('group', { name: 'Parte 3, situação 1' });
     await expect(grupo).toBeVisible();
-    await expect(grupo.getByLabel('Aparelho', { exact: true })).toBeFocused();
-    await expect(page.locator('#anuncio')).toHaveText('Eixo B, episódio 1 adicionado.');
+    await expect(grupo.getByLabel('Em qual aparelho foi?')).toBeFocused();
+    await expect(page.locator('#anuncio')).toHaveText('Parte 3, situação 1 adicionada.');
+    await grupo.getByLabel('O que você fez, passo a passo?').fill('abri o menu');
 
-    const origem = grupo.getByRole('group', { name: 'Origem do impedimento' });
-    await expect(origem.getByRole('radio')).toHaveCount(4);
-    for (const r of await origem.getByRole('radio').all()) await expect(r).not.toBeChecked();
-    await origem.getByRole('radio', { name: 'Barreira de interação' }).check();
-    await grupo.getByLabel('Palavras exatas da pessoa').fill('o menu sumiu');
+    await adicionar.click();
+    await expect(page.getByRole('group', { name: 'Parte 3, situação 2' })).toBeVisible();
 
-    await page.getByRole('button', { name: 'Adicionar episódio ao Eixo B' }).click();
-    await expect(page.getByRole('group', { name: 'Eixo B, episódio 2' })).toBeVisible();
-
-    await page.getByRole('button', { name: 'Remover eixo B, episódio 1' }).click();
+    await page.getByRole('button', { name: 'Remover parte 3, situação 1' }).click();
     const dlg = page.getByRole('dialog');
     await expect(dlg).toBeVisible();
     await page.keyboard.press('Escape');
     await expect(dlg).toBeHidden();
-    await expect(page.getByRole('button', { name: 'Remover eixo B, episódio 1' })).toBeFocused();
+    await expect(page.getByRole('button', { name: 'Remover parte 3, situação 1' })).toBeFocused();
 
-    await page.getByRole('button', { name: 'Remover eixo B, episódio 1' }).click();
+    await page.getByRole('button', { name: 'Remover parte 3, situação 1' }).click();
     await dlg.getByRole('button', { name: 'Remover' }).click();
-    await expect(page.getByRole('group', { name: 'Eixo B, episódio 2' })).toHaveCount(0);
-    await expect(page.getByRole('group', { name: 'Eixo B, episódio 1' })).toHaveCount(1);
-    await expect(page.getByRole('button', { name: 'Adicionar episódio ao Eixo B' })).toBeFocused();
+    await expect(page.getByRole('group', { name: 'Parte 3, situação 2' })).toHaveCount(0);
+    await expect(page.getByRole('group', { name: 'Parte 3, situação 1' })).toHaveCount(1);
+    await expect(adicionar).toBeFocused();
   });
 
-  test('episódio salvo volta com a origem marcada', async ({ page }) => {
-    await page.getByRole('button', { name: 'Adicionar episódio ao Eixo C' }).click();
-    const grupo = page.getByRole('group', { name: 'Eixo C, episódio 1' });
-    await grupo.getByRole('radio', { name: 'Indefinido' }).check();
-    await grupo.getByLabel('Aparelho', { exact: true }).fill('Smart TV');
-    await expect(page.locator('#ultimo-salvamento')).toContainText('Salvo');
+  test('situação salva volta ao recarregar', async ({ page }) => {
+    await page.getByRole('button', { name: 'Adicionar uma situação à Parte 4' }).click();
+    await page.getByRole('group', { name: 'Parte 4, situação 1' }).getByLabel('Em qual aparelho foi?').fill('Smart TV');
+    await expect(page.locator('#ultimo-salvamento')).toContainText('salvas');
     await page.reload();
-    const depois = page.getByRole('group', { name: 'Eixo C, episódio 1' });
-    await expect(depois.getByLabel('Aparelho', { exact: true })).toHaveValue('Smart TV');
-    await expect(depois.getByRole('radio', { name: 'Indefinido' })).toBeChecked();
+    await expect(page.getByRole('group', { name: 'Parte 4, situação 1' }).getByLabel('Em qual aparelho foi?')).toHaveValue('Smart TV');
   });
 
-  test('cronômetro: iniciar, pausar e anunciar a pausa dos 35 minutos', async ({ page }) => {
-    await page.clock.install();
+  test('bloco extra com resposta salva abre sozinho', async ({ page }) => {
+    const bloco = page.locator('#extras details').first();
+    await expect(bloco).not.toHaveAttribute('open', '');
+    await bloco.locator('summary').click();
+    await page.fill('#extras-1-1', 'pelo título da tela');
+    await expect(page.locator('#ultimo-salvamento')).toContainText('salvas');
     await page.reload();
-    await page.getByRole('button', { name: 'Iniciar' }).click();
-    await expect(page.getByRole('button', { name: 'Pausar' })).toBeFocused();
-    await page.clock.runFor(35 * 60 * 1000 + 1500);
-    await expect(page.locator('#anuncio')).toContainText('35 minutos de entrevista');
-    await page.getByRole('button', { name: 'Pausar' }).click();
-    await expect(page.locator('#tempo-decorrido')).toHaveText(/^35:0\d$/);
-    await expect(page.getByRole('button', { name: 'Retomar' })).toBeEnabled();
+    await expect(page.locator('#extras details').first()).toHaveAttribute('open', '');
   });
 
-  test('lista de tópicos: o nome entra no texto e não é salvo', async ({ page }) => {
-    await page.fill('#topicos-nome', 'Ana');
-    await expect(page.locator('#topicos-texto')).toHaveValue(/^Olá, Ana\./);
-    await expect(page.locator('#topicos-texto')).not.toHaveValue(/\*|\|/);
-    await page.fill('#ctx-notas', 'x');
-    await expect(page.locator('#ultimo-salvamento')).toContainText('Salvo');
-    expect(await page.evaluate(() => localStorage.getItem('entrevista-streaming:v1'))).not.toContain('Ana');
-  });
+  test('baixa o .txt e o .json, e o .json reabre as respostas', async ({ page }) => {
+    await page.fill('#antes-nome', 'Ana Lúcia');
+    await page.fill('#rotina-1', 'À noite.');
+    await page.getByRole('button', { name: 'Adicionar uma situação à Parte 2' }).click();
+    await page.getByRole('group', { name: 'Parte 2, situação 1' }).getByLabel('Qual recurso ou ajuste estava envolvido?').fill('audiodescrição');
 
-  test('exporta .md e .json, e o .json importado restaura o registro', async ({ page }) => {
-    await page.fill('#ab-identificador', 'E-09');
-    await page.getByRole('button', { name: 'Adicionar episódio ao Eixo A' }).click();
-    await page.getByRole('group', { name: 'Eixo A, episódio 1' }).getByLabel('Recurso envolvido').fill('audiodescrição');
+    const [txt] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /Baixar o arquivo de respostas/ }).click()]);
+    const texto = await (await txt.createReadStream()).toArray().then((b) => Buffer.concat(b).toString('utf8'));
+    expect(txt.suggestedFilename()).toMatch(/^respostas-entrevista-Ana-Lucia-\d{4}-\d{2}-\d{2}\.txt$/);
+    expect(texto).toContain('Respostas de: Ana Lúcia');
+    expect(texto).toContain(`Pergunta: ${PERGUNTA_1}\nResposta: À noite.`);
+    expect(texto).toContain('Parte 2, situação 1\nQual recurso ou ajuste estava envolvido? audiodescrição');
+    await expect(page.locator('#anuncio')).toContainText('baixado');
 
-    const [md] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /Exportar para leitura/ }).click()]);
-    const textoMd = await (await md.createReadStream()).toArray().then((b) => Buffer.concat(b).toString('utf8'));
-    expect(md.suggestedFilename()).toMatch(/^E-09-\d{4}-\d{2}-\d{2}\.md$/);
-    expect(textoMd).toContain('- Identificador da entrevista: E-09');
-    expect(textoMd).toContain('### Eixo A, episódio 1');
-    expect(textoMd).toContain('- Recurso envolvido: audiodescrição');
-
-    const [js] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /Exportar para continuar/ }).click()]);
+    const [js] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /Baixar o arquivo de continuação/ }).click()]);
     const caminho = await js.path();
 
-    await page.getByRole('button', { name: 'Apagar os dados deste navegador' }).click();
+    await page.getByRole('button', { name: 'Apagar as respostas deste navegador' }).click();
     await page.getByRole('dialog').getByRole('button', { name: 'Apagar' }).click();
-    await expect(page.locator('#ab-identificador')).toHaveValue('');
+    await expect(page.locator('#rotina-1')).toHaveValue('');
+    await expect(page.locator('h1')).toBeFocused();
 
     await page.setInputFiles('#importar-arquivo', caminho);
-    await expect(page.locator('#ab-identificador')).toHaveValue('E-09');
-    await expect(page.getByRole('group', { name: 'Eixo A, episódio 1' }).getByLabel('Recurso envolvido')).toHaveValue('audiodescrição');
+    await expect(page.locator('#rotina-1')).toHaveValue('À noite.');
+    await expect(page.getByRole('group', { name: 'Parte 2, situação 1' }).getByLabel('Qual recurso ou ajuste estava envolvido?')).toHaveValue('audiodescrição');
   });
 
-  test('importar arquivo inválido mostra o erro em texto, ligado ao campo', async ({ page }) => {
+  test('abrir arquivo inválido mostra o erro em texto, ligado ao campo', async ({ page }) => {
     await page.setInputFiles('#importar-arquivo', { name: 'x.json', mimeType: 'application/json', buffer: Buffer.from('{"versao":99}') });
     await expect(page.locator('#importar-erro')).toBeVisible();
     await expect(page.locator('#importar-erro')).toContainText('versão 99');
@@ -150,18 +134,20 @@ test.describe('/entrevista-acessibilidade-streaming', () => {
     await expect(page.locator('#importar-arquivo')).toBeFocused();
   });
 
-  test('a11y: axe sem violações serious/critical, também com episódio aberto e diálogo', async ({ page }) => {
+  test('a11y: axe sem violações serious/critical, também com situação aberta e diálogo', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await expectNoSeriousA11yViolations(page);
-    await page.getByRole('button', { name: 'Adicionar episódio ao Eixo C' }).click();
+    await page.getByRole('button', { name: 'Adicionar uma situação à Parte 5' }).click();
+    await page.locator('#extras details').first().locator('summary').click();
     await expectNoSeriousA11yViolations(page);
-    await page.getByRole('button', { name: 'Remover eixo C, episódio 1' }).click();
+    await page.getByRole('button', { name: 'Remover parte 5, situação 1' }).click();
     await expectNoSeriousA11yViolations(page);
   });
 
   test('alvos de toque dos controles com ≥ 44 px de altura', async ({ page }) => {
+    await page.getByRole('button', { name: 'Adicionar uma situação à Parte 2' }).click();
     const baixos = await page.evaluate(() =>
-      [...document.querySelectorAll('.et-btn, .et-opcoes > label, .et-perguntas li, .et-detalhe > summary, input[type=text], textarea')]
+      [...document.querySelectorAll('.et-btn, .et-opcoes > label, .et-detalhe > summary, input[type=text], textarea')]
         .filter((el) => el.offsetParent !== null && el.getBoundingClientRect().height < 44)
         .map((el) => el.textContent.trim().slice(0, 40) || el.id));
     expect(baixos).toEqual([]);
@@ -169,7 +155,7 @@ test.describe('/entrevista-acessibilidade-streaming', () => {
 
   test('sem rolagem horizontal a 320 px', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 800 });
-    await page.getByRole('button', { name: 'Adicionar episódio ao Eixo A' }).click();
+    await page.getByRole('button', { name: 'Adicionar uma situação à Parte 2' }).click();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
     expect(overflow).toBe(false);
   });

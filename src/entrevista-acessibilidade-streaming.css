@@ -1,5 +1,5 @@
 /* =============================================================================
- * entrevista-acessibilidade-streaming.css — ferramenta não listada de entrevista
+ * entrevista-acessibilidade-streaming.css — entrevista por escrito, não listada
  * Spec: docs/specs/pages/entrevista-acessibilidade-streaming/SPEC.md
  * Dark Tech padrão, namespace `et-`. Contrastes calculados na spec §7 (WCAG 2.2 AA, perfil Standard).
  * ========================================================================== */
@@ -55,8 +55,8 @@ a { color: var(--et-accent); text-decoration: underline; text-underline-offset: 
 ul, ol { padding-left: 1.4rem; margin: 0 0 1rem; }
 li { margin-bottom: .4rem; }
 
-/* Avisos, notas e fala sugerida: borda à esquerda + título em texto (nunca só cor) */
-.et-aviso, .et-nota, .et-fala {
+/* Avisos e notas: borda à esquerda + título em texto (nunca só cor) */
+.et-aviso, .et-nota {
   margin: 1.5rem 0;
   padding: 1rem 1.25rem;
   background: var(--et-surface);
@@ -65,8 +65,8 @@ li { margin-bottom: .4rem; }
   border-radius: 0 8px 8px 0;
 }
 .et-nota { border-left-color: var(--et-accent); }
-.et-fala { border-left-color: #8a2be2; font-style: normal; }
-.et-aviso > :last-child, .et-nota > :last-child, .et-fala > :last-child { margin-bottom: 0; }
+.et-nota h3 { margin-top: 0; font-size: 1.0625rem; }
+.et-aviso > :last-child, .et-nota > :last-child { margin-bottom: 0; }
 .et-aviso-titulo { font-size: 1.0625rem; margin: 0 0 .5rem; padding: 0; background: none; color: var(--et-warn); }
 
 .et-indice ol { columns: 2 16rem; column-gap: 2rem; }
@@ -111,22 +111,9 @@ input[type="checkbox"], input[type="radio"] { width: 1.25rem; height: 1.25rem; m
 .et-opcoes > legend { margin-bottom: .25rem; }
 .et-opcoes > label { display: flex; align-items: center; gap: .6rem; min-height: 2.75rem; padding: .25rem 0; cursor: pointer; }
 
-.et-perguntas { margin: 1.5rem 0; }
-.et-perguntas > legend { margin-bottom: .5rem; }
-.et-perguntas ol, .et-perguntas ul { list-style: none; padding: 0; }
-.et-perguntas li { display: flex; align-items: flex-start; gap: .75rem; padding: .6rem .75rem; margin: 0 0 .5rem; border: 1px solid var(--et-border); border-radius: 8px; background: var(--et-surface); max-width: none; }
-.et-perguntas li input { margin-top: .2rem; }
-.et-perguntas li label { cursor: pointer; flex: 1; }
-.et-perguntas li:has(input:checked) { border-color: var(--et-accent); }
-.et-perguntas li:has(input:checked) label { color: var(--et-muted); }
-
 .et-salvar { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: .6rem; margin: 1.5rem 0; }
 .et-salvar label { font-weight: 600; min-height: 2.75rem; display: flex; align-items: center; cursor: pointer; }
 .et-salvar .et-ajuda { grid-column: 1 / -1; }
-
-.et-cronometro { margin: 1.5rem 0 0; padding: 1.25rem; background: var(--et-surface); border: 1px solid var(--et-border); border-radius: 8px; }
-.et-cronometro h3 { margin-top: 0; }
-.et-tempo { font-size: 2rem; font-weight: 700; font-variant-numeric: tabular-nums; margin: .5rem 0 1rem; }
 
 /* Botões: ≥ 44 px, borda ≥ 3:1, estado desabilitado com texto e não só cor */
 .et-botoes { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
@@ -147,22 +134,19 @@ input[type="checkbox"], input[type="radio"] { width: 1.25rem; height: 1.25rem; m
 .et-btn-perigo { border-color: var(--et-danger); color: var(--et-danger); }
 .et-btn:disabled { cursor: not-allowed; border-style: dashed; border-color: var(--et-control); color: var(--et-muted); background: var(--et-surface); transform: none; box-shadow: none; }
 
-/* Episódios */
-.et-episodios { margin: 1.5rem 0; padding: 1.25rem; border: 1px dashed var(--et-control); border-radius: 8px; }
-.et-episodios h4 { margin-top: 0; }
+/* Situações */
+.et-situacoes { margin: 1.5rem 0; padding: 1.25rem; border: 1px dashed var(--et-control); border-radius: 8px; }
+.et-situacoes h3 { margin-top: 0; }
 .et-vazio { color: var(--et-muted); }
-.et-lista-ep { list-style: none; padding: 0; margin: 0 0 1rem; }
-.et-lista-ep > li { margin: 0 0 1rem; padding: 1.25rem; background: var(--et-surface); border: 1px solid var(--et-border); border-left: 4px solid var(--et-accent); border-radius: 0 8px 8px 0; max-width: none; }
-.et-lista-ep > li > fieldset > legend { font-size: 1.125rem; float: left; width: 100%; margin-bottom: 1rem; }
-.et-lista-ep > li > fieldset > legend + * { clear: both; }
-.et-ep-grupo { margin: 1.25rem 0 0; padding-top: 1rem; border-top: 1px solid var(--et-border); }
-.et-ep-grupo > legend { float: left; width: 100%; margin-bottom: .75rem; }
-.et-ep-grupo > legend + * { clear: both; }
+.et-lista-sit { list-style: none; padding: 0; margin: 0 0 1rem; }
+.et-lista-sit > li { margin: 0 0 1rem; padding: 1.25rem; background: var(--et-surface); border: 1px solid var(--et-border); border-left: 4px solid var(--et-accent); border-radius: 0 8px 8px 0; max-width: none; }
+.et-lista-sit > li > fieldset > legend { font-size: 1.125rem; float: left; width: 100%; margin-bottom: 1rem; }
+.et-lista-sit > li > fieldset > legend + * { clear: both; }
 
-/* Orientações */
+/* Perguntas extras */
 .et-detalhe { margin: 0 0 .75rem; background: var(--et-surface); border: 1px solid var(--et-border); border-radius: 8px; }
 .et-detalhe > summary { min-height: 2.75rem; padding: .7rem 1rem; font-weight: 600; cursor: pointer; }
-.et-detalhe > ul { padding: 0 1rem 1rem 2.4rem; margin: 0; }
+.et-detalhe-corpo { padding: .5rem 1rem 0; }
 
 /* Diálogo de confirmação */
 .et-dialogo { max-width: min(32rem, calc(100% - 2rem)); padding: 1.5rem; color: var(--et-text); background: var(--et-surface); border: 2px solid var(--et-danger); border-radius: 10px; }
