@@ -29,7 +29,7 @@ env:
 jobs:
   static:
     name: Build + invariantes + a11y sweep
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # Playwright 1.58 não instala navegadores no ubuntu-latest (26.04)
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -56,7 +56,7 @@ jobs:
 
   e2e:
     name: Playwright ${{ matrix.nome }} (${{ github.event_name == 'pull_request' && 'fast' || 'full' }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # Playwright 1.58 não instala navegadores no ubuntu-latest (26.04)
     timeout-minutes: 20
     strategy:
       fail-fast: false
@@ -136,7 +136,7 @@ jobs:
     name: Relatório Playwright (merge)
     if: ${{ !cancelled() }}
     needs: e2e
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # Playwright 1.58 não instala navegadores no ubuntu-latest (26.04)
     steps:
       - uses: actions/checkout@v4
 
@@ -166,7 +166,7 @@ jobs:
     name: Quality Gate
     if: always()
     needs: [static, e2e]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # Playwright 1.58 não instala navegadores no ubuntu-latest (26.04)
     steps:
       - name: Resultado
         run: |
