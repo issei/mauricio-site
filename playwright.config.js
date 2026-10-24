@@ -88,19 +88,19 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      testIgnore: [...SEMPRE_IGNORAR, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
+      testIgnore: [...SEMPRE_IGNORAR, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js', '**/entrevista.nojs.spec.js'],
     },
 
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-      testIgnore: [...SEMPRE_IGNORAR, ...SO_CHROMIUM, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
+      testIgnore: [...SEMPRE_IGNORAR, ...SO_CHROMIUM, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js', '**/entrevista.nojs.spec.js'],
     },
 
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-      testIgnore: [...SEMPRE_IGNORAR, ...SO_CHROMIUM, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js'],
+      testIgnore: [...SEMPRE_IGNORAR, ...SO_CHROMIUM, '**/apresentacao.mobile.spec.js', '**/apresentacao.nojs.spec.js', '**/formulacao.nojs.spec.js', '**/index.nojs.spec.js', '**/digital-workplace.nojs.spec.js', '**/entrevista.nojs.spec.js'],
     },
 
     /*
@@ -118,7 +118,7 @@ export default defineConfig({
       // Degradação sem JavaScript (spec §4.2) — antes, inverificável
       name: 'no-js',
       use: { ...devices['Desktop Chrome'], javaScriptEnabled: false },
-      testMatch: ['tests/apresentacao.nojs.spec.js', 'tests/formulacao.nojs.spec.js', 'tests/index.nojs.spec.js', 'tests/digital-workplace.nojs.spec.js'],
+      testMatch: ['tests/apresentacao.nojs.spec.js', 'tests/formulacao.nojs.spec.js', 'tests/index.nojs.spec.js', 'tests/digital-workplace.nojs.spec.js', 'tests/entrevista.nojs.spec.js'],
       testIgnore: SEMPRE_IGNORAR,
     },
 

@@ -27,6 +27,8 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Tradutor** → segmento cuja tradução volta vazia mantém o texto de origem (um botão em PT é melhor que um botão sem nome). *(2026-10-03)*
 - **Perfil de conformidade** → WCAG 2.2 AA, Compliance Profile **Standard**; as exceções localizadas de 7:1 (`apresentacao`, ADR-ap-001) permanecem. *(2026-10-03)*
 - **Integração do protocolo** → cópia versionada em `docs/a11y/` com SHA fixado e carga preguiçosa; sem `@import` no `AGENTS.md` (41 KB entraria em toda sessão). *(2026-10-03)*
+- **Lista dinâmica de itens com formulário** (episódios da `entrevista-acessibilidade-streaming`) → cada item é `fieldset` com legenda numerada ("Eixo B, episódio 2"), renumerada após remoção; adicionar move o foco ao primeiro campo e anuncia em `role="status"`; remover pede confirmação no `<dialog>` padrão e devolve o foco ao botão Adicionar. *(2026-10-24)*
+- **Relógio que avança sozinho** (cronômetro da entrevista) → texto fora de região viva, botão Pausar visível (SC 2.2.2), só os marcos de 35 e 60 min vão para `role="status"`. Salvamento automático não é anunciado: estado em texto visível. *(2026-10-24)*
 - **Páginas utilitárias** → só `boutique-empresarial-showcase` é corrigida; as demais seguem em `EXCEPTIONS.md` com a catraca impedindo piora. *(2026-10-03)*
 
 ## `role="list"` em `<ul>/<ol>` com `list-style:none` (decidido na Fase 7)

@@ -160,6 +160,7 @@ export default defineConfig({
         '/vsl',
         '/proposta', // executiva não listada: noindex e fora do sitemap
         '/proposta', // página executiva não listada: noindex, fora do sitemap
+        '/entrevista-acessibilidade-streaming', // ferramenta de entrevista não listada: noindex
         '/boutique-empresarial-showcase',
         /*
          * Não são páginas: `seo-aeo.jsonld.html` é um bloco JSON-LD e
