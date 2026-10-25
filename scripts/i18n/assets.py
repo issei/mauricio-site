@@ -43,6 +43,7 @@ HTML_NAO_PUBLICAS = frozenset(
         "mapmind",
         "vsl",
         "proposta",  # executiva não listada: sem gêmeo /en/
+        "entrevista-acessibilidade-streaming",  # ferramenta de entrevista em PT-BR, não listada
         "boutique-empresarial-showcase",
     }
 )

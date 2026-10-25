@@ -62,6 +62,10 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   | `proposta`: muted em card | #9da7b3 | #161b22 | 7,09:1 | 4.5:1 | ✅ |
   | `proposta`: número da etapa (`.trilha`) | #ffffff | #0b5fcc | 5,96:1 | 4.5:1 | ✅ |
   | `proposta`: borda da etapa de saída (componente, não texto) | #007bff | #161b22 | 4,35:1 | 3:1 | ✅ |
+  | `entrevista-acessibilidade-streaming` (nota 16): botão primário | #0d1117 | #58a6ff | 7,49:1 | 4.5:1 | ✅ |
+  | `entrevista-…`: botão de perigo e texto de erro | #ff7b72 | #161b22 | 6,86:1 | 4.5:1 | ✅ |
+  | `entrevista-…`: título de aviso | #f0b44c | #161b22 | 9,34:1 | 4.5:1 | ✅ |
+  | `entrevista-…`: borda de campo (componente, não texto) | #8b949e | #161b22 | 5,62:1 | 3:1 | ✅ |
   | **referência reprovada** (`exemplopdi`, EXC-006) | #6a7282 | #0d1117 | 3,91:1 | 4.5:1 | ❌ |
 
   **Não coberto:** texto sobre gradiente, imagem ou canvas; a paleta própria de `apresentacao` (`.ap-*`, piso 7:1, ADR-ap-001) e as 7 cores categóricas da home (`--pf-l-*`, ADR-pf-001) têm testes próprios de token, **não** foram recomputadas aqui.
@@ -166,3 +170,10 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Evidência:** `npm run gate -- --full` verde (1.401 testes nos 5 projetos, catraca das 80 páginas sem regressão), antes da regeneração; depois dela, `quality-gate --no-e2e` verde (catraca completa, 182 s) e chromium + mobile + no-js verdes (562 testes).
   - **Gate estático:** 22 erros antes deste registro, só pela regra `freshness`; este registro a devolve a 21. A regra foi avaliada e mantida (`docs/specs/QUALITY_GATE_PARALELO.md` §8.5).
   - **Não verificado:** Firefox e WebKit depois da regeneração (ficam para o CI `full` da `main`), leitor de tela. Independência: self-reported ⚠️.
+- **Nota 16 — Página `/entrevista-acessibilidade-streaming` (24/10/2026).** Entrevista por escrito, não listada: a pessoa entrevistada responde sozinha, salva, volta depois e baixa um arquivo para enviar a quem a convidou (spec `docs/specs/pages/entrevista-acessibilidade-streaming/SPEC.md`, conteúdo adaptado do roteiro do autor). `noindex`, fora do sitemap e do `catalogo`, sem espelho EN, sem analítica; as respostas ficam só no navegador (localStorage, desligável) e em arquivos que a pessoa baixa.
+  - **Componentes novos:** lista dinâmica de situações (grupo com legenda numerada; foco no primeiro campo ao adicionar; remoção com `<dialog>` e foco de volta ao botão Adicionar), perguntas como `<textarea>` com a pergunta no `<label>`, perguntas extras em `<details>` que abrem sozinhos quando há resposta salva, importação com erro em texto ligado ao campo. Padrão registrado em `A11Y-DECISIONS.md`.
+  - **Contraste:** pares novos na tabela da §4; os demais (`#e6edf3`, `#9da7b3`, `#58a6ff` sobre `#0d1117`/`#161b22`) são os da `proposta`.
+  - **Catraca:** `a11y-sweep --only entrevista-acessibilidade-streaming.html` contra o build: 0 ocorrências.
+  - **Playwright, Chromium e no-js:** 15/15 (`entrevista-acessibilidade-streaming.spec.js` e `entrevista.nojs.spec.js`, inclui axe sem serious/critical na página, com situação aberta e com o diálogo; alvos ≥ 44 px; 320 px sem rolagem horizontal; nenhuma requisição com o texto digitado). `node:test`: 333/333, com os 8 de `entrevista.model.test.mjs`. Rodado na nuvem com o Chromium do ambiente (`executablePath`), não com o da versão fixada do Playwright.
+  - **Gate estático:** a página não acrescenta erro. As listas de situação usam `list-style:none` sem `role="list"`, mesmo custo da nota 9. Antes deste registro a contagem estava em 22 só pela regra `freshness`; este registro a devolve a 21.
+  - **Não verificado:** leitor de tela, controle por voz, Firefox e WebKit (ficam para o CI), verificação em contexto novo. Independência: self-reported ⚠️.
