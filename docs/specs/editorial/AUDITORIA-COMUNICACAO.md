@@ -1,8 +1,8 @@
-# AUDITORIA-COMUNICACAO — auditoria editorial do acervo (Fase 1)
+# AUDITORIA-COMUNICACAO — auditoria editorial do acervo
 
 > Metaprompt: "Auditoria editorial e otimização da comunicação" (Issei, 27/10/2026).
-> Data: 2026-10-27. Status: **Fase 1 concluída (descoberta e inventário). Fases 2 a 12 não iniciadas.**
-> Nenhuma página foi alterada. Este documento só registra o que foi medido.
+> Data: 2026-10-27. Status: **Fase 1 concluída. Lote 1 das Fases 2 e 3 concluído (9 páginas, §8 a §10). Lotes 2 e 3 e Fases 4 a 12 não iniciados.**
+> Nenhum texto de página foi alterado. A única mudança no site é técnica: a indexação da Boutique Empresarial (§7).
 
 ## 1. Avaliação do metaprompt
 
@@ -91,12 +91,13 @@ não foram medidas. Não há dados de audiência, tempo de leitura real nem test
    `develop-engineering` nem `boutique-empresarial-showcase` e não tem o "Comece por aqui" que o HTML
    tem. Fonte: `mdSections` do catálogo em `scripts/seo/pages.mjs` (data de atualização: 21/06).
    Agentes que leem o `.md` recebem um mapa diferente do que as pessoas veem.
-8. **`boutique-empresarial-showcase` está em estado ambíguo.** O catálogo lista a página, ela tem
+8. **`boutique-empresarial-showcase` está em estado ambíguo** *(resolvido: indexada, §7)*. O catálogo lista a página, ela tem
    `canonical` e JSON-LD de FAQ e não tem `noindex`, mas o sitemap a exclui.
 9. **Rótulos do catálogo que não batem com o conteúdo.** `aprendizagem-autorregulada` está rotulada
    "Revisão científica", mas é a síntese; a revisão é a página `-artigo`. `devin`
-   ("Apresentação · Engenharia agêntica") está no pilar Fundação/Mentalidade, ao lado de ensaios
-   sobre pensamento, e não no pilar Método.
+   ("Apresentação · Engenharia agêntica") está no pilar Fundação/Mentalidade, e não no pilar
+   Método. *Revisto no Lote 1 (§8.2): a página trata mais de postura que de ferramenta; o pilar é
+   defensável e fica como decisão do autor.*
 10. **Títulos longos.** O `<title>` de `curiosidade-e-investigacao` tem 88 caracteres e o de
     `case-agents` tem 84 (resultados de busca cortam perto de 60).
 11. **Detalhe de configuração.** `vite.config.js` exclui `/proposta` do sitemap duas vezes.
@@ -218,7 +219,7 @@ público e finalidade antes de decidir entre referência cruzada, consolidação
 A ordem segue o volume e os sinais, não a suspeita de qualidade. Cada lote termina com as
 páginas lidas por inteiro, as notas da rubrica e os itens de backlog com evidência.
 
-- **Lote 1 (Fases 2 e 3, 9 páginas, ~237 min de leitura):** `digital-workplace-agentico`,
+- **Lote 1 (Fases 2 e 3, 9 páginas, ~237 min de leitura) — concluído, §8:** `digital-workplace-agentico`,
   `engenharia-confianca`, `case-agents`, `devin`, `engenharia-agentes-ia`, `develop-engineering`,
   `devops-salesforce`, `curiosidade-e-investigacao` e `catalogo`. Cobre o G1 inteiro, os dois
   desvios de frase e o mapa.
@@ -230,11 +231,242 @@ páginas lidas por inteiro, as notas da rubrica e os itens de backlog com evidê
 `service-operations-2-0` (executiva), `case-agents` (técnica extensa), `formulacao-de-problemas`
 (ensaio conceitual), `devops-salesforce` (guia prático) e `catalogo` (catálogo).
 
-## 7. Decisões pendentes do autor
+## 7. Decisões do autor
 
-Nenhuma bloqueia o Lote 1.
+Registradas em 27/10/2026.
 
-1. **`boutique-empresarial-showcase`:** deve entrar no sitemap (é pública e está no catálogo) ou
-   receber `noindex` (não deve ser encontrada por busca)?
-2. **Rubrica:** aceita notas só nas páginas lidas por inteiro, em faixas sem decimal (§1, item 6)?
-3. **Versão executiva na Fase 9:** só na página executiva da amostra, ou em todas as cinco?
+1. **`boutique-empresarial-showcase`: indexar.** A página está no domínio do autor e pode ser
+   encontrada por busca. Aplicado neste PR: saiu da exclusão do sitemap, ganhou o gêmeo
+   `public/boutique-empresarial-showcase.md`, o `canonical` passou para a URL limpa e o
+   `audit-site` a trata como pública. Ela segue **só em PT-BR**: o gêmeo `/en/` não foi decidido
+   e a tradução local não roda no ambiente em nuvem.
+2. **Rubrica: nota só nas páginas lidas por inteiro.** Sem nota para página apenas medida.
+3. **Versão executiva na Fase 9:** ainda aberta. Não bloqueia os Lotes 2 e 3.
+
+## 8. Lote 1: leitura completa e rubrica
+
+Status: **concluído**. Nove páginas lidas por inteiro no código-fonte (`main` em `906bcc9`),
+com os blocos gerados lidos à parte.
+
+**Como ler a nota.** Cada dimensão recebe 1 a 5. A média ponderada usa os pesos do metaprompt
+(tese 20%, hierarquia 20%, concisão 20%, progressão 15%, público 15%, precisão 10%). A faixa
+0–100 é `(média − 1) / 4 × 100`, arredondada para múltiplo de 5. Diferença menor que 10 pontos
+entre duas páginas não é significativa.
+
+**Classes do metaprompt.** A = profundidade necessária; B = repetição útil (resumo, glossário,
+FAQ); C = complexidade opcional (mover para apêndice ou recolher); D = excesso (cortar ou fundir).
+
+### 8.1 Notas
+
+| ID | Página | Tese | Hier. | Conc. | Progr. | Públ. | Prec. | Média | Faixa | Leitura |
+| :-- | :-- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-- |
+| ED-14 | `curiosidade-e-investigacao` | 5 | 5 | 3 | 5 | 5 | 4 | 4,50 | 90 | Ensaio de referência; tese repetida em excesso |
+| ED-18 | `devops-salesforce` | 5 | 5 | 4 | 4 | 5 | 3 | 4,45 | 85 | Manual claro; afirmações sem fonte |
+| ED-01 | `digital-workplace-agentico` | 5 | 5 | 3 | 4 | 4 | 5 | 4,30 | 85 | Estudo modelo; extensão justificada |
+| ED-16 | `develop-engineering` | 5 | 4 | 4 | 4 | 4 | 4 | 4,20 | 80 | Rótulos epistêmicos fortes; uma tabela confusa |
+| ED-29 | `catalogo` | 4 | 3 | 4 | 3 | 4 | 3 | 3,55 | 65 | Pilar Método inchado; promessas sem base |
+| ED-04 | `case-agents` | 5 | 3 | 3 | 3 | 4 | 2 | 3,45 | 60 | Limitações honestas que o início contradiz |
+| ED-07 | `engenharia-agentes-ia` | 5 | 3 | 2 | 3 | 4 | 3 | 3,35 | 60 | Mesmo conteúdo em quatro camadas |
+| ED-03 | `engenharia-confianca` | 5 | 3 | 2 | 3 | 3 | 2 | 3,10 | 55 | Reexplica três páginas que diz só referenciar |
+| ED-06 | `devin` | 3 | 2 | 2 | 3 | 3 | 2 | 2,50 | 40 | Transcrição de palestra publicada como página |
+
+Todas as nove páginas têm tese clara (nota 4 ou 5). O que separa as notas altas das baixas é
+**concisão e precisão**, não falta de ideia: as páginas com nota baixa dizem a mesma coisa várias
+vezes e misturam número ilustrativo com resultado medido.
+
+### 8.2 Avaliação por página
+
+#### `digital-workplace-agentico` (85)
+
+- **A:** extensão (~70 min) coerente com estudo de referência. Tem portas de entrada ("Como ler
+  esta página" em 2, 12 e 45 minutos), selos FATO / INFERÊNCIA / HIPÓTESE / RECOMENDAÇÃO e uma
+  seção "o que este estudo não é". É o padrão a copiar nas outras páginas longas.
+- **B:** as 30 perguntas do fim consolidam o corpo de propósito.
+- **C:** a tese "chatbot com credenciais perigosas" aparece no hero e de novo na seção de
+  maturidade; "o documento explica, a API decide" e "RAG é o último elo" voltam várias vezes.
+- **Precisão:** fatos datados (revisão do MCP de 2026-07-28, A2UI 0.8 de dezembro de 2025)
+  precisam de fonte com data de consulta. A definição de A2UI diverge das outras páginas (§9.3).
+  O "cerca de 45 minutos" da leitura completa está abaixo dos ~70 minutos medidos.
+- **Restrição respeitada:** a página segue neutra de marca. Nenhuma recomendação deste relatório
+  cita a empresa de referência.
+
+#### `curiosidade-e-investigacao` (90)
+
+- **A:** argumento bem encadeado, distinções claras, referências.
+- **D:** a tese aparece em cerca de cinco blocos: síntese no topo, FAQ, três cartões
+  "Distinção", conclusão e os metablocos "Nota editorial" e "Auditoria".
+- **Precisão:** "~14 min de leitura" (linha 316 do HTML) contra ~18 min medidos. Referências
+  incompletas: o título citado de Bastani et al. (2025) parece um resumo, não o título do artigo;
+  Theobald (2021) está sem periódico.
+
+#### `devops-salesforce` (85)
+
+- **A:** manual com tese na introdução e passos na ordem de execução. As frases longas (21,7
+  palavras em média, a maior do site) são explicativas; a intervenção é leve (P3).
+- **Precisão:** três afirmações sem fonte: "Instalar Java antes do resto é a causa mais comum de
+  ambientes quebrados"; "Pesquisa recente (ETH Zürich, 2026)" sem link; "Em 2024 e 2025 a
+  indústria inteira…".
+- **D:** "documento vivo, não artefato publicado uma vez e esquecido" aparece na seção do
+  AGENTS.md e de novo no fechamento.
+
+#### `develop-engineering` (80)
+
+- **A:** rotulagem epistêmica forte e limitações explícitas. O vocabulário em inglês é pesado,
+  mas o glossário compensa.
+- **B:** cada definição aparece três vezes (no texto, no glossário e no FAQ). Intencional.
+- **Precisão:** as Cenas 06 e 07 têm o selo "✓ ESTABLISHED", mas a Cena 09 diz que o artigo
+  "ainda não cita fontes primárias". Na tabela da Cena 06, a coluna "Veredicto" mostra
+  FAIL / UNKNOWN / CONFLICT nas linhas 07–09 ao lado da coluna "O que garante quando passa", o
+  que confunde o leitor.
+
+#### `catalogo` (65)
+
+- **Hierarquia:** o pilar Engenharia de Confiança tem 11 dos 31 cartões e mistura framework,
+  casos, tutorial, simulador e estudo. Os outros pilares têm de 3 a 7.
+- **Público:** os três cartões Salesforce não dizem qual ler primeiro. "DevOps Salesforce" e
+  "Agentic DevOps for Salesforce" (título em inglês) parecem a mesma coisa.
+- **Precisão:** promessas sem base: "em tempo recorde" (Quick Start), "sem débito técnico"
+  (Agentic DevOps), "decisões mais rápidas sem perder o controle" (Knowledge OS),
+  "Correlação inteligente" (Observabilidade).
+- **Correção do §3, item 9:** `devin` no pilar Fundação é **defensável**, porque a página trata
+  mais de postura do que de ferramenta. Fica como decisão do autor, não como erro.
+- **Já registrado no §3:** `/catalogo.md` desatualizado (fonte `mdSections` em `pages.mjs`).
+
+#### `case-agents` (60)
+
+- **A:** a seção de limitações (§13) é honesta e detalhada.
+- **Precisão:** afirmações anteriores contradizem essa seção: "100% de Hit Rate@2 e zero
+  execuções incorretas garantidas formalmente" e "Proteção comprovada" (§02), quando a camada G4
+  cobre 59 de 285 tools; "provou a solidez matemática do motor: 100% de precisão" (§08); a
+  síntese fala em "Economia de custo real — 77,8%" e o §10 diz "Não é economia financeira total".
+- **Precisão:** latências vêm de um blueprint não medido e aparecem como fato: "SLAs sub-2ms"
+  (hero), "p99 < 1-3 ms" e "< 10 µs" (§08); a matriz Rust/Go não tem fonte. "Eliminando 45% de
+  falsos negativos" também não tem fonte na página. A página anuncia 9 ADRs e mostra 6.
+- **C:** o §07 (~2.000 palavras, com números da branch enxuta diferentes do resto) interrompe a
+  narrativa. Candidato a apêndice recolhido.
+- **SEO:** `<title>` com 84 caracteres.
+
+#### `engenharia-agentes-ia` (60)
+
+- **D:** o mesmo conteúdo em quatro camadas: 10 cartões de princípios, 5 pilares, trilha de 10
+  capítulos que reexplica cada princípio, glossário + síntese + FAQ. O estudo de caso
+  SocialSelling aparece quase igual no capítulo 10 e na seção "Estudo de caso". A seção
+  "Governança Agent-Driven" repete frases do capítulo 10.
+- **C:** cerca de oito analogias concorrentes (banco de dados, fábrica, cozinha e salão,
+  cozinheiro, Fórmula 1, andaime, laboratório e linha de produção, circuito analógico).
+- **Precisão:** "Não determinismo é defeito" é dito como absoluto, e a página depois diz que a
+  probabilidade fica encapsulada. "A caixa-preta é o maior bloqueador de adoção corporativa" não
+  tem fonte. O "Limiar de Certeza" está na síntese, no FAQ e no glossário (`pages.mjs`), mas não
+  no corpo da página.
+
+#### `engenharia-confianca` (55)
+
+- **D, evidência mais forte do G1:** o Módulo 2 reexplica os princípios de
+  `engenharia-agentes-ia` (Fórmula 1, Cérebro × Vitrine, contratos, mundo aberto, ledgers,
+  fail-closed, MCP). O Módulo 1 repete literalmente a frase-tese de `proposta-engenharia-reversa`
+  ("Antes de modernizar (To-Be), é preciso congelar…"). O Módulo 3 repete `devin` (analogia do
+  chef, Orquestrador Cognitivo). A própria página diz que "referencia as três páginas-fonte em vez
+  de duplicá-las".
+- **D:** o ISM é explicado cinco vezes ou mais; o parágrafo do encadeamento M1→M2→M3, cerca de
+  quatro.
+- **Precisão (P1):** o "Limiar de 98% de Certeza" é central aqui, mas a página-pilar citada como
+  fonte não tem esse número, e ECE não justifica um valor específico. As "metas orientativas"
+  (CSI < 5%, > 95%, < 200 ms, > 90%) não têm base. "Crescimento exponencial" exagera o estudo da
+  GitClear. A anedota da Target Canada ("analistas desativaram o alerta") precisa de fonte.
+  Zillow (US$ 500 mi+) e Epic Sepsis (67%) parecem corretos, mas devem ter link.
+- **Precisão:** "Leitura ~25 min" contra 34 min medidos.
+- **Fonte:** a página não está em `pages.mjs`; síntese e FAQ estão escritas à mão no HTML.
+
+#### `devin` (40)
+
+- **Formato:** transcrição de palestra publicada como página. Retórica oral ("Quantos de
+  vocês…?") e tese tardia.
+- **C:** cerca de nove sistemas de metáfora (calculadora, vento, chef e cozinha, cirurgião,
+  sinfonia e maestro, trapezista, mise en place, estagiário, centauro).
+- **D:** bordões repetidos: "A ferramenta não te diminuiu. Te liberou." (2×); "Velocidade sem
+  maestria…" (2×); "A IA processa. Você pensa." (2×); "Agora que vimos o instrumento — como
+  tocamos juntos?" (2×).
+- **Precisão:** números ilustrativos apresentados como resultado ("Economia de 8 horas", "Código
+  40% mais legível", "2 dias vs 2 semanas", "80 casos · cobertura 97%", "55%"). "Devin… sem
+  acessar bases externas" contradiz a seção de ACU ("navegar em docs"). "As cinco dimensões
+  humanas" lista três. "A calculadora foi a primeira IA da história" é impreciso. A síntese
+  (`pages.mjs`) destaca A2UI e BDD, que quase não aparecem no corpo. A página cita "os oito
+  episódios" sem mostrá-los.
+- **Privacidade (decisão do autor, P0):** a página publica nomes de familiares, incluindo
+  menores de idade (linha 473 do HTML), e nomes internos de equipe ou produto. Não é problema de
+  redação; é decisão de exposição.
+
+## 9. Diagnóstico transversal (Lote 1)
+
+### 9.1 Padrões
+
+1. **Tese repetida em camadas.** Síntese + FAQ + corpo + metablocos. A síntese e o FAQ são
+   repetição útil (B). O excesso está no corpo, que repete a tese em cartões, capítulos e
+   fechamento (D). Pior em `engenharia-agentes-ia`, `engenharia-confianca` e
+   `curiosidade-e-investigacao`.
+2. **Número ilustrativo com cara de resultado.** `devin`, `case-agents` e `engenharia-confianca`.
+   É o problema de maior risco, porque afeta a credibilidade das páginas que estão certas.
+3. **Definições divergentes entre páginas do G1.** Limiar de Certeza (com e sem 98%) e A2UI (ver
+   §9.3).
+4. **Tempo de leitura declarado abaixo do medido.** `engenharia-confianca` (25 contra 34 min),
+   `curiosidade-e-investigacao` (14 contra 18), `digital-workplace-agentico` (45 contra ~70).
+5. **Metáforas concorrentes.** Uma analogia por conceito ajuda; oito ou nove por página
+   fragmentam a explicação.
+6. **Síntese que apresenta conceito ausente do corpo.** "Limiar de Certeza" em
+   `engenharia-agentes-ia`; A2UI e BDD em `devin`.
+7. **Construção "não é X — é Y".** Contagem no site inteiro (texto visível, sem blocos
+   gerados): **98 ocorrências**. Mais frequentes: `formulacao-de-problemas` (11), `devin` (9),
+   `curiosidade-e-investigacao`, `engenharia-agentes-ia` e `engenharia-confianca` (8 cada),
+   `artifice` (7). Proporcionalmente, `apresentacao` (3,2 por mil palavras) e `artifice` (2,8).
+   Usada uma vez, a construção marca uma distinção; repetida, vira tique e soa como slogan. O
+   próprio catálogo abre com ela ("Não é uma lista — é uma jornada").
+
+### 9.2 Sobreposição confirmada (G1)
+
+A leitura confirma o sinal da Fase 1. `engenharia-confianca` não é um índice das três
+páginas-fonte: é uma quarta versão delas. Recomendação estrutural (BL-01): transformar a página
+em trilha curta que resume cada módulo em um parágrafo e manda o leitor para a página-fonte,
+mantendo só o que é próprio (o encadeamento M1→M2→M3, os casos e os KPIs com base declarada).
+
+### 9.3 Inconsistência de A2UI
+
+| Página | O que diz |
+| :-- | :-- |
+| `engenharia-confianca` (FAQ) | "evolução do MCP" |
+| `engenharia-agentes-ia` | "não é especificação canônica… valide a nomenclatura" |
+| `digital-workplace-agentico` | especificação do Google, versão 0.8 de dezembro de 2025 |
+| `devin` (síntese, `pages.mjs`) | renderização governada e determinística |
+
+O autor precisa fixar uma definição com fonte datada e aplicá-la nas quatro.
+
+## 10. Backlog (Lote 1)
+
+Tipo: **F** = fato ou precisão; **E** = estrutura; **R** = redação; **D** = decisão do autor.
+Esforço: P (< 1 h), M (1–4 h), G (> 4 h). Nenhum item foi aplicado.
+
+| ID | Página | Problema | Tipo | Recomendação | Arquivo-fonte | Esf. | Risco | Prior. | Depende de |
+| :-- | :-- | :-- | :-: | :-- | :-- | :-: | :-: | :-: | :-- |
+| BL-01 | `engenharia-confianca` | Reexplica três páginas (§9.2) | E | Virar trilha curta com links | `src/engenharia-confianca.html` | G | Médio | P1 | BL-02 |
+| BL-02 | `engenharia-confianca` | "98%" e metas de KPI sem base | F | Dar fonte ou marcar como hipótese | `src/engenharia-confianca.html` | P | Alto | P1 | autor |
+| BL-03 | `case-agents` | "100%", "garantidas formalmente", "comprovada" contra §13 | F | Alinhar ao escopo medido (59/285) | `src/case-agents.html`; síntese em `pages.mjs` | M | Alto | P1 | — |
+| BL-04 | `case-agents` | Latências de blueprint como fato; 45% sem fonte; 9 ADRs × 6 | F | Marcar como projeção ou medir | `src/case-agents.html` | P | Alto | P1 | — |
+| BL-05 | `devin` | Nomes de familiares, incluindo menores | D | Autor decide manter, anonimizar ou retirar | `src/devin.html` | P | Alto | P0 | autor |
+| BL-06 | `devin` | Números ilustrativos como resultado; contradições (bases externas, "cinco dimensões") | F | Rotular como exemplo ou retirar | `src/devin.html`; síntese em `pages.mjs` | M | Médio | P1 | — |
+| BL-07 | `devin` | Palestra transcrita: tese tardia, 9 metáforas, bordões 2× | E | Tese no topo; uma metáfora-guia; cortar bordões duplicados | `src/devin.html` | G | Baixo | P2 | BL-05, BL-06 |
+| BL-08 | G1 | A2UI definida de quatro formas (§9.3) | F | Uma definição com fonte datada | 4 páginas + `pages.mjs` | M | Médio | P1 | autor |
+| BL-09 | `engenharia-agentes-ia` | Quatro camadas do mesmo conteúdo; caso SocialSelling duplicado | E | Fundir cartões e pilares; caso em um lugar só | `src/engenharia-agentes-ia.html` | G | Médio | P2 | BL-01 |
+| BL-10 | `engenharia-agentes-ia` | "Limiar de Certeza" só na síntese, FAQ e glossário | F | Definir no corpo ou tirar da síntese | `pages.mjs` (AEO) ou HTML | P | Baixo | P2 | BL-02 |
+| BL-11 | `catalogo` | Promessas sem base em 4 cartões | R | Trocar promessa por descrição verificável | `src/catalogo.html` | P | Baixo | P2 | — |
+| BL-12 | `catalogo` | 3 cartões Salesforce sem ordem; título em inglês | E | Dizer qual ler primeiro; título em PT | `src/catalogo.html` | P | Baixo | P2 | — |
+| BL-13 | `catalogo` | Pilar Método com 11 de 31 cartões | E | Subagrupar (framework, casos, ferramentas) | `src/catalogo.html` | M | Baixo | P3 | autor |
+| BL-14 | `catalogo` | `/catalogo.md` desatualizado (§3) | F | Regenerar a partir de `pages.mjs` | `scripts/seo/pages.mjs` | P | Baixo | P2 | — |
+| BL-15 | 3 páginas | Tempo de leitura declarado abaixo do medido (§9.1, item 4) | F | Atualizar ou calcular no build | HTML de cada página | P | Baixo | P3 | — |
+| BL-16 | `curiosidade-e-investigacao` | Tese em ~5 blocos; 2 referências incompletas | R / F | Cortar metablocos repetidos; completar referências | `src/curiosidade-e-investigacao.html` | P | Baixo | P3 | — |
+| BL-17 | `devops-salesforce` | 3 afirmações sem fonte; frase repetida | F | Link ou remoção | `src/devops-salesforce.html` | P | Baixo | P3 | — |
+| BL-18 | `develop-engineering` | Selo ESTABLISHED × "sem fontes primárias"; coluna Veredicto | F / E | Rebaixar selo ou citar fonte; separar a coluna | `src/develop-engineering.html` | P | Baixo | P2 | — |
+| BL-19 | `digital-workplace-agentico` | Fatos datados sem data de consulta; "45 min" | F | Data de consulta nas fontes; ajustar tempo | `src/digital-workplace-agentico.html` | P | Baixo | P3 | BL-08 |
+| BL-20 | site | "Não é X — é Y" 98 vezes (§9.1, item 7) | R | Regra no delta do guia (Fase 8): no máximo uma por seção | guia editorial | P | Baixo | P3 | Fase 8 |
+| BL-21 | `boutique-empresarial-showcase` | `<title>` com 66 caracteres; description com 161; fora de `pages.mjs` | R | Encurtar; decidir gêmeo `/en/` | `src/boutique-empresarial-showcase.html` | P | Baixo | P3 | autor |
+
+**Toda edição em ativo PT-BR público** deixa o espelho `/en/` velho: depois de aplicar qualquer
+item, rodar `npm run i18n:sync && npm run i18n:check` localmente.
