@@ -44,7 +44,7 @@ HTML_NAO_PUBLICAS = frozenset(
         "vsl",
         "proposta",  # executiva não listada: sem gêmeo /en/
         "entrevista-acessibilidade-streaming",  # ferramenta de entrevista em PT-BR, não listada
-        "boutique-empresarial-showcase",
+        "boutique-empresarial-showcase",  # indexada só em PT-BR: gêmeo /en/ não decidido
     }
 )
 
@@ -114,6 +114,10 @@ def html_assets() -> list[Asset]:
 def public_assets() -> list[Asset]:
     out = []
     for path in sorted(PUBLIC.glob("*.md")):
+        # Gêmeo .md de página sem espelho /en/ (ex.: a Boutique) também fica
+        # sem espelho: um .md em inglês sem a página em inglês não serve a ninguém.
+        if path.stem in HTML_NAO_PUBLICAS:
+            continue
         route = f"/{path.name}"
         out.append(
             Asset(
