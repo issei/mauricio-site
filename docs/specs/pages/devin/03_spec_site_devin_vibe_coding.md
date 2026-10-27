@@ -137,7 +137,7 @@ PRÓXIMOS PASSOS
 **Três blocos de informação (podem ser cartões ou itens numerados):**
 
 **Bloco 1 — Pessoal**
-> 44 anos. Casado com a Talita. Pai da Yumi (14), Lucas e Matheus (9).
+> 44 anos. Casado e pai de três filhos.
 
 **Bloco 2 — Formação**
 > Sistemas de Informação · Operações Logísticas · Estatística Aplicada · Ciência de Dados.

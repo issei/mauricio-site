@@ -9,7 +9,7 @@ O **Vibe Coding** maduro não é caos de prompts: é **intenção estruturada e 
 - **Spec-Driven Development (SDD)** — a especificação versionada é a referência da intenção: a IA implementa contra ela, e divergências entre spec, testes e código são decididas por pessoas.
 - **BDD como verificação** — cenários Dado/Quando/Então verificam os comportamentos escolhidos; não provam, sozinhos, que a intenção foi cumprida.
 - **Arsenal Skills · Playbooks · Knowledge** — conhecimento organizacional que acumula e se reusa no Git.
-- **A2UI** — o agente emite intenção de interface; a renderização é governada e determinística.
+- **A2UI** — protocolo aberto do Google: o agente descreve a interface em JSON declarativo e o cliente a renderiza com componentes de um catálogo pré-aprovado.
 
 ## O fluxo prático
 
@@ -35,7 +35,7 @@ No SDD a especificação versionada é a referência da intenção: escreve-se o
 
 **O que é A2UI (Agent-to-User Interface)?**
 
-É a evolução do MCP da consulta para a renderização: o agente usa o protocolo para emitir intenção de interface — o Cérebro decide o quê mostrar (dados sob contrato) e a Vitrine determinística decide como renderizar. A interface deixa de ser texto livre imprevisível e passa a ser output governado, testável e reproduzível.
+É um protocolo aberto do Google (Apache 2.0, lançado em dezembro de 2025) em que o agente descreve a interface em JSON declarativo, como dados e não como código, e o cliente a renderiza com componentes nativos de um catálogo pré-aprovado. É independente do MCP: o MCP liga o agente às ferramentas; o A2UI liga o agente à interface. Assim a interface deixa de ser texto livre imprevisível e passa a ser output governado e testável.
 
 ## Glossário
 
@@ -43,6 +43,6 @@ No SDD a especificação versionada é a referência da intenção: escreve-se o
 - **SDD (Spec-Driven Development)** — A especificação versionada como referência da intenção; a IA implementa contra ela e os testes verificam os comportamentos escolhidos.
 - **BDD** — Cenários Dado/Quando/Então com fixtures gravadas; testa o sistema ao redor do modelo.
 - **Orquestrador Cognitivo** — Quem dirige a inteligência da máquina com intenção, em vez de executar cada linha.
-- **A2UI (Agent-to-User Interface)** — O agente emite intenção de interface; a Vitrine determinística decide como renderizar.
+- **A2UI (Agent-to-User Interface)** — Protocolo aberto do Google em que o agente descreve a interface em JSON declarativo e o cliente a renderiza com componentes de um catálogo pré-aprovado.
 
 *© 2026 Maurício Yokoyama Issei. Conteúdo citável com atribuição (fair use educacional).*

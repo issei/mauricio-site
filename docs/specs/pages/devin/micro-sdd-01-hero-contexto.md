@@ -135,7 +135,7 @@ Ao sair desta seção, o visitante deve experimentar uma **provocação existenc
     <div class="apresentacao__cards">
       <article class="card card--pessoal">
         <h4 class="card__label">Pessoal</h4>
-        <p>44 anos. Casado com a Talita. Pai da Yumi (14), Lucas e Matheus (9).</p>
+        <p>44 anos. Casado e pai de três filhos.</p>
       </article>
       <article class="card card--formacao">
         <h4 class="card__label">Formação</h4>
