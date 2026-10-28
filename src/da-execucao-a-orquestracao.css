@@ -1,0 +1,264 @@
+/*
+ * Da execução à orquestração do trabalho — áudio comentado.
+ *
+ * Base de design: AGENTS.md / STYLE_GUIDE.md ("Dark Tech & Developer Centric").
+ * Prefixo de namespace: .eo-  (evita colisão com as outras páginas do MPA).
+ *
+ * A cor do selo carrega o grau de certeza, não decoração: verde = fato,
+ * azul = inferência, âmbar = hipótese. Trocar um destes valores troca o que o
+ * selo afirma sobre a evidência — que é o assunto da página.
+ */
+
+:root {
+  /* Superfícies (GitHub Dark Dimmed) */
+  --eo-bg: #0d1117;
+  --eo-surface: #161b22;
+  --eo-surface-2: #1c2230;
+  --eo-border: #30363d;
+
+  /* Texto */
+  --eo-text: #c9d1d9;
+  --eo-heading: #ffffff;
+  --eo-muted: #8b949e;
+  --eo-link: #58a6ff;
+
+  /* Acentos decorativos — nunca em texto pequeno */
+  --eo-accent: #007bff;
+  --eo-accent-2: #8a2be2;
+  --eo-gradient: linear-gradient(90deg, var(--eo-accent), var(--eo-accent-2));
+
+  /* Selos (grau de certeza) */
+  --eo-fato: #3fb950;
+  --eo-inferencia: #58a6ff;
+  --eo-hipotese: #d29922;
+  --eo-erro: #ff7b72;
+
+  --eo-radius: 14px;
+  --eo-shadow: 0 0 0 1px rgba(0, 123, 255, 0.15), 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body.eo-body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--eo-bg);
+  color: var(--eo-text);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.eo-body h1,
+.eo-body h2,
+.eo-body h3 { color: var(--eo-heading); line-height: 1.25; }
+
+.eo-body a { color: var(--eo-link); text-decoration: underline; text-underline-offset: 2px; }
+.eo-body a:hover { text-decoration-thickness: 2px; }
+.eo-nav a { text-decoration: none; }
+.eo-nav a:hover { text-decoration: underline; }
+
+.eo-body :focus-visible {
+  outline: 2px solid var(--eo-link);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.eo-grad {
+  background: var(--eo-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.eo-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--eo-surface);
+  color: var(--eo-heading);
+  padding: 0.75rem 1rem;
+  border-radius: 0 0 8px 0;
+}
+.eo-skip:focus { left: 0; }
+
+/* ------------------------------------------------------------ navegação */
+.eo-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13, 17, 23, 0.92);
+  border-bottom: 1px solid var(--eo-border);
+  backdrop-filter: blur(8px);
+}
+.eo-nav__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.eo-nav__brand { color: var(--eo-heading) !important; font-weight: 700; }
+.eo-nav__trail { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 0.9rem; }
+.eo-nav__trail a { color: var(--eo-text); }
+
+/* ------------------------------------------------------------ seções */
+.eo-section { padding: 4rem 0; border-bottom: 1px solid var(--eo-border); }
+.eo-container { max-width: 52rem; margin: 0 auto; padding: 0 1rem; }
+.eo-container--wide { max-width: 72rem; }
+
+.eo-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--eo-link);
+  margin: 0 0 0.75rem;
+}
+
+.eo-hero__title {
+  font-size: clamp(2.1rem, 6vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+}
+.eo-lede { font-size: 1.15rem; color: var(--eo-heading); margin: 0 0 1.5rem; }
+
+.eo-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+}
+.eo-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-top: 0.75rem;
+  border-radius: 2px;
+  background: var(--eo-gradient);
+}
+
+.eo-prose p { margin: 0 0 1rem; }
+.eo-small { font-size: 0.9rem; color: var(--eo-muted); }
+
+/* ------------------------------------------------------------ player */
+.eo-player {
+  background: var(--eo-surface);
+  border: 1px solid var(--eo-border);
+  border-radius: var(--eo-radius);
+  padding: 1.25rem;
+  margin: 0 0 1.5rem;
+  box-shadow: var(--eo-shadow);
+}
+.eo-player figcaption { font-weight: 600; color: var(--eo-heading); margin-bottom: 0.75rem; }
+.eo-player audio { width: 100%; display: block; }
+.eo-player__links { margin: 0.75rem 0 0; font-size: 0.95rem; }
+
+.eo-aviso {
+  border-left: 4px solid var(--eo-hipotese);
+  background: var(--eo-surface-2);
+  border-radius: 0 var(--eo-radius) var(--eo-radius) 0;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1rem;
+}
+.eo-aviso p { margin: 0; }
+
+.eo-details {
+  background: var(--eo-surface);
+  border: 1px solid var(--eo-border);
+  border-radius: var(--eo-radius);
+  padding: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+}
+.eo-details summary { cursor: pointer; font-weight: 600; color: var(--eo-heading); padding: 0.25rem 0; }
+.eo-details[open] summary { margin-bottom: 0.75rem; }
+.eo-details p { margin: 0 0 1rem; }
+
+/* ------------------------------------------------------------ tabelas */
+.eo-tablewrap { overflow-x: auto; margin: 1.5rem 0; }
+.eo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: var(--eo-surface);
+  border: 1px solid var(--eo-border);
+  border-radius: var(--eo-radius);
+}
+.eo-table caption { text-align: left; color: var(--eo-muted); font-size: 0.9rem; padding-bottom: 0.5rem; }
+.eo-table th,
+.eo-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--eo-border);
+  overflow-wrap: anywhere;
+}
+.eo-table thead th { color: var(--eo-heading); background: var(--eo-surface-2); }
+.eo-table tbody tr:last-child td,
+.eo-table tbody tr:last-child th { border-bottom: 0; }
+.eo-table th[scope="row"] { color: var(--eo-heading); font-weight: 600; }
+.eo-audio-cell { color: var(--eo-muted); font-style: italic; width: 40%; }
+
+/* ------------------------------------------------------------ blocos de evidência */
+.eo-bloco {
+  background: var(--eo-surface);
+  border: 1px solid var(--eo-border);
+  border-top: 4px solid var(--eo-border);
+  border-radius: var(--eo-radius);
+  padding: 1.25rem 1.5rem;
+  margin: 0 0 1.25rem;
+}
+.eo-bloco h3 { font-size: 1.15rem; margin: 0.5rem 0 0.75rem; }
+.eo-bloco p { margin: 0 0 0.75rem; }
+.eo-bloco p:last-child { margin-bottom: 0; }
+.eo-bloco--fato { border-top-color: var(--eo-fato); }
+.eo-bloco--inferencia { border-top-color: var(--eo-inferencia); }
+.eo-bloco--hipotese { border-top-color: var(--eo-hipotese); }
+
+.eo-selo {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+.eo-selo--fato { color: var(--eo-fato); }
+.eo-selo--inferencia { color: var(--eo-inferencia); }
+.eo-selo--hipotese { color: var(--eo-hipotese); }
+
+.eo-fontes-curtas { font-size: 0.9rem; color: var(--eo-muted); font-style: italic; }
+
+.eo-metafora {
+  margin: 1rem 0 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--eo-accent-2);
+  background: var(--eo-surface-2);
+  border-radius: 0 10px 10px 0;
+  color: var(--eo-heading);
+}
+
+/* ------------------------------------------------------------ listas */
+.eo-lista { padding-left: 1.25rem; }
+.eo-lista li { margin-bottom: 0.6rem; }
+.eo-refs { padding-left: 1.5rem; font-size: 0.95rem; }
+.eo-refs li { margin-bottom: 0.75rem; }
+
+/* ------------------------------------------------------------ rodapé */
+.eo-footer { padding: 3rem 0; background: var(--eo-surface); }
+.eo-footer p { margin: 0 0 0.5rem; }
+.eo-footer__brand { color: var(--eo-heading); font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

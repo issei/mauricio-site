@@ -22,6 +22,7 @@ const PAGINAS = [
   'digital-workplace-agentico',
   'agent-ready',
   'capacidade-antes-do-acesso',
+  'da-execucao-a-orquestracao',
   'acessibilidade',
 ];
 const MAX_PARADAS = 260;

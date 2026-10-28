@@ -159,6 +159,11 @@ for (const slug of arquivos) {
     const limpo = caminho.replace(/^\.?\//, '').replace(/^\//, '');
     if (!limpo) continue;
 
+    // static/ (áudios, PDFs grandes) fica fora do git: vive só no bucket, e o
+    // deploy o preserva com `--exclude "static/*"` (.github/workflows/deploy.yml).
+    // Não há arquivo local para conferir.
+    if (limpo.startsWith('static/')) continue;
+
     // recursos de public/ (md, pdf, json, imagens…)
     if (!limpo.endsWith('.html')) {
       const emPublic = existsSync(join(PUB, limpo));

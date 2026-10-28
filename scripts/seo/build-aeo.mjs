@@ -39,7 +39,9 @@ function stripManagedHeadTags(head) {
     /^[\t ]*<meta[^>]*name=["']twitter:[^"']*["'][^>]*>\s*$/gim,
     /^[\t ]*<link[^>]*rel=["']alternate["'][^>]*type=["']text\/markdown["'][^>]*>\s*$/gim,
     /^[\t ]*<script[^>]*googletagmanager\.com\/gtag[^>]*><\/script>\s*$/gim,
-    /^[\t ]*<script>[^<]*gtag\([^<]*<\/script>\s*$/gim,
+    // O snippet do GA4 sai; o consent-default inline (marcado por __consentDefault) fica:
+    // ele PRECISA vir antes do gtag.js, e sem esta exceção cada regeneração o apagava.
+    /^[\t ]*<script>(?![^<]*__consentDefault)[^<]*gtag\([^<]*<\/script>\s*$/gim,
     /[\t ]*<script[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi,
     /<!--\s*Open Graph\s*-->\s*/gi,
   ];

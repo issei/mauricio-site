@@ -599,6 +599,70 @@ export const PAGES = [
 
   // ===================================================================== TIER A
   {
+    slug: 'da-execucao-a-orquestracao', type: 'ScholarlyArticle', tier: 'A', hasMd: true,
+    // `mdFromMain`: o .md companheiro anexa a <main> da página convertida (scripts/seo/html-to-md.mjs).
+    // A transcrição automática fica fora do .md (data-md="skip"): é rascunho sem revisão humana.
+    mdFromMain: true,
+    title: 'Da execução à orquestração do trabalho — áudio comentado',
+    headline: 'Da execução à orquestração do trabalho: o que a evidência sustenta sobre IA, produtividade e supervisão',
+    description: 'Áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir e três cenários para o futuro do trabalho.',
+    datePublished: '2026-10-28', dateModified: '2026-10-28',
+    section: 'Trabalho e IA',
+    tags: ['Futuro do Trabalho', 'Produtividade', 'Supervisão de IA', 'Agentes de IA', 'Revisão Crítica'],
+    keywords: ['orquestração do trabalho', 'produtividade com IA', 'AI brain fry', 'viés de automação', 'perda de habilidade', 'DORA', 'SPACE', 'sistemas multiagentes', 'MAST', 'EPOCH MIT Sloan'],
+    about: [
+      { name: 'Produtividade com IA generativa' }, { name: 'Supervisão humana da automação' },
+      { name: 'Viés de automação' }, { name: 'Sistemas multiagentes' }, { name: 'Futuro do trabalho' },
+    ],
+    audience: 'Líderes de engenharia, gestores, pesquisadores do trabalho',
+    tldr: {
+      heading: 'O que o áudio acerta e o que precisa de correção',
+      lede: 'A IA aumenta a capacidade de produzir mais depressa do que a capacidade de verificar. Onde isso acontece, o trabalho humano passa a depender mais de especificar, verificar e responder pelo resultado. O ganho líquido não é garantido.',
+      points: [
+        '**Ganho com limites** — experimentos mostram ganhos em tarefas delimitadas, maiores para novatos; fora do que o modelo faz bem, o desempenho cai.',
+        '**A fila muda de lugar** — dados observacionais mostram mais código e revisão mais longa, sem ganho visível na entrega da organização.',
+        '**Supervisionar custa** — complacência com a automação, fadiga relatada e perda de prática têm evidência, com amostras pequenas.',
+        '**Números corrigidos** — o "caso bancário" do áudio é um benchmark offline do autor; a queda de entrega citada não tem fonte; o 33% é diferença entre grupos.',
+      ],
+      foot: 'Registro completo: 56 afirmações auditadas, com fontes e lacunas.',
+    },
+    faq: [
+      { q: 'A IA já desloca o trabalho da execução para a orquestração?', a: 'Em parte, e só em alguns contextos. Experimentos mostram ganhos em tarefas delimitadas, e dados de engenharia de software sugerem que o gargalo passa para a revisão. Os dados de mercado de trabalho mostram, até agora, efeitos pequenos na média e efeitos concentrados em jovens de ocupações expostas. Não há estudo que meça diretamente o trabalho de orquestração.' },
+      { q: 'O que é AI brain fry?', a: 'É o nome que pesquisadores do BCG deram, em 2026, à fadiga mental de quem usa ou supervisiona ferramentas de IA além da própria capacidade. Numa pesquisa com 1 488 trabalhadores dos EUA, quem relatou o problema relatou 33% mais fadiga de decisão do que quem não relatou. A pesquisa mostra associação, não causa.' },
+      { q: 'A IA deixa os desenvolvedores mais rápidos?', a: 'Depende da tarefa e da pessoa. Num experimento com uma tarefa curta, o grupo com Copilot terminou 55,8% mais rápido. Num experimento com 16 desenvolvedores experientes em projetos que eles conheciam, as tarefas com IA levaram 19% mais tempo.' },
+      { q: 'Usar IA prejudica a aprendizagem?', a: 'Pode prejudicar quando a pessoa só delega. Num experimento com 52 programadores, quem usou IA para aprender uma biblioteca nova teve nota menor num teste de compreensão. Quem usou a IA para perguntar e entender manteve a nota. A amostra é pequena.' },
+      { q: 'O que diz o estudo sobre falhas de sistemas multiagentes?', a: 'O estudo MAST, da UC Berkeley, classificou falhas em 14 modos e 3 categorias e encontrou taxas de falha de 41% a 86,7% em sete sistemas de código aberto. O valor de Kappa de 0,88 mede a concordância entre os anotadores humanos.' },
+    ],
+    terms: [
+      { slug: 'ai-brain-fry', name: 'AI brain fry', def: 'Nome dado por pesquisadores do BCG, em 2026, à fadiga mental de quem usa ou supervisiona IA além da própria capacidade.' },
+      { slug: 'ironias-da-automacao', name: 'Ironias da automação', def: 'Automatizar a parte fácil deixa à pessoa a parte difícil, com menos prática (Bainbridge, 1983).' },
+      { slug: 'vies-de-automacao', name: 'Viés de automação', def: 'Tendência de quem supervisiona automação a confiar demais nela (Parasuraman e Manzey, 2010).' },
+      { slug: 'fronteira-irregular', name: 'Fronteira irregular', def: 'Limite entre as tarefas que o modelo faz bem e as que ele faz mal; fora dele, a IA pode piorar o resultado (Dell\'Acqua et al., 2025).' },
+      { slug: 'manobra-inversa-de-conway', name: 'Manobra inversa de Conway', def: 'Organizar as equipes conforme a arquitetura desejada; vem da prática de consultoria e do livro Team Topologies.' },
+      { slug: 'mast', name: 'MAST', def: 'Taxonomia de falhas de sistemas multiagentes da UC Berkeley (2025): 14 modos de falha em 3 categorias.' },
+      { slug: 'epoch', name: 'EPOCH', def: 'Grupos de capacidades humanas propostos pelo MIT Sloan (2025): empatia, presença, opinião e julgamento, criatividade, e esperança e liderança.' },
+    ],
+    extraGraph: [{
+      '@type': 'AudioObject',
+      '@id': 'https://mauricio.issei.com.br/da-execucao-a-orquestracao#audio',
+      name: 'Da execução à orquestração do trabalho',
+      description: 'Conversa sobre IA e trabalho gerada por IA no NotebookLM a partir dos vídeos do canal @MauricioIssei, publicada com revisão das afirmações.',
+      duration: 'PT19M37S',
+      contentUrl: 'https://mauricio.issei.com.br/static/audio/Da_execu%C3%A7%C3%A3o_%C3%A0_orquestra%C3%A7%C3%A3o_do_trabalho.m4a',
+      encodingFormat: 'audio/mp4',
+      inLanguage: 'pt-BR',
+      isPartOf: { '@id': 'https://mauricio.issei.com.br/da-execucao-a-orquestracao#webpage' },
+    }],
+    og: {
+      eyebrow: 'Áudio comentado · Trabalho e IA',
+      title: 'Da execução à {orquestração}',
+      titleSize: 76,
+      subtitle: 'O que a evidência sustenta sobre IA e trabalho',
+      thesis: 'A fila muda de lugar: produzir ficou mais rápido que verificar.',
+      chips: [{ k: '56', label: 'Afirmações auditadas' }, { k: '3', label: 'Cenários' }, { k: '19:37', label: 'Áudio' }],
+    },
+  },
+  {
     slug: 'salesforce-agentic-dev', type: 'TechArticle', tier: 'A', hasMd: true,
     title: 'Desenvolver Salesforce com IA Agentic sem gerar débito técnico',
     description: 'Como desenvolver Salesforce com IA agêntica sem gerar débito técnico: Spec-Driven Development, Devin, Flosum CLI e Modelo Federado.',
@@ -848,6 +912,7 @@ export const PAGES = [
         '- [O Artífice Invisível](https://mauricio.issei.com.br/artifice) — o paradoxo da maestria técnica: por que a sofisticação vira carga invisível, e como recuperar a soberania do ofício.',
         '- [Curiosidade e Investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao) — informação não é conhecimento: transformar curiosidade em investigação usando a IA como bancada, não como oráculo.',
         '- [O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/aprendizagem-autorregulada) — o que a ciência comprova sobre recuperação, espaçamento, autoexplicação e busca orientada, com protocolo de 45–60 min, ficha de estudo e a [revisão científica completa](https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo).',
+        '- [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao) — um áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir enquanto ouve e três cenários.',
       ].join('\n') },
       { h: '02 · O Método — Engenharia de Confiança', body: [
         'Da intenção à execução agêntica confiável: a disciplina-ponte que transforma mentalidade em método.',

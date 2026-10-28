@@ -18,6 +18,7 @@ Principles of systemic thinking and knowledge management: the starting point bef
 - [The Invisible Artificer](https://mauricio.issei.com.br/en/artifice) — the paradox of technical mastery: why sophistication becomes invisible burden, and how to regain the sovereignty of craft.
 - [Curiosity and Research](https://mauricio.issei.com.br/en/curiosidade-e-investigacao) — information is not knowledge: transform curiosity into investigation using AI as a bench, not as an oracle.
 - [The Self-regulated Learning Cycle](https://mauricio.issei.com.br/en/aprendizagem-autorregulada) — what science proves about recovery, spacing, self-explanation and oriented search, with a 45–60 min protocol, study form and [full scientific review](https://mauricio.issei.com.br/en/aprendizagem-autorregulada-artigo).
+- [From execution to orchestration of work](https://mauricio.issei.com.br/en/da-execucao-a-orquestracao) — an audio about AI and work, with review of 56 statements: what evidence sustains, what to correct while listening and three scenarios.
 
 ## 02 · The Method — Trust Engineering
 
