@@ -10,7 +10,7 @@ O **Vibe Coding** Mature is not prompt chaos: it is **structured and persistent 
 - **Spec-Driven Development (SDD)** — the versioned specification is the reference of the intention: the AI implements against it, and differences between spec, tests and code are decided by people.
 - **BDD as verification** — Given/When/Then check the chosen behaviors; do not prove alone that the intention has been fulfilled.
 - **Arsenal Skills · Playbooks · Knowledge** — organizational knowledge that accumulates and re-uses itself in Git.
-- **A2UI** — the agent issues interface intent; rendering is governed and deterministic.
+- **A2UI** — Google open protocol: the agent describes the JSON declarative interface and the client renders it with components of a pre-approved catalogue.
 
 ## The Practical Flow
 
@@ -36,7 +36,7 @@ It is the arsenal of organizational intelligence that grows over time: Skills ar
 
 **What is A2UI (Agent-to-User Interface)?**
 
-It is the evolution of the MCP from the query to the rendering: the agent uses the protocol to issue interface intent — the Brain decides what to show (data under contract) and the deterministic display decides how to render. The interface ceases to be unpredictable free text and becomes ruled, testable and reproducible output.
+It is an open Google protocol (Apache 2.0, released in December 2025) in which the agent describes the declarative JSON interface as data and not as code, and the client renders it with native components of a pre-approved catalog. It is MCP independent: MCP connects the agent to the tools; A2UI connects the agent to the interface. Thus the interface ceases to be unpredictable free text and becomes governed and testable output.
 
 ## Glossary
 
@@ -44,6 +44,6 @@ It is the evolution of the MCP from the query to the rendering: the agent uses t
 - **SDD (Spec-Driven Development)** — The specification versioned as an intention reference; the AI implements against it and the tests verify the chosen behaviors.
 - **BDD** — Data/When/Then scenarios with recorded fixtures; tests the system around the model.
 - **Cognitive Orchestrator** — Who drives the machine's intelligence with intent, instead of running each line.
-- **A2UI (Agent-to-User Interface)** — The agent emits interface intent; the deterministic display decides how to render.
+- **A2UI (Agent-to-User Interface)** — Open Google protocol where the agent describes the declarative JSON interface and the client renders it with components from a pre-approved catalog.
 
 *© 2026 Mauritius Yokoyama Issei. Citable content with assignment (fair use educational).*

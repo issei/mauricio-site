@@ -97,6 +97,9 @@ Safe (fail-closed). What comes back is never a silent guess, but a **structured 
 human review, explicit "uncertain" response or alternative deterministic route. This is how Crash
 Silent becomes impossible by construction.
 
+**Hypothesis:** the value of 98% is a proposed starting point, not a measured result. Each system
+you need to calibrate your own threshold with data.
+
 **Chaining (M1 → M2 → M3):** schemas are derived from the Behavioral Inventory (M1) and, with its pre
 and post-conditions, become the **tool signature (tools)** that the Cognitive Orchestrator of
 M3 consumes via MCP. The audited rule becomes a contract; the contract becomes a tool.
@@ -128,10 +131,11 @@ in Git allows to reverse not only the code, but the reasoning that produced it.
 
 ### Key concept — A2UI (Agent-to-User Interface)
 
-MCP evolves from query to rendering. In an architecture **A2UI**, Cognitive Orchestrator uses the
-MCP for **issuing interface intention**: the Brain decides *What?* present (structured data under
-contract) and the deterministic display decides *how* render. Interface is no longer free text
-unpredictable and becomes an output governed by the same schemas — testable, auditable and reproducible.
+MCP connects the agent to the tools. For the interface there is another open protocol, the **A2UI**, published
+by Google: the agent **describes the declarative JSON interface**, as data and not as code, and the
+client renders it with native components of a pre-approved catalog. The agent decides *What?*
+present; customer catalog decides *how*. The interface becomes an output governed by
+contract, testable and auditable.
 
 ---
 
@@ -162,14 +166,15 @@ and AI only acts on the interpretative residue. Lower probabilistic surface = mo
 
 **What is the 98% sure threshold?** The confidence floor below which all LLM inference is
 intercepted and degraded to a structured fallback (human revision, "uncertain" or deterministic route),
-instead of becoming a suit. Unifies rigid contract, Open World and failed-closed.
+instead of becoming a suit. Unifies rigid contract, Open World and failed-closed. The 98% value is a hypothesis
+design, not a measured number: each system calibrates its own threshold with data.
 
 **What's deterministic-first?** Solve with rules and data everything possible and reserve the AI
 for interpretative residue. Same entry → same output; non-determinism isolated and testable.
 
 **What is MCP and A2UI?** The MCP is the border controlled by which the agent gains "hands and eyes" and
-declares which tools you can use. A2UI is its evolution: the agent emits interface intent — the
-Brain decides what, deterministic window decides how to render.
+declares which tools you can use. A2UI is another open Google protocol: the agent describes the
+JSON declarative interface and the client renders it with components of a pre-approved catalog.
 
 **What is SDD?** Spec-Driven Development: the versioned specification is the intention reference; the AI
 implements against spec, with tests (BDD) to check. Spec is not infallible: when spec, tests and
@@ -207,8 +212,8 @@ the guided self-assessment of 5 questions and the organizational readiness check
 - **SDD (Spec-Driven Development)** — The specification versioned as an intention reference; the AI implements against it and the tests verify the chosen behaviors.
 - **Cognitive Orchestrator** — Who drives the machine's intelligence with intent, consuming typed tools derived from schemas.
 - **ISM (Intentional Systems Model) v1.0** — Reference model that treats each AI output as artifact governed by architecture.
-- **98% Insurance threshold** — Trust floor below which all inference is intercepted and degraded to structured fallback.
-- **A2UI (Agent-to-User Interface)** — Architecture in which the orchestrator uses the MCP to emit interface intent.
+- **98% Insurance threshold** — Trust floor below which all inference is intercepted and degraded to structured fallback. The value of 98% is hypothesis, not measured.
+- **A2UI (Agent-to-User Interface)** — Open Google Protocol (Apache 2.0, released in December 2025) in which the agent describes the interface in declarative JSON, as data and not as code, and the client renders it with native components of a pre-approved catalogue. It is independent of MCP and can traffic over A2A, AG-UI or MCP.
 
 ---
 
