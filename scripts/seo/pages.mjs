@@ -617,7 +617,7 @@ export const PAGES = [
     audience: 'Líderes de engenharia, gestores, pesquisadores do trabalho',
     tldr: {
       heading: 'O que o áudio acerta e o que precisa de correção',
-      lede: 'A IA aumenta a capacidade de produzir mais depressa do que a capacidade de verificar. Onde isso acontece, o trabalho humano passa a depender mais de especificar, verificar e responder pelo resultado. O ganho líquido não é garantido.',
+      lede: 'Quando a IA acelera a produção de resultados mais do que a capacidade de verificá-los e integrá-los, o gargalo do trabalho passa para a especificação, a verificação e a coordenação. O ganho depende de como a equipe organiza essas etapas.',
       points: [
         '**Ganho com limites** — experimentos mostram ganhos em tarefas delimitadas, maiores para novatos; fora do que o modelo faz bem, o desempenho cai.',
         '**A fila muda de lugar** — dados observacionais mostram mais código e revisão mais longa, sem ganho visível na entrega da organização.',
@@ -628,6 +628,7 @@ export const PAGES = [
     },
     faq: [
       { q: 'A IA já desloca o trabalho da execução para a orquestração?', a: 'Em parte, e só em alguns contextos. Experimentos mostram ganhos em tarefas delimitadas, e dados de engenharia de software sugerem que o gargalo passa para a revisão. Os dados de mercado de trabalho mostram, até agora, efeitos pequenos na média e efeitos concentrados em jovens de ocupações expostas. Não há estudo que meça diretamente o trabalho de orquestração.' },
+      { q: 'Todo profissional precisa virar orquestrador de IA?', a: 'Não. A evidência não sustenta isso, e a execução não perdeu valor. Nas atividades em que a IA amplia a produção, executar deixou de ser suficiente: alguém ainda precisa julgar, integrar e responder pelo resultado. A especialização técnica continua necessária para construir, testar e entender sistemas, e para revisar o que a IA produz.' },
       { q: 'O que é AI brain fry?', a: 'É o nome que pesquisadores do BCG deram, em 2026, à fadiga mental de quem usa ou supervisiona ferramentas de IA além da própria capacidade. Numa pesquisa com 1 488 trabalhadores dos EUA, quem relatou o problema relatou 33% mais fadiga de decisão do que quem não relatou. A pesquisa mostra associação, não causa.' },
       { q: 'A IA deixa os desenvolvedores mais rápidos?', a: 'Depende da tarefa e da pessoa. Num experimento com uma tarefa curta, o grupo com Copilot terminou 55,8% mais rápido. Num experimento com 16 desenvolvedores experientes em projetos que eles conheciam, as tarefas com IA levaram 19% mais tempo.' },
       { q: 'Usar IA prejudica a aprendizagem?', a: 'Pode prejudicar quando a pessoa só delega. Num experimento com 52 programadores, quem usou IA para aprender uma biblioteca nova teve nota menor num teste de compreensão. Quem usou a IA para perguntar e entender manteve a nota. A amostra é pequena.' },

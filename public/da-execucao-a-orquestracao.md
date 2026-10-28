@@ -4,7 +4,7 @@
 
 ## Em síntese
 
-A IA aumenta a capacidade de produzir mais depressa do que a capacidade de verificar. Onde isso acontece, o trabalho humano passa a depender mais de especificar, verificar e responder pelo resultado. O ganho líquido não é garantido.
+Quando a IA acelera a produção de resultados mais do que a capacidade de verificá-los e integrá-los, o gargalo do trabalho passa para a especificação, a verificação e a coordenação. O ganho depende de como a equipe organiza essas etapas.
 
 - **Ganho com limites** — experimentos mostram ganhos em tarefas delimitadas, maiores para novatos; fora do que o modelo faz bem, o desempenho cai.
 - **A fila muda de lugar** — dados observacionais mostram mais código e revisão mais longa, sem ganho visível na entrega da organização.
@@ -17,21 +17,47 @@ A IA aumenta a capacidade de produzir mais depressa do que a capacidade de verif
 
 ### Da execução à orquestração do trabalho
 
-A IA aumenta a capacidade de produzir mais depressa do que aumenta a capacidade de verificar e integrar o que foi produzido. Onde isso acontece, o trabalho humano passa a depender mais de especificar, verificar, integrar e responder pelo resultado, e o ganho líquido depende de como a organização reforma a revisão, as métricas e a governança.
+Quando a IA acelera a produção de resultados mais do que a capacidade de verificá-los e integrá-los, o gargalo do trabalho passa para a especificação, a verificação e a coordenação. O ganho de produtividade depende de como a equipe organiza essas etapas.
+
+Por onde começar
+
+- **Quer a conclusão?** Leia a conclusão em um minuto e depois como aplicar.
+- **Quer só ouvir?** Vá direto para o áudio.
+- **Quer conferir a evidência?** Comece pelas correções e pelas fontes.
+
+Resumo
+
+#### Conclusão em um minuto
+
+**O que a evidência sustenta**
+
+Em escrita, atendimento e consultoria, a IA reduziu o tempo de tarefas delimitadas em experimentos controlados. Em software, os experimentos divergem: numa tarefa curta houve ganho; com desenvolvedores experientes em projetos que eles conheciam, houve perda. Em equipes de software, o volume produzido sobe e a revisão fica mais longa, sem aumento correspondente na entrega. Supervisionar a IA tem custo, e delegar sem entender pode reduzir a aprendizagem. Detalhes em O que a pesquisa permite concluir.
+
+**O que continua incerto**
+
+Se o padrão vale fora desses contextos; se ferramentas mais novas mudam o resultado; qual é o efeito no emprego, que até agora é pequeno na média. Detalhes em Limites da generalização.
+
+**O que esta página não defende**
+
+Que todo profissional precisa se tornar orquestrador de IA, ou que a execução perdeu valor. Nas atividades em que a IA amplia a produção, executar deixou de ser suficiente: alguém ainda precisa julgar, integrar e responder pelo resultado. A especialização técnica continua necessária para construir, testar e entender sistemas, e para revisar o que a IA produz.
+
+Áudio
+
+#### Ouça o áudio
 
 *Áudio: Da execução à orquestração do trabalho, 19 minutos e 37 segundos*
 
 [Baixar o áudio (.m4a)](https://mauricio.issei.com.br/static/audio/Da_execu%C3%A7%C3%A3o_%C3%A0_orquestra%C3%A7%C3%A3o_do_trabalho.m4a)
 
-O áudio foi gerado por IA no NotebookLM, do Google, a partir dos vídeos do [canal do autor no YouTube](https://www.youtube.com/@MauricioIssei). É uma conversa entre duas vozes sintéticas. Ele tem uma boa ideia central e vários números errados ou sem fonte. Esta página corrige o que o áudio afirma além da evidência. Se você tiver pouco tempo, leia a tabela "O que corrigir enquanto ouve".
+O áudio foi gerado por IA no NotebookLM, do Google, a partir dos vídeos do [canal do autor no YouTube](https://www.youtube.com/@MauricioIssei). É uma conversa entre duas vozes sintéticas. Ele tem uma boa ideia central e vários números errados ou sem fonte. Esta página corrige o que o áudio afirma além da evidência. As correções principais estão na tabela "Principais correções do áudio".
 
 Texto revisado de 56 afirmações do áudio. Leitura de cerca de 13 minutos.
 
 Guia de escuta
 
-#### O que corrigir enquanto ouve
+#### Principais correções do áudio
 
-A tabela segue a ordem do áudio. A coluna da direita é a versão que a evidência sustenta.
+A tabela segue a ordem do áudio. Cada linha usa o mesmo método: a afirmação do áudio à esquerda; à direita, o que a fonte mostra e o limite desse resultado. O método serve para revisar outras narrativas sobre tecnologia.
 
 **Doze afirmações do áudio e a versão que a evidência sustenta**
 
@@ -54,9 +80,9 @@ A transcrição automática grafou alguns nomes de forma errada ("MOSCO", "Matri
 
 Revisão crítica
 
-#### O que a evidência mostra
+#### O que a pesquisa permite concluir
 
-Cada bloco tem um selo: **fato** é resultado relatado pela fonte; **inferência** combina resultados; **hipótese** ainda não tem validação suficiente.
+Cada bloco tem um selo: **fato** é resultado relatado pela fonte; **inferência** combina resultados; **hipótese** ainda não tem validação suficiente. A linha "Alcance" diz onde o resultado foi medido; fora desse alcance, ele não vale automaticamente.
 
 **[Fato]**
 
@@ -66,6 +92,8 @@ Em experimentos controlados, a IA reduziu o tempo e melhorou a qualidade em tare
 
 Fontes: Brynjolfsson, Li e Raymond (2025); Noy e Zhang (2023); Dell'Acqua et al. (2025).
 
+**Alcance:** Ferramentas de 2020 a 2023; tarefas escolhidas pelos pesquisadores; um call center e uma consultoria. Não mede ocupações inteiras.
+
 **[Inferência]**
 
 ##### 2. Produzir mais não garante entregar mais
@@ -73,6 +101,8 @@ Fontes: Brynjolfsson, Li e Raymond (2025); Noy e Zhang (2023); Dell'Acqua et al.
 Dados de mais de 10 000 desenvolvedores mostram mais pull requests com IA, revisão 91% mais longa e nenhuma correlação com a entrega no nível da organização. A pesquisa DORA (DevOps Research and Assessment) de 2024 associou mais adoção de IA a pequena queda na vazão e na estabilidade das entregas. Os dois resultados são correlacionais: não provam que a IA causou a mudança. Uma explicação alternativa é que mudanças maiores, e não a IA em si, deixam a revisão mais lenta.
 
 Fontes: Faros AI (2025); DORA (2024).
+
+**Alcance:** Software, 2024 e 2025. As duas fontes são independentes entre si; a primeira é relatório de fornecedor de ferramentas de medição.
 
 A fila muda de lugar. Quando escrever fica mais rápido e revisar não fica, o trabalho acumula na revisão.
 
@@ -84,6 +114,8 @@ A literatura de fatores humanos descreve, desde 1983, que automatizar a parte f�
 
 Fontes: Bainbridge (1983); Parasuraman e Manzey (2010); Bedard et al. (2026).
 
+**Alcance:** Os estudos de 1983 e 2010 tratam de automação em geral, não de IA generativa. O de 2026 é uma pesquisa de opinião com trabalhadores dos EUA.
+
 **[Fato, com amostras pequenas]**
 
 ##### 4. Delegar pode reduzir a aprendizagem
@@ -91,6 +123,8 @@ Fontes: Bainbridge (1983); Parasuraman e Manzey (2010); Bedard et al. (2026).
 Num experimento com 52 programadores, quem usou IA para aprender uma biblioteca nova teve nota 17 pontos menor num teste de compreensão, sem ganho significativo de tempo. Quem usou a IA para perguntar e entender manteve a nota. Em quatro centros de colonoscopia, a taxa de detecção sem IA caiu de 28,4% para 22,4% depois de meses de uso da IA. Os dois estudos são pequenos, e o segundo é observacional.
 
 Fontes: Shen e Tamkin (2026); Budzyń et al. (2025).
+
+**Alcance:** Uma biblioteca de programação e um procedimento médico. Os estudos não mostram que o efeito vale para outras habilidades.
 
 **[Fato]**
 
@@ -100,6 +134,8 @@ O tamanho das tarefas que agentes completam com 50% de sucesso dobrou a cada cer
 
 Fontes: Kwa et al. (2025); Xu et al. (2025); Cemri et al. (2025).
 
+**Alcance:** Testes padronizados com modelos até 2025. O resultado em produção pode ser outro.
+
 **[Hipótese]**
 
 ##### O que essas evidências sustentam da tese do áudio
@@ -108,9 +144,25 @@ Juntas, essas evidências apoiam uma parte da tese do áudio: o gargalo muda de 
 
 Fontes: Humlum e Vestergaard (2025); Brynjolfsson, Chandar e Chen (2025).
 
-Modelo explicativo
+**Alcance:** Dois países (Dinamarca e EUA), dados até 2025.
 
-#### Três cenários
+##### Limites da generalização
+
+O que esta página não afirma:
+
+- Não afirma que a orquestração vai substituir a execução em todas as profissões. Quase todos os estudos são de software, escrita e atendimento.
+- Não afirma que "orquestrador" é uma profissão nova. É uma combinação de competências conhecidas: especificar, revisar, coordenar e responder pela decisão.
+- Não usa as tradições filosóficas do áudio como evidência. Elas são analogias do autor.
+- Não trata anúncios de empresas como prova de resultado em produção.
+- Os modelos mudam mais rápido que a pesquisa. Os estudos citados usaram ferramentas de 2020 a 2025.
+
+Uso prático
+
+#### Como aplicar
+
+Primeiro, identifique em qual cenário a equipe está. Depois, use a matriz para decidir o próximo passo.
+
+##### Três cenários
 
 O resultado depende das condições. Os indicadores da terceira coluna ajudam a saber em qual cenário uma equipe está.
 
@@ -124,53 +176,55 @@ O resultado depende das condições. Os indicadores da terceira coluna ajudam a 
 
 **[Inferência]** Os dados de software de 2024 e 2025 se parecem mais com o cenário intermediário. Isso pode mudar com ferramentas novas.
 
-Alcance
+##### Matriz de decisão
 
-#### O que esta página não afirma
+**[Proposta de aplicação]** Esta matriz não é resultado demonstrado pelas fontes desta página. Ela liga os cenários a indicadores e a decisões possíveis. Confira os indicadores com os dados da sua equipe antes de decidir.
 
-- Não afirma que a orquestração vai substituir a execução em todas as profissões. Quase todos os estudos são de software, escrita e atendimento.
-- Não afirma que "orquestrador" é uma profissão nova. É uma combinação de competências conhecidas: especificar, revisar, coordenar e responder pela decisão.
-- Não usa as tradições filosóficas do áudio como evidência. Elas são analogias do autor.
-- Não trata anúncios de empresas como prova de resultado em produção.
-- Os modelos mudam mais rápido que a pesquisa. Os estudos citados usaram ferramentas de 2023 a 2025.
+**Perguntas, indicadores e decisões possíveis**
+
+| Pergunta | Indicador a observar | Decisão possível |
+| --- | --- | --- |
+| A IA aumenta a entrega? | Valor entregue, vazão e tempo de ciclo | Ampliar o uso se o ganho se mantiver por vários ciclos. |
+| A revisão virou gargalo? | Tempo de revisão, retrabalho e tamanho das mudanças | Reduzir o tamanho das mudanças e automatizar as verificações confiáveis. |
+| A qualidade piora? | Defeitos, incidentes e falhas em produção | Restringir a autonomia da IA e reforçar os controles. |
+| A equipe perde capacidade? | Desempenho sem IA e compreensão das soluções | Manter atividades de aprendizagem e prática sem IA. |
+| O custo total diminui? | Custo de execução, revisão, correção e operação | Avaliar o custo do processo completo, não só o custo das chamadas ao modelo. |
 
 Rastreabilidade
 
-#### Fontes
+#### Fontes e auditoria completa
 
-Todas consultadas em 28/10/2026. "(fonte secundária)" indica número lido em reportagem ou resumo, sem acesso ao texto integral.
+Todas consultadas em 28/10/2026. Cada fonte tem um tipo entre colchetes. "(fonte secundária)" indica número lido em reportagem ou resumo. Uma reportagem que repete um estudo não conta como evidência independente: a lista cita o estudo original.
 
-1. Brynjolfsson, E.; Li, D.; Raymond, L. (2025). Generative AI at Work. *Quarterly Journal of Economics*, 140(2). [NBER WP 31161](https://www.nber.org/papers/w31161).
-2. Noy, S.; Zhang, W. (2023). Experimental evidence on the productivity effects of generative artificial intelligence. *Science*. [doi:10.1126/science.adh2586](https://doi.org/10.1126/science.adh2586).
-3. Dell'Acqua, F. et al. (2025). Navigating the Jagged Technological Frontier. *Organization Science*. [doi:10.1287/orsc.2025.21838](https://doi.org/10.1287/orsc.2025.21838).
-4. Peng, S. et al. (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. [arXiv:2302.06590](https://arxiv.org/abs/2302.06590).
-5. Becker, J. et al. / METR (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. [arXiv:2507.09089](https://arxiv.org/abs/2507.09089).
-6. Humlum, A.; Vestergaard, E. (2025). Large Language Models, Small Labor Market Effects. Becker Friedman Institute, [BFI WP 2025-56](https://bfi.uchicago.edu/wp-content/uploads/2025/04/BFI_WP_2025-56-3.pdf).
-7. Brynjolfsson, E.; Chandar, B.; Chen, R. (2025). Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence. [Stanford Digital Economy Lab](https://siepr.stanford.edu/publications/working-paper/canaries-coal-mine-six-facts-about-recent-employment-effects-artificial).
-8. Faros AI (2025). The AI Productivity Paradox. [Relatório do fornecedor](https://www.faros.ai/blog/lab-vs-reality-ai-productivity-study-findings).
-9. DORA (2024). Accelerate State of DevOps Report 2024. [dora.dev](https://dora.dev); resumo em [InfoQ](https://www.infoq.com/news/2024/11/2024-dora-report/) (fonte secundária).
-10. Bedard, J. et al. (2026). When Using AI Leads to "Brain Fry". *Harvard Business Review*. [HBR](https://hbr.org/2026/03/when-using-ai-leads-to-brain-fry); [nota do BCG](https://www.bcg.com/news/5march2026-when-using-ai-leads-brain-fry) (fonte secundária).
-11. Shen, J. H.; Tamkin, A. (2026). How AI assistance impacts the formation of coding skills. [Anthropic](https://www.anthropic.com/research/AI-assistance-coding-skills).
-12. Budzyń, K. et al. (2025). Endoscopist deskilling after exposure to artificial intelligence in colonoscopy. *Lancet Gastroenterology & Hepatology*. [Resumo na ASCO Post](https://ascopost.com/news/august-2025/routine-ai-assistance-may-lead-to-loss-of-skills-in-endoscopists-study-shows/) (fonte secundária).
-13. Bainbridge, L. (1983). Ironies of Automation. *Automatica*, 19(6). [doi:10.1016/0005-1098(83)90046-8](https://doi.org/10.1016/0005-1098(83)90046-8).
-14. Parasuraman, R.; Manzey, D. (2010). Complacency and Bias in Human Use of Automation. *Human Factors*, 52(3). [doi:10.1177/0018720810376055](https://doi.org/10.1177/0018720810376055).
-15. Cemri, M. et al. (2025). Why Do Multi-Agent LLM Systems Fail? [arXiv:2503.13657](https://arxiv.org/abs/2503.13657).
-16. Kwa, T. et al. / METR (2025). Measuring AI Ability to Complete Long Tasks. [arXiv:2503.14499](https://arxiv.org/abs/2503.14499).
-17. Xu, F. et al. (2025). TheAgentCompany. NeurIPS 2025. [arXiv:2412.14161](https://arxiv.org/abs/2412.14161).
-18. Shojaee, P. et al. (2025). The Illusion of Thinking. [arXiv:2506.06941](https://arxiv.org/abs/2506.06941); contestação em [arXiv:2507.01231](https://arxiv.org/abs/2507.01231).
-19. Weizenbaum, J. (1966). ELIZA. *Communications of the ACM*, 9(1). [doi:10.1145/365153.365168](https://doi.org/10.1145/365153.365168).
-20. Skelton, M.; Pais, M. (2019). *Team Topologies*. IT Revolution. Livro de prática.
-21. VentureBeat (2026). [What is DeerFlow](https://venturebeat.com/orchestration/what-is-deerflow-and-what-should-enterprises-know-about-this-new-local-ai) (fonte de imprensa).
-22. Coverager (29/12/2025). [Sompo to deploy AI agents across 30,000 employees](https://coverager.com/sompo-to-deploy-ai-agents-across-30000-employees/) (fonte de imprensa).
-23. MIT Sloan (17/3/2025). [EPOCH: AI more likely to complement, not replace, human workers](https://mitsloan.mit.edu/press/new-mit-sloan-research-suggests-ai-more-likely-to-complement-not-replace-human-workers).
+1. Brynjolfsson, E.; Li, D.; Raymond, L. (2025). Generative AI at Work. *Quarterly Journal of Economics*, 140(2), 889–942. Versão aberta: [NBER WP 31161](https://www.nber.org/papers/w31161). [Revisado por pares]
+2. Noy, S.; Zhang, W. (2023). Experimental evidence on the productivity effects of generative artificial intelligence. *Science*. [doi:10.1126/science.adh2586](https://doi.org/10.1126/science.adh2586). [Revisado por pares]
+3. Dell'Acqua, F. et al. (2025). Navigating the Jagged Technological Frontier. *Organization Science*. [doi:10.1287/orsc.2025.21838](https://doi.org/10.1287/orsc.2025.21838). [Revisado por pares]
+4. Peng, S. et al. (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. [arXiv:2302.06590](https://arxiv.org/abs/2302.06590). [Preprint, sem revisão por pares]
+5. Becker, J. et al. / METR (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. [arXiv:2507.09089](https://arxiv.org/abs/2507.09089). [Preprint, sem revisão por pares]
+6. Humlum, A.; Vestergaard, E. (2025). Large Language Models, Small Labor Market Effects. Becker Friedman Institute, [BFI WP 2025-56](https://bfi.uchicago.edu/wp-content/uploads/2025/04/BFI_WP_2025-56-3.pdf). [Working paper]
+7. Brynjolfsson, E.; Chandar, B.; Chen, R. (2025). Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence. [Stanford Digital Economy Lab](https://siepr.stanford.edu/publications/working-paper/canaries-coal-mine-six-facts-about-recent-employment-effects-artificial). [Working paper]
+8. Faros AI (2025). The AI Productivity Paradox. [faros.ai](https://www.faros.ai/blog/lab-vs-reality-ai-productivity-study-findings). [Relatório de fornecedor]
+9. DORA (2024). Accelerate State of DevOps Report 2024. Google Cloud. [Relatório original](https://cloud.google.com/devops/state-of-devops/); resumo em [InfoQ](https://www.infoq.com/news/2024/11/2024-dora-report/). [Relatório de pesquisa com patrocínio de fornecedor]
+10. Bedard, J. et al. (2026). When Using AI Leads to "Brain Fry". *Harvard Business Review*. [HBR](https://hbr.org/2026/03/when-using-ai-leads-to-brain-fry); [nota do BCG](https://www.bcg.com/news/5march2026-when-using-ai-leads-brain-fry) (fonte secundária). [Revista de gestão; pesquisa de consultoria]
+11. Shen, J. H.; Tamkin, A. (2026). How AI assistance impacts the formation of coding skills. [Anthropic](https://www.anthropic.com/research/AI-assistance-coding-skills). [Pesquisa de empresa de IA]
+12. Budzyń, K. et al. (2025). Endoscopist deskilling after exposure to artificial intelligence in colonoscopy. *Lancet Gastroenterology & Hepatology*, 10(10), 896–903. [doi:10.1016/S2468-1253(25)00133-5](https://doi.org/10.1016/S2468-1253(25)00133-5); manuscrito aceito em acesso aberto no [repositório da Universidade de Warwick](https://wrap.warwick.ac.uk/id/eprint/191005). [Revisado por pares; estudo observacional]
+13. Bainbridge, L. (1983). Ironies of Automation. *Automatica*, 19(6). [doi:10.1016/0005-1098(83)90046-8](https://doi.org/10.1016/0005-1098(83)90046-8). [Revisado por pares]
+14. Parasuraman, R.; Manzey, D. (2010). Complacency and Bias in Human Use of Automation. *Human Factors*, 52(3). [doi:10.1177/0018720810376055](https://doi.org/10.1177/0018720810376055). [Revisado por pares]
+15. Cemri, M. et al. (2025). Why Do Multi-Agent LLM Systems Fail? [arXiv:2503.13657](https://arxiv.org/abs/2503.13657). [Preprint, sem revisão por pares]
+16. Kwa, T. et al. / METR (2025). Measuring AI Ability to Complete Long Tasks. [arXiv:2503.14499](https://arxiv.org/abs/2503.14499). [Preprint, sem revisão por pares]
+17. Xu, F. et al. (2025). TheAgentCompany. NeurIPS 2025. [arXiv:2412.14161](https://arxiv.org/abs/2412.14161). [Revisado por pares (conferência)]
+18. Shojaee, P. et al. (2025). The Illusion of Thinking. [arXiv:2506.06941](https://arxiv.org/abs/2506.06941); contestação em [arXiv:2507.01231](https://arxiv.org/abs/2507.01231). [Preprint, sem revisão por pares]
+19. Weizenbaum, J. (1966). ELIZA. *Communications of the ACM*, 9(1). [doi:10.1145/365153.365168](https://doi.org/10.1145/365153.365168). [Revisado por pares]
+20. Skelton, M.; Pais, M. (2019). *Team Topologies*. IT Revolution. [Livro de prática]
+21. VentureBeat (2026). [What is DeerFlow](https://venturebeat.com/orchestration/what-is-deerflow-and-what-should-enterprises-know-about-this-new-local-ai). [Imprensa]
+22. Coverager (29/12/2025). [Sompo to deploy AI agents across 30,000 employees](https://coverager.com/sompo-to-deploy-ai-agents-across-30000-employees/). [Imprensa]
+23. MIT Sloan (17/3/2025). [EPOCH: AI more likely to complement, not replace, human workers](https://mitsloan.mit.edu/press/new-mit-sloan-research-suggests-ai-more-likely-to-complement-not-replace-human-workers). [Comunicado institucional]
 
 A numeração segue a bibliografia do registro da pesquisa, para que cada fonte possa ser localizada lá.
 
-Registro
+##### Auditoria completa
 
-#### Registro da pesquisa
-
-A auditoria completa das 56 afirmações, com a matriz de evidências, a bibliografia comentada e as lacunas, está no repositório do site: [pesquisa crítica (Markdown, GitHub)](https://github.com/issei/mauricio-site/blob/main/docs/specs/pages/da-execucao-a-orquestracao/00_pesquisa-critica.md).
+A auditoria das 56 afirmações, com a matriz de evidências, a bibliografia comentada e as lacunas, está no repositório do site: [pesquisa crítica (Markdown, GitHub)](https://github.com/issei/mauricio-site/blob/main/docs/specs/pages/da-execucao-a-orquestracao/00_pesquisa-critica.md). O [histórico de versões](https://github.com/issei/mauricio-site/commits/main/docs/specs/pages/da-execucao-a-orquestracao) mostra cada mudança no texto.
 
 
 ## Perguntas frequentes
@@ -178,6 +232,10 @@ A auditoria completa das 56 afirmações, com a matriz de evidências, a bibliog
 **A IA já desloca o trabalho da execução para a orquestração?**
 
 Em parte, e só em alguns contextos. Experimentos mostram ganhos em tarefas delimitadas, e dados de engenharia de software sugerem que o gargalo passa para a revisão. Os dados de mercado de trabalho mostram, até agora, efeitos pequenos na média e efeitos concentrados em jovens de ocupações expostas. Não há estudo que meça diretamente o trabalho de orquestração.
+
+**Todo profissional precisa virar orquestrador de IA?**
+
+Não. A evidência não sustenta isso, e a execução não perdeu valor. Nas atividades em que a IA amplia a produção, executar deixou de ser suficiente: alguém ainda precisa julgar, integrar e responder pelo resultado. A especialização técnica continua necessária para construir, testar e entender sistemas, e para revisar o que a IA produz.
 
 **O que é AI brain fry?**
 

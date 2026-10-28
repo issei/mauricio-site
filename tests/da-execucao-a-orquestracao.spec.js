@@ -33,15 +33,15 @@ test.describe('Da execução à orquestração — página', () => {
     expect(og).toContain('og-da-execucao-a-orquestracao.png');
   });
 
-  test('critério 1: seções na ordem da spec', async ({ page }) => {
+  test('critério 1: seções na ordem da spec (§12.2)', async ({ page }) => {
     await page.goto(PATH);
     const ids = await page.$$eval('main > section[id]', (els) => els.map((e) => e.id));
-    expect(ids).toEqual(['inicio', 'como-ouvir', 'evidencia', 'cenarios', 'limites', 'fontes', 'pesquisa']);
+    expect(ids).toEqual(['inicio', 'conclusao', 'ouvir', 'como-ouvir', 'evidencia', 'aplicar', 'fontes']);
   });
 
   test('critério 2: player nativo com rótulo e link de download', async ({ page }) => {
     await page.goto(PATH);
-    const audio = page.locator('#inicio audio');
+    const audio = page.locator('#ouvir audio');
     await expect(audio).toHaveCount(1);
     await expect(audio).toHaveAttribute('controls', '');
     await expect(audio).toHaveAttribute('preload', 'metadata');
@@ -50,7 +50,7 @@ test.describe('Da execução à orquestração — página', () => {
     const source = audio.locator('source');
     await expect(source).toHaveAttribute('type', 'audio/mp4');
     await expect(source).toHaveAttribute('src', AUDIO);
-    const download = page.locator(`#inicio a[href="${AUDIO}"][download]`);
+    const download = page.locator(`#ouvir a[href="${AUDIO}"][download]`);
     await expect(download).toBeVisible();
     await expect(download).toContainText('Baixar o áudio');
   });
@@ -106,6 +106,31 @@ test.describe('Da execução à orquestração — página', () => {
     await expect(det).not.toHaveAttribute('open', /.*/);
   });
 
+  test('revisão 2: conclusão em um minuto e três caminhos de leitura', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('#conclusao dt')).toHaveText([
+      'O que a evidência sustenta', 'O que continua incerto', 'O que esta página não defende',
+    ]);
+    for (const alvo of ['#conclusao', '#ouvir', '#como-ouvir', '#fontes']) {
+      await expect(page.locator(`#inicio .eo-caminhos a[href="${alvo}"]`)).toHaveCount(1);
+    }
+  });
+
+  test('revisão 2: matriz de decisão marcada como proposta de aplicação', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('#matriz-decisao tbody tr')).toHaveCount(5);
+    await expect(page.locator('#aplicar')).toContainText('Proposta de aplicação');
+    await expect(page.locator('#aplicar')).toContainText('não é resultado demonstrado pelas fontes');
+  });
+
+  test('revisão 2: cada bloco de evidência diz o alcance e cada fonte tem tipo', async ({ page }) => {
+    await page.goto(PATH);
+    const blocos = page.locator('#evidencia .eo-bloco');
+    for (let i = 0; i < 6; i++) await expect(blocos.nth(i).locator('.eo-alcance')).toContainText('Alcance:');
+    const refs = await page.$$eval('#fontes .eo-refs > li', (lis) => lis.map((li) => li.textContent.trim()));
+    for (const r of refs) expect(r, r.slice(0, 60)).toMatch(/\[[^\]]+\]\.?$/);
+  });
+
   test('o menu <eco-nav> aparece e situa a página no pilar Fundação', async ({ page }) => {
     await page.goto(PATH);
     const nav = page.locator('eco-nav');
@@ -120,6 +145,13 @@ test.describe('Da execução à orquestração — página', () => {
     await page.goto(PATH);
     await page.locator('#transcricao summary').click();
     await expectNoSeriousA11yViolations(page);
+  });
+
+  test('critério 8: títulos não pulam nível', async ({ page }) => {
+    await page.goto(PATH);
+    const niveis = await page.$$eval('main h1, main h2, main h3, main h4', (hs) => hs.map((h) => Number(h.tagName[1])));
+    expect(niveis[0]).toBe(1);
+    for (let i = 1; i < niveis.length; i++) expect(niveis[i] - niveis[i - 1]).toBeLessThanOrEqual(1);
   });
 
   test('critério 8: sem rolagem horizontal a 320 px', async ({ page }) => {
