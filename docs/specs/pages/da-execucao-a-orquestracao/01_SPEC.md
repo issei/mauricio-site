@@ -231,3 +231,37 @@ O que foi implementado diverge desta spec nos pontos abaixo. Cada ponto tem o mo
 | Gerador | — | `build-aeo.mjs` deixa de apagar o consent-default inline | Armadilha registrada na auditoria editorial (PR #128): cada regeneração removia o script. |
 | Pilar | Fundação [confirmar] | Fundação | Confirmado pelo autor, 28/10/2026. |
 | Critério 4 | Strings só na coluna "No áudio" | A coluna da direita deixou de repetir "92%" e "10 mil agentes" ("A latência não foi medida"; "nenhuma fonte confirma o número de agentes citado no áudio"); o ponto do Em síntese diz "a queda de entrega citada não tem fonte" em vez de "0,85×" | O texto da §4.2 e da §6 contradizia o próprio critério 4. O teste cobre o `<main>` e o bloco AEO. |
+
+## 12. Revisão 2 — resposta à análise crítica do autor (28/10/2026)
+
+O autor enviou uma análise crítica da página publicada (notas de 6 a 8 de 10 por dimensão). A seção 7 da análise lista seis prioridades. Esta revisão aplica as cinco primeiras e roda os testes automáticos da sexta. Mudanças visuais ficam fora, como a análise pede.
+
+### 12.1 Decisões
+
+| # | Prioridade da análise | Decisão |
+|---|---|---|
+| R2-1 | Tese com condições de validade | A tese passa a ser uma condição observável: "Quando a IA acelera a produção de resultados mais do que a capacidade de verificá-los e integrá-los, o gargalo do trabalho passa para a especificação, a verificação e a coordenação." O ganho depende de como a equipe organiza essas etapas. |
+| R2-2 | Resumo executivo curto | Seção nova `#conclusao` ("Conclusão em um minuto"), logo depois do título: o que a evidência sustenta, o que continua incerto e o que a página não defende. |
+| R2-3 | Matriz de decisão | Seção `#aplicar` ("Como aplicar") reúne os três cenários e uma matriz pergunta → indicador → decisão possível. A matriz leva o selo "Proposta de aplicação": não é resultado demonstrado pelas fontes. |
+| R2-4 | Navegação por público | O topo oferece três caminhos: só ouvir (`#ouvir`), entender a conclusão (`#conclusao` e `#aplicar`) e conferir a evidência (`#como-ouvir` e `#fontes`). O player sai do topo para a seção `#ouvir`. A transcrição continua recolhida. |
+| R2-5 | Rastreabilidade e fontes primárias | Cada bloco de evidência ganha uma linha "Alcance" (ferramentas, tarefas, participantes e anos). Cada fonte ganha um tipo (revisado por pares, working paper, preprint, relatório de fornecedor, pesquisa de empresa de IA, imprensa, livro). [9] e [17] passam a apontar para o relatório e para o artigo originais; os resumos ficam como apoio. |
+| R2-6 | Risco editorial (seção 6 da análise) | O resumo diz o que a página não defende: que todo profissional precisa virar orquestrador, ou que a execução perdeu valor. |
+| R2-7 | Acessibilidade | Testes automáticos: axe, 320 px, foco visível, hierarquia de títulos. Teste com leitor de tela real e conferência da transcrição com o áudio continuam pendentes (EXC-009). |
+
+### 12.2 Estrutura nova (substitui a §3)
+
+1. `#inicio` — título, tese condicional, três caminhos de leitura
+2. `#conclusao` — conclusão em um minuto
+3. `#ouvir` — player, aviso, transcrição recolhida
+4. `#como-ouvir` — principais correções (tabela de 12 linhas, sem mudança de conteúdo)
+5. `#evidencia` — o que a pesquisa permite concluir: 6 blocos com selo e alcance; limites da generalização (`#limites`) no fim
+6. `#aplicar` — cenários e matriz de decisão
+7. `#fontes` — fontes com tipo e auditoria completa (o antigo `#pesquisa`)
+
+### 12.3 Critérios de aceite alterados
+
+- Critério 1: seções na ordem da §12.2.
+- Novo: a matriz de `#aplicar` tem 5 linhas e o aviso "proposta de aplicação".
+- Novo: cada bloco de `#evidencia` tem uma linha "Alcance".
+- Novo: cada fonte de `#fontes` tem um tipo.
+- Critérios 2 a 8 continuam válidos.

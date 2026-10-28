@@ -262,3 +262,27 @@ body.eo-body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ------------------------------------------------------------ revisão 2: caminhos, resumo, alcance */
+.eo-caminhos {
+  background: var(--eo-surface);
+  border: 1px solid var(--eo-border);
+  border-radius: var(--eo-radius);
+  padding: 1rem 1.25rem;
+}
+.eo-caminhos__titulo { margin: 0 0 0.5rem; font-weight: 700; color: var(--eo-heading); }
+.eo-caminhos ul { margin: 0; padding-left: 1.25rem; }
+.eo-caminhos li { margin-bottom: 0.4rem; }
+
+.eo-resumo { margin: 0; }
+.eo-resumo dt { font-weight: 700; color: var(--eo-heading); margin-top: 1.25rem; }
+.eo-resumo dt:first-child { margin-top: 0; }
+.eo-resumo dd { margin: 0.35rem 0 0; }
+
+.eo-alcance { font-size: 0.9rem; color: var(--eo-muted); }
+.eo-alcance strong { color: var(--eo-text); }
+
+.eo-limites { margin-top: 2rem; }
+.eo-limites h3,
+#aplicar h3,
+#fontes h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
