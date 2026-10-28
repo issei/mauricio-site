@@ -68,7 +68,7 @@ function inline(n) {
       return u && t ? `[${t}](${u})` : t;
     }
     case 'span':
-      if (hasClass(n, 'dw-selo')) return `**[${squash(inner())}]**`;
+      if (hasClass(n, 'dw-selo') || hasClass(n, 'eo-selo')) return `**[${squash(inner())}]**`;
       // translate="no": termo que o tradutor não deve tocar; em Markdown a forma preservada é o código inline.
       return /translate="no"/.test(n.attrs) ? `\`${squash(inner())}\`` : inner();
     default: return inner();

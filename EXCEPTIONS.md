@@ -49,6 +49,11 @@ Isto é um fato registrado, não uma defesa: se um visitante chegar nelas, as ba
 - **Quebrado:** o vídeo do YouTube só tem legendas autogeradas (ou não verificadas) — rascunho, não alternativa entregue (`docs/a11y/references/guide-media.md` §2). Não há transcrição integral.
 - **Contorno:** resumo textual em `<details>` na própria seção e link "Pular o vídeo". **Resolução:** revisar/publicar legendas PT-BR no YouTube Studio e linkar a transcrição; então remover esta entrada. Revisão: 2027-04-03.
 
+### EXC-009 — `src/da-execucao-a-orquestracao.html` (áudio)
+- **WCAG:** 1.2.1 (alternativa para áudio pré-gravado) · **Severidade:** 🟡 Medium · **Aberta em:** 2026-10-28
+- **Quebrado:** a única transcrição integral do áudio é automática (reconhecimento de fala), com erros de grafia ("germânica", "HAG", "MOSCO"). É rascunho, não alternativa entregue (`docs/a11y/references/guide-media.md` §2).
+- **Contorno:** a transcrição aparece num `<details>` rotulado "rascunho, sem revisão humana" e fica fora do `.md`; a página traz o conteúdo do áudio revisado (tabela "O que corrigir enquanto ouve" e seções seguintes). **Resolução:** revisar a transcrição ouvindo o áudio, trocar o rótulo e remover esta entrada. Revisão: 2027-04-28.
+
 ### EXC-007 — `aria-soup` — **ENCERRADA (Fase 7)**
 - `role="main"`/`role="navigation"` redundantes foram removidos (último caso: `src/life.html`, `<nav aria-label="Controles táteis">`).
 - Os `role="list"` em `engenharia-agentes-ia` são deliberados (Safari/VoiceOver remove a semântica de lista com `list-style:none`; o auditor mediu `list-style-type:none` em 7 das 8 listas): registrados em `A11Y-DECISIONS.md`, não são desvio. O `verify-a11y.py` os reporta como erro: falso positivo conhecido.

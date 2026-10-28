@@ -17,6 +17,7 @@ Princípios de pensamento sistêmico e gestão do conhecimento: o ponto de parti
 - [O Artífice Invisível](https://mauricio.issei.com.br/artifice) — o paradoxo da maestria técnica: por que a sofisticação vira carga invisível, e como recuperar a soberania do ofício.
 - [Curiosidade e Investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao) — informação não é conhecimento: transformar curiosidade em investigação usando a IA como bancada, não como oráculo.
 - [O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/aprendizagem-autorregulada) — o que a ciência comprova sobre recuperação, espaçamento, autoexplicação e busca orientada, com protocolo de 45–60 min, ficha de estudo e a [revisão científica completa](https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo).
+- [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao) — um áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir enquanto ouve e três cenários.
 
 ## 02 · O Método — Engenharia de Confiança
 

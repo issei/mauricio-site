@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Da execução à orquestração do trabalho — áudio comentado</title>
+  <meta name="description"
+    content="Áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir e três cenários para o futuro do trabalho." />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="./da-execucao-a-orquestracao.css" />
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM, do gtag.js e do Clarity.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+    window.__consentDefault = true;
+    try {
+        var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+        if (cc && cc.v === '2.0' && cc.categories) {
+            var mk = cc.categories.marketing ? 'granted' : 'denied';
+            gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+        }
+    } catch (e) { }
+</script>
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="orquestração do trabalho, produtividade com IA, AI brain fry, viés de automação, perda de habilidade, DORA, SPACE, sistemas multiagentes, MAST, EPOCH MIT Sloan" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/da-execucao-a-orquestracao" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/da-execucao-a-orquestracao.md" title="Da execução à orquestração do trabalho — áudio comentado — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="Da execução à orquestração do trabalho — áudio comentado" />
+<meta property="og:description" content="Áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir e três cenários para o futuro do trabalho." />
+<meta property="og:url" content="https://mauricio.issei.com.br/da-execucao-a-orquestracao" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-da-execucao-a-orquestracao.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Da execução à orquestração do trabalho — áudio comentado" />
+<meta property="article:published_time" content="2026-10-28T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-10-28T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="Trabalho e IA" />
+<meta property="article:tag" content="Futuro do Trabalho" />
+<meta property="article:tag" content="Produtividade" />
+<meta property="article:tag" content="Supervisão de IA" />
+<meta property="article:tag" content="Agentes de IA" />
+<meta property="article:tag" content="Revisão Crítica" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Da execução à orquestração do trabalho — áudio comentado" />
+<meta name="twitter:description" content="Áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir e três cenários para o futuro do trabalho." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-da-execucao-a-orquestracao.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead / Arquiteto de Soluções de IA",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#webpage",
+      "url": "https://mauricio.issei.com.br/da-execucao-a-orquestracao",
+      "name": "Da execução à orquestração do trabalho — áudio comentado",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-10-28",
+      "dateModified": "2026-10-28",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-da-execucao-a-orquestracao.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#article"
+      }
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#webpage"
+      },
+      "headline": "Da execução à orquestração do trabalho: o que a evidência sustenta sobre IA, produtividade e supervisão",
+      "description": "Áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir e três cenários para o futuro do trabalho.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-10-28",
+      "dateModified": "2026-10-28",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-da-execucao-a-orquestracao.png",
+      "isAccessibleForFree": true,
+      "keywords": "orquestração do trabalho, produtividade com IA, AI brain fry, viés de automação, perda de habilidade, DORA, SPACE, sistemas multiagentes, MAST, EPOCH MIT Sloan",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Produtividade com IA generativa"
+        },
+        {
+          "@type": "Thing",
+          "name": "Supervisão humana da automação"
+        },
+        {
+          "@type": "Thing",
+          "name": "Viés de automação"
+        },
+        {
+          "@type": "Thing",
+          "name": "Sistemas multiagentes"
+        },
+        {
+          "@type": "Thing",
+          "name": "Futuro do trabalho"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Líderes de engenharia, gestores, pesquisadores do trabalho"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Catálogo",
+          "item": "https://mauricio.issei.com.br/catalogo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Da execução à orquestração do trabalho — áudio comentado"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "A IA já desloca o trabalho da execução para a orquestração?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Em parte, e só em alguns contextos. Experimentos mostram ganhos em tarefas delimitadas, e dados de engenharia de software sugerem que o gargalo passa para a revisão. Os dados de mercado de trabalho mostram, até agora, efeitos pequenos na média e efeitos concentrados em jovens de ocupações expostas. Não há estudo que meça diretamente o trabalho de orquestração."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é AI brain fry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É o nome que pesquisadores do BCG deram, em 2026, à fadiga mental de quem usa ou supervisiona ferramentas de IA além da própria capacidade. Numa pesquisa com 1 488 trabalhadores dos EUA, quem relatou o problema relatou 33% mais fadiga de decisão do que quem não relatou. A pesquisa mostra associação, não causa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A IA deixa os desenvolvedores mais rápidos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende da tarefa e da pessoa. Num experimento com uma tarefa curta, o grupo com Copilot terminou 55,8% mais rápido. Num experimento com 16 desenvolvedores experientes em projetos que eles conheciam, as tarefas com IA levaram 19% mais tempo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Usar IA prejudica a aprendizagem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode prejudicar quando a pessoa só delega. Num experimento com 52 programadores, quem usou IA para aprender uma biblioteca nova teve nota menor num teste de compreensão. Quem usou a IA para perguntar e entender manteve a nota. A amostra é pequena."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que diz o estudo sobre falhas de sistemas multiagentes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O estudo MAST, da UC Berkeley, classificou falhas em 14 modos e 3 categorias e encontrou taxas de falha de 41% a 86,7% em sete sistemas de código aberto. O valor de Kappa de 0,88 mede a concordância entre os anotadores humanos."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#glossario",
+      "name": "Glossário — Da execução à orquestração do trabalho — áudio comentado",
+      "inLanguage": "pt-BR",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#g-ai-brain-fry",
+          "name": "AI brain fry",
+          "description": "Nome dado por pesquisadores do BCG, em 2026, à fadiga mental de quem usa ou supervisiona IA além da própria capacidade."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#g-ironias-da-automacao",
+          "name": "Ironias da automação",
+          "description": "Automatizar a parte fácil deixa à pessoa a parte difícil, com menos prática (Bainbridge, 1983)."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#g-vies-de-automacao",
+          "name": "Viés de automação",
+          "description": "Tendência de quem supervisiona automação a confiar demais nela (Parasuraman e Manzey, 2010)."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#g-fronteira-irregular",
+          "name": "Fronteira irregular",
+          "description": "Limite entre as tarefas que o modelo faz bem e as que ele faz mal; fora dele, a IA pode piorar o resultado (Dell'Acqua et al., 2025)."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#g-manobra-inversa-de-conway",
+          "name": "Manobra inversa de Conway",
+          "description": "Organizar as equipes conforme a arquitetura desejada; vem da prática de consultoria e do livro Team Topologies."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#g-mast",
+          "name": "MAST",
+          "description": "Taxonomia de falhas de sistemas multiagentes da UC Berkeley (2025): 14 modos de falha em 3 categorias."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#g-epoch",
+          "name": "EPOCH",
+          "description": "Grupos de capacidades humanas propostos pelo MIT Sloan (2025): empatia, presença, opinião e julgamento, criatividade, e esperança e liderança."
+        }
+      ]
+    },
+    {
+      "@type": "AudioObject",
+      "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#audio",
+      "name": "Da execução à orquestração do trabalho",
+      "description": "Conversa de cerca de 20 minutos sobre IA e trabalho, publicada com revisão das afirmações.",
+      "contentUrl": "https://mauricio.issei.com.br/static/audio/Da_execu%C3%A7%C3%A3o_%C3%A0_orquestra%C3%A7%C3%A3o_do_trabalho.m4a",
+      "encodingFormat": "audio/mp4",
+      "inLanguage": "pt-BR",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/da-execucao-a-orquestracao#webpage"
+      }
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="eo-body">
+  <a href="#conteudo" class="eo-skip">Pular para o conteúdo</a>
+
+  <header class="eo-nav" aria-label="Navegação da página">
+    <div class="eo-nav__inner">
+      <a href="#inicio" class="eo-nav__brand">Da execução à orquestração</a>
+      <nav class="eo-nav__trail" aria-label="Seções da página">
+        <a href="#como-ouvir">O que corrigir</a>
+        <a href="#evidencia">Evidência</a>
+        <a href="#cenarios">Cenários</a>
+        <a href="#limites">Limites</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ================================ HERO ================================ -->
+    <section id="inicio" class="eo-section" aria-labelledby="inicio-titulo">
+      <div class="eo-container">
+        <p class="eo-eyebrow">Áudio comentado · Trabalho e IA</p>
+        <h1 id="inicio-titulo" class="eo-hero__title">
+          Da execução à <span class="eo-grad">orquestração</span> do trabalho
+        </h1>
+        <p class="eo-lede">
+          A IA aumenta a capacidade de produzir mais depressa do que aumenta a capacidade de
+          verificar e integrar o que foi produzido. Onde isso acontece, o trabalho humano passa a
+          depender mais de especificar, verificar, integrar e responder pelo resultado, e o ganho
+          líquido depende de como a organização reforma a revisão, as métricas e a governança.
+        </p>
+
+        <figure class="eo-player">
+          <figcaption id="audio-rotulo">Áudio: Da execução à orquestração do trabalho, cerca de 20 minutos</figcaption>
+          <audio controls preload="metadata" aria-labelledby="audio-rotulo">
+            <source src="/static/audio/Da_execu%C3%A7%C3%A3o_%C3%A0_orquestra%C3%A7%C3%A3o_do_trabalho.m4a"
+              type="audio/mp4" />
+            <span data-md="skip">Seu navegador não reproduz o áudio. Use o link de download abaixo.</span>
+          </audio>
+          <p class="eo-player__links">
+            <a href="/static/audio/Da_execu%C3%A7%C3%A3o_%C3%A0_orquestra%C3%A7%C3%A3o_do_trabalho.m4a"
+              download>Baixar o áudio (.m4a)</a>
+          </p>
+        </figure>
+
+        <div class="eo-aviso" role="note">
+          <p>
+            O áudio é uma conversa entre duas vozes. Ele tem uma boa ideia central e vários números
+            errados ou sem fonte. Esta página corrige o que o áudio afirma além da evidência. Se você
+            tiver pouco tempo, leia a tabela <a href="#como-ouvir">"O que corrigir enquanto ouve"</a>.
+          </p>
+        </div>
+        <p class="eo-small" data-tempo-leitura>
+          Texto revisado de 56 afirmações do áudio. Leitura de cerca de 13 minutos.
+        </p>
+
+        <details class="eo-details" id="transcricao" data-md="skip">
+          <summary>Transcrição automática do áudio (rascunho, sem revisão humana)</summary>
+          <p class="eo-small">
+            Texto gerado por reconhecimento de fala. Ele contém erros de grafia (por exemplo,
+            "germânica" no lugar de <em>germane</em>) e repete as afirmações que a tabela abaixo
+            corrige. Use a tabela e as seções seguintes como referência.
+          </p>
+          <div class="eo-prose" lang="pt-BR">
+            <p>Sejam bem-vindos e bem-vindas a mais um Mergulho Profundo. Eu sou a sua anfitriã e, bom, hoje nós temos um material insano para cobrir. Com certeza. Olá a todos. Eu estou aqui para trazer aquele olhar um pouco mais técnico, o lado da engenharia de sistemas dessa loucura toda. Perfeito. Sabe, geralmente, quando a gente pensa numa linha de montagem industrial clássica, tem aquela expectativa de clareza absoluta, né? Cada um no seu quadrado. Exato. Cada pessoa aperta um parafuso específico, a esteira avança num ritmo superprevisível e o produto final sai lá na ponta. É algo físico, totalmente visível. Onde dá para cronometrar cada segundo, tipo, identificar exatamente onde está o atraso e consertar a engrenagem na hora.</p>
+            <p>Um modelo mental que a gente herdou lá da revolução industrial. Mas aí que tá. De repente, essa esteira simplesmente desaparece. O chão de fábrica vira fumaça e todo mundo que estava ali apertando esses parafusos mentais, há décadas, recebe uma batuta de maestro nas mãos. Só que sem nenhuma partitura para ler, né? Exatamente isso. E é isso que está acontecendo com o trabalho intelectual hoje. A missão dessa nossa análise detalhada é desbravar uma pilha maciça de fontes. Olha só, estamos falando de pesquisas do MIT de Harvard, filosofias milenares, arquitetura de sistemas de alta complexidade. Até chega nos relatórios bem confidenciais de inteligência artificial corporativa. Pois é.</p>
+            <p>Tudo isso para entender uma ruptura estrutural sísmica. A transição do trabalho de pura execução para essa era da orquestração. E essa transição, assim, está pegando o mercado totalmente de surpresa, porque a própria fundação do trabalho mudou. Durante o último século todo, o recurso mais valorizado era produzir em volume. E agora a máquina faz isso. Exato. O que está sendo substituído não é mais o esforço repetitivo ou o músculo intelectual, mas a base da execução em si. O que sobra para o ser humano é a capacidade de síntese, de direção. Certo. Então vamos desempakotar isso. Porque existe um paradoxo gigantesco logo de cara nessa era da IA.</p>
+            <p>A promessa estampada na capa das revistas de tecnologia era super sedutora, não era? Ah, a utopia do tempo livre. Isso. Era tipo, abrace a automação, deixe o algoritmo escrever seus emails, vai curtir o seu tempo livre na praia. Só que a realidade nas trincheiras das empresas é o oposto absoluto. O buraco é mais embaixo. As fontes relatam uma síndrome que o pessoal já apelidou de AI Brain Fry. Uma verdadeira fritura cerebral. O trabalho não encolheu, gente. Ele ficou infinitamente mais denso. Muito mais denso. Tem uma exaustão cognitiva profunda, gerada por essa necessidade de vigilância constante sobre o que a IA está fazendo. Isso causou um salto assustador de 33% na fadiga de decisão até o fim do dia.</p>
+            <p>33% é muita coisa. E a neurobiologia explica direitinho porque essa promessa quebrou de um jeito tão espetacular. O problema está em como o nosso cérebro processa o esforço, sabe? Ah, a questão da recompensa, né? Isso. A crença popular diz que a dopamina é a molécula do prazer. A recompensa por terminar uma tarefa. Mas a ciência mostra que ela funciona como um erro de predição de recompensa. Como assim, um erro? Tipo, o pico de dopamina acontece quando a pessoa se esforça muito em algo incerto e o resultado final supera a expectativa inicial. É a surpresa da conquista que gera a satisfação real. Caramba! Quer dizer que quando a ferramenta de ACOSP, uma resposta instantânea e perfeita, sem atrito nenhum, ela rouba esse processo do nosso cérebro?</p>
+            <p>Rouba totalmente. A equação biológica é zerada na hora. A conquista perde completamente a graça. Porque a expectativa já é a perfeição no milho e segundo o seguinte. Nossa, a gente deixa de percorrer aquele caminho tortuoso de tentar, errar e aprender. Pois é. O ritmo psicológico da criação vai pro espaço. Deixa um vazio e uma ansiedade constante no lugar. Nós não fomos feitos para ser supervisores passivos de respostas perfeitas. E olha, tem outro agravante pesado nessa fritura cerebral. As pesquisas chamam isso de ilusão do pensamento. Eu mesma já caí nessa. É aquela armadilha de olhar para um chat, gerando parágrafos impecáveis e projetar uma humanidade ali dentro.</p>
+            <p>O famoso efeito Eliza. Só que em hiper escala agora. Exatamente. A gente acha que tem um raciocínio ali. Mas o perigo dessa ilusão é que ela nivela processos que são fundamentalmente diferentes. Um modelo de linguagem opera baseado em sintaxe fria, em probabilidade pura. Ele só prevê a próxima palavra, né? Sim. Ele calcula a palavra mais provável com base em trilhões de textos. O cérebro humano, por outro lado, opera com um modelo interno de mundo. Um modelo moldado por biologia e sobrevivência. E faz isso gastando meros 20 watts de energia. 20 watts. Isso é menos que uma lâmpada de geladeira. Exato. Enquanto a máquina precisa de megawatts, servidores gigantescos para processar esses cálculos probabilísticos, achar que o silício e a biologia pensam igual é o que causa esse colapso nas expectativas.</p>
+            <p>O que nos traz para o ponto central da nossa investigação hoje. Num ambiente corporativo afogado em ruído, a solução definitiva para quem está escutando a gente não é baixar o próximo aplicativo brilhante de produtividade. Não, de jeito nenhum. A gente precisa de uma nova arquitetura da mente para transformar esse caos em vantagem. E o primeiro pilar que desmorona nessa transição toda é a nossa noção antiga de velocidade. Porque se a máquina é imbatível na execução bruta, as réguas tradicionais de medir o trabalho simplesmente quebram. Entram em colapso completo. É a clássica armadilha da produtividade. Olhando os dados de perto, tem uma estatística que engana muita gente.</p>
+            <p>Diz lá que desenvolvedores, usando assistentes de IA, digitam um código 55% mais rápido. A primeira reação de qualquer diretoria é soltar fogos, né? Nossa, abri champanhe. A conta parece fechar. Mais código, mais rápido, lucro no bolso. Só que na prática, o volume insano de código afoga a organização. Porque o gargalo invisível não sumiu. Ele só mudou de lugar. Foi para lá na validação, na garantia de qualidade. O famoso QA. Que precisa de humanos para revisar. Exatamente. E como a nossa capacidade de ler, entender o contexto e revisar aquele código alienígena não escala, a velocidade líquida de entrega de fato cai. Despenca para 0,85 vezes o original.</p>
+            <p>Ou seja, a empresa fica mais lenta operando ferramentas mais rápidas. Irônico. Muito irônico. E isso obriga todo mundo a questionar como se mede avanço hoje. Continuar usando coisas como o StoryPoints em tecnologia virou futilidade pura. O relatório compara os StoryPoints a uma régua de borracha. Uma definição perfeita. Porque eles tentam medir, ao mesmo tempo, o tamanho da tarefa, o esforço humano e o risco. Tudo num número só. Que estica e encolhe dependendo de quem olha. A alternativa madura é focar em métricas de fluxo de verdade. Tem dois pilares aqui. Primeiro, o framework Dora, que analisa a frequência de implantação com sucesso e a taxa de falha.</p>
+            <p>Um balizador de velocidade contra a estabilidade. Isso. Mas velocidade cega queima pessoas. Então você precisa do framework Space junto. Que foca na saúde mental, satisfação e bem-estar da equipe. O gargalo não é mais produzir. É coordenar. Espera, eu acho que a famosa lei de Conway se encaixa maravilhosamente aqui. Com certeza. Se encaixa como uma luva. Para quem não lembra, a teoria diz que a estrutura de comunicação da empresa sempre vai de tal desenho do sistema. Se os departamentos não se falam, o software sai truncado. Um espelho perfeito da bagunça interna. E a solução estrutural que o MIT aborda é a manobra reversa de Conway. Ao invés de deixar a empresa bagunçar o produto.</p>
+            <p>Você desenha a arquitetura ideal do sistema primeiro. E só depois reorganiza as equipes humanas para espelhar essa arquitetura ideal. Criando topologias de equipes super claras. Tipo, separar quem foca no fluxo de valor de quem cuida da plataforma técnica, né? Exato. Isso é vital para gerenciar as cargas cognitivas que estão esmagando o pessoal. Vamos detalhar essas cargas porque eu achei esse conceito fascinante nas fontes. Claro. Tem a carga intrínseca, que é a dificuldade natural da própria tarefa. Tem a germânica, que é o esforço focado em aprender algo novo. E isso é ótimo. Mas aí vem o vilão. O grande vilão. A carga extrínseca. Que é a burocracia inútil, a ferramenta travando, o código sem documentação.</p>
+            <p>O objetivo da liderança hoje tem que ser aniquilar essa carga extrínseca. Para liberar espaço mental. Mas deixa eu te fazer uma provocação bem prática sobre isso. Se a geração de texto e código está tão rápida, como fica a etapa de ter ideias? A intuição diria para a gente fazer um brainstorming gigante com a IA, não? Jogar mil ideias na parede e ver o que cola. É. Sem filtro nenhum no começo. Pois é. A ciência moderna da ideação destrói esse mito. Essa velha regra de não julgar as ideias no início vai contra a nossa biologia criativa. Criatividade não é evento aleatório. É exploração em camadas. O material usa a analogia do chefe de cozinha, que eu achei fantástica.</p>
+            <p>Muito boa. Ninguém pega os ingredientes, joga crua na panela e senta para rezar, esperando um prato de alta gastronomia sair dali. Você tem que provar o molho enquanto ele ferve. Ajusta o sal, muda a temperatura. O problema e a solução evoluem juntos. A avaliação acontece durante a geração da ideia. O processo criativo é a construção prática do conhecimento, e não um raio de inspiração mística. E aqui a coisa fica realmente interessante. Porque se a criatividade e a avaliação exigem um controle humano tão rigoroso, como fica a nossa confiança nessas decisões autônomas das máquinas? Esse é o calcanhar de Aquiles num momento. Diferente de um software antigo, que quando dava pau, travava a tela toda de vermelho, a IA comete o que eles chamam de crash silencioso.</p>
+            <p>O terror da engenharia de confiabilidade atual. O crash silencioso é quando a IA executa de forma impecável a regra de negócio totalmente errada. Ela não gera um log de erro. Não. Ela processa uma bobagem com uma confiança matemática absurda. E o dinheiro da empresa vai pelo ralo sem ninguém perceber. Tem um estudo de caso bancário riquíssimo aqui. Eles focaram em criar a máquina da confiança. Pensa num agente autônomo lidando com aprovação de crédito. Um risco gigante. Imenso. Para a IA não alucinar um rombo financeiro, a engenharia não deixou o modelo solto. Eles prenderam o bicho num harness determinístico. É como se a IA fosse o motor de um Fórmula 1, mas o harness é o freio e a direção.</p>
+            <p>Se não tiver isso, o carro só bate no muro mais rápido. Essa arquitetura é genial. O modelo de linguagem só entra na última etapa. Antes dele, tem um roteador local inflexível operando regras matemáticas duras. Exigindo um limiar de confiança de 98%. E com margem de segurança de 0,25 de distância para a segunda opção. Se não batesse rigor, a IA nem acorda para agir. E o impacto disso? Zero alucinações. A latência caiu 92% e os custos de nuvem despencaram quase 78%. Porque a confiança não vem da IA. Vem da arquitetura antiquada ao redor dela. Só que o bicho pega de verdade quando a gente escala isso para os sistemas multiagentes.</p>
+            <p>As famosas equipes sintéticas. Colocar dez IAs conversando entre si num projeto. Funciona. A pesquisa mostra que vira uma torre de babel digital. Avaliaram 150 execuções multiagentes usando a métrica de Kappa de Cohen. Que é um jeito rigoroso de medir se diferentes partes concordam de verdade, sem ser por sorte, certo? Isso. Bateu 0,88. Confirmando padrões de falhas bizarros. Agentes entravam em loops infinitos repetindo tarefas. Ou pior. Pior que loop infinito? Um agente revisor ignorava a resposta correta do colega e aprovava um erro craço só pelo consenso da máquina. Meu Deus. E como as empresas estão resolvendo essa bagunça? Abolindo a conversa livre. As máquinas agora são forçadas a usar uma linguagem específica de domínio, a DSL.</p>
+            <p>Em vez de bate-papo, eles preenchem um formulário engessado. Um contrato estrito. E aplicam os velhos princípios sólidos de código limpo. Principalmente a responsabilidade única. Um agente só faz uma coisa. Tudo amarrado via infraestrutura automatizada, tipo o AWS CloudFormation. O que prepara o terreno para a maior ruptura de todas aqui. Com essa confiança arquitetada, a IA sai daquela caixinha de texto e ganha autonomia. Ela ganha um corpo. A gente entra de vez na era agêntica. O nível de autonomia jabeira o absurdo. Os relatórios citam o Gemini 3.8 Flash rodando solto em Sandboxes Linux. Citam o framework Deerflow 2.0, que aluga computadores reais para IA usar o mouse.</p>
+            <p>A seguradora SOMPO não ficou só no teste, né? Não. Eles colocaram 10 mil agentes operando diariamente. Só que para essa maravilha funcionar, a internet inteira está tendo que passar por uma reforma de Agent Readness. Para ficar pronta para se lida por robôs. Porque a web de hoje é um pesadelo para a IA. É. Tem site forçando o robô a carregar 200 kilobytes de botão colorido e banner inútil, só para ler 3 kilobytes de texto. Os sites agora precisam entregar uma versão limpa em Markdown instantaneamente. Mas olha, essa autonomia digital está transbordando para o mundo físico com a IA Corpórea, a Embodied AI. Modelos VLA de visão, linguagem e ação, tipo o RT1 e RT2.</p>
+            <p>Em vez de gerar uma lista de como arrumar um quarto, a IA está conectada a braços robóticos, arrumando a cama de verdade. E atacando o problema da ancoragem de símbolos, a IA de texto sabe que um ovo quebra. Mas ela não sente o que é facilidade. Agora, com os sensores físicos, ela aprende a semântica caótica do mundo, descobre a pressão exata para não esmagar a casca. É, a diferença entre ler um livro sobre andar de bicicleta e realmente pedalar, né? Trazendo para o escritório, as empresas estão pegando aquele conhecimento tácito dos veteranos e botando em lagos de contexto. Usando o HAG para ensinar a IA a ler o manual interno antes de agir.</p>
+            <p>Mas aqui entra uma bandeira vermelha colossal. Se a máquina faz o código, gerencia o processo, lê a web e ainda arruma a sala física, a humanidade não vai atrofiar? A gente não vai desaprender a pensar a fundo? Esse é o dilema da nossa década. E os pensadores dizem que a resposta não é o ludismo, não é frear o algoritmo. A resposta é reenginhar apropriamente para lidar com a abundância. Aceitar a autonomia e focar na metacognição. Metacognição é a palavra-chave, a capacidade de pensar sobre como pensamos. E as fontes cruzam tecnologia de ponta com a filosofia antiga para embasar isso. Isso me pegou de surpresa no material.</p>
+            <p>Eles falam de estoicismo para focar só no que controlamos, ignorando o ruído, né? E trazem o taoísmo, o wuowei. Ação fluida para contornar os problemas sem força inútil. O confucionismo para calibrar a empatia. E o buchido. O conceito de macoto para a integridade a longo prazo. Tudo isso forma o framework EPOC do MIT, que cobra empatia, presença, opinião autêntica e esperança construtiva dos líderes. Mas na trincheira do dia a dia, a gente precisa de ferramentas de priorização duras. Se a IA gera demandas infinitas, você usa o método MOSCO. Categoriza friamente o que o projeto deve ter, deveria ter e, crucialmente, o que não vai ter de jeito nenhum.</p>
+            <p>Ou a Matriz-Ghout, multiplicando a gravidade, urgência e tendência. E sem fugir do atrito humano. Conversas cruciais. Metodologias como STATE e CRIBE, para dar feedback e preservar a segurança psicológica da equipe. É. Falando em toque humano, tem uma analogia com o cinema aqui que é brilhante. A diferença entre um zoom e um dole. Ah, essa da gramática visual é fantástica. Quando o diretor dá um simples zoom óptico, a imagem é chata, fica artificial, analítica. Igualzinha a sintaxe de um algoritmo. Mas, com o dole, a câmera inteira se move fisicamente pelos trilhos no espaço. Isso gera o efeito de paralaxe, revelando profundidade. O algoritmo é o zoom.</p>
+            <p>Nós somos o dole. A nossa intenção de se deslocar até o problema cria empatia e contexto. Um código não falsifica isso. E essa empatia é o núcleo da acessibilidade. O movimento web para todos, que já tem nove anos, mostra isso na prática. Uma IA faz uma interface em segundos. Mas garantir que um deficiente visual navegue ali com um leitor de tela... exige teste humano. Empatia intransferível. O que nos leva àquela velha lição da lâmpada de Aladdin. O projeto Cloud Mythos mostrou que nós construímos um gênio da lâmpada. Um poder infinito de execução. Mas a ferramenta amplifica quem opera. Se o humano for dominado por pressa, ganância, a máquina se volta contra a organização.</p>
+            <p>Por isso, a especificação conversacional existe. A máquina sugere, mas a autoridade final sobre o que tem valor moral é do ser humano. Responsabilidade ética é inalienável. O humano assina baixo. Então, para amarrar isso tudo, o que a gente tira de síntese? O mercado vive um gap de agência gigantesco. O profissional hoje não pode mais ser o digitador cego. Tem que ser orquestrador. A gente vira curador de inteligência. A tal da inteligência centauro. Metade intuição humana, metade força computacional bruta. O jogo agora é ser o arquiteto moral do sistema. E aí vem aquela provocação que me deixou pensando por horas. A da biologia? É, de explodir a cabeça.</p>
+            <p>Olha, o cérebro humano, com aqueles 20 watts de energia, vive preso num gargalo. A memória de trabalho. A gente só consegue focar simultaneamente em quatro a sete blocos de informação por vez. É o nosso teto inviolável de memória ram biológica. Exato. Nós dividimos os problemas em passos pequenos por causa dessa falha. Mas agora, com a IA gastando megawatts para engolir o paralelismo insano e executar tudo, a grande pergunta é, e se o próximo degrau da evolução não for tecnológico, mas biológico? Usar máquina para neuroplasticidade. Perfeito. Quando o algoritmo vira o músculo de execução e assume a rede neural da empresa, a mente humana se desobriga pela primeira vez da decoreba e da atenção fracionada.</p>
+            <p>A gente se liberta para reescrever nossos próprios limites de hiperfoco e expansão criativa. Ao delegar o peso braçal para o silício, o cérebro pavimenta o caminho para virar algo que a evolução biológica nem tem nome para descrever ainda. O humano deixa de ser o bloco de notas glorificado que decora a receita para finalmente desenhar a própria cozinha. Sensacional. Fica essa reflexão densa sobre os limites da mente frente à máquina para inspirar quem acompanha a gente a tomar decisões melhores. Eu agradeço imensamente o tempo e o engajamento nessa investigação profunda. E, claro, pela sua presença. Eu que agradeço. Foi um papo excelente. Continuem exercitando o pensamento crítico sobre essas novas estruturas, pessoal.</p>
+            <p>Até a próxima!</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================ COMO OUVIR ============================ -->
+    <section id="como-ouvir" class="eo-section" aria-labelledby="como-ouvir-titulo">
+      <div class="eo-container eo-container--wide">
+        <p class="eo-eyebrow">Guia de escuta</p>
+        <h2 id="como-ouvir-titulo" class="eo-title">O que corrigir enquanto ouve</h2>
+        <p>A tabela segue a ordem do áudio. A coluna da direita é a versão que a evidência sustenta.</p>
+
+        <div class="eo-tablewrap">
+          <table class="eo-table">
+            <caption>Doze afirmações do áudio e a versão que a evidência sustenta</caption>
+            <thead>
+              <tr>
+                <th scope="col">No áudio</th>
+                <th scope="col">O que a evidência sustenta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="eo-audio-cell">"AI brain fry" causou "um salto de 33% na fadiga de decisão até o fim do dia".</td>
+                <td>Numa pesquisa do Boston Consulting Group (BCG) com 1&nbsp;488 trabalhadores dos EUA, quem relatou <em lang="en">brain fry</em> (cerca de 14% dos que usam IA) relatou 33% mais fadiga de decisão do que quem não relatou. É uma diferença entre grupos, num único momento. Não mede aumento ao longo do dia nem prova causa.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">A dopamina tem pico "quando a pessoa se esforça muito em algo incerto", e a IA "zera a equação biológica".</td>
+                <td>A dopamina sinaliza a diferença entre a recompensa recebida e a esperada. Nenhum estudo mediu dopamina durante o uso de IA. A ligação com o esforço e com a IA é especulação.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">"As pesquisas chamam isso de ilusão do pensamento", ao falar de projetar humanidade num chat.</td>
+                <td>São duas coisas diferentes. Atribuir compreensão a um programa é o efeito ELIZA (Weizenbaum, 1966). "The Illusion of Thinking" (Apple, 2025) trata de limites de modelos de raciocínio em quebra-cabeças, e foi contestado.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">Desenvolvedores "digitam código 55% mais rápido".</td>
+                <td>Num experimento, quem usou o GitHub Copilot terminou <strong>uma tarefa</strong> (um servidor HTTP) 55,8% mais rápido. Não mede digitação nem trabalho real. Em outro experimento, com 16 desenvolvedores experientes em projetos que conheciam, as tarefas com IA levaram 19% mais tempo.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">"A velocidade líquida de entrega cai para 0,85 vezes o original."</td>
+                <td>Nenhuma fonte com esse número foi encontrada.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">A "manobra reversa de Conway" é "a solução que o MIT aborda".</td>
+                <td>A manobra inversa de Conway vem da prática de consultoria (ThoughtWorks) e do livro <em lang="en">Team Topologies</em>. Não foi encontrada proposta do MIT.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">Cargas "intrínseca, germânica e extrínseca".</td>
+                <td>Os termos da teoria da carga cognitiva são intrínseca, pertinente (<em lang="en">germane</em>) e estranha (<em lang="en">extraneous</em>). A teoria vem do ensino; aplicá-la a equipes é uma adaptação.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">A ciência "destrói o mito" do brainstorming sem julgamento, e avaliar durante a geração é superior.</td>
+                <td>O brainstorming <strong>em grupo</strong> rende menos ideias do que as mesmas pessoas sozinhas. Mas nenhum estudo mostra que avaliar durante a geração é sempre melhor. A ordem entre gerar e avaliar depende da tarefa.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">O "estudo de caso bancário": agente de aprovação de crédito, limiar de 98%, margem de 0,25, zero alucinações, latência −92% e custo de nuvem −78%.</td>
+                <td>É o benchmark <strong>offline</strong> do autor deste site (<a href="/case-agents">Case Agents</a>): 30 consultas de atendimento, ferramentas simuladas, sem crédito e sem produção. O limiar do roteador é 0,75, não 98%. A margem relativa mínima é 0,25. Houve 0 execuções incorretas em 20 consultas; alucinação não foi medida. O 77,8% é a redução do custo de chamadas ao modelo, não do custo de nuvem. A latência não foi medida.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">"Avaliaram 150 execuções multiagentes com Kappa de Cohen de 0,88, confirmando padrões de falha."</td>
+                <td>No estudo MAST (UC Berkeley, 2025), 150 rastros serviram para criar a taxonomia, e o 0,88 mede a concordância entre os anotadores humanos. O estudo encontrou 14 modos de falha e taxas de falha de 41% a 86,7% em sete sistemas.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">DeerFlow 2.0 "aluga computadores reais para a IA usar o mouse"; a Sompo tem "10 mil agentes operando diariamente".</td>
+                <td>O DeerFlow 2.0 (ByteDance, fevereiro de 2026) executa agentes em contêineres com navegador e terminal; nenhuma fonte fala em alugar computadores. A Sompo anunciou agentes de IA para cerca de 30&nbsp;mil funcionários, com piloto a partir de janeiro de 2026; nenhuma fonte confirma o número de agentes citado no áudio.</td>
+              </tr>
+              <tr>
+                <td class="eo-audio-cell">O "framework EPOC do MIT" junta estoicismo, taoísmo, confucionismo e bushidō, e cobra "empatia, presença, opinião autêntica e esperança construtiva".</td>
+                <td>O nome é EPOCH (MIT Sloan, 2025). Tem cinco grupos: empatia, presença, opinião e julgamento, <strong>criatividade</strong>, e esperança e liderança. Nenhuma fonte liga o EPOCH às tradições filosóficas citadas. A ligação é uma analogia do autor.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="eo-small">
+          Também corrigidos no texto: "MOSCO" é MoSCoW; "Matriz-Ghout" é a matriz GUT; "CRIBE" é
+          CRIB; "HAG" é RAG; "Cloud Mythos" é o Claude Mythos Preview, da Anthropic. A lista completa
+          está no <a href="#pesquisa">registro da pesquisa</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================= EVIDÊNCIA ============================= -->
+    <section id="evidencia" class="eo-section" aria-labelledby="evidencia-titulo">
+      <div class="eo-container">
+        <p class="eo-eyebrow">Revisão crítica</p>
+        <h2 id="evidencia-titulo" class="eo-title">O que a evidência mostra</h2>
+        <p>Cada bloco tem um selo: <strong>fato</strong> é resultado relatado pela fonte; <strong>inferência</strong> combina resultados; <strong>hipótese</strong> ainda não tem validação suficiente.</p>
+
+        <article class="eo-bloco eo-bloco--fato" aria-labelledby="ev1">
+          <span class="eo-selo eo-selo--fato">Fato</span>
+          <h3 id="ev1">1. A IA acelera tarefas delimitadas, e o ganho varia</h3>
+          <p>Em experimentos controlados, a IA reduziu o tempo e melhorou a qualidade em tarefas de escrita, atendimento e consultoria. Num call center com 5&nbsp;179 atendentes, os casos resolvidos por hora subiram 14% na média e 34% entre os novatos, com efeito mínimo entre os mais experientes. Com 758 consultores, o ganho apareceu dentro do que o modelo faz bem; fora disso, as respostas corretas caíram 19 pontos percentuais.</p>
+          <p class="eo-fontes-curtas">Fontes: <a href="#ref-1">Brynjolfsson, Li e Raymond (2025)</a>; <a href="#ref-2">Noy e Zhang (2023)</a>; <a href="#ref-3">Dell'Acqua et al. (2025)</a>.</p>
+        </article>
+
+        <article class="eo-bloco eo-bloco--inferencia" aria-labelledby="ev2">
+          <span class="eo-selo eo-selo--inferencia">Inferência</span>
+          <h3 id="ev2">2. Produzir mais não garante entregar mais</h3>
+          <p>Dados de mais de 10&nbsp;000 desenvolvedores mostram mais pull requests com IA, revisão 91% mais longa e nenhuma correlação com a entrega no nível da organização. A pesquisa DORA (<span lang="en">DevOps Research and Assessment</span>) de 2024 associou mais adoção de IA a pequena queda na vazão e na estabilidade das entregas. Os dois resultados são correlacionais: não provam que a IA causou a mudança. Uma explicação alternativa é que mudanças maiores, e não a IA em si, deixam a revisão mais lenta.</p>
+          <p class="eo-fontes-curtas">Fontes: <a href="#ref-8">Faros AI (2025)</a>; <a href="#ref-9">DORA (2024)</a>.</p>
+          <p class="eo-metafora">A fila muda de lugar. Quando escrever fica mais rápido e revisar não fica, o trabalho acumula na revisão.</p>
+        </article>
+
+        <article class="eo-bloco eo-bloco--fato" aria-labelledby="ev3">
+          <span class="eo-selo eo-selo--fato">Fato, com ressalva</span>
+          <h3 id="ev3">3. Supervisionar a IA tem custo</h3>
+          <p>A literatura de fatores humanos descreve, desde 1983, que automatizar a parte fácil deixa à pessoa a parte difícil, com menos prática, e que quem supervisiona automação tende a confiar demais nela. Em 2026, pesquisadores do BCG deram o nome de <em lang="en">AI brain fry</em> à fadiga mental de quem usa ou supervisiona IA além da própria capacidade.</p>
+          <p class="eo-fontes-curtas">Fontes: <a href="#ref-20">Bainbridge (1983)</a>; <a href="#ref-21">Parasuraman e Manzey (2010)</a>; <a href="#ref-15">Bedard et al. (2026)</a>.</p>
+        </article>
+
+        <article class="eo-bloco eo-bloco--fato" aria-labelledby="ev4">
+          <span class="eo-selo eo-selo--fato">Fato, com amostras pequenas</span>
+          <h3 id="ev4">4. Delegar pode reduzir a aprendizagem</h3>
+          <p>Num experimento com 52 programadores, quem usou IA para aprender uma biblioteca nova teve nota 17 pontos menor num teste de compreensão, sem ganho significativo de tempo. Quem usou a IA para perguntar e entender manteve a nota. Em quatro centros de colonoscopia, a taxa de detecção sem IA caiu de 28,4% para 22,4% depois de meses de uso da IA. Os dois estudos são pequenos, e o segundo é observacional.</p>
+          <p class="eo-fontes-curtas">Fontes: <a href="#ref-16">Shen e Tamkin (2026)</a>; <a href="#ref-17">Budzyń et al. (2025)</a>.</p>
+        </article>
+
+        <article class="eo-bloco eo-bloco--fato" aria-labelledby="ev5">
+          <span class="eo-selo eo-selo--fato">Fato</span>
+          <h3 id="ev5">5. Agentes avançam, mas os testes mostram limites</h3>
+          <p>O tamanho das tarefas que agentes completam com 50% de sucesso dobrou a cada cerca de sete meses entre 2019 e 2025, mas o desempenho cai em tarefas pouco estruturadas. Num escritório simulado, o melhor agente concluiu 30% das tarefas sozinho. Sistemas com vários agentes falharam em 41% a 86,7% das execuções analisadas.</p>
+          <p class="eo-fontes-curtas">Fontes: <a href="#ref-33">Kwa et al. (2025)</a>; <a href="#ref-34">Xu et al. (2025)</a>; <a href="#ref-32">Cemri et al. (2025)</a>.</p>
+        </article>
+
+        <article class="eo-bloco eo-bloco--hipotese" aria-labelledby="ev6">
+          <span class="eo-selo eo-selo--hipotese">Hipótese</span>
+          <h3 id="ev6">O que essas evidências sustentam da tese do áudio</h3>
+          <p>Juntas, essas evidências apoiam uma parte da tese do áudio: o gargalo muda de lugar, e com ele o papel humano. Não sustentam a outra parte: que a mudança já é geral, que reduz o esforço humano ou que libera a mente para crescer. Os dados de mercado de trabalho mostram, até agora, efeitos pequenos na média (Dinamarca, 25&nbsp;000 trabalhadores) e efeitos concentrados em jovens de ocupações expostas (EUA).</p>
+          <p class="eo-fontes-curtas">Fontes: <a href="#ref-6">Humlum e Vestergaard (2025)</a>; <a href="#ref-7">Brynjolfsson, Chandar e Chen (2025)</a>.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================= CENÁRIOS ============================= -->
+    <section id="cenarios" class="eo-section" aria-labelledby="cenarios-titulo">
+      <div class="eo-container eo-container--wide">
+        <p class="eo-eyebrow">Modelo explicativo</p>
+        <h2 id="cenarios-titulo" class="eo-title">Três cenários</h2>
+        <p>O resultado depende das condições. Os indicadores da terceira coluna ajudam a saber em qual cenário uma equipe está.</p>
+
+        <div class="eo-tablewrap">
+          <table class="eo-table">
+            <caption>Cenários, condições e indicadores observáveis</caption>
+            <thead>
+              <tr>
+                <th scope="col">Cenário</th>
+                <th scope="col">Quando é plausível</th>
+                <th scope="col">Como reconhecer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Favorável: a IA aumenta a produtividade efetiva e libera tempo</th>
+                <td>Tarefas que o modelo faz bem; testes automáticos; mudanças pequenas; pessoas que usam a IA para entender, não só para delegar</td>
+                <td>Vazão e estabilidade sobem juntas; o tempo de revisão não cresce; o desempenho sem IA se mantém</td>
+              </tr>
+              <tr>
+                <th scope="row">Intermediário: a execução acelera e a revisão absorve parte do ganho</th>
+                <td>Revisão manual; mudanças grandes; metas de atividade (linhas, tickets, pontos)</td>
+                <td>Mais pull requests e a mesma entrega; revisão mais longa</td>
+              </tr>
+              <tr>
+                <th scope="row">Adverso: erros, dependência e supervisão anulam o ganho</th>
+                <td>Tarefas fora do que o modelo faz bem; confiança excessiva; pouca prática sem IA</td>
+                <td>A estabilidade cai; erros graves aumentam; o desempenho sem IA cai</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><span class="eo-selo eo-selo--inferencia">Inferência</span> Os dados de software de 2024 e 2025 se parecem mais com o cenário intermediário. Isso pode mudar com ferramentas novas.</p>
+      </div>
+    </section>
+
+    <!-- ============================== LIMITES ============================== -->
+    <section id="limites" class="eo-section" aria-labelledby="limites-titulo">
+      <div class="eo-container">
+        <p class="eo-eyebrow">Alcance</p>
+        <h2 id="limites-titulo" class="eo-title">O que esta página não afirma</h2>
+        <ul class="eo-lista">
+          <li>Não afirma que a orquestração vai substituir a execução em todas as profissões. Quase todos os estudos são de software, escrita e atendimento.</li>
+          <li>Não afirma que "orquestrador" é uma profissão nova. É uma combinação de competências conhecidas: especificar, revisar, coordenar e responder pela decisão.</li>
+          <li>Não usa as tradições filosóficas do áudio como evidência. Elas são analogias do autor.</li>
+          <li>Não trata anúncios de empresas como prova de resultado em produção.</li>
+          <li>Os modelos mudam mais rápido que a pesquisa. Os estudos citados usaram ferramentas de 2023 a 2025.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =============================== FONTES =============================== -->
+    <section id="fontes" class="eo-section" aria-labelledby="fontes-titulo">
+      <div class="eo-container">
+        <p class="eo-eyebrow">Rastreabilidade</p>
+        <h2 id="fontes-titulo" class="eo-title">Fontes</h2>
+        <p class="eo-small">Todas consultadas em 28/10/2026. "(fonte secundária)" indica número lido em reportagem ou resumo, sem acesso ao texto integral.</p>
+        <ol class="eo-refs">
+          <li id="ref-1">Brynjolfsson, E.; Li, D.; Raymond, L. (2025). Generative AI at Work. <em>Quarterly Journal of Economics</em>, 140(2). <a href="https://www.nber.org/papers/w31161">NBER WP 31161</a>.</li>
+          <li id="ref-2">Noy, S.; Zhang, W. (2023). Experimental evidence on the productivity effects of generative artificial intelligence. <em>Science</em>. <a href="https://doi.org/10.1126/science.adh2586">doi:10.1126/science.adh2586</a>.</li>
+          <li id="ref-3">Dell'Acqua, F. et al. (2025). Navigating the Jagged Technological Frontier. <em>Organization Science</em>. <a href="https://doi.org/10.1287/orsc.2025.21838">doi:10.1287/orsc.2025.21838</a>.</li>
+          <li id="ref-4">Peng, S. et al. (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. <a href="https://arxiv.org/abs/2302.06590">arXiv:2302.06590</a>.</li>
+          <li id="ref-5">Becker, J. et al. / METR (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. <a href="https://arxiv.org/abs/2507.09089">arXiv:2507.09089</a>.</li>
+          <li id="ref-6">Humlum, A.; Vestergaard, E. (2025). Large Language Models, Small Labor Market Effects. Becker Friedman Institute, <a href="https://bfi.uchicago.edu/wp-content/uploads/2025/04/BFI_WP_2025-56-3.pdf">BFI WP 2025-56</a>.</li>
+          <li id="ref-7">Brynjolfsson, E.; Chandar, B.; Chen, R. (2025). Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence. <a href="https://siepr.stanford.edu/publications/working-paper/canaries-coal-mine-six-facts-about-recent-employment-effects-artificial">Stanford Digital Economy Lab</a>.</li>
+          <li id="ref-8">Faros AI (2025). The AI Productivity Paradox. <a href="https://www.faros.ai/blog/lab-vs-reality-ai-productivity-study-findings">Relatório do fornecedor</a>.</li>
+          <li id="ref-9">DORA (2024). Accelerate State of DevOps Report 2024. <a href="https://dora.dev">dora.dev</a>; resumo em <a href="https://www.infoq.com/news/2024/11/2024-dora-report/">InfoQ</a> (fonte secundária).</li>
+          <li id="ref-15">Bedard, J. et al. (2026). When Using AI Leads to "Brain Fry". <em>Harvard Business Review</em>. <a href="https://hbr.org/2026/03/when-using-ai-leads-to-brain-fry">HBR</a>; <a href="https://www.bcg.com/news/5march2026-when-using-ai-leads-brain-fry">nota do BCG</a> (fonte secundária).</li>
+          <li id="ref-16">Shen, J. H.; Tamkin, A. (2026). How AI assistance impacts the formation of coding skills. <a href="https://www.anthropic.com/research/AI-assistance-coding-skills">Anthropic</a>.</li>
+          <li id="ref-17">Budzyń, K. et al. (2025). Endoscopist deskilling after exposure to artificial intelligence in colonoscopy. <em>Lancet Gastroenterology &amp; Hepatology</em>. <a href="https://ascopost.com/news/august-2025/routine-ai-assistance-may-lead-to-loss-of-skills-in-endoscopists-study-shows/">Resumo na ASCO Post</a> (fonte secundária).</li>
+          <li id="ref-20">Bainbridge, L. (1983). Ironies of Automation. <em>Automatica</em>, 19(6). <a href="https://doi.org/10.1016/0005-1098(83)90046-8">doi:10.1016/0005-1098(83)90046-8</a>.</li>
+          <li id="ref-21">Parasuraman, R.; Manzey, D. (2010). Complacency and Bias in Human Use of Automation. <em>Human Factors</em>, 52(3). <a href="https://doi.org/10.1177/0018720810376055">doi:10.1177/0018720810376055</a>.</li>
+          <li id="ref-32">Cemri, M. et al. (2025). Why Do Multi-Agent LLM Systems Fail? <a href="https://arxiv.org/abs/2503.13657">arXiv:2503.13657</a>.</li>
+          <li id="ref-33">Kwa, T. et al. / METR (2025). Measuring AI Ability to Complete Long Tasks. <a href="https://arxiv.org/abs/2503.14499">arXiv:2503.14499</a>.</li>
+          <li id="ref-34">Xu, F. et al. (2025). TheAgentCompany. NeurIPS 2025. <a href="https://arxiv.org/abs/2412.14161">arXiv:2412.14161</a>.</li>
+          <li id="ref-35">Shojaee, P. et al. (2025). The Illusion of Thinking. <a href="https://arxiv.org/abs/2506.06941">arXiv:2506.06941</a>; contestação em <a href="https://arxiv.org/abs/2507.01231">arXiv:2507.01231</a>.</li>
+          <li id="ref-36">Weizenbaum, J. (1966). ELIZA. <em>Communications of the ACM</em>, 9(1). <a href="https://doi.org/10.1145/365153.365168">doi:10.1145/365153.365168</a>.</li>
+          <li id="ref-41">Skelton, M.; Pais, M. (2019). <em lang="en">Team Topologies</em>. IT Revolution. Livro de prática.</li>
+          <li id="ref-43">VentureBeat (2026). <a href="https://venturebeat.com/orchestration/what-is-deerflow-and-what-should-enterprises-know-about-this-new-local-ai">What is DeerFlow</a> (fonte de imprensa).</li>
+          <li id="ref-44">Coverager (29/12/2025). <a href="https://coverager.com/sompo-to-deploy-ai-agents-across-30000-employees/">Sompo to deploy AI agents across 30,000 employees</a> (fonte de imprensa).</li>
+          <li id="ref-46">MIT Sloan (17/3/2025). <a href="https://mitsloan.mit.edu/press/new-mit-sloan-research-suggests-ai-more-likely-to-complement-not-replace-human-workers">EPOCH: AI more likely to complement, not replace, human workers</a>.</li>
+        </ol>
+        <p class="eo-small">A numeração segue a bibliografia do registro da pesquisa, para que cada fonte possa ser localizada lá.</p>
+      </div>
+    </section>
+
+    <!-- ============================== PESQUISA ============================== -->
+    <section id="pesquisa" class="eo-section" aria-labelledby="pesquisa-titulo">
+      <div class="eo-container">
+        <p class="eo-eyebrow">Registro</p>
+        <h2 id="pesquisa-titulo" class="eo-title">Registro da pesquisa</h2>
+        <p>
+          A auditoria completa das 56 afirmações, com a matriz de evidências, a bibliografia
+          comentada e as lacunas, está no repositório do site:
+          <a href="https://github.com/issei/mauricio-site/blob/main/docs/specs/pages/da-execucao-a-orquestracao/00_pesquisa-critica.md">pesquisa crítica (Markdown, GitHub)</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">O que o áudio acerta e o que precisa de correção</h2>
+    <p class="aeo-tldr__lede">A IA aumenta a capacidade de produzir mais depressa do que a capacidade de verificar. Onde isso acontece, o trabalho humano passa a depender mais de especificar, verificar e responder pelo resultado. O ganho líquido não é garantido.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>Ganho com limites</strong> — experimentos mostram ganhos em tarefas delimitadas, maiores para novatos; fora do que o modelo faz bem, o desempenho cai.</li>
+      <li><strong>A fila muda de lugar</strong> — dados observacionais mostram mais código e revisão mais longa, sem ganho visível na entrega da organização.</li>
+      <li><strong>Supervisionar custa</strong> — complacência com a automação, fadiga relatada e perda de prática têm evidência, com amostras pequenas.</li>
+      <li><strong>Números corrigidos</strong> — o &quot;caso bancário&quot; do áudio é um benchmark offline do autor; a queda de entrega citada não tem fonte; o 33% é diferença entre grupos.</li>
+    </ul>
+    <p class="aeo-tldr__foot">Registro completo: 56 afirmações auditadas, com fontes e lacunas.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">A IA já desloca o trabalho da execução para a orquestração?</summary>
+      <div class="aeo-faq__a"><p>Em parte, e só em alguns contextos. Experimentos mostram ganhos em tarefas delimitadas, e dados de engenharia de software sugerem que o gargalo passa para a revisão. Os dados de mercado de trabalho mostram, até agora, efeitos pequenos na média e efeitos concentrados em jovens de ocupações expostas. Não há estudo que meça diretamente o trabalho de orquestração.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que é AI brain fry?</summary>
+      <div class="aeo-faq__a"><p>É o nome que pesquisadores do BCG deram, em 2026, à fadiga mental de quem usa ou supervisiona ferramentas de IA além da própria capacidade. Numa pesquisa com 1 488 trabalhadores dos EUA, quem relatou o problema relatou 33% mais fadiga de decisão do que quem não relatou. A pesquisa mostra associação, não causa.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">A IA deixa os desenvolvedores mais rápidos?</summary>
+      <div class="aeo-faq__a"><p>Depende da tarefa e da pessoa. Num experimento com uma tarefa curta, o grupo com Copilot terminou 55,8% mais rápido. Num experimento com 16 desenvolvedores experientes em projetos que eles conheciam, as tarefas com IA levaram 19% mais tempo.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Usar IA prejudica a aprendizagem?</summary>
+      <div class="aeo-faq__a"><p>Pode prejudicar quando a pessoa só delega. Num experimento com 52 programadores, quem usou IA para aprender uma biblioteca nova teve nota menor num teste de compreensão. Quem usou a IA para perguntar e entender manteve a nota. A amostra é pequena.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">O que diz o estudo sobre falhas de sistemas multiagentes?</summary>
+      <div class="aeo-faq__a"><p>O estudo MAST, da UC Berkeley, classificou falhas em 14 modos e 3 categorias e encontrou taxas de falha de 41% a 86,7% em sete sistemas de código aberto. O valor de Kappa de 0,88 mede a concordância entre os anotadores humanos.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+
+  <footer class="eo-footer">
+    <div class="eo-container">
+      <p class="eo-footer__brand">Da execução à orquestração do trabalho</p>
+      <p class="eo-small">Áudio comentado · Maurício Yokoyama Issei</p>
+      <p class="eo-small">
+        <a href="./catalogo.html">Catálogo</a> ·
+        <a href="./case-agents.html">Case Agents</a> ·
+        <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a> ·
+        <a href="./devin.html">Vibe Coding com Devin</a> ·
+        <a href="#inicio">Voltar ao topo</a>
+      </p>
+      <p class="eo-small">
+        © 2026 Maurício Yokoyama Issei. A versão em
+        <a href="/da-execucao-a-orquestracao.md">formato Markdown</a> resume a página para leitura
+        por IA. As obras externas citadas são propriedade de seus autores e editores, referenciadas
+        para rastreabilidade, sem vínculo ou endosso.
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/cookie-consent.js"></script>
+</body>
+
+</html>
