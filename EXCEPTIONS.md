@@ -51,8 +51,8 @@ Isto é um fato registrado, não uma defesa: se um visitante chegar nelas, as ba
 
 ### EXC-009 — `src/da-execucao-a-orquestracao.html` (áudio)
 - **WCAG:** 1.2.1 (alternativa para áudio pré-gravado) · **Severidade:** 🟡 Medium · **Aberta em:** 2026-10-28
-- **Quebrado:** a única transcrição integral do áudio é automática (reconhecimento de fala), com erros de grafia ("germânica", "HAG", "MOSCO"). É rascunho, não alternativa entregue (`docs/a11y/references/guide-media.md` §2).
-- **Contorno:** a transcrição aparece num `<details>` rotulado "rascunho, sem revisão humana" e fica fora do `.md`; a página traz o conteúdo do áudio revisado (tabela "O que corrigir enquanto ouve" e seções seguintes). **Resolução:** revisar a transcrição ouvindo o áudio, trocar o rótulo e remover esta entrada. Revisão: 2027-04-28.
+- **Quebrado:** a transcrição integral veio de reconhecimento de fala. Em 28/10/2026 ela foi corrigida em gramática e ortografia, a pedido do autor, mas sem ninguém ouvir o áudio (`docs/a11y/references/guide-media.md` §2). Um trecho não captado está marcado entre colchetes.
+- **Contorno:** a transcrição aparece num `<details>` que declara como foi revisada; a página traz o conteúdo do áudio revisado (tabela "O que corrigir enquanto ouve" e seções seguintes). **Resolução:** conferir a transcrição ouvindo o áudio, preencher o trecho marcado e remover esta entrada. Revisão: 2027-04-28.
 
 ### EXC-007 — `aria-soup` — **ENCERRADA (Fase 7)**
 - `role="main"`/`role="navigation"` redundantes foram removidos (último caso: `src/life.html`, `<nav aria-label="Controles táteis">`).

@@ -222,12 +222,12 @@ O que foi implementado diverge desta spec nos pontos abaixo. Cada ponto tem o mo
 
 | Ponto | Spec | Implementado | Motivo |
 | :-- | :-- | :-- | :-- |
-| Aviso 1 | "conversa entre duas vozes [confirmar: gerada por IA]" | "conversa entre duas vozes", sem afirmar IA | Pendência P4 aberta; a página não afirma o que não foi confirmado. |
-| Duração | `duration` no JSON-LD | Omitida; rótulo diz "cerca de 20 minutos" | Duração não confirmada (P3). O arquivo não é acessível a partir da nuvem. |
-| Transcrição | Texto revisado como alternativa (SC 1.2.1) | Texto revisado **e** transcrição automática num `<details>` rotulado como rascunho | `A11Y.md` (Media Evidence): transcrição automática é rascunho. Registrado em `EXCEPTIONS.md` (EXC-009). |
+| Aviso 1 | "conversa entre duas vozes [confirmar: gerada por IA]" | "gerado por IA no NotebookLM, do Google, a partir dos vídeos do canal do autor no YouTube" | Resposta do autor, 28/10/2026 (P4 resolvida). |
+| Duração | `duration` no JSON-LD | `PT19M37S`; rótulo "19 minutos e 37 segundos"; chip da OG "19:37" | Resposta do autor, 28/10/2026 (P3 resolvida). |
+| Transcrição | Texto revisado como alternativa (SC 1.2.1) | Texto revisado **e** transcrição integral num `<details>`, corrigida em gramática e ortografia (nomes como MoSCoW, RAG, CRIB, EPOCH; 49 correções; um trecho não captado marcado entre colchetes) | Pedido do autor, 28/10/2026: "corrigir a gramática e ortografia da transcrição e pode disponibilizar". A correção não foi conferida ouvindo o áudio: `EXCEPTIONS.md` EXC-009 continua aberta. A transcrição fica fora do `.md` para que agentes não citem os números sem a correção ao lado. |
 | Posição do AEO | Item 8, no fim | Antes do rodapé, fora do `<main>` | O `.md` usa `mdFromMain` (página convertida); o AEO fora do `<main>` evita duplicar a síntese. |
 | Tempo de leitura | Calcular | 13 minutos (2 570 palavras do `<main>` e do AEO, sem a transcrição, / 200) | BL-15. |
 | Fontes | [1]–[9], [15]–[17], [20], [21], [32]–[34], [43], [44], [46] | As mesmas, mais [35], [36] e [41] | A tabela cita Weizenbaum, "The Illusion of Thinking" e *Team Topologies* pelo nome. [6] ganhou a URL do BFI (o registro não tinha URL). |
 | Gerador | — | `build-aeo.mjs` deixa de apagar o consent-default inline | Armadilha registrada na auditoria editorial (PR #128): cada regeneração removia o script. |
-| Pilar | Fundação [confirmar] | Fundação | Padrão até a resposta do autor. |
+| Pilar | Fundação [confirmar] | Fundação | Confirmado pelo autor, 28/10/2026. |
 | Critério 4 | Strings só na coluna "No áudio" | A coluna da direita deixou de repetir "92%" e "10 mil agentes" ("A latência não foi medida"; "nenhuma fonte confirma o número de agentes citado no áudio"); o ponto do Em síntese diz "a queda de entrega citada não tem fonte" em vez de "0,85×" | O texto da §4.2 e da §6 contradizia o próprio critério 4. O teste cobre o `<main>` e o bloco AEO. |

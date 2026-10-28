@@ -373,6 +373,7 @@ Excluir do texto novo: 0,85×, 92%, "aprovação de crédito", "custo de nuvem",
 |Versão|Data|Alteração|
 |-|-|-|
 |v1|2026-10-28|Primeira versão: Etapas 1 a 6; matriz com 56 afirmações auditadas.|
+|v1.1|2026-10-28|P3 e P4 respondidas pelo autor: o áudio foi gerado por IA no NotebookLM, a partir dos vídeos do canal @MauricioIssei no YouTube; duração de 19 min 37 s. A conferência da transcrição contra o áudio (resto de P3) continua aberta.|
 
 
 

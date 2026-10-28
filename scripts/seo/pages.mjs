@@ -646,7 +646,8 @@ export const PAGES = [
       '@type': 'AudioObject',
       '@id': 'https://mauricio.issei.com.br/da-execucao-a-orquestracao#audio',
       name: 'Da execução à orquestração do trabalho',
-      description: 'Conversa de cerca de 20 minutos sobre IA e trabalho, publicada com revisão das afirmações.',
+      description: 'Conversa sobre IA e trabalho gerada por IA no NotebookLM a partir dos vídeos do canal @MauricioIssei, publicada com revisão das afirmações.',
+      duration: 'PT19M37S',
       contentUrl: 'https://mauricio.issei.com.br/static/audio/Da_execu%C3%A7%C3%A3o_%C3%A0_orquestra%C3%A7%C3%A3o_do_trabalho.m4a',
       encodingFormat: 'audio/mp4',
       inLanguage: 'pt-BR',
@@ -658,7 +659,7 @@ export const PAGES = [
       titleSize: 76,
       subtitle: 'O que a evidência sustenta sobre IA e trabalho',
       thesis: 'A fila muda de lugar: produzir ficou mais rápido que verificar.',
-      chips: [{ k: '56', label: 'Afirmações auditadas' }, { k: '3', label: 'Cenários' }, { k: '20 min', label: 'Áudio' }],
+      chips: [{ k: '56', label: 'Afirmações auditadas' }, { k: '3', label: 'Cenários' }, { k: '19:37', label: 'Áudio' }],
     },
   },
   {

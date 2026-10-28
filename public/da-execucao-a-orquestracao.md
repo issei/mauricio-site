@@ -19,11 +19,11 @@ A IA aumenta a capacidade de produzir mais depressa do que a capacidade de verif
 
 A IA aumenta a capacidade de produzir mais depressa do que aumenta a capacidade de verificar e integrar o que foi produzido. Onde isso acontece, o trabalho humano passa a depender mais de especificar, verificar, integrar e responder pelo resultado, e o ganho líquido depende de como a organização reforma a revisão, as métricas e a governança.
 
-*Áudio: Da execução à orquestração do trabalho, cerca de 20 minutos*
+*Áudio: Da execução à orquestração do trabalho, 19 minutos e 37 segundos*
 
 [Baixar o áudio (.m4a)](https://mauricio.issei.com.br/static/audio/Da_execu%C3%A7%C3%A3o_%C3%A0_orquestra%C3%A7%C3%A3o_do_trabalho.m4a)
 
-O áudio é uma conversa entre duas vozes. Ele tem uma boa ideia central e vários números errados ou sem fonte. Esta página corrige o que o áudio afirma além da evidência. Se você tiver pouco tempo, leia a tabela "O que corrigir enquanto ouve".
+O áudio foi gerado por IA no NotebookLM, do Google, a partir dos vídeos do [canal do autor no YouTube](https://www.youtube.com/@MauricioIssei). É uma conversa entre duas vozes sintéticas. Ele tem uma boa ideia central e vários números errados ou sem fonte. Esta página corrige o que o áudio afirma além da evidência. Se você tiver pouco tempo, leia a tabela "O que corrigir enquanto ouve".
 
 Texto revisado de 56 afirmações do áudio. Leitura de cerca de 13 minutos.
 
@@ -48,9 +48,9 @@ A tabela segue a ordem do áudio. A coluna da direita é a versão que a evidên
 | O "estudo de caso bancário": agente de aprovação de crédito, limiar de 98%, margem de 0,25, zero alucinações, latência −92% e custo de nuvem −78%. | É o benchmark **offline** do autor deste site ([Case Agents](https://mauricio.issei.com.br/case-agents)): 30 consultas de atendimento, ferramentas simuladas, sem crédito e sem produção. O limiar do roteador é 0,75, não 98%. A margem relativa mínima é 0,25. Houve 0 execuções incorretas em 20 consultas; alucinação não foi medida. O 77,8% é a redução do custo de chamadas ao modelo, não do custo de nuvem. A latência não foi medida. |
 | "Avaliaram 150 execuções multiagentes com Kappa de Cohen de 0,88, confirmando padrões de falha." | No estudo MAST (UC Berkeley, 2025), 150 rastros serviram para criar a taxonomia, e o 0,88 mede a concordância entre os anotadores humanos. O estudo encontrou 14 modos de falha e taxas de falha de 41% a 86,7% em sete sistemas. |
 | DeerFlow 2.0 "aluga computadores reais para a IA usar o mouse"; a Sompo tem "10 mil agentes operando diariamente". | O DeerFlow 2.0 (ByteDance, fevereiro de 2026) executa agentes em contêineres com navegador e terminal; nenhuma fonte fala em alugar computadores. A Sompo anunciou agentes de IA para cerca de 30 mil funcionários, com piloto a partir de janeiro de 2026; nenhuma fonte confirma o número de agentes citado no áudio. |
-| O "framework EPOC do MIT" junta estoicismo, taoísmo, confucionismo e bushidō, e cobra "empatia, presença, opinião autêntica e esperança construtiva". | O nome é EPOCH (MIT Sloan, 2025). Tem cinco grupos: empatia, presença, opinião e julgamento, **criatividade**, e esperança e liderança. Nenhuma fonte liga o EPOCH às tradições filosóficas citadas. A ligação é uma analogia do autor. |
+| O "framework EPOCH do MIT" junta estoicismo, taoísmo, confucionismo e bushidō, e cobra "empatia, presença, opinião autêntica e esperança construtiva". | O EPOCH é do MIT Sloan (2025). Tem cinco grupos: empatia, presença, opinião e julgamento, **criatividade**, e esperança e liderança. Nenhuma fonte liga o EPOCH às tradições filosóficas citadas. A ligação é uma analogia do autor. |
 
-Também corrigidos no texto: "MOSCO" é MoSCoW; "Matriz-Ghout" é a matriz GUT; "CRIBE" é CRIB; "HAG" é RAG; "Cloud Mythos" é o Claude Mythos Preview, da Anthropic. A lista completa está no registro da pesquisa.
+A transcrição automática grafou alguns nomes de forma errada ("MOSCO", "Matriz-Ghout", "CRIBE", "HAG", "Cloud Mythos"). A transcrição desta página usa MoSCoW, matriz GUT, CRIB, RAG e Claude Mythos, que é o Claude Mythos Preview, da Anthropic. A lista completa está no registro da pesquisa.
 
 Revisão crítica
 

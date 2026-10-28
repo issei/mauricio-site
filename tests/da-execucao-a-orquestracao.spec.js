@@ -97,10 +97,12 @@ test.describe('Da execução à orquestração — página', () => {
     for (const n of contagens) expect(n).toBeLessThanOrEqual(1);
   });
 
-  test('a transcrição automática está rotulada como rascunho e começa fechada', async ({ page }) => {
+  test('a transcrição integral existe, começa fechada e declara como foi revisada', async ({ page }) => {
     await page.goto(PATH);
     const det = page.locator('#transcricao');
-    await expect(det.locator('summary')).toContainText('sem revisão humana');
+    await expect(det.locator('summary')).toContainText('Transcrição do áudio');
+    await expect(det).toContainText('não foi conferido palavra por palavra com o áudio');
+    expect(await det.locator('.eo-prose p').count()).toBeGreaterThan(20);
     await expect(det).not.toHaveAttribute('open', /.*/);
   });
 
