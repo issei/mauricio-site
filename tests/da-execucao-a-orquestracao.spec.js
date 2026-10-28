@@ -106,6 +106,15 @@ test.describe('Da execução à orquestração — página', () => {
     await expect(det).not.toHaveAttribute('open', /.*/);
   });
 
+  test('o menu <eco-nav> aparece e situa a página no pilar Fundação', async ({ page }) => {
+    await page.goto(PATH);
+    const nav = page.locator('eco-nav');
+    await expect(nav).toHaveCount(1);
+    // A pílula do pilar só aparece se o slug estiver no grafo do componente.
+    const texto = await nav.evaluate((el) => el.shadowRoot?.textContent ?? '');
+    expect(texto).toContain('Fundação');
+  });
+
   test('critério 8: a11y sem violações serious/critical', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(PATH);

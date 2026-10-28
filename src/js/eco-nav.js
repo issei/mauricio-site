@@ -22,10 +22,10 @@
  */
 
 const DATA = {
-  version: '1.11.0',
+  version: '1.12.0',
   base: './', // D-05: URL relativa atual
   pillars: [
-    { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas'] },
+    { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas', 'da-execucao-a-orquestracao'] },
     { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents', 'acessibilidade', 'especificacao-conversacional'] },
     { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
     { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta-observabilidade-mobile'] },
@@ -36,6 +36,7 @@ const DATA = {
     devin: { file: 'devin.html', title: 'Vibe Coding com Devin', blurb: 'Engenharia agêntica na prática.' },
     artifice: { file: 'artifice.html', title: 'O Artífice Invisível', blurb: 'O paradoxo da maestria no trabalho tecnológico.' },
     'formulacao-de-problemas': { file: 'formulacao-de-problemas.html', title: 'Formulação de Problemas', blurb: 'Formular é engenharia da incerteza, não intuição.' },
+    'da-execucao-a-orquestracao': { file: 'da-execucao-a-orquestracao.html', title: 'Da execução à orquestração', blurb: 'Áudio comentado: o que a evidência sustenta.' },
     apresentacao: { file: 'apresentacao.html', title: 'Arquitetura de IA auditável', blurb: 'Complexidade traduzida em decisões auditáveis.' },
     'engenharia-confianca': { file: 'engenharia-confianca.html', title: 'A Engenharia da Confiança', blurb: 'Da intenção à execução agêntica.' },
     'engenharia-agentes-ia': { file: 'engenharia-agentes-ia.html', title: 'Engenharia de Agentes de IA', blurb: 'Os princípios da IA confiável.' },

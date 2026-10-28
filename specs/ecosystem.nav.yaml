@@ -17,10 +17,14 @@
 # =============================================================================
 
 meta:
-  version: "1.11.0"           # semver; bump obrigatório a cada alteração de grafo
+  version: "1.12.0"           # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-10-10"
+  updated: "2026-10-28"
+  # 1.12.0 — entra `da-execucao-a-orquestracao` (Da execução à orquestração do
+  #         trabalho) em p1 (Fundação/Mentalidade): áudio comentado com auditoria das
+  #         afirmações. Pedido pelo autor em 2026-10-28 (a página saiu no PR #129 sem
+  #         entrar no menu). Atualizar src/js/eco-nav.js junto.
   # 1.11.0 — entra `especificacao-conversacional` (Especificação Conversacional
   #         Estruturada) em p2 (Engenharia de Confiança / O Método): workflow proposto
   #         para elicitar requisitos com IA sob autoridade humana. Dois crosslinks,
@@ -81,7 +85,7 @@ pillars:
     label: "Fundação"
     subtitle: "Mentalidade"
     summary: "Princípios de pensamento sistêmico e gestão do conhecimento."
-    nodes: [know, devin, artifice, formulacao-de-problemas]
+    nodes: [know, devin, artifice, formulacao-de-problemas, da-execucao-a-orquestracao]
 
   - id: p2
     order: 2
@@ -133,6 +137,11 @@ nodes:
     file: "formulacao-de-problemas.html"
     title: "Formulação de Problemas"
     blurb: "Formular é engenharia da incerteza, não intuição."
+    pillar: p1
+  da-execucao-a-orquestracao:
+    file: "da-execucao-a-orquestracao.html"
+    title: "Da execução à orquestração"
+    blurb: "Áudio comentado: o que a evidência sustenta."
     pillar: p1
 
   # --- P2 · Engenharia de Confiança ------------------------------------------
