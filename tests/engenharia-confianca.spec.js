@@ -92,9 +92,11 @@ test.describe('Engenharia da Confiança — jornada', () => {
     // Limiar de 98% no M2 com fallback estruturado
     await expect(page.locator('#modulo-2')).toContainText('Limiar de 98% de Certeza');
     await expect(page.locator('#modulo-2')).toContainText('fallback estruturado');
-    // A2UI no M3 (renderização determinística)
+    // A2UI no M3: protocolo próprio (a2ui.org), não evolução do MCP
     await expect(page.locator('#modulo-3')).toContainText('A2UI');
-    await expect(page.locator('#modulo-3')).toContainText('emitir intenção de interface');
+    await expect(page.locator('#modulo-3')).toContainText('descreve a interface em JSON declarativo');
+    // o 98% é declarado como hipótese, não como valor medido
+    await expect(page.locator('#modulo-2')).toContainText('valor hipotético');
   });
 
   test('encadeamento de artefatos M1 → M2 → M3 está explícito', async ({ page }) => {

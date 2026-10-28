@@ -223,7 +223,7 @@ Decisão de critério válida para todo o lote: vírgula antes de "mas" que liga
 5. **Números sem fonte (B5.02, B5.04).** "novo engenheiro atinge produtividade 70% mais rápido"; "Economia de 8 horas vs. refactor manual. Código 40% mais legível."; "Novo engenheiro onboards em 2 dias vs. 2 semanas"; "Aumentar a geração de código com IA em 55%". São medições, estimativas ou exemplos ilustrativos? Se forem ilustrativos, convém dizer isso.
 6. **Absolutos (B5.01, B5.03).** "A calculadora foi a primeira IA da história" e "a primeira ferramenta cognitiva da humanidade"; "Refatoração sem receio de quebra, ele testa tudo"; "Migração confiável, sem erros silenciosos"; "É por isso que o Devin cria um PR com testes passando". Ficam como recurso retórico da apresentação ou devem ser qualificados?
 7. **Tooltip de ACU (fora do texto editável, atributo `data-tooltip`).** "1 ACU ≈ US$ 0.026": o separador decimal está no padrão inglês e o valor parece baixo em relação ao preço público por ACU. Conferir o valor. Na mesma seção, "Clonando um repositório grande do Git → Sleep (contador parado)": clonar é espera ou trabalho do agente?
-8. **Idades.** "Pai da Yumi (14), Lucas e Matheus (9)". O Terminal Evolutivo diz que os gêmeos nasceram em 2016; em outubro de 2026 eles podem ter 9 ou 10 anos. Confirmar se a idade está atualizada.
+8. **Idades dos filhos.** *Resolvido em 27/10/2026: o autor retirou os nomes e as idades da página (auditoria editorial, BL-05).*
 
 **Sugestões (Baixa, não aplicadas):**
 - "onde" com antecedente que não é lugar: "especialidades onde Devin executa", "As especialidades onde Devin agrega", "um domínio onde o Devin executa" → "em que".

@@ -583,7 +583,7 @@ O agente **compõe** a tela a partir de um catálogo de componentes aprovados; n
 
 **Especificações, registry e regras de execução**
 
-- **A2UI** (Google): formato declarativo, “não código executável”; o cliente mantém o catálogo e o agente só pede componentes dele. Versão 0.8 em dezembro de 2025.
+- **A2UI** (Google): formato declarativo, “não código executável”; o cliente mantém o catálogo e o agente só pede componentes dele. Lançado com a versão 0.8 em dezembro de 2025; em 27/10/2026, a versão 0.9.1 está em produção e a 1.0 é candidata ([a2ui.org](https://a2ui.org/)).
 - **MCP Apps**: recursos `ui://` pré-declarados, renderizados em iframes isolados; proposta de novembro de 2025.
 - **Open-JSON-UI**: padronização do schema declarativo citada na documentação do AG-UI. Ou um schema próprio sobre o design system.
 

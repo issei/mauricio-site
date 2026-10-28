@@ -86,7 +86,7 @@ export const HUB_ITEMS = [
     "blurb": "Como o Vibe Coding maduro vira engenharia: Spec-Driven Development, testes BDD, o arsenal Skills/Playbooks/Knowledge e a renderização governada (A2UI) — do estudo de caso Devin + Salesforce.",
     "href": "./devin.html",
     "tab": "planejar",
-    "minutes": 35,
+    "minutes": 36,
     "complexity": "Técnica Aplicada"
   },
   {

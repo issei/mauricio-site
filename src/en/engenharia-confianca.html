@@ -317,6 +317,11 @@
           "@type": "CreativeWork",
           "name": "Anthropic (2024). Model Context Protocol (MCP).",
           "url": "https://modelcontextprotocol.io"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Google (2025). A2UI — Agent-to-User Interface.",
+          "url": "https://a2ui.org/"
         }
       ]
     },
@@ -414,7 +419,7 @@
           "name": "What is the 98% sure threshold and structured fallback?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The 98% Sure Threshold is the trusted floor below which all LLM inference is intercepted by architecture before becoming a fact. When trust is below the threshold, the output is not accepted as truth: it is degraded to a structured fallback — ask for human review, answer 'uncertain' explicitly or trigger a deterministic route. It unifies rigid contract, Open World (Open World) and failed-closed in a single operational criterion."
+            "text": "The 98% Sure Threshold is the trusted floor below which all LLM inference is intercepted by architecture before becoming a fact. When trust is below the threshold, the output is not accepted as truth: it is degraded to a structured fallback — ask for human review, answer 'uncertain' explicitly or trigger a deterministic route. It unifies rigid contract, Open World (Open World) and failed-closed in a single operational criterion. The value of 98% is a design hypothesis, not a measured number: each system calibrates its own threshold with data."
           }
         },
         {
@@ -430,7 +435,7 @@
           "name": "What is Model Context Protocol (MCP) and A2UI?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The MCP (Model Context Protocol) is the security and interoperability border by which an agent gains 'hands and eyes' in a controlled manner, explicitly declaring which tools he can use. The A2UI (Agent-to-User Interface) is the evolution of this pattern: the orchestrator uses the MCP not only to query data, but to emit interface intent — the Brain decides what to show and the deterministic display decides how to render, extending the Brain × Vitrine separation to the presentation layer."
+            "text": "The MCP (Model Context Protocol) is the security and interoperability border by which an agent gains 'hands and eyes' in a controlled manner, explicitly declaring which tools he can use. A2UI (Agent-to-User Interface) is another protocol, open and published by Google: the agent describes the declarative JSON interface and the client renders it with components of a pre-approved catalog. The two complement each other: MCP connects the agent to the tools; A2UI connects the agent to the interface. Apply the Brain × Vitrine separation to the interface: the agent decides what to show; the client catalog decides how."
           }
         },
         {
@@ -591,13 +596,13 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/engenharia-confianca#g-limiar-98",
           "name": "98% Insurance threshold",
-          "description": "Trust floor below which all LLM inference is intercepted and degraded to a structured fallback, rather than turn fact."
+          "description": "Trust floor below which all LLM inference is intercepted and degraded to a structured fallback, rather than turn fact. The value of 98% is a design hypothesis, not a measured number: each system calibrates its own threshold with data."
         },
         {
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/engenharia-confianca#g-a2ui",
           "name": "A2UI (Agent-to-User Interface)",
-          "description": "Architecture in which the orchestrator uses the MCP to emit interface intent; the Brain decides what to show and the deterministic display decides how to render."
+          "description": "Open Google Protocol (Apache 2.0, released in December 2025) where the agent describes the interface in declarative JSON, as data and not as code, and the client renders it with native components of a pre-approved catalog. It is independent of MCP and can traffic over A2A, AG-UI or MCP."
         }
       ]
     },
@@ -1405,7 +1410,7 @@ governing until interface rendering (<button class="ec-term" data-term="a2ui" ty
             <aside class="ec-callout ec-callout--concept" aria-label="Key concept: Threshold 98% of Sure">
               <span class="ec-callout__icon" aria-hidden="true">🎯</span>
               <div class="ec-callout__body">
-                <span class="ec-callout__label">Key concept · Criteria for certainty</span>
+                <span class="ec-callout__label">Key concept · Criteria for certainty (hypothetical value)</span>
                 <strong>The 98% sure threshold.</strong> Rigid contract, Open World and failed-closed no
 There are three loose rules — they are one operational criterion. All LLM inference
 carries a degree of confidence, and the architecture defines an explicit floor: the
@@ -1417,6 +1422,8 @@ recording the lock (fail-closed). What comes back is never a silent guess, but a
                 <strong>structured fallback</strong> — ask for human review, answer "uncertain" in a way
 explicit or trigger the alternative deterministic route. That's how it becomes Crash.
 Silent impossible by construction.
+                <strong>Hypothesis:</strong> the value of 98% is a proposed starting point, not a result
+measured. Each system needs to calibrate its own threshold with data (see ECE in Module 2).
               </div>
             </aside>
             <p>
@@ -1453,7 +1460,7 @@ flowchart LR
               <p>
                 Entry passes by deterministic validation and early pruning; only interpretive residue
 reaches the LLM, which is invoked within a fixed stage. The model output is validated by a
-strict contract requiring schema compliance and confidence of at least 98%: below
+rigid contract requiring schema compliance and confidence of at least 98% (hypothetical value): below
 from this threshold or outside schema, it is intercepted and degraded to a structured fallback
 (explicit uncertainty or human review); if valid, it becomes reliable output. A ledger of
 quota governs the cost of the call. The LLM never decides what the next step is.
@@ -1636,7 +1643,7 @@ and auditable determinism.
               </table>
             </div>
             <details class="ec-disclose">
-              <summary>Statistical rigor: why ECE justifies the 98% threshold</summary>
+              <summary>Statistical rigor: why ECE justifies an external threshold</summary>
               <div class="ec-disclose__body">
                 Modern neural networks are <strong>miscalibrated</strong> — produce wrong predictions
 with very high confidence (Guo et al., 2017). O <code>softmax</code> It's not a
@@ -1645,7 +1652,8 @@ Reliable probability. ECE measures this misalignment by partitioning predictions
 A high ECE means that the "98%" declared by the model is not worth 98% — and legitimate to impose
 an external brake (the Threshold) instead of relying on the model's own number. Limitation: o
 ECE is sensitive to the <em>binning</em> and may mask rare but serious errors;
-this is pair of PSI (M1), not substitute.
+this is pair of PSI (M1), not substitute. The ECE justifies imposing a threshold, but not the value
+98%: this number is hypothesis, calibrating in each system.
               </div>
             </details>
           </section>
@@ -1925,16 +1933,16 @@ reasoning that produced it.
             <aside class="ec-callout ec-callout--concept" aria-label="Key concept: A2UI">
               <span class="ec-callout__icon" aria-hidden="true">🖥️</span>
               <div class="ec-callout__body">
-                <span class="ec-callout__label">Key Concept · Evolution of the interface</span>
-                <strong>From consultation to rendering — A2UI.</strong> The MCP we saw in Module 2 as
-tool border evolves here to something more ambitious. In an architecture
+                <span class="ec-callout__label">Key concept · governed interface</span>
+                <strong>From consultation to rendering — A2UI.</strong> The MCP we saw in Module 2 connects the
+Agent to tools. For the interface there is another open protocol, the
                 <button class="ec-term" data-term="a2ui" type="button">A2UI (Agent-to-User Interface)</button>,
-Cognitive Orchestrator does not only use MCP for <em>consult</em> APIs and bring data from
-back — he uses it for <strong>issuing interface intention</strong>. The Brain decides
-                <em>What?</em> present and return structured data under contract; the window, deterministic,
-decide <em>how</em> render. The interface ceases to be unpredictable free text and passes to
-be an output governed by the same schemas — testable, auditable and reproducible. It's the
-Brain separation × display extended to the presentation layer.
+published by Google: the agent <strong>describes the declarative JSON interface</strong>,
+as data and not as code, and the client renders it with native components of a catalog
+pre-approved. The agent decides <em>What?</em> present; customer catalog decides
+                <em>how</em>. The interface ceases to be unpredictable free text and becomes an output
+governed by contract, testable and auditable. It is the separation Brain × Vitrine applied to
+interface.
               </div>
             </aside>
             <p>
@@ -1942,7 +1950,7 @@ Brain separation × display extended to the presentation layer.
 artifacts: o
               <button class="ec-term" data-term="inventario-de-comportamentos" type="button">Behavior Inventory</button>
               (M1) generates the rules; the rules have seen <em>schemas</em> validation (M2); schemas, with
-pre and post-conditions define the contract of <strong>tools</strong> exposed via MCP/A2UI; and
+pre and post-conditions define the contract of <strong>tools</strong> exposed via MCP; and is
 this set of typed tools that the Cognitive Orchestrator consumes in the SDD flow (M3).
 The intention goes through the whole chain without getting lost — from what the system does today (As-Is) to what the
 spec says tomorrow. This chain is the backbone of the
@@ -2307,7 +2315,8 @@ one <strong>structured fallback</strong> — ask for human review, answer "uncer
 explicitly or trigger a deterministic route. He unifies
                   <a href="#g-contrato-rigido">rigid contract</a>,
                   <a href="#g-open-world">Open World</a> and <a href="#g-fail-closed">fail-closed</a> one
-only operational criterion.</p>
+only operational criterion. The value of 98% is a project hypothesis, not a number
+measured: each system calibrates its own threshold with data.</p>
               </div>
             </details>
 
@@ -2328,11 +2337,12 @@ Trust).</p>
                 <p>O <a href="#g-mcp">MCP (Model Context Protocol)</a> is the security border and
 interoperability by which an agent gains "hands and eyes" in a controlled manner,
 explicitly stating which tools you can use. O
-                  <a href="#g-a2ui">A2UI (Agent-to-User Interface)</a> is the evolution of this pattern:
-orchestrator uses MCP not only to query data, but for <strong>issuing intention to
-interface</strong> — the Brain decides <em>What?</em> show and deterministic display
-decide <em>how</em> render, extending the separation
-                  <a href="#g-cerebro-vitrine">Brain × display</a> the presentation layer.</p>
+                  <a href="#g-a2ui">A2UI (Agent-to-User Interface)</a> it's another protocol, open and
+published by Google: the agent describes the interface in JSON declarative and the client a
+renders with components of a pre-approved catalog. The two complement each other: the MCP
+connects the agent to the tools; A2UI connects the agent to the interface. A2UI applies separation
+                  <a href="#g-cerebro-vitrine">Brain × display</a> interface: the agent decides
+                  <em>What?</em> show; client catalog decides <em>how</em>.</p>
               </div>
             </details>
 
@@ -2526,6 +2536,10 @@ consolidated research lines. Each pillar is anchored in verifiable literature.
                 <cite>Anthropic (2024).</cite> Model Context Protocol (MCP).
                 <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontext protocol. io</a>
               </li>
+              <li>
+                <cite>Google (2025).</cite> A2UI — Agent-to-User Interface. Version 0.9.1 in production and 1.0 as candidate, consulted on 27/10/2026.
+                <a href="https://a2ui.org/" target="_blank" rel="noopener">a2ui.org</a>
+              </li>
             </ul>
           </div>
 
@@ -2629,7 +2643,7 @@ sustains. Every word dotted in the text brings you here.
             </div>
             <div class="ec-gloss__entry" id="g-mcp">
               <dt>MCP (Model Context Protocol)</dt>
-              <dd>Standard protocol that gives the agent "hands and eyes" controlled; declares which tools you can use (security border). Evolve to <a href="#g-a2ui">A2UI</a> when the agent uses it not only to query data, but to issue interface intention to be rendered deterministically.</dd>
+              <dd>Standard protocol that gives the agent "hands and eyes" controlled; declares which tools you can use (security border). For the interface, the corresponding protocol is the <a href="#g-a2ui">A2UI</a>.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-sdd">
               <dt>SDD (Spec-Driven Development)</dt>
@@ -2645,11 +2659,11 @@ sustains. Every word dotted in the text brings you here.
             </div>
             <div class="ec-gloss__entry" id="g-limiar-98">
               <dt>98% Insurance threshold</dt>
-              <dd>Trust floor below which all LLM inference is intercepted by architecture and degraded to a <strong>structured fallback</strong> (explicit uncertainty, human review or deterministic route), rather than becoming a fact. Une <a href="#g-contrato-rigido">rigid contract</a>, <a href="#g-open-world">Open-World</a> and <a href="#g-fail-closed">fail-closed</a> in a single criterion.</dd>
+              <dd>Trust floor below which all LLM inference is intercepted by architecture and degraded to a <strong>structured fallback</strong> (explicit uncertainty, human review or deterministic route), rather than becoming a fact. Une <a href="#g-contrato-rigido">rigid contract</a>, <a href="#g-open-world">Open-World</a> and <a href="#g-fail-closed">fail-closed</a> in a single criterion. <strong>Hypothesis:</strong> the value of 98% was not measured; each system calibrates the threshold itself.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-a2ui">
               <dt>A2UI (Agent-to-User Interface)</dt>
-              <dd>Architecture in which the orchestrator uses the <a href="#g-mcp">MCP</a> to emit interface intention: the Brain decides <em>What?</em> show (data structured under contract) and deterministic display decides <em>how</em> render — Separation <a href="#g-cerebro-vitrine">Brain × display</a> in the presentation layer.</dd>
+              <dd>Open Google Protocol (Apache 2.0, released in December 2025) where the agent describes the interface in declarative JSON, as data and not as code, and the client renders it with native components of a pre-approved catalog. It is independent of <a href="#g-mcp">MCP</a> and can traffic over A2A, AG-UI or MCP. Apply separation <a href="#g-cerebro-vitrine">Brain × display</a> interface: the agent decides <em>What?</em> show; client catalog decides <em>how</em>.</dd>
             </div>
           </dl>
 

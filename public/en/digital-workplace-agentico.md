@@ -584,7 +584,7 @@ The agent **composes** the screen from a catalogue of approved components; does 
 
 **Specifications, registration and implementing rules**
 
-- **A2UI** (Google): Declarative format, “not executable code”; the client keeps the catalog and the agent only asks for components of it. Version 0.8 in December 2025.
+- **A2UI** (Google): Declarative format, “not executable code”; the client keeps the catalog and the agent only asks for components of it. Released with version 0.8 in December 2025; on October 27, 2026, version 0.9.1 is in production and 1.0 is a candidate ([a2ui.org](https://a2ui.org/)).
 - **MCP Apps**: pre-declared `ui://` resources, rendered in isolated iframes; proposal November 2025.
 - **Open-JSON-UI**: standardization of declarative schema cited in the AG-UI documentation. Or a proper schema about the design system.
 

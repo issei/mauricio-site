@@ -686,13 +686,12 @@
               <p class="eai-pilar__def">Componentes de raciocínio, ferramentas e interface se comunicam por <strong>contratos explícitos e versionáveis</strong>, nunca por acoplamento direto. Duas fronteiras importam:</p>
               <ul class="eai-pilar__just">
                 <li><strong>MCP (Model Context Protocol)</strong> — a fronteira agente↔ferramentas/dados. O conjunto de ações do agente é exatamente o que um servidor MCP <em>expõe</em>: é o ponto natural de autorização, escopo de permissão, rate limiting e auditoria. O agente não tem acesso ambiente — tem acesso <em>enumerado</em>. É por isso que MCP é uma <strong>fronteira de segurança</strong> (menor privilégio).</li>
-                <li><strong>Camada A2UI</strong> — a fronteira agente↔apresentação. O Cérebro emite intenção e dados estruturados (<em>o quê</em>); a Vitrine determinística decide a renderização (<em>como</em>). O modelo nunca produz HTML ou pixels diretamente.</li>
+                <li><strong>A2UI (Agent-to-User Interface)</strong> — a fronteira agente↔interface. Protocolo aberto do Google em que o agente descreve a interface em JSON declarativo (<em>o quê</em>) e o cliente a renderiza com componentes nativos de um catálogo pré-aprovado (<em>como</em>). O modelo nunca produz HTML nem código executável.</li>
               </ul>
 
               <figure class="eai-bound" aria-labelledby="bound-cap">
                 <div class="eai-bound__row" role="list" aria-hidden="true">
                   <span class="eai-bound__node" role="listitem">Usuário</span>
-                  <span class="eai-bound__gate" role="listitem">A2UI</span>
                   <span class="eai-bound__node" role="listitem">Vitrine</span>
                   <span class="eai-bound__gate" role="listitem">A2UI</span>
                   <span class="eai-bound__node eai-bound__node--brain" role="listitem">Cérebro</span>
@@ -700,14 +699,14 @@
                   <span class="eai-bound__node" role="listitem">Ferramentas / Dados</span>
                 </div>
                 <figcaption id="bound-cap" class="eai-bound__cap">
-                  Fluxo: <strong>Usuário → Vitrine →[A2UI]→ Cérebro →[MCP]→ Ferramentas → … →[A2UI]→ Vitrine → Usuário</strong>.
+                  Fluxo: <strong>Usuário → Vitrine →[A2UI]→ Cérebro →[MCP]→ Ferramentas → … → Cérebro →[A2UI]→ Vitrine → Usuário</strong>.
                   Cada <em>[contrato]</em> é um ponto de validação, segurança e teste — a superfície do possível passa a coincidir com a superfície do intencional.
                 </figcaption>
               </figure>
 
               <div class="eai-callout eai-callout--warn" role="note">
-                <p class="eai-callout__title">⚠ Limitação declarada — "A2UI"</p>
-                <p>"A2UI" é tratado aqui como <strong>padrão arquitetural</strong> (a fronteira agente↔interface), não como especificação canônica da indústria. Protocolos reais adjacentes incluem <strong>AG-UI</strong> (Agent-User Interaction) e <strong>A2A</strong> (Agent-to-Agent, do Google). Já o <strong>MCP</strong> é protocolo aberto com especificação pública. Valide a nomenclatura antes de publicá-la como termo técnico estabelecido.</p>
+                <p class="eai-callout__title">⚠ Estado dos protocolos (consulta em 27/10/2026)</p>
+                <p>O <strong>A2UI</strong> é protocolo aberto do Google (Apache 2.0, lançado em dezembro de 2025): versão 0.9.1 em produção e 1.0 como candidata (<a href="https://a2ui.org/" target="_blank" rel="noopener">a2ui.org</a>). É independente do MCP e pode trafegar sobre <strong>A2A</strong> (agente↔agente), <strong>AG-UI</strong> (interação agente↔aplicação) ou MCP. O <strong>MCP</strong> também é protocolo aberto com especificação pública. Protocolos jovens mudam rápido: confira a versão antes de implementar.</p>
               </div>
 
               <p class="eai-pilar__links">Conecta com
@@ -1460,7 +1459,7 @@ for item in fila:
           <div><dt>Regra de transição</dt><dd>A leveza é legítima enquanto o artefato permanece no polo de origem. Quando alguém passa a depender dele como produção, a promoção obriga o upgrade de garantias. <a href="#pilar-5">Pilar 5 →</a></dd></div>
           <div><dt>ADR</dt><dd>Architecture Decision Record: registro versionado e imutável de uma decisão arquitetural, seu contexto e consequências. Memória que impede reabrir o que já foi fechado — e vira contexto injetável para o agente.</dd></div>
           <div><dt>MCP</dt><dd>Model Context Protocol: protocolo aberto cliente-servidor que padroniza a conexão do agente a ferramentas e dados. A fronteira onde se aplica autorização, escopo de permissão e auditoria — acesso <em>enumerado</em>, não ambiente. <a href="#pilar-3">Pilar 3 →</a></dd></div>
-          <div><dt>A2UI (camada)</dt><dd>A fronteira contratual agente↔interface: o Cérebro emite intenção e dados estruturados; a Vitrine decide a renderização. Padrão arquitetural (não especificação canônica) — ver AG-UI e A2A como protocolos reais adjacentes.</dd></div>
+          <div><dt>A2UI</dt><dd>Agent-to-User Interface: protocolo aberto do Google em que o agente descreve a interface em JSON declarativo, como dados e não como código, e o cliente a renderiza com componentes nativos de um catálogo pré-aprovado. É a fronteira agente↔interface, independente do MCP. <a href="#pilar-3">Pilar 3 →</a></dd></div>
           <div><dt>Sistema Intencional</dt><dd>Sistema cujo comportamento é governado por intenção arquitetural explícita, não pela saída mais provável do modelo. A garantia mora na arquitetura, que <em>encapsula</em> a probabilidade. <a href="#maturidade">Maturidade →</a></dd></div>
           <div><dt>Sandbox (freios)</dt><dd>O espaço delimitado por DoR/DoD/ADR dentro do qual o agente opera em capacidade máxima — porque as bordas são conhecidas. A restrição aumenta a velocidade segura. <a href="#pilar-2">Pilar 2 →</a></dd></div>
         </dl>

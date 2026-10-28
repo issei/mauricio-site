@@ -233,7 +233,7 @@ páginas lidas por inteiro, as notas da rubrica e os itens de backlog com evidê
 
 ## 7. Decisões do autor
 
-Registradas em 27/10/2026.
+Registradas em 27/10/2026. Itens 4 a 6 aplicados no PR seguinte ao #127.
 
 1. **`boutique-empresarial-showcase`: indexar.** A página está no domínio do autor e pode ser
    encontrada por busca. Aplicado neste PR: saiu da exclusão do sitemap, ganhou o gêmeo
@@ -241,7 +241,19 @@ Registradas em 27/10/2026.
    `audit-site` a trata como pública. Ela segue **só em PT-BR**: o gêmeo `/en/` não foi decidido
    e a tradução local não roda no ambiente em nuvem.
 2. **Rubrica: nota só nas páginas lidas por inteiro.** Sem nota para página apenas medida.
-3. **Versão executiva na Fase 9:** ainda aberta. Não bloqueia os Lotes 2 e 3.
+3. **Versão executiva na Fase 9: nas cinco páginas da amostra.**
+4. **Nomes de familiares em `devin` (BL-05): retirar.** Aplicado: o cartão "Pessoal" passou a
+   "44 anos. Casado e pai de três filhos." Os nomes também saíram das specs da página.
+5. **A2UI (BL-08): usar a definição correta, de forma coerente.** Aplicado com a definição do
+   projeto oficial ([a2ui.org](https://a2ui.org/), consulta em 27/10/2026): protocolo aberto do
+   Google (Apache 2.0, lançado em dezembro de 2025) em que o agente descreve a interface em JSON
+   declarativo, como dados e não como código, e o cliente a renderiza com componentes nativos de um
+   catálogo pré-aprovado; independente do MCP, pode trafegar sobre A2A, AG-UI ou MCP; versão 0.9.1
+   em produção e 1.0 candidata. Corrigidas as quatro páginas e o `pages.mjs` de `devin`. A página
+   `engenharia-confianca` deixou de dizer que o A2UI é "evolução do MCP".
+6. **Limiar de 98% (BL-02): marcar como hipótese.** Aplicado no destaque, no equivalente textual
+   do diagrama, no bloco do ECE, no FAQ, no glossário e no gêmeo `.md`. As metas de KPI da mesma
+   página seguem sem base (resto do BL-02, aberto).
 
 ## 8. Lote 1: leitura completa e rubrica
 

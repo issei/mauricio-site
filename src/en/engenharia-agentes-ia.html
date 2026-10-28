@@ -691,13 +691,12 @@ Use <a href="#simulador">Autonomy Calibrator</a> to position a task in the matri
               <p class="eai-pilar__def">Reasoning components, tools and interface communicate by <strong>explicit and versatile contracts</strong>Never by direct coupling. Two borders matter:</p>
               <ul class="eai-pilar__just">
                 <li><strong>MCP (Model Context Protocol)</strong> — the frontier between the agents and data. The agent's action set is exactly what an MCP server <em>exposes</em>: is the natural point of authorization, scope of permission, rate limiting and audit. The agent has no access to the environment — has access <em>listed</em>. That's why MCP is a <strong>safety border</strong> (less privilege).</li>
-                <li><strong>Layer A2UI</strong> — the border agent↔ presentation. The Brain issues intention and structured data (<em>What?</em>); the deterministic display decides to render (<em>how</em>). The model never produces HTML or pixels directly.</li>
+                <li><strong>A2UI (Agent-to-User Interface)</strong> — the border agent↔interface. Open Google protocol where the agent describes the declarative JSON interface (<em>What?</em>) and the customer renders it with native components of a pre-approved catalogue (<em>how</em>). The template never produces HTML or executable code.</li>
               </ul>
 
               <figure class="eai-bound" aria-labelledby="bound-cap">
                 <div class="eai-bound__row" role="list" aria-hidden="true">
                   <span class="eai-bound__node" role="listitem">User</span>
-                  <span class="eai-bound__gate" role="listitem">A2UI</span>
                   <span class="eai-bound__node" role="listitem">Display</span>
                   <span class="eai-bound__gate" role="listitem">A2UI</span>
                   <span class="eai-bound__node eai-bound__node--brain" role="listitem">Brain</span>
@@ -705,14 +704,14 @@ Use <a href="#simulador">Autonomy Calibrator</a> to position a task in the matri
                   <span class="eai-bound__node" role="listitem">Tools / Data</span>
                 </div>
                 <figcaption id="bound-cap" class="eai-bound__cap">
-                  Flow: <strong>User → Display →[A2UI]→ Brain →[MCP]→ Tools → ... →[A2UI]→ Display → User</strong>.
+                  Flow: <strong>User → View →[A2UI]→ Brain →[MCP]→ Tools → ... → Brain →[A2UI]→ Display → User</strong>.
 Each <em>[Contract]</em> is a point of validation, safety and testing — the surface of the possible begins to coincide with the surface of the intentional.
                 </figcaption>
               </figure>
 
               <div class="eai-callout eai-callout--warn" role="note">
-                <p class="eai-callout__title">Declared limitation — "A2UI"</p>
-                <p>"A2UI" is treated here as <strong>architectural pattern</strong> (the agent ↔interface border), not as canonical industry specification. Adjacent royal protocols include <strong>AG-UI</strong> (Agent-User Interaction) and <strong>A2A</strong> (Agent-to-Agent, Google). The <strong>MCP</strong> is open protocol with public specification. Validate the nomenclature before publishing it as an established technical term.</p>
+                <p class="eai-callout__title">Protocol status (see 27/10/2026)</p>
+                <p>O <strong>A2UI</strong> is open protocol of Google (Apache 2.0, released in December 2025): version 0.9.1 in production and 1.0 as candidate (<a href="https://a2ui.org/" target="_blank" rel="noopener">a2ui.org</a>). It is independent of MCP and can traffic on <strong>A2A</strong> (agent↔), <strong>AG-UI</strong> (agent ↔ application interaction) or MCP. O <strong>MCP</strong> it is also open protocol with public specification. Young protocols change fast: check out the version before implementing.</p>
               </div>
 
               <p class="eai-pilar__links">Connect with
@@ -1465,7 +1464,7 @@ This content.
           <div><dt>Transition rule</dt><dd>Lightness is legitimate while the artifact remains at the pole of origin. When someone becomes dependent on it as a production, the promotion requires the upgrade of guarantees. <a href="#pilar-5">Pilar 5 →</a></dd></div>
           <div><dt>ADR</dt><dd>Architecture Decision Record: Versioned and immutable record of an architectural decision, its context and consequences. Memory that prevents reopening what has already been closed — and turns into injecting context for the agent.</dd></div>
           <div><dt>MCP</dt><dd>Model Context Protocol: Open client-server protocol that standardizes agent connection to tools and data. The border where authorisation, scope and audit apply — access <em>listed</em>, not environment. <a href="#pilar-3">Pilar 3 →</a></dd></div>
-          <div><dt>A2UI (layer)</dt><dd>The contractual boundary agent↔interface: Brain emits intention and structured data; Vitrine decides to render. Architectural pattern (not canonical specification) — see AG-UI and A2A as adjacent real protocols.</dd></div>
+          <div><dt>A2UI</dt><dd>Agent-to-User Interface: Open Google protocol where the agent describes the declarative JSON interface as data and not as code, and the client renders it with native components of a pre-approved catalog. It is the border agent↔ interface, independent of MCP. <a href="#pilar-3">Pilar 3 →</a></dd></div>
           <div><dt>Intentional System</dt><dd>System whose behavior is governed by explicit architectural intention, not by the most likely exit of the model. The guarantee lives in architecture, which <em>encapsula</em> The probability. <a href="#maturidade">Maturity →</a></dd></div>
           <div><dt>Sandbox (brakes)</dt><dd>The space delimited by DoR/DoD/ADR within which the agent operates at maximum capacity — because the edges are known. The restriction increases the safe speed. <a href="#pilar-2">Pilar 2 →</a></dd></div>
         </dl>

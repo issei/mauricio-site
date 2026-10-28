@@ -206,7 +206,8 @@
           { "@type": "CreativeWork", "name": "Edmondson, A. (2018). The Fearless Organization — Segurança Psicológica." },
           { "@type": "CreativeWork", "name": "NIST (2023). AI Risk Management Framework.", "url": "https://www.nist.gov/itl/ai-risk-management-framework" },
           { "@type": "CreativeWork", "name": "ISO/IEC 42001:2023 — Sistema de Gestão de Inteligência Artificial." },
-          { "@type": "CreativeWork", "name": "Anthropic (2024). Model Context Protocol (MCP).", "url": "https://modelcontextprotocol.io" }
+          { "@type": "CreativeWork", "name": "Anthropic (2024). Model Context Protocol (MCP).", "url": "https://modelcontextprotocol.io" },
+          { "@type": "CreativeWork", "name": "Google (2025). A2UI — Agent-to-User Interface.", "url": "https://a2ui.org/" }
         ]
       },
       {
@@ -254,7 +255,7 @@
           {
             "@type": "Question",
             "name": "O que é o Limiar de 98% de Certeza e o fallback estruturado?",
-            "acceptedAnswer": { "@type": "Answer", "text": "O Limiar de 98% de Certeza é o piso de confiança abaixo do qual toda inferência do LLM é interceptada pela arquitetura antes de virar fato. Quando a confiança fica abaixo do limiar, a saída não é aceita como verdade: é degradada para um fallback estruturado — pedir revisão humana, responder 'incerto' explicitamente ou acionar uma rota determinística. Ele unifica contrato rígido, Mundo Aberto (Open-World) e fail-closed num único critério operacional." }
+            "acceptedAnswer": { "@type": "Answer", "text": "O Limiar de 98% de Certeza é o piso de confiança abaixo do qual toda inferência do LLM é interceptada pela arquitetura antes de virar fato. Quando a confiança fica abaixo do limiar, a saída não é aceita como verdade: é degradada para um fallback estruturado — pedir revisão humana, responder 'incerto' explicitamente ou acionar uma rota determinística. Ele unifica contrato rígido, Mundo Aberto (Open-World) e fail-closed num único critério operacional. O valor de 98% é uma hipótese de projeto, não um número medido: cada sistema calibra o próprio limiar com dados." }
           },
           {
             "@type": "Question",
@@ -264,7 +265,7 @@
           {
             "@type": "Question",
             "name": "O que é o Model Context Protocol (MCP) e o A2UI?",
-            "acceptedAnswer": { "@type": "Answer", "text": "O MCP (Model Context Protocol) é a fronteira de segurança e interoperabilidade pela qual um agente ganha 'mãos e olhos' de forma controlada, declarando explicitamente quais ferramentas pode usar. O A2UI (Agent-to-User Interface) é a evolução desse padrão: o orquestrador usa o MCP não só para consultar dados, mas para emitir intenção de interface — o Cérebro decide o quê mostrar e a Vitrine determinística decide como renderizar, estendendo a separação Cérebro × Vitrine à camada de apresentação." }
+            "acceptedAnswer": { "@type": "Answer", "text": "O MCP (Model Context Protocol) é a fronteira de segurança e interoperabilidade pela qual um agente ganha 'mãos e olhos' de forma controlada, declarando explicitamente quais ferramentas pode usar. O A2UI (Agent-to-User Interface) é outro protocolo, aberto e publicado pelo Google: o agente descreve a interface em JSON declarativo e o cliente a renderiza com componentes de um catálogo pré-aprovado. Os dois se complementam: o MCP liga o agente às ferramentas; o A2UI liga o agente à interface. Aplica a separação Cérebro × Vitrine à interface: o agente decide o quê mostrar; o catálogo do cliente decide como." }
           },
           {
             "@type": "Question",
@@ -313,8 +314,8 @@
           { "@type": "DefinedTerm", "@id": "https://mauricio.issei.com.br/engenharia-confianca#g-sdd", "name": "SDD (Spec-Driven Development)", "description": "A especificação versionada como referência da intenção; a IA implementa contra ela e os testes verificam os comportamentos escolhidos." },
           { "@type": "DefinedTerm", "@id": "https://mauricio.issei.com.br/engenharia-confianca#g-orquestrador-cognitivo", "name": "Orquestrador Cognitivo", "description": "Quem dirige a inteligência da máquina com intenção, consumindo tools tipadas derivadas dos schemas, em vez de executar cada linha." },
           { "@type": "DefinedTerm", "@id": "https://mauricio.issei.com.br/engenharia-confianca#g-ism", "name": "ISM (Intentional Systems Model) v1.0", "description": "Modelo de referência que trata cada output de IA como artefato governado por arquitetura, não por probabilidade, com foco em qualidade e clareza determinística." },
-          { "@type": "DefinedTerm", "@id": "https://mauricio.issei.com.br/engenharia-confianca#g-limiar-98", "name": "Limiar de 98% de Certeza", "description": "Piso de confiança abaixo do qual toda inferência do LLM é interceptada e degradada para um fallback estruturado, em vez de virar fato." },
-          { "@type": "DefinedTerm", "@id": "https://mauricio.issei.com.br/engenharia-confianca#g-a2ui", "name": "A2UI (Agent-to-User Interface)", "description": "Arquitetura em que o orquestrador usa o MCP para emitir intenção de interface; o Cérebro decide o quê mostrar e a Vitrine determinística decide como renderizar." }
+          { "@type": "DefinedTerm", "@id": "https://mauricio.issei.com.br/engenharia-confianca#g-limiar-98", "name": "Limiar de 98% de Certeza", "description": "Piso de confiança abaixo do qual toda inferência do LLM é interceptada e degradada para um fallback estruturado, em vez de virar fato. O valor de 98% é uma hipótese de projeto, não um número medido: cada sistema calibra o próprio limiar com dados." },
+          { "@type": "DefinedTerm", "@id": "https://mauricio.issei.com.br/engenharia-confianca#g-a2ui", "name": "A2UI (Agent-to-User Interface)", "description": "Protocolo aberto do Google (Apache 2.0, lançado em dezembro de 2025) em que o agente descreve a interface em JSON declarativo, como dados e não como código, e o cliente a renderiza com componentes nativos de um catálogo pré-aprovado. É independente do MCP e pode trafegar sobre A2A, AG-UI ou MCP." }
         ]
       },
       {
@@ -1117,7 +1118,7 @@ flowchart TD
             <aside class="ec-callout ec-callout--concept" aria-label="Conceito-chave: Limiar de 98% de Certeza">
               <span class="ec-callout__icon" aria-hidden="true">🎯</span>
               <div class="ec-callout__body">
-                <span class="ec-callout__label">Conceito-chave · Critério de certeza</span>
+                <span class="ec-callout__label">Conceito-chave · Critério de certeza (valor hipotético)</span>
                 <strong>O Limiar de 98% de Certeza.</strong> Contrato rígido, Mundo Aberto e fail-closed não
                 são três regras soltas — convergem num único critério operacional. Toda inferência do LLM
                 carrega um grau de confiança, e a arquitetura define um piso explícito: o
@@ -1129,6 +1130,8 @@ flowchart TD
                 <strong>fallback estruturado</strong> — pedir revisão humana, responder "incerto" de forma
                 explícita ou acionar a rota determinística alternativa. É assim que se torna o Crash
                 Silencioso impossível por construção.
+                <strong>Hipótese:</strong> o valor de 98% é um ponto de partida proposto, não um resultado
+                medido. Cada sistema precisa calibrar o próprio limiar com dados (ver o ECE no Módulo 2).
               </div>
             </aside>
             <p>
@@ -1165,7 +1168,7 @@ flowchart LR
               <p>
                 A entrada passa por validação determinística e poda precoce; só o resíduo interpretativo
                 chega ao LLM, que é invocado dentro de uma etapa fixa. A saída do modelo é validada por um
-                contrato rígido que exige conformidade de schema e confiança de pelo menos 98%: abaixo
+                contrato rígido que exige conformidade de schema e confiança de pelo menos 98% (valor hipotético): abaixo
                 desse limiar ou fora do schema, é interceptada e degradada para um fallback estruturado
                 (incerteza explícita ou revisão humana); se válida, vira saída confiável. Um ledger de
                 quota governa o custo da chamada. O LLM nunca decide qual é a próxima etapa.
@@ -1348,7 +1351,7 @@ flowchart LR
               </table>
             </div>
             <details class="ec-disclose">
-              <summary>Rigor estatístico: por que o ECE justifica o Limiar de 98%</summary>
+              <summary>Rigor estatístico: por que o ECE justifica um limiar externo</summary>
               <div class="ec-disclose__body">
                 Redes neurais modernas são <strong>mal calibradas</strong> — produzem predições erradas
                 com confiança altíssima (Guo et al., 2017). O <code>softmax</code> não é uma
@@ -1357,7 +1360,8 @@ flowchart LR
                 Um ECE alto significa que o "98%" declarado pelo modelo não vale 98% — e legitima impor
                 um freio externo (o Limiar) em vez de confiar no número do próprio modelo. Limitação: o
                 ECE é sensível ao método de <em>binning</em> e pode mascarar erros raros mas graves; por
-                isso é par do PSI (M1), não substituto.
+                isso é par do PSI (M1), não substituto. O ECE justifica impor um limiar, mas não o valor
+                de 98%: esse número é hipótese, a calibrar em cada sistema.
               </div>
             </details>
           </section>
@@ -1637,16 +1641,16 @@ flowchart LR
             <aside class="ec-callout ec-callout--concept" aria-label="Conceito-chave: A2UI">
               <span class="ec-callout__icon" aria-hidden="true">🖥️</span>
               <div class="ec-callout__body">
-                <span class="ec-callout__label">Conceito-chave · Evolução da interface</span>
-                <strong>Da consulta à renderização — A2UI.</strong> O MCP que vimos no Módulo 2 como
-                fronteira de ferramentas evolui aqui para algo mais ambicioso. Numa arquitetura
+                <span class="ec-callout__label">Conceito-chave · Interface governada</span>
+                <strong>Da consulta à renderização — A2UI.</strong> O MCP que vimos no Módulo 2 liga o
+                agente às ferramentas. Para a interface existe outro protocolo aberto, o
                 <button class="ec-term" data-term="a2ui" type="button">A2UI (Agent-to-User Interface)</button>,
-                o Orquestrador Cognitivo não usa o MCP apenas para <em>consultar</em> APIs e trazer dados de
-                volta — ele o usa para <strong>emitir intenção de interface</strong>. O Cérebro decide
-                <em>o quê</em> apresentar e devolve dados estruturados sob contrato; a Vitrine, determinística,
-                decide <em>como</em> renderizar. A interface deixa de ser texto livre imprevisível e passa a
-                ser um output governado pelos mesmos schemas — testável, auditável e reproduzível. É a
-                separação Cérebro × Vitrine estendida à camada de apresentação.
+                publicado pelo Google: o agente <strong>descreve a interface em JSON declarativo</strong>,
+                como dados e não como código, e o cliente a renderiza com componentes nativos de um catálogo
+                pré-aprovado. O agente decide <em>o quê</em> apresentar; o catálogo do cliente decide
+                <em>como</em>. A interface deixa de ser texto livre imprevisível e passa a ser um output
+                governado por contrato, testável e auditável. É a separação Cérebro × Vitrine aplicada à
+                interface.
               </div>
             </aside>
             <p>
@@ -1654,7 +1658,7 @@ flowchart LR
               artefatos: o
               <button class="ec-term" data-term="inventario-de-comportamentos" type="button">Inventário de Comportamentos</button>
               (M1) gera as regras; as regras viram <em>schemas</em> de validação (M2); os schemas, com suas
-              pré e pós-condições, definem o contrato das <strong>tools</strong> expostas via MCP/A2UI; e é
+              pré e pós-condições, definem o contrato das <strong>tools</strong> expostas via MCP; e é
               esse conjunto de ferramentas tipadas que o Orquestrador Cognitivo consome no fluxo SDD (M3).
               A intenção percorre toda a cadeia sem se perder — do que o sistema faz hoje (As-Is) ao que a
               spec manda fazer amanhã. Esse encadeamento é a espinha dorsal do
@@ -2019,7 +2023,8 @@ flowchart LR
                   explicitamente ou acionar uma rota determinística. Ele unifica
                   <a href="#g-contrato-rigido">contrato rígido</a>,
                   <a href="#g-open-world">Mundo Aberto</a> e <a href="#g-fail-closed">fail-closed</a> num
-                  único critério operacional.</p>
+                  único critério operacional. O valor de 98% é uma hipótese de projeto, não um número
+                  medido: cada sistema calibra o próprio limiar com dados.</p>
               </div>
             </details>
 
@@ -2040,11 +2045,12 @@ flowchart LR
                 <p>O <a href="#g-mcp">MCP (Model Context Protocol)</a> é a fronteira de segurança e
                   interoperabilidade pela qual um agente ganha "mãos e olhos" de forma controlada,
                   declarando explicitamente quais ferramentas pode usar. O
-                  <a href="#g-a2ui">A2UI (Agent-to-User Interface)</a> é a evolução desse padrão: o
-                  orquestrador usa o MCP não só para consultar dados, mas para <strong>emitir intenção de
-                  interface</strong> — o Cérebro decide <em>o quê</em> mostrar e a Vitrine determinística
-                  decide <em>como</em> renderizar, estendendo a separação
-                  <a href="#g-cerebro-vitrine">Cérebro × Vitrine</a> à camada de apresentação.</p>
+                  <a href="#g-a2ui">A2UI (Agent-to-User Interface)</a> é outro protocolo, aberto e
+                  publicado pelo Google: o agente descreve a interface em JSON declarativo e o cliente a
+                  renderiza com componentes de um catálogo pré-aprovado. Os dois se complementam: o MCP
+                  liga o agente às ferramentas; o A2UI liga o agente à interface. O A2UI aplica a separação
+                  <a href="#g-cerebro-vitrine">Cérebro × Vitrine</a> à interface: o agente decide
+                  <em>o quê</em> mostrar; o catálogo do cliente decide <em>como</em>.</p>
               </div>
             </details>
 
@@ -2238,6 +2244,10 @@ flowchart LR
                 <cite>Anthropic (2024).</cite> Model Context Protocol (MCP).
                 <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontextprotocol.io</a>
               </li>
+              <li>
+                <cite>Google (2025).</cite> A2UI — Agent-to-User Interface. Versão 0.9.1 em produção e 1.0 como candidata, consultado em 27/10/2026.
+                <a href="https://a2ui.org/" target="_blank" rel="noopener">a2ui.org</a>
+              </li>
             </ul>
           </div>
 
@@ -2341,7 +2351,7 @@ flowchart LR
             </div>
             <div class="ec-gloss__entry" id="g-mcp">
               <dt>MCP (Model Context Protocol)</dt>
-              <dd>Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança). Evolui para <a href="#g-a2ui">A2UI</a> quando o agente o usa não só para consultar dados, mas para emitir intenção de interface a ser renderizada deterministicamente.</dd>
+              <dd>Protocolo padronizado que dá ao agente "mãos e olhos" controlados; declara quais ferramentas pode usar (fronteira de segurança). Para a interface, o protocolo correspondente é o <a href="#g-a2ui">A2UI</a>.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-sdd">
               <dt>SDD (Spec-Driven Development)</dt>
@@ -2357,11 +2367,11 @@ flowchart LR
             </div>
             <div class="ec-gloss__entry" id="g-limiar-98">
               <dt>Limiar de 98% de Certeza</dt>
-              <dd>Piso de confiança abaixo do qual toda inferência do LLM é interceptada pela arquitetura e degradada para um <strong>fallback estruturado</strong> (incerteza explícita, revisão humana ou rota determinística), em vez de virar fato. Une <a href="#g-contrato-rigido">contrato rígido</a>, <a href="#g-open-world">Open-World</a> e <a href="#g-fail-closed">fail-closed</a> num único critério.</dd>
+              <dd>Piso de confiança abaixo do qual toda inferência do LLM é interceptada pela arquitetura e degradada para um <strong>fallback estruturado</strong> (incerteza explícita, revisão humana ou rota determinística), em vez de virar fato. Une <a href="#g-contrato-rigido">contrato rígido</a>, <a href="#g-open-world">Open-World</a> e <a href="#g-fail-closed">fail-closed</a> num único critério. <strong>Hipótese:</strong> o valor de 98% não foi medido; cada sistema calibra o próprio limiar.</dd>
             </div>
             <div class="ec-gloss__entry" id="g-a2ui">
               <dt>A2UI (Agent-to-User Interface)</dt>
-              <dd>Arquitetura em que o orquestrador usa o <a href="#g-mcp">MCP</a> para emitir intenção de interface: o Cérebro decide <em>o quê</em> mostrar (dados estruturados sob contrato) e a Vitrine determinística decide <em>como</em> renderizar — a separação <a href="#g-cerebro-vitrine">Cérebro × Vitrine</a> na camada de apresentação.</dd>
+              <dd>Protocolo aberto do Google (Apache 2.0, lançado em dezembro de 2025) em que o agente descreve a interface em JSON declarativo, como dados e não como código, e o cliente a renderiza com componentes nativos de um catálogo pré-aprovado. É independente do <a href="#g-mcp">MCP</a> e pode trafegar sobre A2A, AG-UI ou MCP. Aplica a separação <a href="#g-cerebro-vitrine">Cérebro × Vitrine</a> à interface: o agente decide <em>o quê</em> mostrar; o catálogo do cliente decide <em>como</em>.</dd>
             </div>
           </dl>
 

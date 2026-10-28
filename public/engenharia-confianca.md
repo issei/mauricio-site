@@ -96,6 +96,9 @@ seguro (fail-closed). O que se devolve nunca é um palpite silencioso, e sim um 
 revisão humana, resposta "incerto" explícita ou rota determinística alternativa. É assim que o Crash
 Silencioso se torna impossível por construção.
 
+**Hipótese:** o valor de 98% é um ponto de partida proposto, não um resultado medido. Cada sistema
+precisa calibrar o próprio limiar com dados.
+
 **Encadeamento (M1 → M2 → M3):** os schemas derivam do Inventário de Comportamentos (M1) e, com suas pré
 e pós-condições, passam a ser a **assinatura das ferramentas (tools)** que o Orquestrador Cognitivo do
 M3 consome via MCP. A regra auditada vira contrato; o contrato vira tool.
@@ -127,10 +130,11 @@ no Git permite reverter não só o código, mas o raciocínio que o produziu.
 
 ### Conceito-chave — A2UI (Agent-to-User Interface)
 
-O MCP evolui da consulta para a renderização. Numa arquitetura **A2UI**, o Orquestrador Cognitivo usa o
-MCP para **emitir intenção de interface**: o Cérebro decide *o quê* apresentar (dados estruturados sob
-contrato) e a Vitrine determinística decide *como* renderizar. A interface deixa de ser texto livre
-imprevisível e passa a ser um output governado pelos mesmos schemas — testável, auditável e reproduzível.
+O MCP liga o agente às ferramentas. Para a interface existe outro protocolo aberto, o **A2UI**, publicado
+pelo Google: o agente **descreve a interface em JSON declarativo**, como dados e não como código, e o
+cliente a renderiza com componentes nativos de um catálogo pré-aprovado. O agente decide *o quê*
+apresentar; o catálogo do cliente decide *como*. A interface passa a ser um output governado por
+contrato, testável e auditável.
 
 ---
 
@@ -161,14 +165,15 @@ e a IA atua só no resíduo interpretativo. Menor superfície probabilística = 
 
 **O que é o Limiar de 98% de Certeza?** O piso de confiança abaixo do qual toda inferência do LLM é
 interceptada e degradada para um fallback estruturado (revisão humana, "incerto" ou rota determinística),
-em vez de virar fato. Unifica contrato rígido, Mundo Aberto e fail-closed.
+em vez de virar fato. Unifica contrato rígido, Mundo Aberto e fail-closed. O valor de 98% é uma hipótese
+de projeto, não um número medido: cada sistema calibra o próprio limiar com dados.
 
 **O que é determinístico-primeiro?** Resolver com regras e dados tudo o que for possível e reservar a IA
 para o resíduo interpretativo. Mesma entrada → mesma saída; não-determinismo isolado e testável.
 
 **O que é o MCP e o A2UI?** O MCP é a fronteira controlada pela qual o agente ganha "mãos e olhos" e
-declara quais ferramentas pode usar. O A2UI é sua evolução: o agente emite intenção de interface — o
-Cérebro decide o quê, a Vitrine determinística decide como renderizar.
+declara quais ferramentas pode usar. O A2UI é outro protocolo aberto, do Google: o agente descreve a
+interface em JSON declarativo e o cliente a renderiza com componentes de um catálogo pré-aprovado.
 
 **O que é SDD?** Spec-Driven Development: a especificação versionada é a referência da intenção; a IA
 implementa contra a spec, com testes (BDD) para verificar. A spec não é infalível: quando spec, testes e
@@ -206,8 +211,8 @@ a autoavaliação guiada de 5 perguntas e o checklist de prontidão organizacion
 - **SDD (Spec-Driven Development)** — A especificação versionada como referência da intenção; a IA implementa contra ela e os testes verificam os comportamentos escolhidos.
 - **Orquestrador Cognitivo** — Quem dirige a inteligência da máquina com intenção, consumindo tools tipadas derivadas dos schemas.
 - **ISM (Intentional Systems Model) v1.0** — Modelo de referência que trata cada output de IA como artefato governado por arquitetura.
-- **Limiar de 98% de Certeza** — Piso de confiança abaixo do qual toda inferência é interceptada e degradada para fallback estruturado.
-- **A2UI (Agent-to-User Interface)** — Arquitetura em que o orquestrador usa o MCP para emitir intenção de interface.
+- **Limiar de 98% de Certeza** — Piso de confiança abaixo do qual toda inferência é interceptada e degradada para fallback estruturado. O valor de 98% é hipótese, não medida.
+- **A2UI (Agent-to-User Interface)** — Protocolo aberto do Google (Apache 2.0, lançado em dezembro de 2025) em que o agente descreve a interface em JSON declarativo, como dados e não como código, e o cliente a renderiza com componentes nativos de um catálogo pré-aprovado. É independente do MCP e pode trafegar sobre A2A, AG-UI ou MCP.
 
 ---
 
