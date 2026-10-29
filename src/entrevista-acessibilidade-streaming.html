@@ -94,7 +94,7 @@
       <div class="et-campo">
         <label for="antes-nome">Seu nome ou o nome combinado com quem convidou você</label>
         <p class="et-ajuda" id="antes-nome-ajuda">Serve só para a pessoa saber de quem são as respostas. Como você quer aparecer na reportagem é outra pergunta, na Parte 9.</p>
-        <textarea id="antes-nome" name="antes-nome" rows="4" aria-describedby="antes-nome-ajuda"></textarea>
+        <textarea id="antes-nome" name="antes-nome" rows="4" autocomplete="name" aria-describedby="antes-nome-ajuda"></textarea>
       </div>
       <div class="et-campo">
         <label for="antes-adaptacoes">Você precisa de alguma adaptação, ou prefere continuar em outro formato?</label>
@@ -538,6 +538,7 @@
         <button type="button" class="et-btn et-btn-primario" id="baixar-txt">Baixar o arquivo de respostas (.txt)</button>
         <button type="button" class="et-btn" id="copiar-respostas">Copiar as respostas</button>
       </div>
+      <p class="et-ajuda" id="copiar-resultado" hidden></p>
 
       <h3>Continuar em outro aparelho</h3>
       <p>Para continuar respondendo em outro aparelho, baixe o arquivo de continuação e abra-o nesta mesma página no outro aparelho. Este arquivo não é o que você envia.</p>
