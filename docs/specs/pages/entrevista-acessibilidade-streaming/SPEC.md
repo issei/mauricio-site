@@ -72,8 +72,11 @@ Ordem do DOM = ordem visual. Um `<h1>`; partes em `<h2>`; blocos internos em `<h
 | Situação | grupo "Parte 3, situação 2" (`fieldset`/`legend`) | Adicionar: foco vai ao primeiro campo e o status anuncia "Parte 3, situação 2 adicionada." Remover: diálogo de confirmação; ao confirmar, foco volta a "Adicionar uma situação à Parte 3" e as legendas são renumeradas |
 | Diálogo de confirmação | diálogo modal (`<dialog>` + `showModal()`), nome no título, descrição no texto | Foco inicial no título; Esc, Cancelar ou clique no fundo fecham e devolvem o foco ao gatilho (padrão do `A11Y-DECISIONS.md`) |
 | Blocos extras | `<details>`/`<summary>` | Enter/Espaço abrem e fecham |
-| Anúncios | uma região `role="status"` (`#anuncio`) | Adicionar, remover, copiar, baixar, importar, apagar. Salvamento automático **não** é anunciado (seria ruído a cada tecla); aparece em texto visível |
+| Anúncios | uma região `role="status"` (`#anuncio`) | Adicionar, remover, copiar, baixar, importar, apagar. Salvamento automático com sucesso **não** é anunciado (seria ruído a cada tecla); aparece em texto visível. A **falha** de salvamento é anunciada uma vez, até voltar a salvar (SC 4.1.3) |
+| Resultado de copiar | texto visível `#copiar-resultado`, abaixo dos botões, e o mesmo texto no `#anuncio` | Quem enxerga também sabe se copiou ou se falhou |
+| Nome de quem responde | `autocomplete="name"` no campo, que vale sobre o `autocomplete="off"` do formulário (SC 1.3.5) | O navegador pode preencher; a pessoa pode trocar por um nome fictício |
 | Erro de importação | texto visível "Erro: …" ligado ao campo por `aria-describedby`, `aria-invalid="true"`, foco volta ao campo | A mensagem diz a saída |
+| Importação sobre respostas | com alguma resposta na página, o diálogo de confirmação pergunta antes de substituir (botão "Substituir") (SC 3.3.4) | Cancelar mantém as respostas e devolve o foco ao campo do arquivo. Página vazia: abre direto |
 
 ## 5. Dados
 
@@ -122,8 +125,9 @@ Formato (versão 1), definido em `src/js/entrevista/modelo.js`:
 
 ## 8. Testes
 
-- `tests/entrevista-acessibilidade-streaming.spec.js` (Chromium): estrutura, não listada e sem terceiros, nenhuma requisição com o texto digitado, salvar/recuperar, desligar o salvamento, situação (foco, diálogo, renumeração), bloco extra com resposta abre sozinho, exportar `.txt`/`.json` e reimportar, erro de importação, axe sem serious/critical (página, situação aberta, diálogo), alvos ≥ 44 px, 320 px.
+- `tests/entrevista-acessibilidade-streaming.spec.js` (Chromium): estrutura, não listada e sem terceiros, nenhuma requisição com o texto digitado, salvar/recuperar, desligar o salvamento, situação (foco, diálogo, renumeração), bloco extra com resposta abre sozinho, exportar `.txt`/`.json` e reimportar, erro de importação, confirmação antes de substituir respostas, resultado de copiar visível (sucesso e falha), falha de salvamento anunciada, `autocomplete="name"`, axe sem serious/critical (página, situação aberta, diálogo), alvos ≥ 44 px, 320 px.
 - `tests/entrevista.nojs.spec.js` (projeto `no-js`).
+- `tests/a11y/focus-visible.spec.js`: cada parada de Tab tem indicador de foco visível (página incluída na auditoria de 29/10/2026).
 - `tests/entrevista.model.test.mjs` (`node:test`): partes iguais aos eixos do roteiro, número de perguntas de cada parte igual ao do bloco do roteiro, nenhuma nota ao entrevistador na página, validação da importação, texto exportado.
 
 ## 9. Fora do escopo e pendências

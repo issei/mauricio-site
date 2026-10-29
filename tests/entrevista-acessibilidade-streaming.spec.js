@@ -134,6 +134,55 @@ test.describe('/entrevista-acessibilidade-streaming', () => {
     await expect(page.locator('#importar-arquivo')).toBeFocused();
   });
 
+  test('abrir arquivo com respostas na página pede confirmação antes de substituir (3.3.4)', async ({ page }) => {
+    await page.fill('#rotina-1', 'versão do arquivo');
+    const [js] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /Baixar o arquivo de continuação/ }).click()]);
+    const caminho = await js.path();
+    await page.fill('#rotina-1', 'versão atual');
+
+    const dlg = page.getByRole('dialog');
+    await page.setInputFiles('#importar-arquivo', caminho);
+    await expect(dlg).toBeVisible();
+    await expect(dlg).toContainText('substitui as respostas');
+    await dlg.getByRole('button', { name: 'Cancelar' }).click();
+    await expect(page.locator('#rotina-1')).toHaveValue('versão atual');
+    await expect(page.locator('#importar-arquivo')).toBeFocused();
+
+    await page.setInputFiles('#importar-arquivo', caminho);
+    await dlg.getByRole('button', { name: 'Substituir' }).click();
+    await expect(page.locator('#rotina-1')).toHaveValue('versão do arquivo');
+    await expect(page.locator('#anuncio')).toContainText('Respostas carregadas');
+  });
+
+  test('copiar: o resultado aparece em texto visível, não só para o leitor de tela', async ({ page, context }) => {
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    await page.fill('#rotina-1', 'À noite.');
+    await page.getByRole('button', { name: 'Copiar as respostas' }).click();
+    await expect(page.locator('#copiar-resultado')).toBeVisible();
+    await expect(page.locator('#copiar-resultado')).toHaveText('Respostas copiadas. Cole o texto na mensagem.');
+    await expect(page.locator('#anuncio')).toHaveText('Respostas copiadas. Cole o texto na mensagem.');
+  });
+
+  test('copiar: a falha também aparece em texto visível', async ({ page }) => {
+    await page.evaluate(() => { navigator.clipboard.writeText = () => Promise.reject(new Error('negado')); });
+    await page.getByRole('button', { name: 'Copiar as respostas' }).click();
+    await expect(page.locator('#copiar-resultado')).toHaveText(/Não foi possível copiar/);
+  });
+
+  test('falha ao salvar é anunciada ao leitor de tela, não só escrita na tela (4.1.3)', async ({ page }) => {
+    await page.evaluate(() => {
+      const original = Storage.prototype.setItem;
+      Storage.prototype.setItem = function (k, v) { if (k === 'entrevista-streaming:v1') throw new Error('cheio'); return original.call(this, k, v); };
+    });
+    await page.fill('#rotina-1', 'algo');
+    await expect(page.locator('#ultimo-salvamento')).toContainText('Não foi possível salvar');
+    await expect(page.locator('#anuncio')).toContainText('Não foi possível salvar');
+  });
+
+  test('campo do nome declara o propósito para preenchimento automático (1.3.5)', async ({ page }) => {
+    await expect(page.locator('#antes-nome')).toHaveAttribute('autocomplete', 'name');
+  });
+
   test('a11y: axe sem violações serious/critical, também com situação aberta e diálogo', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await expectNoSeriousA11yViolations(page);

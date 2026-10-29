@@ -40,6 +40,9 @@ function lerArmazenado() {
   } catch { return null; }
 }
 
+// Salvar com sucesso não é anunciado (ruído a cada tecla); a falha é, uma vez, até voltar a salvar (WCAG 4.1.3).
+let falhaAnunciada = false;
+
 function gravar() {
   if (!chkSalvar.checked) return;
   try {
@@ -47,8 +50,11 @@ function gravar() {
     localStorage.setItem(CHAVE, JSON.stringify(estado));
     const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
     ultimoSalvamento.textContent = `Respostas salvas neste navegador às ${hora}.`;
+    falhaAnunciada = false;
   } catch {
-    ultimoSalvamento.textContent = 'Não foi possível salvar neste navegador. Baixe o arquivo de respostas para não perder o que escreveu.';
+    const msg = 'Não foi possível salvar neste navegador. Baixe o arquivo de respostas para não perder o que escreveu.';
+    ultimoSalvamento.textContent = msg;
+    if (!falhaAnunciada) { falhaAnunciada = true; anunciar(msg); }
   }
 }
 
@@ -247,13 +253,20 @@ document.getElementById('baixar-json').addEventListener('click', () => {
   baixar(`${nomeBase()}-continuacao.json`, JSON.stringify(estado, null, 2), 'application/json');
 });
 
+// O resultado aparece em texto visível (quem enxerga também precisa saber) e é anunciado.
+const resultadoCopiar = document.getElementById('copiar-resultado');
+
 document.getElementById('copiar-respostas').addEventListener('click', async () => {
+  let msg;
   try {
     await navigator.clipboard.writeText(textoRespostas());
-    anunciar('Respostas copiadas. Cole o texto na mensagem.');
+    msg = 'Respostas copiadas. Cole o texto na mensagem.';
   } catch {
-    anunciar('Não foi possível copiar. Baixe o arquivo de respostas e envie o arquivo.');
+    msg = 'Não foi possível copiar. Baixe o arquivo de respostas e envie o arquivo.';
   }
+  resultadoCopiar.textContent = msg;
+  resultadoCopiar.hidden = false;
+  anunciar(msg);
 });
 
 const inputImportar = document.getElementById('importar-arquivo');
@@ -276,11 +289,26 @@ inputImportar.addEventListener('change', async () => {
   try { r = validarImportacao(JSON.parse(await arquivo.text())); }
   catch { r = { ok: false, erro: 'Não foi possível ler o arquivo. Escolha o arquivo .json baixado em “Continuar em outro aparelho”.' }; }
   if (!r.ok) { mostrarErroImportacao(r.erro); return; }
-  carregar(r.estado);
-  inputImportar.value = '';
-  gravar();
-  anunciar(`Respostas carregadas do arquivo ${arquivo.name}.`);
+  const abrir = () => {
+    carregar(r.estado);
+    inputImportar.value = '';
+    gravar();
+    inputImportar.focus();
+    anunciar(`Respostas carregadas do arquivo ${arquivo.name}.`);
+  };
+  // Substituir respostas é irreversível: com algo escrito na página, pede confirmação (WCAG 3.3.4).
+  if (!temRespostas()) { abrir(); return; }
+  inputImportar.focus(); // ao cancelar, o foco volta ao campo do arquivo
+  confirmar('Abrir o arquivo substitui as respostas que estão na página agora. Não é possível desfazer. Baixe o arquivo de continuação antes, se quiser guardar as atuais.', 'Substituir', abrir);
 });
+
+// Cancelado ou não, o campo volta vazio: escolher o mesmo arquivo de novo precisa disparar `change`.
+dlg.addEventListener('close', () => { inputImportar.value = ''; });
+
+/** Há alguma resposta na página (campo fixo ou situação)? */
+const temRespostas = () =>
+  Object.values(estado.campos).some((v) => typeof v === 'string' && v.trim())
+  || estado.situacoes.some((sit) => CAMPOS_SITUACAO.some((c) => sit[c.id]?.trim()));
 
 document.getElementById('apagar').addEventListener('click', () => {
   confirmar('Apagar todas as respostas desta página e deste navegador? Não é possível desfazer.', 'Apagar', () => {

@@ -24,6 +24,7 @@ const PAGINAS = [
   'capacidade-antes-do-acesso',
   'da-execucao-a-orquestracao',
   'acessibilidade',
+  'entrevista-acessibilidade-streaming',
 ];
 const MAX_PARADAS = 260;
 
