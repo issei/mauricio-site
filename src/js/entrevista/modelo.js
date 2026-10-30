@@ -11,6 +11,13 @@
 /** Versão do formato salvo e exportado. Muda só quando o formato quebra. */
 export const VERSAO = 1;
 
+/**
+ * Questionário que a página mostra. Muda quando muda o texto ou a lista de
+ * perguntas, sem mudar o formato (VERSAO). Quem analisa as respostas usa este
+ * id para saber qual pergunta a pessoa leu. Vai em todo arquivo .json baixado.
+ */
+export const INSTRUMENTO = 'entrevista-streaming@1';
+
 /** Chave do localStorage. O sufixo acompanha a VERSAO. */
 export const CHAVE = 'entrevista-streaming:v1';
 
@@ -47,7 +54,7 @@ export const CAMPOS_SITUACAO = [
 
 /** Estado vazio. Toda leitura parte daqui, então campo novo nunca chega `undefined`. */
 export function estadoVazio() {
-  return { versao: VERSAO, atualizadoEm: null, campos: {}, situacoes: [] };
+  return { versao: VERSAO, instrumento: INSTRUMENTO, atualizadoEm: null, campos: {}, situacoes: [] };
 }
 
 /** Situação nova da parte pedida, com todos os campos vazios. */
