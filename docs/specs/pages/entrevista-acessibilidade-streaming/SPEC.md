@@ -83,13 +83,14 @@ Ordem do DOM = ordem visual. Um `<h1>`; partes em `<h2>`; blocos internos em `<h
 Formato (versão 1), definido em `src/js/entrevista/modelo.js`:
 
 ```json
-{ "versao": 1, "atualizadoEm": "ISO-8601",
+{ "versao": 1, "instrumento": "entrevista-streaming@1", "atualizadoEm": "ISO-8601",
   "campos": { "<name do controle>": "texto" },
   "situacoes": [ { "id": "1", "parte": "A–E",
                    "aparelho": "", "servico": "", "recurso": "", "controle": "", "quando": "", "versao": "",
                    "objetivo": "", "passos": "", "resultado": "", "desfecho": "", "porque": "" } ] }
 ```
 
+- `instrumento` identifica o questionário que a página mostra (constante `INSTRUMENTO`). Muda quando muda o texto ou a lista de perguntas, sem mudar `versao`. Serve para quem analisa saber qual pergunta a pessoa leu (pedido do Issei em 30/10/2026, decisão D-09 do backend de pesquisa). Arquivo sem o campo é da versão `entrevista-streaming@1`. Ao importar, o estado passa a ter o instrumento da página atual.
 - A importação descarta chave fora de `^[a-z0-9-]{1,64}$`, valor que não seja texto, parte desconhecida e campo de situação desconhecido. Nada importado vira HTML (só `textContent`/`value`).
 - O `.txt` exportado lista só o que foi respondido, na ordem da página, com o texto visível de cada pergunta ("Pergunta:" / "Resposta:"), e as situações dentro da parte a que pertencem. Traz a data da exportação, que vale como data da autorização.
 
