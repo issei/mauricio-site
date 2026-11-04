@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  VERSAO, PARTES, CAMPOS_SITUACAO, estadoVazio, novaSituacao, validarImportacao, nomeSituacao, paraTexto,
+  VERSAO, INSTRUMENTO, PARTES, CAMPOS_SITUACAO, estadoVazio, novaSituacao, validarImportacao, nomeSituacao, paraTexto,
 } from '../src/js/entrevista/modelo.js';
 
 const roteiro = readFileSync(new URL('../docs/specs/pages/entrevista-acessibilidade-streaming/roteiro.md', import.meta.url), 'utf8');
@@ -73,6 +73,14 @@ test('validarImportacao: recusa versão errada e lixo, descarta o que não conhe
   assert.equal(r.estado.situacoes.length, 1);
   assert.equal(r.estado.situacoes[0].aparelho, 'TV');
   assert.equal(r.estado.situacoes[0].extra, undefined);
+});
+
+test('instrumento: todo estado leva o id do questionário que a página mostra', () => {
+  assert.match(INSTRUMENTO, /^entrevista-streaming@\d+$/);
+  assert.equal(estadoVazio().instrumento, INSTRUMENTO);
+  // Arquivo antigo, sem o campo, ou de outro questionário: o estado passa a ser o da página atual.
+  assert.equal(validarImportacao({ versao: VERSAO }).estado.instrumento, INSTRUMENTO);
+  assert.equal(validarImportacao({ versao: VERSAO, instrumento: 'outro@9' }).estado.instrumento, INSTRUMENTO);
 });
 
 test('paraTexto: texto simples, só o que foi respondido, situações dentro da parte', () => {
