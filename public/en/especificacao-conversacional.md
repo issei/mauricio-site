@@ -10,7 +10,7 @@ Structured Conversational Specification is a **workflow proposal** where the AI 
 - **The AI proposes; people decide** — the authority matrix separates who decides who it supports; the model has no substantive authority by default.
 - **Five Practices** — record the origin, separate fact of hypothesis, keep to-dos visible, use examples and counterexamples and review in proportion to the risk.
 - **Governmentd Divergence** — documentation, testing and code tend to differ; policy defines who resolves, how and where the decision is recorded.
-- **Complements TDD, does not replace it** — the specification decides what to verify; the TDD checks. The oracle (the expected result) comes from people.
+- **Complements TDD, does not replace it** — the specification decides what to verify; the TDD checks. Acceptance criteria (the expected result) come from people.
 
 ## Posture: proposed, not validated method
 
@@ -58,7 +58,7 @@ No, by default. The model may ask, summarize, propose scenarios, point out contr
 
 **Does that replace the TDD or acceptance tests?**
 
-Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make the oracle correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people.
+Nope. They act at different levels: the specification defines which problem to solve, for whom and with what criteria; the TDD verifies the next code increment. The TDD makes feedback cheap, but does not make acceptance criteria correct. When the same model writes the specification and tests, a green test can only confirm the error of the model itself. Therefore, the expected result is defined or validated by people.
 
 **Does it work for legacy systems?**
 
@@ -71,7 +71,7 @@ For isolated components, partial: studies show partial capacity of LLMs in elici
 ## Glossary
 
 - **Structured Conversational Specification** — Human workflow–IA, governed by artifacts and human authority, to elicit, record, test and evolve the intention of a system.
-- **Test Oracle** — Source of the expected result with which a test compares the observed behavior.
+- **Acceptance criteria** — Source of the expected result with which a test compares the observed behavior.
 - **Characterization test** — Test that records what an existing system does today, including defects and obsolete rules, without judging whether this behavior is correct.
 - **Divergence (drift)** — Situation where artifacts that should say the same thing (specification, testing, code, production) come to say different things.
 - **Authority Matrix** — Proposed governance policy that defines, for each type of decision, who decides and what the AI can do.
