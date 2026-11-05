@@ -115,23 +115,34 @@ export function nomeSituacao(parte, n) {
  *
  * `perguntas` é a lista dos campos na ordem da página, lida do próprio
  * formulário: `[{ nome, pergunta, secao, titulo }]`. Assim o arquivo usa as
- * mesmas palavras da tela. Pergunta sem resposta não entra.
+ * mesmas palavras da tela.
+ *
+ * Toda pergunta sai, com `Código:` (a chave do .json) e, se em branco,
+ * `Resposta: (sem resposta)`: o backend de pesquisa importa o .txt e precisa
+ * distinguir "em branco" de "pergunta ausente". A resposta vem por último
+ * porque pode ter várias linhas. Spec §5; decisão do Issei em 04/11/2026.
  */
+/** Marca de pergunta em branco no .txt. */
+export const SEM_RESPOSTA = '(sem resposta)';
+
 export function paraTexto(estado, perguntas = [], agora = new Date()) {
   const quem = (estado.campos['antes-nome'] || '').trim() || 'não informado';
   const linhas = [
     'Entrevista por escrito: acessibilidade em serviços de streaming de vídeo',
     `Respostas de: ${quem}`,
     `Arquivo gerado em: ${agora.toLocaleString('pt-BR', { dateStyle: 'long', timeStyle: 'short' })}`,
+    `Questionário: ${estado.instrumento || INSTRUMENTO}`,
     '',
   ];
 
   const secoes = [];
+  let respondida = false;
   for (const p of perguntas) {
     let s = secoes.find((x) => x.secao === p.secao);
     if (!s) { s = { secao: p.secao, titulo: p.titulo, itens: [] }; secoes.push(s); }
     const v = (estado.campos[p.nome] || '').trim();
-    if (v) s.itens.push('', `Pergunta: ${p.pergunta}`, `Resposta: ${v}`);
+    if (v) respondida = true;
+    s.itens.push('', `Pergunta: ${p.pergunta}`, `Código: ${p.nome}`, `Resposta: ${v || SEM_RESPOSTA}`);
   }
   // Uma parte com situações e sem perguntas respondidas ainda precisa aparecer.
   for (const parte of PARTES) {
@@ -140,18 +151,17 @@ export function paraTexto(estado, perguntas = [], agora = new Date()) {
     }
   }
 
-  let algo = false;
   for (const s of secoes) {
     const parte = PARTES.find((p) => p.secao === s.secao);
     const situacoes = parte ? daParte(estado, parte.id) : [];
     const blocos = situacoes.map((sit, i) => {
       const campos = CAMPOS_SITUACAO.filter((c) => sit[c.id].trim()).map((c) => `${c.rotulo} ${sit[c.id].trim()}`);
-      return campos.length ? ['', nomeSituacao(parte.id, i + 1), ...campos] : [];
+      if (campos.length) respondida = true;
+      return campos.length ? ['', nomeSituacao(parte.id, i + 1), `Código: ${parte.id}-${sit.id}`, ...campos] : [];
     }).flat();
     if (!s.itens.length && !blocos.length) continue;
-    algo = true;
     linhas.push(s.titulo, ...s.itens, ...blocos, '', '');
   }
-  if (!algo) linhas.push('Nenhuma pergunta respondida.');
+  if (!respondida) linhas.splice(5, 0, 'Nenhuma pergunta respondida.', '', '');
   return linhas.join('\n').replace(/\n{3,}$/, '\n');
 }
