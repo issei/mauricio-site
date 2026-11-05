@@ -5,7 +5,7 @@
     <!-- Google Consent Mode v2 — default DENIED (LGPD/ANPD/GDPR) -->
     <!-- Spec: docs/specs/pages/LEGAL_PAGES.md §6.2 — deve carregar ANTES de GTM/GA4 -->
 
-    <!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM, do gtag.js e do Clarity.
+    <!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM e do gtag.js (o Clarity vem por uma tag do GTM).
          Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -31,20 +31,6 @@
         })(window, document, 'script', 'dataLayer', 'GTM-KQ9R3GV3');</script>
     <!-- End Google Tag Manager -->
     <!-- Google tag (gtag.js) -->
-    <!-- Clarity só carrega depois do aceite de "Análise": cookie-consent.js chama window.loadClarity. -->
-    <script>
-        window.loadClarity = function (ad) {
-            if (!window.loadClarity.done) {
-                window.loadClarity.done = true;
-                (function (c, l, a, r, i, t, y) {
-                    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-                    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
-                    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-                })(window, document, "clarity", "script", "yduzohu3o0");
-            }
-            window.clarity('consentv2', { ad_Storage: ad, analytics_Storage: 'granted' });
-        };
-    </script>
 
 
     <meta charset="UTF-8">
