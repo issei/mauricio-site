@@ -12,7 +12,7 @@
 | # | Item | Responsável |
 | :-- | :-- | :-- |
 | PR-1 | Spec (A–D) aprovada no PR desta etapa | Autor do site |
-| PR-2 | Resposta a Q-1 e Q-2 (consentimento dos coautores; figuras de terceiros) — **só bloqueia a Fase 7b** | Autor do site |
+| PR-2 | ~~Resposta a Q-1 e Q-2~~ **Encerrado em 04/11/2026: o PDF completo nunca é publicado. A Fase 7b está cancelada.** | — |
 | PR-3 | Leitura de `AGENTS.md`, `mauricio-site-patterns`, `docs/a11y/A11Y.md` e do guia de componente aplicável | Implementador |
 
 ## Fase 1 — Importação e preservação do conteúdo
@@ -96,7 +96,7 @@ Nada desta fase entra em `public/` ou `src/`.
 
 | Risco | Efeito | Mitigação |
 | :-- | :-- | :-- |
-| Publicar o PDF sem consentimento dos coautores | Violação de coautoria | Fase 7b separada e bloqueada por Q-1 |
+| Publicar o PDF sem consentimento dos coautores | Violação de coautoria | Fase 7b cancelada em 04/11/2026: o PDF nunca é publicado |
 | Tradução automática de citações | Atribuir aos autores frases que não escreveram | RF-09 + T5.4 |
 | Ampliar o resultado de "cinco por cento" | Distorção do estudo | CA-10 + T6.2 |
 | Ler o caso de 2004 como presente | Informação falsa sobre empresa real | Aviso de contexto, regra §3.2.7, T6.2 |
