@@ -267,7 +267,7 @@ atual do mesmo problema."
 
 ### 4.9 O trabalho original (`#trabalho-original`) — D-01 a D-03
 
-Duas variantes, decididas por Q-1/Q-2:
+Duas variantes foram previstas. **Decisão do autor em 04/11/2026: só a variante "sem documento" vale.** A outra fica registrada como histórico:
 
 | Variante | Condição | Conteúdo |
 | :-- | :-- | :-- |
@@ -448,8 +448,8 @@ Somente as que impedem decisão segura.
 
 | ID | Questão | Bloqueia | Enquanto não houver resposta |
 | :-- | :-- | :-- | :-- |
-| Q-1 | Priscila Machado Momma e Sergio Kameoka concordam com a publicação do **documento completo** e com a página que os nomeia como coautores? | Publicação do PDF (variante "com documento") | Página na variante "sem documento"; a ficha com os três nomes é dado bibliográfico público e pode ser publicada |
-| Q-2 | O PDF pode ser publicado com as figuras de terceiros (Fleury, 2000; material "Makro, 2003") e com o nome do entrevistado? | Publicação do PDF | Igual a Q-1 |
+| Q-1 | ~~Priscila Machado Momma e Sergio Kameoka concordam com a publicação do **documento completo**?~~ **Encerrada em 04/11/2026: o autor decidiu que o PDF completo nunca é publicado.** | — | A página usa só a variante "sem documento"; a ficha com os três nomes é dado bibliográfico público e pode ser publicada |
+| Q-2 | ~~O PDF pode ser publicado com as figuras de terceiros e com o nome do entrevistado?~~ **Encerrada em 04/11/2026, junto com Q-1.** | — | Igual a Q-1 |
 | Q-3 | Formato do arquivo publicado: PDF consolidado (recomendado), também os `.doc` originais, ou ambos? | Apenas a seção 4.9 | PDF consolidado |
 | Q-4 | Existe cópia depositada na biblioteca do Mackenzie? Se existir e diferir do ZIP, qual versão publicar? | Apenas CA-03 | O ZIP é tratado como versão final |
 

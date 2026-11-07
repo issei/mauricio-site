@@ -92,12 +92,15 @@ function applyConsent(categories) {
     applyClarity(categories);
 }
 
-// O Clarity só carrega depois do aceite de "Análise" (window.loadClarity vem inline, com o ID de cada página).
-// Ao revogar, `consent=false` apaga os cookies dele e interrompe o rastreio.
+// O Clarity vem por uma tag do GTM (projeto ydv1trk2f5) que exige `analytics_storage`: com "Análise" negada,
+// o GTM nem dispara a tag. Se ela já estiver na página, repassamos a escolha pela API de consentimento v2;
+// ao revogar, `consent=false` apaga os cookies dele e interrompe o rastreio.
+// https://learn.microsoft.com/clarity/setup-and-installation/clarity-consent-api-v2
 function applyClarity(categories) {
+    if (typeof window.clarity !== 'function') return;
     if (categories.analytics) {
-        if (typeof window.loadClarity === 'function') window.loadClarity(categories.marketing ? 'granted' : 'denied');
-    } else if (window.loadClarity && window.loadClarity.done && typeof window.clarity === 'function') {
+        window.clarity('consentv2', { ad_Storage: categories.marketing ? 'granted' : 'denied', analytics_Storage: 'granted' });
+    } else {
         window.clarity('consent', false);
     }
 }

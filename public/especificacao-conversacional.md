@@ -9,7 +9,7 @@ A Especificação Conversacional Estruturada é uma **proposta de workflow** em 
 - **A IA propõe; pessoas decidem** — a matriz de autoridade separa quem decide de quem apoia; o modelo não tem autoridade substantiva por padrão.
 - **Cinco práticas** — registrar a origem, separar fato de hipótese, manter as pendências visíveis, usar exemplos e contraexemplos e revisar na proporção do risco.
 - **Divergência governada** — documentação, testes e código tendem a divergir; a política define quem resolve, como e onde a decisão fica registrada.
-- **Complementa o TDD, não o substitui** — a especificação decide o que verificar; o TDD verifica. O oráculo (o resultado esperado) vem de pessoas.
+- **Complementa o TDD, não o substitui** — a especificação decide o que verificar; o TDD verifica. Os critérios de aceite (o resultado esperado) vêm de pessoas.
 
 ## Postura: proposta, não método validado
 
@@ -57,7 +57,7 @@ Não, por padrão. O modelo pode perguntar, resumir, propor cenários, apontar c
 
 **Isso substitui o TDD ou os testes de aceitação?**
 
-Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna o oráculo correto. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas.
+Não. Eles atuam em níveis diferentes: a especificação define qual problema resolver, para quem e com quais critérios; o TDD verifica o próximo incremento de código. O TDD torna o feedback barato, mas não torna os critérios de aceite corretos. Quando o mesmo modelo escreve a especificação e os testes, um teste verde pode apenas confirmar o erro do próprio modelo. Por isso, o resultado esperado é definido ou validado por pessoas.
 
 **Serve para sistemas legados?**
 
@@ -70,7 +70,7 @@ Para componentes isolados, parcial: estudos mostram capacidade parcial de LLMs e
 ## Glossário
 
 - **Especificação Conversacional Estruturada** — Workflow humano–IA, governado por artefatos e por autoridade humana, para elicitar, registrar, testar e evoluir a intenção de um sistema.
-- **Oráculo de teste** — Fonte do resultado esperado com o qual um teste compara o comportamento observado.
+- **Critérios de aceite** — Fonte do resultado esperado com o qual um teste compara o comportamento observado.
 - **Teste de caracterização** — Teste que registra o que um sistema existente faz hoje, inclusive defeitos e regras obsoletas, sem julgar se esse comportamento está correto.
 - **Divergência (drift)** — Situação em que artefatos que deveriam dizer a mesma coisa (especificação, testes, código, produção) passam a dizer coisas diferentes.
 - **Matriz de autoridade** — Política de governança proposta que define, para cada tipo de decisão, quem decide e o que a IA pode fazer.

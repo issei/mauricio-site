@@ -92,7 +92,8 @@ Formato (versão 1), definido em `src/js/entrevista/modelo.js`:
 
 - `instrumento` identifica o questionário que a página mostra (constante `INSTRUMENTO`). Muda quando muda o texto ou a lista de perguntas, sem mudar `versao`. Serve para quem analisa saber qual pergunta a pessoa leu (pedido do Issei em 30/10/2026, decisão D-09 do backend de pesquisa). Arquivo sem o campo é da versão `entrevista-streaming@1`. Ao importar, o estado passa a ter o instrumento da página atual.
 - A importação descarta chave fora de `^[a-z0-9-]{1,64}$`, valor que não seja texto, parte desconhecida e campo de situação desconhecido. Nada importado vira HTML (só `textContent`/`value`).
-- O `.txt` exportado lista só o que foi respondido, na ordem da página, com o texto visível de cada pergunta ("Pergunta:" / "Resposta:"), e as situações dentro da parte a que pertencem. Traz a data da exportação, que vale como data da autorização.
+- O `.txt` exportado lista **todas** as perguntas, na ordem da página, com o texto visível de cada uma. Cada pergunta tem três linhas, nesta ordem: `Pergunta:`, `Código:` (a chave do campo, a mesma do `.json`) e `Resposta:`. Pergunta em branco sai como `Resposta: (sem resposta)`. A resposta fica por último porque pode ter várias linhas. As situações aparecem dentro da parte a que pertencem, com `Código: <parte>-<id>` e só os campos preenchidos, cada um depois do rótulo fixo do campo. O cabeçalho traz a data da exportação, que vale como data da autorização, e `Questionário: <INSTRUMENTO>`.
+- Motivo (decisão do Issei em 04/11/2026): as pessoas mandam o `.txt`, não o `.json`. Com o código e as perguntas em branco, o `.txt` continua legível e passa a ser importável pelo backend de pesquisa (`issei/meikyu-caliope`, leitor de texto). Arquivos antigos, sem `Código:`, são lidos pelo texto da pergunta.
 
 ## 6. Requisitos de acessibilidade (A11Y.md 2.2.0, perfil Standard)
 

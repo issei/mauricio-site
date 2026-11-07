@@ -209,15 +209,17 @@ Cada fase é um PR separado, com spec no padrão SDD do repositório antes do c�
 
 ## 9. Decisões do Issei
 
-| # | Pergunta | Padrão sugerido |
+Respondidas em 04/11/2026: o Issei aceitou o padrão sugerido de D1 a D9. A D10 é uma ação dele.
+
+| # | Pergunta | Decisão (04/11/2026) |
 | :--- | :--- | :--- |
 | D1 | Qual opção: A, B, C ou D? | **B em fases** |
-| D2 | URL: `/videos/<slug>` e `/temas/<tema>`, ou nomes planos (`/video-<slug>`)? A URL é permanente. | `/videos/<slug>` |
-| D3 | Publicar a transcrição completa na página? | sim, em bloco expansível (ajuda acessibilidade e busca) |
+| D2 | URL: `/videos/<slug>` e `/temas/<tema>`, ou nomes planos (`/video-<slug>`)? A URL é permanente. | `/videos/<slug>` e `/temas/<tema>` |
+| D3 | Publicar a transcrição completa na página? | sim, em bloco expansível, **marcada como "transcrição automática, não revisada"** (a legenda automática do YouTube tem erros e ninguém confere 178 transcrições; mesmo caso da EXC-009) |
 | D4 | Fichas sem artigo revisado: `noindex` ou indexadas? | `noindex` |
 | D5 | Onde roda a IA do rascunho: API (custo por token) ou sessão do Claude Code? | sessão do Claude Code na fase 2; API só se a rotina semanal exigir |
 | D6 | Áudio: Polly, Piper ou voz própria? Um episódio por assunto ou também por vídeo? | Polly, por assunto |
 | D7 | Lista inicial de assuntos (vocabulário controlado). | a IA propõe a partir das *playlists*; o Issei aprova |
 | D8 | Os 20 primeiros vídeos da fase 2: os mais vistos ou os que o Issei escolher? | os mais vistos |
 | D9 | Páginas em inglês para os vídeos (o vídeo segue em português)? | sim, com aviso do idioma do vídeo |
-| D10 | Credencial da YouTube Data API: o Issei cria o projeto no Google Cloud e o OAuth do canal. | necessário para a fase 1 |
+| D10 | Credencial da YouTube Data API: o Issei cria o projeto no Google Cloud e o OAuth do canal. | **pendente, com o Issei**; a fase 1 começa depois dela |

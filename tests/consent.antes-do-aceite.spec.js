@@ -11,8 +11,6 @@ const CLARITY = /clarity\.ms/;
 // Todas carregam o banner de cookies (cookie-consent.js); a 404 não rastreia (ID de analítica de mentira).
 const PAGINAS = ['/index.html', '/curriculo.html', '/devin.html', '/vsl.html', '/agent-ready.html', '/catalogo.html', '/apresentacao.html'];
 const SEM_BANNER = ['/404.html'];
-// O Clarity só existe nestas duas.
-const COM_CLARITY = ['/index.html', '/curriculo.html'];
 
 async function abrir(page, url) {
   const pedidos = [];
@@ -48,29 +46,25 @@ for (const url of [...PAGINAS, ...SEM_BANNER]) {
   });
 }
 
-for (const url of COM_CLARITY) {
-  test(`${url}: aceitar carrega o Clarity (e reaplica na visita seguinte); recusar não`, async ({ page, context }) => {
-    let pedidos = await abrir(page, url);
-    await page.getByRole('button', { name: 'Aceitar todos', exact: true }).click();
-    await expect.poll(() => pedidos.filter((u) => CLARITY.test(u)).length).toBeGreaterThan(0);
+// O Clarity não está mais no código: vem por uma tag do GTM que exige `analytics_storage`.
+// O site só repassa a escolha a ele quando ele já existe na página.
+test('index: o código do site não carrega o Clarity, e a revogação chega a ele se o GTM o tiver carregado', async ({ page }) => {
+  const pedidos = await abrir(page, '/index.html');
+  await page.getByRole('button', { name: 'Aceitar todos', exact: true }).click();
+  await page.waitForTimeout(300);
+  expect(pedidos.filter((u) => CLARITY.test(u)), 'o site pediu o Clarity por conta própria').toEqual([]);
 
-    // A escolha fica gravada: na visita seguinte o consentimento volta inline e o banner não aparece.
-    await page.unroute(TERCEIROS);
-    pedidos = await abrir(page, url);
-    await expect(page.getByRole('region', { name: 'Aviso de cookies' })).toHaveCount(0);
-    await expect.poll(() => pedidos.filter((u) => CLARITY.test(u)).length).toBeGreaterThan(0);
-
-    // Recusar: nem na hora nem na visita seguinte o Clarity é pedido.
-    await context.clearCookies();
-    await page.evaluate(() => localStorage.clear());
-    await page.unroute(TERCEIROS);
-    pedidos = await abrir(page, url);
-    await page.getByRole('button', { name: 'Recusar todos', exact: true }).click();
-    await page.unroute(TERCEIROS);
-    pedidos = await abrir(page, url);
-    expect(pedidos.filter((u) => CLARITY.test(u))).toEqual([]);
+  // Nova visita sem escolha gravada, com o Clarity "carregado pelo GTM" (simulado), e recusa.
+  await page.evaluate(() => localStorage.removeItem('consent_v'));
+  await page.goto('/index.html');
+  await page.evaluate(() => {
+    window.__clarityCalls = [];
+    window.clarity = (...a) => window.__clarityCalls.push(a);
   });
-}
+  await page.getByRole('button', { name: 'Recusar todos', exact: true }).click();
+  const chamadas = await page.evaluate(() => window.__clarityCalls);
+  expect(chamadas).toContainEqual(['consent', false]);
+});
 
 for (const url of PAGINAS) {
   test(`${url}: o banner aparece e a escolha chega ao Consent Mode`, async ({ page }) => {

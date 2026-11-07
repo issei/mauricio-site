@@ -83,7 +83,7 @@ test('instrumento: todo estado leva o id do questionário que a página mostra',
   assert.equal(validarImportacao({ versao: VERSAO, instrumento: 'outro@9' }).estado.instrumento, INSTRUMENTO);
 });
 
-test('paraTexto: texto simples, só o que foi respondido, situações dentro da parte', () => {
+test('paraTexto: texto simples, todas as perguntas com código, em branco marcada, situações dentro da parte', () => {
   const e = estadoVazio();
   e.campos = { 'antes-nome': 'Ana', 'rotina-1': 'À noite,\ncom a família.', 'rotina-2': '  ', 'aut-uso': 'Sim' };
   const s = novaSituacao('B', 1);
@@ -99,9 +99,11 @@ test('paraTexto: texto simples, só o que foi respondido, situações dentro da 
   ];
   const t = paraTexto(e, perguntas, new Date(2026, 9, 24, 10, 0));
   assert.match(t, /^Entrevista por escrito: acessibilidade em serviços de streaming de vídeo\nRespostas de: Ana\n/);
-  assert.match(t, /Parte 1\. Rotina\n\nPergunta: Como o streaming entra na sua rotina\?\nResposta: À noite,\ncom a família\./);
-  assert.doesNotMatch(t, /Quais serviços/);
-  assert.match(t, /Parte 3\. Começar\n\nParte 3, situação 1\nEm qual aparelho foi\? Smart TV\nO que você fez, passo a passo\? Abri o menu\./);
+  assert.match(t, new RegExp(`\nQuestionário: ${INSTRUMENTO}\n`));
+  assert.match(t, /Parte 1\. Rotina\n\nPergunta: Como o streaming entra na sua rotina\?\nCódigo: rotina-1\nResposta: À noite,\ncom a família\./);
+  // Em branco também sai, marcada, para o backend distinguir "em branco" de "pergunta que não existia".
+  assert.match(t, /Pergunta: Quais serviços\?\nCódigo: rotina-2\nResposta: \(sem resposta\)/);
+  assert.match(t, /Pergunta: Descreva o início\.\nCódigo: comecar-1\nResposta: \(sem resposta\)\n\nParte 3, situação 1\nCódigo: B-1\nEm qual aparelho foi\? Smart TV\nO que você fez, passo a passo\? Abri o menu\./);
   assert.ok(t.indexOf('Parte 3. Começar') < t.indexOf('Parte 9. Autorização'));
   assert.doesNotMatch(t, /[*#|]|^- /m);
   assert.match(paraTexto(estadoVazio(), []), /Respostas de: não informado[\s\S]*Nenhuma pergunta respondida\./);

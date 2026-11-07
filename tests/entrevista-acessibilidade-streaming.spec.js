@@ -109,8 +109,11 @@ test.describe('/entrevista-acessibilidade-streaming', () => {
     const texto = await (await txt.createReadStream()).toArray().then((b) => Buffer.concat(b).toString('utf8'));
     expect(txt.suggestedFilename()).toMatch(/^respostas-entrevista-Ana-Lucia-\d{4}-\d{2}-\d{2}\.txt$/);
     expect(texto).toContain('Respostas de: Ana Lúcia');
-    expect(texto).toContain(`Pergunta: ${PERGUNTA_1}\nResposta: À noite.`);
-    expect(texto).toContain('Parte 2, situação 1\nQual recurso ou ajuste estava envolvido? audiodescrição');
+    expect(texto).toContain(`Pergunta: ${PERGUNTA_1}\nCódigo: rotina-1\nResposta: À noite.`);
+    expect(texto).toContain('Questionário: entrevista-streaming@1');
+    expect(texto).toMatch(/Código: rotina-2\nResposta: \(sem resposta\)/);
+    expect(texto).toMatch(/Parte 2, situação 1\nCódigo: A-\S+\nQual recurso/);
+    expect(texto).toContain('Qual recurso ou ajuste estava envolvido? audiodescrição');
     await expect(page.locator('#anuncio')).toContainText('baixado');
 
     const [js] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /Baixar o arquivo de continuação/ }).click()]);
