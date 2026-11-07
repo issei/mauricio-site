@@ -37,7 +37,9 @@ class CotaEsgotada extends Error {}
 function env() {
   const arquivo = join(ROOT, '.env.local');
   const local = existsSync(arquivo) ? parseEnv(readFileSync(arquivo, 'utf8')) : {};
-  return (k) => process.env[k] || local[k];
+  // Segredo colado com espaço, quebra de linha ou aspas vira "API key not valid" no Google.
+  const limpa = (v) => (v ?? '').trim().replace(/^(['"])(.*)\1$/, '$2').trim();
+  return (k) => limpa(process.env[k]) || limpa(local[k]) || undefined;
 }
 
 async function api(caminho, params, { token, chave, texto = false } = {}) {
