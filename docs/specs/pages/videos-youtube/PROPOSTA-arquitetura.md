@@ -1,6 +1,6 @@
 # Proposta — páginas automáticas dos vídeos do YouTube
 
-> **Status:** proposta, nada implementado. Precisa das decisões da seção 9 antes do SDD.
+> **Status:** aceita. Decisões D1 a D9 aceitas pelo Issei em 2026-11-04 (padrões da seção 9). D10 em andamento. Fase 1: [SDD-fase-1.md](SDD-fase-1.md).
 > **Data:** 2026-10-27 · **Pedido de:** Issei · **Escopo:** repositório `issei/mauricio-site`.
 
 ## 1. Problema
