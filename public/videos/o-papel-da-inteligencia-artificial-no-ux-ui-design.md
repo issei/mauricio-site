@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 5 de dezembro de 2025 (6 min 52 s).
 Assistir: https://www.youtube.com/watch?v=9RwJAgbcIZo
 
+Assuntos: [Acessibilidade e design](https://mauricio.issei.com.br/temas/acessibilidade-e-design)
+
 ## Sobre o vídeo
 
 Existe um hype gigantesco sobre a Inteligência Artificial no mundo do design. A propaganda promete que você pode descrever uma ideia e a IA entrega um aplicativo funcional, mas será que a tecnologia já chegou nesse ponto?

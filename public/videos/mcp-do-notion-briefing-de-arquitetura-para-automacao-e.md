@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 15 de dezembro de 2025 (6 min 48 s).
 Assistir: https://www.youtube.com/watch?v=qaf8cRSXqyU
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Quer transformar seu Notion em um hub de inteligência ativo? 🧠

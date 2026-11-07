@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 4 de agosto de 2026 (10 min 10 s).
 Assistir: https://www.youtube.com/watch?v=dKKzbWiNyM4
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 A Inteligência Artificial vai substituir o papel do desenvolvedor? A resposta é não, mas a forma como você programa está prestes a mudar drasticamente

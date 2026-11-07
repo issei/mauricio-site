@@ -2,7 +2,7 @@
 id: HCaqhdgPScQ
 slug: a-arquitetura-da-mente
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: A Arquitetura da Mente
   publicado_em: 2026-05-27

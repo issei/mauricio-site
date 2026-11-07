@@ -2,7 +2,7 @@
 id: wn-qBSE2Apw
 slug: arquitetura-socialselling-ia-para-leads-sem-custos-de
 status: ficha
-temas: []
+temas: [salesforce-e-vendas]
 youtube:
   titulo: "Arquitetura SocialSelling: IA para Leads SEM Custos de Infraestrutura!"
   publicado_em: 2026-06-06

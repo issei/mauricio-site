@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 4 de novembro de 2025 (5 min 54 s).
 Assistir: https://www.youtube.com/watch?v=zVJ_XZq8gQ8
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Se sua arquitetura AWS está complexa com dezenas de VPCs, este vídeo é essencial!

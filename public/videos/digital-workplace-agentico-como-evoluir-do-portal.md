@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 3 de outubro de 2026 (8 min 29 s).
 Assistir: https://www.youtube.com/watch?v=Z-8YtFXi-oo
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Como transformar um portal corporativo tradicional em uma plataforma agêntica capaz de resolver intenções e executar tarefas com segurança, governança e eficiência?

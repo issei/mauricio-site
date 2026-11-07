@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 6 de março de 2026 (6 min 36 s).
 Assistir: https://www.youtube.com/watch?v=IhUUpLGyIpA
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas)
+
 ## Sobre o vídeo
 
 Você está pronto para elevar a maturidade do seu DevOps Salesforce para o próximo nível? 🚀

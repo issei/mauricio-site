@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 3 de setembro de 2026 (9 min 1 s).
 Assistir: https://www.youtube.com/watch?v=aEjGEYzObLk
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Quer parar de gastar fortunas com assinaturas de IA e nunca mais sofrer com limites de uso (rate limits) durante o desenvolvimento? Neste vídeo, apresentamos o OmniRoute, o gateway de IA definitivo com licença MIT que unifica 352 provedores (sendo mais de 150 deles com tiers gratuitos catalogados) e mais de 1200 modelos (como Claude, GPT, Gemini, Kimi, DeepSeek, e muitos outros) em um único endpoint local compatível com a API da OpenAI!

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 11 de setembro de 2026 (7 min 41 s).
 Assistir: https://www.youtube.com/watch?v=Qk8zM-SpbUY
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Garantir a **consistência de dados** entre múltiplos bancos de dados independentes é um dos maiores desafios em arquiteturas de microsserviços, onde transações ACID tradicionais de banco único não podem ser aplicadas diretamente.

@@ -2,7 +2,7 @@
 id: nQt9JjzXDd4
 slug: a-jornada
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: A Jornada
   publicado_em: 2026-03-18

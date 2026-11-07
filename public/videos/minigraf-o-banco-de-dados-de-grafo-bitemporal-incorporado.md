@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 10 de outubro de 2026 (9 min 20 s).
 Assistir: https://www.youtube.com/watch?v=KRoFYGy7eos
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Neste vídeo explicativo, conheça o **Minigraf**, uma solução de memória de grafo incorporada (*embedded*) desenvolvida para **agentes de IA, aplicativos móveis e navegadores**.

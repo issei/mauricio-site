@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 11 de setembro de 2026 (7 min 24 s).
 Assistir: https://www.youtube.com/watch?v=UzAft6Vtytw
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 O **Reef** é uma infraestrutura *open-source* de aprendizado contínuo desenvolvida para permitir que agentes de IA evoluam constantemente a partir de suas próprias interações e feedbacks de usuários. 

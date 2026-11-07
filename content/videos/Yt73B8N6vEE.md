@@ -2,7 +2,7 @@
 id: Yt73B8N6vEE
 slug: a-mente-estrategica
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: A Mente Estratégica
   publicado_em: 2025-10-23

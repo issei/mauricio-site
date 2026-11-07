@@ -2,7 +2,7 @@
 id: O_dku8xoMWY
 slug: como-mapear-qualquer-base-de-codigo-legada-em-segundos
 status: ficha
-temas: []
+temas: [engenharia-agentica, especificacao-e-desenvolvimento]
 youtube:
   titulo: Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)
   publicado_em: 2026-08-26

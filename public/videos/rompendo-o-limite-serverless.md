@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de janeiro de 2026 (5 min 43 s).
 Assistir: https://www.youtube.com/watch?v=QF5MW5DYVAk
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos os limites reais do modelo serverless, indo além do hype para discutir quando ele funciona muito bem — e quando pode se tornar um gargalo técnico ou estratégico.

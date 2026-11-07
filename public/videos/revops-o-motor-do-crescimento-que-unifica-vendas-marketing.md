@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de novembro de 2025 (6 min 47 s).
 Assistir: https://www.youtube.com/watch?v=YHp36VGAhP0
 
+Assuntos: [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas), [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Sua empresa está perdendo receita por causa de silos e processos desalinhados? 💸

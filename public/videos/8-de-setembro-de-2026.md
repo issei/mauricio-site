@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 8 de setembro de 2026 (1 min 34 s).
 Assistir: https://www.youtube.com/watch?v=buSylmOu_ek
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 A web que projetamos para humanos e buscadores agora precisa atender a um terceiro consumidor: os agentes autônomos de IA. 🤖

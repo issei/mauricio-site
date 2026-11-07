@@ -2,7 +2,7 @@
 id: -De4YseZtj8
 slug: construindo-para-a-falha
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: Construindo para a Falha
   publicado_em: 2025-10-27

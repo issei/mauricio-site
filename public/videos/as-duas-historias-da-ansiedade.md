@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de outubro de 2025 (8 min 49 s).
 Assistir: https://www.youtube.com/watch?v=e8hdLyeN-_U
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Explore a mente do pensador profundo (Tipo 5w4, O Iconoclasta)! Indivíduos que combinam a curiosidade intelectual com a criatividade introspectiva, buscando autonomia e profundidade em conversas filosóficas e existenciais.

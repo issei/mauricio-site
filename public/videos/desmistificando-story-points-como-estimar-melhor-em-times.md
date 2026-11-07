@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de janeiro de 2026 (6 min 7 s).
 Assistir: https://www.youtube.com/watch?v=tncSq6nToLo
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia), [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Story Points ainda geram muita confusão em times ágeis:

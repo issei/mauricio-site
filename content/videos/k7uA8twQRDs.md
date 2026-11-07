@@ -2,7 +2,7 @@
 id: k7uA8twQRDs
 slug: arquitetando-o-engajamento
 status: ficha
-temas: []
+temas: [salesforce-e-vendas]
 youtube:
   titulo: Arquitetando o Engajamento
   publicado_em: 2025-10-26

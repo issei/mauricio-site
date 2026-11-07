@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 5 de novembro de 2025 (6 min 12 s).
 Assistir: https://www.youtube.com/watch?v=5jZcmKvJc34
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 A Inferência Causal e a **Causal AI** representam um salto na Inteligência Artificial, movendo-se além dos modelos tradicionais de Machine Learning baseados apenas em correlações estatísticas. Entender a causalidade é crucial para responder ao "porquê" e evitar a falácia de que "correlação não implica causalidade" (*cum hoc ergo propter hoc*), fundamental para decisões de negócios acionáveis. A Causal AI é necessária para a **adaptação robusta e generalização** dos agentes inteligentes.

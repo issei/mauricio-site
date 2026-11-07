@@ -2,7 +2,7 @@
 id: FJ4NEOgw_SY
 slug: o-paradoxo-do-artifice-por-que-a-maestria-tecnica-as-vezes
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: "O Paradoxo do Artífice: Por que a Maestria Técnica às vezes fica Invisível? (E como resolver)"
   publicado_em: 2026-08-07

@@ -2,7 +2,7 @@
 id: 8CQS5LTKt1s
 slug: a-gramatica-da-narrativa-visual
 status: ficha
-temas: []
+temas: [tecnologia-e-cultura]
 youtube:
   titulo: A Gramática da Narrativa Visual
   publicado_em: 2026-01-29

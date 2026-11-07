@@ -2,7 +2,7 @@
 id: FKkNK-anW3c
 slug: padroes-kubernetes
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: Padrões Kubernetes
   publicado_em: 2025-10-27

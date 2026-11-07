@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de maio de 2026 (6 min 59 s).
 Assistir: https://www.youtube.com/watch?v=tesXsbVDMuQ
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Você já entrou em um projeto novo com 200 mil linhas de código e se sentiu perdido?

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 31 de outubro de 2025 (6 min 42 s).
 Assistir: https://www.youtube.com/watch?v=3DGDyPcvjqM
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 ### **Datadog Descomplicado: O Guia Essencial de Observabilidade (APM, Logs, Infraestrutura e mais!)**

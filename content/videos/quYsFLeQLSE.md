@@ -2,7 +2,7 @@
 id: quYsFLeQLSE
 slug: arquitetura-corporativa
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: Arquitetura Corporativa
   publicado_em: 2025-11-12

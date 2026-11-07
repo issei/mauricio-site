@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de janeiro de 2026 (6 min 33 s).
 Assistir: https://www.youtube.com/watch?v=x-oKEMwdpng
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Neste vídeo, você vai entender como avaliar sistemas de Inteligência Artificial de forma estratégica e prática, indo muito além de métricas superficiais. Abordamos critérios técnicos, riscos, qualidade das respostas, confiabilidade e como transformar avaliação em vantagem competitiva.

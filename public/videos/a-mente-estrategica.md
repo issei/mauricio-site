@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de outubro de 2025 (9 min 5 s).
 Assistir: https://www.youtube.com/watch?v=Yt73B8N6vEE
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Vivemos na Era da Sobrecarga de Informação. A verdadeira vantagem não está em saber mais, mas sim em **pensar melhor** [[00:07](http://www.youtube.com/watch?v=Yt73B8N6vEE&t=7)].

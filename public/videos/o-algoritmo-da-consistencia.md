@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 19 de dezembro de 2025 (7 min 31 s).
 Assistir: https://www.youtube.com/watch?v=enMth-aVpmA
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 # 🧠 Como Hackear sua Consistência

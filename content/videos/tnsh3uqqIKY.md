@@ -2,7 +2,7 @@
 id: tnsh3uqqIKY
 slug: ganhando-a-guerra-pela-atencao
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: Ganhando a Guerra pela Atenção
   publicado_em: 2025-10-29

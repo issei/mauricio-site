@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de agosto de 2026 (7 min 1 s).
 Assistir: https://www.youtube.com/watch?v=O_dku8xoMWY
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você acabou de entrar em uma nova equipe de desenvolvimento, clona o repositório e se depara com um sistema complexo de 200.000 linhas de código.

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 13 de abril de 2026 (7 min 17 s).
 Assistir: https://www.youtube.com/watch?v=lEF09tB4BXA
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas)
+
 ## Sobre o vídeo
 
 Você já imaginou delegar suas compras e negociações para uma Inteligência Artificial, com a certeza de que tudo será feito de forma segura e eficiente? Bem-vindo à Nova Arquitetura do Comércio.

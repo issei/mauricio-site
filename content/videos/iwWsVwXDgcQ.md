@@ -2,7 +2,7 @@
 id: iwWsVwXDgcQ
 slug: autonomia-cognitiva-como-retomar-o-controle-da-sua-mente-em
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: "Autonomia Cognitiva: Como Retomar o Controle da Sua Mente em um Mundo de Distrações"
   publicado_em: 2026-02-13

@@ -2,7 +2,7 @@
 id: mw7W5VJWdmM
 slug: audiodescricao-nao-e-so-dizer-o-que-ve-como-fazer-de-forma
 status: ficha
-temas: []
+temas: [acessibilidade-e-design]
 youtube:
   titulo: Audiodescrição Não É Só Dizer o Que Vê! (Como Fazer de Forma Prática e Acessível)
   publicado_em: 2026-10-07

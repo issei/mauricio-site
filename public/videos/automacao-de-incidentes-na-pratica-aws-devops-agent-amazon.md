@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 5 de maio de 2026 (8 min 39 s).
 Assistir: https://www.youtube.com/watch?v=f8xd4FOBYfU
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Você ainda perde horas investigando incidentes de infraestrutura, cruzando logs de serviços diferentes e escalando problemas manualmente? O AWS DevOps Agent chegou para mudar esse cenário e reduzir o seu tempo de resolução (MTTR) de horas para minutos!

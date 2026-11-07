@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 27 de outubro de 2025 (6 min 46 s).
 Assistir: https://www.youtube.com/watch?v=-De4YseZtj8
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 **Construindo para a Falha: A Ciência da Resiliência Digital e Como a Engenharia de Confiabilidade Vence o Caos**

@@ -2,7 +2,7 @@
 id: ruZVjMpaEZo
 slug: galaxy-ai-assistente-de-chamada
 status: ficha
-temas: []
+temas: [ferramentas-de-ia]
 youtube:
   titulo: Galaxy AI  Assistente de Chamada
   publicado_em: 2025-10-27

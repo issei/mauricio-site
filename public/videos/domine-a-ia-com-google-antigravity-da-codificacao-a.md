@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 17 de julho de 2026 (8 min 40 s).
 Assistir: https://www.youtube.com/watch?v=LVEj-aRVVKE
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Seja bem-vindo ao futuro do desenvolvimento de software! Neste vídeo, mergulhamos nas atualizações mais recentes do Google Antigravity, explorando como a ferramenta está reduzindo o trabalho manual e transformando desenvolvedores em verdadeiros orquestradores de sistemas inteligentes

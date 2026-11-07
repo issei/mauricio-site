@@ -2,7 +2,7 @@
 id: dxm1J8_XFyo
 slug: a-postura-estrategica-domine-sua-rotina-e-seus
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: "A Postura Estratégica: Domine sua Rotina e seus Relacionamentos"
   publicado_em: 2026-06-29

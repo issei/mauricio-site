@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 19 de junho de 2026 (7 min 43 s).
 Assistir: https://www.youtube.com/watch?v=UxaaQN-csvA
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Você já sentiu que construir com IA parece mais "mágica" do que engenharia? Projetos que funcionam bem em demos, mas falham miseravelmente em produção com loops infinitos, custos imprevisíveis e alucinações sistêmicas

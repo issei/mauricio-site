@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 10 de setembro de 2026 (6 min 13 s).
 Assistir: https://www.youtube.com/watch?v=JSYL3Ax7A7o
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Tratar um modelo de linguagem (LLM) como o sistema completo é um dos erros de arquitetura mais comuns na IA aplicada. Em cenários simulados de atendimento bancário, enviar todas as requisições e centenas de ferramentas diretamente ao LLM gera latências elevadas, desperdício de tokens e riscos de execução inadequada por perda de contexto (*lost-in-the-middle*).

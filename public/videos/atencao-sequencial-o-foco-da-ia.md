@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 13 de fevereiro de 2026 (5 min 10 s).
 Assistir: https://www.youtube.com/watch?v=e-6l2XB6fmQ
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Como o Google está deixando modelos de IA mais rápidos e eficientes (sem perder precisão)

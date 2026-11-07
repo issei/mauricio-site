@@ -2,7 +2,7 @@
 id: QF5MW5DYVAk
 slug: rompendo-o-limite-serverless
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: Rompendo o Limite Serverless
   publicado_em: 2026-01-29

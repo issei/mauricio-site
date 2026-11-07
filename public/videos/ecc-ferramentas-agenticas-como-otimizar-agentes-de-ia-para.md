@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 9 de outubro de 2026 (8 min 37 s).
 Assistir: https://www.youtube.com/watch?v=o3IMxBLEhp0
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos o **ECC (Everything Claude Code)**, a camada operacional e toolkit de código aberto criada por **Affaan Mustafa (`affaan-m`)** para otimizar o desempenho de agentes de codificação em IA.

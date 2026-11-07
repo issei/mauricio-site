@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de janeiro de 2026 (4 min 58 s).
 Assistir: https://www.youtube.com/watch?v=8CQS5LTKt1s
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Você já parou para pensar que imagens também têm gramática?

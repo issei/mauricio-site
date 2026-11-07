@@ -2,7 +2,7 @@
 id: f8xd4FOBYfU
 slug: automacao-de-incidentes-na-pratica-aws-devops-agent-amazon
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: "Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch"
   publicado_em: 2026-05-05

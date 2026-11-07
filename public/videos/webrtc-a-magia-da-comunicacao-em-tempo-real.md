@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 6 de janeiro de 2026 (5 min 53 s).
 Assistir: https://www.youtube.com/watch?v=lezsF_27EXI
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Você já parou para pensar como é possível fazer uma videochamada direto do navegador (como no Google Meet ou Zoom) sem precisar instalar nenhum programa pesado? 🤔

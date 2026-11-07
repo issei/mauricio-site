@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 6 de junho de 2026 (8 min 5 s).
 Assistir: https://www.youtube.com/watch?v=Scvb3i-vvd0
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Você já se perguntou de onde vem a aleatoriedade no universo e por que a entropia sempre aumenta?

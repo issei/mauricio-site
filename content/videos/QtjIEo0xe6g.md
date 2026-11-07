@@ -2,7 +2,7 @@
 id: QtjIEo0xe6g
 slug: prompts-e-notebooks
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: Prompts e Notebooks
   publicado_em: 2026-05-04

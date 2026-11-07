@@ -2,7 +2,7 @@
 id: URAfUQ_9a1Q
 slug: a-mentalidade-do-arquiteto
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: A Mentalidade do Arquiteto
   publicado_em: 2025-10-28

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 5 de dezembro de 2025 (7 min 29 s).
 Assistir: https://www.youtube.com/watch?v=aS3JqBvf--Q
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Cansado de tarefas manuais e repetitivas que consomem seu tempo? 😩

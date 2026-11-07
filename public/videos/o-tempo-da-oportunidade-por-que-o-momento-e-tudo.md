@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 13 de agosto de 2026 (10 min 12 s).
 Assistir: https://www.youtube.com/watch?v=Rp31Ice_F8w
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Você já sentiu que "perdeu o trem" ou que agiu cedo demais em algo importante? Muitas vezes acreditamos que uma oportunidade é algo que simplesmente está lá, esperando para ser agarrado. No entanto, a verdade é que uma oportunidade não existe apenas no espaço, mas fundamentalmente no tempo.

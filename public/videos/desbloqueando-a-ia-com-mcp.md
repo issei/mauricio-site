@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 27 de outubro de 2025 (8 min 9 s).
 Assistir: https://www.youtube.com/watch?v=h7PnQgjoOuc
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 As empresas investem milhões em IA, mas seus modelos mais geniais continuam trabalhando "no escuro". Eles conseguem escrever poesia e código, mas não têm a menor ideia sobre "as vendas de hoje" ou o status do seu sistema. Isso é o **"Gap de Contexto da IA"**, ou o temido **"Problema N por M"** de integração.

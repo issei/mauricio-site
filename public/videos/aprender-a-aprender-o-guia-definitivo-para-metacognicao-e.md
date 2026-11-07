@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de novembro de 2025 (6 min 46 s).
 Assistir: https://www.youtube.com/watch?v=xRYMO36wlac
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Você se sente sobrecarregado por problemas complexos? 🤯 Descubra o segredo para dominar qualquer assunto e se tornar um aprendiz autônomo! Neste vídeo, revelamos a poderosa fusão entre Metacognição e Pensamento Computacional para transformar a maneira como você aprende e resolve desafios.

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 12 de janeiro de 2026 (6 min 18 s).
 Assistir: https://www.youtube.com/watch?v=giKIGxP1QA0
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Você já viu empresas tentando copiar o modelo do Google, Spotify ou da Amazon e falhando miseravelmente? 

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 12 de outubro de 2026 (8 min 57 s).
 Assistir: https://www.youtube.com/watch?v=vz9n5iKti9c
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 No desenvolvimento de software impulsionado por Inteligência Artificial, gerar código com mais rapidez não garante, por si só, a preservação da real intenção do negócio. Neste vídeo, apresentamos a **Especificação Conversacional Estruturada**, um workflow criado por Maurício Yokoyama Issei para evitar a perda de contexto e gerenciar a divergência entre documentação, testes e código.

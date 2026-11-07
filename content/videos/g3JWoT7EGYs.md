@@ -2,7 +2,7 @@
 id: g3JWoT7EGYs
 slug: o-seu-site-esta-pronto-para-ia
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: O Seu Site Está Pronto para IA?
   publicado_em: 2026-04-26

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 6 de abril de 2026 (6 min 22 s).
 Assistir: https://www.youtube.com/watch?v=VMLQy8l9VUc
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Descubra como o Gemma 4 está redefinindo o futuro da Inteligência Artificial rodando diretamente no seu celular! 🚀📱

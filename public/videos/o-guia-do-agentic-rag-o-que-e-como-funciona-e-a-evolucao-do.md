@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de agosto de 2026 (9 min 28 s).
 Assistir: https://www.youtube.com/watch?v=n089OV1W2Dg
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Neste vídeo, apresentamos um guia completo sobre o **Agentic RAG**, a nova fronteira na engenharia de dados e sistemas de busca auxiliados por Inteligência Artificial. 

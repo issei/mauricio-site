@@ -2,7 +2,7 @@
 id: 5TMcQQ5xtaI
 slug: o-segredo-oculto-dos-qr-codes-de-pixels-a-obras-de-arte
 status: ficha
-temas: []
+temas: [tecnologia-e-cultura]
 youtube:
   titulo: "O Segredo Oculto dos QR Codes: De Pixels a Obras de Arte"
   publicado_em: 2026-01-09

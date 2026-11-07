@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de outubro de 2025 (8 min 22 s).
 Assistir: https://www.youtube.com/watch?v=Hg1TEb-dDX0
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 ## Kit do Arquiteto de IA

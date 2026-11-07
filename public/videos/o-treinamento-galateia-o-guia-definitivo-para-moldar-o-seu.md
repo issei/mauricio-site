@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de dezembro de 2025 (8 min 16 s).
 Assistir: https://www.youtube.com/watch?v=fGmCZvhdX0w
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Você já se perguntou se suas expectativas podem, de fato, criar a sua realidade?

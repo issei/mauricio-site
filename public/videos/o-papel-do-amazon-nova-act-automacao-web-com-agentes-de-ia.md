@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de outubro de 2026 (7 min 41 s).
 Assistir: https://www.youtube.com/watch?v=iCVD5IVVR2g
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos **O Papel do Amazon Nova Act**, o serviço da AWS desenvolvido para criar, implantar e gerenciar frotas de agentes de IA focados na automação de fluxos de interface de usuário (UI) no navegador. 

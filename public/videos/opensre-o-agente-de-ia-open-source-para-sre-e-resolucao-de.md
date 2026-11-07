@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de outubro de 2026 (8 min 3 s).
 Assistir: https://www.youtube.com/watch?v=BTTHq4W56KQ
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Neste vídeo, apresentamos o **OpenSRE**, um framework open-source projetado para construir e executar agentes de IA focados em Engenharia de Confiabilidade de Sites (SRE) e automação de incidentes em ambientes de produção.

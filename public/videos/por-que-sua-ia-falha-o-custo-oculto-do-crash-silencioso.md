@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 11 de abril de 2026 (8 min 2 s).
 Assistir: https://www.youtube.com/watch?v=wGqhobVa4gU
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Você sabia que a grande maioria dos projetos de Inteligência Artificial falha não por problemas no código, mas por um desalinhamento profundo entre o modelo mental da liderança e o comportamento do sistema? 

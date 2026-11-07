@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 5 de novembro de 2026 (7 min 14 s).
 Assistir: https://www.youtube.com/watch?v=x2s0FR8GJlA
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 O QUE VOCÊ VAI APRENDER NESTE VÍDEO: 

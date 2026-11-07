@@ -2,7 +2,7 @@
 id: fRBLEqiOJGs
 slug: ia-e-confiabilidade-de-sistemas-de-reativo-a-proativo-sre
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade, dados-e-decisao]
 youtube:
   titulo: "IA E CONFIABILIDADE DE SISTEMAS: De Reativo a Proativo (SRE, Machine Learning e XAI)"
   publicado_em: 2025-12-05

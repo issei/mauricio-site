@@ -2,7 +2,7 @@
 id: 5T0ZhmtShMU
 slug: o-efeito-pigmaleao-como-expectativas-moldam-resultados
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: O Efeito Pigmaleão  Como Expectativas Moldam Resultados
   publicado_em: 2026-09-03

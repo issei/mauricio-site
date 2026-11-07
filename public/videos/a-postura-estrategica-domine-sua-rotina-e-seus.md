@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de junho de 2026 (8 min 33 s).
 Assistir: https://www.youtube.com/watch?v=dxm1J8_XFyo
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Você sente que a procrastinação trava seus planos? Tem dificuldade em priorizar problemas ou evita conversas difíceis por medo de prejudicar seus relacionamentos?

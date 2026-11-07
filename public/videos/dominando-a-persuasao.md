@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de outubro de 2025 (6 min 15 s).
 Assistir: https://www.youtube.com/watch?v=V2rB0ULCCig
 
+Assuntos: [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas)
+
 ## Sobre o vídeo
 
 **Dominando a Persuasão: 4 Passos para Transformar o Medo de Falar em Público na Sua Maior Ferramenta de Impacto**

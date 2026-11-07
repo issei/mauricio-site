@@ -2,7 +2,7 @@
 id: -WRHywpPe9g
 slug: duas-formas-de-pensar
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: Duas Formas de Pensar
   publicado_em: 2025-10-27

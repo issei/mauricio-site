@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 25 de novembro de 2025 (8 min 51 s).
 Assistir: https://www.youtube.com/watch?v=0Rh2ViL6nCk
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Você já domina o básico do Terraform e agora precisa gerenciar infraestrutura em escala para múltiplas equipes? 🤯

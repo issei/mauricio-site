@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 17 de dezembro de 2025 (6 min 19 s).
 Assistir: https://www.youtube.com/watch?v=3kbR-35NbcA
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você acha que o Jupyter Notebook é apenas uma ferramenta para rodar trechos de código de forma isolada? Neste vídeo, mergulhamos fundo no ecossistema dos notebooks para mostrar que eles são muito mais do que parecem.

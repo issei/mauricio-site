@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 28 de outubro de 2025 (7 min 38 s).
 Assistir: https://www.youtube.com/watch?v=URAfUQ_9a1Q
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 **Mergulhe fundo nas ferramentas essenciais e nas melhores práticas arquitetônicas para construir aplicações robustas e eficientes na AWS!** 🚀

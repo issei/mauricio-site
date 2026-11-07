@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de outubro de 2025 (5 min 5 s).
 Assistir: https://www.youtube.com/watch?v=ztGM0zFehbQ
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 **A habilidade mais importante para o futuro da IA não é ter respostas, mas saber fazer as perguntas! 💡 Descubra o que é a Engenharia de Prompts e como usar a Inteligência Artificial do jeito certo.**

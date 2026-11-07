@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 5 de dezembro de 2025 (6 min 4 s).
 Assistir: https://www.youtube.com/watch?v=gadXIDNVQ04
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 A linguagem Java está completando 30 anos! 🤯 Mas será que, depois de três décadas, o Java se tornou uma relíquia do passado ou continua sendo uma força de inovação no mundo da tecnologia?

@@ -2,7 +2,7 @@
 id: Ukn3dyQZ-q0
 slug: turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que
 status: ficha
-temas: []
+temas: [dados-e-decisao]
 youtube:
   titulo: "turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS"
   publicado_em: 2026-06-08

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de agosto de 2026 (6 min 43 s).
 Assistir: https://www.youtube.com/watch?v=FJ4NEOgw_SY
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Você já sentiu que, ao se aprofundar e se especializar em uma habilidade técnica, o seu progresso pareceu se tornar "invisível" para as métricas tradicionais da empresa? 

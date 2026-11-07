@@ -2,7 +2,7 @@
 id: tnS7hxUnHI4
 slug: google-okf-na-pratica-memoria-persistente-e-padroes-de
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: "Google OKF na Prática: Memória Persistente e Padrões de Conhecimento para Agentes de IA"
   publicado_em: 2026-09-11

@@ -2,7 +2,7 @@
 id: UxaaQN-csvA
 slug: engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: 'Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção'
   publicado_em: 2026-06-19

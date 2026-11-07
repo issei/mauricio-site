@@ -2,7 +2,7 @@
 id: YHp36VGAhP0
 slug: revops-o-motor-do-crescimento-que-unifica-vendas-marketing
 status: ficha
-temas: []
+temas: [salesforce-e-vendas, gestao-e-estrategia]
 youtube:
   titulo: "REVOPS: O Motor do Crescimento que Unifica Vendas, Marketing e Sucesso do Cliente"
   publicado_em: 2025-11-23

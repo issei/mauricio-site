@@ -2,7 +2,7 @@
 id: -t8RfEvirds
 slug: producao-fora-do-ar
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: Produção Fora do Ar
   publicado_em: 2026-02-04

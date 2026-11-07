@@ -2,7 +2,7 @@
 id: ODuuUBUbUBI
 slug: acelerando-deploys-na-aws-como-usar-o-cloudformation
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: "Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!"
   publicado_em: 2026-07-03

@@ -2,7 +2,7 @@
 id: hub4sB4yYss
 slug: a-era-agentica-do-gemini-como-os-novos-agentes-do-google
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: "A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho"
   publicado_em: 2026-10-10

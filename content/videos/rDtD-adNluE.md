@@ -2,7 +2,7 @@
 id: rDtD-adNluE
 slug: taxonomia-de-bloom-como-dominar-qualquer-assunto
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: Taxonomia de Bloom  Como Dominar Qualquer Assunto
   publicado_em: 2026-09-03

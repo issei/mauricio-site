@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 9 de janeiro de 2026 (6 min 21 s).
 Assistir: https://www.youtube.com/watch?v=5TMcQQ5xtaI
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Você escaneia esses quadradinhos preto e branco todos os dias, mas sabia que eles guardam um segredo fascinante? 🤔

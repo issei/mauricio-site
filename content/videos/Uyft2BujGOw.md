@@ -2,7 +2,7 @@
 id: Uyft2BujGOw
 slug: o-blueprint-para-ia-confiavel
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: O Blueprint para IA Confiável
   publicado_em: 2026-01-17

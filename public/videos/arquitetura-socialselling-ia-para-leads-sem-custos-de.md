@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 6 de junho de 2026 (8 min 44 s).
 Assistir: https://www.youtube.com/watch?v=wn-qBSE2Apw
 
+Assuntos: [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas)
+
 ## Sobre o vídeo
 
 Qual é a grande dor das operações comerciais? A dificuldade de descobrir "quem abordar primeiro". Neste vídeo, decodificamos uma arquitetura técnica absurdamente fascinante de Social Selling. Apresentamos um motor de Inteligência Artificial focado no mercado B2B, capaz de priorizar centenas de leads. O detalhe chocante? Ele não possui nenhum banco de dados, rodando de forma 100% local e cortando os custos assustadores de servidores em nuvem!

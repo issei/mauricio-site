@@ -2,7 +2,7 @@
 id: qkfWOrs8o9k
 slug: nossa-doc-esta-pronta-para-ia
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: Nossa Doc está pronta para IA
   publicado_em: 2025-10-23

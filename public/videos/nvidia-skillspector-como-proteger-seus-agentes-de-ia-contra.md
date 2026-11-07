@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de outubro de 2026 (7 min 35 s).
 Assistir: https://www.youtube.com/watch?v=o0mWY83c37Y
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 **O seu agente de IA está realmente seguro antes de instalar novas *skills* e extensões?**

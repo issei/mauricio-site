@@ -2,7 +2,7 @@
 id: zQ453MWvBck
 slug: 08-trabalho-na-era-da-ia
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: 08 - Trabalho na Era da IA
   publicado_em: 2026-05-18

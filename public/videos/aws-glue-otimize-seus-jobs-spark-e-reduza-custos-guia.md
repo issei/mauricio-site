@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de novembro de 2025 (7 min 49 s).
 Assistir: https://www.youtube.com/watch?v=coZ5-yXfMRE
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Pare de gastar dinheiro à toa com jobs lentos no AWS Glue! 💸 Neste guia prático e direto ao ponto, você vai aprender o passo a passo para otimizar seus Jobs Spark no AWS Glue, garantindo mais performance e menos custos na sua arquitetura de dados.

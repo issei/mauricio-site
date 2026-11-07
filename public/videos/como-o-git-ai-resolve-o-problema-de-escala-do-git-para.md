@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 19 de outubro de 2026 (7 min 44 s).
 Assistir: https://www.youtube.com/watch?v=ZTNLoWhtXEw
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 O Git tradicional foi desenvolvido para desenvolvedores humanos que clonam o repositório localmente, trabalham por horas e fazem push periodicamente. Porém, quando milhares de agentes de IA trabalham simultaneamente criando, testando e mesclando código em tempo real, gargalos como clones pesados, buscas no histórico e filas de merge travam toda a infraestrutura.

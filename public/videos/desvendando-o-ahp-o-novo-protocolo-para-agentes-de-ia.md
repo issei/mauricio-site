@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 24 de maio de 2026 (7 min 7 s).
 Assistir: https://www.youtube.com/watch?v=-Qw7clMLTYg
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Bem-vindos ao "Desvendando o AHP"! Neste vídeo, fazemos um mergulho técnico profundo no Agent Host Protocol (AHP), um protocolo de servidor portátil e autônomo projetado para fornecer a múltiplos clientes uma visão sincronizada de sessões de agentes de IA

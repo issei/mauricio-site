@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de outubro de 2025 (7 min 29 s).
 Assistir: https://www.youtube.com/watch?v=QFkF_WqgZ1Q
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Este vídeo apresenta um panorama abrangente e atualizado sobre as **principais pesquisas em Inteligência Artificial (IA)** e **Processamento de Linguagem Natural (PLN)** realizadas no Brasil — com foco em **modelos de linguagem em português**, **aplicações jurídicas**, **multimodalidade**, **segurança de redes** e **engenharia de machine learning**.

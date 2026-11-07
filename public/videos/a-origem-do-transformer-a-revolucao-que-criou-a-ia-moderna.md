@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de março de 2026 (7 min 32 s).
 Assistir: https://www.youtube.com/watch?v=tnYamlf86CQ
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Entenda de uma vez por todas a base da Inteligência Artificial Generativa. Da publicação do paper "Attention is All You Need" até os modelos de trilhões de parâmetros.

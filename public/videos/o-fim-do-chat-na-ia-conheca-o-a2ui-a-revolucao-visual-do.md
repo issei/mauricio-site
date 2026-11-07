@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de dezembro de 2025 (7 min 17 s).
 Assistir: https://www.youtube.com/watch?v=LASZw1QGELM
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 A Inteligência Artificial vai parar de apenas "falar" e vai começar a "mostrar". Você está preparado para o A2UI (Agent-to-User Interface)?

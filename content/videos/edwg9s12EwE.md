@@ -2,7 +2,7 @@
 id: edwg9s12EwE
 slug: aprendizagem-real-o-ciclo-da-aprendizagem-autorregulada
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: "Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada"
   publicado_em: 2026-10-08

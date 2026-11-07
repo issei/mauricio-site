@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de outubro de 2026 (8 min 12 s).
 Assistir: https://www.youtube.com/watch?v=mw7W5VJWdmM
 
+Assuntos: [Acessibilidade e design](https://mauricio.issei.com.br/temas/acessibilidade-e-design)
+
 ## Sobre o vídeo
 
 Você acha que audiodescrição é apenas listar tudo o que aparece em uma tela ou imagem? Pense de novo! 👁️✨

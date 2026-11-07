@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de novembro de 2025 (6 min 10 s).
 Assistir: https://www.youtube.com/watch?v=j-dY_3-l5qc
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Você sabe qual é a melhor "porta de entrada" para sua aplicação na AWS? 🚪

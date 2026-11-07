@@ -2,7 +2,7 @@
 id: LbzxZDRUk8Y
 slug: 07-industrializacao-cognitiva
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: 07 - Industrialização Cognitiva
   publicado_em: 2026-05-18

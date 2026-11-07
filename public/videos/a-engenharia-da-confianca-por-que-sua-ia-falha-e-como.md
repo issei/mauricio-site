@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 21 de junho de 2026 (10 min 27 s).
 Assistir: https://www.youtube.com/watch?v=0fkru6v1O-c
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Sua IA falha sem avisar? O código compila, a demo encanta, mas o resultado final está logicamente errado? Bem-vindo ao "Crash Silencioso" — a falha de intenção que custa milhões e ninguém percebe até ser tarde demais

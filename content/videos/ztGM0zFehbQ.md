@@ -2,7 +2,7 @@
 id: ztGM0zFehbQ
 slug: engenharia-de-prompts
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: Engenharia de Prompts
   publicado_em: 2025-10-23

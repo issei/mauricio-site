@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 27 de setembro de 2026 (8 min 13 s).
 Assistir: https://www.youtube.com/watch?v=cSW_eXN-9wE
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 **Descubra como o Amazon Bedrock AgentCore transforma o desenvolvimento e a operação de agentes de IA em produção!**

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de setembro de 2026 (8 min 37 s).
 Assistir: https://www.youtube.com/watch?v=oB7BUFktKBA
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Como os modelos de linguagem e agentes autonomos encontram as ferramentas certas para realizar uma tarefa sem sobrecarregar a janela de contexto? Neste vídeo, apresentamos a fundo a **Agentic Resource Discovery Specification (ARD)**, o padrão aberto de descoberta federada para agentes de IA, servidores MCP, Skills, APIs e workflows.

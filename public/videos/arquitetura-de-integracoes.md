@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 8 de novembro de 2025 (7 min 38 s).
 Assistir: https://www.youtube.com/watch?v=e_rTtRbxcas
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Esta é uma das edições da série de lives do canal "Azure na Prática" sobre **Arquitetura de Integrações: Desafios e Alternativas de Implementação**.

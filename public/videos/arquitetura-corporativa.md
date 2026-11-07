@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 12 de novembro de 2025 (6 min 28 s).
 Assistir: https://www.youtube.com/watch?v=quYsFLeQLSE
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você já pensou que uma empresa funciona como uma cidade? 🏙️

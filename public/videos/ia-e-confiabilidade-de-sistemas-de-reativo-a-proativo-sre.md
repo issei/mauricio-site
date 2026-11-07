@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 5 de dezembro de 2025 (8 min 21 s).
 Assistir: https://www.youtube.com/watch?v=fRBLEqiOJGs
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade), [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 A Inteligência Artificial pode prever falhas antes que elas aconteçam? 💡

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de maio de 2026 (8 min 58 s).
 Assistir: https://www.youtube.com/watch?v=m69fzdS-EG0
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 A inteligência artificial deixou de ser apenas uma janela de chat passiva para se transformar em uma verdadeira camada operacional ativa dentro das empresas. Neste vídeo, exploramos a fundo a transição dos modelos de linguagem tradicionais para os Agentes Autônomos, capazes de raciocinar, tomar decisões e orquestrar processos de ponta a ponta.

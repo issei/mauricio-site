@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de agosto de 2026 (7 min 57 s).
 Assistir: https://www.youtube.com/watch?v=OHuaGTCPe8c
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você já se perguntou por que o Go (Golang) tem se destacado como a plataforma preferida para a engenharia de software assistida por Inteligência Artificial? Neste vídeo, exploramos a análise do Google sobre como o Go resolve os maiores desafios da colaboração entre humanos e agentes de IA.

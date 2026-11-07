@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 8 de outubro de 2026 (6 min 51 s).
 Assistir: https://www.youtube.com/watch?v=edwg9s12EwE
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Você sente que estuda por horas, relê o material várias vezes, mas na hora da prova ou da aplicação prática esquece quase tudo? A ciência cognitiva mostra que a releitura passiva gera apenas uma falsa sensação de domínio, pois os julgamentos subjetivos de compreensão têm uma correlação muito fraca com o desempenho real (\\(r = 0,178\\)).

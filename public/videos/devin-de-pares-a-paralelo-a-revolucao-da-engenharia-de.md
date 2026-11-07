@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de fevereiro de 2026 (7 min 6 s).
 Assistir: https://www.youtube.com/watch?v=IRbcg2IvvYY
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Você já parou para pensar que menos de 20% do tempo de um engenheiro é gasto escrevendo código novo? O resto é consumido por complexidade, bugs e legados. Mas e se pudéssemos mudar esse jogo?

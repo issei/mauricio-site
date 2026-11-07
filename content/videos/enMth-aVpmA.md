@@ -2,7 +2,7 @@
 id: enMth-aVpmA
 slug: o-algoritmo-da-consistencia
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: O Algoritmo da Consistência
   publicado_em: 2025-12-19

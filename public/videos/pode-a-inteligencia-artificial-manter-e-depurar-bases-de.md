@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 17 de outubro de 2026 (7 min 34 s).
 Assistir: https://www.youtube.com/watch?v=5rzZYy5JODM
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos o **SWE-sweep**, um benchmark desenvolvido por pesquisadores da Meta FAIR, Harvard University, University of Washington e Stanford University. Enquanto benchmarks tradicionais como o **SWE-bench** avaliam modelos fornecendo uma descrição clara do problema a ser resolvido, o SWE-sweep coloca os agentes de IA em um cenário de mundo aberto: eles recebem uma base de código inteira contendo múltiplos bugs e devem **descobrir e corrigir o máximo de falhas possível sem nenhuma dica ou relatório prévio**.

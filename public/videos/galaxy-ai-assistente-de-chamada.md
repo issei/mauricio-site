@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 27 de outubro de 2025 (5 min 7 s).
 Assistir: https://www.youtube.com/watch?v=ruZVjMpaEZo
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 **Galaxy AI | Assistente de Chamada: Atenda Sem Falar e Quebre Barreiras de Idioma em Tempo Real!**

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de março de 2026 (2 min 15 s).
 Assistir: https://www.youtube.com/watch?v=nQt9JjzXDd4
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 A vida não é uma linha reta; é uma sucessão de níveis, arcos e expansões de consciência. Neste vídeo, mergulhamos em uma retrospectiva profunda de 44 anos de trajetória — desde o despertar sob a influência dos heróis japoneses nos anos 80 até a consolidação como um arquiteto de sistemas e de vida.

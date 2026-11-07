@@ -2,7 +2,7 @@
 id: lhEdMm7qvAU
 slug: o-pipeline-da-decisao-como-transformar-confusao-em-modelos
 status: ficha
-temas: []
+temas: [dados-e-decisao]
 youtube:
   titulo: "O Pipeline da Decisão: Como Transformar Confusão em Modelos Matemáticos e IA"
   publicado_em: 2026-08-19

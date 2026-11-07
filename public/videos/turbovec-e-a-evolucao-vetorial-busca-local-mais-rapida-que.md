@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 8 de junho de 2026 (7 min 23 s).
 Assistir: https://www.youtube.com/watch?v=Ukn3dyQZ-q0
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos o turbovec, um índice vetorial de alta performance escrito em Rust com bindings para Python que está transformando a criação de sistemas RAG locais e privados

@@ -2,7 +2,7 @@
 id: -aB68xEwx3M
 slug: o-metodo-stutz-explicado-revolucao-ou-apenas-marketing
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: "O Método Stutz Explicado: Revolução ou Apenas Marketing?"
   publicado_em: 2026-01-20

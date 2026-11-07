@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 1 de setembro de 2026 (7 min 22 s).
 Assistir: https://www.youtube.com/watch?v=pEQ_mk7-ynE
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Você já participou de um "toró de ideias" (brainstorming) e sentiu que o grupo ficou andando em círculos? No vídeo de hoje, vamos desmistificar a criatividade e entender, através de estudos científicos recentes, como o nosso cérebro realmente gera soluções para problemas difíceis.

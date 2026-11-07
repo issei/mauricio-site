@@ -2,7 +2,7 @@
 id: tnYamlf86CQ
 slug: a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna
 status: ficha
-temas: []
+temas: [tecnologia-e-cultura]
 youtube:
   titulo: "A Origem do Transformer: A Revolução que Criou a IA Moderna"
   publicado_em: 2026-03-18

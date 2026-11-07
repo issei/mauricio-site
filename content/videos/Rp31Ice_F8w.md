@@ -2,7 +2,7 @@
 id: Rp31Ice_F8w
 slug: o-tempo-da-oportunidade-por-que-o-momento-e-tudo
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: "O Tempo da Oportunidade: Por que o Momento é Tudo"
   publicado_em: 2026-08-13

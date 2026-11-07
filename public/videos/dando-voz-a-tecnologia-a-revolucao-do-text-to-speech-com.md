@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 15 de dezembro de 2025 (5 min 54 s).
 Assistir: https://www.youtube.com/watch?v=uPNbCmaIABk
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Você já parou para pensar na voz que fala com você nos seus aplicativos e assistentes? 🗣️
