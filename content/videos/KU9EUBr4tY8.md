@@ -2,7 +2,7 @@
 id: KU9EUBr4tY8
 slug: colapso-do-preco-na-era-da-ia
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: Colapso do Preço na Era da IA
   publicado_em: 2026-05-21

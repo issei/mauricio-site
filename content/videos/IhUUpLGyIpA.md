@@ -2,7 +2,7 @@
 id: IhUUpLGyIpA
 slug: devops-salesforce-integrando-devin-ai-flosum-e-github-para
 status: ficha
-temas: []
+temas: [engenharia-agentica, salesforce-e-vendas]
 youtube:
   titulo: "DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total"
   publicado_em: 2026-03-06

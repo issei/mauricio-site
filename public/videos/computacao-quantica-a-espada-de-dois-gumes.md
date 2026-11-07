@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 28 de outubro de 2025 (6 min 31 s).
 Assistir: https://www.youtube.com/watch?v=xtdMdwdRvp4
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 A Computação Quântica é a maior fronteira tecnológica da atualidade, com potencial para revolucionar indústrias inteiras. Mas o que realmente está por trás de termos como qubit e emaranhamento?

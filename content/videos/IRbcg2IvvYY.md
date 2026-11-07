@@ -2,7 +2,7 @@
 id: IRbcg2IvvYY
 slug: devin-de-pares-a-paralelo-a-revolucao-da-engenharia-de
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: "Devin: De Pares a Paralelo | A Revolução da Engenharia de Software com IA"
   publicado_em: 2026-02-26

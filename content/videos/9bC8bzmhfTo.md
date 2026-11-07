@@ -2,7 +2,7 @@
 id: 9bC8bzmhfTo
 slug: ia-de-copiloto-a-visao-futura
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: IA  de Copiloto a Visão Futura
   publicado_em: 2025-11-08

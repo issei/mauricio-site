@@ -2,7 +2,7 @@
 id: x-oKEMwdpng
 slug: dominando-a-avaliacao-de-ia-como-analisar-validar-e-evoluir
 status: ficha
-temas: []
+temas: [dados-e-decisao]
 youtube:
   titulo: "Dominando a Avaliação de IA: como analisar, validar e evoluir soluções inteligentes"
   publicado_em: 2026-01-23

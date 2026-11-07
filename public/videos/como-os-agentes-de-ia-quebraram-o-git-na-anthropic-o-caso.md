@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 19 de outubro de 2026 (7 min 7 s).
 Assistir: https://www.youtube.com/watch?v=mRFqnOktQH4
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 O desenvolvimento agêntico de software está redefinindo os limites da infraestrutura de engenharia. Quando agentes autônomos de IA passaram a criar e modificar código de forma ininterrupta na Anthropic, as ferramentas projetadas para a escala humana atingiram um ponto de inflexão. 

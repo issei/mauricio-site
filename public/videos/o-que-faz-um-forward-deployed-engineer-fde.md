@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 13 de outubro de 2026 (8 min 34 s).
 Assistir: https://www.youtube.com/watch?v=lZqBmAkl3J8
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Você sabia que cerca de 95% dos projetos piloto de inteligência artificial generativa em empresas falham em gerar valor real de negócios? Para fechar o abismo entre os modelos avançados de IA e a realidade operacional das organizações, surgiu uma das funções mais demandadas da tecnologia: o **Forward-Deployed Engineer (FDE)**.

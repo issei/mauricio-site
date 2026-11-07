@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 4 de janeiro de 2026 (6 min 42 s).
 Assistir: https://www.youtube.com/watch?v=flpk6JCiMvc
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Neste vídeo, você vai entender de forma clara e objetiva o que é Machine Learning, como ele funciona na prática e por que essa tecnologia está transformando áreas como negócios, tecnologia, saúde e tomada de decisão baseada em dados.

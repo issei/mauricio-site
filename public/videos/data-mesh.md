@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 8 de novembro de 2025 (5 min 1 s).
 Assistir: https://www.youtube.com/watch?v=yXRNd2aGmuA
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 **Prepare-se para revolucionar sua arquitetura de dados!**

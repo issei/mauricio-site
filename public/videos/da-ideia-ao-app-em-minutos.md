@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 28 de outubro de 2025 (5 min 45 s).
 Assistir: https://www.youtube.com/watch?v=GYVZt3L-U-Y
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Descubra o **vibe coding no Google AI Studio**, a experiência totalmente nova e redesenhada feita para transformar sua visão em um **app com tecnologia de IA funcional em minutos** [1, 2]. Nosso objetivo é facilitar ao máximo a criação de aplicativos impulsionados por IA, removendo a necessidade de conciliar chaves de API ou descobrir como conectar modelos [2-4].

@@ -2,7 +2,7 @@
 id: VMLQy8l9VUc
 slug: gemma-4-futuro-da-ia-on-device
 status: ficha
-temas: []
+temas: [ferramentas-de-ia]
 youtube:
   titulo: Gemma 4  Futuro da IA On Device
   publicado_em: 2026-04-06

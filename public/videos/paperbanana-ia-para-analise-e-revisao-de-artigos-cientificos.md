@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 3 de fevereiro de 2026 (6 min 56 s).
 Assistir: https://www.youtube.com/watch?v=LusGPXICX5w
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Neste vídeo você vai conhecer o PaperBanana, uma ferramenta inovadora baseada em Inteligência Artificial projetada para apoiar a leitura, análise e compreensão de artigos científicos.

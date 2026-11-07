@@ -2,7 +2,7 @@
 id: giKIGxP1QA0
 slug: por-que-copiar-a-formula-do-sucesso-vai-destruir-sua-empresa
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: Por que copiar a "Fórmula do Sucesso" vai destruir sua empresa?
   publicado_em: 2026-01-12

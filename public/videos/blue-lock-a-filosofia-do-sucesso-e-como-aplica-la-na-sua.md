@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 17 de julho de 2026 (7 min 39 s).
 Assistir: https://www.youtube.com/watch?v=r8hLOS-KoLA
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Você acha que Blue Lock é apenas um anime de futebol? Pense de novo. A obra de Muneyuki Kaneshiro é, na verdade, um manifesto sobre autoafirmação e um tratado psicológico sobre a excelência individual

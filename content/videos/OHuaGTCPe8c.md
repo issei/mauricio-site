@@ -2,7 +2,7 @@
 id: OHuaGTCPe8c
 slug: por-que-go-e-a-linguagem-ideal-para-a-era-da-ia-visao-do
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: Por que Go é a linguagem ideal para a era da IA? (Visão do Google)
   publicado_em: 2026-08-18

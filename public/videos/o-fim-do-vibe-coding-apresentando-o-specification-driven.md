@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 3 de dezembro de 2025 (1 min 57 s).
 Assistir: https://www.youtube.com/watch?v=nQfTaS__IVA
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 O Vibe Coding (desenvolvimento guiado apenas pela intuição e feeling) está com os dias contados! 💀 A promessa de agilidade do código gerado por IA sem estrutura resultou em bugs, inconsistência e arquitetura fraca, levando grandes empresas a repensar suas estratégias.

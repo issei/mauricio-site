@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 13 de janeiro de 2026 (6 min 4 s).
 Assistir: https://www.youtube.com/watch?v=UzeuGIlyN9M
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Você já sentiu que as regras e processos da sua empresa parecem "âncoras" que impedem a inovação? Neste vídeo, exploramos por que o modelo tradicional de "linha de montagem" está falhando e como a analogia de uma Cozinha Profissional pode transformar a gestão do conhecimento e a liderança. 

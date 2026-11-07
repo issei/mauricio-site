@@ -2,7 +2,7 @@
 id: Oz6fFIVGtLg
 slug: dados-com-numpy-e-pandas
 status: ficha
-temas: []
+temas: [dados-e-decisao]
 youtube:
   titulo: Dados com NumPy e pandas
   publicado_em: 2025-10-27

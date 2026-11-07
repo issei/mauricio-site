@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 19 de março de 2026 (8 min 43 s).
 Assistir: https://www.youtube.com/watch?v=E5YpNQufkJI
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Você ainda tenta resolver tudo com um único agente de IA? 🤖 Descubra a anatomia de uma IA Moderna baseada em Skills e Playbooks.

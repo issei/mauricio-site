@@ -2,7 +2,7 @@
 id: 5jZcmKvJc34
 slug: inferencia-causal
 status: ficha
-temas: []
+temas: [dados-e-decisao]
 youtube:
   titulo: Inferência Causal
   publicado_em: 2025-11-05

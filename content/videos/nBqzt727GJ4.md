@@ -2,7 +2,7 @@
 id: nBqzt727GJ4
 slug: foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode
 status: ficha
-temas: []
+temas: [ferramentas-de-ia]
 youtube:
   titulo: Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)
   publicado_em: 2026-09-25

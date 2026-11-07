@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de outubro de 2025 (6 min 47 s).
 Assistir: https://www.youtube.com/watch?v=tnsh3uqqIKY
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 O vídeo aborda a **Economia da Atenção (EA)**, um cenário onde a abundância de dados torna a atenção humana limitada a mercadoria mais valiosa (Herbert Simon). O discurso digital, dominado pelo entretenimento e superficialidade, alinha-se à distopia de Aldous Huxley (dominação pela distração), não à de Orwell.

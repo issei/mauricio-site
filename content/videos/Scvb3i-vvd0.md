@@ -2,7 +2,7 @@
 id: Scvb3i-vvd0
 slug: o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen
 status: ficha
-temas: []
+temas: [tecnologia-e-cultura]
 youtube:
   titulo: "O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram"
   publicado_em: 2026-06-06

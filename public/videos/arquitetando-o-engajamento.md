@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de outubro de 2025 (6 min 11 s).
 Assistir: https://www.youtube.com/watch?v=k7uA8twQRDs
 
+Assuntos: [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas)
+
 ## Sobre o vídeo
 
 **Arquitetando o Engajamento: Como Sair dos Slides Monótonos e Criar Experiências de Aprendizagem que Geram Resultados Reais**

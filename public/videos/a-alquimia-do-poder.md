@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 10 de junho de 2026 (8 min 35 s).
 Assistir: https://www.youtube.com/watch?v=kFTOhOnngK0
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 O que um conto milenar sobre um jovem, um gênio e uma lâmpada mágica tem a nos ensinar sobre o futuro da Inteligência Artificial e o nosso próprio desenvolvimento psicológico?

@@ -2,7 +2,7 @@
 id: Qk8zM-SpbUY
 slug: padrao-saga-e-transactional-outbox-em-microsservicos
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: Padrão Saga e Transactional Outbox em Microsserviços
   publicado_em: 2026-09-11

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de maio de 2026 (8 min 55 s).
 Assistir: https://www.youtube.com/watch?v=thzcsZ2yjtA
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Descubra o Amazon Quick, a nova IA da AWS que vive no seu desktop e entende todo o seu fluxo de trabalho

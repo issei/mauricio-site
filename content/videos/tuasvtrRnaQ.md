@@ -2,7 +2,7 @@
 id: tuasvtrRnaQ
 slug: aws-cloudformation
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: AWS CloudFormation
   publicado_em: 2025-11-21

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de outubro de 2025 (5 min 41 s).
 Assistir: https://www.youtube.com/watch?v=qkfWOrs8o9k
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 **Nossa Documentação Está Pronta Para a Era da IA? O Padrão `llms.txt` é a Solução!**

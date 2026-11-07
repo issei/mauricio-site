@@ -2,7 +2,7 @@
 id: 3kbR-35NbcA
 slug: notebooks-alem-da-celula-o-poder-os-perigos-e-o-futuro-do
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: "Notebooks Além da Célula: O Poder, os Perigos e o Futuro do Desenvolvimento"
   publicado_em: 2025-12-17

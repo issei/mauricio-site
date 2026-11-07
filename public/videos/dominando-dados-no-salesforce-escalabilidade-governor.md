@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 25 de novembro de 2025 (7 min 31 s).
 Assistir: https://www.youtube.com/watch?v=zuwhkLMNmLg
 
+Assuntos: [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas), [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Seus processos no Salesforce estão lentos ou batendo nos temidos Governor Limits? 🤯

@@ -2,7 +2,7 @@
 id: thzcsZ2yjtA
 slug: conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o
 status: ficha
-temas: []
+temas: [ferramentas-de-ia]
 youtube:
   titulo: "Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop"
   publicado_em: 2026-05-07

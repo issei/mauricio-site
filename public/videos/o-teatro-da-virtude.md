@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de janeiro de 2026 (5 min 16 s).
 Assistir: https://www.youtube.com/watch?v=RcK7iA2luU4
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Nem toda virtude é real. Algumas são apenas bem encenadas.

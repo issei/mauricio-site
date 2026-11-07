@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 12 de novembro de 2025 (6 min 31 s).
 Assistir: https://www.youtube.com/watch?v=rxjZWOMIzyA
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Seu agente de IA só sabe responder perguntas? É hora de fazê-lo agir! 🚀

@@ -2,7 +2,7 @@
 id: buSylmOu_ek
 slug: 8-de-setembro-de-2026
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: 8 de setembro de 2026
   publicado_em: 2026-09-08

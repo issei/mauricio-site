@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 20 de setembro de 2026 (7 min 36 s).
 Assistir: https://www.youtube.com/watch?v=Fbuu769DNfk
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Neste vídeo explicativo, apresentamos o **Repowise**, uma ferramenta open-source que constrói um índice local do seu código-fonte para fornecer contexto preciso e citável para desenvolvedores e agentes de IA.

@@ -2,7 +2,7 @@
 id: iCVD5IVVR2g
 slug: o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia
 status: ficha
-temas: []
+temas: [engenharia-agentica, cloud-e-confiabilidade]
 youtube:
   titulo: "O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS"
   publicado_em: 2026-10-18

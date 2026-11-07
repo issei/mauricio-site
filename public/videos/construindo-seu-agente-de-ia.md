@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 8 de novembro de 2025 (7 min 16 s).
 Assistir: https://www.youtube.com/watch?v=1YTBK_FCKLU
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Neste tutorial prático e autoguiado, você mergulhará no **Vertex AI Agent Builder** do Google Cloud para construir, escalar e gerenciar seus próprios agentes de IA, transformando protótipos em soluções de produção seguras.

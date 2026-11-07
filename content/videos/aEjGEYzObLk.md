@@ -2,7 +2,7 @@
 id: aEjGEYzObLk
 slug: omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia
 status: ficha
-temas: []
+temas: [ferramentas-de-ia]
 youtube:
   titulo: "OmniRoute: Pare de gastar fortunas com assinaturas de IA!"
   publicado_em: 2026-09-03

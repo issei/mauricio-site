@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 31 de outubro de 2025 (7 min 28 s).
 Assistir: https://www.youtube.com/watch?v=E4yTCqkyeh4
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 ### **Confiabilidade em TI e Sistemas Críticos**

@@ -2,7 +2,7 @@
 id: JSYL3Ax7A7o
 slug: a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: "A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário"
   publicado_em: 2026-09-10

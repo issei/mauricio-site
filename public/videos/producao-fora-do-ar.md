@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 4 de fevereiro de 2026 (9 min).
 Assistir: https://www.youtube.com/watch?v=-t8RfEvirds
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Neste vídeo, você vai aprender como atuar na sustentação de sistemas em produção de maneira profissional, estruturada e alinhada às melhores práticas de mercado, como SRE (Site Reliability Engineering) e ITIL.

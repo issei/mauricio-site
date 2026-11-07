@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 22 de agosto de 2026 (8 min 26 s).
 Assistir: https://www.youtube.com/watch?v=5HaAVA4316Q
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Neste vídeo, fazemos uma imersão completa no HyperFrames, um inovador framework de código aberto sob a licença Apache 2.0

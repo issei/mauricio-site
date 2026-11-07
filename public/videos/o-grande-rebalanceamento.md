@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 17 de janeiro de 2026 (6 min 20 s).
 Assistir: https://www.youtube.com/watch?v=GDyfER19uzE
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Estamos atravessando um grande rebalanceamento na vida pessoal, profissional e nas organizações.

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de agosto de 2026 (5 min 35 s).
 Assistir: https://www.youtube.com/watch?v=yNfs2pFXdUc
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos a arquitetura de dependências sob uma lente inusitada: a filosofia da "domesticação" (apprivoiser) presente em O Pequeno Príncipe. Em sistemas complexos, uma dependência não é apenas um componente externo; ela é um vínculo técnico e ético que reorganiza o ecossistema de quem a integra.

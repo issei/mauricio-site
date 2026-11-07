@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de setembro de 2026 (1 min 9 s).
 Assistir: https://www.youtube.com/watch?v=SLSaXV6j6I0
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 A maioria das pessoas vive no "piloto automático", reagindo ao estresse, ao excesso de informação e ao ruído do dia a dia. Mas a verdadeira vantagem estratégica não é saber mais — é **pensar melhor**.

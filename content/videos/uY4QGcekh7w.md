@@ -2,7 +2,7 @@
 id: uY4QGcekh7w
 slug: o-pipeline-inteligente
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: O Pipeline Inteligente
   publicado_em: 2025-10-31

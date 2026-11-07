@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 17 de outubro de 2026 (9 min 8 s).
 Assistir: https://www.youtube.com/watch?v=mbR24EwOmFM
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 **Como a Google superou um dos maiores desafios da física moderna para tornar a computação quântica prática e confiável?** 🚀🧪

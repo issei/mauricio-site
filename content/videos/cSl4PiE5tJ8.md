@@ -2,7 +2,7 @@
 id: cSl4PiE5tJ8
 slug: o-padrao-stateful-serverless
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: O Padrão Stateful Serverless
   publicado_em: 2026-01-16

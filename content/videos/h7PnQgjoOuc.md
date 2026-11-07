@@ -2,7 +2,7 @@
 id: h7PnQgjoOuc
 slug: desbloqueando-a-ia-com-mcp
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: Desbloqueando a IA com MCP
   publicado_em: 2025-10-27

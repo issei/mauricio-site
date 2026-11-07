@@ -2,6 +2,19 @@
 
 Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e transcrição.
 
+## Assuntos
+
+- [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+- [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+- [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+- [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+- [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+- [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas)
+- [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+- [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+- [Acessibilidade e design](https://mauricio.issei.com.br/temas/acessibilidade-e-design)
+- [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Todos os vídeos
 
 - [O IPO DA ANTHROPIC É O MAIOR TESTE DE ESTRESSE DO MERCADO DE CAPITAIS E DA INTELIGÊNCIA ARTIFICIAL!](https://mauricio.issei.com.br/videos/o-ipo-da-anthropic-e-o-maior-teste-de-estresse-do-mercado) — 5 de novembro de 2026

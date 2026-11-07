@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 10 de outubro de 2026 (7 min 56 s).
 Assistir: https://www.youtube.com/watch?v=hub4sB4yYss
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 **O trabalho agora começa na janela de prompt!** Neste vídeo explicativo, analisamos detalhadamente o lançamento do **Gemini Agent** no evento *Gemini at Work 2026*, mostrando como o Google Cloud está liderando a transição para a era dos **agentes autônomos corporativos**.

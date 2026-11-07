@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de setembro de 2026 (7 min 43 s).
 Assistir: https://www.youtube.com/watch?v=LnEzU4OfkoM
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Como gerenciar o DNS de forma eficiente quando sua empresa cresce e passa a ter dezenas ou centenas de contas na AWS? 🤔

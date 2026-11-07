@@ -2,7 +2,7 @@
 id: j-dY_3-l5qc
 slug: aws-api-gateway-qual-tipo-de-api-escolher-rest-http-e
 status: ficha
-temas: []
+temas: [cloud-e-confiabilidade]
 youtube:
   titulo: "AWS API GATEWAY: Qual Tipo de API Escolher? (REST, HTTP e WebSocket)"
   publicado_em: 2025-11-23

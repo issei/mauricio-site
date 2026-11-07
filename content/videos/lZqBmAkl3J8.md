@@ -2,7 +2,7 @@
 id: lZqBmAkl3J8
 slug: o-que-faz-um-forward-deployed-engineer-fde
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: O que faz um Forward-Deployed Engineer (FDE)?
   publicado_em: 2026-10-13

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 31 de outubro de 2025 (7 min 9 s).
 Assistir: https://www.youtube.com/watch?v=uY4QGcekh7w
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 O vídeo explora como a **Inteligência Artificial (IA) e o Machine Learning (ML)** estão transformando o DevOps e o ciclo de vida de entrega de software (AIOps), automatizando e otimizando *pipelines* de Integração Contínua e Implantação Contínua (CI/CD).

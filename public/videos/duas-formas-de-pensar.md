@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 27 de outubro de 2025 (7 min 14 s).
 Assistir: https://www.youtube.com/watch?v=-WRHywpPe9g
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 **Duas Formas de Pensar: TDD e Estatística — O Segredo de Líderes para Dominar a Complexidade e a Incerteza**

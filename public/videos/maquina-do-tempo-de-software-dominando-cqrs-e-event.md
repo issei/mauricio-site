@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 21 de maio de 2026 (6 min 52 s).
 Assistir: https://www.youtube.com/watch?v=uPJUQKIlzFM
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você já imaginou ter uma "máquina do tempo" no seu software, capaz de reconstruir qualquer estado do passado e investigar problemas passo a passo?

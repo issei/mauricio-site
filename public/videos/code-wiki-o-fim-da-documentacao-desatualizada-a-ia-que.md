@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 4 de dezembro de 2025 (4 min 47 s).
 Assistir: https://www.youtube.com/watch?v=2COb_TFaySQ
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você gasta até 70% do seu tempo decifrando código legado? 🤯

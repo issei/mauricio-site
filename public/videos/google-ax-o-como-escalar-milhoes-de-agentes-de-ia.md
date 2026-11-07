@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 24 de setembro de 2026 (10 min 3 s).
 Assistir: https://www.youtube.com/watch?v=NtOpM5eiU5A
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Os agentes autônomos de IA não se comportam como microserviços tradicionais nem como tarefas em lote: eles acumulam estado, executam loops dinâmicos e exigem isolamento rigoroso de segurança e controle financeiro. Neste vídeo explicativo, analisamos o **Google AX**, o runtime de orquestração declarativa open-source desenvolvido pelo Google para gerenciar e escalar workloads de agentes em massa.

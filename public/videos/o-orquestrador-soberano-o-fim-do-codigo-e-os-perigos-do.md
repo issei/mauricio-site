@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 18 de maio de 2026 (10 min 30 s).
 Assistir: https://www.youtube.com/watch?v=HlgRNYHvOtg
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Estamos testemunhando uma mudança monumental: a programação deixou de ser sobre digitar código sintático e passou a ser sobre intenção e orquestração estratégica de Inteligência Artificial.

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de janeiro de 2026 (5 min 57 s).
 Assistir: https://www.youtube.com/watch?v=Y67ZceRro4Y
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você já ouviu falar em Inversão de Controle, mas ainda acha o conceito abstrato ou confuso? Neste vídeo, eu explico o que é IoC de forma clara, direta e aplicada ao dia a dia do desenvolvimento de software.

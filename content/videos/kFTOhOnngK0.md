@@ -2,7 +2,7 @@
 id: kFTOhOnngK0
 slug: a-alquimia-do-poder
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: A Alquimia do Poder
   publicado_em: 2026-06-10

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 30 de setembro de 2026 (7 min 47 s).
 Assistir: https://www.youtube.com/watch?v=BNaAVW4VI7Y
 
+Assuntos: [Acessibilidade e design](https://mauricio.issei.com.br/temas/acessibilidade-e-design)
+
 ## Sobre o vídeo
 
 Enquanto a Inteligência Artificial acelera vertiginosamente a criação de telas e sistemas, a cognição humana permanece evolutivamente a mesma desde o período paleolítico. Neste vídeo explicativo de 7 minutos e meio, exploramos como o trabalho de **Felipe A. Carriço** (Specialist UX Designer, AI Product Builder e Daltônico) conecta Neurociência, Acessibilidade por IA e Comunidade para garantir que a tecnologia continue a serviço do ser humano.

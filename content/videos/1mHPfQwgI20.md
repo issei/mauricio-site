@@ -2,7 +2,7 @@
 id: 1mHPfQwgI20
 slug: google-antigravity-o-fim-do-copiloto-o-futuro-da
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: "GOOGLE ANTIGRAVITY: O Fim do Copiloto? O Futuro da Programação com Agentes de IA"
   publicado_em: 2025-11-19

@@ -2,7 +2,7 @@
 id: E5YpNQufkJI
 slug: descubra-a-anatomia-de-uma-ia-moderna-baseada-em-skills-e
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: Descubra a anatomia de uma IA Moderna baseada em Skills e Playbooks.
   publicado_em: 2026-03-19

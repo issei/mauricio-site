@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 12 de agosto de 2026 (9 min 16 s).
 Assistir: https://www.youtube.com/watch?v=dacWmQubuSs
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Neste vídeo, mergulhamos fundo no futuro da arquitetura de inteligência artificial e na transição histórica que está acontecendo na comunidade de desenvolvedores: a evolução do Loop Engineering para o Graph Engineering.

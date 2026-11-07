@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 29 de agosto de 2026 (8 min 9 s).
 Assistir: https://www.youtube.com/watch?v=TwDkaniVQPg
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Você já se perguntou se liberar o uso de Inteligência Artificial para seus alunos está realmente ajudando ou apenas "terceirizando" o raciocínio deles? 

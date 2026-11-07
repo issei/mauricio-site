@@ -2,7 +2,7 @@
 id: qaf8cRSXqyU
 slug: mcp-do-notion-briefing-de-arquitetura-para-automacao-e
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: "MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA"
   publicado_em: 2025-12-15

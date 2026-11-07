@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 11 de setembro de 2026 (9 min 21 s).
 Assistir: https://www.youtube.com/watch?v=tnS7hxUnHI4
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Neste vídeo explicativo, exploramos o **Google Open Knowledge Format (OKF)** e demonstramos como utilizar o ecossistema **okf-agent-memory** na prática!

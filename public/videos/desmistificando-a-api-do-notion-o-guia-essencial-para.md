@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 15 de dezembro de 2025 (5 min 54 s).
 Assistir: https://www.youtube.com/watch?v=zAdmPzMvGZg
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Você usa o Notion, mas ainda não liberou seu poder máximo? 🤯

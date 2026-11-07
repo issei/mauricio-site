@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 3 de julho de 2026 (6 min 47 s).
 Assistir: https://www.youtube.com/watch?v=ODuuUBUbUBI
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Você quer acelerar o seu ciclo de desenvolvimento e parar de esperar pela estabilização demorada dos seus recursos na nuvem? Neste vídeo, exploramos o novo AWS CloudFormation Express mode, uma funcionalidade desenhada para acelerar drasticamente os seus deploys

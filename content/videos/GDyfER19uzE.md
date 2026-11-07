@@ -2,7 +2,7 @@
 id: GDyfER19uzE
 slug: o-grande-rebalanceamento
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: O Grande Rebalanceamento
   publicado_em: 2026-01-17

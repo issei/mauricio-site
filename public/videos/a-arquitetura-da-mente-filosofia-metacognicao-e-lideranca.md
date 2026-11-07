@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de setembro de 2026 (7 min 21 s).
 Assistir: https://www.youtube.com/watch?v=ZsA9X2mMTsw
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente), [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Em um mundo marcado pela sobrecarga de informações, volatilidade e ruído constante, a verdadeira vantagem estratégica não está em acumular mais dados, mas em **pensar melhor com clareza, empatia e propósito**. 

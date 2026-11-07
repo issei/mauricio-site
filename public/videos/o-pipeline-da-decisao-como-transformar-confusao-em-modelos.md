@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 19 de agosto de 2026 (8 min 21 s).
 Assistir: https://www.youtube.com/watch?v=lhEdMm7qvAU
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Você já sentiu que sua equipe construiu a solução perfeita para o problema errado? Esse erro clássico, conhecido como solutioneering, é o que a Engenharia de Problemas veio resolver.

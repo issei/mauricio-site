@@ -2,7 +2,7 @@
 id: x2s0FR8GJlA
 slug: o-ipo-da-anthropic-e-o-maior-teste-de-estresse-do-mercado
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: O IPO DA ANTHROPIC É O MAIOR TESTE DE ESTRESSE DO MERCADO DE CAPITAIS E DA INTELIGÊNCIA ARTIFICIAL!
   publicado_em: 2026-11-05

@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 1 de fevereiro de 2026 (6 min 17 s).
 Assistir: https://www.youtube.com/watch?v=Zelg8R3Np-4
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos como a Inteligência Artificial está deixando de ser apenas código e passando a interagir diretamente com o mundo físico. Falamos sobre IA incorporada (embodied AI), agentes autônomos, sensores, robótica e o impacto real dessa evolução na tecnologia, nos negócios e no nosso dia a dia.

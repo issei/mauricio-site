@@ -2,7 +2,7 @@
 id: BNaAVW4VI7Y
 slug: ia-e-o-fator-humano-neurociencia-acessibilidade-radical
 status: ficha
-temas: []
+temas: [acessibilidade-e-design]
 youtube:
   titulo: "IA e o Fator Humano: Neurociência, Acessibilidade Radical (A11Y.md) e Comunidade"
   publicado_em: 2026-09-30

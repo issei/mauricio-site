@@ -2,7 +2,7 @@
 id: flpk6JCiMvc
 slug: desvendando-machine-learning-conceitos-aplicacoes-e
 status: ficha
-temas: []
+temas: [dados-e-decisao]
 youtube:
   titulo: "Desvendando Machine Learning: conceitos, aplicações e impactos reais"
   publicado_em: 2026-01-04

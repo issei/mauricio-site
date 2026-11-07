@@ -2,7 +2,7 @@
 id: q0hx71uNYNw
 slug: a-filosofia-do-codigo-limpo
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento]
 youtube:
   titulo: A Filosofia do Código Limpo
   publicado_em: 2025-11-06

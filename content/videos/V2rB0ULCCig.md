@@ -2,7 +2,7 @@
 id: V2rB0ULCCig
 slug: dominando-a-persuasao
 status: ficha
-temas: []
+temas: [salesforce-e-vendas]
 youtube:
   titulo: Dominando a Persuasão
   publicado_em: 2025-10-26

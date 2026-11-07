@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 27 de setembro de 2026 (7 min 35 s).
 Assistir: https://www.youtube.com/watch?v=KpcrbmGA_v8
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Neste vídeo, apresentamos o **Jev**, o modelo desenvolvido pela TypeSafe AI focado em entregar decisões estruturadas e tipadas em vez de textos longos em prosa. Ele atua como um *middleware* e "fuzzy if" para aplicações e agentes de inteligência artificial, operando com latências entre 70 e 500 ms — sendo de 40 a 200 vezes mais rápido que chamadas a LLMs tradicionais.

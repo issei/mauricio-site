@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 2 de outubro de 2026 (8 min 8 s).
 Assistir: https://www.youtube.com/watch?v=s-VWwbBEv90
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Por que a arquitetura tradicional de APIs e requisições HTTP quebra ao tentar conectar Agentes de IA a interfaces de usuário? Neste vídeo explicativo de 7 minutos, você vai entender como o **AG-UI Protocol (Agent–User Interaction Protocol)** resolve o gargalo de comunicação entre agentes autônomos e aplicações frontend.

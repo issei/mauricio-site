@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de outubro de 2026 (8 min 19 s).
 Assistir: https://www.youtube.com/watch?v=TN2zVIrAbaI
 
+Assuntos: [Acessibilidade e design](https://mauricio.issei.com.br/temas/acessibilidade-e-design)
+
 ## Sobre o vídeo
 
 Neste vídeo, apresentamos o **DA11Y.md**, um protocolo desenvolvido para que o agente de Inteligência Artificial do Figma consiga projetar, analisar e anotar interfaces acessíveis diretamente no protótipo, antes mesmo do código ser escrito. 

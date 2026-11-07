@@ -2,7 +2,7 @@
 id: LASZw1QGELM
 slug: o-fim-do-chat-na-ia-conheca-o-a2ui-a-revolucao-visual-do
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: O Fim do "Chat" na IA? Conheça o A2UI, a Revolução Visual do Google para 2026!
   publicado_em: 2025-12-23

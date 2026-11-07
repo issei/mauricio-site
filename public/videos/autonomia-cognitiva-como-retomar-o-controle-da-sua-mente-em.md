@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 13 de fevereiro de 2026 (6 min 17 s).
 Assistir: https://www.youtube.com/watch?v=iwWsVwXDgcQ
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Vivemos em um ambiente saturado de estímulos, notificações e narrativas prontas. Neste vídeo, exploramos o conceito de autonomia cognitiva — a capacidade de pensar com clareza, decidir com consciência e agir com intenção própria, mesmo diante de pressões externas.

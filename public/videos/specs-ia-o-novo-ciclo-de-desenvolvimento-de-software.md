@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 3 de dezembro de 2025 (6 min 56 s).
 Assistir: https://www.youtube.com/watch?v=jcFFT-W1vE4
 
+Assuntos: [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 A Inteligência Artificial vai matar o Desenvolvimento Guiado por Especificações (SDD)? 🤯

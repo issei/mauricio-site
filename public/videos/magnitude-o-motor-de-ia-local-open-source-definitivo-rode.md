@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 11 de setembro de 2026 (8 min 22 s).
 Assistir: https://www.youtube.com/watch?v=8z4JuiIOT58
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 O **Magnitude** é um motor de inferência local e *open source* desenvolvido para executar os melhores modelos de IA diretamente no hardware que você já possui, seja um Mac, uma GPU NVIDIA/AMD ou apenas CPU. Sob licença Apache 2.0, ele oferece uma solução 100% gratuita, privada e sem custos de API ou limites de requisição.

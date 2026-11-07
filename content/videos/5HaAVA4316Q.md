@@ -2,7 +2,7 @@
 id: 5HaAVA4316Q
 slug: desmistificando-o-hyperframes-o-framework-que-transforma
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: "Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!"
   publicado_em: 2026-08-22

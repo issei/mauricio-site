@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de janeiro de 2026 (4 min 46 s).
 Assistir: https://www.youtube.com/watch?v=8w0g1UHDJm8
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Você já se perguntou como encontrar o melhor resultado possível em meio ao caos? Neste vídeo, saímos do mundo do "achismo" e entramos no universo preciso da matemática para entender como transformar problemas complexos em soluções eficientes.

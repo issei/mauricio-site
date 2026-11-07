@@ -2,7 +2,7 @@
 id: rYSyiQznInI
 slug: 05-orchestration-paradigm
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: 05 - Orchestration Paradigm
   publicado_em: 2026-05-18

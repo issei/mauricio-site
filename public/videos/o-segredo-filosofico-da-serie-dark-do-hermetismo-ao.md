@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de janeiro de 2026 (6 min 3 s).
 Assistir: https://www.youtube.com/watch?v=QgZk35h2_k0
 
+Assuntos: [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura)
+
 ## Sobre o vídeo
 
 Você acha que entendeu Dark?

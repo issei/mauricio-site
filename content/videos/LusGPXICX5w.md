@@ -2,7 +2,7 @@
 id: LusGPXICX5w
 slug: paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos
 status: ficha
-temas: []
+temas: [ferramentas-de-ia]
 youtube:
   titulo: "PaperBanana: IA para Análise e Revisão de Artigos Científicos"
   publicado_em: 2026-02-03

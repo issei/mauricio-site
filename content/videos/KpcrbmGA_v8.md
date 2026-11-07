@@ -2,7 +2,7 @@
 id: KpcrbmGA_v8
 slug: jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software
 status: ficha
-temas: []
+temas: [engenharia-agentica, especificacao-e-desenvolvimento]
 youtube:
   titulo: Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA
   publicado_em: 2026-09-27

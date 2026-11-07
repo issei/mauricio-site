@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de maio de 2026 (5 min 59 s).
 Assistir: https://www.youtube.com/watch?v=hdFXMDVb7Og
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Descubra como construir e gerenciar seu próprio cérebro digital permanente com o OpenKB! Neste vídeo, demonstramos o passo a passo para inicializar e configurar sua base de conhecimento localmente

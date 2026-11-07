@@ -2,7 +2,7 @@
 id: UzAft6Vtytw
 slug: como-o-reef-treina-agentes-de-ia-autonomos-em-tempo-real
 status: ficha
-temas: []
+temas: [engenharia-agentica]
 youtube:
   titulo: Como o Reef Treina Agentes de IA Autônomos em Tempo Real!
   publicado_em: 2026-09-11

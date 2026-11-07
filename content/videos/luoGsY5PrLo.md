@@ -2,7 +2,7 @@
 id: luoGsY5PrLo
 slug: 04-a-ilusao-do-pensamento
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: 04 - A Ilusão do Pensamento
   publicado_em: 2026-05-18

@@ -2,7 +2,7 @@
 id: NDoM4KfL1vs
 slug: arquitetura-hexagonal-roi
 status: ficha
-temas: []
+temas: [especificacao-e-desenvolvimento, gestao-e-estrategia]
 youtube:
   titulo: Arquitetura Hexagonal  ROI
   publicado_em: 2026-05-04

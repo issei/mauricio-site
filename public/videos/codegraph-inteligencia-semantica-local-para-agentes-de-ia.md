@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de agosto de 2026 (7 min 25 s).
 Assistir: https://www.youtube.com/watch?v=XzEjRH5b6FA
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Neste vídeo, exploramos o **CodeGraph**, uma ferramenta de inteligência semântica local projetada especificamente para revolucionar a forma como agentes de inteligência artificial compreendem e editam bases de código. Ao criar um grafo de conhecimento completo e pré-indexado contendo símbolos, chamadas e dependências, o CodeGraph elimina a necessidade de pesquisas lentas arquivo por arquivo, entregando o contexto cirúrgico de que o agente precisa em apenas uma chamada.

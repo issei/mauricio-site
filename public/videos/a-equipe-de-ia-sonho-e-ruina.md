@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 27 de outubro de 2025 (8 min 42 s).
 Assistir: https://www.youtube.com/watch?v=jy5ZuhpjxZ0
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Você já imaginou um "Dream Team" de Inteligências Artificiais, cada uma especialista em sua área, trabalhando em conjunto para resolver os problemas mais complexos da humanidade? Essa é a promessa dos **Sistemas Multiagentes (MAS)**, a nova fronteira da IA que substitui os modelos monolíticos por equipes de especialistas.

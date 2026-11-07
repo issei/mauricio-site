@@ -2,7 +2,7 @@
 id: aS3JqBvf--Q
 slug: seu-novo-assistente-de-ia-automacao-sem-codigo-com-google
 status: ficha
-temas: []
+temas: [ferramentas-de-ia]
 youtube:
   titulo: "SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini"
   publicado_em: 2025-12-05

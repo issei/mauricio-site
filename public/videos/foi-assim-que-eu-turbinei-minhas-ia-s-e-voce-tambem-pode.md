@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 25 de setembro de 2026 (7 min 9 s).
 Assistir: https://www.youtube.com/watch?v=nBqzt727GJ4
 
+Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+
 ## Sobre o vídeo
 
 Quer receber respostas muito mais relevantes e personalizadas das suas ferramentas de inteligência artificial? Neste vídeo, você vai aprender a configurar os chamados **prompts ocultos**, recursos simples e poderosos presentes nas principais plataformas do mercado para transformar a IA em um assistente altamente contextualizado.

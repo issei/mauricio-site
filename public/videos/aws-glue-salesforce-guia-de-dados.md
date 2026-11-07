@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 12 de novembro de 2025 (7 min 25 s).
 Assistir: https://www.youtube.com/watch?v=_4DuEj9NQ6s
 
+Assuntos: [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas), [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 AWS GLUE & SALESFORCE: O Guia Definitivo de Integração de Dados (Zero-Copy, Bulk API e Data Mesh)

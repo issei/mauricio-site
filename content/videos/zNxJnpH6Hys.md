@@ -2,7 +2,7 @@
 id: zNxJnpH6Hys
 slug: 25-de-setembro-de-2026
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente, acessibilidade-e-design]
 youtube:
   titulo: 25 de setembro de 2026
   publicado_em: 2026-09-25

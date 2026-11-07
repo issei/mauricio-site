@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 16 de janeiro de 2026 (7 min 2 s).
 Assistir: https://www.youtube.com/watch?v=cSl4PiE5tJ8
 
+Assuntos: [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade)
+
 ## Sobre o vídeo
 
 Neste vídeo você vai entender, de forma clara e estruturada, o que é o padrão Stateful Serverless e por que ele está se tornando uma peça essencial na arquitetura de sistemas modernos. Exploramos as diferenças entre stateful e stateless, como aplicar serverless mantendo informações de estado, quando optar por cada abordagem e quais são os desafios e benefícios para aplicações em nuvem e backend distribuído.

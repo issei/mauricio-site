@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de janeiro de 2026 (5 min 33 s).
 Assistir: https://www.youtube.com/watch?v=rRvUMog9GJI
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao)
+
 ## Sobre o vídeo
 
 Times ágeis vivem cercados por métricas.

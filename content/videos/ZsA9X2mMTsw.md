@@ -2,7 +2,7 @@
 id: ZsA9X2mMTsw
 slug: a-arquitetura-da-mente-filosofia-metacognicao-e-lideranca
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente, gestao-e-estrategia]
 youtube:
   titulo: "A Arquitetura da Mente: Filosofia, Metacognição e Liderança Estratégica"
   publicado_em: 2026-09-23

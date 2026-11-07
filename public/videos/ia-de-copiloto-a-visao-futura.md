@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 8 de novembro de 2025 (7 min 8 s).
 Assistir: https://www.youtube.com/watch?v=9bC8bzmhfTo
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 ## 🤖 IA no Volante e o Futuro da Segurança Veicular: Entenda o Gemini no Google Maps e a Revolução ADAS!

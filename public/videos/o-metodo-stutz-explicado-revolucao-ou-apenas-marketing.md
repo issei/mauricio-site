@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 20 de janeiro de 2026 (6 min 57 s).
 Assistir: https://www.youtube.com/watch?v=-aB68xEwx3M
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
+
 ## Sobre o vídeo
 
 Você já sentiu que a terapia tradicional demora demais para trazer resultados práticos? No vídeo de hoje, mergulhamos no universo de Phil Stutz, o terapeuta das estrelas de Hollywood que se tornou um fenômeno global após o documentário da Netflix produzido por Jonah Hill.

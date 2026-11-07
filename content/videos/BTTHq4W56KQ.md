@@ -2,7 +2,7 @@
 id: BTTHq4W56KQ
 slug: opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de
 status: ficha
-temas: []
+temas: [engenharia-agentica, cloud-e-confiabilidade]
 youtube:
   titulo: "OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes"
   publicado_em: 2026-10-07

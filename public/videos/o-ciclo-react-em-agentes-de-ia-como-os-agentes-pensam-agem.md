@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 11 de setembro de 2026 (7 min 41 s).
 Assistir: https://www.youtube.com/watch?v=9fUl8-hSIp0
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
+
 ## Sobre o vídeo
 
 Neste vídeo explicativo, detalhamos o funcionamento do **ciclo ReAct (Reasoning + Acting)**, a arquitetura essencial que permite aos Agentes de IA irem além de simples chats de conversação.

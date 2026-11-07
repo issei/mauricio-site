@@ -2,7 +2,7 @@
 id: r8hLOS-KoLA
 slug: blue-lock-a-filosofia-do-sucesso-e-como-aplica-la-na-sua
 status: ficha
-temas: []
+temas: [gestao-e-estrategia]
 youtube:
   titulo: "Blue Lock: A Filosofia do Sucesso e Como Aplicá-la na Sua Carreira"
   publicado_em: 2026-07-17

@@ -2,7 +2,7 @@
 id: e-6l2XB6fmQ
 slug: atencao-sequencial-o-foco-da-ia
 status: ficha
-temas: []
+temas: [tecnologia-e-cultura]
 youtube:
   titulo: Atenção Sequencial  "O Foco da IA"
   publicado_em: 2026-02-13

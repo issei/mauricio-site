@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 21 de setembro de 2026 (9 min 32 s).
 Assistir: https://www.youtube.com/watch?v=5LtvpFMRUvw
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento)
+
 ## Sobre o vídeo
 
 Neste vídeo, apresentamos a engenharia de software e a metodologia agêntica utilizadas no desenvolvimento do site da **Boutique Empresarial**. 

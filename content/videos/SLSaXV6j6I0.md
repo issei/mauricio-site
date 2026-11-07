@@ -2,7 +2,7 @@
 id: SLSaXV6j6I0
 slug: quem-esta-no-comando-da-sua-mente-voce-ou-as-suas-reacoes
 status: ficha
-temas: []
+temas: [aprendizagem-e-mente]
 youtube:
   titulo: "Quem está no comando da sua mente: você ou as suas reações automáticas?"
   publicado_em: 2026-09-23

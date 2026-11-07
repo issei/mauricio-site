@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 13 de abril de 2026 (7 min 15 s).
 Assistir: https://www.youtube.com/watch?v=Jpk2K7hSUcA
 
+Assuntos: [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Você já parou para pensar que as "verdades absolutas" da administração podem estar impedindo o crescimento do seu negócio? 🏢🚫

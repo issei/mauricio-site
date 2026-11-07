@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 25 de setembro de 2026 (6 min 16 s).
 Assistir: https://www.youtube.com/watch?v=zNxJnpH6Hys
 
+Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente), [Acessibilidade e design](https://mauricio.issei.com.br/temas/acessibilidade-e-design)
+
 ## Sobre o vídeo
 
 **Em comemoração aos 9 anos do Movimento Web para Todos (WPT)**, este vídeo apresenta e divulga a causa da acessibilidade digital.

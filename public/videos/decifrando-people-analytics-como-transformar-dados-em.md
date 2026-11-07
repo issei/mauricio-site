@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 23 de setembro de 2026 (8 min 7 s).
 Assistir: https://www.youtube.com/watch?v=5wQJqyifF9I
 
+Assuntos: [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao), [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Como transformar dados sobre pessoas, equipes e a organização em evidências reais que ajudam a tomar decisões melhores e mais humanas? 🤔📊

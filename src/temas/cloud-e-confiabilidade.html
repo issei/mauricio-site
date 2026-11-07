@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud e confiabilidade — vídeos | Maurício Yokoyama Issei</title>
+<meta name="description" content="AWS, infraestrutura como código, serverless e a engenharia de confiabilidade que mantém sistemas de pé em produção.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/temas/cloud-e-confiabilidade">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cloud e confiabilidade — vídeos">
+<meta property="og:description" content="AWS, infraestrutura como código, serverless e a engenharia de confiabilidade que mantém sistemas de pé em produção.">
+<meta property="og:url" content="https://mauricio.issei.com.br/temas/cloud-e-confiabilidade">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Cloud e confiabilidade","description":"AWS, infraestrutura como código, serverless e a engenharia de confiabilidade que mantém sistemas de pé em produção.","url":"https://mauricio.issei.com.br/temas/cloud-e-confiabilidade","inLanguage":"pt-BR","hasPart":[{"@type":"VideoObject","name":"O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS","url":"https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia"},{"@type":"VideoObject","name":"OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes","url":"https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de"},{"@type":"VideoObject","name":"Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!","url":"https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala"},{"@type":"VideoObject","name":"Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account","url":"https://mauricio.issei.com.br/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em"},{"@type":"VideoObject","name":"Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!","url":"https://mauricio.issei.com.br/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation"},{"@type":"VideoObject","name":"A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)","url":"https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como"},{"@type":"VideoObject","name":"Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch","url":"https://mauricio.issei.com.br/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon"},{"@type":"VideoObject","name":"Análise  Lambda Web Adapter","url":"https://mauricio.issei.com.br/videos/analise-lambda-web-adapter"},{"@type":"VideoObject","name":"Por Que Sua IA Falha? (O Custo Oculto do \"Crash Silencioso\")","url":"https://mauricio.issei.com.br/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso"},{"@type":"VideoObject","name":"Produção Fora do Ar","url":"https://mauricio.issei.com.br/videos/producao-fora-do-ar"},{"@type":"VideoObject","name":"Rompendo o Limite Serverless","url":"https://mauricio.issei.com.br/videos/rompendo-o-limite-serverless"},{"@type":"VideoObject","name":"O Blueprint para IA Confiável","url":"https://mauricio.issei.com.br/videos/o-blueprint-para-ia-confiavel"},{"@type":"VideoObject","name":"O Padrão Stateful Serverless","url":"https://mauricio.issei.com.br/videos/o-padrao-stateful-serverless"},{"@type":"VideoObject","name":"WebRTC  A Magia da Comunicação em Tempo Real","url":"https://mauricio.issei.com.br/videos/webrtc-a-magia-da-comunicacao-em-tempo-real"},{"@type":"VideoObject","name":"IA E CONFIABILIDADE DE SISTEMAS: De Reativo a Proativo (SRE, Machine Learning e XAI)","url":"https://mauricio.issei.com.br/videos/ia-e-confiabilidade-de-sistemas-de-reativo-a-proativo-sre"},{"@type":"VideoObject","name":"TERRAFORM: De Código a Plataforma (Escala, Segurança e Policy as Code)","url":"https://mauricio.issei.com.br/videos/terraform-de-codigo-a-plataforma-escala-seguranca-e-policy"},{"@type":"VideoObject","name":"AWS API GATEWAY: Qual Tipo de API Escolher? (REST, HTTP e WebSocket)","url":"https://mauricio.issei.com.br/videos/aws-api-gateway-qual-tipo-de-api-escolher-rest-http-e"},{"@type":"VideoObject","name":"AWS CloudFormation","url":"https://mauricio.issei.com.br/videos/aws-cloudformation"},{"@type":"VideoObject","name":"AWS GLUE: Otimize seus Jobs Spark e Reduza Custos (Guia Prático para Iniciantes)","url":"https://mauricio.issei.com.br/videos/aws-glue-otimize-seus-jobs-spark-e-reduza-custos-guia"},{"@type":"VideoObject","name":"AWS Glue & Salesforce  Guia de Dados","url":"https://mauricio.issei.com.br/videos/aws-glue-salesforce-guia-de-dados"},{"@type":"VideoObject","name":"AWS Transit Gateway","url":"https://mauricio.issei.com.br/videos/aws-transit-gateway"},{"@type":"VideoObject","name":"Datadog  Do Caos à Clareza","url":"https://mauricio.issei.com.br/videos/datadog-do-caos-a-clareza"},{"@type":"VideoObject","name":"A Confiabilidade do Sistema","url":"https://mauricio.issei.com.br/videos/a-confiabilidade-do-sistema"},{"@type":"VideoObject","name":"O Pipeline Inteligente","url":"https://mauricio.issei.com.br/videos/o-pipeline-inteligente"},{"@type":"VideoObject","name":"Construindo para a Falha","url":"https://mauricio.issei.com.br/videos/construindo-para-a-falha"},{"@type":"VideoObject","name":"Padrões Kubernetes","url":"https://mauricio.issei.com.br/videos/padroes-kubernetes"}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>Cloud e confiabilidade</h1>
+<p>AWS, infraestrutura como código, serverless e a engenharia de confiabilidade que mantém sistemas de pé em produção.</p>
+<p class="meta">26 vídeos</p>
+<ul class="lista">
+<li data-temas="engenharia-agentica cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/iCVD5IVVR2g/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS</a></h3>
+<p>18 de outubro de 2026 · 7 min 41 s · Engenharia agêntica, Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/BTTHq4W56KQ/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de">OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes</a></h3>
+<p>7 de outubro de 2026 · 8 min 3 s · Engenharia agêntica, Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/cSW_eXN-9wE/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala">Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!</a></h3>
+<p>27 de setembro de 2026 · 8 min 13 s · Engenharia agêntica, Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/LnEzU4OfkoM/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em">Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account</a></h3>
+<p>23 de setembro de 2026 · 7 min 43 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/ODuuUBUbUBI/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation">Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!</a></h3>
+<p>3 de julho de 2026 · 6 min 47 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/0fkru6v1O-c/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como">A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)</a></h3>
+<p>21 de junho de 2026 · 10 min 27 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/f8xd4FOBYfU/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon">Automação de Incidentes na Prática: AWS DevOps Agent &amp; Amazon CloudWatch</a></h3>
+<p>5 de maio de 2026 · 8 min 39 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/flnY1QZyab8/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/analise-lambda-web-adapter">Análise  Lambda Web Adapter</a></h3>
+<p>26 de abril de 2026 · 6 min 31 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/wGqhobVa4gU/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso">Por Que Sua IA Falha? (O Custo Oculto do &quot;Crash Silencioso&quot;)</a></h3>
+<p>11 de abril de 2026 · 8 min 2 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/-t8RfEvirds/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/producao-fora-do-ar">Produção Fora do Ar</a></h3>
+<p>4 de fevereiro de 2026 · 9 min · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/QF5MW5DYVAk/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/rompendo-o-limite-serverless">Rompendo o Limite Serverless</a></h3>
+<p>29 de janeiro de 2026 · 5 min 43 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/Uyft2BujGOw/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/o-blueprint-para-ia-confiavel">O Blueprint para IA Confiável</a></h3>
+<p>17 de janeiro de 2026 · 8 min 9 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/cSl4PiE5tJ8/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/o-padrao-stateful-serverless">O Padrão Stateful Serverless</a></h3>
+<p>16 de janeiro de 2026 · 7 min 2 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/lezsF_27EXI/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/webrtc-a-magia-da-comunicacao-em-tempo-real">WebRTC  A Magia da Comunicação em Tempo Real</a></h3>
+<p>6 de janeiro de 2026 · 5 min 53 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade dados-e-decisao"><article class="card">
+<img src="https://i.ytimg.com/vi/fRBLEqiOJGs/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/ia-e-confiabilidade-de-sistemas-de-reativo-a-proativo-sre">IA E CONFIABILIDADE DE SISTEMAS: De Reativo a Proativo (SRE, Machine Learning e XAI)</a></h3>
+<p>5 de dezembro de 2025 · 8 min 21 s · Cloud e confiabilidade, Dados e decisão</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/0Rh2ViL6nCk/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/terraform-de-codigo-a-plataforma-escala-seguranca-e-policy">TERRAFORM: De Código a Plataforma (Escala, Segurança e Policy as Code)</a></h3>
+<p>25 de novembro de 2025 · 8 min 51 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/j-dY_3-l5qc/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/aws-api-gateway-qual-tipo-de-api-escolher-rest-http-e">AWS API GATEWAY: Qual Tipo de API Escolher? (REST, HTTP e WebSocket)</a></h3>
+<p>23 de novembro de 2025 · 6 min 10 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/tuasvtrRnaQ/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/aws-cloudformation">AWS CloudFormation</a></h3>
+<p>21 de novembro de 2025 · 9 min 3 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/coZ5-yXfMRE/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/aws-glue-otimize-seus-jobs-spark-e-reduza-custos-guia">AWS GLUE: Otimize seus Jobs Spark e Reduza Custos (Guia Prático para Iniciantes)</a></h3>
+<p>18 de novembro de 2025 · 7 min 49 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="salesforce-e-vendas cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/_4DuEj9NQ6s/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/aws-glue-salesforce-guia-de-dados">AWS Glue &amp; Salesforce  Guia de Dados</a></h3>
+<p>12 de novembro de 2025 · 7 min 25 s · Salesforce e vendas, Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/zVJ_XZq8gQ8/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/aws-transit-gateway">AWS Transit Gateway</a></h3>
+<p>4 de novembro de 2025 · 5 min 54 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/3DGDyPcvjqM/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/datadog-do-caos-a-clareza">Datadog  Do Caos à Clareza</a></h3>
+<p>31 de outubro de 2025 · 6 min 42 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/E4yTCqkyeh4/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/a-confiabilidade-do-sistema">A Confiabilidade do Sistema</a></h3>
+<p>31 de outubro de 2025 · 7 min 28 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/uY4QGcekh7w/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/o-pipeline-inteligente">O Pipeline Inteligente</a></h3>
+<p>31 de outubro de 2025 · 7 min 9 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/-De4YseZtj8/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/construindo-para-a-falha">Construindo para a Falha</a></h3>
+<p>27 de outubro de 2025 · 6 min 46 s · Cloud e confiabilidade</p></div>
+</article></li>
+<li data-temas="cloud-e-confiabilidade"><article class="card">
+<img src="https://i.ytimg.com/vi/FKkNK-anW3c/maxresdefault.jpg" alt="" loading="lazy" width="168" height="94">
+<div><h3><a href="/videos/padroes-kubernetes">Padrões Kubernetes</a></h3>
+<p>27 de outubro de 2025 · 6 min 55 s · Cloud e confiabilidade</p></div>
+</article></li>
+</ul>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+</body>
+</html>
