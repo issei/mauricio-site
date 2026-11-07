@@ -157,8 +157,10 @@ test.describe('/entrevista-acessibilidade-streaming', () => {
     await expect(page.locator('#anuncio')).toContainText('Respostas carregadas');
   });
 
-  test('copiar: o resultado aparece em texto visível, não só para o leitor de tela', async ({ page, context }) => {
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  test('copiar: o resultado aparece em texto visível, não só para o leitor de tela', async ({ page }) => {
+    // Firefox e WebKit não aceitam grantPermissions de clipboard: simula a cópia aceita,
+    // como o teste da falha abaixo simula a recusa.
+    await page.evaluate(() => { navigator.clipboard.writeText = () => Promise.resolve(); });
     await page.fill('#rotina-1', 'À noite.');
     await page.getByRole('button', { name: 'Copiar as respostas' }).click();
     await expect(page.locator('#copiar-resultado')).toBeVisible();
