@@ -17,10 +17,15 @@
 # =============================================================================
 
 meta:
-  version: "1.12.0"           # semver; bump obrigatório a cada alteração de grafo
+  version: "1.13.0"           # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-10-28"
+  updated: "2026-11-07"
+  # 1.13.0 — entra `videos` (Vídeos do canal) em p5 (Soluções & Portfólio): índice
+  #         gerado por scripts/gen-videos.mjs a partir do canal do YouTube. Pedido pelo
+  #         autor em 2026-11-07. A página não tem gêmeo /en/ na fase 1, então o link é
+  #         absoluto (`/videos.html`) para não virar /en/videos.html nas páginas em inglês.
+  #         Atualizar src/js/eco-nav.js junto.
   # 1.12.0 — entra `da-execucao-a-orquestracao` (Da execução à orquestração do
   #         trabalho) em p1 (Fundação/Mentalidade): áudio comentado com auditoria das
   #         afirmações. Pedido pelo autor em 2026-10-28 (a página saiu no PR #129 sem
@@ -113,7 +118,7 @@ pillars:
     label: "Soluções & Portfólio"
     subtitle: "Resultados"
     summary: "Soluções entregues e a jornada pessoal."
-    nodes: [socialselling, index, life, life3d, terminal-evolutivo, boutique-empresarial-showcase]
+    nodes: [socialselling, index, life, life3d, terminal-evolutivo, boutique-empresarial-showcase, videos]
 
 # ----- Nós: chave = slug do arquivo (sem .html). blurb ≤ 60 chars (SPEC §4.2) --
 nodes:
@@ -273,6 +278,11 @@ nodes:
     title: "Boutique Empresarial — Architecture Showcase"
     label: "Boutique Empresarial"
     blurb: "Arquitetura, SDD e pipeline agêntico de um projeto real."
+    pillar: p5
+  videos:
+    file: "/videos.html"     # absoluto: sem gêmeo /en/ na fase 1
+    title: "Vídeos do canal"
+    blurb: "Os vídeos do YouTube, organizados por assunto."
     pillar: p5
     canonical: false
 

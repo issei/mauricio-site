@@ -22,14 +22,14 @@
  */
 
 const DATA = {
-  version: '1.12.0',
+  version: '1.13.0',
   base: './', // D-05: URL relativa atual
   pillars: [
     { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas', 'da-execucao-a-orquestracao'] },
     { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents', 'acessibilidade', 'especificacao-conversacional'] },
     { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
     { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta-observabilidade-mobile'] },
-    { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo', 'boutique-empresarial-showcase'] },
+    { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo', 'boutique-empresarial-showcase', 'videos'] },
   ],
   nodes: {
     know: { file: 'know.html', title: 'Navegando na Complexidade', blurb: 'O fim das melhores práticas.' },
@@ -59,6 +59,8 @@ const DATA = {
     life3d: { file: 'life3d.html', title: 'Vida em 3D', blurb: 'Memórias numa viagem imersiva.' },
     'terminal-evolutivo': { file: 'terminal-evolutivo.html', title: 'Terminal Evolutivo', blurb: 'A jornada 1982–2026 que envelhece ao rolar.' },
     'boutique-empresarial-showcase': { file: 'boutique-empresarial-showcase.html', title: 'Boutique Empresarial', blurb: 'Arquitetura, SDD e pipeline agêntico de um projeto real.' },
+    // Absoluto: o índice de vídeos não tem gêmeo /en/ na fase 1.
+    videos: { file: '/videos.html', title: 'Vídeos do canal', blurb: 'Os vídeos do YouTube, organizados por assunto.' },
   },
   crosslinks: [
     { from: 'knowledge-os-presentation', to: 'proposta-engenharia-reversa', rationale: 'Knowledge OS fundamenta a Engenharia Reversa assistida por IA.' },
@@ -236,7 +238,8 @@ class EcoNav extends HTMLElement {
         const n = DATA.nodes[slug];
         if (!n) return '';
         const cur = slug === this.slug ? ' aria-current="page"' : '';
-        return `<li><a class="node" href="${DATA.base}${esc(n.file)}"${cur}>
+        const href = n.file.startsWith('/') ? n.file : `${DATA.base}${n.file}`;
+        return `<li><a class="node" href="${esc(href)}"${cur}>
           <span class="node__title">${esc(n.title)}</span>
           <span class="node__blurb">${esc(n.blurb)}</span></a></li>`;
       })
