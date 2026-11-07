@@ -1,9 +1,18 @@
 import { defineConfig } from 'vite'
 import { resolve, parse } from 'path';
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import tailwindcss from '@tailwindcss/vite'
 import { globSync } from 'glob';
 import sitemap from 'vite-plugin-sitemap';
+
+/*
+ * Fichas de vídeo sem artigo revisado são `noindex` (SDD-fase-1 §2, D4) e não
+ * podem ser oferecidas no sitemap. A lista é escrita por scripts/gen-videos.mjs,
+ * que é quem sabe o status de cada vídeo.
+ */
+const VIDEOS_NOINDEX = existsSync(resolve(__dirname, 'scripts/videos/sitemap-exclude.json'))
+  ? JSON.parse(readFileSync(resolve(__dirname, 'scripts/videos/sitemap-exclude.json'), 'utf8'))
+  : [];
 
 
 /*
@@ -25,7 +34,12 @@ const EXCLUIR = /(^|[.-])(bkp|backup|template)$/i;
  * `index`): duas páginas com o mesmo nome-base em pastas diferentes colidiriam
  * e o Rollup descartaria uma delas em silêncio.
  */
-const htmlFiles = globSync(['src/*.html', 'src/en/*.html']).filter(
+/*
+ * `src/videos/` e `src/temas/` são gerados por scripts/gen-videos.mjs a partir de
+ * content/ (docs/specs/pages/videos-youtube/SDD-fase-1.md) — um nível a mais que
+ * as páginas escritas à mão. A chave do input já carrega a pasta (`videos/<slug>`).
+ */
+const htmlFiles = globSync(['src/*.html', 'src/en/*.html', 'src/videos/*.html', 'src/temas/*.html', 'src/en/temas/*.html']).filter(
   (file) => !EXCLUIR.test(parse(file).name)
 );
 const htmlInput = Object.fromEntries(
@@ -167,6 +181,7 @@ export default defineConfig({
          */
         '/seo-aeo.jsonld',
         /^\/assets\//,
+        ...VIDEOS_NOINDEX,
       ],
     })
   ]
