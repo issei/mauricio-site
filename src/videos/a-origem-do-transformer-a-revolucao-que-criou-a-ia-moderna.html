@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Origem do Transformer: A Revolução que Criou a IA Moderna | Maurício Yokoyama Issei</title>
+<meta name="description" content="Entenda de uma vez por todas a base da Inteligência Artificial Generativa. Da publicação do paper &quot;Attention is All You Need&quot; até os modelos de trilhões…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="A Origem do Transformer: A Revolução que Criou a IA Moderna">
+<meta property="og:description" content="Entenda de uma vez por todas a base da Inteligência Artificial Generativa. Da publicação do paper &quot;Attention is All You Need&quot; até os modelos de trilhões…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"A Origem do Transformer: A Revolução que Criou a IA Moderna","description":"Entenda de uma vez por todas a base da Inteligência Artificial Generativa. Da publicação do paper \"Attention is All You Need\" até os modelos de trilhões…","thumbnailUrl":"https://i.ytimg.com/vi/tnYamlf86CQ/maxresdefault.jpg","uploadDate":"2026-03-18","duration":"PT7M32S","embedUrl":"https://www.youtube-nocookie.com/embed/tnYamlf86CQ","url":"https://mauricio.issei.com.br/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>A Origem do Transformer: A Revolução que Criou a IA Moderna</h1>
+<p class="meta">Publicado em <time datetime="2026-03-18">18 de março de 2026</time> · 7 min 32 s</p>
+
+<div class="yt" data-id="tnYamlf86CQ" data-title="Vídeo: A Origem do Transformer: A Revolução que Criou a IA Moderna">
+<img src="https://i.ytimg.com/vi/tnYamlf86CQ/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: A Origem do Transformer: A Revolução que Criou a IA Moderna">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=tnYamlf86CQ" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>Entenda de uma vez por todas a base da Inteligência Artificial Generativa. Da publicação do paper &quot;Attention is All You Need&quot; até os modelos de trilhões de parâmetros.<br>​Capítulos do Vídeo:<br>0:00 Introdução: A Origem do Transformer<br>1:00 O Gargalo Sequencial (O problema das RNNs)<br>1:34 A Nova Arquitetura: Atenção é tudo!<br>3:10 O Poder da Escala e a Lei de Potência<br>4:28 Limites, Sucessos e Falhas da IA<br>5:00 Conclusão: Inteligente ou apenas maior?</p>
+<p><a href="https://arxiv.org/abs/1409.0473" rel="noopener">https://arxiv.org/abs/1409.0473</a> </p>
+<p><a href="https://arxiv.org/abs/1512.03385" rel="noopener">https://arxiv.org/abs/1512.03385</a> </p>
+<p><a href="https://arxiv.org/abs/2001.08361" rel="noopener">https://arxiv.org/abs/2001.08361</a> </p>
+<p><a href="https://arxiv.org/abs/2203.15556" rel="noopener">https://arxiv.org/abs/2203.15556</a> </p>
+<p><a href="https://arxiv.org/abs/2302.13971" rel="noopener">https://arxiv.org/abs/2302.13971</a> </p>
+<p><a href="https://arxiv.org/abs/2303.08774" rel="noopener">https://arxiv.org/abs/2303.08774</a> </p>
+<p><a href="https://arxiv.org/abs/2003.04887" rel="noopener">https://arxiv.org/abs/2003.04887</a> </p>
+<p><a href="https://arxiv.org/abs/2302.03985" rel="noopener">https://arxiv.org/abs/2302.03985</a> </p>
+<p><a href="https://arxiv.org/abs/2403.17887" rel="noopener">https://arxiv.org/abs/2403.17887</a> </p>
+<p><a href="https://arxiv.org/abs/2405.21060" rel="noopener">https://arxiv.org/abs/2405.21060</a> </p>
+<p><a href="https://arxiv.org/abs/2402.02622" rel="noopener">https://arxiv.org/abs/2402.02622</a> </p>
+<p><a href="https://arxiv.org/abs/2404.06395" rel="noopener">https://arxiv.org/abs/2404.06395</a> </p>
+<p><a href="https://arxiv.org/abs/2411.07501" rel="noopener">https://arxiv.org/abs/2411.07501</a> </p>
+<p><a href="https://arxiv.org/abs/2009.03300" rel="noopener">https://arxiv.org/abs/2009.03300</a> </p>
+<p><a href="https://arxiv.org/abs/2103.03874" rel="noopener">https://arxiv.org/abs/2103.03874</a> </p>
+<p><a href="https://arxiv.org/abs/2110.14168" rel="noopener">https://arxiv.org/abs/2110.14168</a> </p>
+<p><a href="https://arxiv.org/abs/2210.03057" rel="noopener">https://arxiv.org/abs/2210.03057</a> </p>
+<p><a href="https://arxiv.org/abs/2211.05102" rel="noopener">https://arxiv.org/abs/2211.05102</a> </p>
+<p><a href="https://arxiv.org/abs/2412.19437" rel="noopener">https://arxiv.org/abs/2412.19437</a> </p>
+<p><a href="https://arxiv.org/abs/2501.18795" rel="noopener">https://arxiv.org/abs/2501.18795</a> </p>
+<p><a href="https://arxiv.org/abs/2502.16982" rel="noopener">https://arxiv.org/abs/2502.16982</a> </p>
+<p><a href="https://arxiv.org/abs/2503.04598" rel="noopener">https://arxiv.org/abs/2503.04598</a> </p>
+<p><a href="https://arxiv.org/abs/2505.19488" rel="noopener">https://arxiv.org/abs/2505.19488</a> </p>
+<p><a href="https://arxiv.org/abs/2506.22696" rel="noopener">https://arxiv.org/abs/2506.22696</a> </p>
+<p><a href="https://arxiv.org/abs/2510.26692" rel="noopener">https://arxiv.org/abs/2510.26692</a> </p>
+<p><a href="https://arxiv.org/abs/2512.24880" rel="noopener">https://arxiv.org/abs/2512.24880</a> </p>
+<p><a href="https://arxiv.org/abs/2601.00417" rel="noopener">https://arxiv.org/abs/2601.00417</a> </p>
+<p><a href="https://arxiv.org/abs/2601.05732" rel="noopener">https://arxiv.org/abs/2601.05732</a> </p>
+<p><a href="https://arxiv.org/abs/2601.19895" rel="noopener">https://arxiv.org/abs/2601.19895</a> </p>
+<p><a href="https://arxiv.org/abs/2601.21582" rel="noopener">https://arxiv.org/abs/2601.21582</a> </p>
+<p><a href="https://arxiv.org/abs/2602.08064" rel="noopener">https://arxiv.org/abs/2602.08064</a> </p>
+<p><a href="https://arxiv.org/abs/2602.09009" rel="noopener">https://arxiv.org/abs/2602.09009</a> </p>
+<p><a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf" rel="noopener">https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf</a> </p>
+<p><a href="https://proceedings.mlr.press/v119/katharopoulos20a.html" rel="noopener">https://proceedings.mlr.press/v119/katharopoulos20a.html</a> </p>
+<p><a href="https://proceedings.mlr.press/v139/schlag21a.html" rel="noopener">https://proceedings.mlr.press/v139/schlag21a.html</a> </p>
+<p><a href="https://aclanthology.org/N18-1202/" rel="noopener">https://aclanthology.org/N18-1202/</a> </p>
+<p><a href="https://aclanthology.org/2019.iwslt-1.17/" rel="noopener">https://aclanthology.org/2019.iwslt-1.17/</a> </p>
+<p><a href="https://aclanthology.org/2024.findings-acl.671/" rel="noopener">https://aclanthology.org/2024.findings-acl.671/</a> </p>
+<p><a href="https://aclanthology.org/2025.acl-long.1375/" rel="noopener">https://aclanthology.org/2025.acl-long.1375/</a> </p>
+<p><a href="https://zhuanlan.zhihu.com/p/2010852389670908320" rel="noopener">https://zhuanlan.zhihu.com/p/2010852389670908320</a> </p>
+<p><a href="https://doi.org/10.48550/arXiv.2405.21060" rel="noopener">https://doi.org/10.48550/arXiv.2405.21060</a> </p>
+<p><a href="https://doi.org/10.1162/neco.1991.3.1.79" rel="noopener">https://doi.org/10.1162/neco.1991.3.1.79</a></p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>

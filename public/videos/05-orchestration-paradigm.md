@@ -1,0 +1,12 @@
+# 05 - Orchestration Paradigm
+
+Vídeo de Maurício Yokoyama Issei, publicado em 18 de maio de 2026 (9 min 35 s).
+Assistir: https://www.youtube.com/watch?v=rYSyiQznInI
+
+## Sobre o vídeo
+
+Sem descrição.
+
+## Transcrição
+
+Transcrição ainda não disponível.

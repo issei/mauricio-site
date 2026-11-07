@@ -1,0 +1,1496 @@
+WEBVTT
+Kind: captions
+Language: pt
+
+00:00:00.000 --> 00:00:03.189 align:start position:0%
+ 
+Olá,<00:00:01.400><c> bem-vindos</c><00:00:02.080><c> a</c><00:00:02.280><c> esta</c><00:00:02.520><c> nossa</c><00:00:02.760><c> análise</c>
+
+00:00:03.189 --> 00:00:03.199 align:start position:0%
+Olá, bem-vindos a esta nossa análise
+ 
+
+00:00:03.199 --> 00:00:05.990 align:start position:0%
+Olá, bem-vindos a esta nossa análise
+sobre<00:00:03.439><c> o</c><00:00:03.639><c> Code</c><00:00:04.000><c> Graph.</c><00:00:04.759><c> Bom,</c><00:00:05.160><c> a</c><00:00:05.359><c> eficiência</c><00:00:05.839><c> de</c>
+
+00:00:05.990 --> 00:00:06.000 align:start position:0%
+sobre o Code Graph. Bom, a eficiência de
+ 
+
+00:00:06.000 --> 00:00:08.070 align:start position:0%
+sobre o Code Graph. Bom, a eficiência de
+um<00:00:06.160><c> agente</c><00:00:06.399><c> de</c><00:00:06.560><c> inteligência</c><00:00:07.040><c> artificial</c><00:00:07.839><c> é</c><00:00:08.000><c> o</c>
+
+00:00:08.070 --> 00:00:08.080 align:start position:0%
+um agente de inteligência artificial é o
+ 
+
+00:00:08.080 --> 00:00:09.990 align:start position:0%
+um agente de inteligência artificial é o
+que<00:00:08.200><c> dita</c><00:00:08.480><c> a</c><00:00:08.519><c> velocidade</c><00:00:09.200><c> e</c><00:00:09.400><c> o</c><00:00:09.519><c> custo</c><00:00:09.800><c> de</c>
+
+00:00:09.990 --> 00:00:10.000 align:start position:0%
+que dita a velocidade e o custo de
+ 
+
+00:00:10.000 --> 00:00:12.629 align:start position:0%
+que dita a velocidade e o custo de
+qualquer<00:00:10.400><c> projeto</c><00:00:10.759><c> hoje</c><00:00:10.960><c> em</c><00:00:11.040><c> dia,</c><00:00:11.440><c> certo?</c><00:00:12.400><c> É</c>
+
+00:00:12.629 --> 00:00:12.639 align:start position:0%
+qualquer projeto hoje em dia, certo? É
+ 
+
+00:00:12.639 --> 00:00:14.749 align:start position:0%
+qualquer projeto hoje em dia, certo? É
+justamente<00:00:13.280><c> aqui</c><00:00:13.559><c> que</c><00:00:13.719><c> essa</c><00:00:13.960><c> nova</c><00:00:14.200><c> ferramenta</c>
+
+00:00:14.749 --> 00:00:14.759 align:start position:0%
+justamente aqui que essa nova ferramenta
+ 
+
+00:00:14.759 --> 00:00:17.109 align:start position:0%
+justamente aqui que essa nova ferramenta
+entra<00:00:14.960><c> em</c><00:00:15.120><c> cena,</c><00:00:15.679><c> mudando</c><00:00:16.359><c> completamente</c><00:00:16.920><c> as</c>
+
+00:00:17.109 --> 00:00:17.119 align:start position:0%
+entra em cena, mudando completamente as
+ 
+
+00:00:17.119 --> 00:00:19.230 align:start position:0%
+entra em cena, mudando completamente as
+regras<00:00:17.400><c> do</c><00:00:17.560><c> jogo</c><00:00:18.000><c> ao</c><00:00:18.279><c> transformar</c><00:00:18.800><c> a</c><00:00:18.960><c> forma</c>
+
+00:00:19.230 --> 00:00:19.240 align:start position:0%
+regras do jogo ao transformar a forma
+ 
+
+00:00:19.240 --> 00:00:21.470 align:start position:0%
+regras do jogo ao transformar a forma
+como<00:00:19.480><c> esses</c><00:00:19.840><c> agentes</c><00:00:20.439><c> entendem</c><00:00:21.000><c> bases</c><00:00:21.320><c> de</c>
+
+00:00:21.470 --> 00:00:21.480 align:start position:0%
+como esses agentes entendem bases de
+ 
+
+00:00:21.480 --> 00:00:24.509 align:start position:0%
+como esses agentes entendem bases de
+código<00:00:21.920><c> complexas.</c><00:00:23.160><c> A</c><00:00:23.240><c> nossa</c><00:00:23.439><c> rota</c><00:00:23.720><c> de</c><00:00:23.880><c> hoje</c><00:00:24.240><c> é</c>
+
+00:00:24.509 --> 00:00:24.519 align:start position:0%
+código complexas. A nossa rota de hoje é
+ 
+
+00:00:24.519 --> 00:00:26.550 align:start position:0%
+código complexas. A nossa rota de hoje é
+super<00:00:24.840><c> direta.</c><00:00:25.359><c> Vamos</c><00:00:25.599><c> passar</c><00:00:26.000><c> rapidinho</c>
+
+00:00:26.550 --> 00:00:26.560 align:start position:0%
+super direta. Vamos passar rapidinho
+ 
+
+00:00:26.560 --> 00:00:29.109 align:start position:0%
+super direta. Vamos passar rapidinho
+pelo<00:00:26.840><c> problema</c><00:00:27.160><c> do</c><00:00:27.400><c> agente</c><00:00:27.880><c> cego,</c><00:00:28.599><c> entender</c><00:00:28.960><c> a</c>
+
+00:00:29.109 --> 00:00:29.119 align:start position:0%
+pelo problema do agente cego, entender a
+ 
+
+00:00:29.119 --> 00:00:31.630 align:start position:0%
+pelo problema do agente cego, entender a
+solução<00:00:29.519><c> que</c><00:00:29.679><c> o</c><00:00:29.800><c> Codegraph</c><00:00:30.400><c> propõe,</c><00:00:31.119><c> olhar</c><00:00:31.439><c> os</c>
+
+00:00:31.630 --> 00:00:31.640 align:start position:0%
+solução que o Codegraph propõe, olhar os
+ 
+
+00:00:31.640 --> 00:00:34.470 align:start position:0%
+solução que o Codegraph propõe, olhar os
+dados<00:00:32.119><c> reais</c><00:00:32.480><c> de</c><00:00:32.640><c> economia</c><00:00:33.160><c> de</c><00:00:33.360><c> tokens,</c><00:00:34.200><c> ver</c>
+
+00:00:34.470 --> 00:00:34.480 align:start position:0%
+dados reais de economia de tokens, ver
+ 
+
+00:00:34.480 --> 00:00:36.790 align:start position:0%
+dados reais de economia de tokens, ver
+como<00:00:34.680><c> o</c><00:00:34.840><c> motor</c><00:00:35.160><c> em</c><00:00:35.280><c> Rust</c><00:00:35.600><c> funciona,</c><00:00:36.360><c> como</c><00:00:36.520><c> ele</c>
+
+00:00:36.790 --> 00:00:36.800 align:start position:0%
+como o motor em Rust funciona, como ele
+ 
+
+00:00:36.800 --> 00:00:38.590 align:start position:0%
+como o motor em Rust funciona, como ele
+supera<00:00:37.160><c> barreiras</c><00:00:37.520><c> de</c><00:00:37.680><c> linguagem</c><00:00:38.280><c> e,</c><00:00:38.480><c> por</c>
+
+00:00:38.590 --> 00:00:38.600 align:start position:0%
+supera barreiras de linguagem e, por
+ 
+
+00:00:38.600 --> 00:00:40.630 align:start position:0%
+supera barreiras de linguagem e, por
+fim,<00:00:38.920><c> falar</c><00:00:39.280><c> sobre</c><00:00:39.480><c> a</c><00:00:39.680><c> sincronização</c>
+
+00:00:40.630 --> 00:00:40.640 align:start position:0%
+fim, falar sobre a sincronização
+ 
+
+00:00:40.640 --> 00:00:43.510 align:start position:0%
+fim, falar sobre a sincronização
+contínua.<00:00:41.600><c> Primeira</c><00:00:42.000><c> parada,</c><00:00:42.640><c> o</c><00:00:42.960><c> problema</c><00:00:43.320><c> do</c>
+
+00:00:43.510 --> 00:00:43.520 align:start position:0%
+contínua. Primeira parada, o problema do
+ 
+
+00:00:43.520 --> 00:00:46.110 align:start position:0%
+contínua. Primeira parada, o problema do
+agente<00:00:43.879><c> cego,</c><00:00:44.440><c> ou</c><00:00:44.719><c> melhor,</c><00:00:45.120><c> o</c><00:00:45.320><c> altíssimo</c>
+
+00:00:46.110 --> 00:00:46.120 align:start position:0%
+agente cego, ou melhor, o altíssimo
+ 
+
+00:00:46.120 --> 00:00:48.630 align:start position:0%
+agente cego, ou melhor, o altíssimo
+custo<00:00:46.440><c> da</c><00:00:46.760><c> descoberta.</c><00:00:48.039><c> Para</c><00:00:48.199><c> entender</c><00:00:48.480><c> o</c>
+
+00:00:48.630 --> 00:00:48.640 align:start position:0%
+custo da descoberta. Para entender o
+ 
+
+00:00:48.640 --> 00:00:50.510 align:start position:0%
+custo da descoberta. Para entender o
+valor<00:00:48.920><c> dessa</c><00:00:49.280><c> solução,</c><00:00:49.840><c> a</c><00:00:50.000><c> gente</c><00:00:50.160><c> precisa</c>
+
+00:00:50.510 --> 00:00:50.520 align:start position:0%
+valor dessa solução, a gente precisa
+ 
+
+00:00:50.520 --> 00:00:52.510 align:start position:0%
+valor dessa solução, a gente precisa
+primeiro<00:00:50.879><c> encarar</c><00:00:51.239><c> o</c><00:00:51.399><c> motivo</c><00:00:51.800><c> pelo</c><00:00:52.039><c> qual</c><00:00:52.280><c> os</c>
+
+00:00:52.510 --> 00:00:52.520 align:start position:0%
+primeiro encarar o motivo pelo qual os
+ 
+
+00:00:52.520 --> 00:00:55.750 align:start position:0%
+primeiro encarar o motivo pelo qual os
+agentes<00:00:53.000><c> de</c><00:00:53.160><c> A</c><00:00:53.359><c> atuais</c><00:00:54.239><c> simplesmente</c><00:00:55.199><c> esgotam</c>
+
+00:00:55.750 --> 00:00:55.760 align:start position:0%
+agentes de A atuais simplesmente esgotam
+ 
+
+00:00:55.760 --> 00:00:57.549 align:start position:0%
+agentes de A atuais simplesmente esgotam
+os<00:00:55.960><c> orçamentos</c><00:00:56.480><c> de</c><00:00:56.640><c> desenvolvimento</c><00:00:57.320><c> na</c>
+
+00:00:57.549 --> 00:00:57.559 align:start position:0%
+os orçamentos de desenvolvimento na
+ 
+
+00:00:57.559 --> 00:01:00.310 align:start position:0%
+os orçamentos de desenvolvimento na
+velocidade<00:00:58.160><c> da</c><00:00:58.359><c> luz.</c><00:00:59.079><c> Parem</c><00:00:59.359><c> para</c><00:00:59.519><c> pensar</c>
+
+00:01:00.310 --> 00:01:00.320 align:start position:0%
+velocidade da luz. Parem para pensar
+ 
+
+00:01:00.320 --> 00:01:02.509 align:start position:0%
+velocidade da luz. Parem para pensar
+como<00:01:00.519><c> os</c><00:01:00.680><c> agentes</c><00:01:01.120><c> de</c><00:01:01.280><c> a</c><00:01:01.480><c> realmente</c><00:01:02.039><c> navegam</c>
+
+00:01:02.509 --> 00:01:02.519 align:start position:0%
+como os agentes de a realmente navegam
+ 
+
+00:01:02.519 --> 00:01:04.590 align:start position:0%
+como os agentes de a realmente navegam
+por<00:01:02.760><c> bases</c><00:01:03.000><c> de</c><00:01:03.160><c> códigos</c><00:01:03.640><c> gigantes</c><00:01:04.280><c> hoje</c><00:01:04.479><c> em</c>
+
+00:01:04.590 --> 00:01:04.600 align:start position:0%
+por bases de códigos gigantes hoje em
+ 
+
+00:01:04.600 --> 00:01:06.710 align:start position:0%
+por bases de códigos gigantes hoje em
+dia?<00:01:05.320><c> Bom,</c><00:01:05.640><c> quando</c><00:01:05.840><c> se</c><00:01:06.040><c> faz</c><00:01:06.240><c> uma</c><00:01:06.400><c> pergunta</c>
+
+00:01:06.710 --> 00:01:06.720 align:start position:0%
+dia? Bom, quando se faz uma pergunta
+ 
+
+00:01:06.720 --> 00:01:08.910 align:start position:0%
+dia? Bom, quando se faz uma pergunta
+estrutural<00:01:07.360><c> como:</c><00:01:07.840><c> "Qual</c><00:01:08.080><c> é</c><00:01:08.200><c> o</c><00:01:08.360><c> caminho</c><00:01:08.640><c> dessa</c>
+
+00:01:08.910 --> 00:01:08.920 align:start position:0%
+estrutural como: "Qual é o caminho dessa
+ 
+
+00:01:08.920 --> 00:01:10.910 align:start position:0%
+estrutural como: "Qual é o caminho dessa
+requisição<00:01:09.400><c> até</c><00:01:09.600><c> o</c><00:01:09.680><c> banco</c><00:01:09.920><c> de</c><00:01:10.040><c> dados?"</c><00:01:10.759><c> O</c>
+
+00:01:10.910 --> 00:01:10.920 align:start position:0%
+requisição até o banco de dados?" O
+ 
+
+00:01:10.920 --> 00:01:13.510 align:start position:0%
+requisição até o banco de dados?" O
+agente<00:01:11.320><c> basicamente</c><00:01:12.000><c> tateia</c><00:01:12.439><c> no</c><00:01:12.640><c> escuro.</c><00:01:13.400><c> Ele</c>
+
+00:01:13.510 --> 00:01:13.520 align:start position:0%
+agente basicamente tateia no escuro. Ele
+ 
+
+00:01:13.520 --> 00:01:15.910 align:start position:0%
+agente basicamente tateia no escuro. Ele
+usa<00:01:13.720><c> comandos</c><00:01:14.119><c> básicos</c><00:01:14.600><c> como</c><00:01:14.840><c> grap,</c><00:01:15.479><c> vasculha</c>
+
+00:01:15.910 --> 00:01:15.920 align:start position:0%
+usa comandos básicos como grap, vasculha
+ 
+
+00:01:15.920 --> 00:01:18.070 align:start position:0%
+usa comandos básicos como grap, vasculha
+a<00:01:16.080><c> pasta</c><00:01:16.439><c> sem</c><00:01:16.640><c> rumo</c><00:01:17.080><c> e</c><00:01:17.200><c> queima</c><00:01:17.520><c> milhares</c><00:01:17.920><c> e</c>
+
+00:01:18.070 --> 00:01:18.080 align:start position:0%
+a pasta sem rumo e queima milhares e
+ 
+
+00:01:18.080 --> 00:01:19.710 align:start position:0%
+a pasta sem rumo e queima milhares e
+milhares<00:01:18.400><c> de</c><00:01:18.560><c> tokens</c><00:01:18.920><c> numa</c><00:01:19.159><c> fase</c><00:01:19.400><c> que</c><00:01:19.520><c> é</c>
+
+00:01:19.710 --> 00:01:19.720 align:start position:0%
+milhares de tokens numa fase que é
+ 
+
+00:01:19.720 --> 00:01:22.390 align:start position:0%
+milhares de tokens numa fase que é
+puramente<00:01:20.280><c> de</c><00:01:20.479><c> descoberta.</c><00:01:21.479><c> Tudo</c><00:01:21.720><c> isso</c><00:01:22.079><c> muito</c>
+
+00:01:22.390 --> 00:01:22.400 align:start position:0%
+puramente de descoberta. Tudo isso muito
+ 
+
+00:01:22.400 --> 00:01:24.190 align:start position:0%
+puramente de descoberta. Tudo isso muito
+antes<00:01:22.640><c> de</c><00:01:22.840><c> sequer</c><00:01:23.280><c> começar</c><00:01:23.640><c> a</c><00:01:23.759><c> resolver</c><00:01:24.079><c> o</c>
+
+00:01:24.190 --> 00:01:24.200 align:start position:0%
+antes de sequer começar a resolver o
+ 
+
+00:01:24.200 --> 00:01:26.190 align:start position:0%
+antes de sequer começar a resolver o
+problema<00:01:24.520><c> real.</c><00:01:25.240><c> O</c><00:01:25.400><c> contraste</c><00:01:25.880><c> entre</c><00:01:26.040><c> os</c>
+
+00:01:26.190 --> 00:01:26.200 align:start position:0%
+problema real. O contraste entre os
+ 
+
+00:01:26.200 --> 00:01:28.910 align:start position:0%
+problema real. O contraste entre os
+métodos<00:01:26.640><c> é</c><00:01:26.799><c> quase</c><00:01:27.200><c> absurdo.</c><00:01:28.280><c> A</c><00:01:28.400><c> abordagem</c>
+
+00:01:28.910 --> 00:01:28.920 align:start position:0%
+métodos é quase absurdo. A abordagem
+ 
+
+00:01:28.920 --> 00:01:31.069 align:start position:0%
+métodos é quase absurdo. A abordagem
+tradicional<00:01:29.680><c> é</c><00:01:29.880><c> uma</c><00:01:30.000><c> busca</c><00:01:30.439><c> totalmente</c>
+
+00:01:31.069 --> 00:01:31.079 align:start position:0%
+tradicional é uma busca totalmente
+ 
+
+00:01:31.079 --> 00:01:33.550 align:start position:0%
+tradicional é uma busca totalmente
+caótica,<00:01:31.920><c> onde</c><00:01:32.119><c> o</c><00:01:32.280><c> agente</c><00:01:32.720><c> fica</c><00:01:33.000><c> adivinhando</c>
+
+00:01:33.550 --> 00:01:33.560 align:start position:0%
+caótica, onde o agente fica adivinhando
+ 
+
+00:01:33.560 --> 00:01:35.710 align:start position:0%
+caótica, onde o agente fica adivinhando
+caminhos<00:01:34.000><c> a</c><00:01:34.159><c> cegas,</c><00:01:34.799><c> lendo</c><00:01:35.119><c> arquivo</c><00:01:35.520><c> por</c>
+
+00:01:35.710 --> 00:01:35.720 align:start position:0%
+caminhos a cegas, lendo arquivo por
+ 
+
+00:01:35.720 --> 00:01:38.670 align:start position:0%
+caminhos a cegas, lendo arquivo por
+arquivo.<00:01:36.880><c> Já</c><00:01:37.079><c> com</c><00:01:37.280><c> o</c><00:01:37.399><c> Code</c><00:01:37.680><c> Graph,</c><00:01:38.240><c> a</c><00:01:38.360><c> busca</c>
+
+00:01:38.670 --> 00:01:38.680 align:start position:0%
+arquivo. Já com o Code Graph, a busca
+ 
+
+00:01:38.680 --> 00:01:41.710 align:start position:0%
+arquivo. Já com o Code Graph, a busca
+vira<00:01:38.920><c> um</c><00:01:39.119><c> laser</c><00:01:39.640><c> teleguiado.</c><00:01:40.880><c> Com</c><00:01:41.079><c> uma</c><00:01:41.320><c> única</c>
+
+00:01:41.710 --> 00:01:41.720 align:start position:0%
+vira um laser teleguiado. Com uma única
+ 
+
+00:01:41.720 --> 00:01:43.789 align:start position:0%
+vira um laser teleguiado. Com uma única
+chamada<00:01:42.079><c> de</c><00:01:42.280><c> ferramenta,</c><00:01:43.040><c> já</c><00:01:43.240><c> se</c><00:01:43.399><c> obtém</c><00:01:43.680><c> o</c>
+
+00:01:43.789 --> 00:01:43.799 align:start position:0%
+chamada de ferramenta, já se obtém o
+ 
+
+00:01:43.799 --> 00:01:46.429 align:start position:0%
+chamada de ferramenta, já se obtém o
+código<00:01:44.159><c> fonte</c><00:01:44.600><c> exato</c><00:01:45.159><c> e</c><00:01:45.320><c> o</c><00:01:45.439><c> raio</c><00:01:45.680><c> de</c><00:01:45.840><c> impacto</c>
+
+00:01:46.429 --> 00:01:46.439 align:start position:0%
+código fonte exato e o raio de impacto
+ 
+
+00:01:46.439 --> 00:01:49.389 align:start position:0%
+código fonte exato e o raio de impacto
+todinho<00:01:46.880><c> mapeado.</c><00:01:47.960><c> E</c><00:01:48.079><c> é</c><00:01:48.240><c> aí</c><00:01:48.520><c> que</c><00:01:48.759><c> entra</c><00:01:49.200><c> a</c>
+
+00:01:49.389 --> 00:01:49.399 align:start position:0%
+todinho mapeado. E é aí que entra a
+ 
+
+00:01:49.399 --> 00:01:52.709 align:start position:0%
+todinho mapeado. E é aí que entra a
+nossa<00:01:49.759><c> parte</c><00:01:50.119><c> dois,</c><00:01:50.920><c> a</c><00:01:51.159><c> solução</c><00:01:51.799><c> code</c><00:01:52.119><c> graph</c><00:01:52.560><c> e</c>
+
+00:01:52.709 --> 00:01:52.719 align:start position:0%
+nossa parte dois, a solução code graph e
+ 
+
+00:01:52.719 --> 00:01:55.670 align:start position:0%
+nossa parte dois, a solução code graph e
+o<00:01:52.920><c> poder</c><00:01:53.240><c> do</c><00:01:53.479><c> conhecimento</c><00:01:54.320><c> pré-indexado.</c><00:01:55.560><c> A</c>
+
+00:01:55.670 --> 00:01:55.680 align:start position:0%
+o poder do conhecimento pré-indexado. A
+ 
+
+00:01:55.680 --> 00:01:58.469 align:start position:0%
+o poder do conhecimento pré-indexado. A
+ideia<00:01:56.000><c> aqui</c><00:01:56.320><c> é</c><00:01:56.680><c> literalmente</c><00:01:57.719><c> inverter</c><00:01:58.280><c> a</c>
+
+00:01:58.469 --> 00:01:58.479 align:start position:0%
+ideia aqui é literalmente inverter a
+ 
+
+00:01:58.479 --> 00:02:01.230 align:start position:0%
+ideia aqui é literalmente inverter a
+lógica<00:01:58.880><c> da</c><00:01:59.119><c> coisa</c><00:01:59.439><c> toda.</c><00:02:00.240><c> Em</c><00:02:00.360><c> vez</c><00:02:00.520><c> de</c><00:02:00.680><c> deixar</c><00:02:01.079><c> o</c>
+
+00:02:01.230 --> 00:02:01.240 align:start position:0%
+lógica da coisa toda. Em vez de deixar o
+ 
+
+00:02:01.240 --> 00:02:03.870 align:start position:0%
+lógica da coisa toda. Em vez de deixar o
+agente<00:02:01.680><c> construir</c><00:02:02.200><c> o</c><00:02:02.360><c> mapa</c><00:02:02.640><c> do</c><00:02:02.880><c> zero</c><00:02:03.320><c> a</c><00:02:03.560><c> cada</c>
+
+00:02:03.870 --> 00:02:03.880 align:start position:0%
+agente construir o mapa do zero a cada
+ 
+
+00:02:03.880 --> 00:02:06.270 align:start position:0%
+agente construir o mapa do zero a cada
+pergunta,<00:02:04.759><c> a</c><00:02:04.920><c> gente</c><00:02:05.159><c> entrega</c><00:02:05.560><c> o</c><00:02:05.680><c> mapa</c><00:02:05.920><c> inteiro</c>
+
+00:02:06.270 --> 00:02:06.280 align:start position:0%
+pergunta, a gente entrega o mapa inteiro
+ 
+
+00:02:06.280 --> 00:02:09.150 align:start position:0%
+pergunta, a gente entrega o mapa inteiro
+para<00:02:06.479><c> ele</c><00:02:06.960><c> antes</c><00:02:07.360><c> mesmo</c><00:02:07.640><c> da</c><00:02:07.840><c> viagem</c><00:02:08.200><c> começar.</c>
+
+00:02:09.150 --> 00:02:09.160 align:start position:0%
+para ele antes mesmo da viagem começar.
+ 
+
+00:02:09.160 --> 00:02:11.350 align:start position:0%
+para ele antes mesmo da viagem começar.
+Pensem<00:02:09.520><c> no</c><00:02:09.720><c> Code</c><00:02:10.080><c> Graph</c><00:02:10.399><c> como</c><00:02:10.640><c> um</c><00:02:10.840><c> grafo</c><00:02:11.160><c> de</c>
+
+00:02:11.350 --> 00:02:11.360 align:start position:0%
+Pensem no Code Graph como um grafo de
+ 
+
+00:02:11.360 --> 00:02:13.750 align:start position:0%
+Pensem no Code Graph como um grafo de
+conhecimento<00:02:12.239><c> super</c><00:02:12.560><c> abrangente</c><00:02:13.400><c> feito</c>
+
+00:02:13.750 --> 00:02:13.760 align:start position:0%
+conhecimento super abrangente feito
+ 
+
+00:02:13.760 --> 00:02:15.150 align:start position:0%
+conhecimento super abrangente feito
+sobre<00:02:14.080><c> medida</c><00:02:14.440><c> para</c><00:02:14.640><c> agentes</c><00:02:15.000><c> de</c>
+
+00:02:15.150 --> 00:02:15.160 align:start position:0%
+sobre medida para agentes de
+ 
+
+00:02:15.160 --> 00:02:17.390 align:start position:0%
+sobre medida para agentes de
+codificação.<00:02:16.280><c> A</c><00:02:16.440><c> mágica</c><00:02:16.879><c> é</c><00:02:17.040><c> que</c><00:02:17.120><c> ele</c><00:02:17.239><c> é</c>
+
+00:02:17.390 --> 00:02:17.400 align:start position:0%
+codificação. A mágica é que ele é
+ 
+
+00:02:17.400 --> 00:02:20.229 align:start position:0%
+codificação. A mágica é que ele é
+construído<00:02:18.040><c> 100%</c><00:02:18.959><c> localmente</c><00:02:19.800><c> usando</c><00:02:20.120><c> um</c>
+
+00:02:20.229 --> 00:02:20.239 align:start position:0%
+construído 100% localmente usando um
+ 
+
+00:02:20.239 --> 00:02:23.390 align:start position:0%
+construído 100% localmente usando um
+banco<00:02:20.480><c> de</c><00:02:20.640><c> dados</c><00:02:21.200><c> SQLT.</c><00:02:22.319><c> Ou</c><00:02:22.480><c> seja,</c><00:02:23.040><c> nenhum</c>
+
+00:02:23.390 --> 00:02:23.400 align:start position:0%
+banco de dados SQLT. Ou seja, nenhum
+ 
+
+00:02:23.400 --> 00:02:25.390 align:start position:0%
+banco de dados SQLT. Ou seja, nenhum
+dado<00:02:23.720><c> sai</c><00:02:23.959><c> da</c><00:02:24.160><c> máquina,</c><00:02:24.720><c> o</c><00:02:24.840><c> que</c><00:02:25.000><c> garante</c>
+
+00:02:25.390 --> 00:02:25.400 align:start position:0%
+dado sai da máquina, o que garante
+ 
+
+00:02:25.400 --> 00:02:27.710 align:start position:0%
+dado sai da máquina, o que garante
+segurança<00:02:25.959><c> total.</c><00:02:26.640><c> O</c><00:02:26.760><c> agente</c><00:02:27.120><c> simplesmente</c>
+
+00:02:27.710 --> 00:02:27.720 align:start position:0%
+segurança total. O agente simplesmente
+ 
+
+00:02:27.720 --> 00:02:29.949 align:start position:0%
+segurança total. O agente simplesmente
+recebe<00:02:28.080><c> as</c><00:02:28.200><c> arestas</c><00:02:28.560><c> de</c><00:02:28.720><c> chamada</c><00:02:29.120><c> dinâmicas,</c>
+
+00:02:29.949 --> 00:02:29.959 align:start position:0%
+recebe as arestas de chamada dinâmicas,
+ 
+
+00:02:29.959 --> 00:02:31.869 align:start position:0%
+recebe as arestas de chamada dinâmicas,
+os<00:02:30.120><c> símbolos</c><00:02:30.560><c> e</c><00:02:30.720><c> as</c><00:02:30.920><c> dependências</c><00:02:31.480><c> em</c><00:02:31.680><c> uma</c>
+
+00:02:31.869 --> 00:02:31.879 align:start position:0%
+os símbolos e as dependências em uma
+ 
+
+00:02:31.879 --> 00:02:34.509 align:start position:0%
+os símbolos e as dependências em uma
+atacada<00:02:32.360><c> só.</c><00:02:33.120><c> Mas</c><00:02:33.280><c> vamos</c><00:02:33.560><c> ao</c><00:02:33.760><c> que</c><00:02:33.920><c> realmente</c>
+
+00:02:34.509 --> 00:02:34.519 align:start position:0%
+atacada só. Mas vamos ao que realmente
+ 
+
+00:02:34.519 --> 00:02:37.030 align:start position:0%
+atacada só. Mas vamos ao que realmente
+interessa<00:02:34.920><c> na</c><00:02:35.120><c> parte</c><00:02:35.440><c> três,</c><00:02:36.160><c> a</c><00:02:36.360><c> economia</c>
+
+00:02:37.030 --> 00:02:37.040 align:start position:0%
+interessa na parte três, a economia
+ 
+
+00:02:37.040 --> 00:02:40.229 align:start position:0%
+interessa na parte três, a economia
+real.<00:02:37.879><c> Afinal,</c><00:02:38.400><c> a</c><00:02:38.560><c> teoria</c><00:02:39.040><c> é</c><00:02:39.280><c> linda,</c><00:02:39.879><c> mas</c><00:02:40.080><c> a</c>
+
+00:02:40.229 --> 00:02:40.239 align:start position:0%
+real. Afinal, a teoria é linda, mas a
+ 
+
+00:02:40.239 --> 00:02:41.869 align:start position:0%
+real. Afinal, a teoria é linda, mas a
+prova<00:02:40.480><c> de</c><00:02:40.640><c> fogo</c><00:02:41.040><c> está</c><00:02:41.200><c> nos</c><00:02:41.440><c> tokens</c>
+
+00:02:41.869 --> 00:02:41.879 align:start position:0%
+prova de fogo está nos tokens
+ 
+
+00:02:41.879 --> 00:02:44.190 align:start position:0%
+prova de fogo está nos tokens
+economizados,<00:02:42.680><c> não</c><00:02:42.840><c> é</c><00:02:42.959><c> mesmo?</c><00:02:43.640><c> Os</c><00:02:43.840><c> dados</c>
+
+00:02:44.190 --> 00:02:44.200 align:start position:0%
+economizados, não é mesmo? Os dados
+ 
+
+00:02:44.200 --> 00:02:46.949 align:start position:0%
+economizados, não é mesmo? Os dados
+concretos<00:02:44.760><c> são</c><00:02:45.000><c> de</c><00:02:45.280><c> cair</c><00:02:45.640><c> o</c><00:02:45.800><c> queixo.</c><00:02:46.599><c> Olha</c><00:02:46.800><c> só</c>
+
+00:02:46.949 --> 00:02:46.959 align:start position:0%
+concretos são de cair o queixo. Olha só
+ 
+
+00:02:46.959 --> 00:02:48.470 align:start position:0%
+concretos são de cair o queixo. Olha só
+esse<00:02:47.159><c> dado</c><00:02:47.440><c> incrível</c><00:02:47.760><c> de</c><00:02:47.920><c> um</c><00:02:48.040><c> experimento</c>
+
+00:02:48.470 --> 00:02:48.480 align:start position:0%
+esse dado incrível de um experimento
+ 
+
+00:02:48.480 --> 00:02:50.149 align:start position:0%
+esse dado incrível de um experimento
+documentado<00:02:49.040><c> pelo</c><00:02:49.319><c> Sou</c><00:02:49.519><c> Milch</c><00:02:49.720><c> Chá</c><00:02:49.920><c> no</c>
+
+00:02:50.149 --> 00:02:50.159 align:start position:0%
+documentado pelo Sou Milch Chá no
+ 
+
+00:02:50.159 --> 00:02:52.750 align:start position:0%
+documentado pelo Sou Milch Chá no
+YouTube<00:02:50.560><c> analisando</c><00:02:51.200><c> uma</c><00:02:51.480><c> step</c><00:02:51.879><c> function.</c><00:02:52.640><c> O</c>
+
+00:02:52.750 --> 00:02:52.760 align:start position:0%
+YouTube analisando uma step function. O
+ 
+
+00:02:52.760 --> 00:02:55.110 align:start position:0%
+YouTube analisando uma step function. O
+uso<00:02:52.959><c> do</c><00:02:53.120><c> Code</c><00:02:53.440><c> Graph</c><00:02:53.879><c> derrubou</c><00:02:54.319><c> o</c><00:02:54.519><c> consumo</c><00:02:54.920><c> de</c>
+
+00:02:55.110 --> 00:02:55.120 align:start position:0%
+uso do Code Graph derrubou o consumo de
+ 
+
+00:02:55.120 --> 00:02:57.390 align:start position:0%
+uso do Code Graph derrubou o consumo de
+tokens<00:02:55.440><c> do</c><00:02:55.599><c> agente</c><00:02:55.920><c> Cloud</c><00:02:56.280><c> de</c><00:02:56.599><c> absurdos</c>
+
+00:02:57.390 --> 00:02:57.400 align:start position:0%
+tokens do agente Cloud de absurdos
+ 
+
+00:02:57.400 --> 00:03:01.229 align:start position:0%
+tokens do agente Cloud de absurdos
+337.000<00:02:58.800><c> para</c><00:02:59.000><c> apenas</c><00:02:59.640><c> 145.000.</c>
+
+00:03:01.229 --> 00:03:01.239 align:start position:0%
+337.000 para apenas 145.000.
+ 
+
+00:03:01.239 --> 00:03:03.869 align:start position:0%
+337.000 para apenas 145.000.
+É<00:03:01.480><c> menos</c><00:03:01.760><c> da</c><00:03:01.959><c> metade</c><00:03:02.319><c> dos</c><00:03:02.519><c> tokens</c><00:03:03.200><c> evaporando</c>
+
+00:03:03.869 --> 00:03:03.879 align:start position:0%
+É menos da metade dos tokens evaporando
+ 
+
+00:03:03.879 --> 00:03:06.750 align:start position:0%
+É menos da metade dos tokens evaporando
+para<00:03:04.120><c> realizar</c><00:03:04.640><c> exatamente</c><00:03:05.360><c> a</c><00:03:05.560><c> mesma</c><00:03:05.879><c> tarefa.</c>
+
+00:03:06.750 --> 00:03:06.760 align:start position:0%
+para realizar exatamente a mesma tarefa.
+ 
+
+00:03:06.760 --> 00:03:09.270 align:start position:0%
+para realizar exatamente a mesma tarefa.
+E<00:03:06.879><c> os</c><00:03:07.200><c> benchmarks</c><00:03:07.920><c> oficiais</c><00:03:08.480><c> no</c><00:03:08.720><c> repositório</c>
+
+00:03:09.270 --> 00:03:09.280 align:start position:0%
+E os benchmarks oficiais no repositório
+ 
+
+00:03:09.280 --> 00:03:11.990 align:start position:0%
+E os benchmarks oficiais no repositório
+do<00:03:09.519><c> Scaledraw</c><00:03:10.360><c> confirmam</c><00:03:11.000><c> totalmente</c><00:03:11.640><c> esses</c>
+
+00:03:11.990 --> 00:03:12.000 align:start position:0%
+do Scaledraw confirmam totalmente esses
+ 
+
+00:03:12.000 --> 00:03:14.110 align:start position:0%
+do Scaledraw confirmam totalmente esses
+resultados<00:03:12.440><c> de</c><00:03:12.640><c> laboratório.</c><00:03:13.599><c> O</c><00:03:13.720><c> número</c><00:03:13.959><c> de</c>
+
+00:03:14.110 --> 00:03:14.120 align:start position:0%
+resultados de laboratório. O número de
+ 
+
+00:03:14.120 --> 00:03:16.990 align:start position:0%
+resultados de laboratório. O número de
+chamadas<00:03:14.560><c> de</c><00:03:14.760><c> ferramentas</c><00:03:15.519><c> despenca</c><00:03:16.040><c> de</c><00:03:16.239><c> 43</c>
+
+00:03:16.990 --> 00:03:17.000 align:start position:0%
+chamadas de ferramentas despenca de 43
+ 
+
+00:03:17.000 --> 00:03:19.229 align:start position:0%
+chamadas de ferramentas despenca de 43
+para<00:03:17.159><c> apenas</c><00:03:17.480><c> duas.</c><00:03:18.200><c> As</c><00:03:18.319><c> leituras</c><00:03:18.720><c> de</c><00:03:18.879><c> arquivo</c>
+
+00:03:19.229 --> 00:03:19.239 align:start position:0%
+para apenas duas. As leituras de arquivo
+ 
+
+00:03:19.239 --> 00:03:22.270 align:start position:0%
+para apenas duas. As leituras de arquivo
+caem<00:03:19.640><c> literalmente</c><00:03:20.400><c> para</c><00:03:20.599><c> zero.</c><00:03:21.599><c> Isso</c><00:03:21.879><c> faz</c><00:03:22.080><c> o</c>
+
+00:03:22.270 --> 00:03:22.280 align:start position:0%
+caem literalmente para zero. Isso faz o
+ 
+
+00:03:22.280 --> 00:03:24.390 align:start position:0%
+caem literalmente para zero. Isso faz o
+custo<00:03:22.640><c> financeiro</c><00:03:23.159><c> da</c><00:03:23.360><c> operação</c><00:03:23.879><c> despencar</c>
+
+00:03:24.390 --> 00:03:24.400 align:start position:0%
+custo financeiro da operação despencar
+ 
+
+00:03:24.400 --> 00:03:26.750 align:start position:0%
+custo financeiro da operação despencar
+de<00:03:24.760><c> 243</c>
+
+00:03:26.750 --> 00:03:26.760 align:start position:0%
+de 243
+ 
+
+00:03:26.760 --> 00:03:28.830 align:start position:0%
+de 243
+para<00:03:26.920><c> apenas</c><00:03:27.319><c> 54.</c>
+
+00:03:28.830 --> 00:03:28.840 align:start position:0%
+para apenas 54.
+ 
+
+00:03:28.840 --> 00:03:31.429 align:start position:0%
+para apenas 54.
+É<00:03:29.040><c> uma</c><00:03:29.200><c> diferença</c><00:03:29.799><c> brutal.</c><00:03:30.760><c> Quando</c><00:03:31.000><c> aplicamos</c>
+
+00:03:31.429 --> 00:03:31.439 align:start position:0%
+É uma diferença brutal. Quando aplicamos
+ 
+
+00:03:31.439 --> 00:03:33.589 align:start position:0%
+É uma diferença brutal. Quando aplicamos
+esse<00:03:31.720><c> mesmo</c><00:03:32.000><c> padrão</c><00:03:32.480><c> em</c><00:03:32.720><c> sete</c><00:03:33.040><c> diferentes</c>
+
+00:03:33.589 --> 00:03:33.599 align:start position:0%
+esse mesmo padrão em sete diferentes
+ 
+
+00:03:33.599 --> 00:03:35.990 align:start position:0%
+esse mesmo padrão em sete diferentes
+bases<00:03:33.879><c> de</c><00:03:34.080><c> código</c><00:03:34.640><c> de</c><00:03:34.799><c> código</c><00:03:35.159><c> aberto,</c><00:03:35.840><c> o</c>
+
+00:03:35.990 --> 00:03:36.000 align:start position:0%
+bases de código de código aberto, o
+ 
+
+00:03:36.000 --> 00:03:39.229 align:start position:0%
+bases de código de código aberto, o
+resultado<00:03:36.360><c> é</c><00:03:36.480><c> uma</c><00:03:36.599><c> redução</c><00:03:37.080><c> média</c><00:03:37.640><c> de</c><00:03:37.920><c> 88%</c><00:03:39.040><c> nas</c>
+
+00:03:39.229 --> 00:03:39.239 align:start position:0%
+resultado é uma redução média de 88% nas
+ 
+
+00:03:39.239 --> 00:03:42.550 align:start position:0%
+resultado é uma redução média de 88% nas
+chamadas<00:03:39.599><c> de</c><00:03:39.720><c> ferramentas.</c><00:03:40.920><c> 88%.</c>
+
+00:03:42.550 --> 00:03:42.560 align:start position:0%
+chamadas de ferramentas. 88%.
+ 
+
+00:03:42.560 --> 00:03:44.149 align:start position:0%
+chamadas de ferramentas. 88%.
+O<00:03:42.680><c> agente</c><00:03:42.959><c> simplesmente</c><00:03:43.480><c> para</c><00:03:43.720><c> de</c><00:03:43.879><c> ficar</c>
+
+00:03:44.149 --> 00:03:44.159 align:start position:0%
+O agente simplesmente para de ficar
+ 
+
+00:03:44.159 --> 00:03:46.470 align:start position:0%
+O agente simplesmente para de ficar
+batendo<00:03:44.640><c> cabeça</c><00:03:45.239><c> e</c><00:03:45.439><c> perdendo</c><00:03:45.879><c> tempo,</c><00:03:46.120><c> rodando</c>
+
+00:03:46.470 --> 00:03:46.480 align:start position:0%
+batendo cabeça e perdendo tempo, rodando
+ 
+
+00:03:46.480 --> 00:03:48.869 align:start position:0%
+batendo cabeça e perdendo tempo, rodando
+comandos<00:03:46.799><c> no</c><00:03:46.959><c> terminal.</c><00:03:47.840><c> E</c><00:03:48.000><c> como</c><00:03:48.239><c> se</c><00:03:48.439><c> pula</c>
+
+00:03:48.869 --> 00:03:48.879 align:start position:0%
+comandos no terminal. E como se pula
+ 
+
+00:03:48.879 --> 00:03:50.350 align:start position:0%
+comandos no terminal. E como se pula
+toda<00:03:49.120><c> aquela</c><00:03:49.400><c> fase</c><00:03:49.680><c> caríssima</c><00:03:50.159><c> de</c>
+
+00:03:50.350 --> 00:03:50.360 align:start position:0%
+toda aquela fase caríssima de
+ 
+
+00:03:50.360 --> 00:03:52.670 align:start position:0%
+toda aquela fase caríssima de
+descoberta,<00:03:51.120><c> o</c><00:03:51.280><c> modelo</c><00:03:51.519><c> acaba</c><00:03:51.920><c> processando</c>
+
+00:03:52.670 --> 00:03:52.680 align:start position:0%
+descoberta, o modelo acaba processando
+ 
+
+00:03:52.680 --> 00:03:56.470 align:start position:0%
+descoberta, o modelo acaba processando
+62%<00:03:54.040><c> menos</c><00:03:54.400><c> tokens</c><00:03:54.840><c> no</c><00:03:55.000><c> total.</c><00:03:55.840><c> A</c><00:03:55.959><c> eficiência</c>
+
+00:03:56.470 --> 00:03:56.480 align:start position:0%
+62% menos tokens no total. A eficiência
+ 
+
+00:03:56.480 --> 00:03:58.110 align:start position:0%
+62% menos tokens no total. A eficiência
+desse<00:03:56.760><c> fluxo</c><00:03:57.079><c> de</c><00:03:57.280><c> trabalho</c><00:03:57.720><c> atinge</c><00:03:58.040><c> um</c>
+
+00:03:58.110 --> 00:03:58.120 align:start position:0%
+desse fluxo de trabalho atinge um
+ 
+
+00:03:58.120 --> 00:04:00.949 align:start position:0%
+desse fluxo de trabalho atinge um
+patamar<00:03:58.680><c> completamente</c><00:03:59.480><c> novo.</c><00:04:00.400><c> No</c><00:04:00.519><c> fim</c><00:04:00.720><c> das</c>
+
+00:04:00.949 --> 00:04:00.959 align:start position:0%
+patamar completamente novo. No fim das
+ 
+
+00:04:00.959 --> 00:04:04.030 align:start position:0%
+patamar completamente novo. No fim das
+contas,<00:04:01.519><c> as</c><00:04:01.720><c> operações</c><00:04:02.200><c> ficam</c><00:04:02.599><c> 44%</c><00:04:03.760><c> mais</c>
+
+00:04:04.030 --> 00:04:04.040 align:start position:0%
+contas, as operações ficam 44% mais
+ 
+
+00:04:04.040 --> 00:04:06.309 align:start position:0%
+contas, as operações ficam 44% mais
+baratas.<00:04:04.799><c> Mas</c><00:04:04.959><c> o</c><00:04:05.120><c> grande</c><00:04:05.439><c> pulo</c><00:04:05.680><c> do</c><00:04:05.840><c> gato</c><00:04:06.079><c> aqui</c>
+
+00:04:06.309 --> 00:04:06.319 align:start position:0%
+baratas. Mas o grande pulo do gato aqui
+ 
+
+00:04:06.319 --> 00:04:08.670 align:start position:0%
+baratas. Mas o grande pulo do gato aqui
+é<00:04:06.480><c> o</c><00:04:06.640><c> seguinte.</c><00:04:07.360><c> Ao</c><00:04:07.519><c> entregar</c><00:04:07.920><c> logo</c><00:04:08.120><c> de</c><00:04:08.319><c> cara</c><00:04:08.519><c> a</c>
+
+00:04:08.670 --> 00:04:08.680 align:start position:0%
+é o seguinte. Ao entregar logo de cara a
+ 
+
+00:04:08.680 --> 00:04:10.429 align:start position:0%
+é o seguinte. Ao entregar logo de cara a
+resposta<00:04:09.120><c> exata,</c><00:04:09.560><c> em</c><00:04:09.720><c> vez</c><00:04:09.840><c> de</c><00:04:09.959><c> um</c><00:04:10.079><c> monte</c><00:04:10.280><c> de</c>
+
+00:04:10.429 --> 00:04:10.439 align:start position:0%
+resposta exata, em vez de um monte de
+ 
+
+00:04:10.439 --> 00:04:12.789 align:start position:0%
+resposta exata, em vez de um monte de
+lixo<00:04:10.760><c> fragmentado</c><00:04:11.319><c> de</c><00:04:11.480><c> pesquisas,</c><00:04:12.200><c> o</c><00:04:12.400><c> sistema</c>
+
+00:04:12.789 --> 00:04:12.799 align:start position:0%
+lixo fragmentado de pesquisas, o sistema
+ 
+
+00:04:12.799 --> 00:04:15.750 align:start position:0%
+lixo fragmentado de pesquisas, o sistema
+preserva<00:04:13.319><c> 80%</c><00:04:14.200><c> mais</c><00:04:14.480><c> contexto</c><00:04:15.000><c> relevante</c><00:04:15.599><c> na</c>
+
+00:04:15.750 --> 00:04:15.760 align:start position:0%
+preserva 80% mais contexto relevante na
+ 
+
+00:04:15.760 --> 00:04:17.509 align:start position:0%
+preserva 80% mais contexto relevante na
+janela<00:04:16.120><c> de</c><00:04:16.320><c> memória</c><00:04:16.759><c> para</c><00:04:16.919><c> as</c><00:04:17.079><c> próximas</c>
+
+00:04:17.509 --> 00:04:17.519 align:start position:0%
+janela de memória para as próximas
+ 
+
+00:04:17.519 --> 00:04:19.909 align:start position:0%
+janela de memória para as próximas
+tarefas.<00:04:18.519><c> Tudo</c><00:04:18.799><c> isso</c><00:04:19.040><c> nos</c><00:04:19.280><c> leva</c><00:04:19.519><c> à</c><00:04:19.639><c> nossa</c>
+
+00:04:19.909 --> 00:04:19.919 align:start position:0%
+tarefas. Tudo isso nos leva à nossa
+ 
+
+00:04:19.919 --> 00:04:22.950 align:start position:0%
+tarefas. Tudo isso nos leva à nossa
+parte<00:04:20.320><c> quatro,</c><00:04:21.040><c> o</c><00:04:21.239><c> motor</c><00:04:21.759><c> técnico</c><00:04:22.440><c> por</c><00:04:22.600><c> trás</c>
+
+00:04:22.950 --> 00:04:22.960 align:start position:0%
+parte quatro, o motor técnico por trás
+ 
+
+00:04:22.960 --> 00:04:25.590 align:start position:0%
+parte quatro, o motor técnico por trás
+de<00:04:23.280><c> toda</c><00:04:23.560><c> essa</c><00:04:23.840><c> mágica</c><00:04:24.479><c> que</c><00:04:24.680><c> é</c><00:04:24.840><c> desenvolvido</c>
+
+00:04:25.590 --> 00:04:25.600 align:start position:0%
+de toda essa mágica que é desenvolvido
+ 
+
+00:04:25.600 --> 00:04:28.510 align:start position:0%
+de toda essa mágica que é desenvolvido
+em<00:04:25.840><c> Rust.</c><00:04:26.880><c> Para</c><00:04:27.080><c> processar</c><00:04:27.639><c> grafos</c><00:04:28.120><c> tão</c>
+
+00:04:28.510 --> 00:04:28.520 align:start position:0%
+em Rust. Para processar grafos tão
+ 
+
+00:04:28.520 --> 00:04:30.870 align:start position:0%
+em Rust. Para processar grafos tão
+complexos<00:04:29.280><c> localmente</c><00:04:30.000><c> e</c><00:04:30.120><c> ter</c><00:04:30.360><c> respostas</c>
+
+00:04:30.870 --> 00:04:30.880 align:start position:0%
+complexos localmente e ter respostas
+ 
+
+00:04:30.880 --> 00:04:33.230 align:start position:0%
+complexos localmente e ter respostas
+quase<00:04:31.240><c> instantâneas,</c><00:04:32.240><c> a</c><00:04:32.440><c> base</c><00:04:32.759><c> técnica</c>
+
+00:04:33.230 --> 00:04:33.240 align:start position:0%
+quase instantâneas, a base técnica
+ 
+
+00:04:33.240 --> 00:04:35.990 align:start position:0%
+quase instantâneas, a base técnica
+precisa<00:04:33.639><c> ser</c><00:04:33.840><c> uma</c><00:04:34.120><c> verdadeira</c><00:04:34.840><c> Ferrari.</c><00:04:35.840><c> Esse</c>
+
+00:04:35.990 --> 00:04:36.000 align:start position:0%
+precisa ser uma verdadeira Ferrari. Esse
+ 
+
+00:04:36.000 --> 00:04:38.350 align:start position:0%
+precisa ser uma verdadeira Ferrari. Esse
+núcleo<00:04:36.320><c> nativo</c><00:04:36.600><c> em</c><00:04:36.759><c> Rust</c><00:04:37.160><c> usa</c><00:04:37.400><c> gramáticas</c><00:04:38.080><c> tre</c>
+
+00:04:38.350 --> 00:04:38.360 align:start position:0%
+núcleo nativo em Rust usa gramáticas tre
+ 
+
+00:04:38.360 --> 00:04:39.830 align:start position:0%
+núcleo nativo em Rust usa gramáticas tre
+sititter<00:04:38.800><c> para</c><00:04:39.000><c> garantir</c><00:04:39.400><c> toda</c><00:04:39.600><c> essa</c>
+
+00:04:39.830 --> 00:04:39.840 align:start position:0%
+sititter para garantir toda essa
+ 
+
+00:04:39.840 --> 00:04:42.430 align:start position:0%
+sititter para garantir toda essa
+velocidade.<00:04:40.759><c> E</c><00:04:40.880><c> a</c><00:04:41.000><c> beleza</c><00:04:41.440><c> real</c><00:04:41.680><c> desse</c><00:04:42.039><c> design</c>
+
+00:04:42.430 --> 00:04:42.440 align:start position:0%
+velocidade. E a beleza real desse design
+ 
+
+00:04:42.440 --> 00:04:44.990 align:start position:0%
+velocidade. E a beleza real desse design
+é<00:04:42.600><c> a</c><00:04:42.800><c> flexibilidade.</c><00:04:44.039><c> O</c><00:04:44.160><c> sistema</c><00:04:44.479><c> detecta</c><00:04:44.840><c> o</c>
+
+00:04:44.990 --> 00:04:45.000 align:start position:0%
+é a flexibilidade. O sistema detecta o
+ 
+
+00:04:45.000 --> 00:04:46.950 align:start position:0%
+é a flexibilidade. O sistema detecta o
+hardware<00:04:45.440><c> e</c><00:04:45.680><c> escala</c><00:04:46.080><c> dinamicamente</c><00:04:46.759><c> os</c>
+
+00:04:46.950 --> 00:04:46.960 align:start position:0%
+hardware e escala dinamicamente os
+ 
+
+00:04:46.960 --> 00:04:48.430 align:start position:0%
+hardware e escala dinamicamente os
+recursos.<00:04:47.479><c> Então</c><00:04:47.680><c> não</c><00:04:47.840><c> importa</c><00:04:48.120><c> se</c><00:04:48.280><c> tá</c>
+
+00:04:48.430 --> 00:04:48.440 align:start position:0%
+recursos. Então não importa se tá
+ 
+
+00:04:48.440 --> 00:04:50.310 align:start position:0%
+recursos. Então não importa se tá
+rodando<00:04:48.759><c> numa</c><00:04:49.080><c> super</c><00:04:49.360><c> máquina</c><00:04:49.680><c> de</c><00:04:49.840><c> altíssimo</c>
+
+00:04:50.310 --> 00:04:50.320 align:start position:0%
+rodando numa super máquina de altíssimo
+ 
+
+00:04:50.320 --> 00:04:52.270 align:start position:0%
+rodando numa super máquina de altíssimo
+desempenho<00:04:51.000><c> ou</c><00:04:51.199><c> num</c><00:04:51.360><c> servidorzinho</c><00:04:51.919><c> modesto</c>
+
+00:04:52.270 --> 00:04:52.280 align:start position:0%
+desempenho ou num servidorzinho modesto
+ 
+
+00:04:52.280 --> 00:04:54.790 align:start position:0%
+desempenho ou num servidorzinho modesto
+com<00:04:52.479><c> apenas</c><00:04:52.800><c> dois</c><00:04:53.000><c> núcleos.</c><00:04:53.720><c> Ele</c><00:04:53.840><c> se</c><00:04:54.000><c> adapta.</c>
+
+00:04:54.790 --> 00:04:54.800 align:start position:0%
+com apenas dois núcleos. Ele se adapta.
+ 
+
+00:04:54.800 --> 00:04:57.189 align:start position:0%
+com apenas dois núcleos. Ele se adapta.
+Nada<00:04:55.039><c> de</c><00:04:55.199><c> travar</c><00:04:55.479><c> a</c><00:04:55.560><c> máquina.</c><00:04:56.360><c> A</c><00:04:56.479><c> parte</c><00:04:56.759><c> cinco</c>
+
+00:04:57.189 --> 00:04:57.199 align:start position:0%
+Nada de travar a máquina. A parte cinco
+ 
+
+00:04:57.199 --> 00:04:59.150 align:start position:0%
+Nada de travar a máquina. A parte cinco
+aborda<00:04:57.639><c> um</c><00:04:57.759><c> desafio</c><00:04:58.240><c> muito</c><00:04:58.560><c> clássico</c><00:04:58.960><c> em</c>
+
+00:04:59.150 --> 00:04:59.160 align:start position:0%
+aborda um desafio muito clássico em
+ 
+
+00:04:59.160 --> 00:05:01.310 align:start position:0%
+aborda um desafio muito clássico em
+projetos<00:04:59.560><c> da</c><00:04:59.720><c> vida</c><00:04:59.919><c> real.</c><00:05:00.680><c> Superar</c><00:05:01.120><c> as</c>
+
+00:05:01.310 --> 00:05:01.320 align:start position:0%
+projetos da vida real. Superar as
+ 
+
+00:05:01.320 --> 00:05:03.550 align:start position:0%
+projetos da vida real. Superar as
+barreiras<00:05:01.720><c> de</c><00:05:01.919><c> linguagem.</c><00:05:02.960><c> Como</c><00:05:03.199><c> quase</c>
+
+00:05:03.550 --> 00:05:03.560 align:start position:0%
+barreiras de linguagem. Como quase
+ 
+
+00:05:03.560 --> 00:05:05.670 align:start position:0%
+barreiras de linguagem. Como quase
+nenhum<00:05:03.960><c> projeto</c><00:05:04.400><c> moderno</c><00:05:04.880><c> usa</c><00:05:05.240><c> só</c><00:05:05.440><c> uma</c>
+
+00:05:05.670 --> 00:05:05.680 align:start position:0%
+nenhum projeto moderno usa só uma
+ 
+
+00:05:05.680 --> 00:05:08.029 align:start position:0%
+nenhum projeto moderno usa só uma
+tecnologia,<00:05:06.639><c> o</c><00:05:06.800><c> motor</c><00:05:07.160><c> precisa</c><00:05:07.600><c> conectar</c>
+
+00:05:08.029 --> 00:05:08.039 align:start position:0%
+tecnologia, o motor precisa conectar
+ 
+
+00:05:08.039 --> 00:05:10.790 align:start position:0%
+tecnologia, o motor precisa conectar
+essas<00:05:08.280><c> lacunas</c><00:05:08.919><c> sem</c><00:05:09.199><c> tropeçar.</c><00:05:10.240><c> O</c><00:05:10.400><c> sistema</c>
+
+00:05:10.790 --> 00:05:10.800 align:start position:0%
+essas lacunas sem tropeçar. O sistema
+ 
+
+00:05:10.800 --> 00:05:12.990 align:start position:0%
+essas lacunas sem tropeçar. O sistema
+traz<00:05:11.080><c> suporte</c><00:05:11.560><c> estrutural</c><00:05:12.120><c> para</c><00:05:12.320><c> mais</c><00:05:12.479><c> de</c><00:05:12.720><c> 20</c>
+
+00:05:12.990 --> 00:05:13.000 align:start position:0%
+traz suporte estrutural para mais de 20
+ 
+
+00:05:13.000 --> 00:05:15.510 align:start position:0%
+traz suporte estrutural para mais de 20
+linguagens<00:05:13.520><c> de</c><00:05:13.680><c> programação.</c><00:05:14.560><c> Typecript,</c>
+
+00:05:15.510 --> 00:05:15.520 align:start position:0%
+linguagens de programação. Typecript,
+ 
+
+00:05:15.520 --> 00:05:18.909 align:start position:0%
+linguagens de programação. Typecript,
+Python,<00:05:16.199><c> Rust,</c><00:05:16.840><c> Java,</c><00:05:17.360><c> Swift.</c><00:05:18.120><c> Tudo</c><00:05:18.360><c> funciona</c>
+
+00:05:18.909 --> 00:05:18.919 align:start position:0%
+Python, Rust, Java, Swift. Tudo funciona
+ 
+
+00:05:18.919 --> 00:05:21.430 align:start position:0%
+Python, Rust, Java, Swift. Tudo funciona
+direto<00:05:19.280><c> da</c><00:05:19.520><c> caixa.</c><00:05:20.240><c> Praticamente</c><00:05:20.880><c> qualquer</c>
+
+00:05:21.430 --> 00:05:21.440 align:start position:0%
+direto da caixa. Praticamente qualquer
+ 
+
+00:05:21.440 --> 00:05:23.309 align:start position:0%
+direto da caixa. Praticamente qualquer
+base<00:05:21.680><c> de</c><00:05:21.880><c> código</c><00:05:22.319><c> recebe</c><00:05:22.639><c> esse</c><00:05:22.800><c> tratamento</c>
+
+00:05:23.309 --> 00:05:23.319 align:start position:0%
+base de código recebe esse tratamento
+ 
+
+00:05:23.319 --> 00:05:25.430 align:start position:0%
+base de código recebe esse tratamento
+completo<00:05:24.120><c> sem</c><00:05:24.400><c> precisar</c><00:05:24.800><c> configurar</c>
+
+00:05:25.430 --> 00:05:25.440 align:start position:0%
+completo sem precisar configurar
+ 
+
+00:05:25.440 --> 00:05:27.670 align:start position:0%
+completo sem precisar configurar
+absolutamente<00:05:26.240><c> nada</c><00:05:26.520><c> por</c><00:05:26.720><c> linguagem.</c><00:05:27.520><c> O</c>
+
+00:05:27.670 --> 00:05:27.680 align:start position:0%
+absolutamente nada por linguagem. O
+ 
+
+00:05:27.680 --> 00:05:29.990 align:start position:0%
+absolutamente nada por linguagem. O
+sistema<00:05:28.039><c> só</c><00:05:28.240><c> lê</c><00:05:28.440><c> a</c><00:05:28.560><c> extensão</c><00:05:28.960><c> do</c><00:05:29.080><c> arquivo</c><00:05:29.600><c> e</c><00:05:29.800><c> já</c>
+
+00:05:29.990 --> 00:05:30.000 align:start position:0%
+sistema só lê a extensão do arquivo e já
+ 
+
+00:05:30.000 --> 00:05:32.150 align:start position:0%
+sistema só lê a extensão do arquivo e já
+sabe<00:05:30.240><c> o</c><00:05:30.319><c> que</c><00:05:30.479><c> fazer.</c><00:05:31.240><c> A</c><00:05:31.360><c> engenharia</c><00:05:31.880><c> aqui</c>
+
+00:05:32.150 --> 00:05:32.160 align:start position:0%
+sabe o que fazer. A engenharia aqui
+ 
+
+00:05:32.160 --> 00:05:34.510 align:start position:0%
+sabe o que fazer. A engenharia aqui
+brilha<00:05:32.600><c> de</c><00:05:32.880><c> verdade</c><00:05:33.520><c> na</c><00:05:33.720><c> hora</c><00:05:33.880><c> de</c><00:05:34.039><c> cruzar</c><00:05:34.360><c> os</c>
+
+00:05:34.510 --> 00:05:34.520 align:start position:0%
+brilha de verdade na hora de cruzar os
+ 
+
+00:05:34.520 --> 00:05:36.950 align:start position:0%
+brilha de verdade na hora de cruzar os
+limites<00:05:34.919><c> das</c><00:05:35.160><c> tecnologias.</c><00:05:36.280><c> É</c><00:05:36.400><c> possível,</c><00:05:36.800><c> por</c>
+
+00:05:36.950 --> 00:05:36.960 align:start position:0%
+limites das tecnologias. É possível, por
+ 
+
+00:05:36.960 --> 00:05:39.110 align:start position:0%
+limites das tecnologias. É possível, por
+exemplo,<00:05:37.520><c> ligar</c><00:05:37.919><c> diretamente</c><00:05:38.520><c> uma</c><00:05:38.759><c> chamada</c>
+
+00:05:39.110 --> 00:05:39.120 align:start position:0%
+exemplo, ligar diretamente uma chamada
+ 
+
+00:05:39.120 --> 00:05:41.830 align:start position:0%
+exemplo, ligar diretamente uma chamada
+em<00:05:39.280><c> Swift</c><00:05:39.919><c> a</c><00:05:40.080><c> um</c><00:05:40.240><c> seletor</c><00:05:40.600><c> em</c><00:05:40.840><c> objective</c><00:05:41.400><c> C</c>
+
+00:05:41.830 --> 00:05:41.840 align:start position:0%
+em Swift a um seletor em objective C
+ 
+
+00:05:41.840 --> 00:05:44.309 align:start position:0%
+em Swift a um seletor em objective C
+usando<00:05:42.199><c> as</c><00:05:42.360><c> regras</c><00:05:42.759><c> nativas</c><00:05:43.199><c> de</c><00:05:43.360><c> ponte.</c><00:05:44.199><c> Ele</c>
+
+00:05:44.309 --> 00:05:44.319 align:start position:0%
+usando as regras nativas de ponte. Ele
+ 
+
+00:05:44.319 --> 00:05:46.230 align:start position:0%
+usando as regras nativas de ponte. Ele
+também<00:05:44.600><c> consegue</c><00:05:45.000><c> mapear</c><00:05:45.400><c> os</c><00:05:45.600><c> componentes</c><00:05:46.039><c> do</c>
+
+00:05:46.230 --> 00:05:46.240 align:start position:0%
+também consegue mapear os componentes do
+ 
+
+00:05:46.240 --> 00:05:48.270 align:start position:0%
+também consegue mapear os componentes do
+React<00:05:46.639><c> Native,</c><00:05:47.240><c> passando</c><00:05:47.639><c> pelas</c><00:05:47.919><c> pontes</c>
+
+00:05:48.270 --> 00:05:48.280 align:start position:0%
+React Native, passando pelas pontes
+ 
+
+00:05:48.280 --> 00:05:50.550 align:start position:0%
+React Native, passando pelas pontes
+legadas,<00:05:49.080><c> um</c><00:05:49.280><c> ponto</c><00:05:49.560><c> onde</c><00:05:49.759><c> os</c><00:05:49.919><c> analisadores</c>
+
+00:05:50.550 --> 00:05:50.560 align:start position:0%
+legadas, um ponto onde os analisadores
+ 
+
+00:05:50.560 --> 00:05:53.629 align:start position:0%
+legadas, um ponto onde os analisadores
+comuns<00:05:51.280><c> sempre</c><00:05:51.680><c> costumam</c><00:05:52.120><c> falhar</c><00:05:52.479><c> feio.</c><00:05:53.360><c> E</c>
+
+00:05:53.629 --> 00:05:53.639 align:start position:0%
+comuns sempre costumam falhar feio. E
+ 
+
+00:05:53.639 --> 00:05:55.830 align:start position:0%
+comuns sempre costumam falhar feio. E
+para<00:05:53.840><c> fechar</c><00:05:54.199><c> a</c><00:05:54.280><c> nossa</c><00:05:54.639><c> parte</c><00:05:55.039><c> seis,</c>
+
+00:05:55.830 --> 00:05:55.840 align:start position:0%
+para fechar a nossa parte seis,
+ 
+
+00:05:55.840 --> 00:05:58.469 align:start position:0%
+para fechar a nossa parte seis,
+sincronização<00:05:56.840><c> automática</c><00:05:57.639><c> contínua.</c>
+
+00:05:58.469 --> 00:05:58.479 align:start position:0%
+sincronização automática contínua.
+ 
+
+00:05:58.479 --> 00:06:00.870 align:start position:0%
+sincronização automática contínua.
+Porque<00:05:58.720><c> cá</c><00:05:58.960><c> entre</c><00:05:59.160><c> nós,</c><00:05:59.840><c> ter</c><00:06:00.000><c> um</c><00:06:00.160><c> mapa</c><00:06:00.560><c> super</c>
+
+00:06:00.870 --> 00:06:00.880 align:start position:0%
+Porque cá entre nós, ter um mapa super
+ 
+
+00:06:00.880 --> 00:06:02.790 align:start position:0%
+Porque cá entre nós, ter um mapa super
+detalhado<00:06:01.360><c> não</c><00:06:01.600><c> serve</c><00:06:01.840><c> de</c><00:06:02.039><c> absolutamente</c>
+
+00:06:02.790 --> 00:06:02.800 align:start position:0%
+detalhado não serve de absolutamente
+ 
+
+00:06:02.800 --> 00:06:05.189 align:start position:0%
+detalhado não serve de absolutamente
+nada<00:06:03.160><c> se</c><00:06:03.319><c> ele</c><00:06:03.440><c> estiver</c><00:06:03.800><c> desatualizado</c><00:06:05.000><c> em</c>
+
+00:06:05.189 --> 00:06:05.199 align:start position:0%
+nada se ele estiver desatualizado em
+ 
+
+00:06:05.199 --> 00:06:06.950 align:start position:0%
+nada se ele estiver desatualizado em
+relação<00:06:05.520><c> ao</c><00:06:05.720><c> código</c><00:06:06.080><c> que</c><00:06:06.280><c> acabou</c><00:06:06.599><c> de</c><00:06:06.759><c> ser</c>
+
+00:06:06.950 --> 00:06:06.960 align:start position:0%
+relação ao código que acabou de ser
+ 
+
+00:06:06.960 --> 00:06:09.749 align:start position:0%
+relação ao código que acabou de ser
+editado.<00:06:07.919><c> E</c><00:06:08.080><c> essa</c><00:06:08.319><c> sincronização</c><00:06:09.199><c> acontece</c>
+
+00:06:09.749 --> 00:06:09.759 align:start position:0%
+editado. E essa sincronização acontece
+ 
+
+00:06:09.759 --> 00:06:11.950 align:start position:0%
+editado. E essa sincronização acontece
+sem<00:06:10.000><c> nenhuma</c><00:06:10.440><c> configuração</c><00:06:11.000><c> manual.</c><00:06:11.800><c> O</c>
+
+00:06:11.950 --> 00:06:11.960 align:start position:0%
+sem nenhuma configuração manual. O
+ 
+
+00:06:11.960 --> 00:06:13.950 align:start position:0%
+sem nenhuma configuração manual. O
+sistema<00:06:12.360><c> usa</c><00:06:12.599><c> os</c><00:06:12.759><c> próprios</c><00:06:13.160><c> eventos</c><00:06:13.560><c> nativos</c>
+
+00:06:13.950 --> 00:06:13.960 align:start position:0%
+sistema usa os próprios eventos nativos
+ 
+
+00:06:13.960 --> 00:06:15.550 align:start position:0%
+sistema usa os próprios eventos nativos
+do<00:06:14.120><c> sistema</c><00:06:14.400><c> operacional</c><00:06:15.080><c> para</c><00:06:15.280><c> ficar</c><00:06:15.440><c> de</c>
+
+00:06:15.550 --> 00:06:15.560 align:start position:0%
+do sistema operacional para ficar de
+ 
+
+00:06:15.560 --> 00:06:17.589 align:start position:0%
+do sistema operacional para ficar de
+olho<00:06:15.759><c> nos</c><00:06:15.960><c> arquivos.</c><00:06:16.919><c> Quando</c><00:06:17.160><c> ocorre</c><00:06:17.479><c> uma</c>
+
+00:06:17.589 --> 00:06:17.599 align:start position:0%
+olho nos arquivos. Quando ocorre uma
+ 
+
+00:06:17.599 --> 00:06:19.230 align:start position:0%
+olho nos arquivos. Quando ocorre uma
+alteração,<00:06:18.240><c> ele</c><00:06:18.440><c> aciona</c><00:06:18.720><c> uma</c><00:06:18.880><c> janela</c>
+
+00:06:19.230 --> 00:06:19.240 align:start position:0%
+alteração, ele aciona uma janela
+ 
+
+00:06:19.240 --> 00:06:21.830 align:start position:0%
+alteração, ele aciona uma janela
+inteligente<00:06:19.759><c> debounce</c><00:06:20.479><c> de</c><00:06:20.639><c> uns</c><00:06:20.880><c> 2</c><00:06:21.080><c> segundos,</c>
+
+00:06:21.830 --> 00:06:21.840 align:start position:0%
+inteligente debounce de uns 2 segundos,
+ 
+
+00:06:21.840 --> 00:06:23.430 align:start position:0%
+inteligente debounce de uns 2 segundos,
+só<00:06:22.039><c> para</c><00:06:22.160><c> agrupar</c><00:06:22.520><c> aquelas</c><00:06:22.840><c> edições</c><00:06:23.199><c> super</c>
+
+00:06:23.430 --> 00:06:23.440 align:start position:0%
+só para agrupar aquelas edições super
+ 
+
+00:06:23.440 --> 00:06:26.150 align:start position:0%
+só para agrupar aquelas edições super
+rápidas<00:06:23.880><c> em</c><00:06:24.039><c> massa.</c><00:06:24.720><c> Depois,</c><00:06:25.160><c> o</c><00:06:25.280><c> ESK</c><00:06:25.800><c> captura</c>
+
+00:06:26.150 --> 00:06:26.160 align:start position:0%
+rápidas em massa. Depois, o ESK captura
+ 
+
+00:06:26.160 --> 00:06:28.070 align:start position:0%
+rápidas em massa. Depois, o ESK captura
+as<00:06:26.280><c> edições</c><00:06:26.599><c> de</c><00:06:26.759><c> forma</c><00:06:26.960><c> incremental</c><00:06:27.720><c> e</c><00:06:27.880><c> tudo</c>
+
+00:06:28.070 --> 00:06:28.080 align:start position:0%
+as edições de forma incremental e tudo
+ 
+
+00:06:28.080 --> 00:06:29.790 align:start position:0%
+as edições de forma incremental e tudo
+fica<00:06:28.400><c> perfeitamente</c><00:06:29.039><c> atualizado</c><00:06:29.560><c> pra</c>
+
+00:06:29.790 --> 00:06:29.800 align:start position:0%
+fica perfeitamente atualizado pra
+ 
+
+00:06:29.800 --> 00:06:32.589 align:start position:0%
+fica perfeitamente atualizado pra
+próxima<00:06:30.199><c> consulta.</c><00:06:31.199><c> Mas</c><00:06:31.319><c> aí</c><00:06:31.599><c> surge</c><00:06:31.840><c> a</c><00:06:31.960><c> dúvida.</c>
+
+00:06:32.589 --> 00:06:32.599 align:start position:0%
+próxima consulta. Mas aí surge a dúvida.
+ 
+
+00:06:32.599 --> 00:06:35.430 align:start position:0%
+próxima consulta. Mas aí surge a dúvida.
+E<00:06:32.680><c> se</c><00:06:32.800><c> a</c><00:06:32.919><c> IA</c><00:06:33.440><c> tentar</c><00:06:33.800><c> buscar</c><00:06:34.160><c> algo</c><00:06:34.680><c> exatamente</c>
+
+00:06:35.430 --> 00:06:35.440 align:start position:0%
+E se a IA tentar buscar algo exatamente
+ 
+
+00:06:35.440 --> 00:06:37.790 align:start position:0%
+E se a IA tentar buscar algo exatamente
+no<00:06:35.680><c> meio</c><00:06:36.039><c> desses</c><00:06:36.400><c> 2</c><00:06:36.599><c> segundos</c><00:06:37.400><c> antes</c><00:06:37.639><c> da</c>
+
+00:06:37.790 --> 00:06:37.800 align:start position:0%
+no meio desses 2 segundos antes da
+ 
+
+00:06:37.800 --> 00:06:39.830 align:start position:0%
+no meio desses 2 segundos antes da
+atualização<00:06:38.360><c> terminar?</c><00:06:39.080><c> tem</c><00:06:39.280><c> um</c><00:06:39.400><c> mecanismo</c>
+
+00:06:39.830 --> 00:06:39.840 align:start position:0%
+atualização terminar? tem um mecanismo
+ 
+
+00:06:39.840 --> 00:06:42.469 align:start position:0%
+atualização terminar? tem um mecanismo
+de<00:06:39.960><c> segurança</c><00:06:40.880><c> incrível</c><00:06:41.440><c> para</c><00:06:41.599><c> isso.</c><00:06:42.319><c> O</c>
+
+00:06:42.469 --> 00:06:42.479 align:start position:0%
+de segurança incrível para isso. O
+ 
+
+00:06:42.479 --> 00:06:44.749 align:start position:0%
+de segurança incrível para isso. O
+sistema<00:06:42.840><c> joga</c><00:06:43.080><c> um</c><00:06:43.199><c> aviso</c><00:06:43.639><c> claro,</c><00:06:44.120><c> forçando</c><00:06:44.560><c> a</c>
+
+00:06:44.749 --> 00:06:44.759 align:start position:0%
+sistema joga um aviso claro, forçando a
+ 
+
+00:06:44.759 --> 00:06:46.670 align:start position:0%
+sistema joga um aviso claro, forçando a
+gente<00:06:44.880><c> a</c><00:06:45.039><c> ler</c><00:06:45.199><c> aquele</c><00:06:45.479><c> arquivo</c><00:06:46.039><c> específico</c>
+
+00:06:46.670 --> 00:06:46.680 align:start position:0%
+gente a ler aquele arquivo específico
+ 
+
+00:06:46.680 --> 00:06:49.230 align:start position:0%
+gente a ler aquele arquivo específico
+direto<00:06:47.039><c> do</c><00:06:47.240><c> disco.</c><00:06:47.919><c> Simples</c><00:06:48.240><c> assim.</c><00:06:48.919><c> Garante</c>
+
+00:06:49.230 --> 00:06:49.240 align:start position:0%
+direto do disco. Simples assim. Garante
+ 
+
+00:06:49.240 --> 00:06:51.710 align:start position:0%
+direto do disco. Simples assim. Garante
+a<00:06:49.440><c> exatidão</c><00:06:50.120><c> absoluta</c><00:06:50.560><c> e</c><00:06:50.720><c> previne</c><00:06:51.199><c> qualquer</c>
+
+00:06:51.710 --> 00:06:51.720 align:start position:0%
+a exatidão absoluta e previne qualquer
+ 
+
+00:06:51.720 --> 00:06:53.270 align:start position:0%
+a exatidão absoluta e previne qualquer
+chance<00:06:51.919><c> de</c><00:06:52.120><c> Aia</c><00:06:52.400><c> começar</c><00:06:52.720><c> a</c><00:06:52.800><c> alucinar</c>
+
+00:06:53.270 --> 00:06:53.280 align:start position:0%
+chance de Aia começar a alucinar
+ 
+
+00:06:53.280 --> 00:06:55.589 align:start position:0%
+chance de Aia começar a alucinar
+informações.<00:06:54.400><c> Vendo</c><00:06:54.759><c> toda</c><00:06:54.960><c> essa</c><00:06:55.160><c> economia</c>
+
+00:06:55.589 --> 00:06:55.599 align:start position:0%
+informações. Vendo toda essa economia
+ 
+
+00:06:55.599 --> 00:06:57.430 align:start position:0%
+informações. Vendo toda essa economia
+absurda<00:06:56.199><c> de</c><00:06:56.479><c> tempo,</c><00:06:56.919><c> dinheiro</c><00:06:57.240><c> e</c>
+
+00:06:57.430 --> 00:06:57.440 align:start position:0%
+absurda de tempo, dinheiro e
+ 
+
+00:06:57.440 --> 00:06:59.550 align:start position:0%
+absurda de tempo, dinheiro e
+processamento,<00:06:58.520><c> fica</c><00:06:58.720><c> a</c><00:06:58.840><c> reflexão</c><00:06:59.280><c> final</c>
+
+00:06:59.550 --> 00:06:59.560 align:start position:0%
+processamento, fica a reflexão final
+ 
+
+00:06:59.560 --> 00:07:01.469 align:start position:0%
+processamento, fica a reflexão final
+para<00:06:59.680><c> quem</c><00:06:59.879><c> trabalha</c><00:07:00.160><c> na</c><00:07:00.360><c> área.</c><00:07:01.199><c> Será</c><00:07:01.360><c> que</c>
+
+00:07:01.469 --> 00:07:01.479 align:start position:0%
+para quem trabalha na área. Será que
+ 
+
+00:07:01.479 --> 00:07:03.309 align:start position:0%
+para quem trabalha na área. Será que
+ainda<00:07:01.680><c> faz</c><00:07:01.879><c> algum</c><00:07:02.240><c> sentido</c><00:07:02.879><c> continuar</c>
+
+00:07:03.309 --> 00:07:03.319 align:start position:0%
+ainda faz algum sentido continuar
+ 
+
+00:07:03.319 --> 00:07:05.550 align:start position:0%
+ainda faz algum sentido continuar
+pagando<00:07:03.680><c> o</c><00:07:03.720><c> custo</c><00:07:04.080><c> altíssimo</c><00:07:04.800><c> e</c><00:07:04.919><c> a</c><00:07:05.039><c> lentidão</c>
+
+00:07:05.550 --> 00:07:05.560 align:start position:0%
+pagando o custo altíssimo e a lentidão
+ 
+
+00:07:05.560 --> 00:07:07.869 align:start position:0%
+pagando o custo altíssimo e a lentidão
+de<00:07:05.720><c> deixar</c><00:07:06.080><c> a</c><00:07:06.160><c> gente</c><00:07:06.360><c> navegarem</c><00:07:06.840><c> a</c><00:07:07.080><c> cegas?</c>
+
+00:07:07.869 --> 00:07:07.879 align:start position:0%
+de deixar a gente navegarem a cegas?
+ 
+
+00:07:07.879 --> 00:07:09.869 align:start position:0%
+de deixar a gente navegarem a cegas?
+Quando<00:07:08.080><c> o</c><00:07:08.199><c> mapa</c><00:07:08.599><c> completíssimo</c><00:07:09.440><c> gerado</c>
+
+00:07:09.869 --> 00:07:09.879 align:start position:0%
+Quando o mapa completíssimo gerado
+ 
+
+00:07:09.879 --> 00:07:12.230 align:start position:0%
+Quando o mapa completíssimo gerado
+localmente<00:07:10.840><c> está</c><00:07:11.039><c> apenas</c><00:07:11.360><c> uma</c><00:07:11.599><c> única</c><00:07:11.879><c> chamada</c>
+
+00:07:12.230 --> 00:07:12.240 align:start position:0%
+localmente está apenas uma única chamada
+ 
+
+00:07:12.240 --> 00:07:14.550 align:start position:0%
+localmente está apenas uma única chamada
+de<00:07:12.360><c> ferramenta</c><00:07:12.800><c> de</c><00:07:13.000><c> distância,</c><00:07:13.840><c> será</c><00:07:14.080><c> que</c><00:07:14.240><c> dá</c>
+
+00:07:14.550 --> 00:07:14.560 align:start position:0%
+de ferramenta de distância, será que dá
+ 
+
+00:07:14.560 --> 00:07:16.390 align:start position:0%
+de ferramenta de distância, será que dá
+mesmo<00:07:14.879><c> para</c><00:07:15.039><c> arcar</c><00:07:15.319><c> com</c><00:07:15.479><c> um</c><00:07:15.639><c> contexto</c><00:07:15.960><c> de</c><00:07:16.120><c> aí</c>
+
+00:07:16.390 --> 00:07:16.400 align:start position:0%
+mesmo para arcar com um contexto de aí
+ 
+
+00:07:16.400 --> 00:07:19.110 align:start position:0%
+mesmo para arcar com um contexto de aí
+que<00:07:16.560><c> não</c><00:07:16.759><c> seja</c><00:07:17.160><c> otimizado?</c><00:07:18.280><c> É</c><00:07:18.400><c> no</c><00:07:18.560><c> mínimo</c><00:07:18.840><c> algo</c>
+
+00:07:19.110 --> 00:07:19.120 align:start position:0%
+que não seja otimizado? É no mínimo algo
+ 
+
+00:07:19.120 --> 00:07:22.800 align:start position:0%
+que não seja otimizado? É no mínimo algo
+importante<00:07:19.479><c> para</c><00:07:19.639><c> se</c><00:07:19.800><c> pensar.</c>
+

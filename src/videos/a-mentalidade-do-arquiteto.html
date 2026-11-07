@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Mentalidade do Arquiteto | Maurício Yokoyama Issei</title>
+<meta name="description" content="**Mergulhe fundo nas ferramentas essenciais e nas melhores práticas arquitetônicas para construir aplicações robustas e eficientes na AWS!** 🚀 Neste…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/a-mentalidade-do-arquiteto">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="A Mentalidade do Arquiteto">
+<meta property="og:description" content="**Mergulhe fundo nas ferramentas essenciais e nas melhores práticas arquitetônicas para construir aplicações robustas e eficientes na AWS!** 🚀 Neste…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/a-mentalidade-do-arquiteto">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"A Mentalidade do Arquiteto","description":"**Mergulhe fundo nas ferramentas essenciais e nas melhores práticas arquitetônicas para construir aplicações robustas e eficientes na AWS!** 🚀 Neste…","thumbnailUrl":"https://i.ytimg.com/vi/URAfUQ_9a1Q/maxresdefault.jpg","uploadDate":"2025-10-28","duration":"PT7M38S","embedUrl":"https://www.youtube-nocookie.com/embed/URAfUQ_9a1Q","url":"https://mauricio.issei.com.br/videos/a-mentalidade-do-arquiteto","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>A Mentalidade do Arquiteto</h1>
+<p class="meta">Publicado em <time datetime="2025-10-28">28 de outubro de 2025</time> · 7 min 38 s</p>
+
+<div class="yt" data-id="URAfUQ_9a1Q" data-title="Vídeo: A Mentalidade do Arquiteto">
+<img src="https://i.ytimg.com/vi/URAfUQ_9a1Q/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: A Mentalidade do Arquiteto">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=URAfUQ_9a1Q" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>**Mergulhe fundo nas ferramentas essenciais e nas melhores práticas arquitetônicas para construir aplicações robustas e eficientes na AWS!** 🚀</p>
+<p>Neste guia completo, detalhamos dois pilares cruciais para qualquer desenvolvedor e arquiteto de nuvem: o AWS Cloud Development Kit (AWS CDK) v2 e as operações detalhadas da API do AWS Lambda, alinhadas com os princípios de design do AWS Well-Architected Framework.</p>
+<p>#### **Parte 1: Construção e Gerenciamento com AWS CDK e Lambda** 🛠️</p>
+<p>Exploramos os **conceitos fundamentais do AWS CDK**, uma ferramenta poderosa para definir sua infraestrutura como código (IaC).</p>
+<p>Em seguida, fazemos um mergulho profundo na **API do AWS Lambda (Versão 2015-03-31)**, cobrindo as operações essenciais para gerenciar suas funções e recursos serverless:</p>
+<p>*   **Criação e Atualização de Funções:** Detalhes sobre a criação (`CreateFunction`) e atualização (`UpdateFunctionCode`, `UpdateFunctionConfiguration`) de funções, incluindo a especificação de arquiteturas (x86_64 ou arm64) e os tipos de pacote de implantação (Zip ou Imagem de Contêiner).<br>*   **Controle de Versão e Implantação:** Gerenciamento de aliases (`CreateAlias`, `UpdateAlias`) e versões (`PublishVersion`), que permitem implementar estratégias de tráfego (como o `RoutingConfig` do alias).<br>*   **Recursos Avançados:** Configuração de URLs de função (`CreateFunctionUrlConfig`) para endpoints públicos ou restritos (AuthType `NONE` ou `AWS_IAM`), gestão de camadas (`LayerVersion`), filas de mensagens não entregues (`DeadLetterConfig`), e gerenciamento de concorrência.<br>*   **Comunicações de Baixa Latência:** Entenda a invocação de função com *streaming* de resposta, utilizando a ação `InvokeWithResponseStream`.</p>
+<p>#### **Parte 2: Arquitetura Robusta com o Well-Architected Framework** 🛡️💰💨</p>
+<p>Aplicamos a lente do **Well-Architected Framework** para garantir que suas workloads sejam seguras, resilientes e econômicas.</p>
+<p>1.  **Otimização de Custos (Cost Optimization):**<br>    *   **Seleção de Recursos:** Escolha o tipo, tamanho e número correto de recursos, baseando-se em dados e métricas (como tipos de instância EC2).<br>    *   **Modelos de Preço:** Implemente modelos de preços ideais (Instâncias Reservadas, Savings Plans, Instâncias Spot) para diferentes perfis de carga de trabalho.<br>    *   **Alocação:** Use uma estratégia consistente de marcação (*tagging*) para facilitar a alocação e o monitoramento de custos.</p>
+<p>2.  **Excelência Operacional (Operational Excellence):**<br>    *   **Automação:** Automatize tarefas administrativas e implemente automações nas operações para reduzir erros humanos.<br>    *   **Prontidão Operacional:** Utilize *runbooks* para procedimentos rotineiros e *playbooks* para investigação de problemas.<br>    *   **Observabilidade:** Implemente telemetria de aplicações e rastreamento distribuído (usando CloudWatch e X-Ray) para ter visibilidade da integridade da workload.</p>
+<p>3.  **Confiabilidade (Reliability):**<br>    *   **Design para Falhas:** Garanta que a workload esteja implantada em vários locais (Multi-AZ) e use o acoplamento fraco (como SQS ou EventBridge) para isolar componentes.<br>    *   **Controles de Resposta:** Implemente o controle de utilização de solicitações e o recuo exponencial com *jitter* para novas tentativas.<br>    *   **Testes:** Teste a resiliência ativamente usando Engenharia do Caos (como o AWS Fault Injection Service).</p>
+<p>4.  **Segurança (Security):**<br>    *   **Identidade e Acesso:** Conceda o princípio do privilégio mínimo e utilize um provedor de identidades centralizado.<br>    *   **Proteção de Dados:** Garanta que os dados sejam criptografados tanto em repouso quanto em trânsito (por exemplo, usando TLS/SSL e AWS KMS).<br>    *   **Detecção:** Capture logs e métricas em locais padronizados para acelerar a análise de segurança e incidentes.</p>
+<p>5.  **Eficiência de Performance (Performance Efficiency):**<br>    *   **Computação Otimizada:** Escolha instâncias com a melhor performance de preço, como o AWS Graviton.<br>    *   **Armazenamento de Dados:** Use o armazenamento em cache para padrões de acesso a dados de alta frequência.<br>    *   **Rede:** Avalie e otimize a configuração de rede, incluindo balanceadores de carga (ELB) e VPCs.</p>
+<p>6.  **Sustentabilidade (Sustainability):**<br>    *   **Alinhamento com a Demanda:** Utilize o ajuste de escala dinâmico (*Auto Scaling*) para alinhar a capacidade com a demanda real, evitando recursos provisionados em excesso.<br>    *   **Otimização:** Remova ou refatore componentes com baixo uso e use hardware com o mínimo de impacto.</p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>

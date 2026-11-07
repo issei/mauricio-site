@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engenharia de Prompts | Maurício Yokoyama Issei</title>
+<meta name="description" content="**A habilidade mais importante para o futuro da IA não é ter respostas, mas saber fazer as perguntas! 💡 Descubra o que é a Engenharia de Prompts e como…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/engenharia-de-prompts">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="Engenharia de Prompts">
+<meta property="og:description" content="**A habilidade mais importante para o futuro da IA não é ter respostas, mas saber fazer as perguntas! 💡 Descubra o que é a Engenharia de Prompts e como…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/engenharia-de-prompts">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Engenharia de Prompts","description":"**A habilidade mais importante para o futuro da IA não é ter respostas, mas saber fazer as perguntas! 💡 Descubra o que é a Engenharia de Prompts e como…","thumbnailUrl":"https://i.ytimg.com/vi/ztGM0zFehbQ/maxresdefault.jpg","uploadDate":"2025-10-23","duration":"PT5M5S","embedUrl":"https://www.youtube-nocookie.com/embed/ztGM0zFehbQ","url":"https://mauricio.issei.com.br/videos/engenharia-de-prompts","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>Engenharia de Prompts</h1>
+<p class="meta">Publicado em <time datetime="2025-10-23">23 de outubro de 2025</time> · 5 min 5 s</p>
+
+<div class="yt" data-id="ztGM0zFehbQ" data-title="Vídeo: Engenharia de Prompts">
+<img src="https://i.ytimg.com/vi/ztGM0zFehbQ/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: Engenharia de Prompts">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=ztGM0zFehbQ" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>**A habilidade mais importante para o futuro da IA não é ter respostas, mas saber fazer as perguntas! 💡 Descubra o que é a Engenharia de Prompts e como usar a Inteligência Artificial do jeito certo.**</p>
+<p>Neste vídeo essencial, mergulhamos na arte e ciência do **Prompt Engineering** (Engenharia de Prompts). Você vai aprender a criar comandos super específicos para extrair resultados incríveis de modelos como GPT e outros. Entenda a diferença entre um pedido vago e uma &quot;receita&quot; de prompt que funciona, explorando desde a estrutura básica (Contexto, Tarefa, Formato) até técnicas avançadas que fazem a IA raciocinar, como a **Chain of Thought (CoT)**.</p>
+<p>Se você quer parar de receber respostas genéricas e começar a usar a IA como uma ferramenta estratégica, este vídeo é para você.</p>
+<p>### 📌 **Neste Vídeo:**</p>
+<p>* **[00:00:00]** Introdução: A importância de fazer a pergunta certa.<br>* **[00:00:49]** O que é Engenharia de Prompts (e a analogia do pedido específico!)<br>* **[00:00:55]** A Receita de um Bom Prompt: Estrutura Essencial (Tarefa, Contexto, Formato).<br>* **[00:01:30]** Instruções de Sistema: Criando a &quot;personalidade&quot; da IA.<br>* **[00:01:57]** Few-Shot vs. Zero-Shot: A chave para respostas consistentes.<br>* **[00:02:26]** Chain of Thought (Cadeia de Pensamento): Ensine a IA a Raciocinar.<br>* **[00:03:06]** Técnicas Avançadas (RAG, CoT Contrast e Mais).<br>* **[00:04:08]** O Futuro: Fadiga de Prompt e Automação (Vertex AI Prompt Optimizer).</p>
+<p>---</p>
+<p>👍 Gostou do conteúdo? Deixe seu like, compartilhe com quem precisa aprender a usar a IA de verdade e inscreva-se no canal para mais dicas de tecnologia e futuro!</p>
+<p>### **#Tags**</p>
+<p>#EngenhariaDePrompts #PromptEngineering #InteligenciaArtificial #IA #GPT #ChatGPT #Prompt #ChainOfThought #RAG #FuturoDoTrabalho #Tecnologia #ComoUsarIA</p>
+<p>***</p>
+<p>**URL do Vídeo:** [<a href="https://www.youtube.com/watch?v=ztGM0zFehbQ](https://www.youtube.com/watch?v=ztGM0zFehbQ" rel="noopener">https://www.youtube.com/watch?v=ztGM0zFehbQ](https://www.youtube.com/watch?v=ztGM0zFehbQ</a>)</p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>

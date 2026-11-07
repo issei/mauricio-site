@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário | Maurício Yokoyama Issei</title>
+<meta name="description" content="Tratar um modelo de linguagem (LLM) como o sistema completo é um dos erros de arquitetura mais comuns na IA aplicada. Em cenários simulados de…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário">
+<meta property="og:description" content="Tratar um modelo de linguagem (LLM) como o sistema completo é um dos erros de arquitetura mais comuns na IA aplicada. Em cenários simulados de…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário","description":"Tratar um modelo de linguagem (LLM) como o sistema completo é um dos erros de arquitetura mais comuns na IA aplicada. Em cenários simulados de…","thumbnailUrl":"https://i.ytimg.com/vi/JSYL3Ax7A7o/maxresdefault.jpg","uploadDate":"2026-09-10","duration":"PT6M13S","embedUrl":"https://www.youtube-nocookie.com/embed/JSYL3Ax7A7o","url":"https://mauricio.issei.com.br/videos/a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário</h1>
+<p class="meta">Publicado em <time datetime="2026-09-10">10 de setembro de 2026</time> · 6 min 13 s</p>
+
+<div class="yt" data-id="JSYL3Ax7A7o" data-title="Vídeo: A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário">
+<img src="https://i.ytimg.com/vi/JSYL3Ax7A7o/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=JSYL3Ax7A7o" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>Tratar um modelo de linguagem (LLM) como o sistema completo é um dos erros de arquitetura mais comuns na IA aplicada. Em cenários simulados de atendimento bancário, enviar todas as requisições e centenas de ferramentas diretamente ao LLM gera latências elevadas, desperdício de tokens e riscos de execução inadequada por perda de contexto (*lost-in-the-middle*).</p>
+<p>Neste vídeo, exploramos o estudo de caso **&quot;Case Agents&quot;**, uma demonstração teórica e simulada criada para validar o processo de desenvolvimento de um **Harness Determinístico em Camadas**. A partir do princípio da **Engenharia da Confiança** (*&quot;A capacidade vem do modelo; a confiança vem da engenharia&quot;*), analisamos como uma estrutura de triagem e guardas de segurança pré-execução valida a arquitetura de roteamento antes do acionamento de modelos mais complexos.</p>
+<p>---</p>
+<p>### 📌 O que você vai aprender neste vídeo:<br>* **O Desafio do Catálogo Extenso:** Por que injetar centenas de ferramentas no prompt reduz a precisão da seleção e infla custos de inferência.<br>* **Camada 1 — Query Router Local:** Como classificar intenções em menos de 5 ms através de um modelo leve (TF-IDF + Regressão Logística) calibrado por *Platt scaling*.<br>* **Camada 2 — Tool Retriever &amp; Taxonomia:** Como organizar ferramentas em capacidades canônicas e colapsar duplicatas semânticas para recuperar o Top-2 relevante.<br>* **Camada 3 — Guardas de Direção e Segurança:** Como a verificação semântica de intenção (Leitura vs. Escrita) evita que uma simples consulta execute uma alteração cadastral indevida.<br>* **Validação do Processo Agêntico:** Como o benchmark do MVP demonstrou a eficácia do Harness na contenção do &quot;Crash Silencioso&quot; em um ambiente controlado de testes.</p>
+<p>---</p>
+<p>### 📊 Resultados Medidos no Benchmark do MVP:<br>* **Acurácia do Router:** 100.0%<br>* **Hit Rate@2 do Retriever:** 100.0%<br>* **Redução de Custo Medida:** 77,8% (vs. baseline sempre-LLM)<br>* **Redução de Latência:** ~92,6%<br>* **Execuções Incorretas no Dataset de Teste:** 0<br>*(Nota: Resultados restritos ao benchmark simulado do MVP).*</p>
+<p>---</p>
+<p>### 🔗 Links e Documentação de Referência:</p>
+<p>* 🌐 **Artigo Explicativo e Apresentação do Case no Site:**<br>  <a href="https://mauricio.issei.com.br/case-agents.html" rel="noopener">https://mauricio.issei.com.br/case-agents.html</a></p>
+<p>* 💻 **Repositório do Projeto no GitHub:**<br>  <a href="https://github.com/issei/case-agents" rel="noopener">https://github.com/issei/case-agents</a></p>
+<p>* 📜 **Especificação Técnica Consolidada (Spec-Driven Development):**<br>  <a href="https://github.com/issei/case-agents/blob/main/specification/Especifica%C3%A7%C3%A3o.MD" rel="noopener">https://github.com/issei/case-agents/blob/main/specification/Especifica%C3%A7%C3%A3o.MD</a></p>
+<p>* 📦 **Manifesto de Empacotamento de Produção (APM.yml):**<br>  <a href="https://github.com/issei/case-agents/blob/main/APM.yml" rel="noopener">https://github.com/issei/case-agents/blob/main/APM.yml</a></p>
+<p>* 📈 **Relatório de Avaliação do Benchmark (candidate_report.json):**<br>  <a href="https://github.com/issei/case-agents/blob/main/reports/candidate_report.json" rel="noopener">https://github.com/issei/case-agents/blob/main/reports/candidate_report.json</a></p>
+<p>#### 🏛 Architecture Decision Records (ADRs):<br>* **ADR-001 (Normalização Textual Canônica):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0001-normalizacao-textual-canonica.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0001-normalizacao-textual-canonica.md</a><br>* **ADR-002 (Classificador Lexical &amp; Query Router):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0002-classificador-lexical-query-routing.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0002-classificador-lexical-query-routing.md</a><br>* **ADR-003 (Ranking Determinístico &amp; Tool Retrieval):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0003-ranking-deterministico-tool-retrieval.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0003-ranking-deterministico-tool-retrieval.md</a><br>* **ADR-004 (Harness de Avaliação &amp; Economia):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0004-harness-avaliacao-metricas-economia.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0004-harness-avaliacao-metricas-economia.md</a><br>* **ADR-005 (Alinhamento APM &amp; OmniRoute Gateway):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0005-alinhamento-apm-e-omniroute-gateway.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0005-alinhamento-apm-e-omniroute-gateway.md</a><br>* **ADR-006 (Taxonomia de Capacidades &amp; Colapso de Duplicatas):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0006-taxonomia-de-capacidades-e-colapso-de-duplicatas.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0006-taxonomia-de-capacidades-e-colapso-de-duplicatas.md</a><br>* **ADR-007 (Calibração de Probabilidade &amp; Guarda de Margem):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0007-calibracao-de-probabilidade-e-guarda-de-margem.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0007-calibracao-de-probabilidade-e-guarda-de-margem.md</a><br>* **ADR-008 (Guarda de Direção Leitura/Escrita):** <a href="https://github.com/issei/case-agents/blob/main/docs/adr/0008-guarda-de-direcao-leitura-escrita.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/adr/0008-guarda-de-direcao-leitura-escrita.md</a></p>
+<p>#### 📚 Base de Conhecimento (OKF Agent Memory):<br>* **Guia de Engenharia da Confiança:** <a href="https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-trust-engineering.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-trust-engineering.md</a><br>* **Catálogo de Casos de Borda em PT-BR:** <a href="https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-edge-cases.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-edge-cases.md</a><br>* **Arquitetura de Transição (MVP para Produção - ISM v1.0):** <a href="https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-mvp-to-production.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-mvp-to-production.md</a><br>* **Eficiência de Contexto e Anti-Bloat:** <a href="https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-token-efficiency.md" rel="noopener">https://github.com/issei/case-agents/blob/main/docs/knowledge/kb-token-efficiency.md</a></p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>
