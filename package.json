@@ -18,7 +18,8 @@
     "i18n:sync:all": "node scripts/sync-i18n.mjs --all",
     "i18n:check": "node scripts/sync-i18n.mjs --check",
     "i18n:install": "node scripts/sync-i18n.mjs --install-model",
-    "a11y:static": "node scripts/a11y-static.mjs"
+    "a11y:static": "node scripts/a11y-static.mjs",
+    "videos:auth": "node scripts/videos/auth.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",

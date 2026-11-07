@@ -166,8 +166,9 @@ Visual: tema Dark Tech e Inter, como em `src/service-operations-2-0.html`. Acess
 
 ## 10. Entrega em PRs
 
-1. **PR A (sem credenciais):** gerador, modelos, testes com *fixtures*, mudanças do §7 e
-   `videos:auth`. Pode ser feito já.
+0. **Antecipado (2026-11-07):** `videos:auth` entrou junto com esta spec, para o Issei gerar o
+   *refresh token* sem esperar o gerador.
+1. **PR A (sem credenciais):** gerador, modelos, testes com *fixtures* e mudanças do §7.
 2. **PR B (com credenciais):** `ingest.mjs`, primeira coleta (metadados de todos os vídeos) e a
    proposta de `temas.yml` para o Issei aprovar.
 3. **PRs seguintes:** lotes de legendas, no limite da cota diária.
@@ -177,6 +178,6 @@ Visual: tema Dark Tech e Inter, como em `src/service-operations-2-0.html`. Acess
 | # | Item | Dono |
 | :--- | :--- | :--- |
 | P1 | Segredos no GitHub (D10). ID do canal já recebido em 2026-11-07 | Issei |
-| P2 | Rodar `npm run videos:auth` uma vez e salvar o token como segredo | Issei, depois do PR A |
+| P2 | Rodar `npm run videos:auth` uma vez e salvar o token como segredo | Issei |
 | P3 | Aprovar a lista de assuntos proposta no PR B | Issei |
 | P4 | Primeira tradução `/en/` das páginas de assunto e do índice (Argos na máquina dele) | Issei |
