@@ -169,6 +169,10 @@ Visual: tema Dark Tech e Inter, como em `src/service-operations-2-0.html`. Acess
 0. **Antecipado (2026-11-07):** `videos:auth` entrou junto com esta spec, para o Issei gerar o
    *refresh token* sem esperar o gerador.
 1. **PR A (sem credenciais):** gerador, modelos, testes com *fixtures* e mudanças do §7.
+   Entregue sem vídeo real em `content/`, então não muda o site no ar. Ficou para o PR B,
+   quando há páginas de verdade: espelhar `temas/` no `scripts/i18n/assets.py`, ligar `/videos`
+   a partir do site (o `audit-site` reprova página órfã) e decidir se as páginas geradas
+   carregam o GTM. Na fase 1 elas saem **sem analytics**, como a página de entrevista.
 2. **PR B (com credenciais):** `ingest.mjs`, primeira coleta (metadados de todos os vídeos) e a
    proposta de `temas.yml` para o Issei aprovar.
 3. **PRs seguintes:** lotes de legendas, no limite da cota diária.

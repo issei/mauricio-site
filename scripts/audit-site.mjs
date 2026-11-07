@@ -173,7 +173,9 @@ for (const slug of arquivos) {
         // Sem extensão pode ser (a) um recurso real servido sem extensão, como
         // os documentos de /.well-known/, ou (b) uma rota que o CloudFront
         // reescreve para .html. Só é erro se não for nenhum dos dois.
-        if (emPublic || emSrc || docs.has(limpo)) continue;
+        // (c) uma página gerada em subpasta (src/videos/, src/temas/ — scripts/gen-videos.mjs),
+        // que não entra em `docs` porque o grafo é das páginas escritas à mão.
+        if (emPublic || emSrc || docs.has(limpo) || existsSync(join(SRC, `${limpo}.html`))) continue;
         erro(p, `link para rota inexistente: ${href}`);
         continue;
       }
