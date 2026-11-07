@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datadog  Do Caos à Clareza | Maurício Yokoyama Issei</title>
+<meta name="description" content="### **Datadog Descomplicado: O Guia Essencial de Observabilidade (APM, Logs, Infraestrutura e mais!)** Neste vídeo, mergulhamos no universo da…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/datadog-do-caos-a-clareza">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="Datadog  Do Caos à Clareza">
+<meta property="og:description" content="### **Datadog Descomplicado: O Guia Essencial de Observabilidade (APM, Logs, Infraestrutura e mais!)** Neste vídeo, mergulhamos no universo da…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/datadog-do-caos-a-clareza">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Datadog  Do Caos à Clareza","description":"### **Datadog Descomplicado: O Guia Essencial de Observabilidade (APM, Logs, Infraestrutura e mais!)** Neste vídeo, mergulhamos no universo da…","thumbnailUrl":"https://i.ytimg.com/vi/3DGDyPcvjqM/maxresdefault.jpg","uploadDate":"2025-10-31","duration":"PT6M42S","embedUrl":"https://www.youtube-nocookie.com/embed/3DGDyPcvjqM","url":"https://mauricio.issei.com.br/videos/datadog-do-caos-a-clareza","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>Datadog  Do Caos à Clareza</h1>
+<p class="meta">Publicado em <time datetime="2025-10-31">31 de outubro de 2025</time> · 6 min 42 s</p>
+
+<div class="yt" data-id="3DGDyPcvjqM" data-title="Vídeo: Datadog  Do Caos à Clareza">
+<img src="https://i.ytimg.com/vi/3DGDyPcvjqM/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: Datadog  Do Caos à Clareza">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=3DGDyPcvjqM" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>### **Datadog Descomplicado: O Guia Essencial de Observabilidade (APM, Logs, Infraestrutura e mais!)**</p>
+<p>Neste vídeo, mergulhamos no universo da **observabilidade** com a **Datadog**, a plataforma unificada que está transformando a maneira como equipes de tecnologia monitoram e gerenciam seus ambientes modernos! 🚀</p>
+<p>Aprenda de forma **clara e acessível** sobre as principais funcionalidades que garantem a saúde e a performance da sua infraestrutura:</p>
+<p>* **Monitoramento de Infraestrutura:** Tenha visibilidade completa de todos os seus hosts, containers e serviços.<br>* **Logs:** Centralize e analise seus logs para *troubleshooting* rápido e eficiente.<br>* **APM (Application Performance Monitoring):** Rastreie cada requisição e descubra *bottlenecks* de performance nas suas aplicações.<br>* **Alertas e Resposta a Incidentes:** Configure notificações inteligentes para agir antes que o problema afete o usuário.</p>
+<p>**🌟 Os Benefícios da Observabilidade Moderna:**</p>
+<p>Descubra como a Datadog é crucial para ambientes de tecnologia, oferecendo resultados reais:</p>
+<p>* **Redução do MTTR (Tempo Médio de Resolução de Problemas):** Resolva incidentes em tempo recorde com dados correlacionados.<br>* **Visibilidade Completa:** Fim dos silos de dados! Tenha uma visão unificada de todo o seu *stack*.<br>* **Otimização de Custos:** Identifique recursos subutilizados e otimize seus gastos na nuvem.</p>
+<p>**🧠 Além do Básico: Recursos Avançados:**</p>
+<p>* **Combate à Fadiga de Alertas:** Aprenda a criar **alertas de alta qualidade** para focar apenas no que realmente importa.<br>* **SLOs (Service Level Objectives):** Use métricas de confiabilidade para garantir a melhor experiência para seus usuários.<br>* **Machine Learning (ML) na Prática:** Veja como a Datadog utiliza **detecção de anomalias** e **monitores compostos** para um monitoramento preditivo e inteligente.</p>
+<p>Se você trabalha com DevOps, SRE, Engenharia de Software ou Infraestrutura, este é o guia definitivo para entender o poder da observabilidade com Datadog!</p>
+<p>👍 **Gostou do conteúdo? Deixe seu Like e Inscreva-se para mais guias e tutoriais!**</p>
+<p>---</p>
+<p>### **📚 Referências e Fontes:**</p>
+<p>1.  **&quot;Alert fatigue: What it is and how to prevent it&quot;** – *Datadog The Monitor*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.datadoghq.com/blog/alert-fatigue-what-it-is-and-how-to-prevent-it/`" rel="noopener">https://www.datadoghq.com/blog/alert-fatigue-what-it-is-and-how-to-prevent-it/`</a></p>
+<p>2.  **&quot;Aligning SRE and security for better incident response&quot;** – *Datadog The Monitor*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.datadoghq.com/blog/aligning-sre-security-incident-response/`" rel="noopener">https://www.datadoghq.com/blog/aligning-sre-security-incident-response/`</a></p>
+<p>3.  **&quot;Aprenda a criar alertas sofisticados com o aprendizado de máquina do Datadog&quot;** – *Toolify AI*<br>    *   URL Inserida (Inferred from source context): `<a href="https://toolify.ai/pt/ai-news/datadog-machine-learning-alerts`" rel="noopener">https://toolify.ai/pt/ai-news/datadog-machine-learning-alerts`</a></p>
+<p>4.  **&quot;Aprimorando a qualidade de serviços com SLOs no Datadog&quot;** – *blog.jlcp.com.br*<br>    *   URL Inserida (Inferred from source context): `<a href="https://blog.jlcp.com.br/aprimorando-a-qualidade-de-servicos-com-slos-no-datadog`" rel="noopener">https://blog.jlcp.com.br/aprimorando-a-qualidade-de-servicos-com-slos-no-datadog`</a></p>
+<p>5.  **&quot;Como Centralizar a Observabilidade E Obter Insights Correlacionados&quot;** – *Datadog*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.datadoghq.com/pt/events/como-centralizar-a-observabilidade/`" rel="noopener">https://www.datadoghq.com/pt/events/como-centralizar-a-observabilidade/`</a></p>
+<p>6.  **&quot;Correlação de alertas do Datadog para reduzir a fadiga/duplicatas de alertas — alguém já usou isso na vida real?&quot;** – *r/sre - Reddit*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.reddit.com/r/sre/comments/datd/datadog_alert_correlation_to_reduce_alert_fatigue/`" rel="noopener">https://www.reddit.com/r/sre/comments/datd/datadog_alert_correlation_to_reduce_alert_fatigue/`</a></p>
+<p>7.  **&quot;Gerenciamento de logs moderno, análise e segurança&quot;** – *Datadog*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.datadoghq.com/product/log-management/`" rel="noopener">https://www.datadoghq.com/product/log-management/`</a></p>
+<p>8.  **&quot;Incident Response&quot;** – *Datadog Service Management*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.datadoghq.com/product/incident-management/`" rel="noopener">https://www.datadoghq.com/product/incident-management/`</a></p>
+<p>9.  **&quot;Investigate Incidents&quot;** – *Datadog Docs*<br>    *   URL Inserida (Inferred from source context): `<a href="https://docs.datadoghq.com/servicemanagement/incident_management/investigate_incidents/`" rel="noopener">https://docs.datadoghq.com/servicemanagement/incident_management/investigate_incidents/`</a></p>
+<p>10. **&quot;Monitore e faça a análise de fluxos críticos de usuários com Synthetic Monitoring e Real User Monitoring (RUM)&quot;** – *Datadog Workshop*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.datadoghq.com/events/workshop-synthetic-rum/`" rel="noopener">https://www.datadoghq.com/events/workshop-synthetic-rum/`</a></p>
+<p>11. **&quot;Monitoring AWS Lambda with Datadog&quot;** – *Datadog The Monitor*<br>    *   URL Inserida (Inferred from source context): `<a href="https://www.datadoghq.com/blog/monitoring-aws-lambda-with-datadog/`" rel="noopener">https://www.datadoghq.com/blog/monitoring-aws-lambda-with-datadog/`</a></p>
+<p>12. **&quot;O que é Datadog? Um Guia Completo para Monitoramento de Infraestrutura e Aplicações&quot;** – *dbsnoop*<br>    *   URL Inserida (Inferred from source context): `<a href="https://dbsnoop.com/o-que-e-datadog-um-guia-completo/`" rel="noopener">https://dbsnoop.com/o-que-e-datadog-um-guia-completo/`</a></p>
+<p>### **#Tags**</p>
+<p>`#Datadog #Observabilidade #APM #DevOps #SRE #Monitoramento #Logs #Infraestrutura #MTTR #SLO #Alerta #CloudComputing`</p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+# Vídeos
+
+Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e transcrição.
+
+## Todos os vídeos
+
+- [O IPO DA ANTHROPIC É O MAIOR TESTE DE ESTRESSE DO MERCADO DE CAPITAIS E DA INTELIGÊNCIA ARTIFICIAL!](https://mauricio.issei.com.br/videos/o-ipo-da-anthropic-e-o-maior-teste-de-estresse-do-mercado) — 5 de novembro de 2026
+- [DA11Y.md: Acessibilidade no Figma Antes do Primeiro Pixel](https://mauricio.issei.com.br/videos/da11y-md-acessibilidade-no-figma-antes-do-primeiro-pixel) — 23 de outubro de 2026
+- [Primeiro ano do canal no Youtube @MauricioIssei](https://mauricio.issei.com.br/videos/primeiro-ano-do-canal-no-youtube-mauricioissei) — 23 de outubro de 2026
+- [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
+- [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
+- [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026
+- [Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?](https://mauricio.issei.com.br/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de) — 17 de outubro de 2026
+- [Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?](https://mauricio.issei.com.br/videos/google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da) — 17 de outubro de 2026
+- [O que faz um Forward-Deployed Engineer (FDE)?](https://mauricio.issei.com.br/videos/o-que-faz-um-forward-deployed-engineer-fde) — 13 de outubro de 2026
+- [A Intenção do Negócio: Especificação Conversacional Estruturada com IA](https://mauricio.issei.com.br/videos/a-intencao-do-negocio-especificacao-conversacional) — 12 de outubro de 2026
+- [Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web](https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado) — 10 de outubro de 2026
+- [A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho](https://mauricio.issei.com.br/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google) — 10 de outubro de 2026
+- [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
+- [Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/videos/aprendizagem-real-o-ciclo-da-aprendizagem-autorregulada) — 8 de outubro de 2026
+- [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
+- [Audiodescrição Não É Só Dizer o Que Vê! (Como Fazer de Forma Prática e Acessível)](https://mauricio.issei.com.br/videos/audiodescricao-nao-e-so-dizer-o-que-ve-como-fazer-de-forma) — 7 de outubro de 2026
+- [NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!](https://mauricio.issei.com.br/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra) — 7 de outubro de 2026
+- [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
+- [Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI](https://mauricio.issei.com.br/videos/como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras) — 2 de outubro de 2026
+- [IA e o Fator Humano: Neurociência, Acessibilidade Radical (A11Y.md) e Comunidade](https://mauricio.issei.com.br/videos/ia-e-o-fator-humano-neurociencia-acessibilidade-radical) — 30 de setembro de 2026
+- [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
+- [Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!](https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala) — 27 de setembro de 2026
+- [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
+- [25 de setembro de 2026](https://mauricio.issei.com.br/videos/25-de-setembro-de-2026) — 25 de setembro de 2026
+- [Google AX: O Como Escalar Milhões de Agentes de IA](https://mauricio.issei.com.br/videos/google-ax-o-como-escalar-milhoes-de-agentes-de-ia) — 24 de setembro de 2026
+- [Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH](https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em) — 23 de setembro de 2026
+- [Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account](https://mauricio.issei.com.br/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em) — 23 de setembro de 2026
+- [Quem está no comando da sua mente: você ou as suas reações automáticas?](https://mauricio.issei.com.br/videos/quem-esta-no-comando-da-sua-mente-voce-ou-as-suas-reacoes) — 23 de setembro de 2026
+- [A Arquitetura da Mente: Filosofia, Metacognição e Liderança Estratégica](https://mauricio.issei.com.br/videos/a-arquitetura-da-mente-filosofia-metacognicao-e-lideranca) — 23 de setembro de 2026
+- [Agentic Resource Discovery (ARD): Como Agentes de IA Descobrem Ferramentas na Web](https://mauricio.issei.com.br/videos/agentic-resource-discovery-ard-como-agentes-de-ia-descobrem) — 23 de setembro de 2026
+- [Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico](https://mauricio.issei.com.br/videos/engenharia-por-tras-da-boutique-empresarial-arquitetura) — 21 de setembro de 2026
+- [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
+- [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
+- [O Ciclo ReAct em Agentes de IA: Como os Agentes Pensam, Agem e Observam](https://mauricio.issei.com.br/videos/o-ciclo-react-em-agentes-de-ia-como-os-agentes-pensam-agem) — 11 de setembro de 2026
+- [Padrão Saga e Transactional Outbox em Microsserviços](https://mauricio.issei.com.br/videos/padrao-saga-e-transactional-outbox-em-microsservicos) — 11 de setembro de 2026
+- [Como o Reef Treina Agentes de IA Autônomos em Tempo Real!](https://mauricio.issei.com.br/videos/como-o-reef-treina-agentes-de-ia-autonomos-em-tempo-real) — 11 de setembro de 2026
+- [Google OKF na Prática: Memória Persistente e Padrões de Conhecimento para Agentes de IA](https://mauricio.issei.com.br/videos/google-okf-na-pratica-memoria-persistente-e-padroes-de) — 11 de setembro de 2026
+- [A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário](https://mauricio.issei.com.br/videos/a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento) — 10 de setembro de 2026
+- [8 de setembro de 2026](https://mauricio.issei.com.br/videos/8-de-setembro-de-2026) — 8 de setembro de 2026
+- [4 de setembro de 2026](https://mauricio.issei.com.br/videos/4-de-setembro-de-2026) — 4 de setembro de 2026
+- [O Efeito Pigmaleão  Como Expectativas Moldam Resultados](https://mauricio.issei.com.br/videos/o-efeito-pigmaleao-como-expectativas-moldam-resultados) — 3 de setembro de 2026
+- [Como o Erro Constrói a Consistência](https://mauricio.issei.com.br/videos/como-o-erro-constroi-a-consistencia) — 3 de setembro de 2026
+- [OmniRoute: Pare de gastar fortunas com assinaturas de IA!](https://mauricio.issei.com.br/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia) — 3 de setembro de 2026
+- [Taxonomia de Bloom  Como Dominar Qualquer Assunto](https://mauricio.issei.com.br/videos/taxonomia-de-bloom-como-dominar-qualquer-assunto) — 3 de setembro de 2026
+- [A ILUSÃO DAS IDEIAS: O que a Ciência Realmente Diz Sobre Criatividade e Brainstorming](https://mauricio.issei.com.br/videos/a-ilusao-das-ideias-o-que-a-ciencia-realmente-diz-sobre) — 1 de setembro de 2026
+- [IA na Educação: Por que dar acesso aos alunos pode ser um erro? (Capacidade antes do Acesso)](https://mauricio.issei.com.br/videos/ia-na-educacao-por-que-dar-acesso-aos-alunos-pode-ser-um) — 29 de agosto de 2026
+- [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
+- [CodeGraph: Inteligência Semântica Local para Agentes de IA de Código](https://mauricio.issei.com.br/videos/codegraph-inteligencia-semantica-local-para-agentes-de-ia) — 26 de agosto de 2026
+- [O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional](https://mauricio.issei.com.br/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do) — 26 de agosto de 2026
+- [Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!](https://mauricio.issei.com.br/videos/desmistificando-o-hyperframes-o-framework-que-transforma) — 22 de agosto de 2026
+- [O Pipeline da Decisão: Como Transformar Confusão em Modelos Matemáticos e IA](https://mauricio.issei.com.br/videos/o-pipeline-da-decisao-como-transformar-confusao-em-modelos) — 19 de agosto de 2026
+- [Por que Go é a linguagem ideal para a era da IA? (Visão do Google)](https://mauricio.issei.com.br/videos/por-que-go-e-a-linguagem-ideal-para-a-era-da-ia-visao-do) — 18 de agosto de 2026
+- [O Tempo da Oportunidade: Por que o Momento é Tudo](https://mauricio.issei.com.br/videos/o-tempo-da-oportunidade-por-que-o-momento-e-tudo) — 13 de agosto de 2026
+- [A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!](https://mauricio.issei.com.br/videos/a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0) — 12 de agosto de 2026
+- [O Paradoxo do Artífice: Por que a Maestria Técnica às vezes fica Invisível? (E como resolver)](https://mauricio.issei.com.br/videos/o-paradoxo-do-artifice-por-que-a-maestria-tecnica-as-vezes) — 7 de agosto de 2026
+- [Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos](https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em) — 7 de agosto de 2026
+- [O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀](https://mauricio.issei.com.br/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador) — 4 de agosto de 2026
+- [Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes](https://mauricio.issei.com.br/videos/domine-a-ia-com-google-antigravity-da-codificacao-a) — 17 de julho de 2026
+- [Blue Lock: A Filosofia do Sucesso e Como Aplicá-la na Sua Carreira](https://mauricio.issei.com.br/videos/blue-lock-a-filosofia-do-sucesso-e-como-aplica-la-na-sua) — 17 de julho de 2026
+- [Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!](https://mauricio.issei.com.br/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation) — 3 de julho de 2026
+- [A Postura Estratégica: Domine sua Rotina e seus Relacionamentos](https://mauricio.issei.com.br/videos/a-postura-estrategica-domine-sua-rotina-e-seus) — 29 de junho de 2026
+- [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
+- [Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção](https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de) — 19 de junho de 2026
+- [A Alquimia do Poder](https://mauricio.issei.com.br/videos/a-alquimia-do-poder) — 10 de junho de 2026
+- [turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS](https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que) — 8 de junho de 2026
+- [O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram](https://mauricio.issei.com.br/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen) — 6 de junho de 2026
+- [Arquitetura SocialSelling: IA para Leads SEM Custos de Infraestrutura!](https://mauricio.issei.com.br/videos/arquitetura-socialselling-ia-para-leads-sem-custos-de) — 6 de junho de 2026
+- [A Arquitetura da Mente](https://mauricio.issei.com.br/videos/a-arquitetura-da-mente) — 27 de maio de 2026
+- [Pare de ler código às cegas! Conheça o Understand-Anything](https://mauricio.issei.com.br/videos/pare-de-ler-codigo-as-cegas-conheca-o-understand-anything) — 26 de maio de 2026
+- [Desvendando o AHP: O Novo Protocolo para Agentes de IA](https://mauricio.issei.com.br/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia) — 24 de maio de 2026
+- [Colapso do Preço na Era da IA](https://mauricio.issei.com.br/videos/colapso-do-preco-na-era-da-ia) — 21 de maio de 2026
+- [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
+- [01 - A Crise Cognitiva](https://mauricio.issei.com.br/videos/01-a-crise-cognitiva) — 18 de maio de 2026
+- [O Orquestrador Soberano: O Fim do Código e os Perigos do Vibe Coding](https://mauricio.issei.com.br/videos/o-orquestrador-soberano-o-fim-do-codigo-e-os-perigos-do) — 18 de maio de 2026
+- [07 - Industrialização Cognitiva](https://mauricio.issei.com.br/videos/07-industrializacao-cognitiva) — 18 de maio de 2026
+- [04 - A Ilusão do Pensamento](https://mauricio.issei.com.br/videos/04-a-ilusao-do-pensamento) — 18 de maio de 2026
+- [O Novo Paradigma da IA: De Chatbots a Agentes Autônomos (Como funciona?)](https://mauricio.issei.com.br/videos/o-novo-paradigma-da-ia-de-chatbots-a-agentes-autonomos-como) — 18 de maio de 2026
+- [05 - Orchestration Paradigm](https://mauricio.issei.com.br/videos/05-orchestration-paradigm) — 18 de maio de 2026
+- [06 - A Revelação Sistêmica](https://mauricio.issei.com.br/videos/06-a-revelacao-sistemica) — 18 de maio de 2026
+- [08 - Trabalho na Era da IA](https://mauricio.issei.com.br/videos/08-trabalho-na-era-da-ia) — 18 de maio de 2026
+- [OpenKB - Criando sua base de conhecimento inteligente](https://mauricio.issei.com.br/videos/openkb-criando-sua-base-de-conhecimento-inteligente) — 7 de maio de 2026
+- [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
+- [Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch](https://mauricio.issei.com.br/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon) — 5 de maio de 2026
+- [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026
+- [Prompts e Notebooks](https://mauricio.issei.com.br/videos/prompts-e-notebooks) — 4 de maio de 2026
+- [Análise  Lambda Web Adapter](https://mauricio.issei.com.br/videos/analise-lambda-web-adapter) — 26 de abril de 2026
+- [O Seu Site Está Pronto para IA?](https://mauricio.issei.com.br/videos/o-seu-site-esta-pronto-para-ia) — 26 de abril de 2026
+- [Mitos da Gestão: Por que as práticas tradicionais estão sabotando sua empresa?](https://mauricio.issei.com.br/videos/mitos-da-gestao-por-que-as-praticas-tradicionais-estao) — 13 de abril de 2026
+- [O Futuro do E-commerce: A Nova Arquitetura do Comércio com Agentes de IA](https://mauricio.issei.com.br/videos/o-futuro-do-e-commerce-a-nova-arquitetura-do-comercio-com) — 13 de abril de 2026
+- [Por Que Sua IA Falha? (O Custo Oculto do "Crash Silencioso")](https://mauricio.issei.com.br/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso) — 11 de abril de 2026
+- [Gemma 4  Futuro da IA On Device](https://mauricio.issei.com.br/videos/gemma-4-futuro-da-ia-on-device) — 6 de abril de 2026
+- [TI  De Suporte a Valor](https://mauricio.issei.com.br/videos/ti-de-suporte-a-valor) — 22 de março de 2026
+- [Descubra a anatomia de uma IA Moderna baseada em Skills e Playbooks.](https://mauricio.issei.com.br/videos/descubra-a-anatomia-de-uma-ia-moderna-baseada-em-skills-e) — 19 de março de 2026
+- [A Jornada](https://mauricio.issei.com.br/videos/a-jornada) — 18 de março de 2026
+- [A Origem do Transformer: A Revolução que Criou a IA Moderna](https://mauricio.issei.com.br/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna) — 18 de março de 2026
+- [DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total](https://mauricio.issei.com.br/videos/devops-salesforce-integrando-devin-ai-flosum-e-github-para) — 6 de março de 2026
+- [Devin: De Pares a Paralelo | A Revolução da Engenharia de Software com IA](https://mauricio.issei.com.br/videos/devin-de-pares-a-paralelo-a-revolucao-da-engenharia-de) — 26 de fevereiro de 2026
+- [Atenção Sequencial  "O Foco da IA"](https://mauricio.issei.com.br/videos/atencao-sequencial-o-foco-da-ia) — 13 de fevereiro de 2026
+- [Autonomia Cognitiva: Como Retomar o Controle da Sua Mente em um Mundo de Distrações](https://mauricio.issei.com.br/videos/autonomia-cognitiva-como-retomar-o-controle-da-sua-mente-em) — 13 de fevereiro de 2026
+- [Produção Fora do Ar](https://mauricio.issei.com.br/videos/producao-fora-do-ar) — 4 de fevereiro de 2026
+- [PaperBanana: IA para Análise e Revisão de Artigos Científicos](https://mauricio.issei.com.br/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos) — 3 de fevereiro de 2026
+- [A IA Ganha um Corpo](https://mauricio.issei.com.br/videos/a-ia-ganha-um-corpo) — 1 de fevereiro de 2026
+- [A Gramática da Narrativa Visual](https://mauricio.issei.com.br/videos/a-gramatica-da-narrativa-visual) — 29 de janeiro de 2026
+- [Rompendo o Limite Serverless](https://mauricio.issei.com.br/videos/rompendo-o-limite-serverless) — 29 de janeiro de 2026
+- [O Teatro da Virtude](https://mauricio.issei.com.br/videos/o-teatro-da-virtude) — 29 de janeiro de 2026
+- [Inversão de Controle (IoC) explicada de forma simples e prática](https://mauricio.issei.com.br/videos/inversao-de-controle-ioc-explicada-de-forma-simples-e) — 23 de janeiro de 2026
+- [A busca por uma régua melhor: por que nossas métricas falham?](https://mauricio.issei.com.br/videos/a-busca-por-uma-regua-melhor-por-que-nossas-metricas-falham) — 23 de janeiro de 2026
+- [Desmistificando Story Points: como estimar melhor em times ágeis](https://mauricio.issei.com.br/videos/desmistificando-story-points-como-estimar-melhor-em-times) — 23 de janeiro de 2026
+- [Dominando a Avaliação de IA: como analisar, validar e evoluir soluções inteligentes](https://mauricio.issei.com.br/videos/dominando-a-avaliacao-de-ia-como-analisar-validar-e-evoluir) — 23 de janeiro de 2026
+- [O Método Stutz Explicado: Revolução ou Apenas Marketing?](https://mauricio.issei.com.br/videos/o-metodo-stutz-explicado-revolucao-ou-apenas-marketing) — 20 de janeiro de 2026
+- [O Grande Rebalanceamento](https://mauricio.issei.com.br/videos/o-grande-rebalanceamento) — 17 de janeiro de 2026
+- [O Blueprint para IA Confiável](https://mauricio.issei.com.br/videos/o-blueprint-para-ia-confiavel) — 17 de janeiro de 2026
+- [O Padrão Stateful Serverless](https://mauricio.issei.com.br/videos/o-padrao-stateful-serverless) — 16 de janeiro de 2026
+- [Sua Empresa é uma Fábrica ou uma Cozinha Viva?](https://mauricio.issei.com.br/videos/sua-empresa-e-uma-fabrica-ou-uma-cozinha-viva) — 13 de janeiro de 2026
+- [Por que copiar a "Fórmula do Sucesso" vai destruir sua empresa?](https://mauricio.issei.com.br/videos/por-que-copiar-a-formula-do-sucesso-vai-destruir-sua-empresa) — 12 de janeiro de 2026
+- [Guia Prático do C4 Model](https://mauricio.issei.com.br/videos/guia-pratico-do-c4-model) — 11 de janeiro de 2026
+- [O Segredo Oculto dos QR Codes: De Pixels a Obras de Arte](https://mauricio.issei.com.br/videos/o-segredo-oculto-dos-qr-codes-de-pixels-a-obras-de-arte) — 9 de janeiro de 2026
+- [O que é Otimização? Do Algoritmo Simplex ao Mundo Real](https://mauricio.issei.com.br/videos/o-que-e-otimizacao-do-algoritmo-simplex-ao-mundo-real) — 7 de janeiro de 2026
+- [O Segredo Filosófico da série Dark: Do Hermetismo ao Transumanismo](https://mauricio.issei.com.br/videos/o-segredo-filosofico-da-serie-dark-do-hermetismo-ao) — 7 de janeiro de 2026
+- [WebRTC  A Magia da Comunicação em Tempo Real](https://mauricio.issei.com.br/videos/webrtc-a-magia-da-comunicacao-em-tempo-real) — 6 de janeiro de 2026
+- [Desvendando Machine Learning: conceitos, aplicações e impactos reais](https://mauricio.issei.com.br/videos/desvendando-machine-learning-conceitos-aplicacoes-e) — 4 de janeiro de 2026
+- [O Fim do "Chat" na IA? Conheça o A2UI, a Revolução Visual do Google para 2026!](https://mauricio.issei.com.br/videos/o-fim-do-chat-na-ia-conheca-o-a2ui-a-revolucao-visual-do) — 23 de dezembro de 2025
+- [O Algoritmo da Consistência](https://mauricio.issei.com.br/videos/o-algoritmo-da-consistencia) — 19 de dezembro de 2025
+- [Notebooks Além da Célula: O Poder, os Perigos e o Futuro do Desenvolvimento](https://mauricio.issei.com.br/videos/notebooks-alem-da-celula-o-poder-os-perigos-e-o-futuro-do) — 17 de dezembro de 2025
+- [MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA](https://mauricio.issei.com.br/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e) — 15 de dezembro de 2025
+- [DANDO VOZ À TECNOLOGIA: A Revolução do Text-to-Speech com Inteligência Artificial](https://mauricio.issei.com.br/videos/dando-voz-a-tecnologia-a-revolucao-do-text-to-speech-com) — 15 de dezembro de 2025
+- [DESMISTIFICANDO A API DO NOTION: O Guia Essencial para Automação e Integração](https://mauricio.issei.com.br/videos/desmistificando-a-api-do-notion-o-guia-essencial-para) — 15 de dezembro de 2025
+- [O Treinamento Galateia: O Guia Definitivo para Moldar o Seu Próprio Potencial](https://mauricio.issei.com.br/videos/o-treinamento-galateia-o-guia-definitivo-para-moldar-o-seu) — 7 de dezembro de 2025
+- [O papel da Inteligência Artificial no UX/UI Design](https://mauricio.issei.com.br/videos/o-papel-da-inteligencia-artificial-no-ux-ui-design) — 5 de dezembro de 2025
+- [SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini](https://mauricio.issei.com.br/videos/seu-novo-assistente-de-ia-automacao-sem-codigo-com-google) — 5 de dezembro de 2025
+- [IA E CONFIABILIDADE DE SISTEMAS: De Reativo a Proativo (SRE, Machine Learning e XAI)](https://mauricio.issei.com.br/videos/ia-e-confiabilidade-de-sistemas-de-reativo-a-proativo-sre) — 5 de dezembro de 2025
+- [A linguagem Java está completando 30 anos!](https://mauricio.issei.com.br/videos/a-linguagem-java-esta-completando-30-anos) — 5 de dezembro de 2025
+- [CODE WIKI: O Fim da Documentação Desatualizada? A IA que Escreve seus Docs](https://mauricio.issei.com.br/videos/code-wiki-o-fim-da-documentacao-desatualizada-a-ia-que) — 4 de dezembro de 2025
+- [SPECS & IA: O Novo Ciclo de Desenvolvimento de Software (Especificação como Diálogo)](https://mauricio.issei.com.br/videos/specs-ia-o-novo-ciclo-de-desenvolvimento-de-software) — 3 de dezembro de 2025
+- [O Fim do Vibe Coding! Apresentando o Specification-Driven Development (SDD)](https://mauricio.issei.com.br/videos/o-fim-do-vibe-coding-apresentando-o-specification-driven) — 3 de dezembro de 2025
+- [TERRAFORM: De Código a Plataforma (Escala, Segurança e Policy as Code)](https://mauricio.issei.com.br/videos/terraform-de-codigo-a-plataforma-escala-seguranca-e-policy) — 25 de novembro de 2025
+- [DOMINANDO DADOS NO SALESFORCE: Escalabilidade, Governor Limits e Arquitetura Lambda](https://mauricio.issei.com.br/videos/dominando-dados-no-salesforce-escalabilidade-governor) — 25 de novembro de 2025
+- [REVOPS: O Motor do Crescimento que Unifica Vendas, Marketing e Sucesso do Cliente](https://mauricio.issei.com.br/videos/revops-o-motor-do-crescimento-que-unifica-vendas-marketing) — 23 de novembro de 2025
+- [AWS API GATEWAY: Qual Tipo de API Escolher? (REST, HTTP e WebSocket)](https://mauricio.issei.com.br/videos/aws-api-gateway-qual-tipo-de-api-escolher-rest-http-e) — 23 de novembro de 2025
+- [AWS CloudFormation](https://mauricio.issei.com.br/videos/aws-cloudformation) — 21 de novembro de 2025
+- [GOOGLE ANTIGRAVITY: O Fim do Copiloto? O Futuro da Programação com Agentes de IA](https://mauricio.issei.com.br/videos/google-antigravity-o-fim-do-copiloto-o-futuro-da) — 19 de novembro de 2025
+- [AWS GLUE: Otimize seus Jobs Spark e Reduza Custos (Guia Prático para Iniciantes)](https://mauricio.issei.com.br/videos/aws-glue-otimize-seus-jobs-spark-e-reduza-custos-guia) — 18 de novembro de 2025
+- [APRENDER A APRENDER: O Guia Definitivo para Metacognição e Pensamento Computacional](https://mauricio.issei.com.br/videos/aprender-a-aprender-o-guia-definitivo-para-metacognicao-e) — 18 de novembro de 2025
+- [AWS Glue & Salesforce  Guia de Dados](https://mauricio.issei.com.br/videos/aws-glue-salesforce-guia-de-dados) — 12 de novembro de 2025
+- [Arquitetura Corporativa](https://mauricio.issei.com.br/videos/arquitetura-corporativa) — 12 de novembro de 2025
+- [VERTEX AI AGENTES DE AÇÃO: Construindo Agentes de IA que Realmente Agem (ReAct e OpenAPI)](https://mauricio.issei.com.br/videos/vertex-ai-agentes-de-acao-construindo-agentes-de-ia-que) — 12 de novembro de 2025
+- [Build an AI Tool with Spring AI](https://mauricio.issei.com.br/videos/build-an-ai-tool-with-spring-ai) — 12 de novembro de 2025
+- [Construindo seu Agente de IA](https://mauricio.issei.com.br/videos/construindo-seu-agente-de-ia) — 8 de novembro de 2025
+- [IA  de Copiloto a Visão Futura](https://mauricio.issei.com.br/videos/ia-de-copiloto-a-visao-futura) — 8 de novembro de 2025
+- [Arquitetura de Integrações](https://mauricio.issei.com.br/videos/arquitetura-de-integracoes) — 8 de novembro de 2025
+- [Data Mesh](https://mauricio.issei.com.br/videos/data-mesh) — 8 de novembro de 2025
+- [A Filosofia do Código Limpo](https://mauricio.issei.com.br/videos/a-filosofia-do-codigo-limpo) — 6 de novembro de 2025
+- [Inferência Causal](https://mauricio.issei.com.br/videos/inferencia-causal) — 5 de novembro de 2025
+- [AWS Transit Gateway](https://mauricio.issei.com.br/videos/aws-transit-gateway) — 4 de novembro de 2025
+- [Datadog  Do Caos à Clareza](https://mauricio.issei.com.br/videos/datadog-do-caos-a-clareza) — 31 de outubro de 2025
+- [A Confiabilidade do Sistema](https://mauricio.issei.com.br/videos/a-confiabilidade-do-sistema) — 31 de outubro de 2025
+- [O Pipeline Inteligente](https://mauricio.issei.com.br/videos/o-pipeline-inteligente) — 31 de outubro de 2025
+- [IA em PT BR  A Evolução](https://mauricio.issei.com.br/videos/ia-em-pt-br-a-evolucao) — 29 de outubro de 2025
+- [As Duas Histórias da Ansiedade](https://mauricio.issei.com.br/videos/as-duas-historias-da-ansiedade) — 29 de outubro de 2025
+- [Ganhando a Guerra pela Atenção](https://mauricio.issei.com.br/videos/ganhando-a-guerra-pela-atencao) — 29 de outubro de 2025
+- [Da Ideia ao App em Minutos](https://mauricio.issei.com.br/videos/da-ideia-ao-app-em-minutos) — 28 de outubro de 2025
+- [A Mentalidade do Arquiteto](https://mauricio.issei.com.br/videos/a-mentalidade-do-arquiteto) — 28 de outubro de 2025
+- [Computação Quântica  A Espada de Dois Gumes](https://mauricio.issei.com.br/videos/computacao-quantica-a-espada-de-dois-gumes) — 28 de outubro de 2025
+- [Construindo para a Falha](https://mauricio.issei.com.br/videos/construindo-para-a-falha) — 27 de outubro de 2025
+- [Duas Formas de Pensar](https://mauricio.issei.com.br/videos/duas-formas-de-pensar) — 27 de outubro de 2025
+- [Padrões Kubernetes](https://mauricio.issei.com.br/videos/padroes-kubernetes) — 27 de outubro de 2025
+- [Dados com NumPy e pandas](https://mauricio.issei.com.br/videos/dados-com-numpy-e-pandas) — 27 de outubro de 2025
+- [O NotebookLM](https://mauricio.issei.com.br/videos/o-notebooklm) — 27 de outubro de 2025
+- [Desbloqueando a IA com MCP](https://mauricio.issei.com.br/videos/desbloqueando-a-ia-com-mcp) — 27 de outubro de 2025
+- [A Equipe de IA  Sonho e Ruína](https://mauricio.issei.com.br/videos/a-equipe-de-ia-sonho-e-ruina) — 27 de outubro de 2025
+- [Galaxy AI  Assistente de Chamada](https://mauricio.issei.com.br/videos/galaxy-ai-assistente-de-chamada) — 27 de outubro de 2025
+- [Dominando a Persuasão](https://mauricio.issei.com.br/videos/dominando-a-persuasao) — 26 de outubro de 2025
+- [Arquitetando o Engajamento](https://mauricio.issei.com.br/videos/arquitetando-o-engajamento) — 26 de outubro de 2025
+- [Kit do Arquiteto de IA](https://mauricio.issei.com.br/videos/kit-do-arquiteto-de-ia) — 23 de outubro de 2025
+- [A Mente Estratégica](https://mauricio.issei.com.br/videos/a-mente-estrategica) — 23 de outubro de 2025
+- [Nossa Doc está pronta para IA](https://mauricio.issei.com.br/videos/nossa-doc-esta-pronta-para-ia) — 23 de outubro de 2025
+- [Engenharia de Prompts](https://mauricio.issei.com.br/videos/engenharia-de-prompts) — 23 de outubro de 2025

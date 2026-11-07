@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Mesh | Maurício Yokoyama Issei</title>
+<meta name="description" content="**Prepare-se para revolucionar sua arquitetura de dados!** Neste vídeo, exploramos a filosofia do **Data Mesh**, um paradigma que está transformando a…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/data-mesh">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="Data Mesh">
+<meta property="og:description" content="**Prepare-se para revolucionar sua arquitetura de dados!** Neste vídeo, exploramos a filosofia do **Data Mesh**, um paradigma que está transformando a…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/data-mesh">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Data Mesh","description":"**Prepare-se para revolucionar sua arquitetura de dados!** Neste vídeo, exploramos a filosofia do **Data Mesh**, um paradigma que está transformando a…","thumbnailUrl":"https://i.ytimg.com/vi/yXRNd2aGmuA/maxresdefault.jpg","uploadDate":"2025-11-08","duration":"PT5M1S","embedUrl":"https://www.youtube-nocookie.com/embed/yXRNd2aGmuA","url":"https://mauricio.issei.com.br/videos/data-mesh","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>Data Mesh</h1>
+<p class="meta">Publicado em <time datetime="2025-11-08">8 de novembro de 2025</time> · 5 min 1 s</p>
+
+<div class="yt" data-id="yXRNd2aGmuA" data-title="Vídeo: Data Mesh">
+<img src="https://i.ytimg.com/vi/yXRNd2aGmuA/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: Data Mesh">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=yXRNd2aGmuA" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>**Prepare-se para revolucionar sua arquitetura de dados!**</p>
+<p>Neste vídeo, exploramos a filosofia do **Data Mesh**, um paradigma que está transformando a maneira como as organizações estruturam e gerenciam seus dados. Descubra como migrar de plataformas de dados tradicionais centralizadas para um modelo distribuído, orientado por domínios, que promove maior **autonomia** e um ritmo mais rápido de **inovação**.</p>
+<p>Organizações de todos os tamanhos reconhecem que os dados são um facilitador fundamental para aumentar a inovação e gerar valor. Ao adotar uma mentalidade que fornece **produtos de dados** a partir de equipes especializadas, ao invés de uma plataforma centralizada, você pode se tornar mais ágil e produtivo.</p>
+<p>---</p>
+<p>### Tópicos Abordados: A Revolução do Data Mesh</p>
+<p>#### 1. O Paradigma do Data Mesh<br>O Data Mesh representa uma mudança de equipes de dados tradicionais, centralizadas, para uma abordagem **distribuída e orientada por domínio**. Em vez de depender de uma única equipe monolítica para gerenciar todas as tarefas de dados, o Data Mesh defende a criação de equipes menores e autônomas alinhadas a domínios de negócios específicos. Este modelo reduz o atrito para o fluxo de informações, garantindo que o produtor seja responsável pelos conjuntos de dados.</p>
+<p>**Benefícios Chave:**<br>*   **Aumento de Autonomia:** As linhas de negócios (LOBs) e unidades organizacionais operam de forma autônoma.<br>*   **Maior Agilidade:** Organizações que adotam Data Mesh relatam um tempo de lançamento no mercado 40% mais rápido para produtos de dados.<br>*   **Propriedade Clara:** Os especialistas em domínio são os mais capazes de implementar e operar a solução técnica para processar e produzir o conjunto de dados.</p>
+<p>#### 2. Princípios Fundamentais (Os Objetivos de Design)<br>O design do Data Mesh se baseia em objetivos cruciais:<br>*   **Dados como Produto:** Cada domínio é responsável por criar, operar, servir e resolver problemas de seus dados de ponta a ponta. A precisão e a responsabilidade dos dados são do proprietário dentro do domínio.<br>*   **Governança de Dados Federada:** Garante que os dados sejam seguros e precisos, fornecendo descoberta central de dados, emissão de relatórios e auditoria para simplificar a localização dos dados e verificar a conformidade.<br>*   **Acesso Comum:** Os dados devem ser facilmente consumidos por analistas de dados, cientistas de dados e serviços de analytics (como Amazon Athena, Amazon Redshift e Amazon SageMaker). Os ativos de dados devem ser detectáveis a partir de um **catálogo de dados central**.</p>
+<p>#### 3. Implementando o Data Mesh na AWS<br>Demonstramos como a arquitetura **Lake House** serve como uma base ideal para suportar um Data Mesh, utilizando serviços nativos da AWS:<br>*   **AWS Glue:** Serviço ETL (Extract, Transform, and Load) totalmente gerenciado e sem servidor, crucial para processar e preparar dados em pipelines de domínio.<br>*   **AWS Lake Formation:** Usado para implementar a **governança de dados** dentro e entre domínios. Ele define centralmente políticas de segurança, governança e auditoria, além de fornecer controle de acesso uniforme para compartilhamento de dados.<br>*   **Fluxo Produtor-Consumidor:** O compartilhamento de dados entre domínios (produtores e consumidores, que residem em contas separadas da AWS) é feito de forma segura através de **links de recursos** do Lake Formation, garantindo que os dados não sejam copiados para a conta central e que a propriedade permaneça com o produtor.</p>
+<p>#### 4. Estrutura de Equipe (Data Mesh Roles)<br>O sucesso do Data Mesh depende da estrutura organizacional. Conheça as responsabilidades das funções essenciais para uma equipe Data Mesh:<br>*   **Data Product Owner:** Gerencia a visão e o roadmap do produto de dados, garantindo que ele entregue valor.<br>*   **Domain Data Steward:** Atua como guardião dos ativos de dados, garantindo a qualidade, governança e conformidade dentro de seu domínio.<br>*   **Data Engineer:** Constrói e mantém a infraestrutura, incluindo pipelines e sistemas de armazenamento, assegurando escalabilidade e desempenho.<br>*   **Data Architect:** Define a arquitetura geral, domínios, schemas e padrões de integração.<br>*   **Data Analyst/Data Scientist:** Extrai insights e cria modelos baseados nos produtos de dados do domínio.</p>
+<p>---</p>
+<p>### Recursos Adicionais e Créditos</p>
+<p>Este conteúdo é baseado em insights e arquitetura detalhada originalmente descrita no blog da AWS.</p>
+<p>**Autores do Artigo Original:** Nivas Shankar, Ian Meyers, Zach Mitchell e Roy Hasson.<br>**Arquitetura Implementada:** Utilizando AWS Lake Formation e AWS Glue.<br>**Conceito Data Mesh:** Cunhado por Zhamak Dehghani, da Thoughtworks, em 2019.</p>
+<p>---<br>✅ **Gostou do conteúdo?** Deixe seu like, inscreva-se no canal para mais insights sobre arquitetura de dados e compartilhe com sua equipe!</p>
+<p>**#DataMesh #AWS #AWSGlue #LakeFormation #ArquiteturaDeDados #DataAnalytics #GovernançaDeDados #ProdutoDeDados**</p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>

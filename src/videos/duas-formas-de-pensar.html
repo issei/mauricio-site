@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duas Formas de Pensar | Maurício Yokoyama Issei</title>
+<meta name="description" content="**Duas Formas de Pensar: TDD e Estatística — O Segredo de Líderes para Dominar a Complexidade e a Incerteza** O que o desenvolvimento de software e a…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/duas-formas-de-pensar">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="Duas Formas de Pensar">
+<meta property="og:description" content="**Duas Formas de Pensar: TDD e Estatística — O Segredo de Líderes para Dominar a Complexidade e a Incerteza** O que o desenvolvimento de software e a…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/duas-formas-de-pensar">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Duas Formas de Pensar","description":"**Duas Formas de Pensar: TDD e Estatística — O Segredo de Líderes para Dominar a Complexidade e a Incerteza** O que o desenvolvimento de software e a…","thumbnailUrl":"https://i.ytimg.com/vi/-WRHywpPe9g/maxresdefault.jpg","uploadDate":"2025-10-27","duration":"PT7M14S","embedUrl":"https://www.youtube-nocookie.com/embed/-WRHywpPe9g","url":"https://mauricio.issei.com.br/videos/duas-formas-de-pensar","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>Duas Formas de Pensar</h1>
+<p class="meta">Publicado em <time datetime="2025-10-27">27 de outubro de 2025</time> · 7 min 14 s</p>
+
+<div class="yt" data-id="-WRHywpPe9g" data-title="Vídeo: Duas Formas de Pensar">
+<img src="https://i.ytimg.com/vi/-WRHywpPe9g/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: Duas Formas de Pensar">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=-WRHywpPe9g" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>**Duas Formas de Pensar: TDD e Estatística — O Segredo de Líderes para Dominar a Complexidade e a Incerteza**</p>
+<p>O que o desenvolvimento de software e a análise estatística têm em comum? Mais do que você imagina! 🤯</p>
+<p>Nesta análise, vamos mergulhar em dois universos aparentemente opostos para descobrir um **segredo poderoso e estruturado** que líderes usam para construir confiança e navegar pela incerteza em qualquer área: do código que pifa à meia-noite ([[00:20](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=20" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=20</a>)]) aos dilemas da vida.</p>
+<p>**Aprenda a aplicar a &quot;Mentalidade do Feedback&quot; na sua vida e trabalho:**</p>
+<p>1.  **A Disciplina do Código: Test Driven Development (TDD)**<br>    * **Invertendo o Jogo:** Entenda por que no TDD, você escreve o teste para uma funcionalidade que ainda não existe **antes** de escrever o código ([[01:25](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=85" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=85</a>)]).<br>    * **O Ciclo Vermelho-Verde-Refatorar:** Descubra como esse ritmo de trabalho força você a trabalhar em &quot;passos de bebê&quot;, garantindo que cada pedacinho do sistema funcione e resultando em um design mais limpo e confiável ([[01:51](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=111" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=111</a>)], [[02:14](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=134" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=134</a>)]).<br>    * **TDD é Design:** Aprenda como escrever o teste primeiro te força a pensar em como o código será usado, criando uma &quot;rede de segurança&quot; que permite fazer mudanças com confiança ([[02:21](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=141" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=141</a>)]).</p>
+<p>2.  **A Arma da Incerteza: O Pensamento Estatístico**<br>    * **Desafiando a Intuição:** A estatística não é sobre fatos chatos, mas uma ferramenta poderosa para navegar na incerteza da vida, revelando verdades profundas que nossa intuição simplesmente esconde ([[02:46](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=166" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=166</a>)], [[04:11](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=251" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=251</a>)]).<br>    * **Média vs. Mediana:** Veja como a simples escolha de uma métrica pode mudar completamente a história contada por um conjunto de dados, distorcendo ou revelando a realidade ([[03:47](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=227" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=227</a>)]).<br>    * **O Problema de Monty Hall:** Faça o famoso teste de intuição e descubra o choque matemático que prova que **trocar de porta dobra a chance de ganhar**, e por que a nossa intuição nos engana neste caso ([[04:21](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=261" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=261</a>)], [[05:13](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=313" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=313</a>)]).</p>
+<p>3.  **A Grande Lição: Unindo os Pontos**<br>    * **A Mentalidade do Feedback:** Descubra como o TDD e o pensamento estatístico são, na essência, sistemas para gerenciar a incerteza usando **feedback constante** – o TDD com testes e a Estatística com dados ([[05:52](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=352" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=352</a>)]).<br>    * **Como Aplicar a Humildade e o Processo:** A chave para lidar com a complexidade é transformar problemas gigantes em uma série de perguntas pequenas, validando cada passo com evidências e sempre preferindo o simples ([[06:28](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=388" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=388</a>)], [[06:40](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=400" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g&amp;t=400</a>)]).</p>
+<p>**#Hashtags:**<br>\#TDD \#Estatística \#PensamentoEstatístico \#DesenvolvimentoDeSoftware \#Incerteza \#Complexidade \#Liderança \#TomadaDeDecisão \#MentalidadeDeCrescimento</p>
+<p>***<br>Link do vídeo: [Duas Formas de Pensar](<a href="http://www.youtube.com/watch?v=-WRHywpPe9g" rel="noopener">http://www.youtube.com/watch?v=-WRHywpPe9g</a>)<br><a href="http://googleusercontent.com/youtube_content/3" rel="noopener">http://googleusercontent.com/youtube_content/3</a></p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>

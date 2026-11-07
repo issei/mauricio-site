@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos | Maurício Yokoyama Issei</title>
+<meta name="description" content="Neste vídeo, exploramos a arquitetura de dependências sob uma lente inusitada: a filosofia da &quot;domesticação&quot; (apprivoiser) presente em O Pequeno…">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos">
+<meta property="og:description" content="Neste vídeo, exploramos a arquitetura de dependências sob uma lente inusitada: a filosofia da &quot;domesticação&quot; (apprivoiser) presente em O Pequeno…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos","description":"Neste vídeo, exploramos a arquitetura de dependências sob uma lente inusitada: a filosofia da \"domesticação\" (apprivoiser) presente em O Pequeno…","thumbnailUrl":"https://i.ytimg.com/vi/yNfs2pFXdUc/maxresdefault.jpg","uploadDate":"2026-08-07","duration":"PT5M35S","embedUrl":"https://www.youtube-nocookie.com/embed/yNfs2pFXdUc","url":"https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"}}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">Maurício Yokoyama Issei</a><a href="/videos">Vídeos</a></nav></header>
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos</h1>
+<p class="meta">Publicado em <time datetime="2026-08-07">7 de agosto de 2026</time> · 5 min 35 s</p>
+
+<div class="yt" data-id="yNfs2pFXdUc" data-title="Vídeo: Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos">
+<img src="https://i.ytimg.com/vi/yNfs2pFXdUc/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=yNfs2pFXdUc" rel="noopener">Abrir no YouTube</a></p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>Neste vídeo, exploramos a arquitetura de dependências sob uma lente inusitada: a filosofia da &quot;domesticação&quot; (apprivoiser) presente em O Pequeno Príncipe. Em sistemas complexos, uma dependência não é apenas um componente externo; ela é um vínculo técnico e ético que reorganiza o ecossistema de quem a integra.<br>O que você aprenderá neste vídeo:<br>De Componente Genérico a Singular: Como o processo de integração transforma uma biblioteca &quot;comum entre milhares de outras&quot; em algo único e insubstituível para o seu projeto através da história compartilhada e da customização.<br>O Rito da Integração: Analisamos como a regularidade e os rituais de implementação criam previsibilidade e confiança, permitindo que o sistema utilize essa dependência como uma &quot;base segura&quot; para a exploração de novas funcionalidades.<br>Responsabilidade Existencial Técnica: Discutimos a máxima de que &quot;toda ação de aproximação gera um débito ético&quot;. Ao escolher uma dependência, o arquiteto torna-se eternamente responsável pelos efeitos dessa conexão no horizonte da memória e das consequências sistêmicas.<br>Interdependência vs. Codependência: O desafio de criar vínculos que ampliem a capacidade de agir do sistema em vez de gerar um &quot;fardo eterno&quot; ou uma dependência rígida que anule a autonomia dos componentes.<br>A Ética da Desconexão: Como lidar com a vulnerabilidade à perda e o encerramento de vínculos sem banalizar a profundidade do que foi construído.<br>Conceito Central: Cativar um componente em uma arquitetura significa não tratá-lo como descartável. A responsabilidade técnica nasce do investimento de tempo e cuidado; ela exige que reconheçamos a vulnerabilidade que ajudamos a produzir ao criar um laço entre sistemas.</p>
+<p>#ArquiteturaDeSistemas #Dependências #EngenhariaDeSoftware #ÉticaTécnica #SistemasComplexos #PequenoPríncipe #ArquiteturaDeSoftware #VínculosSistêmicos</p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+document.querySelectorAll('.yt[data-id]').forEach(function (box) {
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
+</body>
+</html>
