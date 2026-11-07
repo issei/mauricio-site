@@ -212,7 +212,11 @@ for (const [slug, html] of docs) {
 
 for (const slug of publicas) {
   if (!noCatalogo.has(slug)) aviso(`${slug}.html`, 'página pública fora de catalogo.html');
-  if (!apontadas.has(slug)) erro(`${slug}.html`, 'órfã — nenhuma página do site aponta para ela');
+  if (apontadas.has(slug)) continue;
+  // Índice gerado por scripts/gen-videos.mjs: nasce na coleta automática, antes de
+  // alguém decidir onde o site o liga. Aviso, não erro — o sitemap já o oferece.
+  if (docs.get(slug).includes('GERADO por scripts/gen-videos.mjs')) aviso(`${slug}.html`, 'órfã — gerada, ainda sem link no site');
+  else erro(`${slug}.html`, 'órfã — nenhuma página do site aponta para ela');
 }
 
 /* ── 4. Sincronia entre as fontes da verdade ──────────────────────────────── */

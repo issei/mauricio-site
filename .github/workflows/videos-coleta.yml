@@ -1,0 +1,90 @@
+name: Vídeos - coleta do canal
+
+# Coleta do canal do YouTube → content/videos/ → páginas geradas, entregue como PR.
+# Spec: docs/specs/pages/videos-youtube/SDD-fase-1.md §5 e §10.
+#
+# NÃO publica nada: só abre (ou atualiza) o PR do branch `videos/coleta`. O que
+# vai ao ar continua passando pelo merge do Issei na main (que dispara o deploy).
+#
+# Diária enquanto houver legendas pendentes: a cota da API baixa ~35 por dia, e
+# cada execução continua de onde a anterior parou, no mesmo branch.
+on:
+  workflow_dispatch:
+    inputs:
+      max_legendas:
+        description: 'Máximo de legendas nesta execução (cota: ~250 unidades cada)'
+        default: '35'
+  schedule:
+    - cron: '0 9 * * *' # 06:00 BRT
+
+concurrency:
+  group: videos-coleta
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  coleta:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      BRANCH: videos/coleta
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Com PR da coleta ainda aberto, continua nele (não baixa de novo as legendas
+      # que já estão lá). Sem PR aberto, recomeça da main: o branch antigo já foi
+      # mergeado (ou descartado) e é sobrescrito.
+      - name: Branch da coleta
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898732+github-actions[bot]@users.noreply.github.com'
+          if [ -n "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+            git merge --no-edit origin/main
+          else
+            git checkout -B "$BRANCH"
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Coleta (metadados + legendas)
+        env:
+          YOUTUBE_CHANNEL_ID: ${{ vars.YOUTUBE_CHANNEL_ID }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_OAUTH_CLIENT_ID: ${{ secrets.YOUTUBE_OAUTH_CLIENT_ID }}
+          YOUTUBE_OAUTH_CLIENT_SECRET: ${{ secrets.YOUTUBE_OAUTH_CLIENT_SECRET }}
+          YOUTUBE_OAUTH_REFRESH_TOKEN: ${{ secrets.YOUTUBE_OAUTH_REFRESH_TOKEN }}
+        run: node scripts/videos/ingest.mjs --max-legendas "${{ inputs.max_legendas || '35' }}"
+
+      - name: Gera as páginas
+        run: node scripts/gen-videos.mjs
+
+      - name: Commit, PR e gate
+        run: |
+          git add -A content src public scripts/videos/sitemap-exclude.json
+          if git diff --cached --quiet; then
+            echo "Nada novo no canal." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -q -m "chore(videos): coleta do canal $(date -u +%F)"
+          git push --force -u origin "$BRANCH"
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            gh pr create --base main --head "$BRANCH" \
+              --title "Vídeos: coleta do canal" \
+              --body "Coleta automática de \`.github/workflows/videos-coleta.yml\` (SDD-fase-1 §5). Atualizado a cada execução enquanto este PR estiver aberto. As fichas saem \`noindex\` e fora do sitemap; nada é publicado sem o merge." \
+              || echo "::warning::Não consegui abrir o PR. Ative Settings → Actions → General → 'Allow GitHub Actions to create and approve pull requests', ou abra o PR do branch $BRANCH à mão."
+          fi
+          # Push feito com o GITHUB_TOKEN não dispara outros workflows; o gate é chamado explicitamente.
+          gh workflow run quality-gate.yml --ref "$BRANCH"

@@ -20,6 +20,7 @@
     "i18n:install": "node scripts/sync-i18n.mjs --install-model",
     "a11y:static": "node scripts/a11y-static.mjs",
     "videos:auth": "node scripts/videos/auth.mjs",
+    "videos:ingest": "node scripts/videos/ingest.mjs",
     "videos:gen": "node scripts/gen-videos.mjs"
   },
   "devDependencies": {
