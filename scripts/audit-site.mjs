@@ -173,7 +173,9 @@ for (const slug of arquivos) {
         // Sem extensão pode ser (a) um recurso real servido sem extensão, como
         // os documentos de /.well-known/, ou (b) uma rota que o CloudFront
         // reescreve para .html. Só é erro se não for nenhum dos dois.
-        if (emPublic || emSrc || docs.has(limpo)) continue;
+        // (c) uma página gerada em subpasta (src/videos/, src/temas/ — scripts/gen-videos.mjs),
+        // que não entra em `docs` porque o grafo é das páginas escritas à mão.
+        if (emPublic || emSrc || docs.has(limpo) || existsSync(join(SRC, `${limpo}.html`))) continue;
         erro(p, `link para rota inexistente: ${href}`);
         continue;
       }
@@ -210,7 +212,11 @@ for (const [slug, html] of docs) {
 
 for (const slug of publicas) {
   if (!noCatalogo.has(slug)) aviso(`${slug}.html`, 'página pública fora de catalogo.html');
-  if (!apontadas.has(slug)) erro(`${slug}.html`, 'órfã — nenhuma página do site aponta para ela');
+  if (apontadas.has(slug)) continue;
+  // Índice gerado por scripts/gen-videos.mjs: nasce na coleta automática, antes de
+  // alguém decidir onde o site o liga. Aviso, não erro — o sitemap já o oferece.
+  if (docs.get(slug).includes('GERADO por scripts/gen-videos.mjs')) aviso(`${slug}.html`, 'órfã — gerada, ainda sem link no site');
+  else erro(`${slug}.html`, 'órfã — nenhuma página do site aponta para ela');
 }
 
 /* ── 4. Sincronia entre as fontes da verdade ──────────────────────────────── */

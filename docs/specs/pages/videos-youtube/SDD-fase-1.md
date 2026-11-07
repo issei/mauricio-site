@@ -23,13 +23,19 @@ página de vídeo é escrita à mão. A fase 1 não usa IA para escrever artigo.
 
 | URL | Arquivo gerado | Indexada? | Gêmeo `/en/` na fase 1 |
 | :--- | :--- | :--- | :--- |
-| `/videos` | `src/videos.html` + `public/videos.md` | sim | sim |
+| `/videos` | `src/videos.html` + `public/videos.md` | sim | não (ver abaixo) |
 | `/videos/<slug>` | `src/videos/<slug>.html` + `public/videos/<slug>.md` | **não** (`noindex`, fora do sitemap) até `status: publicado` | não; entra quando o vídeo é publicado (fase 2) |
-| `/temas/<tema>` | `src/temas/<tema>.html` + `public/temas/<tema>.md` | sim, se tiver ao menos 1 vídeo | sim |
+| `/temas/<tema>` | `src/temas/<tema>.html` + `public/temas/<tema>.md` | sim, se tiver ao menos 1 vídeo | não (ver abaixo) |
 
 **Escolha minha, reversível:** a ficha não ganha gêmeo em inglês na fase 1. Ela ainda é
 `noindex` e a transcrição longa custaria horas de CPU no Argos para páginas que ninguém
 encontra pela busca. O gêmeo nasce quando o artigo é publicado (D9).
+
+**Mudança (2026-11-07, PR B):** o índice `/videos` e as páginas de assunto também ficam sem
+gêmeo `/en/` na fase 1. Elas são regeneradas pela coleta no GitHub Actions, onde o Argos não
+roda; com gêmeo obrigatório, todo PR da coleta reprovaria no gate. `videos` entra em
+`HTML_NAO_PUBLICAS` de `scripts/i18n/assets.py`. Os gêmeos entram na fase 2, junto com os
+artigos.
 
 `<slug>` vem do título, em minúsculas, sem acento, só `[a-z0-9-]`, até 60 caracteres. Uma vez
 gravado no arquivo de conteúdo, **não muda** se o título do vídeo mudar. URL é permanente.
@@ -53,7 +59,7 @@ youtube:                 # bloco DONO DA COLETA: só o ingest escreve aqui
   miniatura: https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg
   visualizacoes: 1234
   playlists: ["…"]
-  legenda: automatica     # manual | automatica | ausente
+  legenda: automatica     # pendente | manual | automatica | ausente
   links_descricao: ["https://…"]
   coletado_em: 2026-11-08T10:00:00Z
 ---
@@ -84,6 +90,16 @@ PR. Até a aprovação, `temas: []` em todos os vídeos e nenhuma página `/tema
 2. `playlistItems.list` + `videos.list`, de 50 em 50 → metadados, duração, visualizações.
 3. Para cada vídeo sem `.vtt`: `captions.list` e `captions.download` (OAuth do canal).
 4. Vídeo que sumiu do canal ou ficou privado → `status: removido` (a página sai do site).
+   Se ele voltar, o ingest devolve `status: ficha`. É a única escrita do ingest fora de `youtube:`.
+5. Vídeo novo nasce com `legenda: pendente`. A ordem das legendas segue as visualizações (D8).
+6. Se só `visualizacoes` mudou, o bloco `youtube:` não é reescrito (evita um PR por dia sem
+   mudança real).
+
+**Execução:** `.github/workflows/videos-coleta.yml`, manual ou diária às 06:00 BRT. Grava no
+branch `videos/coleta` e abre (ou atualiza) um PR para a `main`. Não publica nada: o site só
+muda com o merge. Como o push do `GITHUB_TOKEN` não dispara outros workflows, a coleta chama
+o `quality-gate.yml` explicitamente. Página gerada ainda sem link no site é **aviso**, não
+erro, no `audit-site`.
 
 **Cota diária da API (10.000 unidades).** A listagem custa cerca de 10 unidades para o canal
 inteiro. A legenda custa cerca de 250 unidades por vídeo (`captions.list` + `captions.download`;
@@ -169,6 +185,10 @@ Visual: tema Dark Tech e Inter, como em `src/service-operations-2-0.html`. Acess
 0. **Antecipado (2026-11-07):** `videos:auth` entrou junto com esta spec, para o Issei gerar o
    *refresh token* sem esperar o gerador.
 1. **PR A (sem credenciais):** gerador, modelos, testes com *fixtures* e mudanças do §7.
+   Entregue sem vídeo real em `content/`, então não muda o site no ar. Ficou para o PR B,
+   quando há páginas de verdade: espelhar `temas/` no `scripts/i18n/assets.py`, ligar `/videos`
+   a partir do site (o `audit-site` reprova página órfã) e decidir se as páginas geradas
+   carregam o GTM. Na fase 1 elas saem **sem analytics**, como a página de entrevista.
 2. **PR B (com credenciais):** `ingest.mjs`, primeira coleta (metadados de todos os vídeos) e a
    proposta de `temas.yml` para o Issei aprovar.
 3. **PRs seguintes:** lotes de legendas, no limite da cota diária.
