@@ -1,6 +1,6 @@
 # SDD — Vídeos do YouTube, fase 1 (fundação)
 
-> **Status:** especificação, sem código. **Data:** 2026-11-07.
+> **Status:** implementada (PRs #135 a #141, 2026-11-07). Fase 2: [SDD-fase-2.md](SDD-fase-2.md). **Data:** 2026-11-07.
 > **Origem:** [PROPOSTA-arquitetura.md](PROPOSTA-arquitetura.md), opção B, decisões D1 a D9 aceitas pelo Issei em 2026-11-04.
 > **Bloqueio:** a coleta (§5) precisa das credenciais da D10. O gerador (§6) e os testes não precisam.
 
