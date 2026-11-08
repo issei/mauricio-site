@@ -39,7 +39,7 @@ const EXCLUIR = /(^|[.-])(bkp|backup|template)$/i;
  * content/ (docs/specs/pages/videos-youtube/SDD-fase-1.md) — um nível a mais que
  * as páginas escritas à mão. A chave do input já carrega a pasta (`videos/<slug>`).
  */
-const htmlFiles = globSync(['src/*.html', 'src/en/*.html', 'src/videos/*.html', 'src/temas/*.html', 'src/en/temas/*.html']).filter(
+const htmlFiles = globSync(['src/*.html', 'src/en/*.html', 'src/videos/*.html', 'src/temas/*.html', 'src/en/temas/*.html', 'src/en/videos/*.html']).filter(
   (file) => !EXCLUIR.test(parse(file).name)
 );
 const htmlInput = Object.fromEntries(
@@ -95,9 +95,10 @@ const hreflangPt = () => ({
   name: 'hreflang-pt',
   transformIndexHtml(html, ctx) {
     const file = ctx.filename.replace(/\\/g, '/');
-    const nome = file.split('/').pop();
-    if (!file.endsWith(`/src/${nome}`) || html.includes('hreflang=') || !existsSync(resolve(__dirname, 'src/en', nome))) return;
-    const slug = nome.replace(/\.html$/, '');
+    // Página da raiz (`src/x.html`) ou vídeo publicado (`src/videos/x.html`, SDD-fase-2 §6).
+    const m = file.match(/\/src\/((?:videos\/)?[^/]+)\.html$/);
+    if (!m || html.includes('hreflang=') || !existsSync(resolve(__dirname, 'src/en', `${m[1]}.html`))) return;
+    const slug = m[1];
     const pt = slug === 'index' ? '/' : `/${slug}`;
     const en = slug === 'index' ? '/en/' : `/en/${slug}`;
     return [['pt-BR', pt], ['en', en], ['x-default', pt]].map(([lang, rota]) => ({

@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho","description":"**O trabalho agora começa na janela de prompt!** Neste vídeo explicativo, analisamos detalhadamente o lançamento do **Gemini Agent** no evento *Gemini at…","thumbnailUrl":"https://i.ytimg.com/vi/hub4sB4yYss/maxresdefault.jpg","uploadDate":"2026-10-10","duration":"PT7M56S","embedUrl":"https://www.youtube-nocookie.com/embed/hub4sB4yYss","url":"https://mauricio.issei.com.br/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Olá, pessoal. Boas-vindas a esta nossa análise, onde a gente vai mergulhar de cabeça numa mudança que, honestamente, tá virando mundo da tecnologia de cabeça para baixo. A gente tá saindo daquela era da IA puramente conversacional, sabe, do formato de chat para entrar de vez no mundo da IA autônoma e agêntica usando o Gemini. A ideia aqui hoje é entender passo a passo como essa tecnologia deixou de ser só um oráculo que responde perguntas para se tornar um verdadeiro motor de execução. Para começar, pensem nessa pergunta. O que acontece quando a IA para de só dar respostas e começa de fato a colocar a mão na massa? Porque, olha só, a partir deste marco de outubro de 2026, a inteligência artificial deixou de ser só uma ferramenta de texto. Ela tá virando uma força de trabalho de verdade, tomando iniciativas e executando tarefas super complexas em nome de quem a gerencia. É uma virada de chave gigantesca, sem exagero. Bom, vamos lá. Sessão um, a ascensão dos agentes de IA. Essa mudança central é simplesmente fascinante. Pensem no modelo tradicional. A gente precisava ficar ali dando comandos constantes, a famosa engenharia de prompts, né, guiando a IA o tempo todo. Agora, com a IA agêntica, o esquema é delegar objetivos amplos. É só definir a meta, dar um passo para trás e deixar o raciocínio autônomo fazer o trabalho pesado. Aí a lida com várias etapas lógicas, sem precisar que nenhum humano fique ali segurando a mão dela. E aqui tá o ponto crucial. Um agente de Mini não é mais um modelo de linguagem solto por aí, é um sistema unificado, totalmente integrado. Ele planeja o que vai fazer, acessa ferramentas externas, se conecta aos sistemas da empresa, entende todo o contexto e no fim das contas entrega um produto pronto e bem acabado. Basicamente é a passagem daquela assistência passiva para uma ação totalmente proativa. Entrando agora na sessão dois, construindo a base agêntica. Toda a mágica de um agente gerenciado do Gemini acontece dentro de uma coisa chamada Sandbox. E por que isso é tão legal? Com uma única chamada de API, o sistema cria um ambiente Linux super seguro e isolado, direto no nível do sistema operacional. Lá dentro, o agente tá livre para escrever e testar códigos, navegar na internet, gerenciar arquivos. Tudo isso rodando em modelos de ponta, tipo o novo Gemini 3.8 Flash, que tem uma velocidade de raciocínio que é um absurdo de rápida. O que eu acho muito interessante aqui é que não existe uma prisão a um único jeito de construir. Tem uma flexibilidade enorme. Dá para usar vários frameworks de código aberto, dependendo do que o projeto exige. Pode ser o LRAPF para aqueles fluxos de trabalho super complexos, o Crew AI para botar vários agentes para colaborar entre si ou o Yama Index, que é ótimo para conectar a inteligência aos dados internos e privados da empresa. Ou seja, a base tecnológica é que se adapta ao problema e não o contrário. Independentemente do framework escolhido, o coração do agente funciona num ciclo contínuo. Uma simples interação aciona exatamente esse loop de raciocínio. Primeiro, o agente entende o que foi pedido, depois bola um plano e escolhe as ferramentas. Em seguida, age por conta própria e no fim sintetiza a resposta. E um detalhe impressionante, enquanto a gente tá focado numa tarefa complexa, esse processo pode consumir facilmente entre 100.000 1 3 milhões de tokens. É muito, mas muito poder de processamento rolando de uma vez só. Avançando paraa sessão três, escalando com segurança para empresas. Quando a gente fala de grandes empresas, segurança é tudo, né? A plataforma precisa responder a perguntas cruciais. Quem é esse agente? O que ele pode tocar? E onde as ações dele estão sendo registradas? Por isso, cada agente recebe uma identidade única e criptografada, seguindo sempre a regra do menor privilégio possível. Fora isso, todo o tráfego passa por um agent gateway, que é basicamente um firewall feito sob medida para redes de IA, garantindo que as regras da empresa sejam respeitadas milissegundo a milissegundo. E nos bastidores, a infraestrutura de hardware dá um show à parte. O novo sistema TPU8i consegue entregar um custo benefício 80% melhor em comparação com as gerações anteriores. É justamente essa eficiência colossal que torna financeiramente viável rodar todas essas cargas de trabalho corporativas super densas em grande escala. Claro, deixar loops contínuos rodando num modelo massivo e premium acabaria com qualquer orçamento num piscar de olhos. É por isso que a plataforma já vem com salvaguardas financeiras importantíssimas. Tem o roteamento inteligente, que manda a tarefa certa pro modelo do tamanho certo e os limites de gastos que bloqueiam qualquer surpresa na conta em tempo real. Além disso, os custos de processamento por token despencaram inacreditáveis 98% desde 2024. Isso muda o jogo paraa implantação de área. Seguindo pra sessão quatro, a IA no ambiente de trabalho. A mudança de paradigma aqui é não ver a IA só como um software escondido no computador, mas sim como verdadeiros colegas de trabalho digitais. Imaginem só, dá para mencionar um agente num chat corporativo usando o ar, colocar ele num convite de reunião no calendário, eles começam a agir de forma contínua, com uma identidade super clara e definida ali junto com o resto da equipe. Sabem aquela frustração de ter que repetir a mesma coisa 1 vezes para? Pois é, isso acabou. Quando um agente é integrado, ele passa a usar quatro tipos de memória. O que isso significa na prática? que ele retém o contexto da empresa, lembra passo a passo de como fazer tarefas recorrentes e entende todo o fluxo de trabalho histórico. Fica muito mais fluido sem precisar reexplicar as regras do negócio toda santa vez. E isso nos leva a essa citação que resume bem a coisa toda. Garantir a confiança na precisão e na qualidade de cada insite gerado é a regra de ouro. É por isso que ferramentas como o catálogo de conhecimento são essenciais. Elas mapeiam as definições do negócio de uma vez por todas. Em vez do agente ficar tentando adivinhar termos internos, ele gera respostas super consistentes, factuais e totalmente ancoradas nos dados reais da empresa. E para fechar, sessão cinco, o impacto real dos agentes. A gente já consegue ver essa tecnologia transformando desde operadoras de telefonia até bancos globais e gigantes do varejo. Tem agentes resolvendo falhas complexas de rede em tempo real, detectando fraudes para cancelar pagamentos suspeitos instantaneamente. Eles destravam gargalos operacionais numa velocidade absurda. E o mais legal, isso libera as pessoas para focarem no que realmente importa, aquele trabalho mais criativo, consultivo e de altíssimo valor. E falando em escala, olha só, 10.000. Esse é o número impressionante de agentes de IA personalizados que a Sompo, uma seguradora gigante lá do Japão, criou para ajudar seus 34.000 funcionários. Com a infraestrutura nova, eles conseguiram derrubar o tempo de desenvolvimento de um modelo especializado de uma semana inteira para um único dia. É um salto de agilidade que impressiona qualquer um. E se alguém acha que a Ia agêntica tá presa só aos nossos computadores aqui embaixo, olha isso. Ela já chegou literalmente ao espaço. Modelos super otimizados estão rodando agora mesmo a bordo de um satélite da NASA. Eles analisam imagens da Terra ao vivo e mandam resumos cruciais de volta para as equipes na base. Isso com certeza redefine tudo que a gente entendia sobre limites de processamento. Então fica aqui essa reflexão provocativa pra gente encerrar a nossa análise, porque a era agêntica não é só sobre acelerar as coisas ou economizar umas horinhas na semana, é sobre repensar a própria base do que as nossas organizações conseguem realizar quando a execução em escala deixa de ser um problema. Muito obrigado por acompanharem essa explicação e que a gente continue explorando as possibilidades infinitas dessa nova fronteira. Não."}</script>
 </head>
 <body>
@@ -98,19 +123,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

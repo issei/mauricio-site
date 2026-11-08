@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS","description":"Neste vídeo, exploramos **O Papel do Amazon Nova Act**, o serviço da AWS desenvolvido para criar, implantar e gerenciar frotas de agentes de IA focados…","thumbnailUrl":"https://i.ytimg.com/vi/iCVD5IVVR2g/maxresdefault.jpg","uploadDate":"2026-10-18","duration":"PT7M41S","embedUrl":"https://www.youtube-nocookie.com/embed/iCVD5IVVR2g","url":"https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Olá, pessoal, e bem-vindos a mais uma apresentação. Hoje a gente vai direto ao ponto em uma área que, vamos ser sincero, já causou muita dor de cabeça e noites mal dormidas pras equipes de engenharia por aí. A automação de interfaces de usuário na web. E o nosso grande foco de hoje é o papel do Novact. É simplesmente fascinante ver como a gente saiu daquela era de regras super rígidas de navegação para algo muito mais inteligente e adaptável. Bom, vamos mergulhar nisso. A pergunta de 1 milhão de dólares no desenvolvimento sempre foi: como a gente torna a automação web verdadeiramente resiliente? Porque historicamente o problema nunca foi escrever o script em si, mas sim manter o bendito funcionando, certo? Qualquer mudançazinha no código da página e bum, tudo parava de funcionar de forma abrupta. Era literalmente como montar um castelo de cartas em cima de uma mesa bamba, um ciclo sem fim de manutenção. Para entender como resolver isso, a nossa jornada hoje vai ser a seguinte. Vamos passar pela automação tradicional, entender o papel do Nova Act, ver a jornada de desenvolvimento, falar sobre o toque humano e, por fim, fechar com as aplicações reais e os custos. Então, começando pela nossa primeira sessão, automação tradicional de interfaces e os seus pontos de dor. Olha, o nível de exaustão técnica com os métodos antigos é altíssimo. O pessoal de desenvolvimento sabe bem o que é lidar com a fragilidade extrema dos scripts. Os layouts mudam o tempo todo, certo? Um botão muda um pixel pro lado, uma classe muda de nome e de repente o teste inteiro simplesmente falha miseravelmente. Isso suga uma energia gigantesca das equipes, criando um peso enorme pros testes de K. E nem me falem do tempo perdido caçando documentação pesada só para tentar manter a casa em ordem. Simplesmente é um modelo que não escala com a internet super dinâmica que a gente tem hoje. O que nos leva à sessão dois, o papel do Nova Act, que representa uma verdadeira mudança de paradigma. O conceito chave aqui é o seguinte. O Amazon Nova Act é um serviço da AWS construído para que quem desenvolve consiga criar e gerenciar frotas de agentes de IA super confiáveis para automatizar fluxos de interface. E a palavra-chave aqui é frota. Não estamos falando de automatizar um clique aqui e ali. Estamos falando da capacidade incrível de orquestrar e gerenciar um exército inteiro desses agentes, escalando as operações pro nível corporativo sem sóar a camisa. E o que faz a mágica acontecer por baixo dos panos é o motor disso tudo, o Amazon Nova 2 Lite. Esse é um modelo customizado, construído do zero, com um propósito muito claro, navegar na web e fazer chamadas de APIs de um jeito super rápido e barato. Ele já entende o contexto de como uma interface funciona no mundo real, ou seja, a gente não precisa mais daquelas regras absolutas dizendo exatamente onde clicar a cada milissegundo. Isso ilustra brilhantemente o impacto dessa arquitetura. Segundo a AWS, essa integração chega a uma taxa de confiabilidade impressionante de mais de 90% em larga escala. Pessoal, para quem tá acostumado com a instabilidade do passado, isso é um salto absurdo. Transforma um processo que sempre foi super frágil em uma máquina altamente confiável e definitivamente pronta para o uso no mundo real. Avançando paraa sessão três, a jornada de desenvolvimento e sua execução perfeita. A AWS desenhou um caminho super direto de quatro passos para simplificar todo o ciclo de vida. Você começa brincando no Playground Web, testando ideias rapidamente e sem burocracia. Depois passa pro desenvolvimento local no ambiente que você já conhece. O terceiro passo é implantar isso lá na nuvem da AWS. E para fechar, você revisa todas as execuções direto no painel deles, só para garantir que a operação siga exatamente como planejado. Agora, o que é muito legal de ver na prática é como a linguagem natural se mistura de maneira totalmente fluída com o código tradicional. Olhando para esse decorador de autenticação no SDK em Python, dá para perceber a flexibilidade da coisa. Você pode juntar aquela lógica dura e rigorosa de programação, tipo injetar um token de acesso com instruções super simples em texto, descrevendo o que você quer que aconteça. É literalmente o controle total nas mãos de quem tá programando. E para acelerar ainda mais o processo, o contraste entre o velho e o novo é gritante. Em vez de ficar escrevendo código repetitivo do zero ou vasculhar páginas intermináveis de documentação, agora a gente tem extensões de IDE alimentadas por IA. ferramentas que integram com o Kiru, VS Code e Cursor pegam um prompt em linguagem natural e transformam em código Python prontinho paraa produção. É só falar o objetivo final e a extensão monta a lógica para você ali mesmo no seu ambiente. E na hora de monitorar se tudo tá dando certo, o nível de observabilidade é fora de série. O console da AWS te dá rastreamentos completíssimos da execução, mas o mais impressionante, você pode assistir a uma transmissão ao vivo do navegador sendo operado de forma autônoma pela IA, graças ao agent core. Imagina um salto em transparência. Junta isso com o acesso direto a logs no S3 e capturas de tela dos processos e entender exatamente como a gente tomou uma decisão vira algo super visual e intuitivo. Chegamos na sessão 4, o toque humano ou a famosa integração HITl. É aqui que a tecnologia traz as garantias necessárias com dois padrões de segurança que são sensacionais. O primeiro é a aprovação humana, onde alguém revisa e dá o OK nas ações propostas pelo agente antes de qualquer execução mais crítica. O segundo é a assunção de controle da interface. Basicamente, o fluxo do agente pausa. Um humano assume o controle do navegador rapidinho, resolve aquele capta bloqueador ou digita uma senha super sensível e depois devolve o volante para ia terminar o serviço. Perfeito, não é? Então, o detalhe crucial do ponto de vista de negócios é essa questão do faturamento. O tempo que o sistema fica parado esperando uma resposta humana durante esses fluxos não entra na conta, né? É isso mesmo. É como se o taxímetro parasse. É uma nuance técnica e financeira brilhante, garantindo que colocar pausas de segurança no processo não vai gerar custos ociosos e injustificáveis. E para fechar, sessão cinco, aplicações no mundo real e custos. É nos casos de uso que a gente vê onde o impacto é real. Pensa na inteligência de preços competitivos. No varejo, monitorar a concorrência sempre foi um pesadelo, porque as lojas mudam o layout toda hora, quebrando os rastreadores. O Nova Act lida com essas mudanças visuais em tempo real, sem quebrar. Adiciona isso, os testes de qualidade web incansáveis, extração maciça de dados em sistemas legados e até fluxos de compra cheios de etapas. O que antes era super rígido, agora simplesmente se adapta. E falando do investimento, a métrica de precificação divulgada é de 4.75 por hora de agente. E lembrando, são horas ativas e reais de trabalho, sem pagar por tempo ocioso. Se a gente colocar na ponta do lápis as incontáveis horas que as equipes gastavam só com manutenção manual de script quebrado, esse valor se mostra absurdamente competitivo. Vamos avançar e ver como isso se expande para uma figura maior. O Nova Act não precisa atuar como uma ferramenta isolada. Ele se integra de forma nativa ao framework de agentes Strands. Isso significa que a automação visual de interfaces pode ser só mais uma das habilidades dentro de um ecossistema gigante de IAS, todas colaborando para resolver fluxos operacionais super complexos nas empresas. O que nos traz ao final da nossa exploração de hoje, e a reflexão que fica no ar pra gente pensar é a seguinte: com a chegada de agentes de IA tão confiáveis e resilientes vai transformar os gargalos operacionais que temos hoje? A promessa de não precisar mais correr para consertar um script só porque alguém mudou a cor de um botão não é apenas um alívio imediato. Na verdade, é o começo de uma era totalmente nova na engenharia de software e na automação web. Muito obrigada por acompanharem mais essa análise com a gente e até a próxima."}</script>
 </head>
 <body>
@@ -92,19 +117,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

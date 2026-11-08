@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Dados e decisão","description":"Dados, métricas, aprendizado de máquina e modelos para transformar informação em decisão.","url":"https://mauricio.issei.com.br/temas/dados-e-decisao","inLanguage":"pt-BR","hasPart":[{"@type":"VideoObject","name":"Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web","url":"https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado"},{"@type":"VideoObject","name":"Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH","url":"https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em"},{"@type":"VideoObject","name":"O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional","url":"https://mauricio.issei.com.br/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do"},{"@type":"VideoObject","name":"O Pipeline da Decisão: Como Transformar Confusão em Modelos Matemáticos e IA","url":"https://mauricio.issei.com.br/videos/o-pipeline-da-decisao-como-transformar-confusao-em-modelos"},{"@type":"VideoObject","name":"A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!","url":"https://mauricio.issei.com.br/videos/a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0"},{"@type":"VideoObject","name":"turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS","url":"https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que"},{"@type":"VideoObject","name":"Desvendando o AHP: O Novo Protocolo para Agentes de IA","url":"https://mauricio.issei.com.br/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia"},{"@type":"VideoObject","name":"OpenKB - Criando sua base de conhecimento inteligente","url":"https://mauricio.issei.com.br/videos/openkb-criando-sua-base-de-conhecimento-inteligente"},{"@type":"VideoObject","name":"A busca por uma régua melhor: por que nossas métricas falham?","url":"https://mauricio.issei.com.br/videos/a-busca-por-uma-regua-melhor-por-que-nossas-metricas-falham"},{"@type":"VideoObject","name":"Desmistificando Story Points: como estimar melhor em times ágeis","url":"https://mauricio.issei.com.br/videos/desmistificando-story-points-como-estimar-melhor-em-times"},{"@type":"VideoObject","name":"Dominando a Avaliação de IA: como analisar, validar e evoluir soluções inteligentes","url":"https://mauricio.issei.com.br/videos/dominando-a-avaliacao-de-ia-como-analisar-validar-e-evoluir"},{"@type":"VideoObject","name":"O que é Otimização? Do Algoritmo Simplex ao Mundo Real","url":"https://mauricio.issei.com.br/videos/o-que-e-otimizacao-do-algoritmo-simplex-ao-mundo-real"},{"@type":"VideoObject","name":"Desvendando Machine Learning: conceitos, aplicações e impactos reais","url":"https://mauricio.issei.com.br/videos/desvendando-machine-learning-conceitos-aplicacoes-e"},{"@type":"VideoObject","name":"IA E CONFIABILIDADE DE SISTEMAS: De Reativo a Proativo (SRE, Machine Learning e XAI)","url":"https://mauricio.issei.com.br/videos/ia-e-confiabilidade-de-sistemas-de-reativo-a-proativo-sre"},{"@type":"VideoObject","name":"DOMINANDO DADOS NO SALESFORCE: Escalabilidade, Governor Limits e Arquitetura Lambda","url":"https://mauricio.issei.com.br/videos/dominando-dados-no-salesforce-escalabilidade-governor"},{"@type":"VideoObject","name":"Data Mesh","url":"https://mauricio.issei.com.br/videos/data-mesh"},{"@type":"VideoObject","name":"Inferência Causal","url":"https://mauricio.issei.com.br/videos/inferencia-causal"},{"@type":"VideoObject","name":"Dados com NumPy e pandas","url":"https://mauricio.issei.com.br/videos/dados-com-numpy-e-pandas"}]}</script>
 </head>
 <body>
@@ -160,5 +185,6 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </ul>
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

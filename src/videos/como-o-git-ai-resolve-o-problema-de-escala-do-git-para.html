@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA","description":"O Git tradicional foi desenvolvido para desenvolvedores humanos que clonam o repositório localmente, trabalham por horas e fazem push periodicamente.…","thumbnailUrl":"https://i.ytimg.com/vi/ZTNLoWhtXEw/maxresdefault.jpg","uploadDate":"2026-10-19","duration":"PT7M44S","embedUrl":"https://www.youtube-nocookie.com/embed/ZTNLoWhtXEw","url":"https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Olá. Na nossa última análise sobre gargalos de infraestrutura, a gente percebeu uma coisa bem clara. O git escala humana tá batendo no teto. Hoje a gente vai mergulhar fundo em como contornar exatamente essa barreira. Vamos conhecer o Git AI, uma solução de arquitetura que foi baseada no sistema interno da Antropic chamado Sion. O objetivo principal aqui, preparar a infraestrutura de controle e diversão para aguentar milhares de agentes de inteligência artificial trabalhando e comitando o código ao mesmo tempo. Para entender o tamanho do desafio, a gente precisa olhar para essa mudança de paradigma. Imagina o desenvolvimento de software das últimas décadas. Ele funcionou num modelo offline, descentralizado e num ritmo ditado pela nossa velocidade humana de digitação. Mas quando a gente coloca milhares de agentes de IA escrevendo código simultaneamente, essa arquitetura clássica simplesmente desmorona, ela não dá conta. O que a gente precisa agora é de um ecossistema que seja sempre online e centralizado, capaz de suportar um volume absurdo de operações. A própria Antropic, que hoje é uma das empresas que mais gera código usando IA no mundo todo, chegou a uma conclusão super interessante e bem direta. Eles perceberam que o gargalo não é mais a geração do código em si. O problema agora é toda a infraestrutura de desenvolvimento que foi construída lá atrás pra nossa escala humana. controle de código, fonte, builds, C, tudo isso não consegue mais acompanhar o ritmo. Para quem projeta sistemas, essa é uma constatação que muda completamente o jogo. E para entender como quebrar essa barreira de vez, a gente dividiu essa arquitetura em seis partes essenciais. Um, recapitulando o desafio do Git. Dois, introduzindo o sistema Git AI. 3, clientes online e API central. Qu o fim das filas de merge. C resolução automática de conflitos. E por fim o seis, banco de dados e escalabilidade. Vamos lá. Sessão um. Recapitulando o desafio do Git. Vamos entender rapidinho por repositórios gigantescos sofrem tanto com essas novas cargas de trabalho. 30.000. É isso mesmo, 30.000 alterações de códigos sendo integradas por dia só no repositório principal da Antropic. Pensa bem, numa infraestrutura tradicional de Git, onde a gente precisa fazer clones completos do repositório para cada operação, isso geraria um tráfego de centenas de petabytes. É literalmente inviável. Fica matematicamente provado que os limites do Git Clássico são um baita gargalo para fluxos de trabalho automatizados em hiperescala. Sessão dois, introduzindo o sistema Git AI. É exatamente para lidar com essa carga sem precedentes que a arquitetura do software entra em cena. A grande resposta para esse problema atende pelo nome de Git AI. Enquanto a Antropic desenvolveu o sistema SON só para uso interno deles, o Git AI surge como a implementação de código aberto dessa arquitetura de ponta. Ele é um ecossistema totalmente focado no servidor, construído do zero para aguentar centenas, milhares de agentes lendo, escrevendo e integrando o código ao mesmo tempo. E o melhor, tudo isso enquanto mantém a compatibilidade com os repositórios Git lá na camada inferior. Sessão três, clientes online e API central. Aqui a gente vê a primeira grande quebra de paradigma, o fim da nossa velha dependência do modelo offline. Num ambiente dominado por IA, a regra agora é ter clientes sempre online. E a sacada principal aqui é a seguinte: esses clientes não baixam mais o repositório completo, eles baixam apenas os arquivos que são estritamente necessários. Usando estruturas de árvores esparsas, esses nós buscam e materializam só os caminhos que eles realmente vão alterar. Isso corta drasticamente o uso de banda e de armazenamento, permitindo que novas instâncias de agentes comecem a codar em questão de segundos. Mas vem cá, se o cliente fica leve, alguém tem que carregar o piano, certo? É aí que nasce o conceito de controle diversão como uma API. É um modelo totalmente centralizado, onde o servidor é que faz as operações de histórico e guarda os dados. Se um agente precisa puxar um histórico ou rodar um comando pesado como o Blame, ele não gasta processamento local. O servidor, que já tem tudo isso memorizado e em cash, calcula as respostas instantaneamente e as entrega via chamadas rápidas de API. Sessão quatro, o fim das filas de merge. Com a busca de dados otimizada, chegou a hora de resolver a maior dor de cabeça de quem mexe com C/CD. O negócio é o seguinte: nesse novo sistema não tem mais fila de merge. Filas de integração tradicionais processam uma mudança por vez. Com milhares de agentes atuando juntos, imagina o tamanho do engarrafamento. A solução arquitetural aqui é muito elegante. O sistema usa um mecanismo de comparent swap. O próprio agente faz o rebase da mudança na ponta da branch e o servidor simplesmente agrupa múltiplas integrações simultâneas transformando tudo numa única atualização. Na prática, os agentes adicionam código sem nenhum tempo de espera. E para colocar isso em perspectiva, dá só uma olhada nesses dados de latência P99. Quando a gente bota vários agentes para enviar código ao mesmo tempo, a abordagem tradicional do Git engasga, batendo mais de 6 segundos de latência e falhando direto por contenção. Já com o agrupamento do Git AI, essa latência despenca para cerca de 1 segundo e meio. É um fluxo contínuo e totalmente livre daqueles gargalos irritantes de integração. Sessão cinco, resolução automática de conflitos. Porque convenhamos, com tanta gente, ou melhor, tantos agentes codando junto, vai dar colisão. Qualquer pessoa de tecnologia sabe que resolver conflitos manualmente quebra o ritmo de trabalho. No ecossistema autônomo, devolver o conflito pro autor humano paralisaria o pipeline inteiro. A saída resolução automática de conflitos. O servidor usa ferramentas determinísticas ou até mesmo IA para resolver conflitos de código automaticamente. A intervenção humana no meio desse processo é completamente eliminada. E é super importante ressaltar que o sistema não confia o seu código cegamente a um modelo de linguagem qualquer. A inteligência artificial fica isolada através de um protocolo rígido e totalmente neutro de fornecedor. Isso permite plugar qualquer ferramenta determinística ou provedor de LLM. O servidor valida tudo de forma rigorosa e rejeita automaticamente qualquer trecho que ainda contenha marcadores de conflito, garantindo que o abacaxi não volte para quem escreveu. É seguro e previsível. Sessão seis, banco de dados e escalabilidade. Para fechar nossa análise, o pilar que sustenta todo esse crescimento. Para aguentar volumes tão massivos sem gargalos de disco local, a arquitetura de log de alterações usa um banco de dados e armazenamento de objetos. Ou seja, o sistema joga o log de eventos num banco rápido, tipo Postgra ou SK Lite, e guarda o conteúdo real dos arquivos na nuvem, como num bucket S3 ou GCS. Com isso, os servidores da aplicação não guardam estado nenhum. Eles atuam puramente como cashes rápidos dessa fonte de verdade. A grande genialidade técnica desse log de alterações é que ele cria uma linha do tempo densa e perfeitamente ordenada. Se um nó cair ou precisa reiniciar, sem crise, ele simplesmente leu o histórico no banco de dados. busca os pacotes lá no armazenamento em nuvem e volta à ativa. É por não depender de estados críticos em discos locais que os servidores escalam horizontalmente sem esforço nenhum, acompanhando lado a lado o crescimento da sua frota de IA. Toda essa engenharia de ponta aponta para uma reflexão que a gente não pode ignorar. A transição da escala humana pra escala de agentes já tá acontecendo com clientes sempre online, histórico virando API, execuções sem filas e logs distribuídos. A base do desenvolvimento de software foi redefinida. Como é que as equipes de tecnologia vão adaptar seus pipelines para essa nova era, onde milhares de agentes enviam código simultaneamente? Fica aí o desafio pra gente repensar nossa infraestrutura. Até a próxima."}</script>
 </head>
 <body>
@@ -97,19 +122,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

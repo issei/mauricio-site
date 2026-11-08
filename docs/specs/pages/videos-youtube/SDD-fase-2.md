@@ -1,6 +1,6 @@
 # SDD — Vídeos do YouTube, fase 2 (artigos)
 
-> **Status:** especificação, sem código. **Data:** 2026-11-08.
+> **Status:** código no PR 2A (regras, modelo, skill e testes); artigos nos PRs 2B a 2E. **Data:** 2026-11-08.
 > **Origem:** [PROPOSTA-arquitetura.md](PROPOSTA-arquitetura.md) §3.2, §3.3 e §6, decisões D3, D5, D8 e D9.
 > **Depende de:** [SDD-fase-1.md](SDD-fase-1.md), no ar desde 2026-11-07 (PRs #135 a #141).
 
@@ -73,8 +73,9 @@ Formato: `[mm:ss]` ou `[h:mm:ss]`, no fim da frase ou do parágrafo.
 
 **Regra (conferida pelo gerador, sem IA):**
 
-1. A âncora precisa cair dentro de uma *cue* da transcrição (`<id>.transcricao.vtt`), com
-   tolerância de 10 segundos para trás.
+1. Uma *cue* da transcrição (`<id>.transcricao.vtt`) precisa começar entre 30 segundos antes
+   e 10 segundos depois do minuto citado. As *cues* automáticas duram de 2 a 8 segundos, então
+   "dentro da *cue*" seria rígido demais para quem copia o minuto de um trecho.
 2. Todo parágrafo e todo item de lista do corpo tem ao menos uma âncora. Títulos não precisam.
 3. Âncora depois do fim do vídeo é erro.
 
@@ -119,10 +120,19 @@ Mesmo modelo da ficha (SDD-fase-1 §6), com estas mudanças:
 6. JSON-LD `Article` (`headline`, `description`, `datePublished` = `revisado_em`,
    `author`, `citation` com as fontes) junto do `VideoObject`; `FAQPage` quando houver a
    seção "Perguntas frequentes";
-7. a transcrição continua em `<details>`, com o aviso de transcrição automática (D3).
+7. a transcrição continua em `<details>`, com o aviso de transcrição automática (D3);
+8. aviso "O vídeo e a transcrição estão em português", que o Argos traduz no gêmeo `/en/`.
+
+**Análise (F2-3):** todas as páginas geradas (ficha, artigo, assunto e índice) carregam o
+mesmo bloco das outras páginas do site: Consent Mode v2 com padrão `denied` antes do
+`gtag.js` (GA4 `G-GEKLHZYVYX`) e o banner `/js/cookie-consent.js`. Nada é gravado antes
+do aceite (`tests/consent.antes-do-aceite.spec.js` cobre `/videos.html` e uma página de
+assunto).
 
 **Gêmeo `/en/` (D9):** só a página publicada entra no `sync-i18n`
-(`scripts/i18n/assets.py` passa a ler `src/videos/<slug>.html` de vídeos publicados). A
+(`scripts/i18n/assets.py`, `video_assets()`, lê `src/videos/<slug>.html` com
+`robots: index, follow` e o `.md` gêmeo; o `vite.config.js` constrói `src/en/videos/` e põe o
+`hreflang` de volta na página em português). A
 página em inglês avisa no topo: "The video is in Portuguese." A tradução roda na máquina
 do Issei (o Argos não roda na nuvem), então todo lote publicado tem um passo local antes
 do merge.
@@ -163,6 +173,8 @@ API). Para cada vídeo do lote:
    Rascunho que ele não revisar pode entrar no merge como `rascunho`: não aparece no site.
 
 ## 10. Decisões do Issei
+
+Aprovadas pelo Issei em 2026-11-08, todas no padrão sugerido.
 
 | # | Pergunta | Padrão sugerido |
 | :--- | :--- | :--- |

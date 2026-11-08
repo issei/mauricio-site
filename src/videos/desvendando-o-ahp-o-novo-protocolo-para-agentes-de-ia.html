@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Desvendando o AHP: O Novo Protocolo para Agentes de IA","description":"Bem-vindos ao \"Desvendando o AHP\"! Neste vídeo, fazemos um mergulho técnico profundo no Agent Host Protocol (AHP), um protocolo de servidor portátil e…","thumbnailUrl":"https://i.ytimg.com/vi/-Qw7clMLTYg/maxresdefault.jpg","uploadDate":"2026-05-24","duration":"PT7M7S","embedUrl":"https://www.youtube-nocookie.com/embed/-Qw7clMLTYg","url":"https://mauricio.issei.com.br/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Boas-vindas a esta explicação detalhada sobre o Agent Host Protocol ou simplesmente HP. Essa é uma daquelas especificações novas e absolutamente fascinantes, desenhada do zero para resolver um dos grandes quebra-cabeças da engenharia atual. Como sincronizar sessões de agentes de inteligência artificial através de múltiplos clientes? Para quem constrói o futuro das ferramentas de entender as engrenagens desse protocolo é simplesmente essencial. Para fazermos um tour por essa maravilha arquitetônica, vamos passar pelos seguintes pontos: sessões multiciliente, a Fundação Jason RPC, os canais de ponta a ponta, a exploração dos canais principais, o ciclo de vida de conexão e autenticação e, por fim, o versionamento pro futuro. Ponto um, sessões multiciliente. O caminho para o MA sem colisões. Bom, vamos direto ao problema central. Imaginem o seguinte cenário. Temos uma IDE, um ambiente de desenvolvimento integrado super moderno com IA e uma interface de linha de comando. Ambas estão interagindo com o mesmo agente de IA ao mesmo tempo. Manter as visualizações desses dois clientes perfeitamente sincronizadas é um desafio arquitetônico brutal. Como múltiplos clientes podem compartilhar uma única sessão sem que o estado vire uma verdadeira bagunça cheia de colisões? E o Agent Host Protocol entra em cena resolvendo isso de um jeito brilhante. Ele dá a cada cliente uma árvore de estado imutável, muito parecida com a arquitetura Redux, que a gente já conhece. O estado só muda através de ações passando por redutores puros. Assim, as mutações simultâneas são resolvidas em tempo real através de reconciliação otimista. é elegante e extremamente eficiente. Seguindo pra parte dois, Fundação Jason RPC, entendendo a base da comunicação. Antes de mergulhar nas interações dos agentes, precisamos olhar pro encanamento disso tudo. O HIEP é construído em cima do Jason RPC 2.0. Isso quer dizer que toda mensagem na rede cai em uma de duas categorias bem rígidas. ou é uma request que exige um ID e espera exatamente uma resposta correlacionada, ou é uma notification que não tem ID e funciona num estilo dispare e esquece sem esperar resposta nenhuma. E essa herança do Jason RPC traz um framework de tratamento de erros sensacional e padronizado. Estamos falando de códigos negativos fixos como -32700 para erros de análise sintática ou -32600 para requisições inválidas. Isso mantém a comunicação altamente previsível e padronizada, independentemente do transporte que estivermos usando. Parte três. Canais de ponta a ponta. A verdadeira espinha dorsal do protocolo. Canais de ponta a ponta. Esse é um mantra que se repete pela especificação e é, sem dúvida, a inovação central do HP. O protocolo abandona a ideia de end points soltos e trata absolutamente toda a interação como uma assinatura do tipo poste para um canal específico. O pulo do gato aqui é que cada comando e notificação carrega uma ural lá no nível superior. Ou seja, as mensagens são roteadas inspecionando apenas a tupla de método e canal. Não tem necessidade de analisar o payload inteiro para saber para onde a mensagem vai. Isso permite que servidores intermediários roteem o gráfico de olhos fechados. e que os clientes carreguem dados sob demanda de uma forma incrivelmente otimizada. Sessção quatro, explorando os canais principais a fundo. Uma analogia legal é pensar no canal raiz, o apzo como o diretório principal no saguão de um prédio. Ele tem o estado global. Já os canais de sessão e de terminal são como salas privadas. O detalhe é, nós não recebemos o que acontece nessas salas por padrão. Os clientes precisam ativamente se inscrever nessas uris para receber o estado das conversas ou dos terminais. E o ciclo de vida dessas salas virtuais é bem dinâmico. Primeiro, o cliente pede um create session passando um uud que ele mesmo escolheu. O servidor acata e começa a transmitir os envelopes de ação em tempo real. E quando o trabalho termina, o cliente manda um dispose session e desmonta os recursos lá no backend com total segurança. Mas atenção para essa exceção genial no designer. A reconciliação otimista que mencionamos lá atrás não é segura para pseudoterminais que carregam muito estado. Por isso, no canal de terminal, a entrada e a saída são divididas de propósito. O input que enviamos é só uma ação de efeito colateral. Já o output, os data que voltam do servidor são autoritativos. Isso evita que o cliente tente prever resultados complexos de linha de comando e acabe estragando a visualização. Cinco. Autenticação e ciclo de vida, a garantia de segurança e conexão contínua. Com a casa construída, precisamos falar de segurança. O AHP, inteligentemente, mantém a autenticação totalmente fora do estado global. Ele usa os fluxos padrão ou Athic 2.0 por conexão. O cliente lê os metadados no canal raiz, pega um token e o envia proativamente. E sabe o que é mais legal? Os requisitos podem ser por agente. Numa mesma conexão, um agente pode pedir um token do GitHub e outro pode exigir credenciais da WS. É super flexível. Claro, se estamos falando de agentes na nuvem, a conexão vai cair uma hora ou outra. Quando isso acontece, disparamos um request de reconnect. O servidor tem um buffer de ações e tenta reproduzir os envelopes que perdemos. Mas se ficarmos offline por muito tempo e esse gap exceder o buffer, não tem problema. O servidor manda um instantâneo novinho daquele estado. Só lembrando que notificações do protocolo são efêmeras, então elas nunca são reproduzidas. Chegando na reta final, ponto se version e o futuro, um protocolo pronto para evoluir. Logo no aperto de mão inicial, o cliente manda uma lista ordenada com as versões sem ver que ele suporta. O servidor olha aquilo, escolhe a versão mais alta que ele entende e pronto. Essa versão negociada fica travada durante toda a vida útil daquela conexão. Isso garante que clientes novinhos em folha conversem perfeitamente com hosts mais antigos sem dor de cabeça. Além disso, a filosofia do protocolo é capacidades. Primeiro, em vez de quebrar tudo com novas versões principais o tempo todo, os novos recursos chegam primeiro como flags de capacidade opcionais. Isso previne o famoso lock em diversão e dá espaço para todo mundo experimentar inovações antes delas virarem requisitos obrigatórios. Então, para fechar a nossa exploração, fica a grande a reflexão. Quais novos ambientes, interfaces colaborativas absurdas vão surgir agora que o estado de um agente de A pode ser compartilhado perfeitamente e sem colisões entre múltiplos clientes? O potencial para revolucionar a forma como trabalhamos em conjunto com a inteligência artificial é gigantesco. Muito obrigada por acompanharem essa imersão na arquitetura dopéx."}</script>
 </head>
 <body>
@@ -89,19 +114,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

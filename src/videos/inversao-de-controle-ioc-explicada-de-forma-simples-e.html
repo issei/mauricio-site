@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Inversão de Controle (IoC) explicada de forma simples e prática","description":"Você já ouviu falar em Inversão de Controle, mas ainda acha o conceito abstrato ou confuso? Neste vídeo, eu explico o que é IoC de forma clara, direta e…","thumbnailUrl":"https://i.ytimg.com/vi/Y67ZceRro4Y/maxresdefault.jpg","uploadDate":"2026-01-23","duration":"PT5M57S","embedUrl":"https://www.youtube-nocookie.com/embed/Y67ZceRro4Y","url":"https://mauricio.issei.com.br/videos/inversao-de-controle-ioc-explicada-de-forma-simples-e","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Hoje a gente vai falar de um dos princípios mais, olha, mais importantes do desenvolvimento de software moderno, a inversão de controle. O nome pode até assustar um pouco, né, mas na real é o segredo para ter um código que é robusto, que é fácil de testar e de manter claro. Bora entender como essa mágica funciona. Sabe aquela situação clássica? A gente mexe numa coisinha de nada no código e bum, quebra outra parte que em teoria não tinha nada a ver. Ou pior ainda, tentar escrever um teste simples vira um pesadelo, porque o código depende do banco de dados, de um serviço que tá lá na nuvem. Essa dor de cabeça, essa fragilidade toda tem uma causa e ela é bem mais comum do que parece. E o problema muitas vezes começa aqui. Olha só, uma única linha de código que parece super inofensiva, né? Nesse exemplo, a classe client handler tá criando ela mesma a sua dependência, o client repositóriy. Isso, gente, é o que a gente chama de acoplamento forte. Pensa assim, o client handler ficou amarrado, soldado mesmo, nessa implementação específica do client repository. Se precisar mudar um, a chance de quebrar o outro é gigante. E aí que entra a solução, a inversão de controle ou IOC para encurtar. A ideia é exatamente o que o nome diz, inverter quem tá no comando. Ao invés do nosso componente sair criando tudo que ele precisa, ele meio que relaxa. Ele delega essa responsabilidade para alguém de fora, tipo um framework. É uma virada de chave, uma mudança total de perspectiva. Tem uma analogia para isso que é perfeita. É o chamado princípio de Hollywood. Pensa num ator tentando um papel. Ele não fica ligando por estúdio toda hora, né? E aí tem papel para mim? Não, ele deixa o contato e espera. O estúdio que tem o controle liga para ele quando a hora chegar. Com o nosso código, a lógica é a mesma. Os componentes não saem por aí caçando suas dependências. Eles ficam na deles esperando que o ambiente entregue o que eles precisam. Tá legal a ideia, mas ainda prática, como a gente aplica essa tal de inversão de controle? Bom, a principal forma é usando um padrão chamado injeção de dependência. A lógica é bem direta. Olha só. Se o problema é o componente criar as próprias dependências, a solução é ele parar de fazer isso. Simples assim. Em vez de criar, ele recebe as dependências já prontas, injetadas de fora. Olha só o contraste, a diferença gritante. Na esquerda, o antes, a criação da dependência tá lá dentro escondida, deixando o código todo travado. Agora olha a direita, o depois. A dependência virou um parâmetro ali no construtor. A classe client handler agora ficou passiva, sabe? Ela só avisa o que precisa para funcionar e fica esperando alguém entregar. E esse padrão que a gente viu tem nome injeção via construtor. É de longe o jeito mais comum de fazer isso. Funciona tipo uma receita de bolo em três passos. Primeiro, a classe diz lá no construtor dela tudo que ela precisa para viver. Segundo, alguém de fora crie essas coisas que ela precisa. E terceiro, na hora de criar nossa classe, essas dependências são entregues de bandeja. Simples, né? E funciona que é uma beleza. OK. OK. A gente mudou a estrutura do código. Ele parece mais arrumadinho, mas e daí? Qual é o grande benefício? Para que todo esse trabalho? A resposta, gente, tá numa palavra mágica, testabilidade. E isso nos leva direto para um conceito que é assim a base dos testes de software hoje em dia. E esse conceito é o MOC. A melhor forma de pensar num mock é como um dublê de cinema. Ele se parece com ator principal, age como ator principal, mas só para aquela cena de ação, sabe? No nosso código, o MOK é isso, um objeto de mentirinha que simula o comportamento de uma dependência real, tipo o acesso ao banco de dados, mas de um jeito que a gente controla 100% no nosso teste, tudo previsível. E aqui, aqui a mágica acontece. Esse é o poder da injeção de dependência na prática. Como o client handler agora recebe o repositório de fora, na hora do teste a gente pode passar uma versão falsa para ele, o nosso MOC. O teste basicamente fala assim: \"O repositório de mentira: quando alguém te chamar para buscar um cliente, faz de conta que você achou, tá? E pronto, a gente consegue testar a lógica do client handler, o que ele faz, se o gente já existe, isoladamente, sem precisar de um banco de dados de verdade. Aquele problema lá do começo resolvido. O resultado de tudo isso é um código com uma qualidade muito, mas muito superior. Ele fica mais robusto porque dá para testar cada pedacinho separado. Fica mais fácil de dar manutenção porque tá tudo claro, as dependências estão ali na cara e talvez o mais importante, fica muito mais fácil de evoluir. Pensa só, dá para trocar um banco de dados SQL por um no SQL sem precisar mexer uma linha nas classes que usam ele é outro nível. Então, para resumir, a gente sai de um mundo de acoplamento forte, onde as peças do código são tipo coladas com super cola e vai para um mundo de acoplamento fraco, onde elas se encaixam como peças de Lego. E é isso que toda boa arquitetura de software busca. Código flexível, fácil de testar e que dá para reutilizar. Claro que em sistemas gigantes ninguém fica fazendo essa injeção na mão, classe por classe. Seria loucura. É para isso que existem os contêineres de IOAC ou contêineres de injeção de dependência. Pensa neles como um mestre de obras. Ele olha a planta da aplicação, vê que a classe A precisa da B, que a B precisa da C e ele mesmo monta todo esse quebra-cabeça automaticamente. E pra gente fechar, fica uma reflexão que é no mínimo interessante. É um paradoxo, né? Quando os nossos componentes abrem mão do controle de suas próprias dependências, quem ganha um poder imenso para testar, para modificar, para evoluir o sistema, somos nós quem desenvolve. No fim das contas, a inversão de controle não é sobre perder o controle, mas sim sobre colocá-lo no lugar certo."}</script>
 </head>
 <body>
@@ -91,19 +116,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS","description":"Neste vídeo, exploramos o turbovec, um índice vetorial de alta performance escrito em Rust com bindings para Python que está transformando a criação de…","thumbnailUrl":"https://i.ytimg.com/vi/Ukn3dyQZ-q0/maxresdefault.jpg","uploadDate":"2026-06-08","duration":"PT7M23S","embedUrl":"https://www.youtube-nocookie.com/embed/Ukn3dyQZ-q0","url":"https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"E aí, pessoal? Se vocês estão construindo aplicações de geração aumentada por recuperação, o famoso HG, sabem muito bem que gerenciar a pesquisa vetorial em larga escala é bem, é uma daquelas coisas que tira o sono de qualquer desenvolvedor, né? Conforme os dados crescem, a coisa fica séria e vira um imenso desafio de engenharia. Para colocar isso em perspectiva e entender o tamanho do problema, pensa no seguinte: armazenar um corpus de 10 milhões de documentos sem nenhuma compressão vai devorar uns espantosos 31 GB de memória RAM. É um absurdo. Tudo isso só para manter a representação vetorial lá pesada naquele formato padrão float 32. Mas e se a gente aplicasse uma otimização matemática pesada aqui? O contraste é simplesmente brutal. Esse mesmíssimo corpus de 31 GB cai para apenas 4 GB. Quatro. É uma redução drástica que basicamente muda as regras do jogo e destrava de vez as arquiteturas locais. Então o nosso papo de hoje vai cobrir o seguinte: primeiro, o gargalo da memória vetorial. Depois vamos falar sobre a compressão fast e fast scan, entrar de cabeça no avanço matemático do turbo quant, destrinchar como o algoritmo funciona por dentro e fechar com o turbo vec e a busca vetorial de nova geração. Bora lá. Certo? Começando pelo começo, o gargalo de memória vetorial. Quando a gente escala aplicações de A hoje em dia, mais cedo ou mais tarde a gente bate de frente no muro de menória. A real é que fica lendo continuamente esses vetores massivos em float 32 direto da RAM criam um gargalo enorme que acaba travando a CPU. O volume bruto de dados não comprimidos é tão assustador que a indústria foi meio que forçada a correr atrás de soluções agressivas de compressão. E aí que entra a nossa segunda parte, a compressão faz e fast scan. A galera tem contornado esse muro de memória, principalmente usando a biblioteca faz do Facebook. O coração disso tudo é a quantização de produto ou PQ. Para quem não tá tão familiarizado, é vital entender a definição. É basicamente uma técnica que quebra os vetores em subvetores e substitui essas partes por códigos curtinhos. Esses códigos apontam para um livro de códigos que a gente também chama de tabela de consulta ou lookup table. Essa é a base clássica da compreensão vetorial. Só que adivinha, a latência é o calcanhar de Aquiles dessa abordagem. Deixar essas tabelas de consulta lá na memória RAM acaba freando a velocidade de busca. Pensa bem, as CPUs de hoje processam operações aritméticas muito, mas muito mais rápido do que conseguem acessar a memória RAM. Então, a engenharia teve que repensar totalmente onde esses dados deveriam residir na hora de fazer a pesquisa. A sacada do recurso Fest Scan lá dentro do F resolve isso pegando essas tabelas da RAM e jogando direto pros registradores Cind da CPU. que são ultra rápidos. Ele simplesmente empacota os códigos de 4 bits em bloquinhos de 32 bytes, maximizando de forma brutal o rendimento de leitura. Mas sempre dá para ir além, né? E é sobre isso o nosso terceiro ponto, o avanço matemático do Turbo Quant. Para tentar superar a performance absurda do FI sem sacrificar a precisão, os pesquisadores precisaram apelar paraa matemática teórica pesada. Um grande divisor de águas foi o artigo sobre o Rapit lá do Sigmod de 2024. O estudo provou matematicamente que é sim viável cravar um limite de erro teórico super estrito usando quantização aleatória. Pegando carona nesses conceitos, surgiu um novíssimo algoritmo Turbo Quant que será detalhado no ICLR 2026 com uma taxa de distorção quase perfeita. Ele consegue comprimir os dados chegando pertinho do limite inferior teórico de Xenon. Para ser exato, fica apenas 2,7 vezes de distância. Ou seja, o algoritmo opera quase encostado na fronteira absoluta de eficiência de compressão. Agora, a grande vantagem de tudo isso, o FPQ clássico te obriga a passar por um treinamento demorado de agrupamento usando Kings+ para construir aquele livro de códigos. O Turbo Quant ele ignora isso, ele é totalmente alheio aos dados e simplesmente não tem fase de treinamento separada. Você pode ir adicionando novos vetores continuamente, sem precisar reconstruir tabela nenhuma. à medida que os seus dados crescem. Isso é um alívio gigantesco na prática. Mas como essa mágica matemática toda acontece? Vamos pro ponto quatro, por dentro do algoritmo Turbo Quant. Para entender de verdade, precisamos dar uma olhada no pipeline. São cinco passinhos bem metódicos e elegantes que pegam aqueles vetores gigantescos e convertem em códigos super compactados, mas mantendo a alta precisão. Acompanha a sequência. Primeiro vem a normalização, transformando os vetores em direções unitárias numa hiperesfera. Aí entra a verdadeira cartada de mestre, uma rotação aleatória. Ela força qualquer coordenada a cair numa curva estatística super previsível, a famosa distribuição beta. Depois da calibração, que dá um ajuste fino em desos menores, entra o famoso algoritmo de Lloyd Max para calcular certinho os melhores baldes de distribuição. E para fechar, tudo empacotado e espremido em numerozinhos inteiros de dois ou 4 bits. Lindo de ver. O toque final resolve uma dor de cabeça antiga. Toda compressão costuma subestimar as distâncias entre os vetores de forma sistemática. Adaptando uma sacada genial do Rabit Kill, o sistema armazena um único escalar extra por vetor durante a codificação. Isso simplesmente elimina o viés matemático do produto interno na hora da busca, sem adicionar praticamente nenhum custo computacional de tempo. E para fechar nossa análise, ponto C, Turbove VC, a busca vetorial de nova geração. Toda essa teoria brilhante do Turboquant virou código prático através do Turbovec escrito em Rust. E olha, os benchmarks falam por si. Usando kérneos construídos e otimizados à mão paraa arquitetura Neon, o Turbovec chega a ser de 12 a 20% mais rápido que o reverenciado F scan rodando em Chips Army. É a prova nítida de que eficiência matemática vira velocidade bruta de processamento no mundo real. Outro detalhe impressionante é a filtragem. Numa busca padrão, rola muito o que chamamos de overfatching. Os dados vêm todos pr memória para serem filtrados e descartados logo em seguida. Um super desperdício. O Turbovec muda o jogo fazendo um short circuiting. Ele filtra os dados de forma super elegante, direto de dentro do registrador SIMD. Vetores que não são permitidos na busca são simplesmente bloqueados e ignorados antes mesmo da pontuação rolar. Economiza um ciclo absurdo de processamento e além de ser um foguete, plugar isso nos seus projetos é muito fácil. Existem integrações nativas prontinhas para frameworks gigantes como Langchain, Lama Index, Haysteck e Agmut. Ou seja, as suas lógicas e pipelines anteriores continuam tocados. Você só faz uma troca da importação no topo do seu código e já garante uma eficiência imediata, o que deixa a gente com uma pulga atrás da orelha para refletir. Pensa comigo, com o nível de compressão que espreme 31 GB para apenas 4, mantendo pesquisas incrivelmente rápidas, qual é o verdadeiro limite das nossas máquinas locais? Será que a dependência de bancos de vetores caros e baseados em nuvem pode se tornar coisa do passado para muitas equipes? Fica o convite para vocês testarem. Valeu por acompanhar mais essa explicação focada em eficiência. vetorial. Um abraço e até a próxima análise."}</script>
 </head>
 <body>
@@ -92,19 +117,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

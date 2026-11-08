@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
- * Páginas dos vídeos do YouTube — fase 1 (fichas).
- * Spec: docs/specs/pages/videos-youtube/SDD-fase-1.md.
+ * Páginas dos vídeos do YouTube — fichas (fase 1) e artigos (fase 2).
+ * Spec: docs/specs/pages/videos-youtube/SDD-fase-1.md e SDD-fase-2.md.
  *
  * O vídeo é DADO, a página é SAÍDA. A fonte é content/videos/<id>.md (frontmatter
  * YAML) + content/videos/<id>.transcricao.vtt, e o vocabulário de assuntos é
@@ -18,6 +18,11 @@
  * Sem nenhum vídeo em content/videos/, nada é gerado além de uma lista de
  * exclusão vazia: um índice vazio publicado seria uma página rasa indexada.
  *
+ * Artigo (fase 2): só vai ao ar com status: publicado, e o build falha se ele não
+ * cumpre as regras de publicação (âncora de minuto conferida contra a transcrição,
+ * fonte verificada, revisão registrada). Em rascunho as mesmas regras viram aviso
+ * e a página continua sendo a ficha: rascunho nunca aparece no site.
+ *
  * Uso: node scripts/gen-videos.mjs [--check] [--content <dir>] [--out <dir>]
  *   --check    não grava; sai ≠0 se algum arquivo divergir da fonte
  *   --content  raiz que contém videos/ e temas.yml (padrão: content/)
@@ -33,8 +38,13 @@ const SITE = 'https://mauricio.issei.com.br';
 const AUTOR = 'Maurício Yokoyama Issei';
 
 export const STATUS = ['ficha', 'rascunho', 'publicado', 'removido'];
-/** Fase 1: nada é publicado — não há artigo revisado (SDD §6). */
+/** Fase 1: nada era publicado. Mantido para quem precise restringir (testes, revisão). */
 export const STATUS_PERMITIDOS_FASE_1 = ['ficha', 'rascunho', 'removido'];
+/** Âncora tolera a fala começar até 30 s antes ou 10 s depois do minuto citado (SDD-fase-2 §4). */
+const ANCORA_ANTES = 30;
+const ANCORA_DEPOIS = 10;
+const ANCORA = /\[(\d{1,2}:\d{2}(?::\d{2})?)\](?!\()/g;
+const GA4 = 'G-GEKLHZYVYX';
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const SLUG_MAX = 60;
 const DONOS = ['src/videos', 'src/temas', 'public/videos', 'public/temas'];
@@ -71,7 +81,7 @@ export function loadContent(contentDir) {
 // ── Validação ───────────────────────────────────────────────────────────────
 
 /** Devolve a lista de erros; vazia = conteúdo válido. SDD §6. */
-export function validate({ videos, temas }, { statusPermitidos = STATUS_PERMITIDOS_FASE_1 } = {}) {
+export function validate({ videos, temas }, { statusPermitidos = STATUS } = {}) {
   const erros = [];
   const slugs = new Map();
   for (const [chave, t] of Object.entries(temas)) {
@@ -87,13 +97,63 @@ export function validate({ videos, temas }, { statusPermitidos = STATUS_PERMITID
     else if (slugs.has(v.slug)) erros.push(`${onde}: slug "${v.slug}" repetido (também em ${slugs.get(v.slug)})`);
     else slugs.set(v.slug, v.arquivo);
     if (!STATUS.includes(v.status)) erros.push(`${onde}: status "${v.status}" fora de ${STATUS.join(' | ')}`);
-    else if (!statusPermitidos.includes(v.status)) erros.push(`${onde}: status "${v.status}" ainda não é permitido (fase 1: sem artigo revisado)`);
+    else if (!statusPermitidos.includes(v.status)) erros.push(`${onde}: status "${v.status}" não é permitido aqui`);
     if (!Array.isArray(v.temas ?? [])) erros.push(`${onde}: temas deve ser uma lista`);
     for (const t of v.temas ?? []) if (!(t in temas)) erros.push(`${onde}: tema "${t}" não existe em content/temas.yml`);
     if (!v.youtube?.titulo) erros.push(`${onde}: youtube.titulo ausente`);
     if (!v.youtube?.publicado_em) erros.push(`${onde}: youtube.publicado_em ausente`);
+    if (v.status === 'publicado') erros.push(...problemasDoArtigo(v).map((p) => `${onde}: ${p}`));
   }
   return erros;
+}
+
+/** Problemas dos rascunhos: as regras de publicação, como aviso (SDD-fase-2 §5). */
+export function avisos({ videos }) {
+  return videos.filter((v) => v.status === 'rascunho')
+    .flatMap((v) => problemasDoArtigo(v).map((p) => `content/videos/${v.arquivo}: ${p}`));
+}
+
+/** "12:40" ou "1:02:03" → segundos. */
+export const segundosDaAncora = (a) => a.split(':').map(Number).reduce((acc, n) => acc * 60 + n, 0);
+
+/** Blocos do corpo que precisam de âncora: parágrafos e itens de lista (títulos não). */
+function blocosComTexto(body) {
+  return String(body ?? '').split(/\n{2,}/).flatMap((b) => {
+    const t = b.trim();
+    if (!t || /^#{2,3}\s/.test(t)) return [];
+    if (/^[-*]\s/.test(t)) return t.split('\n').filter((l) => /^[-*]\s/.test(l)).map((l) => l.replace(/^[-*]\s+/, ''));
+    return [t.replace(/\n/g, ' ')];
+  });
+}
+
+/** Regras para publicar um artigo. Lista vazia = pode publicar. */
+export function problemasDoArtigo(v) {
+  const p = [];
+  if (!String(v.resumo ?? '').trim()) p.push('artigo sem resumo');
+  if (!String(v.body ?? '').trim()) p.push('artigo sem corpo');
+  if (!v.temas?.length) p.push('artigo sem tema');
+  const cues = v.transcricao ?? [];
+  if (!cues.length || ['pendente', 'ausente'].includes(v.youtube?.legenda)) p.push('artigo sem transcrição');
+  const fim = duracaoSegundos(v.youtube?.duracao) || (cues.at(-1)?.t ?? 0) + ANCORA_DEPOIS;
+  for (const bloco of blocosComTexto(v.body)) {
+    const ancoras = [...bloco.matchAll(ANCORA)].map((m) => m[1]);
+    if (!ancoras.length) p.push(`trecho sem âncora de minuto: "${bloco.slice(0, 60)}${bloco.length > 60 ? '…' : ''}"`);
+    for (const a of ancoras) {
+      const s = segundosDaAncora(a);
+      if (s > fim) p.push(`âncora [${a}] depois do fim do vídeo`);
+      else if (cues.length && !cues.some((c) => c.t >= s - ANCORA_ANTES && c.t <= s + ANCORA_DEPOIS)) {
+        p.push(`âncora [${a}] não bate com nenhum trecho da transcrição`);
+      }
+    }
+  }
+  if (!Array.isArray(v.fontes ?? [])) p.push('fontes deve ser uma lista');
+  for (const [i, f] of (Array.isArray(v.fontes) ? v.fontes : []).entries()) {
+    for (const campo of ['url', 'titulo', 'sustenta']) if (!String(f?.[campo] ?? '').trim()) p.push(`fonte ${i + 1} sem ${campo}`);
+    if (f?.verificada !== true) p.push(`fonte ${i + 1} não verificada (${f?.url ?? 'sem url'})`);
+  }
+  if (!String(v.revisado_por ?? '').trim()) p.push('sem revisado_por');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(isoDateOuVazio(v.revisado_em))) p.push('sem revisado_em (AAAA-MM-DD)');
+  return p;
 }
 
 // ── Formatação ──────────────────────────────────────────────────────────────
@@ -104,6 +164,12 @@ export function slugify(titulo) {
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   return s.length <= SLUG_MAX ? s : s.slice(0, SLUG_MAX).replace(/-[^-]*$/, '') || s.slice(0, SLUG_MAX);
 }
+
+const isoDateOuVazio = (d) => (d ? (d instanceof Date ? d.toISOString().slice(0, 10) : String(d).slice(0, 10)) : '');
+const duracaoSegundos = (iso) => {
+  const m = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(iso ?? '');
+  return m ? Number(m[1] || 0) * 3600 + Number(m[2] || 0) * 60 + Number(m[3] || 0) : 0;
+};
 
 const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
 const isoDate = (d) => (d instanceof Date ? d.toISOString().slice(0, 10) : String(d).slice(0, 10));
@@ -165,6 +231,60 @@ export function descricaoHtml(texto) {
     .split(/\n{2,}/).map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('\n');
 }
 
+// ── Artigo (fase 2) ─────────────────────────────────────────────────────────
+
+const idDoTitulo = (t) => `s-${slugify(t)}`;
+const urlNoMinuto = (id, s) => `https://www.youtube.com/watch?v=${encodeURIComponent(id)}&t=${s}s`;
+
+/** Inline do artigo: escapa, depois links, código, negrito, itálico e âncoras de minuto. */
+function inlineArtigo(texto, id) {
+  return esc(texto)
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (_, t, u) => `<a href="${u}" rel="noopener">${t}</a>`)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[\s(])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>')
+    .replace(ANCORA, (_, a) => {
+      const s = segundosDaAncora(a);
+      return `<a class="ancora" href="${urlNoMinuto(id, s)}" data-t="${s}" aria-label="${esc(`Assistir a partir de ${a}`)}">${a}</a>`;
+    });
+}
+
+/**
+ * Corpo Markdown restrito (##, ###, parágrafos, listas) → HTML, índice das seções
+ * e perguntas frequentes (### dentro de "## Perguntas frequentes").
+ */
+export function artigoHtml(body, id) {
+  const html = [];
+  const secoes = [];
+  const faq = [];
+  let naFaq = false;
+  let pergunta = null;
+  for (const bloco of String(body ?? '').split(/\n{2,}/).map((b) => b.trim()).filter(Boolean)) {
+    const h = /^(#{2,3})\s+(.+)$/.exec(bloco.split('\n')[0]);
+    if (h) {
+      const nivel = h[1].length;
+      const titulo = h[2].trim();
+      if (nivel === 2) { naFaq = /^perguntas frequentes$/i.test(titulo); secoes.push({ titulo, id: idDoTitulo(titulo) }); }
+      if (nivel === 3 && naFaq) { pergunta = { p: titulo, r: [] }; faq.push(pergunta); }
+      html.push(`<h${nivel} id="${idDoTitulo(titulo)}">${inlineArtigo(titulo, id)}</h${nivel}>`);
+      const resto = bloco.split('\n').slice(1).join(' ').trim();
+      if (resto) html.push(`<p>${inlineArtigo(resto, id)}</p>`);
+      continue;
+    }
+    const semAncora = (t) => t.replace(ANCORA, '').replace(/\s+/g, ' ').replace(/\s+([.,;:!?])/g, '$1').trim();
+    if (/^[-*]\s/.test(bloco)) {
+      const itens = bloco.split('\n').filter((l) => /^[-*]\s/.test(l)).map((l) => l.replace(/^[-*]\s+/, ''));
+      html.push(`<ul>${itens.map((i) => `<li>${inlineArtigo(i, id)}</li>`).join('')}</ul>`);
+      if (pergunta) pergunta.r.push(...itens.map(semAncora));
+    } else {
+      const t = bloco.replace(/\n/g, ' ');
+      html.push(`<p>${inlineArtigo(t, id)}</p>`);
+      if (pergunta) pergunta.r.push(semAncora(t));
+    }
+  }
+  return { html: html.join('\n'), secoes, faq: faq.map((f) => ({ p: f.p, r: f.r.join(' ') })) };
+}
+
 const rotaVideo = (v) => `/videos/${v.slug}`;
 const rotaTema = (t) => `/temas/${t}`;
 const recentes = (a, b) => isoDate(b.youtube.publicado_em).localeCompare(isoDate(a.youtube.publicado_em));
@@ -211,6 +331,14 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}
 `.trim();
@@ -238,6 +366,7 @@ function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '' })
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 <style>${CSS}</style>
+${ANALYTICS}
 <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>
 </head>
 <body>
@@ -247,10 +376,34 @@ function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '' })
 ${corpo}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
-${script}</body>
+${script}<script type="module" src="/js/cookie-consent.js"></script>
+</body>
 </html>
 `;
 }
+
+/*
+ * Análise com consentimento (SDD-fase-2 §10, F2-3): o padrão "negado" do Consent
+ * Mode v2 vem ANTES do gtag.js, igual às outras páginas (consent-default-inline),
+ * e o banner (cookie-consent.js) grava a escolha. Sem aceite, nenhum cookie de análise.
+ */
+const ANALYTICS = `<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA4}');</script>`;
 
 /*
  * Player em fachada (SDD §6): miniatura + botão. O iframe de youtube-nocookie
@@ -258,19 +411,27 @@ ${script}</body>
  * Sem JS o botão fica oculto e o link "Abrir no YouTube" basta.
  */
 const SCRIPT_FACHADA = `<script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
 `;
 
@@ -311,8 +472,11 @@ function cartao(v, temas) {
 export function renderVideo(v, temas) {
   const y = v.youtube;
   const rota = rotaVideo(v);
-  const descricao = resumo(y.descricao) || `Vídeo de ${AUTOR}: ${y.titulo}.`;
-  const robots = v.status === 'publicado' ? 'index, follow' : 'noindex, follow';
+  const publicado = v.status === 'publicado';
+  const descricao = (publicado && resumo(v.resumo)) || resumo(y.descricao) || `Vídeo de ${AUTOR}: ${y.titulo}.`;
+  const robots = publicado ? 'index, follow' : 'noindex, follow';
+  const artigo = publicado ? artigoHtml(v.body, v.id) : null;
+  const fontes = publicado ? v.fontes ?? [] : [];
   const transcricaoTexto = v.transcricao?.map((c) => c.texto).join(' ');
   const jsonld = {
     '@context': 'https://schema.org',
@@ -328,6 +492,29 @@ export function renderVideo(v, temas) {
     author: { '@type': 'Person', name: AUTOR, url: SITE },
     ...(transcricaoTexto && { transcript: transcricaoTexto }),
   };
+  const grafo = !publicado ? jsonld : {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { ...jsonld, '@context': undefined },
+      {
+        '@type': 'Article',
+        headline: y.titulo,
+        description: descricao,
+        datePublished: isoDateOuVazio(v.revisado_em),
+        inLanguage: 'pt-BR',
+        url: `${SITE}${rota}`,
+        image: jsonld.thumbnailUrl,
+        author: { '@type': 'Person', name: AUTOR, url: SITE },
+        about: (v.temas ?? []).map((t) => temas[t].nome),
+        video: { '@type': 'VideoObject', name: y.titulo, url: `${SITE}${rota}` },
+        ...(fontes.length && { citation: fontes.map((f) => ({ '@type': 'CreativeWork', name: f.titulo, url: f.url })) }),
+      },
+      ...(artigo.faq.length ? [{
+        '@type': 'FAQPage',
+        mainEntity: artigo.faq.map((f) => ({ '@type': 'Question', name: f.p, acceptedAnswer: { '@type': 'Answer', text: f.r } })),
+      }] : []),
+    ],
+  };
   const transcricao = v.transcricao?.length
     ? `<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2>
 <div class="box"><details><summary>Mostrar a transcrição completa</summary>
@@ -337,21 +524,28 @@ ${paragrafos(v.transcricao).map((p) => `<p><span class="ts">[${relogio(p.t)}]</s
     : `<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2><p class="aviso">Transcrição ainda não disponível.</p></section>`;
   const corpo = `<p class="crumb"><a href="/videos">Vídeos</a></p>
 <h1>${esc(y.titulo)}</h1>
-<p class="meta">Publicado em <time datetime="${isoDate(y.publicado_em)}">${dataPt(y.publicado_em)}</time>${y.duracao ? ` · ${duracaoPt(y.duracao)}` : ''}</p>
+${publicado ? `<p class="resumo">${esc(v.resumo)}</p>\n` : ''}<p class="meta">Publicado em <time datetime="${isoDate(y.publicado_em)}">${dataPt(y.publicado_em)}</time>${y.duracao ? ` · ${duracaoPt(y.duracao)}` : ''}</p>
 ${chipsTemas(v, temas)}
 <div class="yt" data-id="${esc(v.id)}" data-title="${esc(`Vídeo: ${y.titulo}`)}">
 <img src="${esc(jsonld.thumbnailUrl)}" alt="" width="1280" height="720">
 <button type="button" class="yt-play" hidden aria-label="${esc(`Assistir aqui: ${y.titulo}`)}">▶ Assistir aqui</button>
 </div>
 <p class="yt-link"><a href="https://www.youtube.com/watch?v=${esc(v.id)}" rel="noopener">Abrir no YouTube</a></p>
-<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+${publicado ? blocoArtigo(v, artigo, fontes) : ''}<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
 ${descricaoHtml(y.descricao) || '<p>Sem descrição.</p>'}</section>
 ${transcricao}`;
-  const html = pagina({ titulo: y.titulo, descricao, rota, robots, jsonld, corpo, script: SCRIPT_FACHADA });
+  const html = pagina({ titulo: y.titulo, descricao, rota, robots, jsonld: grafo, corpo, script: SCRIPT_FACHADA });
   const md = [
     `# ${y.titulo}`, '',
+    ...(publicado ? [v.resumo.trim(), ''] : []),
     `Vídeo de ${AUTOR}, publicado em ${dataPt(y.publicado_em)}${y.duracao ? ` (${duracaoPt(y.duracao)})` : ''}.`,
     `Assistir: https://www.youtube.com/watch?v=${v.id}`, '',
+    ...(publicado ? [
+      '_O vídeo e a transcrição estão em português. Os minutos entre colchetes, como [04:12], apontam para o trecho do vídeo._', '',
+      v.body.trim(), '',
+      ...(fontes.length ? ['## Fontes', '', ...fontes.map((f) => `- [${f.titulo}](${f.url}): ${f.sustenta}`), ''] : []),
+      `Revisado por ${v.revisado_por} em ${dataPt(v.revisado_em)}.`, '',
+    ] : []),
     ...(v.temas?.length ? [`Assuntos: ${v.temas.map((t) => `[${temas[t].nome}](${SITE}${rotaTema(t)})`).join(', ')}`, ''] : []),
     '## Sobre o vídeo', '', y.descricao?.trim() || 'Sem descrição.', '',
     '## Transcrição', '',
@@ -360,6 +554,21 @@ ${transcricao}`;
       : ['Transcrição ainda não disponível.', '']),
   ].join('\n');
   return { html, md };
+}
+
+function blocoArtigo(v, artigo, fontes) {
+  const indice = artigo.secoes.length >= 3
+    ? `<nav class="indice" aria-labelledby="h-indice"><h2 id="h-indice">Neste artigo</h2><ol>${artigo.secoes.map((s) => `<li><a href="#${s.id}">${esc(s.titulo)}</a></li>`).join('')}</ol></nav>\n`
+    : '';
+  const listaFontes = fontes.length
+    ? `<section aria-labelledby="h-fontes" class="fontes"><h2 id="h-fontes">Fontes</h2><ul>${fontes.map((f) => `<li><a href="${esc(f.url)}" rel="noopener">${esc(f.titulo)}</a><span class="sustenta">${esc(f.sustenta)}</span></li>`).join('')}</ul></section>\n`
+    : '';
+  return `<p class="aviso">O vídeo e a transcrição estão em português. Os minutos entre colchetes levam ao trecho do vídeo.</p>
+${indice}<article class="artigo" aria-label="Artigo">
+${artigo.html}
+</article>
+${listaFontes}<p class="revisao">Revisado por ${esc(v.revisado_por)} em <time datetime="${isoDateOuVazio(v.revisado_em)}">${dataPt(v.revisado_em)}</time>.</p>
+`;
 }
 
 export function renderTema(chave, tema, lista, temas) {
@@ -457,18 +666,20 @@ function orfaos(outRoot, gerados) {
 }
 
 export function run({ contentDir = join(ROOT, 'content'), outRoot = ROOT, check = false } = {}) {
-  const gerados = build(loadContent(contentDir));
+  const content = loadContent(contentDir);
+  const gerados = build(content);
+  const pendencias = avisos(content);
   const divergentes = Object.entries(gerados)
     .filter(([p, txt]) => !existsSync(join(outRoot, p)) || readFileSync(join(outRoot, p), 'utf8') !== txt)
     .map(([p]) => p);
   const sobras = orfaos(outRoot, gerados);
-  if (check) return { divergentes, sobras, total: Object.keys(gerados).length };
+  if (check) return { divergentes, sobras, avisos: pendencias, total: Object.keys(gerados).length };
   for (const p of divergentes) {
     mkdirSync(dirname(join(outRoot, p)), { recursive: true });
     writeFileSync(join(outRoot, p), gerados[p]);
   }
   for (const p of sobras) rmSync(join(outRoot, p));
-  return { divergentes, sobras, total: Object.keys(gerados).length };
+  return { divergentes, sobras, avisos: pendencias, total: Object.keys(gerados).length };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
@@ -477,6 +688,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const check = args.includes('--check');
   try {
     const r = run({ contentDir: opt('--content'), outRoot: opt('--out'), check });
+    for (const a of r.avisos) console.warn(`⚠ rascunho: ${a}`);
     if (check) {
       const ruins = [...r.divergentes.map((p) => `desatualizado: ${p}`), ...r.sobras.map((p) => `sem fonte: ${p}`)];
       if (ruins.length) {

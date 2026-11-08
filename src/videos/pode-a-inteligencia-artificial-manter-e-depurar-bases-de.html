@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?","description":"Neste vídeo, exploramos o **SWE-sweep**, um benchmark desenvolvido por pesquisadores da Meta FAIR, Harvard University, University of Washington e…","thumbnailUrl":"https://i.ytimg.com/vi/5rzZYy5JODM/maxresdefault.jpg","uploadDate":"2026-10-17","duration":"PT7M34S","embedUrl":"https://www.youtube-nocookie.com/embed/5rzZYy5JODM","url":"https://mauricio.issei.com.br/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Sejam muito bem-vindos a mais uma análise. Hoje a gente vai mergulhar de cabeça num mundo que parece ter saído da ficção científica. Os agentes de programação guiados por inteligência artificial. Estamos falando de sistemas avançados que navegam por imensas bases de códigos sozinhos, caçando falhas e otimizando processos como se fossem verdadeiros engenheiros de software invisíveis. É uma jornada incrível que começa na automação do dia a dia e vai até os limites mais extremos da segurança cibernética. Bom, para começar, vamos logo pra pergunta de 1 milhão de dólares na indústria de software hoje. Será que a inteligência artificial consegue de fato encontrar e reparar bugs sem ninguém segurando a mão dela? A grande promessa é que sim, que os grandes modelos de linguagem já podem cuidar de tudo de ponta a ponta, mas a realidade é que resolver um probleminha isolado é muito, muito diferente de receber uma base de código colossal e ter que descobrir por conta própria o que tá quebrado. Tem um artigo clássico de 2018 que mata a charada de um jeito brilhante. Você não pode consertar o que não consegue encontrar. Faz todo sentido, né? Esse é de longe o maior gargalo na hora de automatizar a correção de um programa. Porque aplicar o conserto em si, muitas vezes é a parte fácil. O verdadeiro pesadelo é localizar a exata linha de código que tá causando a dor de cabeça, escondida no meio de um labirinto com milhões de linhas. E isso nos leva à primeira etapa da nossa jornada, o problema da descoberta de bugs. A gente chama isso de localização de falhas. É literalmente o primeiro passo para qualquer sistema que queira ser autônomo. Sem conseguir achar o problema, toda aquela inteligência avançada da IA fica de mãos atadas, inútil na prática. E olha, apesar de todo o barulho em cima dos modelos modernos, eles ainda suam camisa para encontrar essa agulha no palheiro. É por isso que pesquisas recentes trouxeram novidades como o LLMAO, que tenta achar os erros sem nem precisar rodar testes antes, e abordagens como o Agent FL, que tenta expandir essa visão pro projeto inteiro. E falando no Agent FL, os resultados são de cair o queixo. Essas ferramentas não ficam só lendo o texto de forma passiva, elas simulam o que a gente faria. Elas tentam compreender o código, navegam por ele e confirmam hipóteses. Elas lidam com repositórios gigantescos com uma eficiência absurda, resolvendo essa etapa de localizar a falha em 97 segundos. E o custo? Mer 7 centavos de dólar. É muito rápido e praticamente de graça. Certo? Vamos avançar pro ponto dois, do guiado ao autônomo. O que é super interessante aqui é o choque de realidade quando a gente tira a IA do laboratório e joga no mundo real. Antes a gente usava muito o Sibent. Nele a IA era tipo um programador júnior. Recebia a descrição do problema mastigadinha, cheia de dicas do que fazer. Agora com o Swis Sweep, a brincadeira ficou séria. O agente é literalmente jogado no escuro em 100 repositórios com mais de 4.000 bugs. Zero dicas, nenhuma pista. Ele que lute para descobrir qual é o problema e o que precisa ser feito. Para garantir que a IA não tá só chutando, o Swiss Sweep usa um ambiente de testes super isolado chamado Harbor, que faz um ciclo de avaliação implacável. Funciona assim, ele reseta tudo pro original, aplica o código que a IA sugeriu, compila, se for o caso, e roda os testes. É um exame cirúrgico. Se a Iá consertar uma coisa, mas quebrar algo que já funcionava antes, a nota é zero. Fim de papo. Então, como a gente prepara a máquina para um desafio desses? Essa é a nossa terceira parte, equipando o agente de IA. Se a gente parar para pensar como humanos, a gente usa mouses, janelas e interfaces visuais para conversar com o computador, né? A pesquisa por trás de sistemas como o SUI Agent mostra que a IA também precisa da interface dela. É o que chamamos de ACI ou interface agente computador. São essas ferramentas sob medida que deixam o modelo ler textos imensos, criar arquivos, usar o terminal e não se perder no meio do caminho. É o que realmente destrava a autonomia deles. Mas não para na navegação. A gente pode equipar esses agentes com uma técnica chamada fuzing. Imagina bombardear um software com dados aleatórios para ver se ele quebra. O Titan Fus faz isso num nível absurdo, usando modelos de linguagem que leram bilhões de trechos de código. Ele entende as regras das linguagens e gera testes tão bem feitos que consegue descobrir bugs inéditos até em bibliotecas gigantes de inteligência artificial. O aumento na cobertura de código chega a quase 51% a mais que os métodos tradicionais. É um salto gigantesco. A tecnologia é maravilhosa, sem dúvida, mas precisamos falar de dinheiro. Ponto 4, a economia da depuração por IA. Vou jogar um balde de água fria com esse número. 4,7%. Essa hoje é a maior taxa de sucesso no ranking do WE Sweep para consertar bugs totalmente a cegas. Quem conseguiu essa marca foi o modelo Sol 5.6. é um número que traz a gente de volta pra realidade, mostrando que a autonomia pura, aquela que não precisa de nenhuma ajudinha humana, ainda tá engatinhando. O verdadeiro desafio aqui é equilibrar essas taxas baixinhas de acerto com os custos que francamente vão lá no teto. Esse Sol 5.6, que resolveu menos de 5% dos problemas, custa mais de 72 por repositório testado. Por outro lado, modelos mais baratos, tipo Luna 5.6, não chegam a 3% de sucesso. A moral da história é que botar Iá para caçar e consertar bugs de forma totalmente autônoma ainda custa uma fortuna em poder computacional. Se você pensar: \"Ah, é só dar mais tempo de processamento para ela.\" Sinto informar, mas não funciona assim. Existe uma barreira que os estudos chamam de rendimentos decrescentes. Se você deixa ir a rodando livremente por tempo demais, muitas vezes ela acaba desfazendo os consertos úteis que ela mesma já tinha feito. Gastar mais dinheiro e deixar o computador fritando por mais tempo não resolve a falta de compreensão profunda do problema. O que nos traz a parte mais crítica e até um pouco tensa da nossa análise, a sessão C, a fronteira da cybersegurança. Se a IA é tão boa em vasculhar sistemas para achar bugs, o que acontece se ela decidir usar isso pro mal? É exatamente isso que o CBENT tenta medir. Esse Framework testa os melhores modelos do mercado, tipo GPT4O e o Clou 3.5 Sonet, usando problemas reais e casca grossa de competições de hackers profissionais, os famosos desafios Capture the Flag. A ideia é entender os riscos na prática e os resultados, bem, eles dão o que falar. O contraste é gritante. Enquanto agentes de IA conseguem escanear o sistema, achar a brecha, invadir tudo numa questão de minutos, as equipes com os melhores profissionais humanos levam horas e horas. Em alguns casos mais difíceis, chegam a levar quase 25 horas de trabalho exaustivo. A velocidade com que a máquina ataca é absolutamente assustadora. Então, a gente fecha essa análise com um baita dilema. É o clássico problema do uso duplo da tecnologia. A mesmíssima inteligência artificial que tem a capacidade de patrulhar um software e fechar todas as brechas, também é a que consegue invadir numa velocidade que o cérebro humano não consegue acompanhar. No mundo onde a IA vai navegar pelos nossos sistemas o tempo todo, a grande questão pro futuro é: quem vai achar a falha primeiro, os nossos defensores ou os invasores? Fica essa pulga atrás da orelha."}</script>
 </head>
 <body>
@@ -95,19 +120,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

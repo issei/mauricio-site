@@ -1,4 +1,5 @@
-// Contrato do gerador das páginas de vídeo — docs/specs/pages/videos-youtube/SDD-fase-1.md.
+// Contrato do gerador das páginas de vídeo — docs/specs/pages/videos-youtube/SDD-fase-1.md
+// e SDD-fase-2.md (artigo: âncora de minuto, regras para publicar, rascunho não vai ao ar).
 //
 // O que se testa é regra, não estética:
 //   - validação do §6 (cada regra com um caso que falha e um que passa);
@@ -13,7 +14,7 @@ import { tmpdir } from 'node:os';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { build, loadContent, parseVtt, paragrafos, slugify, duracaoPt, dataPt, validate, run } from '../scripts/gen-videos.mjs';
+import { build, loadContent, parseVtt, paragrafos, slugify, duracaoPt, dataPt, validate, run, avisos, problemasDoArtigo, STATUS_PERMITIDOS_FASE_1 } from '../scripts/gen-videos.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const FIXTURES = join(ROOT, 'tests/fixtures/videos');
@@ -36,10 +37,9 @@ test('validação: slug repetido, fora do padrão ou longo demais', () => {
   assert.deepEqual(erros([video({ slug: 'a'.repeat(60) })]), []);
 });
 
-test('validação: status fora da lista e "publicado" proibido na fase 1', () => {
+test('validação: status fora da lista e lista de status permitidos', () => {
   assert.match(erros([video({ status: 'pronto' })]).join(), /fora de/);
-  assert.match(erros([video({ status: 'publicado' })]).join(), /ainda não é permitido/);
-  assert.deepEqual(validate({ videos: [video({ status: 'publicado' })], temas: {} }, { statusPermitidos: ['publicado'] }), []);
+  assert.match(validate({ videos: [video({ status: 'publicado' })], temas: {} }, { statusPermitidos: STATUS_PERMITIDOS_FASE_1 }).join(), /não é permitido/);
 });
 
 test('validação: tema que não existe em temas.yml', () => {
@@ -55,6 +55,83 @@ test('validação: arquivo precisa se chamar <id>.md e ter título e data', () =
 
 test('build: conteúdo inválido não gera nada', () => {
   assert.throws(() => build({ videos: [video({ status: 'publicado' })], temas: {} }), /conteúdo inválido/);
+});
+
+// ── Fase 2: artigo ──────────────────────────────────────────────────────────
+
+const CUES = [{ t: 5, texto: 'a' }, { t: 70, texto: 'b' }, { t: 150, texto: 'c' }];
+const artigo = (extra = {}) => video({
+  status: 'publicado', temas: ['ia'], resumo: 'Resumo.', body: '## Seção\n\nTexto [00:06].',
+  transcricao: CUES, fontes: [], revisado_por: 'Issei', revisado_em: '2026-11-08',
+  youtube: { titulo: 'Um vídeo', publicado_em: '2025-01-01', duracao: 'PT3M', legenda: 'automatica' }, ...extra,
+});
+const TEMAS = { ia: { nome: 'IA' } };
+const problemas = (extra) => problemasDoArtigo(artigo(extra)).join(' | ');
+
+test('artigo válido pode ser publicado', () => {
+  assert.deepEqual(validate({ videos: [artigo()], temas: TEMAS }), []);
+});
+
+test('âncora: precisa bater com a transcrição (30 s antes, 10 s depois) e caber no vídeo', () => {
+  assert.equal(problemas({ body: 'Texto [01:20].' }), '', '70 s fala, 80 s citado: dentro da tolerância');
+  assert.match(problemas({ body: 'Texto [00:50].' }), /não bate com nenhum trecho/);
+  assert.match(problemas({ body: 'Texto [04:00].' }), /depois do fim do vídeo/);
+  assert.equal(problemas({ body: 'Texto [0:01:10].' }), '', 'formato h:mm:ss');
+});
+
+test('âncora: todo parágrafo e item de lista precisa de uma; títulos não', () => {
+  assert.match(problemas({ body: '## Título sem âncora\n\nParágrafo sem âncora.' }), /trecho sem âncora de minuto: "Parágrafo sem âncora\."/);
+  assert.match(problemas({ body: '- item com [00:05]\n- item sem' }), /trecho sem âncora de minuto: "item sem"/);
+  assert.equal(problemas({ body: '## Título\n\n- um [00:05]\n- dois [01:10]' }), '');
+});
+
+test('publicar exige resumo, corpo, tema, transcrição e revisão registrada', () => {
+  assert.match(problemas({ resumo: '' }), /sem resumo/);
+  assert.match(problemas({ body: '' }), /sem corpo/);
+  assert.match(problemas({ temas: [] }), /sem tema/);
+  assert.match(problemas({ transcricao: null, youtube: { ...artigo().youtube, legenda: 'pendente' } }), /sem transcrição/);
+  assert.match(problemas({ revisado_por: '' }), /revisado_por/);
+  assert.match(problemas({ revisado_em: 'ontem' }), /revisado_em/);
+});
+
+test('fonte só vale verificada e completa', () => {
+  const fonte = { url: 'https://example.com', titulo: 'T', sustenta: 'S', verificada: true };
+  assert.equal(problemas({ fontes: [fonte] }), '');
+  assert.match(problemas({ fontes: [{ ...fonte, verificada: false }] }), /não verificada/);
+  assert.match(problemas({ fontes: [{ ...fonte, sustenta: '' }] }), /sem sustenta/);
+});
+
+test('rascunho: as regras viram aviso, não erro, e a página continua sendo a ficha', () => {
+  const rascunho = artigo({ status: 'rascunho', body: 'Sem âncora.', resumo: 'Resumo secreto do rascunho.' });
+  assert.deepEqual(validate({ videos: [rascunho], temas: TEMAS }), []);
+  assert.match(avisos({ videos: [rascunho] }).join(), /trecho sem âncora/);
+  const html = build({ videos: [rascunho], temas: TEMAS })['src/videos/um-video.html'];
+  assert.match(html, /noindex/);
+  assert.doesNotMatch(html, /Resumo secreto|Sem âncora|class="artigo"/, 'nada do rascunho vai ao ar');
+});
+
+test('publicado: indexado, fora da exclusão, com artigo, âncoras, fontes, Article e FAQPage', () => {
+  const out = build(fixture());
+  const html = out['src/videos/especificacao-antes-do-codigo.html'];
+  assert.match(html, /<meta name="robots" content="index, follow">/);
+  assert.ok(!JSON.parse(out['scripts/videos/sitemap-exclude.json']).includes('/videos/especificacao-antes-do-codigo'));
+  assert.match(html, /<a class="ancora" href="https:\/\/www\.youtube\.com\/watch\?v=DDDDDDDDDD4&amp;t=70s|<a class="ancora" href="https:\/\/www\.youtube\.com\/watch\?v=DDDDDDDDDD4&t=70s" data-t="70"/);
+  assert.match(html, /Neste artigo/, 'índice com 3 ou mais seções');
+  assert.match(html, /<h2 id="h-fontes">Fontes<\/h2>/);
+  assert.match(html, /Revisado por Maurício Yokoyama Issei/);
+  assert.match(html, /O vídeo e a transcrição estão em português/);
+  const ld = JSON.parse(/<script type="application\/ld\+json">(.*?)<\/script>/.exec(html)[1]);
+  const tipos = ld['@graph'].map((n) => n['@type']);
+  assert.deepEqual(tipos, ['VideoObject', 'Article', 'FAQPage']);
+  assert.equal(ld['@graph'][1].datePublished, '2026-11-08');
+  assert.equal(ld['@graph'][2].mainEntity[0].acceptedAnswer.text, 'Não: ela evita retrabalho.');
+  assert.match(out['public/videos/especificacao-antes-do-codigo.md'], /## Fontes/);
+});
+
+test('análise: padrão "negado" vem antes do gtag.js e o banner de cookies carrega', () => {
+  const html = build(fixture())['src/videos.html'];
+  assert.ok(html.indexOf("gtag('consent', 'default'") < html.indexOf('googletagmanager.com/gtag/js'));
+  assert.match(html, /<script type="module" src="\/js\/cookie-consent\.js"><\/script>/);
 });
 
 test('ficha: noindex, fora do sitemap, player só por clique', () => {
