@@ -66,3 +66,26 @@ test('coleta diária sem mudança real não reescreve o bloco (só visualizaçõ
   assert.match(segunda, /visualizacoes: 42/);
   assert.match(segunda, /coletado_em: 2026-11-07T00:00:00Z/);
 });
+
+test('campos do artigo (fase 2) sobrevivem à coleta, inclusive a lista de fontes', () => {
+  const fontes = [
+    { url: 'https://example.com/a', titulo: 'Fonte "A": com dois-pontos', sustenta: 'A afirmação da seção 1.', verificada: true },
+    { url: 'https://example.com/b', titulo: 'Fonte B', sustenta: 'Outra afirmação.', verificada: false },
+  ];
+  const existente = {
+    data: {
+      id: 'AAAAAAAAAA1', slug: 'artigo', status: 'publicado', temas: ['ia'],
+      resumo: 'Resumo: duas frases, com vírgula.', fontes, revisado_por: 'Issei', revisado_em: '2026-11-08',
+      youtube: { titulo: 'Velho', legenda: 'automatica' },
+    },
+    body: '## Seção\n\nParágrafo [00:05].\n\n- item [01:00]',
+  };
+  const { data, body } = le(mescla([existente], canal(doCanal('AAAAAAAAAA1', 'Título novo')), 'x'))['AAAAAAAAAA1.md'];
+  assert.equal(data.status, 'publicado');
+  assert.equal(data.resumo, 'Resumo: duas frases, com vírgula.');
+  assert.deepEqual(data.fontes, fontes);
+  assert.equal(data.revisado_por, 'Issei');
+  assert.equal(String(data.revisado_em), '2026-11-08');
+  assert.equal(body, '## Seção\n\nParágrafo [00:05].\n\n- item [01:00]');
+  assert.equal(data.youtube.titulo, 'Título novo');
+});

@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini","description":"Cansado de tarefas manuais e repetitivas que consomem seu tempo? 😩 Neste vídeo, apresentamos os novos Agentes de IA do Google Workspace Studio, a…","thumbnailUrl":"https://i.ytimg.com/vi/aS3JqBvf--Q/maxresdefault.jpg","uploadDate":"2025-12-05","duration":"PT7M29S","embedUrl":"https://www.youtube-nocookie.com/embed/aS3JqBvf--Q","url":"https://mauricio.issei.com.br/videos/seu-novo-assistente-de-ia-automacao-sem-codigo-com-google","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"E aí, pessoal? Olha só, o Google acabou de anunciar uma coisa que pode de verdade mudar o nosso dia a dia no trabalho. São os novos agentes de IA que a gente pode criar sem precisar saber nada de programação direto no Workspace Studio. Vamos dar uma olhada em como essa novidade funciona e como ela pode automatizar um monte de coisa pra gente. Sabe aquela sensação de est preso num loop? Responder sempre os mesmos tipos de e-mail, ficar organizando arquivo, copiando e colando informação de um lado pro outro? A gente conhece bem essa rotina, né? É um trabalho manual que, vamos combinar como é um tempo danado que a gente podia estar usando para coisas muito mais importantes. Bom, a nossa conversa hoje vai passar por alguns pontos. Primeiro, a gente vai entender o que é essa automação da rotina diária. Depois, vamos conhecer de perto o agente de IA. Aí a parte prática, como construir um agente sem precisar de código. Vamos ver também qual é o super poder que o Gemini traz para essa história toda. E super importante, como automatizar as coisas com cautela, com segurança. Para fechar, a gente vai pensar juntos o que dá para automatizar. Então vamos lá. Automatizando a rotina diária. O ponto de partida é exatamente esse, o problema. A ideia aqui é bem direta, sabe? é como a gente pode parar de gastar energia com aquele trabalho repetitivo e chato para poder focar no que realmente faz a diferença. Criar, pensar em estratégia e inovar, porque até hoje a automação era meio engessada. Ferramentas como apps sheet ou apps script são super úteis, claro, mas elas funcionam naquela lógica bem básica de se acontecer X, então faça Y. O problema é que isso é muito rígido. Se aparece qualquer coisinha diferente do esperado, a automação já não sabe o que fazer. Ela não lida bem com cenários mais complexos. E é justamente aí que o jogo começa a virar. Chegou a hora de conhecer o seu agente de IA. O Google tá trazendo uma abordagem completamente nova pra automação com esses agentes dentro do workspace Studio. Mas afinal, o que é um agente de A? Pensa nele como um assistente pessoal que a gente mesmo monta para fazer tarefas. A grande sacada é que ele tá totalmente integrado no sistema, então ele entende o contexto do que está rolando e a melhor parte de longe. Não precisa digitar uma única linha de código para criar um. Para ficar mais claro, vamos para o exemplo prático. Imagina só, chega um e-mail de um cliente super importante na sua caixa de entrada. Na mesma hora, o seu agente de A entra em ação. Ele pede pro Gemini resumir os pontos chave daquele e-mail e pronto, joga o resumo direto no Google Chat da equipe de vendas. Tudo isso em segundos, sem ninguém precisar clicar em nada. OK, parece mágica, mas como é que a gente constrói um desses? É mais simples do que parece. Para criar um agente, a gente basicamente combina três pecinhas, três componentes principais. Vamos dar uma olhada em cada um. O primeiro componente é o que eles chamam de iniciador ou trigger. Pensa nele como tiro de largada. É o evento que dá o start em tudo. Pode ser um e-mail que acabou de chegar, uma mensagem nova no chat, um artigo que foi criado no Drive. É basicamente o que cutuca o agente e fala: \"É, sua vez, pode começar.\" Depois do quando vem o OK. Esse é o segundo componente, as etapas. Cada etapa é uma ação, uma única tarefa que o agente tem que fazer. É como uma receita de bolo, sabe? Um passo depois do outro. Primeiro resuma este e-mail, depois poste no chat, tudo em sequência. E para conectar tudo isso, temos o terceiro componente, as variáveis. As variáveis são literalmente a cola que junta uma etapa na outra. Elas guardam uma informação por um tempinho. Por exemplo, o resumo que o Gemini criou fica guardado numa variável para que a próxima etapa possa pegar essa informação e usar. É assim que os dados passam de um passo pro outro. Agora vamos montar o quebra-cabeça. Pensa nesse fluxo. Etapa um, o iniciador. Um e-mail novo pinga na caixa de entrada. Etapa dois, uma ação. O agente pede pro Gemini resumir o conteúdo. Etapa três, a variável. O texto do resumo é guardado. E finalmente, etapa quatro, outra ação. O agente pega aquela variável com o resumo e posta num espaço do chat, viu? É um processo super lógico, simples e, cara, muito poderoso. Beleza, a gente já viu como montar o esqueleto do agente, mas o que realmente faz essa tecnologia ser tão diferente é o cérebro por trás da operação. É aqui que entra o super poder do Gemini. Tá, mas aí fica a pergunta: o que faz isso ser tão diferente de uma automação simples daquelas que a gente já conhecia? A diferença é gritante e tá bem aqui. De um lado, a automação baseada em regras. Ela é rígida, depende daquela lógica. Se isso, então aquilo. Ela precisa de instruções exatas e não sabe lidar com imprevistos. Do outro lado, os agentes com IA, eles usam raciocínio de verdade. Eles não só seguem ordens, eles entendem o contexto, se adaptam e conseguem dar conta de processos bem complexos do começo ao fim. E quem dá esse poder todo é o Gemini. É ele que permite que os agentes entendam o contexto, analisem o sentimento de um texto, gerem conteúdo. Pensa só, o agente pode ler um e-mail, perceber que o cliente tá irritado e priorizar aquela mensagem, ou pode ler um documento e já criar um rasconho de resposta. É outro nível de inteligência. Mas como já dizia o ditado, com grandes poderes vem grandes responsabilidades. Automatizar tudo é incrível, mas a gente precisa falar sério sobre um ponto, segurança. Especialmente quando a automação mexe com dados sensíveis. E os riscos não são pequenos, viu? Um agente configurado de qualquer jeito pode, sem querer, expor informações confidenciais, como salários ou dados de saúde, pode causar um vazamento de dados, abrir brechas para manipulação e, claro, violar a LGPD, o que pode gerar multas pesadíssimas e um estrago na reputação da empresa. E essa frase aqui resume tudo. Na automação, o erro é tão rápido quanto o acerto. A mesma velocidade que faz a automação ser incrível para acertar é a velocidade que pode espalhar um erro. Por isso, não dá para sair automatizando sem pensar muito bem antes. Então, como fazer isso do jeito certo? Tem uma listinha de boas práticas que é fundamental seguir. Primeiro, mapear os dados, saber exatamente onde estão as informações sensíveis, depois aplicar controles de acesso com autenticação forte, criptografar sempre, tanto os dados parados quanto em movimento. Auditar e monitorar tudo que os agentes fazem. E, claro, garantir o consentimento dos usuários seguindo a LGPD a risca. OK, a gente já entendeu a tecnologia, já viu os cuidados que precisa tomar, agora chegamos na parte mais legal, pensar no que de fato a gente vai automatizar, porque no fim das contas é disso que se trata. A ideia dos agentes de A é transformar aquelas tarefas manuais e chatas em processos inteligentes que rodam sozinhos. Isso libera o nosso tempo e a nossa cabeça para focar no que realmente importa, na criatividade, na estratégia. E isso tudo nos traz para uma pergunta final. Imagina só um assistente de IA prontinho para começar a trabalhar. A questão deixou de ser se vamos automatizar e passou a ser o que vamos automatizar primeiro. Se um desses assistentes tivesse disponível agora, qual seria a primeira missão que ele receberia? Fica aí a reflexão."}</script>
 </head>
 <body>
@@ -89,19 +114,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

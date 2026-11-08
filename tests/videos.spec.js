@@ -50,16 +50,40 @@ test('ficha: transcrição abre pelo teclado e avisa que não foi revisada', asy
 test('assunto: lista os vídeos do assunto', async ({ page }) => {
   await abre(page, 'src/temas/engenharia-agentica.html');
   await expect(page.locator('h1')).toHaveText('Engenharia agêntica');
-  await expect(page.locator('.lista > li')).toHaveCount(2);
+  await expect(page.locator('.lista > li')).toHaveCount(3);
   await expectNoSeriousA11yViolations(page);
 });
 
 test('índice: o filtro por assunto esconde os outros vídeos e anuncia a contagem', async ({ page }) => {
   await abre(page, 'src/videos.html');
   const itens = page.locator('#lista-videos > li');
-  await expect(itens).toHaveCount(2);
+  await expect(itens).toHaveCount(3);
   await page.getByLabel('Filtrar por assunto').selectOption('acessibilidade');
   await expect(itens.filter({ visible: true })).toHaveCount(1);
   await expect(page.locator('#filtro-status')).toHaveText('1 vídeo');
   await expectNoSeriousA11yViolations(page);
+});
+
+// SDD-fase-2 §6: modelo do artigo publicado.
+test('artigo: indexado, âncora vai ao YouTube sem JS e toca aqui no minuto certo com JS', async ({ page }) => {
+  await abre(page, 'src/videos/especificacao-antes-do-codigo.html');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
+  const ancora = page.locator('a.ancora', { hasText: '01:10' });
+  await expect(ancora).toHaveAttribute('href', 'https://www.youtube.com/watch?v=DDDDDDDDDD4&t=70s');
+  await expect(page.locator('iframe')).toHaveCount(0);
+  await ancora.click();
+  await expect(page.locator('.yt iframe')).toHaveAttribute('src', /\/embed\/DDDDDDDDDD4\?.*start=70/);
+  await expect(page.getByRole('heading', { name: 'Fontes' })).toBeVisible();
+  await expect(page.getByText(/Revisado por/)).toBeVisible();
+  await expectNoSeriousA11yViolations(page);
+});
+
+test('artigo: sem JS a âncora continua um link para o YouTube', async ({ browser }) => {
+  const ctx = await browser.newContext({ javaScriptEnabled: false });
+  const page = await ctx.newPage();
+  await page.route(/^https?:\/\//, (r) => r.abort());
+  await abre(page, 'src/videos/especificacao-antes-do-codigo.html');
+  await expect(page.locator('a.ancora').first()).toHaveAttribute('href', /youtube\.com\/watch\?v=DDDDDDDDDD4&t=\d+s/);
+  await expect(page.locator('iframe')).toHaveCount(0);
+  await ctx.close();
 });

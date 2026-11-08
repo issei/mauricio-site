@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total","description":"Você está pronto para elevar a maturidade do seu DevOps Salesforce para o próximo nível? 🚀 Neste vídeo, mergulhamos na arquitetura de uma esteira…","thumbnailUrl":"https://i.ytimg.com/vi/IhUUpLGyIpA/maxresdefault.jpg","uploadDate":"2026-03-06","duration":"PT6M36S","embedUrl":"https://www.youtube-nocookie.com/embed/IhUUpLGyIpA","url":"https://mauricio.issei.com.br/videos/devops-salesforce-integrando-devin-ai-flosum-e-github-para","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Pensa só num desenvolvedor que codifica 24x7 sem nunca se cansar. Agora imagina conectar essa velocidade toda, essa inteligência artificial direto na sua esteira de DevOps eos force, mas com total segurança e governança. Pois é exatamente essa arquitetura revolucionária que a gente vai desvendar hoje, a fusão entre um agente de a autônomo e um controle de nível corporativo. Então a gente chega na grande pergunta, né? O desafio que todo mundo no ecossistema Seus Force enfrenta. Como é que se pega a velocidade absurda de um desenvolvedor de IA que trabalha sem parar e ao mesmo tempo garante que cada linha de código passe por todos os filtros de conformidade, segurança e auditoria que o mundo corporativo exige. A resposta tá num modelo híbrido, onde cada ferramenta faz o que sabe de melhor. Pensa no GitHub como oficina de altíssima tecnologia do Devin. É lá que a mágica da criação autônoma acontece com foco total em velocidade. Já o flusson, ah, o flusson é a torre de controle, o centro de comando que gerencia a entrega, garantindo que tudo que sai da oficina chegue em produção de forma segura, auditada e sem conflitos. Bom, vamos seguir uma jornada bem clara aqui. Primeiro a gente vai entender a visão geral, depois mergulhamos na arquitetura que conecta tudo. Na sequência vamos ver o Devin em ação e como o Flowson assume o controle. E para fechar, vamos ver como começar a usar isso de forma inteligente e, claro, segura. Certo? Vamos direto ao ponto. A ideia aqui não é abrir mão do controle, muito pelo contrário, é sobre turbinar a velocidade do desenvolvimento com IA, mas mantendo essa força toda dentro de um framework de governança que garante que cada entrega seja segura, controlada e no final perfeita. E essa analogia é perfeita. O Flowolusum é o sistema nervoso central de toda a operação de DevOps. Ele controla o fluxo, as permissões e a conformidade lá dentro do Seos Force. O Deven, por sua vez, é como um engenheiro especialista na sua própria oficina lá no GitHub, recebendo tarefas específicas e entregando um trabalho de altíssima qualidade paraa revisão. Agora vamos pra arquitetura para ver como essa comunicação acontece na prática. Para que esses dois munos conversem, a gente precisa de componentes bem definidos e, mais importante ainda, de uma linguagem comum, que ambos se entendam perfeitamente. A gente tem três componentes principais aqui. O Flowon, que vive nativamente no seu esforce e orquestra toda a governança. o Deven AI, nosso engenheiro autônomo, que opera exclusivamente no GitHub, e a peça chave que conecta tudo, o Flowson Cloud Agent, um middleware que funciona como um tradutor, uma ponte de comunicação entre os dois ambientes. E aqui tá o pré-requisito, talvez mais importante de todos. A língua que o Deven fala, o formato sales force de X. Pensa assim, o metadado antigo é como um livro sem capítulos. Para IA é só um bloco de texto gigante difícil de entender. O SFDX organiza esse livro em capítulos e parágrafos bem claros. Essa estrutura granular que permite ao dev encontrar e editar de forma cirúrgica exatamente o componente que precisa, seja uma classe Apex ou um LWC. Sem isso, a IA estaria cega, é innegociável. Então, vamos lá ver o Dev em ação. Vamos seguir o ciclo de vida de uma tarefa desde o momento em que ela é delegada até entrega paraa revisão humana. O fluxo é impressionante. Uma tarefa é delegada via. O Deven imediatamente se isola numa feature branch para não atrapalhar ninguém. Ele então cria seu próprio ambiente de desenvolvimento, uma scratchwork, que é basicamente uma sandbox temporária e descartável. Lá ele codifica, roda testes até atingir a cobertura mínima e se autocorrige. Só quando o trabalho tá pronto, ele abre um pull request todo detalhado pedindo pro engenheiro sénior revisar. Aí a trabalha, o humano governa. E assim que essa revisão humana acontece e o código é aprovado, a responsabilidade muda de mãos. O mundo ágil e criativo do Devin entrega o bastão pro mundo seguro e governado do Fluson. E o ponto crucial é este. O evento de merge no GitHub é o gatilho. A partir daquele exato momento, a intervenção humana termina e a esteira de governança totalmente automatizada do Flowon entra em ação. E aqui que um dos super poderes do Fluum entra em cena, o Smart Merge, o Git tradicional olha pros arquivos XML dos seus force e vê só texto, o que gera incontáveis falsos conflitos. O Smart Merge, por outro lado, ele entende a estrutura do seus force. Ele consegue resolver conflitos em metadados complexos, como perfis, de forma inteligente, garantindo que o pipeline nunca pare por uma bobagem. Então, o fluxso é contínuo e automático. O Cloud Agent sincroniza a mudança do GitHub. O Smart Marge resolve qualquer conflito. O código é consolidado na brente do Flowzon, que é a fonte da verdade da produção. E a partir daí, o pipeline dinâmico promove a mudança por todos os ambientes de forma segura e ainda gera um ID de deploy paraa auditoria completa, certo? Arquitetura poderosa, mas a pergunta é por onde começar? A chave é implementar salvaguardas e focar em casos de uso que entreguem alto valor com baixo risco. A estratégia mais inteligente é começar com tarefas que a gente chama de amplas e rasas. Pense em criar centenas de testes unitários, limpar dívidas técnicas ou modernizar componentes para LWC. Por que começar aqui? Porque são tarefas de alto volume e valor técnico, mas que raramente tocam na lógica de negócio principal. É o jeito perfeito de gerar um retorno massivo sobre o investimento com risco mínimo. E aqui está a mensagem mais importante. Nesta arquitetura, a governança não é uma opção, ela é programada. O controle não é uma etapa manual, é uma regra de código que tá embutida em cada parte do processo, desde a revisão humana obrigatória no GitHub até o último passo do deploy automatizado. E isto é um exemplo bem concreto. Num simples arquivo de texto, a gente define as regras do jogo. A gente pode proibir explicitamente o devin de fazer deploy em produção ou de tocar em metadados sensíveis. As barreiras de proteção são definidas por código de forma clara e inegociável. E isso nos deixa com uma reflexão final. A tecnologia para ter um engenheiro de IA na equipe já é uma realidade? A pergunta não é mais se isso é possível, mas sim a sua esteira de devops está maduro o suficiente para lidar com essa nova era de velocidade e automação? A revolução já chegou. A questão é se a gente está pronto para ela."}</script>
 </head>
 <body>
@@ -91,19 +116,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

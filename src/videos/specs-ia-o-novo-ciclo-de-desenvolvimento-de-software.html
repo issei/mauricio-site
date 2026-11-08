@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"SPECS & IA: O Novo Ciclo de Desenvolvimento de Software (Especificação como Diálogo)","description":"A Inteligência Artificial vai matar o Desenvolvimento Guiado por Especificações (SDD)? 🤯 Neste vídeo essencial, desmistificamos a relação entre…","thumbnailUrl":"https://i.ytimg.com/vi/jcFFT-W1vE4/maxresdefault.jpg","uploadDate":"2025-12-03","duration":"PT6M56S","embedUrl":"https://www.youtube-nocookie.com/embed/jcFFT-W1vE4","url":"https://mauricio.issei.com.br/videos/specs-ia-o-novo-ciclo-de-desenvolvimento-de-software","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"E aí, com essa explosão de assistentes de IA para codificar, uma prática que parecia antiga tá voltando com tudo, só que de um jeito completamente novo, o desenvolvimento guiado por especificações ou sdd. Mas calma, antes de pensar em papelada e burocracia, vamos entender como isso tá virando a chave para uma parceria muito mais inteligente entre nós, humanos e as máquinas. Pois é, essa é a pergunta de 1 milhão de dólares, né? É aquele medo que bate em muita gente. A ideia de ter que escrever especificações parece um baita retrocesso, uma volta pro modelo cascata, aquele super inflexível, onde tudo tinha que estar escrito em pedra antes de alguém digitar uma linha de código. Mas será que na era da EA essa história é a mesma? Olha, a grande virada de chave tá aqui. A gente precisa repensar o que é uma especificação. Antigamente era um contrato rígido. Qualquer mudança no meio do caminho era vista como uma falha de planejamento. Hoje, com a IA, as SPECs são diálogo vivo. Elas são flexíveis, elas evoluem. A mudança não é um erro, é aprendizado. O objetivo não é mais congelar o futuro, mas sim é deixar a intenção do momento super clara. Então, que que a gente vai ver hoje? Nosso roteiro é esse aqui. Primeiro vamos quebrar de vez esse mito do modelo cascata. Depois vamos dar uma olhada num cardápio de especificações para ver que não é tudo a mesma coisa. Aí a gente mergulha no ciclo de colaboração com a IA, vê como aplicar isso em código legado, falamos das novas habilidades que a gente vai precisar e por fim damos aquela olhada no futuro iterativo que tudo isso promete. Vamos começar encarando de frente esse tal Pânico do Cascata. a gente entende o receio. Todo mundo já ouviu histórias de documentos gigantes que ninguém lia e que já nasciam desatualizados. Só que o SDD moderno vira esse jogo. A especificação, na verdade, se torna a nossa ferramenta mais ágil para guiar. Ia e o resultado: velocidade e um código muito mais confiável. Tá? Mas então o que é esse SDD de hoje? Pensa nele como um processo onde a especificação é um documento vivo. Ela é a fonte da verdade que vai evoluindo junto com o projeto. Em vez de ser um papel que a gente joga fora, ela se torna executável, ou seja, ela guia diretamente o que a IA vai implementar. A consequência disso é que todo mundo, tanto humanos quanto as IAs, ficam na mesma página o tempo todo. E aqui vem uma das ideias mais legais. Não existe um único jeito de fazer uma especificação. Pensa nisso de verdade como um cardápio. A gente vai escolher o nível de detalhe e formalidade dependendo do prato, ou melhor, da tarefa que a gente tem pela frente. Aí, olha só como esse cardápio funciona. Para uma mudança rápida, um bug, um botão novo, a gente usa o nível um, a intenção. É direto ao ponto, o porqu e o qu. Já pra maioria das features, tipo um sistema de login novo, a gente vai pro nível dois, o plano iterativo. Ele define a estratégia técnica, mas tem aquela rigidez toda do cascata. E aí, para sistemas de altíssimo risco, tipo o núcleo de um sistema bancário, onde errar não é uma opção, a gente usa o nível três, o blueprint, com lógica formal e tudo mais. A agilidade tá exatamente em saber qual ferramenta usar para cada trabalho, beleza? Mas como isso tudo funciona na prática, no dia a dia? É aí que entra o que a gente pode chamar de ciclo de ouro, que é essa dança, essa colaboração constante entre a pessoa que desenvolve e o agente de I. Esse fluxo é o oposto do cascata. A gente começa com a intenção. A Iá, então propõe um plano e aqui, atenção, aqui tá o pulo do gato. A pessoa revisa o plano antes de qualquer código ser gerado. Qualquer feedback, qualquer ajuste, volta para corrigir a especificação. Aí com a spec corrigida, a IA implementa de novo. É um ciclo de aprendizado constante, não uma esteira de produção que só anda pra frente. Não corrija o código, corrija a especificação. Grave essa frase, porque ela é a regra de ouro que sustenta todo esse processo. Por quê? Porque quando a gente corrige a especificação, a gente garante que a documentação e o sistema nunca se separem. A fonte da verdade tá sempre atualizada. a gente acaba com aquele problema clássico do manual que não tem nada a ver com o software que tá rodando. E você pode estar pensando, tá legal para projeto novo, mas é aquele projeto legado que ninguém aguenta mais mexer, pois é aí que o SSD talvez mostre o seu maior valor. Nesses casos, a IA age como uma verdadeira arqueóloga de software. Nesse cenário, a gente inverte o jogo. O fluxo é código, spec, código. Aá primeiro analisa o código que já existe para entender o que ele realmente faz. não que a documentação antiga diz que ele fazia. A partir daí, ela gera uma especificação do comportamento atual. A gente, como humanos, validamos e refinamos essa spec. E com esse mapa preciso em mãos, a gente consegue finalmente refatorar e evoluir o sistema sem aquele medo de quebrar tudo. E isso tem um impacto cultural gigantesco. Pensa só, a memória da aplicação não morre mais quando um dev sai da empresa. A IA consegue transformar aquele conhecimento que estava só na cabeça das pessoas em um ativo documentado, vivo. Isso permite modernizar sistemas antigos com uma segurança que, sinceramente, era impensável até pouco tempo atrás. OK? Se o processo muda, o nosso papel como desenvolvedores também precisa evoluir, certo? A engenharia de requisitos, que às vezes era vista como uma tarefa chata, burocrática, se torna talvez a habilidade mais criativa e valiosa do time. O nosso valor vai muito além de só saber codificar. Habilidade chave passa a ser o que a gente pode chamar de design de instrumento, criar requisitos tão precisos que eles funcionem como um bisturi na mão da IA. Outra é a contextualização. Saber dar o mapa do projeto para IA não se perder. é garantir a testabilidade de tudo que a gente pede e, principalmente, se tornar um especialista em redução de ambiguidade. A gente vira um curador de clareza. Então, no final do dia, para onde tudo isso tá nos levando? Há uma mudança de mentalidade fundamental. A gente tá saindo de um mundo de documentação pesada, prescritiva para um mundo de orientação útil e iterativa. A conclusão é muito simples, mas muito poderosa. Aia não nos obriga a criar mais burocracia. Muito pelo contrário, ele exige uma documentação que seja útil de verdade, que sirva como um guia claro e vivo. A qualidade da orientação que a gente dá importa muito mais do que a quantidade de páginas escritas. E essa é a metáfora perfeita pra gente fechar. As especificações não são mais aqueles muros que limitam a criatividade ou atrasam o projeto. Elas são os trilhos que guiam a IA e o time, permitindo que a gente se mova com velocidade, com previsibilidade e em evolução constante, sem nunca mais cair na armadilharia do modelo cascata. Então, a provocação que fica é essa. Como é que a gente pode começar a ter conversas melhores, mais produtivas com os nossos assistentes de IA? Porque no fundo o futuro da nossa profissão pode depender da qualidade dessa resposta."}</script>
 </head>
 <body>
@@ -88,19 +113,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Engenharia de Agentes de IA: Da \"Magia\" à Arquitetura de Produção","description":"Você já sentiu que construir com IA parece mais \"mágica\" do que engenharia? Projetos que funcionam bem em demos, mas falham miseravelmente em produção…","thumbnailUrl":"https://i.ytimg.com/vi/UxaaQN-csvA/maxresdefault.jpg","uploadDate":"2026-06-19","duration":"PT7M43S","embedUrl":"https://www.youtube-nocookie.com/embed/UxaaQN-csvA","url":"https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Boas-vindas a este Spliner. Hoje a gente vai falar sobre um tema absolutamente crucial, a transição daquele hype todo imprevisível da inteligência artificial paraa construção de sistemas que realmente param de pé na produção. É hora de deixar a tal magia do prompt de lado e colocar a mão na massa com engenharia de software de verdade, garantindo escalabilidade e segurança de ponta a ponta. Vamos nessa. O nosso roteiro passa rápido por cinco pontos fundamentais. Primeiro do causa engenharia, depois a orquestração determinística de a, em terceiro, arquitetura e os contratos rígidos, avançando para FINOPS e o mundo aberto. E para fechar a conta, governança e explicabilidade. Vamos seguir então ponto número um do causa e engenharia. Olha que contraste interessante. Existe um abismo gigante entre o que fica lindo numa demonstração controlada e o que realmente sobrevive lá no mundo real, na produção. De um lado, a gente tem essa famosa magia do prompt, sabe? aqueles agentes autônomos conversando livremente, meio que soltos ao vento. Do outro temos a engenharia agêntica. Aqui a história é outra. A I não é mágica. Ela é tratada como um componente de software. É algo super estruturado, previsível e com muita disciplina. É literalmente sair da brincadeira para ir pro jogo sério. E por que mudar? Bom, quando a gente confia num sistema de a sem estrutura, os sintomas são para dizer o mínimo desastrosos. Basta imaginar loops infinitos com a gente passando a bola pro outro sem parar. até estourar o limite de uso. Isso gera faturas de API que são impossíveis de prever, sem contar as alucinações sistêmicas, né? Aqueles erros que vão se propagando como se fossem a verdade absoluta. O orçamento vira uma roleta russa e se precisar debugar alguma coisa, é para esquecer, é praticamente impossível. O que nos leva a uma frase que resume perfeitamente a situação. O LLM é um componente, não o piloto. Quer dizer, num sistema verdadeiramente bem-sucedido, a inteligência artificial mal toca o caminho crítico de forma autônoma. A maior parte do trabalho duro ali é, na realidade engenharia clássica construída ao redor de um motor probabilístico. E com isso, chegamos ao ponto dois, orquestração determinística de IA. Tem um conceito sensacional aqui chamado de resíduo interpretativo. A ideia é muito inteligente. Não faz o menor sentido gastar rios de dinheiro usando modelo pesado para resolver tudo. As equipes precisam aprender a usar o poder do LLM só para aqueles 10% do problema que realmente exigem uma compreensão de linguagem mais complexa. O resto todo a gente resolve muito antes usando dados estruturados e aquelas boas e velhas regras simples de código. Na prática, o processo deixa de ser uma conversa caótica e vira uma linha de montagem, um pipeline muito previsível, como um grafo acíclico direcionado. Começa lá na entrada de dados, passa por uma limpeza e sanitização pesada e aí sim chega no modelo, mas só para lidar com aquele resíduo interpretativo que a gente acabou de falar. Depois passa por uma validação super rigorosa e só então a saída liberada. Basicamente, a IA fica numa caixinha presa em etapas fixas e muito bem definidas. Vamos agora para a parte três, arquitetura e contratos rígidos. Fica muito fácil entender essa necessidade de separação física usando a metáfora de um restaurante. O motor cognitivo, a parte pesada da IA, é a cozinha do restaurante, é o cérebro. É lá que um ambiente esquenta, onde lógicas complexas rodam e os dados sensíveis são processados lá nos bastidores sem pressa. Por outro lado, a interface pública e rápida é a vitrine, o salão de jantar. Lá, o atendimento tem que ser dinâmico, instantâneo. Se a gente misturar o caos da cozinha com a exposição do salão, é uma receita infalível para falhas catastróficas de performance e segurança. E como é que a gente liga esses dois mundos separados usando os famosos contratos rígidos? É a mesma lógica de validar formulários num backend tradicional. Qualquer coisa que sai da IA precisa ser tratada como um dado absolutamente não confiável. Tem que ter esquemas e regras muito estritas ali na fronteira, barrando qualquer resposta inesperada logo de cara. Essa blindagem que garante que uma alucinação da máquina não contamine o resto da base de dados. Ponto quatro, FINOPS e o mundo aberto. Aqui a gente tem uma mudança de mentalidade fundamental conhecida como a hipótese do mundo aberto. Historicamente, se uma informação não constava no banco de dados, o sistema assumia que ela era falsa. Mas no mundo cognitivo não pode ser assim. A falta de uma evidência precisa ser encarada como uma incerteza explícita. O sistema tem que estar preparado para dar um sonoro, eu não sei, em vez de tentar preenchir as lacunas inventando fatos mirabulantes. Para evitar o gravíssimo problema do envenenamento cognitivo, é obrigatório separar as informações em camadas bem distintas. É o seguinte, evidência é um fato observado, concreto, que tá lá na fonte de dados. Outra coisa completamente diferente é a inferência, que é só um palpite calculado da IA. E no fim das contas temos o julgamento, que é a pontuação final. Misturar essas três coisas é perigosíssimo. Se isso acontecer, a IA vai começar a justificar suposições com outras invenções, criando uma realidade irreal. Falando agora de sobrevivência financeira. Para evitar aquelas contas exorbitantes no fim do mês, a arquitetura precisa aplicar práticas maduras de finops na veia. Nada de só cruzar os dedos. A gente usa leders persistentes, como livros caixa, que recusam o gasto antes mesmo da provedora da API bloquear o acesso. Ferramentas de poda precoce cortam os dados que são lixo antes de usar os modelos caros. O processamento é feito em ondas seguras e a aplicação de cash semântico ajuda a economizar em larga escala. Por fim, sessão cinco, governança e explicabilidade. Para lidar com aquela imprevisibilidade toda da IA, entra em cena o desenvolvimento orientado ao comportamento, o famoso BDD. Usando dados fictícios e respostas que já foram gravadas, a gente estressa o software que fica ao redor da inteligência artificial. Isso é genial porque dá para provar como o produto funciona no cenário ideal, mas principalmente como ele degrada de forma super elegante quando as API não respondem ou a conexão falha. E tudo isso testado com segurança. E tem mais, essas barreiras estritas de governança protegem a IA suas próprias confusões. Aplicando regras, tipo a definição de preparo, a gente garante que não existe nenhuma lacuna no design do que precisa ser feito, impedindo que a IA tente adivinhar o escopo das tarefas. E com a definição de pronto, se rolar qualquer anomalia, o sistema entra em um estado de fechamento seguro. Ele reporta um erro autêntico em vez de tentar mascarar o problema. É segurança em primeiro lugar. E é exatamente aqui que a inteligência artificial explicável cria ponte decisiva para ganhar as áreas de negócios. Vamos ser sinceros, ninguém confia numa decisão baseada só num placar opaco, tipo 0.674. Não faz sentido. Para conquistar a doação de verdade, substituímos esses números cruz por justificativas claríssimas em linguagem natural. O sistema aponta as lacunas, rastreia a origem de cada evidência e explica tudo nos mínimos detalhes. É com essa transparência que humanos realmente passam a confiar no processo. Para encerrar este spliner com chave de ouro, vale uma reflexão importantíssima sobre resiliência na engenharia gêntica. Se o seu principal provedor de inteligência artificial sair do ar e enfrentar uma disponibilidade daquelas amanhã, o sistema vai colapsar por completo ou a arquitetura tem disciplina suficiente para se manter de pé, o projeto ideal de verdade é aquele que garante controle absoluto até mesmo no meio da maior incerteza."}</script>
 </head>
 <body>
@@ -89,19 +114,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

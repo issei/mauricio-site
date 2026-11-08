@@ -45,7 +45,7 @@ HTML_NAO_PUBLICAS = frozenset(
         "proposta",  # executiva não listada: sem gêmeo /en/
         "entrevista-acessibilidade-streaming",  # ferramenta de entrevista em PT-BR, não listada
         "boutique-empresarial-showcase",  # indexada só em PT-BR: gêmeo /en/ não decidido
-        "videos",  # índice gerado por gen-videos.mjs na coleta do GitHub Actions, onde o Argos não roda; gêmeo /en/ na fase 2
+        "videos",  # índice gerado por gen-videos.mjs na coleta do GitHub Actions, onde o Argos não roda
     }
 )
 
@@ -156,8 +156,52 @@ def public_assets() -> list[Asset]:
     return out
 
 
+#: Marca que o gerador de vídeos põe só na página de artigo publicado
+#: (`scripts/gen-videos.mjs`). A ficha sai `noindex` e não ganha gêmeo.
+_VIDEO_PUBLICADO = re.compile(r'<meta name="robots" content="index, follow"')
+
+
+def video_assets() -> list[Asset]:
+    """
+    Vídeos com artigo publicado (SDD-fase-2 §6, D9): a página e o gêmeo .md.
+
+    A ficha `noindex` fica de fora: traduzir o que não é indexado não serve a
+    ninguém. Quem decide é a página gerada, não o `content/`, para o mapa
+    continuar em Python puro e sem ler YAML.
+    """
+    out = []
+    pasta = SRC / "videos"
+    if not pasta.is_dir():
+        return out
+    for path in sorted(pasta.glob("*.html")):
+        if not _VIDEO_PUBLICADO.search(path.read_text(encoding="utf-8")):
+            continue
+        rota = f"/videos/{path.stem}"
+        out.append(
+            Asset(
+                kind="html",
+                source=path,
+                target=SRC / "en" / "videos" / path.name,
+                route_pt=rota,
+                route_en=f"{EN_PREFIX}{rota}",
+            )
+        )
+        md = PUBLIC / "videos" / f"{path.stem}.md"
+        if md.exists():
+            out.append(
+                Asset(
+                    kind="markdown",
+                    source=md,
+                    target=PUBLIC / "en" / "videos" / md.name,
+                    route_pt=f"{rota}.md",
+                    route_en=f"{EN_PREFIX}{rota}.md",
+                )
+            )
+    return out
+
+
 def all_assets() -> list[Asset]:
-    return html_assets() + public_assets()
+    return html_assets() + public_assets() + video_assets()
 
 
 def mirror_index() -> dict[str, str]:
@@ -174,7 +218,9 @@ def mirror_index() -> dict[str, str]:
         index[asset.route_pt] = asset.route_en
         if asset.kind == "html":
             slug = asset.source.stem
-            if slug == "index":
+            if asset.route_pt.startswith("/videos/"):
+                index[f"{asset.route_pt}.html"] = f"{asset.route_en}.html"
+            elif slug == "index":
                 index["/index.html"] = f"{EN_PREFIX}/index.html"
             else:
                 index[f"/{slug}.html"] = f"{EN_PREFIX}/{slug}.html"

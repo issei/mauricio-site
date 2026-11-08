@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"O Seu Site Está Pronto para IA?","description":"Vídeo de Maurício Yokoyama Issei: O Seu Site Está Pronto para IA?.","thumbnailUrl":"https://i.ytimg.com/vi/g3JWoT7EGYs/maxresdefault.jpg","uploadDate":"2026-04-26","duration":"PT6M27S","embedUrl":"https://www.youtube-nocookie.com/embed/g3JWoT7EGYs","url":"https://mauricio.issei.com.br/videos/o-seu-site-esta-pronto-para-ia","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"a gente tá vendo a web passar por uma transformação assim fundamental. Ela já evoluiu, né, de ser lida por nós humanos para ser lida por mecanismos de busca. E agora, bom, agora ela tá evoluindo de novo para ser lida e mais do que isso, operada por agentes de inteligência artificial. Vamos mergulhar no que isso realmente significa para todo mundo que tem um site e como a gente pode se preparar para essa nova era. Então, o nosso roteiro é o seguinte, a gente vai explorar o que um site precisa para, digamos, conversar com a IA. Vamos passar pelas quatro dimensões essenciais da chamada prontidão de agentes, desde o básico, como se encontrado até as capacidades mais avançados. E no final vamos ver como dá para testar e otimizar a própria presença online para esse futuro que já tá aí. A pergunta que fica no ar hoje é exatamente esta: um site está preparado para conversar com essa nova geração de Yas? Porque a forma como a informação é consumida tá mudando e mudando rápido e não estar pronto para isso pode significar ficar para trás. Essa citação aqui, ela resume perfeitamente o momento que a gente tá vivendo. Não é uma mudança opcional, sabe? É a próxima evolução lógica da internet. Pensa assim: \"Os agentes de IA são os novos visitantes de um site e para recebê-los bem é preciso aprender a falar língua deles.\" Para organizar essa conversa, vamos usar um conceito chave, a prontidão de agentes. Ele é dividido em quatro dimensões principais que basicamente definem se um site está ou não otimizado pra era da IA. Vamos começar com a primeira. Vamos começar pelo começo, pelo básico do básico. Antes de uma IA poder fazer qualquer coisa útil, ela precisa primeiro encontrar e entender a estrutura de um site. É como se fosse um visitante chegando num lugar novo. Ele precisa de um mapa para não se perder, certo? A lógica é a mesma. Então, o segredo aqui é usar ferramentas que a gente já conhece, mas com uma nova mentalidade. O robox.txt, por exemplo, agora serve para guiar, não só para proibir. O sitemap.xml XML continua sendo aquele mapa super detalhado. E os link headers, ah, eles são como atalhos. Em vez de a ter que ler a página inteira para achar um link importante, o servidor já avisa sobre ele no cabeçalho. Isso economiza um tempo e um processamento absurdos. Beleza? O agente já encontrou o site, já tá com o mapa na mão e agora? Bom, agora ele precisa ler e entender o conteúdo de forma eficiente e tão importante quanto ele precisa saber exatamente o que tem permissão para fazer com aquela informação. É aqui que entra a nossa segunda dimensão, conteúdo e acesso. E essa comparação aqui, olha, ela é fantástica para ilustrar o ponto. Para uma máquina, o HTML é poluído. É como tentar ler um livro onde cada palavra tem uma fonte, uma cor, um tamanho diferente. Já o Markdown é o oposto, ele é direto ao ponto, é o conteúdo puro. Isso torna a leitura pelo agente muito, mas muito mais rápida e barata. E o impacto disso é gigantesco. Dá uma olhada nesse número. Uma redução de até 80% nos tokens. Isso não é pouca coisa, não. Na prática, significa que as interações com a IA ficam mais rápidas, mais baratas e com muito mais chances de darem certo, porque o conteúdo cabe mais facilmente na janela de contexto limitada que esses modelos de linguagem t. Agora vamos falar de controle de acesso. Os content signals são uma evolução daquele pode e não pode do robots.ttxt. É um jeito de dar permissões bem mais detalhadas, de dizer como o conteúdo pode ser usado por uma inteligência artificial. E aqui estão as três permissões principais. Com o White Train. O dono do site decide se o conteúdo pode ou não alimentar futuros modelos de IA. com a input, se ele pode ser usado em tempo real para responder uma pergunta, por exemplo. E o search é aquela permissão clássica de busca, mas com detalhe, excluindo os resumos gerados por IA. É o nível de controle que a gente nunca teve antes. Certo? Agora vamos pra terceira e mais avançada dimensão, as capacidades. Aqui a gente supera a fase da leitura passiva. A questão agora é outra. Como um agente pode interagir ativamente com um site? Como ele pode realizar tarefas de forma autônoma? As agent skills ou habilidades de agente funcionam como kits de funcionalidades que um site oferece. Em vez de a Ia ter que adivinhar como fazer algo, o próprio site entrega um manual de instruções estruturado, dizendo: \"Olha, para fazer a tarefa X, siga esses passos aqui e use essas ferramentas\". E a genialidade disso tá na eficiência, nesse modelo de divulgação progressiva, o agente não carrega tudo de uma vez. Primeiro, ele olha um menu de habilidades. Se uma delas parece útil, aí sim ele lê as instruções e só se for realmente necessário, ele baixa as ferramentas extras. Isso economiza contexto e torna interação muito mais ágil. E as agent skills são a só o começo, viu? Já estão surgindo vários outros padrões para que um agente consiga, por exemplo, descobrir todas as APIs de um site ou se autenticar de forma segura ou até usar as funcionalidades de uma aplicação web direto do navegador. Objetivo de tudo isso é o mesmo, tornar a interação entre o agente e o site a mais fluida e autônoma possível. OK? Depois de explorar todas essas dimensões, a pergunta óbvia é: tá? Mas como saber o nível de prontidão do meu próprio site? E o que eu faço com essa informação? Os dados da Cloud Flare Hadar mostram um cenário bem claro. A grande maioria dos sites tem o básico como o robots.txt. Mas quando a gente olha pros padrões específicos para IA, como os content signals ou a negociação de Markdown, a adoção é baixíssima. Mas olha, isso não é um problema. Isso é uma oportunidade gigantesca de se destacar e sair na frente como um dos pioneiros. E para ajudar a aproveitar essa oportunidade, existe uma ferramenta super direta. É só acessar easyentready.com, colocar URL de qualquer site e pronto. Dá para ter uma pontuação de prontidão na hora. E o melhor de tudo não é só o diagnóstico. A ferramenta aponta exatamente o que precisa ser melhorado e ainda por cima fornece os prompts, ou seja, as instruções exatas que podem ser dadas a um agente de IA de codificação para ele mesmo implementar as correções. É muito prático. A verdade é que a web tá mudando, quer a gente esteja pronto ou não. A transição para uma web que interage de forma inteligente com agentes de IA já começou. Então, a questão final não é se essa mudança vai acontecer, mas como cada presença digital vai se adaptar para participativamente dela. A hora de começar é agora."}</script>
 </head>
 <body>
@@ -87,19 +112,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

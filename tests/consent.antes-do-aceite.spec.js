@@ -9,7 +9,7 @@ const TERCEIROS = /googletagmanager\.com|google-analytics\.com|clarity\.ms/;
 const CLARITY = /clarity\.ms/;
 
 // Todas carregam o banner de cookies (cookie-consent.js); a 404 não rastreia (ID de analítica de mentira).
-const PAGINAS = ['/index.html', '/curriculo.html', '/devin.html', '/vsl.html', '/agent-ready.html', '/catalogo.html', '/apresentacao.html'];
+const PAGINAS = ['/index.html', '/curriculo.html', '/devin.html', '/vsl.html', '/agent-ready.html', '/catalogo.html', '/apresentacao.html', '/videos.html', '/temas/engenharia-agentica.html'];
 const SEM_BANNER = ['/404.html'];
 
 async function abrir(page, url) {

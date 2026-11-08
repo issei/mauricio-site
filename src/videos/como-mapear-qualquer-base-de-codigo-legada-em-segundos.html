@@ -54,8 +54,33 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
 @media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoObject","name":"Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)","description":"Você acabou de entrar em uma nova equipe de desenvolvimento, clona o repositório e se depara com um sistema complexo de 200.000 linhas de código. Por…","thumbnailUrl":"https://i.ytimg.com/vi/O_dku8xoMWY/maxresdefault.jpg","uploadDate":"2026-08-26","duration":"PT7M1S","embedUrl":"https://www.youtube-nocookie.com/embed/O_dku8xoMWY","url":"https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Sabe aquela sensação de entrar em uma casa mal assombrada no escuro? É exatamente assim que muitos de nós nos sentimos ao tentar navegar por um projeto de software gigante e totalmente desconhecido. Mas nesta explicação de hoje, vamos mergulhar em uma ferramenta que promete iluminar de vez esse caos e mapear completamente o seu código. Tudo começa com aquele problema clássico, né? Você precisa clonar um repositório legado de, digamos, 200.000 1 linhas e tentar adicionar qualquer funcionalidade nova vira uma verdadeira escavação arqueológica simplesmente porque os engenheiros originais foram embora há meses. A gente acabou olhando pra tela totalmente paralisado, sem a menor ideia de por onde começar. Então, e se a gente pudesse mudar isso? E se existisse um mapa real e interativo que te ensinasse a base de código desde o primeiro segundo? A ideia aqui é deixar para trás aquela frustração de usar agentes de inteligência artificial que tentam adivinhar as soluções totalmente às cegas, sem nenhum contexto da arquitetura. E aí que entra a nossa primeira sessão. Conheça o Understanding Anything, o visualizador de código de código aberto. Essa ferramenta ataca o problema de frente, elevando a visualização da arquitetura para outro nível. Basicamente é um plugin pro cloud code que junta a inteligência dos modelos de linguagem com análise estática tradicional. O resultado de tudo isso, ele constrói um mapa vivo, interativo e baseado em React Flow, que abrange o seu projeto inteiro para você explorar. E para ter noção do impacto, a ferramenta bateu mais de 14.000 estrelas no GitHub em questão de poucas semanas. É um sucesso estrondoso e mostra claramente como a comunidade de desenvolvimento está precisando de soluções que realmente gerem contexto para projetos complexos. O legal é que, embora seja um plugin do Cloud Code, ele não te prende. Ele se integra de forma super natural ao fluxo de trabalho de várias outras ferramentas que já utilizamos no dia a dia, como cursor, GitHub Copilot, Géminisi, Codex e Open Code. Ele se adapta exatamente ao ambiente em que você prefere trabalhar, o que nos leva à segunda sessão, mapeando o código para significado, indo muito além de apenas arquivos e pastas. O grande diferencial aqui é a abordagem. Os gráficos tradicionais de código focam exclusivamente na estrutura. Eles mostram onde estão os arquivos, as funções e o que importa o quê. Fica parecendo um mapa sem legenda. Já o Understands Anything foca no significado. Ele revela a lógica de negócios, os fluxos de autenticação, como funciona o ciclo de vida do usuário e como a máquina opera na prática. Mas como essa mágica acontece nos bastidores? Bom, o sistema usa um pipeline com cinco agentes de IA trabalhando em equipe. É tipo uma linha de montagem. Um scanner descobre os arquivos e frameworks. Um analisador extrai as funções. Um terceiro identifica as camadas da arquitetura. O construtor gera tours guiados de aprendizado e no fim um revisor valida tudo para garantir que as referências façam sentido. Para colocar isso em perspectiva, se a gente testar isso em um projeto médio, como aquela demonstração de microsserviços do Google, o resultado impressiona. Ele agrupa centenas de arquivos complexos em camadas super claras e separadas por cores. Ele te diz: \"Olha, aqui temos 34 arquivos de front, 108 de lógica de backend, 105 de configuração coberneres e 33 de infraestrutura CCD\". Tudo extremamente organizado. Sessão três, três grandes casos de uso. Como os desenvolvedores estão utilizando isso na vida real. Com esse mapa incrível em mãos, a gente consegue resolver três dos maiores ralos de tempo na engenharia de software atual. Ao invés de ler a documentação totalmente desatualizada, as equipes podem fazer tours guiados gerados na hora, podem passar esse mapa para dar contexto total a e a e com certeza podem refaturar o código com muito mais tranquilidade. E falando em refatoração, para quem já tem mais experiência, a análise de impacto de diferenças muda as regras do jogo. Sabe aquele pesadelo de mudar uma linha inofensiva e quebrar o sistema inteiro? Essa função te mostra exatamente quais partes do sistema vão ser afetadas antes mesmo de você confirmar qualquer alteração no código. Outra coisa sensacional é que a interface se adapta a quem tá usando. O painel ajusta o nível de detalhamento automaticamente. Então, até mesmo um gerente de produto que não é técnico pode entrar, fazer uma pergunta em linguagem comum sobre os fluxos de negócios e receber uma resposta exata e super fácil de entender. Tudo baseado no código real. Mas vamos para a sessão quatro. O custo dos tokens. A nossa realidade pragmática. Nem tudo é perfeito, não é mesmo? Construir um gráfico de conhecimento tão imenso assim para um sistema inteiro não sai barato. Gerar todos esses nós interativos consome um poder de processamento absurdo e exige muito das dependências dos modelos de linguagem. A verdade é que consome tokens e consome muito rápido. Só para ilustrar o peso disso, processar um projeto de tamanho médio pode demorar até 30 minutos e devorar nada menos que 25% do limite de requisições de um plano premium de IA. Isso em uma única execução. Felizmente, há um baita livro arquitetônico aqui. Todo esse resultado pesado é salvo diretamente no seu computador em um simples arquivo de ou seja, você só passa por esse susto de processamento extremo e custo de tokens durante o primeiro grande escaneamento do projeto. Além disso, o pipeline é inteligente o suficiente para usar atualizações incrementais. Você mudou alguma coisa? Ele só reanalisa os arquivos que sofreram alteração. Tudo isso rodando análises em paralelo com até três processos simultâneos. E para fechar com chaves de ouro, a ferramenta insiem licença MIT, o que significa que o seu uso é totalmente livre e gratuito. Chegando na sessão cinco, o futuro do código, como os nossos fluxos de trabalho estão evoluindo. Nós estamos claramente saindo daquela era de apenas olhar para estruturas de diretórios e entrando no entendimento genuíno do comportamento do sistema. E não estamos falando só de código puro. A ferramenta unin infraestrutura como arquivos do Docker e Terraform com suas consultas SQL e até suas documentações em Mark. Já são mais de 26 tipos de arquivos suportados e unificados num só gráfico. A grande sacada de produtividade de toda essa explicação é innegável. Obter contexto rapidamente está substituindo o método doloroso e ultrapassado de pular cegamente entre arquivos. A ideia agora é exatamente essa. Pare de ler código cegas e comece a enxergar o panorama geral antes de mexer em qualquer coisa. Para encerrar a nossa análise, deixo com vocês esta reflexão poderosa. Se a inteligência artificial agora consegue mapear de forma tão fluida e exata o verdadeiro significado dos nossos repositórios, será que nós, desenvolvedores, algum dia precisaremos voltar a ler código ligado daquela mesma forma bruta e frustrante do passado? Pensem nisso."}</script>
 </head>
 <body>
@@ -91,19 +116,28 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
-document.querySelectorAll('.yt[data-id]').forEach(function (box) {
-  var b = box.querySelector('.yt-play');
-  b.hidden = false;
-  b.addEventListener('click', function () {
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
     f.title = box.dataset.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     f.allowFullscreen = true;
     box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
   });
-});
+})();
 </script>
+<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>

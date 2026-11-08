@@ -41,13 +41,16 @@ jobs:
       # Com PR da coleta ainda aberto, continua nele (não baixa de novo as legendas
       # que já estão lá). Sem PR aberto, recomeça da main: o branch antigo já foi
       # mergeado (ou descartado) e é sobrescrito.
+      # `-X theirs`: num conflito vale a main. As páginas geradas são reescritas
+      # logo depois pelo gerador, e o bloco `youtube:` volta com a coleta; o que
+      # a pessoa mudou na main (status, artigo, fontes) não pode se perder.
       - name: Branch da coleta
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898732+github-actions[bot]@users.noreply.github.com'
           if [ -n "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
             git checkout -B "$BRANCH" "origin/$BRANCH"
-            git merge --no-edit origin/main
+            git merge --no-edit -X theirs origin/main
           else
             git checkout -B "$BRANCH"
           fi
