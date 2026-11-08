@@ -1,10 +1,20 @@
 ---
 id: 5LtvpFMRUvw
 slug: engenharia-por-tras-da-boutique-empresarial-arquitetura
-status: ficha
+status: rascunho
 temas:
   - engenharia-agentica
   - especificacao-e-desenvolvimento
+resumo: "O vídeo mostra a engenharia por trás do site da Boutique Empresarial: um funil único de conversão, uma base estática e rápida, desenvolvimento orientado por especificação, subagentes de IA, um quality gate que bloqueia qualquer erro e um design sem movimento desnecessário."
+fontes:
+  - url: https://github.com/issei/boutiqueempresarial-site
+    titulo: "Repositório no GitHub"
+    sustenta: "A estrutura do projeto: especificações em docs/specs, subagentes do Claude Code e o comando npm run gate."
+    verificada: false
+  - url: https://boutiqueempresarial.com.br/
+    titulo: "Site oficial da Boutique Empresarial"
+    sustenta: "O funil único: página do diagnóstico gratuito e formulário de sete etapas."
+    verificada: false
 youtube:
   titulo: "Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico"
   publicado_em: 2026-09-21
@@ -67,3 +77,58 @@ youtube:
     - https://github.com/issei/boutiqueempresarial-site
   coletado_em: 2026-11-07T22:16:07Z
 ---
+## Um site simples por fora
+
+À primeira vista, o site da Boutique Empresarial é uma página minimalista. Por baixo, há um sistema de conversão construído, testado e mantido quase todo por uma arquitetura guiada por IA [00:00]. O vídeo usa a imagem de um iceberg: começa pela ponta visível e desce até onde os agentes trabalham [00:21].
+
+## Um funil único
+
+O projeto existe por um motivo: não há menus nem páginas sem fim. Tudo leva a uma só jornada [01:02]. O centro dela é um formulário de sete etapas para o diagnóstico gratuito, que qualifica o contato [01:24].
+
+Assim, o sistema filtra e qualifica o contato antes de qualquer conversa com uma pessoa, e a equipe economiza horas de triagem manual [01:46].
+
+## Uma base mínima e rápida
+
+Não há frameworks pesados nem bibliotecas grandes no navegador. A base é HTML e CSS estáticos [02:07]. Com Vite e Tailwind CSS, e com a hospedagem na AWS em S3 e CloudFront, as páginas carregam em milissegundos [02:27].
+
+## Desenvolvimento orientado por especificação
+
+As decisões são tomadas antes de escrever o código [03:07]. No desenvolvimento orientado por especificação (SDD), a pasta de documentação é a lei do código: quando o requisito muda, a documentação muda primeiro, sem exceção [03:07].
+
+Isso tira a adivinhação, tanto para as pessoas quanto para a IA [03:29]. Os documentos do repositório dizem: "A documentação é a fonte da verdade" [03:29].
+
+O site também é feito para agentes de IA. Enquanto as pessoas leem o HTML, os mecanismos de busca com IA leem arquivos estruturados, como o `llms.txt` e os manifestos WebMCP [04:10]. É o que se chama de AEO (Answer Engine Optimization) [04:30].
+
+## A esteira de agentes de IA
+
+O vibe coding aqui não é deixar a IA improvisar [04:51]. A IA executa contratos e especificações detalhados; as regras vêm da documentação [05:11].
+
+No Claude Code, o trabalho é dividido entre cinco subagentes especializados [05:32]:
+
+- um audita a página [05:32];
+- um corrige o cabeçalho do código [05:32];
+- um escreve os textos com foco em SEO [05:32];
+- um cria as suítes de teste [05:32];
+- um roda a verificação final de qualidade [05:53].
+
+## O quality gate
+
+Nenhum agente, humano ou de IA, dá uma tarefa por concluída antes de o comando de validação ficar verde [06:14]. Ele faz o build do site, roda testes em três navegadores e exige zero violações de acessibilidade [06:35]. O modelo é fail-closed: qualquer erro para o processo [06:35].
+
+Depois do merge no branch principal, o pipeline roda os testes, faz o build, se autentica na nuvem, envia os arquivos e limpa o cache antigo [06:56]. O deploy é todo automático, e é isso que deixa a velocidade da IA chegar ao usuário sem quebrar nada [06:56].
+
+## Design: silêncio e elegância
+
+O site institucional usa um fundo creme, uma tipografia escura cor de tinta e uma linha dourada fina para marcar a hierarquia [07:38]. Os materiais para redes sociais têm uma paleta própria, mais vibrante, e as duas paletas nunca se misturam [07:59].
+
+O site não usa vídeo de fundo, animações que distraem nem rolagem com efeito de paralaxe [08:19]. O movimento só aparece como resposta a uma ação do usuário, e isso também ajuda o carregamento rápido [08:19].
+
+## Perguntas frequentes
+
+### O que acontece se um teste falhar?
+
+O processo para. O quality gate é fail-closed, e nenhuma tarefa é dada por concluída até o comando ficar verde [06:35].
+
+### Por que o site não usa animações?
+
+Para manter a clareza e a velocidade. O movimento só aparece como resposta a uma ação do usuário [08:19].
