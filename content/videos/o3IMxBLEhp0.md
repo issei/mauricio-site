@@ -2,7 +2,8 @@
 id: o3IMxBLEhp0
 slug: ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software"
   publicado_em: 2026-10-09

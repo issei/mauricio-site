@@ -2,7 +2,8 @@
 id: edwg9s12EwE
 slug: aprendizagem-real-o-ciclo-da-aprendizagem-autorregulada
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: "Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada"
   publicado_em: 2026-10-08
@@ -44,7 +45,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/edwg9s12EwE/maxresdefault.jpg
   visualizacoes: 45
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mauricio.issei.com.br/aprendizagem-autorregulada.html
     - https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo.html

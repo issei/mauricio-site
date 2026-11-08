@@ -2,7 +2,8 @@
 id: rRvUMog9GJI
 slug: a-busca-por-uma-regua-melhor-por-que-nossas-metricas-falham
 status: ficha
-temas: [dados-e-decisao]
+temas:
+  - dados-e-decisao
 youtube:
   titulo: "A busca por uma régua melhor: por que nossas métricas falham?"
   publicado_em: 2026-01-23

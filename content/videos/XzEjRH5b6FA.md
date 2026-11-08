@@ -2,7 +2,8 @@
 id: XzEjRH5b6FA
 slug: codegraph-inteligencia-semantica-local-para-agentes-de-ia
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "CodeGraph: Inteligência Semântica Local para Agentes de IA de Código"
   publicado_em: 2026-08-26

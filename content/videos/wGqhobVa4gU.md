@@ -2,7 +2,8 @@
 id: wGqhobVa4gU
 slug: por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: Por Que Sua IA Falha? (O Custo Oculto do "Crash Silencioso")
   publicado_em: 2026-04-11

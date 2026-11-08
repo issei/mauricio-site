@@ -2,7 +2,8 @@
 id: sNAScFJE8tI
 slug: build-an-ai-tool-with-spring-ai
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: Build an AI Tool with Spring AI
   publicado_em: 2025-11-12

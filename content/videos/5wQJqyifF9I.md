@@ -2,7 +2,9 @@
 id: 5wQJqyifF9I
 slug: decifrando-people-analytics-como-transformar-dados-em
 status: ficha
-temas: [dados-e-decisao, gestao-e-estrategia]
+temas:
+  - dados-e-decisao
+  - gestao-e-estrategia
 youtube:
   titulo: "Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH"
   publicado_em: 2026-09-23

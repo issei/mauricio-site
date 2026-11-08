@@ -2,7 +2,8 @@
 id: zVJ_XZq8gQ8
 slug: aws-transit-gateway
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: AWS Transit Gateway
   publicado_em: 2025-11-04

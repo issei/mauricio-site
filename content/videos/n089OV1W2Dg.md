@@ -2,7 +2,9 @@
 id: n089OV1W2Dg
 slug: o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do
 status: ficha
-temas: [engenharia-agentica, dados-e-decisao]
+temas:
+  - engenharia-agentica
+  - dados-e-decisao
 youtube:
   titulo: "O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional"
   publicado_em: 2026-08-26

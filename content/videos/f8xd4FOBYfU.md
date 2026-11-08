@@ -2,7 +2,8 @@
 id: f8xd4FOBYfU
 slug: automacao-de-incidentes-na-pratica-aws-devops-agent-amazon
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: "Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch"
   publicado_em: 2026-05-05
@@ -30,7 +31,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/f8xd4FOBYfU/maxresdefault.jpg
   visualizacoes: 46
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://aws.amazon.com/blogs/devops/automating-incident-investigation-with-aws-devops-agent-and-salesforce-mcp-server/
     - https://github.com/forcedotcom/mcp-hosted

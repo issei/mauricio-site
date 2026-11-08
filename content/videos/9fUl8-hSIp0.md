@@ -2,7 +2,8 @@
 id: 9fUl8-hSIp0
 slug: o-ciclo-react-em-agentes-de-ia-como-os-agentes-pensam-agem
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "O Ciclo ReAct em Agentes de IA: Como os Agentes Pensam, Agem e Observam"
   publicado_em: 2026-09-11

@@ -2,7 +2,8 @@
 id: E4yTCqkyeh4
 slug: a-confiabilidade-do-sistema
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: A Confiabilidade do Sistema
   publicado_em: 2025-10-31

@@ -2,7 +2,8 @@
 id: BNaAVW4VI7Y
 slug: ia-e-o-fator-humano-neurociencia-acessibilidade-radical
 status: ficha
-temas: [acessibilidade-e-design]
+temas:
+  - acessibilidade-e-design
 youtube:
   titulo: "IA e o Fator Humano: Neurociência, Acessibilidade Radical (A11Y.md) e Comunidade"
   publicado_em: 2026-09-30
@@ -56,7 +57,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/BNaAVW4VI7Y/maxresdefault.jpg
   visualizacoes: 40
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://fecarrico.github.io/a11ymd/pt-BR/
     - https://github.com/fecarrico/A11Y.md

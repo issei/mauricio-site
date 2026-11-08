@@ -2,7 +2,8 @@
 id: m69fzdS-EG0
 slug: o-novo-paradigma-da-ia-de-chatbots-a-agentes-autonomos-como
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "O Novo Paradigma da IA: De Chatbots a Agentes Autônomos (Como funciona?)"
   publicado_em: 2026-05-18

@@ -2,7 +2,9 @@
 id: nQfTaS__IVA
 slug: o-fim-do-vibe-coding-apresentando-o-specification-driven
 status: ficha
-temas: [engenharia-agentica, especificacao-e-desenvolvimento]
+temas:
+  - engenharia-agentica
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: O Fim do Vibe Coding! Apresentando o Specification-Driven Development (SDD)
   publicado_em: 2025-12-03

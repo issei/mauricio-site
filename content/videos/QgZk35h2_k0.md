@@ -2,7 +2,8 @@
 id: QgZk35h2_k0
 slug: o-segredo-filosofico-da-serie-dark-do-hermetismo-ao
 status: ficha
-temas: [tecnologia-e-cultura]
+temas:
+  - tecnologia-e-cultura
 youtube:
   titulo: "O Segredo Filosófico da série Dark: Do Hermetismo ao Transumanismo"
   publicado_em: 2026-01-07
@@ -16,7 +17,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/QgZk35h2_k0/maxresdefault.jpg
   visualizacoes: 31
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

@@ -2,7 +2,8 @@
 id: e8hdLyeN-_U
 slug: as-duas-historias-da-ansiedade
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: As Duas Histórias da Ansiedade
   publicado_em: 2025-10-29

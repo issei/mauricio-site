@@ -2,7 +2,8 @@
 id: Y67ZceRro4Y
 slug: inversao-de-controle-ioc-explicada-de-forma-simples-e
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: Inversão de Controle (IoC) explicada de forma simples e prática
   publicado_em: 2026-01-23

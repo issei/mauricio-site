@@ -2,7 +2,8 @@
 id: yNfs2pFXdUc
 slug: arquitetura-de-dependencias-a-etica-dos-vinculos-em
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: "Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos"
   publicado_em: 2026-08-07

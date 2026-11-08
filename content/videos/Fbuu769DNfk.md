@@ -2,7 +2,8 @@
 id: Fbuu769DNfk
 slug: repowise-motor-de-inteligencia-de-codigo-local-e-contexto
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA"
   publicado_em: 2026-09-20

@@ -2,7 +2,8 @@
 id: Jpk2K7hSUcA
 slug: mitos-da-gestao-por-que-as-praticas-tradicionais-estao
 status: ficha
-temas: [gestao-e-estrategia]
+temas:
+  - gestao-e-estrategia
 youtube:
   titulo: "Mitos da Gestão: Por que as práticas tradicionais estão sabotando sua empresa?"
   publicado_em: 2026-04-13

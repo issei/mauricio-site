@@ -2,7 +2,8 @@
 id: ZTNLoWhtXEw
 slug: como-o-git-ai-resolve-o-problema-de-escala-do-git-para
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA
   publicado_em: 2026-10-19

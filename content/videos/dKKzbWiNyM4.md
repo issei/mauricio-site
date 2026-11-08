@@ -2,7 +2,8 @@
 id: dKKzbWiNyM4
 slug: o-fim-do-programador-tradicional-entenda-o-orquestrador
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀
   publicado_em: 2026-08-04

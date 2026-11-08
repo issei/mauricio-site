@@ -1,0 +1,1864 @@
+WEBVTT
+Kind: captions
+Language: pt
+
+00:00:00.040 --> 00:00:01.429 align:start position:0%
+ 
+Olá,<00:00:00.320><c> pessoal</c><00:00:00.599><c> de</c><00:00:00.799><c> operações</c><00:00:01.280><c> de</c>
+
+00:00:01.429 --> 00:00:01.439 align:start position:0%
+Olá, pessoal de operações de
+ 
+
+00:00:01.439 --> 00:00:03.550 align:start position:0%
+Olá, pessoal de operações de
+infraestrutura.<00:00:02.360><c> Sejam</c><00:00:02.639><c> muito</c><00:00:02.919><c> bem-vindos</c><00:00:03.399><c> a</c>
+
+00:00:03.550 --> 00:00:03.560 align:start position:0%
+infraestrutura. Sejam muito bem-vindos a
+ 
+
+00:00:03.560 --> 00:00:05.630 align:start position:0%
+infraestrutura. Sejam muito bem-vindos a
+este<00:00:03.719><c> tutorial.</c><00:00:04.560><c> Hoje</c><00:00:04.880><c> a</c><00:00:05.040><c> gente</c><00:00:05.160><c> vai</c><00:00:05.319><c> falar</c>
+
+00:00:05.630 --> 00:00:05.640 align:start position:0%
+este tutorial. Hoje a gente vai falar
+ 
+
+00:00:05.640 --> 00:00:07.309 align:start position:0%
+este tutorial. Hoje a gente vai falar
+sobre<00:00:05.920><c> como</c><00:00:06.160><c> transformar</c><00:00:06.680><c> aquela</c><00:00:07.040><c> velha</c>
+
+00:00:07.309 --> 00:00:07.319 align:start position:0%
+sobre como transformar aquela velha
+ 
+
+00:00:07.319 --> 00:00:09.470 align:start position:0%
+sobre como transformar aquela velha
+rotina<00:00:07.640><c> de</c><00:00:07.799><c> apagar</c><00:00:08.160><c> incêndios,</c><00:00:08.920><c> sabe?</c><00:00:09.200><c> Aquela</c>
+
+00:00:09.470 --> 00:00:09.480 align:start position:0%
+rotina de apagar incêndios, sabe? Aquela
+ 
+
+00:00:09.480 --> 00:00:11.709 align:start position:0%
+rotina de apagar incêndios, sabe? Aquela
+solução<00:00:09.800><c> de</c><00:00:10.000><c> problemas</c><00:00:10.400><c> totalmente</c><00:00:10.920><c> reativa</c>
+
+00:00:11.709 --> 00:00:11.719 align:start position:0%
+solução de problemas totalmente reativa
+ 
+
+00:00:11.719 --> 00:00:14.470 align:start position:0%
+solução de problemas totalmente reativa
+em<00:00:11.920><c> algo</c><00:00:12.200><c> proativo</c><00:00:12.759><c> e</c><00:00:13.000><c> 100%</c><00:00:13.559><c> automatizado</c>
+
+00:00:14.470 --> 00:00:14.480 align:start position:0%
+em algo proativo e 100% automatizado
+ 
+
+00:00:14.480 --> 00:00:17.269 align:start position:0%
+em algo proativo e 100% automatizado
+usando<00:00:14.879><c> ferramentas</c><00:00:15.360><c> da</c><00:00:15.519><c> AWS.</c><00:00:16.720><c> Então</c><00:00:17.039><c> vamos</c>
+
+00:00:17.269 --> 00:00:17.279 align:start position:0%
+usando ferramentas da AWS. Então vamos
+ 
+
+00:00:17.279 --> 00:00:19.150 align:start position:0%
+usando ferramentas da AWS. Então vamos
+direto<00:00:17.640><c> ao</c><00:00:17.800><c> ponto</c><00:00:18.160><c> e</c><00:00:18.320><c> entender</c><00:00:18.640><c> como</c><00:00:18.840><c> deixar</c>
+
+00:00:19.150 --> 00:00:19.160 align:start position:0%
+direto ao ponto e entender como deixar
+ 
+
+00:00:19.160 --> 00:00:20.910 align:start position:0%
+direto ao ponto e entender como deixar
+essa<00:00:19.359><c> loucura</c><00:00:19.680><c> para</c><00:00:19.840><c> trás</c><00:00:20.240><c> e</c><00:00:20.439><c> começar</c><00:00:20.760><c> a</c>
+
+00:00:20.910 --> 00:00:20.920 align:start position:0%
+essa loucura para trás e começar a
+ 
+
+00:00:20.920 --> 00:00:22.470 align:start position:0%
+essa loucura para trás e começar a
+construir<00:00:21.400><c> sistemas</c><00:00:21.920><c> bem</c><00:00:22.199><c> mais</c>
+
+00:00:22.470 --> 00:00:22.480 align:start position:0%
+construir sistemas bem mais
+ 
+
+00:00:22.480 --> 00:00:25.950 align:start position:0%
+construir sistemas bem mais
+inteligentes.<00:00:23.680><c> O</c><00:00:23.880><c> site</c><00:00:24.199><c> tá</c><00:00:24.400><c> lenta.</c><00:00:25.320><c> Olha,</c>
+
+00:00:25.950 --> 00:00:25.960 align:start position:0%
+inteligentes. O site tá lenta. Olha,
+ 
+
+00:00:25.960 --> 00:00:27.950 align:start position:0%
+inteligentes. O site tá lenta. Olha,
+essa<00:00:26.240><c> é</c><00:00:26.439><c> de</c><00:00:26.640><c> longe</c><00:00:26.960><c> a</c><00:00:27.080><c> frase</c><00:00:27.320><c> que</c><00:00:27.519><c> mais</c><00:00:27.760><c> dá</c>
+
+00:00:27.950 --> 00:00:27.960 align:start position:0%
+essa é de longe a frase que mais dá
+ 
+
+00:00:27.960 --> 00:00:29.189 align:start position:0%
+essa é de longe a frase que mais dá
+calafrios<00:00:28.480><c> em</c><00:00:28.560><c> quem</c><00:00:28.760><c> trabalha</c><00:00:29.039><c> com</c>
+
+00:00:29.189 --> 00:00:29.199 align:start position:0%
+calafrios em quem trabalha com
+ 
+
+00:00:29.199 --> 00:00:31.669 align:start position:0%
+calafrios em quem trabalha com
+operações,<00:00:29.679><c> né?</c><00:00:30.359><c> O</c><00:00:30.519><c> pior</c><00:00:30.759><c> é</c><00:00:30.920><c> que</c><00:00:31.080><c> uma</c><00:00:31.279><c> simples</c>
+
+00:00:31.669 --> 00:00:31.679 align:start position:0%
+operações, né? O pior é que uma simples
+ 
+
+00:00:31.679 --> 00:00:33.389 align:start position:0%
+operações, né? O pior é que uma simples
+reclamação<00:00:32.079><c> de</c><00:00:32.279><c> cliente</c><00:00:32.559><c> como</c><00:00:32.759><c> essa</c><00:00:33.040><c> costuma</c>
+
+00:00:33.389 --> 00:00:33.399 align:start position:0%
+reclamação de cliente como essa costuma
+ 
+
+00:00:33.399 --> 00:00:35.790 align:start position:0%
+reclamação de cliente como essa costuma
+desencadear<00:00:34.160><c> horas</c><00:00:34.480><c> da</c><00:00:34.640><c> fio</c><00:00:34.840><c> de</c><00:00:35.200><c> investigação</c>
+
+00:00:35.790 --> 00:00:35.800 align:start position:0%
+desencadear horas da fio de investigação
+ 
+
+00:00:35.800 --> 00:00:37.869 align:start position:0%
+desencadear horas da fio de investigação
+manual.<00:00:36.680><c> A</c><00:00:36.800><c> gente</c><00:00:36.879><c> tem</c><00:00:37.040><c> que</c><00:00:37.160><c> olhar</c><00:00:37.399><c> para</c><00:00:37.600><c> dados</c>
+
+00:00:37.869 --> 00:00:37.879 align:start position:0%
+manual. A gente tem que olhar para dados
+ 
+
+00:00:37.879 --> 00:00:40.110 align:start position:0%
+manual. A gente tem que olhar para dados
+de<00:00:38.000><c> telemetria</c><00:00:38.719><c> super</c><00:00:39.000><c> fragmentados.</c><00:00:39.920><c> é</c>
+
+00:00:40.110 --> 00:00:40.120 align:start position:0%
+de telemetria super fragmentados. é
+ 
+
+00:00:40.120 --> 00:00:41.549 align:start position:0%
+de telemetria super fragmentados. é
+literalmente<00:00:40.559><c> procurar</c><00:00:40.920><c> uma</c><00:00:41.120><c> agulha</c><00:00:41.399><c> num</c>
+
+00:00:41.549 --> 00:00:41.559 align:start position:0%
+literalmente procurar uma agulha num
+ 
+
+00:00:41.559 --> 00:00:44.270 align:start position:0%
+literalmente procurar uma agulha num
+palheiro<00:00:41.960><c> digital,</c><00:00:42.760><c> pulando</c><00:00:43.160><c> de</c><00:00:43.360><c> log</c><00:00:43.600><c> em</c><00:00:43.800><c> log,</c>
+
+00:00:44.270 --> 00:00:44.280 align:start position:0%
+palheiro digital, pulando de log em log,
+ 
+
+00:00:44.280 --> 00:00:46.069 align:start position:0%
+palheiro digital, pulando de log em log,
+só<00:00:44.480><c> para</c><00:00:44.640><c> tentar</c><00:00:44.920><c> entender</c><00:00:45.200><c> o</c><00:00:45.399><c> que</c><00:00:45.640><c> de</c><00:00:45.800><c> fato</c>
+
+00:00:46.069 --> 00:00:46.079 align:start position:0%
+só para tentar entender o que de fato
+ 
+
+00:00:46.079 --> 00:00:48.430 align:start position:0%
+só para tentar entender o que de fato
+deu<00:00:46.320><c> errado.</c><00:00:47.199><c> E</c><00:00:47.320><c> isso</c><00:00:47.600><c> nos</c><00:00:47.840><c> leva</c><00:00:48.199><c> a</c><00:00:48.280><c> um</c>
+
+00:00:48.430 --> 00:00:48.440 align:start position:0%
+deu errado. E isso nos leva a um
+ 
+
+00:00:48.440 --> 00:00:51.069 align:start position:0%
+deu errado. E isso nos leva a um
+contraste<00:00:49.039><c> bem</c><00:00:49.280><c> marcante</c><00:00:49.800><c> na</c><00:00:50.000><c> nossa</c><00:00:50.239><c> rotina.</c>
+
+00:00:51.069 --> 00:00:51.079 align:start position:0%
+contraste bem marcante na nossa rotina.
+ 
+
+00:00:51.079 --> 00:00:52.549 align:start position:0%
+contraste bem marcante na nossa rotina.
+De<00:00:51.239><c> um</c><00:00:51.360><c> lado,</c><00:00:51.600><c> a</c><00:00:51.760><c> gente</c><00:00:51.840><c> tem</c><00:00:52.000><c> aquela</c><00:00:52.239><c> dor</c><00:00:52.399><c> de</c>
+
+00:00:52.549 --> 00:00:52.559 align:start position:0%
+De um lado, a gente tem aquela dor de
+ 
+
+00:00:52.559 --> 00:00:55.189 align:start position:0%
+De um lado, a gente tem aquela dor de
+cabeça<00:00:52.879><c> dos</c><00:00:53.120><c> processos</c><00:00:53.559><c> manuais</c><00:00:54.120><c> antigos.</c><00:00:55.039><c> O</c>
+
+00:00:55.189 --> 00:00:55.199 align:start position:0%
+cabeça dos processos manuais antigos. O
+ 
+
+00:00:55.199 --> 00:00:56.510 align:start position:0%
+cabeça dos processos manuais antigos. O
+tempo<00:00:55.359><c> que</c><00:00:55.520><c> levamos</c><00:00:55.840><c> para</c><00:00:56.000><c> detectar</c><00:00:56.399><c> e</c>
+
+00:00:56.510 --> 00:00:56.520 align:start position:0%
+tempo que levamos para detectar e
+ 
+
+00:00:56.520 --> 00:00:58.630 align:start position:0%
+tempo que levamos para detectar e
+resolver<00:00:56.920><c> um</c><00:00:57.120><c> problema</c><00:00:57.559><c> só</c><00:00:57.760><c> aumenta,</c><00:00:58.480><c> as</c>
+
+00:00:58.630 --> 00:00:58.640 align:start position:0%
+resolver um problema só aumenta, as
+ 
+
+00:00:58.640 --> 00:01:00.709 align:start position:0%
+resolver um problema só aumenta, as
+métricas<00:00:59.079><c> ficam</c><00:00:59.519><c> todas</c><00:00:59.840><c> espalhadas</c><00:01:00.480><c> e,</c>
+
+00:01:00.709 --> 00:01:00.719 align:start position:0%
+métricas ficam todas espalhadas e,
+ 
+
+00:01:00.719 --> 00:01:02.430 align:start position:0%
+métricas ficam todas espalhadas e,
+claro,<00:01:01.120><c> o</c><00:01:01.280><c> atrito</c><00:01:01.640><c> entre</c><00:01:01.840><c> as</c><00:01:01.960><c> equipes</c><00:01:02.280><c> é</c>
+
+00:01:02.430 --> 00:01:02.440 align:start position:0%
+claro, o atrito entre as equipes é
+ 
+
+00:01:02.440 --> 00:01:04.829 align:start position:0%
+claro, o atrito entre as equipes é
+inevitável.<00:01:03.399><c> Mas</c><00:01:03.519><c> do</c><00:01:03.719><c> outro</c><00:01:03.920><c> lado</c><00:01:04.400><c> temos</c><00:01:04.640><c> a</c>
+
+00:01:04.829 --> 00:01:04.839 align:start position:0%
+inevitável. Mas do outro lado temos a
+ 
+
+00:01:04.839 --> 00:01:06.870 align:start position:0%
+inevitável. Mas do outro lado temos a
+eficiência<00:01:05.479><c> de</c><00:01:05.720><c> conectar</c><00:01:06.159><c> os</c><00:01:06.280><c> fluxos</c><00:01:06.680><c> de</c>
+
+00:01:06.870 --> 00:01:06.880 align:start position:0%
+eficiência de conectar os fluxos de
+ 
+
+00:01:06.880 --> 00:01:09.030 align:start position:0%
+eficiência de conectar os fluxos de
+suporte<00:01:07.479><c> direto</c><00:01:07.799><c> a</c><00:01:07.920><c> diagnósticos</c><00:01:08.520><c> autônomos</c>
+
+00:01:09.030 --> 00:01:09.040 align:start position:0%
+suporte direto a diagnósticos autônomos
+ 
+
+00:01:09.040 --> 00:01:11.630 align:start position:0%
+suporte direto a diagnósticos autônomos
+de<00:01:09.159><c> infraestrutura</c><00:01:10.159><c> com</c><00:01:10.400><c> o</c><00:01:10.520><c> AWS</c><00:01:11.080><c> DevOps</c>
+
+00:01:11.630 --> 00:01:11.640 align:start position:0%
+de infraestrutura com o AWS DevOps
+ 
+
+00:01:11.640 --> 00:01:14.350 align:start position:0%
+de infraestrutura com o AWS DevOps
+Agent.<00:01:12.360><c> É</c><00:01:12.520><c> uma</c><00:01:12.640><c> verdadeira</c><00:01:13.040><c> mudança</c><00:01:13.400><c> de</c><00:01:13.560><c> jogo.</c>
+
+00:01:14.350 --> 00:01:14.360 align:start position:0%
+Agent. É uma verdadeira mudança de jogo.
+ 
+
+00:01:14.360 --> 00:01:16.149 align:start position:0%
+Agent. É uma verdadeira mudança de jogo.
+Estamos<00:01:14.600><c> falando</c><00:01:15.000><c> de</c><00:01:15.200><c> reduzir</c><00:01:15.600><c> um</c><00:01:15.759><c> tempo</c><00:01:15.960><c> de</c>
+
+00:01:16.149 --> 00:01:16.159 align:start position:0%
+Estamos falando de reduzir um tempo de
+ 
+
+00:01:16.159 --> 00:01:18.270 align:start position:0%
+Estamos falando de reduzir um tempo de
+resolução<00:01:16.600><c> que</c><00:01:16.759><c> levava</c><00:01:17.360><c> horas</c><00:01:17.759><c> para</c><00:01:18.000><c> questão</c>
+
+00:01:18.270 --> 00:01:18.280 align:start position:0%
+resolução que levava horas para questão
+ 
+
+00:01:18.280 --> 00:01:20.710 align:start position:0%
+resolução que levava horas para questão
+de<00:01:18.479><c> poucos</c><00:01:18.880><c> minutos.</c><00:01:19.799><c> E</c><00:01:19.920><c> para</c><00:01:20.159><c> entendermos</c>
+
+00:01:20.710 --> 00:01:20.720 align:start position:0%
+de poucos minutos. E para entendermos
+ 
+
+00:01:20.720 --> 00:01:22.950 align:start position:0%
+de poucos minutos. E para entendermos
+como<00:01:20.920><c> chegar</c><00:01:21.240><c> lá,</c><00:01:21.720><c> nossa</c><00:01:22.000><c> análise</c><00:01:22.360><c> técnica</c><00:01:22.759><c> de</c>
+
+00:01:22.950 --> 00:01:22.960 align:start position:0%
+como chegar lá, nossa análise técnica de
+ 
+
+00:01:22.960 --> 00:01:24.510 align:start position:0%
+como chegar lá, nossa análise técnica de
+hoje<00:01:23.200><c> vai</c><00:01:23.360><c> passar</c><00:01:23.640><c> pelos</c><00:01:23.960><c> custos</c><00:01:24.280><c> da</c>
+
+00:01:24.510 --> 00:01:24.520 align:start position:0%
+hoje vai passar pelos custos da
+ 
+
+00:01:24.520 --> 00:01:26.990 align:start position:0%
+hoje vai passar pelos custos da
+investigação<00:01:25.040><c> manual,</c><00:01:26.040><c> boas</c><00:01:26.400><c> práticas</c><00:01:26.840><c> na</c>
+
+00:01:26.990 --> 00:01:27.000 align:start position:0%
+investigação manual, boas práticas na
+ 
+
+00:01:27.000 --> 00:01:29.510 align:start position:0%
+investigação manual, boas práticas na
+criação<00:01:27.320><c> de</c><00:01:27.439><c> tags,</c><00:01:28.240><c> como</c><00:01:28.439><c> usar</c><00:01:28.720><c> o</c><00:01:28.880><c> Cloud</c><00:01:29.280><c> Watch</c>
+
+00:01:29.510 --> 00:01:29.520 align:start position:0%
+criação de tags, como usar o Cloud Watch
+ 
+
+00:01:29.520 --> 00:01:32.030 align:start position:0%
+criação de tags, como usar o Cloud Watch
+para<00:01:29.799><c> monitoramento</c><00:01:30.520><c> proativo,</c><00:01:31.560><c> a</c><00:01:31.720><c> criação</c>
+
+00:01:32.030 --> 00:01:32.040 align:start position:0%
+para monitoramento proativo, a criação
+ 
+
+00:01:32.040 --> 00:01:34.230 align:start position:0%
+para monitoramento proativo, a criação
+de<00:01:32.159><c> um</c><00:01:32.280><c> alarme</c><00:01:32.600><c> de</c><00:01:32.720><c> CPU</c><00:01:33.119><c> na</c><00:01:33.280><c> prática,</c><00:01:34.000><c> as</c>
+
+00:01:34.230 --> 00:01:34.240 align:start position:0%
+de um alarme de CPU na prática, as
+ 
+
+00:01:34.240 --> 00:01:36.789 align:start position:0%
+de um alarme de CPU na prática, as
+estratégias<00:01:34.759><c> de</c><00:01:34.920><c> isolamento</c><00:01:35.439><c> de</c><00:01:35.640><c> ambientes</c><00:01:36.479><c> e</c>
+
+00:01:36.789 --> 00:01:36.799 align:start position:0%
+estratégias de isolamento de ambientes e
+ 
+
+00:01:36.799 --> 00:01:38.630 align:start position:0%
+estratégias de isolamento de ambientes e
+para<00:01:37.000><c> fechar</c><00:01:37.320><c> com</c><00:01:37.560><c> chave</c><00:01:37.799><c> de</c><00:01:38.000><c> ouro</c><00:01:38.439><c> a</c>
+
+00:01:38.630 --> 00:01:38.640 align:start position:0%
+para fechar com chave de ouro a
+ 
+
+00:01:38.640 --> 00:01:41.910 align:start position:0%
+para fechar com chave de ouro a
+resolução<00:01:39.399><c> autônoma</c><00:01:40.000><c> de</c><00:01:40.240><c> incidentes.</c><00:01:41.439><c> Bom,</c>
+
+00:01:41.910 --> 00:01:41.920 align:start position:0%
+resolução autônoma de incidentes. Bom,
+ 
+
+00:01:41.920 --> 00:01:44.190 align:start position:0%
+resolução autônoma de incidentes. Bom,
+começando<00:01:42.360><c> pelo</c><00:01:42.640><c> começo,</c><00:01:43.439><c> vamos</c><00:01:43.680><c> falar</c><00:01:44.000><c> sobre</c>
+
+00:01:44.190 --> 00:01:44.200 align:start position:0%
+começando pelo começo, vamos falar sobre
+ 
+
+00:01:44.200 --> 00:01:46.550 align:start position:0%
+começando pelo começo, vamos falar sobre
+o<00:01:44.399><c> peso</c><00:01:44.799><c> e</c><00:01:45.000><c> o</c><00:01:45.159><c> custo</c><00:01:45.479><c> de</c><00:01:45.680><c> ficar</c><00:01:46.000><c> preso</c><00:01:46.240><c> a</c><00:01:46.360><c> essa</c>
+
+00:01:46.550 --> 00:01:46.560 align:start position:0%
+o peso e o custo de ficar preso a essa
+ 
+
+00:01:46.560 --> 00:01:48.990 align:start position:0%
+o peso e o custo de ficar preso a essa
+investigação<00:01:47.159><c> manual</c><00:01:47.880><c> e</c><00:01:48.040><c> a</c><00:01:48.159><c> uma</c><00:01:48.320><c> telemetria</c>
+
+00:01:48.990 --> 00:01:49.000 align:start position:0%
+investigação manual e a uma telemetria
+ 
+
+00:01:49.000 --> 00:01:51.550 align:start position:0%
+investigação manual e a uma telemetria
+toda<00:01:49.320><c> fragmentada.</c><00:01:50.479><c> A</c><00:01:50.600><c> gente</c><00:01:50.840><c> sempre</c><00:01:51.159><c> esbarra</c>
+
+00:01:51.550 --> 00:01:51.560 align:start position:0%
+toda fragmentada. A gente sempre esbarra
+ 
+
+00:01:51.560 --> 00:01:53.789 align:start position:0%
+toda fragmentada. A gente sempre esbarra
+em<00:01:51.680><c> uma</c><00:01:51.840><c> falha</c><00:01:52.119><c> estrutural</c><00:01:52.640><c> clássica</c><00:01:53.119><c> aqui.</c>
+
+00:01:53.789 --> 00:01:53.799 align:start position:0%
+em uma falha estrutural clássica aqui.
+ 
+
+00:01:53.799 --> 00:01:56.230 align:start position:0%
+em uma falha estrutural clássica aqui.
+Pensem<00:01:54.119><c> bem,</c><00:01:54.560><c> as</c><00:01:54.719><c> equipes</c><00:01:55.040><c> de</c><00:01:55.240><c> suporte</c><00:01:55.960><c> estão</c>
+
+00:01:56.230 --> 00:01:56.240 align:start position:0%
+Pensem bem, as equipes de suporte estão
+ 
+
+00:01:56.240 --> 00:01:58.389 align:start position:0%
+Pensem bem, as equipes de suporte estão
+ali<00:01:56.439><c> na</c><00:01:56.640><c> linha</c><00:01:56.840><c> de</c><00:01:57.039><c> frente,</c><00:01:57.479><c> mas</c><00:01:57.680><c> muitas</c><00:01:58.039><c> vezes</c>
+
+00:01:58.389 --> 00:01:58.399 align:start position:0%
+ali na linha de frente, mas muitas vezes
+ 
+
+00:01:58.399 --> 00:02:00.630 align:start position:0%
+ali na linha de frente, mas muitas vezes
+falta<00:01:58.680><c> aquele</c><00:01:58.960><c> conhecimento</c><00:01:59.880><c> super</c><00:02:00.240><c> profundo</c>
+
+00:02:00.630 --> 00:02:00.640 align:start position:0%
+falta aquele conhecimento super profundo
+ 
+
+00:02:00.640 --> 00:02:02.310 align:start position:0%
+falta aquele conhecimento super profundo
+da<00:02:00.799><c> infraestrutura</c><00:02:01.439><c> para</c><00:02:01.600><c> diagnosticar</c>
+
+00:02:02.310 --> 00:02:02.320 align:start position:0%
+da infraestrutura para diagnosticar
+ 
+
+00:02:02.320 --> 00:02:04.389 align:start position:0%
+da infraestrutura para diagnosticar
+causas<00:02:02.719><c> raízes</c><00:02:03.200><c> complexas.</c><00:02:04.200><c> E</c><00:02:04.280><c> os</c>
+
+00:02:04.389 --> 00:02:04.399 align:start position:0%
+causas raízes complexas. E os
+ 
+
+00:02:04.399 --> 00:02:06.670 align:start position:0%
+causas raízes complexas. E os
+engenheiros<00:02:04.799><c> DevOps,</c><00:02:05.560><c> bom,</c><00:02:06.000><c> eles</c><00:02:06.240><c> deveriam</c>
+
+00:02:06.670 --> 00:02:06.680 align:start position:0%
+engenheiros DevOps, bom, eles deveriam
+ 
+
+00:02:06.680 --> 00:02:08.510 align:start position:0%
+engenheiros DevOps, bom, eles deveriam
+estar<00:02:06.840><c> focados</c><00:02:07.240><c> em</c><00:02:07.479><c> construir</c><00:02:08.000><c> melhorias</c>
+
+00:02:08.510 --> 00:02:08.520 align:start position:0%
+estar focados em construir melhorias
+ 
+
+00:02:08.520 --> 00:02:10.150 align:start position:0%
+estar focados em construir melhorias
+sistêmicas,<00:02:09.280><c> mas</c><00:02:09.440><c> acabam</c><00:02:09.759><c> sendo</c>
+
+00:02:10.150 --> 00:02:10.160 align:start position:0%
+sistêmicas, mas acabam sendo
+ 
+
+00:02:10.160 --> 00:02:11.990 align:start position:0%
+sistêmicas, mas acabam sendo
+constantemente<00:02:10.959><c> arrastados</c><00:02:11.520><c> para</c><00:02:11.640><c> pagar</c>
+
+00:02:11.990 --> 00:02:12.000 align:start position:0%
+constantemente arrastados para pagar
+ 
+
+00:02:12.000 --> 00:02:14.229 align:start position:0%
+constantemente arrastados para pagar
+incêndios.<00:02:12.879><c> Esse</c><00:02:13.120><c> vai</c><00:02:13.280><c> e</c><00:02:13.400><c> vem</c><00:02:13.640><c> entre</c><00:02:13.840><c> as</c><00:02:14.000><c> áreas</c>
+
+00:02:14.229 --> 00:02:14.239 align:start position:0%
+incêndios. Esse vai e vem entre as áreas
+ 
+
+00:02:14.239 --> 00:02:16.470 align:start position:0%
+incêndios. Esse vai e vem entre as áreas
+gera<00:02:14.480><c> um</c><00:02:14.560><c> atrito</c><00:02:14.959><c> gigante</c><00:02:15.680><c> e</c><00:02:15.840><c> queria</c><00:02:16.080><c> um</c><00:02:16.160><c> ciclo</c>
+
+00:02:16.470 --> 00:02:16.480 align:start position:0%
+gera um atrito gigante e queria um ciclo
+ 
+
+00:02:16.480 --> 00:02:19.190 align:start position:0%
+gera um atrito gigante e queria um ciclo
+vicioso<00:02:17.000><c> de</c><00:02:17.200><c> soluções</c><00:02:17.840><c> puramente</c><00:02:18.440><c> reativas</c>
+
+00:02:19.190 --> 00:02:19.200 align:start position:0%
+vicioso de soluções puramente reativas
+ 
+
+00:02:19.200 --> 00:02:20.949 align:start position:0%
+vicioso de soluções puramente reativas
+em<00:02:19.360><c> vez</c><00:02:19.480><c> de</c><00:02:19.640><c> evitar</c><00:02:20.000><c> que</c><00:02:20.120><c> os</c><00:02:20.319><c> problemas</c><00:02:20.640><c> sequer</c>
+
+00:02:20.949 --> 00:02:20.959 align:start position:0%
+em vez de evitar que os problemas sequer
+ 
+
+00:02:20.959 --> 00:02:23.589 align:start position:0%
+em vez de evitar que os problemas sequer
+aconteçam.<00:02:22.200><c> Então,</c><00:02:22.560><c> como</c><00:02:22.760><c> a</c><00:02:22.959><c> gente</c><00:02:23.160><c> resolve</c>
+
+00:02:23.589 --> 00:02:23.599 align:start position:0%
+aconteçam. Então, como a gente resolve
+ 
+
+00:02:23.599 --> 00:02:26.470 align:start position:0%
+aconteçam. Então, como a gente resolve
+isso?<00:02:24.480><c> A</c><00:02:24.599><c> gente</c><00:02:24.760><c> precisa</c><00:02:25.239><c> construir</c><00:02:25.760><c> uma</c><00:02:26.040><c> base</c>
+
+00:02:26.470 --> 00:02:26.480 align:start position:0%
+isso? A gente precisa construir uma base
+ 
+
+00:02:26.480 --> 00:02:29.509 align:start position:0%
+isso? A gente precisa construir uma base
+sólida<00:02:27.040><c> para</c><00:02:27.640><c> automação.</c><00:02:28.480><c> E</c><00:02:28.560><c> isso</c><00:02:28.800><c> passa</c><00:02:29.160><c> pela</c>
+
+00:02:29.509 --> 00:02:29.519 align:start position:0%
+sólida para automação. E isso passa pela
+ 
+
+00:02:29.519 --> 00:02:31.589 align:start position:0%
+sólida para automação. E isso passa pela
+organização<00:02:30.120><c> da</c><00:02:30.319><c> infraestrutura</c><00:02:31.319><c> e</c>
+
+00:02:31.589 --> 00:02:31.599 align:start position:0%
+organização da infraestrutura e
+ 
+
+00:02:31.599 --> 00:02:33.589 align:start position:0%
+organização da infraestrutura e
+principalmente<00:02:32.280><c> pelas</c><00:02:32.599><c> boas</c><00:02:32.959><c> práticas</c><00:02:33.400><c> no</c>
+
+00:02:33.589 --> 00:02:33.599 align:start position:0%
+principalmente pelas boas práticas no
+ 
+
+00:02:33.599 --> 00:02:36.070 align:start position:0%
+principalmente pelas boas práticas no
+uso<00:02:34.000><c> de</c><00:02:34.200><c> tags.</c><00:02:35.080><c> Para</c><00:02:35.280><c> colocar</c><00:02:35.560><c> de</c><00:02:35.680><c> uma</c><00:02:35.840><c> forma</c>
+
+00:02:36.070 --> 00:02:36.080 align:start position:0%
+uso de tags. Para colocar de uma forma
+ 
+
+00:02:36.080 --> 00:02:38.949 align:start position:0%
+uso de tags. Para colocar de uma forma
+bem<00:02:36.360><c> simples,</c><00:02:36.920><c> as</c><00:02:37.040><c> tags</c><00:02:37.360><c> de</c><00:02:37.519><c> recursos</c><00:02:37.959><c> da</c><00:02:38.200><c> AWS</c>
+
+00:02:38.949 --> 00:02:38.959 align:start position:0%
+bem simples, as tags de recursos da AWS
+ 
+
+00:02:38.959 --> 00:02:40.229 align:start position:0%
+bem simples, as tags de recursos da AWS
+funcionam<00:02:39.440><c> como</c><00:02:39.640><c> um</c><00:02:39.800><c> sistema</c><00:02:40.080><c> de</c>
+
+00:02:40.229 --> 00:02:40.239 align:start position:0%
+funcionam como um sistema de
+ 
+
+00:02:40.239 --> 00:02:42.229 align:start position:0%
+funcionam como um sistema de
+arquivamento<00:02:41.000><c> altamente</c><00:02:41.560><c> eficiente</c><00:02:42.040><c> paraa</c>
+
+00:02:42.229 --> 00:02:42.239 align:start position:0%
+arquivamento altamente eficiente paraa
+ 
+
+00:02:42.239 --> 00:02:44.910 align:start position:0%
+arquivamento altamente eficiente paraa
+nuvem.<00:02:43.120><c> São</c><00:02:43.280><c> aqueles</c><00:02:43.599><c> rótulos</c><00:02:44.239><c> básicos</c><00:02:44.720><c> de</c>
+
+00:02:44.910 --> 00:02:44.920 align:start position:0%
+nuvem. São aqueles rótulos básicos de
+ 
+
+00:02:44.920 --> 00:02:46.949 align:start position:0%
+nuvem. São aqueles rótulos básicos de
+metadados<00:02:45.680><c> com</c><00:02:45.879><c> uma</c><00:02:46.080><c> chave</c><00:02:46.400><c> e</c><00:02:46.599><c> um</c><00:02:46.720><c> valor</c>
+
+00:02:46.949 --> 00:02:46.959 align:start position:0%
+metadados com uma chave e um valor
+ 
+
+00:02:46.959 --> 00:02:49.350 align:start position:0%
+metadados com uma chave e um valor
+opcional<00:02:47.760><c> que</c><00:02:48.040><c> categorizam</c><00:02:48.800><c> tudo</c><00:02:49.120><c> por</c>
+
+00:02:49.350 --> 00:02:49.360 align:start position:0%
+opcional que categorizam tudo por
+ 
+
+00:02:49.360 --> 00:02:52.229 align:start position:0%
+opcional que categorizam tudo por
+finalidade,<00:02:50.360><c> equipe</c><00:02:50.760><c> ou</c><00:02:51.000><c> ambiente.</c><00:02:52.040><c> Sem</c>
+
+00:02:52.229 --> 00:02:52.239 align:start position:0%
+finalidade, equipe ou ambiente. Sem
+ 
+
+00:02:52.239 --> 00:02:54.070 align:start position:0%
+finalidade, equipe ou ambiente. Sem
+elas,<00:02:52.640><c> ferramentas</c><00:02:53.159><c> de</c><00:02:53.319><c> inteligência</c>
+
+00:02:54.070 --> 00:02:54.080 align:start position:0%
+elas, ferramentas de inteligência
+ 
+
+00:02:54.080 --> 00:02:57.030 align:start position:0%
+elas, ferramentas de inteligência
+artificial<00:02:54.879><c> ficam</c><00:02:55.280><c> praticamente</c><00:02:55.879><c> a</c><00:02:56.000><c> cegas.</c>
+
+00:02:57.030 --> 00:02:57.040 align:start position:0%
+artificial ficam praticamente a cegas.
+ 
+
+00:02:57.040 --> 00:02:58.990 align:start position:0%
+artificial ficam praticamente a cegas.
+Essas<00:02:57.319><c> etiquetas</c><00:02:58.000><c> são</c><00:02:58.319><c> absolutamente</c>
+
+00:02:58.990 --> 00:02:59.000 align:start position:0%
+Essas etiquetas são absolutamente
+ 
+
+00:02:59.000 --> 00:03:01.710 align:start position:0%
+Essas etiquetas são absolutamente
+cruciais<00:02:59.680><c> pro</c><00:02:59.879><c> DevOps</c><00:03:00.599><c> agent</c><00:03:01.080><c> conseguir</c>
+
+00:03:01.710 --> 00:03:01.720 align:start position:0%
+cruciais pro DevOps agent conseguir
+ 
+
+00:03:01.720 --> 00:03:04.030 align:start position:0%
+cruciais pro DevOps agent conseguir
+mapear<00:03:02.120><c> as</c><00:03:02.319><c> relações</c><00:03:02.840><c> corretas</c><00:03:03.599><c> entre</c><00:03:03.840><c> as</c>
+
+00:03:04.030 --> 00:03:04.040 align:start position:0%
+mapear as relações corretas entre as
+ 
+
+00:03:04.040 --> 00:03:06.190 align:start position:0%
+mapear as relações corretas entre as
+várias<00:03:04.480><c> peças</c><00:03:04.799><c> da</c><00:03:05.000><c> aplicação</c><00:03:05.640><c> durante</c><00:03:05.959><c> uma</c>
+
+00:03:06.190 --> 00:03:06.200 align:start position:0%
+várias peças da aplicação durante uma
+ 
+
+00:03:06.200 --> 00:03:09.190 align:start position:0%
+várias peças da aplicação durante uma
+investigação.<00:03:07.400><c> Isso</c><00:03:07.640><c> ilustra</c><00:03:08.200><c> perfeitamente</c>
+
+00:03:09.190 --> 00:03:09.200 align:start position:0%
+investigação. Isso ilustra perfeitamente
+ 
+
+00:03:09.200 --> 00:03:10.670 align:start position:0%
+investigação. Isso ilustra perfeitamente
+como<00:03:09.440><c> a</c><00:03:09.599><c> gente</c><00:03:09.760><c> deve</c><00:03:10.040><c> pensar</c><00:03:10.480><c> na</c>
+
+00:03:10.670 --> 00:03:10.680 align:start position:0%
+como a gente deve pensar na
+ 
+
+00:03:10.680 --> 00:03:13.430 align:start position:0%
+como a gente deve pensar na
+categorização.<00:03:12.000><c> Tags</c><00:03:12.560><c> não</c><00:03:12.760><c> servem</c><00:03:13.120><c> só</c><00:03:13.280><c> para</c>
+
+00:03:13.430 --> 00:03:13.440 align:start position:0%
+categorização. Tags não servem só para
+ 
+
+00:03:13.440 --> 00:03:15.910 align:start position:0%
+categorização. Tags não servem só para
+organizar<00:03:13.920><c> a</c><00:03:14.120><c> conta</c><00:03:14.400><c> no</c><00:03:14.560><c> fim</c><00:03:14.680><c> do</c><00:03:14.840><c> mês,</c><00:03:15.040><c> tá?</c><00:03:15.720><c> Uma</c>
+
+00:03:15.910 --> 00:03:15.920 align:start position:0%
+organizar a conta no fim do mês, tá? Uma
+ 
+
+00:03:15.920 --> 00:03:18.190 align:start position:0%
+organizar a conta no fim do mês, tá? Uma
+estratégia<00:03:16.440><c> sólida</c><00:03:16.920><c> vai</c><00:03:17.239><c> muito</c><00:03:17.560><c> além</c><00:03:17.959><c> da</c>
+
+00:03:18.190 --> 00:03:18.200 align:start position:0%
+estratégia sólida vai muito além da
+ 
+
+00:03:18.200 --> 00:03:20.949 align:start position:0%
+estratégia sólida vai muito além da
+locação<00:03:18.599><c> de</c><00:03:18.799><c> custos.</c><00:03:19.519><c> Ela</c><00:03:20.159><c> cobre</c><00:03:20.440><c> o</c><00:03:20.640><c> controle</c>
+
+00:03:20.949 --> 00:03:20.959 align:start position:0%
+locação de custos. Ela cobre o controle
+ 
+
+00:03:20.959 --> 00:03:23.350 align:start position:0%
+locação de custos. Ela cobre o controle
+de<00:03:21.159><c> acesso</c><00:03:21.560><c> paraa</c><00:03:21.760><c> segurança</c><00:03:22.159><c> dos</c><00:03:22.360><c> dados</c><00:03:23.080><c> e</c><00:03:23.239><c> o</c>
+
+00:03:23.350 --> 00:03:23.360 align:start position:0%
+de acesso paraa segurança dos dados e o
+ 
+
+00:03:23.360 --> 00:03:25.270 align:start position:0%
+de acesso paraa segurança dos dados e o
+que<00:03:23.480><c> é</c><00:03:23.599><c> mais</c><00:03:23.879><c> importante</c><00:03:24.280><c> para</c><00:03:24.440><c> nós,</c><00:03:25.040><c> as</c>
+
+00:03:25.270 --> 00:03:25.280 align:start position:0%
+que é mais importante para nós, as
+ 
+
+00:03:25.280 --> 00:03:27.789 align:start position:0%
+que é mais importante para nós, as
+operações<00:03:25.840><c> e</c><00:03:26.000><c> o</c><00:03:26.159><c> suporte.</c><00:03:27.319><c> Quando</c><00:03:27.480><c> a</c><00:03:27.599><c> nossa</c>
+
+00:03:27.789 --> 00:03:27.799 align:start position:0%
+operações e o suporte. Quando a nossa
+ 
+
+00:03:27.799 --> 00:03:29.670 align:start position:0%
+operações e o suporte. Quando a nossa
+infraestrutura<00:03:28.319><c> tá</c><00:03:28.560><c> toda</c><00:03:28.799><c> etiquetadinha</c><00:03:29.480><c> por</c>
+
+00:03:29.670 --> 00:03:29.680 align:start position:0%
+infraestrutura tá toda etiquetadinha por
+ 
+
+00:03:29.680 --> 00:03:32.229 align:start position:0%
+infraestrutura tá toda etiquetadinha por
+propósito,<00:03:30.480><c> equipe</c><00:03:30.799><c> ou</c><00:03:31.040><c> ambiente,</c><00:03:31.799><c> tarefas</c>
+
+00:03:32.229 --> 00:03:32.239 align:start position:0%
+propósito, equipe ou ambiente, tarefas
+ 
+
+00:03:32.239 --> 00:03:33.910 align:start position:0%
+propósito, equipe ou ambiente, tarefas
+como<00:03:32.439><c> gerenciamento</c><00:03:33.040><c> de</c><00:03:33.239><c> incidentes</c><00:03:33.720><c> e</c>
+
+00:03:33.910 --> 00:03:33.920 align:start position:0%
+como gerenciamento de incidentes e
+ 
+
+00:03:33.920 --> 00:03:36.229 align:start position:0%
+como gerenciamento de incidentes e
+atividades<00:03:34.480><c> automatizadas</c><00:03:35.080><c> de</c><00:03:35.239><c> atualização</c>
+
+00:03:36.229 --> 00:03:36.239 align:start position:0%
+atividades automatizadas de atualização
+ 
+
+00:03:36.239 --> 00:03:38.110 align:start position:0%
+atividades automatizadas de atualização
+fluem<00:03:36.560><c> com</c><00:03:36.680><c> uma</c><00:03:36.840><c> rapidez</c><00:03:37.280><c> e</c><00:03:37.519><c> precisão</c>
+
+00:03:38.110 --> 00:03:38.120 align:start position:0%
+fluem com uma rapidez e precisão
+ 
+
+00:03:38.120 --> 00:03:40.509 align:start position:0%
+fluem com uma rapidez e precisão
+impressionantes.<00:03:39.480><c> Com</c><00:03:39.680><c> essa</c><00:03:39.959><c> base</c><00:03:40.239><c> de</c>
+
+00:03:40.509 --> 00:03:40.519 align:start position:0%
+impressionantes. Com essa base de
+ 
+
+00:03:40.519 --> 00:03:43.070 align:start position:0%
+impressionantes. Com essa base de
+metadados<00:03:41.319><c> pronta,</c><00:03:41.879><c> a</c><00:03:42.080><c> gente</c><00:03:42.280><c> pode</c><00:03:42.599><c> entrar</c><00:03:42.879><c> na</c>
+
+00:03:43.070 --> 00:03:43.080 align:start position:0%
+metadados pronta, a gente pode entrar na
+ 
+
+00:03:43.080 --> 00:03:46.309 align:start position:0%
+metadados pronta, a gente pode entrar na
+fase<00:03:43.439><c> de</c><00:03:43.799><c> obter</c><00:03:44.439><c> observabilidade</c><00:03:45.640><c> geral</c><00:03:46.000><c> do</c>
+
+00:03:46.309 --> 00:03:46.319 align:start position:0%
+fase de obter observabilidade geral do
+ 
+
+00:03:46.319 --> 00:03:49.030 align:start position:0%
+fase de obter observabilidade geral do
+sistema.<00:03:47.080><c> E</c><00:03:47.200><c> é</c><00:03:47.360><c> aí</c><00:03:47.799><c> que</c><00:03:48.000><c> o</c><00:03:48.159><c> monitoramento</c>
+
+00:03:49.030 --> 00:03:49.040 align:start position:0%
+sistema. E é aí que o monitoramento
+ 
+
+00:03:49.040 --> 00:03:51.509 align:start position:0%
+sistema. E é aí que o monitoramento
+proativo<00:03:49.760><c> com</c><00:03:50.000><c> o</c><00:03:50.159><c> Cloud</c><00:03:50.519><c> Watch</c><00:03:50.959><c> entra</c><00:03:51.280><c> em</c>
+
+00:03:51.509 --> 00:03:51.519 align:start position:0%
+proativo com o Cloud Watch entra em
+ 
+
+00:03:51.519 --> 00:03:55.069 align:start position:0%
+proativo com o Cloud Watch entra em
+cena.<00:03:52.280><c> O</c><00:03:52.400><c> CloudW</c><00:03:53.200><c> atua</c><00:03:53.640><c> coletando</c><00:03:54.400><c> dados</c><00:03:54.879><c> de</c>
+
+00:03:55.069 --> 00:03:55.079 align:start position:0%
+cena. O CloudW atua coletando dados de
+ 
+
+00:03:55.079 --> 00:03:57.390 align:start position:0%
+cena. O CloudW atua coletando dados de
+telemetria<00:03:55.720><c> em</c><00:03:55.920><c> tempo</c><00:03:56.200><c> real.</c><00:03:57.000><c> A</c><00:03:57.159><c> grande</c>
+
+00:03:57.390 --> 00:03:57.400 align:start position:0%
+telemetria em tempo real. A grande
+ 
+
+00:03:57.400 --> 00:03:59.550 align:start position:0%
+telemetria em tempo real. A grande
+sacada<00:03:57.799><c> aqui</c><00:03:58.120><c> é</c><00:03:58.319><c> mudar</c><00:03:58.640><c> aquele</c><00:03:58.920><c> paradigma</c>
+
+00:03:59.550 --> 00:03:59.560 align:start position:0%
+sacada aqui é mudar aquele paradigma
+ 
+
+00:03:59.560 --> 00:04:01.990 align:start position:0%
+sacada aqui é mudar aquele paradigma
+reativo.<00:04:00.720><c> Em</c><00:04:00.840><c> vez</c><00:04:01.000><c> de</c><00:04:01.159><c> ficar</c><00:04:01.480><c> esperando</c><00:04:01.840><c> o</c>
+
+00:04:01.990 --> 00:04:02.000 align:start position:0%
+reativo. Em vez de ficar esperando o
+ 
+
+00:04:02.000 --> 00:04:04.069 align:start position:0%
+reativo. Em vez de ficar esperando o
+suporte<00:04:02.480><c> abrir</c><00:04:02.760><c> um</c><00:04:02.920><c> ticket</c><00:04:03.400><c> reclamando</c><00:04:03.879><c> da</c>
+
+00:04:04.069 --> 00:04:04.079 align:start position:0%
+suporte abrir um ticket reclamando da
+ 
+
+00:04:04.079 --> 00:04:06.429 align:start position:0%
+suporte abrir um ticket reclamando da
+lentidão<00:04:04.480><c> do</c><00:04:04.680><c> sistema,</c><00:04:05.360><c> a</c><00:04:05.519><c> equipe</c><00:04:05.879><c> recebe</c><00:04:06.239><c> um</c>
+
+00:04:06.429 --> 00:04:06.439 align:start position:0%
+lentidão do sistema, a equipe recebe um
+ 
+
+00:04:06.439 --> 00:04:08.630 align:start position:0%
+lentidão do sistema, a equipe recebe um
+alerta<00:04:06.799><c> de</c><00:04:06.959><c> degradação</c><00:04:07.519><c> de</c><00:04:07.720><c> performance</c>
+
+00:04:08.630 --> 00:04:08.640 align:start position:0%
+alerta de degradação de performance
+ 
+
+00:04:08.640 --> 00:04:10.350 align:start position:0%
+alerta de degradação de performance
+muito<00:04:09.040><c> antes</c><00:04:09.280><c> do</c><00:04:09.439><c> usuário</c><00:04:09.840><c> final</c><00:04:10.159><c> ser</c>
+
+00:04:10.350 --> 00:04:10.360 align:start position:0%
+muito antes do usuário final ser
+ 
+
+00:04:10.360 --> 00:04:12.429 align:start position:0%
+muito antes do usuário final ser
+impactado.<00:04:11.319><c> O</c><00:04:11.439><c> sistema</c><00:04:11.840><c> rastreia</c><00:04:12.280><c> as</c>
+
+00:04:12.429 --> 00:04:12.439 align:start position:0%
+impactado. O sistema rastreia as
+ 
+
+00:04:12.439 --> 00:04:14.589 align:start position:0%
+impactado. O sistema rastreia as
+métricas<00:04:12.840><c> de</c><00:04:13.000><c> desempenho,</c><00:04:13.799><c> cria</c><00:04:14.120><c> visões</c>
+
+00:04:14.589 --> 00:04:14.599 align:start position:0%
+métricas de desempenho, cria visões
+ 
+
+00:04:14.599 --> 00:04:17.310 align:start position:0%
+métricas de desempenho, cria visões
+unificadas<00:04:15.239><c> em</c><00:04:15.439><c> dashboards,</c><00:04:16.440><c> envia</c><00:04:16.880><c> alertas</c>
+
+00:04:17.310 --> 00:04:17.320 align:start position:0%
+unificadas em dashboards, envia alertas
+ 
+
+00:04:17.320 --> 00:04:19.749 align:start position:0%
+unificadas em dashboards, envia alertas
+de<00:04:17.479><c> limites</c><00:04:18.199><c> e,</c><00:04:18.400><c> o</c><00:04:18.560><c> melhor,</c><00:04:19.120><c> já</c><00:04:19.320><c> aciona</c>
+
+00:04:19.749 --> 00:04:19.759 align:start position:0%
+de limites e, o melhor, já aciona
+ 
+
+00:04:19.759 --> 00:04:22.510 align:start position:0%
+de limites e, o melhor, já aciona
+respostas<00:04:20.239><c> de</c><00:04:20.479><c> forma</c><00:04:20.919><c> automática.</c><00:04:22.079><c> Mas</c><00:04:22.240><c> vamos</c>
+
+00:04:22.510 --> 00:04:22.520 align:start position:0%
+respostas de forma automática. Mas vamos
+ 
+
+00:04:22.520 --> 00:04:24.790 align:start position:0%
+respostas de forma automática. Mas vamos
+trazer<00:04:22.840><c> isso</c><00:04:23.120><c> pro</c><00:04:23.320><c> mundo</c><00:04:23.560><c> real.</c><00:04:24.280><c> Como</c><00:04:24.440><c> a</c><00:04:24.600><c> gente</c>
+
+00:04:24.790 --> 00:04:24.800 align:start position:0%
+trazer isso pro mundo real. Como a gente
+ 
+
+00:04:24.800 --> 00:04:27.110 align:start position:0%
+trazer isso pro mundo real. Como a gente
+configura<00:04:25.360><c> isso</c><00:04:25.680><c> na</c><00:04:25.919><c> prática?</c><00:04:26.479><c> Criando</c><00:04:26.880><c> um</c>
+
+00:04:27.110 --> 00:04:27.120 align:start position:0%
+configura isso na prática? Criando um
+ 
+
+00:04:27.120 --> 00:04:30.189 align:start position:0%
+configura isso na prática? Criando um
+alarme<00:04:27.840><c> de</c><00:04:28.040><c> CPU.</c><00:04:28.960><c> Configurar</c><00:04:29.479><c> um</c><00:04:29.639><c> alarme</c><00:04:29.960><c> pro</c>
+
+00:04:30.189 --> 00:04:30.199 align:start position:0%
+alarme de CPU. Configurar um alarme pro
+ 
+
+00:04:30.199 --> 00:04:32.670 align:start position:0%
+alarme de CPU. Configurar um alarme pro
+ativo<00:04:30.400><c> de</c><00:04:30.560><c> CPU</c><00:04:31.000><c> é</c><00:04:31.280><c> super</c><00:04:31.560><c> tranquilo</c><00:04:32.240><c> e</c><00:04:32.400><c> exige</c>
+
+00:04:32.670 --> 00:04:32.680 align:start position:0%
+ativo de CPU é super tranquilo e exige
+ 
+
+00:04:32.680 --> 00:04:35.150 align:start position:0%
+ativo de CPU é super tranquilo e exige
+apenas<00:04:33.000><c> três</c><00:04:33.320><c> passos</c><00:04:33.600><c> cruciais.</c><00:04:34.600><c> Primeiro,</c><00:04:35.000><c> a</c>
+
+00:04:35.150 --> 00:04:35.160 align:start position:0%
+apenas três passos cruciais. Primeiro, a
+ 
+
+00:04:35.160 --> 00:04:36.350 align:start position:0%
+apenas três passos cruciais. Primeiro, a
+gente<00:04:35.320><c> escolhe</c><00:04:35.600><c> a</c><00:04:35.720><c> métrica</c><00:04:36.039><c> que</c><00:04:36.160><c> quer</c>
+
+00:04:36.350 --> 00:04:36.360 align:start position:0%
+gente escolhe a métrica que quer
+ 
+
+00:04:36.360 --> 00:04:38.550 align:start position:0%
+gente escolhe a métrica que quer
+monitorar,<00:04:37.199><c> tipo</c><00:04:37.440><c> a</c><00:04:37.600><c> utilização</c><00:04:38.039><c> de</c><00:04:38.199><c> CPU</c>
+
+00:04:38.550 --> 00:04:38.560 align:start position:0%
+monitorar, tipo a utilização de CPU
+ 
+
+00:04:38.560 --> 00:04:40.390 align:start position:0%
+monitorar, tipo a utilização de CPU
+daquela<00:04:38.960><c> instância</c><00:04:39.280><c> do</c><00:04:39.479><c> SC2</c><00:04:39.880><c> que</c><00:04:40.039><c> roda</c><00:04:40.280><c> o</c>
+
+00:04:40.390 --> 00:04:40.400 align:start position:0%
+daquela instância do SC2 que roda o
+ 
+
+00:04:40.400 --> 00:04:42.629 align:start position:0%
+daquela instância do SC2 que roda o
+nosso<00:04:40.560><c> banco</c><00:04:40.800><c> de</c><00:04:40.960><c> dados.</c><00:04:41.800><c> Segundo,</c><00:04:42.320><c> a</c><00:04:42.479><c> gente</c>
+
+00:04:42.629 --> 00:04:42.639 align:start position:0%
+nosso banco de dados. Segundo, a gente
+ 
+
+00:04:42.639 --> 00:04:44.830 align:start position:0%
+nosso banco de dados. Segundo, a gente
+define<00:04:42.919><c> um</c><00:04:43.080><c> limite</c><00:04:43.479><c> estático.</c><00:04:44.080><c> Por</c><00:04:44.240><c> exemplo,</c>
+
+00:04:44.830 --> 00:04:44.840 align:start position:0%
+define um limite estático. Por exemplo,
+ 
+
+00:04:44.840 --> 00:04:47.350 align:start position:0%
+define um limite estático. Por exemplo,
+se<00:04:44.960><c> a</c><00:04:45.039><c> CPU</c><00:04:45.400><c> passar</c><00:04:45.639><c> de</c><00:04:45.800><c> 85%</c><00:04:46.600><c> de</c><00:04:46.800><c> uso</c><00:04:47.039><c> por</c><00:04:47.199><c> mais</c>
+
+00:04:47.350 --> 00:04:47.360 align:start position:0%
+se a CPU passar de 85% de uso por mais
+ 
+
+00:04:47.360 --> 00:04:49.670 align:start position:0%
+se a CPU passar de 85% de uso por mais
+de<00:04:47.560><c> 5</c><00:04:47.800><c> minutos,</c><00:04:48.360><c> ligo</c><00:04:48.560><c> o</c><00:04:48.680><c> alerta.</c><00:04:49.400><c> E</c><00:04:49.560><c> o</c>
+
+00:04:49.670 --> 00:04:49.680 align:start position:0%
+de 5 minutos, ligo o alerta. E o
+ 
+
+00:04:49.680 --> 00:04:51.590 align:start position:0%
+de 5 minutos, ligo o alerta. E o
+terceiro<00:04:49.960><c> passo</c><00:04:50.280><c> é</c><00:04:50.440><c> configurar</c><00:04:50.840><c> a</c><00:04:50.919><c> ação,</c><00:04:51.400><c> que</c>
+
+00:04:51.590 --> 00:04:51.600 align:start position:0%
+terceiro passo é configurar a ação, que
+ 
+
+00:04:51.600 --> 00:04:52.990 align:start position:0%
+terceiro passo é configurar a ação, que
+pode<00:04:51.800><c> ser</c><00:04:52.039><c> desde</c><00:04:52.320><c> escalar</c><00:04:52.639><c> o</c><00:04:52.720><c> ambiente</c>
+
+00:04:52.990 --> 00:04:53.000 align:start position:0%
+pode ser desde escalar o ambiente
+ 
+
+00:04:53.000 --> 00:04:54.350 align:start position:0%
+pode ser desde escalar o ambiente
+automaticamente<00:04:53.720><c> até</c><00:04:53.960><c> mandar</c><00:04:54.240><c> uma</c>
+
+00:04:54.350 --> 00:04:54.360 align:start position:0%
+automaticamente até mandar uma
+ 
+
+00:04:54.360 --> 00:04:56.550 align:start position:0%
+automaticamente até mandar uma
+notificação<00:04:54.960><c> pro</c><00:04:55.160><c> Evan</c><00:04:55.440><c> Bridge.</c><00:04:56.160><c> Isso</c><00:04:56.360><c> já</c>
+
+00:04:56.550 --> 00:04:56.560 align:start position:0%
+notificação pro Evan Bridge. Isso já
+ 
+
+00:04:56.560 --> 00:04:57.909 align:start position:0%
+notificação pro Evan Bridge. Isso já
+pode<00:04:56.759><c> dar</c><00:04:56.880><c> um</c><00:04:56.960><c> pontapé</c><00:04:57.360><c> inicial</c><00:04:57.720><c> na</c>
+
+00:04:57.909 --> 00:04:57.919 align:start position:0%
+pode dar um pontapé inicial na
+ 
+
+00:04:57.919 --> 00:04:59.790 align:start position:0%
+pode dar um pontapé inicial na
+investigação<00:04:58.440><c> do</c><00:04:58.639><c> DevOps</c><00:04:59.080><c> agent</c><00:04:59.440><c> antes</c><00:04:59.680><c> que</c>
+
+00:04:59.790 --> 00:04:59.800 align:start position:0%
+investigação do DevOps agent antes que
+ 
+
+00:04:59.800 --> 00:05:01.629 align:start position:0%
+investigação do DevOps agent antes que
+as<00:04:59.919><c> coisas</c><00:05:00.160><c> piorem.</c><00:05:00.919><c> E</c><00:05:01.039><c> já</c><00:05:01.199><c> que</c><00:05:01.360><c> estamos</c>
+
+00:05:01.629 --> 00:05:01.639 align:start position:0%
+as coisas piorem. E já que estamos
+ 
+
+00:05:01.639 --> 00:05:03.670 align:start position:0%
+as coisas piorem. E já que estamos
+falando<00:05:02.000><c> em</c><00:05:02.199><c> dar</c><00:05:02.400><c> autonomia</c><00:05:03.000><c> pro</c><00:05:03.240><c> agent</c>
+
+00:05:03.670 --> 00:05:03.680 align:start position:0%
+falando em dar autonomia pro agent
+ 
+
+00:05:03.680 --> 00:05:05.790 align:start position:0%
+falando em dar autonomia pro agent
+atuar,<00:05:04.320><c> precisamos</c><00:05:04.800><c> garantir</c><00:05:05.160><c> a</c><00:05:05.360><c> segurança</c>
+
+00:05:05.790 --> 00:05:05.800 align:start position:0%
+atuar, precisamos garantir a segurança
+ 
+
+00:05:05.800 --> 00:05:08.510 align:start position:0%
+atuar, precisamos garantir a segurança
+das<00:05:06.039><c> operações</c><00:05:07.000><c> através</c><00:05:07.440><c> do</c><00:05:07.720><c> isolamento</c><00:05:08.280><c> de</c>
+
+00:05:08.510 --> 00:05:08.520 align:start position:0%
+das operações através do isolamento de
+ 
+
+00:05:08.520 --> 00:05:11.469 align:start position:0%
+das operações através do isolamento de
+ambientes<00:05:09.080><c> com</c><00:05:09.240><c> os</c><00:05:09.440><c> agent</c><00:05:09.800><c> spaces.</c><00:05:10.919><c> O</c><00:05:11.120><c> ponto</c>
+
+00:05:11.469 --> 00:05:11.479 align:start position:0%
+ambientes com os agent spaces. O ponto
+ 
+
+00:05:11.479 --> 00:05:14.070 align:start position:0%
+ambientes com os agent spaces. O ponto
+crucial<00:05:12.039><c> de</c><00:05:12.280><c> qualquer</c><00:05:12.800><c> automação</c><00:05:13.400><c> é</c><00:05:13.600><c> manter</c><00:05:13.919><c> o</c>
+
+00:05:14.070 --> 00:05:14.080 align:start position:0%
+crucial de qualquer automação é manter o
+ 
+
+00:05:14.080 --> 00:05:16.590 align:start position:0%
+crucial de qualquer automação é manter o
+controle.<00:05:14.880><c> Pensem</c><00:05:15.199><c> numant</c><00:05:16.000><c> space</c><00:05:16.320><c> como</c><00:05:16.479><c> se</c>
+
+00:05:16.590 --> 00:05:16.600 align:start position:0%
+controle. Pensem numant space como se
+ 
+
+00:05:16.600 --> 00:05:18.590 align:start position:0%
+controle. Pensem numant space como se
+fosse<00:05:16.800><c> uma</c><00:05:16.960><c> sala</c><00:05:17.240><c> limpa</c><00:05:17.560><c> de</c><00:05:17.720><c> laboratório,</c>
+
+00:05:18.590 --> 00:05:18.600 align:start position:0%
+fosse uma sala limpa de laboratório,
+ 
+
+00:05:18.600 --> 00:05:20.990 align:start position:0%
+fosse uma sala limpa de laboratório,
+extremamente<00:05:19.280><c> controlada.</c><00:05:20.120><c> É</c><00:05:20.280><c> um</c><00:05:20.440><c> contêiner</c>
+
+00:05:20.990 --> 00:05:21.000 align:start position:0%
+extremamente controlada. É um contêiner
+ 
+
+00:05:21.000 --> 00:05:23.110 align:start position:0%
+extremamente controlada. É um contêiner
+lógico,<00:05:21.520><c> rígido,</c><00:05:21.960><c> que</c><00:05:22.120><c> define</c><00:05:22.440><c> com</c><00:05:22.639><c> precisão</c>
+
+00:05:23.110 --> 00:05:23.120 align:start position:0%
+lógico, rígido, que define com precisão
+ 
+
+00:05:23.120 --> 00:05:25.749 align:start position:0%
+lógico, rígido, que define com precisão
+quais<00:05:23.479><c> contas</c><00:05:23.759><c> da</c><00:05:23.919><c> AWS,</c><00:05:24.880><c> ferramentas</c><00:05:25.560><c> e</c>
+
+00:05:25.749 --> 00:05:25.759 align:start position:0%
+quais contas da AWS, ferramentas e
+ 
+
+00:05:25.759 --> 00:05:27.870 align:start position:0%
+quais contas da AWS, ferramentas e
+pedaços<00:05:26.199><c> da</c><00:05:26.360><c> infraestrutura</c><00:05:27.240><c> aquele</c><00:05:27.560><c> agente</c>
+
+00:05:27.870 --> 00:05:27.880 align:start position:0%
+pedaços da infraestrutura aquele agente
+ 
+
+00:05:27.880 --> 00:05:29.629 align:start position:0%
+pedaços da infraestrutura aquele agente
+tem<00:05:28.039><c> permissão</c><00:05:28.400><c> para</c><00:05:28.560><c> acessar.</c><00:05:29.360><c> Ele</c>
+
+00:05:29.629 --> 00:05:29.639 align:start position:0%
+tem permissão para acessar. Ele
+ 
+
+00:05:29.639 --> 00:05:31.670 align:start position:0%
+tem permissão para acessar. Ele
+literalmente<00:05:30.440><c> nunca</c><00:05:30.800><c> vai</c><00:05:31.000><c> investigar</c><00:05:31.440><c> além</c>
+
+00:05:31.670 --> 00:05:31.680 align:start position:0%
+literalmente nunca vai investigar além
+ 
+
+00:05:31.680 --> 00:05:33.710 align:start position:0%
+literalmente nunca vai investigar além
+do<00:05:31.880><c> escopo</c><00:05:32.199><c> que</c><00:05:32.319><c> foi</c><00:05:32.440><c> delimitado</c><00:05:32.919><c> ali</c><00:05:33.120><c> dentro.</c>
+
+00:05:33.710 --> 00:05:33.720 align:start position:0%
+do escopo que foi delimitado ali dentro.
+ 
+
+00:05:33.720 --> 00:05:35.189 align:start position:0%
+do escopo que foi delimitado ali dentro.
+E<00:05:33.840><c> por</c><00:05:33.960><c> que</c><00:05:34.120><c> seria</c><00:05:34.400><c> necessário</c><00:05:34.880><c> criar</c>
+
+00:05:35.189 --> 00:05:35.199 align:start position:0%
+E por que seria necessário criar
+ 
+
+00:05:35.199 --> 00:05:38.070 align:start position:0%
+E por que seria necessário criar
+múltiplos<00:05:35.800><c> agent</c><00:05:36.199><c> spaces?</c><00:05:37.000><c> Bem,</c><00:05:37.520><c> operações</c>
+
+00:05:38.070 --> 00:05:38.080 align:start position:0%
+múltiplos agent spaces? Bem, operações
+ 
+
+00:05:38.080 --> 00:05:40.070 align:start position:0%
+múltiplos agent spaces? Bem, operações
+modernas<00:05:38.479><c> são</c><00:05:38.680><c> complexas</c><00:05:39.160><c> para</c><00:05:39.319><c> caramba.</c><00:05:39.960><c> É</c>
+
+00:05:40.070 --> 00:05:40.080 align:start position:0%
+modernas são complexas para caramba. É
+ 
+
+00:05:40.080 --> 00:05:42.070 align:start position:0%
+modernas são complexas para caramba. É
+uma<00:05:40.240><c> prática</c><00:05:40.759><c> altamente</c><00:05:41.400><c> recomendada</c>
+
+00:05:42.070 --> 00:05:42.080 align:start position:0%
+uma prática altamente recomendada
+ 
+
+00:05:42.080 --> 00:05:43.749 align:start position:0%
+uma prática altamente recomendada
+separar<00:05:42.479><c> esses</c><00:05:42.800><c> espaços</c><00:05:43.240><c> para</c><00:05:43.360><c> evitar</c>
+
+00:05:43.749 --> 00:05:43.759 align:start position:0%
+separar esses espaços para evitar
+ 
+
+00:05:43.759 --> 00:05:46.070 align:start position:0%
+separar esses espaços para evitar
+qualquer<00:05:44.240><c> tipo</c><00:05:44.440><c> de</c><00:05:44.600><c> contaminação</c><00:05:45.199><c> acidental.</c>
+
+00:05:46.070 --> 00:05:46.080 align:start position:0%
+qualquer tipo de contaminação acidental.
+ 
+
+00:05:46.080 --> 00:05:47.950 align:start position:0%
+qualquer tipo de contaminação acidental.
+Manter<00:05:46.360><c> a</c><00:05:46.479><c> produção</c><00:05:46.880><c> isolada</c><00:05:47.319><c> do</c><00:05:47.479><c> ambiente</c><00:05:47.800><c> de</c>
+
+00:05:47.950 --> 00:05:47.960 align:start position:0%
+Manter a produção isolada do ambiente de
+ 
+
+00:05:47.960 --> 00:05:50.189 align:start position:0%
+Manter a produção isolada do ambiente de
+desenvolvimento<00:05:48.680><c> é</c><00:05:48.840><c> o</c><00:05:48.960><c> básico,</c><00:05:49.400><c> claro.</c><00:05:50.080><c> Mas</c>
+
+00:05:50.189 --> 00:05:50.199 align:start position:0%
+desenvolvimento é o básico, claro. Mas
+ 
+
+00:05:50.199 --> 00:05:51.909 align:start position:0%
+desenvolvimento é o básico, claro. Mas
+além<00:05:50.440><c> disso,</c><00:05:50.720><c> pode</c><00:05:50.919><c> ser</c><00:05:51.039><c> preciso</c><00:05:51.360><c> separar</c><00:05:51.720><c> por</c>
+
+00:05:51.909 --> 00:05:51.919 align:start position:0%
+além disso, pode ser preciso separar por
+ 
+
+00:05:51.919 --> 00:05:54.189 align:start position:0%
+além disso, pode ser preciso separar por
+equipes,<00:05:52.400><c> definir</c><00:05:52.840><c> limites</c><00:05:53.280><c> de</c><00:05:53.440><c> serviços</c><00:05:54.039><c> ou</c>
+
+00:05:54.189 --> 00:05:54.199 align:start position:0%
+equipes, definir limites de serviços ou
+ 
+
+00:05:54.199 --> 00:05:56.070 align:start position:0%
+equipes, definir limites de serviços ou
+atender<00:05:54.479><c> a</c><00:05:54.639><c> requisitos</c><00:05:55.199><c> super</c><00:05:55.520><c> rigorosos</c><00:05:55.919><c> de</c>
+
+00:05:56.070 --> 00:05:56.080 align:start position:0%
+atender a requisitos super rigorosos de
+ 
+
+00:05:56.080 --> 00:05:57.830 align:start position:0%
+atender a requisitos super rigorosos de
+conformidade,<00:05:56.880><c> onde</c><00:05:57.199><c> certos</c><00:05:57.560><c> dados</c>
+
+00:05:57.830 --> 00:05:57.840 align:start position:0%
+conformidade, onde certos dados
+ 
+
+00:05:57.840 --> 00:05:59.590 align:start position:0%
+conformidade, onde certos dados
+sensíveis<00:05:58.360><c> precisam</c><00:05:58.720><c> ficar</c><00:05:59.039><c> totalmente</c>
+
+00:05:59.590 --> 00:05:59.600 align:start position:0%
+sensíveis precisam ficar totalmente
+ 
+
+00:05:59.600 --> 00:06:01.990 align:start position:0%
+sensíveis precisam ficar totalmente
+isolados.<00:06:00.639><c> Essas</c><00:06:00.919><c> barreiras</c><00:06:01.319><c> de</c><00:06:01.440><c> isolamento</c>
+
+00:06:01.990 --> 00:06:02.000 align:start position:0%
+isolados. Essas barreiras de isolamento
+ 
+
+00:06:02.000 --> 00:06:03.710 align:start position:0%
+isolados. Essas barreiras de isolamento
+funcionam<00:06:02.400><c> em</c><00:06:02.600><c> várias</c><00:06:03.000><c> camadas</c><00:06:03.479><c> de</c>
+
+00:06:03.710 --> 00:06:03.720 align:start position:0%
+funcionam em várias camadas de
+ 
+
+00:06:03.720 --> 00:06:06.230 align:start position:0%
+funcionam em várias camadas de
+segurança.<00:06:04.840><c> Além</c><00:06:05.000><c> daquele</c><00:06:05.360><c> bloqueio</c><00:06:05.960><c> óbvio</c>
+
+00:06:06.230 --> 00:06:06.240 align:start position:0%
+segurança. Além daquele bloqueio óbvio
+ 
+
+00:06:06.240 --> 00:06:08.710 align:start position:0%
+segurança. Além daquele bloqueio óbvio
+da<00:06:06.479><c> conta</c><00:06:06.840><c> WS</c><00:06:07.560><c> e</c><00:06:07.720><c> de</c><00:06:07.880><c> restringir</c><00:06:08.400><c> quais</c>
+
+00:06:08.710 --> 00:06:08.720 align:start position:0%
+da conta WS e de restringir quais
+ 
+
+00:06:08.720 --> 00:06:11.270 align:start position:0%
+da conta WS e de restringir quais
+usuários<00:06:09.280><c> podem</c><00:06:09.680><c> interagir</c><00:06:10.120><c> com</c><00:06:10.240><c> o</c><00:06:10.400><c> agente,</c>
+
+00:06:11.270 --> 00:06:11.280 align:start position:0%
+usuários podem interagir com o agente,
+ 
+
+00:06:11.280 --> 00:06:13.230 align:start position:0%
+usuários podem interagir com o agente,
+os<00:06:11.520><c> próprios</c><00:06:11.880><c> dados</c><00:06:12.319><c> gerados</c><00:06:12.880><c> pelas</c>
+
+00:06:13.230 --> 00:06:13.240 align:start position:0%
+os próprios dados gerados pelas
+ 
+
+00:06:13.240 --> 00:06:15.270 align:start position:0%
+os próprios dados gerados pelas
+investigações<00:06:13.880><c> e</c><00:06:14.039><c> os</c><00:06:14.199><c> históricos</c><00:06:14.720><c> de</c><00:06:14.919><c> chat</c>
+
+00:06:15.270 --> 00:06:15.280 align:start position:0%
+investigações e os históricos de chat
+ 
+
+00:06:15.280 --> 00:06:17.309 align:start position:0%
+investigações e os históricos de chat
+ficam<00:06:15.759><c> compartimentados.</c>
+
+00:06:17.309 --> 00:06:17.319 align:start position:0%
+ficam compartimentados.
+ 
+
+00:06:17.319 --> 00:06:19.270 align:start position:0%
+ficam compartimentados.
+Em<00:06:17.440><c> resumo,</c><00:06:17.800><c> o</c><00:06:17.919><c> que</c><00:06:18.039><c> acontece</c><00:06:18.440><c> no</c><00:06:18.639><c> Agent</c><00:06:18.919><c> Space</c>
+
+00:06:19.270 --> 00:06:19.280 align:start position:0%
+Em resumo, o que acontece no Agent Space
+ 
+
+00:06:19.280 --> 00:06:21.270 align:start position:0%
+Em resumo, o que acontece no Agent Space
+fica<00:06:19.479><c> naquele</c><00:06:19.840><c> Agent</c><00:06:20.080><c> Space.</c><00:06:20.759><c> Isso</c><00:06:20.960><c> garante</c>
+
+00:06:21.270 --> 00:06:21.280 align:start position:0%
+fica naquele Agent Space. Isso garante
+ 
+
+00:06:21.280 --> 00:06:23.070 align:start position:0%
+fica naquele Agent Space. Isso garante
+que<00:06:21.360><c> as</c><00:06:21.520><c> informações</c><00:06:21.960><c> operacionais</c><00:06:22.560><c> críticas</c>
+
+00:06:23.070 --> 00:06:23.080 align:start position:0%
+que as informações operacionais críticas
+ 
+
+00:06:23.080 --> 00:06:25.189 align:start position:0%
+que as informações operacionais críticas
+continuem<00:06:23.680><c> seguras</c><00:06:24.080><c> e</c><00:06:24.280><c> não</c><00:06:24.479><c> caiam</c><00:06:24.800><c> em</c><00:06:24.919><c> mãos</c>
+
+00:06:25.189 --> 00:06:25.199 align:start position:0%
+continuem seguras e não caiam em mãos
+ 
+
+00:06:25.199 --> 00:06:27.909 align:start position:0%
+continuem seguras e não caiam em mãos
+erradas.<00:06:26.280><c> Certo?</c><00:06:26.919><c> Agora</c><00:06:27.160><c> que</c><00:06:27.280><c> a</c><00:06:27.400><c> casa</c><00:06:27.639><c> está</c>
+
+00:06:27.909 --> 00:06:27.919 align:start position:0%
+erradas. Certo? Agora que a casa está
+ 
+
+00:06:27.919 --> 00:06:30.469 align:start position:0%
+erradas. Certo? Agora que a casa está
+organizada<00:06:28.560><c> e</c><00:06:28.800><c> segura,</c><00:06:29.479><c> vamos</c><00:06:29.680><c> juntar</c><00:06:30.160><c> todos</c>
+
+00:06:30.469 --> 00:06:30.479 align:start position:0%
+organizada e segura, vamos juntar todos
+ 
+
+00:06:30.479 --> 00:06:32.390 align:start position:0%
+organizada e segura, vamos juntar todos
+esses<00:06:30.800><c> conceitos</c><00:06:31.280><c> e</c><00:06:31.440><c> ver</c><00:06:31.560><c> a</c><00:06:31.800><c> mágica</c><00:06:32.160><c> da</c>
+
+00:06:32.390 --> 00:06:32.400 align:start position:0%
+esses conceitos e ver a mágica da
+ 
+
+00:06:32.400 --> 00:06:34.749 align:start position:0%
+esses conceitos e ver a mágica da
+resolução<00:06:33.000><c> autônoma</c><00:06:33.440><c> de</c><00:06:33.639><c> incidentes</c><00:06:34.400><c> com</c><00:06:34.599><c> o</c>
+
+00:06:34.749 --> 00:06:34.759 align:start position:0%
+resolução autônoma de incidentes com o
+ 
+
+00:06:34.759 --> 00:06:37.309 align:start position:0%
+resolução autônoma de incidentes com o
+DevOps<00:06:35.199><c> agent</c><00:06:35.560><c> em</c><00:06:35.720><c> ação.</c><00:06:36.560><c> Antes</c><00:06:36.759><c> de</c><00:06:36.960><c> vermos</c>
+
+00:06:37.309 --> 00:06:37.319 align:start position:0%
+DevOps agent em ação. Antes de vermos
+ 
+
+00:06:37.319 --> 00:06:39.469 align:start position:0%
+DevOps agent em ação. Antes de vermos
+isso<00:06:37.599><c> rodando,</c><00:06:38.160><c> só</c><00:06:38.319><c> uma</c><00:06:38.520><c> rápida</c><00:06:38.880><c> revisão</c><00:06:39.240><c> dos</c>
+
+00:06:39.469 --> 00:06:39.479 align:start position:0%
+isso rodando, só uma rápida revisão dos
+ 
+
+00:06:39.479 --> 00:06:41.749 align:start position:0%
+isso rodando, só uma rápida revisão dos
+pré-requisitos<00:06:40.160><c> técnicos.</c><00:06:41.000><c> A</c><00:06:41.120><c> peça</c><00:06:41.440><c> chave</c>
+
+00:06:41.749 --> 00:06:41.759 align:start position:0%
+pré-requisitos técnicos. A peça chave
+ 
+
+00:06:41.759 --> 00:06:44.029 align:start position:0%
+pré-requisitos técnicos. A peça chave
+aqui<00:06:42.039><c> é</c><00:06:42.240><c> usar</c><00:06:42.479><c> algo</c><00:06:42.759><c> como</c><00:06:43.039><c> o</c><00:06:43.360><c> Agent</c><00:06:43.720><c> Force</c>
+
+00:06:44.029 --> 00:06:44.039 align:start position:0%
+aqui é usar algo como o Agent Force
+ 
+
+00:06:44.039 --> 00:06:46.670 align:start position:0%
+aqui é usar algo como o Agent Force
+Service<00:06:44.599><c> com</c><00:06:44.880><c> MCP</c><00:06:45.360><c> Server</c><00:06:45.720><c> configurado,</c><00:06:46.520><c> que</c>
+
+00:06:46.670 --> 00:06:46.680 align:start position:0%
+Service com MCP Server configurado, que
+ 
+
+00:06:46.680 --> 00:06:49.029 align:start position:0%
+Service com MCP Server configurado, que
+seria<00:06:46.919><c> o</c><00:06:47.080><c> Moral</c><00:06:47.400><c> Context</c><00:06:47.800><c> Protocol.</c><00:06:48.639><c> Ele</c><00:06:48.759><c> atua</c>
+
+00:06:49.029 --> 00:06:49.039 align:start position:0%
+seria o Moral Context Protocol. Ele atua
+ 
+
+00:06:49.039 --> 00:06:51.629 align:start position:0%
+seria o Moral Context Protocol. Ele atua
+como<00:06:49.240><c> uma</c><00:06:49.440><c> ponte.</c><00:06:50.199><c> Com</c><00:06:50.400><c> ele</c><00:06:50.919><c> mais</c><00:06:51.080><c> o</c><00:06:51.199><c> DevOps</c>
+
+00:06:51.629 --> 00:06:51.639 align:start position:0%
+como uma ponte. Com ele mais o DevOps
+ 
+
+00:06:51.639 --> 00:06:53.909 align:start position:0%
+como uma ponte. Com ele mais o DevOps
+Agent<00:06:51.960><c> Space</c><00:06:52.280><c> configurado,</c><00:06:53.080><c> o</c><00:06:53.240><c> Cloud</c><00:06:53.599><c> Watch</c><00:06:53.800><c> e</c>
+
+00:06:53.909 --> 00:06:53.919 align:start position:0%
+Agent Space configurado, o Cloud Watch e
+ 
+
+00:06:53.919 --> 00:06:55.909 align:start position:0%
+Agent Space configurado, o Cloud Watch e
+o<00:06:54.000><c> Cloud</c><00:06:54.360><c> Trail</c><00:06:54.639><c> ativados</c><00:06:55.440><c> e</c><00:06:55.599><c> a</c><00:06:55.680><c> nossa</c>
+
+00:06:55.909 --> 00:06:55.919 align:start position:0%
+o Cloud Trail ativados e a nossa
+ 
+
+00:06:55.919 --> 00:06:58.189 align:start position:0%
+o Cloud Trail ativados e a nossa
+infraestrutura<00:06:56.680><c> toda</c><00:06:56.919><c> com</c><00:06:57.120><c> tags.</c><00:06:57.800><c> O</c><00:06:57.919><c> agente</c>
+
+00:06:58.189 --> 00:06:58.199 align:start position:0%
+infraestrutura toda com tags. O agente
+ 
+
+00:06:58.199 --> 00:06:59.950 align:start position:0%
+infraestrutura toda com tags. O agente
+ganha<00:06:58.400><c> a</c><00:06:58.520><c> capacidade</c><00:06:59.039><c> de</c><00:06:59.199><c> ler</c><00:06:59.360><c> os</c><00:06:59.479><c> chamados</c><00:06:59.800><c> de</c>
+
+00:06:59.950 --> 00:06:59.960 align:start position:0%
+ganha a capacidade de ler os chamados de
+ 
+
+00:06:59.960 --> 00:07:02.070 align:start position:0%
+ganha a capacidade de ler os chamados de
+suporte<00:07:00.400><c> e</c><00:07:00.560><c> buscar</c><00:07:00.919><c> diretamente</c><00:07:01.440><c> os</c><00:07:01.599><c> dados</c><00:07:01.879><c> da</c>
+
+00:07:02.070 --> 00:07:02.080 align:start position:0%
+suporte e buscar diretamente os dados da
+ 
+
+00:07:02.080 --> 00:07:04.309 align:start position:0%
+suporte e buscar diretamente os dados da
+infraestrutura.<00:07:03.319><c> Imagina</c><00:07:03.639><c> a</c><00:07:03.759><c> cena,</c><00:07:04.120><c> um</c>
+
+00:07:04.309 --> 00:07:04.319 align:start position:0%
+infraestrutura. Imagina a cena, um
+ 
+
+00:07:04.319 --> 00:07:06.309 align:start position:0%
+infraestrutura. Imagina a cena, um
+cliente<00:07:04.759><c> abre</c><00:07:05.000><c> um</c><00:07:05.160><c> chamado</c><00:07:05.639><c> dizendo</c><00:07:06.039><c> que</c><00:07:06.199><c> a</c>
+
+00:07:06.309 --> 00:07:06.319 align:start position:0%
+cliente abre um chamado dizendo que a
+ 
+
+00:07:06.319 --> 00:07:09.390 align:start position:0%
+cliente abre um chamado dizendo que a
+aplicação<00:07:06.840><c> caiu.</c><00:07:07.840><c> Automaticamente</c><00:07:08.720><c> o</c><00:07:08.879><c> fluxo</c>
+
+00:07:09.390 --> 00:07:09.400 align:start position:0%
+aplicação caiu. Automaticamente o fluxo
+ 
+
+00:07:09.400 --> 00:07:11.670 align:start position:0%
+aplicação caiu. Automaticamente o fluxo
+dispara<00:07:09.800><c> e</c><00:07:09.960><c> o</c><00:07:10.080><c> devops</c><00:07:10.759><c> agent</c><00:07:11.160><c> recupera</c><00:07:11.520><c> os</c>
+
+00:07:11.670 --> 00:07:11.680 align:start position:0%
+dispara e o devops agent recupera os
+ 
+
+00:07:11.680 --> 00:07:14.350 align:start position:0%
+dispara e o devops agent recupera os
+detalhes<00:07:12.080><c> do</c><00:07:12.280><c> caso.</c><00:07:13.080><c> Aí,</c><00:07:13.520><c> graças</c><00:07:13.879><c> às</c><00:07:14.080><c> nossas</c>
+
+00:07:14.350 --> 00:07:14.360 align:start position:0%
+detalhes do caso. Aí, graças às nossas
+ 
+
+00:07:14.360 --> 00:07:16.710 align:start position:0%
+detalhes do caso. Aí, graças às nossas
+tags<00:07:14.720><c> bem</c><00:07:14.960><c> feitas,</c><00:07:15.560><c> ele</c><00:07:15.759><c> faz</c><00:07:15.919><c> a</c><00:07:16.080><c> descoberta</c><00:07:16.520><c> da</c>
+
+00:07:16.710 --> 00:07:16.720 align:start position:0%
+tags bem feitas, ele faz a descoberta da
+ 
+
+00:07:16.720 --> 00:07:19.309 align:start position:0%
+tags bem feitas, ele faz a descoberta da
+topologia<00:07:17.360><c> e</c><00:07:17.560><c> entende</c><00:07:17.919><c> arquitetura.</c><00:07:19.000><c> E</c><00:07:19.120><c> ele</c>
+
+00:07:19.309 --> 00:07:19.319 align:start position:0%
+topologia e entende arquitetura. E ele
+ 
+
+00:07:19.319 --> 00:07:21.230 align:start position:0%
+topologia e entende arquitetura. E ele
+vai<00:07:19.560><c> direto</c><00:07:19.879><c> analisar</c><00:07:20.240><c> as</c><00:07:20.360><c> métricas</c><00:07:20.759><c> do</c><00:07:20.879><c> Cloud</c>
+
+00:07:21.230 --> 00:07:21.240 align:start position:0%
+vai direto analisar as métricas do Cloud
+ 
+
+00:07:21.240 --> 00:07:22.950 align:start position:0%
+vai direto analisar as métricas do Cloud
+Watch<00:07:21.639><c> e</c><00:07:21.840><c> vê,</c><00:07:22.080><c> por</c><00:07:22.240><c> exemplo,</c><00:07:22.720><c> que</c><00:07:22.840><c> as</c>
+
+00:07:22.950 --> 00:07:22.960 align:start position:0%
+Watch e vê, por exemplo, que as
+ 
+
+00:07:22.960 --> 00:07:25.469 align:start position:0%
+Watch e vê, por exemplo, que as
+requisições<00:07:23.720><c> caíram</c><00:07:24.120><c> para</c><00:07:24.360><c> zero.</c><00:07:25.360><c> Na</c>
+
+00:07:25.469 --> 00:07:25.479 align:start position:0%
+requisições caíram para zero. Na
+ 
+
+00:07:25.479 --> 00:07:27.430 align:start position:0%
+requisições caíram para zero. Na
+sequência,<00:07:26.160><c> ele</c><00:07:26.360><c> cruza</c><00:07:26.639><c> essa</c><00:07:26.840><c> informação</c><00:07:27.280><c> com</c>
+
+00:07:27.430 --> 00:07:27.440 align:start position:0%
+sequência, ele cruza essa informação com
+ 
+
+00:07:27.440 --> 00:07:29.710 align:start position:0%
+sequência, ele cruza essa informação com
+os<00:07:27.599><c> eventos</c><00:07:27.919><c> do</c><00:07:28.080><c> Cloud</c><00:07:28.520><c> Trail</c><00:07:29.000><c> e</c><00:07:29.240><c> determina</c><00:07:29.639><c> a</c>
+
+00:07:29.710 --> 00:07:29.720 align:start position:0%
+os eventos do Cloud Trail e determina a
+ 
+
+00:07:29.720 --> 00:07:31.909 align:start position:0%
+os eventos do Cloud Trail e determina a
+causa<00:07:30.039><c> raiz.</c><00:07:30.759><c> Digamos</c><00:07:31.160><c> que</c><00:07:31.319><c> alguém</c>
+
+00:07:31.909 --> 00:07:31.919 align:start position:0%
+causa raiz. Digamos que alguém
+ 
+
+00:07:31.919 --> 00:07:33.950 align:start position:0%
+causa raiz. Digamos que alguém
+acidentalmente<00:07:32.840><c> encerrou</c><00:07:33.240><c> a</c><00:07:33.400><c> instância</c><00:07:33.720><c> do</c>
+
+00:07:33.950 --> 00:07:33.960 align:start position:0%
+acidentalmente encerrou a instância do
+ 
+
+00:07:33.960 --> 00:07:36.550 align:start position:0%
+acidentalmente encerrou a instância do
+S2.<00:07:35.120><c> Ele</c><00:07:35.360><c> conclui</c><00:07:35.759><c> essa</c><00:07:35.960><c> investigação</c>
+
+00:07:36.550 --> 00:07:36.560 align:start position:0%
+S2. Ele conclui essa investigação
+ 
+
+00:07:36.560 --> 00:07:39.309 align:start position:0%
+S2. Ele conclui essa investigação
+complexa<00:07:37.240><c> passo</c><00:07:37.560><c> a</c><00:07:37.759><c> passo,</c><00:07:38.160><c> em</c><00:07:38.400><c> minutos,</c><00:07:39.080><c> sem</c>
+
+00:07:39.309 --> 00:07:39.319 align:start position:0%
+complexa passo a passo, em minutos, sem
+ 
+
+00:07:39.319 --> 00:07:42.189 align:start position:0%
+complexa passo a passo, em minutos, sem
+nenhuma<00:07:40.080><c> intervenção</c><00:07:40.680><c> nossa.</c><00:07:41.440><c> E</c><00:07:41.560><c> o</c><00:07:41.639><c> que</c><00:07:41.800><c> torna</c>
+
+00:07:42.189 --> 00:07:42.199 align:start position:0%
+nenhuma intervenção nossa. E o que torna
+ 
+
+00:07:42.199 --> 00:07:44.589 align:start position:0%
+nenhuma intervenção nossa. E o que torna
+essa<00:07:42.479><c> automação</c><00:07:43.039><c> uma</c><00:07:43.280><c> quebra</c><00:07:43.560><c> de</c><00:07:43.759><c> paradigma</c>
+
+00:07:44.589 --> 00:07:44.599 align:start position:0%
+essa automação uma quebra de paradigma
+ 
+
+00:07:44.599 --> 00:07:46.990 align:start position:0%
+essa automação uma quebra de paradigma
+não<00:07:44.800><c> é</c><00:07:44.919><c> apenas</c><00:07:45.240><c> o</c><00:07:45.360><c> fato</c><00:07:45.520><c> de</c><00:07:45.680><c> achar</c><00:07:45.919><c> o</c><00:07:46.080><c> problema.</c>
+
+00:07:46.990 --> 00:07:47.000 align:start position:0%
+não é apenas o fato de achar o problema.
+ 
+
+00:07:47.000 --> 00:07:49.430 align:start position:0%
+não é apenas o fato de achar o problema.
+O<00:07:47.120><c> agente</c><00:07:47.560><c> não</c><00:07:47.759><c> só</c><00:07:47.960><c> identifica</c><00:07:48.520><c> a</c><00:07:48.680><c> causa</c><00:07:49.000><c> raiz</c>
+
+00:07:49.430 --> 00:07:49.440 align:start position:0%
+O agente não só identifica a causa raiz
+ 
+
+00:07:49.440 --> 00:07:51.270 align:start position:0%
+O agente não só identifica a causa raiz
+e<00:07:49.599><c> publica</c><00:07:50.000><c> todo</c><00:07:50.159><c> o</c><00:07:50.280><c> contexto</c><00:07:50.639><c> técnico</c><00:07:51.080><c> de</c>
+
+00:07:51.270 --> 00:07:51.280 align:start position:0%
+e publica todo o contexto técnico de
+ 
+
+00:07:51.280 --> 00:07:53.430 align:start position:0%
+e publica todo o contexto técnico de
+volta<00:07:51.560><c> no</c><00:07:51.720><c> ticket</c><00:07:52.000><c> de</c><00:07:52.199><c> suporte,</c><00:07:52.879><c> ele</c><00:07:53.039><c> vai</c><00:07:53.240><c> bem</c>
+
+00:07:53.430 --> 00:07:53.440 align:start position:0%
+volta no ticket de suporte, ele vai bem
+ 
+
+00:07:53.440 --> 00:07:55.589 align:start position:0%
+volta no ticket de suporte, ele vai bem
+além.<00:07:54.080><c> Ele</c><00:07:54.240><c> gera</c><00:07:54.479><c> um</c><00:07:54.560><c> plano</c><00:07:54.800><c> de</c><00:07:54.960><c> mitigação</c>
+
+00:07:55.589 --> 00:07:55.599 align:start position:0%
+além. Ele gera um plano de mitigação
+ 
+
+00:07:55.599 --> 00:07:57.950 align:start position:0%
+além. Ele gera um plano de mitigação
+completo,<00:07:56.360><c> dando</c><00:07:56.680><c> instruções</c><00:07:57.240><c> acionáveis</c>
+
+00:07:57.950 --> 00:07:57.960 align:start position:0%
+completo, dando instruções acionáveis
+ 
+
+00:07:57.960 --> 00:08:00.189 align:start position:0%
+completo, dando instruções acionáveis
+passo<00:07:58.240><c> a</c><00:07:58.400><c> passo</c><00:07:58.639><c> para</c><00:07:58.840><c> remediação</c><00:07:59.720><c> e</c><00:07:59.919><c> até</c>
+
+00:08:00.189 --> 00:08:00.199 align:start position:0%
+passo a passo para remediação e até
+ 
+
+00:08:00.199 --> 00:08:02.029 align:start position:0%
+passo a passo para remediação e até
+inclui<00:08:00.520><c> recomendações</c><00:08:01.199><c> arquiteturais</c><00:08:01.919><c> para</c>
+
+00:08:02.029 --> 00:08:02.039 align:start position:0%
+inclui recomendações arquiteturais para
+ 
+
+00:08:02.039 --> 00:08:04.110 align:start position:0%
+inclui recomendações arquiteturais para
+prevenir<00:08:02.400><c> que</c><00:08:02.479><c> a</c><00:08:02.560><c> queda</c><00:08:02.879><c> volte</c><00:08:03.159><c> a</c><00:08:03.280><c> acontecer.</c>
+
+00:08:04.110 --> 00:08:04.120 align:start position:0%
+prevenir que a queda volte a acontecer.
+ 
+
+00:08:04.120 --> 00:08:06.149 align:start position:0%
+prevenir que a queda volte a acontecer.
+É<00:08:04.280><c> ter</c><00:08:04.400><c> um</c><00:08:04.479><c> engenheiro</c><00:08:04.960><c> assistente</c><00:08:05.599><c> altamente</c>
+
+00:08:06.149 --> 00:08:06.159 align:start position:0%
+É ter um engenheiro assistente altamente
+ 
+
+00:08:06.159 --> 00:08:08.270 align:start position:0%
+É ter um engenheiro assistente altamente
+capacitado<00:08:06.759><c> trabalhando</c><00:08:07.240><c> no</c><00:08:07.479><c> problema.</c><00:08:08.199><c> O</c>
+
+00:08:08.270 --> 00:08:08.280 align:start position:0%
+capacitado trabalhando no problema. O
+ 
+
+00:08:08.280 --> 00:08:10.390 align:start position:0%
+capacitado trabalhando no problema. O
+que<00:08:08.440><c> nos</c><00:08:08.599><c> deixa</c><00:08:08.879><c> com</c><00:08:09.039><c> este</c><00:08:09.280><c> pensamento</c><00:08:09.919><c> super</c>
+
+00:08:10.390 --> 00:08:10.400 align:start position:0%
+que nos deixa com este pensamento super
+ 
+
+00:08:10.400 --> 00:08:12.390 align:start position:0%
+que nos deixa com este pensamento super
+provocador<00:08:11.039><c> para</c><00:08:11.199><c> encerrar.</c><00:08:12.039><c> Se</c><00:08:12.120><c> a</c><00:08:12.240><c> gente</c>
+
+00:08:12.390 --> 00:08:12.400 align:start position:0%
+provocador para encerrar. Se a gente
+ 
+
+00:08:12.400 --> 00:08:14.550 align:start position:0%
+provocador para encerrar. Se a gente
+automatizar<00:08:13.080><c> de</c><00:08:13.280><c> vez</c><00:08:13.479><c> essa</c><00:08:13.720><c> busca</c><00:08:14.000><c> manual</c><00:08:14.360><c> e</c>
+
+00:08:14.550 --> 00:08:14.560 align:start position:0%
+automatizar de vez essa busca manual e
+ 
+
+00:08:14.560 --> 00:08:16.629 align:start position:0%
+automatizar de vez essa busca manual e
+exaustiva<00:08:15.120><c> por</c><00:08:15.280><c> logs,</c><00:08:16.039><c> como</c><00:08:16.319><c> vamos</c>
+
+00:08:16.629 --> 00:08:16.639 align:start position:0%
+exaustiva por logs, como vamos
+ 
+
+00:08:16.639 --> 00:08:18.749 align:start position:0%
+exaustiva por logs, como vamos
+reinventar<00:08:17.199><c> nossa</c><00:08:17.440><c> rotina</c><00:08:17.800><c> diária?</c><00:08:18.560><c> Quando</c>
+
+00:08:18.749 --> 00:08:18.759 align:start position:0%
+reinventar nossa rotina diária? Quando
+ 
+
+00:08:18.759 --> 00:08:20.430 align:start position:0%
+reinventar nossa rotina diária? Quando
+não<00:08:18.919><c> precisamos</c><00:08:19.360><c> passar</c><00:08:19.680><c> o</c><00:08:19.840><c> dia</c><00:08:20.039><c> inteiro</c>
+
+00:08:20.430 --> 00:08:20.440 align:start position:0%
+não precisamos passar o dia inteiro
+ 
+
+00:08:20.440 --> 00:08:22.469 align:start position:0%
+não precisamos passar o dia inteiro
+apagando<00:08:20.960><c> incêndios,</c><00:08:21.759><c> sobra</c><00:08:22.120><c> tempo</c><00:08:22.319><c> e</c>
+
+00:08:22.469 --> 00:08:22.479 align:start position:0%
+apagando incêndios, sobra tempo e
+ 
+
+00:08:22.479 --> 00:08:24.390 align:start position:0%
+apagando incêndios, sobra tempo e
+energia<00:08:22.919><c> para</c><00:08:23.080><c> focar</c><00:08:23.400><c> de</c><00:08:23.599><c> verdade</c><00:08:24.080><c> em</c>
+
+00:08:24.390 --> 00:08:24.400 align:start position:0%
+energia para focar de verdade em
+ 
+
+00:08:24.400 --> 00:08:26.469 align:start position:0%
+energia para focar de verdade em
+resiliência<00:08:25.080><c> e</c><00:08:25.319><c> melhorias</c><00:08:25.840><c> sistêmicas</c>
+
+00:08:26.469 --> 00:08:26.479 align:start position:0%
+resiliência e melhorias sistêmicas
+ 
+
+00:08:26.479 --> 00:08:28.950 align:start position:0%
+resiliência e melhorias sistêmicas
+reais.<00:08:27.479><c> Lembrem-se,</c><00:08:28.280><c> a</c><00:08:28.479><c> verdadeira</c>
+
+00:08:28.950 --> 00:08:28.960 align:start position:0%
+reais. Lembrem-se, a verdadeira
+ 
+
+00:08:28.960 --> 00:08:31.390 align:start position:0%
+reais. Lembrem-se, a verdadeira
+automação<00:08:29.759><c> não</c><00:08:30.039><c> substitui</c><00:08:30.560><c> o</c><00:08:30.680><c> nosso</c><00:08:30.879><c> talento,</c>
+
+00:08:31.390 --> 00:08:31.400 align:start position:0%
+automação não substitui o nosso talento,
+ 
+
+00:08:31.400 --> 00:08:33.509 align:start position:0%
+automação não substitui o nosso talento,
+ela<00:08:31.599><c> o</c><00:08:31.759><c> liberta.</c><00:08:32.719><c> Muito</c><00:08:33.000><c> obrigado</c><00:08:33.320><c> por</c>
+
+00:08:33.509 --> 00:08:33.519 align:start position:0%
+ela o liberta. Muito obrigado por
+ 
+
+00:08:33.519 --> 00:08:35.310 align:start position:0%
+ela o liberta. Muito obrigado por
+acompanharem<00:08:34.120><c> este</c><00:08:34.360><c> tutorial.</c><00:08:34.959><c> Até</c><00:08:35.200><c> a</c>
+
+00:08:35.310 --> 00:08:35.320 align:start position:0%
+acompanharem este tutorial. Até a
+ 
+
+00:08:35.320 --> 00:08:38.320 align:start position:0%
+acompanharem este tutorial. Até a
+próxima.
+

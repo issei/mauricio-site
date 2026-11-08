@@ -2,7 +2,9 @@
 id: _4DuEj9NQ6s
 slug: aws-glue-salesforce-guia-de-dados
 status: ficha
-temas: [salesforce-e-vendas, cloud-e-confiabilidade]
+temas:
+  - salesforce-e-vendas
+  - cloud-e-confiabilidade
 youtube:
   titulo: AWS Glue & Salesforce  Guia de Dados
   publicado_em: 2025-11-12

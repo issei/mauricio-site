@@ -2,7 +2,8 @@
 id: fGmCZvhdX0w
 slug: o-treinamento-galateia-o-guia-definitivo-para-moldar-o-seu
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: "O Treinamento Galateia: O Guia Definitivo para Moldar o Seu Próprio Potencial"
   publicado_em: 2025-12-07
@@ -40,7 +41,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/fGmCZvhdX0w/maxresdefault.jpg
   visualizacoes: 33
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

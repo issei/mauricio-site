@@ -2,7 +2,8 @@
 id: pEQ_mk7-ynE
 slug: a-ilusao-das-ideias-o-que-a-ciencia-realmente-diz-sobre
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: "A ILUSÃO DAS IDEIAS: O que a Ciência Realmente Diz Sobre Criatividade e Brainstorming"
   publicado_em: 2026-09-01
@@ -57,7 +58,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/pEQ_mk7-ynE/maxresdefault.jpg
   visualizacoes: 34
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

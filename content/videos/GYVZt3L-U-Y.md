@@ -2,7 +2,8 @@
 id: GYVZt3L-U-Y
 slug: da-ideia-ao-app-em-minutos
 status: ficha
-temas: [ferramentas-de-ia]
+temas:
+  - ferramentas-de-ia
 youtube:
   titulo: Da Ideia ao App em Minutos
   publicado_em: 2025-10-28

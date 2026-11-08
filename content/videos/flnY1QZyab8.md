@@ -2,7 +2,8 @@
 id: flnY1QZyab8
 slug: analise-lambda-web-adapter
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: Análise  Lambda Web Adapter
   publicado_em: 2026-04-26

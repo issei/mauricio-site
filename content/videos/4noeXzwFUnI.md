@@ -2,7 +2,8 @@
 id: 4noeXzwFUnI
 slug: ti-de-suporte-a-valor
 status: ficha
-temas: [gestao-e-estrategia]
+temas:
+  - gestao-e-estrategia
 youtube:
   titulo: TI  De Suporte a Valor
   publicado_em: 2026-03-22

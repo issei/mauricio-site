@@ -2,7 +2,9 @@
 id: lEF09tB4BXA
 slug: o-futuro-do-e-commerce-a-nova-arquitetura-do-comercio-com
 status: ficha
-temas: [engenharia-agentica, salesforce-e-vendas]
+temas:
+  - engenharia-agentica
+  - salesforce-e-vendas
 youtube:
   titulo: "O Futuro do E-commerce: A Nova Arquitetura do Comércio com Agentes de IA"
   publicado_em: 2026-04-13

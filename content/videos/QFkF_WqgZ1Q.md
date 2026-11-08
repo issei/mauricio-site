@@ -2,7 +2,8 @@
 id: QFkF_WqgZ1Q
 slug: ia-em-pt-br-a-evolucao
 status: ficha
-temas: [tecnologia-e-cultura]
+temas:
+  - tecnologia-e-cultura
 youtube:
   titulo: IA em PT BR  A Evolução
   publicado_em: 2025-10-29

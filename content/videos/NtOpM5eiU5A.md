@@ -2,7 +2,8 @@
 id: NtOpM5eiU5A
 slug: google-ax-o-como-escalar-milhoes-de-agentes-de-ia
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "Google AX: O Como Escalar Milhões de Agentes de IA"
   publicado_em: 2026-09-24

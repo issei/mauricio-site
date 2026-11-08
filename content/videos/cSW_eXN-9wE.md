@@ -2,7 +2,9 @@
 id: cSW_eXN-9wE
 slug: amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala
 status: ficha
-temas: [engenharia-agentica, cloud-e-confiabilidade]
+temas:
+  - engenharia-agentica
+  - cloud-e-confiabilidade
 youtube:
   titulo: "Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!"
   publicado_em: 2026-09-27
@@ -66,7 +68,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/cSW_eXN-9wE/maxresdefault.jpg
   visualizacoes: 49
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html
     - https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agentcore-get-started-cli.html

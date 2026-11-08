@@ -2,7 +2,8 @@
 id: UxaaQN-csvA
 slug: engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: 'Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção'
   publicado_em: 2026-06-19
@@ -40,7 +41,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/UxaaQN-csvA/maxresdefault.jpg
   visualizacoes: 52
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mauricio.issei.com.br/engenharia-agentes-ia
   coletado_em: 2026-11-07T22:16:07Z

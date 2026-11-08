@@ -2,7 +2,8 @@
 id: zAdmPzMvGZg
 slug: desmistificando-a-api-do-notion-o-guia-essencial-para
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: "DESMISTIFICANDO A API DO NOTION: O Guia Essencial para Automação e Integração"
   publicado_em: 2025-12-15

@@ -2,7 +2,8 @@
 id: RcK7iA2luU4
 slug: o-teatro-da-virtude
 status: ficha
-temas: [gestao-e-estrategia]
+temas:
+  - gestao-e-estrategia
 youtube:
   titulo: O Teatro da Virtude
   publicado_em: 2026-01-29

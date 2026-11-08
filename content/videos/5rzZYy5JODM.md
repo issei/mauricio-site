@@ -2,7 +2,8 @@
 id: 5rzZYy5JODM
 slug: pode-a-inteligencia-artificial-manter-e-depurar-bases-de
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?
   publicado_em: 2026-10-17

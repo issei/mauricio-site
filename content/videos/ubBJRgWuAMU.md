@@ -2,7 +2,8 @@
 id: ubBJRgWuAMU
 slug: 06-a-revelacao-sistemica
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: 06 - A Revelação Sistêmica
   publicado_em: 2026-05-18

@@ -2,7 +2,8 @@
 id: s-VWwbBEv90
 slug: como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI"
   publicado_em: 2026-10-02

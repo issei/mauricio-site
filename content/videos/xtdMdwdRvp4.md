@@ -2,7 +2,8 @@
 id: xtdMdwdRvp4
 slug: computacao-quantica-a-espada-de-dois-gumes
 status: ficha
-temas: [tecnologia-e-cultura]
+temas:
+  - tecnologia-e-cultura
 youtube:
   titulo: Computação Quântica  A Espada de Dois Gumes
   publicado_em: 2025-10-28
