@@ -1,9 +1,23 @@
 ---
 id: aEjGEYzObLk
 slug: omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia
-status: ficha
+status: rascunho
 temas:
   - ferramentas-de-ia
+resumo: "O OmniRoute é um gateway de IA de código aberto que reúne centenas de provedores de modelos num único endpoint local. O vídeo explica o endpoint, os combos com troca automática de modelo, as estratégias de roteamento, a compressão de tokens e a integração com ferramentas de programação."
+fontes:
+  - url: https://github.com/diegosouzapw/OmniRoute
+    titulo: "Repositório oficial do OmniRoute no GitHub"
+    sustenta: "O OmniRoute é um gateway de IA de código aberto que expõe vários provedores num endpoint local."
+    verificada: false
+  - url: https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/guides/USER_GUIDE.md
+    titulo: "Guia do usuário (USER_GUIDE.md)"
+    sustenta: "Os combos com troca automática de modelo, as estratégias de roteamento e as tags de modelo."
+    verificada: false
+  - url: https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE_TIERS.md
+    titulo: "Análise de tiers gratuitos e orçamento de tokens (FREE_TIERS.md)"
+    sustenta: "O número de provedores com plano gratuito e de tokens gratuitos por mês."
+    verificada: false
 youtube:
   titulo: "OmniRoute: Pare de gastar fortunas com assinaturas de IA!"
   publicado_em: 2026-09-03
@@ -46,3 +60,48 @@ youtube:
     - https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE_TIERS.md
   coletado_em: 2026-11-07T22:16:07Z
 ---
+## O caos das APIs
+
+Quem desenvolve com IA lida com dezenas de modelos, SDKs e chaves de API, com limites de taxa que travam o trabalho e sem saber o saldo real [01:23]. O OmniRoute concentra tudo num único endpoint, com roteamento automático [01:45].
+
+## Um único endpoint
+
+Segundo o vídeo, o OmniRoute reúne 352 provedores de IA atrás de uma só porta de entrada [02:07]. O endereço é o localhost na porta 21028: basta apontar a ferramenta para essa URL [02:29].
+
+O vídeo cita mais de 150 provedores com plano gratuito e mais de 1,5 bilhão de tokens gratuitos rastreados por mês, sem trocar de ferramenta nem reescrever código [02:50].
+
+## O motor de combos
+
+Um combo é uma corrente de modelos. Se o modelo favorito sai do ar ou a cota acaba no meio do trabalho, o combo entra como rede de segurança [03:33]. Ele funciona em três passos:
+
+- O motor tenta o modelo principal [03:54].
+- Se esse modelo bate num limite de taxa ou cai, o motor redireciona a requisição para o próximo modelo saudável da fila [03:54].
+- Tudo acontece em frações de segundo, sem intervenção manual [03:54].
+
+## Estratégias de roteamento
+
+Há 19 estratégias de roteamento, que podem ser combinadas em cada etapa de um combo: por exemplo, round-robin, o provedor menos usado no momento ou a rota mais barata [04:36]. O motor avalia cada modelo candidato com 16 fatores, como a saúde da rede, a cota restante, o custo e a latência [04:57].
+
+Para não escrever regras complexas, há tags prontas no nome do modelo: uma para a opção mais barata, uma para código e auto/fast para a velocidade máxima [05:18].
+
+## Compressão de tokens
+
+Segundo o vídeo, o modo Caveman reduz a requisição para 70% dos tokens [06:01]. O motor RTK somado ao Caveman a reduz para 10,8% do original, e a economia vai de 15% a 95% [06:22].
+
+O Caveman corta palavras de preenchimento e linguagem de conversa, mas preserva os blocos de código, as URLs e os dados em JSON [06:43].
+
+## Integração com ferramentas
+
+O OmniRoute funciona com as IDEs e os agentes de programação que já estão em uso, como Cursor, GitHub Copilot e Claude Code [07:24].
+
+Para começar, instale localmente, aponte a ferramenta para o localhost e escreva auto no modelo. Segundo o vídeo, não é preciso cartão de crédito nem chaves de API iniciais [08:05].
+
+## Perguntas frequentes
+
+### Preciso mudar o meu código para usar o OmniRoute?
+
+Segundo o vídeo, não: basta apontar a ferramenta para o endpoint local [02:50].
+
+### O que acontece quando um modelo atinge o limite?
+
+O combo redireciona a requisição para o próximo modelo saudável da fila [03:54].

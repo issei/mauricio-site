@@ -1,9 +1,10 @@
 ---
 id: ruZVjMpaEZo
 slug: galaxy-ai-assistente-de-chamada
-status: ficha
+status: rascunho
 temas:
   - ferramentas-de-ia
+resumo: "O Assistente de Chamada do Galaxy AI, da Samsung, tem duas funções: a chamada por texto, para atender sem falar, e a tradução simultânea, para conversar em outro idioma. O vídeo mostra para que serve cada uma, como configurar e quando ativar."
 youtube:
   titulo: Galaxy AI  Assistente de Chamada
   publicado_em: 2025-10-27
@@ -58,3 +59,40 @@ youtube:
     - http://googleusercontent.com/youtube_content/5
   coletado_em: 2026-11-07T22:16:07Z
 ---
+## O problema
+
+Às vezes uma ligação importante chega num lugar barulhento ou no meio de uma reunião, e não dá para falar [00:21]. Outra barreira é resolver algo por telefone com alguém que fala outra língua, por exemplo para reservar um hotel ou fechar um negócio [00:42].
+
+## O que é o Assistente de Chamada
+
+O Assistente de Chamada vem com o Galaxy AI. Ele funciona como filtro de quem liga, como transcritor da conversa e como intérprete em tempo real [01:03]. Ele já vem no app de telefone, sem instalar nada [01:03].
+
+## Chamada por texto
+
+Na chamada por texto, a IA atende por você, transcreve o que a outra pessoa fala e lê em voz alta o que você digita na tela [01:25]. Além de prática, é uma ferramenta de acessibilidade para pessoas com dificuldade de fala ou de audição [01:47].
+
+Para usar, toque em "Chamada por texto" na tela da ligação, em vez de deslizar para atender [01:47]. Uma voz de IA avisa a outra pessoa que a chamada será por texto, e a sua tela vira um chat [02:08].
+
+## Tradução simultânea
+
+A tradução simultânea (Live Translate) traduz o que você fala e o que a outra pessoa fala, em tempo real [02:29]. Ela funciona tanto quando você liga quanto quando recebe a chamada [02:49].
+
+## Como configurar
+
+- No app de telefone, toque nos três pontos do menu, depois em Configurações e em Assistente de Chamada [03:11].
+- Ali você liga a chamada por texto, escolhe o idioma e a voz da IA e cria respostas rápidas, como "Estou numa reunião, ligo em 5 minutos" [03:33].
+- Na tradução simultânea, ative a função, defina o seu idioma principal e selecione os outros idiomas que pretende usar [03:33].
+
+## Quando ativar cada função
+
+A chamada por texto é ativada antes de atender, na tela da chamada [04:15]. A tradução simultânea é o contrário: você atende normalmente e, com a conversa em curso, toca no botão do Assistente de Chamada [04:15].
+
+## Perguntas frequentes
+
+### Posso atender uma ligação sem falar?
+
+Sim. Toque em "Chamada por texto" antes de atender: a IA transcreve o que a pessoa diz e lê o que você digita [02:08].
+
+### Preciso instalar um aplicativo?
+
+Não. O Assistente de Chamada já vem no app de telefone [01:03].
