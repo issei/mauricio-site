@@ -2,7 +2,8 @@
 id: e_rTtRbxcas
 slug: arquitetura-de-integracoes
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: Arquitetura de Integrações
   publicado_em: 2025-11-08

@@ -2,7 +2,8 @@
 id: xRYMO36wlac
 slug: aprender-a-aprender-o-guia-definitivo-para-metacognicao-e
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: "APRENDER A APRENDER: O Guia Definitivo para Metacognição e Pensamento Computacional"
   publicado_em: 2025-11-18
@@ -40,7 +41,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/xRYMO36wlac/maxresdefault.jpg
   visualizacoes: 31
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

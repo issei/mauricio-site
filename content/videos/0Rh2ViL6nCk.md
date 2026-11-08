@@ -2,7 +2,8 @@
 id: 0Rh2ViL6nCk
 slug: terraform-de-codigo-a-plataforma-escala-seguranca-e-policy
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: "TERRAFORM: De Código a Plataforma (Escala, Segurança e Policy as Code)"
   publicado_em: 2025-11-25

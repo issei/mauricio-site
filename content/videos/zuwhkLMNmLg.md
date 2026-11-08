@@ -2,7 +2,9 @@
 id: zuwhkLMNmLg
 slug: dominando-dados-no-salesforce-escalabilidade-governor
 status: ficha
-temas: [salesforce-e-vendas, dados-e-decisao]
+temas:
+  - salesforce-e-vendas
+  - dados-e-decisao
 youtube:
   titulo: "DOMINANDO DADOS NO SALESFORCE: Escalabilidade, Governor Limits e Arquitetura Lambda"
   publicado_em: 2025-11-25

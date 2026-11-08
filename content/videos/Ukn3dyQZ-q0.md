@@ -2,7 +2,8 @@
 id: Ukn3dyQZ-q0
 slug: turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que
 status: ficha
-temas: [dados-e-decisao]
+temas:
+  - dados-e-decisao
 youtube:
   titulo: "turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS"
   publicado_em: 2026-06-08
@@ -29,7 +30,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/Ukn3dyQZ-q0/maxresdefault.jpg
   visualizacoes: 43
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://github.com/RyanCodrai/turbovec
     - https://pypi.org/project/turbovec/

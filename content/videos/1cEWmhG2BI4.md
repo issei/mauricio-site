@@ -2,7 +2,8 @@
 id: 1cEWmhG2BI4
 slug: guia-pratico-do-c4-model
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: Guia Prático do C4 Model
   publicado_em: 2026-01-11

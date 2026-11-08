@@ -2,7 +2,8 @@
 id: 0fkru6v1O-c
 slug: a-engenharia-da-confianca-por-que-sua-ia-falha-e-como
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: "A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)"
   publicado_em: 2026-06-21
@@ -46,7 +47,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/0fkru6v1O-c/maxresdefault.jpg
   visualizacoes: 35
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mauricio.issei.com.br/engenharia-confianca.html
   coletado_em: 2026-11-07T22:16:07Z

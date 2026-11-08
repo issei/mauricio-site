@@ -2,7 +2,8 @@
 id: UCT59ySALrU
 slug: o-notebooklm
 status: ficha
-temas: [ferramentas-de-ia]
+temas:
+  - ferramentas-de-ia
 youtube:
   titulo: O NotebookLM
   publicado_em: 2025-10-27

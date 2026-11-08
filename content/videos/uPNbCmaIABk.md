@@ -2,7 +2,8 @@
 id: uPNbCmaIABk
 slug: dando-voz-a-tecnologia-a-revolucao-do-text-to-speech-com
 status: ficha
-temas: [ferramentas-de-ia]
+temas:
+  - ferramentas-de-ia
 youtube:
   titulo: "DANDO VOZ À TECNOLOGIA: A Revolução do Text-to-Speech com Inteligência Artificial"
   publicado_em: 2025-12-15

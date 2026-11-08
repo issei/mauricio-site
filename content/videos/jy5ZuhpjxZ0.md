@@ -2,7 +2,8 @@
 id: jy5ZuhpjxZ0
 slug: a-equipe-de-ia-sonho-e-ruina
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: A Equipe de IA  Sonho e Ruína
   publicado_em: 2025-10-27

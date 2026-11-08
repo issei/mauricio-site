@@ -2,7 +2,8 @@
 id: 8nMyU-C5Dxc
 slug: 01-a-crise-cognitiva
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: 01 - A Crise Cognitiva
   publicado_em: 2026-05-18

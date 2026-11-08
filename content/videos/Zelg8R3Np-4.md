@@ -2,7 +2,8 @@
 id: Zelg8R3Np-4
 slug: a-ia-ganha-um-corpo
 status: ficha
-temas: [tecnologia-e-cultura]
+temas:
+  - tecnologia-e-cultura
 youtube:
   titulo: A IA Ganha um Corpo
   publicado_em: 2026-02-01

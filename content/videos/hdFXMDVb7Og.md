@@ -2,7 +2,8 @@
 id: hdFXMDVb7Og
 slug: openkb-criando-sua-base-de-conhecimento-inteligente
 status: ficha
-temas: [dados-e-decisao]
+temas:
+  - dados-e-decisao
 youtube:
   titulo: OpenKB - Criando sua base de conhecimento inteligente
   publicado_em: 2026-05-07

@@ -2,7 +2,8 @@
 id: yXRNd2aGmuA
 slug: data-mesh
 status: ficha
-temas: [dados-e-decisao]
+temas:
+  - dados-e-decisao
 youtube:
   titulo: Data Mesh
   publicado_em: 2025-11-08

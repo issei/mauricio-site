@@ -2,7 +2,8 @@
 id: oB7BUFktKBA
 slug: agentic-resource-discovery-ard-como-agentes-de-ia-descobrem
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "Agentic Resource Discovery (ARD): Como Agentes de IA Descobrem Ferramentas na Web"
   publicado_em: 2026-09-23

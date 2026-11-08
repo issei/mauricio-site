@@ -2,7 +2,8 @@
 id: 8w0g1UHDJm8
 slug: o-que-e-otimizacao-do-algoritmo-simplex-ao-mundo-real
 status: ficha
-temas: [dados-e-decisao]
+temas:
+  - dados-e-decisao
 youtube:
   titulo: O que é Otimização? Do Algoritmo Simplex ao Mundo Real
   publicado_em: 2026-01-07

@@ -2,7 +2,8 @@
 id: jcFFT-W1vE4
 slug: specs-ia-o-novo-ciclo-de-desenvolvimento-de-software
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: "SPECS & IA: O Novo Ciclo de Desenvolvimento de Software (Especificação como Diálogo)"
   publicado_em: 2025-12-03
@@ -21,7 +22,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/jcFFT-W1vE4/maxresdefault.jpg
   visualizacoes: 50
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

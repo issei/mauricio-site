@@ -2,7 +2,8 @@
 id: 1YTBK_FCKLU
 slug: construindo-seu-agente-de-ia
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: Construindo seu Agente de IA
   publicado_em: 2025-11-08

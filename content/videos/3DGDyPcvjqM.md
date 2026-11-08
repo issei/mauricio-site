@@ -2,7 +2,8 @@
 id: 3DGDyPcvjqM
 slug: datadog-do-caos-a-clareza
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: Datadog  Do Caos à Clareza
   publicado_em: 2025-10-31

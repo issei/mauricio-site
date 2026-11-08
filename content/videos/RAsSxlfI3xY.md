@@ -2,7 +2,8 @@
 id: RAsSxlfI3xY
 slug: como-o-erro-constroi-a-consistencia
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: Como o Erro Constrói a Consistência
   publicado_em: 2026-09-03

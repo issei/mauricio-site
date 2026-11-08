@@ -2,7 +2,8 @@
 id: TwDkaniVQPg
 slug: ia-na-educacao-por-que-dar-acesso-aos-alunos-pode-ser-um
 status: ficha
-temas: [aprendizagem-e-mente]
+temas:
+  - aprendizagem-e-mente
 youtube:
   titulo: "IA na Educação: Por que dar acesso aos alunos pode ser um erro? (Capacidade antes do Acesso)"
   publicado_em: 2026-08-29

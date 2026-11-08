@@ -2,7 +2,8 @@
 id: TN2zVIrAbaI
 slug: da11y-md-acessibilidade-no-figma-antes-do-primeiro-pixel
 status: ficha
-temas: [acessibilidade-e-design]
+temas:
+  - acessibilidade-e-design
 youtube:
   titulo: "DA11Y.md: Acessibilidade no Figma Antes do Primeiro Pixel"
   publicado_em: 2026-10-23

@@ -2,7 +2,9 @@
 id: 5LtvpFMRUvw
 slug: engenharia-por-tras-da-boutique-empresarial-arquitetura
 status: ficha
-temas: [engenharia-agentica, especificacao-e-desenvolvimento]
+temas:
+  - engenharia-agentica
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: "Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico"
   publicado_em: 2026-09-21

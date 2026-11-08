@@ -2,7 +2,8 @@
 id: gadXIDNVQ04
 slug: a-linguagem-java-esta-completando-30-anos
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: A linguagem Java está completando 30 anos!
   publicado_em: 2025-12-05

@@ -2,7 +2,8 @@
 id: HlgRNYHvOtg
 slug: o-orquestrador-soberano-o-fim-do-codigo-e-os-perigos-do
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "O Orquestrador Soberano: O Fim do Código e os Perigos do Vibe Coding"
   publicado_em: 2026-05-18

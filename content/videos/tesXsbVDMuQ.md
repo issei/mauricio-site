@@ -2,7 +2,8 @@
 id: tesXsbVDMuQ
 slug: pare-de-ler-codigo-as-cegas-conheca-o-understand-anything
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: Pare de ler código às cegas! Conheça o Understand-Anything
   publicado_em: 2026-05-26

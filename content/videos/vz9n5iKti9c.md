@@ -2,7 +2,8 @@
 id: vz9n5iKti9c
 slug: a-intencao-do-negocio-especificacao-conversacional
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: "A Intenção do Negócio: Especificação Conversacional Estruturada com IA"
   publicado_em: 2026-10-12

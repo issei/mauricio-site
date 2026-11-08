@@ -2,7 +2,9 @@
 id: Z-8YtFXi-oo
 slug: digital-workplace-agentico-como-evoluir-do-portal
 status: ficha
-temas: [engenharia-agentica, gestao-e-estrategia]
+temas:
+  - engenharia-agentica
+  - gestao-e-estrategia
 youtube:
   titulo: "Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA"
   publicado_em: 2026-10-03

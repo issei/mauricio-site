@@ -2,7 +2,8 @@
 id: KRoFYGy7eos
 slug: minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado
 status: ficha
-temas: [dados-e-decisao]
+temas:
+  - dados-e-decisao
 youtube:
   titulo: "Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web"
   publicado_em: 2026-10-10

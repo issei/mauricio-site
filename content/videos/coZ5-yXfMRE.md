@@ -2,7 +2,8 @@
 id: coZ5-yXfMRE
 slug: aws-glue-otimize-seus-jobs-spark-e-reduza-custos-guia
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: "AWS GLUE: Otimize seus Jobs Spark e Reduza Custos (Guia Prático para Iniciantes)"
   publicado_em: 2025-11-18
@@ -36,7 +37,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/coZ5-yXfMRE/maxresdefault.jpg
   visualizacoes: 38
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

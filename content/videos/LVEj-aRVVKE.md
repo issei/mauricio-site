@@ -2,7 +2,8 @@
 id: LVEj-aRVVKE
 slug: domine-a-ia-com-google-antigravity-da-codificacao-a
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes"
   publicado_em: 2026-07-17

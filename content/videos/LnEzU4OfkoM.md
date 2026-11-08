@@ -2,7 +2,8 @@
 id: LnEzU4OfkoM
 slug: arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: "Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account"
   publicado_em: 2026-09-23

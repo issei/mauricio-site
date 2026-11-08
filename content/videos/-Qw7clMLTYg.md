@@ -2,7 +2,9 @@
 id: -Qw7clMLTYg
 slug: desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia
 status: ficha
-temas: [engenharia-agentica, dados-e-decisao]
+temas:
+  - engenharia-agentica
+  - dados-e-decisao
 youtube:
   titulo: "Desvendando o AHP: O Novo Protocolo para Agentes de IA"
   publicado_em: 2026-05-24
@@ -35,7 +37,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/-Qw7clMLTYg/maxresdefault.jpg
   visualizacoes: 26
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

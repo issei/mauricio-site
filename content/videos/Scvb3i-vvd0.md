@@ -2,7 +2,8 @@
 id: Scvb3i-vvd0
 slug: o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen
 status: ficha
-temas: [tecnologia-e-cultura]
+temas:
+  - tecnologia-e-cultura
 youtube:
   titulo: "O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram"
   publicado_em: 2026-06-06
@@ -46,7 +47,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/Scvb3i-vvd0/maxresdefault.jpg
   visualizacoes: 32
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://writings.stephenwolfram.com/2023/02/a-50-year-quest-my-personal-journey-with-the-second-law-of-thermodynamics
     - https://writings.stephenwolfram.com/2023/02/computational-foundations-for-the-second-law-of-thermodynamics

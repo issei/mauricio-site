@@ -2,7 +2,9 @@
 id: tncSq6nToLo
 slug: desmistificando-story-points-como-estimar-melhor-em-times
 status: ficha
-temas: [gestao-e-estrategia, dados-e-decisao]
+temas:
+  - gestao-e-estrategia
+  - dados-e-decisao
 youtube:
   titulo: "Desmistificando Story Points: como estimar melhor em times ágeis"
   publicado_em: 2026-01-23

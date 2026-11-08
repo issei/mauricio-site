@@ -2,7 +2,8 @@
 id: rxjZWOMIzyA
 slug: vertex-ai-agentes-de-acao-construindo-agentes-de-ia-que
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "VERTEX AI AGENTES DE AÇÃO: Construindo Agentes de IA que Realmente Agem (ReAct e OpenAPI)"
   publicado_em: 2025-11-12

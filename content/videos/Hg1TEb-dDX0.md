@@ -2,7 +2,8 @@
 id: Hg1TEb-dDX0
 slug: kit-do-arquiteto-de-ia
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: Kit do Arquiteto de IA
   publicado_em: 2025-10-23

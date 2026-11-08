@@ -2,7 +2,8 @@
 id: mRFqnOktQH4
 slug: como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion
   publicado_em: 2026-10-19

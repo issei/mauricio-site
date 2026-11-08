@@ -2,7 +2,8 @@
 id: 9RwJAgbcIZo
 slug: o-papel-da-inteligencia-artificial-no-ux-ui-design
 status: ficha
-temas: [acessibilidade-e-design]
+temas:
+  - acessibilidade-e-design
 youtube:
   titulo: O papel da Inteligência Artificial no UX/UI Design
   publicado_em: 2025-12-05

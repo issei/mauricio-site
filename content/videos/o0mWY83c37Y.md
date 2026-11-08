@@ -2,7 +2,8 @@
 id: o0mWY83c37Y
 slug: nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra
 status: ficha
-temas: [engenharia-agentica]
+temas:
+  - engenharia-agentica
 youtube:
   titulo: "NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!"
   publicado_em: 2026-10-07

@@ -2,7 +2,8 @@
 id: uPJUQKIlzFM
 slug: maquina-do-tempo-de-software-dominando-cqrs-e-event
 status: ficha
-temas: [especificacao-e-desenvolvimento]
+temas:
+  - especificacao-e-desenvolvimento
 youtube:
   titulo: "Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços"
   publicado_em: 2026-05-21

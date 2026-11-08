@@ -2,7 +2,9 @@
 id: dacWmQubuSs
 slug: a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0
 status: ficha
-temas: [engenharia-agentica, dados-e-decisao]
+temas:
+  - engenharia-agentica
+  - dados-e-decisao
 youtube:
   titulo: "A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!"
   publicado_em: 2026-08-12

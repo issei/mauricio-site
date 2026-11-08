@@ -2,7 +2,8 @@
 id: UzeuGIlyN9M
 slug: sua-empresa-e-uma-fabrica-ou-uma-cozinha-viva
 status: ficha
-temas: [gestao-e-estrategia]
+temas:
+  - gestao-e-estrategia
 youtube:
   titulo: Sua Empresa é uma Fábrica ou uma Cozinha Viva?
   publicado_em: 2026-01-13

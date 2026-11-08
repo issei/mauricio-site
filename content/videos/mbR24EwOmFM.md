@@ -2,7 +2,8 @@
 id: mbR24EwOmFM
 slug: google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da
 status: ficha
-temas: [tecnologia-e-cultura]
+temas:
+  - tecnologia-e-cultura
 youtube:
   titulo: "Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?"
   publicado_em: 2026-10-17

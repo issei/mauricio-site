@@ -2,7 +2,8 @@
 id: 8z4JuiIOT58
 slug: magnitude-o-motor-de-ia-local-open-source-definitivo-rode
 status: ficha
-temas: [ferramentas-de-ia]
+temas:
+  - ferramentas-de-ia
 youtube:
   titulo: "Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)"
   publicado_em: 2026-09-11

@@ -2,7 +2,8 @@
 id: lezsF_27EXI
 slug: webrtc-a-magia-da-comunicacao-em-tempo-real
 status: ficha
-temas: [cloud-e-confiabilidade]
+temas:
+  - cloud-e-confiabilidade
 youtube:
   titulo: WebRTC  A Magia da Comunicação em Tempo Real
   publicado_em: 2026-01-06
@@ -22,7 +23,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/lezsF_27EXI/maxresdefault.jpg
   visualizacoes: 34
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
