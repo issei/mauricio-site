@@ -40,7 +40,6 @@ Cada página é um arquivo `.html` em `src/`. O Vite gera o build, e o GitHub Ac
 - [Desenvolvimento guiado por especificação](#-desenvolvimento-guiado-por-especificação)
 - [Trabalho com agentes de IA](#-trabalho-com-agentes-de-ia)
 - [Padrões de código e de texto](#-padrões-de-código-e-de-texto)
-- [Painel administrativo (legado)](#️-painel-administrativo-legado)
 - [Documentação de referência](#-documentação-de-referência)
 - [Licença](#-licença)
 - [Contato](#-contato)
@@ -547,7 +546,6 @@ As permissões da role IAM estão em [`docs/specs/CICD_OIDC.md`](docs/specs/CICD
 ### Arquivos locais
 
 - `.env.local` guarda as credenciais do YouTube para rodar a coleta na máquina local. O `.gitignore` ignora os arquivos `*.local`.
-- `src/config.example.js` é o modelo de configuração do painel administrativo.
 
 ---
 
@@ -629,17 +627,6 @@ O padrão se baseia na ABNT NBR ISO 24495-1 e no ASD-STE100 adaptado ao portugu�
 2. Faça as mudanças e rode `npm run gate`.
 3. Abra um PR para a `main`. O quality gate roda na camada fast.
 4. O merge publica o site.
-
----
-
-## 🗄️ Painel administrativo (legado)
-
-O painel em `/admin.html` edita um `cv.json` no repositório `issei/curriculo` pela API do GitHub, com um token pessoal (PAT).
-Código: [`src/js/admin-ui.js`](src/js/admin-ui.js) e [`src/js/github-service.js`](src/js/github-service.js). Guia: [`ADMIN_README.md`](ADMIN_README.md).
-
-> [!CAUTION]
-> O site **não** lê mais esse repositório. A fonte do currículo é `public/cv.json` (veja [Currículo](#-currículo-cvjson)).
-> Uma mudança feita pelo painel não aparece no site.
 
 ---
 
