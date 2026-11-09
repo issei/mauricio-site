@@ -57,7 +57,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/LnEzU4OfkoM/maxresdefault.jpg
   visualizacoes: 5
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html
     - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/profiles.html](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/profiles.html
