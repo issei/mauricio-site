@@ -1,10 +1,24 @@
 ---
 id: n089OV1W2Dg
 slug: o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do
-status: ficha
+status: rascunho
 temas:
   - engenharia-agentica
   - dados-e-decisao
+resumo: "O RAG tradicional consulta uma base antes de responder, mas segue um roteiro fixo. No Agentic RAG, a IA decide quando buscar, que ferramenta usar e se a informação basta. O vídeo explica essa diferença, como esses agentes planejam, por que faltam dados para treiná-los e os desafios que restam."
+fontes:
+  - url: https://arxiv.org/pdf/2501.09136
+    titulo: "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG"
+    sustenta: "A diferença entre o RAG tradicional e o Agentic RAG, com planejamento, uso de ferramentas e autoavaliação."
+    verificada: false
+  - url: https://aclanthology.org/2026.findings-acl.78.pdf
+    titulo: "Data-Centric Perspectives on Agentic Retrieval-Augmented Generation: A Survey"
+    sustenta: "A falta de dados de treino para agentes e o pipeline de coleta, geração sintética, verificação e refinamento."
+    verificada: false
+  - url: https://arxiv.org/pdf/2312.10997
+    titulo: "Retrieval-Augmented Generation for Large Language Models: A Survey"
+    sustenta: "O que é o RAG tradicional e como ele consulta bases externas antes de gerar a resposta."
+    verificada: false
 youtube:
   titulo: "O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional"
   publicado_em: 2026-08-26
@@ -67,3 +81,54 @@ youtube:
     - https://elisaterumi.substack.com/p/voce-sabe-a-diferenca-entre-rag-e
   coletado_em: 2026-11-07T22:16:07Z
 ---
+## O limite de memória da IA
+
+Os grandes modelos de linguagem ficavam limitados ao que memorizaram no treinamento [00:00]. Como o conhecimento avança todo dia, um modelo congelado no tempo entrega fatos desatualizados, ou alucina e inventa respostas [01:03].
+
+A primeira solução foi o RAG (geração aumentada por recuperação): em vez de responder de cabeça, a IA consulta bases externas antes de escrever [01:24]. O vídeo compara a um gênio trancado com livros velhos que ganha um computador com internet [01:24].
+
+O RAG tradicional segue um roteiro fixo: a pergunta entra, o sistema busca documentos, entrega tudo à IA e sai a resposta [01:24]. Isso funciona bem para tarefas diretas, como achar a política de férias num manual de 1.000 páginas [01:45].
+
+## A chegada do Agentic RAG
+
+Quando as tarefas pedem raciocínio em várias etapas, contas e cruzamento de fontes, o roteiro fixo falha [02:07]. O vídeo resume: "O maior problema do RAG não é a busca, é a decisão" [02:29].
+
+A IA precisa saber quando pesquisar, que ferramenta usar e perceber quando a informação não basta para responder [02:29]. No Agentic RAG, o agente age como um gerente de projeto: busca fatos na web, consulta bancos SQL e roda código em Python para não errar contas [03:10].
+
+## Como esses agentes pensam
+
+Exemplo: alguém pede para comparar o faturamento de duas empresas num trimestre, ajustado pela inflação [03:30]. O agente divide a tarefa. Consulta uma API financeira para cada empresa e usa uma ferramenta para converter as moedas [03:52].
+
+Depois de cada passo, o agente se avalia: o resultado faz sentido? Falta algo? Se der erro, ele refaz o caminho e busca de novo [03:52].
+
+## A falta de dados de treino
+
+Para o RAG tradicional, bastava aprender com bilhões de páginas a ligar uma pergunta a um texto [04:36]. Um agente precisa ver tentativas, erros e correções de rota, e de como as ferramentas são usadas [04:36]. Dados de raciocínio em várias etapas são raros [04:57].
+
+## Como os pesquisadores fabricam esses dados
+
+O processo tem quatro etapas: coleta dos dados originais, geração de tarefas sintéticas difíceis, verificação rigorosa e refinamento [05:18]. O resultado são trajetórias de raciocínio limpas para treinar os próximos agentes [05:38].
+
+- As tarefas são difíceis de propósito: se o treino for fácil, o modelo decora atalhos [05:38].
+- Os pesquisadores aumentam a complexidade, escondem informações-chave e exigem conhecimento especializado [05:58].
+- Na verificação, a cadeia de verificação obriga a IA a duvidar de si e listar as evidências antes de responder [06:20].
+- Os resultados de vários modelos são cruzados, e há auditores humanos [06:41].
+- No refinamento, os problemas ganham linguagem natural, os atalhos estatísticos são removidos e o pensamento excessivo é cortado [07:02].
+
+Cortar o pensamento excessivo importa porque modelos às vezes testam vários caminhos errados antes do certo. O refinamento ensina que ir direto ao ponto vale tanto quanto acertar [07:23].
+
+## O que ainda falta
+
+- A IA às vezes chega à resposta certa com uma lógica sem sentido [07:45].
+- Usar IAs como juízes de outras IAs traz o viés da máquina para a nota [08:06].
+- A maior barreira é a memória persistente: hoje, acabou a tarefa, a memória volta a zero [08:06].
+
+## Perguntas frequentes
+
+### Qual é a diferença entre RAG e Agentic RAG?
+
+O RAG busca e responde num roteiro fixo. O Agentic RAG decide quando buscar, que ferramenta usar e se a informação basta [02:29].
+
+### Por que é difícil treinar um agente?
+
+Porque faltam dados que mostrem raciocínio em várias etapas, com erros e correções [04:57].
