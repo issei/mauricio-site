@@ -48,7 +48,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/vz9n5iKti9c/maxresdefault.jpg
   visualizacoes: 3
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mauricio.issei.com.br/especificacao-conversacional.html
   coletado_em: 2026-11-07T22:16:07Z
