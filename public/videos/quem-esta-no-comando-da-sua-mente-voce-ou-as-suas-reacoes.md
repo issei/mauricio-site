@@ -26,4 +26,8 @@ Quando você assume o papel de arquiteto da sua mente, você deixa de ser refém
 
 ## Transcrição
 
-Transcrição ainda não disponível.
+_Transcrição automática, não revisada._
+
+[0:00] Estamos afogados em informação, mas famintos por clareza estratégica. Reagir ao ruído já não é suficiente. A saída é transformar a sua mente em uma arquitetura viva. Unindo o distanciamento do estoicismo e o fluxo natural do taoísmo. Você para de lutar contra os sintomas e foca na verdadeira causa raiz. Mas a lógica pura desmorona sem as pessoas. O pensamento estratégico é a ponte invisível entre a empatia e a ação. É usar a benevolência confusionista para decifrar comportamentos e gerar alianças reais. Com o esforço direcionado do Way, o líder prioriza o essencial e estrutura o conhecimento para que a sabedoria escale por toda a organização. E o topo dessa obra é a metacognição, a capacidade de pensar sobre o próprio pensamento. É o seu arquiteto interior que pai acima do sistema, evitando vieses e ajustando a rota em tempo real. Enquanto a inteligência artificial domina os dados, a verdadeira vantagem pertence a quem domina a si mesmo. Qual desses pilares da mente estratégica falta na sua
+
+[1:00] arquitetura interior para liderar os desafios do amanhã?

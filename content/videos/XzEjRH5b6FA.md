@@ -4,15 +4,15 @@ slug: codegraph-inteligencia-semantica-local-para-agentes-de-ia
 status: rascunho
 temas:
   - engenharia-agentica
-resumo: "O CodeGraph cria, na sua máquina, um grafo do código com símbolos, chamadas e dependências, para o agente de IA achar o que precisa numa só chamada em vez de ler arquivo por arquivo. O vídeo mostra o problema, os números de economia, o motor em Rust, o suporte a várias linguagens e a sincronização automática."
+resumo: O CodeGraph cria, na sua máquina, um grafo do código com símbolos, chamadas e dependências, para o agente de IA achar o que precisa numa só chamada em vez de ler arquivo por arquivo. O vídeo mostra o problema, os números de economia, o motor em Rust, o suporte a várias linguagens e a sincronização automática.
 fontes:
   - url: https://github.com/colbymchenry/codegraph
-    titulo: "Repositório oficial no GitHub"
+    titulo: Repositório oficial no GitHub
     sustenta: "Os benchmarks: menos chamadas de ferramenta, menos tokens e custo menor em sete repositórios."
     verificada: false
   - url: https://colbymchenry.github.io/codegraph/
-    titulo: "Documentação e site oficial"
-    sustenta: "O CodeGraph é local, usa SQLite, tem núcleo em Rust e sincroniza com o sistema de arquivos."
+    titulo: Documentação e site oficial
+    sustenta: O CodeGraph é local, usa SQLite, tem núcleo em Rust e sincroniza com o sistema de arquivos.
     verificada: false
 youtube:
   titulo: "CodeGraph: Inteligência Semântica Local para Agentes de IA de Código"
@@ -91,6 +91,7 @@ youtube:
     - https://getcodegraph.com/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema do agente cego
 
 A eficiência de um agente de IA define a velocidade e o custo de um projeto [00:00]. Os agentes atuais gastam muito do orçamento só para descobrir onde está o código [00:43].

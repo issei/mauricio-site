@@ -37,7 +37,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/TN2zVIrAbaI/maxresdefault.jpg
   visualizacoes: 26
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://fecarrico.github.io/da11ymd/
     - https://github.com/fecarrico/DA11Y.md

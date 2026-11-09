@@ -59,6 +59,7 @@ youtube:
     - http://googleusercontent.com/youtube_content/5
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema
 
 Às vezes uma ligação importante chega num lugar barulhento ou no meio de uma reunião, e não dá para falar [00:21]. Outra barreira é resolver algo por telefone com alguém que fala outra língua, por exemplo para reservar um hotel ou fechar um negócio [00:42].

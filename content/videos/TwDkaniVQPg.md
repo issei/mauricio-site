@@ -42,7 +42,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/TwDkaniVQPg/maxresdefault.jpg
   visualizacoes: 18
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mauricio.issei.com.br/capacidade-antes-do-acesso.html
     - https://claude.com/solutions/teachers

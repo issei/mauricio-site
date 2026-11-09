@@ -4,19 +4,19 @@ slug: conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o
 status: rascunho
 temas:
   - ferramentas-de-ia
-resumo: "O Amazon Quick é um assistente de IA da AWS, para desktop e web, que se liga aos dados e aos aplicativos do trabalho. O vídeo mostra o app nativo para macOS e Windows, os dashboards criados por linguagem natural, a integração com Excel e Gmail e o ganho de produtividade que a ferramenta promete."
+resumo: O Amazon Quick é um assistente de IA da AWS, para desktop e web, que se liga aos dados e aos aplicativos do trabalho. O vídeo mostra o app nativo para macOS e Windows, os dashboards criados por linguagem natural, a integração com Excel e Gmail e o ganho de produtividade que a ferramenta promete.
 fontes:
   - url: https://aws.amazon.com/about-aws/whats-new/2026/04/amazon-quick-macos-windows-preview/
-    titulo: "Anúncio oficial do app (AWS)"
-    sustenta: "O Amazon Quick tem um app nativo para macOS e Windows."
+    titulo: Anúncio oficial do app (AWS)
+    sustenta: O Amazon Quick tem um app nativo para macOS e Windows.
     verificada: false
   - url: https://siliconangle.com/2026/04/28/amazon-revamps-quick-proactive-desktop-app-gets-work-done/
-    titulo: "Artigo sobre o impacto do Quick (SiliconANGLE)"
-    sustenta: "O Quick passou a ser um app de desktop proativo, que age sobre o trabalho e não só responde perguntas."
+    titulo: Artigo sobre o impacto do Quick (SiliconANGLE)
+    sustenta: O Quick passou a ser um app de desktop proativo, que age sobre o trabalho e não só responde perguntas.
     verificada: false
   - url: https://aws.amazon.com/quick
-    titulo: "Site oficial do Amazon Quick"
-    sustenta: "O Quick é um assistente de IA da AWS que liga dados e aplicativos."
+    titulo: Site oficial do Amazon Quick
+    sustenta: O Quick é um assistente de IA da AWS que liga dados e aplicativos.
     verificada: false
 youtube:
   titulo: "Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop"
@@ -46,6 +46,7 @@ youtube:
     - https://siliconangle.com/2026/04/28/amazon-revamps-quick-proactive-desktop-app-gets-work-done/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O custo do trabalho manual
 
 Quem gerencia equipes perde o dia com tarefas manuais: alternar entre mensagens, e-mails, planilhas e apresentações, e copiar informação de um lado para o outro [00:42]. Fluxos desconectados obrigam as pessoas a servir de ponte entre sistemas que não conversam [01:46].

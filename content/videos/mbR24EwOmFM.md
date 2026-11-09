@@ -4,7 +4,7 @@ slug: google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da
 status: rascunho
 temas:
   - tecnologia-e-cultura
-resumo: "Os qubits físicos falham com frequência, e esse é o maior obstáculo da computação quântica. O vídeo explica os qubits lógicos e o código de superfície, como o processador Willow do Google cruzou o limite de erro, a técnica de cultivo de estados mágicos e o roteiro até 1 milhão de qubits."
+resumo: Os qubits físicos falham com frequência, e esse é o maior obstáculo da computação quântica. O vídeo explica os qubits lógicos e o código de superfície, como o processador Willow do Google cruzou o limite de erro, a técnica de cultivo de estados mágicos e o roteiro até 1 milhão de qubits.
 youtube:
   titulo: "Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?"
   publicado_em: 2026-10-17
@@ -42,6 +42,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Por que a computação quântica ainda não chegou
 
 O Google Quantum AI tenta superar os obstáculos de física que seguram a computação quântica universal [00:00]. A matemática existe e o potencial é claro, mas a prática é um campo minado de obstáculos físicos [00:21].

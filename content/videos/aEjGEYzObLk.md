@@ -4,19 +4,19 @@ slug: omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia
 status: rascunho
 temas:
   - ferramentas-de-ia
-resumo: "O OmniRoute é um gateway de IA de código aberto que reúne centenas de provedores de modelos num único endpoint local. O vídeo explica o endpoint, os combos com troca automática de modelo, as estratégias de roteamento, a compressão de tokens e a integração com ferramentas de programação."
+resumo: O OmniRoute é um gateway de IA de código aberto que reúne centenas de provedores de modelos num único endpoint local. O vídeo explica o endpoint, os combos com troca automática de modelo, as estratégias de roteamento, a compressão de tokens e a integração com ferramentas de programação.
 fontes:
   - url: https://github.com/diegosouzapw/OmniRoute
-    titulo: "Repositório oficial do OmniRoute no GitHub"
-    sustenta: "O OmniRoute é um gateway de IA de código aberto que expõe vários provedores num endpoint local."
+    titulo: Repositório oficial do OmniRoute no GitHub
+    sustenta: O OmniRoute é um gateway de IA de código aberto que expõe vários provedores num endpoint local.
     verificada: false
   - url: https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/guides/USER_GUIDE.md
-    titulo: "Guia do usuário (USER_GUIDE.md)"
-    sustenta: "Os combos com troca automática de modelo, as estratégias de roteamento e as tags de modelo."
+    titulo: Guia do usuário (USER_GUIDE.md)
+    sustenta: Os combos com troca automática de modelo, as estratégias de roteamento e as tags de modelo.
     verificada: false
   - url: https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE_TIERS.md
-    titulo: "Análise de tiers gratuitos e orçamento de tokens (FREE_TIERS.md)"
-    sustenta: "O número de provedores com plano gratuito e de tokens gratuitos por mês."
+    titulo: Análise de tiers gratuitos e orçamento de tokens (FREE_TIERS.md)
+    sustenta: O número de provedores com plano gratuito e de tokens gratuitos por mês.
     verificada: false
 youtube:
   titulo: "OmniRoute: Pare de gastar fortunas com assinaturas de IA!"
@@ -60,6 +60,7 @@ youtube:
     - https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE_TIERS.md
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O caos das APIs
 
 Quem desenvolve com IA lida com dezenas de modelos, SDKs e chaves de API, com limites de taxa que travam o trabalho e sem saber o saldo real [01:23]. O OmniRoute concentra tudo num único endpoint, com roteamento automático [01:45].

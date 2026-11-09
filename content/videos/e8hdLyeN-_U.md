@@ -25,7 +25,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/e8hdLyeN-_U/maxresdefault.jpg
   visualizacoes: 14
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7781171
     - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9666332

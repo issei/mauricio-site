@@ -32,7 +32,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/zNxJnpH6Hys/maxresdefault.jpg
   visualizacoes: 13
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mwpt.com.br/9-anos-wpt/
     - https://mwpt.com.br/

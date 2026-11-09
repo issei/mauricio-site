@@ -47,7 +47,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/UCT59ySALrU/maxresdefault.jpg
   visualizacoes: 16
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.cursoemvideo.link/helpia`**
     - https://comunidade.hostnet.com.br/`**

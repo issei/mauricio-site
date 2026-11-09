@@ -5,7 +5,7 @@ status: rascunho
 temas:
   - aprendizagem-e-mente
   - gestao-e-estrategia
-resumo: "Com informação demais e clareza de menos, a vantagem é de quem pensa melhor. O vídeo apresenta a metacognição como o arquiteto da mente, liga cada habilidade estratégica a uma tradição filosófica (estoicismo, taoísmo, confucionismo e bushido) e mostra exemplos na Toyota e na Microsoft."
+resumo: Com informação demais e clareza de menos, a vantagem é de quem pensa melhor. O vídeo apresenta a metacognição como o arquiteto da mente, liga cada habilidade estratégica a uma tradição filosófica (estoicismo, taoísmo, confucionismo e bushido) e mostra exemplos na Toyota e na Microsoft.
 youtube:
   titulo: "A Arquitetura da Mente: Filosofia, Metacognição e Liderança Estratégica"
   publicado_em: 2026-09-23
@@ -52,6 +52,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Informação demais, clareza de menos
 
 O vídeo usa uma metáfora: a mente como uma arquitetura viva [00:00]. Hoje se consome num dia mais dados do que os antepassados numa vida, e essa avalanche empurra para a reação constante [00:00].

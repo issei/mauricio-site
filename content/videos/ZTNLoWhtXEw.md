@@ -7,12 +7,12 @@ temas:
 resumo: "O Git foi feito para pessoas, e não aguenta milhares de agentes de IA enviando código ao mesmo tempo. O vídeo apresenta o git-ai, uma implementação de código aberto inspirada no sistema interno da Anthropic: clientes sempre online, controle de versão como API, integração sem fila de merge, resolução automática de conflitos e servidores sem estado."
 fontes:
   - url: https://www.anthropic.com/engineering/redesigning-source-control
-    titulo: "Redesigning source control (Anthropic)"
-    sustenta: "O gargalo passou a ser a infraestrutura de desenvolvimento, e a Anthropic integra cerca de 30.000 mudanças por dia no repositório principal."
+    titulo: Redesigning source control (Anthropic)
+    sustenta: O gargalo passou a ser a infraestrutura de desenvolvimento, e a Anthropic integra cerca de 30.000 mudanças por dia no repositório principal.
     verificada: false
   - url: https://github.com/feder-cr/git-ai
-    titulo: "Repositório oficial do git-ai no GitHub"
-    sustenta: "O git-ai é um servidor de controle de versão de código aberto, compatível com repositórios Git."
+    titulo: Repositório oficial do git-ai no GitHub
+    sustenta: O git-ai é um servidor de controle de versão de código aberto, compatível com repositórios Git.
     verificada: false
 youtube:
   titulo: Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA
@@ -52,6 +52,7 @@ youtube:
     - https://www.anthropic.com/engineering/redesigning-source-control
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O Git chegou ao limite
 
 O Git em escala humana está chegando ao limite. O git-ai é uma arquitetura baseada num sistema interno da Anthropic, feita para aguentar milhares de agentes de IA enviando código ao mesmo tempo [00:00].

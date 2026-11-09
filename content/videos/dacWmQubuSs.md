@@ -5,15 +5,15 @@ status: rascunho
 temas:
   - engenharia-agentica
   - dados-e-decisao
-resumo: "O vídeo explica a diferença entre a engenharia de loop, em que um agente decide o próprio caminho, e a engenharia de grafo, em que os caminhos e as passagens de trabalho são definidos no código. Depois mostra como o DeerFlow 2.0 aplica isso com subagentes, skills carregadas sob demanda e um sandbox para os agentes trabalharem."
+resumo: O vídeo explica a diferença entre a engenharia de loop, em que um agente decide o próprio caminho, e a engenharia de grafo, em que os caminhos e as passagens de trabalho são definidos no código. Depois mostra como o DeerFlow 2.0 aplica isso com subagentes, skills carregadas sob demanda e um sandbox para os agentes trabalharem.
 fontes:
   - url: https://www.aibuilderclub.com/blog/graph-engineering-guide-2026
-    titulo: "Graph Engineering Guide (2026), AI Builder Club"
-    sustenta: "A diferença entre engenharia de loop e de grafo, e a metáfora do organograma."
+    titulo: Graph Engineering Guide (2026), AI Builder Club
+    sustenta: A diferença entre engenharia de loop e de grafo, e a metáfora do organograma.
     verificada: false
   - url: https://github.com/bytedance/deer-flow
-    titulo: "DeerFlow GitHub (ByteDance)"
-    sustenta: "O DeerFlow é de código aberto, com licença MIT, e tem subagentes, skills e sandbox."
+    titulo: DeerFlow GitHub (ByteDance)
+    sustenta: O DeerFlow é de código aberto, com licença MIT, e tem subagentes, skills e sandbox.
     verificada: false
 youtube:
   titulo: "A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!"
@@ -64,6 +64,7 @@ youtube:
     - https://github.com/agent-infra/sandbox
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Do chat à automação de fluxos
 
 Os agentes de IA deixaram de ser só assistentes de chat e passaram a automatizar fluxos de trabalho complexos [00:00]. Para isso funcionar sem o sistema alucinar ou travar, o design de software teve de mudar [00:00].
