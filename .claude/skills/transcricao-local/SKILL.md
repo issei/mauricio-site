@@ -1,6 +1,6 @@
 ---
 name: transcricao-local
-description: Extrai a transcrição de um vídeo do YouTube na máquina do Issei, sem usar a cota da API, e grava content/videos/<id>.transcricao.vtt. Primeiro tenta a legenda automática do YouTube com o yt-dlp; se o vídeo não tem legenda, transcreve o áudio com o Whisper do projeto c3po-interpreter-engine. Use quando houver vídeos com `legenda: pendente` e a cota diária da coleta (~35 legendas) for o gargalo.
+description: Extrai a transcrição de um vídeo do YouTube na máquina do Issei, sem usar a cota da API, e grava content/videos/<id>.transcricao.vtt. Primeiro tenta a legenda automática do YouTube com o yt-dlp; se o vídeo não tem legenda, transcreve o áudio com o Whisper do projeto c3po-interpreter-engine. Depois corrige ortografia e nomes com a skill ptbr-controlado, sem mudar os tempos. Use quando houver vídeos com `legenda: pendente` e a cota diária da coleta (~35 legendas) for o gargalo.
 ---
 
 # transcricao-local — transcrição sem a cota da API
@@ -129,6 +129,43 @@ Regras deste passo:
 - Na primeira execução, o Whisper baixa o modelo (`small` = 461 MB) para o cache local.
 - Nunca grave o áudio dentro do repositório.
 
+### 4b. Corrija o texto com a skill `ptbr-controlado`
+
+Faça este passo depois do passo 3 ou do passo 4, e só nos `.vtt` que esta skill
+gravou nesta sessão.
+
+1. Leia a skill `ptbr-controlado`. Use o modo **Revisão** com **intervenção mínima**.
+2. Trate a transcrição como **citação** da fala do Issei (regra B0.03). Corrija só:
+   - ortografia e acentuação (exemplo: "amadilha" → "armadilha");
+   - nomes próprios, nomes de produto e termos técnicos que o reconhecimento de fala
+     escreveu errado. Confira o nome no título ou na descrição do vídeo (bloco `youtube:`);
+   - pontuação que muda a leitura da frase.
+3. Não reescreva a fala. Não aplique as regras B1, B4, B6 nem B7 (ordem direta,
+   estrutura, requisitos, voz editorial): elas mudariam o que o Issei disse.
+   Não corte repetições, hesitações nem gírias.
+4. Na dúvida sobre o que o vídeo diz, deixe o trecho como está. Não adivinhe.
+5. Edite só as linhas de texto. Não mude as linhas de tempo (`-->`), a ordem das *cues*
+   nem as tags `<00:00:01.160><c>` da legenda do YouTube. As âncoras `[mm:ss]` dependem
+   desses tempos.
+6. Na legenda do YouTube, a mesma frase aparece em duas *cues* seguidas. Aplique a mesma
+   correção nas duas: o `parseVtt` junta as duas pelo começo do texto, e uma correção
+   diferente faz a frase aparecer duplicada na página.
+
+Confira que nenhum tempo mudou. Guarde uma cópia antes de corrigir
+(`cp <arquivo> "$TEMP/<id>.antes.vtt"`) e compare depois. O comando abaixo não pode
+mostrar diferença:
+
+```bash
+diff <(grep -- '-->' "$TEMP/<id>.antes.vtt") <(grep -- '-->' "content/videos/<id>.transcricao.vtt")
+```
+
+Mesmo corrigida, a transcrição continua com `legenda: automatica` e o aviso "não
+revisada": a correção é de um modelo de linguagem, e não do Issei.
+
+Custo: a legenda do YouTube de um vídeo de 9 minutos tem cerca de 77 KB por causa das
+tags de tempo por palavra. Corrija em lotes pequenos (5 vídeos), como na skill
+`video-artigo`.
+
 ### 5. Atualize o `.md` do vídeo
 
 No bloco `youtube:` de `content/videos/<id>.md`, troque `legenda: pendente` por
@@ -155,13 +192,14 @@ O gerador lê o `.vtt` com `parseVtt` em `scripts/gen-videos.mjs`. Os dois forma
 - Use um branch próprio. Não use `videos/coleta`: esse branch é do workflow.
 - Commit sugerido: `chore(videos): transcrições locais de <n> vídeos`.
 - No corpo do PR, liste os vídeos e a origem de cada transcrição: "legenda do YouTube"
-  ou "Whisper small".
+  ou "Whisper small", e se o texto passou pela correção do passo 4b.
 - O merge na `main` publica o site. Quem faz o merge é o Issei.
 
 ## Não faça
 
-- Não edite um `.vtt` que já existe: ele veio da coleta.
-- Não use LLM para transcrever nem para corrigir a transcrição.
+- Não edite um `.vtt` que já existia antes desta sessão: ele veio da coleta.
+- Não use LLM para transcrever. O LLM só corrige o texto, no passo 4b, e com as regras
+  desse passo.
 - Não mude `status` do vídeo. Esta skill só cuida da transcrição.
 - Não instale nem atualize pacotes no Python do Issei sem pedir. O passo 1 usa uma pasta
   temporária por esse motivo.
