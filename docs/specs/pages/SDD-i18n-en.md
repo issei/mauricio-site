@@ -26,7 +26,7 @@ Documentações técnicas de especificação interna, governança e regras de de
 * **Configuração de Build e SEO/AEO:** Atualizações no `vite.config.js`, tags `hreflang`, atributo `lang` no HTML e mapa do site (`sitemap.xml`).
 
 ### 2.2. Excluído do Escopo (Documentação Interna e Utilitários)
-* **Especificações e Governança Interna:** `docs/specs/`, `.agents/`, `.claude/`, `.ai/`, `ADMIN_README.md`, `ECOSYSTEM.md`.
+* **Especificações e Governança Interna:** `docs/specs/`, `.agents/`, `.claude/`, `.ai/`, `ECOSYSTEM.md`.
 * **Ferramentas Internas e Páginas Administrativas:** `src/admin.html`, `src/admin-editor.html`, `src/diagnostic.html`, `src/test-github.html`, `src/exemplopdi.html`, `src/vsl.html`, `src/mapmind.html`.
 
 ---
