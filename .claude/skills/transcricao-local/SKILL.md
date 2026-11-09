@@ -131,8 +131,8 @@ Regras deste passo:
 
 ### 4b. Corrija o texto com a skill `ptbr-controlado`
 
-Faça este passo depois do passo 3 ou do passo 4, e só nos `.vtt` que esta skill
-gravou nesta sessão.
+Faça este passo só nos `.vtt` que esta skill gravou (commit "transcrição local de
+<id>").
 
 1. Leia a skill `ptbr-controlado`. Use o modo **Revisão** com **intervenção mínima**.
 2. Trate a transcrição como **citação** da fala do Issei (regra B0.03). Corrija só:
@@ -144,27 +144,34 @@ gravou nesta sessão.
    estrutura, requisitos, voz editorial): elas mudariam o que o Issei disse.
    Não corte repetições, hesitações nem gírias.
 4. Na dúvida sobre o que o vídeo diz, deixe o trecho como está. Não adivinhe.
-5. Edite só as linhas de texto. Não mude as linhas de tempo (`-->`), a ordem das *cues*
-   nem as tags `<00:00:01.160><c>` da legenda do YouTube. As âncoras `[mm:ss]` dependem
-   desses tempos.
-6. Na legenda do YouTube, a mesma frase aparece em duas *cues* seguidas. Aplique a mesma
-   correção nas duas: o `parseVtt` junta as duas pelo começo do texto, e uma correção
-   diferente faz a frase aparecer duplicada na página.
+5. **Não edite o `.vtt` à mão.** Leia o texto corrido, sem as tags de tempo:
 
-Confira que nenhum tempo mudou. Guarde uma cópia antes de corrigir
-(`cp <arquivo> "$TEMP/<id>.antes.vtt"`) e compare depois. O comando abaixo não pode
-mostrar diferença:
+   ```bash
+   node -e "import('./scripts/gen-videos.mjs').then(m=>console.log(m.parseVtt(require('fs').readFileSync(process.argv[1],'utf8')).map(c=>c.texto).join(' ')))" "content/videos/<id>.transcricao.vtt"
+   ```
 
-```bash
-diff <(grep -- '-->' "$TEMP/<id>.antes.vtt") <(grep -- '-->' "content/videos/<id>.transcricao.vtt")
-```
+   O texto corrido tem cerca de 2 mil tokens por vídeo. O `.vtt` da legenda do YouTube
+   tem cerca de 20 mil, por causa das tags de tempo por palavra.
+6. Escreva só a lista de trocas em `$TEMP/<id>.trocas.json`:
+   `[{ "de": "amadilha", "para": "armadilha" }]`. Cada `de` precisa ser um trecho exato
+   do texto, longo o bastante para não pegar outra palavra (exemplo: `"a amadilha"`, e
+   não `"ama"`).
+7. Aplique as trocas:
+
+   ```bash
+   node scripts/videos/aplicar-trocas.mjs "content/videos/<id>.transcricao.vtt" "$TEMP/<id>.trocas.json"
+   ```
+
+   O script troca o texto em todas as *cues*, remove as tags de tempo por palavra (o site
+   já as ignora) e não mexe nas linhas de tempo (`-->`). Ele sai com código 1 e lista a
+   troca que não achou o texto: corrija o par e rode de novo.
 
 Mesmo corrigida, a transcrição continua com `legenda: automatica` e o aviso "não
 revisada": a correção é de um modelo de linguagem, e não do Issei.
 
-Custo: a legenda do YouTube de um vídeo de 9 minutos tem cerca de 77 KB por causa das
-tags de tempo por palavra. Corrija em lotes pequenos (5 vídeos), como na skill
-`video-artigo`.
+Quando corrigir: só nos vídeos do próximo lote de artigos (5 vídeos, skill
+`video-artigo`), e não no backlog inteiro. O artigo lê a transcrição inteira de qualquer
+forma. No PR, mostre a lista de trocas de cada vídeo para o Issei revisar.
 
 ### 5. Atualize o `.md` do vídeo
 
@@ -195,9 +202,36 @@ O gerador lê o `.vtt` com `parseVtt` em `scripts/gen-videos.mjs`. Os dois forma
   ou "Whisper small", e se o texto passou pela correção do passo 4b.
 - O merge na `main` publica o site. Quem faz o merge é o Issei.
 
+## Execução automática no tempo ocioso
+
+O script `scripts/videos/transcrever-local.sh` faz os passos 2 a 6 sem modelo de
+linguagem. Ele não faz o passo 4b nem o 7.
+
+- **Onde roda:** no worktree `D:\projetos\mauricio-site-transcricoes`, branch
+  `videos/transcricao-local`. Nunca na cópia de trabalho do Issei em `D:\projetos\mauricio-site`.
+- **Fila:** vídeos com `legenda: pendente`, sem `.vtt` no branch e sem `.vtt` no branch
+  `videos/coleta`. A ordem vai do menos visto para o mais visto, o inverso do workflow,
+  para os dois não pegarem o mesmo vídeo.
+- **Saída:** um commit por vídeo. O script não faz push e não abre PR.
+- **Log:** `%LOCALAPPDATA%\transcricao-local\log.txt`.
+- **Parâmetros:** `MAX` (vídeos na etapa da legenda, padrão 40) e `WHISPER` (vídeos sem
+  legenda transcritos com o Whisper, padrão 1).
+
+Para registrar a tarefa no Agendador de Tarefas do Windows, crie a tarefa pela interface
+(`taskschd.msc`) com:
+
+- ação: `"C:\Program Files\Git\bin\bash.exe" -lc "/d/projetos/mauricio-site-transcricoes/scripts/videos/transcrever-local.sh"`;
+- disparador: diário, às 01:00;
+- condições: "Iniciar somente se o computador estiver ocioso por 10 minutos", "Parar se o
+  computador deixar de estar ocioso", "Iniciar somente se o computador estiver na energia
+  CA". Desmarque "Despertar o computador";
+- configurações: "Não iniciar uma nova instância" se a anterior ainda estiver rodando.
+
+Para abrir o PR de um lote, rode o passo 7 a partir desse branch.
+
 ## Não faça
 
-- Não edite um `.vtt` que já existia antes desta sessão: ele veio da coleta.
+- Não edite um `.vtt` que esta skill não gravou: ele veio da coleta.
 - Não use LLM para transcrever. O LLM só corrige o texto, no passo 4b, e com as regras
   desse passo.
 - Não mude `status` do vídeo. Esta skill só cuida da transcrição.
