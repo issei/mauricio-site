@@ -323,7 +323,7 @@ vídeo) nem de um segundo agrupamento de assunto.
 ```text
 /                                   Início — apresentação editorial (reescrita)
 ├── /curriculo                      Trajetória — experiência, Mapa de Linhas, STAR, formação
-│   └── narrativas pessoais         /life · /life3d · /lifeos · /terminal-evolutivo (links "a jornada contada de outro jeito")
+│   └── narrativas pessoais         /life · /life3d · /terminal-evolutivo (links "a jornada contada de outro jeito")
 ├── /catalogo                       Produção — índice único, gerado
 │   ├── #p1 Fundação · Mentalidade
 │   ├── #p2 Engenharia de Confiança · O Método
@@ -373,7 +373,8 @@ descontinuada. A natureza é a **proposta padrão** desta análise e precisa da 
 | `/catalogo` | Produção | — | Revisar (gerar) | P4; passa a ser gerado do YAML |
 | `/videos` | Vídeos | — | Manter | já gerado; ganha link da home e do catálogo |
 | `/temas/*` (10) | Vídeos e temas | — | Revisar (gerar) | ganham artigos relacionados |
-| `/life`, `/life3d`, `/lifeos`, `/terminal-evolutivo` | Trajetória (ligadas) | Experimento | Reclassificar | narrativa pessoal, não resultado |
+| `/life`, `/life3d`, `/terminal-evolutivo` | Trajetória (ligadas) | Experimento | Reclassificar | narrativa pessoal, não resultado |
+| `/lifeos` | sem área (por ora) | — | Manter publicado, sem link | o autor decidiu deixar fora da F1 (SDD-F1-F1b, Anexo B, Q5) |
 | `/know` | Produção p1 | Estudo | Manter | — |
 | `/artifice` | Produção p1 | Estudo | Manter | — |
 | `/formulacao-de-problemas` | Produção p1 | Estudo | Manter | já declara "sustentação parcial" |
@@ -398,7 +399,7 @@ descontinuada. A natureza é a **proposta padrão** desta análise e precisa da 
 | `/salesforce-agentic-dev` | Produção p3 | Referência | Manter | curso |
 | `/salesforce-agentic-quickstart` | Produção p3 | Referência | Manter | tutorial |
 | `/proposta-engenharia-reversa` | Produção p3 | Proposta | Manter | — |
-| `/socialselling` | Produção p3 | Experiência | Reclassificar (sai de p5) | documentação de projeto |
+| `/socialselling` | Produção p3 | Experimento | Reclassificar (sai de p5) | documentação de projeto; natureza decidida pelo autor (SDD-F1-F1b, Anexo B, Q1) |
 | `/sustentacao` | Produção p4 | Referência | Manter | curso |
 | `/service-operations-2-0` | Produção p4 | Proposta | Manter | visão executiva de modelo |
 | `/proposta-observabilidade-mobile` | Produção p4 | Proposta | Manter | — |
@@ -790,7 +791,10 @@ juntas (formam o PR da F1), D7 depois.
 
 1. ~~O autor responde D1 a D7.~~ Feito em 10/11/2026.
 2. Especificações por fase. Feitas em 10/11/2026: [`SDD-F1-F1b.md`](SDD-F1-F1b.md)
-   (Parte 1, F1, com a classificação das 33 páginas para o autor confirmar; Parte 2, F1b). F2 a F5 vêm depois.
+   (Parte 1, F1, com a classificação das páginas; Parte 2, F1b). F2 a F5 vêm depois. As questões
+   de confirmação Q1 a Q9 foram respondidas em 10/11/2026 (Anexo B do SDD): cabeçalho fixo, botão
+   hambúrguer no celular, `<eco-nav>` sai no L5, rótulos em inglês "Home · Career · Work · Videos"
+   e `lifeos` fora por ora.
 3. Atualizar `ECOSYSTEM.md` e o ADR-pf-001 (§11.4) no mesmo PR da especificação.
 4. Exportar do GA4 e do Search Console as páginas de entrada dos últimos 90 dias (lacuna §3.3).
 5. Começar pela F1, que corrige divergências reais sem mudar a experiência da home.
