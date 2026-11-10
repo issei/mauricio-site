@@ -789,9 +789,8 @@ juntas (formam o PR da F1), D7 depois.
 ### 13.4 Próximas ações para virar especificação de implementação
 
 1. ~~O autor responde D1 a D7.~~ Feito em 10/11/2026.
-2. Especificações por fase. Feitas em 10/11/2026: [`SDD-F1-fonte-unica.md`](SDD-F1-fonte-unica.md)
-   (com a classificação das 33 páginas para o autor confirmar) e
-   [`SDD-F1b-cabecalho-comum.md`](SDD-F1b-cabecalho-comum.md). F2 a F5 vêm depois.
+2. Especificações por fase. Feitas em 10/11/2026: [`SDD-F1-F1b.md`](SDD-F1-F1b.md)
+   (Parte 1, F1, com a classificação das 33 páginas para o autor confirmar; Parte 2, F1b). F2 a F5 vêm depois.
 3. Atualizar `ECOSYSTEM.md` e o ADR-pf-001 (§11.4) no mesmo PR da especificação.
 4. Exportar do GA4 e do Search Console as páginas de entrada dos últimos 90 dias (lacuna §3.3).
 5. Começar pela F1, que corrige divergências reais sem mudar a experiência da home.
