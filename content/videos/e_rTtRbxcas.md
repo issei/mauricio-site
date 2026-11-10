@@ -78,7 +78,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/e_rTtRbxcas/maxresdefault.jpg
   visualizacoes: 8
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://github.com/renatogroffe/arquitetura-integracoes-2025-11
   coletado_em: 2026-11-07T22:16:07Z

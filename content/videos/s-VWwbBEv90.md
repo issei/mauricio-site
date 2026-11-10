@@ -7,12 +7,12 @@ temas:
 resumo: "Agentes de IA não cabem no modelo de requisição e resposta das APIs REST. O AG-UI é um protocolo aberto, baseado em eventos, que liga o agente à interface do usuário. O vídeo mostra onde ele fica ao lado do MCP e do A2A, e os três pilares: estado compartilhado com deltas, interface generativa e interrupções para aprovação humana."
 fontes:
   - url: https://docs.ag-ui.com/
-    titulo: "Documentação oficial do AG-UI"
-    sustenta: "A frase \"aplicações agênticas quebram o modelo simples de requisição e resposta\" e o estado compartilhado com deltas JSON Patch."
+    titulo: Documentação oficial do AG-UI
+    sustenta: A frase "aplicações agênticas quebram o modelo simples de requisição e resposta" e o estado compartilhado com deltas JSON Patch.
     verificada: false
   - url: https://github.com/ag-ui-protocol/ag-ui
-    titulo: "Repositório no GitHub"
-    sustenta: "O AG-UI é um protocolo aberto, baseado em eventos, com integrações para vários frameworks de agentes."
+    titulo: Repositório no GitHub
+    sustenta: O AG-UI é um protocolo aberto, baseado em eventos, com integrações para vários frameworks de agentes.
     verificada: false
 youtube:
   titulo: "Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI"
@@ -65,6 +65,7 @@ youtube:
     - https://dojo.ag-ui.com/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema: o modelo de requisição e resposta
 
 A documentação do protocolo diz: "Aplicações agênticas quebram o modelo simples de requisição e resposta" [01:03]. Antes, o cliente pedia, o servidor devolvia os dados, a tela renderizava e o ciclo fechava [01:03].

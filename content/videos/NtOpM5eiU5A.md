@@ -4,15 +4,15 @@ slug: google-ax-o-como-escalar-milhoes-de-agentes-de-ia
 status: rascunho
 temas:
   - engenharia-agentica
-resumo: "Agentes de IA guardam estado, rodam em loops e ficam muito tempo esperando, o que a infraestrutura feita para microsserviços não aguenta bem. O vídeo apresenta o Google AX, uma camada de orquestração de código aberto sobre o Kubernetes, com quatro primitivas, suspensão por snapshot, recuperação de falhas e isolamento com gVisor."
+resumo: Agentes de IA guardam estado, rodam em loops e ficam muito tempo esperando, o que a infraestrutura feita para microsserviços não aguenta bem. O vídeo apresenta o Google AX, uma camada de orquestração de código aberto sobre o Kubernetes, com quatro primitivas, suspensão por snapshot, recuperação de falhas e isolamento com gVisor.
 fontes:
   - url: https://github.com/google/ax
-    titulo: "Repositório oficial no GitHub"
-    sustenta: "O AX é de código aberto, com licença Apache 2.0, e tem as primitivas Task, Workspace, Gateway e Model."
+    titulo: Repositório oficial no GitHub
+    sustenta: O AX é de código aberto, com licença Apache 2.0, e tem as primitivas Task, Workspace, Gateway e Model.
     verificada: false
   - url: https://agentexecutor.io/
-    titulo: "Site oficial do AX"
-    sustenta: "O AX suspende agentes ociosos por snapshot e os retoma rápido, sem cold start."
+    titulo: Site oficial do AX
+    sustenta: O AX suspende agentes ociosos por snapshot e os retoma rápido, sem cold start.
     verificada: false
 youtube:
   titulo: "Google AX: O Como Escalar Milhões de Agentes de IA"
@@ -72,6 +72,7 @@ youtube:
     - https://github.com/google/ax](https://github.com/google/ax
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## A infraestrutura não foi feita para agentes
 
 O jeito como hospedamos software hoje não foi feito para agentes de IA [00:00]. Tratar agentes como aplicações web comuns pode derrubar o sistema ou estourar o orçamento [00:21].

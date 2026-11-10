@@ -4,7 +4,7 @@ slug: seu-novo-assistente-de-ia-automacao-sem-codigo-com-google
 status: rascunho
 temas:
   - ferramentas-de-ia
-resumo: "O Google Workspace Studio permite criar agentes de IA sem programar, para automatizar tarefas repetitivas. O vídeo explica as três peças de um agente (iniciador, etapas e variáveis), o que o Gemini acrescenta a uma automação por regras e os cuidados de segurança com dados sensíveis."
+resumo: O Google Workspace Studio permite criar agentes de IA sem programar, para automatizar tarefas repetitivas. O vídeo explica as três peças de um agente (iniciador, etapas e variáveis), o que o Gemini acrescenta a uma automação por regras e os cuidados de segurança com dados sensíveis.
 youtube:
   titulo: "SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini"
   publicado_em: 2025-12-05
@@ -27,6 +27,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema: trabalho repetitivo
 
 O Google anunciou agentes de IA que se criam sem programar, direto no Workspace Studio [00:00]. Eles atacam o trabalho repetitivo: responder sempre os mesmos e-mails, organizar arquivos e copiar informação de um lado para o outro [00:21].

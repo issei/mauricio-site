@@ -86,7 +86,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/E4yTCqkyeh4/maxresdefault.jpg
   visualizacoes: 10
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://iso25000.com
     - https://cloud.google.com/blog/products/management-tools/sre-error-budgets-and-maintenance-windows

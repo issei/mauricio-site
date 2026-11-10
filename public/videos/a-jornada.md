@@ -28,4 +28,10 @@ O estágio atual. A evolução com precisão, onde a experiência se torna estra
 
 ## Transcrição
 
-Transcrição ainda não disponível.
+_Transcrição automática, não revisada._
+
+[0:00] Aqui a gente vê a história de uma vida construída, sabe? Nível por nível. Bora nessa. Afinal, como uma vida é construída? É só uma série de acasos ou tem um plano por trás? Olha, essa jornada começa lá atrás, com heróis japoneses e uma boa e velha TV de tubo. Naquela época, na infância, a cultura era mais que diversão, era tipo uma programação mental. E esses princípios não foram só aprendidos, sabe? Foram absorvidos. viraram um modelo mental. Aí na adolescência, a coisa muda, os heróis e a tecnologia ficaram bem mais interativos. E com isso veio uma lição chave. Crescer não é um evento, é um processo. Sempre tem um próximo nível. A chegada do computador mudou tudo. Foi uma virada de chave de passivo para ativo. Depois, no começo da vida adulta, a descoberta de que ninguém constrói nada sozinho. E bem no estilo Naruto, né? As habilidades vieram com muita repetição e persistência. Só que o grande marco
+
+[1:01] dessa década não foi a tecnologia, foi algo humano. A vida deixou de ser sobre crescer sozinho, passou a ser sobre construir a tois. Com a família, o foco mudou de novo. A responsabilidade virou combustível pro crescimento. Então, o crescimento passou a acontecer em duas frentes, sabe? Profissional e pessoal, uma alimentando a outra. Crescer virou uma responsabilidade, não mais uma opção, quase como a missão de um herói. Chegando na maturidade, o jogo muda. O foco não é mais velocidade, sim precisão. A perspectiva se ampliou, deixou de ser só sobre fazer para ser sobre arquitetar o tudo. E o maior crescimento se torna invisível. É um refinamento interno da mente e da consciência. Olhando para trás, cada fase teve seu papel, uma construção lógica, degrau por degrau. E agora o próximo nível não é só sobre crescer, é sobre ajudar os outros a crescerem também. Porque o herói da história, ele não para só porque ficou forte, não. Ele
+
+[2:02] assume um novo papel, ele se torna um mentor. Essa jornada mostra uma forma de construir uma vida. E fica a pergunta: Qual é o seu próximo nível?
