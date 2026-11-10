@@ -85,6 +85,8 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
     <!-- SEO & Meta Tags -->
     <style>
+        /* Cabeçalho comum + barra de seções: o foco e as âncoras param abaixo das duas (WCAG 2.4.11). */
+        html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 5rem); }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0d1117;
@@ -912,6 +914,9 @@
 }
 </script>
 <!-- AEO:END -->
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh-marca{color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh-marca:hover{color:#58a6ff}.sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06)}.sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh-botao{display:none}@media (max-width:639.98px){.sh-marca{font-size:.95rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh-js .sh-nav{margin-left:-1rem}.sh-js .sh-botao{margin-left:auto;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/curriculo" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/curriculo" />
@@ -920,16 +925,23 @@
 
 <body class="antialiased">
     <a class="a11y-skip" href="#conteudo">Skip to content</a>
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/en/">Maurício Yokoyama Issei</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Home</a></li><li><a href="/en/curriculo.html" aria-current="page">Career</a></li><li><a href="/en/catalogo.html">Work</a></li><li><a href="/videos.html">Videos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg backdrop-blur-sm">
+    <!-- Seções do currículo: abaixo do cabeçalho comum (F1b, RF-F1b-08 e RF-F1b-16) -->
+    <nav class="fixed left-0 w-full bg-gray-900 bg-opacity-90 z-50 shadow-lg backdrop-blur-sm" style="top: var(--sh-altura, 0px)" aria-label="Curriculum sections">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#hero"
-                class="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Mauritius
-Yokoyama Issei</a>
+                class="text-base font-semibold text-white hover:text-blue-400 transition-colors duration-300">Curriculum</a>
             <div class="hidden md:flex space-x-4 text-sm">
                 <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">About Me</a>
                 <a href="#skills"
@@ -944,12 +956,11 @@ Yokoyama Issei</a>
                 <a href="#recommendations"
                     class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Recommendations</a>
                 <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Contact</a>
-                <a href="./catalogo.html" class="text-blue-400 hover:bg-gray-700">Catalog</a>
             </div>
             <!-- Botão do Menu Mobile -->
             <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none"
                 aria-controls="mobile-menu" aria-expanded="false">
-                <span class="sr-only">Open Main Menu</span>
+                <span class="sr-only">Open resume sections</span>
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
@@ -967,7 +978,6 @@ Yokoyama Issei</a>
             <a href="#courses" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Courses</a>
             <a href="#recommendations" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Recommendations</a>
             <a href="#contact" class="block px-6 py-2 text-gray-300 hover:bg-gray-700">Contact</a>
-            <a href="./catalogo.html" class="block px-6 py-2 text-blue-400 hover:bg-gray-700">Catalog</a>
         </div>
     </nav>
 
