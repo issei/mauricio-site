@@ -43,7 +43,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/oB7BUFktKBA/maxresdefault.jpg
   visualizacoes: 10
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://agenticresourcediscovery.org/spec
     - https://github.com/ards-project/ard-spec
