@@ -37,7 +37,7 @@ test.describe('O Artífice Invisível — Smoke & SEO', () => {
     for (const id of ['hero', 'paradoxos', 'antidoto', 'diagnostico', 'acervo']) {
       await expect(page.locator(`#${id}`)).toHaveCount(1);
     }
-    await page.click('header a[href="#paradoxos"]');
+    await page.click('.art-header a[href="#paradoxos"]');
     await expect(page.locator('#paradoxos')).toBeInViewport();
   });
 });

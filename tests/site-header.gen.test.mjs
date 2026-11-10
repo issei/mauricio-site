@@ -16,22 +16,24 @@ const { eco } = loadEcossistema();
 const L1 = ['index', 'curriculo', 'catalogo', 'videos', 'privacidade', 'termos', 'cookies', '404'];
 /** Lote L2 (F1b.5): as 14 páginas com trilha própria (G-B). */
 const L2 = ['acessibilidade', 'agent-ready', 'aprendizagem-autorregulada', 'aprendizagem-autorregulada-artigo', 'capacidade-antes-do-acesso', 'case-agents', 'curiosidade-e-investigacao', 'da-execucao-a-orquestracao', 'develop-engineering', 'digital-workplace-agentico', 'engenharia-agentes-ia', 'engenharia-confianca', 'especificacao-conversacional', 'formulacao-de-problemas'];
+/** Lote L3 (F1b.5): as 9 páginas com barra própria de site (G-C). */
+const L3 = ['artifice', 'devin', 'devops-salesforce', 'knowledge-os-presentation', 'proposta-observabilidade-mobile', 'salesforce-agentic-dev', 'salesforce-agentic-quickstart', 'socialselling', 'service-operations-2-0'];
 
 test('todo bloco gerado está em dia (gen-cabecalho --check)', () => {
   const fora = planejar().filter((p) => p.antes !== p.depois).map((p) => p.rel);
   assert.deepEqual(fora, []);
 });
 
-test('os lotes L1 e L2 têm os marcadores, inclusive temas e fichas de vídeo', () => {
+test('os lotes L1, L2 e L3 têm os marcadores, inclusive temas e fichas de vídeo', () => {
   const comMarca = new Set(planejar().map((p) => p.rel));
   const temas = readdirSync(join(ROOT, 'src/temas')).map((f) => `temas/${f}`);
   const fichas = readdirSync(join(ROOT, 'src/videos')).map((f) => `videos/${f}`);
-  const faltando = [...L1, ...L2].map((s) => `${s}.html`).concat(temas, fichas).filter((r) => !comMarca.has(r));
+  const faltando = [...L1, ...L2, ...L3].map((s) => `${s}.html`).concat(temas, fichas).filter((r) => !comMarca.has(r));
   assert.deepEqual(faltando, []);
 });
 
-test('RF-F1b-06 · um só <header> filho direto do <body> nas páginas do L1 e do L2', () => {
-  for (const s of [...L1, ...L2]) {
+test('RF-F1b-06 · um só <header> filho direto do <body> nas páginas do L1, do L2 e do L3', () => {
+  for (const s of [...L1, ...L2, ...L3]) {
     const html = readFileSync(join(ROOT, 'src', `${s}.html`), 'utf8');
     const corpo = html.slice(html.indexOf('<body'));
     // header de topo = não está dentro de article/section/main/aside/nav
