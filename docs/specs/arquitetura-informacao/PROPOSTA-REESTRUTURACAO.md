@@ -4,7 +4,7 @@ titulo: Proposta estratégica de reestruturação do mauricio.issei.com.br
 data: 2026-11-10
 leitor: Issei (autor e decisor); agentes que vão escrever a especificação de implementação
 padrao_de_redacao: PT-BR controlado (perfil híbrido)
-status: proposta — aguarda as decisões D1 a D7 da §13
+status: proposta — decisões D1 a D7 tomadas pelo autor em 10/11/2026 (§13.2)
 ---
 
 # Proposta estratégica de reestruturação do mauricio.issei.com.br
@@ -24,6 +24,10 @@ status: proposta — aguarda as decisões D1 a D7 da §13
 > os 10 temas de `temas.yml`, e a seção da home chama "Pilares"; o índice de vídeos é índice de
 > formato, não área; as provas da home vêm da lista "Resultados quantificados" já gerada;
 > referências cruzadas para §8 e §9 acertadas; Hub de Conexão incluído no inventário.
+>
+> **Decisões do autor (10/11/2026, 3ª versão).** D1 a D5 seguiram a recomendação. D6 e D7 não:
+> o autor escolheu um **cabeçalho comum novo** em todas as páginas (D6 b) e **temas atribuídos a
+> cada artigo no YAML** (D7 b). As seções 6, 7, 9, 10, 11, 12 e 13 foram ajustadas a essas escolhas.
 
 ---
 
@@ -51,9 +55,10 @@ status: proposta — aguarda as decisões D1 a D7 da §13
   trabalho, onde estão as provas e por onde começar a ler.
 - **Trajetória (`/curriculo`)**: a única página de experiência. Recebe o Mapa de Linhas e os
   projetos STAR que hoje estão na home.
-- **Produção (`/catalogo`)**: o único índice da produção intelectual, gerado da mesma fonte que o
-  menu flutuante, com os pilares de conteúdo e um atributo novo, **natureza** (Experiência,
-  Estudo, Proposta, Experimento, Referência).
+- **Produção (`/catalogo`)**: o único índice da produção intelectual, gerado do
+  `ecosystem.nav.yaml`, com os pilares de conteúdo e dois atributos por página: **natureza**
+  (Experiência, Estudo, Proposta, Experimento, Referência) e **temas**.
+- **Cabeçalho comum** em todas as páginas públicas: Início · Trajetória · Produção · Vídeos.
 
 Essa opção é a alternativa C da §5. Ela vence as outras duas porque resolve os dois problemas
 comprovados (a home sem porta para a produção e a disputa home × currículo) **sem criar URL
@@ -348,7 +353,7 @@ vira índice próprio, `socialselling` vai para o p3 e `boutique-empresarial-sho
 ### 6.3 Critério de descoberta
 
 - A home liga às três áreas acima da dobra no celular.
-- Toda página autoral tem: o menu flutuante com as entradas fixas (§9.1), a natureza no topo e a
+- Toda página autoral tem: o cabeçalho comum (§9.1), a natureza no topo e a
   continuação "Se este tema interessa" no fim.
 - O catálogo é o único lugar com a lista completa; a home e os temas mostram recortes.
 
@@ -381,8 +386,8 @@ descontinuada. A natureza é a **proposta padrão** desta análise e precisa da 
 | `/apresentacao` | Produção p2 | Referência | Manter | visão geral; exceção de paleta mantida |
 | `/engenharia-confianca` | Produção p2 | Estudo | Consolidar (BL-01) | vira trilha curta do G1 |
 | `/engenharia-agentes-ia` | Produção p2 | Estudo | Manter | — |
-| `/develop-engineering` | Produção p2 | Estudo | Revisar | passa a carregar o `<eco-nav>` (DV-3) |
-| `/agent-ready` | Produção p2 | Experiência | Revisar | descreve o próprio site; carregar `<eco-nav>` |
+| `/develop-engineering` | Produção p2 | Estudo | Revisar | recebe o cabeçalho comum (corrige DV-3) |
+| `/agent-ready` | Produção p2 | Experiência | Revisar | descreve o próprio site; recebe o cabeçalho comum |
 | `/case-agents` | Produção p2 | Experiência | Manter | case medido |
 | `/knowledge-os-presentation` | Produção p2 | Proposta | Manter | produto em especificação |
 | `/acessibilidade` | Produção p2 | Experiência | Manter | retrofit do próprio site, com evidência |
@@ -487,14 +492,20 @@ valer também para `/curriculo`. Isso exige uma revisão do ADR (§11).
 
 ### 9.1 Menu global
 
-**[R]** Não criar um cabeçalho novo em 33 páginas: cada uma tem layout próprio e a página
-`apresentacao` tem paleta própria. Em vez disso:
+**Decidido (D6 b):** um **cabeçalho comum**, igual em todas as páginas públicas, com quatro
+entradas: **Início · Trajetória · Produção · Vídeos**.
 
-- O `<eco-nav>` vira o menu global. Ele passa a estar em **todas** as páginas públicas (corrige
-  DV-3) e ganha, acima dos pilares, quatro entradas fixas: **Início · Trajetória · Produção ·
-  Vídeos**.
-- Os cabeçalhos que já existem (home, currículo, catálogo, vídeos) passam a usar os mesmos quatro
-  rótulos.
+- O cabeçalho é um componente compartilhado. Os dados (rótulos e URLs) vêm do YAML, como o
+  catálogo (D3). Ele funciona sem JavaScript: o HTML do cabeçalho é injetado por gerador no build,
+  não montado no navegador.
+- Os cabeçalhos próprios de cada página saem, ou viram navegação secundária quando têm função
+  interna (trilhas de jornada, marcadores de artigo, sumários).
+- A página `apresentacao` mantém a sua paleta: o cabeçalho usa só tokens neutros, e a exceção
+  `.ap-*` continua restrita aos seus arquivos.
+- O `<eco-nav>` deixa de ser o caminho principal. A especificação decide entre retirá-lo ou
+  mantê-lo só como "mapa dos pilares"; a recomendação é retirá-lo quando o cabeçalho cobrir todas
+  as páginas, para não haver dois menus.
+- Aplicação em lotes, cada lote com o sweep de acessibilidade (a dívida só desce).
 
 ### 9.2 Navegação secundária e breadcrumbs
 
@@ -517,8 +528,10 @@ progressiva: a lista completa precisa funcionar sem JS (padrão dos testes `*.no
 
 ### 9.5 Relações
 
-- **Tema → artigos.** Cada tema de `temas.yml` ganha uma lista de páginas autorais relacionadas;
-  `gen-videos.mjs` já gera a página do tema e passa a renderizar essa lista.
+- **Tema → artigos (D7 b).** Cada página autoral recebe um ou mais temas (`temas: [...]`) no YAML,
+  com as chaves de `content/temas.yml`. `gen-videos.mjs` lê o YAML e mostra os artigos na página do
+  tema; o catálogo pode agrupar ou filtrar por tema numa fase posterior. Os pilares continuam sendo
+  o agrupamento principal do catálogo; o tema é atributo de descoberta, não segundo menu.
 - **Pilar → vídeos.** O catálogo mostra, por pilar, o link para os temas correspondentes.
 - **Experiência ↔ Trajetória.** Toda página de natureza "Experiência" liga ao projeto STAR, quando
   houver um.
@@ -531,7 +544,7 @@ progressiva: a lista completa precisa funcionar sem JS (padrão dos testes `*.no
 | :-- | :-- | :-- |
 | Recrutador | Início → Provas (na própria home) → "Ver trajetória" → projeto STAR | 1–2 |
 | Liderança técnica | Início → Temas: p2 → `case-agents` (Experiência) → continuação → `engenharia-agentes-ia` | 2–3 |
-| Leitor vindo de busca | `/formulacao-de-problemas` → natureza "Estudo" no topo → continuação → menu flutuante → Início | 0 até a resposta; 1 até o autor |
+| Leitor vindo de busca | `/formulacao-de-problemas` → natureza "Estudo" no topo → continuação → cabeçalho → Início | 0 até a resposta; 1 até o autor |
 | Agente de IA | `llms.txt` → página `.md` com natureza e pilar → `cv-for-ai.md` | sem mudança de rota |
 
 ---
@@ -545,7 +558,7 @@ progressiva: a lista completa precisa funcionar sem JS (padrão dos testes `*.no
 | Pilar | **manter** (p1–p4) | YAML (`pillar`) |
 | Formato | **manter**, com a lista `KINDS` como única | YAML (`kind`), lido também pela camada editorial |
 | Natureza | **criar** (5 valores) | YAML (`natureza`) |
-| Tema | **estender** aos artigos (lista no tema, não na página) | `content/temas.yml` |
+| Tema | **estender** aos artigos: cada página autoral recebe 1 a 3 temas (D7 b) | YAML (`temas`), com as chaves de `content/temas.yml` |
 | Tempo de leitura | **manter calculado**, nunca digitado | gerador |
 | Data de atualização | **manter** (`meta.updated` e `dateModified` no JSON-LD) | página |
 | Público | **não criar** atributo; o "Comece por aqui" resolve | catálogo |
@@ -583,10 +596,10 @@ um marcador dentro do texto.
 
 | Classe | Mudança | Arquivos |
 | :-- | :-- | :-- |
-| Apenas conteúdo | classificar natureza de 33 páginas; textos da home; destaques; lista de artigos por tema | YAML, `temas.yml`, nova fonte da home |
+| Apenas conteúdo | classificar natureza e temas de 33 páginas; textos da home; destaques | YAML, nova fonte da home |
 | Arquitetura de informação | YAML v2.0.0: sai p5, entram 5 nós (DV-1), campos `kind` e `natureza`; 4 entradas fixas no menu | `specs/ecosystem.nav.yaml`, `ECOSYSTEM.md` |
-| Design e componentes | novo layout da home; mapa completo em `/curriculo`; natureza no cartão e no topo da página | `src/index.html`, `src/index.css`, `src/curriculo.html`, `public/aeo.css` |
-| Geração automatizada | `gen-portfolio.mjs` passa a gerar a home editorial (blocos de provas) e o currículo com o mapa; novo passo que gera o catálogo **e** os dados de `eco-nav.js` do YAML; `gen-videos.mjs` lê artigos por tema | `scripts/` |
+| Design e componentes | cabeçalho comum em todas as páginas públicas; novo layout da home; mapa completo em `/curriculo`; natureza no cartão e no topo da página | `src/index.html`, `src/index.css`, `src/curriculo.html`, `public/aeo.css` |
+| Geração automatizada | `gen-portfolio.mjs` passa a gerar a home editorial (blocos de provas) e o currículo com o mapa; novo passo que gera, do YAML, o catálogo e o cabeçalho comum (e `eco-nav.js` enquanto ele existir); `gen-videos.mjs` lê os temas de cada artigo no YAML | `scripts/` |
 | Infraestrutura | nenhuma. Sem URL nova, sem redirecionamento. | — |
 
 ### 11.2 Invariantes
@@ -609,13 +622,13 @@ um marcador dentro do texto.
 `index.spec.js`, `index.nojs.spec.js`, `curriculo.spec.js`, `portfolio.tokens.test.mjs`,
 `eco-nav.spec.js`, `hreflang.spec.js`, `editorial-layer.test.mjs`, `videos.gen.test.mjs`,
 `aeo.spec.js`. Testes novos: catálogo gerado em dia com o YAML; todo nó com `natureza` e `kind`
-da lista; toda página pública carrega o `<eco-nav>`; home abaixo de ~3 min.
+da lista e temas válidos; toda página pública tem o cabeçalho comum; home abaixo de ~3 min.
 
 ### 11.4 Documentos a atualizar antes do código (SDD)
 
 `ADR-pf-001` (escopo da paleta), `docs/specs/pages/portfolio/` (nova versão do SDD da home),
 `ECOSYSTEM.md` (v2.0.0 do grafo e fim da cópia manual), `EDITORIAL-LAYER.md` (natureza),
-`docs/specs/pages/videos-youtube/` (artigos por tema).
+`docs/specs/pages/videos-youtube/` (temas dos artigos), `A11Y-DECISIONS.md` (padrão do cabeçalho comum).
 
 ---
 
@@ -627,11 +640,12 @@ capacidade.
 | Fase | Objetivo | Escopo | Depende de | Prioridade | Risco | Aceite | Testes |
 | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
 | F0 | Decidir | D1–D7; especificação de implementação a partir deste documento | — | essencial | decisões em aberto travam F2–F3 | decisões registradas no PR | — |
-| F1 | Uma fonte para catálogo e menu | YAML v2.0.0 (5 nós, `kind`, `natureza`); gerador do catálogo e de `eco-nav.js`; `<eco-nav>` em todas as páginas | D3, D4, D5, D6 | essencial | regressão visual do catálogo | catálogo gerado igual ao atual mais as correções DV-1 a DV-3; gate verde | catálogo em dia; nó completo; eco-nav em todas |
+| F1 | Uma fonte para catálogo e cabeçalho | YAML v2.0.0 (5 nós, `kind`, `natureza`, `temas`); gerador do catálogo e dos dados do cabeçalho | D3, D4, D5, D7 | essencial | regressão visual do catálogo | catálogo gerado igual ao atual mais as correções DV-1 e DV-2; gate verde | catálogo em dia; nó completo |
+| F1b | Cabeçalho comum | componente gerado e injetado no build; aplicado em lotes (entradas → páginas com camada editorial → demais); `apresentacao` e páginas com navegação própria por último | F1, D6 | essencial | quebrar layouts e navegação interna; subir a dívida de a11y | todas as páginas públicas com o cabeçalho; nenhum cabeçalho antigo sobrando; baseline a11y não sobe | sweep a11y por lote, teste de cabeçalho, `*.nojs.spec.js` |
 | F2 | Trajetória completa | Mapa de Linhas e resultados em `/curriculo`; revisão do ADR-pf-001 | F0 | essencial | perda de informação no currículo | nada do conteúdo atual da home fica sem lugar | `curriculo.spec`, tokens |
 | F3 | Home editorial | nova home com provas geradas e mapa resumido | F1, F2, D1, D2 | essencial | SEO da home; texto sem fonte | 5 perguntas respondidas; ≤ ~3 min; JSON-LD igual; auditoria de afirmações | `index.spec`, `nojs`, a11y, hreflang |
 | F4 | Natureza visível | natureza no cartão e no topo de cada página; `llms.txt` | F1 | essencial | ruído visual | rótulo sem heading, mesmo padrão `.ed-*` | `editorial-layer`, a11y |
-| F5 | Relações (D7) | artigos por tema; continuação em todas as páginas autorais; link STAR nas Experiências | F1 | melhoria | trabalho de autor | todo tema com ≥ 1 artigo | `videos.gen` |
+| F5 | Relações (D7) | página de tema mostra os artigos marcados com o tema; continuação em todas as páginas autorais; link STAR nas Experiências | F1 | melhoria | trabalho de autor | todo tema com ≥ 1 artigo | `videos.gen` |
 | F6 | Validação | teste com 3–5 visitantes; leitura do GA4 | F3 | melhoria | — | percursos da §9.6 cumpridos | manual |
 | F7 | Futuro | filtro por natureza; `/en/` dos vídeos (fase 2 dos vídeos); consolidação do G1 (BL-01) | F4, F6 | melhoria | — | — | — |
 
@@ -645,7 +659,7 @@ F1 e F2 são independentes e podem ir em paralelo. F3 não começa antes de F1 e
 
 Três papéis com URLs que já existem: **Início** editorial (`/`), **Trajetória** (`/curriculo`) e
 **Produção** (`/catalogo`), com os pilares p1–p4 como agrupamento, a natureza como atributo, o
-`<eco-nav>` como menu global e uma fonte única (o YAML) para catálogo e menu.
+um cabeçalho comum em todas as páginas e uma fonte única (o YAML) para catálogo, cabeçalho e temas dos artigos.
 
 ### 13.2 Registro de decisões
 
@@ -668,6 +682,8 @@ juntas (formam o PR da F1), D7 depois.
   evidência, cases com nível de evidência) não se perde.
 - **Bloqueia.** F3 (headline e subtítulo da home).
 
+- **Decidido (10/11/2026): (a)**, conforme a recomendação.
+
 #### D2 — A home deixa de ser o currículo?
 
 - **Hoje [F].** O corpo da home é o currículo gerado de `cv.json` (~25 min de leitura, 19 projetos
@@ -682,6 +698,8 @@ juntas (formam o PR da F1), D7 depois.
   `src/index.html` e `src/index.css`); os testes da home mudam.
 - **Bloqueia.** F2 e F3.
 
+- **Decidido (10/11/2026): (a)**, conforme a recomendação.
+
 #### D3 — O catálogo passa a ser gerado de uma fonte única?
 
 - **Hoje [F].** O catálogo é escrito à mão; o menu flutuante é uma cópia manual do YAML. As três
@@ -693,6 +711,8 @@ juntas (formam o PR da F1), D7 depois.
   `gen-videos`. A opção (b) é um passo intermediário aceitável se você quiser manter o texto dos
   cartões à mão.
 - **Bloqueia.** F1.
+
+- **Decidido (10/11/2026): (a)**, conforme a recomendação.
 
 #### D4 — O pilar p5 "Soluções & Portfólio" deixa de existir?
 
@@ -708,6 +728,8 @@ juntas (formam o PR da F1), D7 depois.
   de precisar de pilar.
 - **Bloqueia.** F1.
 
+- **Decidido (10/11/2026): (a)**, conforme a recomendação.
+
 #### D5 — Cada conteúdo ganha o atributo "natureza"?
 
 - **Hoje [F].** O site tem "formato" (lista `KINDS`, aplicada em 13 páginas) e rótulos de formato
@@ -720,6 +742,8 @@ juntas (formam o PR da F1), D7 depois.
   ele afirma. É isso que separa experiência comprovada de proposta (P5). A classificação é sua:
   confirme ou troque página a página no PR da F1.
 - **Bloqueia.** F1 (campo no YAML) e F4 (exibição).
+
+- **Decidido (10/11/2026): (a)**, conforme a recomendação.
 
 #### D6 — Qual é o menu global?
 
@@ -734,6 +758,9 @@ juntas (formam o PR da F1), D7 depois.
   (F6) confere isso.
 - **Bloqueia.** F1.
 
+- **Decidido (10/11/2026): (b)**, cabeçalho comum novo, diferente da recomendação. Efeito: §9.1,
+  §11 e a fase F1b. O risco R6 trata do custo.
+
 #### D7 — Os temas passam a ligar artigos, além de vídeos?
 
 - **Hoje [F].** Os 10 temas de `content/temas.yml` classificam só vídeos. As páginas
@@ -745,7 +772,10 @@ juntas (formam o PR da F1), D7 depois.
   lado dos pilares. Custa uma lista curta por tema.
 - **Bloqueia.** F5. Não é urgente.
 
-### 13.3 Os cinco riscos que precisam de atenção
+- **Decidido (10/11/2026): (b)**, temas no YAML de cada artigo, diferente da recomendação.
+  Efeito: §9.5, §10.1 e a fase F1 (campo `temas`). A classificação por tema soma-se à de natureza.
+
+### 13.3 Riscos que precisam de atenção (cinco principais e um novo, R6, vindo da D6)
 
 | # | Risco | Mitigação |
 | :-- | :-- | :-- |
@@ -753,11 +783,12 @@ juntas (formam o PR da F1), D7 depois.
 | R2 | **A home perde sinais de busca e de agentes** (`<title>`, JSON-LD `Person`, densidade de termos como Salesforce, AWS, APIs). | Invariante 3 da §11.2; comparar Search Console 4 semanas antes e depois da F3. |
 | R3 | **Texto novo da home afirma mais do que a evidência** (ex.: "arquiteto", "FDE", resultados sem fonte). | Provas geradas de `cv.json`; revisão com o agente `fde-evidence-auditor` antes do merge da F3. |
 | R4 | **Acoplamentos escondidos**: ADR-pf-001, testes da home, `gen-portfolio`, `build-aeo.mjs` (que remove o script de consentimento ao regenerar páginas). | Atualizar os documentos da §11.4 antes do código; rodar `build-aeo.mjs` só nos slugs afetados e conferir o script de consentimento. |
-| R5 | **Prioridade de públicos sem dado.** A ordem da §4.1 é hipótese, e classificar 33 páginas consome tempo do autor. | Fechar a lacuna do GA4 antes da F3; a classificação da F1 já vem proposta, o autor só confirma ou troca. |
+| R6 | **Cabeçalho comum em 33 layouts diferentes (D6 b).** Páginas com navegação própria (jornadas, marcadores de artigo, `apresentacao`) podem quebrar ou ficar com dois menus. | Lotes da F1b, do mais simples ao mais complexo; sweep de acessibilidade por lote; decidir na especificação o que acontece com o `<eco-nav>`. |
+| R5 | **Prioridade de públicos sem dado.** A ordem da §4.1 é hipótese, e classificar natureza e temas de 33 páginas consome tempo do autor. | Fechar a lacuna do GA4 antes da F3; a classificação da F1 já vem proposta, o autor só confirma ou troca. |
 
 ### 13.4 Próximas ações para virar especificação de implementação
 
-1. O autor responde D1 a D7 (pode ser no PR deste documento), começando por D1 e D2.
+1. ~~O autor responde D1 a D7.~~ Feito em 10/11/2026.
 2. Escrever `docs/specs/arquitetura-informacao/SDD-reestruturacao.md` com os requisitos de F1 a F5,
    no formato de `PAGE_SPEC_TEMPLATE.md`.
 3. Atualizar `ECOSYSTEM.md` e o ADR-pf-001 (§11.4) no mesmo PR da especificação.
