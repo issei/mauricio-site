@@ -295,34 +295,42 @@ utilitárias (`admin`, `diagnostic` etc.) e o `lifeos` (Q5). Elas não recebem o
 - **RF-F1b-10.** Sem rolagem horizontal a 320 px; área de toque de pelo menos 24 × 24 px (WCAG
   2.5.8).
 - **RF-F1b-15.** Cabeçalho fixo (DS-1): `position: sticky; top: 0` no `<header class="sh">`, com a
-  altura em `--sh-altura`. O `html` recebe `scroll-padding-top: var(--sh-altura)`, para âncoras e
-  foco não ficarem embaixo do cabeçalho (WCAG 2.4.11). A 400 % de zoom (reflow a 320 px) o
+  altura em `--sh-altura` (3,5 rem). O `html` recebe `scroll-padding-top: calc(var(--sh-altura) +
+  1rem)`, para âncoras e foco não ficarem embaixo do cabeçalho (WCAG 2.4.11). Página que tem uma
+  segunda barra fixa ou `sticky` soma a altura dela no próprio CSS, com `html:root` (no L1: home e
+  currículo). A 400 % de zoom (reflow a 320 px) o
   cabeçalho tem uma linha só, com o botão do celular.
 - **RF-F1b-16.** Trilhas e barras fixas ou `sticky` das páginas (G-B, G-C) usam
   `top: var(--sh-altura)` em vez de `top: 0`, para ficarem abaixo do cabeçalho e não por cima dele.
 - **RF-F1b-17.** Botão do celular (DS-3): abaixo de 640 px, um `<button>` com texto visível "Menu",
   `aria-expanded` e `aria-controls` apontando para a `<ul>`. Padrão *disclosure* (não `menu` ARIA).
   Enter e Espaço abrem e fecham; Esc fecha e devolve o foco ao botão; a lista fecha quando o foco
-  sai dela. O script é um módulo pequeno, `public/site-header.js`, sem dependência. O padrão vai
-  para `A11Y-DECISIONS.md` antes do código.
+  sai dela. O script é um `<script>` clássico em linha, dentro do bloco gerado, sem dependência:
+  roda assim que o cabeçalho é lido e põe a classe `sh-js`. Sem essa classe, o botão fica oculto e
+  a lista fica aberta. O padrão está em `A11Y-DECISIONS.md`.
 
 ### F1b.4.3 Implementação
 
 - **RF-F1b-11.** Novo `scripts/gen-cabecalho.mjs`, no padrão de `gen-editorial.mjs`: insere o
-  cabeçalho entre `<!-- SITE-HEADER:START -->` e `<!-- SITE-HEADER:END -->`, e o `<link>` do CSS
-  entre `<!-- SITE-HEADER-CSS:START -->` e `<!-- SITE-HEADER-CSS:END -->` no `<head>`. Idempotente,
+  cabeçalho entre `<!-- SITE-HEADER:START -->` e `<!-- SITE-HEADER:END -->`, e o CSS em linha
+  (`<style id="sh-css">`) entre `<!-- SITE-HEADER-CSS:START -->` e `<!-- SITE-HEADER-CSS:END -->`
+  no `<head>`. CSS e script em linha evitam um pedido a mais e o salto de layout antes de o CSS
+  chegar. Os `href` são absolutos (`/`, `/curriculo.html`…), para servirem em qualquer pasta
+  (`temas/`, `videos/`, `en/`). Página sem marcadores é ignorada; página com `SITE-HEADER` e sem
+  `SITE-HEADER-CSS` faz o gerador falhar. Idempotente,
   com `--check` no `npm run gate`. Marcadores nunca são consumidos.
 - **RF-F1b-12.** `scripts/gen-videos.mjs` e `scripts/gen-portfolio.mjs` emitem os mesmos marcadores
   nos HTML que geram, para o cabeçalho das fichas, dos temas, da home e do currículo sair do mesmo
   gerador.
-- **RF-F1b-13.** Estilo em `public/site-header.css`, namespace `.sh-*`, só com os tokens Dark Tech.
+- **RF-F1b-13.** Estilo no bloco `SITE-HEADER-CSS` (RF-F1b-11), namespace `.sh-*`, só com os tokens Dark Tech.
   Na página `apresentacao`, o cabeçalho usa os mesmos tokens neutros; nenhum token `ap-` é usado
   fora dos arquivos da exceção.
 - **RF-F1b-14.** `/en/`: os rótulos são "Home · Career · Work · Videos" (DS-4) e o botão diz "Menu".
   Eles ficam na seção `entradas` do YAML (`label_en`) e não passam pelo Argos. O bloco
   `SITE-HEADER` do gêmeo é escrito pelo `gen-cabecalho.mjs` depois do `i18n:sync`, como os outros
-  blocos gerados; ninguém edita `src/en/**` à mão. A implementação confere em `scripts/i18n/` como
-  o pipeline trata blocos gerados e segue o mesmo caminho. O teste confere os rótulos exatos.
+  blocos gerados; ninguém edita `src/en/**` à mão. O `scripts/sync-i18n.mjs` roda o
+  `gen-cabecalho.mjs` no fim de cada tradução. O bloco leva `translate="no"`. O teste confere os
+  rótulos exatos.
 
 ## F1b.5 Lotes
 
@@ -330,7 +338,7 @@ Um PR por lote. Cada lote fecha com `i18n:sync` local e sweep de acessibilidade.
 
 | Lote | Páginas | O que fazer além de inserir o cabeçalho | Risco |
 | :-- | :-- | :-- | :-- |
-| L1 | G-A (entradas e legais, incluindo as geradas) | trocar os cabeçalhos próprios; ajustar `gen-videos` e `gen-portfolio` (RF-F1b-12) | médio: home e currículo também mudam na F2/F3; fazer L1 depois da F2 evita retrabalho no currículo |
+| L1 | G-A (entradas e legais, incluindo as geradas: `videos.html`, 10 temas e 177 fichas de vídeo) | trocar os cabeçalhos próprios; ajustar `gen-videos` e `gen-portfolio` (RF-F1b-12) | médio: home e currículo também mudam na F2/F3. **Feito** em 10/11/2026; o gêmeo `/en/` ganha o cabeçalho no próximo `i18n:sync` local |
 | L2 | G-B (14 com trilha própria) | descer a trilha fixa ou `sticky` para baixo do cabeçalho (RF-F1b-16) e conferir que nada encobre o foco | alto: o cabeçalho fixo muda o topo de todas as trilhas |
 | L3 | G-C (9 com barra de site própria) | retirar a barra própria; o que for navegação interna da página vira trilha (RF-F1b-08) | alto: muda o layout do topo |
 | L4 | G-D (9 especiais) | `apresentacao` (tokens neutros), experiências imersivas (`life3d`, `terminal-evolutivo`: cabeçalho acima da área do experimento, sem sobrepor) | alto |

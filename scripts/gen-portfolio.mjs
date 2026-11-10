@@ -156,11 +156,13 @@ const lineTicks = (ids) => `<ul class="pf-ticks" aria-label="Linhas do mapa">${i
 function hero() {
   const cur = jobs[0];
   const [city, mode] = cur.Local.split(' · ');
-  return `<header id="home" class="pf-hero">
+  // <section> rotulada, não <header>: o único banner da página é o cabeçalho comum
+  // (SDD-F1-F1b, RF-F1b-07); o rótulo faz do hero uma região, e nenhum conteúdo fica fora de landmark.
+  return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
   <div class="pf-hero-lines" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
   <div class="pf-wrap">
     <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
-    <h1>${esc(cv.Nome)}</h1>
+    <h1 id="pf-nome">${esc(cv.Nome)}</h1>
     <p class="pf-hero-title">${esc(cv.Titulo)}</p>
     <p class="pf-hero-lead">${esc(cv.ResumoHero)}</p>
     <dl class="pf-facts">
@@ -175,7 +177,7 @@ function hero() {
     </div>
     ${socials()}
   </div>
-</header>`;
+</section>`;
 }
 
 function metroMap() {

@@ -65,7 +65,9 @@ body {
   overflow-x: hidden;
 }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-[id] { scroll-margin-top: calc(var(--pf-nav-h) + 1rem); }
+/* Cabeçalho comum + .pf-nav: o foco para abaixo das duas barras (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + var(--pf-nav-h) + 1rem); }
+[id] { scroll-margin-top: calc(var(--pf-nav-h) + var(--sh-altura, 0px) + 1rem); }
 a { color: var(--pf-link); text-underline-offset: 3px; }
 a:hover { color: var(--pf-strong); }
 :focus-visible { outline: 2px solid var(--pf-link); outline-offset: 3px; border-radius: 4px; }
@@ -87,7 +89,8 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 
 /* ------------------------------------------------------------------ nav */
 .pf-nav {
-  position: sticky; top: 0; z-index: 50;
+  /* Abaixo do cabeçalho comum (F1b, RF-F1b-16). */
+  position: sticky; top: var(--sh-altura, 0); z-index: 50;
   background: rgba(13, 17, 23, .82);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, .06);
