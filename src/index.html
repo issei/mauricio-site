@@ -637,6 +637,9 @@
 }
 </script>
 <!-- AEO:END -->
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh-marca{color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh-marca:hover{color:#58a6ff}.sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06)}.sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh-botao{display:none}@media (max-width:639.98px){.sh-marca{font-size:.95rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh-js .sh-nav{margin-left:-1rem}.sh-js .sh-botao{margin-left:auto;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
 </head>
 
 <body>
@@ -644,17 +647,23 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <a class="pf-skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/" aria-current="page">Início</a></li><li><a href="/curriculo.html">Trajetória</a></li><li><a href="/catalogo.html">Produção</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
 
-    <nav class="pf-nav" aria-label="Navegação principal">
+    <nav class="pf-nav" aria-label="Seções da página">
         <div class="pf-nav-in">
-            <a class="pf-brand" href="#home">Maurício Yokoyama Issei</a>
             <ul>
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#experience">Experiência</a></li>
                 <li><a href="#education">Formação</a></li>
                 <li><a href="#recommendations">Recomendações</a></li>
                 <li><a href="#contact">Contato</a></li>
-                <li><a href="./catalogo.html">Catálogo</a></li>
             </ul>
         </div>
     </nav>
@@ -662,11 +671,11 @@
 <!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json (NÃO editar à mão) -->
 <div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span><i data-l="dev"></i><i data-l="lid"></i><i data-l="cld"></i><i data-l="plt"></i><i data-l="agi"></i></div>
 <div class="pf-bundle" aria-hidden="true"><i data-l="dev"></i><i data-l="lid"></i><i data-l="cld"></i><i data-l="plt"></i><i data-l="agi"></i><i data-l="uxd"></i><i data-l="dat"></i></div>
-<header id="home" class="pf-hero">
+<section id="home" class="pf-hero" aria-labelledby="pf-nome">
   <div class="pf-hero-lines" aria-hidden="true"><i data-l="dev"></i><i data-l="lid"></i><i data-l="cld"></i><i data-l="plt"></i><i data-l="agi"></i><i data-l="uxd"></i><i data-l="dat"></i></div>
   <div class="pf-wrap">
     <p class="pf-eyebrow">Tech Lead · Rede</p>
-    <h1>Maurício Yokoyama Issei</h1>
+    <h1 id="pf-nome">Maurício Yokoyama Issei</h1>
     <p class="pf-hero-title">Tech Lead | Especialista em Análise de Sistemas</p>
     <p class="pf-hero-lead">Mais de 20 anos de experiência em desenvolvimento de software e liderança técnica, com foco em soluções robustas e inovadoras em Salesforce, AWS e APIs.</p>
     <dl class="pf-facts">
@@ -687,7 +696,7 @@
   <li><a href="mailto:mauricio@issei.com.br" aria-label="Enviar e-mail para mauricio@issei.com.br"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3zM5.2 7l6.8 4.2L18.8 7z"/></svg></a></li>
 </ul>
   </div>
-</header>
+</section>
 <main id="conteudo">
 <section id="about" class="pf-section" aria-labelledby="about-title">
   <div class="pf-wrap">

@@ -91,6 +91,13 @@ Cartões com fundo cinza escuro (`bg-gray-700` ou `#161b22`), bordas arredondada
 
 ---
 
+### 5. Cabeçalho comum (`.sh-*`)
+Gerado por `scripts/gen-cabecalho.mjs` (SDD-F1-F1b, Parte 2) entre os marcadores `SITE-HEADER`; não edite o bloco à mão.
+- Fixo no topo (`position: sticky`), altura `--sh-altura` (3,5 rem), fundo `rgba(13,17,23,.94)` com desfoque.
+- Links `#c9d1d9`, área atual em branco com sublinhado `#58a6ff`; foco com contorno `#58a6ff` de 2 px.
+- Abaixo de 640 px, botão "Menu" (padrão *disclosure*, ver `A11Y-DECISIONS.md`).
+- Barras próprias da página que também ficam fixas usam `top: var(--sh-altura)`.
+
 ## Migração e Manutenção
 
 O projeto utiliza **Tailwind CSS** via CDN (Play/Build) mas com customizações pesadas via `<style>` block no `index.html` para efeitos específicos (glow, animations, scrollbars).

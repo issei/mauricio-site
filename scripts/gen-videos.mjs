@@ -32,6 +32,10 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, rmSync
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
+import { aplicar as aplicarCabecalho } from './gen-cabecalho.mjs';
+import { loadEcossistema } from './catalogo/dados.mjs';
+
+const { eco: ECO } = loadEcossistema();
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://mauricio.issei.com.br';
@@ -301,10 +305,7 @@ const CSS = `
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
-.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
-.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
-.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -344,7 +345,9 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 `.trim();
 
 function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '' }) {
-  return `<!DOCTYPE html>
+  // Cabeçalho comum (SDD-F1-F1b, F1b): o mesmo gerador das outras páginas preenche os marcadores.
+  const rel = `${rota.slice(1)}.html`;
+  return aplicarCabecalho(`<!DOCTYPE html>
 <!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
 <html lang="pt-BR">
 <head>
@@ -366,12 +369,13 @@ function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '' })
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 <style>${CSS}</style>
+<!-- SITE-HEADER-CSS:START --><!-- SITE-HEADER-CSS:END -->
 ${ANALYTICS}
 <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">${AUTOR}</a><a href="/videos">Vídeos</a></nav></header>
+<!-- SITE-HEADER:START --><!-- SITE-HEADER:END -->
 <main id="conteudo" class="wrap">
 ${corpo}
 </main>
@@ -379,7 +383,7 @@ ${corpo}
 ${script}<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>
-`;
+`, ECO, rel);
 }
 
 /*

@@ -73,4 +73,5 @@ Blurbs ≤ 60 caracteres, afirmativos. Proibido jargão de marketing vazio
   3 narrativas na trajetória e 4 entradas.
 - `lifeos` fica fora do YAML por decisão do autor (2026-11-10).
 - O `<eco-nav>` sai no lote L5 da F1b (cabeçalho comum); até lá, os dados vêm do gerador.
+- A seção `entradas` também alimenta o cabeçalho comum (`scripts/gen-cabecalho.mjs`): `label` no PT, `label_en` no `/en/`. Mudar um rótulo ou a ordem das entradas exige rodar `node scripts/gen-cabecalho.mjs`.
 - Crosslinks materializados: `knowledge-os-presentation → proposta-engenharia-reversa`, `devin → salesforce-agentic-quickstart`. `engenharia-agentes-ia → socialselling` já existia.
