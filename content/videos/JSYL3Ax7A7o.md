@@ -69,7 +69,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/JSYL3Ax7A7o/maxresdefault.jpg
   visualizacoes: 8
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mauricio.issei.com.br/case-agents.html
     - https://github.com/issei/case-agents

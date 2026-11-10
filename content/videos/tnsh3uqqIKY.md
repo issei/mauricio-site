@@ -43,7 +43,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/tnsh3uqqIKY/maxresdefault.jpg
   visualizacoes: 11
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://bibliodigital.unijui.edu.br/items/e1299621-482f-4848-abdb-f088a2bcdf0a`
     - http://www.professoraanafrazao.com.br/files/publicacoes/2021-06-09-Transparencia_de_algoritmos_x_segredo_de_empresa_As_controversias_a_respeito_das_decisoes_judiciais_trabalhistas_que_determinam_a_realizacao_de_pericia_no_algoritmo_da_Uber.pdf`

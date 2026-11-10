@@ -52,7 +52,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/mw7W5VJWdmM/maxresdefault.jpg
   visualizacoes: 11
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mwpt.com.br/audiodescricao-se-liga-na-pratica/
     - https://mwpt.com.br/como-a-audiodescricao-amplia-o-acesso-a-informacao-e-a-cultura-tambem-no-meio-digital/
