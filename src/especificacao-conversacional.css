@@ -97,7 +97,7 @@ body.ecs-body {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 200;
+  z-index: 2147483001;
   background: var(--ecs-surface);
   color: var(--ecs-heading);
   padding: 0.75rem 1rem;
@@ -155,7 +155,7 @@ body.ecs-body {
 
 .ecs-nav {
   position: sticky;
-  top: 0;
+  top: var(--sh-altura, 0px);
   z-index: 100;
   background: rgba(13, 17, 23, 0.86);
   backdrop-filter: blur(8px);
@@ -615,4 +615,12 @@ details.ecs-more > .ecs-more__body { padding: 0.2rem 1.1rem 1.1rem; }
   html { scroll-behavior: auto; }
   .ecs-btn, .ecs-card { transition: none; }
   .ecs-btn:hover, a.ecs-card:hover { transform: none; }
+}
+
+/* Cabeçalho comum do site (F1b, RF-F1b-15/16): a trilha fica abaixo dele e o foco para abaixo dos dois (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 72px); }
+/* No celular, só o cabeçalho do site fica fixo: a trilha da página rola junto, para não ocupar um terço da tela. */
+@media (max-width: 639.98px) {
+  .ecs-nav { position: static; }
+  html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 1rem); }
 }

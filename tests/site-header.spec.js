@@ -31,6 +31,34 @@ for (const [url, atual, valor] of PAGINAS) {
   });
 }
 
+/* Lote L2: páginas com trilha própria (G-B). A trilha desce para baixo do cabeçalho (RF-F1b-16). */
+const L2 = [
+  ['acessibilidade', '.ac-nav'], ['agent-ready', '.ar-nav'], ['aprendizagem-autorregulada', '.aa-topbar'],
+  ['aprendizagem-autorregulada-artigo', '.aa-topbar'], ['capacidade-antes-do-acesso', '.ca-nav'], ['case-agents', '.ca-nav'],
+  ['curiosidade-e-investigacao', '.ci-topbar'], ['da-execucao-a-orquestracao', '.eo-nav'], ['develop-engineering', '.dg-nav'],
+  ['digital-workplace-agentico', '.dw-nav'], ['engenharia-agentes-ia', '.eai-nav'], ['engenharia-confianca', '.ec-nav'],
+  ['especificacao-conversacional', '.ecs-nav'], ['formulacao-de-problemas', '.fp-nav'],
+];
+for (const [pagina, trilha] of L2) {
+  test(`${pagina}: um banner, Produção marcada e a trilha abaixo do cabeçalho ao rolar`, async ({ page }) => {
+    await page.goto(`/${pagina}.html`);
+    await expect(page.getByRole('banner')).toHaveCount(1);
+    const nav = page.getByRole('navigation', { name: 'Navegação do site' });
+    await expect(nav.locator('a[aria-current="true"]')).toHaveText('Produção');
+    await page.evaluate(() => window.scrollTo(0, 1500));
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
+    const sh = await page.locator('header.sh').boundingBox();
+    expect(sh.y).toBe(0);
+    if (page.viewportSize().width < 640) {
+      // no celular a trilha rola junto com a página; só o cabeçalho do site fica fixo
+      await expect(page.locator(trilha).first()).toHaveCSS('position', 'static');
+      return;
+    }
+    const t = await page.locator(trilha).first().boundingBox();
+    expect(t.y).toBeGreaterThanOrEqual(sh.y + sh.height - 1);
+  });
+}
+
 test('o skip link vem antes do cabeçalho na ordem de Tab', async ({ page, browserName }) => {
   test.skip(browserName === 'webkit', 'Safari não foca links com Tab por padrão');
   await page.goto('/catalogo.html');

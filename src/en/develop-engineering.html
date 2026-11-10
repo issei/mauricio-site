@@ -79,7 +79,7 @@
     /* Top Nav */
     .dg-nav {
       position: sticky;
-      top: 0;
+      top: var(--sh-altura, 0px);
       background: rgba(13, 17, 23, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--dg-border);
@@ -493,6 +493,14 @@
       display: inline-block;
       margin-top: 1rem;
     }
+
+    /* Cabeçalho comum do site (F1b, RF-F1b-15/16): a trilha fica abaixo dele e o foco para abaixo dos dois (WCAG 2.4.11). */
+    html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 5rem); }
+    /* No celular, só o cabeçalho do site fica fixo: a trilha da página rola junto, para não ocupar um terço da tela. */
+    @media (max-width: 639.98px) {
+      .dg-nav { position: static; }
+      html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 1rem); }
+    }
   </style>
   <!-- ============================================================ -->
 <!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM, do gtag.js e do Clarity.
@@ -761,6 +769,9 @@
 }
 </script>
 <!-- AEO:END -->
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.95rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:auto;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/develop-engineering" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/develop-engineering" />
@@ -769,8 +780,16 @@
 
 <body>
   <a href="#conteudo" class="dg-skip">Skip to content</a>
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/en/">Maurício Yokoyama Issei</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Home</a></li><li><a href="/en/curriculo.html">Career</a></li><li><a href="/en/catalogo.html" aria-current="true">Work</a></li><li><a href="/videos.html">Videos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
 
-  <header class="dg-nav" aria-label="Page navigation">
+  <section class="dg-nav" aria-label="Page navigation">
     <div class="dg-container dg-nav__inner">
       <a href="#cena-00" class="dg-nav__brand">
         <span class="dg-nav__dot" aria-hidden="true"></span>
@@ -790,7 +809,7 @@
         <a href="#cena-10">10. Glossary</a>
       </nav>
     </div>
-  </header>
+  </section>
 
   <main id="conteudo">
 

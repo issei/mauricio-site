@@ -96,7 +96,7 @@ test.describe('Especificação Conversacional — página', () => {
 
   test('links internos e âncoras da página apontam para destinos existentes', async ({ page, request }) => {
     await page.goto(PATH);
-    const hrefs = await page.locator('main a[href^="#"], header a[href^="#"]')
+    const hrefs = await page.locator('main a[href^="#"], .ecs-nav a[href^="#"]')
       .evaluateAll((els) => [...new Set(els.map((e) => e.getAttribute('href')))]);
     for (const href of hrefs) {
       if (href === '#') continue;
@@ -142,7 +142,7 @@ test.describe('Especificação Conversacional — página', () => {
     await expect(caption).toContainText('Vídeo de introdução à proposta de Especificação Conversacional Estruturada, apresentado por Maurício Yokoyama Issei.');
 
     // Nav link aponta para #video
-    const navLink = page.locator('header a[href="#video"]');
+    const navLink = page.locator('.ecs-nav a[href="#video"]');
     await expect(navLink).toBeVisible();
     await expect(navLink).toHaveText('Vídeo');
   });
