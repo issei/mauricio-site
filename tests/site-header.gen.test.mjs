@@ -69,3 +69,21 @@ test('RF-F1b-17 · botão do celular: disclosure com aria-expanded e aria-contro
   assert.match(h, /<ul id="sh-lista"/);
   assert.doesNotMatch(h, /role="menu"/);
 });
+
+/** Lote L4 (F1b.5): as 9 páginas especiais (G-D). */
+const L4 = ['know', 'sustentacao', 'proposta-engenharia-reversa', 'operacao-capital-cognitivo', 'boutique-empresarial-showcase', 'apresentacao', 'life', 'life3d', 'terminal-evolutivo'];
+
+test('L4 · as 9 páginas especiais têm os marcadores', () => {
+  const comMarca = new Set(planejar().map((p) => p.rel));
+  assert.deepEqual(L4.map((s) => `${s}.html`).filter((r) => !comMarca.has(r)), []);
+});
+
+test('L4 · RF-F1b-06 · um só banner: um <header> de topo e nenhum role="banner" a mais', () => {
+  for (const s of L4) {
+    const html = readFileSync(join(ROOT, 'src', `${s}.html`), 'utf8');
+    const corpo = html.slice(html.indexOf('<body'));
+    const semAninhados = corpo.replace(/<(article|section|main|aside|nav)\b[\s\S]*?<\/\1>/g, '');
+    assert.equal((semAninhados.match(/<header\b/g) || []).length, 1, `${s}: <header> de topo`);
+    assert.equal((corpo.match(/role="banner"/g) || []).length, 0, `${s}: role="banner" explícito`);
+  }
+});

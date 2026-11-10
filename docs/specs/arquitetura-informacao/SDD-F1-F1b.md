@@ -344,7 +344,7 @@ Um PR por lote. Cada lote fecha com `i18n:sync` local e sweep de acessibilidade.
 | L1 | G-A (entradas e legais, incluindo as geradas: `videos.html`, 10 temas e 177 fichas de vídeo) | trocar os cabeçalhos próprios; ajustar `gen-videos` e `gen-portfolio` (RF-F1b-12) | médio: home e currículo também mudam na F2/F3. **Feito** em 10/11/2026; o gêmeo `/en/` ganha o cabeçalho no próximo `i18n:sync` local |
 | L2 | G-B (14 com trilha própria) | descer a trilha fixa ou `sticky` para baixo do cabeçalho (RF-F1b-16) e conferir que nada encobre o foco | alto: o cabeçalho fixo muda o topo de todas as trilhas. **Feito** em 10/11/2026 |
 | L3 | G-C (9 com barra de site própria) | retirar a barra própria; o que for navegação interna da página vira trilha (RF-F1b-08) | alto: muda o layout do topo |
-| L4 | G-D (9 especiais) | `apresentacao` (tokens neutros), experiências imersivas (`life3d`, `terminal-evolutivo`: cabeçalho acima da área do experimento, sem sobrepor) | alto |
+| L4 | G-D (9 especiais) | `apresentacao` (tokens neutros), experiências imersivas (`life3d`, `terminal-evolutivo`: cabeçalho acima da área do experimento, sem sobrepor) | alto. **Feito** em 10/11/2026: barras próprias e HUDs descem para `top: var(--sh-altura)` (estáticos abaixo de 640 px); o `role="banner"` dos HUDs de `life` e `life3d` sai; `life` e `life3d` descontam a altura do cabeçalho no tamanho do jogo; o hook do ADR-ap-001 ignora o bloco gerado |
 | L5 | todas | retirar o `<eco-nav>` (DS-2): script, componente, `eco-nav.data.js`, `inject-eco-nav.mjs` e testes | baixo |
 
 ## F1b.6 Testes
