@@ -60,7 +60,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/uY4QGcekh7w/maxresdefault.jpg
   visualizacoes: 8
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.astrj.com/pdf-197406-120644?filename=Optimizing%20continuous.pdf`
     - https://arxiv.org/html/2509.12923v1`
