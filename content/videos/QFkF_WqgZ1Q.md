@@ -60,7 +60,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/QFkF_WqgZ1Q/maxresdefault.jpg
   visualizacoes: 5
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://bdta.abcd.usp.br/directbitstream/10cbe4f4-36c7-4c97-bd82-1477ec3348b4/Kelsen%20Henrique%20Rolim%20dos%20Santos.pdf](https://bdta.abcd.usp.br/directbitstream/10cbe4f4-36c7-4c97-bd82-1477ec3348b4/Kelsen%20Henrique%20Rolim%20dos%20Santos.pdf
     - https://journals-sol.sbc.org.br/index.php/reic/article/download/3903/3254/29043](https://journals-sol.sbc.org.br/index.php/reic/article/download/3903/3254/29043

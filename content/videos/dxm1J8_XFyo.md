@@ -45,7 +45,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/dxm1J8_XFyo/maxresdefault.jpg
   visualizacoes: 5
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.youtube.com/watch?v=l3-2s4r-Byk
     - https://www.theexceptionalskills.com/wp-content/uploads/2017/06/crucial-conversations-state-pdf.pdf

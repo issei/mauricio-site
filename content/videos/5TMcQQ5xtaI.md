@@ -31,7 +31,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/5TMcQQ5xtaI/maxresdefault.jpg
   visualizacoes: 6
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.arxiv.org/pdf/2409.06355
   coletado_em: 2026-11-07T22:16:07Z

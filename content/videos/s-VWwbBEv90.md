@@ -1,9 +1,19 @@
 ---
 id: s-VWwbBEv90
 slug: como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras
-status: ficha
+status: rascunho
 temas:
   - engenharia-agentica
+resumo: "Agentes de IA não cabem no modelo de requisição e resposta das APIs REST. O AG-UI é um protocolo aberto, baseado em eventos, que liga o agente à interface do usuário. O vídeo mostra onde ele fica ao lado do MCP e do A2A, e os três pilares: estado compartilhado com deltas, interface generativa e interrupções para aprovação humana."
+fontes:
+  - url: https://docs.ag-ui.com/
+    titulo: "Documentação oficial do AG-UI"
+    sustenta: "A frase \"aplicações agênticas quebram o modelo simples de requisição e resposta\" e o estado compartilhado com deltas JSON Patch."
+    verificada: false
+  - url: https://github.com/ag-ui-protocol/ag-ui
+    titulo: "Repositório no GitHub"
+    sustenta: "O AG-UI é um protocolo aberto, baseado em eventos, com integrações para vários frameworks de agentes."
+    verificada: false
 youtube:
   titulo: "Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI"
   publicado_em: 2026-10-02
@@ -55,3 +65,52 @@ youtube:
     - https://dojo.ag-ui.com/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+## O problema: o modelo de requisição e resposta
+
+A documentação do protocolo diz: "Aplicações agênticas quebram o modelo simples de requisição e resposta" [01:03]. Antes, o cliente pedia, o servidor devolvia os dados, a tela renderizava e o ciclo fechava [01:03].
+
+APIs REST e GraphQL são determinísticas e feitas para transações curtas, de um turno só [01:23]. Agentes de IA rodam de forma contínua, enviam respostas aos poucos por streaming e não são determinísticos [01:45].
+
+Os agentes também misturam texto livre, voz e chamadas estruturadas de ferramentas, chamam subagentes no meio do caminho e precisam manter o estado por várias interações [02:07]. HTTP puro e WebSockets soltos precisam de uma camada nova, feita para isso [02:27].
+
+## O ecossistema de protocolos
+
+Os protocolos de IA se organizam em três partes [02:48]:
+
+- **MCP**, da Anthropic: liga o agente às ferramentas e aos bancos de dados [02:48].
+- **A2A**, do Google: organiza a conversa entre agentes [02:48].
+- **AG-UI**: cuida só da interação entre o agente e o usuário [03:09].
+
+Eles não competem: um complementa o outro [03:09].
+
+O AG-UI é um padrão aberto, leve e baseado em eventos, que liga o frontend a qualquer backend de agente [03:30]. Ele padroniza como o estado, as ações do usuário e as respostas do agente circulam, para as equipes não reinventarem a conexão a cada projeto [03:30].
+
+## Estado compartilhado
+
+No AG-UI, o frontend e o agente leem e escrevem no mesmo estado, ao mesmo tempo [04:14]. O vídeo compara a um Google Docs compartilhado entre a máquina e a pessoa: a IA entende o que você clica, e a tela reage ao que a IA decide [04:14].
+
+Para não sobrecarregar a rede, o protocolo envia só os state deltas, no padrão JSON Patch, com a alteração exata [04:34]. O estado inteiro (state snapshot) só vai no começo da conexão ou depois de um erro [04:54].
+
+## Interface generativa
+
+Com o AG-UI, o modelo pode devolver componentes de interface reais e tipados, que a aplicação mostra como widgets interativos [05:15]. Ele também aceita especificações como o A2UI do Google e o MCP-UI [05:15].
+
+## Interrupções para aprovação humana
+
+Às vezes o agente precisa perguntar antes de agir [05:36]. Ele pausa o fluxo, a interface avisa, e uma pessoa revisa, edita ou aprova a ação. Depois, a execução volta de onde parou, com o contexto intacto [05:58].
+
+## Um ecossistema aberto
+
+O AG-UI já se integra a frameworks como LangChain, CrewAI, Microsoft Agent Framework, Google ADK, Mastra e Pydantic AI [06:21]. Não prende a um fornecedor [06:41].
+
+Como é um fluxo de eventos, ele não fica preso a um site em React. Roda em apps React Native, no Slack e no Microsoft Teams por SDKs prontos, e até no terminal [07:01].
+
+## Perguntas frequentes
+
+### O AG-UI substitui o MCP?
+
+Não. O MCP liga o agente às ferramentas; o AG-UI liga o agente ao usuário. Eles se complementam [03:09].
+
+### O agente pode pedir aprovação antes de agir?
+
+Sim. Ele pausa, a pessoa revisa ou aprova, e a execução continua de onde parou [05:58].

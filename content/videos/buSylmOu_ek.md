@@ -19,7 +19,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/buSylmOu_ek/maxresdefault.jpg
   visualizacoes: 4
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://mauricio.issei.com.br/agent-ready
   coletado_em: 2026-11-07T22:16:07Z

@@ -1,0 +1,1280 @@
+WEBVTT
+
+00:00.000 --> 00:02.000
+Bem-vindo ao Explainer.
+
+00:02.000 --> 00:05.000
+Hoje, nós vamos construir o último Blueprint
+
+00:05.000 --> 00:07.000
+do Mastering AWS CloudFormation.
+
+00:07.000 --> 00:10.000
+Estamos falando de tornar sua infraestrutura em código,
+
+00:10.000 --> 00:11.000
+gerando você o poder de explorar
+
+00:11.000 --> 00:13.000
+realmente complexos environments
+
+00:13.000 --> 00:15.000
+com total precisão e, honestamente,
+
+00:15.000 --> 00:16.000
+uma velocidade incrível.
+
+00:16.000 --> 00:19.000
+Tudo bem, então, aqui é o plano de jogo.
+
+00:19.000 --> 00:21.000
+Vamos começar com os fundamentals de CloudFormation.
+
+00:21.000 --> 00:23.000
+Depois, vamos entrar em stacks de estruturas
+
+00:23.000 --> 00:25.000
+e templos de the right way.
+
+00:25.000 --> 00:27.000
+Depois disso, é tudo sobre a segurança
+
+00:27.000 --> 00:28.000
+e a optimização.
+
+00:28.000 --> 00:31.000
+Depois, vamos cobrar o ciclo de vida de sua infraestrutura
+
+00:31.000 --> 00:33.000
+e rapidar tudo por colocar tudo no autopilot
+
+00:33.000 --> 00:35.000
+com pipelines de CICD.
+
+00:35.000 --> 00:38.000
+Ok, primeiro, o fundamentals de CloudFormation.
+
+00:38.000 --> 00:40.000
+Vamos dar o tempo para o coração.
+
+00:40.000 --> 00:42.000
+Por que nós precisamos de um tool
+
+00:42.000 --> 00:44.000
+como CloudFormation no primeiro lugar?
+
+00:44.000 --> 00:46.000
+O que é o grande problema que você está tentando resolver?
+
+00:46.000 --> 00:48.000
+Isso tudo se abriu a essa ideia simples,
+
+00:48.000 --> 00:50.000
+mas, honestamente, uma ideia muito poderosa.
+
+00:50.000 --> 00:53.000
+E essa ideia é infraestrutura como código,
+
+00:53.000 --> 00:56.000
+ou IAC, como você sempre ouve.
+
+00:56.000 --> 00:57.000
+Olha, é bem simples.
+
+00:57.000 --> 00:59.000
+Você começa a treinar sua infraestrutura.
+
+00:59.000 --> 01:01.000
+Você sabe, seus serviços, seus databases,
+
+01:01.000 --> 01:03.000
+networks, o todo o Shabang,
+
+01:03.000 --> 01:05.000
+apenas como você treina o seu software.
+
+01:05.000 --> 01:06.000
+Você definiu em código,
+
+01:06.000 --> 01:07.000
+você colocou em controle de inversão,
+
+01:07.000 --> 01:08.000
+e você automata.
+
+01:08.000 --> 01:11.000
+Sério, não mais clicar no console de AWS
+
+01:11.000 --> 01:14.000
+que você se lembra de cada um de seus step.
+
+01:14.000 --> 01:18.000
+Então, isso nos traz para a AWS CloudFormation.
+
+01:18.000 --> 01:20.000
+Isso é a zona de Amazon,
+
+01:20.000 --> 01:22.000
+um serviço nativo para fazer IAC.
+
+01:22.000 --> 01:25.000
+É o que faz você modelar o seu ambiente de AWS.
+
+01:25.000 --> 01:27.000
+E eu digo tudo,
+
+01:27.000 --> 01:29.000
+de uma bunda de um single S3,
+
+01:29.000 --> 01:33.000
+todo o caminho para uma aplicação multiregional
+
+01:33.000 --> 01:35.000
+dentro de um file de texto simples.
+
+01:35.000 --> 01:38.000
+Sim, apenas um file de YAML ou JSON.
+
+01:38.000 --> 01:39.000
+Então, você pode estar pensando,
+
+01:39.000 --> 01:42.000
+ok, isso parece legal, mas por que lutar?
+
+01:42.000 --> 01:44.000
+Bem, os benefícios são grandes.
+
+01:44.000 --> 01:45.000
+Sério.
+
+01:45.000 --> 01:47.000
+Você tem a standardização,
+
+01:47.000 --> 01:49.000
+que significa que você tem um single source de verdade
+
+01:49.000 --> 01:51.000
+para toda a sua infraestrutura.
+
+01:51.000 --> 01:52.000
+Não há mais entusiasmos.
+
+01:52.000 --> 01:54.000
+Então, você tem a automação,
+
+01:54.000 --> 01:56.000
+que dá para você desistir de cada vez.
+
+01:56.000 --> 01:58.000
+Você também tem o controle de versão real
+
+01:58.000 --> 02:00.000
+para que você possa tracar todos os mudanças,
+
+02:00.000 --> 02:02.000
+como você faz com a sua aplicação.
+
+02:02.000 --> 02:03.000
+E, talvez mais importante,
+
+02:03.000 --> 02:05.000
+você pode abertar a segurança
+
+02:05.000 --> 02:06.000
+desde o very beginning.
+
+02:06.000 --> 02:08.000
+Não é um afterthought.
+
+02:08.000 --> 02:10.000
+Bem, vamos ver como você actually
+
+02:10.000 --> 02:11.000
+estrutura essa coisa.
+
+02:11.000 --> 02:12.000
+Eu digo, pense sobre isso.
+
+02:12.000 --> 02:14.000
+Um arquitecto não designa um skyscraper
+
+02:14.000 --> 02:16.000
+no fundo de uma aplicação, certo?
+
+02:16.000 --> 02:17.000
+Então, você não deve estar construindo
+
+02:17.000 --> 02:19.000
+sua infraestrutura em um file enorme,
+
+02:19.000 --> 02:21.000
+ou seja,
+
+02:21.000 --> 02:23.000
+tudo sobre ter um plano solidário.
+
+02:23.000 --> 02:25.000
+Ok, então aqui é um mistério clássico.
+
+02:25.000 --> 02:27.000
+Muito bem que todo mundo faz isso primeiro.
+
+02:27.000 --> 02:29.000
+O templo monolithic.
+
+02:29.000 --> 02:31.000
+Você sabe, um file enorme para tudo.
+
+02:31.000 --> 02:33.000
+Ele só se torna um banheiro de noite para manejar.
+
+02:33.000 --> 02:36.000
+A melhor prática absoluta é ir modular.
+
+02:36.000 --> 02:38.000
+E aqui é um pro-tip para você.
+
+02:38.000 --> 02:39.000
+Não só organiza os seus templos
+
+02:39.000 --> 02:40.000
+por quem desistir de eles,
+
+02:40.000 --> 02:41.000
+como a equipe de networking
+
+02:41.000 --> 02:42.000
+recebe o VPC stack.
+
+02:42.000 --> 02:44.000
+Pense sobre o seu ciclo de vida.
+
+02:44.000 --> 02:46.000
+Você deve absolutamente separar
+
+02:46.000 --> 02:47.000
+coisas como os seus databases,
+
+02:47.000 --> 02:48.000
+que, você sabe,
+
+02:48.000 --> 02:49.000
+mudam bastante riramente
+
+02:49.000 --> 02:50.000
+dos seus serviços de aplicação,
+
+02:50.000 --> 02:52.000
+que você pode estar aplicando todo o tempo.
+
+02:52.000 --> 02:53.000
+Isso, um pouco de mudança
+
+02:53.000 --> 02:55.000
+vai dramatically reduzir o seu risco.
+
+02:55.000 --> 02:57.000
+Então, como você faz
+
+02:57.000 --> 02:58.000
+aquela coisa modular que nós falamos?
+
+02:58.000 --> 02:59.000
+Bem, os stacks de nestes
+
+02:59.000 --> 03:01.000
+são um dos fatos quentes.
+
+03:01.000 --> 03:02.000
+Pense sobre esse diagrama.
+
+03:02.000 --> 03:04.000
+Você tem esse stack de pai ou mãe,
+
+03:04.000 --> 03:05.000
+e é basicamente
+
+03:05.000 --> 03:06.000
+apenas chamando outros
+
+03:06.000 --> 03:08.000
+pequenos, mais focados templos.
+
+03:08.000 --> 03:09.000
+Um para a networking,
+
+03:09.000 --> 03:10.000
+um para os databases,
+
+03:10.000 --> 03:12.000
+um para o app logico.
+
+03:12.000 --> 03:13.000
+O que você enda com
+
+03:13.000 --> 03:15.000
+é essa errosa, super reusable
+
+03:15.000 --> 03:16.000
+hierarquia.
+
+03:16.000 --> 03:18.000
+Ok, então temos a nossa estrutura
+
+03:18.000 --> 03:19.000
+aberta.
+
+03:19.000 --> 03:20.000
+Agora é hora de refinar
+
+03:20.000 --> 03:21.000
+o blueprinto.
+
+03:21.000 --> 03:22.000
+Porque, olha,
+
+03:22.000 --> 03:23.000
+não é suficiente
+
+03:23.000 --> 03:24.000
+para ficar funcionando.
+
+03:24.000 --> 03:25.000
+Nós temos que construir
+
+03:25.000 --> 03:26.000
+com precisão.
+
+03:26.000 --> 03:27.000
+Isso significa que é
+
+03:27.000 --> 03:28.000
+segura e eficaz.
+
+03:28.000 --> 03:29.000
+E a segura não é
+
+03:29.000 --> 03:31.000
+algo que você ataca no final.
+
+03:31.000 --> 03:32.000
+Tem que ser construído
+
+03:32.000 --> 03:34.000
+no blueprinto do dia 1.
+
+03:34.000 --> 03:36.000
+Tudo começa com eu.
+
+03:36.000 --> 03:37.000
+AWS Identity
+
+03:37.000 --> 03:39.000
+e Access Management.
+
+03:39.000 --> 03:40.000
+Isso é onde você vive
+
+03:40.000 --> 03:41.000
+e brilhe o princípio
+
+03:41.000 --> 03:42.000
+do menos privilégio.
+
+03:42.000 --> 03:43.000
+O objetivo aqui
+
+03:43.000 --> 03:44.000
+é ter super granular
+
+03:44.000 --> 03:45.000
+e controlar exatamente
+
+03:45.000 --> 03:47.000
+quem pode fazer o que.
+
+03:47.000 --> 03:48.000
+Por exemplo, você absolutamente
+
+03:48.000 --> 03:49.000
+deveria ter uma polícia
+
+03:49.000 --> 03:50.000
+que deixa o desenvolver
+
+03:50.000 --> 03:51.000
+update de test-stack,
+
+03:51.000 --> 03:52.000
+mas completamente bloquear
+
+03:52.000 --> 03:53.000
+eles por até procurar,
+
+03:53.000 --> 03:54.000
+deixando-se soltando
+
+03:54.000 --> 03:55.000
+sua produção de database.
+
+03:55.000 --> 03:56.000
+Ter essa segura
+
+03:56.000 --> 03:58.000
+é apenas um grande ganho.
+
+03:58.000 --> 04:00.000
+Então, um templo muito grande
+
+04:00.000 --> 04:01.000
+não é estático,
+
+04:01.000 --> 04:02.000
+é dinâmico,
+
+04:02.000 --> 04:03.000
+é flexível.
+
+04:03.000 --> 04:04.000
+E esses 4 pilares
+
+04:04.000 --> 04:05.000
+são basicamente
+
+04:05.000 --> 04:06.000
+a sotação secreta
+
+04:06.000 --> 04:07.000
+para fazer isso acontecer.
+
+04:07.000 --> 04:08.000
+Você tem parâmetros
+
+04:08.000 --> 04:09.000
+que te dão valores
+
+04:09.000 --> 04:10.000
+quando você runa o templo,
+
+04:10.000 --> 04:12.000
+fazendo isso super reusable.
+
+04:12.000 --> 04:14.000
+Aí, há mapas,
+
+04:14.000 --> 04:15.000
+que são basicamente
+
+04:15.000 --> 04:16.000
+apenas tabelos de look-up.
+
+04:16.000 --> 04:17.000
+Pense em escolher
+
+04:17.000 --> 04:18.000
+a imagem misturada
+
+04:18.000 --> 04:19.000
+dependendo de qual
+
+04:19.000 --> 04:20.000
+região você está em.
+
+04:20.000 --> 04:21.000
+Condições te dão
+
+04:21.000 --> 04:22.000
+um poderoso,
+
+04:22.000 --> 04:23.000
+se depois, lógico.
+
+04:23.000 --> 04:24.000
+E, finalmente,
+
+04:24.000 --> 04:25.000
+opções.
+
+04:25.000 --> 04:26.000
+Deixe seus pilares
+
+04:26.000 --> 04:27.000
+falar a cada um,
+
+04:27.000 --> 04:28.000
+como passando o VPC-ID
+
+04:28.000 --> 04:29.000
+da sua stack de networks
+
+04:29.000 --> 04:31.000
+para o seu stack de apps.
+
+04:31.000 --> 04:32.000
+E aqui é um exemplo
+
+04:32.000 --> 04:33.000
+perfeito
+
+04:33.000 --> 04:34.000
+de um parâmetro.
+
+04:34.000 --> 04:35.000
+Veja?
+
+04:35.000 --> 04:36.000
+Em vez de apenas
+
+04:36.000 --> 04:37.000
+encoderar o T2.micro
+
+04:37.000 --> 04:38.000
+em seu templo,
+
+04:38.000 --> 04:40.000
+você faz um parâmetro.
+
+04:40.000 --> 04:41.000
+Agora, quando você lança
+
+04:41.000 --> 04:42.000
+o pilareto, você,
+
+04:42.000 --> 04:43.000
+ou melhor ainda,
+
+04:43.000 --> 04:44.000
+sua pipeline automática
+
+04:44.000 --> 04:45.000
+pode dizer
+
+04:45.000 --> 04:46.000
+que é o que você tem que usar.
+
+04:46.000 --> 04:47.000
+Você pode even
+
+04:47.000 --> 04:48.000
+colocar um valor default
+
+04:48.000 --> 04:49.000
+e dar uma lista de valores
+
+04:49.000 --> 04:50.000
+abertos,
+
+04:50.000 --> 04:51.000
+que é muito bom
+
+04:51.000 --> 04:52.000
+para prevencer typos
+
+04:52.000 --> 04:53.000
+e outros mistérios.
+
+04:53.000 --> 04:54.000
+E condições?
+
+04:54.000 --> 04:55.000
+Oh, man,
+
+04:55.000 --> 04:57.000
+esses são um jogo de total.
+
+04:57.000 --> 04:58.000
+Em esse snippet,
+
+04:58.000 --> 04:59.000
+nós definimos um condição
+
+04:59.000 --> 05:00.000
+chamada
+
+05:00.000 --> 05:01.000
+IsProduction.
+
+05:01.000 --> 05:02.000
+E veja,
+
+05:02.000 --> 05:03.000
+o novo resorcio
+
+05:03.000 --> 05:04.000
+de volume aqui
+
+05:04.000 --> 05:05.000
+só vai ser criado
+
+05:05.000 --> 05:06.000
+se essa condição é verdade,
+
+05:06.000 --> 05:07.000
+ou seja,
+
+05:07.000 --> 05:08.000
+se o tipo N
+
+05:08.000 --> 05:09.000
+que passamos
+
+05:09.000 --> 05:10.000
+é prod.
+
+05:10.000 --> 05:11.000
+Isso é só perfeito
+
+05:11.000 --> 05:12.000
+para coisas como
+
+05:12.000 --> 05:13.000
+provisioning beefy,
+
+05:13.000 --> 05:14.000
+recursos expensivos
+
+05:14.000 --> 05:15.000
+durante a transversão,
+
+05:15.000 --> 05:16.000
+enquanto o seu dev
+
+05:16.000 --> 05:17.000
+e test-environmentes
+
+05:17.000 --> 05:18.000
+gostam e lindos.
+
+05:18.000 --> 05:19.000
+Ok,
+
+05:19.000 --> 05:20.000
+então vamos ser real,
+
+05:20.000 --> 05:21.000
+a infraestrutura
+
+05:21.000 --> 05:22.000
+não é algo que você
+
+05:22.000 --> 05:23.000
+justiça e esqueça.
+
+05:23.000 --> 05:24.000
+É uma coisa que
+
+05:24.000 --> 05:25.000
+sempre está mudando.
+
+05:25.000 --> 05:26.000
+Então agora,
+
+05:26.000 --> 05:27.000
+nós precisamos falar
+
+05:27.000 --> 05:28.000
+sobre como você maneja
+
+05:28.000 --> 05:29.000
+sua vida inteira,
+
+05:29.000 --> 05:30.000
+do começo
+
+05:30.000 --> 05:31.000
+para o final.
+
+05:31.000 --> 05:32.000
+Então,
+
+05:32.000 --> 05:33.000
+eu vou te perguntar
+
+05:33.000 --> 05:34.000
+e ser honesto,
+
+05:34.000 --> 05:35.000
+se o que está
+
+05:35.000 --> 05:36.000
+realmente funcionando
+
+05:36.000 --> 05:37.000
+no seu account AWS
+
+05:37.000 --> 05:38.000
+perfectamente matches
+
+05:38.000 --> 05:39.000
+o que está no seu templo,
+
+05:39.000 --> 05:40.000
+eu acho que por um monte
+
+05:40.000 --> 05:41.000
+de vocês,
+
+05:41.000 --> 05:42.000
+a resposta é,
+
+05:42.000 --> 05:43.000
+talvez não.
+
+05:44.000 --> 05:45.000
+E boom!
+
+05:45.000 --> 05:46.000
+De repente, a realidade
+
+05:46.000 --> 05:47.000
+no seu código
+
+05:47.000 --> 05:48.000
+está fora do sync.
+
+05:48.000 --> 05:49.000
+Isso é chamado de
+
+05:49.000 --> 05:50.000
+configuração.
+
+05:50.000 --> 05:51.000
+E isso basicamente
+
+05:51.000 --> 05:52.000
+destrua o ponto de fazer o IAC.
+
+05:52.000 --> 05:53.000
+Lá,
+
+05:53.000 --> 05:54.000
+a formação cláudica
+
+05:54.000 --> 05:55.000
+tem um tool
+
+05:55.000 --> 05:56.000
+built-in
+
+05:56.000 --> 05:57.000
+para isso,
+
+05:57.000 --> 05:58.000
+chamado Drift Detection.
+
+05:58.000 --> 05:59.000
+Honestamente,
+
+05:59.000 --> 06:00.000
+você pode pensar
+
+06:00.000 --> 06:01.000
+como um tool de gif
+
+06:01.000 --> 06:02.000
+mas para sua infraestrutura
+
+06:02.000 --> 06:03.000
+live.
+
+06:03.000 --> 06:04.000
+Ele scanou
+
+06:04.000 --> 06:05.000
+todos os recursos
+
+06:05.000 --> 06:06.000
+no seu stack
+
+06:06.000 --> 06:07.000
+e compara
+
+06:07.000 --> 06:08.000
+a configuração real
+
+06:08.000 --> 06:09.000
+para o que o seu templo
+
+06:09.000 --> 06:10.000
+diz que deveria ser.
+
+06:10.000 --> 06:11.000
+E o processo
+
+06:11.000 --> 06:12.000
+não poderia ser simplificado,
+
+06:12.000 --> 06:13.000
+o Drift Detection
+
+06:13.000 --> 06:14.000
+dá para você
+
+06:14.000 --> 06:15.000
+uma reportagem detalhada
+
+06:15.000 --> 06:16.000
+mostrando exatamente
+
+06:16.000 --> 06:17.000
+o que é diferente.
+
+06:17.000 --> 06:18.000
+Você sabe,
+
+06:18.000 --> 06:19.000
+talvez alguém manualmente
+
+06:19.000 --> 06:20.000
+ajude uma regra para um grupo de segurança.
+
+06:20.000 --> 06:21.000
+E aí,
+
+06:21.000 --> 06:22.000
+você tem uma escolha para fazer.
+
+06:22.000 --> 06:23.000
+Entretanto,
+
+06:23.000 --> 06:24.000
+você update o seu templo
+
+06:24.000 --> 06:25.000
+para incluir essa mudança,
+
+06:25.000 --> 06:26.000
+fazer um oficial,
+
+06:26.000 --> 06:27.000
+ou você revertir
+
+06:27.000 --> 06:28.000
+a mudança manual
+
+06:28.000 --> 06:29.000
+para pegar tudo no sync.
+
+06:29.000 --> 06:30.000
+Agora,
+
+06:30.000 --> 06:31.000
+quando você quer fazer
+
+06:31.000 --> 06:32.000
+mudanças por propósito,
+
+06:32.000 --> 06:33.000
+você nunca,
+
+06:33.000 --> 06:34.000
+nunca quer justiá-lo.
+
+06:34.000 --> 06:35.000
+Isso é onde
+
+06:35.000 --> 06:36.000
+os setes de mudança
+
+06:36.000 --> 06:37.000
+podem ser usados
+
+06:37.000 --> 06:38.000
+cada vez.
+
+06:38.000 --> 06:39.000
+Um sete de mudança
+
+06:39.000 --> 06:40.000
+é basicamente um preview.
+
+06:40.000 --> 06:41.000
+Isso mostra exatamente
+
+06:41.000 --> 06:42.000
+o que a mudança de cláudio
+
+06:42.000 --> 06:43.000
+é aboutada para adicionar,
+
+06:43.000 --> 06:44.000
+modificar,
+
+06:44.000 --> 06:45.000
+ou delete,
+
+06:45.000 --> 06:46.000
+antes de você acertar o botão.
+
+06:46.000 --> 06:47.000
+E também vai te warnar
+
+06:47.000 --> 06:48.000
+se uma mudança
+
+06:48.000 --> 06:49.000
+vai completamente replicar
+
+06:49.000 --> 06:50.000
+uma regra,
+
+06:50.000 --> 06:51.000
+que é algo que
+
+06:51.000 --> 06:52.000
+pode definitivamente causar
+
+06:52.000 --> 06:53.000
+descanso.
+
+06:53.000 --> 06:54.000
+Mas,
+
+06:54.000 --> 06:55.000
+o que é isso que você
+
+06:55.000 --> 06:56.000
+comprou pela mão
+
+06:56.000 --> 06:57.000
+antes de você ver
+
+06:57.000 --> 06:59.000
+a luz e começar a usar o ISE?
+
+06:59.000 --> 07:00.000
+Você está cansado?
+
+07:00.000 --> 07:01.000
+Não.
+
+07:01.000 --> 07:02.000
+A mudança de cláudio
+
+07:02.000 --> 07:03.000
+tem você acertado também.
+
+07:03.000 --> 07:04.000
+Você pode realmente importar
+
+07:04.000 --> 07:05.000
+recursos existentes
+
+07:05.000 --> 07:07.000
+para uma mudança de cláudio.
+
+07:07.000 --> 07:08.000
+Isso é incrível,
+
+07:08.000 --> 07:09.000
+porque faz você
+
+07:09.000 --> 07:10.000
+trazer aqueles mais velos,
+
+07:10.000 --> 07:11.000
+nos estrangeiros,
+
+07:11.000 --> 07:12.000
+durante seus controles,
+
+07:12.000 --> 07:13.000
+sem ter que
+
+07:13.000 --> 07:15.000
+descanse tudo e começar.
+
+07:15.000 --> 07:16.000
+Ok,
+
+07:16.000 --> 07:17.000
+nós temos vindo um longo caminho.
+
+07:17.000 --> 07:18.000
+Nós fizemos o nosso blueprinto,
+
+07:18.000 --> 07:19.000
+nós fizemos o seco,
+
+07:19.000 --> 07:20.000
+e nós sabemos como
+
+07:20.000 --> 07:21.000
+manejar a sua vida.
+
+07:21.000 --> 07:22.000
+Agora,
+
+07:22.000 --> 07:23.000
+para o final,
+
+07:23.000 --> 07:24.000
+um ótimo passo,
+
+07:24.000 --> 07:25.000
+construir a linha de assembleia
+
+07:25.000 --> 07:27.000
+para automar o processo.
+
+07:27.000 --> 07:28.000
+E isso é realmente
+
+07:28.000 --> 07:30.000
+onde a magia acontece.
+
+07:30.000 --> 07:31.000
+Portanto,
+
+07:31.000 --> 07:32.000
+um desenvolvedor
+
+07:32.000 --> 07:33.000
+puxa uma mudança
+
+07:33.000 --> 07:34.000
+para um templo de formação cláudio
+
+07:34.000 --> 07:35.000
+em Git.
+
+07:35.000 --> 07:36.000
+Instante,
+
+07:36.000 --> 07:37.000
+uma pipeline de CICD
+
+07:37.000 --> 07:38.000
+descanse.
+
+07:38.000 --> 07:39.000
+Primeiro,
+
+07:39.000 --> 07:40.000
+chegue o templo
+
+07:40.000 --> 07:41.000
+para qualquer erro de syntax.
+
+07:41.000 --> 07:42.000
+Depois,
+
+07:42.000 --> 07:43.000
+pode descanse a mudança
+
+07:43.000 --> 07:44.000
+em um ambiente de testemunho
+
+07:44.000 --> 07:45.000
+temporário,
+
+07:45.000 --> 07:46.000
+e dar algumas testemunhas automadas
+
+07:46.000 --> 07:47.000
+contra isso.
+
+07:47.000 --> 07:49.000
+E só depois que tudo passa,
+
+07:49.000 --> 07:50.000
+e talvez depois de um
+
+07:50.000 --> 07:51.000
+manual rápido,
+
+07:51.000 --> 07:52.000
+pode automaticamente
+
+07:52.000 --> 07:54.000
+devolver uma produção.
+
+07:54.000 --> 07:55.000
+Quer dizer,
+
+07:55.000 --> 07:56.000
+isso é o delivery de infraestrutura
+
+07:56.000 --> 07:57.000
+feito certo,
+
+07:57.000 --> 07:58.000
+rápido,
+
+07:58.000 --> 07:59.000
+segura,
+
+07:59.000 --> 08:00.000
+e super consistente.
+
+08:01.000 --> 08:02.000
+Ok,
+
+08:02.000 --> 08:03.000
+isso foi muito,
+
+08:03.000 --> 08:04.000
+nós fizemos o todo
+
+08:04.000 --> 08:05.000
+o blueprinto
+
+08:05.000 --> 08:06.000
+dos conceitos básicos
+
+08:06.000 --> 08:07.000
+todo o caminho para a automação.
+
+08:07.000 --> 08:08.000
+Então,
+
+08:08.000 --> 08:09.000
+vamos logo descanse
+
+08:09.000 --> 08:10.000
+aqueles princípios quentes
+
+08:10.000 --> 08:11.000
+que você precisa lembrar de sucesso.
+
+08:11.000 --> 08:12.000
+Ok,
+
+08:12.000 --> 08:13.000
+essas 5 coisas aqui,
+
+08:13.000 --> 08:15.000
+essa é a sua fundação.
+
+08:15.000 --> 08:16.000
+1.
+
+08:16.000 --> 08:17.000
+Sempre,
+
+08:17.000 --> 08:18.000
+sempre tratem sua infraestrutura
+
+08:18.000 --> 08:19.000
+como código.
+
+08:19.000 --> 08:20.000
+2.
+
+08:20.000 --> 08:21.000
+Structure seus templos
+
+08:21.000 --> 08:22.000
+para ser modular,
+
+08:22.000 --> 08:23.000
+pensar em pequenas peças reutilizadas.
+
+08:23.000 --> 08:24.000
+3.
+
+08:24.000 --> 08:25.000
+Use os parâmetros,
+
+08:25.000 --> 08:26.000
+mapas e condições
+
+08:26.000 --> 08:27.000
+para fazer seus templos flexíveis.
+
+08:27.000 --> 08:28.000
+4.
+
+08:28.000 --> 08:29.000
+E essa é tão importante,
+
+08:29.000 --> 08:30.000
+manage a mudança
+
+08:30.000 --> 08:31.000
+seguramente
+
+08:31.000 --> 08:33.000
+com detenção e setas de mudança.
+
+08:33.000 --> 08:34.000
+E finalmente,
+
+08:34.000 --> 08:35.000
+5.
+
+08:35.000 --> 08:36.000
+Automate tudo
+
+08:36.000 --> 08:37.000
+que você precisa.
+
+08:37.000 --> 08:38.000
+5.
+
+08:38.000 --> 08:39.000
+Se você pode master esses,
+
+08:39.000 --> 08:40.000
+você está bem no seu caminho
+
+08:40.000 --> 08:41.000
+para ser um pro
+
+08:41.000 --> 08:42.000
+para a infraestrutura escala.
+
+08:42.000 --> 08:43.000
+6.
+
+08:43.000 --> 08:44.000
+Então,
+
+08:44.000 --> 08:45.000
+você tem isso.
+
+08:45.000 --> 08:46.000
+Isso é o blueprinto
+
+08:46.000 --> 08:47.000
+para master.
+
+08:47.000 --> 08:48.000
+Você tem os planos,
+
+08:48.000 --> 08:49.000
+você sabe os prédios,
+
+08:49.000 --> 08:50.000
+você tem as melhores práticas.
+
+08:50.000 --> 08:51.000
+A única pergunta real
+
+08:51.000 --> 08:52.000
+é,
+
+08:52.000 --> 08:54.000
+o que você vai construir?
+
+08:54.000 --> 08:55.000
+O que é o primeiro
+
+08:55.000 --> 08:56.000
+processo manuel
+
+08:56.000 --> 08:57.000
+que você finalmente
+
+08:57.000 --> 08:58.000
+vai tornar
+
+08:58.000 --> 08:59.000
+para a automação,
+
+08:59.000 --> 09:00.000
+automação
+
+09:00.000 --> 09:01.000
+e código relável?
+

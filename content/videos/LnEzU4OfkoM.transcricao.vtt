@@ -1,0 +1,1776 @@
+WEBVTT
+Kind: captions
+Language: pt
+
+00:00:00.000 --> 00:00:02.830 align:start position:0%
+ 
+A<00:00:00.200><c> arquitetura</c><00:00:00.720><c> de</c><00:00:00.800><c> DNS</c><00:00:01.440><c> Enterprise</c><00:00:02.040><c> na</c><00:00:02.200><c> AWS</c>
+
+00:00:02.830 --> 00:00:02.840 align:start position:0%
+A arquitetura de DNS Enterprise na AWS
+ 
+
+00:00:02.840 --> 00:00:05.430 align:start position:0%
+A arquitetura de DNS Enterprise na AWS
+centralizada<00:00:03.640><c> versus</c><00:00:04.120><c> descentralizada.</c>
+
+00:00:05.430 --> 00:00:05.440 align:start position:0%
+centralizada versus descentralizada.
+ 
+
+00:00:05.440 --> 00:00:07.190 align:start position:0%
+centralizada versus descentralizada.
+Bom,<00:00:05.640><c> vamos</c><00:00:05.920><c> mergulhar</c><00:00:06.440><c> direto</c><00:00:07.000><c> nessa</c>
+
+00:00:07.190 --> 00:00:07.200 align:start position:0%
+Bom, vamos mergulhar direto nessa
+ 
+
+00:00:07.200 --> 00:00:09.390 align:start position:0%
+Bom, vamos mergulhar direto nessa
+explicação<00:00:07.640><c> de</c><00:00:07.800><c> hoje</c><00:00:08.280><c> e</c><00:00:08.400><c> desmistificar</c><00:00:09.240><c> como</c>
+
+00:00:09.390 --> 00:00:09.400 align:start position:0%
+explicação de hoje e desmistificar como
+ 
+
+00:00:09.400 --> 00:00:11.350 align:start position:0%
+explicação de hoje e desmistificar como
+aquelas<00:00:09.680><c> organizações</c><00:00:10.360><c> gigantescas</c>
+
+00:00:11.350 --> 00:00:11.360 align:start position:0%
+aquelas organizações gigantescas
+ 
+
+00:00:11.360 --> 00:00:12.950 align:start position:0%
+aquelas organizações gigantescas
+conseguem<00:00:11.920><c> gerenciar</c><00:00:12.320><c> o</c><00:00:12.360><c> tráfego</c><00:00:12.880><c> de</c>
+
+00:00:12.950 --> 00:00:12.960 align:start position:0%
+conseguem gerenciar o tráfego de
+ 
+
+00:00:12.960 --> 00:00:15.470 align:start position:0%
+conseguem gerenciar o tráfego de
+internet<00:00:13.520><c> em</c><00:00:13.640><c> centenas</c><00:00:14.280><c> de</c><00:00:14.400><c> contas</c><00:00:14.760><c> na</c><00:00:14.840><c> nuvem.</c>
+
+00:00:15.470 --> 00:00:15.480 align:start position:0%
+internet em centenas de contas na nuvem.
+ 
+
+00:00:15.480 --> 00:00:16.830 align:start position:0%
+internet em centenas de contas na nuvem.
+A<00:00:15.560><c> gente</c><00:00:15.760><c> sabe</c><00:00:16.000><c> que</c><00:00:16.080><c> um</c><00:00:16.240><c> erro</c><00:00:16.400><c> aqui</c><00:00:16.560><c> pode</c>
+
+00:00:16.830 --> 00:00:16.840 align:start position:0%
+A gente sabe que um erro aqui pode
+ 
+
+00:00:16.840 --> 00:00:18.190 align:start position:0%
+A gente sabe que um erro aqui pode
+derrubar<00:00:17.240><c> a</c><00:00:17.280><c> infraestrutura</c><00:00:17.760><c> inteira</c><00:00:18.120><c> em</c>
+
+00:00:18.190 --> 00:00:18.200 align:start position:0%
+derrubar a infraestrutura inteira em
+ 
+
+00:00:18.200 --> 00:00:20.470 align:start position:0%
+derrubar a infraestrutura inteira em
+questão<00:00:18.440><c> de</c><00:00:18.520><c> minutos,</c><00:00:18.920><c> né?</c><00:00:19.440><c> Mas</c><00:00:19.960><c> com</c><00:00:20.080><c> o</c><00:00:20.120><c> design</c>
+
+00:00:20.470 --> 00:00:20.480 align:start position:0%
+questão de minutos, né? Mas com o design
+ 
+
+00:00:20.480 --> 00:00:22.630 align:start position:0%
+questão de minutos, né? Mas com o design
+arquitetônico<00:00:21.000><c> certinho,</c><00:00:21.840><c> a</c><00:00:21.960><c> conectividade</c>
+
+00:00:22.630 --> 00:00:22.640 align:start position:0%
+arquitetônico certinho, a conectividade
+ 
+
+00:00:22.640 --> 00:00:24.870 align:start position:0%
+arquitetônico certinho, a conectividade
+acontece<00:00:23.040><c> de</c><00:00:23.160><c> um</c><00:00:23.240><c> jeito</c><00:00:23.600><c> quase</c><00:00:24.040><c> invisível</c><00:00:24.760><c> e</c>
+
+00:00:24.870 --> 00:00:24.880 align:start position:0%
+acontece de um jeito quase invisível e
+ 
+
+00:00:24.880 --> 00:00:26.670 align:start position:0%
+acontece de um jeito quase invisível e
+perfeito.<00:00:25.760><c> É</c><00:00:25.840><c> um</c><00:00:25.880><c> desafio</c><00:00:26.240><c> técnico</c>
+
+00:00:26.670 --> 00:00:26.680 align:start position:0%
+perfeito. É um desafio técnico
+ 
+
+00:00:26.680 --> 00:00:28.070 align:start position:0%
+perfeito. É um desafio técnico
+fascinante.<00:00:27.320><c> Hoje</c><00:00:27.480><c> a</c><00:00:27.520><c> gente</c><00:00:27.680><c> vai</c><00:00:27.800><c> entender</c>
+
+00:00:28.070 --> 00:00:28.080 align:start position:0%
+fascinante. Hoje a gente vai entender
+ 
+
+00:00:28.080 --> 00:00:29.510 align:start position:0%
+fascinante. Hoje a gente vai entender
+exatamente<00:00:28.560><c> como</c><00:00:28.760><c> isso</c><00:00:28.880><c> é</c><00:00:28.920><c> solucionado</c><00:00:29.400><c> na</c>
+
+00:00:29.510 --> 00:00:29.520 align:start position:0%
+exatamente como isso é solucionado na
+ 
+
+00:00:29.520 --> 00:00:31.830 align:start position:0%
+exatamente como isso é solucionado na
+prática,<00:00:30.320><c> sempre</c><00:00:30.960><c> equilibrando</c><00:00:31.360><c> o</c><00:00:31.400><c> controle</c>
+
+00:00:31.830 --> 00:00:31.840 align:start position:0%
+prática, sempre equilibrando o controle
+ 
+
+00:00:31.840 --> 00:00:33.750 align:start position:0%
+prática, sempre equilibrando o controle
+e<00:00:31.960><c> a</c><00:00:32.000><c> agilidade.</c><00:00:32.960><c> Para</c><00:00:33.120><c> começar,</c><00:00:33.520><c> vamos</c>
+
+00:00:33.750 --> 00:00:33.760 align:start position:0%
+e a agilidade. Para começar, vamos
+ 
+
+00:00:33.760 --> 00:00:35.550 align:start position:0%
+e a agilidade. Para começar, vamos
+imaginar<00:00:34.120><c> a</c><00:00:34.160><c> seguinte</c><00:00:34.520><c> situação.</c><00:00:35.320><c> Como</c><00:00:35.480><c> os</c>
+
+00:00:35.550 --> 00:00:35.560 align:start position:0%
+imaginar a seguinte situação. Como os
+ 
+
+00:00:35.560 --> 00:00:37.510 align:start position:0%
+imaginar a seguinte situação. Como os
+sistemas<00:00:35.960><c> dentro</c><00:00:36.280><c> de</c><00:00:36.360><c> uma</c><00:00:36.560><c> rede</c><00:00:36.840><c> corporativa</c>
+
+00:00:37.510 --> 00:00:37.520 align:start position:0%
+sistemas dentro de uma rede corporativa
+ 
+
+00:00:37.520 --> 00:00:39.630 align:start position:0%
+sistemas dentro de uma rede corporativa
+enorme<00:00:38.200><c> conseguiriam</c><00:00:38.720><c> se</c><00:00:38.840><c> encontrar</c><00:00:39.280><c> se</c><00:00:39.400><c> cada</c>
+
+00:00:39.630 --> 00:00:39.640 align:start position:0%
+enorme conseguiriam se encontrar se cada
+ 
+
+00:00:39.640 --> 00:00:41.510 align:start position:0%
+enorme conseguiriam se encontrar se cada
+equipe<00:00:39.960><c> tivesse</c><00:00:40.360><c> uma</c><00:00:40.480><c> agenda</c><00:00:40.920><c> de</c><00:00:41.040><c> contatos</c>
+
+00:00:41.510 --> 00:00:41.520 align:start position:0%
+equipe tivesse uma agenda de contatos
+ 
+
+00:00:41.520 --> 00:00:43.950 align:start position:0%
+equipe tivesse uma agenda de contatos
+completamente<00:00:42.280><c> diferente</c><00:00:42.880><c> e</c><00:00:42.960><c> isolada?</c><00:00:43.800><c> Ia</c>
+
+00:00:43.950 --> 00:00:43.960 align:start position:0%
+completamente diferente e isolada? Ia
+ 
+
+00:00:43.960 --> 00:00:46.230 align:start position:0%
+completamente diferente e isolada? Ia
+ser<00:00:44.120><c> o</c><00:00:44.160><c> caos</c><00:00:44.680><c> absoluto,</c><00:00:45.360><c> concorda?</c><00:00:46.160><c> Um</c>
+
+00:00:46.230 --> 00:00:46.240 align:start position:0%
+ser o caos absoluto, concorda? Um
+ 
+
+00:00:46.240 --> 00:00:47.990 align:start position:0%
+ser o caos absoluto, concorda? Um
+departamento<00:00:46.800><c> tentaria</c><00:00:47.160><c> acessar</c><00:00:47.680><c> o</c><00:00:47.720><c> outro</c>
+
+00:00:47.990 --> 00:00:48.000 align:start position:0%
+departamento tentaria acessar o outro
+ 
+
+00:00:48.000 --> 00:00:49.470 align:start position:0%
+departamento tentaria acessar o outro
+para<00:00:48.120><c> processar</c><00:00:48.560><c> um</c><00:00:48.600><c> pagamento</c><00:00:49.080><c> ou</c><00:00:49.160><c> buscar</c><00:00:49.440><c> um</c>
+
+00:00:49.470 --> 00:00:49.480 align:start position:0%
+para processar um pagamento ou buscar um
+ 
+
+00:00:49.480 --> 00:00:51.310 align:start position:0%
+para processar um pagamento ou buscar um
+dado<00:00:49.720><c> de</c><00:00:49.800><c> cliente,</c><00:00:50.440><c> mas</c><00:00:50.640><c> os</c><00:00:50.760><c> números</c><00:00:51.160><c> e</c><00:00:51.200><c> os</c>
+
+00:00:51.310 --> 00:00:51.320 align:start position:0%
+dado de cliente, mas os números e os
+ 
+
+00:00:51.320 --> 00:00:53.350 align:start position:0%
+dado de cliente, mas os números e os
+endereços<00:00:51.800><c> simplesmente</c><00:00:52.280><c> não</c><00:00:52.400><c> iam</c><00:00:52.560><c> bater.</c><00:00:53.280><c> O</c>
+
+00:00:53.350 --> 00:00:53.360 align:start position:0%
+endereços simplesmente não iam bater. O
+ 
+
+00:00:53.360 --> 00:00:55.230 align:start position:0%
+endereços simplesmente não iam bater. O
+resultado?<00:00:54.040><c> Uma</c><00:00:54.200><c> cascata</c><00:00:54.760><c> de</c><00:00:54.880><c> falhas</c><00:00:55.160><c> de</c>
+
+00:00:55.230 --> 00:00:55.240 align:start position:0%
+resultado? Uma cascata de falhas de
+ 
+
+00:00:55.240 --> 00:00:57.910 align:start position:0%
+resultado? Uma cascata de falhas de
+comunicação<00:00:55.840><c> que</c><00:00:56.000><c> pararia</c><00:00:56.600><c> a</c><00:00:56.640><c> empresa</c><00:00:57.160><c> toda.</c>
+
+00:00:57.910 --> 00:00:57.920 align:start position:0%
+comunicação que pararia a empresa toda.
+ 
+
+00:00:57.920 --> 00:01:00.390 align:start position:0%
+comunicação que pararia a empresa toda.
+Isso<00:00:58.280><c> nos</c><00:00:58.440><c> leva</c><00:00:58.720><c> direto</c><00:00:59.160><c> para</c><00:00:59.320><c> nossa</c><00:01:00.000><c> analogia</c>
+
+00:01:00.390 --> 00:01:00.400 align:start position:0%
+Isso nos leva direto para nossa analogia
+ 
+
+00:01:00.400 --> 00:01:03.270 align:start position:0%
+Isso nos leva direto para nossa analogia
+principal.<00:01:01.320><c> O</c><00:01:01.440><c> DNS,</c><00:01:02.240><c> ou</c><00:01:02.400><c> sistema</c><00:01:02.840><c> de</c><00:01:02.960><c> nomes</c><00:01:03.200><c> de</c>
+
+00:01:03.270 --> 00:01:03.280 align:start position:0%
+principal. O DNS, ou sistema de nomes de
+ 
+
+00:01:03.280 --> 00:01:05.630 align:start position:0%
+principal. O DNS, ou sistema de nomes de
+domínio,<00:01:03.880><c> é</c><00:01:03.960><c> basicamente</c><00:01:04.519><c> essa</c><00:01:05.000><c> agenda</c><00:01:05.519><c> de</c>
+
+00:01:05.630 --> 00:01:05.640 align:start position:0%
+domínio, é basicamente essa agenda de
+ 
+
+00:01:05.640 --> 00:01:07.830 align:start position:0%
+domínio, é basicamente essa agenda de
+contatos<00:01:06.120><c> corporativa.</c><00:01:07.280><c> A</c><00:01:07.360><c> função</c><00:01:07.680><c> dele</c><00:01:07.800><c> é</c>
+
+00:01:07.830 --> 00:01:07.840 align:start position:0%
+contatos corporativa. A função dele é
+ 
+
+00:01:07.840 --> 00:01:09.710 align:start position:0%
+contatos corporativa. A função dele é
+super<00:01:08.120><c> simples.</c><00:01:08.800><c> Ele</c><00:01:09.000><c> pega</c><00:01:09.200><c> aqueles</c><00:01:09.440><c> nomes</c>
+
+00:01:09.710 --> 00:01:09.720 align:start position:0%
+super simples. Ele pega aqueles nomes
+ 
+
+00:01:09.720 --> 00:01:11.750 align:start position:0%
+super simples. Ele pega aqueles nomes
+amigáveis<00:01:10.320><c> que</c><00:01:10.400><c> a</c><00:01:10.440><c> gente</c><00:01:10.720><c> usa</c><00:01:10.920><c> no</c><00:01:11.000><c> dia</c><00:01:11.160><c> a</c><00:01:11.200><c> dia,</c>
+
+00:01:11.750 --> 00:01:11.760 align:start position:0%
+amigáveis que a gente usa no dia a dia,
+ 
+
+00:01:11.760 --> 00:01:13.870 align:start position:0%
+amigáveis que a gente usa no dia a dia,
+tipo<00:01:12.200><c> app.empresa.com,</c>
+
+00:01:13.870 --> 00:01:13.880 align:start position:0%
+tipo app.empresa.com,
+ 
+
+00:01:13.880 --> 00:01:15.830 align:start position:0%
+tipo app.empresa.com,
+e<00:01:14.000><c> traduz</c><00:01:14.400><c> para</c><00:01:14.520><c> os</c><00:01:14.560><c> locais</c><00:01:14.960><c> reais</c><00:01:15.440><c> onde</c><00:01:15.600><c> esses</c>
+
+00:01:15.830 --> 00:01:15.840 align:start position:0%
+e traduz para os locais reais onde esses
+ 
+
+00:01:15.840 --> 00:01:18.030 align:start position:0%
+e traduz para os locais reais onde esses
+sistemas<00:01:16.400><c> moram</c><00:01:16.720><c> nos</c><00:01:16.920><c> servidores,</c><00:01:17.800><c> que</c><00:01:17.920><c> são</c>
+
+00:01:18.030 --> 00:01:18.040 align:start position:0%
+sistemas moram nos servidores, que são
+ 
+
+00:01:18.040 --> 00:01:19.270 align:start position:0%
+sistemas moram nos servidores, que são
+os<00:01:18.120><c> endereços</c><00:01:18.520><c> IP.</c>
+
+00:01:19.270 --> 00:01:19.280 align:start position:0%
+os endereços IP.
+ 
+
+00:01:19.280 --> 00:01:21.470 align:start position:0%
+os endereços IP.
+Sem<00:01:19.480><c> essa</c><00:01:19.680><c> agenda</c><00:01:20.080><c> vital,</c><00:01:20.600><c> a</c><00:01:20.680><c> internet</c><00:01:21.320><c> e</c><00:01:21.360><c> as</c>
+
+00:01:21.470 --> 00:01:21.480 align:start position:0%
+Sem essa agenda vital, a internet e as
+ 
+
+00:01:21.480 --> 00:01:23.630 align:start position:0%
+Sem essa agenda vital, a internet e as
+redes<00:01:21.800><c> das</c><00:01:21.920><c> empresas</c><00:01:22.760><c> seriam</c><00:01:23.000><c> só</c><00:01:23.200><c> um</c><00:01:23.320><c> mar</c>
+
+00:01:23.630 --> 00:01:23.640 align:start position:0%
+redes das empresas seriam só um mar
+ 
+
+00:01:23.640 --> 00:01:25.670 align:start position:0%
+redes das empresas seriam só um mar
+indecifrável<00:01:24.480><c> de</c><00:01:24.640><c> números.</c>
+
+00:01:25.670 --> 00:01:25.680 align:start position:0%
+indecifrável de números.
+ 
+
+00:01:25.680 --> 00:01:27.510 align:start position:0%
+indecifrável de números.
+Mas<00:01:25.920><c> vamos</c><00:01:26.200><c> ver</c><00:01:26.360><c> como</c><00:01:26.520><c> o</c><00:01:26.560><c> problema</c><00:01:26.920><c> realmente</c>
+
+00:01:27.510 --> 00:01:27.520 align:start position:0%
+Mas vamos ver como o problema realmente
+ 
+
+00:01:27.520 --> 00:01:29.150 align:start position:0%
+Mas vamos ver como o problema realmente
+aparece<00:01:28.000><c> quando</c><00:01:28.200><c> a</c><00:01:28.240><c> empresa</c><00:01:28.600><c> começa</c><00:01:29.120><c> a</c>
+
+00:01:29.150 --> 00:01:29.160 align:start position:0%
+aparece quando a empresa começa a
+ 
+
+00:01:29.160 --> 00:01:30.110 align:start position:0%
+aparece quando a empresa começa a
+crescer.
+
+00:01:30.110 --> 00:01:30.120 align:start position:0%
+crescer.
+ 
+
+00:01:30.120 --> 00:01:31.870 align:start position:0%
+crescer.
+No<00:01:30.240><c> começo,</c><00:01:30.760><c> quando</c><00:01:31.000><c> existe</c><00:01:31.280><c> só</c><00:01:31.440><c> uma</c><00:01:31.640><c> conta</c>
+
+00:01:31.870 --> 00:01:31.880 align:start position:0%
+No começo, quando existe só uma conta
+ 
+
+00:01:31.880 --> 00:01:34.390 align:start position:0%
+No começo, quando existe só uma conta
+AWS,<00:01:32.680><c> tudo</c><00:01:32.920><c> roda</c><00:01:33.200><c> que</c><00:01:33.280><c> é</c><00:01:33.320><c> uma</c><00:01:33.480><c> maravilha.</c><00:01:34.320><c> É</c>
+
+00:01:34.390 --> 00:01:34.400 align:start position:0%
+AWS, tudo roda que é uma maravilha. É
+ 
+
+00:01:34.400 --> 00:01:36.430 align:start position:0%
+AWS, tudo roda que é uma maravilha. É
+uma<00:01:34.560><c> agenda</c><00:01:34.880><c> única,</c><00:01:35.360><c> simples,</c><00:01:35.880><c> super</c><00:01:36.160><c> fácil</c>
+
+00:01:36.430 --> 00:01:36.440 align:start position:0%
+uma agenda única, simples, super fácil
+ 
+
+00:01:36.440 --> 00:01:37.710 align:start position:0%
+uma agenda única, simples, super fácil
+de<00:01:36.560><c> gerenciar.</c>
+
+00:01:37.710 --> 00:01:37.720 align:start position:0%
+de gerenciar.
+ 
+
+00:01:37.720 --> 00:01:39.110 align:start position:0%
+de gerenciar.
+Só<00:01:37.840><c> que</c><00:01:37.960><c> quando</c><00:01:38.200><c> o</c><00:01:38.240><c> ambiente</c><00:01:38.560><c> expande</c><00:01:38.960><c> ali</c>
+
+00:01:39.110 --> 00:01:39.120 align:start position:0%
+Só que quando o ambiente expande ali
+ 
+
+00:01:39.120 --> 00:01:41.550 align:start position:0%
+Só que quando o ambiente expande ali
+para<00:01:39.240><c> umas</c><00:01:39.400><c> 10</c><00:01:39.720><c> contas,</c><00:01:40.520><c> as</c><00:01:40.680><c> equipes</c><00:01:41.000><c> começam</c>
+
+00:01:41.550 --> 00:01:41.560 align:start position:0%
+para umas 10 contas, as equipes começam
+ 
+
+00:01:41.560 --> 00:01:43.550 align:start position:0%
+para umas 10 contas, as equipes começam
+a<00:01:41.600><c> criar</c><00:01:41.920><c> as</c><00:01:42.040><c> próprias</c><00:01:42.440><c> listas</c><00:01:42.800><c> isoladas</c><00:01:43.400><c> para</c>
+
+00:01:43.550 --> 00:01:43.560 align:start position:0%
+a criar as próprias listas isoladas para
+ 
+
+00:01:43.560 --> 00:01:45.790 align:start position:0%
+a criar as próprias listas isoladas para
+não<00:01:43.760><c> dependerem</c><00:01:44.280><c> de</c><00:01:44.360><c> ninguém.</c><00:01:44.880><c> E</c><00:01:45.040><c> aí,</c><00:01:45.600><c> quando</c>
+
+00:01:45.790 --> 00:01:45.800 align:start position:0%
+não dependerem de ninguém. E aí, quando
+ 
+
+00:01:45.800 --> 00:01:47.910 align:start position:0%
+não dependerem de ninguém. E aí, quando
+o<00:01:45.840><c> cenário</c><00:01:46.120><c> atinge</c><00:01:46.400><c> aquela</c><00:01:46.640><c> escala</c><00:01:46.960><c> massiva</c>
+
+00:01:47.910 --> 00:01:47.920 align:start position:0%
+o cenário atinge aquela escala massiva
+ 
+
+00:01:47.920 --> 00:01:49.910 align:start position:0%
+o cenário atinge aquela escala massiva
+de<00:01:48.040><c> 100</c><00:01:48.480><c> ou</c><00:01:48.640><c> mais</c><00:01:48.960><c> contas</c><00:01:49.240><c> espalhadas</c><00:01:49.720><c> por</c>
+
+00:01:49.910 --> 00:01:49.920 align:start position:0%
+de 100 ou mais contas espalhadas por
+ 
+
+00:01:49.920 --> 00:01:52.550 align:start position:0%
+de 100 ou mais contas espalhadas por
+vários<00:01:50.200><c> departamentos,</c><00:01:51.240><c> nossa,</c><00:01:51.720><c> aí</c><00:01:52.160><c> a</c><00:01:52.240><c> coisa</c>
+
+00:01:52.550 --> 00:01:52.560 align:start position:0%
+vários departamentos, nossa, aí a coisa
+ 
+
+00:01:52.560 --> 00:01:53.830 align:start position:0%
+vários departamentos, nossa, aí a coisa
+muda<00:01:52.760><c> de</c><00:01:52.880><c> figura.</c>
+
+00:01:53.830 --> 00:01:53.840 align:start position:0%
+muda de figura.
+ 
+
+00:01:53.840 --> 00:01:55.630 align:start position:0%
+muda de figura.
+Uma<00:01:54.000><c> tarefinha</c><00:01:54.480><c> simples</c><00:01:54.920><c> de</c><00:01:55.040><c> TI</c><00:01:55.320><c> vira</c><00:01:55.520><c> um</c>
+
+00:01:55.630 --> 00:01:55.640 align:start position:0%
+Uma tarefinha simples de TI vira um
+ 
+
+00:01:55.640 --> 00:01:58.510 align:start position:0%
+Uma tarefinha simples de TI vira um
+verdadeiro<00:01:56.320><c> labirinto</c><00:01:56.920><c> de</c><00:01:57.040><c> configurações.</c><00:01:58.400><c> É</c>
+
+00:01:58.510 --> 00:01:58.520 align:start position:0%
+verdadeiro labirinto de configurações. É
+ 
+
+00:01:58.520 --> 00:02:00.190 align:start position:0%
+verdadeiro labirinto de configurações. É
+bem<00:01:58.800><c> aí</c><00:01:59.000><c> que</c><00:01:59.120><c> nasce</c><00:01:59.360><c> o</c><00:01:59.400><c> que</c><00:01:59.440><c> a</c><00:01:59.480><c> gente</c><00:01:59.720><c> chama</c><00:02:00.080><c> de</c>
+
+00:02:00.190 --> 00:02:00.200 align:start position:0%
+bem aí que nasce o que a gente chama de
+ 
+
+00:02:00.200 --> 00:02:01.910 align:start position:0%
+bem aí que nasce o que a gente chama de
+caos<00:02:00.600><c> centralizado.</c>
+
+00:02:01.910 --> 00:02:01.920 align:start position:0%
+caos centralizado.
+ 
+
+00:02:01.920 --> 00:02:04.190 align:start position:0%
+caos centralizado.
+Quando<00:02:02.040><c> cada</c><00:02:02.400><c> conta</c><00:02:02.720><c> AWS</c><00:02:03.320><c> resolve</c><00:02:03.720><c> criar</c><00:02:04.120><c> e</c>
+
+00:02:04.190 --> 00:02:04.200 align:start position:0%
+Quando cada conta AWS resolve criar e
+ 
+
+00:02:04.200 --> 00:02:06.590 align:start position:0%
+Quando cada conta AWS resolve criar e
+administrar<00:02:04.840><c> as</c><00:02:05.000><c> próprias</c><00:02:05.520><c> regras</c><00:02:05.840><c> de</c><00:02:05.960><c> DNS</c><00:02:06.479><c> de</c>
+
+00:02:06.590 --> 00:02:06.600 align:start position:0%
+administrar as próprias regras de DNS de
+ 
+
+00:02:06.600 --> 00:02:08.430 align:start position:0%
+administrar as próprias regras de DNS de
+forma<00:02:06.920><c> isolada,</c><00:02:07.800><c> os</c><00:02:07.960><c> problemas</c><00:02:08.320><c> se</c>
+
+00:02:08.430 --> 00:02:08.440 align:start position:0%
+forma isolada, os problemas se
+ 
+
+00:02:08.440 --> 00:02:11.270 align:start position:0%
+forma isolada, os problemas se
+multiplicam<00:02:09.080><c> rapidinho.</c><00:02:10.280><c> É</c><00:02:10.320><c> como</c><00:02:10.560><c> se</c><00:02:10.679><c> dezenas</c>
+
+00:02:11.270 --> 00:02:11.280 align:start position:0%
+multiplicam rapidinho. É como se dezenas
+ 
+
+00:02:11.280 --> 00:02:13.390 align:start position:0%
+multiplicam rapidinho. É como se dezenas
+de<00:02:11.360><c> pessoas</c><00:02:11.880><c> estivessem</c><00:02:12.360><c> anotando</c><00:02:12.800><c> contatos</c>
+
+00:02:13.390 --> 00:02:13.400 align:start position:0%
+de pessoas estivessem anotando contatos
+ 
+
+00:02:13.400 --> 00:02:14.910 align:start position:0%
+de pessoas estivessem anotando contatos
+em<00:02:13.520><c> agendas</c><00:02:14.000><c> diferentes</c><00:02:14.520><c> que</c><00:02:14.640><c> ficam</c>
+
+00:02:14.910 --> 00:02:14.920 align:start position:0%
+em agendas diferentes que ficam
+ 
+
+00:02:14.920 --> 00:02:16.230 align:start position:0%
+em agendas diferentes que ficam
+desatualizadas.
+
+00:02:16.230 --> 00:02:16.240 align:start position:0%
+desatualizadas.
+ 
+
+00:02:16.240 --> 00:02:18.270 align:start position:0%
+desatualizadas.
+Logo<00:02:16.480><c> começam</c><00:02:16.920><c> a</c><00:02:17.000><c> pipocar</c><00:02:17.520><c> configurações</c>
+
+00:02:18.270 --> 00:02:18.280 align:start position:0%
+Logo começam a pipocar configurações
+ 
+
+00:02:18.280 --> 00:02:20.990 align:start position:0%
+Logo começam a pipocar configurações
+duplicadas,<00:02:19.280><c> regras</c><00:02:19.640><c> que</c><00:02:19.800><c> brigam</c><00:02:20.120><c> entre</c><00:02:20.360><c> si</c><00:02:20.880><c> e</c>
+
+00:02:20.990 --> 00:02:21.000 align:start position:0%
+duplicadas, regras que brigam entre si e
+ 
+
+00:02:21.000 --> 00:02:23.390 align:start position:0%
+duplicadas, regras que brigam entre si e
+a<00:02:21.040><c> manutenção</c><00:02:21.600><c> vira</c><00:02:21.760><c> um</c><00:02:21.840><c> pesadelo</c><00:02:22.440><c> total.</c>
+
+00:02:23.390 --> 00:02:23.400 align:start position:0%
+a manutenção vira um pesadelo total.
+ 
+
+00:02:23.400 --> 00:02:25.190 align:start position:0%
+a manutenção vira um pesadelo total.
+Sem<00:02:23.480><c> falar</c><00:02:23.720><c> naquelas</c><00:02:24.080><c> falhas</c><00:02:24.360><c> silenciosas</c>
+
+00:02:25.190 --> 00:02:25.200 align:start position:0%
+Sem falar naquelas falhas silenciosas
+ 
+
+00:02:25.200 --> 00:02:27.230 align:start position:0%
+Sem falar naquelas falhas silenciosas
+horríveis.<00:02:26.200><c> Quando</c><00:02:26.360><c> um</c><00:02:26.440><c> sistema</c><00:02:26.840><c> para</c><00:02:27.160><c> de</c>
+
+00:02:27.230 --> 00:02:27.240 align:start position:0%
+horríveis. Quando um sistema para de
+ 
+
+00:02:27.240 --> 00:02:29.110 align:start position:0%
+horríveis. Quando um sistema para de
+achar<00:02:27.480><c> o</c><00:02:27.640><c> outro</c><00:02:27.959><c> e</c><00:02:28.040><c> nem</c><00:02:28.280><c> gera</c><00:02:28.520><c> uma</c><00:02:28.640><c> mensagem</c><00:02:29.000><c> de</c>
+
+00:02:29.110 --> 00:02:29.120 align:start position:0%
+achar o outro e nem gera uma mensagem de
+ 
+
+00:02:29.120 --> 00:02:30.190 align:start position:0%
+achar o outro e nem gera uma mensagem de
+erro<00:02:29.280><c> clara.</c>
+
+00:02:30.190 --> 00:02:30.200 align:start position:0%
+erro clara.
+ 
+
+00:02:30.200 --> 00:02:31.990 align:start position:0%
+erro clara.
+A<00:02:30.240><c> falta</c><00:02:30.600><c> de</c><00:02:30.720><c> governança</c><00:02:31.320><c> vira</c><00:02:31.480><c> uma</c><00:02:31.600><c> ameaça</c>
+
+00:02:31.990 --> 00:02:32.000 align:start position:0%
+A falta de governança vira uma ameaça
+ 
+
+00:02:32.000 --> 00:02:34.350 align:start position:0%
+A falta de governança vira uma ameaça
+gigante<00:02:32.600><c> para</c><00:02:32.720><c> a</c><00:02:32.760><c> estabilidade</c><00:02:33.360><c> de</c><00:02:33.480><c> tudo.</c><00:02:34.200><c> E</c><00:02:34.280><c> é</c>
+
+00:02:34.350 --> 00:02:34.360 align:start position:0%
+gigante para a estabilidade de tudo. E é
+ 
+
+00:02:34.360 --> 00:02:35.670 align:start position:0%
+gigante para a estabilidade de tudo. E é
+muito<00:02:34.600><c> interessante</c><00:02:35.240><c> olhar</c><00:02:35.440><c> para</c><00:02:35.560><c> essa</c>
+
+00:02:35.670 --> 00:02:35.680 align:start position:0%
+muito interessante olhar para essa
+ 
+
+00:02:35.680 --> 00:02:37.790 align:start position:0%
+muito interessante olhar para essa
+comparação.<00:02:36.560><c> O</c><00:02:36.640><c> pesadelo</c><00:02:37.320><c> do</c><00:02:37.400><c> modelo</c>
+
+00:02:37.790 --> 00:02:37.800 align:start position:0%
+comparação. O pesadelo do modelo
+ 
+
+00:02:37.800 --> 00:02:40.070 align:start position:0%
+comparação. O pesadelo do modelo
+descentralizado<00:02:38.959><c> contrasta</c><00:02:39.440><c> muito</c><00:02:39.840><c> com</c><00:02:40.000><c> a</c>
+
+00:02:40.070 --> 00:02:40.080 align:start position:0%
+descentralizado contrasta muito com a
+ 
+
+00:02:40.080 --> 00:02:42.590 align:start position:0%
+descentralizado contrasta muito com a
+paz<00:02:40.520><c> de</c><00:02:40.600><c> uma</c><00:02:40.720><c> arquitetura</c><00:02:41.280><c> centralizada.</c><00:02:42.520><c> Do</c>
+
+00:02:42.590 --> 00:02:42.600 align:start position:0%
+paz de uma arquitetura centralizada. Do
+ 
+
+00:02:42.600 --> 00:02:44.230 align:start position:0%
+paz de uma arquitetura centralizada. Do
+lado<00:02:42.959><c> descentralizado,</c><00:02:43.840><c> as</c><00:02:43.959><c> contas</c>
+
+00:02:44.230 --> 00:02:44.240 align:start position:0%
+lado descentralizado, as contas
+ 
+
+00:02:44.240 --> 00:02:46.110 align:start position:0%
+lado descentralizado, as contas
+funcionam<00:02:44.640><c> como</c><00:02:44.920><c> ilhas.</c><00:02:45.640><c> Isso</c><00:02:45.880><c> gera</c>
+
+00:02:46.110 --> 00:02:46.120 align:start position:0%
+funcionam como ilhas. Isso gera
+ 
+
+00:02:46.120 --> 00:02:48.150 align:start position:0%
+funcionam como ilhas. Isso gera
+sobreposição<00:02:46.840><c> de</c><00:02:46.959><c> trabalho,</c><00:02:47.480><c> retrabalho</c><00:02:48.120><c> e</c>
+
+00:02:48.150 --> 00:02:48.160 align:start position:0%
+sobreposição de trabalho, retrabalho e
+ 
+
+00:02:48.160 --> 00:02:50.350 align:start position:0%
+sobreposição de trabalho, retrabalho e
+umas<00:02:48.360><c> brechas</c><00:02:48.680><c> de</c><00:02:48.760><c> segurança</c><00:02:49.240><c> enormes.</c>
+
+00:02:50.350 --> 00:02:50.360 align:start position:0%
+umas brechas de segurança enormes.
+ 
+
+00:02:50.360 --> 00:02:51.990 align:start position:0%
+umas brechas de segurança enormes.
+Do<00:02:50.440><c> outro</c><00:02:50.680><c> lado,</c><00:02:51.000><c> a</c><00:02:51.040><c> gente</c><00:02:51.240><c> tem</c><00:02:51.400><c> a</c><00:02:51.440><c> introdução</c>
+
+00:02:51.990 --> 00:02:52.000 align:start position:0%
+Do outro lado, a gente tem a introdução
+ 
+
+00:02:52.000 --> 00:02:53.949 align:start position:0%
+Do outro lado, a gente tem a introdução
+da<00:02:52.120><c> conta</c><00:02:52.400><c> de</c><00:02:52.520><c> serviços</c><00:02:52.959><c> compartilhados</c><00:02:53.800><c> que</c>
+
+00:02:53.949 --> 00:02:53.959 align:start position:0%
+da conta de serviços compartilhados que
+ 
+
+00:02:53.959 --> 00:02:55.310 align:start position:0%
+da conta de serviços compartilhados que
+funciona<00:02:54.280><c> como</c><00:02:54.480><c> um</c><00:02:54.560><c> hub</c><00:02:54.959><c> central</c>
+
+00:02:55.310 --> 00:02:55.320 align:start position:0%
+funciona como um hub central
+ 
+
+00:02:55.320 --> 00:02:57.830 align:start position:0%
+funciona como um hub central
+inteligente.<00:02:56.440><c> Essa</c><00:02:56.640><c> conta</c><00:02:56.920><c> dedicada</c><00:02:57.520><c> guarda</c>
+
+00:02:57.830 --> 00:02:57.840 align:start position:0%
+inteligente. Essa conta dedicada guarda
+ 
+
+00:02:57.840 --> 00:02:59.670 align:start position:0%
+inteligente. Essa conta dedicada guarda
+a<00:02:57.880><c> infraestrutura</c><00:02:58.440><c> principal</c><00:02:59.000><c> e</c><00:02:59.080><c> distribui</c>
+
+00:02:59.670 --> 00:02:59.680 align:start position:0%
+a infraestrutura principal e distribui
+ 
+
+00:02:59.680 --> 00:03:02.070 align:start position:0%
+a infraestrutura principal e distribui
+as<00:02:59.800><c> rotas</c><00:03:00.080><c> corretas</c><00:03:00.720><c> de</c><00:03:00.840><c> forma</c><00:03:01.120><c> padronizada</c>
+
+00:03:02.070 --> 00:03:02.080 align:start position:0%
+as rotas corretas de forma padronizada
+ 
+
+00:03:02.080 --> 00:03:03.509 align:start position:0%
+as rotas corretas de forma padronizada
+para<00:03:02.239><c> todas</c><00:03:02.680><c> as</c><00:03:02.840><c> outras</c><00:03:03.120><c> contas</c><00:03:03.440><c> de</c>
+
+00:03:03.509 --> 00:03:03.519 align:start position:0%
+para todas as outras contas de
+ 
+
+00:03:03.519 --> 00:03:05.790 align:start position:0%
+para todas as outras contas de
+aplicação.<00:03:04.480><c> Isso</c><00:03:04.720><c> sim</c><00:03:04.959><c> traz</c><00:03:05.280><c> ordem</c><00:03:05.640><c> para</c>
+
+00:03:05.790 --> 00:03:05.800 align:start position:0%
+aplicação. Isso sim traz ordem para
+ 
+
+00:03:05.800 --> 00:03:08.310 align:start position:0%
+aplicação. Isso sim traz ordem para
+casa.<00:03:06.680><c> Sessão</c><00:03:07.040><c> um:</c><00:03:07.400><c> construindo</c><00:03:08.000><c> o</c><00:03:08.040><c> hub</c>
+
+00:03:08.310 --> 00:03:08.320 align:start position:0%
+casa. Sessão um: construindo o hub
+ 
+
+00:03:08.320 --> 00:03:09.870 align:start position:0%
+casa. Sessão um: construindo o hub
+centralizado.
+
+00:03:09.870 --> 00:03:09.880 align:start position:0%
+centralizado.
+ 
+
+00:03:09.880 --> 00:03:11.910 align:start position:0%
+centralizado.
+Introduzindo<00:03:10.519><c> as</c><00:03:10.640><c> ferramentas</c><00:03:11.200><c> nativas</c><00:03:11.760><c> para</c>
+
+00:03:11.910 --> 00:03:11.920 align:start position:0%
+Introduzindo as ferramentas nativas para
+ 
+
+00:03:11.920 --> 00:03:14.670 align:start position:0%
+Introduzindo as ferramentas nativas para
+uma<00:03:12.040><c> arquitetura</c><00:03:12.680><c> unificada.</c><00:03:14.000><c> Bom,</c><00:03:14.640><c> a</c>
+
+00:03:14.670 --> 00:03:14.680 align:start position:0%
+uma arquitetura unificada. Bom, a
+ 
+
+00:03:14.680 --> 00:03:16.670 align:start position:0%
+uma arquitetura unificada. Bom, a
+ferramenta<00:03:15.160><c> principal</c><00:03:15.800><c> para</c><00:03:15.920><c> construir</c><00:03:16.440><c> esse</c>
+
+00:03:16.670 --> 00:03:16.680 align:start position:0%
+ferramenta principal para construir esse
+ 
+
+00:03:16.680 --> 00:03:20.310 align:start position:0%
+ferramenta principal para construir esse
+hub<00:03:17.000><c> dentro</c><00:03:17.440><c> da</c><00:03:17.560><c> AWS</c><00:03:18.239><c> é</c><00:03:18.360><c> o</c><00:03:18.480><c> Amazon</c><00:03:18.880><c> Route</c><00:03:19.200><c> 53.</c>
+
+00:03:20.310 --> 00:03:20.320 align:start position:0%
+hub dentro da AWS é o Amazon Route 53.
+ 
+
+00:03:20.320 --> 00:03:21.949 align:start position:0%
+hub dentro da AWS é o Amazon Route 53.
+Sem<00:03:20.480><c> entrar</c><00:03:20.720><c> em</c><00:03:20.760><c> nenhum</c><00:03:21.080><c> jargão</c><00:03:21.440><c> técnico</c>
+
+00:03:21.949 --> 00:03:21.959 align:start position:0%
+Sem entrar em nenhum jargão técnico
+ 
+
+00:03:21.959 --> 00:03:24.710 align:start position:0%
+Sem entrar em nenhum jargão técnico
+super<00:03:22.320><c> complicado,</c><00:03:23.280><c> pensa</c><00:03:23.560><c> no</c><00:03:23.680><c> Route</c><00:03:23.920><c> 53</c><00:03:24.480><c> como</c>
+
+00:03:24.710 --> 00:03:24.720 align:start position:0%
+super complicado, pensa no Route 53 como
+ 
+
+00:03:24.720 --> 00:03:26.790 align:start position:0%
+super complicado, pensa no Route 53 como
+serviço<00:03:25.120><c> nativo</c><00:03:25.720><c> que</c><00:03:25.840><c> aponta</c><00:03:26.239><c> o</c><00:03:26.280><c> caminho</c><00:03:26.760><c> e</c>
+
+00:03:26.790 --> 00:03:26.800 align:start position:0%
+serviço nativo que aponta o caminho e
+ 
+
+00:03:26.800 --> 00:03:28.870 align:start position:0%
+serviço nativo que aponta o caminho e
+gerencia<00:03:27.239><c> os</c><00:03:27.320><c> registros</c><00:03:27.800><c> de</c><00:03:27.920><c> DNS</c><00:03:28.480><c> de</c><00:03:28.560><c> um</c><00:03:28.640><c> jeito</c>
+
+00:03:28.870 --> 00:03:28.880 align:start position:0%
+gerencia os registros de DNS de um jeito
+ 
+
+00:03:28.880 --> 00:03:30.550 align:start position:0%
+gerencia os registros de DNS de um jeito
+que<00:03:28.959><c> escala</c><00:03:29.320><c> muito</c><00:03:29.720><c> bem.</c>
+
+00:03:30.550 --> 00:03:30.560 align:start position:0%
+que escala muito bem.
+ 
+
+00:03:30.560 --> 00:03:32.270 align:start position:0%
+que escala muito bem.
+Ele<00:03:30.680><c> é</c><00:03:30.720><c> altamente</c><00:03:31.200><c> disponível,</c><00:03:31.800><c> rodando</c><00:03:32.120><c> numa</c>
+
+00:03:32.270 --> 00:03:32.280 align:start position:0%
+Ele é altamente disponível, rodando numa
+ 
+
+00:03:32.280 --> 00:03:34.350 align:start position:0%
+Ele é altamente disponível, rodando numa
+infraestrutura<00:03:32.880><c> global.</c><00:03:33.800><c> Dá</c><00:03:33.880><c> para</c><00:03:34.000><c> imaginar</c>
+
+00:03:34.350 --> 00:03:34.360 align:start position:0%
+infraestrutura global. Dá para imaginar
+ 
+
+00:03:34.360 --> 00:03:36.550 align:start position:0%
+infraestrutura global. Dá para imaginar
+ele<00:03:34.600><c> como</c><00:03:34.840><c> o</c><00:03:34.880><c> grande</c><00:03:35.280><c> bibliotecário</c><00:03:35.840><c> chefe,</c>
+
+00:03:36.550 --> 00:03:36.560 align:start position:0%
+ele como o grande bibliotecário chefe,
+ 
+
+00:03:36.560 --> 00:03:38.550 align:start position:0%
+ele como o grande bibliotecário chefe,
+aquele<00:03:36.800><c> que</c><00:03:36.880><c> organiza,</c><00:03:37.480><c> consulta,</c><00:03:38.160><c> entrega</c>
+
+00:03:38.550 --> 00:03:38.560 align:start position:0%
+aquele que organiza, consulta, entrega
+ 
+
+00:03:38.560 --> 00:03:40.509 align:start position:0%
+aquele que organiza, consulta, entrega
+as<00:03:38.640><c> informações</c><00:03:39.200><c> de</c><00:03:39.360><c> todas</c><00:03:39.760><c> as</c><00:03:39.880><c> agendas</c><00:03:40.400><c> da</c>
+
+00:03:40.509 --> 00:03:40.519 align:start position:0%
+as informações de todas as agendas da
+ 
+
+00:03:40.519 --> 00:03:43.550 align:start position:0%
+as informações de todas as agendas da
+nuvem<00:03:40.880><c> em</c><00:03:40.959><c> questão</c><00:03:41.360><c> de</c><00:03:41.519><c> milissegundos.</c>
+
+00:03:43.550 --> 00:03:43.560 align:start position:0%
+nuvem em questão de milissegundos.
+ 
+
+00:03:43.560 --> 00:03:45.430 align:start position:0%
+nuvem em questão de milissegundos.
+Agora,<00:03:43.959><c> se</c><00:03:44.080><c> a</c><00:03:44.120><c> agenda</c><00:03:44.440><c> fica</c><00:03:44.640><c> centralizada,</c>
+
+00:03:45.430 --> 00:03:45.440 align:start position:0%
+Agora, se a agenda fica centralizada,
+ 
+
+00:03:45.440 --> 00:03:47.270 align:start position:0%
+Agora, se a agenda fica centralizada,
+como<00:03:45.800><c> os</c><00:03:45.920><c> outros</c><00:03:46.200><c> departamentos</c><00:03:46.840><c> acessam</c>
+
+00:03:47.270 --> 00:03:47.280 align:start position:0%
+como os outros departamentos acessam
+ 
+
+00:03:47.280 --> 00:03:49.390 align:start position:0%
+como os outros departamentos acessam
+essas<00:03:47.480><c> informações</c><00:03:48.239><c> sem</c><00:03:48.480><c> criar</c><00:03:48.720><c> um</c><00:03:48.920><c> gargalo</c>
+
+00:03:49.390 --> 00:03:49.400 align:start position:0%
+essas informações sem criar um gargalo
+ 
+
+00:03:49.400 --> 00:03:53.230 align:start position:0%
+essas informações sem criar um gargalo
+gigantesco?<00:03:50.480><c> É</c><00:03:50.600><c> aqui</c><00:03:50.920><c> que</c><00:03:51.200><c> entra</c><00:03:51.480><c> o</c><00:03:51.640><c> AWS</c><00:03:52.480><c> RAM,</c>
+
+00:03:53.230 --> 00:03:53.240 align:start position:0%
+gigantesco? É aqui que entra o AWS RAM,
+ 
+
+00:03:53.240 --> 00:03:56.110 align:start position:0%
+gigantesco? É aqui que entra o AWS RAM,
+o<00:03:53.360><c> gerenciador</c><00:03:54.160><c> de</c><00:03:54.280><c> acesso</c><00:03:54.840><c> a</c><00:03:54.920><c> recursos.</c><00:03:55.920><c> Ele</c>
+
+00:03:56.110 --> 00:03:56.120 align:start position:0%
+o gerenciador de acesso a recursos. Ele
+ 
+
+00:03:56.120 --> 00:03:57.590 align:start position:0%
+o gerenciador de acesso a recursos. Ele
+é<00:03:56.160><c> um</c><00:03:56.200><c> mecanismo</c><00:03:56.800><c> de</c><00:03:56.920><c> compartilhamento</c>
+
+00:03:57.590 --> 00:03:57.600 align:start position:0%
+é um mecanismo de compartilhamento
+ 
+
+00:03:57.600 --> 00:03:59.910 align:start position:0%
+é um mecanismo de compartilhamento
+extremamente<00:03:58.360><c> seguro.</c><00:03:59.160><c> Basicamente,</c><00:03:59.800><c> ele</c>
+
+00:03:59.910 --> 00:03:59.920 align:start position:0%
+extremamente seguro. Basicamente, ele
+ 
+
+00:03:59.920 --> 00:04:01.630 align:start position:0%
+extremamente seguro. Basicamente, ele
+permite<00:04:00.320><c> distribuir</c><00:04:00.800><c> o</c><00:04:00.840><c> acesso</c><00:04:01.240><c> à</c><00:04:01.280><c> agenda</c>
+
+00:04:01.630 --> 00:04:01.640 align:start position:0%
+permite distribuir o acesso à agenda
+ 
+
+00:04:01.640 --> 00:04:04.230 align:start position:0%
+permite distribuir o acesso à agenda
+mestra,<00:04:02.320><c> como</c><00:04:02.520><c> as</c><00:04:02.640><c> regras</c><00:04:03.000><c> de</c><00:04:03.120><c> DNS</c><00:04:03.840><c> e</c><00:04:03.880><c> perfis</c>
+
+00:04:04.230 --> 00:04:04.240 align:start position:0%
+mestra, como as regras de DNS e perfis
+ 
+
+00:04:04.240 --> 00:04:06.230 align:start position:0%
+mestra, como as regras de DNS e perfis
+de<00:04:04.320><c> roteamento,</c><00:04:05.200><c> para</c><00:04:05.320><c> dezenas</c><00:04:05.920><c> ou</c><00:04:06.000><c> até</c>
+
+00:04:06.230 --> 00:04:06.240 align:start position:0%
+de roteamento, para dezenas ou até
+ 
+
+00:04:06.240 --> 00:04:08.550 align:start position:0%
+de roteamento, para dezenas ou até
+centenas<00:04:06.959><c> de</c><00:04:07.080><c> contas</c><00:04:07.400><c> independentes.</c><00:04:08.480><c> A</c>
+
+00:04:08.550 --> 00:04:08.560 align:start position:0%
+centenas de contas independentes. A
+ 
+
+00:04:08.560 --> 00:04:10.270 align:start position:0%
+centenas de contas independentes. A
+grande<00:04:08.840><c> sacada</c><00:04:09.200><c> é</c><00:04:09.240><c> que</c><00:04:09.360><c> todo</c><00:04:09.600><c> mundo</c><00:04:09.959><c> usa</c><00:04:10.160><c> as</c>
+
+00:04:10.270 --> 00:04:10.280 align:start position:0%
+grande sacada é que todo mundo usa as
+ 
+
+00:04:10.280 --> 00:04:12.949 align:start position:0%
+grande sacada é que todo mundo usa as
+rotas<00:04:10.600><c> oficiais,</c><00:04:11.360><c> mas</c><00:04:11.560><c> de</c><00:04:11.640><c> um</c><00:04:11.720><c> jeito</c><00:04:12.000><c> seguro,</c>
+
+00:04:12.949 --> 00:04:12.959 align:start position:0%
+rotas oficiais, mas de um jeito seguro,
+ 
+
+00:04:12.959 --> 00:04:14.270 align:start position:0%
+rotas oficiais, mas de um jeito seguro,
+sem<00:04:13.120><c> precisar</c><00:04:13.440><c> entregar</c><00:04:13.800><c> as</c><00:04:13.880><c> chaves</c><00:04:14.200><c> do</c>
+
+00:04:14.270 --> 00:04:14.280 align:start position:0%
+sem precisar entregar as chaves do
+ 
+
+00:04:14.280 --> 00:04:15.750 align:start position:0%
+sem precisar entregar as chaves do
+castelo<00:04:14.760><c> para</c><00:04:14.920><c> todo</c><00:04:15.200><c> mundo</c><00:04:15.440><c> mexer</c><00:04:15.680><c> na</c>
+
+00:04:15.750 --> 00:04:15.760 align:start position:0%
+castelo para todo mundo mexer na
+ 
+
+00:04:15.760 --> 00:04:17.069 align:start position:0%
+castelo para todo mundo mexer na
+administração.
+
+00:04:17.069 --> 00:04:17.079 align:start position:0%
+administração.
+ 
+
+00:04:17.079 --> 00:04:18.509 align:start position:0%
+administração.
+Na<00:04:17.200><c> prática,</c><00:04:17.720><c> quando</c><00:04:17.959><c> a</c><00:04:18.000><c> gente</c><00:04:18.239><c> olha</c><00:04:18.400><c> para</c>
+
+00:04:18.509 --> 00:04:18.519 align:start position:0%
+Na prática, quando a gente olha para
+ 
+
+00:04:18.519 --> 00:04:20.470 align:start position:0%
+Na prática, quando a gente olha para
+isso<00:04:18.760><c> operando</c><00:04:19.120><c> em</c><00:04:19.239><c> larga</c><00:04:19.600><c> escala,</c><00:04:20.040><c> são</c><00:04:20.239><c> três</c>
+
+00:04:20.470 --> 00:04:20.480 align:start position:0%
+isso operando em larga escala, são três
+ 
+
+00:04:20.480 --> 00:04:22.790 align:start position:0%
+isso operando em larga escala, são três
+passos<00:04:20.840><c> bem</c><00:04:21.079><c> simples.</c><00:04:21.880><c> Primeiro,</c><00:04:22.480><c> a</c><00:04:22.560><c> conta</c>
+
+00:04:22.790 --> 00:04:22.800 align:start position:0%
+passos bem simples. Primeiro, a conta
+ 
+
+00:04:22.800 --> 00:04:25.070 align:start position:0%
+passos bem simples. Primeiro, a conta
+central<00:04:23.200><c> de</c><00:04:23.320><c> rede</c><00:04:23.600><c> dita</c><00:04:23.960><c> as</c><00:04:24.080><c> regras</c><00:04:24.480><c> de</c><00:04:24.760><c> onde</c>
+
+00:04:25.070 --> 00:04:25.080 align:start position:0%
+central de rede dita as regras de onde
+ 
+
+00:04:25.080 --> 00:04:27.150 align:start position:0%
+central de rede dita as regras de onde
+cada<00:04:25.320><c> domínio</c><00:04:25.680><c> mora,</c><00:04:26.240><c> configurando</c><00:04:26.720><c> a</c><00:04:26.800><c> base</c>
+
+00:04:27.150 --> 00:04:27.160 align:start position:0%
+cada domínio mora, configurando a base
+ 
+
+00:04:27.160 --> 00:04:30.470 align:start position:0%
+cada domínio mora, configurando a base
+lá<00:04:27.360><c> no</c><00:04:27.480><c> Route</c><00:04:27.680><c> 53.</c><00:04:28.600><c> Segundo,</c><00:04:29.240><c> o</c><00:04:29.320><c> AWS</c><00:04:29.880><c> RAM</c><00:04:30.280><c> entra</c>
+
+00:04:30.470 --> 00:04:30.480 align:start position:0%
+lá no Route 53. Segundo, o AWS RAM entra
+ 
+
+00:04:30.480 --> 00:04:32.590 align:start position:0%
+lá no Route 53. Segundo, o AWS RAM entra
+em<00:04:30.560><c> cena</c><00:04:30.840><c> como</c><00:04:31.040><c> um</c><00:04:31.120><c> mensageiro</c><00:04:31.840><c> invisível</c><00:04:32.520><c> e</c>
+
+00:04:32.590 --> 00:04:32.600 align:start position:0%
+em cena como um mensageiro invisível e
+ 
+
+00:04:32.600 --> 00:04:34.510 align:start position:0%
+em cena como um mensageiro invisível e
+super<00:04:32.960><c> seguro,</c><00:04:33.560><c> espalhando</c><00:04:33.960><c> essas</c><00:04:34.160><c> regras</c>
+
+00:04:34.510 --> 00:04:34.520 align:start position:0%
+super seguro, espalhando essas regras
+ 
+
+00:04:34.520 --> 00:04:36.830 align:start position:0%
+super seguro, espalhando essas regras
+por<00:04:34.680><c> toda</c><00:04:34.919><c> empresa.</c><00:04:35.720><c> E</c><00:04:35.800><c> por</c><00:04:35.960><c> fim,</c><00:04:36.360><c> as</c><00:04:36.520><c> redes</c>
+
+00:04:36.830 --> 00:04:36.840 align:start position:0%
+por toda empresa. E por fim, as redes
+ 
+
+00:04:36.840 --> 00:04:39.590 align:start position:0%
+por toda empresa. E por fim, as redes
+locais<00:04:37.240><c> das</c><00:04:37.360><c> aplicações,</c><00:04:38.120><c> as</c><00:04:38.240><c> famosas</c><00:04:38.680><c> VPCs,</c>
+
+00:04:39.590 --> 00:04:39.600 align:start position:0%
+locais das aplicações, as famosas VPCs,
+ 
+
+00:04:39.600 --> 00:04:41.470 align:start position:0%
+locais das aplicações, as famosas VPCs,
+simplesmente<00:04:40.200><c> herdam</c><00:04:40.600><c> essas</c><00:04:40.840><c> regras.</c>
+
+00:04:41.470 --> 00:04:41.480 align:start position:0%
+simplesmente herdam essas regras.
+ 
+
+00:04:41.480 --> 00:04:43.510 align:start position:0%
+simplesmente herdam essas regras.
+Ninguém<00:04:41.800><c> precisa</c><00:04:42.080><c> configurar</c><00:04:42.560><c> nada</c><00:04:42.840><c> do</c><00:04:42.960><c> zero.</c>
+
+00:04:43.510 --> 00:04:43.520 align:start position:0%
+Ninguém precisa configurar nada do zero.
+ 
+
+00:04:43.520 --> 00:04:45.190 align:start position:0%
+Ninguém precisa configurar nada do zero.
+Elas<00:04:43.720><c> pegam</c><00:04:43.960><c> a</c><00:04:44.000><c> agenda</c><00:04:44.240><c> compartilhada</c><00:04:45.040><c> e</c><00:04:45.120><c> os</c>
+
+00:04:45.190 --> 00:04:45.200 align:start position:0%
+Elas pegam a agenda compartilhada e os
+ 
+
+00:04:45.200 --> 00:04:47.030 align:start position:0%
+Elas pegam a agenda compartilhada e os
+sistemas<00:04:45.560><c> se</c><00:04:45.640><c> conectam</c><00:04:46.080><c> como</c><00:04:46.360><c> mágica,</c><00:04:46.840><c> de</c>
+
+00:04:47.030 --> 00:04:47.040 align:start position:0%
+sistemas se conectam como mágica, de
+ 
+
+00:04:47.040 --> 00:04:49.550 align:start position:0%
+sistemas se conectam como mágica, de
+ponta<00:04:47.560><c> a</c><00:04:47.640><c> ponta.</c><00:04:48.520><c> Mas</c><00:04:48.680><c> tem</c><00:04:48.800><c> um</c><00:04:48.840><c> detalhe</c><00:04:49.160><c> aqui</c>
+
+00:04:49.550 --> 00:04:49.560 align:start position:0%
+ponta a ponta. Mas tem um detalhe aqui
+ 
+
+00:04:49.560 --> 00:04:52.070 align:start position:0%
+ponta a ponta. Mas tem um detalhe aqui
+que<00:04:49.680><c> é</c><00:04:50.000><c> absolutamente</c><00:04:50.800><c> crucial.</c><00:04:51.600><c> Muita</c><00:04:51.880><c> gente</c>
+
+00:04:52.070 --> 00:04:52.080 align:start position:0%
+que é absolutamente crucial. Muita gente
+ 
+
+00:04:52.080 --> 00:04:54.390 align:start position:0%
+que é absolutamente crucial. Muita gente
+escuta<00:04:52.440><c> a</c><00:04:52.480><c> palavra</c><00:04:52.880><c> centralização</c><00:04:53.960><c> e</c><00:04:54.040><c> já</c><00:04:54.200><c> tem</c>
+
+00:04:54.390 --> 00:04:54.400 align:start position:0%
+escuta a palavra centralização e já tem
+ 
+
+00:04:54.400 --> 00:04:56.430 align:start position:0%
+escuta a palavra centralização e já tem
+arrepios,<00:04:55.200><c> achando</c><00:04:55.520><c> que</c><00:04:55.680><c> isso</c><00:04:55.840><c> significa</c>
+
+00:04:56.430 --> 00:04:56.440 align:start position:0%
+arrepios, achando que isso significa
+ 
+
+00:04:56.440 --> 00:04:58.909 align:start position:0%
+arrepios, achando que isso significa
+burocracia<00:04:57.560><c> e</c><00:04:57.720><c> abertura</c><00:04:58.200><c> infinita</c><00:04:58.760><c> de</c>
+
+00:04:58.909 --> 00:04:58.919 align:start position:0%
+burocracia e abertura infinita de
+ 
+
+00:04:58.919 --> 00:05:01.430 align:start position:0%
+burocracia e abertura infinita de
+chamados<00:04:59.520><c> demorados</c><00:05:00.120><c> de</c><00:05:00.240><c> suporte.</c>
+
+00:05:01.430 --> 00:05:01.440 align:start position:0%
+chamados demorados de suporte.
+ 
+
+00:05:01.440 --> 00:05:03.230 align:start position:0%
+chamados demorados de suporte.
+O<00:05:01.480><c> objetivo</c><00:05:01.919><c> de</c><00:05:02.040><c> unificar</c><00:05:02.600><c> a</c><00:05:02.640><c> arquitetura</c><00:05:03.080><c> de</c>
+
+00:05:03.230 --> 00:05:03.240 align:start position:0%
+O objetivo de unificar a arquitetura de
+ 
+
+00:05:03.240 --> 00:05:05.350 align:start position:0%
+O objetivo de unificar a arquitetura de
+rede<00:05:03.640><c> não</c><00:05:03.919><c> é</c><00:05:04.040><c> tirar</c><00:05:04.280><c> a</c><00:05:04.320><c> agilidade</c><00:05:04.840><c> das</c><00:05:05.000><c> equipes</c>
+
+00:05:05.350 --> 00:05:05.360 align:start position:0%
+rede não é tirar a agilidade das equipes
+ 
+
+00:05:05.360 --> 00:05:07.590 align:start position:0%
+rede não é tirar a agilidade das equipes
+de<00:05:05.440><c> desenvolvimento,</c><00:05:06.240><c> de</c><00:05:06.400><c> jeito</c><00:05:06.680><c> nenhum.</c><00:05:07.440><c> A</c>
+
+00:05:07.590 --> 00:05:07.600 align:start position:0%
+de desenvolvimento, de jeito nenhum. A
+ 
+
+00:05:07.600 --> 00:05:09.630 align:start position:0%
+de desenvolvimento, de jeito nenhum. A
+TI<00:05:07.760><c> central</c><00:05:08.240><c> não</c><00:05:08.520><c> pode</c><00:05:08.880><c> ser</c><00:05:09.040><c> um</c><00:05:09.120><c> gargalo</c><00:05:09.480><c> que</c>
+
+00:05:09.630 --> 00:05:09.640 align:start position:0%
+TI central não pode ser um gargalo que
+ 
+
+00:05:09.640 --> 00:05:11.670 align:start position:0%
+TI central não pode ser um gargalo que
+trave<00:05:09.919><c> inovação.</c><00:05:10.880><c> A</c><00:05:10.960><c> ideia</c><00:05:11.240><c> é</c><00:05:11.280><c> criar</c><00:05:11.560><c> um</c>
+
+00:05:11.670 --> 00:05:11.680 align:start position:0%
+trave inovação. A ideia é criar um
+ 
+
+00:05:11.680 --> 00:05:13.950 align:start position:0%
+trave inovação. A ideia é criar um
+alicerce<00:05:12.320><c> sólido</c><00:05:13.080><c> para</c><00:05:13.200><c> que</c><00:05:13.320><c> todo</c><00:05:13.680><c> mundo</c>
+
+00:05:13.950 --> 00:05:13.960 align:start position:0%
+alicerce sólido para que todo mundo
+ 
+
+00:05:13.960 --> 00:05:16.630 align:start position:0%
+alicerce sólido para que todo mundo
+possa<00:05:14.280><c> correr</c><00:05:14.840><c> e</c><00:05:14.960><c> inovar</c><00:05:15.400><c> com</c><00:05:15.560><c> segurança.</c>
+
+00:05:16.630 --> 00:05:16.640 align:start position:0%
+possa correr e inovar com segurança.
+ 
+
+00:05:16.640 --> 00:05:19.350 align:start position:0%
+possa correr e inovar com segurança.
+Centralizar<00:05:17.320><c> não</c><00:05:17.480><c> quer</c><00:05:17.640><c> dizer</c><00:05:18.000><c> restringir.</c>
+
+00:05:19.350 --> 00:05:19.360 align:start position:0%
+Centralizar não quer dizer restringir.
+ 
+
+00:05:19.360 --> 00:05:20.830 align:start position:0%
+Centralizar não quer dizer restringir.
+E<00:05:19.400><c> para</c><00:05:19.560><c> garantir</c><00:05:20.000><c> que</c><00:05:20.080><c> essa</c><00:05:20.320><c> agilidade</c>
+
+00:05:20.830 --> 00:05:20.840 align:start position:0%
+E para garantir que essa agilidade
+ 
+
+00:05:20.840 --> 00:05:22.630 align:start position:0%
+E para garantir que essa agilidade
+continue<00:05:21.400><c> lá</c><00:05:21.520><c> em</c><00:05:21.600><c> cima,</c><00:05:22.000><c> a</c><00:05:22.080><c> gente</c><00:05:22.400><c> usa</c><00:05:22.600><c> a</c>
+
+00:05:22.630 --> 00:05:22.640 align:start position:0%
+continue lá em cima, a gente usa a
+ 
+
+00:05:22.640 --> 00:05:24.990 align:start position:0%
+continue lá em cima, a gente usa a
+estratégia<00:05:23.280><c> inteligente</c><00:05:24.080><c> de</c><00:05:24.200><c> delegação</c><00:05:24.840><c> de</c>
+
+00:05:24.990 --> 00:05:25.000 align:start position:0%
+estratégia inteligente de delegação de
+ 
+
+00:05:25.000 --> 00:05:27.350 align:start position:0%
+estratégia inteligente de delegação de
+subdomínios.<00:05:26.160><c> Funciona</c><00:05:26.520><c> de</c><00:05:26.600><c> um</c><00:05:26.680><c> jeito</c><00:05:27.000><c> muito</c>
+
+00:05:27.350 --> 00:05:27.360 align:start position:0%
+subdomínios. Funciona de um jeito muito
+ 
+
+00:05:27.360 --> 00:05:29.390 align:start position:0%
+subdomínios. Funciona de um jeito muito
+estruturado.<00:05:28.160><c> A</c><00:05:28.240><c> conta</c><00:05:28.560><c> central</c><00:05:29.040><c> fica</c><00:05:29.280><c> com</c>
+
+00:05:29.390 --> 00:05:29.400 align:start position:0%
+estruturado. A conta central fica com
+ 
+
+00:05:29.400 --> 00:05:31.590 align:start position:0%
+estruturado. A conta central fica com
+controle<00:05:29.800><c> absoluto</c><00:05:30.360><c> do</c><00:05:30.440><c> domínio</c><00:05:30.800><c> raiz,</c><00:05:31.320><c> tipo</c>
+
+00:05:31.590 --> 00:05:31.600 align:start position:0%
+controle absoluto do domínio raiz, tipo
+ 
+
+00:05:31.600 --> 00:05:33.750 align:start position:0%
+controle absoluto do domínio raiz, tipo
+o<00:05:31.640><c> empresa.com,</c><00:05:32.520><c> protegendo</c><00:05:33.200><c> a</c><00:05:33.240><c> identidade</c>
+
+00:05:33.750 --> 00:05:33.760 align:start position:0%
+o empresa.com, protegendo a identidade
+ 
+
+00:05:33.760 --> 00:05:36.030 align:start position:0%
+o empresa.com, protegendo a identidade
+principal,<00:05:34.480><c> só</c><00:05:34.600><c> que</c><00:05:34.680><c> ela</c><00:05:34.840><c> recorta</c><00:05:35.360><c> um</c><00:05:35.400><c> pedaço,</c>
+
+00:05:36.030 --> 00:05:36.040 align:start position:0%
+principal, só que ela recorta um pedaço,
+ 
+
+00:05:36.040 --> 00:05:38.870 align:start position:0%
+principal, só que ela recorta um pedaço,
+um<00:05:36.160><c> subdomínio,</c><00:05:36.760><c> tipo</c><00:05:37.240><c> dev.empresa.com,</c>
+
+00:05:38.870 --> 00:05:38.880 align:start position:0%
+um subdomínio, tipo dev.empresa.com,
+ 
+
+00:05:38.880 --> 00:05:40.870 align:start position:0%
+um subdomínio, tipo dev.empresa.com,
+e<00:05:39.000><c> entrega</c><00:05:39.440><c> a</c><00:05:39.480><c> chave</c><00:05:39.919><c> desse</c><00:05:40.240><c> pedacinho</c><00:05:40.760><c> para</c>
+
+00:05:40.870 --> 00:05:40.880 align:start position:0%
+e entrega a chave desse pedacinho para
+ 
+
+00:05:40.880 --> 00:05:42.510 align:start position:0%
+e entrega a chave desse pedacinho para
+as<00:05:40.960><c> equipes</c><00:05:41.320><c> de</c><00:05:41.400><c> aplicação.</c><00:05:42.200><c> Daí</c><00:05:42.400><c> para</c>
+
+00:05:42.510 --> 00:05:42.520 align:start position:0%
+as equipes de aplicação. Daí para
+ 
+
+00:05:42.520 --> 00:05:44.670 align:start position:0%
+as equipes de aplicação. Daí para
+frente,<00:05:42.960><c> a</c><00:05:43.040><c> equipe</c><00:05:43.360><c> tem</c><00:05:43.520><c> autonomia</c><00:05:44.080><c> total.</c>
+
+00:05:44.670 --> 00:05:44.680 align:start position:0%
+frente, a equipe tem autonomia total.
+ 
+
+00:05:44.680 --> 00:05:46.390 align:start position:0%
+frente, a equipe tem autonomia total.
+Eles<00:05:44.960><c> validam</c><00:05:45.280><c> certificados,</c><00:05:46.080><c> testam</c>
+
+00:05:46.390 --> 00:05:46.400 align:start position:0%
+Eles validam certificados, testam
+ 
+
+00:05:46.400 --> 00:05:48.350 align:start position:0%
+Eles validam certificados, testam
+ambientes<00:05:46.960><c> e</c><00:05:47.000><c> criam</c><00:05:47.240><c> registros</c><00:05:47.840><c> ali</c><00:05:48.000><c> dentro</c>
+
+00:05:48.350 --> 00:05:48.360 align:start position:0%
+ambientes e criam registros ali dentro
+ 
+
+00:05:48.360 --> 00:05:50.430 align:start position:0%
+ambientes e criam registros ali dentro
+super<00:05:48.760><c> rápido,</c><00:05:49.320><c> sem</c><00:05:49.480><c> precisar</c><00:05:49.840><c> pedir</c><00:05:50.080><c> benção</c>
+
+00:05:50.430 --> 00:05:50.440 align:start position:0%
+super rápido, sem precisar pedir benção
+ 
+
+00:05:50.440 --> 00:05:52.030 align:start position:0%
+super rápido, sem precisar pedir benção
+para<00:05:50.560><c> equipe</c><00:05:50.800><c> de</c><00:05:50.880><c> redes</c><00:05:51.280><c> toda</c><00:05:51.520><c> vez</c><00:05:51.720><c> que</c><00:05:51.840><c> forem</c>
+
+00:05:52.030 --> 00:05:52.040 align:start position:0%
+para equipe de redes toda vez que forem
+ 
+
+00:05:52.040 --> 00:05:53.390 align:start position:0%
+para equipe de redes toda vez que forem
+fazer<00:05:52.240><c> uma</c><00:05:52.360><c> mudança.</c>
+
+00:05:53.390 --> 00:05:53.400 align:start position:0%
+fazer uma mudança.
+ 
+
+00:05:53.400 --> 00:05:56.750 align:start position:0%
+fazer uma mudança.
+&gt;&gt; Sessão<00:05:53.760><c> dois:</c><00:05:54.480><c> pesando</c><00:05:55.080><c> os</c><00:05:55.240><c> straight</c><00:05:55.640><c> offs.</c>
+
+00:05:56.750 --> 00:05:56.760 align:start position:0%
+&gt;&gt; Sessão dois: pesando os straight offs.
+ 
+
+00:05:56.760 --> 00:05:59.430 align:start position:0%
+&gt;&gt; Sessão dois: pesando os straight offs.
+A<00:05:56.840><c> centralização</c><00:05:57.720><c> é</c><00:05:57.800><c> poderosa,</c><00:05:58.960><c> mas</c><00:05:59.160><c> requer</c>
+
+00:05:59.430 --> 00:05:59.440 align:start position:0%
+A centralização é poderosa, mas requer
+ 
+
+00:05:59.440 --> 00:06:02.390 align:start position:0%
+A centralização é poderosa, mas requer
+um<00:05:59.520><c> planejamento</c><00:06:00.280><c> arquitetônico</c><00:06:01.160><c> cuidadoso.</c>
+
+00:06:02.390 --> 00:06:02.400 align:start position:0%
+um planejamento arquitetônico cuidadoso.
+ 
+
+00:06:02.400 --> 00:06:04.430 align:start position:0%
+um planejamento arquitetônico cuidadoso.
+&gt;&gt; Colocando<00:06:02.840><c> os</c><00:06:03.000><c> dois</c><00:06:03.200><c> modelos</c><00:06:03.640><c> lado</c><00:06:03.920><c> a</c><00:06:03.960><c> lado,</c><00:06:04.360><c> a</c>
+
+00:06:04.430 --> 00:06:04.440 align:start position:0%
+&gt;&gt; Colocando os dois modelos lado a lado, a
+ 
+
+00:06:04.440 --> 00:06:06.590 align:start position:0%
+&gt;&gt; Colocando os dois modelos lado a lado, a
+história<00:06:04.840><c> dos</c><00:06:05.000><c> dados</c><00:06:05.360><c> fica</c><00:06:05.600><c> bem</c><00:06:05.800><c> clara.</c><00:06:06.520><c> A</c>
+
+00:06:06.590 --> 00:06:06.600 align:start position:0%
+história dos dados fica bem clara. A
+ 
+
+00:06:06.600 --> 00:06:08.350 align:start position:0%
+história dos dados fica bem clara. A
+descentralização<00:06:07.560><c> até</c><00:06:07.760><c> parece</c><00:06:08.160><c> mais</c>
+
+00:06:08.350 --> 00:06:08.360 align:start position:0%
+descentralização até parece mais
+ 
+
+00:06:08.360 --> 00:06:10.310 align:start position:0%
+descentralização até parece mais
+amigável<00:06:08.840><c> no</c><00:06:08.920><c> começo</c><00:06:09.360><c> para</c><00:06:09.480><c> times</c><00:06:09.800><c> pequenos,</c>
+
+00:06:10.310 --> 00:06:10.320 align:start position:0%
+amigável no começo para times pequenos,
+ 
+
+00:06:10.320 --> 00:06:12.390 align:start position:0%
+amigável no começo para times pequenos,
+porque<00:06:10.680><c> tem</c><00:06:10.800><c> uma</c><00:06:10.920><c> complexidade</c><00:06:11.640><c> menor</c><00:06:12.160><c> logo</c>
+
+00:06:12.390 --> 00:06:12.400 align:start position:0%
+porque tem uma complexidade menor logo
+ 
+
+00:06:12.400 --> 00:06:14.990 align:start position:0%
+porque tem uma complexidade menor logo
+de<00:06:12.520><c> cara,</c><00:06:13.240><c> mas</c><00:06:13.400><c> o</c><00:06:13.480><c> risco</c><00:06:13.840><c> de</c><00:06:13.960><c> segurança</c><00:06:14.480><c> vai</c><00:06:14.680><c> lá</c>
+
+00:06:14.990 --> 00:06:15.000 align:start position:0%
+de cara, mas o risco de segurança vai lá
+ 
+
+00:06:15.000 --> 00:06:16.870 align:start position:0%
+de cara, mas o risco de segurança vai lá
+no<00:06:15.120><c> teto</c><00:06:15.480><c> conforme</c><00:06:15.920><c> a</c><00:06:15.960><c> empresa</c><00:06:16.240><c> cresce,</c>
+
+00:06:16.870 --> 00:06:16.880 align:start position:0%
+no teto conforme a empresa cresce,
+ 
+
+00:06:16.880 --> 00:06:18.830 align:start position:0%
+no teto conforme a empresa cresce,
+justamente<00:06:17.480><c> pela</c><00:06:17.640><c> bagunça</c><00:06:18.280><c> e</c><00:06:18.360><c> falta</c><00:06:18.720><c> de</c>
+
+00:06:18.830 --> 00:06:18.840 align:start position:0%
+justamente pela bagunça e falta de
+ 
+
+00:06:18.840 --> 00:06:21.310 align:start position:0%
+justamente pela bagunça e falta de
+supervisão<00:06:19.400><c> das</c><00:06:19.560><c> regras.</c><00:06:20.320><c> Já</c><00:06:20.560><c> centralização</c>
+
+00:06:21.310 --> 00:06:21.320 align:start position:0%
+supervisão das regras. Já centralização
+ 
+
+00:06:21.320 --> 00:06:22.590 align:start position:0%
+supervisão das regras. Já centralização
+sobre<00:06:21.600><c> o</c><00:06:21.640><c> modelo</c><00:06:21.960><c> de</c><00:06:22.080><c> serviços</c>
+
+00:06:22.590 --> 00:06:22.600 align:start position:0%
+sobre o modelo de serviços
+ 
+
+00:06:22.600 --> 00:06:24.550 align:start position:0%
+sobre o modelo de serviços
+compartilhados<00:06:23.720><c> pede</c><00:06:23.919><c> uma</c><00:06:24.040><c> arquitetura</c><00:06:24.480><c> um</c>
+
+00:06:24.550 --> 00:06:24.560 align:start position:0%
+compartilhados pede uma arquitetura um
+ 
+
+00:06:24.560 --> 00:06:26.030 align:start position:0%
+compartilhados pede uma arquitetura um
+pouco<00:06:24.840><c> mais</c><00:06:25.000><c> complexa</c><00:06:25.520><c> de</c><00:06:25.600><c> se</c><00:06:25.720><c> montar</c><00:06:26.000><c> o</c>
+
+00:06:26.030 --> 00:06:26.040 align:start position:0%
+pouco mais complexa de se montar o
+ 
+
+00:06:26.040 --> 00:06:27.950 align:start position:0%
+pouco mais complexa de se montar o
+início,<00:06:26.480><c> com</c><00:06:26.640><c> um</c><00:06:26.680><c> controle</c><00:06:27.040><c> de</c><00:06:27.160><c> acesso</c><00:06:27.640><c> bem</c>
+
+00:06:27.950 --> 00:06:27.960 align:start position:0%
+início, com um controle de acesso bem
+ 
+
+00:06:27.960 --> 00:06:30.470 align:start position:0%
+início, com um controle de acesso bem
+rígido.<00:06:28.760><c> Mas</c><00:06:28.919><c> olha</c><00:06:29.120><c> só</c><00:06:29.240><c> a</c><00:06:29.280><c> vantagem:</c><00:06:30.160><c> ao</c><00:06:30.320><c> ter</c>
+
+00:06:30.470 --> 00:06:30.480 align:start position:0%
+rígido. Mas olha só a vantagem: ao ter
+ 
+
+00:06:30.480 --> 00:06:32.950 align:start position:0%
+rígido. Mas olha só a vantagem: ao ter
+uma<00:06:30.680><c> única</c><00:06:31.120><c> fonte</c><00:06:31.480><c> da</c><00:06:31.600><c> verdade,</c><00:06:32.360><c> o</c><00:06:32.480><c> risco</c><00:06:32.840><c> de</c>
+
+00:06:32.950 --> 00:06:32.960 align:start position:0%
+uma única fonte da verdade, o risco de
+ 
+
+00:06:32.960 --> 00:06:35.430 align:start position:0%
+uma única fonte da verdade, o risco de
+segurança<00:06:33.520><c> despenca.</c><00:06:34.800><c> E,</c><00:06:35.040><c> fazendo</c><00:06:35.400><c> a</c>
+
+00:06:35.430 --> 00:06:35.440 align:start position:0%
+segurança despenca. E, fazendo a
+ 
+
+00:06:35.440 --> 00:06:37.510 align:start position:0%
+segurança despenca. E, fazendo a
+delegação<00:06:35.919><c> do</c><00:06:36.080><c> jeito</c><00:06:36.440><c> certo,</c><00:06:37.160><c> a</c><00:06:37.280><c> gente</c>
+
+00:06:37.510 --> 00:06:37.520 align:start position:0%
+delegação do jeito certo, a gente
+ 
+
+00:06:37.520 --> 00:06:38.990 align:start position:0%
+delegação do jeito certo, a gente
+preserva<00:06:37.960><c> a</c><00:06:38.000><c> autonomia</c><00:06:38.520><c> que</c><00:06:38.600><c> o</c><00:06:38.680><c> pessoal</c>
+
+00:06:38.990 --> 00:06:39.000 align:start position:0%
+preserva a autonomia que o pessoal
+ 
+
+00:06:39.000 --> 00:06:40.870 align:start position:0%
+preserva a autonomia que o pessoal
+técnico<00:06:39.480><c> tanto</c><00:06:39.840><c> precisa.</c>
+
+00:06:40.870 --> 00:06:40.880 align:start position:0%
+técnico tanto precisa.
+ 
+
+00:06:40.880 --> 00:06:42.550 align:start position:0%
+técnico tanto precisa.
+No<00:06:40.960><c> longo</c><00:06:41.240><c> prazo,</c><00:06:41.840><c> é</c><00:06:41.919><c> o</c><00:06:42.000><c> que</c><00:06:42.120><c> salva</c><00:06:42.520><c> a</c>
+
+00:06:42.550 --> 00:06:42.560 align:start position:0%
+No longo prazo, é o que salva a
+ 
+
+00:06:42.560 --> 00:06:44.430 align:start position:0%
+No longo prazo, é o que salva a
+organização<00:06:43.120><c> de</c><00:06:43.280><c> quedas</c><00:06:43.720><c> operacionais</c>
+
+00:06:44.430 --> 00:06:44.440 align:start position:0%
+organização de quedas operacionais
+ 
+
+00:06:44.440 --> 00:06:45.470 align:start position:0%
+organização de quedas operacionais
+feias.
+
+00:06:45.470 --> 00:06:45.480 align:start position:0%
+feias.
+ 
+
+00:06:45.480 --> 00:06:47.310 align:start position:0%
+feias.
+&gt;&gt; Tudo<00:06:45.640><c> isso</c><00:06:45.840><c> nos</c><00:06:46.000><c> leva</c><00:06:46.400><c> a</c><00:06:46.480><c> essa</c><00:06:46.720><c> mensagem</c>
+
+00:06:47.310 --> 00:06:47.320 align:start position:0%
+&gt;&gt; Tudo isso nos leva a essa mensagem
+ 
+
+00:06:47.320 --> 00:06:48.590 align:start position:0%
+&gt;&gt; Tudo isso nos leva a essa mensagem
+central.
+
+00:06:48.590 --> 00:06:48.600 align:start position:0%
+central.
+ 
+
+00:06:48.600 --> 00:06:51.150 align:start position:0%
+central.
+Conforme<00:06:48.919><c> o</c><00:06:48.960><c> ambiente</c><00:06:49.400><c> AWS</c><00:06:50.000><c> vai</c><00:06:50.200><c> crescendo,</c><00:06:51.080><c> o</c>
+
+00:06:51.150 --> 00:06:51.160 align:start position:0%
+Conforme o ambiente AWS vai crescendo, o
+ 
+
+00:06:51.160 --> 00:06:53.510 align:start position:0%
+Conforme o ambiente AWS vai crescendo, o
+DNS<00:06:51.720><c> deixa</c><00:06:52.000><c> de</c><00:06:52.080><c> ser</c><00:06:52.280><c> só</c><00:06:52.520><c> uma</c><00:06:52.680><c> configuraçãzinha</c>
+
+00:06:53.510 --> 00:06:53.520 align:start position:0%
+DNS deixa de ser só uma configuraçãzinha
+ 
+
+00:06:53.520 --> 00:06:55.750 align:start position:0%
+DNS deixa de ser só uma configuraçãzinha
+secundária<00:06:54.200><c> de</c><00:06:54.280><c> aplicação</c><00:06:55.080><c> e</c><00:06:55.200><c> passa</c><00:06:55.440><c> a</c><00:06:55.480><c> ser</c><00:06:55.640><c> um</c>
+
+00:06:55.750 --> 00:06:55.760 align:start position:0%
+secundária de aplicação e passa a ser um
+ 
+
+00:06:55.760 --> 00:06:58.550 align:start position:0%
+secundária de aplicação e passa a ser um
+pilar<00:06:56.280><c> real</c><00:06:56.760><c> de</c><00:06:56.880><c> arquitetura,</c><00:06:57.720><c> governança</c><00:06:58.400><c> e</c>
+
+00:06:58.550 --> 00:06:58.560 align:start position:0%
+pilar real de arquitetura, governança e
+ 
+
+00:06:58.560 --> 00:07:00.830 align:start position:0%
+pilar real de arquitetura, governança e
+conectividade<00:06:59.160><c> estrutural.</c><00:07:00.120><c> O</c><00:07:00.200><c> DNS</c><00:07:00.760><c> é</c>
+
+00:07:00.830 --> 00:07:00.840 align:start position:0%
+conectividade estrutural. O DNS é
+ 
+
+00:07:00.840 --> 00:07:03.750 align:start position:0%
+conectividade estrutural. O DNS é
+estratégico<00:07:01.840><c> demais.</c><00:07:02.800><c> Ignorar</c><00:07:03.240><c> isso</c><00:07:03.680><c> é</c>
+
+00:07:03.750 --> 00:07:03.760 align:start position:0%
+estratégico demais. Ignorar isso é
+ 
+
+00:07:03.760 --> 00:07:05.430 align:start position:0%
+estratégico demais. Ignorar isso é
+deixar<00:07:04.080><c> a</c><00:07:04.120><c> base</c><00:07:04.400><c> da</c><00:07:04.480><c> comunicação</c><00:07:05.000><c> da</c><00:07:05.080><c> empresa</c>
+
+00:07:05.430 --> 00:07:05.440 align:start position:0%
+deixar a base da comunicação da empresa
+ 
+
+00:07:05.440 --> 00:07:07.750 align:start position:0%
+deixar a base da comunicação da empresa
+crescer<00:07:05.840><c> frágil,</c><00:07:06.520><c> cheia</c><00:07:06.840><c> de</c><00:07:06.960><c> remendos</c><00:07:07.640><c> e</c>
+
+00:07:07.750 --> 00:07:07.760 align:start position:0%
+crescer frágil, cheia de remendos e
+ 
+
+00:07:07.760 --> 00:07:10.310 align:start position:0%
+crescer frágil, cheia de remendos e
+pronta<00:07:08.120><c> para</c><00:07:08.240><c> quebrar</c><00:07:08.600><c> a</c><00:07:08.760><c> qualquer</c><00:07:09.280><c> momento.</c>
+
+00:07:10.310 --> 00:07:10.320 align:start position:0%
+pronta para quebrar a qualquer momento.
+ 
+
+00:07:10.320 --> 00:07:12.350 align:start position:0%
+pronta para quebrar a qualquer momento.
+Para<00:07:10.440><c> fechar,</c><00:07:11.160><c> fica</c><00:07:11.400><c> uma</c><00:07:11.560><c> provocação</c><00:07:12.200><c> para</c><00:07:12.320><c> a</c>
+
+00:07:12.350 --> 00:07:12.360 align:start position:0%
+Para fechar, fica uma provocação para a
+ 
+
+00:07:12.360 --> 00:07:13.790 align:start position:0%
+Para fechar, fica uma provocação para a
+gente<00:07:12.560><c> pensar</c><00:07:12.919><c> a</c><00:07:12.960><c> fundo:</c><00:07:13.560><c> se</c><00:07:13.640><c> uma</c>
+
+00:07:13.790 --> 00:07:13.800 align:start position:0%
+gente pensar a fundo: se uma
+ 
+
+00:07:13.800 --> 00:07:15.790 align:start position:0%
+gente pensar a fundo: se uma
+infraestrutura<00:07:14.480><c> de</c><00:07:14.600><c> nuvem</c><00:07:14.960><c> dobrasse</c><00:07:15.680><c> de</c>
+
+00:07:15.790 --> 00:07:15.800 align:start position:0%
+infraestrutura de nuvem dobrasse de
+ 
+
+00:07:15.800 --> 00:07:17.909 align:start position:0%
+infraestrutura de nuvem dobrasse de
+tamanho<00:07:16.160><c> de</c><00:07:16.240><c> um</c><00:07:16.360><c> dia</c><00:07:16.600><c> para</c><00:07:16.760><c> o</c><00:07:16.840><c> outro,</c><00:07:17.480><c> será</c><00:07:17.760><c> que</c>
+
+00:07:17.909 --> 00:07:17.919 align:start position:0%
+tamanho de um dia para o outro, será que
+ 
+
+00:07:17.919 --> 00:07:20.390 align:start position:0%
+tamanho de um dia para o outro, será que
+a<00:07:17.960><c> agenda</c><00:07:18.320><c> de</c><00:07:18.400><c> contatos</c><00:07:18.840><c> corporativa</c><00:07:19.640><c> atual</c>
+
+00:07:20.390 --> 00:07:20.400 align:start position:0%
+a agenda de contatos corporativa atual
+ 
+
+00:07:20.400 --> 00:07:22.870 align:start position:0%
+a agenda de contatos corporativa atual
+manteria<00:07:21.000><c> todo</c><00:07:21.320><c> mundo</c><00:07:21.520><c> conectado?</c><00:07:22.560><c> Ou</c><00:07:22.720><c> as</c>
+
+00:07:22.870 --> 00:07:22.880 align:start position:0%
+manteria todo mundo conectado? Ou as
+ 
+
+00:07:22.880 --> 00:07:24.950 align:start position:0%
+manteria todo mundo conectado? Ou as
+pontes<00:07:23.240><c> de</c><00:07:23.360><c> comunicação</c><00:07:23.960><c> iriam</c><00:07:24.280><c> desmoronar</c>
+
+00:07:24.950 --> 00:07:24.960 align:start position:0%
+pontes de comunicação iriam desmoronar
+ 
+
+00:07:24.960 --> 00:07:27.030 align:start position:0%
+pontes de comunicação iriam desmoronar
+em<00:07:25.040><c> silêncio?</c><00:07:26.160><c> Responder</c><00:07:26.520><c> essa</c><00:07:26.680><c> pergunta</c>
+
+00:07:27.030 --> 00:07:27.040 align:start position:0%
+em silêncio? Responder essa pergunta
+ 
+
+00:07:27.040 --> 00:07:28.830 align:start position:0%
+em silêncio? Responder essa pergunta
+muitas<00:07:27.320><c> vezes</c><00:07:27.600><c> é</c><00:07:27.680><c> o</c><00:07:27.720><c> que</c><00:07:27.840><c> define</c><00:07:28.240><c> o</c><00:07:28.280><c> sucesso</c><00:07:28.760><c> da</c>
+
+00:07:28.830 --> 00:07:28.840 align:start position:0%
+muitas vezes é o que define o sucesso da
+ 
+
+00:07:28.840 --> 00:07:31.510 align:start position:0%
+muitas vezes é o que define o sucesso da
+operação<00:07:29.560><c> num</c><00:07:29.720><c> cenário</c><00:07:30.080><c> de</c><00:07:30.200><c> grande</c><00:07:30.480><c> escala.</c>
+
+00:07:31.510 --> 00:07:31.520 align:start position:0%
+operação num cenário de grande escala.
+ 
+
+00:07:31.520 --> 00:07:33.030 align:start position:0%
+operação num cenário de grande escala.
+Fica<00:07:31.680><c> aí</c><00:07:31.760><c> o</c><00:07:31.840><c> convite</c><00:07:32.240><c> para</c><00:07:32.360><c> continuarmos</c>
+
+00:07:33.030 --> 00:07:33.040 align:start position:0%
+Fica aí o convite para continuarmos
+ 
+
+00:07:33.040 --> 00:07:34.510 align:start position:0%
+Fica aí o convite para continuarmos
+explorando<00:07:33.520><c> essas</c><00:07:33.800><c> possibilidades</c>
+
+00:07:34.510 --> 00:07:34.520 align:start position:0%
+explorando essas possibilidades
+ 
+
+00:07:34.520 --> 00:07:36.390 align:start position:0%
+explorando essas possibilidades
+incríveis<00:07:35.240><c> e</c><00:07:35.320><c> as</c><00:07:35.400><c> melhores</c><00:07:35.800><c> práticas</c><00:07:36.240><c> das</c>
+
+00:07:36.390 --> 00:07:36.400 align:start position:0%
+incríveis e as melhores práticas das
+ 
+
+00:07:36.400 --> 00:07:38.390 align:start position:0%
+incríveis e as melhores práticas das
+arquiteturas<00:07:37.040><c> corporativas</c><00:07:37.760><c> modernas</c><00:07:38.280><c> na</c>
+
+00:07:38.390 --> 00:07:38.400 align:start position:0%
+arquiteturas corporativas modernas na
+ 
+
+00:07:38.400 --> 00:07:40.760 align:start position:0%
+arquiteturas corporativas modernas na
+nuvem.
+
