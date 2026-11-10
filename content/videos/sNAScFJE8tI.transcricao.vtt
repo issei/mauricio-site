@@ -1,0 +1,467 @@
+WEBVTT
+
+00:00.000 --> 00:05.840
+Você gostou de dar um modelo AI, você sabe, custom superpowers usando o seu próprio Java code?
+
+00:05.840 --> 00:08.720
+Bem, nesse explicador, isso é exatamente o que vamos fazer.
+
+00:08.720 --> 00:11.600
+Vamos construir nosso primeiro server de tools de AI da área,
+
+00:11.600 --> 00:14.160
+e vamos ver como simplesmente o spring AI faz.
+
+00:14.880 --> 00:17.280
+Você sabe, essa quarta realmente nega, não é?
+
+00:17.280 --> 00:21.200
+Conhecer como construir essas brujas entre o seu código e um modelo AI.
+
+00:21.200 --> 00:23.360
+Não é apenas um projeto um pouco divertido.
+
+00:23.360 --> 00:28.000
+É rapidamente se tornando uma skill fundamental para qualquer desenvolver que quer ficar ahead.
+
+00:28.080 --> 00:30.880
+E hoje, você está tomando um grande passo nessa direção.
+
+00:31.680 --> 00:32.800
+E os números?
+
+00:32.800 --> 00:34.480
+Bem, eles falam para eles mesmos.
+
+00:34.480 --> 00:36.960
+Isso não é um futuro muito longe que nós estamos falando sobre.
+
+00:36.960 --> 00:38.480
+Está acontecendo agora.
+
+00:38.480 --> 00:43.920
+Um 92% da fortuna de 500 empresas já está no jogo de AI,
+
+00:43.920 --> 00:46.960
+e três de cada quatro desenvolvedores estão lá com eles.
+
+00:46.960 --> 00:48.560
+Então, vamos dar certeza de que você é um deles.
+
+00:49.280 --> 00:50.560
+Então, aqui é nosso plano de jogo.
+
+00:50.560 --> 00:53.360
+Vamos começar com o que um server de mcp mesmo é.
+
+00:53.360 --> 00:57.200
+Então, vamos rolar as nossas brujas e construir um, conectar-se a um real AI,
+
+00:57.280 --> 01:00.880
+e finalmente, vamos olhar o mundo grande da possibilidade que isso abre.
+
+01:00.880 --> 01:01.600
+Vamos entrar.
+
+01:02.400 --> 01:03.920
+Ok, primeiro coisa primeiro.
+
+01:03.920 --> 01:06.800
+O que exatamente é esse server que estamos aboutando construir?
+
+01:06.800 --> 01:08.880
+A forma mais fácil para pensar sobre isso é isso.
+
+01:08.880 --> 01:12.000
+É uma forma de dar o seu modelo AI favorito, brand new abilities,
+
+01:12.000 --> 01:15.040
+custom superpowers que você criou com o seu próprio código.
+
+01:15.760 --> 01:20.160
+Agora, não deixe o nome model context protocolo intimidar você.
+
+01:20.160 --> 01:22.240
+A palavra quente aqui é standard.
+
+01:22.240 --> 01:23.440
+Isso é tudo.
+
+01:23.440 --> 01:26.320
+Think of mcp as a universal adapter.
+
+01:26.320 --> 01:30.000
+It's just a common language that lets all these different AI models,
+
+01:30.000 --> 01:35.120
+like clod or gemini, securely plug into and use external tools,
+
+01:35.120 --> 01:36.800
+like the Java code we're about to write.
+
+01:37.520 --> 01:39.520
+And really, that's all there is to it.
+
+01:39.520 --> 01:41.200
+There's no dark magic here.
+
+01:41.200 --> 01:44.960
+It is just the agreed upon standard way for an AI to call a function
+
+01:44.960 --> 01:46.560
+that you wrote in Java.
+
+01:46.560 --> 01:49.120
+You could build a tool that check your company's inventory,
+
+01:49.120 --> 01:52.800
+or maybe access a special API or perform some custom math.
+
+01:52.800 --> 01:55.840
+M.C.P.S. is simply the bridge that lets the AI use it.
+
+01:56.640 --> 01:58.160
+All right, enough theory.
+
+01:58.160 --> 02:01.120
+Let's get our hands dirty and actually build this thing.
+
+02:01.120 --> 02:03.040
+We're going to walk through this step by step,
+
+02:03.040 --> 02:05.520
+and I think you'll be pretty amazed at just how easy Springs
+
+02:05.520 --> 02:06.560
+makes this whole process.
+
+02:07.200 --> 02:11.920
+It all starts where so many great projects do start.spring.io.
+
+02:12.480 --> 02:15.360
+All you have to do is choose your usual project settings,
+
+02:15.360 --> 02:18.800
+and then for the dependencies, you only need one thing.
+
+02:18.800 --> 02:22.160
+Just search for model context protocol server, add it,
+
+02:22.240 --> 02:23.520
+and that's literally it.
+
+02:23.520 --> 02:25.200
+Hit generate, and you're good to go.
+
+02:26.000 --> 02:28.800
+And this visual just drives the point home.
+
+02:28.800 --> 02:30.400
+Look how simple that is.
+
+02:30.400 --> 02:32.080
+You don't need some complex setup
+
+02:32.080 --> 02:34.240
+with a dozen different dependencies.
+
+02:34.240 --> 02:37.120
+Spring AI has neatly packaged everything we need
+
+02:37.120 --> 02:39.360
+into this one single starter.
+
+02:39.360 --> 02:42.320
+With just a couple of clicks, our project skeleton is ready.
+
+02:43.120 --> 02:44.560
+Okay, now for the code.
+
+02:44.560 --> 02:47.600
+Which is, believe it or not, also incredibly simple.
+
+02:47.600 --> 02:50.480
+First, you just write a plain old Java service class.
+
+02:50.560 --> 02:53.120
+Put the methods in there that you want the AI to be able to call.
+
+02:53.680 --> 02:57.120
+Second, for each method, you add the at tool annotation.
+
+02:57.120 --> 02:59.200
+And this is absolutely crucial.
+
+02:59.200 --> 03:02.240
+You give it a clear natural language description.
+
+03:02.240 --> 03:04.480
+This description is how the AI reasons
+
+03:04.480 --> 03:06.400
+about when it should use your tool.
+
+03:06.400 --> 03:09.040
+Finally, you just register these tools with Spring
+
+03:09.040 --> 03:10.480
+by creating a simple bean.
+
+03:11.280 --> 03:14.000
+Now listen up, because this is a huge pro tip
+
+03:14.000 --> 03:15.840
+that will save you a major headache.
+
+03:15.840 --> 03:17.440
+Some clients, like Claude Desktop,
+
+03:17.440 --> 03:19.200
+talk to our server using something called
+
+03:19.200 --> 03:21.040
+standard input slash output.
+
+03:21.040 --> 03:22.240
+For that to work cleanly,
+
+03:22.240 --> 03:25.520
+you have to turn off that cool looking spring boot startup banner.
+
+03:25.520 --> 03:28.160
+Just add spring.main.banner-mode
+
+03:28.160 --> 03:30.160
+is off to your configuration file.
+
+03:30.160 --> 03:31.840
+If you don't, the client can get confused
+
+03:31.840 --> 03:34.080
+by the banner art and the connection will fail.
+
+03:34.080 --> 03:35.680
+Seriously, don't forget this line.
+
+03:36.640 --> 03:38.240
+Okay, we've built the project.
+
+03:38.240 --> 03:39.680
+We've written the code.
+
+03:39.680 --> 03:41.440
+Now for the magic moment.
+
+03:41.440 --> 03:43.760
+Let's connect our server to a real AI
+
+03:43.760 --> 03:46.080
+and watch this whole thing come to life.
+
+03:46.080 --> 03:47.120
+This is the fun part.
+
+03:47.920 --> 03:49.920
+The very last piece of the puzzle
+
+03:49.920 --> 03:51.520
+is to tell the AI client,
+
+03:51.520 --> 03:53.600
+in this case we're using Claude Desktop,
+
+03:53.600 --> 03:55.520
+how to actually run our server.
+
+03:55.520 --> 03:57.360
+You'll find a little configuration file,
+
+03:57.360 --> 03:58.960
+usually a JavaScript file,
+
+03:58.960 --> 04:00.800
+where you define custom servers.
+
+04:00.800 --> 04:02.800
+You just add a new entry for your tool
+
+04:02.800 --> 04:05.600
+and give it the command to run the .jar file we built,
+
+04:05.600 --> 04:08.720
+which is just java-jar your file.jar.
+
+04:09.360 --> 04:12.400
+And after you save that config and restart your client,
+
+04:12.400 --> 04:13.680
+this is the payoff.
+
+04:13.680 --> 04:15.760
+You open up the tool settings in the AI
+
+04:15.760 --> 04:18.320
+and boom, there they are.
+
+04:18.320 --> 04:19.760
+Your custom tool names
+
+04:19.760 --> 04:22.160
+with the descriptions you wrote listed right there.
+
+04:22.800 --> 04:24.880
+In this example, DV GetCourse
+
+04:24.880 --> 04:27.120
+is now a real usable capability
+
+04:27.120 --> 04:28.640
+that the AI knows about.
+
+04:28.640 --> 04:29.520
+How cool is that?
+
+04:30.160 --> 04:32.640
+And this is where it all clicks into place.
+
+04:32.640 --> 04:34.640
+You can now have a normal conversation
+
+04:34.640 --> 04:35.440
+with the AI
+
+04:35.440 --> 04:38.160
+and ask it something it had no way of knowing before.
+
+04:38.160 --> 04:40.160
+When you ask about Dan Vega's courses,
+
+04:40.160 --> 04:41.680
+the AI's reasoning engine will go,
+
+04:41.680 --> 04:43.760
+hey, wait a minute, I have a tool for that.
+
+04:43.760 --> 04:46.240
+And it will execute your Java code to get the answer.
+
+04:46.960 --> 04:50.640
+So we've basically just built the hello world of AI tools.
+
+04:50.640 --> 04:53.200
+But this is just the very, very beginning.
+
+04:53.200 --> 04:54.400
+Let's zoom out for a second
+
+04:54.400 --> 04:57.120
+and just look at the incredible universe of possibilities
+
+04:57.120 --> 04:58.880
+that this one skill opens up.
+
+04:59.440 --> 05:00.640
+What you've learned here today
+
+05:00.640 --> 05:03.440
+is a foundational building block for so much more.
+
+05:03.440 --> 05:05.440
+You could take this and build a full chat app
+
+05:05.440 --> 05:06.800
+with conversational memory.
+
+05:06.800 --> 05:08.560
+Or what about a powerful search engine
+
+05:08.560 --> 05:10.480
+that understands the meaning of your documents
+
+05:10.480 --> 05:12.960
+by using a vector database like PG Vector?
+
+05:13.040 --> 05:14.800
+You could even dive into multimodal apps
+
+05:14.800 --> 05:17.120
+where your AI can understand images, audio.
+
+05:17.120 --> 05:18.480
+The sky is truly the limit.
+
+05:19.040 --> 05:20.480
+And this brings us to what I think
+
+05:20.480 --> 05:22.960
+is the most important takeaway from all of this.
+
+05:22.960 --> 05:25.280
+You're no longer just a consumer of AI.
+
+05:25.280 --> 05:27.600
+You are now a builder of AI tools.
+
+05:28.560 --> 05:30.640
+I love this quote from Sam Altman
+
+05:30.640 --> 05:32.320
+because it connects what we just did,
+
+05:32.320 --> 05:34.080
+this technical exercise,
+
+05:34.080 --> 05:36.640
+to a fundamental part of being human.
+
+05:36.640 --> 05:38.080
+We build tools.
+
+05:38.080 --> 05:39.840
+You didn't just write some code.
+
+05:39.840 --> 05:41.760
+You built a tool that literally extends
+
+05:41.760 --> 05:43.600
+the capabilities of an AI,
+
+05:43.600 --> 05:46.000
+one of the most powerful technologies of our time.
+
+05:46.720 --> 05:48.560
+And that's the bottom line.
+
+05:48.560 --> 05:50.720
+You now have the foundational skills
+
+05:50.720 --> 05:52.320
+and you have the incredible tools
+
+05:52.320 --> 05:54.000
+from the spring ecosystem
+
+05:54.000 --> 05:56.000
+to start building your own unique,
+
+05:56.000 --> 05:57.760
+powerful AI integrations.
+
+05:58.560 --> 06:00.720
+So, I'll leave you with this one question.
+
+06:00.720 --> 06:02.960
+You successfully built your very first bridge
+
+06:02.960 --> 06:04.800
+between your code and an AI.
+
+06:04.800 --> 06:07.760
+You've given it a new command, a new superpower.
+
+06:07.760 --> 06:09.520
+The only question left is,
+
+06:09.520 --> 06:11.040
+where are you going to command it to go next?
+

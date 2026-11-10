@@ -73,7 +73,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/x2s0FR8GJlA/maxresdefault.jpg
   visualizacoes: 4
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm`
     - https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm`
