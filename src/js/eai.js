@@ -91,7 +91,9 @@ async function initSmoothScroll() {
           const target = document.querySelector(id);
           if (target) {
             ev.preventDefault();
-            lenis.scrollTo(target, { offset: -70 });
+            // O lenis já desconta o scroll-padding-top do <html>, que cobre a trilha e o cabeçalho comum do site (F1b):
+            // um offset a mais deixava a seção longe do topo.
+            lenis.scrollTo(target);
             // preventDefault tira o foco-sequencial do alvo: leva o foco junto (skip link, WCAG 2.4.1/2.4.3)
             if (!target.hasAttribute('tabindex') && !target.matches('a[href],button,input,select,textarea')) target.setAttribute('tabindex', '-1');
             target.focus({ preventScroll: true });

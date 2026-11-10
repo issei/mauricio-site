@@ -99,7 +99,7 @@ body.ar-body {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 100;
+  z-index: 2147483001;
   padding: 12px 18px;
   background: var(--ar-surface);
   color: var(--ar-heading);
@@ -112,7 +112,7 @@ body.ar-body {
 
 .ar-readbar {
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: var(--sh-altura, 0px) 0 auto 0;
   height: 3px;
   z-index: 60;
   background: rgba(255, 255, 255, 0.05);
@@ -128,7 +128,7 @@ body.ar-body {
 
 .ar-nav {
   position: sticky;
-  top: 0;
+  top: var(--sh-altura, 0px);
   z-index: 50;
   background: rgba(13, 17, 23, 0.88);
   backdrop-filter: blur(10px);
@@ -605,4 +605,12 @@ code:not(pre code) {
 @media (max-width: 640px) {
   .ar-section { padding-top: 52px; }
   .ar-level { grid-template-columns: 44px 1fr; gap: 12px; }
+}
+
+/* Cabeçalho comum do site (F1b, RF-F1b-15/16): a trilha fica abaixo dele e o foco para abaixo dos dois (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 84px); }
+/* No celular, só o cabeçalho do site fica fixo: a trilha da página rola junto, para não ocupar um terço da tela. */
+@media (max-width: 639.98px) {
+  .ar-nav { position: static; }
+  html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 1rem); }
 }

@@ -53,7 +53,7 @@ a:hover { color: #79b8ff; }
 h1, h2, h3, h4 { color: var(--aa-heading); line-height: 1.25; }
 
 .aa-skip {
-  position: absolute; left: -9999px; top: 0; z-index: 100;
+  position: absolute; left: -9999px; top: 0; z-index: 2147483001;
   background: var(--aa-amber); color: var(--aa-amber-ink);
   padding: 10px 16px; border-radius: 0 0 8px 0; font-weight: 700; text-decoration: none;
 }
@@ -64,7 +64,7 @@ h1, h2, h3, h4 { color: var(--aa-heading); line-height: 1.25; }
 
 /* ============================== Barra superior ============================== */
 .aa-topbar {
-  position: sticky; top: 0; z-index: 40;
+  position: sticky; top: var(--sh-altura, 0px); z-index: 40;
   display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
   min-height: 56px; padding: 6px 20px;
   background: rgba(13, 17, 23, 0.94);
@@ -259,4 +259,12 @@ h1, h2, h3, h4 { color: var(--aa-heading); line-height: 1.25; }
   .aa-section { padding: 52px 0; }
   .aa-topbar__nav { margin-left: 0; }
   .aa-btn { width: 100%; justify-content: center; }
+}
+
+/* Cabeçalho comum do site (F1b, RF-F1b-15/16): a trilha fica abaixo dele e o foco para abaixo dos dois (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 72px); }
+/* No celular, só o cabeçalho do site fica fixo: a trilha da página rola junto, para não ocupar um terço da tela. */
+@media (max-width: 639.98px) {
+  .aa-topbar { position: static; }
+  html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 1rem); }
 }
