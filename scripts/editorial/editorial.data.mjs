@@ -29,12 +29,15 @@
 // Entrada sem `kind` é só continuação: a página já orienta bem na entrada e
 // só falta a saída (EDITORIAL-AUDIT §8, ex.: know). Não leva EDITORIAL:START.
 
-/** Formatos aceitos. Uma taxonomia pequena é preferível a uma sofisticada. */
+/** Formatos aceitos. Uma taxonomia pequena é preferível a uma sofisticada.
+ * Lista única: o catálogo (scripts/catalogo/dados.mjs) importa daqui (RF-F1-11). */
 export const KINDS = [
   'Artigo', 'Ensaio', 'Ensaio com autodiagnóstico', 'Estudo técnico', 'Case técnico',
   'Guia prático', 'Tutorial', 'Documentação de projeto', 'Revisão científica',
   'Apresentação', 'Proposta técnica', 'Simulador', 'Material interativo', 'Narrativa pessoal',
   'Referência',
+  // SDD-F1-F1b RF-F1-09: formatos que o catálogo já usava e que não cabiam na lista.
+  'Curso', 'Áudio comentado', 'Jornada',
 ];
 
 /** Profundidades aceitas. */

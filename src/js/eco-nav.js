@@ -8,71 +8,20 @@
  *
  * Progressive Disclosure (SPEC §3):
  *   L0 — botão fixo "Ecossistema" + pílula do pilar atual (sempre visível)
- *   L1 — os 5 pilares (subtitle + summary) ao abrir o painel
+ *   L1 — os pilares (subtitle + summary) ao abrir o painel
  *   L2 — nós do pilar expandido (title + blurb) + crosslinks relevantes
  * Acordeão: só um pilar aberto por vez; o pilar da página atual vem pré-aberto.
  *
- * DADOS: derivados de specs/ecosystem.nav.yaml (SSOT). Esta é uma cópia
- * compilada (< 8 KB). Ao alterar o grafo, atualize o YAML E aqui, com bump de
- * `meta.version` (governança SPEC §4.4 — ver ECOSYSTEM.md).
+ * DADOS: src/js/eco-nav.data.js, GERADO por scripts/gen-catalogo.mjs a partir de
+ * specs/ecosystem.nav.yaml (SDD-F1-F1b, RF-F1-18). Para mudar o grafo, edite o
+ * YAML (com bump de `meta.version`) e rode o gerador — ver ECOSYSTEM.md.
  *
  * Acessibilidade (D-07): navegável por teclado, ARIA de disclosure, foco
  * gerenciado, Esc/clique-fora fecham, prefers-reduced-motion respeitado.
  * Degradação (D-08): sem JS, nada é injetado e a página fica intacta.
  */
 
-const DATA = {
-  version: '1.13.0',
-  base: './', // D-05: URL relativa atual
-  pillars: [
-    { id: 'p1', n: '01', label: 'Fundação', subtitle: 'Mentalidade', summary: 'Princípios de pensamento sistêmico e gestão do conhecimento.', nodes: ['know', 'devin', 'artifice', 'formulacao-de-problemas', 'da-execucao-a-orquestracao'] },
-    { id: 'p2', n: '02', label: 'Engenharia de Confiança', subtitle: 'O Método', summary: 'Da intenção à execução agêntica confiável.', nodes: ['apresentacao', 'engenharia-confianca', 'engenharia-agentes-ia', 'develop-engineering', 'agent-ready', 'knowledge-os-presentation', 'case-agents', 'acessibilidade', 'especificacao-conversacional'] },
-    { id: 'p3', n: '03', label: 'Ecossistema Salesforce', subtitle: 'A Aplicação', summary: 'Métodos agênticos aplicados à plataforma Salesforce.', nodes: ['devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev'] },
-    { id: 'p4', n: '04', label: 'Sustentação & Resiliência', subtitle: 'O Valor', summary: 'Operação de serviço, SRE e resiliência em produção.', nodes: ['sustentacao', 'service-operations-2-0', 'proposta-observabilidade-mobile'] },
-    { id: 'p5', n: '05', label: 'Soluções & Portfólio', subtitle: 'Resultados', summary: 'Soluções entregues e a jornada pessoal.', nodes: ['socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo', 'boutique-empresarial-showcase', 'videos'] },
-  ],
-  nodes: {
-    know: { file: 'know.html', title: 'Navegando na Complexidade', blurb: 'O fim das melhores práticas.' },
-    devin: { file: 'devin.html', title: 'Vibe Coding com Devin', blurb: 'Engenharia agêntica na prática.' },
-    artifice: { file: 'artifice.html', title: 'O Artífice Invisível', blurb: 'O paradoxo da maestria no trabalho tecnológico.' },
-    'formulacao-de-problemas': { file: 'formulacao-de-problemas.html', title: 'Formulação de Problemas', blurb: 'Formular é engenharia da incerteza, não intuição.' },
-    'da-execucao-a-orquestracao': { file: 'da-execucao-a-orquestracao.html', title: 'Da execução à orquestração', blurb: 'Áudio comentado: o que a evidência sustenta.' },
-    apresentacao: { file: 'apresentacao.html', title: 'Arquitetura de IA auditável', blurb: 'Complexidade traduzida em decisões auditáveis.' },
-    'engenharia-confianca': { file: 'engenharia-confianca.html', title: 'A Engenharia da Confiança', blurb: 'Da intenção à execução agêntica.' },
-    'engenharia-agentes-ia': { file: 'engenharia-agentes-ia.html', title: 'Engenharia de Agentes de IA', blurb: 'Os princípios da IA confiável.' },
-    'develop-engineering': { file: 'develop-engineering.html', title: 'Deterministic Grounding', blurb: 'Ancorar estado, restringir ações e validar mudanças.' },
-    'agent-ready': { file: 'agent-ready.html', title: 'Agent Ready', blurb: 'A superfície do site legível por agentes de IA.' },
-    'knowledge-os-presentation': { file: 'knowledge-os-presentation.html', title: 'Knowledge OS Enterprise', blurb: 'Rastreabilidade e segurança para a IA.' },
-    'case-agents': { file: 'case-agents.html', title: 'Case Agents: a tool errada não é uma aproximação aceitável', blurb: 'Quando o agente não deve executar.' },
-    acessibilidade: { file: 'acessibilidade.html', title: 'Acessibilidade como requisito', blurb: 'O A11Y.md no contexto do agente, com evidência.' },
-    'especificacao-conversacional': { file: 'especificacao-conversacional.html', title: 'Especificação Conversacional Estruturada', blurb: 'Elicitar requisitos com IA, sob autoridade humana.' },
-    'devops-salesforce': { file: 'devops-salesforce.html', title: 'DevOps Salesforce', blurb: 'Entrega contínua agêntica no Salesforce.' },
-    'proposta-engenharia-reversa': { file: 'proposta-engenharia-reversa.html', title: 'Engenharia Reversa Assistida por IA', blurb: 'Salesforce legado transformado por IA.' },
-    'salesforce-agentic-quickstart': { file: 'salesforce-agentic-quickstart.html', title: 'Quick Start: Salesforce + Devin + Flosum', blurb: 'Primeiro deploy governado.' },
-    'salesforce-agentic-dev': { file: 'salesforce-agentic-dev.html', title: 'Agentic DevOps for Salesforce', blurb: 'Portal de treinamento Spec-Driven.' },
-    sustentacao: { file: 'sustentacao.html', title: 'Do Caos à Resiliência', blurb: 'Gestão de incidentes e SRE.' },
-    'service-operations-2-0': { file: 'service-operations-2-0.html', title: 'Service Operations 2.0', blurb: 'Protocolo Manchester aplicado à TI.' },
-    'proposta-observabilidade-mobile': { file: 'proposta-observabilidade-mobile.html', title: 'Observabilidade SRE para Mobilidade', blurb: 'Correlação device-rede-app.' },
-    socialselling: { file: 'socialselling.html', title: 'SocialSelling', blurb: 'Boas práticas de vendas sociais com IA.' },
-    index: { file: 'index.html', title: 'Maurício Yokoyama Issei', blurb: 'Tech Lead / Análise de Sistemas.' },
-    life: { file: 'life.html', title: 'A Jornada em Pixel Art', blurb: 'Narrativa pessoal desde 1982.' },
-    life3d: { file: 'life3d.html', title: 'Vida em 3D', blurb: 'Memórias numa viagem imersiva.' },
-    'terminal-evolutivo': { file: 'terminal-evolutivo.html', title: 'Terminal Evolutivo', blurb: 'A jornada 1982–2026 que envelhece ao rolar.' },
-    'boutique-empresarial-showcase': { file: 'boutique-empresarial-showcase.html', title: 'Boutique Empresarial', blurb: 'Arquitetura, SDD e pipeline agêntico de um projeto real.' },
-    // Absoluto: o índice de vídeos não tem gêmeo /en/ na fase 1.
-    videos: { file: '/videos.html', title: 'Vídeos do canal', blurb: 'Os vídeos do YouTube, organizados por assunto.' },
-  },
-  crosslinks: [
-    { from: 'knowledge-os-presentation', to: 'proposta-engenharia-reversa', rationale: 'Knowledge OS fundamenta a Engenharia Reversa assistida por IA.' },
-    { from: 'devin', to: 'salesforce-agentic-quickstart', rationale: 'Devin como executor concreto no stack Salesforce.' },
-    { from: 'engenharia-agentes-ia', to: 'socialselling', rationale: 'Agentes de IA aplicados a Social Selling.' },
-    { from: 'case-agents', to: 'engenharia-confianca', rationale: 'O ISM é o framework que o projeto instancia; o Crash Silencioso é o defeito que ele mediu.' },
-    { from: 'case-agents', to: 'engenharia-agentes-ia', rationale: 'Espectro de Autonomia justifica a assimetria da guarda de direção.' },
-    { from: 'agent-ready', to: 'case-agents', rationale: 'A mesma fronteira agente<->sistema: agent-ready por fora, case-agents por dentro.' },
-    { from: 'especificacao-conversacional', to: 'engenharia-confianca', rationale: 'A separação entre fato, inferência e julgamento vem do inventário do estado atual.' },
-    { from: 'especificacao-conversacional', to: 'devin', rationale: 'Prática de orquestração de agentes que esta proposta complementa.' },
-  ],
-};
+import { DATA } from './eco-nav.data.js';
 
 // ---- utilidades ------------------------------------------------------------
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));

@@ -1,26 +1,51 @@
 # =============================================================================
-# ecosystem.nav.yaml — SSOT da navegação do ecossistema (16 sites + 1 extra)
+# ecosystem.nav.yaml — fonte única da lista de conteúdos do site
 # -----------------------------------------------------------------------------
-# Fonte da verdade do grafo de navegação. Materializa SPEC_ECOSYSTEM.md §2 e
-# RESEARCH_MAPPING.md §1–§2 após o portão HITL (§8).
+# Daqui saem o catálogo (/catalogo, entre os marcadores CATALOGO) e os dados do
+# menu <eco-nav> (src/js/eco-nav.data.js), pelo scripts/gen-catalogo.mjs.
+# Não edite o catálogo nem o eco-nav.data.js à mão: edite este arquivo e rode
+#   node scripts/gen-catalogo.mjs
+# Spec: docs/specs/arquitetura-informacao/SDD-F1-F1b.md (Parte 1).
 #
 # Governança (SPEC §4.4): agentes que editam UMA página individual NÃO alteram
-# este arquivo, a ordem dos pilares, nem o glossário sem bump de `meta.version`
+# este arquivo, a ordem dos pilares nem o glossário sem bump de `meta.version`
 # e aprovação humana. Qualquer alteração de grafo → bump de versão.
 #
-# Invariantes (SPEC §2.2) — devem permanecer verdadeiras:
-#   INV-1  todo node em pillars[].nodes existe em `nodes`
-#   INV-2  `pillars` tem ordem 1→5 e exatamente os 5 pilares de CA-01
-#   INV-3  todo node.file corresponde a um arquivo real em src/
-#   INV-4  crosslinks[].from/to são slugs válidos (existem em `nodes`)
-#   INV-5  URLs derivadas usam meta.canonical_base (sem mistura absoluto/relativo)
+# Invariantes (SDD-F1-F1b §3.2; tests/ecosystem.schema.test.mjs aplica todos):
+#   INV-1  todo slug de pillars[].nodes existe em `nodes`
+#   INV-2  `pillars` tem 4 itens, na ordem 1 a 4
+#   INV-3  todo `file` corresponde a um arquivo real em src/
+#   INV-4  crosslinks[].from/to são slugs válidos
+#   INV-5  URLs derivadas usam meta.canonical_base, exceto os href absolutos
+#          já previstos (/videos.html)
+#   INV-6  todo nó tem `kind` em KINDS, `natureza` na lista e `temas` válidos
+#          (1 a 3 nos pilares; 0 a 3 na trajetória)
+#   INV-7  toda página autoral do sitemap é um nó, uma entrada ou página legal
+#          (exceção listada: lifeos)
+#   INV-8  o catálogo entre os marcadores é igual à saída do gerador
+#
+# Campos de um nó: file, title, label (rótulo curto de menu), blurb (≤ 60
+# caracteres, menu), pillar, kind, natureza, temas, descricao (texto do cartão),
+# e os opcionais cartao_titulo, assunto (depois do formato na etiqueta),
+# chamada (texto do link do cartão), selo (crosslink no cartão), catalogo
+# (false esconde o cartão) e par.
 # =============================================================================
 
 meta:
-  version: "1.13.0"           # semver; bump obrigatório a cada alteração de grafo
+  version: "2.0.0"           # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-11-07"
+  updated: "2026-11-10"
+  # 2.0.0 — reestruturação F1 (PROPOSTA-REESTRUTURACAO.md, decisões D3, D4, D5 e D7
+  #         do autor em 2026-11-10; classificação do SDD-F1-F1b, Anexo A, confirmada).
+  #         Sai o pilar p5: socialselling vai para p3 e boutique-empresarial-showcase
+  #         para p2; index e videos vão para `entradas`; life, life3d e
+  #         terminal-evolutivo vão para `trajetoria`. Entram os nós que o catálogo já
+  #         tinha e o YAML não (capacidade-antes-do-acesso, curiosidade-e-investigacao,
+  #         aprendizagem-autorregulada e o par -artigo, operacao-capital-cognitivo,
+  #         digital-workplace-agentico). Todo nó ganha kind, natureza, temas e o texto
+  #         do cartão. eco-nav.js deixa de ter cópia própria: lê eco-nav.data.js.
+  # Histórico 1.x:
   # 1.13.0 — entra `videos` (Vídeos do canal) em p5 (Soluções & Portfólio): índice
   #         gerado por scripts/gen-videos.mjs a partir do canal do YouTube. Pedido pelo
   #         autor em 2026-11-07. A página não tem gêmeo /en/ na fase 1, então o link é
@@ -70,8 +95,9 @@ meta:
   #         de src/js/eco-nav.js (1.1.0). O YAML tinha ficado para trás: as duas
   #         cópias desta SSOT precisam ser editadas juntas — ver ECOSYSTEM.md.
 
+
 # Decisões humanas que liberaram esta SSOT (HITL — SPEC §7/§8), registradas
-# para rastreabilidade. Não são consumidas pelo componente.
+# para rastreabilidade. Não são consumidas pelo gerador.
 hitl_decisions:
   url_convention: "relativa-atual"          # ./arquivo.html (não relativa-raiz)
   devops_title_canonico: "DevOps Salesforce — Entrega Contínua Agêntica"
@@ -80,211 +106,428 @@ hitl_decisions:
     RESEARCH §4.1 ficou obsoleta). A página já usa
     "Arquitetura Híbrida DevOps Salesforce | Flosum + GitHub + Devin AI",
     que foi mantido. O título canônico acima vale como rótulo de menu.
-  life_e_life3d: "ambos em p5; life3d rotulado (3D)"
+  life_e_life3d: "na trajetória desde 2.0.0; life3d rotulado (3D) no menu"
   crosslinks_proposed: "aprovados — materializar links reais na origem"
+  lifeos: "fora do YAML por decisão do autor (2026-11-10, Q5): publicado, sem link"
+
+# ----- Entradas: páginas de entrada, que não são conteúdo (alimentam o cabeçalho
+# comum da F1b). href absoluto só onde não há gêmeo /en/.
+entradas:
+  - id: index
+    file: "index.html"
+    label: "Início"
+    label_en: "Home"
+  - id: curriculo
+    file: "curriculo.html"
+    label: "Trajetória"
+    label_en: "Career"
+    titulo: "Currículo"
+    descricao: "Experiência profissional, formação, certificações e os resultados em formato STAR."
+    chamada: "Ver a trajetória →"
+  - id: catalogo
+    file: "catalogo.html"
+    label: "Produção"
+    label_en: "Work"
+  - id: videos
+    file: "/videos.html"     # absoluto: sem gêmeo /en/ na fase 1 dos vídeos
+    label: "Vídeos"
+    label_en: "Videos"
+    titulo: "Vídeos do canal"
+    descricao: "Os vídeos do canal no YouTube, organizados por assunto."
+    chamada: "Ver os vídeos →"
+
+# ----- Trajetória: narrativas pessoais, sem pilar. Ordem = ordem no catálogo.
+trajetoria: [life, life3d, terminal-evolutivo]
 
 # ----- Pilares: ordem = jornada CA-01 (NÃO reordenar sem bump major) ----------
+# summary = texto curto do menu; resumo = texto do catálogo; conector = frase
+# entre o pilar anterior e este, no catálogo.
 pillars:
   - id: p1
     order: 1
     label: "Fundação"
     subtitle: "Mentalidade"
     summary: "Princípios de pensamento sistêmico e gestão do conhecimento."
-    nodes: [know, devin, artifice, formulacao-de-problemas, da-execucao-a-orquestracao]
+    resumo: "Princípios de pensamento sistêmico e gestão do conhecimento — o ponto de partida antes de qualquer ferramenta."
+    nodes: [know, devin, formulacao-de-problemas, capacidade-antes-do-acesso, artifice, curiosidade-e-investigacao, aprendizagem-autorregulada, aprendizagem-autorregulada-artigo, da-execucao-a-orquestracao]
 
   - id: p2
     order: 2
     label: "Engenharia de Confiança"
     subtitle: "O Método"
     summary: "Da intenção à execução agêntica confiável."
-    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, develop-engineering, agent-ready, knowledge-os-presentation, case-agents, acessibilidade, especificacao-conversacional]
+    resumo: "Da intenção à execução agêntica confiável — a disciplina-ponte que transforma mentalidade em método."
+    conector: "herda o pensamento sistêmico"
+    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, develop-engineering, operacao-capital-cognitivo, agent-ready, case-agents, knowledge-os-presentation, digital-workplace-agentico, acessibilidade, especificacao-conversacional, boutique-empresarial-showcase]
 
   - id: p3
     order: 3
     label: "Ecossistema Salesforce"
     subtitle: "A Aplicação"
     summary: "Métodos agênticos aplicados à plataforma Salesforce."
-    nodes: [devops-salesforce, proposta-engenharia-reversa, salesforce-agentic-quickstart, salesforce-agentic-dev]
+    resumo: "Métodos agênticos aplicados à plataforma Salesforce — onde o método encontra a engenharia real."
+    conector: "aplica o método"
+    nodes: [devops-salesforce, proposta-engenharia-reversa, salesforce-agentic-quickstart, salesforce-agentic-dev, socialselling]
 
   - id: p4
     order: 4
     label: "Sustentação & Resiliência"
     subtitle: "O Valor"
     summary: "Operação de serviço, SRE e resiliência em produção."
+    resumo: "Operação de serviço, SRE e resiliência em produção — onde a engenharia entregue se prova ao longo do tempo."
+    conector: "é sustentado por"
     nodes: [sustentacao, service-operations-2-0, proposta-observabilidade-mobile]
 
-  - id: p5
-    order: 5
-    label: "Soluções & Portfólio"
-    subtitle: "Resultados"
-    summary: "Soluções entregues e a jornada pessoal."
-    nodes: [socialselling, index, life, life3d, terminal-evolutivo, boutique-empresarial-showcase, videos]
-
-# ----- Nós: chave = slug do arquivo (sem .html). blurb ≤ 60 chars (SPEC §4.2) --
+# ----- Nós: chave = slug do arquivo (sem .html) -------------------------------
 nodes:
-  # --- P1 · Fundação ---------------------------------------------------------
+  # --- P1 ---
   know:
     file: "know.html"
     title: "Navegando na Complexidade"
     blurb: "O fim das melhores práticas."
     pillar: p1
+    kind: "Ensaio"
+    natureza: estudo
+    temas: [gestao-e-estrategia]
+    assunto: "Gestão do conhecimento"
+    descricao: "O Framework Cynefin e o fim das melhores práticas: como liderar inovação e processos emergentes em ambientes complexos."
   devin:
     file: "devin.html"
     title: "Vibe Coding com Devin"
     blurb: "Engenharia agêntica na prática."
     pillar: p1
-  artifice:
-    file: "artifice.html"
-    title: "O Artífice Invisível"
-    blurb: "O paradoxo da maestria no trabalho tecnológico."
-    pillar: p1
+    kind: "Apresentação"
+    natureza: estudo
+    temas: [engenharia-agentica, ferramentas-de-ia]
+    assunto: "Engenharia agêntica"
+    descricao: "Engenharia agêntica na prática: o Devin como executor de tarefas de engenharia, da intenção ao código."
+    selo: { texto: "Executor concreto no Ecossistema Salesforce", direcao: desce }
   formulacao-de-problemas:
     file: "formulacao-de-problemas.html"
     title: "Formulação de Problemas"
     blurb: "Formular é engenharia da incerteza, não intuição."
     pillar: p1
+    kind: "Artigo"
+    natureza: estudo
+    temas: [gestao-e-estrategia, dados-e-decisao]
+    assunto: "Decisão"
+    descricao: "Formular é engenharia da redução de incerteza — e precisa parar: seis incertezas, seis estados de conhecimento, regra de parada e o penalizador de hiper-resolução."
+  capacidade-antes-do-acesso:
+    file: "capacidade-antes-do-acesso.html"
+    title: "Capacidade Antes do Acesso"
+    blurb: "Competência docente antes da IA na sala de aula."
+    pillar: p1
+    kind: "Artigo"
+    natureza: estudo
+    temas: [aprendizagem-e-mente, tecnologia-e-cultura]
+    assunto: "Educação e IA"
+    descricao: "Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial — necessidade, suficiência e condicionalidade postas à prova."
+  artifice:
+    file: "artifice.html"
+    title: "O Artífice Invisível"
+    blurb: "O paradoxo da maestria no trabalho tecnológico."
+    pillar: p1
+    kind: "Ensaio com autodiagnóstico"
+    natureza: estudo
+    temas: [tecnologia-e-cultura, gestao-e-estrategia]
+    assunto: "Maestria técnica"
+    descricao: "O paradoxo da maestria técnica: por que a sofisticação vira carga invisível — e como recuperar a soberania do seu ofício."
+  curiosidade-e-investigacao:
+    file: "curiosidade-e-investigacao.html"
+    title: "Curiosidade e Investigação"
+    blurb: "A IA como bancada de investigação, não como oráculo."
+    pillar: p1
+    kind: "Ensaio"
+    natureza: estudo
+    temas: [aprendizagem-e-mente]
+    assunto: "Aprendizagem e IA"
+    descricao: "Informação não é conhecimento, acesso não é compreensão, reconhecer não é dominar: como transformar curiosidade em investigação usando a IA como bancada, não como oráculo."
+  aprendizagem-autorregulada:
+    file: "aprendizagem-autorregulada.html"
+    title: "O Ciclo da Aprendizagem Autorregulada"
+    blurb: "O que a ciência comprova sobre como estudar."
+    pillar: p1
+    kind: "Revisão científica"
+    natureza: estudo
+    temas: [aprendizagem-e-mente]
+    assunto: "Aprendizagem"
+    descricao: "Do resumo à nova pergunta: o que a ciência comprova sobre recuperação, espaçamento e autoexplicação, com protocolo de 45–60 minutos e ficha de estudo."
+  aprendizagem-autorregulada-artigo:
+    file: "aprendizagem-autorregulada-artigo.html"
+    title: "Do resumo à nova pergunta"
+    blurb: "A revisão científica completa, com 103 referências."
+    pillar: p1
+    kind: "Artigo"
+    natureza: estudo
+    temas: [aprendizagem-e-mente]
+    catalogo: false
+    par: aprendizagem-autorregulada
   da-execucao-a-orquestracao:
     file: "da-execucao-a-orquestracao.html"
     title: "Da execução à orquestração"
     blurb: "Áudio comentado: o que a evidência sustenta."
     pillar: p1
+    kind: "Áudio comentado"
+    natureza: estudo
+    temas: [gestao-e-estrategia, engenharia-agentica]
+    cartao_titulo: "Da execução à orquestração do trabalho"
+    assunto: "Trabalho e IA"
+    descricao: "Um áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir enquanto ouve e três cenários."
 
-  # --- P2 · Engenharia de Confiança ------------------------------------------
+  # --- P2 ---
   apresentacao:
     file: "apresentacao.html"
     title: "Arquitetura de IA auditável"
     blurb: "Complexidade traduzida em decisões auditáveis."
     pillar: p2
+    kind: "Apresentação"
+    natureza: referencia
+    temas: [engenharia-agentica, especificacao-e-desenvolvimento]
+    assunto: "executiva e técnica"
+    descricao: "GraphRAG, Spec-Driven Development e DevOps Salesforce em duas leituras da mesma verdade: a executiva, medida em risco e retorno; a de engenharia, em cobertura e latência."
+    chamada: "Escolher a perspectiva →"
   engenharia-confianca:
     file: "engenharia-confianca.html"
     title: "A Engenharia da Confiança"
     blurb: "Da intenção à execução agêntica."
     pillar: p2
+    kind: "Jornada"
+    natureza: estudo
+    temas: [engenharia-agentica]
+    assunto: "4 módulos"
+    descricao: "Da Intenção à Execução Agêntica: quatro módulos que conectam Engenharia Reversa, Engenharia de Agentes e Vibe Coding — do caos da IA-como-mágica à governança da IA-como-engenharia."
+    chamada: "Iniciar a jornada →"
   engenharia-agentes-ia:
     file: "engenharia-agentes-ia.html"
     title: "Engenharia de Agentes de IA"
     blurb: "Os princípios da IA confiável."
     pillar: p2
+    kind: "Material interativo"
+    natureza: estudo
+    temas: [engenharia-agentica]
+    assunto: "Arquitetura de IA"
+    descricao: "Os dez princípios que tornam sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança agent-driven."
+    selo: { texto: "Agentes de IA aplicados ao SocialSelling", direcao: desce }
   develop-engineering:
     file: "develop-engineering.html"
     title: "Deterministic Grounding para Engenharia Agentic de Software"
     label: "Deterministic Grounding"
     blurb: "Ancorar estado, restringir ações e validar mudanças."
     pillar: p2
+    kind: "Artigo"
+    natureza: estudo
+    temas: [engenharia-agentica, especificacao-e-desenvolvimento]
+    assunto: "Engenharia Agêntica"
+    descricao: "Como ancorar contexto, restringir ações e validar mudanças de agentes em software sem confundir um resultado verde com correção global."
+  operacao-capital-cognitivo:
+    file: "operacao-capital-cognitivo.html"
+    title: "Operação Capital Cognitivo"
+    blurb: "Simulador executivo de FinOps de IA."
+    pillar: p2
+    kind: "Simulador"
+    natureza: experimento
+    temas: [dados-e-decisao, gestao-e-estrategia]
+    assunto: "FinOps de IA"
+    descricao: "Simulador executivo de FinOps de IA: investigue a fatura oculta e deduza o framework Useful Intelligence per Dollar (UI/$) defendendo decisões perante um Conselho dinâmico."
+    selo: { texto: "Coloca em prática o FinOps de IA dos Agentes", direcao: desce }
   agent-ready:
     file: "agent-ready.html"
     title: "Agent Ready"
     blurb: "A superfície do site legível por agentes de IA."
     pillar: p2
-  knowledge-os-presentation:
-    file: "knowledge-os-presentation.html"
-    title: "Knowledge OS Enterprise"
-    blurb: "Rastreabilidade e segurança para a IA."
-    pillar: p2
+    kind: "Tutorial"
+    natureza: experiencia
+    temas: [engenharia-agentica, especificacao-e-desenvolvimento]
+    assunto: "Web Standards"
+    descricao: "Como tornar um site legível, descobrível e utilizável por agentes de IA: Link headers, Markdown negociado, Content Signals, API Catalog, MCP e Agent Skills — com o código real deste domínio."
   case-agents:
     file: "case-agents.html"
     title: "Case Agents: a tool errada não é uma aproximação aceitável"
     label: "Case Agents"
     blurb: "Quando o agente não deve executar."
     pillar: p2
+    kind: "Case técnico"
+    natureza: experiencia
+    temas: [engenharia-agentica]
+    assunto: "Agentes de IA"
+    descricao: "Roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso."
+  knowledge-os-presentation:
+    file: "knowledge-os-presentation.html"
+    title: "Knowledge OS Enterprise"
+    blurb: "Rastreabilidade e segurança para a IA."
+    pillar: p2
+    kind: "Apresentação"
+    natureza: proposta
+    temas: [engenharia-agentica, gestao-e-estrategia]
+    assunto: "Gestão do conhecimento"
+    descricao: "O sistema de conhecimento que dá rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle."
+    selo: { texto: "Fundamenta a Engenharia Reversa", direcao: desce }
+  digital-workplace-agentico:
+    file: "digital-workplace-agentico.html"
+    title: "Digital Workplace agêntico"
+    blurb: "Do portal de links à plataforma que resolve intenções."
+    pillar: p2
+    kind: "Estudo técnico"
+    natureza: estudo
+    temas: [engenharia-agentica, gestao-e-estrategia]
+    assunto: "Arquitetura de Plataformas"
+    descricao: "Como um portal corporativo evolui de uma lista de links para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap."
   acessibilidade:
     file: "acessibilidade.html"
     title: "Acessibilidade como requisito de engenharia"
     label: "Acessibilidade"
     blurb: "O A11Y.md no contexto do agente, com evidência."
     pillar: p2
+    kind: "Case técnico"
+    natureza: experiencia
+    temas: [acessibilidade-e-design]
+    cartao_titulo: "Acessibilidade como requisito de engenharia"
+    assunto: "Acessibilidade"
+    descricao: "Como o A11Y.md entrou no desenvolvimento deste site com agentes de IA: o fluxo real, os diffs, a catraca que só deixa a dívida cair e o que ainda não foi verificado."
   especificacao-conversacional:
     file: "especificacao-conversacional.html"
     title: "Especificação Conversacional Estruturada"
     label: "Especificação Conversacional"
     blurb: "Elicitar requisitos com IA, sob autoridade humana."
     pillar: p2
+    kind: "Ensaio"
+    natureza: proposta
+    temas: [especificacao-e-desenvolvimento, engenharia-agentica]
+    cartao_titulo: "Especificação Conversacional Estruturada"
+    assunto: "Engenharia de requisitos"
+    descricao: "Um workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código — e o que ainda não foi avaliado."
+  boutique-empresarial-showcase:
+    file: "boutique-empresarial-showcase.html"
+    title: "Boutique Empresarial — Architecture Showcase"
+    label: "Boutique Empresarial"
+    blurb: "Arquitetura, SDD e pipeline agêntico de um projeto real."
+    pillar: p2
+    kind: "Case técnico"
+    natureza: experiencia
+    temas: [especificacao-e-desenvolvimento, engenharia-agentica]
+    assunto: "Arquitetura web"
+    descricao: "Showcase da arquitetura estática MPA, metodologia SDD, pipeline agêntico multi-modelo e Quality Gate determinístico por trás de um projeto real."
 
-  # --- P3 · Ecossistema Salesforce -------------------------------------------
+  # --- P3 ---
   devops-salesforce:
     file: "devops-salesforce.html"
     title: "DevOps Salesforce — Entrega Contínua Agêntica"
-    label: "DevOps Salesforce"          # rótulo curto de menu
+    label: "DevOps Salesforce"
     blurb: "Entrega contínua agêntica no Salesforce."
     pillar: p3
+    kind: "Guia prático"
+    natureza: referencia
+    temas: [salesforce-e-vendas, engenharia-agentica]
+    assunto: "Salesforce"
+    descricao: "Entrega contínua agêntica: arquitetura híbrida unindo a governança do Flosum, a flexibilidade do GitHub e a velocidade da IA no ecossistema Salesforce."
   proposta-engenharia-reversa:
     file: "proposta-engenharia-reversa.html"
     title: "Engenharia Reversa Assistida por IA"
     blurb: "Salesforce legado transformado por IA."
     pillar: p3
+    kind: "Proposta técnica"
+    natureza: proposta
+    temas: [salesforce-e-vendas, engenharia-agentica]
+    assunto: "Salesforce"
+    descricao: "Transformação de sistemas Salesforce legados via IA: do código herdado à especificação viva, sem refactor manual."
   salesforce-agentic-quickstart:
     file: "salesforce-agentic-quickstart.html"
     title: "Quick Start: Salesforce + Devin + Flosum"
     blurb: "Primeiro deploy governado."
     pillar: p3
+    kind: "Tutorial"
+    natureza: referencia
+    temas: [salesforce-e-vendas, ferramentas-de-ia]
+    assunto: "Salesforce"
+    descricao: "Passo a passo para configurar o ambiente de desenvolvimento agêntico e realizar o primeiro deploy governado em tempo recorde."
+    selo: { texto: "Tem o Devin como executor", direcao: sobe }
   salesforce-agentic-dev:
     file: "salesforce-agentic-dev.html"
     title: "Agentic DevOps for Salesforce"
     blurb: "Portal de treinamento Spec-Driven."
     pillar: p3
+    kind: "Guia prático"
+    natureza: referencia
+    temas: [salesforce-e-vendas, especificacao-e-desenvolvimento]
+    assunto: "Salesforce"
+    descricao: "Portal de treinamento em Spec-Driven Development e agentes autônomos para desenvolvimento eficiente e sem débito técnico."
+  socialselling:
+    file: "socialselling.html"
+    title: "SocialSelling"
+    blurb: "Boas práticas de vendas sociais com IA."
+    pillar: p3
+    kind: "Documentação de projeto"
+    natureza: experimento
+    temas: [salesforce-e-vendas, engenharia-agentica]
+    assunto: "Vendas"
+    descricao: "Overview do projeto e modelo de boas práticas para vendas sociais potencializadas por agentes de IA."
+    selo: { texto: "Resultado da Engenharia de Agentes de IA", direcao: sobe }
 
-  # --- P4 · Sustentação & Resiliência ----------------------------------------
+  # --- P4 ---
   sustentacao:
     file: "sustentacao.html"
     title: "Do Caos à Resiliência"
     blurb: "Gestão de incidentes e SRE."
     pillar: p4
+    kind: "Curso"
+    natureza: referencia
+    temas: [cloud-e-confiabilidade]
+    assunto: "Sustentação"
+    descricao: "Sustentação de sistemas em produção: gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em crise."
   service-operations-2-0:
     file: "service-operations-2-0.html"
     title: "Service Operations 2.0"
     blurb: "Protocolo Manchester aplicado à TI."
     pillar: p4
-  # Extra fora dos 16 canônicos (RESEARCH §1): mantido no hub por afinidade
-  # SRE/observabilidade. canonical: false sinaliza que está fora do grafo-base.
+    kind: "Apresentação"
+    natureza: proposta
+    temas: [cloud-e-confiabilidade, gestao-e-estrategia]
+    assunto: "Operações de TI"
+    descricao: "Visão executiva do Protocolo Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento comercial."
   proposta-observabilidade-mobile:
     file: "proposta-observabilidade-mobile.html"
     title: "Observabilidade SRE para Mobilidade"
     blurb: "Correlação device-rede-app."
     pillar: p4
     canonical: false
+    kind: "Proposta técnica"
+    natureza: proposta
+    temas: [cloud-e-confiabilidade]
+    assunto: "Observabilidade"
+    descricao: "Correlação inteligente entre dispositivos, rede e aplicações usando Datadog e Azure."
 
-  # --- P5 · Soluções & Portfólio ---------------------------------------------
-  socialselling:
-    file: "socialselling.html"
-    title: "SocialSelling"
-    blurb: "Boas práticas de vendas sociais com IA."
-    pillar: p5
-  index:
-    file: "index.html"
-    title: "Maurício Yokoyama Issei"
-    label: "Perfil"
-    blurb: "Tech Lead / Análise de Sistemas."
-    pillar: p5
+  # --- Trajetória (sem pilar) ---
   life:
     file: "life.html"
     title: "A Jornada em Pixel Art"
     blurb: "Narrativa pessoal desde 1982."
-    pillar: p5
+    kind: "Narrativa pessoal"
+    natureza: experimento
+    temas: [tecnologia-e-cultura]
+    assunto: "Pixel art"
+    descricao: "Experiência interativa contando a trajetória pessoal e profissional desde o início em 1982 até os dias de hoje."
+    chamada: "Iniciar jornada →"
   life3d:
     file: "life3d.html"
     title: "Vida em 3D"
     label: "Vida em 3D (3D)"
     blurb: "Memórias numa viagem imersiva."
-    pillar: p5
+    kind: "Narrativa pessoal"
+    natureza: experimento
+    temas: []
+    cartao_titulo: "Vida em 3D"
+    assunto: "3D"
+    descricao: "Uma viagem contemplativa e imersiva em 3D pela história e memórias de Maurício Issei."
+    chamada: "Iniciar jornada →"
   terminal-evolutivo:
     file: "terminal-evolutivo.html"
     title: "Terminal Evolutivo"
     blurb: "A jornada 1982–2026 que envelhece ao rolar."
-    pillar: p5
-  # Extra fora dos 16 canônicos (mesmo tratamento de proposta-observabilidade-mobile
-  # em p4): canonical: false sinaliza que está fora do grafo-base.
-  boutique-empresarial-showcase:
-    file: "boutique-empresarial-showcase.html"
-    title: "Boutique Empresarial — Architecture Showcase"
-    label: "Boutique Empresarial"
-    blurb: "Arquitetura, SDD e pipeline agêntico de um projeto real."
-    pillar: p5
-  videos:
-    file: "/videos.html"     # absoluto: sem gêmeo /en/ na fase 1
-    title: "Vídeos do canal"
-    blurb: "Os vídeos do YouTube, organizados por assunto."
-    pillar: p5
-    canonical: false
+    kind: "Narrativa pessoal"
+    natureza: experimento
+    temas: []
+    descricao: "A jornada de 1982 a 2026 numa narrativa que envelhece conforme você rola — com os casos STAR embutidos no fluxo."
+    chamada: "Iniciar jornada →"
 
 # ----- Arestas transversais (cross-linking dirigido) — SPEC §2.1 / RESEARCH §2.2
 # status: proposed | existing   ·   approved: decisão humana de materializar link
