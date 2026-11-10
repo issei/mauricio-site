@@ -8,17 +8,19 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { loadEcossistema } from './catalogo/dados.mjs';
 
 const SRC = resolve(import.meta.dirname, '..', 'src');
 const TAG = '<script type="module" src="./js/eco-nav.js"></script>';
 const MARKER = 'js/eco-nav.js';
 
-// 16 nós canônicos + 1 extra (proposta-observabilidade-mobile). Sem catalogo.html.
+// Lista vinda do YAML (SDD-F1-F1b §4, corrige DV-3): nós dos pilares e da trajetória,
+// mais a home e o currículo. Sem catalogo.html (o hub é o próprio mapa). O <eco-nav>
+// sai no lote L5 da F1b; até lá, este script só acrescenta, nunca remove.
+const { eco } = loadEcossistema();
 const PAGES = [
-  'know', 'devin', 'engenharia-confianca', 'engenharia-agentes-ia', 'knowledge-os-presentation',
-  'devops-salesforce', 'proposta-engenharia-reversa', 'salesforce-agentic-quickstart', 'salesforce-agentic-dev',
-  'sustentacao', 'service-operations-2-0', 'proposta-observabilidade-mobile',
-  'socialselling', 'index', 'life', 'life3d', 'terminal-evolutivo',
+  ...eco.pillars.flatMap((p) => p.nodes).filter((s) => eco.nodes[s].catalogo !== false),
+  ...eco.trajetoria, 'index', 'curriculo',
 ];
 
 let injected = 0, skipped = 0;

@@ -17,8 +17,9 @@
  */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, dirname, join, basename } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { PAGES } from './seo/pages.mjs';
+import { loadEcossistema } from './catalogo/dados.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'src');
@@ -221,27 +222,20 @@ for (const slug of publicas) {
 
 /* ── 4. Sincronia entre as fontes da verdade ──────────────────────────────── */
 
-const yaml = readFileSync(join(ROOT, 'specs/ecosystem.nav.yaml'), 'utf8');
-const ecoJs = readFileSync(join(ROOT, 'src/js/eco-nav.js'), 'utf8');
+// Desde o YAML 2.0.0 os dados do <eco-nav> são gerados (scripts/gen-catalogo.mjs);
+// a igualdade byte a byte é do --check do gerador. Aqui: os nós apontam para páginas reais.
+const { eco: ecoYaml } = loadEcossistema();
+const yamlNodes = ecoYaml.pillars.flatMap((p) => p.nodes);
+const { DATA: ecoData } = await import(pathToFileURL(join(ROOT, 'src/js/eco-nav.data.js')).href);
+const jsNodes = ecoData.pillars.flatMap((p) => p.nodes);
 
-const yamlNodes = [...yaml.matchAll(/^\s{4}nodes:\s*\[([^\]]+)\]/gm)]
-  .flatMap((m) => m[1].split(',').map((s) => s.trim()));
-const jsNodes = [...ecoJs.matchAll(/nodes:\s*\[([^\]]+)\]/g)]
-  .flatMap((m) => m[1].split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, '')));
-
-for (const n of yamlNodes) {
-  if (!jsNodes.includes(n)) erro('ecosystem', `nó "${n}" no YAML mas ausente de eco-nav.js`);
-}
 for (const n of jsNodes) {
-  if (!yamlNodes.includes(n)) erro('ecosystem', `nó "${n}" em eco-nav.js mas ausente do YAML`);
+  if (!yamlNodes.includes(n)) erro('ecosystem', `nó "${n}" em eco-nav.data.js mas ausente do YAML`);
 }
-for (const n of new Set([...yamlNodes, ...jsNodes])) {
+for (const n of [...yamlNodes, ...ecoYaml.trajetoria]) {
   if (!docs.has(n)) erro('ecosystem', `nó "${n}" não corresponde a src/${n}.html`);
 }
-
-const yv = yaml.match(/version:\s*"([\d.]+)"/)?.[1];
-const jv = ecoJs.match(/version:\s*'([\d.]+)'/)?.[1];
-if (yv !== jv) erro('ecosystem', `versões divergentes — YAML ${yv} × eco-nav.js ${jv}`);
+if (ecoYaml.meta.version !== ecoData.version) erro('ecosystem', `versões divergentes — YAML ${ecoYaml.meta.version} × eco-nav.data.js ${ecoData.version}`);
 
 // pages.mjs × arquivos
 const slugsSeo = new Set(PAGES.map((p) => p.slug));

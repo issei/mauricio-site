@@ -59,6 +59,15 @@ a home, o currículo nem o texto das páginas.
   | `descricao` | sim | texto do cartão do catálogo, copiado sem mudança do HTML atual |
   | `catalogo` | não (padrão `true`) | `false` esconde o nó do catálogo, sem tirá-lo do grafo |
   | `par` | não | slug de outro nó; usado por `aprendizagem-autorregulada-artigo` |
+  | `cartao_titulo` | não | título do cartão, quando difere de `label` e `title` |
+  | `assunto` | não | texto depois do formato na etiqueta do cartão ("Ensaio · Gestão do conhecimento") |
+  | `chamada` | não (padrão "Acessar conteúdo →") | texto do link do cartão |
+  | `selo` | não | `{ texto, direcao: sobe \| desce }`: selo de crosslink do cartão |
+
+  Os pilares ganham `resumo` (texto do catálogo) e `conector` (frase entre um pilar e o
+  anterior). As entradas `curriculo` e `videos` ganham `titulo`, `descricao` e `chamada`, para o
+  cartão da seção "Trajetória e vídeos". (Campos acrescentados na implementação, 10/11/2026, para o
+  catálogo gerado ficar igual ao escrito à mão.)
 
 - **RF-F1-06.** Entram como nós: `capacidade-antes-do-acesso`, `curiosidade-e-investigacao`,
   `aprendizagem-autorregulada`, `aprendizagem-autorregulada-artigo` (com `catalogo: false` e
@@ -103,8 +112,10 @@ Substituem os do cabeçalho do arquivo. O teste novo (§5) aplica todos.
 - **RF-F1-13.** O que fica fora dos marcadores continua escrito à mão: `<head>`, hero e o bloco
   "Comece por aqui".
 - **RF-F1-14.** Cada cartão mostra: formato (`kind`), natureza (rótulo por extenso), título, a
-  `descricao`, os temas como links para `/temas/<tema>` e o selo de crosslink que já existe.
-  O cartão não ganha ícone nem card novo: segue o markup atual.
+  `descricao`, os temas e o selo de crosslink que já existe. O cartão não ganha ícone nem card
+  novo: segue o markup atual. Os temas aparecem como texto, não como links: o cartão inteiro já é
+  um `<a>`, e link dentro de link é HTML inválido. Os links para `/temas/<tema>` ficam para a F5,
+  junto com a lista de artigos nas páginas de tema.
 - **RF-F1-15.** O catálogo ganha, depois dos quatro pilares, uma seção curta "Trajetória e
   vídeos" com links para `/curriculo`, as narrativas e `/videos` (corrige DV-2).
 - **RF-F1-16.** A trilha dos pilares (`nav` "Jornada do ecossistema") passa a ter 4 itens.
@@ -131,7 +142,7 @@ currículo (F2, F3); qualquer texto de página.
 | `scripts/quality-gate.mjs` | acrescenta `gen-catalogo.mjs --check` |
 | `scripts/audit-site.mjs` | lê `pillars` sem supor 5 |
 | `/en/` | `catalogo` e `eco-nav.data.js` mudam: `npm run i18n:sync && npm run i18n:check` na máquina do autor antes do merge |
-| `public/catalogo.md` | gêmeo `.md` regenerado (`check-md-twins.mjs`) |
+| `public/catalogo.md` | gerado pelo `gen-catalogo.mjs` (seções vindas do YAML via `scripts/seo/pages.mjs`), com `--check` |
 
 ## 5. Testes
 

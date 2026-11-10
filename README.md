@@ -51,7 +51,7 @@ Cada página é um arquivo `.html` em `src/`. O Vite gera o build, e o GitHub Ac
 O site é a vitrine profissional de Maurício Issei. Ele reúne:
 
 - **Portfólio e currículo.** A home (`/`) mostra o "Mapa de Linhas" de competências. A página `/curriculo` mostra o currículo completo.
-- **Páginas de conteúdo.** São artigos, estudos de caso, propostas e páginas interativas, organizados em cinco pilares de navegação.
+- **Páginas de conteúdo.** São artigos, estudos de caso, propostas e páginas interativas, organizados em quatro pilares de navegação.
 - **Páginas dos vídeos do canal do YouTube.** Cada vídeo tem uma ficha. Os assuntos têm páginas próprias.
 - **Versão em inglês.** Cada página pública em português tem uma cópia traduzida em `/en/`.
 - **Versão em Markdown.** Cada página pública tem um arquivo `.md` com o mesmo conteúdo, para leitura por agentes de IA.
@@ -82,9 +82,9 @@ Assim, buscadores, leitores de currículo (ATS), agentes de IA e tradutores de n
 ### Páginas
 
 - **49 páginas-fonte** em `src/*.html`, mais as páginas geradas de vídeos (`src/videos/`) e de assuntos (`src/temas/`).
-- **Hub do ecossistema** em [`src/catalogo.html`](src/catalogo.html). Ele liga as páginas pelos cinco pilares:
-  Fundação → Engenharia de Confiança → Ecossistema Salesforce → Sustentação & Resiliência → Soluções & Portfólio.
-- **Navegação entre páginas** pelo componente `<eco-nav>` ([`src/js/eco-nav.js`](src/js/eco-nav.js)). A fonte dos dados é [`specs/ecosystem.nav.yaml`](specs/ecosystem.nav.yaml). Regras em [`ECOSYSTEM.md`](ECOSYSTEM.md).
+- **Hub do ecossistema** em [`src/catalogo.html`](src/catalogo.html), gerado por `scripts/gen-catalogo.mjs` a partir de [`specs/ecosystem.nav.yaml`](specs/ecosystem.nav.yaml). Ele liga as páginas pelos quatro pilares
+  (Fundação → Engenharia de Confiança → Ecossistema Salesforce → Sustentação & Resiliência) e mostra o formato, a natureza e os temas de cada conteúdo.
+- **Navegação entre páginas** pelo componente `<eco-nav>` ([`src/js/eco-nav.js`](src/js/eco-nav.js)), com dados gerados do mesmo YAML. Regras em [`ECOSYSTEM.md`](ECOSYSTEM.md).
 - **Páginas não listadas** (por exemplo `/proposta` e `/entrevista-acessibilidade-streaming`) levam `noindex` e ficam fora do sitemap.
 - **Páginas legais:** `/privacidade`, `/cookies` e `/termos`.
 
@@ -567,7 +567,7 @@ Este repositório segue o desenvolvimento guiado por especificação (SDD, *Spec
 3. Aplique o checklist de SEO: título, meta description, Open Graph, canônico.
 4. Crie o gêmeo `public/<pagina>.md`.
 5. Crie o teste `tests/<pagina>.spec.js`, com axe.
-6. Ligue a página no `catalogo.html` e, se ela fizer parte de um pilar, em `specs/ecosystem.nav.yaml`.
+6. Acrescente a página em `specs/ecosystem.nav.yaml` (pilar, formato, natureza, temas e texto do cartão) e rode `node scripts/gen-catalogo.mjs`. O catálogo não se edita à mão.
 7. Rode `npm run i18n:sync` e `npm run gate`.
 
 A skill [`new-page`](.claude/skills/new-page/SKILL.md) faz esses passos.

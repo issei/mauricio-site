@@ -28,7 +28,7 @@ test('eco-nav: monta, abre, pré-expande o pilar da página e marca a página at
 
   // pilar da página (P1) vem pré-expandido; os demais colapsados
   const heads = host.locator('.acc__head');
-  await expect(heads).toHaveCount(5);
+  await expect(heads).toHaveCount(4);
   await expect(heads.nth(0)).toHaveAttribute('aria-expanded', 'true');
   await expect(heads.nth(1)).toHaveAttribute('aria-expanded', 'false');
 
