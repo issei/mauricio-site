@@ -22,7 +22,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/0Rh2ViL6nCk/maxresdefault.jpg
   visualizacoes: 10
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
