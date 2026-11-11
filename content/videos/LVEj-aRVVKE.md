@@ -1,7 +1,7 @@
 ---
 id: LVEj-aRVVKE
 slug: domine-a-ia-com-google-antigravity-da-codificacao-a
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
 resumo: "Um resumo da transmissão ao vivo do Google sobre as novidades do Antigravity. O vídeo mostra como trabalhar com agentes de IA sem perder o controle do código: projetos no Agent Manager 2.0, aprovação antes de mudar arquivos, chats curtos com /learn, sandboxes com Git worktree e subagentes."
@@ -9,7 +9,9 @@ fontes:
   - url: https://www.youtube.com/watch?v=mfT8qpPNYyg
     titulo: "Google Antigravity Livestream"
     sustenta: "O vídeo resume esta transmissão ao vivo: os recursos e as recomendações citados vêm dela."
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-11
 youtube:
   titulo: "Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes"
   publicado_em: 2026-07-17
