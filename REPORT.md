@@ -246,3 +246,9 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Acessibilidade:** a catraca não cobre `/temas/`. axe (WCAG 2.2 AA) nas 10 páginas de tema, no build de produção: 0 violações sérias ou críticas. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
   - **Espelho EN:** as páginas de tema não têm gêmeo `/en/` (fase 1 dos vídeos); `i18n:check` com 82 espelhos em dia.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 26 — F5c: continuação "Se este tema interessa a você" em 26 páginas (11/11/2026).** `scripts/gen-continuacao.mjs` sugere 2 páginas com tema em comum (ou do mesmo pilar), entre os marcadores `CONTINUACAO:*`, logo antes do `</main>`. O motivo é só o fato ("Também em <tema>."). Ficam de fora as 3 páginas com continuação escrita pelo autor, `life` e `life3d` (imersivas) e `terminal-evolutivo` (sem tema). F5b não tem o que ligar: nenhuma página de Experiência corresponde a um projeto STAR.
+  - **Estrutura:** `<nav aria-labelledby>` com `<p>` de rótulo e lista, sem heading, o mesmo padrão da continuação da camada editorial. Estilo inline, sem hexadecimal.
+  - **Contraste:** em 3 páginas sem estilo de link (`curiosidade-e-investigacao`, `apresentacao`, `develop-engineering`), o link caía no azul padrão do navegador (`#0000ee` sobre fundo escuro). O link agora herda a cor do texto e fica sublinhado. Layout conferido a 1280 px e a 375 px.
+  - **Testes:** `continuacao.gen.test.mjs` (27 casos). `gen-continuacao.mjs --check` entra no gate. Playwright Chromium (`site-header`, `tests/a11y/`): 203 passam; só as falhas conhecidas da nuvem.
+  - **Catraca:** `a11y-sweep --only` nas 26 páginas: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
