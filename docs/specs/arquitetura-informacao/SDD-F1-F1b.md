@@ -486,3 +486,24 @@ natureza desde a F1 (`gen-catalogo.mjs`). A F4 leva o rótulo ao topo das 32 pá
   rótulo do YAML.
 - **CA-F4-01.** `gen-editorial.mjs --check` passa no gate.
 - **CA-F4-02.** A catraca de acessibilidade não sobe nas 12 páginas nem nos espelhos `/en/`.
+
+## F4.5 Requisitos do lote F4b
+
+- **RF-F4-05.** Os lotes cobrem os 32 nós do YAML sem sobreposição: página com quadro editorial
+  fica no F4a; as demais 20 ficam no F4b.
+- **RF-F4-06.** `scripts/gen-natureza.mjs` preenche, entre `<!-- NATUREZA:START -->` e
+  `<!-- NATUREZA:END -->`, um parágrafo `<p class="nat-rotulo">Natureza: …</p>` com o valor do YAML.
+  Os marcadores ficam logo antes do `<h1>`. Sem heading novo.
+- **RF-F4-07.** O estilo é inline e não tem hexadecimal: o rótulo herda a cor do texto da página
+  (vale também em `apresentacao.html`). Página do F4b sem marcadores faz o gerador falhar.
+- **RF-F4-08.** Em `public/catalogo.md`, cada item de nó começa com a natureza em itálico. O
+  `public/llms.txt` aponta para o `catalogo.md` como fonte da natureza; não repete a lista.
+- **RF-F4-09.** `gen-natureza.mjs --check` roda no gate. O espelho `/en/` recebe o rótulo
+  traduzido pelo Argos, como o resto da página.
+
+## F4.6 Testes e aceite do F4b
+
+- `tests/natureza.gen.test.mjs`: os dois lotes cobrem todos os nós; cada página do F4b tem um
+  bloco só, com o rótulo do YAML, sem heading e sem hexadecimal, logo antes do `<h1>`.
+- **CA-F4-03.** `gen-natureza.mjs --check` passa no gate.
+- **CA-F4-04.** A catraca de acessibilidade não sobe nas 20 páginas nem nos espelhos `/en/`.

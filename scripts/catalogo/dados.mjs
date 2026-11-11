@@ -126,6 +126,8 @@ export function validar({ eco, temas }) {
 /** Seções do public/catalogo.md (mdSections de pages.mjs), na ordem do catálogo. */
 export function catalogoMdSections({ eco } = loadEcossistema()) {
   const item = (titulo, file, descricao) => `- [${titulo}](${publicUrl(file)}) — ${descricao}`;
+  // F4b (RF-F4-08): o item de um nó diz a natureza antes do texto do cartão.
+  const itemNo = (n) => item(cardTitle(n), n.file, `*${NATUREZAS[n.natureza]}.* ${n.descricao}`);
   const secs = [{
     h: 'Como o catálogo está organizado',
     body: 'Uma jornada em quatro pilares — Mentalidade → Método → Aplicação → Valor. Cada cartão diz o ' +
@@ -140,14 +142,14 @@ export function catalogoMdSections({ eco } = loadEcossistema()) {
       // O par (ex.: a revisão completa de um resumo) não tem cartão; o .md liga os dois.
       const pares = Object.values(eco.nodes).filter((x) => x.par === s)
         .map((x) => ` Versão completa: [${x.title}](${publicUrl(x.file)}).`).join('');
-      linhas.push(item(cardTitle(n), n.file, n.descricao) + pares);
+      linhas.push(itemNo(n) + pares);
     }
     secs.push({ h: `${String(p.order).padStart(2, '0')} · ${p.subtitle} — ${p.label}`, body: linhas.join('\n') });
   }
   const ent = Object.fromEntries(eco.entradas.map((e) => [e.id, e]));
   const linhas = ['A trajetória profissional, as narrativas pessoais e os vídeos do canal.', ''];
   linhas.push(item(ent.curriculo.titulo, ent.curriculo.file, ent.curriculo.descricao));
-  for (const s of eco.trajetoria) linhas.push(item(cardTitle(eco.nodes[s]), eco.nodes[s].file, eco.nodes[s].descricao));
+  for (const s of eco.trajetoria) linhas.push(itemNo(eco.nodes[s]));
   linhas.push(item(ent.videos.titulo, ent.videos.file, ent.videos.descricao));
   secs.push({ h: 'Trajetória e vídeos', body: linhas.join('\n') });
   return secs;

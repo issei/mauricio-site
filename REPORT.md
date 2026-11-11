@@ -234,3 +234,9 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Catraca:** `a11y-sweep --only` nas 12 páginas: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
   - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou as 12 páginas `/en/` ("Nature" no quadro); `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 24 — F4b: a natureza no topo das outras 20 páginas (11/11/2026).** Decisão D5(a) do autor. As 20 páginas do YAML sem quadro editorial ganham o rótulo "Natureza: …" logo antes do `<h1>`, gerado por `scripts/gen-natureza.mjs` entre os marcadores `NATUREZA:*`. O valor vem do YAML. O `catalogo.md` passa a dizer a natureza de cada item, e o `llms.txt` aponta para ele.
+  - **Estrutura:** um `<p>` sem heading. O estilo é inline, sem hexadecimal, e herda a cor do texto da página, então o contraste é o do próprio texto. Layout conferido a 1280 px e a 375 px nas 20 páginas.
+  - **Testes:** `natureza.gen.test.mjs` (21 casos): os dois lotes cobrem os 32 nós, um bloco por página, logo antes do `h1`, em dia com o gerador. `gen-natureza.mjs --check` entra no gate. Playwright Chromium (`site-header`, `tests/a11y/`, `apresentacao`, consentimento): só as falhas conhecidas da nuvem.
+  - **Catraca:** `a11y-sweep --only` nas 20 páginas: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou 19 páginas `/en/` ("Nature: Study", "Nature: Experiment"…), `catalogo.md` e `llms.txt`; `boutique-empresarial-showcase` não tem gêmeo `/en/`. `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.

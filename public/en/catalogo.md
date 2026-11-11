@@ -11,58 +11,58 @@ A four-pillar journey — Mentality → Method → Application → Value. Each c
 
 Principles of systemic thinking and knowledge management: the starting point before any tool.
 
-- [Navigating in Complexity](https://mauricio.issei.com.br/en/know) — The Cynefin Framework and the end of best practices: how to lead innovation and emerging processes in complex environments.
-- [Vibe Coding with Devin](https://mauricio.issei.com.br/en/devin) — Engineering in practice: Devin as an executor of engineering tasks, from intention to code.
-- [Problem Formulation](https://mauricio.issei.com.br/en/formulacao-de-problemas) — Formular is uncertainty reduction engineering — and needs to stop: six uncertainties, six states of knowledge, stop rule and the hyper-resolution penaltyr.
-- [Capacity Before Access](https://mauricio.issei.com.br/en/capacidade-antes-do-acesso) — Teacher competence, pedagogical mediation and governance of the AI in early childhood education and fundamental initial — necessity, sufficiency and conditionality tested.
-- [The Invisible Artificer](https://mauricio.issei.com.br/en/artifice) — The paradox of technical mastery: why sophistication becomes invisible burden — and how to regain the sovereignty of its craft.
-- [Curiosity and Research](https://mauricio.issei.com.br/en/curiosidade-e-investigacao) — Information is not knowledge, access is not understanding, recognition is not mastering: how to transform curiosity into research using AI as a bench, not as an oracle.
-- [The Self-regulated Learning Cycle](https://mauricio.issei.com.br/en/aprendizagem-autorregulada) — From abstract to new question: what science proves about recovery, spacing and self-explanation, with 45–60 minutes protocol and study form. Full version: [From summary to new question](https://mauricio.issei.com.br/en/aprendizagem-autorregulada-artigo).
-- [From execution to orchestration of work](https://mauricio.issei.com.br/en/da-execucao-a-orquestracao) — An audio about AI and work, with review of 56 statements: what evidence sustains, what to correct while listening and three scenarios.
+- [Navigating in Complexity](https://mauricio.issei.com.br/en/know) — *Study.* The Cynefin Framework and the end of best practices: how to lead innovation and emerging processes in complex environments.
+- [Vibe Coding with Devin](https://mauricio.issei.com.br/en/devin) — *Study.* Agentic engineering in practice: Devin as an executor of engineering tasks, from intention to code.
+- [Problem Formulation](https://mauricio.issei.com.br/en/formulacao-de-problemas) — *Study.* Formular is uncertainty reduction engineering — and it needs to stop: six uncertainties, six states of knowledge, stop rule and the hyper-resolution penaltyr.
+- [Capacity Before Access](https://mauricio.issei.com.br/en/capacidade-antes-do-acesso) — *Study.* Teacher competence, pedagogical mediation and governance of the AI in early childhood education and initial fundamental — necessity, sufficiency and conditionality tested.
+- [The Invisible Artificer](https://mauricio.issei.com.br/en/artifice) — *Study.* The paradox of technical mastery: why sophistication becomes invisible burden — and how to regain the sovereignty of its office.
+- [Curiosity and Research](https://mauricio.issei.com.br/en/curiosidade-e-investigacao) — *Study.* Information is not knowledge, access is not understanding, recognizing is not mastering: how to transform curiosity into research using AI as a bench, not as an oracle.
+- [The Self-regulated Learning Cycle](https://mauricio.issei.com.br/en/aprendizagem-autorregulada) — *Study.* From abstract to new question: what science proves about recovery, spacing and self-explanation, with a protocol of 45–60 minutes and study form. Full version: [From summary to new question](https://mauricio.issei.com.br/en/aprendizagem-autorregulada-artigo).
+- [From execution to orchestration of work](https://mauricio.issei.com.br/en/da-execucao-a-orquestracao) — *Study.* An audio about AI and work, with review of 56 statements: what evidence sustains, what to correct while listening and three scenarios.
 
 ## 02 · The Method — Trust Engineering
 
 From intention to reliable agentic execution: the discipline-bridge that transforms mentality into method.
 
-- [Auditable AI architecture](https://mauricio.issei.com.br/en/apresentacao) — GraphRAG, Spec-Driven Development and DevOps Salesforce in two readings of the same truth: the executive, measured at risk and return; the engineering, in coverage and latency.
-- [Trust Engineering](https://mauricio.issei.com.br/en/engenharia-confianca) — From Intention to Genetic Execution: four modules connecting Reverse Engineering, Agent Engineering and Vibe Coding — from the chaos of AI-as-magic to the governance of AI-as-engineering.
-- [AI Agent Engineering](https://mauricio.issei.com.br/en/engenharia-agentes-ia) — The ten principles that make AI systems reliable: little AI on the critical path, contracts, FinOps and Agent-Driven governance.
-- [Deterministic Grounding](https://mauricio.issei.com.br/en/develop-engineering) — How to anchor context, restrict actions and validate agent changes in software without confusing a green result with global correction.
-- [Operation Cognitive Capital](https://mauricio.issei.com.br/en/operacao-capital-cognitivo) — FinOps executive simulator for AI: investigate the hidden invoice and deduct the Userful Intelligence per Dollar framework (UI/$) defending decisions before a dynamic Council.
-- [Agent Ready](https://mauricio.issei.com.br/en/agent-ready) — How to make a website readable, findable and usable by AI agents: Link headers, Markdown negotiated, Content Signals, API Catalog, MCP and Agent Skills — with the real code of this domain.
-- [Case Agents](https://mauricio.issei.com.br/en/case-agents) — Queries routing and secure selection of tools in a banking agent: 4-layer pre-execution barrier and Silent Crash control.
-- [Knowledge OS Enterprise](https://mauricio.issei.com.br/en/knowledge-os-presentation) — The knowledge system that gives AI traceability and security: faster decisions without losing control.
-- [Agentic Digital Workplace](https://mauricio.issei.com.br/en/digital-workplace-agentico) — How a corporate portal evolves from a list of links to a platform that solves intentions: five stages of maturity, layered architecture, AG-UI, delegated identity, governed knowledge and roadmap.
-- [Accessibility as an engineering requirement](https://mauricio.issei.com.br/en/acessibilidade) — How A11Y.md entered the development of this site with AI agents: the real flow, diffs, the ratchet that only lets the debt fall and what has not yet been verified.
-- [Structured Conversational Specification](https://mauricio.issei.com.br/en/especificacao-conversacional) — A workflow proposed to use AI in eliciting requirements under human authority, with traceable divergences between documentation, testing and code — and which has not yet been evaluated.
-- [Business Boutique](https://mauricio.issei.com.br/boutique-empresarial-showcase) — Showcase of static architecture MPA, SDD methodology, multi-model agency pipeline and deterministic Quality Gate behind a real project.
+- [Auditable AI architecture](https://mauricio.issei.com.br/en/apresentacao) — *Reference.* GraphRAG, Spec-Driven Development and DevOps Salesforce in two readings of the same truth: the executive, measured at risk and return; the engineering, in coverage and latency.
+- [Trust Engineering](https://mauricio.issei.com.br/en/engenharia-confianca) — *Study.* From Intention to Genetic Execution: four modules that connect Reverse Engineering, Agent Engineering and Vibe Coding — from the chaos of AI-as-magic to the governance of AI-as-engineering.
+- [AI Agent Engineering](https://mauricio.issei.com.br/en/engenharia-agentes-ia) — *Study.* The ten principles that make AI systems reliable: little AI on the critical path, contracts, FinOps and Agent-Driven governance.
+- [Deterministic Grounding](https://mauricio.issei.com.br/en/develop-engineering) — *Study.* How to anchor context, restrict actions and validate agent changes in software without confusing a green result with global correction.
+- [Operation Cognitive Capital](https://mauricio.issei.com.br/en/operacao-capital-cognitivo) — *Experiment.* IA FinOps executive simulator: investigate the hidden invoice and deduct the Usable Intelligence per Dollar framework (UI/$) defending decisions before a dynamic Council.
+- [Agent Ready](https://mauricio.issei.com.br/en/agent-ready) — *Experience.* How to make a website readable, findable and usable by AI agents: Link headers, Markdown negotiated, Content Signals, API Catalog, MCP and Agent Skills — with the real code of this domain.
+- [Case Agents](https://mauricio.issei.com.br/en/case-agents) — *Experience.* Queries routing and secure selection of tools in a banking agent: 4-layer pre-execution barrier and Silent Crash control.
+- [Knowledge OS Enterprise](https://mauricio.issei.com.br/en/knowledge-os-presentation) — *Proposal.* The knowledge system that gives AI traceability and security: faster decisions without losing control.
+- [Agentic Digital Workplace](https://mauricio.issei.com.br/en/digital-workplace-agentico) — *Study.* As a corporate portal evolves from a list of links to a platform that solves intentions: five stages of maturity, layered architecture, AG-UI, delegated identity, governed knowledge and roadmap.
+- [Accessibility as an engineering requirement](https://mauricio.issei.com.br/en/acessibilidade) — *Experience.* As A11Y.md has entered the development of this site with AI agents: the real flow, diffs, the ratchet that only drops the debt and what has not yet been verified.
+- [Structured Conversational Specification](https://mauricio.issei.com.br/en/especificacao-conversacional) — *Proposal.* A workflow proposed to use AI in eliciting requirements under human authority, with traceable divergences between documentation, testing and code — and what has not yet been evaluated.
+- [Business Boutique](https://mauricio.issei.com.br/boutique-empresarial-showcase) — *Experience.* Showcase of static architecture MPA, SDD methodology, multi-model agency pipeline and deterministic Quality Gate behind a real project.
 
 ## 03 · Application — Salesforce Ecosystem
 
 Agentic methods applied to the Salesforce platform: where the method finds real engineering.
 
-- [DevOps Salesforce](https://mauricio.issei.com.br/en/devops-salesforce) — Continuous delivery: hybrid architecture uniting Flosum governance, GitHub flexibility and AI speed in the Salesforce ecosystem.
-- [Reverse Engineering Assisted by AI](https://mauricio.issei.com.br/en/proposta-engenharia-reversa) — System Transformation Salesforce legacy via AI: from inherited code to live specification without manual refactor.
-- [Quick Start: Salesforce + Devin + Flosum](https://mauricio.issei.com.br/en/salesforce-agentic-quickstart) — Step by step to set up the agentic development environment and perform the first deploy ruled in record time.
-- [Agent DevOps for Salesforce](https://mauricio.issei.com.br/en/salesforce-agentic-dev) — Spec-Driven Development training portal and autonomous agents for efficient and non-technical development.
-- [SocialSelling](https://mauricio.issei.com.br/en/socialselling) — Project overview and good practice model for social sales enhanced by AI agents.
+- [DevOps Salesforce](https://mauricio.issei.com.br/en/devops-salesforce) — *Reference.* Agency continuous delivery: hybrid architecture uniting Flosum governance, GitHub flexibility and AI speed in the Salesforce ecosystem.
+- [Reverse Engineering Assisted by AI](https://mauricio.issei.com.br/en/proposta-engenharia-reversa) — *Proposal.* System Transformation Salesforce legacy via AI: from inherited code to live specification without manual refactor.
+- [Quick Start: Salesforce + Devin + Flosum](https://mauricio.issei.com.br/en/salesforce-agentic-quickstart) — *Reference.* Step by step to set up the agentic development environment and perform the first deploy ruled in record time.
+- [Agent DevOps for Salesforce](https://mauricio.issei.com.br/en/salesforce-agentic-dev) — *Reference.* Spec-Driven Development training portal and autonomous agents for efficient and non-technical development.
+- [SocialSelling](https://mauricio.issei.com.br/en/socialselling) — *Experiment.* Project overview and good practice model for social sales enhanced by AI agents.
 
 ## 04 · Value — Support & Resilience
 
 Service operation, SRE and resilience in production: where the delivered engineering proves itself over time.
 
-- [From Chaos to Resilience](https://mauricio.issei.com.br/en/sustentacao) — System support in production: critical incident management, reliability (SRE) and effective communication in crisis.
-- [Service Operations 2.0](https://mauricio.issei.com.br/en/service-operations-2-0) — Executive vision of the Manchester Protocol applied to IT, for systemic resilience and protection of commercial billing.
-- [RES observability for Mobility](https://mauricio.issei.com.br/en/proposta-observabilidade-mobile) — Intelligent correlation between devices, network and applications using Datadog and Azure.
+- [From Chaos to Resilience](https://mauricio.issei.com.br/en/sustentacao) — *Reference.* Supporting production systems: critical incident management, reliability (SRE) and effective communication in crisis.
+- [Service Operations 2.0](https://mauricio.issei.com.br/en/service-operations-2-0) — *Proposal.* Executive vision of the Manchester Protocol applied to IT, for systemic resilience and protection of commercial billing.
+- [RES observability for Mobility](https://mauricio.issei.com.br/en/proposta-observabilidade-mobile) — *Proposal.* Smart correlation between devices, network and applications using Datadog and Azure.
 
 ## Trajectory and videos
 
 The professional trajectory, personal narratives and videos of the channel.
 
 - [Curriculum](https://mauricio.issei.com.br/en/curriculo) — Professional experience, training, certifications and results in STAR format.
-- [The Journey in Pixel Art](https://mauricio.issei.com.br/en/life) — Interactive experience counting the personal and professional trajectory from the beginning in 1982 to today.
-- [3D Life](https://mauricio.issei.com.br/en/life3d) — A contemplative and immersive trip in 3D through the history and memories of Mauritius Issei.
-- [Evolutionary Terminal](https://mauricio.issei.com.br/en/terminal-evolutivo) — The journey from 1982 to 2026 in a narrative that ages as you roll — with STAR cases embedded in the flow.
+- [The Journey in Pixel Art](https://mauricio.issei.com.br/en/life) — *Experiment.* Interactive experience counting the personal and professional trajectory from the beginning in 1982 to today.
+- [3D Life](https://mauricio.issei.com.br/en/life3d) — *Experiment.* A contemplative and immersive trip in 3D through the history and memories of Mauritius Issei.
+- [Evolutionary Terminal](https://mauricio.issei.com.br/en/terminal-evolutivo) — *Experiment.* The journey from 1982 to 2026 in a narrative that ages as you roll — with STAR cases embedded in the flow.
 - [Channel videos](https://mauricio.issei.com.br/videos) — YouTube channel videos, organized by subject.
 
 *© 2026 Mauritius Yokoyama Issei. Citable content with assignment (fair use educational).*
