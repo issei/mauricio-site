@@ -265,3 +265,9 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Espelho EN (11/11/2026):** `i18n:sync --files` local (Argos) nos 42 arquivos; `git grep Mauritius` em `src/en` e `public/en` encontra 0. `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Testes:** `tests/i18n.test.mjs` ganha o caso do nome. Os rótulos acessíveis em inglês agora dizem o nome certo ao leitor de tela.
   - **Não verificado:** leitor de tela. Independência: self-reported ⚠️.
+- **Nota 29 — Saída do Mapa de Linhas (11/11/2026).** Pedido do autor: pessoas consultadas acharam o mapa confuso. `gen-portfolio.mjs` deixa de gerar o mapa de metrô, a legenda, as linhas do hero e o "Mapa de Linhas, resumido" da home. Em `/curriculo`, a seção "Competências" lista os grupos de `cv.Habilidades` em cartões (`h4` + pílulas). Os cartões STAR e os projetos não têm mais `data-l`. O CSS do mapa e as animações de trem e de linha saem de `src/index.css`.
+  - **Estrutura:** a home vai de Sobre direto para Pilares, Provas e Destaques. Em `/curriculo`, `h3` "Competências" e um `h4` por grupo, em lista. Some a animação de fundo (menos movimento na tela).
+  - **Testes:** `index.spec.js` troca o teste do mapa pela Parte 7 do SDD (sem `#mapa`, `.pf-metro`, `.pf-grid` ou `[data-l]`; um cartão por grupo de competência). Chromium, mobile e no-JS (`index`, `index.nojs`, `curriculo`, `site-header`): 72 passam.
+  - **Catraca:** `a11y-sweep --only` em `index`, `curriculo` e `catalogo`: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou `en/index.html`, `en/curriculo.html` e `en/catalogo.html`; `git grep` de "Line map" nesses espelhos encontra 0. `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
