@@ -251,4 +251,6 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Contraste:** em 3 páginas sem estilo de link (`curiosidade-e-investigacao`, `apresentacao`, `develop-engineering`), o link caía no azul padrão do navegador (`#0000ee` sobre fundo escuro). O link agora herda a cor do texto e fica sublinhado. Layout conferido a 1280 px e a 375 px.
   - **Testes:** `continuacao.gen.test.mjs` (27 casos). `gen-continuacao.mjs --check` entra no gate. Playwright Chromium (`site-header`, `tests/a11y/`): 203 passam; só as falhas conhecidas da nuvem.
   - **Catraca:** `a11y-sweep --only` nas 26 páginas: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Ajustes:** o bloco aumenta o texto, e o tempo de leitura de 2 páginas no hub (`gen-hub-data.mjs`) mudou. O teste de links do corpo de `digital-workplace-agentico` deixa de contar o `nav.cont`, que tem teste próprio. Playwright Chromium completo: só as falhas conhecidas da nuvem.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou 25 páginas `/en/` ("If this theme interests you"); `boutique-empresarial-showcase` não tem gêmeo `/en/`. `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
