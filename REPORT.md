@@ -226,4 +226,5 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Navegação:** a barra de seções tem o rótulo "Seções da página" e fica abaixo do cabeçalho. O rodapé da home ganha o link "Trajetória completa".
   - **Testes:** `curriculo.spec.js` reescrito para o layout PF (axe com contraste incluído). Saem o teste do modal em `reflow-zoom` e o de hover do botão em `tasks`, porque os elementos não existem mais.
   - **Catraca:** `a11y-sweep` nas 86 páginas (com o EN sem a linha de `curriculo.js` só para medir): sem regressão em `curriculo` e `index`. `vsl.html` (não alterada) segue acusando `bp:landmark-one-main` e `bp:region` só na nuvem. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou `src/en/curriculo.html` e `src/en/index.html`; `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
