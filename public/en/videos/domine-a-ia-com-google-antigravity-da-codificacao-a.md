@@ -12,7 +12,7 @@ _The video and the transcript are in Portuguese. The minutes between brackets, s
 
 For those who program with AI, the biggest concern is an agent changing, without supervision, a code base that was stable [00:00]. The video summarizes Google's latest live feed on Antigravity and transforms new features into everyday practices [00:21].
 
-Rod, of Google's Developer Relations team, says that in AI there is not a single way to do something, and that this makes room to reduce repetitive work [00:41]. The idea is to release time for engineering and design [01:02].
+Rodie, from Google's Developer Relations team, says that in AI there is not a single way to do something, and that this makes room to reduce repetitive work [00:41]. The idea is to release time for engineering and design [01:02].
 
 ## What changed in Antigravity
 
