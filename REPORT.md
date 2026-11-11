@@ -218,4 +218,5 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Banner de cookies:** sai a variável `--cc-banner-h`, que só o `<eco-nav>` lia. A reserva de altura no fim da página (`padding-bottom` e `scroll-padding-bottom`, SC 2.4.11) continua.
   - **Catraca:** `a11y-sweep` nas 86 páginas (PT + EN, com o EN sem a linha do componente só para medir): sem regressão nas páginas alteradas. `vsl.html` (não alterada) segue acusando `bp:landmark-one-main` e `bp:region` só na nuvem.
   - **Playwright, Chromium (nuvem):** `artifice`, `da-execucao-a-orquestracao`, `apresentacao.ecossistema`, `site-header`, `devin`, `case-agents` e `tests/a11y/`. Falham também em `main` ou por ambiente: `life3d` em `reflow-zoom` e "Abrir menu" das duas páginas salesforce-agentic.
-  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI), espelho EN (próximo `i18n:sync` local). Independência: self-reported ⚠️.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) tirou a linha do componente das 24 páginas `/en/`; `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
