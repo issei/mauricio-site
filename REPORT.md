@@ -240,3 +240,9 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Catraca:** `a11y-sweep --only` nas 20 páginas: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
   - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou 19 páginas `/en/` ("Nature: Study", "Nature: Experiment"…), `catalogo.md` e `llms.txt`; `boutique-empresarial-showcase` não tem gêmeo `/en/`. `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 25 — F5a: a página de cada tema lista os artigos do site (11/11/2026).** Decisão D7(b) do autor. `gen-videos.mjs` lê os nós de `specs/ecosystem.nav.yaml` que têm `temas` e cria, na página `/temas/<tema>`, a seção "Artigos e páginas" antes da seção "Vídeos". Cada item mostra título, natureza, formato e o texto do cartão. O JSON-LD e o `.md` do tema ganham os artigos.
+  - **Estrutura:** a página passa a ter `h1` → `h2` "Artigos e páginas" → `h3` por artigo, e `h2` "Vídeos" → `h3` por vídeo. Antes, os `h3` dos vídeos vinham logo depois do `h1`. Sem CSS novo.
+  - **Testes:** `videos.gen.test.mjs` (25 casos), com 2 novos: a seção vem antes dos vídeos, tema inexistente falha, todo tema tem artigo e todo artigo aponta para uma página que existe. Playwright `videos.spec` e `site-header`: 52 passam.
+  - **Acessibilidade:** a catraca não cobre `/temas/`. axe (WCAG 2.2 AA) nas 10 páginas de tema, no build de produção: 0 violações sérias ou críticas. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Espelho EN:** as páginas de tema não têm gêmeo `/en/` (fase 1 dos vídeos); `i18n:check` com 82 espelhos em dia.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.

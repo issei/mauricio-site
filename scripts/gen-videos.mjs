@@ -33,7 +33,7 @@ import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 import { aplicar as aplicarCabecalho } from './gen-cabecalho.mjs';
-import { loadEcossistema } from './catalogo/dados.mjs';
+import { loadEcossistema, NATUREZAS } from './catalogo/dados.mjs';
 
 const { eco: ECO } = loadEcossistema();
 
@@ -575,23 +575,65 @@ ${listaFontes}<p class="revisao">Revisado por ${esc(v.revisado_por)} em <time da
 `;
 }
 
-export function renderTema(chave, tema, lista, temas) {
+/**
+ * Artigos do site por tema (F5a, D7 b): os nós de specs/ecosystem.nav.yaml com `temas`.
+ * Cada item: { titulo, href, natureza, formato, descricao, temas }. Fica fora de build()
+ * para os testes com fixture não dependerem do YAML.
+ */
+export function artigosDoYaml() {
+  const { eco } = loadEcossistema();
+  return Object.values(eco.nodes).filter((n) => n.temas?.length).map((n) => ({
+    titulo: n.cartao_titulo || n.label || n.title,
+    href: `/${n.file}`,
+    natureza: NATUREZAS[n.natureza] ?? '',
+    formato: n.kind ?? '',
+    descricao: n.descricao ?? '',
+    temas: n.temas,
+  }));
+}
+
+function itemArtigo(a) {
+  const meta = [a.natureza, a.formato].filter(Boolean).map(esc).join(' · ');
+  return `<li><article class="box">
+<h3><a href="${esc(a.href)}">${esc(a.titulo)}</a></h3>
+${meta ? `<p class="aviso">${meta}</p>` : ''}${a.descricao ? `<p>${esc(a.descricao)}</p>` : ''}
+</article></li>`;
+}
+
+export function renderTema(chave, tema, lista, temas, artigos = []) {
   const rota = rotaTema(chave);
-  const descricao = resumo(tema.resumo) || `Vídeos de ${AUTOR} sobre ${tema.nome}.`;
+  const oque = artigos.length ? 'Artigos e vídeos' : 'Vídeos';
+  const descricao = resumo(tema.resumo) || `${oque} de ${AUTOR} sobre ${tema.nome}.`;
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: tema.nome, description: descricao,
     url: `${SITE}${rota}`, inLanguage: 'pt-BR',
-    hasPart: lista.map((v) => ({ '@type': 'VideoObject', name: v.youtube.titulo, url: `${SITE}${rotaVideo(v)}` })),
+    hasPart: [
+      ...artigos.map((a) => ({ '@type': 'WebPage', name: a.titulo, url: `${SITE}${a.href}` })),
+      ...lista.map((v) => ({ '@type': 'VideoObject', name: v.youtube.titulo, url: `${SITE}${rotaVideo(v)}` })),
+    ],
   };
+  const contagem = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
+  const blocoArtigos = artigos.length
+    ? `<h2>Artigos e páginas</h2>
+<p class="meta">${contagem(artigos.length, 'página do site', 'páginas do site')} sobre este assunto.</p>
+<ul class="lista">
+${artigos.map(itemArtigo).join('\n')}
+</ul>
+<h2>Vídeos</h2>
+`
+    : '';
   const corpo = `<p class="crumb"><a href="/videos">Vídeos</a></p>
 <h1>${esc(tema.nome)}</h1>
 ${tema.resumo ? `<p>${esc(tema.resumo)}</p>` : ''}
-<p class="meta">${lista.length} ${lista.length === 1 ? 'vídeo' : 'vídeos'}</p>
+${blocoArtigos}<p class="meta">${contagem(lista.length, 'vídeo', 'vídeos')}</p>
 <ul class="lista">
 ${lista.map((v) => cartao(v, temas)).join('\n')}
 </ul>`;
-  const html = pagina({ titulo: `${tema.nome} — vídeos`, descricao, rota, robots: 'index, follow', jsonld, corpo });
+  const html = pagina({ titulo: `${tema.nome} — ${oque.toLowerCase()}`, descricao, rota, robots: 'index, follow', jsonld, corpo });
   const md = [`# ${tema.nome}`, '', tema.resumo ?? '', '',
+    ...(artigos.length ? ['## Artigos e páginas', '',
+      ...artigos.map((a) => `- [${a.titulo}](${SITE}${a.href}) — ${[a.natureza, a.formato].filter(Boolean).join(' · ')}. ${a.descricao}`.trimEnd()),
+      '', '## Vídeos', ''] : []),
     ...lista.map((v) => `- [${v.youtube.titulo}](${SITE}${rotaVideo(v)}) — ${dataPt(v.youtube.publicado_em)}`), ''].join('\n');
   return { html, md };
 }
@@ -630,8 +672,12 @@ ${lista.map((v) => cartao(v, temas)).join('\n')}
 // ── Montagem ────────────────────────────────────────────────────────────────
 
 /** Conteúdo → mapa { caminho relativo: texto }. Lança se o conteúdo for inválido. */
-export function build(content, opcoes) {
+export function build(content, opcoes = {}) {
   const erros = validate(content, opcoes);
+  const artigos = opcoes.artigos ?? [];
+  for (const a of artigos) for (const t of a.temas) {
+    if (!(t in content.temas)) erros.push(`YAML: ${a.href}: tema "${t}" não existe em content/temas.yml`);
+  }
   if (erros.length) throw new Error(`conteúdo inválido:\n  - ${erros.join('\n  - ')}`);
   const { temas } = content;
   const vivos = content.videos.filter((v) => v.status !== 'removido').sort(recentes);
@@ -643,7 +689,8 @@ export function build(content, opcoes) {
   }
   const temasUsados = Object.keys(temas).filter((t) => vivos.some((v) => v.temas?.includes(t)));
   for (const t of temasUsados) {
-    const { html, md } = renderTema(t, temas[t], vivos.filter((v) => v.temas?.includes(t)), temas);
+    const doTema = artigos.filter((a) => a.temas.includes(t));
+    const { html, md } = renderTema(t, temas[t], vivos.filter((v) => v.temas?.includes(t)), temas, doTema);
     out[`src/temas/${t}.html`] = html;
     out[`public/temas/${t}.md`] = md;
   }
@@ -671,7 +718,9 @@ function orfaos(outRoot, gerados) {
 
 export function run({ contentDir = join(ROOT, 'content'), outRoot = ROOT, check = false } = {}) {
   const content = loadContent(contentDir);
-  const gerados = build(content);
+  // Só o conteúdo real liga os artigos do YAML; fixtures (--content) ficam só com vídeos.
+  const artigos = contentDir === join(ROOT, 'content') ? artigosDoYaml() : [];
+  const gerados = build(content, { artigos });
   const pendencias = avisos(content);
   const divergentes = Object.entries(gerados)
     .filter(([p, txt]) => !existsSync(join(outRoot, p)) || readFileSync(join(outRoot, p), 'utf8') !== txt)

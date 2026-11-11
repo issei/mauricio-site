@@ -2,6 +2,19 @@
 
 Gestão, estratégia e carreira: o que funciona nas empresas e o que muda com a IA.
 
+## Artigos e páginas
+
+- [Navegando na Complexidade](https://mauricio.issei.com.br/know.html) — Estudo · Ensaio. O Framework Cynefin e o fim das melhores práticas: como liderar inovação e processos emergentes em ambientes complexos.
+- [Formulação de Problemas](https://mauricio.issei.com.br/formulacao-de-problemas.html) — Estudo · Artigo. Formular é engenharia da redução de incerteza — e precisa parar: seis incertezas, seis estados de conhecimento, regra de parada e o penalizador de hiper-resolução.
+- [O Artífice Invisível](https://mauricio.issei.com.br/artifice.html) — Estudo · Ensaio com autodiagnóstico. O paradoxo da maestria técnica: por que a sofisticação vira carga invisível — e como recuperar a soberania do seu ofício.
+- [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao.html) — Estudo · Áudio comentado. Um áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir enquanto ouve e três cenários.
+- [Operação Capital Cognitivo](https://mauricio.issei.com.br/operacao-capital-cognitivo.html) — Experimento · Simulador. Simulador executivo de FinOps de IA: investigue a fatura oculta e deduza o framework Useful Intelligence per Dollar (UI/$) defendendo decisões perante um Conselho dinâmico.
+- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation.html) — Proposta · Apresentação. O sistema de conhecimento que dá rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle.
+- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico.html) — Estudo · Estudo técnico. Como um portal corporativo evolui de uma lista de links para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.
+- [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0.html) — Proposta · Apresentação. Visão executiva do Protocolo Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento comercial.
+
+## Vídeos
+
 - [O IPO DA ANTHROPIC É O MAIOR TESTE DE ESTRESSE DO MERCADO DE CAPITAIS E DA INTELIGÊNCIA ARTIFICIAL!](https://mauricio.issei.com.br/videos/o-ipo-da-anthropic-e-o-maior-teste-de-estresse-do-mercado) — 5 de novembro de 2026
 - [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
 - [Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH](https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em) — 23 de setembro de 2026

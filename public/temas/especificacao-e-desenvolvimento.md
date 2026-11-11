@@ -2,6 +2,17 @@
 
 Desenvolvimento guiado por especificação, padrões de arquitetura de software e documentação que pessoas e IA conseguem usar.
 
+## Artigos e páginas
+
+- [Arquitetura de IA auditável](https://mauricio.issei.com.br/apresentacao.html) — Referência · Apresentação. GraphRAG, Spec-Driven Development e DevOps Salesforce em duas leituras da mesma verdade: a executiva, medida em risco e retorno; a de engenharia, em cobertura e latência.
+- [Deterministic Grounding](https://mauricio.issei.com.br/develop-engineering.html) — Estudo · Artigo. Como ancorar contexto, restringir ações e validar mudanças de agentes em software sem confundir um resultado verde com correção global.
+- [Agent Ready](https://mauricio.issei.com.br/agent-ready.html) — Experiência · Tutorial. Como tornar um site legível, descobrível e utilizável por agentes de IA: Link headers, Markdown negociado, Content Signals, API Catalog, MCP e Agent Skills — com o código real deste domínio.
+- [Especificação Conversacional Estruturada](https://mauricio.issei.com.br/especificacao-conversacional.html) — Proposta · Ensaio. Um workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código — e o que ainda não foi avaliado.
+- [Boutique Empresarial](https://mauricio.issei.com.br/boutique-empresarial-showcase.html) — Experiência · Case técnico. Showcase da arquitetura estática MPA, metodologia SDD, pipeline agêntico multi-modelo e Quality Gate determinístico por trás de um projeto real.
+- [Agentic DevOps for Salesforce](https://mauricio.issei.com.br/salesforce-agentic-dev.html) — Referência · Guia prático. Portal de treinamento em Spec-Driven Development e agentes autônomos para desenvolvimento eficiente e sem débito técnico.
+
+## Vídeos
+
 - [Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?](https://mauricio.issei.com.br/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de) — 17 de outubro de 2026
 - [A Intenção do Negócio: Especificação Conversacional Estruturada com IA](https://mauricio.issei.com.br/videos/a-intencao-do-negocio-especificacao-conversacional) — 12 de outubro de 2026
 - [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026

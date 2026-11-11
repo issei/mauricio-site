@@ -2,6 +2,14 @@
 
 AWS, infraestrutura como código, serverless e a engenharia de confiabilidade que mantém sistemas de pé em produção.
 
+## Artigos e páginas
+
+- [Do Caos à Resiliência](https://mauricio.issei.com.br/sustentacao.html) — Referência · Curso. Sustentação de sistemas em produção: gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em crise.
+- [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0.html) — Proposta · Apresentação. Visão executiva do Protocolo Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento comercial.
+- [Observabilidade SRE para Mobilidade](https://mauricio.issei.com.br/proposta-observabilidade-mobile.html) — Proposta · Proposta técnica. Correlação inteligente entre dispositivos, rede e aplicações usando Datadog e Azure.
+
+## Vídeos
+
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!](https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala) — 27 de setembro de 2026

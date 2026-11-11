@@ -2,6 +2,13 @@
 
 Análises práticas de ferramentas e assistentes de IA para o trabalho do dia a dia.
 
+## Artigos e páginas
+
+- [Vibe Coding com Devin](https://mauricio.issei.com.br/devin.html) — Estudo · Apresentação. Engenharia agêntica na prática: o Devin como executor de tarefas de engenharia, da intenção ao código.
+- [Quick Start: Salesforce + Devin + Flosum](https://mauricio.issei.com.br/salesforce-agentic-quickstart.html) — Referência · Tutorial. Passo a passo para configurar o ambiente de desenvolvimento agêntico e realizar o primeiro deploy governado em tempo recorde.
+
+## Vídeos
+
 - [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
 - [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
 - [OmniRoute: Pare de gastar fortunas com assinaturas de IA!](https://mauricio.issei.com.br/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia) — 3 de setembro de 2026
