@@ -59,7 +59,7 @@ export const HUB_ITEMS = [
     "blurb": "Arquitetura de Observabilidade SRE para mobilidade corporativa com Datadog, Azure e Android Enterprise: visibilidade fim a fim da frota de dispositivos.",
     "href": "./proposta-observabilidade-mobile.html",
     "tab": "planejar",
-    "minutes": 4,
+    "minutes": 5,
     "complexity": "Técnica Aplicada"
   },
   {
@@ -104,7 +104,7 @@ export const HUB_ITEMS = [
     "blurb": "Como desenvolver Salesforce com IA agêntica sem gerar débito técnico: Spec-Driven Development, Devin, Flosum CLI e Modelo Federado.",
     "href": "./salesforce-agentic-dev.html",
     "tab": "especificar",
-    "minutes": 21,
+    "minutes": 22,
     "complexity": "Tópico Profundo"
   },
   {

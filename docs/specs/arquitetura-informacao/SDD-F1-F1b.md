@@ -546,3 +546,35 @@ do F5a.
 - **CA-F5-01.** Todo tema com pelo menos 1 artigo (aceite da F5 na PROPOSTA §12).
 - **CA-F5-02.** axe (WCAG 2.2 AA) sem violação séria ou crítica nas 10 páginas de tema. A
   catraca (`a11y-sweep`) não cobre `/temas/`.
+
+## F5.4 Lote F5b: nada a ligar hoje
+
+As 4 páginas de natureza "Experiência" (`agent-ready`, `case-agents`, `acessibilidade`,
+`boutique-empresarial-showcase`) são projetos do autor fora do emprego. Nenhuma corresponde a um
+projeto STAR de `cv.json`. A regra da PROPOSTA §9.5 vale "quando houver um": hoje não há. Página
+nova de Experiência com projeto STAR ganha o link no PR que a cria.
+
+## F5.5 Requisitos do lote F5c
+
+- **RF-F5-06.** `scripts/gen-continuacao.mjs` preenche, entre `<!-- CONTINUACAO:START -->` e
+  `<!-- CONTINUACAO:END -->`, um `<nav>` "Se este tema interessa a você" com 2 páginas. Os
+  marcadores ficam logo antes do último `</main>`. Vale para os nós do YAML que não têm a
+  continuação escrita pelo autor (`next` em `editorial.data.mjs`).
+- **RF-F5-07.** A escolha é mecânica: páginas com tema em comum, por (1) mais temas em comum,
+  (2) mesmo pilar, (3) ordem do YAML. Se faltar, completa com páginas do mesmo pilar. O motivo é só
+  o fato: "Também em <tema>." ou "Também no pilar <pilar>.". O gerador não escreve texto na voz
+  do autor.
+- **RF-F5-08.** Ficam de fora: `life` e `life3d` (imersivas: o `<main>` é a cena) e páginas sem
+  tema (`terminal-evolutivo`).
+- **RF-F5-09.** Estilo inline, sem hexadecimal. O link herda a cor do texto e fica sublinhado,
+  para não cair no azul padrão do navegador em página sem estilo de link (contraste).
+- **RF-F5-10.** Para trocar a continuação gerada por texto próprio, o autor escreve `next` em
+  `editorial.data.mjs` e tira o marcador `CONTINUACAO` da página. `gen-continuacao.mjs --check`
+  roda no gate.
+
+## F5.6 Testes e aceite do F5c
+
+- `tests/continuacao.gen.test.mjs`: cobertura (quem tem e quem não tem), 2 sugestões válidas por
+  página, motivo coerente com tema ou pilar, sem heading, sem hexadecimal, dentro do `<main>`, em
+  dia com o gerador.
+- **CA-F5-03.** A catraca de acessibilidade não sobe nas 26 páginas nem nos espelhos `/en/`.
