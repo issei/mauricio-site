@@ -11,7 +11,7 @@ _O vídeo e a transcrição estão em português. Os minutos entre colchetes, co
 
 Para quem programa com IA, a maior preocupação é um agente mudar, sem supervisão, uma base de código que estava estável [00:00]. O vídeo resume a última transmissão ao vivo do Google sobre o Antigravity e transforma os recursos novos em práticas para o dia a dia [00:21].
 
-Rod, da equipe de Developer Relations do Google, diz que em IA não existe uma só maneira de fazer algo, e que isso abre espaço para reduzir o trabalho repetitivo [00:41]. A ideia é liberar tempo para a engenharia e o design [01:02].
+Rodie, da equipe de Developer Relations do Google, diz que em IA não existe uma só maneira de fazer algo, e que isso abre espaço para reduzir o trabalho repetitivo [00:41]. A ideia é liberar tempo para a engenharia e o design [01:02].
 
 ## O que mudou no Antigravity
 
