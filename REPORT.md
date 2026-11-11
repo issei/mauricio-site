@@ -211,4 +211,5 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Foco não obscurecido (SC 2.4.11):** `html:root` soma a altura da barra no `scroll-padding-top`. As barras `sticky` (`artifice`, `socialselling`) ficam estáticas no celular, como as trilhas do L2; as fixas têm 1 linha (56 a 81 px) e continuam fixas, abaixo do cabeçalho. O skip link de `salesforce-agentic-quickstart` sobe para `z-index: 2147483001`.
   - **Catraca:** `a11y-sweep --only` nas 9 páginas: sem regressão. `vsl.html` (não alterada) acusa `bp:landmark-one-main` e `bp:region` só na nuvem, onde o CDN do player está bloqueado.
   - **Playwright, Chromium (nuvem):** `site-header.spec.js` (10 casos novos), `artifice` (seletor do teste de âncora passa a `.art-header`), `devin`, `devops-salesforce` e `tests/a11y/`. Falham também em `main` ou por ambiente: `life3d` em `reflow-zoom` e "Abrir menu" das duas páginas salesforce-agentic (Alpine vem de CDN bloqueado na nuvem).
-  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI), espelho EN (próximo `i18n:sync` local). Independência: self-reported ⚠️.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou as 9 páginas `/en/`; `i18n:check` com 82 espelhos em dia.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
