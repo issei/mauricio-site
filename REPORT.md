@@ -261,3 +261,7 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Catraca:** `a11y-sweep --only` em `index`, `curriculo` e `catalogo`: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
   - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou `en/index.html` e `en/catalogo.html` ("Pillars of production", "Evidence", "Highlights"). `i18n:check` com 82 espelhos em dia e `vite build` sem erro. Já existia: o Argos troca "Maurício" por "Mauritius" nos `aria-label` das redes sociais (pendência fora da F3).
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 28 — Nome do autor no espelho EN e botões da home (11/11/2026).** O tradutor local não envia mais "Maurício" ao modelo (`NOMES_PROTEGIDOS` em `scripts/i18n/engine.py`); antes saía "Mauritius" nos `aria-label` das redes sociais e em textos de 42 espelhos. Botões da home: "Ver carreira" e "Explorar os projetos" ("View career" e "Explore projects" no espelho).
+  - **Espelho EN (11/11/2026):** `i18n:sync --files` local (Argos) nos 42 arquivos; `git grep Mauritius` em `src/en` e `public/en` encontra 0. `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
+  - **Testes:** `tests/i18n.test.mjs` ganha o caso do nome. Os rótulos acessíveis em inglês agora dizem o nome certo ao leitor de tela.
+  - **Não verificado:** leitor de tela. Independência: self-reported ⚠️.
