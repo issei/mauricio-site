@@ -51,7 +51,8 @@ body.art-body {
 
 .art-header {
   position: sticky;
-  top: 0;
+  /* abaixo do cabeçalho comum do site (F1b, RF-F1b-16) */
+  top: var(--sh-altura, 0px);
   z-index: 40;
   background: rgba(13, 14, 18, 0.85);
   backdrop-filter: blur(8px);

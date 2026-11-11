@@ -59,6 +59,46 @@ for (const [pagina, trilha] of L2) {
   });
 }
 
+/* Lote L3: páginas com barra própria de site (G-C). A barra vira trilha abaixo do cabeçalho comum;
+   artifice e socialselling usam barra sticky (estática no celular); as demais são fixas e ficam abaixo dele. */
+const L3 = [
+  ['artifice', true], ['devops-salesforce', false], ['knowledge-os-presentation', false],
+  ['proposta-observabilidade-mobile', false], ['salesforce-agentic-dev', false],
+  ['salesforce-agentic-quickstart', false], ['socialselling', true], ['service-operations-2-0', false],
+];
+for (const [pagina, estaticaNoCelular] of L3) {
+  test(`${pagina}: um banner, Produção marcada e a barra da página abaixo do cabeçalho`, async ({ page }) => {
+    await page.goto(`/${pagina}.html`);
+    await expect(page.getByRole('banner')).toHaveCount(1);
+    const nav = page.getByRole('navigation', { name: 'Navegação do site' });
+    await expect(nav.locator('a[aria-current="true"]')).toHaveText('Produção');
+    const barra = page.locator('[aria-label="Navegação da página"]');
+    await expect(barra).toHaveCount(1);
+    await page.evaluate(() => window.scrollTo(0, 1500));
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
+    const sh = await page.locator('header.sh').boundingBox();
+    expect(sh.y).toBe(0);
+    if (estaticaNoCelular && page.viewportSize().width < 640) {
+      await expect(barra).toHaveCSS('position', 'static');
+      return;
+    }
+    const b = await barra.boundingBox();
+    expect(b.y).toBeGreaterThanOrEqual(sh.y + sh.height - 1);
+  });
+}
+
+test('devin: a barra "Portfólio" saiu; o cabeçalho comum é o único banner', async ({ page }) => {
+  await page.goto('/devin.html');
+  await expect(page.getByRole('banner')).toHaveCount(1);
+  await expect(page.locator('.devin-nav')).toHaveCount(0);
+  await expect(page.getByRole('navigation', { name: 'Navegação do site' }).locator('a[aria-current="true"]')).toHaveText('Produção');
+});
+
+test('knowledge-os-presentation: a barra não repete o link do Catálogo', async ({ page }) => {
+  await page.goto('/knowledge-os-presentation.html');
+  await expect(page.locator('[aria-label="Navegação da página"] a[href*="catalogo"]')).toHaveCount(0);
+});
+
 test('o skip link vem antes do cabeçalho na ordem de Tab', async ({ page, browserName }) => {
   test.skip(browserName === 'webkit', 'Safari não foca links com Tab por padrão');
   await page.goto('/catalogo.html');
