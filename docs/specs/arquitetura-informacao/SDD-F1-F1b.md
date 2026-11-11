@@ -450,3 +450,39 @@ Trajetória.
 - **CA-F2-02.** `/curriculo` não carrega `input.css`, Font Awesome nem `curriculo.js`.
 - **CA-F2-03.** A catraca de acessibilidade não sobe em `curriculo.html` nem em `en/curriculo.html`.
 - **CA-F2-04.** `gen-portfolio.mjs --check` passa no gate.
+
+---
+
+# Parte 4 — F4: natureza visível no topo das páginas
+
+## F4.1 Objetivo
+
+Decisão D5(a): o visitante vê a natureza de cada conteúdo (Experiência, Estudo, Proposta,
+Experimento ou Referência) no cartão do catálogo e no topo da página. O cartão já mostra a
+natureza desde a F1 (`gen-catalogo.mjs`). A F4 leva o rótulo ao topo das 32 páginas do YAML.
+
+## F4.2 Lotes
+
+| Lote | Páginas | Onde fica o rótulo |
+| :-- | :-- | :-- |
+| F4a | as 12 com quadro editorial (`editorial.data.mjs` com `kind`) | um item "Natureza" no quadro `ed-facts`, antes de "Formato" |
+| F4b | as outras 20 (inclui `know`, que só tem a continuação) | rótulo gerado entre marcadores `NATUREZA:*`, perto do `h1` |
+
+## F4.3 Requisitos do lote F4a
+
+- **RF-F4-01.** `gen-editorial.mjs` lê a natureza do nó no YAML (`specs/ecosystem.nav.yaml`) pela
+  chave do slug. O rótulo por extenso vem de `NATUREZAS` (`scripts/catalogo/dados.mjs`). A
+  natureza não é digitada em `editorial.data.mjs`.
+- **RF-F4-02.** O quadro `ed-facts` ganha `<div class="ed-fact"><dt>Natureza</dt><dd>…</dd></div>`
+  antes de "Formato". Sem heading novo e sem CSS novo.
+- **RF-F4-03.** Página com camada editorial e sem nó no YAML, ou com natureza fora da lista, faz o
+  gerador falhar.
+- **RF-F4-04.** `public/catalogo.md` e `public/llms.txt` ainda não listam a natureza de cada
+  item. Eles entram no lote F4b.
+
+## F4.4 Testes e aceite
+
+- `tests/editorial-layer.test.mjs`: toda página com camada editorial mostra "Natureza" com o
+  rótulo do YAML.
+- **CA-F4-01.** `gen-editorial.mjs --check` passa no gate.
+- **CA-F4-02.** A catraca de acessibilidade não sobe nas 12 páginas nem nos espelhos `/en/`.
