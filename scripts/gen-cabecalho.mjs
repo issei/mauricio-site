@@ -65,7 +65,8 @@ export const CSS = [
   'font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}',
   '.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;',
   'display:flex;align-items:center;justify-content:space-between;gap:1rem}',
-  '.sh .sh-marca{color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}',
+  // área de toque de 44 px também na marca (a página apresentacao exige 44 px em todo alvo)
+  '.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}',
   '.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}',
   '.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}',
   '.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;',

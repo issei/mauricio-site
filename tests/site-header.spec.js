@@ -137,3 +137,27 @@ test('sem violações serious/critical no cabeçalho, com o menu aberto no celul
   await page.getByRole('button', { name: 'Menu' }).click();
   await expectNoSeriousA11yViolations(page, 'header.sh');
 });
+
+/* Lote L4: páginas especiais (G-D). Barras próprias e experiências imersivas ficam abaixo do cabeçalho, sem sobrepor. */
+const L4 = [
+  ['know', 'Produção', null], ['sustentacao', 'Produção', '#navbar'], ['proposta-engenharia-reversa', 'Produção', '#navbar'],
+  ['operacao-capital-cognitivo', 'Produção', null], ['boutique-empresarial-showcase', 'Produção', null],
+  ['apresentacao', 'Produção', '.ap-selector-dock'], ['life', 'Trajetória', '#game-container'],
+  ['life3d', 'Trajetória', '#canvas3d'], ['terminal-evolutivo', 'Trajetória', null],
+];
+for (const [pagina, area, abaixo] of L4) {
+  test(`${pagina}: um banner, ${area} marcada e nada por cima do cabeçalho`, async ({ page }) => {
+    await page.goto(`/${pagina}.html`);
+    await expect(page.getByRole('banner')).toHaveCount(1);
+    const nav = page.getByRole('navigation', { name: 'Navegação do site' });
+    await expect(nav.getByRole('link')).toHaveText(['Início', 'Trajetória', 'Produção', 'Vídeos']);
+    await expect(nav.locator('a[aria-current="true"]')).toHaveText(area);
+    const sh = await page.locator('header.sh').boundingBox();
+    expect(sh.y).toBe(0);
+    if (!abaixo) return;
+    const alvo = page.locator(abaixo).first();
+    if ((await alvo.evaluate((el) => getComputedStyle(el).position)) === 'static') return;
+    const b = await alvo.boundingBox();
+    expect(b.y).toBeGreaterThanOrEqual(sh.y + sh.height - 1);
+  });
+}

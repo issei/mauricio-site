@@ -23,7 +23,7 @@ export const HUB_ITEMS = [
     "blurb": "A vida de Maurício Issei contada em cenas: o ofício, as fraturas que viraram ouro e a rede que sustenta, em scrollytelling.",
     "href": "./terminal-evolutivo.html",
     "tab": "decidir",
-    "minutes": 5,
+    "minutes": 6,
     "complexity": "Estratégica"
   },
   {

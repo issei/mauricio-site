@@ -40,8 +40,15 @@ try {
   process.exit(0);
 }
 
+// O bloco gerado do cabeçalho comum do site (F1b, RF-F1b-13) não é cor da página:
+// é o componente .sh-* com os tokens Dark Tech, escrito por scripts/gen-cabecalho.mjs.
+const semCabecalho = content.replace(
+  /<!-- SITE-HEADER-CSS:START -->[\s\S]*?<!-- SITE-HEADER-CSS:END -->/,
+  (bloco) => bloco.replace(/[^\n]/g, '')
+);
+
 const offenders = [];
-content.split('\n').forEach((line, i) => {
+semCabecalho.split('\n').forEach((line, i) => {
   // Ignora comentários e entidades de cor em data URI de favicon/SVG externo.
   const stripped = line.replace(/\/\/.*$/, '').replace(/<!--[\s\S]*?-->/g, '');
   const m = stripped.match(/#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?\b/);
