@@ -116,29 +116,6 @@ testDoGate(test, 'operacao-capital-cognitivo')('OCC: ajuda e glossário são di�
   await expect(glossario).toBeFocused();
 });
 
-/* ── eco-nav (T6): não obscurece o foco (WCAG 2.4.11) ────────────────────────── */
-
-testDoGate(test, 'devin')('eco-nav sai da frente de um link focado embaixo dele e volta quando recebe o foco', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 800 });
-  await abre(page, '/devin.html');
-  await page.waitForTimeout(800);
-  const link = page.locator('.devin-footer__link').first();
-  await link.scrollIntoViewIfNeeded();
-  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
-  await page.waitForTimeout(500);
-  await link.focus();
-  const eco = page.locator('eco-nav');
-  const cobre = await page.evaluate(() => {
-    const l = document.querySelector('.devin-footer__link').getBoundingClientRect();
-    const e = document.querySelector('eco-nav').getBoundingClientRect();
-    return l.left < e.right && l.right > e.left && l.top < e.bottom && l.bottom > e.top;
-  });
-  test.skip(!cobre, 'neste viewport o botão não fica sobre o link — nada a verificar');
-  await expect(eco).toHaveAttribute('data-away', '');
-  await page.keyboard.press('Tab'); // próxima parada = o próprio eco-nav
-  await expect(eco).not.toHaveAttribute('data-away', '');
-});
-
 /* ── Tooltip da artifice (auditoria-v2, AV2-06): SC 1.4.13 + nome do botão ───── */
 
 testDoGate(test, 'artifice')('artifice: Esc dispensa o tooltip aberto por foco ou hover; a citação não entra no nome do botão', async ({ page }) => {

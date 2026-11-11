@@ -5,7 +5,7 @@
  * Varre TODAS as páginas de src/*.html e verifica o que só se enxerga olhando o
  * conjunto: links internos quebrados, âncoras inexistentes, páginas órfãs,
  * divergência entre as fontes da verdade (pages.mjs, ecosystem.nav.yaml,
- * eco-nav.js, catalogo.html) e o checklist de SEO do repositório.
+ * catalogo.html) e o checklist de SEO do repositório.
  *
  * Existe porque a verificação até aqui era por página: cada suíte olhava a sua
  * e ninguém olhava as arestas entre elas. Coerência é propriedade do grafo.
@@ -222,20 +222,12 @@ for (const slug of publicas) {
 
 /* ── 4. Sincronia entre as fontes da verdade ──────────────────────────────── */
 
-// Desde o YAML 2.0.0 os dados do <eco-nav> são gerados (scripts/gen-catalogo.mjs);
-// a igualdade byte a byte é do --check do gerador. Aqui: os nós apontam para páginas reais.
+// Os nós do YAML apontam para páginas reais (o <eco-nav> saiu no lote L5 da F1b).
 const { eco: ecoYaml } = loadEcossistema();
 const yamlNodes = ecoYaml.pillars.flatMap((p) => p.nodes);
-const { DATA: ecoData } = await import(pathToFileURL(join(ROOT, 'src/js/eco-nav.data.js')).href);
-const jsNodes = ecoData.pillars.flatMap((p) => p.nodes);
-
-for (const n of jsNodes) {
-  if (!yamlNodes.includes(n)) erro('ecosystem', `nó "${n}" em eco-nav.data.js mas ausente do YAML`);
-}
 for (const n of [...yamlNodes, ...ecoYaml.trajetoria]) {
   if (!docs.has(n)) erro('ecosystem', `nó "${n}" não corresponde a src/${n}.html`);
 }
-if (ecoYaml.meta.version !== ecoData.version) erro('ecosystem', `versões divergentes — YAML ${ecoYaml.meta.version} × eco-nav.data.js ${ecoData.version}`);
 
 // pages.mjs × arquivos
 const slugsSeo = new Set(PAGES.map((p) => p.slug));

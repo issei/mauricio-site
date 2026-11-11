@@ -31,22 +31,6 @@ test.describe('Consentimento de cookies — acessibilidade (T7)', () => {
     expect(Math.abs(accept.height - reject.height)).toBeLessThan(1);
   });
 
-  for (const [nome, viewport] of [['desktop', { width: 1280, height: 720 }], ['mobile', { width: 375, height: 812 }]]) {
-    test(`o <eco-nav> não cobre os botões do banner (${nome})`, async ({ page }) => {
-      await page.setViewportSize(viewport);
-      await page.goto(PAGE);
-      await page.waitForFunction(() => document.querySelector('eco-nav')?.shadowRoot);
-      const hit = await page.evaluate(() => {
-        const eco = document.querySelector('eco-nav').getBoundingClientRect();
-        return [...document.querySelectorAll('.cc-banner .cc-btn')].filter((b) => {
-          const r = b.getBoundingClientRect();
-          return r.left < eco.right && r.right > eco.left && r.top < eco.bottom && r.bottom > eco.top;
-        }).map((b) => b.textContent.trim());
-      });
-      expect(hit, 'botões do banner sob o eco-nav').toEqual([]);
-    });
-  }
-
   test('a faixa fixa reserva a própria altura no fim da página (2.4.11)', async ({ page }) => {
     // a reserva é aplicada por um ResizeObserver: espera o primeiro quadro em vez de ler na hora
     await expect.poll(() => page.evaluate(() => parseFloat(getComputedStyle(document.body).paddingBottom) - document.querySelector('.cc-banner').offsetHeight)).toBeGreaterThanOrEqual(0);

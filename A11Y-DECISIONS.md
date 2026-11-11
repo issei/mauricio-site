@@ -12,7 +12,7 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Preferências de cookies / diálogos modais** → `<dialog>` + `showModal()`, foco inicial no título (`tabindex=-1`), foco volta ao gatilho e, se ele sumiu, ao botão fixo; fechar por Esc, Cancelar ou clique no fundo. *(2026-10-03, Fase 3, D-08)*
 - **Escolha com botão Salvar** → checkbox nativo (pode ter aparência de chave), não `role=switch`; item obrigatório fica focável com `aria-disabled` e a descrição associada. *(2026-10-03)*
 - **Botões de ação principal** → ≥ 44 px de altura; Aceitar e Recusar com mesmo tamanho e tipografia, borda do Recusar ≥ 3:1. *(2026-10-03, D-09)*
-- **Elemento fixo no canto** → quem cobre outro publica uma variável CSS e o outro se desloca (`--cc-banner-h` ↔ `<eco-nav>`); nada de z-index maior. *(2026-10-03)*
+- **Elemento fixo no canto** → quem cobre outro publica uma variável CSS e o outro se desloca nada de z-index maior. *(2026-10-03; o par `--cc-banner-h` ↔ `<eco-nav>` saiu com o componente no lote L5, 2026-11-11)*
 - **Skip link** → `<a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>` como 1º filho do `<body>` + `<style id="a11y-skip">` inline no `<head>` (aparece só no foco, `transition:none`); alvo `<main id="conteudo">`. Inline por página: as páginas misturam 5 mecanismos de CSS. *(2026-10-03, Fase 4)*
 - **Botão de mídia play/pause** → nome fixo + `aria-pressed`; ícone `aria-hidden`; foco com `focus-visible:outline`, nunca `focus:outline-none` sozinho (D-04: corrigido no lugar, 1 uso). *(2026-10-03)*
 - **Foco na carga** → nenhuma página move o foco sozinha ao carregar (`life.html` deixou de focar o canvas): tira o skip link da ordem de Tab. *(2026-10-03)*
@@ -23,7 +23,7 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Foco** → toda página recebe `:where(a[href],button,summary,input,select,textarea,[tabindex]):focus-visible{outline:2px solid #58a6ff;outline-offset:2px}` do plugin Vite `a11y-focus-base` (especificidade zero: o estilo da página manda); `summary` usa `outline-offset:-4px` (contêiner `overflow:hidden` recorta o anel). Nunca confiar no anel padrão do navegador em fundo escuro. *(2026-10-03, Fase 6)*
 - **Tabs** → `enhanceTablist()` de `src/js/a11y-tabs.js`: tabindex móvel, ←/→ (↑/↓ se vertical), Home/End, ativação automática, `aria-controls` + `role=tabpanel` + `aria-labelledby`. Quem seleciona é a página (`aria-selected`). *(2026-10-03)*
 - **Opções de pergunta (quiz)** → `role=group` nomeado pelo enunciado; a escolhida leva `aria-pressed`; explicação em `aria-live=polite`. **Resultado que muda sob controle** (calibrador) → `role=status`. *(2026-10-03)*
-- **Elemento fixo que cobre o foco** (`<eco-nav>`) → sai da frente (`data-away`) quando o foco de outro elemento cai embaixo dele e volta ao receber foco. *(2026-10-03)*
+- **Elemento fixo que cobre o foco** → sai da frente (`data-away`) quando o foco de outro elemento cai embaixo dele e volta ao receber foco. *(2026-10-03; padrão do `<eco-nav>`, que saiu no lote L5 em 2026-11-11)*
 - **Tradutor** → segmento cuja tradução volta vazia mantém o texto de origem (um botão em PT é melhor que um botão sem nome). *(2026-10-03)*
 - **Perfil de conformidade** → WCAG 2.2 AA, Compliance Profile **Standard**; as exceções localizadas de 7:1 (`apresentacao`, ADR-ap-001) permanecem. *(2026-10-03)*
 - **Integração do protocolo** → cópia versionada em `docs/a11y/` com SHA fixado e carga preguiçosa; sem `@import` no `AGENTS.md` (41 KB entraria em toda sessão). *(2026-10-03)*
@@ -42,7 +42,7 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 
 ## Banner de cookies e foco (Fase 7)
 - A faixa fixa reserva altura no fim da página (`padding-bottom`) **e** `scroll-padding-bottom` (senão o Tab em elemento já visível o deixa sob a faixa). Ao fechar a faixa pelo teclado o foco vai ao botão de preferências.
-- Texto do consentimento só em português (F-18): em páginas `lang="en"` os elementos levam `lang="pt-BR"` (SC 3.1.2) até a tradução jurídica existir. O mesmo vale para `<eco-nav>`.
+- Texto do consentimento só em português (F-18): em páginas `lang="en"` os elementos levam `lang="pt-BR"` (SC 3.1.2) até a tradução jurídica existir.
 
 ## Auditoria v2 (2026-10-05, `docs/specs/a11y-first/auditoria-v2.md`)
 - **Cabeçalho fixo e foco** → `:where(html){scroll-padding-top:6rem}` injetado pelo plugin `a11y-focus-base` em toda página (28 têm cabeçalho fixo, 61–81 px). Especificidade zero: página com valor próprio manda. É a contraparte do `scroll-padding-bottom` do banner; só cobre quem volta com Shift+Tab, por isso o teste é de trás para frente.

@@ -84,7 +84,7 @@ Assim, buscadores, leitores de currículo (ATS), agentes de IA e tradutores de n
 - **49 páginas-fonte** em `src/*.html`, mais as páginas geradas de vídeos (`src/videos/`) e de assuntos (`src/temas/`).
 - **Hub do ecossistema** em [`src/catalogo.html`](src/catalogo.html), gerado por `scripts/gen-catalogo.mjs` a partir de [`specs/ecosystem.nav.yaml`](specs/ecosystem.nav.yaml). Ele liga as páginas pelos quatro pilares
   (Fundação → Engenharia de Confiança → Ecossistema Salesforce → Sustentação & Resiliência) e mostra o formato, a natureza e os temas de cada conteúdo.
-- **Navegação entre páginas** pelo componente `<eco-nav>` ([`src/js/eco-nav.js`](src/js/eco-nav.js)), com dados gerados do mesmo YAML. Regras em [`ECOSYSTEM.md`](ECOSYSTEM.md).
+- **Navegação entre páginas** pelo cabeçalho comum, gerado do mesmo YAML por [`scripts/gen-cabecalho.mjs`](scripts/gen-cabecalho.mjs). Regras em [`ECOSYSTEM.md`](ECOSYSTEM.md).
 - **Páginas não listadas** (por exemplo `/proposta` e `/entrevista-acessibilidade-streaming`) levam `noindex` e ficam fora do sitemap.
 - **Páginas legais:** `/privacidade`, `/cookies` e `/termos`.
 
@@ -250,7 +250,7 @@ Alguns arquivos não são escritos à mão. Para mudar o conteúdo deles, edite 
 | `scripts/gen-hero-counter.mjs` | Árvore de especificações em `docs/specs/` | Contador do hero de `src/apresentacao.html` |
 | `scripts/optimize-critical-path.mjs` | Páginas em `src/` | Fontes e ícones de terceiros fora do caminho crítico de renderização |
 | `scripts/sync-i18n.mjs` | Ativos públicos em português | `src/en/`, `public/en/` |
-| `scripts/inject-eco-nav.mjs` | Páginas-nó do ecossistema | Linha que carrega o `<eco-nav>` |
+| `scripts/gen-cabecalho.mjs` | `entradas` de `specs/ecosystem.nav.yaml` | Cabeçalho comum entre os marcadores `SITE-HEADER` de cada página |
 
 Todos os geradores aceitam `--check`. Com essa opção, o gerador não escreve nada e sai com erro se a saída estiver desatualizada.
 O quality gate roda o `--check` de cada gerador.

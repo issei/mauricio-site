@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { loadEcossistema, ROOT, NATUREZAS } from '../scripts/catalogo/dados.mjs';
-import { renderCatalogo, renderEcoNavData, renderMd, extrair } from '../scripts/gen-catalogo.mjs';
+import { renderCatalogo, renderMd, extrair } from '../scripts/gen-catalogo.mjs';
 
 const dados = loadEcossistema();
 const { eco, temas } = dados;
@@ -19,10 +19,6 @@ const bloco = extrair(html);
 test('INV-8 · o catálogo entre os marcadores é igual à saída do gerador', () => {
   assert.ok(bloco !== null, 'marcadores CATALOGO ausentes');
   assert.equal(bloco, renderCatalogo(dados));
-});
-
-test('RF-F1-18 · eco-nav.data.js é igual à saída do gerador', () => {
-  assert.equal(ler('src/js/eco-nav.data.js'), renderEcoNavData(dados));
 });
 
 test('o catalogo.md é igual à saída do gerador', () => {
