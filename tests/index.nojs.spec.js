@@ -43,6 +43,6 @@ test('/ sem JS: o conteúdo é visível (nada depende de JS para aparecer)', asy
 test('/curriculo sem JS: o conteúdo é visível (mesmo bloco PF da home, F2)', async ({ page }) => {
   await page.goto('/curriculo.html');
   await expect(page.locator('h1')).toBeVisible();
-  await expect(page.locator('.pf-grid')).toBeVisible();
+  await expect(page.locator('.pf-line-card').first()).toBeVisible();
   await expect(page.locator('#recommendations blockquote').first()).toBeVisible();
 });
