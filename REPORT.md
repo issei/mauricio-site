@@ -204,4 +204,5 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Experiências de tela cheia:** `life` e `life3d` descontam a altura do cabeçalho no tamanho do jogo e do canvas; nada do experimento fica embaixo do cabeçalho.
   - **Alvo de toque:** a marca do cabeçalho passa a ter 44 px de altura em todas as páginas (o teste mobile de `apresentacao` exige 44 px).
   - **Playwright, Chromium (nuvem):** suítes das 9 páginas, `tests/a11y/` e `site-header.spec.js` (9 casos novos). Falham também em `main`: `life3d` em `reflow-zoom` e "Abrir menu" de duas páginas salesforce-agentic.
+  - **Espelho EN:** `i18n:sync` local (Argos) no mesmo PR; `i18n:check` com 82 espelhos em dia. O tempo de leitura de `terminal-evolutivo` no hub de `apresentacao` sobe de 5 para 6 min (o bloco do cabeçalho conta no cálculo do `gen-hub-data`).
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
