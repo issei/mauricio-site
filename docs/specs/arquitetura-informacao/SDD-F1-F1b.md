@@ -675,6 +675,21 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
   "Mauritius" nos espelhos `/en/`. Teste: `tests/i18n.test.mjs`. Os espelhos afetados são
   traduzidos de novo no mesmo PR.
 
+## F3.8 Gêmeo Markdown da home (11/11/2026)
+
+> Origem: conferência de uma auditoria externa (11/11/2026). A função do CloudFront entrega
+> `public/index.md` a quem pede Markdown. O arquivo era escrito à mão e estava velho: sem Temas nem
+> Destaques e com outro cargo. Escolha do autor: gerar o arquivo das mesmas fontes da home.
+
+- **RF-F3-13.** `gen-portfolio.mjs` grava `public/index.md` inteiro, como já faz com
+  `public/curriculo.md`. Conteúdo, na ordem da home: nome, `cv.Titulo`, `cv.ResumoHero` e a frase do
+  que o site publica; Sobre (os dois primeiros parágrafos de `cv.Resumo`); os 10 temas com link para
+  `/temas/<id>` e o total; Provas (as mesmas da home, com link para `/curriculo#p-…`); Destaques (a
+  mesma lista `DESTAQUES`, com formato, natureza e descrição do YAML); os arquivos para agentes de IA;
+  o contato. Nenhuma frase nova além dos rótulos das seções.
+- **RF-F3-14.** O `--check` do gerador, que já roda no gate, cobra que `public/index.md` esteja em dia.
+  Teste: `tests/portfolio.indexmd.test.mjs`.
+
 ---
 
 # Parte 7 — Saída do Mapa de Linhas
