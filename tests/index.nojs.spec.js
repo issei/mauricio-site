@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
  * SDD do portfólio §4.1 / §12.11: com JavaScript DESLIGADO, 100% do texto do
  * currículo está no DOM — inclusive o corpo dos <details> fechados. Desde a F3
  * (SDD-F1-F1b, Parte 6) o currículo completo fica só em /curriculo; a home
- * editorial mostra hero, pilares e provas sem JS.
+ * editorial mostra hero, temas e provas sem JS.
  * Roda só no projeto `no-js` do playwright.config.js.
  */
 
@@ -35,7 +35,7 @@ test('/ sem JS: o conteúdo é visível (nada depende de JS para aparecer)', asy
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.pf-cta a').first()).toBeVisible();
-  await expect(page.locator('.pf-pilar').first()).toBeVisible();
+  await expect(page.locator('.pf-temas a').first()).toBeVisible();
   await expect(page.locator('.pf-provas li').first()).toBeVisible();
   await expect(page.locator('.pf-destaque').first()).toBeVisible();
 });

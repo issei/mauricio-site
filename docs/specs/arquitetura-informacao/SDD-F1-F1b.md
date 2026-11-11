@@ -726,7 +726,9 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
 - **RF-F8-04.** Cada conteúdo tem **um** cartão, no seu primeiro tema (o tema principal, primeiro da
   lista `temas` do nó). Os conteúdos em que o tema é secundário aparecem numa linha "Também tratam
   deste tema", com link, sem cartão repetido. Cada seção liga à página `/temas/<tema>` (artigos e
-  vídeos do tema).
+  vídeos do tema). A etiqueta do cartão mostra só o formato: o campo `assunto` do YAML, um terceiro
+  vocabulário de assunto, deixa de aparecer. A linha de meta diz a natureza e os outros temas
+  ("Também em: …").
 - **RF-F8-05.** O índice do topo do catálogo lista os 10 temas (âncora `#tema-<id>`) no lugar da
   trilha dos pilares. A seção "Carreira e vídeos" continua no fim.
 - **RF-F8-06.** A home troca "Pilares da produção" por "Temas": os 10 temas com o número de

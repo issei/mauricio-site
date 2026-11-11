@@ -209,7 +209,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Catálogo",
+          "name": "Conteúdos",
           "item": "https://mauricio.issei.com.br/catalogo"
         },
         {
@@ -268,7 +268,7 @@ html:root{scroll-padding-top:calc(var(--sh-altura,0px) + 72px)}
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
 <button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
-<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/">Início</a></li><li><a href="/curriculo.html">Trajetória</a></li><li><a href="/catalogo.html" aria-current="true">Produção</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
+<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/">Início</a></li><li><a href="/curriculo.html">Carreira</a></li><li><a href="/catalogo.html" aria-current="true">Conteúdos</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
 </div></header>
 <script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->

@@ -166,8 +166,6 @@ export default defineConfig({
        */
       exclude: [
         '/404',
-        '/admin',
-        '/admin-editor',
         '/diagnostic',
         '/test-github',
         '/mapmind',

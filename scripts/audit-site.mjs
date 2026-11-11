@@ -33,7 +33,7 @@ const asJson = process.argv.includes('--json');
  * cobradas por isso.
  */
 const NAO_PUBLICAS = new Set([
-  '404', 'admin', 'admin-editor', 'diagnostic', 'test-github',
+  '404', 'diagnostic', 'test-github',
   'index-bkp', 'index.template', 'devin-bkp',
   'privacidade', 'termos', 'cookies',      // legais: linkadas no rodapé
   'exemplopdi', 'mapmind', 'vsl',          // experimentos/utilitários

@@ -881,22 +881,22 @@ export const PAGES = [
     og: { eyebrow: 'Tech Lead · Especialista em Análise de Sistemas', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS e APIs' },
   },
   {
-    // Trajetória: desde a F2 (SDD-F1-F1b, Parte 3), o mesmo bloco PF da home,
+    // Carreira: desde a F2 (SDD-F1-F1b, Parte 3), o mesmo bloco PF da home,
     // gravado no HTML por scripts/gen-portfolio.mjs, sem fetch.
     slug: 'curriculo', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
-    title: 'Currículo — Maurício Yokoyama Issei',
+    title: 'Carreira — Maurício Yokoyama Issei',
     description: 'Currículo completo de Maurício Yokoyama Issei: mais de 20 anos em desenvolvimento de software e liderança técnica, com foco em Salesforce, AWS e APIs.',
     datePublished: '2026-09-22', dateModified: '2026-09-22',
     keywords: ['Maurício Yokoyama Issei', 'currículo', 'Tech Lead', 'Salesforce', 'AWS', 'APIs'],
     extraGraph: [CERTIFICATIONS],
-    og: { eyebrow: 'Currículo', title: 'Maurício {Yokoyama Issei}', subtitle: 'Experiência, projetos, formação e recomendações' },
+    og: { eyebrow: 'Carreira', title: 'Maurício {Yokoyama Issei}', subtitle: 'Experiência, projetos, formação e recomendações' },
   },
   {
     slug: 'catalogo', type: 'CollectionPage', tier: 'B', hasMd: true, ogType: 'website',
-    title: 'Catálogo · Mapa do Ecossistema',
-    description: 'A produção de Maurício Issei em quatro pilares — Mentalidade, Método, Aplicação e Valor —, com formato, natureza e temas de cada conteúdo.',
-    datePublished: '2026-01-15', dateModified: '2026-11-10',
-    keywords: ['catálogo', 'Maurício Issei', 'engenharia de IA', 'Salesforce', 'propostas técnicas'],
+    title: 'Conteúdos — Maurício Yokoyama Issei',
+    description: 'Artigos, estudos, guias e casos de Maurício Issei, agrupados em 10 temas, com o formato e a natureza de cada conteúdo.',
+    datePublished: '2026-01-15', dateModified: '2026-11-11',
+    keywords: ['conteúdos', 'Maurício Issei', 'engenharia de IA', 'Salesforce', 'propostas técnicas'],
     itemList: [
       { name: 'A Engenharia da Confiança', url: 'https://mauricio.issei.com.br/engenharia-confianca' },
       { name: 'Engenharia de Agentes de IA', url: 'https://mauricio.issei.com.br/engenharia-agentes-ia' },
@@ -907,7 +907,7 @@ export const PAGES = [
       { name: 'Service Operations 2.0', url: 'https://mauricio.issei.com.br/service-operations-2-0' },
       { name: 'Do Caos à Resiliência — Sustentação', url: 'https://mauricio.issei.com.br/sustentacao' },
     ],
-    og: { eyebrow: 'Catálogo · Mapa do Ecossistema', title: 'Mapa do {Ecossistema}', subtitle: 'Mentalidade · Método · Aplicação · Valor' },
+    og: { eyebrow: 'Conteúdos', title: 'Conteúdos por {tema}', subtitle: 'Artigos, estudos, guias e casos em 10 temas' },
     // Sem tldr/faq: é o hub de navegação. O .md lista a rede inteira para o agente
     // que chega pelo catálogo — mesma ordem e mesmos destinos dos cards da página.
     // Gerado do specs/ecosystem.nav.yaml (SDD-F1-F1b): os cartões e o .md têm a mesma fonte.

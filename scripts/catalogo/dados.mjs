@@ -37,8 +37,6 @@ export function loadEcossistema() {
 /** Título do cartão: cartao_titulo, senão o rótulo curto, senão o título. */
 export const cardTitle = (n) => n.cartao_titulo || n.label || n.title;
 
-/** Etiqueta do cartão: "formato · assunto". */
-export const cardTag = (n) => (n.assunto ? `${n.kind} · ${n.assunto}` : n.kind);
 
 /** href relativo à base (D-05), salvo os absolutos previstos. */
 export const hrefOf = (eco, file) => (file.startsWith('/') ? file : `${eco.meta.canonical_base}${file}`);
@@ -123,34 +121,56 @@ export function validar({ eco, temas }) {
   return erros;
 }
 
+/**
+ * Os temas como o visitante os vê (SDD Parte 8, RF-F8-03/04): um grupo por tema de
+ * content/temas.yml, ordenado pelo total de conteúdos (decrescente) e, no empate, pela ordem
+ * do temas.yml. `principais` = nós com cartão neste tema (primeiro tema da lista, fora da
+ * trajetória e dos nós sem cartão); `secundarios` = os demais nós que citam o tema.
+ */
+export function temasDoSite({ eco, temas } = loadEcossistema()) {
+  const nos = Object.entries(eco.nodes).filter(([, n]) => n.catalogo !== false);
+  const naTrajetoria = new Set(eco.trajetoria);
+  return Object.entries(temas)
+    .map(([id, t], ordem) => {
+      const com = nos.filter(([, n]) => n.temas?.includes(id));
+      const principais = com.filter(([s, n]) => n.temas[0] === id && !naTrajetoria.has(s)).map(([s]) => s);
+      const secundarios = com.map(([s]) => s).filter((s) => !principais.includes(s));
+      return { id, nome: t.nome, resumo: t.resumo, principais, secundarios, total: com.length, ordem };
+    })
+    .sort((a, b) => b.total - a.total || a.ordem - b.ordem);
+}
+
 /** Seções do public/catalogo.md (mdSections de pages.mjs), na ordem do catálogo. */
-export function catalogoMdSections({ eco } = loadEcossistema()) {
+export function catalogoMdSections({ eco, temas } = loadEcossistema()) {
   const item = (titulo, file, descricao) => `- [${titulo}](${publicUrl(file)}) — ${descricao}`;
   // F4b (RF-F4-08): o item de um nó diz a natureza antes do texto do cartão.
   const itemNo = (n) => item(cardTitle(n), n.file, `*${NATUREZAS[n.natureza]}.* ${n.descricao}`);
   const secs = [{
-    h: 'Como o catálogo está organizado',
-    body: 'Uma jornada em quatro pilares — Mentalidade → Método → Aplicação → Valor. Cada cartão diz o ' +
-      'formato, a natureza (Experiência, Estudo, Proposta, Experimento ou Referência) e os temas do ' +
-      'conteúdo. No fim, a trajetória do autor e os vídeos do canal.',
+    h: 'Como os conteúdos estão organizados',
+    body: 'Por tema, do tema com mais conteúdos para o com menos. Cada conteúdo aparece uma vez, no seu ' +
+      'tema principal, com a natureza (Experiência, Estudo, Proposta, Experimento ou Referência). No fim, ' +
+      'a carreira do autor e os vídeos do canal.',
   }];
-  for (const p of eco.pillars) {
-    const linhas = [p.resumo.replace(' — ', ': '), ''];
-    for (const s of p.nodes) {
+  for (const t of temasDoSite({ eco, temas })) {
+    const linhas = [t.resumo, ''];
+    for (const s of t.principais) {
       const n = eco.nodes[s];
-      if (n.catalogo === false) continue;
       // O par (ex.: a revisão completa de um resumo) não tem cartão; o .md liga os dois.
       const pares = Object.values(eco.nodes).filter((x) => x.par === s)
         .map((x) => ` Versão completa: [${x.title}](${publicUrl(x.file)}).`).join('');
       linhas.push(itemNo(n) + pares);
     }
-    secs.push({ h: `${String(p.order).padStart(2, '0')} · ${p.subtitle} — ${p.label}`, body: linhas.join('\n') });
+    if (t.secundarios.length) {
+      linhas.push('', `Também tratam deste tema: ${t.secundarios.map((s) => `[${cardTitle(eco.nodes[s])}](${publicUrl(eco.nodes[s].file)})`).join(', ')}.`);
+    }
+    linhas.push('', `Artigos e vídeos deste tema: ${SITE}/temas/${t.id}`);
+    secs.push({ h: t.nome, body: linhas.join('\n') });
   }
   const ent = Object.fromEntries(eco.entradas.map((e) => [e.id, e]));
-  const linhas = ['A trajetória profissional, as narrativas pessoais e os vídeos do canal.', ''];
+  const linhas = ['A carreira profissional, as narrativas pessoais e os vídeos do canal.', ''];
   linhas.push(item(ent.curriculo.titulo, ent.curriculo.file, ent.curriculo.descricao));
   for (const s of eco.trajetoria) linhas.push(itemNo(eco.nodes[s]));
   linhas.push(item(ent.videos.titulo, ent.videos.file, ent.videos.descricao));
-  secs.push({ h: 'Trajetória e vídeos', body: linhas.join('\n') });
+  secs.push({ h: 'Carreira e vídeos', body: linhas.join('\n') });
   return secs;
 }

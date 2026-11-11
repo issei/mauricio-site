@@ -50,7 +50,7 @@ test('RF-F1-11 · o formato da camada editorial é igual ao do YAML', () => {
   assert.deepEqual(divergentes, []);
 });
 
-test('rótulos das entradas (D6, Q9)', () => {
-  assert.deepEqual(eco.entradas.map((e) => e.label), ['Início', 'Trajetória', 'Produção', 'Vídeos']);
-  assert.deepEqual(eco.entradas.map((e) => e.label_en), ['Home', 'Career', 'Work', 'Videos']);
+test('rótulos das entradas (D6, Q9, RF-F8-01)', () => {
+  assert.deepEqual(eco.entradas.map((e) => e.label), ['Início', 'Carreira', 'Conteúdos', 'Vídeos']);
+  assert.deepEqual(eco.entradas.map((e) => e.label_en), ['Home', 'Career', 'Content', 'Videos']);
 });

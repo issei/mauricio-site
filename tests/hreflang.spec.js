@@ -17,8 +17,8 @@ for (const [pagina, pt, en] of [['index', '/', '/en/'], ['devin', '/devin', '/en
   });
 }
 
-testDoGate(test, 'admin')('página sem espelho não anuncia hreflang', async ({ page, browserName }) => {
+testDoGate(test, 'boutique-empresarial-showcase')('página sem espelho não anuncia hreflang', async ({ page, browserName }) => {
   test.skip(browserName !== 'chromium', 'marcação estática: um navegador basta');
-  await page.goto('/admin.html');
+  await page.goto('/boutique-empresarial-showcase.html');
   await expect(page.locator('link[hreflang]')).toHaveCount(0);
 });
