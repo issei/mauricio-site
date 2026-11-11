@@ -461,8 +461,8 @@ function homeHero() {
     <p class="pf-hero-title">${esc(cv.Titulo)}</p>
     <p class="pf-hero-lead">${esc(cv.ResumoHero)} Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.</p>
     <div class="pf-cta">
-      <a class="pf-btn" href="./curriculo.html">Ver trajetória</a>
-      <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar a produção</a>
+      <a class="pf-btn" href="./curriculo.html">Ver carreira</a>
+      <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar os projetos</a>
       <a class="pf-btn pf-btn--ghost pf-btn--yt" href="/videos.html">${icon('youtube')} Vídeos</a>
     </div>
     ${socials()}

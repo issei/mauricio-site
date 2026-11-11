@@ -626,8 +626,9 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
   Destaques. O hero fica antes do `<main>` e o contato no rodapé, como hoje.
 - **RF-F3-02.** Hero: `h1` com `cv.Nome`; `cv.Titulo`; `cv.ResumoHero`; a frase "Aqui publico
   estudos, propostas e experimentos sobre engenharia de software e IA em produção."; três botões:
-  "Ver trajetória" (`/curriculo.html`), "Explorar a produção" (`/catalogo.html`) e "Vídeos"
-  (`/videos.html`); as redes sociais.
+  "Ver carreira" (`/curriculo.html`), "Explorar os projetos" (`/catalogo.html`) e "Vídeos"
+  (`/videos.html`); as redes sociais. Rótulos trocados pelo autor em 11/11/2026, porque o
+  tradutor local gerava "View path" e "Exploring production" no espelho `/en/`.
 - **RF-F3-03.** Sobre: os dois primeiros parágrafos de `cv.Resumo`, literais, e o link "Ver a
   trajetória completa".
 - **RF-F3-04.** Pilares: os 4 pilares do YAML na ordem, cada um com rótulo, subtítulo, `summary` e
@@ -666,3 +667,10 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
 - **CA-F3-02.** Toda frase de resultado da home existe literal no `cv.json`.
 - **CA-F3-03.** A catraca de acessibilidade não sobe em `index.html` nem em `en/index.html`.
 - **CA-F3-04.** `gen-portfolio.mjs --check` passa no gate.
+
+## F3.7 Ajuste depois do merge (11/11/2026)
+
+- **RF-F3-12.** O tradutor local não envia o nome do autor ao modelo: `NOMES_PROTEGIDOS` em
+  `scripts/i18n/engine.py` usa o mesmo marcador das siglas compostas. Antes, "Maurício" saía
+  "Mauritius" nos espelhos `/en/`. Teste: `tests/i18n.test.mjs`. Os espelhos afetados são
+  traduzidos de novo no mesmo PR.

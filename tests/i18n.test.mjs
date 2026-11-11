@@ -343,3 +343,29 @@ test('siglas compostas (AG-UI) não vão ao modelo e sobrevivem a marcador destr
   assert.equal(contingencia, 'o protocolo AG-UI', 'sem marcador de volta, traduz o original');
   assert.equal(fallbacks, '1');
 });
+
+test('o nome do autor não vai ao modelo (Maurício não vira Mauritius)', { skip: !temPython }, () => {
+  const py = `
+import sys
+sys.path.insert(0, 'scripts/i18n')
+from engine import BaseEngine
+class G(BaseEngine):
+    name = 'g'
+    def __init__(self):
+        super().__init__(); self.vistos = []
+    def _translate_raw(self, t):
+        self.vistos.append(t); return t
+    def _translate_cached(self, c):
+        return self._translate_raw(c)
+e = G()
+print(e.translate('LinkedIn de Maurício Yokoyama Issei (abre em nova aba)'))
+print(e.translate('trabalhou com Maurício na mesma equipe'))
+print('|'.join(e.vistos))
+`;
+  const res = spawnSync(PY, ['-c', py], { cwd: ROOT, encoding: 'utf-8', env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' } });
+  assert.equal(res.status, 0, res.stderr);
+  const [a, b, enviado] = res.stdout.trim().split(/\r?\n/);
+  assert.equal(a, 'LinkedIn de Maurício Yokoyama Issei (abre em nova aba)');
+  assert.equal(b, 'trabalhou com Maurício na mesma equipe');
+  assert.doesNotMatch(enviado, /Maur[ií]cio/, 'o nome foi enviado ao modelo');
+});
