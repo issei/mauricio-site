@@ -1,5 +1,5 @@
 // Continuação "Se este tema interessa a você" (F5c) — SDD-F1-F1b.md, Parte 5.
-// Regra mecânica: duas páginas com tema em comum (ou do mesmo pilar), motivo factual, sem texto inventado.
+// Regra mecânica: duas páginas com tema em comum (ou da mesma natureza, RF-F8-07), motivo factual, sem texto inventado.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -33,9 +33,10 @@ for (const slug of paginasF5c(eco)) {
       assert.notEqual(c.slug, slug, 'não sugere a própria página');
       assert.ok(existsSync(join(ROOT, 'src', eco.nodes[c.slug].file)), `página inexistente: ${c.slug}`);
       if (c.comuns.length) for (const t of c.comuns) assert.ok(eco.nodes[c.slug].temas.includes(t) && eco.nodes[slug].temas.includes(t));
-      else assert.equal(eco.nodes[c.slug].pillar, eco.nodes[slug].pillar, 'sem tema em comum, só o mesmo pilar');
+      else assert.equal(eco.nodes[c.slug].natureza, eco.nodes[slug].natureza, 'sem tema em comum, só a mesma natureza');
     }
     const html = page(slug);
+    assert.doesNotMatch(html, /Também no pilar/, 'RF-F8-07: nenhum motivo cita pilar');
     const bloco = /<!-- CONTINUACAO:START -->([\s\S]*?)<!-- CONTINUACAO:END -->/.exec(html);
     assert.ok(bloco, 'marcadores ausentes');
     assert.doesNotMatch(bloco[1], /<h[1-6]\b/, 'sem heading');

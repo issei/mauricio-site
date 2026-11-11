@@ -6,8 +6,8 @@ import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 
 const PAGINAS = [
   ['/index.html', 'Início', 'page'],
-  ['/curriculo.html', 'Trajetória', 'page'],
-  ['/catalogo.html', 'Produção', 'page'],
+  ['/curriculo.html', 'Carreira', 'page'],
+  ['/catalogo.html', 'Conteúdos', 'page'],
   ['/videos.html', 'Vídeos', 'page'],
   ['/temas/engenharia-agentica.html', 'Vídeos', 'true'],
   ['/privacidade.html', null, null],
@@ -19,7 +19,7 @@ for (const [url, atual, valor] of PAGINAS) {
     await page.goto(url);
     await expect(page.getByRole('banner')).toHaveCount(1);
     const nav = page.getByRole('navigation', { name: 'Navegação do site' });
-    await expect(nav.getByRole('link')).toHaveText(['Início', 'Trajetória', 'Produção', 'Vídeos']);
+    await expect(nav.getByRole('link')).toHaveText(['Início', 'Carreira', 'Conteúdos', 'Vídeos']);
     const marcados = nav.locator('a[aria-current]');
     if (atual) {
       await expect(marcados).toHaveCount(1);
@@ -40,11 +40,11 @@ const L2 = [
   ['especificacao-conversacional', '.ecs-nav'], ['formulacao-de-problemas', '.fp-nav'],
 ];
 for (const [pagina, trilha] of L2) {
-  test(`${pagina}: um banner, Produção marcada e a trilha abaixo do cabeçalho ao rolar`, async ({ page }) => {
+  test(`${pagina}: um banner, Conteúdos marcada e a trilha abaixo do cabeçalho ao rolar`, async ({ page }) => {
     await page.goto(`/${pagina}.html`);
     await expect(page.getByRole('banner')).toHaveCount(1);
     const nav = page.getByRole('navigation', { name: 'Navegação do site' });
-    await expect(nav.locator('a[aria-current="true"]')).toHaveText('Produção');
+    await expect(nav.locator('a[aria-current="true"]')).toHaveText('Conteúdos');
     await page.evaluate(() => window.scrollTo(0, 1500));
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
     const sh = await page.locator('header.sh').boundingBox();
@@ -67,11 +67,11 @@ const L3 = [
   ['salesforce-agentic-quickstart', false], ['socialselling', true], ['service-operations-2-0', false],
 ];
 for (const [pagina, estaticaNoCelular] of L3) {
-  test(`${pagina}: um banner, Produção marcada e a barra da página abaixo do cabeçalho`, async ({ page }) => {
+  test(`${pagina}: um banner, Conteúdos marcada e a barra da página abaixo do cabeçalho`, async ({ page }) => {
     await page.goto(`/${pagina}.html`);
     await expect(page.getByRole('banner')).toHaveCount(1);
     const nav = page.getByRole('navigation', { name: 'Navegação do site' });
-    await expect(nav.locator('a[aria-current="true"]')).toHaveText('Produção');
+    await expect(nav.locator('a[aria-current="true"]')).toHaveText('Conteúdos');
     const barra = page.locator('[aria-label="Navegação da página"]');
     await expect(barra).toHaveCount(1);
     await page.evaluate(() => window.scrollTo(0, 1500));
@@ -91,7 +91,7 @@ test('devin: a barra "Portfólio" saiu; o cabeçalho comum é o único banner', 
   await page.goto('/devin.html');
   await expect(page.getByRole('banner')).toHaveCount(1);
   await expect(page.locator('.devin-nav')).toHaveCount(0);
-  await expect(page.getByRole('navigation', { name: 'Navegação do site' }).locator('a[aria-current="true"]')).toHaveText('Produção');
+  await expect(page.getByRole('navigation', { name: 'Navegação do site' }).locator('a[aria-current="true"]')).toHaveText('Conteúdos');
 });
 
 test('knowledge-os-presentation: a barra não repete o link do Catálogo', async ({ page }) => {
@@ -180,17 +180,17 @@ test('sem violações serious/critical no cabeçalho, com o menu aberto no celul
 
 /* Lote L4: páginas especiais (G-D). Barras próprias e experiências imersivas ficam abaixo do cabeçalho, sem sobrepor. */
 const L4 = [
-  ['know', 'Produção', null], ['sustentacao', 'Produção', '#navbar'], ['proposta-engenharia-reversa', 'Produção', '#navbar'],
-  ['operacao-capital-cognitivo', 'Produção', null], ['boutique-empresarial-showcase', 'Produção', null],
-  ['apresentacao', 'Produção', '.ap-selector-dock'], ['life', 'Trajetória', '#game-container'],
-  ['life3d', 'Trajetória', '#canvas3d'], ['terminal-evolutivo', 'Trajetória', null],
+  ['know', 'Conteúdos', null], ['sustentacao', 'Conteúdos', '#navbar'], ['proposta-engenharia-reversa', 'Conteúdos', '#navbar'],
+  ['operacao-capital-cognitivo', 'Conteúdos', null], ['boutique-empresarial-showcase', 'Conteúdos', null],
+  ['apresentacao', 'Conteúdos', '.ap-selector-dock'], ['life', 'Carreira', '#game-container'],
+  ['life3d', 'Carreira', '#canvas3d'], ['terminal-evolutivo', 'Carreira', null],
 ];
 for (const [pagina, area, abaixo] of L4) {
   test(`${pagina}: um banner, ${area} marcada e nada por cima do cabeçalho`, async ({ page }) => {
     await page.goto(`/${pagina}.html`);
     await expect(page.getByRole('banner')).toHaveCount(1);
     const nav = page.getByRole('navigation', { name: 'Navegação do site' });
-    await expect(nav.getByRole('link')).toHaveText(['Início', 'Trajetória', 'Produção', 'Vídeos']);
+    await expect(nav.getByRole('link')).toHaveText(['Início', 'Carreira', 'Conteúdos', 'Vídeos']);
     await expect(nav.locator('a[aria-current="true"]')).toHaveText(area);
     const sh = await page.locator('header.sh').boundingBox();
     expect(sh.y).toBe(0);

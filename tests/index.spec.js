@@ -11,6 +11,7 @@ const PATH = '/';
 const CV_PATH = '/curriculo.html';
 const cv = JSON.parse(readFileSync(new URL('../public/cv.json', import.meta.url), 'utf8'));
 const eco = YAML.parse(readFileSync(new URL('../specs/ecosystem.nav.yaml', import.meta.url), 'utf8'));
+const temas = YAML.parse(readFileSync(new URL('../content/temas.yml', import.meta.url), 'utf8'));
 const resultados = cv.Projetos.flatMap((p) => p.Resultados);
 
 test.describe('Home editorial (F3)', () => {
@@ -39,17 +40,28 @@ test.describe('Home editorial (F3)', () => {
   test('RF-F3-01: seções na ordem, sem o currículo completo', async ({ page }) => {
     await page.goto(PATH);
     const ids = await page.locator('main > section').evaluateAll((ss) => ss.map((s) => s.id));
-    expect(ids).toEqual(['about', 'pilares', 'provas', 'destaques']);
+    expect(ids).toEqual(['about', 'temas', 'provas', 'destaques']);
     await expect(page.locator('details.pf-star')).toHaveCount(0);
     await expect(page.locator('#recommendations')).toHaveCount(0);
   });
 
-  test('RF-F3-04: os 4 pilares do YAML, com páginas de entrada que existem', async ({ page, request }) => {
+  test('RF-F8-06: os 10 temas no lugar dos pilares, com link para o catálogo', async ({ page, request }) => {
     await page.goto(PATH);
-    await expect(page.locator('.pf-pilar')).toHaveCount(eco.pillars.length);
-    for (const [i, pl] of eco.pillars.entries()) await expect(page.locator('.pf-pilar').nth(i).locator('h3')).toContainText(pl.label);
-    const hrefs = await page.locator('.pf-pilar-links a, .pf-destaque a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
-    for (const h of hrefs) expect((await request.get(h.replace('./', '/'))).status(), h).toBe(200);
+    const links = page.locator('.pf-temas a');
+    await expect(links).toHaveCount(Object.keys(temas).length);
+    const hrefs = await links.evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    expect(new Set(hrefs)).toEqual(new Set(Object.keys(temas).map((t) => `./catalogo.html#tema-${t}`)));
+    await expect(page.locator('.pf-pilar')).toHaveCount(0);
+    for (const pl of eco.pillars) await expect(page.locator('main')).not.toContainText(pl.label);
+    const catalogo = await (await request.get('/catalogo.html')).text();
+    for (const h of hrefs) expect(catalogo, h).toContain(`id="${h.split('#')[1]}"`);
+    const destaques = await page.locator('.pf-destaque a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    for (const h of destaques) expect((await request.get(h.replace('./', '/'))).status(), h).toBe(200);
+  });
+
+  test('RF-F8-02: botões da home com os nomes das áreas', async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator('.pf-cta a')).toHaveText(['Ver carreira', 'Explorar os conteúdos', /Vídeos/]);
   });
 
   test('RF-F3-05 / CA-F3-02: provas literais do cv.json, com alvo no currículo', async ({ page }) => {
@@ -123,7 +135,7 @@ test.describe('Home editorial (F3)', () => {
 });
 
 // Os critérios §12 da SDD do portfólio, agora contra /curriculo (F2/F3).
-test.describe('Trajetória — critérios §12 do portfólio', () => {
+test.describe('Carreira — critérios §12 do portfólio', () => {
   test('§12.1–12.2: 5 experiências em ordem cronológica inversa e 19 cards STAR', async ({ page }) => {
     await page.goto(CV_PATH);
     const orgs = await page.locator('.pf-exp .pf-exp-org').allTextContents();

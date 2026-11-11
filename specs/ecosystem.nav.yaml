@@ -119,15 +119,15 @@ entradas:
     label_en: "Home"
   - id: curriculo
     file: "curriculo.html"
-    label: "Trajetória"
+    label: "Carreira"
     label_en: "Career"
-    titulo: "Currículo"
+    titulo: "Carreira"
     descricao: "Experiência profissional, formação, certificações e os resultados em formato STAR."
-    chamada: "Ver a trajetória →"
+    chamada: "Ver a carreira →"
   - id: catalogo
     file: "catalogo.html"
-    label: "Produção"
-    label_en: "Work"
+    label: "Conteúdos"
+    label_en: "Content"
   - id: videos
     file: "/videos.html"     # absoluto: sem gêmeo /en/ na fase 1 dos vídeos
     label: "Vídeos"
@@ -201,7 +201,7 @@ nodes:
     temas: [engenharia-agentica, ferramentas-de-ia]
     assunto: "Engenharia agêntica"
     descricao: "Engenharia agêntica na prática: o Devin como executor de tarefas de engenharia, da intenção ao código."
-    selo: { texto: "Executor concreto no Ecossistema Salesforce", direcao: desce }
+    selo: { texto: "Executor concreto nos guias de Salesforce", direcao: desce }
   formulacao-de-problemas:
     file: "formulacao-de-problemas.html"
     title: "Formulação de Problemas"

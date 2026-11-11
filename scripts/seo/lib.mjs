@@ -104,13 +104,13 @@ export function buildGraph(p) {
     webpage.mainEntity = { '@id': webpage['@id'] };
   }
 
-  // Breadcrumb: Início → Catálogo → página (sem 3º item p/ a própria home/catálogo).
+  // Breadcrumb: Início → Conteúdos → página (sem 3º item p/ a própria home e o catálogo).
   const crumbs = [{ '@type': 'ListItem', position: 1, name: 'Início', item: `${SITE.origin}/` }];
   if (p.slug !== 'index' && p.slug !== 'catalogo') {
-    crumbs.push({ '@type': 'ListItem', position: 2, name: 'Catálogo', item: `${SITE.origin}/catalogo` });
+    crumbs.push({ '@type': 'ListItem', position: 2, name: 'Conteúdos', item: `${SITE.origin}/catalogo` });
     crumbs.push({ '@type': 'ListItem', position: 3, name: p.breadcrumbName || p.title });
   } else if (p.slug === 'catalogo') {
-    crumbs.push({ '@type': 'ListItem', position: 2, name: 'Catálogo' });
+    crumbs.push({ '@type': 'ListItem', position: 2, name: 'Conteúdos' });
   }
   graph.push({ '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: crumbs });
 

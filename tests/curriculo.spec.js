@@ -2,13 +2,13 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import AxeBuilder from '@axe-core/playwright';
 
-// /curriculo — a Trajetória. Desde a F2 (SDD-F1-F1b, Parte 3) usa o mesmo bloco PF da home,
+// /curriculo — a Carreira. Desde a F2 (SDD-F1-F1b, Parte 3) usa o mesmo bloco PF da home,
 // gravado no HTML por scripts/gen-portfolio.mjs (sem fetch do cv.json).
 
 const PATH = '/curriculo.html';
 const cv = JSON.parse(readFileSync(new URL('../public/cv.json', import.meta.url), 'utf8'));
 
-test.describe('Currículo (Trajetória, F2)', () => {
+test.describe('Currículo (Carreira, F2)', () => {
   test('carrega com todos os blocos preenchidos (CA-F2-01)', async ({ page }) => {
     const res = await page.goto(PATH);
     expect(res?.status()).toBe(200);

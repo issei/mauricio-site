@@ -2,10 +2,11 @@
 /*
  * Catálogo gerado — escreve, a partir de specs/ecosystem.nav.yaml:
  *   1. src/catalogo.html, entre <!-- CATALOGO:START --> e <!-- CATALOGO:END -->
- *      (trilha dos pilares, cartões dos 4 pilares e a seção "Trajetória e vídeos");
+ *      (índice dos 10 temas, uma seção por tema e a seção "Carreira e vídeos");
  *   2. public/catalogo.md (gêmeo Markdown, via buildMd de scripts/seo/lib.mjs).
  *
- * Spec: docs/specs/arquitetura-informacao/SDD-F1-F1b.md (Parte 1, RF-F1-12 a RF-F1-18).
+ * Spec: docs/specs/arquitetura-informacao/SDD-F1-F1b.md (Parte 1, RF-F1-12 a RF-F1-18; Parte 8,
+ * RF-F8-03 a RF-F8-05: os temas no lugar dos pilares).
  * O que fica fora dos marcadores (head, hero, "Comece por aqui", rodapé) continua
  * escrito à mão (RF-F1-13). Os marcadores nunca são consumidos.
  *
@@ -17,7 +18,7 @@ import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 import {
-  loadEcossistema, validar, ROOT, NATUREZAS, cardTitle, cardTag, hrefOf,
+  loadEcossistema, validar, ROOT, NATUREZAS, cardTitle, hrefOf, temasDoSite,
 } from './catalogo/dados.mjs';
 import { PAGES } from './seo/pages.mjs';
 import { buildMd } from './seo/lib.mjs';
@@ -31,12 +32,15 @@ const esc = (s) =>
   String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 const I = (n) => ' '.repeat(n);
-const num = (p) => String(p.order).padStart(2, '0');
 
-/** Linha "Natureza: X · Temas: a, b" do cartão (D5, D7). */
-function meta(n, temas) {
+/**
+ * Linha "Natureza: X · Também em: a, b" do cartão (D5, D7). O cartão já está na seção do seu
+ * tema principal; a linha cita só os outros temas.
+ */
+function meta(n, temas, temaDaSecao) {
   const partes = [`Natureza: ${NATUREZAS[n.natureza]}`];
-  if (n.temas?.length) partes.push(`Temas: ${n.temas.map((t) => temas[t].nome).join(', ')}`);
+  const outros = (n.temas ?? []).filter((t) => t !== temaDaSecao);
+  if (outros.length) partes.push(`Também em: ${outros.map((t) => temas[t].nome).join(', ')}`);
   return partes.join(' · ');
 }
 
@@ -57,22 +61,21 @@ function cartao({ href, tag, titulo, descricao, selo, metaTexto, chamada }) {
   return L.join('\n');
 }
 
-const cartaoNo = (eco, temas, n) => cartao({
+const cartaoNo = (eco, temas, n, temaDaSecao) => cartao({
   href: hrefOf(eco, n.file),
-  tag: cardTag(n),
+  tag: n.kind,
   titulo: cardTitle(n),
   descricao: n.descricao,
   selo: n.selo,
-  metaTexto: meta(n, temas),
+  metaTexto: meta(n, temas, temaDaSecao),
   chamada: n.chamada,
 });
 
-function secao({ id, eyebrow, titulo, numero, resumo, cartoes }) {
+function secao({ id, eyebrow, titulo, resumo, cartoes, depois = [] }) {
   const L = [];
   L.push(`${I(16)}<section id="${id}" class="anchor-target" aria-labelledby="${id}-title">`);
   L.push(`${I(20)}<header class="mb-10">`);
   L.push(`${I(24)}<div class="pillar-head">`);
-  if (numero) L.push(`${I(28)}<span class="pillar-num gradient-text" aria-hidden="true">${numero}</span>`);
   L.push(`${I(28)}<div>`);
   L.push(`${I(32)}<p class="pillar-eyebrow">${esc(eyebrow)}</p>`);
   L.push(`${I(32)}<h2 id="${id}-title" class="text-3xl font-bold text-white section-title">${esc(titulo)}</h2>`);
@@ -80,59 +83,59 @@ function secao({ id, eyebrow, titulo, numero, resumo, cartoes }) {
   L.push(`${I(24)}</div>`);
   L.push(`${I(24)}<p class="pillar-summary mt-5">${esc(resumo)}</p>`);
   L.push(`${I(20)}</header>`);
-  L.push(`${I(20)}<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`);
-  L.push(...cartoes);
-  L.push(`${I(20)}</div>`);
+  if (cartoes.length) {
+    L.push(`${I(20)}<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">`);
+    L.push(...cartoes);
+    L.push(`${I(20)}</div>`);
+  }
+  L.push(...depois);
   L.push(`${I(16)}</section>`);
   return L.join('\n');
 }
 
-const conector = (texto) => [
-  `${I(16)}<div class="eco-connector" aria-hidden="true">`,
-  `${I(20)}<span class="line"></span>`,
-  `${I(20)}<span>${esc(texto)}</span>`,
-  `${I(20)}<i class="fa-solid fa-chevron-down" style="color: var(--eco-accent-soft);"></i>`,
-  `${I(16)}</div>`,
-].join('\n');
+const LINK = 'text-blue-400 underline underline-offset-2';
+const plural = (n) => `${n} ${n === 1 ? 'conteúdo' : 'conteúdos'}`;
 
 /** O bloco entre os marcadores do catálogo (sem os marcadores). */
 export function renderCatalogo({ eco, temas }) {
   const L = [];
   L.push(`${I(12)}<!-- Gerado por scripts/gen-catalogo.mjs a partir de specs/ecosystem.nav.yaml. Não edite à mão. -->`);
-  L.push(`${I(12)}<nav aria-label="Jornada do ecossistema em quatro pilares" class="mb-24">`);
-  L.push(`${I(16)}<ol class="journey">`);
-  for (const p of eco.pillars) {
-    L.push(`${I(20)}<li>`);
-    L.push(`${I(24)}<a href="#${p.id}" class="journey-step">`);
-    L.push(`${I(28)}<span class="journey-badge" aria-hidden="true">${num(p)}</span>`);
-    L.push(`${I(28)}<span class="journey-eyebrow">${esc(p.subtitle)}</span>`);
-    L.push(`${I(28)}<span class="journey-label">${esc(p.label)}</span>`);
-    L.push(`${I(24)}</a>`);
-    L.push(`${I(20)}</li>`);
+  const grupos = temasDoSite({ eco, temas });
+  // RF-F8-05: índice dos temas no lugar da trilha dos pilares.
+  L.push(`${I(12)}<nav aria-label="Temas" class="mb-20">`);
+  L.push(`${I(16)}<ul class="flex flex-wrap justify-center gap-3">`);
+  for (const t of grupos) {
+    L.push(`${I(20)}<li><a href="#tema-${t.id}" class="inline-flex items-center min-h-[44px] px-4 rounded-full border border-white/15 text-gray-200 hover:border-blue-400 hover:text-white">${esc(t.nome)} <span class="ml-2 text-gray-400 text-sm">${t.total}</span></a></li>`);
   }
-  L.push(`${I(16)}</ol>`);
+  L.push(`${I(16)}</ul>`);
   L.push(`${I(12)}</nav>`);
   L.push('');
   L.push(`${I(12)}<div class="space-y-10">`);
-  for (const p of eco.pillars) {
+  for (const t of grupos) {
+    const depois = [];
+    if (t.secundarios.length) {
+      const links = t.secundarios.map((s) => `<a href="${esc(hrefOf(eco, eco.nodes[s].file))}" class="${LINK}">${esc(cardTitle(eco.nodes[s]))}</a>`);
+      depois.push(`${I(20)}<p class="text-gray-300 text-sm leading-relaxed mt-6">Também tratam deste tema: ${links.join(', ')}.</p>`);
+    }
+    depois.push(`${I(20)}<p class="text-sm mt-4"><a href="/temas/${t.id}" class="${LINK}">Artigos e vídeos sobre ${esc(t.nome.toLowerCase())} →</a></p>`);
     L.push('');
-    if (p.conector) { L.push(conector(p.conector)); L.push(''); }
-    L.push(`${I(16)}<!-- ${p.id.toUpperCase()} · ${esc(p.label)} -->`);
+    L.push(`${I(16)}<!-- Tema: ${esc(t.nome)} -->`);
     L.push(secao({
-      id: p.id, eyebrow: p.subtitle, titulo: p.label, numero: num(p), resumo: p.resumo,
-      cartoes: p.nodes.filter((s) => eco.nodes[s].catalogo !== false).map((s) => cartaoNo(eco, temas, eco.nodes[s])),
+      id: `tema-${t.id}`, eyebrow: plural(t.total), titulo: t.nome, resumo: t.resumo,
+      cartoes: t.principais.map((s) => cartaoNo(eco, temas, eco.nodes[s], t.id)),
+      depois,
     }));
   }
-  // RF-F1-15: trajetória e vídeos, depois dos pilares (corrige DV-2).
+  // RF-F1-15: carreira e vídeos, depois dos temas (corrige DV-2).
   const ent = Object.fromEntries(eco.entradas.map((e) => [e.id, e]));
   const entradaCartao = (e) => cartao({
     href: hrefOf(eco, e.file), tag: e.label, titulo: e.titulo, descricao: e.descricao, chamada: e.chamada,
   });
   L.push('');
-  L.push(`${I(16)}<!-- Trajetória e vídeos -->`);
+  L.push(`${I(16)}<!-- Carreira e vídeos -->`);
   L.push(secao({
-    id: 'trajetoria', eyebrow: 'Quem escreve', titulo: 'Trajetória e vídeos',
-    resumo: 'A trajetória profissional, as narrativas pessoais e os vídeos do canal.',
+    id: 'trajetoria', eyebrow: 'Quem escreve', titulo: 'Carreira e vídeos',
+    resumo: 'A carreira profissional, as narrativas pessoais e os vídeos do canal.',
     cartoes: [
       entradaCartao(ent.curriculo),
       ...eco.trajetoria.map((s) => cartaoNo(eco, temas, eco.nodes[s])),

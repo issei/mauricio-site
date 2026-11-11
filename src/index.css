@@ -351,6 +351,13 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 .pf-pilar-links { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
 .pf-pilar-links li { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
 .pf-pilar-links a { display: inline-flex; align-items: center; min-height: 24px; }
+/* Temas da home (SDD Parte 8, RF-F8-06): lista simples, sem metáfora. */
+.pf-temas { display: grid; grid-template-columns: 1fr; gap: .5rem 1.5rem; list-style: none; margin: 0; padding: 0; }
+@media (min-width: 768px) { .pf-temas { grid-template-columns: repeat(2, 1fr); } }
+.pf-temas li { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem; padding: .6rem 0; border-bottom: 1px solid var(--pf-border); }
+.pf-temas a { display: inline-flex; align-items: center; min-height: 24px; color: var(--pf-link); font-weight: 600; text-underline-offset: 3px; }
+.pf-temas a:hover { color: var(--pf-strong); }
+.pf-tema-n { color: var(--pf-muted); font-size: .85rem; white-space: nowrap; }
 .pf-destaque-tag { color: var(--pf-muted); font-size: .8rem; }
 .pf-provas { list-style: none; margin: 0 0 2.5rem; padding: .5rem; border-radius: 16px; background: var(--pf-board-bg); border: 1px solid var(--pf-border); }
 .pf-provas li { display: grid; gap: .35rem; padding: 1rem; border-bottom: 1px solid rgba(255, 255, 255, .06); }

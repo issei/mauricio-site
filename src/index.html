@@ -651,7 +651,7 @@
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
 <button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
-<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/" aria-current="page">Início</a></li><li><a href="/curriculo.html">Trajetória</a></li><li><a href="/catalogo.html">Produção</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
+<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/" aria-current="page">Início</a></li><li><a href="/curriculo.html">Carreira</a></li><li><a href="/catalogo.html">Conteúdos</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
 </div></header>
 <script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->
@@ -660,7 +660,7 @@
         <div class="pf-nav-in">
             <ul>
                 <li><a href="#about">Sobre</a></li>
-                <li><a href="#pilares">Pilares</a></li>
+                <li><a href="#temas">Temas</a></li>
                 <li><a href="#provas">Provas</a></li>
                 <li><a href="#destaques">Destaques</a></li>
                 <li><a href="#contact">Contato</a></li>
@@ -678,7 +678,7 @@
     <p class="pf-hero-lead">Mais de 20 anos de experiência em desenvolvimento de software e liderança técnica, com foco em soluções robustas e inovadoras em Salesforce, AWS e APIs. Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.</p>
     <div class="pf-cta">
       <a class="pf-btn" href="./curriculo.html">Ver carreira</a>
-      <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar os projetos</a>
+      <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar os conteúdos</a>
       <a class="pf-btn pf-btn--ghost pf-btn--yt" href="/videos.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg> Vídeos</a>
     </div>
     <ul class="pf-social">
@@ -697,54 +697,32 @@
     
 <div class="pf-about"><p>Sou especialista em Análise de Sistemas com mais de 20 anos de experiência em desenvolvimento de software, análise de sistemas, integração de plataformas e resolução de problemas.</p>
 <p>Minha expertise inclui habilidades de observabilidade e sustentação, AWS, APIs REST/SOAP, Salesforce e Desenvolvimento de Sistemas (Java, Node.js, Python, Go e .NET).</p></div>
-<p class="pf-more"><a href="./curriculo.html">Ver a trajetória completa</a></p>
+<p class="pf-more"><a href="./curriculo.html">Ver a carreira completa</a></p>
   </div>
 </section>
-<section id="pilares" class="pf-section" aria-labelledby="pilares-title">
+<section id="temas" class="pf-section" aria-labelledby="temas-title">
   <div class="pf-wrap">
-    <h2 class="pf-h2" id="pilares-title">Pilares da produção</h2>
-    <p class="pf-lead">O que publico, em quatro pilares. Cada um tem páginas de entrada.</p>
-<ul class="pf-pilares">
-  <li class="pf-pilar">
-    <h3><span class="pf-pilar-sub">Mentalidade</span> Fundação</h3>
-    <p>Princípios de pensamento sistêmico e gestão do conhecimento.</p>
-    <ul class="pf-pilar-links">
-      <li><a href="./formulacao-de-problemas.html">Formulação de Problemas</a> <span class="pf-nat">Estudo</span></li>
-      <li><a href="./da-execucao-a-orquestracao.html">Da execução à orquestração do trabalho</a> <span class="pf-nat">Estudo</span></li>
-    </ul>
-  </li>
-  <li class="pf-pilar">
-    <h3><span class="pf-pilar-sub">O Método</span> Engenharia de Confiança</h3>
-    <p>Da intenção à execução agêntica confiável.</p>
-    <ul class="pf-pilar-links">
-      <li><a href="./apresentacao.html">Arquitetura de IA auditável</a> <span class="pf-nat">Referência</span></li>
-      <li><a href="./engenharia-confianca.html">A Engenharia da Confiança</a> <span class="pf-nat">Estudo</span></li>
-    </ul>
-  </li>
-  <li class="pf-pilar">
-    <h3><span class="pf-pilar-sub">A Aplicação</span> Ecossistema Salesforce</h3>
-    <p>Métodos agênticos aplicados à plataforma Salesforce.</p>
-    <ul class="pf-pilar-links">
-      <li><a href="./salesforce-agentic-quickstart.html">Quick Start: Salesforce + Devin + Flosum</a> <span class="pf-nat">Referência</span></li>
-      <li><a href="./devops-salesforce.html">DevOps Salesforce</a> <span class="pf-nat">Referência</span></li>
-    </ul>
-  </li>
-  <li class="pf-pilar">
-    <h3><span class="pf-pilar-sub">O Valor</span> Sustentação &amp; Resiliência</h3>
-    <p>Operação de serviço, SRE e resiliência em produção.</p>
-    <ul class="pf-pilar-links">
-      <li><a href="./sustentacao.html">Do Caos à Resiliência</a> <span class="pf-nat">Referência</span></li>
-      <li><a href="./service-operations-2-0.html">Service Operations 2.0</a> <span class="pf-nat">Proposta</span></li>
-    </ul>
-  </li>
+    <h2 class="pf-h2" id="temas-title">Temas</h2>
+    <p class="pf-lead">O que publico, por assunto. Cada tema leva aos seus conteúdos.</p>
+<ul class="pf-temas">
+  <li><a href="./catalogo.html#tema-engenharia-agentica">Engenharia agêntica</a> <span class="pf-tema-n">15 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-gestao-e-estrategia">Gestão e estratégia</a> <span class="pf-tema-n">8 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-especificacao-e-desenvolvimento">Especificação e desenvolvimento</a> <span class="pf-tema-n">6 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-salesforce-e-vendas">Salesforce e vendas</a> <span class="pf-tema-n">5 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-cloud-e-confiabilidade">Cloud e confiabilidade</a> <span class="pf-tema-n">3 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-aprendizagem-e-mente">Aprendizagem e mente</a> <span class="pf-tema-n">3 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-tecnologia-e-cultura">Tecnologia e cultura</a> <span class="pf-tema-n">3 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-dados-e-decisao">Dados e decisão</a> <span class="pf-tema-n">2 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-ferramentas-de-ia">Ferramentas de IA</a> <span class="pf-tema-n">2 conteúdos</span></li>
+  <li><a href="./catalogo.html#tema-acessibilidade-e-design">Acessibilidade e design</a> <span class="pf-tema-n">1 conteúdo</span></li>
 </ul>
-<p class="pf-more"><a href="./catalogo.html">Ver todo o catálogo</a></p>
+<p class="pf-more"><a href="./catalogo.html">Ver todos os conteúdos</a></p>
   </div>
 </section>
 <section id="provas" class="pf-section" aria-labelledby="provas-title">
   <div class="pf-wrap">
     <h2 class="pf-h2" id="provas-title">Provas</h2>
-    <p class="pf-lead">Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Trajetória.</p>
+    <p class="pf-lead">Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Carreira.</p>
 <ol class="pf-provas">
   <li>
     <p class="pf-prova-text">Aumento de mais de <strong class="pf-metric">15%</strong> no atingimento das metas e agilidade nos agendamentos e atendimentos aos clientes.</p>
@@ -806,8 +784,8 @@
   <li><a href="https://www.instagram.com/yokoyamaissei/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85C2.42 3.92 3.94 2.37 7.15 2.27 8.42 2.21 8.8 2.2 12 2.2zm0 4.86a4.94 4.94 0 1 0 0 9.88 4.94 4.94 0 0 0 0-9.88zm0 8.15a3.21 3.21 0 1 1 0-6.42 3.21 3.21 0 0 1 0 6.42zm5.14-9.5a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg></a></li>
   <li><a href="mailto:mauricio@issei.com.br" aria-label="Enviar e-mail para mauricio@issei.com.br"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3zM5.2 7l6.8 4.2L18.8 7z"/></svg></a></li>
 </ul>
-    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav"><li><a href="#about">Sobre</a></li><li><a href="#pilares">Pilares</a></li><li><a href="#provas">Provas</a></li><li><a href="#destaques">Destaques</a></li><li><a href="#contact">Contato</a></li><li><a href="./curriculo.html">Trajetória completa</a></li><li><a href="./catalogo.html">Catálogo</a></li></ul></nav>
-    <p class="pf-ai-note">Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem o currículo completo, publicado em <a href="./curriculo.html">Trajetória</a>, e são gerados do mesmo cv.json. Última atualização: 22/09/2026. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
+    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav"><li><a href="#about">Sobre</a></li><li><a href="#temas">Temas</a></li><li><a href="#provas">Provas</a></li><li><a href="#destaques">Destaques</a></li><li><a href="#contact">Contato</a></li><li><a href="./curriculo.html">Carreira completa</a></li><li><a href="./catalogo.html">Conteúdos</a></li></ul></nav>
+    <p class="pf-ai-note">Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem o currículo completo, publicado em <a href="./curriculo.html">Carreira</a>, e são gerados do mesmo cv.json. Última atualização: 22/09/2026. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
     <p class="pf-legal">© 2026 Maurício Yokoyama Issei. Todos os direitos reservados. · <a href="./privacidade.html">Privacidade</a> · <a href="./termos.html">Termos</a> · <a href="./cookies.html">Cookies</a> · <button type="button" class="pf-linkbtn" onclick="window.cookieConsent && window.cookieConsent.open()">Preferências de cookies</button></p>
   </div>
 </footer>

@@ -47,8 +47,8 @@ test('RF-F1b-01/02 · rótulos e ordem vêm do YAML (PT e EN, Q9)', () => {
   const pt = renderCabecalho(eco, 'pt', null);
   const en = renderCabecalho(eco, 'en', null);
   const rot = (h) => [...h.matchAll(/<li><a [^>]*>([^<]+)<\/a><\/li>/g)].map((m) => m[1]);
-  assert.deepEqual(rot(pt), ['Início', 'Trajetória', 'Produção', 'Vídeos']);
-  assert.deepEqual(rot(en), ['Home', 'Career', 'Work', 'Videos']);
+  assert.deepEqual(rot(pt), ['Início', 'Carreira', 'Conteúdos', 'Vídeos']);
+  assert.deepEqual(rot(en), ['Home', 'Career', 'Content', 'Videos']);
   assert.match(en, /aria-label="Site navigation"/);
   assert.equal(hrefEntrada(eco.entradas[1], 'en'), '/en/curriculo.html');
   assert.equal(hrefEntrada(eco.entradas[3], 'en'), '/videos.html', 'vídeos não têm gêmeo /en/');
