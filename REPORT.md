@@ -254,3 +254,9 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Ajustes:** o bloco aumenta o texto, e o tempo de leitura de 2 páginas no hub (`gen-hub-data.mjs`) mudou. O teste de links do corpo de `digital-workplace-agentico` deixa de contar o `nav.cont`, que tem teste próprio. Playwright Chromium completo: só as falhas conhecidas da nuvem.
   - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou 25 páginas `/en/` ("If this theme interests you"); `boutique-empresarial-showcase` não tem gêmeo `/en/`. `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 27 — F3: home editorial (11/11/2026).** `gen-portfolio.mjs` grava na home um bloco `PF` próprio: hero com as três portas (Trajetória, Produção, Vídeos), Sobre (2 parágrafos do `cv.json`), os 4 pilares do YAML com páginas de entrada, 4 provas literais do `cv.json` com link para o projeto em `/curriculo`, o Mapa de Linhas resumido e 4 destaques com formato e natureza. O currículo completo fica em `/curriculo` (F2). `<head>` e JSON-LD sem mudança.
+  - **Estrutura:** uma `<section>` rotulada por `h2` para cada parte; cartões em lista; a natureza é texto, não só cor. Legenda do mapa resumido sem link (não é interativa). Links de entrada com alvo de no mínimo 24 px.
+  - **Leitura:** 436 palavras no `<main>` (~2,2 min a 200 ppm; teto 3 min).
+  - **Testes:** `index.spec.js` reescrito para a home nova; os critérios §12 do portfólio passam a rodar em `/curriculo`. Chromium, mobile e no-JS (`index`, `index.nojs`, `curriculo`, `site-header`): 72 passam. Layout conferido a 1280 px e a 375 px.
+  - **Catraca:** `a11y-sweep --only` em `index`, `curriculo` e `catalogo`: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
