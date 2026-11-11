@@ -2,6 +2,15 @@
 
 Metacognição, aprendizagem, foco e o funcionamento da mente, aplicados ao estudo e ao trabalho.
 
+## Artigos e páginas
+
+- [Capacidade Antes do Acesso](https://mauricio.issei.com.br/capacidade-antes-do-acesso.html) — Estudo · Artigo. Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial — necessidade, suficiência e condicionalidade postas à prova.
+- [Curiosidade e Investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao.html) — Estudo · Ensaio. Informação não é conhecimento, acesso não é compreensão, reconhecer não é dominar: como transformar curiosidade em investigação usando a IA como bancada, não como oráculo.
+- [O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/aprendizagem-autorregulada.html) — Estudo · Revisão científica. Do resumo à nova pergunta: o que a ciência comprova sobre recuperação, espaçamento e autoexplicação, com protocolo de 45–60 minutos e ficha de estudo.
+- [Do resumo à nova pergunta](https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo.html) — Estudo · Artigo.
+
+## Vídeos
+
 - [Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/videos/aprendizagem-real-o-ciclo-da-aprendizagem-autorregulada) — 8 de outubro de 2026
 - [25 de setembro de 2026](https://mauricio.issei.com.br/videos/25-de-setembro-de-2026) — 25 de setembro de 2026
 - [Quem está no comando da sua mente: você ou as suas reações automáticas?](https://mauricio.issei.com.br/videos/quem-esta-no-comando-da-sua-mente-voce-ou-as-suas-reacoes) — 23 de setembro de 2026

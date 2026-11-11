@@ -2,6 +2,26 @@
 
 Como projetar, orquestrar e levar para produção agentes de IA: protocolos, memória, ferramentas e o trabalho do engenheiro ao lado deles.
 
+## Artigos e páginas
+
+- [Vibe Coding com Devin](https://mauricio.issei.com.br/devin.html) — Estudo · Apresentação. Engenharia agêntica na prática: o Devin como executor de tarefas de engenharia, da intenção ao código.
+- [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao.html) — Estudo · Áudio comentado. Um áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir enquanto ouve e três cenários.
+- [Arquitetura de IA auditável](https://mauricio.issei.com.br/apresentacao.html) — Referência · Apresentação. GraphRAG, Spec-Driven Development e DevOps Salesforce em duas leituras da mesma verdade: a executiva, medida em risco e retorno; a de engenharia, em cobertura e latência.
+- [A Engenharia da Confiança](https://mauricio.issei.com.br/engenharia-confianca.html) — Estudo · Jornada. Da Intenção à Execução Agêntica: quatro módulos que conectam Engenharia Reversa, Engenharia de Agentes e Vibe Coding — do caos da IA-como-mágica à governança da IA-como-engenharia.
+- [Engenharia de Agentes de IA](https://mauricio.issei.com.br/engenharia-agentes-ia.html) — Estudo · Material interativo. Os dez princípios que tornam sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança agent-driven.
+- [Deterministic Grounding](https://mauricio.issei.com.br/develop-engineering.html) — Estudo · Artigo. Como ancorar contexto, restringir ações e validar mudanças de agentes em software sem confundir um resultado verde com correção global.
+- [Agent Ready](https://mauricio.issei.com.br/agent-ready.html) — Experiência · Tutorial. Como tornar um site legível, descobrível e utilizável por agentes de IA: Link headers, Markdown negociado, Content Signals, API Catalog, MCP e Agent Skills — com o código real deste domínio.
+- [Case Agents](https://mauricio.issei.com.br/case-agents.html) — Experiência · Case técnico. Roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso.
+- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation.html) — Proposta · Apresentação. O sistema de conhecimento que dá rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle.
+- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico.html) — Estudo · Estudo técnico. Como um portal corporativo evolui de uma lista de links para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.
+- [Especificação Conversacional Estruturada](https://mauricio.issei.com.br/especificacao-conversacional.html) — Proposta · Ensaio. Um workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código — e o que ainda não foi avaliado.
+- [Boutique Empresarial](https://mauricio.issei.com.br/boutique-empresarial-showcase.html) — Experiência · Case técnico. Showcase da arquitetura estática MPA, metodologia SDD, pipeline agêntico multi-modelo e Quality Gate determinístico por trás de um projeto real.
+- [DevOps Salesforce](https://mauricio.issei.com.br/devops-salesforce.html) — Referência · Guia prático. Entrega contínua agêntica: arquitetura híbrida unindo a governança do Flosum, a flexibilidade do GitHub e a velocidade da IA no ecossistema Salesforce.
+- [Engenharia Reversa Assistida por IA](https://mauricio.issei.com.br/proposta-engenharia-reversa.html) — Proposta · Proposta técnica. Transformação de sistemas Salesforce legados via IA: do código herdado à especificação viva, sem refactor manual.
+- [SocialSelling](https://mauricio.issei.com.br/socialselling.html) — Experimento · Documentação de projeto. Overview do projeto e modelo de boas práticas para vendas sociais potencializadas por agentes de IA.
+
+## Vídeos
+
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
 - [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026

@@ -6,6 +6,7 @@
 //   - ficha sem artigo revisado é noindex e fica fora do sitemap (§2, D4);
 //   - vídeo removido não gera página; assunto sem vídeo não gera página;
 //   - o gerador é dono das suas pastas: sobra sem fonte é apagada e reprovada no --check;
+//   - a página de assunto lista os artigos do site com o tema (F5a, SDD-F1-F1b.md Parte 5);
 //   - o repositório está em dia com content/.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,7 +15,7 @@ import { tmpdir } from 'node:os';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { build, loadContent, parseVtt, paragrafos, slugify, duracaoPt, dataPt, validate, run, avisos, problemasDoArtigo, STATUS_PERMITIDOS_FASE_1 } from '../scripts/gen-videos.mjs';
+import { build, artigosDoYaml, loadContent, parseVtt, paragrafos, slugify, duracaoPt, dataPt, validate, run, avisos, problemasDoArtigo, STATUS_PERMITIDOS_FASE_1 } from '../scripts/gen-videos.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const FIXTURES = join(ROOT, 'tests/fixtures/videos');
@@ -169,6 +170,26 @@ test('página de assunto e índice listam os vídeos, do mais recente ao mais an
     const md = p.replace(/^src\//, 'public/').replace(/\.html$/, '.md');
     assert.ok(md in out, `sem gêmeo Markdown: ${p}`);
   }
+});
+
+test('assunto lista os artigos do site com o tema antes dos vídeos (F5a)', () => {
+  const artigo = { titulo: 'Um artigo', href: '/um-artigo.html', natureza: 'Estudo', formato: 'Ensaio', descricao: 'Sobre agentes.', temas: ['engenharia-agentica'] };
+  const out = build(fixture(), { artigos: [artigo] });
+  const tema = out['src/temas/engenharia-agentica.html'];
+  assert.match(tema, /<h2>Artigos e páginas<\/h2>/);
+  assert.match(tema, /<a href="\/um-artigo\.html">Um artigo<\/a>/);
+  assert.match(tema, /Estudo · Ensaio/);
+  assert.ok(tema.indexOf('Artigos e páginas') < tema.indexOf('<h2>Vídeos</h2>'), 'artigos antes dos vídeos');
+  assert.match(tema, /"@type":"WebPage"|"@type": "WebPage"/);
+  assert.match(out['public/temas/engenharia-agentica.md'], /## Artigos e páginas[\s\S]*\[Um artigo\]/);
+  assert.throws(() => build(fixture(), { artigos: [{ ...artigo, temas: ['nao-existe'] }] }), /tema "nao-existe"/);
+});
+
+test('todo tema do YAML tem ao menos um artigo e todo artigo aponta para uma página que existe (F5a)', () => {
+  const artigos = artigosDoYaml();
+  const { temas } = loadContent(join(ROOT, 'content'));
+  for (const t of Object.keys(temas)) assert.ok(artigos.some((a) => a.temas.includes(t)), `tema sem artigo: ${t}`);
+  for (const a of artigos) assert.ok(existsSync(join(ROOT, 'src', a.href)), `página inexistente: ${a.href}`);
 });
 
 test('sem vídeos, nada além da lista de exclusão vazia', () => {

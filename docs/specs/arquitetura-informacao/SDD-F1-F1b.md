@@ -507,3 +507,42 @@ natureza desde a F1 (`gen-catalogo.mjs`). A F4 leva o rótulo ao topo das 32 pá
   bloco só, com o rótulo do YAML, sem heading e sem hexadecimal, logo antes do `<h1>`.
 - **CA-F4-03.** `gen-natureza.mjs --check` passa no gate.
 - **CA-F4-04.** A catraca de acessibilidade não sobe nas 20 páginas nem nos espelhos `/en/`.
+
+---
+
+# Parte 5 — F5: relações entre temas, artigos e trajetória
+
+## F5.1 Objetivo e lotes
+
+Decisão D7(b): cada página autoral tem de 1 a 3 temas no YAML. A F5 usa esses temas e a natureza
+para ligar o conteúdo (PROPOSTA §9.5).
+
+| Lote | O que liga |
+| :-- | :-- |
+| F5a | a página de cada tema (`/temas/<tema>`) lista os artigos do site com aquele tema, antes dos vídeos |
+| F5b | página de natureza "Experiência" liga ao projeto STAR em `/curriculo`, quando houver um |
+| F5c | continuação "Se este tema interessa" nas páginas autorais que ainda não têm |
+
+F5b e F5c precisam de escolha do autor (qual projeto STAR, quais continuações). Ficam para depois
+do F5a.
+
+## F5.2 Requisitos do lote F5a
+
+- **RF-F5-01.** `gen-videos.mjs` lê os nós do YAML que têm `temas` (`artigosDoYaml()`) e passa a
+  lista ao `build()`. Os testes com fixture não leem o YAML.
+- **RF-F5-02.** A página do tema ganha a seção "Artigos e páginas" (`<h2>`), antes de uma nova seção
+  "Vídeos" (`<h2>`). Cada item tem o título com link, natureza e formato, e o texto do cartão.
+- **RF-F5-03.** O JSON-LD `CollectionPage` inclui os artigos como `WebPage` em `hasPart`. O `.md` do
+  tema ganha a mesma seção.
+- **RF-F5-04.** Tema do YAML que não existe em `content/temas.yml` faz o gerador falhar.
+- **RF-F5-05.** Sem CSS novo: os itens usam as classes que o gerador já tem (`.lista`, `.box`,
+  `.aviso`). As páginas de tema não têm gêmeo `/en/` (fase 1 dos vídeos).
+
+## F5.3 Testes e aceite do F5a
+
+- `tests/videos.gen.test.mjs`: a seção aparece antes dos vídeos, com natureza e formato, no HTML,
+  no JSON-LD e no `.md`; tema inexistente falha; todo tema tem ao menos um artigo, e todo artigo
+  aponta para uma página que existe.
+- **CA-F5-01.** Todo tema com pelo menos 1 artigo (aceite da F5 na PROPOSTA §12).
+- **CA-F5-02.** axe (WCAG 2.2 AA) sem violação séria ou crítica nas 10 páginas de tema. A
+  catraca (`a11y-sweep`) não cobre `/temas/`.

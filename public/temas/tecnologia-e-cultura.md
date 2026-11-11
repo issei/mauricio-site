@@ -2,6 +2,14 @@
 
 Ciência, história da IA, computação quântica e as ideias por trás da tecnologia.
 
+## Artigos e páginas
+
+- [Capacidade Antes do Acesso](https://mauricio.issei.com.br/capacidade-antes-do-acesso.html) — Estudo · Artigo. Competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial — necessidade, suficiência e condicionalidade postas à prova.
+- [O Artífice Invisível](https://mauricio.issei.com.br/artifice.html) — Estudo · Ensaio com autodiagnóstico. O paradoxo da maestria técnica: por que a sofisticação vira carga invisível — e como recuperar a soberania do seu ofício.
+- [A Jornada em Pixel Art](https://mauricio.issei.com.br/life.html) — Experimento · Narrativa pessoal. Experiência interativa contando a trajetória pessoal e profissional desde o início em 1982 até os dias de hoje.
+
+## Vídeos
+
 - [Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?](https://mauricio.issei.com.br/videos/google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da) — 17 de outubro de 2026
 - [O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram](https://mauricio.issei.com.br/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen) — 6 de junho de 2026
 - [A Origem do Transformer: A Revolução que Criou a IA Moderna](https://mauricio.issei.com.br/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna) — 18 de março de 2026
