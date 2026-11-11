@@ -3,7 +3,7 @@
  * Grava o currículo (public/cv.json) como HTML ESTÁTICO em duas páginas:
  *
  *   src/index.html     → home "Mapa de Linhas"   (bloco <!-- PF:START/END -->)
- *   src/curriculo.html → home anterior, mesma aparência (blocos <!-- CV:<id>:START/END -->)
+ *   src/curriculo.html → Trajetória, o mesmo bloco PF (SDD-F1-F1b, Parte 3, F2)
  *   public/curriculo.md → gêmeo Markdown de /curriculo (arquivo inteiro)
  *
  * Por que build-time e não fetch: a SDD do portfólio (docs/specs/pages/portfolio/)
@@ -364,13 +364,13 @@ ${cv.Recomendacoes_Recebidas.map((r) => `  <figure class="pf-rec">
 const NAV = [['#about', 'Sobre'], ['#experience', 'Experiência'], ['#education', 'Formação'], ['#recommendations', 'Recomendações'], ['#contact', 'Contato']];
 const dateBR = (iso) => iso.split('-').reverse().join('/');
 
-function footer() {
+function footer(page) {
   return `<footer class="pf-footer" id="contact">
   <div class="pf-wrap">
     <h2 class="pf-h2">Contato</h2>
     <p class="pf-contact"><a href="mailto:${esc(cv.Contato.Email)}">${esc(cv.Contato.Email)}</a></p>
     ${socials()}
-    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav">${NAV.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}<li><a href="./curriculo.html">Currículo em formato clássico</a></li><li><a href="./catalogo.html">Catálogo</a></li></ul></nav>
+    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav">${NAV.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}${page === 'index' ? '<li><a href="./curriculo.html">Trajetória completa</a></li>' : ''}<li><a href="./catalogo.html">Catálogo</a></li></ul></nav>
     <p class="pf-ai-note">Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem integralmente as informações públicas do currículo e são gerados do mesmo cv.json que produz o texto visível. Última atualização: ${dateBR(MODIFIED)}. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
     <p class="pf-legal">© ${NOW_YEAR} ${esc(cv.Nome)}. Todos os direitos reservados. · <a href="./privacidade.html">Privacidade</a> · <a href="./termos.html">Termos</a> · <a href="./cookies.html">Cookies</a> · <button type="button" class="pf-linkbtn" onclick="window.cookieConsent && window.cookieConsent.open()">Preferências de cookies</button></p>
   </div>
@@ -385,7 +385,8 @@ ${body}
   </div>
 </section>`;
 
-const pfBlock = `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json (NÃO editar à mão) -->
+/** Bloco PF da home e do currículo (SDD-F1-F1b, Parte 3, RF-F2-01): mesmo conteúdo, rodapé por página. */
+const pfBlock = (page) => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json (NÃO editar à mão) -->
 <div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span>${LINES.slice(0, 5).map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
 <div class="pf-bundle" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
 ${hero()}
@@ -400,152 +401,8 @@ ${section('experience', 'Experiência', `${jobs.length} empregadores e ${project
 ${section('education', 'Formação e certificações', '', education())}
 ${section('recommendations', 'Recomendações', `${cv.Recomendacoes_Recebidas.length} recomendações recebidas no LinkedIn, em texto integral.`, recommendations())}
 </main>
-${footer()}
+${footer(page)}
 <!-- PF:END -->`;
-
-// ---------------------------------------------------------------------------
-// Blocos de /curriculo — a MESMA marcação que src/js/curriculo.js (ex-cv-renderer)
-// montava no cliente, agora gravada no HTML. Não mudar classes: é a aparência.
-// ---------------------------------------------------------------------------
-const CV = {
-  'hero-content': `
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
-            ${esc(cv.Nome)}
-        </h1>
-        <p class="text-2xl md:text-4xl font-light mb-8 text-blue-300">
-            ${esc(cv.Titulo)}
-        </p>
-        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
-            ${esc(cv.ResumoHero)}
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <a href="#projects" class="btn-primary inline-block">Ver Projetos</a>
-            <a href="${esc(cv.Contato.LinkedIn)}" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-block">Conectar no LinkedIn</a>
-        </div>`,
-
-  'about-content': cv.Resumo.map((p) => `<p class="mb-4">${esc(p)}</p>`).join(''),
-
-  'skills-container': Object.entries(cv.Habilidades).map(([category, list]) => `<div class="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700">
-            <h3 class="text-xl font-semibold text-blue-300 mb-4">${esc(category.replace(/_/g, ' '))}</h3>
-            <div class="flex flex-wrap gap-2">
-                ${list.map((skill) => `
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full hover:bg-blue-600 hover:text-white transition-colors duration-200 cursor-default">
-                        ${esc(skill)}
-                    </span>
-                `).join('')}
-            </div>
-        </div>`).join('\n'),
-
-  'experience-container': cv.Experiencia.map((exp) => `<div class="relative mb-10 pl-12 md:pl-16 timeline-item">
-            <div class="timeline-dot absolute left-[-8px] top-1 transform -translate-x-1/2"></div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 hover:border-blue-500 transition-colors duration-300">
-                <h3 class="text-2xl font-bold text-white">${esc(exp.Cargo)}</h3>
-                <p class="text-lg font-semibold text-blue-400 mb-1">${esc(exp.Empresa)}</p>
-                <p class="text-gray-400 text-sm mb-3">${esc(exp.Periodo)} &bull; ${esc(exp.Local)}</p>
-                <p class="text-gray-300 mb-4">${esc(exp.Descricao)}</p>
-                ${exp.Resultados?.length ? `
-                    <h4 class="text-md font-semibold text-gray-200 mt-4 mb-2">Principais Resultados:</h4>
-                    <ul class="list-disc list-inside text-gray-400 text-sm pl-4 space-y-1">
-                        ${exp.Resultados.map((res) => `<li>${esc(res)}</li>`).join('')}
-                    </ul>
-                ` : ''}
-                ${exp.Principais_Projetos?.length ? `
-                    <h4 class="text-md font-semibold text-gray-200 mt-4 mb-2">Principais Projetos:</h4>
-                    <ul class="list-disc list-inside text-gray-400 text-sm pl-4 space-y-1">
-                        ${exp.Principais_Projetos.map((proj) => `<li>${esc(proj)}</li>`).join('')}
-                    </ul>
-                ` : ''}
-                ${exp.Competencias?.length ? `
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        ${exp.Competencias.map((comp) => `
-                            <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-1 rounded-full border border-blue-700">
-                                ${esc(comp)}
-                            </span>
-                        `).join('')}
-                    </div>
-                ` : ''}
-            </div>
-        </div>`).join('\n'),
-
-  // O bloco [data-star] é o que o modal exibe: o JS só copia, não monta texto.
-  'projects-container': cv.Projetos.map((project, index) => `<div class="project-card bg-gray-700 p-6 rounded-lg shadow-md flex flex-col justify-between h-full">
-            <div>
-                <h3 class="text-xl font-semibold text-white mb-2">${esc(project.Nome)}</h3>
-                <p class="text-blue-300 text-sm mb-2">${esc(project.Empresa)} (${esc(project.Periodo)})</p>
-                <p class="text-gray-300 text-sm mb-4">${esc((project.Situacao || 'Clique para ver detalhes.').substring(0, 120))}...</p>
-            </div>
-            <button onclick="openModal(this, ${index})" class="btn-secondary mt-4 self-start">Saiba Mais</button>
-            <div data-star hidden>
-                <span data-f="name">${esc(project.Nome)}</span>
-                <span data-f="period">${esc(project.Periodo)}</span>
-                <span data-f="company">${esc(project.Empresa)}</span>
-                ${project.Situacao && project.Situacao !== 'N/A' ? `<span data-f="situacao">${esc(project.Situacao)}</span>
-                <ul data-f="tarefas">${(project.Tarefas || []).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-                <ul data-f="acoes">${(project.Acoes || []).map((a) => `<li>${esc(a)}</li>`).join('')}</ul>
-                <ul data-f="resultados">${(project.Resultados || []).map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
-                ${project.Tecnologias?.length ? `<div data-f="technologies">${project.Tecnologias.map((tech) => `
-            <span class="bg-gray-600 text-gray-200 text-sm px-3 py-1 rounded-full">
-                ${esc(tech)}
-            </span>
-        `).join('')}</div>` : ''}
-            </div>
-        </div>`).join('\n'),
-
-  'education-container': cv.Formacao_Academica.map((edu) => `<div class="bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700">
-            <h4 class="text-xl font-semibold text-white">${esc(edu.Curso)}</h4>
-            <p class="text-blue-300 text-md mb-2">${esc(edu.Instituicao)}</p>
-            <p class="text-gray-400 text-sm">${esc(edu.Periodo || edu.Ano)}</p>
-            ${edu.Diploma_Digital_Codigo ? `<p class="text-gray-400 text-xs mt-2">Código do Diploma: <span class="font-mono">${esc(edu.Diploma_Digital_Codigo)}</span></p>` : ''}
-            ${edu.Verificacao ? `<a href="${esc(edu.Verificacao)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:underline text-sm mt-3" aria-label="Verificar diploma: ${esc(edu.Curso)} — ${esc(edu.Instituicao)} (abre em nova aba)">Verificar diploma <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>` : ''}
-        </div>`).join('\n'),
-
-  'certifications-container': cv.Certificados.map((cert) => `<div class="bg-gray-700 p-4 rounded-lg shadow-md flex flex-col justify-between h-full">
-            <div>
-                <h4 class="text-md font-semibold text-white">${esc(cert.Nome)}</h4>
-                <p class="text-blue-300 text-sm">${esc(cert.Instituicao)}</p>
-                <p class="text-gray-400 text-xs mb-2">Emitido em: ${esc(certDate(cert))}</p>
-            </div>
-            ${cert.Verificacao ? `<a href="${esc(cert.Verificacao)}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Credencial <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>` : ''}
-        </div>`).join('\n'),
-
-  'courses-container': Object.entries(cv.Cursos_Alura).map(([category, list]) => `<div class="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700">
-            <h3 class="text-xl font-semibold text-blue-300 mb-4">${esc(category.replace(/_/g, ' '))}</h3>
-            <ul class="space-y-2">
-                ${list.map((course) => `
-                    <li class="text-gray-300 text-sm flex items-start">
-                        <i class="fa-solid fa-check-circle text-green-500 mr-2 mt-1"></i>
-                        <span>${esc(course)}</span>
-                    </li>
-                `).join('')}
-            </ul>
-        </div>`).join('\n'),
-
-  'recommendations-container': cv.Recomendacoes_Recebidas.map((rec) => `<div class="bg-gray-700 p-6 rounded-lg shadow-md">
-            <p class="text-gray-300 italic mb-4">"${esc(rec.Recomendacao)}"</p>
-            <p class="text-white font-semibold">${esc(rec.Autor)}</p>
-            <p class="text-blue-300 text-sm">${esc(rec.Cargo)}</p>
-            <p class="text-gray-400 text-xs mt-1">${esc(rec.Data_Trabalho)}</p>
-        </div>`).join('\n'),
-
-  'contact-container': `
-        <p class="text-lg text-gray-300 mb-8">Estou sempre aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato!</p>
-        <div class="flex flex-col items-center space-y-6">
-            <a href="mailto:${esc(cv.Contato.Email)}" class="btn-primary inline-flex items-center space-x-3 text-lg">
-                <i class="fa-solid fa-envelope"></i>
-                <span>${esc(cv.Contato.Email)}</span>
-            </a>
-            <a href="${esc(cv.Contato.LinkedIn)}" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-flex items-center space-x-3 text-lg">
-                <i class="fa-brands fa-linkedin"></i>
-                <span>LinkedIn/${esc(cv.Contato.LinkedInUser)}</span>
-            </a>
-            <a href="${esc(cv.Contato.youtube)}" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-flex items-center space-x-3 text-lg">
-                <i class="fa-brands fa-youtube"></i>
-                <span>Youtube/@MauricioIssei</span>
-            </a>
-        </div>`,
-
-  year: String(NOW_YEAR),
-};
 
 // Gêmeo .md de /curriculo (a edge function serve <caminho>.md a agentes).
 const md = [
@@ -592,11 +449,8 @@ function fill(file, blocks) {
 }
 
 const targets = [
-  fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock]]),
-  fill('src/curriculo.html', Object.entries(CV).map(([id, body]) => {
-    const s = `<!-- CV:${id}:START -->`, e = `<!-- CV:${id}:END -->`;
-    return [s, e, `${s}${body}${e}`];
-  })),
+  fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock('index')]]),
+  fill('src/curriculo.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock('curriculo')]]),
   whole('public/curriculo.md', md),
 ];
 

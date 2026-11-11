@@ -220,3 +220,10 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Playwright, Chromium (nuvem):** `artifice`, `da-execucao-a-orquestracao`, `apresentacao.ecossistema`, `site-header`, `devin`, `case-agents` e `tests/a11y/`. Falham também em `main` ou por ambiente: `life3d` em `reflow-zoom` e "Abrir menu" das duas páginas salesforce-agentic.
   - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) tirou a linha do componente das 24 páginas `/en/`; `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 22 — F2: a trajetória completa vai para `/curriculo` (11/11/2026).** Decisão D2(a) do autor: `/curriculo` passa a usar o mesmo bloco `PF:*` da home, gerado de `public/cv.json` por `scripts/gen-portfolio.mjs`. Saem o layout clássico (Tailwind, Font Awesome, modal de projeto), `src/js/curriculo.js` e o bloco `CV:*`. A paleta `pf-` vale também para `/curriculo` (ADR-pf-001).
+  - **Sem JavaScript:** todo texto do `cv.json` está no DOM das duas páginas; os cartões STAR abrem com `<details>`, sem modal.
+  - **Foco não obscurecido (SC 2.4.11):** o skip link `.pf-skip` sobe para `z-index: 2147483001` e fica acima do cabeçalho comum.
+  - **Navegação:** a barra de seções tem o rótulo "Seções da página" e fica abaixo do cabeçalho. O rodapé da home ganha o link "Trajetória completa".
+  - **Testes:** `curriculo.spec.js` reescrito para o layout PF (axe com contraste incluído). Saem o teste do modal em `reflow-zoom` e o de hover do botão em `tasks`, porque os elementos não existem mais.
+  - **Catraca:** `a11y-sweep` nas 86 páginas (com o EN sem a linha de `curriculo.js` só para medir): sem regressão em `curriculo` e `index`. `vsl.html` (não alterada) segue acusando `bp:landmark-one-main` e `bp:region` só na nuvem. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.

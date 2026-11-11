@@ -2,52 +2,45 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import AxeBuilder from '@axe-core/playwright';
 
-// /curriculo — a home anterior, com a mesma aparência, agora com o conteúdo
+// /curriculo — a Trajetória. Desde a F2 (SDD-F1-F1b, Parte 3) usa o mesmo bloco PF da home,
 // gravado no HTML por scripts/gen-portfolio.mjs (sem fetch do cv.json).
 
 const PATH = '/curriculo.html';
 const cv = JSON.parse(readFileSync(new URL('../public/cv.json', import.meta.url), 'utf8'));
 
-test.describe('Currículo (versão clássica)', () => {
-  test('carrega com todos os blocos preenchidos', async ({ page }) => {
+test.describe('Currículo (Trajetória, F2)', () => {
+  test('carrega com todos os blocos preenchidos (CA-F2-01)', async ({ page }) => {
     const res = await page.goto(PATH);
     expect(res?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('#projects-container .project-card')).toHaveCount(cv.Projetos.length);
-    await expect(page.locator('#certifications-container > div')).toHaveCount(cv.Certificados.length);
-    await expect(page.locator('#recommendations-container > div')).toHaveCount(cv.Recomendacoes_Recebidas.length);
-    await expect(page.locator('#experience-container .timeline-item')).toHaveCount(cv.Experiencia.length);
+    await expect(page.locator('#mapa .pf-legend li')).toHaveCount(7);
+    await expect(page.locator('#results .pf-board li').first()).toBeVisible();
+    await expect(page.locator('details.pf-star')).toHaveCount(cv.Projetos.length);
+    await expect(page.locator('.pf-exp')).toHaveCount(cv.Experiencia.length);
+    await expect(page.locator('.pf-certs .pf-ticket')).toHaveCount(cv.Certificados.length);
+    await expect(page.locator('.pf-rec')).toHaveCount(cv.Recomendacoes_Recebidas.length);
   });
 
-  test('modal "Saiba Mais" mostra o STAR do projeto certo', async ({ page }) => {
+  test('um projeto STAR abre no lugar, sem modal', async ({ page }) => {
     await page.goto(PATH);
-    const i = 5;
-    const p = cv.Projetos[i];
-    await page.waitForFunction(() => typeof window.openModal === 'function'); // módulo carregado
-    await page.locator('#projects-container .project-card').nth(i).getByRole('button', { name: 'Saiba Mais' }).click();
-    await expect(page.locator('#project-modal')).toBeVisible();
-    await expect(page.locator('#modal-project-name')).toHaveText(p.Nome);
-    await expect(page.locator('#modal-project-situacao')).toHaveText(p.Situacao);
-    await expect(page.locator('#modal-project-acoes li')).toHaveCount(p.Acoes.length);
-    await page.keyboard.press('Escape');
-    await expect(page.locator('#project-modal')).toBeHidden();
+    const p = cv.Projetos[5];
+    const card = page.locator('details.pf-star').filter({ hasText: p.Nome }).first();
+    await card.locator('summary').click();
+    await expect(card.locator('[data-step="S"] p')).toHaveText(p.Situacao);
+    await expect(card.locator('[data-step="A"] li')).toHaveCount(p.Acoes.length);
   });
 
-  test('HTML servido não busca o currículo em runtime', async ({ request }) => {
+  test('não carrega a versão clássica (CA-F2-02) nem busca o currículo em runtime', async ({ request }) => {
     const html = await (await request.get(PATH)).text();
-    expect(html).not.toMatch(/fetch\(|cv-renderer|initCVRenderer/);
+    expect(html).not.toMatch(/fetch\(|cv-renderer|initCVRenderer|curriculo\.js|input\.css|font-awesome/);
+    expect(html).not.toContain('formato clássico');
   });
 
-  test('a11y: sem violações sérias (axe), exceto contraste herdado', async ({ page }) => {
+  test('a11y: sem violações sérias (axe), com contraste', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(PATH);
-    // Sem html.js as seções nascem visíveis (sem transição de opacidade no meio da auditoria).
-    await page.evaluate(() => document.documentElement.classList.remove('js'));
-    // color-contrast fica de fora: a paleta Tailwind da home antiga tem pares
-    // abaixo de 4.5:1 (ex.: gray-400 sobre gray-700 = 4.28:1) e a decisão foi
-    // preservar a aparência sem alterações. Qualquer OUTRA regra continua bloqueando.
     const { violations } = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-      .disableRules(['color-contrast'])
       .analyze();
     const blocking = violations.filter((v) => ['serious', 'critical'].includes(v.impact));
     expect(blocking.map((v) => `${v.id}: ${v.nodes.length}`)).toEqual([]);

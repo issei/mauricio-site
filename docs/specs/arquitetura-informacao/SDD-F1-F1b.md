@@ -389,3 +389,64 @@ Um PR por lote. Cada lote fecha com `i18n:sync` local e sweep de acessibilidade.
 | Q7 | O `<eco-nav>` sai? (DS-2) | Sim, no lote L5 | DS-2 |
 | Q8 | Celular (DS-3) | Botão hambúrguer | DS-3, RF-F1b-04, RF-F1b-17 |
 | Q9 | Rótulos em inglês | Home · Career · Work · Videos | DS-4, RF-F1b-14 |
+
+# Parte 3 — F2: trajetória completa em `/curriculo`
+
+> Origem: [`PROPOSTA-REESTRUTURACAO.md`](PROPOSTA-REESTRUTURACAO.md), §6.2, §7 (linha `/curriculo`),
+> §8.4 e §12 (F2); decisão D2 do autor (10/11/2026). Requisitos: **RF-F2-xx**. Critérios de aceite:
+> **CA-F2-xx**.
+
+## F2.1 Objetivo
+
+Dar à Trajetória (`/curriculo`) tudo o que prova a experiência: Sobre, Mapa de Linhas,
+competências por linha, resultados quantificados, experiência com os projetos STAR, formação,
+certificações, recomendações e contato. Depois da F2, nada do conteúdo atual da home fica sem
+lugar no currículo, e a F3 pode reescrever a home.
+
+## F2.2 Situação de partida (fatos, commit `20bb6ef`)
+
+| Item | Estado |
+| :-- | :-- |
+| Home (`src/index.html`) | Bloco `PF:START/END` gerado por `gen-portfolio.mjs`: hero, Sobre, Mapa de Linhas, competências por linha, resultados, experiência com 19 projetos STAR inline, formação, certificações, trilhas Alura, recomendações e rodapé. Estilo em `src/index.css` (ADR-pf-001). |
+| Currículo (`src/curriculo.html`) | Versão clássica, com os blocos `CV:*` do mesmo gerador, Tailwind (`input.css`), Font Awesome e um modal para o STAR (`src/js/curriculo.js`). Não tem Mapa de Linhas nem resultados. |
+| Gêmeo `public/curriculo.md` | Gerado do `cv.json`; já tem o conteúdo completo. |
+
+## F2.3 Decisão de desenho (recomendada; o autor confirma no cartão de decisão da thread)
+
+**DF2-1.** O `/curriculo` passa a usar o mesmo bloco gerado da home atual (padrão `pf-`), e a
+versão clássica sai. Motivo: o bloco `PF` já cobre tudo o que a versão clássica mostra, com o STAR
+inline (sem modal) e sem Tailwind nem Font Awesome. Um só gerador e uma só aparência alimentam a
+Trajetória.
+
+## F2.4 Requisitos
+
+- **RF-F2-01.** `src/curriculo.html` contém um bloco `<!-- PF:START … PF:END -->` gerado por
+  `gen-portfolio.mjs`, com o mesmo conteúdo do bloco da home. Os blocos `CV:*` saem.
+- **RF-F2-02.** O `<head>` do currículo mantém título, descrição, `canonical`, OG, JSON-LD e o bloco
+  AEO. Troca `input.css` e Font Awesome por `index.css`.
+- **RF-F2-03.** O escopo da exceção de paleta do ADR-pf-001 passa a incluir `src/curriculo.html`,
+  que carrega `src/index.css`. Nenhuma cor nova; os hexadecimais continuam só em `src/index.css`.
+- **RF-F2-04.** A barra de seções do currículo é a mesma da home (`.pf-nav`, "Seções da página"),
+  abaixo do cabeçalho comum.
+- **RF-F2-05.** Saem `src/js/curriculo.js` e o modal. O rodapé gerado deixa de ter o link
+  "Currículo em formato clássico" e passa a ter "Trajetória completa" (`/curriculo.html`) só na home.
+- **RF-F2-06.** A home não muda de conteúdo na F2. O conteúdo fica duplicado entre `/` e
+  `/curriculo` até a F3, com `canonical` próprio em cada página.
+- **RF-F2-07.** `public/curriculo.md` continua gerado e igual.
+
+## F2.5 Testes
+
+- `tests/curriculo.spec.js` passa a conferir o bloco `pf-`: um `h1`; 19 cartões STAR; o Mapa de
+  Linhas com 7 linhas; o quadro de resultados; as certificações; as recomendações; nenhum
+  `fetch` em runtime; axe sem violações sérias, agora **sem** exceção de contraste.
+- `index.spec.js` e `index.nojs.spec.js` continuam como estão (a home não muda).
+- `site-header.spec.js`: o caso "a barra de seções do currículo fica abaixo do cabeçalho" passa
+  a usar `.pf-nav`.
+- `portfolio.tokens.test.mjs` continua (hexadecimais só em `index.css`).
+
+## F2.6 Critérios de aceite
+
+- **CA-F2-01.** Todo item de conteúdo da home atual existe em `/curriculo`.
+- **CA-F2-02.** `/curriculo` não carrega `input.css`, Font Awesome nem `curriculo.js`.
+- **CA-F2-03.** A catraca de acessibilidade não sobe em `curriculo.html` nem em `en/curriculo.html`.
+- **CA-F2-04.** `gen-portfolio.mjs --check` passa no gate.

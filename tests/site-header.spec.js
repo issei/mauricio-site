@@ -119,7 +119,7 @@ test('fica fixo no topo ao rolar (Q6)', async ({ page }) => {
 test('a barra de seções do currículo fica abaixo do cabeçalho (RF-F1b-16)', async ({ page }) => {
   await page.goto('/curriculo.html');
   const sh = await page.locator('header.sh').boundingBox();
-  const secoes = await page.getByRole('navigation', { name: 'Seções do currículo' }).boundingBox();
+  const secoes = await page.getByRole('navigation', { name: 'Seções da página' }).boundingBox();
   expect(secoes.y).toBeGreaterThanOrEqual(sh.y + sh.height - 1);
 });
 

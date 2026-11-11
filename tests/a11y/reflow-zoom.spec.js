@@ -48,35 +48,6 @@ testDoGate(test, 'salesforce-agentic-dev')('a 1280px blocos que cabem não ganha
   expect(marcados).toBeLessThan(total);
 });
 
-testDoGate(test, 'curriculo')('curriculo: modal do projeto fecha por teclado, prende o foco e devolve ao gatilho', async ({ page }) => {
-  await page.goto('/curriculo.html');
-  await page.waitForFunction(() => typeof window.openModal === 'function');
-  const gatilho = page.locator('#projects-container .project-card').first().getByRole('button', { name: 'Saiba Mais' });
-  await gatilho.focus();
-  await page.keyboard.press('Enter');
-  const modal = page.locator('#project-modal');
-  await expect(modal).toBeVisible();
-
-  const fechar = modal.getByRole('button', { name: 'Fechar detalhe do projeto' });
-  expect(await fechar.evaluate((e) => e.tagName)).toBe('BUTTON');
-
-  // fundo inerte: nenhum Tab alcança a página atrás
-  for (let i = 0; i < 8; i++) {
-    await page.keyboard.press('Tab');
-    const fora = await page.evaluate(() => {
-      const a = document.activeElement;
-      return a !== document.body && !a.closest('#project-modal');
-    });
-    expect(fora, `Tab #${i} saiu do modal`).toBe(false);
-  }
-
-  await fechar.focus();
-  await page.keyboard.press('Enter');
-  await expect(modal).toBeHidden();
-  await expect(gatilho).toBeFocused();
-  expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
-});
-
 testDoGate(test, 'proposta', 'service-operations-2-0', 'sustentacao', 'curriculo')('movimento reduzido: nenhuma animação infinita nas propostas e no currículo', async ({ browser }) => {
   test.setTimeout(60_000); // 4 páginas com 1,2 s de espera cada: no WebKit do CI levava 24 s e às vezes passava dos 30 s padrão
   const ctx = await browser.newContext({ reducedMotion: 'reduce' });
