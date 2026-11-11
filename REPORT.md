@@ -283,3 +283,7 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Catraca:** `a11y-sweep --only` em `curriculo` e `termos`: sem regressão. `gen-portfolio --check` em dia.
   - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou `en/curriculo.html`, `en/termos.html` e `en/termos.md`. `i18n:check` com 82 espelhos em dia.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 32 — Botão Contato no hero da home (11/11/2026).** SDD-F1-F1b F3.8 (RF-F3-15), escolha do autor depois de uma auditoria externa. O hero ganha um quarto link com classe `pf-btn pf-btn--ghost`, texto "Contato", que leva a `#contact` (rodapé com e-mail e redes) na mesma página. Mesmo estilo e mesmo foco visível dos três botões que já existiam; sem cor nova.
+  - **Testes:** `index.spec.js` confere os 4 botões, o texto e que `#contact` mostra o e-mail. Chromium (`index.spec`, `index.nojs.spec`): 20 passam, incluindo axe sem violações sérias e sem rolagem horizontal a 375 px.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou `en/index.html` ("Contact"). `i18n:check` com 82 espelhos em dia, 0 ocorrências de "Mauritius".
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.

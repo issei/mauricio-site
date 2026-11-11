@@ -689,6 +689,9 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
   o contato. Nenhuma frase nova além dos rótulos das seções.
 - **RF-F3-14.** O `--check` do gerador, que já roda no gate, cobra que `public/index.md` esteja em dia.
   Teste: `tests/portfolio.indexmd.test.mjs`.
+- **RF-F3-15.** O hero ganha um quarto botão, "Contato", que leva à seção Contato do rodapé da
+  própria home (`#contact`: e-mail e redes). Não é `mailto:`, porque o link falha para quem não tem
+  programa de e-mail configurado. Escolha do autor em 11/11/2026, depois da auditoria externa.
 
 ---
 
