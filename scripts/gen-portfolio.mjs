@@ -154,6 +154,60 @@ function starCard(p) {
 </details>`;
 }
 
+// ---------------------------------------------------------------------------
+// Linha do tempo (SDD-F1-F1b, Parte 9, RF-F9-01 a RF-F9-07). O texto é o conteúdo;
+// a faixa é decorativa (aria-hidden) e só desenha o que a lista já diz.
+// ---------------------------------------------------------------------------
+/** Fim da escala da faixa (RF-F9-07): fixo, para a saída não depender da data do build. */
+const FIM_DA_ESCALA = 2027; // a faixa vai até o fim de 2026; o emprego atual termina em "hoje"
+const MESES = { jan: 0, fev: 1, mar: 2, abr: 3, mai: 4, jun: 5, jul: 6, ago: 7, set: 8, out: 9, nov: 10, dez: 11 };
+const MES_LONGO = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+/** "fev de 2018 – o momento (…)" → { ini, fim, atual, dur, anoIni, anoFim, mesIni }. */
+function periodo(j) {
+  const m = String(j.Periodo).match(/^(\p{L}{3}) de (\d{4}) – (?:(\p{L}{3}) de (\d{4})|o momento)(?: \(([^)]+)\))?$/u)
+    ?? fail(`linha do tempo: período fora do padrão em "${j.Empresa}": ${j.Periodo}`);
+  const mes = (k) => MESES[k.toLowerCase()] ?? fail(`linha do tempo: mês "${k}" desconhecido`);
+  const atual = !m[3];
+  const ini = +m[2] + mes(m[1]) / 12;
+  const fim = atual ? FIM_DA_ESCALA : +m[4] + (mes(m[3]) + 1) / 12;
+  return { ini, fim, atual, dur: m[5] ?? null, anoIni: +m[2], anoFim: atual ? null : +m[4], mesIni: mes(m[1]) };
+}
+const pct = (x) => `${(Math.round(x * 1000) / 10).toFixed(1)}%`;
+
+function linhaDoTempo() {
+  const itens = jobs.map((j) => ({ j, ...periodo(j) })).sort((a, b) => a.ini - b.ini);
+  const inicio = Math.floor(itens[0].ini);
+  const span = FIM_DA_ESCALA - inicio;
+  // Faixas paralelas: um período que começa antes do fim de outro vai para a faixa livre seguinte.
+  const fimDaFaixa = [];
+  for (const it of itens) {
+    let f = fimDaFaixa.findIndex((fim) => fim <= it.ini);
+    if (f === -1) { f = fimDaFaixa.length; fimDaFaixa.push(0); }
+    fimDaFaixa[f] = it.fim;
+    it.faixa = f;
+  }
+  const atual = itens.find((it) => it.atual) ?? fail('linha do tempo: nenhum emprego atual');
+  const resumo = `Carreira desde ${inicio}, em ${itens.length} empresas. Hoje: ${esc(atual.j.Cargo)} · ${esc(atual.j.Empresa)}, desde ${MES_LONGO[atual.mesIni]} de ${atual.anoIni}.`;
+  const marcas = [];
+  for (let a = Math.ceil(inicio / 5) * 5; a < FIM_DA_ESCALA; a += 5) marcas.push(a);
+  const faixa = `<div class="pf-tl-faixa" aria-hidden="true" style="--faixas:${fimDaFaixa.length}">
+${itens.map((it, n) => `  <span class="pf-tl-bloco${it.atual ? ' pf-tl-bloco--atual' : ''}" data-tl="${it.j.id}" style="--x:${pct((it.ini - inicio) / span)};--w:${pct((it.fim - it.ini) / span)};--y:${it.faixa};--n:${n}"><span class="pf-tl-sigla">${esc(it.j.Empresa)}</span></span>`).join('\n')}
+${marcas.map((a) => `  <span class="pf-tl-marca" style="--x:${pct((a - inicio) / span)}">${a}</span>`).join('\n')}
+</div>`;
+  const lista = `<ol class="pf-tl-lista">
+${itens.map((it) => `  <li data-tl="${it.j.id}"><a href="#${it.j.id}"><span class="pf-tl-quando">${it.anoIni} – ${it.atual ? 'hoje' : it.anoFim}</span> <strong class="pf-tl-cargo">${esc(it.j.Cargo)}</strong> <span class="pf-tl-org">${esc(it.j.Empresa)}</span> <span class="pf-tl-dur">${it.atual ? 'emprego atual' : esc(it.dur ?? '')}</span></a></li>`).join('\n')}
+</ol>`;
+  // RF-F9-04: o script só arma e dispara a animação (classes); não insere texto. Sem JS, ou com
+  // movimento reduzido, a faixa aparece pronta.
+  const anima = `<script>(function(){var t=document.querySelector(".pf-tl");if(!t||!("IntersectionObserver"in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;t.classList.add("pf-tl--armada");new IntersectionObserver(function(e,o){if(e[0].isIntersecting){t.classList.add("pf-tl--vista");o.disconnect();}},{threshold:.35}).observe(t);})();</script>`;
+  return `<p class="pf-tl-resumo">${resumo}</p>
+<div class="pf-tl">
+${faixa}
+${lista}
+</div>
+${anima}`;
+}
+
 function experience() {
   return jobs.map((j) => {
     const own = projects.filter((p) => p.Empresa === j.Empresa);
@@ -251,7 +305,7 @@ ${cv.Recomendacoes_Recebidas.map((r) => `  <figure class="pf-rec">
 </div>`;
 }
 
-const NAV = [['#about', 'Sobre'], ['#experience', 'Experiência'], ['#education', 'Formação'], ['#recommendations', 'Recomendações'], ['#contact', 'Contato']];
+const NAV = [['#linha-do-tempo', 'Linha do tempo'], ['#about', 'Sobre'], ['#experience', 'Experiência'], ['#education', 'Formação'], ['#recommendations', 'Recomendações'], ['#contact', 'Contato']];
 /** Seções da home editorial (F3, RF-F3-07): a mesma lista alimenta o rodapé. */
 const NAV_HOME = [['#about', 'Sobre'], ['#temas', 'Temas'], ['#provas', 'Provas'], ['#destaques', 'Destaques'], ['#contact', 'Contato']];
 const dateBR = (iso) => iso.split('-').reverse().join('/');
@@ -284,6 +338,7 @@ const pfBlock = (page) => `<!-- PF:START — gerado por scripts/gen-portfolio.mj
 <div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
 ${hero()}
 <main id="conteudo">
+${section('linha-do-tempo', 'Linha do tempo', '', linhaDoTempo())}
 ${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
 <h3 class="pf-h3">Competências</h3>
 ${linesSection()}`)}
