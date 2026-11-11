@@ -3,7 +3,7 @@
  * Grava o currículo (public/cv.json) como HTML ESTÁTICO em duas páginas:
  *
  *   src/index.html     → home editorial         (bloco <!-- PF:START/END -->, SDD-F1-F1b, Parte 6, F3)
- *   src/curriculo.html → Trajetória completa, com o Mapa de Linhas (Parte 3, F2)
+ *   src/curriculo.html → Trajetória completa (Parte 3, F2)
  *   public/curriculo.md → gêmeo Markdown de /curriculo (arquivo inteiro)
  *
  * Por que build-time e não fetch: a SDD do portfólio (docs/specs/pages/portfolio/)
@@ -12,9 +12,8 @@
  *
  * PROCEDÊNCIA: todo texto vem literal de public/cv.json (e, na home, do YAML do
  * ecossistema: pilares, títulos, formato, natureza). public/star.json só
- * valida a contagem de projetos por ano (SDD §13). A única camada editorial é
- * LINE_OF (termo → linha do mapa) — e um termo sem linha QUEBRA o gerador, para
- * nenhum dado sumir do mapa em silêncio.
+ * valida a contagem de projetos por ano (SDD §13). O Mapa de Linhas saiu em
+ * 11/11/2026 (SDD-F1-F1b, Parte 7): o autor ouviu de leitores que ele confundia.
  *
  * Uso: node scripts/gen-portfolio.mjs [--check]
  */
@@ -54,75 +53,14 @@ for (const [year, cases] of Object.entries(star)) {
 }
 
 // ---------------------------------------------------------------------------
-// Linhas do mapa = grupos de Habilidades. Ordem escolhida para que as
-// competências de cada empregador fiquem em linhas vizinhas (cápsulas curtas).
-// ---------------------------------------------------------------------------
-const LINES = [
-  { id: 'dev', code: 'DEV', group: 'Desenvolvimento' },
-  { id: 'lid', code: 'LID', group: 'Liderança & Habilidades Interpessoais' },
-  { id: 'cld', code: 'CLD', group: 'Cloud & DevOps' },
-  { id: 'plt', code: 'PLT', group: 'Plataformas & APIs' },
-  { id: 'agi', code: 'AGI', group: 'Gestão & Metodologias Ágeis' },
-  { id: 'uxd', code: 'UXD', group: 'UX & Design' },
-  { id: 'dat', code: 'DAT', group: 'Data Science & Analytics' },
-];
-for (const l of LINES) if (!cv.Habilidades[l.group]) fail(`grupo "${l.group}" ausente em Habilidades`);
-if (LINES.length !== Object.keys(cv.Habilidades).length) fail('Habilidades tem grupo sem linha no mapa');
-const LINE = Object.fromEntries(LINES.map((l, i) => [l.id, { ...l, row: i + 2 }]));
-
-/** Termo de Competencias / Tecnologias / curso → linha. ⚠ Editorial: revisar (spec §4). */
-const LINE_OF = {
-  // Competencias dos empregadores
-  'Salesforce Administration': 'plt', SRE: 'cld', 'Liderança Técnica': 'lid', 'Arquitetura de Soluções': 'plt',
-  'Amazon Web Services': 'cld', 'Experiência do usuário (UX)': 'uxd', Java: 'dev', 'APIs REST': 'plt', Scrum: 'agi',
-  'Liderança de equipe': 'lid', Android: 'dev', Ionic: 'dev', 'Oracle PL/SQL': 'dev',
-  'Java (J2EE/J2SE)': 'dev', MVC: 'dev', UML: 'dev', MDA: 'dev', DB2: 'dev', PostgreSQL: 'dev',
-  EJB: 'dev', JBoss: 'dev', Oracle: 'dev',
-  // Tecnologias dos projetos STAR
-  Salesforce: 'plt', Quicksight: 'dat', AWS: 'cld', APIs: 'plt', STS: 'plt', 'WhatsApp API': 'plt',
-  Ipricing: 'plt', 'Low-code': 'plt', 'Cockpit Rede': 'plt', 'Itaú PJ': 'plt', Cockpit: 'plt',
-  'Força Campo': 'plt', 'Força Campo App': 'plt', Mainframe: 'plt',
-  Agile: 'agi', 'Gestão de Contratos': 'agi', Orçamento: 'agi',
-  DevOps: 'cld', Sybase: 'cld', Infraestrutura: 'cld', 'PCI Compliance': 'cld', Splunk: 'cld',
-  // Formação dentro do eixo do mapa
-  'Pós-graduação em Ciência de Dados – Data Analytics / Big Data': 'dat',
-};
-const lineOf = (term) => LINE_OF[term] ?? fail(`termo sem linha no mapa: "${term}" (adicione em LINE_OF)`);
-
-// ---------------------------------------------------------------------------
 // Dados derivados
 // ---------------------------------------------------------------------------
 const jobs = cv.Experiencia
-  .map((e) => ({ ...e, id: `exp-${slug(e.Empresa)}`, start: firstYear(e.Periodo), lines: [...new Set(e.Competencias.map(lineOf))] }))
+  .map((e) => ({ ...e, id: `exp-${slug(e.Empresa)}`, start: firstYear(e.Periodo) }))
   .sort((a, b) => b.start - a.start);
 const START_YEAR = Math.min(...jobs.map((j) => j.start));
-const projects = cv.Projetos.map((p) => ({ ...p, id: `p-${p.Periodo}-${slug(p.Nome)}`, lines: [...new Set(p.Tecnologias.map(lineOf))] }));
+const projects = cv.Projetos.map((p) => ({ ...p, id: `p-${p.Periodo}-${slug(p.Nome)}` }));
 const yearGroupId = (empresa, year) => `${slug(empresa)}-${year}`;
-const edu = cv.Formacao_Academica.filter((f) => firstYear(f.Periodo) >= START_YEAR)
-  .map((f) => ({ ...f, year: firstYear(f.Periodo), line: lineOf(f.Curso) }));
-
-// Estações simples: (linha, ano) → itens
-const stops = new Map();
-const addStop = (line, year, item) => {
-  const k = `${line}|${year}`;
-  if (!stops.has(k)) stops.set(k, { line, year, items: [] });
-  stops.get(k).items.push(item);
-};
-for (const p of projects) for (const l of p.lines) addStop(l, +p.Periodo, { name: p.Nome, href: `#${yearGroupId(p.Empresa, p.Periodo)}` });
-for (const f of edu) addStop(f.line, f.year, { name: f.Curso, href: '#education' });
-
-// Início de cada linha: a primeira estação (inclui empregadores). A linha segue
-// contínua até hoje — a competência continua em uso, com ou sem projeto público.
-const span = Object.fromEntries(LINES.map((l) => [l.id, { first: Infinity, firstName: '' }]));
-const touch = (line, year, name) => {
-  const s = span[line];
-  if (year < s.first) Object.assign(s, { first: year, firstName: name });
-};
-for (const j of jobs) for (const l of j.lines) touch(l, j.start, j.Empresa);
-for (const s of stops.values()) touch(s.line, s.year, s.items[0].name);
-for (const l of LINES) if (span[l.id].first === Infinity) fail(`linha ${l.code} sem nenhuma estação`);
-
-const col = (year) => year - START_YEAR + 2;
 
 // ---------------------------------------------------------------------------
 // Blocos da home (index.html)
@@ -152,16 +90,12 @@ const pills = (arr, tag = 'ul') => tag === 'ul'
   ? `<ul class="pf-pills">${arr.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`
   : `<span class="pf-pills">${arr.map((t) => `<span>${esc(t)}</span>`).join('')}</span>`;
 const bullets = (arr, fmt = esc) => `<ul>${arr.map((t) => `<li>${fmt(t)}</li>`).join('')}</ul>`;
-const lineTicks = (ids) => `<ul class="pf-ticks" aria-label="Linhas do mapa">${ids.map((id) =>
-  `<li data-l="${id}"><abbr title="${esc(LINE[id].group)}">${LINE[id].code}</abbr></li>`).join('')}</ul>`;
-
 function hero() {
   const cur = jobs[0];
   const [city, mode] = cur.Local.split(' · ');
   // <section> rotulada, não <header>: o único banner da página é o cabeçalho comum
   // (SDD-F1-F1b, RF-F1b-07); o rótulo faz do hero uma região, e nenhum conteúdo fica fora de landmark.
   return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
-  <div class="pf-hero-lines" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
   <div class="pf-wrap">
     <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
     <h1 id="pf-nome">${esc(cv.Nome)}</h1>
@@ -182,56 +116,11 @@ function hero() {
 </section>`;
 }
 
-function metroMap() {
-  const N = NOW_YEAR - START_YEAR + 1;
-  const out = [];
-  // Rótulos de ano (topo no desktop, coluna esquerda no mobile)
-  for (let y = START_YEAR; y <= NOW_YEAR; y++) {
-    out.push(`<span class="pf-yr" style="--c:${col(y)};--r:1" aria-hidden="true">${y}</span>`);
-  }
-  // Siglas das linhas
-  for (const l of LINES) out.push(`<span class="pf-code" data-l="${l.id}" style="--c:1;--r:${LINE[l.id].row}" aria-hidden="true">${l.code}</span>`);
-  // Traçado: contínuo da 1ª estação até hoje
-  for (const l of LINES) {
-    const { first } = span[l.id];
-    out.push(`<span class="pf-seg" data-l="${l.id}" style="--c:${col(first)};--c2:${col(NOW_YEAR) + 1};--r:${LINE[l.id].row};--n:${NOW_YEAR - first + 1}" aria-hidden="true"></span>`);
-  }
-  // Estações em ordem cronológica — é a ordem de leitura do leitor de tela
-  const events = [
-    ...jobs.map((j) => ({ year: j.start, order: 0, html: hub(j) })),
-    ...[...stops.values()].map((s) => ({ year: s.year, order: LINE[s.line].row, html: stop(s) })),
-  ].sort((a, b) => a.year - b.year || a.order - b.order);
-  for (const e of events) out.push(e.html);
-
-  return `<div class="pf-metro" id="mapa">
-  <ul class="pf-legend" aria-label="Linhas: grupos de competência">
-${LINES.map((l) => `    <li><a class="pf-key" data-l="${l.id}" href="#linha-${l.id}"><span class="pf-key-code">${l.code}</span> ${esc(l.group)} <span class="pf-key-since">desde ${span[l.id].first}</span></a></li>`).join('\n')}
-  </ul>
-  <nav class="pf-grid" style="--years:${N}" aria-label="Mapa de linhas: competências e projetos por ano, de ${START_YEAR} a ${NOW_YEAR}">
-${out.join('\n')}
-  </nav>
-  <p class="pf-map-note">Cada linha é um grupo de competência: começa na primeira estação em que ela aparece e segue até hoje. Os pontos são projetos, e as estações que cruzam várias linhas são empregadores.</p>
-</div>`;
-
-  function hub(j) {
-    const rows = j.lines.map((id) => LINE[id].row);
-    const r1 = Math.min(...rows), r2 = Math.max(...rows) + 1;
-    const names = j.lines.map((id) => LINE[id].group).join(', ');
-    return `<a class="pf-hub" href="#${j.id}" style="--c:${col(j.start)};--r:${r1};--r2:${r2}"><span class="pf-sr">${j.start}, ${esc(j.Empresa)}: ${esc(names)}</span></a>
-<span class="pf-hub-name" style="--c:${col(j.start)};--r:${LINES.length + 2}" aria-hidden="true">${esc(j.Empresa)}</span>`;
-  }
-  function stop(s) {
-    const n = s.items.length;
-    return `<a class="pf-stop" data-l="${s.line}" href="${s.items[0].href}" style="--c:${col(s.year)};--r:${LINE[s.line].row}">${n > 1 ? `<span class="pf-stop-n" aria-hidden="true">${n}</span>` : ''}<span class="pf-sr">${s.year}, ${esc(LINE[s.line].group)}: ${s.items.map((i) => esc(i.name)).join('; ')}</span></a>`;
-  }
-}
-
 function linesSection() {
   return `<ul class="pf-lines">
-${LINES.map((l) => `  <li class="pf-line-card" id="linha-${l.id}" data-l="${l.id}">
-    <h4><span class="pf-key-code">${l.code}</span> ${esc(l.group)}</h4>
-    <p class="pf-since">Desde ${span[l.id].first} (primeira estação: ${esc(span[l.id].firstName)})</p>
-    ${pills(cv.Habilidades[l.group])}
+${Object.entries(cv.Habilidades).map(([grupo, itens]) => `  <li class="pf-line-card">
+    <h4>${esc(grupo)}</h4>
+    ${pills(itens)}
   </li>`).join('\n')}
 </ul>`;
 }
@@ -250,7 +139,7 @@ ${rows.map(({ r, p }) => `  <li>
 function starCard(p) {
   const key = p.Resultados.find(hasMetric);
   const step = (letter, label, body) => `<section class="pf-step" data-step="${letter}"><h6>${label}</h6>${body}</section>`;
-  return `<details class="pf-star" id="${p.id}" data-l="${p.lines[0]}">
+  return `<details class="pf-star" id="${p.id}">
   <summary>
     <h5>${esc(p.Nome)}</h5>
     ${key ? `<span class="pf-star-key">${hl(key)}</span>` : ''}
@@ -273,7 +162,6 @@ function experience() {
   <header class="pf-exp-head">
     <p class="pf-exp-when">${esc(j.Periodo)} · ${esc(j.Local)}</p>
     <h3 id="${j.id}-h">${esc(j.Cargo)} <span class="pf-exp-org">${esc(j.Empresa)}</span></h3>
-    ${lineTicks(j.lines)}
   </header>
   <p class="pf-exp-desc">${esc(j.Descricao)}</p>
   ${j.Resultados?.length ? `<h4 class="pf-h4">Resultados</h4>${bullets(j.Resultados, hl)}` : ''}
@@ -393,14 +281,11 @@ ${body}
 
 /** Bloco PF da home e do currículo (SDD-F1-F1b, Parte 3, RF-F2-01): mesmo conteúdo, rodapé por página. */
 const pfBlock = (page) => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json (NÃO editar à mão) -->
-<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span>${LINES.slice(0, 5).map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
-<div class="pf-bundle" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
+<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
 ${hero()}
 <main id="conteudo">
 ${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
-<h3 class="pf-h3">Mapa de linhas</h3>
-${metroMap()}
-<h3 class="pf-h3">Competências por linha</h3>
+<h3 class="pf-h3">Competências</h3>
 ${linesSection()}`)}
 ${section('results', 'Resultados quantificados', 'Resultados de projeto que citam percentual, valor ou prazo, transcritos sem edição. Cada linha leva ao projeto de origem.', board())}
 ${section('experience', 'Experiência', `${jobs.length} empregadores e ${projects.length} projetos descritos no formato STAR (Situação, Tarefas, Ações, Resultados). Abra um projeto para ver o detalhe.`, `<div class="pf-exps">\n${experience()}\n</div>`)}
@@ -454,7 +339,6 @@ const natTag = (n) => `<span class="pf-nat">${esc(NATUREZAS[n.natureza])}</span>
 function homeHero() {
   const cur = jobs[0];
   return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
-  <div class="pf-hero-lines" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
   <div class="pf-wrap">
     <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
     <h1 id="pf-nome">${esc(cv.Nome)}</h1>
@@ -490,11 +374,7 @@ ${provas.map(({ p, r }) => `  <li>
     <a class="pf-board-src" href="./curriculo.html#${p.id}">${esc(p.Nome)} · ${p.Periodo}</a>
   </li>`).join('\n')}
 </ol>
-<h3 class="pf-h3">Mapa de Linhas, resumido</h3>
-<ul class="pf-legend pf-legend--home" aria-label="Linhas: grupos de competência">
-${LINES.map((l) => `  <li><span class="pf-key" data-l="${l.id}"><span class="pf-key-code">${l.code}</span> ${esc(l.group)} <span class="pf-key-since">desde ${span[l.id].first}</span></span></li>`).join('\n')}
-</ul>
-<p class="pf-more"><a href="./curriculo.html#mapa">Ver o mapa completo</a></p>`;
+`;
 }
 
 function destaques() {
@@ -507,10 +387,9 @@ ${DESTAQUES.map((s) => { const n = eco.nodes[s]; return `  <li class="pf-destaqu
 </ul>`;
 }
 
-/** Bloco PF da home editorial (RF-F3-01): hero, Sobre, Pilares, Provas + mapa resumido, Destaques. */
+/** Bloco PF da home editorial (RF-F3-01): hero, Sobre, Pilares, Provas, Destaques. */
 const homeBlock = () => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json e specs/ecosystem.nav.yaml (NÃO editar à mão) -->
-<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span>${LINES.slice(0, 5).map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
-<div class="pf-bundle" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
+<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
 ${homeHero()}
 <main id="conteudo">
 ${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>

@@ -674,3 +674,29 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
   `scripts/i18n/engine.py` usa o mesmo marcador das siglas compostas. Antes, "Maurício" saía
   "Mauritius" nos espelhos `/en/`. Teste: `tests/i18n.test.mjs`. Os espelhos afetados são
   traduzidos de novo no mesmo PR.
+
+---
+
+# Parte 7 — Saída do Mapa de Linhas
+
+> Origem: pedido do autor em 11/11/2026. Ele mostrou o mapa a algumas pessoas: a metáfora (linhas de
+> metrô, estações, empregadores que cruzam linhas) confundiu e não ajudou a entender a trajetória.
+> Requisitos: **RF-F7M-xx**.
+
+## F7M.1 Requisitos
+
+- **RF-F7M-01.** Sai o Mapa de Linhas de `/curriculo` (grade, legenda, nota de leitura) e o resumo
+  da home. Saem também as metáforas visuais de linha: as faixas do hero, o feixe lateral, os
+  "trilhos" do fundo, as siglas de linha nos empregadores e a cor por linha nos cartões STAR.
+- **RF-F7M-02.** "Competências por linha" vira "Competências": um cartão por grupo de
+  `cv.Habilidades`, na ordem do `cv.json`, sem sigla nem ano de início.
+- **RF-F7M-03.** Nenhum conteúdo do `cv.json` some de `/curriculo` (o teste sem JS confere).
+- **RF-F7M-04.** A paleta `pf-` fica (ADR-pf-001). Nenhuma cor nova.
+- **RF-F7M-05.** Uma nova forma de mostrar a trajetória é decisão do autor, depois desta remoção.
+
+## F7M.2 Testes
+
+- `tests/index.spec.js`: `/curriculo` sem `#mapa`, `.pf-metro`, `.pf-grid` nem `[data-l]`; os
+  cartões de competências seguem os grupos do `cv.json`.
+- `tests/curriculo.spec.js` e `tests/index.nojs.spec.js`: os cartões de competências substituem a
+  legenda e a grade.

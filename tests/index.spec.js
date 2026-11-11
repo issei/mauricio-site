@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import YAML from 'yaml';
 import { expectNoSeriousA11yViolations } from './_helpers/axe.js';
 
-// Home editorial (F3) — SDD-F1-F1b, Parte 6. O currículo completo (Mapa de Linhas,
+// Home editorial (F3) — SDD-F1-F1b, Parte 6. O currículo completo (competências,
 // STAR, certificações, recomendações) vive em /curriculo desde a F2: os critérios §12 da
 // SDD do portfólio continuam valendo lá, contra public/cv.json.
 
@@ -41,7 +41,6 @@ test.describe('Home editorial (F3)', () => {
     const ids = await page.locator('main > section').evaluateAll((ss) => ss.map((s) => s.id));
     expect(ids).toEqual(['about', 'pilares', 'provas', 'destaques']);
     await expect(page.locator('details.pf-star')).toHaveCount(0);
-    await expect(page.locator('.pf-grid')).toHaveCount(0);
     await expect(page.locator('#recommendations')).toHaveCount(0);
   });
 
@@ -61,7 +60,6 @@ test.describe('Home editorial (F3)', () => {
     expect(n).toBeLessThanOrEqual(5);
     const textos = await page.locator('.pf-prova-text').allTextContents();
     for (const t of textos) expect(resultados, t).toContain(t.trim());
-    await expect(page.locator('.pf-legend--home .pf-key')).toHaveCount(Object.keys(cv.Habilidades).length);
     const alvos = await page.locator('.pf-provas a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
     await page.goto(CV_PATH);
     for (const a of alvos) {
@@ -181,12 +179,11 @@ test.describe('Trajetória — critérios §12 do portfólio', () => {
     expect(html).not.toContain('cv-renderer');
   });
 
-  test('mapa: toda estação é link para um alvo existente; legenda cobre as 7 linhas', async ({ page }) => {
+  test('Parte 7: sem Mapa de Linhas; competências por grupo, como no cv.json', async ({ page }) => {
     await page.goto(CV_PATH);
-    await expect(page.locator('.pf-legend .pf-key')).toHaveCount(Object.keys(cv.Habilidades).length);
-    await expect(page.locator('.pf-grid .pf-hub')).toHaveCount(cv.Experiencia.length);
-    const hrefs = await page.locator('.pf-grid a').evaluateAll((as) => [...new Set(as.map((a) => a.getAttribute('href')))]);
-    for (const h of hrefs) await expect(page.locator(h), h).toHaveCount(1);
+    await expect(page.locator('#mapa, .pf-metro, .pf-grid, [data-l]')).toHaveCount(0);
+    const grupos = await page.locator('.pf-line-card h4').allTextContents();
+    expect(grupos.map((g) => g.trim())).toEqual(Object.keys(cv.Habilidades));
   });
 
   test('mobile 375px: sem scroll horizontal', async ({ page }) => {

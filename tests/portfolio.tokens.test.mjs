@@ -1,4 +1,5 @@
-// ADR-pf-001: cores das linhas do mapa (src/index.css) — contraste e escopo.
+// ADR-pf-001: paleta pf- (src/index.css) — contraste e escopo. As 7 cores --pf-l-* eram
+// as linhas do mapa (removido em 11/11/2026); seguem em uso no destaque de métricas e no fundo.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';

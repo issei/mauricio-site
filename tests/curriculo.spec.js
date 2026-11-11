@@ -13,7 +13,7 @@ test.describe('Currículo (Trajetória, F2)', () => {
     const res = await page.goto(PATH);
     expect(res?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.locator('#mapa .pf-legend li')).toHaveCount(7);
+    await expect(page.locator('.pf-line-card')).toHaveCount(Object.keys(cv.Habilidades).length);
     await expect(page.locator('#results .pf-board li').first()).toBeVisible();
     await expect(page.locator('details.pf-star')).toHaveCount(cv.Projetos.length);
     await expect(page.locator('.pf-exp')).toHaveCount(cv.Experiencia.length);

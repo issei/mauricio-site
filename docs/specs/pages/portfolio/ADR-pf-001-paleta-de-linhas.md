@@ -1,6 +1,6 @@
 # ADR-pf-001: paleta categórica das linhas (namespace `pf-`)
 
-**Status:** aceito
+**Status:** aceito; o Mapa de Linhas saiu em 11/11/2026 (SDD-F1-F1b, Parte 7). A paleta `pf-` e as 7 cores continuam em `src/index.css` (métricas e fundo); nenhuma cor nova.
 **Data:** 2026-09-22
 **Contexto:** home "Mapa de Linhas" (`src/index.html`)
 
