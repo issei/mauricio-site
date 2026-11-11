@@ -881,8 +881,8 @@ export const PAGES = [
     og: { eyebrow: 'Tech Lead · Especialista em Análise de Sistemas', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS e APIs' },
   },
   {
-    // Home anterior, preservada com a mesma aparência; conteúdo gravado no
-    // HTML por scripts/gen-portfolio.mjs (blocos CV:*), sem fetch.
+    // Trajetória: desde a F2 (SDD-F1-F1b, Parte 3), o mesmo bloco PF da home,
+    // gravado no HTML por scripts/gen-portfolio.mjs, sem fetch.
     slug: 'curriculo', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
     title: 'Currículo — Maurício Yokoyama Issei',
     description: 'Currículo completo de Maurício Yokoyama Issei: mais de 20 anos em desenvolvimento de software e liderança técnica, com foco em Salesforce, AWS e APIs.',

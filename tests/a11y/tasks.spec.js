@@ -70,23 +70,3 @@ testDoGate(test, 'operacao-capital-cognitivo')('OCC cap. 3: monta a fração só
   await expect(page.locator('#formula-validator')).toContainText('Lógica correta');
   await expect(page.locator('#formula-naming')).toBeVisible();
 });
-
-testDoGate(test, 'curriculo')('curriculo: botão secundário mantém 4,5:1 também no hover', async ({ page }) => {
-  await page.goto('/curriculo.html');
-  const btn = page.locator('a.btn-secondary', { hasText: 'LinkedIn' }).first();
-  await btn.hover();
-  await page.waitForTimeout(400); // transição de 0,3 s
-  const { bg, fg } = await btn.evaluate((e) => {
-    const cs = getComputedStyle(e);
-    return { bg: cs.backgroundColor, fg: cs.color };
-  });
-  const lum = (rgb) => {
-    const [r, g, b] = rgb.match(/\d+/g).slice(0, 3).map((v) => {
-      const c = Number(v) / 255;
-      return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-    });
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  };
-  const [a, b] = [lum(bg), lum(fg)].sort((x, y) => y - x);
-  expect((a + 0.05) / (b + 0.05)).toBeGreaterThanOrEqual(4.5);
-});

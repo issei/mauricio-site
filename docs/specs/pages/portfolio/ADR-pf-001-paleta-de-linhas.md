@@ -14,4 +14,4 @@ O Dark Tech tem dois acentos (`#007bff` e `#8a2be2`). O mapa da home desenha 7 l
 2. **Sete cores categóricas**, só como identidade de linha, definidas como `--pf-l-*` em `src/index.css`. **Nenhum hexadecimal** das linhas aparece fora desse arquivo.
 3. **Contraste:** cada cor de linha precisa ter ≥ 4.5:1 sobre `#0d1117`, porque também aparece como texto (siglas e "desde AAAA"). `tests/portfolio.tokens.test.mjs` faz a checagem com `tests/_helpers/contrast.mjs`.
 4. **A cor nunca é o único canal:** toda linha tem sigla de 3 letras e nome por extenso na legenda e nos rótulos acessíveis.
-5. **Escopo:** `src/index.html` e `src/index.css`. Fora deles a exceção não vale. O namespace `pf-` impede o vazamento.
+5. **Escopo:** `src/index.html`, `src/curriculo.html` (desde a F2 da reestruturação, 2026-11-11: a Trajetória usa o mesmo bloco gerado e carrega `src/index.css`; SDD-F1-F1b, Parte 3, RF-F2-03) e `src/index.css`. Fora deles a exceção não vale. O namespace `pf-` impede o vazamento.

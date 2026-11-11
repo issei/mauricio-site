@@ -69,7 +69,7 @@ Assim, buscadores, leitores de currículo (ATS), agentes de IA e tradutores de n
 | Merge na `main` publica em produção. | O `deploy.yml` roda a cada push na `main`. | [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) |
 | Não edite `src/en/**` nem `public/en/**` à mão. | São gerados pelo tradutor e sobrescritos. Corrija o texto em português. | [`sync-i18n`](.claude/skills/sync-i18n/SKILL.md) |
 | Depois de mudar uma página pública em português, sincronize o `/en/`. | O quality gate reprova um espelho desatualizado. | [Versão em inglês](#-versão-em-inglês-en) |
-| Não edite à mão os blocos gerados (`PF:*`, `CV:*`, `EDITORIAL*`) nem `src/videos/` e `src/temas/`. | Os geradores reescrevem esses trechos. | [Conteúdo gerado](#️-conteúdo-gerado) |
+| Não edite à mão os blocos gerados (`PF:*`, `EDITORIAL*`) nem `src/videos/` e `src/temas/`. | Os geradores reescrevem esses trechos. | [Conteúdo gerado](#️-conteúdo-gerado) |
 | Não use fundo claro. A paleta é "Dark Tech". | É o padrão visual do site. | [`STYLE_GUIDE.md`](docs/specs/STYLE_GUIDE.md) |
 | A dívida de acessibilidade só pode diminuir. | A catraca reprova qualquer aumento. | [`tests/a11y/baseline.json`](tests/a11y/baseline.json) |
 | Nenhum script de analytics roda antes do aceite de cookies. | Exigência da LGPD. | [`LEGAL_PAGES.md`](docs/specs/pages/LEGAL_PAGES.md) |
@@ -243,7 +243,7 @@ Alguns arquivos não são escritos à mão. Para mudar o conteúdo deles, edite 
 
 | Gerador | Fonte | Saída |
 | :-- | :-- | :-- |
-| `scripts/gen-portfolio.mjs` | `public/cv.json` (e `public/star.json` para conferência) | Bloco `PF:*` em `src/index.html`, blocos `CV:*` em `src/curriculo.html`, `public/curriculo.md` |
+| `scripts/gen-portfolio.mjs` | `public/cv.json` (e `public/star.json` para conferência) | Bloco `PF:*` em `src/index.html` e em `src/curriculo.html`, `public/curriculo.md` |
 | `scripts/gen-videos.mjs` | `content/videos/*.md`, `content/temas.yml` | `src/videos/`, `src/temas/`, `src/videos.html`, `public/videos/`, `public/temas/`, `scripts/videos/sitemap-exclude.json` |
 | `scripts/gen-editorial.mjs` | `scripts/editorial/editorial.data.mjs` | Blocos `EDITORIAL` e `EDITORIAL-NEXT` nas páginas |
 | `scripts/gen-hub-data.mjs` | `scripts/seo/pages.mjs` e o texto das páginas | `src/js/apresentacao/hub-data.js` |
