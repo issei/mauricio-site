@@ -1,6 +1,6 @@
 # Termos de Uso
 
-> Versão Markdown de <https://mauricio.issei.com.br/termos>. v2.0 · atualizada em 08 de maio de 2026. O texto com valor normativo é a página HTML.
+> Versão Markdown de <https://mauricio.issei.com.br/termos>. v2.1 · atualizada em 11 de novembro de 2026. O texto com valor normativo é a página HTML.
 
 Regulam o acesso e o uso de mauricio.issei.com.br e dos serviços oferecidos por Maurício Yokoyama Issei. Navegar ou interagir com o site implica concordar com estes Termos.
 
@@ -18,7 +18,7 @@ Portfólio, currículo dinâmico e propostas técnicas; conteúdo educacional; f
 
 ## Capacidade e contas
 
-Formulários, contratações e qualquer relação com dados pessoais exigem capacidade civil plena (≥ 18 anos) ou representação. Áreas com credenciais (ex.: painel administrativo) exigem sigilo de senhas e tokens e aviso imediato em caso de uso indevido.
+Formulários, contratações e qualquer relação com dados pessoais exigem capacidade civil plena (≥ 18 anos) ou representação.
 
 ## Conduta vedada
 

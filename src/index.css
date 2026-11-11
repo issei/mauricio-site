@@ -369,3 +369,48 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ===== Linha do tempo da carreira (SDD-F1-F1b, Parte 9) =====
+   O conteúdo é a lista (.pf-tl-lista). A faixa é decorativa (aria-hidden) e desenha a mesma lista. */
+.pf-tl-resumo { margin: 0 0 1.75rem; max-width: 46rem; color: var(--pf-strong); font-size: clamp(1.125rem, 2.2vw, 1.375rem); font-weight: 600; line-height: 1.45; }
+.pf-tl { --tl-linha: 3rem; }
+.pf-tl-faixa { position: relative; height: calc(var(--faixas) * var(--tl-linha) + 1.75rem); margin: 0 0 1.75rem; border-bottom: 1px solid var(--pf-border); }
+.pf-tl-bloco { position: absolute; left: var(--x); top: calc(var(--y) * var(--tl-linha)); width: calc(var(--w) - 3px); min-width: 6px; container-type: inline-size; height: calc(var(--tl-linha) - .6rem); display: flex; align-items: center; padding: 0 .75rem; box-sizing: border-box; overflow: hidden; border-radius: 10px; background: linear-gradient(90deg, var(--pf-accent), var(--pf-accent-2)); box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset, 0 6px 22px rgba(0, 123, 255, .25); transform-origin: left center; transition: box-shadow .2s, filter .2s; }
+.pf-tl-bloco--atual { -webkit-mask-image: linear-gradient(90deg, #000 70%, transparent); mask-image: linear-gradient(90deg, #000 70%, transparent); box-shadow: 0 0 0 1px rgba(255, 255, 255, .12) inset, 0 0 28px rgba(138, 43, 226, .45); }
+.pf-tl-sigla { color: var(--pf-strong); font-size: .8rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: clip; }
+/* Bloco curto demais para o nome: o nome some (o texto da lista continua dizendo tudo). */
+@container (max-width: 5.5rem) { .pf-tl-sigla { display: none; } }
+.pf-tl-marca { position: absolute; left: var(--x); bottom: 0; transform: translateX(-50%); padding-bottom: .25rem; color: var(--pf-muted); font-size: .75rem; font-variant-numeric: tabular-nums; }
+.pf-tl-marca::before { content: ""; position: absolute; left: 50%; bottom: 100%; height: calc(var(--faixas) * var(--tl-linha)); border-left: 1px dashed var(--pf-grid); }
+.pf-tl-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; counter-reset: tl; }
+.pf-tl-lista a { display: grid; grid-template-columns: 7.5rem 1fr auto; align-items: baseline; gap: .25rem 1rem; padding: .75rem 1rem; border: 1px solid var(--pf-border); border-left: 3px solid var(--pf-accent); border-radius: 10px; background: var(--pf-surface); color: var(--pf-text); text-decoration: none; transition: border-color .2s, transform .2s; }
+.pf-tl-lista a:hover, .pf-tl-lista a:focus-visible { border-color: var(--pf-link); transform: translateX(3px); }
+.pf-tl-quando { color: var(--pf-subtitle); font-variant-numeric: tabular-nums; font-weight: 600; }
+.pf-tl-cargo { color: var(--pf-strong); }
+.pf-tl-org { grid-column: 2; color: var(--pf-text); }
+.pf-tl-dur { grid-column: 3; grid-row: 1 / span 2; align-self: center; color: var(--pf-muted); font-size: .875rem; white-space: nowrap; }
+@media (max-width: 639.98px) {
+  .pf-tl { --tl-linha: 2.25rem; }
+  .pf-tl-sigla { font-size: .7rem; }
+  .pf-tl-bloco { padding: 0 .4rem; border-radius: 7px; }
+  .pf-tl-lista a { grid-template-columns: 1fr; }
+  .pf-tl-org, .pf-tl-dur { grid-column: 1; grid-row: auto; }
+}
+/* Destaque do bloco ao passar o mouse ou o foco no item da lista (mesma ordem nos dois). */
+.pf-tl:has(.pf-tl-lista li:nth-child(1) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(1),
+.pf-tl:has(.pf-tl-lista li:nth-child(2) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(2),
+.pf-tl:has(.pf-tl-lista li:nth-child(3) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(3),
+.pf-tl:has(.pf-tl-lista li:nth-child(4) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(4),
+.pf-tl:has(.pf-tl-lista li:nth-child(5) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(5),
+.pf-tl:has(.pf-tl-lista li:nth-child(6) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(6),
+.pf-tl:has(.pf-tl-lista li:nth-child(7) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(7),
+.pf-tl:has(.pf-tl-lista li:nth-child(8) a:is(:hover, :focus-visible)) .pf-tl-bloco:nth-child(8) { filter: brightness(1.25); box-shadow: 0 0 0 2px var(--pf-strong) inset, 0 0 30px rgba(88, 166, 255, .55); }
+/* Animação (RF-F9-04): só depois que o script arma a faixa; sem JS ou com movimento reduzido, nada muda. */
+@media (prefers-reduced-motion: no-preference) {
+  .pf-tl--armada .pf-tl-bloco { transform: scaleX(0); }
+  .pf-tl--armada .pf-tl-marca { opacity: 0; }
+  .pf-tl--vista .pf-tl-bloco { animation: pf-tl-cresce .6s cubic-bezier(.2, .7, .2, 1) calc(var(--n) * 90ms) both; }
+  .pf-tl--vista .pf-tl-marca { animation: pf-tl-surge .5s ease-out .3s both; }
+}
+@keyframes pf-tl-cresce { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes pf-tl-surge { from { opacity: 0; } to { opacity: 1; } }

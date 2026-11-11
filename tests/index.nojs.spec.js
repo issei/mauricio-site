@@ -46,3 +46,10 @@ test('/curriculo sem JS: o conteúdo é visível (mesmo bloco PF da home, F2)', 
   await expect(page.locator('.pf-line-card').first()).toBeVisible();
   await expect(page.locator('#recommendations blockquote').first()).toBeVisible();
 });
+
+test('/curriculo sem JS: a linha do tempo aparece pronta (RF-F9-04)', async ({ page }) => {
+  await page.goto('/curriculo.html');
+  await expect(page.locator('ol.pf-tl-lista > li')).toHaveCount(cv.Experiencia.length);
+  await expect(page.locator('.pf-tl-bloco').first()).toBeVisible();
+  await expect(page.locator('.pf-tl')).not.toHaveClass(/pf-tl--armada/);
+});

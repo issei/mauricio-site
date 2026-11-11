@@ -46,3 +46,58 @@ test.describe('Currículo (Carreira, F2)', () => {
     expect(blocking.map((v) => `${v.id}: ${v.nodes.length}`)).toEqual([]);
   });
 });
+
+// Linha do tempo (SDD-F1-F1b, Parte 9, RF-F9-01 a RF-F9-07).
+test.describe('Linha do tempo da carreira (F9)', () => {
+  const anoIni = (j) => +j.Periodo.match(/\d{4}/)[0];
+  const ordem = [...cv.Experiencia].sort((a, b) => anoIni(a) - anoIni(b) || 0);
+
+  test('RF-F9-01/02: primeira seção do main; lista em texto, cronológica, com links que existem', async ({ page }) => {
+    await page.goto(PATH);
+    const ids = await page.locator('main > section').evaluateAll((ss) => ss.map((s) => s.id));
+    expect(ids[0]).toBe('linha-do-tempo');
+    await expect(page.locator('.pf-tl-resumo')).toContainText(`Carreira desde ${anoIni(ordem[0])}, em ${cv.Experiencia.length} empresas.`);
+    const itens = page.locator('ol.pf-tl-lista > li');
+    await expect(itens).toHaveCount(cv.Experiencia.length);
+    for (const [i, j] of ordem.entries()) {
+      await expect(itens.nth(i)).toContainText(j.Cargo);
+      await expect(itens.nth(i)).toContainText(j.Empresa);
+      const href = await itens.nth(i).locator('a').getAttribute('href');
+      await expect(page.locator(href)).toHaveCount(1);
+    }
+  });
+
+  test('RF-F9-03: a faixa é decorativa e tem um bloco por emprego', async ({ page }) => {
+    await page.goto(PATH);
+    const faixa = page.locator('.pf-tl-faixa');
+    await expect(faixa).toHaveAttribute('aria-hidden', 'true');
+    await expect(faixa.locator('.pf-tl-bloco')).toHaveCount(cv.Experiencia.length);
+  });
+
+  test('RF-F9-04: com movimento reduzido, a faixa não anima', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(PATH);
+    await page.locator('#linha-do-tempo').scrollIntoViewIfNeeded();
+    await expect(page.locator('.pf-tl')).not.toHaveClass(/pf-tl--armada/);
+    const anim = await page.locator('.pf-tl-bloco').evaluateAll((bs) => bs.map((b) => getComputedStyle(b).animationName));
+    expect(anim.every((a) => a === 'none')).toBe(true);
+  });
+
+  test('RF-F9-04: com movimento, anima uma vez ao aparecer e termina visível', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.goto(PATH);
+    await page.locator('#linha-do-tempo').scrollIntoViewIfNeeded();
+    await expect(page.locator('.pf-tl')).toHaveClass(/pf-tl--vista/);
+    await page.waitForTimeout(1200);
+    const t = await page.locator('.pf-tl-bloco').first().evaluate((b) => getComputedStyle(b).transform);
+    expect(['none', 'matrix(1, 0, 0, 1, 0, 0)']).toContain(t);
+  });
+
+  test('RF-F9-06: sem rolagem horizontal a 320 px', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto(PATH);
+    const sobra = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(sobra).toBeLessThanOrEqual(0);
+  });
+});
+

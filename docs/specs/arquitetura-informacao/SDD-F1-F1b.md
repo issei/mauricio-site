@@ -748,6 +748,8 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
   referências a eles no build, na auditoria, na catraca e nos testes. `diagnostic`, `test-github`,
   `vsl`, `mapmind` e `exemplopdi` não mudam (decisão C). `src/js/github-service.js` fica: o
   `test-github` usa.
+- **RF-F8-11.** (decisão do autor, 11/11/2026) Sai dos Termos de uso a seção "Cadastro e conta",
+  que descrevia o painel. As seções seguintes são renumeradas e o histórico ganha a v2.1.
 
 ## F8.4 Testes
 
@@ -758,3 +760,43 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
 - `tests/index.spec.js`: seção "Temas" com 10 links para `catalogo.html#tema-<id>`; botões novos.
 - `tests/continuacao.gen.test.mjs`: nenhum motivo cita pilar.
 - `tests/hreflang.spec.js`: a página sem espelho do teste deixa de ser `admin.html`.
+
+---
+
+# Parte 9 — Linha do tempo da carreira
+
+> Origem: decisão do autor em 11/11/2026 ("Linha do tempo por empresa"), no lugar do Mapa de
+> Linhas (Parte 7). Pedido dele: impacto visual forte, talvez com animação, e o conteúdo em texto
+> objetivo sobre a carreira, não sobre a imagem. Requisitos: **RF-F9-xx**.
+
+## F9.1 Requisitos
+
+- **RF-F9-01.** `/curriculo` ganha a seção "Linha do tempo" (`#linha-do-tempo`), a primeira do
+  `<main>`, antes de "Sobre". Gerada por `gen-portfolio.mjs` a partir de `cv.Experiencia`.
+- **RF-F9-02.** O conteúdo é texto: uma frase-resumo só com fatos do `cv.json` (ano de início,
+  número de empresas, cargo e empresa atuais) e uma lista ordenada (`<ol>`), do emprego mais
+  antigo ao atual. Cada item diz período, cargo, empresa e duração (a duração escrita no
+  `cv.json`; o emprego atual diz "até hoje") e liga ao artigo da empresa em `#experience`.
+- **RF-F9-03.** O visual é decorativo (`aria-hidden="true"`): uma faixa com um bloco por empresa,
+  largura proporcional ao período, em faixas paralelas quando dois períodos se sobrepõem; marcas de
+  ano a cada 5 anos. O leitor de tela lê só o texto. O visual não carrega informação que o texto
+  não tenha.
+- **RF-F9-04.** Animação em CSS, disparada por um script inline mínimo (só troca classes, não
+  insere texto): os blocos crescem da esquerda para a direita quando a seção entra na tela, uma
+  vez, em até 1 s no total. Sem JavaScript, ou com `prefers-reduced-motion: reduce`, a faixa
+  aparece pronta. Nenhuma animação em laço.
+- **RF-F9-05.** Passar o mouse ou o foco num item da lista destaca o bloco correspondente (`:has`),
+  sem mudar o layout.
+- **RF-F9-06.** No celular (< 640 px), a faixa fica sobre a lista, sem rolagem horizontal a 320 px.
+  Cores só de `src/index.css` (exceção `pf-`, ADR-pf-001); contraste do texto ≥ 4.5:1.
+- **RF-F9-07.** O fim da escala é `FIM_DA_ESCALA` no gerador (início de 2027), para a saída não
+  depender da data do build. O bloco do emprego atual vai até o fim da escala e se apaga na ponta
+  direita, sinal de que continua; o texto diz "até hoje".
+
+## F9.2 Testes
+
+- `tests/curriculo.spec.js`: a seção é a primeira do `<main>`; a lista tem um item por emprego, na
+  ordem cronológica, com cargo, empresa e link para `#<id>` que existe; o visual tem
+  `aria-hidden`; sem rolagem horizontal a 320 px; axe sem violações sérias.
+- `tests/index.nojs.spec.js`: sem JavaScript, a lista e a faixa aparecem.
+- Movimento reduzido: com `reducedMotion: 'reduce'`, nenhum bloco tem animação ativa.
