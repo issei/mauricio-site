@@ -73,6 +73,8 @@ A nota da §1.4 da spec declara os hexadecimais "referência de partida, a palet
 
 A regra não depende de disciplina do agente. `scripts/guard-ap-tokens.mjs` (hook `PostToolUse`) bloqueia a escrita de qualquer hexadecimal em `src/apresentacao.html` e `src/js/apresentacao/**`, e `tests/apresentacao.tokens.test.mjs` reprova o build se um par de contraste regredir.
 
+**Exceção do cabeçalho comum (F1b, lote L4, 10/11/2026).** O bloco gerado entre `<!-- SITE-HEADER-CSS:START -->` e `<!-- SITE-HEADER-CSS:END -->` não é cor da página. É o componente `.sh-*` do site, com os tokens Dark Tech, escrito por `scripts/gen-cabecalho.mjs` (RF-F1b-13). O hook ignora só esse bloco. O cabeçalho não usa token `ap-`, e a página não usa token `.sh-` além de `--sh-altura`, que posiciona o seletor e a barra de progresso abaixo do cabeçalho.
+
 ## Referências
 
 - `docs/specs/pages/apresentação/especificacao-ux-mauricio-issei.md` §1.2, §1.4

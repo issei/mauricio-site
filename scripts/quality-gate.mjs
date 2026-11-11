@@ -91,7 +91,7 @@ etapas.push({
   label: 'artefatos gerados em dia',
   cmd: 'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check' +
     ' && node scripts/gen-portfolio.mjs --check && node scripts/gen-editorial.mjs --check' +
-    ' && node scripts/gen-videos.mjs --check' +
+    ' && node scripts/gen-videos.mjs --check && node scripts/gen-catalogo.mjs --check && node scripts/gen-cabecalho.mjs --check && node scripts/gen-natureza.mjs --check && node scripts/gen-continuacao.mjs --check' +
     ' && node scripts/optimize-critical-path.mjs --check',
 });
 
@@ -114,7 +114,7 @@ if (!skipE2e) {
     if (escopo.specs.length) {
       cmd += ` ${escopo.specs.join(' ')} --project chromium --project mobile --project no-js`;
       env = { GATE_PAGES: escopo.paginas.join(',') };
-      naoRodou.push('Playwright em firefox e webkit', 'specs de outras páginas e specs globais (eco-nav, agent-discovery, oauth…)');
+      naoRodou.push('Playwright em firefox e webkit', 'specs de outras páginas e specs globais (cabeçalho, agent-discovery, oauth…)');
     } else {
       cmd = null;
       naoRodou.push('Playwright inteiro (nenhuma página alterada)');

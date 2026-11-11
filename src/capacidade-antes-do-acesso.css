@@ -114,7 +114,7 @@ body.ca-body {
   position: absolute;
   left: -9999px;
   top: 0;
-  z-index: 200;
+  z-index: 2147483001;
   background: var(--ca-surface);
   color: var(--ca-heading);
   padding: 0.75rem 1rem;
@@ -165,7 +165,7 @@ body.ca-body {
 
 .ca-readbar {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: var(--sh-altura, 0px); left: 0; right: 0;
   height: 3px;
   background: transparent;
   z-index: 120;
@@ -179,7 +179,7 @@ body.ca-body {
 
 .ca-nav {
   position: sticky;
-  top: 0;
+  top: var(--sh-altura, 0px);
   z-index: 110;
   background: rgba(13, 17, 23, 0.88);
   backdrop-filter: blur(10px);
@@ -486,4 +486,12 @@ a.ca-card:hover {
     transition-duration: 0.001ms !important;
   }
   a.ca-card:hover, .ca-btn:hover { transform: none; }
+}
+
+/* Cabeçalho comum do site (F1b, RF-F1b-15/16): a trilha fica abaixo dele e o foco para abaixo dos dois (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 84px); }
+/* No celular, só o cabeçalho do site fica fixo: a trilha da página rola junto, para não ocupar um terço da tela. */
+@media (max-width: 639.98px) {
+  .ca-nav { position: static; }
+  html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 1rem); }
 }

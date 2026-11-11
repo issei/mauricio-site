@@ -35,7 +35,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- SEO & Meta Tags -->
-  <title>Quick Start — Salesforce + Devin + Flosum </title>
+  <title>Quick Start — Salesforce + Devin + Flosum Maurício Issei</title>
   <meta name="description"
     content="From zero to first deploy ruled in less than 60 minutes. Repository configured, Spec written and Devin running in its Salesforce context." />
 
@@ -45,7 +45,7 @@
     title="Structured CV for AI agents" />
   <link rel="api-catalog" href="https://mauricio.issei.com.br/.well-known/api-catalog" type="application/linkset+json"
     title="API Resource Catalog" />
-  <link rel="author" href="https://mauricio.issei.com.br/en/" title="Mauricio Yokoyama Issei" />
+  <link rel="author" href="https://mauricio.issei.com.br/en/" title="Maurício Yokoyama Issei" />
   <link rel="related" href="/en/salesforce-agentic-dev" title="Full Guide — Agent DevOps for Salesforce" />
 
   <!-- Open Graph / Facebook -->
@@ -212,7 +212,7 @@
       position: absolute;
       left: -9999px;
       top: 0;
-      z-index: 200;
+      z-index: 2147483001;
       background: #0c1020;
       color: #ffffff;
       padding: 0.75rem 1rem;
@@ -269,7 +269,7 @@
       "@type": "WebSite",
       "@id": "https://mauricio.issei.com.br/en/#website",
       "url": "https://mauricio.issei.com.br/en/",
-      "name": "Mauricio Yokoyama Issei",
+      "name": "Maurício Yokoyama Issei",
       "inLanguage": "en-US",
       "publisher": {
         "@id": "https://mauricio.issei.com.br/en/#author"
@@ -278,7 +278,7 @@
     {
       "@type": "Person",
       "@id": "https://mauricio.issei.com.br/en/#author",
-      "name": "Mauricio Yokoyama Issei",
+      "name": "Maurício Yokoyama Issei",
       "url": "https://mauricio.issei.com.br/en/",
       "jobTitle": "Tech Lead / AI Solutions Architect",
       "sameAs": [
@@ -367,7 +367,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Catalog",
+          "name": "Contents",
           "item": "https://mauricio.issei.com.br/en/catalogo"
         },
         {
@@ -411,6 +411,11 @@
 }
 </script>
 <!-- AEO:END -->
+<style id="sh-pagina">/* Cabeçalho comum do site (F1b, RF-F1b-15/16): a barra da página fica abaixo dele e o rolar até âncora desconta as duas. */
+html:root{scroll-padding-top:calc(var(--sh-altura,0px) + 80px)}</style>
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.95rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:auto;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
 
     <link rel="alternate" hreflang="pt-BR" href="https://mauricio.issei.com.br/salesforce-agentic-quickstart" />
     <link rel="alternate" hreflang="en" href="https://mauricio.issei.com.br/en/salesforce-agentic-quickstart" />
@@ -420,6 +425,14 @@
 <body class="bg-ink-900 text-slate-100 font-sans antialiased selection:bg-brand-500/40 selection:text-white">
 
   <a href="#conteudo" class="saq-skip">Skip to content</a>
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/en/">Maurício Yokoyama Issei</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Home</a></li><li><a href="/en/curriculo.html">Career</a></li><li><a href="/en/catalogo.html" aria-current="true">Content</a></li><li><a href="/videos.html">Videos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
@@ -429,10 +442,10 @@
   <!-- =========================================================
      NAV BAR
      ========================================================= -->
-  <header x-data="{ open: false, scrolled: false }"
+  <section aria-label="Page navigation" style="top: var(--sh-altura, 0px)" x-data="{ open: false, scrolled: false }"
     x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 8)"
     :class="scrolled ? 'border-white/10 bg-ink-900/80 backdrop-blur-md' : 'border-transparent'"
-    class="fixed top-0 inset-x-0 z-50 border-b transition-all">
+    class="fixed inset-x-0 z-50 border-b transition-all">
     <div class="max-w-7xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
       <!-- Logo -->
       <a href="#hero" class="flex items-center gap-2 group">
@@ -447,7 +460,7 @@
       </a>
 
       <!-- Desktop nav -->
-      <nav class="hidden lg:flex items-center gap-5 text-sm text-slate-300">
+      <nav aria-label="Guide sections" class="hidden lg:flex items-center gap-5 text-sm text-slate-300">
         <a href="#prereqs" class="hover:text-white transition">Prerequisites</a>
         <a href="#passo-1" class="hover:text-white transition">1. Template</a>
         <a href="#passo-2" class="hover:text-white transition">2. Background</a>
@@ -491,7 +504,7 @@
           class="mt-2 inline-flex items-center gap-2 text-brand-300">← Return to full guide</a>
       </div>
     </div>
-  </header>
+  </section>
 
   <main id="conteudo" class="pt-16">
 
@@ -509,6 +522,7 @@
           Quick Start · 7 steps · ~60 min
         </div>
 
+        <!-- NATUREZA:START --><p class="nat-rotulo" style="margin:0 0 .75rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:inherit">Nature: Reference</p><!-- NATUREZA:END -->
         <h1 class="mt-6 max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
           From zero to
           <span class="bg-gradient-to-r from-brand-300 via-purple-300 to-emerald-300 bg-clip-text text-transparent">repository
@@ -1711,7 +1725,8 @@ methadata trampling.
       </div>
     </footer>
 
-  </main>
+  <!-- CONTINUACAO:START --><nav class="cont" aria-labelledby="cont-label" style="max-width:72rem;margin:3rem auto;padding:0 1.25rem;text-align:left"><p id="cont-label" style="margin:0 0 .5rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase">If this theme interests you</p><ul style="margin:0;padding-left:1.1rem;display:grid;gap:.45rem;line-height:1.6"><li><a href="./devops-salesforce.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">DevOps Salesforce</a> <span style="display:block;font-size:.88rem">Also in Salesforce and sales.</span></li><li><a href="./proposta-engenharia-reversa.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Reverse Engineering Assisted by AI</a> <span style="display:block;font-size:.88rem">Also in Salesforce and sales.</span></li></ul></nav><!-- CONTINUACAO:END -->
+</main>
 
   <!-- =========================================================
        SCRIPTS — interatividade leve
@@ -1734,7 +1749,6 @@ methadata trampling.
       io.observe(el);
     });
   </script>
-<script type="module" src="../js/eco-nav.js"></script>
 <script type="module" src="../js/a11y-scroll-regions.js"></script>
     <script type="module" src="../js/cookie-consent.js"></script>
 </body>

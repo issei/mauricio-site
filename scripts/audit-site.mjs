@@ -5,7 +5,7 @@
  * Varre TODAS as páginas de src/*.html e verifica o que só se enxerga olhando o
  * conjunto: links internos quebrados, âncoras inexistentes, páginas órfãs,
  * divergência entre as fontes da verdade (pages.mjs, ecosystem.nav.yaml,
- * eco-nav.js, catalogo.html) e o checklist de SEO do repositório.
+ * catalogo.html) e o checklist de SEO do repositório.
  *
  * Existe porque a verificação até aqui era por página: cada suíte olhava a sua
  * e ninguém olhava as arestas entre elas. Coerência é propriedade do grafo.
@@ -17,8 +17,9 @@
  */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, dirname, join, basename } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { PAGES } from './seo/pages.mjs';
+import { loadEcossistema } from './catalogo/dados.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'src');
@@ -32,7 +33,7 @@ const asJson = process.argv.includes('--json');
  * cobradas por isso.
  */
 const NAO_PUBLICAS = new Set([
-  '404', 'admin', 'admin-editor', 'diagnostic', 'test-github',
+  '404', 'diagnostic', 'test-github',
   'index-bkp', 'index.template', 'devin-bkp',
   'privacidade', 'termos', 'cookies',      // legais: linkadas no rodapé
   'exemplopdi', 'mapmind', 'vsl',          // experimentos/utilitários
@@ -221,27 +222,12 @@ for (const slug of publicas) {
 
 /* ── 4. Sincronia entre as fontes da verdade ──────────────────────────────── */
 
-const yaml = readFileSync(join(ROOT, 'specs/ecosystem.nav.yaml'), 'utf8');
-const ecoJs = readFileSync(join(ROOT, 'src/js/eco-nav.js'), 'utf8');
-
-const yamlNodes = [...yaml.matchAll(/^\s{4}nodes:\s*\[([^\]]+)\]/gm)]
-  .flatMap((m) => m[1].split(',').map((s) => s.trim()));
-const jsNodes = [...ecoJs.matchAll(/nodes:\s*\[([^\]]+)\]/g)]
-  .flatMap((m) => m[1].split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, '')));
-
-for (const n of yamlNodes) {
-  if (!jsNodes.includes(n)) erro('ecosystem', `nó "${n}" no YAML mas ausente de eco-nav.js`);
-}
-for (const n of jsNodes) {
-  if (!yamlNodes.includes(n)) erro('ecosystem', `nó "${n}" em eco-nav.js mas ausente do YAML`);
-}
-for (const n of new Set([...yamlNodes, ...jsNodes])) {
+// Os nós do YAML apontam para páginas reais (o <eco-nav> saiu no lote L5 da F1b).
+const { eco: ecoYaml } = loadEcossistema();
+const yamlNodes = ecoYaml.pillars.flatMap((p) => p.nodes);
+for (const n of [...yamlNodes, ...ecoYaml.trajetoria]) {
   if (!docs.has(n)) erro('ecosystem', `nó "${n}" não corresponde a src/${n}.html`);
 }
-
-const yv = yaml.match(/version:\s*"([\d.]+)"/)?.[1];
-const jv = ecoJs.match(/version:\s*'([\d.]+)'/)?.[1];
-if (yv !== jv) erro('ecosystem', `versões divergentes — YAML ${yv} × eco-nav.js ${jv}`);
 
 // pages.mjs × arquivos
 const slugsSeo = new Set(PAGES.map((p) => p.slug));

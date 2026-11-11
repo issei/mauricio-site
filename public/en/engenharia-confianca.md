@@ -3,7 +3,7 @@
 
 > Markdown version, optimized for reading by AI (GEO/AEO), page
 > <https://mauricio.issei.com.br/en/engenharia-confianca>.
-> Author: **Mauricio Yokoyama Issei** · Language: en-BR · Published: 2026-06-19 · Updated: 2026-10-10 ·
+> Author: **Maurício Yokoyama Issei** · Language: en-BR · Published: 2026-06-19 · Updated: 2026-10-10 ·
 > Citation license: fair use educational, with assignment.
 
 ## In summary (direct response)
@@ -240,6 +240,6 @@ the guided self-assessment of 5 questions and the organizational readiness check
 
 ---
 
-* Original content under the ISM v1.0 (Intentional Systems Model) methodology. © 2026 Mauritius Yokoyama
+* Original content under the ISM v1.0 (Intentional Systems Model) methodology. © 2026 Maurício Yokoyama
 Issei. External referenced materials belong to the respective authors, cited for educational purposes
 and traceability. *

@@ -181,7 +181,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Catálogo",
+          "name": "Conteúdos",
           "item": "https://mauricio.issei.com.br/catalogo"
         },
         {
@@ -270,25 +270,37 @@
 }
 </script>
 <!-- AEO:END -->
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.95rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:auto;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
 </head>
 
 <body class="aa-body">
   <a href="#conteudo" class="aa-skip">Pular para o conteúdo</a>
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/">Início</a></li><li><a href="/curriculo.html">Carreira</a></li><li><a href="/catalogo.html" aria-current="true">Conteúdos</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
 
-  <header class="aa-topbar">
-    <a class="aa-topbar__brand" href="./catalogo.html">Maurício Yokoyama Issei</a>
+  <section class="aa-topbar" aria-label="Navegação da página">
+    <a class="aa-topbar__brand" href="#conteudo">Aprendizagem autorregulada</a>
     <nav class="aa-topbar__nav" aria-label="Nesta página">
       <a href="#ciclo">O ciclo</a>
       <a href="#evidencias">Evidências</a>
       <a href="#protocolo">Protocolo</a>
     </nav>
-  </header>
+  </section>
 
   <main id="conteudo">
     <!-- Seção 1 — Hero -->
     <header class="aa-hero" data-aa-section="hero">
       <div class="aa-wrap">
         <p class="aa-hero__eyebrow">Pare de depender apenas da releitura e da ilusão de compreensão.</p>
+        <!-- NATUREZA:START --><p class="nat-rotulo" style="margin:0 0 .75rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:inherit">Natureza: Estudo</p><!-- NATUREZA:END -->
         <h1>O Ciclo da Aprendizagem Autorregulada: <span class="aa-grad">do resumo à nova pergunta</span></h1>
         <p class="aa-hero__sub">Descubra o que a ciência realmente comprova sobre como a curiosidade, a busca focada, a prática de recuperação e a autoexplicação constroem um conhecimento profundo e duradouro.</p>
         <div class="aa-cta-row">
@@ -495,7 +507,8 @@
 <!-- AEO-BODY:END -->
 
     </div>
-  </main>
+  <!-- CONTINUACAO:START --><nav class="cont" aria-labelledby="cont-label" style="max-width:72rem;margin:3rem auto;padding:0 1.25rem;text-align:left"><p id="cont-label" style="margin:0 0 .5rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Se este tema interessa a você</p><ul style="margin:0;padding-left:1.1rem;display:grid;gap:.45rem;line-height:1.6"><li><a href="./capacidade-antes-do-acesso.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Capacidade Antes do Acesso</a> <span style="display:block;font-size:.88rem">Também em Aprendizagem e mente.</span></li><li><a href="./curiosidade-e-investigacao.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Curiosidade e Investigação</a> <span style="display:block;font-size:.88rem">Também em Aprendizagem e mente.</span></li></ul></nav><!-- CONTINUACAO:END -->
+</main>
 
   <footer class="aa-footer">
     <p>© <span>2026</span> Maurício Yokoyama Issei. Versão em Markdown: <a href="/aprendizagem-autorregulada.md">aprendizagem-autorregulada.md</a>. Veja também o <a href="./catalogo.html">catálogo completo</a>.</p>

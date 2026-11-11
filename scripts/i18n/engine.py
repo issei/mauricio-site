@@ -53,7 +53,15 @@ _SLOT_RE = re.compile(r"zzph(\d+)zz", re.IGNORECASE)
 #: sai AG-IU em quase toda frase —, e não há nada nelas para traduzir: seguem o
 #: mesmo caminho dos demais trechos protegidos, com marcador próprio (`zzsg`)
 #: para não colidir com os marcadores do chamador (`zzph`).
-_SIGLA = re.compile(r"\b[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+\b")
+#:
+#: Nomes próprios seguem o mesmo caminho: o modelo traduz "Maurício" como
+#: "Mauritius" (o país). A lista é curta e explícita; o nome completo vem antes
+#: do primeiro nome, para não ser cortado.
+NOMES_PROTEGIDOS = ("Maurício Yokoyama Issei", "Mauricio Yokoyama Issei", "Maurício", "Mauricio")
+_SIGLA = re.compile(
+    "|".join(rf"\b{re.escape(n)}\b" for n in NOMES_PROTEGIDOS)
+    + r"|\b[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+\b"
+)
 _SIGLA_SLOT = "zzsg{}zz"
 _SIGLA_RE = re.compile(r"zzsg(\d+)zz", re.IGNORECASE)
 

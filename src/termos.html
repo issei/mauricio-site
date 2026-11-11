@@ -331,17 +331,22 @@
             z-index: 100;
         }
     </style>
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.95rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:auto;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
 </head>
 
 <body>
     <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/">Início</a></li><li><a href="/curriculo.html">Carreira</a></li><li><a href="/catalogo.html">Conteúdos</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
 
-    <header class="legal-header">
-        <div class="legal-header-inner">
-            <a href="/" class="logo">Maurício Issei<span class="dot">.</span></a>
-            <a href="/" class="back-link">← Voltar para o site</a>
-        </div>
-    </header>
 
     <div class="layout">
         <aside class="toc" aria-label="Índice">
@@ -350,7 +355,6 @@
                 <li><a href="#sec-aceite">Aceite e capacidade</a></li>
                 <li><a href="#sec-provedor">Identificação do provedor</a></li>
                 <li><a href="#sec-objeto">Objeto e serviços</a></li>
-                <li><a href="#sec-conta">Cadastro e conta</a></li>
                 <li><a href="#sec-conduta">Conduta do usuário</a></li>
                 <li><a href="#sec-pi">Propriedade intelectual</a></li>
                 <li><a href="#sec-ugc">Conteúdo gerado pelo usuário</a></li>
@@ -373,7 +377,7 @@
             <h1>Termos de Uso</h1>
             <span class="version-chip">
                 <i class="fa-solid fa-file-contract"></i>
-                <strong>v2.0</strong> · atualizada em 08 de maio de 2026
+                <strong>v2.1</strong> · atualizada em 11 de novembro de 2026
             </span>
 
             <p>Bem-vindo(a). Estes Termos de Uso ("Termos") regulam o acesso e o uso do site
@@ -429,18 +433,7 @@
             </div>
 
             <!-- 4 -->
-            <h2 id="sec-conta">4. Cadastro e conta</h2>
-            <p>Algumas áreas (ex.: painel administrativo) exigem credenciais. Você é responsável por:</p>
-            <ul>
-                <li>Manter a confidencialidade de senha e tokens;</li>
-                <li>Não compartilhar acesso com terceiros;</li>
-                <li>Comunicar-nos imediatamente em caso de suspeita de uso indevido;</li>
-                <li>Fornecer informações verdadeiras e atualizadas.</li>
-            </ul>
-            <p>Reservamo-nos o direito de revogar acesso por motivo justificado.</p>
-
-            <!-- 5 -->
-            <h2 id="sec-conduta">5. Conduta do usuário</h2>
+            <h2 id="sec-conduta">4. Conduta do usuário</h2>
             <p>É vedado, exemplificativamente:</p>
             <ul>
                 <li><em>Scraping</em> ou raspagem em massa, automação que sobrecarregue a infraestrutura;</li>
@@ -453,8 +446,8 @@
             <p>Estas vedações observam o Marco Civil da Internet (Lei 12.965/2014, arts. 7º e 8º) e podem caracterizar
                 ilícito penal, sem prejuízo de responsabilização civil.</p>
 
-            <!-- 6 -->
-            <h2 id="sec-pi">6. Propriedade intelectual</h2>
+            <!-- 5 -->
+            <h2 id="sec-pi">5. Propriedade intelectual</h2>
             <p>Todo o conteúdo deste site — textos, imagens, vídeos, áudios, código, logotipos, marcas, identidade
                 visual, slides, apresentações, design e arquitetura — é protegido pela <strong>Lei 9.610/1998</strong>
                 (Direitos Autorais) e pela <strong>Lei 9.279/1996</strong> (Propriedade Industrial), sendo de titularidade
@@ -473,8 +466,8 @@
                 titularidade, (iii) localização do conteúdo infrator, (iv) declaração de boa-fé e responsabilidade
                 pelas informações prestadas.</p>
 
-            <!-- 7 -->
-            <h2 id="sec-ugc">7. Conteúdo gerado pelo usuário (UGC)</h2>
+            <!-- 6 -->
+            <h2 id="sec-ugc">6. Conteúdo gerado pelo usuário (UGC)</h2>
             <p>Atualmente, o site <strong>não disponibiliza áreas públicas de comentário ou upload</strong>. Caso isso
                 mude, ao publicar conteúdo, você:</p>
             <ul>
@@ -485,8 +478,8 @@
                     usuários da União Europeia.</li>
             </ul>
 
-            <!-- 8 -->
-            <h2 id="sec-comunicacao">8. Comunicação eletrônica e WhatsApp</h2>
+            <!-- 7 -->
+            <h2 id="sec-comunicacao">7. Comunicação eletrônica e WhatsApp</h2>
             <p>Ao preencher formulários, você concorda em receber comunicações por <strong>e-mail</strong> ou
                 <strong>WhatsApp</strong> relacionadas à sua solicitação e a atualizações de nossos serviços, conforme
                 escolhido.
@@ -499,8 +492,8 @@
                     descadastramento em e-mails.</li>
             </ul>
 
-            <!-- 9 -->
-            <h2 id="sec-ia">9. Conteúdo gerado por inteligência artificial</h2>
+            <!-- 8 -->
+            <h2 id="sec-ia">8. Conteúdo gerado por inteligência artificial</h2>
             <p>Algumas funcionalidades empregam Modelos de Linguagem (LLMs) — por exemplo, demonstrações em
                 <em>Knowledge OS</em>. Em conformidade com o <strong>EU AI Act (Regulamento UE 2024/1689)</strong>:
             </p>
@@ -514,16 +507,16 @@
                 </li>
             </ul>
 
-            <!-- 10 -->
-            <h2 id="sec-pagamentos">10. Pagamentos e reembolso</h2>
+            <!-- 9 -->
+            <h2 id="sec-pagamentos">9. Pagamentos e reembolso</h2>
             <p>O site <strong>não processa pagamentos</strong>. Eventuais contratações ocorrem por instrumento próprio
                 (proposta comercial, contrato de prestação de serviços), que detalhará valores, prazos e condições.</p>
             <p>Para contratações a distância, é assegurado o <strong>direito de arrependimento de 7 (sete) dias</strong>
                 (CDC, art. 49), contados da assinatura do contrato ou do recebimento do serviço, o que for posterior.
             </p>
 
-            <!-- 11 -->
-            <h2 id="sec-resp">11. Limitação de responsabilidade</h2>
+            <!-- 10 -->
+            <h2 id="sec-resp">10. Limitação de responsabilidade</h2>
             <p>Envidamos melhores esforços para manter o site disponível, atualizado e correto, mas <strong>não
                     garantimos</strong> ininterruptibilidade, ausência de erros ou compatibilidade absoluta com todo
                 ambiente.</p>
@@ -538,45 +531,47 @@
             <p>Esta limitação <strong>não afasta</strong> responsabilidades irrenunciáveis, especialmente as decorrentes
                 do <strong>Código de Defesa do Consumidor</strong>, quando aplicável.</p>
 
-            <!-- 12 -->
-            <h2 id="sec-indenizacao">12. Indenização</h2>
+            <!-- 11 -->
+            <h2 id="sec-indenizacao">11. Indenização</h2>
             <p>O usuário compromete-se a indenizar e isentar os provedores de quaisquer perdas, custos ou danos
                 (incluindo honorários advocatícios) decorrentes de uso ilícito do site, violação destes Termos ou
                 infração a direitos de terceiros.</p>
 
-            <!-- 13 -->
-            <h2 id="sec-links">13. Links e serviços de terceiros</h2>
+            <!-- 12 -->
+            <h2 id="sec-links">12. Links e serviços de terceiros</h2>
             <p>O site contém links para serviços externos (LinkedIn, YouTube, GitHub, Google Calendar, WhatsApp etc.).
                 Não controlamos nem somos responsáveis por seu conteúdo, disponibilidade ou políticas. Recomendamos a
                 leitura dos termos e políticas próprios de cada serviço.</p>
 
-            <!-- 14 -->
-            <h2 id="sec-mudancas">14. Modificações dos Termos</h2>
+            <!-- 13 -->
+            <h2 id="sec-mudancas">13. Modificações dos Termos</h2>
             <p>Podemos atualizar estes Termos a qualquer tempo. Mudanças <strong>materiais</strong> serão sinalizadas
                 no topo da página por pelo menos 30 dias. O uso continuado após a vigência da nova versão implica
                 aceite. Manteremos histórico de versões:</p>
             <ul>
+                <li><strong>v2.1 (11/11/2026):</strong> sai a seção "Cadastro e conta": o site não tem mais área
+                    com login. As seções seguintes foram renumeradas.</li>
                 <li><strong>v2.0 (08/05/2026):</strong> reescrita completa, inclusão de seções IA, DSA, DMCA, opt-out
                     WhatsApp, foro do consumidor, identificação dual de provedores.</li>
                 <li><strong>v1.0 (fev/2026):</strong> versão inicial.</li>
             </ul>
 
-            <!-- 15 -->
-            <h2 id="sec-suspensao">15. Suspensão e encerramento</h2>
+            <!-- 14 -->
+            <h2 id="sec-suspensao">14. Suspensão e encerramento</h2>
             <p>Podemos suspender, restringir ou encerrar o acesso de qualquer usuário em violação destes Termos, da
                 legislação aplicável ou de boas práticas, sem prejuízo das medidas judiciais cabíveis.</p>
 
-            <!-- 16 -->
-            <h2 id="sec-privacidade">16. Privacidade</h2>
+            <!-- 15 -->
+            <h2 id="sec-privacidade">15. Privacidade</h2>
             <p>O tratamento de dados pessoais é regido pela nossa <a href="/privacidade.html">Política de
                     Privacidade</a>, parte integrante destes Termos. Para detalhamento técnico de cookies, consulte <a
                     href="/cookies.html">/cookies.html</a>.</p>
 
-            <!-- 17 -->
-            <h2 id="sec-disputas">17. Disputas, lei aplicável e foro</h2>
+            <!-- 16 -->
+            <h2 id="sec-disputas">16. Disputas, lei aplicável e foro</h2>
             <h3>Tentativa amigável</h3>
             <p>Antes de qualquer medida judicial, comprometemo-nos a buscar solução amigável. Envie-nos a controvérsia
-                por e-mail ao DPO ou aos contatos da seção 19. Responderemos em até 15 dias úteis.</p>
+                por e-mail ao DPO ou aos contatos da seção 18. Responderemos em até 15 dias úteis.</p>
             <h3>Mediação (opcional)</h3>
             <p>As partes podem submeter, de comum acordo, eventual conflito a câmara de mediação privada.</p>
             <h3>Lei aplicável</h3>
@@ -587,8 +582,8 @@
                 (CDC, art. 101, I).
             </p>
 
-            <!-- 18 -->
-            <h2 id="sec-gerais">18. Cláusulas gerais</h2>
+            <!-- 17 -->
+            <h2 id="sec-gerais">17. Cláusulas gerais</h2>
             <ul>
                 <li><strong>Independência das cláusulas:</strong> a invalidade de qualquer cláusula não afeta as
                     demais.</li>
@@ -600,8 +595,8 @@
                     prévia.</li>
             </ul>
 
-            <!-- 19 -->
-            <h2 id="sec-contato">19. Contato</h2>
+            <!-- 18 -->
+            <h2 id="sec-contato">18. Contato</h2>
             <p>Dúvidas sobre estes Termos ou contato com o Encarregado (DPO):</p>
             <ul>
                 <li><strong>E-mail:</strong> <a href="mailto:mauricio@issei.com.br">mauricio@issei.com.br</a></li>

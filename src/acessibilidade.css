@@ -81,7 +81,7 @@ body.ac-body {
 
 /* ───────────── Navegação ───────────── */
 
-.ac-nav { position: sticky; top: 0; z-index: 100; background: rgba(13, 17, 23, .9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ac-border); }
+.ac-nav { position: sticky; top: var(--sh-altura, 0px); z-index: 100; background: rgba(13, 17, 23, .9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ac-border); }
 .ac-nav__inner { width: min(1080px, 100% - 2.5rem); margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; gap: .3rem 1.2rem; padding-block: .55rem; }
 .ac-nav__brand { font-weight: 700; color: var(--ac-heading) !important; text-decoration: none !important; display: inline-flex; align-items: center; gap: .5rem; min-height: 24px; }
 .ac-nav__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ac-gradient); box-shadow: 0 0 8px rgba(0, 123, 255, .8); }
@@ -168,7 +168,7 @@ body.ac-body {
 
 /* ───────────── Rodapé ───────────── */
 
-/* padding-bottom: o botão fixo do <eco-nav> (canto inferior direito) não pode cobrir o último link. */
+/* padding-bottom: o botão fixo de cookies (canto inferior) não pode cobrir o último link. */
 .ac-footer { border-top: 1px solid var(--ac-border); background: var(--ac-surface); padding-block: 2.5rem 6.5rem; margin-top: 3rem; font-size: .92rem; }
 .ac-footer h2 { font-size: 1.1rem; margin: 0 0 1rem; }
 .ac-footer h3 { font-size: .9rem; color: var(--ac-link); margin: 0 0 .5rem; }
@@ -183,4 +183,12 @@ body.ac-body {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .ac-card:hover { transform: none; }
+}
+
+/* Cabeçalho comum do site (F1b, RF-F1b-15/16): a trilha fica abaixo dele e o foco para abaixo dos dois (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 84px); }
+/* No celular, só o cabeçalho do site fica fixo: a trilha da página rola junto, para não ocupar um terço da tela. */
+@media (max-width: 639.98px) {
+  .ac-nav { position: static; }
+  html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 1rem); }
 }

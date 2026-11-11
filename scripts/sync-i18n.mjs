@@ -274,3 +274,12 @@ for (const ativo of alvos) {
 }
 gravaManifesto(manifesto);
 log(`✓ ${alvos.length} espelho(s) atualizado(s); manifesto gravado.`);
+
+/*
+ * Cabeçalho comum (SDD-F1-F1b, RF-F1b-14): o bloco SITE-HEADER vai com
+ * translate="no" e o tradutor o copia em português. Os rótulos em inglês
+ * ("Home · Career · Work · Videos") são escritos pelo próprio gerador, aqui,
+ * logo depois da tradução — nunca à mão em src/en/**.
+ */
+const cab = spawnSync(process.execPath, [join(ROOT, 'scripts', 'gen-cabecalho.mjs')], { stdio: 'inherit' });
+if (cab.status !== 0) process.exit(cab.status ?? 1);

@@ -3,7 +3,7 @@
  * Camada editorial — injeta a orientação de entrada e a continuação de leitura
  * nas páginas listadas em scripts/editorial/editorial.data.mjs.
  *
- * Spec: docs/specs/editorial/EDITORIAL-LAYER.md.
+ * Spec: docs/specs/editorial/EDITORIAL-LAYER.md. Natureza no quadro: SDD-F1-F1b.md, Parte 4 (F4a).
  *
  * Marcadores (o autor posiciona; o gerador só preenche entre eles):
  *   <!-- EDITORIAL:START --> … <!-- EDITORIAL:END -->            orientação
@@ -25,6 +25,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { EDITORIAL } from './editorial/editorial.data.mjs';
+import { loadEcossistema, NATUREZAS } from './catalogo/dados.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const WPM = 200;
@@ -104,6 +105,20 @@ const link = ([href, label]) => `<a href="${esc(href)}">${esc(label)}</a>`;
 const joinPt = (items) =>
   items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} e ${items.at(-1)}`;
 
+/**
+ * Natureza do conteúdo (D5, F4a): vem do nó do YAML, nunca de editorial.data.mjs.
+ * Página sem nó ou com natureza fora da lista faz o gerador falhar (RF-F4-03).
+ */
+let NODES;
+export function naturezaOf(slug) {
+  NODES ??= loadEcossistema().eco.nodes;
+  const n = NODES[slug];
+  if (!n) throw new Error(`${slug}: sem nó em specs/ecosystem.nav.yaml (natureza, F4)`);
+  const label = NATUREZAS[n.natureza];
+  if (!label) throw new Error(`${slug}: natureza inválida no YAML: ${n.natureza}`);
+  return label;
+}
+
 export function renderIntro(slug, entry, m) {
   const time = m.core && m.core < m.total
     ? `~${m.core} min para a ideia central · ~${m.total} min completo`
@@ -113,6 +128,7 @@ export function renderIntro(slug, entry, m) {
   if (entry.oneLiner) facts.push(['ed-fact ed-fact--wide', 'Em uma frase', esc(entry.oneLiner)]);
   if (entry.thesis) facts.push(['ed-fact ed-fact--wide', 'A tese', esc(entry.thesis)]);
   if (entry.audience) facts.push(['ed-fact ed-fact--wide', 'Para quem é', esc(entry.audience)]);
+  facts.push(['ed-fact', 'Natureza', esc(naturezaOf(slug))]);
   facts.push(['ed-fact', 'Formato', esc(entry.kind)]);
   facts.push(['ed-fact', 'Profundidade', `${esc(entry.depth)} · ${time}`]);
 

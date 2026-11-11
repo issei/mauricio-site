@@ -54,13 +54,14 @@ const walk = (dir) =>
     return statSync(f).isDirectory() ? walk(f) : /\.m?js$/.test(n) ? [f] : [];
   });
 
-test('nenhum hexadecimal no HTML (fora do bloco AEO gerado e do favicon) nem no JS da página', () => {
+test('nenhum hexadecimal no HTML (fora dos blocos gerados AEO e cabeçalho comum, e do favicon) nem no JS da página', () => {
   const page = join(ROOT, 'src/digital-workplace-agentico.html');
   const hex = /#[0-9a-fA-F]{3,8}\b/g;
   const hits = [];
   if (existsSync(page)) {
     const html = readFileSync(page, 'utf8')
       .replace(/<!-- AEO:START[\s\S]*?<!-- AEO:END -->/, '') // theme-color gerado por build-aeo
+      .replace(/<!-- SITE-HEADER-CSS:START[\s\S]*?<!-- SITE-HEADER-CSS:END -->/, '') // CSS do cabeçalho comum, gerado (F1b)
       .replace(/<link rel="icon"[^>]*>/, '')
       .replace(/href="#[a-z0-9-]+"/g, '')                     // âncoras internas (#maturidade, #fluxo…)
       .replace(/&#\d+;/g, '');                                 // entidades numéricas

@@ -1,7 +1,6 @@
 // SC 2.5.3 (rótulo no nome, nível A) — controle por voz: quem diz o texto VISÍVEL de um botão/link precisa
 // acionar o controle, então o nome acessível tem de CONTER o texto visível. O axe deixa a regra
-// `label-content-name-mismatch` desligada; este teste a aplica a todas as páginas (PT e EN), inclusive
-// ao shadow DOM do <eco-nav>. O espelho EN traduz rótulo e texto visível em separado: nome e texto
+// `label-content-name-mismatch` desligada; este teste a aplica a todas as páginas (PT e EN). O espelho EN traduz rótulo e texto visível em separado: nome e texto
 // podem sair com palavras em ordem diferente, por isso links com texto visível não usam `aria-label`
 // com a mesma frase (ver `.pf-sr` em gen-portfolio.mjs).
 import { test, expect } from '@playwright/test';

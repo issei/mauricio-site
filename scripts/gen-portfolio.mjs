@@ -2,18 +2,18 @@
 /*
  * Grava o currículo (public/cv.json) como HTML ESTÁTICO em duas páginas:
  *
- *   src/index.html     → home "Mapa de Linhas"   (bloco <!-- PF:START/END -->)
- *   src/curriculo.html → home anterior, mesma aparência (blocos <!-- CV:<id>:START/END -->)
+ *   src/index.html     → home editorial         (bloco <!-- PF:START/END -->, SDD-F1-F1b, Parte 6, F3)
+ *   src/curriculo.html → Carreira completa (Parte 3, F2)
  *   public/curriculo.md → gêmeo Markdown de /curriculo (arquivo inteiro)
  *
  * Por que build-time e não fetch: a SDD do portfólio (docs/specs/pages/portfolio/)
  * exige que crawler, parser de ATS, agente de IA e tradutor do navegador vejam
  * 100% do texto sem executar JavaScript. Nenhuma das duas páginas busca o JSON.
  *
- * PROCEDÊNCIA: todo texto vem literal de public/cv.json. public/star.json só
- * valida a contagem de projetos por ano (SDD §13). A única camada editorial é
- * LINE_OF (termo → linha do mapa) — e um termo sem linha QUEBRA o gerador, para
- * nenhum dado sumir do mapa em silêncio.
+ * PROCEDÊNCIA: todo texto vem literal de public/cv.json (e, na home, do YAML do
+ * ecossistema: temas, títulos, formato, natureza). public/star.json só
+ * valida a contagem de projetos por ano (SDD §13). O Mapa de Linhas saiu em
+ * 11/11/2026 (SDD-F1-F1b, Parte 7): o autor ouviu de leitores que ele confundia.
  *
  * Uso: node scripts/gen-portfolio.mjs [--check]
  */
@@ -21,6 +21,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from './seo/pages.mjs';
+import { loadEcossistema, NATUREZAS, cardTitle, temasDoSite } from './catalogo/dados.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const cv = JSON.parse(readFileSync(join(ROOT, 'public/cv.json'), 'utf8'));
@@ -52,75 +53,14 @@ for (const [year, cases] of Object.entries(star)) {
 }
 
 // ---------------------------------------------------------------------------
-// Linhas do mapa = grupos de Habilidades. Ordem escolhida para que as
-// competências de cada empregador fiquem em linhas vizinhas (cápsulas curtas).
-// ---------------------------------------------------------------------------
-const LINES = [
-  { id: 'dev', code: 'DEV', group: 'Desenvolvimento' },
-  { id: 'lid', code: 'LID', group: 'Liderança & Habilidades Interpessoais' },
-  { id: 'cld', code: 'CLD', group: 'Cloud & DevOps' },
-  { id: 'plt', code: 'PLT', group: 'Plataformas & APIs' },
-  { id: 'agi', code: 'AGI', group: 'Gestão & Metodologias Ágeis' },
-  { id: 'uxd', code: 'UXD', group: 'UX & Design' },
-  { id: 'dat', code: 'DAT', group: 'Data Science & Analytics' },
-];
-for (const l of LINES) if (!cv.Habilidades[l.group]) fail(`grupo "${l.group}" ausente em Habilidades`);
-if (LINES.length !== Object.keys(cv.Habilidades).length) fail('Habilidades tem grupo sem linha no mapa');
-const LINE = Object.fromEntries(LINES.map((l, i) => [l.id, { ...l, row: i + 2 }]));
-
-/** Termo de Competencias / Tecnologias / curso → linha. ⚠ Editorial: revisar (spec §4). */
-const LINE_OF = {
-  // Competencias dos empregadores
-  'Salesforce Administration': 'plt', SRE: 'cld', 'Liderança Técnica': 'lid', 'Arquitetura de Soluções': 'plt',
-  'Amazon Web Services': 'cld', 'Experiência do usuário (UX)': 'uxd', Java: 'dev', 'APIs REST': 'plt', Scrum: 'agi',
-  'Liderança de equipe': 'lid', Android: 'dev', Ionic: 'dev', 'Oracle PL/SQL': 'dev',
-  'Java (J2EE/J2SE)': 'dev', MVC: 'dev', UML: 'dev', MDA: 'dev', DB2: 'dev', PostgreSQL: 'dev',
-  EJB: 'dev', JBoss: 'dev', Oracle: 'dev',
-  // Tecnologias dos projetos STAR
-  Salesforce: 'plt', Quicksight: 'dat', AWS: 'cld', APIs: 'plt', STS: 'plt', 'WhatsApp API': 'plt',
-  Ipricing: 'plt', 'Low-code': 'plt', 'Cockpit Rede': 'plt', 'Itaú PJ': 'plt', Cockpit: 'plt',
-  'Força Campo': 'plt', 'Força Campo App': 'plt', Mainframe: 'plt',
-  Agile: 'agi', 'Gestão de Contratos': 'agi', Orçamento: 'agi',
-  DevOps: 'cld', Sybase: 'cld', Infraestrutura: 'cld', 'PCI Compliance': 'cld', Splunk: 'cld',
-  // Formação dentro do eixo do mapa
-  'Pós-graduação em Ciência de Dados – Data Analytics / Big Data': 'dat',
-};
-const lineOf = (term) => LINE_OF[term] ?? fail(`termo sem linha no mapa: "${term}" (adicione em LINE_OF)`);
-
-// ---------------------------------------------------------------------------
 // Dados derivados
 // ---------------------------------------------------------------------------
 const jobs = cv.Experiencia
-  .map((e) => ({ ...e, id: `exp-${slug(e.Empresa)}`, start: firstYear(e.Periodo), lines: [...new Set(e.Competencias.map(lineOf))] }))
+  .map((e) => ({ ...e, id: `exp-${slug(e.Empresa)}`, start: firstYear(e.Periodo) }))
   .sort((a, b) => b.start - a.start);
 const START_YEAR = Math.min(...jobs.map((j) => j.start));
-const projects = cv.Projetos.map((p) => ({ ...p, id: `p-${p.Periodo}-${slug(p.Nome)}`, lines: [...new Set(p.Tecnologias.map(lineOf))] }));
+const projects = cv.Projetos.map((p) => ({ ...p, id: `p-${p.Periodo}-${slug(p.Nome)}` }));
 const yearGroupId = (empresa, year) => `${slug(empresa)}-${year}`;
-const edu = cv.Formacao_Academica.filter((f) => firstYear(f.Periodo) >= START_YEAR)
-  .map((f) => ({ ...f, year: firstYear(f.Periodo), line: lineOf(f.Curso) }));
-
-// Estações simples: (linha, ano) → itens
-const stops = new Map();
-const addStop = (line, year, item) => {
-  const k = `${line}|${year}`;
-  if (!stops.has(k)) stops.set(k, { line, year, items: [] });
-  stops.get(k).items.push(item);
-};
-for (const p of projects) for (const l of p.lines) addStop(l, +p.Periodo, { name: p.Nome, href: `#${yearGroupId(p.Empresa, p.Periodo)}` });
-for (const f of edu) addStop(f.line, f.year, { name: f.Curso, href: '#education' });
-
-// Início de cada linha: a primeira estação (inclui empregadores). A linha segue
-// contínua até hoje — a competência continua em uso, com ou sem projeto público.
-const span = Object.fromEntries(LINES.map((l) => [l.id, { first: Infinity, firstName: '' }]));
-const touch = (line, year, name) => {
-  const s = span[line];
-  if (year < s.first) Object.assign(s, { first: year, firstName: name });
-};
-for (const j of jobs) for (const l of j.lines) touch(l, j.start, j.Empresa);
-for (const s of stops.values()) touch(s.line, s.year, s.items[0].name);
-for (const l of LINES) if (span[l.id].first === Infinity) fail(`linha ${l.code} sem nenhuma estação`);
-
-const col = (year) => year - START_YEAR + 2;
 
 // ---------------------------------------------------------------------------
 // Blocos da home (index.html)
@@ -150,17 +90,15 @@ const pills = (arr, tag = 'ul') => tag === 'ul'
   ? `<ul class="pf-pills">${arr.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`
   : `<span class="pf-pills">${arr.map((t) => `<span>${esc(t)}</span>`).join('')}</span>`;
 const bullets = (arr, fmt = esc) => `<ul>${arr.map((t) => `<li>${fmt(t)}</li>`).join('')}</ul>`;
-const lineTicks = (ids) => `<ul class="pf-ticks" aria-label="Linhas do mapa">${ids.map((id) =>
-  `<li data-l="${id}"><abbr title="${esc(LINE[id].group)}">${LINE[id].code}</abbr></li>`).join('')}</ul>`;
-
 function hero() {
   const cur = jobs[0];
   const [city, mode] = cur.Local.split(' · ');
-  return `<header id="home" class="pf-hero">
-  <div class="pf-hero-lines" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
+  // <section> rotulada, não <header>: o único banner da página é o cabeçalho comum
+  // (SDD-F1-F1b, RF-F1b-07); o rótulo faz do hero uma região, e nenhum conteúdo fica fora de landmark.
+  return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
   <div class="pf-wrap">
     <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
-    <h1>${esc(cv.Nome)}</h1>
+    <h1 id="pf-nome">${esc(cv.Nome)}</h1>
     <p class="pf-hero-title">${esc(cv.Titulo)}</p>
     <p class="pf-hero-lead">${esc(cv.ResumoHero)}</p>
     <dl class="pf-facts">
@@ -175,59 +113,14 @@ function hero() {
     </div>
     ${socials()}
   </div>
-</header>`;
-}
-
-function metroMap() {
-  const N = NOW_YEAR - START_YEAR + 1;
-  const out = [];
-  // Rótulos de ano (topo no desktop, coluna esquerda no mobile)
-  for (let y = START_YEAR; y <= NOW_YEAR; y++) {
-    out.push(`<span class="pf-yr" style="--c:${col(y)};--r:1" aria-hidden="true">${y}</span>`);
-  }
-  // Siglas das linhas
-  for (const l of LINES) out.push(`<span class="pf-code" data-l="${l.id}" style="--c:1;--r:${LINE[l.id].row}" aria-hidden="true">${l.code}</span>`);
-  // Traçado: contínuo da 1ª estação até hoje
-  for (const l of LINES) {
-    const { first } = span[l.id];
-    out.push(`<span class="pf-seg" data-l="${l.id}" style="--c:${col(first)};--c2:${col(NOW_YEAR) + 1};--r:${LINE[l.id].row};--n:${NOW_YEAR - first + 1}" aria-hidden="true"></span>`);
-  }
-  // Estações em ordem cronológica — é a ordem de leitura do leitor de tela
-  const events = [
-    ...jobs.map((j) => ({ year: j.start, order: 0, html: hub(j) })),
-    ...[...stops.values()].map((s) => ({ year: s.year, order: LINE[s.line].row, html: stop(s) })),
-  ].sort((a, b) => a.year - b.year || a.order - b.order);
-  for (const e of events) out.push(e.html);
-
-  return `<div class="pf-metro" id="mapa">
-  <ul class="pf-legend" aria-label="Linhas: grupos de competência">
-${LINES.map((l) => `    <li><a class="pf-key" data-l="${l.id}" href="#linha-${l.id}"><span class="pf-key-code">${l.code}</span> ${esc(l.group)} <span class="pf-key-since">desde ${span[l.id].first}</span></a></li>`).join('\n')}
-  </ul>
-  <nav class="pf-grid" style="--years:${N}" aria-label="Mapa de linhas: competências e projetos por ano, de ${START_YEAR} a ${NOW_YEAR}">
-${out.join('\n')}
-  </nav>
-  <p class="pf-map-note">Cada linha é um grupo de competência: começa na primeira estação em que ela aparece e segue até hoje. Os pontos são projetos, e as estações que cruzam várias linhas são empregadores.</p>
-</div>`;
-
-  function hub(j) {
-    const rows = j.lines.map((id) => LINE[id].row);
-    const r1 = Math.min(...rows), r2 = Math.max(...rows) + 1;
-    const names = j.lines.map((id) => LINE[id].group).join(', ');
-    return `<a class="pf-hub" href="#${j.id}" style="--c:${col(j.start)};--r:${r1};--r2:${r2}"><span class="pf-sr">${j.start}, ${esc(j.Empresa)}: ${esc(names)}</span></a>
-<span class="pf-hub-name" style="--c:${col(j.start)};--r:${LINES.length + 2}" aria-hidden="true">${esc(j.Empresa)}</span>`;
-  }
-  function stop(s) {
-    const n = s.items.length;
-    return `<a class="pf-stop" data-l="${s.line}" href="${s.items[0].href}" style="--c:${col(s.year)};--r:${LINE[s.line].row}">${n > 1 ? `<span class="pf-stop-n" aria-hidden="true">${n}</span>` : ''}<span class="pf-sr">${s.year}, ${esc(LINE[s.line].group)}: ${s.items.map((i) => esc(i.name)).join('; ')}</span></a>`;
-  }
+</section>`;
 }
 
 function linesSection() {
   return `<ul class="pf-lines">
-${LINES.map((l) => `  <li class="pf-line-card" id="linha-${l.id}" data-l="${l.id}">
-    <h4><span class="pf-key-code">${l.code}</span> ${esc(l.group)}</h4>
-    <p class="pf-since">Desde ${span[l.id].first} (primeira estação: ${esc(span[l.id].firstName)})</p>
-    ${pills(cv.Habilidades[l.group])}
+${Object.entries(cv.Habilidades).map(([grupo, itens]) => `  <li class="pf-line-card">
+    <h4>${esc(grupo)}</h4>
+    ${pills(itens)}
   </li>`).join('\n')}
 </ul>`;
 }
@@ -246,7 +139,7 @@ ${rows.map(({ r, p }) => `  <li>
 function starCard(p) {
   const key = p.Resultados.find(hasMetric);
   const step = (letter, label, body) => `<section class="pf-step" data-step="${letter}"><h6>${label}</h6>${body}</section>`;
-  return `<details class="pf-star" id="${p.id}" data-l="${p.lines[0]}">
+  return `<details class="pf-star" id="${p.id}">
   <summary>
     <h5>${esc(p.Nome)}</h5>
     ${key ? `<span class="pf-star-key">${hl(key)}</span>` : ''}
@@ -261,6 +154,60 @@ function starCard(p) {
 </details>`;
 }
 
+// ---------------------------------------------------------------------------
+// Linha do tempo (SDD-F1-F1b, Parte 9, RF-F9-01 a RF-F9-07). O texto é o conteúdo;
+// a faixa é decorativa (aria-hidden) e só desenha o que a lista já diz.
+// ---------------------------------------------------------------------------
+/** Fim da escala da faixa (RF-F9-07): fixo, para a saída não depender da data do build. */
+const FIM_DA_ESCALA = 2027; // a faixa vai até o fim de 2026; o emprego atual termina em "hoje"
+const MESES = { jan: 0, fev: 1, mar: 2, abr: 3, mai: 4, jun: 5, jul: 6, ago: 7, set: 8, out: 9, nov: 10, dez: 11 };
+const MES_LONGO = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+/** "fev de 2018 – o momento (…)" → { ini, fim, atual, dur, anoIni, anoFim, mesIni }. */
+function periodo(j) {
+  const m = String(j.Periodo).match(/^(\p{L}{3}) de (\d{4}) – (?:(\p{L}{3}) de (\d{4})|o momento)(?: \(([^)]+)\))?$/u)
+    ?? fail(`linha do tempo: período fora do padrão em "${j.Empresa}": ${j.Periodo}`);
+  const mes = (k) => MESES[k.toLowerCase()] ?? fail(`linha do tempo: mês "${k}" desconhecido`);
+  const atual = !m[3];
+  const ini = +m[2] + mes(m[1]) / 12;
+  const fim = atual ? FIM_DA_ESCALA : +m[4] + (mes(m[3]) + 1) / 12;
+  return { ini, fim, atual, dur: m[5] ?? null, anoIni: +m[2], anoFim: atual ? null : +m[4], mesIni: mes(m[1]) };
+}
+const pct = (x) => `${(Math.round(x * 1000) / 10).toFixed(1)}%`;
+
+function linhaDoTempo() {
+  const itens = jobs.map((j) => ({ j, ...periodo(j) })).sort((a, b) => a.ini - b.ini);
+  const inicio = Math.floor(itens[0].ini);
+  const span = FIM_DA_ESCALA - inicio;
+  // Faixas paralelas: um período que começa antes do fim de outro vai para a faixa livre seguinte.
+  const fimDaFaixa = [];
+  for (const it of itens) {
+    let f = fimDaFaixa.findIndex((fim) => fim <= it.ini);
+    if (f === -1) { f = fimDaFaixa.length; fimDaFaixa.push(0); }
+    fimDaFaixa[f] = it.fim;
+    it.faixa = f;
+  }
+  const atual = itens.find((it) => it.atual) ?? fail('linha do tempo: nenhum emprego atual');
+  const resumo = `Carreira desde ${inicio}, em ${itens.length} empresas. Hoje: ${esc(atual.j.Cargo)} · ${esc(atual.j.Empresa)}, desde ${MES_LONGO[atual.mesIni]} de ${atual.anoIni}.`;
+  const marcas = [];
+  for (let a = Math.ceil(inicio / 5) * 5; a < FIM_DA_ESCALA; a += 5) marcas.push(a);
+  const faixa = `<div class="pf-tl-faixa" aria-hidden="true" style="--faixas:${fimDaFaixa.length}">
+${itens.map((it, n) => `  <span class="pf-tl-bloco${it.atual ? ' pf-tl-bloco--atual' : ''}" data-tl="${it.j.id}" style="--x:${pct((it.ini - inicio) / span)};--w:${pct((it.fim - it.ini) / span)};--y:${it.faixa};--n:${n}"><span class="pf-tl-sigla">${esc(it.j.Empresa)}</span></span>`).join('\n')}
+${marcas.map((a) => `  <span class="pf-tl-marca" style="--x:${pct((a - inicio) / span)}">${a}</span>`).join('\n')}
+</div>`;
+  const lista = `<ol class="pf-tl-lista">
+${itens.map((it) => `  <li data-tl="${it.j.id}"><a href="#${it.j.id}"><span class="pf-tl-quando">${it.anoIni} – ${it.atual ? 'hoje' : it.anoFim}</span> <strong class="pf-tl-cargo">${esc(it.j.Cargo)}</strong> <span class="pf-tl-org">${esc(it.j.Empresa)}</span> <span class="pf-tl-dur">${it.atual ? 'emprego atual' : esc(it.dur ?? '')}</span></a></li>`).join('\n')}
+</ol>`;
+  // RF-F9-04: o script só arma e dispara a animação (classes); não insere texto. Sem JS, ou com
+  // movimento reduzido, a faixa aparece pronta.
+  const anima = `<script>(function(){var t=document.querySelector(".pf-tl");if(!t||!("IntersectionObserver"in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;t.classList.add("pf-tl--armada");new IntersectionObserver(function(e,o){if(e[0].isIntersecting){t.classList.add("pf-tl--vista");o.disconnect();}},{threshold:.35}).observe(t);})();</script>`;
+  return `<p class="pf-tl-resumo">${resumo}</p>
+<div class="pf-tl">
+${faixa}
+${lista}
+</div>
+${anima}`;
+}
+
 function experience() {
   return jobs.map((j) => {
     const own = projects.filter((p) => p.Empresa === j.Empresa);
@@ -269,7 +216,6 @@ function experience() {
   <header class="pf-exp-head">
     <p class="pf-exp-when">${esc(j.Periodo)} · ${esc(j.Local)}</p>
     <h3 id="${j.id}-h">${esc(j.Cargo)} <span class="pf-exp-org">${esc(j.Empresa)}</span></h3>
-    ${lineTicks(j.lines)}
   </header>
   <p class="pf-exp-desc">${esc(j.Descricao)}</p>
   ${j.Resultados?.length ? `<h4 class="pf-h4">Resultados</h4>${bullets(j.Resultados, hl)}` : ''}
@@ -359,17 +305,21 @@ ${cv.Recomendacoes_Recebidas.map((r) => `  <figure class="pf-rec">
 </div>`;
 }
 
-const NAV = [['#about', 'Sobre'], ['#experience', 'Experiência'], ['#education', 'Formação'], ['#recommendations', 'Recomendações'], ['#contact', 'Contato']];
+const NAV = [['#linha-do-tempo', 'Linha do tempo'], ['#about', 'Sobre'], ['#experience', 'Experiência'], ['#education', 'Formação'], ['#recommendations', 'Recomendações'], ['#contact', 'Contato']];
+/** Seções da home editorial (F3, RF-F3-07): a mesma lista alimenta o rodapé. */
+const NAV_HOME = [['#about', 'Sobre'], ['#temas', 'Temas'], ['#provas', 'Provas'], ['#destaques', 'Destaques'], ['#contact', 'Contato']];
 const dateBR = (iso) => iso.split('-').reverse().join('/');
 
-function footer() {
+function footer(page) {
   return `<footer class="pf-footer" id="contact">
   <div class="pf-wrap">
     <h2 class="pf-h2">Contato</h2>
     <p class="pf-contact"><a href="mailto:${esc(cv.Contato.Email)}">${esc(cv.Contato.Email)}</a></p>
     ${socials()}
-    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav">${NAV.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}<li><a href="./curriculo.html">Currículo em formato clássico</a></li><li><a href="./catalogo.html">Catálogo</a></li></ul></nav>
-    <p class="pf-ai-note">Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem integralmente as informações públicas do currículo e são gerados do mesmo cv.json que produz o texto visível. Última atualização: ${dateBR(MODIFIED)}. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
+    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav">${(page === 'index' ? NAV_HOME : NAV).map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}${page === 'index' ? '<li><a href="./curriculo.html">Carreira completa</a></li>' : ''}<li><a href="./catalogo.html">Conteúdos</a></li></ul></nav>
+    <p class="pf-ai-note">${page === 'index'
+    ? 'Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem o currículo completo, publicado em <a href="./curriculo.html">Carreira</a>, e são gerados do mesmo cv.json.'
+    : 'Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem integralmente as informações públicas do currículo e são gerados do mesmo cv.json que produz o texto visível.'} Última atualização: ${dateBR(MODIFIED)}. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
     <p class="pf-legal">© ${NOW_YEAR} ${esc(cv.Nome)}. Todos os direitos reservados. · <a href="./privacidade.html">Privacidade</a> · <a href="./termos.html">Termos</a> · <a href="./cookies.html">Cookies</a> · <button type="button" class="pf-linkbtn" onclick="window.cookieConsent && window.cookieConsent.open()">Preferências de cookies</button></p>
   </div>
 </footer>`;
@@ -383,167 +333,113 @@ ${body}
   </div>
 </section>`;
 
-const pfBlock = `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json (NÃO editar à mão) -->
-<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span>${LINES.slice(0, 5).map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
-<div class="pf-bundle" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
+/** Bloco PF da home e do currículo (SDD-F1-F1b, Parte 3, RF-F2-01): mesmo conteúdo, rodapé por página. */
+const pfBlock = (page) => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json (NÃO editar à mão) -->
+<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
 ${hero()}
 <main id="conteudo">
+${section('linha-do-tempo', 'Linha do tempo', '', linhaDoTempo())}
 ${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
-<h3 class="pf-h3">Mapa de linhas</h3>
-${metroMap()}
-<h3 class="pf-h3">Competências por linha</h3>
+<h3 class="pf-h3">Competências</h3>
 ${linesSection()}`)}
 ${section('results', 'Resultados quantificados', 'Resultados de projeto que citam percentual, valor ou prazo, transcritos sem edição. Cada linha leva ao projeto de origem.', board())}
 ${section('experience', 'Experiência', `${jobs.length} empregadores e ${projects.length} projetos descritos no formato STAR (Situação, Tarefas, Ações, Resultados). Abra um projeto para ver o detalhe.`, `<div class="pf-exps">\n${experience()}\n</div>`)}
 ${section('education', 'Formação e certificações', '', education())}
 ${section('recommendations', 'Recomendações', `${cv.Recomendacoes_Recebidas.length} recomendações recebidas no LinkedIn, em texto integral.`, recommendations())}
 </main>
-${footer()}
+${footer(page)}
 <!-- PF:END -->`;
 
+
 // ---------------------------------------------------------------------------
-// Blocos de /curriculo — a MESMA marcação que src/js/curriculo.js (ex-cv-renderer)
-// montava no cliente, agora gravada no HTML. Não mudar classes: é a aparência.
+// Home editorial (SDD-F1-F1b, Parte 6, F3). Escolhas do autor (DF3-2/DF3-3):
+// trocar aqui. O texto continua literal do cv.json e do YAML; o gerador quebra
+// se uma escolha deixar de existir na fonte.
 // ---------------------------------------------------------------------------
-const CV = {
-  'hero-content': `
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
-            ${esc(cv.Nome)}
-        </h1>
-        <p class="text-2xl md:text-4xl font-light mb-8 text-blue-300">
-            ${esc(cv.Titulo)}
-        </p>
-        <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
-            ${esc(cv.ResumoHero)}
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <a href="#projects" class="btn-primary inline-block">Ver Projetos</a>
-            <a href="${esc(cv.Contato.LinkedIn)}" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-block">Conectar no LinkedIn</a>
-        </div>`,
+/** Provas: [nome do projeto, trecho que identifica o resultado]. */
+const PROVAS = [
+  ['Pipe Automática Comercial', '15%'],
+  ['Evolução do Credenciamento no Plano Padrão', 'D0'],
+  ['Revisão orçamentária de fornecedores (MGI Tech & Maplink)', '500k'],
+  ['Revisão orçamentária e CINVEST do novo contrato Salesforce', '3MM'],
+];
+/** Destaques (3 a 4; pelo menos um de natureza Experiência). */
+const DESTAQUES = ['agent-ready', 'engenharia-agentes-ia', 'knowledge-os-presentation', 'acessibilidade'];
 
-  'about-content': cv.Resumo.map((p) => `<p class="mb-4">${esc(p)}</p>`).join(''),
+const ecossistema = loadEcossistema();
+const { eco } = ecossistema;
+const noDoYaml = (slug) => eco.nodes[slug] ?? fail(`home: nó "${slug}" ausente do YAML`);
+const hrefNo = (n) => `./${n.file}`;
 
-  'skills-container': Object.entries(cv.Habilidades).map(([category, list]) => `<div class="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700">
-            <h3 class="text-xl font-semibold text-blue-300 mb-4">${esc(category.replace(/_/g, ' '))}</h3>
-            <div class="flex flex-wrap gap-2">
-                ${list.map((skill) => `
-                    <span class="bg-gray-700 text-gray-200 text-sm px-3 py-1 rounded-full hover:bg-blue-600 hover:text-white transition-colors duration-200 cursor-default">
-                        ${esc(skill)}
-                    </span>
-                `).join('')}
-            </div>
-        </div>`).join('\n'),
+const provas = PROVAS.map(([nome, marca]) => {
+  const p = projects.find((x) => x.Nome === nome) ?? fail(`home: projeto "${nome}" ausente do cv.json`);
+  const r = p.Resultados.find((x) => x.includes(marca)) ?? fail(`home: resultado com "${marca}" ausente em "${nome}"`);
+  return { p, r };
+});
+if (!DESTAQUES.some((s) => noDoYaml(s).natureza === 'experiencia')) fail('home: nenhum destaque de natureza Experiência');
+if (DESTAQUES.length < 3 || DESTAQUES.length > 4) fail('home: são 3 a 4 destaques');
 
-  'experience-container': cv.Experiencia.map((exp) => `<div class="relative mb-10 pl-12 md:pl-16 timeline-item">
-            <div class="timeline-dot absolute left-[-8px] top-1 transform -translate-x-1/2"></div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 hover:border-blue-500 transition-colors duration-300">
-                <h3 class="text-2xl font-bold text-white">${esc(exp.Cargo)}</h3>
-                <p class="text-lg font-semibold text-blue-400 mb-1">${esc(exp.Empresa)}</p>
-                <p class="text-gray-400 text-sm mb-3">${esc(exp.Periodo)} &bull; ${esc(exp.Local)}</p>
-                <p class="text-gray-300 mb-4">${esc(exp.Descricao)}</p>
-                ${exp.Resultados?.length ? `
-                    <h4 class="text-md font-semibold text-gray-200 mt-4 mb-2">Principais Resultados:</h4>
-                    <ul class="list-disc list-inside text-gray-400 text-sm pl-4 space-y-1">
-                        ${exp.Resultados.map((res) => `<li>${esc(res)}</li>`).join('')}
-                    </ul>
-                ` : ''}
-                ${exp.Principais_Projetos?.length ? `
-                    <h4 class="text-md font-semibold text-gray-200 mt-4 mb-2">Principais Projetos:</h4>
-                    <ul class="list-disc list-inside text-gray-400 text-sm pl-4 space-y-1">
-                        ${exp.Principais_Projetos.map((proj) => `<li>${esc(proj)}</li>`).join('')}
-                    </ul>
-                ` : ''}
-                ${exp.Competencias?.length ? `
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        ${exp.Competencias.map((comp) => `
-                            <span class="bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-1 rounded-full border border-blue-700">
-                                ${esc(comp)}
-                            </span>
-                        `).join('')}
-                    </div>
-                ` : ''}
-            </div>
-        </div>`).join('\n'),
+const natTag = (n) => `<span class="pf-nat">${esc(NATUREZAS[n.natureza])}</span>`;
 
-  // O bloco [data-star] é o que o modal exibe: o JS só copia, não monta texto.
-  'projects-container': cv.Projetos.map((project, index) => `<div class="project-card bg-gray-700 p-6 rounded-lg shadow-md flex flex-col justify-between h-full">
-            <div>
-                <h3 class="text-xl font-semibold text-white mb-2">${esc(project.Nome)}</h3>
-                <p class="text-blue-300 text-sm mb-2">${esc(project.Empresa)} (${esc(project.Periodo)})</p>
-                <p class="text-gray-300 text-sm mb-4">${esc((project.Situacao || 'Clique para ver detalhes.').substring(0, 120))}...</p>
-            </div>
-            <button onclick="openModal(this, ${index})" class="btn-secondary mt-4 self-start">Saiba Mais</button>
-            <div data-star hidden>
-                <span data-f="name">${esc(project.Nome)}</span>
-                <span data-f="period">${esc(project.Periodo)}</span>
-                <span data-f="company">${esc(project.Empresa)}</span>
-                ${project.Situacao && project.Situacao !== 'N/A' ? `<span data-f="situacao">${esc(project.Situacao)}</span>
-                <ul data-f="tarefas">${(project.Tarefas || []).map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-                <ul data-f="acoes">${(project.Acoes || []).map((a) => `<li>${esc(a)}</li>`).join('')}</ul>
-                <ul data-f="resultados">${(project.Resultados || []).map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
-                ${project.Tecnologias?.length ? `<div data-f="technologies">${project.Tecnologias.map((tech) => `
-            <span class="bg-gray-600 text-gray-200 text-sm px-3 py-1 rounded-full">
-                ${esc(tech)}
-            </span>
-        `).join('')}</div>` : ''}
-            </div>
-        </div>`).join('\n'),
+function homeHero() {
+  const cur = jobs[0];
+  return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
+  <div class="pf-wrap">
+    <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
+    <h1 id="pf-nome">${esc(cv.Nome)}</h1>
+    <p class="pf-hero-title">${esc(cv.Titulo)}</p>
+    <p class="pf-hero-lead">${esc(cv.ResumoHero)} Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.</p>
+    <div class="pf-cta">
+      <a class="pf-btn" href="./curriculo.html">Ver carreira</a>
+      <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar os conteúdos</a>
+      <a class="pf-btn pf-btn--ghost pf-btn--yt" href="/videos.html">${icon('youtube')} Vídeos</a>
+    </div>
+    ${socials()}
+  </div>
+</section>`;
+}
 
-  'education-container': cv.Formacao_Academica.map((edu) => `<div class="bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700">
-            <h4 class="text-xl font-semibold text-white">${esc(edu.Curso)}</h4>
-            <p class="text-blue-300 text-md mb-2">${esc(edu.Instituicao)}</p>
-            <p class="text-gray-400 text-sm">${esc(edu.Periodo || edu.Ano)}</p>
-            ${edu.Diploma_Digital_Codigo ? `<p class="text-gray-400 text-xs mt-2">Código do Diploma: <span class="font-mono">${esc(edu.Diploma_Digital_Codigo)}</span></p>` : ''}
-            ${edu.Verificacao ? `<a href="${esc(edu.Verificacao)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-400 hover:underline text-sm mt-3" aria-label="Verificar diploma: ${esc(edu.Curso)} — ${esc(edu.Instituicao)} (abre em nova aba)">Verificar diploma <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>` : ''}
-        </div>`).join('\n'),
+/** Os 10 temas, na ordem do catálogo, com o número de conteúdos (SDD Parte 8, RF-F8-06). */
+function temasHome() {
+  return `<ul class="pf-temas">
+${temasDoSite(ecossistema).map((t) => `  <li><a href="./catalogo.html#tema-${t.id}">${esc(t.nome)}</a> <span class="pf-tema-n">${t.total} ${t.total === 1 ? 'conteúdo' : 'conteúdos'}</span></li>`).join('\n')}
+</ul>
+<p class="pf-more"><a href="./catalogo.html">Ver todos os conteúdos</a></p>`;
+}
 
-  'certifications-container': cv.Certificados.map((cert) => `<div class="bg-gray-700 p-4 rounded-lg shadow-md flex flex-col justify-between h-full">
-            <div>
-                <h4 class="text-md font-semibold text-white">${esc(cert.Nome)}</h4>
-                <p class="text-blue-300 text-sm">${esc(cert.Instituicao)}</p>
-                <p class="text-gray-400 text-xs mb-2">Emitido em: ${esc(certDate(cert))}</p>
-            </div>
-            ${cert.Verificacao ? `<a href="${esc(cert.Verificacao)}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm mt-2 self-start">Ver Credencial <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>` : ''}
-        </div>`).join('\n'),
+function provasHome() {
+  return `<ol class="pf-provas">
+${provas.map(({ p, r }) => `  <li>
+    <p class="pf-prova-text">${hl(r)}</p>
+    <a class="pf-board-src" href="./curriculo.html#${p.id}">${esc(p.Nome)} · ${p.Periodo}</a>
+  </li>`).join('\n')}
+</ol>
+`;
+}
 
-  'courses-container': Object.entries(cv.Cursos_Alura).map(([category, list]) => `<div class="bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 border border-gray-700">
-            <h3 class="text-xl font-semibold text-blue-300 mb-4">${esc(category.replace(/_/g, ' '))}</h3>
-            <ul class="space-y-2">
-                ${list.map((course) => `
-                    <li class="text-gray-300 text-sm flex items-start">
-                        <i class="fa-solid fa-check-circle text-green-500 mr-2 mt-1"></i>
-                        <span>${esc(course)}</span>
-                    </li>
-                `).join('')}
-            </ul>
-        </div>`).join('\n'),
+function destaques() {
+  return `<ul class="pf-destaques">
+${DESTAQUES.map((s) => { const n = eco.nodes[s]; return `  <li class="pf-destaque">
+    <p class="pf-destaque-tag">${esc(n.kind)} · ${natTag(n)}</p>
+    <h3><a href="${hrefNo(n)}">${esc(cardTitle(n))}</a></h3>
+    <p>${esc(n.descricao)}</p>
+  </li>`; }).join('\n')}
+</ul>`;
+}
 
-  'recommendations-container': cv.Recomendacoes_Recebidas.map((rec) => `<div class="bg-gray-700 p-6 rounded-lg shadow-md">
-            <p class="text-gray-300 italic mb-4">"${esc(rec.Recomendacao)}"</p>
-            <p class="text-white font-semibold">${esc(rec.Autor)}</p>
-            <p class="text-blue-300 text-sm">${esc(rec.Cargo)}</p>
-            <p class="text-gray-400 text-xs mt-1">${esc(rec.Data_Trabalho)}</p>
-        </div>`).join('\n'),
-
-  'contact-container': `
-        <p class="text-lg text-gray-300 mb-8">Estou sempre aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato!</p>
-        <div class="flex flex-col items-center space-y-6">
-            <a href="mailto:${esc(cv.Contato.Email)}" class="btn-primary inline-flex items-center space-x-3 text-lg">
-                <i class="fa-solid fa-envelope"></i>
-                <span>${esc(cv.Contato.Email)}</span>
-            </a>
-            <a href="${esc(cv.Contato.LinkedIn)}" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-flex items-center space-x-3 text-lg">
-                <i class="fa-brands fa-linkedin"></i>
-                <span>LinkedIn/${esc(cv.Contato.LinkedInUser)}</span>
-            </a>
-            <a href="${esc(cv.Contato.youtube)}" target="_blank" rel="noopener noreferrer" class="btn-secondary inline-flex items-center space-x-3 text-lg">
-                <i class="fa-brands fa-youtube"></i>
-                <span>Youtube/@MauricioIssei</span>
-            </a>
-        </div>`,
-
-  year: String(NOW_YEAR),
-};
+/** Bloco PF da home editorial (RF-F3-01, RF-F8-06): hero, Sobre, Temas, Provas, Destaques. */
+const homeBlock = () => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json e specs/ecosystem.nav.yaml (NÃO editar à mão) -->
+<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
+${homeHero()}
+<main id="conteudo">
+${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
+<p class="pf-more"><a href="./curriculo.html">Ver a carreira completa</a></p>`)}
+${section('temas', 'Temas', 'O que publico, por assunto. Cada tema leva aos seus conteúdos.', temasHome())}
+${section('provas', 'Provas', 'Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Carreira.', provasHome())}
+${section('destaques', 'Destaques', '', destaques())}
+</main>
+${footer('index')}
+<!-- PF:END -->`;
 
 // Gêmeo .md de /curriculo (a edge function serve <caminho>.md a agentes).
 const md = [
@@ -590,11 +486,8 @@ function fill(file, blocks) {
 }
 
 const targets = [
-  fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock]]),
-  fill('src/curriculo.html', Object.entries(CV).map(([id, body]) => {
-    const s = `<!-- CV:${id}:START -->`, e = `<!-- CV:${id}:END -->`;
-    return [s, e, `${s}${body}${e}`];
-  })),
+  fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', homeBlock()]]),
+  fill('src/curriculo.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock('curriculo')]]),
   whole('public/curriculo.md', md),
 ];
 

@@ -32,6 +32,10 @@ import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, rmSync
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
+import { aplicar as aplicarCabecalho } from './gen-cabecalho.mjs';
+import { loadEcossistema, NATUREZAS } from './catalogo/dados.mjs';
+
+const { eco: ECO } = loadEcossistema();
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://mauricio.issei.com.br';
@@ -301,10 +305,7 @@ const CSS = `
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
-.top{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.top-in,.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
-.top-in{display:flex;gap:20px;align-items:center;justify-content:space-between}
-.top a{text-decoration:none;font-weight:600}.brand{color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -344,7 +345,9 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 `.trim();
 
 function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '' }) {
-  return `<!DOCTYPE html>
+  // Cabeçalho comum (SDD-F1-F1b, F1b): o mesmo gerador das outras páginas preenche os marcadores.
+  const rel = `${rota.slice(1)}.html`;
+  return aplicarCabecalho(`<!DOCTYPE html>
 <!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
 <html lang="pt-BR">
 <head>
@@ -366,12 +369,13 @@ function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '' })
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 <style>${CSS}</style>
+<!-- SITE-HEADER-CSS:START --><!-- SITE-HEADER-CSS:END -->
 ${ANALYTICS}
 <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<header class="top"><nav class="top-in" aria-label="Principal"><a class="brand" href="/">${AUTOR}</a><a href="/videos">Vídeos</a></nav></header>
+<!-- SITE-HEADER:START --><!-- SITE-HEADER:END -->
 <main id="conteudo" class="wrap">
 ${corpo}
 </main>
@@ -379,7 +383,7 @@ ${corpo}
 ${script}<script type="module" src="/js/cookie-consent.js"></script>
 </body>
 </html>
-`;
+`, ECO, rel);
 }
 
 /*
@@ -571,23 +575,65 @@ ${listaFontes}<p class="revisao">Revisado por ${esc(v.revisado_por)} em <time da
 `;
 }
 
-export function renderTema(chave, tema, lista, temas) {
+/**
+ * Artigos do site por tema (F5a, D7 b): os nós de specs/ecosystem.nav.yaml com `temas`.
+ * Cada item: { titulo, href, natureza, formato, descricao, temas }. Fica fora de build()
+ * para os testes com fixture não dependerem do YAML.
+ */
+export function artigosDoYaml() {
+  const { eco } = loadEcossistema();
+  return Object.values(eco.nodes).filter((n) => n.temas?.length).map((n) => ({
+    titulo: n.cartao_titulo || n.label || n.title,
+    href: `/${n.file}`,
+    natureza: NATUREZAS[n.natureza] ?? '',
+    formato: n.kind ?? '',
+    descricao: n.descricao ?? '',
+    temas: n.temas,
+  }));
+}
+
+function itemArtigo(a) {
+  const meta = [a.natureza, a.formato].filter(Boolean).map(esc).join(' · ');
+  return `<li><article class="box">
+<h3><a href="${esc(a.href)}">${esc(a.titulo)}</a></h3>
+${meta ? `<p class="aviso">${meta}</p>` : ''}${a.descricao ? `<p>${esc(a.descricao)}</p>` : ''}
+</article></li>`;
+}
+
+export function renderTema(chave, tema, lista, temas, artigos = []) {
   const rota = rotaTema(chave);
-  const descricao = resumo(tema.resumo) || `Vídeos de ${AUTOR} sobre ${tema.nome}.`;
+  const oque = artigos.length ? 'Artigos e vídeos' : 'Vídeos';
+  const descricao = resumo(tema.resumo) || `${oque} de ${AUTOR} sobre ${tema.nome}.`;
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: tema.nome, description: descricao,
     url: `${SITE}${rota}`, inLanguage: 'pt-BR',
-    hasPart: lista.map((v) => ({ '@type': 'VideoObject', name: v.youtube.titulo, url: `${SITE}${rotaVideo(v)}` })),
+    hasPart: [
+      ...artigos.map((a) => ({ '@type': 'WebPage', name: a.titulo, url: `${SITE}${a.href}` })),
+      ...lista.map((v) => ({ '@type': 'VideoObject', name: v.youtube.titulo, url: `${SITE}${rotaVideo(v)}` })),
+    ],
   };
+  const contagem = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
+  const blocoArtigos = artigos.length
+    ? `<h2>Artigos e páginas</h2>
+<p class="meta">${contagem(artigos.length, 'página do site', 'páginas do site')} sobre este assunto.</p>
+<ul class="lista">
+${artigos.map(itemArtigo).join('\n')}
+</ul>
+<h2>Vídeos</h2>
+`
+    : '';
   const corpo = `<p class="crumb"><a href="/videos">Vídeos</a></p>
 <h1>${esc(tema.nome)}</h1>
 ${tema.resumo ? `<p>${esc(tema.resumo)}</p>` : ''}
-<p class="meta">${lista.length} ${lista.length === 1 ? 'vídeo' : 'vídeos'}</p>
+${blocoArtigos}<p class="meta">${contagem(lista.length, 'vídeo', 'vídeos')}</p>
 <ul class="lista">
 ${lista.map((v) => cartao(v, temas)).join('\n')}
 </ul>`;
-  const html = pagina({ titulo: `${tema.nome} — vídeos`, descricao, rota, robots: 'index, follow', jsonld, corpo });
+  const html = pagina({ titulo: `${tema.nome} — ${oque.toLowerCase()}`, descricao, rota, robots: 'index, follow', jsonld, corpo });
   const md = [`# ${tema.nome}`, '', tema.resumo ?? '', '',
+    ...(artigos.length ? ['## Artigos e páginas', '',
+      ...artigos.map((a) => `- [${a.titulo}](${SITE}${a.href}) — ${[a.natureza, a.formato].filter(Boolean).join(' · ')}. ${a.descricao}`.trimEnd()),
+      '', '## Vídeos', ''] : []),
     ...lista.map((v) => `- [${v.youtube.titulo}](${SITE}${rotaVideo(v)}) — ${dataPt(v.youtube.publicado_em)}`), ''].join('\n');
   return { html, md };
 }
@@ -626,8 +672,12 @@ ${lista.map((v) => cartao(v, temas)).join('\n')}
 // ── Montagem ────────────────────────────────────────────────────────────────
 
 /** Conteúdo → mapa { caminho relativo: texto }. Lança se o conteúdo for inválido. */
-export function build(content, opcoes) {
+export function build(content, opcoes = {}) {
   const erros = validate(content, opcoes);
+  const artigos = opcoes.artigos ?? [];
+  for (const a of artigos) for (const t of a.temas) {
+    if (!(t in content.temas)) erros.push(`YAML: ${a.href}: tema "${t}" não existe em content/temas.yml`);
+  }
   if (erros.length) throw new Error(`conteúdo inválido:\n  - ${erros.join('\n  - ')}`);
   const { temas } = content;
   const vivos = content.videos.filter((v) => v.status !== 'removido').sort(recentes);
@@ -639,7 +689,8 @@ export function build(content, opcoes) {
   }
   const temasUsados = Object.keys(temas).filter((t) => vivos.some((v) => v.temas?.includes(t)));
   for (const t of temasUsados) {
-    const { html, md } = renderTema(t, temas[t], vivos.filter((v) => v.temas?.includes(t)), temas);
+    const doTema = artigos.filter((a) => a.temas.includes(t));
+    const { html, md } = renderTema(t, temas[t], vivos.filter((v) => v.temas?.includes(t)), temas, doTema);
     out[`src/temas/${t}.html`] = html;
     out[`public/temas/${t}.md`] = md;
   }
@@ -667,7 +718,9 @@ function orfaos(outRoot, gerados) {
 
 export function run({ contentDir = join(ROOT, 'content'), outRoot = ROOT, check = false } = {}) {
   const content = loadContent(contentDir);
-  const gerados = build(content);
+  // Só o conteúdo real liga os artigos do YAML; fixtures (--content) ficam só com vídeos.
+  const artigos = contentDir === join(ROOT, 'content') ? artigosDoYaml() : [];
+  const gerados = build(content, { artigos });
   const pendencias = avisos(content);
   const divergentes = Object.entries(gerados)
     .filter(([p, txt]) => !existsSync(join(outRoot, p)) || readFileSync(join(outRoot, p), 'utf8') !== txt)

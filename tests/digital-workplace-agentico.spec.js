@@ -283,7 +283,10 @@ test.describe('Digital Workplace Agêntico — página', () => {
 
   test('crosslinks do corpo apontam para páginas que existem', async ({ page }) => {
     await page.goto(PATH);
-    const hrefs = await page.$$eval('main a[href^="./"]', (as) => [...new Set(as.map((a) => a.getAttribute('href')))]);
+    // O bloco de continuação (nav.cont) é gerado e tem teste próprio: tests/continuacao.gen.test.mjs.
+    const hrefs = await page.$$eval('main a[href^="./"]', (as) => [...new Set(as
+      .filter((a) => !a.closest('nav.cont'))
+      .map((a) => a.getAttribute('href')))]);
     expect(hrefs.sort()).toEqual([
       './agent-ready.html', './engenharia-agentes-ia.html', './engenharia-confianca.html',
       './knowledge-os-presentation.html', './service-operations-2-0.html',

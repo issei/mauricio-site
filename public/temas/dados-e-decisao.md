@@ -2,6 +2,13 @@
 
 Dados, métricas, aprendizado de máquina e modelos para transformar informação em decisão.
 
+## Artigos e páginas
+
+- [Formulação de Problemas](https://mauricio.issei.com.br/formulacao-de-problemas.html) — Estudo · Artigo. Formular é engenharia da redução de incerteza — e precisa parar: seis incertezas, seis estados de conhecimento, regra de parada e o penalizador de hiper-resolução.
+- [Operação Capital Cognitivo](https://mauricio.issei.com.br/operacao-capital-cognitivo.html) — Experimento · Simulador. Simulador executivo de FinOps de IA: investigue a fatura oculta e deduza o framework Useful Intelligence per Dollar (UI/$) defendendo decisões perante um Conselho dinâmico.
+
+## Vídeos
+
 - [Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web](https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado) — 10 de outubro de 2026
 - [Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH](https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em) — 23 de setembro de 2026
 - [O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional](https://mauricio.issei.com.br/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do) — 26 de agosto de 2026

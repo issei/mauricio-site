@@ -6,6 +6,7 @@
 // mdSections[{h,body}], og{eyebrow,title('{x}'=gradiente),subtitle,thesis,chips[]},
 // hasMd, ogType, ogTitle, ogDescription, video, extraGraph[] (nós JSON-LD prontos).
 import { CERTIFICATIONS } from './identity.mjs';
+import { catalogoMdSections } from '../catalogo/dados.mjs';
 
 export const PAGES = [
   // ===================================================================== TIER S
@@ -880,22 +881,22 @@ export const PAGES = [
     og: { eyebrow: 'Tech Lead · Especialista em Análise de Sistemas', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS e APIs' },
   },
   {
-    // Home anterior, preservada com a mesma aparência; conteúdo gravado no
-    // HTML por scripts/gen-portfolio.mjs (blocos CV:*), sem fetch.
+    // Carreira: desde a F2 (SDD-F1-F1b, Parte 3), o mesmo bloco PF da home,
+    // gravado no HTML por scripts/gen-portfolio.mjs, sem fetch.
     slug: 'curriculo', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
-    title: 'Currículo — Maurício Yokoyama Issei',
+    title: 'Carreira — Maurício Yokoyama Issei',
     description: 'Currículo completo de Maurício Yokoyama Issei: mais de 20 anos em desenvolvimento de software e liderança técnica, com foco em Salesforce, AWS e APIs.',
     datePublished: '2026-09-22', dateModified: '2026-09-22',
     keywords: ['Maurício Yokoyama Issei', 'currículo', 'Tech Lead', 'Salesforce', 'AWS', 'APIs'],
     extraGraph: [CERTIFICATIONS],
-    og: { eyebrow: 'Currículo', title: 'Maurício {Yokoyama Issei}', subtitle: 'Experiência, projetos, formação e recomendações' },
+    og: { eyebrow: 'Carreira', title: 'Maurício {Yokoyama Issei}', subtitle: 'Experiência, projetos, formação e recomendações' },
   },
   {
     slug: 'catalogo', type: 'CollectionPage', tier: 'B', hasMd: true, ogType: 'website',
-    title: 'Catálogo · Mapa do Ecossistema',
-    description: 'O mapa do ecossistema de Maurício Issei: uma jornada em cinco pilares — Mentalidade, Método, Aplicação, Valor e Resultados — conectando artigos, propostas técnicas e experiências.',
-    datePublished: '2026-01-15', dateModified: '2026-06-21',
-    keywords: ['catálogo', 'Maurício Issei', 'engenharia de IA', 'Salesforce', 'propostas técnicas'],
+    title: 'Conteúdos — Maurício Yokoyama Issei',
+    description: 'Artigos, estudos, guias e casos de Maurício Issei, agrupados em 10 temas, com o formato e a natureza de cada conteúdo.',
+    datePublished: '2026-01-15', dateModified: '2026-11-11',
+    keywords: ['conteúdos', 'Maurício Issei', 'engenharia de IA', 'Salesforce', 'propostas técnicas'],
     itemList: [
       { name: 'A Engenharia da Confiança', url: 'https://mauricio.issei.com.br/engenharia-confianca' },
       { name: 'Engenharia de Agentes de IA', url: 'https://mauricio.issei.com.br/engenharia-agentes-ia' },
@@ -906,62 +907,11 @@ export const PAGES = [
       { name: 'Service Operations 2.0', url: 'https://mauricio.issei.com.br/service-operations-2-0' },
       { name: 'Do Caos à Resiliência — Sustentação', url: 'https://mauricio.issei.com.br/sustentacao' },
     ],
-    og: { eyebrow: 'Catálogo · Mapa do Ecossistema', title: 'Mapa do {Ecossistema}', subtitle: 'Mentalidade · Método · Aplicação · Valor · Resultados' },
+    og: { eyebrow: 'Conteúdos', title: 'Conteúdos por {tema}', subtitle: 'Artigos, estudos, guias e casos em 10 temas' },
     // Sem tldr/faq: é o hub de navegação. O .md lista a rede inteira para o agente
     // que chega pelo catálogo — mesma ordem e mesmos destinos dos cards da página.
-    mdSections: [
-      { h: 'Como o catálogo está organizado', body: 'Não é uma lista, é uma jornada em cinco pilares — Mentalidade → Método → Aplicação → Valor → Resultados. Cada conteúdo é um nó de uma rede que conduz da mentalidade ao resultado, atravessando o método, sua aplicação no Salesforce e a sustentação em produção.' },
-      { h: '01 · Mentalidade — Fundação', body: [
-        'Princípios de pensamento sistêmico e gestão do conhecimento: o ponto de partida antes de qualquer ferramenta.',
-        '',
-        '- [Navegando na Complexidade](https://mauricio.issei.com.br/know) — o Framework Cynefin e o fim das melhores práticas: liderar inovação e processos emergentes em ambientes complexos.',
-        '- [Vibe Coding com Devin](https://mauricio.issei.com.br/devin) — engenharia agêntica na prática: o Devin como executor de tarefas de engenharia, da intenção ao código.',
-        '- [Formulação de Problemas](https://mauricio.issei.com.br/formulacao-de-problemas) — formular é engenharia da redução de incerteza, e precisa parar: seis incertezas, seis estados de conhecimento, regra de parada e o penalizador de hiper-resolução.',
-        '- [Capacidade Antes do Acesso](https://mauricio.issei.com.br/capacidade-antes-do-acesso) — competência docente, mediação pedagógica e governança da IA generativa na educação infantil e fundamental inicial.',
-        '- [O Artífice Invisível](https://mauricio.issei.com.br/artifice) — o paradoxo da maestria técnica: por que a sofisticação vira carga invisível, e como recuperar a soberania do ofício.',
-        '- [Curiosidade e Investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao) — informação não é conhecimento: transformar curiosidade em investigação usando a IA como bancada, não como oráculo.',
-        '- [O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/aprendizagem-autorregulada) — o que a ciência comprova sobre recuperação, espaçamento, autoexplicação e busca orientada, com protocolo de 45–60 min, ficha de estudo e a [revisão científica completa](https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo).',
-        '- [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao) — um áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir enquanto ouve e três cenários.',
-      ].join('\n') },
-      { h: '02 · O Método — Engenharia de Confiança', body: [
-        'Da intenção à execução agêntica confiável: a disciplina-ponte que transforma mentalidade em método.',
-        '',
-        '- [Arquitetura de IA auditável](https://mauricio.issei.com.br/apresentacao) — GraphRAG, Spec-Driven Development e DevOps Salesforce em duas leituras: a executiva (risco e retorno) e a de engenharia (cobertura e latência).',
-        '- [A Engenharia da Confiança](https://mauricio.issei.com.br/engenharia-confianca) — quatro módulos que conectam Engenharia Reversa, Engenharia de Agentes e Vibe Coding.',
-        '- [Engenharia de Agentes de IA](https://mauricio.issei.com.br/engenharia-agentes-ia) — os dez princípios que tornam sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança agent-driven.',
-        '- [Operação Capital Cognitivo](https://mauricio.issei.com.br/operacao-capital-cognitivo) — simulador executivo de FinOps de IA e o framework Useful Intelligence per Dollar (UI/$).',
-        '- [Agent Ready](https://mauricio.issei.com.br/agent-ready) — como tornar um site legível, descobrível e utilizável por agentes de IA, com o código real deste domínio.',
-        '- [Case Agents](https://mauricio.issei.com.br/case-agents) — roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso.',
-        '- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — o sistema de conhecimento que dá rastreabilidade e segurança à IA.',
-        '- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) — como um portal corporativo evolui para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.',
-        '- [Acessibilidade como requisito de engenharia](https://mauricio.issei.com.br/acessibilidade) — como o A11Y.md entrou no desenvolvimento deste site com agentes de IA: fluxo real, diffs, catraca de acessibilidade e o que ainda não foi verificado.',
-        '- [Especificação Conversacional Estruturada](https://mauricio.issei.com.br/especificacao-conversacional) — um workflow proposto para usar IA na elicitação de requisitos sob autoridade humana, com divergências rastreáveis entre documentação, testes e código, e o que ainda não foi avaliado.',
-      ].join('\n') },
-      { h: '03 · A Aplicação — Ecossistema Salesforce', body: [
-        'Métodos agênticos aplicados à plataforma Salesforce: onde o método encontra a engenharia real.',
-        '',
-        '- [DevOps Salesforce](https://mauricio.issei.com.br/devops-salesforce) — entrega contínua agêntica unindo a governança do Flosum, a flexibilidade do GitHub e a velocidade da IA.',
-        '- [Engenharia Reversa Assistida por IA](https://mauricio.issei.com.br/proposta-engenharia-reversa) — do código Salesforce herdado à especificação viva, sem refactor manual.',
-        '- [Quick Start: Salesforce + Devin + Flosum](https://mauricio.issei.com.br/salesforce-agentic-quickstart) — configurar o ambiente de desenvolvimento agêntico e fazer o primeiro deploy governado.',
-        '- [Agentic DevOps for Salesforce](https://mauricio.issei.com.br/salesforce-agentic-dev) — portal de treinamento em Spec-Driven Development e agentes autônomos.',
-      ].join('\n') },
-      { h: '04 · O Valor — Sustentação & Resiliência', body: [
-        'Operação de serviço, SRE e resiliência em produção: onde a engenharia entregue se prova ao longo do tempo.',
-        '',
-        '- [Do Caos à Resiliência](https://mauricio.issei.com.br/sustentacao) — gestão de incidentes críticos, confiabilidade (SRE) e comunicação efetiva em crise.',
-        '- [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0) — o Protocolo Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento.',
-        '- [Observabilidade SRE para Mobilidade](https://mauricio.issei.com.br/proposta-observabilidade-mobile) — correlação entre dispositivos, rede e aplicações com Datadog e Azure.',
-      ].join('\n') },
-      { h: '05 · Resultados — Soluções & Portfólio', body: [
-        'Soluções entregues e a jornada pessoal: o destino da rede, onde o método vira resultado.',
-        '',
-        '- [SocialSelling](https://mauricio.issei.com.br/socialselling) — modelo de boas práticas para vendas sociais potencializadas por agentes de IA.',
-        '- [Maurício Yokoyama Issei](https://mauricio.issei.com.br/) — a trajetória profissional e o ponto de partida do ecossistema.',
-        '- [A Jornada em Pixel Art](https://mauricio.issei.com.br/life) — a trajetória pessoal e profissional de 1982 aos dias de hoje, em pixel art interativo.',
-        '- [Vida em 3D](https://mauricio.issei.com.br/life3d) — uma viagem contemplativa e imersiva em 3D pela mesma história.',
-        '- [Terminal Evolutivo](https://mauricio.issei.com.br/terminal-evolutivo) — a jornada de 1982 a 2026 numa narrativa que envelhece conforme a leitura avança.',
-      ].join('\n') },
-    ],
+    // Gerado do specs/ecosystem.nav.yaml (SDD-F1-F1b): os cartões e o .md têm a mesma fonte.
+    mdSections: catalogoMdSections(),
   },
   {
     slug: 'life', type: 'AboutPage', tier: 'B', hasMd: true, ogType: 'website',

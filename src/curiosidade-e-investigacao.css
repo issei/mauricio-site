@@ -76,7 +76,7 @@ body.ci-body {
 }
 
 .ci-skip {
-  position: absolute; left: -9999px; top: 0; z-index: 100;
+  position: absolute; left: -9999px; top: 0; z-index: 2147483001;
   background: var(--ci-amber); color: #14100a; padding: 10px 16px; border-radius: 0 0 8px 0;
   font-weight: 700; text-decoration: none;
 }
@@ -84,7 +84,7 @@ body.ci-body {
 
 /* ============================== Barra superior ============================== */
 .ci-topbar {
-  position: sticky; top: 0; z-index: 40;
+  position: sticky; top: var(--sh-altura, 0px); z-index: 40;
   height: var(--ci-topbar-h);
   display: flex; align-items: center; gap: 12px;
   padding: 0 16px;
@@ -137,8 +137,8 @@ body.ci-body {
 .ci-toc-desktop { display: none; }
 @media (min-width: 1024px) {
   .ci-toc-desktop {
-    display: block; position: sticky; top: calc(var(--ci-topbar-h) + 24px);
-    align-self: start; max-height: calc(100vh - var(--ci-topbar-h) - 48px); overflow-y: auto;
+    display: block; position: sticky; top: calc(var(--sh-altura, 0px) + var(--ci-topbar-h) + 24px);
+    align-self: start; max-height: calc(100vh - var(--sh-altura, 0px) - var(--ci-topbar-h) - 48px); overflow-y: auto;
   }
   .ci-toc-desktop ol { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--ci-border); }
   .ci-toc-desktop li { margin: 0; }
@@ -297,4 +297,12 @@ body.ci-body {
   .ci-hero { padding: 48px 16px 36px; }
   .ci-bancada__actions { flex-direction: column; }
   .ci-bancada__btn { width: 100%; }
+}
+
+/* Cabeçalho comum do site (F1b, RF-F1b-15/16): a trilha fica abaixo dele e o foco para abaixo dos dois (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + calc(var(--ci-topbar-h) + 16px)); }
+/* No celular, só o cabeçalho do site fica fixo: a trilha da página rola junto, para não ocupar um terço da tela. */
+@media (max-width: 639.98px) {
+  .ci-topbar { position: static; }
+  html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 1rem); }
 }

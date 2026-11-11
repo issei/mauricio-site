@@ -113,6 +113,8 @@ img, svg { max-width: 100%; height: auto; }
   transition: transform 120ms var(--ap-ease);
 }
 .ap-skip:focus { transform: translateY(0); }
+/* Cabeçalho comum do site (F1b): o link de pular fica acima dele ao receber foco. */
+.ap-skip { z-index: 2147483001; }
 
 .ap-sr {
   position: absolute;
@@ -298,7 +300,8 @@ img, svg { max-width: 100%; height: auto; }
 /* ── Seletor de Perspectiva (spec §2.B) ───────────────────────────────────── */
 .ap-selector-dock {
   position: sticky;
-  top: 0;
+  /* abaixo do cabeçalho comum do site (F1b, RF-F1b-16) */
+  top: var(--sh-altura, 0px);
   z-index: 40;
   background: color-mix(in srgb, var(--ap-l1-bg) 88%, transparent);
   backdrop-filter: blur(10px);
@@ -565,7 +568,7 @@ img, svg { max-width: 100%; height: auto; }
 /* ── Indicador de progresso adaptativo (spec §2.G) ────────────────────────── */
 .ap-progress {
   position: fixed;
-  top: 0; left: 0;
+  top: var(--sh-altura, 0px); left: 0;
   height: 2px;
   width: 100%;
   z-index: 60;
@@ -692,3 +695,6 @@ img, svg { max-width: 100%; height: auto; }
 
 /* Sem JavaScript, nada fica escondido por efeito de revelação */
 .ap-nojs .ap-reveal { opacity: 1; transform: none; }
+
+/* Cabeçalho comum do site (F1b, RF-F1b-15/16): o foco e as âncoras param abaixo do cabeçalho e do seletor (WCAG 2.4.11). */
+html:root { scroll-padding-top: calc(var(--sh-altura, 0px) + 5rem); }
