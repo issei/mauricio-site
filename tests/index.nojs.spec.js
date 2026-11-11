@@ -3,14 +3,16 @@ import { readFileSync } from 'node:fs';
 
 /*
  * SDD do portfólio §4.1 / §12.11: com JavaScript DESLIGADO, 100% do texto do
- * currículo está no DOM — inclusive o corpo dos <details> fechados.
+ * currículo está no DOM — inclusive o corpo dos <details> fechados. Desde a F3
+ * (SDD-F1-F1b, Parte 6) o currículo completo fica só em /curriculo; a home
+ * editorial mostra hero, pilares e provas sem JS.
  * Roda só no projeto `no-js` do playwright.config.js.
  */
 
 const cv = JSON.parse(readFileSync(new URL('../public/cv.json', import.meta.url), 'utf8'));
 const norm = (s) => s.replace(/\s+/g, ' ').trim();
 
-for (const path of ['/', '/curriculo.html']) {
+for (const path of ['/curriculo.html']) {
   test(`${path} sem JS: todo texto do cv.json está no DOM`, async ({ page }) => {
     const res = await page.goto(path);
     expect(res?.status()).toBe(200);
@@ -32,8 +34,10 @@ for (const path of ['/', '/curriculo.html']) {
 test('/ sem JS: o conteúdo é visível (nada depende de JS para aparecer)', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
-  await expect(page.locator('.pf-grid')).toBeVisible();
-  await expect(page.locator('#recommendations blockquote').first()).toBeVisible();
+  await expect(page.locator('.pf-cta a').first()).toBeVisible();
+  await expect(page.locator('.pf-pilar').first()).toBeVisible();
+  await expect(page.locator('.pf-provas li').first()).toBeVisible();
+  await expect(page.locator('.pf-destaque').first()).toBeVisible();
 });
 
 test('/curriculo sem JS: o conteúdo é visível (mesmo bloco PF da home, F2)', async ({ page }) => {

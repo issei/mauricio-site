@@ -2,15 +2,16 @@
 /*
  * Grava o currículo (public/cv.json) como HTML ESTÁTICO em duas páginas:
  *
- *   src/index.html     → home "Mapa de Linhas"   (bloco <!-- PF:START/END -->)
- *   src/curriculo.html → Trajetória, o mesmo bloco PF (SDD-F1-F1b, Parte 3, F2)
+ *   src/index.html     → home editorial         (bloco <!-- PF:START/END -->, SDD-F1-F1b, Parte 6, F3)
+ *   src/curriculo.html → Trajetória completa, com o Mapa de Linhas (Parte 3, F2)
  *   public/curriculo.md → gêmeo Markdown de /curriculo (arquivo inteiro)
  *
  * Por que build-time e não fetch: a SDD do portfólio (docs/specs/pages/portfolio/)
  * exige que crawler, parser de ATS, agente de IA e tradutor do navegador vejam
  * 100% do texto sem executar JavaScript. Nenhuma das duas páginas busca o JSON.
  *
- * PROCEDÊNCIA: todo texto vem literal de public/cv.json. public/star.json só
+ * PROCEDÊNCIA: todo texto vem literal de public/cv.json (e, na home, do YAML do
+ * ecossistema: pilares, títulos, formato, natureza). public/star.json só
  * valida a contagem de projetos por ano (SDD §13). A única camada editorial é
  * LINE_OF (termo → linha do mapa) — e um termo sem linha QUEBRA o gerador, para
  * nenhum dado sumir do mapa em silêncio.
@@ -21,6 +22,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from './seo/pages.mjs';
+import { loadEcossistema, NATUREZAS, cardTitle } from './catalogo/dados.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const cv = JSON.parse(readFileSync(join(ROOT, 'public/cv.json'), 'utf8'));
@@ -362,6 +364,8 @@ ${cv.Recomendacoes_Recebidas.map((r) => `  <figure class="pf-rec">
 }
 
 const NAV = [['#about', 'Sobre'], ['#experience', 'Experiência'], ['#education', 'Formação'], ['#recommendations', 'Recomendações'], ['#contact', 'Contato']];
+/** Seções da home editorial (F3, RF-F3-07): a mesma lista alimenta o rodapé. */
+const NAV_HOME = [['#about', 'Sobre'], ['#pilares', 'Pilares'], ['#provas', 'Provas'], ['#destaques', 'Destaques'], ['#contact', 'Contato']];
 const dateBR = (iso) => iso.split('-').reverse().join('/');
 
 function footer(page) {
@@ -370,8 +374,10 @@ function footer(page) {
     <h2 class="pf-h2">Contato</h2>
     <p class="pf-contact"><a href="mailto:${esc(cv.Contato.Email)}">${esc(cv.Contato.Email)}</a></p>
     ${socials()}
-    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav">${NAV.map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}${page === 'index' ? '<li><a href="./curriculo.html">Trajetória completa</a></li>' : ''}<li><a href="./catalogo.html">Catálogo</a></li></ul></nav>
-    <p class="pf-ai-note">Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem integralmente as informações públicas do currículo e são gerados do mesmo cv.json que produz o texto visível. Última atualização: ${dateBR(MODIFIED)}. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
+    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav">${(page === 'index' ? NAV_HOME : NAV).map(([h, t]) => `<li><a href="${h}">${t}</a></li>`).join('')}${page === 'index' ? '<li><a href="./curriculo.html">Trajetória completa</a></li>' : ''}<li><a href="./catalogo.html">Catálogo</a></li></ul></nav>
+    <p class="pf-ai-note">${page === 'index'
+    ? 'Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem o currículo completo, publicado em <a href="./curriculo.html">Trajetória</a>, e são gerados do mesmo cv.json.'
+    : 'Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem integralmente as informações públicas do currículo e são gerados do mesmo cv.json que produz o texto visível.'} Última atualização: ${dateBR(MODIFIED)}. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
     <p class="pf-legal">© ${NOW_YEAR} ${esc(cv.Nome)}. Todos os direitos reservados. · <a href="./privacidade.html">Privacidade</a> · <a href="./termos.html">Termos</a> · <a href="./cookies.html">Cookies</a> · <button type="button" class="pf-linkbtn" onclick="window.cookieConsent && window.cookieConsent.open()">Preferências de cookies</button></p>
   </div>
 </footer>`;
@@ -402,6 +408,118 @@ ${section('education', 'Formação e certificações', '', education())}
 ${section('recommendations', 'Recomendações', `${cv.Recomendacoes_Recebidas.length} recomendações recebidas no LinkedIn, em texto integral.`, recommendations())}
 </main>
 ${footer(page)}
+<!-- PF:END -->`;
+
+
+// ---------------------------------------------------------------------------
+// Home editorial (SDD-F1-F1b, Parte 6, F3). Escolhas do autor (DF3-2/DF3-3):
+// trocar aqui. O texto continua literal do cv.json e do YAML; o gerador quebra
+// se uma escolha deixar de existir na fonte.
+// ---------------------------------------------------------------------------
+/** Provas: [nome do projeto, trecho que identifica o resultado]. */
+const PROVAS = [
+  ['Pipe Automática Comercial', '15%'],
+  ['Evolução do Credenciamento no Plano Padrão', 'D0'],
+  ['Revisão orçamentária de fornecedores (MGI Tech & Maplink)', '500k'],
+  ['Revisão orçamentária e CINVEST do novo contrato Salesforce', '3MM'],
+];
+/** Páginas de entrada por pilar (1 a 2). */
+const ENTRADAS = {
+  p1: ['formulacao-de-problemas', 'da-execucao-a-orquestracao'],
+  p2: ['apresentacao', 'engenharia-confianca'],
+  p3: ['salesforce-agentic-quickstart', 'devops-salesforce'],
+  p4: ['sustentacao', 'service-operations-2-0'],
+};
+/** Destaques (3 a 4; pelo menos um de natureza Experiência). */
+const DESTAQUES = ['agent-ready', 'engenharia-agentes-ia', 'knowledge-os-presentation', 'acessibilidade'];
+
+const { eco } = loadEcossistema();
+const noDoYaml = (slug) => eco.nodes[slug] ?? fail(`home: nó "${slug}" ausente do YAML`);
+const hrefNo = (n) => `./${n.file}`;
+
+const provas = PROVAS.map(([nome, marca]) => {
+  const p = projects.find((x) => x.Nome === nome) ?? fail(`home: projeto "${nome}" ausente do cv.json`);
+  const r = p.Resultados.find((x) => x.includes(marca)) ?? fail(`home: resultado com "${marca}" ausente em "${nome}"`);
+  return { p, r };
+});
+if (!DESTAQUES.some((s) => noDoYaml(s).natureza === 'experiencia')) fail('home: nenhum destaque de natureza Experiência');
+if (DESTAQUES.length < 3 || DESTAQUES.length > 4) fail('home: são 3 a 4 destaques');
+for (const pl of eco.pillars) {
+  const lista = ENTRADAS[pl.id] ?? fail(`home: pilar ${pl.id} sem páginas de entrada`);
+  for (const s of lista) if (noDoYaml(s).pillar !== pl.id) fail(`home: "${s}" não é do pilar ${pl.id}`);
+}
+
+const natTag = (n) => `<span class="pf-nat">${esc(NATUREZAS[n.natureza])}</span>`;
+
+function homeHero() {
+  const cur = jobs[0];
+  return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
+  <div class="pf-hero-lines" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
+  <div class="pf-wrap">
+    <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
+    <h1 id="pf-nome">${esc(cv.Nome)}</h1>
+    <p class="pf-hero-title">${esc(cv.Titulo)}</p>
+    <p class="pf-hero-lead">${esc(cv.ResumoHero)} Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.</p>
+    <div class="pf-cta">
+      <a class="pf-btn" href="./curriculo.html">Ver trajetória</a>
+      <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar a produção</a>
+      <a class="pf-btn pf-btn--ghost pf-btn--yt" href="/videos.html">${icon('youtube')} Vídeos</a>
+    </div>
+    ${socials()}
+  </div>
+</section>`;
+}
+
+function pilares() {
+  return `<ul class="pf-pilares">
+${eco.pillars.map((pl) => `  <li class="pf-pilar">
+    <h3><span class="pf-pilar-sub">${esc(pl.subtitle)}</span> ${esc(pl.label)}</h3>
+    <p>${esc(pl.summary)}</p>
+    <ul class="pf-pilar-links">
+${ENTRADAS[pl.id].map((s) => { const n = eco.nodes[s]; return `      <li><a href="${hrefNo(n)}">${esc(cardTitle(n))}</a> ${natTag(n)}</li>`; }).join('\n')}
+    </ul>
+  </li>`).join('\n')}
+</ul>
+<p class="pf-more"><a href="./catalogo.html">Ver todo o catálogo</a></p>`;
+}
+
+function provasHome() {
+  return `<ol class="pf-provas">
+${provas.map(({ p, r }) => `  <li>
+    <p class="pf-prova-text">${hl(r)}</p>
+    <a class="pf-board-src" href="./curriculo.html#${p.id}">${esc(p.Nome)} · ${p.Periodo}</a>
+  </li>`).join('\n')}
+</ol>
+<h3 class="pf-h3">Mapa de Linhas, resumido</h3>
+<ul class="pf-legend pf-legend--home" aria-label="Linhas: grupos de competência">
+${LINES.map((l) => `  <li><span class="pf-key" data-l="${l.id}"><span class="pf-key-code">${l.code}</span> ${esc(l.group)} <span class="pf-key-since">desde ${span[l.id].first}</span></span></li>`).join('\n')}
+</ul>
+<p class="pf-more"><a href="./curriculo.html#mapa">Ver o mapa completo</a></p>`;
+}
+
+function destaques() {
+  return `<ul class="pf-destaques">
+${DESTAQUES.map((s) => { const n = eco.nodes[s]; return `  <li class="pf-destaque">
+    <p class="pf-destaque-tag">${esc(n.kind)} · ${natTag(n)}</p>
+    <h3><a href="${hrefNo(n)}">${esc(cardTitle(n))}</a></h3>
+    <p>${esc(n.descricao)}</p>
+  </li>`; }).join('\n')}
+</ul>`;
+}
+
+/** Bloco PF da home editorial (RF-F3-01): hero, Sobre, Pilares, Provas + mapa resumido, Destaques. */
+const homeBlock = () => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json e specs/ecosystem.nav.yaml (NÃO editar à mão) -->
+<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span>${LINES.slice(0, 5).map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
+<div class="pf-bundle" aria-hidden="true">${LINES.map((l) => `<i data-l="${l.id}"></i>`).join('')}</div>
+${homeHero()}
+<main id="conteudo">
+${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
+<p class="pf-more"><a href="./curriculo.html">Ver a trajetória completa</a></p>`)}
+${section('pilares', 'Pilares da produção', 'O que publico, em quatro pilares. Cada um tem páginas de entrada.', pilares())}
+${section('provas', 'Provas', 'Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Trajetória.', provasHome())}
+${section('destaques', 'Destaques', '', destaques())}
+</main>
+${footer('index')}
 <!-- PF:END -->`;
 
 // Gêmeo .md de /curriculo (a edge function serve <caminho>.md a agentes).
@@ -449,7 +567,7 @@ function fill(file, blocks) {
 }
 
 const targets = [
-  fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock('index')]]),
+  fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', homeBlock()]]),
   fill('src/curriculo.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock('curriculo')]]),
   whole('public/curriculo.md', md),
 ];

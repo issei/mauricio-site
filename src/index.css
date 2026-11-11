@@ -491,6 +491,28 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 @keyframes pf-grow-y { from { transform: scaleY(0); } }
 @keyframes pf-aurora { to { transform: translate3d(4%, -5%, 0) rotate(6deg) scale(1.08); } }
 @keyframes pf-train { to { transform: translateX(110vw); } }
+/* ------------------------------------------------------------------ home editorial (F3, SDD-F1-F1b Parte 6) */
+.pf-more { margin: 1.5rem 0 0; }
+.pf-more a, .pf-pilar-links a, .pf-destaque h3 a { color: var(--pf-link); text-underline-offset: 3px; }
+.pf-more a:hover, .pf-pilar-links a:hover, .pf-destaque h3 a:hover { color: var(--pf-strong); }
+.pf-nat { display: inline-block; padding: .05rem .5rem; border: 1px solid var(--pf-border); border-radius: 999px; color: var(--pf-muted); font-size: .75rem; white-space: nowrap; }
+.pf-pilares, .pf-destaques { display: grid; grid-template-columns: 1fr; gap: 1rem; list-style: none; margin: 0; padding: 0; }
+@media (min-width: 768px) { .pf-pilares, .pf-destaques { grid-template-columns: repeat(2, 1fr); } }
+.pf-pilar, .pf-destaque { padding: 1.25rem; background: var(--pf-surface); border: 1px solid var(--pf-border); border-radius: 14px; transition: transform .2s, box-shadow .2s; }
+.pf-pilar:hover, .pf-destaque:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 123, 255, .15); }
+.pf-pilar h3, .pf-destaque h3 { margin: 0 0 .5rem; color: var(--pf-strong); font-size: 1.1rem; line-height: 1.35; }
+.pf-pilar-sub { display: block; color: var(--pf-subtitle); font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.pf-pilar p, .pf-destaque p { margin: 0 0 .75rem; }
+.pf-pilar-links { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.pf-pilar-links li { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.pf-pilar-links a { display: inline-flex; align-items: center; min-height: 24px; }
+.pf-destaque-tag { color: var(--pf-muted); font-size: .8rem; }
+.pf-provas { list-style: none; margin: 0 0 2.5rem; padding: .5rem; border-radius: 16px; background: var(--pf-board-bg); border: 1px solid var(--pf-border); }
+.pf-provas li { display: grid; gap: .35rem; padding: 1rem; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+.pf-provas li:last-child { border-bottom: 0; }
+.pf-prova-text { margin: 0; }
+.pf-legend--home .pf-key:hover { color: var(--pf-text); box-shadow: none; border-color: color-mix(in srgb, var(--lc) 45%, transparent); }
+
 @keyframes pf-flip { from { transform: rotateX(90deg); opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {

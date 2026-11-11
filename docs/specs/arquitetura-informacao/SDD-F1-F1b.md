@@ -578,3 +578,91 @@ nova de Experiência com projeto STAR ganha o link no PR que a cria.
   página, motivo coerente com tema ou pilar, sem heading, sem hexadecimal, dentro do `<main>`, em
   dia com o gerador.
 - **CA-F5-03.** A catraca de acessibilidade não sobe nas 26 páginas nem nos espelhos `/en/`.
+
+---
+
+# Parte 6 — F3: home editorial
+
+> Origem: [`PROPOSTA-REESTRUTURACAO.md`](PROPOSTA-REESTRUTURACAO.md), §8 e §12 (F3); decisões D1 (a) e
+> D2 (a) do autor (10/11/2026). Em 11/11/2026 o autor escolheu, no cartão de decisão da thread, que
+> o agente escreve o rascunho só com fatos de `cv.json` e do YAML e faz o merge com CI verde; o autor
+> ajusta o texto depois. Requisitos: **RF-F3-xx**. Critérios de aceite: **CA-F3-xx**.
+
+## F3.1 Objetivo
+
+A home deixa de repetir o currículo. Em até ~3 min de leitura, ela diz quem é o autor, mostra os
+4 pilares da produção, algumas provas e destaques, e leva às três portas: Trajetória, Produção e
+Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
+
+## F3.2 Situação de partida (fatos, commit `3d0a37e`)
+
+| Item | Estado |
+| :-- | :-- |
+| Home (`src/index.html`) | Bloco `PF:START/END` igual ao de `/curriculo`: ~25 min de leitura, 19 projetos STAR, formação, certificações e recomendações. Sem link para artigo. |
+| `/curriculo` | Mesmo bloco `PF` (F2). Âncoras `#mapa`, `#results`, `#experience` e `p-<ano>-<projeto>`. |
+| `<head>` da home | Título, descrição, OG, JSON-LD `Person`/`ProfilePage`/`ItemList` (bloco `AEO`, gerado por `build-aeo.mjs`). |
+
+## F3.3 Decisões de desenho (do agente, sob a escolha do autor)
+
+- **DF3-1.** O bloco continua `PF:START/END` e continua gerado por `gen-portfolio.mjs`, mas a home
+  recebe outro conteúdo (`homeBlock`); `/curriculo` fica como está. Um gerador só, sem marcador novo.
+- **DF3-2.** As escolhas do autor (§8.2 da proposta: provas, páginas de entrada por pilar e destaques)
+  ficam em três listas no topo de `gen-portfolio.mjs`, como a lista `FEATURED` das certificações.
+  O texto vem literal de `cv.json` (nome, título, resumo, resultados, linhas) e do YAML (pilares,
+  títulos, formato, natureza, descrição). A única frase nova é o subtítulo do que o site publica.
+- **DF3-3.** Escolhas iniciais, todas trocáveis pelo autor:
+  - Provas (4): os resultados com número dos projetos "Pipe Automática Comercial" (15%),
+    "Evolução do Credenciamento no Plano Padrão" (D0), "Revisão orçamentária de fornecedores" (500k)
+    e "Revisão orçamentária e CINVEST do novo contrato Salesforce" (3MM).
+  - Entradas por pilar: p1 `formulacao-de-problemas` e `da-execucao-a-orquestracao`; p2
+    `apresentacao` e `engenharia-confianca`; p3 `salesforce-agentic-quickstart` e
+    `devops-salesforce`; p4 `sustentacao` e `service-operations-2-0`.
+  - Destaques (4): `agent-ready` (Experiência), `engenharia-agentes-ia`, `knowledge-os-presentation`
+    e `acessibilidade` (Experiência). Nenhum repete uma entrada de pilar.
+
+## F3.4 Requisitos
+
+- **RF-F3-01.** Sequência do `<main>` (§8.2): Sobre; Pilares; Provas com o Mapa de Linhas resumido;
+  Destaques. O hero fica antes do `<main>` e o contato no rodapé, como hoje.
+- **RF-F3-02.** Hero: `h1` com `cv.Nome`; `cv.Titulo`; `cv.ResumoHero`; a frase "Aqui publico
+  estudos, propostas e experimentos sobre engenharia de software e IA em produção."; três botões:
+  "Ver trajetória" (`/curriculo.html`), "Explorar a produção" (`/catalogo.html`) e "Vídeos"
+  (`/videos.html`); as redes sociais.
+- **RF-F3-03.** Sobre: os dois primeiros parágrafos de `cv.Resumo`, literais, e o link "Ver a
+  trajetória completa".
+- **RF-F3-04.** Pilares: os 4 pilares do YAML na ordem, cada um com rótulo, subtítulo, `summary` e
+  as páginas de entrada (título do cartão e natureza). Link "Ver todo o catálogo".
+- **RF-F3-05.** Provas: cada item é um resultado de `cv.json` transcrito sem edição, com o projeto e
+  o ano, e link para o cartão STAR em `/curriculo.html#p-…`. O gerador quebra se a frase escolhida
+  não existir mais no `cv.json`. Abaixo, o Mapa de Linhas resumido: as 7 linhas com sigla, grupo e
+  ano de início, sem projetos, e o link "Ver o mapa completo" (`/curriculo.html#mapa`).
+- **RF-F3-06.** Destaques: 3 a 4 cartões com título, formato e natureza visíveis e a descrição do
+  YAML; pelo menos um de natureza Experiência. O gerador quebra se um slug escolhido não existir.
+- **RF-F3-07.** A barra `.pf-nav` da home aponta para as seções novas (Sobre, Pilares, Provas,
+  Destaques, Contato). O rodapé mantém contato, redes, "Trajetória completa", catálogo, a nota de
+  dados para máquina e os links legais.
+- **RF-F3-08.** O `<head>` não muda: mesmo título, descrição, `canonical`, OG e JSON-LD (invariante 3
+  da §11.2). A nota do rodapé diz que o JSON-LD reflete o currículo completo de `/curriculo`.
+- **RF-F3-09.** Leitura de no máximo 3 min (600 palavras a 200 ppm) no `<main>`.
+- **RF-F3-10.** Sem cor nova: classes `pf-` em `src/index.css`, com os tokens que já existem.
+- **RF-F3-11.** O "Comece por aqui" do catálogo ("avaliar o profissional") passa a apontar para
+  `/curriculo.html`.
+
+## F3.5 Testes
+
+- `tests/index.spec.js` passa a cobrir a home nova: um `h1`; as três portas; 4 pilares com entradas
+  que existem; provas iguais a frases do `cv.json` e com alvo em `/curriculo`; 7 linhas no mapa
+  resumido; destaques com natureza e pelo menos uma Experiência; JSON-LD igual ao de antes;
+  leitura de no máximo 3 min; sem rolagem horizontal a 375 px; axe sem violações sérias.
+- Os casos do currículo completo (STAR, certificações, recomendações, mapa) passam para
+  `/curriculo.html`, no mesmo arquivo.
+- `tests/index.nojs.spec.js`: o teste "todo texto do cv.json no DOM" fica só para `/curriculo`; a
+  home sem JS mostra hero, pilares e provas.
+
+## F3.6 Critérios de aceite
+
+- **CA-F3-01.** A home responde, sem rolar além das seções, às 5 perguntas da §8: quem é, o que faz,
+  o que publica, por onde começar e como falar com ele.
+- **CA-F3-02.** Toda frase de resultado da home existe literal no `cv.json`.
+- **CA-F3-03.** A catraca de acessibilidade não sobe em `index.html` nem em `en/index.html`.
+- **CA-F3-04.** `gen-portfolio.mjs --check` passa no gate.
