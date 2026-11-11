@@ -5,6 +5,7 @@
 //   - taxonomia fechada (§4): formato, profundidade e modo vêm de listas;
 //   - nenhuma rota aponta para uma âncora que não existe;
 //   - nenhum heading novo (a camada não mexe no esqueleto do documento);
+//   - a natureza vem do YAML (F4a, SDD-F1-F1b.md Parte 4);
 //   - o HTML publicado é exatamente o que o gerador produz.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -14,6 +15,9 @@ import { fileURLToPath } from 'node:url';
 
 import { EDITORIAL, KINDS, DEPTHS, MODES } from '../scripts/editorial/editorial.data.mjs';
 import { build, countWords } from '../scripts/gen-editorial.mjs';
+import { loadEcossistema, NATUREZAS } from '../scripts/catalogo/dados.mjs';
+
+const NODES = loadEcossistema().eco.nodes;
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const page = (slug) => readFileSync(join(ROOT, 'src', `${slug}.html`), 'utf8');
@@ -69,6 +73,15 @@ for (const [slug, e] of Object.entries(EDITORIAL)) {
     for (const name of ['EDITORIAL', 'EDITORIAL-NEXT']) {
       assert.doesNotMatch(block(html, name), /<h[1-6]\b/i, `${name} contém heading`);
     }
+  });
+
+  test(`${slug}: o quadro mostra a natureza do YAML (F4a, RF-F4-02)`, () => {
+    if (!e.kind) return;
+    const esperado = NATUREZAS[NODES[slug]?.natureza];
+    assert.ok(esperado, `${slug} sem natureza válida no YAML`);
+    const facts = block(page(slug), 'EDITORIAL');
+    assert.match(facts, new RegExp(`<dt>Natureza</dt><dd>${esperado}</dd>`));
+    assert.ok(facts.indexOf('<dt>Natureza</dt>') < facts.indexOf('<dt>Formato</dt>'), 'Natureza vem antes de Formato');
   });
 
   test(`${slug}: HTML em dia com o gerador`, () => {

@@ -228,3 +228,9 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Catraca:** `a11y-sweep` nas 86 páginas (com o EN sem a linha de `curriculo.js` só para medir): sem regressão em `curriculo` e `index`. `vsl.html` (não alterada) segue acusando `bp:landmark-one-main` e `bp:region` só na nuvem. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
   - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou `src/en/curriculo.html` e `src/en/index.html`; `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
+- **Nota 23 — F4a: a natureza aparece no quadro editorial (11/11/2026).** Decisão D5(a) do autor. As 12 páginas com quadro editorial ganham o item "Natureza" (Experiência, Estudo, Proposta, Experimento ou Referência) antes de "Formato". O valor vem do nó em `specs/ecosystem.nav.yaml`, lido por `gen-editorial.mjs`; não é digitado. O gerador falha se a página não tiver nó ou se a natureza estiver fora da lista.
+  - **Estrutura:** mais um par `<dt>`/`<dd>` na mesma `<dl class="ed-facts">`. Sem heading novo e sem CSS novo.
+  - **Testes:** `editorial-layer.test.mjs` confere o rótulo e a ordem nas 12 páginas (91 casos). Playwright Chromium em `tests/a11y/` e nas suítes das páginas: só as falhas conhecidas da nuvem (`life3d` em `reflow-zoom` e "Abrir menu" das duas páginas salesforce-agentic).
+  - **Catraca:** `a11y-sweep --only` nas 12 páginas: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou as 12 páginas `/en/` ("Nature" no quadro); `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
+  - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
