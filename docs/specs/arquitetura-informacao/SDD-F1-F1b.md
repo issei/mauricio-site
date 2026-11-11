@@ -700,3 +700,59 @@ Vídeos. Todo o conteúdo que sai da home já está em `/curriculo` desde a F2.
   cartões de competências seguem os grupos do `cv.json`.
 - `tests/curriculo.spec.js` e `tests/index.nojs.spec.js`: os cartões de competências substituem a
   legenda e a grade.
+
+---
+
+# Parte 8 — Temas no lugar dos pilares, nomes únicos e saída do painel
+
+> Origem: decisões do autor em 11/11/2026, depois da reflexão sobre a arquitetura de informação.
+> A. os 10 temas de `content/temas.yml` substituem os 4 pilares para o visitante;
+> B. as áreas se chamam **Carreira** e **Conteúdos** em todo lugar;
+> C. o painel administrativo sai; as outras páginas utilitárias ficam como estão por ora.
+> Requisitos: **RF-F8-xx**.
+
+## F8.1 Requisitos — nomes das áreas (B)
+
+- **RF-F8-01.** Cabeçalho comum: Início · Carreira · Conteúdos · Vídeos. Em inglês: Home · Career ·
+  Content · Videos (fonte: `entradas` do YAML).
+- **RF-F8-02.** O mesmo nome aparece no botão da home ("Ver carreira", "Explorar os conteúdos"),
+  no `<title>`, no Open Graph e no JSON-LD de `/curriculo` ("Carreira") e de `/catalogo`
+  ("Conteúdos"), e nos textos gerados que citam a área. As URLs não mudam.
+
+## F8.2 Requisitos — temas no lugar dos pilares (A)
+
+- **RF-F8-03.** O catálogo agrupa os conteúdos pelos 10 temas. Ordem: total de conteúdos do tema
+  (decrescente) e, no empate, a ordem de `content/temas.yml`.
+- **RF-F8-04.** Cada conteúdo tem **um** cartão, no seu primeiro tema (o tema principal, primeiro da
+  lista `temas` do nó). Os conteúdos em que o tema é secundário aparecem numa linha "Também tratam
+  deste tema", com link, sem cartão repetido. Cada seção liga à página `/temas/<tema>` (artigos e
+  vídeos do tema).
+- **RF-F8-05.** O índice do topo do catálogo lista os 10 temas (âncora `#tema-<id>`) no lugar da
+  trilha dos pilares. A seção "Carreira e vídeos" continua no fim.
+- **RF-F8-06.** A home troca "Pilares da produção" por "Temas": os 10 temas com o número de
+  conteúdos, cada um com link para a seção do tema no catálogo. Saem as páginas de entrada por
+  pilar. O limite de 600 palavras no `<main>` continua.
+- **RF-F8-07.** A continuação "Se este tema interessa a você" não cita pilar. Quando faltar página
+  com tema em comum, ela completa com páginas da mesma natureza ("Também de natureza <natureza>.").
+- **RF-F8-08.** Nenhuma página mostra pilar ao visitante: sai o rótulo "P2 · Engenharia de
+  Confiança" de `case-agents` e a linha "Mentalidade → Método → Aplicação → Valor" do rodapé do
+  catálogo. O gêmeo `public/catalogo.md` segue a mesma ordem por tema.
+- **RF-F8-09.** O campo `pillar` e o bloco `pillars` ficam no YAML como dado interno (validação do
+  grafo e marcação de "Conteúdos" no cabeçalho). Nenhum gerador publica o nome de um pilar.
+
+## F8.3 Requisitos — painel administrativo (C)
+
+- **RF-F8-10.** Saem `src/admin.html`, `src/admin-editor.html` e `src/js/admin-ui.js`, e as
+  referências a eles no build, na auditoria, na catraca e nos testes. `diagnostic`, `test-github`,
+  `vsl`, `mapmind` e `exemplopdi` não mudam (decisão C). `src/js/github-service.js` fica: o
+  `test-github` usa.
+
+## F8.4 Testes
+
+- `tests/ecosystem.schema.test.mjs` e `tests/site-header.gen.test.mjs`: rótulos novos em PT e EN.
+- `tests/site-header.spec.js`: cabeçalho com Carreira e Conteúdos.
+- `tests/catalogo.gen.test.mjs` (ou o teste do catálogo existente): 10 seções de tema na ordem do
+  RF-F8-03; cada nó do catálogo tem exatamente um cartão; nenhum nome de pilar no bloco gerado.
+- `tests/index.spec.js`: seção "Temas" com 10 links para `catalogo.html#tema-<id>`; botões novos.
+- `tests/continuacao.gen.test.mjs`: nenhum motivo cita pilar.
+- `tests/hreflang.spec.js`: a página sem espelho do teste deixa de ser `admin.html`.
