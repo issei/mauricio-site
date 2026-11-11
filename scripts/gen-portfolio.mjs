@@ -5,6 +5,7 @@
  *   src/index.html     → home editorial         (bloco <!-- PF:START/END -->, SDD-F1-F1b, Parte 6, F3)
  *   src/curriculo.html → Carreira completa (Parte 3, F2)
  *   public/curriculo.md → gêmeo Markdown de /curriculo (arquivo inteiro)
+ *   public/index.md     → gêmeo Markdown da home (arquivo inteiro, SDD-F1-F1b, F3.8)
  *
  * Por que build-time e não fetch: a SDD do portfólio (docs/specs/pages/portfolio/)
  * exige que crawler, parser de ATS, agente de IA e tradutor do navegador vejam
@@ -465,6 +466,35 @@ const md = [
   '## Contato', '', `- E-mail: ${cv.Contato.Email}`, `- LinkedIn: ${cv.Contato.LinkedIn}`, `- GitHub: ${cv.Contato.GitHub}`, `- YouTube: ${cv.Contato.youtube}`, '',
 ].join('\n');
 
+// Gêmeo .md da home (SDD-F1-F1b, F3.8, RF-F3-12). A edge function o entrega a
+// quem pede Markdown (agentes de IA). Antes era escrito à mão e ficou velho:
+// sem Temas nem Destaques e com outro cargo. Agora sai das mesmas fontes da home.
+const SITE = 'https://mauricio.issei.com.br';
+const urlNo = (n) => `${SITE}/${n.file.replace(/\.html$/, '')}`;
+const indexMd = [
+  `# ${cv.Nome}`, '', `**${cv.Titulo}**`, '',
+  `> Página inicial, gerada de public/cv.json e specs/ecosystem.nav.yaml. HTML: ${SITE}/`, '',
+  `${cv.ResumoHero} Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.`, '',
+  '## Sobre', '', ...cv.Resumo.slice(0, 2).flatMap((p) => [p, '']),
+  `Carreira completa: ${SITE}/curriculo`, '',
+  '## Temas', '', 'O que publico, por assunto. Cada tema leva aos seus conteúdos.', '',
+  ...temasDoSite(ecossistema).map((t) => `- [${t.nome}](${SITE}/temas/${t.id}) — ${t.total} ${t.total === 1 ? 'conteúdo' : 'conteúdos'}`), '',
+  `Todos os conteúdos: ${SITE}/catalogo`, '',
+  '## Provas', '', 'Resultados de projeto que citam número, transcritos sem edição.', '',
+  ...provas.map(({ p, r }) => `- ${r} — [${p.Nome} · ${p.Periodo}](${SITE}/curriculo#${p.id})`), '',
+  '## Destaques', '',
+  ...DESTAQUES.map((s) => { const n = eco.nodes[s]; return `- [${cardTitle(n)}](${urlNo(n)}) — *${n.kind} · ${NATUREZAS[n.natureza]}.* ${n.descricao}`; }), '',
+  '## Para agentes de IA', '',
+  '- [cv-for-ai.md](/cv-for-ai.md) — Currículo detalhado e stack técnica',
+  '- [career-highlights-star.md](/career-highlights-star.md) — Projetos no formato STAR',
+  '- [cv.json](/cv.json) — Dados estruturados do currículo',
+  '- [catalogo.md](/catalogo.md) — Todos os conteúdos, por tema',
+  '- [llms.txt](/llms.txt) — Índice de documentação para IA',
+  '- [llms-full.txt](/llms-full.txt) — Documentação completa concatenada',
+  '- [agent-catalog](/.well-known/agent-catalog) — Endpoints disponíveis', '',
+  '## Contato', '', `- E-mail: ${cv.Contato.Email}`, `- LinkedIn: ${cv.Contato.LinkedIn}`, `- GitHub: ${cv.Contato.GitHub}`, `- YouTube: ${cv.Contato.youtube}`, '',
+].join('\n');
+
 // ---------------------------------------------------------------------------
 // Escrita / --check (padrão de gen-hub-data.mjs)
 // ---------------------------------------------------------------------------
@@ -489,6 +519,7 @@ const targets = [
   fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', homeBlock()]]),
   fill('src/curriculo.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock('curriculo')]]),
   whole('public/curriculo.md', md),
+  whole('public/index.md', indexMd),
 ];
 
 const eol = (s) => s.replace(/\r\n/g, '\n');
