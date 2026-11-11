@@ -28,7 +28,7 @@ const fimDaCaminhada = (page) => page.evaluate(() => {
   let a = document.activeElement;
   if (!a || a === document.body) return false;
   while (a.shadowRoot?.activeElement) a = a.shadowRoot.activeElement;
-  return !!(a.closest('.cc-banner') || a.closest('eco-nav') || a.tagName === 'ECO-NAV');
+  return !!a.closest('.cc-banner');
 });
 const SEGMENTOS = [[0, 45], [45, 90], [90, 200]];
 
@@ -51,7 +51,7 @@ for (const pagina of ['index', 'curriculo']) {
           let a = document.activeElement;
           if (!a || a === document.body) return null;
           while (a.shadowRoot?.activeElement) a = a.shadowRoot.activeElement;
-          if (a.closest('.cc-banner') || a.closest('eco-nav') || a.tagName === 'ECO-NAV') return { fim: true };
+          if (a.closest('.cc-banner')) return { fim: true };
           const b = a.getBoundingClientRect();
           const topo = document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2);
           return { coberto: !!topo?.closest('.cc-banner'), nome: `${a.tagName}.${String(a.className).slice(0, 25)}` };
@@ -82,7 +82,7 @@ for (const pagina of ['curriculo', 'service-operations-2-0', 'index', 'apresenta
         let a = document.activeElement;
         if (!a || a === document.body) return { fim: true };
         while (a.shadowRoot?.activeElement) a = a.shadowRoot.activeElement;
-        if (a.closest('eco-nav') || a.tagName === 'ECO-NAV' || a.closest('.a11y-skip')) return null;
+        if (a.closest('.a11y-skip')) return null;
         const b = a.getBoundingClientRect();
         if (!b.width || !b.height || b.bottom < 0 || b.top > innerHeight) return null;
         // coberto = os 4 cantos e o centro caem num elemento fixo/sticky de fundo opaco que não é o foco
@@ -136,11 +136,10 @@ for (const pagina of ['salesforce-agentic-dev', 'salesforce-agentic-quickstart',
 }
 
 /* 4 — idioma das partes em página inglesa (3.1.2) */
-testDoGate(test, 'index')('en/index: banner de cookies e eco-nav em português são marcados lang="pt-BR"', async ({ page }) => {
+testDoGate(test, 'index')('en/index: banner de cookies em português é marcado lang="pt-BR"', async ({ page }) => {
   await page.goto('/en/index.html');
   await expect(page.locator('.cc-banner')).toHaveAttribute('lang', 'pt-BR');
   await expect(page.locator('.cc-fab')).toHaveAttribute('lang', 'pt-BR');
-  await expect(page.locator('eco-nav')).toHaveAttribute('lang', 'pt-BR');
 });
 
 testDoGate(test, 'index')('index (pt): o banner não leva lang redundante', async ({ page }) => {

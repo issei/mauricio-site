@@ -285,20 +285,6 @@ test.describe('Seção 05 — Acervo Acadêmico', () => {
   });
 });
 
-test.describe('Integração com o ecossistema (<eco-nav>)', () => {
-  test('eco-nav monta na página, pré-expande o Pilar 1 (Fundação) e marca a página atual', async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto(PATH);
-    const host = page.locator('eco-nav');
-    await expect(host).toHaveCount(1);
-    await host.locator('.fab').click();
-    await expect(host.locator('.fab__pill')).toHaveText('Mentalidade');
-    const current = host.locator('.node[aria-current="page"]');
-    await expect(current).toHaveCount(1);
-    await expect(current).toHaveAttribute('href', /artifice\.html$/);
-  });
-});
-
 test.describe('Acessibilidade WCAG 2.1 AA', () => {
   test('página inicial sem violações serious/critical', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });

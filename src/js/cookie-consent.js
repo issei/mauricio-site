@@ -352,7 +352,6 @@ function init() {
         // Faixa fixa no rodapé cobriria o último conteúdo focado (WCAG 2.4.11): reserva a altura dela.
         bodyPaddingBefore = document.body.style.paddingBottom;
         const basePadding = parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
-        // A mesma altura sobe o <eco-nav> (fixo no canto, z-index máximo): sem isso ele cobre Recusar/Aceitar.
         // O botão fixo de cookies fica atrás da faixa e some do foco enquanto ela existe.
         fab.hidden = true;
         bannerWatch = new ResizeObserver(() => {
@@ -360,7 +359,6 @@ function init() {
             document.body.style.paddingBottom = basePadding + h + 'px';
             // Tab em elemento já visível não rola: sem isto o foco fica sob a faixa fixa (WCAG 2.4.11).
             document.documentElement.style.scrollPaddingBottom = h + 'px';
-            document.documentElement.style.setProperty('--cc-banner-h', h + 'px');
         });
         bannerWatch.observe(banner);
         document.addEventListener('focusin', keepFocusAboveBanner);
@@ -380,7 +378,6 @@ function init() {
         bannerWatch.disconnect();
         document.removeEventListener('focusin', keepFocusAboveBanner);
         document.body.style.paddingBottom = bodyPaddingBefore;
-        document.documentElement.style.removeProperty('--cc-banner-h');
         document.documentElement.style.removeProperty('scroll-padding-bottom');
         fab.hidden = false;
         const tinhaFoco = banner.contains(document.activeElement);

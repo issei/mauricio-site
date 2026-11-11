@@ -3,8 +3,7 @@
  * Catálogo gerado — escreve, a partir de specs/ecosystem.nav.yaml:
  *   1. src/catalogo.html, entre <!-- CATALOGO:START --> e <!-- CATALOGO:END -->
  *      (trilha dos pilares, cartões dos 4 pilares e a seção "Trajetória e vídeos");
- *   2. src/js/eco-nav.data.js (dados do menu <eco-nav>);
- *   3. public/catalogo.md (gêmeo Markdown, via buildMd de scripts/seo/lib.mjs).
+ *   2. public/catalogo.md (gêmeo Markdown, via buildMd de scripts/seo/lib.mjs).
  *
  * Spec: docs/specs/arquitetura-informacao/SDD-F1-F1b.md (Parte 1, RF-F1-12 a RF-F1-18).
  * O que fica fora dos marcadores (head, hero, "Comece por aqui", rodapé) continua
@@ -26,7 +25,6 @@ import { buildMd } from './seo/lib.mjs';
 const START = '<!-- CATALOGO:START -->';
 const END = '<!-- CATALOGO:END -->';
 const CATALOGO = join(ROOT, 'src/catalogo.html');
-const ECO_DATA = join(ROOT, 'src/js/eco-nav.data.js');
 const MD = join(ROOT, 'public/catalogo.md');
 
 const esc = (s) =>
@@ -146,37 +144,6 @@ export function renderCatalogo({ eco, temas }) {
   return `\n${L.join('\n')}\n${I(12)}`;
 }
 
-/** src/js/eco-nav.data.js — dados do <eco-nav> (RF-F1-18). */
-export function renderEcoNavData({ eco }) {
-  const pilares = eco.pillars.map((p) => ({
-    id: p.id, n: num(p), label: p.label, subtitle: p.subtitle, summary: p.summary,
-    nodes: p.nodes.filter((s) => eco.nodes[s].catalogo !== false),
-  }));
-  const nodes = {};
-  for (const p of pilares) {
-    for (const s of p.nodes) {
-      const n = eco.nodes[s];
-      nodes[s] = { file: n.file, title: n.label || n.title, blurb: n.blurb };
-    }
-  }
-  const data = {
-    version: eco.meta.version,
-    base: eco.meta.canonical_base,
-    pillars: pilares,
-    nodes,
-    crosslinks: eco.crosslinks.map((c) => ({ from: c.from, to: c.to, rationale: c.rationale })),
-  };
-  return [
-    '/*',
-    ' * GERADO por scripts/gen-catalogo.mjs a partir de specs/ecosystem.nav.yaml.',
-    ' * Não edite à mão: edite o YAML e rode `node scripts/gen-catalogo.mjs`.',
-    ' * Lido por src/js/eco-nav.js. Spec: SDD-F1-F1b.md, RF-F1-18.',
-    ' */',
-    `export const DATA = ${JSON.stringify(data, null, 2)};`,
-    '',
-  ].join('\n');
-}
-
 /** public/catalogo.md — buildMd sobre a entrada de pages.mjs, cujas seções vêm do YAML. */
 export function renderMd() {
   return buildMd(PAGES.find((p) => p.slug === 'catalogo'));
@@ -207,7 +174,6 @@ function main() {
   }
   const alvos = [
     [CATALOGO, html, html.replace(START + atual + END, START + renderCatalogo(dados) + END)],
-    [ECO_DATA, (() => { try { return readFileSync(ECO_DATA, 'utf8'); } catch { return ''; } })(), renderEcoNavData(dados)],
     [MD, (() => { try { return readFileSync(MD, 'utf8'); } catch { return ''; } })(), renderMd()],
   ];
   const divergentes = alvos.filter(([, antes, depois]) => antes !== depois);
@@ -217,7 +183,7 @@ function main() {
         '\n  rode: node scripts/gen-catalogo.mjs');
       process.exit(1);
     }
-    console.log('✓ [catalogo] catálogo, eco-nav.data.js e catalogo.md em dia');
+    console.log('✓ [catalogo] catálogo e catalogo.md em dia');
     return;
   }
   for (const [f, , depois] of divergentes) writeFileSync(f, depois, 'utf8');

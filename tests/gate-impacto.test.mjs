@@ -8,7 +8,7 @@ import { classificar, selecionar, TRANSVERSAIS } from '../scripts/gate/impacto.m
 const SLUGS = ['index', 'devin', 'curriculo', 'engenharia-agentes-ia', 'formulacao-de-problemas', 'digital-workplace-agentico',
   'especificacao-conversacional', 'proposta', 'proposta-engenharia-reversa', 'salesforce-agentic-dev', 'salesforce-agentic-quickstart'];
 const SPECS = ['tests/devin.spec.js', 'tests/index.spec.js', 'tests/index.nojs.spec.js', 'tests/formulacao.nojs.spec.js',
-  'tests/formulacao-de-problemas.spec.js', 'tests/especificacao-conversacional.spec.js', 'tests/eco-nav.spec.js',
+  'tests/formulacao-de-problemas.spec.js', 'tests/especificacao-conversacional.spec.js', 'tests/site-header.spec.js',
   'tests/proposta.spec.js', ...TRANSVERSAIS];
 
 test('arquivos de página mapeiam para a página', () => {
@@ -29,9 +29,9 @@ test('arquivos de página mapeiam para a página', () => {
 });
 
 test('compartilhado escala para a suíte inteira', () => {
-  for (const f of ['src/style.css', 'src/js/cookie-consent.js', 'src/js/eco-nav.js', 'playwright.config.js', 'vite.config.js',
+  for (const f of ['src/style.css', 'src/js/cookie-consent.js', 'playwright.config.js', 'vite.config.js',
     'package.json', 'scripts/seo/lib.mjs', 'scripts/quality-gate.mjs', 'tests/_helpers/axe.js', 'tests/aeo.spec.js',
-    'tests/a11y/focus-visible.spec.js', 'tests/eco-nav.spec.js', 'public/llms.txt', 'public/.well-known/agent-card.json',
+    'tests/a11y/focus-visible.spec.js', 'tests/site-header.spec.js', 'public/llms.txt', 'public/.well-known/agent-card.json',
     'src/js/a11y-tabs.js', 'public/images/foto.png'])
     assert.equal(classificar(f, SLUGS).tipo, 'tudo', f);
 });
@@ -49,7 +49,7 @@ test('selecionar: página → specs dela + transversais', () => {
   assert.ok(r.specs.includes('tests/devin.spec.js'));
   for (const t of TRANSVERSAIS) assert.ok(r.specs.includes(t), t);
   assert.ok(!r.specs.includes('tests/index.spec.js'));
-  assert.ok(!r.specs.includes('tests/eco-nav.spec.js'));
+  assert.ok(!r.specs.includes('tests/site-header.spec.js'));
 });
 
 test('selecionar: spec .nojs entra pelo nome-raiz da página', () => {

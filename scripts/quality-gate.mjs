@@ -114,7 +114,7 @@ if (!skipE2e) {
     if (escopo.specs.length) {
       cmd += ` ${escopo.specs.join(' ')} --project chromium --project mobile --project no-js`;
       env = { GATE_PAGES: escopo.paginas.join(',') };
-      naoRodou.push('Playwright em firefox e webkit', 'specs de outras páginas e specs globais (eco-nav, agent-discovery, oauth…)');
+      naoRodou.push('Playwright em firefox e webkit', 'specs de outras páginas e specs globais (cabeçalho, agent-discovery, oauth…)');
     } else {
       cmd = null;
       naoRodou.push('Playwright inteiro (nenhuma página alterada)');

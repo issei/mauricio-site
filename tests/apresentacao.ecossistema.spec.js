@@ -49,21 +49,6 @@ test('os destinos do Hub existem e conferem com o slug declarado', async ({ page
 
 /* ── SSOT de navegação ──────────────────────────────────────────────────── */
 
-test('o componente <eco-nav> conhece a página nova', async ({ page }) => {
-  await page.goto(PATH);
-  const nav = page.locator('eco-nav');
-  await expect(nav).toHaveCount(1);
-
-  // A pílula de contexto mostra o pilar da página atual — se o slug não
-  // estivesse no grafo, o componente não saberia em qual pilar ela vive.
-  const pilar = await nav.evaluate((el) => el.shadowRoot?.textContent ?? '');
-  expect(pilar).toContain('Engenharia de Confiança');
-});
-
-// A sincronia YAML ↔ eco-nav.js é verificada em
-// tests/apresentacao.ecossistema.test.mjs, que lê os dois arquivos do disco —
-// o YAML não é servido pelo dev server.
-
 /* ── Isolamento visual ──────────────────────────────────────────────────── */
 
 test('o namespace .ap- não vaza para outras páginas', async ({ page }) => {

@@ -3,7 +3,7 @@
  * lista de conteúdos do site. Spec: docs/specs/arquitetura-informacao/SDD-F1-F1b.md
  * (Parte 1, §3).
  *
- * Quem usa: scripts/gen-catalogo.mjs (catálogo e eco-nav.data.js),
+ * Quem usa: scripts/gen-catalogo.mjs (catálogo e catalogo.md), scripts/gen-cabecalho.mjs,
  * scripts/seo/pages.mjs (seções do catalogo.md) e os testes do esquema.
  */
 import { readFileSync } from 'node:fs';

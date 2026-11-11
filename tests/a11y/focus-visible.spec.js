@@ -47,7 +47,7 @@ for (const entrada of PAGINAS) {
       const info = await page.evaluate(() => {
         let a = document.activeElement;
         if (!a || a === document.body) return null;
-        while (a.shadowRoot && a.shadowRoot.activeElement) a = a.shadowRoot.activeElement; // <eco-nav>
+        while (a.shadowRoot && a.shadowRoot.activeElement) a = a.shadowRoot.activeElement; // componentes com shadow DOM
         if (a.tagName === 'IFRAME') return { pular: true };
         a.scrollIntoView({ block: 'center' });
         const r = a.getBoundingClientRect();
