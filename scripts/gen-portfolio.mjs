@@ -394,6 +394,7 @@ function homeHero() {
       <a class="pf-btn" href="./curriculo.html">Ver carreira</a>
       <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar os conteúdos</a>
       <a class="pf-btn pf-btn--ghost pf-btn--yt" href="/videos.html">${icon('youtube')} Vídeos</a>
+      <a class="pf-btn pf-btn--ghost" href="#contact">Contato</a>
     </div>
     ${socials()}
   </div>

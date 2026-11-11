@@ -34,7 +34,8 @@ test.describe('Home editorial (F3)', () => {
     await expect(page.locator('.pf-hero')).toContainText(cv.Titulo);
     await expect(page.locator('.pf-hero')).toContainText(cv.ResumoHero);
     const portas = await page.locator('.pf-cta a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
-    expect(portas).toEqual(['./curriculo.html', './catalogo.html', '/videos.html']);
+    expect(portas).toEqual(['./curriculo.html', './catalogo.html', '/videos.html', '#contact']);
+    await expect(page.locator('#contact')).toContainText(cv.Contato.Email);
   });
 
   test('RF-F3-01: seções na ordem, sem o currículo completo', async ({ page }) => {
@@ -61,7 +62,7 @@ test.describe('Home editorial (F3)', () => {
 
   test('RF-F8-02: botões da home com os nomes das áreas', async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator('.pf-cta a')).toHaveText(['Ver carreira', 'Explorar os conteúdos', /Vídeos/]);
+    await expect(page.locator('.pf-cta a')).toHaveText(['Ver carreira', 'Explorar os conteúdos', /Vídeos/, 'Contato']);
   });
 
   test('RF-F3-05 / CA-F3-02: provas literais do cv.json, com alvo no currículo', async ({ page }) => {
