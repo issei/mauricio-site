@@ -232,4 +232,5 @@ Registro versionado da conformidade do site contra **WCAG 2.2 AA, perfil Standar
   - **Estrutura:** mais um par `<dt>`/`<dd>` na mesma `<dl class="ed-facts">`. Sem heading novo e sem CSS novo.
   - **Testes:** `editorial-layer.test.mjs` confere o rótulo e a ordem nas 12 páginas (91 casos). Playwright Chromium em `tests/a11y/` e nas suítes das páginas: só as falhas conhecidas da nuvem (`life3d` em `reflow-zoom` e "Abrir menu" das duas páginas salesforce-agentic).
   - **Catraca:** `a11y-sweep --only` nas 12 páginas: sem regressão. `a11y-static` 21/21, `perf-budget` dentro do orçamento.
+  - **Espelho EN (11/11/2026):** `i18n:sync` local (Argos) regerou as 12 páginas `/en/` ("Nature" no quadro); `i18n:check` com 82 espelhos em dia e `vite build` sem erro.
   - **Não verificado:** leitor de tela, Firefox e WebKit (ficam para o CI). Independência: self-reported ⚠️.
