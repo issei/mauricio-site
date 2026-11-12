@@ -7,18 +7,18 @@ temas:
 resumo: O OmniRoute é um gateway de IA de código aberto que reúne centenas de provedores de modelos num único endpoint local. O vídeo explica o endpoint, os combos com troca automática de modelo, as estratégias de roteamento, a compressão de tokens e a integração com ferramentas de programação.
 fontes:
   - url: https://github.com/diegosouzapw/OmniRoute
-    titulo: "Repositório oficial do OmniRoute no GitHub"
-    sustenta: "O OmniRoute é um gateway de IA de código aberto que expõe vários provedores num endpoint local."
+    titulo: Repositório oficial do OmniRoute no GitHub
+    sustenta: O OmniRoute é um gateway de IA de código aberto que expõe vários provedores num endpoint local.
     verificada: true
   - url: https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/guides/USER_GUIDE.md
-    titulo: "Guia do usuário (USER_GUIDE.md)"
-    sustenta: "Os combos com troca automática de modelo, as estratégias de roteamento e as tags de modelo."
+    titulo: Guia do usuário (USER_GUIDE.md)
+    sustenta: Os combos com troca automática de modelo, as estratégias de roteamento e as tags de modelo.
     verificada: true
   - url: https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE_TIERS.md
-    titulo: "Análise de tiers gratuitos e orçamento de tokens (FREE_TIERS.md)"
-    sustenta: "O número de provedores com plano gratuito e de tokens gratuitos por mês."
+    titulo: Análise de tiers gratuitos e orçamento de tokens (FREE_TIERS.md)
+    sustenta: O número de provedores com plano gratuito e de tokens gratuitos por mês.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-12
 youtube:
   titulo: "OmniRoute: Pare de gastar fortunas com assinaturas de IA!"

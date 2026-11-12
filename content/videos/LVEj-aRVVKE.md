@@ -10,7 +10,7 @@ fontes:
     titulo: Google Antigravity Livestream
     sustenta: "O vídeo resume esta transmissão ao vivo: os recursos e as recomendações citados vêm dela."
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-11
 youtube:
   titulo: "Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes"

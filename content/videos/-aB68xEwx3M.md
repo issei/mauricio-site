@@ -4,8 +4,8 @@ slug: o-metodo-stutz-explicado-revolucao-ou-apenas-marketing
 status: publicado
 temas:
   - aprendizagem-e-mente
-resumo: "O vídeo explica o método de Phil Stutz, que ficou conhecido pelo documentário produzido por Jonah Hill. Mostra a Parte X, duas ferramentas do método, a pirâmide da força vital e as críticas de quem diz que o método só renomeia ideias antigas."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo explica o método de Phil Stutz, que ficou conhecido pelo documentário produzido por Jonah Hill. Mostra a Parte X, duas ferramentas do método, a pirâmide da força vital e as críticas de quem diz que o método só renomeia ideias antigas.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-12
 youtube:
   titulo: "O Método Stutz Explicado: Revolução ou Apenas Marketing?"
