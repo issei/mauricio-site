@@ -1,10 +1,12 @@
 ---
 id: ruZVjMpaEZo
 slug: galaxy-ai-assistente-de-chamada
-status: rascunho
+status: publicado
 temas:
   - ferramentas-de-ia
 resumo: "O Assistente de Chamada do Galaxy AI, da Samsung, tem duas funções: a chamada por texto, para atender sem falar, e a tradução simultânea, para conversar em outro idioma. O vídeo mostra para que serve cada uma, como configurar e quando ativar."
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-12
 youtube:
   titulo: Galaxy AI  Assistente de Chamada
   publicado_em: 2025-10-27
