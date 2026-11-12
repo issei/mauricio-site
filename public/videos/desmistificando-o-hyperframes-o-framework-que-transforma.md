@@ -1,7 +1,72 @@
 # Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!
 
+O HyperFrames é um framework de código aberto que transforma HTML, CSS e animações em vídeo MP4, sempre com o mesmo resultado para o mesmo código. O vídeo mostra o que dá para construir, a anatomia de um projeto, por que o formato serve a agentes de IA e como ele se compara ao Remotion.
+
 Vídeo de Maurício Yokoyama Issei, publicado em 22 de agosto de 2026 (8 min 26 s).
 Assistir: https://www.youtube.com/watch?v=5HaAVA4316Q
+
+_O vídeo e a transcrição estão em português. Os minutos entre colchetes, como [04:12], apontam para o trecho do vídeo._
+
+## A ideia: programar um vídeo como se programa um site
+
+O vídeo propõe programar um vídeo do mesmo jeito que se constrói um site, sem linha do tempo de edição e sem renderização manual pesada [00:00]. A ferramenta para isso é o HyperFrames, que usa o HTML junto com a IA para gerar vídeo por programação [00:43].
+
+## O que é o HyperFrames
+
+O HyperFrames é um framework de código aberto. Ele pega HTML, CSS, arquivos de mídia e animações e gera vídeos MP4 determinísticos [01:24].
+
+Por baixo, ele usa o Chrome em modo headless, sem interface gráfica, junto com o FFmpeg, para capturar os quadros em sincronia [01:45]. Determinístico quer dizer que a mesma entrada de código gera sempre o mesmo vídeo, hoje ou daqui a 10 anos [02:06].
+
+A documentação no GitHub resume a ideia numa frase: "escreva HTML, renderize vídeo, feito para agentes" [02:06]. Não é preciso aprender um formato proprietário nem uma interface de edição [02:28].
+
+## O que dá para construir
+
+- Filmes de lançamento de produto em 4K [02:49].
+- Vídeos explicativos sem apresentador, com visual, texto e tipografia gerados por programação [02:49].
+- Um pull request do GitHub transformado em vídeo de apresentação da funcionalidade, com narração [03:10].
+- Gravações de pessoas falando para a câmera, com gráficos, dados e citações sobrepostos [03:10].
+- Apresentações interativas e videoclipes com cortes no ritmo da música [03:30].
+
+## A anatomia de um projeto
+
+A estrutura de pastas segue a organização de um projeto web [03:30]. O `index.html` é a composição principal do vídeo. A pasta `assets` guarda imagens, vídeos, áudios e fontes, e a pasta `compositions` guarda cenas reutilizáveis [03:51].
+
+O arquivo `frame.md` traduz regras de design web, como identidade e escala, para especificações que funcionam em vídeo [04:11].
+
+O tempo também vira HTML. Atributos como `data-start` e `data-duration` dizem quando um elemento entra e sai de cena [04:32]. Por exemplo: no segundo 0 começa o vídeo de fundo; no segundo 1 o título entra com uma animação GSAP; no segundo 6 os dois terminam [04:32]. Tudo pode ser visto no navegador antes de renderizar [04:54].
+
+## Feito para agentes de IA
+
+O fluxo com um agente tem três passos [05:14]:
+
+- Instalar cerca de 20 habilidades do HyperFrames pela linha de comando [05:14].
+- Escrever um prompt com a direção de arte e o conteúdo [05:36].
+- Deixar o agente, como o Claude Code ou o Cursor, planejar o roteiro e o ritmo, escrever o HTML, ajustar as animações e renderizar o MP4 [05:36].
+
+Os modelos de linguagem já escrevem bem HTML e CSS. Quando o vídeo vira HTML simples, eles podem editar vídeo sem aprender uma ferramenta nova [05:57].
+
+## HyperFrames ou Remotion
+
+O Remotion usa componentes React. Por isso exige um bundler e gera arquivos JSX, e usa a Remotion License, de código disponível [06:39]. O HyperFrames usa HTML, CSS e animações controláveis, com licença de código aberto Apache 2.0 [06:59].
+
+A maior diferença é que o HyperFrames não tem etapa de build: um `index.html` já roda [07:19]. Isso facilita o trabalho da IA e reduz erros de sintaxe e de dependência [07:19].
+
+## Perguntas frequentes
+
+### O mesmo código sempre gera o mesmo vídeo?
+
+Sim. O HyperFrames é determinístico: a mesma entrada gera exatamente o mesmo vídeo [02:06].
+
+### Preciso compilar o projeto antes de renderizar?
+
+Não. Diferente do Remotion, o HyperFrames não tem etapa de build [07:19].
+
+## Fontes
+
+- [Documentação oficial (Introdução)](https://hyperframes.heygen.com/introduction): O HyperFrames transforma HTML, CSS e animações em vídeo MP4 determinístico.
+- [Repositório do projeto no GitHub](https://github.com/heygen-com/hyperframes): O HyperFrames é de código aberto, com licença Apache 2.0, e o lema "escreva HTML, renderize vídeo, feito para agentes".
+
+Revisado por Maurício Yokoyama Issei em 12 de novembro de 2026.
 
 Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
 

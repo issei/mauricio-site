@@ -1,7 +1,62 @@
 # CodeGraph: Inteligência Semântica Local para Agentes de IA de Código
 
+O CodeGraph cria, na sua máquina, um grafo do código com símbolos, chamadas e dependências, para o agente de IA achar o que precisa numa só chamada em vez de ler arquivo por arquivo. O vídeo mostra o problema, os números de economia, o motor em Rust, o suporte a várias linguagens e a sincronização automática.
+
 Vídeo de Maurício Yokoyama Issei, publicado em 26 de agosto de 2026 (7 min 25 s).
 Assistir: https://www.youtube.com/watch?v=XzEjRH5b6FA
+
+_O vídeo e a transcrição estão em português. Os minutos entre colchetes, como [04:12], apontam para o trecho do vídeo._
+
+## O problema do agente cego
+
+A eficiência de um agente de IA define a velocidade e o custo de um projeto [00:00]. Os agentes atuais gastam muito do orçamento só para descobrir onde está o código [00:43].
+
+Diante de uma pergunta como "Qual é o caminho desta requisição até o banco de dados?", o agente usa comandos como grep e lê pastas sem rumo, gastando milhares de tokens antes de resolver o problema [01:04]. Com o CodeGraph, uma só chamada de ferramenta devolve o código exato e o raio de impacto [01:26].
+
+## A solução: um mapa pronto
+
+Em vez de o agente montar o mapa do zero a cada pergunta, o CodeGraph entrega o mapa antes [01:46]. É um grafo de conhecimento feito para agentes de código, construído 100% na máquina com um banco SQLite, sem enviar dados para fora [02:09]. O agente recebe as chamadas, os símbolos e as dependências de uma vez [02:09].
+
+## A economia, em números
+
+Segundo o vídeo, num experimento publicado no YouTube, o consumo de tokens do agente caiu de 337.000 para 145.000 na mesma tarefa [02:50].
+
+Nos benchmarks do repositório, as chamadas de ferramenta caíram de 43 para 2, e a leitura de arquivos caiu a zero [03:12]. Em sete bases de código abertas, a média foi 88% menos chamadas de ferramenta e 62% menos tokens [03:33]. As operações ficaram 44% mais baratas [03:56].
+
+Como o agente recebe a resposta exata, sobra mais espaço na janela de contexto para as próximas tarefas [03:56].
+
+## O motor em Rust
+
+O núcleo é escrito em Rust e usa gramáticas tree-sitter [04:17]. Ele detecta o hardware e ajusta o uso de recursos, tanto numa máquina potente quanto num servidor com dois núcleos [04:38].
+
+## Várias linguagens no mesmo projeto
+
+O CodeGraph entende mais de 20 linguagens, como TypeScript, Python, Rust, Java e Swift, sem configuração por linguagem: ele lê a extensão do arquivo [04:59].
+
+Ele também liga chamadas entre linguagens. Por exemplo, liga uma chamada em Swift a um seletor em Objective-C e mapeia componentes do React Native, onde os analisadores comuns costumam falhar [05:21].
+
+## Sincronização automática
+
+Um mapa desatualizado não serve. O CodeGraph usa os eventos do sistema operacional para observar os arquivos, sem configuração manual [06:02]. Quando um arquivo muda, ele espera cerca de 2 segundos para agrupar edições rápidas e atualiza o grafo de forma incremental [06:02].
+
+Se o agente consultar o grafo nesses 2 segundos, o CodeGraph avisa e manda ler o arquivo direto do disco, para a resposta não sair errada [06:23].
+
+## Perguntas frequentes
+
+### O CodeGraph manda o meu código para algum servidor?
+
+Não. O grafo é construído e guardado na sua máquina, num banco SQLite [02:09].
+
+### O grafo fica desatualizado quando eu edito o código?
+
+Não. Ele observa os arquivos e se atualiza cerca de 2 segundos depois de uma mudança [06:02].
+
+## Fontes
+
+- [Repositório oficial no GitHub](https://github.com/colbymchenry/codegraph): Os benchmarks: menos chamadas de ferramenta, menos tokens e custo menor em sete repositórios.
+- [Documentação e site oficial](https://colbymchenry.github.io/codegraph/): O CodeGraph é local, usa SQLite, tem núcleo em Rust e sincroniza com o sistema de arquivos.
+
+Revisado por Maurício Yokoyama Issei em 12 de novembro de 2026.
 
 Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica)
 

@@ -1,7 +1,7 @@
 ---
 id: 5LtvpFMRUvw
 slug: engenharia-por-tras-da-boutique-empresarial-arquitetura
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
   - especificacao-e-desenvolvimento
@@ -10,11 +10,13 @@ fontes:
   - url: https://github.com/issei/boutiqueempresarial-site
     titulo: "Repositório no GitHub"
     sustenta: "A estrutura do projeto: especificações em docs/specs, subagentes do Claude Code e o comando npm run gate."
-    verificada: false
+    verificada: true
   - url: https://boutiqueempresarial.com.br/
     titulo: "Site oficial da Boutique Empresarial"
     sustenta: "O funil único: página do diagnóstico gratuito e formulário de sete etapas."
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-12
 youtube:
   titulo: "Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico"
   publicado_em: 2026-09-21
