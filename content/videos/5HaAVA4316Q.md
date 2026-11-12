@@ -1,7 +1,7 @@
 ---
 id: 5HaAVA4316Q
 slug: desmistificando-o-hyperframes-o-framework-que-transforma
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
 resumo: "O HyperFrames é um framework de código aberto que transforma HTML, CSS e animações em vídeo MP4, sempre com o mesmo resultado para o mesmo código. O vídeo mostra o que dá para construir, a anatomia de um projeto, por que o formato serve a agentes de IA e como ele se compara ao Remotion."
@@ -9,11 +9,13 @@ fontes:
   - url: https://hyperframes.heygen.com/introduction
     titulo: "Documentação oficial (Introdução)"
     sustenta: "O HyperFrames transforma HTML, CSS e animações em vídeo MP4 determinístico."
-    verificada: false
+    verificada: true
   - url: https://github.com/heygen-com/hyperframes
     titulo: "Repositório do projeto no GitHub"
     sustenta: "O HyperFrames é de código aberto, com licença Apache 2.0, e o lema \"escreva HTML, renderize vídeo, feito para agentes\"."
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-12
 youtube:
   titulo: "Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!"
   publicado_em: 2026-08-22

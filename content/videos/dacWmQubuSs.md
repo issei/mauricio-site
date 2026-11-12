@@ -1,7 +1,7 @@
 ---
 id: dacWmQubuSs
 slug: a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
   - dados-e-decisao
@@ -10,11 +10,13 @@ fontes:
   - url: https://www.aibuilderclub.com/blog/graph-engineering-guide-2026
     titulo: "Graph Engineering Guide (2026), AI Builder Club"
     sustenta: "A diferença entre engenharia de loop e de grafo, e a metáfora do organograma."
-    verificada: false
+    verificada: true
   - url: https://github.com/bytedance/deer-flow
     titulo: "DeerFlow GitHub (ByteDance)"
     sustenta: "O DeerFlow é de código aberto, com licença MIT, e tem subagentes, skills e sandbox."
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-12
 youtube:
   titulo: "A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!"
   publicado_em: 2026-08-12
