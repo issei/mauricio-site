@@ -1,7 +1,7 @@
 ---
 id: LVEj-aRVVKE
 slug: domine-a-ia-com-google-antigravity-da-codificacao-a
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
 resumo: "Um resumo da transmissão ao vivo do Google sobre as novidades do Antigravity. O vídeo mostra como trabalhar com agentes de IA sem perder o controle do código: projetos no Agent Manager 2.0, aprovação antes de mudar arquivos, chats curtos com /learn, sandboxes com Git worktree e subagentes."
@@ -9,7 +9,9 @@ fontes:
   - url: https://www.youtube.com/watch?v=mfT8qpPNYyg
     titulo: "Google Antigravity Livestream"
     sustenta: "O vídeo resume esta transmissão ao vivo: os recursos e as recomendações citados vêm dela."
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-11
 youtube:
   titulo: "Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes"
   publicado_em: 2026-07-17
@@ -48,7 +50,7 @@ youtube:
 
 Para quem programa com IA, a maior preocupação é um agente mudar, sem supervisão, uma base de código que estava estável [00:00]. O vídeo resume a última transmissão ao vivo do Google sobre o Antigravity e transforma os recursos novos em práticas para o dia a dia [00:21].
 
-Rod, da equipe de Developer Relations do Google, diz que em IA não existe uma só maneira de fazer algo, e que isso abre espaço para reduzir o trabalho repetitivo [00:41]. A ideia é liberar tempo para a engenharia e o design [01:02].
+Rodie, da equipe de Developer Relations do Google, diz que em IA não existe uma só maneira de fazer algo, e que isso abre espaço para reduzir o trabalho repetitivo [00:41]. A ideia é liberar tempo para a engenharia e o design [01:02].
 
 ## O que mudou no Antigravity
 
