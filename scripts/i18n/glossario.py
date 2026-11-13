@@ -39,6 +39,22 @@ SEGMENTOS: dict[str, str] = {
     "a catraca que só deixa a dívida cair e o que ainda não foi verificado.":
         "How A11Y.md entered the development of this site with AI agents: the real flow, the diffs, "
         "the ratchet that only lets the debt go down, and what has not been verified yet.",
+    # Rótulos curtos do currículo e do catálogo.
+    "Para": "To",
+    "Ensaio": "Essay",
+    "Ensaio com autodiagnóstico": "Essay with self-diagnosis",
+    "Competências": "Skills",
+    "Desenvolvimento": "Development",
+    "Plataformas & APIs": "Platforms & APIs",
+    "Plataformas &amp; APIs": "Platforms &amp; APIs",
+    "Visualização de Dados": "Data Visualization",
+    "Data Mesh": "Data Mesh",
+    "CI/CD": "CI/CD",
+    "Atuação atual": "Current role",
+    "Analista Programador Java": "Java Programmer Analyst",
+    "Analista de Desenvolvimento Java": "Java Development Analyst",
+    "Economia": "Savings",
+    "Economia de": "Savings of",
     # Os 10 temas (content/temas.yml): rótulos de navegação da home, do catálogo e de /temas.
     "Engenharia agêntica": "Agentic engineering",
     "Gestão e estratégia": "Management and strategy",
@@ -78,7 +94,14 @@ TERMOS: dict[str, str] = {
 #: Nomes que não se traduzem. "Rede" é a empresa onde o autor trabalha desde
 #: 2018; a única ocorrência com sentido de "rede" (camadas de zero trust:
 #: "Dispositivo, Rede, Identidade e Aplicação") fica de fora pelo lookbehind.
-NOMES: tuple[str, ...] = (r"(?<!Dispositivo, )\bRede\b",)
+#: Os demais também foram medidos errados nos espelhos de 2026-11-13.
+NOMES: tuple[str, ...] = (
+    r"(?<!Dispositivo, )\bRede\b",
+    r"\bTelefônica\b",            # empresa; saía "Telephone"
+    r"\bBoutique Empresarial\b",  # nome do projeto; saía "Business Boutique"
+    r"\bCI/CD\b",                 # saía "IC/CD"
+    r"(?<![\w.])\.NET\b",          # saía ". NET"
+)
 
 #: Nome de arquivo (llms.txt, cv-for-ai.md, robots.txt): o ponto não é fim de frase.
 ARQUIVO = r"\b[\w-]+(?:\.[\w-]+)*\.(?:txt|md|json|jsonld|html|xml|js|mjs|ya?ml|py|css|csv)\b"
