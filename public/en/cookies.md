@@ -21,16 +21,21 @@ It lists, in a technical and nominal way, the cookies and similar technologies (
 | `ci-simple-mode`, `ci-anim-off` | Mauricio. issei.com.br | localStorage | persistent | Simple mode and animation off on the curiosity and investigation page; recorded only when you use these buttons |
 | `mj-muted` | Mauricio. issei.com.br | localStorage | persistent | Sound off on page The Journey in Pixel Art; recorded only when you use the sound button |
 | `entrevista-streaming:v1`, `entrevista-streaming:v1:salvar` | Mauricio. issei.com.br | localStorage | persistent | Written interview answers and the choice to save or not; the save can be turned off on the page and nothing is sent to the server |
-| `_ga` | .mauricio.issei.com.br | HTTP cookie | 2 years | Unique visitor identifier (GA4) |
-| `_g_GEKLHZYVYX` | .mauricio.issei.com.br | HTTP cookie | 2 years | Status of session GA4 |
-| `_clck` | .mauricio.issei.com.br | HTTP cookie | 1 year | Microsoft Clarity User ID and preferences |
-| `_clsk` | .mauricio.issei.com.br | HTTP cookie | 1 day | Connect the page views of the same visit on Microsoft Clarity |
-| `_gid` | .mauricio.issei.com.br | HTTP cookie | 24 hours | Differentiate users in the day |
+| `_ga` | .issei.com.br | HTTP cookie | 400 days | Unique visitor identifier (GA4) |
+| `_g_GEKLHZYVYX` | .issei.com.br | HTTP cookie | 400 days | Status of session GA4 |
+| `_clck` | .issei.com.br | HTTP cookie | 1 year | Microsoft Clarity User ID and preferences |
+| `_clsk` | .issei.com.br | HTTP cookie | 1 day | Connect the page views of the same visit on Microsoft Clarity |
+| `CLID` | www.clarity.ms | third party cookie | 1 year | Register the first time Microsoft Clarity has seen this browser on any website that uses Clarity |
+| `MUID` | .clarity. ms and .bing.com | third party cookie | 390 days | Microsoft browser identifier used by Clarity |
+| `MR` | .c.clarity. ms and .c.bing. with | third party cookie | 7 days | Indicates whether the `MUID` identifier should be renewed |
+| `SRM_B` | .c.bing.com | third party cookie | 390 days | Microsoft browser identifier |
+| `SM` | .c.clarity. ms | third party cookie | meeting | Syncs the `MUID` identifier between Microsoft domains |
+| `ANONCHK` | .c.clarity. ms | third party cookie | 10 minutes | Indicates whether the `MUID` identifier was transferred to another Microsoft cookie |
 | `_fbp` | .mauricio.issei.com.br | HTTP cookie | 90 days | Browser Identifier (Meta Pixel) for measurement and remarketing |
 | `fr` | Facebook. with | third party cookie | 90 days | Target Ad Direction |
 | `_gcl_au` | .mauricio.issei.com.br | HTTP cookie | 90 days | Google Ads conversion assignment |
 
-The list corresponds to the set expected by the declared tracking (Google Tag Manager + GA4) and is reviewed after each change in third party tools. Inconsistencies may be reported to the PDO.
+Last checked on 11/13/2026, after accepting all categories: GA4 and Microsoft Clarity cookies appeared above; marketing cookies (Meta and Google Ads) did not appear, and Google Tag Manager has no Meta or Google tag Ads on this date. The list is reviewed after each change in third party tools. Inconsistencies may be reported to the PDO.
 
 ## How to manage preferences
 
