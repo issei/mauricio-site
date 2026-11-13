@@ -17,6 +17,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 
 ## Todos os vídeos
 
+- [A ARTE DO ESFORÇO: Filosofia e Superação Intelectual](https://mauricio.issei.com.br/videos/a-arte-do-esforco-filosofia-e-superacao-intelectual) — 13 de novembro de 2026
 - [8 de novembro de 2026](https://mauricio.issei.com.br/videos/8-de-novembro-de-2026) — 9 de novembro de 2026
 - [O IPO DA ANTHROPIC É O MAIOR TESTE DE ESTRESSE DO MERCADO DE CAPITAIS E DA INTELIGÊNCIA ARTIFICIAL!](https://mauricio.issei.com.br/videos/o-ipo-da-anthropic-e-o-maior-teste-de-estresse-do-mercado) — 5 de novembro de 2026
 - [DA11Y.md: Acessibilidade no Figma Antes do Primeiro Pixel](https://mauricio.issei.com.br/videos/da11y-md-acessibilidade-no-figma-antes-do-primeiro-pixel) — 23 de outubro de 2026

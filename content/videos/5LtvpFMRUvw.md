@@ -15,7 +15,7 @@ fontes:
     titulo: Site oficial da Boutique Empresarial
     sustenta: "O funil único: página do diagnóstico gratuito e formulário de sete etapas."
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-12
 youtube:
   titulo: "Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico"

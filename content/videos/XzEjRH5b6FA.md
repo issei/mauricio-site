@@ -11,10 +11,10 @@ fontes:
     sustenta: "Os benchmarks: menos chamadas de ferramenta, menos tokens e custo menor em sete repositórios."
     verificada: true
   - url: https://colbymchenry.github.io/codegraph/
-    titulo: "Documentação e site oficial"
-    sustenta: "O CodeGraph é local, usa SQLite, tem núcleo em Rust e sincroniza com o sistema de arquivos."
+    titulo: Documentação e site oficial
+    sustenta: O CodeGraph é local, usa SQLite, tem núcleo em Rust e sincroniza com o sistema de arquivos.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-12
 youtube:
   titulo: "CodeGraph: Inteligência Semântica Local para Agentes de IA de Código"
