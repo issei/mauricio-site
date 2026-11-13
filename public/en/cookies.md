@@ -31,11 +31,8 @@ It lists, in a technical and nominal way, the cookies and similar technologies (
 | `SRM_B` | .c.bing.com | third party cookie | 390 days | Microsoft browser identifier |
 | `SM` | .c.clarity. ms | third party cookie | meeting | Syncs the `MUID` identifier between Microsoft domains |
 | `ANONCHK` | .c.clarity. ms | third party cookie | 10 minutes | Indicates whether the `MUID` identifier was transferred to another Microsoft cookie |
-| `_fbp` | .mauricio.issei.com.br | HTTP cookie | 90 days | Browser Identifier (Meta Pixel) for measurement and remarketing |
-| `fr` | Facebook. with | third party cookie | 90 days | Target Ad Direction |
-| `_gcl_au` | .mauricio.issei.com.br | HTTP cookie | 90 days | Google Ads conversion assignment |
 
-Last checked on 11/13/2026, after accepting all categories: GA4 and Microsoft Clarity cookies appeared above; marketing cookies (Meta and Google Ads) did not appear, and Google Tag Manager has no Meta or Google tag Ads on this date. The list is reviewed after each change in third party tools. Inconsistencies may be reported to the PDO.
+Last checked on 11/13/2026, after accepting all categories: GA4 and Microsoft Clarity cookies appeared above; no marketing cookies appeared, and Google Tag Manager only has Microsoft Clarity tag on this date. The site does not load Meta Pixel or Google Ads; the Marketing category stays in the banner so that no tool is connected without consent. The list is reviewed after each change in third party tools. Inconsistencies may be reported to the PDO.
 
 ## How to manage preferences
 
