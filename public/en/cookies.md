@@ -17,31 +17,31 @@ It lists, in a technical and nominal way, the cookies and similar technologies (
 | Name | Domain | Type | Duration | Purpose |
 |---|---|---|---|---|
 | `consent_v` | first | localStorage | persistent | Cookie consent preferences |
-| `eai-progress-v1` | Mauricio. issei.com.br | localStorage | persistent | Progress on the Engineering of AI Agents page (open chapters, best quiz note); nothing is sent to the server |
-| `ci-simple-mode`, `ci-anim-off` | Mauricio. issei.com.br | localStorage | persistent | Simple mode and animation off on the curiosity and investigation page; recorded only when you use these buttons |
-| `mj-muted` | Mauricio. issei.com.br | localStorage | persistent | Sound off on page The Journey in Pixel Art; recorded only when you use the sound button |
-| `entrevista-streaming:v1`, `entrevista-streaming:v1:salvar` | Mauricio. issei.com.br | localStorage | persistent | Written interview answers and the choice to save or not; the save can be turned off on the page and nothing is sent to the server |
+| `eai-progress-v1` | mauricio.issei.com.br | localStorage | persistent | Progress on the Engineering of AI Agents page (open chapters, best quiz note); nothing is sent to the server |
+| `ci-simple-mode`, `ci-anim-off` | mauricio.issei.com.br | localStorage | persistent | Simple mode and animation off on the curiosity and investigation page; recorded only when you use these buttons |
+| `mj-muted` | mauricio.issei.com.br | localStorage | persistent | Sound off on page The Journey in Pixel Art; recorded only when you use the sound button |
+| `entrevista-streaming:v1`, `entrevista-streaming:v1:salvar` | mauricio.issei.com.br | localStorage | persistent | Written interview answers and the choice to save or not; the save can be turned off on the page and nothing is sent to the server |
 | `_ga` | .issei.com.br | HTTP cookie | 400 days | Unique visitor identifier (GA4) |
-| `_g_GEKLHZYVYX` | .issei.com.br | HTTP cookie | 400 days | Status of session GA4 |
+| `_ga_GEKLHZYVYX` | .issei.com.br | HTTP cookie | 400 days | Status of session GA4 |
 | `_clck` | .issei.com.br | HTTP cookie | 1 year | Microsoft Clarity User ID and preferences |
 | `_clsk` | .issei.com.br | HTTP cookie | 1 day | Connect the page views of the same visit on Microsoft Clarity |
 | `CLID` | www.clarity.ms | third party cookie | 1 year | Register the first time Microsoft Clarity has seen this browser on any website that uses Clarity |
-| `MUID` | .clarity. ms and .bing.com | third party cookie | 390 days | Microsoft browser identifier used by Clarity |
-| `MR` | .c.clarity. ms and .c.bing. with | third party cookie | 7 days | Indicates whether the `MUID` identifier should be renewed |
+| `MUID` | .clarity.ms and .bing.com | third party cookie | 390 days | Microsoft browser identifier used by Clarity |
+| `MR` | .c.clarity.ms and .c.bing.com | third party cookie | 7 days | Indicates whether the `MUID` identifier should be renewed |
 | `SRM_B` | .c.bing.com | third party cookie | 390 days | Microsoft browser identifier |
-| `SM` | .c.clarity. ms | third party cookie | meeting | Syncs the `MUID` identifier between Microsoft domains |
-| `ANONCHK` | .c.clarity. ms | third party cookie | 10 minutes | Indicates whether the `MUID` identifier was transferred to another Microsoft cookie |
+| `SM` | .c.clarity.ms | third party cookie | session | Syncs the `MUID` identifier between Microsoft domains |
+| `ANONCHK` | .c.clarity.ms | third party cookie | 10 minutes | Indicates whether the `MUID` identifier was transferred to another Microsoft cookie |
 
-Last checked on 11/13/2026, after accepting all categories: GA4 and Microsoft Clarity cookies appeared above; no marketing cookies appeared, and Google Tag Manager only has Microsoft Clarity tag on this date. The site does not load Meta Pixel or Google Ads; the Marketing category stays in the banner so that no tool is connected without consent. The list is reviewed after each change in third party tools. Inconsistencies may be reported to the PDO.
+Last checked on 11/13/2026, after accepting all categories: GA4 and Microsoft Clarity cookies appeared above; no marketing cookies appeared, and Google Tag Manager only has Microsoft Clarity tag on this date. The site does not load Meta Pixel or Google Ads; the Marketing category stays in the banner so that no tool is connected without consent. The list is reviewed after each change in third party tools. Inconsistencies can be informed to DPO.
 
 ## How to manage preferences
 
 - Consent banner on the first visit.
-- Icon 
+- The 🍪 icon in the lower-left corner reopens the preferences at any time.
 - Blocking third party cookies in the browser.
 - The signal **Global Privacy Control (GPC)** is automatically respected as analytics and marketing opt-out.
 
-## Lock at source (Consent Mode v2)
+## Blocking at source (Consent Mode v2)
 
 Before any visitor's decision, all non-essential categories remain in `denied`. Analysis and marketing tags only fire after explicit consent, or only send pings without cookies (modeling mode).
 

@@ -106,14 +106,18 @@ def _traduz_enfase(texto: str, engine, base: str) -> str:
     Traduzir o trecho enfatizado fora da frase custa contexto; mandar `**` ao
     modelo custa a sintaxe. O acordo é explícito e a favor da sintaxe.
     """
-    padrao = re.compile(r"(\*\*|__|\*|_)(?=\S)(.+?)(?<=\S)\1")
-    if not padrao.search(texto):
+    # Código inline vem primeiro na alternância: o `_` de `_ga_GEKLHZYVYX` não é
+    # ênfase. Sem isso o nome do cookie ia ao modelo em pedaços e voltava
+    # "_g_GEKLHZYVYX" (espelho de cookies, 2026-11-13).
+    padrao = re.compile(r"(`+[^`]*`+)|(\*\*|__|\*|_)(?=\S)(.+?)(?<=\S)\2")
+    enfases = [m for m in padrao.finditer(texto) if m.group(2)]
+    if not enfases:
         return translate_inline(texto, engine, base)
 
     saida, pos = [], 0
-    for m in padrao.finditer(texto):
+    for m in enfases:
         saida.append(translate_inline(texto[pos : m.start()], engine, base))
-        saida.append(f"{m.group(1)}{translate_inline(m.group(2), engine, base)}{m.group(1)}")
+        saida.append(f"{m.group(2)}{translate_inline(m.group(3), engine, base)}{m.group(2)}")
         pos = m.end()
     saida.append(translate_inline(texto[pos:], engine, base))
     return "".join(saida)
