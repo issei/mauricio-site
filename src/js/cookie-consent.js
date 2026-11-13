@@ -33,7 +33,7 @@ const REJECT_ALL = { necessary: true, analytics: false, marketing: false, person
 const CATEGORIES = [
     { key: 'necessary', label: 'Estritamente necessários', desc: 'Essenciais para o funcionamento do site, navegação e segurança. Não podem ser desativados.', locked: true },
     { key: 'analytics', label: 'Análise e desempenho', desc: 'Cookies que nos ajudam a entender como você usa o site (Google Analytics 4) de forma agregada.' },
-    { key: 'marketing', label: 'Marketing e publicidade', desc: 'Usados para mensurar campanhas e mostrar conteúdos mais relevantes (Meta Pixel, Google Ads).' },
+    { key: 'marketing', label: 'Marketing e publicidade', desc: 'Mensuração de campanhas e conteúdos mais relevantes. Hoje nenhuma ferramenta de marketing está ativa no site.' },
     { key: 'personalization', label: 'Personalização', desc: 'Permitem lembrar suas preferências para uma experiência mais sob medida.' }
 ];
 
