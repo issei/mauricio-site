@@ -11,35 +11,82 @@
 
 - [cv.json](/en/cv.json): Structured curriculum data (JSON format)
 - [star.json](/en/star.json): Structured data of STAR projects (JSON format)
+- [catalogo.md](/en/catalogo.md): Index of all content, by theme, with the nature of each
+- [videos.md](/videos.md): Channel videos, by subject, with description and transcription
 
-## Featured Technical Content
+## Content by theme
 
-Tests and technical proposals. Each item has a clean Markdown (`.md`) version for AI intake. The nature of each content (Experience, Study, Proposal, Experiment or Reference) is in [catalogo.md](/en/catalogo.md).
+Tests, studies and technical proposals, in the same order and with the same text as [catalogo.md](/en/catalogo.md). Each item has a clean Markdown (`.md`) version for AI intake and tells the nature of the content (Experience, Study, Proposal, Experiment or Reference).
 
-- [apresentacao.md](/en/apresentacao.md): **Auditable AI architecture** — Corporate AI governance, software architecture and agent systems: technical complexity translated into auditable decisions.
-- [capacidade-antes-do-acesso.md](/en/capacidade-antes-do-acesso.md): **Capacity Before Access** — teaching competence, pedagogical mediation and governance of the IA in early childhood education and initial fundamental: need, sufficiency and conditionality.
-- [aprendizagem-autorregulada.md](/en/aprendizagem-autorregulada.md): **The Self-regulated Learning Cycle** — what science proves about recovery, spacing, self-explanation and targeted search, with a study protocol of 45–60 min and the reservation that the complete cycle has not been tested as a package.
-- [aprendizagem-autorregulada-artigo.md](/en/aprendizagem-autorregulada-artigo.md): **From summary to new question** — full scientific review: concepts, integrated model, evidence matrix, proven/probable/specific, protocol, study form, self-experiment and 103 references commented.
-- [da-execucao-a-orquestracao.md](/en/da-execucao-a-orquestracao.md): **From execution to orchestration of work** — audio commented on AI and work, with review of 56 statements: what evidence supports, what to correct and three scenarios; the banking case of audio is an offline benchmark, and several numbers have no source.
-- [formulacao-de-problemas.md](/en/formulacao-de-problemas.md): **Problem Formulation** — Formulating is the engineering of the reduction of uncertainty and must stop: six uncertainties, six states of knowledge, stop rule and penalty λ.
-- [especificacao-conversacional.md](/en/especificacao-conversacional.md): **Structured Conversational Specification** — workflow proposed to use AI in eliciting requirements under human authority: five practices, authority matrix, divergence policy and evaluation protocol; proposal, not validated method.
-- [digital-workplace-agentico.md](/en/digital-workplace-agentico.md): **Agentic Digital Workplace** — as a corporate portal evolves into a platform that solves intentions: five stages of maturity, six-layer architecture, AG-UI, delegated identity, governed knowledge and roadmap with passing criteria.
-- [engenharia-confianca.md](/en/engenharia-confianca.md): **Trust Engineering** — Practical implementation of the Intensive Systems Model (ISM) v1.0; 4 module journey from AI-as-magic to AI-as-engineering (Silent Crash, deterministic-first, 98% surety threshold, MCP, A2UI, SDD).
-- [engenharia-agentes-ia.md](/en/engenharia-agentes-ia.md): **AI Agent Engineering** — the principles of determinism: Brain × display, rigid contracts, Insurance Threshold, FinOps per ledger and MCP as border.
-- [acessibilidade.md](/en/acessibilidade.md): **Accessibility as an engineering requirement** — check case of WCAG retrofit 2.2 AA of this site with the protocol A11Y.md and AI agents: real flow, diffs, gate ratchet, independent verification and what has not yet been verified (CONDITIONAL report).
-- [agent-ready.md](/en/agent-ready.md): **Agent Ready** — how to make a website readable, findable and usable by AI agents: header Link (RFC 8288), content trading Markdown, Content Signals, API Catalog (RFC 9727), MCP, Agent Skills, WebMCP and the limits of an Agent Readiness score.
-- [devin.md](/en/devin.md): **Vibe Coding with Devin** — from Executor to Cognitive Orchestrator: Spec-Driven Development, BDD, arsenal Skills/Playbooks/Knowledge and A2UI.
-- [proposta-engenharia-reversa.md](/en/proposta-engenharia-reversa.md): **Reverse Engineering Assisted by AI** — freeze As-Is with Evidence Matrix and Behavior Inventory before modernising.
-- [knowledge-os-presentation.md](/en/knowledge-os-presentation.md): **Knowledge OS Enterprise** — knowledge as cognitive infrastructure governed: GraphRAG, SDD, cognitive observability, FinOps and Reuse Index.
-- [salesforce-agentic-dev.md](/en/salesforce-agentic-dev.md): **Salesforce with AI Agency without technical debit** — SDD, Devin, Flosum CLI and Federated Model.
-- [salesforce-agentic-quickstart.md](/en/salesforce-agentic-quickstart.md): **Quick Start Salesforce + Devin + Flosum** — from zero to deploy governed in < 60 min.
-- [devops-salesforce.md](/en/devops-salesforce.md): **DevOps for Salesforce** — governance (Flosum), code (GitHub) and autonomous speed (Devin) on the same treadmill.
-- [service-operations-2-0.md](/en/service-operations-2-0.md): **Service Operations 2.0** — systemic resilience with automation, AI and agile governance.
-- [sustentacao.md](/en/sustentacao.md): **From Chaos to Resilience** — support of critical systems: incidents, reliability, communication and decision.
-- [socialselling.md](/en/socialselling.md): **SocialSelling** — prospecting with AI built with ADRs/SDDs, SDD-to-Code Loop, determinism and Open World.
-- [proposta-observabilidade-mobile.md](/en/proposta-observabilidade-mobile.md): **RES observability for Mobility** — end visibility with Datadog, Azure and Android Enterprise.
-- [artifice.md](/en/artifice.md): **The Invisible Artificer** — sociological diagnosis of the five paradoxes that make technical mastery invisible in corporations, with self-diagnosis and antidotes.
-- [terminal-evolutivo.md](/en/terminal-evolutivo.md): **Evolutionary Terminal** — the journey of Maurício Issei (1982–2026) in scenes: the craft, the fractures that turned gold and the net that sustains.
+### Agentic engineering
+
+- [Vibe Coding with Devin](/en/devin.md): *Study.* Agentic engineering in practice: Devin as an executor of engineering tasks, from intention to code.
+- [Auditable AI architecture](/en/apresentacao.md): *Reference.* GraphRAG, Spec-Driven Development and DevOps Salesforce in two readings of the same truth: the executive, measured at risk and return; the engineering, in coverage and latency.
+- [Trust Engineering](/en/engenharia-confianca.md): *Study.* From Intention to Agentic execution: four modules that connect Reverse Engineering, Agent Engineering and Vibe Coding — from the chaos of AI-as-magic to the governance of AI-as-engineering.
+- [AI Agent Engineering](/en/engenharia-agentes-ia.md): *Study.* The ten principles that make AI systems reliable: little AI on the critical path, contracts, FinOps and Agent-Driven governance.
+- [Deterministic Grounding](/en/develop-engineering.md): *Study.* How to anchor context, restrict actions and validate agent changes in software without confusing a green result with global correction.
+- [Agent Ready](/en/agent-ready.md): *Experience.* How to make a website readable, findable and usable by AI agents: Link headers, Markdown negotiated, Content Signals, API Catalog, MCP and Agent Skills — with the real code of this domain.
+- [Case Agents](/en/case-agents.md): *Experience.* Queries routing and secure selection of tools in a banking agent: 4-layer pre-execution barrier and Silent Crash control.
+- [Knowledge OS Enterprise](/en/knowledge-os-presentation.md): *Proposal.* The knowledge system that gives AI traceability and security: faster decisions without losing control.
+- [Agentic Digital Workplace](/en/digital-workplace-agentico.md): *Study.* As a corporate portal evolves from a list of links to a platform that solves intentions: five stages of maturity, layered architecture, AG-UI, delegated identity, governed knowledge and roadmap.
+- Theme articles and videos: [/themes/engenharia-agentica.md](/temas/engenharia-agentica.md)
+
+### Management and strategy
+
+- [Navigating in Complexity](/en/know.md): *Study.* The Cynefin Framework and the end of best practices: how to lead innovation and emerging processes in complex environments.
+- [Problem Formulation](/en/formulacao-de-problemas.md): *Study.* Formular is uncertainty reduction engineering — and it needs to stop: six uncertainties, six states of knowledge, stop rule and the hyper-resolution penaltyr.
+- [From execution to orchestration of work](/en/da-execucao-a-orquestracao.md): *Study.* An audio about AI and work, with review of 56 statements: what evidence sustains, what to correct while listening and three scenarios.
+- Theme articles and videos: [/themes/gestao-e-estrategia.md](/temas/gestao-e-estrategia.md)
+
+### Specification and development
+
+- [Structured Conversational Specification](/en/especificacao-conversacional.md): *Proposal.* A workflow proposed to use AI in eliciting requirements under human authority, with traceable divergences between documentation, testing and code — and what has not yet been evaluated.
+- [Boutique Empresarial](/boutique-empresarial-showcase.md): *Experience.* Showcase of static architecture MPA, SDD methodology, multi-model agentic pipeline and deterministic Quality Gate behind a real project.
+- Theme articles and videos: [/themes/especificacao-e-desenvolvimento.md](/temas/especificacao-e-desenvolvimento.md)
+
+### Salesforce and sales
+
+- [DevOps Salesforce](/en/devops-salesforce.md): *Reference.* Agentic continuous delivery: Hybrid architecture uniting Flosum governance, GitHub flexibility and AI speed in the Salesforce ecosystem.
+- [Reverse Engineering Assisted by AI](/en/proposta-engenharia-reversa.md): *Proposal.* System Transformation Salesforce legacy via AI: from inherited code to live specification without manual refactor.
+- [Quick Start: Salesforce + Devin + Flosum](/en/salesforce-agentic-quickstart.md): *Reference.* Step by step to set up the agentic development environment and perform the first deploy governed in record time.
+- [Agent DevOps for Salesforce](/en/salesforce-agentic-dev.md): *Reference.* Spec-Driven Development training portal and autonomous agents for efficient and non-technical development.
+- [SocialSelling](/en/socialselling.md): *Experiment.* Project overview and good practice model for social sales enhanced by AI agents.
+- Theme articles and videos: [/themes/salesforce-e-vendas.md](/temas/salesforce-e-vendas.md)
+
+### Cloud and reliability
+
+- [From Chaos to Resilience](/en/sustentacao.md): *Reference.* Supporting production systems: critical incident management, reliability (SRE) and effective communication in crisis.
+- [Service Operations 2.0](/en/service-operations-2-0.md): *Proposal.* Executive vision of the Manchester Protocol applied to IT, for systemic resilience and protection of commercial billing.
+- [RES observability for Mobility](/en/proposta-observabilidade-mobile.md): *Proposal.* Smart correlation between devices, network and applications using Datadog and Azure.
+- Theme articles and videos: [/themes/cloud-e-confiabilidade.md](/temas/cloud-e-confiabilidade.md)
+
+### Learning and mind
+
+- [Capacity Before Access](/en/capacidade-antes-do-acesso.md): *Study.* Teacher competence, pedagogical mediation and governance of the AI in early childhood education and initial fundamental — necessity, sufficiency and conditionality tested.
+- [Curiosity and Research](/en/curiosidade-e-investigacao.md): *Study.* Information is not knowledge, access is not understanding, recognizing is not mastering: how to transform curiosity into research using AI as a bench, not as an oracle.
+- [The Self-regulated Learning Cycle](/en/aprendizagem-autorregulada.md): *Study.* From abstract to new question: what science proves about recovery, spacing and self-explanation, with a protocol of 45–60 minutes and study form. Full version: [From summary to new question](/en/aprendizagem-autorregulada-artigo.md).
+- Theme articles and videos: [/themes/aprendizagem-e-mente.md](/temas/aprendizagem-e-mente.md)
+
+### Technology and culture
+
+- [The Invisible Artificer](/en/artifice.md): *Study.* The paradox of technical mastery: why sophistication becomes invisible burden — and how to regain the sovereignty of its office.
+- Theme articles and videos: [/themes/tecnologia-e-cultura.md](/temas/tecnologia-e-cultura.md)
+
+### Data and decision-making
+
+- [Operation Cognitive Capital](/en/operacao-capital-cognitivo.md): *Experiment.* IA FinOps executive simulator: investigate the hidden invoice and deduct the Usable Intelligence per Dollar framework (UI/$) defending decisions before a dynamic Council.
+- Theme articles and videos: [/themes/dados-e-decisao.md](/temas/dados-e-decisao.md)
+
+### Accessibility and design
+
+- [Accessibility as an engineering requirement](/en/acessibilidade.md): *Experience.* How A11Y.md entered the development of this site with AI agents: the real flow, the diffs, the ratchet that only lets the debt go down, and what has not been verified yet.
+- Theme articles and videos: [/themes/acessibilidade-e-design.md](/temas/acessibilidade-e-design.md)
+
+### Personal narratives
+
+- [The Journey in Pixel Art](/en/life.md): *Experiment.* Interactive experience counting the personal and professional trajectory from the beginning in 1982 to today.
+- [3D Life](/en/life3d.md): *Experiment.* A contemplative and immersive trip in 3D through the history and memories of Maurício Issei.
+- [Evolutionary Terminal](/en/terminal-evolutivo.md): *Experiment.* The journey from 1982 to 2026 in a narrative that ages as you roll — with STAR cases embedded in the flow.
 
 ---
 
@@ -70,8 +117,8 @@ Tests and technical proposals. Each item has a clean Markdown (`.md`) version fo
 - **3MM+ savings** in the negotiation of Salesforce contracts (2020)
 - **15% increase** in the achievement of commercial goals with Automatic Pipe (2025)
 - **Reduction of SLA from 10 days to real time** in the process of Commercial Grouping (2024)
-- **18 documented projects** with STAR methodology (2018-2025)
-- **8 Certifications in AI & Agent Systems** (2025-2026)
+- **19 documented projects** with STAR methodology (2018-2025)
+- **9 certifications in AI and agentic systems** (2025-2026): 8 O'Reilly Media and 1 StartSe University, all listed with check link in `cv.json` and `cv-for-ai.md`
 
 ---
 
@@ -82,4 +129,5 @@ This profile follows the **llms.txt** standard for AI-optimized documentation:
 1. **For comprehensive CV review**: Read `cv-for-ai.md`
 2. **For practical examples & problem-solving**: Read `career-highlights-star.md`
 3. **For structured data access**: Use `/cv.json` and `/star.json`
-4. **For full context**: See `llms-full.txt` (concatenated version)
+4. **For the list of published content**: Read `catalogo.md`
+5. **For full context**: See `llms-full.txt` (concatenated version)

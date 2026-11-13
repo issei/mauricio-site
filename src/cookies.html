@@ -352,7 +352,7 @@
         <h1>Política de Cookies</h1>
         <span class="version-chip">
             <i class="fa-solid fa-cookie-bite"></i>
-            <strong>v2.0</strong> · atualizada em 08 de maio de 2026
+            <strong>v2.1</strong> · atualizada em 13 de novembro de 2026
         </span>
 
         <p>Esta página detalha, de forma técnica e nominal, todos os cookies e tecnologias similares utilizados em
@@ -404,6 +404,34 @@
                         <td>Persistente</td>
                         <td>Armazena suas preferências de consentimento de cookies</td>
                     </tr>
+                    <tr>
+                        <td><code>eai-progress-v1</code></td>
+                        <td>mauricio.issei.com.br</td>
+                        <td>localStorage</td>
+                        <td>Persistente</td>
+                        <td>Guarda o seu progresso na página Engenharia de Agentes de IA (capítulos abertos e melhor nota do quiz). Calculado no navegador; nada é enviado ao servidor.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ci-simple-mode</code>, <code>ci-anim-off</code></td>
+                        <td>mauricio.issei.com.br</td>
+                        <td>localStorage</td>
+                        <td>Persistente</td>
+                        <td>Lembram o modo simples e a animação desligada na página sobre curiosidade e investigação. Só são gravadas quando você usa esses botões.</td>
+                    </tr>
+                    <tr>
+                        <td><code>mj-muted</code></td>
+                        <td>mauricio.issei.com.br</td>
+                        <td>localStorage</td>
+                        <td>Persistente</td>
+                        <td>Lembra se você desligou o som na página A Jornada em Pixel Art. Só é gravada quando você usa o botão de som.</td>
+                    </tr>
+                    <tr>
+                        <td><code>entrevista-streaming:v1</code>, <code>entrevista-streaming:v1:salvar</code></td>
+                        <td>mauricio.issei.com.br</td>
+                        <td>localStorage</td>
+                        <td>Persistente</td>
+                        <td>Guardam as respostas da entrevista por escrito neste navegador e a escolha de salvar ou não. Você pode desligar o salvamento na própria página; nada é enviado ao servidor.</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -423,38 +451,73 @@
                 <tbody>
                     <tr>
                         <td><code>_ga</code></td>
-                        <td>.mauricio.issei.com.br</td>
+                        <td>.issei.com.br</td>
                         <td>Cookie HTTP</td>
-                        <td>2 anos</td>
+                        <td>400 dias</td>
                         <td>Identificador único de visitante (GA4)</td>
                     </tr>
                     <tr>
                         <td><code>_ga_GEKLHZYVYX</code></td>
-                        <td>.mauricio.issei.com.br</td>
+                        <td>.issei.com.br</td>
                         <td>Cookie HTTP</td>
-                        <td>2 anos</td>
+                        <td>400 dias</td>
                         <td>Estado da sessão GA4 (propriedade específica)</td>
                     </tr>
                     <tr>
                         <td><code>_clck</code></td>
-                        <td>.mauricio.issei.com.br</td>
+                        <td>.issei.com.br</td>
                         <td>Cookie HTTP</td>
                         <td>1 ano</td>
                         <td>Identificador de usuário e preferências do Microsoft Clarity (mapas de calor e gravação de sessão)</td>
                     </tr>
                     <tr>
                         <td><code>_clsk</code></td>
-                        <td>.mauricio.issei.com.br</td>
+                        <td>.issei.com.br</td>
                         <td>Cookie HTTP</td>
                         <td>1 dia</td>
                         <td>Liga as visualizações de página de uma mesma visita no Microsoft Clarity</td>
                     </tr>
                     <tr>
-                        <td><code>_gid</code></td>
-                        <td>.mauricio.issei.com.br</td>
-                        <td>Cookie HTTP</td>
-                        <td>24 horas</td>
-                        <td>Diferenciar usuários no dia</td>
+                        <td><code>CLID</code></td>
+                        <td>www.clarity.ms</td>
+                        <td>Cookie de terceiro</td>
+                        <td>1 ano</td>
+                        <td>Registra a primeira vez que o Microsoft Clarity viu este navegador em qualquer site que usa o Clarity</td>
+                    </tr>
+                    <tr>
+                        <td><code>MUID</code></td>
+                        <td>.clarity.ms e .bing.com</td>
+                        <td>Cookie de terceiro</td>
+                        <td>390 dias</td>
+                        <td>Identificador de navegador da Microsoft usado pelo Clarity</td>
+                    </tr>
+                    <tr>
+                        <td><code>MR</code></td>
+                        <td>.c.clarity.ms e .c.bing.com</td>
+                        <td>Cookie de terceiro</td>
+                        <td>7 dias</td>
+                        <td>Indica se o identificador <code>MUID</code> deve ser renovado</td>
+                    </tr>
+                    <tr>
+                        <td><code>SRM_B</code></td>
+                        <td>.c.bing.com</td>
+                        <td>Cookie de terceiro</td>
+                        <td>390 dias</td>
+                        <td>Identificador de navegador da Microsoft</td>
+                    </tr>
+                    <tr>
+                        <td><code>SM</code></td>
+                        <td>.c.clarity.ms</td>
+                        <td>Cookie de terceiro</td>
+                        <td>Sessão</td>
+                        <td>Sincroniza o identificador <code>MUID</code> entre domínios da Microsoft</td>
+                    </tr>
+                    <tr>
+                        <td><code>ANONCHK</code></td>
+                        <td>.c.clarity.ms</td>
+                        <td>Cookie de terceiro</td>
+                        <td>10 minutos</td>
+                        <td>Indica se o identificador <code>MUID</code> foi transferido para outro cookie da Microsoft</td>
                     </tr>
                 </tbody>
             </table>
@@ -499,11 +562,12 @@
         </div>
 
         <div class="callout">
-            <strong>Última verificação: 16/10/2026</strong>
-            Conferimos os cookies da página inicial depois de aceitar todas as categorias. Apareceram <code>_ga</code>,
-            <code>_ga_GEKLHZYVYX</code>, <code>_clck</code> e <code>_clsk</code>, além da chave <code>consent_v</code> no
-            localStorage. Os cookies de marketing acima (Meta e Google Ads) não apareceram nessa verificação. Ficam
-            listados porque o Google Tag Manager (<code>GTM-KQ9R3GV3</code>) pode ativá-los.
+            <strong>Última verificação: 13/11/2026</strong>
+            Conferimos os cookies da página inicial e da página Carreira depois de aceitar todas as categorias. Apareceram
+            <code>_ga</code>, <code>_ga_GEKLHZYVYX</code>, <code>_clck</code>, <code>_clsk</code> e os cookies de terceiro
+            do Microsoft Clarity listados acima, além da chave <code>consent_v</code> no localStorage. Os cookies de
+            marketing acima (Meta e Google Ads) não apareceram, e o Google Tag Manager (<code>GTM-KQ9R3GV3</code>) não
+            tem tag da Meta nem do Google Ads nesta data.
         </div>
 
         <h2>Como gerenciar suas preferências</h2>

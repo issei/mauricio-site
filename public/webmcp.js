@@ -34,10 +34,15 @@ if (typeof navigator.modelContext !== 'undefined') {
           limit: { type: 'integer', description: 'Number of projects to return' },
         },
       },
-      execute: async ({ limit }) => {
+      execute: async ({ limit } = {}) => {
         const response = await fetch('/star.json');
         const data = await response.json();
-        return limit ? data.slice(0, limit) : data;
+        if (!limit) return data;
+        // star.json é um objeto por ano ({ "2025": [...], ... }), não uma lista:
+        // o limite vale sobre os projetos, do ano mais recente para o mais antigo.
+        return Object.keys(data).sort().reverse()
+          .flatMap((ano) => data[ano].map((projeto) => ({ ano, ...projeto })))
+          .slice(0, limit);
       },
     }, { signal });
   } catch (err) {
