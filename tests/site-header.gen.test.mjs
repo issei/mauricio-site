@@ -59,7 +59,8 @@ test('RF-F1b-03 · área atual de cada tipo de página', () => {
   assert.deepEqual(areaDe('curriculo.html', eco), { id: 'curriculo', atual: 'page' });
   assert.deepEqual(areaDe('catalogo.html', eco), { id: 'catalogo', atual: 'page' });
   assert.deepEqual(areaDe('videos.html', eco), { id: 'videos', atual: 'page' });
-  assert.deepEqual(areaDe('temas/engenharia-agentica.html', eco), { id: 'videos', atual: 'true' });
+  assert.deepEqual(areaDe('temas/engenharia-agentica.html', eco), { id: 'catalogo', atual: 'true' });
+  assert.deepEqual(areaDe('videos/um-video.html', eco), { id: 'videos', atual: 'true' });
   assert.deepEqual(areaDe('life.html', eco), { id: 'curriculo', atual: 'true' });
   assert.deepEqual(areaDe('devin.html', eco), { id: 'catalogo', atual: 'true' });
   assert.equal(areaDe('privacidade.html', eco), null);

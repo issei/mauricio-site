@@ -21,7 +21,10 @@ export const PERSON = {
   '@id': `${SITE.origin}/#author`,
   name: SITE.name,
   url: `${SITE.origin}/`,
-  jobTitle: 'Tech Lead / Arquiteto de Soluções de IA',
+  // Fonte única: o mesmo título que o visitante lê na home e na Carreira. Um
+  // valor digitado aqui divergia do cv.json e publicava dois cargos para a
+  // mesma pessoa no JSON-LD (31 páginas contra 2).
+  jobTitle: CV.Titulo,
   sameAs: [
     'https://www.linkedin.com/in/mauricioissei/',
     'https://github.com/issei',
@@ -41,7 +44,6 @@ export const MACKENZIE = {
 // no e-Diploma (MEC), casando com o link exibido na seção "Formação".
 export const PERSON_PROFILE = {
   ...PERSON,
-  jobTitle: CV.Titulo,
   email: `mailto:${CV.Contato.Email}`,
   sameAs: [...PERSON.sameAs, CV.Contato.instagram],
   worksFor: { '@type': 'Organization', name: CV.Experiencia[0].Empresa },

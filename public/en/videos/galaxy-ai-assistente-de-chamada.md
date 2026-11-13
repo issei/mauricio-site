@@ -48,7 +48,7 @@ Nope. The Call Wizard already comes in the phone app [01:03].
 
 Revised by Maurício Yokoyama Issei on November 12, 2026.
 
-Subjects: [AI Tools](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+Subjects: [AI tools](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
 
 ## About the video
 

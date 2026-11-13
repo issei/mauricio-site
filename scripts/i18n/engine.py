@@ -37,6 +37,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from glossario import ARQUIVO, NOMES as NOMES_GLOSSARIO, em_ingles, segmento_fixo, termos_regex  # noqa: E402
+
 CACHE_DIR = Path(__file__).resolve().parent / ".cache"
 CACHE_FILE = CACHE_DIR / "segments.json"
 
@@ -58,8 +61,16 @@ _SLOT_RE = re.compile(r"zzph(\d+)zz", re.IGNORECASE)
 #: "Mauritius" (o país). A lista é curta e explícita; o nome completo vem antes
 #: do primeiro nome, para não ser cortado.
 NOMES_PROTEGIDOS = ("Maurício Yokoyama Issei", "Mauricio Yokoyama Issei", "Maurício", "Mauricio")
+#:
+#: O glossário (`glossario.py`) entra pelo mesmo caminho: termos que o modelo
+#: erra sempre ("engenharia agêntica" → "Age Engineering") vão como marcador e
+#: voltam já em inglês; nomes ("Rede", a empresa) e arquivos ("llms.txt") voltam
+#: como vieram.
 _SIGLA = re.compile(
-    "|".join(rf"\b{re.escape(n)}\b" for n in NOMES_PROTEGIDOS)
+    termos_regex()
+    + "|" + "|".join(NOMES_GLOSSARIO)
+    + "|" + "|".join(rf"\b{re.escape(n)}\b" for n in NOMES_PROTEGIDOS)
+    + "|" + ARQUIVO
     + r"|\b[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+\b"
 )
 _SIGLA_SLOT = "zzsg{}zz"
@@ -103,6 +114,9 @@ class BaseEngine:
         core = text.strip()
         if not core:
             return text
+        fixo = segmento_fixo(core)
+        if fixo is not None:
+            return f"{prefix}{fixo}{suffix}"
         traduzido = self._traduz_protegendo_siglas(core)
         if not traduzido.strip():
             # O modelo devolveu vazio (acontece com segmento que abre com símbolo/emoji, ex. "▶ Iniciar
@@ -115,7 +129,7 @@ class BaseEngine:
         siglas: list[str] = []
 
         def troca(m: re.Match) -> str:
-            siglas.append(m.group(0))
+            siglas.append(em_ingles(m.group(0), m.start() == 0))
             return _SIGLA_SLOT.format(len(siglas) - 1)
 
         molde = _SIGLA.sub(troca, core)
@@ -133,7 +147,7 @@ class BaseEngine:
         pos = 0
         for m in _SIGLA.finditer(core):
             partes.append(self.translate(core[pos : m.start()]))
-            partes.append(m.group(0))
+            partes.append(em_ingles(m.group(0), m.start() == 0))
             pos = m.end()
         partes.append(self.translate(core[pos:]))
         return "".join(partes)

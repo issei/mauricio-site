@@ -254,7 +254,7 @@
       "@id": "https://mauricio.issei.com.br/en/#author",
       "name": "Maurício Yokoyama Issei",
       "url": "https://mauricio.issei.com.br/en/",
-      "jobTitle": "Tech Lead / AI Solutions Architect",
+      "jobTitle": "Tech Lead | Systems Analysis Specialist",
       "sameAs": [
         "https://www.linkedin.com/in/mauricioissei/",
         "https://github.com/issei",
@@ -384,7 +384,7 @@
           "name": "What is Flosum Cloud Agent for?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It's a Node service. js hosted out of the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized."
+            "text": "It is a Node.js service hosted outside the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized."
           }
         },
         {
@@ -467,7 +467,7 @@ html:root{scroll-padding-top:calc(var(--sh-altura,0px) + 82px)}</style>
         <span class="gradient-text">The Practical Manual for Adopting Devin, Claude and Flosum</span>
       </h1>
       <p class="text-white/70 text-lg lg:text-xl leading-relaxed mb-10">
-        From empty environment to protected deploy: the nine sections below show how to install stack, connect Devin and Claude Code your org, let Flosum take care of the mat and write specs that the AI executes without guessing. Written for those who already know Salesforce and is now beginning in an agency AI streams — developers, technical architects and administrators.
+        From empty environment to protected deploy: the nine sections below show how to install stack, connect Devin and Claude Code your org, let Flosum take care of the mat and write specs that the AI executes without guessing. Written for those who already know Salesforce and is now beginning in flows of agentic AI — developers, technical architects and administrators.
       </p>
 
       <!-- SUMÁRIO DO MANUAL -->
@@ -491,7 +491,7 @@ html:root{scroll-padding-top:calc(var(--sh-altura,0px) + 82px)}</style>
             <ul class="space-y-2 text-white/70">
               <li><a href="#secao-3" class="hover:text-neon-400 transition-colors">3. Depth Architecture: Flosum Cloud Agent</a></li>
               <li><a href="#secao-4" class="hover:text-neon-400 transition-colors">4. The Metadata Pattern: Why Structure Matters For the AI</a></li>
-              <li><a href="#secao-5" class="hover:text-neon-400 transition-colors">5. IC/CD Flow: from Merge to Protected Deploy</a></li>
+              <li><a href="#secao-5" class="hover:text-neon-400 transition-colors">5. Flow of CI/CD: from Merge to Protected Deploy</a></li>
             </ul>
           </div>
           <div>
@@ -814,7 +814,7 @@ sf --version</code></pre>
       <div id="secao-5" class="animated">
         <h3 class="text-2xl font-bold mb-6 text-white flex items-center gap-3">
           <span class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm font-black">5</span>
-          IC/CD Flow: from Merge to Protected Deploy
+          Flow of CI/CD: from Merge to Protected Deploy
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
           After an AI (or a human) opens a Pull Request and it is approved and merged into the integration branch, the automatic flow assumes:
@@ -1010,7 +1010,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
           The Repository As AI Brain
         </h3>
         <p class="text-white/70 leading-relaxed mb-6">
-          A Git repository, for an agency AI, is not just where the code lives — it is the <strong>single long-term memory</strong> She has between sessions. If the business context is not in the repository, it does not exist for the AI. Structure the repository as follows:
+          A Git repository, for a agentic AI, is not just where the code lives — it is the <strong>single long-term memory</strong> She has between sessions. If the business context is not in the repository, it does not exist for the AI. Structure the repository as follows:
         </p>
 
         <div class="code-block p-6 mb-8 border border-purple-400/30">
@@ -1034,7 +1034,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
         </p>
 
         <div class="card-glass rounded-xl p-6 border-l-4 border-l-purple-400 mb-6">
-          <h4 class="text-lg font-bold text-purple-300 mb-2">The AGENTS file. root md:</h4>
+          <h4 class="text-lg font-bold text-purple-300 mb-2">The root AGENTS.md file:</h4>
           <p class="text-white/70 text-sm leading-relaxed mb-3">
             File <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">AGENTS.md</code> deserves special attention: it is no longer a single supplier convention and today is an open standard, maintained by the Agency AI Foundation (Linux Foundation project), natively read by Claude Code, Codex, Cursor, Copilot, Gemini and others. In it, document exact commands (<code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf project deploy validate</code>, <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">sf apex run test --code-coverage</code>), the API version Salesforce in use, and links to folders <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">knowledge-base/</code> and <code class="text-neon-400 bg-black/40 px-1.5 py-0.5 rounded font-mono">playbooks/</code>.
           </p>
@@ -1135,7 +1135,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
       <li><strong>Foundation</strong> — VS Code, Salesforce CLI and JDK 21 in the right order; then IA connected to live org by an MCP Server, not just to files.</li>
       <li><strong>Architecture</strong> — Flosum Cloud Agent translates metadata into Git in both directions; Delta Deployment, Overwrite Protection and Smart Merge protect the target org.</li>
       <li><strong>Methodology</strong> — Spec-Driven Development: You write WHO and WHY. Impact Matrix and Acting Limits cut rework and wasted computing.</li>
-      <li><strong>Governance</strong> — the repository is the long-term memory of the AI: knowledge-base, AGENTS.md, playbooks and skill versions.</li>
+      <li><strong>Governance</strong> — the repository is AI's long-term memory: knowledge-base, AGENTS.md, playbooks and versioned skills.</li>
     </ul>
   </div>
   <div class="aeo-faq">
@@ -1151,7 +1151,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is Flosum Cloud Agent for?</summary>
-      <div class="aeo-faq__a"><p>It's a Node service. js hosted out of the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized.</p></div>
+      <div class="aeo-faq__a"><p>It is a Node.js service hosted outside the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">How to prevent AI from hallucinating paths or breaking a shared org?</summary>
@@ -1165,7 +1165,7 @@ Qual dor específica isso resolve? O que acontece se não for feito?
 </section>
 <!-- AEO-BODY:END -->
 
-  <!-- CONTINUACAO:START --><nav class="cont" aria-labelledby="cont-label" style="max-width:72rem;margin:3rem auto;padding:0 1.25rem;text-align:left"><p id="cont-label" style="margin:0 0 .5rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase">If this theme interests you</p><ul style="margin:0;padding-left:1.1rem;display:grid;gap:.45rem;line-height:1.6"><li><a href="./proposta-engenharia-reversa.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Reverse Engineering Assisted by AI</a> <span style="display:block;font-size:.88rem">Also in Salesforce and sales and engineering agency.</span></li><li><a href="./socialselling.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">SocialSelling</a> <span style="display:block;font-size:.88rem">Also in Salesforce and sales and engineering agency.</span></li></ul></nav><!-- CONTINUACAO:END -->
+  <!-- CONTINUACAO:START --><nav class="cont" aria-labelledby="cont-label" style="max-width:72rem;margin:3rem auto;padding:0 1.25rem;text-align:left"><p id="cont-label" style="margin:0 0 .5rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase">If this theme interests you</p><ul style="margin:0;padding-left:1.1rem;display:grid;gap:.45rem;line-height:1.6"><li><a href="./proposta-engenharia-reversa.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Reverse Engineering Assisted by AI</a> <span style="display:block;font-size:.88rem">Also in Salesforce and sales and Agentic engineering.</span></li><li><a href="./socialselling.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">SocialSelling</a> <span style="display:block;font-size:.88rem">Also in Salesforce and sales and Agentic engineering.</span></li></ul></nav><!-- CONTINUACAO:END -->
 </main>
 <footer class="border-t border-white/5 py-10 bg-navy-900">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">

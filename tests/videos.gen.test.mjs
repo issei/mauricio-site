@@ -172,6 +172,16 @@ test('página de assunto e índice listam os vídeos, do mais recente ao mais an
   }
 });
 
+test('lista usa a miniatura de 320 px, não a de 1280 px, para uma imagem exibida com 168 px', () => {
+  const out = build(fixture());
+  const imgs = out['src/videos.html'].match(/<img [^>]*>/g) ?? [];
+  assert.ok(imgs.length > 0);
+  for (const img of imgs) {
+    assert.match(img, /\/mqdefault\.jpg"/);
+    assert.match(img, /loading="lazy"/);
+  }
+});
+
 test('assunto lista os artigos do site com o tema antes dos vídeos (F5a)', () => {
   const artigo = { titulo: 'Um artigo', href: '/um-artigo.html', natureza: 'Estudo', formato: 'Ensaio', descricao: 'Sobre agentes.', temas: ['engenharia-agentica'] };
   const out = build(fixture(), { artigos: [artigo] });
