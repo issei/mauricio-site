@@ -411,3 +411,18 @@ print(d.translate('sobre engenharia agêntica hoje'))
   assert.match(l[7], /Dispositivo, Rede, Identidade/);
   assert.equal(l[8], 'sobre agentic engineering hoje', 'sem marcador de volta, a contingência ainda usa o glossário');
 });
+
+test('link relativo para página sem gêmeo em inglês leva à versão em português, não a um 404', { skip: !temPython }, () => {
+  const py = `
+import sys
+sys.path.insert(0, 'scripts/i18n')
+from links import rewrite_route as r
+print(r('./boutique-empresarial-showcase.html#a', relative_base='src/en'))
+print(r('./devin.html', relative_base='src/en'))
+`;
+  const res = spawnSync(PY, ['-c', py], { cwd: ROOT, encoding: 'utf-8', env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' } });
+  assert.equal(res.status, 0, res.stderr);
+  const [semGemeo, comGemeo] = res.stdout.trim().split(/\r?\n/);
+  assert.equal(semGemeo, '../boutique-empresarial-showcase.html#a');
+  assert.equal(comGemeo, './devin.html', 'irmão traduzido continua na mesma pasta');
+});
