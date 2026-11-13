@@ -1,6 +1,6 @@
 # Termos de Uso
 
-> Versão Markdown de <https://mauricio.issei.com.br/termos>. v2.1 · atualizada em 11 de novembro de 2026. O texto com valor normativo é a página HTML.
+> Versão Markdown de <https://mauricio.issei.com.br/termos>. v2.2 · atualizada em 13 de novembro de 2026. O texto com valor normativo é a página HTML.
 
 Regulam o acesso e o uso de mauricio.issei.com.br e dos serviços oferecidos por Maurício Yokoyama Issei. Navegar ou interagir com o site implica concordar com estes Termos.
 
@@ -8,17 +8,17 @@ Regulam o acesso e o uso de mauricio.issei.com.br e dos serviços oferecidos por
 
 - O site é informativo: portfólio profissional, propostas de consultoria e conteúdo educacional.
 - Copiar, reproduzir ou redistribuir o conteúdo exige autorização escrita.
-- Comunicações por WhatsApp e e-mail dependem de opt-in e podem ser canceladas a qualquer momento.
+- O contato é por e-mail, quando você nos escreve, e você pode pedir para não receber mais mensagens a qualquer momento.
 - Conteúdo gerado por IA é identificado; decisões com efeito sobre o usuário passam por revisão humana.
 - Foro: São Paulo/SP, ressalvado o direito do consumidor de escolher o foro do seu domicílio.
 
 ## Objeto
 
-Portfólio, currículo dinâmico e propostas técnicas; conteúdo educacional; formulários de contato e aplicação para consultoria; ferramentas interativas, inclusive com IA generativa. **Não é** aconselhamento jurídico, contábil, tributário ou financeiro vinculativo, e o uso não gera vínculo empregatício.
+Portfólio, currículo dinâmico e propostas técnicas; conteúdo educacional; contato por e-mail para propostas de consultoria; ferramentas interativas que funcionam no navegador. **Não é** aconselhamento jurídico, contábil, tributário ou financeiro vinculativo, e o uso não gera vínculo empregatício.
 
 ## Capacidade e contas
 
-Formulários, contratações e qualquer relação com dados pessoais exigem capacidade civil plena (≥ 18 anos) ou representação.
+Contratações e qualquer relação com dados pessoais exigem capacidade civil plena (≥ 18 anos) ou representação.
 
 ## Conduta vedada
 
@@ -28,20 +28,20 @@ Scraping em massa ou automação que sobrecarregue a infraestrutura; engenharia 
 
 Textos, imagens, vídeos, áudios, código, marcas, slides e design são protegidos pelas Leis 9.610/1998 e 9.279/1996. Reprodução, distribuição, modificação ou exploração comercial dependem de autorização prévia e escrita.
 
-- **`cv.json` público:** pode ser consumido por agentes automatizados (ATS, IAs de busca) exclusivamente para avaliação profissional. Redistribuição comercial e treinamento de modelos exigem consentimento explícito.
+- **`cv.json` público (publicado em `/cv.json`):** pode ser consumido por agentes automatizados (ATS, IAs de busca) exclusivamente para avaliação profissional. Redistribuição comercial e treinamento de modelos exigem consentimento explícito.
 - **Notice & takedown:** notificações de direito autoral para mauricio@issei.com.br (assunto "DMCA / Direitos Autorais"), com identificação da obra, prova de titularidade, localização do conteúdo e declaração de boa-fé.
 
 ## Conteúdo do usuário
 
 Não há áreas públicas de comentário ou upload. Se houver, o autor garante a titularidade e concede licença não exclusiva para exibição no site, sob moderação compatível com o Digital Services Act (UE 2022/2065).
 
-## Comunicação e WhatsApp
+## Comunicação eletrônica
 
-Formulários autorizam comunicações por e-mail ou WhatsApp (API oficial do WhatsApp Business) relacionadas à solicitação. Opt-out: responder **SAIR** ou usar o link de descadastramento.
+O site não tem formulário de contato. Quem escreve por e-mail recebe resposta pelo mesmo canal sobre a solicitação. Opt-out: responder pedindo para não receber mais mensagens.
 
 ## Inteligência artificial
 
-Funcionalidades com LLMs (ex.: demonstrações do Knowledge OS) seguem o EU AI Act: conteúdo gerado por IA é rotulado, pode ser impreciso e deve ser validado, e decisões com efeito sobre o usuário não são tomadas só por IA (LGPD, art. 20).
+Hoje nenhuma funcionalidade do site usa LLMs para responder ao usuário. Se alguma passar a usar, segue o EU AI Act: conteúdo gerado por IA é rotulado, pode ser impreciso e deve ser validado, e decisões com efeito sobre o usuário não são tomadas só por IA (LGPD, art. 20).
 
 ## Pagamentos
 

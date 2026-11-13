@@ -30,11 +30,8 @@ Lista, de forma técnica e nominal, os cookies e tecnologias similares (local st
 | `SRM_B` | .c.bing.com | cookie de terceiro | 390 dias | Identificador de navegador da Microsoft |
 | `SM` | .c.clarity.ms | cookie de terceiro | sessão | Sincroniza o identificador `MUID` entre domínios da Microsoft |
 | `ANONCHK` | .c.clarity.ms | cookie de terceiro | 10 minutos | Indica se o identificador `MUID` foi transferido para outro cookie da Microsoft |
-| `_fbp` | .mauricio.issei.com.br | cookie HTTP | 90 dias | Identificador do navegador (Meta Pixel) para mensuração e remarketing |
-| `fr` | .facebook.com | cookie de terceiro | 90 dias | Direcionamento de anúncios da Meta |
-| `_gcl_au` | .mauricio.issei.com.br | cookie HTTP | 90 dias | Atribuição de conversão Google Ads |
 
-Última verificação em 13/11/2026, depois de aceitar todas as categorias: apareceram os cookies de GA4 e do Microsoft Clarity acima; os de marketing (Meta e Google Ads) não apareceram, e o Google Tag Manager não tem tag da Meta nem do Google Ads nesta data. A lista é revisada após cada mudança em ferramentas de terceiros. Inconsistências podem ser informadas ao DPO.
+Última verificação em 13/11/2026, depois de aceitar todas as categorias: apareceram os cookies de GA4 e do Microsoft Clarity acima; nenhum cookie de marketing apareceu, e o Google Tag Manager só tem a tag do Microsoft Clarity nesta data. O site não carrega Meta Pixel nem Google Ads; a categoria Marketing fica no banner para que nenhuma ferramenta seja ligada sem consentimento. A lista é revisada após cada mudança em ferramentas de terceiros. Inconsistências podem ser informadas ao DPO.
 
 ## Como gerenciar as preferências
 
