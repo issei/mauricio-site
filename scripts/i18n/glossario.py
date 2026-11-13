@@ -75,6 +75,10 @@ SEGMENTOS: dict[str, str] = {
     "Atender a solicitação": "Handle the request",
     "Titular:": "Data subject:",
     "Oposição": "Objection",
+    # HTML corta o segmento na tag inline: "É <strong>vedada</strong> a reprodução"
+    # manda "É" sozinho, que voltava "Yeah.".
+    "É": "It is",
+    "vedada": "prohibited",
     "Conduta vedada": "Prohibited conduct",
     "sessão": "session",
     "Ícone 🍪 no canto inferior esquerdo reabre as preferências a qualquer momento.":
@@ -85,6 +89,8 @@ SEGMENTOS: dict[str, str] = {
 REGRAS: list[tuple[re.Pattern[str], object]] = [
     (re.compile(r"^(\d+) conteúdos?$"), lambda m: f"{m.group(1)} item" + ("" if m.group(1) == "1" else "s")),
     (re.compile(r"^(\d+) vídeos?$"), lambda m: f"{m.group(1)} video" + ("" if m.group(1) == "1" else "s")),
+    # "o <code>cv.json</code> é publicado no próprio site": o "é" isolado voltava "Yeah.".
+    (re.compile(r"^é\s+publicado no próprio site\.$"), lambda m: "is published on the site itself."),
 ]
 
 #: Expressão dentro da frase → inglês. A chave é casada sem diferenciar
@@ -121,6 +127,9 @@ TERMOS: dict[str, str] = {
     "foro": "jurisdiction",
     "Comarca": "judicial district",
     "o titular": "the data subject",
+    "do titular": "of the data subject",
+    "ao titular": "to the data subject",
+    "como titular": "as a data subject",
     "titulares": "data subjects",
     "Encarregado": "Data Protection Officer",
     "oposição ao legítimo interesse": "objection to processing based on legitimate interest",

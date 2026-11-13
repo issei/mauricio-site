@@ -437,10 +437,16 @@ for t in ['O acesso pode ser suspenso em caso de violação.', 'Conduta vedada',
           '_ga_GEKLHZYVYX', 'escreva para mauricio@issei.com.br', 'Garante ser titular da obra']:
     print(e.translate(t))
 print('|'.join(e.vistos))
+import markdown_tx
+m = G()
+print(markdown_tx.translate_markdown('| \x60_ga_GEKLHZYVYX\x60 | GA4 |', m) + ' || ' + '#'.join(m.vistos))
 `;
   const res = spawnSync(PY, ['-c', py], { cwd: ROOT, encoding: 'utf-8', env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' } });
   assert.equal(res.status, 0, res.stderr);
   const l = res.stdout.trim().split(/\r?\n/);
+  const [tabela, enviados] = l[8].split(' || ');
+  assert.equal(tabela, '| `_ga_GEKLHZYVYX` | GA4 |');
+  assert.doesNotMatch(enviados, /GEKL|\bga\b/, 'o _ de código inline não é ênfase: o nome do cookie não vai ao modelo');
   assert.equal(l[0], 'O acesso pode ser suspenso in case of breach.');
   assert.equal(l[1], 'Prohibited conduct');
   assert.equal(l[2], 'segue o EU AI Act e o DPO');
