@@ -622,7 +622,10 @@ ${artigos.map(itemArtigo).join('\n')}
 <h2>Vídeos</h2>
 `
     : '';
-  const corpo = `<p class="crumb"><a href="/videos">Vídeos</a></p>
+  // A página de assunto reúne artigos e vídeos do site e é alcançada pela home
+  // e pelo catálogo; por isso a trilha leva a Conteúdos, não ao índice de vídeos
+  // (o cabeçalho marca a mesma área, ver areaDe em scripts/gen-cabecalho.mjs).
+  const corpo = `<p class="crumb"><a href="/catalogo">Conteúdos</a></p>
 <h1>${esc(tema.nome)}</h1>
 ${tema.resumo ? `<p>${esc(tema.resumo)}</p>` : ''}
 ${blocoArtigos}<p class="meta">${contagem(lista.length, 'vídeo', 'vídeos')}</p>

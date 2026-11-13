@@ -15,6 +15,8 @@ Quando a IA acelera a produção de resultados mais do que a capacidade de verif
 
 Áudio comentado · Trabalho e IA
 
+Natureza: Estudo
+
 ### Da execução à orquestração do trabalho
 
 Quando a IA acelera a produção de resultados mais do que a capacidade de verificá-los e integrá-los, o gargalo do trabalho passa para a especificação, a verificação e a coordenação. O ganho de produtividade depende de como a equipe organiza essas etapas.
@@ -51,7 +53,7 @@ Que todo profissional precisa se tornar orquestrador de IA, ou que a execução 
 
 O áudio foi gerado por IA no NotebookLM, do Google, a partir dos vídeos do [canal do autor no YouTube](https://www.youtube.com/@MauricioIssei). É uma conversa entre duas vozes sintéticas. Ele tem uma boa ideia central e vários números errados ou sem fonte. Esta página corrige o que o áudio afirma além da evidência. As correções principais estão na tabela "Principais correções do áudio".
 
-Texto revisado de 56 afirmações do áudio. Leitura de cerca de 13 minutos.
+Texto revisado de 56 afirmações do áudio. A leitura completa leva cerca de 17 minutos; a conclusão leva um minuto.
 
 Guia de escuta
 
@@ -225,6 +227,11 @@ A numeração segue a bibliografia do registro da pesquisa, para que cada fonte 
 ##### Auditoria completa
 
 A auditoria das 56 afirmações, com a matriz de evidências, a bibliografia comentada e as lacunas, está no repositório do site: [pesquisa crítica (Markdown, GitHub)](https://github.com/issei/mauricio-site/blob/main/docs/specs/pages/da-execucao-a-orquestracao/00_pesquisa-critica.md). O [histórico de versões](https://github.com/issei/mauricio-site/commits/main/docs/specs/pages/da-execucao-a-orquestracao) mostra cada mudança no texto.
+
+Se este tema interessa a você
+
+- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) Também em Engenharia agêntica e Gestão e estratégia.
+- [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) Também em Engenharia agêntica e Gestão e estratégia.
 
 
 ## Perguntas frequentes

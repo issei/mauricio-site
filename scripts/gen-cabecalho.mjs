@@ -50,7 +50,11 @@ export function areaDe(rel, eco) {
     if (!e.file.startsWith('/') && e.file === rel) return { id: e.id, atual: 'page' };
     if (e.file.startsWith('/') && e.file.slice(1) === rel) return { id: e.id, atual: 'page' };
   }
-  if (rel.startsWith('temas/') || rel.startsWith('videos/')) return { id: 'videos', atual: 'true' };
+  // Assunto (temas/) é descoberta de conteúdo: lista artigos do site antes dos
+  // vídeos e é alcançada pela home e pelo catálogo. Fica em Conteúdos; só a
+  // página de um vídeo fica em Vídeos.
+  if (rel.startsWith('temas/')) return { id: 'catalogo', atual: 'true' };
+  if (rel.startsWith('videos/')) return { id: 'videos', atual: 'true' };
   if (eco.trajetoria.includes(slug)) return { id: 'curriculo', atual: 'true' };
   if (eco.nodes[slug]?.pillar) return { id: 'catalogo', atual: 'true' };
   return null;

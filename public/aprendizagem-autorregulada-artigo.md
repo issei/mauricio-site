@@ -15,6 +15,8 @@ O processo é melhor descrito como um ciclo iterativo de investigação e aprend
 
 Revisão científica · Aprendizagem autorregulada
 
+Natureza: Estudo
+
 ### Do resumo à nova pergunta: o que a ciência permite afirmar sobre busca, aprendizagem, recuperação e explicação
 
 Maurício Yokoyama Issei · 103 referências comentadas · ~40 min de leitura
@@ -262,7 +264,7 @@ O modelo abaixo é uma **representação de trabalho**, não uma teoria ou nomen
 
 ###### Nível comportamental
 
-O que pode ser observado é que, em algumas condições, recuperar e depois explicar se associa ou causa melhora em recordação, compreensão, integração ou transferência. Estudos de autoexplicação e elaboração apoiam ganhos comportamentais, mas esses ganhos também podem resultar de recuperação mais profunda, nova codificação, organização relacional, feedback ou prática adicional [46–53]. Em paradigmas de memória, um lembrete seguido de informação nova pode aumentar intrusões, integração ou atualização [78, 79]. **Isso demonstra mudança de desempenho, não reconsolidação como mecanismo.**
+O que pode ser observado é que, em algumas condições, recuperar e depois explicar se associa a melhora em recordação, compreensão, integração ou transferência, ou causa essa melhora. Estudos de autoexplicação e elaboração apoiam ganhos comportamentais, mas esses ganhos também podem resultar de recuperação mais profunda, nova codificação, organização relacional, feedback ou prática adicional [46–53]. Em paradigmas de memória, um lembrete seguido de informação nova pode aumentar intrusões, integração ou atualização [78, 79]. **Isso demonstra mudança de desempenho, não reconsolidação como mecanismo.**
 
 ###### Nível cognitivo
 
@@ -393,7 +395,7 @@ Compare com as fontes, corrija em outra cor e gere uma questão de aplicação. 
 - **Curiosidade alta e resposta recuperável:** transforme-a em pergunta e teste tardio; não prolongue a busca sem critério de parada.
 - **Explicação fluente e recuperação fraca:** trate como possível fluência ou ilusão; volte à recuperação.
 - **Muitas fontes e pouca transferência:** pare de coletar, formule problemas e aplicações diferentes.
-- **Falha de recuperação:** ofereça feedback, reestude o elo mínimo e espaçe uma nova tentativa.
+- **Falha de recuperação:** ofereça feedback, reestude o elo mínimo e espace uma nova tentativa.
 
 #### Ficha de estudo
 
@@ -643,6 +645,11 @@ As referências abaixo consolidam as fontes citadas. O comentário resume sua fu
 101. **Scardamalia, M., & Bereiter, C. (2006).** *Knowledge Building: Theory, Pedagogy, and Technology*. In R. K. Sawyer, The Cambridge Handbook of the Learning Sciences, 97–118. URL: [https://ikit.org/fulltext/2006_KBTheory.pdf](https://ikit.org/fulltext/2006_KBTheory.pdf). — Modelo organizador de avanço comunitário; não garante aprendizagem individual.
 102. **Panadero, E. (2017).** *A Review of Self-Regulated Learning: Six Models and Four Directions for Research*. Frontiers in Psychology, 8, 422. DOI: [https://doi.org/10.3389/fpsyg.2017.00422](https://doi.org/10.3389/fpsyg.2017.00422). — Oferece modelos de autorregulação para organizar monitoramento e controle.
 103. **Tinajero, C., Mayo, M. E., Villar, E., & Martínez-López, Z. (2024).** *Classic and Modern Models of Self-Regulated Learning: Integrative and Componential Analysis*. Frontiers in Psychology, 15, 1307574. DOI: [https://doi.org/10.3389/fpsyg.2024.1307574](https://doi.org/10.3389/fpsyg.2024.1307574). — Analisa componentes e modelos contemporâneos de aprendizagem autorregulada.
+
+Se este tema interessa a você
+
+- [Capacidade Antes do Acesso](https://mauricio.issei.com.br/capacidade-antes-do-acesso) Também em Aprendizagem e mente.
+- [Curiosidade e Investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao) Também em Aprendizagem e mente.
 
 
 ## Perguntas frequentes

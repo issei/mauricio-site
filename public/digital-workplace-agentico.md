@@ -27,6 +27,8 @@ Por uma jornada piloto de alto volume e baixo risco, com seis fases de critério
 
 Digital Workplace agêntico
 
+Natureza: Estudo
+
 ### Do portal que apresenta à plataforma que resolve
 
 Quem conduz um portal corporativo de grande porte ouve dois pedidos que se contradizem: “coloque um agente de IA na frente de tudo” e “primeiro arrume a casa”. Este estudo mostra, camada por camada, o que precisa existir antes de um agente agir em nome de um colaborador — e o que acontece quando alguma dessas camadas é pulada.
@@ -1964,6 +1966,11 @@ O núcleo comum, para todos, é: o problema, a escala de maturidade, o modelo de
 3. Consolidar numa matriz de responsabilidades entre papéis (a tabela de doze lentes serve de ponto de partida).
 4. Identificar conflitos e resolvê-los com os padrões de trade-offs.
 5. Posicionar a jornada no modelo de maturidade e definir a próxima fase do roadmap.
+
+Se este tema interessa a você
+
+- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) Também em Engenharia agêntica e Gestão e estratégia.
+- [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao) Também em Gestão e estratégia e Engenharia agêntica.
 
 
 ## Perguntas frequentes
