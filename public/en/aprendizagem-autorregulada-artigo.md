@@ -16,6 +16,8 @@ The process is best described as an iterative cycle of self-regulated research a
 
 Scientific review · Self-regulated learning
 
+Nature: Study
+
 ### From abstract to new question: what science allows us to affirm about search, learning, recovery and explanation
 
 Maurício Yokoyama Issei · 103 comments · ~40 min reading
@@ -263,7 +265,7 @@ The model below is a **representation of work**, not a new theory or nomenclatur
 
 ###### Behavioral level
 
-What can be observed is that, in some conditions, recover and then explain whether it associates or causes improvement in memory, understanding, integration or transference. Self-explanation and elaboration studies support behavioral gains, but these gains can also result from deeper recovery, new coding, relational organization, feedback or additional practice [46–53]. In memory paradigms, a reminder followed by new information can increase intrusions, integration or update [78, 79]. **This demonstrates performance change, not consolidation as a mechanism.**
+What can be observed is that, in some conditions, recover and then explain whether it associates improvement in memory, understanding, integration or transference, or causes this improvement. Self-explanation and elaboration studies support behavioral gains, but these gains can also result from deeper recovery, new coding, relational organization, feedback or additional practice [46–53]. In memory paradigms, a reminder followed by new information can increase intrusions, integration or update [78, 79]. **This demonstrates performance change, not consolidation as a mechanism.**
 
 ###### Cognitive level
 
@@ -394,7 +396,7 @@ Compare with the fonts, correct in another color and generate an application iss
 - **High curiosity and recoverable response:** turn it into question and late test; do not prolong the search without stopping criteria.
 - **Fluent explanation and poor recovery:** treat as possible fluency or illusion; return to recovery.
 - **Many sources and little transfer:** Stop collecting, formulate different problems and applications.
-- **Recovery failure:** offer feedback, re-estue the minimum link and space a new attempt.
+- **Recovery failure:** offer feedback, reset the minimum link and espace a new attempt.
 
 #### Study sheet
 
@@ -644,6 +646,11 @@ The references below consolidate the sources cited. The comment summarizes its f
 101. **Scardamalia, M., & Bereiter, C. (2006).** *Knowledge Building: Theory, Pedagogy, and Technology*. In R. K. Sawyer, The Cambridge Handbook of the Learning Sciences, 97–18. URL: [https://ikit.org/fulltext/2006_KBTheory.pdf](https://ikit.org/fulltext/2006_KBTheory.pdf). — Organizing model of Community progress; it does not guarantee individual learning.
 102. **Panadero, E. (2017).** *A Review of Self-Regulated Learning: Six Models and Four Directions for Research*. Frontiers in Psychology, 8, 422. DOI: [https://doi.org/10.3389/fpsyg.2017.00422](https://doi.org/10.3389/fpsyg.2017.00422). — Offers self-regulation models to organize monitoring and control.
 103. **Tinajero, C., Mayo, M. E., Villar, E., & Martínez-López, Z. (2024).** *Classic and Modern Models of Self-Regulated Learning: Integrative and Componential Analysis*. Frontiers in Psychology, 15, 1307574. DOI: [https://doi.org/10.3389/fpsyg.2024.1307574](https://doi.org/10.3389/fpsyg.2024.1307574). — Analyzes contemporary self-regulated learning components and models.
+
+If this theme interests you
+
+- [Capacity Before Access](https://mauricio.issei.com.br/en/capacidade-antes-do-acesso) Also in Learning and Mind.
+- [Curiosity and Research](https://mauricio.issei.com.br/en/curiosidade-e-investigacao) Also in Learning and Mind.
 
 
 ## Frequently Asked Questions

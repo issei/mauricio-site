@@ -480,6 +480,11 @@ It is the same logic of other pages of the method on this site: autonomy proport
 
 It was written under the same rules: Native HTML, no specific JavaScript of this page (only the shared ecosystem menu), full content without script and measured by the same turnstile. Before the publication, an agent in a new context, who received only A11Y.md and the page, audited accessibility, and another verified each statement against the repository. The result is on [current version of REPORT.md](https://github.com/issei/mauricio-site/blob/main/REPORT.md).
 
+If this theme interests you
+
+- [Agent Ready](https://mauricio.issei.com.br/en/agent-ready) Also of nature Experience.
+- [Case Agents](https://mauricio.issei.com.br/en/case-agents) Also of nature Experience.
+
 
 ## Frequently Asked Questions
 
