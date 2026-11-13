@@ -55,7 +55,7 @@ Design Thinking
 ## Professional Experience
 
 ### Tech Lead **Rede**
-**February 2018 – Present (7 years)** JUNE 29 - 24
+**February 2018 – Present** JUNE 29 - 24
 
 Technical leader responsible for solutions on the platform **Salesforce**with integration architectures **on-premise** and **AWS**. Acting on the definition and development of best practices, strengthening the corporate knowledge base with a focus on customer needs.
 
@@ -145,6 +145,7 @@ Emphasis on Logistics and Supply Chain
 ### AI & Agent Systems (2025-2026)
 - **AI in Product Management** | O'Reilly Media | [Check](https://www.credly.com/badges/3a1c354d-cc5a-4ee5-85b5-d270d9487a51)
 - **MCP Developer Blueprint** | O'Reilly Media | [Check](https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8)
+- **GitHub Copilot Guide** | O'Reilly Media | [Check](https://www.credly.com/badges/116915b5-f94e-4d73-8e5f-9793766be71c)
 - **AI Agency Design Patterns** | O'Reilly Media | [Check](https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07)
 - **AI with Knowledge Graphs** | O'Reilly Media | [Check](https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7)
 - **Building Intelligent AI Agents** | O'Reilly Media | [Check](https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259)
@@ -161,6 +162,7 @@ Emphasis on Logistics and Supply Chain
 - **Practicer – Leadership D&A** ♪ Itaú Unibanco ♪ [Check](https://www.credly.com/badges/a8dad682-bc42-4978-b085-ae720cbd8667)
 - **Practitioner – Generative AI** ♪ Itaú Unibanco ♪ [Check](https://www.credly.com/badges/231cd871-ab40-4c65-8834-e9ca77792f56)
 - **Practicer – D&A Foundation** ♪ Itaú Unibanco ♪ [Check](https://www.credly.com/badges/1f596ad2-9834-45b7-99f0-298eddd56cb7)
+- **Practicer – D&A Foundation** ♪ Itaú Unibanco ♪ [Check](http://badges.com.br/share/96939e18d6e0d41488339e14dc93d614.php?a=3694)
 
 ### Cloud & Infrastructure (2021-2022)
 - **AWS Certified Cloud Practitioner** | Amazon Web Services | [Check](https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951)

@@ -1355,7 +1355,7 @@ different about <em>action</em>. The table summarizes; the cards detail those re
                 <td><code>webMcp</code></td>
                 <td><a href="https://github.com/webmachinelearning/webmcp" target="_blank" rel="noopener">WebMCP</a></td>
                 <td>What actions can I perform without leaving the page?</td>
-                <td><code>src/index.html</code></td>
+                <td><a href="/webmcp.js">/webmcp.js</a></td>
               </tr>
             </tbody>
           </table>
@@ -1522,7 +1522,7 @@ No <code>navigator.modelContext</code>Nothing happens and the page is identical.
               <div class="ar-code">
                 <div class="ar-code__head">
                   <span class="ar-tag ar-tag--real">Real code of this site</span>
-                  <span class="ar-code__path">src/index.html</span>
+                  <span class="ar-code__path">public/webmcp.js</span>
                 </div>
                 <pre><code>if (typeof navigator.modelContext !== 'undefined') {
     const controller = new AbortController();
@@ -1530,7 +1530,7 @@ No <code>navigator.modelContext</code>Nothing happens and the page is identical.
 
     navigator.modelContext.registerTool({
         name: 'get_cv_data',
-        description: 'Retrieve the full structured curriculum vitae in JSON format.',
+        description: 'Retrieve the full structured curriculum vitae of Maurício Issei in JSON format.',
         inputSchema: { type: 'object', properties: {} },
         execute: async () =&gt; {
             const response = await fetch('/cv.json');
