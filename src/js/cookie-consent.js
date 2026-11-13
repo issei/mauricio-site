@@ -197,10 +197,19 @@ function injectStyles() {
 .cc-fab:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,123,255,0.3); }
 .cc-sr-only { position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 
+/*
+ * Celular: em coluna, o flex-basis de 320px do texto virava ALTURA e abria um
+ * vão vazio de ~200px — o banner cobria 64% de uma tela de 844px. O texto passa
+ * a ocupar só a própria altura, e Recusar/Aceitar dividem uma linha, com o
+ * mesmo tamanho (nenhuma das duas escolhas fica mais fácil que a outra).
+ */
 @media (max-width: 640px) {
-    .cc-banner-inner { flex-direction: column; align-items: stretch; }
+    .cc-banner { padding: 16px; }
+    .cc-banner-inner { flex-direction: column; align-items: stretch; gap: 16px; }
+    .cc-banner-text { flex: 0 0 auto; font-size: .9rem; line-height: 1.5; }
     .cc-actions { justify-content: stretch; }
-    .cc-actions .cc-btn { flex: 1 1 100%; }
+    .cc-actions .cc-btn { flex: 1 1 calc(50% - 5px); padding: 10px 12px; }
+    .cc-actions .cc-btn-customize { flex-basis: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
     .cc-banner { animation: none; }
