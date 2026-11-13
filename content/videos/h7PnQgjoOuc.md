@@ -36,7 +36,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/h7PnQgjoOuc/maxresdefault.jpg
   visualizacoes: 21
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - http://www.youtube.com/watch?v=h7PnQgjoOuc
     - http://googleusercontent.com/youtube_content/0

@@ -34,7 +34,7 @@ youtube:
   visualizacoes: 13
   playlists:
     - Arquitetura da Cognição
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.youtube.com/watch?v=m69fzdS-EG0
   coletado_em: 2026-11-07T22:16:07Z

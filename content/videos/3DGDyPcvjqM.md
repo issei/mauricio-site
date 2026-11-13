@@ -85,7 +85,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/3DGDyPcvjqM/maxresdefault.jpg
   visualizacoes: 26
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://www.datadoghq.com/blog/alert-fatigue-what-it-is-and-how-to-prevent-it/`
     - https://www.datadoghq.com/blog/aligning-sre-security-incident-response/`

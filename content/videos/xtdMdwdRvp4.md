@@ -64,7 +64,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/xtdMdwdRvp4/maxresdefault.jpg
   visualizacoes: 21
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---

@@ -22,7 +22,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/ODuuUBUbUBI/maxresdefault.jpg
   visualizacoes: 12
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://aws.amazon.com/pt/blogs/devops/how-cloudformation-express-mode-accelerates-your-development-cycle/
     - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-express-mode.html

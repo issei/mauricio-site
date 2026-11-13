@@ -39,6 +39,7 @@ youtube:
     - https://www.youtube.com/results?search_query=Foi+assim+que+eu+turbinei+minhas+IA%27s+Gio+Mangoni
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## As configurações que quase ninguém usa
 
 Muita gente usa ferramentas de IA todo dia sem saber que existe uma camada de configurações por trás [00:00]. A diferença aparece no exemplo do Gemini: sem configuração, ele não sabe quem você é; configurado, responde já sabendo o seu contexto [00:20].

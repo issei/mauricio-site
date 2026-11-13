@@ -4,17 +4,17 @@ slug: desmistificando-o-hyperframes-o-framework-que-transforma
 status: publicado
 temas:
   - engenharia-agentica
-resumo: "O HyperFrames é um framework de código aberto que transforma HTML, CSS e animações em vídeo MP4, sempre com o mesmo resultado para o mesmo código. O vídeo mostra o que dá para construir, a anatomia de um projeto, por que o formato serve a agentes de IA e como ele se compara ao Remotion."
+resumo: O HyperFrames é um framework de código aberto que transforma HTML, CSS e animações em vídeo MP4, sempre com o mesmo resultado para o mesmo código. O vídeo mostra o que dá para construir, a anatomia de um projeto, por que o formato serve a agentes de IA e como ele se compara ao Remotion.
 fontes:
   - url: https://hyperframes.heygen.com/introduction
-    titulo: "Documentação oficial (Introdução)"
-    sustenta: "O HyperFrames transforma HTML, CSS e animações em vídeo MP4 determinístico."
+    titulo: Documentação oficial (Introdução)
+    sustenta: O HyperFrames transforma HTML, CSS e animações em vídeo MP4 determinístico.
     verificada: true
   - url: https://github.com/heygen-com/hyperframes
-    titulo: "Repositório do projeto no GitHub"
-    sustenta: "O HyperFrames é de código aberto, com licença Apache 2.0, e o lema \"escreva HTML, renderize vídeo, feito para agentes\"."
+    titulo: Repositório do projeto no GitHub
+    sustenta: O HyperFrames é de código aberto, com licença Apache 2.0, e o lema "escreva HTML, renderize vídeo, feito para agentes".
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-12
 youtube:
   titulo: "Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!"
@@ -50,6 +50,7 @@ youtube:
     - https://hyperframes.heygen.com/showcase
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## A ideia: programar um vídeo como se programa um site
 
 O vídeo propõe programar um vídeo do mesmo jeito que se constrói um site, sem linha do tempo de edição e sem renderização manual pesada [00:00]. A ferramenta para isso é o HyperFrames, que usa o HTML junto com a IA para gerar vídeo por programação [00:43].

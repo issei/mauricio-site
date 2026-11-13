@@ -52,7 +52,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/UzAft6Vtytw/maxresdefault.jpg
   visualizacoes: 21
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://github.com/Human-Agent-Society/reef
     - https://reefinfra.ai/docs/

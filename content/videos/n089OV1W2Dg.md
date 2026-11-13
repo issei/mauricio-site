@@ -5,19 +5,19 @@ status: rascunho
 temas:
   - engenharia-agentica
   - dados-e-decisao
-resumo: "O RAG tradicional consulta uma base antes de responder, mas segue um roteiro fixo. No Agentic RAG, a IA decide quando buscar, que ferramenta usar e se a informação basta. O vídeo explica essa diferença, como esses agentes planejam, por que faltam dados para treiná-los e os desafios que restam."
+resumo: O RAG tradicional consulta uma base antes de responder, mas segue um roteiro fixo. No Agentic RAG, a IA decide quando buscar, que ferramenta usar e se a informação basta. O vídeo explica essa diferença, como esses agentes planejam, por que faltam dados para treiná-los e os desafios que restam.
 fontes:
   - url: https://arxiv.org/pdf/2501.09136
     titulo: "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG"
-    sustenta: "A diferença entre o RAG tradicional e o Agentic RAG, com planejamento, uso de ferramentas e autoavaliação."
+    sustenta: A diferença entre o RAG tradicional e o Agentic RAG, com planejamento, uso de ferramentas e autoavaliação.
     verificada: false
   - url: https://aclanthology.org/2026.findings-acl.78.pdf
     titulo: "Data-Centric Perspectives on Agentic Retrieval-Augmented Generation: A Survey"
-    sustenta: "A falta de dados de treino para agentes e o pipeline de coleta, geração sintética, verificação e refinamento."
+    sustenta: A falta de dados de treino para agentes e o pipeline de coleta, geração sintética, verificação e refinamento.
     verificada: false
   - url: https://arxiv.org/pdf/2312.10997
     titulo: "Retrieval-Augmented Generation for Large Language Models: A Survey"
-    sustenta: "O que é o RAG tradicional e como ele consulta bases externas antes de gerar a resposta."
+    sustenta: O que é o RAG tradicional e como ele consulta bases externas antes de gerar a resposta.
     verificada: false
 youtube:
   titulo: "O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional"
@@ -81,6 +81,7 @@ youtube:
     - https://elisaterumi.substack.com/p/voce-sabe-a-diferenca-entre-rag-e
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O limite de memória da IA
 
 Os grandes modelos de linguagem ficavam limitados ao que memorizaram no treinamento [00:00]. Como o conhecimento avança todo dia, um modelo congelado no tempo entrega fatos desatualizados, ou alucina e inventa respostas [01:03].

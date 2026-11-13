@@ -49,7 +49,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/o0mWY83c37Y/maxresdefault.jpg
   visualizacoes: 24
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://github.com/NVIDIA/SkillSpector
     - https://docs.nvidia.com/skills/scanning-agent-skills

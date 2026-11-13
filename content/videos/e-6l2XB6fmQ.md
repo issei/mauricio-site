@@ -42,7 +42,7 @@ youtube:
   miniatura: https://i.ytimg.com/vi/e-6l2XB6fmQ/maxresdefault.jpg
   visualizacoes: 15
   playlists: []
-  legenda: pendente
+  legenda: automatica
   links_descricao:
     - https://research.google/blog/sequential-attention-making-ai-models-leaner-and-faster-without-sacrificing-accuracy/
   coletado_em: 2026-11-07T22:16:07Z

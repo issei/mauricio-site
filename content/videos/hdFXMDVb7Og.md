@@ -4,19 +4,19 @@ slug: openkb-criando-sua-base-de-conhecimento-inteligente
 status: rascunho
 temas:
   - dados-e-decisao
-resumo: "O OpenKB é uma ferramenta de código aberto que transforma documentos numa wiki local, ligada e mantida por IA, sem banco de vetores. O vídeo mostra a configuração, as consultas, a estrutura em árvore do PageIndex, o modo watch, a visualização no Obsidian, o arquivo AGENTS.md e o comando de verificação da base."
+resumo: O OpenKB é uma ferramenta de código aberto que transforma documentos numa wiki local, ligada e mantida por IA, sem banco de vetores. O vídeo mostra a configuração, as consultas, a estrutura em árvore do PageIndex, o modo watch, a visualização no Obsidian, o arquivo AGENTS.md e o comando de verificação da base.
 fontes:
   - url: https://github.com/VectifyAI/OpenKB
-    titulo: "OpenKB (Open LLM Knowledge Base)"
-    sustenta: "Os comandos do OpenKB (init, query, chat, watch e lint) e a wiki em Markdown gerada a partir dos documentos."
+    titulo: OpenKB (Open LLM Knowledge Base)
+    sustenta: Os comandos do OpenKB (init, query, chat, watch e lint) e a wiki em Markdown gerada a partir dos documentos.
     verificada: false
   - url: https://github.com/VectifyAI/PageIndex
-    titulo: "PageIndex (Document Index for Vectorless RAG)"
-    sustenta: "A estrutura em árvore com resumos, sem vetores, e a frase \"similaridade não é relevância\"."
+    titulo: PageIndex (Document Index for Vectorless RAG)
+    sustenta: A estrutura em árvore com resumos, sem vetores, e a frase "similaridade não é relevância".
     verificada: false
   - url: https://github.com/BerriAI/litellm
-    titulo: "LiteLLM (AI Gateway & Python SDK)"
-    sustenta: "O LiteLLM liga vários provedores de IA, como OpenAI, Anthropic e Gemini, por uma só interface."
+    titulo: LiteLLM (AI Gateway & Python SDK)
+    sustenta: O LiteLLM liga vários provedores de IA, como OpenAI, Anthropic e Gemini, por uma só interface.
     verificada: false
 youtube:
   titulo: OpenKB - Criando sua base de conhecimento inteligente
@@ -50,6 +50,7 @@ youtube:
     - https://x.com/karpathy/status/2039805659525644595
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Uma base de conhecimento sem vetores
 
 O OpenKB é uma ferramenta de código aberto para construir uma base de conhecimento local sem usar vetores [00:00]. Ele pega documentos brutos e os compila numa wiki estruturada, ligada e gerenciada por IA [00:00].

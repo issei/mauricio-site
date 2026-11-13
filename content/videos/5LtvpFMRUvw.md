@@ -8,14 +8,14 @@ temas:
 resumo: "O vídeo mostra a engenharia por trás do site da Boutique Empresarial: um funil único de conversão, uma base estática e rápida, desenvolvimento orientado por especificação, subagentes de IA, um quality gate que bloqueia qualquer erro e um design sem movimento desnecessário."
 fontes:
   - url: https://github.com/issei/boutiqueempresarial-site
-    titulo: "Repositório no GitHub"
+    titulo: Repositório no GitHub
     sustenta: "A estrutura do projeto: especificações em docs/specs, subagentes do Claude Code e o comando npm run gate."
     verificada: true
   - url: https://boutiqueempresarial.com.br/
-    titulo: "Site oficial da Boutique Empresarial"
+    titulo: Site oficial da Boutique Empresarial
     sustenta: "O funil único: página do diagnóstico gratuito e formulário de sete etapas."
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-12
 youtube:
   titulo: "Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico"
@@ -79,6 +79,7 @@ youtube:
     - https://github.com/issei/boutiqueempresarial-site
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Um site simples por fora
 
 À primeira vista, o site da Boutique Empresarial é uma página minimalista. Por baixo, há um sistema de conversão construído, testado e mantido quase todo por uma arquitetura guiada por IA [00:00]. O vídeo usa a imagem de um iceberg: começa pela ponta visível e desce até onde os agentes trabalham [00:21].

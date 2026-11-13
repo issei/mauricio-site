@@ -4,15 +4,15 @@ slug: pare-de-ler-codigo-as-cegas-conheca-o-understand-anything
 status: rascunho
 temas:
   - engenharia-agentica
-resumo: "O Understand-Anything é um plugin de código aberto que transforma uma base de código num grafo interativo, com o significado de cada parte e tours guiados. O vídeo mostra o problema do código legado, como a ferramenta combina análise determinística e modelos de linguagem, os casos de uso e o custo em tokens."
+resumo: O Understand-Anything é um plugin de código aberto que transforma uma base de código num grafo interativo, com o significado de cada parte e tours guiados. O vídeo mostra o problema do código legado, como a ferramenta combina análise determinística e modelos de linguagem, os casos de uso e o custo em tokens.
 fontes:
   - url: https://github.com/Lum1104/Understand-Anything
-    titulo: "Repositório no GitHub"
-    sustenta: "O Understand-Anything é um plugin de código aberto que gera um grafo de conhecimento interativo da base de código."
+    titulo: Repositório no GitHub
+    sustenta: O Understand-Anything é um plugin de código aberto que gera um grafo de conhecimento interativo da base de código.
     verificada: false
   - url: https://understand-anything.com
-    titulo: "Site oficial e live demo"
-    sustenta: "Os tours guiados, a análise de impacto e a visão de domínio de negócio."
+    titulo: Site oficial e live demo
+    sustenta: Os tours guiados, a análise de impacto e a visão de domínio de negócio.
     verificada: false
 youtube:
   titulo: Pare de ler código às cegas! Conheça o Understand-Anything
@@ -51,6 +51,7 @@ youtube:
     - https://understand-anything.com
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema do código legado
 
 Quem entra num time novo e abre um projeto legado encontra 200.000 linhas de código e não sabe por onde começar [00:21].

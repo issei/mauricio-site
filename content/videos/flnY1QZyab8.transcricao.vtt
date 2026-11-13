@@ -1,0 +1,1416 @@
+WEBVTT
+Kind: captions
+Language: pt
+
+00:00:00.080 --> 00:00:02.389 align:start position:0%
+ 
+E<00:00:00.199><c> aí,</c><00:00:00.480><c> tudo</c><00:00:00.719><c> bem?</c><00:00:01.240><c> Já</c><00:00:01.439><c> pensou</c><00:00:01.760><c> em</c><00:00:01.920><c> rodar</c><00:00:02.200><c> uma</c>
+
+00:00:02.389 --> 00:00:02.399 align:start position:0%
+E aí, tudo bem? Já pensou em rodar uma
+ 
+
+00:00:02.399 --> 00:00:04.590 align:start position:0%
+E aí, tudo bem? Já pensou em rodar uma
+aplicação<00:00:02.960><c> web,</c><00:00:03.480><c> qualquer</c><00:00:04.040><c> uma,</c><00:00:04.359><c> em</c><00:00:04.520><c> um</c>
+
+00:00:04.590 --> 00:00:04.600 align:start position:0%
+aplicação web, qualquer uma, em um
+ 
+
+00:00:04.600 --> 00:00:06.550 align:start position:0%
+aplicação web, qualquer uma, em um
+ambiente<00:00:05.240><c> serverless,</c><00:00:05.839><c> sem</c><00:00:06.000><c> ter</c><00:00:06.160><c> que</c><00:00:06.279><c> mudar</c>
+
+00:00:06.550 --> 00:00:06.560 align:start position:0%
+ambiente serverless, sem ter que mudar
+ 
+
+00:00:06.560 --> 00:00:08.709 align:start position:0%
+ambiente serverless, sem ter que mudar
+uma<00:00:06.759><c> única</c><00:00:07.040><c> linha</c><00:00:07.240><c> de</c><00:00:07.399><c> código?</c><00:00:07.960><c> Pois</c><00:00:08.160><c> é,</c><00:00:08.480><c> hoje</c>
+
+00:00:08.709 --> 00:00:08.719 align:start position:0%
+uma única linha de código? Pois é, hoje
+ 
+
+00:00:08.719 --> 00:00:10.629 align:start position:0%
+uma única linha de código? Pois é, hoje
+a<00:00:08.880><c> gente</c><00:00:09.040><c> vai</c><00:00:09.240><c> mergulhar</c><00:00:09.800><c> numa</c><00:00:10.080><c> ferramenta</c><00:00:10.480><c> de</c>
+
+00:00:10.629 --> 00:00:10.639 align:start position:0%
+a gente vai mergulhar numa ferramenta de
+ 
+
+00:00:10.639 --> 00:00:13.390 align:start position:0%
+a gente vai mergulhar numa ferramenta de
+código<00:00:11.000><c> aberto</c><00:00:11.360><c> que</c><00:00:11.599><c> faz</c><00:00:12.040><c> exatamente</c><00:00:12.599><c> isso,</c><00:00:13.200><c> o</c>
+
+00:00:13.390 --> 00:00:13.400 align:start position:0%
+código aberto que faz exatamente isso, o
+ 
+
+00:00:13.400 --> 00:00:16.830 align:start position:0%
+código aberto que faz exatamente isso, o
+AWS<00:00:14.160><c> Lambda</c><00:00:14.679><c> Web</c><00:00:15.080><c> Adapter.</c><00:00:16.119><c> Vamos</c><00:00:16.440><c> começar</c>
+
+00:00:16.830 --> 00:00:16.840 align:start position:0%
+AWS Lambda Web Adapter. Vamos começar
+ 
+
+00:00:16.840 --> 00:00:18.790 align:start position:0%
+AWS Lambda Web Adapter. Vamos começar
+com<00:00:16.960><c> a</c><00:00:17.119><c> pergunta</c><00:00:17.480><c> que</c><00:00:17.720><c> muita</c><00:00:18.119><c> gente</c><00:00:18.359><c> na</c><00:00:18.600><c> área</c>
+
+00:00:18.790 --> 00:00:18.800 align:start position:0%
+com a pergunta que muita gente na área
+ 
+
+00:00:18.800 --> 00:00:20.790 align:start position:0%
+com a pergunta que muita gente na área
+de<00:00:18.960><c> desenvolvimento</c><00:00:19.640><c> se</c><00:00:19.800><c> faz</c><00:00:20.279><c> quando</c><00:00:20.560><c> pensa</c>
+
+00:00:20.790 --> 00:00:20.800 align:start position:0%
+de desenvolvimento se faz quando pensa
+ 
+
+00:00:20.800 --> 00:00:23.070 align:start position:0%
+de desenvolvimento se faz quando pensa
+em<00:00:20.920><c> ir</c><00:00:21.080><c> para</c><00:00:21.240><c> o</c><00:00:21.359><c> CELIS.</c><00:00:22.160><c> E</c><00:00:22.279><c> se</c><00:00:22.439><c> fosse</c><00:00:22.720><c> possível</c>
+
+00:00:23.070 --> 00:00:23.080 align:start position:0%
+em ir para o CELIS. E se fosse possível
+ 
+
+00:00:23.080 --> 00:00:25.070 align:start position:0%
+em ir para o CELIS. E se fosse possível
+pegar<00:00:23.320><c> uma</c><00:00:23.480><c> aplicação</c><00:00:23.920><c> web</c><00:00:24.199><c> já</c><00:00:24.439><c> pronta</c><00:00:24.840><c> e</c>
+
+00:00:25.070 --> 00:00:25.080 align:start position:0%
+pegar uma aplicação web já pronta e
+ 
+
+00:00:25.080 --> 00:00:27.630 align:start position:0%
+pegar uma aplicação web já pronta e
+simplesmente<00:00:26.279><c> rodar</c><00:00:26.640><c> no</c><00:00:26.800><c> lambda</c><00:00:27.400><c> sem</c>
+
+00:00:27.630 --> 00:00:27.640 align:start position:0%
+simplesmente rodar no lambda sem
+ 
+
+00:00:27.640 --> 00:00:30.070 align:start position:0%
+simplesmente rodar no lambda sem
+precisar<00:00:28.080><c> reescrever</c><00:00:28.560><c> tudo?</c><00:00:29.279><c> A</c><00:00:29.400><c> ideia</c><00:00:29.640><c> parece</c>
+
+00:00:30.070 --> 00:00:30.080 align:start position:0%
+precisar reescrever tudo? A ideia parece
+ 
+
+00:00:30.080 --> 00:00:32.269 align:start position:0%
+precisar reescrever tudo? A ideia parece
+ótima,<00:00:30.359><c> né?</c><00:00:30.800><c> Mas</c><00:00:31.000><c> existe</c><00:00:31.320><c> um</c><00:00:31.519><c> problema,</c><00:00:32.040><c> um</c>
+
+00:00:32.269 --> 00:00:32.279 align:start position:0%
+ótima, né? Mas existe um problema, um
+ 
+
+00:00:32.279 --> 00:00:34.310 align:start position:0%
+ótima, né? Mas existe um problema, um
+conflito,<00:00:32.759><c> na</c><00:00:32.920><c> verdade,</c><00:00:33.559><c> entre</c><00:00:33.760><c> o</c><00:00:33.920><c> jeito</c><00:00:34.160><c> que</c>
+
+00:00:34.310 --> 00:00:34.320 align:start position:0%
+conflito, na verdade, entre o jeito que
+ 
+
+00:00:34.320 --> 00:00:36.590 align:start position:0%
+conflito, na verdade, entre o jeito que
+as<00:00:34.480><c> aplicações</c><00:00:35.000><c> web</c><00:00:35.360><c> tradicionais</c><00:00:35.960><c> funcionam</c>
+
+00:00:36.590 --> 00:00:36.600 align:start position:0%
+as aplicações web tradicionais funcionam
+ 
+
+00:00:36.600 --> 00:00:39.110 align:start position:0%
+as aplicações web tradicionais funcionam
+e<00:00:36.840><c> como</c><00:00:37.000><c> o</c><00:00:37.160><c> AWS</c><00:00:37.800><c> Lambda</c><00:00:38.200><c> foi</c><00:00:38.440><c> desenhado</c><00:00:38.960><c> para</c>
+
+00:00:39.110 --> 00:00:39.120 align:start position:0%
+e como o AWS Lambda foi desenhado para
+ 
+
+00:00:39.120 --> 00:00:41.670 align:start position:0%
+e como o AWS Lambda foi desenhado para
+operar.<00:00:40.239><c> OK?</c><00:00:40.840><c> Vamos</c><00:00:41.079><c> entender</c><00:00:41.399><c> essa</c>
+
+00:00:41.670 --> 00:00:41.680 align:start position:0%
+operar. OK? Vamos entender essa
+ 
+
+00:00:41.680 --> 00:00:44.350 align:start position:0%
+operar. OK? Vamos entender essa
+incompatibilidade.<00:00:42.920><c> Pensa</c><00:00:43.239><c> só,</c><00:00:43.680><c> de</c><00:00:43.879><c> um</c><00:00:44.000><c> lado,</c>
+
+00:00:44.350 --> 00:00:44.360 align:start position:0%
+incompatibilidade. Pensa só, de um lado,
+ 
+
+00:00:44.360 --> 00:00:46.470 align:start position:0%
+incompatibilidade. Pensa só, de um lado,
+um<00:00:44.520><c> servidor</c><00:00:45.000><c> web</c><00:00:45.320><c> tradicional,</c><00:00:46.120><c> ele</c><00:00:46.320><c> foi</c>
+
+00:00:46.470 --> 00:00:46.480 align:start position:0%
+um servidor web tradicional, ele foi
+ 
+
+00:00:46.480 --> 00:00:48.229 align:start position:0%
+um servidor web tradicional, ele foi
+feito<00:00:46.680><c> para</c><00:00:46.840><c> ficar</c><00:00:47.039><c> ligado</c><00:00:47.360><c> o</c><00:00:47.520><c> tempo</c><00:00:47.840><c> todo,</c>
+
+00:00:48.229 --> 00:00:48.239 align:start position:0%
+feito para ficar ligado o tempo todo,
+ 
+
+00:00:48.239 --> 00:00:50.029 align:start position:0%
+feito para ficar ligado o tempo todo,
+sabe?<00:00:48.840><c> Escutando,</c><00:00:49.480><c> esperando</c><00:00:49.879><c> por</c>
+
+00:00:50.029 --> 00:00:50.039 align:start position:0%
+sabe? Escutando, esperando por
+ 
+
+00:00:50.039 --> 00:00:52.229 align:start position:0%
+sabe? Escutando, esperando por
+requisições<00:00:50.520><c> da</c><00:00:50.600><c> HTTP.</c><00:00:51.480><c> É</c><00:00:51.600><c> um</c><00:00:51.719><c> processo</c><00:00:52.039><c> de</c>
+
+00:00:52.229 --> 00:00:52.239 align:start position:0%
+requisições da HTTP. É um processo de
+ 
+
+00:00:52.239 --> 00:00:54.750 align:start position:0%
+requisições da HTTP. É um processo de
+longa<00:00:52.520><c> duração.</c><00:00:53.440><c> Agora</c><00:00:53.680><c> olha</c><00:00:53.920><c> pro</c><00:00:54.120><c> AWS</c>
+
+00:00:54.750 --> 00:00:54.760 align:start position:0%
+longa duração. Agora olha pro AWS
+ 
+
+00:00:54.760 --> 00:00:56.910 align:start position:0%
+longa duração. Agora olha pro AWS
+Lambda.<00:00:55.280><c> É</c><00:00:55.399><c> um</c><00:00:55.520><c> oposto.</c><00:00:56.280><c> Ele</c><00:00:56.399><c> foi</c><00:00:56.559><c> feito</c><00:00:56.760><c> para</c>
+
+00:00:56.910 --> 00:00:56.920 align:start position:0%
+Lambda. É um oposto. Ele foi feito para
+ 
+
+00:00:56.920 --> 00:00:59.389 align:start position:0%
+Lambda. É um oposto. Ele foi feito para
+execuções<00:00:57.559><c> curtas.</c><00:00:58.280><c> Ele</c><00:00:58.440><c> recebe</c><00:00:58.719><c> um</c><00:00:58.920><c> evento,</c>
+
+00:00:59.389 --> 00:00:59.399 align:start position:0%
+execuções curtas. Ele recebe um evento,
+ 
+
+00:00:59.399 --> 00:01:01.830 align:start position:0%
+execuções curtas. Ele recebe um evento,
+faz<00:00:59.600><c> o</c><00:00:59.760><c> trabalho</c><00:01:00.079><c> dele</c><00:01:00.440><c> e</c><00:01:00.640><c> desliga.</c><00:01:01.640><c> Essa</c>
+
+00:01:01.830 --> 00:01:01.840 align:start position:0%
+faz o trabalho dele e desliga. Essa
+ 
+
+00:01:01.840 --> 00:01:03.590 align:start position:0%
+faz o trabalho dele e desliga. Essa
+diferença<00:01:02.199><c> de</c><00:01:02.359><c> filosofia</c><00:01:03.120><c> é</c><00:01:03.239><c> o</c><00:01:03.320><c> que</c><00:01:03.399><c> a</c><00:01:03.519><c> gente</c>
+
+00:01:03.590 --> 00:01:03.600 align:start position:0%
+diferença de filosofia é o que a gente
+ 
+
+00:01:03.600 --> 00:01:06.070 align:start position:0%
+diferença de filosofia é o que a gente
+chama<00:01:03.840><c> de</c><00:01:04.159><c> impedance</c><00:01:04.720><c> mismet.</c><00:01:05.560><c> Basicamente</c>
+
+00:01:06.070 --> 00:01:06.080 align:start position:0%
+chama de impedance mismet. Basicamente
+ 
+
+00:01:06.080 --> 00:01:08.230 align:start position:0%
+chama de impedance mismet. Basicamente
+eles<00:01:06.320><c> não</c><00:01:06.520><c> falam</c><00:01:06.799><c> a</c><00:01:06.920><c> mesma</c><00:01:07.119><c> língua.</c><00:01:07.920><c> E</c><00:01:08.040><c> é</c>
+
+00:01:08.230 --> 00:01:08.240 align:start position:0%
+eles não falam a mesma língua. E é
+ 
+
+00:01:08.240 --> 00:01:10.390 align:start position:0%
+eles não falam a mesma língua. E é
+exatamente<00:01:09.040><c> aí</c><00:01:09.680><c> para</c><00:01:09.880><c> resolver</c><00:01:10.240><c> essa</c>
+
+00:01:10.390 --> 00:01:10.400 align:start position:0%
+exatamente aí para resolver essa
+ 
+
+00:01:10.400 --> 00:01:12.590 align:start position:0%
+exatamente aí para resolver essa
+conversa<00:01:10.759><c> que</c><00:01:10.920><c> não</c><00:01:11.119><c> bate</c><00:01:11.520><c> que</c><00:01:11.720><c> entra</c><00:01:12.000><c> o</c><00:01:12.159><c> lambda</c>
+
+00:01:12.590 --> 00:01:12.600 align:start position:0%
+conversa que não bate que entra o lambda
+ 
+
+00:01:12.600 --> 00:01:15.550 align:start position:0%
+conversa que não bate que entra o lambda
+web<00:01:12.840><c> adapter.</c><00:01:13.840><c> Ele</c><00:01:13.960><c> funciona</c><00:01:14.360><c> como</c><00:01:14.640><c> uma</c><00:01:14.880><c> ponte</c>
+
+00:01:15.550 --> 00:01:15.560 align:start position:0%
+web adapter. Ele funciona como uma ponte
+ 
+
+00:01:15.560 --> 00:01:18.550 align:start position:0%
+web adapter. Ele funciona como uma ponte
+conectando<00:01:16.080><c> esses</c><00:01:16.360><c> dois</c><00:01:16.680><c> mundos.</c><00:01:17.640><c> Então</c><00:01:18.400><c> o</c>
+
+00:01:18.550 --> 00:01:18.560 align:start position:0%
+conectando esses dois mundos. Então o
+ 
+
+00:01:18.560 --> 00:01:20.670 align:start position:0%
+conectando esses dois mundos. Então o
+que<00:01:18.720><c> é</c><00:01:18.840><c> esse</c><00:01:19.159><c> web</c><00:01:19.479><c> adapter?</c><00:01:20.320><c> A</c><00:01:20.439><c> melhor</c>
+
+00:01:20.670 --> 00:01:20.680 align:start position:0%
+que é esse web adapter? A melhor
+ 
+
+00:01:20.680 --> 00:01:22.469 align:start position:0%
+que é esse web adapter? A melhor
+analogia<00:01:21.200><c> é</c><00:01:21.360><c> um</c><00:01:21.479><c> adaptador</c><00:01:21.960><c> de</c><00:01:22.119><c> tomada</c>
+
+00:01:22.469 --> 00:01:22.479 align:start position:0%
+analogia é um adaptador de tomada
+ 
+
+00:01:22.479 --> 00:01:24.230 align:start position:0%
+analogia é um adaptador de tomada
+universal.<00:01:23.320><c> Imagina</c><00:01:23.640><c> que</c><00:01:23.759><c> alguém</c><00:01:24.000><c> tem</c><00:01:24.119><c> um</c>
+
+00:01:24.230 --> 00:01:24.240 align:start position:0%
+universal. Imagina que alguém tem um
+ 
+
+00:01:24.240 --> 00:01:26.950 align:start position:0%
+universal. Imagina que alguém tem um
+aparelho<00:01:24.640><c> com</c><00:01:24.840><c> um</c><00:01:25.079><c> plug</c><00:01:25.680><c> de</c><00:01:25.880><c> um</c><00:01:26.040><c> tipo,</c><00:01:26.640><c> mas</c><00:01:26.799><c> a</c>
+
+00:01:26.950 --> 00:01:26.960 align:start position:0%
+aparelho com um plug de um tipo, mas a
+ 
+
+00:01:26.960 --> 00:01:29.030 align:start position:0%
+aparelho com um plug de um tipo, mas a
+tomada<00:01:27.280><c> na</c><00:01:27.439><c> parede</c><00:01:27.720><c> é</c><00:01:27.799><c> de</c><00:01:27.960><c> outro.</c><00:01:28.600><c> Em</c><00:01:28.720><c> vez</c><00:01:28.840><c> de</c>
+
+00:01:29.030 --> 00:01:29.040 align:start position:0%
+tomada na parede é de outro. Em vez de
+ 
+
+00:01:29.040 --> 00:01:30.630 align:start position:0%
+tomada na parede é de outro. Em vez de
+abrir<00:01:29.240><c> o</c><00:01:29.320><c> aparelho</c><00:01:29.680><c> e</c><00:01:29.759><c> mexer</c><00:01:29.960><c> na</c><00:01:30.079><c> fiação,</c><00:01:30.479><c> que</c>
+
+00:01:30.630 --> 00:01:30.640 align:start position:0%
+abrir o aparelho e mexer na fiação, que
+ 
+
+00:01:30.640 --> 00:01:32.550 align:start position:0%
+abrir o aparelho e mexer na fiação, que
+seria<00:01:30.840><c> um</c><00:01:31.040><c> caos,</c><00:01:31.600><c> a</c><00:01:31.759><c> pessoa</c><00:01:31.960><c> simplesmente</c><00:01:32.360><c> usa</c>
+
+00:01:32.550 --> 00:01:32.560 align:start position:0%
+seria um caos, a pessoa simplesmente usa
+ 
+
+00:01:32.560 --> 00:01:35.230 align:start position:0%
+seria um caos, a pessoa simplesmente usa
+um<00:01:32.640><c> adaptador.</c><00:01:33.439><c> O</c><00:01:33.560><c> web</c><00:01:33.840><c> adapter</c><00:01:34.240><c> é</c><00:01:34.399><c> isso.</c><00:01:35.040><c> Ele</c>
+
+00:01:35.230 --> 00:01:35.240 align:start position:0%
+um adaptador. O web adapter é isso. Ele
+ 
+
+00:01:35.240 --> 00:01:38.030 align:start position:0%
+um adaptador. O web adapter é isso. Ele
+pega<00:01:35.520><c> o</c><00:01:35.680><c> evento</c><00:01:36.079><c> Jon</c><00:01:36.640><c> do</c><00:01:36.799><c> Lambda</c><00:01:37.320><c> e</c><00:01:37.560><c> traduz</c>
+
+00:01:38.030 --> 00:01:38.040 align:start position:0%
+pega o evento Jon do Lambda e traduz
+ 
+
+00:01:38.040 --> 00:01:40.429 align:start position:0%
+pega o evento Jon do Lambda e traduz
+para<00:01:38.200><c> uma</c><00:01:38.399><c> requisição</c><00:01:38.960><c> HTTP</c><00:01:39.600><c> padrão</c><00:01:40.159><c> que</c><00:01:40.320><c> a</c>
+
+00:01:40.429 --> 00:01:40.439 align:start position:0%
+para uma requisição HTTP padrão que a
+ 
+
+00:01:40.439 --> 00:01:42.350 align:start position:0%
+para uma requisição HTTP padrão que a
+aplicação<00:01:40.799><c> já</c><00:01:41.000><c> sabe</c><00:01:41.240><c> como</c><00:01:41.439><c> entender.</c><00:01:42.000><c> Simples</c>
+
+00:01:42.350 --> 00:01:42.360 align:start position:0%
+aplicação já sabe como entender. Simples
+ 
+
+00:01:42.360 --> 00:01:44.709 align:start position:0%
+aplicação já sabe como entender. Simples
+assim.<00:01:43.200><c> Mas</c><00:01:43.600><c> como</c><00:01:43.880><c> é</c><00:01:44.040><c> que</c><00:01:44.159><c> essa</c><00:01:44.399><c> mágica</c>
+
+00:01:44.709 --> 00:01:44.719 align:start position:0%
+assim. Mas como é que essa mágica
+ 
+
+00:01:44.719 --> 00:01:46.910 align:start position:0%
+assim. Mas como é que essa mágica
+acontece?<00:01:45.759><c> Vamos</c><00:01:45.920><c> dar</c><00:01:46.079><c> uma</c><00:01:46.200><c> espiada</c><00:01:46.560><c> rápida</c>
+
+00:01:46.910 --> 00:01:46.920 align:start position:0%
+acontece? Vamos dar uma espiada rápida
+ 
+
+00:01:46.920 --> 00:01:48.510 align:start position:0%
+acontece? Vamos dar uma espiada rápida
+nos<00:01:47.119><c> bastidores</c><00:01:47.640><c> para</c><00:01:47.799><c> ver</c><00:01:47.960><c> como</c><00:01:48.119><c> o</c><00:01:48.240><c> web</c>
+
+00:01:48.510 --> 00:01:48.520 align:start position:0%
+nos bastidores para ver como o web
+ 
+
+00:01:48.520 --> 00:01:50.910 align:start position:0%
+nos bastidores para ver como o web
+adapter<00:01:49.119><c> faz</c><00:01:49.320><c> essa</c><00:01:49.560><c> tradução.</c><00:01:50.560><c> A</c><00:01:50.719><c> grande</c>
+
+00:01:50.910 --> 00:01:50.920 align:start position:0%
+adapter faz essa tradução. A grande
+ 
+
+00:01:50.920 --> 00:01:52.789 align:start position:0%
+adapter faz essa tradução. A grande
+sacada<00:01:51.320><c> é</c><00:01:51.439><c> que</c><00:01:51.520><c> o</c><00:01:51.600><c> adaptador</c><00:01:52.119><c> não</c><00:01:52.320><c> faz</c><00:01:52.560><c> parte</c>
+
+00:01:52.789 --> 00:01:52.799 align:start position:0%
+sacada é que o adaptador não faz parte
+ 
+
+00:01:52.799 --> 00:01:55.350 align:start position:0%
+sacada é que o adaptador não faz parte
+do<00:01:53.000><c> código</c><00:01:53.399><c> da</c><00:01:53.600><c> função</c><00:01:53.880><c> em</c><00:01:54.040><c> si.</c><00:01:54.680><c> Ele</c><00:01:54.840><c> roda</c><00:01:55.159><c> como</c>
+
+00:01:55.350 --> 00:01:55.360 align:start position:0%
+do código da função em si. Ele roda como
+ 
+
+00:01:55.360 --> 00:01:57.990 align:start position:0%
+do código da função em si. Ele roda como
+uma<00:01:55.680><c> extensão</c><00:01:56.119><c> do</c><00:01:56.280><c> lâmbida.</c><00:01:57.479><c> Pensa</c><00:01:57.759><c> nisso</c>
+
+00:01:57.990 --> 00:01:58.000 align:start position:0%
+uma extensão do lâmbida. Pensa nisso
+ 
+
+00:01:58.000 --> 00:02:00.230 align:start position:0%
+uma extensão do lâmbida. Pensa nisso
+como<00:01:58.159><c> um</c><00:01:58.280><c> processo</c><00:01:58.799><c> auxiliar,</c><00:01:59.600><c> um</c><00:01:59.759><c> parceiro</c>
+
+00:02:00.230 --> 00:02:00.240 align:start position:0%
+como um processo auxiliar, um parceiro
+ 
+
+00:02:00.240 --> 00:02:02.550 align:start position:0%
+como um processo auxiliar, um parceiro
+que<00:02:00.439><c> AWS</c><00:02:01.039><c> inicia</c><00:02:01.399><c> junto</c><00:02:01.640><c> com</c><00:02:01.759><c> a</c><00:02:01.880><c> função</c><00:02:02.360><c> no</c>
+
+00:02:02.550 --> 00:02:02.560 align:start position:0%
+que AWS inicia junto com a função no
+ 
+
+00:02:02.560 --> 00:02:04.950 align:start position:0%
+que AWS inicia junto com a função no
+mesmo<00:02:02.759><c> ambiente.</c><00:02:03.960><c> Por</c><00:02:04.079><c> causa</c><00:02:04.320><c> disso,</c><00:02:04.759><c> ele</c>
+
+00:02:04.950 --> 00:02:04.960 align:start position:0%
+mesmo ambiente. Por causa disso, ele
+ 
+
+00:02:04.960 --> 00:02:06.469 align:start position:0%
+mesmo ambiente. Por causa disso, ele
+consegue<00:02:05.280><c> ficar</c><00:02:05.520><c> no</c><00:02:05.640><c> meio</c><00:02:05.840><c> do</c><00:02:06.000><c> caminho</c>
+
+00:02:06.469 --> 00:02:06.479 align:start position:0%
+consegue ficar no meio do caminho
+ 
+
+00:02:06.479 --> 00:02:08.430 align:start position:0%
+consegue ficar no meio do caminho
+interceptando<00:02:07.039><c> a</c><00:02:07.200><c> comunicação</c><00:02:07.880><c> antes</c><00:02:08.200><c> mesmo</c>
+
+00:02:08.430 --> 00:02:08.440 align:start position:0%
+interceptando a comunicação antes mesmo
+ 
+
+00:02:08.440 --> 00:02:10.669 align:start position:0%
+interceptando a comunicação antes mesmo
+dela<00:02:08.720><c> chegar</c><00:02:08.920><c> no</c><00:02:09.080><c> código</c><00:02:09.440><c> principal.</c><00:02:10.399><c> Agora,</c>
+
+00:02:10.669 --> 00:02:10.679 align:start position:0%
+dela chegar no código principal. Agora,
+ 
+
+00:02:10.679 --> 00:02:12.430 align:start position:0%
+dela chegar no código principal. Agora,
+olha<00:02:10.879><c> só</c><00:02:11.000><c> que</c><00:02:11.160><c> interessante</c><00:02:11.599><c> como</c><00:02:11.800><c> esse</c><00:02:12.000><c> fluxo</c>
+
+00:02:12.430 --> 00:02:12.440 align:start position:0%
+olha só que interessante como esse fluxo
+ 
+
+00:02:12.440 --> 00:02:14.750 align:start position:0%
+olha só que interessante como esse fluxo
+funciona.<00:02:13.239><c> Um</c><00:02:13.360><c> evento</c><00:02:13.720><c> chega,</c><00:02:14.239><c> seja</c><00:02:14.480><c> de</c><00:02:14.599><c> um</c>
+
+00:02:14.750 --> 00:02:14.760 align:start position:0%
+funciona. Um evento chega, seja de um
+ 
+
+00:02:14.760 --> 00:02:16.470 align:start position:0%
+funciona. Um evento chega, seja de um
+API<00:02:15.120><c> gateway</c><00:02:15.519><c> ou</c><00:02:15.840><c> de</c><00:02:16.040><c> qualquer</c><00:02:16.280><c> outro</c>
+
+00:02:16.470 --> 00:02:16.480 align:start position:0%
+API gateway ou de qualquer outro
+ 
+
+00:02:16.480 --> 00:02:18.710 align:start position:0%
+API gateway ou de qualquer outro
+gatilho.<00:02:17.160><c> O</c><00:02:17.280><c> web</c><00:02:17.560><c> adapter,</c><00:02:18.120><c> por</c><00:02:18.280><c> ser</c><00:02:18.480><c> uma</c>
+
+00:02:18.710 --> 00:02:18.720 align:start position:0%
+gatilho. O web adapter, por ser uma
+ 
+
+00:02:18.720 --> 00:02:21.229 align:start position:0%
+gatilho. O web adapter, por ser uma
+extensão,<00:02:19.519><c> pega</c><00:02:19.840><c> esse</c><00:02:20.080><c> evento</c><00:02:20.400><c> primeiro,</c><00:02:21.000><c> ele</c>
+
+00:02:21.229 --> 00:02:21.239 align:start position:0%
+extensão, pega esse evento primeiro, ele
+ 
+
+00:02:21.239 --> 00:02:22.949 align:start position:0%
+extensão, pega esse evento primeiro, ele
+transforma<00:02:21.680><c> aquele</c><00:02:21.959><c> Jason</c><00:02:22.239><c> numa</c><00:02:22.480><c> requisição</c>
+
+00:02:22.949 --> 00:02:22.959 align:start position:0%
+transforma aquele Jason numa requisição
+ 
+
+00:02:22.959 --> 00:02:25.750 align:start position:0%
+transforma aquele Jason numa requisição
+HTTP<00:02:23.640><c> normal</c><00:02:24.360><c> e</c><00:02:24.560><c> manda</c><00:02:24.879><c> pra</c><00:02:25.040><c> aplicação</c><00:02:25.480><c> web,</c>
+
+00:02:25.750 --> 00:02:25.760 align:start position:0%
+HTTP normal e manda pra aplicação web,
+ 
+
+00:02:25.760 --> 00:02:27.110 align:start position:0%
+HTTP normal e manda pra aplicação web,
+que<00:02:25.920><c> tá</c><00:02:26.040><c> rodando</c><00:02:26.280><c> ali</c><00:02:26.440><c> do</c><00:02:26.560><c> lado,</c><00:02:26.760><c> escutando</c>
+
+00:02:27.110 --> 00:02:27.120 align:start position:0%
+que tá rodando ali do lado, escutando
+ 
+
+00:02:27.120 --> 00:02:28.990 align:start position:0%
+que tá rodando ali do lado, escutando
+numa<00:02:27.360><c> porta.</c><00:02:27.840><c> A</c><00:02:27.920><c> aplicação</c><00:02:28.319><c> faz</c><00:02:28.480><c> o</c><00:02:28.599><c> que</c><00:02:28.720><c> sempre</c>
+
+00:02:28.990 --> 00:02:29.000 align:start position:0%
+numa porta. A aplicação faz o que sempre
+ 
+
+00:02:29.000 --> 00:02:31.630 align:start position:0%
+numa porta. A aplicação faz o que sempre
+fez,<00:02:29.599><c> responde</c><00:02:30.280><c> e</c><00:02:30.440><c> o</c><00:02:30.599><c> adapter</c><00:02:31.080><c> pega</c><00:02:31.319><c> essa</c>
+
+00:02:31.630 --> 00:02:31.640 align:start position:0%
+fez, responde e o adapter pega essa
+ 
+
+00:02:31.640 --> 00:02:33.750 align:start position:0%
+fez, responde e o adapter pega essa
+resposta,<00:02:32.400><c> empacota</c><00:02:32.840><c> de</c><00:02:33.000><c> volta</c><00:02:33.239><c> no</c><00:02:33.440><c> formato</c>
+
+00:02:33.750 --> 00:02:33.760 align:start position:0%
+resposta, empacota de volta no formato
+ 
+
+00:02:33.760 --> 00:02:36.229 align:start position:0%
+resposta, empacota de volta no formato
+que<00:02:33.879><c> o</c><00:02:34.000><c> lambda</c><00:02:34.440><c> entende</c><00:02:35.000><c> e</c><00:02:35.239><c> pronto,</c><00:02:35.760><c> o</c><00:02:35.920><c> ciclo</c>
+
+00:02:36.229 --> 00:02:36.239 align:start position:0%
+que o lambda entende e pronto, o ciclo
+ 
+
+00:02:36.239 --> 00:02:38.070 align:start position:0%
+que o lambda entende e pronto, o ciclo
+se<00:02:36.400><c> fecha.</c><00:02:36.840><c> Tudo</c><00:02:37.000><c> de</c><00:02:37.160><c> forma</c><00:02:37.360><c> transparente,</c>
+
+00:02:38.070 --> 00:02:38.080 align:start position:0%
+se fecha. Tudo de forma transparente,
+ 
+
+00:02:38.080 --> 00:02:40.030 align:start position:0%
+se fecha. Tudo de forma transparente,
+sem<00:02:38.280><c> o</c><00:02:38.400><c> código</c><00:02:38.680><c> da</c><00:02:38.800><c> aplicação</c><00:02:39.319><c> nem</c><00:02:39.560><c> perceber</c><00:02:39.959><c> o</c>
+
+00:02:40.030 --> 00:02:40.040 align:start position:0%
+sem o código da aplicação nem perceber o
+ 
+
+00:02:40.040 --> 00:02:42.470 align:start position:0%
+sem o código da aplicação nem perceber o
+que<00:02:40.159><c> aconteceu.</c><00:02:41.000><c> Bom,</c><00:02:41.640><c> vamos</c><00:02:41.920><c> falar</c><00:02:42.239><c> dos</c>
+
+00:02:42.470 --> 00:02:42.480 align:start position:0%
+que aconteceu. Bom, vamos falar dos
+ 
+
+00:02:42.480 --> 00:02:44.270 align:start position:0%
+que aconteceu. Bom, vamos falar dos
+benefícios,<00:02:43.200><c> porque</c><00:02:43.400><c> é</c><00:02:43.519><c> aqui</c><00:02:43.720><c> que</c><00:02:43.879><c> a</c><00:02:44.000><c> coisa</c>
+
+00:02:44.270 --> 00:02:44.280 align:start position:0%
+benefícios, porque é aqui que a coisa
+ 
+
+00:02:44.280 --> 00:02:46.830 align:start position:0%
+benefícios, porque é aqui que a coisa
+fica<00:02:44.640><c> realmente</c><00:02:45.200><c> poderosa.</c><00:02:46.200><c> O</c><00:02:46.360><c> principal</c>
+
+00:02:46.830 --> 00:02:46.840 align:start position:0%
+fica realmente poderosa. O principal
+ 
+
+00:02:46.840 --> 00:02:48.990 align:start position:0%
+fica realmente poderosa. O principal
+valor<00:02:47.080><c> do</c><00:02:47.239><c> adaptador</c><00:02:48.080><c> é,</c><00:02:48.239><c> sem</c><00:02:48.400><c> dúvida,</c><00:02:48.800><c> a</c>
+
+00:02:48.990 --> 00:02:49.000 align:start position:0%
+valor do adaptador é, sem dúvida, a
+ 
+
+00:02:49.000 --> 00:02:50.949 align:start position:0%
+valor do adaptador é, sem dúvida, a
+liberdade<00:02:49.560><c> e</c><00:02:49.680><c> a</c><00:02:49.840><c> flexibilidade</c><00:02:50.599><c> que</c><00:02:50.760><c> ele</c>
+
+00:02:50.949 --> 00:02:50.959 align:start position:0%
+liberdade e a flexibilidade que ele
+ 
+
+00:02:50.959 --> 00:02:53.589 align:start position:0%
+liberdade e a flexibilidade que ele
+proporciona.<00:02:52.040><c> Essa</c><00:02:52.319><c> citação</c><00:02:52.800><c> aqui</c><00:02:53.200><c> é</c>
+
+00:02:53.589 --> 00:02:53.599 align:start position:0%
+proporciona. Essa citação aqui é
+ 
+
+00:02:53.599 --> 00:02:55.949 align:start position:0%
+proporciona. Essa citação aqui é
+perfeita.<00:02:54.519><c> O</c><00:02:54.640><c> handler</c><00:02:55.040><c> é</c><00:02:55.200><c> basicamente</c><00:02:55.760><c> a</c>
+
+00:02:55.949 --> 00:02:55.959 align:start position:0%
+perfeita. O handler é basicamente a
+ 
+
+00:02:55.959 --> 00:02:57.990 align:start position:0%
+perfeita. O handler é basicamente a
+porta<00:02:56.200><c> de</c><00:02:56.440><c> entrada</c><00:02:56.720><c> de</c><00:02:56.879><c> uma</c><00:02:57.040><c> função</c><00:02:57.400><c> lambida,</c>
+
+00:02:57.990 --> 00:02:58.000 align:start position:0%
+porta de entrada de uma função lambida,
+ 
+
+00:02:58.000 --> 00:02:59.630 align:start position:0%
+porta de entrada de uma função lambida,
+aquele<00:02:58.280><c> pedaço</c><00:02:58.599><c> de</c><00:02:58.800><c> código</c><00:02:59.120><c> que</c><00:02:59.280><c> a</c><00:02:59.400><c> gente</c><00:02:59.480><c> tem</c>
+
+00:02:59.630 --> 00:02:59.640 align:start position:0%
+aquele pedaço de código que a gente tem
+ 
+
+00:02:59.640 --> 00:03:01.270 align:start position:0%
+aquele pedaço de código que a gente tem
+que<00:02:59.760><c> escrever</c><00:03:00.120><c> só</c><00:03:00.319><c> para</c><00:03:00.440><c> dizer</c><00:03:00.640><c> pro</c><00:03:00.840><c> lambda</c><00:03:01.159><c> o</c>
+
+00:03:01.270 --> 00:03:01.280 align:start position:0%
+que escrever só para dizer pro lambda o
+ 
+
+00:03:01.280 --> 00:03:02.949 align:start position:0%
+que escrever só para dizer pro lambda o
+que<00:03:01.440><c> fazer</c><00:03:01.640><c> com</c><00:03:01.720><c> o</c><00:03:01.800><c> evento</c><00:03:02.040><c> que</c><00:03:02.159><c> chega.</c><00:03:02.640><c> O</c><00:03:02.720><c> web</c>
+
+00:03:02.949 --> 00:03:02.959 align:start position:0%
+que fazer com o evento que chega. O web
+ 
+
+00:03:02.959 --> 00:03:05.509 align:start position:0%
+que fazer com o evento que chega. O web
+adapter<00:03:03.400><c> simplesmente</c><00:03:04.080><c> elimina</c><00:03:04.720><c> isso.</c><00:03:05.360><c> E</c><00:03:05.440><c> o</c>
+
+00:03:05.509 --> 00:03:05.519 align:start position:0%
+adapter simplesmente elimina isso. E o
+ 
+
+00:03:05.519 --> 00:03:07.390 align:start position:0%
+adapter simplesmente elimina isso. E o
+que<00:03:05.599><c> isso</c><00:03:05.799><c> significa</c><00:03:06.280><c> na</c><00:03:06.440><c> prática?</c><00:03:07.200><c> Menos</c>
+
+00:03:07.390 --> 00:03:07.400 align:start position:0%
+que isso significa na prática? Menos
+ 
+
+00:03:07.400 --> 00:03:10.030 align:start position:0%
+que isso significa na prática? Menos
+código<00:03:07.760><c> repetitivo,</c><00:03:08.640><c> menos</c><00:03:08.959><c> boiler</c><00:03:09.360><c> plate</c><00:03:09.799><c> e</c>
+
+00:03:10.030 --> 00:03:10.040 align:start position:0%
+código repetitivo, menos boiler plate e
+ 
+
+00:03:10.040 --> 00:03:11.830 align:start position:0%
+código repetitivo, menos boiler plate e
+mais<00:03:10.319><c> portabilidade.</c><00:03:11.360><c> Dá</c><00:03:11.519><c> para</c><00:03:11.599><c> usar</c><00:03:11.760><c> o</c>
+
+00:03:11.830 --> 00:03:11.840 align:start position:0%
+mais portabilidade. Dá para usar o
+ 
+
+00:03:11.840 --> 00:03:13.670 align:start position:0%
+mais portabilidade. Dá para usar o
+código<00:03:12.200><c> padrão</c><00:03:12.560><c> de</c><00:03:12.680><c> uma</c><00:03:12.799><c> aplicação</c><00:03:13.239><c> web</c><00:03:13.560><c> como</c>
+
+00:03:13.670 --> 00:03:13.680 align:start position:0%
+código padrão de uma aplicação web como
+ 
+
+00:03:13.680 --> 00:03:15.229 align:start position:0%
+código padrão de uma aplicação web como
+se<00:03:13.799><c> ele</c><00:03:13.920><c> estivesse</c><00:03:14.239><c> rodando</c><00:03:14.599><c> num</c><00:03:14.799><c> servidor</c>
+
+00:03:15.229 --> 00:03:15.239 align:start position:0%
+se ele estivesse rodando num servidor
+ 
+
+00:03:15.239 --> 00:03:17.710 align:start position:0%
+se ele estivesse rodando num servidor
+comum.<00:03:15.920><c> E</c><00:03:16.080><c> isso</c><00:03:16.280><c> nos</c><00:03:16.480><c> leva</c><00:03:16.760><c> direto</c><00:03:17.120><c> para</c><00:03:17.400><c> outra</c>
+
+00:03:17.710 --> 00:03:17.720 align:start position:0%
+comum. E isso nos leva direto para outra
+ 
+
+00:03:17.720 --> 00:03:20.830 align:start position:0%
+comum. E isso nos leva direto para outra
+vantagem<00:03:18.319><c> gigantesca,</c><00:03:19.440><c> a</c><00:03:19.760><c> compatibilidade</c>
+
+00:03:20.830 --> 00:03:20.840 align:start position:0%
+vantagem gigantesca, a compatibilidade
+ 
+
+00:03:20.840 --> 00:03:23.350 align:start position:0%
+vantagem gigantesca, a compatibilidade
+universal.<00:03:21.879><c> O</c><00:03:21.959><c> adaptador</c><00:03:22.560><c> funciona</c><00:03:23.040><c> com</c>
+
+00:03:23.350 --> 00:03:23.360 align:start position:0%
+universal. O adaptador funciona com
+ 
+
+00:03:23.360 --> 00:03:25.509 align:start position:0%
+universal. O adaptador funciona com
+praticamente<00:03:24.159><c> qualquer</c><00:03:24.680><c> framework</c><00:03:25.319><c> ou</c>
+
+00:03:25.509 --> 00:03:25.519 align:start position:0%
+praticamente qualquer framework ou
+ 
+
+00:03:25.519 --> 00:03:28.149 align:start position:0%
+praticamente qualquer framework ou
+linguagem<00:03:26.080><c> web</c><00:03:26.480><c> que</c><00:03:26.680><c> se</c><00:03:26.840><c> possa</c><00:03:27.159><c> imaginar.</c><00:03:28.040><c> E</c>
+
+00:03:28.149 --> 00:03:28.159 align:start position:0%
+linguagem web que se possa imaginar. E
+ 
+
+00:03:28.159 --> 00:03:30.030 align:start position:0%
+linguagem web que se possa imaginar. E
+essa<00:03:28.360><c> lista</c><00:03:28.640><c> aqui</c><00:03:28.879><c> mostra</c><00:03:29.200><c> bem</c><00:03:29.400><c> o</c><00:03:29.560><c> alcance</c>
+
+00:03:30.030 --> 00:03:30.040 align:start position:0%
+essa lista aqui mostra bem o alcance
+ 
+
+00:03:30.040 --> 00:03:32.830 align:start position:0%
+essa lista aqui mostra bem o alcance
+disso.<00:03:30.640><c> Não</c><00:03:30.840><c> importa</c><00:03:31.159><c> se</c><00:03:31.480><c> Express,</c><00:03:32.159><c> Flesk,</c>
+
+00:03:32.830 --> 00:03:32.840 align:start position:0%
+disso. Não importa se Express, Flesk,
+ 
+
+00:03:32.840 --> 00:03:35.750 align:start position:0%
+disso. Não importa se Express, Flesk,
+Spring<00:03:33.200><c> Boot,</c><00:03:33.760><c> Laravel,</c><00:03:34.519><c> a</c><00:03:34.680><c> lista</c><00:03:34.879><c> é</c><00:03:35.040><c> enorme.</c>
+
+00:03:35.750 --> 00:03:35.760 align:start position:0%
+Spring Boot, Laravel, a lista é enorme.
+ 
+
+00:03:35.760 --> 00:03:37.830 align:start position:0%
+Spring Boot, Laravel, a lista é enorme.
+A<00:03:35.879><c> regra</c><00:03:36.080><c> é</c><00:03:36.200><c> simples.</c><00:03:36.959><c> Se</c><00:03:37.000><c> a</c><00:03:37.120><c> aplicação</c><00:03:37.599><c> sabe</c>
+
+00:03:37.830 --> 00:03:37.840 align:start position:0%
+A regra é simples. Se a aplicação sabe
+ 
+
+00:03:37.840 --> 00:03:39.350 align:start position:0%
+A regra é simples. Se a aplicação sabe
+escotar<00:03:38.159><c> numa</c><00:03:38.400><c> porta</c><00:03:38.720><c> e</c><00:03:38.920><c> responder</c><00:03:39.239><c> a</c>
+
+00:03:39.350 --> 00:03:39.360 align:start position:0%
+escotar numa porta e responder a
+ 
+
+00:03:39.360 --> 00:03:41.750 align:start position:0%
+escotar numa porta e responder a
+requisições<00:03:39.879><c> HTTP,</c><00:03:40.680><c> ela</c><00:03:41.000><c> vai</c><00:03:41.239><c> funcionar</c><00:03:41.599><c> com</c>
+
+00:03:41.750 --> 00:03:41.760 align:start position:0%
+requisições HTTP, ela vai funcionar com
+ 
+
+00:03:41.760 --> 00:03:44.270 align:start position:0%
+requisições HTTP, ela vai funcionar com
+Web<00:03:41.920><c> Adapter.</c><00:03:42.400><c> É</c><00:03:42.599><c> impressionante.</c><00:03:43.760><c> E</c><00:03:43.920><c> essa</c>
+
+00:03:44.270 --> 00:03:44.280 align:start position:0%
+Web Adapter. É impressionante. E essa
+ 
+
+00:03:44.280 --> 00:03:46.630 align:start position:0%
+Web Adapter. É impressionante. E essa
+compatibilidade<00:03:45.239><c> toda</c><00:03:45.680><c> abre</c><00:03:46.000><c> uma</c><00:03:46.200><c> porta</c><00:03:46.480><c> para</c>
+
+00:03:46.630 --> 00:03:46.640 align:start position:0%
+compatibilidade toda abre uma porta para
+ 
+
+00:03:46.640 --> 00:03:48.750 align:start position:0%
+compatibilidade toda abre uma porta para
+um<00:03:46.799><c> dos</c><00:03:46.959><c> benefícios</c><00:03:47.560><c> mais</c><00:03:47.840><c> fortes,</c><00:03:48.560><c> a</c>
+
+00:03:48.750 --> 00:03:48.760 align:start position:0%
+um dos benefícios mais fortes, a
+ 
+
+00:03:48.760 --> 00:03:51.350 align:start position:0%
+um dos benefícios mais fortes, a
+portabilidade.<00:03:50.080><c> A</c><00:03:50.159><c> ideia</c><00:03:50.400><c> de</c><00:03:50.680><c> construir</c><00:03:51.159><c> uma</c>
+
+00:03:51.350 --> 00:03:51.360 align:start position:0%
+portabilidade. A ideia de construir uma
+ 
+
+00:03:51.360 --> 00:03:53.670 align:start position:0%
+portabilidade. A ideia de construir uma
+vez,<00:03:51.879><c> rodar</c><00:03:52.200><c> em</c><00:03:52.360><c> qualquer</c><00:03:52.640><c> lugar.</c><00:03:53.159><c> Parece</c><00:03:53.480><c> bom</c>
+
+00:03:53.670 --> 00:03:53.680 align:start position:0%
+vez, rodar em qualquer lugar. Parece bom
+ 
+
+00:03:53.680 --> 00:03:55.630 align:start position:0%
+vez, rodar em qualquer lugar. Parece bom
+demais<00:03:54.079><c> para</c><00:03:54.239><c> ser</c><00:03:54.400><c> verdade,</c><00:03:54.799><c> né?</c><00:03:55.280><c> Mas</c><00:03:55.439><c> vamos</c>
+
+00:03:55.630 --> 00:03:55.640 align:start position:0%
+demais para ser verdade, né? Mas vamos
+ 
+
+00:03:55.640 --> 00:03:58.030 align:start position:0%
+demais para ser verdade, né? Mas vamos
+ver<00:03:55.920><c> como</c><00:03:56.200><c> isso</c><00:03:56.439><c> funciona</c><00:03:56.879><c> na</c><00:03:57.079><c> prática.</c><00:03:57.879><c> O</c>
+
+00:03:58.030 --> 00:03:58.040 align:start position:0%
+ver como isso funciona na prática. O
+ 
+
+00:03:58.040 --> 00:03:59.990 align:start position:0%
+ver como isso funciona na prática. O
+segredo<00:03:58.400><c> aqui,</c><00:03:58.680><c> como</c><00:03:58.840><c> o</c><00:03:58.920><c> slide</c><00:03:59.280><c> mostra,</c><00:03:59.760><c> é</c><00:03:59.879><c> que</c>
+
+00:03:59.990 --> 00:04:00.000 align:start position:0%
+segredo aqui, como o slide mostra, é que
+ 
+
+00:04:00.000 --> 00:04:02.229 align:start position:0%
+segredo aqui, como o slide mostra, é que
+o<00:04:00.120><c> adaptador</c><00:04:00.680><c> só</c><00:04:00.920><c> entra</c><00:04:01.120><c> em</c><00:04:01.280><c> ação</c><00:04:01.760><c> dentro</c><00:04:02.040><c> do</c>
+
+00:04:02.229 --> 00:04:02.239 align:start position:0%
+o adaptador só entra em ação dentro do
+ 
+
+00:04:02.239 --> 00:04:04.470 align:start position:0%
+o adaptador só entra em ação dentro do
+ambiente<00:04:02.680><c> lambda.</c><00:04:03.360><c> Isso</c><00:04:03.560><c> quer</c><00:04:03.760><c> dizer</c><00:04:03.959><c> que</c><00:04:04.239><c> a</c>
+
+00:04:04.470 --> 00:04:04.480 align:start position:0%
+ambiente lambda. Isso quer dizer que a
+ 
+
+00:04:04.480 --> 00:04:06.869 align:start position:0%
+ambiente lambda. Isso quer dizer que a
+mesma<00:04:04.879><c> imagem</c><00:04:05.200><c> de</c><00:04:05.400><c> contêiner</c><00:04:06.040><c> pode</c><00:04:06.319><c> ser</c><00:04:06.480><c> usada</c>
+
+00:04:06.869 --> 00:04:06.879 align:start position:0%
+mesma imagem de contêiner pode ser usada
+ 
+
+00:04:06.879 --> 00:04:08.910 align:start position:0%
+mesma imagem de contêiner pode ser usada
+em<00:04:07.120><c> várias</c><00:04:07.439><c> plataformas</c><00:04:08.120><c> diferentes</c><00:04:08.680><c> sem</c>
+
+00:04:08.910 --> 00:04:08.920 align:start position:0%
+em várias plataformas diferentes sem
+ 
+
+00:04:08.920 --> 00:04:10.990 align:start position:0%
+em várias plataformas diferentes sem
+mudar<00:04:09.239><c> nada.</c><00:04:09.879><c> Dá</c><00:04:10.079><c> para</c><00:04:10.200><c> rodar</c><00:04:10.480><c> no</c><00:04:10.640><c> Lambida</c>
+
+00:04:10.990 --> 00:04:11.000 align:start position:0%
+mudar nada. Dá para rodar no Lambida
+ 
+
+00:04:11.000 --> 00:04:13.069 align:start position:0%
+mudar nada. Dá para rodar no Lambida
+para<00:04:11.159><c> ter</c><00:04:11.319><c> a</c><00:04:11.560><c> escalabilidade</c><00:04:12.159><c> do</c><00:04:12.400><c> serverless,</c>
+
+00:04:13.069 --> 00:04:13.079 align:start position:0%
+para ter a escalabilidade do serverless,
+ 
+
+00:04:13.079 --> 00:04:15.149 align:start position:0%
+para ter a escalabilidade do serverless,
+mas<00:04:13.280><c> também</c><00:04:13.480><c> dá</c><00:04:13.640><c> para</c><00:04:13.760><c> rodar</c><00:04:14.000><c> na</c><00:04:14.120><c> AWS</c><00:04:14.720><c> Farget</c>
+
+00:04:15.149 --> 00:04:15.159 align:start position:0%
+mas também dá para rodar na AWS Farget
+ 
+
+00:04:15.159 --> 00:04:16.990 align:start position:0%
+mas também dá para rodar na AWS Farget
+para<00:04:15.319><c> tarefas</c><00:04:15.720><c> mais</c><00:04:15.959><c> longas</c><00:04:16.440><c> ou</c><00:04:16.639><c> até</c><00:04:16.799><c> numa</c>
+
+00:04:16.990 --> 00:04:17.000 align:start position:0%
+para tarefas mais longas ou até numa
+ 
+
+00:04:17.000 --> 00:04:18.990 align:start position:0%
+para tarefas mais longas ou até numa
+máquina<00:04:17.359><c> local</c><00:04:17.680><c> para</c><00:04:17.840><c> desenvolver.</c><00:04:18.799><c> Uma</c>
+
+00:04:18.990 --> 00:04:19.000 align:start position:0%
+máquina local para desenvolver. Uma
+ 
+
+00:04:19.000 --> 00:04:21.349 align:start position:0%
+máquina local para desenvolver. Uma
+imagem,<00:04:19.639><c> vários</c><00:04:20.000><c> destinos.</c><00:04:20.799><c> Isso</c><00:04:21.079><c> é</c>
+
+00:04:21.349 --> 00:04:21.359 align:start position:0%
+imagem, vários destinos. Isso é
+ 
+
+00:04:21.359 --> 00:04:23.830 align:start position:0%
+imagem, vários destinos. Isso é
+sensacional.<00:04:22.479><c> E</c><00:04:22.600><c> o</c><00:04:22.759><c> melhor</c><00:04:23.080><c> de</c><00:04:23.280><c> tudo,</c>
+
+00:04:23.830 --> 00:04:23.840 align:start position:0%
+sensacional. E o melhor de tudo,
+ 
+
+00:04:23.840 --> 00:04:25.670 align:start position:0%
+sensacional. E o melhor de tudo,
+integrar<00:04:24.280><c> isso</c><00:04:24.479><c> é</c><00:04:24.720><c> muito,</c><00:04:25.040><c> mas</c><00:04:25.320><c> muito</c>
+
+00:04:25.670 --> 00:04:25.680 align:start position:0%
+integrar isso é muito, mas muito
+ 
+
+00:04:25.680 --> 00:04:27.990 align:start position:0%
+integrar isso é muito, mas muito
+simples.<00:04:26.520><c> Para</c><00:04:26.639><c> quem</c><00:04:26.800><c> usa</c><00:04:27.040><c> contêineres,</c><00:04:27.759><c> é</c>
+
+00:04:27.990 --> 00:04:28.000 align:start position:0%
+simples. Para quem usa contêineres, é
+ 
+
+00:04:28.000 --> 00:04:29.790 align:start position:0%
+simples. Para quem usa contêineres, é
+literalmente<00:04:28.639><c> uma</c><00:04:28.880><c> linha</c><00:04:29.080><c> a</c><00:04:29.199><c> mais</c><00:04:29.360><c> no</c><00:04:29.479><c> Docker</c>
+
+00:04:29.790 --> 00:04:29.800 align:start position:0%
+literalmente uma linha a mais no Docker
+ 
+
+00:04:29.800 --> 00:04:32.710 align:start position:0%
+literalmente uma linha a mais no Docker
+file.<00:04:30.360><c> Só</c><00:04:30.560><c> isso.</c><00:04:31.199><c> Para</c><00:04:31.360><c> quem</c><00:04:31.520><c> usa</c><00:04:31.759><c> pacote</c><00:04:32.160><c> zip,</c>
+
+00:04:32.710 --> 00:04:32.720 align:start position:0%
+file. Só isso. Para quem usa pacote zip,
+ 
+
+00:04:32.720 --> 00:04:34.909 align:start position:0%
+file. Só isso. Para quem usa pacote zip,
+é<00:04:32.880><c> só</c><00:04:33.000><c> anexar</c><00:04:33.440><c> uma</c><00:04:33.560><c> lambda</c><00:04:33.919><c> layer</c><00:04:34.280><c> pública</c><00:04:34.759><c> e</c>
+
+00:04:34.909 --> 00:04:34.919 align:start position:0%
+é só anexar uma lambda layer pública e
+ 
+
+00:04:34.919 --> 00:04:36.629 align:start position:0%
+é só anexar uma lambda layer pública e
+configurar<00:04:35.360><c> uma</c><00:04:35.479><c> variável</c><00:04:35.840><c> de</c><00:04:36.000><c> ambiente.</c>
+
+00:04:36.629 --> 00:04:36.639 align:start position:0%
+configurar uma variável de ambiente.
+ 
+
+00:04:36.639 --> 00:04:38.629 align:start position:0%
+configurar uma variável de ambiente.
+Pronto,<00:04:37.240><c> é</c><00:04:37.400><c> um</c><00:04:37.520><c> esforço</c><00:04:38.000><c> mínimo</c><00:04:38.360><c> para</c><00:04:38.520><c> uma</c>
+
+00:04:38.629 --> 00:04:38.639 align:start position:0%
+Pronto, é um esforço mínimo para uma
+ 
+
+00:04:38.639 --> 00:04:41.390 align:start position:0%
+Pronto, é um esforço mínimo para uma
+flexibilidade<00:04:39.400><c> máxima.</c><00:04:40.320><c> Certo?</c><00:04:40.919><c> Agora</c><00:04:41.160><c> que</c><00:04:41.280><c> a</c>
+
+00:04:41.390 --> 00:04:41.400 align:start position:0%
+flexibilidade máxima. Certo? Agora que a
+ 
+
+00:04:41.400 --> 00:04:43.150 align:start position:0%
+flexibilidade máxima. Certo? Agora que a
+gente<00:04:41.479><c> já</c><00:04:41.720><c> entendeu</c><00:04:42.039><c> o</c><00:04:42.160><c> básico,</c><00:04:42.720><c> vamos</c><00:04:42.919><c> subir</c>
+
+00:04:43.150 --> 00:04:43.160 align:start position:0%
+gente já entendeu o básico, vamos subir
+ 
+
+00:04:43.160 --> 00:04:44.469 align:start position:0%
+gente já entendeu o básico, vamos subir
+um<00:04:43.240><c> pouco</c><00:04:43.400><c> o</c><00:04:43.440><c> nível</c><00:04:43.720><c> e</c><00:04:43.880><c> falar</c><00:04:44.039><c> de</c><00:04:44.199><c> algumas</c>
+
+00:04:44.469 --> 00:04:44.479 align:start position:0%
+um pouco o nível e falar de algumas
+ 
+
+00:04:44.479 --> 00:04:46.670 align:start position:0%
+um pouco o nível e falar de algumas
+capacidades<00:04:45.120><c> mais</c><00:04:45.360><c> avançadas</c><00:04:46.160><c> que</c><00:04:46.360><c> trazem</c>
+
+00:04:46.670 --> 00:04:46.680 align:start position:0%
+capacidades mais avançadas que trazem
+ 
+
+00:04:46.680 --> 00:04:48.710 align:start position:0%
+capacidades mais avançadas que trazem
+ainda<00:04:47.039><c> mais</c><00:04:47.280><c> benefícios</c><00:04:47.840><c> de</c><00:04:48.039><c> performance</c><00:04:48.560><c> e</c>
+
+00:04:48.710 --> 00:04:48.720 align:start position:0%
+ainda mais benefícios de performance e
+ 
+
+00:04:48.720 --> 00:04:51.430 align:start position:0%
+ainda mais benefícios de performance e
+de<00:04:48.840><c> arquitetura.</c><00:04:49.800><c> Olha</c><00:04:50.080><c> só,</c><00:04:50.520><c> o</c><00:04:50.639><c> adaptador</c><00:04:51.160><c> faz</c>
+
+00:04:51.430 --> 00:04:51.440 align:start position:0%
+de arquitetura. Olha só, o adaptador faz
+ 
+
+00:04:51.440 --> 00:04:53.270 align:start position:0%
+de arquitetura. Olha só, o adaptador faz
+mais<00:04:51.600><c> do</c><00:04:51.720><c> que</c><00:04:51.800><c> só</c><00:04:52.000><c> traduzir.</c><00:04:52.720><c> Ele</c><00:04:52.880><c> suporta</c>
+
+00:04:53.270 --> 00:04:53.280 align:start position:0%
+mais do que só traduzir. Ele suporta
+ 
+
+00:04:53.280 --> 00:04:55.230 align:start position:0%
+mais do que só traduzir. Ele suporta
+streams<00:04:53.639><c> de</c><00:04:53.800><c> resposta,</c><00:04:54.440><c> o</c><00:04:54.560><c> que</c><00:04:54.639><c> é</c><00:04:54.840><c> ótimo</c><00:04:55.039><c> para</c>
+
+00:04:55.230 --> 00:04:55.240 align:start position:0%
+streams de resposta, o que é ótimo para
+ 
+
+00:04:55.240 --> 00:04:57.310 align:start position:0%
+streams de resposta, o que é ótimo para
+interfaces<00:04:55.800><c> web,</c><00:04:56.280><c> porque</c><00:04:56.479><c> a</c><00:04:56.600><c> página</c><00:04:56.919><c> começa</c><00:04:57.199><c> a</c>
+
+00:04:57.310 --> 00:04:57.320 align:start position:0%
+interfaces web, porque a página começa a
+ 
+
+00:04:57.320 --> 00:04:59.430 align:start position:0%
+interfaces web, porque a página começa a
+carregar<00:04:57.720><c> muito</c><00:04:57.960><c> mais</c><00:04:58.120><c> rápido</c><00:04:58.440><c> pro</c><00:04:58.600><c> usuário.</c>
+
+00:04:59.430 --> 00:04:59.440 align:start position:0%
+carregar muito mais rápido pro usuário.
+ 
+
+00:04:59.440 --> 00:05:01.029 align:start position:0%
+carregar muito mais rápido pro usuário.
+Ele<00:04:59.600><c> também</c><00:04:59.840><c> consegue</c><00:05:00.160><c> lidar</c><00:05:00.440><c> com</c><00:05:00.600><c> gatilhos</c>
+
+00:05:01.029 --> 00:05:01.039 align:start position:0%
+Ele também consegue lidar com gatilhos
+ 
+
+00:05:01.039 --> 00:05:03.230 align:start position:0%
+Ele também consegue lidar com gatilhos
+que<00:05:01.160><c> não</c><00:05:01.280><c> são</c><00:05:01.440><c> HTTP,</c><00:05:02.280><c> tipo</c><00:05:02.479><c> uma</c><00:05:02.639><c> mensagem</c><00:05:03.000><c> numa</c>
+
+00:05:03.230 --> 00:05:03.240 align:start position:0%
+que não são HTTP, tipo uma mensagem numa
+ 
+
+00:05:03.240 --> 00:05:05.790 align:start position:0%
+que não são HTTP, tipo uma mensagem numa
+fila<00:05:03.639><c> SQS</c><00:05:04.360><c> e</c><00:05:04.560><c> entregar</c><00:05:04.960><c> pra</c><00:05:05.160><c> aplicação</c><00:05:05.600><c> como</c>
+
+00:05:05.790 --> 00:05:05.800 align:start position:0%
+fila SQS e entregar pra aplicação como
+ 
+
+00:05:05.800 --> 00:05:08.070 align:start position:0%
+fila SQS e entregar pra aplicação como
+se<00:05:05.919><c> fosse</c><00:05:06.160><c> uma</c><00:05:06.360><c> requisição</c><00:05:07.199><c> e</c><00:05:07.400><c> ainda</c><00:05:07.680><c> gerencia</c>
+
+00:05:08.070 --> 00:05:08.080 align:start position:0%
+se fosse uma requisição e ainda gerencia
+ 
+
+00:05:08.080 --> 00:05:09.950 align:start position:0%
+se fosse uma requisição e ainda gerencia
+o<00:05:08.160><c> desligamento</c><00:05:08.639><c> de</c><00:05:08.840><c> forma</c><00:05:09.039><c> organizada</c><00:05:09.759><c> e</c>
+
+00:05:09.950 --> 00:05:09.960 align:start position:0%
+o desligamento de forma organizada e
+ 
+
+00:05:09.960 --> 00:05:11.909 align:start position:0%
+o desligamento de forma organizada e
+pode<00:05:10.120><c> até</c><00:05:10.400><c> processar</c><00:05:10.840><c> várias</c><00:05:11.199><c> requisições</c><00:05:11.720><c> ao</c>
+
+00:05:11.909 --> 00:05:11.919 align:start position:0%
+pode até processar várias requisições ao
+ 
+
+00:05:11.919 --> 00:05:13.670 align:start position:0%
+pode até processar várias requisições ao
+mesmo<00:05:12.199><c> tempo,</c><00:05:12.759><c> otimizando</c><00:05:13.240><c> o</c><00:05:13.320><c> uso</c><00:05:13.479><c> dos</c>
+
+00:05:13.670 --> 00:05:13.680 align:start position:0%
+mesmo tempo, otimizando o uso dos
+ 
+
+00:05:13.680 --> 00:05:16.110 align:start position:0%
+mesmo tempo, otimizando o uso dos
+recursos.<00:05:14.600><c> E</c><00:05:14.759><c> aqui</c><00:05:14.960><c> tem</c><00:05:15.120><c> um</c><00:05:15.240><c> detalhe</c><00:05:15.600><c> técnico</c>
+
+00:05:16.110 --> 00:05:16.120 align:start position:0%
+recursos. E aqui tem um detalhe técnico
+ 
+
+00:05:16.120 --> 00:05:17.430 align:start position:0%
+recursos. E aqui tem um detalhe técnico
+importante<00:05:16.600><c> sobre</c><00:05:16.800><c> o</c><00:05:16.919><c> streaming</c><00:05:17.240><c> de</c>
+
+00:05:17.430 --> 00:05:17.440 align:start position:0%
+importante sobre o streaming de
+ 
+
+00:05:17.440 --> 00:05:19.629 align:start position:0%
+importante sobre o streaming de
+resposta.<00:05:18.160><c> Qualquer</c><00:05:18.520><c> parte</c><00:05:18.800><c> da</c><00:05:19.080><c> resposta</c><00:05:19.440><c> que</c>
+
+00:05:19.629 --> 00:05:19.639 align:start position:0%
+resposta. Qualquer parte da resposta que
+ 
+
+00:05:19.639 --> 00:05:22.670 align:start position:0%
+resposta. Qualquer parte da resposta que
+passe<00:05:19.919><c> dos</c><00:05:20.160><c> 6</c><00:05:20.400><c> MB</c><00:05:21.000><c> iniciais</c><00:05:21.800><c> tem</c><00:05:22.000><c> uma</c><00:05:22.199><c> taxa</c><00:05:22.520><c> de</c>
+
+00:05:22.670 --> 00:05:22.680 align:start position:0%
+passe dos 6 MB iniciais tem uma taxa de
+ 
+
+00:05:22.680 --> 00:05:25.990 align:start position:0%
+passe dos 6 MB iniciais tem uma taxa de
+transferência<00:05:23.360><c> máxima</c><00:05:23.800><c> de</c><00:05:24.039><c> 2</c><00:05:24.360><c> MB/</c><00:05:25.240><c> segundo.</c><00:05:25.840><c> É</c>
+
+00:05:25.990 --> 00:05:26.000 align:start position:0%
+transferência máxima de 2 MB/ segundo. É
+ 
+
+00:05:26.000 --> 00:05:27.590 align:start position:0%
+transferência máxima de 2 MB/ segundo. É
+um<00:05:26.120><c> ponto</c><00:05:26.360><c> de</c><00:05:26.520><c> atenção</c><00:05:26.880><c> no</c><00:05:27.120><c> design</c><00:05:27.400><c> de</c>
+
+00:05:27.590 --> 00:05:27.600 align:start position:0%
+um ponto de atenção no design de
+ 
+
+00:05:27.600 --> 00:05:29.430 align:start position:0%
+um ponto de atenção no design de
+aplicações<00:05:28.080><c> que</c><00:05:28.280><c> precisam</c><00:05:28.639><c> enviar</c><00:05:29.080><c> muitos</c>
+
+00:05:29.430 --> 00:05:29.440 align:start position:0%
+aplicações que precisam enviar muitos
+ 
+
+00:05:29.440 --> 00:05:31.870 align:start position:0%
+aplicações que precisam enviar muitos
+dados<00:05:29.759><c> de</c><00:05:29.919><c> uma</c><00:05:30.080><c> vez.</c><00:05:30.919><c> Essa</c><00:05:31.160><c> citação</c><00:05:31.520><c> aqui</c><00:05:31.720><c> do</c>
+
+00:05:31.870 --> 00:05:31.880 align:start position:0%
+dados de uma vez. Essa citação aqui do
+ 
+
+00:05:31.880 --> 00:05:33.870 align:start position:0%
+dados de uma vez. Essa citação aqui do
+Zed<00:05:32.240><c> Bentar</c><00:05:32.759><c> é</c><00:05:32.919><c> fantástica</c><00:05:33.479><c> porque</c><00:05:33.639><c> ela</c>
+
+00:05:33.870 --> 00:05:33.880 align:start position:0%
+Zed Bentar é fantástica porque ela
+ 
+
+00:05:33.880 --> 00:05:36.390 align:start position:0%
+Zed Bentar é fantástica porque ela
+mostra<00:05:34.240><c> a</c><00:05:34.440><c> flexibilidade</c><00:05:35.479><c> estratégica</c><00:05:36.120><c> que</c><00:05:36.280><c> o</c>
+
+00:05:36.390 --> 00:05:36.400 align:start position:0%
+mostra a flexibilidade estratégica que o
+ 
+
+00:05:36.400 --> 00:05:39.189 align:start position:0%
+mostra a flexibilidade estratégica que o
+adaptador<00:05:36.840><c> oferece.</c><00:05:37.840><c> A</c><00:05:38.000><c> ideia</c><00:05:38.280><c> do</c><00:05:38.479><c> Lambda</c><00:05:38.840><c> Leh</c>
+
+00:05:39.189 --> 00:05:39.199 align:start position:0%
+adaptador oferece. A ideia do Lambda Leh
+ 
+
+00:05:39.199 --> 00:05:41.550 align:start position:0%
+adaptador oferece. A ideia do Lambda Leh
+é<00:05:39.440><c> genial.</c><00:05:40.400><c> É</c><00:05:40.520><c> possível</c><00:05:40.880><c> começar</c><00:05:41.280><c> com</c><00:05:41.400><c> uma</c>
+
+00:05:41.550 --> 00:05:41.560 align:start position:0%
+é genial. É possível começar com uma
+ 
+
+00:05:41.560 --> 00:05:43.950 align:start position:0%
+é genial. É possível começar com uma
+aplicação<00:05:42.120><c> monolítica</c><00:05:42.759><c> rodando</c><00:05:43.160><c> no</c><00:05:43.319><c> Lambida</c>
+
+00:05:43.950 --> 00:05:43.960 align:start position:0%
+aplicação monolítica rodando no Lambida
+ 
+
+00:05:43.960 --> 00:05:46.070 align:start position:0%
+aplicação monolítica rodando no Lambida
+para<00:05:44.160><c> ter</c><00:05:44.360><c> simplicidade</c><00:05:45.120><c> e</c><00:05:45.319><c> velocidade</c><00:05:45.880><c> de</c>
+
+00:05:46.070 --> 00:05:46.080 align:start position:0%
+para ter simplicidade e velocidade de
+ 
+
+00:05:46.080 --> 00:05:47.870 align:start position:0%
+para ter simplicidade e velocidade de
+desenvolvimento.<00:05:47.000><c> E</c><00:05:47.120><c> se</c><00:05:47.240><c> no</c><00:05:47.400><c> futuro</c><00:05:47.720><c> as</c>
+
+00:05:47.870 --> 00:05:47.880 align:start position:0%
+desenvolvimento. E se no futuro as
+ 
+
+00:05:47.880 --> 00:05:50.150 align:start position:0%
+desenvolvimento. E se no futuro as
+coisas<00:05:48.160><c> mudarem</c><00:05:48.639><c> e</c><00:05:48.840><c> for</c><00:05:49.039><c> preciso,</c><00:05:49.840><c> dá</c><00:05:50.039><c> para</c>
+
+00:05:50.150 --> 00:05:50.160 align:start position:0%
+coisas mudarem e for preciso, dá para
+ 
+
+00:05:50.160 --> 00:05:51.590 align:start position:0%
+coisas mudarem e for preciso, dá para
+migrar<00:05:50.520><c> essa</c><00:05:50.759><c> mesma</c><00:05:51.000><c> aplicação</c><00:05:51.400><c> para</c>
+
+00:05:51.590 --> 00:05:51.600 align:start position:0%
+migrar essa mesma aplicação para
+ 
+
+00:05:51.600 --> 00:05:53.510 align:start position:0%
+migrar essa mesma aplicação para
+Fargate,<00:05:52.080><c> por</c><00:05:52.240><c> exemplo,</c><00:05:52.960><c> sem</c><00:05:53.199><c> ter</c><00:05:53.360><c> que</c>
+
+00:05:53.510 --> 00:05:53.520 align:start position:0%
+Fargate, por exemplo, sem ter que
+ 
+
+00:05:53.520 --> 00:05:56.029 align:start position:0%
+Fargate, por exemplo, sem ter que
+reescrever<00:05:54.000><c> nada.</c><00:05:55.000><c> Então,</c><00:05:55.479><c> para</c><00:05:55.680><c> resumir</c>
+
+00:05:56.029 --> 00:05:56.039 align:start position:0%
+reescrever nada. Então, para resumir
+ 
+
+00:05:56.039 --> 00:05:58.990 align:start position:0%
+reescrever nada. Então, para resumir
+tudo,<00:05:56.560><c> a</c><00:05:56.720><c> grande</c><00:05:57.000><c> mensagem</c><00:05:57.600><c> é</c><00:05:57.800><c> essa.</c><00:05:58.560><c> O</c><00:05:58.680><c> Lambda</c>
+
+00:05:58.990 --> 00:05:59.000 align:start position:0%
+tudo, a grande mensagem é essa. O Lambda
+ 
+
+00:05:59.000 --> 00:06:00.629 align:start position:0%
+tudo, a grande mensagem é essa. O Lambda
+Web<00:05:59.199><c> Adapter</c><00:05:59.759><c> quebra</c><00:06:00.080><c> a</c><00:06:00.160><c> barreira</c><00:06:00.479><c> que</c>
+
+00:06:00.629 --> 00:06:00.639 align:start position:0%
+Web Adapter quebra a barreira que
+ 
+
+00:06:00.639 --> 00:06:02.150 align:start position:0%
+Web Adapter quebra a barreira que
+existia<00:06:01.080><c> entre</c><00:06:01.240><c> o</c><00:06:01.319><c> desenvolvimento</c><00:06:01.880><c> web</c>
+
+00:06:02.150 --> 00:06:02.160 align:start position:0%
+existia entre o desenvolvimento web
+ 
+
+00:06:02.160 --> 00:06:04.629 align:start position:0%
+existia entre o desenvolvimento web
+tradicional<00:06:03.000><c> e</c><00:06:03.120><c> o</c><00:06:03.240><c> mundo</c><00:06:03.560><c> servess.</c><00:06:04.479><c> Ele</c>
+
+00:06:04.629 --> 00:06:04.639 align:start position:0%
+tradicional e o mundo servess. Ele
+ 
+
+00:06:04.639 --> 00:06:06.029 align:start position:0%
+tradicional e o mundo servess. Ele
+permite<00:06:04.919><c> que</c><00:06:05.039><c> as</c><00:06:05.199><c> equipes</c><00:06:05.600><c> continuem</c>
+
+00:06:06.029 --> 00:06:06.039 align:start position:0%
+permite que as equipes continuem
+ 
+
+00:06:06.039 --> 00:06:08.029 align:start position:0%
+permite que as equipes continuem
+construindo<00:06:06.520><c> do</c><00:06:06.720><c> jeito</c><00:06:06.960><c> que</c><00:06:07.120><c> já</c><00:06:07.319><c> sabem,</c><00:06:07.880><c> com</c>
+
+00:06:08.029 --> 00:06:08.039 align:start position:0%
+construindo do jeito que já sabem, com
+ 
+
+00:06:08.039 --> 00:06:10.230 align:start position:0%
+construindo do jeito que já sabem, com
+as<00:06:08.199><c> ferramentas</c><00:06:08.639><c> que</c><00:06:08.840><c> gostam</c><00:06:09.520><c> e</c><00:06:09.720><c> ainda</c><00:06:09.960><c> assim</c>
+
+00:06:10.230 --> 00:06:10.240 align:start position:0%
+as ferramentas que gostam e ainda assim
+ 
+
+00:06:10.240 --> 00:06:11.990 align:start position:0%
+as ferramentas que gostam e ainda assim
+consigam<00:06:10.599><c> aproveitar</c><00:06:11.160><c> todos</c><00:06:11.400><c> os</c><00:06:11.560><c> benefícios</c>
+
+00:06:11.990 --> 00:06:12.000 align:start position:0%
+consigam aproveitar todos os benefícios
+ 
+
+00:06:12.000 --> 00:06:14.270 align:start position:0%
+consigam aproveitar todos os benefícios
+de<00:06:12.160><c> escalabilidade</c><00:06:12.759><c> e</c><00:06:12.919><c> custo</c><00:06:13.160><c> do</c><00:06:13.319><c> lambda.</c><00:06:14.120><c> E</c>
+
+00:06:14.270 --> 00:06:14.280 align:start position:0%
+de escalabilidade e custo do lambda. E
+ 
+
+00:06:14.280 --> 00:06:17.350 align:start position:0%
+de escalabilidade e custo do lambda. E
+para<00:06:14.440><c> fechar</c><00:06:15.080><c> fica</c><00:06:15.479><c> a</c><00:06:15.720><c> provocação.</c><00:06:17.000><c> Com</c><00:06:17.160><c> uma</c>
+
+00:06:17.350 --> 00:06:17.360 align:start position:0%
+para fechar fica a provocação. Com uma
+ 
+
+00:06:17.360 --> 00:06:19.710 align:start position:0%
+para fechar fica a provocação. Com uma
+ferramenta<00:06:17.759><c> que</c><00:06:17.960><c> traz</c><00:06:18.360><c> tanta</c><00:06:18.720><c> flexibilidade</c>
+
+00:06:19.710 --> 00:06:19.720 align:start position:0%
+ferramenta que traz tanta flexibilidade
+ 
+
+00:06:19.720 --> 00:06:22.309 align:start position:0%
+ferramenta que traz tanta flexibilidade
+e<00:06:19.919><c> quebra</c><00:06:20.360><c> tantas</c><00:06:20.800><c> barreiras,</c><00:06:21.880><c> será</c><00:06:22.120><c> que</c><00:06:22.199><c> não</c>
+
+00:06:22.309 --> 00:06:22.319 align:start position:0%
+e quebra tantas barreiras, será que não
+ 
+
+00:06:22.319 --> 00:06:24.309 align:start position:0%
+e quebra tantas barreiras, será que não
+é<00:06:22.440><c> o</c><00:06:22.560><c> momento</c><00:06:22.800><c> de</c><00:06:23.039><c> repensar</c><00:06:23.639><c> forma</c><00:06:23.960><c> como</c><00:06:24.160><c> as</c>
+
+00:06:24.309 --> 00:06:24.319 align:start position:0%
+é o momento de repensar forma como as
+ 
+
+00:06:24.319 --> 00:06:25.990 align:start position:0%
+é o momento de repensar forma como as
+aplicações<00:06:24.880><c> são</c><00:06:25.080><c> arquitetadas</c><00:06:25.840><c> e</c>
+
+00:06:25.990 --> 00:06:26.000 align:start position:0%
+aplicações são arquitetadas e
+ 
+
+00:06:26.000 --> 00:06:29.720 align:start position:0%
+aplicações são arquitetadas e
+implantadas<00:06:26.560><c> na</c><00:06:26.720><c> nuvem?</c>
+
