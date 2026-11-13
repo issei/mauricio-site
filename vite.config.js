@@ -166,8 +166,6 @@ export default defineConfig({
        */
       exclude: [
         '/404',
-        '/diagnostic',
-        '/test-github',
         '/mapmind',
         '/exemplopdi',
         '/vsl',
