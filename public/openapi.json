@@ -32,17 +32,14 @@
     "/star.json": {
       "get": {
         "summary": "Retrieve STAR-formatted projects",
-        "description": "Returns a list of project case studies structured with Situation, Task, Action, and Result methodology.",
+        "description": "Returns the STAR project case studies (Situation, Task, Action, Result) as an object keyed by year (\"2018\" … \"2025\"); each value is the list of that year's projects.",
         "responses": {
           "200": {
             "description": "Successful response with STAR data",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProjectItem"
-                  }
+                  "$ref": "#/components/schemas/StarData"
                 }
               }
             }
@@ -127,6 +124,100 @@
             }
           }
         }
+      },
+      "StarData": {
+        "type": "object",
+        "description": "Projects grouped by year. Keys are four-digit years.",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/StarProject"
+          }
+        }
+      },
+      "StarProject": {
+        "type": "object",
+        "required": [
+          "titulo"
+        ],
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "situacao": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "tarefas": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "tarefa": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "acoes": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "resultados": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "sub_projetos": {
+            "type": "array",
+            "description": "Present when one entry groups several projects (e.g. \"Sustentação AFVC\").",
+            "items": {
+              "$ref": "#/components/schemas/StarProject"
+            }
+          }
+        },
+        "description": "Field shapes vary between entries: situacao is a string or a list of strings, and the task list appears as tarefas or tarefa."
       }
     }
   }

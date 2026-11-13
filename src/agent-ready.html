@@ -1350,7 +1350,7 @@ LLMs-full: https://mauricio.issei.com.br/llms-full.txt</code></pre>
                 <td><code>webMcp</code></td>
                 <td><a href="https://github.com/webmachinelearning/webmcp" target="_blank" rel="noopener">WebMCP</a></td>
                 <td>Que ações eu posso executar sem sair da página?</td>
-                <td><code>src/index.html</code></td>
+                <td><a href="/webmcp.js">/webmcp.js</a></td>
               </tr>
             </tbody>
           </table>
@@ -1517,7 +1517,7 @@ LLMs-full: https://mauricio.issei.com.br/llms-full.txt</code></pre>
               <div class="ar-code">
                 <div class="ar-code__head">
                   <span class="ar-tag ar-tag--real">Código real deste site</span>
-                  <span class="ar-code__path">src/index.html (trecho)</span>
+                  <span class="ar-code__path">public/webmcp.js (trecho)</span>
                 </div>
                 <pre><code>if (typeof navigator.modelContext !== 'undefined') {
     const controller = new AbortController();
@@ -1525,7 +1525,7 @@ LLMs-full: https://mauricio.issei.com.br/llms-full.txt</code></pre>
 
     navigator.modelContext.registerTool({
         name: 'get_cv_data',
-        description: 'Retrieve the full structured curriculum vitae in JSON format.',
+        description: 'Retrieve the full structured curriculum vitae of Maurício Issei in JSON format.',
         inputSchema: { type: 'object', properties: {} },
         execute: async () =&gt; {
             const response = await fetch('/cv.json');

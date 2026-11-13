@@ -54,7 +54,7 @@ Design Thinking | UX Strategy
 ## Experiência Profissional
 
 ### Tech Lead | **Rede**
-**Fevereiro 2018 – Presente (7 anos)** | São Paulo, SP | Híbrida
+**Fevereiro 2018 – Presente** | São Paulo, SP | Híbrida
 
 Líder Técnico responsável por soluções na plataforma **Salesforce**, com arquiteturas de integração **on-premise** e **AWS**. Atuação na definição e desenvolvimento de melhores práticas, fortalecendo a base de conhecimento corporativa com foco nas necessidades dos clientes.
 
@@ -144,6 +144,7 @@ Desenvolvimento de sistema de gestão de almoxarifado de peças e sistema de apr
 ### AI & Agentic Systems (2025-2026)
 - **AI in Product Management** | O'Reilly Media | [Verificar](https://www.credly.com/badges/3a1c354d-cc5a-4ee5-85b5-d270d9487a51)
 - **MCP Developer Blueprint** | O'Reilly Media | [Verificar](https://www.credly.com/badges/ccbed806-158f-426a-a11b-832ca02dfae8)
+- **GitHub Copilot Guide** | O'Reilly Media | [Verificar](https://www.credly.com/badges/116915b5-f94e-4d73-8e5f-9793766be71c)
 - **AI Agentic Design Patterns** | O'Reilly Media | [Verificar](https://www.credly.com/badges/f9103348-c341-4b96-9ba0-46c356127b07)
 - **AI with Knowledge Graphs** | O'Reilly Media | [Verificar](https://www.credly.com/badges/347ce866-ad0f-47ca-8c42-f42e7ba813e7)
 - **Building Intelligent AI Agents** | O'Reilly Media | [Verificar](https://www.credly.com/badges/076e90b7-04bb-4e94-b8d6-eb77f9b1f259)
@@ -160,6 +161,7 @@ Desenvolvimento de sistema de gestão de almoxarifado de peças e sistema de apr
 - **Practitioner – Leadership D&A** | Itaú Unibanco | [Verificar](https://www.credly.com/badges/a8dad682-bc42-4978-b085-ae720cbd8667)
 - **Practitioner – Generative AI** | Itaú Unibanco | [Verificar](https://www.credly.com/badges/231cd871-ab40-4c65-8834-e9ca77792f56)
 - **Practitioner – D&A Foundation** | Itaú Unibanco | [Verificar](https://www.credly.com/badges/1f596ad2-9834-45b7-99f0-298eddd56cb7)
+- **Practitioner – D&A Foundation** | Itaú Unibanco | [Verificar](http://badges.com.br/share/96939e18d6e0d41488339e14dc93d614.php?a=3694)
 
 ### Cloud & Infrastructure (2021-2022)
 - **AWS Certified Cloud Practitioner** | Amazon Web Services | [Verificar](https://www.credly.com/badges/439e9244-9403-459d-b0ed-02aa51652951)

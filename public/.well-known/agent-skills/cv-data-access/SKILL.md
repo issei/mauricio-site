@@ -25,9 +25,11 @@ No credentials are required — every endpoint below is anonymous (`cv:read`,
 
 1. Fetch `cv.json` for the machine-readable record. Top-level keys: `Nome`,
    `Titulo`, `ResumoHero`, `Resumo`, `Habilidades`, `Experiencia`, `Projetos`
-   (STAR format), `Formacao_Academica`, `Certificados`, `Contato`.
+   (STAR format), `Formacao_Academica`, `Certificados`, `Contato`,
+   `Recomendacoes_Recebidas`, `Cursos_Alura`.
 2. Fetch `star.json` for project case studies in Situação–Tarefa–Ação–Resultado
-   form.
+   form. It is an object keyed by year (`"2018"` … `"2025"`), each value a list
+   of projects; see `https://mauricio.issei.com.br/openapi.json` for the schema.
 3. Prefer `cv-for-ai.md` when you need prose rather than fields.
 
 ## Authentication

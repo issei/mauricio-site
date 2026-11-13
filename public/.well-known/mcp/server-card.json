@@ -2,7 +2,7 @@
   "serverInfo": {
     "name": "mauricio-issei-portfolio",
     "version": "1.0.0",
-    "description": "MCP server exposing structured professional data for Maurício Yokoyama Issei — Tech Lead & Staff Software Engineer with 20+ years of experience in Salesforce, AWS, APIs and SRE.",
+    "description": "MCP server exposing structured professional data for Maurício Yokoyama Issei — Tech Lead with 20+ years of experience in Salesforce, AWS, APIs and SRE.",
     "homepage": "https://mauricio.issei.com.br",
     "contact": {
       "email": "mauricio@issei.com.br",
@@ -13,7 +13,7 @@
   "transport": "streamable-http",
   "status": {
     "endpoint": "planned",
-    "note": "The streamable-http endpoint at /mcp is not live yet — do not attempt to connect to it. Available today: the tools below run in-page via WebMCP (navigator.modelContext) at https://mauricio.issei.com.br, exposed there as get_cv_data and get_star_projects; and every resource URI listed in this card is fetchable directly over HTTPS with no credentials.",
+    "note": "The streamable-http endpoint at /mcp is not live yet — do not attempt to connect to it. Available today: get_cv and get_projects run in-page via WebMCP (navigator.modelContext) at https://mauricio.issei.com.br, exposed there as get_cv_data and get_star_projects; get_skills has no in-page equivalent yet (skills are the Habilidades field of cv.json); and every resource URI listed in this card is fetchable directly over HTTPS with no credentials.",
     "availableToday": ["webmcp", "static-resources"]
   },
   "capabilities": {
@@ -32,7 +32,7 @@
     {
       "uri": "https://mauricio.issei.com.br/star.json",
       "name": "STAR Projects (JSON)",
-      "description": "18 project case studies formatted with Situation-Task-Action-Result methodology.",
+      "description": "19 project case studies formatted with Situation-Task-Action-Result methodology, grouped by year.",
       "mimeType": "application/json"
     },
     {

@@ -156,6 +156,7 @@ esses blocos à mão: edite o `cv.json` e rode o gerador. O `npm run gate` confe
 | `src/` | Active source code (HTML, CSS, JS). |
 | `src/en/`, `public/en/` | **Gerados.** Gêmeo em inglês — não editar à mão. |
 | `public/` | Assets and the `cv.json` local fallback. |
+| `public/llms.txt`, `public/llms-full.txt` | **Gerados** por `scripts/gen-llms.mjs` (de `cv.json`, do catálogo e dos `.md` de currículo). Não editar à mão; o gate confere. |
 | `.agents/` | **YOUR HOME**. Skills, commands, and workflows. |
 | `.codegraph/` | CodeGraph's local index (gitignored). See CodeGraph section above. |
 | `docs/specs/` | Detailed technical specifications. |
