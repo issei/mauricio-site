@@ -55,7 +55,7 @@ Operators process data in the US and other countries, based on LGPD art. 33 and 
 
 After the deadline, the data are anonymous or deleted (LGPD, art. 16).
 
-## 8. Rights of the holder
+## 8. Rights of the data subject
 
 Confirmation, access, correction, anonymization/blocking/elimination, portability, information on sharing, revocation of consent, objection to processing based on legitimate interest and human review of automated decisions (LGPD art. 18; GDPR art. 15-22). Free service in up to 15 days (LGPD) or 30 days (GDPR). California residents: the GPC signal is respected as opt-out.
 

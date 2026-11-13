@@ -22,7 +22,7 @@ It lists, in a technical and nominal way, the cookies and similar technologies (
 | `mj-muted` | mauricio.issei.com.br | localStorage | persistent | Sound off on page The Journey in Pixel Art; recorded only when you use the sound button |
 | `entrevista-streaming:v1`, `entrevista-streaming:v1:salvar` | mauricio.issei.com.br | localStorage | persistent | Written interview answers and the choice to save or not; the save can be turned off on the page and nothing is sent to the server |
 | `_ga` | .issei.com.br | HTTP cookie | 400 days | Unique visitor identifier (GA4) |
-| `_g_GEKLHZYVYX` | .issei.com.br | HTTP cookie | 400 days | Status of session GA4 |
+| `_ga_GEKLHZYVYX` | .issei.com.br | HTTP cookie | 400 days | Status of session GA4 |
 | `_clck` | .issei.com.br | HTTP cookie | 1 year | Microsoft Clarity User ID and preferences |
 | `_clsk` | .issei.com.br | HTTP cookie | 1 day | Connect the page views of the same visit on Microsoft Clarity |
 | `CLID` | www.clarity.ms | third party cookie | 1 year | Register the first time Microsoft Clarity has seen this browser on any website that uses Clarity |
