@@ -16,19 +16,14 @@ Isto é um fato registrado, não uma defesa: se um visitante chegar nelas, as ba
 
 ---
 
-### EXC-001 — `src/diagnostic.html`
-- **WCAG:** 1.3.1, 3.3.2, 4.1.2 · **Severidade:** 🔴 Critical (axe `label`, 2 campos) · `placeholder-label` (verify-a11y)
-- **Quebrado:** campos sem rótulo programático; leitor de tela não sabe o que preencher. Sem `<main>` nem skip link.
-- **Contorno:** nenhum público — página de uso interno. **Resolução:** rótulos `<label>`; ou remover do build público.
+### EXC-001 — `src/diagnostic.html` · ✅ resolvida (2026-11-13)
+### EXC-002 — `src/test-github.html` · ✅ resolvida (2026-11-13)
+- **Resolução aplicada:** as duas páginas e `src/js/github-service.js` (usado só por elas) saíram do build público.
+  Eram ferramentas internas do painel administrativo, que já não existe; pediam token do GitHub num
+  formulário publicado no domínio, sem rótulo e sem `noindex`. Entradas removidas da catraca.
 
-### EXC-002 — `src/test-github.html`
-- **WCAG:** 1.3.1, 3.3.2, 4.1.2, 1.4.10 · **Severidade:** 🔴 Critical (axe `label`, 2 campos) + rolagem horizontal a 320 px
-- **Quebrado:** idem EXC-001. **Contorno:** nenhum público (teste interno). **Resolução:** idem; candidata a remoção.
-
-### EXC-003 — `src/admin.html` e `src/admin-editor.html`
-- **WCAG:** 2.4.1, 1.3.1 (sem `<main>`/skip link); `admin-editor.html:50` overlay `div onclick` sem equivalente de teclado (2.1.1); `outline:none` em `admin.html` (2.4.7, verificar)
-- **Severidade:** 🟠 High · **Quebrado:** edição do CV por teclado/leitor de tela não verificada. **Contorno:** o CV também se edita direto em `public/cv.json` (workflow documentado).
-- **Resolução:** páginas atrás de autenticação ou fora do bundle público; ou corrigir.
+### EXC-003 — `src/admin.html` e `src/admin-editor.html` · ✅ resolvida
+- As duas páginas já não existem no repositório (o CV se edita direto em `public/cv.json`).
 
 ### EXC-004 — `src/mapmind.html`
 - **WCAG:** 2.4.1, 1.3.1 · **Severidade:** 🟡 Medium · 1º foco cai em `<object>`; sem `<main>` nem skip link.

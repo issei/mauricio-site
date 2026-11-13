@@ -1,7 +1,74 @@
 # Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)
 
+O Magnitude é um motor de inferência local e de código aberto para rodar modelos de IA no computador que você já tem. O vídeo mostra como ele analisa o hardware e escolhe o modelo, carrega os modelos sob demanda, protege a memória e se liga a agentes de programação.
+
 Vídeo de Maurício Yokoyama Issei, publicado em 11 de setembro de 2026 (8 min 22 s).
 Assistir: https://www.youtube.com/watch?v=8z4JuiIOT58
+
+_O vídeo e a transcrição estão em português. Os minutos entre colchetes, como [04:12], apontam para o trecho do vídeo._
+
+## Por que IA local é difícil
+
+Muita gente quer uma IA 100% privada e sem assinatura, mas o esforço técnico para fazer isso funcionar é uma barreira [00:00]. O Magnitude é um motor de inferência local e de código aberto que tenta tirar essa barreira [00:22].
+
+Quem já configurou modelos em casa conhece o ciclo de tentativa e erro: arquivos GGUF, limites de quantização que podem estragar o modelo e travamentos por falta de memória [00:43].
+
+A IA na nuvem é poderosa, mas tem custo contínuo, risco de privacidade e limites de uso [01:46]. A IA local tradicional é gratuita e privada, mas instável e difícil de ajustar [02:08]. Segundo o vídeo, o hardware atual tem potência de sobra; faltava um orquestrador [02:08].
+
+## O fim da configuração manual
+
+O Magnitude faz o trabalho em quatro passos [02:28]:
+
+- Analisa o processador e a memória disponível [02:28].
+- Cataloga e ranqueia as melhores combinações de modelo [02:50].
+- Baixa e configura tudo sozinho [02:50].
+- Inicia o modelo já ligado ao agente de sua preferência [02:50].
+
+O ranking pesa a velocidade esperada, a qualidade do modelo e a quantização, e compara o tamanho da janela de contexto com a memória que realmente sobra [03:12].
+
+Ele roda em Apple Silicon, em placas NVIDIA e AMD e só em CPU, no Linux e no Windows pelo WSL [03:33].
+
+## Carregamento sob demanda
+
+Antes, subir um modelo ocupava boa parte da memória até o processo ser fechado [04:15]. No Magnitude, os modelos ficam no disco e só vão para a memória quando um agente manda um comando [04:15].
+
+O vídeo usa uma analogia: o modelo é uma enciclopédia na estante (o disco) que só vai para a mesa (a memória) na hora da leitura e volta depois [04:35].
+
+## Gerenciamento de memória
+
+O uso de memória muda o tempo todo, por causa do navegador e de outros programas [05:16]. Por isso, o Magnitude confere a memória em tempo real e só carrega o modelo se houver margem de segurança [05:16].
+
+- Descarrega os modelos quando ficam inativos [05:38].
+- Refaz o cálculo de memória antes de cada novo carregamento [05:38].
+- Interrompe a inferência se a memória cair demais, e preserva o estado do prompt para não perder o contexto [05:38].
+
+## Integração com agentes
+
+Modelos abertos costumam ter formatos de raciocínio e templates de chat diferentes, o que quebra as ferramentas [06:00]. O Magnitude normaliza isso e apresenta uma só interface, para as ferramentas trocarem de modelo sem reescrever código [06:22].
+
+Ele funciona com o Magnitude Harness e com ferramentas como Claude Code, Cline e Codex [06:43]. O motor expõe APIs locais no padrão da OpenAI e da Anthropic, então os agentes falam com ele como se falassem com a nuvem [07:03].
+
+## Custo e privacidade
+
+O custo de cada chamada é zero: sem mensalidade, sem pacote de tokens e sem chave de API [07:23]. O código e os prompts não saem da máquina [07:23].
+
+## Perguntas frequentes
+
+### O Magnitude roda no Windows?
+
+Sim, pelo WSL. Também roda no macOS com Apple Silicon e no Linux [03:33].
+
+### O modelo fica ocupando a memória o tempo todo?
+
+Não. Os modelos ficam no disco e só vão para a memória quando um agente pede, e são descarregados quando ficam inativos [04:15].
+
+## Fontes
+
+- [Repositório oficial no GitHub](https://github.com/magnitudedev/magnitude): O Magnitude é um motor de inferência local e de código aberto.
+- [Catálogo e recomendação de modelos](https://docs.magnitude.dev/models): O Magnitude recomenda modelo, quantização e tamanho de contexto conforme o hardware.
+- [Arquitetura de inferência e performance](https://docs.magnitude.dev/inference): Os modelos são carregados sob demanda, e o motor confere a memória antes de carregar.
+
+Revisado por Maurício Yokoyama Issei em 12 de novembro de 2026.
 
 Assuntos: [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
 

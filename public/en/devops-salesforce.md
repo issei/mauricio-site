@@ -10,7 +10,7 @@ Putting an AI agent to write code in a shared org Salesforce is only safe in fou
 - **Foundation** — VS Code, Salesforce CLI and JDK 21 in the right order; then IA connected to live org by an MCP Server, not just to files.
 - **Architecture** — Flosum Cloud Agent translates metadata into Git in both directions; Delta Deployment, Overwrite Protection and Smart Merge protect the target org.
 - **Methodology** — Spec-Driven Development: You write WHO and WHY. Impact Matrix and Acting Limits cut rework and wasted computing.
-- **Governance** — the repository is the long-term memory of the AI: knowledge-base, AGENTS.md, playbooks and skill versions.
+- **Governance** — the repository is AI's long-term memory: knowledge-base, AGENTS.md, playbooks and versioned skills.
 
 ## Frequently Asked Questions
 
@@ -24,7 +24,7 @@ Claude Code for interactive work in the editor: pair programming, diff review wi
 
 **What is Flosum Cloud Agent for?**
 
-It's a Node service. js hosted out of the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized.
+It is a Node.js service hosted outside the org that translates in both directions between the Salesforce Metadata API and the Git protocol. It is he who makes the org readable as a common Git repository — the format for which Claude Code and Devin were optimized.
 
 **How to prevent AI from hallucinating paths or breaking a shared org?**
 

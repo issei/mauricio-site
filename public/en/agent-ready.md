@@ -14,7 +14,7 @@
 
 ## The five layers of discovery
 
-The agentic surface of this site is published in five independent layers among each other: (1) DNS — HTTPS/SVCB records under  agents., resolved before any HTTP and validated by DNSSEC; (2) HTTP header — Link (RFC 8288) with seven relationships in every response, plus Vary: Accept; (3) /.well-known/ — api-catalog (RFC 9727), ai-catalog.json, mcp/server-card.json, agent-card.json, agent-kills/index.json, oauth-protected-resource (RFC 9728), openid-configuration and oauth-authorization-server; (4) auth — auth.md in prosa plus Oauth metadata; (5) runtime — tools registered in navigator. modelContext (WebMCP). None of them depend on the other: the agent enters by anyone, because you do not control which one the client knows.
+The agentic surface of this site is published in five independent layers: (1) DNS — HTTPS/SVCB records under  agents., resolved before any HTTP and validated by DNSSEC; (2) HTTP header — Link (RFC 8288) with seven relationships in every response, plus Vary: Accept; (3) /.well-known/ — api-catalog (RFC 9727), ai-catalog.json, mcp/server-card.json, agent-card.json, agent-kills/index.json, oauth-protected-resource (RFC 9728), openid-configuration and oauth-authorization-server; (4) auth — auth.md in prosa plus Oauth metadata; (5) runtime — tools registered on navigator. modelContext (WebMCP). None of them depend on the other: the agent enters by anyone, because you do not control which one the client knows.
 
 ## Markdown Content Negotiation
 
@@ -22,7 +22,7 @@ The same URL responds HTML to browsers and Markdown to those who send Accept: te
 
 ## Machine-readable usage control
 
-Robots. txt answers if the bot can fetch; Content-Signal answers what he can do later. There are three independent decisions — search, ai-input and ai-train — and they deserve independent answers. In this site: Content-Signal: ai-train=no, search=yes, ai-input=yes. A check that goes through no blocking is not the same as a check that goes through the presence of a rule: if your policy differs by agent, you need to write it.
+robots.txt answers if the bot can fetch; Content-Signal answers what he can do later. There are three independent decisions — search, ai-input and ai-train — and they deserve independent answers. In this site: Content-Signal: ai-train=no, search=yes, ai-input=yes. A check that goes through no blocking is not the same as a check that goes through the presence of a rule: if your policy differs by agent, you need to write it.
 
 ## Invocable contracts
 
@@ -52,11 +52,11 @@ It is delivering the same URL in Markdown when the client sends Accept: text/mar
 
 **What is an MCP Server Card?**
 
-It is a JSON document in /.well-known/mcp/server-card.json that describes, in a machine-readable way, which tools and features a domain exposes by the Model Context Protocol: server name, transport, typed input tools and downloadable features. It is the layer of discovery — the description of the contract. Post on it exactly the capabilities you are ready to sustain.
+It is a JSON document in /.well-known/mcp/server-card.json that describes, in a machine-readable way, which tools and features a domain exposes by Model Context Protocol: server name, transport, typed input tools and loadable features. It is the layer of discovery — the description of the contract. Post on it exactly the capabilities you are ready to sustain.
 
 **What are Agent Skills?**
 
-Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.
+Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in a index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.
 
 **How do agents find APIs?**
 
@@ -64,7 +64,7 @@ By the RFC 9727 Catalog API: a linket in /.well-known/api-catalog that, for each
 
 **How to control access to AI bots?**
 
-With two complementary layers. The robots.txt (RFC 9309) responds if the bot can fetch. The Content-Signal directive answers what it can do after it has sought, separating three independent decisions: search (appearing in search), ai-input (being used as source of a generated response) and ai-train (turn training data). To distinguish bots from each other by cryptographic identity, there is also Web Bot Auth, based on HTTP message signature.
+With two complementary layers. The robots.txt (RFC 9309) answers if the bot can fetch. The Content-Signal directive answers what it can do after it has sought, separating three independent decisions: search (appearing in search), ai-input (being used as source of a generated response) and ai-train (turn training data). To distinguish bots from each other by cryptographic identity, there is also Web Bot Auth, based on HTTP message signature.
 
 **How to test if a website is Agent-Native?**
 
@@ -80,13 +80,13 @@ Nope. It means something precise and limited: the site passed the checks that th
 - **Agent-Native** — Level at which the site publishes invocable and undiscoverable contracts, not just accessible content.
 - **Header Link (RFC 8288)** — Announce related features in HTTP header; the agent discovers the surface with a HEAD.
 - **Content negotiation** — Serve different formats in the same URL as the Accept header, with Vary: Accept.
-- **Content Signals** — Directive on robots. txt declaring permitted uses: search, ai-input and ai-train.
+- **Content Signals** — Directive in robots.txt declaring permitted uses: search, ai-input and ai-train.
 - **API Catalog (RFC 9727)** — Linkset on /.well-known/api-catalog indicating specification, documentation and status of each resource.
 - **PRM (RFC 9728)** — OAuth Protected Resource Metadata: what scopes the resource requires and where the policy is.
 - **auth.md** — Markdown document describing the prose authentication stream for the agent to read.
 - **MCP Server Card** — Machine-readable description of the tools and features that a domain exposes by MCP.
 - **A2A Agent Card** — Declaration of skills that a domain offers to other agents (Agent2Agent).
-- **Agent Skills** — Reusable procedures in SKILL.md, indexed with verifiable digest SHA-256.
+- **Agent Skills** — Reusable SKILL.md procedures indexed with verifiable digest SHA-256.
 - **WebMCP** — Tool log on navigator. modelContext: the only layer in runtime.
 - **DNS-AID** — HTTPS/SVCB records under  agents. announcing agentic entry points; requires DNSSEC.
 - **Web Bot Auth** — Bot identity proven by HTTP message signature, instead of declared in User-Agent.

@@ -96,6 +96,12 @@ def _rewrite_relativo(caminho: str, sufixo: str, base: str) -> str:
         # `../x` já é inequívoco; o `./` de origem não precisa sobreviver.
         return f"../{nu}{sufixo}"
 
+    if nu.endswith(".html"):
+        # Página sem gêmeo em inglês (ex.: boutique-empresarial-showcase): de
+        # dentro de `en/` o link mantido resolvia para `/en/<página>.html`, que
+        # não existe — 404 para quem lê em inglês. Leva à versão em português.
+        return f"../{nu}{sufixo}"
+
     # Nome sem extensão e sem barra (`href="proposta"`) é rota de página: de
     # dentro de `en/` ela já resolve para `/en/proposta`.
     return f"{caminho}{sufixo}"

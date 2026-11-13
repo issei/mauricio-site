@@ -1,23 +1,25 @@
 ---
 id: 8z4JuiIOT58
 slug: magnitude-o-motor-de-ia-local-open-source-definitivo-rode
-status: rascunho
+status: publicado
 temas:
   - ferramentas-de-ia
 resumo: O Magnitude é um motor de inferência local e de código aberto para rodar modelos de IA no computador que você já tem. O vídeo mostra como ele analisa o hardware e escolhe o modelo, carrega os modelos sob demanda, protege a memória e se liga a agentes de programação.
 fontes:
   - url: https://github.com/magnitudedev/magnitude
-    titulo: Repositório oficial no GitHub
-    sustenta: O Magnitude é um motor de inferência local e de código aberto.
-    verificada: false
+    titulo: "Repositório oficial no GitHub"
+    sustenta: "O Magnitude é um motor de inferência local e de código aberto."
+    verificada: true
   - url: https://docs.magnitude.dev/models
-    titulo: Catálogo e recomendação de modelos
-    sustenta: O Magnitude recomenda modelo, quantização e tamanho de contexto conforme o hardware.
-    verificada: false
+    titulo: "Catálogo e recomendação de modelos"
+    sustenta: "O Magnitude recomenda modelo, quantização e tamanho de contexto conforme o hardware."
+    verificada: true
   - url: https://docs.magnitude.dev/inference
-    titulo: Arquitetura de inferência e performance
-    sustenta: Os modelos são carregados sob demanda, e o motor confere a memória antes de carregar.
-    verificada: false
+    titulo: "Arquitetura de inferência e performance"
+    sustenta: "Os modelos são carregados sob demanda, e o motor confere a memória antes de carregar."
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-12
 youtube:
   titulo: "Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)"
   publicado_em: 2026-09-11

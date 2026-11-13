@@ -467,7 +467,7 @@ function chipsTemas(v, temas) {
 function cartao(v, temas) {
   const y = v.youtube;
   return `<li data-temas="${esc((v.temas ?? []).join(' '))}"><article class="card">
-<img src="${esc(y.miniatura || `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`)}" alt="" loading="lazy" width="168" height="94">
+<img src="https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
 <div><h3><a href="${rotaVideo(v)}">${esc(y.titulo)}</a></h3>
 <p>${dataPt(y.publicado_em)}${y.duracao ? ` · ${duracaoPt(y.duracao)}` : ''}${v.temas?.length ? ` · ${v.temas.map((t) => esc(temas[t].nome)).join(', ')}` : ''}</p></div>
 </article></li>`;
@@ -622,7 +622,10 @@ ${artigos.map(itemArtigo).join('\n')}
 <h2>Vídeos</h2>
 `
     : '';
-  const corpo = `<p class="crumb"><a href="/videos">Vídeos</a></p>
+  // A página de assunto reúne artigos e vídeos do site e é alcançada pela home
+  // e pelo catálogo; por isso a trilha leva a Conteúdos, não ao índice de vídeos
+  // (o cabeçalho marca a mesma área, ver areaDe em scripts/gen-cabecalho.mjs).
+  const corpo = `<p class="crumb"><a href="/catalogo">Conteúdos</a></p>
 <h1>${esc(tema.nome)}</h1>
 ${tema.resumo ? `<p>${esc(tema.resumo)}</p>` : ''}
 ${blocoArtigos}<p class="meta">${contagem(lista.length, 'vídeo', 'vídeos')}</p>

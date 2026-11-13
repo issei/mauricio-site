@@ -9,7 +9,7 @@ const PAGINAS = [
   ['/curriculo.html', 'Carreira', 'page'],
   ['/catalogo.html', 'Conteúdos', 'page'],
   ['/videos.html', 'Vídeos', 'page'],
-  ['/temas/engenharia-agentica.html', 'Vídeos', 'true'],
+  ['/temas/engenharia-agentica.html', 'Conteúdos', 'true'],
   ['/privacidade.html', null, null],
   ['/404.html', null, null],
 ];

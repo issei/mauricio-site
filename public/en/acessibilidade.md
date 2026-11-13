@@ -5,9 +5,9 @@
 
 ## In short
 
-Protocol **A11Y. md** entered the repository as context of the AI agents who write the code, and accessibility became measured to each pull request by a **ratchet**: an automatic measurement that fails any change that increases the failure count. The page shows the flow, the code of each change and what **No one checked**: the site report is in **CONDITIONAL**Because approval depends on tests only people can do.
+Protocol **A11Y.md** entered the repository as context of the AI agents who write the code, and accessibility became measured to each pull request by a **ratchet**: an automatic measurement that fails any change that increases the failure count. The page shows the flow, the code of each change and what **No one checked**: the site report is in **CONDITIONAL**Because approval depends on tests only people can do.
 
-- **Measurement** — the first complete scan found 207 occurrences on 36 pages; outside the 7 utilitarian pages with the exception recorded, the occurrences detected by the automated gate reached zero. This does not mean absence of barriers, and the study does not isolate the effect of A11Y. md.
+- **Measurement** — the first complete scan found 207 occurrences on 36 pages; outside the 7 utilitarian pages with the exception recorded, the occurrences detected by the automated gate reached zero. This does not mean absence of barriers, and the study does not isolate the effect of A11Y.md.
 - **Independent review** — an AI agent in a new context found faults that the green turnstile did not see; a second audit, done in the same work that corrected the findings, found others, as an impossible exercise to complete without mouse. No independent human evaluation has been made.
 - **Limit** — no person has tested the site with screen reader, voice control or Safari; the report declares the lowest level of independence, *self-reported*.
 
@@ -19,7 +19,7 @@ Case · Accessibility · WCAG 2.2
 
 How A11Y.md was incorporated into the development of this site — and what changed the result.
 
-1. A11Y. md
+1. A11Y.md
 2. Development with agents
 3. Validation
 4. Result
@@ -56,9 +56,9 @@ Inference An agent produces what context requires. If the context does not speak
 
 02 · The decision
 
-#### Adopting A11Y.md as agent context
+#### Adopt A11Y.md as agent context
 
-[A11Y. md](https://fecarrico.github.io/a11ymd/) is an open standard (MIT license), maintained by Felipe A. Carriço, written to be read by AI agents that generate interface. The version used here is 2.2.0, which targets WCAG 2.2 AA level.
+[A11Y.md](https://fecarrico.github.io/a11ymd/) is an open standard (MIT license), maintained by Felipe A. Carriço, written to be read by AI agents that generate interface. The version used here is 2.2.0, which targets WCAG 2.2 AA level.
 
 ##### What A11Y.md offers
 
@@ -100,7 +100,7 @@ em docs/a11y/references/ — não o diretório inteiro.
 
 A11Y.md also brings a verifier written in Python, `verify-a11y.py`. Because it was another author's code, it was read before it was executed, and it only ran after it was approved.
 
-Evidence: [architecture. md, section 2](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/architecture.md) · [source of copy (UPSTREAM. md)](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/a11y/UPSTREAM.md) · [AGENTS. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/AGENTS.md).
+Evidence: [architecture.md, section 2](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/architecture.md) · [copy origin (UPSTREAM.md)](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/a11y/UPSTREAM.md) · [AGENTS.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/AGENTS.md).
 
 03 · How it was implemented
 
@@ -112,8 +112,8 @@ The summary "require, context, code, validation" is more linear than what happen
   Fixed copy of A11Y.md in `docs/a11y/`, with registered origin.
   Evidence: [commit a5ef956](https://github.com/issei/mauricio-site/commit/a5ef956177d4cf5f88f739d33bc7b3b55c6aa8f6) (Phase 1).
 2. Agent Context
-  A rule in the `AGENTS.md` file is valid for every interface edition. The sub-reviewer of the repository, the `a11y-design-reviewer`, already existed; in audit v2 he started to check pages against A11Y.md and WCAG 2.2, instead of WCAG 2.1.
-  Evidence: [AGENTS. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/AGENTS.md) · [sub-agent reviewer definition](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/.claude/agents/a11y-design-reviewer.md), updated on [commit 37f22b7](https://github.com/issei/mauricio-site/commit/37f22b7f1521a2d33fcac533ba6879416bc06a8f).
+  A rule in the `AGENTS.md` file is valid for every interface edition. The sub-reviewer of the repository, the `a11y-design-reviewer`, already existed; in the audit v2 he started to check pages against A11Y.md and WCAG 2.2, instead of WCAG 2.1.
+  Evidence: [AGENTS.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/AGENTS.md) · [sub-agent reviewer definition](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/.claude/agents/a11y-design-reviewer.md), updated on [commit 37f22b7](https://github.com/issei/mauricio-site/commit/37f22b7f1521a2d33fcac533ba6879416bc06a8f).
 3. Starting audit
   axe on the production build in 41 pages in portuguese, more keyboard probes, 320 px width and reduced movement: 3 critical findings, 8 high, 4 medium and 1 process. Four themes were "not audited", including real screen reader and subtitles.
   Evidence: [accessibility-audit.md, section 2](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/accessibility-audit.md).
@@ -125,7 +125,7 @@ The summary "require, context, code, validation" is more linear than what happen
   Evidence: [implementation-plan.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/implementation-plan.md) · [PR #81](https://github.com/issei/mauricio-site/pull/81).
 6. # Independent review by agent in new context
   An agent in a new context, in a session with no memory of the previous work, who did not read the specifications, tests or code history, wrote the probes themselves (automatic tests for this site) on 75 pages and found 4 high gravity faults that the existing tests did not see. One of them: the cookie banner covered 29 of the 131 Tab stops on the home page. The review was carried out in a separate context, but remains an automated AI evaluation and does not replace an independent human evaluation.
-  Evidence: [check-independent-phase7. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/verificacao-independente-fase7.md) · corrections in [commit c9d085 c](https://github.com/issei/mauricio-site/commit/c9d085ca97acfb240108a83628b9ea4c6d3a26d0).
+  Evidence: [verificacao-independente-fase7.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/verificacao-independente-fase7.md) · corrections in [commit c9d085 c](https://github.com/issei/mauricio-site/commit/c9d085ca97acfb240108a83628b9ea4c6d3a26d0).
 7. Report and static gate
   The `REPORT.md` report was filled out from the A11Y.md template, with CONDITIONAL status. The static checker entered the gate with a ceiling of errors that can only decrease.
   Evidence: [commit 31edc75](https://github.com/issei/mauricio-site/commit/31edc75d49fd7d35feb94d4fff00fde579b238da) · [PR #82](https://github.com/issei/mauricio-site/pull/82).
@@ -134,7 +134,7 @@ The summary "require, context, code, validation" is more linear than what happen
   Evidence: [commit 6f6d01 c](https://github.com/issei/mauricio-site/commit/6f6d01c969f21a32956ec7e0d64dd861acd8ac1c) · [PR #84](https://github.com/issei/mauricio-site/pull/84).
 9. # Audit v2
   Audit v2 measured what the report listed as "not measured", separating fact, inference and hypothesis. She is not independent: the same work that wrote her corrected the findings. Among other failures, he found an exercise of the [Operation Cognitive Capital](https://mauricio.issei.com.br/en/operacao-capital-cognitivo) simulator (OCC) that could not be completed without a mouse and locked the following chapters. The ratchet has gained new metrics: text spacing, hidden content without JavaScript and best practice rules of the axe.
-  Evidence: [audit-v2. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md) · [PR #85](https://github.com/issei/mauricio-site/pull/85).
+  Evidence: [auditoria-v2.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md) · [PR #85](https://github.com/issei/mauricio-site/pull/85).
 
 Today, every pull request for the main branch runs the full gate in CI: turnstile, static verifier and Playwright tests in Chromium, Firefox and WebKit. Deploy, however, does not expect this result (see Limits). Gate prevents certain failures from advancing through the protected flow of development; this does not mean that all accessibility regression is blocked before going on air.
 
@@ -219,7 +219,7 @@ WCAG 1.4.3 Contrast (minimum).
 
 **Evidence**
 
-[commit 90e6e8e](https://github.com/issei/mauricio-site/commit/90e6e8ea68c79164044d7f353993c5cab8234b65), `src/catalogo.html` and `src/curriculo.html` · rule in [A11Y-DECISIONS. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/A11Y-DECISIONS.md)
+[commit 90e6e8e](https://github.com/issei/mauricio-site/commit/90e6e8ea68c79164044d7f353993c5cab8234b65), `src/catalogo.html` and `src/curriculo.html` · rule in [A11Y-DECISIONS.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/A11Y-DECISIONS.md)
 
 ```
 [object Object]
@@ -337,7 +337,7 @@ WCAG 2.1.1 Keyboard.
 
 The count of occurrences recorded in the reference of the ratchet at the end of each phase. An occurrence is a unit accounted for by the validation gate: an element disapproved by a rule, or a failure of a probe itself (without `<main>`, without jump link, scrolling at 320 px, animation under reduced motion). It does not necessarily represent a distinct violation of WCAG.
 
-**Number of occurrences in the ratchet at the end of each phase. Source: commit messages and implementation-plan.md.**
+**Number of occurrences in the ratchet at the end of each phase. Source: commits and implementation-plan.md messages.**
 
 | Phase | Commit | Number of occurrences |
 | --- | --- | --- |
@@ -358,14 +358,14 @@ The fall of 207 occurrences to the current state occurred during a set of change
 
 #### Who checked what?
 
-The A11Y.md separates three types of verification: the automatic, the done by someone who did not write the code and the one who requires a person. This project has the first two. The third is almost all pending.
+The A11Y.md separates three types of verification: the automatic, the one made by someone who did not write the code and the one who requires a person. This project has the first two. The third is almost all pending.
 
 WCAG 2.2 AA is used here as an engineering and validation reference. This does not constitute a declaration of compliance with WCAG 2.2 AA.
 
 ##### Automated
 
 - **Ratchet:** Axe-core 4.11.4 with WCAG 2.0 to 2.2, levels A and AA, on the production build, in 75 pages (Portuguese and English). More own probes: `<main>`, jump link on the first Tab, a single `<h1>`, layout at 320 px wide, reduced movement, text spacing and hidden content without JavaScript.
-- **Static checker** A11Y.md: Search for prohibited code patterns (`div` clickable, placeholder as the only label, incomplete ARIA) and check if the report is younger than the last interface change.
+- **Static checker** A11Y.md: search for prohibited standards in code (`div` clickable, placeholder as the only label, incomplete ARIA) and check if the report is younger than the last interface change.
 - **Audit v2:** New probes for what was marked "not measured". It is not independent: it was done in the same work that corrected the findings.
 - **7 Playwright suites** in `tests/a11y/`: keyboard consent, visible focus by comparison of pixels, name label, 320 px width and zoom, tasks, widgets and auditor regressions.
 
@@ -383,7 +383,7 @@ WCAG 2.2 AA is used here as an engineering and validation reference. This does n
 
 Lighthouse accessibility audit uses axe-core as an engine (see [Lighthouse source code](https://github.com/GoogleChrome/lighthouse/blob/main/core/gather/gatherers/accessibility.js)). Therefore it should not be treated as a second independent engine of validation in relation to the ratchet, which also uses the axe-core. The v2 audit found the same on available accessibility MCP servers (MCP is the protocol that connects tools to AI agents), and registered as a proposal to extend the turnstile instead of adding tools: the gate needs to be deterministic and run on GitHub Actions without an agent session. The findings of the audit v2 came from own probes and rules of good practice of the axe itself; the label in the name came from an external scanner, and the correction gained a test of its own.
 
-Evidence: [audit-v2. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md), ADR-AV2-01 and ADR-AV2-02 (proposed) · [GitHub Actions test workflow](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/.github/workflows/test.yml).
+Evidence: [auditoria-v2.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md), ADR-AV2-01 and ADR-AV2-02 (proposed) · [GitHub Actions test workflow](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/.github/workflows/test.yml).
 
 06 · Result
 
@@ -395,7 +395,7 @@ Axe rotates at 1280 px and leaves out third-party frames. YouTube player, embedd
 
 98 occurrences of rules remain *good practice* Axe, as level jumps between titles, in 28 pages (Portuguese and English). They are not WCAG criteria, but they are locked in the ratchet and can only decrease. There are also 2 occurrences of hidden text without JavaScript in `life3d` (English and Portuguese versions), a false positive recorded: they are layers of the game that are hidden until the game displays them, not content of the page.
 
-Evidence: [tests/a11y/baseline.json](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/tests/a11y/baseline.json) in 2026-10-05 · [EXCEPTIONS. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/EXCEPTIONS.md).
+Evidence: [tests/a11y/baseline.json](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/tests/a11y/baseline.json) in 2026-10-05 · [EXCEPTIONS.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/EXCEPTIONS.md).
 
 ##### Semantics
 
@@ -421,7 +421,7 @@ Partial treatment of `prefers-reduced-motion`: with active preference, the measu
 
 At 320 px, only 2 pages excepted roll horizontally. No page blocks the zoom. Between 640 and 1024 px, 3 pages still roll horizontally (open). The 320 px wide test does not replace the 200% zoom validation. Not yet verified Text magnified to 200%.
 
-Evidence: [REPORT.md on 2026-10-05](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md), sections 1, 2, 4 and 5 · [Current version of REPORT. md](https://github.com/issei/mauricio-site/blob/main/REPORT.md).
+Evidence: [REPORT.md in 2026-10-05](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md), sections 1, 2, 4 and 5 · [current version of REPORT.md](https://github.com/issei/mauricio-site/blob/main/REPORT.md).
 
 07 · Limits
 
@@ -444,7 +444,7 @@ Absence of automatic error is not absence of barrier. The site's own history sho
 | The site complies with WCAG 2.2 AA | There was no complete evaluation or human evaluation. | Not declared |
 | One person validated the site with screen reader | No test performed | Not verified |
 | Automation detects all barriers | The history itself shows flaws that the green turnstile did not see | Not shown |
-| A11Y.md caused the reduction of occurrences | There was no controlled experiment. | Not shown |
+| A11Y.md caused reduced occurrences | There was no controlled experiment. | Not shown |
 | The site works with extended text to 200% | Measured only at 320 px wide, and only what the gate measures | Not verified |
 
 ##### Not checked or open
@@ -460,7 +460,7 @@ Absence of automatic error is not absence of barrier. The site's own history sho
 
 That's why the report stays in CONDITIONAL. Getting out of this status requires people: testing with real screen reader, human review of subtitles, decisions of the owner on the translation of the cookie notice and pause of the animations, and a new independent review, preferably by people and, in addition, by another model. And new components can bring new barriers: the ratchet prevents a count from rising, not that there is a problem that it does not measure.
 
-Evidence: [REPORT.md on 2026-10-05](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md), sections 3 and 5 and notes 3, 6 and 7 · [audit-v2. md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md).
+Evidence: [REPORT.md in 2026-10-05](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/REPORT.md), sections 3 and 5 and notes 3, 6 and 7 · [auditoria-v2.md](https://github.com/issei/mauricio-site/blob/da61b0a7f385b17334c0ff6798bd4aeedcc3eee3/docs/specs/a11y-first/auditoria-v2.md).
 
 08 · The idea behind
 
@@ -478,7 +478,7 @@ It is the same logic of other pages of the method on this site: autonomy proport
 
 ##### This page
 
-It was written under the same rules: Native HTML, no specific JavaScript of this page (only the shared ecosystem menu), full content without script and measured by the same turnstile. Before publication, an agent in a new context, who received only A11Y.md and the page, audited accessibility, and another checked each statement against the repository. The result is on [Current version of REPORT. md](https://github.com/issei/mauricio-site/blob/main/REPORT.md).
+It was written under the same rules: Native HTML, no specific JavaScript of this page (only the shared ecosystem menu), full content without script and measured by the same turnstile. Before the publication, an agent in a new context, who received only A11Y.md and the page, audited accessibility, and another verified each statement against the repository. The result is on [current version of REPORT.md](https://github.com/issei/mauricio-site/blob/main/REPORT.md).
 
 
 ## Frequently Asked Questions
@@ -487,7 +487,7 @@ It was written under the same rules: Native HTML, no specific JavaScript of this
 
 The site's own verification report does not state this: the status is CONDITIONAL. With the exception of 7 utilitarian pages, the automatic measurement of the site records zero occurrences of WCAG Axe rules (without counting third-party iframes such as YouTube player) and structure probes, of minimum width, motion and spacing. But no person tested the site with screen reader, voice control or Safari, and the subtitles of the videos were not reviewed.
 
-**Which is A11Y. Md?**
+**What is A11Y.md?**
 
 It is an open standard, MIT license, written for AI agents that generate interface. Defines a behavior contract for the agent, WCAG 2.2 compliance profiles, on-demand loaded component guides, decision records and exceptions, a report model and independent verification requirement. This site uses version 2.2.0, Standard profile (AA).
 

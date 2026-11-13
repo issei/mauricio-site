@@ -57,12 +57,12 @@ Combo redirects the request to the next healthy model of the queue [03:54].
 ## Fonts
 
 - [Official OmniRoute Repository at GitHub](https://github.com/diegosouzapw/OmniRoute): OmniRoute is an open source AI gateway that exposes multiple providers in a local endpoint.
-- [User Guide (USER)_GUIDE.md)(https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/guides/USER)_GUIDE.md: Combos with automatic model exchange, routing strategies and model tags.
-- (Free Tier Analysis and Token Budget (FREE)_TIERS.md)(https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE)_TIERS.md: The number of providers with free plan and free tokens per month.
+- [User Guide (USER)_GUIDE.md))(https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/guides/USER)_GUIDE.md): Combos with automatic model exchange, routing strategies and model tags.
+- (Free Tier Analysis and Token Budget (FREE)_TIERS.md))(https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE)_TIERS.md): The number of providers with free plan and free tokens per month.
 
 Revised by Maurício Yokoyama Issei on November 12, 2026.
 
-Subjects: [AI Tools](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
+Subjects: [AI tools](https://mauricio.issei.com.br/temas/ferramentas-de-ia)
 
 ## About the video
 
@@ -82,9 +82,9 @@ Official OmniRoute Repository at GitHub: https://github.com/diegosouzapw/OmniRou
 
 Official website (OmniRoute by Cheaper Inference):  https://www.omniroute.online
 
-Complete User Guide (USER)_GUIDE.md):  https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/guides/USER_GUIDE. md
+Complete User Guide (USER)_GUIDE.md):  https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/guides/USER_GUIDE.md
 
-Free Tier Analysis and Token Budget (FREE)_TIERS.md):  https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE_TIERS. md
+Free Tier Analysis and Token Budget (FREE)_TIERS.md):  https://github.com/diegosouzapw/OmniRoute/blob/release/v3.8.51/docs/reference/FREE_TIERS.md
 
 🔔 INSCREVA-SE IN CANAL AND PARTICIPATE!
 Do you like the contents? Want to master the best open-source AI tools, programming tips and automations?
