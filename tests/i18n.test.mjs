@@ -369,3 +369,45 @@ print('|'.join(e.vistos))
   assert.equal(b, 'trabalhou com Maurício na mesma equipe');
   assert.doesNotMatch(enviado, /Maur[ií]cio/, 'o nome foi enviado ao modelo');
 });
+
+/**
+ * Glossário (scripts/i18n/glossario.py): o que o Argos erra sempre não vai ao
+ * modelo. Medido nos espelhos de 2026-11-13: "Age Engineering", "Tech Lead ·
+ * Network" (Rede é a empresa), "llms. txt", "15 content".
+ */
+test('glossário: termos voltam em inglês, nomes e arquivos voltam intactos', { skip: !temPython }, () => {
+  const py = `
+import sys
+sys.path.insert(0, 'scripts/i18n')
+from engine import BaseEngine
+class G(BaseEngine):
+    name = 'g'
+    def __init__(self, destroi=False):
+        super().__init__(); self.vistos = []; self.destroi = destroi
+    def _translate_raw(self, t):
+        self.vistos.append(t); return t.replace('zzsg', 'zz') if self.destroi else t
+    def _translate_cached(self, c):
+        return self._translate_raw(c)
+e = G()
+for t in ['Tech Lead · Rede', 'Engenharia agêntica', '15 conteúdos', '1 conteúdo',
+          'Versões para máquina: cv.json · llms.txt', 'a IA agêntica e a engenharia agêntica',
+          'camadas Dispositivo, Rede, Identidade e Aplicação']:
+    print(e.translate(t))
+print('|'.join(e.vistos))
+d = G(destroi=True)
+print(d.translate('sobre engenharia agêntica hoje'))
+`;
+  const res = spawnSync(PY, ['-c', py], { cwd: ROOT, encoding: 'utf-8', env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' } });
+  assert.equal(res.status, 0, res.stderr);
+  const l = res.stdout.trim().split(/\r?\n/);
+  assert.equal(l[0], 'Tech Lead · Rede', 'o nome da empresa não se traduz');
+  assert.equal(l[1], 'Agentic engineering');
+  assert.equal(l[2], '15 items');
+  assert.equal(l[3], '1 item');
+  assert.equal(l[4], 'Versões para máquina: cv.json · llms.txt');
+  assert.equal(l[5], 'a agentic AI e a agentic engineering');
+  assert.equal(l[6], 'camadas Dispositivo, Rede, Identidade e Aplicação', '"Rede" de zero trust segue para o modelo');
+  assert.doesNotMatch(l[7], /\bRede\b(?!, Identidade)|llms\.txt|agêntica|conteúdos/, 'termo do glossário enviado ao modelo');
+  assert.match(l[7], /Dispositivo, Rede, Identidade/);
+  assert.equal(l[8], 'sobre agentic engineering hoje', 'sem marcador de volta, a contingência ainda usa o glossário');
+});
