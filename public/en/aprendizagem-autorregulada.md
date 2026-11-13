@@ -16,8 +16,6 @@ Studying well is not reread: it is to alternate prediction, targeted search, rec
 
 Stop relying only on rereading and illusion of understanding.
 
-Nature: Study
-
 ### The Self-regulated Learning Cycle: from summary to new question
 
 Find out what science really proves about how curiosity, focused search, recovery practice and self-explanation build a deep and lasting knowledge.
@@ -146,11 +144,6 @@ Because the sense of understanding is a bad indicator: comprehension judgments c
 **What's the 45–60 minute protocol like?**
 
 0–5 min: writing from memory and defining the gap; 5–25 min: turning the gap into questions and searching for evidence; 25–35 min: closing the sources and recovering; 35–60 min: explaining how and why, checking, correcting and scheduling new tests within 24 hours and 7 days.
-
-If this theme interests you
-
-- [Capacity Before Access](https://mauricio.issei.com.br/en/capacidade-antes-do-acesso) Also in Learning and Mind.
-- [Curiosity and Research](https://mauricio.issei.com.br/en/curiosidade-e-investigacao) Also in Learning and Mind.
 
 
 ## Frequently Asked Questions

@@ -28,8 +28,6 @@ For a high-volume and low-risk pilot journey, with six passing criterion phases 
 
 Agentic Digital Workplace
 
-Nature: Study
-
 ### From the portal that presents to the platform that solves
 
 Those who conduct a large corporate portal hear two requests that contradict each other: “put an AI agent in front of everything” and “first fix the house”. This study shows, layer by layer, what needs to exist before an agent acts on behalf of a collaborator — and what happens when one of these layers is jumped.
@@ -1967,11 +1965,6 @@ The common core, for all, is: the problem, the maturity scale, the layer model a
 3. Consolidate in a matrix of responsibilities between roles (the table of twelve lenses serves as a starting point).
 4. Identify conflicts and resolve them with trade-off standards.
 5. Position the journey in the maturity model and set the next stage of roadmap.
-
-If this theme interests you
-
-- [Knowledge OS Enterprise](https://mauricio.issei.com.br/en/knowledge-os-presentation) Also in Agentic engineering and Management and Strategy.
-- [From execution to orchestration of work](https://mauricio.issei.com.br/en/da-execucao-a-orquestracao) Also in Management and strategy and Agentic engineering.
 
 
 ## Frequently Asked Questions
