@@ -15,8 +15,6 @@ Estudar bem não é reler: é alternar previsão, busca orientada, recuperação
 
 Pare de depender apenas da releitura e da ilusão de compreensão.
 
-Natureza: Estudo
-
 ### O Ciclo da Aprendizagem Autorregulada: do resumo à nova pergunta
 
 Descubra o que a ciência realmente comprova sobre como a curiosidade, a busca focada, a prática de recuperação e a autoexplicação constroem um conhecimento profundo e duradouro.
@@ -103,7 +101,7 @@ Você não precisa ser cientista cognitivo para aplicar esta rotina. O artigo pr
   Feche os livros e as abas. Tente escrever as respostas e os exemplos do zero.
 4. 35–60 min
   ### Explicação e feedback
-  Explique o “como” e o “porquê”, confira com as fontes originais, corrija os erros com outra cor e agende seu teste de 24 horas.
+  Explique o “como” e o “por quê”, confira com as fontes originais, corrija os erros com outra cor e agende seu teste de 24 horas.
 
 #### Pronto para transformar sua forma de estudar e pesquisar?
 
@@ -145,11 +143,6 @@ Porque a sensação de compreensão é um mau indicador: julgamentos de compreen
 **Como é o protocolo de 45–60 minutos?**
 
 0–5 min: escrever de memória e definir a lacuna; 5–25 min: transformar a lacuna em perguntas e buscar evidências; 25–35 min: fechar as fontes e recuperar; 35–60 min: explicar o como e o porquê, conferir, corrigir e agendar novos testes em 24 horas e 7 dias.
-
-Se este tema interessa a você
-
-- [Capacidade Antes do Acesso](https://mauricio.issei.com.br/capacidade-antes-do-acesso) Também em Aprendizagem e mente.
-- [Curiosidade e Investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao) Também em Aprendizagem e mente.
 
 
 ## Perguntas frequentes

@@ -479,11 +479,6 @@ Acessibilidade não deveria ser uma inspeção feita depois que a interface est�
 
 Foi escrita sob as mesmas regras: HTML nativo, sem JavaScript específico desta página (só o menu compartilhado do ecossistema), conteúdo completo sem script e medida pela mesma catraca. Antes da publicação, um agente em contexto novo, que recebeu só o A11Y.md e a página, auditou a acessibilidade, e outro conferiu cada afirmação contra o repositório. O resultado está na [versão atual do REPORT.md](https://github.com/issei/mauricio-site/blob/main/REPORT.md).
 
-Se este tema interessa a você
-
-- [Agent Ready](https://mauricio.issei.com.br/agent-ready) Também de natureza Experiência.
-- [Case Agents](https://mauricio.issei.com.br/case-agents) Também de natureza Experiência.
-
 
 ## Perguntas frequentes
 
