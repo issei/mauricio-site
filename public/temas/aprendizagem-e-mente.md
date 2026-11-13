@@ -11,6 +11,7 @@ Metacognição, aprendizagem, foco e o funcionamento da mente, aplicados ao estu
 
 ## Vídeos
 
+- [A ARTE DO ESFORÇO: Filosofia e Superação Intelectual](https://mauricio.issei.com.br/videos/a-arte-do-esforco-filosofia-e-superacao-intelectual) — 13 de novembro de 2026
 - [Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/videos/aprendizagem-real-o-ciclo-da-aprendizagem-autorregulada) — 8 de outubro de 2026
 - [25 de setembro de 2026](https://mauricio.issei.com.br/videos/25-de-setembro-de-2026) — 25 de setembro de 2026
 - [Quem está no comando da sua mente: você ou as suas reações automáticas?](https://mauricio.issei.com.br/videos/quem-esta-no-comando-da-sua-mente-voce-ou-as-suas-reacoes) — 23 de setembro de 2026
