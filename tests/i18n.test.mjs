@@ -412,6 +412,45 @@ print(d.translate('sobre engenharia agêntica hoje'))
   assert.equal(l[8], 'sobre agentic engineering hoje', 'sem marcador de volta, a contingência ainda usa o glossário');
 });
 
+/**
+ * Políticas (termos, privacidade, cookies): vocabulário jurídico e domínios.
+ * Medido nos espelhos de 2026-11-13: "violação" saía "rape", "vedada" saía
+ * "sealed", "EU AI Act" saía "I AI Act", "DPO" saía "PDO", ".c.clarity.ms"
+ * saía ".c.clarity. ms" e "_ga_GEKLHZYVYX" saía "_g_GEKLHZYVYX".
+ */
+test('glossário jurídico: termos das políticas e domínios não vão ao modelo', { skip: !temPython }, () => {
+  const py = `
+import sys
+sys.path.insert(0, 'scripts/i18n')
+from engine import BaseEngine
+class G(BaseEngine):
+    name = 'g'
+    def __init__(self):
+        super().__init__(); self.vistos = []
+    def _translate_raw(self, t):
+        self.vistos.append(t); return t
+    def _translate_cached(self, c):
+        return self._translate_raw(c)
+e = G()
+for t in ['O acesso pode ser suspenso em caso de violação.', 'Conduta vedada',
+          'segue o EU AI Act e o DPO', '.c.clarity.ms e mauricio.issei.com.br',
+          '_ga_GEKLHZYVYX', 'escreva para mauricio@issei.com.br', 'Garante ser titular da obra']:
+    print(e.translate(t))
+print('|'.join(e.vistos))
+`;
+  const res = spawnSync(PY, ['-c', py], { cwd: ROOT, encoding: 'utf-8', env: { ...process.env, PYTHONUTF8: '1', PYTHONIOENCODING: 'utf-8' } });
+  assert.equal(res.status, 0, res.stderr);
+  const l = res.stdout.trim().split(/\r?\n/);
+  assert.equal(l[0], 'O acesso pode ser suspenso in case of breach.');
+  assert.equal(l[1], 'Prohibited conduct');
+  assert.equal(l[2], 'segue o EU AI Act e o DPO');
+  assert.equal(l[3], '.c.clarity.ms e mauricio.issei.com.br');
+  assert.equal(l[4], '_ga_GEKLHZYVYX');
+  assert.equal(l[5], 'escreva para mauricio@issei.com.br', 'e-mail segue inteiro para o modelo');
+  assert.doesNotMatch(l[7], /violação|EU AI Act|clarity\.ms|issei\.com\.br e|_ga_/, 'termo do glossário enviado ao modelo');
+  assert.match(l[7], /titular da obra/, '"titular" de direito autoral segue para o modelo');
+});
+
 test('link relativo para página sem gêmeo em inglês leva à versão em português, não a um 404', { skip: !temPython }, () => {
   const py = `
 import sys
