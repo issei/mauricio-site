@@ -7,7 +7,7 @@
 
 It's a corporate portal that stops **organize links** and passes the **resolve intentions**: the collaborator asks, the agent prepares, the person confirms and the process runs in the registration system. The agent is a link to a jail — **intent, agent, knowledge, tools, process, experience** — and depends on the foundations it crosses: if a link fails, it inherits the failure and does not correct it. Without them, he starts to perform actions with too broad credentials and no audit trail.
 
-- **Five stages that accumulate** — from intranet to age platform; the model describes the cost of each stage jump, and maturity is assessed per journey, not by the entire portal.
+- **Five stages that accumulate** — from intranet to agentic platform; the model describes the cost of each stage jump, and maturity is assessed per journey, not by the entire portal.
 - **Six layers and a crossband** — the study recommends that the rule should live in the field, that identity should spread and never replace, that the agent should be a channel and that the generative IU should compose approved components.
 - **Autonomy goes up with evidence** — levels from 0 to 4 per class of action; the study recommends maintaining financial, legal or sensitive data at level 2 (implementation with confirmation) until there is evidence of safety.
 - **Critical Path** — delegated identity and content governed with permissions are usually the slowest dependencies (study inference); therefore roadmap begins in phase 0.
@@ -22,7 +22,7 @@ A corporate agent depends on the foundations it crosses: prioritized intent, gov
 
 ## Where to start
 
-For a high-volume and low-risk pilot journey, with six passing criterion phases and seven parallel trails. Delegated identity (T2) and governed content (T3) are usually the critical path and begin in phase 0. The study recommends requiring evidence of safety and quality for each expansion of autonomy. The age readiness index, from 0 to 20, suggests what the journey supports today.
+For a high-volume and low-risk pilot journey, with six passing criterion phases and seven parallel trails. Delegated identity (T2) and governed content (T3) are usually the critical path and begin in phase 0. The study recommends requiring evidence of safety and quality for each expansion of autonomy. The agentic readiness index, from 0 to 20, suggests what the journey supports today.
 
 ## Full content of the page
 
@@ -985,7 +985,7 @@ Papers **[RECOMMENDATION]**
 
 #### Twelve lenses, an architectural board
 
-An agentic journey crosses disciplines that rarely talk. The architecture board analyzes the journey by **each lens separately** before consolidating; conflicts resolve with the patterns of Decisions. The table shows the question that only every paper does and what the journey loses if it is ignored.
+A agentic journey crosses disciplines that rarely talk. The architecture board analyzes the journey by **each lens separately** before consolidating; conflicts resolve with the patterns of Decisions. The table shows the question that only every paper does and what the journey loses if it is ignored.
 
 **Role, own question and consequence of omission.**
 

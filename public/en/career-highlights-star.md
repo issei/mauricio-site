@@ -16,7 +16,7 @@ The executive's work list did not have an intelligent prioritization to optimize
 **Tasks:**
 - Discovery and implementation of quick feasibility solution to meet pain and evaluate the planning model and methodology
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Designed outline solution to process prioritization intelligence in Salesforce itself with scheduled batch processes
 
@@ -25,7 +25,7 @@ The executive's work list did not have an intelligent prioritization to optimize
 - **Increase of more than 15%** in the achievement of the goals
 - Agility in scheduling and customer service
 
-**** Salesforce
+**🛠️ Stack:** Salesforce
 
 ---
 
@@ -43,7 +43,7 @@ The executive's work list did not have an intelligent prioritization to optimize
 - Discovery and design of a technical solution to enable modernization
 - Development of participant arrangement validation application
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Implemented and refined solution for implementation of the new Commercial Group with the team
 
@@ -51,7 +51,7 @@ The executive's work list did not have an intelligent prioritization to optimize
 
 - Modernization of the process with validation and effectiveness **in bid time** ( 10 days reduction to real time)
 
-**** Java 
+**🛠️ Stack:** Java 
 
 ---
 
@@ -64,7 +64,7 @@ It was only delivered the machine after opening process of Order of Service whic
 **Tasks:**
 - Enable solution to validate the commercial service model where a new machine auto boot technology was used in the act of the proposal
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Implementing in the first half of 2024 a **MVP** for validation of the model
 - Implemented in the second semester definitive architecture to choose the type of technology and quantity that can be delivered on time by commercial
@@ -73,7 +73,7 @@ It was only delivered the machine after opening process of Order of Service whic
 
 - Speed and activation targets in the act of Accreditation
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
@@ -86,7 +86,7 @@ No business day evaluation data.
 **Tasks:**
 - Facilitate the capture of the journey satisfaction information in a controlled and reusable way by other journeys
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Designed technical solution to standardize the capture and validation of eligibility for capture of the search
 - Prepared POC in Quicksight analytical follow-up report
@@ -95,7 +95,7 @@ No business day evaluation data.
 
 - Visibility and creation of **Satisfaction OKR** the journeys
 
-**** Quicksight 
+**🛠️ Stack:** Quicksight 
 
 ---
 
@@ -114,7 +114,7 @@ No business day evaluation data.
 - Mapping the main reasons for proposals that were stopped by errors or failures
 - Refining root cause solutions for identified problems
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Implemented service **WF callback** for TV2
 - Open stories and prioritized root cause corrections of the proposals problems
@@ -124,17 +124,17 @@ No business day evaluation data.
 - Rapid feedback on the situation of the proposal for executives
 - Prioritization of root cause corrections of validations and problems that left the proposal pending
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
 ## 2022
 
-### PJ Current Account Opening by Cockpit Network
+### PJ Current Account Opening by Cockpit Rede
 
 **Challenge (Situation/Task)**
 
-Project with experimentation bias of the commercial model of the Network to give autonomy to the Executive to start the opening of Current Account Itaú PJ in the Cockpit Network itself.
+Project with experimentation bias of the commercial model of Rede to give autonomy to the Executive to initiate the opening of Current Account Itaú PJ in Cockpit Rede itself.
 
 **Tasks:**
 - Participation of technical refinements
@@ -144,7 +144,7 @@ Project with experimentation bias of the commercial model of the Network to give
 - Discovery for MVP evolution
 - Attendance of incidents
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - In the pilot's follow-up, point improvements in the MVP were identified to increase the number of executives who experienced the solution.
 - Improved integration logs and monitoring for quick identification of problems or divergences
@@ -154,7 +154,7 @@ Project with experimentation bias of the commercial model of the Network to give
 - Stable solution and provided scaling for most executives to use
 - With adjustments of the care model, the process was shortened and the bank manager did not need to act, giving more autonomy to the executive
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce  Rede | Itaú PJ | APIs
 
 ---
 
@@ -172,7 +172,7 @@ The accreditation in the standard plane was treated in a different flow of scree
 - Implement the same Ipricing Flex hire eligibility query
 - Homologize all integrations until Service Orders and PV generation
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Refined needs and elaborated a short delivery strategy of simple implementation and in parallel the discovery of total absorption of the flow of the standard plan within the trading process of Ipricing 2.0
 - Initially the possibility was given only to inform more than one machine for a single technology
@@ -186,7 +186,7 @@ The accreditation in the standard plane was treated in a different flow of scree
 - Agility in the delivery of demands, with the **3 great epics solved in two strategic deliveries**
 - Standardization of the trading day without the need for two squads to take care of Cockpit Accreditation
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
@@ -202,7 +202,7 @@ The accreditation in the standard plane was treated in a different flow of scree
 - Approval of integrations
 - Implementation with wave expansion strategy, with monitoring and validation of each new proposal
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Seeked to develop a flow of composite screens with 'functional' features in Salesforce (low-code) and with more specialized micro screen components
 - Support in parallel of another epic involved to simplify and reduce registration data of the accreditation proposal
@@ -211,7 +211,7 @@ The accreditation in the standard plane was treated in a different flow of scree
 
 - Deliver day in Cockpit integrated with Ipricing trading, with all features already evolved from PJ as requests for more than one machine and more than one technology, Flex eligibility, offers and price trading
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
@@ -226,7 +226,7 @@ The need to validate in time to fill out a proposal if Itaú's banking home data
 - Refine with UX how to treat validations
 - Integrated approval with GE square
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Integration between TV2 and GE1 has been implemented in the AWS layer, and only TV2 is responsible for the integration with Salesforce that triggers the consultation.
 
@@ -236,7 +236,7 @@ The need to validate in time to fill out a proposal if Itaú's banking home data
 - Validation with dynamic business rule being the GE1 responsible for determining whether it is an impediment return or that accepts the home with the guidance messages
 - Small reduction in cases of bank suspension of customers Itaú. Discovered that the situation that makes the account fit for receipt is not summed up in a status
 
-**** AWS 
+**🛠️ Stack:** AWS 
 
 ---
 
@@ -253,9 +253,9 @@ Sending the link to the client to formalize the PJ accreditation proposal is onl
 - Condition functionality for pilot controlled audience
 - Project correlated with formalization developments that aims to give more clarity to the client than is being contracted
 
-****
+**⚡ Minha Atuação (Ação)**
 
-- Designed and aligned an internal integration architecture between AWS Network and internal bank Gateway
+- Designed and aligned an internal integration architecture between AWS Rede and internal bank Gateway
 - Registered consumer applications in the bank’s STS and Gateway
 - Due to the lack of technical team and prioritization by the quad of the acronym IQ1, all development of the acronym part of the form of **innersource**
 - Integration developed with parameterized configurations to enable reuse by other channels
@@ -264,7 +264,7 @@ Sending the link to the client to formalize the PJ accreditation proposal is onl
 
 - Pilot in production worked well, but was pivoted due to the correlation of this project with the improvements of formalization that were not well accepted by executives and with lack of automated processes that depended on an operational performance of the IT team to carry out proposals that had no interaction of the client and also on formalization of cluster proposals that it was not coherent to send values and conditions that would not be effective to the client after the processes of grouping and equating fees
 
-**** AWS 
+**🛠️ Stack:** AWS 
 
 ---
 
@@ -279,7 +279,7 @@ To segregate non-PCI PCI networks, a project was opened to evaluate the change i
 **Tasks:**
 - Find, map and estimate effort to maintain each application or service
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Search for versioned fonts
 - Analysis of the settings of each application/service
@@ -292,7 +292,7 @@ To segregate non-PCI PCI networks, a project was opened to evaluate the change i
 - The infrastructure team presented another solution that would not need to change the current IP
 - Mapping and understanding of the support team on many legacy applications
 
-**** Sybase 
+**🛠️ Stack:** Sybase 
 
 ---
 
@@ -306,7 +306,7 @@ Integration of project teams with support teams, being necessary to include in t
 - Document Support Backlog
 - Empower project team in incident care
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Follow-up in pairs with dev and support in incident care and on shift
 - Pass of knowledge on recurrent productive problems
@@ -315,7 +315,7 @@ Integration of project teams with support teams, being necessary to include in t
 
 - Times with delivery routines and support in relay of 'beater' and timer
 
-**** Agile 
+**🛠️ Stack:** Agile 
 
 ---
 
@@ -333,7 +333,7 @@ With the maturity of Salesforce's first contract and significant expansion of to
 - Align with each area number of users and expansion expectations
 - Set license limits management
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Spread all costs at the lowest level of detail
 - Prepared presentation and defense for CINVEST
@@ -345,7 +345,7 @@ With the maturity of Salesforce's first contract and significant expansion of to
 - New contract negotiated in partnership with CoE Salesforce of Itaú and purchasing team
 - Clearness of areas on the cost of each type of license
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
@@ -360,7 +360,7 @@ Lack of clarity and knowledge about the pricing of what was already in use in th
 - Alignment with Logistics and Commercial areas on underutilized resources and expansion planning
 - Elaboration of new conditions and requirements for new contracts
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Planned and built presentation and defense for CINVEST
 - Canceled hiring tablet rental for commercials
@@ -372,15 +372,15 @@ Lack of clarity and knowledge about the pricing of what was already in use in th
 - **Economy of approximately 500 k** in renegotiated contracts
 - Better budget management of suppliers
 
-**** Contract Management 
+**🛠️ Stack:** Contract Management 
 
 ---
 
-### Core Network Support (GE1, WF1, WM1, etc.)
+### Support Core Rede (GE1, WF1, WM1, etc.)
 
 **Challenge (Situation/Task)**
 
-With much quieter Sales Force support, support was unified with the Core Network systems of WF1, GE1, etc., with the need and goals to reduce the number of calls, abends, time of incident attendance and direction of root cause corrections for project teams.
+With much quieter Sales Force support, the support with the systems was unified Core Rede of WF1, GE1, etc., with the need and goals to reduce the number of calls, abends, time of incident attendance and direction of root cause corrections for project teams.
 
 **Tasks:**
 - Analysis of so-called critics in need of quick palliative solutions
@@ -389,7 +389,7 @@ With much quieter Sales Force support, support was unified with the Core Network
 - Validation and monitoring of project deployments
 - Monitoring of project refinements with support bias, prioritizing with teams non-functional monitoring, safety and quality requirements
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Service to calls of various problems (Cadastrals, Accreditation, Banking, Product Qualification, Structural Projects, etc.)
 - Log improvements
@@ -402,7 +402,7 @@ With much quieter Sales Force support, support was unified with the Core Network
 - Reduction of batch mesh abends
 - Support team with training also in Salesforce
 
-**** Splunk 
+**🛠️ Stack:** Splunk 
 
 ---
 
@@ -425,7 +425,7 @@ Continuity of support work with increased support team needing training and orga
 - Root Cause Correction Backlog Priorization
 - Development of root cause corrections
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Participation in refinements with project teams, opinioning on best practices and development quality
 - Validation of every new delivery, sharing knowledge with support team of what was being evolved
@@ -438,7 +438,7 @@ Continuity of support work with increased support team needing training and orga
 - Improved incident and problem management
 - Project team with more deliveries and higher quality
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
@@ -459,7 +459,7 @@ Continuity of support work with division of support team to focus on the process
 - Root Cause Correction Backlog Priorization
 - Development of root cause corrections
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Participation of refinements with project team, opining on best practices and development quality
 - Validation of every new delivery, sharing knowledge with support team of what was being evolved
@@ -472,11 +472,11 @@ Continuity of support work with division of support team to focus on the process
 - Improved incident and problem management
 - Project team with more deliveries and higher quality
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
-### Support Network Accreditation (Force Sales + WF1)
+### Support Rede accreditation (Force Sales + WF1)
 
 **Challenge (Situation/Task)**
 
@@ -487,7 +487,7 @@ Prioritization and corporate goals for Commercial perform more Accreditations, w
 - Monitoring the refinements of the new Accreditation
 - Attendance of incidents
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Validation of every new delivery of changes in production
 - Execution of implementation Runbooks in production and monitoring of validations
@@ -499,7 +499,7 @@ Prioritization and corporate goals for Commercial perform more Accreditations, w
 - Reduction of critical problems for commercial operation
 - Largest number of project team quality deliveries
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 
 
 ---
 
@@ -517,7 +517,7 @@ Cockpit and Campo Force projects, recently deployed in production, without a wel
 - Implement monitoring
 - Treat incidents
 
-****
+**⚡ Minha Atuação (Ação)**
 
 - Aligned and created a stream of support calls for commercial executives and logistics technicians and managers
 - Aligned with the area of change and information security, the support team's responsibility is to validate and implement the deployments of the teams in Salesforce centrally
@@ -531,4 +531,4 @@ Cockpit and Campo Force projects, recently deployed in production, without a wel
 - Extension of the number of executives and technicians using the tools
 - Higher focus and number of project deliveries by project teams
 
-**** Salesforce 
+**🛠️ Stack:** Salesforce 

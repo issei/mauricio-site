@@ -7,13 +7,13 @@
 
 By theme, the theme with more content for the less. Each content appears once, in its main theme, with nature (Experience, Study, Proposal, Experiment or Reference). In the end, the author's career and the channel videos.
 
-## Age Engineering
+## Agentic engineering
 
 How to design, orchestrate and take to production AI agents: protocols, memory, tools and the engineer's work next to them.
 
 - [Vibe Coding with Devin](https://mauricio.issei.com.br/en/devin) — *Study.* Agentic engineering in practice: Devin as an executor of engineering tasks, from intention to code.
 - [Auditable AI architecture](https://mauricio.issei.com.br/en/apresentacao) — *Reference.* GraphRAG, Spec-Driven Development and DevOps Salesforce in two readings of the same truth: the executive, measured at risk and return; the engineering, in coverage and latency.
-- [Trust Engineering](https://mauricio.issei.com.br/en/engenharia-confianca) — *Study.* From Intention to Genetic Execution: four modules that connect Reverse Engineering, Agent Engineering and Vibe Coding — from the chaos of AI-as-magic to the governance of AI-as-engineering.
+- [Trust Engineering](https://mauricio.issei.com.br/en/engenharia-confianca) — *Study.* From Intention to Agentic execution: four modules that connect Reverse Engineering, Agent Engineering and Vibe Coding — from the chaos of AI-as-magic to the governance of AI-as-engineering.
 - [AI Agent Engineering](https://mauricio.issei.com.br/en/engenharia-agentes-ia) — *Study.* The ten principles that make AI systems reliable: little AI on the critical path, contracts, FinOps and Agent-Driven governance.
 - [Deterministic Grounding](https://mauricio.issei.com.br/en/develop-engineering) — *Study.* How to anchor context, restrict actions and validate agent changes in software without confusing a green result with global correction.
 - [Agent Ready](https://mauricio.issei.com.br/en/agent-ready) — *Experience.* How to make a website readable, findable and usable by AI agents: Link headers, Markdown negotiated, Content Signals, API Catalog, MCP and Agent Skills — with the real code of this domain.
@@ -21,7 +21,7 @@ How to design, orchestrate and take to production AI agents: protocols, memory, 
 - [Knowledge OS Enterprise](https://mauricio.issei.com.br/en/knowledge-os-presentation) — *Proposal.* The knowledge system that gives AI traceability and security: faster decisions without losing control.
 - [Agentic Digital Workplace](https://mauricio.issei.com.br/en/digital-workplace-agentico) — *Study.* As a corporate portal evolves from a list of links to a platform that solves intentions: five stages of maturity, layered architecture, AG-UI, delegated identity, governed knowledge and roadmap.
 
-They also address this theme: [From execution to orchestration of work](https://mauricio.issei.com.br/en/da-execucao-a-orquestracao), [Structured Conversational Specification](https://mauricio.issei.com.br/en/especificacao-conversacional), [Business Boutique](https://mauricio.issei.com.br/boutique-empresarial-showcase), [DevOps Salesforce](https://mauricio.issei.com.br/en/devops-salesforce), [Reverse Engineering Assisted by AI](https://mauricio.issei.com.br/en/proposta-engenharia-reversa), [SocialSelling](https://mauricio.issei.com.br/en/socialselling).
+They also address this theme: [From execution to orchestration of work](https://mauricio.issei.com.br/en/da-execucao-a-orquestracao), [Structured Conversational Specification](https://mauricio.issei.com.br/en/especificacao-conversacional), [Boutique Empresarial](https://mauricio.issei.com.br/boutique-empresarial-showcase), [DevOps Salesforce](https://mauricio.issei.com.br/en/devops-salesforce), [Reverse Engineering Assisted by AI](https://mauricio.issei.com.br/en/proposta-engenharia-reversa), [SocialSelling](https://mauricio.issei.com.br/en/socialselling).
 
 Articles and videos of this theme: https://mauricio.issei.com.br/temas/engenharia-agentica
 
@@ -42,7 +42,7 @@ Articles and videos of this theme: https://mauricio.issei.com.br/temas/gestao-e-
 Specification-driven development, software architecture patterns, and documentation that people and AI can use.
 
 - [Structured Conversational Specification](https://mauricio.issei.com.br/en/especificacao-conversacional) — *Proposal.* A workflow proposed to use AI in eliciting requirements under human authority, with traceable divergences between documentation, testing and code — and what has not yet been evaluated.
-- [Business Boutique](https://mauricio.issei.com.br/boutique-empresarial-showcase) — *Experience.* Showcase of static architecture MPA, SDD methodology, multi-model agency pipeline and deterministic Quality Gate behind a real project.
+- [Boutique Empresarial](https://mauricio.issei.com.br/boutique-empresarial-showcase) — *Experience.* Showcase of static architecture MPA, SDD methodology, multi-model agentic pipeline and deterministic Quality Gate behind a real project.
 
 They also address this theme: [Auditable AI architecture](https://mauricio.issei.com.br/en/apresentacao), [Deterministic Grounding](https://mauricio.issei.com.br/en/develop-engineering), [Agent Ready](https://mauricio.issei.com.br/en/agent-ready), [Agent DevOps for Salesforce](https://mauricio.issei.com.br/en/salesforce-agentic-dev).
 
@@ -52,9 +52,9 @@ Articles and videos of this theme: https://mauricio.issei.com.br/temas/especific
 
 Salesforce, RevOps and architectures for sales, marketing and customer relationship.
 
-- [DevOps Salesforce](https://mauricio.issei.com.br/en/devops-salesforce) — *Reference.* Agency continuous delivery: hybrid architecture uniting Flosum governance, GitHub flexibility and AI speed in the Salesforce ecosystem.
+- [DevOps Salesforce](https://mauricio.issei.com.br/en/devops-salesforce) — *Reference.* Agentic continuous delivery: Hybrid architecture uniting Flosum governance, GitHub flexibility and AI speed in the Salesforce ecosystem.
 - [Reverse Engineering Assisted by AI](https://mauricio.issei.com.br/en/proposta-engenharia-reversa) — *Proposal.* System Transformation Salesforce legacy via AI: from inherited code to live specification without manual refactor.
-- [Quick Start: Salesforce + Devin + Flosum](https://mauricio.issei.com.br/en/salesforce-agentic-quickstart) — *Reference.* Step by step to set up the agentic development environment and perform the first deploy ruled in record time.
+- [Quick Start: Salesforce + Devin + Flosum](https://mauricio.issei.com.br/en/salesforce-agentic-quickstart) — *Reference.* Step by step to set up the agentic development environment and perform the first deploy governed in record time.
 - [Agent DevOps for Salesforce](https://mauricio.issei.com.br/en/salesforce-agentic-dev) — *Reference.* Spec-Driven Development training portal and autonomous agents for efficient and non-technical development.
 - [SocialSelling](https://mauricio.issei.com.br/en/socialselling) — *Experiment.* Project overview and good practice model for social sales enhanced by AI agents.
 
@@ -90,7 +90,7 @@ They also address this theme: [Capacity Before Access](https://mauricio.issei.co
 
 Articles and videos of this theme: https://mauricio.issei.com.br/temas/tecnologia-e-cultura
 
-## Data and decision
+## Data and decision-making
 
 Data, metrics, machine learning and models to transform information into decision.
 
@@ -100,7 +100,7 @@ They also deal with this theme: [Problem Formulation](https://mauricio.issei.com
 
 Articles and videos of this theme: https://mauricio.issei.com.br/temas/dados-e-decisao
 
-## AI Tools
+## AI tools
 
 Practical analysis of AI tools and assistants for daily work.
 
@@ -113,7 +113,7 @@ Articles and videos of this theme: https://mauricio.issei.com.br/temas/ferrament
 
 Digital accessibility, inclusive design and the human factor in technology.
 
-- [Accessibility as an engineering requirement](https://mauricio.issei.com.br/en/acessibilidade) — *Experience.* As A11Y.md has entered the development of this site with AI agents: the real flow, diffs, the ratchet that only drops the debt and what has not yet been verified.
+- [Accessibility as an engineering requirement](https://mauricio.issei.com.br/en/acessibilidade) — *Experience.* How A11Y.md entered the development of this site with AI agents: the real flow, the diffs, the ratchet that only lets the debt go down, and what has not been verified yet.
 
 Articles and videos of this theme: https://mauricio.issei.com.br/temas/acessibilidade-e-design
 

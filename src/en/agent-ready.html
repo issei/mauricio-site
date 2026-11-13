@@ -245,7 +245,7 @@
           "name": "What is an MCP Server Card?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It is a JSON document in /.well-known/mcp/server-card.json that describes, in a machine-readable way, which tools and features a domain exposes by the Model Context Protocol: server name, transport, typed input tools and downloadable features. It is the layer of discovery — the description of the contract. Post on it exactly the capabilities you are ready to sustain."
+            "text": "It is a JSON document in /.well-known/mcp/server-card.json that describes, in a machine-readable way, which tools and features a domain exposes by Model Context Protocol: server name, transport, typed input tools and loadable features. It is the layer of discovery — the description of the contract. Post on it exactly the capabilities you are ready to sustain."
           }
         },
         {
@@ -253,7 +253,7 @@
           "name": "What are Agent Skills?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised."
+            "text": "Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in a index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised."
           }
         },
         {
@@ -269,7 +269,7 @@
           "name": "How to control access to AI bots?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "With two complementary layers. The robots.txt (RFC 9309) responds if the bot can fetch. The Content-Signal directive answers what it can do after it has sought, separating three independent decisions: search (appearing in search), ai-input (being used as source of a generated response) and ai-train (turn training data). To distinguish bots from each other by cryptographic identity, there is also Web Bot Auth, based on HTTP message signature."
+            "text": "With two complementary layers. The robots.txt (RFC 9309) answers if the bot can fetch. The Content-Signal directive answers what it can do after it has sought, separating three independent decisions: search (appearing in search), ai-input (being used as source of a generated response) and ai-train (turn training data). To distinguish bots from each other by cryptographic identity, there is also Web Bot Auth, based on HTTP message signature."
           }
         },
         {
@@ -324,7 +324,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/agent-ready#g-content-signals",
           "name": "Content Signals",
-          "description": "Robots directive. txt declaring permitted uses: search, ai-input and ai-train."
+          "description": "Directive in robots.txt declaring permitted uses: search, ai-input and ai-train."
         },
         {
           "@type": "DefinedTerm",
@@ -360,7 +360,7 @@
           "@type": "DefinedTerm",
           "@id": "https://mauricio.issei.com.br/en/agent-ready#g-agent-skills",
           "name": "Agent Skills",
-          "description": "Reusable procedures in SKILL.md, indexed with verifiable digest SHA-256."
+          "description": "Reusable SKILL.md procedures indexed with verifiable digest SHA-256."
         },
         {
           "@type": "DefinedTerm",
@@ -412,7 +412,7 @@
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/en/">Maurício Yokoyama Issei</a>
 <button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
-<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Home</a></li><li><a href="/en/curriculo.html">Career</a></li><li><a href="/en/catalogo.html" aria-current="true">Content</a></li><li><a href="/videos.html">Videos</a></li></ul></nav>
+<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Início</a></li><li><a href="/en/curriculo.html">Carreira</a></li><li><a href="/en/catalogo.html" aria-current="true">Conteúdos</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
 </div></header>
 <script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->
@@ -578,7 +578,7 @@ others still in draft — in a verifiable set, and published the
           <div class="ar-tablewrap">
             <table class="ar-table">
               <caption class="ar-small" style="padding: 10px 14px; text-align: left;">
-                The five properties of an agentic surface and the question each one answers.
+                The five properties of a agentic surface and the question each answer.
               </caption>
               <thead>
                 <tr><th>Property</th><th>Officer's question</th><th>Where the answer lives</th></tr>
@@ -733,7 +733,7 @@ to watch.
 
         <div class="ar-prose">
           <p>
-            The structural decision of this site was to publish the agnettic surface in five layers
+            The structural decision of this site was to publish agentic surface in five layers
             <strong>independent of each other</strong>. None depends on the other, and the agent enters by
 any one: who solves DNS before opening connection finds the site; who makes a
             <code>GET</code> anyone gets the header <code>Link</code>; whoever follows convention goes
@@ -925,7 +925,7 @@ independent, because you don't control which one the client knows.
                 <dt>How to implement</dt>
                 <dd><p>A text file at the root, with at least one group <code>User-agent</code> and the Directive <code>Sitemap</code> pointing to the absolute index.</p></dd>
                 <dt>In this project</dt>
-                <dd><p><a href="/robots.txt">/robots. txt</a> — versioned on <code>public/robots.txt</code>, served as it is.</p></dd>
+                <dd><p><a href="/robots.txt">/robots.txt</a> — versioned on <code>public/robots.txt</code>, served as it is.</p></dd>
                 <dt>How to validate</dt>
                 <dd><p><code>curl -s https://seu-site/robots.txt</code></p></dd>
               </dl>
@@ -1156,7 +1156,7 @@ curl -s -H 'Accept: text/html,application/xhtml+xml,*/*;q=0.8' -o /dev/null \
               </dl>
               <p class="ar-small">
                 This document responds to the same negotiation:
-                <a href="/en/agent-ready.md">/agent-ready. md</a> is the same content without layout.
+                <a href="/en/agent-ready.md">/agent-ready.md</a> is the same content without layout.
               </p>
             </div>
           </article>
@@ -1909,7 +1909,7 @@ without it, CDN delivers the wrong cache version and someone's browser downloads
             <div class="ar-code">
               <div class="ar-code__head">
                 <span class="ar-tag ar-tag--generic">Generic example</span>
-                <span class="ar-code__path">Robots. txt</span>
+                <span class="ar-code__path">robots.txt</span>
               </div>
               <pre><code>User-agent: *
 Allow: /
@@ -2168,7 +2168,7 @@ these four questions remain agent-ready even when the ruler changes.
               <li><a href="https://isitagentready.com/" target="_blank" rel="noopener">IsItAgentReady — the appraiser</a></li>
               <li><a href="https://contentsignals.org/" target="_blank" rel="noopener">Content Signals Policy</a></li>
               <li><a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots/web-bot-auth/" target="_blank" rel="noopener">Web Bot Auth — Cloudflare documentation</a></li>
-              <li><a href="https://llmstxt.org/" target="_blank" rel="noopener">Illms. txt — the default</a></li>
+              <li><a href="https://llmstxt.org/" target="_blank" rel="noopener">llms.txt — the default</a></li>
             </ul>
           </div>
           <div>
@@ -2201,7 +2201,7 @@ these four questions remain agent-ready even when the ruler changes.
               <li><a href="./engenharia-confianca.html">Trust Engineering</a> — deterministic-first and rigid contracts</li>
               <li><a href="./catalogo.html">The complete catalogue</a></li>
               <li><a href="/en/agent-ready.md">This page at Markdown</a> — the version without layout</li>
-              <li><a href="/en/llms.txt">Illms. txt</a> — the index of this domain for models</li>
+              <li><a href="/en/llms.txt">llms.txt</a> — the index of this domain for models</li>
             </ul>
           </div>
         </div>
@@ -2243,11 +2243,11 @@ these four questions remain agent-ready even when the ruler changes.
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What is an MCP Server Card?</summary>
-      <div class="aeo-faq__a"><p>It is a JSON document in /.well-known/mcp/server-card.json that describes, in a machine-readable way, which tools and features a domain exposes by the Model Context Protocol: server name, transport, typed input tools and downloadable features. It is the layer of discovery — the description of the contract. Post on it exactly the capabilities you are ready to sustain.</p></div>
+      <div class="aeo-faq__a"><p>It is a JSON document in /.well-known/mcp/server-card.json that describes, in a machine-readable way, which tools and features a domain exposes by Model Context Protocol: server name, transport, typed input tools and loadable features. It is the layer of discovery — the description of the contract. Post on it exactly the capabilities you are ready to sustain.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">What are Agent Skills?</summary>
-      <div class="aeo-faq__a"><p>Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in an index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.</p></div>
+      <div class="aeo-faq__a"><p>Agent Skills publish reusable procedure, not given: each skill is a SKILL.md file with instructions on how to do something in that domain, listed in a index.json with the URL and digest SHA-256 of the file. The digest is the central point — instruction that enters the context of a model is the surface of attack, and the digest allows the agent to verify that it carried what the index promised.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">How do agents find APIs?</summary>
@@ -2255,7 +2255,7 @@ these four questions remain agent-ready even when the ruler changes.
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">How to control access to AI bots?</summary>
-      <div class="aeo-faq__a"><p>With two complementary layers. The robots.txt (RFC 9309) responds if the bot can fetch. The Content-Signal directive answers what it can do after it has sought, separating three independent decisions: search (appearing in search), ai-input (being used as source of a generated response) and ai-train (turn training data). To distinguish bots from each other by cryptographic identity, there is also Web Bot Auth, based on HTTP message signature.</p></div>
+      <div class="aeo-faq__a"><p>With two complementary layers. The robots.txt (RFC 9309) answers if the bot can fetch. The Content-Signal directive answers what it can do after it has sought, separating three independent decisions: search (appearing in search), ai-input (being used as source of a generated response) and ai-train (turn training data). To distinguish bots from each other by cryptographic identity, there is also Web Bot Auth, based on HTTP message signature.</p></div>
     </details>
     <details class="aeo-faq__item">
       <summary class="aeo-faq__q">How to test if a website is Agent-Native?</summary>
@@ -2268,7 +2268,7 @@ these four questions remain agent-ready even when the ruler changes.
   </div>
 </section>
 <!-- AEO-BODY:END -->
-  <!-- CONTINUACAO:START --><nav class="cont" aria-labelledby="cont-label" style="max-width:72rem;margin:3rem auto;padding:0 1.25rem;text-align:left"><p id="cont-label" style="margin:0 0 .5rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase">If this theme interests you</p><ul style="margin:0;padding-left:1.1rem;display:grid;gap:.45rem;line-height:1.6"><li><a href="./apresentacao.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Auditable AI architecture</a> <span style="display:block;font-size:.88rem">Also in Agentic Engineering and Specification and Development.</span></li><li><a href="./develop-engineering.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Deterministic Grounding</a> <span style="display:block;font-size:.88rem">Also in Agentic Engineering and Specification and Development.</span></li></ul></nav><!-- CONTINUACAO:END -->
+  <!-- CONTINUACAO:START --><nav class="cont" aria-labelledby="cont-label" style="max-width:72rem;margin:3rem auto;padding:0 1.25rem;text-align:left"><p id="cont-label" style="margin:0 0 .5rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase">If this theme interests you</p><ul style="margin:0;padding-left:1.1rem;display:grid;gap:.45rem;line-height:1.6"><li><a href="./apresentacao.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Auditable AI architecture</a> <span style="display:block;font-size:.88rem">Also in Agentic engineering and specification and development.</span></li><li><a href="./develop-engineering.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Deterministic Grounding</a> <span style="display:block;font-size:.88rem">Also in Agentic engineering and specification and development.</span></li></ul></nav><!-- CONTINUACAO:END -->
 </main>
 
   <footer class="ar-footer">
@@ -2286,7 +2286,7 @@ these four questions remain agent-ready even when the ruler changes.
           </a>
           <a class="ar-door" href="./engenharia-confianca.html">
             <b>Trust Engineering</b>
-            <span>From intent to reliable agentic execution.</span>
+            <span>From intention to reliable agentic execution.</span>
           </a>
           <a class="ar-door" href="./catalogo.html">
             <b>Contents</b>

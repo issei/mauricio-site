@@ -67,7 +67,7 @@ To save what the conversation solved in a project context Markdown file before a
 
 Revised by Maurício Yokoyama Issei on November 11, 2026.
 
-Subjects: [Age Engineering](https://mauricio.issei.com.br/temas/engenharia-agentica)
+Subjects: [Agentic engineering](https://mauricio.issei.com.br/temas/engenharia-agentica)
 
 ## About the video
 
