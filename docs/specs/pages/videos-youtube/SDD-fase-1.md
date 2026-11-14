@@ -90,7 +90,9 @@ PR. Até a aprovação, `temas: []` em todos os vídeos e nenhuma página `/tema
 2. `playlistItems.list` + `videos.list`, de 50 em 50 → metadados, duração, visualizações.
 3. Para cada vídeo sem `.vtt`: `captions.list` e `captions.download` (OAuth do canal).
 4. Vídeo que sumiu do canal ou ficou privado → `status: removido` (a página sai do site).
-   Se ele voltar, o ingest devolve `status: ficha`. É a única escrita do ingest fora de `youtube:`.
+   O status anterior fica em `status_antes_de_remover`. Se o vídeo voltar, o ingest devolve esse
+   status (ou `ficha`, se o campo não existir) e apaga o campo. Assim um artigo `publicado` volta
+   publicado, sem perder a revisão. É a única escrita do ingest fora de `youtube:`.
 5. Vídeo novo nasce com `legenda: pendente`. A ordem das legendas segue as visualizações (D8).
 6. Se só `visualizacoes` mudou, o bloco `youtube:` não é reescrito (evita um PR por dia sem
    mudança real).
