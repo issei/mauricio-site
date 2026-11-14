@@ -26,6 +26,7 @@ a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
 .wrap{max-width:880px;margin:0 auto;padding:14px 24px}
 .wrap-larga{max-width:1080px}
+.wrap-total{max-width:none;padding-left:clamp(16px,3vw,56px);padding-right:clamp(16px,3vw,56px)}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -50,16 +51,15 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .card-thumb{position:relative;aspect-ratio:16/9;background:#000}
 .card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
-.card-corpo{padding:10px 12px 12px}
+.card-corpo{padding:10px 12px 14px}
 .card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
 .card-link::after{content:"";position:absolute;inset:0}
 .card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.card-meta{margin:0;color:var(--muted);font-size:.85rem}
-.selo{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.78rem}
+.selo{position:absolute;left:8px;top:8px;padding:1px 9px;border:1px solid var(--accent);border-radius:999px;background:#0d1117;color:var(--accent);font-size:.78rem;font-weight:600}
 .filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .filtro label{font-size:.95rem}
-.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero{max-width:1200px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
 .hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
 .hero-img img{display:block;width:100%;height:100%;object-fit:cover}
 .kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
@@ -74,13 +74,17 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
 .prateleira-cab .todos{font-size:.92rem;margin-right:4px}
-.trilho-botoes{display:none;gap:8px}
+.trilho-wrap{position:relative}
+.trilho-botoes{display:none;position:absolute;left:0;right:0;top:3.2rem;justify-content:space-between;padding:0 8px;pointer-events:none;z-index:2}
 .js .trilho-botoes{display:flex}
-.trilho-botao{min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);color:#fff;font:inherit;font-size:1.1rem;cursor:pointer}
-.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
-.trilho-botao:disabled{opacity:.35;cursor:default}
-.trilho{list-style:none;margin:0;padding:6px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
-.trilho>li{flex:0 0 260px;scroll-snap-align:start}
+.trilho-botao{pointer-events:auto;min-width:44px;min-height:44px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(13,17,23,.88);color:#fff;font:inherit;font-size:1.4rem;line-height:1;cursor:pointer;opacity:0;transition:opacity .15s,box-shadow .15s}
+.prateleira:hover .trilho-botao:not(:disabled),.prateleira:focus-within .trilho-botao:not(:disabled){opacity:1}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 14px rgba(0,123,255,.45)}
+.trilho-botao:disabled{opacity:0;pointer-events:none}
+@media (hover:none){.trilho-botao:not(:disabled){opacity:1}}
+.trilho{list-style:none;margin:0;padding:6px 2px 10px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>li{flex:0 0 clamp(220px,18vw,300px);scroll-snap-align:start}
 .trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
 .resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
@@ -166,54 +170,46 @@ try {
 </details></div></section>
 <section class="prateleira" aria-labelledby="h-mais-do-assunto" id="mais-do-assunto" data-prateleira>
 <div class="prateleira-cab"><h2 id="h-mais-do-assunto">Mais deste assunto</h2><a class="todos" href="/temas/tecnologia-e-cultura">Ver todos de Tecnologia e cultura</a>
-<div class="trilho-botoes" data-botoes></div></div>
+</div>
+<div class="trilho-wrap"><div class="trilho-botoes" data-botoes></div>
 <ul class="trilho" data-trilho>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-10-17" data-vistos="163"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/mbR24EwOmFM/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:08</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da">Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?</a></h3>
-<p class="card-meta">17 de outubro de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da">Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-06-06" data-vistos="32"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/Scvb3i-vvd0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:05</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen">O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram</a></h3>
-<p class="card-meta">6 de junho de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen">O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-03-18" data-vistos="28"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/tnYamlf86CQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:32</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna">A Origem do Transformer: A Revolução que Criou a IA Moderna</a></h3>
-<p class="card-meta">18 de março de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna">A Origem do Transformer: A Revolução que Criou a IA Moderna</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-02-13" data-vistos="15"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/e-6l2XB6fmQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>5:10</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/atencao-sequencial-o-foco-da-ia">Atenção Sequencial  &quot;O Foco da IA&quot;</a></h3>
-<p class="card-meta">13 de fevereiro de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/atencao-sequencial-o-foco-da-ia">Atenção Sequencial  &quot;O Foco da IA&quot;</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-02-01" data-vistos="14"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/Zelg8R3Np-4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:17</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/a-ia-ganha-um-corpo">A IA Ganha um Corpo</a></h3>
-<p class="card-meta">1 de fevereiro de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-ia-ganha-um-corpo">A IA Ganha um Corpo</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-01-29" data-vistos="11"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/8CQS5LTKt1s/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>4:58</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/a-gramatica-da-narrativa-visual">A Gramática da Narrativa Visual</a></h3>
-<p class="card-meta">29 de janeiro de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-gramatica-da-narrativa-visual">A Gramática da Narrativa Visual</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-01-09" data-vistos="6"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/5TMcQQ5xtaI/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:21</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/o-segredo-oculto-dos-qr-codes-de-pixels-a-obras-de-arte">O Segredo Oculto dos QR Codes: De Pixels a Obras de Arte</a></h3>
-<p class="card-meta">9 de janeiro de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-segredo-oculto-dos-qr-codes-de-pixels-a-obras-de-arte">O Segredo Oculto dos QR Codes: De Pixels a Obras de Arte</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2026-01-07" data-vistos="31"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/QgZk35h2_k0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:03</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/o-segredo-filosofico-da-serie-dark-do-hermetismo-ao">O Segredo Filosófico da série Dark: Do Hermetismo ao Transumanismo</a></h3>
-<p class="card-meta">7 de janeiro de 2026 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-segredo-filosofico-da-serie-dark-do-hermetismo-ao">O Segredo Filosófico da série Dark: Do Hermetismo ao Transumanismo</a></h3></div>
 </article></li>
 <li data-temas="tecnologia-e-cultura" data-artigo="0" data-data="2025-10-28" data-vistos="21"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/xtdMdwdRvp4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:31</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/computacao-quantica-a-espada-de-dois-gumes">Computação Quântica  A Espada de Dois Gumes</a></h3>
-<p class="card-meta">28 de outubro de 2025 · Tecnologia e cultura</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/computacao-quantica-a-espada-de-dois-gumes">Computação Quântica  A Espada de Dois Gumes</a></h3></div>
 </article></li>
-</ul></section>
+</ul></div></section>
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
