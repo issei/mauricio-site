@@ -66,9 +66,9 @@ O vídeo transforma isso num teste de três passos [05:29]:
 
 Kant traduz essa lei numa segunda formulação: todo ser racional tem valor absoluto em si mesmo [06:08]. Devemos tratar a humanidade, em nós e nos outros, sempre como fim e nunca só como meio [06:20]. Nenhum ser humano pode ser usado como ferramenta descartável para interesses alheios [06:31].
 
-O vídeo aplica a ideia a alguém endividado que promete pagar um empréstimo sabendo que não vai cumprir [06:44]. A obra traz quatro exemplos que testam o imperativo [06:56]:
+O vídeo aplica a ideia a alguém endividado que promete pagar um empréstimo sabendo que não vai cumprir [06:44]. A obra traz quatro exemplos que testam o imperativo, e o vídeo comenta três deles [06:56]:
 
-- **a falsa promessa:** quem empresta vira uma mera ferramenta, um caixa eletrônico. E, se a falsa promessa virasse lei universal, ninguém acreditaria em nada e a confiança deixaria de existir [07:00];
+- **a falsa promessa:** quem empresta vira uma mera ferramenta, ou, na imagem do vídeo, um caixa eletrônico. E, se a falsa promessa virasse lei universal, ninguém acreditaria em nada e a confiança deixaria de existir [07:00];
 - **os próprios talentos:** abandoná-los vai contra o desenvolvimento natural do ser humano [07:19];
 - **a ajuda a quem precisa:** negá-la ignora que todos somos fins em nós mesmos e precisamos de apoio [07:26].
 
