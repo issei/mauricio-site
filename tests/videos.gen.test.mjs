@@ -196,15 +196,13 @@ test('destaque: destaque:true vence; senão o artigo publicado mais recente; sen
   assert.equal(escolheDestaque(semArtigo).id, 'BBBBBBBBBB2', 'o mais recente');
 });
 
-test('prateleiras: ordem, limite de 12, só com artigo e mais vistos por visualizações', () => {
+test('prateleiras: só uma por tema, do maior ao menor, com limite de 12', () => {
   const { videos, temas } = fixture();
   const vivos = videos.filter((v) => v.status !== 'removido');
   const usados = Object.keys(temas).filter((t) => vivos.some((v) => v.temas?.includes(t)));
   const ps = prateleirasDoIndice(vivos, temas, usados);
-  assert.deepEqual(ps.slice(0, 3).map((p) => p.id), ['novos', 'com-artigo', 'mais-vistos']);
-  assert.ok(ps.slice(3).every((p) => p.id.startsWith('tema-')));
-  assert.deepEqual(ps.find((p) => p.id === 'com-artigo').lista.map((v) => v.id), ['DDDDDDDDDD4']);
-  assert.equal(ps.find((p) => p.id === 'mais-vistos').lista[0].id, 'AAAAAAAAAA1', '1234 visualizações');
+  assert.ok(ps.length > 0 && ps.every((p) => p.id.startsWith('tema-')), 'sem Novos, Com artigo e Mais vistos');
+  assert.ok(ps.every((p, i) => i === 0 || ps[i - 1].lista.length >= p.lista.length));
   const muitos = Array.from({ length: 30 }, (_, i) => ({ ...vivos[0], id: `V${i}`, youtube: { ...vivos[0].youtube, publicado_em: `2025-01-${String(i + 1).padStart(2, '0')}` } }));
   assert.equal(prateleirasDoIndice(muitos, temas, usados)[0].lista.length, 12);
 });
@@ -213,8 +211,8 @@ test('índice: destaque, "Ir para", prateleiras com título e grade com os três
   const html = build(fixture())['src/videos.html'];
   assert.match(html, /<section class="hero" aria-labelledby="h-destaque">/);
   assert.match(html, /<nav class="salto" aria-label="Ir para uma prateleira">/);
-  assert.match(html, /<section class="prateleira" aria-labelledby="h-novos" id="novos" data-prateleira>/);
-  assert.match(html, /href="\/videos\?artigo=1#todos"/);
+  assert.match(html, /<section class="prateleira" aria-labelledby="h-tema-[a-z-]+" id="tema-[a-z-]+" data-prateleira>/);
+  assert.doesNotMatch(html, /id="(novos|com-artigo|mais-vistos)"/);
   assert.match(html, /id="filtro-artigo"/);
   assert.match(html, /id="filtro-ordem"/);
   assert.match(html, /<section aria-labelledby="h-todos" id="todos">/);

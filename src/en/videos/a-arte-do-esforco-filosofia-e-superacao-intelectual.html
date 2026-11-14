@@ -26,6 +26,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
 .wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.wrap-larga{max-width:1080px}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -43,14 +44,45 @@ h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
 details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
 .ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
-.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
-.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
-.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
-.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
-.card p{margin:0;color:var(--muted);font-size:.9rem}
-.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lista{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{position:relative;display:flex;flex-direction:column;height:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.card:hover,.card:focus-within{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card-thumb{position:relative;aspect-ratio:16/9;background:#000}
+.card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
+.card-corpo{padding:10px 12px 12px}
+.card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card-link::after{content:"";position:absolute;inset:0}
+.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.card-meta{margin:0;color:var(--muted);font-size:.85rem}
+.selo{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.78rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.filtro label{font-size:.95rem}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.hero-img img{display:block;width:100%;height:100%;object-fit:cover}
+.kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.hero h2{margin:.2em 0 .4em;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.25}
+.hero .resumo{font-size:1rem;margin:0 0 1em}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:1em 0 0}
+.botao{display:inline-block;padding:10px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--border);color:#fff}
+.botao-primario{border-color:transparent;background:linear-gradient(90deg,#007bff,#8a2be2)}
+.botao:hover{box-shadow:0 0 18px rgba(138,43,226,.45);color:#fff}
+.botao:focus-visible,.trilho-botao:focus-visible,.chips a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.prateleira{margin:0 0 1.8em}
+.prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
+.prateleira-cab .todos{font-size:.92rem;margin-right:4px}
+.trilho-botoes{display:none;gap:8px}
+.js .trilho-botoes{display:flex}
+.trilho-botao{min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);color:#fff;font:inherit;font-size:1.1rem;cursor:pointer}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.trilho-botao:disabled{opacity:.35;cursor:default}
+.trilho{list-style:none;margin:0;padding:6px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.trilho>li{flex:0 0 260px;scroll-snap-align:start}
+.trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
 .resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
 .artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
@@ -60,8 +92,9 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
 .fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
 .revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
-@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+@media (max-width:640px){.trilho>li{flex-basis:70%}.lista{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.yt-play:hover,.card:hover,.card:focus-within{transform:none}}</style>
 <!-- SITE-HEADER-CSS:START -->
 <style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}.sh .sh-nav{order:2;margin-left:auto}.sh .sh-busca{order:3;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}.sh .sh-busca:hover{border-color:#58a6ff;color:#fff;text-decoration:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.9rem;white-space:normal;line-height:1.15;min-width:0}.sh .sh-in{gap:.5rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh .sh-busca{order:0;margin-left:auto;padding:0 .7rem;font-size:.85rem}.sh .sh-nav{order:0;margin-left:0}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:0;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
 <!-- SITE-HEADER-CSS:END -->
@@ -112,7 +145,7 @@ try {
 <p class="yt-link"><a href="https://www.youtube.com/watch?v=tt2XRKbusbs" rel="noopener">Open on YouTube</a></p>
 <p class="aviso">The video and the transcript are in Portuguese. The minutes between brackets lead to the stretch of the video.</p>
 <nav class="indice" aria-labelledby="h-indice"><h2 id="h-indice">In this article</h2><ol><li><a href="#s-a-pergunta-o-que-torna-uma-vida-bem-sucedida">The question: what makes a life successful</a></li><li><a href="#s-ulisses-e-a-ilha-de-calipso">Ulysses and the island of Calipso</a></li><li><a href="#s-a-eudaimonia-de-aristoteles">Aristotle's Eudaimony</a></li><li><a href="#s-a-firmeza-depois-de-descobrir-nao-recuar">The firmness: after finding out, do not back down</a></li><li><a href="#s-o-teste-do-brio">The brio test</a></li><li><a href="#s-a-arte-do-esforco">The Art of Effort</a></li><li><a href="#s-perguntas-frequentes">Frequently Asked Questions</a></li></ol></nav>
-<article class="artigo" aria-label="Article">
+<article class="artigo" id="artigo" aria-label="Article">
 <h2 id="s-a-pergunta-o-que-torna-uma-vida-bem-sucedida">The question: what makes a life successful</h2>
 <p>The video proposes to refuse passive comfort and accept intellectual friction as a way to find a purpose <a class="ancora" href="https://www.youtube.com/watch?v=tt2XRKbusbs&t=14s" data-t="14" aria-label="Watch from 00:14">00:14</a>. The question that guides analysis is the oldest of all: what really matters in life <a class="ancora" href="https://www.youtube.com/watch?v=tt2XRKbusbs&t=30s" data-t="30" aria-label="Watch from 00:30">00:30</a>.</p>
 <h2 id="s-ulisses-e-a-ilha-de-calipso">Ulysses and the island of Calipso</h2>
@@ -161,6 +194,71 @@ try {
 <p><span class="ts">[5:06]</span>All morning reading and rereading the same difficult paragraph 30 times, but the great balcony is that doing so is a reason of immense pride for our intellect. Not punishment, it's brio in the purest form. is to look at paper or screen and say to yourself: &quot;I will never be defeated by a mere set of words&quot;. Point C, the art of effort. Your Honor is a very exclusive club. It belongs only to those who have the courage to reject shallow waters, to turn their backs on all that deceptive ease of Calipso. It belongs to those who discover its purpose, take firm hold of the helm of their own intelligence and, above all, put blood in their veins to face intellectual friction with an intransigent bril. It's all about sustaining the discipline of effort to the end. What is the intellectual barrier that won't defeat us today? To close our analysis, let's leave this provocation ecuando in the air. Let that question serve as fuel to inspire in all of us a refusal</p>
 <p><span class="ts">[6:06]</span>obstinate to escape the next great mental challenge. Think about it, put the bril on the line and master the barrier ahead of you. Big hug and see you next time.</p>
 </details></div></section>
+<section class="prateleira" aria-labelledby="h-mais-do-assunto" id="mais-do-assunto" data-prateleira>
+<div class="prateleira-cab"><h2 id="h-mais-do-assunto">More of this subject</h2><a class="todos" href="/temas/aprendizagem-e-mente">See all of Learning and Mind</a>
+<div class="trilho-botoes" data-botoes></div></div>
+<ul class="trilho" data-trilho>
+<li data-temas="aprendizagem-e-mente" data-artigo="1" data-data="2026-11-14" data-vistos="1"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/S6mT3RumiDY/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>9:27</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/en/videos/kant-fundamentacao-da-metafisica-dos-costumes">Kant: Grounds for Metaphysics of Customs</a></h3>
+<p class="card-meta">14 November 2026<span class="selo">Article</span> · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-10-08" data-vistos="45"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/edwg9s12EwE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>6:51</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/aprendizagem-real-o-ciclo-da-aprendizagem-autorregulada">Real Learning: The Self-regulated Learning Cycle</a></h3>
+<p class="card-meta">October 8, 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente acessibilidade-e-design" data-artigo="0" data-data="2026-09-25" data-vistos="13"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/zNxJnpH6Hys/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>6:16</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/25-de-setembro-de-2026">September 25, 2026</a></h3>
+<p class="card-meta">September 25, 2026 · Learning and mind, Accessibility and design</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-09-23" data-vistos="15"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/SLSaXV6j6I0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>1:09</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/quem-esta-no-comando-da-sua-mente-voce-ou-as-suas-reacoes">Who is in charge of your mind: you or your automatic reactions?</a></h3>
+<p class="card-meta">September 23, 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente gestao-e-estrategia" data-artigo="0" data-data="2026-09-23" data-vistos="155"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/ZsA9X2mMTsw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:21</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-arquitetura-da-mente-filosofia-metacognicao-e-lideranca">Architecture of the Mind: Philosophy, Metacognition and Strategic Leadership</a></h3>
+<p class="card-meta">September 23, 2026 · Learning and mind, Management and strategy</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-09-03" data-vistos="73"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/5T0ZhmtShMU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>1:28</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-efeito-pigmaleao-como-expectativas-moldam-resultados">The Pigmaleon Effect as Expectations Mold Results</a></h3>
+<p class="card-meta">September 3, 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-09-03" data-vistos="11"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/RAsSxlfI3xY/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>1:10</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-o-erro-constroi-a-consistencia">How Error Builds Consistency</a></h3>
+<p class="card-meta">September 3, 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-09-03" data-vistos="77"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/rDtD-adNluE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>1:26</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/taxonomia-de-bloom-como-dominar-qualquer-assunto">Bloom Taxonomy How to Master Any Subject</a></h3>
+<p class="card-meta">September 3, 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-09-01" data-vistos="34"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/pEQ_mk7-ynE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:22</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-ilusao-das-ideias-o-que-a-ciencia-realmente-diz-sobre">THE ILLUSSION OF IDEA: What Science Really Says About Creativity and Brainstorming</a></h3>
+<p class="card-meta">1 September 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-08-29" data-vistos="18"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/TwDkaniVQPg/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:09</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/ia-na-educacao-por-que-dar-acesso-aos-alunos-pode-ser-um">IA in Education: Why can giving students access be a mistake? (Capacity before Access)</a></h3>
+<p class="card-meta">29 August 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-06-29" data-vistos="5"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/dxm1J8_XFyo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:33</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-postura-estrategica-domine-sua-rotina-e-seus">The Strategic Posture: Master Your Routine and Your Relationships</a></h3>
+<p class="card-meta">29 June 2026 · Learning and mind</p></div>
+</article></li>
+<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-05-27" data-vistos="43"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/HCaqhdgPScQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>9:30</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-arquitetura-da-mente">The Architecture of the Mind</a></h3>
+<p class="card-meta">27 May 2026 · Learning and mind</p></div>
+</article></li>
+</ul></section>
 </main>
 <footer class="foot"><div class="wrap"><a href="/en/privacidade">Privacy</a><a href="/en/cookies">Cookies</a><a href="/en/termos">Terms</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">YouTube Channel</a></div></footer>
 <script>
@@ -183,6 +281,34 @@ try {
   // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
   document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
+  });
+})();
+</script>
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-prateleira]').forEach(function (sec) {
+    var trilho = sec.querySelector('[data-trilho]'), box = sec.querySelector('[data-botoes]');
+    var nome = sec.querySelector('h2').textContent;
+    function botao(texto, rotulo, sentido) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'trilho-botao'; b.textContent = texto;
+      b.setAttribute('aria-label', rotulo + ' · ' + nome);
+      b.addEventListener('click', function () {
+        trilho.scrollBy({ left: sentido * trilho.clientWidth * 0.9, behavior: calmo.matches ? 'auto' : 'smooth' });
+      });
+      return b;
+    }
+    var ant = botao('\u2039', 'Vídeos anteriores', -1), prox = botao('\u203A', 'Próximos vídeos', 1);
+    box.append(ant, prox);
+    function atualiza() {
+      ant.disabled = trilho.scrollLeft <= 4;
+      prox.disabled = trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 4;
+    }
+    trilho.addEventListener('scroll', atualiza, { passive: true });
+    addEventListener('resize', atualiza);
+    atualiza();
   });
 })();
 </script>

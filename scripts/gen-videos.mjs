@@ -774,19 +774,13 @@ export function escolheDestaque(vivos) {
 export function prateleirasDoIndice(vivos, temas, temasUsados) {
   const lim = (l) => l.slice(0, LIMITE_PRATELEIRA);
   const novos = vivos.slice().sort(recentes);
-  const comArtigo = novos.filter((v) => v.status === 'publicado');
-  const vistos = vivos.slice().sort((a, b) => (Number(b.youtube.visualizacoes) || 0) - (Number(a.youtube.visualizacoes) || 0));
   const porTema = temasUsados
     .map((t) => ({ t, lista: novos.filter((v) => v.temas?.includes(t)) }))
     .sort((a, b) => b.lista.length - a.lista.length || a.t.localeCompare(b.t));
-  return [
-    { id: 'novos', titulo: 'Novos no canal', lista: lim(novos), todos: { href: '/videos#todos', rotulo: `Ver todos (${vivos.length})` } },
-    { id: 'com-artigo', titulo: 'Vídeos com artigo', lista: lim(comArtigo), todos: { href: '/videos?artigo=1#todos', rotulo: `Ver todos (${comArtigo.length})` } },
-    { id: 'mais-vistos', titulo: 'Mais vistos', lista: lim(vistos), todos: { href: '/videos?ordem=vistos#todos', rotulo: 'Ver todos' } },
-    ...porTema.map(({ t, lista }) => ({
-      id: `tema-${t}`, titulo: temas[t].nome, lista: lim(lista), todos: { href: rotaTema(t), rotulo: `Ver todos (${lista.length})` },
-    })),
-  ].filter((p) => p.lista.length);
+  // Só temas (Issei, 2026-11-14): Novos, Com artigo e Mais vistos repetiam o destaque e os filtros da grade.
+  return porTema.map(({ t, lista }) => ({
+    id: `tema-${t}`, titulo: temas[t].nome, lista: lim(lista), todos: { href: rotaTema(t), rotulo: `Ver todos (${lista.length})` },
+  })).filter((p) => p.lista.length);
 }
 
 function destaqueHtml(v, temas) {
