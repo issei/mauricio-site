@@ -5,7 +5,7 @@ status: publicado
 temas:
   - aprendizagem-e-mente
 resumo: "O vídeo junta mitologia e filosofia para responder o que torna uma vida bem-sucedida. Passa pela escolha de Ulisses na ilha de Calipso, pela eudaimonia de Aristóteles e pela firmeza que o vídeo liga a Nietzsche, e termina no brio: a recusa de ser derrotado por um texto difícil."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-13
 youtube:
   titulo: "A ARTE DO ESFORÇO: Filosofia e Superação Intelectual"
