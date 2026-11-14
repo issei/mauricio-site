@@ -7,8 +7,9 @@
  * arquivos novos. `slug`, `status`, `temas`, qualquer outro campo e o corpo são
  * da pessoa e nunca são tocados depois de criados — a coleta pode rodar quantas
  * vezes for preciso sem apagar revisão humana. A única exceção é `status:
- * removido`, que a coleta grava quando o vídeo some do canal (e desfaz, de
- * volta para `ficha`, se ele reaparecer).
+ * removido`, que a coleta grava quando o vídeo some do canal. O status que a
+ * pessoa tinha dado fica guardado em `status_antes_de_remover` e volta quando o
+ * vídeo reaparece: um artigo publicado não pode virar ficha em silêncio.
  *
  * COTA (§5): a listagem do canal custa poucas unidades; cada legenda custa
  * ~250 (captions.list + captions.download). Por isso no máximo
@@ -150,7 +151,10 @@ export function mescla(existentes, canal, agora) {
     const e = porId.get(v.id);
     if (e) {
       const data = { ...e.data, youtube: semRuido(e.data.youtube, blocoYoutube(v, canal.playlists, e.data.youtube, agora)) };
-      if (data.status === 'removido') data.status = 'ficha';
+      if (data.status === 'removido') {
+        data.status = data.status_antes_de_remover ?? 'ficha';
+        delete data.status_antes_de_remover;
+      }
       out[`${v.id}.md`] = serializa(data, e.body);
       continue;
     }
@@ -161,7 +165,7 @@ export function mescla(existentes, canal, agora) {
   }
   for (const e of existentes) {
     if (vistos.has(e.data.id) || e.data.status === 'removido') continue;
-    out[`${e.data.id}.md`] = serializa({ ...e.data, status: 'removido' }, e.body);
+    out[`${e.data.id}.md`] = serializa({ ...e.data, status: 'removido', status_antes_de_remover: e.data.status }, e.body);
   }
   return out;
 }

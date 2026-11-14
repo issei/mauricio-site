@@ -52,6 +52,23 @@ test('vídeo que sumiu do canal vira removido e volta a ficha se reaparecer', ()
   assert.equal(voltou['BBBBBBBBBB2.md'].data.status, 'ficha');
 });
 
+test('artigo publicado que some e volta ao canal volta publicado, com a revisão intacta', () => {
+  const existente = {
+    data: { id: 'DDDDDDDDDD4', slug: 'd', status: 'publicado', temas: ['ia'], revisado_por: 'Pessoa', revisado_em: '2026-11-11', youtube: { titulo: 'D', legenda: 'automatica' } },
+    body: 'Artigo revisado.',
+  };
+  const sumiu = le(mescla([existente], canal(), 'x'))['DDDDDDDDDD4.md'];
+  assert.equal(sumiu.data.status, 'removido');
+  assert.equal(sumiu.data.status_antes_de_remover, 'publicado');
+  const segunda = le(mescla([sumiu], canal(), 'x'));
+  assert.equal(segunda['DDDDDDDDDD4.md'], undefined, 'já removido: a coleta seguinte não reescreve');
+  const voltou = le(mescla([sumiu], canal(doCanal('DDDDDDDDDD4', 'D')), 'x'))['DDDDDDDDDD4.md'];
+  assert.equal(voltou.data.status, 'publicado');
+  assert.equal('status_antes_de_remover' in voltou.data, false);
+  assert.equal(voltou.data.revisado_por, 'Pessoa');
+  assert.equal(voltou.body, 'Artigo revisado.');
+});
+
 test('títulos iguais geram slugs distintos e o resultado passa na validação do gerador', () => {
   const out = le(mescla([], canal(doCanal('AAAAAAAAAA1', 'Live'), doCanal('CCCCCCCCCC3', 'Live')), '2026-11-07T00:00:00Z'));
   assert.notEqual(out['AAAAAAAAAA1.md'].data.slug, out['CCCCCCCCCC3.md'].data.slug);
