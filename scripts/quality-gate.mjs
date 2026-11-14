@@ -91,7 +91,7 @@ etapas.push({
   label: 'artefatos gerados em dia',
   cmd: 'node scripts/gen-hub-data.mjs --check && node scripts/gen-hero-counter.mjs --check' +
     ' && node scripts/gen-portfolio.mjs --check && node scripts/gen-editorial.mjs --check' +
-    ' && node scripts/gen-videos.mjs --check && node scripts/gen-catalogo.mjs --check && node scripts/gen-cabecalho.mjs --check && node scripts/gen-natureza.mjs --check && node scripts/gen-continuacao.mjs --check' +
+    ' && node scripts/gen-videos.mjs --check && node scripts/gen-busca.mjs --check && node scripts/gen-catalogo.mjs --check && node scripts/gen-cabecalho.mjs --check && node scripts/gen-natureza.mjs --check && node scripts/gen-continuacao.mjs --check' +
     ' && node scripts/gen-llms.mjs --check' +
     ' && node scripts/optimize-critical-path.mjs --check',
 });

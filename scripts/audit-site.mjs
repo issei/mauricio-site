@@ -39,6 +39,7 @@ const NAO_PUBLICAS = new Set([
   'exemplopdi', 'mapmind', 'vsl',          // experimentos/utilitários
   'proposta',                              // executiva não listada (noindex)
   'entrevista-acessibilidade-streaming',   // ferramenta de entrevista não listada (noindex)
+  'busca',                                 // busca do site: noindex, gerada por scripts/gen-busca.mjs
   'catalogo',                              // é o próprio hub
 ]);
 

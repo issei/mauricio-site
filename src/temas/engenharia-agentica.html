@@ -25,6 +25,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
 .wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.wrap-larga{max-width:1080px}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -42,14 +43,45 @@ h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
 details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
 .ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
-.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
-.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
-.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
-.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
-.card p{margin:0;color:var(--muted);font-size:.9rem}
-.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lista{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{position:relative;display:flex;flex-direction:column;height:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.card:hover,.card:focus-within{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card-thumb{position:relative;aspect-ratio:16/9;background:#000}
+.card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
+.card-corpo{padding:10px 12px 12px}
+.card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card-link::after{content:"";position:absolute;inset:0}
+.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.card-meta{margin:0;color:var(--muted);font-size:.85rem}
+.selo{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.78rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.filtro label{font-size:.95rem}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.hero-img img{display:block;width:100%;height:100%;object-fit:cover}
+.kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.hero h2{margin:.2em 0 .4em;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.25}
+.hero .resumo{font-size:1rem;margin:0 0 1em}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:1em 0 0}
+.botao{display:inline-block;padding:10px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--border);color:#fff}
+.botao-primario{border-color:transparent;background:linear-gradient(90deg,#007bff,#8a2be2)}
+.botao:hover{box-shadow:0 0 18px rgba(138,43,226,.45);color:#fff}
+.botao:focus-visible,.trilho-botao:focus-visible,.chips a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.prateleira{margin:0 0 1.8em}
+.prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
+.prateleira-cab .todos{font-size:.92rem;margin-right:4px}
+.trilho-botoes{display:none;gap:8px}
+.js .trilho-botoes{display:flex}
+.trilho-botao{min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);color:#fff;font:inherit;font-size:1.1rem;cursor:pointer}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.trilho-botao:disabled{opacity:.35;cursor:default}
+.trilho{list-style:none;margin:0;padding:6px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.trilho>li{flex:0 0 260px;scroll-snap-align:start}
+.trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
 .resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
 .artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
@@ -59,10 +91,11 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
 .fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
 .revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
-@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+@media (max-width:640px){.trilho>li{flex-basis:70%}.lista{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.yt-play:hover,.card:hover,.card:focus-within{transform:none}}</style>
 <!-- SITE-HEADER-CSS:START -->
-<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.95rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:auto;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}.sh .sh-nav{order:2;margin-left:auto}.sh .sh-busca{order:3;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}.sh .sh-busca:hover{border-color:#58a6ff;color:#fff;text-decoration:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.9rem;white-space:normal;line-height:1.15;min-width:0}.sh .sh-in{gap:.5rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh .sh-busca{order:0;margin-left:auto;padding:0 .7rem;font-size:.85rem}.sh .sh-nav{order:0;margin-left:0}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:0;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
 <!-- SITE-HEADER-CSS:END -->
 <!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
      Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
@@ -88,12 +121,13 @@ try {
 <!-- SITE-HEADER:START -->
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
+<a class="sh-busca" href="/busca">Buscar</a>
 <button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
 <nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/">Início</a></li><li><a href="/curriculo.html">Carreira</a></li><li><a href="/catalogo.html" aria-current="true">Conteúdos</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
 </div></header>
-<script>(function(){var h=document.querySelector(".sh");if(!h)return;var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var q=h.querySelector(".sh-busca");if(q){var qb=document.createElement("button");qb.type="button";qb.className="sh-busca";qb.textContent=q.textContent;qb.setAttribute("aria-haspopup","dialog");q.replaceWith(qb);qb.addEventListener("click",function(){import("/js/busca.js").then(function(m){m.abrir(qb);});});document.addEventListener("keydown",function(e){var t=e.target;if(e.key!=="/"||e.ctrlKey||e.metaKey||e.altKey)return;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;e.preventDefault();qb.click();});}var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->
-<main id="conteudo" class="wrap">
+<main id="conteudo" class="wrap wrap-larga">
 <p class="crumb"><a href="/catalogo">Conteúdos</a></p>
 <h1>Engenharia agêntica</h1>
 <p>Como projetar, orquestrar e levar para produção agentes de IA: protocolos, memória, ferramentas e o trabalho do engenheiro ao lado deles.</p>
@@ -164,250 +198,250 @@ try {
 <h2>Vídeos</h2>
 <p class="meta">49 vídeos</p>
 <ul class="lista">
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/ZTNLoWhtXEw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para">Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA</a></h3>
-<p>19 de outubro de 2026 · 7 min 44 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-19" data-vistos="182"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/ZTNLoWhtXEw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:44</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para">Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA</a></h3>
+<p class="card-meta">19 de outubro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/mRFqnOktQH4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso">Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion</a></h3>
-<p>19 de outubro de 2026 · 7 min 7 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-19" data-vistos="91"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/mRFqnOktQH4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:07</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso">Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion</a></h3>
+<p class="card-meta">19 de outubro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica cloud-e-confiabilidade"><article class="card">
-<img src="https://i.ytimg.com/vi/iCVD5IVVR2g/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS</a></h3>
-<p>18 de outubro de 2026 · 7 min 41 s · Engenharia agêntica, Cloud e confiabilidade</p></div>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-10-18" data-vistos="39"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/iCVD5IVVR2g/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:41</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS</a></h3>
+<p class="card-meta">18 de outubro de 2026 · Engenharia agêntica, Cloud e confiabilidade</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/lZqBmAkl3J8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-que-faz-um-forward-deployed-engineer-fde">O que faz um Forward-Deployed Engineer (FDE)?</a></h3>
-<p>13 de outubro de 2026 · 8 min 34 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-13" data-vistos="53"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/lZqBmAkl3J8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:34</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-que-faz-um-forward-deployed-engineer-fde">O que faz um Forward-Deployed Engineer (FDE)?</a></h3>
+<p class="card-meta">13 de outubro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/hub4sB4yYss/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google">A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho</a></h3>
-<p>10 de outubro de 2026 · 7 min 56 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-10" data-vistos="36"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/hub4sB4yYss/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:56</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google">A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho</a></h3>
+<p class="card-meta">10 de outubro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/o3IMxBLEhp0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para">ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software</a></h3>
-<p>9 de outubro de 2026 · 8 min 37 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-09" data-vistos="81"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/o3IMxBLEhp0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:37</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para">ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software</a></h3>
+<p class="card-meta">9 de outubro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica cloud-e-confiabilidade"><article class="card">
-<img src="https://i.ytimg.com/vi/BTTHq4W56KQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de">OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes</a></h3>
-<p>7 de outubro de 2026 · 8 min 3 s · Engenharia agêntica, Cloud e confiabilidade</p></div>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-10-07" data-vistos="90"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/BTTHq4W56KQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:03</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de">OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes</a></h3>
+<p class="card-meta">7 de outubro de 2026 · Engenharia agêntica, Cloud e confiabilidade</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/o0mWY83c37Y/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra">NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!</a></h3>
-<p>7 de outubro de 2026 · 7 min 35 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-07" data-vistos="24"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/o0mWY83c37Y/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:35</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra">NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!</a></h3>
+<p class="card-meta">7 de outubro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica gestao-e-estrategia"><article class="card">
-<img src="https://i.ytimg.com/vi/Z-8YtFXi-oo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/digital-workplace-agentico-como-evoluir-do-portal">Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA</a></h3>
-<p>3 de outubro de 2026 · 8 min 29 s · Engenharia agêntica, Gestão e estratégia</p></div>
+<li data-temas="engenharia-agentica gestao-e-estrategia" data-artigo="0" data-data="2026-10-03" data-vistos="59"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/Z-8YtFXi-oo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:29</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/digital-workplace-agentico-como-evoluir-do-portal">Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA</a></h3>
+<p class="card-meta">3 de outubro de 2026 · Engenharia agêntica, Gestão e estratégia</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/s-VWwbBEv90/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras">Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI</a></h3>
-<p>2 de outubro de 2026 · 8 min 8 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-02" data-vistos="120"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/s-VWwbBEv90/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:08</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras">Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI</a></h3>
+<p class="card-meta">2 de outubro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica especificacao-e-desenvolvimento"><article class="card">
-<img src="https://i.ytimg.com/vi/KpcrbmGA_v8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software">Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA</a></h3>
-<p>27 de setembro de 2026 · 7 min 35 s · Engenharia agêntica, Especificação e desenvolvimento</p></div>
+<li data-temas="engenharia-agentica especificacao-e-desenvolvimento" data-artigo="0" data-data="2026-09-27" data-vistos="40"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/KpcrbmGA_v8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:35</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software">Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA</a></h3>
+<p class="card-meta">27 de setembro de 2026 · Engenharia agêntica, Especificação e desenvolvimento</p></div>
 </article></li>
-<li data-temas="engenharia-agentica cloud-e-confiabilidade"><article class="card">
-<img src="https://i.ytimg.com/vi/cSW_eXN-9wE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala">Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!</a></h3>
-<p>27 de setembro de 2026 · 8 min 13 s · Engenharia agêntica, Cloud e confiabilidade</p></div>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-09-27" data-vistos="49"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/cSW_eXN-9wE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:13</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala">Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!</a></h3>
+<p class="card-meta">27 de setembro de 2026 · Engenharia agêntica, Cloud e confiabilidade</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/NtOpM5eiU5A/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/google-ax-o-como-escalar-milhoes-de-agentes-de-ia">Google AX: O Como Escalar Milhões de Agentes de IA</a></h3>
-<p>24 de setembro de 2026 · 10 min 3 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-24" data-vistos="109"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/NtOpM5eiU5A/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>10:03</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/google-ax-o-como-escalar-milhoes-de-agentes-de-ia">Google AX: O Como Escalar Milhões de Agentes de IA</a></h3>
+<p class="card-meta">24 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/oB7BUFktKBA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/agentic-resource-discovery-ard-como-agentes-de-ia-descobrem">Agentic Resource Discovery (ARD): Como Agentes de IA Descobrem Ferramentas na Web</a></h3>
-<p>23 de setembro de 2026 · 8 min 37 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-23" data-vistos="10"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/oB7BUFktKBA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:37</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/agentic-resource-discovery-ard-como-agentes-de-ia-descobrem">Agentic Resource Discovery (ARD): Como Agentes de IA Descobrem Ferramentas na Web</a></h3>
+<p class="card-meta">23 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica especificacao-e-desenvolvimento"><article class="card">
-<img src="https://i.ytimg.com/vi/5LtvpFMRUvw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/engenharia-por-tras-da-boutique-empresarial-arquitetura">Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico</a></h3>
-<p>21 de setembro de 2026 · 9 min 32 s · Engenharia agêntica, Especificação e desenvolvimento</p></div>
+<li data-temas="engenharia-agentica especificacao-e-desenvolvimento" data-artigo="1" data-data="2026-09-21" data-vistos="227"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/5LtvpFMRUvw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:32</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/engenharia-por-tras-da-boutique-empresarial-arquitetura">Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico</a></h3>
+<p class="card-meta">21 de setembro de 2026<span class="selo">Artigo</span> · Engenharia agêntica, Especificação e desenvolvimento</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/Fbuu769DNfk/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto">Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA</a></h3>
-<p>20 de setembro de 2026 · 7 min 36 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-20" data-vistos="104"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/Fbuu769DNfk/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:36</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto">Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA</a></h3>
+<p class="card-meta">20 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/9fUl8-hSIp0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-ciclo-react-em-agentes-de-ia-como-os-agentes-pensam-agem">O Ciclo ReAct em Agentes de IA: Como os Agentes Pensam, Agem e Observam</a></h3>
-<p>11 de setembro de 2026 · 7 min 41 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-11" data-vistos="57"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/9fUl8-hSIp0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:41</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-ciclo-react-em-agentes-de-ia-como-os-agentes-pensam-agem">O Ciclo ReAct em Agentes de IA: Como os Agentes Pensam, Agem e Observam</a></h3>
+<p class="card-meta">11 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/UzAft6Vtytw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/como-o-reef-treina-agentes-de-ia-autonomos-em-tempo-real">Como o Reef Treina Agentes de IA Autônomos em Tempo Real!</a></h3>
-<p>11 de setembro de 2026 · 7 min 24 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-11" data-vistos="21"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/UzAft6Vtytw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:24</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-o-reef-treina-agentes-de-ia-autonomos-em-tempo-real">Como o Reef Treina Agentes de IA Autônomos em Tempo Real!</a></h3>
+<p class="card-meta">11 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/tnS7hxUnHI4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/google-okf-na-pratica-memoria-persistente-e-padroes-de">Google OKF na Prática: Memória Persistente e Padrões de Conhecimento para Agentes de IA</a></h3>
-<p>11 de setembro de 2026 · 9 min 21 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-11" data-vistos="92"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/tnS7hxUnHI4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:21</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/google-okf-na-pratica-memoria-persistente-e-padroes-de">Google OKF na Prática: Memória Persistente e Padrões de Conhecimento para Agentes de IA</a></h3>
+<p class="card-meta">11 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/JSYL3Ax7A7o/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento">A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário</a></h3>
-<p>10 de setembro de 2026 · 6 min 13 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-10" data-vistos="8"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/JSYL3Ax7A7o/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:13</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento">A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário</a></h3>
+<p class="card-meta">10 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/buSylmOu_ek/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/8-de-setembro-de-2026">8 de setembro de 2026</a></h3>
-<p>8 de setembro de 2026 · 1 min 34 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-09-08" data-vistos="4"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/buSylmOu_ek/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>1:34</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/8-de-setembro-de-2026">8 de setembro de 2026</a></h3>
+<p class="card-meta">8 de setembro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica especificacao-e-desenvolvimento"><article class="card">
-<img src="https://i.ytimg.com/vi/O_dku8xoMWY/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos">Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)</a></h3>
-<p>26 de agosto de 2026 · 7 min 1 s · Engenharia agêntica, Especificação e desenvolvimento</p></div>
+<li data-temas="engenharia-agentica especificacao-e-desenvolvimento" data-artigo="0" data-data="2026-08-26" data-vistos="38"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/O_dku8xoMWY/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:01</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos">Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)</a></h3>
+<p class="card-meta">26 de agosto de 2026 · Engenharia agêntica, Especificação e desenvolvimento</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/XzEjRH5b6FA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/codegraph-inteligencia-semantica-local-para-agentes-de-ia">CodeGraph: Inteligência Semântica Local para Agentes de IA de Código</a></h3>
-<p>26 de agosto de 2026 · 7 min 25 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="1" data-data="2026-08-26" data-vistos="190"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/XzEjRH5b6FA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:25</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/codegraph-inteligencia-semantica-local-para-agentes-de-ia">CodeGraph: Inteligência Semântica Local para Agentes de IA de Código</a></h3>
+<p class="card-meta">26 de agosto de 2026<span class="selo">Artigo</span> · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica dados-e-decisao"><article class="card">
-<img src="https://i.ytimg.com/vi/n089OV1W2Dg/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do">O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional</a></h3>
-<p>26 de agosto de 2026 · 9 min 28 s · Engenharia agêntica, Dados e decisão</p></div>
+<li data-temas="engenharia-agentica dados-e-decisao" data-artigo="0" data-data="2026-08-26" data-vistos="172"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/n089OV1W2Dg/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:28</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do">O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional</a></h3>
+<p class="card-meta">26 de agosto de 2026 · Engenharia agêntica, Dados e decisão</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/5HaAVA4316Q/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/desmistificando-o-hyperframes-o-framework-que-transforma">Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!</a></h3>
-<p>22 de agosto de 2026 · 8 min 26 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="1" data-data="2026-08-22" data-vistos="337"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/5HaAVA4316Q/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:26</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/desmistificando-o-hyperframes-o-framework-que-transforma">Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!</a></h3>
+<p class="card-meta">22 de agosto de 2026<span class="selo">Artigo</span> · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica dados-e-decisao"><article class="card">
-<img src="https://i.ytimg.com/vi/dacWmQubuSs/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0">A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!</a></h3>
-<p>12 de agosto de 2026 · 9 min 16 s · Engenharia agêntica, Dados e decisão</p></div>
+<li data-temas="engenharia-agentica dados-e-decisao" data-artigo="1" data-data="2026-08-12" data-vistos="216"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/dacWmQubuSs/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:16</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0">A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!</a></h3>
+<p class="card-meta">12 de agosto de 2026<span class="selo">Artigo</span> · Engenharia agêntica, Dados e decisão</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/dKKzbWiNyM4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador">O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀</a></h3>
-<p>4 de agosto de 2026 · 10 min 10 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-08-04" data-vistos="68"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/dKKzbWiNyM4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>10:10</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador">O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀</a></h3>
+<p class="card-meta">4 de agosto de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/LVEj-aRVVKE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/domine-a-ia-com-google-antigravity-da-codificacao-a">Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes</a></h3>
-<p>17 de julho de 2026 · 8 min 40 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="1" data-data="2026-07-17" data-vistos="1294"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/LVEj-aRVVKE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:40</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/domine-a-ia-com-google-antigravity-da-codificacao-a">Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes</a></h3>
+<p class="card-meta">17 de julho de 2026<span class="selo">Artigo</span> · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/UxaaQN-csvA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de">Engenharia de Agentes de IA: Da &quot;Magia&quot; à Arquitetura de Produção</a></h3>
-<p>19 de junho de 2026 · 7 min 43 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-06-19" data-vistos="52"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/UxaaQN-csvA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:43</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de">Engenharia de Agentes de IA: Da &quot;Magia&quot; à Arquitetura de Produção</a></h3>
+<p class="card-meta">19 de junho de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/tesXsbVDMuQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/pare-de-ler-codigo-as-cegas-conheca-o-understand-anything">Pare de ler código às cegas! Conheça o Understand-Anything</a></h3>
-<p>26 de maio de 2026 · 6 min 59 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-05-26" data-vistos="138"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/tesXsbVDMuQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:59</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/pare-de-ler-codigo-as-cegas-conheca-o-understand-anything">Pare de ler código às cegas! Conheça o Understand-Anything</a></h3>
+<p class="card-meta">26 de maio de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica dados-e-decisao"><article class="card">
-<img src="https://i.ytimg.com/vi/-Qw7clMLTYg/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia">Desvendando o AHP: O Novo Protocolo para Agentes de IA</a></h3>
-<p>24 de maio de 2026 · 7 min 7 s · Engenharia agêntica, Dados e decisão</p></div>
+<li data-temas="engenharia-agentica dados-e-decisao" data-artigo="0" data-data="2026-05-24" data-vistos="26"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/-Qw7clMLTYg/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:07</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia">Desvendando o AHP: O Novo Protocolo para Agentes de IA</a></h3>
+<p class="card-meta">24 de maio de 2026 · Engenharia agêntica, Dados e decisão</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/HlgRNYHvOtg/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-orquestrador-soberano-o-fim-do-codigo-e-os-perigos-do">O Orquestrador Soberano: O Fim do Código e os Perigos do Vibe Coding</a></h3>
-<p>18 de maio de 2026 · 10 min 30 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-05-18" data-vistos="18"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/HlgRNYHvOtg/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>10:30</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-orquestrador-soberano-o-fim-do-codigo-e-os-perigos-do">O Orquestrador Soberano: O Fim do Código e os Perigos do Vibe Coding</a></h3>
+<p class="card-meta">18 de maio de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/m69fzdS-EG0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-novo-paradigma-da-ia-de-chatbots-a-agentes-autonomos-como">O Novo Paradigma da IA: De Chatbots a Agentes Autônomos (Como funciona?)</a></h3>
-<p>18 de maio de 2026 · 8 min 58 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-05-18" data-vistos="13"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/m69fzdS-EG0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:58</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-novo-paradigma-da-ia-de-chatbots-a-agentes-autonomos-como">O Novo Paradigma da IA: De Chatbots a Agentes Autônomos (Como funciona?)</a></h3>
+<p class="card-meta">18 de maio de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/rYSyiQznInI/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/05-orchestration-paradigm">05 - Orchestration Paradigm</a></h3>
-<p>18 de maio de 2026 · 9 min 35 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-05-18" data-vistos="0"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/rYSyiQznInI/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:35</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/05-orchestration-paradigm">05 - Orchestration Paradigm</a></h3>
+<p class="card-meta">18 de maio de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica salesforce-e-vendas"><article class="card">
-<img src="https://i.ytimg.com/vi/lEF09tB4BXA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-futuro-do-e-commerce-a-nova-arquitetura-do-comercio-com">O Futuro do E-commerce: A Nova Arquitetura do Comércio com Agentes de IA</a></h3>
-<p>13 de abril de 2026 · 7 min 17 s · Engenharia agêntica, Salesforce e vendas</p></div>
+<li data-temas="engenharia-agentica salesforce-e-vendas" data-artigo="0" data-data="2026-04-13" data-vistos="7"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/lEF09tB4BXA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:17</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-futuro-do-e-commerce-a-nova-arquitetura-do-comercio-com">O Futuro do E-commerce: A Nova Arquitetura do Comércio com Agentes de IA</a></h3>
+<p class="card-meta">13 de abril de 2026 · Engenharia agêntica, Salesforce e vendas</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/E5YpNQufkJI/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/descubra-a-anatomia-de-uma-ia-moderna-baseada-em-skills-e">Descubra a anatomia de uma IA Moderna baseada em Skills e Playbooks.</a></h3>
-<p>19 de março de 2026 · 8 min 43 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-03-19" data-vistos="16"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/E5YpNQufkJI/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:43</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/descubra-a-anatomia-de-uma-ia-moderna-baseada-em-skills-e">Descubra a anatomia de uma IA Moderna baseada em Skills e Playbooks.</a></h3>
+<p class="card-meta">19 de março de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica salesforce-e-vendas"><article class="card">
-<img src="https://i.ytimg.com/vi/IhUUpLGyIpA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/devops-salesforce-integrando-devin-ai-flosum-e-github-para">DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total</a></h3>
-<p>6 de março de 2026 · 6 min 36 s · Engenharia agêntica, Salesforce e vendas</p></div>
+<li data-temas="engenharia-agentica salesforce-e-vendas" data-artigo="0" data-data="2026-03-06" data-vistos="54"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/IhUUpLGyIpA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:36</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/devops-salesforce-integrando-devin-ai-flosum-e-github-para">DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total</a></h3>
+<p class="card-meta">6 de março de 2026 · Engenharia agêntica, Salesforce e vendas</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/IRbcg2IvvYY/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/devin-de-pares-a-paralelo-a-revolucao-da-engenharia-de">Devin: De Pares a Paralelo | A Revolução da Engenharia de Software com IA</a></h3>
-<p>26 de fevereiro de 2026 · 7 min 6 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-02-26" data-vistos="8"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/IRbcg2IvvYY/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:06</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/devin-de-pares-a-paralelo-a-revolucao-da-engenharia-de">Devin: De Pares a Paralelo | A Revolução da Engenharia de Software com IA</a></h3>
+<p class="card-meta">26 de fevereiro de 2026 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/LASZw1QGELM/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-fim-do-chat-na-ia-conheca-o-a2ui-a-revolucao-visual-do">O Fim do &quot;Chat&quot; na IA? Conheça o A2UI, a Revolução Visual do Google para 2026!</a></h3>
-<p>23 de dezembro de 2025 · 7 min 17 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-12-23" data-vistos="47"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/LASZw1QGELM/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:17</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-fim-do-chat-na-ia-conheca-o-a2ui-a-revolucao-visual-do">O Fim do &quot;Chat&quot; na IA? Conheça o A2UI, a Revolução Visual do Google para 2026!</a></h3>
+<p class="card-meta">23 de dezembro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/qaf8cRSXqyU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e">MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA</a></h3>
-<p>15 de dezembro de 2025 · 6 min 48 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-12-15" data-vistos="34"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/qaf8cRSXqyU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:48</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e">MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA</a></h3>
+<p class="card-meta">15 de dezembro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica especificacao-e-desenvolvimento"><article class="card">
-<img src="https://i.ytimg.com/vi/nQfTaS__IVA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/o-fim-do-vibe-coding-apresentando-o-specification-driven">O Fim do Vibe Coding! Apresentando o Specification-Driven Development (SDD)</a></h3>
-<p>3 de dezembro de 2025 · 1 min 57 s · Engenharia agêntica, Especificação e desenvolvimento</p></div>
+<li data-temas="engenharia-agentica especificacao-e-desenvolvimento" data-artigo="0" data-data="2025-12-03" data-vistos="54"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/nQfTaS__IVA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>1:57</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-fim-do-vibe-coding-apresentando-o-specification-driven">O Fim do Vibe Coding! Apresentando o Specification-Driven Development (SDD)</a></h3>
+<p class="card-meta">3 de dezembro de 2025 · Engenharia agêntica, Especificação e desenvolvimento</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/1mHPfQwgI20/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/google-antigravity-o-fim-do-copiloto-o-futuro-da">GOOGLE ANTIGRAVITY: O Fim do Copiloto? O Futuro da Programação com Agentes de IA</a></h3>
-<p>19 de novembro de 2025 · 7 min 32 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-11-19" data-vistos="31"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/1mHPfQwgI20/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:32</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/google-antigravity-o-fim-do-copiloto-o-futuro-da">GOOGLE ANTIGRAVITY: O Fim do Copiloto? O Futuro da Programação com Agentes de IA</a></h3>
+<p class="card-meta">19 de novembro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/rxjZWOMIzyA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/vertex-ai-agentes-de-acao-construindo-agentes-de-ia-que">VERTEX AI AGENTES DE AÇÃO: Construindo Agentes de IA que Realmente Agem (ReAct e OpenAPI)</a></h3>
-<p>12 de novembro de 2025 · 6 min 31 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-11-12" data-vistos="95"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/rxjZWOMIzyA/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:31</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/vertex-ai-agentes-de-acao-construindo-agentes-de-ia-que">VERTEX AI AGENTES DE AÇÃO: Construindo Agentes de IA que Realmente Agem (ReAct e OpenAPI)</a></h3>
+<p class="card-meta">12 de novembro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/1YTBK_FCKLU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/construindo-seu-agente-de-ia">Construindo seu Agente de IA</a></h3>
-<p>8 de novembro de 2025 · 7 min 16 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-11-08" data-vistos="2"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/1YTBK_FCKLU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:16</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/construindo-seu-agente-de-ia">Construindo seu Agente de IA</a></h3>
+<p class="card-meta">8 de novembro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/9bC8bzmhfTo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/ia-de-copiloto-a-visao-futura">IA  de Copiloto a Visão Futura</a></h3>
-<p>8 de novembro de 2025 · 7 min 8 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-11-08" data-vistos="2"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/9bC8bzmhfTo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:08</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/ia-de-copiloto-a-visao-futura">IA  de Copiloto a Visão Futura</a></h3>
+<p class="card-meta">8 de novembro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/h7PnQgjoOuc/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/desbloqueando-a-ia-com-mcp">Desbloqueando a IA com MCP</a></h3>
-<p>27 de outubro de 2025 · 8 min 9 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-10-27" data-vistos="21"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/h7PnQgjoOuc/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:09</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/desbloqueando-a-ia-com-mcp">Desbloqueando a IA com MCP</a></h3>
+<p class="card-meta">27 de outubro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/jy5ZuhpjxZ0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/a-equipe-de-ia-sonho-e-ruina">A Equipe de IA  Sonho e Ruína</a></h3>
-<p>27 de outubro de 2025 · 8 min 42 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-10-27" data-vistos="1"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/jy5ZuhpjxZ0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:42</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-equipe-de-ia-sonho-e-ruina">A Equipe de IA  Sonho e Ruína</a></h3>
+<p class="card-meta">27 de outubro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/Hg1TEb-dDX0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/kit-do-arquiteto-de-ia">Kit do Arquiteto de IA</a></h3>
-<p>23 de outubro de 2025 · 8 min 22 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-10-23" data-vistos="5"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/Hg1TEb-dDX0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:22</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/kit-do-arquiteto-de-ia">Kit do Arquiteto de IA</a></h3>
+<p class="card-meta">23 de outubro de 2025 · Engenharia agêntica</p></div>
 </article></li>
-<li data-temas="engenharia-agentica"><article class="card">
-<img src="https://i.ytimg.com/vi/ztGM0zFehbQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="/videos/engenharia-de-prompts">Engenharia de Prompts</a></h3>
-<p>23 de outubro de 2025 · 5 min 5 s · Engenharia agêntica</p></div>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2025-10-23" data-vistos="15"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/ztGM0zFehbQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>5:05</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/engenharia-de-prompts">Engenharia de Prompts</a></h3>
+<p class="card-meta">23 de outubro de 2025 · Engenharia agêntica</p></div>
 </article></li>
 </ul>
 </main>

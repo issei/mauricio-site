@@ -1,6 +1,10 @@
 # SDD — Catálogo de vídeos em prateleiras e busca no cabeçalho
 
-> **Status:** proposta, para o Issei decidir (§9). Nenhum código neste PR. **Data:** 2026-11-14.
+> **Status:** decidido e implementado (2026-11-14). **Data:** 2026-11-14.
+> **Decisões (Issei, 2026-11-14):** D1 = índice próprio. D2, D3 e D4 ficaram nos padrões recomendados do §9.
+> **Desvios da implementação:** os 5 PRs viraram um PR só (a sessão tem uma branch); a busca usa `<h3>` nos grupos
+> (o `<h2>` é o título do diálogo); o botão é link até o JS carregar; `/busca` não foca o campo na carga
+> (`A11Y-DECISIONS.md`); o índice EN sai dos espelhos `/en/` já traduzidos, sem tradução por LLM.
 > **Pedido:** "reestruturar o layout e a navegação do catálogo de vídeos para ser parecido com os
 > catálogos de streaming, e avaliar uma busca de conteúdo dentro do menu" (Issei, 2026-11-14).
 > **Depende de:** [SDD-fase-1](../pages/videos-youtube/SDD-fase-1.md) e [SDD-fase-2](../pages/videos-youtube/SDD-fase-2.md)
@@ -203,9 +207,9 @@ desejada, o caminho é a opção B só para os artigos publicados, numa fase pos
 
 Os PRs 1 a 3 só mexem em páginas sem gêmeo `/en/`, então não precisam do Argos.
 
-## 9. Decisões para o Issei
+## 9. Decisões
 
-Uma por vez, na ordem abaixo. O padrão vale enquanto a decisão não vem.
+D1 foi decidida pelo Issei em 2026-11-14 (índice próprio). D2 a D4 seguem o padrão recomendado.
 
 | Id | Pergunta | Padrão recomendado |
 | :--- | :--- | :--- |

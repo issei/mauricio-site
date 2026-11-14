@@ -171,6 +171,7 @@ export default defineConfig({
         '/vsl',
         '/proposta', // executiva não listada: noindex e fora do sitemap
         '/entrevista-acessibilidade-streaming', // ferramenta de entrevista não listada: noindex
+        '/busca', // página da busca: noindex, gerada por scripts/gen-busca.mjs
         /*
          * Não são páginas: `seo-aeo.jsonld.html` é um bloco JSON-LD e
          * `/assets/*` são artefatos com hash. O sitemap os oferecia ao Google

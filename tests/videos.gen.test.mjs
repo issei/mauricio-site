@@ -15,7 +15,7 @@ import { tmpdir } from 'node:os';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { build, artigosDoYaml, loadContent, parseVtt, paragrafos, slugify, duracaoPt, dataPt, validate, run, avisos, problemasDoArtigo, STATUS_PERMITIDOS_FASE_1 } from '../scripts/gen-videos.mjs';
+import { build, escolheDestaque, prateleirasDoIndice, duracaoRelogio, artigosDoYaml, loadContent, parseVtt, paragrafos, slugify, duracaoPt, dataPt, validate, run, avisos, problemasDoArtigo, STATUS_PERMITIDOS_FASE_1 } from '../scripts/gen-videos.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const FIXTURES = join(ROOT, 'tests/fixtures/videos');
@@ -172,14 +172,82 @@ test('página de assunto e índice listam os vídeos, do mais recente ao mais an
   }
 });
 
-test('lista usa a miniatura de 320 px, não a de 1280 px, para uma imagem exibida com 168 px', () => {
+test('cartões usam a miniatura de 320 px com carga preguiçosa; só o destaque usa a maior, com prioridade', () => {
   const out = build(fixture());
   const imgs = out['src/videos.html'].match(/<img [^>]*>/g) ?? [];
   assert.ok(imgs.length > 0);
-  for (const img of imgs) {
+  const [destaque, ...cartoes] = imgs;
+  assert.match(destaque, /\/hqdefault\.jpg"/);
+  assert.match(destaque, /fetchpriority="high"/);
+  for (const img of cartoes) {
     assert.match(img, /\/mqdefault\.jpg"/);
     assert.match(img, /loading="lazy"/);
   }
+});
+
+// Catálogo em prateleiras — SDD-catalogo-videos-e-busca.md §3 (RF-CV-xx).
+test('destaque: destaque:true vence; senão o artigo publicado mais recente; senão o vídeo mais recente', () => {
+  const { videos } = fixture();
+  const vivos = videos.filter((v) => v.status !== 'removido');
+  assert.equal(escolheDestaque(vivos).id, 'DDDDDDDDDD4', 'o único artigo publicado');
+  const manual = vivos.map((v) => (v.id === 'AAAAAAAAAA1' ? { ...v, destaque: true } : v));
+  assert.equal(escolheDestaque(manual).id, 'AAAAAAAAAA1');
+  const semArtigo = vivos.map((v) => ({ ...v, status: 'ficha' }));
+  assert.equal(escolheDestaque(semArtigo).id, 'BBBBBBBBBB2', 'o mais recente');
+});
+
+test('prateleiras: ordem, limite de 12, só com artigo e mais vistos por visualizações', () => {
+  const { videos, temas } = fixture();
+  const vivos = videos.filter((v) => v.status !== 'removido');
+  const usados = Object.keys(temas).filter((t) => vivos.some((v) => v.temas?.includes(t)));
+  const ps = prateleirasDoIndice(vivos, temas, usados);
+  assert.deepEqual(ps.slice(0, 3).map((p) => p.id), ['novos', 'com-artigo', 'mais-vistos']);
+  assert.ok(ps.slice(3).every((p) => p.id.startsWith('tema-')));
+  assert.deepEqual(ps.find((p) => p.id === 'com-artigo').lista.map((v) => v.id), ['DDDDDDDDDD4']);
+  assert.equal(ps.find((p) => p.id === 'mais-vistos').lista[0].id, 'AAAAAAAAAA1', '1234 visualizações');
+  const muitos = Array.from({ length: 30 }, (_, i) => ({ ...vivos[0], id: `V${i}`, youtube: { ...vivos[0].youtube, publicado_em: `2025-01-${String(i + 1).padStart(2, '0')}` } }));
+  assert.equal(prateleirasDoIndice(muitos, temas, usados)[0].lista.length, 12);
+});
+
+test('índice: destaque, "Ir para", prateleiras com título e grade com os três filtros', () => {
+  const html = build(fixture())['src/videos.html'];
+  assert.match(html, /<section class="hero" aria-labelledby="h-destaque">/);
+  assert.match(html, /<nav class="salto" aria-label="Ir para uma prateleira">/);
+  assert.match(html, /<section class="prateleira" aria-labelledby="h-novos" id="novos" data-prateleira>/);
+  assert.match(html, /href="\/videos\?artigo=1#todos"/);
+  assert.match(html, /id="filtro-artigo"/);
+  assert.match(html, /id="filtro-ordem"/);
+  assert.match(html, /<section aria-labelledby="h-todos" id="todos">/);
+  assert.match(html, /Ler o artigo/);
+  assert.doesNotMatch(html, /autoplay|setInterval/, 'nada se move sozinho');
+});
+
+test('cartão: duração em selo, selo Artigo só no publicado, link esticado e dados para o filtro', () => {
+  const html = build(fixture())['src/videos.html'];
+  assert.match(html, /<span class="dur"><span class="sr">Duração <\/span>14:32<\/span>/);
+  assert.match(html, /<span class="dur"><span class="sr">Duração <\/span>1:02:05<\/span>/);
+  const cartoes = html.match(/<li data-temas[\s\S]*?<\/li>/g);
+  const dosPublicados = cartoes.filter((c) => c.includes('class="selo">Artigo'));
+  assert.ok(dosPublicados.length > 0);
+  assert.ok(dosPublicados.every((c) => c.includes('especificacao-antes-do-codigo')), 'só o artigo publicado leva o selo');
+  assert.match(html, /data-vistos="1234"/);
+  assert.equal(duracaoRelogio('PT14M32S'), '14:32');
+  assert.equal(duracaoRelogio('PT1H2M5S'), '1:02:05');
+});
+
+test('ficha: "Mais deste assunto" lista outros vídeos do primeiro assunto, sem o próprio', () => {
+  const out = build(fixture());
+  const ficha = out['src/videos/como-ancorar-agentes-no-repositorio.html'];
+  assert.match(ficha, /id="h-mais-do-assunto">Mais deste assunto/);
+  const trecho = ficha.slice(ficha.indexOf('data-prateleira'));
+  assert.doesNotMatch(trecho, /href="\/videos\/como-ancorar-agentes-no-repositorio"/);
+  assert.match(trecho, /href="\/videos\/acessibilidade-em-streaming"/);
+});
+
+test('o índice real cabe em 120 KB gzip', async () => {
+  const { gzipSync } = await import('node:zlib');
+  const html = readFileSync(join(ROOT, 'src/videos.html'), 'utf8');
+  assert.ok(gzipSync(html).length < 120 * 1024);
 });
 
 test('assunto lista os artigos do site com o tema antes dos vídeos (F5a)', () => {
