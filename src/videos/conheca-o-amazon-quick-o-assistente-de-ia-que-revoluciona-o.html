@@ -26,6 +26,7 @@ a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
 .wrap{max-width:880px;margin:0 auto;padding:14px 24px}
 .wrap-larga{max-width:1080px}
+.wrap-total{max-width:none;padding-left:clamp(16px,3vw,56px);padding-right:clamp(16px,3vw,56px)}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -50,16 +51,15 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .card-thumb{position:relative;aspect-ratio:16/9;background:#000}
 .card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
-.card-corpo{padding:10px 12px 12px}
+.card-corpo{padding:10px 12px 14px}
 .card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
 .card-link::after{content:"";position:absolute;inset:0}
 .card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.card-meta{margin:0;color:var(--muted);font-size:.85rem}
-.selo{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.78rem}
+.selo{position:absolute;left:8px;top:8px;padding:1px 9px;border:1px solid var(--accent);border-radius:999px;background:#0d1117;color:var(--accent);font-size:.78rem;font-weight:600}
 .filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .filtro label{font-size:.95rem}
-.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero{max-width:1200px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
 .hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
 .hero-img img{display:block;width:100%;height:100%;object-fit:cover}
 .kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
@@ -74,13 +74,17 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
 .prateleira-cab .todos{font-size:.92rem;margin-right:4px}
-.trilho-botoes{display:none;gap:8px}
+.trilho-wrap{position:relative}
+.trilho-botoes{display:none;position:absolute;left:0;right:0;top:3.2rem;justify-content:space-between;padding:0 8px;pointer-events:none;z-index:2}
 .js .trilho-botoes{display:flex}
-.trilho-botao{min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);color:#fff;font:inherit;font-size:1.1rem;cursor:pointer}
-.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
-.trilho-botao:disabled{opacity:.35;cursor:default}
-.trilho{list-style:none;margin:0;padding:6px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
-.trilho>li{flex:0 0 260px;scroll-snap-align:start}
+.trilho-botao{pointer-events:auto;min-width:44px;min-height:44px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(13,17,23,.88);color:#fff;font:inherit;font-size:1.4rem;line-height:1;cursor:pointer;opacity:0;transition:opacity .15s,box-shadow .15s}
+.prateleira:hover .trilho-botao:not(:disabled),.prateleira:focus-within .trilho-botao:not(:disabled){opacity:1}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 14px rgba(0,123,255,.45)}
+.trilho-botao:disabled{opacity:0;pointer-events:none}
+@media (hover:none){.trilho-botao:not(:disabled){opacity:1}}
+.trilho{list-style:none;margin:0;padding:6px 2px 10px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>li{flex:0 0 clamp(220px,18vw,300px);scroll-snap-align:start}
 .trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
 .resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
@@ -183,59 +187,50 @@ try {
 </details></div></section>
 <section class="prateleira" aria-labelledby="h-mais-do-assunto" id="mais-do-assunto" data-prateleira>
 <div class="prateleira-cab"><h2 id="h-mais-do-assunto">Mais deste assunto</h2><a class="todos" href="/temas/ferramentas-de-ia">Ver todos de Ferramentas de IA</a>
-<div class="trilho-botoes" data-botoes></div></div>
+</div>
+<div class="trilho-wrap"><div class="trilho-botoes" data-botoes></div>
 <ul class="trilho" data-trilho>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2026-09-25" data-vistos="115"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/nBqzt727GJ4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:09</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode">Foi Assim Que Eu Turbinei Minhas IA&#39;s (E Você Também Pode!)</a></h3>
-<p class="card-meta">25 de setembro de 2026 · Ferramentas de IA</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode">Foi Assim Que Eu Turbinei Minhas IA&#39;s (E Você Também Pode!)</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="1" data-data="2026-09-11" data-vistos="250"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/8z4JuiIOT58/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:22</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode">Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)</a></h3>
-<p class="card-meta">11 de setembro de 2026<span class="selo">Artigo</span> · Ferramentas de IA</p></div>
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/8z4JuiIOT58/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>8:22</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode">Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="1" data-data="2026-09-03" data-vistos="411"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/aEjGEYzObLk/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:01</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia">OmniRoute: Pare de gastar fortunas com assinaturas de IA!</a></h3>
-<p class="card-meta">3 de setembro de 2026<span class="selo">Artigo</span> · Ferramentas de IA</p></div>
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/aEjGEYzObLk/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>9:01</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia">OmniRoute: Pare de gastar fortunas com assinaturas de IA!</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2026-04-06" data-vistos="8"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/VMLQy8l9VUc/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:22</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/gemma-4-futuro-da-ia-on-device">Gemma 4  Futuro da IA On Device</a></h3>
-<p class="card-meta">6 de abril de 2026 · Ferramentas de IA</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/gemma-4-futuro-da-ia-on-device">Gemma 4  Futuro da IA On Device</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2026-02-03" data-vistos="37"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/LusGPXICX5w/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:56</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos">PaperBanana: IA para Análise e Revisão de Artigos Científicos</a></h3>
-<p class="card-meta">3 de fevereiro de 2026 · Ferramentas de IA</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos">PaperBanana: IA para Análise e Revisão de Artigos Científicos</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2025-12-15" data-vistos="22"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/uPNbCmaIABk/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>5:54</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/dando-voz-a-tecnologia-a-revolucao-do-text-to-speech-com">DANDO VOZ À TECNOLOGIA: A Revolução do Text-to-Speech com Inteligência Artificial</a></h3>
-<p class="card-meta">15 de dezembro de 2025 · Ferramentas de IA</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/dando-voz-a-tecnologia-a-revolucao-do-text-to-speech-com">DANDO VOZ À TECNOLOGIA: A Revolução do Text-to-Speech com Inteligência Artificial</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2025-12-05" data-vistos="111"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/aS3JqBvf--Q/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:29</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/seu-novo-assistente-de-ia-automacao-sem-codigo-com-google">SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini</a></h3>
-<p class="card-meta">5 de dezembro de 2025 · Ferramentas de IA</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/seu-novo-assistente-de-ia-automacao-sem-codigo-com-google">SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2025-10-28" data-vistos="13"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/GYVZt3L-U-Y/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>5:45</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/da-ideia-ao-app-em-minutos">Da Ideia ao App em Minutos</a></h3>
-<p class="card-meta">28 de outubro de 2025 · Ferramentas de IA</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/da-ideia-ao-app-em-minutos">Da Ideia ao App em Minutos</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2025-10-27" data-vistos="16"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/UCT59ySALrU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:13</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/o-notebooklm">O NotebookLM</a></h3>
-<p class="card-meta">27 de outubro de 2025 · Ferramentas de IA</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-notebooklm">O NotebookLM</a></h3></div>
 </article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="1" data-data="2025-10-27" data-vistos="868"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/ruZVjMpaEZo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>5:07</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/galaxy-ai-assistente-de-chamada">Galaxy AI  Assistente de Chamada</a></h3>
-<p class="card-meta">27 de outubro de 2025<span class="selo">Artigo</span> · Ferramentas de IA</p></div>
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/ruZVjMpaEZo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>5:07</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/galaxy-ai-assistente-de-chamada">Galaxy AI  Assistente de Chamada</a></h3></div>
 </article></li>
-</ul></section>
+</ul></div></section>
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>
