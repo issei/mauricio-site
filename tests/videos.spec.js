@@ -68,9 +68,9 @@ test('índice: o filtro por assunto esconde os outros vídeos e anuncia a contag
 test('prateleira: botões com nome, rolam o trilho e ficam desabilitados nas pontas', async ({ page }) => {
   await page.setViewportSize({ width: 420, height: 800 });
   await abre(page, 'src/videos.html');
-  const sec = page.locator('#novos');
-  const prox = sec.getByRole('button', { name: /Próximos vídeos · Novos no canal/ });
-  const ant = sec.getByRole('button', { name: /Vídeos anteriores · Novos no canal/ });
+  const sec = page.locator('section[data-prateleira]').first();
+  const prox = sec.getByRole('button', { name: /Próximos vídeos · / });
+  const ant = sec.getByRole('button', { name: /Vídeos anteriores · / });
   await expect(ant).toBeDisabled();
   await expect(prox).toBeEnabled();
   await prox.click();
@@ -87,7 +87,7 @@ test('prateleira: sem JS não há botões e o trilho continua com os links', asy
   await page.route(/^https?:\/\//, (r) => r.abort());
   await abre(page, 'src/videos.html');
   await expect(page.locator('.trilho-botao')).toHaveCount(0);
-  await expect(page.locator('#novos .card-link').first()).toBeVisible();
+  await expect(page.locator('section[data-prateleira] .card-link').first()).toBeVisible();
   await ctx.close();
 });
 
@@ -96,8 +96,8 @@ test('índice: "Ir para" leva à prateleira e o destaque oferece Assistir e Ler 
   await expect(page.locator('.hero h2')).toHaveText('Especificação antes do código');
   await expect(page.getByRole('link', { name: 'Assistir' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Ler o artigo' })).toHaveAttribute('href', /#artigo$/);
-  await page.getByRole('navigation', { name: 'Ir para uma prateleira' }).getByRole('link', { name: 'Mais vistos' }).click();
-  await expect(page).toHaveURL(/#mais-vistos$/);
+  await page.getByRole('navigation', { name: 'Ir para uma prateleira' }).getByRole('link', { name: 'Todos os vídeos' }).click();
+  await expect(page).toHaveURL(/#todos$/);
 });
 
 test('índice: filtros leem a URL (?artigo=1&ordem=vistos) e a gravam ao mudar', async ({ page }) => {

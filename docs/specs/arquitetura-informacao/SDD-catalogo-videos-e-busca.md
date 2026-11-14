@@ -1,7 +1,8 @@
 # SDD — Catálogo de vídeos em prateleiras e busca no cabeçalho
 
 > **Status:** decidido e implementado (2026-11-14). **Data:** 2026-11-14.
-> **Decisões (Issei, 2026-11-14):** D1 = índice próprio. D2, D3 e D4 ficaram nos padrões recomendados do §9.
+> **Decisões (Issei, 2026-11-14):** D1 = índice próprio. D3 revisada depois de ver a página: só prateleiras por
+> tema (Novos, Com artigo e Mais vistos eram redundantes com o destaque e os filtros da grade). D2 e D4 no padrão do §9.
 > **Desvios da implementação:** os 5 PRs viraram um PR só (a sessão tem uma branch); a busca usa `<h3>` nos grupos
 > (o `<h2>` é o título do diálogo); o botão é link até o JS carregar; `/busca` não foca o campo na carga
 > (`A11Y-DECISIONS.md`); o índice EN sai dos espelhos `/en/` já traduzidos, sem tradução por LLM.
@@ -14,7 +15,7 @@
 ## 1. Objetivo
 
 1. A página `/videos` passa a ser navegada como um catálogo de streaming: um destaque no topo e
-   prateleiras horizontais, uma por recorte (novos, artigos, mais vistos, cada assunto).
+   prateleiras horizontais, uma por assunto.
 2. O cabeçalho comum ganha **Buscar**, que encontra vídeos, artigos, assuntos e páginas do site.
 
 O desenho é **original**. Usamos o padrão de navegação (destaque + prateleiras), não a aparência,
@@ -46,12 +47,10 @@ recomendação personalizada, busca na transcrição (§6.1), página `/en/` dos
 ┌ cabeçalho comum ─ Início · Carreira · Conteúdos · Vídeos ─────────── [Buscar] ┐
 │ DESTAQUE  miniatura grande ▸  título · resumo · duração · assuntos            │
 │           [Assistir]  [Ler o artigo]                                          │
-│ Ir para: Novos · Com artigo · Mais vistos · Engenharia agêntica · …          │
-│ Novos no canal                                          [‹] [›]  Ver todos → │
+│ Ir para: Engenharia agêntica · Aprendizagem e mente · … · Todos os vídeos    │
+│ Engenharia agêntica                                     [‹] [›]  Ver todos → │
 │ ▢ ▢ ▢ ▢ ▢ ▢ →                                                                 │
-│ Vídeos com artigo                                       [‹] [›]  Ver todos → │
-│ ▢ ▢ ▢ ▢ ▢ ▢ →                                                                 │
-│ Mais vistos · Engenharia agêntica · Aprendizagem e mente · … (uma por tema)   │
+│ Aprendizagem e mente · … (uma por tema)                                       │
 │ Todos os vídeos  [assunto ▾] [só com artigo ☐] [ordem ▾]  — grade             │
 └───────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -70,10 +69,10 @@ recomendação personalizada, busca na transcrição (§6.1), página `/en/` dos
 ### 3.2 Prateleiras (RF-CV-05 a 12)
 
 - **RF-CV-05** Cada prateleira é `<section aria-labelledby>` com `<h2>`, uma `<ul>` de cartões e o link
-  **Ver todos (N)**. Ordem padrão (D3): Novos no canal (12 mais recentes) · Vídeos com artigo ·
-  Mais vistos (12, por `visualizacoes`) · uma por tema, do tema com mais vídeos ao com menos.
+  **Ver todos (N)**. Ordem (D3): uma por tema, do tema com mais vídeos ao com menos. Recortes por
+  novidade, artigo e visualizações ficam só nos filtros de "Todos os vídeos" (§3.4).
 - **RF-CV-06** No máximo 12 cartões por prateleira. "Ver todos" leva à página do tema (`/temas/<tema>`)
-  ou a `/videos#todos` com o filtro já aplicado (`?ordem=vistos`, `?artigo=1`).
+  (a grade aceita `?ordem=vistos` e `?artigo=1` na URL, §3.4).
 - **RF-CV-07** A rolagem é horizontal nativa (`overflow-x:auto` + `scroll-snap-type:x proximity`).
   Funciona com toque, trackpad, roda do mouse com Shift e teclado.
 - **RF-CV-08** Com JS, cada prateleira ganha dois botões, **Anteriores** e **Próximos**, com nome
@@ -82,7 +81,7 @@ recomendação personalizada, busca na transcrição (§6.1), página `/en/` dos
   e a rolagem nativa basta. Isso cumpre WCAG 2.5.7 (alternativa ao arrasto).
 - **RF-CV-09** Teclado: Tab percorre os links dos cartões na ordem visual; o foco rola o cartão para a
   vista. Logo abaixo do destaque há a navegação **Ir para** (links de salto para cada prateleira), para
-  ninguém precisar atravessar 12 cartões × 13 prateleiras com Tab.
+  ninguém precisar atravessar 12 cartões × 10 prateleiras com Tab.
 - **RF-CV-10** Com `prefers-reduced-motion: reduce`, a rolagem dos botões é instantânea e o cartão
   não sobe ao passar o mouse.
 - **RF-CV-11** Um vídeo pode aparecer em mais de uma prateleira. O HTML repete o cartão, e a miniatura
@@ -215,5 +214,5 @@ D1 foi decidida pelo Issei em 2026-11-14 (índice próprio). D2 a D4 seguem o pa
 | :--- | :--- | :--- |
 | D1 | Qual motor de busca? | A — índice próprio (§6) |
 | D2 | Quem escolhe o destaque? | o artigo publicado mais recente, com `destaque: true` como exceção manual |
-| D3 | Quais prateleiras, em que ordem? | Novos · Com artigo · Mais vistos · uma por tema |
+| D3 | Quais prateleiras, em que ordem? | ~~Novos · Com artigo · Mais vistos · uma por tema~~ → só uma por tema (Issei, 2026-11-14) |
 | D4 | Ter "Vistos por você" (lista guardada só no navegador, `localStorage`)? | não agora: exige texto no banner de cookies e revisão de privacidade |
