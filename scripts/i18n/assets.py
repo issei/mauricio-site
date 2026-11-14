@@ -45,6 +45,7 @@ HTML_NAO_PUBLICAS = frozenset(
         "proposta",  # executiva não listada: sem gêmeo /en/
         "entrevista-acessibilidade-streaming",  # ferramenta de entrevista em PT-BR, não listada
         "boutique-empresarial-showcase",  # indexada só em PT-BR: gêmeo /en/ não decidido
+        "busca",  # busca do site: noindex, página gerada por gen-busca.mjs, sem gêmeo /en/ (o diálogo já troca de idioma)
         "videos",  # índice gerado por gen-videos.mjs na coleta do GitHub Actions, onde o Argos não roda
     }
 )

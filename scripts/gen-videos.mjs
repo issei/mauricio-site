@@ -306,6 +306,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
 .wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.wrap-larga{max-width:1080px}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -323,14 +324,45 @@ h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
 details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
 .ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
-.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
-.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
-.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
-.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
-.card p{margin:0;color:var(--muted);font-size:.9rem}
-.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lista{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{position:relative;display:flex;flex-direction:column;height:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.card:hover,.card:focus-within{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card-thumb{position:relative;aspect-ratio:16/9;background:#000}
+.card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
+.card-corpo{padding:10px 12px 12px}
+.card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card-link::after{content:"";position:absolute;inset:0}
+.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.card-meta{margin:0;color:var(--muted);font-size:.85rem}
+.selo{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.78rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.filtro label{font-size:.95rem}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.hero-img img{display:block;width:100%;height:100%;object-fit:cover}
+.kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.hero h2{margin:.2em 0 .4em;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.25}
+.hero .resumo{font-size:1rem;margin:0 0 1em}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:1em 0 0}
+.botao{display:inline-block;padding:10px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--border);color:#fff}
+.botao-primario{border-color:transparent;background:linear-gradient(90deg,#007bff,#8a2be2)}
+.botao:hover{box-shadow:0 0 18px rgba(138,43,226,.45);color:#fff}
+.botao:focus-visible,.trilho-botao:focus-visible,.chips a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.prateleira{margin:0 0 1.8em}
+.prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
+.prateleira-cab .todos{font-size:.92rem;margin-right:4px}
+.trilho-botoes{display:none;gap:8px}
+.js .trilho-botoes{display:flex}
+.trilho-botao{min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);color:#fff;font:inherit;font-size:1.1rem;cursor:pointer}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.trilho-botao:disabled{opacity:.35;cursor:default}
+.trilho{list-style:none;margin:0;padding:6px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.trilho>li{flex:0 0 260px;scroll-snap-align:start}
+.trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
 .resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
 .artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
@@ -340,11 +372,12 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
 .fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
 .revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
-@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+@media (max-width:640px){.trilho>li{flex-basis:70%}.lista{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.yt-play:hover,.card:hover,.card:focus-within{transform:none}}
 `.trim();
 
-function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '' }) {
+export function pagina({ titulo, descricao, rota, robots, jsonld, corpo, script = '', larga = false }) {
   // Cabeçalho comum (SDD-F1-F1b, F1b): o mesmo gerador das outras páginas preenche os marcadores.
   const rel = `${rota.slice(1)}.html`;
   return aplicarCabecalho(`<!DOCTYPE html>
@@ -376,7 +409,7 @@ ${ANALYTICS}
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <!-- SITE-HEADER:START --><!-- SITE-HEADER:END -->
-<main id="conteudo" class="wrap">
+<main id="conteudo" class="wrap${larga ? ' wrap-larga' : ''}">
 ${corpo}
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
@@ -439,22 +472,83 @@ const SCRIPT_FACHADA = `<script>
 </script>
 `;
 
+/*
+ * Prateleiras (SDD-catalogo-videos-e-busca §3.2, RF-CV-08): com JS cada prateleira ganha
+ * Anteriores/Próximos, com nome que cita a prateleira; nas pontas o botão fica desabilitado.
+ * A rolagem horizontal nativa já funciona sem este script (WCAG 2.5.7: o arrasto tem alternativa).
+ */
+const SCRIPT_PRATELEIRA = `<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-prateleira]').forEach(function (sec) {
+    var trilho = sec.querySelector('[data-trilho]'), box = sec.querySelector('[data-botoes]');
+    var nome = sec.querySelector('h2').textContent;
+    function botao(texto, rotulo, sentido) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'trilho-botao'; b.textContent = texto;
+      b.setAttribute('aria-label', rotulo + ' · ' + nome);
+      b.addEventListener('click', function () {
+        trilho.scrollBy({ left: sentido * trilho.clientWidth * 0.9, behavior: calmo.matches ? 'auto' : 'smooth' });
+      });
+      return b;
+    }
+    var ant = botao('\\u2039', 'Vídeos anteriores', -1), prox = botao('\\u203A', 'Próximos vídeos', 1);
+    box.append(ant, prox);
+    function atualiza() {
+      ant.disabled = trilho.scrollLeft <= 4;
+      prox.disabled = trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 4;
+    }
+    trilho.addEventListener('scroll', atualiza, { passive: true });
+    addEventListener('resize', atualiza);
+    atualiza();
+  });
+})();
+</script>
+`;
+
+/*
+ * Grade "Todos os vídeos" (RF-CV-17 e 18): assunto, só com artigo e ordem; o estado vai
+ * para a URL (?tema=, ?artigo=1, ?ordem=vistos) para "Ver todos" e o link compartilhado funcionarem.
+ */
 const SCRIPT_FILTRO = `<script>
 (function () {
   var f = document.getElementById('filtro');
   if (!f) return;
-  var sel = f.querySelector('select'), status = document.getElementById('filtro-status');
-  var itens = document.querySelectorAll('#lista-videos > li');
+  var tema = document.getElementById('filtro-tema'), art = document.getElementById('filtro-artigo'),
+      ord = document.getElementById('filtro-ordem'), status = document.getElementById('filtro-status');
+  var lista = document.getElementById('lista-videos');
+  var itens = Array.prototype.slice.call(lista.children);
+  var q = new URLSearchParams(location.search);
+  if (q.get('tema')) tema.value = q.get('tema');
+  art.checked = q.get('artigo') === '1';
+  if (q.get('ordem') === 'vistos') ord.value = 'vistos';
   f.hidden = false;
-  sel.addEventListener('change', function () {
+  function aplica(grava) {
+    var ordenados = itens.slice().sort(function (a, b) {
+      return ord.value === 'vistos'
+        ? Number(b.dataset.vistos) - Number(a.dataset.vistos)
+        : b.dataset.data.localeCompare(a.dataset.data);
+    });
     var n = 0;
-    itens.forEach(function (li) {
-      var ok = !sel.value || (' ' + li.dataset.temas + ' ').indexOf(' ' + sel.value + ' ') >= 0;
+    ordenados.forEach(function (li) {
+      var ok = (!tema.value || (' ' + li.dataset.temas + ' ').indexOf(' ' + tema.value + ' ') >= 0) && (!art.checked || li.dataset.artigo === '1');
       li.hidden = !ok;
       if (ok) n++;
+      lista.appendChild(li);
     });
     status.textContent = n + (n === 1 ? ' vídeo' : ' vídeos');
-  });
+    if (grava) {
+      var p = new URLSearchParams();
+      if (tema.value) p.set('tema', tema.value);
+      if (art.checked) p.set('artigo', '1');
+      if (ord.value === 'vistos') p.set('ordem', 'vistos');
+      var s = p.toString();
+      history.replaceState(null, '', location.pathname + (s ? '?' + s : '') + '#todos');
+    }
+  }
+  [tema, art, ord].forEach(function (el) { el.addEventListener('change', function () { aplica(true); }); });
+  aplica(false);
 })();
 </script>
 `;
@@ -464,16 +558,40 @@ function chipsTemas(v, temas) {
   return `<ul class="chips" aria-label="Assuntos">${v.temas.map((t) => `<li><a href="${rotaTema(t)}">${esc(temas[t].nome)}</a></li>`).join('')}</ul>`;
 }
 
-function cartao(v, temas) {
+/** PT14M32S → "14:32"; 1 h 2 min 3 s → "1:02:03". */
+export function duracaoRelogio(iso) {
+  const t = duracaoSegundos(iso);
+  return t ? relogio(t) : '';
+}
+
+/** Cartão de vídeo (SDD-catalogo-videos-e-busca §3.3): o mesmo na grade, nas prateleiras e nos assuntos. */
+export function cartao(v, temas) {
   const y = v.youtube;
-  return `<li data-temas="${esc((v.temas ?? []).join(' '))}"><article class="card">
-<img src="https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="168" height="94">
-<div><h3><a href="${rotaVideo(v)}">${esc(y.titulo)}</a></h3>
-<p>${dataPt(y.publicado_em)}${y.duracao ? ` · ${duracaoPt(y.duracao)}` : ''}${v.temas?.length ? ` · ${v.temas.map((t) => esc(temas[t].nome)).join(', ')}` : ''}</p></div>
+  const dur = duracaoRelogio(y.duracao);
+  const artigo = v.status === 'publicado';
+  const nomes = (v.temas ?? []).map((t) => esc(temas[t].nome)).join(', ');
+  return `<li data-temas="${esc((v.temas ?? []).join(' '))}" data-artigo="${artigo ? 1 : 0}" data-data="${isoDate(y.publicado_em)}" data-vistos="${Number(y.visualizacoes) || 0}"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/${esc(v.id)}/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180">${dur ? `<span class="dur"><span class="sr">Duração </span>${dur}</span>` : ''}</div>
+<div class="card-corpo"><h3><a class="card-link" href="${rotaVideo(v)}">${esc(y.titulo)}</a></h3>
+<p class="card-meta">${dataPt(y.publicado_em)}${artigo ? '<span class="selo">Artigo</span>' : ''}${nomes ? ` · ${nomes}` : ''}</p></div>
 </article></li>`;
 }
 
-export function renderVideo(v, temas) {
+/**
+ * Prateleira (§3.2): região com título, trilho de cartões com rolagem horizontal nativa e,
+ * com JS, botões Anterior/Próximo. Sem JS os botões não existem e a rolagem basta.
+ */
+export function prateleira({ id, titulo, lista, temas, todos }) {
+  if (!lista.length) return '';
+  return `<section class="prateleira" aria-labelledby="h-${id}" id="${id}" data-prateleira>
+<div class="prateleira-cab"><h2 id="h-${id}">${esc(titulo)}</h2>${todos ? `<a class="todos" href="${todos.href}">${esc(todos.rotulo)}</a>` : ''}
+<div class="trilho-botoes" data-botoes></div></div>
+<ul class="trilho" data-trilho>
+${lista.map((v) => cartao(v, temas)).join('\n')}
+</ul></section>`;
+}
+
+export function renderVideo(v, temas, relacionados = []) {
   const y = v.youtube;
   const rota = rotaVideo(v);
   const publicado = v.status === 'publicado';
@@ -537,8 +655,9 @@ ${chipsTemas(v, temas)}
 <p class="yt-link"><a href="https://www.youtube.com/watch?v=${esc(v.id)}" rel="noopener">Abrir no YouTube</a></p>
 ${publicado ? blocoArtigo(v, artigo, fontes) : ''}<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
 ${descricaoHtml(y.descricao) || '<p>Sem descrição.</p>'}</section>
-${transcricao}`;
-  const html = pagina({ titulo: y.titulo, descricao, rota, robots, jsonld: grafo, corpo, script: SCRIPT_FACHADA });
+${transcricao}
+${prateleira({ id: 'mais-do-assunto', titulo: 'Mais deste assunto', lista: relacionados, temas, todos: v.temas?.length ? { href: rotaTema(v.temas[0]), rotulo: `Ver todos de ${temas[v.temas[0]].nome}` } : null })}`;
+  const html = pagina({ titulo: y.titulo, descricao, rota, robots, jsonld: grafo, corpo, script: SCRIPT_FACHADA + (relacionados.length ? SCRIPT_PRATELEIRA : '') });
   const md = [
     `# ${y.titulo}`, '',
     ...(publicado ? [v.resumo.trim(), ''] : []),
@@ -568,7 +687,7 @@ function blocoArtigo(v, artigo, fontes) {
     ? `<section aria-labelledby="h-fontes" class="fontes"><h2 id="h-fontes">Fontes</h2><ul>${fontes.map((f) => `<li><a href="${esc(f.url)}" rel="noopener">${esc(f.titulo)}</a><span class="sustenta">${esc(f.sustenta)}</span></li>`).join('')}</ul></section>\n`
     : '';
   return `<p class="aviso">O vídeo e a transcrição estão em português. Os minutos entre colchetes levam ao trecho do vídeo.</p>
-${indice}<article class="artigo" aria-label="Artigo">
+${indice}<article class="artigo" id="artigo" aria-label="Artigo">
 ${artigo.html}
 </article>
 ${listaFontes}<p class="revisao">Revisado por ${esc(v.revisado_por)} em <time datetime="${isoDateOuVazio(v.revisado_em)}">${dataPt(v.revisado_em)}</time>.</p>
@@ -632,13 +751,57 @@ ${blocoArtigos}<p class="meta">${contagem(lista.length, 'vídeo', 'vídeos')}</p
 <ul class="lista">
 ${lista.map((v) => cartao(v, temas)).join('\n')}
 </ul>`;
-  const html = pagina({ titulo: `${tema.nome} — ${oque.toLowerCase()}`, descricao, rota, robots: 'index, follow', jsonld, corpo });
+  const html = pagina({ titulo: `${tema.nome} — ${oque.toLowerCase()}`, descricao, rota, robots: 'index, follow', jsonld, corpo, larga: true });
   const md = [`# ${tema.nome}`, '', tema.resumo ?? '', '',
     ...(artigos.length ? ['## Artigos e páginas', '',
       ...artigos.map((a) => `- [${a.titulo}](${SITE}${a.href}) — ${[a.natureza, a.formato].filter(Boolean).join(' · ')}. ${a.descricao}`.trimEnd()),
       '', '## Vídeos', ''] : []),
     ...lista.map((v) => `- [${v.youtube.titulo}](${SITE}${rotaVideo(v)}) — ${dataPt(v.youtube.publicado_em)}`), ''].join('\n');
   return { html, md };
+}
+
+export const LIMITE_PRATELEIRA = 12;
+
+/** Destaque (RF-CV-02): destaque: true vence; senão o artigo publicado mais recente; senão o vídeo mais recente. */
+export function escolheDestaque(vivos) {
+  const ordenados = vivos.slice().sort(recentes);
+  return ordenados.find((v) => v.destaque === true)
+    ?? ordenados.find((v) => v.status === 'publicado')
+    ?? ordenados[0];
+}
+
+/** Prateleiras do catálogo, na ordem do SDD §3.2 (D3). */
+export function prateleirasDoIndice(vivos, temas, temasUsados) {
+  const lim = (l) => l.slice(0, LIMITE_PRATELEIRA);
+  const novos = vivos.slice().sort(recentes);
+  const comArtigo = novos.filter((v) => v.status === 'publicado');
+  const vistos = vivos.slice().sort((a, b) => (Number(b.youtube.visualizacoes) || 0) - (Number(a.youtube.visualizacoes) || 0));
+  const porTema = temasUsados
+    .map((t) => ({ t, lista: novos.filter((v) => v.temas?.includes(t)) }))
+    .sort((a, b) => b.lista.length - a.lista.length || a.t.localeCompare(b.t));
+  return [
+    { id: 'novos', titulo: 'Novos no canal', lista: lim(novos), todos: { href: '/videos#todos', rotulo: `Ver todos (${vivos.length})` } },
+    { id: 'com-artigo', titulo: 'Vídeos com artigo', lista: lim(comArtigo), todos: { href: '/videos?artigo=1#todos', rotulo: `Ver todos (${comArtigo.length})` } },
+    { id: 'mais-vistos', titulo: 'Mais vistos', lista: lim(vistos), todos: { href: '/videos?ordem=vistos#todos', rotulo: 'Ver todos' } },
+    ...porTema.map(({ t, lista }) => ({
+      id: `tema-${t}`, titulo: temas[t].nome, lista: lim(lista), todos: { href: rotaTema(t), rotulo: `Ver todos (${lista.length})` },
+    })),
+  ].filter((p) => p.lista.length);
+}
+
+function destaqueHtml(v, temas) {
+  const y = v.youtube;
+  const artigo = v.status === 'publicado';
+  const texto = (artigo && v.resumo) ? v.resumo : resumo(y.descricao, 220);
+  const dur = duracaoPt(y.duracao);
+  return `<section class="hero" aria-labelledby="h-destaque">
+<div class="hero-img"><img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" width="480" height="360" fetchpriority="high" decoding="async"></div>
+<div><p class="kicker">Em destaque</p>
+<h2 id="h-destaque">${esc(y.titulo)}</h2>
+${texto ? `<p class="resumo">${esc(texto)}</p>` : ''}
+<p class="meta">${dataPt(y.publicado_em)}${dur ? ` · ${dur}` : ''}${v.temas?.length ? ` · ${v.temas.map((t) => esc(temas[t].nome)).join(', ')}` : ''}</p>
+<div class="botoes"><a class="botao botao-primario" href="${rotaVideo(v)}">Assistir</a>${artigo ? `<a class="botao" href="${rotaVideo(v)}#artigo">Ler o artigo</a>` : ''}</div></div>
+</section>`;
 }
 
 export function renderIndice(lista, temas, temasUsados) {
@@ -648,25 +811,33 @@ export function renderIndice(lista, temas, temasUsados) {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Vídeos', description: descricao,
     url: `${SITE}${rota}`, inLanguage: 'pt-BR',
   };
-  const filtro = temasUsados.length
-    ? `<div id="filtro" class="filtro" hidden><label for="filtro-tema">Filtrar por assunto</label>
+  const destaque = escolheDestaque(lista);
+  const prateleiras = prateleirasDoIndice(lista, temas, temasUsados);
+  const temArtigo = lista.some((v) => v.status === 'publicado');
+  const salto = prateleiras.length
+    ? `<nav class="salto" aria-label="Ir para uma prateleira"><ul class="chips">${prateleiras.map((p) => `<li><a href="#${p.id}">${esc(p.titulo)}</a></li>`).join('')}<li><a href="#todos">Todos os vídeos</a></li></ul></nav>`
+    : '';
+  const filtro = `<div id="filtro" class="filtro" hidden>
+<label for="filtro-tema">Filtrar por assunto</label>
 <select id="filtro-tema"><option value="">Todos os assuntos</option>${temasUsados.map((t) => `<option value="${t}">${esc(temas[t].nome)}</option>`).join('')}</select>
-<span id="filtro-status" role="status" aria-live="polite"></span></div>`
-    : '';
-  const assuntos = temasUsados.length
-    ? `<h2>Assuntos</h2><ul class="chips">${temasUsados.map((t) => `<li><a href="${rotaTema(t)}">${esc(temas[t].nome)}</a></li>`).join('')}</ul>`
-    : '';
+${temArtigo ? '<label><input type="checkbox" id="filtro-artigo"> Só com artigo</label>' : '<input type="checkbox" id="filtro-artigo" hidden>'}
+<label for="filtro-ordem">Ordem</label>
+<select id="filtro-ordem"><option value="recentes">Mais recentes</option><option value="vistos">Mais vistos</option></select>
+<span id="filtro-status" role="status" aria-live="polite"></span></div>`;
   const corpo = `<h1>Vídeos</h1>
 <p class="meta">${lista.length} ${lista.length === 1 ? 'vídeo' : 'vídeos'} do canal, do mais recente ao mais antigo.</p>
-${assuntos}
-<h2>Todos os vídeos</h2>
+${destaque ? destaqueHtml(destaque, temas) : ''}
+${salto}
+${prateleiras.map((p) => prateleira({ ...p, temas })).join('\n')}
+<section aria-labelledby="h-todos" id="todos"><h2 id="h-todos">Todos os vídeos</h2>
 ${filtro}
 <ul class="lista" id="lista-videos">
 ${lista.map((v) => cartao(v, temas)).join('\n')}
-</ul>`;
-  const html = pagina({ titulo: 'Vídeos', descricao, rota, robots: 'index, follow', jsonld, corpo, script: filtro ? SCRIPT_FILTRO : '' });
+</ul></section>`;
+  const html = pagina({ titulo: 'Vídeos', descricao, rota, robots: 'index, follow', jsonld, corpo, script: SCRIPT_PRATELEIRA + SCRIPT_FILTRO, larga: true });
   const md = ['# Vídeos', '', descricao, '',
-    ...(temasUsados.length ? ['## Assuntos', '', ...temasUsados.map((t) => `- [${temas[t].nome}](${SITE}${rotaTema(t)})`), ''] : []),
+    ...(destaque ? ['## Em destaque', '', `- [${destaque.youtube.titulo}](${SITE}${rotaVideo(destaque)}) — ${dataPt(destaque.youtube.publicado_em)}`, ''] : []),
+    ...prateleiras.flatMap((p) => [`## ${p.titulo}`, '', ...p.lista.map((v) => `- [${v.youtube.titulo}](${SITE}${rotaVideo(v)}) — ${dataPt(v.youtube.publicado_em)}`), '']),
     '## Todos os vídeos', '',
     ...lista.map((v) => `- [${v.youtube.titulo}](${SITE}${rotaVideo(v)}) — ${dataPt(v.youtube.publicado_em)}`), ''].join('\n');
   return { html, md };
@@ -686,7 +857,11 @@ export function build(content, opcoes = {}) {
   const vivos = content.videos.filter((v) => v.status !== 'removido').sort(recentes);
   const out = {};
   for (const v of vivos) {
-    const { html, md } = renderVideo(v, temas);
+    const primeiro = v.temas?.[0];
+    const relacionados = primeiro
+      ? vivos.filter((o) => o.id !== v.id && o.temas?.includes(primeiro)).slice(0, LIMITE_PRATELEIRA)
+      : [];
+    const { html, md } = renderVideo(v, temas, relacionados);
     out[`src/videos/${v.slug}.html`] = html;
     out[`public/videos/${v.slug}.md`] = md;
   }

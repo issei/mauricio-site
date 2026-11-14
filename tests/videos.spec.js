@@ -64,6 +64,56 @@ test('índice: o filtro por assunto esconde os outros vídeos e anuncia a contag
   await expectNoSeriousA11yViolations(page);
 });
 
+// SDD-catalogo-videos-e-busca §3: prateleiras, filtros na URL e teclado.
+test('prateleira: botões com nome, rolam o trilho e ficam desabilitados nas pontas', async ({ page }) => {
+  await page.setViewportSize({ width: 420, height: 800 });
+  await abre(page, 'src/videos.html');
+  const sec = page.locator('#novos');
+  const prox = sec.getByRole('button', { name: /Próximos vídeos · Novos no canal/ });
+  const ant = sec.getByRole('button', { name: /Vídeos anteriores · Novos no canal/ });
+  await expect(ant).toBeDisabled();
+  await expect(prox).toBeEnabled();
+  await prox.click();
+  await expect.poll(() => sec.locator('[data-trilho]').evaluate((e) => e.scrollLeft)).toBeGreaterThan(0);
+  await expect(ant).toBeEnabled();
+  const larguraPagina = await page.evaluate(() => [document.documentElement.scrollWidth, innerWidth]);
+  expect(larguraPagina[0]).toBeLessThanOrEqual(larguraPagina[1]);
+  await expectNoSeriousA11yViolations(page);
+});
+
+test('prateleira: sem JS não há botões e o trilho continua com os links', async ({ browser }) => {
+  const ctx = await browser.newContext({ javaScriptEnabled: false });
+  const page = await ctx.newPage();
+  await page.route(/^https?:\/\//, (r) => r.abort());
+  await abre(page, 'src/videos.html');
+  await expect(page.locator('.trilho-botao')).toHaveCount(0);
+  await expect(page.locator('#novos .card-link').first()).toBeVisible();
+  await ctx.close();
+});
+
+test('índice: "Ir para" leva à prateleira e o destaque oferece Assistir e Ler o artigo', async ({ page }) => {
+  await abre(page, 'src/videos.html');
+  await expect(page.locator('.hero h2')).toHaveText('Especificação antes do código');
+  await expect(page.getByRole('link', { name: 'Assistir' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Ler o artigo' })).toHaveAttribute('href', /#artigo$/);
+  await page.getByRole('navigation', { name: 'Ir para uma prateleira' }).getByRole('link', { name: 'Mais vistos' }).click();
+  await expect(page).toHaveURL(/#mais-vistos$/);
+});
+
+test('índice: filtros leem a URL (?artigo=1&ordem=vistos) e a gravam ao mudar', async ({ page }) => {
+  await abre(page, 'src/videos.html');
+  await page.evaluate(() => history.replaceState(null, '', location.pathname + '?artigo=1#todos'));
+  await page.reload();
+  await expect(page.getByLabel('Só com artigo')).toBeChecked();
+  await expect(page.locator('#lista-videos > li').filter({ visible: true })).toHaveCount(1);
+  await expect(page.locator('#filtro-status')).toHaveText('1 vídeo');
+  await page.getByLabel('Só com artigo').uncheck();
+  await page.getByLabel('Ordem').selectOption('vistos');
+  await expect(page.locator('#lista-videos > li').first()).toContainText('Como ancorar agentes');
+  expect(page.url()).toContain('ordem=vistos');
+  expect(page.url()).not.toContain('artigo=1');
+});
+
 // SDD-fase-2 §6: modelo do artigo publicado.
 test('artigo: indexado, âncora vai ao YouTube sem JS e toca aqui no minuto certo com JS', async ({ page }) => {
   await abre(page, 'src/videos/especificacao-antes-do-codigo.html');
