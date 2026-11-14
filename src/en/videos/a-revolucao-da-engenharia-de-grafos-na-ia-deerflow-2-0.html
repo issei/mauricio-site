@@ -26,6 +26,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
 .wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.wrap-larga{max-width:1080px}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -43,14 +44,45 @@ h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
 details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
 .ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
-.lista{list-style:none;padding:0;margin:0;display:grid;gap:14px}
-.card{display:grid;grid-template-columns:168px 1fr;gap:16px;align-items:start;padding:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
-.card img{width:168px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
-.card h3{font-size:1.05rem;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
-.card p{margin:0;color:var(--muted);font-size:.9rem}
-.filtro{margin:0 0 1.2em;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lista{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{position:relative;display:flex;flex-direction:column;height:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.card:hover,.card:focus-within{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card-thumb{position:relative;aspect-ratio:16/9;background:#000}
+.card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
+.card-corpo{padding:10px 12px 12px}
+.card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card-link::after{content:"";position:absolute;inset:0}
+.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.card-meta{margin:0;color:var(--muted);font-size:.85rem}
+.selo{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.78rem}
+.filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.filtro label{font-size:.95rem}
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.hero-img img{display:block;width:100%;height:100%;object-fit:cover}
+.kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.hero h2{margin:.2em 0 .4em;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.25}
+.hero .resumo{font-size:1rem;margin:0 0 1em}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:1em 0 0}
+.botao{display:inline-block;padding:10px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--border);color:#fff}
+.botao-primario{border-color:transparent;background:linear-gradient(90deg,#007bff,#8a2be2)}
+.botao:hover{box-shadow:0 0 18px rgba(138,43,226,.45);color:#fff}
+.botao:focus-visible,.trilho-botao:focus-visible,.chips a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.prateleira{margin:0 0 1.8em}
+.prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
+.prateleira-cab .todos{font-size:.92rem;margin-right:4px}
+.trilho-botoes{display:none;gap:8px}
+.js .trilho-botoes{display:flex}
+.trilho-botao{min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);color:#fff;font:inherit;font-size:1.1rem;cursor:pointer}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.trilho-botao:disabled{opacity:.35;cursor:default}
+.trilho{list-style:none;margin:0;padding:6px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.trilho>li{flex:0 0 260px;scroll-snap-align:start}
+.trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
 .resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
 .artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
@@ -60,8 +92,9 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
 .fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
 .revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
-@media (max-width:560px){.card{grid-template-columns:1fr}.card img{width:100%}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.yt-play:hover,.card:hover{transform:none}}</style>
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+@media (max-width:640px){.trilho>li{flex-basis:70%}.lista{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.yt-play:hover,.card:hover,.card:focus-within{transform:none}}</style>
 <!-- SITE-HEADER-CSS:START -->
 <style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}.sh .sh-nav{order:2;margin-left:auto}.sh .sh-busca{order:3;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}.sh .sh-busca:hover{border-color:#58a6ff;color:#fff;text-decoration:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.9rem;white-space:normal;line-height:1.15;min-width:0}.sh .sh-in{gap:.5rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh .sh-busca{order:0;margin-left:auto;padding:0 .7rem;font-size:.85rem}.sh .sh-nav{order:0;margin-left:0}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:0;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
 <!-- SITE-HEADER-CSS:END -->
@@ -112,7 +145,7 @@ try {
 <p class="yt-link"><a href="https://www.youtube.com/watch?v=dacWmQubuSs" rel="noopener">Open on YouTube</a></p>
 <p class="aviso">The video and the transcript are in Portuguese. The minutes between brackets lead to the stretch of the video.</p>
 <nav class="indice" aria-labelledby="h-indice"><h2 id="h-indice">In this article</h2><ol><li><a href="#s-do-chat-a-automacao-de-fluxos">From chat to stream automation</a></li><li><a href="#s-engenharia-de-loop">Loop Engineering</a></li><li><a href="#s-engenharia-de-grafo-o-organograma">Graph Engineering: the organogram</a></li><li><a href="#s-quando-usar-cada-um">When to use each</a></li><li><a href="#s-o-deerflow-2-0">DeerFlow 2.0</a></li><li><a href="#s-subagentes-e-skills">Subagents and skills</a></li><li><a href="#s-um-computador-para-os-agentes">A computer for agents</a></li><li><a href="#s-perguntas-frequentes">Frequently Asked Questions</a></li></ol></nav>
-<article class="artigo" aria-label="Article">
+<article class="artigo" id="artigo" aria-label="Article">
 <h2 id="s-do-chat-a-automacao-de-fluxos">From chat to stream automation</h2>
 <p>AI agents stopped being chat assistants and started automating complex workflows <a class="ancora" href="https://www.youtube.com/watch?v=dacWmQubuSs&t=0s" data-t="0" aria-label="Watch from 00:00">00:00</a>. For this to work without the system hallucinating or locking, the software design had to change <a class="ancora" href="https://www.youtube.com/watch?v=dacWmQubuSs&t=0s" data-t="0" aria-label="Watch from 00:00">00:00</a>.</p>
 <h2 id="s-engenharia-de-loop">Loop Engineering</h2>
@@ -160,6 +193,71 @@ try {
 <p><span class="ts">[8:08]</span>for super long periods without ever stopping the main system. To close the package and tie this into the workflow of those who code every day, there is this phenomenal integration. Without leaving the black screen of the terminal, integrating with cloud, just rotate that command on the screen and ready. You can send out complex tasks, keep track of strads, and watch the system slice the problem into your people, all at your fingertips. It's the ultimate and absolute power of an orchestrator running smooth. And that is the great provocation that ends our immersion today. We came out of that mess of generalist agents trying to do everything at the same time and going into a screw for a new era of processes milimeterically orchestrated in graph. We have focused subagents, intelligent loading of tools and the craziest, safe and exclusive computers to go to work. The architectural bridge has already been crossed. The open source infrastructure is ready and available to everyone. The only question you don't want to shut up right now is: with so much power in your hand, what will be the</p>
 <p><span class="ts">[9:09]</span>limit of what we can build from now on?</p>
 </details></div></section>
+<section class="prateleira" aria-labelledby="h-mais-do-assunto" id="mais-do-assunto" data-prateleira>
+<div class="prateleira-cab"><h2 id="h-mais-do-assunto">More of this subject</h2><a class="todos" href="/temas/engenharia-agentica">View all of Agentic engineering</a>
+<div class="trilho-botoes" data-botoes></div></div>
+<ul class="trilho" data-trilho>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-19" data-vistos="182"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/ZTNLoWhtXEw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:44</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para">How Git-ai Solves the Git Scale Problem for AI Agents</a></h3>
+<p class="card-meta">19 October 2026 · Agentic engineering</p></div>
+</article></li>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-19" data-vistos="91"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/mRFqnOktQH4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:07</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso">Like the AI agents. They broke Git in Anthropic </a></h3>
+<p class="card-meta">19 October 2026 · Agentic engineering</p></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-10-18" data-vistos="39"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/iCVD5IVVR2g/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:41</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">The Role of Amazon New Act: Automation Web with AI Agents at AWS</a></h3>
+<p class="card-meta">October 18, 2026 · Agentic engineering, Cloud and reliability</p></div>
+</article></li>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-13" data-vistos="53"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/lZqBmAkl3J8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:34</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-que-faz-um-forward-deployed-engineer-fde">What does a Forward-Deployed Engineer (FDE) do?</a></h3>
+<p class="card-meta">13 October 2026 · Agentic engineering</p></div>
+</article></li>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-10" data-vistos="36"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/hub4sB4yYss/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:56</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google">The Age of Gemini: How New Google Cloud Agents Will Transform Work</a></h3>
+<p class="card-meta">10 October 2026 · Agentic engineering</p></div>
+</article></li>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-09" data-vistos="81"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/o3IMxBLEhp0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:37</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para">ECC: Genetic Tools — How to Optimize AI Agents for Software Engineering</a></h3>
+<p class="card-meta">9 October 2026 · Agentic engineering</p></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-10-07" data-vistos="90"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/BTTHq4W56KQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:03</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de">OpenSRE: Open-Source AI Agent for SRE and Incident Resolution</a></h3>
+<p class="card-meta">October 7, 2026 · Agentic engineering, Cloud and reliability</p></div>
+</article></li>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-07" data-vistos="24"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/o0mWY83c37Y/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:35</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra">NVIDIA SkillSpector: How to Protect Your AI Agents from Hidden Threats!</a></h3>
+<p class="card-meta">October 7, 2026 · Agentic engineering</p></div>
+</article></li>
+<li data-temas="engenharia-agentica gestao-e-estrategia" data-artigo="0" data-data="2026-10-03" data-vistos="59"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/Z-8YtFXi-oo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:29</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/digital-workplace-agentico-como-evoluir-do-portal">Digital Genetic Workplace: Cannot initialise Evolution's mail component. Corporate to the AI Agent</a></h3>
+<p class="card-meta">October 3, 2026 · Agentic engineering, Management and Strategy</p></div>
+</article></li>
+<li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-02" data-vistos="120"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/s-VWwbBEv90/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:08</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras">How to connect AI agents to Frontend: Discover the AG-UI Protocol</a></h3>
+<p class="card-meta">2 October 2026 · Agentic engineering</p></div>
+</article></li>
+<li data-temas="engenharia-agentica especificacao-e-desenvolvimento" data-artigo="0" data-data="2026-09-27" data-vistos="40"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/KpcrbmGA_v8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:35</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software">Jev — Fuzzy If for Tipped and Fast Software Decisions and AI Agents</a></h3>
+<p class="card-meta">September 27, 2026 · Agentic engineering, Specification and Development</p></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-09-27" data-vistos="49"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/cSW_eXN-9wE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:13</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala">Amazon Bedrock AgentCore: From Prototype to Scale Production with agentic AI!</a></h3>
+<p class="card-meta">September 27, 2026 · Agentic engineering, Cloud and reliability</p></div>
+</article></li>
+</ul></section>
 </main>
 <footer class="foot"><div class="wrap"><a href="/en/privacidade">Privacy</a><a href="/en/cookies">Cookies</a><a href="/en/termos">Terms</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">YouTube Channel</a></div></footer>
 <script>
@@ -182,6 +280,34 @@ try {
   // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
   document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
+  });
+})();
+</script>
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-prateleira]').forEach(function (sec) {
+    var trilho = sec.querySelector('[data-trilho]'), box = sec.querySelector('[data-botoes]');
+    var nome = sec.querySelector('h2').textContent;
+    function botao(texto, rotulo, sentido) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'trilho-botao'; b.textContent = texto;
+      b.setAttribute('aria-label', rotulo + ' · ' + nome);
+      b.addEventListener('click', function () {
+        trilho.scrollBy({ left: sentido * trilho.clientWidth * 0.9, behavior: calmo.matches ? 'auto' : 'smooth' });
+      });
+      return b;
+    }
+    var ant = botao('\u2039', 'Vídeos anteriores', -1), prox = botao('\u203A', 'Próximos vídeos', 1);
+    box.append(ant, prox);
+    function atualiza() {
+      ant.disabled = trilho.scrollLeft <= 4;
+      prox.disabled = trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 4;
+    }
+    trilho.addEventListener('scroll', atualiza, { passive: true });
+    addEventListener('resize', atualiza);
+    atualiza();
   });
 })();
 </script>
