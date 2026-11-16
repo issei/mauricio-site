@@ -1,7 +1,7 @@
 ---
 id: tesXsbVDMuQ
 slug: pare-de-ler-codigo-as-cegas-conheca-o-understand-anything
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
 resumo: O Understand-Anything é um plugin de código aberto que transforma uma base de código num grafo interativo, com o significado de cada parte e tours guiados. O vídeo mostra o problema do código legado, como a ferramenta combina análise determinística e modelos de linguagem, os casos de uso e o custo em tokens.
@@ -9,11 +9,13 @@ fontes:
   - url: https://github.com/Lum1104/Understand-Anything
     titulo: Repositório no GitHub
     sustenta: O Understand-Anything é um plugin de código aberto que gera um grafo de conhecimento interativo da base de código.
-    verificada: false
+    verificada: true
   - url: https://understand-anything.com
     titulo: Site oficial e live demo
     sustenta: Os tours guiados, a análise de impacto e a visão de domínio de negócio.
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-16
 youtube:
   titulo: Pare de ler código às cegas! Conheça o Understand-Anything
   publicado_em: 2026-05-26
