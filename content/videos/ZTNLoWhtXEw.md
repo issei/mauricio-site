@@ -1,7 +1,7 @@
 ---
 id: ZTNLoWhtXEw
 slug: como-o-git-ai-resolve-o-problema-de-escala-do-git-para
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
 resumo: "O Git foi feito para pessoas, e não aguenta milhares de agentes de IA enviando código ao mesmo tempo. O vídeo apresenta o git-ai, uma implementação de código aberto inspirada no sistema interno da Anthropic: clientes sempre online, controle de versão como API, integração sem fila de merge, resolução automática de conflitos e servidores sem estado."
@@ -9,11 +9,13 @@ fontes:
   - url: https://www.anthropic.com/engineering/redesigning-source-control
     titulo: Redesigning source control (Anthropic)
     sustenta: O gargalo passou a ser a infraestrutura de desenvolvimento, e a Anthropic integra cerca de 30.000 mudanças por dia no repositório principal.
-    verificada: false
+    verificada: true
   - url: https://github.com/feder-cr/git-ai
     titulo: Repositório oficial do git-ai no GitHub
     sustenta: O git-ai é um servidor de controle de versão de código aberto, compatível com repositórios Git.
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-16
 youtube:
   titulo: Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA
   publicado_em: 2026-10-19
