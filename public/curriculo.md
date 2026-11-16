@@ -71,14 +71,6 @@ Desenvolvimento de aplicações web e de console em Java (J2EE e J2SE), utilizan
 
 - Competências: Java (J2EE/J2SE), MVC, UML, MDA, DB2, PostgreSQL
 
-### Analista de Desenvolvimento Java — Telefônica
-
-abr de 2005 – set de 2008 (3 anos e 6 meses) · São Paulo, Brasil
-
-Desenvolvimento de sistema de gestão de almoxarifado de peças e sistema de aprovisionamento de rede.
-
-- Competências: Java, EJB, JBoss, Oracle, Liderança de equipe
-
 ## Projetos (STAR)
 
 ### Pipe Automática Comercial (Rede, 2025)
