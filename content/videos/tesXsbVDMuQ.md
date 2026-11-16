@@ -14,7 +14,7 @@ fontes:
     titulo: Site oficial e live demo
     sustenta: Os tours guiados, a análise de impacto e a visão de domínio de negócio.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: Pare de ler código às cegas! Conheça o Understand-Anything

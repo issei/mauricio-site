@@ -14,7 +14,7 @@ fontes:
     titulo: Repositório oficial do git-ai no GitHub
     sustenta: O git-ai é um servidor de controle de versão de código aberto, compatível com repositórios Git.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA

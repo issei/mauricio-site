@@ -6,7 +6,7 @@ temas:
   - aprendizagem-e-mente
   - gestao-e-estrategia
 resumo: Com informação demais e clareza de menos, a vantagem é de quem pensa melhor. O vídeo apresenta a metacognição como o arquiteto da mente, liga cada habilidade estratégica a uma tradição filosófica (estoicismo, taoísmo, confucionismo e bushido) e mostra exemplos na Toyota e na Microsoft.
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: "A Arquitetura da Mente: Filosofia, Metacognição e Liderança Estratégica"
