@@ -1,7 +1,7 @@
 ---
 id: n089OV1W2Dg
 slug: o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
   - dados-e-decisao
@@ -10,15 +10,17 @@ fontes:
   - url: https://arxiv.org/pdf/2501.09136
     titulo: "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG"
     sustenta: A diferença entre o RAG tradicional e o Agentic RAG, com planejamento, uso de ferramentas e autoavaliação.
-    verificada: false
+    verificada: true
   - url: https://aclanthology.org/2026.findings-acl.78.pdf
     titulo: "Data-Centric Perspectives on Agentic Retrieval-Augmented Generation: A Survey"
     sustenta: A falta de dados de treino para agentes e o pipeline de coleta, geração sintética, verificação e refinamento.
-    verificada: false
+    verificada: true
   - url: https://arxiv.org/pdf/2312.10997
     titulo: "Retrieval-Augmented Generation for Large Language Models: A Survey"
     sustenta: O que é o RAG tradicional e como ele consulta bases externas antes de gerar a resposta.
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-16
 youtube:
   titulo: "O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional"
   publicado_em: 2026-08-26

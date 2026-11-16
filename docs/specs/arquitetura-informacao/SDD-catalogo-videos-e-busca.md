@@ -73,7 +73,8 @@ recomendação personalizada, busca na transcrição (§6.1), página `/en/` dos
   novidade, artigo e visualizações ficam só nos filtros de "Todos os vídeos" (§3.4).
 - **RF-CV-06** No máximo 12 cartões por prateleira. "Ver todos" leva à página do tema (`/temas/<tema>`)
   (a grade aceita `?ordem=vistos` e `?artigo=1` na URL, §3.4).
-- **RF-CV-07** A rolagem é horizontal nativa (`overflow-x:auto` + `scroll-snap-type:x proximity`).
+- **RF-CV-07** A rolagem é horizontal nativa (`overflow-x:auto` + `scroll-snap-type:x proximity`), sem barra visível.
+  Em `/videos` a prateleira ocupa a largura toda da linha (revisão de 2026-11-14, Issei).
   Funciona com toque, trackpad, roda do mouse com Shift e teclado.
 - **RF-CV-08** Com JS, cada prateleira ganha dois botões, **Anteriores** e **Próximos**, com nome
   acessível que cita a prateleira ("Próximos vídeos de Engenharia agêntica"). Eles rolam uma largura
@@ -91,9 +92,9 @@ recomendação personalizada, busca na transcrição (§6.1), página `/en/` dos
 
 ### 3.3 Cartão (RF-CV-13 a 16)
 
-- **RF-CV-13** Estrutura: `<article>` com miniatura 16:9 (`alt=""`), título como link (`<h3><a>`) e uma
-  linha de metadados: duração · data · selo **Artigo** quando `status: publicado`. O cartão inteiro é
-  clicável pelo pseudo-elemento do link; só o link recebe foco.
+- **RF-CV-13** Estrutura: `<article>` com miniatura 16:9 (`alt=""`) e o título como link (`<h3><a>`). O cartão inteiro
+  é clicável pelo pseudo-elemento do link; só o link recebe foco. Sem data nem assuntos no cartão
+  (revisão de 2026-11-14, Issei). O selo **Artigo** fica sobre a miniatura, só quando `status: publicado`.
 - **RF-CV-14** A duração aparece num selo sobre a miniatura, com fundo sólido (contraste ≥ 4,5:1).
 - **RF-CV-15** Ao passar o mouse ou focar: elevação de 2 px e brilho neon (`box-shadow`), padrão Dark
   Tech. Nenhum cartão cresce sobre os vizinhos nem toca vídeo.

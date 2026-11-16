@@ -26,6 +26,7 @@ a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
 .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
 .wrap{max-width:880px;margin:0 auto;padding:14px 24px}
 .wrap-larga{max-width:1080px}
+.wrap-total{max-width:none;padding-left:clamp(16px,3vw,56px);padding-right:clamp(16px,3vw,56px)}
 .crumb{font-size:.9rem;color:var(--muted)}
 h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
 h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
@@ -50,16 +51,15 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .card-thumb{position:relative;aspect-ratio:16/9;background:#000}
 .card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
-.card-corpo{padding:10px 12px 12px}
+.card-corpo{padding:10px 12px 14px}
 .card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
 .card-link::after{content:"";position:absolute;inset:0}
 .card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.card-meta{margin:0;color:var(--muted);font-size:.85rem}
-.selo{display:inline-block;margin-left:6px;padding:0 8px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:.78rem}
+.selo{position:absolute;left:8px;top:8px;padding:1px 9px;border:1px solid var(--accent);border-radius:999px;background:#0d1117;color:var(--accent);font-size:.78rem;font-weight:600}
 .filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
 .filtro label{font-size:.95rem}
-.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero{max-width:1200px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
 .hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
 .hero-img img{display:block;width:100%;height:100%;object-fit:cover}
 .kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
@@ -74,13 +74,17 @@ details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
 .prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
 .prateleira-cab .todos{font-size:.92rem;margin-right:4px}
-.trilho-botoes{display:none;gap:8px}
+.trilho-wrap{position:relative}
+.trilho-botoes{display:none;position:absolute;left:0;right:0;top:3.2rem;justify-content:space-between;padding:0 8px;pointer-events:none;z-index:2}
 .js .trilho-botoes{display:flex}
-.trilho-botao{min-width:44px;min-height:44px;border:1px solid var(--border);border-radius:999px;background:var(--bg-2);color:#fff;font:inherit;font-size:1.1rem;cursor:pointer}
-.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
-.trilho-botao:disabled{opacity:.35;cursor:default}
-.trilho{list-style:none;margin:0;padding:6px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
-.trilho>li{flex:0 0 260px;scroll-snap-align:start}
+.trilho-botao{pointer-events:auto;min-width:44px;min-height:44px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(13,17,23,.88);color:#fff;font:inherit;font-size:1.4rem;line-height:1;cursor:pointer;opacity:0;transition:opacity .15s,box-shadow .15s}
+.prateleira:hover .trilho-botao:not(:disabled),.prateleira:focus-within .trilho-botao:not(:disabled){opacity:1}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 14px rgba(0,123,255,.45)}
+.trilho-botao:disabled{opacity:0;pointer-events:none}
+@media (hover:none){.trilho-botao:not(:disabled){opacity:1}}
+.trilho{list-style:none;margin:0;padding:6px 2px 10px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>li{flex:0 0 clamp(220px,18vw,300px);scroll-snap-align:start}
 .trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
 .resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
@@ -158,69 +162,58 @@ try {
 </details></div></section>
 <section class="prateleira" aria-labelledby="h-mais-do-assunto" id="mais-do-assunto" data-prateleira>
 <div class="prateleira-cab"><h2 id="h-mais-do-assunto">Mais deste assunto</h2><a class="todos" href="/temas/cloud-e-confiabilidade">Ver todos de Cloud e confiabilidade</a>
-<div class="trilho-botoes" data-botoes></div></div>
+</div>
+<div class="trilho-wrap"><div class="trilho-botoes" data-botoes></div>
 <ul class="trilho" data-trilho>
 <li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-10-18" data-vistos="39"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/iCVD5IVVR2g/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:41</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS</a></h3>
-<p class="card-meta">18 de outubro de 2026 · Engenharia agêntica, Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS</a></h3></div>
 </article></li>
 <li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-10-07" data-vistos="90"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/BTTHq4W56KQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:03</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de">OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes</a></h3>
-<p class="card-meta">7 de outubro de 2026 · Engenharia agêntica, Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de">OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes</a></h3></div>
 </article></li>
 <li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-09-27" data-vistos="49"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/cSW_eXN-9wE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:13</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala">Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!</a></h3>
-<p class="card-meta">27 de setembro de 2026 · Engenharia agêntica, Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala">Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-09-23" data-vistos="5"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/LnEzU4OfkoM/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:43</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em">Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account</a></h3>
-<p class="card-meta">23 de setembro de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em">Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-07-03" data-vistos="12"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/ODuuUBUbUBI/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:47</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation">Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!</a></h3>
-<p class="card-meta">3 de julho de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation">Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-06-21" data-vistos="35"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/0fkru6v1O-c/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>10:27</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como">A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)</a></h3>
-<p class="card-meta">21 de junho de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como">A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-05-05" data-vistos="46"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/f8xd4FOBYfU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:39</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon">Automação de Incidentes na Prática: AWS DevOps Agent &amp; Amazon CloudWatch</a></h3>
-<p class="card-meta">5 de maio de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon">Automação de Incidentes na Prática: AWS DevOps Agent &amp; Amazon CloudWatch</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-04-26" data-vistos="15"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/flnY1QZyab8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>6:31</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/analise-lambda-web-adapter">Análise  Lambda Web Adapter</a></h3>
-<p class="card-meta">26 de abril de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/analise-lambda-web-adapter">Análise  Lambda Web Adapter</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-04-11" data-vistos="19"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/wGqhobVa4gU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:02</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso">Por Que Sua IA Falha? (O Custo Oculto do &quot;Crash Silencioso&quot;)</a></h3>
-<p class="card-meta">11 de abril de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso">Por Que Sua IA Falha? (O Custo Oculto do &quot;Crash Silencioso&quot;)</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-02-04" data-vistos="14"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/-t8RfEvirds/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>9:00</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/producao-fora-do-ar">Produção Fora do Ar</a></h3>
-<p class="card-meta">4 de fevereiro de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/producao-fora-do-ar">Produção Fora do Ar</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-01-17" data-vistos="28"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/Uyft2BujGOw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>8:09</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/o-blueprint-para-ia-confiavel">O Blueprint para IA Confiável</a></h3>
-<p class="card-meta">17 de janeiro de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-blueprint-para-ia-confiavel">O Blueprint para IA Confiável</a></h3></div>
 </article></li>
 <li data-temas="cloud-e-confiabilidade" data-artigo="0" data-data="2026-01-16" data-vistos="18"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/cSl4PiE5tJ8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duração </span>7:02</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/o-padrao-stateful-serverless">O Padrão Stateful Serverless</a></h3>
-<p class="card-meta">16 de janeiro de 2026 · Cloud e confiabilidade</p></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-padrao-stateful-serverless">O Padrão Stateful Serverless</a></h3></div>
 </article></li>
-</ul></section>
+</ul></div></section>
 </main>
 <footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
 <script>

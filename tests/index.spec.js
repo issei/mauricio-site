@@ -137,10 +137,10 @@ test.describe('Home editorial (F3)', () => {
 
 // Os critérios §12 da SDD do portfólio, agora contra /curriculo (F2/F3).
 test.describe('Carreira — critérios §12 do portfólio', () => {
-  test('§12.1–12.2: 5 experiências em ordem cronológica inversa e 19 cards STAR', async ({ page }) => {
+  test('§12.1–12.2: 4 experiências em ordem cronológica inversa e 19 cards STAR', async ({ page }) => {
     await page.goto(CV_PATH);
     const orgs = await page.locator('.pf-exp .pf-exp-org').allTextContents();
-    expect(orgs).toEqual(['Rede', 'Serasa Experian', 'Indra', 'Telefônica', 'Sysgen']);
+    expect(orgs).toEqual(['Rede', 'Serasa Experian', 'Indra', 'Sysgen']);
     await expect(page.locator('details.pf-star')).toHaveCount(cv.Projetos.length);
     // Abrir um card revela S/T/A/R completos
     const card = page.locator('details.pf-star').first();
