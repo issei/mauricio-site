@@ -1,7 +1,7 @@
 ---
 id: s-VWwbBEv90
 slug: como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
 resumo: "Agentes de IA não cabem no modelo de requisição e resposta das APIs REST. O AG-UI é um protocolo aberto, baseado em eventos, que liga o agente à interface do usuário. O vídeo mostra onde ele fica ao lado do MCP e do A2A, e os três pilares: estado compartilhado com deltas, interface generativa e interrupções para aprovação humana."
@@ -9,11 +9,13 @@ fontes:
   - url: https://docs.ag-ui.com/
     titulo: Documentação oficial do AG-UI
     sustenta: A frase "aplicações agênticas quebram o modelo simples de requisição e resposta" e o estado compartilhado com deltas JSON Patch.
-    verificada: false
+    verificada: true
   - url: https://github.com/ag-ui-protocol/ag-ui
     titulo: Repositório no GitHub
     sustenta: O AG-UI é um protocolo aberto, baseado em eventos, com integrações para vários frameworks de agentes.
-    verificada: false
+    verificada: true
+revisado_por: "Maurício Yokoyama Issei"
+revisado_em: 2026-11-16
 youtube:
   titulo: "Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI"
   publicado_em: 2026-10-02
