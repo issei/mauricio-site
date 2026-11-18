@@ -14,7 +14,7 @@ fontes:
     titulo: Site oficial do AX
     sustenta: O AX suspende agentes ociosos por snapshot e os retoma rápido, sem cold start.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: "Google AX: O Como Escalar Milhões de Agentes de IA"

@@ -14,7 +14,7 @@ fontes:
     titulo: Repositório no GitHub
     sustenta: O AG-UI é um protocolo aberto, baseado em eventos, com integrações para vários frameworks de agentes.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: "Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI"

@@ -5,7 +5,7 @@ status: publicado
 temas:
   - ferramentas-de-ia
 resumo: "O vídeo resume as dicas de Gio Mangoni para configurar as ferramentas de IA além da caixa de texto: instruções pessoais, memória, conectores com outros aplicativos e projetos isolados. Mostra que a mesma lógica vale para Gemini, ChatGPT, Claude e Qwen, e termina com um desafio prático."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)
