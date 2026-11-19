@@ -18,6 +18,16 @@ function rotaDoArquivo(filename) {
   return m ? `/${m[1]}` : null;
 }
 
+/**
+ * Pré-busca (RF-VT-15): a transição só começa quando a página nova está pronta, então a espera da rede aparece como
+ * travada. `prefetch` baixa só o documento, ao passar o mouse ou tocar, e não executa nenhum script da página:
+ * a análise (GA4) e o banner de consentimento não rodam antes da pessoa ir de fato. `prerender` fica de fora por isso.
+ * O navegador que não conhece `speculationrules` ignora o bloco.
+ */
+export const REGRAS_DE_PREBUSCA = {
+  prefetch: [{ where: { href_matches: ['/videos', '/videos.html', '/videos/*', '/temas/*'] }, eagerness: 'moderate' }],
+};
+
 /** Troca o marcador do script pelas regras de familias.mjs, para que existam num lugar só. */
 export function montarScript(fonte) {
   const funcoes = [`var LISTA = ${LISTA};`, `var VIDEO = ${VIDEO};`, normalizarUrl.toString(), tipoDeTransicao.toString()].join('\n');
@@ -35,6 +45,7 @@ export function transicoes() {
       return [
         { tag: 'style', attrs: { id: 'vt' }, children: css, injectTo: 'head' },
         { tag: 'script', attrs: { id: 'vt' }, children: js, injectTo: 'head' },
+        { tag: 'script', attrs: { type: 'speculationrules' }, children: JSON.stringify(REGRAS_DE_PREBUSCA), injectTo: 'head' },
       ];
     },
   };

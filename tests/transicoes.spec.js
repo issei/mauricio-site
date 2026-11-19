@@ -283,3 +283,16 @@ testDoGate(test, 'videos')('depois da transição o primeiro Tab vai ao link "Pu
   await page.keyboard.press('Tab');
   await expect(page.locator('a.skip')).toBeFocused();
 });
+
+testDoGate(test, 'videos')('passar o mouse num cartão pré-busca só o documento do vídeo (RF-VT-15)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  const prebuscas = [];
+  page.on('request', (r) => { if ((r.headers()['sec-purpose'] || '').includes('prefetch')) prebuscas.push(new URL(r.url()).pathname); });
+  await page.goto('/videos.html');
+  const link = page.locator('.prateleira a.card-link').first();
+  const href = await link.getAttribute('href');
+  await link.hover();
+  await expect.poll(() => prebuscas.length, { timeout: 8000 }).toBeGreaterThan(0);
+  expect(prebuscas.every((p) => /^\/(videos|temas)\//.test(p))).toBe(true);
+  expect(prebuscas).toContain(href.split('#')[0]);
+});
