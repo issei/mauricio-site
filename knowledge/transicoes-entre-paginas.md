@@ -1,0 +1,9 @@
+---
+type: decision
+title: "Transições entre páginas: View Transitions entre documentos, injetadas no build só na família de vídeos"
+description: "Transição nativa entre documentos (@view-transition, pageswap/pagereveal, tipos avanco/retorno/lateral) sem biblioteca e sem SPA, hoje só em /videos, /videos/<slug> e /temas/<tema>, as únicas páginas com imagem e título correspondentes nas duas pontas. O plugin src/transicoes/plugin.mjs injeta <style id=vt> e <script id=vt> inline no build, então a fonte PT não muda e nenhum espelho /en/ fica velho. Nomes vt-capa e vt-titulo são dinâmicos (um vídeo aparece várias vezes em /videos): só o cartão ativado os recebe, e são removidos em finished e no pageshow persisted. O opt-in só vale sob prefers-reduced-motion: no-preference; sem suporte (Firefox), sem JS ou com movimento reduzido a navegação é a comum. Armadilhas: o microtask de um ouvinte anterior roda antes do ouvinte da página (testes leem os nomes num timer); a regra de direção existe uma vez em familias.mjs e é copiada (toString) para o script inline. Suporte em 2026-11-19: Chrome/Edge 126+, Safari 18.2+, Firefox não. Spec: docs/specs/transicoes/. Contrato: tests/transicoes.test.mjs e tests/transicoes.spec.js."
+generated: { by: agent/claude-code, at: "2026-11-19T18:00:00Z" }
+---
+
+# Related Concepts
+- [Camada editorial](camada-editorial.md): mesmo padrão de camada acrescentada sem tocar a fonte de cada página

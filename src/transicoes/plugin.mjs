@@ -8,7 +8,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-import { familiaDe } from './familias.mjs';
+import { familiaDe, LISTA, VIDEO, normalizarUrl, tipoDeTransicao } from './familias.mjs';
 
 const lerAqui = (nome) => readFileSync(fileURLToPath(new URL(nome, import.meta.url)), 'utf8');
 
@@ -18,9 +18,15 @@ function rotaDoArquivo(filename) {
   return m ? `/${m[1]}` : null;
 }
 
+/** Troca o marcador do script pelas regras de familias.mjs, para que existam num lugar só. */
+export function montarScript(fonte) {
+  const funcoes = [`var LISTA = ${LISTA};`, `var VIDEO = ${VIDEO};`, normalizarUrl.toString(), tipoDeTransicao.toString()].join('\n');
+  return fonte.replace('/*VT:FUNCOES*/', () => funcoes);
+}
+
 export function transicoes() {
   const css = lerAqui('transicoes.css');
-  const js = lerAqui('transicoes.js');
+  const js = montarScript(lerAqui('transicoes.js'));
   return {
     name: 'transicoes',
     transformIndexHtml(_html, ctx) {

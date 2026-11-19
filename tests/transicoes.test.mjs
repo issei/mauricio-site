@@ -52,3 +52,78 @@ test('o plugin não altera o HTML original: só acrescenta tags (RNF-VT-08)', ()
   assert.equal(typeof transicoes().transformIndexHtml, 'function');
   assert.equal(HTML.includes('id="vt"'), false);
 });
+
+// ── Folha de estilo (E3) ────────────────────────────────────────────────────
+import { readFileSync } from 'node:fs';
+const CSS = readFileSync(new URL('../src/transicoes/transicoes.css', import.meta.url), 'utf8');
+
+test('o opt-in @view-transition só existe sob prefers-reduced-motion: no-preference (RF-VT-03, RNF-VT-01)', () => {
+  const abre = CSS.indexOf('@media (prefers-reduced-motion: no-preference)');
+  const opt = CSS.indexOf('@view-transition');
+  assert.ok(abre >= 0 && opt > abre, 'opt-in dentro do bloco no-preference');
+  assert.equal((CSS.match(/@view-transition/g) ?? []).length, 1);
+  assert.match(CSS, /navigation:\s*auto/);
+  // o bloco no-preference é o último: nada de regra fora dele depois do comentário de cabeçalho
+  const fora = CSS.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media[\s\S]*$/, '').trim();
+  assert.equal(fora, '', 'nenhuma regra fora do bloco no-preference');
+});
+
+test('o cabeçalho tem o nome estático vt-cabecalho e não anima (RF-VT-04)', () => {
+  assert.match(CSS, /header\.sh\s*\{\s*view-transition-name:\s*vt-cabecalho;?\s*\}/);
+  assert.match(CSS, /::view-transition-group\(vt-cabecalho\)\s*\{\s*animation:\s*none/);
+});
+
+test('as @keyframes só declaram opacity e transform (RNF-VT-04, CA-16)', () => {
+  const quadros = [...CSS.matchAll(/@keyframes\s+[\w-]+\s*\{((?:[^{}]|\{[^{}]*\})*)\}/g)];
+  assert.ok(quadros.length >= 2);
+  for (const [, corpo] of quadros) {
+    const props = [...corpo.matchAll(/([\w-]+)\s*:/g)].map((m) => m[1]);
+    assert.ok(props.length > 0);
+    for (const p of props) assert.ok(['opacity', 'transform'].includes(p), `propriedade proibida na keyframe: ${p}`);
+  }
+});
+
+test('nomes e custom properties levam o prefixo vt-; nenhuma cor nova (RNF-VT-10, CA-20)', () => {
+  assert.doesNotMatch(CSS.replace(/\/\*[\s\S]*?\*\//g, ''), /#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i);
+  for (const [, n] of CSS.matchAll(/view-transition-name:\s*([\w-]+)/g)) assert.match(n, /^vt-/);
+  for (const [, n] of CSS.matchAll(/--([\w-]+):/g)) assert.match(n, /^vt-/);
+  for (const [, n] of CSS.matchAll(/@keyframes\s+([\w-]+)/g)) assert.match(n, /^vt-/);
+});
+
+// ── Direção e script (E4, E5) ───────────────────────────────────────────────
+import { tipoDeTransicao, LISTA, VIDEO } from '../src/transicoes/familias.mjs';
+import { montarScript } from '../src/transicoes/plugin.mjs';
+
+test('tipoDeTransicao: avanço, retorno e lateral só entre páginas da família (RF-VT-10)', () => {
+  assert.equal(tipoDeTransicao('/videos', '/videos/a'), 'avanco');
+  assert.equal(tipoDeTransicao('/temas/dados-e-decisao', '/videos/a'), 'avanco');
+  assert.equal(tipoDeTransicao('/videos/a', '/videos'), 'retorno');
+  assert.equal(tipoDeTransicao('/videos/a', '/temas/dados-e-decisao'), 'retorno');
+  assert.equal(tipoDeTransicao('/videos/a', '/videos/b'), 'lateral');
+  for (const [de, para] of [['/videos', '/temas/x'], ['/', '/videos'], ['/videos/a', '/'], [null, '/videos/a'], ['/videos', null], ['/en/videos/a', '/videos']]) {
+    assert.equal(tipoDeTransicao(de, para), null, `${de} → ${para}`);
+  }
+});
+
+test('LISTA e VIDEO não se confundem: /videos é lista, /videos/<slug> é vídeo', () => {
+  assert.ok(LISTA.test('/videos') && !VIDEO.test('/videos'));
+  assert.ok(VIDEO.test('/videos/a-b-1') && !LISTA.test('/videos/a-b-1'));
+});
+
+test('o script montado compila, não deixa marcador e repete as regras de familias.mjs (RF-VT-14)', () => {
+  const js = montarScript(readFileSync(new URL('../src/transicoes/transicoes.js', import.meta.url), 'utf8'));
+  assert.doesNotMatch(js, /VT:FUNCOES/);
+  assert.doesNotThrow(() => new Function(js));
+  assert.ok(js.includes(String(LISTA)) && js.includes('function tipoDeTransicao'));
+  assert.match(js, /'onpagereveal' in window/);
+  // o script é clássico e não faz requisição de rede própria (a miniatura é a do cartão já em cache)
+  assert.doesNotMatch(js, /\b(import|export)\b|fetch\(|XMLHttpRequest/);
+});
+
+test('o script só nomeia com vt-capa e vt-titulo, e só limpa o que nomeou (RF-VT-05, RF-VT-13)', () => {
+  const js = readFileSync(new URL('../src/transicoes/transicoes.js', import.meta.url), 'utf8');
+  const nomes = new Set([...js.matchAll(/nomear\([^,]+,\s*(NOME_\w+)\)/g)].map((m) => m[1]));
+  assert.deepEqual([...nomes].sort(), ['NOME_CAPA', 'NOME_TITULO']);
+  assert.match(js, /vt\.finished\.then\(limpar, limpar\)/);
+  assert.match(js, /e\.persisted/);
+});
