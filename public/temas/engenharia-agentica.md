@@ -58,6 +58,7 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [O Orquestrador Soberano: O Fim do Código e os Perigos do Vibe Coding](https://mauricio.issei.com.br/videos/o-orquestrador-soberano-o-fim-do-codigo-e-os-perigos-do) — 18 de maio de 2026
 - [O Novo Paradigma da IA: De Chatbots a Agentes Autônomos (Como funciona?)](https://mauricio.issei.com.br/videos/o-novo-paradigma-da-ia-de-chatbots-a-agentes-autonomos-como) — 18 de maio de 2026
 - [05 - Orchestration Paradigm](https://mauricio.issei.com.br/videos/05-orchestration-paradigm) — 18 de maio de 2026
+- [Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch](https://mauricio.issei.com.br/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon) — 5 de maio de 2026
 - [O Futuro do E-commerce: A Nova Arquitetura do Comércio com Agentes de IA](https://mauricio.issei.com.br/videos/o-futuro-do-e-commerce-a-nova-arquitetura-do-comercio-com) — 13 de abril de 2026
 - [Descubra a anatomia de uma IA Moderna baseada em Skills e Playbooks.](https://mauricio.issei.com.br/videos/descubra-a-anatomia-de-uma-ia-moderna-baseada-em-skills-e) — 19 de março de 2026
 - [DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total](https://mauricio.issei.com.br/videos/devops-salesforce-integrando-devin-ai-flosum-e-github-para) — 6 de março de 2026
