@@ -205,3 +205,11 @@ When working in this codebase, you must follow the memory conventions:
    - Did I add/update concepts? -> Ensure `knowledge/log.md` and parent `index.md` are updated.
    - Did I validate? -> Ensure 0 errors, 0 broken links (`okf validate knowledge --strict`).
 <!-- END OKF AGENT MEMORY -->
+
+<!-- graphicle:start (added by graphicle setup; graphicle disconnect removes it) -->
+## Graphicle
+When you do not yet know where the code for a task is, who calls it or why it was written that way, ask the `graphicle` MCP server before searching files by hand: `query_graph` or `recall_project` with the question, then `get_node` and `get_neighbors` for one symbol; answers cite file and lines.
+Without the server, run `graphicle context "<question>"` in a terminal.
+<!-- graphicle:end -->
+
+> Graphicle é local: o servidor MCP `graphicle` e o comando `graphicle context` só existem na máquina do Issei. Se nenhum dos dois existir nesta máquina (por exemplo, numa sessão na nuvem), ignore a seção acima e use grep/Read.

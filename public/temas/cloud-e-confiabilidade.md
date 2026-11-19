@@ -14,6 +14,7 @@ AWS, infraestrutura como código, serverless e a engenharia de confiabilidade qu
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!](https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala) — 27 de setembro de 2026
 - [Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account](https://mauricio.issei.com.br/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em) — 23 de setembro de 2026
+- [Padrão Saga e Transactional Outbox em Microsserviços](https://mauricio.issei.com.br/videos/padrao-saga-e-transactional-outbox-em-microsservicos) — 11 de setembro de 2026
 - [Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!](https://mauricio.issei.com.br/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation) — 3 de julho de 2026
 - [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch](https://mauricio.issei.com.br/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon) — 5 de maio de 2026
@@ -30,6 +31,7 @@ AWS, infraestrutura como código, serverless e a engenharia de confiabilidade qu
 - [AWS CloudFormation](https://mauricio.issei.com.br/videos/aws-cloudformation) — 21 de novembro de 2025
 - [AWS GLUE: Otimize seus Jobs Spark e Reduza Custos (Guia Prático para Iniciantes)](https://mauricio.issei.com.br/videos/aws-glue-otimize-seus-jobs-spark-e-reduza-custos-guia) — 18 de novembro de 2025
 - [AWS Glue & Salesforce  Guia de Dados](https://mauricio.issei.com.br/videos/aws-glue-salesforce-guia-de-dados) — 12 de novembro de 2025
+- [VERTEX AI AGENTES DE AÇÃO: Construindo Agentes de IA que Realmente Agem (ReAct e OpenAPI)](https://mauricio.issei.com.br/videos/vertex-ai-agentes-de-acao-construindo-agentes-de-ia-que) — 12 de novembro de 2025
 - [AWS Transit Gateway](https://mauricio.issei.com.br/videos/aws-transit-gateway) — 4 de novembro de 2025
 - [Datadog  Do Caos à Clareza](https://mauricio.issei.com.br/videos/datadog-do-caos-a-clareza) — 31 de outubro de 2025
 - [A Confiabilidade do Sistema](https://mauricio.issei.com.br/videos/a-confiabilidade-do-sistema) — 31 de outubro de 2025
