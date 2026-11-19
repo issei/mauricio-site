@@ -20,10 +20,10 @@ Recognized for creating collaborative environments, delivering robust solutions 
 ## Digital Presence
 
 - **Email:** mauricio@issei.com.br
-- **LinkedIn:** [linkedin. with/in/mauricioisei](https://www.linkedin.com/in/mauricioissei/)
-- **GitHub:** [Github. with/isei](https://github.com/issei)
+- **LinkedIn:** [linkedin.com/in/mauricioisei](https://www.linkedin.com/in/mauricioissei/)
+- **GitHub:** [github.com/isei](https://github.com/issei)
 - **YouTube:** [youtube.com/@MauricioIssei](https://www.youtube.com/@MauricioIssei)
-- **Instagram:** [Instagram. with/yokoyamaissei](https://www.instagram.com/yokoyamaissei/)
+- **Instagram:** [instagram.com/yokoyamaissei](https://www.instagram.com/yokoyamaissei/)
 
 ---
 
@@ -106,15 +106,6 @@ Leadership of the systems development team for insurance clients. Responsible fo
 Application development web and console in **Java (J2EE and J2SE)**, using ASPER framework and MVC architecture. UML modeling-based applications with code generation via **MDA (Model-Driven Architecture)** by the Celero tool.
 
 **Key competences:** Java (J2EE/J2SE) 
-
----
-
-### Java Development Analyst  **Telefônica**
-**April 2005 – September 2008 (3 years and 6 months)** | São Paulo, Brasil
-
-Development of parts storage management system and network supply system.
-
-**Key competences:** Java 
 
 ---
 

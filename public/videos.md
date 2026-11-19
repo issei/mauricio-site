@@ -4,7 +4,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 
 ## Em destaque
 
-- [Kant: Fundamentação da Metafísica dos Costumes](https://mauricio.issei.com.br/videos/kant-fundamentacao-da-metafisica-dos-costumes) — 14 de novembro de 2026
+- [A Arte de Começar Sem Estar Pronto | Como a Ação Gera Confiança](https://mauricio.issei.com.br/videos/a-arte-de-comecar-sem-estar-pronto-como-a-acao-gera) — 19 de novembro de 2026
 
 ## Engenharia agêntica
 
@@ -23,6 +23,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 
 ## Aprendizagem e mente
 
+- [A Arte de Começar Sem Estar Pronto | Como a Ação Gera Confiança](https://mauricio.issei.com.br/videos/a-arte-de-comecar-sem-estar-pronto-como-a-acao-gera) — 19 de novembro de 2026
 - [Kant: Fundamentação da Metafísica dos Costumes](https://mauricio.issei.com.br/videos/kant-fundamentacao-da-metafisica-dos-costumes) — 14 de novembro de 2026
 - [A ARTE DO ESFORÇO: Filosofia e Superação Intelectual](https://mauricio.issei.com.br/videos/a-arte-do-esforco-filosofia-e-superacao-intelectual) — 13 de novembro de 2026
 - [Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada](https://mauricio.issei.com.br/videos/aprendizagem-real-o-ciclo-da-aprendizagem-autorregulada) — 8 de outubro de 2026
@@ -34,7 +35,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Taxonomia de Bloom  Como Dominar Qualquer Assunto](https://mauricio.issei.com.br/videos/taxonomia-de-bloom-como-dominar-qualquer-assunto) — 3 de setembro de 2026
 - [A ILUSÃO DAS IDEIAS: O que a Ciência Realmente Diz Sobre Criatividade e Brainstorming](https://mauricio.issei.com.br/videos/a-ilusao-das-ideias-o-que-a-ciencia-realmente-diz-sobre) — 1 de setembro de 2026
 - [IA na Educação: Por que dar acesso aos alunos pode ser um erro? (Capacidade antes do Acesso)](https://mauricio.issei.com.br/videos/ia-na-educacao-por-que-dar-acesso-aos-alunos-pode-ser-um) — 29 de agosto de 2026
-- [A Postura Estratégica: Domine sua Rotina e seus Relacionamentos](https://mauricio.issei.com.br/videos/a-postura-estrategica-domine-sua-rotina-e-seus) — 29 de junho de 2026
 
 ## Cloud e confiabilidade
 
