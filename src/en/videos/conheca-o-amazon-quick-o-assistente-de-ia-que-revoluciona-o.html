@@ -130,9 +130,9 @@ try {
 <!-- SITE-HEADER:START -->
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/en/">Maurício Yokoyama Issei</a>
-<a class="sh-busca" href="/busca">Search</a>
+<a class="sh-busca" href="/busca">Buscar</a>
 <button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
-<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Home</a></li><li><a href="/en/curriculo.html">Career</a></li><li><a href="/en/catalogo.html">Content</a></li><li><a href="/videos.html" aria-current="true">Videos</a></li></ul></nav>
+<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Início</a></li><li><a href="/en/curriculo.html">Carreira</a></li><li><a href="/en/catalogo.html">Conteúdos</a></li><li><a href="/videos.html" aria-current="true">Vídeos</a></li></ul></nav>
 </div></header>
 <script>(function(){var h=document.querySelector(".sh");if(!h)return;var q=h.querySelector(".sh-busca");if(q){var qb=document.createElement("button");qb.type="button";qb.className="sh-busca";qb.textContent=q.textContent;qb.setAttribute("aria-haspopup","dialog");q.replaceWith(qb);qb.addEventListener("click",function(){import("/js/busca.js").then(function(m){m.abrir(qb);});});document.addEventListener("keydown",function(e){var t=e.target;if(e.key!=="/"||e.ctrlKey||e.metaKey||e.altKey)return;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;e.preventDefault();qb.click();});}var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->
@@ -235,13 +235,13 @@ try {
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/LusGPXICX5w/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>6:56</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/en/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos">PaperBanana: AI for Analysis and Review of Scientific Articles</a></h3></div>
 </article></li>
+<li data-temas="engenharia-agentica ferramentas-de-ia" data-artigo="1" data-data="2025-12-15" data-vistos="34"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/qaf8cRSXqyU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>6:48</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/en/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e">MCP DO NOTION: Architecture Briefing for Automation and AI Agents</a></h3></div>
+</article></li>
 <li data-temas="ferramentas-de-ia" data-artigo="0" data-data="2025-12-15" data-vistos="22"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/uPNbCmaIABk/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>5:54</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/videos/dando-voz-a-tecnologia-a-revolucao-do-text-to-speech-com">GIVING VOICE TO TECHNOLOGY: The Text-to-Speech Revolution with Artificial Intelligence</a></h3></div>
-</article></li>
-<li data-temas="ferramentas-de-ia" data-artigo="1" data-data="2025-12-05" data-vistos="111"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/aS3JqBvf--Q/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>7:29</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/en/videos/seu-novo-assistente-de-ia-automacao-sem-codigo-com-google">HIS NEW ASSISTANT: Automation No Code with Google Workspace Studio and Gemini</a></h3></div>
 </article></li>
 </ul></div></section>
 </main>
