@@ -397,8 +397,8 @@ testDoGate(test, 'index', 'curriculo')('Voltar para o início: nenhum nome sobra
   await page.goBack();
   await page.waitForURL((u) => u.pathname === '/');
   await expect(page.locator('#pf-nome')).toBeVisible();
-  const restos = await page.evaluate(() => [...document.querySelectorAll('[style*="view-transition-name"]')].map((e) => e.style.viewTransitionName));
-  expect(restos).toEqual([]);
+  // os nomes saem em `finished`, depois do último quadro da transição: espera, não lê na hora
+  await expect.poll(() => page.evaluate(() => [...document.querySelectorAll('[style*="view-transition-name"]')].map((e) => e.style.viewTransitionName))).toEqual([]);
 });
 
 testDoGate(test, 'index', 'curriculo', 'catalogo')('a pré-busca do site baixa só o documento das três páginas (CA-34)', async ({ page, browserName }) => {
