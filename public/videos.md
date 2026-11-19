@@ -39,12 +39,12 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 ## Cloud e confiabilidade
 
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026
+- [A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho](https://mauricio.issei.com.br/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google) — 10 de outubro de 2026
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!](https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala) — 27 de setembro de 2026
 - [Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account](https://mauricio.issei.com.br/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em) — 23 de setembro de 2026
 - [Padrão Saga e Transactional Outbox em Microsserviços](https://mauricio.issei.com.br/videos/padrao-saga-e-transactional-outbox-em-microsservicos) — 11 de setembro de 2026
 - [Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!](https://mauricio.issei.com.br/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation) — 3 de julho de 2026
-- [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch](https://mauricio.issei.com.br/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon) — 5 de maio de 2026
 - [Análise  Lambda Web Adapter](https://mauricio.issei.com.br/videos/analise-lambda-web-adapter) — 26 de abril de 2026
 - [Por Que Sua IA Falha? (O Custo Oculto do "Crash Silencioso")](https://mauricio.issei.com.br/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso) — 11 de abril de 2026
@@ -62,9 +62,9 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Por que Go é a linguagem ideal para a era da IA? (Visão do Google)](https://mauricio.issei.com.br/videos/por-que-go-e-a-linguagem-ideal-para-a-era-da-ia-visao-do) — 18 de agosto de 2026
 - [Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos](https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em) — 7 de agosto de 2026
 - [O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀](https://mauricio.issei.com.br/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador) — 4 de agosto de 2026
+- [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção](https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de) — 19 de junho de 2026
 - [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
-- [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026
 
 ## Gestão e estratégia
 
@@ -73,13 +73,13 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
 - [Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH](https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em) — 23 de setembro de 2026
 - [A Arquitetura da Mente: Filosofia, Metacognição e Liderança Estratégica](https://mauricio.issei.com.br/videos/a-arquitetura-da-mente-filosofia-metacognicao-e-lideranca) — 23 de setembro de 2026
+- [A ILUSÃO DAS IDEIAS: O que a Ciência Realmente Diz Sobre Criatividade e Brainstorming](https://mauricio.issei.com.br/videos/a-ilusao-das-ideias-o-que-a-ciencia-realmente-diz-sobre) — 1 de setembro de 2026
 - [O Tempo da Oportunidade: Por que o Momento é Tudo](https://mauricio.issei.com.br/videos/o-tempo-da-oportunidade-por-que-o-momento-e-tudo) — 13 de agosto de 2026
 - [O Paradoxo do Artífice: Por que a Maestria Técnica às vezes fica Invisível? (E como resolver)](https://mauricio.issei.com.br/videos/o-paradoxo-do-artifice-por-que-a-maestria-tecnica-as-vezes) — 7 de agosto de 2026
 - [Blue Lock: A Filosofia do Sucesso e Como Aplicá-la na Sua Carreira](https://mauricio.issei.com.br/videos/blue-lock-a-filosofia-do-sucesso-e-como-aplica-la-na-sua) — 17 de julho de 2026
 - [A Alquimia do Poder](https://mauricio.issei.com.br/videos/a-alquimia-do-poder) — 10 de junho de 2026
 - [Colapso do Preço na Era da IA](https://mauricio.issei.com.br/videos/colapso-do-preco-na-era-da-ia) — 21 de maio de 2026
 - [08 - Trabalho na Era da IA](https://mauricio.issei.com.br/videos/08-trabalho-na-era-da-ia) — 18 de maio de 2026
-- [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026
 
 ## Dados e decisão
 
@@ -122,6 +122,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [A Gramática da Narrativa Visual](https://mauricio.issei.com.br/videos/a-gramatica-da-narrativa-visual) — 29 de janeiro de 2026
 - [O Segredo Oculto dos QR Codes: De Pixels a Obras de Arte](https://mauricio.issei.com.br/videos/o-segredo-oculto-dos-qr-codes-de-pixels-a-obras-de-arte) — 9 de janeiro de 2026
 - [O Segredo Filosófico da série Dark: Do Hermetismo ao Transumanismo](https://mauricio.issei.com.br/videos/o-segredo-filosofico-da-serie-dark-do-hermetismo-ao) — 7 de janeiro de 2026
+- [WebRTC  A Magia da Comunicação em Tempo Real](https://mauricio.issei.com.br/videos/webrtc-a-magia-da-comunicacao-em-tempo-real) — 6 de janeiro de 2026
 - [IA em PT BR  A Evolução](https://mauricio.issei.com.br/videos/ia-em-pt-br-a-evolucao) — 29 de outubro de 2025
 - [Computação Quântica  A Espada de Dois Gumes](https://mauricio.issei.com.br/videos/computacao-quantica-a-espada-de-dois-gumes) — 28 de outubro de 2025
 
