@@ -11,15 +11,15 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
 - [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026
+- [Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?](https://mauricio.issei.com.br/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de) — 17 de outubro de 2026
 - [O que faz um Forward-Deployed Engineer (FDE)?](https://mauricio.issei.com.br/videos/o-que-faz-um-forward-deployed-engineer-fde) — 13 de outubro de 2026
+- [Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web](https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado) — 10 de outubro de 2026
 - [A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho](https://mauricio.issei.com.br/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google) — 10 de outubro de 2026
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!](https://mauricio.issei.com.br/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra) — 7 de outubro de 2026
 - [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
 - [Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI](https://mauricio.issei.com.br/videos/como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras) — 2 de outubro de 2026
-- [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
-- [Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!](https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala) — 27 de setembro de 2026
 
 ## Aprendizagem e mente
 
@@ -62,9 +62,9 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
 - [Por que Go é a linguagem ideal para a era da IA? (Visão do Google)](https://mauricio.issei.com.br/videos/por-que-go-e-a-linguagem-ideal-para-a-era-da-ia-visao-do) — 18 de agosto de 2026
 - [Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos](https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em) — 7 de agosto de 2026
+- [O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀](https://mauricio.issei.com.br/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador) — 4 de agosto de 2026
 - [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
 - [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026
-- [Prompts e Notebooks](https://mauricio.issei.com.br/videos/prompts-e-notebooks) — 4 de maio de 2026
 
 ## Gestão e estratégia
 

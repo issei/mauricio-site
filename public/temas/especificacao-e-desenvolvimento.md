@@ -22,6 +22,7 @@ Desenvolvimento guiado por especificação, padrões de arquitetura de software 
 - [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
 - [Por que Go é a linguagem ideal para a era da IA? (Visão do Google)](https://mauricio.issei.com.br/videos/por-que-go-e-a-linguagem-ideal-para-a-era-da-ia-visao-do) — 18 de agosto de 2026
 - [Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos](https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em) — 7 de agosto de 2026
+- [O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀](https://mauricio.issei.com.br/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador) — 4 de agosto de 2026
 - [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
 - [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026
 - [Prompts e Notebooks](https://mauricio.issei.com.br/videos/prompts-e-notebooks) — 4 de maio de 2026

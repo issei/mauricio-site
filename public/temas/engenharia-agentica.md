@@ -25,7 +25,9 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
 - [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026
+- [Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?](https://mauricio.issei.com.br/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de) — 17 de outubro de 2026
 - [O que faz um Forward-Deployed Engineer (FDE)?](https://mauricio.issei.com.br/videos/o-que-faz-um-forward-deployed-engineer-fde) — 13 de outubro de 2026
+- [Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web](https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado) — 10 de outubro de 2026
 - [A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho](https://mauricio.issei.com.br/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google) — 10 de outubro de 2026
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
