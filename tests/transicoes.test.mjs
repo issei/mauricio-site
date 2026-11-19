@@ -52,3 +52,40 @@ test('o plugin não altera o HTML original: só acrescenta tags (RNF-VT-08)', ()
   assert.equal(typeof transicoes().transformIndexHtml, 'function');
   assert.equal(HTML.includes('id="vt"'), false);
 });
+
+// ── Folha de estilo (E3) ────────────────────────────────────────────────────
+import { readFileSync } from 'node:fs';
+const CSS = readFileSync(new URL('../src/transicoes/transicoes.css', import.meta.url), 'utf8');
+
+test('o opt-in @view-transition só existe sob prefers-reduced-motion: no-preference (RF-VT-03, RNF-VT-01)', () => {
+  const abre = CSS.indexOf('@media (prefers-reduced-motion: no-preference)');
+  const opt = CSS.indexOf('@view-transition');
+  assert.ok(abre >= 0 && opt > abre, 'opt-in dentro do bloco no-preference');
+  assert.equal((CSS.match(/@view-transition/g) ?? []).length, 1);
+  assert.match(CSS, /navigation:\s*auto/);
+  // o bloco no-preference é o último: nada de regra fora dele depois do comentário de cabeçalho
+  const fora = CSS.replace(/\/\*[\s\S]*?\*\//g, '').replace(/@media[\s\S]*$/, '').trim();
+  assert.equal(fora, '', 'nenhuma regra fora do bloco no-preference');
+});
+
+test('o cabeçalho tem o nome estático vt-cabecalho e não anima (RF-VT-04)', () => {
+  assert.match(CSS, /header\.sh\s*\{\s*view-transition-name:\s*vt-cabecalho;?\s*\}/);
+  assert.match(CSS, /::view-transition-group\(vt-cabecalho\)\s*\{\s*animation:\s*none/);
+});
+
+test('as @keyframes só declaram opacity e transform (RNF-VT-04, CA-16)', () => {
+  const quadros = [...CSS.matchAll(/@keyframes\s+[\w-]+\s*\{((?:[^{}]|\{[^{}]*\})*)\}/g)];
+  assert.ok(quadros.length >= 2);
+  for (const [, corpo] of quadros) {
+    const props = [...corpo.matchAll(/([\w-]+)\s*:/g)].map((m) => m[1]);
+    assert.ok(props.length > 0);
+    for (const p of props) assert.ok(['opacity', 'transform'].includes(p), `propriedade proibida na keyframe: ${p}`);
+  }
+});
+
+test('nomes e custom properties levam o prefixo vt-; nenhuma cor nova (RNF-VT-10, CA-20)', () => {
+  assert.doesNotMatch(CSS.replace(/\/\*[\s\S]*?\*\//g, ''), /#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i);
+  for (const [, n] of CSS.matchAll(/view-transition-name:\s*([\w-]+)/g)) assert.match(n, /^vt-/);
+  for (const [, n] of CSS.matchAll(/--([\w-]+):/g)) assert.match(n, /^vt-/);
+  for (const [, n] of CSS.matchAll(/@keyframes\s+([\w-]+)/g)) assert.match(n, /^vt-/);
+});

@@ -1,5 +1,53 @@
 /*
  * Transições entre páginas — folha injetada no <head> das páginas da família (plugin `transicoes`).
- * Spec: docs/specs/transicoes/SDD-transicoes-entre-paginas.md.
- * E2: sem regras. O opt-in `@view-transition` entra na E3, sob `prefers-reduced-motion: no-preference`.
+ * Spec: docs/specs/transicoes/SDD-transicoes-entre-paginas.md (RF-VT-03, RF-VT-04, RNF-VT-01, RNF-VT-04).
+ *
+ * O movimento só existe no ramo `no-preference`: com `prefers-reduced-motion: reduce` a navegação é a comum.
+ * Só `opacity` e `transform` animam. Nenhuma cor: o prefixo `vt-` marca tudo o que é desta camada.
  */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  :root {
+    --vt-duracao: 0.3s;
+    --vt-curva: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --vt-deslocamento: 14px;
+  }
+
+  /* O cabeçalho é o mesmo nas duas páginas: fica parado, sem esmaecer nem deslizar. */
+  header.sh {
+    view-transition-name: vt-cabecalho;
+  }
+  ::view-transition-group(vt-cabecalho) {
+    animation: none;
+  }
+  ::view-transition-old(vt-cabecalho) {
+    display: none;
+  }
+  ::view-transition-new(vt-cabecalho) {
+    animation: none;
+  }
+
+  /* Conteúdo: o antigo sai, o novo entra. A direção por tipo entra na etapa E5. */
+  ::view-transition-old(root) {
+    animation: vt-sai var(--vt-duracao) var(--vt-curva) both;
+  }
+  ::view-transition-new(root) {
+    animation: vt-entra var(--vt-duracao) var(--vt-curva) both;
+  }
+
+  @keyframes vt-sai {
+    to {
+      opacity: 0;
+      transform: translateY(calc(var(--vt-deslocamento) * -1));
+    }
+  }
+  @keyframes vt-entra {
+    from {
+      opacity: 0;
+      transform: translateY(var(--vt-deslocamento));
+    }
+  }
+}
