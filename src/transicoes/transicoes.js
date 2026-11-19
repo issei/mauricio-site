@@ -1,6 +1,7 @@
 /*
  * Transições entre páginas — script clássico injetado no <head> das páginas da família.
- * Spec: docs/specs/transicoes/SDD-transicoes-entre-paginas.md (RF-VT-05 a RF-VT-14).
+ * Spec: docs/specs/transicoes/SDD-transicoes-entre-paginas.md (RF-VT-05 a RF-VT-14) e
+ * docs/specs/transicoes/SDD-transicoes-site.md (RF-VT-17 a RF-VT-23, família `site`).
  *
  * Clássico, não módulo: o ouvinte de `pagereveal` precisa existir antes do primeiro quadro.
  * O plugin troca o marcador abaixo pelas funções puras de familias.mjs (LISTA, VIDEO, normalizarUrl,
@@ -15,6 +16,8 @@
   var NOME_CAPA = 'vt-capa';
   var NOME_TITULO = 'vt-titulo';
   var CHAVE = 'vt-de'; // RF-VT-11: de onde a pessoa saiu, para quem não tem navigation.activation.
+  var NOME_NOME = 'vt-nome'; // família site: nome e papel do hero, que existem iguais na home e na carreira.
+  var NOME_PAPEL = 'vt-papel';
   var CARTAO = 'a.card-link, .hero a.botao-primario';
   var ativado = null; // o último link clicado (RF-VT-06); o clique por teclado (Enter) também gera `click`.
   var nomeados = [];
@@ -34,6 +37,22 @@
   }
   function capaDoCartao(cartao) { return cartao.querySelector('.card-thumb, .hero-img'); }
   function tituloDoCartao(cartao) { return cartao.querySelector('h3, h2'); }
+  // Família site (RF-VT-19): início e carreira trazem o mesmo bloco `.pf-hero`; o par existe nas duas pontas.
+  function heroNomeavel() {
+    var nome = document.querySelector('#pf-nome');
+    var papel = document.querySelector('.pf-hero-title');
+    return nome && papel && visivel(nome) && visivel(papel) ? [nome, papel] : null;
+  }
+  function nomearHero() {
+    var hero = heroNomeavel();
+    if (!hero) return;
+    nomear(hero[0], NOME_NOME);
+    nomear(hero[1], NOME_PAPEL);
+  }
+  function inicioECarreira(a, b) {
+    var par = { '/': 1, '/index': 1, '/curriculo': 2 };
+    return par[a] && par[b] && par[a] !== par[b];
+  }
   function seguir(vt) {
     vt.ready.catch(function () {}); // transição pulada ou interrompida: a navegação segue sem ela (RF-VT-13).
     vt.finished.then(limpar, limpar);
@@ -62,7 +81,14 @@
     var para = e.activation && e.activation.entry ? normalizarUrl(e.activation.entry.url) : linkAtivado;
     var tipo = tipoDeTransicao(de, para);
     if (tipo && vt.types) vt.types.add(tipo);
-    if (tipo === 'retorno') {
+    var destino = e.activation && e.activation.entry ? e.activation.entry.url : ativado && ativado.href;
+    var fragmento = '';
+    try { fragmento = new URL(destino, location.href).hash; } catch (_) { /* sem destino legível */ }
+    // Link com fragmento (#tema-x, #p-…): o navegador só rola até o alvo depois do primeiro quadro, então o alvo
+    // nunca está na tela a tempo de ter par (SDD-transicoes-site, R9). Sem nome, só a direção.
+    if (SITE.test(de) && SITE.test(para)) {
+      if (!fragmento && inicioECarreira(de, para)) nomearHero(); // RF-VT-19
+    } else if (tipo === 'retorno') {
       var yt = document.querySelector('.yt[data-id]');
       if (yt && visivel(yt)) { nomear(yt, NOME_CAPA); nomear(document.querySelector('h1'), NOME_TITULO); }
     } else if ((tipo === 'avanco' || tipo === 'lateral') && linkAtivado === para) {
@@ -84,7 +110,9 @@
     else { try { de = sessionStorage.getItem(CHAVE); } catch (_) { /* sem registro: só o esmaecimento */ } }
     var tipo = tipoDeTransicao(de, para);
     if (tipo && vt.types) vt.types.add(tipo);
-    if (VIDEO.test(para)) {
+    if (SITE.test(para) && SITE.test(de || '')) {
+      if (!location.hash && inicioECarreira(de, para)) nomearHero();
+    } else if (VIDEO.test(para)) {
       var yt = document.querySelector('.yt[data-id]');
       if (yt) {
         fundo(yt);

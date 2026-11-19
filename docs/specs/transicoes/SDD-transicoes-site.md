@@ -18,7 +18,7 @@ direção do movimento (RF-VT-10). Sem suporte, sem JavaScript ou com movimento 
 | De → Para | O que existe nas duas pontas | Decisão |
 |---|---|---|
 | Início ↔ Carreira | O mesmo bloco `.pf-hero`, gerado por `scripts/gen-portfolio.mjs` (blocos `PF:*`): o nome (`h1#pf-nome`) e o papel (`.pf-hero-title`) têm o mesmo texto e a mesma posição. | **Compartilhar** nome e papel. O resto da página entra. |
-| Início → Conteúdos, pelo link de um tema | O link do tema na lista `.pf-temas` (`catalogo.html#tema-x`) e o `h2` `#tema-x-title` da seção de destino. | **Compartilhar** o nome do tema, se o `h2` estiver visível ao revelar. |
+| Início → Conteúdos, pelo link de um tema | O link do tema na lista `.pf-temas` (`catalogo.html#tema-x`) e o `h2` `#tema-x-title` da seção de destino. | **Par existe, mas não fecha:** o navegador só rola até o fragmento depois do primeiro quadro (medido no Chromium: `scrollY` 0 e `h2` a 911 px de uma tela de 720 px). Só a entrada direcional (R9). |
 | Início → Conteúdos, pelo botão ou pelo cabeçalho | O `h1` do catálogo ("Conteúdos") não tem par na home. | **Sem elemento compartilhado.** Só a entrada direcional. |
 | Carreira ↔ Conteúdos | Nenhum elemento em comum além do cabeçalho. | Só a entrada direcional. |
 | Início → Carreira, por link com fragmento (`#p-…`) | O destino rola até o projeto; o hero fica fora da tela. | Sem elemento compartilhado. |
@@ -35,9 +35,8 @@ home não casam, e esta SDD não força o casamento.
   é `avanco`; ir para um menor é `retorno`. Fora da família `site`, a regra de RF-VT-10 não muda.
 - **RF-VT-19** — Início ↔ Carreira: o `h1#pf-nome` recebe o nome `vt-nome` e o `.pf-hero-title` recebe `vt-papel`,
   nas duas pontas, só quando o elemento está visível nas duas (sem fragmento na URL de destino e visível ao sair).
-- **RF-VT-20** — Início → Conteúdos por link de tema: o link ativado (`.pf-temas a`) recebe `vt-titulo` ao sair.
-  Ao entrar, o `h2` cujo `id` é o fragmento da URL mais `-title` recebe `vt-titulo`, só se estiver visível
-  no primeiro quadro. Se não estiver, nenhum nome vai para o destino e a entrada é só direcional.
+- **RF-VT-20** — Link com fragmento (`#tema-x` no catálogo, `#p-…` na carreira): nenhum nome dinâmico, nem na saída
+  nem na entrada. Só a entrada direcional. Um nome só na saída esmaeceria sozinho, sem par.
 - **RF-VT-21** — Nenhum nome existe em mais de um elemento por página, e todo nome dinâmico sai em `finished`
   e em `pageshow` com `persisted` (RF-VT-13). `vt-cabecalho` continua estático.
 - **RF-VT-22** — Pré-busca (`prefetch`, nunca `prerender`) das páginas da família `site` ao passar o mouse ou
@@ -62,7 +61,7 @@ usa o prefixo `vt-` e não escreve hexadecimal.
 | **CA-26** | Início → Carreira pelo botão "Ver carreira": `vt-nome` e `vt-papel` existem uma vez em cada ponta, tipo `avanco` | Chromium |
 | **CA-27** | Carreira → Início pelo cabeçalho: os mesmos dois nomes, tipo `retorno` | Chromium |
 | **CA-28** | Início → Conteúdos pelo botão: nenhum nome dinâmico, tipo `avanco` | Chromium |
-| **CA-29** | Início → Conteúdos por um tema: `vt-titulo` no link na saída e no `h2` do tema na entrada, ou em nenhum se o `h2` não estiver visível | Chromium |
+| **CA-29** | Início → Conteúdos por um tema: nenhum nome dinâmico, tipo `avanco` | Chromium |
 | **CA-30** | Início → Carreira por link com fragmento (`#p-…`): nenhum nome dinâmico | Chromium |
 | **CA-31** | Com `prefers-reduced-motion: reduce`: nenhuma transição (`viewTransition` nulo) nas três páginas | Chromium |
 | **CA-32** | Voltar pelo histórico (bfcache): nenhum `view-transition-name` sobra no elemento | Chromium |
@@ -76,15 +75,15 @@ usa o prefixo `vt-` e não escreve hexadecimal.
 |---|---|---|
 | F1 | Esta SDD | revisão contra `docs/specs/STYLE_GUIDE.md` |
 | F2 | Família `site`, direção por posição, plugin e pré-busca por família | CA-23, CA-24, CA-25, CA-34, CA-35 |
-| F3 | Nomes compartilhados (nome e papel; tema) e limpeza | CA-26 a CA-33 |
+| F3 | Nomes compartilhados (nome e papel) e limpeza | CA-26 a CA-33 |
 | F4 | `A11Y-DECISIONS.md`, `knowledge/` e validação da Issei no aparelho | `okf validate knowledge --strict` |
 
 ## 7. Riscos
 
-- **R9 — rolagem até o fragmento.** Se o navegador rolar até `#tema-x` depois do primeiro quadro, o `h2` fica fora
-  da tela no momento do nome. A regra RF-VT-20 já cobre: sem `h2` visível, não há nome. O teste CA-29 mede
-  qual dos dois casos acontece no Chromium; se for sempre o segundo, a transição do tema vira só entrada direcional
-  e esta SDD é revisada, sem código de contorno.
+- **R9 — rolagem até o fragmento.** O navegador rola até `#tema-x` depois do primeiro quadro da página nova.
+  No Chromium, no `pagereveal`, `scrollY` vale 0 e o `h2` do primeiro tema está fora da tela. Então o par
+  link → `h2` não fecha, e o código não tenta contornar: o fragmento só tem a entrada direcional.
+
 - **R10 — hero parecido, mas não igual.** O texto de apoio (`.pf-hero-lead`) da home tem uma frase a mais que o do
   currículo. Por isso só nome e papel são compartilhados; o parágrafo entra com o conteúdo.
 - **R11 — bloco gerado.** O hero é gerado por `scripts/gen-portfolio.mjs`. Nada aqui edita o bloco `PF:*`: os nomes
@@ -95,6 +94,8 @@ usa o prefixo `vt-` e não escreve hexadecimal.
 ## 8. Decisões
 
 - **D3** (Issei, 2026-11-19): estender as transições à página inicial, ao currículo e ao catálogo.
+- **D5** (medição, 2026-11-19): o tema da home não vira título compartilhado no catálogo (R9). Se um dia o catálogo
+  rolar antes do primeiro quadro, esta decisão se reabre.
 - **D4** (padrão adotado, a Issei pode mudar): a direção segue a ordem do cabeçalho; só o que casa de verdade é
-  compartilhado (nome e papel; tema). O botão "Explorar os conteúdos" e o cabeçalho levam ao catálogo só com a
-  entrada direcional.
+  compartilhado (nome e papel). O botão "Explorar os conteúdos", o cabeçalho e os temas levam ao catálogo só
+  com a entrada direcional.

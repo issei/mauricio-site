@@ -12,15 +12,21 @@ const HTML = '<!doctype html><html><head><title>x</title></head><body><p>conteú
 const injetar = (filename) => transicoes().transformIndexHtml(HTML, { filename });
 
 test('a família "videos" cobre o índice, as fichas e os assuntos (RF-VT-01)', () => {
-  assert.deepEqual(FAMILIAS.map((f) => f.nome), ['videos']);
+  assert.deepEqual(FAMILIAS.map((f) => f.nome), ['videos', 'site']);
   for (const rota of ['/videos', '/videos/a-crise-cognitiva', '/temas/engenharia-agentica']) {
     assert.equal(familiaDe(rota)?.nome, 'videos', rota);
   }
 });
 
 test('páginas fora da família não são da família, inclusive o espelho /en/ (CA-06)', () => {
-  for (const rota of ['/', '/catalogo', '/curriculo', '/busca', '/en/videos/a-crise-cognitiva', '/en/', '/videos-x', '/videosx/a']) {
+  for (const rota of ['/busca', '/cookies', '/en/videos/a-crise-cognitiva', '/en/', '/en/curriculo', '/videos-x', '/videosx/a', '/catalogo-x']) {
     assert.equal(familiaDe(rota), null, rota);
+  }
+});
+
+test('a família "site" cobre início, carreira e conteúdos (RF-VT-17, CA-23)', () => {
+  for (const rota of ['/', '/index', '/curriculo', '/catalogo']) {
+    assert.equal(familiaDe(rota)?.nome, 'site', rota);
   }
 });
 
@@ -60,7 +66,7 @@ test('a pré-busca só baixa o documento das páginas da família, ao passar o m
 });
 
 test('o plugin não toca nas outras páginas (CA-06)', () => {
-  for (const f of ['/repo/src/index.html', '/repo/src/catalogo.html', '/repo/src/en/videos/a.html', '/repo/src/en/index.html', '/repo/src/busca.html']) {
+  for (const f of ['/repo/src/en/videos/a.html', '/repo/src/en/index.html', '/repo/src/en/curriculo.html', '/repo/src/busca.html', '/repo/src/cookies.html']) {
     assert.equal(injetar(f), undefined, f);
   }
 });
@@ -149,10 +155,43 @@ test('o script montado compila, não deixa marcador e repete as regras de famili
   assert.doesNotMatch(js, /\b(import|export)\b|fetch\(|XMLHttpRequest/);
 });
 
-test('o script só nomeia com vt-capa e vt-titulo, e só limpa o que nomeou (RF-VT-05, RF-VT-13)', () => {
+test('o script só nomeia com vt-capa, vt-titulo, vt-nome e vt-papel, e só limpa o que nomeou (RF-VT-05, RF-VT-13)', () => {
   const js = readFileSync(new URL('../src/transicoes/transicoes.js', import.meta.url), 'utf8');
   const nomes = new Set([...js.matchAll(/nomear\([^,]+,\s*(NOME_\w+)\)/g)].map((m) => m[1]));
-  assert.deepEqual([...nomes].sort(), ['NOME_CAPA', 'NOME_TITULO']);
+  assert.deepEqual([...nomes].sort(), ['NOME_CAPA', 'NOME_NOME', 'NOME_PAPEL', 'NOME_TITULO']);
+  for (const m of js.matchAll(/var NOME_\w+ = '([^']+)'/g)) assert.match(m[1], /^vt-(capa|titulo|nome|papel)$/);
   assert.match(js, /vt\.finished\.then\(limpar, limpar\)/);
   assert.match(js, /e\.persisted/);
+});
+
+test('o plugin injeta as 3 tags em início, carreira e conteúdos, e não nos espelhos /en/ (RF-VT-17, CA-24)', () => {
+  for (const f of ['/repo/src/index.html', '/repo/src/curriculo.html', '/repo/src/catalogo.html', 'C:\\repo\\src\\curriculo.html']) {
+    const tags = injetar(f);
+    assert.deepEqual(tags.map((t) => t.tag), ['style', 'script', 'script'], f);
+  }
+  for (const f of ['/repo/src/en/index.html', '/repo/src/en/catalogo.html']) assert.equal(injetar(f), undefined, f);
+});
+
+test('a pré-busca do site cobre só as 3 páginas, sem prerender, e a dos vídeos não muda (RF-VT-22, CA-34)', () => {
+  const site = JSON.parse(injetar('/repo/src/index.html')[2].children);
+  assert.deepEqual(Object.keys(site), ['prefetch']);
+  const padroes = site.prefetch[0].where.href_matches;
+  assert.equal(site.prefetch[0].eagerness, 'moderate');
+  for (const rota of ['/', '/curriculo.html', '/catalogo.html']) assert.ok(padroes.includes(rota), rota);
+  for (const p of padroes) assert.ok(!/video|tema/.test(p), p);
+  const videos = JSON.parse(injetar('/repo/src/videos.html')[2].children);
+  assert.ok(!videos.prefetch[0].where.href_matches.includes('/catalogo.html'));
+});
+
+test('tipoDeTransicao no site segue a ordem do cabeçalho; entre famílias não há direção (RF-VT-18, RF-VT-23, CA-25)', () => {
+  assert.equal(tipoDeTransicao('/', '/curriculo'), 'avanco');
+  assert.equal(tipoDeTransicao('/', '/catalogo'), 'avanco');
+  assert.equal(tipoDeTransicao('/index', '/catalogo'), 'avanco');
+  assert.equal(tipoDeTransicao('/curriculo', '/'), 'retorno');
+  assert.equal(tipoDeTransicao('/catalogo', '/'), 'retorno');
+  assert.equal(tipoDeTransicao('/curriculo', '/catalogo'), 'avanco');
+  assert.equal(tipoDeTransicao('/catalogo', '/curriculo'), 'retorno');
+  assert.equal(tipoDeTransicao('/', '/'), null);
+  assert.equal(tipoDeTransicao('/', '/videos'), null);
+  assert.equal(tipoDeTransicao('/videos/a', '/curriculo'), null);
 });

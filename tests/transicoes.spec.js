@@ -296,3 +296,119 @@ testDoGate(test, 'videos')('passar o mouse num cartão pré-busca só o document
   expect(prebuscas.every((p) => /^\/(videos|temas)\//.test(p))).toBe(true);
   expect(prebuscas).toContain(href.split('#')[0]);
 });
+
+// ── Família site: início, carreira e conteúdos (SDD-transicoes-site.md, CA-26 a CA-34) ───────────
+
+const nomesDe = (lista, nome) => por(lista, nome);
+
+testDoGate(test, 'index', 'curriculo')('início → carreira: nome e papel compartilhados nas duas pontas (CA-26)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Ver carreira' }).click();
+  await page.waitForURL(/\/curriculo/);
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  expect(saida).toMatchObject({ evento: 'pageswap', tipos: ['avanco'] });
+  expect(entrada).toMatchObject({ evento: 'pagereveal', tipos: ['avanco'] });
+  for (const ponta of [saida, entrada]) {
+    expect(nomesDe(ponta.nomes, 'vt-nome')).toHaveLength(1);
+    expect(nomesDe(ponta.nomes, 'vt-nome')[0].tag).toBe('h1');
+    expect(nomesDe(ponta.nomes, 'vt-papel')).toHaveLength(1);
+    expect(nomesDe(ponta.nomes, 'vt-papel')[0].classe).toContain('pf-hero-title');
+  }
+});
+
+testDoGate(test, 'index', 'curriculo')('carreira → início pelo cabeçalho: mesmos nomes, tipo retorno (CA-27)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/curriculo.html');
+  await page.locator('header.sh').getByRole('link', { name: 'Início' }).click();
+  await page.waitForURL((u) => u.pathname === '/');
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  expect(saida.tipos).toEqual(['retorno']);
+  expect(entrada.tipos).toEqual(['retorno']);
+  for (const ponta of [saida, entrada]) {
+    expect(nomesDe(ponta.nomes, 'vt-nome')).toHaveLength(1);
+    expect(nomesDe(ponta.nomes, 'vt-papel')).toHaveLength(1);
+  }
+});
+
+testDoGate(test, 'index', 'catalogo')('início → conteúdos pelo botão: sem nome dinâmico, só a direção (CA-28)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Explorar os conteúdos' }).click();
+  await page.waitForURL(/\/catalogo/);
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  expect(saida.tipos).toEqual(['avanco']);
+  expect(entrada.tipos).toEqual(['avanco']);
+  expect(saida.nomes.map((n) => n.nome)).toEqual([]);
+  expect(entrada.nomes.map((n) => n.nome)).toEqual([]);
+});
+
+testDoGate(test, 'index', 'catalogo')('início → conteúdos por um tema: sem nome dinâmico, só a direção (CA-29)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  await page.locator('.pf-temas a').first().click();
+  await page.waitForURL(/\/catalogo/);
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  // R9: o navegador só rola até #tema-x depois do primeiro quadro, então o h2 nunca tem par a tempo
+  expect(saida).toMatchObject({ tipos: ['avanco'], nomes: [] });
+  expect(entrada).toMatchObject({ tipos: ['avanco'], nomes: [] });
+});
+
+testDoGate(test, 'index', 'curriculo')('início → carreira por link com fragmento: nenhum nome dinâmico (CA-30)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  await page.locator('a.pf-board-src[href*="curriculo.html#"]').first().click();
+  await page.waitForURL(/\/curriculo/);
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  for (const ponta of [saida, entrada]) {
+    expect(ponta.nomes.map((n) => n.nome)).toEqual([]);
+  }
+});
+
+testDoGate(test, 'index', 'curriculo', 'catalogo')('com movimento reduzido nenhuma transição roda nas três páginas (CA-31)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await registrarPagereveal(page);
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Ver carreira' }).click();
+  await page.waitForURL(/\/curriculo/);
+  await page.locator('header.sh').getByRole('link', { name: 'Conteúdos' }).click();
+  await page.waitForURL(/\/catalogo/);
+  await expect.poll(async () => (await log(page)).length).toBe(3);
+  expect((await log(page)).some((e) => e.transicao)).toBe(false);
+});
+
+testDoGate(test, 'index', 'curriculo')('Voltar para o início: nenhum nome sobra no hero (CA-32)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Ver carreira' }).click();
+  await page.waitForURL(/\/curriculo/);
+  await page.waitForLoadState('load');
+  await page.goBack();
+  await page.waitForURL((u) => u.pathname === '/');
+  await expect(page.locator('#pf-nome')).toBeVisible();
+  const restos = await page.evaluate(() => [...document.querySelectorAll('[style*="view-transition-name"]')].map((e) => e.style.viewTransitionName));
+  expect(restos).toEqual([]);
+});
+
+testDoGate(test, 'index', 'curriculo', 'catalogo')('a pré-busca do site baixa só o documento das três páginas (CA-34)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  const prebuscas = [];
+  page.on('request', (r) => { if ((r.headers()['sec-purpose'] || '').includes('prefetch')) prebuscas.push(new URL(r.url()).pathname); });
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Ver carreira' }).hover();
+  await expect.poll(() => prebuscas.length, { timeout: 8000 }).toBeGreaterThan(0);
+  expect(prebuscas.every((p) => ['/curriculo.html', '/catalogo.html', '/'].includes(p))).toBe(true);
+  expect(prebuscas).toContain('/curriculo.html');
+  expect(await page.locator('script[type="speculationrules"]').first().textContent()).not.toContain('prerender');
+});
