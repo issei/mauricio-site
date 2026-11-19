@@ -5,7 +5,7 @@ status: publicado
 temas:
   - dados-e-decisao
 resumo: O vídeo percorre o caminho da decisão computacional, do problema mal definido até a avaliação do modelo. Trata do solucionismo, da formalização do problema, das seis dimensões da qualidade de dados, da escolha de métricas de machine learning e do limite entre a decisão da máquina e o julgamento humano.
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "O Pipeline da Decisão: Como Transformar Confusão em Modelos Matemáticos e IA"

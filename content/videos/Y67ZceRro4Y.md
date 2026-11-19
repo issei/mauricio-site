@@ -5,7 +5,7 @@ status: publicado
 temas:
   - especificacao-e-desenvolvimento
 resumo: "O vídeo explica a inversão de controle (IoC): o componente deixa de criar as próprias dependências e passa a recebê-las de fora. Mostra a injeção de dependência via construtor, o uso de mocks nos testes e os contêineres de IoC que montam as dependências em sistemas grandes."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Inversão de Controle (IoC) explicada de forma simples e prática
@@ -39,6 +39,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema: acoplamento forte
 
 Segundo o vídeo, uma mudança pequena no código quebra outra parte que não tinha relação com ela, e escrever um teste simples vira um problema porque o código depende do banco de dados ou de um serviço na nuvem [00:23].

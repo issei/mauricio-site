@@ -6,7 +6,7 @@ temas:
   - engenharia-agentica
   - especificacao-e-desenvolvimento
 resumo: "O vídeo analisa uma pesquisa sobre como a IA muda a engenharia de software. Mostra os limites dos agentes autônomos, o risco do vibe coding no longo prazo e o risco de o spec-driven development virar um novo Waterfall. Propõe o orquestrador cognitivo: quem alterna os métodos conforme o cenário e mantém o julgamento humano."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀
@@ -38,6 +38,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Da execução à orquestração cognitiva
 
 O vídeo analisa uma pesquisa sobre como a IA muda a engenharia de software: o trabalho sai da execução de código e vai para o que a pesquisa chama de orquestração cognitiva [00:20].

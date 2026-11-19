@@ -4,8 +4,8 @@ slug: inferencia-causal
 status: publicado
 temas:
   - dados-e-decisao
-resumo: "O vídeo explica a diferença entre correlação e causalidade com o enigma do sorvete e dos afogamentos. Mostra o que é inferência causal, o raciocínio contrafactual e a variável de confusão, dá exemplos de uso na saúde pública e nos negócios e propõe um kit de três passos de pensamento causal."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo explica a diferença entre correlação e causalidade com o enigma do sorvete e dos afogamentos. Mostra o que é inferência causal, o raciocínio contrafactual e a variável de confusão, dá exemplos de uso na saúde pública e nos negócios e propõe um kit de três passos de pensamento causal.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Inferência Causal
@@ -33,6 +33,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O enigma do sorvete
 
 O vídeo parte de um dado curioso: nos meses em que a venda de sorvete dispara, o número de afogamentos também sobe [00:21].

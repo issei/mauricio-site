@@ -11,7 +11,7 @@ fontes:
     titulo: "Tracer-Cloud/opensre: Build your own AI SRE agents. The open source toolkit for the AI era."
     sustenta: O OpenSRE investiga execuções de CI que falharam e alertas, tem mais de 60 integrações, pode mascarar identificadores sensíveis antes de chamar um LLM externo, roda em shell interativo, de forma headless ou por API Python, e tem implantação no OpenSRE Cloud, num gateway na AWS ou em contêiner.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes"

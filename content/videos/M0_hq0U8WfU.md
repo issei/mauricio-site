@@ -5,7 +5,7 @@ status: publicado
 temas:
   - aprendizagem-e-mente
 resumo: O vídeo defende que estar pronto é uma decisão, não um sentimento. Separa a decisão de agir da emoção de se sentir preparado e propõe quatro passos para começar. A tese final é que a confiança pode ser construída pela ação, em vez de vir antes dela.
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: A Arte de Começar Sem Estar Pronto | Como a Ação Gera Confiança

@@ -5,7 +5,7 @@ status: publicado
 temas:
   - aprendizagem-e-mente
 resumo: O vídeo explica o efeito Pigmaleão com o exemplo de um professor que trata um aluno mediano como um gênio. Mostra como a expectativa muda o comportamento do professor, cria autoeficácia no aluno (o efeito Galateia) e fecha um ciclo que confirma a expectativa inicial.
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: O Efeito Pigmaleão  Como Expectativas Moldam Resultados

@@ -5,8 +5,8 @@ status: publicado
 temas:
   - dados-e-decisao
   - gestao-e-estrategia
-resumo: "O vídeo explica o People Analytics, a análise de dados aplicada à gestão de pessoas. Mostra a diferença entre relatório e analytics, os quatro níveis de análise, um exemplo de salto na rotatividade e os cuidados com ética, privacidade e a confusão entre correlação e causalidade."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo explica o People Analytics, a análise de dados aplicada à gestão de pessoas. Mostra a diferença entre relatório e analytics, os quatro níveis de análise, um exemplo de salto na rotatividade e os cuidados com ética, privacidade e a confusão entre correlação e causalidade.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH"
@@ -49,6 +49,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O que é People Analytics
 
 O vídeo pergunta como transformar dados sobre pessoas em evidências concretas para a organização tomar decisões melhores [00:20].

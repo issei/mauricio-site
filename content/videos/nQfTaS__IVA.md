@@ -5,8 +5,8 @@ status: publicado
 temas:
   - engenharia-agentica
   - especificacao-e-desenvolvimento
-resumo: "O vídeo curto apresenta o desenvolvimento guiado por especificação (SDD) como resposta aos problemas do vibe coding. Explica a ideia da especificação como planta da casa, as quatro etapas do Spec Kit do GitHub, os ganhos e o custo de manter as especificações em dia."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo curto apresenta o desenvolvimento guiado por especificação (SDD) como resposta aos problemas do vibe coding. Explica a ideia da especificação como planta da casa, as quatro etapas do Spec Kit do GitHub, os ganhos e o custo de manter as especificações em dia.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: O Fim do Vibe Coding! Apresentando o Specification-Driven Development (SDD)
@@ -39,6 +39,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema do vibe coding
 
 Segundo o vídeo, o vibe coding prometia agilidade, mas a falta de consistência frustrou muita gente: o resultado impressiona na tela, mas o código tem bugs, é inconsistente e não tem arquitetura [00:00].

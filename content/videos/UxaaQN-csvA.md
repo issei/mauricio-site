@@ -8,10 +8,10 @@ temas:
 resumo: "O vídeo resume a engenharia de agentes de IA: tratar o modelo de linguagem como um componente, e não como o piloto, num pipeline determinístico. Passa pelo resíduo interpretativo, pela separação entre cérebro e vitrine, pelos contratos rígidos, pela hipótese do mundo aberto, pelo FinOps e pela governança com BDD e IA explicável."
 fontes:
   - url: https://mauricio.issei.com.br/engenharia-agentes-ia
-    titulo: "Engenharia de Agentes de IA — Maurício Yokoyama Issei"
+    titulo: Engenharia de Agentes de IA — Maurício Yokoyama Issei
     sustenta: "A página apresenta os 10 princípios da engenharia agêntica, entre eles: o LLM é um componente, não o piloto; gastar IA só no resíduo interpretativo; a saída do modelo é input não confiável até ser validada; evidência, inferência e julgamento separados; ausência de dado como incerteza explícita; quota e custo como estado de domínio; BDD com cenários degradados e DoR/DoD rígidos; e explicar em vez de expor o número."
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: 'Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção'
@@ -55,6 +55,7 @@ youtube:
     - https://mauricio.issei.com.br/engenharia-agentes-ia
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Da magia à engenharia
 
 O vídeo trata da passagem do hype da IA para sistemas que funcionam em produção, com engenharia de software de verdade [00:00].

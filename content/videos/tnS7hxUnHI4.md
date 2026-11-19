@@ -7,14 +7,14 @@ temas:
 resumo: O vídeo apresenta o Open Knowledge Format (OKF) 0.2, um formato aberto em texto simples para guardar conhecimento, e o projeto OKF Agent Memory, que usa o formato como memória persistente para agentes de IA. Explica a arquitetura em cinco camadas, as regras do agente e os comandos para usar no dia a dia.
 fontes:
   - url: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md
-    titulo: "Open Knowledge Format (OKF), Version 0.2"
+    titulo: Open Knowledge Format (OKF), Version 0.2
     sustenta: O OKF é um diretório de arquivos Markdown com frontmatter YAML, em que "type" é o único campo obrigatório; o bundle é uma árvore de diretórios e os conceitos se ligam por links Markdown.
     verificada: true
   - url: https://github.com/okf-memory/okf-agent-memory
     titulo: "okf-memory/okf-agent-memory: Git-native persistent memory for AI coding agents"
     sustenta: O OKF Agent Memory é um binário sem dependências externas, com busca BM25 em memória, comandos bootstrap, validate, search e create, servidor MCP e arquitetura em cinco camadas.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Google OKF na Prática: Memória Persistente e Padrões de Conhecimento para Agentes de IA"

@@ -5,13 +5,13 @@ status: publicado
 temas:
   - engenharia-agentica
   - gestao-e-estrategia
-resumo: "O vídeo mostra o que precisa existir antes de pôr um agente de IA em produção num portal corporativo. Passa pela escada de maturidade, pela cadeia do conhecimento, pelos protocolos MCP, A2A e AG-UI e pela identidade delegada, e defende que ações financeiras, legais ou de RH fiquem no nível 2 de autonomia, com aprovação humana."
+resumo: O vídeo mostra o que precisa existir antes de pôr um agente de IA em produção num portal corporativo. Passa pela escada de maturidade, pela cadeia do conhecimento, pelos protocolos MCP, A2A e AG-UI e pela identidade delegada, e defende que ações financeiras, legais ou de RH fiquem no nível 2 de autonomia, com aprovação humana.
 fontes:
   - url: https://mauricio.issei.com.br/digital-workplace-agentico
-    titulo: "Digital Workplace agêntico — Do Portal ao Agente"
-    sustenta: "O estudo descreve cinco estágios de maturidade cumulativos, uma arquitetura em camadas, os papéis do AG-UI, do MCP e do A2A, a identidade delegada (sujeito e ator), o nível 2 como teto para ações de efeito financeiro, legal ou sobre dados sensíveis e a afirmação de que um Agentic Workplace sem fundações \"é um chatbot com credenciais perigosas\"."
+    titulo: Digital Workplace agêntico — Do Portal ao Agente
+    sustenta: O estudo descreve cinco estágios de maturidade cumulativos, uma arquitetura em camadas, os papéis do AG-UI, do MCP e do A2A, a identidade delegada (sujeito e ator), o nível 2 como teto para ações de efeito financeiro, legal ou sobre dados sensíveis e a afirmação de que um Agentic Workplace sem fundações "é um chatbot com credenciais perigosas".
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA"
@@ -50,6 +50,7 @@ youtube:
     - https://mauricio.issei.com.br/digital-workplace-agentico
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Do link à intenção resolvida
 
 O vídeo analisa a arquitetura de agentes de IA no ambiente corporativo e separa a propaganda da realidade técnica: como transformar um portal estático numa plataforma que resolve problemas [00:00].

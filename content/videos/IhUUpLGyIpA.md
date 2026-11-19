@@ -5,8 +5,8 @@ status: publicado
 temas:
   - engenharia-agentica
   - salesforce-e-vendas
-resumo: "O vídeo mostra uma esteira de DevOps para Salesforce que junta o Devin, um agente de IA que programa no GitHub, com a governança do Flosum. Explica os componentes, o formato SFDX, o ciclo de uma tarefa até a revisão humana, o Smart Merge e por onde começar com baixo risco."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo mostra uma esteira de DevOps para Salesforce que junta o Devin, um agente de IA que programa no GitHub, com a governança do Flosum. Explica os componentes, o formato SFDX, o ciclo de uma tarefa até a revisão humana, o Smart Merge e por onde começar com baixo risco.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total"
@@ -34,6 +34,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Velocidade com governança
 
 O vídeo trata de um desafio do ecossistema Salesforce: aproveitar a velocidade de um desenvolvedor de IA que trabalha sem parar e, ao mesmo tempo, garantir que cada linha de código passe pelos filtros de conformidade, segurança e auditoria [00:22].

@@ -11,7 +11,7 @@ fontes:
     titulo: "affaan-m/ECC: The agent harness performance optimization system"
     sustenta: O ECC reúne agentes, skills, hooks e regras; funciona melhor com o Claude Code e tem caminhos para Codex, Cursor, OpenCode e Gemini; tem o AgentShield para verificar a segurança da configuração; o plano Pro para repositórios privados começa em US$ 19 por assento por mês.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software"

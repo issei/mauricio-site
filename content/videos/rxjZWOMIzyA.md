@@ -6,7 +6,7 @@ temas:
   - engenharia-agentica
   - cloud-e-confiabilidade
 resumo: O vídeo mostra como usar o Vertex AI Agent Builder para criar agentes que executam ações, e não só respondem perguntas. Explica a ferramenta customizada em três passos, a orquestração pelas instruções, o ciclo ReAct para depurar e os caminhos para levar o agente à produção.
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "VERTEX AI AGENTES DE AÇÃO: Construindo Agentes de IA que Realmente Agem (ReAct e OpenAPI)"

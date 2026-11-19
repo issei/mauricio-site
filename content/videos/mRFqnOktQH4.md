@@ -8,10 +8,10 @@ temas:
 resumo: O vídeo mostra como o volume de código gerado por agentes de IA sobrecarregou o controle de versão tradicional. Conta como a Anthropic criou o Scion, um sistema próprio, e como a Cloudflare respondeu com o Artifacts. Termina com o próximo gargalo, a revisão e a aprovação do código.
 fontes:
   - url: https://www.anthropic.com/engineering/redesigning-source-control
-    titulo: "Redesigning source control at Anthropic"
+    titulo: Redesigning source control at Anthropic
     sustenta: A Anthropic passou de cerca de 2.500 mudanças integradas por dia em maio de 2026 para mais de 30.000 por dia em setembro e criou o Scion, com changesets e merges no servidor, sem cópia completa do repositório em lugar nenhum, 200 vezes menor em CPU e memória que a infraestrutura anterior.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion
