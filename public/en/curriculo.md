@@ -72,14 +72,6 @@ Application development Web and console in Java (J2EE and J2SE), using ASPER fra
 
 - Skills: Java (J2EE/J2SE), MVC, UML, MDA, DB2, PostgreSQL
 
-### Java Development Analyst — Telefônica
-
-Apr 2005 – Sep 2008 (3 years and 6 months) · São Paulo, Brazil
-
-Development of parts storage management system and network supply system.
-
-- Skills: Java, EJB, JBoss, Oracle, Team Leadership
-
 ## Projects (STAR)
 
 ### Commercial Automatic Pipe (Rede, 2025)

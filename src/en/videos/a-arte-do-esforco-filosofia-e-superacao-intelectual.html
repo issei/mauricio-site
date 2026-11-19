@@ -130,9 +130,9 @@ try {
 <!-- SITE-HEADER:START -->
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/en/">Maurício Yokoyama Issei</a>
-<a class="sh-busca" href="/busca">Search</a>
+<a class="sh-busca" href="/busca">Buscar</a>
 <button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
-<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Home</a></li><li><a href="/en/curriculo.html">Career</a></li><li><a href="/en/catalogo.html">Content</a></li><li><a href="/videos.html" aria-current="true">Videos</a></li></ul></nav>
+<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Início</a></li><li><a href="/en/curriculo.html">Carreira</a></li><li><a href="/en/catalogo.html">Conteúdos</a></li><li><a href="/videos.html" aria-current="true">Vídeos</a></li></ul></nav>
 </div></header>
 <script>(function(){var h=document.querySelector(".sh");if(!h)return;var q=h.querySelector(".sh-busca");if(q){var qb=document.createElement("button");qb.type="button";qb.className="sh-busca";qb.textContent=q.textContent;qb.setAttribute("aria-haspopup","dialog");q.replaceWith(qb);qb.addEventListener("click",function(){import("/js/busca.js").then(function(m){m.abrir(qb);});});document.addEventListener("keydown",function(e){var t=e.target;if(e.key!=="/"||e.ctrlKey||e.metaKey||e.altKey)return;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;e.preventDefault();qb.click();});}var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->
@@ -203,6 +203,10 @@ try {
 </div>
 <div class="trilho-wrap"><div class="trilho-botoes" data-botoes></div>
 <ul class="trilho" data-trilho>
+<li data-temas="aprendizagem-e-mente" data-artigo="1" data-data="2026-11-19" data-vistos="0"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/M0_hq0U8WfU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>6:10</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/en/videos/a-arte-de-comecar-sem-estar-pronto-como-a-acao-gera">The Art of Getting Started Without Being Ready </a></h3></div>
+</article></li>
 <li data-temas="aprendizagem-e-mente" data-artigo="1" data-data="2026-11-14" data-vistos="1"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/S6mT3RumiDY/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>9:27</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/en/videos/kant-fundamentacao-da-metafisica-dos-costumes">Kant: Grounds for Metaphysics of Customs</a></h3></div>
@@ -219,9 +223,9 @@ try {
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/SLSaXV6j6I0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>1:09</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/videos/quem-esta-no-comando-da-sua-mente-voce-ou-as-suas-reacoes">Who is in charge of your mind: you or your automatic reactions?</a></h3></div>
 </article></li>
-<li data-temas="aprendizagem-e-mente gestao-e-estrategia" data-artigo="0" data-data="2026-09-23" data-vistos="155"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/ZsA9X2mMTsw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:21</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/a-arquitetura-da-mente-filosofia-metacognicao-e-lideranca">Architecture of the Mind: Philosophy, Metacognition and Strategic Leadership</a></h3></div>
+<li data-temas="aprendizagem-e-mente gestao-e-estrategia" data-artigo="1" data-data="2026-09-23" data-vistos="155"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/ZsA9X2mMTsw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>7:21</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/en/videos/a-arquitetura-da-mente-filosofia-metacognicao-e-lideranca">Architecture of the Mind: Philosophy, Metacognition and Strategic Leadership</a></h3></div>
 </article></li>
 <li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-09-03" data-vistos="73"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/5T0ZhmtShMU/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>1:28</span></div>
@@ -246,10 +250,6 @@ try {
 <li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-06-29" data-vistos="5"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/dxm1J8_XFyo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:33</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/videos/a-postura-estrategica-domine-sua-rotina-e-seus">The Strategic Posture: Master Your Routine and Your Relationships</a></h3></div>
-</article></li>
-<li data-temas="aprendizagem-e-mente" data-artigo="0" data-data="2026-05-27" data-vistos="43"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/HCaqhdgPScQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>9:30</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/a-arquitetura-da-mente">The Architecture of the Mind</a></h3></div>
 </article></li>
 </ul></div></section>
 </main>
