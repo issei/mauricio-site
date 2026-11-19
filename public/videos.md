@@ -56,7 +56,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
 - [Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?](https://mauricio.issei.com.br/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de) — 17 de outubro de 2026
 - [A Intenção do Negócio: Especificação Conversacional Estruturada com IA](https://mauricio.issei.com.br/videos/a-intencao-do-negocio-especificacao-conversacional) — 12 de outubro de 2026
-- [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
 - [Engenharia por Trás da Boutique Empresarial: Arquitetura Estática, SDD e Desenvolvimento Agêntico](https://mauricio.issei.com.br/videos/engenharia-por-tras-da-boutique-empresarial-arquitetura) — 21 de setembro de 2026
 - [Padrão Saga e Transactional Outbox em Microsserviços](https://mauricio.issei.com.br/videos/padrao-saga-e-transactional-outbox-em-microsservicos) — 11 de setembro de 2026
 - [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
@@ -65,6 +64,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀](https://mauricio.issei.com.br/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador) — 4 de agosto de 2026
 - [Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção](https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de) — 19 de junho de 2026
 - [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
+- [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026
 
 ## Gestão e estratégia
 
@@ -99,17 +99,17 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 ## Ferramentas de IA
 
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
+- [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
 - [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
 - [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
 - [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
 - [OmniRoute: Pare de gastar fortunas com assinaturas de IA!](https://mauricio.issei.com.br/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia) — 3 de setembro de 2026
+- [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
 - [turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS](https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que) — 8 de junho de 2026
 - [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
 - [Gemma 4  Futuro da IA On Device](https://mauricio.issei.com.br/videos/gemma-4-futuro-da-ia-on-device) — 6 de abril de 2026
 - [PaperBanana: IA para Análise e Revisão de Artigos Científicos](https://mauricio.issei.com.br/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos) — 3 de fevereiro de 2026
 - [DANDO VOZ À TECNOLOGIA: A Revolução do Text-to-Speech com Inteligência Artificial](https://mauricio.issei.com.br/videos/dando-voz-a-tecnologia-a-revolucao-do-text-to-speech-com) — 15 de dezembro de 2025
-- [SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini](https://mauricio.issei.com.br/videos/seu-novo-assistente-de-ia-automacao-sem-codigo-com-google) — 5 de dezembro de 2025
-- [Da Ideia ao App em Minutos](https://mauricio.issei.com.br/videos/da-ideia-ao-app-em-minutos) — 28 de outubro de 2025
 
 ## Tecnologia e cultura
 

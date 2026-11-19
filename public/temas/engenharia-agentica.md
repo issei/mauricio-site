@@ -45,7 +45,6 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [Google OKF na Prática: Memória Persistente e Padrões de Conhecimento para Agentes de IA](https://mauricio.issei.com.br/videos/google-okf-na-pratica-memoria-persistente-e-padroes-de) — 11 de setembro de 2026
 - [A Máquina da Confiança: Estudo de Caso em Desenvolvimento Agêntico Bancário](https://mauricio.issei.com.br/videos/a-maquina-da-confianca-estudo-de-caso-em-desenvolvimento) — 10 de setembro de 2026
 - [8 de setembro de 2026](https://mauricio.issei.com.br/videos/8-de-setembro-de-2026) — 8 de setembro de 2026
-- [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
 - [CodeGraph: Inteligência Semântica Local para Agentes de IA de Código](https://mauricio.issei.com.br/videos/codegraph-inteligencia-semantica-local-para-agentes-de-ia) — 26 de agosto de 2026
 - [O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional](https://mauricio.issei.com.br/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do) — 26 de agosto de 2026
 - [Desmistificando o HyperFrames: O Framework que Transforma HTML em Vídeo para Agentes de IA!](https://mauricio.issei.com.br/videos/desmistificando-o-hyperframes-o-framework-que-transforma) — 22 de agosto de 2026

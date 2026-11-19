@@ -24,6 +24,7 @@ Dados, métricas, aprendizado de máquina e modelos para transformar informaçã
 - [Desvendando Machine Learning: conceitos, aplicações e impactos reais](https://mauricio.issei.com.br/videos/desvendando-machine-learning-conceitos-aplicacoes-e) — 4 de janeiro de 2026
 - [IA E CONFIABILIDADE DE SISTEMAS: De Reativo a Proativo (SRE, Machine Learning e XAI)](https://mauricio.issei.com.br/videos/ia-e-confiabilidade-de-sistemas-de-reativo-a-proativo-sre) — 5 de dezembro de 2025
 - [DOMINANDO DADOS NO SALESFORCE: Escalabilidade, Governor Limits e Arquitetura Lambda](https://mauricio.issei.com.br/videos/dominando-dados-no-salesforce-escalabilidade-governor) — 25 de novembro de 2025
+- [AWS GLUE: Otimize seus Jobs Spark e Reduza Custos (Guia Prático para Iniciantes)](https://mauricio.issei.com.br/videos/aws-glue-otimize-seus-jobs-spark-e-reduza-custos-guia) — 18 de novembro de 2025
 - [Data Mesh](https://mauricio.issei.com.br/videos/data-mesh) — 8 de novembro de 2025
 - [Inferência Causal](https://mauricio.issei.com.br/videos/inferencia-causal) — 5 de novembro de 2025
 - [Dados com NumPy e pandas](https://mauricio.issei.com.br/videos/dados-com-numpy-e-pandas) — 27 de outubro de 2025
