@@ -20,6 +20,7 @@ Gestão, estratégia e carreira: o que funciona nas empresas e o que muda com a 
 - [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
 - [Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH](https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em) — 23 de setembro de 2026
 - [A Arquitetura da Mente: Filosofia, Metacognição e Liderança Estratégica](https://mauricio.issei.com.br/videos/a-arquitetura-da-mente-filosofia-metacognicao-e-lideranca) — 23 de setembro de 2026
+- [A ILUSÃO DAS IDEIAS: O que a Ciência Realmente Diz Sobre Criatividade e Brainstorming](https://mauricio.issei.com.br/videos/a-ilusao-das-ideias-o-que-a-ciencia-realmente-diz-sobre) — 1 de setembro de 2026
 - [O Tempo da Oportunidade: Por que o Momento é Tudo](https://mauricio.issei.com.br/videos/o-tempo-da-oportunidade-por-que-o-momento-e-tudo) — 13 de agosto de 2026
 - [O Paradoxo do Artífice: Por que a Maestria Técnica às vezes fica Invisível? (E como resolver)](https://mauricio.issei.com.br/videos/o-paradoxo-do-artifice-por-que-a-maestria-tecnica-as-vezes) — 7 de agosto de 2026
 - [Blue Lock: A Filosofia do Sucesso e Como Aplicá-la na Sua Carreira](https://mauricio.issei.com.br/videos/blue-lock-a-filosofia-do-sucesso-e-como-aplica-la-na-sua) — 17 de julho de 2026

@@ -22,6 +22,7 @@ Desenvolvimento guiado por especificação, padrões de arquitetura de software 
 - [Por que Go é a linguagem ideal para a era da IA? (Visão do Google)](https://mauricio.issei.com.br/videos/por-que-go-e-a-linguagem-ideal-para-a-era-da-ia-visao-do) — 18 de agosto de 2026
 - [Arquitetura de Dependências: A Ética dos Vínculos em Sistemas Complexos](https://mauricio.issei.com.br/videos/arquitetura-de-dependencias-a-etica-dos-vinculos-em) — 7 de agosto de 2026
 - [O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀](https://mauricio.issei.com.br/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador) — 4 de agosto de 2026
+- [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção](https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de) — 19 de junho de 2026
 - [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
 - [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026

@@ -51,6 +51,7 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!](https://mauricio.issei.com.br/videos/a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0) — 12 de agosto de 2026
 - [O Fim do Programador Tradicional? Entenda o Orquestrador Cognitivo 🚀](https://mauricio.issei.com.br/videos/o-fim-do-programador-tradicional-entenda-o-orquestrador) — 4 de agosto de 2026
 - [Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes](https://mauricio.issei.com.br/videos/domine-a-ia-com-google-antigravity-da-codificacao-a) — 17 de julho de 2026
+- [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção](https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de) — 19 de junho de 2026
 - [Pare de ler código às cegas! Conheça o Understand-Anything](https://mauricio.issei.com.br/videos/pare-de-ler-codigo-as-cegas-conheca-o-understand-anything) — 26 de maio de 2026
 - [Desvendando o AHP: O Novo Protocolo para Agentes de IA](https://mauricio.issei.com.br/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia) — 24 de maio de 2026
@@ -62,6 +63,7 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [Descubra a anatomia de uma IA Moderna baseada em Skills e Playbooks.](https://mauricio.issei.com.br/videos/descubra-a-anatomia-de-uma-ia-moderna-baseada-em-skills-e) — 19 de março de 2026
 - [DevOps Salesforce: Integrando Devin AI, Flosum e GitHub para Rastreabilidade Total](https://mauricio.issei.com.br/videos/devops-salesforce-integrando-devin-ai-flosum-e-github-para) — 6 de março de 2026
 - [Devin: De Pares a Paralelo | A Revolução da Engenharia de Software com IA](https://mauricio.issei.com.br/videos/devin-de-pares-a-paralelo-a-revolucao-da-engenharia-de) — 26 de fevereiro de 2026
+- [PaperBanana: IA para Análise e Revisão de Artigos Científicos](https://mauricio.issei.com.br/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos) — 3 de fevereiro de 2026
 - [O Fim do "Chat" na IA? Conheça o A2UI, a Revolução Visual do Google para 2026!](https://mauricio.issei.com.br/videos/o-fim-do-chat-na-ia-conheca-o-a2ui-a-revolucao-visual-do) — 23 de dezembro de 2025
 - [MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA](https://mauricio.issei.com.br/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e) — 15 de dezembro de 2025
 - [SPECS & IA: O Novo Ciclo de Desenvolvimento de Software (Especificação como Diálogo)](https://mauricio.issei.com.br/videos/specs-ia-o-novo-ciclo-de-desenvolvimento-de-software) — 3 de dezembro de 2025

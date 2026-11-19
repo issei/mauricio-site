@@ -19,5 +19,6 @@ Ciência, história da IA, computação quântica e as ideias por trás da tecno
 - [A Gramática da Narrativa Visual](https://mauricio.issei.com.br/videos/a-gramatica-da-narrativa-visual) — 29 de janeiro de 2026
 - [O Segredo Oculto dos QR Codes: De Pixels a Obras de Arte](https://mauricio.issei.com.br/videos/o-segredo-oculto-dos-qr-codes-de-pixels-a-obras-de-arte) — 9 de janeiro de 2026
 - [O Segredo Filosófico da série Dark: Do Hermetismo ao Transumanismo](https://mauricio.issei.com.br/videos/o-segredo-filosofico-da-serie-dark-do-hermetismo-ao) — 7 de janeiro de 2026
+- [WebRTC  A Magia da Comunicação em Tempo Real](https://mauricio.issei.com.br/videos/webrtc-a-magia-da-comunicacao-em-tempo-real) — 6 de janeiro de 2026
 - [IA em PT BR  A Evolução](https://mauricio.issei.com.br/videos/ia-em-pt-br-a-evolucao) — 29 de outubro de 2025
 - [Computação Quântica  A Espada de Dois Gumes](https://mauricio.issei.com.br/videos/computacao-quantica-a-espada-de-dois-gumes) — 28 de outubro de 2025

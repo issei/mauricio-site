@@ -11,12 +11,12 @@ AWS, infraestrutura como código, serverless e a engenharia de confiabilidade qu
 ## Vídeos
 
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026
+- [A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho](https://mauricio.issei.com.br/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google) — 10 de outubro de 2026
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!](https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala) — 27 de setembro de 2026
 - [Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account](https://mauricio.issei.com.br/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em) — 23 de setembro de 2026
 - [Padrão Saga e Transactional Outbox em Microsserviços](https://mauricio.issei.com.br/videos/padrao-saga-e-transactional-outbox-em-microsservicos) — 11 de setembro de 2026
 - [Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!](https://mauricio.issei.com.br/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation) — 3 de julho de 2026
-- [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch](https://mauricio.issei.com.br/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon) — 5 de maio de 2026
 - [Análise  Lambda Web Adapter](https://mauricio.issei.com.br/videos/analise-lambda-web-adapter) — 26 de abril de 2026
 - [Por Que Sua IA Falha? (O Custo Oculto do "Crash Silencioso")](https://mauricio.issei.com.br/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso) — 11 de abril de 2026
