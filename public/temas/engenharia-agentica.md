@@ -64,6 +64,7 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [Devin: De Pares a Paralelo | A Revolução da Engenharia de Software com IA](https://mauricio.issei.com.br/videos/devin-de-pares-a-paralelo-a-revolucao-da-engenharia-de) — 26 de fevereiro de 2026
 - [O Fim do "Chat" na IA? Conheça o A2UI, a Revolução Visual do Google para 2026!](https://mauricio.issei.com.br/videos/o-fim-do-chat-na-ia-conheca-o-a2ui-a-revolucao-visual-do) — 23 de dezembro de 2025
 - [MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA](https://mauricio.issei.com.br/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e) — 15 de dezembro de 2025
+- [SPECS & IA: O Novo Ciclo de Desenvolvimento de Software (Especificação como Diálogo)](https://mauricio.issei.com.br/videos/specs-ia-o-novo-ciclo-de-desenvolvimento-de-software) — 3 de dezembro de 2025
 - [O Fim do Vibe Coding! Apresentando o Specification-Driven Development (SDD)](https://mauricio.issei.com.br/videos/o-fim-do-vibe-coding-apresentando-o-specification-driven) — 3 de dezembro de 2025
 - [GOOGLE ANTIGRAVITY: O Fim do Copiloto? O Futuro da Programação com Agentes de IA](https://mauricio.issei.com.br/videos/google-antigravity-o-fim-do-copiloto-o-futuro-da) — 19 de novembro de 2025
 - [VERTEX AI AGENTES DE AÇÃO: Construindo Agentes de IA que Realmente Agem (ReAct e OpenAPI)](https://mauricio.issei.com.br/videos/vertex-ai-agentes-de-acao-construindo-agentes-de-ia-que) — 12 de novembro de 2025
