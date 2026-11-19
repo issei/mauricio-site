@@ -9,6 +9,7 @@ Análises práticas de ferramentas e assistentes de IA para o trabalho do dia a 
 
 ## Vídeos
 
+- [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
 - [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
 - [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
