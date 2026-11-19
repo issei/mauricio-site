@@ -14,6 +14,7 @@ Análises práticas de ferramentas e assistentes de IA para o trabalho do dia a 
 - [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
 - [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
 - [OmniRoute: Pare de gastar fortunas com assinaturas de IA!](https://mauricio.issei.com.br/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia) — 3 de setembro de 2026
+- [turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS](https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que) — 8 de junho de 2026
 - [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
 - [Gemma 4  Futuro da IA On Device](https://mauricio.issei.com.br/videos/gemma-4-futuro-da-ia-on-device) — 6 de abril de 2026
 - [PaperBanana: IA para Análise e Revisão de Artigos Científicos](https://mauricio.issei.com.br/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos) — 3 de fevereiro de 2026

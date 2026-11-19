@@ -11,6 +11,7 @@ Ciência, história da IA, computação quântica e as ideias por trás da tecno
 ## Vídeos
 
 - [Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?](https://mauricio.issei.com.br/videos/google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da) — 17 de outubro de 2026
+- [IA e o Fator Humano: Neurociência, Acessibilidade Radical (A11Y.md) e Comunidade](https://mauricio.issei.com.br/videos/ia-e-o-fator-humano-neurociencia-acessibilidade-radical) — 30 de setembro de 2026
 - [O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram](https://mauricio.issei.com.br/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen) — 6 de junho de 2026
 - [A Origem do Transformer: A Revolução que Criou a IA Moderna](https://mauricio.issei.com.br/videos/a-origem-do-transformer-a-revolucao-que-criou-a-ia-moderna) — 18 de março de 2026
 - [Atenção Sequencial  "O Foco da IA"](https://mauricio.issei.com.br/videos/atencao-sequencial-o-foco-da-ia) — 13 de fevereiro de 2026
