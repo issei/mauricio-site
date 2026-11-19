@@ -31,15 +31,32 @@ test('normalizarUrl tira origem, .html, barra final e fragmento', () => {
   assert.equal(normalizarUrl('/temas/dados-e-decisao?a=1'), '/temas/dados-e-decisao');
 });
 
-test('o plugin injeta <style id="vt"> e <script id="vt"> inline só na família (RF-VT-01, RF-VT-02)', () => {
+test('o plugin injeta <style id="vt">, <script id="vt"> e as regras de pré-busca inline só na família (RF-VT-01, RF-VT-02, RF-VT-15)', () => {
   const tags = injetar('/repo/src/videos/a-crise-cognitiva.html');
-  assert.equal(tags.length, 2);
-  assert.deepEqual(tags.map((t) => t.tag), ['style', 'script']);
-  assert.ok(tags.every((t) => t.attrs.id === 'vt' && t.injectTo === 'head'));
+  assert.equal(tags.length, 3);
+  assert.deepEqual(tags.map((t) => t.tag), ['style', 'script', 'script']);
+  assert.ok(tags.every((t) => t.injectTo === 'head'));
+  assert.ok(tags.slice(0, 2).every((t) => t.attrs.id === 'vt'));
   assert.equal(tags[1].attrs.src, undefined, 'script inline, sem requisição (RNF-VT-05)');
   assert.equal(tags[1].attrs.type, undefined, 'script clássico, não módulo');
-  assert.equal(injetar('/repo/src/videos.html').length, 2);
-  assert.equal(injetar('C:\\repo\\src\\temas\\dados-e-decisao.html').length, 2);
+  assert.equal(tags[2].attrs.type, 'speculationrules');
+  assert.equal(injetar('/repo/src/videos.html').length, 3);
+  assert.equal(injetar('C:\\repo\\src\\temas\\dados-e-decisao.html').length, 3);
+});
+
+test('a pré-busca só baixa o documento das páginas da família, ao passar o mouse ou tocar (RF-VT-15)', () => {
+  const regras = JSON.parse(injetar('/repo/src/videos.html')[2].children);
+  assert.deepEqual(Object.keys(regras), ['prefetch'], 'sem prerender: scripts e análise não rodam antes da visita');
+  const [regra] = regras.prefetch;
+  assert.equal(regra.eagerness, 'moderate');
+  const padroes = regra.where.href_matches;
+  // todo padrão cobre só rotas da família; nenhuma rota de fora entra na pré-busca
+  for (const rota of ['/videos', '/videos.html', '/videos/a-crise-cognitiva', '/temas/dados-e-decisao']) {
+    assert.ok(padroes.some((p) => new RegExp(`^${p.replace(/[.]/g, '\\.').replace('*', '[^/]+')}$`).test(rota)), rota);
+  }
+  for (const rota of ['/', '/catalogo', '/curriculo', '/cookies', '/busca']) {
+    assert.ok(!padroes.some((p) => new RegExp(`^${p.replace(/[.]/g, '\\.').replace('*', '[^/]+')}$`).test(rota)), rota);
+  }
 });
 
 test('o plugin não toca nas outras páginas (CA-06)', () => {
@@ -71,6 +88,18 @@ test('o opt-in @view-transition só existe sob prefers-reduced-motion: no-prefer
 test('o cabeçalho tem o nome estático vt-cabecalho e não anima (RF-VT-04)', () => {
   assert.match(CSS, /header\.sh\s*\{\s*view-transition-name:\s*vt-cabecalho;?\s*\}/);
   assert.match(CSS, /::view-transition-group\(vt-cabecalho\)\s*\{\s*animation:\s*none/);
+});
+
+test('a página antiga fica parada e a nova entra por cima, sem as duas esmaecerem (sensação de travada)', () => {
+  assert.match(CSS, /::view-transition-old\(root\)\s*\{\s*animation:\s*none;?\s*\}/);
+  assert.match(CSS, /::view-transition-old\(root\),\s*::view-transition-new\(root\)\s*\{\s*mix-blend-mode:\s*normal/);
+  assert.doesNotMatch(CSS, /::view-transition-old\(root\)\s*\{[^}]*animation(-name)?:\s*vt-/, 'o conteúdo antigo não anima');
+});
+
+test('o conteúdo anima por pouco tempo (a espera da rede já pesa) e o movimento compartilhado, um pouco mais', () => {
+  const dur = (nome) => Number(CSS.match(new RegExp(`--${nome}:\\s*([\\d.]+)s`))[1]);
+  assert.ok(dur('vt-duracao') <= 0.25);
+  assert.ok(dur('vt-duracao-compartilhado') >= dur('vt-duracao'));
 });
 
 test('as @keyframes só declaram opacity e transform (RNF-VT-04, CA-16)', () => {

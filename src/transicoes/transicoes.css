@@ -11,9 +11,10 @@
   }
 
   :root {
-    --vt-duracao: 0.3s;
+    --vt-duracao: 0.2s; /* conteúdo: curto, para não somar à espera da rede */
+    --vt-duracao-compartilhado: 0.32s; /* capa e título: o movimento que a pessoa acompanha */
     --vt-curva: cubic-bezier(0.2, 0.7, 0.2, 1);
-    --vt-deslocamento: 14px;
+    --vt-deslocamento: 12px;
   }
 
   /* O cabeçalho é o mesmo nas duas páginas: fica parado, sem esmaecer nem deslizar. */
@@ -33,60 +34,44 @@
   /* Capa e título compartilhados: um só elemento de cada lado, nomeado pelo script só durante a transição. */
   ::view-transition-group(vt-capa),
   ::view-transition-group(vt-titulo) {
-    animation-duration: var(--vt-duracao);
+    animation-duration: var(--vt-duracao-compartilhado);
     animation-timing-function: var(--vt-curva);
   }
 
-  /* Conteúdo: o antigo sai, o novo entra. Sem direção conhecida, o deslocamento é vertical e curto. */
+  /*
+   * Conteúdo: a página antiga fica parada e inteira por baixo; só a nova entra por cima.
+   * Esmaecer as duas (padrão) abre um instante de página vazia entre elas, que a pessoa sente como travada.
+   * Sem o modo `plus-lighter` do padrão, a sobreposição não clareia a imagem durante a entrada.
+   */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    mix-blend-mode: normal;
+  }
   ::view-transition-old(root) {
-    animation: vt-sai var(--vt-duracao) var(--vt-curva) both;
+    animation: none;
   }
   ::view-transition-new(root) {
     animation: vt-entra var(--vt-duracao) var(--vt-curva) both;
   }
 
-  /* Direção (RF-VT-10): avanço entra pela direita; retorno, pela esquerda. */
-  :root:active-view-transition-type(avanco)::view-transition-old(root) {
-    animation-name: vt-sai-esquerda;
-  }
+  /* Direção (RF-VT-10): no avanço o conteúdo novo entra pela direita; no retorno, pela esquerda. */
   :root:active-view-transition-type(avanco)::view-transition-new(root) {
     animation-name: vt-entra-direita;
-  }
-  :root:active-view-transition-type(retorno)::view-transition-old(root) {
-    animation-name: vt-sai-direita;
   }
   :root:active-view-transition-type(retorno)::view-transition-new(root) {
     animation-name: vt-entra-esquerda;
   }
 
-  @keyframes vt-sai-esquerda {
-    to {
-      opacity: 0;
-      transform: translateX(calc(var(--vt-deslocamento) * -2));
-    }
-  }
   @keyframes vt-entra-direita {
     from {
       opacity: 0;
-      transform: translateX(calc(var(--vt-deslocamento) * 2));
-    }
-  }
-  @keyframes vt-sai-direita {
-    to {
-      opacity: 0;
-      transform: translateX(calc(var(--vt-deslocamento) * 2));
+      transform: translateX(var(--vt-deslocamento));
     }
   }
   @keyframes vt-entra-esquerda {
     from {
       opacity: 0;
-      transform: translateX(calc(var(--vt-deslocamento) * -2));
-    }
-  }
-  @keyframes vt-sai {
-    to {
-      opacity: 0;
-      transform: translateY(calc(var(--vt-deslocamento) * -1));
+      transform: translateX(calc(var(--vt-deslocamento) * -1));
     }
   }
   @keyframes vt-entra {

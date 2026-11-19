@@ -22,7 +22,7 @@ com a mesma URL, o mesmo conteúdo e a mesma navegação por link. Sem suporte, 
 movimento reduzido, a navegação é a de hoje.
 
 **Fica fora desta SDD:** outras famílias de páginas (home, catálogo, páginas escritas à mão), movimento
-3D, Speculation Rules (ver §9, E8) e qualquer biblioteca de animação.
+3D, `prerender` (ver §9, E8; a pré-busca com `prefetch` está no RF-VT-15) e qualquer biblioteca de animação.
 
 ## 2. Situação de partida (fatos, commit `52e9680`)
 
@@ -107,6 +107,14 @@ Tipos de transição:
 - **RF-VT-13** — O script remove os nomes dinâmicos quando `viewTransition.finished` resolve. Ele trata a
   rejeição de `ready` com `catch`.
 - **RF-VT-14** — Quando `'onpagereveal' in window` é falso, o script não registra nenhum ouvinte.
+- **RF-VT-15** — O plugin injeta `<script type="speculationrules">` com `prefetch` e `eagerness: "moderate"` só para as
+  rotas da família (`/videos`, `/videos.html`, `/videos/*`, `/temas/*`). Não há `prerender`: a pré-busca baixa só o
+  documento e não executa script, então GA4 e banner de consentimento não rodam antes da visita. Navegador sem
+  Speculation Rules ignora o bloco.
+- **RF-VT-16** — No conteúdo (`root`), a página antiga fica parada e inteira por baixo e só a nova entra por cima
+  (`opacity` e deslocamento curto, `mix-blend-mode: normal`). As duas esmaecerem abre um instante de página vazia que a
+  pessoa sente como travada (validação E6, 2026-11-19). A duração do conteúdo é no máximo 0,25 s; a de capa e título,
+  um pouco maior.
 
 ## 6. Requisitos não funcionais
 
@@ -174,6 +182,8 @@ atualiza esta SDD antes, e o PR leva os espelhos `/en/` das 28 páginas de víde
 | CA-17 | RNF-VT-05 | `perf-budget.mjs` verde; nenhuma tag `<link>` ou `<script src>` nova nas páginas da família. |
 | CA-18 | RNF-VT-08 | Comparação do `dist/` antes e depois: `canonical`, `robots` e JSON-LD iguais. |
 | CA-19 | RNF-VT-09 | `npm run i18n:check` verde. |
+| CA-21 | RF-VT-15 | Chromium: passar o mouse num cartão faz uma requisição com `Sec-Purpose: prefetch` só para rotas da família; o plugin não emite `prerender`. |
+| CA-22 | RF-VT-16 | Teste estático: `::view-transition-old(root)` sem animação, `mix-blend-mode: normal`, `--vt-duracao` ≤ 0,25 s. |
 | CA-20 | RNF-VT-10 | Teste estático: nomes e custom properties com prefixo `vt-`; nenhum hexadecimal novo. |
 
 ## 9. Ordem de implementação
@@ -214,4 +224,5 @@ Cada etapa é um commit pequeno, com o teste antes do código e o gate verde.
 ## 11. Decisões
 
 - **D1** (Issei, 2026-11-19): começar pela SDD do fluxo `/videos` → página do vídeo.
-- Pendentes, para a E6: duração das transições; manter ou não o `vt-titulo` (R3).
+- **D2** (Issei, E6, 2026-11-19): o título não distorce, mas a transição dá sensação de travada e não é fluida. Resposta: RF-VT-15 e RF-VT-16 (conteúdo antigo parado, animação curta, pré-busca). A medição em Chromium sem GPU mostrou ~320 ms entre `pageswap` e `pagereveal` até numa página trivial, então o ganho precisa ser confirmado no aparelho dele.
+- Pendentes: nova validação da fluidez no aparelho; só então decidir o que sobra do movimento (R3 fica resolvido: sem distorção).
