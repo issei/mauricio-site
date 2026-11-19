@@ -4,6 +4,7 @@ import { existsSync, readFileSync } from 'fs';
 import tailwindcss from '@tailwindcss/vite'
 import { globSync } from 'glob';
 import sitemap from 'vite-plugin-sitemap';
+import { transicoes } from './src/transicoes/plugin.mjs';
 
 /*
  * Fichas de vídeo sem artigo revisado são `noindex` (SDD-fase-1 §2, D4) e não
@@ -156,6 +157,7 @@ export default defineConfig({
     webmcp(),
     focusBase(),
     hreflangPt(),
+    transicoes(), // SDD-transicoes-entre-paginas: só a família de vídeos
     sitemap({
       hostname: 'https://mauricio.issei.com.br',
       generateRobotsTxt: false,

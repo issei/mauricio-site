@@ -132,7 +132,8 @@ Tipos de transição:
 | `src/transicoes/familias.mjs` | novo | Lista das famílias (nome, padrão de caminho, seletores de `capa` e `titulo` na origem e no destino) e funções puras: normalizar URL, saber se uma rota é da família, escolher o tipo. Lido pelo plugin no build. |
 | `src/transicoes/transicoes.css` | novo | `@view-transition` sob `no-preference`, `vt-cabecalho`, custom properties `--vt-*` de duração e curva, animações de `root` por `:active-view-transition-type()`, regras de `::view-transition-group(*.vt-compartilhado)`. |
 | `src/transicoes/transicoes.js` | novo | Script clássico (não módulo), para o ouvinte de `pagereveal` existir antes do primeiro quadro. Implementa RF-VT-06 a RF-VT-14. Recebe a configuração da família serializada pelo plugin. |
-| `vite.config.js` | alterado | Plugin `transicoes`: lê os três arquivos e injeta CSS e JS inline nas páginas da família (`ctx.filename`). |
+| `src/transicoes/plugin.mjs` | novo | Plugin `transicoes`: lê o CSS e o JS e os injeta inline nas páginas da família (`ctx.filename`). Fica fora do `vite.config.js` para ser testável sem subir o Vite. |
+| `vite.config.js` | alterado | Só registra o plugin. |
 | `tests/transicoes.test.mjs` | novo | Testes unitários das funções puras de `familias.mjs`. |
 | `tests/transicoes.spec.js` | novo | Testes Playwright (§8). |
 | `A11Y-DECISIONS.md` | alterado (E7) | Padrão "Transição entre páginas". |
