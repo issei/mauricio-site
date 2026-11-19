@@ -1,3 +1,6 @@
+## 2026-11-19
+* **Creation**: Documented concept `transicoes-entre-paginas.md` (Transições entre páginas: View Transitions entre documentos, injetadas no build só na família de vídeos).
+
 ## 2026-10-14
 * **Creation**: Documented concept `reposicionamento-fde.md` (Reposicionamento FDE: spec, cases em cases.json e evidência antes do texto).
 
