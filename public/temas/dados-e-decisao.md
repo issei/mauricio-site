@@ -15,6 +15,7 @@ Dados, métricas, aprendizado de máquina e modelos para transformar informaçã
 - [O Pipeline da Decisão: Como Transformar Confusão em Modelos Matemáticos e IA](https://mauricio.issei.com.br/videos/o-pipeline-da-decisao-como-transformar-confusao-em-modelos) — 19 de agosto de 2026
 - [A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!](https://mauricio.issei.com.br/videos/a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0) — 12 de agosto de 2026
 - [turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS](https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que) — 8 de junho de 2026
+- [O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram](https://mauricio.issei.com.br/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen) — 6 de junho de 2026
 - [Desvendando o AHP: O Novo Protocolo para Agentes de IA](https://mauricio.issei.com.br/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia) — 24 de maio de 2026
 - [OpenKB - Criando sua base de conhecimento inteligente](https://mauricio.issei.com.br/videos/openkb-criando-sua-base-de-conhecimento-inteligente) — 7 de maio de 2026
 - [A busca por uma régua melhor: por que nossas métricas falham?](https://mauricio.issei.com.br/videos/a-busca-por-uma-regua-melhor-por-que-nossas-metricas-falham) — 23 de janeiro de 2026

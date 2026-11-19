@@ -53,6 +53,7 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [Domine a IA com Google Antigravity: Da Codificação à Orquestração de Agentes](https://mauricio.issei.com.br/videos/domine-a-ia-com-google-antigravity-da-codificacao-a) — 17 de julho de 2026
 - [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção](https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de) — 19 de junho de 2026
+- [Arquitetura SocialSelling: IA para Leads SEM Custos de Infraestrutura!](https://mauricio.issei.com.br/videos/arquitetura-socialselling-ia-para-leads-sem-custos-de) — 6 de junho de 2026
 - [Pare de ler código às cegas! Conheça o Understand-Anything](https://mauricio.issei.com.br/videos/pare-de-ler-codigo-as-cegas-conheca-o-understand-anything) — 26 de maio de 2026
 - [Desvendando o AHP: O Novo Protocolo para Agentes de IA](https://mauricio.issei.com.br/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia) — 24 de maio de 2026
 - [O Orquestrador Soberano: O Fim do Código e os Perigos do Vibe Coding](https://mauricio.issei.com.br/videos/o-orquestrador-soberano-o-fim-do-codigo-e-os-perigos-do) — 18 de maio de 2026

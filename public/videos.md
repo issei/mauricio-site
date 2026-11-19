@@ -89,12 +89,12 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [O Pipeline da Decisão: Como Transformar Confusão em Modelos Matemáticos e IA](https://mauricio.issei.com.br/videos/o-pipeline-da-decisao-como-transformar-confusao-em-modelos) — 19 de agosto de 2026
 - [A Revolução da Engenharia de Grafos na IA: DeerFlow 2.0, Claude Code e o Fim dos Agentes Isolados!](https://mauricio.issei.com.br/videos/a-revolucao-da-engenharia-de-grafos-na-ia-deerflow-2-0) — 12 de agosto de 2026
 - [turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS](https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que) — 8 de junho de 2026
+- [O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram](https://mauricio.issei.com.br/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen) — 6 de junho de 2026
 - [Desvendando o AHP: O Novo Protocolo para Agentes de IA](https://mauricio.issei.com.br/videos/desvendando-o-ahp-o-novo-protocolo-para-agentes-de-ia) — 24 de maio de 2026
 - [OpenKB - Criando sua base de conhecimento inteligente](https://mauricio.issei.com.br/videos/openkb-criando-sua-base-de-conhecimento-inteligente) — 7 de maio de 2026
 - [A busca por uma régua melhor: por que nossas métricas falham?](https://mauricio.issei.com.br/videos/a-busca-por-uma-regua-melhor-por-que-nossas-metricas-falham) — 23 de janeiro de 2026
 - [Desmistificando Story Points: como estimar melhor em times ágeis](https://mauricio.issei.com.br/videos/desmistificando-story-points-como-estimar-melhor-em-times) — 23 de janeiro de 2026
 - [Dominando a Avaliação de IA: como analisar, validar e evoluir soluções inteligentes](https://mauricio.issei.com.br/videos/dominando-a-avaliacao-de-ia-como-analisar-validar-e-evoluir) — 23 de janeiro de 2026
-- [O que é Otimização? Do Algoritmo Simplex ao Mundo Real](https://mauricio.issei.com.br/videos/o-que-e-otimizacao-do-algoritmo-simplex-ao-mundo-real) — 7 de janeiro de 2026
 
 ## Ferramentas de IA
 
@@ -109,7 +109,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
 - [Gemma 4  Futuro da IA On Device](https://mauricio.issei.com.br/videos/gemma-4-futuro-da-ia-on-device) — 6 de abril de 2026
 - [PaperBanana: IA para Análise e Revisão de Artigos Científicos](https://mauricio.issei.com.br/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos) — 3 de fevereiro de 2026
-- [DANDO VOZ À TECNOLOGIA: A Revolução do Text-to-Speech com Inteligência Artificial](https://mauricio.issei.com.br/videos/dando-voz-a-tecnologia-a-revolucao-do-text-to-speech-com) — 15 de dezembro de 2025
+- [MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA](https://mauricio.issei.com.br/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e) — 15 de dezembro de 2025
 
 ## Tecnologia e cultura
 

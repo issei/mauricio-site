@@ -1,7 +1,95 @@
 # O Treinamento Galateia: O Guia Definitivo para Moldar o Seu Próprio Potencial
 
+O vídeo explica como as expectativas moldam o desempenho, pelos efeitos Pigmalião e Golem e pela autoeficácia de Albert Bandura, e mostra como o sabotador interno trava a realização. Propõe o Treinamento Galateia, com quatro pilares: autoconsciência radical, esforço estratégico, diálogo interno construtivo e engenharia de maestria.
+
 Vídeo de Maurício Yokoyama Issei, publicado em 7 de dezembro de 2025 (8 min 16 s).
 Assistir: https://www.youtube.com/watch?v=fGmCZvhdX0w
+
+_O vídeo e a transcrição estão em português. Os minutos entre colchetes, como [04:12], apontam para o trecho do vídeo._
+
+## As expectativas criam a realidade?
+
+O vídeo parte de uma ideia que vem da psicologia e da mitologia: as expectativas podem criar a realidade? [00:00] Esse fenômeno influencia o desempenho nas escolas, nos escritórios e na vida pessoal [00:20].
+
+## Pigmalião e Golem
+
+Há duas forças opostas: o efeito Pigmalião e o efeito Golem [00:20]. Elas mostram uma ligação quase direta entre o que se espera de alguém e o resultado que a pessoa entrega: expectativas altas tendem a melhorar o desempenho, e expectativas baixas podem sabotar o potencial [00:41].
+
+O nome do efeito Golem vem da lenda da criatura de barro que não atinge seu potencial. Expectativas baixas, nossas ou dos outros, viram uma barreira psicológica [01:03].
+
+Os dois efeitos são exemplos de profecia autorrealizável: algo que se torna real porque se acredita que vai acontecer [01:25].
+
+## Autoeficácia
+
+Tudo se apoia na autoeficácia, conceito do psicólogo Albert Bandura, de 1977. Autoeficácia não é ter as habilidades, mas acreditar que se tem [01:25]. Essa crença define o esforço, a persistência e o tamanho das metas [01:46].
+
+Ela se constrói a partir de quatro fontes [02:07]:
+
+1. As próprias vitórias, as experiências de maestria [02:07].
+2. Ver pessoas parecidas tendo sucesso [02:07].
+3. O incentivo, a persuasão verbal de outras pessoas [02:07].
+4. Os estados emocionais [02:27].
+
+## O sabotador interno
+
+Assim como se constrói, a crença pode ser sabotada, muitas vezes por forças internas [02:27].
+
+O psicólogo W. R. D. Fairbairn deu nome a esse conflito: o sabotador interno, uma parte da mente que trabalha contra os próprios objetivos e nasce das frustrações passadas [02:49]. Ele bate de frente com o ego central, a parte consciente que quer realizar. É a voz cheia de ressentimento que ataca justamente a busca por realização [03:10].
+
+No dia a dia, isso aparece em armadilhas mentais [03:31]:
+
+- A falácia do planejamento: achar que uma tarefa leva uma hora e ela levar cinco [03:31].
+- A atribuição negativa: quando dá errado, a culpa é nossa; quando dá certo, foi sorte [03:51].
+- A busca sem fim por aprovação externa [03:51].
+
+Todos esses padrões alimentam o sabotador e minam a autoeficácia [03:51].
+
+## O Treinamento Galateia
+
+A resposta é um método prático, o Treinamento Galateia, para que cada pessoa seja o próprio escultor [04:13]. Ele tem quatro pilares, que combatem o sabotador e constroem a autoeficácia [04:13]:
+
+1. Autoconsciência radical [04:35].
+2. Esforço estratégico [04:35].
+3. Diálogo interno construtivo [04:35].
+4. Engenharia de maestria [04:35].
+
+### Autoconsciência radical
+
+Não basta "acho que sou bom nisso". A proposta é olhar para os fatos da própria história [04:55]. A pergunta: pensando em três grandes sucessos do passado, quais talentos levaram a esses resultados de forma consistente? [04:55] O foco sai do que falta e vai para o que comprovadamente funcionou [05:15].
+
+### Esforço estratégico
+
+Este pilar ressignifica esforço e falha: todo tropeço vira informação para crescer [05:15]. Fracassar não diz nada sobre a capacidade de alguém, só que a estratégia não funcionou [05:37]. Em vez de tentar com mais força, busque uma estratégia melhor [05:37].
+
+### Diálogo interno construtivo
+
+A ideia é assumir o controle da conversa interna, como fazem atletas de alto desempenho [05:58]. Trocar "não vou conseguir" por uma instrução clara, como "corpo firme, foco no alvo", muda o jogo. É usar em si mesmo a persuasão verbal de Bandura [06:18].
+
+### Engenharia de maestria
+
+Se a autoeficácia vem de experiências de sucesso, é preciso criá-las e construir ativamente as provas de que se é capaz [06:39]. Pequenas vitórias consistentes valem mais que uma grande vitória de vez em quando [06:59]:
+
+1. Quebre metas grandes em passos minúsculos [06:59].
+2. Execute cada passo e reconheça-o como sucesso [06:59].
+3. Use a energia dessa vitória para o próximo passo, num efeito bola de neve [07:19].
+
+## Escultor e obra
+
+O objetivo é parar de depender da validação externa e confiar na própria capacidade [07:19]. A confiança verdadeira não é nunca falhar, é acreditar que o esforço vale a pena [07:40].
+
+Galateia, na mitologia, é a estátua que espera ser esculpida. A proposta é ser, ao mesmo tempo, o escultor e a obra [07:40]. A reflexão final: se as crenças são o cinzel que dá forma à pedra, que obra cada um está esculpindo? [08:03]
+
+## Perguntas frequentes
+
+### Qual a diferença entre o efeito Pigmalião e o efeito Golem?
+
+O Pigmalião mostra que expectativas altas melhoram o desempenho. O Golem mostra que expectativas baixas o sabotam [00:41].
+
+### O que é autoeficácia?
+
+Segundo Albert Bandura, é a crença de que se tem as habilidades para realizar algo. Ela define o esforço, a persistência e o tamanho das metas [01:25].
+
+Revisado por Maurício Yokoyama Issei em 19 de novembro de 2026.
 
 Assuntos: [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente)
 
