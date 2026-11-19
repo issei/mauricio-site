@@ -144,6 +144,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 
 ## Todos os vídeos
 
+- [A Arte de Começar Sem Estar Pronto | Como a Ação Gera Confiança](https://mauricio.issei.com.br/videos/a-arte-de-comecar-sem-estar-pronto-como-a-acao-gera) — 19 de novembro de 2026
 - [Kant: Fundamentação da Metafísica dos Costumes](https://mauricio.issei.com.br/videos/kant-fundamentacao-da-metafisica-dos-costumes) — 14 de novembro de 2026
 - [A ARTE DO ESFORÇO: Filosofia e Superação Intelectual](https://mauricio.issei.com.br/videos/a-arte-do-esforco-filosofia-e-superacao-intelectual) — 13 de novembro de 2026
 - [Como o Google usa Agentes de IA para Arquitetura de Software: O Modelo Elefante-Peixinho-Dourado](https://mauricio.issei.com.br/videos/8-de-novembro-de-2026) — 9 de novembro de 2026
