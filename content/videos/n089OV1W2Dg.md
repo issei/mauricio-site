@@ -19,7 +19,7 @@ fontes:
     titulo: "Retrieval-Augmented Generation for Large Language Models: A Survey"
     sustenta: O que é o RAG tradicional e como ele consulta bases externas antes de gerar a resposta.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: "O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional"

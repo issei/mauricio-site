@@ -5,7 +5,7 @@ status: publicado
 temas:
   - aprendizagem-e-mente
 resumo: "O vídeo explica a Fundamentação da Metafísica dos Costumes, de Immanuel Kant, em seis passos: a moral pura, a boa vontade, o agir por dever, o imperativo categórico, a humanidade como fim e o reino dos fins. Termina na diferença entre preço e dignidade e numa pergunta: que mundo legislamos com as nossas escolhas diárias?"
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-14
 youtube:
   titulo: "Kant: Fundamentação da Metafísica dos Costumes"

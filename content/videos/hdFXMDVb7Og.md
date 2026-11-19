@@ -18,7 +18,7 @@ fontes:
     titulo: LiteLLM (AI Gateway & Python SDK)
     sustenta: O LiteLLM liga vários provedores de IA, como OpenAI, Anthropic e Gemini, por uma só interface.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-16
 youtube:
   titulo: OpenKB - Criando sua base de conhecimento inteligente
