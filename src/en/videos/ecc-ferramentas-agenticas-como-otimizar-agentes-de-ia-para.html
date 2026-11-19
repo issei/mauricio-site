@@ -130,9 +130,9 @@ try {
 <!-- SITE-HEADER:START -->
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/en/">Maurício Yokoyama Issei</a>
-<a class="sh-busca" href="/busca">Search</a>
+<a class="sh-busca" href="/busca">Buscar</a>
 <button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
-<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Home</a></li><li><a href="/en/curriculo.html">Career</a></li><li><a href="/en/catalogo.html">Content</a></li><li><a href="/videos.html" aria-current="true">Videos</a></li></ul></nav>
+<nav class="sh-nav" aria-label="Site navigation"><ul id="sh-lista" class="sh-lista"><li><a href="/en/">Início</a></li><li><a href="/en/curriculo.html">Carreira</a></li><li><a href="/en/catalogo.html">Conteúdos</a></li><li><a href="/videos.html" aria-current="true">Vídeos</a></li></ul></nav>
 </div></header>
 <script>(function(){var h=document.querySelector(".sh");if(!h)return;var q=h.querySelector(".sh-busca");if(q){var qb=document.createElement("button");qb.type="button";qb.className="sh-busca";qb.textContent=q.textContent;qb.setAttribute("aria-haspopup","dialog");q.replaceWith(qb);qb.addEventListener("click",function(){import("/js/busca.js").then(function(m){m.abrir(qb);});});document.addEventListener("keydown",function(e){var t=e.target;if(e.key!=="/"||e.ctrlKey||e.metaKey||e.altKey)return;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;e.preventDefault();qb.click();});}var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->
@@ -223,9 +223,17 @@ try {
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/iCVD5IVVR2g/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:41</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">The Role of Amazon New Act: Automation Web with AI Agents at AWS</a></h3></div>
 </article></li>
+<li data-temas="especificacao-e-desenvolvimento engenharia-agentica" data-artigo="1" data-data="2026-10-17" data-vistos="59"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/5rzZYy5JODM/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>7:34</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/en/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de">Can Artificial Intelligence maintain and debug complex code bases autonomously?</a></h3></div>
+</article></li>
 <li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-13" data-vistos="53"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/lZqBmAkl3J8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:34</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/videos/o-que-faz-um-forward-deployed-engineer-fde">What does a Forward-Deployed Engineer (FDE) do?</a></h3></div>
+</article></li>
+<li data-temas="dados-e-decisao engenharia-agentica" data-artigo="1" data-data="2026-10-10" data-vistos="69"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/KRoFYGy7eos/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>9:20</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/en/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado">Minigraf: The Bitemporal Graph Database Incorporated for AI and Web</a></h3></div>
 </article></li>
 <li data-temas="engenharia-agentica" data-artigo="0" data-data="2026-10-10" data-vistos="36"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/hub4sB4yYss/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:56</span></div>
@@ -239,9 +247,9 @@ try {
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/o0mWY83c37Y/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:35</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra">NVIDIA SkillSpector: How to Protect Your AI Agents from Hidden Threats!</a></h3></div>
 </article></li>
-<li data-temas="engenharia-agentica gestao-e-estrategia" data-artigo="0" data-data="2026-10-03" data-vistos="59"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/Z-8YtFXi-oo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:29</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/digital-workplace-agentico-como-evoluir-do-portal">Digital Genetic Workplace: Cannot initialise Evolution's mail component. Corporate to the AI Agent</a></h3></div>
+<li data-temas="engenharia-agentica gestao-e-estrategia" data-artigo="1" data-data="2026-10-03" data-vistos="59"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/Z-8YtFXi-oo/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>8:29</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/en/videos/digital-workplace-agentico-como-evoluir-do-portal">Digital Genetic Workplace: Cannot initialise Evolution's mail component. Corporate to the AI Agent</a></h3></div>
 </article></li>
 <li data-temas="engenharia-agentica" data-artigo="1" data-data="2026-10-02" data-vistos="120"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/s-VWwbBEv90/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>8:08</span></div>
@@ -250,14 +258,6 @@ try {
 <li data-temas="engenharia-agentica especificacao-e-desenvolvimento" data-artigo="0" data-data="2026-09-27" data-vistos="40"><article class="card">
 <div class="card-thumb"><img src="https://i.ytimg.com/vi/KpcrbmGA_v8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>7:35</span></div>
 <div class="card-corpo"><h3><a class="card-link" href="/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software">Jev — Fuzzy If for Tipped and Fast Software Decisions and AI Agents</a></h3></div>
-</article></li>
-<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="0" data-data="2026-09-27" data-vistos="49"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/cSW_eXN-9wE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="dur"><span class="sr">Duration </span>8:13</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala">Amazon Bedrock AgentCore: From Prototype to Scale Production with agentic AI!</a></h3></div>
-</article></li>
-<li data-temas="engenharia-agentica" data-artigo="1" data-data="2026-09-24" data-vistos="109"><article class="card">
-<div class="card-thumb"><img src="https://i.ytimg.com/vi/NtOpM5eiU5A/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Article</span><span class="dur"><span class="sr">Duration </span>10:03</span></div>
-<div class="card-corpo"><h3><a class="card-link" href="/en/videos/google-ax-o-como-escalar-milhoes-de-agentes-de-ia">Google AX: The Climbing Millions of AI Agents</a></h3></div>
 </article></li>
 </ul></div></section>
 </main>
