@@ -24,7 +24,7 @@ youtube:
 
 A Taxonomia de Bloom explica como se chega a dominar um assunto. Segundo o vídeo, a maioria das pessoas para na decoreba e nunca aprende de verdade [00:00]. O exemplo é aprender a fazer pão artesanal do zero [00:00].
 
-Os níveis, da base ao topo:
+Os níveis, da base ao topo [00:00]:
 
 1. Lembrar: decorar os ingredientes básicos, como farinha, água, sal e fermento [00:00].
 2. Compreender: entender, de forma superficial, que a massa precisa crescer [00:22].

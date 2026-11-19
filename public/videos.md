@@ -98,6 +98,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 
 ## Ferramentas de IA
 
+- [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
 - [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
 - [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
@@ -109,7 +110,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [SEU NOVO ASSISTENTE DE IA: Automação Sem Código com Google Workspace Studio e Gemini](https://mauricio.issei.com.br/videos/seu-novo-assistente-de-ia-automacao-sem-codigo-com-google) — 5 de dezembro de 2025
 - [Da Ideia ao App em Minutos](https://mauricio.issei.com.br/videos/da-ideia-ao-app-em-minutos) — 28 de outubro de 2025
 - [O NotebookLM](https://mauricio.issei.com.br/videos/o-notebooklm) — 27 de outubro de 2025
-- [Galaxy AI  Assistente de Chamada](https://mauricio.issei.com.br/videos/galaxy-ai-assistente-de-chamada) — 27 de outubro de 2025
 
 ## Tecnologia e cultura
 
