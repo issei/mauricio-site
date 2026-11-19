@@ -30,7 +30,14 @@
     animation: none;
   }
 
-  /* Conteúdo: o antigo sai, o novo entra. A direção por tipo entra na etapa E5. */
+  /* Capa e título compartilhados: um só elemento de cada lado, nomeado pelo script só durante a transição. */
+  ::view-transition-group(vt-capa),
+  ::view-transition-group(vt-titulo) {
+    animation-duration: var(--vt-duracao);
+    animation-timing-function: var(--vt-curva);
+  }
+
+  /* Conteúdo: o antigo sai, o novo entra. Sem direção conhecida, o deslocamento é vertical e curto. */
   ::view-transition-old(root) {
     animation: vt-sai var(--vt-duracao) var(--vt-curva) both;
   }
@@ -38,6 +45,44 @@
     animation: vt-entra var(--vt-duracao) var(--vt-curva) both;
   }
 
+  /* Direção (RF-VT-10): avanço entra pela direita; retorno, pela esquerda. */
+  :root:active-view-transition-type(avanco)::view-transition-old(root) {
+    animation-name: vt-sai-esquerda;
+  }
+  :root:active-view-transition-type(avanco)::view-transition-new(root) {
+    animation-name: vt-entra-direita;
+  }
+  :root:active-view-transition-type(retorno)::view-transition-old(root) {
+    animation-name: vt-sai-direita;
+  }
+  :root:active-view-transition-type(retorno)::view-transition-new(root) {
+    animation-name: vt-entra-esquerda;
+  }
+
+  @keyframes vt-sai-esquerda {
+    to {
+      opacity: 0;
+      transform: translateX(calc(var(--vt-deslocamento) * -2));
+    }
+  }
+  @keyframes vt-entra-direita {
+    from {
+      opacity: 0;
+      transform: translateX(calc(var(--vt-deslocamento) * 2));
+    }
+  }
+  @keyframes vt-sai-direita {
+    to {
+      opacity: 0;
+      transform: translateX(calc(var(--vt-deslocamento) * 2));
+    }
+  }
+  @keyframes vt-entra-esquerda {
+    from {
+      opacity: 0;
+      transform: translateX(calc(var(--vt-deslocamento) * -2));
+    }
+  }
   @keyframes vt-sai {
     to {
       opacity: 0;

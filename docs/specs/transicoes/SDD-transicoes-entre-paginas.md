@@ -99,8 +99,9 @@ Tipos de transição:
 - **RF-VT-10** — O script define o tipo (`avanco`, `retorno` ou `lateral`, §4) com
   `e.viewTransition.types.add()` nos dois lados, a partir das URLs de origem e destino e do
   `navigationType`.
-- **RF-VT-11** — Sem `navigation.activation`, o script grava `{de, para}` no `sessionStorage` em
-  `pageswap` e lê no `pagereveal`. Sem registro válido, a transição fica sem elemento compartilhado.
+- **RF-VT-11** — Sem `navigation.activation`, o script grava a origem (`de`) no `sessionStorage` em
+  `pageswap`, usa o link clicado como destino na saída e lê a origem no `pagereveal`. Sem registro válido,
+  a transição fica só com o esmaecimento do conteúdo.
 - **RF-VT-12** — Na página do vídeo, em `pagereveal`, o script põe `mqdefault.jpg` do `data-id` como
   fundo do `.yt`, para que o snapshot novo não seja uma caixa preta enquanto a imagem grande carrega.
 - **RF-VT-13** — O script remove os nomes dinâmicos quando `viewTransition.finished` resolve. Ele trata a
@@ -130,7 +131,7 @@ Tipos de transição:
 | Arquivo | Novo? | Responsabilidade |
 |---|---|---|
 | `src/transicoes/familias.mjs` | novo | Lista das famílias (nome, padrão de caminho, seletores de `capa` e `titulo` na origem e no destino) e funções puras: normalizar URL, saber se uma rota é da família, escolher o tipo. Lido pelo plugin no build. |
-| `src/transicoes/transicoes.css` | novo | `@view-transition` sob `no-preference`, `vt-cabecalho`, custom properties `--vt-*` de duração e curva, animações de `root` por `:active-view-transition-type()`, regras de `::view-transition-group(*.vt-compartilhado)`. |
+| `src/transicoes/transicoes.css` | novo | `@view-transition` sob `no-preference`, `vt-cabecalho`, custom properties `--vt-*` de duração e curva, animações de `root` por `:active-view-transition-type()`, regras de `::view-transition-group(vt-capa)` e `(vt-titulo)`. |
 | `src/transicoes/transicoes.js` | novo | Script clássico (não módulo), para o ouvinte de `pagereveal` existir antes do primeiro quadro. Implementa RF-VT-06 a RF-VT-14. Recebe a configuração da família serializada pelo plugin. |
 | `src/transicoes/plugin.mjs` | novo | Plugin `transicoes`: lê o CSS e o JS e os injeta inline nas páginas da família (`ctx.filename`). Fica fora do `vite.config.js` para ser testável sem subir o Vite. |
 | `vite.config.js` | alterado | Só registra o plugin. |
@@ -142,7 +143,7 @@ Tipos de transição:
 Convenções:
 
 - Nomes por papel: `vt-cabecalho` (estático), `vt-capa` e `vt-titulo` (dinâmicos).
-- Classe `view-transition-class: vt-compartilhado` nos nomes dinâmicos.
+- Duração e curva dos grupos são definidas por nome (`::view-transition-group(vt-capa)`, `(vt-titulo)`), sem `view-transition-class`: os dois nomes são só dois.
 - Nova família = nova entrada em `familias.mjs` + regra de caminho no plugin. Movimento com mais
   profundidade (por exemplo, `perspective` no `root`) entra como animação por tipo, só no ramo
   `no-preference`, sem mexer no script.
@@ -198,7 +199,7 @@ Cada etapa é um commit pequeno, com o teste antes do código e o gate verde.
   rede lenta emulada. Se não bastar, avaliar a E8 (só Chromium).
 - **R3. Distorção do título.** `h3` e `h1` têm tamanho e quebra de linha diferentes. Se a E6 mostrar texto
   esticado, `vt-titulo` sai e o título só esmaece com o `root`.
-- **R4. Teste automatizado.** Confirmar na E3 que o Chromium do Playwright em modo headless entrega
+- **R4. Teste automatizado.** *Resolvido na E3 (2026-11-19):* o Chromium headless entrega `pagereveal` com `viewTransition` na ida e na volta, e nenhum com movimento reduzido; os critérios rodam no Playwright. Era: confirmar na E3 que o Chromium do Playwright em modo headless entrega
   `pagereveal` com `viewTransition`. Se não entregar, CA-01, CA-02 e CA-05 passam a ser conferidos por
   gravação manual, e esta SDD registra a mudança.
 - **R5. Banner de cookies.** É `position: fixed` e entra no snapshot do `root`. Se piscar na E6, recebe um

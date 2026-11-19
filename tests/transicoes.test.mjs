@@ -89,3 +89,41 @@ test('nomes e custom properties levam o prefixo vt-; nenhuma cor nova (RNF-VT-10
   for (const [, n] of CSS.matchAll(/--([\w-]+):/g)) assert.match(n, /^vt-/);
   for (const [, n] of CSS.matchAll(/@keyframes\s+([\w-]+)/g)) assert.match(n, /^vt-/);
 });
+
+// ── Direção e script (E4, E5) ───────────────────────────────────────────────
+import { tipoDeTransicao, LISTA, VIDEO } from '../src/transicoes/familias.mjs';
+import { montarScript } from '../src/transicoes/plugin.mjs';
+
+test('tipoDeTransicao: avanço, retorno e lateral só entre páginas da família (RF-VT-10)', () => {
+  assert.equal(tipoDeTransicao('/videos', '/videos/a'), 'avanco');
+  assert.equal(tipoDeTransicao('/temas/dados-e-decisao', '/videos/a'), 'avanco');
+  assert.equal(tipoDeTransicao('/videos/a', '/videos'), 'retorno');
+  assert.equal(tipoDeTransicao('/videos/a', '/temas/dados-e-decisao'), 'retorno');
+  assert.equal(tipoDeTransicao('/videos/a', '/videos/b'), 'lateral');
+  for (const [de, para] of [['/videos', '/temas/x'], ['/', '/videos'], ['/videos/a', '/'], [null, '/videos/a'], ['/videos', null], ['/en/videos/a', '/videos']]) {
+    assert.equal(tipoDeTransicao(de, para), null, `${de} → ${para}`);
+  }
+});
+
+test('LISTA e VIDEO não se confundem: /videos é lista, /videos/<slug> é vídeo', () => {
+  assert.ok(LISTA.test('/videos') && !VIDEO.test('/videos'));
+  assert.ok(VIDEO.test('/videos/a-b-1') && !LISTA.test('/videos/a-b-1'));
+});
+
+test('o script montado compila, não deixa marcador e repete as regras de familias.mjs (RF-VT-14)', () => {
+  const js = montarScript(readFileSync(new URL('../src/transicoes/transicoes.js', import.meta.url), 'utf8'));
+  assert.doesNotMatch(js, /VT:FUNCOES/);
+  assert.doesNotThrow(() => new Function(js));
+  assert.ok(js.includes(String(LISTA)) && js.includes('function tipoDeTransicao'));
+  assert.match(js, /'onpagereveal' in window/);
+  // o script é clássico e não faz requisição de rede própria (a miniatura é a do cartão já em cache)
+  assert.doesNotMatch(js, /\b(import|export)\b|fetch\(|XMLHttpRequest/);
+});
+
+test('o script só nomeia com vt-capa e vt-titulo, e só limpa o que nomeou (RF-VT-05, RF-VT-13)', () => {
+  const js = readFileSync(new URL('../src/transicoes/transicoes.js', import.meta.url), 'utf8');
+  const nomes = new Set([...js.matchAll(/nomear\([^,]+,\s*(NOME_\w+)\)/g)].map((m) => m[1]));
+  assert.deepEqual([...nomes].sort(), ['NOME_CAPA', 'NOME_TITULO']);
+  assert.match(js, /vt\.finished\.then\(limpar, limpar\)/);
+  assert.match(js, /e\.persisted/);
+});

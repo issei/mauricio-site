@@ -81,3 +81,205 @@ test.describe('sem JavaScript (CA-11)', () => {
     await expect(page.locator('h1')).toBeVisible();
   });
 });
+
+// ── Elementos compartilhados e direção (E4, E5) ─────────────────────────────
+
+/**
+ * Registra, para cada `pageswap` e `pagereveal` com transição, os tipos e os elementos que levam
+ * `view-transition-name`. Lê num timer: o microtask corre logo depois do primeiro ouvinte, antes do da página.
+ */
+const registrarNomes = (page) =>
+  page.addInitScript(() => {
+    const gravar = (evento, vt) =>
+      setTimeout(() => {
+        const nomes = [...document.querySelectorAll('[style*="view-transition-name"]')].map((el) => ({
+          nome: el.style.viewTransitionName,
+          tag: el.tagName.toLowerCase(),
+          classe: el.className,
+          href: el.closest('li, .hero')?.querySelector('a[href]')?.getAttribute('href') ?? null,
+        }));
+        const l = JSON.parse(sessionStorage.getItem('vt-nomes') || '[]');
+        l.push({ evento, caminho: location.pathname, tipos: [...vt.types], nomes });
+        sessionStorage.setItem('vt-nomes', JSON.stringify(l));
+      }, 0);
+    addEventListener('pageswap', (e) => e.viewTransition && gravar('pageswap', e.viewTransition));
+    addEventListener('pagereveal', (e) => e.viewTransition && gravar('pagereveal', e.viewTransition));
+  });
+const nomes = (page) => page.evaluate(() => JSON.parse(sessionStorage.getItem('vt-nomes') || '[]'));
+const esperar = (page, n) => expect.poll(async () => (await nomes(page)).length).toBe(n);
+const por = (nomesDe, nome) => nomesDe.filter((n) => n.nome === nome);
+
+const soChromium = (browserName) => test.skip(browserName !== 'chromium', 'a transição entre documentos é do Chromium');
+
+testDoGate(test, 'videos')('ida: só o cartão clicado dá capa e título; o vídeo recebe os mesmos nomes (CA-01, CA-07)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  // o mesmo vídeo aparece no destaque, nas prateleiras e na grade: escolhe um cartão de prateleira
+  const link = page.locator('.prateleira a.card-link').first();
+  const href = await link.getAttribute('href');
+  await link.click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  expect(saida).toMatchObject({ evento: 'pageswap', caminho: '/videos.html', tipos: ['avanco'] });
+  expect(por(saida.nomes, 'vt-capa')).toHaveLength(1);
+  expect(por(saida.nomes, 'vt-titulo')).toHaveLength(1);
+  expect(por(saida.nomes, 'vt-capa')[0]).toMatchObject({ classe: 'card-thumb', href });
+  expect(por(saida.nomes, 'vt-titulo')[0].tag).toBe('h3');
+  expect(entrada).toMatchObject({ evento: 'pagereveal', tipos: ['avanco'] });
+  expect(por(entrada.nomes, 'vt-capa')[0]).toMatchObject({ tag: 'div', classe: 'yt' });
+  expect(por(entrada.nomes, 'vt-titulo')[0].tag).toBe('h1');
+  // CA-07: a miniatura em cache sustenta o quadro novo enquanto a imagem grande carrega
+  await expect(page.locator('.yt')).toHaveCSS('background-image', /mqdefault\.jpg/);
+});
+
+testDoGate(test, 'videos')('o teclado produz a mesma transição que o clique (CA-14)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  await page.locator('.prateleira a.card-link').first().focus();
+  await page.keyboard.press('Enter');
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  const [saida] = await nomes(page);
+  expect(saida.tipos).toEqual(['avanco']);
+  expect(por(saida.nomes, 'vt-capa')).toHaveLength(1);
+});
+
+testDoGate(test, 'videos')('nenhum nome sobra depois da transição, nem no Voltar (CA-03)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  await page.locator('.prateleira a.card-link').first().click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  await expect.poll(() => page.locator('[style*="view-transition-name"]').count()).toBe(0);
+  await page.goBack();
+  await page.waitForURL(/\/videos(\.html)?$/);
+  await esperar(page, 4);
+  await expect.poll(() => page.locator('[style*="view-transition-name"]').count()).toBe(0);
+  await page.goForward(); // restauração do histórico (bfcache, quando o navegador a usa)
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await expect.poll(() => page.locator('[style*="view-transition-name"]').count()).toBe(0);
+});
+
+testDoGate(test, 'videos')('volta: o vídeo dá capa e título e o cartão visível os recebe (CA-02)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  const link = page.locator('.prateleira a.card-link').first();
+  const href = await link.getAttribute('href');
+  await link.click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  await page.goBack();
+  await page.waitForURL(/\/videos(\.html)?$/);
+  await esperar(page, 4);
+  const [, , saida, entrada] = await nomes(page);
+  expect(saida).toMatchObject({ evento: 'pageswap', tipos: ['retorno'] });
+  expect(por(saida.nomes, 'vt-capa')[0].classe).toBe('yt');
+  expect(entrada).toMatchObject({ evento: 'pagereveal', tipos: ['retorno'] });
+  expect(por(entrada.nomes, 'vt-capa')).toHaveLength(1);
+  expect(por(entrada.nomes, 'vt-capa')[0]).toMatchObject({ classe: 'card-thumb', href });
+});
+
+testDoGate(test, 'videos')('volta com o cartão fora da tela: ninguém recebe o nome (CA-02)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  const ultimo = page.locator('#todos a.card-link').last();
+  await ultimo.scrollIntoViewIfNeeded();
+  await ultimo.click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  await page.locator('p.crumb a[href="/videos"]').click(); // push para a lista: abre no topo, o cartão está lá embaixo
+  await page.waitForURL(/\/videos(\.html)?$/);
+  await esperar(page, 4);
+  const [, , , entrada] = await nomes(page);
+  expect(entrada.tipos).toEqual(['retorno']);
+  expect(por(entrada.nomes, 'vt-capa')).toHaveLength(0);
+  expect(por(entrada.nomes, 'vt-titulo')).toHaveLength(0);
+});
+
+testDoGate(test, 'videos')('vídeo → vídeo usa o tipo lateral (CA-05)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  await page.locator('.prateleira a.card-link').first().click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  await page.locator('#mais-do-assunto a.card-link').first().click();
+  await esperar(page, 4);
+  const [, , saida, entrada] = await nomes(page);
+  expect(saida.tipos).toEqual(['lateral']);
+  expect(entrada.tipos).toEqual(['lateral']);
+  expect(por(saida.nomes, 'vt-capa')).toHaveLength(1);
+  expect(por(saida.nomes, 'vt-capa')[0].classe).toBe('card-thumb');
+  expect(por(entrada.nomes, 'vt-capa')[0].classe).toBe('yt');
+});
+
+testDoGate(test, 'videos')('com #artigo o vídeo não recebe nome de capa (CA-04)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  await page.locator('a[href$="#artigo"]').first().click();
+  await page.waitForURL(/#artigo$/);
+  await esperar(page, 2);
+  const [, entrada] = await nomes(page);
+  expect(entrada.tipos).toEqual(['avanco']);
+  expect(por(entrada.nomes, 'vt-capa')).toHaveLength(0);
+  await expect(page.locator('#artigo')).toBeVisible();
+});
+
+testDoGate(test, 'videos')('falha forçada (nome duplicado): a página abre completa e sem nomes sobrando (CA-12)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  const erros = [];
+  page.on('pageerror', (e) => erros.push(e.message));
+  await page.addInitScript(() => {
+    // depois do ouvinte da página, outro elemento ganha o mesmo nome: o navegador pula a transição
+    addEventListener('pageswap', (e) => e.viewTransition && setTimeout(() => { document.querySelector('h1').style.viewTransitionName = 'vt-capa'; }, 0));
+  });
+  await page.goto('/videos.html');
+  await page.locator('.prateleira a.card-link').first().click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await expect(page.locator('h1')).toBeVisible();
+  await expect(page.locator('.yt')).toBeVisible();
+  await expect.poll(() => page.locator('[style*="view-transition-name"]').count()).toBe(0);
+  expect(erros).toEqual([]);
+});
+
+testDoGate(test, 'videos')('sem navigation.activation (Safari 18.2 a 26.1) a ida e a volta ainda têm direção (RF-VT-11)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await page.addInitScript(() => {
+    Object.defineProperty(window.navigation, 'activation', { value: null, configurable: true });
+    Object.defineProperty(PageSwapEvent.prototype, 'activation', { get: () => null, configurable: true });
+  });
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  const link = page.locator('.prateleira a.card-link').first();
+  const href = await link.getAttribute('href');
+  await link.click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  await page.goBack();
+  await page.waitForURL(/\/videos(\.html)?$/);
+  await esperar(page, 4);
+  const [ida, chegada, , volta] = await nomes(page);
+  expect(ida.tipos).toEqual(['avanco']); // o destino vem do link clicado
+  expect(por(ida.nomes, 'vt-capa')).toHaveLength(1);
+  expect(chegada.tipos).toEqual(['avanco']); // a origem vem do sessionStorage
+  expect(volta.tipos).toEqual(['retorno']);
+  expect(por(volta.nomes, 'vt-capa')[0]).toMatchObject({ classe: 'card-thumb', href });
+});
+
+testDoGate(test, 'videos')('depois da transição o primeiro Tab vai ao link "Pular para o conteúdo" (CA-15)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/videos.html');
+  await page.locator('.prateleira a.card-link').first().click();
+  await page.waitForURL(/\/videos\/[^/]+/);
+  await esperar(page, 2);
+  await page.keyboard.press('Tab');
+  await expect(page.locator('a.skip')).toBeFocused();
+});
