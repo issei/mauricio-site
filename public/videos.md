@@ -42,6 +42,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!](https://mauricio.issei.com.br/videos/amazon-bedrock-agentcore-do-prototipo-a-producao-em-escala) — 27 de setembro de 2026
 - [Arquitetura de DNS na AWS: Centralizado vs. Distribuído em Ambientes Multi-Account](https://mauricio.issei.com.br/videos/arquitetura-de-dns-na-aws-centralizado-vs-distribuido-em) — 23 de setembro de 2026
+- [Padrão Saga e Transactional Outbox em Microsserviços](https://mauricio.issei.com.br/videos/padrao-saga-e-transactional-outbox-em-microsservicos) — 11 de setembro de 2026
 - [Acelerando Deploys na AWS: Como usar o CloudFormation Express Mode!](https://mauricio.issei.com.br/videos/acelerando-deploys-na-aws-como-usar-o-cloudformation) — 3 de julho de 2026
 - [A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)](https://mauricio.issei.com.br/videos/a-engenharia-da-confianca-por-que-sua-ia-falha-e-como) — 21 de junho de 2026
 - [Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch](https://mauricio.issei.com.br/videos/automacao-de-incidentes-na-pratica-aws-devops-agent-amazon) — 5 de maio de 2026
@@ -49,10 +50,10 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Por Que Sua IA Falha? (O Custo Oculto do "Crash Silencioso")](https://mauricio.issei.com.br/videos/por-que-sua-ia-falha-o-custo-oculto-do-crash-silencioso) — 11 de abril de 2026
 - [Produção Fora do Ar](https://mauricio.issei.com.br/videos/producao-fora-do-ar) — 4 de fevereiro de 2026
 - [Rompendo o Limite Serverless](https://mauricio.issei.com.br/videos/rompendo-o-limite-serverless) — 29 de janeiro de 2026
-- [O Blueprint para IA Confiável](https://mauricio.issei.com.br/videos/o-blueprint-para-ia-confiavel) — 17 de janeiro de 2026
 
 ## Especificação e desenvolvimento
 
+- [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
 - [Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?](https://mauricio.issei.com.br/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de) — 17 de outubro de 2026
 - [A Intenção do Negócio: Especificação Conversacional Estruturada com IA](https://mauricio.issei.com.br/videos/a-intencao-do-negocio-especificacao-conversacional) — 12 de outubro de 2026
 - [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
@@ -64,7 +65,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
 - [Arquitetura Hexagonal  ROI](https://mauricio.issei.com.br/videos/arquitetura-hexagonal-roi) — 4 de maio de 2026
 - [Prompts e Notebooks](https://mauricio.issei.com.br/videos/prompts-e-notebooks) — 4 de maio de 2026
-- [O Seu Site Está Pronto para IA?](https://mauricio.issei.com.br/videos/o-seu-site-esta-pronto-para-ia) — 26 de abril de 2026
 
 ## Gestão e estratégia
 
@@ -99,6 +99,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 ## Ferramentas de IA
 
 - [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
+- [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
 - [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
 - [OmniRoute: Pare de gastar fortunas com assinaturas de IA!](https://mauricio.issei.com.br/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia) — 3 de setembro de 2026
 - [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
