@@ -5,8 +5,8 @@ status: publicado
 temas:
   - aprendizagem-e-mente
   - gestao-e-estrategia
-resumo: "O vídeo desmonta o mito do brainstorming livre e da criatividade como inspiração repentina. Apresenta a ideação como um processo estruturado em quatro camadas (condições, construção do problema, geração e avaliação), em que avaliar acontece durante a criação e o problema muda junto com a solução."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo desmonta o mito do brainstorming livre e da criatividade como inspiração repentina. Apresenta a ideação como um processo estruturado em quatro camadas (condições, construção do problema, geração e avaliação), em que avaliar acontece durante a criação e o problema muda junto com a solução.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "A ILUSÃO DAS IDEIAS: O que a Ciência Realmente Diz Sobre Criatividade e Brainstorming"
@@ -66,6 +66,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Criatividade não é um raio
 
 Costuma-se dizer que criatividade é um dom, um raio que cai na cabeça de um gênio. O vídeo usa estudos recentes para desmontar esse mito e mostrar o que acontece no cérebro quando tentamos inovar [00:00].

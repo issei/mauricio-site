@@ -5,7 +5,7 @@ status: publicado
 temas:
   - aprendizagem-e-mente
 resumo: "O vídeo propõe tratar a mente como uma arquitetura que se pode projetar, em cinco etapas: entender a sobrecarga mental, ver o cérebro como uma máquina de previsões, usar metacognição e pensamento computacional, se defender do design persuasivo e construir autoeficácia com pequenas vitórias."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: A Arquitetura da Mente
@@ -19,6 +19,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## De passageiro a arquiteto
 
 O vídeo parte de uma sensação comum: a de que a mente é uma máquina quebrada. A proposta é entender a engenharia do pensamento humano e deixar de ser passageiro para virar arquiteto da própria mente [00:00].

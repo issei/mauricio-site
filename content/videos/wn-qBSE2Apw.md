@@ -8,10 +8,10 @@ temas:
 resumo: "O vídeo explica a arquitetura do SocialSelling, um motor de IA que prioriza leads B2B sem banco de dados e sem nuvem: memória em JSON local com escrita atômica, controle de gastos com degradação graciosa, um pipeline de cinco módulos que separa evidência de inferência, um cartão de lead explicável, aprendizado por feedback com regressão logística e o modelo Dia Humano, Noite IA."
 fontes:
   - url: https://mauricio.issei.com.br/socialselling
-    titulo: "SocialSelling — Boas práticas com IA"
-    sustenta: "Página do site sobre o projeto. Descreve a operação sem banco de dados, Redis, Celery, Docker ou AWS; a persistência em JSON atômico; o pipeline M1–M5, a começar pela busca aberta (M1); a regressão logística em Python puro, com gradiente full-batch, que reajusta os pesos; e o run noturno autônomo."
+    titulo: SocialSelling — Boas práticas com IA
+    sustenta: Página do site sobre o projeto. Descreve a operação sem banco de dados, Redis, Celery, Docker ou AWS; a persistência em JSON atômico; o pipeline M1–M5, a começar pela busca aberta (M1); a regressão logística em Python puro, com gradiente full-batch, que reajusta os pesos; e o run noturno autônomo.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Arquitetura SocialSelling: IA para Leads SEM Custos de Infraestrutura!"
@@ -48,6 +48,7 @@ youtube:
     - https://mauricio.issei.com.br/socialselling.html
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Um motor de IA sem banco de dados
 
 O vídeo decodifica a arquitetura do SocialSelling: um motor de IA para o mercado B2B que prioriza centenas de leads e não tem banco de dados [00:00]. Ele roda localmente e não gera faturas altas de nuvem [00:22].

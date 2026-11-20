@@ -6,7 +6,7 @@ temas:
   - cloud-e-confiabilidade
   - dados-e-decisao
 resumo: "O vídeo é um guia para quem começa no AWS Glue: quando escolher o Glue em vez do Amazon EMR, como configurar o job (tipo de worker e classe de execução), como investigar a performance no CloudWatch e na interface do Spark, e como reduzir o shuffle com filtros, cache, mais recursos e Adaptive Query Execution."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "AWS GLUE: Otimize seus Jobs Spark e Reduza Custos (Guia Prático para Iniciantes)"
@@ -45,6 +45,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Onde o Glue se encaixa
 
 O vídeo é um guia prático para quem começa no AWS Glue e quer jobs Spark eficientes desde o primeiro dia [00:00].

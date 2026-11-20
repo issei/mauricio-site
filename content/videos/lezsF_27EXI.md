@@ -5,8 +5,8 @@ status: publicado
 temas:
   - cloud-e-confiabilidade
   - tecnologia-e-cultura
-resumo: "O vídeo explica o WebRTC, a tecnologia que permite chamadas de vídeo direto no navegador. Mostra os quatro passos da conexão, como os servidores STUN e TURN contornam o NAT, onde a tecnologia é usada, suas vantagens e limites, e o risco de vazamento do IP real, mesmo com VPN."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo explica o WebRTC, a tecnologia que permite chamadas de vídeo direto no navegador. Mostra os quatro passos da conexão, como os servidores STUN e TURN contornam o NAT, onde a tecnologia é usada, suas vantagens e limites, e o risco de vazamento do IP real, mesmo com VPN.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: WebRTC  A Magia da Comunicação em Tempo Real
@@ -31,6 +31,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## A mágica da chamada no navegador
 
 Dá para fazer uma chamada de vídeo direto no navegador, sem instalar nada. Parece mágica: abre-se uma aba, clica-se num link e a conversa começa [00:00]. Por trás está o WebRTC [00:22].

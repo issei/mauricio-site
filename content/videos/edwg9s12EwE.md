@@ -7,14 +7,14 @@ temas:
 resumo: "O vídeo explica por que reler dá uma falsa sensação de domínio e propõe o Ciclo da Aprendizagem Autorregulada: resumo para achar lacunas, busca orientada, prática de recuperação, autoexplicação e espaçamento. Separa o que tem evidência forte do que ainda é especulativo e fecha com um protocolo de estudo de 45 a 60 minutos."
 fontes:
   - url: https://mauricio.issei.com.br/aprendizagem-autorregulada
-    titulo: "Aprendizagem Autorregulada | Maurício Yokoyama Issei"
-    sustenta: "Página do site com o ciclo do vídeo. Cita a correlação fraca entre julgamento de compreensão e desempenho real (r = 0,178 em meta-análise), o ganho médio da autoexplicação (g ≈ 0,55, evidência moderada) e o protocolo de 45 a 60 minutos, com revisões em 24 horas e 7 dias."
+    titulo: Aprendizagem Autorregulada | Maurício Yokoyama Issei
+    sustenta: Página do site com o ciclo do vídeo. Cita a correlação fraca entre julgamento de compreensão e desempenho real (r = 0,178 em meta-análise), o ganho médio da autoexplicação (g ≈ 0,55, evidência moderada) e o protocolo de 45 a 60 minutos, com revisões em 24 horas e 7 dias.
     verificada: true
   - url: https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo
-    titulo: "Do resumo à nova pergunta | Maurício Yokoyama Issei"
-    sustenta: "Artigo de revisão em que o vídeo se baseia. Separa o comprovado, o provável e o especulativo; classifica como especulativas as ideias de que ensinar é sempre melhor e de que explicar reconsolida a memória; e registra que a recuperação tende a reter mais do que a releitura."
+    titulo: Do resumo à nova pergunta | Maurício Yokoyama Issei
+    sustenta: Artigo de revisão em que o vídeo se baseia. Separa o comprovado, o provável e o especulativo; classifica como especulativas as ideias de que ensinar é sempre melhor e de que explicar reconsolida a memória; e registra que a recuperação tende a reter mais do que a releitura.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Aprendizagem Real: O Ciclo da Aprendizagem Autorregulada"
@@ -63,6 +63,7 @@ youtube:
     - https://mauricio.issei.com.br/aprendizagem-autorregulada-artigo.html
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Reler não é aprender
 
 O vídeo ataca os hábitos de estudo que tomam horas e não dão resultado. A proposta é trocá-los por uma estrutura apoiada em evidências e abandonar a ideia de que ler e reler um texto significa aprender [00:00].

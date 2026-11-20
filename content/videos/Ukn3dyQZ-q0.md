@@ -5,21 +5,21 @@ status: publicado
 temas:
   - dados-e-decisao
   - ferramentas-de-ia
-resumo: "O vídeo explica o turbovec, um índice vetorial em Rust com interface Python baseado no algoritmo TurboQuant. Mostra por que a memória é o gargalo da busca vetorial em RAG, como o FAISS contorna isso com quantização de produto e FastScan, e como o TurboQuant comprime vetores sem fase de treinamento, perto do limite teórico."
+resumo: O vídeo explica o turbovec, um índice vetorial em Rust com interface Python baseado no algoritmo TurboQuant. Mostra por que a memória é o gargalo da busca vetorial em RAG, como o FAISS contorna isso com quantização de produto e FastScan, e como o TurboQuant comprime vetores sem fase de treinamento, perto do limite teórico.
 fontes:
   - url: https://github.com/RyanCodrai/turbovec
-    titulo: "RyanCodrai/turbovec (GitHub)"
+    titulo: RyanCodrai/turbovec (GitHub)
     sustenta: "Repositório do projeto: um índice vetorial baseado no TurboQuant, escrito em Rust com bindings para Python, licença MIT. Afirma que 10 milhões de embeddings de 768 dimensões ocupam 31 GB em float32 e cerca de 4 GB no turbovec; usa 2 ou 4 bits por dimensão; não tem etapa de treinamento; filtra por lista de IDs ou máscara; e integra LangChain, LlamaIndex, Haystack e Agno."
     verificada: true
   - url: https://arxiv.org/abs/2504.19874
     titulo: "TurboQuant: Online Vector Quantization with Near-optimal Distortion Rate"
-    sustenta: "Artigo de Zandieh, Daliri, Hadian e Mirrokni (arXiv, abril de 2025). Descreve um quantizador independente dos dados, próprio para uso online, que gira os vetores de forma aleatória para induzir uma distribuição Beta nas coordenadas e fica a um fator de cerca de 2,7 do limite inferior teórico."
+    sustenta: Artigo de Zandieh, Daliri, Hadian e Mirrokni (arXiv, abril de 2025). Descreve um quantizador independente dos dados, próprio para uso online, que gira os vetores de forma aleatória para induzir uma distribuição Beta nas coordenadas e fica a um fator de cerca de 2,7 do limite inferior teórico.
     verificada: true
   - url: https://arxiv.org/abs/2405.12497
     titulo: "RaBitQ: Quantizing High-Dimensional Vectors with a Theoretical Error Bound for Approximate Nearest Neighbor Search"
-    sustenta: "Artigo de Gao e Long, aceito no SIGMOD 2024. Propõe uma quantização aleatória com limite de erro teórico, em contraste com a quantização de produto, que não tem esse limite."
+    sustenta: Artigo de Gao e Long, aceito no SIGMOD 2024. Propõe uma quantização aleatória com limite de erro teórico, em contraste com a quantização de produto, que não tem esse limite.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS"
@@ -56,6 +56,7 @@ youtube:
     - https://github.com/facebookresearch/faiss.wiki.git
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O gargalo da memória
 
 Quem constrói aplicações de RAG (geração aumentada por recuperação) sabe que a busca vetorial em larga escala vira um desafio de engenharia conforme os dados crescem [00:00].

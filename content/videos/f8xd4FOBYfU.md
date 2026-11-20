@@ -5,13 +5,13 @@ status: publicado
 temas:
   - cloud-e-confiabilidade
   - engenharia-agentica
-resumo: "O vídeo mostra como sair da investigação manual de incidentes para um fluxo automático com o AWS DevOps Agent e o Amazon CloudWatch. Passa pelas tags que permitem mapear a topologia, por um alarme de CPU, pelo isolamento com Agent Spaces e por um exemplo em que o agente lê o chamado de suporte, acha a causa raiz e propõe um plano de mitigação."
+resumo: O vídeo mostra como sair da investigação manual de incidentes para um fluxo automático com o AWS DevOps Agent e o Amazon CloudWatch. Passa pelas tags que permitem mapear a topologia, por um alarme de CPU, pelo isolamento com Agent Spaces e por um exemplo em que o agente lê o chamado de suporte, acha a causa raiz e propõe um plano de mitigação.
 fontes:
   - url: https://aws.amazon.com/blogs/devops/automating-incident-investigation-with-aws-devops-agent-and-salesforce-mcp-server/
-    titulo: "Automating Incident Investigation with AWS DevOps Agent and Salesforce MCP Server"
+    titulo: Automating Incident Investigation with AWS DevOps Agent and Salesforce MCP Server
     sustenta: "Artigo do blog da AWS (22/04/2026) que descreve o fluxo do vídeo: um caso novo no Salesforce aciona o DevOps Agent, que investiga com telemetria da AWS, publica as conclusões no caso e recomenda mudanças de arquitetura. Define o Agent Space como o limite de contas, integrações e controles de acesso; cita as tags como opcionais, para o mapa de topologia; e traz o exemplo em que as requisições caem a zero no CloudWatch e o CloudTrail mostra o encerramento de uma instância EC2. Lista os pré-requisitos: Agentforce Service com o Salesforce Hosted MCP Server, um Agent Space, CloudWatch e CloudTrail ativos."
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Automação de Incidentes na Prática: AWS DevOps Agent & Amazon CloudWatch"
@@ -47,6 +47,7 @@ youtube:
     - https://console.aws.amazon.com/cloudtrail/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema: apagar incêndio
 
 O vídeo é um tutorial para equipes de operações de infraestrutura. A proposta é trocar a solução de problemas reativa por um fluxo proativo e automatizado com ferramentas da AWS [00:00].

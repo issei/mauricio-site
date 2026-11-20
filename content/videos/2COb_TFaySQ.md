@@ -6,7 +6,7 @@ temas:
   - especificacao-e-desenvolvimento
   - ferramentas-de-ia
 resumo: "O vídeo analisa o Code Wiki, a ferramenta do Google Cloud que gera documentação viva a partir do repositório: a cada alteração, escaneia o código, refaz documentos e diagramas e alimenta um chat. Mostra a reação da comunidade, entre entusiasmo e ceticismo, e a extensão de linha de comando que leva a ferramenta para dentro das empresas."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "CODE WIKI: O Fim da Documentação Desatualizada? A IA que Escreve seus Docs"
@@ -30,6 +30,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Documentação que fica para trás
 
 Documentação de software é um dos grandes desafios do desenvolvimento. O vídeo pergunta se o Code Wiki, do Google, é mesmo o fim dos documentos desatualizados [00:00].

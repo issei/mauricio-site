@@ -5,13 +5,13 @@ status: publicado
 temas:
   - ferramentas-de-ia
   - engenharia-agentica
-resumo: "O vídeo apresenta o PaperBanana, um sistema de agentes de IA do Google com a Universidade de Pequim que gera ilustrações para artigos científicos a partir do texto da metodologia. Explica o gargalo das figuras, a equipe de cinco agentes (Retriever, Planner, Stylist, Visualizer e Critic), o benchmark PaperBananaBench e o que essa automação muda no trabalho científico."
+resumo: O vídeo apresenta o PaperBanana, um sistema de agentes de IA do Google com a Universidade de Pequim que gera ilustrações para artigos científicos a partir do texto da metodologia. Explica o gargalo das figuras, a equipe de cinco agentes (Retriever, Planner, Stylist, Visualizer e Critic), o benchmark PaperBananaBench e o que essa automação muda no trabalho científico.
 fontes:
   - url: https://dwzhu-pku.github.io/PaperBanana/
     titulo: "PaperBanana: Automating Academic Illustration for AI Scientists"
     sustenta: "Página do projeto, de pesquisadores da Universidade de Pequim e do Google Cloud AI Research. Descreve um framework de agentes que gera ilustrações acadêmicas prontas para publicação: busca referências, planeja conteúdo e estilo, renderiza e refina por autocrítica. Nomeia os agentes Retriever, Planner, Stylist, Visualizer e Critic; apresenta o PaperBananaBench, com 292 casos de teste de diagramas de metodologia tirados de artigos do NeurIPS 2025; e mostra que o método também gera gráficos estatísticos."
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "PaperBanana: IA para Análise e Revisão de Artigos Científicos"
@@ -41,6 +41,7 @@ youtube:
     - https://dwzhu-pku.github.io/PaperBanana/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O gargalo das ilustrações científicas
 
 Para quem pesquisa, uma das tarefas mais frustrantes é transformar ideias complexas em ilustrações claras para publicar um artigo. O vídeo apresenta o PaperBanana, uma ferramenta que promete entregar esse trabalho a uma IA [00:00].
