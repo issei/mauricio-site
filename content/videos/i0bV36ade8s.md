@@ -8,10 +8,10 @@ temas:
 resumo: "O vídeo resume um artigo de pesquisadores do Google Cloud AI, do Google DeepMind e da Penn State sobre automelhoria recursiva contínua: quando o modelo ou o benchmark muda, o otimizador de harness perde o que aprendeu. A proposta é a Self-Improvement Memory (SIM), uma memória do próprio otimizador que guarda o raciocínio, o resultado previsto e o observado de cada edição."
 fontes:
   - url: https://academy.dair.ai/papers/self-improvement-memory-enables-continual-recursive-self-improvement-2611.18856
-    titulo: "Self-Improvement Memory Enables Continual Recursive Self-Improvement"
-    sustenta: "Resumo do artigo (arXiv 2611.18856) na DAIR.AI Academy, publicado em 13/11/2026, de Xin Yu, Fei Xia, Jiaqi Pan e outros, do Google Cloud AI e do Google DeepMind com a Penn State. Sustenta a definição de CRSI, o harness evoluído no Opus que começa em 68,41 no Gemini contra 73,89 do harness semente, a SIM ligada ao otimizador e não à política, o agrupamento por problema recorrente com justificativa, resultado previsto e observado e contexto de avaliação, a leitura pelo proponente e pelo seletor, os seis cenários entre conjuntos de dados e os quatro do Opus para o Gemini em quatro domínios (incluindo Terminal-Bench 2.1 para Terminal-Bench 4), os orçamentos equalizados e a melhora em 9 de 10 continuações, com ganho médio de 2,36 pontos (p = 0,003)."
+    titulo: Self-Improvement Memory Enables Continual Recursive Self-Improvement
+    sustenta: Resumo do artigo (arXiv 2611.18856) na DAIR.AI Academy, publicado em 13/11/2026, de Xin Yu, Fei Xia, Jiaqi Pan e outros, do Google Cloud AI e do Google DeepMind com a Penn State. Sustenta a definição de CRSI, o harness evoluído no Opus que começa em 68,41 no Gemini contra 73,89 do harness semente, a SIM ligada ao otimizador e não à política, o agrupamento por problema recorrente com justificativa, resultado previsto e observado e contexto de avaliação, a leitura pelo proponente e pelo seletor, os seis cenários entre conjuntos de dados e os quatro do Opus para o Gemini em quatro domínios (incluindo Terminal-Bench 2.1 para Terminal-Bench 4), os orçamentos equalizados e a melhora em 9 de 10 continuações, com ganho médio de 2,36 pontos (p = 0,003).
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-20
 youtube:
   titulo: Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA
@@ -58,6 +58,7 @@ youtube:
     - https://academy.dair.ai/papers/self-improvement-memory-enables-continual-recursive-self-improvement-2611.18856
   coletado_em: 2026-11-20T13:12:45Z
 ---
+
 ## Uma IA que lembra do próprio passado
 
 O vídeo analisa um artigo de pesquisadores do Google Cloud AI, do Google DeepMind e da Penn State [00:00]. A pergunta central: como dar a um sistema de IA a capacidade de lembrar do próprio passado, e como essa memória ajuda a construir sistemas autônomos mais robustos [00:00]?
