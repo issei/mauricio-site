@@ -31,6 +31,13 @@ e qualquer biblioteca de animação.
 - O cabeçalho já é estático (`vt-cabecalho`) e fica parado.
 - A camada atual só anima `opacity` e `transform` (RNF-VT-01). O círculo exige animar `clip-path`: ver R13 e D7.
 
+## 2.1. Revisão (2026-11-20, depois do teste da Issei)
+
+A Issei testou a abertura em círculo: "quase imperceptível, não traz nenhum contraste visual". Ela pediu que a
+câmera **mergulhe no ícone de play do botão, passando por dentro do triângulo, para mostrar a página**, com zoom de
+**aceleração progressiva**, não linear. Esta revisão acrescenta o tipo `mergulho` (RF-VT-33 a RF-VT-36). O círculo
+(RF-VT-26 e RF-VT-27) fica só para o link "Vídeos" do cabeçalho, que não tem ícone. D9 abaixo.
+
 ## 3. Requisitos funcionais
 
 - **RF-VT-24** — Novo tipo de transição `imersao`: de `/` (e `/index`) para `/videos`, por qualquer link.
@@ -53,6 +60,20 @@ e qualquer biblioteca de animação.
 - **RF-VT-30** — Os nomes de transição não mudam: `vt-cabecalho` estático e nenhum nome dinâmico novo.
 - **RF-VT-31** — Pré-busca: `/videos.html` entra na lista da família `site` (RF-VT-22), com `prefetch` e nunca
   `prerender`, para a espera da rede não comer a animação.
+- **RF-VT-33** — Mergulho. Quando o link ativado contém um `svg` (o botão do canal), o script acrescenta o tipo
+  `mergulho` aos de `imersao`, nas duas pontas, e guarda `mergulho|x|y|lado`, onde `(x, y)` é o centroide do triângulo
+  do ícone (0,4861 da largura, metade da altura) e `lado` é a largura do ícone. Ao entrar, escreve `--vt-x`,
+  `--vt-y` e `--vt-lado`, em px.
+- **RF-VT-34** — Com o tipo `mergulho`, a página antiga cresce a partir do centroide (`transform-origin`) e a nova
+  aparece só dentro de um triângulo (`clip-path: polygon`) que cresce com os mesmos fatores, então a borda do
+  triângulo da página nova coincide com a do furo do ícone. Os vértices valem, em frações do lado, `(-0,0799; 0,1258)`,
+  `(-0,0799; -0,1258)` e `(0,1597; 0)` a partir do centroide.
+- **RF-VT-35** — Aceleração progressiva: os fatores sobem em paradas cada vez mais espaçadas (1; 1,5; 3; 7; 20; 70; 380;
+  3500, em 0, 15, 30, 45, 60, 75, 90 e 100 % do tempo), de modo que a razão entre paradas cresce. O último fator passa
+  de 3000 e cobre qualquer tela. Duração de 700 ms, curva linear entre as paradas.
+- **RF-VT-36** — Limites, que substituem RF-VT-28 só no mergulho: duração máxima de 800 ms, uma única subida monotônica
+  (sem vaivém e sem piscadas), nenhuma cor nova (o vermelho é o do próprio ícone, já na página) e `reduce` desliga tudo.
+  O zoom grande é pedido da Issei; quem tem sensibilidade a movimento usa `prefers-reduced-motion`.
 - **RF-VT-32** — O plugin continua a só acrescentar tags: nenhum arquivo `src/*.html` PT muda e nenhum espelho
   `/en/` fica velho.
 
@@ -78,6 +99,8 @@ com só `opacity` e `transform`. O teste de invariantes do CSS passa a verificar
 | **CA-44** | Firefox e WebKit: a navegação é a de hoje, sem erro no console | gate |
 | **CA-45** | Pré-busca com `Sec-Purpose` ao passar o mouse no botão; nenhum `prerender` | Chromium + unitário |
 | **CA-46** | `npm run i18n:check` sem diferença | gate |
+| **CA-47** | O CSS do mergulho: fundo e triângulo com as mesmas paradas e fatores (a ponta do triângulo = 0,1597 × fator), razão entre paradas crescente, último fator ≥ 3000, duração ≤ 0,8 s | unitário |
+| **CA-48** | Botão do canal: tipos `imersao` e `mergulho` nas duas pontas e `--vt-lado` = largura do ícone; link do cabeçalho: só `imersao`, sem `--vt-lado` | Chromium |
 
 ## 6. Ordem de implementação
 
@@ -106,5 +129,8 @@ com só `opacity` e `transform`. O teste de invariantes do CSS passa a verificar
 
 - **D6** (Issei, 2026-11-20): seguir a proposta B (abertura a partir do botão) para início → vídeos.
 - **D7** (exceção medida, padrão adotado): liberar `clip-path` só neste caso, com plano B na proposta A (R13).
+- **D9** (Issei, 2026-11-20): o botão do canal faz o mergulho pelo triângulo do play, com zoom de aceleração progressiva;
+  o círculo fica só para o link do cabeçalho. O teto de 8 % de zoom (RF-VT-28) não vale no mergulho (RF-VT-36).
+  Plano B se pesar no aparelho: encurtar as paradas altas ou voltar ao círculo.
 - **D8** (padrão adotado, a Issei pode mudar): a volta (`/videos` → início) usa a transição comum de retorno, sem
   o círculo ao contrário. Se a ida agradar, a volta é uma etapa à parte.

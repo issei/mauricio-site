@@ -100,7 +100,7 @@ const registrarNomes = (page) =>
         }));
         const l = JSON.parse(sessionStorage.getItem('vt-nomes') || '[]');
         const raiz = document.documentElement.style;
-        l.push({ evento, caminho: location.pathname, tipos: [...vt.types], nomes, origem: [raiz.getPropertyValue('--vt-x'), raiz.getPropertyValue('--vt-y')] });
+        l.push({ evento, caminho: location.pathname, tipos: [...vt.types], nomes, origem: [raiz.getPropertyValue('--vt-x'), raiz.getPropertyValue('--vt-y'), raiz.getPropertyValue('--vt-lado')] });
         sessionStorage.setItem('vt-nomes', JSON.stringify(l));
       }, 0);
     addEventListener('pageswap', (e) => e.viewTransition && gravar('pageswap', e.viewTransition));
@@ -426,7 +426,7 @@ const centro = async (page, seletor) => {
 };
 const px = (v) => Number.parseFloat(v);
 
-testDoGate(test, 'index', 'videos')('botão do canal: tipo imersao e origem no centro do ícone (CA-38)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'videos')('botão do canal: tipos imersao e mergulho, origem no triângulo do ícone (CA-38)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
   await page.goto('/');
@@ -435,8 +435,9 @@ testDoGate(test, 'index', 'videos')('botão do canal: tipo imersao e origem no c
   await page.waitForURL(/\/videos/);
   await esperar(page, 2);
   const [saida, entrada] = await nomes(page);
-  expect(saida.tipos).toEqual(['imersao']);
-  expect(entrada.tipos).toEqual(['imersao']);
+  expect(saida.tipos).toEqual(['imersao', 'mergulho']);
+  expect(entrada.tipos).toEqual(['imersao', 'mergulho']);
+  expect(px(entrada.origem[2])).toBe(20); // largura do ícone: base do tamanho do triângulo
   expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
   expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
 });
@@ -450,7 +451,8 @@ testDoGate(test, 'index', 'videos')('link Vídeos do cabeçalho: tipo imersao e 
   await page.waitForURL(/\/videos/);
   await esperar(page, 2);
   const [, entrada] = await nomes(page);
-  expect(entrada.tipos).toEqual(['imersao']);
+  expect(entrada.tipos).toEqual(['imersao']); // sem ícone de play: círculo, sem mergulho
+  expect(entrada.origem[2]).toBe('');
   expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
   expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
 });
@@ -465,7 +467,7 @@ testDoGate(test, 'index', 'videos')('teclado (Enter): a origem é o centro do í
   await page.waitForURL(/\/videos/);
   await esperar(page, 2);
   const [, entrada] = await nomes(page);
-  expect(entrada.tipos).toEqual(['imersao']);
+  expect(entrada.tipos).toEqual(['imersao', 'mergulho']);
   expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
   expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
 });
@@ -481,7 +483,7 @@ testDoGate(test, 'index', 'videos')('sem ponto guardado a página abre completa 
   await esperar(page, 2);
   const [, entrada] = await nomes(page);
   expect(entrada.tipos).toEqual(['imersao']);
-  expect(entrada.origem).toEqual(['', '']);
+  expect(entrada.origem).toEqual(['', '', '']);
   await expect(page.locator('h1')).toHaveText('Vídeos');
 });
 

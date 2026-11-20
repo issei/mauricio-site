@@ -14,6 +14,7 @@
     --vt-duracao: 0.2s; /* conteúdo: curto, para não somar à espera da rede */
     --vt-duracao-compartilhado: 0.32s; /* capa e título: o movimento que a pessoa acompanha */
     --vt-duracao-imersao: 0.45s; /* início → vídeos: a abertura que a pessoa acompanha (≤ 0,5 s) */
+    --vt-duracao-mergulho: 0.7s; /* mergulho no play: o zoom que a pessoa acompanha */
     --vt-curva: cubic-bezier(0.2, 0.7, 0.2, 1);
     --vt-deslocamento: 12px;
   }
@@ -88,6 +89,57 @@
     to {
       transform: scale(1.06);
       opacity: 0.6;
+    }
+  }
+
+  /*
+   * Mergulho no play (tipo `mergulho`, só quando o link tem o ícone de play): a câmera entra pelo triângulo do ícone.
+   * A página antiga cresce a partir do centro do triângulo e a nova aparece só dentro dele, num triângulo que cresce
+   * igual (mesmos fatores nas duas, para a borda coincidir). Os fatores sobem cada vez mais rápido: a aceleração
+   * é progressiva, não linear. O último passa de 3000 para cobrir qualquer tela. `--vt-x`, `--vt-y` e `--vt-lado`
+   * (centroide e largura do ícone, em px) vêm do script.
+   */
+  :root:active-view-transition-type(mergulho)::view-transition-old(root) {
+    animation: vt-mergulha-fundo var(--vt-duracao-mergulho) linear both;
+    transform-origin: var(--vt-x, 50%) var(--vt-y, 40%);
+  }
+  :root:active-view-transition-type(mergulho)::view-transition-new(root) {
+    animation: vt-mergulha-pagina var(--vt-duracao-mergulho) linear both;
+  }
+  @keyframes vt-mergulha-fundo {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.5); }
+    30% { transform: scale(3); }
+    45% { transform: scale(7); }
+    60% { transform: scale(20); }
+    75% { transform: scale(70); }
+    90% { transform: scale(380); }
+    100% { transform: scale(3500); }
+  }
+  @keyframes vt-mergulha-pagina {
+    0% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -0.0799) calc(var(--vt-y) + var(--vt-lado) * 0.1258), calc(var(--vt-x) + var(--vt-lado) * -0.0799) calc(var(--vt-y) + var(--vt-lado) * -0.1258), calc(var(--vt-x) + var(--vt-lado) * 0.1597) calc(var(--vt-y) + var(--vt-lado) * 0.0));
+    }
+    15% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -0.1198) calc(var(--vt-y) + var(--vt-lado) * 0.1887), calc(var(--vt-x) + var(--vt-lado) * -0.1198) calc(var(--vt-y) + var(--vt-lado) * -0.1887), calc(var(--vt-x) + var(--vt-lado) * 0.2396) calc(var(--vt-y) + var(--vt-lado) * 0.0));
+    }
+    30% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -0.2397) calc(var(--vt-y) + var(--vt-lado) * 0.3774), calc(var(--vt-x) + var(--vt-lado) * -0.2397) calc(var(--vt-y) + var(--vt-lado) * -0.3774), calc(var(--vt-x) + var(--vt-lado) * 0.4791) calc(var(--vt-y) + var(--vt-lado) * 0.0));
+    }
+    45% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -0.5593) calc(var(--vt-y) + var(--vt-lado) * 0.8806), calc(var(--vt-x) + var(--vt-lado) * -0.5593) calc(var(--vt-y) + var(--vt-lado) * -0.8806), calc(var(--vt-x) + var(--vt-lado) * 1.1179) calc(var(--vt-y) + var(--vt-lado) * 0.0));
+    }
+    60% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -1.598) calc(var(--vt-y) + var(--vt-lado) * 2.516), calc(var(--vt-x) + var(--vt-lado) * -1.598) calc(var(--vt-y) + var(--vt-lado) * -2.516), calc(var(--vt-x) + var(--vt-lado) * 3.194) calc(var(--vt-y) + var(--vt-lado) * 0.0));
+    }
+    75% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -5.593) calc(var(--vt-y) + var(--vt-lado) * 8.806), calc(var(--vt-x) + var(--vt-lado) * -5.593) calc(var(--vt-y) + var(--vt-lado) * -8.806), calc(var(--vt-x) + var(--vt-lado) * 11.179) calc(var(--vt-y) + var(--vt-lado) * 0.0));
+    }
+    90% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -30.362) calc(var(--vt-y) + var(--vt-lado) * 47.804), calc(var(--vt-x) + var(--vt-lado) * -30.362) calc(var(--vt-y) + var(--vt-lado) * -47.804), calc(var(--vt-x) + var(--vt-lado) * 60.686) calc(var(--vt-y) + var(--vt-lado) * 0.0));
+    }
+    100% {
+      clip-path: polygon(calc(var(--vt-x) + var(--vt-lado) * -279.65) calc(var(--vt-y) + var(--vt-lado) * 440.3), calc(var(--vt-x) + var(--vt-lado) * -279.65) calc(var(--vt-y) + var(--vt-lado) * -440.3), calc(var(--vt-x) + var(--vt-lado) * 558.95) calc(var(--vt-y) + var(--vt-lado) * 0.0));
     }
   }
 

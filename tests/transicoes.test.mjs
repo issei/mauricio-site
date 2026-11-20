@@ -99,7 +99,7 @@ test('o cabeçalho tem o nome estático vt-cabecalho e não anima (RF-VT-04)', (
 test('a página antiga fica parada e a nova entra por cima, sem as duas esmaecerem (sensação de travada)', () => {
   assert.match(CSS, /::view-transition-old\(root\)\s*\{\s*animation:\s*none;?\s*\}/);
   assert.match(CSS, /::view-transition-old\(root\),\s*::view-transition-new\(root\)\s*\{\s*mix-blend-mode:\s*normal/);
-  const semImersao = CSS.replace(/:root:active-view-transition-type\(imersao\)[^{]*\{[^}]*\}/g, '');
+  const semImersao = CSS.replace(/:root:active-view-transition-type\((?:imersao|mergulho)\)[^{]*\{[^}]*\}/g, '');
   assert.doesNotMatch(semImersao, /::view-transition-old\(root\)\s*\{[^}]*animation(-name)?:\s*vt-/, 'o conteúdo antigo não anima, salvo na abertura imersiva');
 });
 
@@ -115,7 +115,7 @@ test('as @keyframes só declaram opacity e transform, salvo o clip-path da abert
   for (const [, nome, corpo] of quadros) {
     const props = [...corpo.matchAll(/([\w-]+)\s*:/g)].map((m) => m[1]);
     assert.ok(props.length > 0);
-    const permitidas = nome === 'vt-abre' ? ['clip-path'] : ['opacity', 'transform'];
+    const permitidas = nome === 'vt-abre' || nome === 'vt-mergulha-pagina' ? ['clip-path'] : nome === 'vt-mergulha-fundo' ? ['transform'] : ['opacity', 'transform'];
     for (const p of props) assert.ok(permitidas.includes(p), `propriedade proibida na keyframe ${nome}: ${p}`);
   }
 });
@@ -224,4 +224,26 @@ test('a pré-busca do site inclui /videos.html (RF-VT-31, CA-45)', () => {
   const site = JSON.parse(injetar('/repo/src/index.html')[2].children);
   assert.ok(site.prefetch[0].where.href_matches.includes('/videos.html'));
   assert.equal(Object.keys(site).join(), 'prefetch');
+});
+
+test('mergulho no play: fundo e triângulo crescem com os mesmos fatores, cada vez mais rápido (RF-VT-33, CA-47)', () => {
+  const quadros = (nome) => CSS.match(new RegExp(`@keyframes ${nome}\\s*\\{((?:[^{}]|\\{[^{}]*\\})*)\\}`))[1];
+  const fundo = [...quadros('vt-mergulha-fundo').matchAll(/(\d+)%\s*\{\s*transform:\s*scale\(([\d.]+)\)/g)].map((m) => [Number(m[1]), Number(m[2])]);
+  const pagina = [...quadros('vt-mergulha-pagina').matchAll(/(\d+)%\s*\{\s*clip-path:\s*polygon\(([^;]*)\);/g)].map((m) => [Number(m[1]), m[2]]);
+  assert.equal(fundo.length, pagina.length);
+  assert.ok(fundo.length >= 6);
+  fundo.forEach(([pct, k], i) => {
+    assert.equal(pagina[i][0], pct, 'mesmas paradas');
+    // o vértice da ponta do triângulo (0,1597 do lado, ao centro) cresce com o mesmo fator do fundo
+    const ponta = pagina[i][1].split(', ')[2].match(/\*\s*(-?[\d.]+)\)/)[1];
+    assert.ok(Math.abs(Number(ponta) - 0.1597 * k) < 0.001, `${pct}%: ${ponta} vs ${0.1597 * k}`);
+  });
+  const fatores = fundo.map(([, k]) => k);
+  assert.equal(fatores[0], 1);
+  assert.ok(fatores.at(-1) >= 3000, 'o último fator cobre qualquer tela');
+  const razoes = fatores.slice(1).map((k, i) => k / fatores[i]);
+  assert.ok(razoes.at(-1) > razoes[0], 'o zoom acelera: a razão entre paradas cresce');
+  assert.match(CSS, /:root:active-view-transition-type\(mergulho\)::view-transition-old\(root\)\s*\{[^}]*vt-mergulha-fundo/);
+  assert.match(CSS, /:root:active-view-transition-type\(mergulho\)::view-transition-new\(root\)\s*\{[^}]*vt-mergulha-pagina/);
+  assert.ok(Number(CSS.match(/--vt-duracao-mergulho:\s*([\d.]+)s/)[1]) <= 0.8);
 });
