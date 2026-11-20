@@ -36,8 +36,8 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Menu do cabeçalho no celular** (< 640 px) → padrão *disclosure*, não `role=menu`: `<button>` com texto visível "Menu", `aria-expanded` e `aria-controls`; Enter/Espaço alternam, Esc fecha e devolve o foco ao botão, foco saindo do cabeçalho fecha. Sem JavaScript o botão não aparece e a lista fica aberta. CSS e script inline, gerados por `scripts/gen-cabecalho.mjs`. *(2026-11-10, decisão Q8 do autor)*
 
 ## `role="list"` em `<ul>/<ol>` com `list-style:none` (decidido na Fase 7)
-- **Decisão:** manter. Safari/VoiceOver deixa de anunciar "lista, N itens" quando `list-style:none`; o `role="list"` explícito restaura. É o único uso de `role` redundante aceito; `role="main"`/`"navigation"` em landmark nativo continuam proibidos.
-- **Onde:** `engenharia-agentes-ia` (8 listas). **Consequência:** `verify-a11y.py` reporta `aria-soup` (16 ocorrências com o espelho EN): falso positivo conhecido, declarado no `REPORT.md`.
+- **Decisão:** manter. Safari/VoiceOver deixa de anunciar "lista, N itens" quando `list-style:none`; o `role="list"` explícito restaura. É o único uso de `role` redundante aceito; `role="main"`/`"navigation"` em landmark nativo continuam proibidos. (gate: `aria-soup` · `role="list"`)
+- **Onde:** `engenharia-agentes-ia` (8 listas). **Consequência:** desde a 2.5.0 do A11Y.md, o `verify-a11y.py` lê a marca `(gate: …)` acima e mostra as 16 ocorrências de `aria-soup` (com o espelho EN) como registradas, sem contar como erro.
 - **Evidência:** auditor independente mediu `list-style-type: none` (Fase 7). Comportamento em VoiceOver real: **não verificado**.
 
 ## Banner de cookies e foco (Fase 7)

@@ -38,7 +38,7 @@ export function initFileExplorer() {
   const explorer = document.getElementById('file-explorer');
   if (!explorer) return;
 
-  enhanceTablist(explorer.querySelector('[role="tablist"]'));
+  enhanceTablist(explorer.querySelector('.ep07-ide__tabs'));
   const tabs   = explorer.querySelectorAll('.ep07-ide__tab');
   const panels = explorer.querySelectorAll('.ep07-ide__panel');
 

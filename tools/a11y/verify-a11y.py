@@ -4,11 +4,15 @@ verify-a11y.py — static gate for projects adopting the A11Y.md standard.
 
 Checks what can be verified without a browser: that the project artifacts
 exist, are current and well-formed, that the evidence they carry adds up
-(the contrast ratios recorded in REPORT.md are recomputed, never trusted),
+(the contrast ratios recorded in REPORT.md are recomputed, never trusted,
+and every component the source contains must have its guide's scenarios
+in the report),
 and that the source is free of the anti-patterns a text search can catch —
 the ones axe cannot see because they live in handlers, CSS intent or source
 that has not been rendered yet. Exits non-zero when a check fails, so it can
-gate a build. Every run ends with the line to record in the report's Static
+gate a build. A finding the project already recorded (an exception in force,
+or a decision between conformant alternatives) is printed as registered and
+does not fail. Every run ends with the line to record in the report's Static
 gate field; when the script cannot run at all, the agent records NOT RUN
 with the reason and says so in the delivery (A11Y.md §2).
 
@@ -81,15 +85,15 @@ REDUNDANT_ROLES = {
 # Text floors per compliance profile (SC 1.4.3 / 1.4.6). UI floor is 3:1 everywhere (SC 1.4.11).
 PROFILE_FLOORS = {"shield": 7.0, "standard": 4.5, "launchpad": 4.5}
 
-findings: list[tuple[str, str, str]] = []  # (level, check, message)
+findings: list[tuple[str, str, str, str]] = []  # (level, check, message, source text flagged)
 
 
-def fail(check: str, message: str) -> None:
-    findings.append(("ERROR", check, message))
+def fail(check: str, message: str, subject: str = "") -> None:
+    findings.append(("ERROR", check, message, subject))
 
 
-def warn(check: str, message: str) -> None:
-    findings.append(("WARN", check, message))
+def warn(check: str, message: str, subject: str = "") -> None:
+    findings.append(("WARN", check, message, subject))
 
 
 def git(root: Path, *args: str) -> str | None:
@@ -419,34 +423,55 @@ def normalize_hex(token: str) -> str:
     return h
 
 
-def check_exceptions(root: Path) -> None:
-    """Every exception needs owner, approver, tracking issue and a future expiry."""
+def exception_entries(root: Path) -> list[tuple[str, str]]:
+    """The filled entries of EXCEPTIONS.md as (label, block). A blank copy of
+    the template is not an entry."""
     path = root / "EXCEPTIONS.md"
     if not path.is_file():
-        return  # only required once a deviation is accepted
+        return []  # only required once a deviation is accepted
     text = read(path) or ""
     blocks = re.split(r"^#{2,4}\s+\d+\.\s*(?:Basic Details|Detalhes Básicos)", text, flags=re.M)[1:]
-    today = dt.date.today()
+    entries = []
     for i, block in enumerate(blocks, 1):
         entry_id = re.search(r"(?:Exception ID|ID da Exceção):\*{0,2}[ \t]*(.*)", block)
         label = (entry_id.group(1).strip() if entry_id else f"entry #{i}")[:40]
-        if PLACEHOLDER.search(label) or not label:
-            continue  # unfilled blank copy from the template
-        for field, pattern in (("risk owner", r"(Risk Owner|Dono do Risco)"),
-                               ("approver", r"(Approved by|Aprovado por)"),
-                               ("tracking issue", r"(Tracking Issue|Issue de Rastreio)")):
-            m = re.search(pattern + r":\*{0,2}[ \t]*(.*)", block)
-            if not m or not m.group(2).strip() or PLACEHOLDER.search(m.group(2)):
-                fail("exceptions", f"{label}: missing {field}.")
-        expiry = re.search(r"(?:Expiry|Expiração)[^:\n]*:\*{0,2}[ \t]*\[?(\d{4}-\d{2}-\d{2})", block)
-        if not expiry:
+        if label and not PLACEHOLDER.search(label):
+            entries.append((label, block))
+    return entries
+
+
+SIGN_OFF = (("risk owner", r"(Risk Owner|Dono do Risco)"),
+            ("approver", r"(Approved by|Aprovado por)"),
+            ("tracking issue", r"(Tracking Issue|Issue de Rastreio)"))
+
+
+def missing_fields(block: str) -> list[str]:
+    missing = []
+    for field, pattern in SIGN_OFF:
+        m = re.search(pattern + r":\*{0,2}[ \t]*(.*)", block)
+        if not m or not m.group(2).strip() or PLACEHOLDER.search(m.group(2)):
+            missing.append(field)
+    return missing
+
+
+def expiry_of(block: str) -> dt.date | None:
+    expiry = re.search(r"(?:Expiry|Expiração)[^:\n]*:\*{0,2}[ \t]*\[?(\d{4}-\d{2}-\d{2})", block)
+    return dt.date.fromisoformat(expiry.group(1)) if expiry else None
+
+
+def check_exceptions(root: Path) -> None:
+    """Every exception needs owner, approver, tracking issue and a future expiry."""
+    today = dt.date.today()
+    for label, block in exception_entries(root):
+        for field in missing_fields(block):
+            fail("exceptions", f"{label}: missing {field}.")
+        date = expiry_of(block)
+        if not date:
             fail("exceptions", f"{label}: missing or unparseable expiry date (use YYYY-MM-DD).")
-        else:
-            date = dt.date.fromisoformat(expiry.group(1))
-            if date < today:
-                fail("exceptions", f"{label}: expired on {date} — review, fix or consciously renew it.")
-            elif (date - today).days <= 14:
-                warn("exceptions", f"{label}: expires in {(date - today).days} day(s).")
+        elif date < today:
+            fail("exceptions", f"{label}: expired on {date} — review, fix or consciously renew it.")
+        elif (date - today).days <= 14:
+            warn("exceptions", f"{label}: expires in {(date - today).days} day(s).")
 
 
 def check_gitignore(root: Path) -> None:
@@ -505,7 +530,7 @@ def check_source_antipatterns(root: Path, src: Path) -> None:
         for name, pattern, message in checks:
             for match in pattern.finditer(text):
                 level = warn if name in ("outline-none", "media-autoplay") else fail
-                level(name, f"{rel}:{line_of(text, match.start())} — {message}")
+                level(name, f"{rel}:{line_of(text, match.start())} — {message}", match.group(0))
         # Clickable div/span: onClick, Vue @click / v-on:click, Svelte on:click, Angular (click).
         # A div that replicated a button by hand (role + tabindex) is allowed by §6 — warn, so
         # someone verifies Enter and Space actually work.
@@ -516,9 +541,11 @@ def check_source_antipatterns(root: Path, src: Path) -> None:
             where = f"{rel}:{line_of(text, match.start())}"
             if re.search(r"\brole\s*=", attrs) and re.search(r"\btabindex\s*=", attrs, re.I):
                 warn("clickable-div", f"{where} — clickable <{match.group(1)}> replicating a button by hand: "
-                                      f"verify Enter and Space are handled, or use a native <button> (A11Y.md §6)")
+                                      f"verify Enter and Space are handled, or use a native <button> (A11Y.md §6)",
+                     match.group(0))
             else:
-                fail("clickable-div", f"{where} — clickable <{match.group(1)}> — use a native <button> (A11Y.md §6)")
+                fail("clickable-div", f"{where} — clickable <{match.group(1)}> — use a native <button> (A11Y.md §6)",
+                     match.group(0))
 
 
 def check_placeholder_labels(root: Path, src: Path) -> None:
@@ -554,7 +581,7 @@ def check_placeholder_labels(root: Path, src: Path) -> None:
                 continue  # wrapped in a <label>
             fail("placeholder-label", f"{path.relative_to(root)}:{line_of(text, match.start())} — "
                                       f"<{match.group(1)}> labeled only by its placeholder. The label disappears "
-                                      f"while typing; give it a visible <label> (A11Y.md §6)")
+                                      f"while typing; give it a visible <label> (A11Y.md §6)", match.group(0))
 
 
 def check_half_climbed(root: Path, src: Path) -> None:
@@ -611,22 +638,22 @@ def check_aria_soup(root: Path, src: Path) -> None:
             if tag == "a":
                 if role.group(1) == "link" and re.search(r"\bhref\s*=", attrs):
                     fail("aria-soup", f"{rel}:{line_of(text, match.start())} — role=\"link\" on <a href>: "
-                                      f"redundant role on a native element (ARIA Soup, A11Y.md §6)")
+                                      f"redundant role on a native element (ARIA Soup, A11Y.md §6)", match.group(0))
                 continue
             if role.group(1) in REDUNDANT_ROLES.get(tag, ()):
                 fail("aria-soup", f"{rel}:{line_of(text, match.start())} — role=\"{role.group(1)}\" on <{tag}>: "
-                                  f"redundant role on a native element (ARIA Soup, A11Y.md §6)")
+                                  f"redundant role on a native element (ARIA Soup, A11Y.md §6)", match.group(0))
         for match in dup_label.finditer(text):
             label, visible = match.group(3), match.group(5)
             if re.sub(r"\s+", " ", label).strip().lower() == re.sub(r"\s+", " ", visible).strip().lower():
                 warn("aria-soup", f"{rel}:{line_of(text, match.start())} — aria-label repeats the visible text "
                                   f"of <{match.group(1)}>. Drop it: when the two drift apart it becomes an "
-                                  f"SC 2.5.3 failure (ARIA Soup, A11Y.md §6)")
+                                  f"SC 2.5.3 failure (ARIA Soup, A11Y.md §6)", match.group(0))
         if not toggled:
             for match in static_expanded.finditer(text):
                 warn("aria-soup", f"{rel}:{line_of(text, match.start())} — aria-expanded hardcoded and no script "
                                   f"in the project ever toggles it: a state that never updates is worse than "
-                                  f"none (SC 4.1.2, ARIA Soup, A11Y.md §6)")
+                                  f"none (SC 4.1.2, ARIA Soup, A11Y.md §6)", match.group(0))
 
 
 def check_orphaned_aria(root: Path, src: Path) -> None:
@@ -653,7 +680,302 @@ def check_orphaned_aria(root: Path, src: Path) -> None:
                     warn("orphaned-aria",
                          f"{path.relative_to(root)}:{line_of(text, match.start())} — {attribute}=\"{target}\" has no matching "
                          f"id in this file. If the target lives in another component, make sure the id is "
-                         f"passed down rather than generated on both sides (A11Y.md §6).")
+                         f"passed down rather than generated on both sides (A11Y.md §6).", match.group(0))
+
+
+# --- checks: the interface against its evidence ----------------------------
+
+# A role as markup, JSX, Vue and scripts write it. The field case behind the
+# coverage check built its tabs entirely in JavaScript (2026-10-13): a scan of
+# `role="…"` alone would have found no tabs at all. `data-role` is not a role.
+Q = r"[\"'`]"
+ROLE_OF = (r"(?:(?<![\w.-]):?role\s*=\s*(?:\{\s*)?(?:\"'|" + Q + r")"   # role="…"  role={"…"}  :role="'…'"
+           r"|(?<![\w-])role\s*:\s*" + Q +                            # { role: "…" }
+           r"|setAttribute\(\s*" + Q + r"role" + Q + r"\s*,\s*" + Q +  # el.setAttribute('role', '…')
+           r"|\.role\s*=\s*" + Q + r")")                              # el.role = '…'
+END = r"(?![\w-])"  # whole names only: <table-row> is a custom element, guide-forms is not guide-form-controls
+
+
+def tag(name: str) -> str:
+    """The element as markup writes it, or as a script creates it: the
+    website's figure lightbox is `document.createElement("dialog")`, and its
+    only literal `<dialog>` sits in a comment."""
+    return r"(?:<" + name + END + r"|createElement\(\s*" + Q + name + Q + r"\s*[,)])"
+
+
+# An attribute inside an opening tag, quoted values skipped whole: `draggable`
+# in a sentence is prose, and so is "popover" inside an alt text.
+IN_TAG = r"<[a-z][\w.-]*(?:\"[^\"]*\"|'[^']*'|[^>\"'])*?\s"
+
+# Each guide that ends with an Expected behavior block, and the static
+# signatures of the component it covers (the rows of A11Y.md §2.1). Guides
+# whose component has no reliable signature in source (charts, maps, consent
+# banners, generative UI) are left out: their inventory stays with whoever
+# writes the report.
+GUIDE_SIGNATURES = {
+    "guide-buttons": (tag("button"), ROLE_OF + r"button" + END),
+    "guide-navigation": (tag("nav"), tag("main"), ROLE_OF + r"(?:navigation|main)" + END),
+    "guide-forms": (tag("form"), tag("textarea"),
+                    tag("input") + r"(?![^>]*\btype\s*=\s*[\"'](?:hidden|checkbox|radio|range|submit|button|reset|image|color)[\"'])"),
+    "guide-form-controls": (tag("select"), r"\btype\s*=\s*[\"'](?:checkbox|radio|range)[\"']",
+                            ROLE_OF + r"(?:switch|checkbox|radiogroup|radio|slider)" + END),
+    "guide-modals": (tag("dialog"), ROLE_OF + r"(?:alertdialog|dialog)" + END, r"\baria-modal\b"),
+    "guide-tabs-accordion": (ROLE_OF + r"(?:tablist|tabpanel|tab)" + END, tag("details")),
+    "guide-tables": (tag("table"), ROLE_OF + r"(?:table|grid|treegrid)" + END),
+    "guide-toasts-notifications": (ROLE_OF + r"(?:status|alert)" + END, r"\baria-live\b"),
+    "guide-tooltips-popovers": (ROLE_OF + r"tooltip" + END, IN_TAG + r"popover(?:target)?(?=\s*=|[\s>/])"),
+    "guide-loading-skeleton": (r"\baria-busy\b",),
+    "guide-autocomplete": (ROLE_OF + r"combobox" + END, r"\baria-autocomplete\b", tag("datalist")),
+    "guide-carousels-sliders": (r"\baria-roledescription\s*=\s*[\"'](?:carousel|slide)[\"']",),
+    "guide-datepicker": (r"\btype\s*=\s*[\"'](?:date|datetime-local|month|week)[\"']",),
+    "guide-drag-drop": (IN_TAG + r"draggable(?:\s*=\s*(?:[\"']true[\"']|\{true\}))?(?=[\s>/])",),
+    "guide-infinite-scroll": (ROLE_OF + r"feed" + END,),
+    "guide-media": (tag("video"), tag("audio"), tag("iframe") + r"[^>]*\b(?:youtube(?:-nocookie)?\.com|player\.vimeo\.com)/"),
+    "guide-treeview": (ROLE_OF + r"tree" + END,),
+}
+
+
+def check_guide_coverage(root: Path, report: Path, src: Path) -> None:
+    """Every component the interface contains is verified against its guide's
+    Expected behavior block (A11Y.md §7, User Flow; REPORT.md §3).
+
+    The inventory comes from the interface, never from the guides opened while
+    building it. In the field case behind this check (2026-10-13) the tabs, the
+    skip link and the status message of a landing page were built from memory,
+    and a report listing "the guides loaded" would have listed none of them.
+    A guide counts as covered when §3 names it by its file
+    (`guide-tabs-accordion`). The signatures are heuristic, so a missing guide
+    warns; a report that claims PASS with one missing fails, because it closes
+    a checkpoint the source says is still open.
+
+    Tag names match case-insensitively only in HTML: in JSX, TSX, Vue, Svelte
+    and Astro `<Table>` is a component and `Array<Table>` a type, and neither is
+    a table. Attribute signatures (`draggable`, `popover`) are not read in plain
+    `.js`/`.ts`, where `i<b && draggable` is a comparison.
+    """
+    body = body_of(report)
+    section = re.search(r"^#{2,3}\s*3\.[^\n]*\n(.*?)(?=^##\s|\Z)", body, re.M | re.S)
+    named = section.group(1).lower() if section else ""
+    claims_pass = status_claims_pass(body)
+
+    seen: dict[str, tuple[str, str]] = {}  # guide → (where, what matched)
+    for path in sorted(source_files(root, src)):
+        suffix = path.suffix.lower()
+        if suffix in (".css", ".scss"):
+            continue
+        text = scannable(path)
+        if not text:
+            continue
+        flags = re.I if suffix in (".html", ".htm") else 0
+        for guide, signatures in GUIDE_SIGNATURES.items():
+            if guide in seen:
+                continue
+            for signature in signatures:
+                if signature.startswith(IN_TAG) and suffix in (".js", ".ts"):
+                    continue
+                match = re.search(signature, text, flags)
+                if match:
+                    seen[guide] = (f"{path.relative_to(root)}:{line_of(text, match.start())}",
+                                   " ".join(match.group(0).split())[:40])
+                    break
+
+    for guide, (where, what) in seen.items():
+        if re.search(r"(?<![\w-])" + re.escape(guide) + END, named):
+            continue
+        message = (f"{where} — `{what}`: a component covered by {guide}, and REPORT.md §3 names no "
+                   f"scenarios run from it. Run the Expected behavior block of references/{guide}.md and "
+                   f"name the guide by its file (A11Y.md §7, User Flow)")
+        if claims_pass:
+            fail("guide-coverage", message + ". The report claims PASS with this checkpoint open.")
+        else:
+            warn("guide-coverage", message + ".")
+
+
+# --- the project's own records ----------------------------------------------
+
+SOURCE_CHECKS = ("positive-tabindex", "outline-none", "redundant-alert", "nullified-alt", "media-autoplay",
+                 "overlay", "clickable-div", "placeholder-label", "half-climbed-aria", "aria-soup", "orphaned-aria")
+# The source checks a decision may cover. Each one flags a shape that has a
+# conformant reading the gate cannot see: role="list" restoring the list
+# semantics Safari drops under `list-style: none`, role="alert" doubled with
+# aria-live for older screen readers, an outline replaced by a ring that
+# survives forced colors, a relationship whose target another component
+# renders. The other source checks flag failures, the half-climbed tablist
+# among them, and a failure is accepted only in EXCEPTIONS.md, with an owner,
+# an approver and an expiry.
+CHOICE_CHECKS = ("aria-soup", "redundant-alert", "outline-none", "orphaned-aria")
+
+FINDING_AT = re.compile(r"^(.+?):(\d+) — ")
+GATE_FIELD = re.compile(r"(?:Gate finding|Achado do gate):\*{0,2}[ \t]*(.*)", re.I)
+DECISION_GATE = re.compile(r"\(gate:\s*`([\w-]+)`\s*[·,]\s*`([^`]+)`\s*\)", re.I)
+# The markup a decision chose is one attribute or declaration with its value,
+# `role="list"` or `outline: none`. A bare `role` would cover every redundant role.
+MARKUP = re.compile(r"[\w:@.-]+\s*[=:]\s*\S.*")
+# A sign-off field that names nobody. The agent writes the entry in the same
+# turn it accepts the deviation (Exception Memory, §2): an approval still
+# pending covers nothing.
+UNSIGNED = re.compile(r"^\W*$|^\W*(?:tbd|todo|pending|pendente|awaiting|aguardando|none|nenhum|nenhuma|n/a|"
+                      r"a definir|não há|nao ha)\b", re.I)
+# An agent does not approve the deviation it introduced (Independent
+# Verification, §2, applied to the risk sign-off).
+AGENT = re.compile(r"\b(?:ai|ia|llm|agent|agente|bot|claude|chatgpt|gpt|copilot|gemini|codex)\b", re.I)
+FENCE = re.compile(r"^```.*?^```", re.M | re.S)
+
+
+def filled(field: re.Match | None) -> bool:
+    """A field with a value that is not the template's bracketed placeholder."""
+    return bool(field and field.group(1).strip() and not field.group(1).lstrip().startswith("["))
+
+
+def as_path(token: str) -> str:
+    path = token.strip().replace("\\", "/")
+    while path.startswith("./"):
+        path = path[2:]
+    return path.strip("/")
+
+
+def gate_exceptions(root: Path, src: Path) -> list[tuple[str, list[str], list[str], str, dt.date | None, bool]]:
+    """Exceptions that name a gate finding: (label, checks, files, approver, expiry, in force).
+
+    Files are named one by one, from the project root or from --src: a
+    directory would cover a whole rule, files created after the sign-off
+    included (EXCEPTIONS.md rule 3). In force means complete, signed and not
+    expired: an entry whose approver reads "pending" covers nothing.
+    """
+    path = root / "EXCEPTIONS.md"
+    if not path.is_file():
+        return []
+    entries = exception_entries(root)
+    stray = sum(1 for m in GATE_FIELD.finditer(read(path) or "") if filled(m)) \
+        - sum(1 for _, block in entries if filled(GATE_FIELD.search(block)))
+    if stray > 0:
+        warn("registers", f"EXCEPTIONS.md has {stray} Gate finding field(s) outside an entry the gate can read — "
+                          f"the template's shape, `### 1. Basic Details` with its own Exception ID, owner, approver, "
+                          f"tracking issue and expiry. They cover nothing.")
+    found = []
+    today = dt.date.today()
+    for label, block in entries:
+        field = GATE_FIELD.search(block)
+        if not filled(field):
+            continue  # the field is optional
+        tokens = re.findall(r"`([^`]+)`", field.group(1))
+        checks = [t for t in tokens if t in SOURCE_CHECKS]
+        files, strangers = [], []
+        for name in (as_path(t) for t in tokens if t not in SOURCE_CHECKS):
+            for base in (root, src):
+                if name and (base / name).is_file():
+                    files.append((base / name).relative_to(root).as_posix())
+                    break
+            else:
+                strangers.append(name or "(empty)")
+        if not checks or not files or strangers:
+            warn("registers", f"{label}: the Gate finding field must name at least one check the gate runs and each "
+                              f"file it covers, in backticks (`clickable-div` in `src/legacy/Grid.tsx`)"
+                              + (f"; not a file in this project: {', '.join(strangers)}" if strangers else "")
+                              + ". A directory would cover a whole rule (EXCEPTIONS.md rule 3).")
+            if not checks or not files:
+                continue
+        unsigned = [f for f, pattern in SIGN_OFF
+                    if (m := re.search(pattern + r":\*{0,2}[ \t]*(.*)", block)) and UNSIGNED.search(m.group(2).strip())]
+        approver = re.search(r"(?:Approved by|Aprovado por):\*{0,2}[ \t]*(.*)", block)
+        if approver and AGENT.search(approver.group(1)) and "approver" not in unsigned:
+            unsigned.append("approver")
+        if unsigned and not missing_fields(block):
+            warn("registers", f"{label} names a gate finding but its {' and '.join(unsigned)} name(s) nobody who can "
+                              f"sign ('pending', 'TBD', 'none', an AI agent): it covers nothing until a person signs.")
+        date = expiry_of(block)
+        in_force = not missing_fields(block) and not unsigned and date is not None and date >= today
+        found.append((label, checks, files, (approver.group(1).strip() if approver else "")[:40], date, in_force))
+    return found
+
+
+def gate_decisions(root: Path) -> list[tuple[int, str, str]]:
+    """Decisions that name a gate check: (line, check, markup chosen).
+
+    Read from the Decisions heading to the end of the file, outside comments,
+    code fences, quotes and struck-through lines: the template's rules carry an
+    example of the marker, and a copy of the template must not register it in
+    every project that adopts it.
+    """
+    path = root / "A11Y-DECISIONS.md"
+    if not path.is_file():
+        return []
+    blank = lambda m: re.sub(r"[^\n]", " ", m.group(0))
+    text = FENCE.sub(blank, HTML_COMMENT.sub(blank, read(path) or ""))
+    heading = re.search(r"^##\s+(?:Decisions|Decisões)\b", text, re.M)
+    if not heading:
+        return []
+    found = []
+    for n, raw in enumerate(text[heading.start():].split("\n"), line_of(text, heading.start())):
+        if raw.lstrip().startswith(">") or "~~" in raw:
+            continue
+        for match in DECISION_GATE.finditer(raw):
+            check, markup = match.group(1), match.group(2).strip()
+            if check not in SOURCE_CHECKS:
+                warn("registers", f"A11Y-DECISIONS.md:{n} names `{check}`, which is not a check this gate runs.")
+            elif check not in CHOICE_CHECKS:
+                warn("registers", f"A11Y-DECISIONS.md:{n} names `{check}`, which flags a failure, not a choice "
+                                  f"between conformant alternatives. Fix it, or accept it in EXCEPTIONS.md with "
+                                  f"an owner, an approver and an expiry.")
+            elif not MARKUP.fullmatch(markup):
+                warn("registers", f"A11Y-DECISIONS.md:{n} names `{markup}`, which is not one attribute or declaration "
+                                  f"with its value (`role=\"list\"`, `outline: none`). A fragment would cover every "
+                                  f"`{check}` finding in the project.")
+            else:
+                found.append((n, check, markup))
+    return found
+
+
+def chooses(markup: str, subject: str) -> bool:
+    """The flagged element carries the markup the decision chose, whole and as
+    its own attribute: `role="list"` is not inside `role="listitem"`, nor
+    inside `data-role="list"`, nor inside another attribute's value."""
+    norm = lambda t: re.sub(r"\s+", " ", re.sub(r"\s*([=:])\s*", r"\1", t.replace("'", '"')))
+    return bool(re.search(r"(?:^|(?<=[\s<{;,(]))" + re.escape(norm(markup)) + r"(?![\w-])", norm(subject)))
+
+
+def apply_registers(root: Path, src: Path) -> None:
+    """What the project already recorded is reported as registered, not failed.
+
+    An exception in force that names the check and the file, or a decision
+    that names the check and the markup it chose, turns the source finding it
+    covers into a registered line: printed on every run with its record, never
+    counted as an error. A decision is matched against the element the check
+    flagged, never against its neighbours on the same line. Field case
+    (2026-10-03): an adopter retrofitting a site wrapped this gate in a ceiling
+    script, because it failed on a role="list" the project had decided in
+    A11Y-DECISIONS.md and on violations it had accepted in EXCEPTIONS.md, "so
+    demanding zero would bring the gate down without information". The gate
+    told them to open the exception, then ignored it. An expired exception
+    stops covering, so its findings fail again; one whose finding is gone is
+    flagged for closing.
+    """
+    exceptions = gate_exceptions(root, src)
+    decisions = gate_decisions(root)
+    if not exceptions and not decisions:
+        return
+    used: set[int] = set()
+    for i, (level, check, message, subject) in enumerate(findings):
+        at = FINDING_AT.match(message)
+        if level == "REGISTERED" or check not in SOURCE_CHECKS or not at:
+            continue
+        rel = Path(at.group(1)).as_posix()
+        record = None
+        for k, (label, checks, files, approver, date, in_force) in enumerate(exceptions):
+            if check in checks and rel in files:
+                used.add(k)
+                if in_force and not record:
+                    record = f"EXCEPTIONS.md {label}, approved by {approver}, until {date}"
+        if not record and subject:
+            record = next((f"A11Y-DECISIONS.md:{n}" for n, chosen, markup in decisions
+                           if chosen == check and chooses(markup, subject)), None)
+        if record:
+            findings[i] = ("REGISTERED", check, f"{message} [{record}]", subject)
+    scanned = src.resolve()
+    for k, (label, checks, files, _, _, in_force) in enumerate(exceptions):
+        if in_force and k not in used and any((root / f).resolve().is_relative_to(scanned) for f in files):
+            warn("registers", f"{label} covers {', '.join(f'`{c}`' for c in checks)} in {', '.join(files)}, and this "
+                              f"run finds none there. If it was fixed, close the exception.")
 
 
 # --- runner ----------------------------------------------------------------
@@ -669,6 +991,7 @@ def run_checks(root: Path, src: Path) -> None:
         gate_declared = check_report_gate(report)
         check_report_standard_version(report)
         check_contrast_evidence(root, report, src)
+        check_guide_coverage(root, report, src)
     check_exceptions(root)
     check_gitignore(root)
     check_source_antipatterns(root, src)
@@ -676,6 +999,7 @@ def run_checks(root: Path, src: Path) -> None:
     check_half_climbed(root, src)
     check_aria_soup(root, src)
     check_orphaned_aria(root, src)
+    apply_registers(root, src)
 
     # The declared outcome must match this run — a stale PASS is the silent
     # failure the Static Gate rule exists to catch.
@@ -699,17 +1023,33 @@ CLEAN_REPORT = """# Report
 - [x] **Text & UI Contrast:** measured
 | body | #1c1b19 | #f7f6f3 | 15.92:1 | 7:1 | ✅ |
 - [ ] **Screen reader:** pending
+## 3. Behavior and Task Return
+- Scenarios run: guide-forms (4/4 passed) · guide-buttons (3/3 passed)
 """
 CLEAN_ROW = "| body | #1c1b19 | #f7f6f3 | 15.92:1 | 7:1 | ✅ |"
+PASS_REPORT = (CLEAN_REPORT.replace("⚠️ CONDITIONAL — screen reader validation pending", "✅ PASS")
+               .replace("- [ ] **Screen reader:** pending", "- [x] **Screen reader:** NVDA 2026.1 + Firefox 141"))
+EXCEPTION_ENTRY = """# Exceptions
+### 1. Basic Details
+- **Exception ID:** EXT-2026-001
+- **Risk Owner:** Ana Lima
+- **Approved by:** QA lead
+- **Tracking Issue:** https://example.com/issues/1
+- **Gate finding:** `clickable-div` in `src/legacy.jsx`
+### 4. Resolution Plan and Expiry
+- **Expiry (review-by date):** 2999-12-31
+"""
+LIST_DECISION = '- **Unstyled list** → `<ul role="list">` — Safari drops list semantics under list-style: none (gate: `aria-soup` · `role="list"`). (2026-10-20)\n'
 
 SELF_TEST_CASES = [
-    # (name, files, expected error checks, expected warning checks, checks that must NOT appear)
+    # (name, files, expected error checks, expected warning checks, checks that must NOT appear
+    #  [, expected registered checks — exactly these, when given])
     ("clean project", {
         "src/index.html": '<label for="q">Search</label><input id="q" placeholder="title"><button>Go</button>'
                           '<style>.a{color:#1c1b19;background:#f7f6f3}</style>',
         "REPORT.md": CLEAN_REPORT,
     }, set(), set(), {"clickable-div", "placeholder-label", "aria-soup", "contrast-evidence", "gate-declared",
-                      "standard-version", "half-climbed-aria"}),
+                      "standard-version", "half-climbed-aria", "guide-coverage"}),
     ("clickable div in four syntaxes, hand-made button warns", {
         "src/a.jsx": '<div onClick={() => go()}>x</div>',
         "src/b.vue": '<span @click="go">x</span><div v-on:click="go">y</div>',
@@ -806,13 +1146,98 @@ SELF_TEST_CASES = [
         "src/index.html": '<style>.a{color:#1c1b19;background:#f7f6f3}</style>',
         "REPORT.md": CLEAN_REPORT.replace("PASS — run on: 2026-09-25", "NOT RUN — reason: no shell"),
     }, set(), {"gate-declared"}, set()),
+    ("guide coverage: tabs built by script and a status message warn; a guide named outside §3 does not count", {
+        "src/index.html": '<p role="status"></p><style>.a{color:#1c1b19;background:#f7f6f3}</style>',
+        "src/tabs.js": "list.setAttribute('role', 'tablist');\ntab.setAttribute('role', 'tab');\n",
+        "REPORT.md": CLEAN_REPORT + "\n## Assessment Notes\n- guide-tabs-accordion and guide-toasts-notifications: next session\n",
+    }, set(), {"guide-coverage"}, {"gate-declared"}),
+    ("guide coverage: a PASS report missing a present component's guide fails", {
+        "src/index.html": '<dialog open><button>Close</button></dialog><style>.a{color:#1c1b19;background:#f7f6f3}</style>',
+        "REPORT.md": PASS_REPORT,
+    }, {"guide-coverage", "gate-declared"}, set(), set()),
+    ("guide coverage: named guides satisfy; quoted, commented and prose mentions are not components", {
+        "src/index.html": '<div role="tablist"><button role="tab" aria-selected="true">1</button></div>'
+                          '<p>Drag a draggable card; a popover explains it.</p>'
+                          '<pre><video src="a.mp4"></video></pre><!-- <dialog open></dialog> -->'
+                          '<style>.a{color:#1c1b19;background:#f7f6f3}</style>',
+        "REPORT.md": CLEAN_REPORT.replace("guide-forms (4/4 passed)", "guide-tabs-accordion (5/5 passed)"),
+    }, set(), set(), {"guide-coverage"}),
+    ("guide coverage: React components, TS generics, custom elements, data-role and attribute values are not components", {
+        "src/a.tsx": 'const [d, setD] = useState<Dialog | null>(null)\nconst rows: Array<Table> = []\n'
+                     'return <Table rows={rows}><Form onSubmit={go} /></Table>',
+        "src/b.html": '<table-row></table-row><video-player></video-player><div data-role="tab"></div>'
+                      '<img alt="a popover and a tooltip" src="x.png"><style>.a{color:#1c1b19;background:#f7f6f3}</style>',
+        "src/c.js": 'for (let i = 0; i<b && draggable; i++) {}',
+        "REPORT.md": CLEAN_REPORT,
+    }, set(), set(), {"guide-coverage"}),
+    ("guide coverage: roles in JSX braces, Vue bindings and object props, and elements a script creates, are found", {
+        "src/a.tsx": '<div role={"tablist"}><button role="tab" aria-selected="true">1</button></div>',
+        "src/b.vue": '<template><div :role="\'tree\'"></div></template>',
+        "src/c.js": 'h("div", { role: "feed" })\nconst dlg = document.createElement("dialog")',
+        "src/index.html": '<style>.a{color:#1c1b19;background:#f7f6f3}</style>',
+        "REPORT.md": CLEAN_REPORT,
+    }, set(), {"guide-coverage"}, {"gate-declared"}),
+    ("registers: an exception in force covers its file; the same finding elsewhere fails", {
+        "src/legacy.jsx": '<div onClick={go}>x</div>',
+        "src/new.jsx": '<div onClick={go}>y</div>',
+        "EXCEPTIONS.md": EXCEPTION_ENTRY,
+    }, {"clickable-div", "artifacts"}, set(), set(), {"clickable-div"}),
+    ("registers: an expired exception covers nothing", {
+        "src/legacy.jsx": '<div onClick={go}>x</div>',
+        "EXCEPTIONS.md": EXCEPTION_ENTRY.replace("2999-12-31", "2020-01-01"),
+    }, {"clickable-div", "exceptions", "artifacts"}, set(), set(), set()),
+    ("registers: an exception whose finding is gone warns to close it", {
+        "src/legacy.jsx": '<button onClick={go}>x</button>',
+        "EXCEPTIONS.md": EXCEPTION_ENTRY,
+    }, {"artifacts"}, {"registers"}, set(), set()),
+    ("registers: a decision covers the markup it chose across a multi-line tag; markers in the rules and in comments are not read", {
+        "src/l.jsx": '<ul\n  className="plain"\n  role="list">\n  <li>a</li>\n</ul>\n<nav role="navigation"></nav>',
+        "A11Y-DECISIONS.md": "# Decisions Log\n## Rules for the AI\n8. Mark it like (gate: `aria-soup` · `role=\"navigation\"`).\n"
+                             "## Decisions\n<!-- (gate: `aria-soup` · `role=\"navigation\"`) -->\n" + LIST_DECISION,
+    }, {"aria-soup", "artifacts"}, set(), set(), {"aria-soup"}),
+    ("registers: a decision cannot cover a failure, the half-climbed tablist included", {
+        "src/a.jsx": '<div onClick={go}>x</div>',
+        "src/t.html": '<div role="tablist"><button>1</button></div>',
+        "A11Y-DECISIONS.md": "## Decisions\n- **Card** → the whole card is clickable (gate: `clickable-div` · `onClick`)\n"
+                             "- **Tabs** → buttons only (gate: `half-climbed-aria` · `role=\"tablist\"`)\n",
+    }, {"clickable-div", "half-climbed-aria", "artifacts"}, {"registers"}, set(), set()),
+    ("registers: a decision covers the element the check flagged, not its neighbour on the same line", {
+        "src/a.html": '<nav role="navigation"><ul role="list"><li>a</li></ul></nav>',
+        "A11Y-DECISIONS.md": "## Decisions\n" + LIST_DECISION,
+    }, {"aria-soup", "artifacts"}, set(), set(), {"aria-soup"}),
+    ("registers: a decision matches whole markup only; a bare fragment covers nothing", {
+        "src/a.html": '<ul><li role="listitem" data-role="list">a</li></ul>',
+        "A11Y-DECISIONS.md": "## Decisions\n" + LIST_DECISION + "- **Anything** → loose (gate: `aria-soup` · `role`)\n",
+    }, {"aria-soup", "artifacts"}, {"registers"}, set(), set()),
+    ("registers: a directory, a pending or AI approver and a field outside the template's shape cover nothing", {
+        "src/legacy.jsx": '<div onClick={go}>x</div>',
+        "EXCEPTIONS.md": "**Common fields**\n- **Gate finding:** `clickable-div` in `src/legacy.jsx`\n"
+                         + EXCEPTION_ENTRY.replace("`src/legacy.jsx`", "`src`").split("\n", 1)[1]
+                         + EXCEPTION_ENTRY.replace("EXT-2026-001", "EXT-2026-002")
+                                          .replace("QA lead", "pending — awaiting sign-off").split("\n", 1)[1]
+                         + EXCEPTION_ENTRY.replace("EXT-2026-001", "EXT-2026-003")
+                                          .replace("QA lead", "Claude (AI agent)").split("\n", 1)[1],
+    }, {"clickable-div", "artifacts"}, {"registers"}, set(), set()),
+    ("registers: ./ and backslash paths, paths from --src, and an entry renewed after an expired one", {
+        "src/legacy.jsx": '<div onClick={go}>x</div>',
+        "src/other.jsx": '<div onClick={go}>y</div>',
+        "EXCEPTIONS.md": EXCEPTION_ENTRY.replace("2999-12-31", "2020-01-01")
+                         + EXCEPTION_ENTRY.replace("EXT-2026-001", "EXT-2026-002")
+                                          .replace("`src/legacy.jsx`", "`.\\legacy.jsx` and `./src/other.jsx`")
+                                          .split("\n", 1)[1],
+    }, {"exceptions", "artifacts"}, set(), {"clickable-div"}, {"clickable-div"}),
+    ("registers: a report declaring the gate PASS holds when every finding is registered", {
+        "src/index.html": '<ul role="list"><li>a</li></ul><style>.a{color:#1c1b19;background:#f7f6f3}</style>',
+        "A11Y-DECISIONS.md": "## Decisions\n" + LIST_DECISION,
+        "REPORT.md": CLEAN_REPORT,
+    }, set(), set(), {"gate-declared", "aria-soup"}, {"aria-soup"}),
 ]
 
 
 def self_test() -> int:
     """Built-in fixtures: one temp project per case, each check asserted by name."""
     ok = True
-    for name, files, want_err, want_warn, forbid in SELF_TEST_CASES:
+    for name, files, want_err, want_warn, forbid, *want_reg in SELF_TEST_CASES:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             for rel, content in files.items():
@@ -820,16 +1245,20 @@ def self_test() -> int:
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(content, encoding="utf-8")
             run_checks(root, root / "src")
-            errs = {c for lvl, c, _ in findings if lvl == "ERROR"}
-            warns = {c for lvl, c, _ in findings if lvl == "WARN"}
+            errs = {c for lvl, c, *_ in findings if lvl == "ERROR"}
+            warns = {c for lvl, c, *_ in findings if lvl == "WARN"}
+            regs = {c for lvl, c, *_ in findings if lvl == "REGISTERED"}
             seen = errs | warns
             missing = (want_err - errs) | (want_warn - warns)
             unexpected = (forbid & seen) | (errs - want_err - want_warn)
+            if want_reg:
+                missing |= want_reg[0] - regs
+                unexpected |= regs - want_reg[0]
             passed = not missing and not unexpected
             ok &= passed
             print(f"  {'✓' if passed else '✗'} {name}")
             if not passed:
-                for lvl, c, m in findings:
+                for lvl, c, m, _ in findings:
                     print(f"      {lvl} [{c}] {m[:110]}")
                 if missing:
                     print(f"      missing: {sorted(missing)}")
@@ -862,22 +1291,26 @@ def main() -> int:
 
     errors = [f for f in findings if f[0] == "ERROR"]
     warnings = [f for f in findings if f[0] == "WARN"]
-    for level, check, message in errors + warnings:
-        marker = "✗" if level == "ERROR" else "!"
+    registered = [f for f in findings if f[0] == "REGISTERED"]
+    for level, check, message, _ in errors + warnings + registered:
+        marker = {"ERROR": "✗", "WARN": "!"}.get(level, "·")
         print(f"{marker} [{check}] {message}")
 
+    # Registered findings never fail the run, and never leave the output either:
+    # an exception is "never silently suppressed" (EXCEPTIONS.md rule 4).
+    also = f", {len(registered)} registered" if registered else ""
     print()
     if errors:
-        print(f"FAIL — {len(errors)} error(s), {len(warnings)} warning(s).")
-    elif warnings:
-        print(f"PASS with {len(warnings)} warning(s).")
+        print(f"FAIL — {len(errors)} error(s), {len(warnings)} warning(s){also}.")
+    elif warnings or registered:
+        print(f"PASS with {len(warnings)} warning(s){also}.")
     else:
         print("PASS — nothing statically detectable is wrong.")
     print("This is not a conformance claim: the human checkpoints in REPORT.md are what establish it.")
     # The line the agent records — so the outcome never has to be remembered (Static Gate, §2).
     verdict = "FAIL" if errors else "PASS"
     print(f"Record in REPORT.md → Static gate (verify-a11y.py): {verdict} "
-          f"({len(errors)} error(s), {len(warnings)} warning(s)) — run on: {dt.date.today().isoformat()}")
+          f"({len(errors)} error(s), {len(warnings)} warning(s){also}) — run on: {dt.date.today().isoformat()}")
 
     return 1 if errors and not args.warn_only else 0
 
