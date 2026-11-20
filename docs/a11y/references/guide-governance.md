@@ -16,8 +16,9 @@ Uma rodada limpa do axe significa "nenhuma violação entre as regras que estava
 - **Resolva o conflito linter × motor em vez de silenciá-lo.** A `scrollable-region-focusable` (axe) exige parada de foco num container que o usuário consegue rolar mas não alcançar por Tab; a `no-noninteractive-tabindex` (`eslint-plugin-jsx-a11y`) acusa exatamente esse `tabIndex`. Seguir as duas ao pé da letra é impossível, e o caminho de menor resistência — desligar a regra do ESLint — remove uma proteção real. Configure:
   ```jsonc
   // .eslintrc — permite a parada de foco que o axe exige, mantém a regra no resto
-  "jsx-a11y/no-noninteractive-tabindex": ["error", { "roles": ["region"], "tags": [], "allowExpressionValues": true }]
+  "jsx-a11y/no-noninteractive-tabindex": ["error", { "roles": ["tabpanel", "region"], "tags": [], "allowExpressionValues": true }]
   ```
+  Mantenha `tabpanel` em `roles`: é o padrão do próprio plugin, e um painel de abas que abre com texto precisa da parada ([Tabs & Accordions](guide-tabs-accordion.md), regra 2). Uma lista que nomeia só `region` substitui o padrão e o perde.
   E lembre que a regra do axe é **condicional**: a parada de foco cabe só em regiões cujo conteúdo de fato transborda. Aplicá-la a todo container rolável cria paradas de tabulação que não levam a nada (ver *Armadilhas de Foco que Ninguém Pediu*, `A11Y.md` §6).
 
 > **Um gate de CI é uma forma de verificação independente.** A *Independent Verification* (`A11Y.md` §2) pede que a evidência não seja de autoria exclusiva do agente que escreveu o código. Uma checagem de pipeline satisfaz isso na camada mecânica por construção — roda fora da sessão, contra o artefato, sem memória das decisões que o produziram. Ela não satisfaz, porém, os checkpoints humanos, e não eleva o nível de independência declarado no relatório para nada que uma máquina não consiga testar.
@@ -40,7 +41,7 @@ O `tools/verify-a11y.py` é a metade mecânica do Release Evidence. Ele não jul
 
 **O que a varredura de código é, e o que não é.** O gate não substitui o axe; ele lê o que o axe não consegue ver — handlers no código-fonte (`<div onClick>`, `@click`, `on:click`, `(click)`), intenção de CSS (`outline: none`), placeholder no lugar de rótulo, um pai ARIA composto anunciado sem os filhos, papéis redundantes, imagem cujo `alt` é cancelado por `aria-hidden`, script de fornecedor de overlay. Ele não vê gestão de foco num modal, texto sobre vídeo, cópia paralela para máquina, container de rolagem que não transborda, nem conteúdo estacionado em `opacity: 0` — esses cinco anti-padrões da Seção 6 ficam com a revisão e com os checkpoints humanos.
 
-**Três resultados, todos registrados.** O campo *Gate estático* do `REPORT.md` recebe exatamente um: `PASS` com a data; `FAIL` com a contagem de erros, e os erros corrigidos ou levados ao `EXCEPTIONS.md` antes da entrega; ou `NÃO RODOU` com o motivo exato. O script imprime a linha a registrar no fim de toda execução.
+**Três resultados, todos registrados.** O campo *Gate estático* do `REPORT.md` recebe exatamente um: `PASS` com a data; `FAIL` com a contagem de erros, e os erros corrigidos ou levados ao `EXCEPTIONS.md` antes da entrega; ou `NÃO RODOU` com o motivo exato. O script imprime a linha a registrar no fim de toda execução. O que o projeto já registrou não reprova: uma exceção em vigor, assinada por uma pessoa, cujo campo *Achado do gate* nomeia a checagem e cada arquivo, ou uma decisão do `A11Y-DECISIONS.md` terminada com a marca `(gate: …)`, transforma o achado que cobre numa linha de registrado, impressa em toda execução e nunca contada como erro. Quando a exceção vence, o achado volta a reprovar.
 
 **Quando não pode rodar, diga duas vezes.** Agentes perdem o gate em silêncio muito mais do que reprovam nele: um pedido de permissão negado, um sandbox sem shell, uma lista de comandos permitidos que não casa com a invocação. No benchmark deste próprio projeto o script foi embarcado nos dois braços de tratamento e negado em seis corridas — e nenhuma jornada disse isso até a auditoria de desvios encontrar. Por isso a regra é divulgação em dois lugares: o campo do relatório e a própria mensagem de entrega, em palavras sobre as quais o usuário consiga agir. Por exemplo: *"O gate estático do A11Y.md (`verify-a11y.py`) não rodou: o comando de shell foi negado. Ele teria verificado que o relatório está atual, que não se autoaprova e que o código não carrega nenhum dos anti-padrões da §6 que ele detecta. Esta entrega está sem verificação do gate."* Contar ao usuário é o que transforma uma negativa silenciosa numa decisão que é dele.
 
@@ -60,7 +61,7 @@ Ao criar widgets complexos customizados, o desenvolvedor (ou a IA) MUST incluir 
 Para preparar sub-sistemas para certificação externa e auditoria:
 1. **Inventory:** Consolidar uma lista ou storybook dos componentes visuais chaves do fluxo e seus comportamentos com tecnologias assistivas.
 2. **Keyboard Path:** Prevenir Dead-ends através do mapeamento claro e planejado da ordem do layout visual (`Tab`).
-3. **Auditoria Padrão:** O checklist em [**`templates/REPORT.md`**](../templates/REPORT.md) **MUST** ser operado como "Definition of Done" **antes de qualquer entrega ao usuário final** — build publicado, deploy, artefato compartilhado, tag — e não apenas numa "entrega final" que projetos de entrega contínua nunca alcançam (ver *Release Evidence*, `A11Y.md` §2).
+3. **Auditoria Padrão:** O checklist em [**`templates/REPORT.md`**](../templates/REPORT.md) **MUST** ser operado como "Definition of Done" **antes de qualquer entrega ao usuário final** — build publicado, deploy, artefato compartilhado, tag — e não apenas numa "entrega final" que projetos de entrega contínua nunca alcançam (ver *Release Evidence*, `A11Y.md` §2). Uma prévia compartilhada para outra pessoa avaliar — o dono do projeto incluído — também é entrega: chamar o projeto de laboratório, rascunho ou privado não o dispensa, e o item 4 mantém o custo em um relatório vivo, não um por publicação.
 4. **Um relatório vivo, não um por publicação:** o relatório acompanha a **interface**, não a contagem de releases. Se nada mudou desde o último, ele continua valendo. Quando a interface muda, atualize a data e revisite apenas as entradas afetadas: todo checkpoint cuja evidência a mudança invalida volta para `[ ]` ou `[~]` até ser reverificado. Checkpoints humanos (leitor de tela, simulador de cor) mantêm o `[x]` e a data da sessão que os produziu, e são refeitos quando o fluxo que cobriam muda.
 
 ## 4.1. Avaliação formal (WCAG-EM) — quando o projeto for auditado
@@ -77,6 +78,28 @@ Quando houver auditoria formal, avaliação de terceiro ou declaração pública
 
 Os `REPORT.md` acumulados do projeto são a **evidência de origem** dessa auditoria: eles mostram o que foi verificado, quando, por quem e o que ficou em aberto. Um repositório com histórico de relatórios chega à avaliação formal com lastro; um sem histórico começa do zero.
 
+## 4.2. A declaração pública de acessibilidade (`ACCESSIBILITY.md`)
+
+O `REPORT.md` e o `EXCEPTIONS.md` são escritos para quem constrói e audita o produto. A declaração de acessibilidade é escrita para quem usa: o que o produto promete, quais ambientes foram testados, o que se sabe que está quebrado e como contornar, e quem responde quando algo falha. Desde outubro de 2026 o GitHub mostra um arquivo chamado `ACCESSIBILITY.md` — na raiz do repositório, em `.github/` ou em `docs/` — como uma aba **Accessibility** na página do repositório, ao lado do README e da política de segurança. O mesmo texto é a declaração pública que a Seção 6 pede sob o EAA e a Seção 6.1 sob a LBI.
+
+O template é [`templates/ACCESSIBILITY.md`](../templates/ACCESSIBILITY.md). Ele é **derivado**, nunca original: cada seção tem um artefato de origem, e o agente a preenche a partir dele.
+
+| Seção da declaração | Origem |
+| :--- | :--- |
+| Status declarado, versão do padrão, nível de verificação | o contexto de validação do `REPORT.md` |
+| Ambientes suportados | `REPORT.md` §3: os pares leitor de tela + navegador que de fato rodaram, e nada além deles |
+| Barreiras conhecidas | toda entrada aberta do `EXCEPTIONS.md` e todo checkpoint `[ ]` / `[!]` do relatório, em linguagem simples, com o contorno |
+| Como reportar | o canal do próprio projeto e o prazo de primeira resposta |
+| Responsável e data de revisão | uma pessoa, e a data do último evento que mudou o relatório |
+
+Três regras decorrem disso:
+
+- **Nunca à frente da evidência.** A declaração carrega o status do relatório, ⚠️ CONDITIONAL incluído, e diz o que falta. Uma declaração que soa melhor que o relatório é a forma pública de marcar `[x]` sem evidência.
+- **Barreira conhecida é publicada.** O log de exceções já as registra como registro versionado do projeto, e a declaração as repete em palavras que a pessoa consegue usar. Um time que queira reter uma delas toma essa decisão às claras, com o próprio jurídico. O agente nunca omite por conta própria. A orientação do W3C para [redigir uma declaração de acessibilidade](https://www.w3.org/WAI/planning/statements/) pede o mesmo: as limitações conhecidas, cada uma com a alternativa.
+- **Uma pessoa assina.** O agente redige a declaração quando o evento do §2.1 acontece e existe um relatório. O responsável nomeado nela revisa e publica. Ela é reemitida por evento: mudança de status no relatório, exceção aberta ou fechada, release.
+
+Uma linha opcional diz ao leitor como a promessa é mantida: *"As interfaces deste projeto seguem o [A11Y.md](https://github.com/fecarrico/A11Y.md) versão [x.y.z] no perfil Standard."* Ela nomeia o padrão, a versão e a URL: o auditor sabe a que regras os artefatos respondem, o próximo agente que ler o repositório sabe onde as regras estão, e uma busca de código pela URL encontra a adoção.
+
 ## 5. Relatórios e Responsabilidades (VPAT Strategy)
 Projetos que visam o mercado dos EUA devem ser compatíveis com a Seção 508:
 - **VPAT Creation:** Manter um documento técnico que registre quais critérios da WCAG são suportados total ou parcialmente.
@@ -85,9 +108,9 @@ Projetos que visam o mercado dos EUA devem ser compatíveis com a Seção 508:
 ## 6. European Compliance (EN 301 549)
 Para conformidade com o EAA:
 - **Interoperability:** Garantir que o software não impeça o uso de tecnologias assistivas de terceiros.
-- **Accessibility Declaration:** Manter uma página de acessibilidade pública descrevendo as funcionalidades e o nível de conformidade alcançado.
+- **Accessibility Declaration:** Manter uma página de acessibilidade pública descrevendo as funcionalidades e o nível de conformidade alcançado. O arquivo, e o artefato de origem de cada seção: §4.2.
 
-## 6.1. Conformidade Brasileira (ABNT NBR 17225 / LBI)
+## 6.1. Conformidade Brasileira (ABNT NBR 17225 / NBR 17060 / LBI)
 
 Para produtos que servem público brasileiro:
 
@@ -97,6 +120,7 @@ Para produtos que servem público brasileiro:
 - **Anexo A — a lista de itens críticos**, o checklist de aceitação em compras públicas brasileiras: CAPTCHA com modalidade alternativa · **reconhecimento facial / biometria com rota alternativa acessível** · conteúdo apenas em hover/foco · conteúdo inserido via CSS · conteúdo de terceiros, com o usuário avisado · componentes customizados · **arquivos para download (não-HTML) eles próprios acessíveis** · tabelas de leiaute · marcação conforme a especificação. Três desses vão além da prática WCAG do dia a dia: biometria, arquivos e conteúdo via CSS.
 - O **Anexo B** traz dez declarações de desempenho funcional (da EN 301 549) — o `REPORT.md` §7 as oferece como seção opcional que serve NBR, EN 301 549 e VPAT de uma vez.
 - **Validadores oficiais:** o diagnóstico formal do selo de acessibilidade digital de São Paulo — e a orientação federal — convergem em três motores: **AMAWeb**, **AccessMonitor** e **WAVE**. Uma rodada limpa de axe cobre a maior parte do que eles medem, mas destino brasileiro roda os três antes de qualquer alegação formal (o selo exige o diagnóstico deles datado de até 10 dias).
+- A **ABNT NBR 17060:2022** — *Acessibilidade em aplicativos de dispositivos móveis: requisitos* (outubro de 2022) — é a irmã mobile: aplicativos nativos, híbridos e web apps em smartphones e tablets, sites abertos no celular incluídos, sob o mesmo art. 63 da LBI. 54 requisitos e recomendações em quatro grupos sobre base **WCAG 2.1** — uma construção conforme a este padrão já satisfaz quase tudo. O resto (rótulo antes do campo, contador de etapas, configurações de acessibilidade do sistema, limites de tempo, sem travamento na navegação com tecnologia assistiva, piscante com aviso), o mapeamento de perfil e as fontes estão em [Nativo § Brasil](guide-platform-native.md). Com destino mobile, o `REPORT.md` nomeia a NBR 17060 ao lado do perfil.
 - **Efeito prático:** com destino brasileiro, o `REPORT.md` declara o nível NBR pretendido (regular/plena) ao lado do perfil de conformidade, e o Anexo A é tratado como checklist nomeado. Para usuários de língua de sinais, ver [Língua de Sinais & Libras](guide-sign-language-br.md).
 
 ## 7. Compliance Versioning

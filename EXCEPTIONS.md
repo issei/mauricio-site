@@ -51,4 +51,4 @@ Isto é um fato registrado, não uma defesa: se um visitante chegar nelas, as ba
 
 ### EXC-007 — `aria-soup` — **ENCERRADA (Fase 7)**
 - `role="main"`/`role="navigation"` redundantes foram removidos (último caso: `src/life.html`, `<nav aria-label="Controles táteis">`).
-- Os `role="list"` em `engenharia-agentes-ia` são deliberados (Safari/VoiceOver remove a semântica de lista com `list-style:none`; o auditor mediu `list-style-type:none` em 7 das 8 listas): registrados em `A11Y-DECISIONS.md`, não são desvio. O `verify-a11y.py` os reporta como erro: falso positivo conhecido.
+- Os `role="list"` em `engenharia-agentes-ia` são deliberados (Safari/VoiceOver remove a semântica de lista com `list-style:none`; o auditor mediu `list-style-type:none` em 7 das 8 listas): registrados em `A11Y-DECISIONS.md`, não são desvio. Desde a 2.5.0 do A11Y.md, o `verify-a11y.py` lê a marca da decisão e os mostra como registrados (issue #124).

@@ -18,7 +18,7 @@ function initMaturity() {
   const tabs = Array.from(root.querySelectorAll('[data-maturity-stage]'));
   const panel = root.querySelector('[data-maturity-panel]');
   if (!tabs.length || !panel) return;
-  enhanceTablist(root.querySelector('[role="tablist"]'), { panel });
+  enhanceTablist(root.querySelector('.eai-mat__steps'), { panel });
 
   const render = (id) => {
     const stage = maturityStage(id);
