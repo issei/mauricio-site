@@ -9,6 +9,7 @@ Análises práticas de ferramentas e assistentes de IA para o trabalho do dia a 
 
 ## Vídeos
 
+- [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
 - [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
