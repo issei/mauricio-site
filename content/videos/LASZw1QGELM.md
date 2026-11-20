@@ -4,8 +4,8 @@ slug: o-fim-do-chat-na-ia-conheca-o-a2ui-a-revolucao-visual-do
 status: publicado
 temas:
   - engenharia-agentica
-resumo: "O vídeo apresenta o A2UI (Agent-to-User Interface), protocolo de código aberto do Google em que o agente de IA descreve uma interface em dados estruturados e o aplicativo a monta com os próprios componentes. Explica o fluxo, os princípios, a relação com AG-UI e A2A, o uso em aparelhos antigos e o que está previsto para 2026."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo apresenta o A2UI (Agent-to-User Interface), protocolo de código aberto do Google em que o agente de IA descreve uma interface em dados estruturados e o aplicativo a monta com os próprios componentes. Explica o fluxo, os princípios, a relação com AG-UI e A2A, o uso em aparelhos antigos e o que está previsto para 2026.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: O Fim do "Chat" na IA? Conheça o A2UI, a Revolução Visual do Google para 2026!
@@ -31,6 +31,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Do texto à interface
 
 Hoje, a interação com um agente de IA é quase toda por texto: para marcar um compromisso, vem uma pergunta de cada vez; para entender dados, a IA descreve o gráfico em vez de mostrá-lo [00:00].

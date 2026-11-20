@@ -5,17 +5,17 @@ status: publicado
 temas:
   - especificacao-e-desenvolvimento
   - engenharia-agentica
-resumo: "O vídeo discute se agentes de IA conseguem achar e corrigir bugs sozinhos em bases de código grandes. Apresenta o SWE-sweep, em que o agente recebe repositórios inteiros sem nenhuma dica, as técnicas de localização de falhas e fuzzing, o custo alto e a taxa baixa de acerto, e o risco de uso duplo na cibersegurança."
+resumo: O vídeo discute se agentes de IA conseguem achar e corrigir bugs sozinhos em bases de código grandes. Apresenta o SWE-sweep, em que o agente recebe repositórios inteiros sem nenhuma dica, as técnicas de localização de falhas e fuzzing, o custo alto e a taxa baixa de acerto, e o risco de uso duplo na cibersegurança.
 fontes:
   - url: https://swesweep.com
-    titulo: "SWE-sweep"
-    sustenta: "O SWE-sweep tem 100 repositórios e cerca de 4,1 mil bugs; os agentes não recebem nenhuma dica sobre o tipo ou o local do bug, e uma regressão na suíte de testes original zera a nota. Em 2 de novembro de 2026, o melhor resultado do ranking era de 8,9%."
+    titulo: SWE-sweep
+    sustenta: O SWE-sweep tem 100 repositórios e cerca de 4,1 mil bugs; os agentes não recebem nenhuma dica sobre o tipo ou o local do bug, e uma regressão na suíte de testes original zera a nota. Em 2 de novembro de 2026, o melhor resultado do ranking era de 8,9%.
     verificada: true
   - url: https://github.com/facebookresearch/swe-sweep
     titulo: "facebookresearch/swe-sweep: How many bugs can LMs find & fix in large codebases?"
-    sustenta: "O agente precisa descobrir e consertar o máximo de bugs num repositório real, e o projeto é uma camada fina sobre o Harbor, que roda a avaliação."
+    sustenta: O agente precisa descobrir e consertar o máximo de bugs num repositório real, e o projeto é uma camada fina sobre o Harbor, que roda a avaliação.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?
@@ -60,6 +60,7 @@ youtube:
     - https://github.com/facebookresearch/swe-sweep
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Achar o bug é o gargalo
 
 O vídeo pergunta se a IA consegue encontrar e corrigir bugs sem ajuda humana. Resolver um problema isolado é muito diferente de receber uma base de código enorme e descobrir sozinho o que está quebrado [00:42].

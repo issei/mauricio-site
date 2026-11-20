@@ -5,13 +5,13 @@ status: publicado
 temas:
   - engenharia-agentica
   - cloud-e-confiabilidade
-resumo: "O vídeo apresenta o Amazon Bedrock AgentCore, a plataforma da AWS para levar agentes de IA do protótipo à produção. Explica o abismo entre o laptop e o sistema corporativo e os módulos Runtime, Gateway, Memory, Identity e Policy, com sessões isoladas, ferramentas no padrão MCP e regras que bloqueiam ações na fonte."
+resumo: O vídeo apresenta o Amazon Bedrock AgentCore, a plataforma da AWS para levar agentes de IA do protótipo à produção. Explica o abismo entre o laptop e o sistema corporativo e os módulos Runtime, Gateway, Memory, Identity e Policy, com sessões isoladas, ferramentas no padrão MCP e regras que bloqueiam ações na fonte.
 fontes:
   - url: https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/what-is-bedrock-agentcore.html
-    titulo: "Overview - Amazon Bedrock AgentCore"
-    sustenta: "O AgentCore é uma plataforma para implantar e operar agentes com qualquer framework e modelo, sem gerenciar infraestrutura. A página cita CrewAI, LangGraph, LlamaIndex e Strands Agents; o Runtime serverless com isolamento de sessão; o Gateway, que converte APIs e funções Lambda em ferramentas compatíveis com MCP; a memória de curto e de longo prazo; a Identity compatível com Amazon Cognito e Okta; e o Policy, que intercepta cada chamada de ferramenta com regras compatíveis com Cedar."
+    titulo: Overview - Amazon Bedrock AgentCore
+    sustenta: O AgentCore é uma plataforma para implantar e operar agentes com qualquer framework e modelo, sem gerenciar infraestrutura. A página cita CrewAI, LangGraph, LlamaIndex e Strands Agents; o Runtime serverless com isolamento de sessão; o Gateway, que converte APIs e funções Lambda em ferramentas compatíveis com MCP; a memória de curto e de longo prazo; a Identity compatível com Amazon Cognito e Okta; e o Policy, que intercepta cada chamada de ferramenta com regras compatíveis com Cedar.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Amazon Bedrock AgentCore: Do Protótipo à Produção em Escala com IA Agêntica!"
@@ -88,6 +88,7 @@ youtube:
     - https://aws.amazon.com/bedrock/agentcore/pricing/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O abismo da produção
 
 Um agente de IA que roda bem na máquina local costuma falhar quando vai para o mundo real. O vídeo chama isso de abismo da produção: a distância entre um protótipo no laptop e um sistema corporativo seguro, que aguenta milhares de usuários ao mesmo tempo [00:21].

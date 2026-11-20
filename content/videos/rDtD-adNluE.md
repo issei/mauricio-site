@@ -5,7 +5,7 @@ status: publicado
 temas:
   - aprendizagem-e-mente
 resumo: O vídeo explica a Taxonomia de Bloom com o exemplo de aprender a fazer pão artesanal. Sobe pelos seis níveis, de lembrar a criar, e mostra que só decorar e seguir receitas não é domínio real.
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Taxonomia de Bloom  Como Dominar Qualquer Assunto

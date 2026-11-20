@@ -5,8 +5,8 @@ status: publicado
 temas:
   - engenharia-agentica
   - gestao-e-estrategia
-resumo: "O vídeo explica o que faz um Forward-Deployed Engineer (FDE), o engenheiro de IA de linha de frente. Mostra por que tantos projetos corporativos de IA não geram valor, a origem da função na Palantir, como o FDE trabalha dentro do cliente e exemplos de resultado."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: O vídeo explica o que faz um Forward-Deployed Engineer (FDE), o engenheiro de IA de linha de frente. Mostra por que tantos projetos corporativos de IA não geram valor, a origem da função na Palantir, como o FDE trabalha dentro do cliente e exemplos de resultado.
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: O que faz um Forward-Deployed Engineer (FDE)?
@@ -43,6 +43,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema: a IA que não gera valor
 
 O vídeo usa a analogia de um fundo de investimentos: dar o smartphone mais moderno para a avó. Ela quer usar, mas não sabe encaixar o aparelho na rotina sem alguém ao lado para configurar o Wi-Fi e mostrar os aplicativos [00:41].

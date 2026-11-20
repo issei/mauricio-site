@@ -5,13 +5,13 @@ status: publicado
 temas:
   - dados-e-decisao
   - engenharia-agentica
-resumo: "O vídeo apresenta o Minigraf, um banco de dados de grafos embutido, de arquivo único, escrito em Rust, com consultas em Datalog e modelo bitemporal. Explica a diferença entre tempo de transação e tempo válido, os usos em agentes de IA, aplicativos móveis e navegador, e os limites do projeto."
+resumo: O vídeo apresenta o Minigraf, um banco de dados de grafos embutido, de arquivo único, escrito em Rust, com consultas em Datalog e modelo bitemporal. Explica a diferença entre tempo de transação e tempo válido, os usos em agentes de IA, aplicativos móveis e navegador, e os limites do projeto.
 fontes:
   - url: https://github.com/project-minigraf/minigraf
     titulo: "project-minigraf/minigraf: Embedded graph memory for AI agents, mobile apps, and the browser."
-    sustenta: "O Minigraf é um banco de grafos embutido de arquivo único, com consultas em Datalog e tempo de transação e de validade em cada fato. Ele se descreve como \"the SQLite of bi-temporal graph databases\", tem bindings para Python, iOS e Android, roda no navegador por WebAssembly com IndexedDB e tem build WASI experimental. Em arquivo, cada fato tem no máximo 4.080 bytes; o projeto mira menos de 1 milhão de nós e não é distribuído nem cliente-servidor."
+    sustenta: O Minigraf é um banco de grafos embutido de arquivo único, com consultas em Datalog e tempo de transação e de validade em cada fato. Ele se descreve como "the SQLite of bi-temporal graph databases", tem bindings para Python, iOS e Android, roda no navegador por WebAssembly com IndexedDB e tem build WASI experimental. Em arquivo, cada fato tem no máximo 4.080 bytes; o projeto mira menos de 1 milhão de nós e não é distribuído nem cliente-servidor.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web"
@@ -55,6 +55,7 @@ youtube:
     - https://minigraf-playground.vercel.app/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Um banco de grafos que lembra o passado
 
 O vídeo parte de uma pergunta: e se um banco de dados local pudesse lembrar de todos os estados passados, sem muito armazenamento extra e sem servidor? Normalmente, ao sobrescrever um dado, o histórico se perde, e manter auditoria completa no ambiente local é difícil [00:20].

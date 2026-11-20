@@ -6,7 +6,7 @@ temas:
   - especificacao-e-desenvolvimento
   - engenharia-agentica
 resumo: "O vídeo mostra como a IA muda o desenvolvimento guiado por especificação (SDD): a especificação deixa de ser um contrato rígido e vira um diálogo vivo. Apresenta três níveis de especificação, o ciclo de colaboração com a IA, o uso em código legado e as novas habilidades de quem desenvolve."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "SPECS & IA: O Novo Ciclo de Desenvolvimento de Software (Especificação como Diálogo)"
@@ -30,6 +30,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Especificação não é volta ao cascata
 
 Com os assistentes de IA para programar, o desenvolvimento guiado por especificação (SDD) voltou, mas de um jeito novo [00:00].

@@ -6,7 +6,7 @@ temas:
   - especificacao-e-desenvolvimento
   - cloud-e-confiabilidade
 resumo: O vídeo explica dois padrões para manter os dados consistentes entre microsserviços. O padrão Saga quebra uma operação em transações locais, com compensação em caso de falha. O Transactional Outbox resolve o problema da escrita dupla. Juntos, dão consistência eventual confiável.
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Padrão Saga e Transactional Outbox em Microsserviços

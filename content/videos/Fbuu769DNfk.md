@@ -11,7 +11,7 @@ fontes:
     titulo: "repowise-dev/repowise: Codebase intelligence for AI and humans"
     sustenta: O Repowise indexa código, grafo de chamadas, histórico do Git, documentação e decisões uma vez, na máquina local, em cinco camadas, oferece dez ferramentas MCP e um robô de PR com nota de risco de 0 a 10. A ordenação do Repowise encontra 2,3 vezes mais defeitos com o mesmo orçamento de revisão.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA"
