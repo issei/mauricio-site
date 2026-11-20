@@ -1,4 +1,7 @@
 ## 2026-11-19
+* **Update**: Updated concept `transicoes-entre-paginas.md` (família site: início, carreira e conteúdos).
+
+## 2026-11-19
 * **Creation**: Documented concept `transicoes-entre-paginas.md` (Transições entre páginas: View Transitions entre documentos, injetadas no build só na família de vídeos).
 
 ## 2026-10-14

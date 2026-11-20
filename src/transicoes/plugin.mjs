@@ -8,14 +8,19 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-import { familiaDe, LISTA, VIDEO, normalizarUrl, tipoDeTransicao } from './familias.mjs';
+import { familiaDe, LISTA, VIDEO, SITE, normalizarUrl, tipoDeTransicao } from './familias.mjs';
 
 const lerAqui = (nome) => readFileSync(fileURLToPath(new URL(nome, import.meta.url)), 'utf8');
 
-/** `src/videos.html`, `src/videos/x.html`, `src/temas/x.html` → '/videos', '/videos/x', '/temas/x'. Outros → null. */
+/**
+ * `src/videos.html`, `src/videos/x.html`, `src/temas/x.html` → '/videos', '/videos/x', '/temas/x';
+ * `src/index.html`, `src/curriculo.html`, `src/catalogo.html` → '/', '/curriculo', '/catalogo'. Outros → null.
+ * Os espelhos `src/en/**` não casam: ficam de fora (a fonte PT não muda).
+ */
 function rotaDoArquivo(filename) {
-  const m = filename.replace(/\\/g, '/').match(/\/src\/((?:videos|temas)\/[^/]+|videos)\.html$/);
-  return m ? `/${m[1]}` : null;
+  const m = filename.replace(/\\/g, '/').match(/\/src\/((?:videos|temas)\/[^/]+|videos|index|curriculo|catalogo)\.html$/);
+  if (!m) return null;
+  return m[1] === 'index' ? '/' : `/${m[1]}`;
 }
 
 /**
@@ -28,9 +33,14 @@ export const REGRAS_DE_PREBUSCA = {
   prefetch: [{ where: { href_matches: ['/videos', '/videos.html', '/videos/*', '/temas/*'] }, eagerness: 'moderate' }],
 };
 
+/** Pré-busca da família `site` (RF-VT-22): só as três portas, pelo mesmo critério e sem `prerender`. */
+export const REGRAS_DE_PREBUSCA_SITE = {
+  prefetch: [{ where: { href_matches: ['/', '/curriculo.html', '/catalogo.html'] }, eagerness: 'moderate' }],
+};
+
 /** Troca o marcador do script pelas regras de familias.mjs, para que existam num lugar só. */
 export function montarScript(fonte) {
-  const funcoes = [`var LISTA = ${LISTA};`, `var VIDEO = ${VIDEO};`, normalizarUrl.toString(), tipoDeTransicao.toString()].join('\n');
+  const funcoes = [`var LISTA = ${LISTA};`, `var VIDEO = ${VIDEO};`, `var SITE = ${SITE};`, normalizarUrl.toString(), tipoDeTransicao.toString()].join('\n');
   return fonte.replace('/*VT:FUNCOES*/', () => funcoes);
 }
 
@@ -41,11 +51,13 @@ export function transicoes() {
     name: 'transicoes',
     transformIndexHtml(_html, ctx) {
       const rota = rotaDoArquivo(ctx.filename);
-      if (!rota || !familiaDe(rota)) return;
+      const familia = rota && familiaDe(rota);
+      if (!familia) return;
+      const regras = familia.nome === 'site' ? REGRAS_DE_PREBUSCA_SITE : REGRAS_DE_PREBUSCA;
       return [
         { tag: 'style', attrs: { id: 'vt' }, children: css, injectTo: 'head' },
         { tag: 'script', attrs: { id: 'vt' }, children: js, injectTo: 'head' },
-        { tag: 'script', attrs: { type: 'speculationrules' }, children: JSON.stringify(REGRAS_DE_PREBUSCA), injectTo: 'head' },
+        { tag: 'script', attrs: { type: 'speculationrules' }, children: JSON.stringify(regras), injectTo: 'head' },
       ];
     },
   };
