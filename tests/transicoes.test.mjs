@@ -99,7 +99,8 @@ test('o cabeçalho tem o nome estático vt-cabecalho e não anima (RF-VT-04)', (
 test('a página antiga fica parada e a nova entra por cima, sem as duas esmaecerem (sensação de travada)', () => {
   assert.match(CSS, /::view-transition-old\(root\)\s*\{\s*animation:\s*none;?\s*\}/);
   assert.match(CSS, /::view-transition-old\(root\),\s*::view-transition-new\(root\)\s*\{\s*mix-blend-mode:\s*normal/);
-  assert.doesNotMatch(CSS, /::view-transition-old\(root\)\s*\{[^}]*animation(-name)?:\s*vt-/, 'o conteúdo antigo não anima');
+  const semImersao = CSS.replace(/:root:active-view-transition-type\(imersao\)[^{]*\{[^}]*\}/g, '');
+  assert.doesNotMatch(semImersao, /::view-transition-old\(root\)\s*\{[^}]*animation(-name)?:\s*vt-/, 'o conteúdo antigo não anima, salvo na abertura imersiva');
 });
 
 test('o conteúdo anima por pouco tempo (a espera da rede já pesa) e o movimento compartilhado, um pouco mais', () => {
@@ -108,14 +109,28 @@ test('o conteúdo anima por pouco tempo (a espera da rede já pesa) e o moviment
   assert.ok(dur('vt-duracao-compartilhado') >= dur('vt-duracao'));
 });
 
-test('as @keyframes só declaram opacity e transform (RNF-VT-04, CA-16)', () => {
-  const quadros = [...CSS.matchAll(/@keyframes\s+[\w-]+\s*\{((?:[^{}]|\{[^{}]*\})*)\}/g)];
+test('as @keyframes só declaram opacity e transform, salvo o clip-path da abertura (RNF-VT-04, CA-16, CA-37)', () => {
+  const quadros = [...CSS.matchAll(/@keyframes\s+([\w-]+)\s*\{((?:[^{}]|\{[^{}]*\})*)\}/g)];
   assert.ok(quadros.length >= 2);
-  for (const [, corpo] of quadros) {
+  for (const [, nome, corpo] of quadros) {
     const props = [...corpo.matchAll(/([\w-]+)\s*:/g)].map((m) => m[1]);
     assert.ok(props.length > 0);
-    for (const p of props) assert.ok(['opacity', 'transform'].includes(p), `propriedade proibida na keyframe: ${p}`);
+    const permitidas = nome === 'vt-abre' ? ['clip-path'] : ['opacity', 'transform'];
+    for (const p of props) assert.ok(permitidas.includes(p), `propriedade proibida na keyframe ${nome}: ${p}`);
   }
+});
+
+test('a abertura imersiva: clip-path só na entrada do tipo imersao; recuo ≤ 8 %, opacidade ≥ 0,6, ≤ 500 ms (RF-VT-26 a RF-VT-28, CA-37)', () => {
+  const usos = [...CSS.matchAll(/animation(?:-name)?:\s*[^;{}]*vt-abre/g)];
+  assert.equal(usos.length, 1, 'vt-abre é usada num só lugar');
+  assert.match(CSS, /:root:active-view-transition-type\(imersao\)::view-transition-new\(root\)\s*\{[^}]*vt-abre/);
+  assert.match(CSS, /:root:active-view-transition-type\(imersao\)::view-transition-old\(root\)\s*\{[^}]*vt-recua/);
+  const recua = CSS.match(/@keyframes vt-recua\s*\{((?:[^{}]|\{[^{}]*\})*)\}/)[1];
+  assert.ok(Number(recua.match(/scale\(([\d.]+)\)/)[1]) <= 1.08);
+  assert.ok(Number(recua.match(/opacity:\s*([\d.]+)/)[1]) >= 0.6);
+  assert.ok(Number(CSS.match(/--vt-duracao-imersao:\s*([\d.]+)s/)[1]) <= 0.5);
+  assert.match(CSS, /var\(--vt-x,\s*50%\)/);
+  assert.match(CSS, /var\(--vt-y,\s*40%\)/);
 });
 
 test('nomes e custom properties levam o prefixo vt-; nenhuma cor nova (RNF-VT-10, CA-20)', () => {
@@ -135,7 +150,7 @@ test('tipoDeTransicao: avanço, retorno e lateral só entre páginas da família
   assert.equal(tipoDeTransicao('/videos/a', '/videos'), 'retorno');
   assert.equal(tipoDeTransicao('/videos/a', '/temas/dados-e-decisao'), 'retorno');
   assert.equal(tipoDeTransicao('/videos/a', '/videos/b'), 'lateral');
-  for (const [de, para] of [['/videos', '/temas/x'], ['/', '/videos'], ['/videos/a', '/'], [null, '/videos/a'], ['/videos', null], ['/en/videos/a', '/videos']]) {
+  for (const [de, para] of [['/videos', '/temas/x'], ['/videos/a', '/'], [null, '/videos/a'], ['/videos', null], ['/en/videos/a', '/videos']]) {
     assert.equal(tipoDeTransicao(de, para), null, `${de} → ${para}`);
   }
 });
@@ -178,7 +193,7 @@ test('a pré-busca do site cobre só as 3 páginas, sem prerender, e a dos víde
   const padroes = site.prefetch[0].where.href_matches;
   assert.equal(site.prefetch[0].eagerness, 'moderate');
   for (const rota of ['/', '/curriculo.html', '/catalogo.html']) assert.ok(padroes.includes(rota), rota);
-  for (const p of padroes) assert.ok(!/video|tema/.test(p), p);
+  for (const p of padroes) assert.ok(!/tema|\/videos\//.test(p), p);
   const videos = JSON.parse(injetar('/repo/src/videos.html')[2].children);
   assert.ok(!videos.prefetch[0].where.href_matches.includes('/catalogo.html'));
 });
@@ -192,6 +207,21 @@ test('tipoDeTransicao no site segue a ordem do cabeçalho; entre famílias não 
   assert.equal(tipoDeTransicao('/curriculo', '/catalogo'), 'avanco');
   assert.equal(tipoDeTransicao('/catalogo', '/curriculo'), 'retorno');
   assert.equal(tipoDeTransicao('/', '/'), null);
-  assert.equal(tipoDeTransicao('/', '/videos'), null);
+  assert.equal(tipoDeTransicao('/curriculo', '/videos'), null);
   assert.equal(tipoDeTransicao('/videos/a', '/curriculo'), null);
+});
+
+test('tipoDeTransicao: início → /videos é imersao; o resto cruzado segue sem tipo (RF-VT-24, CA-36)', () => {
+  assert.equal(tipoDeTransicao('/', '/videos'), 'imersao');
+  assert.equal(tipoDeTransicao('/index', '/videos'), 'imersao');
+  assert.equal(tipoDeTransicao('/videos', '/'), null);
+  assert.equal(tipoDeTransicao('/curriculo', '/videos'), null);
+  assert.equal(tipoDeTransicao('/', '/videos/a-crise-cognitiva'), null);
+  assert.equal(tipoDeTransicao('/', '/temas/dados-e-decisao'), null);
+});
+
+test('a pré-busca do site inclui /videos.html (RF-VT-31, CA-45)', () => {
+  const site = JSON.parse(injetar('/repo/src/index.html')[2].children);
+  assert.ok(site.prefetch[0].where.href_matches.includes('/videos.html'));
+  assert.equal(Object.keys(site).join(), 'prefetch');
 });
