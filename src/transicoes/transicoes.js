@@ -33,6 +33,7 @@
     nomeados = [];
     document.documentElement.style.removeProperty('--vt-x');
     document.documentElement.style.removeProperty('--vt-y');
+    document.documentElement.style.removeProperty('--vt-lado');
   }
   function visivel(el) {
     var r = el.getBoundingClientRect();
@@ -60,20 +61,28 @@
     vt.ready.catch(function () {}); // transição pulada ou interrompida: a navegação segue sem ela (RF-VT-13).
     vt.finished.then(limpar, limpar);
   }
-  // Abertura imersiva (RF-VT-25): o ícone de play do link, se houver; senão o próprio link. Nunca o ponteiro,
-  // para o clique e o teclado darem o mesmo ponto.
+  // Abertura imersiva (RF-VT-25, RF-VT-33). Com ícone de play no link, a câmera mergulha pelo triângulo: o ponto é o
+  // centroide do triângulo (9,75/15,02/15,5 sobre 24 do viewBox do ícone) e `lado` é a largura do ícone. Sem ícone,
+  // abre um círculo a partir do centro do link. Nunca o ponteiro, para o clique e o teclado darem o mesmo ponto.
   function origemDo(link) {
-    var alvo = link.querySelector('svg') || link;
-    var r = alvo.getBoundingClientRect();
-    return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)];
+    var icone = link.querySelector('svg');
+    var r = (icone || link).getBoundingClientRect();
+    if (icone) return ['mergulho', Math.round(r.left + r.width * 0.4861), Math.round(r.top + r.height / 2), Math.round(r.width)];
+    return ['circulo', Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)];
   }
-  function escreverOrigem() {
+  function escreverOrigem(vt) {
     var ponto = null;
-    try { ponto = (sessionStorage.getItem(ORIGEM) || '').split(','); sessionStorage.removeItem(ORIGEM); } catch (_) { return; }
-    if (!ponto || ponto.length !== 2 || isNaN(ponto[0]) || isNaN(ponto[1])) return; // sem ponto, o CSS usa o padrão
+    try { ponto = (sessionStorage.getItem(ORIGEM) || '').split('|'); sessionStorage.removeItem(ORIGEM); } catch (_) { return; }
+    var n = ponto.length === 4 ? 3 : ponto.length === 3 ? 2 : 0;
+    for (var i = 1; i <= n; i++) if (isNaN(ponto[i]) || ponto[i] === '') return; // sem ponto, o CSS usa o padrão
+    if (!n) return;
     var raiz = document.documentElement.style;
-    raiz.setProperty('--vt-x', ponto[0] + 'px');
-    raiz.setProperty('--vt-y', ponto[1] + 'px');
+    raiz.setProperty('--vt-x', ponto[1] + 'px');
+    raiz.setProperty('--vt-y', ponto[2] + 'px');
+    if (ponto[0] === 'mergulho') {
+      raiz.setProperty('--vt-lado', ponto[3] + 'px');
+      if (vt.types) vt.types.add('mergulho');
+    }
   }
   function fundo(yt) {
     // RF-VT-12: enquanto a imagem grande carrega, o quadro novo mostra a miniatura que já está no cache.
@@ -100,7 +109,9 @@
     var tipo = tipoDeTransicao(de, para);
     if (tipo && vt.types) vt.types.add(tipo);
     if (tipo === 'imersao' && ativado && normalizarUrl(ativado.href) === para) {
-      try { sessionStorage.setItem(ORIGEM, origemDo(ativado).join(',')); } catch (_) { /* privado ou bloqueado */ }
+      var origem = origemDo(ativado);
+      if (origem[0] === 'mergulho' && vt.types) vt.types.add('mergulho');
+      try { sessionStorage.setItem(ORIGEM, origem.join('|')); } catch (_) { /* privado ou bloqueado */ }
     }
     var destino = e.activation && e.activation.entry ? e.activation.entry.url : ativado && ativado.href;
     var fragmento = '';
@@ -131,7 +142,7 @@
     else { try { de = sessionStorage.getItem(CHAVE); } catch (_) { /* sem registro: só o esmaecimento */ } }
     var tipo = tipoDeTransicao(de, para);
     if (tipo && vt.types) vt.types.add(tipo);
-    if (tipo === 'imersao') escreverOrigem();
+    if (tipo === 'imersao') escreverOrigem(vt);
     if (SITE.test(para) && SITE.test(de || '')) {
       if (!location.hash && inicioECarreira(de, para)) nomearHero();
     } else if (VIDEO.test(para)) {
