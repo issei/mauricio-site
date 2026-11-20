@@ -9,9 +9,9 @@ resumo: "O vídeo analisa os anúncios do Gemini at Work 2026: a passagem da IA 
 fontes:
   - url: https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026
     titulo: "Welcome to Gemini at Work 2026: Introducing the Gemini agent"
-    sustenta: "Post de Thomas Kurian (8/10/2026) que apresenta o Gemini agent. Cita o Agent Sandbox, a identidade criptograficamente atestada de cada agente, o Agent Gateway como firewall de IA, o Smart Routing e os limites de gasto em tempo real, o TPU 8i com 80% melhor relação preço-desempenho, a queda de 98% no preço por token desde 2024, as quatro formas de memória, o Knowledge Catalog, os mais de 10 mil agentes da Sompo para 34 mil funcionários e o JPL da NASA rodando Gemma num satélite."
+    sustenta: Post de Thomas Kurian (8/10/2026) que apresenta o Gemini agent. Cita o Agent Sandbox, a identidade criptograficamente atestada de cada agente, o Agent Gateway como firewall de IA, o Smart Routing e os limites de gasto em tempo real, o TPU 8i com 80% melhor relação preço-desempenho, a queda de 98% no preço por token desde 2024, as quatro formas de memória, o Knowledge Catalog, os mais de 10 mil agentes da Sompo para 34 mil funcionários e o JPL da NASA rodando Gemma num satélite.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho"
@@ -66,6 +66,7 @@ youtube:
     - https://ai.google.dev/gemini-api/docs/agents?hl=pt-br
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Da conversa à execução
 
 O vídeo trata da passagem da IA conversacional, no formato de chat, para a IA autônoma e agêntica com o Gemini [00:00]. A IA deixa de ser um oráculo que responde perguntas e vira um motor de execução [00:20].

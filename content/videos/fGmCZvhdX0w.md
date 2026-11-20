@@ -5,7 +5,7 @@ status: publicado
 temas:
   - aprendizagem-e-mente
 resumo: "O vídeo explica como as expectativas moldam o desempenho, pelos efeitos Pigmalião e Golem e pela autoeficácia de Albert Bandura, e mostra como o sabotador interno trava a realização. Propõe o Treinamento Galateia, com quatro pilares: autoconsciência radical, esforço estratégico, diálogo interno construtivo e engenharia de maestria."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "O Treinamento Galateia: O Guia Definitivo para Moldar o Seu Próprio Potencial"
@@ -48,6 +48,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## As expectativas criam a realidade?
 
 O vídeo parte de uma ideia que vem da psicologia e da mitologia: as expectativas podem criar a realidade? [00:00] Esse fenômeno influencia o desempenho nas escolas, nos escritórios e na vida pessoal [00:20].

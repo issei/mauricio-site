@@ -5,8 +5,8 @@ status: publicado
 temas:
   - engenharia-agentica
   - ferramentas-de-ia
-resumo: "O vídeo apresenta o Jev, da TypeSafe AI, um modelo que devolve decisões tipadas em vez de texto livre. Funciona como um \"fuzzy if\" para aplicações e agentes: três primitivas (choice, score e noul), endpoints prontos para triagem, risco de agentes e roteamento de modelos, e integrações com ferramentas de código."
-revisado_por: "Maurício Yokoyama Issei"
+resumo: 'O vídeo apresenta o Jev, da TypeSafe AI, um modelo que devolve decisões tipadas em vez de texto livre. Funciona como um "fuzzy if" para aplicações e agentes: três primitivas (choice, score e noul), endpoints prontos para triagem, risco de agentes e roteamento de modelos, e integrações com ferramentas de código.'
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA
@@ -49,6 +49,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## O problema de interpretar texto de IA
 
 Integrar IA ao software sempre teve um custo: ler textos imprevisíveis. O vídeo apresenta o Jev, uma ferramenta que promete acabar com o parsing de texto gerado por IA [00:00].

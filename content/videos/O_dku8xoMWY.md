@@ -5,13 +5,13 @@ status: publicado
 temas:
   - especificacao-e-desenvolvimento
   - ferramentas-de-ia
-resumo: "O vídeo apresenta o Understand Anything, um plugin de código aberto que combina modelos de linguagem e análise estática para montar um mapa interativo de uma base de código. Mostra o pipeline de agentes, os tours guiados, a análise de impacto de mudanças e o custo em tokens da primeira varredura."
+resumo: O vídeo apresenta o Understand Anything, um plugin de código aberto que combina modelos de linguagem e análise estática para montar um mapa interativo de uma base de código. Mostra o pipeline de agentes, os tours guiados, a análise de impacto de mudanças e o custo em tokens da primeira varredura.
 fontes:
   - url: https://github.com/Lum1104/Understand-Anything
-    titulo: "Lum1104/Understand-Anything (GitHub)"
-    sustenta: "Repositório do projeto, licença MIT, que transforma código num grafo de conhecimento interativo. Lista Claude Code, Codex, OpenCode, Gemini CLI, Cursor e Copilot; o pipeline de agentes (project-scanner, file-analyzer, architecture-analyzer, tour-builder, graph-reviewer); os comandos /understand-onboard e /understand-diff; o agrupamento por camadas (API, Service, Data, UI); a gravação em .ua/knowledge-graph.json; e as atualizações incrementais."
+    titulo: Lum1104/Understand-Anything (GitHub)
+    sustenta: Repositório do projeto, licença MIT, que transforma código num grafo de conhecimento interativo. Lista Claude Code, Codex, OpenCode, Gemini CLI, Cursor e Copilot; o pipeline de agentes (project-scanner, file-analyzer, architecture-analyzer, tour-builder, graph-reviewer); os comandos /understand-onboard e /understand-diff; o agrupamento por camadas (API, Service, Data, UI); a gravação em .ua/knowledge-graph.json; e as atualizações incrementais.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)
@@ -47,6 +47,7 @@ youtube:
     - https://www.youtube.com/watch?v=VmIUXVlt7_I
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## A casa no escuro
 
 Entrar num projeto de software grande e desconhecido é como entrar numa casa no escuro. O vídeo apresenta uma ferramenta que promete mapear todo o código [00:00].

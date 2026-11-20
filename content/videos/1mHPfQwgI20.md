@@ -6,7 +6,7 @@ temas:
   - engenharia-agentica
   - ferramentas-de-ia
 resumo: "O vídeo analisa o lançamento do Google Antigravity, uma plataforma experimental que propõe passar a IA de copiloto a agente. Explica o modelo agent-first, os artefatos verificáveis e a Manager Surface, a recepção mista do lançamento e o novo papel de quem desenvolve: definir metas, revisar planos e orientar agentes."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "GOOGLE ANTIGRAVITY: O Fim do Copiloto? O Futuro da Programação com Agentes de IA"
@@ -39,6 +39,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## De copiloto a agente
 
 O vídeo trata de uma das maiores viradas no desenvolvimento de software: a passagem de ferramentas que ajudam a programar para agentes de IA que programam sozinhos. Uma plataforma do Google pode ser a protagonista [00:00].

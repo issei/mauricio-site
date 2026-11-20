@@ -9,9 +9,9 @@ resumo: "O vídeo conta a jornada de 50 anos de Stephen Wolfram com a Segunda Le
 fontes:
   - url: https://writings.stephenwolfram.com/2023/02/a-50-year-quest-my-personal-journey-with-the-second-law-of-thermodynamics
     titulo: "A 50-Year Quest: My Personal Journey with the Second Law of Thermodynamics"
-    sustenta: "Ensaio de Stephen Wolfram (2/2/2023) em que o vídeo se baseia. Conta o fascínio pela capa do volume 5 do Berkeley Physics Course, ganho em 1972; o Elliott 903C, com 8 mil palavras de memória e 16 instruções; o programa SPART, de 1973; a regra 30, que ele entendeu em 1º de junho de 1984, a caminho da Europa de avião; a tentativa de Richard Feynman de \"quebrar\" a regra 30; e o termo irredutibilidade computacional."
+    sustenta: Ensaio de Stephen Wolfram (2/2/2023) em que o vídeo se baseia. Conta o fascínio pela capa do volume 5 do Berkeley Physics Course, ganho em 1972; o Elliott 903C, com 8 mil palavras de memória e 16 instruções; o programa SPART, de 1973; a regra 30, que ele entendeu em 1º de junho de 1984, a caminho da Europa de avião; a tentativa de Richard Feynman de "quebrar" a regra 30; e o termo irredutibilidade computacional.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram"
@@ -65,6 +65,7 @@ youtube:
     - https://archive.org/details/berkeleyphysicsc05kitt
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Um mistério de detetive
 
 O vídeo acompanha uma jornada intelectual de 50 anos de Stephen Wolfram para entender a natureza do universo [00:00]. No centro está o mistério da Segunda Lei da Termodinâmica: por que as coisas perdem a organização e tudo parece ficar mais aleatório com o tempo? De onde vem essa aleatoriedade? [00:22]

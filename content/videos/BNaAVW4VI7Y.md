@@ -8,14 +8,14 @@ temas:
 resumo: "O vídeo analisa o trabalho do designer Felipe A. Carriço: a IA acelera a produção de interfaces, mas a cognição humana continua a mesma. Mostra o A11Y.md, um protocolo aberto que faz agentes de código seguirem a WCAG 2.2 AA desde a primeira linha, e a comunidade AmigUX, feita de conversas horizontais e mentoria."
 fontes:
   - url: https://github.com/fecarrico/A11Y.md
-    titulo: "fecarrico/A11Y.md (GitHub)"
+    titulo: fecarrico/A11Y.md (GitHub)
     sustenta: "Repositório do A11Y.md, de Felipe A. Carriço, licença MIT: um sistema de contexto para construir software acessível por padrão, com regras alinhadas à WCAG 2.2 AA. A regra no agente aponta para um arquivo central, que carrega guias de referência sob demanda. Cita Cursor, Claude e Copilot e registra que o projeto foi selecionado em julho de 2026 para o programa Claude for Open Source, da Anthropic."
     verificada: true
   - url: https://amigux.com.br/
-    titulo: "AmigUX"
-    sustenta: "Site da comunidade gratuita de designers de experiência, produto e serviço, com grupo de WhatsApp, encontros ao vivo e mentoria. Apresenta-se como feita por gente interessada em gente e descreve os encontros como conversa de mão dupla, não palestra."
+    titulo: AmigUX
+    sustenta: Site da comunidade gratuita de designers de experiência, produto e serviço, com grupo de WhatsApp, encontros ao vivo e mentoria. Apresenta-se como feita por gente interessada em gente e descreve os encontros como conversa de mão dupla, não palestra.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "IA e o Fator Humano: Neurociência, Acessibilidade Radical (A11Y.md) e Comunidade"
@@ -86,6 +86,7 @@ youtube:
     - https://medium.com/@carrico
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## IA exponencial, cérebro paleolítico
 
 O vídeo trata do choque entre a aceleração tecnológica e os limites da natureza humana [00:00]. A análise segue a trajetória, a pesquisa e a filosofia do designer Felipe A. Carriço: ancorar o desenvolvimento digital na realidade neurobiológica, em vez de seguir os algoritmos às cegas [00:20].

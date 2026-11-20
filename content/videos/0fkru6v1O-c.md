@@ -8,10 +8,10 @@ temas:
 resumo: "O vídeo percorre a Engenharia da Confiança em quatro módulos: o crash silencioso, a falha de intenção que não gera erro; o mapeamento do sistema real antes de modernizar; a arquitetura determinística, com separação entre cérebro e vitrine e o limiar de 98% de certeza; e a orquestração da intenção com desenvolvimento orientado a especificações."
 fontes:
   - url: https://mauricio.issei.com.br/engenharia-confianca
-    titulo: "A Engenharia da Confiança — Da Intenção à Execução Agêntica"
-    sustenta: "Página do site com a jornada do vídeo: a implementação prática do Intentional Systems Model (ISM) v1.0 em quatro módulos (Despertar, Mapear, Arquitetar e Orquestrar), com a frase \"a capacidade vem do modelo; a confiança vem da engenharia\", o crash silencioso, o determinístico-primeiro, os contratos rígidos, o Limiar de 98% de Certeza, o fail-closed e o Spec-Driven Development."
+    titulo: A Engenharia da Confiança — Da Intenção à Execução Agêntica
+    sustenta: 'Página do site com a jornada do vídeo: a implementação prática do Intentional Systems Model (ISM) v1.0 em quatro módulos (Despertar, Mapear, Arquitetar e Orquestrar), com a frase "a capacidade vem do modelo; a confiança vem da engenharia", o crash silencioso, o determinístico-primeiro, os contratos rígidos, o Limiar de 98% de Certeza, o fail-closed e o Spec-Driven Development.'
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "A Engenharia da Confiança: Por que sua IA falha (e como construir sistemas que aguentam produção)"
@@ -61,6 +61,7 @@ youtube:
     - https://mauricio.issei.com.br/engenharia-confianca.html
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Da mágica à engenharia
 
 O vídeo propõe tratar a IA não como mágica, mas como disciplina de engenharia. Demonstrações parecem feitiçaria; o desafio é transformar esse encanto em confiança e previsibilidade [00:00]. O caminho vai da intenção humana até a execução agêntica autônoma [00:22].

@@ -5,17 +5,17 @@ status: publicado
 temas:
   - engenharia-agentica
   - cloud-e-confiabilidade
-resumo: "O vídeo apresenta o Amazon Nova Act, o serviço da AWS para criar e gerenciar frotas de agentes de IA que automatizam fluxos de interface no navegador. Explica por que os scripts tradicionais quebram, o ciclo de desenvolvimento, a intervenção humana com aprovação ou assunção de controle e o preço por hora de agente, que não conta o tempo de espera humana."
+resumo: O vídeo apresenta o Amazon Nova Act, o serviço da AWS para criar e gerenciar frotas de agentes de IA que automatizam fluxos de interface no navegador. Explica por que os scripts tradicionais quebram, o ciclo de desenvolvimento, a intervenção humana com aprovação ou assunção de controle e o preço por hora de agente, que não conta o tempo de espera humana.
 fontes:
   - url: https://docs.aws.amazon.com/pt_br/nova-act/
-    titulo: "Amazon Nova Act Documentation"
-    sustenta: "Define o Amazon Nova Act como um serviço da AWS para quem desenvolve criar e gerenciar frotas de agentes de IA confiáveis que automatizam fluxos de interface de usuário."
+    titulo: Amazon Nova Act Documentation
+    sustenta: Define o Amazon Nova Act como um serviço da AWS para quem desenvolve criar e gerenciar frotas de agentes de IA confiáveis que automatizam fluxos de interface de usuário.
     verificada: true
   - url: https://aws.amazon.com/pt/nova/pricing/
-    titulo: "Preços do Amazon Nova | AWS"
-    sustenta: "Lista os fluxos do Nova Act a US$ 4,75 por hora de agente e informa que, com human-in-the-loop, o tempo de espera pela resposta humana é excluído da hora do agente."
+    titulo: Preços do Amazon Nova | AWS
+    sustenta: Lista os fluxos do Nova Act a US$ 4,75 por hora de agente e informa que, com human-in-the-loop, o tempo de espera pela resposta humana é excluído da hora do agente.
     verificada: true
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS"
@@ -48,6 +48,7 @@ youtube:
     - https://aws.amazon.com/pt/nova/pricing/
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Automação web que não quebra
 
 O vídeo trata da automação de interfaces web, uma área que costuma dar dor de cabeça às equipes de engenharia. O foco é o papel do Amazon Nova Act na passagem de regras rígidas de navegação para algo mais adaptável [00:00].

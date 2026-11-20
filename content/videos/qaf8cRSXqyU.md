@@ -6,7 +6,7 @@ temas:
   - engenharia-agentica
   - ferramentas-de-ia
 resumo: "O vídeo é um briefing técnico sobre o servidor MCP do Notion: como ele traduz pedidos em linguagem natural em ações no workspace, quais ferramentas oferece, a escolha entre a versão hospedada e a auto-hospedada, e os cuidados de segurança e de limite de requisições numa implantação corporativa."
-revisado_por: "Maurício Yokoyama Issei"
+revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-19
 youtube:
   titulo: "MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA"
@@ -30,6 +30,7 @@ youtube:
   links_descricao: []
   coletado_em: 2026-11-07T22:16:07Z
 ---
+
 ## Uma API de agente, não de dados
 
 O vídeo é um briefing para quem trabalha com arquitetura de soluções e quer implementar a camada de automação do Notion via MCP [00:00]. O vídeo chama o MCP de "Master Control Program"; a sigla é mais conhecida como Model Context Protocol, o protocolo aberto que liga agentes de IA a ferramentas.
