@@ -1,3 +1,6 @@
+## 2026-11-20
+* **Update**: Updated concept `transicoes-entre-paginas.md` (abertura imersiva início → vídeos).
+
 ## 2026-11-19
 * **Update**: Updated concept `transicoes-entre-paginas.md` (família site: início, carreira e conteúdos).
 

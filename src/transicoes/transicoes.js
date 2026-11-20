@@ -15,6 +15,7 @@
 
   var NOME_CAPA = 'vt-capa';
   var NOME_TITULO = 'vt-titulo';
+  var ORIGEM = 'vt-origem'; // RF-VT-25: ponto, em pixels, de onde a abertura imersiva nasce.
   var CHAVE = 'vt-de'; // RF-VT-11: de onde a pessoa saiu, para quem não tem navigation.activation.
   var NOME_NOME = 'vt-nome'; // família site: nome e papel do hero, que existem iguais na home e na carreira.
   var NOME_PAPEL = 'vt-papel';
@@ -30,6 +31,8 @@
   function limpar() {
     nomeados.forEach(function (el) { el.style.viewTransitionName = ''; });
     nomeados = [];
+    document.documentElement.style.removeProperty('--vt-x');
+    document.documentElement.style.removeProperty('--vt-y');
   }
   function visivel(el) {
     var r = el.getBoundingClientRect();
@@ -57,6 +60,21 @@
     vt.ready.catch(function () {}); // transição pulada ou interrompida: a navegação segue sem ela (RF-VT-13).
     vt.finished.then(limpar, limpar);
   }
+  // Abertura imersiva (RF-VT-25): o ícone de play do link, se houver; senão o próprio link. Nunca o ponteiro,
+  // para o clique e o teclado darem o mesmo ponto.
+  function origemDo(link) {
+    var alvo = link.querySelector('svg') || link;
+    var r = alvo.getBoundingClientRect();
+    return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)];
+  }
+  function escreverOrigem() {
+    var ponto = null;
+    try { ponto = (sessionStorage.getItem(ORIGEM) || '').split(','); sessionStorage.removeItem(ORIGEM); } catch (_) { return; }
+    if (!ponto || ponto.length !== 2 || isNaN(ponto[0]) || isNaN(ponto[1])) return; // sem ponto, o CSS usa o padrão
+    var raiz = document.documentElement.style;
+    raiz.setProperty('--vt-x', ponto[0] + 'px');
+    raiz.setProperty('--vt-y', ponto[1] + 'px');
+  }
   function fundo(yt) {
     // RF-VT-12: enquanto a imagem grande carrega, o quadro novo mostra a miniatura que já está no cache.
     var id = yt.getAttribute('data-id');
@@ -81,6 +99,9 @@
     var para = e.activation && e.activation.entry ? normalizarUrl(e.activation.entry.url) : linkAtivado;
     var tipo = tipoDeTransicao(de, para);
     if (tipo && vt.types) vt.types.add(tipo);
+    if (tipo === 'imersao' && ativado && normalizarUrl(ativado.href) === para) {
+      try { sessionStorage.setItem(ORIGEM, origemDo(ativado).join(',')); } catch (_) { /* privado ou bloqueado */ }
+    }
     var destino = e.activation && e.activation.entry ? e.activation.entry.url : ativado && ativado.href;
     var fragmento = '';
     try { fragmento = new URL(destino, location.href).hash; } catch (_) { /* sem destino legível */ }
@@ -110,6 +131,7 @@
     else { try { de = sessionStorage.getItem(CHAVE); } catch (_) { /* sem registro: só o esmaecimento */ } }
     var tipo = tipoDeTransicao(de, para);
     if (tipo && vt.types) vt.types.add(tipo);
+    if (tipo === 'imersao') escreverOrigem();
     if (SITE.test(para) && SITE.test(de || '')) {
       if (!location.hash && inicioECarreira(de, para)) nomearHero();
     } else if (VIDEO.test(para)) {

@@ -33,9 +33,9 @@ export const REGRAS_DE_PREBUSCA = {
   prefetch: [{ where: { href_matches: ['/videos', '/videos.html', '/videos/*', '/temas/*'] }, eagerness: 'moderate' }],
 };
 
-/** Pré-busca da família `site` (RF-VT-22): só as três portas, pelo mesmo critério e sem `prerender`. */
+/** Pré-busca da família `site` (RF-VT-22): as três portas e /videos.html (início → vídeos, RF-VT-31), pelo mesmo critério e sem `prerender`. */
 export const REGRAS_DE_PREBUSCA_SITE = {
-  prefetch: [{ where: { href_matches: ['/', '/curriculo.html', '/catalogo.html'] }, eagerness: 'moderate' }],
+  prefetch: [{ where: { href_matches: ['/', '/curriculo.html', '/catalogo.html', '/videos.html'] }, eagerness: 'moderate' }],
 };
 
 /** Troca o marcador do script pelas regras de familias.mjs, para que existam num lugar só. */

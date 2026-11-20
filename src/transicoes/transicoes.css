@@ -13,6 +13,7 @@
   :root {
     --vt-duracao: 0.2s; /* conteúdo: curto, para não somar à espera da rede */
     --vt-duracao-compartilhado: 0.32s; /* capa e título: o movimento que a pessoa acompanha */
+    --vt-duracao-imersao: 0.45s; /* início → vídeos: a abertura que a pessoa acompanha (≤ 0,5 s) */
     --vt-curva: cubic-bezier(0.2, 0.7, 0.2, 1);
     --vt-deslocamento: 12px;
   }
@@ -60,6 +61,34 @@
   }
   :root:active-view-transition-type(retorno)::view-transition-new(root) {
     animation-name: vt-entra-esquerda;
+  }
+
+  /*
+   * Início → vídeos (tipo `imersao`, SDD-transicoes-vinheta-videos.md): a página nova se abre como um círculo a
+   * partir do clique e a antiga recua um pouco. É o único uso de `clip-path` da camada (exceção D7). O ponto vem de
+   * `--vt-x` e `--vt-y` (script); sem ele, o centro, um pouco acima. Limitado à janela para nunca nascer fora dela.
+   */
+  :root:active-view-transition-type(imersao)::view-transition-new(root) {
+    animation-name: vt-abre;
+    animation-duration: var(--vt-duracao-imersao);
+  }
+  :root:active-view-transition-type(imersao)::view-transition-old(root) {
+    animation: vt-recua var(--vt-duracao-imersao) var(--vt-curva) both;
+    transform-origin: clamp(0px, var(--vt-x, 50%), 100vw) clamp(0px, var(--vt-y, 40%), 100vh);
+  }
+  @keyframes vt-abre {
+    from {
+      clip-path: circle(0 at clamp(0px, var(--vt-x, 50%), 100vw) clamp(0px, var(--vt-y, 40%), 100vh));
+    }
+    to {
+      clip-path: circle(150vmax at clamp(0px, var(--vt-x, 50%), 100vw) clamp(0px, var(--vt-y, 40%), 100vh));
+    }
+  }
+  @keyframes vt-recua {
+    to {
+      transform: scale(1.06);
+      opacity: 0.6;
+    }
   }
 
   @keyframes vt-entra-direita {

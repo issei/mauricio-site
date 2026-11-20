@@ -40,6 +40,8 @@ export function normalizarUrl(url) {
 /** Tipo da transição a partir das duas rotas já normalizadas; null quando não há direção (RF-VT-10). */
 export function tipoDeTransicao(de, para) {
   if (!de || !para) return null;
+  // RF-VT-24 (SDD-transicoes-vinheta-videos): só início → /videos abre como círculo, a partir do clique.
+  if ((de === '/' || de === '/index') && para === '/videos') return 'imersao';
   if (SITE.test(de) && SITE.test(para)) {
     // RF-VT-18: a ordem do cabeçalho (Início, Carreira, Conteúdos) dá a direção.
     var ordem = { '/': 0, '/index': 0, '/curriculo': 1, '/catalogo': 2 };

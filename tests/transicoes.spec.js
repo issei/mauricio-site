@@ -99,7 +99,8 @@ const registrarNomes = (page) =>
           href: el.closest('li, .hero')?.querySelector('a[href]')?.getAttribute('href') ?? null,
         }));
         const l = JSON.parse(sessionStorage.getItem('vt-nomes') || '[]');
-        l.push({ evento, caminho: location.pathname, tipos: [...vt.types], nomes });
+        const raiz = document.documentElement.style;
+        l.push({ evento, caminho: location.pathname, tipos: [...vt.types], nomes, origem: [raiz.getPropertyValue('--vt-x'), raiz.getPropertyValue('--vt-y')] });
         sessionStorage.setItem('vt-nomes', JSON.stringify(l));
       }, 0);
     addEventListener('pageswap', (e) => e.viewTransition && gravar('pageswap', e.viewTransition));
@@ -411,4 +412,114 @@ testDoGate(test, 'index', 'curriculo', 'catalogo')('a pré-busca do site baixa s
   expect(prebuscas.every((p) => ['/curriculo.html', '/catalogo.html', '/'].includes(p))).toBe(true);
   expect(prebuscas).toContain('/curriculo.html');
   expect(await page.locator('script[type="speculationrules"]').first().textContent()).not.toContain('prerender');
+});
+
+// ── Abertura imersiva: início → vídeos (SDD-transicoes-vinheta-videos.md, CA-38 a CA-45) ──────────
+
+// o ponto vale na janela, depois de a página rolar até o alvo: rola antes de medir
+const centro = async (page, seletor) => {
+  await page.locator(seletor).first().scrollIntoViewIfNeeded();
+  return page.locator(seletor).first().evaluate((el) => {
+    const r = el.getBoundingClientRect();
+    return [r.left + r.width / 2, r.top + r.height / 2];
+  });
+};
+const px = (v) => Number.parseFloat(v);
+
+testDoGate(test, 'index', 'videos')('botão do canal: tipo imersao e origem no centro do ícone (CA-38)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  const [cx, cy] = await centro(page, 'a.pf-btn--yt svg');
+  await page.locator('a.pf-btn--yt').click();
+  await page.waitForURL(/\/videos/);
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  expect(saida.tipos).toEqual(['imersao']);
+  expect(entrada.tipos).toEqual(['imersao']);
+  expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
+  expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
+});
+
+testDoGate(test, 'index', 'videos')('link Vídeos do cabeçalho: tipo imersao e origem no centro do link (CA-39)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  const [cx, cy] = await centro(page, 'header.sh .sh-lista a[href="/videos.html"]');
+  await page.locator('header.sh .sh-lista a[href="/videos.html"]').click();
+  await page.waitForURL(/\/videos/);
+  await esperar(page, 2);
+  const [, entrada] = await nomes(page);
+  expect(entrada.tipos).toEqual(['imersao']);
+  expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
+  expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
+});
+
+testDoGate(test, 'index', 'videos')('teclado (Enter): a origem é o centro do ícone do elemento focado (CA-40)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  const [cx, cy] = await centro(page, 'a.pf-btn--yt svg');
+  await page.locator('a.pf-btn--yt').focus();
+  await page.keyboard.press('Enter');
+  await page.waitForURL(/\/videos/);
+  await esperar(page, 2);
+  const [, entrada] = await nomes(page);
+  expect(entrada.tipos).toEqual(['imersao']);
+  expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
+  expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
+});
+
+testDoGate(test, 'index', 'videos')('sem ponto guardado a página abre completa e sem origem inventada (CA-41)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  // o ouvinte do teste roda antes do da página (init script) e apaga o ponto guardado
+  await page.addInitScript(() => addEventListener('pagereveal', () => { try { sessionStorage.removeItem('vt-origem'); } catch (_) { /* sem storage */ } }));
+  await registrarNomes(page);
+  await page.goto('/');
+  await page.locator('a.pf-btn--yt').click();
+  await page.waitForURL(/\/videos/);
+  await esperar(page, 2);
+  const [, entrada] = await nomes(page);
+  expect(entrada.tipos).toEqual(['imersao']);
+  expect(entrada.origem).toEqual(['', '']);
+  await expect(page.locator('h1')).toHaveText('Vídeos');
+});
+
+testDoGate(test, 'index', 'videos')('com movimento reduzido a abertura não roda (CA-42)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await registrarPagereveal(page);
+  await page.goto('/');
+  await page.locator('a.pf-btn--yt').click();
+  await page.waitForURL(/\/videos/);
+  await expect.poll(async () => (await log(page)).length).toBe(2);
+  expect((await log(page)).some((e) => e.transicao)).toBe(false);
+});
+
+testDoGate(test, 'index', 'videos')('depois da abertura nada sobra, e o Voltar usa retorno comum (CA-43)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await page.goto('/');
+  await page.locator('a.pf-btn--yt').click();
+  await page.waitForURL(/\/videos/);
+  await esperar(page, 2);
+  await page.waitForLoadState('load');
+  await expect.poll(() => page.evaluate(() => [
+    ...document.querySelectorAll('[style*="view-transition-name"]'),
+  ].length + document.documentElement.style.getPropertyValue('--vt-x').length)).toBe(0);
+  await page.goBack();
+  await page.waitForURL((u) => u.pathname === '/');
+  await esperar(page, 4);
+  const [, , , voltaEntrada] = await nomes(page);
+  expect(voltaEntrada.tipos).not.toContain('imersao');
+});
+
+testDoGate(test, 'index', 'videos')('passar o mouse no botão pré-busca /videos.html (CA-45)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  const prebuscas = [];
+  page.on('request', (r) => { if ((r.headers()['sec-purpose'] || '').includes('prefetch')) prebuscas.push(new URL(r.url()).pathname); });
+  await page.goto('/');
+  await page.locator('a.pf-btn--yt').hover();
+  await expect.poll(() => prebuscas.length, { timeout: 8000 }).toBeGreaterThan(0);
+  expect(prebuscas).toContain('/videos.html');
 });
