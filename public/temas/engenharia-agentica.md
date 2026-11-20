@@ -22,6 +22,7 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 
 ## Vídeos
 
+- [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
 - [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026

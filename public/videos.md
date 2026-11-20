@@ -8,6 +8,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 
 ## Engenharia agêntica
 
+- [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
 - [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
 - [O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS](https://mauricio.issei.com.br/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia) — 18 de outubro de 2026
@@ -19,7 +20,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!](https://mauricio.issei.com.br/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra) — 7 de outubro de 2026
 - [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
-- [Como conectar Agentes de IA ao Frontend (sem gambiarras): Conheça o Protocolo AG-UI](https://mauricio.issei.com.br/videos/como-conectar-agentes-de-ia-ao-frontend-sem-gambiarras) — 2 de outubro de 2026
 
 ## Aprendizagem e mente
 
@@ -98,6 +98,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 
 ## Ferramentas de IA
 
+- [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
 - [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
@@ -109,7 +110,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e 
 - [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
 - [Gemma 4  Futuro da IA On Device](https://mauricio.issei.com.br/videos/gemma-4-futuro-da-ia-on-device) — 6 de abril de 2026
 - [PaperBanana: IA para Análise e Revisão de Artigos Científicos](https://mauricio.issei.com.br/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos) — 3 de fevereiro de 2026
-- [MCP DO NOTION: Briefing de Arquitetura para Automação e Agentes de IA](https://mauricio.issei.com.br/videos/mcp-do-notion-briefing-de-arquitetura-para-automacao-e) — 15 de dezembro de 2025
 
 ## Tecnologia e cultura
 
