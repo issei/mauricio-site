@@ -208,9 +208,15 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
   para o lado. Fundo escuro e liso, perto de `#0d1117`, para a foto se fundir com a página sem recorte.
   Luz lateral suave de um lado, sombra do outro. Roupa escura e lisa. Cor natural com saturação baixa, ou
   preto e branco. Nenhuma marca, texto ou logotipo na imagem.
-- *Fonte:* depende da decisão D-EV-1 (seção 9). A recomendação é uma foto real nova, feita com este
-  briefing. `foto2.png` tem o enquadramento e a luz certos, mas tem a marca de IA (AU-03).
-- *Briefing para fotógrafo (não é prompt de geração):* "Retrato de busto, proporção 4:5, fundo preto liso
+- *Fonte:* foto real nova (D-EV-1, decidido pelo Issei em 2026-11-21). O Issei enviou a foto em
+  2026-11-21: 1824 × 2338, busto, sorrindo, óculos, blazer azul e camiseta preta, diante de um painel
+  iluminado em azul e magenta. A pedido do Issei, o fundo foi suavizado: a pessoa foi separada do fundo
+  (modelo de recorte BiRefNet-portrait, rodado localmente), e o fundo ficou desfocado, quase sem cor e
+  escurecido em direção a `#0d1117`. A pessoa não foi alterada. Recorte 4:5: `x 195–1795, y 150–2150`.
+  `alt` confirmado pelo Issei em 2026-11-21 e ajustado ao fundo novo: "Maurício Yokoyama Issei sorrindo,
+  de óculos, blazer azul e camiseta preta, sobre fundo escuro."
+- *Fotos antigas:* `foto2.png` tem o enquadramento e a luz certos, mas tem a marca de IA (AU-03).
+- *Briefing para fotógrafo (referência para uma foto futura; não é prompt de geração):* "Retrato de busto, proporção 4:5, fundo preto liso
   a 1,5 m da pessoa, uma luz principal suave a 45° e rebatedor fraco do outro lado, camisa ou camiseta
   escura lisa, expressão serena e confiante, foco nos olhos, arquivo RAW ou JPEG em resolução máxima."
 - *Prompt de geração:* não se aplica. O retrato representa uma pessoa real, então a fonte é uma
@@ -237,7 +243,7 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
             srcset="/img/retrato-192.webp 192w, /img/retrato-480.webp 480w, /img/retrato-960.webp 960w"
             sizes="(min-width: 1024px) 26rem, 6rem">
     <img src="/img/retrato-480.webp" width="480" height="600"
-         alt="Maurício Yokoyama Issei, de camisa escura, em retrato de busto sobre fundo escuro, olhando para a câmera."
+         alt="Maurício Yokoyama Issei sorrindo, de óculos, blazer azul e camiseta preta, sobre fundo escuro."
          fetchpriority="high" loading="eager" decoding="async">
   </picture>
 </figure>
@@ -256,7 +262,7 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
 ```
 
 - `alt`: classificação **informativa** (mostra quem é a pessoa). O texto final depende da foto escolhida
-  e passa pelo Passo 3 do guia de imagens (`docs/a11y/references/guide-images.md`): o Issei confirma.
+  e passa pelo Passo 3 do guia de imagens (`docs/a11y/references/guide-images.md`): a classificação foi confirmada (D-EV-2); o texto final é confirmado com a foto.
 - Não use `<figcaption>`: o nome já está no `h1` logo ao lado.
 - Pré-carregamento: não é preciso `<link rel="preload">`. O `<picture>` fica no HTML inicial e o
   `fetchpriority="high"` basta.
@@ -349,7 +355,7 @@ ao topo. Abaixo de 1024 px, o diagrama vem depois do texto, com largura máxima 
   cada, ~3 KB no total). O gerador falha se faltar ícone para um tema.
 - Atributos: `aria-hidden="true" focusable="false" width="20" height="20"`.
 - `alt`: classificação **decorativa** (o nome do tema está no texto do link; remover o ícone não tira
-  informação). Pendente de confirmação do Issei (D-EV-2).
+  informação). Confirmado pelo Issei em 2026-11-21 (D-EV-2).
 - Os mesmos arquivos servem depois às páginas `/temas/*` e às prateleiras de `/videos`, fora deste escopo.
 
 ### 4.6 Provas (`section#provas`)
@@ -407,8 +413,7 @@ então um gráfico não teria o que comparar.
   de tabulação para o mesmo destino.
 - `alt=""`: a imagem social de cada página mostra o título dessa página, que já está no `h3`. Um `alt`
   descritivo faria o leitor de tela ler o título duas vezes. Isso diverge do pedido ("todo ativo com
-  `alt` descritivo"), por isso é a decisão D-EV-2. Pelo guia de imagens, `alt=""` só vale depois da
-  confirmação humana.
+  `alt` descritivo"); o Issei confirmou a classificação em 2026-11-21 (D-EV-2), como pede o guia de imagens.
 - Hover: a capa ganha `transform: scale(1.03)` em 0,3 s, sob `no-preference` (R-IMG-07).
 - O gerador falha em dois casos: a página de destino não tem `og:image`, ou o arquivo dessa imagem não existe.
 
@@ -519,9 +524,9 @@ Uma pergunta por vez, nesta ordem.
 
 | Id | Pergunta | Opções | Recomendação |
 | :-- | :-- | :-- | :-- |
-| D-EV-1 | Qual foto vai no retrato? | (a) foto real nova com o briefing de 4.3; (b) `foto2.png`, se existir versão sem a marca de IA; (c) `foto1.png` com fundo escurecido; (d) sem foto: só capas, ícones e diagrama | (a): fundo escuro de verdade e sem marca de IA |
-| D-EV-2 | Confirma a classificação de acessibilidade? Retrato informativo com `alt` descritivo; capas e ícones decorativos com `alt=""` / `aria-hidden`; diagrama informativo com `title`. | sim / ajustar caso a caso | sim: evita a leitura dupla do título |
-| D-EV-3 | Os ativos novos usam um destaque só (`#58a6ff`) dentro da paleta atual, em vez de um ciano ou esmeralda novo? | manter a paleta / abrir exceção | manter: é regra do `AGENTS.md` e do ADR-pf-001 |
+| D-EV-1 | Qual foto vai no retrato? | (a) foto real nova com o briefing de 4.3; (b) `foto2.png`, se existir versão sem a marca de IA; (c) `foto1.png` com fundo escurecido; (d) sem foto: só capas, ícones e diagrama | **Decidido (Issei, 2026-11-21): (a)** foto real nova, feita com o briefing de 4.3 |
+| D-EV-2 | Confirma a classificação de acessibilidade? Retrato informativo com `alt` descritivo; capas e ícones decorativos com `alt=""` / `aria-hidden`; diagrama informativo com `title`. | sim / ajustar caso a caso | **Decidido (Issei, 2026-11-21): sim**, como proposto. Registrar no `A11Y-DECISIONS.md` na implementação |
+| D-EV-3 | Os ativos novos usam um destaque só (`#58a6ff`) dentro da paleta atual, em vez de um ciano ou esmeralda novo? | manter a paleta / abrir exceção | **Decidido (Issei, 2026-11-21): manter**, um destaque só (`#58a6ff`) |
 
 ## 10. Referências
 
