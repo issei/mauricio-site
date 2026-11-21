@@ -5,7 +5,9 @@
  *   assets-fonte/retrato.jpg        → public/img/retrato-{192,480,960}.{avif,webp}
  *   og:image de cada destaque        → public/img/capas/<página>-{320,640}.{avif,webp}
  *
- * public/img/manifesto.json guarda o sha256 de cada fonte. O --check falha se uma
+ * O manifesto fica em assets-fonte/ (não é publicado).
+ *
+ * assets-fonte/manifesto.json guarda o sha256 de cada fonte. O --check falha se uma
  * fonte mudou sem nova geração, se falta uma saída ou se uma saída passa do peso
  * máximo (RNF-EV-02). Não compara bytes de saída: o codificador pode variar entre
  * versões do libvips, e o que importa é a fonte e o orçamento.
@@ -25,7 +27,7 @@ import { loadEcossistema } from './catalogo/dados.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'public/img');
-const MANIFESTO = join(OUT, 'manifesto.json');
+const MANIFESTO = join(ROOT, 'assets-fonte/manifesto.json');
 const check = process.argv.includes('--check');
 const fail = (msg) => { console.error(`✗ [imagens] ${msg}`); process.exit(1); };
 const sha = (p) => createHash('sha256').update(readFileSync(p)).digest('hex');

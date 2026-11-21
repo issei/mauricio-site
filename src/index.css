@@ -464,13 +464,13 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
           mask: linear-gradient(#000 80%, transparent);
 }
 @media (min-width: 1024px) {
-  .pf-hero .pf-wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 3rem; align-items: center; }
+  .pf-hero .pf-wrap:has(> .pf-hero-retrato) { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 3rem; align-items: center; }
   .pf-hero-retrato { width: 100%; max-width: 26rem; justify-self: end; }
 }
 /* Celular e tablet: avatar acima do sobretítulo. order só muda a posição visual;
    no DOM o nome vem antes, e a imagem não recebe foco (WCAG 1.3.2, 2.4.3). */
 @media (max-width: 1023px) {
-  .pf-hero .pf-wrap { display: flex; flex-direction: column; }
+  .pf-hero .pf-wrap:has(> .pf-hero-retrato) { display: flex; flex-direction: column; }
   .pf-hero-retrato { order: -1; width: 6rem; margin-bottom: 1.25rem; }
   .pf-hero-retrato img { aspect-ratio: 1; border-radius: 50%; object-position: 50% 22%; -webkit-mask: none; mask: none; }
 }
