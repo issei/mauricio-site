@@ -23,6 +23,7 @@ import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from './seo/pages.mjs';
 import { loadEcossistema, NATUREZAS, cardTitle, temasDoSite } from './catalogo/dados.mjs';
+import { DESTAQUES } from './home/destaques.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const cv = JSON.parse(readFileSync(join(ROOT, 'public/cv.json'), 'utf8'));
@@ -91,6 +92,39 @@ const pills = (arr, tag = 'ul') => tag === 'ul'
   ? `<ul class="pf-pills">${arr.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`
   : `<span class="pf-pills">${arr.map((t) => `<span>${esc(t)}</span>`).join('')}</span>`;
 const bullets = (arr, fmt = esc) => `<ul>${arr.map((t) => `<li>${fmt(t)}</li>`).join('')}</ul>`;
+// ---------------------------------------------------------------------------
+// Elementos visuais (SDD-elementos-visuais): retrato, capas, ícones e diagrama.
+// As imagens saem de scripts/gen-imagens.mjs; os SVG ficam em src/img/.
+// ---------------------------------------------------------------------------
+const svg = (rel) => {
+  const path = join(ROOT, 'src/img', rel);
+  if (!existsSync(path)) fail(`SVG ausente: src/img/${rel}`);
+  return readFileSync(path, 'utf8').trim();
+};
+const srcset = (base, ws, fmt) => ws.map((w) => `${base}-${w}.${fmt} ${w}w`).join(', ');
+/** Retrato do hero (§4.3, D-EV-1/D-EV-2): informativo, único fetchpriority="high" da página. */
+const RETRATO_ALT = 'Maurício Yokoyama Issei sorrindo, de óculos, blazer azul e camiseta preta, sobre fundo escuro.';
+const retrato = () => {
+  const sizes = '(min-width: 1024px) 26rem, 6rem';
+  return `<figure class="pf-hero-retrato">
+      <picture>
+        <source type="image/avif" srcset="${srcset('/img/retrato', [192, 480, 960], 'avif')}" sizes="${sizes}">
+        <source type="image/webp" srcset="${srcset('/img/retrato', [192, 480, 960], 'webp')}" sizes="${sizes}">
+        <img src="/img/retrato-480.webp" width="480" height="600" alt="${esc(RETRATO_ALT)}" fetchpriority="high" loading="eager" decoding="async">
+      </picture>
+    </figure>`;
+};
+/** Capa de destaque (§4.7, D-EV-2): decorativa, o título já está no h3 do cartão. */
+const capa = (n) => {
+  const base = `/img/capas/${n.file.replace(/\.html$/, '')}`;
+  const sizes = '(min-width: 768px) 34rem, 100vw';
+  return `<picture>
+      <source type="image/avif" srcset="${srcset(base, [320, 640], 'avif')}" sizes="${sizes}">
+      <source type="image/webp" srcset="${srcset(base, [320, 640], 'webp')}" sizes="${sizes}">
+      <img class="pf-destaque-capa" src="${base}-640.webp" width="640" height="336" alt="" loading="lazy" decoding="async">
+    </picture>`;
+};
+
 function hero() {
   const cur = jobs[0];
   const [city, mode] = cur.Local.split(' · ');
@@ -98,6 +132,7 @@ function hero() {
   // (SDD-F1-F1b, RF-F1b-07); o rótulo faz do hero uma região, e nenhum conteúdo fica fora de landmark.
   return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
   <div class="pf-wrap">
+    <div class="pf-hero-texto">
     <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
     <h1 id="pf-nome">${esc(cv.Nome)}</h1>
     <p class="pf-hero-title">${esc(cv.Titulo)}</p>
@@ -113,6 +148,8 @@ function hero() {
       <a class="pf-btn pf-btn--ghost pf-btn--yt" href="${esc(cv.Contato.youtube)}" ${ext(`Canal ${YT_HANDLE} no YouTube`)}>${icon('youtube')} <span translate="no">${esc(YT_HANDLE)}</span></a>
     </div>
     ${socials()}
+    </div>
+    ${retrato()}
   </div>
 </section>`;
 }
@@ -364,8 +401,7 @@ const PROVAS = [
   ['Revisão orçamentária de fornecedores (MGI Tech & Maplink)', '500k'],
   ['Revisão orçamentária e CINVEST do novo contrato Salesforce', '3MM'],
 ];
-/** Destaques (3 a 4; pelo menos um de natureza Experiência). */
-const DESTAQUES = ['agent-ready', 'engenharia-agentes-ia', 'knowledge-os-presentation', 'acessibilidade'];
+// Destaques: lista em scripts/home/destaques.mjs (também usada por gen-imagens.mjs).
 
 const ecossistema = loadEcossistema();
 const { eco } = ecossistema;
@@ -386,6 +422,7 @@ function homeHero() {
   const cur = jobs[0];
   return `<section id="home" class="pf-hero" aria-labelledby="pf-nome">
   <div class="pf-wrap">
+    <div class="pf-hero-texto">
     <p class="pf-eyebrow">${esc(cur.Cargo)} · ${esc(cur.Empresa)}</p>
     <h1 id="pf-nome">${esc(cv.Nome)}</h1>
     <p class="pf-hero-title">${esc(cv.Titulo)}</p>
@@ -397,6 +434,8 @@ function homeHero() {
       <a class="pf-btn pf-btn--ghost" href="#contact">Contato</a>
     </div>
     ${socials()}
+    </div>
+    ${retrato()}
   </div>
 </section>`;
 }
@@ -404,7 +443,7 @@ function homeHero() {
 /** Os 10 temas, na ordem do catálogo, com o número de conteúdos (SDD Parte 8, RF-F8-06). */
 function temasHome() {
   return `<ul class="pf-temas">
-${temasDoSite(ecossistema).map((t) => `  <li><a href="./catalogo.html#tema-${t.id}">${esc(t.nome)}</a> <span class="pf-tema-n">${t.total} ${t.total === 1 ? 'conteúdo' : 'conteúdos'}</span></li>`).join('\n')}
+${temasDoSite(ecossistema).map((t) => `  <li><a href="./catalogo.html#tema-${t.id}">${svg(`temas/${t.id}.svg`)}${esc(t.nome)}</a> <span class="pf-tema-n">${t.total} ${t.total === 1 ? 'conteúdo' : 'conteúdos'}</span></li>`).join('\n')}
 </ul>
 <p class="pf-more"><a href="./catalogo.html">Ver todos os conteúdos</a></p>`;
 }
@@ -422,9 +461,12 @@ ${provas.map(({ p, r }) => `  <li>
 function destaques() {
   return `<ul class="pf-destaques">
 ${DESTAQUES.map((s) => { const n = eco.nodes[s]; return `  <li class="pf-destaque">
+    ${capa(n)}
+    <div class="pf-destaque-corpo">
     <p class="pf-destaque-tag">${esc(n.kind)} · ${natTag(n)}</p>
     <h3><a href="${hrefNo(n)}">${esc(cardTitle(n))}</a></h3>
     <p>${esc(n.descricao)}</p>
+    </div>
   </li>`; }).join('\n')}
 </ul>`;
 }
@@ -434,7 +476,8 @@ const homeBlock = () => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs 
 <div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
 ${homeHero()}
 <main id="conteudo">
-${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
+${section('about', 'Sobre', '', `<div class="pf-about pf-about--diagrama"><div class="pf-about-texto">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
+<figure class="pf-about-diagrama">${svg('sobre-integracao.svg')}</figure></div>
 <p class="pf-more"><a href="./curriculo.html">Ver a carreira completa</a></p>`)}
 ${section('temas', 'Temas', 'O que publico, por assunto. Cada tema leva aos seus conteúdos.', temasHome())}
 ${section('provas', 'Provas', 'Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Carreira.', provasHome())}
