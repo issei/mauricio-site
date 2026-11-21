@@ -70,3 +70,4 @@ Decisões em análise (ainda não aprovadas) ficam em `docs/specs/a11y-first/A11
 - **Ordem do DOM** → o `<figure>` do retrato vem depois do texto do hero; no celular, `order: -1` só muda a posição visual. A imagem não recebe foco, então a ordem de foco não muda (SC 1.3.2, 2.4.3).
 - **Capa não é link** → o único link do cartão continua o do `h3`, para não criar duas paradas de Tab para o mesmo destino.
 - **Nenhuma imagem acima da dobra começa em `opacity: 0`** (atrasaria o LCP); o zoom da capa no hover só vale sob `no-preference`.
+- **Badges das certificações em `/curriculo` (D-EV-4, SDD §4.9)** → **decorativos** (`alt=""`, `loading="lazy"`): o nome da certificação e o emissor já estão em texto no bilhete, mesmo critério das capas (D-EV-2). O badge não é link; o único link do bilhete continua "Verificar". Badges com fundo branco opaco perdem o branco ligado à borda na geração, para não virar um quadrado claro sobre o fundo escuro.

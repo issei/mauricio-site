@@ -77,6 +77,32 @@ function trabalhos() {
   return lista;
 }
 
+/**
+ * Badge com fundo branco opaco (alguns do Itaú): torna transparente o branco ligado à borda, por
+ * preenchimento a partir dos cantos. O branco de dentro do selo fica. Sem isso, o badge vira um
+ * quadrado claro sobre o fundo escuro da página.
+ */
+async function semFundoBranco(fonte) {
+  const { data, info } = await sharp(fonte).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width: W, height: H } = info;
+  const claro = (i) => data[i + 3] > 0 && data[i] > 235 && data[i + 1] > 235 && data[i + 2] > 235;
+  if (!claro(0)) return sharp(fonte);
+  const visto = new Uint8Array(W * H);
+  const pilha = [0, W - 1, (H - 1) * W, H * W - 1];
+  while (pilha.length) {
+    const p = pilha.pop();
+    if (visto[p] || !claro(p * 4)) continue;
+    visto[p] = 1;
+    data[p * 4 + 3] = 0;
+    const x = p % W;
+    if (x > 0) pilha.push(p - 1);
+    if (x < W - 1) pilha.push(p + 1);
+    if (p >= W) pilha.push(p - W);
+    if (p < W * (H - 1)) pilha.push(p + W);
+  }
+  return sharp(data, { raw: { width: W, height: H, channels: 4 } });
+}
+
 const anterior = existsSync(MANIFESTO) ? JSON.parse(readFileSync(MANIFESTO, 'utf8')) : {};
 const manifesto = {};
 const problemas = [];
@@ -100,7 +126,8 @@ for (const t of trabalhos()) {
         const ajuste = t.contain
           ? { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }
           : { fit: 'cover', position: 'centre' };
-        await sharp(t.fonte).resize(w, h, ajuste)[fmt](QUALIDADE[fmt]).toFile(arq);
+        const base = t.contain ? await semFundoBranco(t.fonte) : sharp(t.fonte);
+        await base.resize(w, h, ajuste)[fmt](QUALIDADE[fmt]).toFile(arq);
         gravados++;
       }
       const teto = t.teto[w]?.[fmt];
