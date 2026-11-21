@@ -366,6 +366,24 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 
 @keyframes pf-flip { from { transform: rotateX(90deg); opacity: 0; } }
 
+/* ===== Entrada ao rolar (SDD-animacoes-entrada) =====
+   fadeInUp e fadeInLeft vêm do Animate.css 4.1.1 — https://animate.style/ —
+   Copyright (c) 2020 Daniel Eden, licença MIT. Adaptados: deslocamento curto e
+   propriedade `translate` (não `transform`), para não anular o hover dos cartões.
+   Só a home: os seletores levam o id da seção, porque este CSS serve a outras páginas. */
+@keyframes pf-fade-in-up { from { opacity: 0; translate: 0 1.5rem; } to { opacity: 1; translate: 0 0; } }
+@keyframes pf-fade-in-left { from { opacity: 0; translate: -2rem 0; } to { opacity: 1; translate: 0 0; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    #temas .pf-h2, #provas .pf-h2, #destaques .pf-h2, #temas .pf-temas li, #destaques .pf-destaque, #provas .pf-provas li {
+      animation: pf-fade-in-up cubic-bezier(.2, .7, .2, 1) forwards;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+    #provas .pf-provas li { animation-name: pf-fade-in-left; }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
