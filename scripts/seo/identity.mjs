@@ -45,6 +45,8 @@ export const MACKENZIE = {
 export const PERSON_PROFILE = {
   ...PERSON,
   email: `mailto:${CV.Contato.Email}`,
+  // Retrato do hero (SDD-elementos-visuais §4.3): liga o rosto ao nome para buscadores e agentes.
+  image: `${SITE.origin}/img/retrato-960.webp`,
   sameAs: [...PERSON.sameAs, CV.Contato.instagram],
   worksFor: { '@type': 'Organization', name: CV.Experiencia[0].Empresa },
   // Espelho 1:1 de Habilidades (7 grupos), sem paráfrase.
