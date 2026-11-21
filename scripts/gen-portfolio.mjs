@@ -94,7 +94,7 @@ const pills = (arr, tag = 'ul') => tag === 'ul'
   : `<span class="pf-pills">${arr.map((t) => `<span>${esc(t)}</span>`).join('')}</span>`;
 const bullets = (arr, fmt = esc) => `<ul>${arr.map((t) => `<li>${fmt(t)}</li>`).join('')}</ul>`;
 // ---------------------------------------------------------------------------
-// Elementos visuais (SDD-elementos-visuais): retrato, capas, ícones e diagrama.
+// Elementos visuais (SDD-elementos-visuais): retrato, capas e ícones.
 // As imagens saem de scripts/gen-imagens.mjs; os SVG ficam em src/img/.
 // ---------------------------------------------------------------------------
 const svg = (rel) => {
@@ -491,8 +491,7 @@ const homeBlock = () => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs 
 <div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
 ${homeHero()}
 <main id="conteudo">
-${section('about', 'Sobre', '', `<div class="pf-about pf-about--diagrama"><div class="pf-about-texto">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
-<figure class="pf-about-diagrama">${svg('sobre-integracao.svg')}</figure></div>
+${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
 <p class="pf-more"><a href="./curriculo.html">Ver a carreira completa</a></p>`)}
 ${section('temas', 'Temas', 'O que publico, por assunto. Cada tema leva aos seus conteúdos.', temasHome())}
 ${section('provas', 'Provas', 'Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Carreira.', provasHome())}

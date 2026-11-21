@@ -22,7 +22,7 @@ Esta especificação propõe **cinco ativos**, em ordem de impacto:
 2. Uma **capa** em cada cartão de "Destaques", feita a partir das imagens sociais que já existem (4.7).
 3. Uma **imagem social nova** para a página inicial, com retrato (seção 5).
 4. Um **ícone SVG** por tema na lista "Temas" (4.5).
-5. Um **diagrama SVG** em "Sobre" (4.4).
+5. ~~Um diagrama SVG em "Sobre" (4.4)~~: removido a pedido do Issei (D-EV-5).
 
 As seções "Provas" e "Contato" ficam sem ativo novo, e o motivo está em cada uma.
 
@@ -280,43 +280,11 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
 **JSON-LD.** Acrescentar `"image": "https://mauricio.issei.com.br/img/retrato-960.webp"` ao `Person`
 (`#author`), no gerador que escreve o JSON-LD. Isso corrige o AU-05.
 
-### 4.4 Sobre (`section#about`) — diagrama
+### 4.4 Sobre (`section#about`) — sem diagrama
 
-**Identificação.** `section#about > .pf-wrap > .pf-about`.
-
-**Layout.** Em ≥ 1024 px, `.pf-about` deixa as duas colunas de texto (`columns: 2`) e passa a uma grade
-`grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr)`: texto à esquerda, diagrama à direita, alinhado
-ao topo. Abaixo de 1024 px, o diagrama vem depois do texto, com largura máxima de 28 rem.
-
-**Ativo visual.**
-
-- *Tipo:* diagrama SVG inline.
-- *Descrição:* representa só o que o texto já diz: experiência em Salesforce, AWS e APIs e trabalho de
-  integração de plataformas. Três caixas com raio `--pf-radius-md`, fundo `--pf-surface-2`, borda
-  `--pf-muted` 1,5 px e rótulo em texto (`Salesforce`, `APIs`, `AWS`), sem logotipos (R-IMG-05). `APIs` fica
-  no centro; linhas de 1,5 px em `--pf-link` ligam as outras duas a ela. Um rótulo pequeno em
-  `--pf-muted` sob o centro diz "integração". Sem sombra, sem gradiente, sem animação.
-- *Prompt de rascunho (opcional, para esboço antes do SVG à mão):* "Diagrama técnico minimalista em SVG,
-  fundo #0d1117, três retângulos de cantos arredondados alinhados na horizontal com os rótulos
-  'Salesforce', 'APIs' e 'AWS' em fonte Inter branca, o do meio ligado aos outros por linhas finas
-  #58a6ff, sem ícones, sem logotipos, sem gradientes, estilo de documentação de arquitetura."
-
-**Implementação.**
-
-```html
-<figure class="pf-about-diagrama">
-  <svg viewBox="0 0 480 200" width="480" height="200" role="img" aria-labelledby="dg-sobre-t">
-    <title id="dg-sobre-t">Salesforce e AWS ligados por uma camada de APIs: a integração de plataformas descrita no texto.</title>
-    <!-- 3 <rect>, 2 <line>, 4 <text>; cores por currentColor e var(--pf-*) -->
-  </svg>
-</figure>
-```
-
-- Arquivo-fonte: `src/img/sobre-integracao.svg`, inserido inline pelo `gen-portfolio.mjs` (sem requisição
-  extra; ~1,5 KB).
-- O texto dentro do SVG não muda o texto da página: são os mesmos termos. O `title` é **informativo** e
-  vai para o espelho `/en/` pelo Argos, como qualquer texto.
-- Prioridade baixa (seção 8): o ganho é menor que o do retrato e o das capas, e o diagrama repete o texto.
+**Decisão: sem ativo** (Issei, 2026-11-21, D-EV-5). O diagrama SVG "Salesforce, APIs, AWS" entrou no PR #220
+e saiu logo depois: ele só repetia o texto e não acrescentava nada visual. A seção volta ao texto em
+colunas de antes (`div.pf-about`).
 
 ### 4.5 Temas (`section#temas`) — ícones
 
@@ -506,7 +474,7 @@ Argos traduz são o `alt` do retrato e o `title` do diagrama.
 | RF-EV-03 | O nome (`h1`) vem antes do retrato na ordem do DOM. | Playwright |
 | RF-EV-04 | Cada cartão de "Destaques" tem a capa da página de destino, com `loading="lazy"`; o cartão tem um único link. | Playwright |
 | RF-EV-05 | Cada tema tem um ícone SVG inline com `aria-hidden="true"`; o gerador falha se faltar um. | `gen-portfolio.mjs --check` |
-| RF-EV-06 | O diagrama de "Sobre" é SVG inline com `role="img"` e `<title>`. | Playwright |
+| RF-EV-06 | A seção "Sobre" não tem diagrama nem imagem (D-EV-5). | Playwright |
 | RF-EV-07 | O JSON-LD `Person` tem `image`. | `tests/index.spec.js` |
 | RF-EV-08 | `og-index.png` segue o layout da seção 5 e tem 1200 × 630. | teste de dimensões |
 | RF-EV-09 | Cada bilhete de certificação listada em `fontes.json` mostra o badge em `<picture>` AVIF e WebP, com `alt=""`, `loading="lazy"` e 72 × 72; os demais bilhetes não têm imagem. | Playwright |
@@ -526,10 +494,11 @@ Argos traduz são o `alt` do retrato e o `title` do diagrama.
 | 3 | Retrato no hero + `image` no JSON-LD (4.3) | muito alto | médio | D-EV-1, D-EV-2 |
 | 4 | Imagem social nova com retrato (5) | alto (fora do site) | baixo | item 3 |
 | 5 | Ícones dos temas (4.5) | médio | médio | D-EV-2 |
-| 6 | Diagrama de "Sobre" (4.4) | baixo | baixo | — |
+| 6 | ~~Diagrama de "Sobre" (4.4)~~ removido (D-EV-5) | — | — | — |
 | 7 | Remover `src/foto1.png` e `src/foto2.png` do repositório depois de gerar o retrato | — | muito baixo | item 3 |
 | 8 | Monograma no cabeçalho e no favicon (4.1) | baixo | médio | próxima mudança de cabeçalho |
-| 9 | Badges das certificações em `/curriculo` (4.9) | médio | baixo | D-EV-4 |
+| 9 | Badges das certificações em `/curriculo` (4.9) | médio | baixo | D-EV-5 | Manter o diagrama de "Sobre"? | manter / remover | **Decidido (Issei, 2026-11-21): remover**, não agrega visualmente |
+| D-EV-4 |
 
 Cada item é um PR. Os itens 2, 3, 5 e 6 mudam HTML em português, então cada um precisa do espelho `/en/`
 antes do merge.

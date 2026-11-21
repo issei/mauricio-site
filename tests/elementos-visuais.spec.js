@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
 // Elementos visuais da home — docs/specs/elementos-visuais/SDD-elementos-visuais.md (§7).
-// Classificação de acessibilidade confirmada pelo Issei (D-EV-2): retrato e diagrama
-// informativos; capas e ícones decorativos.
+// Classificação de acessibilidade confirmada pelo Issei (D-EV-2): retrato
+// informativo; capas e ícones decorativos.
 
 const RETRATO_ALT = 'Maurício Yokoyama Issei sorrindo, de óculos, blazer azul e camiseta preta, sobre fundo escuro.';
 
@@ -79,12 +79,10 @@ test('RF-EV-05: cada tema tem ícone SVG decorativo dentro do link', async ({ pa
   }
 });
 
-test('RF-EV-06: diagrama de Sobre é SVG com role="img" e <title>', async ({ page }) => {
+test('RF-EV-06: Sobre é só texto, sem diagrama (D-EV-5)', async ({ page }) => {
   await page.goto('/');
-  const svg = page.locator('#about svg.pf-diagrama');
-  await expect(svg).toHaveAttribute('role', 'img');
-  await expect(svg.locator('title')).toHaveCount(1);
-  await expect(page.getByRole('img', { name: /Salesforce e AWS ligados por uma camada de APIs/ })).toHaveCount(1);
+  await expect(page.locator('#about .pf-about p').first()).toBeVisible();
+  await expect(page.locator('#about svg, #about img, #about figure')).toHaveCount(0);
 });
 
 test('RF-EV-07: JSON-LD Person da home tem image', async ({ page }) => {
