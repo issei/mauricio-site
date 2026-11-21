@@ -99,3 +99,23 @@ test('RF-EV-08: og-index.png tem 1200 × 630', () => {
   expect(png.readUInt32BE(16)).toBe(1200);
   expect(png.readUInt32BE(20)).toBe(630);
 });
+
+test('RF-EV-09: badge decorativo e lazy nas certificações com badge', async ({ page }) => {
+  const { lerBadges } = await import('../scripts/home/badges.mjs');
+  const esperados = lerBadges(new URL('..', import.meta.url).pathname).length;
+  await page.goto('/curriculo.html');
+  const badges = page.locator('.pf-ticket--badge .pf-ticket-badge');
+  // Cada badge aparece uma vez na lista completa e, se for destaque, também no topo.
+  expect(await page.locator('.pf-certs .pf-ticket-badge').count()).toBe(esperados);
+  const n = await badges.count();
+  for (let i = 0; i < n; i++) {
+    const b = badges.nth(i);
+    await expect(b.locator('source[type="image/avif"]')).toHaveCount(1);
+    const img = b.locator('img');
+    await expect(img).toHaveAttribute('alt', '');
+    await expect(img).toHaveAttribute('loading', 'lazy');
+    await expect(img).toHaveAttribute('width', '72');
+  }
+  // Bilhete sem badge não tem imagem.
+  await expect(page.locator('.pf-ticket:not(.pf-ticket--badge) img')).toHaveCount(0);
+});

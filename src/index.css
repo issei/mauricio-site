@@ -498,3 +498,10 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
   .pf-destaque-capa { transition: scale .3s ease; }
   .pf-destaque:hover .pf-destaque-capa { scale: 1.03; }
 }
+
+/* Badges das certificações (SDD-elementos-visuais §4.9, D-EV-4): decorativos, no canto do bilhete. */
+.pf-ticket--badge { padding-right: 5rem; }
+.pf-ticket--featured.pf-ticket--badge { padding-right: 6rem; }
+.pf-ticket-badge { position: absolute; top: .9rem; right: 1rem; width: 3.25rem; height: 3.25rem; }
+.pf-ticket--featured .pf-ticket-badge { width: 4.5rem; height: 4.5rem; }
+.pf-ticket-badge img { display: block; width: 100%; height: 100%; object-fit: contain; }

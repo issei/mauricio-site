@@ -4,6 +4,7 @@
  *
  *   assets-fonte/retrato.jpg        → public/img/retrato-{192,480,960}.{avif,webp}
  *   og:image de cada destaque        → public/img/capas/<página>-{320,640}.{avif,webp}
+ *   assets-fonte/badges/<arquivo>    → public/img/badges/<slug>-{72,144}.{avif,webp} (§4.9)
  *
  * O manifesto fica em assets-fonte/ (não é publicado).
  *
@@ -24,6 +25,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { DESTAQUES } from './home/destaques.mjs';
 import { loadEcossistema } from './catalogo/dados.mjs';
+import { lerBadges, BADGE_LARGURAS } from './home/badges.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'public/img');
@@ -62,6 +64,16 @@ function trabalhos() {
       teto: { 640: { avif: 30, webp: 45 } },
     });
   }
+  for (const b of lerBadges(ROOT)) {
+    lista.push({
+      id: `badge:${b.slug}`,
+      fonte: b.fonte,
+      proporcao: 1,
+      contain: true,
+      saidas: BADGE_LARGURAS.map((w) => ({ w, base: join(OUT, 'badges', `${b.slug}-${w}`) })),
+      teto: { 144: { avif: 12, webp: 20 } },
+    });
+  }
   return lista;
 }
 
@@ -84,7 +96,11 @@ for (const t of trabalhos()) {
         if (!existsSync(arq)) { problemas.push(`${rel(arq)}: ausente`); continue; }
       } else if (velho || !existsSync(arq)) {
         mkdirSync(dirname(arq), { recursive: true });
-        await sharp(t.fonte).resize(w, h, { fit: 'cover', position: 'centre' })[fmt](QUALIDADE[fmt]).toFile(arq);
+        // Badge: o selo inteiro cabe no quadrado, sobre fundo transparente.
+        const ajuste = t.contain
+          ? { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }
+          : { fit: 'cover', position: 'centre' };
+        await sharp(t.fonte).resize(w, h, ajuste)[fmt](QUALIDADE[fmt]).toFile(arq);
         gravados++;
       }
       const teto = t.teto[w]?.[fmt];
