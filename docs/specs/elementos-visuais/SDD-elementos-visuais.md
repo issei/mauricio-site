@@ -255,7 +255,7 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
 ```
 
 - `alt`: classificação **informativa** (mostra quem é a pessoa). O texto final depende da foto escolhida
-  e passa pelo Passo 3 do guia de imagens (`docs/a11y/references/guide-images.md`): o Issei confirma.
+  e passa pelo Passo 3 do guia de imagens (`docs/a11y/references/guide-images.md`): a classificação foi confirmada (D-EV-2); o texto final é confirmado com a foto.
 - Não use `<figcaption>`: o nome já está no `h1` logo ao lado.
 - Pré-carregamento: não é preciso `<link rel="preload">`. O `<picture>` fica no HTML inicial e o
   `fetchpriority="high"` basta.
@@ -348,7 +348,7 @@ ao topo. Abaixo de 1024 px, o diagrama vem depois do texto, com largura máxima 
   cada, ~3 KB no total). O gerador falha se faltar ícone para um tema.
 - Atributos: `aria-hidden="true" focusable="false" width="20" height="20"`.
 - `alt`: classificação **decorativa** (o nome do tema está no texto do link; remover o ícone não tira
-  informação). Pendente de confirmação do Issei (D-EV-2).
+  informação). Confirmado pelo Issei em 2026-11-21 (D-EV-2).
 - Os mesmos arquivos servem depois às páginas `/temas/*` e às prateleiras de `/videos`, fora deste escopo.
 
 ### 4.6 Provas (`section#provas`)
@@ -406,8 +406,7 @@ então um gráfico não teria o que comparar.
   de tabulação para o mesmo destino.
 - `alt=""`: a imagem social de cada página mostra o título dessa página, que já está no `h3`. Um `alt`
   descritivo faria o leitor de tela ler o título duas vezes. Isso diverge do pedido ("todo ativo com
-  `alt` descritivo"), por isso é a decisão D-EV-2. Pelo guia de imagens, `alt=""` só vale depois da
-  confirmação humana.
+  `alt` descritivo"); o Issei confirmou a classificação em 2026-11-21 (D-EV-2), como pede o guia de imagens.
 - Hover: a capa ganha `transform: scale(1.03)` em 0,3 s, sob `no-preference` (R-IMG-07).
 - O gerador falha em dois casos: a página de destino não tem `og:image`, ou o arquivo dessa imagem não existe.
 
@@ -519,7 +518,7 @@ Uma pergunta por vez, nesta ordem.
 | Id | Pergunta | Opções | Recomendação |
 | :-- | :-- | :-- | :-- |
 | D-EV-1 | Qual foto vai no retrato? | (a) foto real nova com o briefing de 4.3; (b) `foto2.png`, se existir versão sem a marca de IA; (c) `foto1.png` com fundo escurecido; (d) sem foto: só capas, ícones e diagrama | **Decidido (Issei, 2026-11-21): (a)** foto real nova, feita com o briefing de 4.3 |
-| D-EV-2 | Confirma a classificação de acessibilidade? Retrato informativo com `alt` descritivo; capas e ícones decorativos com `alt=""` / `aria-hidden`; diagrama informativo com `title`. | sim / ajustar caso a caso | sim: evita a leitura dupla do título |
+| D-EV-2 | Confirma a classificação de acessibilidade? Retrato informativo com `alt` descritivo; capas e ícones decorativos com `alt=""` / `aria-hidden`; diagrama informativo com `title`. | sim / ajustar caso a caso | **Decidido (Issei, 2026-11-21): sim**, como proposto. Registrar no `A11Y-DECISIONS.md` na implementação |
 | D-EV-3 | Os ativos novos usam um destaque só (`#58a6ff`) dentro da paleta atual, em vez de um ciano ou esmeralda novo? | manter a paleta / abrir exceção | manter: é regra do `AGENTS.md` e do ADR-pf-001 |
 
 ## 10. Referências
