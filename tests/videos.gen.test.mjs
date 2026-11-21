@@ -186,6 +186,17 @@ test('cartões usam a miniatura de 320 px com carga preguiçosa; só o destaque 
 });
 
 // Catálogo em prateleiras — SDD-catalogo-videos-e-busca.md §3 (RF-CV-xx).
+test('apresentação: h1 diz o que a página entrega e a contagem de artigos é real (RF-CV-00)', () => {
+  const { videos } = fixture();
+  const vivos = videos.filter((v) => v.status !== 'removido');
+  const com = vivos.filter((v) => v.status === 'publicado').length;
+  const html = build(fixture())['src/videos.html'];
+  assert.match(html, /<p class="kicker">Vídeos<\/p>\n<h1>Assista, leia e confira as fontes<\/h1>/);
+  assert.match(html, /<p>Cada vídeo do canal ganha um artigo curto, com o minuto de cada ideia e links para as fontes e o conteúdo original\.<\/p>/);
+  assert.ok(html.includes(`${com} de ${vivos.length} vídeos já`), 'contagem gerada dos artigos publicados');
+  assert.ok(html.indexOf('<h1>') < html.indexOf('class="hero"'), 'apresentação antes do destaque');
+});
+
 test('destaque: destaque:true vence; senão o artigo publicado mais recente; senão o vídeo mais recente', () => {
   const { videos } = fixture();
   const vivos = videos.filter((v) => v.status !== 'removido');

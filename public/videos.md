@@ -1,6 +1,8 @@
 # Vídeos
 
-Os vídeos do canal de Maurício Yokoyama Issei, por assunto, com descrição e transcrição.
+Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha um artigo curto, com links para as fontes e o conteúdo original.
+
+69 de 182 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
 
 ## Em destaque
 
