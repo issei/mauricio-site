@@ -210,10 +210,11 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
   preto e branco. Nenhuma marca, texto ou logotipo na imagem.
 - *Fonte:* foto real nova (D-EV-1, decidido pelo Issei em 2026-11-21). O Issei enviou a foto em
   2026-11-21: 1824 × 2338, busto, sorrindo, óculos, blazer azul e camiseta preta, diante de um painel
-  iluminado em azul e magenta. O fundo não é o fundo escuro liso do briefing, mas o azul e o magenta
-  conversam com o gradiente `#007bff → #8a2be2`. Recorte 4:5 usado na prévia: `x 195–1795, y 150–2150`.
-  Rascunho do `alt` (falta a confirmação do Issei): "Maurício Yokoyama Issei sorrindo, de óculos, blazer
-  azul e camiseta preta, diante de um painel iluminado em azul e magenta."
+  iluminado em azul e magenta. A pedido do Issei, o fundo foi suavizado: a pessoa foi separada do fundo
+  (modelo de recorte BiRefNet-portrait, rodado localmente), e o fundo ficou desfocado, quase sem cor e
+  escurecido em direção a `#0d1117`. A pessoa não foi alterada. Recorte 4:5: `x 195–1795, y 150–2150`.
+  `alt` confirmado pelo Issei em 2026-11-21 e ajustado ao fundo novo: "Maurício Yokoyama Issei sorrindo,
+  de óculos, blazer azul e camiseta preta, sobre fundo escuro."
 - *Fotos antigas:* `foto2.png` tem o enquadramento e a luz certos, mas tem a marca de IA (AU-03).
 - *Briefing para fotógrafo (referência para uma foto futura; não é prompt de geração):* "Retrato de busto, proporção 4:5, fundo preto liso
   a 1,5 m da pessoa, uma luz principal suave a 45° e rebatedor fraco do outro lado, camisa ou camiseta
@@ -242,7 +243,7 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
             srcset="/img/retrato-192.webp 192w, /img/retrato-480.webp 480w, /img/retrato-960.webp 960w"
             sizes="(min-width: 1024px) 26rem, 6rem">
     <img src="/img/retrato-480.webp" width="480" height="600"
-         alt="Maurício Yokoyama Issei, de camisa escura, em retrato de busto sobre fundo escuro, olhando para a câmera."
+         alt="Maurício Yokoyama Issei sorrindo, de óculos, blazer azul e camiseta preta, sobre fundo escuro."
          fetchpriority="high" loading="eager" decoding="async">
   </picture>
 </figure>
