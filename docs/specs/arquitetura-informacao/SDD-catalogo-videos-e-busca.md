@@ -55,6 +55,15 @@ recomendação personalizada, busca na transcrição (§6.1), página `/en/` dos
 └───────────────────────────────────────────────────────────────────────────────┘
 ```
 
+### 3.0 Apresentação (RF-CV-00)
+
+- **RF-CV-00** O topo da página diz o que ela entrega antes do destaque. Rótulo `Vídeos` (classe
+  `kicker`), `<h1>` **Assista, leia e confira as fontes** e um subtítulo: cada vídeo ganha um artigo
+  curto, com o minuto de cada ideia e links para as fontes e o conteúdo original. A linha seguinte
+  mostra a contagem real, gerada: quantos vídeos já têm artigo (`status: publicado`) e quantos
+  ainda têm só descrição e transcrição. A página não promete artigo que ainda não existe.
+  Decisão do Issei em 2026-11-21.
+
 ### 3.1 Destaque (RF-CV-01 a 04)
 
 - **RF-CV-01** O destaque mostra **um** vídeo, fixo no HTML gerado. Não há carrossel que gira sozinho.

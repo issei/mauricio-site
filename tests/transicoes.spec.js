@@ -63,7 +63,7 @@ testDoGate(test, 'videos')('a navegação funciona sem erro no console em qualqu
   await abrirPrimeiroVideo(page);
   await expect(page.locator('h1')).toBeVisible();
   await page.goBack();
-  await expect(page.locator('h1')).toHaveText('Vídeos');
+  await expect(page.locator('h1')).toHaveText('Assista, leia e confira as fontes');
   expect(erros).toEqual([]);
 });
 
@@ -71,7 +71,7 @@ test.describe('sem JavaScript (CA-11)', () => {
   test.use({ javaScriptEnabled: false });
   testDoGate(test, 'videos')('índice, assunto e vídeo mostram o conteúdo completo', async ({ page }) => {
     await page.goto('/videos.html');
-    await expect(page.locator('h1')).toHaveText('Vídeos');
+    await expect(page.locator('h1')).toHaveText('Assista, leia e confira as fontes');
     await expect(page.locator('a.card-link').first()).toBeVisible();
     const href = await page.locator('a.card-link').first().getAttribute('href');
     await page.goto(href);
@@ -484,7 +484,7 @@ testDoGate(test, 'index', 'videos')('sem ponto guardado a página abre completa 
   const [, entrada] = await nomes(page);
   expect(entrada.tipos).toEqual(['imersao']);
   expect(entrada.origem).toEqual(['', '', '']);
-  await expect(page.locator('h1')).toHaveText('Vídeos');
+  await expect(page.locator('h1')).toHaveText('Assista, leia e confira as fontes');
 });
 
 testDoGate(test, 'index', 'videos')('com movimento reduzido a abertura não roda (CA-42)', async ({ page, browserName }) => {

@@ -804,7 +804,7 @@ ${texto ? `<p class="resumo">${esc(texto)}</p>` : ''}
 
 export function renderIndice(lista, temas, temasUsados) {
   const rota = '/videos';
-  const descricao = `Os vídeos do canal de ${AUTOR}, por assunto, com descrição e transcrição.`;
+  const descricao = `Os vídeos do canal de ${AUTOR}, por assunto. Cada vídeo ganha um artigo curto, com links para as fontes e o conteúdo original.`;
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Vídeos', description: descricao,
     url: `${SITE}${rota}`, inLanguage: 'pt-BR',
@@ -822,8 +822,14 @@ ${temArtigo ? '<label><input type="checkbox" id="filtro-artigo"> Só com artigo<
 <label for="filtro-ordem">Ordem</label>
 <select id="filtro-ordem"><option value="recentes">Mais recentes</option><option value="vistos">Mais vistos</option></select>
 <span id="filtro-status" role="status" aria-live="polite"></span></div>`;
-  const corpo = `<h1>Vídeos</h1>
-<p class="meta">${lista.length} ${lista.length === 1 ? 'vídeo' : 'vídeos'} do canal, do mais recente ao mais antigo.</p>
+  const nArtigos = lista.filter((v) => v.status === 'publicado').length;
+  const contagem = nArtigos === lista.length
+    ? `${nArtigos === 1 ? 'O vídeo tem' : `Os ${nArtigos} vídeos têm`} artigo.`
+    : `${nArtigos} de ${lista.length} vídeos já ${nArtigos === 1 ? 'tem' : 'têm'} artigo. Os outros têm, por enquanto, a descrição e a transcrição.`;
+  const corpo = `<p class="kicker">Vídeos</p>
+<h1>Assista, leia e confira as fontes</h1>
+<p>Cada vídeo do canal ganha um artigo curto, com o minuto de cada ideia e links para as fontes e o conteúdo original.</p>
+<p class="meta">${contagem}</p>
 ${destaque ? destaqueHtml(destaque, temas) : ''}
 ${salto}
 ${prateleiras.map((p) => prateleira({ ...p, temas })).join('\n')}
@@ -833,7 +839,7 @@ ${filtro}
 ${lista.map((v) => cartao(v, temas)).join('\n')}
 </ul></section>`;
   const html = pagina({ titulo: 'Vídeos', descricao, rota, robots: 'index, follow', jsonld, corpo, script: SCRIPT_PRATELEIRA + SCRIPT_FILTRO, larga: 'total' });
-  const md = ['# Vídeos', '', descricao, '',
+  const md = ['# Vídeos', '', descricao, '', contagem, '',
     ...(destaque ? ['## Em destaque', '', `- [${destaque.youtube.titulo}](${SITE}${rotaVideo(destaque)}) — ${dataPt(destaque.youtube.publicado_em)}`, ''] : []),
     ...prateleiras.flatMap((p) => [`## ${p.titulo}`, '', ...p.lista.map((v) => `- [${v.youtube.titulo}](${SITE}${rotaVideo(v)}) — ${dataPt(v.youtube.publicado_em)}`), '']),
     '## Todos os vídeos', '',
