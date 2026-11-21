@@ -2,7 +2,7 @@
 
 Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha um artigo curto, com links para as fontes e o conteúdo original.
 
-69 de 184 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
+69 de 185 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
 
 ## Em destaque
 
@@ -151,6 +151,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 
 - [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
 - [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
+- [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 - [A Arte de Começar Sem Estar Pronto | Como a Ação Gera Confiança](https://mauricio.issei.com.br/videos/a-arte-de-comecar-sem-estar-pronto-como-a-acao-gera) — 19 de novembro de 2026
 - [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [Kant: Fundamentação da Metafísica dos Costumes](https://mauricio.issei.com.br/videos/kant-fundamentacao-da-metafisica-dos-costumes) — 14 de novembro de 2026
