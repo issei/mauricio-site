@@ -208,8 +208,14 @@ versões saem de `scripts/gen-portfolio.mjs` (funções nas linhas 99 e 387 na d
   para o lado. Fundo escuro e liso, perto de `#0d1117`, para a foto se fundir com a página sem recorte.
   Luz lateral suave de um lado, sombra do outro. Roupa escura e lisa. Cor natural com saturação baixa, ou
   preto e branco. Nenhuma marca, texto ou logotipo na imagem.
-- *Fonte:* foto real nova, feita com este briefing (D-EV-1, decidido pelo Issei em 2026-11-21). `foto2.png` tem o enquadramento e a luz certos, mas tem a marca de IA (AU-03).
-- *Briefing para fotógrafo (não é prompt de geração):* "Retrato de busto, proporção 4:5, fundo preto liso
+- *Fonte:* foto real nova (D-EV-1, decidido pelo Issei em 2026-11-21). O Issei enviou a foto em
+  2026-11-21: 1824 × 2338, busto, sorrindo, óculos, blazer azul e camiseta preta, diante de um painel
+  iluminado em azul e magenta. O fundo não é o fundo escuro liso do briefing, mas o azul e o magenta
+  conversam com o gradiente `#007bff → #8a2be2`. Recorte 4:5 usado na prévia: `x 195–1795, y 150–2150`.
+  Rascunho do `alt` (falta a confirmação do Issei): "Maurício Yokoyama Issei sorrindo, de óculos, blazer
+  azul e camiseta preta, diante de um painel iluminado em azul e magenta."
+- *Fotos antigas:* `foto2.png` tem o enquadramento e a luz certos, mas tem a marca de IA (AU-03).
+- *Briefing para fotógrafo (referência para uma foto futura; não é prompt de geração):* "Retrato de busto, proporção 4:5, fundo preto liso
   a 1,5 m da pessoa, uma luz principal suave a 45° e rebatedor fraco do outro lado, camisa ou camiseta
   escura lisa, expressão serena e confiante, foco nos olhos, arquivo RAW ou JPEG em resolução máxima."
 - *Prompt de geração:* não se aplica. O retrato representa uma pessoa real, então a fonte é uma
@@ -519,7 +525,7 @@ Uma pergunta por vez, nesta ordem.
 | :-- | :-- | :-- | :-- |
 | D-EV-1 | Qual foto vai no retrato? | (a) foto real nova com o briefing de 4.3; (b) `foto2.png`, se existir versão sem a marca de IA; (c) `foto1.png` com fundo escurecido; (d) sem foto: só capas, ícones e diagrama | **Decidido (Issei, 2026-11-21): (a)** foto real nova, feita com o briefing de 4.3 |
 | D-EV-2 | Confirma a classificação de acessibilidade? Retrato informativo com `alt` descritivo; capas e ícones decorativos com `alt=""` / `aria-hidden`; diagrama informativo com `title`. | sim / ajustar caso a caso | **Decidido (Issei, 2026-11-21): sim**, como proposto. Registrar no `A11Y-DECISIONS.md` na implementação |
-| D-EV-3 | Os ativos novos usam um destaque só (`#58a6ff`) dentro da paleta atual, em vez de um ciano ou esmeralda novo? | manter a paleta / abrir exceção | manter: é regra do `AGENTS.md` e do ADR-pf-001 |
+| D-EV-3 | Os ativos novos usam um destaque só (`#58a6ff`) dentro da paleta atual, em vez de um ciano ou esmeralda novo? | manter a paleta / abrir exceção | **Decidido (Issei, 2026-11-21): manter**, um destaque só (`#58a6ff`) |
 
 ## 10. Referências
 
