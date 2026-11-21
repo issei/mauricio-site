@@ -376,7 +376,7 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     #temas .pf-h2, #provas .pf-h2, #destaques .pf-h2, #temas .pf-temas li, #destaques .pf-destaque, #provas .pf-provas li {
-      animation: pf-fade-in-up cubic-bezier(.2, .7, .2, 1) both;
+      animation: pf-fade-in-up cubic-bezier(.2, .7, .2, 1) forwards;
       animation-timeline: view();
       animation-range: entry 0% cover 30%;
     }

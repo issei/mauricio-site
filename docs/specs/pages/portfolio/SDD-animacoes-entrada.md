@@ -42,6 +42,9 @@ Regras:
    Assim o efeito de hover dos cartões (`transform: translateY(-2px)`) continua.
 2. O efeito acompanha a rolagem: `animation-range: entry 0% cover 30%`. Um
    elemento que já está bem dentro da tela ao abrir a página fica no estado final.
+   O preenchimento é `forwards`, não `both`: o elemento abaixo da dobra fica no
+   estado normal (visível) até começar a entrar. Assim nenhum texto fica com
+   `opacity: 0` fora da tela, e a catraca `nojs:hidden` continua em zero.
 3. Só vale dentro de `@supports (animation-timeline: view())` e de
    `@media (prefers-reduced-motion: no-preference)`. Sem suporte (Firefox hoje)
    ou com movimento reduzido, a página fica estática e completa.
