@@ -64,6 +64,16 @@ jobs:
               --content-type "application/json" --metadata-directive REPLACE
           done
 
+      - name: Fix Content-Type das imagens AVIF e WebP
+        # O mimetypes do Python usado pelo aws cli nem sempre conhece .avif e cai
+        # em binary/octet-stream. As imagens da home (SDD-elementos-visuais §6)
+        # ficam em img/; o tipo explícito garante que o <picture> as aceite.
+        run: |
+          aws s3 cp dist/img "s3://${{ secrets.S3_BUCKET_NAME }}/img" --recursive \
+            --exclude "*" --include "*.avif" --content-type "image/avif" --metadata-directive REPLACE
+          aws s3 cp dist/img "s3://${{ secrets.S3_BUCKET_NAME }}/img" --recursive \
+            --exclude "*" --include "*.webp" --content-type "image/webp" --metadata-directive REPLACE
+
       - name: Publish CloudFront Function (viewer-request)
         # Antes, o publish era manual e a function em produção ficou defasada do
         # repo (docs/specs/AGENT_READINESS_POR_PAGINA.md, C2). Roda depois do
