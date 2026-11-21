@@ -453,7 +453,7 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
 @keyframes pf-tl-surge { from { opacity: 0; } to { opacity: 1; } }
 
 /* ===== Elementos visuais (SDD-elementos-visuais) =====
-   Retrato no hero (§4.3), diagrama de Sobre (§4.4), ícones dos temas (§4.5) e capas
+   Retrato no hero (§4.3), ícones dos temas (§4.5) e capas
    dos Destaques (§4.7). Nenhum começa em opacity: 0 (R-IMG-06); movimento só sob
    no-preference (R-IMG-07). */
 .pf-hero-retrato { margin: 0; }
@@ -475,16 +475,6 @@ code { font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace; font-si
   .pf-hero-retrato img { aspect-ratio: 1; border-radius: 50%; object-position: 50% 22%; -webkit-mask: none; mask: none; }
 }
 
-@media (min-width: 1024px) {
-  .pf-about--diagrama { columns: auto; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 3rem; align-items: start; }
-}
-.pf-about-diagrama { margin: 0 0 1rem; max-width: 28rem; }
-.pf-diagrama { display: block; width: 100%; height: auto; }
-.pf-dg-caixa { fill: var(--pf-surface-2); stroke: var(--pf-muted); }
-.pf-dg-caixa--centro { stroke: var(--accent-primary); }
-.pf-dg-linha { stroke: var(--accent-primary); }
-.pf-dg-texto { fill: var(--text-primary); font: 600 17px/1 'Inter', system-ui, sans-serif; }
-.pf-dg-legenda { fill: var(--text-secondary); font: 400 15px/1 'Inter', system-ui, sans-serif; }
 
 .pf-temas a { gap: .6rem; }
 .pf-temas a svg { flex: none; color: var(--text-secondary); transition: color .2s; }
