@@ -142,7 +142,7 @@ rem). Os ativos novos usam só esses valores.
   diagramas e marca. Nenhum PNG ou JPEG novo na página.
 - **R-IMG-04** — Fotos passam por `sharp` sem metadados (EXIF e GPS removidos).
 - **R-IMG-05** — Nenhuma imagem de banco de imagens e nenhum logotipo de marca de terceiros (Salesforce,
-  AWS etc.). Nomes de produto aparecem como texto.
+  AWS etc.). Nomes de produto aparecem como texto. Exceção: os badges oficiais das certificações (4.9, D-EV-4).
 - **R-IMG-06** — Nenhum ativo novo usa animação que comece com `opacity: 0` em imagem acima da dobra. A
   imagem que é LCP só conta quando fica visível; uma animação de entrada a partir de zero atrasa o LCP.
 - **R-IMG-07** — Toda animação nova (hover, entrada) fica sob
@@ -424,10 +424,24 @@ informação.
 
 ### 4.9 Carreira: formação e certificações (`/curriculo`)
 
-Fica fora da primeira entrega. Selos oficiais de certificação (por exemplo, os da AWS ou da Salesforce) são
-marcas de terceiros (R-IMG-05), e o desenho de "bilhete" de `.pf-featured` já diferencia as
-certificações em destaque. Se o Issei quiser selos depois, a opção é um selo genérico em SVG por emissor,
-sem logotipo, com o nome do emissor em texto.
+**Decisão: badge oficial em cada certificação que tem um** (pedido do Issei em 2026-11-21, D-EV-4). Isso
+abre uma exceção a R-IMG-05 só para esta seção: o badge é a imagem que o emissor entrega ao titular para
+mostrar a credencial, e não um logotipo usado como decoração.
+
+- Fonte: a imagem do badge na página de verificação da credencial (`Verificacao` no `cv.json`). Os arquivos
+  originais ficam em `assets-fonte/badges/`; `assets-fonte/badges/fontes.json` lista, para cada um, o nome,
+  o ano, o arquivo e o endereço de origem, e também as credenciais sem badge (pulados, com o motivo).
+- Saída: `public/img/badges/<slug>-{72,144}.{avif,webp}`, quadrada, com o selo inteiro sobre fundo
+  transparente (`fit: contain`). Teto de 12 KB (AVIF) e 20 KB (WebP) em 144 px. Gerada por
+  `scripts/gen-imagens.mjs`; o site serve a imagem, sem pedir nada ao Credly (R-IMG-08).
+- `slug` = nome da certificação sem acentos e símbolos, mais o ano, porque o mesmo nome aparece em anos
+  diferentes (`arquitetura-de-solucoes-2022`, `arquitetura-de-solucoes-2024`).
+- Posição: canto superior direito do bilhete, 3,25 rem; 4,5 rem nos bilhetes em destaque. O texto do
+  bilhete ganha margem à direita para não passar por baixo do selo.
+- `alt=""` e `loading="lazy"`: o nome da certificação e o emissor já estão em texto no bilhete
+  (mesmo critério das capas, D-EV-2). O badge não é link; o único link continua "Verificar".
+- Certificação sem badge (PDF de certificado, curso sem selo) fica como hoje, sem imagem.
+- `gen-portfolio.mjs` falha se um badge de `fontes.json` não corresponde a nenhuma certificação do `cv.json`.
 
 ## 5. Imagem social (`og:image`) da página inicial
 
@@ -495,6 +509,7 @@ Argos traduz são o `alt` do retrato e o `title` do diagrama.
 | RF-EV-06 | O diagrama de "Sobre" é SVG inline com `role="img"` e `<title>`. | Playwright |
 | RF-EV-07 | O JSON-LD `Person` tem `image`. | `tests/index.spec.js` |
 | RF-EV-08 | `og-index.png` segue o layout da seção 5 e tem 1200 × 630. | teste de dimensões |
+| RF-EV-09 | Cada bilhete de certificação listada em `fontes.json` mostra o badge em `<picture>` AVIF e WebP, com `alt=""`, `loading="lazy"` e 72 × 72; os demais bilhetes não têm imagem. | Playwright |
 | RNF-EV-01 | CLS = 0 nas seções com imagem; LCP ≤ 2,5 s em 4G simulado. | Lighthouse local |
 | RNF-EV-02 | Pesos máximos das seções 4.3 e 4.7. | `gen-imagens.mjs --check` |
 | RNF-EV-03 | A catraca de acessibilidade (`tests/a11y/baseline.json`) não sobe. | `npm run gate` |
@@ -514,6 +529,7 @@ Argos traduz são o `alt` do retrato e o `title` do diagrama.
 | 6 | Diagrama de "Sobre" (4.4) | baixo | baixo | — |
 | 7 | Remover `src/foto1.png` e `src/foto2.png` do repositório depois de gerar o retrato | — | muito baixo | item 3 |
 | 8 | Monograma no cabeçalho e no favicon (4.1) | baixo | médio | próxima mudança de cabeçalho |
+| 9 | Badges das certificações em `/curriculo` (4.9) | médio | baixo | D-EV-4 |
 
 Cada item é um PR. Os itens 2, 3, 5 e 6 mudam HTML em português, então cada um precisa do espelho `/en/`
 antes do merge.
@@ -526,6 +542,7 @@ Uma pergunta por vez, nesta ordem.
 | :-- | :-- | :-- | :-- |
 | D-EV-1 | Qual foto vai no retrato? | (a) foto real nova com o briefing de 4.3; (b) `foto2.png`, se existir versão sem a marca de IA; (c) `foto1.png` com fundo escurecido; (d) sem foto: só capas, ícones e diagrama | **Decidido (Issei, 2026-11-21): (a)** foto real nova, feita com o briefing de 4.3 |
 | D-EV-2 | Confirma a classificação de acessibilidade? Retrato informativo com `alt` descritivo; capas e ícones decorativos com `alt=""` / `aria-hidden`; diagrama informativo com `title`. | sim / ajustar caso a caso | **Decidido (Issei, 2026-11-21): sim**, como proposto. Registrar no `A11Y-DECISIONS.md` na implementação |
+| D-EV-4 | Mostrar os badges oficiais das certificações em `/curriculo`? | sim / selo genérico em SVG / sem selo | **Decidido (Issei, 2026-11-21): sim**, os badges oficiais (seção 4.9) |
 | D-EV-3 | Os ativos novos usam um destaque só (`#58a6ff`) dentro da paleta atual, em vez de um ciano ou esmeralda novo? | manter a paleta / abrir exceção | **Decidido (Issei, 2026-11-21): manter**, um destaque só (`#58a6ff`) |
 
 ## 10. Referências

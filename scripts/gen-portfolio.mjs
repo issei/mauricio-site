@@ -24,6 +24,7 @@ import { fileURLToPath } from 'node:url';
 import { PAGES } from './seo/pages.mjs';
 import { loadEcossistema, NATUREZAS, cardTitle, temasDoSite } from './catalogo/dados.mjs';
 import { DESTAQUES } from './home/destaques.mjs';
+import { lerBadges, badgeSlug, BADGE_LARGURAS } from './home/badges.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const cv = JSON.parse(readFileSync(join(ROOT, 'public/cv.json'), 'utf8'));
@@ -274,8 +275,22 @@ ${own.filter((p) => p.Periodo === y).map(starCard).join('\n')}
 
 /** Os 4 cards obrigatórios da SDD §9.4.2 (nome + ano, para desambiguar "Arquitetura de Soluções"). */
 const FEATURED = [['AWS Certified Cloud Practitioner', 2022], ['SRE Essentials', 2021], ['Datadog Power User', 2025], ['Arquitetura de Soluções', 2024]];
+/** Badge da certificação (§4.9, D-EV-4): decorativo, o nome já está no bilhete. */
+const BADGES = new Set(lerBadges(ROOT).map((b) => b.slug));
+for (const s of BADGES) if (!cv.Certificados.some((c) => badgeSlug(c.Nome, lastYear(certDate(c))) === s)) fail(`badge sem certificação no cv.json: ${s}`);
+const badge = (c) => {
+  const slug = badgeSlug(c.Nome, lastYear(certDate(c)));
+  if (!BADGES.has(slug)) return '';
+  const base = `/img/badges/${slug}`;
+  return `<picture class="pf-ticket-badge">
+      <source type="image/avif" srcset="${srcset(base, BADGE_LARGURAS, 'avif')}" sizes="4.5rem">
+      <source type="image/webp" srcset="${srcset(base, BADGE_LARGURAS, 'webp')}" sizes="4.5rem">
+      <img src="${base}-144.webp" width="72" height="72" alt="" loading="lazy" decoding="async">
+    </picture>`;
+};
 function ticket(c, featured = false) {
-  return `<li class="pf-ticket${featured ? ' pf-ticket--featured' : ''}">
+  const b = badge(c);
+  return `<li class="pf-ticket${featured ? ' pf-ticket--featured' : ''}${b ? ' pf-ticket--badge' : ''}">${b ? `\n    ${b}` : ''}
     <span class="pf-ticket-date">${esc(certDate(c))}</span>
     <span class="pf-ticket-name">${esc(c.Nome)}</span>
     <span class="pf-ticket-org">${esc(c.Instituicao)}</span>
