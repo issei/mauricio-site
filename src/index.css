@@ -39,6 +39,25 @@
   --pf-l-uxd: #ff7eb6;
   --pf-l-dat: #7ee787;
 
+  /* Elementos visuais (SDD-elementos-visuais §3): nomes semânticos são apelidos dos
+     tokens pf- acima, sem cor nova. Destaque único dos ativos novos: --pf-link (D-EV-3). */
+  --bg-primary: var(--pf-bg);
+  --bg-surface: var(--pf-surface);
+  --bg-surface-2: var(--pf-surface-2);
+  --text-primary: var(--pf-strong);
+  --text-body: var(--pf-text);
+  --text-secondary: var(--pf-muted);
+  --accent-primary: var(--pf-link);
+  --border-subtle: var(--pf-border);
+  --pf-radius-sm: 8px;
+  --pf-radius-md: 10px;
+  --pf-radius-lg: 14px;
+  --pf-radius-xl: 16px;
+  --pf-shadow-hover: 0 8px 24px rgba(0, 123, 255, .15);
+  --pf-glow: 0 0 16px rgba(88, 166, 255, .35);
+  --pf-img-ring: 0 0 0 1px var(--pf-border);
+  --pf-img-bg: var(--pf-surface);
+
   /* Cor de destaque de cartões; as linhas do antigo mapa (data-l) não existem mais. */
   --lc: var(--pf-link);
   --pf-nav-h: 3.5rem;
