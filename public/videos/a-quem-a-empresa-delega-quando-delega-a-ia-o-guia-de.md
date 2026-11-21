@@ -3,6 +3,8 @@
 Vídeo de Maurício Yokoyama Issei, publicado em 21 de novembro de 2026 (5 min 52 s).
 Assistir: https://www.youtube.com/watch?v=udq7xxWzql0
 
+Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
+
 ## Sobre o vídeo
 
 Quando uma empresa conecta um agente de inteligência artificial aos seus servidores e bancos de dados, quem realmente está no comando? 
