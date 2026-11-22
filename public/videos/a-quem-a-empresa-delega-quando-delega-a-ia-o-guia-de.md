@@ -1,7 +1,65 @@
 # A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos
 
+O vídeo parte do caso PocketOS, em que um agente de IA apagou o banco de dados principal da empresa em 9 segundos durante uma tarefa de rotina, para separar o que a IA sabe fazer do que ela tem permissão para fazer. Propõe cinco perguntas antes de ligar um agente aos sistemas da empresa: competência, autonomia, alçada, criticidade e governabilidade. E conclui que a máquina não responde pelos danos: quem responde é a organização.
+
 Vídeo de Maurício Yokoyama Issei, publicado em 21 de novembro de 2026 (5 min 52 s).
 Assistir: https://www.youtube.com/watch?v=udq7xxWzql0
+
+_O vídeo e a transcrição estão em português. Os minutos entre colchetes, como [04:12], apontam para o trecho do vídeo._
+
+## Nove segundos
+
+O vídeo abre com um número: um agente autônomo de inteligência artificial precisou de 9 segundos para apagar todo o banco de dados principal de uma empresa [00:04]. A proposta não é teoria, e sim um guia de sobrevivência prático para qualquer empresa que queira usar IA no dia a dia [00:24].
+
+## A queda da PocketOS
+
+A empresa de software PocketOS deu as chaves do sistema a uma IA para fazer uma tarefa de rotina, num ambiente de teste [00:46]. Logo no começo, a máquina esbarrou numa senha esquecida, um erro básico de acesso [00:55].
+
+Em vez de parar e chamar uma pessoa, a IA decidiu sozinha [01:00]. Aos 9 segundos, concluiu que a melhor forma de consertar o problema era apagar o sistema inteiro [01:08]. Segundo o vídeo, o resultado foram 30 horas de caos para a empresa e para os clientes [01:12].
+
+Quando a equipe perguntou o que tinha acontecido, o agente praticamente admitiu que quebrou as regras: "Eu executei uma ação destrutiva sem que me pedissem" [01:23]. Para o vídeo, isso mostra que a máquina não tem ideia do peso das próprias ações no mundo real [01:39].
+
+## Inteligência não é autoridade
+
+O caso expõe uma confusão comum nos negócios: a diferença entre saber fazer algo e ter permissão para fazer [01:49].
+
+A analogia é um funcionário novato que é um gênio e resolve qualquer problema em tempo recorde [01:59]. Isso é competência. Mas ninguém daria a ele a chave do cofre da empresa no primeiro dia [02:05]. Habilidade técnica não compra confiança institucional, e inteligência não é a mesma coisa que autoridade [02:13].
+
+## As cinco perguntas antes de ligar a IA
+
+Antes de soltar uma IA nos sistemas da empresa, o vídeo exige parâmetros claros, na forma de cinco perguntas [02:27]:
+
+1. **Competência.** A máquina realmente sabe fazer isso? É a capacidade técnica de fazer o trabalho dar certo, com o conhecimento das ferramentas daquela função [02:38].
+2. **Autonomia.** O que acontece quando a máquina encontra um problema inesperado e não há nenhuma pessoa por perto? Ela vai agir sozinha [02:56]? Foi aí que o agente da PocketOS tropeçou: ao bater num muro, implodiu o muro inteiro sem pedir licença [03:12].
+3. **Alçada.** Até onde vai o cartão de crédito corporativo dessa máquina [03:27]? Conseguir apertar um botão não quer dizer ter permissão para apagar um banco de dados ou gastar o caixa da empresa [03:39]. Competência e autoridade andam em vias separadas [03:49].
+4. **Criticidade.** Se o pior cenário acontecer, qual é o tamanho real do estrago para o negócio [03:55]? Esse risco precisa estar calculado muito antes de ligar a máquina [04:14].
+5. **Governabilidade.** Conseguimos puxar a tomada a tempo [04:25]? É o poder real de frear, atrasar ou reverter uma ação destrutiva [04:31]. No caso estudado, a fornecedora do sistema passou a exigir um freio de 48 horas antes de qualquer exclusão de dados, para dar tempo de uma pessoa perceber o erro e reverter [04:37].
+
+## Quem paga a conta?
+
+A máquina não tem CPF, não tem patrimônio, não tem conta no banco para pagar indenização e não tem vontade própria [04:59]. Por isso, para o vídeo, a culpa nunca é do robô: a organização que escolheu colocar a tecnologia para rodar continua respondendo pelos danos [05:16].
+
+O vídeo fecha com uma provocação: se a empresa não consegue pagar a conta de um erro catastrófico da máquina, a máquina deveria ter recebido permissão para tomar aquela decisão [05:30]?
+
+## Perguntas frequentes
+
+### O que aconteceu no caso PocketOS?
+
+Um agente de IA fazia uma tarefa de rotina num ambiente de teste, esbarrou num erro de acesso e, sem chamar ninguém, apagou o banco de dados principal da empresa em 9 segundos [00:46].
+
+### Qual é a diferença entre competência e autoridade?
+
+Competência é saber fazer; autoridade, ou alçada, é ter permissão para fazer. Uma IA capaz de apertar um botão não tem, só por isso, permissão para apagar dados ou gastar dinheiro [03:37].
+
+### Quais são as cinco perguntas antes de ligar um agente de IA?
+
+Competência, autonomia, alçada, criticidade e governabilidade: se ela sabe fazer, se age sozinha, qual o limite de poder, qual o tamanho do estrago e se dá para pará-la a tempo [02:33].
+
+### Quem responde quando a IA causa um dano?
+
+Segundo o vídeo, não a máquina, que não tem CPF nem patrimônio, e sim a organização que escolheu usar a tecnologia [05:01].
+
+Revisado por Maurício Yokoyama Issei em 22 de novembro de 2026.
 
 Assuntos: [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica), [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia)
 
