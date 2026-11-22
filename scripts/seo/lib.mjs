@@ -159,14 +159,10 @@ export function buildGraph(p) {
   }
   // Nós prontos específicos da página (ex.: ItemList de certificações da home).
   if (p.extraGraph?.length) graph.push(...p.extraGraph);
-  if (p.video) {
-    graph.push({
-      '@type': 'VideoObject', '@id': `${url}#video`,
-      name: p.video.name, description: p.video.description || p.description,
-      thumbnailUrl: p.video.thumb, uploadDate: p.video.uploadDate || p.datePublished,
-      embedUrl: p.video.embed, contentUrl: p.video.url, inLanguage: SITE.lang,
-    });
-  }
+  // `p.video` NÃO vira VideoObject. Nestas páginas o vídeo complementa o texto,
+  // e o Google só indexa vídeo em página de exibição ("Vídeo não está em uma
+  // página de exibição", Search Console, 2026-11-22). A página de exibição de
+  // cada vídeo é a ficha /videos/<slug>, gerada por scripts/gen-videos.mjs.
   return { '@context': 'https://schema.org', '@graph': graph };
 }
 

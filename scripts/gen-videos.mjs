@@ -732,7 +732,11 @@ export function renderTema(chave, tema, lista, temas, artigos = []) {
     url: `${SITE}${rota}`, inLanguage: 'pt-BR',
     hasPart: [
       ...artigos.map((a) => ({ '@type': 'WebPage', name: a.titulo, url: `${SITE}${a.href}` })),
-      ...lista.map((v) => ({ '@type': 'VideoObject', name: v.youtube.titulo, url: `${SITE}${rotaVideo(v)}` })),
+      // WebPage, não VideoObject: o tema é página de categoria, não de exibição.
+      // VideoObject aqui, sem miniatura nem player, gera "O vídeo não está em uma
+      // página de exibição" no Search Console (2026-11-22). O VideoObject completo
+      // fica só na ficha /videos/<slug>.
+      ...lista.map((v) => ({ '@type': 'WebPage', name: v.youtube.titulo, url: `${SITE}${rotaVideo(v)}` })),
     ],
   };
   const contagem = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
