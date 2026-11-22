@@ -19,8 +19,8 @@ Full career: https://mauricio.issei.com.br/en/curriculo
 
 What I publish, by subject. Each theme leads to its content.
 
-- [Agentic engineering](https://mauricio.issei.com.br/temas/engenharia-agentica) — 15 content
-- [Management and strategy](https://mauricio.issei.com.br/temas/gestao-e-estrategia) — 8 content
+- [Agentic engineering](https://mauricio.issei.com.br/temas/engenharia-agentica) — 16 content
+- [Management and strategy](https://mauricio.issei.com.br/temas/gestao-e-estrategia) — 9 content
 - [Specification and development](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento) — 6 content
 - [Salesforce and sales](https://mauricio.issei.com.br/temas/salesforce-e-vendas) — 5 content
 - [Cloud and reliability](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade) — 3 content
