@@ -15,6 +15,7 @@ Gestão, estratégia e carreira: o que funciona nas empresas e o que muda com a 
 
 ## Vídeos
 
+- [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 - [O IPO DA ANTHROPIC É O MAIOR TESTE DE ESTRESSE DO MERCADO DE CAPITAIS E DA INTELIGÊNCIA ARTIFICIAL!](https://mauricio.issei.com.br/videos/o-ipo-da-anthropic-e-o-maior-teste-de-estresse-do-mercado) — 5 de novembro de 2026
 - [O que faz um Forward-Deployed Engineer (FDE)?](https://mauricio.issei.com.br/videos/o-que-faz-um-forward-deployed-engineer-fde) — 13 de outubro de 2026
 - [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026

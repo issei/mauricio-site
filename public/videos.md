@@ -2,7 +2,7 @@
 
 Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha um artigo curto, com links para as fontes e o conteúdo original.
 
-69 de 182 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
+69 de 185 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
 
 ## Em destaque
 
@@ -10,6 +10,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 
 ## Engenharia agêntica
 
+- [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 - [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
 - [Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion](https://mauricio.issei.com.br/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso) — 19 de outubro de 2026
@@ -21,7 +22,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
 - [NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!](https://mauricio.issei.com.br/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra) — 7 de outubro de 2026
-- [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
 
 ## Aprendizagem e mente
 
@@ -70,6 +70,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 
 ## Gestão e estratégia
 
+- [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 - [O IPO DA ANTHROPIC É O MAIOR TESTE DE ESTRESSE DO MERCADO DE CAPITAIS E DA INTELIGÊNCIA ARTIFICIAL!](https://mauricio.issei.com.br/videos/o-ipo-da-anthropic-e-o-maior-teste-de-estresse-do-mercado) — 5 de novembro de 2026
 - [O que faz um Forward-Deployed Engineer (FDE)?](https://mauricio.issei.com.br/videos/o-que-faz-um-forward-deployed-engineer-fde) — 13 de outubro de 2026
 - [Digital Workplace Agêntico: Como Evoluir do Portal Corporativo ao Agente de IA](https://mauricio.issei.com.br/videos/digital-workplace-agentico-como-evoluir-do-portal) — 3 de outubro de 2026
@@ -81,7 +82,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 - [Blue Lock: A Filosofia do Sucesso e Como Aplicá-la na Sua Carreira](https://mauricio.issei.com.br/videos/blue-lock-a-filosofia-do-sucesso-e-como-aplica-la-na-sua) — 17 de julho de 2026
 - [A Alquimia do Poder](https://mauricio.issei.com.br/videos/a-alquimia-do-poder) — 10 de junho de 2026
 - [Colapso do Preço na Era da IA](https://mauricio.issei.com.br/videos/colapso-do-preco-na-era-da-ia) — 21 de maio de 2026
-- [08 - Trabalho na Era da IA](https://mauricio.issei.com.br/videos/08-trabalho-na-era-da-ia) — 18 de maio de 2026
 
 ## Dados e decisão
 
@@ -149,6 +149,9 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 
 ## Todos os vídeos
 
+- [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
+- [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
+- [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 - [A Arte de Começar Sem Estar Pronto | Como a Ação Gera Confiança](https://mauricio.issei.com.br/videos/a-arte-de-comecar-sem-estar-pronto-como-a-acao-gera) — 19 de novembro de 2026
 - [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [Kant: Fundamentação da Metafísica dos Costumes](https://mauricio.issei.com.br/videos/kant-fundamentacao-da-metafisica-dos-costumes) — 14 de novembro de 2026
