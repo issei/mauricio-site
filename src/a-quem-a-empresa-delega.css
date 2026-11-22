@@ -99,6 +99,7 @@ body.dl-body {
 .dl-desfecho { margin-top: 1.5rem; padding: 1.25rem 1.5rem; border: 1px dashed var(--dl-border); border-radius: 14px; }
 .dl-desfecho h3 { margin: 0 0 .25rem; color: var(--dl-heading); font-size: 1.05rem; }
 .dl-desfecho p { margin: 0; }
+.dl-desfecho p + p { margin-top: .75rem; }
 .dl-pergunta-fica { margin: 2rem 0 0; font-size: 1.25rem; color: var(--dl-heading); }
 .dl-fontes-caso { margin: 1rem 0 0; font-size: .9375rem; color: var(--dl-muted); }
 
