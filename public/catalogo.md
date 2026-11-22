@@ -19,6 +19,7 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 - [Case Agents](https://mauricio.issei.com.br/case-agents) — *Experiência.* Roteamento de queries e seleção segura de tools num agente bancário: barreira pré-execução de 4 camadas e controle de Crash Silencioso.
 - [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — *Proposta.* O sistema de conhecimento que dá rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle.
 - [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico) — *Estudo.* Como um portal corporativo evolui de uma lista de links para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.
+- [Delegar à IA](https://mauricio.issei.com.br/a-quem-a-empresa-delega) — *Estudo.* Autonomia, autoridade e responsabilidade na era dos agentes de IA: o caso PocketOS, as cinco perguntas antes de ligar um agente e por que a empresa não automatiza a responsabilidade.
 
 Também tratam deste tema: [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao), [Especificação Conversacional Estruturada](https://mauricio.issei.com.br/especificacao-conversacional), [Boutique Empresarial](https://mauricio.issei.com.br/boutique-empresarial-showcase), [DevOps Salesforce](https://mauricio.issei.com.br/devops-salesforce), [Engenharia Reversa Assistida por IA](https://mauricio.issei.com.br/proposta-engenharia-reversa), [SocialSelling](https://mauricio.issei.com.br/socialselling).
 
@@ -32,7 +33,7 @@ Gestão, estratégia e carreira: o que funciona nas empresas e o que muda com a 
 - [Formulação de Problemas](https://mauricio.issei.com.br/formulacao-de-problemas) — *Estudo.* Formular é engenharia da redução de incerteza — e precisa parar: seis incertezas, seis estados de conhecimento, regra de parada e o penalizador de hiper-resolução.
 - [Da execução à orquestração do trabalho](https://mauricio.issei.com.br/da-execucao-a-orquestracao) — *Estudo.* Um áudio sobre IA e trabalho, com revisão de 56 afirmações: o que a evidência sustenta, o que corrigir enquanto ouve e três cenários.
 
-Também tratam deste tema: [O Artífice Invisível](https://mauricio.issei.com.br/artifice), [Operação Capital Cognitivo](https://mauricio.issei.com.br/operacao-capital-cognitivo), [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation), [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico), [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0).
+Também tratam deste tema: [O Artífice Invisível](https://mauricio.issei.com.br/artifice), [Operação Capital Cognitivo](https://mauricio.issei.com.br/operacao-capital-cognitivo), [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation), [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico), [Delegar à IA](https://mauricio.issei.com.br/a-quem-a-empresa-delega), [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0).
 
 Artigos e vídeos deste tema: https://mauricio.issei.com.br/temas/gestao-e-estrategia
 

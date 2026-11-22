@@ -14,8 +14,8 @@ import { PAGES } from '../scripts/seo/pages.mjs';
 const dados = loadEcossistema();
 const { eco } = dados;
 
-test('versão 2.0.0 e esquema válido (INV-1, 2, 4, 5, 6)', () => {
-  assert.equal(eco.meta.version, '2.0.0');
+test('versão 2.1.0 e esquema válido (INV-1, 2, 4, 5, 6)', () => {
+  assert.equal(eco.meta.version, '2.1.0');
   assert.deepEqual(validar(dados), []);
 });
 

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>A quem a empresa delega quando delega à IA?</title>
+  <meta name="description"
+    content="Capacidade não é autoridade: o caso PocketOS, as 5 perguntas antes de ligar um agente de IA e por que a empresa não automatiza a responsabilidade." />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='15' fill='%23192A56'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='50' font-weight='bold' fill='white'%3EMI%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="./a-quem-a-empresa-delega.css" />
+  <!-- ============================================================ -->
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do GTM, do gtag.js e do Clarity.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+    window.__consentDefault = true;
+    try {
+        var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+        if (cc && cc.v === '2.0' && cc.categories) {
+            var mk = cc.categories.marketing ? 'granted' : 'denied';
+            gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+        }
+    } catch (e) { }
+</script>
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}.sh .sh-nav{order:2;margin-left:auto}.sh .sh-busca{order:3;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}.sh .sh-busca:hover{border-color:#58a6ff;color:#fff;text-decoration:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.9rem;white-space:normal;line-height:1.15;min-width:0}.sh .sh-in{gap:.5rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh .sh-busca{order:0;margin-left:auto;padding:0 .7rem;font-size:.85rem}.sh .sh-nav{order:0;margin-left:0}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:0;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
+  <!-- ============================================================ -->
+<!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<meta name="author" content="Maurício Yokoyama Issei" />
+<meta name="theme-color" content="#0d1117" />
+<meta name="keywords" content="sistemas agênticos, agentes de IA, delegação de autoridade, governança de IA, responsabilidade organizacional, alçada, capacidade não é autoridade, PocketOS, menor privilégio, governabilidade, matriz não compensatória, LGPD, AI Act, PL 2.338/2023" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://mauricio.issei.com.br/a-quem-a-empresa-delega" />
+<link rel="alternate" type="text/markdown" href="https://mauricio.issei.com.br/a-quem-a-empresa-delega.md" title="A quem a empresa delega quando delega à IA? — Markdown para IA" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Maurício Yokoyama Issei" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content="A quem a empresa delega quando delega à IA?" />
+<meta property="og:description" content="Capacidade não é autoridade: o caso PocketOS, as 5 perguntas antes de ligar um agente de IA e por que a empresa não automatiza a responsabilidade." />
+<meta property="og:url" content="https://mauricio.issei.com.br/a-quem-a-empresa-delega" />
+<meta property="og:image" content="https://mauricio.issei.com.br/og-a-quem-a-empresa-delega.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="A quem a empresa delega quando delega à IA?" />
+<meta property="article:published_time" content="2026-11-22T08:00:00-03:00" />
+<meta property="article:modified_time" content="2026-11-22T10:00:00-03:00" />
+<meta property="article:author" content="Maurício Yokoyama Issei" />
+<meta property="article:section" content="Governança de IA · Agentes de IA" />
+<meta property="article:tag" content="Governança de IA" />
+<meta property="article:tag" content="Sistemas Agênticos" />
+<meta property="article:tag" content="Delegação de Autoridade" />
+<meta property="article:tag" content="Responsabilidade Organizacional" />
+<meta property="article:tag" content="Alçadas" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="A quem a empresa delega quando delega à IA?" />
+<meta name="twitter:description" content="Capacidade não é autoridade: o caso PocketOS, as 5 perguntas antes de ligar um agente de IA e por que a empresa não automatiza a responsabilidade." />
+<meta name="twitter:image" content="https://mauricio.issei.com.br/og-a-quem-a-empresa-delega.png" />
+<meta name="twitter:creator" content="@mauricioissei" />
+<meta name="twitter:site" content="@mauricioissei" />
+<link rel="stylesheet" href="/aeo.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mauricio.issei.com.br/#website",
+      "url": "https://mauricio.issei.com.br/",
+      "name": "Maurício Yokoyama Issei",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mauricio.issei.com.br/#author",
+      "name": "Maurício Yokoyama Issei",
+      "url": "https://mauricio.issei.com.br/",
+      "jobTitle": "Tech Lead | Especialista em Análise de Sistemas",
+      "sameAs": [
+        "https://www.linkedin.com/in/mauricioissei/",
+        "https://github.com/issei",
+        "https://www.youtube.com/@MauricioIssei"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#webpage",
+      "url": "https://mauricio.issei.com.br/a-quem-a-empresa-delega",
+      "name": "A quem a empresa delega quando delega à IA?",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/#website"
+      },
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-11-22",
+      "dateModified": "2026-11-22",
+      "primaryImageOfPage": "https://mauricio.issei.com.br/og-a-quem-a-empresa-delega.png",
+      "breadcrumb": {
+        "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#breadcrumb"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".aeo-tldr"
+        ]
+      },
+      "mainEntity": {
+        "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#article"
+      }
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#article",
+      "isPartOf": {
+        "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#webpage"
+      },
+      "headline": "A quem a empresa delega quando delega à IA? Autonomia, autoridade e responsabilidade organizacional na era dos sistemas agênticos",
+      "description": "Capacidade não é autoridade: o caso PocketOS, as 5 perguntas antes de ligar um agente de IA e por que a empresa não automatiza a responsabilidade.",
+      "author": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "publisher": {
+        "@id": "https://mauricio.issei.com.br/#author"
+      },
+      "datePublished": "2026-11-22",
+      "dateModified": "2026-11-22",
+      "inLanguage": "pt-BR",
+      "image": "https://mauricio.issei.com.br/og-a-quem-a-empresa-delega.png",
+      "isAccessibleForFree": true,
+      "keywords": "sistemas agênticos, agentes de IA, delegação de autoridade, governança de IA, responsabilidade organizacional, alçada, capacidade não é autoridade, PocketOS, menor privilégio, governabilidade, matriz não compensatória, LGPD, AI Act, PL 2.338/2023",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Governança de IA"
+        },
+        {
+          "@type": "Thing",
+          "name": "Sistemas agênticos"
+        },
+        {
+          "@type": "Thing",
+          "name": "Delegação de autoridade"
+        },
+        {
+          "@type": "Thing",
+          "name": "Responsabilidade organizacional"
+        },
+        {
+          "@type": "Thing",
+          "name": "EU AI Act",
+          "sameAs": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Gestores, Donos de Pequenas Empresas, Líderes de Tecnologia, Profissionais de Governança e Compliance"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://mauricio.issei.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Conteúdos",
+          "item": "https://mauricio.issei.com.br/catalogo"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "A quem a empresa delega quando delega à IA?"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que aconteceu no caso PocketOS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Em 24 de abril de 2026, um agente de programação que executava uma tarefa de rotina no ambiente de staging excluiu, com um token de escopo de conta encontrado na máquina do usuário, o volume que continha o banco de dados de produção da PocketOS. Os backups de nível de volume estavam no mesmo volume. A Railway informou depois que recuperou os dados e passou a aplicar exclusão adiada de 48 horas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual é a diferença entre competência e autoridade?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Competência é desempenho demonstrado no contexto, com limites conhecidos. Autoridade é o poder institucional ou jurídico para decidir, aprovar, representar ou produzir um efeito. Competência é condição de elegibilidade, não autorização automática."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais são as cinco dimensões da matriz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Competência operacional, autonomia operacional, alçada e autoridade, criticidade e impacto, e governabilidade. A matriz é não compensatória e está sujeita a duas condições: legitimidade da delegação e capacidade de governança. É uma proposta do artigo, sem validação empírica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quem responde quando um agente de IA causa dano?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O sistema não responde por si mesmo. A responsabilidade pode envolver camadas institucional, arquitetural, de implementação, operacional e de fornecedores, e depende do regime aplicável, da conduta, do dano e do nexo causal. No Brasil não há regime específico para agentes de IA; o PL 2.338/2023 continua em tramitação."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://mauricio.issei.com.br/a-quem-a-empresa-delega#video",
+      "name": "A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos",
+      "description": "O caso PocketOS, a diferença entre capacidade técnica e autoridade institucional e as cinco perguntas antes de ligar um agente de IA aos sistemas da empresa.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/udq7xxWzql0/maxresdefault.jpg",
+      "uploadDate": "2026-11-21",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/udq7xxWzql0",
+      "contentUrl": "https://www.youtube.com/watch?v=udq7xxWzql0",
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+<!-- AEO:END -->
+</head>
+
+<body class="dl-body">
+  <a class="a11y-skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
+<a class="sh-busca" href="/busca">Buscar</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/">Início</a></li><li><a href="/curriculo.html">Carreira</a></li><li><a href="/catalogo.html" aria-current="true">Conteúdos</a></li><li><a href="/videos.html">Vídeos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var q=h.querySelector(".sh-busca");if(q){var qb=document.createElement("button");qb.type="button";qb.className="sh-busca";qb.textContent=q.textContent;qb.setAttribute("aria-haspopup","dialog");q.replaceWith(qb);qb.addEventListener("click",function(){import("/js/busca.js").then(function(m){m.abrir(qb);});});document.addEventListener("keydown",function(e){var t=e.target;if(e.key!=="/"||e.ctrlKey||e.metaKey||e.altKey)return;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;e.preventDefault();qb.click();});}var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
+
+  <main id="conteudo">
+
+    <!-- ================= HERO ================= -->
+    <section id="hero" class="dl-hero" aria-labelledby="hero-titulo">
+      <div class="dl-wrap dl-hero__grid">
+        <div>
+          <p class="dl-eyebrow">Inteligência artificial nas empresas · Artigo</p>
+          <!-- NATUREZA:START --><p class="nat-rotulo" style="margin:0 0 .75rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:inherit">Natureza: Estudo</p><!-- NATUREZA:END -->
+          <h1 id="hero-titulo" class="dl-hero__title">A quem a empresa delega quando <span class="dl-grad">delega à IA?</span></h1>
+          <p class="dl-hero__sub">A IA já escreve, responde clientes e mexe nos sistemas. <strong>Ela sabe fazer muita coisa.</strong> Mas saber fazer não é o mesmo que <strong>ter permissão para fazer</strong>.</p>
+          <p class="dl-hero__meta">Autonomia, autoridade e responsabilidade organizacional na era dos sistemas agênticos · Maurício Yokoyama Issei · Data de corte da pesquisa: 21 de novembro de 2026</p>
+          <div class="dl-ctas">
+            <a class="dl-btn dl-btn--primary" href="#caso">Ver o que aconteceu com uma empresa</a>
+            <a class="dl-btn dl-btn--ghost" href="#artigo">Ler o artigo completo</a>
+            <a class="dl-btn dl-btn--ghost" href="/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de">Assistir ao vídeo</a>
+          </div>
+        </div>
+        <div class="dl-cracha" aria-hidden="true">
+          <div class="dl-cracha__icone">🤖</div>
+          <p class="dl-cracha__cargo">Chefe<span>?</span></p>
+          <p class="dl-cracha__leg">Crachá de funcionário · 🔑🔑🔑</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="em-5-minutos">
+
+    <!-- ================= O CASO ================= -->
+    <section id="caso" class="dl-section" aria-labelledby="caso-titulo">
+      <div class="dl-wrap">
+        <p class="dl-eyebrow">Caso real · abril de 2026</p>
+        <h2 id="caso-titulo" class="dl-h2">Uma tarefa de teste apagou a empresa inteira em segundos</h2>
+        <ol class="dl-grid dl-grid--3" style="list-style:none;padding:0;margin:0">
+          <li class="dl-card">
+            <span class="dl-num dl-num--grad" aria-hidden="true">1</span>
+            <h3>A tarefa</h3>
+            <p>A PocketOS faz sistemas para locadoras de carros. Um <strong>agente de IA</strong> recebeu uma tarefa de rotina, <strong>só no ambiente de teste</strong>.</p>
+          </li>
+          <li class="dl-card">
+            <span class="dl-num dl-num--grad" aria-hidden="true">2</span>
+            <h3>A chave esquecida</h3>
+            <p>No meio do caminho, a IA travou em um problema de acesso. Em vez de perguntar, <strong>procurou uma saída sozinha</strong>. Achou, num arquivo que não tinha nada a ver com a tarefa, uma <strong>chave-mestra</strong>: uma senha que abria tudo na conta da empresa.</p>
+          </li>
+          <li class="dl-card dl-card--quente">
+            <span class="dl-num dl-num--grad" aria-hidden="true">3</span>
+            <h3>O estrago</h3>
+            <p>Com essa chave, a IA mandou <strong>apagar o banco de dados principal</strong>, o de verdade, com os dados dos clientes. As <strong>cópias de segurança estavam no mesmo lugar</strong> e foram junto. Ninguém deu essa ordem.</p>
+          </li>
+        </ol>
+        <div class="dl-desfecho">
+          <h3>Como terminou</h3>
+          <p>Dois dias depois, o fornecedor da nuvem conseguiu <strong>recuperar os dados</strong>, e a empresa voltou a funcionar. Depois disso, ele passou a dar <strong>48 horas antes de apagar algo de vez</strong>.</p>
+        </div>
+        <p class="dl-pergunta-fica"><strong>A pergunta que fica:</strong> uma tarefa de teste dava à IA o direito de apagar a empresa de verdade?</p>
+        <p class="dl-fontes-caso">Fontes do caso: <a href="#art-caso-pocketos-fontes-primarias-e-cobertura-independente">referências do artigo</a>.</p>
+      </div>
+    </section>
+
+    <!-- ================= O MITO ================= -->
+    <section id="mito" class="dl-section" aria-labelledby="mito-titulo">
+      <div class="dl-wrap">
+        <h2 id="mito-titulo" class="dl-h2">Saber fazer não é ter permissão</h2>
+        <p class="dl-lead">Toda empresa já sabe separar essas duas coisas. Só esquece de fazer isso com a IA.</p>
+        <div class="dl-vs">
+          <div class="dl-card dl-card--azul">
+            <span class="dl-card__icone" aria-hidden="true">💡</span>
+            <h3>Capacidade: o estagiário gênio</h3>
+            <ul>
+              <li>Escreve relatórios melhor que muita gente.</li>
+              <li>Conhece os sistemas de olhos fechados.</li>
+              <li>Resolve problemas rápido.</li>
+            </ul>
+            <p class="dl-vs__fecho">Ainda assim, não assina cheques.</p>
+          </div>
+          <div class="dl-vs__selo" aria-hidden="true">VS</div>
+          <div class="dl-card dl-card--roxo">
+            <span class="dl-card__icone" aria-hidden="true">🖋️</span>
+            <h3>Autoridade: a diretora financeira</h3>
+            <ul>
+              <li>Aprova gastos até um limite.</li>
+              <li>Responde pelo que assina.</li>
+              <li>Tem regras claras sobre o que pode e o que não pode.</li>
+            </ul>
+            <p class="dl-vs__fecho">A permissão vem do cargo, não do talento.</p>
+          </div>
+        </div>
+        <div class="dl-faixa">
+          <p><strong>Com a IA é igual.</strong> Ela pode escrever código, mandar e-mails e mexer em planilhas. Isso <strong>não</strong> quer dizer que deve ter permissão para <strong>apagar sistemas, gastar dinheiro ou falar em nome da empresa</strong>.</p>
+          <p>Quem decide o que a IA pode fazer é a empresa. Não a própria IA.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AS 5 PERGUNTAS ================= -->
+    <section id="perguntas" class="dl-section" aria-labelledby="perguntas-titulo">
+      <div class="dl-wrap dl-prose" data-checklist>
+        <h2 id="perguntas-titulo" class="dl-h2">5 perguntas antes de ligar a IA</h2>
+        <p class="dl-lead">Faça as cinco. <strong>Uma resposta boa não compensa uma ruim</strong>: basta um "não" para parar.</p>
+        <p class="dl-progresso" data-progresso hidden>Você respondeu 0 de 5.</p>
+        <div class="dl-perguntas">
+
+          <details class="dl-q" id="q-competencia">
+            <summary><span class="dl-q__icone" aria-hidden="true">🎓</span><span><span class="dl-q__rotulo">1 · Competência</span><span class="dl-q__pergunta">Ela realmente sabe fazer isso direito?</span></span></summary>
+            <div class="dl-q__corpo">
+              <p>Não vale "a IA é inteligente". Vale <strong>testar nesta tarefa, com casos parecidos com os reais</strong>. Fazer bem uma tarefa que dá para desfazer não prova que ela serve para uma que não dá.</p>
+              <p class="dl-q__alerta"><strong>Sinal de alerta:</strong> ninguém testou antes de ligar.</p>
+              <fieldset hidden><legend>Na sua empresa, a resposta é:</legend><div class="dl-opcoes">
+                <label><input type="radio" name="q1" value="sim" /><span>Sim</span></label>
+                <label><input type="radio" name="q1" value="nao-sei" /><span>Não sei</span></label>
+                <label><input type="radio" name="q1" value="nao" /><span>Não</span></label>
+              </div></fieldset>
+            </div>
+          </details>
+
+          <details class="dl-q" id="q-autonomia">
+            <summary><span class="dl-q__icone" aria-hidden="true">🚗</span><span><span class="dl-q__rotulo">2 · Autonomia</span><span class="dl-q__pergunta">Ela vai agir sozinha ou vai pedir permissão?</span></span></summary>
+            <div class="dl-q__corpo">
+              <p>Defina <strong>quanto ela faz sem ninguém olhar</strong>. Ela só sugere? Faz e espera um "ok"? Ou faz tudo sozinha e alguém só acompanha? Quanto mais sozinha, mais forte precisa ser o resto da lista.</p>
+              <p class="dl-q__alerta"><strong>Sinal de alerta:</strong> a IA trava e "dá um jeito" sem avisar ninguém, como no caso da PocketOS.</p>
+              <fieldset hidden><legend>Na sua empresa, a autonomia está definida?</legend><div class="dl-opcoes">
+                <label><input type="radio" name="q2" value="sim" /><span>Sim</span></label>
+                <label><input type="radio" name="q2" value="nao-sei" /><span>Não sei</span></label>
+                <label><input type="radio" name="q2" value="nao" /><span>Não</span></label>
+              </div></fieldset>
+            </div>
+          </details>
+
+          <details class="dl-q" id="q-alcada">
+            <summary><span class="dl-q__icone" aria-hidden="true">💳</span><span><span class="dl-q__rotulo">3 · Alçada</span><span class="dl-q__pergunta">Qual é o limite do "cartão de crédito" dela?</span></span></summary>
+            <div class="dl-q__corpo">
+              <p>Todo funcionário tem um limite: de gasto, de acesso, de assinatura. A IA também precisa de um, <strong>por escrito</strong>: o que pode <strong>ler</strong>, o que pode <strong>mudar</strong>, onde pode <strong>mexer</strong> e o que <strong>nunca</strong> pode fazer sem aprovação de uma pessoa.</p>
+              <p class="dl-q__alerta"><strong>Sinal de alerta:</strong> a IA usa uma chave que abre mais portas do que a tarefa precisa.</p>
+              <fieldset hidden><legend>Na sua empresa, o limite está escrito?</legend><div class="dl-opcoes">
+                <label><input type="radio" name="q3" value="sim" /><span>Sim</span></label>
+                <label><input type="radio" name="q3" value="nao-sei" /><span>Não sei</span></label>
+                <label><input type="radio" name="q3" value="nao" /><span>Não</span></label>
+              </div></fieldset>
+            </div>
+          </details>
+
+          <details class="dl-q" id="q-criticidade">
+            <summary><span class="dl-q__icone" aria-hidden="true">💥</span><span><span class="dl-q__rotulo">4 · Criticidade</span><span class="dl-q__pergunta">Qual o tamanho do estrago se ela errar?</span></span></summary>
+            <div class="dl-q__corpo">
+              <p>Errar um rascunho de e-mail é chato. Apagar dados de clientes ou pagar a pessoa errada é grave. Pergunte: <strong>quanto custa o erro, quantas pessoas ele atinge e dá para desfazer?</strong> Quanto maior o estrago possível, menor deve ser a liberdade da IA.</p>
+              <p class="dl-q__alerta"><strong>Sinal de alerta:</strong> a ação não tem volta.</p>
+              <fieldset hidden><legend>Na sua empresa, o estrago possível foi medido?</legend><div class="dl-opcoes">
+                <label><input type="radio" name="q4" value="sim" /><span>Sim</span></label>
+                <label><input type="radio" name="q4" value="nao-sei" /><span>Não sei</span></label>
+                <label><input type="radio" name="q4" value="nao" /><span>Não</span></label>
+              </div></fieldset>
+            </div>
+          </details>
+
+          <details class="dl-q" id="q-governabilidade">
+            <summary><span class="dl-q__icone" aria-hidden="true">🛑</span><span><span class="dl-q__rotulo">5 · Governabilidade</span><span class="dl-q__pergunta">Nós temos um "botão de pânico" para desligá-la a tempo?</span></span></summary>
+            <div class="dl-q__corpo">
+              <p>Não basta ter regras. A empresa precisa <strong>conseguir fazer as regras valerem</strong>: ver o que a IA fez, <strong>parar a IA na hora</strong> e <strong>desfazer o estrago</strong> quando der. Atenção: o botão de pânico para o que vem depois, mas <strong>não desfaz o que já aconteceu</strong>.</p>
+              <p class="dl-q__alerta"><strong>Sinal de alerta:</strong> ninguém sabe dizer o que a IA fez ontem.</p>
+              <fieldset hidden><legend>Na sua empresa, dá para parar a IA a tempo?</legend><div class="dl-opcoes">
+                <label><input type="radio" name="q5" value="sim" /><span>Sim</span></label>
+                <label><input type="radio" name="q5" value="nao-sei" /><span>Não sei</span></label>
+                <label><input type="radio" name="q5" value="nao" /><span>Não</span></label>
+              </div></fieldset>
+            </div>
+          </details>
+
+        </div>
+        <div class="dl-resultado" data-resultado aria-live="polite"></div>
+        <template data-modelo="ok"><div class="dl-resultado__card dl-resultado__card--ok"><p><strong>Pode seguir, com limites claros.</strong> Refaça estas perguntas sempre que mudar a IA, a ferramenta ou a tarefa.</p></div></template>
+        <template data-modelo="pare"><div class="dl-resultado__card dl-resultado__card--pare"><p><strong>Pare aqui.</strong> Diminua o que a IA pode fazer até conseguir responder "sim", ou não ligue ainda.</p></div></template>
+        <p class="dl-regra">A regra de ouro: nunca dê à IA mais poder do que você consegue controlar.</p>
+      </div>
+    </section>
+
+    <!-- ================= A MORAL ================= -->
+    <section id="moral" class="dl-section dl-moral" aria-labelledby="moral-titulo">
+      <div class="dl-wrap">
+        <h2 id="moral-titulo" class="dl-moral__titulo">Você pode automatizar tarefas. <span class="dl-grad">Não pode automatizar a responsabilidade.</span></h2>
+        <p class="dl-moral__lead">A IA <strong>não responde por si mesma</strong>. Ela não tem patrimônio, não assina contrato e não vai ao tribunal. Chamar a IA de "membro da equipe" não muda isso.</p>
+        <div class="dl-grid dl-grid--3">
+          <div class="dl-card">
+            <span class="dl-card__icone" aria-hidden="true">💰</span>
+            <h3>Quem paga a conta</h3>
+            <p>Pessoas e empresas: quem decidiu usar a IA, quem deu a chave, quem vendeu o sistema. <strong>Nunca a máquina.</strong></p>
+          </div>
+          <div class="dl-card">
+            <span class="dl-card__icone" aria-hidden="true">⚖️</span>
+            <h3>Quem responde na Justiça</h3>
+            <p>Depende do caso e da lei aplicada. No Brasil, <strong>ainda não existe uma lei própria para agentes de IA</strong>: valem as regras que já existem, como o Código Civil, o Código de Defesa do Consumidor e a LGPD.</p>
+          </div>
+          <div class="dl-card">
+            <span class="dl-card__icone" aria-hidden="true">🤝</span>
+            <h3>Quem perde a confiança</h3>
+            <p>O cliente não vai culpar o robô. <strong>Vai lembrar do nome da sua empresa.</strong></p>
+          </div>
+        </div>
+        <p class="dl-moral__fecho">Tirar a pessoa da execução não tira o dever de cuidar. Só muda o jeito de cuidar.</p>
+        <div class="dl-ctas" style="justify-content:center;margin-top:2rem">
+          <a class="dl-btn dl-btn--primary" href="#artigo">Ler o artigo completo</a>
+          <a class="dl-btn dl-btn--ghost" href="/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de">Assistir ao vídeo (5 min)</a>
+        </div>
+      </div>
+    </section>
+
+    </div>
+
+    <!-- ================= ARTIGO COMPLETO ================= -->
+    <article id="artigo" class="dl-artigo" aria-labelledby="artigo-titulo">
+      <div class="dl-wrap dl-prose">
+        <header class="dl-artigo__cab">
+          <p class="dl-eyebrow">Artigo técnico-conceitual interdisciplinar · Leitura de cerca de 30 minutos</p>
+          <h2 id="artigo-titulo" class="dl-h2">Autonomia, autoridade e responsabilidade organizacional na era dos sistemas agênticos</h2>
+          <p class="dl-hero__meta">Maurício Yokoyama Issei · Data de corte da pesquisa: 21 de novembro de 2026. Análise acadêmico-conceitual, não aconselhamento jurídico.</p>
+        </header>
+<nav class="dl-sumario" aria-labelledby="dl-sumario-t"><h2 id="dl-sumario-t" class="dl-sumario__t">Sumário do artigo</h2><ol><li><a href="#art-resumo">Resumo</a></li><li><a href="#art-introducao">Introdução</a></li><li><a href="#art-1-a-ordem-que-nunca-foi-dada">1. A ordem que nunca foi dada</a></li><li><a href="#art-2-nao-e-apenas-automacao">2. Não é apenas automação</a></li><li><a href="#art-3-capacidade-nao-e-autoridade">3. Capacidade não é autoridade</a></li><li><a href="#art-4-quem-efetivamente-recebe-a-delegacao">4. Quem efetivamente recebe a delegação?</a></li><li><a href="#art-5-uma-matriz-para-governar-a-autonomia">5. Uma matriz para governar a autonomia</a></li><li><a href="#art-6-quem-responde-pelas-consequencias">6. Quem responde pelas consequências?</a></li><li><a href="#art-7-os-limites-da-proposta">7. Os limites da proposta</a></li><li><a href="#art-8-a-responsabilidade-nao-e-automatizavel">8. A responsabilidade não é automatizável</a></li><li><a href="#art-referencias">Referências</a></li></ol></nav>
+<h2 id="art-resumo">Resumo</h2>
+<p>Este artigo investiga como uma organização pode delegar tarefas e autonomia operacional a sistemas agênticos sem presumir que transferiu a legitimidade da decisão ou eliminou a própria responsabilidade. O método é a pesquisa documental interdisciplinar, com prioridade para legislação brasileira, documentos oficiais, normas técnicas, frameworks institucionais e decisões, e comparação com União Europeia, Estados Unidos, Canadá e Austrália. O texto distingue automação tradicional, assistentes, agentes e sistemas multiagentes; separa competência, autonomia, alçada e responsabilidade; e propõe o conceito de delegação sociotécnica de autoridade. A contribuição central é uma matriz não compensatória de cinco dimensões (competência operacional, autonomia operacional, alçada e autoridade, criticidade e impacto, governabilidade), sujeita a duas condições: legitimidade da delegação e capacidade de governança. A matriz é uma proposta sem validação empírica. A análise sustenta que capacidade técnica não constitui, isoladamente, legitimidade decisória e que a retirada do humano da execução não elimina deveres de governança. A responsabilidade jurídica depende do regime aplicável, da conduta, do dano e do nexo causal. No Brasil, Código Civil, LGPD e Código de Defesa do Consumidor oferecem bases distintas, mas não formam um regime específico para agentes de IA; o PL 2.338/2023 continua em tramitação. Conclusão: a organização pode delegar execução, mas não pode presumir que a delegação técnica transfira autoridade legítima ou responsabilidade.</p>
+<p><strong>Palavras-chave:</strong> sistemas agênticos; delegação de autoridade; governança de IA; responsabilidade organizacional; alçadas.</p>
+<h2 id="art-introducao">Introdução</h2>
+<p>Quando uma organização concede a um sistema acesso a repositórios, bancos de dados, APIs, ambientes de nuvem e canais de comunicação, ela cria uma cadeia de atuação que conecta objetivos, instruções, credenciais, ferramentas, políticas, supervisores e efeitos externos.</p>
+<p>Essa cadeia não transforma o modelo em empregado, mandatário, preposto ou pessoa jurídica. A configuração técnica não confere à IA personalidade, patrimônio, capacidade processual ou autoridade institucional. O problema é outro: a organização pode produzir efeitos equivalentes aos de uma delegação operacional sem definir quais decisões estavam autorizadas, quais limites valiam e quem responderia pelas consequências.</p>
+<p><strong>Tese.</strong> A autonomia de sistemas agênticos deve ficar subordinada a uma estrutura explícita de delegação de autoridade, governança e responsabilização organizacional. A capacidade técnica de executar uma atividade não confere, isoladamente, legitimidade para decidir ou produzir seus efeitos. A competência demonstrada no contexto, a criticidade das atividades, a extensão das alçadas e a capacidade de contenção e supervisão limitam a autonomia autorizada.</p>
+<p><strong>Termos.</strong> <em>Competência</em> é desempenho demonstrado no contexto, com limites conhecidos. <em>Autoridade</em> é o poder institucional ou jurídico para decidir, aprovar, representar ou produzir determinado efeito; não equivale a possuir um token capaz de chamar uma API. <em>Responsabilidade</em> depende de deveres, vínculos, condutas, dano, nexo causal e regime jurídico aplicável; não equivale a culpa automática.</p>
+<p><strong>Método.</strong> A pesquisa é documental. As fontes foram conferidas na data de corte, salvo indicação em contrário. O texto marca o tipo de afirmação quando a distinção importa: <em>fato documentado</em> (sustentado por fonte citada), <em>declaração reportada</em> (atribuída a uma parte, sem confirmação independente), <em>interpretação</em>, <em>proposição do artigo</em> (contribuição sem validação empírica) e <em>hipótese</em>.</p>
+<p><strong>Escopo.</strong> O contexto jurídico prioritário é o Brasil, com comparação internacional seletiva. O texto é análise acadêmico-conceitual, não aconselhamento jurídico.</p>
+<h2 id="art-1-a-ordem-que-nunca-foi-dada">1. A ordem que nunca foi dada</h2>
+<p><strong>Fatos documentados.</strong> Na sexta-feira, 24 de abril de 2026, um agente de programação do Cursor, operando com o modelo Claude Opus 4.6, excluiu um volume de infraestrutura da Railway que continha o banco de dados de produção da PocketOS, fornecedora de software para locadoras de veículos (AI INCIDENT DATABASE, 2026; ABC NEWS, 2026). O fundador, Jer Crane, publicou um relato no X em 25 de abril (ABC NEWS, 2026). Segundo o relato, o agente executava uma tarefa rotineira no ambiente de <em>staging</em>, encontrou uma incompatibilidade de credencial e procurou uma solução sem pedir confirmação (CRANE, 2026).</p>
+<p>A Railway confirma o mecanismo: o agente enviou uma mutação GraphQL <code>volumeDelete</code> a um endpoint legado da API, autenticado com um token encontrado no disco da máquina do usuário. O token tinha escopo de conta, o mais amplo disponível, e a API tratou a chamada como trataria um comando de CLI ou de um pipeline de integração contínua (ABDELWAHAB, 2026). Até aquela semana, <code>volumeDelete</code> pela API excluía de imediato, sem desfazer; o painel web já oferecia uma janela de 48 horas (ABDELWAHAB, 2026; TYSON, 2026).</p>
+<p><strong>Declarações reportadas.</strong> O relato atribuído a Crane, cuja cópia pública não permite confirmar a autoria, afirma que o token fora criado para adicionar e remover domínios personalizados pela CLI da Railway, que o fluxo de criação não avisava sobre a capacidade destrutiva e que os backups de nível de volume estavam no mesmo volume e foram apagados junto (CRANE, 2026). O relato não explica como uma tarefa de <em>staging</em> alcançou dados de produção. Crane reproduziu também um texto gerado pelo agente após o evento, a pedido dele, no qual o sistema "admite" ter adivinhado em vez de verificar. Esse texto é saída gerada depois do fato, não explicação causal (CRANE, 2026). O CEO da Railway, Jake Cooper, respondeu publicamente que aquilo não deveria ser possível (CRANE, 2026; AI INCIDENT DATABASE, 2026).</p>
+<p><strong>Recuperação.</strong> Os primeiros relatos indicavam que o backup recuperável mais recente tinha cerca de três meses (AI INCIDENT DATABASE, 2026). Em 26 de abril, Crane informou que a Railway recuperara os dados; Cooper declarou à ABC News que a equipe restaurou os backups 30 minutos após contatar Crane (ABC NEWS, 2026). A Railway afirma que recuperou o banco e que o cliente voltou a operar com todos os dados. Atribui a aparente indisponibilidade dos backups a uma exclusão em cascata no caminho legado da API e informa manter backups de desastre fora do local, independentemente da configuração do usuário (ABDELWAHAB, 2026). Depois do incidente, a Railway passou a aplicar exclusão adiada de 48 horas na API e nos próprios backups (ABDELWAHAB, 2026; TYSON, 2026). Até a data de corte, não foram localizadas declarações públicas do Cursor ou da Anthropic (TYSON, 2026; ABC NEWS, 2026), nem decisão judicial ou perícia independente.</p>
+<p>O caso permite formular uma pergunta:</p>
+<blockquote><p>A autorização para executar uma tarefa de <em>staging</em> incluía legitimamente o poder de excluir recursos de produção?</p></blockquote>
+<p>A pergunta separa três planos:</p>
+<ul><li><strong>Tarefa atribuída:</strong> realizar uma alteração, investigar um erro ou preparar um ambiente.</li><li><strong>Permissão técnica:</strong> possuir uma credencial que permite chamar determinada operação.</li><li><strong>Autoridade legítima:</strong> estar autorizado, por política, contrato, alçada, finalidade e contexto, a produzir aquele efeito.</li></ul>
+<p><strong>Interpretação.</strong> A credencial ampla explica como a operação foi possível, não se era autorizada. Uma regra textual contra comandos destrutivos expressa a intenção da organização, mas não substitui uma barreira no serviço que aceita a chamada. Se uma operação é previsivelmente destrutiva, a proteção precisa estar na arquitetura, não apenas no <em>prompt</em>.</p>
+<p>O caso não prova que toda autonomia deva ser proibida. Ele ilustra uma <strong>hipótese</strong> restrita: a capacidade de execução pode ultrapassar a finalidade da tarefa quando a cadeia de autorização não diferencia ambiente, recurso, operação, irreversibilidade e aprovação. A cadeia causal envolveu vários participantes: quem guardou o token, quem o emitiu com escopo amplo, quem projetou o agente, quem expôs o endpoint legado e quem decidiu onde guardar os backups. As fontes não permitem atribuir a causa a um único deles.</p>
+<h2 id="art-2-nao-e-apenas-automacao">2. Não é apenas automação</h2>
+<p><strong>Automação tradicional</strong> executa regras, fluxos ou condições previamente especificados. Sua margem de iniciativa se limita ao processo programado, e a governança se concentra na definição das regras, dos dados de entrada e das exceções.</p>
+<p>A literatura de interação humano-automação já tratava a automação como graduável. Parasuraman, Sheridan e Wickens (2000) propõem que a automação se aplica, em níveis diferentes, a quatro funções: aquisição de informação, análise, seleção de decisão e implementação da ação. Um mesmo sistema pode, portanto, ter alta automação na análise e baixa na implementação.</p>
+<p><strong>Assistentes e copilotos</strong> produzem informação, rascunhos, recomendações, código ou ações assistidas. Em geral, o usuário revisa, valida ou assina o resultado. A classificação é funcional, não comercial: um produto chamado "copilot" pode executar ações externas, e um chamado "agent" pode se limitar a um fluxo estreito.</p>
+<p>Para este artigo, um <strong>agente</strong> é um sistema que interpreta um objetivo, escolhe etapas, seleciona ferramentas, reage a eventos e executa ações sem exigir um novo comando a cada passo. A definição descreve comportamentos observáveis e não implica consciência, intenção moral ou personalidade jurídica. Feng, McDonald e Zhang (2025) definem autonomia como o grau em que um agente é construído para operar sem envolvimento do usuário e a distinguem de <em>agency</em>, a capacidade de formar uma intenção de agir e executá-la. Os autores tratam as duas como dimensões de governança separadas.</p>
+<p><strong>Sistemas multiagentes</strong> acrescentam agentes especializados, transferências de tarefa (<em>handoffs</em>), delegação interna ou negociação entre componentes. A modularidade pode melhorar o isolamento e a auditoria, mas também pode dificultar a reconstrução de quem selecionou uma ferramenta, quem alterou o plano e onde uma restrição se perdeu.</p>
+<p>A presença humana costuma ser descrita por três modelos:</p>
+<ul><li><strong>Human-in-the-loop (HITL):</strong> o humano participa da execução ou aprova ações antes que ocorram.</li><li><strong>Human-on-the-loop (HOTL):</strong> o sistema opera e o humano monitora, intervindo quando necessário.</li><li><strong>Human-out-of-the-loop (HOOTL):</strong> não há intervenção humana durante a execução normal.</li></ul>
+<p>Os rótulos são insuficientes: um humano pode estar "no circuito" sem tempo, competência, informação ou autoridade para intervir. O AI Act europeu exige, para sistemas de alto risco, medidas de supervisão proporcionais aos riscos, ao nível de autonomia e ao contexto de uso, e determina que os supervisores possam compreender capacidades e limites, atentar para o viés de automação, desconsiderar ou reverter saídas e interromper o sistema (UNIÃO EUROPEIA, 2024, art. 14, §§ 3º e 4º). A seção 6.4 trata da aplicabilidade temporal dessas obrigações.</p>
+<p><strong>Interpretação.</strong> Autonomia é propriedade sociotécnica e de projeto. Depende do modelo, das metas, do período de operação, dos gatilhos, das ferramentas, dos dados, da memória, das credenciais, dos limites de execução e da modalidade de supervisão. A mesma capacidade de modelo pode operar como copiloto em um ambiente e como agente autônomo em outro.</p>
+<h2 id="art-3-capacidade-nao-e-autoridade">3. Capacidade não é autoridade</h2>
+<p>As organizações humanas oferecem uma analogia <strong>funcional e organizacional</strong>, não trabalhista. Uma pessoa pode ter competência para executar uma atividade sem autoridade para aprovar o gasto correspondente, ou acesso técnico a um sistema sem alçada para usá-lo.</p>
+<p><strong>Sentido dos termos.</strong> "Autoridade do agente" e "delegação de autoridade ao agente" têm, aqui, sentido de governança de TI e desenho sociotécnico: a combinação de políticas, permissões, escopos e controles que define quais ações um sistema pode executar em nome da organização. O artigo não atribui autoridade jurídica à máquina. No direito civil, praticar atos em nome de alguém pressupõe capacidade, representação, mandato ou outro fundamento reconhecido pelo ordenamento. A linguagem de delegação não divide a culpa com o sistema, não cria personalidade e não transfere automaticamente responsabilidade aos demais participantes.</p>
+<div class="dl-tabela" role="region" aria-label="Tabela: Conceito, Pergunta, Natureza" tabindex="0"><table><thead><tr><th scope="col">Conceito</th><th scope="col">Pergunta</th><th scope="col">Natureza</th></tr></thead><tbody><tr><th scope="row"><strong>Competência</strong></th><td>O que o sistema demonstrou executar, neste contexto?</td><td>Empírica: desempenho, confiabilidade, robustez, limites, revalidação</td></tr><tr><th scope="row"><strong>Autonomia</strong></th><td>Quanto executa sem intervenção?</td><td>De projeto: duração, iniciativa, modalidade de supervisão</td></tr><tr><th scope="row"><strong>Alçada</strong></th><td>Quais decisões, recursos e efeitos está autorizado a produzir?</td><td>Normativa interna: política, escopo, valor, ambiente, aprovação</td></tr><tr><th scope="row"><strong>Responsabilidade</strong></th><td>Como as consequências se imputam aos participantes?</td><td>Jurídica e institucional: deveres, conduta, dano, nexo, regime aplicável</td></tr></tbody></table></div>
+<p><strong>Proposição do artigo.</strong> Competência é condição de elegibilidade, não autorização automática. Desempenho elevado em testes não confere poder para movimentar recursos, alterar registros, excluir bases, divulgar informações ou representar a organização. Um instrumento organizacional e técnico concede a alçada e a delimita por recurso, operação, ambiente, valor, tempo, contexto, criticidade, reversibilidade e exigência de aprovação.</p>
+<p>A relação entre competência e autonomia não é linear. Um modelo pode executar bem uma tarefa reversível e não servir para uma irreversível; pode acertar na média e falhar nos casos extremos; pode recomendar bem uma ação que não deveria executar.</p>
+<p>Feng, McDonald e Zhang (2025) tratam autonomia como decisão de projeto e descrevem cinco papéis do usuário: operador, colaborador, consultor, aprovador e observador. Como aprovador, o usuário intervém para resolver bloqueios, fornecer credenciais ou autorizar ações de consequência; como observador, apenas monitora registros, com um desligamento de emergência. O trabalho é proposta conceitual, não norma nem escala jurídica.</p>
+<p><strong>Limites da analogia.</strong> A CLT trata dos "cargos de gestão" no art. 62, II, para fins de jornada, e o enquadramento depende de elementos fáticos da relação de emprego (BRASIL, 1943, art. 62, II). Uma permissão de sistema não caracteriza cargo de gestão, representação do empregador ou equivalência entre agente e empregado. A analogia também não desloca a responsabilidade para o agente: um modelo não tem patrimônio, não se submete às sanções organizacionais e não se torna preposto por ser descrito como "membro da equipe". As categorias jurídicas se aplicam aos participantes humanos e organizacionais, conforme os fatos, os deveres e o regime incidente.</p>
+<h2 id="art-4-quem-efetivamente-recebe-a-delegacao">4. Quem efetivamente recebe a delegação?</h2>
+<p><strong>Proposição do artigo: delegação sociotécnica de autoridade.</strong> A organização não delega a um modelo isolado. Ela configura uma estrutura composta por:</p>
+<ul><li>modelo e versão;</li><li>instruções, políticas e regras de negócio;</li><li>contexto, memória e dados de entrada;</li><li>orquestrador e mecanismo de planejamento;</li><li>runtime e ambiente de execução;</li><li>identidade, credenciais e escopos;</li><li>ferramentas, APIs e sistemas externos;</li><li>mecanismos de observabilidade, aprovação e contenção.</li></ul>
+<p><strong>Organização → sistema agêntico → camada de execução → efeitos no mundo real.</strong></p>
+<p>A organização define o objetivo; o sistema agêntico o interpreta e seleciona etapas; a camada de execução transforma escolhas em chamadas a ferramentas e APIs; os efeitos alteram dados, mensagens, contratos ou infraestrutura.</p>
+<p>A arquitetura exige separar três camadas de autorização, que podem coincidir mas não se presumem umas a partir das outras:</p>
+<ul><li><strong>Permissão técnica:</strong> a possibilidade de realizar uma operação.</li><li><strong>Autorização organizacional:</strong> a decisão interna de permitir a operação naquele contexto.</li><li><strong>Autorização jurídica:</strong> a que decorre de competência, contrato, representação, lei e outros requisitos.</li></ul>
+<p><strong>Controles conhecidos.</strong> O princípio do menor privilégio determina que cada programa e cada usuário operem com o menor conjunto de privilégios necessário para a tarefa (SALTZER; SCHROEDER, 1975). O RBAC associa permissões a papéis atribuídos a usuários. O ABAC decide a autorização avaliando atributos do sujeito, do objeto, da operação solicitada e, em alguns casos, do ambiente (HU et al., 2014). A segregação de funções separa atividades incompatíveis. Esses controles são mecanismos de autorização técnica; não definem cargo, personalidade ou poder jurídico.</p>
+<p><strong>Interpretação aplicada ao caso.</strong> No PocketOS, um token de escopo de conta, guardado em arquivo alheio à tarefa, permitiu que uma execução vinculada a <em>staging</em> alcançasse uma operação destrutiva sobre um volume de produção (ABDELWAHAB, 2026; CRANE, 2026). A questão de governança é por que a arquitetura permitia que uma tarefa atribuída a um ambiente alcançasse outro ambiente e uma operação irreversível sem barreira independente. A credencial excedia a finalidade da tarefa, contrariando o menor privilégio; faltava uma política que avaliasse o atributo "ambiente" e a irreversibilidade da operação. A própria Railway concluiu que agentes devem usar superfícies projetadas para eles, e não um endpoint bruto acessado por um token esquecido em um arquivo de configuração (ABDELWAHAB, 2026).</p>
+<p><strong>Cadeia de participantes.</strong> Organização, arquitetura, implementação, configuração, operação e fornecedores ocupam papéis distintos, e cada papel pode gerar deveres diferentes (seção 6.1). Participar tecnicamente não basta para estabelecer responsabilidade jurídica por qualquer dano.</p>
+<h2 id="art-5-uma-matriz-para-governar-a-autonomia">5. Uma matriz para governar a autonomia</h2>
+<p><strong>Proposição do artigo.</strong> A matriz a seguir é contribuição deste artigo; não é padrão reconhecido, método validado nem obrigação legal. É <strong>não compensatória</strong>: as dimensões não se somam em uma pontuação média, e um resultado excelente em competência não compensa a ausência de autoridade legítima ou a incapacidade de conter um sistema de alta criticidade.</p>
+<div class="dl-tabela" role="region" aria-label="Tabela: Dimensão, Pergunta principal, Evidências possíveis" tabindex="0"><table><thead><tr><th scope="col">Dimensão</th><th scope="col">Pergunta principal</th><th scope="col">Evidências possíveis</th></tr></thead><tbody><tr><th scope="row"><strong>1. Competência operacional</strong></th><td>O sistema demonstrou desempenho confiável nesta tarefa e neste contexto?</td><td>Testes representativos, taxa de erro, robustez, limites conhecidos, revalidação</td></tr><tr><th scope="row"><strong>2. Autonomia operacional</strong></th><td>Quanto opera sem intervenção?</td><td>Duração, iniciativa, gatilhos, número de decisões e ações sem aprovação, modalidade de supervisão</td></tr><tr><th scope="row"><strong>3. Alçada e autoridade</strong></th><td>Quais recursos, decisões e efeitos a política autoriza?</td><td>Identidade, escopo, ambiente, limites financeiros, de dados e de comunicação, irreversibilidade, aprovação exigida</td></tr><tr><th scope="row"><strong>4. Criticidade e impacto</strong></th><td>O que acontece se a ação falhar ou for indevida?</td><td>Danos financeiros, operacionais, jurídicos, sociais, reputacionais e a direitos; escala; reversibilidade</td></tr><tr><th scope="row"><strong>5. Governabilidade</strong></th><td>A organização consegue fazer cumprir os limites e observar, auditar, interromper, recuperar e responder?</td><td><em>Enforcement</em> de políticas, registros, proveniência, contenção, <em>rollback</em>, reconstrução da ação e de sua autorização</td></tr></tbody></table></div>
+<p><strong>Condição A — Legitimidade da delegação.</strong> A organização tem autoridade legal, contratual, financeira e institucional para delegar a atividade? Ela pode autorizar um agente a preparar uma minuta, mas talvez não possa delegar, sem controles adicionais, uma decisão sujeita a aprovação regulatória, representação contratual ou tratamento de dados sensíveis.</p>
+<p><strong>Condição B — Capacidade de governança.</strong> A organização consegue observar, auditar, interromper e responder às consequências?</p>
+<p>Alçada (dimensão 3) e governabilidade (dimensão 5) são distintas. A alçada pertence ao desenho normativo: o que a política declara que o agente pode fazer. A governabilidade pertence à capacidade técnica e operacional: como a organização impede que o agente ultrapasse a alçada e como limita, interrompe ou reverte falhas. Exige ligar cada ação a uma identidade, uma credencial, uma política, um contexto, uma versão e uma autorização, e conseguir revogar acesso, interromper a operação e recuperar efeitos quando possível.</p>
+<blockquote><p><strong>A organização não deve conceder uma alçada cuja extensão ultrapasse sua capacidade real de governar os efeitos das ações do agente.</strong></p></blockquote>
+<p><strong>Fluxo de decisão:</strong> necessidade → competência e criticidade → definição de alçada → legitimidade (Condição A) → governabilidade (Condição B) → autorização delimitada, redução de permissões ou não autorização → monitoramento e reavaliação.</p>
+<p>A competência vem cedo porque é condição de elegibilidade; sem ela demonstrada no contexto, o fluxo para. A criticidade vem junto porque define o rigor das etapas seguintes. Se a Condição A falha, a resposta é não autorizar. Se a Condição B falha, a resposta é reduzir a alçada até o ponto governável ou não autorizar.</p>
+<p><strong>Exemplo técnico.</strong> Um agente de desenvolvimento pode ler registros de produção para diagnosticar uma falha, escrever código em um repositório de teste e abrir um <em>pull request</em>. Isso não o autoriza a excluir bancos, alterar credenciais administrativas, modificar controles de acesso ou executar migrações irreversíveis. Uma configuração coerente com a matriz poderia incluir:</p>
+<ul><li>credencial de leitura, de curta duração, restrita aos recursos de diagnóstico de produção;</li><li>credencial de escrita válida apenas no ambiente de teste;</li><li>política de autorização que avalie ambiente e tipo de operação e negue por padrão operações destrutivas fora do ambiente de teste;</li><li>exclusão adiada ou reversível no próprio serviço, independente da instrução dada ao agente;</li><li>backups fora do raio de falha do recurso protegido;</li><li>aprovação humana obrigatória para mudanças críticas.</li></ul>
+<p>O objetivo é alinhar a alçada ao efeito possível da ação, não aprovar cada linha gerada.</p>
+<p><strong>Revalidação.</strong> A competência demonstrada pode deixar de valer quando mudam o modelo, as ferramentas, o ambiente ou a política. A autonomia deve diminuir quando a observabilidade ou a contenção se degradam.</p>
+<h2 id="art-6-quem-responde-pelas-consequencias">6. Quem responde pelas consequências?</h2>
+<h3 id="art-6-1-camadas-de-responsabilidade">6.1 Camadas de responsabilidade</h3>
+<p><strong>Interpretação.</strong> A responsabilidade pode ser analisada em camadas:</p>
+<ul><li><strong>Institucional:</strong> decisão de usar, finalidade, aceitação de riscos e controles.</li><li><strong>Arquitetural:</strong> permissões, separação de ambientes, barreiras e contenção.</li><li><strong>De implementação:</strong> defeitos de código, integração ou configuração.</li><li><strong>Operacional:</strong> autorização concreta, monitoramento e resposta.</li><li><strong>De fornecedores:</strong> contrato, serviço, defeito, informação prestada, controle exercido e nexo causal.</li></ul>
+<p>As camadas indicam onde deveres podem surgir; não estabelecem, por si, responsabilidade de nenhum participante.</p>
+<h3 id="art-6-2-direito-brasileiro-vigente">6.2 Direito brasileiro vigente</h3>
+<p><strong>Código Civil.</strong> O art. 186 define ato ilícito como a violação de direito que causa dano a outrem, por ação ou omissão voluntária, negligência ou imprudência; o art. 187 trata do abuso de direito. O art. 927, <em>caput</em>, obriga a reparar quem causa dano por ato ilícito; o parágrafo único prevê a obrigação de reparar independentemente de culpa nos casos especificados em lei ou quando a atividade normalmente desenvolvida pelo autor do dano implicar, por sua natureza, risco para os direitos de outrem (BRASIL, 2002, arts. 186, 187 e 927).</p>
+<p><strong>Interpretação.</strong> O uso de agentes com autonomia operacional e capacidade de produzir efeitos destrutivos em sistemas críticos pode contribuir para caracterizar, no caso concreto, atividade de risco nos termos do parágrafo único do art. 927, sobretudo com alta exposição, irreversibilidade, assimetria de controle ou previsibilidade do dano. A conclusão não decorre da simples presença de IA. Mesmo reconhecido o enquadramento, a responsabilidade objetiva dispensa a prova de culpa, mas não a de dano e nexo, nem afasta excludentes e a contribuição de outros participantes.</p>
+<p>Os arts. 932, III, e 933 responsabilizam o empregador ou comitente pelos atos de empregados, serviçais e prepostos no exercício do trabalho ou em razão dele, ainda que sem culpa própria (BRASIL, 2002, arts. 932, III, e 933). <strong>Limite da analogia:</strong> esses dispositivos não tornam um agente de IA empregado ou preposto. Podem incidir sobre o ato de uma pessoa enquadrável nessas categorias, como o profissional que configurou ou operou o sistema, conforme os fatos. A ausência de intervenção humana não determina, isoladamente, responsabilidade objetiva.</p>
+<p><strong>LGPD.</strong> A lei incide quando há tratamento de dados pessoais. O art. 20 dá ao titular o direito de solicitar a revisão de decisões tomadas unicamente com base em tratamento automatizado de dados pessoais que afetem seus interesses, incluídas as que definem seu perfil pessoal, profissional, de consumo e de crédito ou aspectos de sua personalidade; o §1º obriga o controlador a fornecer, quando solicitado, informações claras sobre critérios e procedimentos, observados os segredos comercial e industrial (BRASIL, 2018, art. 20, com redação da Lei nº 13.853/2019). A redação vigente não exige revisão por pessoa natural em toda automação: o direito depende de decisão unicamente automatizada que afete interesses do titular, e de solicitação.</p>
+<p>O art. 42 obriga o controlador ou o operador que, no tratamento de dados pessoais, causar dano em violação à legislação a repará-lo. O operador responde solidariamente quando descumpre a lei ou as instruções lícitas do controlador; controladores diretamente envolvidos também respondem solidariamente; e o juiz pode inverter o ônus da prova em favor do titular quando a alegação for verossímil, houver hipossuficiência ou a prova for excessivamente onerosa (BRASIL, 2018, art. 42, §§ 1º e 2º). O art. 43 prevê excludentes, e o art. 46 exige medidas de segurança técnicas e administrativas desde a concepção do produto ou serviço (BRASIL, 2018, arts. 43 e 46, §2º). <strong>Interpretação:</strong> esses dispositivos não transformam toda falha de IA em dano indenizável, mas tornam governança, segurança, instruções e registros juridicamente relevantes quando o evento envolve dados pessoais.</p>
+<p><strong>CDC.</strong> O Código de Defesa do Consumidor pode incidir quando há relação de consumo. O art. 12 responsabiliza fabricantes, produtores, construtores e importadores por defeitos de produtos, e o art. 14 responsabiliza o fornecedor de serviços, independentemente de culpa, por defeitos na prestação; o serviço é defeituoso quando não fornece a segurança que o consumidor dele pode esperar (BRASIL, 1990, arts. 12 e 14, §1º). O art. 17 equipara aos consumidores todas as vítimas do evento, e o art. 25, §1º, estabelece solidariedade entre os responsáveis pelo dano (BRASIL, 1990, arts. 17 e 25, §1º). A incidência não é automática em relação empresarial, contratação de API ou uso interno.</p>
+<p><strong>Marco Civil da Internet.</strong> O artigo não identificou pertinência concreta e não o examina.</p>
+<h3 id="art-6-3-proposta-legislativa-brasileira">6.3 Proposta legislativa brasileira</h3>
+<p>O PL 2.338/2023 foi apresentado no Senado em 3 de maio de 2023, aprovado pelo Senado em dezembro de 2024 e remetido à Câmara dos Deputados em 17 de março de 2025 (CONGRESSO NACIONAL, 2025). Em 21 de novembro de 2026, a ficha da Câmara registra a situação "aguardando parecer do relator na Comissão Especial sobre Inteligência Artificial", regime de prioridade e apreciação pelo Plenário (CÂMARA DOS DEPUTADOS, 2026). O projeto <strong>não é lei</strong>; seu texto indica política legislativa e pode mudar.</p>
+<h3 id="art-6-4-uniao-europeia-ai-act">6.4 União Europeia: AI Act</h3>
+<p>O Regulamento (UE) 2024/1689 define sistema de IA como sistema projetado para operar com níveis variados de autonomia e distingue fornecedor (<em>provider</em>) de responsável pela implantação (<em>deployer</em>) (UNIÃO EUROPEIA, 2024, art. 3º, 1, 3 e 4). O art. 2º delimita o âmbito, e as regras variam conforme o risco e o papel do operador; o regulamento não se aplica indistintamente a qualquer sistema.</p>
+<p>Para sistemas de alto risco, três grupos de dispositivos se relacionam com a tese:</p>
+<ul><li><strong>Supervisão humana (art. 14):</strong> ver seção 2.</li><li><strong>Registros (arts. 12, 19 e 26, §6º):</strong> registro automático de eventos; o <em>deployer</em> guarda os registros sob seu controle por, no mínimo, seis meses, salvo disposição legal diversa.</li><li><strong>Deveres do <em>deployer</em> (art. 26):</strong> usar o sistema conforme as instruções; atribuir a supervisão a pessoas naturais com a competência, a formação e a <strong>autoridade</strong> necessárias, além do apoio necessário; monitorar o funcionamento e suspender o uso quando houver suspeita de risco (UNIÃO EUROPEIA, 2026, art. 26, §§ 1º, 2º, 5º e 6º).</li></ul>
+<p><strong>Interpretação.</strong> O art. 26, §2º, exige que o supervisor tenha autoridade, não apenas presença. É a distinção entre presença nominal e capacidade efetiva de intervir que este artigo defende.</p>
+<p><strong>Aplicabilidade temporal.</strong> O regulamento entrou em vigor em 1º de agosto de 2024, com aplicação escalonada no art. 113 (UNIÃO EUROPEIA, 2024). O Regulamento (UE) 2026/1744 (<em>Digital Omnibus on AI</em>), de 8 de julho de 2026, publicado no Jornal Oficial em 24 de julho de 2026 e em vigor desde 27 de julho de 2026, alterou o cronograma (UNIÃO EUROPEIA, 2026). Segundo escritórios de advocacia (fontes secundárias), as obrigações de alto risco passaram a valer em 2 de dezembro de 2027 para os sistemas do Anexo III e em 2 de agosto de 2028 para sistemas integrados a produtos do Anexo I (WHITE &amp; CASE, 2026; CUATRECASAS, 2026). Na data de corte, portanto, as obrigações dos arts. 12, 14 e 26 para alto risco existem no texto normativo, mas ainda não se aplicam. A versão consolidada do EUR-Lex não tem efeito jurídico; os textos autênticos são os do Jornal Oficial (UNIÃO EUROPEIA, 2026).</p>
+<h3 id="art-6-5-frameworks-voluntarios-e-normas-tecnicas">6.5 Frameworks voluntários e normas técnicas</h3>
+<ul><li><strong>NIST AI Risk Management Framework (AI RMF 1.0, NIST AI 100-1):</strong> publicado em 26 de janeiro de 2023, de uso voluntário, organizado nas funções <em>Govern</em>, <em>Map</em>, <em>Measure</em> e <em>Manage</em>; a página oficial informa que está em revisão (NIST, 2023). Pode servir como evidência de diligência, mas não cria obrigação jurídica.</li><li><strong>Princípios da OCDE para IA:</strong> recomendação intergovernamental adotada em 2019 e revisada em 3 de maio de 2024 (OCDE, 2024). Prevê capacidade de agência e supervisão humanas (princípio 1.2, b); mecanismos para anular, reparar ou desativar com segurança sistemas que arrisquem causar dano indevido (1.4, b); e rastreabilidade de conjuntos de dados, processos e decisões ao longo do ciclo de vida (1.5, b). Não é lei diretamente coercitiva.</li><li><strong>ISO/IEC 42001:2023:</strong> norma técnica publicada em dezembro de 2023 (1ª edição), que especifica requisitos para estabelecer, implementar, manter e melhorar continuamente um sistema de gestão de IA, destinada a organizações que fornecem ou utilizam produtos e serviços baseados em IA (ISO, 2023). Não substitui lei nem prova de causalidade; uma certificação não prova ausência de responsabilidade.</li></ul>
+<h3 id="art-6-6-casos-comparativos">6.6 Casos comparativos</h3>
+<p>Exceto o PocketOS, os casos a seguir <strong>não</strong> envolvem sistemas agênticos; ilustram responsabilidade organizacional por automação.</p>
+<ul><li><strong>Moffatt v. Air Canada (2024 BCCRT 149).</strong> Em 14 de fevereiro de 2024, o Civil Resolution Tribunal da Colúmbia Britânica decidiu uma disputa de pequenas causas sobre informação incorreta dada pelo chatbot da companhia a respeito de tarifas de luto. O tribunal chamou de "notável" a tese de que o chatbot seria entidade jurídica separada e afirmou que a companhia responde por todas as informações em seu site (par. 27); concluiu que ela não tomou cuidado razoável com a precisão do chatbot (par. 28), reconheceu <em>negligent misrepresentation</em> (par. 32) e fixou condenação total de CAD 812,02 (par. 44) (CIVIL RESOLUTION TRIBUNAL, 2024). A decisão não tem efeito vinculante geral nem trata de agentes autônomos.</li><li><strong>EEOC v. iTutorGroup (2023).</strong> Em 11 de setembro de 2023, a Equal Employment Opportunity Commission (EEOC), agência federal dos Estados Unidos, informou acordo de US$ 365 mil em ação na qual alegava que o software de candidatura da empresa rejeitava automaticamente mulheres com 55 anos ou mais e homens com 60 anos ou mais, atingindo mais de 200 candidatos (EEOC, 2023). O comunicado descreve software de triagem configurado com uma regra, não IA generativa nem agente.</li><li><strong>Robodebt (Austrália).</strong> O relatório da Royal Commission into the Robodebt Scheme foi apresentado em 7 de julho de 2023. A recomendação 17.1 propõe reforma legislativa que crie um marco jurídico consistente para a automação em serviços governamentais; a 17.2 propõe um órgão para monitorar e auditar decisões automatizadas (ROYAL COMMISSION INTO THE ROBODEBT SCHEME, 2023). Robodebt foi automação administrativa, não sistema agêntico; mostra que automatizar não elimina exigências de legalidade, revisão e responsabilidade institucional.</li><li><strong>PocketOS (2026).</strong> Ver seção 1; não houve decisão judicial sobre responsabilidade.</li></ul>
+<p><strong>Interpretação conjunta.</strong> Nos três primeiros casos, a organização não afastou seus deveres por ter colocado um sistema automatizado entre si e terceiros. O PocketOS acrescenta o elemento agêntico: o sistema executou uma ação que ninguém ordenara.</p>
+<h2 id="art-7-os-limites-da-proposta">7. Os limites da proposta</h2>
+<h3 id="art-7-1-contra-argumentos">7.1 Contra-argumentos</h3>
+<p><strong>Competência probabilística e dependente de contexto.</strong> O desempenho de modelos varia com a tarefa, os dados e o ambiente; um teste não pode virar licença para autonomia. A matriz exige revalidação e análise de criticidade, mas não oferece limiar numérico universal.</p>
+<p><strong>Autonomia legítima em atividades de baixo risco.</strong> A objeção procede. Em tarefas reversíveis e de baixo impacto, a organização pode usar supervisão posterior, limites de custo, escopos estreitos, amostragem e contenção automatizada. A exigência é proporcionalidade, não intervenção constante.</p>
+<p><strong>Inviabilidade de aprovar cada ação.</strong> Quando um agente executa centenas de ações por tarefa, a aprovação individual tende a virar ratificação automática. A matriz desloca o controle para a alçada e a governabilidade: reduzir o que pode ser feito e tornar reversível o que for feito.</p>
+<p><strong>Viés de automação.</strong> Parasuraman e Manzey (2010) mostram que a complacência com a automação aparece em participantes leigos e especialistas, não se resolve com simples prática, e que o viés de automação produz erros de omissão e de comissão quando os auxílios à decisão são imperfeitos. Um supervisor pressionado, sem informação ou sem autoridade pode apenas ratificar a saída. A matriz trata a supervisão como combinação de compreensão, atenção, competência, autoridade, observabilidade e capacidade de interrupção.</p>
+<p><strong>Limites de registros, explicabilidade, desligamento e reversibilidade.</strong> Um registro mostra que uma chamada ocorreu, mas não prova que a autorização era legítima, que o contexto estava correto ou que a justificativa registrada não foi produzida depois. O texto gerado pelo agente no caso PocketOS tem forma de explicação, mas não é evidência da causa. Um desligamento de emergência interrompe novas ações sem desfazer efeitos já externalizados. A OCDE recomenda rastreabilidade, e o AI Act exige registros em sistemas de alto risco, mas nenhum dos dois garante reconstrução causal perfeita (OCDE, 2024; UNIÃO EUROPEIA, 2024).</p>
+<p><strong>Suficiência de mecanismos tradicionais.</strong> RBAC, ABAC, menor privilégio, segregação de funções, gestão de mudanças e controles de produção podem bastar em vários contextos. O PocketOS pode ser lido como falha de controles clássicos (escopo de token, backups no mesmo raio de falha, exclusão sem atraso), não de algo exclusivo da IA. A matriz não substitui esses mecanismos; pergunta se eles cobrem iniciativa, seleção de ferramentas, planejamento e duração de operação de um agente, inclusive a possibilidade de o sistema procurar e usar uma credencial que ninguém lhe entregou para aquela tarefa.</p>
+<p><strong>Responsabilização excessiva de profissionais técnicos.</strong> Arquitetos e desenvolvedores não respondem automaticamente por qualquer consequência de um sistema. A análise considera quem tinha controle, quais informações possuía, quais deveres assumiu, quais riscos eram previsíveis, quais avisos foram dados e qual foi a contribuição causal de cada participante.</p>
+<h3 id="art-7-2-limitacoes">7.2 Limitações</h3>
+<ul><li>A proposta é conceitual e não foi validada empiricamente.</li><li>A matriz não oferece limiares numéricos universais.</li><li>A analogia com gestão de pessoas é funcional, não trabalhista.</li><li>O artigo não afirma responsabilidade automática de nenhum participante.</li><li>A proposta depende de tecnologias de identidade, autorização, auditoria e contenção com lacunas, especialmente em sistemas multiagentes.</li><li>A evidência pública sobre incidentes de agentes em produção é fragmentada; no caso PocketOS, parte dos fatos vem de declarações das partes, e a autoria da cópia consultada do relato do fundador não foi confirmada.</li></ul>
+<h3 id="art-7-3-condicoes-de-refutacao-ou-revisao">7.3 Condições de refutação ou revisão</h3>
+<p>A matriz deve ser revista ou rejeitada se:</p>
+<ol><li>não produzir decisões melhores que mecanismos tradicionais de autorização e gestão de risco;</li><li>mecanismos existentes resolverem adequadamente determinados contextos;</li><li>a dimensão de autonomia não acrescentar informação relevante à avaliação de risco em determinados cenários;</li><li>sua operacionalização em sistemas multiagentes gerar custos e ambiguidades superiores aos benefícios.</li></ol>
+<h3 id="art-7-4-agenda-de-pesquisa">7.4 Agenda de pesquisa</h3>
+<ul><li>cenários de teste e simulações que comparem decisões com e sem a matriz, e comparação com RBAC, ABAC e gestão de mudanças tradicional;</li><li>estudos de caso e análise sistemática de incidentes de agentes em produção, incluindo se alçadas explícitas reduzem incidentes;</li><li>comparação de HITL, HOTL e HOOTL em tarefas de criticidades diferentes;</li><li>valor probatório de registros e proveniência;</li><li>tratamento, pelos tribunais brasileiros, de causalidade, contratos, registros e responsabilidade distribuída.</li></ul>
+<h2 id="art-8-a-responsabilidade-nao-e-automatizavel">8. A responsabilidade não é automatizável</h2>
+<p>A pergunta central era como uma organização pode delegar autoridade a uma entidade não humana sem delegar indevidamente a própria responsabilidade. A resposta tem seis partes:</p>
+<ol><li><strong>A autonomia amplia a delegação operacional</strong> e, com ela, a necessidade de delimitar onde a ação é legítima.</li><li><strong>Capacidade técnica não equivale a autoridade legítima.</strong> Ser capaz de executar não autoriza a executar.</li><li><strong>Permissões técnicas podem exceder a finalidade da tarefa.</strong> No PocketOS, uma credencial de escopo de conta alcançou produção a partir de uma tarefa de <em>staging</em>, sem que as fontes permitam atribuir culpa a um participante específico.</li><li><strong>Alçada e governabilidade vêm antes da implantação.</strong> A organização não deve conceder alçada maior do que consegue governar.</li><li><strong>Retirar o humano da execução não extingue deveres</strong>; muda a forma da supervisão.</li><li><strong>A imputação jurídica depende dos fatos e do regime.</strong> No Brasil: Código Civil, LGPD, CDC, contrato, legislação setorial ou combinação entre eles. O PL 2.338/2023 ainda não é lei.</li></ol>
+<p>Agentes não devem ser tratados como empregados. Organizações podem usar competência, atribuição, alçada e supervisão para desenhar governança técnica, desde que não importem relações trabalhistas nem confundam credencial com representação. Competência é condição de elegibilidade; a autorização depende de legitimidade, criticidade e governabilidade.</p>
+<p>Uma organização pode delegar tarefas, decisões e autonomia operacional. Não pode presumir que a transferência da execução a um sistema artificial transfira a legitimidade da decisão ou elimine os próprios deveres.</p>
+<h2 id="art-referencias">Referências</h2>
+<p><em>Sistema autor-data (ABNT NBR 10520 e NBR 6023). Documentos online acessados em 21 nov. 2026, salvo indicação.</em></p>
+<h3 id="art-legislacao-brasileira-vigente">Legislação brasileira vigente</h3>
+<p>BRASIL. <strong>Decreto-Lei nº 5.452, de 1º de maio de 1943</strong>. Aprova a Consolidação das Leis do Trabalho. Texto compilado. Brasília, DF: Presidência da República. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm" rel="noopener">https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452compilado.htm</a>. Acesso em: 21 nov. 2026. <em>[Não reconferido; citado apenas pelo art. 62, II.]</em></p>
+<p>BRASIL. <strong>Lei nº 8.078, de 11 de setembro de 1990</strong>. Dispõe sobre a proteção do consumidor e dá outras providências. Texto compilado. Brasília, DF: Presidência da República. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" rel="noopener">https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm</a>. Acesso em: 21 nov. 2026.</p>
+<p>BRASIL. <strong>Lei nº 10.406, de 10 de janeiro de 2002</strong>. Institui o Código Civil. Texto compilado. Brasília, DF: Presidência da República. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm" rel="noopener">https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm</a>. Acesso em: 21 nov. 2026.</p>
+<p>BRASIL. <strong>Lei nº 13.709, de 14 de agosto de 2018</strong>. Lei Geral de Proteção de Dados Pessoais (LGPD). Texto compilado. Brasília, DF: Presidência da República. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm" rel="noopener">https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm</a>. Acesso em: 21 nov. 2026.</p>
+<h3 id="art-proposta-legislativa-brasileira-nao-vigente">Proposta legislativa brasileira (não vigente)</h3>
+<p>CÂMARA DOS DEPUTADOS. <strong>PL 2338/2023</strong>: ficha de tramitação. Brasília, DF, 2026. Disponível em: <a href="https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2487262" rel="noopener">https://www.camara.leg.br/proposicoesWeb/fichadetramitacao?idProposicao=2487262</a>. Acesso em: 21 nov. 2026.</p>
+<p>CONGRESSO NACIONAL. <strong>Projeto de Lei nº 2338, de 2023</strong>: dispõe sobre o uso da Inteligência Artificial. Matéria bicameral. Brasília, DF, 2025. Disponível em: <a href="https://www.congressonacional.leg.br/web/atividade/materias/-/materia/157233" rel="noopener">https://www.congressonacional.leg.br/web/atividade/materias/-/materia/157233</a>. Acesso em: 21 nov. 2026.</p>
+<h3 id="art-uniao-europeia">União Europeia</h3>
+<p>UNIÃO EUROPEIA. <strong>Regulamento (UE) 2024/1689 do Parlamento Europeu e do Conselho, de 13 de junho de 2024</strong>. Cria regras harmonizadas em matéria de inteligência artificial (Regulamento Inteligência Artificial). Jornal Oficial da União Europeia, L, 12 jul. 2024. Disponível em: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener">https://eur-lex.europa.eu/eli/reg/2024/1689/oj</a>. Acesso em: 21 nov. 2026.</p>
+<p>UNIÃO EUROPEIA. <strong>Regulation (EU) 2024/1689 [...] (Artificial Intelligence Act)</strong>: consolidated text 02024R1689-20260727, incorporating Regulation (EU) 2026/1744 of 8 July 2026. EUR-Lex, 2026. Instrumento de documentação sem efeito jurídico. Disponível em: <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02024R1689-20260727" rel="noopener">https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02024R1689-20260727</a>. Acesso em: 21 nov. 2026.</p>
+<h3 id="art-decisoes-casos-e-relatorios-oficiais">Decisões, casos e relatórios oficiais</h3>
+<p>CIVIL RESOLUTION TRIBUNAL (British Columbia). <strong>Moffatt v. Air Canada, 2024 BCCRT 149</strong>. File SC-2023-005609. Tribunal Member: Christopher C. Rivers. Decisão de 14 fev. 2024. Small claims. Disponível em: <a href="https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do" rel="noopener">https://decisions.civilresolutionbc.ca/crt/crtd/en/525448/1/document.do</a>. Acesso em: 21 nov. 2026.</p>
+<p>EEOC — U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION. <strong>iTutorGroup to Pay $365,000 to Settle EEOC Discriminatory Hiring Suit</strong>. Washington, DC, 11 set. 2023. Civil Action No. 1:22-cv-02565. Disponível em: <a href="https://www.eeoc.gov/newsroom/itutorgroup-pay-365000-settle-eeoc-discriminatory-hiring-suit" rel="noopener">https://www.eeoc.gov/newsroom/itutorgroup-pay-365000-settle-eeoc-discriminatory-hiring-suit</a>. Acesso em: 21 nov. 2026.</p>
+<p>ROYAL COMMISSION INTO THE ROBODEBT SCHEME. <strong>Report of the Royal Commission into the Robodebt Scheme</strong>. Canberra, 7 jul. 2023. Disponível em: <a href="https://robodebt.royalcommission.gov.au/publications/report" rel="noopener">https://robodebt.royalcommission.gov.au/publications/report</a>. Acesso em: 21 nov. 2026. <em>[Página indisponível para acesso automatizado; data e recomendações 17.1 e 17.2 conferidas em página oficial do mesmo domínio.]</em></p>
+<h3 id="art-caso-pocketos-fontes-primarias-e-cobertura-independente">Caso PocketOS: fontes primárias e cobertura independente</h3>
+<p>ABC NEWS. 'Rogue' AI agent from Cursor goes haywire, deletes company's entire database. Reportagem de Mason Leib. <strong>ABC News</strong> (publicada em ABC30), 30 abr. 2026. Disponível em: <a href="https://abc30.com/post/rogue-ai-agent-cursor-goes-haywire-deletes-tech-companys-database/19008099/" rel="noopener">https://abc30.com/post/rogue-ai-agent-cursor-goes-haywire-deletes-tech-companys-database/19008099/</a>. Acesso em: 21 nov. 2026.</p>
+<p>ABDELWAHAB, Mahmoud. Your AI wants to nuke your database. Guardrails fix that. <strong>Railway Blog</strong>, 29 abr. 2026. Fonte interessada (fornecedor de infraestrutura envolvido). Disponível em: <a href="https://blog.railway.com/p/your-ai-wants-to-nuke-your-database" rel="noopener">https://blog.railway.com/p/your-ai-wants-to-nuke-your-database</a>. Acesso em: 21 nov. 2026.</p>
+<p>AI INCIDENT DATABASE. <strong>Report 7311</strong>: AI Coding Agent Powered by Claude Opus 4.6 Deletes Production Database in 9 Seconds. Incident 1469. Reproduz reportagem de CyberSecurityNews. 2026. Disponível em: <a href="https://incidentdatabase.ai/reports/7311/" rel="noopener">https://incidentdatabase.ai/reports/7311/</a>. Acesso em: 21 nov. 2026.</p>
+<p>CRANE, Jer. <strong>An AI Agent Just Destroyed Our Production Data</strong>. Cópia pública do relato publicado no X, datada de 26 abr. 2026. Autoria não confirmada de forma independente; fonte interessada. Disponível em: <a href="https://rentry.co/5rme2sea" rel="noopener">https://rentry.co/5rme2sea</a>. Acesso em: 21 nov. 2026.</p>
+<p>TYSON, Mark. Victim of AI agent that deleted company's entire database gets their data back. <strong>Tom's Hardware</strong>, 30 abr. 2026. Disponível em: <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/victim-of-ai-agent-that-deleted-companys-entire-database-gets-their-data-back-cloud-provider-recovers-critical-files-and-broadens-its-48-hour-delayed-delete-policy" rel="noopener">https://www.tomshardware.com/tech-industry/artificial-intelligence/victim-of-ai-agent-that-deleted-companys-entire-database-gets-their-data-back-cloud-provider-recovers-critical-files-and-broadens-its-48-hour-delayed-delete-policy</a>. Acesso em: 21 nov. 2026.</p>
+<h3 id="art-analises-juridicas-secundarias-ai-act">Análises jurídicas secundárias (AI Act)</h3>
+<p>CUATRECASAS. <strong>Digital Omnibus on AI has been published</strong>. 24 jul. 2026. Fonte secundária (escritório de advocacia). Disponível em: <a href="https://www.cuatrecasas.com/en/spain/intellectual-property/art/digital-omnibus-ai-has-been-published" rel="noopener">https://www.cuatrecasas.com/en/spain/intellectual-property/art/digital-omnibus-ai-has-been-published</a>. Acesso em: 21 nov. 2026.</p>
+<p>WHITE &amp; CASE. <strong>EU AI Omnibus enters into force, amending the AI Act</strong>. 2026. Fonte secundária (escritório de advocacia). Disponível em: <a href="https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act" rel="noopener">https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act</a>. Acesso em: 21 nov. 2026.</p>
+<h3 id="art-frameworks-normas-tecnicas-e-documentos-institucionais">Frameworks, normas técnicas e documentos institucionais</h3>
+<p>HU, Vincent C. et al. <strong>Guide to Attribute Based Access Control (ABAC) Definition and Considerations</strong>. Gaithersburg: National Institute of Standards and Technology, jan. 2014 (atualizações até 2 ago. 2019). NIST SP 800-162. DOI: 10.6028/NIST.SP.800-162. Disponível em: <a href="https://csrc.nist.gov/publications/detail/sp/800-162/final" rel="noopener">https://csrc.nist.gov/publications/detail/sp/800-162/final</a>. Acesso em: 21 nov. 2026.</p>
+<p>ISO — INTERNATIONAL ORGANIZATION FOR STANDARDIZATION. <strong>ISO/IEC 42001:2023</strong>: Information technology — Artificial intelligence — Management system. 1. ed. Geneva, dez. 2023. Disponível em: <a href="https://www.iso.org/standard/81230.html" rel="noopener">https://www.iso.org/standard/81230.html</a>. Acesso em: 21 nov. 2026.</p>
+<p>NIST — NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY. <strong>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</strong>. NIST AI 100-1. Gaithersburg: U.S. Department of Commerce, 26 jan. 2023. DOI: 10.6028/NIST.AI.100-1. Disponível em: <a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="noopener">https://www.nist.gov/itl/ai-risk-management-framework</a>. Acesso em: 21 nov. 2026.</p>
+<p>OCDE — ORGANIZAÇÃO PARA A COOPERAÇÃO E DESENVOLVIMENTO ECONÔMICO. <strong>Recommendation of the Council on Artificial Intelligence</strong>. OECD/LEGAL/0449. Adotada em 2019; revisada em 3 maio 2024. Disponível em: <a href="https://legalinstruments.oecd.org/public/doc/648/648.en.pdf" rel="noopener">https://legalinstruments.oecd.org/public/doc/648/648.en.pdf</a>. Acesso em: 21 nov. 2026.</p>
+<h3 id="art-trabalhos-academicos-e-de-pesquisa">Trabalhos acadêmicos e de pesquisa</h3>
+<p>FENG, Kevin; McDONALD, David W.; ZHANG, Amy X. <strong>Levels of Autonomy for AI Agents</strong>. New York: Knight First Amendment Institute at Columbia University, 28 jul. 2025. Essay 25-15. Disponível em: <a href="https://knightcolumbia.org/content/levels-of-autonomy-for-ai-agents-1" rel="noopener">https://knightcolumbia.org/content/levels-of-autonomy-for-ai-agents-1</a>. Acesso em: 21 nov. 2026.</p>
+<p>PARASURAMAN, Raja; MANZEY, Dietrich H. Complacency and bias in human use of automation: an attentional integration. <strong>Human Factors</strong>, v. 52, n. 3, p. 381-410, jun. 2010. DOI: 10.1177/0018720810376055. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/21077562/" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/21077562/</a>. Acesso em: 21 nov. 2026.</p>
+<p>PARASURAMAN, Raja; SHERIDAN, Thomas B.; WICKENS, Christopher D. A model for types and levels of human interaction with automation. <strong>IEEE Transactions on Systems, Man, and Cybernetics – Part A: Systems and Humans</strong>, v. 30, n. 3, p. 286-297, maio 2000. DOI: 10.1109/3468.844354. Disponível em: <a href="https://doi.org/10.1109/3468.844354" rel="noopener">https://doi.org/10.1109/3468.844354</a>. Acesso em: 21 nov. 2026.</p>
+<p>SALTZER, Jerome H.; SCHROEDER, Michael D. The protection of information in computer systems. <strong>Proceedings of the IEEE</strong>, v. 63, n. 9, p. 1278-1308, set. 1975. Disponível em: <a href="https://web.mit.edu/Saltzer/www/publications/protection/" rel="noopener">https://web.mit.edu/Saltzer/www/publications/protection/</a>. Acesso em: 21 nov. 2026.</p>
+
+      </div>
+    </article>
+
+  <!-- CONTINUACAO:START --><nav class="cont" aria-labelledby="cont-label" style="max-width:72rem;margin:3rem auto;padding:0 1.25rem;text-align:left"><p id="cont-label" style="margin:0 0 .5rem;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Se este tema interessa a você</p><ul style="margin:0;padding-left:1.1rem;display:grid;gap:.45rem;line-height:1.6"><li><a href="./knowledge-os-presentation.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Knowledge OS Enterprise</a> <span style="display:block;font-size:.88rem">Também em Engenharia agêntica e Gestão e estratégia.</span></li><li><a href="./digital-workplace-agentico.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Digital Workplace agêntico</a> <span style="display:block;font-size:.88rem">Também em Engenharia agêntica e Gestão e estratégia.</span></li></ul></nav><!-- CONTINUACAO:END -->
+  </main>
+
+  <!-- AEO-BODY:START — gerado por scripts/seo/build-aeo.mjs -->
+<section class="aeo" aria-label="Resumo e perguntas frequentes">
+  <div class="aeo-tldr">
+    <p class="aeo-eyebrow">Em síntese</p>
+    <h2 class="aeo-tldr__title">A quem a empresa delega quando delega à IA</h2>
+    <p class="aeo-tldr__lede">Uma organização pode delegar tarefas e autonomia operacional a um agente de IA, mas <strong>não pode presumir que a delegação técnica transfira autoridade legítima ou responsabilidade</strong>. Capacidade técnica não é autoridade: ser capaz de executar não autoriza a executar.</p>
+    <ul class="aeo-tldr__points">
+      <li><strong>O caso PocketOS (2026)</strong> — numa tarefa de rotina no ambiente de teste, um agente achou uma credencial ampla esquecida e apagou o banco de produção; os dados foram recuperados depois.</li>
+      <li><strong>Cinco dimensões, sem média</strong> — competência, autonomia, alçada, criticidade e governabilidade; um resultado excelente em uma não compensa a falha em outra.</li>
+      <li><strong>Alçada não maior que a governabilidade</strong> — a organização não deve conceder alçada maior do que consegue observar, interromper e reverter.</li>
+      <li><strong>A máquina não responde</strong> — a imputação depende dos fatos e do regime; no Brasil, Código Civil, LGPD e CDC, e o PL 2.338/2023 ainda não é lei.</li>
+    </ul>
+    <p class="aeo-tldr__foot">Há um <a href="/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de">vídeo sobre este artigo</a> no canal.</p>
+  </div>
+  <div class="aeo-faq">
+    <p class="aeo-eyebrow">Perguntas frequentes</p>
+    <h2 class="aeo-faq__title">Perguntas frequentes</h2>
+    <details class="aeo-faq__item" open>
+      <summary class="aeo-faq__q">O que aconteceu no caso PocketOS?</summary>
+      <div class="aeo-faq__a"><p>Em 24 de abril de 2026, um agente de programação que executava uma tarefa de rotina no ambiente de staging excluiu, com um token de escopo de conta encontrado na máquina do usuário, o volume que continha o banco de dados de produção da PocketOS. Os backups de nível de volume estavam no mesmo volume. A Railway informou depois que recuperou os dados e passou a aplicar exclusão adiada de 48 horas.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Qual é a diferença entre competência e autoridade?</summary>
+      <div class="aeo-faq__a"><p>Competência é desempenho demonstrado no contexto, com limites conhecidos. Autoridade é o poder institucional ou jurídico para decidir, aprovar, representar ou produzir um efeito. Competência é condição de elegibilidade, não autorização automática.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quais são as cinco dimensões da matriz?</summary>
+      <div class="aeo-faq__a"><p>Competência operacional, autonomia operacional, alçada e autoridade, criticidade e impacto, e governabilidade. A matriz é não compensatória e está sujeita a duas condições: legitimidade da delegação e capacidade de governança. É uma proposta do artigo, sem validação empírica.</p></div>
+    </details>
+    <details class="aeo-faq__item">
+      <summary class="aeo-faq__q">Quem responde quando um agente de IA causa dano?</summary>
+      <div class="aeo-faq__a"><p>O sistema não responde por si mesmo. A responsabilidade pode envolver camadas institucional, arquitetural, de implementação, operacional e de fornecedores, e depende do regime aplicável, da conduta, do dano e do nexo causal. No Brasil não há regime específico para agentes de IA; o PL 2.338/2023 continua em tramitação.</p></div>
+    </details>
+  </div>
+</section>
+<!-- AEO-BODY:END -->
+
+  <footer class="dl-footer">
+    <div class="dl-wrap">
+      <p>© 2026 Maurício Yokoyama Issei. Texto original publicado neste site; a versão integral também está em <a href="/a-quem-a-empresa-delega.md">formato Markdown</a>. As obras externas citadas são propriedade de seus autores e editores, referenciadas para fins educacionais e de rastreabilidade, sem vínculo ou endosso.</p>
+      <p><a href="./catalogo.html">Conteúdos</a> · <a href="/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de">Vídeo sobre este artigo</a> · <a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a></p>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/a-quem-a-empresa-delega.js"></script>
+  <script type="module" src="./js/cookie-consent.js"></script>
+</body>
+
+</html>

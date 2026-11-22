@@ -11,6 +11,7 @@ Gestão, estratégia e carreira: o que funciona nas empresas e o que muda com a 
 - [Operação Capital Cognitivo](https://mauricio.issei.com.br/operacao-capital-cognitivo.html) — Experimento · Simulador. Simulador executivo de FinOps de IA: investigue a fatura oculta e deduza o framework Useful Intelligence per Dollar (UI/$) defendendo decisões perante um Conselho dinâmico.
 - [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation.html) — Proposta · Apresentação. O sistema de conhecimento que dá rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle.
 - [Digital Workplace agêntico](https://mauricio.issei.com.br/digital-workplace-agentico.html) — Estudo · Estudo técnico. Como um portal corporativo evolui de uma lista de links para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap.
+- [Delegar à IA](https://mauricio.issei.com.br/a-quem-a-empresa-delega.html) — Estudo · Artigo. Autonomia, autoridade e responsabilidade na era dos agentes de IA: o caso PocketOS, as cinco perguntas antes de ligar um agente e por que a empresa não automatiza a responsabilidade.
 - [Service Operations 2.0](https://mauricio.issei.com.br/service-operations-2-0.html) — Proposta · Apresentação. Visão executiva do Protocolo Manchester aplicado à TI, para resiliência sistêmica e proteção do faturamento comercial.
 
 ## Vídeos

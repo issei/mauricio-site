@@ -94,6 +94,8 @@ youtube:
   coletado_em: 2026-11-21T22:06:49Z
 ---
 
+Este vídeo é sobre o artigo [A quem a empresa delega quando delega à IA?](https://mauricio.issei.com.br/a-quem-a-empresa-delega), que traz o caso completo, a matriz de cinco dimensões e as referências [00:04].
+
 ## Você daria a chave da empresa para quem não conhece os limites?
 
 A IA já sabe fazer muita coisa. Mas **saber fazer não é o mesmo que ter permissão para fazer** [01:49]. Este é um guia de sobrevivência prático para qualquer empresa que queira colocar a IA para trabalhar no dia a dia [00:24].
