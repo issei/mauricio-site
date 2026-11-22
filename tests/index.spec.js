@@ -13,6 +13,7 @@ const cv = JSON.parse(readFileSync(new URL('../public/cv.json', import.meta.url)
 const eco = YAML.parse(readFileSync(new URL('../specs/ecosystem.nav.yaml', import.meta.url), 'utf8'));
 const temas = YAML.parse(readFileSync(new URL('../content/temas.yml', import.meta.url), 'utf8'));
 const resultados = cv.Projetos.flatMap((p) => p.Resultados);
+const ISO_DATETIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/;
 
 test.describe('Home editorial (F3)', () => {
   test('carrega, título/SEO e um único h1', async ({ page }) => {
@@ -102,7 +103,10 @@ test.describe('Home editorial (F3)', () => {
     const person = graph.find((n) => n['@type'] === 'Person');
     expect(person.knowsAbout).toEqual(Object.values(cv.Habilidades).flat());
     expect(person.knowsLanguage).toBeUndefined();
-    expect(graph.some((n) => [].concat(n['@type']).includes('ProfilePage'))).toBe(true);
+    const profile = graph.find((n) => [].concat(n['@type']).includes('ProfilePage'));
+    expect(profile).toBeTruthy();
+    // Search Console: dateCreated/dateModified da ProfilePage precisam ser DateTime com fuso.
+    for (const k of ['dateCreated', 'dateModified']) expect(profile[k]).toMatch(ISO_DATETIME);
     const list = graph.find((n) => n['@type'] === 'ItemList');
     expect(list.itemListElement).toHaveLength(cv.Certificados.length);
   });
@@ -179,7 +183,10 @@ test.describe('Carreira — critérios §12 do portfólio', () => {
     const person = graph.find((n) => n['@type'] === 'Person');
     expect(person.knowsAbout).toEqual(Object.values(cv.Habilidades).flat());
     expect(person.knowsLanguage).toBeUndefined(); // pendência 12.4: não inventar idiomas
-    expect(graph.some((n) => [].concat(n['@type']).includes('ProfilePage'))).toBe(true);
+    const profile = graph.find((n) => [].concat(n['@type']).includes('ProfilePage'));
+    expect(profile).toBeTruthy();
+    // Search Console: dateCreated/dateModified da ProfilePage precisam ser DateTime com fuso.
+    for (const k of ['dateCreated', 'dateModified']) expect(profile[k]).toMatch(ISO_DATETIME);
     const list = graph.find((n) => n['@type'] === 'ItemList');
     expect(list.itemListElement).toHaveLength(cv.Certificados.length);
     expect(list.itemListElement.filter((i) => i.item.url)).toHaveLength(cv.Certificados.filter((c) => c.Verificacao).length);

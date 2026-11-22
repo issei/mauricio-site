@@ -45,6 +45,13 @@ function rich(s = '') {
 // ----------------------------------------------------------------------------
 // JSON-LD @graph
 // ----------------------------------------------------------------------------
+// "AAAA-MM-DD" → "AAAA-MM-DDTHH:MM:SS-03:00" (ISO 8601 com fuso de Brasília).
+// Valor que já traz hora passa sem mudança.
+export function profileDateTime(d, hora) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+  return `${d}T${hora}-03:00`;
+}
+
 export function buildGraph(p) {
   const url = pageUrl(p.slug);
   const img = `${SITE.origin}/og-${p.slug}.png`;
@@ -95,6 +102,12 @@ export function buildGraph(p) {
     graph.push(article);
   } else if (p.type === 'ProfilePage') {
     webpage.mainEntity = { '@id': PERSON['@id'] };
+    // O Google valida dateCreated/dateModified da ProfilePage como DateTime:
+    // data sem hora ("2026-09-22") gera "valor de datetime não é válido" no
+    // Search Console. Mesma hora e fuso das metas article:*_time.
+    webpage.dateCreated = profileDateTime(p.datePublished, '08:00:00');
+    webpage.datePublished = webpage.dateCreated;
+    webpage.dateModified = profileDateTime(p.dateModified, '10:00:00');
     // Aqui o Person é a entidade principal: troca o nó enxuto pelo completo
     // (mesmo @id), com formação e diploma verificável.
     graph[graph.indexOf(PERSON)] = PERSON_PROFILE;
