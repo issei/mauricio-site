@@ -2,11 +2,11 @@
 
 Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha um artigo curto, com links para as fontes e o conteúdo original.
 
-69 de 185 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
+70 de 185 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
 
 ## Em destaque
 
-- [A Arte de Começar Sem Estar Pronto | Como a Ação Gera Confiança](https://mauricio.issei.com.br/videos/a-arte-de-comecar-sem-estar-pronto-como-a-acao-gera) — 19 de novembro de 2026
+- [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 
 ## Engenharia agêntica
 

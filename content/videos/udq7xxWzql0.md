@@ -1,11 +1,13 @@
 ---
 id: udq7xxWzql0
 slug: a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de
-status: rascunho
+status: publicado
 temas:
   - engenharia-agentica
   - gestao-e-estrategia
 resumo: "O vídeo parte do caso PocketOS, em que um agente de IA apagou o banco de dados principal da empresa em 9 segundos durante uma tarefa de rotina, para separar o que a IA sabe fazer do que ela tem permissão para fazer. Propõe cinco perguntas antes de ligar um agente aos sistemas da empresa: competência, autonomia, alçada, criticidade e governabilidade. E conclui que a máquina não responde pelos danos: quem responde é a organização."
+revisado_por: Maurício Yokoyama Issei
+revisado_em: 2026-11-22
 youtube:
   titulo: A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos
   publicado_em: 2026-11-21
