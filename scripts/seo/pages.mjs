@@ -5,9 +5,19 @@
 // citation[], tldr{heading,lede,points[],foot}, faq[{q,a}], terms[{slug,name,def}],
 // mdSections[{h,body}], og{eyebrow,title('{x}'=gradiente),subtitle,thesis,chips[]},
 // hasMd, ogType, ogTitle, ogDescription, video, extraGraph[] (nós JSON-LD prontos).
+import { readFileSync } from 'node:fs';
 import { CERTIFICATIONS } from './identity.mjs';
 import { catalogoMdSections } from '../catalogo/dados.mjs';
 
+/** Seções `##` de content/artigos/<slug>.md (do Resumo em diante), para o gêmeo .md. */
+function artigoMdSections(slug) {
+  const md = readFileSync(new URL(`../../content/artigos/${slug}.md`, import.meta.url), 'utf8').replace(/\r\n/g, '\n');
+  const corpo = md.slice(md.indexOf('\n## Resumo') + 1);
+  return corpo.split(/\n(?=## )/).map((bloco) => {
+    const [h, ...resto] = bloco.split('\n');
+    return { h: h.replace(/^##\s+/, ''), body: resto.join('\n').replace(/\n---\s*$/m, '').trim() };
+  });
+}
 export const PAGES = [
   // ===================================================================== TIER S
   {
@@ -474,6 +484,48 @@ export const PAGES = [
       thesis: 'Refinar além do ponto não compra decisão melhor: compra convicção.',
       chips: [{ k: '6', label: 'Incertezas' }, { k: 'S₀–S₅', label: 'Estados' }, { k: 'STOP', label: 'Regra de parada' }, { k: 'λ', label: 'Hiper-resolução' }],
     },
+  },
+  {
+    slug: 'a-quem-a-empresa-delega', type: 'ScholarlyArticle', tier: 'S', hasMd: true,
+    title: 'A quem a empresa delega quando delega à IA?',
+    headline: 'A quem a empresa delega quando delega à IA? Autonomia, autoridade e responsabilidade organizacional na era dos sistemas agênticos',
+    description: 'Capacidade não é autoridade: o caso PocketOS, as 5 perguntas antes de ligar um agente de IA e por que a empresa não automatiza a responsabilidade.',
+    datePublished: '2026-11-22', dateModified: '2026-11-22',
+    section: 'Governança de IA · Agentes de IA',
+    video: {
+      name: 'A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos',
+      description: 'O caso PocketOS, a diferença entre capacidade técnica e autoridade institucional e as cinco perguntas antes de ligar um agente de IA aos sistemas da empresa.',
+      thumb: 'https://i.ytimg.com/vi/udq7xxWzql0/maxresdefault.jpg',
+      uploadDate: '2026-11-21',
+      embed: 'https://www.youtube-nocookie.com/embed/udq7xxWzql0',
+      url: 'https://www.youtube.com/watch?v=udq7xxWzql0',
+    },
+    tags: ['Governança de IA', 'Sistemas Agênticos', 'Delegação de Autoridade', 'Responsabilidade Organizacional', 'Alçadas'],
+    keywords: ['sistemas agênticos', 'agentes de IA', 'delegação de autoridade', 'governança de IA', 'responsabilidade organizacional', 'alçada', 'capacidade não é autoridade', 'PocketOS', 'menor privilégio', 'governabilidade', 'matriz não compensatória', 'LGPD', 'AI Act', 'PL 2.338/2023'],
+    about: [
+      { name: 'Governança de IA' }, { name: 'Sistemas agênticos' },
+      { name: 'Delegação de autoridade' }, { name: 'Responsabilidade organizacional' },
+      { name: 'EU AI Act', sameAs: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+    ],
+    audience: 'Gestores, Donos de Pequenas Empresas, Líderes de Tecnologia, Profissionais de Governança e Compliance',
+    tldr: {
+      heading: 'A quem a empresa delega quando delega à IA',
+      lede: 'Uma organização pode delegar tarefas e autonomia operacional a um agente de IA, mas **não pode presumir que a delegação técnica transfira autoridade legítima ou responsabilidade**. Capacidade técnica não é autoridade: ser capaz de executar não autoriza a executar.',
+      points: [
+        '**O caso PocketOS (2026)** — numa tarefa de rotina no ambiente de teste, um agente achou uma credencial ampla esquecida e apagou o banco de produção; os dados foram recuperados depois.',
+        '**Cinco dimensões, sem média** — competência, autonomia, alçada, criticidade e governabilidade; um resultado excelente em uma não compensa a falha em outra.',
+        '**Alçada não maior que a governabilidade** — a organização não deve conceder alçada maior do que consegue observar, interromper e reverter.',
+        '**A máquina não responde** — a imputação depende dos fatos e do regime; no Brasil, Código Civil, LGPD e CDC, e o PL 2.338/2023 ainda não é lei.',
+      ],
+      foot: 'Há um [vídeo sobre este artigo](/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) no canal.',
+    },
+    faq: [
+      { q: 'O que aconteceu no caso PocketOS?', a: 'Em 24 de abril de 2026, um agente de programação que executava uma tarefa de rotina no ambiente de staging excluiu, com um token de escopo de conta encontrado na máquina do usuário, o volume que continha o banco de dados de produção da PocketOS. Os backups de nível de volume estavam no mesmo volume. A Railway informou depois que recuperou os dados e passou a aplicar exclusão adiada de 48 horas.' },
+      { q: 'Qual é a diferença entre competência e autoridade?', a: 'Competência é desempenho demonstrado no contexto, com limites conhecidos. Autoridade é o poder institucional ou jurídico para decidir, aprovar, representar ou produzir um efeito. Competência é condição de elegibilidade, não autorização automática.' },
+      { q: 'Quais são as cinco dimensões da matriz?', a: 'Competência operacional, autonomia operacional, alçada e autoridade, criticidade e impacto, e governabilidade. A matriz é não compensatória e está sujeita a duas condições: legitimidade da delegação e capacidade de governança. É uma proposta do artigo, sem validação empírica.' },
+      { q: 'Quem responde quando um agente de IA causa dano?', a: 'O sistema não responde por si mesmo. A responsabilidade pode envolver camadas institucional, arquitetural, de implementação, operacional e de fornecedores, e depende do regime aplicável, da conduta, do dano e do nexo causal. No Brasil não há regime específico para agentes de IA; o PL 2.338/2023 continua em tramitação.' },
+    ],
+    mdSections: artigoMdSections('a-quem-a-empresa-delega'),
   },
 
   {

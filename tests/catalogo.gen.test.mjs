@@ -29,11 +29,11 @@ test('o catalogo.md é igual à saída do gerador', () => {
 const cartoes = [...bloco.matchAll(/<a href="([^"]+)" class="card-glass[^"]*">([\s\S]*?)<\/a>/g)]
   .map((m) => ({ href: m[1], body: m[2] }));
 
-test('CA-F1-02 · 28 cartões nos temas e 5 na carreira', () => {
+test('CA-F1-02 · 29 cartões nos temas e 5 na carreira', () => {
   const nosTemas = bloco.slice(0, bloco.indexOf('id="trajetoria"'));
   const nTemas = [...nosTemas.matchAll(/class="card-glass/g)].length;
-  assert.equal(nTemas, 28);
-  assert.equal(cartoes.length, 33);
+  assert.equal(nTemas, 29);
+  assert.equal(cartoes.length, 34);
   for (const href of ['./curriculo.html', './life.html', './life3d.html', './terminal-evolutivo.html', '/videos.html']) {
     assert.ok(cartoes.some((c) => c.href === href), `falta ${href} na trajetória`);
   }

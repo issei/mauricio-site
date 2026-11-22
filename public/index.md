@@ -18,8 +18,8 @@ Carreira completa: https://mauricio.issei.com.br/curriculo
 
 O que publico, por assunto. Cada tema leva aos seus conteúdos.
 
-- [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica) — 15 conteúdos
-- [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia) — 8 conteúdos
+- [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica) — 16 conteúdos
+- [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia) — 9 conteúdos
 - [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento) — 6 conteúdos
 - [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas) — 5 conteúdos
 - [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade) — 3 conteúdos

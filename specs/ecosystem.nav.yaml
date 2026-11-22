@@ -32,10 +32,14 @@
 # =============================================================================
 
 meta:
-  version: "2.0.0"           # semver; bump obrigatório a cada alteração de grafo
+  version: "2.1.0"           # semver; bump obrigatório a cada alteração de grafo
   canonical_base: "./"        # decisão D-05 (revisada no HITL): URL relativa atual
   author: "Maurício Yokoyama Issei"
-  updated: "2026-11-10"
+  updated: "2026-11-22"
+  # 2.1.0 — entra `a-quem-a-empresa-delega` (A quem a empresa delega quando delega à
+  #         IA?) em p2: artigo do autor com camada didática; o vídeo udq7xxWzql0 é
+  #         sobre ele. Pedido pelo autor em 2026-11-22 ("Esse artigo quero que entre
+  #         em conteúdos"). Spec: docs/specs/pages/a-quem-a-empresa-delega/SPEC.md.
   # 2.0.0 — reestruturação F1 (PROPOSTA-REESTRUTURACAO.md, decisões D3, D4, D5 e D7
   #         do autor em 2026-11-10; classificação do SDD-F1-F1b, Anexo A, confirmada).
   #         Sai o pilar p5: socialselling vai para p3 e boutique-empresarial-showcase
@@ -158,7 +162,7 @@ pillars:
     summary: "Da intenção à execução agêntica confiável."
     resumo: "Da intenção à execução agêntica confiável — a disciplina-ponte que transforma mentalidade em método."
     conector: "herda o pensamento sistêmico"
-    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, develop-engineering, operacao-capital-cognitivo, agent-ready, case-agents, knowledge-os-presentation, digital-workplace-agentico, acessibilidade, especificacao-conversacional, boutique-empresarial-showcase]
+    nodes: [apresentacao, engenharia-confianca, engenharia-agentes-ia, develop-engineering, operacao-capital-cognitivo, agent-ready, case-agents, knowledge-os-presentation, digital-workplace-agentico, a-quem-a-empresa-delega, acessibilidade, especificacao-conversacional, boutique-empresarial-showcase]
 
   - id: p3
     order: 3
@@ -372,6 +376,17 @@ nodes:
     temas: [engenharia-agentica, gestao-e-estrategia]
     assunto: "Arquitetura de Plataformas"
     descricao: "Como um portal corporativo evolui de uma lista de links para uma plataforma que resolve intenções: cinco estágios de maturidade, arquitetura em camadas, AG-UI, identidade delegada, conhecimento governado e roadmap."
+  a-quem-a-empresa-delega:
+    file: "a-quem-a-empresa-delega.html"
+    title: "A quem a empresa delega quando delega à IA?"
+    label: "Delegar à IA"
+    blurb: "Capacidade não é autoridade."
+    pillar: p2
+    kind: "Artigo"
+    natureza: estudo
+    temas: [engenharia-agentica, gestao-e-estrategia]
+    assunto: "Governança de IA"
+    descricao: "Autonomia, autoridade e responsabilidade na era dos agentes de IA: o caso PocketOS, as cinco perguntas antes de ligar um agente e por que a empresa não automatiza a responsabilidade."
   acessibilidade:
     file: "acessibilidade.html"
     title: "Acessibilidade como requisito de engenharia"
