@@ -172,6 +172,13 @@ test('página de assunto e índice listam os vídeos, do mais recente ao mais an
   }
 });
 
+test('página de assunto não declara VideoObject: é página de categoria, não de exibição', () => {
+  // Search Console, 2026-11-22: "O vídeo não está em uma página de exibição" nos /temas.
+  const tema = build(fixture())['src/temas/engenharia-agentica.html'];
+  assert.doesNotMatch(tema, /"@type":"VideoObject"/);
+  assert.match(tema, /"@type":"WebPage","name":"[^"]+","url":"https:\/\/mauricio\.issei\.com\.br\/videos\//);
+});
+
 test('cartões usam a miniatura de 320 px com carga preguiçosa; só o destaque usa a maior, com prioridade', () => {
   const out = build(fixture());
   const imgs = out['src/videos.html'].match(/<img [^>]*>/g) ?? [];
