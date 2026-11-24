@@ -522,8 +522,8 @@ Os quadros do canal podem substituir as fotos 4 e 8 se faltar tempo.
   projetos e CTA 04 → rodapé.
 - 2.2.2: nenhum movimento automático (tudo depende da rolagem da pessoa).
 - 2.3.3: movimento reduzido desliga tudo.
-- 2.4.11: o `sticky` nunca cobre o elemento em foco (teste de foco já existe:
-  `focus-visible`; incluir a nova home).
+- 2.4.11: o `sticky` nunca cobre o elemento em foco (incluir a nova home na
+  suíte de foco de `tests/a11y/widgets.spec.js`).
 - Catraca `tests/a11y/baseline.json` não sobe.
 
 ### 9.3 Riscos
