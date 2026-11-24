@@ -21,7 +21,7 @@ A nova `index` tem **quatro sessões** que formam um só percurso visual:
 
 | # | Sessão | Papel | Destino principal |
 | :-- | :-- | :-- | :-- |
-| 01 | Apresentação | Quem sou, em 3 segundos; sequência curta de fotos reais das oito dimensões | — (âncora para 02) |
+| 01 | Apresentação | Quem sou, em 3 segundos (retrato estático); depois 5 cenas de fotos reais, cada uma com duas das oito dimensões (cenas 01–06 do storyboard) | — (âncora para 02) |
 | 02 | Minha história | Uma foto central e uma frase | `/curriculo` (Carreira) |
 | 03 | Minhas ideias | Registros reais de estudo, vídeo e escrita | `/catalogo` (Conteúdos) e `/videos` |
 | 04 | Meus projetos | Quatro projetos reais, da concepção à operação | ver D-H3 |
@@ -36,6 +36,13 @@ A técnica é **só CSS** (scroll-driven animations, `position: sticky`,
 `clip-path`, `transform`) e as View Transitions que o site já usa. Nenhuma
 dependência nova. Sem suporte ou com movimento reduzido, a página é uma
 composição editorial estática completa.
+
+A ordem das cenas, os gestos e a narração seguem o
+[storyboard](storyboard/storyboard-home.md), revisão 2: **9 cenas em 4
+sessões** (cenas 01–06 na sessão 01; cena 07 na 02; cena 08 na 03; cena 09
+na 04). Toda a narração usa a mesma voz, em primeira pessoa. O tema
+(claro ou "Escuro Editorial") é decidido depois do protótipo estático da H-1
+(§4.1, D-H1).
 
 ---
 
@@ -94,9 +101,10 @@ retrato e capturas de tela. O §8 traz a lista de fotos a fazer (D-H2).
 
 | Regra atual | Pedido | Tratamento proposto |
 | :-- | :-- | :-- |
-| `AGENTS.md`: "Pure Dark Mode. Never use light backgrounds" | Base clara (papel, off-white) | **Exceção registrada** só para `src/index.html` + `src/home.css`, namespace `hm-`, em `ADR-pf-002` (mesmo modelo das exceções `ap-` e `pf-`). Ver D-H1 |
+| `AGENTS.md`: "Pure Dark Mode. Never use light backgrounds" | Base clara (papel, off-white) | **Exceção registrada** só para `src/index.html` + `src/home.css`, namespace `hm-`, em `ADR-pf-002` (mesmo modelo das exceções `ap-` e `pf-`). Antes da ADR, a base clara é comparada com a variante **"Escuro Editorial"** (§4.1) no protótipo estático da H-1. Ver D-H1 |
+| Paleta Dark Tech (`#0d1117`, acentos `#007bff`/`#8a2be2`) | Paleta editorial (papel, tinta, vermelho *shu*) | As duas variantes usam paleta própria, fora da Dark Tech. A "Escuro Editorial" cumpre "nunca fundo claro", mas **também precisa** da `ADR-pf-002`, como a exceção `ap-`. O que muda entre as variantes é só o texto da exceção |
 | "Inter para tudo" | "Tipografia editorial, elegante" | Inter continua no texto; uma família serifada só nos títulos de sessão. Ver D-H4 |
-| Cabeçalho comum escuro | Página clara | Variante clara do cabeçalho só na home, por custom properties. Ver D-H5 |
+| Cabeçalho comum escuro | Página clara | Variante clara do cabeçalho só na home, por custom properties. Na "Escuro Editorial", o cabeçalho comum troca só as cores para os tokens `--hm-*`. Ver D-H5 |
 | Plano da trajetória (PR #231): partículas, grafo, vídeo de IA | "Não usar partículas, redes, efeitos tecnológicos" | A nova direção vale para a home. A página `/trajetoria` fica em pausa até o Issei dizer se a direção dela muda também. Ver D-H6 |
 
 ---
@@ -126,53 +134,66 @@ Regras de composição:
 
 Convenção: **vh** de rolagem por sessão. "Quadro" = o que está na tela.
 
-### 3.1 Sessão 01 — Apresentação (220 vh no computador, 160 vh no celular)
+### 3.1 Sessão 01 — Apresentação (cenas 01–06; referência 300–360 vh no computador, a calibrar na H-2)
 
-**Primeira pintura (0 s, sem rolar):** sem esperar nada, a tela mostra:
+A sessão 01 tem **seis cenas** do storyboard: o retrato estático (cena 01) e
+cinco cenas com duas dimensões cada (cenas 02–06). Não há cena de "três
+caminhos" no fim da sessão: ela repetia o menu da cena 01 e criava um falso
+final (storyboard §9.1). As oito dimensões ficam agrupadas em pares. Oito cenas de
+uma dimensão cada viravam uma lista de slogans (storyboard §9).
+
+**Primeira pintura (cena 01, 0 s, sem rolar):** sem esperar nada, a tela mostra:
 
 ```
 ┌───────────────────────────────────────────────────────────┐
-│ [cabeçalho comum, variante clara]                         │
+│ [cabeçalho comum, variante do tema]                       │
 │                                                           │
 │   01                                      ┌────────────┐  │
 │   ─ (traço vermelho)                      │            │  │
-│                                           │  foto 1    │  │
-│   Maurício Yokoyama Issei   ← h1, vt-nome │  "pensar"  │  │
-│                                           │            │  │
-│   Pensar profundamente.                   └────────────┘  │
-│   Construir com propósito.                  Pensar        │
+│                                           │  retrato   │  │
+│   Maurício Yokoyama Issei   ← h1, vt-nome │  real 4:5  │  │
+│                                           │  (M1)      │  │
+│   Pensar profundamente.                   │            │  │
+│   Construir com propósito.                └────────────┘  │
 │                                                           │
 │   Tecnologia, engenharia e conhecimento em prática.       │
+│   Há mais de vinte anos trabalho na distância entre       │
+│   o que foi desenhado e o que roda em produção.           │
 │                                                           │
 │   Minha história · Minhas ideias · Meus projetos  ↓       │
 └───────────────────────────────────────────────────────────┘
 ```
 
 O visitante entende quem é a pessoa e do que é o site sem rolar (critério 1).
-Os três caminhos já aparecem como links de texto (critério 5).
+Os três caminhos já aparecem como links de texto (critério 5). A cena 01 é
+estática: nenhuma informação dela depende de animação.
 
-**Ao rolar (palco fixo por `position: sticky`):** a moldura passa pelas oito
-dimensões, uma foto por dimensão. O texto do título fica parado.
+**Ao rolar (palco fixo por `position: sticky`):** a moldura M1 recebe as cenas
+02–06. O texto da cena 01 reduz e fica parado no alto da coluna de texto
+(número 01 e nome). Cada cena tem uma frase de narração na área de papel.
 
-| Faixa | Foto (D-H2) | "Câmera" | Legenda na margem |
-| :-- | :-- | :-- | :-- |
-| 0–12 % | Mãos sobre caderno com anotações | entra por `clip-path` de baixo para cima | Pensar |
-| 12–24 % | Livros e tela de curso | *push-in* lento (escala 1 → 1,06) | Estudar |
-| 24–36 % | Quadro branco com diagrama | *pan* lateral pelo `object-position` | Projetar |
-| 36–48 % | Tela com código, mãos no teclado | corte por cortina vertical | Desenvolver |
-| 48–60 % | Reunião, Issei de costas ou de perfil | *pull-out* (1,06 → 1) | Liderar |
-| 60–72 % | Painel de testes / revisão | cortina horizontal | Validar |
-| 72–84 % | Monitor de operação à noite | *push-in* | Sustentar |
-| 84–100 % | Gravação do canal (câmera, microfone) | a moldura cresce e se desloca para a esquerda | Ensinar |
+| Faixa | Cena | Dimensões | Imagem (§8) | "Câmera" | Narração (storyboard §6) |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| 0–12 % | 01 O rosto | — | Retrato 4:5 | parada; ao sair, o retrato reduz para 60 % e desliza para a direita | (texto da primeira pintura) |
+| 12–30 % | 02 O caderno | pensar · estudar | Mãos, caderno e livro aberto | entra por cortina de baixo para cima; *push-in* 1 → 1,06 | Quase tudo começa no papel. Antes do código, entender o problema. Muitas vezes, estudar o que ainda não sei. |
+| 30–48 % | 03 Do quadro ao teclado | projetar · construir | A: quadro branco; B: mãos no teclado, sobreposta | dissolve do esboço para o diagrama; *pan* em A; B desliza sobre A; *pull-out* no fim | Desenho para que outra pessoa consiga operar. O diagrama só vale quando vira sistema. |
+| 48–64 % | 04 A conversa | liderar · colaborar | Conversa de pé, Issei ouvindo | *pull-out* 1,06 → 1 | Nada importante foi feito por uma pessoa só. Liderar é deixar o problema claro e abrir espaço para quem resolve. |
+| 64–82 % | 05 Dia e noite | validar · sustentar | Esquerda (dia, menor): telas de teste; direita (noite, maior): monitor de operação | cortina horizontal: a noite entra pela direita e empurra o dia | Depois da entrega, o trabalho continua. É na operação que aparece o que o projeto não previu. |
+| 82–100 % | 06 A gravação | ensinar · compartilhar | Issei gravando um vídeo do canal | dissolve curto da luz da tela para a luz da gravação; *push-in* 1 → 1,04; no fim, *pull-out* | O que aprendo, eu publico. Ensinar é como verifico se entendi de verdade. |
 
-Cada troca dura ~3 % da faixa (troca curta, imagem longa). A legenda muda por
-opacidade. Um contador "1/8 … 8/8" pequeno, em grafite, mostra o avanço (em
-`aria-hidden`: a lista de dimensões está no HTML, §6.1).
+- Cada troca dura ~3 % da faixa (troca curta, imagem longa). A narração muda
+  por opacidade. Os números de faixa são de referência: a H-2 calibra a altura
+  total e as faixas com capturas reais (§3.5).
+- **Sem contador de avanço.** A sequência não mostra "1/8 … 8/8" nem
+  equivalente. O avanço fica claro pelas imagens e pela narração.
+- Os três caminhos aparecem **só na cena 01** (e no cabeçalho comum). As
+  sessões 02, 03 e 04 são os próprios caminhos, cada uma com seu CTA.
 
-**Saída para 02:** no fim da faixa, a moldura já ocupa a posição e o tamanho
-da foto central da sessão 02. A última imagem troca por dissolve para o retrato.
+**Saída para 02 (cena 06 → 07):** M1 recua (*pull-out*) e desliza para a
+esquerda até a posição e o tamanho do retrato da sessão 02. A gravação
+dissolve para o retrato: o rosto passa de uma imagem para a outra.
 
-### 3.2 Sessão 02 — Minha história (120 vh)
+### 3.2 Sessão 02 — Minha história (cena 07; 120 vh)
 
 ```
 ┌───────────────────────────────────────────────────────────┐
@@ -182,10 +203,13 @@ da foto central da sessão 02. A última imagem troca por dissolve para o retrat
 │  │   (5 colunas)    │                                     │
 │  │                  │          Minha história             │
 │  │                  │                                     │
-│  │                  │          Uma trajetória construída  │
-│  └──────────────────┘          entre tecnologia, pessoas, │
-│   Legenda: lugar e ano          desafios e resultados.    │
-│                                                           │
+│  │                  │          Comecei escrevendo código. │
+│  │                  │          Com o tempo, passei a      │
+│  └──────────────────┘          responder também por times,│
+│   Legenda: lugar e ano          contratos e sistemas em   │
+│                                 produção.                 │
+│                                 ● 1997 ● 2003 ● 2012      │
+│                                 ● 2018 ● 2025             │
 │                                 Conheça minha história →  │
 └───────────────────────────────────────────────────────────┘
 ```
@@ -193,10 +217,17 @@ da foto central da sessão 02. A última imagem troca por dissolve para o retrat
 - O texto entra linha a linha (opacidade 0 → 1, deslocamento 12 px), escalonado
   em 6 % da faixa.
 - Parallax discreto: a foto anda 4 % mais devagar que a rolagem.
+- **Cinco marcos** no traço vertical, de 1997 até hoje: 1997 curso técnico em
+  processamento de dados · 2003 Java na Sysgen · 2012 liderança de time na
+  Indra · 2018 Tech Lead na Rede, até hoje · 2025 começo a publicar sobre
+  engenharia e IA. Fontes: `cv.json` (`Experiencia`; Rede "fev de 2018 – o
+  momento") e a data do primeiro vídeo do canal (`content/videos/`,
+  2025-10-23). O gerador lê os anos; o texto de cada marco fica em
+  `home.data.mjs`.
 - **Saída para 03:** a moldura do retrato reduz para 1/3 da altura e desliza
   para a direita; duas novas molduras entram por trás, deslocadas (sobreposição).
 
-### 3.3 Sessão 03 — Minhas ideias (130 vh)
+### 3.3 Sessão 03 — Minhas ideias (cena 08; 130 vh)
 
 ```
 ┌───────────────────────────────────────────────────────────┐
@@ -204,10 +235,12 @@ da foto central da sessão 02. A última imagem troca por dissolve para o retrat
 │  ─                                                        │
 │  Minhas ideias                       ┌──────┐             │
 │                                 ┌────┤ img2 │             │
-│  Investigar, questionar,        │img1│      ├─────┐       │
-│  aprender e compartilhar.       │    └──────┤img3 │       │
-│  Conhecimento ganha valor       └───────────┴─────┘       │
-│  quando é colocado em prática.                            │
+│  As ferramentas mudaram;        │img1│      ├─────┐       │
+│  as perguntas, não.             │    └──────┤img3 │       │
+│  Hoje estudo agentes de IA      └───────────┴─────┘       │
+│  perguntando o mesmo de sempre: quem vai operar, o que    │
+│  pode falhar, como saber se funciona. Escrevo e gravo o   │
+│  que ainda estou tentando entender.                       │
 │                                                           │
 │  Recentes: 3 links de texto (título · formato)            │
 │                                                           │
@@ -215,6 +248,9 @@ da foto central da sessão 02. A última imagem troca por dissolve para o retrat
 └───────────────────────────────────────────────────────────┘
 ```
 
+- **Ponte da página:** a frase "As ferramentas mudaram; as perguntas, não."
+  liga os fundamentos das cenas 02–06 aos destaques de IA. É dita uma vez só,
+  aqui.
 - **img1:** quadro de gravação de um vídeo do canal; **img2:** página de estudo
   aberta (captura real de uma página do site, sem texto legível pequeno);
   **img3:** caderno ou quadro de anotações.
@@ -225,15 +261,16 @@ da foto central da sessão 02. A última imagem troca por dissolve para o retrat
 - **Saída para 04:** as três molduras se alinham numa linha e se dividem em
   quatro, que viram os cartões dos projetos.
 
-### 3.4 Sessão 04 — Meus projetos (140 vh)
+### 3.4 Sessão 04 — Meus projetos (cena 09; 140 vh)
 
 ```
 ┌───────────────────────────────────────────────────────────┐
 │  04                                                       │
 │  ─                                                        │
 │  Meus projetos                                            │
-│  Da concepção à operação. Ideias transformadas em         │
-│  soluções, experiências e resultados.                     │
+│  Da concepção à operação. Projetos que saíram do papel e  │
+│  que alguém usa. Em cada um, conto o problema e as        │
+│  decisões que tomei.                                      │
 │                                                           │
 │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐          │
 │  │ captura │ │ captura │ │ captura │ │ captura │          │
@@ -243,7 +280,7 @@ da foto central da sessão 02. A última imagem troca por dissolve para o retrat
 │                                                           │
 │  Conheça meus projetos →                                  │
 ├───────────────────────────────────────────────────────────┤
-│ Contato (rodapé comum, variante clara)                    │
+│ Contato (rodapé comum, variante do tema)                  │
 └───────────────────────────────────────────────────────────┘
 ```
 
@@ -254,18 +291,28 @@ da foto central da sessão 02. A última imagem troca por dissolve para o retrat
 - As molduras entram em sequência (4 × 4 % da faixa), por `clip-path`.
 - O traço vermelho, que acompanhou toda a página, termina como sublinhado do
   link "Conheça meus projetos".
+- **Voz:** os textos de apoio das sessões 02–04 seguem a voz das cenas 02–06
+  (primeira pessoa, frase curta, atrito real). A home não usa "resultados",
+  "soluções" nem "experiências" na narração (teste de texto, §9.1).
 
 ### 3.5 Duração
 
-| Sessão | Computador | Celular |
-| :-- | :-- | :-- |
-| 01 | 220 vh | 160 vh |
-| 02 | 120 vh | 100 vh |
-| 03 | 130 vh | 110 vh |
-| 04 | 140 vh | 130 vh |
-| **Total** | **610 vh** (~6 telas) | **500 vh** |
+| Sessão | Cenas | Computador | Celular (< 640 px, §4.3) |
+| :-- | :-- | :-- | :-- |
+| 01 | 01–06 | **300–360 vh** (referência; valor inicial 330 vh) | 200–260 vh (valor inicial 240 vh) |
+| 02 | 07 | 120 vh | 100 vh |
+| 03 | 08 | 130 vh | 110 vh |
+| 04 | 09 | 140 vh | 130 vh |
+| **Total** | **9 cenas** | **690–750 vh** (~7 telas) | **540–600 vh** (~6 telas) |
 
-Rolagem contínua de uma pessoa leva **25–40 s** para o percurso todo. A home
+- A altura da sessão 01 é **um valor de referência**. A H-2 calibra o valor
+  final com capturas reais e com a regra "cada cena dura o tempo de ler uma
+  frase". O valor fica numa só variável (`--hm-s01-altura`, §5.2).
+- Limite superior: a sessão 01 não passa de 360 vh no computador nem de
+  260 vh no celular. Se as cenas não couberem, a H-2 encurta faixas, não
+  aumenta a altura.
+
+Rolagem contínua de uma pessoa leva **30–45 s** para o percurso todo. A home
 atual tem ~9 telas. A nova é menor (critério 6) e não obriga a assistir nada:
 a primeira tela já entrega identidade e caminhos.
 
@@ -274,6 +321,17 @@ a primeira tela já entrega identidade e caminhos.
 ## 4. Direção visual
 
 ### 4.1 Cores (tokens `--hm-*`, só em `src/home.css`)
+
+A home tem **duas variantes de tema** com os **mesmos tokens**. O protótipo
+estático da H-1 mostra as duas, e o Issei escolhe uma (D-H1). A variante que
+não for escolhida sai do código antes da H-2.
+
+| Variante | Seletor | Papel |
+| :-- | :-- | :-- |
+| **Clara** (base proposta) | `:root` (padrão) | Papel off-white, tinta escura |
+| **Escuro Editorial** (para validação) | `:root[data-hm-theme="escuro"]` | Papel escuro quente, tinta clara |
+
+#### Variante clara
 
 Contrastes medidos (WCAG, sobre os dois fundos):
 
@@ -286,10 +344,45 @@ Contrastes medidos (WCAG, sobre os dois fundos):
 | `--hm-cinza` | `#5A5650` | legendas, metadados | 6,5:1 | 5,8:1 |
 | `--hm-shu` | `#9E1B22` | traço, números de sessão, foco, texto vermelho | 7,1:1 | 6,4:1 |
 | `--hm-shu-claro` | `#B7282E` | só elementos gráficos (não texto pequeno) | 5,6:1 | 5,0:1 |
+| `--hm-moldura-borda` | `transparent` | fio da moldura M1 (sem fio no tema claro) | — | — |
 
-O vermelho é o *beni/shu* (vermelho de selo), escuro o bastante para texto AA.
-Foco visível: contorno 2 px `--hm-shu` + 2 px de afastamento (≥ 3:1 sobre
-papel e sobre foto, com halo de papel).
+#### Variante "Escuro Editorial"
+
+Mesmos tokens, outros valores. Contrastes medidos (WCAG, sobre os dois fundos):
+
+| Token | Valor | Uso | Sobre `#161513` | Sobre `#1E1C19` |
+| :-- | :-- | :-- | :-- | :-- |
+| `--hm-papel` | `#161513` | fundo principal | — | — |
+| `--hm-papel-2` | `#1E1C19` | faixas alternadas, legendas | — | — |
+| `--hm-tinta` | `#F2EFE9` | títulos | 15,9:1 | 14,8:1 |
+| `--hm-grafite` | `#D8D3C8` | texto | 12,2:1 | 11,4:1 |
+| `--hm-cinza` | `#A39D93` | legendas, metadados | 6,8:1 | 6,3:1 |
+| `--hm-shu` | `#E85D54` | traço, números de sessão, foco, links | 5,3:1 | 5,0:1 |
+| `--hm-shu-claro` | `#C93B36` | **só gráficos** (traço, fio, marcador); nunca texto | 3,6:1 | 3,4:1 |
+| `--hm-moldura-borda` | `rgba(242, 239, 233, 0.10)` | fio de 1 px em volta de M1 nas cenas noturnas (cenas 05 e 06), para a foto escura não se fundir com o fundo | ~1,3:1 | — |
+
+```css
+:root[data-hm-theme="escuro"] {
+  --hm-papel: #161513;  --hm-papel-2: #1E1C19;
+  --hm-tinta: #F2EFE9;  --hm-grafite: #D8D3C8;  --hm-cinza: #A39D93;
+  --hm-shu: #E85D54;    --hm-shu-claro: #C93B36;
+  --hm-moldura-borda: rgba(242, 239, 233, 0.10);
+}
+```
+
+Regras das duas variantes:
+
+- O vermelho é o *beni/shu* (vermelho de selo). No claro, `--hm-shu` passa
+  de 4,5:1 e serve para texto AA. No escuro, `--hm-shu` passa de 4,5:1 (texto
+  e links); `--hm-shu-claro` só passa de 3:1, por isso só serve para elemento
+  gráfico (WCAG 1.4.11).
+- `--hm-moldura-borda` é decorativo: a moldura não é componente de interface
+  nem carrega informação, então o 1.4.11 não se aplica. No claro, o valor é
+  `transparent`.
+- Foco visível: contorno 2 px `--hm-shu` + 2 px de afastamento (≥ 3:1 sobre
+  papel e sobre foto, com halo de `--hm-papel`). Vale igual nas duas variantes.
+- Nenhum token tem valor escrito fora de `src/home.css`. A troca de variante é
+  só o atributo `data-hm-theme` no `<html>` (§6.1).
 
 ### 4.2 Tipografia
 
@@ -310,6 +403,34 @@ fazendo o papel editorial.
 - Escala de espaço (Ma): `--hm-ma-1: .5rem` … `--hm-ma-6: 12rem` (razão 1,8).
 - Pontos de quebra: celular < 640 px (1 coluna; moldura acima do texto),
   tablet 640–1024 (6 colunas), computador > 1024 (12 colunas).
+
+#### Celular (< 640 px, 1 coluna)
+
+No celular, M1 fica acima do texto, com largura total menos a margem, e o
+texto fica abaixo, em área de papel. As cenas de várias imagens mudam de
+composição para não pedir rolagem a mais nem quebrar a continuidade de M1:
+
+| Cena | Computador | Celular | Por quê |
+| :-- | :-- | :-- | :-- |
+| 03 Do quadro ao teclado | Foto B sobreposta a A, deslocada para baixo e à direita | **Uma só moldura M1.** A (quadro) fica; B (teclado) entra **dentro de M1** por cortina de baixo para cima e cobre A. Sem deslocamento lateral | Duas fotos sobrepostas em 1 coluna ficam pequenas demais e o deslocamento sai da tela |
+| 05 Dia e noite | Duas fotos lado a lado, assimétricas | **Uma só moldura M1.** O dia aparece primeiro; a noite entra por cortina **vertical** (de cima para baixo) dentro de M1. A troca de luz conta a passagem do tempo como no computador | Lado a lado, cada foto teria menos de 160 px de largura |
+| 08 A mesa de estudo | Três registros sobrepostos, com parallax 0/3/6 % | **Pilha** de três registros com deslocamento pequeno (8–12 px), um inteiro na frente e dois aparecendo atrás. Parallax desligado | Sobreposição larga não cabe em 1 coluna; parallax em tela pequena cansa |
+
+A antiga cena "três caminhos" saiu na revisão 2 do storyboard. No celular, a
+passagem 06 → 07 é a mesma do computador: M1 recua e a gravação dissolve
+para o retrato, que fica acima do texto da sessão 02. Os três caminhos da
+cena 01 ficam empilhados, um por linha, com área de toque ≥ 44 px.
+
+Regras do celular:
+
+- M1 **não some** entre as cenas 01 e 07: troca de conteúdo, não de lugar.
+- A narração de cada cena tem no máximo duas linhas visíveis abaixo de M1, sem
+  rolagem dentro do palco.
+- A sessão 01 fica entre 200 e 260 vh (§3.5). Cenas 03 e 05 ganham o mesmo
+  tempo das outras, não o dobro.
+- O palco `sticky` usa `100svh`, para a barra do navegador não cortar o texto.
+- No tablet (640–1024 px), as cenas 03 e 05 seguem o computador; a cena 08
+  segue o celular.
 
 ### 4.4 Fotografia
 
@@ -334,22 +455,29 @@ fazendo o papel editorial.
 ### 5.2 Mecanismo
 
 ```css
-/* Palco da sessão 01: uma timeline nomeada percorre a seção inteira. */
-.hm-s01 { view-timeline: --hm-s01 block; height: 220vh; }
+/* Palco da sessão 01: uma timeline nomeada percorre a seção inteira.
+   A altura é referência (§3.5) e fica numa variável só, calibrada na H-2. */
+.hm-s01 {
+  --hm-s01-altura: 330vh;               /* faixa de referência: 300–360vh */
+  view-timeline: --hm-s01 block;
+  height: var(--hm-s01-altura);
+}
+@media (max-width: 639.98px) { .hm-s01 { --hm-s01-altura: 240vh; } } /* 200–260vh */
 .hm-s01__palco { position: sticky; top: 0; height: 100svh; }
 
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .hm-foto[data-dim="estudar"] {
+    /* Cena 02 (pensar · estudar): cortina de baixo para cima + push-in. */
+    .hm-cena[data-cena="02"] {
       animation: hm-entra-cortina linear both, hm-push-in linear both;
       animation-timeline: --hm-s01, --hm-s01;
-      animation-range: contain 12% contain 15%, contain 12% contain 24%;
+      animation-range: contain 12% contain 15%, contain 12% contain 30%;
     }
-    /* … uma regra por dimensão, gerada pelo gerador a partir da tabela §3.1 … */
+    /* … uma regra por cena (01–06), gerada pelo gerador a partir da tabela §3.1 … */
   }
 }
 
-@keyframes hm-entra-cortina { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+@keyframes hm-entra-cortina { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
 @keyframes hm-push-in       { from { scale: 1; } to { scale: 1.06; } }
 ```
 
@@ -360,7 +488,7 @@ de CSS escrito à mão, para que tempo e ordem mudem num lugar só.
 
 | Situação | Resultado |
 | :-- | :-- |
-| `prefers-reduced-motion: reduce` | Nenhuma animação. S01 vira **mosaico estático**: título + grade 4×2 das oito fotos com legenda. Seções com altura natural (sem `sticky`) |
+| `prefers-reduced-motion: reduce` | Nenhuma animação. S01 vira **mosaico estático**: texto da cena 01 + retrato, depois as cenas 02–06 em grade (3 + 2 no computador, 1 coluna no celular), cada uma com imagem, as duas dimensões e a frase de narração. Seções com altura natural (sem `sticky`) |
 | Navegador sem `animation-timeline` (hoje: Firefox estável) | Mesmo mosaico estático; entradas simples por `@starting-style` não são usadas |
 | Sem JavaScript | Igual ao normal: a página não depende de JS |
 | Impressão | Mosaico estático, sem fundo |
@@ -385,32 +513,59 @@ some.
 ### 6.1 HTML (semântica)
 
 ```html
+<html lang="pt-BR" data-hm-theme="escuro"> <!-- só no protótipo da H-1, variante escura; sem o atributo = clara -->
+…
 <main id="conteudo" class="hm">
   <section class="hm-s01" aria-labelledby="hm-nome">
-    <div class="hm-s01__texto">
-      <p class="hm-num" aria-hidden="true">01</p>
-      <h1 id="hm-nome">Maurício Yokoyama Issei</h1>
-      <p class="hm-mensagem">Pensar profundamente. Construir com propósito.</p>
-      <p class="hm-sub">Tecnologia, engenharia e conhecimento em prática.</p>
-      <nav aria-label="Caminhos principais">
-        <a href="#historia">Minha história</a> · <a href="#ideias">Minhas ideias</a> · <a href="#projetos">Meus projetos</a>
-      </nav>
+    <div class="hm-s01__palco">
+      <!-- Cena 01: estática, é a primeira pintura -->
+      <div class="hm-s01__texto">
+        <p class="hm-num" aria-hidden="true">01</p>
+        <h1 id="hm-nome">Maurício Yokoyama Issei</h1>
+        <p class="hm-mensagem">Pensar profundamente. Construir com propósito.</p>
+        <p class="hm-sub">Tecnologia, engenharia e conhecimento em prática.</p>
+        <p class="hm-contexto">Há mais de vinte anos trabalho na distância entre o que foi desenhado e o que roda em produção.</p>
+        <nav aria-label="Caminhos principais">
+          <a href="#historia">Minha história</a> · <a href="#ideias">Minhas ideias</a> · <a href="#projetos">Meus projetos</a>
+        </nav>
+      </div>
+      <figure class="hm-moldura hm-cena" data-cena="01">
+        <picture>…retrato 4:5…</picture>
+      </figure>
+
+      <!-- Cenas 02–06: uma por par de dimensões -->
+      <ol class="hm-cenas" aria-label="Como trabalho">
+        <li><figure class="hm-cena" data-cena="02">
+          <picture>…</picture>
+          <figcaption>
+            <span class="hm-dims">Pensar · Estudar</span>
+            <p>Quase tudo começa no papel. Antes do código, entender o problema. Muitas vezes, estudar o que ainda não sei.</p>
+          </figcaption></figure></li>
+        <li><figure class="hm-cena" data-cena="03">
+          <picture>…quadro branco…</picture><picture>…teclado…</picture>
+          <figcaption>…Projetar · Construir…</figcaption></figure></li>
+        <!-- 04 Liderar · Colaborar; 05 Validar · Sustentar (duas imagens); 06 Ensinar · Compartilhar -->
+      </ol>
     </div>
-    <ul class="hm-dimensoes" aria-label="Dimensões do trabalho">
-      <li><figure class="hm-foto" data-dim="pensar">
-        <picture>…</picture><figcaption>Pensar</figcaption></figure></li>
-      <!-- … oito itens … -->
-    </ul>
   </section>
-  <section id="historia" class="hm-s02" aria-labelledby="hm-historia">…</section>
-  <section id="ideias"   class="hm-s03" aria-labelledby="hm-ideias">…</section>
-  <section id="projetos" class="hm-s04" aria-labelledby="hm-projetos">…</section>
+  <section id="historia" class="hm-s02" aria-labelledby="hm-historia">…cena 07…</section>
+  <section id="ideias"   class="hm-s03" aria-labelledby="hm-ideias">…cena 08…</section>
+  <section id="projetos" class="hm-s04" aria-labelledby="hm-projetos">…cena 09…</section>
 </main>
 ```
 
-- Um `<h1>`, quatro seções com `<h2>` (a 01 usa o `<h1>`).
-- Os caminhos do topo são âncoras internas; os CTAs de cada sessão levam às
-  páginas de destino.
+- Um `<h1>`, quatro seções com `<h2>` (a 01 usa o `<h1>`). Total: **9 cenas
+  em 4 sessões**, na ordem do storyboard.
+- A ordem do HTML é a ordem de leitura: cena 01, depois as cenas 02–06 numa
+  lista ordenada. Sem contador de avanço; nenhum texto "1/8". Sem segundo menu
+  de caminhos no fim da sessão 01.
+- A narração e as dimensões estão no `<figcaption>`, como texto real. Leitor
+  de tela e busca leem tudo, com ou sem animação.
+- Os caminhos do topo (cena 01) são âncoras internas; os CTAs de cada
+  sessão levam às páginas de destino.
+- `data-hm-theme` existe só enquanto as duas variantes estão em validação
+  (H-1). Depois de D-H1, o gerador deixa só a variante escolhida e o atributo
+  sai do HTML.
 - Cabeçalho comum e rodapé de contato continuam (gerados como hoje).
 
 ### 6.2 Arquivos
@@ -419,13 +574,13 @@ some.
 | :-- | :-- |
 | `src/index.html` | Novo conteúdo entre `<!-- HM:START -->` e `<!-- HM:END -->`, gerado. Fora do bloco: `<head>` (SEO, JSON-LD, consentimento) como hoje |
 | `src/home.css` | Novo. Tokens `--hm-*`, layout, movimento. Substitui `index.css` **só** na home (o `/curriculo` continua com `index.css`) |
-| `scripts/home/gen-home.mjs` | Novo gerador do bloco `HM:*`. Lê `cv.json` (nome), `ecosystem.nav.yaml` (projetos `experiencia`, destinos), `destaques.mjs` (recentes) e `home.data.mjs` (textos, fotos, tabela de movimento) |
-| `scripts/home/home.data.mjs` | Novo. Textos fixos pedidos pelo Issei, lista das 8 fotos com `alt`, tabela de faixas do §3 |
+| `scripts/home/gen-home.mjs` | Novo gerador do bloco `HM:*`. Lê `cv.json` (nome), `ecosystem.nav.yaml` (projetos `experiencia`, destinos), `destaques.mjs` (recentes) e `home.data.mjs` (textos, fotos, tabela de movimento). Na H-1, aceita `--tema=claro|escuro` para gerar o protótipo de cada variante (§11) |
+| `scripts/home/home.data.mjs` | Novo. Textos fixos pedidos pelo Issei, as 9 cenas (dimensões, narração, marcos, imagens com `alt`), tabela de faixas do §3.1 |
 | `scripts/gen-portfolio.mjs` | Para de escrever `PF:*` em `index.html` (só `curriculo.html`) |
 | `scripts/gen-imagens.mjs` | Novo job `home`: fotos em AVIF/WebP 480/960/1600; capturas dos projetos 640/1280 |
 | `assets-fonte/home/` | Originais das fotos + manifesto (fora do build) |
 | `src/transicoes/*` | Nome just-in-time para a moldura de 02 → `/curriculo` |
-| `docs/specs/pages/portfolio/ADR-pf-002-home-clara.md` | Exceção de tema (D-H1) |
+| `docs/specs/pages/portfolio/ADR-pf-002-home-editorial.md` | Exceção de tema, com a variante escolhida em D-H1 (escrita **depois** da validação da H-1) |
 | `AGENTS.md` | Registrar a exceção `hm-` (como `ap-` e `pf-`) |
 | `src/en/index.html` | Gerado pelo Argos (`npm run i18n:sync` no notebook) |
 | `public/index.md`, `llms*.txt` | Regerados pelos geradores que já existem |
@@ -478,24 +633,30 @@ STAR), Destaques (vira "Recentes", 3 itens).
 
 ## 8. Lista de fotos a fazer (D-H2)
 
-Oito fotos reais, horizontais 3:2, ≥ 2400 px, luz natural, sem marca de
-empresa visível, sem tela com dado real legível, sem outras pessoas
-identificáveis (de costas ou fora de foco, com autorização).
+A lista segue o storyboard (§7.2 dele): **oito fotos** para as cenas 01–06,
+uma manhã de sessão com luz de janela. Fotos horizontais 3:2 (exceto o
+retrato, 4:5), ≥ 2400 px, sem marca de empresa visível, sem tela com dado
+real legível, sem outras pessoas identificáveis (de costas ou fora de foco,
+com autorização).
 
-| # | Dimensão | Cena sugerida |
-| :-- | :-- | :-- |
-| 1 | Pensar | Mãos com caneta sobre caderno com esboços; rosto fora ou parcial |
-| 2 | Estudar | Livros técnicos empilhados, um aberto; curso na tela ao fundo, desfocado |
-| 3 | Projetar | Issei diante de quadro branco com diagrama (de perfil) |
-| 4 | Desenvolver | Mãos no teclado; código desfocado na tela |
-| 5 | Liderar | Conversa de pé com duas ou três pessoas, Issei de perfil ou de costas |
-| 6 | Validar | Duas telas lado a lado (teste e resultado), sem dado legível |
-| 7 | Sustentar | Monitor com painel de operação à noite, luz baixa |
-| 8 | Ensinar | Montagem de gravação do canal: câmera, microfone, Issei falando |
+| # | Foto | Cena | Dimensões |
+| :-- | :-- | :-- | :-- |
+| 1 | Caderno: mãos com caneta, esboço real, livro técnico aberto | 02 (e 08) | pensar · estudar |
+| 2 | Retrato 4:5, olhando para a câmera, fundo conforme o tema de D-H1 | 01, 07 | — |
+| 3 | Quadro branco com diagrama genérico, Issei de perfil | 03 | projetar |
+| 4 | Mãos no teclado, código desfocado | 03 | construir |
+| 5 | Conversa de pé, 2–3 pessoas de costas, Issei ouvindo | 04 | liderar · colaborar |
+| 6 | Duas telas de teste, de dia, sem dado legível | 05 | validar |
+| 7 | Monitor de operação à noite, só a luz da tela | 05 | sustentar |
+| 8 | Gravação do canal: câmera e microfone na borda, Issei falando | 06 (e 08) | ensinar · compartilhar |
 
-Mais: **retrato 4:5 em fundo claro** (para a sessão 02) e **3 registros** para
-a sessão 03 (caderno de anotações, quadro de gravação, página de estudo).
-Os quadros do canal podem substituir as fotos 4 e 8 se faltar tempo.
+Mais: **3 registros** para a sessão 03 (quadro de vídeo do canal, captura de
+página de estudo, caderno) e **4 capturas** dos projetos da sessão 04. Um
+quadro real do canal pode substituir a foto 8.
+
+A sessão de fotos espera D-H1: o fundo do retrato e a luz das cenas dependem
+do tema escolhido. Sem as fotos 1 e 3–7, vale o plano B do storyboard: lançar
+só com as cenas 01, 06 e 07–09.
 
 ---
 
@@ -510,13 +671,19 @@ Os quadros do canal podem substituir as fotos 4 e 8 se faltar tempo.
 | 3. Imagens reais com protagonismo | Toda `<img>` da home vem de `assets-fonte/home/` com origem registrada no manifesto; nenhum arquivo `og-*` ou gerado por IA (teste) |
 | 4. Narrativa contínua | Capturas em 0, 10 … 100 % da rolagem anexadas ao PR; a moldura muda de posição entre sessões sem sumir |
 | 5. Caminhos rápidos | 3 links no topo + 1 CTA por sessão; ≤ 2 cliques até qualquer conteúdo |
-| 6. Curta, sem repetição | ≤ 610 vh; teste: nenhuma frase da home aparece igual em `/curriculo` ou `/catalogo`, exceto títulos |
+| 6. Curta, sem repetição | ≤ 750 vh no computador e ≤ 600 vh no celular (§3.5); teste: nenhuma frase da home aparece igual em `/curriculo` ou `/catalogo`, exceto títulos; a narração não contém "resultados", "soluções" nem "experiências" (voz única, storyboard §9.1) |
 | 7. Celular e movimento reduzido | `index.mobile.spec.js` (sem rolagem horizontal, ordem de leitura), `index.reduced.spec.js` (mosaico estático, zero animações ativas) |
 | 8. Identidade e arquitetura | Gate verde: `gen-home --check`, `gen-portfolio --check`, `i18n:check`, `perf-budget`, a11y |
 
 ### 9.2 Acessibilidade (WCAG 2.2 AA)
 
-- Contrastes do §4.1 cobertos por `tests/home.tokens.test.mjs`.
+- Contrastes do §4.1 cobertos por `tests/home.tokens.test.mjs`, **para os dois
+  conjuntos de tokens** (`:root` e `:root[data-hm-theme="escuro"]`) enquanto
+  as duas variantes existirem. O teste confere: texto ≥ 4,5:1 sobre
+  `--hm-papel` e `--hm-papel-2`; `--hm-shu-claro` ≥ 3:1 e nunca usado em
+  `color` de texto; `--hm-moldura-borda` igual a `transparent` no claro; e o
+  mesmo conjunto de nomes de token nas duas variantes. Depois de D-H1, o teste
+  fica só com a variante escolhida.
 - Texto sobre foto: nunca. O texto fica sempre em área de papel.
 - Ordem de foco = ordem visual: caminhos → CTA 02 → recentes e CTA 03 →
   projetos e CTA 04 → rodapé.
@@ -532,8 +699,10 @@ Os quadros do canal podem substituir as fotos 4 e 8 se faltar tempo.
 | :-- | :-- |
 | Fotos não ficam prontas | Lançar com o retrato + quadros reais do canal + capturas; trocar depois sem mudar código (só o manifesto) |
 | Firefox sem scroll-driven animations | Vê o mosaico estático, que é completo |
-| A home clara destoa das páginas escuras | A View Transition da raiz faz a passagem; o cabeçalho comum ancora a identidade. Avaliar com o Issei na validação |
-| `sticky` alto cansa no celular | S01 cai para 160 vh no celular |
+| A home clara destoa das páginas escuras | A View Transition da raiz faz a passagem; o cabeçalho comum ancora a identidade. A H-1 testa a navegação real Home → `/curriculo` e Home → `/catalogo` nas duas variantes antes de decidir (D-H1) |
+| `sticky` alto cansa no celular | S01 fica entre 200 e 260 vh no celular, e as cenas 03, 05, 07 e 09 mudam de composição (§4.3) |
+| Sessão 01 longa demais com 7 cenas | Altura é referência (300–360 vh) e tem teto; a H-2 calibra com capturas e encurta faixas antes de aumentar altura (§3.5) |
+| Fotos escuras (cena 05) somem no tema escuro | Fio `--hm-moldura-borda` em M1 nas cenas noturnas (§4.1) |
 
 ---
 
@@ -541,11 +710,11 @@ Os quadros do canal podem substituir as fotos 4 e 8 se faltar tempo.
 
 | Id | Pergunta | Recomendação |
 | :-- | :-- | :-- |
-| **D-H1** | Aceita abrir uma exceção ao tema escuro só na home (fundo claro, namespace `hm-`, ADR-pf-002)? | Sim, só na home. As outras páginas ficam escuras |
-| D-H2 | Você faz as 8 fotos da lista do §8 (e o retrato em fundo claro)? | Sim; até lá, lançar com retrato + quadros do canal |
+| **D-H1** | Qual tema a home usa: a base **clara** (papel off-white) ou a **"Escuro Editorial"** (§4.1)? As duas exigem exceção à paleta Dark Tech (namespace `hm-`, ADR-pf-002) | **Decidir depois do protótipo estático da H-1**, com as duas variantes lado a lado e a navegação real Home → `/curriculo` e Home → `/catalogo` testada em cada uma. Só então escrever a ADR-pf-002, começar a H-2 e marcar a sessão de fotos (D-H2). Fora da home, as páginas ficam como estão |
+| D-H2 | Você faz as 8 fotos da lista do §8 (com o retrato no fundo do tema de D-H1)? | Sim, **depois de D-H1**; até lá, o protótipo usa retrato + quadros do canal |
 | D-H3 | Para onde vai "Conheça meus projetos"? (a) `/catalogo#projetos`, um grupo novo no catálogo gerado do YAML (`experiencia` + `experimento`); (b) a página do primeiro case; (c) só os 4 cartões, sem CTA | (a): reaproveita o catálogo, não cria página |
 | D-H4 | Usa uma serifada editorial (Shippori Mincho) nos títulos? | Sim, só nos títulos e na mensagem central |
-| D-H5 | O cabeçalho comum fica claro na home? | Sim, por custom properties, só na home |
+| D-H5 | O cabeçalho comum segue o tema da home? | Sim, por custom properties, só na home (claro se D-H1 = clara; cores `--hm-*` escuras se D-H1 = Escuro Editorial) |
 | D-H6 | A página `/trajetoria` (PR #231) segue a direção antiga (escura, partículas) ou passa a seguir esta? | Pausar e alinhar à direção desta home |
 | D-H7 | Pode usar diagramas do TGI 2004 como registro de estudo? | Não por enquanto (o TGI não é publicado) |
 
@@ -553,10 +722,11 @@ Os quadros do canal podem substituir as fotos 4 e 8 se faltar tempo.
 
 | UT | Conteúdo | Depende de |
 | :-- | :-- | :-- |
-| H-0 | D-H1, D-H3, D-H4 decididas; `ADR-pf-002` e `AGENTS.md` | — |
-| H-1 | `gen-home` + `home.data` + HTML estático (mosaico) + `home.css` sem movimento + testes de tokens, fatos, nojs, mobile, SEO | H-0 |
-| H-2 | Camada de movimento (S01–S04) + View Transitions + `reduced.spec` + capturas | H-1 |
-| H-3 | Fotos reais no `gen-imagens` + `og-index` novo | D-H2 |
+| H-0 | D-H3 e D-H4 decididas | — |
+| H-1 | `gen-home` + `home.data` + HTML estático (mosaico, 9 cenas) + `home.css` sem movimento, **nas duas variantes de tema** (`gen-home --tema=claro` e `--tema=escuro`) + testes de tokens (dois conjuntos), fatos, nojs, mobile, SEO. **Validação do protótipo:** o Issei abre as duas variantes no `npm run preview` (local, nada vai para `main`) e segue a navegação real Home → `/curriculo` e Home → `/catalogo` em cada uma, no computador e no celular. Resultado: D-H1 decidida; depois, `ADR-pf-002`, `AGENTS.md` e remoção da variante não escolhida | H-0 |
+| H-2 | Camada de movimento (cenas 01–09) + calibração da altura da S01 (300–360 vh) + View Transitions + `reduced.spec` + capturas | H-1 e D-H1 |
+| H-3 | Sessão de fotos e fotos reais no `gen-imagens` + `og-index` novo | D-H1 e D-H2 |
 | H-4 | `/en/` (Argos no notebook) + `perf-budget` + revisão a11y e tom + validação com 3–5 pessoas | H-2 |
 
-H-1 já é uma home publicável e completa, só sem movimento.
+H-1 já é uma home completa, só sem movimento. Ela só vai para `main` depois de
+D-H1, com uma variante.
