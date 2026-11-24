@@ -2,7 +2,7 @@
 id: plano-trajetoria-cinematografica
 titulo: Plano de desenvolvimento — página cinematográfica da trajetória
 data: 2026-11-23
-revisao: 2026-11-24 (alinhado ao resumo do tutorial enviado pelo Issei)
+revisao: 2026-11-24 (alinhado ao resumo do tutorial; vídeos por HyperFrames, ver SDD §6)
 status: proposta (só planejamento; nada implementado)
 leitor: Issei (decisão) e quem implementar a página
 ---
@@ -10,6 +10,13 @@ leitor: Issei (decisão) e quem implementar a página
 # Página cinematográfica da trajetória — plano de desenvolvimento
 
 > **Estado:** proposta. Este documento planeja a página. Ele não muda código.
+>
+> **Atualização de 2026-11-24 (ferramenta de vídeo):** por sugestão do Issei,
+> as transições T1 e T3 passam a ser renderizadas no **HyperFrames** (HeyGen,
+> código aberto, local, sem custo) a partir das próprias cenas Three.js, em vez
+> de vídeo de IA no Higgsfield. Onde este plano fala em Higgsfield, Seedance,
+> prompt de vídeo ou créditos, vale o [SDD §6](SDD-trajetoria.md). O resto do
+> plano não muda.
 > As decisões em aberto estão no §11. Cada uma vai ao Issei uma de cada vez.
 > A especificação de implementação está em [`SDD-trajetoria.md`](SDD-trajetoria.md).
 
@@ -47,7 +54,7 @@ plano segue o método dele e muda o que precisa mudar para o site:
 | Texto curto: frase forte no centro só na abertura e no fim; no meio, frases curtas **nas margens laterais**, centro livre para a imagem | Igual (§3.4). O texto completo de cada ato fica no HTML, legível no modo estático (§4.1) |
 | Storyboard em rascunho a lápis antes das imagens finais, para validar a continuidade da câmera | Nova fase F0b (§10) |
 | Imagens de início e fim de cada cena, sem texto embutido, expandidas por *outpainting* para tela larga | Igual. Aqui os quadros de costura saem do próprio Three.js (§5.1); *outpainting* só se o quadro gerado ficar estreito |
-| Vídeo de IA (Higgsfield, modelo Seedance) chamado pelo Claude Desktop via MCP | Opção recomendada para D-TC-2 (roda na máquina do Issei; a nuvem não tem esse acesso) |
+| Vídeo de IA (Higgsfield, modelo Seedance) chamado pelo Claude Desktop via MCP | **Trocado** pelo HyperFrames (render local e gratuito das cenas Three.js; SDD §6). Higgsfield fica como alternativa paga |
 | IA só onde há movimento orgânico; o resto com imagens, escala e `clip-path` | Igual: 2 vídeos de IA em vez de 4 (§3.3) |
 | **Quebra de ritmo** depois de vários movimentos aéreos, com uma tela que se expande por máscara | Igual, no Ato IV (plano 05b) |
 | Final: corte seco do mapa para **partículas em canvas** que convergem no logotipo | Igual: a malha vira partículas que formam o grafo e, no fim, o monograma (plano 07) |

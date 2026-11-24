@@ -91,7 +91,7 @@ de ler uma frase.
 | Câmera simulada | Só quatro gestos: *push-in* (aproximar, escala até 1,06), *pull-out*, *pan* lateral (pelo enquadramento da foto) e cortina (revelação por máscara). Nenhuma rotação |
 | Tipografia | Nome em Inter 600; mensagem e títulos de sessão em serifada editorial (proposta: Shippori Mincho); texto em Inter 400 |
 | Elemento recorrente | **A moldura (M1)**: o retângulo da foto que viaja entre as cenas, com fio *Shoji* e cantos em ouro. **O traço dourado *Kintsugi***: 48 px sob o número da sessão; vira linha vertical na S02 e sublinhado no fim |
-| Som | **Nenhum.** A página não toca áudio. A "narração" é texto curto na tela, escrito em primeira pessoa. Se um dia houver versão em vídeo do mesmo roteiro, a narração serve como locução (ver §6) |
+| Som | **Nenhum.** A página não toca áudio. A "narração" é texto curto na tela, escrito em primeira pessoa. Se um dia houver versão em vídeo do mesmo roteiro (por exemplo, um teaser para o canal ou para redes), a narração serve como locução (ver §6). Essa versão pode ser feita sem custo no **HyperFrames** (HTML para vídeo, código aberto, local), reaproveitando as fotos reais, os textos e a paleta da página. A home em si não usa vídeo |
 | Ritmo | Imagem longa, troca curta: cada foto fica ~12 % da faixa, a troca ocupa ~3 %. Texto parado enquanto a imagem anda |
 
 ---
