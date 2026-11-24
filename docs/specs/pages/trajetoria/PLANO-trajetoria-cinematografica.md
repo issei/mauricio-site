@@ -117,6 +117,21 @@ O ciclo fecha. Chamada: "Ver o currículo completo" (`/curriculo`) e
 
 ---
 
+### 2.2 Bastidores — "Como foi feito" (decisão D-TC-8)
+
+Depois dos créditos, uma seção curta, em texto comum, conta como a página foi
+construída. Ela é a razão de a página existir no tom do site: o espetáculo vira
+um caso de engenharia com agentes.
+
+- O roteiro e a decupagem (este plano), escritos com o Claude.
+- O storyboard a lápis e os quadros de costura.
+- A geração dos vídeos pelo Higgsfield via MCP, com prompt, modelo, custo em
+  créditos e a tentativa escolhida (de `assets-fonte/trajetoria/prompts/`).
+- O que o Three.js faz e por que não é tudo vídeo (peso, nitidez, acessibilidade).
+- Um par antes/depois: quadro de costura e quadro final.
+- Selo de natureza: "Imagens e vídeos gerados por IA a partir de quadros
+  renderizados; texto escrito e revisado pelo autor."
+
 ## 3. Decupagem (storyboard técnico)
 
 Convenções: **P** = percentual da rolagem total da seção de cena (0–100 %).
@@ -733,6 +748,7 @@ A F1 sozinha já é uma página publicável. Se a F3 atrasar, a página segue bo
 | Id | Pergunta | Recomendação |
 | :-- | :-- | :-- |
 | ~~D-TC-0~~ | ~~Qual técnica o tutorial usa?~~ | **Resolvida em 2026-11-24** com o resumo enviado pelo Issei (ver "Sobre o vídeo de referência") |
+| ~~D-TC-8~~ | ~~Propósito da página~~ | **Decidida pelo Issei em 2026-11-24: autoria com bastidores.** A trajetória vem primeiro; no fim, uma seção "Como foi feito" (§2.2) |
 | D-TC-1 | Toques pessoais: o que pode aparecer (P-1, P-2, P-3 do §2)? | Só o que o Issei escrever; nada de família por nome, lugar ou rotina |
 | D-TC-2 | Qual ferramenta de vídeo de IA usar (precisa aceitar quadro inicial e final)? | Higgsfield/Seedance via MCP no Claude Desktop, como no tutorial, se o Issei tiver conta; senão, a que ele já assina |
 | D-TC-3 | Quadros AVIF ou MP4 com todos os quadros chave? | AVIF (busca exata e carga progressiva) |
