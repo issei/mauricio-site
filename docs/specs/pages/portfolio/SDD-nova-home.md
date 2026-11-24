@@ -656,6 +656,13 @@ atual, quadros reais do canal e capturas das páginas. As fotos 1 e 3–7
 enriquecem as cenas 02–05 depois. Sem elas, vale o plano B do storyboard:
 lançar só com as cenas 01, 06 e 07–09.
 
+**Imagens provisórias do protótipo (decisão do Issei, 2026-11-24).** Para
+validar a ideia, o protótipo pode usar imagens geradas por IA nas oito
+posições acima. Elas ficam fora de `public/` e não vão para produção. A regra
+5 da §2 (foto documental, sem imagem gerada por IA) continua valendo para a
+versão publicada: antes da publicação, cada imagem provisória é trocada pela
+foto real da mesma posição, ou a cena sai (plano B).
+
 ---
 
 ## 9. Validação
