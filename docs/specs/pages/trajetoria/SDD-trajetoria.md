@@ -14,7 +14,7 @@ padrao_de_redacao: ptbr-controlado (perfil Técnico)
 > apenas planeje e especifique". Nenhuma imagem, vídeo ou código foi gerado.
 > O **plano** diz *o quê e por quê* (narrativa, decupagem, luz, lentes). Este
 > **SDD** diz *como implementar*, com requisitos verificáveis, contratos de
-> módulo, orçamento de créditos, testes e a ordem das unidades de trabalho.
+> módulo, pipeline de render (HyperFrames, custo zero), testes e a ordem das unidades de trabalho.
 
 ## 1. Escopo
 
@@ -22,11 +22,12 @@ padrao_de_redacao: ptbr-controlado (perfil Técnico)
 
 - Página nova `src/trajetoria.html` (URL `/trajetoria`) e o gêmeo `/en/trajetoria`
   gerado pelo Argos.
-- Cena decorativa em um `<canvas>` WebGL (Three.js), com 2 transições de vídeo
-  de IA em sequência de quadros, 1 quebra de ritmo em CSS e partículas finais.
+- Cena decorativa em um `<canvas>` WebGL (Three.js), com 2 transições
+  pré-renderizadas em sequência de quadros, 1 quebra de ritmo em CSS e
+  partículas finais.
 - Seção "Como foi feito" (decisão D-TC-8: autoria com bastidores).
-- Pipeline de ativos: quadros de costura renderizados, prompts versionados,
-  geração no Higgsfield, extração e codificação no `gen-imagens`.
+- Pipeline de ativos: composições versionadas, render local e gratuito no
+  **HyperFrames** (§6), extração e codificação no `gen-imagens`.
 - Testes (unidade, Playwright, a11y, desempenho) e entrada no `npm run gate`.
 
 ### 1.2 Não entra
@@ -44,7 +45,7 @@ padrao_de_redacao: ptbr-controlado (perfil Técnico)
 | D-TC-0 | Fechada | Método do tutorial (resumo do Issei em `referencia-tutorial.md`) |
 | D-TC-8 | **Fechada (Issei, 2026-11-24)** | Autoria com bastidores |
 | D-TC-1 | Aberta | Toques pessoais vazios até o Issei responder. Os campos existem no HTML com marcador `<!-- TC:PESSOAL:Pn -->`; o gate reprova publicação com marcador vazio |
-| D-TC-2 | Aberta | Higgsfield via MCP. Modelo de vídeo: **Seedance 2.5** (`seedance_2_5`, modo `omni_reference`, com `start_image` e `end_image`) |
+| D-TC-2 | **Proposta (Issei sugeriu, 2026-11-24)** | **HyperFrames** (HeyGen, código aberto, Apache 2.0), render local, sem custo. Higgsfield/Seedance fica só como alternativa paga, fora do plano (§6.6) |
 | D-TC-3 | Aberta | Sequência de quadros AVIF |
 | D-TC-4 | Aberta | Brutos em `/mnt/project-files/trajetoria-cinematografica/brutos/`, fora do Git |
 | D-TC-5 | Aberta | Sem logos; nome da empresa em texto |
@@ -60,14 +61,14 @@ Se uma decisão aberta mudar, este SDD muda **antes** do código (regra SDD do
 | :-- | :-- | :-- |
 | RF-TC-01 | A página tem `<h1>`, logline e uma `<ol>` com 5 `<li class="tc-ato">`, cada um com `<h2>` e período em texto | Playwright: 5 itens, 5 `h2`, ordem 1→5 |
 | RF-TC-02 | Sem JavaScript, toda a história é legível e cada ato mostra um pôster estático (`<picture>` AVIF/WebP) | Teste `trajetoria.nojs.spec.js` com `javaScriptEnabled: false`: texto visível, 5 imagens carregadas, nenhum `canvas` visível |
-| RF-TC-03 | Com `prefers-reduced-motion: reduce`, o modo cinema **não inicia** (nenhum contexto WebGL criado; nenhum quadro de IA baixado) | Playwright com `reducedMotion: 'reduce'`: zero requisições a `/frames/`; `window.__tc.modo === 'estatico'` |
+| RF-TC-03 | Com `prefers-reduced-motion: reduce`, o modo cinema **não inicia** (nenhum contexto WebGL criado; nenhum quadro de transição baixado) | Playwright com `reducedMotion: 'reduce'`: zero requisições a `/frames/`; `window.__tc.modo === 'estatico'` |
 | RF-TC-04 | Botão "Animação ligada/desligada" (`aria-pressed`) no topo alterna cinema ↔ estático a qualquer momento, e a escolha persiste (localStorage, com `try/catch`) | Clicar desliga o laço rAF em ≤ 1 quadro; recarregar mantém a escolha |
 | RF-TC-05 | Modo cinema: a rolagem controla a câmera e as faixas da linha do tempo do plano §6.1, com amortecimento | Teste de unidade da linha do tempo (§7.1); Playwright rola até P = 0,5 e lê `__tc.faixa === 'p04'` |
 | RF-TC-06 | As transições T1 e T3 mostram a sequência de quadros correspondente ao progresso, com carga progressiva (a cada 4º quadro primeiro) | Unidade: `indiceDoQuadro(t, 48)`; Playwright: ao entrar no Ato I, só os quadros de T1 com índice múltiplo de 4 são pedidos primeiro |
 | RF-TC-07 | Quebra de ritmo 05b: o monitor se expande por `clip-path` controlado por `--tc-abre` (0→1) | Playwright em P = 0,73: `--tc-abre` entre 0,4 e 0,6 |
 | RF-TC-08 | Final: partículas convergem no monograma "MI" e o monograma vira o cursor do Ato I | Captura em P = 0,98 comparada a referência visual (tolerância 2 %) |
 | RF-TC-09 | Navegação por atos (`<nav aria-label="Atos da trajetória">`) com âncoras `#ato-1`…`#ato-5`; no modo cinema, a âncora leva a câmera ao início do ato | Teclado: Tab chega ao nav; Enter em "Ato III" deixa `__tc.faixa` em `p04` |
-| RF-TC-10 | Seção "Como foi feito" depois dos créditos, em HTML comum, com prompt, modelo, custo em créditos e par antes/depois de cada transição | Playwright: seção existe, cita `seedance_2_5`, mostra 2 pares de imagens |
+| RF-TC-10 | Seção "Como foi feito" depois dos créditos, em HTML comum, com a ferramenta, o trecho da composição, o tempo de render e o par antes/depois de cada transição | Playwright: seção existe, cita `HyperFrames`, mostra 2 pares de imagens |
 | RF-TC-11 | Selo de natureza gerado pelo `gen-natureza` entre `<!-- NATUREZA:START/END -->`, com natureza `experiencia` no YAML | `node scripts/gen-natureza.mjs --check` verde |
 | RF-TC-12 | Todos os números e datas da página batem com `public/cv.json` | Teste `trajetoria.fatos.test.mjs` (§7.1) |
 | RF-TC-13 | A página entra no catálogo (grupo `trajetoria`), na busca e nos `llms*.txt` | `gen-catalogo`, `gen-busca`, `gen-llms` com `--check` verdes |
@@ -88,7 +89,7 @@ Se uma decisão aberta mudar, este SDD muda **antes** do código (regra SDD do
 | RNF-TC-08 | Acessibilidade | WCAG 2.2 AA; catraca do `tests/a11y/baseline.json` não sobe |
 | RNF-TC-09 | Tema | Dark Tech: fundo `#0d1117`, acentos `#007bff`/`#8a2be2`, Inter. Hexadecimais só em `src/trajetoria.css` (custom properties `--tc-*`) |
 | RNF-TC-10 | Dependências | `three` fixado no `package.json` (versão exata). Nada de CDN na página |
-| RNF-TC-11 | Rastreabilidade | Todo ativo gerado tem prompt, modelo, semente, custo e data em `assets-fonte/trajetoria/prompts/*.md` |
+| RNF-TC-11 | Rastreabilidade | Todo ativo renderizado tem composição, versão do HyperFrames, comando, tempo de render e data em `assets-fonte/trajetoria/hyperframes/<id>/NOTAS.md` |
 
 ## 5. Arquitetura
 
@@ -107,9 +108,10 @@ Se uma decisão aberta mudar, este SDD muda **antes** do código (regra SDD do
 | `src/js/trajetoria/quadros.worker.js` | `fetch` + `createImageBitmap` |
 | `src/js/trajetoria/cena.js` | Renderizador, câmera, quad de vídeo, laço rAF, níveis de qualidade |
 | `src/js/trajetoria/ambientes/ato-1.js` … `ato-5.js` | Um ambiente por ato; contrato §5.3 |
+| `src/js/trajetoria/transicoes/t1.js`, `t3.js` | Cena de transição entre dois ambientes, com `renderEm(t)` buscável. Usada só pela composição do HyperFrames (§6.2); não entra no bundle da página |
 | `src/js/trajetoria/shaders/*.glsl` | `fio`, `dissolve`, `particulas`, `crt` (importados com `?raw`) |
 | `src/assets/trajetoria/**` | Ativos de build (lista completa no plano §9) |
-| `assets-fonte/trajetoria/**` | Fontes: storyboard, chaves, prompts, manifesto |
+| `assets-fonte/trajetoria/**` | Fontes: storyboard, chaves, composições HyperFrames (`hyperframes/<id>/`), manifesto |
 | `scripts/trajetoria/render-chaves.mjs` | Renderiza os quadros de costura com Playwright |
 | `scripts/trajetoria/monograma-pontos.mjs` | SVG → `cena/monograma-pontos.json` |
 | `scripts/gen-imagens.mjs` | Ganha o job `trajetoria` (extração e codificação dos quadros) |
@@ -149,9 +151,10 @@ export interface Ambiente {
 }
 ```
 
-`quadroDeCostura` é o que garante a costura invisível: o mesmo estado usado
-para renderizar o PNG que vai ao Higgsfield é o estado em que o ambiente fica
-no primeiro/último quadro da faixa.
+`quadroDeCostura` é o que garante a costura invisível: a composição do
+HyperFrames (§6) usa o mesmo módulo de ambiente e começa e termina exatamente
+nesse estado. O primeiro e o último quadro do vídeo são, por construção, os
+quadros da faixa vizinha.
 
 ### 5.4 Níveis de qualidade
 
@@ -167,66 +170,90 @@ sozinho (evita oscilação). `window.__tc.nivel` exposto para teste.
 
 ## 6. Pipeline de geração (para quando o Issei liberar)
 
+### 6.0 Ferramenta: HyperFrames (avaliação de 2026-11-24)
+
+Sugestão do Issei: usar o **HyperFrames**, da HeyGen, para produzir os vídeos
+sem serviço pago. Avaliação, com base no README do projeto
+(`github.com/heygen-com/hyperframes`), na página de visão geral da HeyGen
+(`developers.heygen.com/hyperframes-overview`) e numa resenha de terceiro
+(dev.to, tratada como opinião):
+
+| Ponto | O que a documentação diz | Efeito no plano |
+| :-- | :-- | :-- |
+| O que é | Framework que transforma HTML, CSS, mídia e animação "buscável" (*seekable*) em vídeo **determinístico** | Serve para T1 e T3, que são cenas 3D abstratas, não filmagem |
+| Licença e custo | Apache 2.0; sem taxa por render; CLI local não pede conta nem chave | Custo **zero**. Some o orçamento de créditos |
+| Como renderiza | Chrome *headless* busca cada quadro; FFmpeg codifica. Saída MP4, MOV, WebM, GIF ou sequência PNG | A saída em PNG entra direto no `gen-imagens`, sem extrair de MP4 |
+| Requisitos | Node.js 22+ e FFmpeg | O CI do site usa Node 20. O HyperFrames **não** entra no `package.json`: roda por `npx` numa pasta à parte, na máquina de quem gera (notebook do Issei ou nuvem, que tem Node 22 e FFmpeg) |
+| Animação | GSAP, CSS, Lottie, **Three.js**, Anime.js, WAAPI; a linha do tempo fica pausada e registrada em `window.__timelines` | Os ambientes Three.js da página (§5.3) viram a composição. Mesmo código, mesma câmera |
+| Determinismo | "Mesma entrada, mesmo vídeo" | O render é reprodutível e verificável no gate (hash) |
+| O que **não** faz | Não gera filmagem nem imagem fotorrealista. Avatar, vídeo, voz e música por IA são serviços da HeyGen (plano Pro ou API de nuvem), **pagos** | Os planos de IA "CRT realista" e "cidade vista de cima" viram cenas 3D estilizadas. G1 (storyboard por IA) sai do plano |
+| Limites citados | Studio "em evolução"; render numa máquina só é mais lento; áudio com animação buscável é delicado | Sem efeito: 2 trechos de 2 s, sem áudio |
+
+**Recomendação:** adotar o HyperFrames para T1, T3 e os pôsteres. Ganho
+principal além do custo: a costura deixa de depender de um modelo generativo
+acertar o quadro inicial e final; ela é garantida pelo código. Perda: o
+"fotorrealismo de IA" do plano original. Essa perda conversa com a direção da
+nova home (fotografia real, sem vídeo de IA) e com a decisão pendente D-H6.
+
 ### 6.1 Ordem e portões
 
 Cada portão é uma aprovação do Issei. Nada é gerado antes do portão anterior.
+Nenhum passo gasta crédito.
 
-| Passo | O quê | Ferramenta | Custo estimado* | Portão |
+| Passo | O quê | Ferramenta | Custo | Portão |
 | :-- | :-- | :-- | :-- | :-- |
 | G0 | Texto final dos 5 atos + toques pessoais (D-TC-1) | Claude | 0 | Issei aprova o texto |
-| G1 | Storyboard a lápis, 12 planos | Higgsfield `generate_image` (`gpt_image_2_6`, 16:9) | 12 × 0,75 = **9 créditos** | Issei aprova a câmera |
-| G2 | Ambientes 3D mínimos (F2) e render dos 4 quadros de costura | Three.js + `render-chaves.mjs` | 0 | Revisão visual |
-| G3 | Teste T1 em rascunho 480p (`draft: true`) | `seedance_2_5`, 4 s | consultar com `estimate_video_cost` antes | Issei aprova a costura |
-| G4 | T1 final (720p) a partir do rascunho aprovado (`draft_job_id`) | `seedance_2_5` | consultar antes | — |
-| G5 | T3 rascunho → final | idem | consultar antes | Issei aprova |
-| G6 | Imagens da quebra de ritmo (mesa, painel) | `generate_image` | 2 × 0,75 = **1,5 crédito** | Issei aprova |
-| G7 | Pôsteres dos 5 atos | render do Three.js (0) ou `generate_image` | 0 a 3,75 | — |
+| G1 | Storyboard de 12 planos em quadros conceituais SVG/PNG (mesmo método do storyboard da home) | `scripts` locais + Playwright | 0 | Issei aprova a câmera |
+| G2 | Ambientes 3D mínimos (F2) e os 4 quadros de costura | Three.js + `render-chaves.mjs` | 0 | Revisão visual |
+| G3 | Composição T1 + render de rascunho 480p | HyperFrames (`npx hyperframes preview` e `render`) | 0 | Issei aprova o movimento |
+| G4 | T1 final 1280×720, 24 qps, sequência PNG | HyperFrames | 0 | — |
+| G5 | T3: composição → rascunho → final | HyperFrames | 0 | Issei aprova |
+| G6 | Imagens da quebra de ritmo (mesa, painel) | Fotos reais da sessão da home (D-H2, cenas 03 e 05) ou captura real de painel sem dado | 0 | Issei aprova |
+| G7 | Pôsteres dos 5 atos | Quadro escolhido de cada ambiente, render pelo HyperFrames ou `render-chaves.mjs` | 0 | — |
 
-\* Custos consultados em 2026-11-24 na conta do Issei (plano gratuito, 10
-créditos): vídeo 4 s 720p sem áudio = 28 créditos (`seedance_2_5`) ou 20
-(`seedance_2_5_flash`); imagem = 0,75. **Orçamento total estimado: ~70 créditos**
-(2 vídeos finais sem nova tentativa + rascunhos + ~15 imagens) **a ~130
-créditos** (com uma nova tentativa por vídeo). O custo do rascunho 480p é
-consultado antes, no G3. Regra: chamar `estimate_video_cost`/`estimate_image_cost` e mostrar
-o valor ao Issei antes de cada geração; nunca gerar sem o "pode".
+### 6.2 Composição (substitui os parâmetros de modelo)
 
-### 6.2 Parâmetros fixos dos vídeos
+Cada transição é uma pasta `assets-fonte/trajetoria/hyperframes/<t1|t3>/`
+criada por `npx hyperframes init`. O `index.html` importa o módulo de ambiente
+da página e expõe uma linha do tempo pausada:
 
-```json
-{
-  "model": "seedance_2_5",
-  "mode": "omni_reference",
-  "duration": 4,
-  "resolution": "720p",
-  "aspect_ratio": "16:9",
-  "generate_audio": false,
-  "medias": [
-    { "role": "start_image", "value": "<media_id de t1-ini.png>" },
-    { "role": "end_image",   "value": "<media_id de t1-fim.png>" }
-  ]
-}
+```html
+<!-- assets-fonte/trajetoria/hyperframes/t1/index.html (esboço) -->
+<canvas id="cena" width="1280" height="720"
+        data-start="0" data-duration="2" data-track-index="0"></canvas>
+<script type="module">
+  import { criarTransicao } from '../../../../src/js/trajetoria/transicoes/t1.js';
+  const amb = await criarTransicao(document.getElementById('cena'), { nivel: 'alto' });
+  // Linha do tempo buscável: t vai de quadroDeCostura('fim') do Ato I
+  // a quadroDeCostura('ini') do Ato II. Sem relógio próprio, sem Math.random.
+  window.__timelines = [{ duration: 2, seek: (s) => amb.renderEm(s / 2) }];
+</script>
 ```
 
-Sem áudio (a página não tem som). 720p basta: o quadro de computador é
-1280×720.
+Regras:
 
-### 6.3 Prompts (versão 1, em inglês, como o modelo prefere)
+- **Sem aleatoriedade** fora de semente fixa; sem `performance.now()` dentro
+  do quadro. É o que garante o determinismo.
+- Saída: sequência PNG 1280×720, 24 qps, 2 s (48 quadros), sem áudio.
+- O `package.json` da pasta fixa a versão do HyperFrames (versão exata, não
+  `latest`), para o render ser reprodutível.
+- O mesmo módulo de ambiente roda na página e na composição. Mudou o
+  ambiente, o render é refeito (o gate acusa pelo hash, §6.4).
 
-Regras comuns, coladas no fim de todo prompt:
-`No text, no letters, no numbers, no logos, no faces, no recognizable people,
-no flicker, no flashes, no camera shake. Background #0d1117. Accent light only
-#007bff to #8a2be2. Subtle film grain.`
+### 6.3 Descrição das transições (substitui os prompts)
 
-| Id | Prompt |
-| :-- | :-- |
-| SB-01…12 | `Rough pencil storyboard sketch, graphite on off-white paper, 16:9 frame with thin border, arrows showing camera movement. Shot: <descrição do plano §3.3>. Lens <35/85/24>mm.` (estas imagens são rascunho; a regra de fundo escuro não vale para elas) |
-| T1 | `Continuous dolly-in, 35mm lens, into a dark CRT monitor in a pitch-black room. The single blinking cursor on the screen stretches into one thin glowing blue line that leaves the glass and extends into 3D space. Brief push to 85mm macro on the cursor, back to 35mm. Light comes only from the screen.` |
-| T3 | `Slow crane up, 35mm lens. A small constellation of glowing points connected by thin lines, floating in darkness, gradually reveals itself as the street-light grid of an abstract night city seen from above. Streams of light begin to flow along the grid. Motivated light only.` |
-| Q-mesa | `Night desk scene, 50mm lens, eye level, a single monitor glowing on a dark wooden desk, cool blue screen light, room in deep shadow, minimal objects, no people.` |
-| Q-painel | `Abstract operations dashboard on a monitor, flat dark UI, blue and violet lines and nodes, no readable text, no numbers, no brand.` |
+| Id | Movimento | Construção em Three.js |
+| :-- | :-- | :-- |
+| T1 | *Dolly-in* contínuo, 35 mm, até um monitor escuro; o cursor se estica numa linha que sai do vidro e vai para o espaço; *push* curto para 85 mm e volta | Monitor como caixa com tela emissiva; o fio é o mesmo *shader* da página (UT-3); câmera por curva de Bézier entre as duas chaves de costura |
+| T3 | *Crane up* lento, 35 mm; uma constelação de pontos ligados vira a malha de luzes de uma cidade vista de cima; fluxos de luz correm pela malha | `Points` + `LineSegments` com posições interpoladas entre "constelação" e "grade"; fluxo por deslocamento de UV no *shader* |
 
-Cada prompt usado vira `assets-fonte/trajetoria/prompts/<id>.md` com: texto,
-modelo, parâmetros, `job_id`, custo real, data, tentativa escolhida e motivo.
+Regras visuais comuns: sem texto, letra, número, logo ou rosto; sem pisca, sem
+flash, sem tremor de câmera; luz só do próprio objeto. A paleta segue a
+decisão D-H6 (direção antiga escura com azul/violeta, ou a nova Aizome + Kin).
+
+Cada composição usada fica versionada com `assets-fonte/trajetoria/hyperframes/<id>/NOTAS.md`:
+versão do HyperFrames, comando, tempo de render, data, tentativa escolhida e
+motivo. É a fonte da seção "Como foi feito".
 
 ### 6.4 Pós-processamento (`gen-imagens`, job `trajetoria`)
 
@@ -234,22 +261,32 @@ Entrada: `assets-fonte/trajetoria/manifesto.json`
 
 ```json
 {
-  "t1": { "bruto": "brutos/t1.mp4", "inicio": 0.5, "duracao": 2.0, "qps": 24 },
-  "t3": { "bruto": "brutos/t3.mp4", "inicio": 0.5, "duracao": 2.0, "qps": 24 }
+  "t1": { "quadros": "brutos/t1/", "qps": 24 },
+  "t3": { "quadros": "brutos/t3/", "qps": 24 }
 }
 ```
 
-Passos: `ffmpeg` extrai PNG → `sharp` gera AVIF 1280 e 854 (`quality` 50,
-`effort` 6) → `frames/manifesto.json` com contagem, dimensões e SHA-256 → pôster
-do quadro do meio. `--check` no gate confere hashes. O `ffmpeg` roda só na
-máquina de quem gera (o bruto não está no Git); o gate só confere a saída.
+Passos: a sequência PNG do HyperFrames entra direto (sem extrair de MP4) →
+`sharp` gera AVIF 1280 e 854 (`quality` 50, `effort` 6) →
+`frames/manifesto.json` com contagem, dimensões e SHA-256 → pôster do quadro
+do meio. `--check` no gate confere hashes. O HyperFrames roda só na máquina de
+quem gera (os PNG brutos não estão no Git); o gate só confere a saída.
 
 ### 6.5 Costura invisível: critério de aceite
 
 Para cada transição, a diferença entre o PNG de costura e o 1º/último quadro
-extraído deve ter **SSIM ≥ 0,85** (medido no `gen-imagens --check-costura`).
-Abaixo disso, ou se a curva de câmera do vídeo divergir, a transição volta para
-nova tentativa ou vira corte seco (regra do plano §3.4).
+renderizado deve ter **SSIM ≥ 0,98** (medido no `gen-imagens --check-costura`).
+O limite subiu de 0,85 para 0,98 porque os dois lados saem do mesmo código.
+Abaixo disso, há divergência entre a página e a composição: é defeito, não
+"nova tentativa".
+
+### 6.6 Alternativa paga (fora do plano)
+
+Higgsfield/Seedance (avaliado em 2026-11-24: vídeo 4 s 720p = 20 a 28
+créditos; a conta tem 10) continua possível só se o Issei quiser fotorrealismo
+de IA num trecho e aprovar o custo antes. Nesse caso valem os portões e a
+regra de mostrar o custo antes de cada geração, como na versão anterior deste
+SDD.
 
 ## 7. Testes
 
@@ -320,21 +357,22 @@ Um PR por unidade. Teste antes do código em todas.
 | UT-2 | `interp.js`, `timeline.js`, `modo.js`, `rolagem.js` + testes de unidade; botão de animação; modo estático completo | UT-1 | P |
 | UT-3 | `cena.js` + Ato I e Ato II + fio (shader) + níveis de qualidade | UT-2 | G |
 | UT-4 | Atos III, IV, V + partículas + monograma + quebra de ritmo CSS | UT-3 | G |
-| UT-5 | `render-chaves.mjs` + G1 (storyboard) + G3 (rascunho T1) — **gasta créditos, só com o "pode"** | UT-3 | M |
+| UT-5 | `render-chaves.mjs` + G1 (storyboard SVG) + composição HyperFrames de T1 + G3 (rascunho) — custo zero, mas só com o "pode" do Issei | UT-3 | M |
 | UT-6 | `quadros.js` + worker + job `gen-imagens` + T1 e T3 finais | UT-5 | M |
 | UT-7 | "Como foi feito" + OG + link na Carreira + revisões finais + capturas | UT-6 | P |
 
 UT-1 e UT-2 já entregam uma página publicável. UT-3 e UT-4 entregam o modo
-cinema sem IA (transições por dissolve). UT-5 e UT-6 trocam os dissolves de T1
-e T3 pelos vídeos. Se o orçamento de créditos não vier, a página para em UT-4 e
-continua completa.
+cinema com transições por dissolve. UT-5 e UT-6 trocam os dissolves de T1 e T3
+pelas sequências renderizadas no HyperFrames. Se o render não ficar bom, a
+página para em UT-4 e continua completa.
 
 ## 11. Riscos
 
 | Risco | Efeito | Resposta |
 | :-- | :-- | :-- |
 | Costura com SSIM < 0,85 depois de 2 tentativas | Corte visível | Corte seco ou dissolve 3D (regra do plano §3.4) |
-| Créditos insuficientes | Sem vídeos | Página para em UT-4 (completa) |
+| HyperFrames muda de versão ou quebra | Render diferente | Versão exata fixada na pasta da composição; o gate confere os hashes da saída. Se quebrar, a página para em UT-4 (completa) |
+| Node 22+ exigido pelo HyperFrames, CI do site em Node 20 | Conflito de versão | HyperFrames fora do `package.json` do site; roda só por `npx` na pasta da composição |
 | Ambientes 3D tomam mais tempo que o previsto | Atraso | UT-3 e UT-4 aceitam primeiro versões simples (fio + partículas); detalhes depois |
 | Estética genérica ("tech" padrão) | Página impessoal | Toques pessoais (D-TC-1) e a seção "Como foi feito" |
 | Atualização do `cv.json` deixa a página velha | Fato errado publicado | `trajetoria.fatos.test.mjs` no gate |
