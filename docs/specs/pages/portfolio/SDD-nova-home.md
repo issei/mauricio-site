@@ -89,14 +89,16 @@ outras páginas.
 | Fonte | O que é | Uso possível |
 | :-- | :-- | :-- |
 | `elementos-visuais/retrato/retrato-original.jpg` | Foto real (blazer azul) | Cenas 01 e 07 (sem novo recorte) |
-| Miniaturas e quadros dos vídeos do canal (YouTube, `i.ytimg.com/vi/<id>/`) | Gravações reais do Issei | Sessão 03; quadros de gravação na 01 (dimensão "ensinar") |
+| `public/fotos/` (usadas em `/life`) | Fotos antigas reais: `callcenter.jpg` (2000–2002), `formatura.jpg`, `programa.jpg` (2005), `eldorado.jpg` (o local, sem o Issei) | Marcos da linha do tempo na cena 07, se o Issei aprovar. As fotos de família (`casamento`, `filha`, `gemeos`, `careca`, `1982`) ficam só em `/life` |
+| Miniaturas e quadros dos vídeos do canal (YouTube, `i.ytimg.com/vi/<id>/`) | Vídeos do canal. **A confirmar** em quais o Issei aparece: o canal começou com áudio gerado no NotebookLM | Sessão 03; quadro de gravação na cena 06 só de vídeo em que o Issei aparece |
 | Capturas das páginas reais do site (cases, simulador, apresentação) | Registros reais de projeto | Sessão 04 |
 | TGI 2004 (`estudos/tgi-edi-2004/extraido/imagens/`) | Diagramas reais do trabalho acadêmico | Sessão 01 (dimensão "estudar") — **só com aprovação**, porque o TGI não é publicado (decisão de 2026-11-04) |
 | `public/og-*.png` | Capas geradas, com texto | **Não usar** (não são fotos; trazem texto em imagem) |
 
-**Achado principal:** só existe **uma** foto real do Issei. A sessão 01 pede
-uma sequência de fotos das oito dimensões. Sem novas fotos, a abertura vira um
-retrato e capturas de tela. O §8 traz a lista de fotos a fazer (D-H2).
+**Achado principal:** existe **um** retrato atual do Issei. As outras fotos
+reais são antigas e servem à linha do tempo, não às cenas de trabalho. A
+sessão 01 pede uma sequência de fotos das oito dimensões. Sem novas fotos, a
+abertura vira um retrato e capturas de tela. O §8 traz a lista de fotos a fazer (D-H2).
 
 ### 1.4 Conflitos com as regras do repositório
 
@@ -711,7 +713,7 @@ foto real da mesma posição, ou a cena sai (plano B).
 | Firefox sem scroll-driven animations | Vê o mosaico estático, que é completo |
 | A home destoa das outras páginas | Não destoa no tema: todas são escuras, e cabeçalho e rodapé comuns são os mesmos. A H-1 testa a navegação real Home → `/curriculo` e Home → `/catalogo` para conferir a passagem do índigo para o `#0d1117` |
 | `sticky` alto cansa no celular | S01 fica entre 200 e 260 vh no celular, e as cenas 03, 05, 07 e 09 mudam de composição (§4.3) |
-| Sessão 01 longa demais com 7 cenas | Altura é referência (300–360 vh) e tem teto; a H-2 calibra com capturas e encurta faixas antes de aumentar altura (§3.5) |
+| Sessão 01 longa demais com 6 cenas | Altura é referência (300–360 vh) e tem teto; a H-2 calibra com capturas e encurta faixas antes de aumentar altura (§3.5) |
 | Fotos escuras (cenas 05 e 06) somem no fundo índigo | Fio `--hm-shoji-strong` em M1 nessas cenas; a penumbra `--hm-aizome-deep` só em volta da foto da noite (§4.1) |
 
 ---
