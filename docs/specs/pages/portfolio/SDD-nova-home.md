@@ -28,7 +28,7 @@ A nova `index` tem **quatro sessões** que formam um só percurso visual:
 
 O elemento de continuidade é **a moldura**: um retângulo de fotografia que
 nasce na abertura, muda de escala e de posição a cada sessão e no fim se
-divide nas quatro molduras dos projetos. Junto dela corre **um traço vermelho**
+divide nas quatro molduras dos projetos. Junto dela corre **um traço dourado *Kintsugi***
 fino, o único elemento gráfico da página. Não há partículas, 3D, vídeo de IA
 nem efeito decorativo.
 
@@ -41,8 +41,9 @@ A ordem das cenas, os gestos e a narração seguem o
 [storyboard](storyboard/storyboard-home.md), revisão 2: **9 cenas em 4
 sessões** (cenas 01–06 na sessão 01; cena 07 na 02; cena 08 na 03; cena 09
 na 04). Toda a narração usa a mesma voz, em primeira pessoa. O tema
-(claro ou "Escuro Editorial") é decidido depois do protótipo estático da H-1
-(§4.1, D-H1).
+é **Aizome + Kin** (D-H1 decidida): índigo profundo, texto claro e um único
+acento em ouro fosco. A home segue o *Pure Dark Mode* do `AGENTS.md`, como as
+outras páginas.
 
 ---
 
@@ -54,10 +55,10 @@ na 04). Toda a narração usa a mesma voz, em primeira pessoa. O tema
 | :-- | :-- | :-- |
 | Estrutura | 5 seções: hero com retrato, Sobre, Temas (10), Provas, Destaques; 839 linhas | Fica longa e com cara de catálogo; a nova home corta para 4 sessões |
 | Geração | Bloco `PF:*` gerado por `scripts/gen-portfolio.mjs` a partir do `cv.json`, **o mesmo bloco** em `index.html` e `curriculo.html` | A home precisa de bloco próprio (`HM:*`); o `/curriculo` continua com o `PF:*` |
-| Estilo | Tema escuro Dark Tech + 7 cores de linha (`--pf-l-*`, ADR-pf-001) | Conflito com a base clara pedida (§1.4) |
+| Estilo | Tema escuro Dark Tech + 7 cores de linha (`--pf-l-*`, ADR-pf-001) | A home continua escura (Aizome + Kin, §4.1). As 7 cores de linha ficam só em `/curriculo` e `/catalogo` |
 | Movimento | Entradas Animate.css por `animation-timeline: view()` (PR #218); hero excluído | Mesmo mecanismo serve; os efeitos mudam |
 | Transição entre páginas | Família `site` (PR #208): `vt-nome` e `vt-papel` ligam o hero da home ao da Carreira | Manter `vt-nome` no `<h1>` da nova home |
-| Retrato | `/img/retrato-{192,480,960}.{avif,webp}` (PR #220), fundo escurecido | Serve; a versão de fundo claro precisa ser refeita a partir de `retrato-original.jpg` |
+| Retrato | `/img/retrato-{192,480,960}.{avif,webp}` (PR #220), fundo escurecido | Serve. O retrato atual entra já na H-1, harmonizado com o fundo índigo (§4.4); não precisa de recorte |
 | JSON-LD | `Person` com `image` (sincronizado à mão em `index.html`) | Preservar |
 
 ### 1.2 Mapa de páginas (`specs/ecosystem.nav.yaml` 2.1.0)
@@ -87,7 +88,7 @@ na 04). Toda a narração usa a mesma voz, em primeira pessoa. O tema
 
 | Fonte | O que é | Uso possível |
 | :-- | :-- | :-- |
-| `elementos-visuais/retrato/retrato-original.jpg` | Foto real (blazer azul) | Sessão 02 (precisa de versão em fundo claro) |
+| `elementos-visuais/retrato/retrato-original.jpg` | Foto real (blazer azul) | Cenas 01 e 07 (sem novo recorte) |
 | Miniaturas e quadros dos vídeos do canal (YouTube, `i.ytimg.com/vi/<id>/`) | Gravações reais do Issei | Sessão 03; quadros de gravação na 01 (dimensão "ensinar") |
 | Capturas das páginas reais do site (cases, simulador, apresentação) | Registros reais de projeto | Sessão 04 |
 | TGI 2004 (`estudos/tgi-edi-2004/extraido/imagens/`) | Diagramas reais do trabalho acadêmico | Sessão 01 (dimensão "estudar") — **só com aprovação**, porque o TGI não é publicado (decisão de 2026-11-04) |
@@ -101,10 +102,11 @@ retrato e capturas de tela. O §8 traz a lista de fotos a fazer (D-H2).
 
 | Regra atual | Pedido | Tratamento proposto |
 | :-- | :-- | :-- |
-| `AGENTS.md`: "Pure Dark Mode. Never use light backgrounds" | Base clara (papel, off-white) | **Exceção registrada** só para `src/index.html` + `src/home.css`, namespace `hm-`, em `ADR-pf-002` (mesmo modelo das exceções `ap-` e `pf-`). Antes da ADR, a base clara é comparada com a variante **"Escuro Editorial"** (§4.1) no protótipo estático da H-1. Ver D-H1 |
-| Paleta Dark Tech (`#0d1117`, acentos `#007bff`/`#8a2be2`) | Paleta editorial (papel, tinta, vermelho *shu*) | As duas variantes usam paleta própria, fora da Dark Tech. A "Escuro Editorial" cumpre "nunca fundo claro", mas **também precisa** da `ADR-pf-002`, como a exceção `ap-`. O que muda entre as variantes é só o texto da exceção |
+| `AGENTS.md`: "Pure Dark Mode. Never use light backgrounds" | Base editorial | **Sem conflito.** A home usa a paleta escura **Aizome + Kin** (§4.1). Não há fundo claro, então **não há** exceção de tema nem `ADR-pf-002` |
+| Paleta Dark Tech (`#0d1117`, acentos `#007bff`/`#8a2be2`) | Paleta editorial oriental, com contenção | Fundo índigo-carvão `#0D1219`, próximo do `#0d1117`; um só acento, ouro fosco `--hm-kin`, no lugar do gradiente. Os tokens `--hm-*` vivem só em `src/home.css` e ficam registrados no `AGENTS.md` numa linha (namespace `hm-`, como `pf-`), sem ADR. O gradiente azul–violeta não aparece na home |
+| 7 cores de linha (`--pf-l-*`, ADR-pf-001) | Contenção (*Shibui*) | As 7 cores ficam restritas a `/curriculo` e `/catalogo`. A home tem **um único acento contínuo** (`--hm-kin`) e divisórias de 1 px (*Shoji*) |
 | "Inter para tudo" | "Tipografia editorial, elegante" | Inter continua no texto; uma família serifada só nos títulos de sessão. Ver D-H4 |
-| Cabeçalho comum escuro | Página clara | Variante clara do cabeçalho só na home, por custom properties. Na "Escuro Editorial", o cabeçalho comum troca só as cores para os tokens `--hm-*`. Ver D-H5 |
+| Cabeçalho e rodapé comuns escuros | Página escura | **Sem variante.** Cabeçalho e rodapé comuns continuam como em `/curriculo`, `/catalogo` e `/videos` (D-H5 decidida) |
 | Plano da trajetória (PR #231): partículas, grafo, vídeo de IA | "Não usar partículas, redes, efeitos tecnológicos" | A nova direção vale para a home. A página `/trajetoria` fica em pausa até o Issei dizer se a direção dela muda também. Ver D-H6 |
 
 ---
@@ -123,8 +125,10 @@ Regras de composição:
    celular.
 3. **Assimetria equilibrada:** grade de 12 colunas; imagem e texto nunca
    centrados juntos, exceto no título da abertura.
-4. **Vermelho com moderação:** no máximo **um** elemento vermelho visível por
-   quadro (o traço, um número de sessão ou o foco do botão).
+4. **Ouro com contenção (*Shibui*):** no máximo **um** elemento em
+   `--hm-kin` visível por quadro (o traço, um número de sessão, os cantos de
+   M1 ou o foco). Divisórias e molduras usam fio de 1 px (*Shoji*), quase
+   invisível.
 5. **Foto documental:** luz natural, sem filtro, sem recorte de fundo
    artificial, sem imagem gerada por IA.
 
@@ -146,10 +150,10 @@ uma dimensão cada viravam uma lista de slogans (storyboard §9).
 
 ```
 ┌───────────────────────────────────────────────────────────┐
-│ [cabeçalho comum, variante do tema]                       │
+│ [cabeçalho comum, escuro como nas outras páginas]         │
 │                                                           │
 │   01                                      ┌────────────┐  │
-│   ─ (traço vermelho)                      │            │  │
+│   ─ (traço dourado Kintsugi)              │            │  │
 │                                           │  retrato   │  │
 │   Maurício Yokoyama Issei   ← h1, vt-nome │  real 4:5  │  │
 │                                           │  (M1)      │  │
@@ -170,7 +174,7 @@ estática: nenhuma informação dela depende de animação.
 
 **Ao rolar (palco fixo por `position: sticky`):** a moldura M1 recebe as cenas
 02–06. O texto da cena 01 reduz e fica parado no alto da coluna de texto
-(número 01 e nome). Cada cena tem uma frase de narração na área de papel.
+(número 01 e nome). Cada cena tem uma frase de narração na área de texto, fora da foto.
 
 | Faixa | Cena | Dimensões | Imagem (§8) | "Câmera" | Narração (storyboard §6) |
 | :-- | :-- | :-- | :-- | :-- | :-- |
@@ -199,7 +203,7 @@ dissolve para o retrato: o rosto passa de uma imagem para a outra.
 ┌───────────────────────────────────────────────────────────┐
 │  ┌──────────────────┐                                     │
 │  │                  │          02                         │
-│  │   retrato real   │          │ (traço vermelho vertical)│
+│  │   retrato real   │          │ (traço dourado vertical) │
 │  │   (5 colunas)    │                                     │
 │  │                  │          Minha história             │
 │  │                  │                                     │
@@ -209,7 +213,7 @@ dissolve para o retrato: o rosto passa de uma imagem para a outra.
 │   Legenda: lugar e ano          contratos e sistemas em   │
 │                                 produção.                 │
 │                                 ● 1997 ● 2003 ● 2012      │
-│                                 ● 2018 ● 2025             │
+│                                 ● 2018 ● 2024–hoje        │
 │                                 Conheça minha história →  │
 └───────────────────────────────────────────────────────────┘
 ```
@@ -219,11 +223,11 @@ dissolve para o retrato: o rosto passa de uma imagem para a outra.
 - Parallax discreto: a foto anda 4 % mais devagar que a rolagem.
 - **Cinco marcos** no traço vertical, de 1997 até hoje: 1997 curso técnico em
   processamento de dados · 2003 Java na Sysgen · 2012 liderança de time na
-  Indra · 2018 Tech Lead na Rede, até hoje · 2025 começo a publicar sobre
-  engenharia e IA. Fontes: `cv.json` (`Experiencia`; Rede "fev de 2018 – o
-  momento") e a data do primeiro vídeo do canal (`content/videos/`,
-  2025-10-23). O gerador lê os anos; o texto de cada marco fica em
-  `home.data.mjs`.
+  Indra · 2018 Tech Lead na Rede · **2024–hoje** arquitetura, IA aplicada,
+  engenharia de agentes e ensino. O último marco é aberto ("hoje") e liga a
+  liderança e a operação à fase atual de estudos e projetos. Fontes: `cv.json`
+  (`Experiencia`; Rede "fev de 2018 – o momento") e o texto do marco
+  2024–hoje definido pelo Issei. O texto de cada marco fica em `home.data.mjs`.
 - **Saída para 03:** a moldura do retrato reduz para 1/3 da altura e desliza
   para a direita; duas novas molduras entram por trás, deslocadas (sobreposição).
 
@@ -280,7 +284,7 @@ dissolve para o retrato: o rosto passa de uma imagem para a outra.
 │                                                           │
 │  Conheça meus projetos →                                  │
 ├───────────────────────────────────────────────────────────┤
-│ Contato (rodapé comum, variante do tema)                  │
+│ Contato (rodapé comum, escuro)                            │
 └───────────────────────────────────────────────────────────┘
 ```
 
@@ -289,7 +293,7 @@ dissolve para o retrato: o rosto passa de uma imagem para a outra.
   (pensar → … → sustentar) em que ele mais se apoia. A lista sai do YAML pelo
   gerador; não é digitada.
 - As molduras entram em sequência (4 × 4 % da faixa), por `clip-path`.
-- O traço vermelho, que acompanhou toda a página, termina como sublinhado do
+- O traço dourado, que acompanhou toda a página, termina como sublinhado do
   link "Conheça meus projetos".
 - **Voz:** os textos de apoio das sessões 02–04 seguem a voz das cenas 02–06
   (primeira pessoa, frase curta, atrito real). A home não usa "resultados",
@@ -320,69 +324,61 @@ a primeira tela já entrega identidade e caminhos.
 
 ## 4. Direção visual
 
-### 4.1 Cores (tokens `--hm-*`, só em `src/home.css`)
+### 4.1 Cores — paleta "Aizome + Kin" (tokens `--hm-*`, só em `src/home.css`)
 
-A home tem **duas variantes de tema** com os **mesmos tokens**. O protótipo
-estático da H-1 mostra as duas, e o Issei escolhe uma (D-H1). A variante que
-não for escolhida sai do código antes da H-2.
+A home tem **um tema só**, escuro: índigo profundo (*Aizome*), texto claro e
+um acento em ouro fosco (*Kintsugi*). Os nomes vêm da tradição japonesa e
+descrevem o papel de cada token; nenhum ornamento oriental entra na página.
 
-| Variante | Seletor | Papel |
-| :-- | :-- | :-- |
-| **Clara** (base proposta) | `:root` (padrão) | Papel off-white, tinta escura |
-| **Escuro Editorial** (para validação) | `:root[data-hm-theme="escuro"]` | Papel escuro quente, tinta clara |
+Contrastes medidos (WCAG 2.2, sobre os fundos de texto):
 
-#### Variante clara
-
-Contrastes medidos (WCAG, sobre os dois fundos):
-
-| Token | Valor | Uso | Sobre `#F4F1EA` | Sobre `#EAE5DA` |
+| Token | Valor | Uso | Sobre `#0D1219` | Sobre `#141B25` |
 | :-- | :-- | :-- | :-- | :-- |
-| `--hm-papel` | `#F4F1EA` | fundo principal | — | — |
-| `--hm-papel-2` | `#EAE5DA` | faixas alternadas, legendas | — | — |
-| `--hm-tinta` | `#1F1F1F` | títulos | 14,6:1 | 13,1:1 |
-| `--hm-grafite` | `#2E2E2E` | texto | 12,0:1 | 10,8:1 |
-| `--hm-cinza` | `#5A5650` | legendas, metadados | 6,5:1 | 5,8:1 |
-| `--hm-shu` | `#9E1B22` | traço, números de sessão, foco, texto vermelho | 7,1:1 | 6,4:1 |
-| `--hm-shu-claro` | `#B7282E` | só elementos gráficos (não texto pequeno) | 5,6:1 | 5,0:1 |
-| `--hm-moldura-borda` | `transparent` | fio da moldura M1 (sem fio no tema claro) | — | — |
-
-#### Variante "Escuro Editorial"
-
-Mesmos tokens, outros valores. Contrastes medidos (WCAG, sobre os dois fundos):
-
-| Token | Valor | Uso | Sobre `#161513` | Sobre `#1E1C19` |
-| :-- | :-- | :-- | :-- | :-- |
-| `--hm-papel` | `#161513` | fundo principal | — | — |
-| `--hm-papel-2` | `#1E1C19` | faixas alternadas, legendas | — | — |
-| `--hm-tinta` | `#F2EFE9` | títulos | 15,9:1 | 14,8:1 |
-| `--hm-grafite` | `#D8D3C8` | texto | 12,2:1 | 11,4:1 |
-| `--hm-cinza` | `#A39D93` | legendas, metadados | 6,8:1 | 6,3:1 |
-| `--hm-shu` | `#E85D54` | traço, números de sessão, foco, links | 5,3:1 | 5,0:1 |
-| `--hm-shu-claro` | `#C93B36` | **só gráficos** (traço, fio, marcador); nunca texto | 3,6:1 | 3,4:1 |
-| `--hm-moldura-borda` | `rgba(242, 239, 233, 0.10)` | fio de 1 px em volta de M1 nas cenas noturnas (cenas 05 e 06), para a foto escura não se fundir com o fundo | ~1,3:1 | — |
+| `--hm-aizome` | `#0D1219` | fundo principal (índigo-carvão, *Kachi-iro*) | — | — |
+| `--hm-aizome-2` | `#141B25` | superfície elevada, faixas alternadas | — | — |
+| `--hm-aizome-deep` | `#080C11` | penumbra; só na cena 05 (noite) | — | — |
+| `--hm-tinta` | `#F2EFE9` | títulos | 16,4:1 (AAA) | 15,1:1 (AAA) |
+| `--hm-grafite` | `#D0CCC3` | corpo de texto | 11,7:1 (AAA) | 10,8:1 (AAA) |
+| `--hm-cinza` | `#8F97A4` | legendas, metadados | 6,4:1 (AA) | 5,9:1 (AA) |
+| `--hm-kin` | `#D4AF6A` | número de sessão, traço contínuo, cantos de M1, foco, CTAs | 9,1:1 (AAA) | 8,4:1 (AAA) |
+| `--hm-shoji` | `rgba(242, 239, 233, 0.08)` | divisórias decorativas, fio de moldura de foto | 1,2:1 | — |
+| `--hm-shoji-strong` | `rgba(242, 239, 233, 0.16)` | fio de M1 nas cenas escuras (05 e 06), molduras de foto | 1,5:1 | — |
+| `--hm-borda-controle` | `#5F6979` | borda de controle interativo (botão, campo) | 3,4:1 | 3,1:1 |
 
 ```css
-:root[data-hm-theme="escuro"] {
-  --hm-papel: #161513;  --hm-papel-2: #1E1C19;
-  --hm-tinta: #F2EFE9;  --hm-grafite: #D8D3C8;  --hm-cinza: #A39D93;
-  --hm-shu: #E85D54;    --hm-shu-claro: #C93B36;
-  --hm-moldura-borda: rgba(242, 239, 233, 0.10);
+:root {
+  --hm-aizome: #0D1219;  --hm-aizome-2: #141B25;  --hm-aizome-deep: #080C11;
+  --hm-tinta: #F2EFE9;   --hm-grafite: #D0CCC3;   --hm-cinza: #8F97A4;
+  --hm-kin: #D4AF6A;
+  --hm-shoji: rgba(242, 239, 233, 0.08);
+  --hm-shoji-strong: rgba(242, 239, 233, 0.16);
+  --hm-borda-controle: #5F6979;
 }
 ```
 
-Regras das duas variantes:
+Regras:
 
-- O vermelho é o *beni/shu* (vermelho de selo). No claro, `--hm-shu` passa
-  de 4,5:1 e serve para texto AA. No escuro, `--hm-shu` passa de 4,5:1 (texto
-  e links); `--hm-shu-claro` só passa de 3:1, por isso só serve para elemento
-  gráfico (WCAG 1.4.11).
-- `--hm-moldura-borda` é decorativo: a moldura não é componente de interface
-  nem carrega informação, então o 1.4.11 não se aplica. No claro, o valor é
-  `transparent`.
-- Foco visível: contorno 2 px `--hm-shu` + 2 px de afastamento (≥ 3:1 sobre
-  papel e sobre foto, com halo de `--hm-papel`). Vale igual nas duas variantes.
-- Nenhum token tem valor escrito fora de `src/home.css`. A troca de variante é
-  só o atributo `data-hm-theme` no `<html>` (§6.1).
+- **Um acento só.** `--hm-kin` é o único elemento de cor da home. As 7 cores
+  de linha (`--pf-l-*`) não entram (§1.4).
+- **`--hm-shoji` e `--hm-shoji-strong` são só decorativos** (divisórias,
+  molduras de foto). Ficam abaixo de 3:1 de propósito e por isso **nunca**
+  marcam controle, estado ou informação. Um controle interativo usa
+  `--hm-borda-controle` (≥ 3:1, WCAG 1.4.11) ou fundo diferenciado
+  (`--hm-aizome-2`).
+- **`--hm-borda-controle` corrigido:** o valor proposto `#525C6B` mede 2,8:1
+  sobre `#0D1219` e 2,6:1 sobre `#141B25`, abaixo de 3:1. O valor da
+  especificação passa a `#5F6979` (3,4:1 e 3,1:1), mesmo matiz, um pouco mais
+  claro.
+- **`--hm-aizome-deep`** não recebe texto pequeno. Na cena 05, a narração
+  continua sobre `--hm-aizome`.
+- **Foco visível:** `outline: 2px solid var(--hm-kin); outline-offset: 3px`,
+  sempre contra `--hm-aizome` (9,1:1). Em cartão ou foto clara, o foco ganha
+  um halo interno escuro (`box-shadow: 0 0 0 3px var(--hm-aizome)` dentro do
+  contorno), para manter ≥ 3:1 dos dois lados.
+- **Links não dependem só de cor (WCAG 1.4.1):** link de texto tem sublinhado
+  sutil em repouso (`text-decoration-thickness: 1px`, cor `--hm-kin` a 50 %)
+  que fica cheio no foco e no *hover*; CTA tem a seta `→`.
+- Nenhum token tem valor escrito fora de `src/home.css`.
 
 ### 4.2 Tipografia
 
@@ -407,7 +403,7 @@ fazendo o papel editorial.
 #### Celular (< 640 px, 1 coluna)
 
 No celular, M1 fica acima do texto, com largura total menos a margem, e o
-texto fica abaixo, em área de papel. As cenas de várias imagens mudam de
+texto fica abaixo, fora da foto. As cenas de várias imagens mudam de
 composição para não pedir rolagem a mais nem quebrar a continuidade de M1:
 
 | Cena | Computador | Celular | Por quê |
@@ -436,6 +432,11 @@ Regras do celular:
 
 - Proporções fixas: 4:5 (retrato), 3:2 (dimensões), 16:10 (projetos).
 - Tratamento único: leve dessaturação (−10 %), sem vinheta, sem filtro de cor.
+- **Retrato atual na H-1:** `retrato-original.jpg` (blazer azul) entra como
+  está. O fundo azul/magenta da foto é harmonizado com o índigo da página por
+  uma moldura `--hm-shoji-strong` e pelo espaço vazio (*Ma*) em volta, sem
+  recorte de fundo nem filtro de cor. Um retrato novo
+  (D-H2) é melhoria, não bloqueio.
 - `alt` descritivo em toda foto que carrega informação; as fotos da sequência
   01 têm `alt` porque mostram o trabalho real (não são decorativas).
 
@@ -513,7 +514,7 @@ some.
 ### 6.1 HTML (semântica)
 
 ```html
-<html lang="pt-BR" data-hm-theme="escuro"> <!-- só no protótipo da H-1, variante escura; sem o atributo = clara -->
+<html lang="pt-BR">
 …
 <main id="conteudo" class="hm">
   <section class="hm-s01" aria-labelledby="hm-nome">
@@ -563,9 +564,6 @@ some.
   de tela e busca leem tudo, com ou sem animação.
 - Os caminhos do topo (cena 01) são âncoras internas; os CTAs de cada
   sessão levam às páginas de destino.
-- `data-hm-theme` existe só enquanto as duas variantes estão em validação
-  (H-1). Depois de D-H1, o gerador deixa só a variante escolhida e o atributo
-  sai do HTML.
 - Cabeçalho comum e rodapé de contato continuam (gerados como hoje).
 
 ### 6.2 Arquivos
@@ -574,14 +572,13 @@ some.
 | :-- | :-- |
 | `src/index.html` | Novo conteúdo entre `<!-- HM:START -->` e `<!-- HM:END -->`, gerado. Fora do bloco: `<head>` (SEO, JSON-LD, consentimento) como hoje |
 | `src/home.css` | Novo. Tokens `--hm-*`, layout, movimento. Substitui `index.css` **só** na home (o `/curriculo` continua com `index.css`) |
-| `scripts/home/gen-home.mjs` | Novo gerador do bloco `HM:*`. Lê `cv.json` (nome), `ecosystem.nav.yaml` (projetos `experiencia`, destinos), `destaques.mjs` (recentes) e `home.data.mjs` (textos, fotos, tabela de movimento). Na H-1, aceita `--tema=claro|escuro` para gerar o protótipo de cada variante (§11) |
+| `scripts/home/gen-home.mjs` | Novo gerador do bloco `HM:*`. Lê `cv.json` (nome), `ecosystem.nav.yaml` (projetos `experiencia`, destinos), `destaques.mjs` (recentes) e `home.data.mjs` (textos, fotos, tabela de movimento). |
 | `scripts/home/home.data.mjs` | Novo. Textos fixos pedidos pelo Issei, as 9 cenas (dimensões, narração, marcos, imagens com `alt`), tabela de faixas do §3.1 |
 | `scripts/gen-portfolio.mjs` | Para de escrever `PF:*` em `index.html` (só `curriculo.html`) |
 | `scripts/gen-imagens.mjs` | Novo job `home`: fotos em AVIF/WebP 480/960/1600; capturas dos projetos 640/1280 |
 | `assets-fonte/home/` | Originais das fotos + manifesto (fora do build) |
 | `src/transicoes/*` | Nome just-in-time para a moldura de 02 → `/curriculo` |
-| `docs/specs/pages/portfolio/ADR-pf-002-home-editorial.md` | Exceção de tema, com a variante escolhida em D-H1 (escrita **depois** da validação da H-1) |
-| `AGENTS.md` | Registrar a exceção `hm-` (como `ap-` e `pf-`) |
+| `AGENTS.md` | Uma linha registrando o namespace `hm-` (tokens Aizome + Kin só em `src/home.css`; tema escuro mantido, sem exceção de fundo claro) |
 | `src/en/index.html` | Gerado pelo Argos (`npm run i18n:sync` no notebook) |
 | `public/index.md`, `llms*.txt` | Regerados pelos geradores que já existem |
 
@@ -642,7 +639,7 @@ com autorização).
 | # | Foto | Cena | Dimensões |
 | :-- | :-- | :-- | :-- |
 | 1 | Caderno: mãos com caneta, esboço real, livro técnico aberto | 02 (e 08) | pensar · estudar |
-| 2 | Retrato 4:5, olhando para a câmera, fundo conforme o tema de D-H1 | 01, 07 | — |
+| 2 | Retrato 4:5, olhando para a câmera, fundo escuro ou neutro (opcional: o retrato atual já serve, §4.4) | 01, 07 | — |
 | 3 | Quadro branco com diagrama genérico, Issei de perfil | 03 | projetar |
 | 4 | Mãos no teclado, código desfocado | 03 | construir |
 | 5 | Conversa de pé, 2–3 pessoas de costas, Issei ouvindo | 04 | liderar · colaborar |
@@ -654,9 +651,10 @@ Mais: **3 registros** para a sessão 03 (quadro de vídeo do canal, captura de
 página de estudo, caderno) e **4 capturas** dos projetos da sessão 04. Um
 quadro real do canal pode substituir a foto 8.
 
-A sessão de fotos espera D-H1: o fundo do retrato e a luz das cenas dependem
-do tema escolhido. Sem as fotos 1 e 3–7, vale o plano B do storyboard: lançar
-só com as cenas 01, 06 e 07–09.
+A sessão de fotos **não bloqueia** a H-1: o protótipo entra com o retrato
+atual, quadros reais do canal e capturas das páginas. As fotos 1 e 3–7
+enriquecem as cenas 02–05 depois. Sem elas, vale o plano B do storyboard:
+lançar só com as cenas 01, 06 e 07–09.
 
 ---
 
@@ -677,14 +675,19 @@ só com as cenas 01, 06 e 07–09.
 
 ### 9.2 Acessibilidade (WCAG 2.2 AA)
 
-- Contrastes do §4.1 cobertos por `tests/home.tokens.test.mjs`, **para os dois
-  conjuntos de tokens** (`:root` e `:root[data-hm-theme="escuro"]`) enquanto
-  as duas variantes existirem. O teste confere: texto ≥ 4,5:1 sobre
-  `--hm-papel` e `--hm-papel-2`; `--hm-shu-claro` ≥ 3:1 e nunca usado em
-  `color` de texto; `--hm-moldura-borda` igual a `transparent` no claro; e o
-  mesmo conjunto de nomes de token nas duas variantes. Depois de D-H1, o teste
-  fica só com a variante escolhida.
-- Texto sobre foto: nunca. O texto fica sempre em área de papel.
+- Contrastes do §4.1 cobertos por `tests/home.tokens.test.mjs`, que lê os
+  tokens `--hm-*` de `src/home.css` e confere: `--hm-tinta`, `--hm-grafite`,
+  `--hm-cinza` e `--hm-kin` ≥ 4,5:1 sobre `--hm-aizome` e `--hm-aizome-2`;
+  `--hm-borda-controle` ≥ 3:1 sobre os dois fundos; `--hm-shoji` e
+  `--hm-shoji-strong` não aparecem em `border` de `button`, `input`, `select`
+  ou `a` com papel de botão; nenhum hexadecimal fora de `src/home.css`.
+- Controles interativos usam `--hm-borda-controle` ou fundo `--hm-aizome-2`;
+  nunca só `--hm-shoji` (WCAG 1.4.11).
+- Foco: `2px solid var(--hm-kin)`, `outline-offset: 3px`, contra
+  `--hm-aizome`; halo interno escuro sobre cartão ou foto clara (§4.1).
+- Links (WCAG 1.4.1): sublinhado sutil em repouso nos links de texto; seta `→`
+  nos CTAs. Nenhum link depende só da cor dourada.
+- Texto sobre foto: nunca. O texto fica sempre sobre `--hm-aizome` ou `--hm-aizome-2`.
 - Ordem de foco = ordem visual: caminhos → CTA 02 → recentes e CTA 03 →
   projetos e CTA 04 → rodapé.
 - 2.2.2: nenhum movimento automático (tudo depende da rolagem da pessoa).
@@ -699,10 +702,10 @@ só com as cenas 01, 06 e 07–09.
 | :-- | :-- |
 | Fotos não ficam prontas | Lançar com o retrato + quadros reais do canal + capturas; trocar depois sem mudar código (só o manifesto) |
 | Firefox sem scroll-driven animations | Vê o mosaico estático, que é completo |
-| A home clara destoa das páginas escuras | A View Transition da raiz faz a passagem; o cabeçalho comum ancora a identidade. A H-1 testa a navegação real Home → `/curriculo` e Home → `/catalogo` nas duas variantes antes de decidir (D-H1) |
+| A home destoa das outras páginas | Não destoa no tema: todas são escuras, e cabeçalho e rodapé comuns são os mesmos. A H-1 testa a navegação real Home → `/curriculo` e Home → `/catalogo` para conferir a passagem do índigo para o `#0d1117` |
 | `sticky` alto cansa no celular | S01 fica entre 200 e 260 vh no celular, e as cenas 03, 05, 07 e 09 mudam de composição (§4.3) |
 | Sessão 01 longa demais com 7 cenas | Altura é referência (300–360 vh) e tem teto; a H-2 calibra com capturas e encurta faixas antes de aumentar altura (§3.5) |
-| Fotos escuras (cena 05) somem no tema escuro | Fio `--hm-moldura-borda` em M1 nas cenas noturnas (§4.1) |
+| Fotos escuras (cenas 05 e 06) somem no fundo índigo | Fio `--hm-shoji-strong` em M1 nessas cenas; a penumbra `--hm-aizome-deep` só em volta da foto da noite (§4.1) |
 
 ---
 
@@ -710,11 +713,11 @@ só com as cenas 01, 06 e 07–09.
 
 | Id | Pergunta | Recomendação |
 | :-- | :-- | :-- |
-| **D-H1** | Qual tema a home usa: a base **clara** (papel off-white) ou a **"Escuro Editorial"** (§4.1)? As duas exigem exceção à paleta Dark Tech (namespace `hm-`, ADR-pf-002) | **Decidir depois do protótipo estático da H-1**, com as duas variantes lado a lado e a navegação real Home → `/curriculo` e Home → `/catalogo` testada em cada uma. Só então escrever a ADR-pf-002, começar a H-2 e marcar a sessão de fotos (D-H2). Fora da home, as páginas ficam como estão |
-| D-H2 | Você faz as 8 fotos da lista do §8 (com o retrato no fundo do tema de D-H1)? | Sim, **depois de D-H1**; até lá, o protótipo usa retrato + quadros do canal |
+| D-H1 | Qual tema a home usa? | **Decidida (Issei, 2026-11-24):** tema escuro **Aizome + Kin** (§4.1). Mantém o *Pure Dark Mode*; sem `ADR-pf-002` e sem variante clara |
+| D-H2 | Você faz as 8 fotos da lista do §8? | Sim, sem pressa: enriquecem as cenas 02–05 e **não bloqueiam** a H-1 |
 | D-H3 | Para onde vai "Conheça meus projetos"? (a) `/catalogo#projetos`, um grupo novo no catálogo gerado do YAML (`experiencia` + `experimento`); (b) a página do primeiro case; (c) só os 4 cartões, sem CTA | (a): reaproveita o catálogo, não cria página |
-| D-H4 | Usa uma serifada editorial (Shippori Mincho) nos títulos? | Sim, só nos títulos e na mensagem central |
-| D-H5 | O cabeçalho comum segue o tema da home? | Sim, por custom properties, só na home (claro se D-H1 = clara; cores `--hm-*` escuras se D-H1 = Escuro Editorial) |
+| D-H4 | Usa uma serifada editorial nos títulos? | **Decidida:** Shippori Mincho nos títulos de sessão e na mensagem central; Inter no restante |
+| D-H5 | O cabeçalho comum muda na home? | **Decidida:** não. Cabeçalho e rodapé comuns continuam escuros, como em `/curriculo`, `/catalogo` e `/videos` |
 | D-H6 | A página `/trajetoria` (PR #231) segue a direção antiga (escura, partículas) ou passa a seguir esta? | Pausar e alinhar à direção desta home |
 | D-H7 | Pode usar diagramas do TGI 2004 como registro de estudo? | Não por enquanto (o TGI não é publicado) |
 
@@ -722,11 +725,10 @@ só com as cenas 01, 06 e 07–09.
 
 | UT | Conteúdo | Depende de |
 | :-- | :-- | :-- |
-| H-0 | D-H3 e D-H4 decididas | — |
-| H-1 | `gen-home` + `home.data` + HTML estático (mosaico, 9 cenas) + `home.css` sem movimento, **nas duas variantes de tema** (`gen-home --tema=claro` e `--tema=escuro`) + testes de tokens (dois conjuntos), fatos, nojs, mobile, SEO. **Validação do protótipo:** o Issei abre as duas variantes no `npm run preview` (local, nada vai para `main`) e segue a navegação real Home → `/curriculo` e Home → `/catalogo` em cada uma, no computador e no celular. Resultado: D-H1 decidida; depois, `ADR-pf-002`, `AGENTS.md` e remoção da variante não escolhida | H-0 |
-| H-2 | Camada de movimento (cenas 01–09) + calibração da altura da S01 (300–360 vh) + View Transitions + `reduced.spec` + capturas | H-1 e D-H1 |
-| H-3 | Sessão de fotos e fotos reais no `gen-imagens` + `og-index` novo | D-H1 e D-H2 |
+| H-0 | D-H3 decidida; linha do namespace `hm-` no `AGENTS.md` | — |
+| H-1 | `gen-home` + `home.data` + HTML estático (mosaico, 9 cenas) + `home.css` sem movimento, já com a paleta **Aizome + Kin** e o **retrato atual** + testes de tokens, fatos, nojs, mobile, SEO, foco e links. **Validação do protótipo:** navegação real Home → `/curriculo` e Home → `/catalogo` no computador e no celular, e revisão de acessibilidade (contraste, foco, 1.4.1, 1.4.11). As fotos novas (D-H2) não bloqueiam esta UT | H-0 |
+| H-2 | Camada de movimento (cenas 01–09) + calibração da altura da S01 (300–360 vh) + View Transitions + `reduced.spec` + capturas | H-1 |
+| H-3 | Sessão de fotos e fotos reais no `gen-imagens` (cenas 02–05) + `og-index` novo | D-H2 |
 | H-4 | `/en/` (Argos no notebook) + `perf-budget` + revisão a11y e tom + validação com 3–5 pessoas | H-2 |
 
-H-1 já é uma home completa, só sem movimento. Ela só vai para `main` depois de
-D-H1, com uma variante.
+H-1 já é uma home completa e publicável, só sem movimento e com as imagens disponíveis hoje.

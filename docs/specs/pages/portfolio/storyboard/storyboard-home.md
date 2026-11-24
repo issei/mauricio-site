@@ -2,7 +2,7 @@
 id: storyboard-home
 titulo: Storyboard cinematográfico da nova home — "O pensamento em prática"
 data: 2026-11-24
-status: pré-produção, revisão 2 (nada implementado; nenhuma imagem gerada por IA)
+status: pré-produção, revisão 3 (Aizome + Kin) (nada implementado; nenhuma imagem gerada por IA)
 leitor: Issei (aprovação), fotógrafo/produção e quem planejar o scroll
 base: SDD-nova-home.md (docs/specs/pages/portfolio/)
 ---
@@ -72,7 +72,7 @@ Do rosto na gravação, a moldura recua e volta a ser o retrato, agora ao lado
 de cinco marcos da trajetória, de 1997 até hoje (Minha história). O retrato recua e, por trás
 dele, deslizam três registros reais de estudo e publicação (Minhas ideias).
 Esses registros se alinham e se dividem em quatro capturas de projetos reais
-(Meus projetos). O traço vermelho que acompanhou toda a página termina como
+(Meus projetos). O traço dourado que acompanhou toda a página termina como
 sublinhado do último link, e o rodapé de contato aparece sem tela de
 encerramento.
 
@@ -84,13 +84,13 @@ de ler uma frase.
 
 | Aspecto | Direção |
 | :-- | :-- |
-| Base | Papel `#F4F1EA`, papel escuro `#EAE5DA`, tinta `#1F1F1F`, grafite `#2E2E2E`, cinza `#5A5650`; vermelho *shu* `#9E1B22` em **um** elemento por quadro (SDD §4.1) |
+| Base | Paleta **Aizome + Kin** (SDD §4.1): fundo índigo-carvão `#0D1219`, superfície `#141B25`, penumbra `#080C11` (só cena 05); tinta `#F2EFE9`, texto `#D0CCC3`, legenda `#8F97A4`; ouro fosco *Kintsugi* `#D4AF6A` em **um** elemento por quadro; divisórias de 1 px (*Shoji*). Cabeçalho e rodapé comuns, escuros, como no resto do site |
 | Fotografia | Documental, luz natural lateral (janela), sem flash, sem fundo removido, sem filtro. Leve dessaturação (−10 %) na pós, igual em todas. 3:2 nas cenas, 4:5 no retrato |
 | Pessoas | O Issei é o único rosto em primeiro plano. Outras pessoas aparecem de costas ou fora de foco, com autorização |
 | Lente (equivalente 35 mm) | 35 mm nos planos de ambiente, 50 mm nos médios, 85 mm nos detalhes (mãos, caderno). Sem grande-angular extrema |
 | Câmera simulada | Só quatro gestos: *push-in* (aproximar, escala até 1,06), *pull-out*, *pan* lateral (pelo enquadramento da foto) e cortina (revelação por máscara). Nenhuma rotação |
 | Tipografia | Nome em Inter 600; mensagem e títulos de sessão em serifada editorial (proposta: Shippori Mincho); texto em Inter 400 |
-| Elemento recorrente | **A moldura (M1)**: o retângulo da foto que viaja entre as cenas. **O traço vermelho**: 48 px sob o número da sessão; vira linha vertical na S02 e sublinhado no fim |
+| Elemento recorrente | **A moldura (M1)**: o retângulo da foto que viaja entre as cenas, com fio *Shoji* e cantos em ouro. **O traço dourado *Kintsugi***: 48 px sob o número da sessão; vira linha vertical na S02 e sublinhado no fim |
 | Som | **Nenhum.** A página não toca áudio. A "narração" é texto curto na tela, escrito em primeira pessoa. Se um dia houver versão em vídeo do mesmo roteiro, a narração serve como locução (ver §6) |
 | Ritmo | Imagem longa, troca curta: cada foto fica ~12 % da faixa, a troca ocupa ~3 %. Texto parado enquanto a imagem anda |
 
@@ -109,12 +109,12 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | Ficha | |
 | :-- | :-- |
 | **A. Identificação** | Sessão 01 · Apresentação · Objetivo: responder em 3 s quem é, o que faz e o que há no site |
-| **B. Composição** | Retrato 4:5 à direita (colunas 8–11), olhando para a câmera, meio corpo. À esquerda, em área de papel: número 01 com traço vermelho, nome, mensagem, subtítulo, uma linha de contexto e os três caminhos. 45 % do quadro vazio (Ma). Luz frontal suave. Ponto de atenção: o rosto, depois o nome |
+| **B. Composição** | Retrato 4:5 à direita (colunas 8–11), olhando para a câmera, meio corpo. À esquerda, sobre o fundo índigo: número 01 com traço dourado, nome, mensagem, subtítulo, uma linha de contexto e os três caminhos. 45 % do quadro vazio (Ma). Luz frontal suave. Ponto de atenção: o rosto, depois o nome |
 | **C. Direção** | Plano médio. Câmera parada. Sem movimento até a pessoa rolar. Duração: 0–10 % da faixa (~3 s) |
 | **D. Texto na tela** | **Maurício Yokoyama Issei** / *Pensar profundamente. Construir com propósito.* / Tecnologia, engenharia e conhecimento em prática. / Há mais de vinte anos trabalho na distância entre o que foi desenhado e o que roda em produção. / Minha história · Minhas ideias · Meus projetos ↓ |
 | **D. Relação** | A imagem diz "pessoa real"; a mensagem dá o tom; a linha de contexto nomeia o conflito do trabalho (desenho × produção), que as cenas 02–06 percorrem; os links dizem "o que há aqui". Nada depende de animação |
 | **E. Transição** | Começa estática (é a primeira pintura). Ao rolar, o retrato reduz para 60 % e desliza para a direita, saindo do quadro; a moldura M1 fica no lugar e recebe a próxima foto. **Permanece:** M1, o número 01 e o nome (reduzido) |
-| **F. Origem** | Retrato **[D]** (`retrato-original.jpg`), mas o fundo azul/magenta não combina com papel: **[E]** refazer o recorte em fundo claro ou **[P]** novo retrato 4:5 em fundo claro, luz de janela |
+| **F. Origem** | Retrato **[D]** (`retrato-original.jpg`, blazer azul) **já na H-1**: o fundo azul combina com o índigo da página; a moldura *Shoji* e o espaço vazio fazem a harmonia, sem recorte. Um retrato novo **[P]** é melhoria opcional |
 
 ### Cena 02 — O caderno (pensar · estudar)
 
@@ -193,12 +193,12 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | Ficha | |
 | :-- | :-- |
 | **A** | Sessão 02 · Dar acesso à trajetória sem repetir o /curriculo |
-| **B** | Retrato 4:5 à esquerda (5 colunas). À direita: número 02, o traço vermelho agora vertical, título, texto de apoio, cinco marcos de ano no traço e o link. Ponto de atenção: o retrato, depois o link vermelho |
+| **B** | Retrato 4:5 à esquerda (5 colunas). À direita: número 02, o traço dourado agora vertical, título, texto de apoio, cinco marcos de ano no traço e o link. Ponto de atenção: o retrato, depois o link dourado |
 | **C** | Plano médio. Parallax: a foto sobe 4 % mais devagar que a rolagem. Os cinco marcos aparecem um a um, de cima para baixo. 120 vh (~6 s) |
-| **D** | **Minha história** / Comecei escrevendo código. Com o tempo, passei a responder também por times, contratos e sistemas em produção. / 1997 curso técnico em processamento de dados · 2003 Java na Sysgen · 2012 liderança de time na Indra · 2018 Tech Lead na Rede, até hoje · 2025 começo a publicar sobre engenharia e IA / **Conheça minha história →** |
-| **D. Relação** | Cinco anos e nenhum resultado detalhado: a história completa (resultados, recomendações, certificações) fica no destino. O último marco traz a linha até o presente e prepara a cena 08. Fontes: `cv.json` (Rede: fev de 2018 – o momento; negociação de contrato e incidentes nos resultados) e data do primeiro vídeo do canal (23/10/2025) |
-| **E** | Começa com o rosto da gravação (cena 06) recuando até o lugar do retrato. Termina com o retrato reduzindo para 1/3 e deslizando para a direita, enquanto duas molduras entram por trás. **Permanece:** o traço vermelho, que volta a ser horizontal na S03 |
-| **F** | Retrato **[D]/[E]** (mesmo da cena 01; se houver um segundo retrato real, em outro ambiente, ele dá variedade **[P]**). Anos **[D]** (`cv.json`; 2025 = primeiro vídeo do canal) |
+| **D** | **Minha história** / Comecei escrevendo código. Com o tempo, passei a responder também por times, contratos e sistemas em produção. / 1997 curso técnico em processamento de dados · 2003 Java na Sysgen · 2012 liderança de time na Indra · 2018 Tech Lead na Rede · 2024–hoje arquitetura, IA aplicada, engenharia de agentes e ensino / **Conheça minha história →** |
+| **D. Relação** | Cinco marcos e nenhum resultado detalhado: a história completa (resultados, recomendações, certificações) fica no destino. O último marco é aberto ("hoje") e liga liderança e operação à fase atual, preparando a cena 08. Fontes: `cv.json` (Rede: fev de 2018 – o momento) e o texto do marco 2024–hoje definido pelo Issei |
+| **E** | Começa com o rosto da gravação (cena 06) recuando até o lugar do retrato. Termina com o retrato reduzindo para 1/3 e deslizando para a direita, enquanto duas molduras entram por trás. **Permanece:** o traço dourado, que volta a ser horizontal na S03 |
+| **F** | Retrato **[D]/[E]** (mesmo da cena 01; se houver um segundo retrato real, em outro ambiente, ele dá variedade **[P]**). Anos **[D]** (`cv.json`; marco 2024–hoje definido pelo Issei) |
 
 ### Cena 08 — A mesa de estudo (Minhas ideias)
 
@@ -221,11 +221,11 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | Ficha | |
 | :-- | :-- |
 | **A** | Sessão 04 · Mostrar projetos reais e a cadeia pensar → sustentar |
-| **B** | Número 04, título, texto de apoio. Quatro capturas 16:10 em linha, cada uma com título do projeto e duas dimensões em que ele mais se apoia. Link sublinhado com o traço vermelho. Abaixo, rodapé de contato em papel escuro. Ponto de atenção: as quatro capturas |
+| **B** | Número 04, título, texto de apoio. Quatro capturas 16:10 em linha, cada uma com título do projeto e duas dimensões em que ele mais se apoia. Link sublinhado com o traço dourado. Abaixo, rodapé de contato comum (escuro) em papel escuro. Ponto de atenção: as quatro capturas |
 | **C** | Plano geral. As capturas entram em sequência por cortina (4 × 4 % da faixa). 140 vh (~6 s) |
 | **D** | **Meus projetos** / Da concepção à operação. Projetos que saíram do papel e que alguém usa. Em cada um, conto o problema e as decisões que tomei. / Acessibilidade · Case Agents · Agent Ready · Boutique Empresarial / **Conheça meus projetos →** |
 | **D. Relação** | As dimensões em cada cartão retomam as cenas 02–06: o visitante reconhece no projeto o que viu no filme. As duplas são proposta e precisam da confirmação do Issei |
-| **E** | Começa com as quatro molduras vindas da cena 08. Termina com o traço vermelho virando o sublinhado do link e o rodapé entrando normalmente (sem tela final). **Permanece:** o traço vermelho, do primeiro ao último quadro |
+| **E** | Começa com as quatro molduras vindas da cena 08. Termina com o traço dourado virando o sublinhado do link e o rodapé entrando normalmente (sem tela final). **Permanece:** o traço dourado, do primeiro ao último quadro |
 | **F** | Capturas **[E]** das páginas `acessibilidade`, `case-agents`, `agent-ready`, `boutique-empresarial-showcase` (recortar a parte de cima, sem texto pequeno) |
 
 ---
@@ -239,10 +239,10 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | 03 → 04 | *Pull-out*: teclado sai de foco, grupo entra | Direção do movimento (afastar) |
 | 04 → 05 | Cortina horizontal | O corte dia → noite |
 | 05 → 06 | Luz da tela clareia até a luz da gravação | A luz de tela |
-| 06 → 07 | *Pull-out*: M1 recua até o lugar do retrato; a gravação dissolve para o retrato | O rosto (gravação → retrato) + traço vermelho (vira vertical) |
+| 06 → 07 | *Pull-out*: M1 recua até o lugar do retrato; a gravação dissolve para o retrato | O rosto (gravação → retrato) + traço dourado (vira vertical) |
 | 07 → 08 | Retrato recua; registros deslizam por trás | Molduras, traço volta a horizontal |
 | 08 → 09 | Registros se alinham e se dividem em quatro | Molduras → cartões de projeto |
-| 09 → rodapé | Traço vira sublinhado do link | Traço vermelho |
+| 09 → rodapé | Traço vira sublinhado do link | Traço dourado |
 
 **A moldura contínua funciona** e foi mantida: ela é o "olho" do visitante e
 nunca some. Ela muda de escala três vezes (retrato → cena inteira → retrato →
@@ -299,7 +299,7 @@ apoio foram reescritos na revisão 2 (§9.1).
 | # | Recurso | Cena | Origem | Ação |
 | :-- | :-- | :-- | :-- | :-- |
 | R1 | Retrato real (`retrato-original.jpg`) | 01, 07 | **[D]** | Usar como provisório |
-| R2 | Retrato 4:5 em fundo do tema (D-H1) | 01, 07 | **[E]/[P]** | Refazer recorte do R1 em fundo papel, ou nova foto |
+| R2 | Retrato 4:5 novo (opcional) | 01, 07 | **[P]** | Melhoria; o R1 já serve no fundo índigo |
 | R3 | Mãos, caderno, livro | 02, 08 | **[P]** | Foto 1 + variação "caderno" |
 | R4 | Quadro branco com diagrama | 03 | **[P]** | Foto 3 |
 | R5 | Mãos no teclado | 03 | **[P]** | Foto 4 |
@@ -309,7 +309,7 @@ apoio foram reescritos na revisão 2 (§9.1).
 | R9 | Gravação do canal | 06, 08 | **[E]** ou **[P]** | Selecionar quadro de vídeo com o rosto, ou foto 8 |
 | R10 | Captura de página de estudo | 08 | **[E]** | Capturar e recortar ("Curiosidade e investigação") |
 | R11 | Capturas dos 4 cases | 09 | **[E]** | Capturar topo das páginas, 16:10 |
-| R12 | Marcos 1997/2003/2012/2018/2025 | 07 | **[D]** | `cv.json` e data do primeiro vídeo do canal |
+| R12 | Marcos 1997/2003/2012/2018/2024–hoje | 07 | **[D]** | `cv.json` e texto do marco 2024–hoje do Issei |
 | R13 | Títulos dos recentes | 08 | **[D]** | Gerador de destaques |
 | R14 | Atmosfera e luz das cenas | todas | **[C]** | Só os quadros deste documento |
 
@@ -318,7 +318,7 @@ apoio foram reescritos na revisão 2 (§9.1).
 | Foto | Plano | Lente | Indicações |
 | :-- | :-- | :-- | :-- |
 | 1 Caderno | detalhe, de cima a 45° | 85 mm | Esboço real feito pelo Issei; livro técnico aberto; mesa clara |
-| 2 Retrato | médio, 4:5 | 85 mm | Fundo de parede clara ou papel; olhando para a câmera; mesma roupa sóbria da sessão |
+| 2 Retrato (opcional) | médio, 4:5 | 85 mm | Fundo escuro ou neutro, que combine com o índigo; olhando para a câmera; mesma roupa sóbria da sessão |
 | 3 Quadro branco | médio, de perfil | 35 mm | Diagrama genérico (caixas e setas), sem nome de empresa |
 | 4 Teclado | detalhe | 50 mm | Código desfocado; nada legível |
 | 5 Conversa | médio | 35 mm | 2–3 pessoas de costas; Issei ouvindo |
@@ -356,7 +356,7 @@ Qualquer conteúdo fica a **no máximo 2 cliques** da primeira tela, sem rolar.
 | Critério | Avaliação | Ajuste feito ou recomendado |
 | :-- | :-- | :-- |
 | Autenticidade | Boa, **se as fotos forem reais e do dia a dia**. O risco é a sessão de fotos parecer encenada | Fotografar trabalho real (o esboço é dele, a conversa é uma reunião de verdade). Recusar fotos "posadas para banco de imagem" |
-| Identidade | A assinatura vem da moldura + traço vermelho + Ma, não de ornamento oriental | Nada de ícones japoneses, carimbos, ideogramas ou bambu |
+| Identidade | A assinatura vem da moldura + traço dourado + Ma, não de ornamento oriental | Nada de ícones japoneses, carimbos, ideogramas ou bambu |
 | Clareza | A cena 01 responde quem, o quê e onde, sem rolar | Mantida estática; nenhuma informação essencial só na animação |
 | Continuidade | O fio é a moldura e o retorno do rosto (01 → 06 → 08) | Ok |
 | Proporção | 9 cenas, ~7 telas, 30–45 s | **Ajuste feito:** as oito dimensões foram agrupadas em 5 cenas (pares). Oito cenas de uma dimensão cada viravam uma lista de slogans |
@@ -382,9 +382,19 @@ Qualquer conteúdo fica a **no máximo 2 cliques** da primeira tela, sem rolar.
 | :-- | :-- | :-- |
 | 1 | Duas vozes: autoral nas cenas 02–06, institucional nas sessões 02–04, com "resultados" repetido | Textos de apoio das cenas 07, 08 e 09 reescritos em primeira pessoa, com atrito real; "resultados", "soluções" e "experiências" saíram da narração |
 | 2 | A antiga cena 07 criava um falso final e repetia os três caminhos | Cena eliminada. Transição 06 → 07 direta (gravação → retrato). As cenas foram renumeradas: 9 cenas em 4 sessões |
-| 3 | Linha do tempo parava em 2018 | Quinto marco: "2025 começo a publicar sobre engenharia e IA" (primeiro vídeo do canal: 23/10/2025). O marco 2018 ganha "até hoje" (Rede: fev de 2018 – o momento, `cv.json`) |
+| 3 | Linha do tempo parava em 2018 | Quinto marco aberto: "2024–hoje arquitetura, IA aplicada, engenharia de agentes e ensino" (texto do Issei, revisão 3; substitui a proposta "2025" da revisão 2) |
 | 4 | Faltava a ponte entre engenharia clássica e IA | Frase na cena 08: "As ferramentas mudaram; as perguntas, não." seguida das três perguntas que as cenas 03 e 05 já mostraram |
 | 5 | Linha de contexto da cena 01 descrevia o site | Nova linha: "Há mais de vinte anos trabalho na distância entre o que foi desenhado e o que roda em produção." Nomeia o conflito que as cenas 02–06 percorrem |
+
+### 9.2 Revisão 3 (validação do protótipo, Issei, 2026-11-24)
+
+- Direção visual consolidada: **Aizome + Kin** (escura editorial oriental). A
+  base clara e a exceção de tema saíram (SDD D-H1, D-H5).
+- O traço vermelho virou **traço dourado *Kintsugi*** (`--hm-kin`), único
+  acento da página; divisórias de 1 px (*Shoji*).
+- O retrato atual entra já na H-1; a sessão de fotos enriquece as cenas 02–05
+  depois, sem bloquear.
+- Marco final da cena 07: "2024–hoje".
 
 **Pontos para o Issei confirmar:**
 
@@ -410,7 +420,7 @@ Um filme de **9 cenas em 4 sessões**, sem som, conduzido pela rolagem:
 9. **Da concepção à operação** — Meus projetos → 4 cases.
 
 Os elementos que dão a assinatura são **a moldura que viaja e se divide**,
-**o traço vermelho do primeiro ao último quadro** e **o rosto que abre e
+**o traço dourado do primeiro ao último quadro** e **o rosto que abre e
 fecha a abertura**. Tudo o mais é fotografia real e espaço vazio.
 
 Para produzir: uma manhã de fotos (§7.2), cinco capturas de tela e a
