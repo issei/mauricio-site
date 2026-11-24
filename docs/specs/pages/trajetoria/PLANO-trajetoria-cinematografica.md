@@ -11,6 +11,7 @@ leitor: Issei (decisão) e quem implementar a página
 
 > **Estado:** proposta. Este documento planeja a página. Ele não muda código.
 > As decisões em aberto estão no §11. Cada uma vai ao Issei uma de cada vez.
+> A especificação de implementação está em [`SDD-trajetoria.md`](SDD-trajetoria.md).
 
 ## 0. Resumo
 
