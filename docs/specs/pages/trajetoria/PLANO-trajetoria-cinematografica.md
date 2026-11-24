@@ -2,6 +2,7 @@
 id: plano-trajetoria-cinematografica
 titulo: Plano de desenvolvimento — página cinematográfica da trajetória
 data: 2026-11-23
+revisao: 2026-11-24 (alinhado ao resumo do tutorial enviado pelo Issei)
 status: proposta (só planejamento; nada implementado)
 leitor: Issei (decisão) e quem implementar a página
 ---
@@ -23,7 +24,8 @@ A técnica é **híbrida**:
 
 | Camada | O que faz | Por quê |
 | :-- | :-- | :-- |
-| Vídeo gerado por IA, exportado como **sequência de quadros** | As 4 transições entre ambientes (mudança de cenário, luz e matéria) | Transformação de ambiente é cara de modelar em 3D e barata de gerar em vídeo |
+| Vídeo gerado por IA, exportado como **sequência de quadros** | Só as **2 transições de matéria orgânica** (T1 e T3), onde nada mais resolve | Transformação de ambiente é cara de modelar em 3D e barata de gerar em vídeo |
+| **CSS** (`clip-path`, escala, imagens sobrepostas) | A quebra de ritmo do Ato IV (uma tela que se expande até ocupar o quadro) | Sem custo de geração; nítido; preciso na rolagem |
 | **Three.js + shaders GLSL** | Os 5 ambientes "vivos": o fio, partículas, profundidade, reação ao ponteiro | Fluidez a 60 fps, interação nativa, quase nenhum byte de banda |
 | **HTML semântico** | Todo o texto da história | Leitor de tela, busca, tradução `/en/`, e funciona sem JavaScript |
 
@@ -33,12 +35,24 @@ seguinte**. Assim o corte some.
 
 ### Sobre o vídeo de referência
 
-Não consegui ler o vídeo (`youtu.be/D-VEPCWC0LY`): o YouTube recusou o acesso
-automático nesta sessão. Este plano parte da técnica que esse tipo de tutorial
-costuma ensinar: gerar um vídeo de IA, extrair os quadros e desenhá-los num
-`<canvas>` conforme a rolagem (o "scrub" no estilo das páginas de produto da
-Apple). **Se o tutorial usar outra técnica, o §6 muda; o resto do plano
-continua válido.** Ver D-TC-0 no §11.
+O YouTube bloqueou a leitura automática do vídeo. O Issei enviou um resumo do
+tutorial (Lucas Marte, página "GTA 360"), guardado em
+`/mnt/project-files/trajetoria-cinematografica/referencia-tutorial.md`. Este
+plano segue o método dele e muda o que precisa mudar para o site:
+
+| No tutorial | Neste plano |
+| :-- | :-- |
+| Site como plano-sequência acionado pela rolagem | Igual (§3) |
+| Texto curto: frase forte no centro só na abertura e no fim; no meio, frases curtas **nas margens laterais**, centro livre para a imagem | Igual (§3.4). O texto completo de cada ato fica no HTML, legível no modo estático (§4.1) |
+| Storyboard em rascunho a lápis antes das imagens finais, para validar a continuidade da câmera | Nova fase F0b (§10) |
+| Imagens de início e fim de cada cena, sem texto embutido, expandidas por *outpainting* para tela larga | Igual. Aqui os quadros de costura saem do próprio Three.js (§5.1); *outpainting* só se o quadro gerado ficar estreito |
+| Vídeo de IA (Higgsfield, modelo Seedance) chamado pelo Claude Desktop via MCP | Opção recomendada para D-TC-2 (roda na máquina do Issei; a nuvem não tem esse acesso) |
+| IA só onde há movimento orgânico; o resto com imagens, escala e `clip-path` | Igual: 2 vídeos de IA em vez de 4 (§3.3) |
+| **Quebra de ritmo** depois de vários movimentos aéreos, com uma tela que se expande por máscara | Igual, no Ato IV (plano 05b) |
+| Final: corte seco do mapa para **partículas em canvas** que convergem no logotipo | Igual: a malha vira partículas que formam o grafo e, no fim, o monograma (plano 07) |
+| Corte seco no lugar de transição com quadro borrado | Regra do §3.4 |
+| `video.currentTime` guiado pela rolagem | Troquei por sequência de quadros, por precisão no Safari e no celular (§5.2, D-TC-3) |
+| Depuração por captura de tela | Igual, com Playwright tirando capturas em pontos fixos da rolagem (§10, F4) |
 
 ---
 
@@ -146,13 +160,14 @@ Toda a luz é **motivada** (vem de algo em cena). Não há luz de preenchimento
 | 02 | 8–14 | 3D | 35 | dolly in lento | Aproxima do cursor | Ato I |
 | T1 | 14–22 | **Vídeo IA** | 35→85→35 | dolly in contínuo | Entra na tela; o cursor se estica e vira linha de luz | — |
 | 03 | 22–34 | 3D | 35 | dolly lateral suave | Linhas UML se montam em blocos | Ato II |
-| T2 | 34–42 | **Vídeo IA** | 35→85→35 | dolly in | A linha se fragmenta em pontos de luz | — |
+| T2 | 34–42 | 3D (shader) | 35 | dolly in | A linha se fragmenta em pontos de luz (partículas no próprio Three.js; não precisa de IA) | — |
 | 04 | 42–54 | 3D | 35 | órbita lenta (≤ 15°) | Constelação pequena; pontos se conectam | Ato III |
 | T3 | 54–62 | **Vídeo IA** | 35 | crane up | Constelação vira malha urbana vista de cima | — |
-| 05 | 62–76 | 3D | 35 | crane up + dolly | Malha com fluxos (partículas em caminhos) | Ato IV + números |
-| T4 | 76–84 | **Vídeo IA** | 35→24 | dolly out + abertura | A malha se dobra e vira grafo | — |
+| 05 | 62–70 | 3D | 35 | crane up + dolly | Malha com fluxos (partículas em caminhos) | Ato IV, frase na margem |
+| 05b | 70–76 | **CSS** (quebra de ritmo) | 50 | parada | Corta para dentro: uma mesa à noite, um monitor com um painel de operação. O monitor se expande por `clip-path` até encher a tela | Os três números, nas margens |
+| T4 | 76–84 | 3D (**corte seco**) | 35→24 | dolly out + abertura | Corte seco: o painel vira um enxame de partículas que se reorganiza em grafo | — |
 | 06 | 84–96 | 3D | 24 | parada; reage ao ponteiro | Grafo de agentes | Ato V |
-| 07 | 96–100 | 3D | 24→35 | dolly out | O grafo vira ponto; ponto vira cursor | Créditos + chamadas |
+| 07 | 96–100 | 3D | 24→35 | dolly out | As partículas convergem no monograma "MI"; o monograma vira o cursor do Ato I | Créditos + chamadas |
 
 ### 3.4 Ritmo
 
@@ -164,6 +179,13 @@ Toda a luz é **motivada** (vem de algo em cena). Não há luz de preenchimento
 - Respiração: entre o fim de um texto e o início da transição seguinte há
   ~20 vh de imagem sem texto.
 - O avanço da câmera tem amortecimento (§6.3). A pessoa sente peso, não atraso.
+- **Onde fica o texto:** abertura e créditos no centro; nos atos, frases de
+  até 12 palavras nas margens (esquerda nos atos ímpares, direita nos pares).
+  O centro do quadro fica livre para o foco da imagem.
+- **Quebra de ritmo:** depois de três movimentos longos (atos I a IV), o plano
+  05b para a câmera e muda de escala (de cidade para mesa). Evita cansaço.
+- **Corte seco > dissolve borrado:** se uma passagem gera um quadro desfocado
+  ou ambíguo, troca por corte seco. Vale também para o T4.
 
 ---
 
@@ -248,8 +270,10 @@ tempo da Carreira (PR #169).
    PNG 1920×1080, com `preserveDrawingBuffer` e a câmera exata do plano.
    Script: `scripts/trajetoria/render-chaves.mjs` (Playwright + Chromium).
 3. Usar esses dois PNG como **quadro inicial e quadro final** num modelo de
-   vídeo que aceita os dois (*first/last frame conditioning*). A escolha do
-   modelo é a D-TC-2.
+   vídeo que aceita os dois (*first/last frame conditioning*). Recomendação
+   (D-TC-2): Higgsfield com Seedance, chamado pelo Claude Desktop via MCP na
+   máquina do Issei, como no tutorial. O prompt e o resultado escolhido ficam
+   registrados em `assets-fonte/trajetoria/prompts/`.
 4. Prompt descreve: lente, movimento de câmera, luz motivada, matéria da
    transformação, **sem texto, sem rosto, sem logotipo**.
 5. Gerar 4–5 s, 24 qps. Escolher a melhor de 3–4 tentativas.
@@ -274,9 +298,9 @@ O resultado é tremido ao rolar para trás. Quadros em imagem dão precisão tot
 
 Custo controlado assim:
 
-- 4 transições × 48 quadros (2 s úteis a 24 qps) = 192 quadros.
-- AVIF 1280×720, ~25–35 KB cada → **~6 MB no computador**; 854×480,
-  ~12–18 KB → **~3 MB no celular**.
+- 2 transições × 48 quadros (2 s úteis a 24 qps) = 96 quadros.
+- AVIF 1280×720, ~25–35 KB cada → **~3 MB no computador**; 854×480,
+  ~12–18 KB → **~1,5 MB no celular**.
 - **Carga progressiva**: primeiro a cada 4º quadro (1/4 do peso), depois
   preenche. Só carrega a transição N+1 quando o ato N entra na tela.
 - Alternativa (D-TC-3): MP4/H.264 com **todos os quadros chave** (`-g 1`).
@@ -319,11 +343,12 @@ export const FAIXAS = [
   { id: 'p01', tipo: '3d', ato: 1, ini: 0.00, fim: 0.14 },
   { id: 't1',  tipo: 'ia', de: 1, para: 2, ini: 0.14, fim: 0.22, quadros: 48 },
   { id: 'p03', tipo: '3d', ato: 2, ini: 0.22, fim: 0.34 },
-  { id: 't2',  tipo: 'ia', de: 2, para: 3, ini: 0.34, fim: 0.42, quadros: 48 },
+  { id: 't2',  tipo: '3d', ato: 2, ini: 0.34, fim: 0.42, fragmentar: true },
   { id: 'p04', tipo: '3d', ato: 3, ini: 0.42, fim: 0.54 },
   { id: 't3',  tipo: 'ia', de: 3, para: 4, ini: 0.54, fim: 0.62, quadros: 48 },
-  { id: 'p05', tipo: '3d', ato: 4, ini: 0.62, fim: 0.76 },
-  { id: 't4',  tipo: 'ia', de: 4, para: 5, ini: 0.76, fim: 0.84, quadros: 48 },
+  { id: 'p05', tipo: '3d', ato: 4, ini: 0.62, fim: 0.70 },
+  { id: 'p05b', tipo: 'css', ato: 4, ini: 0.70, fim: 0.76 },   // quebra de ritmo
+  { id: 't4',  tipo: '3d', ato: 5, ini: 0.76, fim: 0.84, corteSeco: true },
   { id: 'p06', tipo: '3d', ato: 5, ini: 0.84, fim: 1.00 },
 ];
 
@@ -421,7 +446,10 @@ function quadro(agora) {
   const faixa = FAIXAS.find((f) => p >= f.ini && p <= f.fim) ?? FAIXAS.at(-1);
   const t = local(p, faixa);
 
-  if (faixa.tipo === 'ia') {
+  if (faixa.tipo === 'css') {
+    // quebra de ritmo: o canvas pausa e o CSS assume (§6.7)
+    palco.style.setProperty('--tc-abre', t.toFixed(4));
+  } else if (faixa.tipo === 'ia') {
     const idx = Math.round(t * (faixa.quadros - 1));
     const img = frames.melhorDisponivel(faixa.id, idx); // cai no vizinho já carregado
     if (img) telaIA.material.uniforms.uQuadro.value = texturaDe(img);
@@ -498,6 +526,40 @@ celular fraco (§7).
 }
 ```
 
+### 6.7 Quebra de ritmo com `clip-path` (plano 05b)
+
+```css
+/* O monitor da mesa abre até encher a tela. --tc-abre vem do laço (0..1). */
+.tc-quebra { position: absolute; inset: 0; }
+.tc-quebra__tela {
+  --a: calc(var(--tc-abre, 0) * 1);
+  /* retângulo do monitor (inset 30% 32% 38% 32%) → tela cheia (inset 0) */
+  clip-path: inset(
+    calc(30% * (1 - var(--a))) calc(32% * (1 - var(--a)))
+    calc(38% * (1 - var(--a))) calc(32% * (1 - var(--a)))
+    round calc(12px * (1 - var(--a)))
+  );
+}
+.tc-quebra__mesa { scale: calc(1 + var(--tc-abre, 0) * 0.6); }
+```
+
+### 6.8 Partículas que formam o monograma (plano 07)
+
+```js
+/**
+ * Cada partícula tem duas posições: a do grafo e a de um ponto amostrado do
+ * contorno do monograma (SVG → pontos, feito uma vez no build).
+ * O shader mistura as duas com uConverge (0..1), com atraso por partícula
+ * para a forma "se montar" em vez de aparecer de uma vez.
+ */
+const alvo = await fetch(urlPontosMonograma).then((r) => r.json()); // Float32 xyz
+geometria.setAttribute('aAlvo', new THREE.Float32BufferAttribute(alvo, 3));
+geometria.setAttribute('aAtraso', new THREE.Float32BufferAttribute(atrasos, 1));
+// no vertex shader:
+//   float k = smoothstep(aAtraso, aAtraso + 0.4, uConverge);
+//   vec3 p = mix(position, aAlvo, k);
+```
+
 ---
 
 ## 7. Desempenho
@@ -558,9 +620,7 @@ D-TC-4).
 | :-- | :-- | :-- | :-- | :-- | :-- |
 | `frames/t1/1280/001.avif` … `048.avif` | 48 | AVIF | 1280×720 | 25–35 KB | Transição I→II, computador |
 | `frames/t1/854/001.avif` … `048.avif` | 48 | AVIF | 854×480 | 12–18 KB | Transição I→II, celular |
-| `frames/t2/…` (mesmo padrão) | 96 | AVIF | idem | idem | II→III |
-| `frames/t3/…` | 96 | AVIF | idem | idem | III→IV |
-| `frames/t4/…` | 96 | AVIF | idem | idem | IV→V |
+| `frames/t3/1280/…`, `frames/t3/854/…` | 96 | AVIF | idem | idem | III→IV (constelação → cidade) |
 | `frames/manifesto.json` | 1 | JSON | — | < 2 KB | Lista de quadros, dimensões e hash por transição |
 
 ### 9.2 Pôsteres (modo estático, reduced motion, sem JS)
@@ -570,15 +630,24 @@ D-TC-4).
 | `posters/ato-1.avif` … `ato-5.avif` | 5 | AVIF | 1600×900 | Imagem de cada ato no modo estático |
 | `posters/ato-1.webp` … `ato-5.webp` | 5 | WebP | 1600×900 | Fallback do `<picture>` |
 | `posters/ato-1-sm.avif` … `ato-5-sm.avif` | 5 | AVIF | 800×450 | Celular |
-| `posters/t1.avif` … `t4.avif` | 4 | AVIF | 1280×720 | Quadro do meio de cada transição (carga inicial) |
+| `posters/t1.avif`, `t3.avif` | 2 | AVIF | 1280×720 | Quadro do meio de cada transição de IA (carga inicial) |
+
+### 9.2b Quebra de ritmo (plano 05b, CSS)
+
+| Caminho | Formato | Dimensão | Uso |
+| :-- | :-- | :-- | :-- |
+| `quebra/mesa-noite.avif` (+ `.webp`) | AVIF/WebP | 1920×1080 (outpainting se preciso) | Cena da mesa; sem texto, sem rosto, sem marca |
+| `quebra/painel-operacao.avif` (+ `.webp`) | AVIF/WebP | 1920×1080 | Conteúdo da tela que se expande; painel abstrato, sem dado real |
+| `quebra/mesa-noite-sm.avif`, `painel-operacao-sm.avif` | AVIF | 960×540 | Celular |
 
 ### 9.3 Quadros-chave da costura (fonte, não vão ao build)
 
 | Caminho | Qtd | Formato | Uso |
 | :-- | :-- | :-- | :-- |
-| `assets-fonte/trajetoria/chaves/t1-ini.png`, `t1-fim.png` … `t4-fim.png` | 8 | PNG 1920×1080 | Quadros inicial e final renderizados do Three.js e dados ao modelo de vídeo |
-| `assets-fonte/trajetoria/prompts/t1.md` … `t4.md` | 4 | Markdown | Prompt, modelo, semente, data e tentativa escolhida (rastreabilidade) |
-| `assets-fonte/trajetoria/brutos/t1.mp4` … `t4.mp4` | 4 | MP4 | Saída do modelo (fora do Git) |
+| `assets-fonte/trajetoria/storyboard/plano-01.png` … `plano-07.png` | 12 | PNG | Rascunhos a lápis de cada plano (fase F0b), para validar a câmera antes das imagens finais |
+| `assets-fonte/trajetoria/chaves/t1-ini.png`, `t1-fim.png`, `t3-ini.png`, `t3-fim.png` | 4 | PNG 1920×1080 | Quadros inicial e final renderizados do Three.js e dados ao modelo de vídeo |
+| `assets-fonte/trajetoria/prompts/t1.md`, `t3.md`, `quebra.md` | 3 | Markdown | Prompt, modelo, semente, data e tentativa escolhida (rastreabilidade) |
+| `assets-fonte/trajetoria/brutos/t1.mp4`, `t3.mp4` | 2 | MP4 | Saída do modelo (fora do Git) |
 
 ### 9.4 Texturas (shaders)
 
@@ -600,6 +669,7 @@ D-TC-4).
 | `cena/fio-curva.json` | JSON (pontos de controle Catmull-Rom) | Caminho do fio por toda a cena |
 | `cena/uml-blocos.json` | JSON | Posições dos blocos do diagrama do Ato II |
 | `cena/grafo-agentes.json` | JSON (nós e arestas) | Grafo do Ato V |
+| `cena/monograma-pontos.json` | JSON (Float32 xyz, ~4.000 pontos) | Alvos das partículas no plano 07, amostrados de `logos/monograma-mi.svg` no build |
 | `shaders/*.glsl` | texto | Mantidos em `src/js/trajetoria/shaders/` (importados com `?raw` do Vite) |
 
 ### 9.6 Ícones (SVG, um por ato)
@@ -636,8 +706,8 @@ melhor para leitor de tela e tradução.
 | `public/og-trajetoria.png` | PNG 1200×630 | Open Graph (gerado como `gen-og-index.mjs`, a partir do pôster do Ato V + título) |
 | `retrato` (reuso) | AVIF/WebP | Créditos; reusa `src/img/retrato-*` já publicados |
 
-**Total estimado no build:** ~6 MB de quadros (computador) ou ~3 MB
-(celular), sempre sob demanda; < 1 MB de todo o resto.
+**Total estimado no build:** ~3 MB de quadros (computador) ou ~1,5 MB
+(celular), sempre sob demanda; ~1 MB de todo o resto.
 
 ---
 
@@ -648,10 +718,11 @@ Cada fase é um PR. Nenhuma fase começa sem a anterior aprovada.
 | Fase | Entrega | Critério de pronto |
 | :-- | :-- | :-- |
 | F0 | Este plano + respostas das decisões (§11) + texto final dos 5 atos | Issei aprova o texto |
+| F0b | Storyboard em rascunho a lápis dos 12 planos (como no tutorial) | Issei aprova a continuidade da câmera antes de gerar imagens finais |
 | F1 | Página **estática** completa: HTML, texto, pôsteres provisórios, SEO, `/en/`, teste Playwright | Gate verde; página útil sem nenhuma animação |
 | F2 | Cena Three.js dos 5 ambientes + fio + laço rAF (sem vídeo de IA; transição por dissolve simples) | 60 fps no notebook; reduced motion respeitado |
 | F3 | Vídeos de IA: chaves renderizadas, geração, quadros no pipeline `gen-imagens` | Costura invisível nos 4 cortes; peso dentro da meta |
-| F4 | Polimento: níveis de qualidade, grão, bloom, menu, link no cabeçalho/Carreira | Revisão de a11y (`a11y-design-reviewer`) e tom (`tone-reviewer`) |
+| F4 | Polimento: níveis de qualidade, grão, bloom, menu, link na Carreira; capturas do Playwright em P = 0, 10, 20 … 100 % para revisar quadro a quadro | Revisão de a11y (`a11y-design-reviewer`) e tom (`tone-reviewer`) |
 
 A F1 sozinha já é uma página publicável. Se a F3 atrasar, a página segue boa.
 
@@ -661,9 +732,9 @@ A F1 sozinha já é uma página publicável. Se a F3 atrasar, a página segue bo
 
 | Id | Pergunta | Recomendação |
 | :-- | :-- | :-- |
-| D-TC-0 | O tutorial usa a técnica de "sequência de quadros no canvas"? | Se não, o Issei cola título/descrição do vídeo e ajusto o §6 |
+| ~~D-TC-0~~ | ~~Qual técnica o tutorial usa?~~ | **Resolvida em 2026-11-24** com o resumo enviado pelo Issei (ver "Sobre o vídeo de referência") |
 | D-TC-1 | Toques pessoais: o que pode aparecer (P-1, P-2, P-3 do §2)? | Só o que o Issei escrever; nada de família por nome, lugar ou rotina |
-| D-TC-2 | Qual modelo de vídeo de IA usar (precisa aceitar quadro inicial e final)? | O que o Issei já assina; o plano não depende de um específico |
+| D-TC-2 | Qual ferramenta de vídeo de IA usar (precisa aceitar quadro inicial e final)? | Higgsfield/Seedance via MCP no Claude Desktop, como no tutorial, se o Issei tiver conta; senão, a que ele já assina |
 | D-TC-3 | Quadros AVIF ou MP4 com todos os quadros chave? | AVIF (busca exata e carga progressiva) |
 | D-TC-4 | Vídeos brutos: guardar onde? | Pasta do projeto (`/mnt/project-files/trajetoria-cinematografica/`), fora do Git |
 | D-TC-5 | Logos das empresas ou nome em texto? | Nome em texto |
