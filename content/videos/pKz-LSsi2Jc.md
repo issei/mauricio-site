@@ -5,19 +5,19 @@ status: publicado
 temas:
   - tecnologia-e-cultura
   - dados-e-decisao
-resumo: "O vídeo explica como o Projeto de Lei 4530/2023, do senador Angelo Coronel, quer acabar com o pedido de CPF no caixa sem explicação. A proposta altera o Código de Defesa do Consumidor, para exigir informação clara e cartaz na loja, e a LGPD, para elevar a multa simples a até 20% do faturamento, com teto de R$ 100 milhões por infração."
+resumo: O vídeo explica como o Projeto de Lei 4530/2023, do senador Angelo Coronel, quer acabar com o pedido de CPF no caixa sem explicação. A proposta altera o Código de Defesa do Consumidor, para exigir informação clara e cartaz na loja, e a LGPD, para elevar a multa simples a até 20% do faturamento, com teto de R$ 100 milhões por infração.
 fontes:
   - url: https://www25.senado.leg.br/web/atividade/materias/-/materia/160035
-    titulo: "PL 4530/2023 - Senado Federal"
-    sustenta: "Ficha de tramitação no Senado. Sustenta a autoria do senador Angelo Coronel, a ementa (multa da LGPD e proibição de exigir dados sem informar finalidade e tratamento), a distribuição à CTFC e à CCDD (terminativa) e as três emendas do senador Luis Carlos Heinze. Em 13/11/2025 a matéria aguardava designação de relator na CTFC."
+    titulo: PL 4530/2023 - Senado Federal
+    sustenta: Ficha de tramitação no Senado. Sustenta a autoria do senador Angelo Coronel, a ementa (multa da LGPD e proibição de exigir dados sem informar finalidade e tratamento), a distribuição à CTFC e à CCDD (terminativa) e as três emendas do senador Luis Carlos Heinze. Em 13/11/2025 a matéria aguardava designação de relator na CTFC.
     verificada: true
   - url: https://legis.senado.gov.br/sdleg-getter/documento/download/0f59e293-0aba-46d9-98f0-8cbe21f6be90?ts=1793278309932&rendition_principal=S&disposition=inline
-    titulo: "Projeto de Lei nº 4530, de 2023 (Gabinete do Senador Angelo Coronel)"
+    titulo: Projeto de Lei nº 4530, de 2023 (Gabinete do Senador Angelo Coronel)
     sustenta: "Texto do projeto com justificação. Sustenta o art. 43-A proposto para o CDC (proibição de exigir CPF ou outro dado pessoal no ato da compra sem esclarecer finalidade e tratamento), o aviso afixado com os dizeres 'PROIBIDA A EXIGÊNCIA DE DADOS PESSOAIS SENSÍVEIS OU NÃO...' e a nova redação do art. 52, II, da LGPD: multa de até 20% do faturamento, limitada a R$ 100 milhões por infração."
     verificada: true
   - url: https://legis.senado.gov.br/sdleg-getter/documento/download/72e0bd6c-a903-4e37-80c6-660ae9a654b4?ts=1793278310032&disposition=inline
-    titulo: "Emenda nº 1 - CTFC ao PL 4530/2023 (Senador Luis Carlos Heinze)"
-    sustenta: "Sustenta a emenda que limita o aviso aos estabelecimentos com atendimento físico. A emenda foi apresentada e ainda não foi votada."
+    titulo: Emenda nº 1 - CTFC ao PL 4530/2023 (Senador Luis Carlos Heinze)
+    sustenta: Sustenta a emenda que limita o aviso aos estabelecimentos com atendimento físico. A emenda foi apresentada e ainda não foi votada.
     verificada: true
 revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-25
