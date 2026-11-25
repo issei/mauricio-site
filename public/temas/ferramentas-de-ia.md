@@ -9,6 +9,8 @@ Análises práticas de ferramentas e assistentes de IA para o trabalho do dia a 
 
 ## Vídeos
 
+- [Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests](https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e) — 25 de novembro de 2026
+- [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
 - [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
 - [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026

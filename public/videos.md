@@ -2,14 +2,16 @@
 
 Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha um artigo curto, com links para as fontes e o conteúdo original.
 
-70 de 185 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
+73 de 186 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
 
 ## Em destaque
 
-- [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
+- [Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests](https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e) — 25 de novembro de 2026
 
 ## Engenharia agêntica
 
+- [Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests](https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e) — 25 de novembro de 2026
+- [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
 - [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 - [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026
@@ -20,8 +22,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 - [Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web](https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado) — 10 de outubro de 2026
 - [A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho](https://mauricio.issei.com.br/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google) — 10 de outubro de 2026
 - [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
-- [OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes](https://mauricio.issei.com.br/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de) — 7 de outubro de 2026
-- [NVIDIA SkillSpector: Como Proteger seus Agentes de IA Contra Ameaças Ocultas!](https://mauricio.issei.com.br/videos/nvidia-skillspector-como-proteger-seus-agentes-de-ia-contra) — 7 de outubro de 2026
 
 ## Aprendizagem e mente
 
@@ -68,6 +68,21 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 - [Engenharia de Agentes de IA: Da "Magia" à Arquitetura de Produção](https://mauricio.issei.com.br/videos/engenharia-de-agentes-de-ia-da-magia-a-arquitetura-de) — 19 de junho de 2026
 - [Máquina do Tempo de Software: Dominando CQRS e Event Sourcing em Microsserviços](https://mauricio.issei.com.br/videos/maquina-do-tempo-de-software-dominando-cqrs-e-event) — 21 de maio de 2026
 
+## Ferramentas de IA
+
+- [Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests](https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e) — 25 de novembro de 2026
+- [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
+- [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
+- [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
+- [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
+- [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
+- [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
+- [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
+- [OmniRoute: Pare de gastar fortunas com assinaturas de IA!](https://mauricio.issei.com.br/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia) — 3 de setembro de 2026
+- [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
+- [turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS](https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que) — 8 de junho de 2026
+- [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
+
 ## Gestão e estratégia
 
 - [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
@@ -85,6 +100,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 
 ## Dados e decisão
 
+- [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
 - [Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web](https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado) — 10 de outubro de 2026
 - [Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH](https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em) — 23 de setembro de 2026
 - [O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional](https://mauricio.issei.com.br/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do) — 26 de agosto de 2026
@@ -96,25 +112,10 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 - [OpenKB - Criando sua base de conhecimento inteligente](https://mauricio.issei.com.br/videos/openkb-criando-sua-base-de-conhecimento-inteligente) — 7 de maio de 2026
 - [A busca por uma régua melhor: por que nossas métricas falham?](https://mauricio.issei.com.br/videos/a-busca-por-uma-regua-melhor-por-que-nossas-metricas-falham) — 23 de janeiro de 2026
 - [Desmistificando Story Points: como estimar melhor em times ágeis](https://mauricio.issei.com.br/videos/desmistificando-story-points-como-estimar-melhor-em-times) — 23 de janeiro de 2026
-- [Dominando a Avaliação de IA: como analisar, validar e evoluir soluções inteligentes](https://mauricio.issei.com.br/videos/dominando-a-avaliacao-de-ia-como-analisar-validar-e-evoluir) — 23 de janeiro de 2026
-
-## Ferramentas de IA
-
-- [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
-- [ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software](https://mauricio.issei.com.br/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para) — 9 de outubro de 2026
-- [Jev — O Fuzzy If para Decisões Tipadas e Rápidas em Software e Agentes de IA](https://mauricio.issei.com.br/videos/jev-o-fuzzy-if-para-decisoes-tipadas-e-rapidas-em-software) — 27 de setembro de 2026
-- [Foi Assim Que Eu Turbinei Minhas IA's (E Você Também Pode!)](https://mauricio.issei.com.br/videos/foi-assim-que-eu-turbinei-minhas-ia-s-e-voce-tambem-pode) — 25 de setembro de 2026
-- [Repowise: Motor de Inteligência de Código Local e Contexto para Agentes de IA](https://mauricio.issei.com.br/videos/repowise-motor-de-inteligencia-de-codigo-local-e-contexto) — 20 de setembro de 2026
-- [Magnitude: O Motor de IA Local Open Source Definitivo (Rode LLMs no seu PC!)](https://mauricio.issei.com.br/videos/magnitude-o-motor-de-ia-local-open-source-definitivo-rode) — 11 de setembro de 2026
-- [OmniRoute: Pare de gastar fortunas com assinaturas de IA!](https://mauricio.issei.com.br/videos/omniroute-pare-de-gastar-fortunas-com-assinaturas-de-ia) — 3 de setembro de 2026
-- [Como Mapear Qualquer Base de Código Legada em Segundos! (Understand Anything)](https://mauricio.issei.com.br/videos/como-mapear-qualquer-base-de-codigo-legada-em-segundos) — 26 de agosto de 2026
-- [turbovec e a Evolução Vetorial: Busca Local Mais Rápida que o FAISS](https://mauricio.issei.com.br/videos/turbovec-e-a-evolucao-vetorial-busca-local-mais-rapida-que) — 8 de junho de 2026
-- [Conheça o Amazon Quick: O Assistente de IA que Revoluciona o seu Desktop](https://mauricio.issei.com.br/videos/conheca-o-amazon-quick-o-assistente-de-ia-que-revoluciona-o) — 7 de maio de 2026
-- [Gemma 4  Futuro da IA On Device](https://mauricio.issei.com.br/videos/gemma-4-futuro-da-ia-on-device) — 6 de abril de 2026
-- [PaperBanana: IA para Análise e Revisão de Artigos Científicos](https://mauricio.issei.com.br/videos/paperbanana-ia-para-analise-e-revisao-de-artigos-cientificos) — 3 de fevereiro de 2026
 
 ## Tecnologia e cultura
 
+- [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
 - [Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?](https://mauricio.issei.com.br/videos/google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da) — 17 de outubro de 2026
 - [IA e o Fator Humano: Neurociência, Acessibilidade Radical (A11Y.md) e Comunidade](https://mauricio.issei.com.br/videos/ia-e-o-fator-humano-neurociencia-acessibilidade-radical) — 30 de setembro de 2026
 - [O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram](https://mauricio.issei.com.br/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen) — 6 de junho de 2026
@@ -126,7 +127,6 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 - [O Segredo Filosófico da série Dark: Do Hermetismo ao Transumanismo](https://mauricio.issei.com.br/videos/o-segredo-filosofico-da-serie-dark-do-hermetismo-ao) — 7 de janeiro de 2026
 - [WebRTC  A Magia da Comunicação em Tempo Real](https://mauricio.issei.com.br/videos/webrtc-a-magia-da-comunicacao-em-tempo-real) — 6 de janeiro de 2026
 - [IA em PT BR  A Evolução](https://mauricio.issei.com.br/videos/ia-em-pt-br-a-evolucao) — 29 de outubro de 2025
-- [Computação Quântica  A Espada de Dois Gumes](https://mauricio.issei.com.br/videos/computacao-quantica-a-espada-de-dois-gumes) — 28 de outubro de 2025
 
 ## Salesforce e vendas
 
@@ -149,6 +149,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 
 ## Todos os vídeos
 
+- [Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests](https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e) — 25 de novembro de 2026
 - [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
 - [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
 - [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026

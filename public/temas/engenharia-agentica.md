@@ -23,6 +23,8 @@ Como projetar, orquestrar e levar para produção agentes de IA: protocolos, mem
 
 ## Vídeos
 
+- [Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests](https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e) — 25 de novembro de 2026
+- [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
 - [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
 - [Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA](https://mauricio.issei.com.br/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o) — 19 de novembro de 2026
 - [Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA](https://mauricio.issei.com.br/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para) — 19 de outubro de 2026

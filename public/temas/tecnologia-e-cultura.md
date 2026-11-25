@@ -10,6 +10,7 @@ Ciência, história da IA, computação quântica e as ideias por trás da tecno
 
 ## Vídeos
 
+- [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
 - [Google Willow e AlphaQubit: O Fim do Maior Gargalo da Computação Quântica?](https://mauricio.issei.com.br/videos/google-willow-e-alphaqubit-o-fim-do-maior-gargalo-da) — 17 de outubro de 2026
 - [IA e o Fator Humano: Neurociência, Acessibilidade Radical (A11Y.md) e Comunidade](https://mauricio.issei.com.br/videos/ia-e-o-fator-humano-neurociencia-acessibilidade-radical) — 30 de setembro de 2026
 - [O Mistério da Segunda Lei: A Jornada de 50 Anos de Stephen Wolfram](https://mauricio.issei.com.br/videos/o-misterio-da-segunda-lei-a-jornada-de-50-anos-de-stephen) — 6 de junho de 2026

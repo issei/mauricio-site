@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!-- GERADO por scripts/gen-videos.mjs a partir de content/ — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests | Maurício Yokoyama Issei</title>
+<meta name="description" content="O vídeo explica o Claude Ship, da Anthropic, que automatiza o que acontece depois que um pull request é aberto no GitHub. São três agentes em sequência:…">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e">
+<meta property="og:type" content="video.other">
+<meta property="og:title" content="Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests">
+<meta property="og:description" content="O vídeo explica o Claude Ship, da Anthropic, que automatiza o que acontece depois que um pull request é aberto no GitHub. São três agentes em sequência:…">
+<meta property="og:url" content="https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<style>:root{--bg:#0d1117;--bg-2:#161b22;--border:#30363d;--text:#c9d1d9;--muted:#8b949e;--accent:#58a6ff;--accent-purple:#8a2be2;--brand:#007bff}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:#79b8ff}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:12px;z-index:99;background:var(--bg-2);padding:8px 12px;border-radius:8px}
+.wrap{max-width:880px;margin:0 auto;padding:14px 24px}
+.wrap-larga{max-width:1080px}
+.wrap-total{max-width:none;padding-left:clamp(16px,3vw,56px);padding-right:clamp(16px,3vw,56px)}
+.crumb{font-size:.9rem;color:var(--muted)}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.25;color:#fff;margin:.6em 0 .3em}
+h2{font-size:1.3rem;color:#fff;margin:2em 0 .6em}
+.meta{color:var(--muted);font-size:.95rem;margin:0 0 1.4em}
+.chips{list-style:none;padding:0;margin:0 0 1.6em;display:flex;flex-wrap:wrap;gap:8px}
+.chips a{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.9rem}
+.chips a:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,123,255,.35)}
+.yt{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-play{position:absolute;inset:auto 0 0 0;margin:auto;top:0;width:max-content;height:max-content;padding:14px 24px;border:0;border-radius:999px;font:600 1rem 'Inter',sans-serif;color:#fff;background:linear-gradient(90deg,#007bff,#8a2be2);cursor:pointer;box-shadow:0 0 24px rgba(138,43,226,.45)}
+.yt-play:hover{transform:translateY(-2px)}
+.yt-link{margin:.6em 0 0;font-size:.95rem}
+.box{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:4px 20px}
+details summary{cursor:pointer;font-weight:600;padding:12px 0;color:#fff}
+.aviso{color:var(--muted);font-size:.9rem;margin:.2em 0 1em}
+.ts{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.6em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lista{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{position:relative;display:flex;flex-direction:column;height:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.card:hover,.card:focus-within{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,123,255,.25)}
+.card-thumb{position:relative;aspect-ratio:16/9;background:#000}
+.card-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.dur{position:absolute;right:8px;bottom:8px;padding:1px 7px;border-radius:6px;background:#0d1117;color:#fff;font-size:.8rem;font-variant-numeric:tabular-nums}
+.card-corpo{padding:10px 12px 14px}
+.card h3{font-size:1rem;line-height:1.35;margin:0 0 4px}.card h3 a{color:#fff;text-decoration:none}.card h3 a:hover{color:var(--accent)}
+.card-link::after{content:"";position:absolute;inset:0}
+.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.selo{position:absolute;left:8px;top:8px;padding:1px 9px;border:1px solid var(--accent);border-radius:999px;background:#0d1117;color:var(--accent);font-size:.78rem;font-weight:600}
+.filtro{margin:0 0 1.2em;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.filtro select{font:inherit;color:var(--text);background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+.filtro label{font-size:.95rem}
+.hero{max-width:1200px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:center;margin:0 0 1.6em;padding:16px;background:var(--bg-2);border:1px solid var(--border);border-radius:16px}
+.hero-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.hero-img img{display:block;width:100%;height:100%;object-fit:cover}
+.kicker{margin:0;color:var(--accent);font-size:.85rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.hero h2{margin:.2em 0 .4em;font-size:clamp(1.3rem,3vw,1.8rem);line-height:1.25}
+.hero .resumo{font-size:1rem;margin:0 0 1em}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:1em 0 0}
+.botao{display:inline-block;padding:10px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid var(--border);color:#fff}
+.botao-primario{border-color:transparent;background:linear-gradient(90deg,#007bff,#8a2be2)}
+.botao:hover{box-shadow:0 0 18px rgba(138,43,226,.45);color:#fff}
+.botao:focus-visible,.trilho-botao:focus-visible,.chips a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.prateleira{margin:0 0 1.8em}
+.prateleira-cab{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prateleira-cab h2{margin:1em 0 .5em;flex:1 1 auto}
+.prateleira-cab .todos{font-size:.92rem;margin-right:4px}
+.trilho-wrap{position:relative}
+.trilho-botoes{display:none;position:absolute;left:0;right:0;top:3.2rem;justify-content:space-between;padding:0 8px;pointer-events:none;z-index:2}
+.js .trilho-botoes{display:flex}
+.trilho-botao{pointer-events:auto;min-width:44px;min-height:44px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(13,17,23,.88);color:#fff;font:inherit;font-size:1.4rem;line-height:1;cursor:pointer;opacity:0;transition:opacity .15s,box-shadow .15s}
+.prateleira:hover .trilho-botao:not(:disabled),.prateleira:focus-within .trilho-botao:not(:disabled){opacity:1}
+.trilho-botao:hover:not(:disabled){border-color:var(--accent);box-shadow:0 0 14px rgba(0,123,255,.45)}
+.trilho-botao:disabled{opacity:0;pointer-events:none}
+@media (hover:none){.trilho-botao:not(:disabled){opacity:1}}
+.trilho{list-style:none;margin:0;padding:6px 2px 10px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:none}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>li{flex:0 0 clamp(220px,18vw,300px);scroll-snap-align:start}
+.trilho:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.foot{border-top:1px solid var(--border);margin-top:4em}.foot .wrap{font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px}
+.resumo{font-size:1.1rem;color:#e6edf3;margin:0 0 1.4em}
+.artigo h2{scroll-margin-top:80px}.artigo h3{font-size:1.08rem;color:#fff;margin:1.6em 0 .4em;scroll-margin-top:80px}
+.artigo code{background:var(--bg-2);border:1px solid var(--border);border-radius:4px;padding:0 4px;font-size:.92em}
+.ancora{font-variant-numeric:tabular-nums;font-size:.85em;white-space:nowrap;padding:0 4px;border:1px solid var(--border);border-radius:6px;text-decoration:none}
+.ancora:hover{border-color:var(--accent)}
+.indice{margin:0 0 1.6em}.indice ol{margin:.3em 0 0;padding-left:1.4em}
+.fontes li{margin:0 0 .8em}.fontes .sustenta{display:block;color:var(--muted);font-size:.92rem}
+.revisao{color:var(--muted);font-size:.9rem;margin:1.6em 0 0}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+@media (max-width:640px){.trilho>li{flex-basis:70%}.lista{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.yt-play:hover,.card:hover,.card:focus-within{transform:none}}</style>
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}.sh .sh-nav{order:2;margin-left:auto}.sh .sh-busca{order:3;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}.sh .sh-busca:hover{border-color:#58a6ff;color:#fff;text-decoration:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.9rem;white-space:normal;line-height:1.15;min-width:0}.sh .sh-in{gap:.5rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh .sh-busca{order:0;margin-left:auto;padding:0 .7rem;font-size:.85rem}.sh .sh-nav{order:0;margin-left:0}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:0;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
+<!-- consent-default-inline: Consent Mode v2 com tudo negado ANTES do gtag.js.
+     Repete o mapeamento de cookie-consent.js (CONSENT_VERSION 2.0) para reaplicar a escolha já gravada. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500 });
+window.__consentDefault = true;
+try {
+  var cc = JSON.parse(localStorage.getItem('consent_v') || 'null');
+  if (cc && cc.v === '2.0' && cc.categories) {
+    var mk = cc.categories.marketing ? 'granted' : 'denied';
+    gtag('consent', 'update', { ad_storage: mk, ad_user_data: mk, ad_personalization: cc.categories.personalization ? 'granted' : 'denied', analytics_storage: cc.categories.analytics ? 'granted' : 'denied' });
+  }
+} catch (e) { }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"VideoObject","name":"Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests","description":"O vídeo explica o Claude Ship, da Anthropic, que automatiza o que acontece depois que um pull request é aberto no GitHub. São três agentes em sequência:…","thumbnailUrl":"https://i.ytimg.com/vi/N3ioGqXeDZg/maxresdefault.jpg","uploadDate":"2026-11-25","duration":"PT7M26S","embedUrl":"https://www.youtube-nocookie.com/embed/N3ioGqXeDZg","url":"https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e","inLanguage":"pt-BR","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"transcript":"Olá, boas-vindas a esta explicação. É excelente ter a companhia de quem busca entender o futuro da tecnologia. Hoje a nossa imersão total é sobre como o Cloudship funciona e como essa ferramenta tá automatizando o ciclo de vida do desenvolvimento de software moderno. Olha que ironia interessante no fluxo de trabalho atual de desenvolvimento. A inteligência artificial já consegue escrever blocos gigantes de código quase instantaneamente, certo? Mas aí surge um grande dilema. Se aá escreve tão rápido, quem vai revisar tudo isso? Acabou que esperar por uma revisão humana feita por colegas de trabalho virou um gargalo gigantesco na engenharia. É um contraste absurdo. De um lado, a geração de código por IA é rápida, automática, leva apenas alguns segundos. Do outro lado da balança, bom, as revisões manuais tradicionais de pool requests continuam muito lentas, quebram totalmente o contexto de quem tá programando e muitas vezes ficam travadas por horas ou até dias. Resumindo, a criação acelerou enormemente, mas a aprovação ficou presa no passado. Bom, vamos mergulhar nisso. O roteiro de hoje cobre um, o gargalo do code review. Dois, conheça o Cloud Ship. 3, agente 1, code review. 4, agente 2, PR Steward. 5, agente 3, Clode Approvals. E 6, como começar a usar. Número dois, conheça o Cloudship, o fluxo de trabalho automatizado pós PR. Essencialmente o Cloudship, que hoje tá em fase beta para planos Team e Enterprise, é a solução definitiva para automatizar absolutamente tudo que acontece depois que um PR é aberto. Pense nessa ferramenta como uma equipe de três membros virtuais atuando em sequência. Primeiro temos a revisão para pegar os bugs, depois a correção para transformar as falhas em sucesso e por fim a aprovação aplicando as políticas da organização. Parte três. Agente um. Code review. capturando bugs antes da produção. Esse primeiro agente, que inclusive acaba de ser lançado em disponibilidade geral, analisa os PRs abertos de forma automática e quase adversária. Ele vai atrás de falhas graves que poderiam quebrar a produção. Ele categoriza as descobertas de um jeito super limpo, entre problemas importantes, detalhes menores ou códigos pré-existentes. E o mais legal, ele não só aponta o erro, ele descreve o problema, mostra o gatilho e já entrega a correção. Quem administra o sistema tem flexibilidade total. Dá para ajustar o rigor da análise repositório por repositório usando um arquivo simples chamado review. É só escolher entre revisões rápidas, padrões ou profundas. O processo todo roda sozinho a cada novo PR. Só para dar uma ideia prática, o uso interno dessa ferramenta cortou a taxa de PRs revertidos da própria equipe de engenharia da Antropic em mais de 40%. Agora, o que é realmente impressionante nesse dado é o salto de velocidade. As revisões estão umas três vezes mais rápidas do que nas versões de pesquisa. Um processo que antes tomava uns 20 minutos despencou por um intervalo muito ágil, levando de apenas 6 a 10 minutinhos no total. Quatro. Agente 2 PR Stuart, transformando PRs vermelhos de volta para verdes. E o que acontece quando o código é sinalizado com erro? É aí que entra o PR Stuart. Ele é um agente em versão beta baseado na nuvem que trabalha nos bastidores como um verdadeiro consertador incansável. Ele corrige de forma automática as falhas na integração contínua, resolve conflitos chatos de merge e aplica o feedback da revisão. A grande sacada é manter o branch atualizado sem que a pessoa que programou precise perder o foco e trocar de contexto para voltar naquele código. As regras do jogo aqui são bem claras e delimitadas. O PR Stewart age com base em feedbacks, sejam de bots ou de humanos. e é acionado manualmente com um simples comentário marcando @cloudstewward. Ele faz toda a mágica na nuvem, aplica as correções e até ensina como desfazer. Mas atenção num detalhe vital, ele foi projetado deliberadamente para não aprovar e nem fazer o merge do código. A palavra final continua nas mãos da equipe de engenharia sempre. E para trazer essa parte mais técnica pra vida real, a gente já vê liderança escolhendo frutos durante a fase piloto. Como o Alex Devcar, vice-presidente snior de engenharia, pontuou muito bem, o PR Stuart tá ajudando as equipes a gastar bem menos tempo com aquele vai e vem exaustivo de feedback de código e, claro, usando esse tempo extra para de fato focar em construir novidades. Cinco. Agente 3, Cloud Approvals, aplicando as regras da equipe. E chegamos na etapa final, a hora de avaliar se o código realmente está pronto. O Clode Approvals é mais um agente em beta que funciona quase como um arquivo Codeowners hiperinteligente. A equipe escreve as políticas de aprovação num arquivo direto no repositório e o agente usa classificadores de linguagem natural para interpretar essas regras. Basicamente ele aplica a política da organização para aprovar mudanças rotineiras direto ou então para bloquear códigos arriscados. O ponto crucial e mais reconfortante paraa gestão é a segurança. O agente barra alterações em trechos sensíveis, tipo lógica financeira, e imediatamente chama alguém da equipe, além de levar em conta as descobertas do próprio code review. Mas a recomendação de ouro é: comece rodando no modo de observação. Nesse modo seguro, o agente apenas sinaliza qual seria a sua decisão, sem realmente bloquear ou aprovar nada até todo mundo ganhar total confiança no sistema. A ideia nunca foi eliminar o fator humano. Muito pelo contrário. O diretor de engenharia Watsal Hat resumiu a essência disso ao dizer que a intervenção humana continua firme no ciclo. A diferença é que agora a inteligência e o tempo das equipes vão exclusivamente para as mudanças complexas que realmente precisam de atenção e pensamento crítico. Sessão seis, como começar a usar a implementação passo a passo. Então, como colocar toda essa maravilha para rodar hoje? É um caminho bem livre de atrito. A adoção acontece repositório por repositório. Primeiro, ativa-se apenas o code review. Em seguida, adiciona-se o PR Stuart, mas deixando apenas no modo manual. E por último, trace o Cloud Approvals naquele famoso modo de observação seguro. É uma implementação super fluida e sem estresse. No dia a dia, quem desenvolve ativa a sequência inteira rapidinho, usando apenas o comando barra chip dentro do cloud code. Do outro lado, a equipe administrativa fica no controle total dos bastidores, configurando compatibilidades com as proteções de branch já ativas e estipulando os limites de gastos. Afinal de contas, o cloudship é cobrado por uso, baseado na quantidade de tokens processados. Ah, e tem um incentivo financeiro fortíssimo. Organizações qualificadas que já usam o plano Enterprise podem resgatar nada menos que 10.000 em créditos promocionais se ativarem o recurso até 15 de janeiro de 2027. Ou seja, é literalmente o momento perfeito e mais oportuno para testar a ferramenta. O que nos leva a uma reflexão provocativa sobre o futuro da nossa área. Se a gente consegue eliminar de vez aquele velho gargalo da revisão manual, o que as equipes vão construir a partir de hoje? Com a burocracia sendo operada pelas IA em segundo plano, qual vai ser o novo limite de velocidade da engenharia de software? Fica o questionamento no ar. Agradecemos demais pela companhia nesta explicação e até a próxima análise."},{"@type":"Article","headline":"Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests","description":"O vídeo explica o Claude Ship, da Anthropic, que automatiza o que acontece depois que um pull request é aberto no GitHub. São três agentes em sequência:…","datePublished":"2026-11-25","inLanguage":"pt-BR","url":"https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e","image":"https://i.ytimg.com/vi/N3ioGqXeDZg/maxresdefault.jpg","author":{"@type":"Person","name":"Maurício Yokoyama Issei","url":"https://mauricio.issei.com.br"},"about":["Engenharia agêntica","Ferramentas de IA"],"video":{"@type":"VideoObject","name":"Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests","url":"https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e"},"citation":[{"@type":"CreativeWork","name":"Introducing Claude Ship","url":"https://claude.com/resources/articles/introducing-claude-ship"},{"@type":"CreativeWork","name":"Code Review is now generally available","url":"https://claude.com/resources/articles/code-review-is-now-generally-available"},{"@type":"CreativeWork","name":"Claude Ship | Automate pull requests review and fixes","url":"https://claude.com/product/claude-ship"},{"@type":"CreativeWork","name":"Claude Ship","url":"https://code.claude.com/docs/en/claude-ship"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"O PR Steward faz o merge sozinho?","acceptedAnswer":{"@type":"Answer","text":"Não. Ele corrige falhas de CI, conflitos de merge e feedback de revisão, mas foi projetado para não aprovar nem fazer o merge. A decisão final é da equipe."}},{"@type":"Question","name":"Por onde começar a usar o Claude Ship?","acceptedAnswer":{"@type":"Answer","text":"Por um repositório: primeiro o Code Review, depois o PR Steward no modo manual e, por último, o Claude Approvals no modo de observação."}},{"@type":"Question","name":"Como o Claude Ship é cobrado?","acceptedAnswer":{"@type":"Answer","text":"Por uso, com base na quantidade de tokens processados. A equipe de administração define limites de gasto."}}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- SITE-HEADER:START -->
+<header class="sh" translate="no"><div class="sh-in">
+<a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
+<a class="sh-busca" href="/busca">Buscar</a>
+<button class="sh-botao" type="button" aria-expanded="false" aria-controls="sh-lista">Menu</button>
+<nav class="sh-nav" aria-label="Navegação do site"><ul id="sh-lista" class="sh-lista"><li><a href="/">Início</a></li><li><a href="/curriculo.html">Carreira</a></li><li><a href="/catalogo.html">Conteúdos</a></li><li><a href="/videos.html" aria-current="true">Vídeos</a></li></ul></nav>
+</div></header>
+<script>(function(){var h=document.querySelector(".sh");if(!h)return;var q=h.querySelector(".sh-busca");if(q){var qb=document.createElement("button");qb.type="button";qb.className="sh-busca";qb.textContent=q.textContent;qb.setAttribute("aria-haspopup","dialog");q.replaceWith(qb);qb.addEventListener("click",function(){import("/js/busca.js").then(function(m){m.abrir(qb);});});document.addEventListener("keydown",function(e){var t=e.target;if(e.key!=="/"||e.ctrlKey||e.metaKey||e.altKey)return;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;e.preventDefault();qb.click();});}var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
+<!-- SITE-HEADER:END -->
+<main id="conteudo" class="wrap">
+<p class="crumb"><a href="/videos">Vídeos</a></p>
+<h1>Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests</h1>
+<p class="resumo">O vídeo explica o Claude Ship, da Anthropic, que automatiza o que acontece depois que um pull request é aberto no GitHub. São três agentes em sequência: o Code Review, que acha bugs, o PR Steward, que corrige CI, conflitos e feedback sem aprovar nem fazer merge, e o Claude Approvals, que aplica a política de aprovação da equipe e começa no modo de observação.</p>
+<p class="meta">Publicado em <time datetime="2026-11-25">25 de novembro de 2026</time> · 7 min 26 s</p>
+<ul class="chips" aria-label="Assuntos"><li><a href="/temas/engenharia-agentica">Engenharia agêntica</a></li><li><a href="/temas/ferramentas-de-ia">Ferramentas de IA</a></li></ul>
+<div class="yt" data-id="N3ioGqXeDZg" data-title="Vídeo: Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests">
+<img src="https://i.ytimg.com/vi/N3ioGqXeDZg/maxresdefault.jpg" alt="" width="1280" height="720">
+<button type="button" class="yt-play" hidden aria-label="Assistir aqui: Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests">▶ Assistir aqui</button>
+</div>
+<p class="yt-link"><a href="https://www.youtube.com/watch?v=N3ioGqXeDZg" rel="noopener">Abrir no YouTube</a></p>
+<p class="aviso">O vídeo e a transcrição estão em português. Os minutos entre colchetes levam ao trecho do vídeo.</p>
+<nav class="indice" aria-labelledby="h-indice"><h2 id="h-indice">Neste artigo</h2><ol><li><a href="#s-a-ia-escreve-rapido-quem-revisa">A IA escreve rápido. Quem revisa?</a></li><li><a href="#s-o-que-e-o-claude-ship">O que é o Claude Ship</a></li><li><a href="#s-agente-1-code-review">Agente 1: Code Review</a></li><li><a href="#s-agente-2-pr-steward">Agente 2: PR Steward</a></li><li><a href="#s-agente-3-claude-approvals">Agente 3: Claude Approvals</a></li><li><a href="#s-como-comecar">Como começar</a></li><li><a href="#s-qual-e-o-novo-limite">Qual é o novo limite?</a></li><li><a href="#s-perguntas-frequentes">Perguntas frequentes</a></li></ol></nav>
+<article class="artigo" id="artigo" aria-label="Artigo">
+<h2 id="s-a-ia-escreve-rapido-quem-revisa">A IA escreve rápido. Quem revisa?</h2>
+<p>A IA já escreve blocos grandes de código quase na hora <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=12s" data-t="12" aria-label="Assistir a partir de 00:12">00:12</a>. Aí surge o dilema: se a IA escreve tão rápido, quem revisa tudo isso <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=23s" data-t="23" aria-label="Assistir a partir de 00:23">00:23</a>? Esperar a revisão de colegas virou um gargalo na engenharia <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=23s" data-t="23" aria-label="Assistir a partir de 00:23">00:23</a>.</p>
+<p>O contraste é grande <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=38s" data-t="38" aria-label="Assistir a partir de 00:38">00:38</a>:</p>
+<ul><li><strong>gerar código com IA</strong> leva segundos <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=38s" data-t="38" aria-label="Assistir a partir de 00:38">00:38</a>;</li><li><strong>revisar um pull request à mão</strong> continua lento, quebra o contexto de quem programa e pode travar por horas ou dias <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=38s" data-t="38" aria-label="Assistir a partir de 00:38">00:38</a>.</li></ul>
+<p>A criação acelerou, mas a aprovação ficou para trás <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=51s" data-t="51" aria-label="Assistir a partir de 00:51">00:51</a>.</p>
+<h2 id="s-o-que-e-o-claude-ship">O que é o Claude Ship</h2>
+<p>O Claude Ship automatiza o que acontece depois que um pull request (PR) é aberto. Segundo o vídeo, está em beta para os planos Team e Enterprise <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=86s" data-t="86" aria-label="Assistir a partir de 01:26">01:26</a>. Pense numa equipe de três agentes que atuam em sequência <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=86s" data-t="86" aria-label="Assistir a partir de 01:26">01:26</a>:</p>
+<p>1. <strong>revisão</strong>, para achar os bugs <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=98s" data-t="98" aria-label="Assistir a partir de 01:38">01:38</a>; 2. <strong>correção</strong>, para transformar as falhas em sucesso <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=98s" data-t="98" aria-label="Assistir a partir de 01:38">01:38</a>; 3. <strong>aprovação</strong>, para aplicar as políticas da organização <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=98s" data-t="98" aria-label="Assistir a partir de 01:38">01:38</a>.</p>
+<h2 id="s-agente-1-code-review">Agente 1: Code Review</h2>
+<p>O primeiro agente acaba de sair em disponibilidade geral <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=113s" data-t="113" aria-label="Assistir a partir de 01:53">01:53</a>. Ele analisa os PRs abertos de forma automática e quase adversária, atrás de falhas graves que poderiam quebrar a produção <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=113s" data-t="113" aria-label="Assistir a partir de 01:53">01:53</a>.</p>
+<p>As descobertas saem em três categorias: problemas importantes, detalhes menores e problemas que já existiam no código <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=126s" data-t="126" aria-label="Assistir a partir de 02:06">02:06</a>. O agente não só aponta o erro: descreve o problema, mostra o gatilho e já entrega a correção <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=126s" data-t="126" aria-label="Assistir a partir de 02:06">02:06</a>.</p>
+<p>Quem administra pode ajustar o rigor da análise em cada repositório, num arquivo de configuração (REVIEW.md), e escolher entre revisão rápida, padrão ou profunda <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=139s" data-t="139" aria-label="Assistir a partir de 02:19">02:19</a>. O processo roda sozinho a cada PR novo <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=153s" data-t="153" aria-label="Assistir a partir de 02:33">02:33</a>.</p>
+<p>Os números citados no vídeo <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=153s" data-t="153" aria-label="Assistir a partir de 02:33">02:33</a>:</p>
+<ul><li>na equipe de engenharia da Anthropic, a taxa de PRs revertidos caiu mais de 40% <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=153s" data-t="153" aria-label="Assistir a partir de 02:33">02:33</a>;</li><li>as revisões estão cerca de três vezes mais rápidas que na versão de pesquisa: de uns 20 minutos para 6 a 10 minutos <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=168s" data-t="168" aria-label="Assistir a partir de 02:48">02:48</a>.</li></ul>
+<h2 id="s-agente-2-pr-steward">Agente 2: PR Steward</h2>
+<p>Quando o código recebe um alerta de erro, entra o PR Steward <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=179s" data-t="179" aria-label="Assistir a partir de 02:59">02:59</a>. É um agente em beta, na nuvem, que corrige falhas da integração contínua, resolve conflitos de merge e aplica o feedback da revisão <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=195s" data-t="195" aria-label="Assistir a partir de 03:15">03:15</a>. Assim o branch fica atualizado sem que a pessoa que programou precise trocar de contexto <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=208s" data-t="208" aria-label="Assistir a partir de 03:28">03:28</a>.</p>
+<p>As regras são claras <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=208s" data-t="208" aria-label="Assistir a partir de 03:28">03:28</a>:</p>
+<ul><li>age com base em feedback de bots ou de pessoas <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=221s" data-t="221" aria-label="Assistir a partir de 03:41">03:41</a>;</li><li>é acionado à mão, com um comentário que marca o Claude (<code>@claude steward</code>) <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=221s" data-t="221" aria-label="Assistir a partir de 03:41">03:41</a>;</li><li>aplica as correções na nuvem e mostra como desfazê-las <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=221s" data-t="221" aria-label="Assistir a partir de 03:41">03:41</a>;</li><li><strong>não aprova nem faz o merge</strong>: a palavra final continua com a equipe de engenharia <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=234s" data-t="234" aria-label="Assistir a partir de 03:54">03:54</a>.</li></ul>
+<p>O vídeo cita Alex Devkar, vice-presidente sênior de engenharia da Carvana, que testou o agente no piloto. Segundo ele, o PR Steward ajuda as equipes a gastar menos tempo no vai e vem do feedback e mais tempo construindo <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=247s" data-t="247" aria-label="Assistir a partir de 04:07">04:07</a>.</p>
+<h2 id="s-agente-3-claude-approvals">Agente 3: Claude Approvals</h2>
+<p>Na etapa final, o Claude Approvals avalia se o código está pronto <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=260s" data-t="260" aria-label="Assistir a partir de 04:20">04:20</a>. É outro agente em beta que funciona quase como um arquivo CODEOWNERS mais inteligente <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=275s" data-t="275" aria-label="Assistir a partir de 04:35">04:35</a>. A equipe escreve a política de aprovação num arquivo do repositório, e o agente usa classificadores de linguagem natural para interpretar as regras <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=275s" data-t="275" aria-label="Assistir a partir de 04:35">04:35</a>. Com isso, aprova mudanças de rotina ou bloqueia código arriscado <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=286s" data-t="286" aria-label="Assistir a partir de 04:46">04:46</a>.</p>
+<p>O ponto mais importante para a gestão é a segurança. O agente barra alterações em trechos sensíveis, como lógica financeira, chama uma pessoa da equipe e considera o que o Code Review encontrou <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=297s" data-t="297" aria-label="Assistir a partir de 04:57">04:57</a>.</p>
+<p>A recomendação é começar no <strong>modo de observação</strong>: o agente só mostra qual seria a decisão, sem bloquear nem aprovar nada, até a equipe confiar no sistema <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=310s" data-t="310" aria-label="Assistir a partir de 05:10">05:10</a>.</p>
+<p>A ideia não é tirar as pessoas do processo. Vatsal Bhatt, diretor de engenharia da TELUS, resume: a pessoa continua no ciclo, mas agora o tempo da equipe vai para as mudanças complexas, que precisam de pensamento crítico <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=324s" data-t="324" aria-label="Assistir a partir de 05:24">05:24</a>.</p>
+<h2 id="s-como-comecar">Como começar</h2>
+<p>A adoção é feita repositório por repositório, em três passos <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=350s" data-t="350" aria-label="Assistir a partir de 05:50">05:50</a>:</p>
+<p>1. ative só o Code Review <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=350s" data-t="350" aria-label="Assistir a partir de 05:50">05:50</a>; 2. acrescente o PR Steward, no modo manual <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=365s" data-t="365" aria-label="Assistir a partir de 06:05">06:05</a>; 3. ligue o Claude Approvals no modo de observação <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=365s" data-t="365" aria-label="Assistir a partir de 06:05">06:05</a>.</p>
+<p>No dia a dia, quem desenvolve dispara a sequência inteira com o comando <code>/ship</code> no Claude Code <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=365s" data-t="365" aria-label="Assistir a partir de 06:05">06:05</a>. A equipe de administração controla a compatibilidade com as proteções de branch e define limites de gasto <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=379s" data-t="379" aria-label="Assistir a partir de 06:19">06:19</a>. A cobrança é por uso, pela quantidade de tokens processados <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=391s" data-t="391" aria-label="Assistir a partir de 06:31">06:31</a>.</p>
+<p>Há também um incentivo: organizações elegíveis do plano Enterprise podem resgatar US$ 10 mil em créditos promocionais se ativarem o recurso até 15 de janeiro de 2027 <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=403s" data-t="403" aria-label="Assistir a partir de 06:43">06:43</a>.</p>
+<h2 id="s-qual-e-o-novo-limite">Qual é o novo limite?</h2>
+<p>O vídeo fecha com uma pergunta: se o gargalo da revisão manual acabar, o que as equipes vão construir <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=416s" data-t="416" aria-label="Assistir a partir de 06:56">06:56</a>? Com a burocracia feita pela IA em segundo plano, qual será o novo limite de velocidade da engenharia de software <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=429s" data-t="429" aria-label="Assistir a partir de 07:09">07:09</a>?</p>
+<h2 id="s-perguntas-frequentes">Perguntas frequentes</h2>
+<h3 id="s-o-pr-steward-faz-o-merge-sozinho">O PR Steward faz o merge sozinho?</h3>
+<p>Não. Ele corrige falhas de CI, conflitos de merge e feedback de revisão, mas foi projetado para não aprovar nem fazer o merge. A decisão final é da equipe <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=234s" data-t="234" aria-label="Assistir a partir de 03:54">03:54</a>.</p>
+<h3 id="s-por-onde-comecar-a-usar-o-claude-ship">Por onde começar a usar o Claude Ship?</h3>
+<p>Por um repositório: primeiro o Code Review, depois o PR Steward no modo manual e, por último, o Claude Approvals no modo de observação <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=350s" data-t="350" aria-label="Assistir a partir de 05:50">05:50</a>.</p>
+<h3 id="s-como-o-claude-ship-e-cobrado">Como o Claude Ship é cobrado?</h3>
+<p>Por uso, com base na quantidade de tokens processados. A equipe de administração define limites de gasto <a class="ancora" href="https://www.youtube.com/watch?v=N3ioGqXeDZg&t=379s" data-t="379" aria-label="Assistir a partir de 06:19">06:19</a>.</p>
+</article>
+<section aria-labelledby="h-fontes" class="fontes"><h2 id="h-fontes">Fontes</h2><ul><li><a href="https://claude.com/resources/articles/introducing-claude-ship" rel="noopener">Introducing Claude Ship</a><span class="sustenta">Anúncio da Anthropic de 23/11/2026. Sustenta os três agentes (Code Review em disponibilidade geral; PR Steward e Claude Approvals em beta), a queda de mais de 40% na fatia de PRs revertidos, o PR Steward projetado para não aprovar nem fazer merge, o Claude Approvals como um CODEOWNERS mais inteligente com modo de observação, o comando /ship no Claude Code, a cobrança por tokens, os planos Team e Enterprise, os créditos de pelo menos US$ 10 mil para organizações Enterprise elegíveis até 15/1/2027 e as falas de Alex Devkar (Carvana) e Vatsal Bhatt (TELUS).</span></li><li><a href="https://claude.com/resources/articles/code-review-is-now-generally-available" rel="noopener">Code Review is now generally available</a><span class="sustenta">Anúncio de 15/10/2026. Sustenta os níveis Quick, Standard e Deep por repositório e as revisões cerca de 3 vezes mais rápidas (de ~20 minutos para 6 a 10 minutos).</span></li><li><a href="https://claude.com/product/claude-ship" rel="noopener">Claude Ship | Automate pull requests review and fixes</a><span class="sustenta">Página do produto. Sustenta as categorias Important, Nit e Pre-existing, o ajuste com REVIEW.md, o modo manual do PR Steward com o comentário @claude steward, a exigência de uma pessoa em código sensível e a ordem de adoção: Code Review, PR Steward e política de aprovação em modo de observação.</span></li><li><a href="https://code.claude.com/docs/en/claude-ship" rel="noopener">Claude Ship</a><span class="sustenta">Documentação. Sustenta a adoção de um agente por vez num repositório e a política de aprovação no arquivo .claude/approvals.yml.</span></li></ul></section>
+<p class="revisao">Revisado por Maurício Yokoyama Issei em <time datetime="2026-11-25">25 de novembro de 2026</time>.</p>
+<section aria-labelledby="h-descricao"><h2 id="h-descricao">Sobre o vídeo</h2>
+<p>Entenda como o **Claude Ship** acelera o desenvolvimento de software automatizando todo o ciclo de vida dos pull requests no GitHub. </p>
+<p>Neste vídeo explicativo, detalhamos como o Claude Ship utiliza três agentes especializados para eliminar gargalos entre o envio do código e o merge:</p>
+<p>* **Code Review:** Utiliza múltiplos agentes para identificar bugs críticos antes de chegarem à produção, oferecendo níveis de análise *Quick*, *Standard* e *Deep*.<br>* **PR Steward (Beta):** Executa em nuvem para resolver verificações de CI com falhas, solucionar conflitos de merge e aplicar correções sugeridas nas revisões.<br>* **Claude Approvals (Beta):** Aplica regras de governança configuradas no repositório, aprovando alterações rotineiras automaticamente e acionando revisores humanos para partes sensíveis do código.<br>* **Comando `/ship` no Claude Code:** Como os desenvolvedores podem disparar esse fluxo diretamente do terminal.</p>
+<p>O Claude Ship está disponível para clientes dos planos **Claude Team** e **Enterprise** no GitHub.</p>
+<p>---</p>
+<p>#### 🔗 **Fontes e Links Oficiais:**</p>
+<p>* **Claude Ship | Automate pull requests review and fixes:**  <br>  <a href="https://claude.com/product/claude-ship" rel="noopener">https://claude.com/product/claude-ship</a></p>
+<p>* **Introducing Claude Ship | Claude by Anthropic:**  <br>  <a href="https://claude.com/resources/articles/introducing-claude-ship" rel="noopener">https://claude.com/resources/articles/introducing-claude-ship</a></p>
+<p>* **Code Review is now generally available | Claude by Anthropic:**  <br>  <a href="https://claude.com/resources/articles/code-review-is-now-generally-available" rel="noopener">https://claude.com/resources/articles/code-review-is-now-generally-available</a></p>
+<p>* **Documentação Oficial do Claude Ship:**  <br>  <a href="https://code.claude.com/docs/en/claude-ship" rel="noopener">https://code.claude.com/docs/en/claude-ship</a></p>
+<p>---</p>
+<p>#ClaudeShip #Anthropic #DevOps #GitHub #CodeReview #EngenhariaDeSoftware #InteligenciaArtificial</p></section>
+<section aria-labelledby="h-transcricao"><h2 id="h-transcricao">Transcrição</h2>
+<div class="box"><details><summary>Mostrar a transcrição completa</summary>
+<p class="aviso">Transcrição automática, não revisada. Pode conter erros de palavras, nomes e pontuação.</p>
+<p><span class="ts">[0:00]</span>Olá, boas-vindas a esta explicação. É excelente ter a companhia de quem busca entender o futuro da tecnologia. Hoje a nossa imersão total é sobre como o Cloudship funciona e como essa ferramenta tá automatizando o ciclo de vida do desenvolvimento de software moderno. Olha que ironia interessante no fluxo de trabalho atual de desenvolvimento. A inteligência artificial já consegue escrever blocos gigantes de código quase instantaneamente, certo? Mas aí surge um grande dilema. Se aá escreve tão rápido, quem vai revisar tudo isso? Acabou que esperar por uma revisão humana feita por colegas de trabalho virou um gargalo gigantesco na engenharia. É um contraste absurdo. De um lado, a geração de código por IA é rápida, automática, leva apenas alguns segundos. Do outro lado da balança, bom, as revisões manuais tradicionais de pool requests continuam muito lentas, quebram totalmente o contexto de quem tá programando e muitas vezes ficam travadas por horas ou até dias. Resumindo, a criação acelerou enormemente, mas a aprovação ficou presa</p>
+<p><span class="ts">[1:01]</span>no passado. Bom, vamos mergulhar nisso. O roteiro de hoje cobre um, o gargalo do code review. Dois, conheça o Cloud Ship. 3, agente 1, code review. 4, agente 2, PR Steward. 5, agente 3, Clode Approvals. E 6, como começar a usar. Número dois, conheça o Cloudship, o fluxo de trabalho automatizado pós PR. Essencialmente o Cloudship, que hoje tá em fase beta para planos Team e Enterprise, é a solução definitiva para automatizar absolutamente tudo que acontece depois que um PR é aberto. Pense nessa ferramenta como uma equipe de três membros virtuais atuando em sequência. Primeiro temos a revisão para pegar os bugs, depois a correção para transformar as falhas em sucesso e por fim a aprovação aplicando as políticas da organização. Parte três. Agente um. Code review. capturando bugs antes da produção. Esse primeiro agente, que inclusive acaba de ser lançado em disponibilidade geral, analisa os PRs</p>
+<p><span class="ts">[2:02]</span>abertos de forma automática e quase adversária. Ele vai atrás de falhas graves que poderiam quebrar a produção. Ele categoriza as descobertas de um jeito super limpo, entre problemas importantes, detalhes menores ou códigos pré-existentes. E o mais legal, ele não só aponta o erro, ele descreve o problema, mostra o gatilho e já entrega a correção. Quem administra o sistema tem flexibilidade total. Dá para ajustar o rigor da análise repositório por repositório usando um arquivo simples chamado review. É só escolher entre revisões rápidas, padrões ou profundas. O processo todo roda sozinho a cada novo PR. Só para dar uma ideia prática, o uso interno dessa ferramenta cortou a taxa de PRs revertidos da própria equipe de engenharia da Antropic em mais de 40%. Agora, o que é realmente impressionante nesse dado é o salto de velocidade. As revisões estão umas três vezes mais rápidas do que nas versões de pesquisa. Um processo que antes tomava uns 20 minutos despencou por um intervalo muito ágil, levando de apenas 6 a 10</p>
+<p><span class="ts">[3:02]</span>minutinhos no total. Quatro. Agente 2 PR Stuart, transformando PRs vermelhos de volta para verdes. E o que acontece quando o código é sinalizado com erro? É aí que entra o PR Stuart. Ele é um agente em versão beta baseado na nuvem que trabalha nos bastidores como um verdadeiro consertador incansável. Ele corrige de forma automática as falhas na integração contínua, resolve conflitos chatos de merge e aplica o feedback da revisão. A grande sacada é manter o branch atualizado sem que a pessoa que programou precise perder o foco e trocar de contexto para voltar naquele código. As regras do jogo aqui são bem claras e delimitadas. O PR Stewart age com base em feedbacks, sejam de bots ou de humanos. e é acionado manualmente com um simples comentário marcando @cloudstewward. Ele faz toda a mágica na nuvem, aplica as correções e até ensina como desfazer. Mas atenção num detalhe vital, ele foi projetado deliberadamente para não aprovar e nem fazer o merge do código. A palavra final continua nas mãos da</p>
+<p><span class="ts">[4:03]</span>equipe de engenharia sempre. E para trazer essa parte mais técnica pra vida real, a gente já vê liderança escolhendo frutos durante a fase piloto. Como o Alex Devcar, vice-presidente snior de engenharia, pontuou muito bem, o PR Stuart tá ajudando as equipes a gastar bem menos tempo com aquele vai e vem exaustivo de feedback de código e, claro, usando esse tempo extra para de fato focar em construir novidades. Cinco. Agente 3, Cloud Approvals, aplicando as regras da equipe. E chegamos na etapa final, a hora de avaliar se o código realmente está pronto. O Clode Approvals é mais um agente em beta que funciona quase como um arquivo Codeowners hiperinteligente. A equipe escreve as políticas de aprovação num arquivo direto no repositório e o agente usa classificadores de linguagem natural para interpretar essas regras. Basicamente ele aplica a política da organização para aprovar mudanças rotineiras direto ou então para bloquear códigos arriscados. O ponto crucial e mais reconfortante paraa gestão é a segurança. O agente barra alterações em</p>
+<p><span class="ts">[5:04]</span>trechos sensíveis, tipo lógica financeira, e imediatamente chama alguém da equipe, além de levar em conta as descobertas do próprio code review. Mas a recomendação de ouro é: comece rodando no modo de observação. Nesse modo seguro, o agente apenas sinaliza qual seria a sua decisão, sem realmente bloquear ou aprovar nada até todo mundo ganhar total confiança no sistema. A ideia nunca foi eliminar o fator humano. Muito pelo contrário. O diretor de engenharia Watsal Hat resumiu a essência disso ao dizer que a intervenção humana continua firme no ciclo. A diferença é que agora a inteligência e o tempo das equipes vão exclusivamente para as mudanças complexas que realmente precisam de atenção e pensamento crítico. Sessão seis, como começar a usar a implementação passo a passo. Então, como colocar toda essa maravilha para rodar hoje? É um caminho bem livre de atrito. A adoção acontece repositório por repositório. Primeiro, ativa-se apenas o code review. Em seguida, adiciona-se o</p>
+<p><span class="ts">[6:05]</span>PR Stuart, mas deixando apenas no modo manual. E por último, trace o Cloud Approvals naquele famoso modo de observação seguro. É uma implementação super fluida e sem estresse. No dia a dia, quem desenvolve ativa a sequência inteira rapidinho, usando apenas o comando barra chip dentro do cloud code. Do outro lado, a equipe administrativa fica no controle total dos bastidores, configurando compatibilidades com as proteções de branch já ativas e estipulando os limites de gastos. Afinal de contas, o cloudship é cobrado por uso, baseado na quantidade de tokens processados. Ah, e tem um incentivo financeiro fortíssimo. Organizações qualificadas que já usam o plano Enterprise podem resgatar nada menos que 10.000 em créditos promocionais se ativarem o recurso até 15 de janeiro de 2027. Ou seja, é literalmente o momento perfeito e mais oportuno para testar a ferramenta. O que nos leva a uma reflexão provocativa sobre o futuro da nossa área. Se a gente consegue eliminar de vez aquele velho gargalo da revisão</p>
+<p><span class="ts">[7:05]</span>manual, o que as equipes vão construir a partir de hoje? Com a burocracia sendo operada pelas IA em segundo plano, qual vai ser o novo limite de velocidade da engenharia de software? Fica o questionamento no ar. Agradecemos demais pela companhia nesta explicação e até a próxima análise.</p>
+</details></div></section>
+<section class="prateleira" aria-labelledby="h-mais-do-assunto" id="mais-do-assunto" data-prateleira>
+<div class="prateleira-cab"><h2 id="h-mais-do-assunto">Mais deste assunto</h2><a class="todos" href="/temas/engenharia-agentica">Ver todos de Engenharia agêntica</a>
+</div>
+<div class="trilho-wrap"><div class="trilho-botoes" data-botoes></div>
+<ul class="trilho" data-trilho>
+<li data-temas="ferramentas-de-ia engenharia-agentica" data-artigo="1" data-data="2026-11-21" data-vistos="2"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/flJnoDrNLcE/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>7:34</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e">txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica gestao-e-estrategia" data-artigo="1" data-data="2026-11-21" data-vistos="0"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/udq7xxWzql0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>5:52</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de">A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica ferramentas-de-ia" data-artigo="1" data-data="2026-11-19" data-vistos="3"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/i0bV36ade8s/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>5:31</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-a-memoria-de-autoaperfeicoamento-impulsiona-o">Como a Memória de Autoaperfeiçoamento Impulsiona o Recursive Self-Improvement Contínuo em IA</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica" data-artigo="1" data-data="2026-10-19" data-vistos="182"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/ZTNLoWhtXEw/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>7:44</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-o-git-ai-resolve-o-problema-de-escala-do-git-para">Como o `git-ai` Resolve o Problema de Escala do Git para Agentes de IA</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica especificacao-e-desenvolvimento" data-artigo="1" data-data="2026-10-19" data-vistos="91"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/mRFqnOktQH4/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>7:07</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/como-os-agentes-de-ia-quebraram-o-git-na-anthropic-o-caso">Como os Agentes de IA Quebraram o Git na Anthropic | O Caso Scion</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="1" data-data="2026-10-18" data-vistos="39"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/iCVD5IVVR2g/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>7:41</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-papel-do-amazon-nova-act-automacao-web-com-agentes-de-ia">O Papel do Amazon Nova Act: Automação Web com Agentes de IA na AWS</a></h3></div>
+</article></li>
+<li data-temas="especificacao-e-desenvolvimento engenharia-agentica" data-artigo="1" data-data="2026-10-17" data-vistos="59"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/5rzZYy5JODM/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>7:34</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/pode-a-inteligencia-artificial-manter-e-depurar-bases-de">Pode a Inteligência Artificial manter e depurar bases de código complexas de forma autônoma?</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica gestao-e-estrategia" data-artigo="1" data-data="2026-10-13" data-vistos="53"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/lZqBmAkl3J8/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>8:34</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/o-que-faz-um-forward-deployed-engineer-fde">O que faz um Forward-Deployed Engineer (FDE)?</a></h3></div>
+</article></li>
+<li data-temas="dados-e-decisao engenharia-agentica" data-artigo="1" data-data="2026-10-10" data-vistos="69"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/KRoFYGy7eos/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>9:20</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado">Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="1" data-data="2026-10-10" data-vistos="36"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/hub4sB4yYss/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>7:56</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/a-era-agentica-do-gemini-como-os-novos-agentes-do-google">A Era Agêntica do Gemini: Como os Novos Agentes do Google Cloud Vão Transformar o Trabalho</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica ferramentas-de-ia" data-artigo="1" data-data="2026-10-09" data-vistos="81"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/o3IMxBLEhp0/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>8:37</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/ecc-ferramentas-agenticas-como-otimizar-agentes-de-ia-para">ECC: Ferramentas Agênticas — Como Otimizar Agentes de IA para Engenharia de Software</a></h3></div>
+</article></li>
+<li data-temas="engenharia-agentica cloud-e-confiabilidade" data-artigo="1" data-data="2026-10-07" data-vistos="90"><article class="card">
+<div class="card-thumb"><img src="https://i.ytimg.com/vi/BTTHq4W56KQ/mqdefault.jpg" alt="" loading="lazy" decoding="async" width="320" height="180"><span class="selo">Artigo</span><span class="dur"><span class="sr">Duração </span>8:03</span></div>
+<div class="card-corpo"><h3><a class="card-link" href="/videos/opensre-o-agente-de-ia-open-source-para-sre-e-resolucao-de">OpenSRE: O Agente de IA Open-Source para SRE e Resolução de Incidentes</a></h3></div>
+</article></li>
+</ul></div></section>
+</main>
+<footer class="foot"><div class="wrap"><a href="/privacidade">Privacidade</a><a href="/cookies">Cookies</a><a href="/termos">Termos</a><a href="https://www.youtube.com/channel/UC551iKrIXGmAB9UcBzHtLhw" rel="noopener">Canal no YouTube</a></div></footer>
+<script>
+(function () {
+  var box = document.querySelector('.yt[data-id]');
+  if (!box) return;
+  function tocar(inicio) {
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0' + (inicio ? '&start=' + inicio : '');
+    f.title = box.dataset.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    f.allowFullscreen = true;
+    box.replaceChildren(f);
+    box.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    f.focus();
+  }
+  var b = box.querySelector('.yt-play');
+  b.hidden = false;
+  b.addEventListener('click', function () { tocar(0); });
+  // Âncora de minuto do artigo: sem JS vai ao YouTube no minuto; com JS toca aqui (SDD-fase-2 §4).
+  document.querySelectorAll('a.ancora[data-t]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); tocar(Number(a.dataset.t)); });
+  });
+})();
+</script>
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-prateleira]').forEach(function (sec) {
+    var trilho = sec.querySelector('[data-trilho]'), box = sec.querySelector('[data-botoes]');
+    var nome = sec.querySelector('h2').textContent;
+    function botao(texto, rotulo, sentido) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'trilho-botao'; b.textContent = texto;
+      b.setAttribute('aria-label', rotulo + ' · ' + nome);
+      b.addEventListener('click', function () {
+        trilho.scrollBy({ left: sentido * trilho.clientWidth * 0.9, behavior: calmo.matches ? 'auto' : 'smooth' });
+      });
+      return b;
+    }
+    var ant = botao('\u2039', 'Vídeos anteriores', -1), prox = botao('\u203A', 'Próximos vídeos', 1);
+    box.append(ant, prox);
+    function atualiza() {
+      ant.disabled = trilho.scrollLeft <= 4;
+      prox.disabled = trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 4;
+    }
+    trilho.addEventListener('scroll', atualiza, { passive: true });
+    addEventListener('resize', atualiza);
+    atualiza();
+  });
+})();
+</script>
+<script type="module" src="/js/cookie-consent.js"></script>
+</body>
+</html>
