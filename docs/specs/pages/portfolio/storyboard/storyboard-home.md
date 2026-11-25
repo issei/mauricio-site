@@ -12,7 +12,7 @@ base: SDD-nova-home.md (docs/specs/pages/portfolio/)
 > Os quadros deste documento são **conceituais**: desenhos de composição com
 > caixas hachuradas no lugar das fotos que ainda não existem. A única
 > fotografia que aparece é o **retrato real** do Issei, já publicado no site
-> (inteiro no quadro 01 e no 07, recortado nos olhos no 06), e ela está
+> (inteiro no quadro 01 e no 07, recortado de perto no 06), e ela está
 > marcada como tal. Nenhum quadro é fotografia real de uma cena.
 > As imagens ficam em `quadros/` (PNG para ver, SVG para editar).
 >
@@ -48,7 +48,7 @@ A intenção é que o visitante saia com três ideias:
    perguntas, não. A ponte é dita uma vez, na cena 08.
 
 O filme **começa e termina no rosto**: abre no retrato e fecha a abertura no
-mesmo rosto, que volta pelos olhos. Isso fecha o ciclo "perguntar → … →
+mesmo rosto, que volta de perto. Isso fecha o ciclo "perguntar → … →
 ensinar" sem precisar dizer. Do rosto, a moldura passa direto para o retrato
 da história (cena 07), sem tela de menu no meio.
 
@@ -68,8 +68,8 @@ uma com as suas fontes. Depois a moldura fecha até virar o traço dourado: as
 fontes fecharam, e ele tenta explicar. A moldura reabre num diagrama real, e
 sobre ele entram o teclado e o teste. Um corte seco leva à noite: um monitor de
 operação, o traço lateral racha, e a pergunta "Por que falhou?" é digitada. O
-traço se repara: a causa vira a próxima pergunta. Por fim, o rosto volta pelos
-olhos e a câmera recua até o retrato.
+traço se repara: a causa vira a próxima pergunta. Por fim, o rosto volta de
+perto e a câmera recua até o retrato.
 
 Do rosto, a moldura recua e volta a ser o retrato, agora ao lado
 de cinco marcos da trajetória, de 1997 até hoje (Minha história). O retrato recua e, por trás
@@ -91,7 +91,7 @@ de ler uma frase.
 | Fotografia | Documental, luz natural lateral (janela), sem flash, sem fundo removido, sem filtro. Leve dessaturação (−10 %) na pós, igual em todas. 3:2 nas cenas, 4:5 no retrato |
 | Pessoas | O Issei é o único rosto em primeiro plano. Outras pessoas aparecem de costas ou fora de foco, com autorização |
 | Lente (equivalente 35 mm) | 35 mm nos planos de ambiente, 50 mm nos médios, 85 mm nos detalhes (mãos, teclado). Sem grande-angular extrema |
-| Câmera simulada | Gestos: cortina (revelação por máscara, inclusive ao centro), *pan* lateral (pelo enquadramento da foto), corte seco, digitação (texto real revelado por máscara) e um único recuo grande, dos olhos ao retrato (escala 2 → 1, cena 06). Escala ≤ 1,06 no resto. Nenhuma rotação |
+| Câmera simulada | Gestos: cortina (revelação por máscara, inclusive ao centro), *pan* lateral (pelo enquadramento da foto), corte seco, digitação (texto real revelado por máscara) e um único recuo, do rosto de perto ao retrato inteiro (escala 1,4 → 1, cena 06). Escala ≤ 1,06 no resto. Nenhuma rotação |
 | Tipografia | Nome em Inter 600; mensagem e títulos de sessão em serifada editorial (proposta: Shippori Mincho); texto em Inter 400 |
 | Elemento recorrente | **A moldura (M1)**: o retângulo que viaja entre as cenas, com fio *Shoji*; na cena 03 ela fecha até virar o traço. **O traço dourado *Kintsugi***: linha vertical ao lado do texto na S01; racha e se repara na cena 05; vira linha vertical na S02 e sublinhado no fim |
 | Som | **Nenhum.** A página não toca áudio. A "narração" é texto curto na tela, escrito em primeira pessoa. Se um dia houver versão em vídeo do mesmo roteiro (por exemplo, um teaser para o canal ou para redes), a narração serve como locução (ver §6). Essa versão pode ser feita sem custo no **HyperFrames** (HTML para vídeo, código aberto, local), reaproveitando as fotos reais, os textos e a paleta da página. A home em si não usa vídeo |
@@ -182,8 +182,8 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | Ficha | |
 | :-- | :-- |
 | **A** | Sessão 01 · Fechar o ciclo: quem perguntou é quem explica e publica; volta o rosto |
-| **B** | O retrato da cena 01, primeiro recortado nos olhos, depois inteiro. Ponto de atenção: os olhos |
-| **C** | Entra em escala 2 nos olhos e recua até 1 (83–97 %). É a única exceção ao limite de escala (SDD §5.1). No fim, M1 reduz para 0,88 e desliza para a esquerda (97–100 %) |
+| **B** | O retrato da cena 01, primeiro de perto, depois inteiro. Ponto de atenção: o rosto |
+| **C** | Entra em escala 1,4, perto do rosto, e recua até 1 (83–97 %). É a única exceção ao limite de escala, aprovada pelo Issei (SDD §5.1). No fim, M1 reduz para 0,88 e desliza para a esquerda (97–100 %) |
 | **D** | *O que consigo explicar, eu publico.* Ensinar é como verifico se entendi de verdade. |
 | **D. Relação** | "Consigo explicar" retoma a cena 03 (fechar as fontes e explicar); publicar é o mesmo teste, feito em público |
 | **E** | Termina com M1 na direção do retrato da S02. **Permanece:** o rosto, que passa da cena 06 para o retrato da cena 07 |
@@ -241,7 +241,7 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | 02 → 03 | M1 fecha ao centro e vira o traço dourado | O lugar de M1 e o ouro |
 | 03 → 04 | O traço some; M1 reabre do centro no diagrama | O lugar de M1 |
 | 04 → 05 | Corte seco para a noite | M1 |
-| 05 → 06 | A noite sai; o rosto entra pelos olhos | M1 e o traço reparado |
+| 05 → 06 | A noite sai; o rosto entra de perto | M1 e o traço reparado |
 | 06 → 07 | M1 reduz e desliza até o lugar do retrato da S02 | O rosto (cena 06 → retrato) + traço dourado (vira vertical) |
 | 07 → 08 | Retrato recua; registros deslizam por trás | Molduras, traço volta a horizontal |
 | 08 → 09 | Registros se alinham e se dividem em quatro | Molduras → cartões de projeto |
@@ -253,7 +253,7 @@ quatro), o que dá ritmo sem precisar de efeito novo.
 
 **Gestos usados na S01 (revisão 4):** cortina de baixo (1×), cortina ao centro
 (2×: fecha e abre), digitação (2×), entrada sobre o canto (2×), *pan* (1×),
-corte seco (1×), traço que racha e se repara (1×), recuo dos olhos ao retrato
+corte seco (1×), traço que racha e se repara (1×), recuo do rosto ao retrato
 (1×). Nas sessões 02–04: divisão de moldura (1×) e parallax (2×). Nenhum
 gesto se repete mais de duas vezes.
 
@@ -331,7 +331,7 @@ necessárias, sem pose, que o Issei pode fazer na própria mesa:
 | 4 Teclado | detalhe | 50 mm | Mãos e tela; código desfocado; nada legível |
 | 6 Teste | médio fechado | 50 mm | Duas telas de dia, sem dado legível |
 | 7 Operação | médio fechado | 50 mm | À noite, só a luz da tela; sem nome de empresa |
-| 2 Retrato (opcional) | médio, 4:5 | 85 mm | O atual serve; um novo precisa de ≥ 1600 px de largura para o recorte dos olhos |
+| 2 Retrato (opcional) | médio, 4:5 | 85 mm | O atual serve; um novo precisa de ≥ 1600 px de largura para o recorte de perto |
 | 8 Gravação (opcional) | médio | 50 mm | Só se não houver quadro do canal com o rosto |
 
 As fotos 1 (caderno), 3 (quadro branco) e 5 (conversa) saíram. Todas em 3:2
@@ -371,7 +371,7 @@ Qualquer conteúdo fica a **no máximo 2 cliques** da primeira tela, sem rolar.
 | Relevância | Cena 05 juntava duas ideias diferentes | Mantida: dia/noite dá a única variação de luz do filme e mostra a passagem do tempo da operação |
 | Fotografia | Hoje só R1 é real | Revisão 4: as cenas 02 e 03 são texto e traço, e a cena 04 tem a captura do diagrama. Sem as fotos 4, 6 e 7, a cena 04 fica só com o diagrama e a cena 05 só com a faixa "Por que falhou?" |
 | Navegação | Caminhos aparecem na cena 01, com CTA em cada sessão | Ok (revisão 2: a repetição na antiga cena 07 saiu) |
-| Originalidade | A divisão da moldura (08 → 09), o traço que racha e se repara (05) e o rosto que volta pelos olhos e passa ao retrato (06 → 07) são os gestos próprios da página | Ok |
+| Originalidade | A divisão da moldura (08 → 09), o traço que racha e se repara (05) e o rosto que volta de perto e passa ao retrato (06 → 07) são os gestos próprios da página | Ok |
 | Viabilidade | Três fotos sem pose e 6 capturas de tela (revisão 4) | Ok; não depende de vídeo nem de IA |
 
 **Cenas eliminadas ou fundidas:**
@@ -422,10 +422,11 @@ cena 02 desmonta a pergunta; a cena 03 fecha as fontes para explicar.
 | 03 Do quadro ao teclado | 03 Fechar e explicar (só o traço) | A metacognição vira gesto: decompor na 02, compor e verificar na 03 |
 | 04 A conversa | 04 Do diagrama ao teste (captura real + teclado + teste) | Artefato publicado no lugar de foto encenada |
 | 05 Dia e noite | 05 A noite e a causa (o traço racha e se repara) | Crise, tempo, causa raiz e a próxima pergunta |
-| 06 A gravação | 06 O rosto de novo (dos olhos ao retrato) | Sem foto nova; o rosto da cena 01 fecha o ciclo |
+| 06 A gravação | 06 O rosto de novo (de perto ao retrato) | Sem foto nova; o rosto da cena 01 fecha o ciclo |
 
-**Exceção proposta:** o recuo dos olhos ao retrato (escala 2 → 1) passa do
-limite de 1,06 do SDD §5.1. Espera a revisão do Issei no protótipo.
+**Exceção aprovada:** o recuo do rosto ao retrato passa do limite de 1,06 do
+SDD §5.1. A proposta era 2 → 1; depois de ver o protótipo, o Issei escolheu
+suavizar para 1,4 → 1 (2026-11-25).
 
 **Pontos para o Issei confirmar:**
 
@@ -447,7 +448,7 @@ Um filme de **9 cenas em 4 sessões**, sem som, conduzido pela rolagem:
 3. **Fechar e explicar** — aprender: as fontes fecham, fica o traço.
 4. **Do diagrama ao teste** — projetar, construir e validar.
 5. **A noite e a causa** — sustentar, liderar e evoluir; o traço racha e se repara.
-6. **O rosto de novo** — ensinar e compartilhar; o rosto volta pelos olhos.
+6. **O rosto de novo** — ensinar e compartilhar; o rosto volta de perto.
 7. **O retrato e o tempo** — Minha história, de 1997 até hoje → `/curriculo`.
 8. **A mesa de estudo** — Minhas ideias; a ponte para a IA → `/catalogo`, `/videos`.
 9. **Da concepção à operação** — Meus projetos → 4 cases.

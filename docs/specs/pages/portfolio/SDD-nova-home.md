@@ -200,7 +200,7 @@ estática: nenhuma informação dela depende de animação.
 | 30–42 % | 03 Fechar e explicar | aprender | Nenhuma: M1 fecha até virar o traço dourado | cortina ao centro (30–33,5 %); o traço cresce da esquerda para a direita depois que a moldura fecha (33,5–35,5 %) e fica parado até 40 %; o traço lateral some (33–41 %) | Então fecho as fontes e tento explicar. É aí que descubro o que eu só reconhecia. |
 | 42–60 % | 04 Do diagrama ao teste | projetar · construir · validar | A: diagrama real das cinco camadas do Agent Ready (captura); B: mãos no teclado; C: duas telas de teste | M1 abre do centro (41–44,5 %); *pan* lento em A; B (48–51 %) e depois C (53–56 %) entram sobre o canto inferior direito de M1 e passam um pouco da moldura | Desenho para que outra pessoa consiga operar. Construo em passos pequenos, e o teste diz se está certo. |
 | 60–80 % | 05 A noite e a causa | sustentar · liderar · evoluir | Monitor de operação à noite | corte seco para a noite (60 %); a luz da tela sobe (61–68 %); o traço lateral racha (61–63 %); a faixa na base de M1 digita "Por que falhou?" (72–75 %); a segunda frase entra (73–76 %); o traço se repara (76–80 %) | Na crise, o tempo conta. Com o time, primeiro estabilizo; depois vou até a causa raiz. / A causa vira a próxima pergunta. |
-| 80–100 % | 06 O rosto de novo | ensinar · compartilhar | Retrato (o mesmo da cena 01) | entra nos olhos, em escala 2, e recua até o retrato inteiro (83–97 %; exceção de escala, §5.1) | O que consigo explicar, eu publico. Ensinar é como verifico se entendi de verdade. |
+| 80–100 % | 06 O rosto de novo | ensinar · compartilhar | Retrato (o mesmo da cena 01) | entra perto do rosto, em escala 1,4, e recua até o retrato inteiro (83–97 %; exceção de escala aprovada, §5.1) | O que consigo explicar, eu publico. Ensinar é como verifico se entendi de verdade. |
 
 - As trocas duram de 1,5 % a 3,5 % da faixa (troca curta, imagem longa). A
   narração muda por opacidade. Os números de faixa vêm do protótipo da
@@ -481,11 +481,12 @@ Regras do celular:
   sequestro de roda ou toque. O `sticky` só segura o palco enquanto o texto
   continua acessível.
 - Parallax ≤ 6 % do deslocamento. Escala ≤ 1,06. Nenhuma rotação.
-- **Exceção única de escala (cena 06, proposta da revisão 4, a confirmar pelo Issei):** o retrato entra em escala 2 e
-  recua até 1 dentro de M1. O movimento é um recuo (a imagem diminui enquanto
+- **Exceção única de escala (cena 06, aprovada pelo Issei em 2026-11-25):** o
+  retrato entra em escala 1,4 e recua até 1 dentro de M1. A proposta era 2 → 1;
+  o Issei escolheu suavizar para 1,4 → 1. O movimento é um recuo (a imagem diminui enquanto
   a pessoa rola), M1 corta o excesso e o layout não muda. Nenhum outro
   elemento passa de 1,06. O arquivo do retrato precisa ter resolução para o
-  recorte dos olhos (§8).
+  recorte de perto (§8).
 - Cada efeito é usado no máximo duas vezes (sem repetição mecânica). Na
   revisão 4: digitação 2× (cenas 02 e 05), cortina ao centro 2× (fecha na 03,
   abre na 04), entrada sobre o canto 2× (B e C na 04).
@@ -699,7 +700,7 @@ real legível, sem outras pessoas identificáveis.
 | # | Foto | Cena | Situação na revisão 4 |
 | :-- | :-- | :-- | :-- |
 | 1 | Caderno: mãos com caneta, esboço, livro aberto | — | **Sai.** A cena 02 mostra a pergunta em texto real. Na sessão 03, uma figura real de estudo ocupa o lugar |
-| 2 | Retrato 4:5, olhando para a câmera | 01, 06, 07 | **Opcional.** O retrato atual serve (§4.4). Para o recorte dos olhos em escala 2 (cena 06), o arquivo precisa ter pelo menos 1600 px de largura (o atual tem 1600 × 2000); 2400 px dá nitidez também em telas grandes |
+| 2 | Retrato 4:5, olhando para a câmera | 01, 06, 07 | **Opcional.** O retrato atual serve (§4.4). Para o recorte de perto em escala 1,4 (cena 06), o arquivo precisa ter pelo menos 1600 px de largura (o atual tem 1600 × 2000); 2400 px dá nitidez também em telas grandes |
 | 3 | Quadro branco com diagrama, Issei de perfil | — | **Sai.** O diagrama real do Agent Ready (captura) ocupa a cena 04 |
 | 4 | Mãos no teclado, código desfocado | 04 | **Necessária.** Sem pose: mãos e tela |
 | 5 | Conversa de pé, Issei ouvindo | — | **Sai.** A colaboração fica na narração da cena 05 ("Com o time") |
@@ -780,7 +781,7 @@ foto real da mesma posição, ou a cena sai (plano B).
 | `sticky` alto cansa no celular | S01 fica entre 200 e 260 vh no celular, e as cenas 03, 05, 07 e 09 mudam de composição (§4.3) |
 | Sessão 01 longa demais com 6 cenas | Altura é referência (300–360 vh) e tem teto; a H-2 calibra com capturas e encurta faixas antes de aumentar altura (§3.5) |
 | Sessão 01 apressada: a revisão 4 tem mais tempos por cena dentro do mesmo teto | A H-2 confere se cada frase dá tempo de leitura numa rolagem normal; se não der, encurta a cena 01 e as trocas (§3.5) |
-| Retrato perde nitidez no recorte dos olhos (escala 2) | `srcset` com a versão de 1600 px; o recorte nunca passa de 2× (§5.1) |
+| Retrato perde nitidez no recorte de perto (escala 1,4) | `srcset` com a versão de 1600 px; o recorte nunca passa de 1,4× (§5.1) |
 | Fotos escuras (cenas 05 e 06) somem no fundo índigo | Fio `--hm-shoji-strong` em M1 nessas cenas; a penumbra `--hm-aizome-deep` só em volta da foto da noite (§4.1) |
 
 ---
@@ -796,7 +797,7 @@ foto real da mesma posição, ou a cena sai (plano B).
 | D-H5 | O cabeçalho comum muda na home? | **Decidida:** não. Cabeçalho e rodapé comuns continuam escuros, como em `/curriculo`, `/catalogo` e `/videos` |
 | D-H6 | A página `/trajetoria` (PR #231) segue a direção antiga (escura, partículas) ou passa a seguir esta? | Pausar e alinhar à direção desta home |
 | D-H7 | Pode usar diagramas do TGI 2004 como registro de estudo? | Não por enquanto (o TGI não é publicado) |
-| D-H8 | Qual gesto de origem a Sessão 01 usa, agora que o processo é digital? | **Decidida (Issei, 2026-11-25):** combinar os dois. A cena 02 desmonta a pergunta; a cena 03 fecha as fontes para explicar (§2, §3.1). A exceção de escala da cena 06 (§5.1) é proposta e espera a revisão do Issei no protótipo |
+| D-H8 | Qual gesto de origem a Sessão 01 usa, agora que o processo é digital? | **Decidida (Issei, 2026-11-25):** combinar os dois. A cena 02 desmonta a pergunta; a cena 03 fecha as fontes para explicar (§2, §3.1). A exceção de escala da cena 06 foi aprovada em 1,4 → 1 (Issei, 2026-11-25; §5.1) |
 
 ## 11. Unidades de trabalho
 
