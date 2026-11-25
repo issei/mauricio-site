@@ -2,7 +2,7 @@
 
 Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha um artigo curto, com links para as fontes e o conteúdo original.
 
-70 de 185 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
+70 de 186 vídeos já têm artigo. Os outros têm, por enquanto, a descrição e a transcrição.
 
 ## Em destaque
 
@@ -149,6 +149,7 @@ Os vídeos do canal de Maurício Yokoyama Issei, por assunto. Cada vídeo ganha 
 
 ## Todos os vídeos
 
+- [Como o Claude Ship Funciona: Automatize Revisões, Correções e Aprovações de Pull Requests](https://mauricio.issei.com.br/videos/como-o-claude-ship-funciona-automatize-revisoes-correcoes-e) — 25 de novembro de 2026
 - [txtai: O Framework Completo de IA para Busca Semântica, RAG e Agentes Autônomos](https://mauricio.issei.com.br/videos/txtai-o-framework-completo-de-ia-para-busca-semantica-rag-e) — 21 de novembro de 2026
 - [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
 - [A quem a empresa delega quando delega à IA? | O Guia de Sobrevivência para Agentes Autônomos](https://mauricio.issei.com.br/videos/a-quem-a-empresa-delega-quando-delega-a-ia-o-guia-de) — 21 de novembro de 2026
