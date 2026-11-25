@@ -141,7 +141,7 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | :-- | :-- |
 | **A** | Sessão 01 · Mostrar que aprender é explicar sem consultar (compor e verificar) |
 | **B** | Nenhuma imagem. M1 fechou e virou um traço dourado horizontal, parado no meio do palco. O traço lateral some. Ponto de atenção: o traço |
-| **C** | Cortina ao centro (30–33,5 %); o traço cresce da esquerda para a direita (31–33,5 %) e fica parado até 40 %. É o silêncio da página |
+| **C** | Cortina ao centro (30–33,5 %); o traço cresce da esquerda para a direita depois que a moldura fecha (33,5–35,5 %) e fica parado até 40 %. É o silêncio da página |
 | **D** | *Então fecho as fontes e tento explicar.* É aí que descubro o que eu só reconhecia. |
 | **D. Relação** | O vazio é a própria imagem: as fontes fecharam. O texto diz o que o vazio quer dizer |
 | **E** | Começa com M1 fechando. Termina com o traço sumindo e M1 reabrindo do centro (41–44,5 %). **Permanece:** o lugar de M1 |
