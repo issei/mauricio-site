@@ -9,6 +9,7 @@ Dados, métricas, aprendizado de máquina e modelos para transformar informaçã
 
 ## Vídeos
 
+- [Como as leis protegem seus dados nas compras? Entenda o PL 4530/2023 e o CPF no caixa!](https://mauricio.issei.com.br/videos/como-as-leis-protegem-seus-dados-nas-compras-entenda-o-pl) — 21 de novembro de 2026
 - [Minigraf: O Banco de Dados de Grafo Bitemporal Incorporado para IA e Web](https://mauricio.issei.com.br/videos/minigraf-o-banco-de-dados-de-grafo-bitemporal-incorporado) — 10 de outubro de 2026
 - [Decifrando People Analytics: Como Transformar Dados em Decisões Estratégicas de RH](https://mauricio.issei.com.br/videos/decifrando-people-analytics-como-transformar-dados-em) — 23 de setembro de 2026
 - [O Guia do Agentic RAG: O que é, Como Funciona e a Evolução do RAG Tradicional](https://mauricio.issei.com.br/videos/o-guia-do-agentic-rag-o-que-e-como-funciona-e-a-evolucao-do) — 26 de agosto de 2026
