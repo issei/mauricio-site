@@ -2,16 +2,20 @@
 id: sdd-nova-home
 titulo: SDD — Nova página inicial "O pensamento em prática"
 data: 2026-11-24
-status: especificação (nada implementado)
+status: especificação + protótipo local validado (revisão 6; nada publicado)
 leitor: Issei (decisões) e quem implementar a home
 padrao_de_redacao: ptbr-controlado (perfil Técnico)
 pedido: Issei, 2026-11-24 (thread "Planejar página cinematográfica da trajetória")
-revisao: 2026-11-25, arco digital da Sessão 01 (D-H8)
+revisao: 2026-11-26, revisões 5 e 6 (símbolos, navegação, ritmo da rolagem; §12). Antes: 2026-11-25, arco digital da Sessão 01 (D-H8)
 ---
 
 # SDD — Nova página inicial: "O pensamento em prática"
 
-> **Estado:** especificação. Nada foi implementado nem gerado. O documento
+> **Estado:** especificação. Nada foi publicado. As revisões 5 e 6 (2026-11-26)
+> foram validadas num protótipo local e estão no §12, que prevalece sobre
+> as seções anteriores onde houver diferença.
+>
+> Antes delas: nada foi implementado nem gerado. O documento
 > segue as três etapas pedidas: diagnóstico (§1), especificação (§2 a §8) e
 > validação (§9). As decisões que só o Issei pode tomar estão no §10, uma de
 > cada vez.
@@ -178,8 +182,8 @@ dimensão virava uma lista de slogans (storyboard §9).
 │   Construir com propósito.                └────────────┘  │
 │                                                           │
 │   Tecnologia, engenharia e conhecimento em prática.       │
-│   Há mais de vinte anos trabalho na distância entre       │
-│   o que foi desenhado e o que roda em produção.           │
+│   Há mais de vinte anos levo o que foi desenhado até a    │
+│   produção e cuido para que continue rodando.             │
 │                                                           │
 │   Minha história · Minhas ideias · Meus projetos  ↓       │
 └───────────────────────────────────────────────────────────┘
@@ -196,25 +200,27 @@ estática: nenhuma informação dela depende de animação.
 | Faixa | Cena | Dimensões | Imagem (§8) | "Câmera" | Narração (storyboard §6) |
 | :-- | :-- | :-- | :-- | :-- | :-- |
 | 0–10 % | 01 O rosto | — | Retrato 4:5 | parada; de 6 % a 11 %, o retrato some (opacidade; escala 1 → 0,97) e o nome reduz | (texto da primeira pintura) |
-| 10–30 % | 02 A pergunta | pensar · investigar · estudar | Nenhuma: texto real dentro de M1. A pergunta "Este agente pode executar sozinho?" e três partes, cada uma com as suas fontes (Quem vai operar? Runbook · Plantão / O que pode falhar? Incidentes · Logs / Como saber se funciona? Aceite · Métricas) | M1 entra por cortina de baixo para cima (10–12,5 %); a pergunta é digitada (13–18 %); as partes descem uma a uma (19–25 %); as fontes aparecem (23–28 %) | Quase tudo começa com uma pergunta. Antes de responder, desmonto a pergunta e estudo cada parte. |
-| 30–42 % | 03 Fechar e explicar | aprender | Nenhuma: M1 fecha até virar o traço dourado | cortina ao centro (30–33,5 %); o traço cresce da esquerda para a direita depois que a moldura fecha (33,5–35,5 %) e fica parado até 40 %; o traço lateral some (33–41 %) | Então fecho as fontes e tento explicar. É aí que descubro o que eu só reconhecia. |
+| 10–30 % | 02 A pergunta | escutar · investigar · estudar | Nenhuma: texto real dentro de M1. A pergunta "Como tirar do time o trabalho manual?" e três partes, cada uma com as suas fontes (Quem vai operar? Runbook · Plantão / O que pode falhar? Incidentes · Logs / Como saber se funciona? Aceite · Métricas) | M1 entra por cortina de baixo para cima (10–12,5 %); a pergunta é digitada (13–18 %); as partes descem uma a uma (19–25 %); as fontes aparecem (23–28 %) | Quase tudo começa com uma pergunta. Antes de responder, desmonto a pergunta e estudo cada parte. |
+| 30–42 % | 03 Fechar e explicar | sintetizar · aprender | Nenhuma: M1 fecha até virar o traço dourado | cortina ao centro (30–33,5 %); o traço cresce da esquerda para a direita depois que a moldura fecha (33,5–35,5 %) e fica parado até 40 %; o traço lateral some (33–41 %) | Então fecho as fontes e tento explicar. É aí que separo o que entendi do que só li. |
 | 42–60 % | 04 Do diagrama ao teste | projetar · construir · validar | A: diagrama real das cinco camadas do Agent Ready (captura); B: mãos no teclado; C: duas telas de teste | M1 abre do centro (41–44,5 %); *pan* lento em A; B (48–51 %) e depois C (53–56 %) entram sobre o canto inferior direito de M1 e passam um pouco da moldura | Desenho para que outra pessoa consiga operar. Construo em passos pequenos, e o teste diz se está certo. |
-| 60–80 % | 05 A noite e a causa | sustentar · liderar · evoluir | Monitor de operação à noite | corte seco para a noite (60 %); a luz da tela sobe (61–68 %); o traço lateral racha (61–63 %); a faixa na base de M1 digita "Por que falhou?" (72–75 %); a segunda frase entra (73–76 %); o traço se repara (76–80 %) | Na crise, o tempo conta. Com o time, primeiro estabilizo; depois vou até a causa raiz. / A causa vira a próxima pergunta. |
-| 80–100 % | 06 O rosto de novo | ensinar · compartilhar | Retrato (o mesmo da cena 01) | entra perto do rosto, em escala 1,4, e recua até o retrato inteiro (83–97 %; exceção de escala aprovada, §5.1) | O que consigo explicar, eu publico. Ensinar é como verifico se entendi de verdade. |
+| 60–80 % | 05 A noite e a causa | sustentar · orquestrar · evoluir | Monitor de operação à noite | a noite cai sobre a cena 04 em cerca de 3 toques de seta (D-H9; revisão 6); a luz da tela sobe; o traço lateral racha; a segunda frase entra; o traço se repara. Sem a faixa "Por que falhou?" (retirada na revisão 5) | Na crise, o tempo conta. Com o time, primeiro estabilizo; depois investigo a causa raiz. / A causa vira a próxima pergunta. |
+| 80–100 % | 06 O rosto de novo | integrar · ensinar · compartilhar | Retrato (o mesmo da cena 01) | entra perto do rosto, em escala 1,4, e recua até o retrato inteiro (83–97 %; exceção de escala aprovada, §5.1) | O que consigo explicar, publico. Ensinar consolida o que aprendi. |
 
+- Revisão 6: as faixas desta tabela são as da revisão 4. No protótipo atual, nenhuma transformação dura menos de 2 toques de seta e as faixas foram redistribuídas (§12.4).
 - As trocas duram de 1,5 % a 3,5 % da faixa (troca curta, imagem longa). A
   narração muda por opacidade. Os números de faixa vêm do protótipo da
   revisão 4; a H-2 confere as faixas com capturas reais (§3.5).
-- **O ciclo fecha na própria página.** A pergunta da cena 05 ("Por que
-  falhou?") responde à pergunta da cena 02: a causa raiz vira a próxima
-  pergunta. As três partes da cena 02 voltam na ponte da sessão 03 (§3.3).
-- **Digitação:** a pergunta da cena 02 e a da cena 05 são texto real,
+- **O ciclo fecha na própria página.** A segunda frase da cena 05 ("A causa
+  vira a próxima pergunta.") responde à pergunta da cena 02. As três partes da cena 02 voltam na ponte da sessão 03 (§3.3).
+- **Digitação:** a pergunta da cena 02 é texto real,
   revelado por `clip-path` com `steps()`. O texto inteiro está no HTML.
 - A cena 03 é o silêncio da página: nenhuma imagem, só o traço.
-- **Sem contador de avanço.** A sequência não mostra "1/8 … 8/8" nem
-  equivalente. O avanço fica claro pelas imagens e pela narração.
-- Os três caminhos aparecem **só na cena 01** (e no cabeçalho comum). As
-  sessões 02, 03 e 04 são os próprios caminhos, cada uma com seu CTA.
+- **Sem contador numérico.** A sequência não mostra "1/8 … 8/8". Desde a
+  revisão 5, nove pontos dourados à direita mostram o avanço e servem de
+  âncora (§12.3).
+- Os três caminhos aparecem na cena 01. A partir da cena 02, viram o menu
+  "Sessões" (à esquerda; no celular, no topo; §12.3). As sessões 02, 03 e 04
+  são os próprios caminhos, cada uma com seu CTA.
 
 **Saída para 02 (cena 06 → 07):** no fim da cena 06 (97–100 %), M1 reduz
 para 0,88 e desliza para a esquerda, na direção do retrato da sessão 02. O
@@ -246,8 +252,9 @@ por posição, sem dissolve.
   em 6 % da faixa.
 - Parallax discreto: a foto anda 4 % mais devagar que a rolagem.
 - **Cinco marcos** no traço vertical, de 1997 até hoje: 1997 curso técnico em
-  processamento de dados · 2003 Java na Sysgen · 2012 liderança de time na
-  Indra · 2018 Tech Lead na Rede · **2024–hoje** arquitetura, IA aplicada,
+  processamento de dados · 2003–2012, 9 anos como Analista de Desenvolvimento na
+  Sysgen · 2012–2017, 6 anos em Sustentação e Inovação na Indra · 2018–hoje,
+  8 anos em Sustentação e como Tech Lead na Rede · **2024–hoje** arquitetura, IA aplicada,
   engenharia de agentes e ensino. O último marco é aberto ("hoje") e liga a
   liderança e a operação à fase atual de estudos e projetos. Fontes: `cv.json`
   (`Experiencia`; Rede "fev de 2018 – o momento") e o texto do marco
@@ -329,17 +336,17 @@ por posição, sem dissolve.
 
 | Sessão | Cenas | Computador | Celular (< 640 px, §4.3) |
 | :-- | :-- | :-- | :-- |
-| 01 | 01–06 | **300–360 vh** (referência; protótipo da revisão 4: 360 vh) | 200–260 vh (protótipo: 260 vh) |
-| 02 | 07 | 120 vh | 100 vh |
-| 03 | 08 | 130 vh | 110 vh |
-| 04 | 09 | 140 vh | 130 vh |
-| **Total** | **9 cenas** | **690–750 vh** (~7 telas) | **540–600 vh** (~6 telas) |
+| 01 | 01–06 | **360 vh** (revisão 6) | **360 vh** (revisão 6; era 260 vh) |
+| 02 | 07 | 210 vh (revisão 6; era 120 vh) | 194 vh (era 100 vh) |
+| 03 | 08 | 210 vh (revisão 6; era 130 vh) | 194 vh (era 110 vh) |
+| 04 | 09 | 180 vh (revisão 6; era 140 vh) | 170 vh (era 130 vh) |
+| **Total** | **9 cenas** | **960 vh** na revisão 6 (as sessões se sobrepõem; ver §12.4) | **918 vh** |
 
 - A altura da sessão 01 é **um valor de referência**. A H-2 calibra o valor
   final com capturas reais e com a regra "cada cena dura o tempo de ler uma
   frase". O valor fica numa só variável (`--hm-s01-altura`, §5.2).
-- Limite superior: a sessão 01 não passa de 360 vh no computador nem de
-  260 vh no celular. Se as cenas não couberem, a H-2 encurta faixas, não
+- Limite superior: a sessão 01 não passa de 360 vh, no computador e no
+  celular (no celular era 260 vh; mudou na revisão 6, §12.4). Se as cenas não couberem, a H-2 encurta faixas, não
   aumenta a altura.
 - A revisão 4 tem mais tempos dentro de cada cena (digitação, partes, traço
   que racha). Por isso o protótipo usa o teto: 360 vh e 260 vh. Se a leitura
@@ -439,7 +446,7 @@ composição para não pedir rolagem a mais nem quebrar a continuidade de M1:
 | Cena | Computador | Celular | Por quê |
 | :-- | :-- | :-- | :-- |
 | 04 Do diagrama ao teste | B e C entram sobre o canto inferior direito de M1 e passam um pouco da moldura | **Uma só moldura M1.** A (diagrama) fica; B (teclado) e depois C (teste) entram **dentro de M1** por cortina lateral e cobrem A | Duas imagens sobrepostas em 1 coluna ficam pequenas demais e o deslocamento sai da tela |
-| 05 A noite e a causa | Uma foto em M1, com a faixa "Por que falhou?" na base | Igual ao computador | Uma só imagem cabe em 1 coluna |
+| 05 A noite e a causa | Uma foto em M1 (sem faixa de texto desde a revisão 5) | Igual ao computador | Uma só imagem cabe em 1 coluna |
 | 08 A mesa de estudo | Três registros sobrepostos, com parallax 0/3/6 % | **Pilha** de três registros com deslocamento pequeno (8–12 px), um inteiro na frente e dois aparecendo atrás. Parallax desligado | Sobreposição larga não cabe em 1 coluna; parallax em tela pequena cansa |
 
 A antiga cena "três caminhos" saiu na revisão 2 do storyboard. No celular, a
@@ -501,7 +508,7 @@ Regras do celular:
   view-timeline: --hm-s01 block;
   height: var(--hm-s01-altura);
 }
-@media (max-width: 639.98px) { .hm-s01 { --hm-s01-altura: 260vh; } } /* teto no celular */
+/* Revisão 6: o celular também usa 360vh, para nenhuma passagem ficar brusca (§12.4). */
 .hm-s01__palco { position: sticky; top: 0; height: 100svh; }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -539,7 +546,7 @@ de CSS escrito à mão, para que tempo e ordem mudem num lugar só.
 
 | Situação | Resultado |
 | :-- | :-- |
-| `prefers-reduced-motion: reduce` | Nenhuma animação. S01 vira **mosaico estático**: texto da cena 01 + retrato, depois as cenas 02–06 em grade (3 + 2 no computador, 1 coluna no celular). Cada cena mostra o seu quadro final (a pergunta com as três partes, o traço, o diagrama com a tela de teste, a noite com "Por que falhou?", o retrato), as dimensões e a narração. Seções com altura natural (sem `sticky`) |
+| `prefers-reduced-motion: reduce` | Nenhuma animação. S01 vira **mosaico estático**: texto da cena 01 + retrato, depois as cenas 02–06 em grade (3 + 2 no computador, 1 coluna no celular). Cada cena mostra o seu quadro final (a pergunta com as três partes, o traço, o diagrama com a tela de teste, a noite, o retrato), as dimensões e a narração. Seções com altura natural (sem `sticky`) |
 | Navegador sem `animation-timeline` (hoje: Firefox estável) | Mesmo mosaico estático; entradas simples por `@starting-style` não são usadas |
 | Sem JavaScript | Igual ao normal: a página não depende de JS |
 | Impressão | Mosaico estático, sem fundo |
@@ -575,7 +582,7 @@ some.
         <h1 id="hm-nome">Maurício Yokoyama Issei</h1>
         <p class="hm-mensagem">Pensar profundamente. Construir com propósito.</p>
         <p class="hm-sub">Tecnologia, engenharia e conhecimento em prática.</p>
-        <p class="hm-contexto">Há mais de vinte anos trabalho na distância entre o que foi desenhado e o que roda em produção.</p>
+        <p class="hm-contexto">Há mais de vinte anos levo o que foi desenhado até a produção e cuido para que continue rodando.</p>
         <nav aria-label="Caminhos principais">
           <a href="#historia">Minha história</a> · <a href="#ideias">Minhas ideias</a> · <a href="#projetos">Meus projetos</a>
         </nav>
@@ -588,7 +595,7 @@ some.
       <ol class="hm-cenas" aria-label="Como trabalho">
         <li><figure class="hm-cena" data-cena="02">
           <div class="hm-q">
-            <p>Este agente pode executar sozinho?</p>
+            <p>Como tirar do time o trabalho manual?</p>
             <ul aria-label="A pergunta em partes">
               <li>Quem vai operar? <span>Runbook · Plantão</span></li>
               <li>O que pode falhar? <span>Incidentes · Logs</span></li>
@@ -605,7 +612,7 @@ some.
         <li><figure class="hm-cena" data-cena="04">
           <picture>…diagrama do Agent Ready…</picture><picture>…teclado…</picture><picture>…teste…</picture>
           <figcaption>…Projetar · Construir · Validar…</figcaption></figure></li>
-        <!-- 05 Sustentar · Liderar · Evoluir: foto da noite + "Por que falhou?" em texto real;
+        <!-- 05 Sustentar · Orquestrar · Evoluir: foto da noite (sem faixa de texto);
              06 Ensinar · Compartilhar: o retrato -->
       </ol>
     </div>
@@ -619,8 +626,8 @@ some.
 - Um `<h1>`, quatro seções com `<h2>` (a 01 usa o `<h1>`). Total: **9 cenas
   em 4 sessões**, na ordem do storyboard.
 - A ordem do HTML é a ordem de leitura: cena 01, depois as cenas 02–06 numa
-  lista ordenada. Sem contador de avanço; nenhum texto "1/8". Sem segundo menu
-  de caminhos no fim da sessão 01.
+  lista ordenada. Sem contador numérico; nenhum texto "1/8". O menu "Sessões"
+  e os pontos de avanço são dois `<nav>` próprios (§12.3).
 - A narração e as dimensões estão no `<figcaption>`, como texto real. Leitor
   de tela e busca leem tudo, com ou sem animação.
 - Os caminhos do topo (cena 01) são âncoras internas; os CTAs de cada
@@ -717,7 +724,7 @@ A sessão de fotos **não bloqueia** a H-1: o protótipo entra com o retrato
 atual, quadros reais do canal e capturas das páginas. As cenas 02 e 03 não
 dependem de foto. As fotos 4, 6 e 7 enriquecem as cenas 04 e 05 depois. Sem
 elas, vale o plano B: a cena 04 fica só com o diagrama, e a cena 05 mostra
-a faixa "Por que falhou?" sobre o fundo `--hm-aizome-deep`, sem foto.
+só a noite sobre o fundo `--hm-aizome-deep`, sem foto.
 
 **Imagens provisórias do protótipo (decisão do Issei, 2026-11-24).** Para
 validar a ideia, o protótipo pode usar imagens geradas por IA nas oito
@@ -757,9 +764,8 @@ foto real da mesma posição, ou a cena sai (plano B).
   `--hm-aizome`; halo interno escuro sobre cartão ou foto clara (§4.1).
 - Links (WCAG 1.4.1): sublinhado sutil em repouso nos links de texto; seta `→`
   nos CTAs. Nenhum link depende só da cor dourada.
-- Texto sobre foto: nunca, com uma exceção. Na cena 05, "Por que falhou?"
-  fica numa faixa de véu (`--hm-veu`, `--hm-aizome-deep` a 84 %) na base da
-  foto da noite. O contraste é medido sobre a faixa, que é quase opaca.
+- Texto sobre foto: nunca. (A faixa "Por que falhou?" da cena 05 saiu na
+  revisão 5.)
 - Digitação: o efeito usa só `clip-path`. O texto completo está no HTML, e o
   leitor de tela lê a frase inteira desde o início. As partes da pergunta da
   cena 02 são uma lista (`ul`) com rótulo.
@@ -794,10 +800,12 @@ foto real da mesma posição, ou a cena sai (plano B).
 | D-H2 | Você faz as fotos da lista do §8? | Sim, sem pressa. Na revisão 4 são três (4, 6 e 7): enriquecem as cenas 04 e 05 e **não bloqueiam** a H-1 |
 | D-H3 | Para onde vai "Conheça meus projetos"? (a) `/catalogo#projetos`, um grupo novo no catálogo gerado do YAML (`experiencia` + `experimento`); (b) a página do primeiro case; (c) só os 4 cartões, sem CTA | (a): reaproveita o catálogo, não cria página |
 | D-H4 | Usa uma serifada editorial nos títulos? | **Decidida:** Shippori Mincho nos títulos de sessão e na mensagem central; Inter no restante |
-| D-H5 | O cabeçalho comum muda na home? | **Decidida:** não. Cabeçalho e rodapé comuns continuam escuros, como em `/curriculo`, `/catalogo` e `/videos` |
+| D-H5 | O cabeçalho comum muda na home? | **Decidida, revista em 2026-11-26:** cabeçalho e rodapé continuam os comuns, escuros. Na home, a pedido do Issei, o cabeçalho some a partir da cena 02 e volta no contato (§12.3) |
 | D-H6 | A página `/trajetoria` (PR #231) segue a direção antiga (escura, partículas) ou passa a seguir esta? | Pausar e alinhar à direção desta home |
 | D-H7 | Pode usar diagramas do TGI 2004 como registro de estudo? | Não por enquanto (o TGI não é publicado) |
 | D-H8 | Qual gesto de origem a Sessão 01 usa, agora que o processo é digital? | **Decidida (Issei, 2026-11-25):** combinar os dois. A cena 02 desmonta a pergunta; a cena 03 fecha as fontes para explicar (§2, §3.1). A exceção de escala da cena 06 foi aprovada em 1,4 → 1 (Issei, 2026-11-25; §5.1) |
+| D-H9 | A noite da cena 05 entra por corte seco ou por transformação? | **Decidida (Issei, 2026-11-26):** queda da noite em cerca de 3 toques de seta. O corte seco fica só para comparação no protótipo (`data-noite="corte"`) |
+| D-H10 | Onde fica o ouro quando o símbolo e o fio disputam o mesmo quadro? | **Em aberto.** Recomendação aplicada no protótipo: "o ouro segue a atenção" (§12.2) |
 
 ## 11. Unidades de trabalho
 
@@ -805,8 +813,131 @@ foto real da mesma posição, ou a cena sai (plano B).
 | :-- | :-- | :-- |
 | H-0 | D-H3 decidida; linha do namespace `hm-` no `AGENTS.md` | — |
 | H-1 | `gen-home` + `home.data` + HTML estático (mosaico, 9 cenas) + `home.css` sem movimento, já com a paleta **Aizome + Kin** e o **retrato atual** + testes de tokens, fatos, nojs, mobile, SEO, foco e links. **Validação do protótipo:** navegação real Home → `/curriculo` e Home → `/catalogo` no computador e no celular, e revisão de acessibilidade (contraste, foco, 1.4.1, 1.4.11). As fotos novas (D-H2) não bloqueiam esta UT | H-0 |
-| H-2 | Camada de movimento (cenas 01–09) + calibração da altura da S01 (300–360 vh) + View Transitions + `reduced.spec` + capturas | H-1 |
+| H-2 | Camada de movimento (cenas 01–09), símbolos, menu, pontos e cabeçalho da revisão 5 + altura da S01 em 360 vh (revisão 6) + View Transitions + `reduced.spec` + capturas | H-1 |
 | H-3 | Fotos reais no `gen-imagens` (fotos 4, 6 e 7 do §8, cenas 04 e 05) + `og-index` novo | D-H2 |
 | H-4 | `/en/` (Argos no notebook) + `perf-budget` + revisão a11y e tom + validação com 3–5 pessoas | H-2 |
 
 H-1 já é uma home completa e publicável, só sem movimento e com as imagens disponíveis hoje.
+
+## 12. Revisões 5 e 6 (Issei, 2026-11-26)
+
+Validadas num protótipo local (branch `local/nova-home`, fora do
+repositório, com imagens provisórias). Onde esta seção diferir das
+anteriores, vale esta seção.
+
+### 12.1 Textos (revisão 5)
+
+| Lugar | Texto |
+| :-- | :-- |
+| Contexto da cena 01 | Há mais de vinte anos levo o que foi desenhado até a produção e cuido para que continue rodando. |
+| Pergunta da cena 02 | Como tirar do time o trabalho manual? (as três partes não mudam; a sessão 03 repete essas perguntas) |
+| Cena 03 | Então fecho as fontes e tento explicar. É aí que separo o que entendi do que só li. |
+| Cena 05 | Na crise, o tempo conta. Com o time, primeiro estabilizo; depois investigo a causa raiz. / A causa vira a próxima pergunta. |
+| Cena 06 | O que consigo explicar, publico. Ensinar consolida o que aprendi. |
+| Dimensões | 02 Escutar · Investigar · Estudar; 03 Sintetizar · Aprender; 04 Projetar · Construir · Validar; 05 Sustentar · Orquestrar · Evoluir; 06 Integrar · Ensinar · Compartilhar |
+| Marcos da sessão 02 | 1997 curso técnico · 2003–2012, 9 anos como Analista de Desenvolvimento na Sysgen · 2012–2017, 6 anos em Sustentação e Inovação na Indra · 2018–hoje, 8 anos em Sustentação e como Tech Lead na Rede · 2024–hoje |
+
+- A faixa "Por que falhou?" saiu da imagem da cena 05 (o Issei a achou
+  desconexa).
+- O `cv.json` registra a Sysgen com 8 anos e 6 meses; o marco usa os 9 anos
+  pedidos pelo Issei.
+
+### 12.2 Camada de símbolos (revisão 5)
+
+O processo real do Issei aparece como uma sequência de ícones de linha, fora
+de M1, no canto superior direito (48 px no computador, 36 px no celular).
+Sprite: [`storyboard/simbolos/simbolos.svg`](storyboard/simbolos/simbolos.svg),
+12 símbolos `hm-s-*`.
+
+- Sequência: dor → empatia → requisitos (02) → explicar (03) → diagrama →
+  protótipo → validado (04) → time → time quebrado → time (05) → grafo →
+  camadas → ponto (06).
+- **O ponto que desenha:** um ponto fica sempre no centro da casa do
+  símbolo. Cada estado se recolhe nele (`clip-path: circle()`) e o seguinte
+  nasce dele, com um pulso do ponto. Da entrada de M1 até o fim da S01, a
+  casa nunca fica vazia. A única troca no lugar é a do time: uma das mãos
+  solta na rachadura e volta no reparo. No fim, o anel aberto da dor se fecha
+  no ponto.
+- **Ouro (D-H10, em aberto):** um só elemento dourado por quadro no palco.
+  Recomendação aplicada: os símbolos ficam dourados nas cenas 02, 04 e 06; na
+  03 o ouro é o traço central (o balão fica cinza); na 05 o ouro é o fio que
+  racha (time e grafo ficam cinza).
+- A gramática "recolher no ponto e nascer dele" conta como **um efeito
+  só**, do único elemento contínuo; por isso não entra no limite de duas
+  repetições do §5.1.
+
+### 12.3 Navegação e cabeçalho (revisão 5)
+
+- **Menu "Sessões":** quando a cena 01 dá lugar à 02, os três caminhos viram
+  um `<nav aria-label="Sessões">` fixo (Apresentação, Minha história,
+  Minhas ideias, Meus projetos). No computador (≥ 1100 px, paisagem) fica numa
+  coluna à esquerda, e o recuo esquerdo do palco cresce para caber o menu (a
+  moldura vai a 46 % da largura em 1280 px). No celular é uma barra de 44 px no
+  topo (Início, História, Ideias, Projetos; o nome acessível do primeiro é
+  "Início: apresentação"). A sessão atual tem opacidade cheia e um traço
+  grafite, nunca dourado.
+- **Pontos de avanço:** `<nav aria-label="Cenas da história">` com 9 pontos
+  dourados à direita, um por cena. Cada ponto é um link de 24 × 24 px que leva
+  ao quadro em que a cena está completa (âncoras `hm-c01`–`hm-c06` dentro da
+  S01, posicionadas pela fração da rolagem útil; `#historia`, `#ideias`,
+  `#projetos`). Estados: não visto, atual (cresce e acende) e já visto.
+- **Cabeçalho comum:** some a partir da cena 02 e volta quando o rodapé com
+  o contato entra. Se receber foco pelo teclado, aparece. O menu e os pontos
+  saem quando o cabeçalho volta.
+- **Ouro na navegação:** os pontos são interface, como o anel de foco, e
+  ficam fora da regra de um só ouro por quadro, que vale para o palco.
+- Tudo continua só com CSS (`timeline-scope`, `view-timeline` por sessão).
+  No modo reduzido ou sem suporte, o cabeçalho fica como antes, e o menu e os
+  pontos não aparecem.
+
+### 12.4 Ritmo da rolagem (revisão 6)
+
+O Issei contou cerca de 130 toques de seta para ver a página e achou muito. Algumas etapas
+pareciam ter muito mais rolagem que outras. O que deve ficar é a
+**constância**: elementos sempre se movendo ou se transformando, sem trocas
+rápidas de conteúdo.
+
+| Tela | Toques de seta (40 px), antes | Depois |
+| :-- | :-- | :-- |
+| 1440 × 900 | 142 | 110 |
+| 1536 × 730 (notebook a 125 %) | 116 | 90 |
+| 390 × 844 (celular) | 104 | 96 |
+
+- **Sessões 02–04:** eram 85 dos 142 toques, quase paradas. Agora cada uma
+  tem cerca de 18 toques: menos respiro vertical, imagens menores e entradas
+  espalhadas ao longo da sessão.
+- **Passagens:** nenhuma transformação dura menos de 2 toques. A troca 03 → 04
+  acontece em etapas: o traço se abre na moldura, o diagrama nasce dele, e só
+  depois entram o teclado e o teste. A passagem 06 → 07 foi esticada, e o
+  rosto continua chegando alinhado ao retrato da sessão 02.
+- **A noite (D-H9):** cai sobre a cena 04 em cerca de 3 toques (no celular,
+  por dissolução), e o fio racha no mesmo movimento. Não há mais corte seco.
+- **Altura da S01:** 360 vh no computador e no celular. No celular, 260 vh
+  deixava cada toque com 3,6 % da sessão, e as passagens ficavam bruscas; a
+  constância vale mais que o número de toques.
+- **Medida de constância:** captura a cada toque de seta e diferença média de
+  pixels entre capturas seguidas. Em 1440 × 900 restam 6 toques sem mudança
+  visível (nunca mais de 2 seguidos). Os 2 picos que sobram são o deslize
+  contínuo do rosto. Em 360 × 740 sobram 2 toques pouco acima do limite.
+- **Primeira rolagem:** o travamento relatado não se reproduziu no navegador
+  automático (nenhum quadro acima de 50 ms, no servidor de desenvolvimento
+  e no build). O trace mostrou o que pesava no início, e isso foi corrigido:
+  fontes pedidas antes, serifada só no peso 500, retrato de 327 para 170 KB e
+  `overflow-anchor: none`. Falta o Issei confirmar no navegador dele.
+
+### 12.5 Valores finais do protótipo (revisão 6)
+
+As porcentagens são da rolagem útil da S01 (faixa `contain` menos os 30 vh
+em que ela se sobrepõe à S02).
+
+| Item | Valor |
+| :-- | :-- |
+| Alturas | S01 360 vh (computador e celular); S02 210 vh e S03 210 vh (`--f` 80 vh); S04 180 vh. Celular: S02 194 vh e S03 194 vh (`--f` 64 vh); S04 170 vh |
+| 03 → 04 | M1 abre do centro (39,5–43,5 %); teclado entra 48,5–51,5 % e sai 56–58,5 %; teste entra 53–56 % e sai 57–59,5 % |
+| Noite (padrão) | Computador: véu desce por `clip-path` (57–63 %). Celular: véu por opacidade (54–63 %). M1 da cena 05 de 63 % a 85 %; a luz da tela sobe de 63 % a 70 %; legenda de 65 % a 79 %, sai até 80,5 % |
+| Corte seco (só para comparar) | `data-noite="corte"`: M1 da cena 05 entra em 60,1 %; a luz sobe de 61 % a 68 % |
+| Cena 06 | O rosto entra de 78 % a 85 %; escala 1,4 → 1 de 83 % a 92 %; M1 desliza até o retrato de 89 % a 100 %; legenda de 84,5 % a 90 %, sai até 93,5 % |
+| Âncoras dos pontos | `hm-c01`–`hm-c06`, `--p` = 0 / 0,283 / 0,356 / 0,565 / 0,763 / 0,89; `top: calc(var(--p) * (100% - 130vh))` |
+| Pontos | Não visto: opacidade 0,25; atual: escala 1,5 com halo; já visto: opacidade 0,6 |
+| Cabeçalho | Sai de 6 % a 10 % da S01; volta quando o rodapé entra |
+| Ouro | Opção A por padrão; `data-ouro="dois"` mostra a alternativa (D-H10) |
