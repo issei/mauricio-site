@@ -6,14 +6,14 @@ status: especificação + protótipo local validado (revisão 6; nada publicado)
 leitor: Issei (decisões) e quem implementar a home
 padrao_de_redacao: ptbr-controlado (perfil Técnico)
 pedido: Issei, 2026-11-24 (thread "Planejar página cinematográfica da trajetória")
-revisao: 2026-11-26, revisões 5 e 6 (símbolos, navegação, ritmo da rolagem; §12). Antes: 2026-11-25, arco digital da Sessão 01 (D-H8)
+revisao: 2026-11-26, revisão 7 (clareza para a primeira visita; §13). Antes: revisões 5 e 6 (símbolos, navegação, ritmo da rolagem; §12). Antes: 2026-11-25, arco digital da Sessão 01 (D-H8)
 ---
 
 # SDD — Nova página inicial: "O pensamento em prática"
 
-> **Estado:** especificação. Nada foi publicado. As revisões 5 e 6 (2026-11-26)
-> foram validadas num protótipo local e estão no §12, que prevalece sobre
-> as seções anteriores onde houver diferença.
+> **Estado:** especificação. Nada foi publicado. A revisão 7 (§13)
+> prevalece sobre todas as seções anteriores, inclusive o §12, onde houver
+> diferença. As revisões 5 e 6 (§12) foram validadas num protótipo local.
 >
 > Antes delas: nada foi implementado nem gerado. O documento
 > segue as três etapas pedidas: diagnóstico (§1), especificação (§2 a §8) e
@@ -798,14 +798,15 @@ foto real da mesma posição, ou a cena sai (plano B).
 | :-- | :-- | :-- |
 | D-H1 | Qual tema a home usa? | **Decidida (Issei, 2026-11-24):** tema escuro **Aizome + Kin** (§4.1). Mantém o *Pure Dark Mode*; sem `ADR-pf-002` e sem variante clara |
 | D-H2 | Você faz as fotos da lista do §8? | Sim, sem pressa. Na revisão 4 são três (4, 6 e 7): enriquecem as cenas 04 e 05 e **não bloqueiam** a H-1 |
-| D-H3 | Para onde vai "Conheça meus projetos"? (a) `/catalogo#projetos`, um grupo novo no catálogo gerado do YAML (`experiencia` + `experimento`); (b) a página do primeiro case; (c) só os 4 cartões, sem CTA | (a): reaproveita o catálogo, não cria página |
+| D-H3 | Para onde vai "Conheça meus projetos"? (a) `/catalogo#projetos`, um grupo novo no catálogo gerado do YAML (`experiencia` + `experimento`); (b) a página do primeiro case; (c) só os 4 cartões, sem CTA | **Decidida (Issei, revisão 7):** (a), `/catalogo.html#projetos`. A âncora ainda não existe no catálogo: criar o grupo é trabalho da H-1 |
 | D-H4 | Usa uma serifada editorial nos títulos? | **Decidida:** Shippori Mincho nos títulos de sessão e na mensagem central; Inter no restante |
 | D-H5 | O cabeçalho comum muda na home? | **Decidida, revista em 2026-11-26:** cabeçalho e rodapé continuam os comuns, escuros. Na home, a pedido do Issei, o cabeçalho some a partir da cena 02 e volta no contato (§12.3) |
 | D-H6 | A página `/trajetoria` (PR #231) segue a direção antiga (escura, partículas) ou passa a seguir esta? | Pausar e alinhar à direção desta home |
 | D-H7 | Pode usar diagramas do TGI 2004 como registro de estudo? | Não por enquanto (o TGI não é publicado) |
 | D-H8 | Qual gesto de origem a Sessão 01 usa, agora que o processo é digital? | **Decidida (Issei, 2026-11-25):** combinar os dois. A cena 02 desmonta a pergunta; a cena 03 fecha as fontes para explicar (§2, §3.1). A exceção de escala da cena 06 foi aprovada em 1,4 → 1 (Issei, 2026-11-25; §5.1) |
 | D-H9 | A noite da cena 05 entra por corte seco ou por transformação? | **Decidida (Issei, 2026-11-26):** queda da noite em cerca de 3 toques de seta. O corte seco fica só para comparação no protótipo (`data-noite="corte"`) |
-| D-H10 | Onde fica o ouro quando o símbolo e o fio disputam o mesmo quadro? | **Em aberto.** Recomendação aplicada no protótipo: "o ouro segue a atenção" (§12.2) |
+| D-H10 | Onde fica o ouro quando o símbolo e o fio disputam o mesmo quadro? | **Encerrada pela revisão 7:** os símbolos saíram (§13.4). Vale um só ouro por quadro, com o protagonista de cada cena no §13.3 |
+| D-H11 | Revisão 7: abertura concreta, S01 com 5 cenas, sem símbolos, sem pontos e sem imagens de IA | **Decidida (Issei, 2026-11-26):** pedido detalhado da revisão 7 (§13) |
 
 ## 11. Unidades de trabalho
 
@@ -941,3 +942,112 @@ em que ela se sobrepõe à S02).
 | Pontos | Não visto: opacidade 0,25; atual: escala 1,5 com halo; já visto: opacidade 0,6 |
 | Cabeçalho | Sai de 6 % a 10 % da S01; volta quando o rodapé entra |
 | Ouro | Opção A por padrão; `data-ouro="dois"` mostra a alternativa (D-H10) |
+
+## 13. Revisão 7 (Issei, 2026-11-26): clareza para a primeira visita
+
+### 13.1 Diagnóstico
+
+O Issei validou a revisão 6 do ponto de vista de quem visita pela primeira vez
+e não leu este SDD. A intenção do autor e o que a tela mostra não batiam:
+
+1. A mensagem "Pensar profundamente. Construir com propósito." soava como
+   manifesto genérico e demorava a mostrar o território real: engenharia de
+   produção, arquitetura auditável e agentes determinísticos.
+2. Três metáforas pareciam defeito ou repetição:
+   - a moldura que fecha num fio dourado (cena 03) parecia imagem que não carregou;
+   - o retrato aparecia três vezes (cenas 01, 06 e 07), e na cena 06 não
+     tinha relação com "publicar e ensinar";
+   - o Kintsugi da cena 05 acontecia na margem esquerda, longe do olhar.
+3. As fotos provisórias feitas por IA (cenas 04 e 05) tiravam a credibilidade
+   documental que a cena 02 conquista.
+4. O palco tinha quatro camadas de interface ao mesmo tempo: menu, fio com
+   número e nome, 12 símbolos e 9 pontos. Isso contraria o *Shibui*.
+5. Nas sessões 03 e 04, as capturas de páginas inteiras viravam retângulos
+   pretos, e os cartões não diziam a tese de cada projeto.
+
+### 13.2 Abertura (cena 01)
+
+| Elemento | Texto |
+| :-- | :-- |
+| Frase-mestra (Shippori Mincho) | Da incerteza à especificação. Da especificação à produção. |
+| Subtítulo | Engenharia de software, arquitetura em produção e agentes de IA. |
+| Contexto (não muda) | Há mais de vinte anos levo o que foi desenhado até a produção e cuido para que continue rodando. |
+
+O retrato real 4:5 fica à direita e só aparece na cena 01 dentro da S01. Os três
+caminhos continuam como âncoras.
+
+### 13.3 Sessão 01 com 5 cenas (~300 vh)
+
+| Cena | Dimensões | M1 | Narração | Ouro |
+| :-- | :-- | :-- | :-- | :-- |
+| 01 Quem sou e onde atuo | — | Retrato real | (texto da abertura, §13.2) | O fio, ao lado do nome |
+| 02 A pergunta e as fontes que fecham (antigas 02 e 03) | Escutar · Investigar · Estudar → Sintetizar · Aprender | "Como tirar do time o trabalho manual?" e as três colunas. Na segunda metade, as fontes e as colunas esmaecem dentro de M1 e fica a síntese "Só automatizo o que alguém consegue operar, ver falhar e medir." | "Quase tudo começa com uma pergunta. Antes de responder, desmonto a pergunta e estudo cada parte." → "Depois fecho as fontes e explico do zero. É aí que separo o que entendi do que só li." | O traço que sublinha a síntese |
+| 03 Do desenho ao gate (antiga 04) | Projetar · Construir · Validar | O diagrama real das cinco camadas do Agent Ready, sozinho; depois, no canto, a saída real do `npm run gate` em HTML (nomes reais das etapas, sem números inventados) | "Desenho para que outra pessoa consiga operar. Construo em passos pequenos, e o teste diz se está certo." | Nenhum, ou o traço entre o diagrama e o gate |
+| 04 A crise e a causa (antiga 05) | Sustentar · Orquestrar · Evoluir | A noite cai (D-H9). Composição tipográfica dos estados de um incidente: "Incidente aberto", "Serviço estabilizado", "Causa raiz encontrada" (sem horário nem número) | "Na crise, o tempo conta. Com o time, primeiro estabilizo; depois investigo a causa raiz." / "A causa vira a próxima pergunta." | O traço divisor entre as duas frases, que racha e se repara: o Kintsugi vai para onde o olho está |
+| 05 Publicar e ensinar (antiga 06) | Integrar · Ensinar · Compartilhar | A estrutura real de um estudo publicado: os títulos dos dez princípios de `/engenharia-agentes-ia.html`, em texto real | "O que consigo explicar, publico. Ensinar consolida o que aprendi." | Nenhum, ou o sublinhado do endereço do estudo |
+
+- O fio lateral fica só na cena 01. Depois o ouro passa para o traço dentro de M1.
+- O retrato e o zoom 1,4 → 1 saem da cena final. A exceção de escala do §5.1
+  deixa de ser usada. A passagem para a S02 é uma transformação contínua de M1
+  até a moldura do retrato da S02, sem troca brusca (§12.4).
+- Nenhuma imagem gerada por IA, nem no protótipo. As cenas 03, 04 e 05 usam
+  artefatos reais do repositório ou composição tipográfica em CSS.
+
+### 13.4 Interface
+
+- **Saem:** os 12 símbolos (`.hm-casa`, sprite `hm-s-*`, §12.2) e os 9 pontos
+  de avanço com as âncoras `hm-c01`–`hm-c06` (§12.3).
+- **Fica:** o menu "Sessões" (à esquerda no computador; no topo no celular),
+  agora com uma barra fina de progresso contínuo junto do item Apresentação
+  (escala na timeline `--hm-s01`, em grafite ou tinta, nunca dourada).
+- O cabeçalho que some na cena 02 e volta no contato (D-H5 revista) continua.
+
+### 13.5 Sessões 02, 03 e 04
+
+- **Minha história:** o retrato atual continua (já não se repete em seguida). Os
+  cinco marcos têm a mesma forma, com inicial maiúscula ("1997: Curso técnico em
+  processamento de dados"), e a linha "2024–hoje" tem destaque leve, sem ouro.
+- **Minhas ideias:** as três molduras da mesa usam recortes fechados e
+  legíveis (por exemplo, a figura dos estados do conhecimento de
+  `/formulacao-de-problemas`), nunca a página inteira. Em repouso, só borda
+  `--hm-shoji-strong`, sem cantoneiras douradas.
+- **Meus projetos:** cada cartão tem uma linha de tese em HTML, tirada das
+  páginas reais, e uma dupla de dimensões sem repetição:
+
+| Projeto | Tese | Dimensões | Fonte |
+| :-- | :-- | :-- | :-- |
+| Acessibilidade | Uma catraca no gate impede que a dívida de acessibilidade detectável volte a subir. | validar · sustentar | `src/acessibilidade.html` ("Catraca no gate") |
+| Case Agents | Uma barreira de quatro camadas antes da execução, porque a tool errada não é uma aproximação aceitável. | investigar · projetar | `src/case-agents.html` (título e lide) |
+| Agent Ready | Descoberta, formatos e contratos publicados para que agentes consigam usar este domínio. | construir · ensinar | `ecosystem.nav.yaml`, descrição de `agent-ready` |
+| Boutique Empresarial | Site estático, especificação antes do código e um pipeline agêntico com gate determinístico. | projetar · orquestrar | `ecosystem.nav.yaml`, descrição de `boutique-empresarial-showcase` |
+
+- As capturas 16:10 mostram um detalhe forte de cada página (placar, diagrama,
+  métricas), não a página inteira encolhida.
+- A cantoneira dourada só aparece em `:hover` e `:focus-visible`. O link cobre o
+  cartão inteiro (`::after` com `inset: 0`).
+- O CTA final aponta para `/catalogo.html#projetos` (D-H3).
+
+### 13.6 Correções técnicas
+
+- Nenhum hexadecimal nem `rgba()` literal fora do `:root` de `home.css`
+  (`#32353A` e `rgba(212,175,106,.55)` viram tokens ou `color-mix()`).
+- Sai o CSS órfão da faixa "Por que falhou?" (`.hm-faixa`, `.hm-faixa__digita`
+  e os keyframes).
+- `hm-dissolve` nas sessões 02–04 libera `pointer-events` a partir de 55 % da
+  transição.
+- `.hm-caminhos:focus-within` não põe texto transparente sobre a legenda das
+  cenas seguintes durante a navegação por Tab.
+- `translate="no"` só no nome próprio (`.sh-marca`), nunca no `<header>` inteiro.
+- Rodapé (`#contact`): antes dos links, a frase "Se você tem um problema
+  parecido com algum destes, me escreva."
+
+### 13.7 Verificação da revisão 7
+
+1. Contraste WCAG AA (AAA onde der) e nenhum literal de cor fora do `:root`.
+2. A página inteira funciona sem JavaScript e com `prefers-reduced-motion:
+   reduce` (mosaico editorial completo).
+3. Constância (§12.4): sem toques bruscos nem pausas longas em 1440 × 900 e
+   390 × 844.
+4. Capturas de cada cena e sessão em 1440 × 900 e 390 × 844, lidas como
+   primeira visita: "Há algo aqui que parece quebrado, repetido ou que exige
+   explicação externa?" Se houver, o ajuste vem antes de concluir.
