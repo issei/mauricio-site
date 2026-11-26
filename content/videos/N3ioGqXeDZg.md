@@ -8,20 +8,20 @@ temas:
 resumo: "O vídeo explica o Claude Ship, da Anthropic, que automatiza o que acontece depois que um pull request é aberto no GitHub. São três agentes em sequência: o Code Review, que acha bugs, o PR Steward, que corrige CI, conflitos e feedback sem aprovar nem fazer merge, e o Claude Approvals, que aplica a política de aprovação da equipe e começa no modo de observação."
 fontes:
   - url: https://claude.com/resources/articles/introducing-claude-ship
-    titulo: "Introducing Claude Ship"
-    sustenta: "Anúncio da Anthropic de 23/11/2026. Sustenta os três agentes (Code Review em disponibilidade geral; PR Steward e Claude Approvals em beta), a queda de mais de 40% na fatia de PRs revertidos, o PR Steward projetado para não aprovar nem fazer merge, o Claude Approvals como um CODEOWNERS mais inteligente com modo de observação, o comando /ship no Claude Code, a cobrança por tokens, os planos Team e Enterprise, os créditos de pelo menos US$ 10 mil para organizações Enterprise elegíveis até 15/1/2027 e as falas de Alex Devkar (Carvana) e Vatsal Bhatt (TELUS)."
+    titulo: Introducing Claude Ship
+    sustenta: Anúncio da Anthropic de 23/11/2026. Sustenta os três agentes (Code Review em disponibilidade geral; PR Steward e Claude Approvals em beta), a queda de mais de 40% na fatia de PRs revertidos, o PR Steward projetado para não aprovar nem fazer merge, o Claude Approvals como um CODEOWNERS mais inteligente com modo de observação, o comando /ship no Claude Code, a cobrança por tokens, os planos Team e Enterprise, os créditos de pelo menos US$ 10 mil para organizações Enterprise elegíveis até 15/1/2027 e as falas de Alex Devkar (Carvana) e Vatsal Bhatt (TELUS).
     verificada: true
   - url: https://claude.com/resources/articles/code-review-is-now-generally-available
-    titulo: "Code Review is now generally available"
-    sustenta: "Anúncio de 15/10/2026. Sustenta os níveis Quick, Standard e Deep por repositório e as revisões cerca de 3 vezes mais rápidas (de ~20 minutos para 6 a 10 minutos)."
+    titulo: Code Review is now generally available
+    sustenta: Anúncio de 15/10/2026. Sustenta os níveis Quick, Standard e Deep por repositório e as revisões cerca de 3 vezes mais rápidas (de ~20 minutos para 6 a 10 minutos).
     verificada: true
   - url: https://claude.com/product/claude-ship
-    titulo: "Claude Ship | Automate pull requests review and fixes"
+    titulo: Claude Ship | Automate pull requests review and fixes
     sustenta: "Página do produto. Sustenta as categorias Important, Nit e Pre-existing, o ajuste com REVIEW.md, o modo manual do PR Steward com o comentário @claude steward, a exigência de uma pessoa em código sensível e a ordem de adoção: Code Review, PR Steward e política de aprovação em modo de observação."
     verificada: true
   - url: https://code.claude.com/docs/en/claude-ship
-    titulo: "Claude Ship"
-    sustenta: "Documentação. Sustenta a adoção de um agente por vez num repositório e a política de aprovação no arquivo .claude/approvals.yml."
+    titulo: Claude Ship
+    sustenta: Documentação. Sustenta a adoção de um agente por vez num repositório e a política de aprovação no arquivo .claude/approvals.yml.
     verificada: true
 revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-25

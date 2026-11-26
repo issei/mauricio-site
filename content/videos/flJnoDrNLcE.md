@@ -5,15 +5,15 @@ status: publicado
 temas:
   - ferramentas-de-ia
   - engenharia-agentica
-resumo: "O vídeo apresenta o txtai, um framework de IA de código aberto que reúne busca semântica, orquestração de LLMs e fluxos de trabalho numa estrutura só. Explica o banco de dados de embeddings, que junta índices vetoriais, grafos e bancos relacionais, os pipelines, os agentes e o RAG, e destaca a execução local, sem enviar dados a serviços externos."
+resumo: O vídeo apresenta o txtai, um framework de IA de código aberto que reúne busca semântica, orquestração de LLMs e fluxos de trabalho numa estrutura só. Explica o banco de dados de embeddings, que junta índices vetoriais, grafos e bancos relacionais, os pipelines, os agentes e o RAG, e destaca a execução local, sem enviar dados a serviços externos.
 fontes:
   - url: https://github.com/neuml/txtai
     titulo: "GitHub - neuml/txtai: All-in-one AI framework for semantic search, LLM orchestration and language model workflows"
-    sustenta: "README do projeto. Sustenta a descrição do txtai como framework tudo-em-um, o banco de embeddings como união de índices vetoriais (esparsos e densos), redes de grafos e bancos relacionais, a busca vetorial com SQL, a indexação de texto, documentos, áudio, imagem e vídeo, os pipelines (perguntas e respostas, rotulagem, transcrição, tradução, resumo), os workflows, os agentes construídos sobre o smolagents, o RAG contra alucinações, o 'batteries included', o Python 3.11+ com Hugging Face e as bindings para JavaScript, Java, Rust e Go. Na leitura de 25/11/2026 o repositório mostrava 13,4 mil estrelas (o vídeo cita mais de 13.600)."
+    sustenta: README do projeto. Sustenta a descrição do txtai como framework tudo-em-um, o banco de embeddings como união de índices vetoriais (esparsos e densos), redes de grafos e bancos relacionais, a busca vetorial com SQL, a indexação de texto, documentos, áudio, imagem e vídeo, os pipelines (perguntas e respostas, rotulagem, transcrição, tradução, resumo), os workflows, os agentes construídos sobre o smolagents, o RAG contra alucinações, o 'batteries included', o Python 3.11+ com Hugging Face e as bindings para JavaScript, Java, Rust e Go. Na leitura de 25/11/2026 o repositório mostrava 13,4 mil estrelas (o vídeo cita mais de 13.600).
     verificada: true
   - url: https://neuml.github.io/txtai/why/
-    titulo: "Why txtai? - txtai"
-    sustenta: "Página da documentação. Sustenta a execução local sem enviar dados a serviços remotos ('Run local'), o baixo consumo com escala só quando preciso ('Low footprint') e a API embutida para usar a linguagem de programação de escolha."
+    titulo: Why txtai? - txtai
+    sustenta: Página da documentação. Sustenta a execução local sem enviar dados a serviços remotos ('Run local'), o baixo consumo com escala só quando preciso ('Low footprint') e a API embutida para usar a linguagem de programação de escolha.
     verificada: true
 revisado_por: Maurício Yokoyama Issei
 revisado_em: 2026-11-25
