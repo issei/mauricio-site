@@ -44,9 +44,21 @@ function trabalhos() {
     id: 'retrato',
     fonte: join(ROOT, 'assets-fonte/retrato.jpg'),
     proporcao: 5 / 4,
-    saidas: [192, 480, 960].map((w) => ({ w, base: join(OUT, `retrato-${w}`) })),
+    saidas: [192, 480, 960, 1200].map((w) => ({ w, base: join(OUT, `retrato-${w}`) })),
     teto: { 480: { avif: 35, webp: 55 }, 960: { avif: 90 } },
   }];
+  // Home nova (SDD-nova-home §14.4): capturas do próprio site, feitas por scripts/home/capturas.mjs.
+  const HOME = { diagrama: { prop: 1067 / 1600, ws: [960, 1600] }, estados: { prop: 768 / 960 } };
+  for (const nome of ['diagrama', 'estados', 'estudo', 'videos', 'acessibilidade', 'case-agents', 'agent-ready', 'boutique']) {
+    const k = HOME[nome] ?? {};
+    lista.push({
+      id: `home:${nome}`,
+      fonte: join(ROOT, 'assets-fonte/home', `${nome}.webp`),
+      proporcao: k.prop ?? 600 / 960,
+      saidas: (k.ws ?? [480, 960]).map((w) => ({ w, base: join(OUT, 'home', `${nome}-${w}`) })),
+      teto: { 960: { avif: 60, webp: 90 } },
+    });
+  }
   const { eco } = loadEcossistema();
   for (const slug of DESTAQUES) {
     const n = eco.nodes[slug] ?? fail(`destaque "${slug}" ausente do YAML`);

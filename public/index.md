@@ -1,51 +1,53 @@
 # Maurício Yokoyama Issei
 
-**Tech Lead | Especialista em Análise de Sistemas**
+**Da incerteza à especificação. Da especificação à produção.**
 
-> Página inicial, gerada de public/cv.json e specs/ecosystem.nav.yaml. HTML: https://mauricio.issei.com.br/
+Engenharia de software, arquitetura em produção e agentes de IA.
 
-Mais de 20 anos de experiência em desenvolvimento de software e liderança técnica, com foco em soluções robustas e inovadoras em Salesforce, AWS e APIs. Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.
+> Página inicial, gerada por scripts/home/gen-home.mjs. HTML: https://mauricio.issei.com.br/
 
-## Sobre
+Há mais de vinte anos levo o que foi desenhado até a produção e cuido para que continue rodando.
 
-Sou especialista em Análise de Sistemas com mais de 20 anos de experiência em desenvolvimento de software, análise de sistemas, integração de plataformas e resolução de problemas.
+## Como trabalho
 
-Minha expertise inclui habilidades de observabilidade e sustentação, AWS, APIs REST/SOAP, Salesforce e Desenvolvimento de Sistemas (Java, Node.js, Python, Go e .NET).
+- **Escutar · Investigar · Estudar.** Quase tudo começa com uma pergunta. Antes de responder, desmonto a pergunta e estudo cada parte. Exemplo: "Como tirar do time o trabalho manual?" — Quem vai operar? (Runbook · Plantão); O que pode falhar? (Incidentes · Logs); Como saber se funciona? (Aceite · Métricas).
+- **Sintetizar · Aprender.** Depois fecho as fontes e explico do zero. É aí que separo o que entendi do que só li. Síntese: "Só automatizo o que alguém consegue operar, ver falhar e medir."
+- **Projetar · Construir · Validar.** Desenho para que outra pessoa consiga operar. Construo em passos pequenos, e o teste diz se está certo. O gate deste site: build, espelhos /en/ em dia, artefatos gerados em dia, coerência global do site, orçamento de performance.
+- **Sustentar · Orquestrar · Evoluir.** Na crise, o tempo conta. Com o time, primeiro estabilizo; depois investigo a causa raiz. A causa vira a próxima pergunta. Estados de um incidente: Incidente aberto → Serviço estabilizado → Causa raiz encontrada.
+- **Integrar · Ensinar · Compartilhar.** O que consigo explicar, publico. Ensinar consolida o que aprendi. Exemplo: [Engenharia de Agentes de IA](https://mauricio.issei.com.br/engenharia-agentes-ia), com dez princípios: O LLM é um componente, não o piloto; Determinismo é invariante testável; Separe o Cérebro da Vitrine; Determinístico-primeiro; Contratos rígidos em toda fronteira; Isole as camadas epistêmicas; Abrace o Mundo Aberto; Governe o orçamento com ledgers; Governança fail-closed; Explique, não exponha o número.
+
+## Minha história
+
+Comecei escrevendo código. Com o tempo, passei a responder também por times, contratos e sistemas em produção.
+
+- **1997:** Curso técnico em processamento de dados
+- **2003–2012:** 9 anos como Analista de Desenvolvimento na Sysgen
+- **2012–2017:** 6 anos em Sustentação e Inovação na Indra
+- **2018–hoje:** 8 anos em Sustentação e como Tech Lead na Rede
+- **2024–hoje:** Arquitetura, IA aplicada, engenharia de agentes e ensino
 
 Carreira completa: https://mauricio.issei.com.br/curriculo
 
-## Temas
+## Minhas ideias
 
-O que publico, por assunto. Cada tema leva aos seus conteúdos.
+As ferramentas mudaram; as perguntas, não.
 
-- [Engenharia agêntica](https://mauricio.issei.com.br/temas/engenharia-agentica) — 16 conteúdos
-- [Gestão e estratégia](https://mauricio.issei.com.br/temas/gestao-e-estrategia) — 9 conteúdos
-- [Especificação e desenvolvimento](https://mauricio.issei.com.br/temas/especificacao-e-desenvolvimento) — 6 conteúdos
-- [Salesforce e vendas](https://mauricio.issei.com.br/temas/salesforce-e-vendas) — 5 conteúdos
-- [Cloud e confiabilidade](https://mauricio.issei.com.br/temas/cloud-e-confiabilidade) — 3 conteúdos
-- [Aprendizagem e mente](https://mauricio.issei.com.br/temas/aprendizagem-e-mente) — 3 conteúdos
-- [Tecnologia e cultura](https://mauricio.issei.com.br/temas/tecnologia-e-cultura) — 3 conteúdos
-- [Dados e decisão](https://mauricio.issei.com.br/temas/dados-e-decisao) — 2 conteúdos
-- [Ferramentas de IA](https://mauricio.issei.com.br/temas/ferramentas-de-ia) — 2 conteúdos
-- [Acessibilidade e design](https://mauricio.issei.com.br/temas/acessibilidade-e-design) — 1 conteúdo
+Hoje estudo agentes de IA perguntando o mesmo de sempre: quem vai operar, o que pode falhar, como saber se funciona. Escrevo e gravo o que ainda estou tentando entender.
 
-Todos os conteúdos: https://mauricio.issei.com.br/catalogo
+- [A quem a empresa delega quando delega à IA?](https://mauricio.issei.com.br/a-quem-a-empresa-delega) — Artigo
+- [Curiosidade e investigação](https://mauricio.issei.com.br/curiosidade-e-investigacao) — Ensaio
+- [Domine a IA com Google Antigravity](https://mauricio.issei.com.br/videos/domine-a-ia-com-google-antigravity-da-codificacao-a) — Vídeo
 
-## Provas
+Todos os conteúdos: https://mauricio.issei.com.br/catalogo · Vídeos do canal: https://mauricio.issei.com.br/videos
 
-Resultados de projeto que citam número, transcritos sem edição.
+## Meus projetos
 
-- Aumento de mais de 15% no atingimento das metas e agilidade nos agendamentos e atendimentos aos clientes. — [Pipe Automática Comercial · 2025](https://mauricio.issei.com.br/curriculo#p-2025-pipe-automatica-comercial)
-- Otimização da operação logística, conseguindo realizar em D0 em boa parte dos atendimentos a entrega completa da proposta realizada pelo comercial. — [Evolução do Credenciamento no Plano Padrão · 2022](https://mauricio.issei.com.br/curriculo#p-2022-evolucao-do-credenciamento-no-plano-padrao)
-- Economia de aproximadamente 500k nos contratos renegociados. — [Revisão orçamentária de fornecedores (MGI Tech & Maplink) · 2020](https://mauricio.issei.com.br/curriculo#p-2020-revisao-orcamentaria-de-fornecedores-mgi-tech-maplink)
-- Economia de mais de 3MM na negociação do contrato final. — [Revisão orçamentária e CINVEST do novo contrato Salesforce · 2020](https://mauricio.issei.com.br/curriculo#p-2020-revisao-orcamentaria-e-cinvest-do-novo-contrato-salesforce)
+Da concepção à operação. Projetos que saíram do papel e que alguém usa. Em cada um, conto o problema e as decisões que tomei.
 
-## Destaques
-
-- [Agent Ready](https://mauricio.issei.com.br/agent-ready) — *Tutorial · Experiência.* Como tornar um site legível, descobrível e utilizável por agentes de IA: Link headers, Markdown negociado, Content Signals, API Catalog, MCP e Agent Skills — com o código real deste domínio.
-- [Engenharia de Agentes de IA](https://mauricio.issei.com.br/engenharia-agentes-ia) — *Material interativo · Estudo.* Os dez princípios que tornam sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança agent-driven.
-- [Knowledge OS Enterprise](https://mauricio.issei.com.br/knowledge-os-presentation) — *Apresentação · Proposta.* O sistema de conhecimento que dá rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle.
-- [Acessibilidade como requisito de engenharia](https://mauricio.issei.com.br/acessibilidade) — *Case técnico · Experiência.* Como o A11Y.md entrou no desenvolvimento deste site com agentes de IA: o fluxo real, os diffs, a catraca que só deixa a dívida cair e o que ainda não foi verificado.
+- [Agent Ready](https://mauricio.issei.com.br/agent-ready) — Descoberta, formatos e contratos publicados para que agentes consigam usar este domínio. *(construir · ensinar)*
+- [Case Agents](https://mauricio.issei.com.br/case-agents) — Uma barreira de quatro camadas antes da execução, porque a tool errada não é uma aproximação aceitável. *(investigar · projetar)*
+- [Acessibilidade](https://mauricio.issei.com.br/acessibilidade) — Uma catraca no gate impede que a dívida de acessibilidade detectável volte a subir. *(validar · sustentar)*
+- [Boutique Empresarial](https://mauricio.issei.com.br/boutique-empresarial-showcase) — Site estático, especificação antes do código e um pipeline agêntico com gate determinístico. *(projetar · orquestrar)*
 
 ## Para agentes de IA
 
@@ -58,6 +60,8 @@ Resultados de projeto que citam número, transcritos sem edição.
 - [agent-catalog](/.well-known/agent-catalog) — Endpoints disponíveis
 
 ## Contato
+
+Se você tem um problema parecido com algum destes, me escreva.
 
 - E-mail: mauricio@issei.com.br
 - LinkedIn: https://www.linkedin.com/in/mauricioissei/

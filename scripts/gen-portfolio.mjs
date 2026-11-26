@@ -486,19 +486,7 @@ ${DESTAQUES.map((s) => { const n = eco.nodes[s]; return `  <li class="pf-destaqu
 </ul>`;
 }
 
-/** Bloco PF da home editorial (RF-F3-01, RF-F8-06): hero, Sobre, Temas, Provas, Destaques. */
-const homeBlock = () => `<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json e specs/ecosystem.nav.yaml (NÃO editar à mão) -->
-<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
-${homeHero()}
-<main id="conteudo">
-${section('about', 'Sobre', '', `<div class="pf-about">${cv.Resumo.slice(0, 2).map((p) => `<p>${esc(p)}</p>`).join('\n')}</div>
-<p class="pf-more"><a href="./curriculo.html">Ver a carreira completa</a></p>`)}
-${section('temas', 'Temas', 'O que publico, por assunto. Cada tema leva aos seus conteúdos.', temasHome())}
-${section('provas', 'Provas', 'Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Carreira.', provasHome())}
-${section('destaques', 'Destaques', '', destaques())}
-</main>
-${footer('index')}
-<!-- PF:END -->`;
+// A home é gerada por scripts/home/gen-home.mjs desde a home nova (SDD-nova-home §14).
 
 // Gêmeo .md de /curriculo (a edge function serve <caminho>.md a agentes).
 const md = [
@@ -529,29 +517,7 @@ const md = [
 // sem Temas nem Destaques e com outro cargo. Agora sai das mesmas fontes da home.
 const SITE = 'https://mauricio.issei.com.br';
 const urlNo = (n) => `${SITE}/${n.file.replace(/\.html$/, '')}`;
-const indexMd = [
-  `# ${cv.Nome}`, '', `**${cv.Titulo}**`, '',
-  `> Página inicial, gerada de public/cv.json e specs/ecosystem.nav.yaml. HTML: ${SITE}/`, '',
-  `${cv.ResumoHero} Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.`, '',
-  '## Sobre', '', ...cv.Resumo.slice(0, 2).flatMap((p) => [p, '']),
-  `Carreira completa: ${SITE}/curriculo`, '',
-  '## Temas', '', 'O que publico, por assunto. Cada tema leva aos seus conteúdos.', '',
-  ...temasDoSite(ecossistema).map((t) => `- [${t.nome}](${SITE}/temas/${t.id}) — ${t.total} ${t.total === 1 ? 'conteúdo' : 'conteúdos'}`), '',
-  `Todos os conteúdos: ${SITE}/catalogo`, '',
-  '## Provas', '', 'Resultados de projeto que citam número, transcritos sem edição.', '',
-  ...provas.map(({ p, r }) => `- ${r} — [${p.Nome} · ${p.Periodo}](${SITE}/curriculo#${p.id})`), '',
-  '## Destaques', '',
-  ...DESTAQUES.map((s) => { const n = eco.nodes[s]; return `- [${cardTitle(n)}](${urlNo(n)}) — *${n.kind} · ${NATUREZAS[n.natureza]}.* ${n.descricao}`; }), '',
-  '## Para agentes de IA', '',
-  '- [cv-for-ai.md](/cv-for-ai.md) — Currículo detalhado e stack técnica',
-  '- [career-highlights-star.md](/career-highlights-star.md) — Projetos no formato STAR',
-  '- [cv.json](/cv.json) — Dados estruturados do currículo',
-  '- [catalogo.md](/catalogo.md) — Todos os conteúdos, por tema',
-  '- [llms.txt](/llms.txt) — Índice de documentação para IA',
-  '- [llms-full.txt](/llms-full.txt) — Documentação completa concatenada',
-  '- [agent-catalog](/.well-known/agent-catalog) — Endpoints disponíveis', '',
-  '## Contato', '', `- E-mail: ${cv.Contato.Email}`, `- LinkedIn: ${cv.Contato.LinkedIn}`, `- GitHub: ${cv.Contato.GitHub}`, `- YouTube: ${cv.Contato.youtube}`, '',
-].join('\n');
+// O gêmeo .md da home (public/index.md) é escrito por scripts/home/gen-home.mjs.
 
 // ---------------------------------------------------------------------------
 // Escrita / --check (padrão de gen-hub-data.mjs)
@@ -574,10 +540,8 @@ function fill(file, blocks) {
 }
 
 const targets = [
-  fill('src/index.html', [['<!-- PF:START', '<!-- PF:END -->', homeBlock()]]),
   fill('src/curriculo.html', [['<!-- PF:START', '<!-- PF:END -->', pfBlock('curriculo')]]),
   whole('public/curriculo.md', md),
-  whole('public/index.md', indexMd),
 ];
 
 const eol = (s) => s.replace(/\r\n/g, '\n');
