@@ -35,6 +35,8 @@ home não casam, e esta SDD não força o casamento.
   é `avanco`; ir para um menor é `retorno`. Fora da família `site`, a regra de RF-VT-10 não muda.
 - **RF-VT-19** — Início ↔ Carreira: o `h1#pf-nome` recebe o nome `vt-nome` e o `.pf-hero-title` recebe `vt-papel`,
   nas duas pontas, só quando o elemento está visível nas duas (sem fragmento na URL de destino e visível ao sair).
+  **Revisto em 2026-11-26** pela nova home: na home, o par passa a ser `h1#hm-nome`, e o `vt-papel` sai
+  ([SDD-destinos-da-home](../pages/portfolio/SDD-destinos-da-home.md), §5.1).
 - **RF-VT-20** — Link com fragmento (`#tema-x` no catálogo, `#p-…` na carreira): nenhum nome dinâmico, nem na saída
   nem na entrada. Só a entrada direcional. Um nome só na saída esmaeceria sozinho, sem par.
 - **RF-VT-21** — Nenhum nome existe em mais de um elemento por página, e todo nome dinâmico sai em `finished`

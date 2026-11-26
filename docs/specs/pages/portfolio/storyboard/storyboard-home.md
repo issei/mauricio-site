@@ -2,7 +2,7 @@
 id: storyboard-home
 titulo: Storyboard cinematográfico da nova home — "O pensamento em prática"
 data: 2026-11-24
-status: pré-produção, revisão 6 (símbolos, navegação e ritmo; §9.4) (nada publicado; nenhuma imagem gerada por IA no repositório)
+status: versão final aprovada (2026-11-26); revisão 7 (clareza para a primeira visita; §9.5); publicação especificada no SDD §14 (nada publicado; nenhuma imagem gerada por IA no repositório)
 leitor: Issei (aprovação), fotógrafo/produção e quem planejar o scroll
 base: SDD-nova-home.md (docs/specs/pages/portfolio/)
 ---
@@ -457,6 +457,31 @@ Detalhe técnico no SDD §12. Resumo para o storyboard:
 (D-H10; recomendação aplicada no protótipo).
 
 ---
+
+### 9.5 Revisão 7 (Issei, 2026-11-26): clareza para a primeira visita
+
+Detalhe no SDD §13. A revisão 7 prevalece sobre as anteriores onde houver
+diferença.
+
+| Ponto | Antes (revisão 6) | Depois (revisão 7) | Por quê |
+| :-- | :-- | :-- | :-- |
+| Mensagem da abertura | "Pensar profundamente. Construir com propósito." | "Da incerteza à especificação. Da especificação à produção." | Soava como manifesto genérico |
+| Subtítulo | "Tecnologia, engenharia e conhecimento em prática." | "Engenharia de software, arquitetura em produção e agentes de IA." | Mostra onde atuo em 3 segundos |
+| Sessão 01 | 6 cenas | 5 cenas: 01 quem sou; 02 a pergunta e as fontes que fecham; 03 do desenho ao gate; 04 a crise; 05 publicar e ensinar | A cena 03 (moldura que vira fio) parecia imagem quebrada |
+| Fechar e explicar | M1 fecha num fio | As fontes esmaecem dentro de M1 e fica a síntese sublinhada pelo ouro | O visitante vê as fontes sumindo |
+| Validação (03) | Fotos de IA de teclado e teste | Saída real do `npm run gate`, em HTML | Credibilidade documental |
+| Crise (04) | Foto de IA; fio racha na margem | Estados do incidente em tipografia; o divisor central racha e se repara | O Kintsugi vai para onde o olho está |
+| Final da S01 (05) | Retrato com zoom | Os dez princípios publicados de Engenharia de Agentes de IA | O retrato se repetia três vezes |
+| Interface | Menu, 12 símbolos e 9 pontos | Só o menu, com uma barra fina de progresso | *Shibui*: menos camadas competindo |
+| Meus projetos | Título e dupla de dimensões | Tese de uma linha em cada cartão; duplas sem repetição; ouro só no foco | Os cartões não diziam o que cada projeto prova |
+| Rodapé | Só links | "Se você tem um problema parecido com algum destes, me escreva." | A voz continua até o fim |
+| Mesa de ideias | Três capturas em leque, só a de cima inteira | As três inteiras: no computador, a figura em cima e dois títulos embaixo; no celular, empilhadas | Recortes legíveis |
+| Fim da S01 | A moldura ficava vazia antes do retrato da S02 | A lista dos princípios viaja dentro da moldura, e a S02 dissolve por cima | Nenhum quadro vazio |
+
+Valores medidos no protótipo: SDD §13.8.
+
+O Issei aprovou esta versão em 2026-11-26. A publicação segue o SDD §14, e a
+chegada aos destinos da home segue o SDD-destinos-da-home.
 
 ## 10. Proposta consolidada
 

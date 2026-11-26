@@ -200,16 +200,17 @@ function injectStyles() {
 /*
  * Celular: em coluna, o flex-basis de 320px do texto virava ALTURA e abria um
  * vão vazio de ~200px — o banner cobria 64% de uma tela de 844px. O texto passa
- * a ocupar só a própria altura, e Recusar/Aceitar dividem uma linha, com o
- * mesmo tamanho (nenhuma das duas escolhas fica mais fácil que a outra).
+ * a ocupar só a própria altura, e as três ações dividem uma linha, com o mesmo
+ * tamanho (nenhuma das escolhas fica mais fácil que a outra). Teto: 25% de 844px
+ * (SDD-destinos-da-home, RF-DH-03).
  */
 @media (max-width: 640px) {
-    .cc-banner { padding: 16px; }
-    .cc-banner-inner { flex-direction: column; align-items: stretch; gap: 16px; }
-    .cc-banner-text { flex: 0 0 auto; font-size: .9rem; line-height: 1.5; }
-    .cc-actions { justify-content: stretch; }
-    .cc-actions .cc-btn { flex: 1 1 calc(50% - 5px); padding: 10px 12px; }
-    .cc-actions .cc-btn-customize { flex-basis: 100%; }
+    .cc-banner { padding: 12px 16px; }
+    .cc-banner-inner { flex-direction: column; align-items: stretch; gap: 10px; }
+    .cc-banner-text { flex: 0 0 auto; font-size: .82rem; line-height: 1.4; }
+    .cc-banner-text strong { margin-bottom: 2px; font-size: .9rem; }
+    .cc-actions { gap: 8px; flex-wrap: nowrap; }
+    .cc-actions .cc-btn { flex: 1 1 0; min-width: 0; padding: 8px 6px; font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) {
     .cc-banner { animation: none; }
