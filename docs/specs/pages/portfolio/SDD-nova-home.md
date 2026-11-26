@@ -807,6 +807,7 @@ foto real da mesma posição, ou a cena sai (plano B).
 | D-H9 | A noite da cena 05 entra por corte seco ou por transformação? | **Decidida (Issei, 2026-11-26):** queda da noite em cerca de 3 toques de seta. O corte seco fica só para comparação no protótipo (`data-noite="corte"`) |
 | D-H10 | Onde fica o ouro quando o símbolo e o fio disputam o mesmo quadro? | **Encerrada pela revisão 7:** os símbolos saíram (§13.4). Vale um só ouro por quadro, com o protagonista de cada cena no §13.3 |
 | D-H11 | Revisão 7: abertura concreta, S01 com 5 cenas, sem símbolos, sem pontos e sem imagens de IA | **Decidida (Issei, 2026-11-26):** pedido detalhado da revisão 7 (§13) |
+| D-H12 | No celular, aceitar 5 toques logo acima do limite de constância ou subir a S01 acima de 300 vh? | Em aberto. Recomendação: manter 300 vh, com o nome fixo no topo do celular (aplicado no protótipo, §13.8) |
 
 ## 11. Unidades de trabalho
 
@@ -1051,3 +1052,42 @@ caminhos continuam como âncoras.
 4. Capturas de cada cena e sessão em 1440 × 900 e 390 × 844, lidas como
    primeira visita: "Há algo aqui que parece quebrado, repetido ou que exige
    explicação externa?" Se houver, o ajuste vem antes de concluir.
+
+### 13.8 Valores finais do protótipo (revisão 7)
+
+Protótipo em `docs/specs/pages/portfolio/prototipo/`: commits locais
+a6d21add e d2b702e8 no notebook, ainda sem push.
+
+- **Altura da S01:** 300 vh no computador e no celular.
+- **Fim da S01:** a lista dos dez princípios fica dentro de M1 enquanto a
+  moldura encolhe (só `translate` e `scale`) até o lugar do retrato da S02. A
+  S02 dissolve por cima. A moldura não fica vazia em nenhum quadro, e o retrato
+  não volta para a cena 05.
+- **Mesa de ideias:** as três capturas aparecem inteiras. No computador, a
+  Figura 3 fica em cima, e os títulos do ensaio e da página de vídeos ficam lado
+  a lado embaixo. No celular, as três ficam empilhadas na largura toda, e o
+  conteúdo da sessão sobe com a rolagem.
+- **Celular:** o nome encolhe para o topo e fica ali durante a S01, como na
+  revisão 6. Ele chega depois que o cabeçalho sai, então não duplica o nome, e
+  não é dourado. O bloco da abertura começa no topo, e o resto do texto some só
+  por opacidade.
+- **Menu:** foi corrigido um defeito que vinha da revisão 5. As faixas dos
+  itens se sobrepunham, e "Minha história" ficava marcada já na cena 04.
+- **Constância:** toque de seta de 40 px. Um toque é brusco quando a diferença
+  média de pixels passa de 6 (escala 0–255).
+
+| Tela | Toques na S01 | Sem mudança | Bruscos | Página inteira |
+| :-- | :-- | :-- | :-- | :-- |
+| 1440 × 900 | 45 | 2 | 0 | 98 (revisão 6: 110) |
+| 390 × 844 | 42 | 0 | 5, de 6,2 a 7,6: abertura (toques 1–3) e passagem da cena 04 para a 05 (toques 31–32) | não medida |
+
+- **Ouro:** no máximo um elemento dourado por quadro em todas as capturas
+  (0 falhas).
+- **Contraste:** tinta, grafite e dourado acima de 7:1 (AAA); cinza de 5,9 a
+  6,7:1 (AA).
+- **Cores:** nenhum literal de cor fora do `:root`.
+- **Movimento reduzido:** nenhuma animação, mosaico completo e sem rolagem
+  lateral. **Sem JavaScript:** todo o conteúdo continua no HTML (as cenas, os
+  dez princípios, as três capturas da mesa e as quatro teses).
+- **Em aberto (D-H12):** os 5 toques bruscos do celular só chegam a zero com a
+  S01 do celular acima de 300 vh.
