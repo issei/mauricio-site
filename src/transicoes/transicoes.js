@@ -17,8 +17,8 @@
   var NOME_TITULO = 'vt-titulo';
   var ORIGEM = 'vt-origem'; // RF-VT-25: ponto, em pixels, de onde a abertura imersiva nasce.
   var CHAVE = 'vt-de'; // RF-VT-11: de onde a pessoa saiu, para quem não tem navigation.activation.
-  var NOME_NOME = 'vt-nome'; // família site: nome e papel do hero, que existem iguais na home e na carreira.
-  var NOME_PAPEL = 'vt-papel';
+  var NOME_NOME = 'vt-nome'; // família site: o nome, que existe igual na home e na carreira (RF-VT-19 revisto).
+  var NOME_RETRATO = 'vt-retrato'; // RF-VT-37: o retrato da Sessão 02 da home vira o retrato da carreira.
   var CARTAO = 'a.card-link, .hero a.botao-primario';
   var ativado = null; // o último link clicado (RF-VT-06); o clique por teclado (Enter) também gera `click`.
   var nomeados = [];
@@ -41,18 +41,23 @@
   }
   function capaDoCartao(cartao) { return cartao.querySelector('.card-thumb, .hero-img'); }
   function tituloDoCartao(cartao) { return cartao.querySelector('h3, h2'); }
-  // Família site (RF-VT-19): início e carreira trazem o mesmo bloco `.pf-hero`; o par existe nas duas pontas.
-  function heroNomeavel() {
-    var nome = document.querySelector('#pf-nome');
-    var papel = document.querySelector('.pf-hero-title');
-    return nome && papel && visivel(nome) && visivel(papel) ? [nome, papel] : null;
+  // A home anima por rolagem: um elemento pode estar no retângulo da tela e transparente. Só nomeia o que se vê.
+  function aparente(el) {
+    for (var x = el; x && x.nodeType === 1; x = x.parentElement) {
+      var cs = getComputedStyle(x);
+      if (cs.visibility === 'hidden' || +cs.opacity < 0.5) return false;
+    }
+    return true;
   }
+  // Família site (RF-VT-19 revisto): o nome da home (#hm-nome) e o da carreira (#pf-nome). O papel não viaja:
+  // o subtítulo da home e o cargo da carreira são textos diferentes, e um par de textos diferentes se deforma.
   function nomearHero() {
-    var hero = heroNomeavel();
-    if (!hero) return;
-    nomear(hero[0], NOME_NOME);
-    nomear(hero[1], NOME_PAPEL);
+    var nome = document.querySelector('#hm-nome, #pf-nome');
+    if (nome && visivel(nome) && aparente(nome)) nomear(nome, NOME_NOME);
   }
+  // RF-VT-37: na home, a moldura do retrato da Sessão 02; na carreira, a imagem do retrato do topo.
+  function retratoDaHome() { return document.querySelector('.hm-s02 .retrato'); }
+  function retratoDaCarreira() { return document.querySelector('.pf-hero-retrato img'); }
   function inicioECarreira(a, b) {
     var par = { '/': 1, '/index': 1, '/curriculo': 2 };
     return par[a] && par[b] && par[a] !== par[b];
@@ -119,7 +124,11 @@
     // Link com fragmento (#tema-x, #p-…): o navegador só rola até o alvo depois do primeiro quadro, então o alvo
     // nunca está na tela a tempo de ter par (SDD-transicoes-site, R9). Sem nome, só a direção.
     if (SITE.test(de) && SITE.test(para)) {
-      if (!fragmento && inicioECarreira(de, para)) nomearHero(); // RF-VT-19
+      if (!fragmento && inicioECarreira(de, para)) {
+        nomearHero(); // RF-VT-19
+        var rt = retratoDaHome();
+        if (rt && ativado && ativado.closest('.hm-s02') && visivel(rt) && aparente(rt)) nomear(rt, NOME_RETRATO); // RF-VT-37
+      }
     } else if (tipo === 'retorno') {
       var yt = document.querySelector('.yt[data-id]');
       if (yt && visivel(yt)) { nomear(yt, NOME_CAPA); nomear(document.querySelector('h1'), NOME_TITULO); }
@@ -144,7 +153,11 @@
     if (tipo && vt.types) vt.types.add(tipo);
     if (tipo === 'imersao') escreverOrigem(vt);
     if (SITE.test(para) && SITE.test(de || '')) {
-      if (!location.hash && inicioECarreira(de, para)) nomearHero();
+      if (!location.hash && inicioECarreira(de, para)) {
+        nomearHero();
+        var rc = tipo === 'avanco' && retratoDaCarreira();
+        if (rc && visivel(rc)) nomear(rc, NOME_RETRATO); // RF-VT-37: na volta, só a entrada direcional
+      }
     } else if (VIDEO.test(para)) {
       var yt = document.querySelector('.yt[data-id]');
       if (yt) {

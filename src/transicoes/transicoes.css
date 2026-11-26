@@ -35,7 +35,8 @@
 
   /* Capa e título compartilhados: um só elemento de cada lado, nomeado pelo script só durante a transição. */
   ::view-transition-group(vt-capa),
-  ::view-transition-group(vt-titulo) {
+  ::view-transition-group(vt-titulo),
+  ::view-transition-group(vt-retrato) {
     animation-duration: var(--vt-duracao-compartilhado);
     animation-timing-function: var(--vt-curva);
   }
