@@ -147,7 +147,7 @@ confirmada nele com o mesmo teste.
 ### 5.2 Chegada (páginas e componentes comuns)
 
 - **RF-DH-01** — CLS ≤ 0,1 em 1440 × 900 e 390 × 844 em todos os destinos da
-  §3. Correção da causa da §4.2: uma fonte reserva com as métricas da Inter
+  §3. Correção da causa da §4.2 (feita no catálogo, CLS 0,54 → 0,002; as outras páginas só se a medição pedir): uma fonte reserva com as métricas da Inter
   (`@font-face` local com `size-adjust` e os *overrides* de `ascent`,
   `descent` e `line-gap`), incluída na pilha de fontes do CSS comum. A
   mudança é só de CSS; nenhum HTML muda, então nenhum espelho fica velho.
@@ -155,8 +155,9 @@ confirmada nele com o mesmo teste.
   `/a-quem-a-empresa-delega`.
 - **RF-DH-02** — `/catalogo.html#projetos` (D-H3): uma seção nova no catálogo,
   gerada por `scripts/gen-catalogo.mjs` a partir do YAML, com os 4 projetos
-  (`natureza: experiencia`) na mesma ordem da home e com o texto do cartão do
-  YAML. O `id="projetos"` fica no título da seção. Muda `src/catalogo.html`,
+  (`natureza: experiencia`) na mesma ordem da home. A seção é uma lista de
+  links com a frase curta do YAML, e não cartões, porque cada nó aparece como
+  cartão uma só vez, no seu tema (INV-8, `tests/catalogo.gen.test.mjs`). O `id="projetos"` fica no título da seção. Muda `src/catalogo.html`,
   então o espelho `/en/` é regerado (Argos, no notebook).
 - **RF-DH-03** — Banner de cookies no celular: no máximo 25 % da altura em
   390 × 844 (hoje: 35 a 40 %). Na primeira visita à home, o nome, a mensagem e
