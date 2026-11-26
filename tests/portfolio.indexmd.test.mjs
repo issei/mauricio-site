@@ -1,29 +1,26 @@
 /**
- * Gêmeo Markdown da home (SDD-F1-F1b, F3.8, RF-F3-13/14).
- * public/index.md é o que agentes de IA recebem ao pedir Markdown de "/".
- * Ele precisa trazer as mesmas seções e o mesmo cargo da home HTML.
+ * Gêmeo Markdown da home (public/index.md, escrito por scripts/home/gen-home.mjs).
+ * É o que agentes de IA recebem ao pedir Markdown de "/": as mesmas sessões e os mesmos textos da home HTML.
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { ABERTURA, PROJETOS } from '../scripts/home/home.data.mjs';
 
 const md = readFileSync(new URL('../public/index.md', import.meta.url), 'utf8');
-const html = readFileSync(new URL('../src/index.html', import.meta.url), 'utf8');
 const cv = JSON.parse(readFileSync(new URL('../public/cv.json', import.meta.url), 'utf8'));
 
-test('index.md tem o cargo atual do cv.json', () => {
-  assert.ok(md.includes(`**${cv.Titulo}**`));
+test('index.md tem o nome e a abertura da home', () => {
+  assert.ok(md.startsWith(`# ${cv.Nome}\n`));
+  assert.ok(md.includes(ABERTURA.sub));
 });
 
-test('index.md tem as seções da home', () => {
-  for (const h of ['## Sobre', '## Temas', '## Provas', '## Destaques', '## Contato']) {
+test('index.md tem as sessões da home', () => {
+  for (const h of ['## Como trabalho', '## Minha história', '## Minhas ideias', '## Meus projetos', '## Contato']) {
     assert.ok(md.includes(`\n${h}\n`), `falta ${h}`);
   }
 });
 
-test('index.md lista os mesmos temas da home', () => {
-  const temasHtml = [...html.matchAll(/catalogo\.html#tema-([a-z0-9-]+)"/g)].map((m) => m[1]);
-  const temasMd = [...md.matchAll(/\/temas\/([a-z0-9-]+)\)/g)].map((m) => m[1]);
-  assert.ok(temasHtml.length > 0);
-  assert.deepEqual(temasMd, temasHtml);
+test('index.md traz a tese de cada projeto', () => {
+  for (const c of Object.values(PROJETOS.cartoes)) assert.ok(md.includes(c.tese), c.titulo);
 });

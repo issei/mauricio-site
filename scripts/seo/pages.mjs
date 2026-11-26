@@ -921,16 +921,15 @@ export const PAGES = [
 
   // ===================================================================== TIER B
   {
-    // Home "Mapa de Linhas" (docs/specs/pages/portfolio/). O conteúdo do <body>
-    // vem de scripts/gen-portfolio.mjs; dateModified também é a data de
-    // "Última atualização" e o ano do © que o gerador grava na página.
+    // Home "O pensamento em prática" (docs/specs/pages/portfolio/SDD-nova-home.md, §14.6). O conteúdo
+    // do <body> vem de scripts/home/gen-home.mjs.
     slug: 'index', type: 'ProfilePage', tier: 'B', hasMd: false, ogType: 'profile',
     title: 'Maurício Yokoyama Issei — Tech Lead | Salesforce, AWS, APIs',
-    description: 'Tech Lead com mais de 20 anos em software e liderança técnica: Salesforce, AWS e APIs. Experiência, 19 projetos no formato STAR, certificações e recomendações.',
-    datePublished: '2026-01-10', dateModified: '2026-09-22',
-    keywords: ['Maurício Yokoyama Issei', 'Tech Lead', 'Especialista em Análise de Sistemas', 'Salesforce', 'AWS', 'APIs', 'SRE', 'Java', 'Node.js', 'Datadog', 'Liderança Técnica'],
+    description: 'Maurício Yokoyama Issei: engenharia de software, arquitetura em produção e agentes de IA. Trajetória, ideias e projetos.',
+    datePublished: '2026-01-10', dateModified: '2026-11-26',
+    keywords: ['Maurício Yokoyama Issei', 'engenharia de software', 'arquitetura em produção', 'agentes de IA', 'Tech Lead', 'Salesforce', 'AWS', 'APIs', 'SRE'],
     extraGraph: [CERTIFICATIONS],
-    og: { eyebrow: 'Tech Lead · Especialista em Análise de Sistemas', title: 'Maurício {Yokoyama Issei}', subtitle: '20+ anos: Salesforce, AWS e APIs' },
+    og: { eyebrow: 'Engenharia de software · Arquitetura em produção · Agentes de IA', title: 'Maurício {Yokoyama Issei}', subtitle: 'Da incerteza à especificação. Da especificação à produção.' },
   },
   {
     // Carreira: desde a F2 (SDD-F1-F1b, Parte 3), o mesmo bloco PF da home,

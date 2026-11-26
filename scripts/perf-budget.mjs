@@ -169,6 +169,22 @@ if (bloqueiaTerceiro.length) {
   );
 }
 
+/*
+ * Home (SDD-nova-home §14.5): HTML + CSS próprio no caminho crítico, com gzip. O corpo gerado e o home.css
+ * somam ~10 KB; o <head> comum do site (JSON-LD, consentimento, GTM, camada de transições) soma ~12 KB.
+ */
+const HOME = { page: 'index.html', criticoGzipKB: 30 };
+{
+  const h = readFileSync(join(DIST, HOME.page), 'utf8');
+  let kb = gzKB(Buffer.from(h));
+  for (const m of h.replace(/<noscript>[\s\S]*?<\/noscript>/gi, ' ').matchAll(/<link\b[^>]*rel=["']?stylesheet[^>]*>/gi)) {
+    const href = (m[0].match(/href=["'](\/[^"']+)["']/i) || [])[1];
+    if (href && !/\bmedia=["']print/i.test(m[0]) && existsSync(join(DIST, href.slice(1)))) kb += gzKB(readFileSync(join(DIST, href.slice(1))));
+  }
+  console.log(`  home: HTML + CSS ${kb.toFixed(1)}KB / ${HOME.criticoGzipKB}KB gzip`);
+  if (kb > HOME.criticoGzipKB) failures.push(`home: HTML + CSS ${kb.toFixed(1)}KB gzip — teto ${HOME.criticoGzipKB}KB`);
+}
+
 console.log(`=== Orçamento de performance :: ${BUDGET.page} ===`);
 console.log(`  site: ${paginas.length} páginas · ${reincidentes.length} com CDN que compila no cliente · ${bloqueiaTerceiro.length} com CSS de terceiro bloqueante`);
 if (verbose || failures.length) {

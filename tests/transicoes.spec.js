@@ -299,28 +299,42 @@ testDoGate(test, 'videos')('passar o mouse num cartão pré-busca só o document
 });
 
 // ── Família site: início, carreira e conteúdos (SDD-transicoes-site.md, CA-26 a CA-34) ───────────
+// Home nova (SDD-destinos-da-home): o nome viaja sem o papel (RF-VT-19 revisto, CA-49); o retrato da S02 vira o da
+// carreira (RF-VT-37, CA-50); os projetos e os textos recentes formam a família `destinos` (RF-VT-38, CA-51).
 
 const nomesDe = (lista, nome) => por(lista, nome);
+// Na primeira visita o banner de cookies cobre o pé da tela (1280 × 720): os links da home ficam atrás dele.
+// Com a escolha gravada, o banner não abre e o clique chega ao link, como para quem já respondeu.
+const semBanner = (page) => page.addInitScript(() => localStorage.setItem('consent_v', JSON.stringify({ v: '2.0', ts: 'x', categories: { necessary: true }, method: 'explicit' })));
+/** Rola até o meio de uma sessão da home, onde os links dela estão parados e clicáveis. */
+const irPara = async (page, secao) => {
+  await page.evaluate((s) => {
+    document.documentElement.style.scrollBehavior = 'auto';
+    const e = document.querySelector(s);
+    scrollTo(0, e.getBoundingClientRect().top + scrollY + e.offsetHeight / 2 - innerHeight / 2);
+  }, secao);
+  await page.waitForTimeout(400);
+};
+const carreiraPeloCabecalho = (page) => page.locator('header.sh').getByRole('link', { name: 'Carreira' }).click();
 
-testDoGate(test, 'index', 'curriculo')('início → carreira: nome e papel compartilhados nas duas pontas (CA-26)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'curriculo')('início → carreira pelo cabeçalho: o nome nas duas pontas, sem papel (CA-26, CA-49)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
   await page.goto('/');
-  await page.getByRole('link', { name: 'Ver carreira' }).click();
+  await carreiraPeloCabecalho(page);
   await page.waitForURL(/\/curriculo/);
   await esperar(page, 2);
   const [saida, entrada] = await nomes(page);
   expect(saida).toMatchObject({ evento: 'pageswap', tipos: ['avanco'] });
   expect(entrada).toMatchObject({ evento: 'pagereveal', tipos: ['avanco'] });
+  expect(nomesDe(saida.nomes, 'vt-nome')[0]).toMatchObject({ tag: 'h1' });
   for (const ponta of [saida, entrada]) {
     expect(nomesDe(ponta.nomes, 'vt-nome')).toHaveLength(1);
-    expect(nomesDe(ponta.nomes, 'vt-nome')[0].tag).toBe('h1');
-    expect(nomesDe(ponta.nomes, 'vt-papel')).toHaveLength(1);
-    expect(nomesDe(ponta.nomes, 'vt-papel')[0].classe).toContain('pf-hero-title');
+    expect(nomesDe(ponta.nomes, 'vt-papel')).toHaveLength(0);
   }
 });
 
-testDoGate(test, 'index', 'curriculo')('carreira → início pelo cabeçalho: mesmos nomes, tipo retorno (CA-27)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'curriculo')('carreira → início pelo cabeçalho: o nome nas duas pontas, tipo retorno (CA-27)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
   await page.goto('/curriculo.html');
@@ -332,15 +346,32 @@ testDoGate(test, 'index', 'curriculo')('carreira → início pelo cabeçalho: me
   expect(entrada.tipos).toEqual(['retorno']);
   for (const ponta of [saida, entrada]) {
     expect(nomesDe(ponta.nomes, 'vt-nome')).toHaveLength(1);
-    expect(nomesDe(ponta.nomes, 'vt-papel')).toHaveLength(1);
+    expect(nomesDe(ponta.nomes, 'vt-papel')).toHaveLength(0);
   }
 });
 
-testDoGate(test, 'index', 'catalogo')('início → conteúdos pelo botão: sem nome dinâmico, só a direção (CA-28)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'curriculo')('"Conheça minha história" → carreira: o retrato nas duas pontas (CA-50)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
+  await semBanner(page);
   await page.goto('/');
-  await page.getByRole('link', { name: 'Explorar os conteúdos' }).click();
+  await irPara(page, '.hm-s02');
+  await page.getByRole('link', { name: 'Conheça minha história →' }).click();
+  await page.waitForURL(/\/curriculo/);
+  await esperar(page, 2);
+  const [saida, entrada] = await nomes(page);
+  expect(nomesDe(saida.nomes, 'vt-retrato')).toHaveLength(1);
+  expect(nomesDe(entrada.nomes, 'vt-retrato')).toHaveLength(1);
+  expect(nomesDe(entrada.nomes, 'vt-retrato')[0].tag).toBe('img');
+});
+
+testDoGate(test, 'index', 'catalogo')('início → conteúdos pelo CTA da Sessão 03: sem nome dinâmico, só a direção (CA-28)', async ({ page, browserName }) => {
+  soChromium(browserName);
+  await registrarNomes(page);
+  await semBanner(page);
+  await page.goto('/');
+  await irPara(page, '.hm-s03');
+  await page.getByRole('link', { name: 'Explore minhas ideias →' }).click();
   await page.waitForURL(/\/catalogo/);
   await esperar(page, 2);
   const [saida, entrada] = await nomes(page);
@@ -350,38 +381,50 @@ testDoGate(test, 'index', 'catalogo')('início → conteúdos pelo botão: sem n
   expect(entrada.nomes.map((n) => n.nome)).toEqual([]);
 });
 
-testDoGate(test, 'index', 'catalogo')('início → conteúdos por um tema: sem nome dinâmico, só a direção (CA-29)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'acessibilidade')('início → projeto e volta: avanço e retorno, sem nome compartilhado (CA-51, CA-56)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
+  await semBanner(page);
   await page.goto('/');
-  await page.locator('.pf-temas a').first().click();
-  await page.waitForURL(/\/catalogo/);
+  await irPara(page, '.hm-s04');
+  const antes = await page.evaluate(() => Math.round(scrollY));
+  await page.locator('.projetos a', { hasText: 'Acessibilidade' }).click();
+  await page.waitForURL(/\/acessibilidade/);
   await esperar(page, 2);
   const [saida, entrada] = await nomes(page);
-  // R9: o navegador só rola até #tema-x depois do primeiro quadro, então o h2 nunca tem par a tempo
-  expect(saida).toMatchObject({ tipos: ['avanco'], nomes: [] });
-  expect(entrada).toMatchObject({ tipos: ['avanco'], nomes: [] });
+  expect(saida.tipos).toEqual(['avanco']);
+  expect(entrada.tipos).toEqual(['avanco']);
+  expect([...saida.nomes, ...entrada.nomes].filter((n) => n.nome !== 'vt-cabecalho')).toEqual([]);
+  await page.waitForLoadState('load');
+  await page.goBack();
+  await page.waitForURL((u) => u.pathname === '/');
+  await esperar(page, 4);
+  const [, , , volta] = await nomes(page);
+  expect(volta.tipos).toEqual(['retorno']);
+  await expect.poll(() => page.evaluate(() => Math.round(scrollY)), { timeout: 3000 }).toBeGreaterThan(antes - 3);
+  expect(Math.abs((await page.evaluate(() => Math.round(scrollY))) - antes)).toBeLessThanOrEqual(2);
 });
 
-testDoGate(test, 'index', 'curriculo')('início → carreira por link com fragmento: nenhum nome dinâmico (CA-30)', async ({ page, browserName }) => {
+testDoGate(test, 'index')('no celular, o primeiro toque num link parado da Sessão 03 abre o destino (CA-58)', async ({ page, browserName }) => {
   soChromium(browserName);
-  await registrarNomes(page);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await semBanner(page);
   await page.goto('/');
-  await page.locator('a.pf-board-src[href*="curriculo.html#"]').first().click();
-  await page.waitForURL(/\/curriculo/);
-  await esperar(page, 2);
-  const [saida, entrada] = await nomes(page);
-  for (const ponta of [saida, entrada]) {
-    expect(ponta.nomes.map((n) => n.nome)).toEqual([]);
-  }
+  // No celular o conteúdo da S03 sobe com a rolagem: o link fica na tela logo depois da dissolução (22vh).
+  await page.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; const e = document.querySelector('.hm-s03'); scrollTo(0, e.getBoundingClientRect().top + scrollY + innerHeight * 0.26); });
+  const link = page.locator('.recentes a').first();
+  await expect(link).toBeInViewport();
+  await expect.poll(async () => { const a = await link.boundingBox(); await page.waitForTimeout(150); const b = await link.boundingBox(); return a && b && a.y === b.y; }).toBe(true);
+  await link.click();
+  await page.waitForURL(/\/a-quem-a-empresa-delega/);
 });
 
-testDoGate(test, 'index', 'curriculo', 'catalogo')('com movimento reduzido nenhuma transição roda nas três páginas (CA-31)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'curriculo', 'catalogo')('com movimento reduzido nenhuma transição roda nas três páginas (CA-31, CA-57)', async ({ page, browserName }) => {
   soChromium(browserName);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await registrarPagereveal(page);
   await page.goto('/');
-  await page.getByRole('link', { name: 'Ver carreira' }).click();
+  await carreiraPeloCabecalho(page);
   await page.waitForURL(/\/curriculo/);
   await page.locator('header.sh').getByRole('link', { name: 'Conteúdos' }).click();
   await page.waitForURL(/\/catalogo/);
@@ -389,29 +432,30 @@ testDoGate(test, 'index', 'curriculo', 'catalogo')('com movimento reduzido nenhu
   expect((await log(page)).some((e) => e.transicao)).toBe(false);
 });
 
-testDoGate(test, 'index', 'curriculo')('Voltar para o início: nenhum nome sobra no hero (CA-32)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'curriculo')('Voltar para o início: nenhum nome sobra (CA-32)', async ({ page, browserName }) => {
   soChromium(browserName);
   await page.goto('/');
-  await page.getByRole('link', { name: 'Ver carreira' }).click();
+  await carreiraPeloCabecalho(page);
   await page.waitForURL(/\/curriculo/);
   await page.waitForLoadState('load');
   await page.goBack();
   await page.waitForURL((u) => u.pathname === '/');
-  await expect(page.locator('#pf-nome')).toBeVisible();
+  await expect(page.locator('#hm-nome')).toBeVisible();
   // os nomes saem em `finished`, depois do último quadro da transição: espera, não lê na hora
   await expect.poll(() => page.evaluate(() => [...document.querySelectorAll('[style*="view-transition-name"]')].map((e) => e.style.viewTransitionName))).toEqual([]);
 });
 
-testDoGate(test, 'index', 'curriculo', 'catalogo')('a pré-busca do site baixa só o documento das três páginas (CA-34)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'curriculo', 'catalogo')('a pré-busca da home baixa só documentos da família, sem prerender (CA-34, CA-52)', async ({ page, browserName }) => {
   soChromium(browserName);
   const prebuscas = [];
   page.on('request', (r) => { if ((r.headers()['sec-purpose'] || '').includes('prefetch')) prebuscas.push(new URL(r.url()).pathname); });
   await page.goto('/');
-  await page.getByRole('link', { name: 'Ver carreira' }).hover();
+  await page.locator('header.sh').getByRole('link', { name: 'Carreira' }).hover();
   await expect.poll(() => prebuscas.length, { timeout: 8000 }).toBeGreaterThan(0);
-  expect(prebuscas.every((p) => ['/curriculo.html', '/catalogo.html', '/'].includes(p))).toBe(true);
   expect(prebuscas).toContain('/curriculo.html');
-  expect(await page.locator('script[type="speculationrules"]').first().textContent()).not.toContain('prerender');
+  const regras = await page.locator('script[type="speculationrules"]').first().textContent();
+  expect(regras).not.toContain('prerender');
+  for (const r of ['/acessibilidade.html', '/case-agents.html', '/agent-ready.html', '/boutique-empresarial-showcase.html']) expect(regras).toContain(r);
 });
 
 // ── Abertura imersiva: início → vídeos (SDD-transicoes-vinheta-videos.md, CA-38 a CA-45) ──────────
@@ -426,18 +470,25 @@ const centro = async (page, seletor) => {
 };
 const px = (v) => Number.parseFloat(v);
 
-testDoGate(test, 'index', 'videos')('botão do canal: tipos imersao e mergulho, origem no triângulo do ícone (CA-38)', async ({ page, browserName }) => {
+// A home nova não tem o botão do canal com ícone de play: o link "Vídeos do canal →" da Sessão 03 abre o círculo
+// (sem mergulho). O mergulho continua definido no CSS e no script para um link com ícone (RF-VT-33).
+const SEL_CANAL = '.hm-s03 a[href="/videos.html"]';
+const linkDoCanal = (page) => page.locator(SEL_CANAL);
+
+testDoGate(test, 'index', 'videos')('link "Vídeos do canal" da home: tipo imersao, origem no centro do link (CA-38)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
+  await semBanner(page);
   await page.goto('/');
-  const [cx, cy] = await centro(page, 'a.pf-btn--yt svg');
-  await page.locator('a.pf-btn--yt').click();
+  await irPara(page, '.hm-s03');
+  const [cx, cy] = await centro(page, SEL_CANAL);
+  await linkDoCanal(page).click();
   await page.waitForURL(/\/videos/);
   await esperar(page, 2);
   const [saida, entrada] = await nomes(page);
-  expect(saida.tipos).toEqual(['imersao', 'mergulho']);
-  expect(entrada.tipos).toEqual(['imersao', 'mergulho']);
-  expect(px(entrada.origem[2])).toBe(20); // largura do ícone: base do tamanho do triângulo
+  expect(saida.tipos).toEqual(['imersao']);
+  expect(entrada.tipos).toEqual(['imersao']);
+  expect(entrada.origem[2]).toBe('');
   expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
   expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
 });
@@ -457,17 +508,19 @@ testDoGate(test, 'index', 'videos')('link Vídeos do cabeçalho: tipo imersao e 
   expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
 });
 
-testDoGate(test, 'index', 'videos')('teclado (Enter): a origem é o centro do ícone do elemento focado (CA-40)', async ({ page, browserName }) => {
+testDoGate(test, 'index', 'videos')('teclado (Enter): a origem é o centro do link focado (CA-40)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
+  await semBanner(page);
   await page.goto('/');
-  const [cx, cy] = await centro(page, 'a.pf-btn--yt svg');
-  await page.locator('a.pf-btn--yt').focus();
+  await irPara(page, '.hm-s03');
+  const [cx, cy] = await centro(page, SEL_CANAL);
+  await linkDoCanal(page).focus();
   await page.keyboard.press('Enter');
   await page.waitForURL(/\/videos/);
   await esperar(page, 2);
   const [, entrada] = await nomes(page);
-  expect(entrada.tipos).toEqual(['imersao', 'mergulho']);
+  expect(entrada.tipos).toEqual(['imersao']);
   expect(Math.abs(px(entrada.origem[0]) - cx)).toBeLessThanOrEqual(2);
   expect(Math.abs(px(entrada.origem[1]) - cy)).toBeLessThanOrEqual(2);
 });
@@ -477,8 +530,10 @@ testDoGate(test, 'index', 'videos')('sem ponto guardado a página abre completa 
   // o ouvinte do teste roda antes do da página (init script) e apaga o ponto guardado
   await page.addInitScript(() => addEventListener('pagereveal', () => { try { sessionStorage.removeItem('vt-origem'); } catch (_) { /* sem storage */ } }));
   await registrarNomes(page);
+  await semBanner(page);
   await page.goto('/');
-  await page.locator('a.pf-btn--yt').click();
+  await irPara(page, '.hm-s03');
+  await linkDoCanal(page).click();
   await page.waitForURL(/\/videos/);
   await esperar(page, 2);
   const [, entrada] = await nomes(page);
@@ -491,8 +546,10 @@ testDoGate(test, 'index', 'videos')('com movimento reduzido a abertura não roda
   soChromium(browserName);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await registrarPagereveal(page);
+  await semBanner(page);
   await page.goto('/');
-  await page.locator('a.pf-btn--yt').click();
+  await irPara(page, '.hm-s03');
+  await linkDoCanal(page).click();
   await page.waitForURL(/\/videos/);
   await expect.poll(async () => (await log(page)).length).toBe(2);
   expect((await log(page)).some((e) => e.transicao)).toBe(false);
@@ -501,8 +558,10 @@ testDoGate(test, 'index', 'videos')('com movimento reduzido a abertura não roda
 testDoGate(test, 'index', 'videos')('depois da abertura nada sobra, e o Voltar usa retorno comum (CA-43)', async ({ page, browserName }) => {
   soChromium(browserName);
   await registrarNomes(page);
+  await semBanner(page);
   await page.goto('/');
-  await page.locator('a.pf-btn--yt').click();
+  await irPara(page, '.hm-s03');
+  await linkDoCanal(page).click();
   await page.waitForURL(/\/videos/);
   await esperar(page, 2);
   await page.waitForLoadState('load');
@@ -520,8 +579,10 @@ testDoGate(test, 'index', 'videos')('passar o mouse no botão pré-busca /videos
   soChromium(browserName);
   const prebuscas = [];
   page.on('request', (r) => { if ((r.headers()['sec-purpose'] || '').includes('prefetch')) prebuscas.push(new URL(r.url()).pathname); });
+  await semBanner(page);
   await page.goto('/');
-  await page.locator('a.pf-btn--yt').hover();
+  await irPara(page, '.hm-s03');
+  await linkDoCanal(page).hover();
   await expect.poll(() => prebuscas.length, { timeout: 8000 }).toBeGreaterThan(0);
   expect(prebuscas).toContain('/videos.html');
 });

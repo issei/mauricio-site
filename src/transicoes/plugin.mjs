@@ -8,17 +8,17 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-import { familiaDe, LISTA, VIDEO, SITE, normalizarUrl, tipoDeTransicao } from './familias.mjs';
+import { familiaDe, LISTA, VIDEO, SITE, DESTINO, ROTAS_DESTINO, normalizarUrl, tipoDeTransicao } from './familias.mjs';
 
 const lerAqui = (nome) => readFileSync(fileURLToPath(new URL(nome, import.meta.url)), 'utf8');
 
 /**
  * `src/videos.html`, `src/videos/x.html`, `src/temas/x.html` → '/videos', '/videos/x', '/temas/x';
- * `src/index.html`, `src/curriculo.html`, `src/catalogo.html` → '/', '/curriculo', '/catalogo'. Outros → null.
+ * `src/index.html` → '/'; `src/<página>.html` → '/<página>' (a família decide se injeta). Outros → null.
  * Os espelhos `src/en/**` não casam: ficam de fora (a fonte PT não muda).
  */
 function rotaDoArquivo(filename) {
-  const m = filename.replace(/\\/g, '/').match(/\/src\/((?:videos|temas)\/[^/]+|videos|index|curriculo|catalogo)\.html$/);
+  const m = filename.replace(/\\/g, '/').match(/\/src\/((?:videos|temas)\/[^/]+|[a-z0-9-]+)\.html$/);
   if (!m) return null;
   return m[1] === 'index' ? '/' : `/${m[1]}`;
 }
@@ -35,12 +35,17 @@ export const REGRAS_DE_PREBUSCA = {
 
 /** Pré-busca da família `site` (RF-VT-22): as três portas e /videos.html (início → vídeos, RF-VT-31), pelo mesmo critério e sem `prerender`. */
 export const REGRAS_DE_PREBUSCA_SITE = {
-  prefetch: [{ where: { href_matches: ['/', '/curriculo.html', '/catalogo.html', '/videos.html'] }, eagerness: 'moderate' }],
+  prefetch: [{ where: { href_matches: ['/', '/curriculo.html', '/catalogo.html', '/videos.html', ...ROTAS_DESTINO.map((r) => `${r}.html`)] }, eagerness: 'moderate' }],
+};
+
+/** Pré-busca nos destinos da home (RF-VT-38): só a volta para o início. */
+export const REGRAS_DE_PREBUSCA_DESTINOS = {
+  prefetch: [{ where: { href_matches: ['/', '/index.html'] }, eagerness: 'moderate' }],
 };
 
 /** Troca o marcador do script pelas regras de familias.mjs, para que existam num lugar só. */
 export function montarScript(fonte) {
-  const funcoes = [`var LISTA = ${LISTA};`, `var VIDEO = ${VIDEO};`, `var SITE = ${SITE};`, normalizarUrl.toString(), tipoDeTransicao.toString()].join('\n');
+  const funcoes = [`var LISTA = ${LISTA};`, `var VIDEO = ${VIDEO};`, `var SITE = ${SITE};`, `var DESTINO = ${DESTINO};`, normalizarUrl.toString(), tipoDeTransicao.toString()].join('\n');
   return fonte.replace('/*VT:FUNCOES*/', () => funcoes);
 }
 
@@ -53,7 +58,7 @@ export function transicoes() {
       const rota = rotaDoArquivo(ctx.filename);
       const familia = rota && familiaDe(rota);
       if (!familia) return;
-      const regras = familia.nome === 'site' ? REGRAS_DE_PREBUSCA_SITE : REGRAS_DE_PREBUSCA;
+      const regras = familia.nome === 'site' ? REGRAS_DE_PREBUSCA_SITE : familia.nome === 'destinos' ? REGRAS_DE_PREBUSCA_DESTINOS : REGRAS_DE_PREBUSCA;
       return [
         { tag: 'style', attrs: { id: 'vt' }, children: css, injectTo: 'head' },
         { tag: 'script', attrs: { id: 'vt' }, children: js, injectTo: 'head' },

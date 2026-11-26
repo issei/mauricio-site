@@ -1,7 +1,8 @@
 // Gera a imagem social (1200x630) da página inicial com o retrato
-// (SDD-elementos-visuais §5). Renderiza um cartão HTML no Chromium do
-// Playwright e tira a captura, no padrão de gen-og-engenharia-confianca.mjs.
-// O texto é o mesmo da imagem anterior: nenhuma frase nova.
+// (SDD-elementos-visuais §5; SDD-nova-home §14.6: refeita no visual da home nova).
+// Renderiza um cartão HTML no Chromium do Playwright e tira a captura, no padrão de
+// gen-og-engenharia-confianca.mjs. Textos e cores vêm da home: a abertura de
+// scripts/home/home.data.mjs e os tokens --hm-* do :root de src/home.css.
 //   node scripts/gen-og-index.mjs
 // Na nuvem, onde o navegador do Playwright fixado não está instalado:
 //   PW_CHROMIUM=/opt/pw-browsers/chromium node scripts/gen-og-index.mjs
@@ -10,36 +11,36 @@ import { readFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { ABERTURA } from './home/home.data.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public/og-index.png');
 const retrato = readFileSync(path.join(ROOT, 'public/img/retrato-960.webp')).toString('base64');
+const cv = JSON.parse(readFileSync(path.join(ROOT, 'public/cv.json'), 'utf8'));
+const raiz = readFileSync(path.join(ROOT, 'src/home.css'), 'utf8').match(/:root\{([^}]*)\}/)[1];
+const cor = (n) => raiz.match(new RegExp(`--hm-${n}:([^;]+);`))[1];
+const [nome1, ...nome2] = cv.Nome.split(' ');
 
 const html = `<!doctype html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Shippori+Mincho:wght@500&display=block" rel="stylesheet">
 <style>
   * { margin: 0; box-sizing: border-box; }
   html, body { width: 1200px; height: 630px; }
-  body {
-    font-family: Inter, 'Segoe UI', system-ui, sans-serif; color: #c9d1d9; position: relative; overflow: hidden;
-    background: radial-gradient(1000px 500px at 85% 10%, rgba(138,43,226,.14), transparent 60%),
-                radial-gradient(800px 500px at 0% 100%, rgba(0,123,255,.12), transparent 60%), #0d1117;
-  }
-  .txt { position: absolute; left: 72px; top: 110px; width: 640px; }
-  .eyebrow { font-size: 19px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #58a6ff; line-height: 1.35; }
-  h1 { margin-top: 24px; font-size: 74px; line-height: 1; font-weight: 800; color: #fff; letter-spacing: -.035em; }
-  .sub { margin-top: 30px; font-size: 32px; font-weight: 500; color: #8b949e; }
-  .traco { position: absolute; left: 72px; bottom: 104px; width: 120px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, #007bff, #8a2be2); }
-  .url { position: absolute; left: 72px; bottom: 56px; font-size: 24px; font-weight: 500; color: #8b949e; }
-  .foto { position: absolute; right: 72px; top: 65px; width: 400px; height: 500px; border-radius: 16px; object-fit: cover;
-          box-shadow: 0 0 0 1px #30363d; -webkit-mask: linear-gradient(#000 80%, transparent); mask: linear-gradient(#000 80%, transparent); }
+  body { font-family: Inter, 'Segoe UI', system-ui, sans-serif; color: ${cor('grafite')}; position: relative; overflow: hidden; background: ${cor('aizome')}; }
+  .txt { position: absolute; left: 72px; top: 92px; width: 640px; }
+  .eyebrow { font-size: 17px; font-weight: 600; letter-spacing: .02em; color: ${cor('cinza')}; line-height: 1.4; white-space: nowrap; }
+  h1 { margin-top: 22px; font-size: 64px; line-height: 1.04; font-weight: 600; color: ${cor('tinta')}; letter-spacing: -.02em; }
+  .msg { margin-top: 30px; font: 500 34px/1.35 'Shippori Mincho', Georgia, serif; color: ${cor('tinta')}; }
+  .fio { position: absolute; left: 48px; top: 92px; width: 2px; height: 446px; background: ${cor('kin')}; }
+  .url { position: absolute; left: 72px; bottom: 56px; font-size: 22px; font-weight: 500; color: ${cor('cinza')}; }
+  .foto { position: absolute; right: 72px; top: 65px; width: 400px; height: 500px; object-fit: cover; outline: 1px solid ${cor('shoji-strong')}; outline-offset: -1px; }
 </style></head><body>
+  <span class="fio"></span>
   <div class="txt">
-    <div class="eyebrow">Tech Lead · Especialista em Análise de Sistemas</div>
-    <h1>Maurício<br>Yokoyama Issei</h1>
-    <div class="sub">20+ anos: Salesforce, AWS e APIs</div>
+    <div class="eyebrow">${ABERTURA.sub.replace(/\.$/, '')}</div>
+    <h1>${nome1}<br>${nome2.join(' ')}</h1>
+    <div class="msg">${ABERTURA.mensagem.join('<br>')}</div>
   </div>
-  <div class="traco"></div>
   <div class="url">mauricio.issei.com.br</div>
   <img class="foto" src="data:image/webp;base64,${retrato}" alt="">
 </body></html>`;

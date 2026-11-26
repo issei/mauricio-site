@@ -33,13 +33,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--
-      Home editorial — spec: docs/specs/arquitetura-informacao/SDD-F1-F1b.md (Partes 6 e 7).
-      TODO o conteúdo do <body> entre PF:START/END é gerado por scripts/gen-portfolio.mjs
-      a partir de public/cv.json. Nenhum JavaScript desta página insere texto.
+      Home "O pensamento em prática" — spec: docs/specs/pages/portfolio/SDD-nova-home.md (§13, §14).
+      TODO o conteúdo do <body> entre HM:START/END é gerado por scripts/home/gen-home.mjs
+      a partir de public/cv.json, do ecosystem.nav.yaml e de scripts/home/home.data.mjs. Nenhum JavaScript desta página insere texto.
     -->
     <title>Maurício Yokoyama Issei — Tech Lead | Salesforce, AWS, APIs</title>
     <meta name="description"
-        content="Tech Lead com mais de 20 anos em software e liderança técnica: Salesforce, AWS e APIs. Experiência, 19 projetos no formato STAR, certificações e recomendações.">
+        content="Maurício Yokoyama Issei: engenharia de software, arquitetura em produção e agentes de IA. Trajetória, ideias e projetos.">
 
     <!-- RFC 8288 Link Relations for Agent Discovery -->
     <link rel="describedby" href="/llms.txt" type="text/plain" title="LLM-optimized profile index" />
@@ -56,23 +56,26 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
-    <link rel="stylesheet" href="./index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet" data-async-css media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Shippori+Mincho:wght@500&display=swap" /></noscript>
+    <link rel="stylesheet" href="./home.css">
+<!-- SITE-HEADER-CSS:START -->
+<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}.sh .sh-nav{order:2;margin-left:auto}.sh .sh-busca{order:3;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}.sh .sh-busca:hover{border-color:#58a6ff;color:#fff;text-decoration:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.9rem;white-space:normal;line-height:1.15;min-width:0}.sh .sh-in{gap:.5rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh .sh-busca{order:0;margin-left:auto;padding:0 .7rem;font-size:.85rem}.sh .sh-nav{order:0;margin-left:0}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:0;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
+<!-- SITE-HEADER-CSS:END -->
   <!-- ============================================================ -->
 <!-- AEO:START — bloco gerado por scripts/seo/build-aeo.mjs (NÃO editar à mão) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEKLHZYVYX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GEKLHZYVYX');</script>
 <meta name="author" content="Maurício Yokoyama Issei" />
 <meta name="theme-color" content="#0d1117" />
-<meta name="keywords" content="Maurício Yokoyama Issei, Tech Lead, Especialista em Análise de Sistemas, Salesforce, AWS, APIs, SRE, Java, Node.js, Datadog, Liderança Técnica" />
+<meta name="keywords" content="Maurício Yokoyama Issei, engenharia de software, arquitetura em produção, agentes de IA, Tech Lead, Salesforce, AWS, APIs, SRE" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href="https://mauricio.issei.com.br/" />
 <meta property="og:type" content="profile" />
 <meta property="og:site_name" content="Maurício Yokoyama Issei" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:title" content="Maurício Yokoyama Issei — Tech Lead | Salesforce, AWS, APIs" />
-<meta property="og:description" content="Tech Lead com mais de 20 anos em software e liderança técnica: Salesforce, AWS e APIs. Experiência, 19 projetos no formato STAR, certificações e recomendações." />
+<meta property="og:description" content="Maurício Yokoyama Issei: engenharia de software, arquitetura em produção e agentes de IA. Trajetória, ideias e projetos." />
 <meta property="og:url" content="https://mauricio.issei.com.br/" />
 <meta property="og:image" content="https://mauricio.issei.com.br/og-index.png" />
 <meta property="og:image:width" content="1200" />
@@ -80,7 +83,7 @@
 <meta property="og:image:alt" content="Maurício Yokoyama Issei — Tech Lead | Salesforce, AWS, APIs" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Maurício Yokoyama Issei — Tech Lead | Salesforce, AWS, APIs" />
-<meta name="twitter:description" content="Tech Lead com mais de 20 anos em software e liderança técnica: Salesforce, AWS e APIs. Experiência, 19 projetos no formato STAR, certificações e recomendações." />
+<meta name="twitter:description" content="Maurício Yokoyama Issei: engenharia de software, arquitetura em produção e agentes de IA. Trajetória, ideias e projetos." />
 <meta name="twitter:image" content="https://mauricio.issei.com.br/og-index.png" />
 <meta name="twitter:creator" content="@mauricioissei" />
 <meta name="twitter:site" content="@mauricioissei" />
@@ -203,7 +206,7 @@
       },
       "inLanguage": "pt-BR",
       "datePublished": "2026-01-10T08:00:00-03:00",
-      "dateModified": "2026-09-22T10:00:00-03:00",
+      "dateModified": "2026-11-26T10:00:00-03:00",
       "primaryImageOfPage": "https://mauricio.issei.com.br/og-index.png",
       "breadcrumb": {
         "@id": "https://mauricio.issei.com.br/#breadcrumb"
@@ -639,16 +642,13 @@
 }
 </script>
 <!-- AEO:END -->
-<!-- SITE-HEADER-CSS:START -->
-<style id="sh-css">:root{--sh-altura:3.5rem}html{scroll-padding-top:calc(var(--sh-altura) + 1rem)}.sh{position:sticky;top:0;z-index:2147482000;height:var(--sh-altura);background:rgba(13,17,23,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}.sh .sh-in{position:relative;box-sizing:border-box;max-width:72rem;height:100%;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.sh .sh-marca{display:inline-flex;align-items:center;min-height:2.75rem;color:#fff;font-weight:700;font-size:1rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}.sh .sh-marca:hover{color:#58a6ff;text-decoration:none}.sh .sh-lista{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}.sh .sh-lista a{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .75rem;border-radius:8px;color:#c9d1d9;font-size:.9rem;font-weight:500;text-decoration:none;white-space:nowrap}.sh .sh-lista a:hover{color:#fff;background:rgba(255,255,255,.06);text-decoration:none}.sh .sh-lista a[aria-current]{color:#fff;box-shadow:inset 0 -2px 0 #58a6ff}.sh a:focus-visible,.sh .sh-botao:focus-visible{outline:2px solid #58a6ff;outline-offset:2px}.sh .sh-botao{display:none}.sh .sh-nav{order:2;margin-left:auto}.sh .sh-busca{order:3;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;text-decoration:none;cursor:pointer;white-space:nowrap}.sh .sh-busca:hover{border-color:#58a6ff;color:#fff;text-decoration:none}@media (max-width:639.98px){.sh .sh-marca{font-size:.9rem;white-space:normal;line-height:1.15;min-width:0}.sh .sh-in{gap:.5rem}.sh:not(.sh-js){height:auto;min-height:var(--sh-altura)}.sh:not(.sh-js) .sh-in{flex-wrap:wrap;gap:0 1rem;padding:.25rem 1rem}.sh .sh-busca{order:0;margin-left:auto;padding:0 .7rem;font-size:.85rem}.sh .sh-nav{order:0;margin-left:0}.sh.sh-js .sh-nav{margin-left:-1rem}.sh.sh-js .sh-botao{margin-left:0;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .9rem;border-radius:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}.sh.sh-js .sh-lista{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.5rem 1rem 1rem;background:#0d1117;border-bottom:1px solid rgba(255,255,255,.12)}.sh.sh-js.sh-aberto .sh-lista{display:flex}}</style>
-<!-- SITE-HEADER-CSS:END -->
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ9R3GV3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
-    <a class="pf-skip" href="#conteudo">Pular para o conteúdo</a>
+    <a class="hm-skip" href="#conteudo">Pular para o conteúdo</a>
 <!-- SITE-HEADER:START -->
 <header class="sh" translate="no"><div class="sh-in">
 <a class="sh-marca" href="/">Maurício Yokoyama Issei</a>
@@ -659,178 +659,43 @@
 <script>(function(){var h=document.querySelector(".sh");if(!h)return;var q=h.querySelector(".sh-busca");if(q){var qb=document.createElement("button");qb.type="button";qb.className="sh-busca";qb.textContent=q.textContent;qb.setAttribute("aria-haspopup","dialog");q.replaceWith(qb);qb.addEventListener("click",function(){import("/js/busca.js").then(function(m){m.abrir(qb);});});document.addEventListener("keydown",function(e){var t=e.target;if(e.key!=="/"||e.ctrlKey||e.metaKey||e.altKey)return;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;e.preventDefault();qb.click();});}var b=h.querySelector(".sh-botao"),l=h.querySelector(".sh-lista");if(!b||!l)return;h.classList.add("sh-js");function abre(v,foco){h.classList.toggle("sh-aberto",v);b.setAttribute("aria-expanded",v?"true":"false");if(!v&&foco)b.focus();}b.addEventListener("click",function(){abre(b.getAttribute("aria-expanded")!=="true");});h.addEventListener("keydown",function(e){if(e.key==="Escape"&&h.classList.contains("sh-aberto")){e.preventDefault();abre(false,true);}});h.addEventListener("focusout",function(e){if(!h.contains(e.relatedTarget))abre(false);});l.addEventListener("click",function(e){if(e.target.closest("a"))abre(false);});})();</script>
 <!-- SITE-HEADER:END -->
 
-    <nav class="pf-nav" aria-label="Seções da página">
-        <div class="pf-nav-in">
-            <ul>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#temas">Temas</a></li>
-                <li><a href="#provas">Provas</a></li>
-                <li><a href="#destaques">Destaques</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </div>
-    </nav>
-
-<!-- PF:START — gerado por scripts/gen-portfolio.mjs a partir de public/cv.json e specs/ecosystem.nav.yaml (NÃO editar à mão) -->
-<div class="pf-ambient" aria-hidden="true"><span class="pf-aurora"></span></div>
-<section id="home" class="pf-hero" aria-labelledby="pf-nome">
-  <div class="pf-wrap">
-    <div class="pf-hero-texto">
-    <p class="pf-eyebrow">Tech Lead · Rede</p>
-    <h1 id="pf-nome">Maurício Yokoyama Issei</h1>
-    <p class="pf-hero-title">Tech Lead | Especialista em Análise de Sistemas</p>
-    <p class="pf-hero-lead">Mais de 20 anos de experiência em desenvolvimento de software e liderança técnica, com foco em soluções robustas e inovadoras em Salesforce, AWS e APIs. Aqui publico estudos, propostas e experimentos sobre engenharia de software e IA em produção.</p>
-    <div class="pf-cta">
-      <a class="pf-btn" href="./curriculo.html">Ver carreira</a>
-      <a class="pf-btn pf-btn--ghost" href="./catalogo.html">Explorar os conteúdos</a>
-      <a class="pf-btn pf-btn--ghost pf-btn--yt" href="/videos.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg> Vídeos</a>
-      <a class="pf-btn pf-btn--ghost" href="#contact">Contato</a>
-    </div>
-    <ul class="pf-social">
-  <li><a href="https://www.linkedin.com/in/mauricioissei/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></li>
-  <li><a href="https://github.com/issei" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.46-1.1-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a></li>
-  <li><a href="https://www.youtube.com/@MauricioIssei" target="_blank" rel="noopener noreferrer" aria-label="Canal no YouTube de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg></a></li>
-  <li><a href="https://www.instagram.com/yokoyamaissei/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85C2.42 3.92 3.94 2.37 7.15 2.27 8.42 2.21 8.8 2.2 12 2.2zm0 4.86a4.94 4.94 0 1 0 0 9.88 4.94 4.94 0 0 0 0-9.88zm0 8.15a3.21 3.21 0 1 1 0-6.42 3.21 3.21 0 0 1 0 6.42zm5.14-9.5a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg></a></li>
-  <li><a href="mailto:mauricio@issei.com.br" aria-label="Enviar e-mail para mauricio@issei.com.br"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3zM5.2 7l6.8 4.2L18.8 7z"/></svg></a></li>
-</ul>
-    </div>
-    <figure class="pf-hero-retrato">
-      <picture>
-        <source type="image/avif" srcset="/img/retrato-192.avif 192w, /img/retrato-480.avif 480w, /img/retrato-960.avif 960w" sizes="(min-width: 1024px) 26rem, 6rem">
-        <source type="image/webp" srcset="/img/retrato-192.webp 192w, /img/retrato-480.webp 480w, /img/retrato-960.webp 960w" sizes="(min-width: 1024px) 26rem, 6rem">
-        <img src="/img/retrato-480.webp" width="480" height="600" alt="Maurício Yokoyama Issei sorrindo, de óculos, blazer azul e camiseta preta, sobre fundo escuro." fetchpriority="high" loading="eager" decoding="async">
-      </picture>
-    </figure>
-  </div>
-</section>
-<main id="conteudo">
-<section id="about" class="pf-section" aria-labelledby="about-title">
-  <div class="pf-wrap">
-    <h2 class="pf-h2" id="about-title">Sobre</h2>
-    
-<div class="pf-about"><p>Sou especialista em Análise de Sistemas com mais de 20 anos de experiência em desenvolvimento de software, análise de sistemas, integração de plataformas e resolução de problemas.</p>
-<p>Minha expertise inclui habilidades de observabilidade e sustentação, AWS, APIs REST/SOAP, Salesforce e Desenvolvimento de Sistemas (Java, Node.js, Python, Go e .NET).</p></div>
-<p class="pf-more"><a href="./curriculo.html">Ver a carreira completa</a></p>
-  </div>
-</section>
-<section id="temas" class="pf-section" aria-labelledby="temas-title">
-  <div class="pf-wrap">
-    <h2 class="pf-h2" id="temas-title">Temas</h2>
-    <p class="pf-lead">O que publico, por assunto. Cada tema leva aos seus conteúdos.</p>
-<ul class="pf-temas">
-  <li><a href="./catalogo.html#tema-engenharia-agentica"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="3.5" r="1.75"/><circle cx="4.5" cy="18" r="1.75"/><circle cx="19.5" cy="18" r="1.75"/><path d="M12 9V5.25M9.4 13.5l-3.4 3.4M14.6 13.5l3.4 3.4"/></svg>Engenharia agêntica</a> <span class="pf-tema-n">16 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-gestao-e-estrategia"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="2"/><path d="M12 12l7-7M16 5h3v3"/></svg>Gestão e estratégia</a> <span class="pf-tema-n">9 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-especificacao-e-desenvolvimento"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5"/><path d="M10 12l-2 2 2 2M14 12l2 2-2 2"/></svg>Especificação e desenvolvimento</a> <span class="pf-tema-n">6 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-salesforce-e-vendas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 4h18l-6.5 8v6.5L9.5 21v-9z"/><path d="M6.2 8h11.6"/></svg>Salesforce e vendas</a> <span class="pf-tema-n">5 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-cloud-e-confiabilidade"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18.5h10a4 4 0 0 0 .6-7.95A5.5 5.5 0 0 0 7.1 9.1 4.75 4.75 0 0 0 7 18.5z"/><path d="M9.5 14l2 2 3.5-3.5"/></svg>Cloud e confiabilidade</a> <span class="pf-tema-n">3 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-aprendizagem-e-mente"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10 5 7 4.5 3 5v13c4-.5 7 0 9 1.5 2-1.5 5-2 9-1.5V5c-4-.5-7 0-9 1.5z"/><path d="M12 6.5v13"/></svg>Aprendizagem e mente</a> <span class="pf-tema-n">3 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-tecnologia-e-cultura"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 10.5V5.5A1.5 1.5 0 0 0 13 4H4.5A1.5 1.5 0 0 0 3 5.5v5A1.5 1.5 0 0 0 4.5 12H6v3l3-3"/><path d="M10 14.5v1A1.5 1.5 0 0 0 11.5 17H15l3 3v-3h1.5A1.5 1.5 0 0 0 21 15.5v-5A1.5 1.5 0 0 0 19.5 9H18"/></svg>Tecnologia e cultura</a> <span class="pf-tema-n">3 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-dados-e-decisao"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V14M9 20V10M14 20V12"/><path d="M14 7.5h3l3-3.5M17 7.5l3 3"/><path d="M3 20.5h18"/></svg>Dados e decisão</a> <span class="pf-tema-n">2 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-ferramentas-de-ia"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0-5.3 4.9L4 16.6a1.9 1.9 0 0 0 2.7 2.7l5.2-5.2a4 4 0 0 0 4.9-5.3l-2.4 2.4-2.1-.6-.6-2.1z"/><path d="M19 2.5v4M17 4.5h4"/></svg>Ferramentas de IA</a> <span class="pf-tema-n">2 conteúdos</span></li>
-  <li><a href="./catalogo.html#tema-acessibilidade-e-design"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7.25" r="1.25"/><path d="M7.5 9.75l4.5 1 4.5-1M12 10.75v3M12 13.75l-2.25 4M12 13.75l2.25 4"/></svg>Acessibilidade e design</a> <span class="pf-tema-n">1 conteúdo</span></li>
-</ul>
-<p class="pf-more"><a href="./catalogo.html">Ver todos os conteúdos</a></p>
-  </div>
-</section>
-<section id="provas" class="pf-section" aria-labelledby="provas-title">
-  <div class="pf-wrap">
-    <h2 class="pf-h2" id="provas-title">Provas</h2>
-    <p class="pf-lead">Resultados de projeto que citam número, transcritos sem edição. Cada um leva ao projeto na Carreira.</p>
-<ol class="pf-provas">
-  <li>
-    <p class="pf-prova-text">Aumento de mais de <strong class="pf-metric">15%</strong> no atingimento das metas e agilidade nos agendamentos e atendimentos aos clientes.</p>
-    <a class="pf-board-src" href="./curriculo.html#p-2025-pipe-automatica-comercial">Pipe Automática Comercial · 2025</a>
-  </li>
-  <li>
-    <p class="pf-prova-text">Otimização da operação logística, conseguindo realizar em <strong class="pf-metric">D0</strong> em boa parte dos atendimentos a entrega completa da proposta realizada pelo comercial.</p>
-    <a class="pf-board-src" href="./curriculo.html#p-2022-evolucao-do-credenciamento-no-plano-padrao">Evolução do Credenciamento no Plano Padrão · 2022</a>
-  </li>
-  <li>
-    <p class="pf-prova-text">Economia de aproximadamente <strong class="pf-metric">500k</strong> nos contratos renegociados.</p>
-    <a class="pf-board-src" href="./curriculo.html#p-2020-revisao-orcamentaria-de-fornecedores-mgi-tech-maplink">Revisão orçamentária de fornecedores (MGI Tech &amp; Maplink) · 2020</a>
-  </li>
-  <li>
-    <p class="pf-prova-text">Economia de mais de <strong class="pf-metric">3MM</strong> na negociação do contrato final.</p>
-    <a class="pf-board-src" href="./curriculo.html#p-2020-revisao-orcamentaria-e-cinvest-do-novo-contrato-salesforce">Revisão orçamentária e CINVEST do novo contrato Salesforce · 2020</a>
-  </li>
-</ol>
-
-  </div>
-</section>
-<section id="destaques" class="pf-section" aria-labelledby="destaques-title">
-  <div class="pf-wrap">
-    <h2 class="pf-h2" id="destaques-title">Destaques</h2>
-    
-<ul class="pf-destaques">
-  <li class="pf-destaque">
-    <picture>
-      <source type="image/avif" srcset="/img/capas/agent-ready-320.avif 320w, /img/capas/agent-ready-640.avif 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <source type="image/webp" srcset="/img/capas/agent-ready-320.webp 320w, /img/capas/agent-ready-640.webp 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <img class="pf-destaque-capa" src="/img/capas/agent-ready-640.webp" width="640" height="336" alt="" loading="lazy" decoding="async">
-    </picture>
-    <div class="pf-destaque-corpo">
-    <p class="pf-destaque-tag">Tutorial · <span class="pf-nat">Experiência</span></p>
-    <h3><a href="./agent-ready.html">Agent Ready</a></h3>
-    <p>Como tornar um site legível, descobrível e utilizável por agentes de IA: Link headers, Markdown negociado, Content Signals, API Catalog, MCP e Agent Skills — com o código real deste domínio.</p>
-    </div>
-  </li>
-  <li class="pf-destaque">
-    <picture>
-      <source type="image/avif" srcset="/img/capas/engenharia-agentes-ia-320.avif 320w, /img/capas/engenharia-agentes-ia-640.avif 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <source type="image/webp" srcset="/img/capas/engenharia-agentes-ia-320.webp 320w, /img/capas/engenharia-agentes-ia-640.webp 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <img class="pf-destaque-capa" src="/img/capas/engenharia-agentes-ia-640.webp" width="640" height="336" alt="" loading="lazy" decoding="async">
-    </picture>
-    <div class="pf-destaque-corpo">
-    <p class="pf-destaque-tag">Material interativo · <span class="pf-nat">Estudo</span></p>
-    <h3><a href="./engenharia-agentes-ia.html">Engenharia de Agentes de IA</a></h3>
-    <p>Os dez princípios que tornam sistemas de IA confiáveis: pouca IA no caminho crítico, contratos, FinOps e governança agent-driven.</p>
-    </div>
-  </li>
-  <li class="pf-destaque">
-    <picture>
-      <source type="image/avif" srcset="/img/capas/knowledge-os-presentation-320.avif 320w, /img/capas/knowledge-os-presentation-640.avif 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <source type="image/webp" srcset="/img/capas/knowledge-os-presentation-320.webp 320w, /img/capas/knowledge-os-presentation-640.webp 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <img class="pf-destaque-capa" src="/img/capas/knowledge-os-presentation-640.webp" width="640" height="336" alt="" loading="lazy" decoding="async">
-    </picture>
-    <div class="pf-destaque-corpo">
-    <p class="pf-destaque-tag">Apresentação · <span class="pf-nat">Proposta</span></p>
-    <h3><a href="./knowledge-os-presentation.html">Knowledge OS Enterprise</a></h3>
-    <p>O sistema de conhecimento que dá rastreabilidade e segurança à IA: decisões mais rápidas sem perder o controle.</p>
-    </div>
-  </li>
-  <li class="pf-destaque">
-    <picture>
-      <source type="image/avif" srcset="/img/capas/acessibilidade-320.avif 320w, /img/capas/acessibilidade-640.avif 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <source type="image/webp" srcset="/img/capas/acessibilidade-320.webp 320w, /img/capas/acessibilidade-640.webp 640w" sizes="(min-width: 768px) 34rem, 100vw">
-      <img class="pf-destaque-capa" src="/img/capas/acessibilidade-640.webp" width="640" height="336" alt="" loading="lazy" decoding="async">
-    </picture>
-    <div class="pf-destaque-corpo">
-    <p class="pf-destaque-tag">Case técnico · <span class="pf-nat">Experiência</span></p>
-    <h3><a href="./acessibilidade.html">Acessibilidade como requisito de engenharia</a></h3>
-    <p>Como o A11Y.md entrou no desenvolvimento deste site com agentes de IA: o fluxo real, os diffs, a catraca que só deixa a dívida cair e o que ainda não foi verificado.</p>
-    </div>
-  </li>
-</ul>
-  </div>
-</section>
+<!-- HM:START — gerado por scripts/home/gen-home.mjs (SDD-nova-home §14). NÃO editar à mão -->
+<nav class="hm-menu" aria-label="Sessões"><ul><li><a href="#apresentacao" class="mn1" aria-label="Apresentação"><span class="hm-menu__l" aria-hidden="true">Apresentação</span><span class="hm-menu__c" aria-hidden="true">Início</span></a></li><li><a href="#historia" class="mn2" aria-label="Minha história"><span class="hm-menu__l" aria-hidden="true">Minha história</span><span class="hm-menu__c" aria-hidden="true">História</span></a></li><li><a href="#ideias" class="mn3" aria-label="Minhas ideias"><span class="hm-menu__l" aria-hidden="true">Minhas ideias</span><span class="hm-menu__c" aria-hidden="true">Ideias</span></a></li><li><a href="#projetos" class="mn4" aria-label="Meus projetos"><span class="hm-menu__l" aria-hidden="true">Meus projetos</span><span class="hm-menu__c" aria-hidden="true">Projetos</span></a></li></ul></nav>
+<main id="conteudo" class="hm">
+<section class="hm-s hm-s01" id="apresentacao" aria-labelledby="hm-nome"><div class="palco">
+<div class="hm-noite hm-tl" aria-hidden="true"></div><span class="hm-fio hm-tl" aria-hidden="true"></span>
+<div class="hm-intro hm-tl"><span class="hm-fio01 hm-tl" aria-hidden="true"></span><div class="hm-intro__bloco"><p class="hm-num" aria-hidden="true">01</p><div class="hm-intro__nome hm-tl"><h1 id="hm-nome">Maurício Yokoyama Issei</h1></div>
+<div class="hm-intro__resto hm-tl"><p class="hm-mensagem">Da incerteza à especificação.<br>Da especificação à produção.</p><p class="hm-sub">Engenharia de software, arquitetura em produção e agentes de IA.</p>
+<p class="hm-contexto">Há mais de vinte anos levo o que foi desenhado até a produção e cuido para que continue rodando.</p>
+<nav class="hm-caminhos" aria-label="Caminhos principais"><a href="#historia">Minha história</a><a href="#ideias">Minhas ideias</a><a href="#projetos">Meus projetos</a></nav></div></div>
+<div class="m1 retrato hm-tl"><picture><source type="image/avif" srcset="/img/retrato-480.avif 480w, /img/retrato-960.avif 960w, /img/retrato-1200.avif 1200w" sizes="(min-width: 900px) 40vw, 38vw"><img src="/img/retrato-1200.webp" srcset="/img/retrato-480.webp 480w, /img/retrato-960.webp 960w, /img/retrato-1200.webp 1200w" sizes="(min-width: 900px) 40vw, 38vw" alt="Retrato de Maurício Yokoyama Issei, de óculos e blazer azul, sorrindo" width="1200" height="1500" decoding="async" fetchpriority="high"></picture></div></div>
+<ol class="hm-cenas" aria-label="Como trabalho">
+<li class="hm-cena" data-cena="02"><figure><div class="hm-m1 hm-tl"><div class="hm-q"><p class="hm-q__pergunta hm-tl"><span class="hm-q__digita hm-tl">Como tirar do time o trabalho manual?</span></p><ul class="hm-q__partes hm-tl" aria-label="A pergunta em partes"><li class="hm-q__parte hm-tl" style="--k:0"><span class="hm-q__p">Quem vai operar?</span><span class="hm-q__fontes hm-tl">Runbook · Plantão</span></li><li class="hm-q__parte hm-tl" style="--k:1"><span class="hm-q__p">O que pode falhar?</span><span class="hm-q__fontes hm-tl">Incidentes · Logs</span></li><li class="hm-q__parte hm-tl" style="--k:2"><span class="hm-q__p">Como saber se funciona?</span><span class="hm-q__fontes hm-tl">Aceite · Métricas</span></li></ul><p class="hm-q__sintese hm-tl"><span>Só automatizo o que alguém consegue operar, ver falhar e medir.</span><span class="hm-traco hm-tl" aria-hidden="true"></span></p></div></div><figcaption><div class="hm-leg hm-tl hm-leg--a"><p class="hm-dims">Escutar · Investigar · Estudar</p><p class="hm-narr">Quase tudo começa com uma pergunta. Antes de responder, desmonto a pergunta e estudo cada parte.</p></div><div class="hm-leg hm-tl hm-leg--b"><p class="hm-dims">Sintetizar · Aprender</p><p class="hm-narr">Depois fecho as fontes e explico do zero. É aí que separo o que entendi do que só li.</p></div></figcaption></figure></li>
+<li class="hm-cena" data-cena="03"><figure><div class="hm-m1 hm-tl"><div class="hm-img hm-img--a"><picture><source type="image/avif" srcset="/img/home/diagrama-960.avif 960w, /img/home/diagrama-1600.avif 1600w" sizes="(min-width: 900px) 50vw, 100vw"><img src="/img/home/diagrama-1600.webp" srcset="/img/home/diagrama-960.webp 960w, /img/home/diagrama-1600.webp 1600w" sizes="(min-width: 900px) 50vw, 100vw" alt="Diagrama da arquitetura de descoberta em cinco camadas, da página Agent Ready" width="1600" height="1067" decoding="async" loading="lazy" class="hm-tl"></picture></div><div class="hm-gate hm-tl" role="group" aria-label="Saída do quality gate deste site"><p class="hm-gate__cmd">$ npm run gate</p><ul><li class="hm-tl" style="--k:0"><span aria-hidden="true">✓</span> build</li><li class="hm-tl" style="--k:1"><span aria-hidden="true">✓</span> espelhos /en/ em dia</li><li class="hm-tl" style="--k:2"><span aria-hidden="true">✓</span> artefatos gerados em dia</li><li class="hm-tl" style="--k:3"><span aria-hidden="true">✓</span> coerência global do site</li><li class="hm-tl" style="--k:4"><span aria-hidden="true">✓</span> orçamento de performance</li></ul></div></div><figcaption><div class="hm-leg hm-tl"><p class="hm-dims">Projetar · Construir · Validar</p><p class="hm-narr">Desenho para que outra pessoa consiga operar. Construo em passos pequenos, e o teste diz se está certo.</p></div></figcaption></figure></li>
+<li class="hm-cena" data-cena="04"><figure><div class="hm-m1 hm-m1--noite hm-tl"><ol class="hm-inc" aria-label="Estados de um incidente"><li class="hm-tl" style="--k:0">Incidente aberto</li><li class="hm-tl" style="--k:1">Serviço estabilizado</li><li class="hm-tl" style="--k:2">Causa raiz encontrada</li></ol></div><figcaption><div class="hm-leg hm-tl"><p class="hm-dims">Sustentar · Orquestrar · Evoluir</p><p class="hm-narr">Na crise, o tempo conta. Com o time, primeiro estabilizo; depois investigo a causa raiz.</p><span class="hm-kintsugi hm-tl" aria-hidden="true"></span><p class="hm-narr hm-narr--2 hm-tl">A causa vira a próxima pergunta.</p></div></figcaption></figure></li>
+<li class="hm-cena" data-cena="05"><figure><div class="hm-m1 hm-tl"><div class="hm-estudo hm-tl"><p class="hm-estudo__tit">Engenharia de Agentes de IA</p><p class="hm-estudo__url">/engenharia-agentes-ia.html</p><ol class="hm-estudo__lista" aria-label="Os dez princípios do estudo"><li>O LLM é um componente, não o piloto</li><li>Determinismo é invariante testável</li><li>Separe o Cérebro da Vitrine</li><li>Determinístico-primeiro</li><li>Contratos rígidos em toda fronteira</li><li>Isole as camadas epistêmicas</li><li>Abrace o Mundo Aberto</li><li>Governe o orçamento com ledgers</li><li>Governança fail-closed</li><li>Explique, não exponha o número</li></ol></div></div><figcaption><div class="hm-leg hm-tl"><p class="hm-dims">Integrar · Ensinar · Compartilhar</p><p class="hm-narr">O que consigo explicar, publico. Ensinar consolida o que aprendi.</p></div></figcaption></figure></li>
+</ol></div></section>
+<section class="hm-s hm-s02" aria-labelledby="t2"><span class="hm-ancora" id="historia"></span><div class="palco"><div class="hm-duas">
+<div class="m1 retrato"><picture><source type="image/avif" srcset="/img/retrato-480.avif 480w, /img/retrato-960.avif 960w, /img/retrato-1200.avif 1200w" sizes="(min-width: 640px) 33vw, 40vw"><img src="/img/retrato-1200.webp" srcset="/img/retrato-480.webp 480w, /img/retrato-960.webp 960w, /img/retrato-1200.webp 1200w" sizes="(min-width: 640px) 33vw, 40vw" alt="Maurício Yokoyama Issei sorrindo, em retrato" width="1200" height="1500" decoding="async" loading="lazy"></picture></div>
+<div class="hm-texto"><p class="hm-num" aria-hidden="true">02</p><h2 id="t2">Minha história</h2>
+<p class="hm-marco">Comecei escrevendo código. Com o tempo, passei a responder também por times, contratos e sistemas em produção.</p>
+<ul class="marcos"><li class="hm-marco" style="--i:1"><b>1997:</b><span>Curso técnico em processamento de dados</span></li><li class="hm-marco" style="--i:2"><b>2003–2012:</b><span>9 anos como Analista de Desenvolvimento na Sysgen</span></li><li class="hm-marco" style="--i:3"><b>2012–2017:</b><span>6 anos em Sustentação e Inovação na Indra</span></li><li class="hm-marco" style="--i:4"><b>2018–hoje:</b><span>8 anos em Sustentação e como Tech Lead na Rede</span></li><li class="hm-marco hm-marco--atual" style="--i:5"><b>2024–hoje:</b><span>Arquitetura, IA aplicada, engenharia de agentes e ensino</span></li></ul>
+<p><a class="hm-cta" href="/curriculo.html">Conheça minha história →</a></p></div></div></div></section>
+<section class="hm-s hm-s03" aria-labelledby="t3"><span class="hm-ancora" id="ideias"></span><div class="palco"><div class="hm-duas">
+<div class="hm-texto"><p class="hm-num" aria-hidden="true">03</p><h2 id="t3">Minhas ideias</h2>
+<p class="hm-frase">As ferramentas mudaram; as perguntas, não.</p>
+<p>Hoje estudo agentes de IA perguntando o mesmo de sempre: quem vai operar, o que pode falhar, como saber se funciona. Escrevo e gravo o que ainda estou tentando entender.</p>
+<ul class="recentes" aria-label="Recentes"><li><a href="/a-quem-a-empresa-delega.html">A quem a empresa delega quando delega à IA?</a><span class="hm-dims">Artigo</span></li><li><a href="/curiosidade-e-investigacao.html">Curiosidade e investigação</a><span class="hm-dims">Ensaio</span></li><li><a href="/videos/domine-a-ia-com-google-antigravity-da-codificacao-a">Domine a IA com Google Antigravity</a><span class="hm-dims">Vídeo</span></li></ul>
+<p class="ctas"><a class="hm-cta" href="/catalogo.html">Explore minhas ideias →</a><a href="/videos.html">Vídeos do canal →</a></p></div>
+<div class="mesa"><div class="foto m1 contem"><picture><source type="image/avif" srcset="/img/home/estados-480.avif 480w, /img/home/estados-960.avif 960w" sizes="(min-width: 640px) 40vw, 100vw"><img src="/img/home/estados-960.webp" srcset="/img/home/estados-480.webp 480w, /img/home/estados-960.webp 960w" sizes="(min-width: 640px) 40vw, 100vw" alt="Figura 3 de Formulação de problemas: os estados do conhecimento" width="960" height="768" decoding="async" loading="lazy"></picture></div><div class="foto m1"><picture><source type="image/avif" srcset="/img/home/estudo-480.avif 480w, /img/home/estudo-960.avif 960w" sizes="(min-width: 640px) 40vw, 100vw"><img src="/img/home/estudo-960.webp" srcset="/img/home/estudo-480.webp 480w, /img/home/estudo-960.webp 960w" sizes="(min-width: 640px) 40vw, 100vw" alt="Título do ensaio: Quando a curiosidade deixa de ser conteúdo e vira investigação" width="960" height="600" decoding="async" loading="lazy"></picture></div><div class="foto m1"><picture><source type="image/avif" srcset="/img/home/videos-480.avif 480w, /img/home/videos-960.avif 960w" sizes="(min-width: 640px) 40vw, 100vw"><img src="/img/home/videos-960.webp" srcset="/img/home/videos-480.webp 480w, /img/home/videos-960.webp 960w" sizes="(min-width: 640px) 40vw, 100vw" alt="Título da página de vídeos: Assista, leia e confira as fontes" width="960" height="600" decoding="async" loading="lazy"></picture></div></div></div></div></section>
+<section class="hm-s hm-s04" aria-labelledby="t4"><span class="hm-ancora" id="projetos"></span><div class="palco"><div class="hm-texto">
+<p class="hm-num" aria-hidden="true">04</p><h2 id="t4">Meus projetos</h2>
+<p>Da concepção à operação. Projetos que saíram do papel e que alguém usa. Em cada um, conto o problema e as decisões que tomei.</p>
+<ul class="projetos"><li style="--i:0"><div class="foto m1"><picture><source type="image/avif" srcset="/img/home/agent-ready-480.avif 480w, /img/home/agent-ready-960.avif 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw"><img src="/img/home/agent-ready-960.webp" srcset="/img/home/agent-ready-480.webp 480w, /img/home/agent-ready-960.webp 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw" alt="Placar do IsItAgentReady: 16 checks aprovados e 0 reprovados" width="960" height="600" decoding="async" loading="lazy"></picture></div><a href="/agent-ready.html">Agent Ready</a><p class="hm-tese">Descoberta, formatos e contratos publicados para que agentes consigam usar este domínio.</p><p class="hm-dims">construir · ensinar</p></li><li style="--i:1"><div class="foto m1"><picture><source type="image/avif" srcset="/img/home/case-agents-480.avif 480w, /img/home/case-agents-960.avif 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw"><img src="/img/home/case-agents-960.webp" srcset="/img/home/case-agents-480.webp 480w, /img/home/case-agents-960.webp 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw" alt="Métricas do benchmark do Case Agents: 0 execuções incorretas em 20 queries" width="960" height="600" decoding="async" loading="lazy"></picture></div><a href="/case-agents.html">Case Agents</a><p class="hm-tese">Uma barreira de quatro camadas antes da execução, porque a tool errada não é uma aproximação aceitável.</p><p class="hm-dims">investigar · projetar</p></li><li style="--i:2"><div class="foto m1"><picture><source type="image/avif" srcset="/img/home/acessibilidade-480.avif 480w, /img/home/acessibilidade-960.avif 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw"><img src="/img/home/acessibilidade-960.webp" srcset="/img/home/acessibilidade-480.webp 480w, /img/home/acessibilidade-960.webp 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw" alt="Placar da página Acessibilidade: 207 ocorrências na primeira medição e 0 no gate automatizado" width="960" height="600" decoding="async" loading="lazy"></picture></div><a href="/acessibilidade.html">Acessibilidade</a><p class="hm-tese">Uma catraca no gate impede que a dívida de acessibilidade detectável volte a subir.</p><p class="hm-dims">validar · sustentar</p></li><li style="--i:3"><div class="foto m1"><picture><source type="image/avif" srcset="/img/home/boutique-480.avif 480w, /img/home/boutique-960.avif 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw"><img src="/img/home/boutique-960.webp" srcset="/img/home/boutique-480.webp 480w, /img/home/boutique-960.webp 960w" sizes="(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw" alt="Os 4 pilares da engenharia do projeto Boutique Empresarial" width="960" height="600" decoding="async" loading="lazy"></picture></div><a href="/boutique-empresarial-showcase.html">Boutique Empresarial</a><p class="hm-tese">Site estático, especificação antes do código e um pipeline agêntico com gate determinístico.</p><p class="hm-dims">projetar · orquestrar</p></li></ul>
+<p><a class="hm-cta hm-fim" href="/catalogo.html#projetos">Conheça meus projetos →</a></p></div></div></section>
 </main>
-<footer class="pf-footer" id="contact">
-  <div class="pf-wrap">
-    <h2 class="pf-h2">Contato</h2>
-    <p class="pf-contact"><a href="mailto:mauricio@issei.com.br">mauricio@issei.com.br</a></p>
-    <ul class="pf-social">
-  <li><a href="https://www.linkedin.com/in/mauricioissei/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></li>
-  <li><a href="https://github.com/issei" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.46-1.1-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a></li>
-  <li><a href="https://www.youtube.com/@MauricioIssei" target="_blank" rel="noopener noreferrer" aria-label="Canal no YouTube de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/></svg></a></li>
-  <li><a href="https://www.instagram.com/yokoyamaissei/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Maurício Yokoyama Issei (abre em nova aba)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85C2.42 3.92 3.94 2.37 7.15 2.27 8.42 2.21 8.8 2.2 12 2.2zm0 4.86a4.94 4.94 0 1 0 0 9.88 4.94 4.94 0 0 0 0-9.88zm0 8.15a3.21 3.21 0 1 1 0-6.42 3.21 3.21 0 0 1 0 6.42zm5.14-9.5a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3z"/></svg></a></li>
-  <li><a href="mailto:mauricio@issei.com.br" aria-label="Enviar e-mail para mauricio@issei.com.br"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4 7.3V17h16V7.3zM5.2 7l6.8 4.2L18.8 7z"/></svg></a></li>
-</ul>
-    <nav aria-label="Navegação do rodapé"><ul class="pf-foot-nav"><li><a href="#about">Sobre</a></li><li><a href="#temas">Temas</a></li><li><a href="#provas">Provas</a></li><li><a href="#destaques">Destaques</a></li><li><a href="#contact">Contato</a></li><li><a href="./curriculo.html">Carreira completa</a></li><li><a href="./catalogo.html">Conteúdos</a></li></ul></nav>
-    <p class="pf-ai-note">Os dados estruturados desta página (JSON-LD, o formato que buscadores e agentes de IA leem) refletem o currículo completo, publicado em <a href="./curriculo.html">Carreira</a>, e são gerados do mesmo cv.json. Última atualização: 22/09/2026. Versões para máquina: <a href="/cv.json">cv.json</a> · <a href="/cv-for-ai.md">cv-for-ai.md</a> · <a href="/llms.txt">llms.txt</a>.</p>
-    <p class="pf-legal">© 2026 Maurício Yokoyama Issei. Todos os direitos reservados. · <a href="./privacidade.html">Privacidade</a> · <a href="./termos.html">Termos</a> · <a href="./cookies.html">Cookies</a> · <button type="button" class="pf-linkbtn" onclick="window.cookieConsent && window.cookieConsent.open()">Preferências de cookies</button></p>
-  </div>
-</footer>
-<!-- PF:END -->
+<footer class="hm hm-rodape" id="contact"><h2>Contato</h2><p class="hm-convite">Se você tem um problema parecido com algum destes, me escreva.</p><ul><li><a href="mailto:mauricio@issei.com.br">mauricio@issei.com.br</a></li><li><a href="https://www.linkedin.com/in/mauricioissei/">LinkedIn</a></li><li><a href="https://github.com/issei">GitHub</a></li><li><a href="https://www.youtube.com/@MauricioIssei">YouTube</a></li></ul></footer>
+<!-- HM:END -->
 
     <!-- Cookie Consent Banner — LGPD/ANPD/GDPR (Consent Mode v2) -->
     <script type="module" src="./js/cookie-consent.js"></script>

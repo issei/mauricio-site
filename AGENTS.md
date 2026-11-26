@@ -128,16 +128,26 @@ e um piso de contraste de **7:1** na Camada 3. **É a única exceção à paleta
 
 Ao revisar essa página, **não** a reprove por usar cores fora da paleta Dark Tech.
 
-### Exceção registrada: home "Mapa de Linhas" (namespace `pf-`)
+### Exceção registrada: Carreira "Mapa de Linhas" (namespace `pf-`)
 
-`src/index.html`, `src/curriculo.html` (desde a F2) e `src/index.css` mantêm a base Dark Tech e acrescentam **7 cores
+`src/curriculo.html` e `src/index.css` mantêm a base Dark Tech e acrescentam **7 cores
 categóricas** (`--pf-l-*`), uma por linha do mapa de competências. As cores existem só em
 `src/index.css`, cada uma com ≥ 4.5:1 sobre `#0d1117` (`tests/portfolio.tokens.test.mjs`).
 Decisão: [`ADR-pf-001`](docs/specs/pages/portfolio/ADR-pf-001-paleta-de-linhas.md).
 
-O conteúdo de `src/index.html` e de `src/curriculo.html` é **gerado** a partir de
-`public/cv.json` por `scripts/gen-portfolio.mjs` (bloco `PF:*`, o mesmo nas duas páginas). Não edite
-esses blocos à mão: edite o `cv.json` e rode o gerador. O `npm run gate` confere se estão em dia.
+O conteúdo de `src/curriculo.html` é **gerado** a partir de `public/cv.json` por
+`scripts/gen-portfolio.mjs` (bloco `PF:*`). Não edite esse bloco à mão: edite o `cv.json` e rode o
+gerador. O `npm run gate` confere se está em dia.
+
+### Exceção registrada: home "O pensamento em prática" (namespace `hm-`)
+
+`src/index.html` e `src/home.css` usam a paleta **Aizome + Kin** (tokens `--hm-*`, tema escuro mantido, um só
+dourado por quadro). As cores existem só no `:root` de `src/home.css`; nenhum literal de cor fora dele
+(`tests/home.tokens.test.mjs`). Spec: [`SDD-nova-home`](docs/specs/pages/portfolio/SDD-nova-home.md) (§13, §14).
+
+O corpo de `src/index.html` (bloco `HM:*`) e o `public/index.md` são **gerados** por `scripts/home/gen-home.mjs`
+a partir do `cv.json`, do `ecosystem.nav.yaml` e de `scripts/home/home.data.mjs`. As imagens são capturas do
+próprio site (`scripts/home/capturas.mjs` → `assets-fonte/home/` → `gen-imagens`); nenhuma é gerada por IA.
 
 ---
 

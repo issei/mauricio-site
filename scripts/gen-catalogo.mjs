@@ -93,6 +93,8 @@ function secao({ id, eyebrow, titulo, resumo, cartoes, depois = [] }) {
   return L.join('\n');
 }
 
+/** Ordem dos projetos: a mesma da home (SDD-nova-home §13.5). */
+const PROJETOS = ['acessibilidade', 'case-agents', 'agent-ready', 'boutique-empresarial-showcase'];
 const LINK = 'text-blue-400 underline underline-offset-2';
 const plural = (n) => `${n} ${n === 1 ? 'conteúdo' : 'conteúdos'}`;
 
@@ -126,6 +128,19 @@ export function renderCatalogo({ eco, temas }) {
       depois,
     }));
   }
+  // RF-DH-02 (SDD-destinos-da-home): âncora #projetos, destino do CTA "Conheça meus projetos" da home.
+  // Os nós vêm do YAML (natureza: experiencia), na ordem da home.
+  const projetos = PROJETOS.map((id) => eco.nodes[id]).filter((n) => n?.natureza === 'experiencia');
+  L.push('');
+  L.push(`${I(16)}<!-- Projetos -->`);
+  // Uma lista de links, e não cartões: cada nó aparece como cartão uma só vez (INV-8), no seu tema.
+  const itens = projetos.map((n) => `${I(28)}<li><a href="${esc(hrefOf(eco, n.file))}" class="${LINK}">${esc(cardTitle(n))}</a>: ${esc(n.blurb)}</li>`);
+  L.push(secao({
+    id: 'projetos', eyebrow: plural(projetos.length).replace('conteúdo', 'projeto'), titulo: 'Projetos',
+    resumo: 'Os projetos documentados neste site. Cada um tem a sua própria página, e o cartão dele está no tema principal.',
+    cartoes: [],
+    depois: [`${I(20)}<ul class="text-gray-300 text-sm leading-relaxed mt-6 space-y-2 list-none">`, ...itens, `${I(20)}</ul>`],
+  }));
   // RF-F1-15: carreira e vídeos, depois dos temas (corrige DV-2).
   const ent = Object.fromEntries(eco.entradas.map((e) => [e.id, e]));
   const entradaCartao = (e) => cartao({

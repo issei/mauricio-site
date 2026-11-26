@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
  * SDD do portfólio §4.1 / §12.11: com JavaScript DESLIGADO, 100% do texto do
  * currículo está no DOM — inclusive o corpo dos <details> fechados. Desde a F3
  * (SDD-F1-F1b, Parte 6) o currículo completo fica só em /curriculo; a home
- * editorial mostra hero, temas e provas sem JS.
+ * (SDD-nova-home) tem todo o texto no HTML, sem JavaScript.
  * Roda só no projeto `no-js` do playwright.config.js.
  */
 
@@ -31,13 +31,16 @@ for (const path of ['/curriculo.html']) {
   });
 }
 
-test('/ sem JS: o conteúdo é visível (nada depende de JS para aparecer)', async ({ page }) => {
+test('/ sem JS: todo o conteúdo da home está no HTML (SDD-nova-home §14.8)', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
-  await expect(page.locator('.pf-cta a').first()).toBeVisible();
-  await expect(page.locator('.pf-temas a').first()).toBeVisible();
-  await expect(page.locator('.pf-provas li').first()).toBeVisible();
-  await expect(page.locator('.pf-destaque').first()).toBeVisible();
+  await expect(page.locator('.hm-mensagem')).toBeVisible();
+  const texto = norm(await page.evaluate(() => document.body.textContent));
+  for (const f of [cv.Nome, 'Como tirar do time o trabalho manual?', 'Só automatizo o que alguém consegue operar, ver falhar e medir.',
+    '$ npm run gate', 'Causa raiz encontrada', 'Governança fail-closed', 'Minha história', 'Minhas ideias', 'Meus projetos',
+    'Uma catraca no gate impede que a dívida de acessibilidade detectável volte a subir.']) expect(texto, f).toContain(f);
+  await expect(page.locator('.hm-cena')).toHaveCount(4);
+  await expect(page.locator('.hm-tese')).toHaveCount(4);
 });
 
 test('/curriculo sem JS: o conteúdo é visível (mesmo bloco PF da home, F2)', async ({ page }) => {
