@@ -37,15 +37,19 @@ verdade. **Não é a página final.**
   | 02 | 12–41 % | A pergunta em três partes; depois as partes somem e fica a síntese | O sublinhado da síntese |
   | 03 | 41–62 % | O diagrama do Agent Ready; depois, no canto, a saída do `npm run gate` | Nenhum |
   | 04 | 62–82 % | A noite cai; os estados de um incidente, em texto | O divisor que racha e é reparado |
-  | 05 | 82–100 % | Os títulos dos dez princípios de `/engenharia-agentes-ia.html`; a moldura viaja até o retrato da S02 | Nenhum |
+  | 05 | 82–100 % | Os títulos dos dez princípios de `/engenharia-agentes-ia.html`. A moldura encolhe com a lista dentro até o lugar do retrato da S02, que entra por cima (dissolução cruzada). A moldura nunca fica vazia | Nenhum |
 
   As faixas são porcentagens da rolagem útil da S01: a altura menos uma tela
   e menos os 30vh em que a S02 entra por cima.
+- **Celular:** o nome encolhe e fica no topo durante a S01, em tinta, depois
+  que o cabeçalho sai. O resto da abertura some só por opacidade.
 - **Interface:** saíram os 12 símbolos e os 9 pontos. O menu "Sessões" ganhou
   uma barra fina de progresso, em grafite, sob "Apresentação".
 - **Sessões 02–04:** os marcos têm a mesma forma ("1997: Curso técnico…"), e
-  "2024–hoje" ganhou destaque leve, sem ouro. A mesa de ideias usa recortes
-  legíveis. Cada projeto tem uma linha de tese, e o cartão inteiro é o link. A
+  "2024–hoje" ganhou destaque leve, sem ouro. A mesa de ideias mostra os três
+  recortes inteiros: no computador, a Figura 3 em cima e os dois títulos lado a
+  lado; no celular, empilhados, e o conteúdo da sessão sobe com a rolagem até
+  o último aparecer. Cada projeto tem uma linha de tese, e o cartão inteiro é o link. A
   cantoneira dourada só aparece no ponteiro ou no foco. O CTA final aponta para
   `/catalogo.html#projetos`, uma âncora que o catálogo ainda não tem (D-H3).
 - **Correções:** nenhuma cor literal fora do `:root`. O CSS da faixa "Por que

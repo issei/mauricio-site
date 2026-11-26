@@ -86,7 +86,7 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
 .marcos b{color:var(--hm-tinta);font-weight:600}
 .hm-marco--atual span{color:var(--hm-tinta);font-weight:600}
 .hm-s03 .hm-duas{grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
-.mesa{display:grid;gap:1rem}.mesa .foto{aspect-ratio:16/10}
+.mesa{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}.mesa .foto{aspect-ratio:16/10}.mesa .foto:first-child{grid-column:1/-1}
 .recentes{display:grid;gap:.35rem}.recentes li{display:flex;flex-wrap:wrap;gap:.1rem .9rem;align-items:center}.recentes a{padding-block:.3rem}
 .ctas{display:flex;flex-wrap:wrap;gap:.25rem 2rem;align-items:center}
 .projetos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1.5rem}
@@ -111,6 +111,7 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
   .hm-mensagem{font-size:1.35rem}h1{font-size:2rem}.hm{font-size:1rem}
   .hm-caminhos{gap:0 1.25rem}
   .marcos li{grid-template-columns:5.6rem 1fr}
+  .mesa{grid-template-columns:1fr}
 }
 
 /* ---------- Camada de movimento: só rolagem, só transform/opacity/clip-path ---------- */
@@ -168,7 +169,6 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
   .hm-gate{right:-6%;bottom:-12%;width:52%}
   .hm-kintsugi{margin:1.4rem 0;background:var(--hm-grafite)}
   .hm-kintsugi::after{content:"";position:absolute;inset:0;background:var(--hm-kin);transform-origin:center;scale:0 1}
-  [data-cena="05"] .hm-m1::before{content:"";position:absolute;inset:0 23.33%;outline:1px solid var(--hm-shoji-strong);outline-offset:-1px;opacity:0;pointer-events:none}
 
   /* ----- celular e telas em pé: moldura em cima, texto embaixo ----- */
   @media (max-width:899.98px),(orientation:portrait){
@@ -182,13 +182,17 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
       --c-x:50vw;--c-y:calc(var(--m1-top) + var(--m1w) / 3);
     }
     .hm-fio{display:none}
-    .hm-intro{display:block;position:absolute;left:var(--gut);right:var(--gut-d);top:var(--sh-altura,3.5rem);animation-name:hm-intro-cel}
+    .hm-intro{display:block;position:absolute;left:var(--gut);right:var(--gut-d);top:calc(var(--sh-altura,3.5rem) + 2.5svh)}
     .hm-intro__bloco{position:static;width:auto;gap:1.25rem}
     .hm-fio01{display:block;position:absolute;left:-10px;top:0;bottom:0;width:2px;background:var(--hm-kin)}
     .hm-intro__nome{width:calc(100% - var(--rt-w) - 1rem);min-height:calc(var(--rt-w) * 1.25 - 2.2rem);align-content:start}
     .hm-intro__resto{gap:.8rem}
     .hm-s01 .retrato{top:0;right:0;height:calc(var(--rt-w) * 1.25);width:var(--rt-w)}
     .hm-gate{right:3%;bottom:4%;width:64%}
+    /* O nome fica, pequeno, no topo (sem ouro); só o resto do bloco some. */
+    .hm-s01 .hm-intro__bloco{animation-name:none}
+    .hm-intro__nome{transform-origin:left top;animation-name:hm-nome-cel}
+    .hm-s01 .hm-num{animation:hm-num-sai linear both;animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh)}
     .hm-narr{font-size:clamp(1.1rem,4.4vw,1.4rem)}
     .hm-kintsugi{margin:1rem 0}
   }
@@ -210,8 +214,8 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
 
   [data-cena="02"] .hm-m1{animation-name:hm-02-m1}
   [data-cena="02"] .hm-q__digita{animation-name:hm-digita;animation-timing-function:steps(37,end)}
-  [data-cena="02"] .hm-q__parte{animation-name:hm-surge;animation-range:contain calc((18% + var(--k) * 1.5%) * var(--e)) contain calc((21% + var(--k) * 1.5%) * var(--e))}
-  [data-cena="02"] .hm-q__fontes{animation-name:hm-aparece;animation-range:contain calc((22% + var(--k) * 1.2%) * var(--e)) contain calc((25% + var(--k) * 1.2%) * var(--e))}
+  [data-cena="02"] .hm-q__parte{animation-name:hm-surge;animation-range:contain calc((19.5% + var(--k) * 1.5%) * var(--e)) contain calc((22.5% + var(--k) * 1.5%) * var(--e))}
+  [data-cena="02"] .hm-q__fontes{animation-name:hm-aparece;animation-range:contain calc((23% + var(--k) * 1.2%) * var(--e)) contain calc((26% + var(--k) * 1.2%) * var(--e))}
   [data-cena="02"] .hm-q__partes{animation-name:hm-partes-fecham}
   [data-cena="02"] .hm-q__pergunta{animation-name:hm-pergunta-recua}
   [data-cena="02"] .hm-q__sintese{animation-name:hm-sintese}
@@ -234,8 +238,6 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
   [data-cena="04"] .hm-narr--2{animation-name:hm-04-leg2}
 
   [data-cena="05"] .hm-m1{animation-name:hm-05-m1}
-  [data-cena="05"] .hm-m1::before{animation:hm-05-moldura linear both;animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh)}
-  [data-cena="05"] .hm-estudo{animation-name:hm-05-estudo}
   [data-cena="05"] .hm-leg{animation-name:hm-05-leg}
 
   @media (max-width:899.98px),(orientation:portrait){
@@ -288,27 +290,21 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
   .hm-s02 .retrato{height:min(66svh,38vw);max-width:100%;animation:hm-parte linear both;animation-timeline:--s;animation-range:contain calc(var(--f) - 8vh) contain calc(var(--f) + 18vh)}
   .marcos{animation:hm-cortina-baixo linear both;animation-timeline:--s;animation-range:contain 10vh contain 60vh}
   .hm-marco{animation:hm-marco linear both;animation-timeline:--s;animation-range:contain calc(6vh + var(--i,0)*9vh) contain calc(16vh + var(--i,0)*9vh)}
-  .mesa{display:block;position:relative;height:min(62svh,34vw)}
-  .mesa .foto{position:absolute;width:62%;animation:hm-entra-mesa linear both,hm-alinha linear both;animation-timeline:--s;animation-range:contain 4vh contain 60vh,contain calc(var(--f) - 12vh) contain calc(var(--f) + 14vh)}
-  .mesa .foto:nth-child(1){left:0;top:0;--px:0px;--al:translate(-6%,60%) scale(.5)}
-  .mesa .foto:nth-child(2){right:0;top:26%;--px:24vh;--al:translate(-18%,4%) scale(.5)}
-  .mesa .foto:nth-child(3){left:12%;top:54%;--px:48vh;--al:translate(60%,-44%) scale(.5)}
   .projetos li{animation:hm-divide linear both;animation-timeline:--s;animation-range:contain 2vh contain 50vh}
   .projetos li:nth-child(1){--d:120%}.projetos li:nth-child(2){--d:45%}.projetos li:nth-child(3){--d:-45%}.projetos li:nth-child(4){--d:-120%}
   .projetos .foto{animation:hm-cortina-cima linear both;animation-timeline:--s;animation-range:contain calc(4vh + var(--i)*10vh) contain calc(24vh + var(--i)*10vh)}
   /* O único ouro da S04: o traço que fecha o CTA. */
   .hm-fim::after{content:"";display:block;height:2px;background:var(--hm-kin);transform-origin:left;animation:hm-traco linear both;animation-timeline:--s;animation-range:contain 56vh contain 86vh}
   .hm a.hm-fim{text-decoration:none}
-  @media(max-width:1023.98px){.mesa .foto,.mesa .foto:nth-child(n){--px:0px}}
   @media(max-width:639.98px){
     .hm-s02{--f:64vh;height:194vh}.hm-s03{--f:64vh;height:194vh}.hm-s04{height:170vh}
     .palco{padding-inline:var(--hm-lado)}
     .hm-s02 .retrato{height:24svh;justify-self:end}
     .hm-s02 .hm-duas{gap:.75rem}.hm-s .hm-texto{gap:.6rem}
     .marcos{gap:.3rem;padding-left:1rem}.marcos li{font-size:.9rem;line-height:1.4}
-    .mesa{height:24svh}.mesa .foto{width:78%;height:21svh;aspect-ratio:auto}
-    .mesa .foto:nth-child(1){left:0;top:20px;right:auto}.mesa .foto:nth-child(2){left:10px;top:10px;right:auto}.mesa .foto:nth-child(3){left:20px;top:0}
-    .mesa .foto{animation-name:none}
+    /* A sessão é mais alta que a tela: o conteúdo sobe com a rolagem até as três capturas aparecerem inteiras. */
+    .hm-s03 .palco{align-content:start}
+    .hm-s03 .hm-duas{animation:hm-s03-sobe linear both;animation-timeline:--s;animation-range:contain 14vh contain calc(var(--f) - 10vh)}
     .hm-s03 p{line-height:1.45;font-size:.95rem}
     .projetos{grid-template-columns:1fr 1fr;gap:.9rem}.projetos .foto{margin-bottom:.3rem}
     .hm-tese{font-size:.8rem;line-height:1.35;margin:.2rem 0}
@@ -320,19 +316,20 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
 @keyframes hm-noite-cel{0%,54%{opacity:0}63%,78%{opacity:1}86%,100%{opacity:0}}
 @keyframes hm-fio{0%,4%{opacity:1}11%,100%{opacity:0}}
 @keyframes hm-bloco{0%,2%{opacity:1}13%,100%{opacity:0}}
-@keyframes hm-resto{0%{opacity:1;translate:0 0}11%,100%{opacity:0;translate:0 -14px}}
-@keyframes hm-retrato{0%,2%{opacity:1;scale:1}13.5%,100%{opacity:0;scale:.97}}
-@keyframes hm-intro-cel{0%,3%{translate:0 calc((100svh - var(--sh-altura,3.5rem)) / 2 - 50%)}11.5%,100%{translate:0 calc((100svh - var(--sh-altura,3.5rem)) / 2 - 50% - 8svh)}}
+@keyframes hm-resto{0%{opacity:1}14%,100%{opacity:0}}
+@keyframes hm-retrato{0%,1%{opacity:1}14%,100%{opacity:0}}
+@keyframes hm-nome-cel{0%,1%{scale:1}16%,100%{scale:.44}}
+@keyframes hm-num-sai{0%,2%{opacity:1}8%,100%{opacity:0}}
 @keyframes hm-surge{from{opacity:0;translate:0 -2.5em}to{opacity:1;translate:0 0}}
 @keyframes hm-aparece{from{opacity:0}to{opacity:1}}
 
-@keyframes hm-02-m1{0%,9%{clip-path:inset(100% 0 0 0);opacity:1}14.5%,39%{clip-path:inset(0 0 0 0);opacity:1}41.5%,100%{clip-path:inset(0 0 0 0);opacity:0}}
-@keyframes hm-digita{0%,14%{clip-path:inset(0 100% 0 0)}18.5%,100%{clip-path:inset(0 0 0 0)}}
+@keyframes hm-02-m1{0%,11.5%{clip-path:inset(100% 0 0 0);opacity:1}16.5%,39%{clip-path:inset(0 0 0 0);opacity:1}41.5%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@keyframes hm-digita{0%,16%{clip-path:inset(0 100% 0 0)}20%,100%{clip-path:inset(0 0 0 0)}}
 @keyframes hm-partes-fecham{0%,28%{opacity:1;translate:0 0}31.5%,100%{opacity:0;translate:0 -6%}}
 @keyframes hm-pergunta-recua{0%,28%{opacity:1}31.5%,100%{opacity:.3}}
 @keyframes hm-sintese{0%,31%{opacity:0;translate:0 calc(-50% + 10px)}33.5%,100%{opacity:1;translate:0 -50%}}
 @keyframes hm-traco-02{0%,33.5%{scale:0 1}36%,100%{scale:1 1}}
-@keyframes hm-02-leg-a{0%,11%{opacity:0;translate:0 10px}15%,27%{opacity:1;translate:0 0}29%,100%{opacity:0;translate:0 -10px}}
+@keyframes hm-02-leg-a{0%,13.5%{opacity:0;translate:0 10px}17%,27%{opacity:1;translate:0 0}29%,100%{opacity:0;translate:0 -10px}}
 @keyframes hm-02-leg-b{0%,29.5%{opacity:0;translate:0 10px}31.5%,38.5%{opacity:1;translate:0 0}40.5%,100%{opacity:0;translate:0 -10px}}
 
 @keyframes hm-03-m1{0%,40%{opacity:0}42.5%,62.5%{opacity:1}63%,100%{opacity:0}}
@@ -343,7 +340,7 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
 @keyframes hm-03-leg{0%,41%{opacity:0;translate:0 10px}44%,56.5%{opacity:1;translate:0 0}59%,100%{opacity:0;translate:0 -10px}}
 
 @keyframes hm-04-m1{0%,62.4%{opacity:0}63%,80%{opacity:1}83.5%,100%{opacity:0}}
-@keyframes hm-04-leg{0%,62.5%{opacity:0;translate:0 10px}65%,79%{opacity:1;translate:0 0}81%,100%{opacity:0;translate:0 -10px}}
+@keyframes hm-04-leg{0%,62.5%{opacity:0;translate:0 10px}65%,78.5%{opacity:1;translate:0 0}81.5%,100%{opacity:0;translate:0 0}}
 @keyframes hm-04-leg2{0%,75%{opacity:0;translate:0 8px}77.5%,100%{opacity:1;translate:0 0}}
 /* Kintsugi: o divisor surge neutro, racha no meio e é reparado em ouro. */
 @keyframes hm-racha{
@@ -353,30 +350,26 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
   75%,100%{scale:1 1;clip-path:polygon(0 0,50% 0,50% 100%,50% 100%,50% 0,100% 0,100% 100%,0 100%)}}
 @keyframes hm-repara{0%,73%{scale:0 1}75.5%,100%{scale:1 1}}
 
-@keyframes hm-05-m1{0%,81.5%{opacity:0;clip-path:inset(0 0 0 0);scale:1;translate:0 0}85%,87%{opacity:1;clip-path:inset(0 0 0 0);scale:1;translate:0 0}
-  95%{clip-path:inset(0 0 0 0)}
-  100%{opacity:1;clip-path:inset(0 23.33% 0 23.33%);scale:tan(atan2(var(--pw),calc(var(--m1w) * .5333)));translate:calc(var(--p-cx) - var(--c-x)) calc(var(--p-top) + var(--ph) / 2 - var(--c-y))}}
-@keyframes hm-05-moldura{0%,95%{opacity:0}99%,100%{opacity:1}}
-@keyframes hm-05-estudo{0%,95%{opacity:1}100%{opacity:0}}
-@keyframes hm-05-leg{0%,83%{opacity:0;translate:0 10px}86%,92%{opacity:1;translate:0 0}95%,100%{opacity:0;translate:0 -10px}}
+@keyframes hm-05-m1{0%,82%{opacity:0;scale:1;translate:0 0}86%,87.5%{opacity:1;scale:1;translate:0 0}
+  100%{opacity:1;scale:tan(atan2(var(--pw),var(--m1w)));translate:calc(var(--p-cx) - var(--c-x)) calc(var(--p-top) + var(--ph) / 2 - var(--c-y))}}
+@keyframes hm-05-leg{0%,84%{opacity:0;translate:0 0}87.5%,92%{opacity:1;translate:0 0}95%,100%{opacity:0;translate:0 -10px}}
 
 /* Cabeçalho, caminhos, menu e progresso */
-@keyframes hm-sh-sai{0%,2%{translate:0 0}9%,100%{translate:0 -100%}}
+@keyframes hm-sh-sai{0%,5%{translate:0 0}12%,100%{translate:0 -100%}}
 @keyframes hm-sh-volta{from{transform:translateY(0)}to{transform:translateY(100%)}}
 @keyframes hm-caminhos-sai{0%,1%{translate:0 0;opacity:1}9%,100%{translate:-48px 0;opacity:0}}
-@keyframes hm-caminhos-sai-cel{0%,1%{translate:0 0;opacity:1}9%,100%{translate:0 -32px;opacity:0}}
+@keyframes hm-caminhos-sai-cel{0%,1%{translate:0 0;opacity:1}12%,100%{translate:0 -32px;opacity:0}}
 @keyframes hm-atual{0%,100%{opacity:1}}
 @keyframes hm-atual-traco{0%{scale:.2 1}15%,100%{scale:1 1}}
 @keyframes hm-progresso{from{scale:0 1}to{scale:1 1}}
 @keyframes hm-menu-entra{0%,4%{opacity:0;translate:-32px -50%;pointer-events:none}10%,100%{opacity:1;translate:0 -50%;pointer-events:auto}}
 @keyframes hm-menu-sai{from{transform:translateX(0)}to{transform:translateX(-140%)}}
-@keyframes hm-menu-entra-cel{0%,4%{opacity:0;translate:0 -100%;pointer-events:none}10%,100%{opacity:1;translate:0 0;pointer-events:auto}}
+@keyframes hm-menu-entra-cel{0%,7%{opacity:0;translate:0 -100%;pointer-events:none}13%,100%{opacity:1;translate:0 0;pointer-events:auto}}
 @keyframes hm-menu-sai-cel{from{transform:translateY(0)}to{transform:translateY(-100%)}}
 
 /* Sessões 02–04 (hm-sai, hm-cortina-baixo e hm-cortina-cima não têm quadros desde a revisão 5: ficam sem efeito) */
 @keyframes hm-parte{to{transform:translateX(90%) scale(.34);opacity:0}}
 @keyframes hm-marco{from{opacity:0;transform:translateY(12px)}}
-@keyframes hm-entra-mesa{from{transform:translate(30%,var(--px))}}
-@keyframes hm-alinha{to{transform:var(--al)}}
+@keyframes hm-s03-sobe{to{translate:0 calc(100svh - 100% - var(--sh-altura,3.5rem) - 3rem)}}
 @keyframes hm-divide{from{transform:translateX(var(--d)) scale(.8)}}
 @keyframes hm-traco{from{transform:scaleX(0)}}
