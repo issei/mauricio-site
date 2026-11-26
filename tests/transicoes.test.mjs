@@ -12,7 +12,7 @@ const HTML = '<!doctype html><html><head><title>x</title></head><body><p>conteú
 const injetar = (filename) => transicoes().transformIndexHtml(HTML, { filename });
 
 test('a família "videos" cobre o índice, as fichas e os assuntos (RF-VT-01)', () => {
-  assert.deepEqual(FAMILIAS.map((f) => f.nome), ['videos', 'site']);
+  assert.deepEqual(FAMILIAS.map((f) => f.nome), ['videos', 'site', 'destinos']);
   for (const rota of ['/videos', '/videos/a-crise-cognitiva', '/temas/engenharia-agentica']) {
     assert.equal(familiaDe(rota)?.nome, 'videos', rota);
   }
@@ -170,11 +170,11 @@ test('o script montado compila, não deixa marcador e repete as regras de famili
   assert.doesNotMatch(js, /\b(import|export)\b|fetch\(|XMLHttpRequest/);
 });
 
-test('o script só nomeia com vt-capa, vt-titulo, vt-nome e vt-papel, e só limpa o que nomeou (RF-VT-05, RF-VT-13)', () => {
+test('o script só nomeia com vt-capa, vt-titulo, vt-nome e vt-retrato, e só limpa o que nomeou (RF-VT-05, RF-VT-13, RF-VT-37)', () => {
   const js = readFileSync(new URL('../src/transicoes/transicoes.js', import.meta.url), 'utf8');
   const nomes = new Set([...js.matchAll(/nomear\([^,]+,\s*(NOME_\w+)\)/g)].map((m) => m[1]));
-  assert.deepEqual([...nomes].sort(), ['NOME_CAPA', 'NOME_NOME', 'NOME_PAPEL', 'NOME_TITULO']);
-  for (const m of js.matchAll(/var NOME_\w+ = '([^']+)'/g)) assert.match(m[1], /^vt-(capa|titulo|nome|papel)$/);
+  assert.deepEqual([...nomes].sort(), ['NOME_CAPA', 'NOME_NOME', 'NOME_RETRATO', 'NOME_TITULO']);
+  for (const m of js.matchAll(/var NOME_\w+ = '([^']+)'/g)) assert.match(m[1], /^vt-(capa|titulo|nome|retrato)$/);
   assert.match(js, /vt\.finished\.then\(limpar, limpar\)/);
   assert.match(js, /e\.persisted/);
 });
@@ -246,4 +246,35 @@ test('mergulho no play: fundo e triângulo crescem com os mesmos fatores, cada v
   assert.match(CSS, /:root:active-view-transition-type\(mergulho\)::view-transition-old\(root\)\s*\{[^}]*vt-mergulha-fundo/);
   assert.match(CSS, /:root:active-view-transition-type\(mergulho\)::view-transition-new\(root\)\s*\{[^}]*vt-mergulha-pagina/);
   assert.ok(Number(CSS.match(/--vt-duracao-mergulho:\s*([\d.]+)s/)[1]) <= 0.8);
+});
+
+// ── Família destinos da home nova (SDD-destinos-da-home, RF-VT-38, RF-VT-39) ──────────────────────
+import { ROTAS_DESTINO } from '../src/transicoes/familias.mjs';
+
+test('família destinos: projetos do YAML e textos recentes, montados no build (RF-VT-38)', () => {
+  for (const r of ['/acessibilidade', '/case-agents', '/agent-ready', '/boutique-empresarial-showcase', '/a-quem-a-empresa-delega', '/curiosidade-e-investigacao']) {
+    assert.ok(ROTAS_DESTINO.includes(r), r);
+    assert.equal(familiaDe(r)?.nome, 'destinos', r);
+  }
+  assert.ok(!ROTAS_DESTINO.some((r) => r.startsWith('/videos/')), 'o vídeo recente fica na família videos');
+  assert.equal(familiaDe('/cookies'), null);
+});
+
+test('tipoDeTransicao: home → destino é avanço, destino → home é retorno, entre destinos nenhum (RF-VT-38, CA-51)', () => {
+  assert.equal(tipoDeTransicao('/', '/acessibilidade'), 'avanco');
+  assert.equal(tipoDeTransicao('/index', '/case-agents'), 'avanco');
+  assert.equal(tipoDeTransicao('/agent-ready', '/'), 'retorno');
+  assert.equal(tipoDeTransicao('/case-agents', '/agent-ready'), null);
+  assert.equal(tipoDeTransicao('/curriculo', '/acessibilidade'), null);
+});
+
+test('o plugin injeta a camada nos destinos; a pré-busca da home inclui os destinos e nunca prerender (RF-VT-38, RF-VT-39, CA-52)', () => {
+  for (const f of ['/repo/src/acessibilidade.html', '/repo/src/boutique-empresarial-showcase.html', '/repo/src/a-quem-a-empresa-delega.html']) {
+    assert.deepEqual(injetar(f).map((x) => x.tag), ['style', 'script', 'script'], f);
+  }
+  for (const f of ['/repo/src/en/acessibilidade.html', '/repo/src/cookies.html']) assert.equal(injetar(f), undefined, f);
+  const home = injetar('/repo/src/index.html')[2].children;
+  for (const r of ROTAS_DESTINO) assert.ok(JSON.parse(home).prefetch[0].where.href_matches.includes(`${r}.html`), r);
+  assert.doesNotMatch(home, /prerender/);
+  assert.deepEqual(JSON.parse(injetar('/repo/src/acessibilidade.html')[2].children).prefetch[0].where.href_matches, ['/', '/index.html']);
 });

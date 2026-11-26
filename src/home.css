@@ -130,6 +130,13 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
   .hm-s02{--f:80vh;height:210vh}.hm-s03{--f:80vh;height:210vh}.hm-s04{height:180vh}
   .hm-s02 .hm-texto,.hm-s03 .hm-texto{animation:hm-sai linear both;animation-timeline:--s;animation-range:contain calc(var(--f) - 8vh) contain calc(var(--f) + 2vh)}
   .palco:focus-within .hm-texto{animation:none!important}
+  /* Foco nunca escondido (WCAG 2.4.11): os palcos são sticky e a rolagem não os tira de baixo de outro palco nem do
+     banner de cookies. A sessão com foco fica por cima das seguintes; com o banner aberto, o palco com foco sobe a
+     altura dele (119 px no computador, 144 px a 1024, 179 px no celular, medidos em 2026-11-26). */
+  .hm-s:focus-within{z-index:9}
+  body:has(> .cc-banner) .palco:focus-within{translate:0 calc(-1 * var(--hm-cc,8rem))}
+  @media (max-width:1099.98px){:root{--hm-cc:9.5rem}}
+  @media (max-width:639.98px){:root{--hm-cc:11.5rem}}
   .hm-s02,.hm-s03,.hm-s04{margin-top:calc(-100vh - 30vh)}
   .hm-s01{z-index:1}.hm-s02{z-index:2}.hm-s03{z-index:3}.hm-s04{z-index:4}
   .hm-s02,.hm-s03,.hm-s04{pointer-events:none}
