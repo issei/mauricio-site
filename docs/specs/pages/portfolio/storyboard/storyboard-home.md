@@ -475,6 +475,10 @@ diferença.
 | Interface | Menu, 12 símbolos e 9 pontos | Só o menu, com uma barra fina de progresso | *Shibui*: menos camadas competindo |
 | Meus projetos | Título e dupla de dimensões | Tese de uma linha em cada cartão; duplas sem repetição; ouro só no foco | Os cartões não diziam o que cada projeto prova |
 | Rodapé | Só links | "Se você tem um problema parecido com algum destes, me escreva." | A voz continua até o fim |
+| Mesa de ideias | Três capturas em leque, só a de cima inteira | As três inteiras: no computador, a figura em cima e dois títulos embaixo; no celular, empilhadas | Recortes legíveis |
+| Fim da S01 | A moldura ficava vazia antes do retrato da S02 | A lista dos princípios viaja dentro da moldura, e a S02 dissolve por cima | Nenhum quadro vazio |
+
+Valores medidos no protótipo: SDD §13.8.
 
 ## 10. Proposta consolidada
 
