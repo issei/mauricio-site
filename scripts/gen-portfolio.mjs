@@ -31,7 +31,8 @@ const cv = JSON.parse(readFileSync(join(ROOT, 'public/cv.json'), 'utf8'));
 const star = JSON.parse(readFileSync(join(ROOT, 'public/star.json'), 'utf8'));
 
 // Data de referência determinística (senão o --check falharia a cada virada de dia).
-const MODIFIED = PAGES.find((p) => p.slug === 'index').dateModified;
+// Desde a home nova (gen-home), a única página deste gerador é a Carreira: vale a data dela.
+const MODIFIED = PAGES.find((p) => p.slug === 'curriculo').dateModified;
 const NOW_YEAR = +MODIFIED.slice(0, 4);
 
 const fail = (msg) => { console.error(`✗ [portfolio] ${msg}`); process.exit(1); };
