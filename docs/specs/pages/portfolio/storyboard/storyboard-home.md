@@ -2,7 +2,7 @@
 id: storyboard-home
 titulo: Storyboard cinematográfico da nova home — "O pensamento em prática"
 data: 2026-11-24
-status: pré-produção, revisão 4 (processo digital, D-H8) (nada implementado; nenhuma imagem gerada por IA)
+status: pré-produção, revisão 6 (símbolos, navegação e ritmo; §9.4) (nada publicado; nenhuma imagem gerada por IA no repositório)
 leitor: Issei (aprovação), fotógrafo/produção e quem planejar o scroll
 base: SDD-nova-home.md (docs/specs/pages/portfolio/)
 ---
@@ -62,12 +62,12 @@ sessões 02–04 seguem essa voz e não usam palavras de portfólio
 A página abre no retrato, com nome, mensagem e os três caminhos já visíveis.
 Quem não quiser rolar já sabe quem é e para onde ir.
 
-Ao rolar, o retrato some e a moldura recebe uma pergunta real, digitada: "Este
-agente pode executar sozinho?". A pergunta se desmonta em três partes, cada
+Ao rolar, o retrato some e a moldura recebe uma pergunta real, digitada: "Como
+tirar do time o trabalho manual?". A pergunta se desmonta em três partes, cada
 uma com as suas fontes. Depois a moldura fecha até virar o traço dourado: as
 fontes fecharam, e ele tenta explicar. A moldura reabre num diagrama real, e
-sobre ele entram o teclado e o teste. Um corte seco leva à noite: um monitor de
-operação, o traço lateral racha, e a pergunta "Por que falhou?" é digitada. O
+sobre ele entram o teclado e o teste. A noite cai sobre a cena: um monitor de
+operação, e o traço lateral racha. O
 traço se repara: a causa vira a próxima pergunta. Por fim, o rosto volta de
 perto e a câmera recua até o retrato.
 
@@ -91,11 +91,11 @@ de ler uma frase.
 | Fotografia | Documental, luz natural lateral (janela), sem flash, sem fundo removido, sem filtro. Leve dessaturação (−10 %) na pós, igual em todas. 3:2 nas cenas, 4:5 no retrato |
 | Pessoas | O Issei é o único rosto em primeiro plano. Outras pessoas aparecem de costas ou fora de foco, com autorização |
 | Lente (equivalente 35 mm) | 35 mm nos planos de ambiente, 50 mm nos médios, 85 mm nos detalhes (mãos, teclado). Sem grande-angular extrema |
-| Câmera simulada | Gestos: cortina (revelação por máscara, inclusive ao centro), *pan* lateral (pelo enquadramento da foto), corte seco, digitação (texto real revelado por máscara) e um único recuo, do rosto de perto ao retrato inteiro (escala 1,4 → 1, cena 06). Escala ≤ 1,06 no resto. Nenhuma rotação |
+| Câmera simulada | Gestos: cortina (revelação por máscara, inclusive ao centro), *pan* lateral (pelo enquadramento da foto), queda da noite (era corte seco até a revisão 5), digitação (texto real revelado por máscara) e um único recuo, do rosto de perto ao retrato inteiro (escala 1,4 → 1, cena 06). Escala ≤ 1,06 no resto. Nenhuma rotação |
 | Tipografia | Nome em Inter 600; mensagem e títulos de sessão em serifada editorial (proposta: Shippori Mincho); texto em Inter 400 |
 | Elemento recorrente | **A moldura (M1)**: o retângulo que viaja entre as cenas, com fio *Shoji*; na cena 03 ela fecha até virar o traço. **O traço dourado *Kintsugi***: linha vertical ao lado do texto na S01; racha e se repara na cena 05; vira linha vertical na S02 e sublinhado no fim |
 | Som | **Nenhum.** A página não toca áudio. A "narração" é texto curto na tela, escrito em primeira pessoa. Se um dia houver versão em vídeo do mesmo roteiro (por exemplo, um teaser para o canal ou para redes), a narração serve como locução (ver §6). Essa versão pode ser feita sem custo no **HyperFrames** (HTML para vídeo, código aberto, local), reaproveitando as fotos reais, os textos e a paleta da página. A home em si não usa vídeo |
-| Ritmo | Imagem longa, troca curta: a troca ocupa de 1,5 % a 3,5 % da faixa. Texto parado enquanto a imagem anda. A cena 02 é densa (digitação e partes); a cena 03 é silêncio; a 05 tem o único corte seco |
+| Ritmo | Revisão 6: constância. Todo toque de rolagem move ou transforma algo; nenhuma transformação dura menos de 2 toques de seta; nenhuma troca brusca de conteúdo (§9.4). A cena 02 é densa (digitação e partes); a cena 03 é silêncio |
 
 ---
 
@@ -126,7 +126,7 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | Ficha | |
 | :-- | :-- |
 | **A** | Sessão 01 · Mostrar que o trabalho começa com uma pergunta, e que ele a desmonta antes de responder |
-| **B** | Dentro de M1, sobre `--hm-aizome-2`, texto real: a pergunta "Este agente pode executar sozinho?" e, abaixo, três partes em colunas, cada uma com as suas fontes: "Quem vai operar?" (Runbook · Plantão), "O que pode falhar?" (Incidentes · Logs), "Como saber se funciona?" (Aceite · Métricas). Fundo da página em penumbra (`--hm-aizome-deep`). Ponto de atenção: a pergunta, depois as partes |
+| **B** | Dentro de M1, sobre `--hm-aizome-2`, texto real: a pergunta "Como tirar do time o trabalho manual?" e, abaixo, três partes em colunas, cada uma com as suas fontes: "Quem vai operar?" (Runbook · Plantão), "O que pode falhar?" (Incidentes · Logs), "Como saber se funciona?" (Aceite · Métricas). Fundo da página em penumbra (`--hm-aizome-deep`). Ponto de atenção: a pergunta, depois as partes |
 | **C** | Sem foto. M1 entra por cortina de baixo para cima (10–12,5 %); a pergunta é digitada (13–18 %); as partes descem uma a uma (19–25 %); as fontes aparecem (23–28 %) |
 | **D** | *Quase tudo começa com uma pergunta.* Antes de responder, desmonto a pergunta e estudo cada parte. |
 | **D. Relação** | A imagem mostra o gesto de decompor; o texto dá a ordem (perguntar, desmontar, estudar). As fontes nomeiam onde ele investiga, sem citar ferramenta |
@@ -142,7 +142,7 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | **A** | Sessão 01 · Mostrar que aprender é explicar sem consultar (compor e verificar) |
 | **B** | Nenhuma imagem. M1 fechou e virou um traço dourado horizontal, parado no meio do palco. O traço lateral some. Ponto de atenção: o traço |
 | **C** | Cortina ao centro (30–33,5 %); o traço cresce da esquerda para a direita depois que a moldura fecha (33,5–35,5 %) e fica parado até 40 %. É o silêncio da página |
-| **D** | *Então fecho as fontes e tento explicar.* É aí que descubro o que eu só reconhecia. |
+| **D** | *Então fecho as fontes e tento explicar.* É aí que separo o que entendi do que só li. |
 | **D. Relação** | O vazio é a própria imagem: as fontes fecharam. O texto diz o que o vazio quer dizer |
 | **E** | Começa com M1 fechando. Termina com o traço sumindo e M1 reabrindo do centro (41–44,5 %). **Permanece:** o lugar de M1 |
 | **F** | **[D]** Nenhum recurso |
@@ -158,22 +158,22 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | **C** | M1 abre do centro (41–44,5 %); *pan* lento em A; B entra (48–51 %) e C entra no lugar de B (53–56 %), com deslize curto. No celular, B e C entram dentro de M1 por cortina lateral |
 | **D** | *Desenho para que outra pessoa consiga operar.* Construo em passos pequenos, e o teste diz se está certo. |
 | **D. Relação** | O diagrama é trabalho publicado, não ilustração. As fotos mostram mãos e telas, sem pose |
-| **E** | Termina com corte seco para a noite (60 %). **Permanece:** M1 |
+| **E** | Termina com a noite caindo sobre a cena, em cerca de 3 toques (D-H9). **Permanece:** M1 |
 | **F** | A: **[E]** captura de `/agent-ready`. B e C: **[P]** fotos 4 e 6 |
 
-### Cena 05 — A noite e a causa (sustentar · liderar · evoluir)
+### Cena 05 — A noite e a causa (sustentar · orquestrar · evoluir)
 
 ![Quadro 05](quadros/quadro-05.png)
 
 | Ficha | |
 | :-- | :-- |
 | **A** | Sessão 01 · Mostrar a crise: estabilizar com o time, achar a causa raiz e transformar a causa em pergunta nova |
-| **B** | Monitor de operação numa sala em penumbra, só a luz da tela. Na base de M1, uma faixa de véu com "Por que falhou?" em texto real. O traço lateral racha no meio. Página em penumbra. Ponto de atenção: a luz da tela, depois a pergunta |
-| **C** | Corte seco (60 %), o único do filme. A luz da tela sobe (61–68 %). O traço racha (61–63 %). "Por que falhou?" é digitado (72–75 %). A segunda frase entra (73–76 %). O traço se repara (76–80 %) |
-| **D** | *Na crise, o tempo conta.* Com o time, primeiro estabilizo; depois vou até a causa raiz. *A causa vira a próxima pergunta.* |
-| **D. Relação** | O traço que racha e se repara é o *Kintsugi* em movimento: a falha fica visível e vira parte da peça. "Por que falhou?" responde à pergunta da cena 02 e fecha o ciclo |
+| **B** | Monitor de operação numa sala em penumbra, só a luz da tela. O traço lateral racha no meio. Página em penumbra. Ponto de atenção: a luz da tela, depois o traço |
+| **C** | A noite cai sobre a cena 04 (cerca de 3 toques; no celular, por dissolução). A luz da tela sobe. O traço racha no mesmo movimento. A segunda frase entra. O traço se repara. (Revisão 6: saíram o corte seco e a faixa "Por que falhou?") |
+| **D** | *Na crise, o tempo conta.* Com o time, primeiro estabilizo; depois investigo a causa raiz. *A causa vira a próxima pergunta.* |
+| **D. Relação** | O traço que racha e se repara é o *Kintsugi* em movimento: a falha fica visível e vira parte da peça. "A causa vira a próxima pergunta" responde à pergunta da cena 02 e fecha o ciclo |
 | **E** | Termina com a noite saindo e o rosto entrando (80–83 %). **Permanece:** M1 e o traço reparado |
-| **F** | **[P]** Foto 7. Tela sem nome de empresa, sem dado legível. Plano B: a faixa "Por que falhou?" sobre `--hm-aizome-deep`, sem foto |
+| **F** | **[P]** Foto 7. Tela sem nome de empresa, sem dado legível. Plano B: só a noite sobre `--hm-aizome-deep`, sem foto |
 
 ### Cena 06 — O rosto de novo (ensinar · compartilhar)
 
@@ -184,7 +184,7 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | **A** | Sessão 01 · Fechar o ciclo: quem perguntou é quem explica e publica; volta o rosto |
 | **B** | O retrato da cena 01, primeiro de perto, depois inteiro. Ponto de atenção: o rosto |
 | **C** | Entra em escala 1,4, perto do rosto, e recua até 1 (83–97 %). É a única exceção ao limite de escala, aprovada pelo Issei (SDD §5.1). No fim, M1 reduz para 0,88 e desliza para a esquerda (97–100 %) |
-| **D** | *O que consigo explicar, eu publico.* Ensinar é como verifico se entendi de verdade. |
+| **D** | *O que consigo explicar, publico.* Ensinar consolida o que aprendi. |
 | **D. Relação** | "Consigo explicar" retoma a cena 03 (fechar as fontes e explicar); publicar é o mesmo teste, feito em público |
 | **E** | Termina com M1 na direção do retrato da S02. **Permanece:** o rosto, que passa da cena 06 para o retrato da cena 07 |
 | **F** | **[D]** Retrato atual (1600 × 2000 px). Um retrato novo **[P]** é melhoria opcional |
@@ -240,7 +240,7 @@ Versão celular: ![Quadro 01 celular](quadros/quadro-01-celular.png)
 | 01 → 02 | Retrato some; M1 entra por cortina de baixo para cima | Moldura M1, nome reduzido |
 | 02 → 03 | M1 fecha ao centro e vira o traço dourado | O lugar de M1 e o ouro |
 | 03 → 04 | O traço some; M1 reabre do centro no diagrama | O lugar de M1 |
-| 04 → 05 | Corte seco para a noite | M1 |
+| 04 → 05 | A noite cai sobre a cena (revisão 6) | M1 |
 | 05 → 06 | A noite sai; o rosto entra de perto | M1 e o traço reparado |
 | 06 → 07 | M1 reduz e desliza até o lugar do retrato da S02 | O rosto (cena 06 → retrato) + traço dourado (vira vertical) |
 | 07 → 08 | Retrato recua; registros deslizam por trás | Molduras, traço volta a horizontal |
@@ -253,7 +253,7 @@ quatro), o que dá ritmo sem precisar de efeito novo.
 
 **Gestos usados na S01 (revisão 4):** cortina de baixo (1×), cortina ao centro
 (2×: fecha e abre), digitação (2×), entrada sobre o canto (2×), *pan* (1×),
-corte seco (1×), traço que racha e se repara (1×), recuo do rosto ao retrato
+queda da noite (1×, era corte seco), traço que racha e se repara (1×), recuo do rosto ao retrato
 (1×). Nas sessões 02–04: divisão de moldura (1×) e parallax (2×). Nenhum
 gesto se repete mais de duas vezes.
 
@@ -264,23 +264,22 @@ gesto se repete mais de duas vezes.
 Texto curto na tela (sem áudio). Proposta para o Issei revisar; nenhuma
 frase afirma fato que não esteja no `cv.json` ou no site.
 
-> **Abertura.** Há mais de vinte anos trabalho na distância entre o que foi
-> desenhado e o que roda em produção.
+> **Abertura.** Há mais de vinte anos levo o que foi desenhado até a
+> produção e cuido para que continue rodando.
 >
 > Quase tudo começa com uma pergunta. Antes de responder, desmonto a
 > pergunta e estudo cada parte.
 >
-> Então fecho as fontes e tento explicar. É aí que descubro o que eu só
-> reconhecia.
+> Então fecho as fontes e tento explicar. É aí que separo o que entendi do
+> que só li.
 >
 > Desenho para que outra pessoa consiga operar. Construo em passos pequenos,
 > e o teste diz se está certo.
 >
-> Na crise, o tempo conta. Com o time, primeiro estabilizo; depois vou até a
-> causa raiz. A causa vira a próxima pergunta.
+> Na crise, o tempo conta. Com o time, primeiro estabilizo; depois investigo
+> a causa raiz. A causa vira a próxima pergunta.
 >
-> O que consigo explicar, eu publico. Ensinar é como verifico se entendi de
-> verdade.
+> O que consigo explicar, publico. Ensinar consolida o que aprendi.
 >
 > **Minha história.** Comecei escrevendo código. Com o tempo, passei a
 > responder também por times, contratos e sistemas em produção.
@@ -369,7 +368,7 @@ Qualquer conteúdo fica a **no máximo 2 cliques** da primeira tela, sem rolar.
 | Continuidade | O fio é a moldura e o retorno do rosto (01 → 06 → 08) | Ok |
 | Proporção | 9 cenas, ~7 telas, 30–45 s | **Ajuste feito:** as dimensões foram agrupadas em 5 cenas, pelo momento do trabalho. Uma cena por dimensão virava uma lista de slogans |
 | Relevância | Cena 05 juntava duas ideias diferentes | Mantida: dia/noite dá a única variação de luz do filme e mostra a passagem do tempo da operação |
-| Fotografia | Hoje só R1 é real | Revisão 4: as cenas 02 e 03 são texto e traço, e a cena 04 tem a captura do diagrama. Sem as fotos 4, 6 e 7, a cena 04 fica só com o diagrama e a cena 05 só com a faixa "Por que falhou?" |
+| Fotografia | Hoje só R1 é real | Revisão 4: as cenas 02 e 03 são texto e traço, e a cena 04 tem a captura do diagrama. Sem as fotos 4, 6 e 7, a cena 04 fica só com o diagrama e a cena 05 só com a noite |
 | Navegação | Caminhos aparecem na cena 01, com CTA em cada sessão | Ok (revisão 2: a repetição na antiga cena 07 saiu) |
 | Originalidade | A divisão da moldura (08 → 09), o traço que racha e se repara (05) e o rosto que volta de perto e passa ao retrato (06 → 07) são os gestos próprios da página | Ok |
 | Viabilidade | Três fotos sem pose e 6 capturas de tela (revisão 4) | Ok; não depende de vídeo nem de IA |
@@ -437,6 +436,26 @@ suavizar para 1,4 → 1 (2026-11-25).
 5. A pergunta da cena 02 e as fontes de cada parte (são exemplos plausíveis,
    não citação de um projeto).
 
+### 9.4 Revisões 5 e 6 (Issei, 2026-11-26)
+
+Detalhe técnico no SDD §12. Resumo para o storyboard:
+
+| Ponto | Antes | Depois | Por quê |
+| :-- | :-- | :-- | :-- |
+| Linha de contexto (01) | "…trabalho na distância entre…" | "…levo o que foi desenhado até a produção e cuido para que continue rodando." | As palavras para o intervalo não convenciam; a nova frase cobre construir e sustentar |
+| Pergunta (02) | "Este agente pode executar sozinho?" | "Como tirar do time o trabalho manual?" | Não era uma dor clara; a decomposição em três partes ficou |
+| Cena 03 | "…descubro o que eu só reconhecia." | "…separo o que entendi do que só li." | A frase não era clara |
+| Cena 05 | Corte seco; faixa "Por que falhou?" | A noite cai em cerca de 3 toques; sem faixa (D-H9) | A faixa ficava desconexa; a constância vale para a página toda |
+| Cena 06 | "Ensinar é como verifico…" | "Ensinar consolida o que aprendi." | Texto do Issei |
+| Minha história | Marcos por ano | Anos e função: Sysgen 9 anos, Indra 6, Rede 8 | Revisão da trajetória pelo Issei |
+| Símbolos | Apareciam e sumiam | O ponto que desenha: cada símbolo se recolhe num ponto e o próximo nasce dele | Continuidade sempre presente |
+| Navegação | Caminhos só na cena 01 | Menu "Sessões" (esquerda; celular no topo) e 9 pontos dourados de avanço à direita | Ir e voltar nas sessões e na história |
+| Cabeçalho | Sempre visível | Some na cena 02, volta no contato | Pedido do Issei (D-H5 revista) |
+| Ritmo | ~142 toques; sessões 02–04 paradas | ~110 toques no computador; passagens com 2 toques ou mais; S01 com 360 vh também no celular | A rolagem era longa e desigual |
+
+**Em aberto:** onde fica o ouro quando símbolo e fio disputam o quadro
+(D-H10; recomendação aplicada no protótipo).
+
 ---
 
 ## 10. Proposta consolidada
@@ -447,7 +466,7 @@ Um filme de **9 cenas em 4 sessões**, sem som, conduzido pela rolagem:
 2. **A pergunta** — pensar, investigar e estudar: a pergunta se desmonta.
 3. **Fechar e explicar** — aprender: as fontes fecham, fica o traço.
 4. **Do diagrama ao teste** — projetar, construir e validar.
-5. **A noite e a causa** — sustentar, liderar e evoluir; o traço racha e se repara.
+5. **A noite e a causa** — sustentar, orquestrar e evoluir; a noite cai, o traço racha e se repara.
 6. **O rosto de novo** — ensinar e compartilhar; o rosto volta de perto.
 7. **O retrato e o tempo** — Minha história, de 1997 até hoje → `/curriculo`.
 8. **A mesa de estudo** — Minhas ideias; a ponte para a IA → `/catalogo`, `/videos`.
