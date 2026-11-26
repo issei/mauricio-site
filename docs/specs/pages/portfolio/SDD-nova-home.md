@@ -807,7 +807,7 @@ foto real da mesma posição, ou a cena sai (plano B).
 | D-H9 | A noite da cena 05 entra por corte seco ou por transformação? | **Decidida (Issei, 2026-11-26):** queda da noite em cerca de 3 toques de seta. O corte seco fica só para comparação no protótipo (`data-noite="corte"`) |
 | D-H10 | Onde fica o ouro quando o símbolo e o fio disputam o mesmo quadro? | **Encerrada pela revisão 7:** os símbolos saíram (§13.4). Vale um só ouro por quadro, com o protagonista de cada cena no §13.3 |
 | D-H11 | Revisão 7: abertura concreta, S01 com 5 cenas, sem símbolos, sem pontos e sem imagens de IA | **Decidida (Issei, 2026-11-26):** pedido detalhado da revisão 7 (§13) |
-| D-H12 | No celular, aceitar 5 toques logo acima do limite de constância ou subir a S01 acima de 300 vh? | Em aberto. Recomendação: manter 300 vh, com o nome fixo no topo do celular (aplicado no protótipo, §13.8) |
+| D-H12 | No celular, aceitar 5 toques logo acima do limite de constância ou subir a S01 acima de 300 vh? | **Decidida (Issei, 2026-11-26):** manter 300 vh no celular, com o nome fixo no topo. Os 5 toques logo acima do limite ficam (§13.8) |
 
 ## 11. Unidades de trabalho
 
@@ -1089,5 +1089,5 @@ a6d21add e d2b702e8 no notebook, ainda sem push.
 - **Movimento reduzido:** nenhuma animação, mosaico completo e sem rolagem
   lateral. **Sem JavaScript:** todo o conteúdo continua no HTML (as cenas, os
   dez princípios, as três capturas da mesa e as quatro teses).
-- **Em aberto (D-H12):** os 5 toques bruscos do celular só chegam a zero com a
-  S01 do celular acima de 300 vh.
+- **D-H12 (decidida):** a S01 do celular fica com 300 vh. Os 5 toques logo
+  acima do limite ficam, porque só chegariam a zero com uma S01 mais longa.
