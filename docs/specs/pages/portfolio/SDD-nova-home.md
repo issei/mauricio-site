@@ -337,10 +337,10 @@ por posição, sem dissolve.
 | Sessão | Cenas | Computador | Celular (< 640 px, §4.3) |
 | :-- | :-- | :-- | :-- |
 | 01 | 01–06 | **360 vh** (revisão 6) | **360 vh** (revisão 6; era 260 vh) |
-| 02 | 07 | 120 vh | 100 vh |
-| 03 | 08 | 130 vh | 110 vh |
-| 04 | 09 | 140 vh | 130 vh |
-| **Total** | **9 cenas** | **690–750 vh** (~7 telas) | **540–600 vh** (~6 telas) |
+| 02 | 07 | 210 vh (revisão 6; era 120 vh) | 194 vh (era 100 vh) |
+| 03 | 08 | 210 vh (revisão 6; era 130 vh) | 194 vh (era 110 vh) |
+| 04 | 09 | 180 vh (revisão 6; era 140 vh) | 170 vh (era 130 vh) |
+| **Total** | **9 cenas** | **960 vh** na revisão 6 (as sessões se sobrepõem; ver §12.4) | **918 vh** |
 
 - A altura da sessão 01 é **um valor de referência**. A H-2 calibra o valor
   final com capturas reais e com a regra "cada cena dura o tempo de ler uma
@@ -924,3 +924,20 @@ rápidas de conteúdo.
   e no build). O trace mostrou o que pesava no início, e isso foi corrigido:
   fontes pedidas antes, serifada só no peso 500, retrato de 327 para 170 KB e
   `overflow-anchor: none`. Falta o Issei confirmar no navegador dele.
+
+### 12.5 Valores finais do protótipo (revisão 6)
+
+As porcentagens são da rolagem útil da S01 (faixa `contain` menos os 30 vh
+em que ela se sobrepõe à S02).
+
+| Item | Valor |
+| :-- | :-- |
+| Alturas | S01 360 vh (computador e celular); S02 210 vh e S03 210 vh (`--f` 80 vh); S04 180 vh. Celular: S02 194 vh e S03 194 vh (`--f` 64 vh); S04 170 vh |
+| 03 → 04 | M1 abre do centro (39,5–43,5 %); teclado entra 48,5–51,5 % e sai 56–58,5 %; teste entra 53–56 % e sai 57–59,5 % |
+| Noite (padrão) | Computador: véu desce por `clip-path` (57–63 %). Celular: véu por opacidade (54–63 %). M1 da cena 05 de 63 % a 85 %; a luz da tela sobe de 63 % a 70 %; legenda de 65 % a 79 %, sai até 80,5 % |
+| Corte seco (só para comparar) | `data-noite="corte"`: M1 da cena 05 entra em 60,1 %; a luz sobe de 61 % a 68 % |
+| Cena 06 | O rosto entra de 78 % a 85 %; escala 1,4 → 1 de 83 % a 92 %; M1 desliza até o retrato de 89 % a 100 %; legenda de 84,5 % a 90 %, sai até 93,5 % |
+| Âncoras dos pontos | `hm-c01`–`hm-c06`, `--p` = 0 / 0,283 / 0,356 / 0,565 / 0,763 / 0,89; `top: calc(var(--p) * (100% - 130vh))` |
+| Pontos | Não visto: opacidade 0,25; atual: escala 1,5 com halo; já visto: opacidade 0,6 |
+| Cabeçalho | Sai de 6 % a 10 % da S01; volta quando o rodapé entra |
+| Ouro | Opção A por padrão; `data-ouro="dois"` mostra a alternativa (D-H10) |
