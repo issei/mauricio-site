@@ -117,9 +117,11 @@ h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;
   .mesa{grid-template-columns:1fr}
 }
 
-/* ---------- Camada de movimento: só rolagem, só transform/opacity/clip-path ---------- */
+/* ---------- Camada de movimento: só rolagem, só transform/opacity/clip-path ----------
+   Sem JavaScript (scripting: none) vale o mosaico completo, como com movimento reduzido: nenhum texto começa
+   transparente (A11Y.md §6). A camada não usa JavaScript; só não roda quando ele está desligado. */
 .hm-menu{display:none}
-@media (prefers-reduced-motion:no-preference) and (min-height:560px){
+@media (prefers-reduced-motion:no-preference) and (min-height:560px) and (scripting:enabled){
 @supports (animation-timeline:view()){
   html{scroll-padding-top:0;scroll-behavior:smooth}
   body{timeline-scope:--hm-s01,--hm-historia,--hm-ideias,--hm-projetos,--hm-rodape}
