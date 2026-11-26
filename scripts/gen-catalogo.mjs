@@ -93,8 +93,6 @@ function secao({ id, eyebrow, titulo, resumo, cartoes, depois = [] }) {
   return L.join('\n');
 }
 
-/** Ordem dos projetos: a mesma da home (SDD-nova-home §13.5). */
-const PROJETOS = ['acessibilidade', 'case-agents', 'agent-ready', 'boutique-empresarial-showcase'];
 const LINK = 'text-blue-400 underline underline-offset-2';
 const plural = (n) => `${n} ${n === 1 ? 'conteúdo' : 'conteúdos'}`;
 
@@ -130,7 +128,7 @@ export function renderCatalogo({ eco, temas }) {
   }
   // RF-DH-02 (SDD-destinos-da-home): âncora #projetos, destino do CTA "Conheça meus projetos" da home.
   // Os nós vêm do YAML (natureza: experiencia), na ordem da home.
-  const projetos = PROJETOS.map((id) => eco.nodes[id]).filter((n) => n?.natureza === 'experiencia');
+  const projetos = Object.values(eco.nodes).filter((n) => n.natureza === 'experiencia');
   L.push('');
   L.push(`${I(16)}<!-- Projetos -->`);
   // Uma lista de links, e não cartões: cada nó aparece como cartão uma só vez (INV-8), no seu tema.
