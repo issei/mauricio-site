@@ -2,7 +2,7 @@
 id: storyboard-home
 titulo: Storyboard cinematográfico da nova home — "O pensamento em prática"
 data: 2026-11-24
-status: pré-produção, revisão 7 (clareza para a primeira visita; §9.5) (nada publicado; nenhuma imagem gerada por IA no repositório)
+status: versão final aprovada (2026-11-26); revisão 7 (clareza para a primeira visita; §9.5); publicação especificada no SDD §14 (nada publicado; nenhuma imagem gerada por IA no repositório)
 leitor: Issei (aprovação), fotógrafo/produção e quem planejar o scroll
 base: SDD-nova-home.md (docs/specs/pages/portfolio/)
 ---
@@ -479,6 +479,9 @@ diferença.
 | Fim da S01 | A moldura ficava vazia antes do retrato da S02 | A lista dos princípios viaja dentro da moldura, e a S02 dissolve por cima | Nenhum quadro vazio |
 
 Valores medidos no protótipo: SDD §13.8.
+
+O Issei aprovou esta versão em 2026-11-26. A publicação segue o SDD §14, e a
+chegada aos destinos da home segue o SDD-destinos-da-home.
 
 ## 10. Proposta consolidada
 

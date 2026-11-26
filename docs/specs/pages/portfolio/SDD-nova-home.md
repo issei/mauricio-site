@@ -2,18 +2,20 @@
 id: sdd-nova-home
 titulo: SDD — Nova página inicial "O pensamento em prática"
 data: 2026-11-24
-status: especificação + protótipo local validado (revisão 6; nada publicado)
+status: versão final aprovada pelo Issei (2026-11-26); especificação de publicação no §14 (nada publicado)
 leitor: Issei (decisões) e quem implementar a home
 padrao_de_redacao: ptbr-controlado (perfil Técnico)
 pedido: Issei, 2026-11-24 (thread "Planejar página cinematográfica da trajetória")
-revisao: 2026-11-26, revisão 7 (clareza para a primeira visita; §13). Antes: revisões 5 e 6 (símbolos, navegação, ritmo da rolagem; §12). Antes: 2026-11-25, arco digital da Sessão 01 (D-H8)
+revisao: 2026-11-26, versão final para publicação (§14; destinos em SDD-destinos-da-home.md). Antes: revisão 7 (clareza para a primeira visita; §13). Antes: revisões 5 e 6 (símbolos, navegação, ritmo da rolagem; §12). Antes: 2026-11-25, arco digital da Sessão 01 (D-H8)
 ---
 
 # SDD — Nova página inicial: "O pensamento em prática"
 
-> **Estado:** especificação. Nada foi publicado. A revisão 7 (§13)
-> prevalece sobre todas as seções anteriores, inclusive o §12, onde houver
-> diferença. As revisões 5 e 6 (§12) foram validadas num protótipo local.
+> **Estado:** versão final aprovada pelo Issei em 2026-11-26. Nada foi
+> publicado. O §14 é a especificação de implementação e prevalece sobre o §6
+> e o §11. A revisão 7 (§13) prevalece sobre todas as seções anteriores,
+> inclusive o §12, onde houver diferença. A chegada aos destinos da home está
+> em [SDD-destinos-da-home](SDD-destinos-da-home.md). As revisões 5 e 6 (§12) foram validadas num protótipo local.
 >
 > Antes delas: nada foi implementado nem gerado. O documento
 > segue as três etapas pedidas: diagnóstico (§1), especificação (§2 a §8) e
@@ -808,8 +810,11 @@ foto real da mesma posição, ou a cena sai (plano B).
 | D-H10 | Onde fica o ouro quando o símbolo e o fio disputam o mesmo quadro? | **Encerrada pela revisão 7:** os símbolos saíram (§13.4). Vale um só ouro por quadro, com o protagonista de cada cena no §13.3 |
 | D-H11 | Revisão 7: abertura concreta, S01 com 5 cenas, sem símbolos, sem pontos e sem imagens de IA | **Decidida (Issei, 2026-11-26):** pedido detalhado da revisão 7 (§13) |
 | D-H12 | No celular, aceitar 5 toques logo acima do limite de constância ou subir a S01 acima de 300 vh? | **Decidida (Issei, 2026-11-26):** manter 300 vh no celular, com o nome fixo no topo. Os 5 toques logo acima do limite ficam (§13.8) |
+| D-H13 | A Boutique Empresarial mantém a paleta e a tipografia próprias ou passa a seguir o resto do site? | **Decidida (Issei, 2026-11-26):** alinhar ao resto do site (SDD-destinos-da-home, RF-DH-05). A recomendação era manter a identidade própria |
 
 ## 11. Unidades de trabalho
+
+> Substituída pelo §14.7 (versão final). A tabela abaixo fica como registro.
 
 | UT | Conteúdo | Depende de |
 | :-- | :-- | :-- |
@@ -1091,3 +1096,139 @@ a6d21add e d2b702e8 no notebook, ainda sem push.
   dez princípios, as três capturas da mesa e as quatro teses).
 - **D-H12 (decidida):** a S01 do celular fica com 300 vh. Os 5 toques logo
   acima do limite ficam, porque só chegariam a zero com uma S01 mais longa.
+
+## 14. Versão final para publicação (Issei, 2026-11-26)
+
+O Issei aprovou o protótipo da revisão 7 ("muito bom o resultado") e pediu a
+especificação para publicar a home. Esta seção é a especificação de
+implementação. Ela prevalece sobre o §6 e o §11.
+
+### 14.1 Fonte da verdade
+
+- **Conteúdo e regras:** §13 (revisão 7), §13.8 (valores medidos) e D-H12.
+- **Referência visual e de código:** o protótipo em
+  `docs/specs/pages/portfolio/prototipo/` (commits a6d21add, d2b702e8 e
+  ab5644e3, hoje só no notebook). A implementação copia dele a estrutura do
+  HTML, o `home.css` e os valores de movimento. Nada é redesenhado.
+- **Pré-condição (P-0):** o protótipo precisa estar no repositório antes da
+  H-1. O envio depende de uma mensagem escrita do Issei.
+- **Destinos:** [SDD-destinos-da-home](SDD-destinos-da-home.md).
+
+### 14.2 Sessões e alturas
+
+| Sessão | Computador | Celular |
+| :-- | :-- | :-- |
+| S01 Apresentação (5 cenas) | 300 vh | 300 vh, com o nome fixo no topo (D-H12) |
+| S02 Minha história | 210 vh (`--f` 80 vh) | 194 vh (`--f` 64 vh) |
+| S03 Minhas ideias | 210 vh (`--f` 80 vh) | 194 vh (`--f` 64 vh) |
+| S04 Meus projetos | 180 vh | 170 vh |
+
+- As sessões se sobrepõem em 130 vh.
+- Rolagem total em toques de seta de 40 px: 98 no computador e 85 no
+  celular.
+- A ordem das cenas, os textos, os artefatos e o ouro de cada cena são os do
+  §13.3. As teses dos projetos são as do §13.5.
+
+### 14.3 Arquivos
+
+Substitui o §6.2.
+
+| Arquivo | Ação |
+| :-- | :-- |
+| `src/index.html` | O conteúdo do `<body>` passa a ser o bloco `<!-- HM:START -->` … `<!-- HM:END -->`, gerado. O `<head>` continua (SEO, JSON-LD, consentimento antes do GTM), com a descrição do §14.6. O link "Pular para o conteúdo" fica no modelo, como nas outras páginas: nenhum plugin o injeta |
+| `src/home.css` | Cópia do `home.css` do protótipo (28.749 bytes; 7.495 com gzip). Cores só no `:root`. Substitui o `index.css` só na home; a Carreira continua com o `index.css` |
+| `scripts/home/gen-home.mjs` | Porta, em ESM, do `prototipo/scripts/gen.cjs`. Escreve o bloco `HM:*` e o `public/index.md`. Tem `--check`, que entra no gate |
+| `scripts/home/home.data.mjs` | Textos da revisão 7 (§13.2, §13.3, §13.5), links e `alt`. Fatos lidos das fontes: nome do `cv.json`; projetos e ordem do `ecosystem.nav.yaml` (`natureza: experiencia`); 3 recentes do `destaques.mjs` |
+| `scripts/home/capturas.mjs` | Porta do `prototipo/scripts/crops.cjs`. Gera as 8 capturas do próprio site a partir do build (`dist/`), com um seletor por captura. Registra página, seletor e commit em `assets-fonte/home/manifesto.json` |
+| `scripts/gen-imagens.mjs` | Novo job `home`: AVIF e WebP em 480 e 960 px (retrato também em 1200 px), com `width` e `height` |
+| `scripts/gen-portfolio.mjs` | Para de escrever no `index.html` e no `public/index.md`. Continua com o `curriculo.html` |
+| `src/transicoes/*` | SDD-destinos-da-home, §5.1 (RF-VT-19 revisto, RF-VT-37 a RF-VT-39) |
+| `scripts/perf-budget.mjs` | Nova entrada para `index.html` (§14.5) |
+| `AGENTS.md` | Uma linha que registra o namespace `hm-`: tokens Aizome + Kin só em `src/home.css`, tema escuro mantido |
+| `src/en/index.html` | Gerado pelo Argos (`npm run i18n:sync`, no notebook) |
+| `public/llms.txt`, `public/llms-full.txt`, `public/og-index.png` | Regerados pelos geradores que já existem (`gen-llms.mjs`, `gen-og-index.mjs`) |
+| `tests/index.animacoes.spec.js` | Sai: cobre as animações de entrada da home antiga |
+
+Nenhuma biblioteca nova. O único JavaScript da home é o do cabeçalho comum e
+a camada de transições que o build já injeta.
+
+### 14.4 Imagens
+
+| Imagem | Tamanho no protótipo | Origem |
+| :-- | :-- | :-- |
+| Retrato | 1200 × 1500, 187 KB (WebP) | `assets-fonte/retrato.jpg` (foto real) |
+| Diagrama do Agent Ready | 1600 × 1067, 36 KB | Captura de `/agent-ready` |
+| Estados do conhecimento | 960 × 768, 69 KB | Figura 3 de `/formulacao-de-problemas` |
+| Ensaio e vídeos (mesa de ideias) | 960 × 600, 39 KB e 22 KB | Títulos das páginas |
+| Acessibilidade, Case Agents, Agent Ready, Boutique | 960 × 600, 45 a 60 KB cada | Detalhes das páginas |
+
+- Total no protótipo: 9 arquivos WebP, 565 KB. Com AVIF e 480 px no celular,
+  o total cai.
+- Nenhuma imagem gerada por IA. Toda `<img>` da home tem uma entrada no
+  manifesto, com a origem (foto real ou captura do site).
+- As capturas são regeradas quando a página de origem muda. O `--check` do
+  `gen-imagens` diz quando uma captura ficou velha.
+
+### 14.5 Desempenho
+
+| Item | Meta |
+| :-- | :-- |
+| HTML e CSS da home | ≤ 20 KB com gzip (protótipo: 5,8 + 7,5 KB) |
+| Primeira tela | ≤ 200 KB (HTML, CSS, fontes e o retrato em 480 ou 960 px) |
+| Retrato | `fetchpriority="high"`; as outras imagens com `loading="lazy"` e `decoding="async"` |
+| Fontes | Como no protótipo: pedidas antes, serifada só no peso 500 (§12.4) |
+| CLS | 0 na home; ≤ 0,1 nos destinos (SDD-destinos-da-home, RF-DH-01) |
+| Movimento | Só `translate`, `scale`, `transform`, `opacity` e `clip-path`; nenhum JS por quadro |
+
+### 14.6 SEO
+
+- Descrição nova (≤ 160 caracteres): "Maurício Yokoyama Issei: engenharia de
+  software, arquitetura em produção e agentes de IA. Trajetória, ideias e
+  projetos."
+- `<title>`, OG, canonical, hreflang e `Person` JSON-LD continuam. A imagem do
+  `Person` já é o retrato real.
+- `og-index.png` refeito no visual novo.
+- Todo o texto está no HTML. O `public/index.md` é regerado pelo `gen-home`.
+
+### 14.7 Ordem de implementação
+
+Substitui o §11. Um PR por linha. Os itens D1 a D7 estão no
+SDD-destinos-da-home, §7.
+
+| UT | Conteúdo | Depende de | Espelho `/en/` |
+| :-- | :-- | :-- | :-- |
+| P-0 | Protótipo no repositório (só documentação) | Mensagem escrita do Issei | Não |
+| H-0 | Linha do `hm-` no `AGENTS.md`; D1 (fonte reserva) e D2 (banner) | — | Não |
+| H-1 | D3: `#projetos` no catálogo; D7: Boutique alinhada ao site (D-H13), antes das capturas da home | — | Sim (catálogo e Boutique) |
+| H-2 | A home: `gen-home`, `home.data`, `home.css`, capturas e `gen-imagens`, testes do §14.8, `gen-portfolio` sem o `index`, `perf-budget`, e D4 (transições) | P-0, H-1 | Sim (`index`) |
+| H-3 | Espelhos `/en/` (Argos, no notebook), `og-index`, gate verde. Publicar é o merge do Issei | H-2 | — |
+| H-4 | Depois da publicação: D5 (*bfcache*), D6 (cartão → detalhe), fotos (D-H2), validação com 3 a 5 pessoas | H-3 | Depende |
+
+### 14.8 Testes (escritos antes do código)
+
+| Teste | O que confere |
+| :-- | :-- |
+| `tests/home.tokens.test.mjs` | Contrastes do §4.1 e do §13.8, lidos do `:root` de `home.css`; nenhum literal de cor fora do `:root`; nenhum hexadecimal no `index.html` |
+| `tests/home.fatos.test.mjs` | O nome vem do `cv.json`; os marcos da S02 batem com o `cv.json`; os dez princípios são os títulos de `/engenharia-agentes-ia`; as etapas do gate existem em `scripts/quality-gate.mjs`; cada tese tem a frase de origem na página do projeto (§13.5); a narração não tem "soluções", "resultados" nem "experiências" |
+| `tests/home.imagens.test.mjs` | Toda `<img>` da home está no manifesto, com origem; nenhuma vem de `og-*` |
+| `tests/index.spec.js` (reescrito) | Primeira dobra (1280 × 800 e 390 × 844): nome, mensagem, subtítulo e os 3 caminhos; 4 sessões com título; os 27 links funcionam (âncoras e páginas existem, inclusive `#projetos`); o primeiro Tab cai em "Pular para o conteúdo" |
+| `tests/index.nojs.spec.js` (revisto) | Sem JavaScript, todo o conteúdo está no HTML |
+| `tests/index.reduced.spec.js` (novo) | Com movimento reduzido: nenhuma animação, mosaico completo, sem rolagem lateral |
+| `tests/index.mobile.spec.js` (novo) | Sem rolagem lateral; menu "Sessões" no topo; nome fixo no topo da S01 |
+| `tests/a11y/widgets.spec.js` | A home entra na suíte de foco: o `sticky` nunca cobre o elemento em foco (2.4.11); o foco nos caminhos não fica sob as cenas |
+| `tests/transicoes.*` | CA-49 a CA-58 do SDD-destinos-da-home |
+| `scripts/home/constancia.mjs` | Porta das medições do protótipo. Não entra no gate, porque a diferença de pixels depende da máquina. O PR da H-2 anexa os números e compara com o §13.8 |
+
+A catraca de acessibilidade (`tests/a11y/baseline.json`) não sobe.
+
+### 14.9 Antes do merge da publicação
+
+1. Gate verde, com `gen-home --check`, `gen-imagens --check`,
+   `i18n:check` e `perf-budget`.
+2. Capturas de cada cena e sessão em 1440 × 900 e 390 × 844, anexadas ao PR e
+   lidas como primeira visita (§13.7).
+3. Números de constância comparados com o §13.8.
+4. O Issei confere no aparelho dele (Chrome no computador e no Android): a
+   fluidez da home e das idas para Carreira, Conteúdos e um projeto, e a
+   volta.
+5. Conferência do *bfcache* num Chrome comum (SDD-destinos-da-home, RF-DH-04).
