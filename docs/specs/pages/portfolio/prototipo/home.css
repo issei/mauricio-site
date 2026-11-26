@@ -1,0 +1,375 @@
+/* Protótipo local da nova home — revisão 7 (SDD-nova-home §13). Cores só no :root. */
+:root{
+  --hm-aizome:#0D1219;--hm-aizome-2:#141B25;--hm-aizome-deep:#080C11;
+  --hm-tinta:#F2EFE9;--hm-grafite:#D0CCC3;--hm-cinza:#8F97A4;--hm-kin:#D4AF6A;
+  --hm-shoji:rgba(242,239,233,.08);--hm-shoji-strong:rgba(242,239,233,.16);
+  --hm-borda-controle:#5F6979;
+  --hm-serifa:"Shippori Mincho",Georgia,serif;
+  --hm-sombra:rgba(4,6,9,.55);
+  --gut:clamp(1rem,6vw,7rem);--gut-d:var(--gut);--hm-lado:clamp(1rem,6vw,7rem);
+}
+*{box-sizing:border-box}
+html{background:var(--hm-aizome)}
+body{overflow-anchor:none;margin:0;background:var(--hm-aizome);color:var(--hm-grafite);font:400 1.0625rem/1.65 Inter,system-ui,sans-serif}
+img{display:block;width:100%;height:100%;object-fit:cover}
+figure,ol,ul,h1,h2,p{margin:0;padding:0}ol,ul{list-style:none}
+.hm a{color:var(--hm-tinta);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;text-decoration-color:color-mix(in srgb,var(--hm-kin) 50%,transparent)}
+.hm a:hover{text-decoration-color:var(--hm-kin)}
+.hm a:focus-visible{outline:2px solid var(--hm-kin);outline-offset:3px;box-shadow:0 0 0 3px var(--hm-aizome)}
+.hm a.hm-cta{font-weight:600;display:inline-block;padding-block:.6rem}
+.hm-num{color:var(--hm-cinza);font-weight:600;font-size:.875rem;letter-spacing:.12em}
+.hm-num::after{content:"";display:block;width:48px;height:2px;margin-top:.5rem;background:currentColor}
+h1{color:var(--hm-tinta);font-size:clamp(2.25rem,4.4vw,4.25rem);font-weight:600;line-height:1.08;letter-spacing:-.02em}
+.hm h2{color:var(--hm-tinta);font:500 clamp(1.75rem,3vw,2.75rem)/1.25 var(--hm-serifa)}
+.hm-mensagem{color:var(--hm-tinta);font:500 clamp(1.6rem,2.7vw,2.6rem)/1.35 var(--hm-serifa)}
+.hm-sub{color:var(--hm-tinta);font-weight:600}
+.hm-frase{color:var(--hm-tinta);font:500 clamp(1.3rem,1.9vw,1.85rem)/1.4 var(--hm-serifa)}
+.hm-dims{color:var(--hm-cinza);font-size:.8125rem;letter-spacing:.06em}
+.hm-caminhos{display:flex;flex-wrap:wrap;gap:.25rem 1.75rem}
+.hm-caminhos a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+/* A moldura M1: fio Shoji. Sem cantoneiras em repouso. */
+.m1{position:relative;overflow:hidden;background:var(--hm-aizome-2);outline:1px solid var(--hm-shoji-strong);outline-offset:-1px}
+.m1 img{filter:saturate(.9)}
+.contem img{object-fit:contain}
+.hm-s{position:relative;padding:4rem var(--hm-lado)}
+.hm-ancora{position:absolute;top:0}
+
+/* ---------- Base estática: completa sem movimento (mosaico editorial) ---------- */
+.hm-texto{display:grid;gap:1.1rem;align-content:center}
+.retrato{aspect-ratio:4/5}
+.hm-s01 .palco{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(1.5rem,4vw,4rem);align-items:center}
+.hm-noite,.hm-fio,.hm-fio01{display:none}.hm-intro{display:contents}
+.hm-intro__bloco,.hm-intro__nome,.hm-intro__resto{display:grid;gap:1.1rem}
+.hm-s01 .retrato{width:100%;max-width:24rem;justify-self:end}
+.hm-cenas{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2rem,4vw,3.5rem) clamp(1.25rem,3vw,2.5rem);margin-top:2rem}
+.hm-cena{min-width:0}
+.hm-cena figure,.hm-cena figcaption,.hm-leg{display:grid;gap:.8rem}
+.hm-cena figcaption{gap:1.4rem}
+.hm-m1{position:relative;aspect-ratio:3/2;background:var(--hm-aizome-2);outline:1px solid var(--hm-shoji-strong);container-type:inline-size}
+.hm-img{position:absolute;inset:0;overflow:hidden;background:var(--hm-aizome-2)}
+.hm-narr{color:var(--hm-tinta);font:500 clamp(1.15rem,1.7vw,1.6rem)/1.45 var(--hm-serifa)}.hm-narr--2{color:var(--hm-grafite)}
+/* Cena 02 */
+.hm-q{position:absolute;inset:0;padding:6cqw;display:grid;align-content:center;gap:6cqw}
+.hm-q__pergunta{font:500 4.1cqw/1.3 var(--hm-serifa);color:var(--hm-tinta);white-space:nowrap}
+.hm-q__partes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4cqw}
+.hm-q__parte{display:grid;gap:1.6cqw;padding-top:2.4cqw;border-top:1px solid var(--hm-shoji-strong)}
+.hm-q__p{font:600 max(.8rem,2.9cqw)/1.3 Inter,sans-serif;color:var(--hm-tinta)}.hm-q__fontes{font:400 max(.75rem,2.3cqw)/1.4 Inter,sans-serif;color:var(--hm-cinza)}
+.hm-q__digita{display:inline-block}
+.hm-q__sintese{position:relative;justify-self:start;padding-bottom:2cqw;font:500 max(.9rem,3.4cqw)/1.35 var(--hm-serifa);color:var(--hm-tinta)}
+.hm-traco{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--hm-kin);transform-origin:left center}
+/* Cena 03: o gate, em texto real */
+.hm-gate{position:absolute;right:3%;bottom:4%;width:56%;padding:2.4cqw 3cqw;background:var(--hm-aizome-deep);outline:1px solid var(--hm-shoji-strong);box-shadow:0 10px 30px var(--hm-sombra);
+  font:400 max(.72rem,2.1cqw)/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--hm-grafite)}
+.hm-gate__cmd{color:var(--hm-cinza);margin-bottom:.8cqw}
+.hm-gate li span{color:var(--hm-tinta)}
+/* Cena 04: estados de um incidente */
+.hm-m1--noite{background:var(--hm-aizome-deep)}
+.hm-inc{position:absolute;inset:0;display:grid;align-content:center;gap:4.2cqw;padding:0 12cqw}
+.hm-inc li{position:relative;padding-left:5cqw;font:600 max(.85rem,3.6cqw)/1.3 Inter,sans-serif;color:var(--hm-tinta)}
+.hm-inc li::before{content:"";position:absolute;left:0;top:50%;width:1.6cqw;height:1.6cqw;margin-top:-.8cqw;border-radius:50%;border:1px solid var(--hm-grafite)}
+.hm-inc li:not(:last-child)::after{content:"";position:absolute;left:.8cqw;top:calc(50% + 1.2cqw);height:4.6cqw;border-left:1px solid var(--hm-shoji-strong)}
+.hm-kintsugi{position:relative;display:block;width:min(100%,22rem);height:2px;background:var(--hm-kin)}
+/* Cena 05: a estrutura do estudo publicado */
+.hm-estudo{position:absolute;inset:0;padding:5cqw 6cqw;display:grid;align-content:center;gap:1.4cqw}
+.hm-estudo__tit{font:500 max(1rem,3.6cqw)/1.25 var(--hm-serifa);color:var(--hm-tinta)}
+.hm-estudo__url{font:400 max(.7rem,1.9cqw)/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--hm-cinza);margin-bottom:1.6cqw}
+.hm-estudo__lista{list-style:decimal-leading-zero;columns:2;column-gap:5cqw;padding-left:5.2cqw;font:400 max(.68rem,2.05cqw)/1.35 Inter,sans-serif;color:var(--hm-grafite)}
+.hm-estudo__lista li{break-inside:avoid;padding:.55cqw 0}
+.hm-estudo__lista li::marker{color:var(--hm-cinza)}
+@media(max-width:639.98px){.hm-estudo__lista{columns:1}}
+/* Sessões 02–04 */
+.hm-duas{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,6vw,6rem);align-items:center}
+.hm-s02 .retrato{max-height:70svh;justify-self:start}
+.hm-s02 .retrato img{object-position:50% 30%}
+.marcos{border-left:2px solid var(--hm-kin);padding-left:1.5rem;display:grid;gap:.7rem}
+.marcos li{display:grid;grid-template-columns:7rem 1fr;gap:.75rem}
+.marcos b{color:var(--hm-tinta);font-weight:600}
+.hm-marco--atual span{color:var(--hm-tinta);font-weight:600}
+.hm-s03 .hm-duas{grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
+.mesa{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}.mesa .foto{aspect-ratio:16/10}.mesa .foto:first-child{grid-column:1/-1}
+.recentes{display:grid;gap:.35rem}.recentes li{display:flex;flex-wrap:wrap;gap:.1rem .9rem;align-items:center}.recentes a{padding-block:.3rem}
+.ctas{display:flex;flex-wrap:wrap;gap:.25rem 2rem;align-items:center}
+.projetos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:1.5rem}
+.projetos li{position:relative}
+.projetos .foto{aspect-ratio:16/10;margin-bottom:.8rem}.projetos img{object-position:left top}
+.projetos a{font-weight:600}
+.projetos a::after{content:"";position:absolute;inset:0}
+.hm .projetos a:focus-visible{outline:none;box-shadow:none}
+.projetos li:has(a:focus-visible){outline:2px solid var(--hm-kin);outline-offset:4px}
+.hm-tese{color:var(--hm-grafite);font-size:.9375rem;line-height:1.5;margin:.35rem 0 .3rem}
+/* Cantoneiras douradas só no cartão sob o ponteiro ou com foco */
+.projetos .foto::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;--c:var(--hm-kin);
+  background:linear-gradient(var(--c),var(--c)) 0 0/22px 2px,linear-gradient(var(--c),var(--c)) 0 0/2px 22px,linear-gradient(var(--c),var(--c)) 100% 100%/22px 2px,linear-gradient(var(--c),var(--c)) 100% 100%/2px 22px;background-repeat:no-repeat}
+.projetos li:hover .foto::after,.projetos li:has(a:focus-visible) .foto::after{opacity:1}
+.hm-rodape{position:relative;z-index:6;background:var(--hm-aizome-2);border-top:1px solid var(--hm-shoji);padding:2.5rem var(--hm-lado)}
+.hm-convite{color:var(--hm-tinta);font:500 clamp(1.1rem,1.6vw,1.35rem)/1.45 var(--hm-serifa);margin:.6rem 0 .4rem}
+.hm-rodape ul{display:flex;flex-wrap:wrap;gap:.25rem 1.75rem}.hm-rodape a{display:inline-flex;min-height:44px;align-items:center}
+@media(max-width:639.98px){
+  .hm-duas,.hm-s03 .hm-duas{grid-template-columns:1fr;gap:1.25rem}
+  .hm-s01 .palco,.hm-cenas{grid-template-columns:minmax(0,1fr)}.hm-s01 .retrato{max-width:60%;justify-self:start}
+  .hm-s{padding:1.25rem var(--hm-lado) 3rem}
+  .hm-mensagem{font-size:1.35rem}h1{font-size:2rem}.hm{font-size:1rem}
+  .hm-caminhos{gap:0 1.25rem}
+  .marcos li{grid-template-columns:5.6rem 1fr}
+  .mesa{grid-template-columns:1fr}
+}
+
+/* ---------- Camada de movimento: só rolagem, só transform/opacity/clip-path ---------- */
+.hm-menu{display:none}
+@media (prefers-reduced-motion:no-preference) and (min-height:560px){
+@supports (animation-timeline:view()){
+  html{scroll-padding-top:0;scroll-behavior:smooth}
+  body{timeline-scope:--hm-s01,--hm-historia,--hm-ideias,--hm-projetos,--hm-rodape}
+  /* Cada sessão é um palco fixo. A seguinte sobrepõe 30vh da anterior: é onde uma dissolve na outra. */
+  .hm-s{padding:0;view-timeline-name:--s;view-timeline-axis:block;view-timeline-inset:0px}
+  .hm-s01{view-timeline-name:--s,--hm-s01;view-timeline-axis:block,block}.hm-s02{view-timeline-name:--s,--hm-historia;view-timeline-axis:block,block}.hm-s03{view-timeline-name:--s,--hm-ideias;view-timeline-axis:block,block}.hm-s04{view-timeline-name:--s,--hm-projetos;view-timeline-axis:block,block}
+  .hm-rodape{view-timeline:--hm-rodape block}
+  .hm-s02{--f:80vh;height:210vh}.hm-s03{--f:80vh;height:210vh}.hm-s04{height:180vh}
+  .hm-s02 .hm-texto,.hm-s03 .hm-texto{animation:hm-sai linear both;animation-timeline:--s;animation-range:contain calc(var(--f) - 8vh) contain calc(var(--f) + 2vh)}
+  .palco:focus-within .hm-texto{animation:none!important}
+  .hm-s02,.hm-s03,.hm-s04{margin-top:calc(-100vh - 30vh)}
+  .hm-s01{z-index:1}.hm-s02{z-index:2}.hm-s03{z-index:3}.hm-s04{z-index:4}
+  .hm-s02,.hm-s03,.hm-s04{pointer-events:none}
+  .hm-ancora{top:38vh}
+  .palco{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--hm-aizome);padding:calc(var(--sh-altura,3.5rem) + 1.5rem) var(--hm-lado) 1.5rem;display:grid;align-content:center}
+  .hm-s01{margin-top:calc(-1 * var(--sh-altura,3.5rem))}
+  .hm-s02 .palco,.hm-s03 .palco,.hm-s04 .palco{animation:hm-dissolve linear both;animation-timeline:--s;animation-range:contain 0vh contain 22vh}
+  .hm-s02 .palco{animation-range:contain 0vh contain 14vh}
+  .hm-s .palco:focus-within{animation:none;opacity:1;pointer-events:auto}
+  /* Cliques valem a partir de 55 % da dissolução, quando a sessão já está visível. */
+  @keyframes hm-dissolve{0%{opacity:0;pointer-events:none}54.9%{pointer-events:none}55%{pointer-events:auto}100%{opacity:1;pointer-events:auto}}
+
+  /* ----- S01: geometria do palco no computador (paisagem, ≥ 900 px) ----- */
+  .hm-s01{
+    --m1w:min(50vw,96svh);
+    --m1-top:calc(50% - var(--m1w) / 3);
+    --m1-left:calc(100% - var(--gut-d) - var(--m1w));
+    --col:min(calc(100vw - var(--gut) - var(--gut-d) - var(--m1w) - clamp(2rem,4.5vw,4.5rem)),36rem);
+    --rt-h:min(74svh,52vw);
+    --leg-top:40svh;
+    --ph:min(66svh,38vw);--pw:calc(var(--ph) * .8);
+    --p-cx:calc(var(--gut) + var(--pw) / 2);--p-top:calc(50svh + var(--sh-altura,3.5rem) / 2 - var(--ph) / 2);
+    --c-x:calc(100vw - var(--gut-d) - var(--m1w) / 2);--c-y:50svh;
+    --e:.85;height:300vh;
+  }
+  .hm-s01 .palco{display:block;padding:0}
+  .hm-noite{display:block;position:absolute;inset:0;background:var(--hm-aizome-deep);opacity:0}
+  .hm-fio{display:block;position:absolute;left:max(6px,calc(var(--gut) - 1.5rem));top:14svh;height:72svh;width:2px;background:var(--hm-kin)}
+  .hm-intro__bloco{position:absolute;left:var(--gut);top:13svh;width:var(--col);gap:.9rem}
+  .hm-intro__resto{gap:1rem}
+  .hm-s01 .hm-mensagem{font-size:clamp(1.5rem,2.5vw,2.4rem)}
+  .hm-s01 .retrato{position:absolute;right:var(--gut-d);top:calc(50% - var(--rt-h) / 2);height:var(--rt-h);width:calc(var(--rt-h) * .8);max-width:none;transform-origin:right center}
+  .hm-s01 .retrato img{height:100%}
+  .hm-s01 .hm-num{line-height:1}.hm-s01 .hm-num::after{display:none}
+  .hm-cenas{display:block;margin:0;pointer-events:none}
+  .hm-cena figure,.hm-cena figcaption{display:block}
+  .hm-m1{position:absolute;left:var(--m1-left);top:var(--m1-top);width:var(--m1w)}
+  .hm-leg{position:absolute;left:var(--gut);top:var(--leg-top);width:var(--col);gap:.9rem;opacity:0}
+  .hm-q__sintese{position:absolute;left:6cqw;top:50%;translate:0 -50%;max-width:calc(100% - 12cqw)}
+  .hm-gate{right:-6%;bottom:-12%;width:52%}
+  .hm-kintsugi{margin:1.4rem 0;background:var(--hm-grafite)}
+  .hm-kintsugi::after{content:"";position:absolute;inset:0;background:var(--hm-kin);transform-origin:center;scale:0 1}
+
+  /* ----- celular e telas em pé: moldura em cima, texto embaixo ----- */
+  @media (max-width:899.98px),(orientation:portrait){
+    .hm-s01{
+      --m1w:calc(min(calc(100vw - var(--gut) - var(--gut-d)),84svh) - 8px);
+      --m1-top:max(178px,calc(50svh + var(--sh-altura,3.5rem) / 2 - var(--m1w) / 3 - 5.6rem));
+      --m1-left:calc(50% - var(--m1w) / 2);
+      --col:calc(100vw - var(--gut) - var(--gut-d));
+      --rt-w:min(38vw,30svh);
+      --leg-top:calc(var(--m1-top) + var(--m1w) / 1.5 + 1.25rem);
+      --c-x:50vw;--c-y:calc(var(--m1-top) + var(--m1w) / 3);
+    }
+    .hm-fio{display:none}
+    .hm-intro{display:block;position:absolute;left:var(--gut);right:var(--gut-d);top:calc(var(--sh-altura,3.5rem) + 2.5svh)}
+    .hm-intro__bloco{position:static;width:auto;gap:1.25rem}
+    .hm-fio01{display:block;position:absolute;left:-10px;top:0;bottom:0;width:2px;background:var(--hm-kin)}
+    .hm-intro__nome{width:calc(100% - var(--rt-w) - 1rem);min-height:calc(var(--rt-w) * 1.25 - 2.2rem);align-content:start}
+    .hm-intro__resto{gap:.8rem}
+    .hm-s01 .retrato{top:0;right:0;height:calc(var(--rt-w) * 1.25);width:var(--rt-w)}
+    .hm-gate{right:3%;bottom:4%;width:64%}
+    /* O nome fica, pequeno, no topo (sem ouro); só o resto do bloco some. */
+    .hm-s01 .hm-intro__bloco{animation-name:none}
+    .hm-intro__nome{transform-origin:left top;animation-name:hm-nome-cel}
+    .hm-s01 .hm-num{animation:hm-num-sai linear both;animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh)}
+    .hm-narr{font-size:clamp(1.1rem,4.4vw,1.4rem)}
+    .hm-kintsugi{margin:1rem 0}
+  }
+  @media (max-width:639.98px){
+    .hm-s01{--ph:24svh;--p-cx:calc(100vw - var(--gut-d) - var(--pw) / 2);--p-top:calc(var(--sh-altura,3.5rem) + 8svh)}
+    .hm-s02 .palco{align-content:start;padding-top:calc(var(--sh-altura,3.5rem) + 8svh)}.hm-mensagem{font-size:1.5rem}.hm-contexto{font-size:1rem}
+  }
+
+  /* ----- linha do tempo única da S01: todo .hm-tl anda com a rolagem útil da seção ----- */
+  .hm-tl{animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh);animation-fill-mode:both;animation-timing-function:linear;animation-duration:auto}
+  .hm-noite{animation-name:hm-noite}
+  .hm-fio,.hm-fio01{animation-name:hm-fio}
+  .hm-intro__bloco{animation:hm-bloco linear both;animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh)}
+  .hm-intro__resto{animation-name:hm-resto}
+  .hm-s01 .retrato{animation-name:hm-retrato}
+  /* Foco no texto da abertura: ele volta inteiro e as cenas saem da frente. */
+  .hm-intro__bloco:focus-within,.hm-intro__resto:focus-within{animation:none;opacity:1;translate:none}
+  .hm-s01:has(.hm-intro :focus-within) .hm-cenas{visibility:hidden}
+
+  [data-cena="02"] .hm-m1{animation-name:hm-02-m1}
+  [data-cena="02"] .hm-q__digita{animation-name:hm-digita;animation-timing-function:steps(37,end)}
+  [data-cena="02"] .hm-q__parte{animation-name:hm-surge;animation-range:contain calc((19.5% + var(--k) * 1.5%) * var(--e)) contain calc((22.5% + var(--k) * 1.5%) * var(--e))}
+  [data-cena="02"] .hm-q__fontes{animation-name:hm-aparece;animation-range:contain calc((23% + var(--k) * 1.2%) * var(--e)) contain calc((26% + var(--k) * 1.2%) * var(--e))}
+  [data-cena="02"] .hm-q__partes{animation-name:hm-partes-fecham}
+  [data-cena="02"] .hm-q__pergunta{animation-name:hm-pergunta-recua}
+  [data-cena="02"] .hm-q__sintese{animation-name:hm-sintese}
+  [data-cena="02"] .hm-traco{animation-name:hm-traco-02}
+  [data-cena="02"] .hm-leg--a{animation-name:hm-02-leg-a}
+  [data-cena="02"] .hm-leg--b{animation-name:hm-02-leg-b}
+
+  [data-cena="03"] .hm-m1{animation-name:hm-03-m1}
+  [data-cena="03"] .hm-img--a img{animation-name:hm-03-pan}
+  [data-cena="03"] .hm-m1::after{content:"";position:absolute;inset:0;background:var(--hm-aizome-deep);pointer-events:none;animation:hm-veu linear both;animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh)}
+  [data-cena="03"] .hm-gate{animation-name:hm-gate}
+  [data-cena="03"] .hm-gate li{animation-name:hm-aparece;animation-range:contain calc((49% + var(--k) * 1%) * var(--e)) contain calc((50% + var(--k) * 1%) * var(--e))}
+  [data-cena="03"] .hm-leg{animation-name:hm-03-leg}
+
+  [data-cena="04"] .hm-m1{animation-name:hm-04-m1}
+  [data-cena="04"] .hm-inc li{animation-name:hm-surge;animation-range:contain calc((64% + var(--k) * 3%) * var(--e)) contain calc((65.5% + var(--k) * 3%) * var(--e))}
+  [data-cena="04"] .hm-leg{animation-name:hm-04-leg}
+  [data-cena="04"] .hm-kintsugi{animation-name:hm-racha}
+  [data-cena="04"] .hm-kintsugi::after{animation:hm-repara linear both;animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh)}
+  [data-cena="04"] .hm-narr--2{animation-name:hm-04-leg2}
+
+  [data-cena="05"] .hm-m1{animation-name:hm-05-m1}
+  [data-cena="05"] .hm-leg{animation-name:hm-05-leg}
+
+  @media (max-width:899.98px),(orientation:portrait){
+    [data-cena="03"] .hm-m1::after{animation-name:hm-veu-cel}
+    .hm-noite{animation-name:hm-noite-cel}
+  }
+
+  /* ----- Menu "Sessões" com barra de progresso da Apresentação ----- */
+  .sh{animation:hm-sh-sai linear both,hm-sh-volta linear forwards;animation-timeline:--hm-s01,--hm-rodape;animation-range:contain 0% contain calc(100% - 30vh),entry 0% entry 100%}
+  .sh:focus-within{animation:none}
+  .hm-caminhos{animation:hm-caminhos-sai linear both;animation-timeline:--s;animation-range:contain 0% contain calc(100% - 30vh)}
+  .hm-caminhos:focus-within{animation:none}
+  .hm-menu{display:block;position:fixed;z-index:2147482500;animation:hm-menu-entra linear both,hm-menu-sai linear forwards;animation-timeline:--hm-s01,--hm-rodape;animation-range:contain 0% contain calc(100% - 30vh),entry 0% entry 60%}
+  .hm-menu:focus-within{animation:none}
+  .hm-menu ul{display:flex;gap:4px}
+  .hm-menu a{position:relative;display:flex;align-items:center;min-height:24px;color:var(--hm-tinta);text-decoration:none;font:500 .84rem/1.2 Inter,system-ui,sans-serif;opacity:.55}
+  .hm-menu a:hover{opacity:.85}
+  .hm-menu a:focus-visible{opacity:1;outline:2px solid var(--hm-kin);outline-offset:3px}
+  .hm-menu a::before{content:"";position:absolute;left:0;top:50%;width:16px;height:1px;margin-top:-.5px;background:var(--hm-grafite);transform-origin:left center;scale:0 1}
+  .hm-menu a{animation-name:hm-atual;animation-fill-mode:none;animation-timing-function:linear}
+  .hm-menu a::before{animation-name:hm-atual-traco;animation-fill-mode:none;animation-timing-function:linear}
+  .hm-menu .mn1,.hm-menu .mn1::before{animation-timeline:--hm-s01;animation-range:entry 0% contain calc(100% - 30vh)}
+  .hm-menu .mn2,.hm-menu .mn2::before{animation-timeline:--hm-historia;animation-range:contain 0% contain calc(100% - 30vh)}
+  .hm-menu .mn3,.hm-menu .mn3::before{animation-timeline:--hm-ideias;animation-range:contain 0% contain calc(100% - 30vh)}
+  .hm-menu .mn4,.hm-menu .mn4::before{animation-timeline:--hm-projetos;animation-range:contain 0% exit 100%}
+  /* Barra fina de progresso contínuo da Apresentação (grafite, nunca dourada). */
+  .hm-menu .mn1::after{content:"";position:absolute;left:24px;right:0;bottom:-3px;height:1px;background:var(--hm-grafite);opacity:.7;transform-origin:left center;scale:0 1;
+    animation:hm-progresso linear both;animation-timeline:--hm-s01;animation-range:contain 0% contain calc(100% - 30vh)}
+  .hm-menu__c{display:none}
+  @media (min-width:1100px) and (orientation:landscape){
+    :root{--gut:200px;--hm-lado:200px;--gut-d:clamp(1rem,6vw,7rem)}
+    .hm-s01{--ph:min(66svh,33vw)}.hm-s02 .retrato{height:min(66svh,33vw)}
+    .hm-s01{--m1w:max(44vw,min(50vw,96svh,calc(100vw - var(--gut) - var(--gut-d) - clamp(2rem,4.5vw,4.5rem) - 22rem)))}
+    .hm-menu{left:max(24px,env(safe-area-inset-left));top:50%;translate:0 -50%}
+    .hm-menu ul{flex-direction:column;gap:10px}
+    .hm-menu a{padding:4px 0 4px 24px}
+  }
+  @media (max-width:1099.98px),(orientation:portrait){
+    .hm-menu{left:0;right:0;top:0;height:44px;background:var(--hm-aizome);border-bottom:1px solid var(--hm-shoji);animation-name:hm-menu-entra-cel,hm-menu-sai-cel}
+    .hm-menu ul{height:100%;justify-content:center;align-items:stretch;gap:0;padding:0 max(4px,env(safe-area-inset-left))}
+    .hm-menu li{display:flex}
+    .hm-menu a{padding:0 12px;min-height:44px;font-size:.8rem}
+    .hm-menu a::before{left:50%;top:auto;bottom:8px;margin-left:-8px}
+    .hm-menu .mn1::after{left:12px;right:12px;bottom:4px}
+    .hm-menu__l{display:none}.hm-menu__c{display:inline}
+    .hm-caminhos{animation-name:hm-caminhos-sai-cel}
+  }
+
+  /* ----- Sessões 02–04 ----- */
+  .hm-s02 .retrato{height:min(66svh,38vw);max-width:100%;animation:hm-parte linear both;animation-timeline:--s;animation-range:contain calc(var(--f) - 8vh) contain calc(var(--f) + 18vh)}
+  .marcos{animation:hm-cortina-baixo linear both;animation-timeline:--s;animation-range:contain 10vh contain 60vh}
+  .hm-marco{animation:hm-marco linear both;animation-timeline:--s;animation-range:contain calc(6vh + var(--i,0)*9vh) contain calc(16vh + var(--i,0)*9vh)}
+  .projetos li{animation:hm-divide linear both;animation-timeline:--s;animation-range:contain 2vh contain 50vh}
+  .projetos li:nth-child(1){--d:120%}.projetos li:nth-child(2){--d:45%}.projetos li:nth-child(3){--d:-45%}.projetos li:nth-child(4){--d:-120%}
+  .projetos .foto{animation:hm-cortina-cima linear both;animation-timeline:--s;animation-range:contain calc(4vh + var(--i)*10vh) contain calc(24vh + var(--i)*10vh)}
+  /* O único ouro da S04: o traço que fecha o CTA. */
+  .hm-fim::after{content:"";display:block;height:2px;background:var(--hm-kin);transform-origin:left;animation:hm-traco linear both;animation-timeline:--s;animation-range:contain 56vh contain 86vh}
+  .hm a.hm-fim{text-decoration:none}
+  @media(max-width:639.98px){
+    .hm-s02{--f:64vh;height:194vh}.hm-s03{--f:64vh;height:194vh}.hm-s04{height:170vh}
+    .palco{padding-inline:var(--hm-lado)}
+    .hm-s02 .retrato{height:24svh;justify-self:end}
+    .hm-s02 .hm-duas{gap:.75rem}.hm-s .hm-texto{gap:.6rem}
+    .marcos{gap:.3rem;padding-left:1rem}.marcos li{font-size:.9rem;line-height:1.4}
+    /* A sessão é mais alta que a tela: o conteúdo sobe com a rolagem até as três capturas aparecerem inteiras. */
+    .hm-s03 .palco{align-content:start}
+    .hm-s03 .hm-duas{animation:hm-s03-sobe linear both;animation-timeline:--s;animation-range:contain 14vh contain calc(var(--f) - 10vh)}
+    .hm-s03 p{line-height:1.45;font-size:.95rem}
+    .projetos{grid-template-columns:1fr 1fr;gap:.9rem}.projetos .foto{margin-bottom:.3rem}
+    .hm-tese{font-size:.8rem;line-height:1.35;margin:.2rem 0}
+  }
+}}
+
+/* ===== Quadros-chave da S01 (% da rolagem útil). 01 0–12 · 02 12–41 · 03 41–62 · 04 62–82 · 05 82–100 ===== */
+@keyframes hm-noite{0%,57%{opacity:0}63%,78%{opacity:1}86%,100%{opacity:0}}
+@keyframes hm-noite-cel{0%,54%{opacity:0}63%,78%{opacity:1}86%,100%{opacity:0}}
+@keyframes hm-fio{0%,4%{opacity:1}11%,100%{opacity:0}}
+@keyframes hm-bloco{0%,2%{opacity:1}13%,100%{opacity:0}}
+@keyframes hm-resto{0%{opacity:1}14%,100%{opacity:0}}
+@keyframes hm-retrato{0%,1%{opacity:1}14%,100%{opacity:0}}
+@keyframes hm-nome-cel{0%,1%{scale:1}16%,100%{scale:.44}}
+@keyframes hm-num-sai{0%,2%{opacity:1}8%,100%{opacity:0}}
+@keyframes hm-surge{from{opacity:0;translate:0 -2.5em}to{opacity:1;translate:0 0}}
+@keyframes hm-aparece{from{opacity:0}to{opacity:1}}
+
+@keyframes hm-02-m1{0%,11.5%{clip-path:inset(100% 0 0 0);opacity:1}16.5%,39%{clip-path:inset(0 0 0 0);opacity:1}41.5%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@keyframes hm-digita{0%,16%{clip-path:inset(0 100% 0 0)}20%,100%{clip-path:inset(0 0 0 0)}}
+@keyframes hm-partes-fecham{0%,28%{opacity:1;translate:0 0}31.5%,100%{opacity:0;translate:0 -6%}}
+@keyframes hm-pergunta-recua{0%,28%{opacity:1}31.5%,100%{opacity:.3}}
+@keyframes hm-sintese{0%,31%{opacity:0;translate:0 calc(-50% + 10px)}33.5%,100%{opacity:1;translate:0 -50%}}
+@keyframes hm-traco-02{0%,33.5%{scale:0 1}36%,100%{scale:1 1}}
+@keyframes hm-02-leg-a{0%,13.5%{opacity:0;translate:0 10px}17%,27%{opacity:1;translate:0 0}29%,100%{opacity:0;translate:0 -10px}}
+@keyframes hm-02-leg-b{0%,29.5%{opacity:0;translate:0 10px}31.5%,38.5%{opacity:1;translate:0 0}40.5%,100%{opacity:0;translate:0 -10px}}
+
+@keyframes hm-03-m1{0%,40%{opacity:0}42.5%,62.5%{opacity:1}63%,100%{opacity:0}}
+@keyframes hm-03-pan{0%,40%{scale:1.05;translate:2% 0}62%,100%{scale:1.05;translate:-1.5% 0}}
+@keyframes hm-gate{0%,47%{opacity:0;translate:4% 4%}50%,55%{opacity:1;translate:0 0}57.5%,100%{opacity:0;translate:0 0}}
+@keyframes hm-veu{0%,56%{clip-path:inset(0 0 100% 0)}62%,100%{clip-path:inset(0 0 0 0)}}
+@keyframes hm-veu-cel{0%,53%{opacity:0}62%,100%{opacity:1}}
+@keyframes hm-03-leg{0%,41%{opacity:0;translate:0 10px}44%,56.5%{opacity:1;translate:0 0}59%,100%{opacity:0;translate:0 -10px}}
+
+@keyframes hm-04-m1{0%,62.4%{opacity:0}63%,80%{opacity:1}83.5%,100%{opacity:0}}
+@keyframes hm-04-leg{0%,62.5%{opacity:0;translate:0 10px}65%,78.5%{opacity:1;translate:0 0}81.5%,100%{opacity:0;translate:0 0}}
+@keyframes hm-04-leg2{0%,75%{opacity:0;translate:0 8px}77.5%,100%{opacity:1;translate:0 0}}
+/* Kintsugi: o divisor surge neutro, racha no meio e é reparado em ouro. */
+@keyframes hm-racha{
+  0%,63%{scale:0 1;clip-path:polygon(0 0,50% 0,50% 100%,50% 100%,50% 0,100% 0,100% 100%,0 100%)}
+  65.5%,67%{scale:1 1;clip-path:polygon(0 0,50% 0,50% 100%,50% 100%,50% 0,100% 0,100% 100%,0 100%)}
+  68.5%,73%{scale:1 1;clip-path:polygon(0 0,45% 0,45% 100%,55% 100%,55% 0,100% 0,100% 100%,0 100%)}
+  75%,100%{scale:1 1;clip-path:polygon(0 0,50% 0,50% 100%,50% 100%,50% 0,100% 0,100% 100%,0 100%)}}
+@keyframes hm-repara{0%,73%{scale:0 1}75.5%,100%{scale:1 1}}
+
+@keyframes hm-05-m1{0%,82%{opacity:0;scale:1;translate:0 0}86%,87.5%{opacity:1;scale:1;translate:0 0}
+  100%{opacity:1;scale:tan(atan2(var(--pw),var(--m1w)));translate:calc(var(--p-cx) - var(--c-x)) calc(var(--p-top) + var(--ph) / 2 - var(--c-y))}}
+@keyframes hm-05-leg{0%,84%{opacity:0;translate:0 0}87.5%,92%{opacity:1;translate:0 0}95%,100%{opacity:0;translate:0 -10px}}
+
+/* Cabeçalho, caminhos, menu e progresso */
+@keyframes hm-sh-sai{0%,5%{translate:0 0}12%,100%{translate:0 -100%}}
+@keyframes hm-sh-volta{from{transform:translateY(0)}to{transform:translateY(100%)}}
+@keyframes hm-caminhos-sai{0%,1%{translate:0 0;opacity:1}9%,100%{translate:-48px 0;opacity:0}}
+@keyframes hm-caminhos-sai-cel{0%,1%{translate:0 0;opacity:1}12%,100%{translate:0 -32px;opacity:0}}
+@keyframes hm-atual{0%,100%{opacity:1}}
+@keyframes hm-atual-traco{0%{scale:.2 1}15%,100%{scale:1 1}}
+@keyframes hm-progresso{from{scale:0 1}to{scale:1 1}}
+@keyframes hm-menu-entra{0%,4%{opacity:0;translate:-32px -50%;pointer-events:none}10%,100%{opacity:1;translate:0 -50%;pointer-events:auto}}
+@keyframes hm-menu-sai{from{transform:translateX(0)}to{transform:translateX(-140%)}}
+@keyframes hm-menu-entra-cel{0%,7%{opacity:0;translate:0 -100%;pointer-events:none}13%,100%{opacity:1;translate:0 0;pointer-events:auto}}
+@keyframes hm-menu-sai-cel{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+
+/* Sessões 02–04 (hm-sai, hm-cortina-baixo e hm-cortina-cima não têm quadros desde a revisão 5: ficam sem efeito) */
+@keyframes hm-parte{to{transform:translateX(90%) scale(.34);opacity:0}}
+@keyframes hm-marco{from{opacity:0;transform:translateY(12px)}}
+@keyframes hm-s03-sobe{to{translate:0 calc(100svh - 100% - var(--sh-altura,3.5rem) - 3rem)}}
+@keyframes hm-divide{from{transform:translateX(var(--d)) scale(.8)}}
+@keyframes hm-traco{from{transform:scaleX(0)}}
