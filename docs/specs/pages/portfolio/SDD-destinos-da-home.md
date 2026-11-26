@@ -168,6 +168,21 @@ confirmada nele com o mesmo teste.
   `unload`, um `Cache-Control: no-store` ou um script de terceiros impedir,
   corrigir a causa. Não bloqueia a publicação, porque a volta já restaura a
   rolagem e a cena.
+- **RF-DH-05** — Boutique alinhada ao resto do site (D-H13, decidida pelo Issei
+  em 2026-11-26). Em `src/boutique-empresarial-showcase.html`:
+  - fundo `#0d1117` e cartões `#161b22`, como as outras páginas de projeto, no
+    lugar de `bg-slate-950` e `bg-slate-900`;
+  - só Inter. A Playfair Display sai, e o pedido de fonte fica menor;
+  - o acento ciano (`cyan-*`) vira o azul do site (`#58a6ff`). O gradiente
+    `#007bff` → `#8a2be2` só aparece onde as outras páginas de projeto o usam;
+  - sai a barra própria "Voltar aos Conteúdos": o cabeçalho comum já leva a
+    Conteúdos, e as outras páginas de projeto não têm essa barra;
+  - o texto e a estrutura não mudam;
+  - contraste ≥ 4,5:1 em todo texto, e a catraca de acessibilidade não sobe.
+
+  Muda o HTML da página, então o espelho `/en/` é regerado (Argos, no
+  notebook). A captura do cartão da Boutique na home é refeita depois desta
+  mudança.
 
 ### 5.3 O que não muda
 
@@ -175,7 +190,6 @@ confirmada nele com o mesmo teste.
 | :-- | :-- | :-- |
 | Papel no hero da Carreira ("Tech Lead \| Especialista em Análise de Sistemas") | Fica | É o cargo do `cv.json`. O subtítulo da home nomeia as áreas, não o cargo. Os dois são verdadeiros |
 | Miniatura em destaque em `/videos` | Fica, por enquanto | A abertura a partir do clique já marca a mudança. Trocar por texto muda o `gen-videos` e os espelhos das fichas |
-| Paleta e tipografia da Boutique | **D-H13**, no SDD da home | É a vitrine de outro projeto, com identidade própria |
 | Links com fragmento nos cartões (`#pilares`, `#metricas`) | Não entram | O visitante precisa do título do projeto antes do detalhe (RF-VT-40) |
 
 ## 6. Critérios de aceite (o teste vem antes do código)
@@ -205,6 +219,9 @@ confirmada nele com o mesmo teste.
 - **CA-58** — No celular, o primeiro toque num link da Sessão 03 abre o
   destino quando o link está parado na tela (teste com `scrollIntoView` e
   espera de posição estável).
+- **CA-59** — A Boutique não tem `cyan-*`, `slate-950` nem Playfair Display;
+  o fundo é `#0d1117`; o primeiro elemento do `main` não é a barra "Voltar aos
+  Conteúdos".
 
 ## 7. Ordem de implementação
 
@@ -215,10 +232,10 @@ Um PR por linha. A ordem respeita o que a publicação da home precisa.
 | D1 | RF-DH-01 (fonte reserva e CLS) | Não | Antes da home; independente |
 | D2 | RF-DH-03 (banner de cookies no celular) | Não | Antes da home; independente |
 | D3 | RF-DH-02 (`#projetos` no catálogo) | Sim (catálogo) | Antes da home, porque o CTA aponta para lá |
-| D4 | RF-VT-19 revisto, RF-VT-37, RF-VT-38, RF-VT-39 | Não | No mesmo PR da home (H-1 do SDD da home), porque os ids da home antiga deixam de existir |
+| D4 | RF-VT-19 revisto, RF-VT-37, RF-VT-38, RF-VT-39 | Não | No mesmo PR da home (H-2 do SDD da home, §14.7), porque os ids da home antiga deixam de existir |
 | D5 | RF-DH-04 (*bfcache*) | Depende da causa | Depois da conferência num Chrome comum |
 | D6 | RF-VT-40 (cartão → detalhe) | Não | Fase 2, depois do teste de fluidez do Issei |
-| D7 | D-H13 (Boutique), conforme a decisão | Sim, se a página mudar | Depois da decisão |
+| D7 | RF-DH-05 (Boutique alinhada ao site, D-H13) | Sim (Boutique) | Antes da home, porque a captura do cartão vem dessa página |
 
 ## 8. Riscos
 

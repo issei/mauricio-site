@@ -810,7 +810,7 @@ foto real da mesma posição, ou a cena sai (plano B).
 | D-H10 | Onde fica o ouro quando o símbolo e o fio disputam o mesmo quadro? | **Encerrada pela revisão 7:** os símbolos saíram (§13.4). Vale um só ouro por quadro, com o protagonista de cada cena no §13.3 |
 | D-H11 | Revisão 7: abertura concreta, S01 com 5 cenas, sem símbolos, sem pontos e sem imagens de IA | **Decidida (Issei, 2026-11-26):** pedido detalhado da revisão 7 (§13) |
 | D-H12 | No celular, aceitar 5 toques logo acima do limite de constância ou subir a S01 acima de 300 vh? | **Decidida (Issei, 2026-11-26):** manter 300 vh no celular, com o nome fixo no topo. Os 5 toques logo acima do limite ficam (§13.8) |
-| D-H13 | A Boutique Empresarial mantém a paleta e a tipografia próprias ou passa a seguir o resto do site? | Em aberto. Recomendação: manter a identidade própria, porque a página é a vitrine de outro projeto; muda só a chegada (dissolução e cabeçalho comum, SDD-destinos-da-home RF-VT-38) |
+| D-H13 | A Boutique Empresarial mantém a paleta e a tipografia próprias ou passa a seguir o resto do site? | **Decidida (Issei, 2026-11-26):** alinhar ao resto do site (SDD-destinos-da-home, RF-DH-05). A recomendação era manter a identidade própria |
 
 ## 11. Unidades de trabalho
 
@@ -1199,10 +1199,10 @@ SDD-destinos-da-home, §7.
 | :-- | :-- | :-- | :-- |
 | P-0 | Protótipo no repositório (só documentação) | Mensagem escrita do Issei | Não |
 | H-0 | Linha do `hm-` no `AGENTS.md`; D1 (fonte reserva) e D2 (banner) | — | Não |
-| H-1 | D3: `#projetos` no catálogo | — | Sim (catálogo) |
+| H-1 | D3: `#projetos` no catálogo; D7: Boutique alinhada ao site (D-H13), antes das capturas da home | — | Sim (catálogo e Boutique) |
 | H-2 | A home: `gen-home`, `home.data`, `home.css`, capturas e `gen-imagens`, testes do §14.8, `gen-portfolio` sem o `index`, `perf-budget`, e D4 (transições) | P-0, H-1 | Sim (`index`) |
 | H-3 | Espelhos `/en/` (Argos, no notebook), `og-index`, gate verde. Publicar é o merge do Issei | H-2 | — |
-| H-4 | Depois da publicação: D5 (*bfcache*), D6 (cartão → detalhe), D7 (D-H13), fotos (D-H2), validação com 3 a 5 pessoas | H-3 | Depende |
+| H-4 | Depois da publicação: D5 (*bfcache*), D6 (cartão → detalhe), fotos (D-H2), validação com 3 a 5 pessoas | H-3 | Depende |
 
 ### 14.8 Testes (escritos antes do código)
 
