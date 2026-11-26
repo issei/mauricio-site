@@ -61,7 +61,9 @@ const menu = [['#apresentacao', 'mn1', 'Apresentação', 'Início'], ['#historia
   .map(([h, c, l, cur]) => `<li><a href="${h}" class="${c}" aria-label="${l}"><span class="hm-menu__l" aria-hidden="true">${l}</span><span class="hm-menu__c" aria-hidden="true">${cur}</span></a></li>`).join('');
 
 const marcos = HISTORIA.marcos.map((m, i) => `<li class="hm-marco${m.atual ? ' hm-marco--atual' : ''}" style="--i:${i + 1}"><b>${m.anos}:</b><span>${m.texto}</span></li>`).join('');
-const recentes = RECENTES.map((r) => `<li><a href="${r.rota}.html">${r.titulo}</a><span class="hm-dims">${r.formato}</span></li>`).join('');
+// Páginas geradas em subpasta (src/videos/) são ligadas sem ".html", como no resto do site (audit-site).
+const hrefDe = (rota) => (rota.startsWith('/videos/') ? rota : `${rota}.html`);
+const recentes = RECENTES.map((r) => `<li><a href="${hrefDe(r.rota)}">${r.titulo}</a><span class="hm-dims">${r.formato}</span></li>`).join('');
 const mesa = IDEIAS.mesa.map((m) => `<div class="foto m1${m.contem ? ' contem' : ''}">${imgHome(m.img, m.alt, 960, m.img === 'estados' ? 768 : 600, '(min-width: 640px) 40vw, 100vw')}</div>`).join('');
 const cartoes = projetos.map((p, i) => `<li style="--i:${i}"><div class="foto m1">${imgHome(p.img, p.alt, 960, 600, '(min-width: 1100px) 22vw, (min-width: 640px) 45vw, 50vw')}</div><a href="${p.href}">${p.titulo}</a><p class="hm-tese">${p.tese}</p><p class="hm-dims">${p.dims}</p></li>`).join('');
 const contatos = [[`mailto:${cv.Contato.Email}`, cv.Contato.Email], [cv.Contato.LinkedIn, 'LinkedIn'], [cv.Contato.GitHub, 'GitHub'], [cv.Contato.youtube, 'YouTube']];
