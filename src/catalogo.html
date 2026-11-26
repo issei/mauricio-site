@@ -66,8 +66,19 @@
             /* texto pequeno acessível sobre fundo escuro (AA) */
         }
 
+        /* Fonte reserva com as métricas da Inter: a troca (font-display: swap) não muda a quebra de linha
+           das pílulas de temas (CLS 0,54 → 0). SDD-destinos-da-home, RF-DH-01. */
+        @font-face {
+            font-family: 'Inter Reserva';
+            src: local('Arial'), local('Helvetica Neue'), local('Liberation Sans');
+            size-adjust: 107.4%;
+            ascent-override: 90.2%;
+            descent-override: 22.5%;
+            line-gap-override: 0%;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Inter Reserva', sans-serif;
             background-color: var(--eco-bg);
             color: var(--eco-text);
             scroll-behavior: smooth;
